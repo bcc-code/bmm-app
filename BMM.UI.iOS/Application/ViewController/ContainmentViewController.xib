@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContainmentViewController">
+            <connections>
+                <outlet property="ContentView" destination="CGd-oK-nYA" id="por-eM-jaL"/>
+                <outlet property="MiniplayerView" destination="gvP-B1-kvb" id="KqK-ix-cQj"/>
+                <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gvP-B1-kvb" userLabel="Miniplayer">
+                    <rect key="frame" x="0.0" y="778" width="375" height="0.0"/>
+                    <constraints>
+                        <constraint firstAttribute="height" priority="750" id="uCO-Jy-INl"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CGd-oK-nYA" userLabel="Content">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="778"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottomMargin" secondItem="gvP-B1-kvb" secondAttribute="bottom" id="2Fj-PU-nol"/>
+                <constraint firstItem="CGd-oK-nYA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="A4B-Ir-ftO"/>
+                <constraint firstAttribute="trailing" secondItem="gvP-B1-kvb" secondAttribute="trailing" id="CDc-3p-xjm"/>
+                <constraint firstItem="CGd-oK-nYA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="I1F-VN-BN3"/>
+                <constraint firstItem="gvP-B1-kvb" firstAttribute="top" secondItem="CGd-oK-nYA" secondAttribute="bottom" id="Qpc-aC-9xb"/>
+                <constraint firstItem="gvP-B1-kvb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aHx-GO-XcF"/>
+                <constraint firstAttribute="trailing" secondItem="CGd-oK-nYA" secondAttribute="trailing" id="etv-KT-y01"/>
+            </constraints>
+            <point key="canvasLocation" x="358" y="380"/>
+        </view>
+    </objects>
+</document>

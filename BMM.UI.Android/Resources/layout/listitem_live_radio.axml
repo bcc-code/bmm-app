@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:local="http://schemas.android.com/apk/res-auto"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:layout_marginBottom="@dimen/margin_medium"
+  android:id="@+id/relativeLayout1">
+  <!-- If this item has no margin swiping down to refresh does not work.
+  Therefore we add the margin of listitem_fra_kaare_teaser.axml to this element -->
+
+  <!-- Upcoming -->
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="visible"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:layout_marginRight="@dimen/margin_medium"
+    android:layout_marginLeft="@dimen/margin_medium"
+    android:background="@drawable/radio_background_upcoming"
+    local:MvxBind="Visibility Visibility(ViewModel.RadioViewModel.IsBroadcastUpcoming); Click ViewModel.RadioViewModel.PlayCommand">
+	<ImageView
+	  android:src="@drawable/radio_background_live"
+	  android:layout_width="343dp"
+	  android:layout_height="72dp"
+	  local:layout_constraintBottom_toBottomOf="parent"
+      local:layout_constraintEnd_toEndOf="parent"
+	  android:id="@+id/radioBackgroundLiveUpcoming" />
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:gravity="center_vertical"
+      android:layout_alignParentLeft="true">
+      <LinearLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="68dp"
+        android:layout_marginTop="10dp">
+        <TextView
+          android:id="@+id/headerTitle"
+          android:layout_width="wrap_content"
+          android:layout_height="24dp"
+          android:textStyle="normal"
+          android:textColor="#ccffffff"
+          android:letterSpacing="0.1"
+          android:lineSpacingExtra="12sp"
+          android:textSize="12sp"
+          android:textAllCaps="true"
+          android:layout_gravity="center_vertical|left"
+          app:autoSizeTextType="uniform"
+          app:autoSizeMinTextSize="10sp"
+          app:autoSizeMaxTextSize="12sp"
+          app:autoSizeStepGranularity="0.1sp"
+          android:text="Neste Sending - BMM Live"
+          local:MvxBind="Text ViewModel.RadioViewModel.Title"/>
+      </LinearLayout>
+      <TextView
+        android:id="@+id/titleContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="Åpningsmøte – 11:00"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/headerContainer"
+        local:MvxBind="Text ViewModel.RadioViewModel.Track.Title"/>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="46dp"
+      android:layout_height="0dp"
+      android:layout_marginRight="19dp"
+      local:layout_constraintEnd_toEndOf="parent"
+      local:layout_constraintTop_toTopOf="parent"
+      local:layout_constraintBottom_toBottomOf="parent"
+      android:gravity="center|center">
+      <TextView
+        android:id="@+id/radioStatusCounterInCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:text="in 7h"
+        local:MvxBind="Text TimeSpanToCountdown(ViewModel.RadioViewModel.TimeLeft)"/>
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <!-- Broadcasting -->
+  <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:layout_marginTop="@dimen/margin_medium"
+    android:layout_marginRight="@dimen/margin_medium"
+    android:layout_marginLeft="@dimen/margin_medium"
+    android:background="@drawable/radio_background_broadcasting"
+    local:MvxBind="Visibility Visibility(ViewModel.RadioViewModel.IsBroadcasting); Click ViewModel.RadioViewModel.PlayCommand">
+	<ImageView
+	  android:src="@drawable/radio_background_live"
+	  android:layout_width="343dp"
+	  android:layout_height="72dp"
+	  local:layout_constraintBottom_toBottomOf="parent"
+      local:layout_constraintEnd_toEndOf="parent"
+	  android:id="@+id/radioBackgroundLiveUpcoming" />
+    <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:gravity="center_vertical"
+      android:layout_alignParentLeft="true">
+      <LinearLayout
+        android:id="@+id/headerContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+        <ImageView
+          android:id="@+id/radioStatusIconPlay"
+          android:layout_width="24dp"
+          android:layout_height="24dp"
+          android:layout_marginRight="4dp"
+          android:src="@drawable/icon_arrow_right"/>
+        <TextView
+          android:id="@+id/headerTitle"
+          android:layout_width="wrap_content"
+          android:layout_height="24dp"
+          android:textStyle="normal"
+          android:textColor="#ccffffff"
+          android:letterSpacing="0.1"
+          android:lineSpacingExtra="12sp"
+          android:textSize="12sp"
+          android:textAllCaps="true"
+          android:gravity="center"
+          android:text="BMM Live"
+          local:MvxBind="Text ViewModel.RadioViewModel.Title"/>
+      </LinearLayout>
+      <TextView
+        android:id="@+id/titleContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="Åpningsmøte – 11:00"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_below="@+id/headerContainer"
+        local:MvxBind="Text ViewModel.RadioViewModel.Track.Title"/>
+    </LinearLayout>
+    <LinearLayout
+      android:layout_width="46dp"
+      android:layout_height="0dp"
+      android:layout_marginRight="19dp"
+      local:layout_constraintEnd_toEndOf="parent"
+      local:layout_constraintTop_toTopOf="parent"
+      local:layout_constraintBottom_toBottomOf="parent"
+      android:gravity="center|center">
+      <ImageView
+        android:id="@+id/radioStatusIconInCircle"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/icon_radio_static"/>
+    </LinearLayout>
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

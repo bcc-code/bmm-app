@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<com.google.android.material.floatingactionbutton.FloatingActionButton xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/shuffle_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/icon_shuffle_white"
+    local:MvxBind="Click ShufflePlayCommand"
+    android:layout_margin="@dimen/margin_medium"
+    android:layout_gravity="end|bottom"
+    app:backgroundTint="@color/colorPrimary" />

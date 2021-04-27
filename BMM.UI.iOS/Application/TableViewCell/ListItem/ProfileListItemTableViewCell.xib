@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="203.5" id="ejz-7m-F5X" customClass="ProfileListItemTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="344" height="156"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ejz-7m-F5X" id="s55-XJ-fp9">
+                <rect key="frame" x="0.0" y="0.0" width="344" height="156"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzT-1b-VRw" userLabel="Rounded Corner View">
+                        <rect key="frame" x="16" y="16" width="312" height="124"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signed in as" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M72-eD-YqP">
+                                <rect key="frame" x="16" y="16" width="228" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ufE-rM-ugh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.5607843137254902" green="0.62745098039215685" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HhH-HZ-3Hz" userLabel="Separator">
+                                <rect key="frame" x="0.0" y="76" width="312" height="0.5"/>
+                                <color key="backgroundColor" red="0.72549019607843135" green="0.76470588235294112" blue="0.80000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="uGQ-WW-8uV"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1d-Vn-aqo">
+                                <rect key="frame" x="0.0" y="77" width="312" height="47"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleColor" red="0.050980392156862744" green="0.074509803921568626" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_contributor_fallback.png" translatesAutoresizingMaskIntoConstraints="NO" id="OJQ-lb-dSF" customClass="MvxCachedImageView">
+                                <rect key="frame" x="252" y="16" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="JVm-3m-cWs"/>
+                                    <constraint firstAttribute="height" constant="44" id="qIJ-CS-cVl"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="22"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ueli de Knecht" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYW-S9-bWC">
+                                <rect key="frame" x="16" y="36" width="228" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="rwy-eu-tEu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chevron_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="Wn8-2k-Uyc" userLabel="Chevron Icon">
+                                <rect key="frame" x="272" y="88.5" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Ue2-UV-giS"/>
+                                    <constraint firstAttribute="width" constant="24" id="er5-2u-rif"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="uYW-S9-bWC" firstAttribute="leading" secondItem="rzT-1b-VRw" secondAttribute="leading" constant="16" id="0nH-KN-WqE"/>
+                            <constraint firstItem="OJQ-lb-dSF" firstAttribute="leading" secondItem="uYW-S9-bWC" secondAttribute="trailing" constant="8" id="2i7-0n-tWT"/>
+                            <constraint firstItem="uYW-S9-bWC" firstAttribute="top" secondItem="M72-eD-YqP" secondAttribute="bottom" id="34d-ad-jqL"/>
+                            <constraint firstAttribute="trailing" secondItem="HhH-HZ-3Hz" secondAttribute="trailing" id="Dn7-jf-dDQ"/>
+                            <constraint firstItem="OJQ-lb-dSF" firstAttribute="leading" secondItem="M72-eD-YqP" secondAttribute="trailing" constant="8" id="Ien-Qe-0z9"/>
+                            <constraint firstItem="M72-eD-YqP" firstAttribute="top" secondItem="rzT-1b-VRw" secondAttribute="top" constant="16" id="J4e-od-fve"/>
+                            <constraint firstAttribute="trailing" secondItem="OJQ-lb-dSF" secondAttribute="trailing" constant="16" id="Jo0-wb-yK6"/>
+                            <constraint firstItem="HhH-HZ-3Hz" firstAttribute="leading" secondItem="rzT-1b-VRw" secondAttribute="leading" id="WEE-PA-nYp"/>
+                            <constraint firstItem="M72-eD-YqP" firstAttribute="leading" secondItem="rzT-1b-VRw" secondAttribute="leading" constant="16" id="Wl3-4G-r0q"/>
+                            <constraint firstAttribute="trailing" secondItem="Wn8-2k-Uyc" secondAttribute="trailing" constant="16" id="YyL-Tn-NOo"/>
+                            <constraint firstItem="HhH-HZ-3Hz" firstAttribute="top" secondItem="OJQ-lb-dSF" secondAttribute="bottom" constant="16" id="eJ8-m2-wp5"/>
+                            <constraint firstItem="OJQ-lb-dSF" firstAttribute="top" secondItem="rzT-1b-VRw" secondAttribute="top" constant="16" id="hsW-ev-jTH"/>
+                            <constraint firstAttribute="trailing" secondItem="e1d-Vn-aqo" secondAttribute="trailing" id="jjs-FK-X7z"/>
+                            <constraint firstItem="e1d-Vn-aqo" firstAttribute="top" secondItem="HhH-HZ-3Hz" secondAttribute="bottom" id="jr0-0D-juD"/>
+                            <constraint firstItem="e1d-Vn-aqo" firstAttribute="leading" secondItem="rzT-1b-VRw" secondAttribute="leading" id="nrv-6z-jZq"/>
+                            <constraint firstAttribute="bottom" secondItem="e1d-Vn-aqo" secondAttribute="bottom" id="o23-u5-blf"/>
+                            <constraint firstItem="Wn8-2k-Uyc" firstAttribute="centerY" secondItem="e1d-Vn-aqo" secondAttribute="centerY" id="xQC-gY-bDv"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rzT-1b-VRw" firstAttribute="leading" secondItem="s55-XJ-fp9" secondAttribute="leading" constant="16" id="QML-oB-VfD"/>
+                    <constraint firstAttribute="bottom" secondItem="rzT-1b-VRw" secondAttribute="bottom" constant="16" id="R3X-cv-ki6"/>
+                    <constraint firstItem="rzT-1b-VRw" firstAttribute="top" secondItem="s55-XJ-fp9" secondAttribute="top" constant="16" id="ibs-vW-HkG"/>
+                    <constraint firstAttribute="trailing" secondItem="rzT-1b-VRw" secondAttribute="trailing" constant="16" id="kYB-JB-8nX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ProfileImage" destination="OJQ-lb-dSF" id="nA8-iA-0g4"/>
+                <outlet property="SignOutButton" destination="e1d-Vn-aqo" id="jYw-ie-65e"/>
+                <outlet property="SignedInAsTitle" destination="M72-eD-YqP" id="3v7-rm-sLZ"/>
+                <outlet property="Username" destination="uYW-S9-bWC" id="gUU-RM-5SJ"/>
+            </connections>
+            <point key="canvasLocation" x="-55.072463768115945" y="-106.47321428571428"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_chevron_right.png" width="24" height="24"/>
+        <image name="icon_contributor_fallback.png" width="44" height="44"/>
+    </resources>
+</document>

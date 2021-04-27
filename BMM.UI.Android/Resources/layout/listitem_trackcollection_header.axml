@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/appbar_view"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    local:MvxBind="Visibility Visibility(Documents.Count)">
+    <RelativeLayout
+        android:background="?android:attr/selectableItemBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/relativeLayout1"
+        android:paddingRight="@dimen/element_margin_medium"
+        android:paddingLeft="@dimen/element_margin_medium"
+        android:paddingTop="@dimen/element_margin_medium"
+        android:paddingBottom="@dimen/element_margin_medium"
+        local:MvxBind="Click ToggleOfflineCommand">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/text_view"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@+id/download_switch"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true">
+            <TextView
+                android:id="@+id/text_view_title"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large"
+                android:layout_gravity="center_vertical"
+                local:MvxLang="Text AvailableOffline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/text_view_subtitle"
+                android:singleLine="true"
+                android:textColor="@color/gray"
+                android:textSize="@dimen/text_small"
+                android:layout_gravity="center_vertical"
+                local:MvxLang="Text AvailableOfflineDownload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/download_switch"
+            local:MvxBind="Checked IsOfflineAvailable, Mode=OneWay"
+            android:focusable="false"
+            android:clickable="false"
+            android:background="@null"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="@dimen/element_margin_medium"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout2"
+        android:paddingBottom="@dimen/element_margin_small"
+        android:divider="?android:dividerHorizontal"
+        android:showDividers="beginning"
+        local:MvxBind="Visibility Visibility(IsDownloading); Click">
+    <!--Override Click event to do nothing, prevented app crash-->
+        <TextView
+            android:id="@+id/text_view_title"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_tinier"
+            android:layout_gravity="center_horizontal"
+            local:MvxBind="Text DownloadingText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="@dimen/element_margin_small"
+            android:paddingBottom="@dimen/element_margin_small" />
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:progressDrawable="@drawable/progressbar_downloading"
+            android:layout_width="match_parent"
+            android:id="@+id/progressbar_downloading"
+            android:max="1000"
+            local:MvxBind="Progress FloatProgressToInt(DownloadStatus, 1000)"
+            android:layout_marginLeft="@dimen/element_margin_medium"
+            android:layout_marginRight="@dimen/element_margin_medium"
+            android:layout_height="2dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:divider="?android:dividerHorizontal"
+        android:showDividers="beginning"
+        local:MvxBind="Click">
+    <!--Override Click event to do nothing, prevented app crash-->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>

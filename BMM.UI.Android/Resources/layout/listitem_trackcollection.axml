@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:minHeight="@dimen/row_document_height"
+    android:layout_height="wrap_content"
+    android:showDividers="end"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:minHeight="@dimen/row_document_height"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground">
+
+        <androidx.cardview.widget.CardView
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/element_margin_medium"
+            android:paddingRight="@dimen/element_margin_medium"
+            android:layout_marginLeft="@dimen/element_margin_medium"
+            android:layout_marginRight="@dimen/element_margin_medium"
+            android:id="@+id/image_view_row_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:cardBackgroundColor="@color/light_gray"
+            local:cardElevation="0dp"
+            local:cardCornerRadius="6dp">
+
+            <ImageView
+                android:src="@drawable/icon_playlist"
+                android:layout_margin="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/image_view_row_icon"
+            android:layout_toLeftOf="@+id/image_button_options">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/text_view_title"
+                android:singleLine="true"
+                local:MvxBind="Text Item.Name"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large"
+                android:layout_gravity="center_vertical" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout1"
+                android:layout_gravity="center_vertical">
+                <ImageView
+                    android:src="@drawable/icon_downloaded"
+                    local:MvxBind="Visibility OfflineAvailabilityToVisibility(Item)"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView1"
+                    android:layout_marginRight="@dimen/element_margin_tiny" />
+                <TextView
+                    android:id="@+id/text_view_sub_title"
+                    android:singleLine="true"
+                    local:MvxBind="Text Format('{0} Tracks', IntToString(Item.TrackCount))"
+                    android:textColor="@color/gray"
+                    android:textSize="@dimen/text_small"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:src="@drawable/icon_chevron_right"
+            android:layout_width="wrap_content"
+            android:minHeight="@dimen/row_document_height"
+            android:layout_height="fill_parent"
+            android:id="@+id/image_button_options"
+            android:paddingLeft="@dimen/element_margin_medium"
+            android:paddingRight="@dimen/element_margin_medium"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

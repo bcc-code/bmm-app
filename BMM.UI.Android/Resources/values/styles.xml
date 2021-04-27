@@ -1,0 +1,120 @@
+﻿<resources>
+    <!-- Application theme -->
+    <style name="AppTheme" parent="AppTheme.Base" />
+
+    <style name="AppTheme.Dark" parent="AppTheme" />
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppTheme.Base" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">false</item>
+        <item name="android:navigationBarColor">@color/black</item>
+        <item name="android:windowBackground">@color/white</item>
+
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/med_gray</item>
+
+        <item name="android:textCursorDrawable">@null</item>
+    </style>
+
+    <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorAccent">@color/black</item>
+    </style>
+    
+    <style name="AppTheme.CollapseBarTextAppearance" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.Tab">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorSurface">@color/black</item>
+        <item name="colorOnSurface">@color/black</item>
+    </style>
+
+    <style name="AppTheme.Tab.TextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppTheme.Splash" parent="@style/Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowBackground">@drawable/splashscreen</item>
+    </style>
+
+    <style name="AppTheme.Login" parent="AppTheme.Dark">
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/med_gray</item>
+    </style>
+
+    <style name="AppTheme.Login.Edit" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">@color/gray</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorControlHighlight">@color/med_gray</item>
+    </style>
+
+    <style name="AppTheme.BottomNavigationTheme" parent="AppTheme.Base">
+        <item name="colorPrimary">@color/black</item>
+        <item name="itemTextColor">@color/navigation_color_selector</item>
+        <item name="itemIconTint">@color/navigation_color_selector</item>
+    </style>
+
+    <style name="ProgressGreen" parent="android:Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/rotate_spinner</item>
+        <item name="android:minWidth">25dp</item>
+        <item name="android:minHeight">25dp</item>
+        <item name="android:maxWidth">25dp</item>
+        <item name="android:maxHeight">25dp</item>
+        <item name="android:layout_marginTop">@dimen/element_margin_medium</item>
+        <item name="android:layout_marginBottom">@dimen/element_margin_medium</item>
+    </style>
+
+    <style name="SeekBarPlayer" parent="android:Widget.Material.SeekBar">
+        <item name="android:progressDrawable">@drawable/seekbar_progress</item>
+        <item name="android:thumb">@drawable/seekbar_thumb</item>
+        <item name="android:splitTrack">false</item>
+        <item name="android:minHeight">4dp</item>
+        <item name="android:maxHeight">4dp</item>
+    </style>
+
+    <style name="SeekBarMiniPlayer" parent="android:Widget.SeekBar">
+        <item name="android:progressDrawable">@drawable/seekbar_progress</item>
+        <item name="android:minHeight">2.5dip</item>
+        <item name="android:maxHeight">2.5dip</item>
+        <item name="android:thumb">@null</item>
+        <item name="android:thumbOffset">0dip</item>
+        <item name="android:padding">0dip</item>
+    </style>
+
+    <style name="button_text">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:textColor">#0f151c</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item>
+    </style>
+
+    <style name="ExtendedToolbarTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+</resources>

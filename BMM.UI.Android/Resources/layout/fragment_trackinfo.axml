@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar_actionbar"
+        android:layout_alignParentTop="true" />
+    <MvxListView
+        android:id="@+id/trackinfo_list"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/appbar"
+        android:listSelector="@android:color/transparent"
+        android:divider="@null"
+        local:MvxBind="ItemsSource SectionedToFlatList(Sections); ItemClick ItemSelectedCommand" />
+</RelativeLayout>

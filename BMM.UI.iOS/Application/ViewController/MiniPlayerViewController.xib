@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MiniPlayerViewController">
+            <connections>
+                <outlet property="CoverView" destination="YoT-Tk-Slo" id="olM-qs-Nhf"/>
+                <outlet property="CoverViewBottomConstraint" destination="I7v-Ae-nRK" id="name-outlet-I7v-Ae-nRK"/>
+                <outlet property="CoverViewLeadingConstraint" destination="iZJ-B7-0DO" id="name-outlet-iZJ-B7-0DO"/>
+                <outlet property="CoverViewTopConstraint" destination="dfm-Ga-mNK" id="name-outlet-dfm-Ga-mNK"/>
+                <outlet property="MiniPlayerView" destination="iN0-l3-epB" id="name-outlet-iN0-l3-epB"/>
+                <outlet property="PlayerStatusButton" destination="oWs-1U-y5g" id="iP8-Dw-HJL"/>
+                <outlet property="PlayerStatusButtonTopConstraint" destination="owm-qA-3be" id="name-outlet-owm-qA-3be"/>
+                <outlet property="ProgressBar" destination="r20-rr-dD7" id="iNo-bv-EHJ"/>
+                <outlet property="ShowPlayerButton" destination="IEe-Qo-rGw" id="Gre-ZG-iUB"/>
+                <outlet property="ShowPlayerButtonBottomConstraint" destination="lct-0U-ee5" id="name-outlet-lct-0U-ee5"/>
+                <outlet property="TrackSubtitleLabel" destination="EMl-vD-ZDo" id="rFJ-wS-Re2"/>
+                <outlet property="TrackSubtitleLabelTopConstraint" destination="ehs-oN-cDN" id="name-outlet-ehs-oN-cDN"/>
+                <outlet property="TrackTitleLabel" destination="C9n-4r-XN8" id="ccS-T5-beO"/>
+                <outlet property="TrackTitleLabelTopConstraint" destination="6Fn-9F-jZV" id="name-outlet-6Fn-9F-jZV"/>
+                <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfm-cx-Dlk" userLabel="Separator">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="0.5"/>
+                    <color key="backgroundColor" red="0.72549019607843135" green="0.76470588235294112" blue="0.80000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="DR3-h5-xQK"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kåre J. Smith" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9n-4r-XN8">
+                    <rect key="frame" x="56" y="10" width="206" height="20"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                    <color key="textColor" red="0.050980392156862744" green="0.074509803921568626" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TrackTitleLabel"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. Møte, Sommerstævnet Juli 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMl-vD-ZDo">
+                    <rect key="frame" x="56" y="30" width="206" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.36078431372549019" green="0.4392156862745098" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TrackSubtitleLabel"/>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWs-1U-y5g">
+                    <rect key="frame" x="264" y="0.0" width="56" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="56" id="xVY-pY-ild"/>
+                    </constraints>
+                    <state key="normal" image="btn_play_mini.png">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <state key="selected" image="btn_pause_mini.png"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IEe-Qo-rGw">
+                    <rect key="frame" x="0.0" y="0.0" width="262" height="60"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YoT-Tk-Slo" customClass="MvxCachedImageView">
+                    <rect key="frame" x="12" y="14" width="32" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="32" id="Nhf-nu-DKW"/>
+                        <constraint firstAttribute="width" secondItem="YoT-Tk-Slo" secondAttribute="height" multiplier="1:1" id="nvH-hP-ZWk"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r20-rr-dD7" customClass="CustomProgressBar">
+                    <rect key="frame" x="0.0" y="57" width="320" height="3"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="3" id="z1m-lt-J0C"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="C9n-4r-XN8" secondAttribute="trailing" constant="58" id="0pB-sr-6qS"/>
+                <constraint firstAttribute="trailing" secondItem="EMl-vD-ZDo" secondAttribute="trailing" constant="58" id="1vS-nW-cdw"/>
+                <constraint firstItem="r20-rr-dD7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2GY-Sy-TgU"/>
+                <constraint firstAttribute="trailing" secondItem="oWs-1U-y5g" secondAttribute="trailing" id="3X6-Je-z7E"/>
+                <constraint firstItem="IEe-Qo-rGw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="4EP-Wz-unQ"/>
+                <constraint firstItem="EMl-vD-ZDo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="56" id="5Lu-MF-AvO"/>
+                <constraint firstItem="C9n-4r-XN8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="6Fn-9F-jZV"/>
+                <constraint firstAttribute="trailing" secondItem="r20-rr-dD7" secondAttribute="trailing" id="7Tl-fy-8r9"/>
+                <constraint firstAttribute="trailing" secondItem="IEe-Qo-rGw" secondAttribute="trailing" constant="58" id="CNI-w6-oXb"/>
+                <constraint firstAttribute="bottom" secondItem="r20-rr-dD7" secondAttribute="bottom" id="ENS-KB-abx"/>
+                <constraint firstItem="Jfm-cx-Dlk" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EVn-x6-yMm"/>
+                <constraint firstAttribute="bottom" secondItem="YoT-Tk-Slo" secondAttribute="bottom" constant="14" id="I7v-Ae-nRK"/>
+                <constraint firstItem="IEe-Qo-rGw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Nhk-w9-eC7"/>
+                <constraint firstItem="Jfm-cx-Dlk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zmg-5M-bg9"/>
+                <constraint firstItem="C9n-4r-XN8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="56" id="ahP-n1-4Zq"/>
+                <constraint firstAttribute="bottom" secondItem="oWs-1U-y5g" secondAttribute="bottom" id="d6q-av-BEG"/>
+                <constraint firstItem="YoT-Tk-Slo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="14" id="dfm-Ga-mNK"/>
+                <constraint firstItem="EMl-vD-ZDo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="ehs-oN-cDN"/>
+                <constraint firstItem="YoT-Tk-Slo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="iZJ-B7-0DO"/>
+                <constraint firstAttribute="bottom" secondItem="IEe-Qo-rGw" secondAttribute="bottom" id="lct-0U-ee5"/>
+                <constraint firstItem="oWs-1U-y5g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="owm-qA-3be"/>
+                <constraint firstAttribute="trailing" secondItem="Jfm-cx-Dlk" secondAttribute="trailing" id="xPU-m9-T2d"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="MiniPlayerView"/>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="271" y="385.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="btn_pause_mini.png" width="24" height="24"/>
+        <image name="btn_play_mini.png" width="24" height="24"/>
+    </resources>
+</document>

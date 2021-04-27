@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:minHeight="@dimen/row_document_height"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:minHeight="@dimen/row_document_height"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/element_margin_medium"
+        android:background="?android:attr/selectableItemBackground">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linlayout"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/checkBox1">
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                local:MvxBind="Text Title"
+                android:layout_gravity="center_vertical"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_large"
+                android:layout_marginTop="12dp" />
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                local:MvxBind="Text Text"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/text_medium"
+                android:textColor="@color/gray"
+                android:layout_marginBottom="12dp" />
+        </LinearLayout>
+        <CheckBox
+            android:text=""
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBox1"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/element_margin_medium"
+            android:layout_marginRight="@dimen/element_margin_medium"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            local:MvxBind="Checked IsChecked" />
+    </RelativeLayout>
+</LinearLayout>

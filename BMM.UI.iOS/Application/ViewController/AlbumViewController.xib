@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AlbumViewController">
+            <connections>
+                <outlet property="AlbumBlurCoverImage" destination="PFY-sA-FrS" id="oua-SX-cMa"/>
+                <outlet property="AlbumCoverImageView" destination="t4g-Ns-abC" id="Pem-Mt-5ob"/>
+                <outlet property="AlbumHeaderView" destination="dvX-pL-2wU" id="eg1-dY-8bb"/>
+                <outlet property="AlbumTable" destination="l4p-Fv-ZIK" id="ws9-Aw-miv"/>
+                <outlet property="ShuffleButton" destination="jTG-0X-idr" id="66u-YL-aHN"/>
+                <outlet property="blurView" destination="JOs-8r-loi" id="14t-fd-rNU"/>
+                <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="290" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="l4p-Fv-ZIK">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view key="tableHeaderView" contentMode="scaleToFill" id="dvX-pL-2wU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="290"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5HD-sS-elo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOs-8r-loi">
+                                        <rect key="frame" x="0.0" y="-300" width="375" height="520"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="PFY-sA-FrS" customClass="MvxCachedImageView">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="PFY-sA-FrS" secondAttribute="bottom" id="3EI-1B-OoM"/>
+                                            <constraint firstAttribute="trailing" secondItem="PFY-sA-FrS" secondAttribute="trailing" id="8zf-ms-WVB"/>
+                                            <constraint firstItem="PFY-sA-FrS" firstAttribute="leading" secondItem="JOs-8r-loi" secondAttribute="leading" id="Tys-GC-t72"/>
+                                            <constraint firstAttribute="height" constant="520" id="o0v-Ou-0Dm"/>
+                                            <constraint firstItem="PFY-sA-FrS" firstAttribute="top" secondItem="JOs-8r-loi" secondAttribute="top" id="sCa-Mz-25S"/>
+                                        </constraints>
+                                    </view>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="hCD-Ua-wLy">
+                                        <rect key="frame" x="0.0" y="-300" width="375" height="520"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="520" id="1ZK-72-oS6"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="HkQ-yb-niV">
+                                        <rect key="frame" x="107.5" y="30" width="160" height="160"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="160" id="aGw-fg-POs"/>
+                                            <constraint firstAttribute="height" constant="160" id="zFd-kl-XGK"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                <real key="value" value="2.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="t4g-Ns-abC" customClass="MvxCachedImageView">
+                                        <rect key="frame" x="107.5" y="30" width="160" height="160"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="CTe-ee-pNb"/>
+                                            <constraint firstAttribute="width" constant="160" id="TKY-cr-Go4"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                                <real key="value" value="2.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="album_cover"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="t4g-Ns-abC" secondAttribute="centerX" id="1a9-ur-OqY"/>
+                                    <constraint firstAttribute="centerY" secondItem="t4g-Ns-abC" secondAttribute="centerY" id="4nE-OD-LzQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="JOs-8r-loi" secondAttribute="bottom" id="BJU-MV-8fH"/>
+                                    <constraint firstAttribute="bottom" secondItem="hCD-Ua-wLy" secondAttribute="bottom" id="Cnq-vR-ua1"/>
+                                    <constraint firstAttribute="height" constant="220" id="E20-hf-5Wh"/>
+                                    <constraint firstItem="JOs-8r-loi" firstAttribute="top" secondItem="5HD-sS-elo" secondAttribute="top" constant="-300" id="EtB-Xv-XBa"/>
+                                    <constraint firstItem="hCD-Ua-wLy" firstAttribute="leading" secondItem="5HD-sS-elo" secondAttribute="leading" id="ImQ-QS-d82"/>
+                                    <constraint firstItem="hCD-Ua-wLy" firstAttribute="top" secondItem="5HD-sS-elo" secondAttribute="top" constant="-300" id="L4s-8N-3fi"/>
+                                    <constraint firstAttribute="trailing" secondItem="JOs-8r-loi" secondAttribute="trailing" id="MaB-MK-P4X"/>
+                                    <constraint firstAttribute="centerY" secondItem="HkQ-yb-niV" secondAttribute="centerY" id="V8I-fu-1Bg"/>
+                                    <constraint firstAttribute="trailing" secondItem="hCD-Ua-wLy" secondAttribute="trailing" id="WB9-3l-DLm"/>
+                                    <constraint firstItem="JOs-8r-loi" firstAttribute="leading" secondItem="5HD-sS-elo" secondAttribute="leading" id="Y0c-Er-UMy"/>
+                                    <constraint firstAttribute="centerX" secondItem="HkQ-yb-niV" secondAttribute="centerX" id="kZO-Xy-fgb"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTG-0X-idr">
+                                <rect key="frame" x="15" y="235" width="345" height="40"/>
+                                <color key="backgroundColor" red="0.46308052539825439" green="0.90309476852416992" blue="0.35757482051849365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="dbu-IR-Zg5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="Shuffle Play">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <real key="value" value="2.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="shuffle_button"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORP-bF-Gfg">
+                                <rect key="frame" x="0.0" y="289" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="07c-s2-GAc">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="constant">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="5HD-sS-elo" secondAttribute="trailing" id="3Qc-hr-sKL"/>
+                            <constraint firstItem="5HD-sS-elo" firstAttribute="top" secondItem="dvX-pL-2wU" secondAttribute="top" id="MAv-BG-dAQ"/>
+                            <constraint firstAttribute="bottom" secondItem="ORP-bF-Gfg" secondAttribute="bottom" id="RYm-rc-fDc"/>
+                            <constraint firstAttribute="trailing" secondItem="jTG-0X-idr" secondAttribute="trailing" constant="15" id="Xy5-hq-vUh"/>
+                            <constraint firstItem="ORP-bF-Gfg" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" id="fDK-EO-U2t"/>
+                            <constraint firstItem="jTG-0X-idr" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="15" id="lU0-Xf-AJB"/>
+                            <constraint firstItem="5HD-sS-elo" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" id="nX9-lu-ZMS"/>
+                            <constraint firstAttribute="trailing" secondItem="ORP-bF-Gfg" secondAttribute="trailing" id="p0l-C0-UAd"/>
+                            <constraint firstAttribute="bottom" secondItem="jTG-0X-idr" secondAttribute="bottom" constant="15" id="tK5-ua-Oyy"/>
+                        </constraints>
+                    </view>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="l4p-Fv-ZIK" secondAttribute="trailing" id="N81-9C-0K3"/>
+                <constraint firstAttribute="bottom" secondItem="l4p-Fv-ZIK" secondAttribute="bottom" id="ha0-O3-Ggj"/>
+                <constraint firstItem="l4p-Fv-ZIK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oGt-mN-04G"/>
+                <constraint firstItem="l4p-Fv-ZIK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="y8T-0J-cvb"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <point key="canvasLocation" x="140" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="placeholder_album.png" width="320" height="320"/>
+        <image name="white_gradient.png" width="640" height="401"/>
+    </resources>
+</document>

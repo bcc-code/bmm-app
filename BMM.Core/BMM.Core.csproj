@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Configurations>Debug;Release;INT</Configurations>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>TRACE;ENV_INT</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='INT|AnyCPU'">
+    <DefineConstants>TRACE;ENV_INT</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Implementations\Notifications\Parsing\**" />
+    <Compile Remove="Implementations\TrackInformation\Helpers\**" />
+    <EmbeddedResource Remove="Implementations\Notifications\Parsing\**" />
+    <EmbeddedResource Remove="Implementations\TrackInformation\Helpers\**" />
+    <None Remove="Implementations\Notifications\Parsing\**" />
+    <None Remove="Implementations\TrackInformation\Helpers\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
+    <PackageReference Include="akavache" Version="6.10.20" />
+    <PackageReference Include="IdentityModel.OidcClient" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
+    <PackageReference Include="MvvmCross" Version="7.1.2" />
+    <PackageReference Include="MvvmCross.Plugin.Color" Version="7.1.2" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="7.1.2" />
+    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
+    <PackageReference Include="MvvmCross.Plugin.Visibility" Version="7.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="System.Reactive" Version="4.4.1" />
+    <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
+    <PackageReference Include="Tavis.UriTemplates" Version="1.1.1" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BMM.Api\BMM.Api.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="ViewModels\PodcastSection.cs" />
+  </ItemGroup>
+
+</Project>

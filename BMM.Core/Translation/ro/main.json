@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "Nu s-a putut lua legătura cu Echipa BMM, dar poți trimite un email la: {0}",
+    "External": "Extern",
+    "Internal": "Intern",
+    "BytesMB": "{0} MB",
+    "UnexpectedError": "Din păcate a intervenit o eroare necunoscută.",
+    "InternetConnectionOffline": "Se pare că nu există nici o conexiune la internet.",
+    "ItemNotFound": "Fișierul dorit nu există.",
+    "OfflineBanner": "Se afișează doar conținut salvat pe acest telefon",
+    "Song": "Song",
+    "Speech": "Mesaj",
+    "Audiobook": "Audiobook",
+    "Exegesis": "Exegesis"
+  },
+  "Streak": {
+    "Message": "Your streak this week",
+    "MessagePerfect": "A perfect week. Well done!",
+    "PerfectWeekCountSingular": "{0} perfect week",
+    "PerfectWeekCountPlural": "{0} perfect weeks",
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Nu s-a putut deschide linkul",
+    "ErrorMessage": "Din păcate nu s-a putut deschide linkul '{0}'."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "A apărut o eroare de conexiune: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Această piesă nu are asociat nici un fișier suportat.",
+    "ErrorVideoNotSupported": "Videoclipurile nu sunt suportate momentan.",
+    "ErrorFileNotOffline": "În modul off-line nu poți reda o piesă care nu e descărcată.",
+    "ErrorPlayerStopped": "Playerul s-a oprit.",
+    "ErrorPlayerStoppedGeneric": "A intervenit o eroare de redare care a oprit piesa curentă.",
+    "ErrorPlayerLiveRadioStopped": "Transmisia live s-a terminat.",
+    "ErrorPlayerLiveRadioTooEarly": "Transmisiunea live nu a început încă, vă rugăm să încercați mai târziu.",
+    "ErrorPlayerStart": "Nu se poate începe redarea."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "Nu există suficient spaţiu pentru a stoca fișiere offline"
+  },
+  "AlbumViewModel": {
+    "Title": "Album",
+    "SearchHint": "Caută",
+    "AddAlbumToPlaylist": "Adăugaţi albumul lista de redare",
+    "AddAlbumToMyTracks": "Adaugă album la Piesele mele",
+    "FailedToAdd": "Nu s-a putut adăuga piesa în play-list. Vă rugăm să încercați din nou mai târziu.",
+    "AlbumFailedToAddAlreadyExists": "Acest album este deja în lista de redare.",
+    "TrackAlreadyExistInTrackCollection": "Piesa este deja în lista de redare {0}",
+    "ShufflePlay": "Aleatoriu"
+  },
+  "AlbumsViewModel": {
+    "Title": "Arhivă",
+    "SearchHint": "Caută"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Descărcare automată",
+    "None": "Niciunul",
+    "PluralLatestTracks": "Ultimele {0} piese",
+    "AutomaticDownloadSubtitle": "Setează numărul de piese care vor fi descărcate automat atunci când urmărești acest podcast."
+  },
+  "ContributorViewModel": {
+    "Title": "Contribuitor",
+    "SearchHint": "Caută",
+    "HeaderText": "A contribuit la aceste piese"
+  },
+  "HomeViewModel": {
+    "More": "Mai multe"
+  },
+  "ExploreViewModel": {
+    "Title": "Explorează"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Populare",
+    "SearchHint": "Caută"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Home",
+    "SearchHint": "Caută",
+    "FraKaareHeader": "De la Kåre",
+    "AslaksenTeaserHeader": "Cuvintele credinței",
+    "ShowAll": "Toate",
+    "PlayRandom": "Play random",
+    "PlayNewest": "Play newest",
+    "LatestTrack": "Ultima piesă",
+    "NextBroadcast": "Următoarea transmisiune",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "în {0}h",
+    "Messages": "Vorbiri",
+    "Music": "Muzică"
+  },
+  "AslaksenNotification": {
+    "Title": "Cuvintele credinței",
+    "Message": "Dorești să răspunzi acum la întrebări?",
+    "ButtonYes": "Da",
+    "ButtonCancel": "Mai târziu"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Contribuitori",
+    "SearchHint": "Caută"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Ajutor & Feedback",
+    "GuideIntroTitle": "Cum poți beneficia cât mai mult de conținutul aplicației BMM",
+    "GuideIntroSubtitle": "Glisați pentru a învăța mai multe",
+    "GuideOfflineTitle": "Play-list-uri off-line",
+    "GuideOfflineSubtitle": "Descarcă play-list-urile pe dispozitivul tău și ascultă-le fără conexiune la internet. Poți selecta aceasta în play-list.",
+    "GuideAddToPlaylistTitle": "Adaugă în play-list sau la \"Piesele mele\"",
+    "GuideAddToPlaylistSubtitle": "Salvează melodiile preferate în propriile playlist-uri sau la colecţia personală BMM \"Piesele mele\" prin apăsarea butonului de opțiuni din partea dreaptă a piesei.",
+    "GuideLanguagesTitle": "Mai multe limbi",
+    "GuideLanguagesSubtitle": "Ordonează-ți limbile pentru a controla limba conținutului după BMM. Acest lucru poate fi făcut în Setări > Limba conținutului.",
+    "GuideLibraryTitle": "Secţia bibliotecii",
+    "GuideLibrarySubtitle": "Accesați rapid conținutul pe care îl doriți. Secţiunea Bibliotecii este formată din toate podcast-urile disponibile şi o secţiune a arhivei unde se poate căuta în conţinut. ",
+    "GuideSearchTitle": "Caută",
+    "GuideSearchSubtitle": "Găsește o anumită piesă sau caută subiecte pentru a găsi conținut similar. Căutările tale vor fi salvate automat.",
+    "ButtonSendMail": "Trimite un e-mail Echipei BMM"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+  },
+  "LoginViewModel": {
+    "Title": "Autentificare",
+    "LoginFailureTitle": "Autentificare eșuată",
+    "LoginFailureMessage": "Te rugăm să încerci din nou folosind datele de logare corecte",
+    "LoginNoConnectionMessage": "Nu există conexiune disponibilă. Te rugăm să încerci mai târziu",
+    "WrongMailAddressTitle": "E-mail invalid",
+    "WrongMailAddress": "Te rog să indroduci o adresă de e-mail validă. Folosirea numelui de utilizator pentru autentificare nu mai este acceptat.",
+    "TbxUsername.Hint": "E-mail",
+    "TbxPassword.Hint": "Parolă",
+    "BtnLogin.Text": "Autentificare",
+    "LoginInfo": "Sign in with your BCC login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
+    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
+    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
+    "UpdateButton": "Update"
+  },
+  "LanguageAppViewModel": {
+    "Title": "Limba aplicației"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Limba conținutului",
+    "Dialog.Title": "Selectaţi o limbă",
+    "Dialog.Cancel": "Anulare",
+    "Toast.LanguagesStillLoading": "Lista se încarcă încă, te rugăm să reîncerci în câteva secunde.",
+    "Toast.NoLanguagesAvailable": "Se pare că nici o conexiune nu este disponibilă pentru a încărca lista cu limbile.",
+    "DeleteLanguageMessage": "Trebuie să ai cel puţin o limbă a conţinutului disponibilă",
+    "DeleteLanguageTitle": "Nu se poate șterge {0}"
+  },
+  "LibraryViewModel": {
+    "Title": "Bibliotecă"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Arhivă"
+  },
+  "MenuViewModel": {
+    "Title": "Meniu",
+    "Search": "Caută",
+    "Explore": "Explorare",
+    "MyContent": "Conţinutul meu",
+    "Library": "Bibliotecă",
+    "Settings": "Setări",
+    "HelpAndFeedback": "Ajutor şi Feedback",
+    "Home": "Home",
+    "Favorites": "Favorites",
+    "Profile": "Profile"
+  },
+  "MyContentViewModel": {
+    "Title": "Favorites",
+    "DownloadedContent": "Conținut descărcat",
+    "FollowedPodcasts": "Podcast-uri urmărite",
+    "MyTracks": "Piesele mele"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Podcast-uri urmărite",
+    "EmptyTitle": "În prezent nu urmăriți nici un podcast",
+    "EmptySubline": "Urmărește un Podcast prin a deschide un Podcast şi dând clic pe butonul de urmărire."
+  },
+  "MyTracksViewModel": {
+    "Title": "Piesele mele",
+    "ShufflePlay": "Aleatoriu",
+    "AvailableOffline": "Disponibile în modul off-line",
+    "AvailableOfflineDownload": "Descarcă play-list",
+    "AvailableOfflineDownloading": "{0} din {1} descărcări în desfășurare",
+    "RemoveOfflineConfirm": "Sunteţi sigur că doriţi să ştergeţi toate fișierele descărcate?",
+    "EmptyTitle": "Acest play-list este gol",
+    "EmptySubline": "Apăsați pe cele trei puncte din dreptul unei piese pentru a o adăuga în această listă.",
+    "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a continua",
+    "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Conținut descărcat",
+    "FollowedPodcasts": "Podcast-uri urmărite",
+    "MyTracks": "Piesele mele",
+    "EmptyTitle": "Nu aveți conținut descărcat",
+    "EmptySubline": "Descărcați un play-list sau urmăriți un podcast pentru a-l avea off-line."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Podcast-uri urmărite",
+    "EmptyTitle": "În prezent nu urmăriți nici un podcast",
+    "EmptySubline": "Urmărește un Podcast prin a deschide un Podcast şi dând clic pe butonul de urmărire."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "Urmărește",
+    "Following": "Urmăresc",
+    "ManageDownloads": "Gestionează descărcările",
+    "GetNotified": "Primește notificări",
+    "GetNotifiedMessage": "când apar episoade noi",
+    "UnfollowConfirm": "Chiar vrei să nu mai urmărești acest podcast?",
+    "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a descărca automat cele mai recente melodii",
+    "ToggleFollowOfflineError": "Este nevoie să fi online pentru a urmări sau a anula urmărirea unui podcast",
+    "Week": "week {0}",
+    "ThisWeek": "This week",
+    "LastWeek": "Last week",
+    "AslaksenTheme1": "Crede în Dumnezeul minunilor",
+    "AslaksenTheme2": "Eu sunt răstignit cu Hristos",
+    "AslaksenTheme3": "A se teme și a-L iubi pe Dumnezeu",
+    "AslaksenTheme4": "Smerenia este lucrul principal"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Play-list-uri"
+  },
+  "PlayerViewModel": {
+    "Title": "Now playing",
+    "PlayingCount": "{0} din {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Listă"
+  },
+  "SearchViewModel": {
+    "Title": "Caută",
+    "SearchHint": "Caută",
+    "SearchResults": "Rezultatele căutării",
+    "SearchHistory": "Căutări recente",
+    "SearchSuggestions": "Ați vrut să spuneți: ",
+    "SearchNoResults": "Nu am putut găsi nimic.",
+    "WelcomeTitle": "Începe căutarea aici!",
+    "WelcomeSubTitle": "Folosește câmpul de căutare pentru a căuta conținut pe BMM",
+    "DeleteConfirm": "Sunteţi sigur că doriţi să ştergeţi istoricul căutărilor?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profile",
+    "HeadlineSettings": "Setări",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionEnablePushHeader": "Activează notificări",
+    "OptionPushNotifications": "Forțează notificările",
+    "OptionPushNotificationsSubtitle": "Activare notificări pentru podcast-uri urmărite",
+    "OptionExternalStorage": "Locația depozitării",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "External {0} MB",
+    "OptionEnablePushText": "Primește notificări atunci când există conţinut nou",
+    "OptionDownloadMobileNetworkHeader": "Descarcă prin rețeaua mobilă",
+    "OptionDownloadMobileNetworkText": "Permite aplicației să descarce conținut prin 3G/4G. Acest lucru îți poate afecta planul de date mobile",
+    "HeadlineGeneral": "În General",
+    "OptionLanguageAppHeader": "Limba aplicației",
+    "OptionLanguageAppText": "Schimbă limba aplicației",
+    "OptionLanguageContentHeader": "Limba conținutului",
+    "OptionLanguageContentText": "Schimbă limba conţinutului din BMM",
+    "HeadlineAbout": "Despre",
+    "OptionCopyrightHeader": "Drepturi de autor",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
+    "OptionContactHeader": "Contact",
+    "OptionContactText": "Întrebări sau feedback? Contactaţi aici echipa.",
+    "OptionAppVersionHeader": "Versiunea aplicației",
+    "AppInfoTitle": "Informațiile aplicației",
+    "AppInfoAppVersion": "Versiunea aplicației: ",
+    "AppInfoDeviceModel": "Modelul dispozitivului: ",
+    "AppInfoDevicePlatform": "Platforma dispozitivului: ",
+    "AppInfoDeviceVersion": "Versiunea dispozitivului: ",
+    "LoggedInAs": "Signed in as",
+    "LogoutConfirm": "Sunteţi sigur că doriţi să vă deconectați?",
+    "Logout": "Deconectare"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Locație pentru piesele offline",
+    "RemoveAllFiles": "Dorești a selecta o nouă locaţie de stocare şi eliminarea tuturor pieselor offline?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Play-list",
+    "ShufflePlay": "Aleatoriu",
+    "MenuDelete": "Șterge play-list",
+    "MenuEdit": "Edit playlist",
+    "AvailableOffline": "Disponibile în modul off-line",
+    "AvailableOfflineDownload": "Descarcă play-list",
+    "AvailableOfflineDownloading": "Se descarcă {0} din {1}",
+    "RemoveOfflineConfirm": "Sunteţi sigur că doriţi să ştergeţi toate elementele descărcate?",
+    "CreatePrompt": "Adăugați un nume pentru play-list",
+    "CreateFailure": "Nu s-a putut crea play-list-ul",
+    "DeleteConfirm": "Sunteţi sigur că doriţi să ştergeţi play-list-ul \"{0}\"?",
+    "DeleteFailure": "Nu s-a putut șterge play-list-ul \"{0}\"",
+    "CreateEmptyFailure": "Introdu un titlu pentru a crea un play-list",
+    "RenameEmptyFailure": "Introdu un titlu pentru a redenumi acest play-list",
+    "SearchHint": "Caută",
+    "EmptyTitle": "Acest play-list este gol",
+    "EmptySubline": "Apăsați pe cele trei puncte din dreptul unei piese pentru a o adauga în acest play-list.",
+    "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a continua",
+    "NotEnoughtSpaceToDownload": "Nu este suficient spaţiu pentru a descărca toate melodiile",
+    "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Rename playlist",
+    "MenuSave": "Salvaţi",
+    "EmptyName": "The playlist has no name",
+    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "DiscardChangesTitle": "Discard Changes?",
+    "DiscardChangesMessage": "The changes you made won't be saved",
+    "DiscardChanges": "Discard",
+    "KeepEditing": "Keep Editing"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Play-list",
+    "MenuDelete": "Șterge",
+    "DeleteConfirm": "Sunteţi sigur că doriţi să ştergeţi play-list-ul \"{0}\"?",
+    "DeleteFailure": "Nu s-a putut șterge play-list-ul \"{0}\"",
+    "ShufflePlay": "Aleatoriu",
+    "SearchHint": "Caută"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Adaugă piesă la lista de redare",
+    "SearchHint": "Caută",
+    "FailedToAdd": "Nu s-a putut adăuga piesa în play-list. Vă rugăm să încercați din nou mai târziu.",
+    "AlbumFailedToAddAlreadyExists": "Acest album este deja în lista ta de redare.",
+    "TrackAlreadyExistInTrackCollection": "Piesa este deja în lista de redare {0}",
+    "FailedToAddAlbum": "Nu a reuşit să adăugaţi albumul lista de redare deoarece contine albume.",
+    "FailedToAddUnknownType": "Adăugarea unui \"{0}\" pentru o listă de redare nu se acceptă în prezent.",
+    "CreatePlaylistPrompt": "Adăugați un nume pentru play-list",
+    "TrackAddedToTrackCollection": "Adăugat în play-list"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Adaugă în play-list",
+    "Track.DeleteFromPlaylist": "Șterge din play-list",
+    "Track.AddToMyTracks": "Adaugă la Piesele mele",
+    "Track.RemoveFromMyTracks": "Elimină din Piesele mele",
+    "Track.AddedToMyTracks": "Adăugat la Piesele mele",
+    "Track.RemovedFromMyTracks": "Eliminat de la Piesele mele",
+    "Track.FailedToRemoveFromMyTracks": "Piesa nu s-a putut șterge din Piesele mele",
+    "Track.AddToQueue": "Adaugă în coadă",
+    "Track.QueueToPlayNext": "Play next",
+    "Track.AddedToQueue": "Adăugat în coadă",
+    "Track.GoToAlbum": "Mergi la album",
+    "Track.GoToContributor": "Vezi contribuitori",
+    "Track.GoToContributor.Composer": "Compozitor: {0}",
+    "Track.GoToContributor.Interpret": "Interpret: {0}",
+    "Track.GoToContributor.Lyricist": "Text: {0}",
+    "Track.GoToContributor.Arranger": "Aranjor: {0}",
+    "Track.Download": "Descarcă piesă",
+    "Track.MoreInformation": "Mai multe informaţii",
+    "Track.Share": "Distribuie piesă",
+    "Album.Play": "Cântă",
+    "Album.AddToPlaylist": "Adăugaţi albumul lista de redare",
+    "Album.AddToMyTracks": "Adaugă album la Piesele mele",
+    "Album.AddedToMyTracks": "Album adăugat la Piesele mele",
+    "Album.AddToQueue": "Adaugă în coadă",
+    "Album.Share": "Distribuie album",
+    "FailedToAdd": "Nu s-a putut adăuga piesa în play-list. Vă rugăm să încercați din nou mai târziu.",
+    "FailedToAddAlbum": "Nu a reuşit să adăuge albumul la lista de redare deoarece contine albume.",
+    "AlbumFailedToAddAlreadyExists": "Acest album este deja în lista de redare.",
+    "TrackAlreadyExistInTrackCollection": "Piesa este deja în lista de redare {0}",
+    "FailedToAddUnknownType": "Adăugarea unui \"{0}\" pentru o listă de redare nu se acceptă în prezent.",
+    "MyTracks": "Piesele mele",
+    "Contributor.Play": "Cântă",
+    "Contributor.Share": "Distribuie contribuitor",
+    "TrackCollection.DeletePlaylist": "Șterge play-list",
+    "TrackCollection.EditPlaylist": "Edit playlist",
+    "OfflineTrackCollection.DeletePlaylist": "Șterge play-list",
+    "Cancel": "Anulare"
+  },
+  "Notifications": {
+    "Downloading": "Se descarcă {0}",
+    "ItemsDownloaded": "Elementul {0} din {1}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcast-uri"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "Referințe externe",
+    "AboutTrack": "Despre traseul",
+    "Title": "Informațiile piesei",
+    "TrackTitle": "Titlu",
+    "SongNumber": "Numărul cântării",
+    "Album": "Album",
+    "Artist": "Interpreți",
+    "Duration": "Durată",
+    "PublishDate": "Data publicării",
+    "Lyricist": "Text",
+    "Arranger": "Aranjor",
+    "Composer": "Compozitor",
+    "Publisher": "Editor",
+    "Copyright": "Drepturi de autor"
+  },
+  "CopyrightViewModel": {
+    "Title": "Drepturi de autor"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Recent Messages"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Recent Music"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Toate fişierele au fost descărcate!"
+  }
+}

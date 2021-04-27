@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_language_height"
+    android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/textView3"
+        android:singleLine="true"
+        local:MvxBind="Text LanguageName(Item)"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/radioButton1"
+        android:layout_centerVertical="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/element_margin_medium" />
+    <RadioButton
+        local:MvxBind="Checked IsSelected"
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioButton1"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false" />
+</RelativeLayout>

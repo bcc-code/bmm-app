@@ -1,0 +1,224 @@
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
+using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations;
+using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Caching;
+using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.Device;
+using BMM.Core.Implementations.Downloading;
+using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Feedback;
+using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.UI;
+using BMM.Core.Models;
+using BMM.Core.Test.Unit.ViewModels.Base;
+using BMM.Core.ViewModels;
+using Moq;
+using MvvmCross.Localization;
+using NUnit.Framework;
+
+namespace BMM.Core.Test.Unit.ViewModels
+{
+    [TestFixture]
+    public class SettingsViewModelTests : BaseViewModelTests
+    {
+        private Mock<INetworkSettings> _networkSettings;
+        private Mock<ISettingsStorage> _settingsStorage;
+        private Mock<INotificationSubscriptionTokenProvider> _tokenProvider;
+        private Mock<IClipboardService> _clipboard;
+        private Mock<IDeveloperPermission> _developerPermission;
+        private Mock<IContacter> _contacter;
+        private Mock<IAnalytics> _analytics;
+        private Mock<IStorageManager> _storageManager;
+        private Mock<IMvxLanguageBinder> _textSource;
+        private Mock<ICache> _cache;
+        private Mock<IUserDialogs> _userDialogs;
+        private Mock<IUserStorage> _userStorage;
+        private Mock<IGlobalMediaDownloader> _mediaDownloader;
+        private Mock<IAppNavigator> _appNavigator;
+        private Mock<ILogoutService> _logoutService;
+        private Mock<IUriOpener> _uriOpener;
+        private Mock<IExceptionHandler> _exceptionHandler;
+        private Mock<IProfileLoader> _profileLoader;
+        private Mock<IFirebaseRemoteConfig> _remoteConfig;
+        private Mock<IDeviceInfo> _deviceInfo;
+
+        [SetUp]
+        public void Init()
+        {
+            base.Setup();
+            base.AdditionalSetup();
+
+            _deviceInfo = new Mock<IDeviceInfo>();
+
+            _userDialogs = new Mock<IUserDialogs>();
+            _userDialogs.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).Returns(Task.FromResult(true));
+            Ioc.RegisterSingleton(_userDialogs.Object);
+
+            _userStorage = new Mock<IUserStorage>();
+            _userStorage.Setup(x => x.RemoveUser()).Returns(Task.FromResult(true));
+            _userStorage.Setup(x => x.GetUser())
+                .Returns(new User
+                {
+                    FirstName = "Hans-Peter",
+                    LastName = "Mueller",
+                    ProfileImage = "some url"
+                });
+            Ioc.RegisterSingleton(_userStorage.Object);
+
+            _cache = new Mock<ICache>();
+            _cache.Setup(x => x.Clear()).Returns(Task.FromResult(default(object)));
+            Ioc.RegisterSingleton(_cache.Object);
+
+            _networkSettings = new Mock<INetworkSettings>();
+            _networkSettings.Setup(x => x.GetMobileNetworkDownloadAllowed()).ReturnsAsync(true);
+            _networkSettings.Setup(x => x.GetPushNotificationsAllowed()).ReturnsAsync(true);
+
+            _settingsStorage = new Mock<ISettingsStorage>();
+            _tokenProvider = new Mock<INotificationSubscriptionTokenProvider>();
+            _clipboard = new Mock<IClipboardService>();
+            _developerPermission = new Mock<IDeveloperPermission>();
+            _contacter = new Mock<IContacter>();
+            _analytics = new Mock<IAnalytics>();
+            _storageManager = new Mock<IStorageManager>();
+            _cache = new Mock<ICache>();
+            _textSource = new Mock<IMvxLanguageBinder>();
+            _mediaDownloader = new Mock<IGlobalMediaDownloader>();
+            _appNavigator = new Mock<IAppNavigator>();
+
+            _logoutService = new Mock<ILogoutService>();
+            _logoutService.Setup(x => x.PerformLogout()).Returns(Task.CompletedTask);
+            _uriOpener = new Mock<IUriOpener>();
+            _exceptionHandler = new Mock<IExceptionHandler>();
+            _profileLoader = new Mock<IProfileLoader>();
+            _remoteConfig = new Mock<IFirebaseRemoteConfig>();
+
+            _textSource.Setup(x => x.GetText(It.IsAny<string>())).Returns(String.Empty);
+
+            Mock<IFileStorage> defaultStorage = new Mock<IFileStorage>();
+
+            _storageManager.Setup(x => x.Storages).Returns(new ObservableCollection<IFileStorage>() {defaultStorage.Object});
+            _storageManager.Setup(x => x.SelectedStorage).Returns(defaultStorage.Object);
+            _storageManager.Setup(x => x.HasMultipleStorageSupport).Returns(true);
+        }
+
+        public SettingsViewModel CreateSettingsViewModel()
+        {
+            return new SettingsViewModel(
+                _deviceInfo.Object,
+                _networkSettings.Object,
+                _tokenProvider.Object,
+                _clipboard.Object,
+                _developerPermission.Object,
+                _contacter.Object,
+                _analytics.Object,
+                _settingsStorage.Object,
+                _storageManager.Object,
+                _cache.Object,
+                _mediaDownloader.Object,
+                _appNavigator.Object,
+                _logoutService.Object,
+                _uriOpener.Object,
+                _exceptionHandler.Object,
+                _profileLoader.Object,
+                _userStorage.Object,
+                _remoteConfig.Object,
+                _textSource.Object);
+        }
+
+        [Test]
+        public void Ctor_ShouldNotFillSection()
+        {
+            // Arrange & Act
+            var settingsViewModel = CreateSettingsViewModel();
+
+            // Assert
+            Assert.AreEqual(settingsViewModel.ListItems.Count, 0);
+        }
+
+        [Test]
+        public async Task Init_ShouldFillSectionsCorrectly()
+        {
+            // Arrange
+            var settingsViewModel = CreateSettingsViewModel();
+
+            // Act
+            await settingsViewModel.Initialize();
+
+            // Assert
+            Assert.AreEqual(13, settingsViewModel.ListItems.Count);
+            _networkSettings.Verify(x => x.GetMobileNetworkDownloadAllowed(), Times.AtLeastOnce);
+            _networkSettings.Verify(x => x.GetPushNotificationsAllowed(), Times.AtLeastOnce);
+        }
+
+        [Test]
+        public async Task OnSelectedItem_ShouldCrashAppUsingDedicatedButton()
+        {
+            // Arrange
+            _developerPermission.Setup(x => x.IsBmmDeveloper()).Returns(true);
+
+            var settingsViewModel = CreateSettingsViewModel();
+            await settingsViewModel.Initialize();
+
+            // Act & Assert
+            Assert.Throws<Exception>(() => settingsViewModel.ListItems.OfType<SelectableListItem>().FirstOrDefault(x => x.Title == "Crash the app")?.OnSelected.Execute());
+        }
+
+        [Test]
+        public async Task BuildSettingsSection_ShouldSetMobileNetworkDownloadAllowed()
+        {
+            // Arrange
+            var settingsViewModel = CreateSettingsViewModel();
+            settingsViewModel.ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            await settingsViewModel.Initialize();
+
+            // Act
+            var item = settingsViewModel.ListItems.ElementAt(3);
+            ((CheckboxListItem)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            ((CheckboxListItem)item).IsChecked = true;
+
+            // Assert
+            _settingsStorage.Verify(x => x.SetMobileNetworkDownloadAllowed(It.IsAny<bool>()), Times.Once);
+        }
+
+        [Test]
+        public async Task BuildSettingsSection_ShouldSetSendNotificationStatus()
+        {
+            // Arrange
+            var settingsViewModel = CreateSettingsViewModel();
+            settingsViewModel.ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            await settingsViewModel.Initialize();
+
+            // Act
+            var item = settingsViewModel.ListItems.ElementAt(4);
+            ((CheckboxListItem)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            ((CheckboxListItem)item).IsChecked = true;
+
+            // Assert
+            _settingsStorage.Verify(x => x.SetPushNotificationsAllowed(It.IsAny<bool>()), Times.Once);
+        }
+
+        [Test]
+        public async Task BuildAboutSection_ShouldShowInfoAfterClickOption()
+        {
+            // Arrange
+            var settingsViewModel = CreateSettingsViewModel();
+            settingsViewModel.ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            await settingsViewModel.Initialize();
+
+            // Act
+            var items = settingsViewModel.ListItems.LastOrDefault();
+            ((SelectableListItem)items)?.OnSelected.Execute();
+
+            // Assert
+            _userDialogs.Verify(x => x.AlertAsync(It.IsAny<AlertConfig>(), null), Times.Once);
+        }
+    }
+}

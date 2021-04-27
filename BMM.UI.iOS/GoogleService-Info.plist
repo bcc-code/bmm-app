@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>401860537648-gvkdj1gkusq6mjis8ak05lomb4u1gq9i.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.401860537648-gvkdj1gkusq6mjis8ak05lomb4u1gq9i</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>401860537648-mquo7olg4v30nnub9fj4dji37fdmn7to.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyABIUMzdSwdCfq8QnWLOb9palsMOCw29jY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>401860537648</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.brunstad.bmm</string>
+	<key>PROJECT_ID</key>
+	<string>bmm-brunstad</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bmm-brunstad.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:401860537648:ios:d2a6324c667ca373</string>
+	<key>DATABASE_URL</key>
+	<string>https://bmm-brunstad.firebaseio.com</string>
+</dict>
+</plist>

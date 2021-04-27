@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+        android:color="@color/colorPrimary">
+  <item
+    android:id="@android:id/mask">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+      android:innerRadius="0dp"
+      android:shape="ring"
+      android:thicknessRatio="3"
+      android:useLevel="false">
+      <solid android:color="@color/black" />
+    </shape>
+  </item>
+  <item>
+    <selector>
+
+      <item android:state_checked="true"
+            android:drawable="@drawable/button_pause" />
+      <!-- pressed -->
+
+      <item android:drawable="@drawable/button_play" />
+      <!-- default/unchecked -->
+    </selector>
+  </item>
+</ripple>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="cxk-wN-pdQ" customClass="PinnedItemTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJN-r1-hsM">
+                        <rect key="frame" x="72" y="20.5" width="206" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" red="0.050980392156862744" green="0.074509803921568626" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TTVC_title"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_chevron_right.png" translatesAutoresizingMaskIntoConstraints="NO" id="oev-0v-QQJ">
+                        <rect key="frame" x="286" y="18" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="1Zk-6c-4su"/>
+                            <constraint firstAttribute="width" constant="24" id="uXz-gl-8aV"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOI-pE-YlS" userLabel="Corner Radius Wrapper">
+                        <rect key="frame" x="18" y="10" width="40" height="40"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="94I-Nt-9Bq" customClass="MvxCachedImageView">
+                                <rect key="frame" x="8" y="8" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="b19-td-8lk"/>
+                                    <constraint firstAttribute="width" constant="24" id="yXD-Gf-hcm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="5Nm-io-KOZ"/>
+                            <constraint firstItem="94I-Nt-9Bq" firstAttribute="top" secondItem="GOI-pE-YlS" secondAttribute="top" constant="8" id="9nM-qv-0dp"/>
+                            <constraint firstAttribute="trailing" secondItem="94I-Nt-9Bq" secondAttribute="trailing" constant="8" id="AU7-w3-U1t"/>
+                            <constraint firstAttribute="bottom" secondItem="94I-Nt-9Bq" secondAttribute="bottom" constant="8" id="Rkc-tE-Dp9"/>
+                            <constraint firstItem="94I-Nt-9Bq" firstAttribute="leading" secondItem="GOI-pE-YlS" secondAttribute="leading" constant="8" id="V40-oT-nj5"/>
+                            <constraint firstAttribute="height" constant="40" id="nqO-x2-KbK"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="oev-0v-QQJ" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="6th-8A-f7Q"/>
+                    <constraint firstAttribute="trailing" secondItem="oev-0v-QQJ" secondAttribute="trailing" constant="10" id="FaA-v7-wW8"/>
+                    <constraint firstItem="nJN-r1-hsM" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="IHZ-Zf-fsR"/>
+                    <constraint firstItem="GOI-pE-YlS" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="IaB-Wg-0pi"/>
+                    <constraint firstItem="nJN-r1-hsM" firstAttribute="leading" secondItem="GOI-pE-YlS" secondAttribute="trailing" constant="14" id="V20-Za-KTm"/>
+                    <constraint firstItem="oev-0v-QQJ" firstAttribute="leading" secondItem="nJN-r1-hsM" secondAttribute="trailing" constant="8" id="Wwv-Ta-zHF"/>
+                    <constraint firstItem="GOI-pE-YlS" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="18" id="o2P-dm-iWP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="TitleLabel" destination="nJN-r1-hsM" id="XYi-kY-wxd"/>
+                <outlet property="TypeImage" destination="94I-Nt-9Bq" id="name-outlet-94I-Nt-9Bq"/>
+            </connections>
+            <point key="canvasLocation" x="304.34782608695656" y="395.75892857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="icon_chevron_right.png" width="24" height="24"/>
+    </resources>
+</document>

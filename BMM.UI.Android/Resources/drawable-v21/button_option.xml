@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/player_click_effects">
+  <item
+    android:id="@android:id/mask">
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+      android:innerRadius="0dp"
+      android:shape="ring"
+      android:thicknessRatio="2"
+      android:useLevel="false">
+      <solid android:color="@color/black" />
+    </shape>
+  </item>
+  <item>
+    <selector>
+      <item android:state_window_focused="false" android:state_enabled="true"
+          android:drawable="@drawable/icon_options_static" />
+      <item android:state_enabled="true"
+          android:drawable="@drawable/icon_options_static" />
+    </selector>
+  </item>
+</ripple>

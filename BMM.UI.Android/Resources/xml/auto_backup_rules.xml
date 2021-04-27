@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- https://docs.microsoft.com/en-us/xamarin/essentials/secure-storage?tabs=android -->
+<full-backup-content>
+    <include domain="sharedpref" path="."/>
+    <exclude domain="sharedpref" path="${applicationId}.xamarinessentials.xml"/>
+</full-backup-content>

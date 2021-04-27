@@ -1,0 +1,28 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+*.doc  diff=astextplain
+*.DOC	diff=astextplain
+*.docx	diff=astextplain
+*.DOCX	diff=astextplain
+*.dot	diff=astextplain
+*.DOT	diff=astextplain
+*.pdf	diff=astextplain
+*.PDF	diff=astextplain
+*.rtf	diff=astextplain
+*.RTF	diff=astextplain
+
+*.jpg  	binary
+*.png 	binary
+*.gif 	binary
+
+*/packages.config text eol=crlf
+
+*.cs diff=csharp
+
+*.csproj merge=union
+*.vbproj merge=union
+*.fsproj merge=union
+*.dbproj merge=union
+*.shproj merge=union
+*.sln merge=union

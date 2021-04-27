@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+    <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="330dp"
+        android:layout_height="160dp"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="1dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_marginLeft="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_marginBottom="@dimen/element_margin_small">
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitXY"
+                card_view:MvxBind="AssetImagePath AudioType(Type)" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:id="@+id/title"
+                android:textSize="19sp"
+                android:textColor="@color/white"
+                card_view:MvxBind="Text Header"
+                android:gravity="center_vertical"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/element_margin_medium" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

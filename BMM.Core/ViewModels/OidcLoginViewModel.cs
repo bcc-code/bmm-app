@@ -1,0 +1,111 @@
+using System;
+using System.Threading.Tasks;
+using Acr.UserDialogs;
+using BMM.Api.Framework;
+using BMM.Api.Framework.Exceptions;
+using BMM.Api.Implementation.Models;
+using BMM.Core.Helpers;
+using BMM.Core.Implementations.Device;
+using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.PostLoginActions;
+using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.ViewModels.Base;
+using MvvmCross.Commands;
+using MvvmCross.Localization;
+
+namespace BMM.Core.ViewModels
+{
+    public struct OidcLoginParameters
+    {
+        public bool IsInitialLogin { get; set; }
+    }
+
+    public class OidcLoginViewModel : BaseViewModel<OidcLoginParameters>
+    {
+        private readonly IConnection _connection;
+        private readonly IDeviceInfo _deviceInfo;
+        private readonly IOidcAuthService _oidcAuthService;
+        private readonly IUserDialogs _userDialogs;
+        private readonly IExceptionHandler _exceptionHandler;
+        private readonly ICurrentUserLoader _currentUserLoader;
+        private readonly IAppNavigator _appNavigator;
+
+        public OidcLoginViewModel(
+            IDeviceInfo deviceInfo,
+            IOidcAuthService oidcAuthService,
+            IConnection connection,
+            IUserDialogs userDialogs,
+            IExceptionHandler exceptionHandler,
+            ICurrentUserLoader currentUserLoader,
+            IAppNavigator appNavigator)
+        {
+            _deviceInfo = deviceInfo;
+            _oidcAuthService = oidcAuthService;
+            _connection = connection;
+            _userDialogs = userDialogs;
+            _exceptionHandler = exceptionHandler;
+            _currentUserLoader = currentUserLoader;
+            _appNavigator = appNavigator;
+            LoginCommand = new ExceptionHandlingCommand(
+                async () => await StartLoginFlow()
+            );
+        }
+
+        public IMvxAsyncCommand LoginCommand { get; }
+
+        public bool IsInitialLogin { get; set; }
+
+        /* We want to get rid of this OidcTextSource and bind back to TextSource if we decide to use OidcLogin permanently.
+         * Remember to change back bindings to TextSource in OidcLoginViewModel and its View (Android) and in OidcLoginViewController (iOS). */
+        public IMvxLanguageBinder OidcTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "LoginViewModel");
+
+        public override void Prepare(OidcLoginParameters parameter)
+        {
+            if (parameter.IsInitialLogin)
+            {
+                IsLoading = true;
+                IsInitialLogin = true;
+            }
+        }
+
+        private async Task StartLoginFlow()
+        {
+            IsLoading = true;
+
+            // Ensure the API is online when sending the login request
+            if (_connection.GetStatus() != ConnectionStatus.Online)
+            {
+                await _userDialogs.AlertAsync(OidcTextSource.GetText("LoginNoConnectionMessage"), OidcTextSource.GetText("LoginFailureTitle"));
+                IsLoading = false;
+                return;
+            }
+
+            User user = null;
+            try
+            {
+                user = await _oidcAuthService.PerformLogin();
+                await _currentUserLoader.TryToLoadUserFromApi(user);
+                // The corresponding activity has a launch mode of SingleTask
+                // and therefore never gets destroyed. Close it manually
+                if (_deviceInfo.IsAndroid)
+                    await _navigationService.Close(this);
+                await _appNavigator.NavigateAfterLoggedIn();
+            }
+            catch (UserCanceledOidcLoginException)
+            {
+                IsLoading = false;
+            }
+            catch (UserDoesNotExistInApiException)
+            {
+                await _navigationService.Navigate<UserSetupViewModel, UserSetupViewModelParameters>(new UserSetupViewModelParameters { UserToCreate = user});
+            }
+            catch (Exception exception)
+            {
+                IsLoading = false;
+
+                _exceptionHandler.HandleException(exception);
+            }
+        }
+    }
+}

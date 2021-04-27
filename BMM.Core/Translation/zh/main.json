@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "未能与法钢公司团队联系，您可以发送电子邮件至︰ {0}",
+    "External": "External",
+    "Internal": "Internal",
+    "BytesMB": "{0} MB free",
+    "UnexpectedError": "Sorry, an unexpected error has occurred.",
+    "InternetConnectionOffline": "互联网连接显示为脱机。",
+    "ItemNotFound": "The requested item does not exist.",
+    "OfflineBanner": "Showing only tracks on this phone",
+    "Song": "Song",
+    "Speech": "Message",
+    "Audiobook": "Audiobook",
+    "Exegesis": "Exegesis"
+  },
+  "Streak": {
+    "Message": "Your streak this week",
+    "MessagePerfect": "A perfect week. Well done!",
+    "PerfectWeekCountSingular": "{0} perfect week",
+    "PerfectWeekCountPlural": "{0} perfect weeks",
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Unable to open link",
+    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "出现连接错误︰ {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "不幸的是，您的设备不支持此文件格式。",
+    "ErrorVideoNotSupported": "不幸的是，目前不支持视频。",
+    "ErrorFileNotOffline": "不下载的曲目，不能在脱机模式下播放。",
+    "ErrorPlayerStopped": "The player has stopped.",
+    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
+    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
+    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
+    "ErrorPlayerStart": "Unable to start playback."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "There is not enough space to store offline files"
+  },
+  "AlbumViewModel": {
+    "Title": "专辑",
+    "SearchHint": "搜索",
+    "AddAlbumToPlaylist": "添加到播放列表中的相册",
+    "AddAlbumToMyTracks": "Add album to My Tracks",
+    "FailedToAdd": "Failed to add the track to the playlist. Please try again later.",
+    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "ShufflePlay": "洗牌玩"
+  },
+  "AlbumsViewModel": {
+    "Title": "存档",
+    "SearchHint": "搜索"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "自动下载",
+    "None": "没有",
+    "PluralLatestTracks": "{0} 最新轨道",
+    "AutomaticDownloadSubtitle": "设置的轨道时后此播客自动下载量。"
+  },
+  "ContributorViewModel": {
+    "Title": "贡献者",
+    "SearchHint": "搜索",
+    "HeaderText": "在这些轨道上出现"
+  },
+  "HomeViewModel": {
+    "More": "更多"
+  },
+  "ExploreViewModel": {
+    "Title": "探索"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "受欢迎",
+    "SearchHint": "搜索"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Home",
+    "SearchHint": "搜索",
+    "FraKaareHeader": "从 Kåre",
+    "AslaksenTeaserHeader": "Words of faith",
+    "ShowAll": "全部显示",
+    "PlayRandom": "Play random",
+    "PlayNewest": "Play newest",
+    "LatestTrack": "最新轨道",
+    "NextBroadcast": "Next broadcast",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "in {0}h",
+    "Messages": "信息",
+    "Music": "音乐"
+  },
+  "AslaksenNotification": {
+    "Title": "Words of faith",
+    "Message": "Do you want to answer the questions now?",
+    "ButtonYes": "Yes",
+    "ButtonCancel": "Later"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "派遣国",
+    "SearchHint": "搜索"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "帮助与反馈",
+    "GuideIntroTitle": "如何获得最大的钢应用程序",
+    "GuideIntroSubtitle": "刷卡了解更多",
+    "GuideOfflineTitle": "离线播放列表",
+    "GuideOfflineSubtitle": "将您的播放列表下载到您的设备，听听他们没有互联网连接。您可以切换这播放列表中。",
+    "GuideAddToPlaylistTitle": "Add to playlist or 'My Tracks'",
+    "GuideAddToPlaylistSubtitle": "Save your favorite tracks to your own playlists or to your personal BMM collection 'My Tracks' by tapping the options button to the right of the track.",
+    "GuideLanguagesTitle": "多种语言",
+    "GuideLanguagesSubtitle": "优先考虑你钢内容的语言。这可以在设置 > 内容语言。\n",
+    "GuideLibraryTitle": "Library Section",
+    "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
+    "GuideSearchTitle": "搜索",
+    "GuideSearchSubtitle": "找到一个特定的轨道，或搜索要查找相关的内容的主题。自动保存您的搜索。",
+    "ButtonSendMail": "向法钢公司团队发送一封电子邮件"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+  },
+  "LoginViewModel": {
+    "Title": "登录",
+    "LoginFailureTitle": "登录失败",
+    "LoginFailureMessage": "请尝试再次使用正确的凭据",
+    "LoginNoConnectionMessage": "目前没有连接可用。请稍后再试",
+    "WrongMailAddressTitle": "Invalid email",
+    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "TbxUsername.Hint": "电子邮件",
+    "TbxPassword.Hint": "Password",
+    "BtnLogin.Text": "Log in",
+    "LoginInfo": "Sign in with your BCC login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
+    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
+    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
+    "UpdateButton": "Update"
+  },
+  "LanguageAppViewModel": {
+    "Title": "应用程序语言"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Content languages",
+    "Dialog.Title": "Select a language",
+    "Dialog.Cancel": "Cancel",
+    "Toast.LanguagesStillLoading": "The list is still loading. Please try again in a few seconds.",
+    "Toast.NoLanguagesAvailable": "It appears that no connection is available to load the list of languages.",
+    "DeleteLanguageMessage": "You must select at least one content language",
+    "DeleteLanguageTitle": "Cannot remove {0}"
+  },
+  "LibraryViewModel": {
+    "Title": "Library"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "存档"
+  },
+  "MenuViewModel": {
+    "Title": "Menu",
+    "Search": "Search",
+    "Explore": "探索",
+    "MyContent": "My Content",
+    "Library": "Library",
+    "Settings": "Settings",
+    "HelpAndFeedback": "Help and Feedback",
+    "Home": "Home",
+    "Favorites": "Favorites",
+    "Profile": "Profile"
+  },
+  "MyContentViewModel": {
+    "Title": "Favorites",
+    "DownloadedContent": "Downloaded Content",
+    "FollowedPodcasts": "Followed Podcasts",
+    "MyTracks": "My Tracks"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Followed Podcasts",
+    "EmptyTitle": "You are currently not following any podcast",
+    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+  },
+  "MyTracksViewModel": {
+    "Title": "My Tracks",
+    "ShufflePlay": "洗牌玩",
+    "AvailableOffline": "脱机可用",
+    "AvailableOfflineDownload": "下载播放列表",
+    "AvailableOfflineDownloading": "下载 {1} {0}",
+    "RemoveOfflineConfirm": "你真的想要删除所有已下载的项目？",
+    "EmptyTitle": "此播放列表为空",
+    "EmptySubline": "Press the three dots on a track to add the track to this track list.",
+    "MobileDownloadDisabled": "启用通过移动网络在设置才可继续下载",
+    "AskToResumeDownloading": "该播放列表中有新的项目。你想要恢复下载吗？"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Downloaded Content",
+    "FollowedPodcasts": "Followed Podcasts",
+    "MyTracks": "My Tracks",
+    "EmptyTitle": "You have not downloaded any content",
+    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Followed Podcasts",
+    "EmptyTitle": "You are currently not following any podcast",
+    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "Follow",
+    "Following": "Following",
+    "ManageDownloads": "Manage downloads",
+    "GetNotified": "Get notified",
+    "GetNotifiedMessage": "when new episodes are out",
+    "UnfollowConfirm": "Do you really want to unfollow this podcast?",
+    "MobileDownloadDisabled": "Enable downloading via mobile network in settings to download the latest tracks automatically",
+    "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
+    "Week": "week {0}",
+    "ThisWeek": "This week",
+    "LastWeek": "Last week",
+    "AslaksenTheme1": "Believe in the God of miracles",
+    "AslaksenTheme2": "I have been crucified with Christ",
+    "AslaksenTheme3": "To fear and love God",
+    "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "播放列表"
+  },
+  "PlayerViewModel": {
+    "Title": "Now playing",
+    "PlayingCount": "{0} of {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Queue"
+  },
+  "SearchViewModel": {
+    "Title": "Search",
+    "SearchHint": "Search",
+    "SearchResults": "Search results",
+    "SearchHistory": "Recent searches",
+    "SearchSuggestions": "Did you mean: ",
+    "SearchNoResults": "We couldn't find anything.",
+    "WelcomeTitle": "Start search here!",
+    "WelcomeSubTitle": "Use the search field to search for content on BMM",
+    "DeleteConfirm": "Are you sure you want to delete the search history?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profile",
+    "HeadlineSettings": "Settings",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionEnablePushHeader": "启用推式通知",
+    "OptionPushNotifications": "推式通知",
+    "OptionPushNotificationsSubtitle": "启用推式通知播客你追随",
+    "OptionExternalStorage": "Storage location",
+    "OptionMBInternalText": "Internal {0} MB free",
+    "OptionMBExternalText": "External {0} MB free",
+    "OptionEnablePushText": "当有可用的新内容时收到推式通知",
+    "OptionDownloadMobileNetworkHeader": "通过移动网络下载",
+    "OptionDownloadMobileNetworkText": "让应用程序下载使用 3g/4g 的播放列表。这可能会影响您的数据计划",
+    "HeadlineGeneral": "一般",
+    "OptionLanguageAppHeader": "应用程序语言",
+    "OptionLanguageAppText": "更改应用程序的语言",
+    "OptionLanguageContentHeader": "内容语言",
+    "OptionLanguageContentText": "选择和确定优先次序你看到的所有内容的语言",
+    "HeadlineAbout": "关于",
+    "OptionCopyrightHeader": "版权所有",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
+    "OptionContactHeader": "联系人",
+    "OptionContactText": "问题或反馈？与这里的团队联系。",
+    "OptionAppVersionHeader": "应用程序版本",
+    "AppInfoTitle": "应用程序信息",
+    "AppInfoAppVersion": "应用程序版本︰ ",
+    "AppInfoDeviceModel": "设备型号︰ ",
+    "AppInfoDevicePlatform": "设备平台︰ ",
+    "AppInfoDeviceVersion": "设备版本︰ ",
+    "LoggedInAs": "Signed in as",
+    "LogoutConfirm": "你确定你想要注销？",
+    "Logout": "注销"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Location for offline tracks",
+    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "播放列表",
+    "ShufflePlay": "洗牌玩",
+    "MenuDelete": "Delete playlist",
+    "MenuEdit": "Edit playlist",
+    "AvailableOffline": "脱机可用",
+    "AvailableOfflineDownload": "下载播放列表",
+    "AvailableOfflineDownloading": "下载 {1} {0}",
+    "RemoveOfflineConfirm": "你真的想要删除所有已下载的项目？",
+    "CreatePrompt": "输入播放列表的名称",
+    "CreateFailure": "未能创建播放列表",
+    "DeleteConfirm": "你确定你想要删除播放列表\"{0}\"？",
+    "DeleteFailure": "未能删除播放列表\"{0}\"",
+    "CreateEmptyFailure": "输入要创建的播放列表的标题",
+    "RenameEmptyFailure": "输入标题重命名播放列表",
+    "SearchHint": "搜索",
+    "EmptyTitle": "此播放列表为空",
+    "EmptySubline": "按轨道向此播放列表添加轨道的三个点。",
+    "MobileDownloadDisabled": "启用通过移动网络在设置才可继续下载",
+    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "AskToResumeDownloading": "该播放列表中有新的项目。你想要恢复下载吗？"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Rename playlist",
+    "MenuSave": "储存",
+    "EmptyName": "The playlist has no name",
+    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "DiscardChangesTitle": "Discard Changes?",
+    "DiscardChangesMessage": "The changes you made won't be saved",
+    "DiscardChanges": "Discard",
+    "KeepEditing": "Keep Editing"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "播放列表",
+    "MenuDelete": "删除",
+    "DeleteConfirm": "你确定你想要删除播放列表\"{0}\"？",
+    "DeleteFailure": "未能删除播放列表\"{0}\"",
+    "ShufflePlay": "洗牌玩",
+    "SearchHint": "搜索"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "将跟踪添加到播放列表",
+    "SearchHint": "Search",
+    "FailedToAdd": "Failed to add the track to the playlist. Please try again later.",
+    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddAlbum": "Failed to add the album to the playlist because it contains albums.",
+    "FailedToAddUnknownType": "Adding a \"{0}\" to a playlist is currently not supported.",
+    "CreatePlaylistPrompt": "输入播放列表的名称",
+    "TrackAddedToTrackCollection": "Added to the playlist"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Add to playlist",
+    "Track.DeleteFromPlaylist": "Remove from playlist",
+    "Track.AddToMyTracks": "Add to My Tracks",
+    "Track.RemoveFromMyTracks": "Remove from My Tracks",
+    "Track.AddedToMyTracks": "Added to My Tracks",
+    "Track.RemovedFromMyTracks": "Removed from My Tracks",
+    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.AddToQueue": "Add to queue",
+    "Track.QueueToPlayNext": "Play next",
+    "Track.AddedToQueue": "Added to queue",
+    "Track.GoToAlbum": "Go to album",
+    "Track.GoToContributor": "Go to contributors",
+    "Track.GoToContributor.Composer": "Composer: {0}",
+    "Track.GoToContributor.Interpret": "Performer: {0}",
+    "Track.GoToContributor.Lyricist": "Lyricist: {0}",
+    "Track.GoToContributor.Arranger": "Arranger: {0}",
+    "Track.Download": "Download track",
+    "Track.MoreInformation": "More information",
+    "Track.Share": "Share track",
+    "Album.Play": "播放",
+    "Album.AddToPlaylist": "添加到播放列表中的相册",
+    "Album.AddToMyTracks": "Add album to My Tracks",
+    "Album.AddedToMyTracks": "Album added to My Tracks",
+    "Album.AddToQueue": "Add to queue",
+    "Album.Share": "Share album",
+    "FailedToAdd": "Failed to add the track to the playlist. Please try again later.",
+    "FailedToAddAlbum": "Failed to add the album to the playlist because it contains albums.",
+    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddUnknownType": "Adding a \"{0}\" to a playlist is currently not supported.",
+    "MyTracks": "My Tracks",
+    "Contributor.Play": "播放",
+    "Contributor.Share": "Share contributor",
+    "TrackCollection.DeletePlaylist": "Delete playlist",
+    "TrackCollection.EditPlaylist": "Edit playlist",
+    "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
+    "Cancel": "Cancel"
+  },
+  "Notifications": {
+    "Downloading": "Downloading {0}",
+    "ItemsDownloaded": "Item {0} of {1}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcasts"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "External references",
+    "AboutTrack": "About the track",
+    "Title": "Track information",
+    "TrackTitle": "标题",
+    "SongNumber": "Song number",
+    "Album": "专辑",
+    "Artist": "演唱家",
+    "Duration": "持续时间",
+    "PublishDate": "发布日期",
+    "Lyricist": "作词家",
+    "Arranger": "Arranger",
+    "Composer": "作曲家",
+    "Publisher": "Publisher",
+    "Copyright": "Copyright"
+  },
+  "CopyrightViewModel": {
+    "Title": "Copyright"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Recent Messages"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Recent Music"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "All files have been downloaded!"
+  }
+}

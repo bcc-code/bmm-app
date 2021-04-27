@@ -1,0 +1,15 @@
+# This is a sample build configuration for other languages.
+# Check our guides at https://confluence.atlassian.com/x/VYk8Lw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+# image: docker-image:tag
+
+image: fela98/mono-nunit
+pipelines:
+  default:
+    - step:
+        script:
+          - nuget restore
+          - MONO_IOMAP=case xbuild /t:Build /p:Configuration="Release" /p:Platform="AnyCPU" BMM.Tests/BMM.Core.Test/BMM.Core.Test.csproj
+          - nunit BMM.Tests/BMM.Core.Test/bin/Release/BMM.Core.Test.dll

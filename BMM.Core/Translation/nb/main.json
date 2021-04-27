@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "Kunne ikke kontakte BMM teamet, du kan sende en epost til: {0}",
+    "External": "Ekstern",
+    "Internal": "Intern",
+    "BytesMB": "{0} MB",
+    "UnexpectedError": "Det har dessverre oppstått en ukjent feil.",
+    "InternetConnectionOffline": "Internett-tilgangen ser ut til å være frakoblet.",
+    "ItemNotFound": "Vi finner dessverre ikke det du leter etter.",
+    "OfflineBanner": "Viser kun lokale spor på telefonen",
+    "Song": "Sang",
+    "Speech": "Tale",
+    "Audiobook": "Lydbok",
+    "Exegesis": "Tydning"
+  },
+  "Streak": {
+    "Message": "Din streak denne uken",
+    "MessagePerfect": "En perfekt uke. Bra gjort!",
+    "PerfectWeekCountSingular": "{0} perfekt uke",
+    "PerfectWeekCountPlural": "{0} perfekte uker",
+    "PerfectWeekCountNone": "Ingen perfekt uke så langt",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "O",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Kan ikke åpne lenken",
+    "ErrorMessage": "Dessverre var det ikke mulig å åpne lenken '{0}'."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "Det oppstod en tilkoblingsfeil: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Det finnes ingen fil i et støttet format til dette sporet.",
+    "ErrorVideoNotSupported": "Videoer støttes ikke for øyeblikket.",
+    "ErrorFileNotOffline": "Du kan ikke spille av et spor som ikke er lastet ned i offline modus.",
+    "ErrorPlayerStopped": "Avspillingen har stoppet.",
+    "ErrorPlayerStoppedGeneric": "Det har skjedd en feil som stoppet avspillingen.",
+    "ErrorPlayerLiveRadioStopped": "Direktesendingen er avsluttet.",
+    "ErrorPlayerLiveRadioTooEarly": "Direktesendingen har ikke startet ennå. Prøv igjen senere.",
+    "ErrorPlayerStart": "Kunne ikke starte avspilling."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "Det er ikke nok lagringsplass for offline spor"
+  },
+  "AlbumViewModel": {
+    "Title": "Album",
+    "SearchHint": "Søk",
+    "AddAlbumToPlaylist": "Legg til album i spilleliste",
+    "AddAlbumToMyTracks": "Legg til album i Mine spor",
+    "FailedToAdd": "Kunne ikke legge til sporet i spillelisten. Prøv igjen senere.",
+    "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
+    "TrackAlreadyExistInTrackCollection": "Spor allerede eksisterer in spilleliste {0}",
+    "ShufflePlay": "Spill blandet"
+  },
+  "AlbumsViewModel": {
+    "Title": "Arkiv",
+    "SearchHint": "Søk"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Automatisk nedlasting",
+    "None": "Ingen",
+    "PluralLatestTracks": "{0} siste sporene",
+    "AutomaticDownloadSubtitle": "Angi hvor mange spor som skal lastes ned automatisk når du følger denne podcasten."
+  },
+  "ContributorViewModel": {
+    "Title": "Bidragsyter",
+    "SearchHint": "Søk",
+    "HeaderText": "Bidrar på disse sporene"
+  },
+  "HomeViewModel": {
+    "More": "Mer"
+  },
+  "ExploreViewModel": {
+    "Title": "Utforsk"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Populært",
+    "SearchHint": "Søk"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Hjem",
+    "SearchHint": "Søk",
+    "FraKaareHeader": "Fra Kåre",
+    "AslaksenTeaserHeader": "Troens ord",
+    "ShowAll": "Vis alle",
+    "PlayRandom": "Spill tilfeldig",
+    "PlayNewest": "Spill siste",
+    "LatestTrack": "Siste spor",
+    "NextBroadcast": "Neste sending",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "om {0}t",
+    "Messages": "Taler",
+    "Music": "Musikk"
+  },
+  "AslaksenNotification": {
+    "Title": "Troens ord",
+    "Message": "Ønsker du å svare på spørsmålene nå?",
+    "ButtonYes": "Ja",
+    "ButtonCancel": "Senere"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Bidragsytere",
+    "SearchHint": "Søk"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Hjelp & Tilbakemelding",
+    "GuideIntroTitle": "Hvordan få mest mulig ut av BMM-appen",
+    "GuideIntroSubtitle": "Dra for å lære mer",
+    "GuideOfflineTitle": "Offline spillelister",
+    "GuideOfflineSubtitle": "Last ned dine spillelister til enheten, og hør på dem uten internettforbindelse. Du kan aktivere dette i spillelisten.",
+    "GuideAddToPlaylistTitle": "Legg til i spilleliste eller \"Mine spor\"",
+    "GuideAddToPlaylistSubtitle": "Lagre dine favorittspor i dine egne spillelister eller din personlige BMM samling \"Mine spor\" ved å trykke på valg-knappen til høyre for sporet.",
+    "GuideLanguagesTitle": "Flere språk",
+    "GuideLanguagesSubtitle": "Prioritér språkene, for å kontrollere språket på innholdet i BMM. Dette kan gjøres under Innstillinger > Innholdsspråk.",
+    "GuideLibraryTitle": "Bibliotekdelen",
+    "GuideLibrarySubtitle": "Få rask tilgang til innholdet du ønsker. Biblioteket består av alle de tilgjengelige podcastene og en arkiv del søke etter innhold. ",
+    "GuideSearchTitle": "Søk",
+    "GuideSearchSubtitle": "Finn et bestemt spor, eller søk etter emner for å finne relatert innhold. Søkehistorikken din vises automatisk.",
+    "ButtonSendMail": "Send en e-post til BMM-teamet"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "Vi gjør klar din bruker. Dette kan ta noen minutter."
+  },
+  "LoginViewModel": {
+    "Title": "Logg på",
+    "LoginFailureTitle": "Pålogging feilet",
+    "LoginFailureMessage": "Vennligst prøv igjen med riktige opplysninger",
+    "LoginNoConnectionMessage": "Ingen internettforbindelse er tilgjengelig. Prøv igjen senere",
+    "WrongMailAddressTitle": "Ugyldig epostadresse",
+    "WrongMailAddress": "Vennligst oppgi en gyldig e-postadresse. Pålogging med brukernavnet støttes ikke lenger.",
+    "TbxUsername.Hint": "E-post",
+    "TbxPassword.Hint": "Passord",
+    "BtnLogin.Text": "Logg på",
+    "LoginInfo": "Logg på med ditt BCC-login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "Vi slutter snart å støtte telefoner med {0} {1} eller eldre versjoner. Om mulig, bør du oppdatere telefonen din.",
+    "DeviceSupportEnded": "Vi støtter dessverre ikke enheter med {0} {1} lenger. Vennligst oppdater enheten din eller oppgrader til en nyere telefon.",
+    "AppSupportEnding": "Du bruker en utdatert versjon av BMM appen. Om kort tid slutter vi å støtte denne versjonen. Vennligst oppdater appen.",
+    "AppSupportEnded": "Du bruker en utdatert versjon av BMM appen som ikke lenger støttes. Vennligst oppdater appen.",
+    "UpdateButton": "Oppdater"
+  },
+  "LanguageAppViewModel": {
+    "Title": "App-språk"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Innholdsspråk",
+    "Dialog.Title": "Velg et språk",
+    "Dialog.Cancel": "Avbryt",
+    "Toast.LanguagesStillLoading": "Listen lastes fortsatt, prøv igjen om noen sekunder.",
+    "Toast.NoLanguagesAvailable": "Mangler nettverk for å laste språkliste.",
+    "DeleteLanguageMessage": "Du må ha minst ett innholdsspråk tilgjengelig",
+    "DeleteLanguageTitle": "Kunne ikke fjerne {0}"
+  },
+  "LibraryViewModel": {
+    "Title": "Bibliotek"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Arkiv"
+  },
+  "MenuViewModel": {
+    "Title": "Meny",
+    "Search": "Søk",
+    "Explore": "Utforsk",
+    "MyContent": "Mitt innhold",
+    "Library": "Bibliotek",
+    "Settings": "Innstillinger",
+    "HelpAndFeedback": "Hjelp og tilbakemelding",
+    "Home": "Hjem",
+    "Favorites": "Favoritter",
+    "Profile": "Min profil"
+  },
+  "MyContentViewModel": {
+    "Title": "Favoritter",
+    "DownloadedContent": "Nedlastet innhold",
+    "FollowedPodcasts": "Podcaster jeg følger",
+    "MyTracks": "Mine spor"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Podcaster jeg følger",
+    "EmptyTitle": "Du følger for øyeblikket ingen podcaster",
+    "EmptySubline": "Følg en Podcast ved å åpne en Podcast og klikke på følg knappen."
+  },
+  "MyTracksViewModel": {
+    "Title": "Mine spor",
+    "ShufflePlay": "Spill blandet",
+    "AvailableOffline": "Tilgjengelig offline",
+    "AvailableOfflineDownload": "Last ned spillelisten",
+    "AvailableOfflineDownloading": "{0} av {1} nedlastinger gjenværende",
+    "RemoveOfflineConfirm": "Vil du virkelig slette alle nedlastede elementer?",
+    "EmptyTitle": "Denne spillelisten er tom",
+    "EmptySubline": "Trykk på de tre prikkene på et spor, for å legge til spor i denne spillelisten.",
+    "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillinger for å fortsette",
+    "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Nedlastet innhold",
+    "FollowedPodcasts": "Podcaster jeg følger",
+    "MyTracks": "Mine spor",
+    "EmptyTitle": "Du har ikke lastet ned noen innhold",
+    "EmptySubline": "Last ned en spilleliste eller følg en podcast for å ha det tilgjengelig uten nett."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Podcaster jeg følger",
+    "EmptyTitle": "Du følger for øyeblikket ingen podcaster",
+    "EmptySubline": "Følg en Podcast ved å åpne en Podcast og klikke på følg knappen."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "Følg",
+    "Following": "Følger",
+    "ManageDownloads": "Administrer nedlasting",
+    "GetNotified": "Få beskjed",
+    "GetNotifiedMessage": "når nye episoder er ute",
+    "UnfollowConfirm": "Er du sikker på at du vil slutte å følge denne podcasten?",
+    "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillingene for å laste ned de nyeste sporene automatisk",
+    "ToggleFollowOfflineError": "Du må være i tilkoblet modus for å følge eller slutte å følge en podcast",
+    "Week": "Uke {0}",
+    "ThisWeek": "Denne uken",
+    "LastWeek": "Siste uke",
+    "AslaksenTheme1": "Tro på underets Gud",
+    "AslaksenTheme2": "Jeg er korsfestet med Kristus",
+    "AslaksenTheme3": "Frykte og elske Gud",
+    "AslaksenTheme4": "Ydmykhet er selve saken"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Spillelister"
+  },
+  "PlayerViewModel": {
+    "Title": "Spilles nå",
+    "PlayingCount": "{0} av {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Kø"
+  },
+  "SearchViewModel": {
+    "Title": "Søk",
+    "SearchHint": "Søk",
+    "SearchResults": "Søkeresultater",
+    "SearchHistory": "Nylige søk",
+    "SearchSuggestions": "Mente du: ",
+    "SearchNoResults": "Vi fant ingenting.",
+    "WelcomeTitle": "Begynn å søke her!",
+    "WelcomeSubTitle": "Bruk søkefeltet til å søke i innholdet på BMM",
+    "DeleteConfirm": "Er du sikker på at du vil slette søkehistorikken?"
+  },
+  "SettingsViewModel": {
+    "Title": "Min profil",
+    "HeadlineSettings": "Innstillinger",
+    "OptionAutoplayHeader": "Automatisk avspilling",
+    "OptionAutoplayText": "Spill musikk automatisk etter dagens episode av Fra Kåre",
+    "OptionEnablePushHeader": "Aktiver push-varsling",
+    "OptionPushNotifications": "Push-varslinger",
+    "OptionPushNotificationsSubtitle": "Aktiver push-varsler for podcaster du følger",
+    "OptionExternalStorage": "Lagringsplas",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "Ekstern {0} MB",
+    "OptionEnablePushText": "Få push-varsling når nytt innhold er tilgjengelig",
+    "OptionDownloadMobileNetworkHeader": "Nedlasting via mobilnett",
+    "OptionDownloadMobileNetworkText": "La appen laste ned spillelister med 3G / 4G. Dette kan påvirke databruken",
+    "HeadlineGeneral": "Generelt",
+    "OptionLanguageAppHeader": "App-språk",
+    "OptionLanguageAppText": "Endre språk for appen",
+    "OptionLanguageContentHeader": "Innholdsspråk",
+    "OptionLanguageContentText": "Velg og prioritér hvilke språk du vil ha innholdet på",
+    "HeadlineAbout": "Om",
+    "OptionCopyrightHeader": "Opphavsrett",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
+    "OptionContactHeader": "Kontakt",
+    "OptionContactText": "Spørsmål eller tilbakemeldinger? Kontakt BMM-teamet her.",
+    "OptionAppVersionHeader": "App-versjon",
+    "AppInfoTitle": "App-informasjon",
+    "AppInfoAppVersion": "App-versjon: ",
+    "AppInfoDeviceModel": "Enhetsmodell: ",
+    "AppInfoDevicePlatform": "Enhetsplattform: ",
+    "AppInfoDeviceVersion": "Enhetsversjon: ",
+    "LoggedInAs": "Logget inn som",
+    "LogoutConfirm": "Er du sikker på at du vil logge av?",
+    "Logout": "Logg av"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Plass for offline spor",
+    "RemoveAllFiles": "Vil du velge annen lagringsplass og fjerne offline spor?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Spilleliste",
+    "ShufflePlay": "Spill blandet",
+    "MenuDelete": "Slett spilleliste",
+    "MenuEdit": "Rediger spilleliste",
+    "AvailableOffline": "Tilgjengelig offline",
+    "AvailableOfflineDownload": "Last ned spillelisten",
+    "AvailableOfflineDownloading": "Laster ned {0} av {1}",
+    "RemoveOfflineConfirm": "Vil du virkelig slette alle nedlastede elementer?",
+    "CreatePrompt": "Gi spillelisten et navn",
+    "CreateFailure": "Kunne ikke opprette spilleliste",
+    "DeleteConfirm": "Er du sikker på at du vil slette spillelisten \"{0}\"?",
+    "DeleteFailure": "Kunne ikke slette spillelisten \"{0}\"",
+    "CreateEmptyFailure": "Oppgi et navn for å opprette spillelisten",
+    "RenameEmptyFailure": "Oppgi et navn for å endre navnet på spillelisten",
+    "SearchHint": "Søk",
+    "EmptyTitle": "Denne spillelisten er tom",
+    "EmptySubline": "Trykk på de tre prikkene på et spor, for å legge til spor i denne spillelisten.",
+    "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillinger for å fortsette",
+    "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle spor",
+    "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Rediger spilleliste",
+    "RenameLabel": "Endre navn av spillelisten",
+    "MenuSave": "Lagre",
+    "EmptyName": "Spillelisten har ikke noe navn",
+    "SaveFailure": "Noe gikk galt. Sjekk internettforbindelsen din og prøv på nytt",
+    "DiscardChangesTitle": "Angre endringer?",
+    "DiscardChangesMessage": "Endringer som du har gjort blir ikke lagret",
+    "DiscardChanges": "Forkast",
+    "KeepEditing": "Fortsett å redigere"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Spilleliste",
+    "MenuDelete": "Slett",
+    "DeleteConfirm": "Er du sikker på at du vil slette spillelisten \"{0}\"?",
+    "DeleteFailure": "Kunne ikke slette spillelisten \"{0}\"",
+    "ShufflePlay": "Spill blandet",
+    "SearchHint": "Søk"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Legg til spor i spilleliste",
+    "SearchHint": "Søk",
+    "FailedToAdd": "Kunne ikke legge til i spillelisten. Prøv igjen senere.",
+    "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
+    "TrackAlreadyExistInTrackCollection": "Spor allerede eksisterer i spilleliste {0}",
+    "FailedToAddAlbum": "Kan ikke legge albumet til spillelisten fordi den inneholder album.",
+    "FailedToAddUnknownType": "Legge til en \"{0}\" i en spilleliste støttes ikke.",
+    "CreatePlaylistPrompt": "Oppgi et navn for spillelisten",
+    "TrackAddedToTrackCollection": "Lagt til i spillelisten"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Legg til i spilleliste...",
+    "Track.DeleteFromPlaylist": "Slett fra spilleliste",
+    "Track.AddToMyTracks": "Legg til i Mine spor",
+    "Track.RemoveFromMyTracks": "Fjern fra Mine spor",
+    "Track.AddedToMyTracks": "Lagt til i Mine spor",
+    "Track.RemovedFromMyTracks": "Fjernet fra Mine spor",
+    "Track.FailedToRemoveFromMyTracks": "Kunne ikke fjerne sporet fra Mine spor",
+    "Track.AddToQueue": "Legg til i køen",
+    "Track.QueueToPlayNext": "Spill av som neste",
+    "Track.AddedToQueue": "Lagt til i køen",
+    "Track.GoToAlbum": "Gå til albumet",
+    "Track.GoToContributor": "Vis bidragsytere",
+    "Track.GoToContributor.Composer": "Komponist: {0}",
+    "Track.GoToContributor.Interpret": "Utøver: {0}",
+    "Track.GoToContributor.Lyricist": "Tekstforfatter: {0}",
+    "Track.GoToContributor.Arranger": "Arrangør: {0}",
+    "Track.Download": "Last ned spor",
+    "Track.MoreInformation": "Mer informasjon",
+    "Track.Share": "Del spor",
+    "Album.Play": "Spill av",
+    "Album.AddToPlaylist": "Legg til album i spilleliste",
+    "Album.AddToMyTracks": "Legg til album i Mine spor",
+    "Album.AddedToMyTracks": "Albumet er lagt til i Mine spor",
+    "Album.AddToQueue": "Legg til i køen",
+    "Album.Share": "Del album",
+    "FailedToAdd": "Kunne ikke legge til sporet i spillelisten. Prøv igjen senere.",
+    "FailedToAddAlbum": "Kan ikke legge albumet til spillelisten fordi den inneholder album.",
+    "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
+    "TrackAlreadyExistInTrackCollection": "Spor allerede eksisterer i spilleliste {0}",
+    "FailedToAddUnknownType": "Legge til en \"{0}\" i en spilleliste støttes ikke.",
+    "MyTracks": "Mine spor",
+    "Contributor.Play": "Spill av",
+    "Contributor.Share": "Del bidragsyter",
+    "TrackCollection.DeletePlaylist": "Slett spilleliste",
+    "TrackCollection.EditPlaylist": "Rediger spilleliste",
+    "OfflineTrackCollection.DeletePlaylist": "Slett spillelisten",
+    "Cancel": "Avbryt"
+  },
+  "Notifications": {
+    "Downloading": "Laster ned {0}",
+    "ItemsDownloaded": "Element {0} av {1}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcaster"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "Eksterne referanser",
+    "AboutTrack": "Om sporet",
+    "Title": "Sporinformasjon",
+    "TrackTitle": "Tittel",
+    "SongNumber": "Sangnummer",
+    "Album": "Album",
+    "Artist": "Artist",
+    "Duration": "Varighet",
+    "PublishDate": "Publiseringsdato",
+    "Lyricist": "Tekstforfatter",
+    "Arranger": "Arrangør",
+    "Composer": "Komponist",
+    "Publisher": "Forlegger",
+    "Copyright": "Opphavsrett"
+  },
+  "CopyrightViewModel": {
+    "Title": "Opphavsrett"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Siste Taler"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Siste musikk"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Alle filene er lastet ned!"
+  }
+}

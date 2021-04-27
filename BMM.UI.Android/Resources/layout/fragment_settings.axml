@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/collapsing_toolbar" />
+
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView
+        android:id="@+id/settings_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/transparent"
+        android:divider="@null"
+        local:layout_behavior="@string/appbar_scrolling_view_behavior"
+        local:MvxTemplateSelector="@string/settings_templateselector"
+        local:MvxBind="ItemsSource ListItems; ItemClick ItemSelectedCommand" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

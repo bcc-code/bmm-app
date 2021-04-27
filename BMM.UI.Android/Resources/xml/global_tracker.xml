@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
+
+    <!--Replace placeholder ID with your tracking ID-->
+    <string name="ga_trackingId">UA-1520750-2</string>
+
+    <!--Enable automatic exception tracking-->
+    <bool name="ga_reportUncaughtExceptions">true</bool>
+
+    <!--Enable automatic activity tracking-->
+    <bool name="ga_autoActivityTracking">true</bool>
+
+    <bool name="ga_dryRun">false</bool>
+
+    <string name="ga_logLevel">info</string>
+
+    <integer name="ga_dispatchPeriod">30</integer>
+</resources>

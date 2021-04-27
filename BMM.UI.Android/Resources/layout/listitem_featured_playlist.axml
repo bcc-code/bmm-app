@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_feature_item_height"
+    android:paddingStart="@dimen/padding_medium"
+    android:paddingEnd="@dimen/padding_medium"
+    android:background="?android:attr/selectableItemBackground">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:cardCornerRadius="@dimen/corner_radius_very_small"
+        app:cardElevation="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- 
+        We define LoadingPlaceholderImagePath and ErrorPlaceholderImagePath here
+        because the list items are reusable and if we do net set those values
+        the image of the previous document would be used
+        -->
+        <ffimageloading.cross.MvxCachedImageView
+            android:id="@+id/cover"
+            android:layout_width="@dimen/feature_item_image_width"
+            android:layout_height="@dimen/feature_item_image_height"
+            android:src="@drawable/placeholder_cover"
+            local:MvxBind="LoadingPlaceholderImagePath 'res:placeholder_cover'; ErrorPlaceholderImagePath 'res:placeholder_cover'; ImagePath CoverUrlToFallbackImage(Item.Cover, 'res:placeholder_cover')"
+            android:adjustViewBounds="true" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_large"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="@dimen/element_margin_small"
+        android:text="Placeholder"
+        android:textStyle="bold"
+        android:layout_marginStart="12dp"
+        local:MvxBind="Text Item.Title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/card_view"
+        app:layout_constraintEnd_toStartOf="@id/chevron_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0" />
+
+    <ImageView
+        android:id="@+id/chevron_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_chevron_right"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

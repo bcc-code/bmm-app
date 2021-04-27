@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ContributorViewController">
+            <connections>
+                <outlet property="CircleCoverImage" destination="Cp7-Fo-0Dw" id="ZV3-O2-3Vo"/>
+                <outlet property="CoverImage" destination="ECc-Py-JlL" id="eVi-Ex-TDG"/>
+                <outlet property="TrackTableTitle" destination="pgw-wL-mcl" id="wNT-1d-cs5"/>
+                <outlet property="TracksTable" destination="j3y-Vn-SGF" id="MHR-Ew-I1z"/>
+                <outlet property="blurView" destination="knq-A1-Y18" id="X2s-EC-9wq"/>
+                <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="300" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-Vn-SGF">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <view key="tableHeaderView" contentMode="scaleToFill" id="Ako-r9-04a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knq-A1-Y18">
+                                <rect key="frame" x="0.0" y="-300" width="375" height="520"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_artist.png" translatesAutoresizingMaskIntoConstraints="NO" id="ECc-Py-JlL" customClass="MvxCachedImageView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="520"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ECc-Py-JlL" firstAttribute="leading" secondItem="knq-A1-Y18" secondAttribute="leading" id="Cp5-dx-KMM"/>
+                                    <constraint firstAttribute="trailing" secondItem="ECc-Py-JlL" secondAttribute="trailing" id="WE4-Lx-IBl"/>
+                                    <constraint firstItem="ECc-Py-JlL" firstAttribute="top" secondItem="knq-A1-Y18" secondAttribute="top" id="coh-B3-nTf"/>
+                                    <constraint firstAttribute="height" constant="520" id="hNz-aZ-944"/>
+                                    <constraint firstAttribute="bottom" secondItem="ECc-Py-JlL" secondAttribute="bottom" id="koo-8Y-EQs"/>
+                                </constraints>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white_gradient.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ers-NY-3uS">
+                                <rect key="frame" x="0.0" y="-300" width="375" height="520"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_artist.png" translatesAutoresizingMaskIntoConstraints="NO" id="jkh-oV-9jH">
+                                <rect key="frame" x="107.5" y="40" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="NBT-lG-1lQ"/>
+                                    <constraint firstAttribute="width" constant="160" id="Xzz-0Q-VuX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_artist.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cp7-Fo-0Dw" customClass="MvxCachedImageView">
+                                <rect key="frame" x="107.5" y="40" width="160" height="160"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="a4W-GC-4UY"/>
+                                    <constraint firstAttribute="width" constant="160" id="sB2-Vb-lAI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                                        <integer key="value" value="80"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Translate] Appears in these tracks" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pgw-wL-mcl">
+                                <rect key="frame" x="15" y="235" width="345" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TrackTableLabel"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="Cp7-Fo-0Dw" secondAttribute="centerY" constant="10" id="0vJ-1G-mEm"/>
+                            <constraint firstItem="knq-A1-Y18" firstAttribute="leading" secondItem="Ako-r9-04a" secondAttribute="leading" id="22T-2F-m7G"/>
+                            <constraint firstItem="pgw-wL-mcl" firstAttribute="top" secondItem="Ers-NY-3uS" secondAttribute="bottom" constant="15" id="6di-4x-1iO"/>
+                            <constraint firstAttribute="centerY" secondItem="jkh-oV-9jH" secondAttribute="centerY" constant="10" id="EkJ-Dn-Eip"/>
+                            <constraint firstItem="pgw-wL-mcl" firstAttribute="leading" secondItem="Ako-r9-04a" secondAttribute="leading" constant="15" id="Lq0-Ow-DkN"/>
+                            <constraint firstItem="Ers-NY-3uS" firstAttribute="top" secondItem="Ako-r9-04a" secondAttribute="top" constant="-300" id="Uxg-HR-xcT"/>
+                            <constraint firstAttribute="trailing" secondItem="Ers-NY-3uS" secondAttribute="trailing" id="VBW-K4-OWV"/>
+                            <constraint firstAttribute="trailing" secondItem="pgw-wL-mcl" secondAttribute="trailing" constant="15" id="ZJT-Tv-kQL"/>
+                            <constraint firstItem="pgw-wL-mcl" firstAttribute="top" secondItem="knq-A1-Y18" secondAttribute="bottom" constant="15" id="bcJ-UH-hpc"/>
+                            <constraint firstItem="knq-A1-Y18" firstAttribute="top" secondItem="Ako-r9-04a" secondAttribute="top" constant="-300" id="imu-u0-Ers"/>
+                            <constraint firstItem="Ers-NY-3uS" firstAttribute="leading" secondItem="Ako-r9-04a" secondAttribute="leading" id="n2W-4L-Mf3"/>
+                            <constraint firstAttribute="trailing" secondItem="knq-A1-Y18" secondAttribute="trailing" id="nO8-H5-IQw"/>
+                            <constraint firstAttribute="centerX" secondItem="Cp7-Fo-0Dw" secondAttribute="centerX" id="qvI-Ex-S3S"/>
+                            <constraint firstAttribute="centerX" secondItem="jkh-oV-9jH" secondAttribute="centerX" id="vIf-Ku-vU1"/>
+                        </constraints>
+                    </view>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="j3y-Vn-SGF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Su-1o-hpn"/>
+                <constraint firstAttribute="bottom" secondItem="j3y-Vn-SGF" secondAttribute="bottom" id="OFY-9X-Gv5"/>
+                <constraint firstAttribute="trailing" secondItem="j3y-Vn-SGF" secondAttribute="trailing" id="X4t-5N-rrn"/>
+                <constraint firstItem="j3y-Vn-SGF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ZCg-lF-IKL"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="placeholder_artist.png" width="320" height="320"/>
+        <image name="white_gradient.png" width="640" height="401"/>
+    </resources>
+</document>

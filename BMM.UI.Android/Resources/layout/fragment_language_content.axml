@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include
+            layout="@layout/toolbar_actionbar" />
+        <ProgressBar
+            local:MvxBind="Visibility Visibility(IsLoading)"
+            style="@style/ProgressGreen"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar1"
+            android:layout_centerInParent="true" />
+        <mvvmcross.droidx.recyclerview.MvxRecyclerView
+            android:id="@+id/language_list"
+            android:layout_below="@+id/appbar"
+            android:scrollbars="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            local:MvxItemTemplate="@layout/listitem_language_content"
+            local:MvxBind="ItemsSource ContentLanguageList(Languages, .)" />
+    </RelativeLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+		  xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/icon_add_static"
+        local:MvxBind="Click OpenSelectLanguageDialogCommand"
+        android:layout_margin="@dimen/margin_medium"
+        android:layout_gravity="end|bottom"
+        app:backgroundTint="@color/colorPrimary" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

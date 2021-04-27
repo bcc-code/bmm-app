@@ -1,0 +1,6 @@
+﻿<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:local="http://schemas.android.com/apk/res-auto">
+    <item
+    android:id="@+id/menu_podcast_manage_downloads"
+    local:showAsAction="never" />
+</menu>

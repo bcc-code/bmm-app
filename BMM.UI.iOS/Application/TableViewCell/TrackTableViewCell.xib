@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" focusStyle="custom" rowHeight="64" id="cxk-wN-pdQ" customClass="TrackTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notification.png" translatesAutoresizingMaskIntoConstraints="NO" id="MOI-Xc-ZOi" userLabel="status image">
+                        <rect key="frame" x="0.0" y="14" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="6Tk-yY-aTu"/>
+                            <constraint firstAttribute="height" constant="16" id="Zqq-Mb-y01"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJN-r1-hsM">
+                        <rect key="frame" x="16" y="10" width="190" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="ke3-LL-ZK8"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" red="0.050980392156862744" green="0.074509803921568626" blue="0.10196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TTVC_title"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYU-np-E4D">
+                        <rect key="frame" x="16" y="34" width="47" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="usY-hO-Fv3"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.36078431372549019" green="0.4392156862745098" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TTVC_subtitle"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="f8H-Yp-2Ej">
+                        <rect key="frame" x="214" y="0.0" width="106" height="60"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_pending.png" translatesAutoresizingMaskIntoConstraints="NO" id="5aj-We-938" customClass="MvxCachedImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="16" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="r9X-bq-9MW"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LIK-g8-Odv" userLabel="Reference Button">
+                                <rect key="frame" x="21" y="0.0" width="35" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Ild-LN-v5I"/>
+                                </constraints>
+                                <state key="normal" image="btn_references_static.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8q0-x1-qbG">
+                                <rect key="frame" x="61" y="0.0" width="45" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="yqo-Aj-T5B"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" image="btn_options_static.png">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="selected" image="btn_options_active.png"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="image_button_options"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meta" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vJR-0w-Kze" userLabel="Meta">
+                        <rect key="frame" x="67" y="34" width="139" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="GJV-io-An9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.5607843137254902" green="0.62745098039215685" blue="0.68627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="TTVC_subtitle"/>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                </subviews>
+                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="nJN-r1-hsM" firstAttribute="leading" secondItem="MOI-Xc-ZOi" secondAttribute="trailing" id="5ry-rZ-4Pz"/>
+                    <constraint firstItem="sYU-np-E4D" firstAttribute="top" secondItem="nJN-r1-hsM" secondAttribute="bottom" id="9V1-rx-fUP"/>
+                    <constraint firstItem="sYU-np-E4D" firstAttribute="leading" secondItem="nJN-r1-hsM" secondAttribute="leading" id="AJy-y3-dMZ"/>
+                    <constraint firstAttribute="trailing" secondItem="f8H-Yp-2Ej" secondAttribute="trailing" id="Euo-VJ-i5f"/>
+                    <constraint firstItem="MOI-Xc-ZOi" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" id="GkG-Cz-Vwx"/>
+                    <constraint firstItem="f8H-Yp-2Ej" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" id="N6m-D4-CN8"/>
+                    <constraint firstAttribute="bottom" secondItem="f8H-Yp-2Ej" secondAttribute="bottom" id="N8n-ue-263"/>
+                    <constraint firstItem="vJR-0w-Kze" firstAttribute="firstBaseline" secondItem="sYU-np-E4D" secondAttribute="firstBaseline" id="T9M-N5-LQW"/>
+                    <constraint firstItem="f8H-Yp-2Ej" firstAttribute="leading" secondItem="nJN-r1-hsM" secondAttribute="trailing" constant="8" id="U3a-QW-e0L"/>
+                    <constraint firstAttribute="bottom" secondItem="sYU-np-E4D" secondAttribute="bottom" priority="750" constant="10" id="kH2-zI-Snz"/>
+                    <constraint firstItem="nJN-r1-hsM" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="10" id="oIr-Ga-ulv"/>
+                    <constraint firstItem="f8H-Yp-2Ej" firstAttribute="leading" secondItem="vJR-0w-Kze" secondAttribute="trailing" constant="8" id="oku-R8-Qaf"/>
+                    <constraint firstItem="vJR-0w-Kze" firstAttribute="leading" secondItem="sYU-np-E4D" secondAttribute="trailing" constant="4" id="vez-mD-Owm"/>
+                    <constraint firstItem="MOI-Xc-ZOi" firstAttribute="centerY" secondItem="nJN-r1-hsM" secondAttribute="centerY" id="zZP-oH-exq"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="DownloadStatusImageView" destination="5aj-We-938" id="name-outlet-5aj-We-938"/>
+                <outlet property="OptionsButton" destination="8q0-x1-qbG" id="fPp-D3-YS3"/>
+                <outlet property="ReferenceButton" destination="LIK-g8-Odv" id="fCB-B2-saY"/>
+                <outlet property="StatusImage" destination="MOI-Xc-ZOi" id="RkP-WF-Qck"/>
+                <outlet property="TitleLabel" destination="nJN-r1-hsM" id="XYi-kY-wxd"/>
+                <outlet property="accessoryView" destination="sYU-np-E4D" id="Vx5-JI-D1h"/>
+                <outlet property="metaLabel" destination="vJR-0w-Kze" id="Z5K-60-cpc"/>
+            </connections>
+            <point key="canvasLocation" x="304.34782608695656" y="395.75892857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="btn_options_active.png" width="25" height="25"/>
+        <image name="btn_options_static.png" width="24" height="24"/>
+        <image name="btn_references_static.png" width="25" height="25"/>
+        <image name="icon_pending.png" width="16" height="16"/>
+        <image name="notification.png" width="16" height="16"/>
+    </resources>
+</document>

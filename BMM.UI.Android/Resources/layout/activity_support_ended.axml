@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/gradient_oidc_login">
+
+    <ImageView
+        android:id="@+id/bmmLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:src="@drawable/login_logo" />
+
+    <TextView
+        android:id="@+id/supportedEndedInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="@dimen/text_large"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:text="[Translate] Support ended message can be long and should be scalable in order to have enough space for all translations"
+        android:textColor="#ff76e65b"
+        local:MvxBind="Text SupportEndedInfo" />
+
+    <Button
+        android:id="@+id/updateBtn"
+        android:text="[Translate] Update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_large"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:background="#ff76e65b"
+        local:MvxLang="Text UpdateButton"
+        local:MvxBind="Click ShowAppUpdatePageCommand; Visibility Visibility(ShouldShowAppUpdateButton)" />
+
+</LinearLayout>

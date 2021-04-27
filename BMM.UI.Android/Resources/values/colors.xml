@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+
+    <!-- General colors -->
+    <color name="bmm_green">#03D67F</color>
+    <color name="colorPrimary">#83E76B</color>
+    <color name="colorPrimaryDark">#6CBD5C</color>
+    <color name="colorAccent">#C2EF66</color>
+    <color name="tab_highlight">#E1FF4C</color>
+    <color name="tab_text_inactive">#C2F3B6</color>
+    <color name="track_divider_line">#80B9C3CC</color>
+
+    <color name="player_statusbar">#222930</color>
+
+    <color name="player_click_effects">#5C7082</color>
+
+    <color name="audio_actionbar_mp3kilden">#21DAB2</color>
+    <color name="audio_actionbar_childrens">#FE4365</color>
+    <color name="audio_actionbar_music">#F6C20E</color>
+    <color name="audio_actionbar_edification">#A8D860</color>
+    <color name="audio_actionbar_audiobooks">#8C25E7</color>
+    <color name="audio_actionbar_norwegian">#6099FF</color>
+
+    <color name="audio_statusbar_mp3kilden">#1BB392</color>
+    <color name="audio_statusbar_childrens">#D93856</color>
+    <color name="audio_statusbar_music">#CFA40C</color>
+    <color name="audio_statusbar_edification">#8BB34F</color>
+    <color name="audio_statusbar_audiobooks">#761FC2</color>
+    <color name="audio_statusbar_norwegian">#5284D9</color>
+
+    <!-- White to Black -->
+    <color name="white">#FFFFFF</color>
+    <color name="dim_white">#CCFFFFFF</color>
+    <color name="med_white">#80ffffff</color>
+    <color name="light_gray">#ECF0F3</color>
+    <color name="med_gray">#C7D2DC</color>
+    <color name="bright_gray">#8FA0AF</color>
+    <color name="gray">#5C7082</color>
+    <color name="dark_gray">#80B9C3CC</color>
+    <color name="black">#0D131A</color>
+    <color name="med_black">#800D131A</color>
+    <color name="text_gray">#5A6570</color>
+
+    <!-- Login colors -->
+    <color name="startColor">#0a0e13</color>
+    <color name="centerColor">#141f29</color>
+    <color name="endColor">#1c2937</color>
+    <color name="bcc_login">#2ECC71</color>
+
+    <!-- Podcast colors -->
+    <color name="black_shaded">#19000000</color>
+    <color name="white_shaded">#88FFFFFF</color>
+    <color name="black_shaded_line">#22000000</color>
+    <color name="pinned_item_background">#FAFAFA</color>
+
+    <!-- Fra Kaare Teaser -->
+    <color name="fra_kaare_track_background_color">#33ffffff</color>
+
+</resources>

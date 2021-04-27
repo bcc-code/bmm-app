@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_document_height">
+
+    <LinearLayout
+        android:id="@+id/trackInfoContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/trackButtonsContainer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0">
+
+        <LinearLayout
+            android:id="@+id/trackTitleAndStateIconContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/trackTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:lineHeight="20sp"
+                local:MvxBind="Text Title(.)" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/subtitleAndMetaContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/trackSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/gray"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:lineHeight="20sp"
+                local:MvxBind="Text Subtitle(.)" />
+
+            <TextView
+                android:id="@+id/trackMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/bright_gray"
+                android:layout_marginLeft="4dp"
+                android:textSize="14sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:lineHeight="20sp"
+                local:MvxBind="Text MetaTitle(.)" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/trackButtonsContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/handle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right"
+            android:scaleType="center"
+            android:src="@drawable/icon_rearrange"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp"
+            android:padding="8dp"
+            android:layout_centerVertical="true" />
+        <ImageButton
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:minHeight="@dimen/row_document_height"
+            android:id="@+id/delete"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/element_margin_medium"
+            android:paddingRight="@dimen/element_margin_medium"
+            android:src="@drawable/icon_delete"
+            android:layout_toLeftOf="@+id/handle" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

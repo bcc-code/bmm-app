@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<PreferenceScreen
+   xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceCategory
+   android:title="Account settings" />
+<PreferenceScreen
+   android:key="key"
+   android:title="General settings"
+   android:summary="Some summary">
+
+   <!-- package relative class name-->
+   <intent
+      android:action="my.account.preference.MAIN"
+      android:targetClass="prefs.AccountPreferencesActivity.class">
+   </intent>
+</PreferenceScreen>
+</PreferenceScreen>

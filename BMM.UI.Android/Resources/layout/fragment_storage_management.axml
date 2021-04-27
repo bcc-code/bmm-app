@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <include
+        layout="@layout/toolbar_actionbar" />
+    <MvxListView
+        android:id="@+id/fragment_storage_management"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        local:MvxItemTemplate="@layout/listitem_storage_details"
+        local:MvxBind="ItemsSource StorageList(Storages, .); ItemClick StorageSelectedCommand(StorageSelectedCommand)" />
+</LinearLayout>

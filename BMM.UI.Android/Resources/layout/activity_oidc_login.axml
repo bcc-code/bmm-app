@@ -1,0 +1,65 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_oidc_login">
+    
+    <ImageView
+        android:id="@+id/bmmLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/login_logo"
+        app:layout_constraintBottom_toTopOf="@+id/loginContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <LinearLayout
+        android:id="@+id/loginContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_huge"
+        android:layout_marginLeft="@dimen/margin_large"
+        android:layout_marginRight="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/loginInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_large"
+            android:textSize="@dimen/text_large"
+            local:MvxLang="Text LoginInfo, Source=OidcTextSource"
+            android:textColor="#ff76e65b"
+            android:gravity="center"
+            local:MvxBind="Visibility Visibility(!IsLoading)" />
+
+        <Button
+            android:id="@+id/BtnLogin"
+            local:MvxLang="Text BtnLogin.Text, Source=OidcTextSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:MvxBind="Click LoginCommand; Visibility Visibility(!IsLoading)"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_large"
+            android:textAllCaps="false"
+            android:padding="@dimen/padding_medium"
+            android:background="@drawable/button_radius_corners" />
+
+        <ProgressBar
+            android:id="@+id/loadingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/ProgressGreen"
+            local:MvxBind="Visibility Visibility(IsLoading)"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

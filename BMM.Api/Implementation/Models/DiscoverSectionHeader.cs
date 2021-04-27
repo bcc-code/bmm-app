@@ -1,0 +1,24 @@
+using Newtonsoft.Json;
+
+namespace BMM.Api.Implementation.Models
+{
+    [JsonObject]
+    public class DiscoverSectionHeader : Document
+    {
+        public DiscoverSectionHeader()
+        {
+            DocumentType = DocumentType.DiscoverSectionHeader;
+        }
+
+        public string Title { get; set; }
+
+        public string Link { get; set; }
+
+        public string TranslationParent { get; set; }
+
+        public string TranslationId { get; set; }
+
+        [JsonIgnore]
+        public bool HasLink => string.IsNullOrEmpty(Link);
+    }
+}

@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "Не вдалося зв'язатися з командою BMM, ви можете надіслати електронною поштою: {0}",
+    "External": "External",
+    "Internal": "Internal",
+    "BytesMB": "{0} MB",
+    "UnexpectedError": "Sorry, an unexpected error has occurred.",
+    "InternetConnectionOffline": "Інтернет-з'єднання, як видається, в автономному режимі.",
+    "ItemNotFound": "The requested item does not exist.",
+    "OfflineBanner": "Showing only tracks on this phone",
+    "Song": "Song",
+    "Speech": "Повідомлення",
+    "Audiobook": "Audiobook",
+    "Exegesis": "Exegesis"
+  },
+  "Streak": {
+    "Message": "Your streak this week",
+    "MessagePerfect": "A perfect week. Well done!",
+    "PerfectWeekCountSingular": "{0} perfect week",
+    "PerfectWeekCountPlural": "{0} perfect weeks",
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Unable to open link",
+    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "Підключення сталася неполадка: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Там немає підтримали файл, пов'язаний з цією трасі.",
+    "ErrorVideoNotSupported": "Відео в даний час не підтримується.",
+    "ErrorFileNotOffline": "Ви не можете грати трек, який не завантажується, в автономному режимі.",
+    "ErrorPlayerStopped": "The player has stopped.",
+    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
+    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
+    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
+    "ErrorPlayerStart": "Unable to start playback."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "There is not enough space to store offline files"
+  },
+  "AlbumViewModel": {
+    "Title": "Альбом",
+    "SearchHint": "Пошук",
+    "AddAlbumToPlaylist": "Додати альбом до списку відтворення",
+    "AddAlbumToMyTracks": "Додати до моїх треків",
+    "FailedToAdd": "Не вдалося додати трек до списку відтворення. Будь-ласка спробуйте пізніше.",
+    "AlbumFailedToAddAlreadyExists": "Цей альбом – вже у ваш плейлист.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "ShufflePlay": "відтворення у випадковому порядку\n"
+  },
+  "AlbumsViewModel": {
+    "Title": "Архів",
+    "SearchHint": "Пошук"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Автоматичне завантаження",
+    "None": "Жоден",
+    "PluralLatestTracks": "{0} останні треків",
+    "AutomaticDownloadSubtitle": "Встановити кількість композицій, які завантажуються автоматично, коли після цього подкаст."
+  },
+  "ContributorViewModel": {
+    "Title": "Автори та перекладачі",
+    "SearchHint": "Пошук",
+    "HeaderText": "З'являється на цих треках"
+  },
+  "HomeViewModel": {
+    "More": "Детальніше"
+  },
+  "ExploreViewModel": {
+    "Title": "дослідити"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Популярні",
+    "SearchHint": "Пошук"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Home",
+    "SearchHint": "Пошук",
+    "FraKaareHeader": "Від Kåre",
+    "AslaksenTeaserHeader": "Words of faith",
+    "ShowAll": "Show All",
+    "PlayRandom": "Play random",
+    "PlayNewest": "Play newest",
+    "LatestTrack": "Останній трек",
+    "NextBroadcast": "Next broadcast",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "in {0}h",
+    "Messages": "Повідомлення",
+    "Music": "Музика"
+  },
+  "AslaksenNotification": {
+    "Title": "Words of faith",
+    "Message": "Do you want to answer the questions now?",
+    "ButtonYes": "Yes",
+    "ButtonCancel": "Later"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Автори та перекладачі",
+    "SearchHint": "Пошук"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Допомога & Зворотній зв'язок",
+    "GuideIntroTitle": "Як отримати максимальну віддачу від додатків ВММ",
+    "GuideIntroSubtitle": "Проведіть, щоб дізнатися більше",
+    "GuideOfflineTitle": "Оффлайн Плейлисти",
+    "GuideOfflineSubtitle": "Завантажити свої плейлисти на пристрої і слухати їх без підключення до інтернету. Ви можете перемикатися на цьому в список відтворення.",
+    "GuideAddToPlaylistTitle": "Додати до списку відтворення або «My доріжки»",
+    "GuideAddToPlaylistSubtitle": "Зберегти ваші улюблені треки власні плейлисти, або особистої колекції BMM «My доріжки», натиснувши кнопку Параметри праворуч від треку.",
+    "GuideLanguagesTitle": "кілька мов",
+    "GuideLanguagesSubtitle": "Пріоритетність ваші язики, для управління мови змісту ВММ. Це може бути зроблено в Установки> Мова контенту.",
+    "GuideLibraryTitle": "Бібліотека розділ",
+    "GuideLibrarySubtitle": "Отримайте швидкий доступ до вмісту, який ви хочете. У розділі бібліотеки складається з усіх доступних подкасти і Архів розділ для перегляду вмісту. ",
+    "GuideSearchTitle": "Пошук",
+    "GuideSearchSubtitle": "Знайти певну доріжку, або шукати для суб'єктів, щоб знайти відповідний контент. Ваші пошуки будуть збережені автоматично.",
+    "ButtonSendMail": "Написати листа групи ВММ\n \n"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+  },
+  "LoginViewModel": {
+    "Title": "Ввійти",
+    "LoginFailureTitle": "Увійти не вдалося",
+    "LoginFailureMessage": "Будь ласка, спробуйте ще раз, використовуючи правильні облікові дані",
+    "LoginNoConnectionMessage": "Є в даний час не зв'язок, доступних. Будь ласка, спробуйте ще раз пізніше",
+    "WrongMailAddressTitle": "Invalid email",
+    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "TbxUsername.Hint": "Ел. пошта",
+    "TbxPassword.Hint": "Пароль",
+    "BtnLogin.Text": "Ввійти",
+    "LoginInfo": "Sign in with your BCC login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
+    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
+    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
+    "UpdateButton": "Update"
+  },
+  "LanguageAppViewModel": {
+    "Title": "додаток мова"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Мови контенту",
+    "Dialog.Title": "Оберіть мову",
+    "Dialog.Cancel": "Скасувати",
+    "Toast.LanguagesStillLoading": "Список раніше завантажується, будь ласка, спробуйте ще раз через кілька секунд.",
+    "Toast.NoLanguagesAvailable": "Здається, що немає з'єднання доступна для завантаження списку мов.",
+    "DeleteLanguageMessage": "Ви повинні вибрати принаймні одна мова контенту.",
+    "DeleteLanguageTitle": "Неможливо видалити"
+  },
+  "LibraryViewModel": {
+    "Title": "Бібліотека"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Архів"
+  },
+  "MenuViewModel": {
+    "Title": "Меню",
+    "Search": "Пошук",
+    "Explore": "дослідити",
+    "MyContent": "публікації",
+    "Library": "Бібліотека",
+    "Settings": "Параметри",
+    "HelpAndFeedback": "Допомога і зворотний зв'язок",
+    "Home": "Home",
+    "Favorites": "Favorites",
+    "Profile": "Profile"
+  },
+  "MyContentViewModel": {
+    "Title": "Favorites",
+    "DownloadedContent": "Downloaded Content",
+    "FollowedPodcasts": "Підкаст",
+    "MyTracks": "Мої треки"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Підкаст",
+    "EmptyTitle": "Ви в даний час не після будь-якого подкасти",
+    "EmptySubline": "Дотримуйтесь подкаст за подкаст, натиснувши кнопку стежити."
+  },
+  "MyTracksViewModel": {
+    "Title": "Мої треки",
+    "ShufflePlay": "Відтворення у випадковому порядку",
+    "AvailableOffline": "Доступний в автономному режимі",
+    "AvailableOfflineDownload": "завантажити плейлист",
+    "AvailableOfflineDownloading": "скачування {0} з {1}",
+    "RemoveOfflineConfirm": "Ви дійсно хочете видалити всі завантажені елементи?",
+    "EmptyTitle": "Цей список відтворення-це порожній",
+    "EmptySubline": "Натисніть три точки на шляху, щоб додати трек до цього списку відтворення.",
+    "MobileDownloadDisabled": "Дозволити завантаження через мобільну мережу в настройках продовжити",
+    "AskToResumeDownloading": "Є нові елементи в цьому списку відтворення. Ви хочете, щоб відновити завантаження?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Downloaded Content",
+    "FollowedPodcasts": "Підкаст",
+    "MyTracks": "Мої треки",
+    "EmptyTitle": "You have not downloaded any content",
+    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Підкаст",
+    "EmptyTitle": "Ви в даний час не після будь-якого подкасти",
+    "EmptySubline": "Дотримуйтесь подкаст за подкаст, натиснувши кнопку стежити."
+  },
+  "PodcastViewModel": {
+    "Title": "Подкаст",
+    "Follow": "Дотримуйтесь",
+    "Following": "Після",
+    "ManageDownloads": "Керувати завантаження",
+    "GetNotified": "Отримати повідомлення",
+    "GetNotifiedMessage": "коли нові епізоди домагаються того",
+    "UnfollowConfirm": "Ви дійсно хочете unfollow цей подкаст?",
+    "MobileDownloadDisabled": "Дозволити завантаження через мобільну мережу в настройках автоматично завантажувати останні треків",
+    "ToggleFollowOfflineError": "Ви повинні бути в режимі онлайн, щоб слідувати або unfollow подкаст",
+    "Week": "week {0}",
+    "ThisWeek": "This week",
+    "LastWeek": "Last week",
+    "AslaksenTheme1": "Believe in the God of miracles",
+    "AslaksenTheme2": "I have been crucified with Christ",
+    "AslaksenTheme3": "To fear and love God",
+    "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Списки відтворення"
+  },
+  "PlayerViewModel": {
+    "Title": "Now playing",
+    "PlayingCount": "{0} з {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Черга"
+  },
+  "SearchViewModel": {
+    "Title": "Пошук",
+    "SearchHint": "Черга",
+    "SearchResults": "Результати пошуку",
+    "SearchHistory": "Нещодавній пошук",
+    "SearchSuggestions": "Ви мали на увазі: ",
+    "SearchNoResults": "Ми не міг знайти що-небудь.",
+    "WelcomeTitle": "Почніть пошук тут!",
+    "WelcomeSubTitle": "Скористайтеся полем пошуку для пошуку вмісту на BMM",
+    "DeleteConfirm": "Ви впевнені, що бажаєте видалити історію пошуку?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profile",
+    "HeadlineSettings": "Налаштування",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionEnablePushHeader": "Включити повідомлення натискати",
+    "OptionPushNotifications": "Push-повідомлень",
+    "OptionPushNotificationsSubtitle": "Увімкнути сповіщення поштовх для подкастів ви слідувати",
+    "OptionExternalStorage": "Storage location",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "External {0} MB",
+    "OptionEnablePushText": "Отримувати повідомлення натискати, коли є новий зміст доступно",
+    "OptionDownloadMobileNetworkHeader": "Завантажити через мобільну мережу",
+    "OptionDownloadMobileNetworkText": "Нехай додаток (app) завантажити контент за допомогою 3 Г/4G. Це може вплинути на тарифний план",
+    "HeadlineGeneral": "Загальні",
+    "OptionLanguageAppHeader": "додаток мова",
+    "OptionLanguageAppText": "Змінити мову програми",
+    "OptionLanguageContentHeader": "Мови контенту",
+    "OptionLanguageContentText": "Змінити мову контенту в BMM",
+    "HeadlineAbout": "Про ",
+    "OptionCopyrightHeader": "Авторське право",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
+    "OptionContactHeader": "Контакт",
+    "OptionContactText": "Питання або зворотний зв'язок? Зв'язатися з командою тут.",
+    "OptionAppVersionHeader": "додаток версія",
+    "AppInfoTitle": "додаток інформації",
+    "AppInfoAppVersion": "додаток версія: ",
+    "AppInfoDeviceModel": "Модель пристрою: ",
+    "AppInfoDevicePlatform": "Пристрій платформи: ",
+    "AppInfoDeviceVersion": "Пристрій версія: ",
+    "LoggedInAs": "Signed in as",
+    "LogoutConfirm": "Ви дійсно бажаєте вийти?",
+    "Logout": "Вихід із системи"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Location for offline tracks",
+    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Список відтворення",
+    "ShufflePlay": "відтворення у випадковому порядку",
+    "MenuDelete": "Видалити список відтворення",
+    "MenuEdit": "Edit playlist",
+    "AvailableOffline": "Доступний в автономному режимі",
+    "AvailableOfflineDownload": "завантажити плейлист",
+    "AvailableOfflineDownloading": "скачування {0} з {1}",
+    "RemoveOfflineConfirm": "Ви дійсно хочете видалити всі завантажені елементи?",
+    "CreatePrompt": "Введіть назву списку відтворення",
+    "CreateFailure": "Не вдалося створити список відтворення",
+    "DeleteConfirm": "Ви впевнені, що хочете видалити список відтворення \"{0}\"?",
+    "DeleteFailure": "Не вдалося видалити список відтворення \"{0}\"",
+    "CreateEmptyFailure": "Введіть назву для створення списку відтворення",
+    "RenameEmptyFailure": "Введіть назву, щоб перейменувати список відтворення",
+    "SearchHint": "Пошук",
+    "EmptyTitle": "Цей список відтворення-це порожній",
+    "EmptySubline": "Натисніть три точки на шляху, щоб додати трек до цього списку відтворення.",
+    "MobileDownloadDisabled": "Дозволити завантаження через мобільну мережу в настройках продовжити",
+    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "AskToResumeDownloading": "Є нові елементи в цьому списку відтворення. Ви хочете, щоб відновити завантаження?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Rename playlist",
+    "MenuSave": "Зберегти",
+    "EmptyName": "The playlist has no name",
+    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "DiscardChangesTitle": "Discard Changes?",
+    "DiscardChangesMessage": "The changes you made won't be saved",
+    "DiscardChanges": "Discard",
+    "KeepEditing": "Keep Editing"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Список відтворення",
+    "MenuDelete": "Видалити",
+    "DeleteConfirm": "Ви впевнені, що хочете видалити список відтворення \"{0}\"?",
+    "DeleteFailure": "Не вдалося видалити список відтворення \"{0}\"",
+    "ShufflePlay": "відтворення у випадковому порядку",
+    "SearchHint": "Пошук"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Додати трек в плейлист",
+    "SearchHint": "Пошук",
+    "FailedToAdd": "Не вдалося додати трек до списку відтворення. Будь-ласка спробуйте пізніше.",
+    "AlbumFailedToAddAlreadyExists": "Цей альбом – вже у ваш плейлист.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddAlbum": "Не вдалося додати альбом до списку відтворення, оскільки він містить альбоми.",
+    "FailedToAddUnknownType": "Додавання до списку відтворення \"{0}\" в даний час не підтримується.",
+    "CreatePlaylistPrompt": "Введіть назву списку відтворення",
+    "TrackAddedToTrackCollection": "Додано в список відтворення"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Додати до списку відтворення",
+    "Track.DeleteFromPlaylist": "Видалити зі списку відтворення",
+    "Track.AddToMyTracks": "Додати до моїх треків",
+    "Track.RemoveFromMyTracks": "Видалити з моїх треків",
+    "Track.AddedToMyTracks": "Додати до моїх треків",
+    "Track.RemovedFromMyTracks": "Видалити з моїх треків",
+    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.AddToQueue": "Добавить в очередь\n",
+    "Track.QueueToPlayNext": "Play next",
+    "Track.AddedToQueue": "Добавлено в очередь",
+    "Track.GoToAlbum": "Перейти до альбому",
+    "Track.GoToContributor": "Перейти к вкладчиков",
+    "Track.GoToContributor.Composer": "Композитор: {0}",
+    "Track.GoToContributor.Interpret": "Виконавець: {0}",
+    "Track.GoToContributor.Lyricist": "Автор слів: {0}",
+    "Track.GoToContributor.Arranger": "Аранжувальник: {0}",
+    "Track.Download": "Завантажити трек",
+    "Track.MoreInformation": "Додаткові відомості",
+    "Track.Share": "Share track",
+    "Album.Play": "Грати",
+    "Album.AddToPlaylist": "Додати альбом до списку відтворення",
+    "Album.AddToMyTracks": "Додати до моїх треків",
+    "Album.AddedToMyTracks": "Додати до моїх треків",
+    "Album.AddToQueue": "Добавить в очередь",
+    "Album.Share": "Share album",
+    "FailedToAdd": "Не вдалося додати трек до списку відтворення. Будь-ласка спробуйте пізніше.",
+    "FailedToAddAlbum": "Не вдалося додати альбом до списку відтворення, оскільки він містить альбоми.",
+    "AlbumFailedToAddAlreadyExists": "Цей альбом – вже у ваш плейлист.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddUnknownType": "Додавання до списку відтворення \"{0}\" в даний час не підтримується.",
+    "MyTracks": "Мої треки",
+    "Contributor.Play": "Грати",
+    "Contributor.Share": "Share contributor",
+    "TrackCollection.DeletePlaylist": "Видалити список відтворення",
+    "TrackCollection.EditPlaylist": "Edit playlist",
+    "OfflineTrackCollection.DeletePlaylist": "Видалити список відтворення",
+    "Cancel": "Скасувати"
+  },
+  "Notifications": {
+    "Downloading": "Завантаження {0}",
+    "ItemsDownloaded": "Елемент {0} з {1}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Підкаст"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "Зовнішні посилання",
+    "AboutTrack": "Про трек",
+    "Title": "інформація про трек",
+    "TrackTitle": "Назва",
+    "SongNumber": "Song number",
+    "Album": "Альбом",
+    "Artist": "Виконавець",
+    "Duration": "Тривалість",
+    "PublishDate": "Дата публікації",
+    "Lyricist": "Автор текстів",
+    "Arranger": "Аранжувальник",
+    "Composer": "Композитор",
+    "Publisher": "Publisher",
+    "Copyright": "Авторське право"
+  },
+  "CopyrightViewModel": {
+    "Title": "Авторське право"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Recent Messages"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Recent Music"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Все файлы были загружены!"
+  }
+}

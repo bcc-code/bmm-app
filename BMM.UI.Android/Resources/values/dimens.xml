@@ -1,0 +1,69 @@
+<resources>
+
+    <!-- Standard dimensions -->
+
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_huge">64dp</dimen>
+
+    <dimen name="padding_tiny">4dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="padding_huge">64dp</dimen>
+
+    <!-- Semantic definitions -->
+
+    <dimen name="row_settings_header_height">25dp</dimen>
+    <dimen name="row_navigation_height">45dp</dimen>
+    <dimen name="row_language_height">60dp</dimen>
+    <dimen name="row_document_height">64dp</dimen>
+
+    <dimen name="miniplayer_height">60dp</dimen>
+    <dimen name="miniplayer_button_width">40dp</dimen>
+    <dimen name="button_login_height">60dp</dimen>
+    <dimen name="button_shuffle_height">40dp</dimen>
+
+    <dimen name="element_margin_smallest">1dp</dimen>
+    <dimen name="element_margin_tinier">3dp</dimen>
+    <dimen name="element_margin_tiny">5dp</dimen>
+    <dimen name="element_margin_small">10dp</dimen>
+    <dimen name="element_margin_medium">15dp</dimen>
+    <dimen name="element_margin_large">20dp</dimen>
+    <dimen name="element_margin_huge">25dp</dimen>
+
+    <dimen name="fragment_player_height">80dp</dimen>
+    <dimen name="fragment_player_picture_hight">300dp</dimen>
+
+    <dimen name="explore_contributor_cardview_dimen">150dp</dimen>
+    <dimen name="contributor_image_dimen">44dp</dimen>
+    <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
+    <dimen name="contributor_image_radius">22dp</dimen>
+    <dimen name="row_contributor_height">60dp</dimen>
+
+    <dimen name="album_image_height">276dp</dimen>
+
+    <dimen name="player_header_button_width">80dp</dimen>
+
+    <dimen name="corner_radius_very_small">4dp</dimen>
+    <dimen name="corner_radius_small">8dp</dimen>
+    <dimen name="corner_radius_medium">12dp</dimen>
+    <dimen name="corner_radius_large">16dp</dimen>
+  
+    <dimen name="feature_item_image_width">40dp</dimen>
+    <dimen name="feature_item_image_height">40dp</dimen>
+    <dimen name="row_feature_item_height">60dp</dimen>
+
+    <!-- font definitions -->
+
+    <dimen name="text_tinier">11sp</dimen>
+    <dimen name="text_tiny">13sp</dimen>
+    <dimen name="text_small">14sp</dimen>
+    <dimen name="text_medium">15sp</dimen>
+    <dimen name="text_large">16sp</dimen>
+    <dimen name="text_huge">17sp</dimen>
+    <dimen name="text_very_huge">18sp</dimen>
+    <dimen name="text_very_huge_title">20sp</dimen>
+</resources>

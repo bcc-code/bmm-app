@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>BMM.Api</id>
+    <version>DEV</version>
+    <authors>Simon Schick, Felix Schoeler</authors>
+    <owners>simonsimcity, fela98</owners>
+    <projectUrl>https://bitbucket.org/brunstad/bmm-client-csharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A C# Package for consuming a BMM Api</description>
+    <releaseNotes>Initial NuGet release</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETPortable4.5-Profile259" />
+      <group targetFramework=".NETStandard1.0">
+        <dependency id="Microsoft.Bcl" version="1.1.10" />
+        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="Rx-Core" version="2.2.5" />
+        <dependency id="Rx-Interfaces" version="2.2.5" />
+        <dependency id="Tavis.UriTemplates" version="1.0.0" />
+        <dependency id="Xam.Plugin.Connectivity" version="2.2.2" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin/Release/BMM.Api.dll" target="lib/net45/BMM.Api.dll" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/net45/BMM.Api.dll.mdb" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/net45/BMM.Api.pdb" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/net45/BMM.Api.xml" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/netstandard1.0/BMM.Api.dll" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/netstandard1.0/BMM.Api.dll.mdb" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/netstandard1.0/BMM.Api.pdb" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/netstandard1.0/BMM.Api.xml" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/portable-net45+wp80+win8+wpa81/BMM.Api.dll" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/portable-net45+wp80+win8+wpa81/BMM.Api.dll.mdb" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/portable-net45+wp80+win8+wpa81/BMM.Api.pdb" />
+    <file src="bin/Release/BMM.Api.dll" target="lib/portable-net45+wp80+win8+wpa81/BMM.Api.xml" />
+  </files>
+</package>

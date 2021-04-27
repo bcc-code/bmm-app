@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:minHeight="@dimen/row_document_height"
+    android:layout_height="wrap_content"
+    android:divider="@drawable/settings_divider"
+    android:showDividers="end"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:minHeight="@dimen/row_document_height"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/image_view_row_icon"
+            android:paddingLeft="@dimen/element_margin_medium"
+            android:paddingRight="@dimen/element_margin_medium"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_trackrelation_external" />
+        <TextView
+            android:layout_toRightOf="@id/image_view_row_icon"
+            android:layout_centerVertical="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            local:MvxBind="Text Title"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="2dp"
+            android:text="Title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_large" />
+    </RelativeLayout>
+</LinearLayout>

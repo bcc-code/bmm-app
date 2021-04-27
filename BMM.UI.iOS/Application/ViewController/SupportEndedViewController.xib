@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SupportEndedViewController">
+            <connections>
+                <outlet property="SupportEndedMessage" destination="12317" id="name-outlet-12317"/>
+                <outlet property="UpdateBmmBtn" destination="12631" id="name-outlet-12631"/>
+                <outlet property="view" destination="1" id="x3Q-Zn-pVs"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="[Translate] Support ended message can be long and should be scalable in order to have enough space for all translations" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12317">
+                    <rect key="frame" x="20" y="417.5" width="374" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.46274509803921571" green="0.90196078431372551" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="12631">
+                    <rect key="frame" x="60" y="538.5" width="294" height="45"/>
+                    <color key="backgroundColor" red="0.46274509803921571" green="0.90196078431372551" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="13258"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <state key="normal" title="[Translate] Update">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                </button>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="11722">
+                    <rect key="frame" x="40" y="40" width="334" height="337.5"/>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.086274509803921567" green="0.10196078431372549" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="12317" secondAttribute="centerY" id="15996"/>
+                <constraint firstItem="12317" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" constant="-20" id="16153"/>
+                <constraint firstAttribute="leading" secondItem="12317" secondAttribute="leading" constant="-20" id="16185"/>
+                <constraint firstItem="12631" firstAttribute="top" secondItem="12317" secondAttribute="bottom" constant="60" id="16716"/>
+                <constraint firstAttribute="trailing" secondItem="12631" secondAttribute="trailing" constant="60" id="16779"/>
+                <constraint firstItem="12631" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="60" id="16811"/>
+                <constraint firstItem="11722" firstAttribute="top" secondItem="1" secondAttribute="top" constant="40" id="17278"/>
+                <constraint firstItem="12317" firstAttribute="top" secondItem="11722" secondAttribute="bottom" constant="40" id="17341"/>
+                <constraint firstItem="11722" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="40" id="17404"/>
+                <constraint firstItem="11722" firstAttribute="trailing" secondItem="1" secondAttribute="trailing" constant="-40" id="17467"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="login_logo.png" width="50" height="52.5"/>
+    </resources>
+</document>

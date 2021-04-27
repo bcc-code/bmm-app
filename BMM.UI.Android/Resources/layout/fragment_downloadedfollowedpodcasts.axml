@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+      layout="@layout/toolbar_actionbar"
+      android:layout_alignParentTop="true" />
+	<include 
+		layout="@layout/offline_banner"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/appbar" />
+    <LinearLayout
+        local:MvxBind="Visibility Visibility(ShowEmptyFollowedPodcasts)"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gridLayout1"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true">
+        <ImageView
+            android:src="@drawable/icon_category_unknown"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/imageView1"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:layout_marginBottom="@dimen/element_margin_small" />
+        <TextView
+            local:MvxLang="Text EmptyTitle"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView1"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/element_margin_tiny"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_large"
+            android:gravity="center_horizontal|center_vertical" />
+        <TextView
+            local:MvxLang="Text EmptySubline"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textView2"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/text_small"
+            android:gravity="center_horizontal|center_vertical" />
+    </LinearLayout>
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView
+        android:id="@+id/my_recycler_view"
+        android:scrollbars="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/offline_banner"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/element_margin_tiny"
+        android:paddingBottom="@dimen/element_margin_tiny"
+        android:paddingRight="@dimen/element_margin_tiny"
+        android:paddingLeft="@dimen/element_margin_tiny"
+        local:MvxItemTemplate="@layout/listitem_podcasts"
+        local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+</RelativeLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DownloadedContentViewController">
+            <connections>
+                <outlet property="MyCollectionTable" destination="qUD-gz-tJL" id="zL2-X2-zDH"/>
+                <outlet property="NoOfflineTrackCollectionHeadlineLabel" destination="pnf-ZT-ZVI" id="name-outlet-pnf-ZT-ZVI"/>
+                <outlet property="NoOfflineTrackCollectionTextLabel" destination="8XS-Ml-rcK" id="name-outlet-8XS-Ml-rcK"/>
+                <outlet property="NoOfflineTrackCollectionView" destination="hu2-Im-NHR" id="name-outlet-hu2-Im-NHR"/>
+                <outlet property="OfflineBannerLabel" destination="tCL-pz-wbX" id="name-outlet-tCL-pz-wbX"/>
+                <outlet property="OfflineBannerView" destination="JEQ-Pn-dAX" id="eg1-dY-8bX"/>
+                <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qUD-gz-tJL">
+                    <rect key="frame" x="0.0" y="29" width="414" height="707"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEQ-Pn-dAX" userLabel="Banner">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Showing only tracks on this phone" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCL-pz-wbX">
+                            <rect key="frame" x="12" y="7" width="390" height="15"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="15" id="JPZ-z0-l6X"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.46308052539825439" green="0.90309476852416992" blue="0.35757482051849365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="tCL-pz-wbX" secondAttribute="trailing" constant="12" id="58X-pp-prX"/>
+                        <constraint firstItem="tCL-pz-wbX" firstAttribute="top" secondItem="JEQ-Pn-dAX" secondAttribute="top" constant="7" id="CJ5-Kb-AAX"/>
+                        <constraint firstAttribute="height" constant="29" id="XPZ-z0-l6X"/>
+                        <constraint firstItem="tCL-pz-wbX" firstAttribute="leading" secondItem="JEQ-Pn-dAX" secondAttribute="leading" constant="12" id="f81-ZY-LvX"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hu2-Im-NHR">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k9N-gz-fTK">
+                            <rect key="frame" x="40" y="281" width="334" height="134"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no downloaded content" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pnf-ZT-ZVI">
+                                    <rect key="frame" x="0.0" y="56.999999999999993" width="334" height="20.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="0.11533132195472717" green="0.14043818414211273" blue="0.1788228452205658" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Download a playlist or follow a podcast to have it available offline." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XS-Ml-rcK">
+                                    <rect key="frame" x="0.0" y="79.666666666666686" width="334" height="36"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" red="0.23656517267227173" green="0.26955139636993408" blue="0.3256283700466156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_category_playlist.png" translatesAutoresizingMaskIntoConstraints="NO" id="70k-uk-klf">
+                                    <rect key="frame" x="149.66666666666666" y="7" width="35" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="D9S-p2-rji"/>
+                                        <constraint firstAttribute="width" constant="35" id="yY8-1p-ojq"/>
+                                    </constraints>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="centerX" secondItem="70k-uk-klf" secondAttribute="centerX" id="4ZM-CD-2eD"/>
+                                <constraint firstItem="pnf-ZT-ZVI" firstAttribute="leading" secondItem="k9N-gz-fTK" secondAttribute="leading" id="5TX-p9-hkH"/>
+                                <constraint firstItem="pnf-ZT-ZVI" firstAttribute="top" secondItem="70k-uk-klf" secondAttribute="bottom" constant="15" id="Fjo-rC-OIq"/>
+                                <constraint firstAttribute="trailing" secondItem="8XS-Ml-rcK" secondAttribute="trailing" id="Pd3-a5-AGC"/>
+                                <constraint firstAttribute="trailing" secondItem="pnf-ZT-ZVI" secondAttribute="trailing" id="dcY-Ig-m85"/>
+                                <constraint firstAttribute="height" constant="134" id="i2j-oT-HyU"/>
+                                <constraint firstItem="70k-uk-klf" firstAttribute="top" secondItem="k9N-gz-fTK" secondAttribute="top" constant="7" id="ixJ-PG-I93"/>
+                                <constraint firstItem="8XS-Ml-rcK" firstAttribute="leading" secondItem="k9N-gz-fTK" secondAttribute="leading" id="ks4-Ob-ABh"/>
+                                <constraint firstItem="8XS-Ml-rcK" firstAttribute="top" secondItem="pnf-ZT-ZVI" secondAttribute="bottom" constant="2" id="mlW-bf-vhY"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="k9N-gz-fTK" secondAttribute="trailing" constant="40" id="3ch-yK-LfJ"/>
+                        <constraint firstAttribute="centerY" secondItem="k9N-gz-fTK" secondAttribute="centerY" constant="20" id="Sl4-QW-AE1"/>
+                        <constraint firstItem="k9N-gz-fTK" firstAttribute="leading" secondItem="hu2-Im-NHR" secondAttribute="leading" constant="40" id="b2w-Xg-C5B"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="hu2-Im-NHR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8nQ-JR-snC"/>
+                <constraint firstItem="JEQ-Pn-dAX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8nQ-JR-snX"/>
+                <constraint firstItem="hu2-Im-NHR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QPN-9o-9m8"/>
+                <constraint firstItem="JEQ-Pn-dAX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="QPN-9o-9mX"/>
+                <constraint firstAttribute="bottom" secondItem="qUD-gz-tJL" secondAttribute="bottom" id="RCm-1Y-pFT"/>
+                <constraint firstAttribute="trailing" secondItem="hu2-Im-NHR" secondAttribute="trailing" id="RRC-W9-Xd9"/>
+                <constraint firstAttribute="trailing" secondItem="JEQ-Pn-dAX" secondAttribute="trailing" id="RRC-W9-XdX"/>
+                <constraint firstItem="qUD-gz-tJL" firstAttribute="top" secondItem="JEQ-Pn-dAX" secondAttribute="bottom" id="TWf-mC-kPe"/>
+                <constraint firstAttribute="trailing" secondItem="qUD-gz-tJL" secondAttribute="trailing" id="rqU-9E-N5K"/>
+                <constraint firstItem="qUD-gz-tJL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="u1W-7U-lMu"/>
+                <constraint firstAttribute="bottom" secondItem="hu2-Im-NHR" secondAttribute="bottom" id="uk9-20-b3P"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="154"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_category_playlist.png" width="36" height="36"/>
+    </resources>
+</document>

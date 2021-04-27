@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "401860537648",
+    "firebase_url": "https://bmm-brunstad.firebaseio.com",
+    "project_id": "bmm-brunstad",
+    "storage_bucket": "bmm-brunstad.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401860537648:android:d2a6324c667ca373",
+        "android_client_info": {
+          "package_name": "org.brunstad.bmm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401860537648-mquo7olg4v30nnub9fj4dji37fdmn7to.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.brunstad.bmm",
+            "certificate_hash": "672366bb3b613537c7ed93e4dcda8533cdaa3ab5"
+          }
+        },
+        {
+          "client_id": "401860537648-5vloin33rr4fg6d0kq7ip91kkomi20t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVftij7x1SAB10vFSeiseStqMSivttWpY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401860537648-5vloin33rr4fg6d0kq7ip91kkomi20t5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "401860537648-gvkdj1gkusq6mjis8ak05lomb4u1gq9i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.brunstad.bmm",
+                "app_store_id": "777577855"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

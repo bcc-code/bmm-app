@@ -1,0 +1,1 @@
+We update the BMM app as often as possible to make the app better and more reliable. To make sure you don't miss a thing, just keep your Updates turned on.
