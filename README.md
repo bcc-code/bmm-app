@@ -1,27 +1,17 @@
 # BMM Mobile Apps
-**Purpose**
 
-We want to build an app for BMM that exposes all content available on the website. The current app works most of the time, but we want to do better then that. Therefor we started again from scratch. We want to build an app with the best possible experience on all the separate platforms.
+This repository contains an app to consume the content from BMM on your phone. It uses Xamarin to deliver apps for Android and iOS.
 
-**Who’s in charge?**
-
-The project is sponsored by Johannes Schmechel and managed by Karsten Küpper. If you have any questions about the project you can contact Karsten.
+If you have a feature request please submit it at [User Voice](https://uservoice.bcc.no). If you find a bug feel free to create an issue or submit a pull request.
 
 ## Getting started
 
-### Software
+> Warning: if you want to run your locally built version of BMM on your iPhone, you need an Developer license from Apple (~100$/year).
+> Even then, the process to get it to work is quite complicated and you should not rely on our help.
 
-* Visual Studio/Jetbrains Rider
-* Resharper
-* .NET 4.5
-* Xamarin SDK
-* Java (for Android)
-* Android SDK (for Android)
-* Xcode (for iOS)
-
-### Client Architecture
-
-We have chosen to use MvvM as the architectural pattern for our app. This is implemented by a framework called [MvvmCross](https://github.com/MvvmCross/MvvmCross) also known as Mvx. This enables us to separate the UI from the business logic and the back end logic.
+todo: add steps on how to get started. Something like:
+1. Download and install Visual Studio
+2. ....
 
 ## Branching model
 
@@ -38,19 +28,19 @@ We use [git flow](https://www.atlassian.com/git/tutorials/comparing-workflows/gi
 
 We work with pull requests so other project members can review your code before it appears in the develop branch.
 
-1. Make sure there is a corresponding issue for your change first. If there is none, create one.
-2. Create a feature branch for your feature according to the naming convention above.
-3. Commit your changes and push your changes to the repository in the features branch.
-4. Create a pull request to the `develop` branch.
-5. Link the issue and the pull request
+1. Create a feature branch for your feature according to the naming convention above.
+2. Commit your changes and push your changes to the repository in the features branch.
+3. Create a pull request to the `develop` branch.
+4. Link the issue and the pull request
 
 Your pull requests should be small, ideally below 400 lines of code but never more than one feature.
 
-After you submitted a pull request the code will be reviewed by some selected people. After your pull request is submitted make sure you check back regularly and have notifications enabled so you get notified whenever someone adds a comment to your pull request. When the reviewers are satisfied and there are no more comments or tasks, the pull request will be merged. You are not done with implementing the feature before the pull request is merged.
+After you submitted a pull request the code will be reviewed by some selected people. After your pull request is submitted, make sure you check back regularly and
+have notifications enabled so you get notified whenever someone adds a comment to your pull request. When the reviewers are satisfied and there are no more comments or tasks,
+the pull request will be merged. You are not done with implementing the feature before the pull request is merged.
 
 ## DOs and DON'Ts
 
-* **DO** follow our coding style (see below)
 * **DO** include tests when adding new features, either Unit tests where possible
   and UITests to test the platform specific UI code. When fixing bugs, start with
   adding a test that highlights how the current behavior is broken.
@@ -64,21 +54,6 @@ After you submitted a pull request the code will be reviewed by some selected pe
   of time.
 
 
-## C# Coding Style
-
-The general rule we follow is "use Visual Studio defaults".
-
-1. We use Allman style braces
-2. We use four spaces of indentation (no tabs)
-3. We use "camelCase" private members
-4. We avoid `this.` unless necessary
-5. We void [out parameters](https://msdn.microsoft.com/en-us/library/t3c3bfhx.aspx) unless absolutely necessary
-6. We always specify the visibility, even if it's the default (i.e.
-   `private string foo` not `string foo`)
-7. Namespace imports should be specified at the top of the file, *outside* of
-   `namespace` declarations and should be sorted alphabetically, with `System.`
-   namespaces at the top and blank lines between different top level groups
-
 ## App Center
 
 We use [App Center](https://appcenter.ms/apps) for:
@@ -91,37 +66,6 @@ We use [App Center](https://appcenter.ms/apps) for:
 4. UI Tests
 
 
-## Who do I talk to? ##
-
-**Responsible**
-
-* Overall: Johannes Schmechel
-* Technical: Karsten Küpper
-* Design: Søren Clausen
-
-# Appcenter UI Tests
-
-Generally do we have a build that runs the UI Tests. The result of these tests can be seen under [appcenter.ms](http://appcenter.ms). If you need access there please talk to the Technical responsible.
-
-## How can I run UI Tests on multiple devices for a single fixture?
-
-To run a single fixture you can download the build artifacts of the UI Test build and run it locally. To achieve that following steps are necessary.
-1. install nodejs from [nodejs.org](https://nodejs.org)
-2. globally install appcenter-cli `npm install -g appcenter-cli`
-3. download and unzip the build artifacts
-4. open a cmd in the drop folder
-5. remove some fixtures in the file `AppCenterTest\manifest.json` to control which fixtures should be run
-6. run following command `appcenter test run manifest --manifest-path ./AppCenterTest/manifest.json --app-path ./org.brunstad.bmm.apk --app BCC-IT-Services/BMM-Android --devices BCC-IT-Services/every-android-version --test-series manual --locale en_US --quiet`
-* it might make sense to adjust the devices option and create additional test series to fit for your use case
-
->The UI tests use two steps: first the tests are prepared which results in a manifest. Second the manifest is executed. If you'd run them immediately the cli offers an option to filter the executed tests but that is not available using a manifest.
-
-## How can I run UI Tests on multiple devices for my local changes?
-
-This command is not yet finished but a starting point. It still needs some tweaking to make it actually work.
-
-`appcenter test run uitest --app-path ./org.brunstad.bmm.apk --app BCC-IT-Services/BMM-Android --devices BCC-IT-Services/small --test-series manual --locale en_US --quiet`
-
 # How to release a version of the BMM App
 
 We have 3 different types of release **environments** for the app these are:
@@ -130,26 +74,6 @@ We have 3 different types of release **environments** for the app these are:
 3. *Beta*
 
 We follow [semantic versioning](http://semver.org/) for the versioning of the app.
-
-Additionally, we have the following naming conventions for Release Candidates and Beta versions:
-
-### Release Candidate (RC):
-
-`{MAJOR}.{MINOR}.{PATCH}-RC{REVISION}`
-
-Example: 1.0.0-RC1
-
-### Beta:
-
-`{MAJOR}.{MINOR}.{PATCH}-BETA{REVISION}`
-
-Example: 1.0.0-BETA1
-
-## Versioning
-
-The following pattern {MAJOR}.{MINOR}.{PATCH} is referred to as the **version number**.
-
-The pattern for the Release candidate and the beta version, that means with either the pattern `{MAJOR}.{MINOR}.{PATCH}-RC{REVISION}` or `{MAJOR}.{MINOR}.{PATCH}-BETA{REVISION}` is referred to as the **version name**
 
 ## The release process
 
