@@ -63,6 +63,17 @@ namespace BMM.UI.iOS
 
         public bool IsDownloaded(IDownloadable downloadable)
         {
+            if (downloadable.Url == null)
+            {
+                _analytics.LogEvent("unexpected null for url",
+                    new Dictionary<string, object>
+                    {
+                        {"Track", downloadable.Id},
+                        {"Tags", downloadable.Tags}
+                    });
+                return false;
+            }
+
             var path = PathByUrl(downloadable.Url);
             return File.Exists(path);
         }
