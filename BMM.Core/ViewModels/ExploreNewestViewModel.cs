@@ -93,6 +93,12 @@ namespace BMM.Core.ViewModels
             return filteredDocs;
         }
 
+        public override void RefreshInBackground()
+        {
+            base.RefreshInBackground();
+            FraKaareTeaserViewModel.RefreshInBackground();
+            AslaksenTeaserViewModel.RefreshInBackground();
+        }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {

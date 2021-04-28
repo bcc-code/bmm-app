@@ -39,7 +39,7 @@ After you submitted a pull request the code will be reviewed by some selected pe
 have notifications enabled so you get notified whenever someone adds a comment to your pull request. When the reviewers are satisfied and there are no more comments or tasks,
 the pull request will be merged. You are not done with implementing the feature before the pull request is merged.
 
-## DOs and DON'Ts
+### DOs and DON'TS
 
 * **DO** include tests when adding new features, either Unit tests where possible
   and UITests to test the platform specific UI code. When fixing bugs, start with
@@ -53,6 +53,12 @@ the pull request will be merged. You are not done with implementing the feature 
   a discussion, so we can agree on a direction before you invest a large amount
   of time.
 
+## Continuous delivery
+
+* Commits to the `develop` branch create a new alpha build
+* Commits to a `release/*` branch create a new beta build which is distributed to the beta testers
+* Commits to a `hotfix/*` branch create a new beta build which is distributed to the beta testers
+* Commits to the `main` branch create a build for the App Store and Play Store
 
 ## App Center
 
@@ -64,39 +70,6 @@ We use [App Center](https://appcenter.ms/apps) for:
     * Information: It gives extra information about the different functions and sections that are being use
     * Warnings It gives extra information about the warning that are boing use and how can they affect the application
 4. UI Tests
-
-
-# How to release a version of the BMM App
-
-We have 3 different types of release **environments** for the app these are:
-1. *Release*
-2. *Release Candidate*
-3. *Beta*
-
-We follow [semantic versioning](http://semver.org/) for the versioning of the app.
-
-## The release process
-
-1. Create release branch
-    1. Create a branch with the following naming: `release/{version number}`.
-    2. Push it to the remote.
-
-2. Add release notes in the release branch
-  * Add a file in the **release-notes** folder with the name `release-notes/{version name}.md`
-    * Examples:
-      * release-notes/1.0.0-BETA1.md (release notes for the *Beta*)
-      * release-notes/1.0.0-RC1.md (release notes for the *Release Candidate*)
-      * release-notes/1.0.0.md (release notes for the *Release*)
-
-3. Run the build in [VSTS](https://bcc-its.visualstudio.com/BMM/_build?path=%5C&_a=allDefinitions)
-    1. Trigger a release for the respective platform and **environment**
-    2. Set the `VersionNumber` field to your **version number**.
-    3. (Only RC and BETA) Set the `RevisionNumber` field to the REVISION of the Release Candidate or Beta release.
-
-4. Merge release branch
-    If you are creating a *Release* to the App Store and Google Play, you can merge the `master` branch and also back into `develop` when the builds have finished.
-
-If you are creating a public release to App Store you also have to go to iTunes connect, copy and paste the release notes into the new release and submit the app for review. For Google Play all of this is done automatically.
 
 ## How can I see the traffic from my devices?
 

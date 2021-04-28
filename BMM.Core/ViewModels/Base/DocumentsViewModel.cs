@@ -260,7 +260,7 @@ namespace BMM.Core.ViewModels.Base
             return Task.CompletedTask;
         }
 
-        public void RefreshInBackground()
+        public virtual void RefreshInBackground()
         {
             ExceptionHandler.FireAndForgetWithoutUserMessages(() => LoadData(CachePolicy.UseCacheAndWaitForUpdates));
         }
