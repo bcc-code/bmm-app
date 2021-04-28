@@ -72,26 +72,17 @@ namespace BMM.UI.iOS
             _messagingDelegate = new FirebaseMessagingDelegate();
             Messaging.SharedInstance.Delegate = _messagingDelegate;
 
-            if (VersionHelper.SupportsUserNotificationCenter)
-            {
-                var authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
-                UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) => { Console.WriteLine(granted); });
+            const UNAuthorizationOptions authOptions = UNAuthorizationOptions.Alert | UNAuthorizationOptions.Badge | UNAuthorizationOptions.Sound;
+            UNUserNotificationCenter.Current.RequestAuthorization(authOptions, (granted, error) => { Console.WriteLine(granted); });
 
-                UNUserNotificationCenter.Current.Delegate = Mvx.IoCProvider.Create<UserNotificationCenterDelegate>();
-            }
-            else
-            {
-                var notTypes = UIUserNotificationType.Sound | UIUserNotificationType.Alert | UIUserNotificationType.Badge;
-                var settings = UIUserNotificationSettings.GetSettingsForTypes(notTypes, null);
-                app.RegisterUserNotificationSettings(settings);
-            }
+            UNUserNotificationCenter.Current.Delegate = Mvx.IoCProvider.Create<UserNotificationCenterDelegate>();
 
             app.RegisterForRemoteNotifications();
         }
 
         /// <summary>
-        /// This method will be called for silent notifications and normal notifications on iOS 9.
-        /// Normal notification on iOS 10 or newer are handled within UNUserNotificationCenterDelegate.
+        /// This method is called for arriving silent notifications.
+        /// Regular notification are handled within the UNUserNotificationCenterDelegate.
         /// https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/pushing_background_updates_to_your_app
         /// </summary>
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
