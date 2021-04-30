@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "BMM takım ile bağlantı kurulamadı, e-posta gönderebilirsiniz: {0}",
+    "External": "External",
+    "Internal": "Internal",
+    "BytesMB": "{0} MB",
+    "UnexpectedError": "Sorry, an unexpected error has occurred.",
+    "InternetConnectionOffline": "İnternet bağlantısı çevrimdışı görünüyor.",
+    "ItemNotFound": "The requested item does not exist.",
+    "OfflineBanner": "Showing only tracks on this phone",
+    "Song": "Song",
+    "Speech": "Message",
+    "Audiobook": "Audiobook",
+    "Exegesis": "Exegesis"
+  },
+  "Streak": {
+    "Message": "Your streak this week",
+    "MessagePerfect": "A perfect week. Well done!",
+    "PerfectWeekCountSingular": "{0} perfect week",
+    "PerfectWeekCountPlural": "{0} perfect weeks",
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Unable to open link",
+    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "Bağlantı Hatası Oluştu: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Maalesef, bu aygıt dosya formatını desteklemiyor.",
+    "ErrorVideoNotSupported": "Maalesef, videolar şu anda desteklenmiyor.",
+    "ErrorFileNotOffline": "İndirilmemiş parçalar çevrimdışı oynatılamaz.",
+    "ErrorPlayerStopped": "The player has stopped.",
+    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
+    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
+    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
+    "ErrorPlayerStart": "Unable to start playback."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "There is not enough space to store offline files"
+  },
+  "AlbumViewModel": {
+    "Title": "Albüm",
+    "SearchHint": "Ara",
+    "AddAlbumToPlaylist": "Albüm çalma listesine ekle",
+    "AddAlbumToMyTracks": "Benim parça için albüm ekle",
+    "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
+    "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "ShufflePlay": "Karışık Çal"
+  },
+  "AlbumsViewModel": {
+    "Title": "Arşiv",
+    "SearchHint": "Ara"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Otomatik karşıdan yükleme",
+    "None": "Hiçbiri",
+    "PluralLatestTracks": "{0} son parçalara",
+    "AutomaticDownloadSubtitle": "Bu podcast takip zaman otomatik olarak yüklenmek üzere parça miktarını ayarlayın."
+  },
+  "ContributorViewModel": {
+    "Title": "Katkıda Bulunan",
+    "SearchHint": "Ara",
+    "HeaderText": "Bu parçalarda görünüyor"
+  },
+  "HomeViewModel": {
+    "More": "Daha"
+  },
+  "ExploreViewModel": {
+    "Title": "Bul"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Sevilen",
+    "SearchHint": "Ara"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Home",
+    "SearchHint": "Ara",
+    "FraKaareHeader": "Kåre adlı",
+    "AslaksenTeaserHeader": "İman sözü",
+    "ShowAll": "Listele",
+    "PlayRandom": "Play random",
+    "PlayNewest": "Play newest",
+    "LatestTrack": "En yeni parça",
+    "NextBroadcast": "Next broadcast",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "in {0}h",
+    "Messages": "Mesajlar",
+    "Music": "Müzik"
+  },
+  "AslaksenNotification": {
+    "Title": "İman sözü",
+    "Message": "Soruları şimdi cevaplamak ister misin?",
+    "ButtonYes": "Evet",
+    "ButtonCancel": "Sonra"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Katkı Yapanlar",
+    "SearchHint": "Ara"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Yardım & Destek",
+    "GuideIntroTitle": "BMM uygulamasını en iyi şekilde nasıl kullanabilirim",
+    "GuideIntroSubtitle": "Daha Fazla bilgi edinmek için devam",
+    "GuideOfflineTitle": "Çevrimdışı Çalma Listesi",
+    "GuideOfflineSubtitle": "Çalma Listesini cihazına indir ve internet bağlantısı olmadan dinle. Çalma Listesinde geçiş yapabilirsin.",
+    "GuideAddToPlaylistTitle": "Çalma listesi veya 'My parçalar' ekleme",
+    "GuideAddToPlaylistSubtitle": "En sevdiğiniz şarkıları kendi çalma listelerinizi veya kişisel BMM koleksiyon 'My parçalar' parça seçenekleri düğmesini dokunarak kaydedin.",
+    "GuideLanguagesTitle": "Birden fazla dil",
+    "GuideLanguagesSubtitle": "Dil seçeneklerini sırala. Dil ayarlarına Ayarlar > Dil Seçenekleri.\n",
+    "GuideLibraryTitle": "Kütüphane bölümü",
+    "GuideLibrarySubtitle": "İstediğiniz içeriği hızlı erişim sağlayabilirsiniz. Kitaplık bölümünde kullanılabilir podcast içeriğine gözatmak için bir arşiv bölümden oluşur. ",
+    "GuideSearchTitle": "Ara",
+    "GuideSearchSubtitle": "Belirli bir konuyu ya da içeriği bulmak için Parça Bul. Aramaların otomatik kaydedilmektedir.",
+    "ButtonSendMail": "BMM takımına email gönder"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+  },
+  "LoginViewModel": {
+    "Title": "Giriş",
+    "LoginFailureTitle": "Giriş Hatası",
+    "LoginFailureMessage": "Doğru hesap bilgilerini kullanarak tekrar deneyin",
+    "LoginNoConnectionMessage": "Şu an bağlantı yok. Lütfen daha sonra tekrar deneyim",
+    "WrongMailAddressTitle": "Invalid email",
+    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "TbxUsername.Hint": "E-posta",
+    "TbxPassword.Hint": "Şifre",
+    "BtnLogin.Text": "Giriş",
+    "LoginInfo": "Sign in with your BCC login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
+    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
+    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
+    "UpdateButton": "Update"
+  },
+  "LanguageAppViewModel": {
+    "Title": "Uygulama Dili"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Dil Seçenekleri",
+    "Dialog.Title": "Dil Seç",
+    "Dialog.Cancel": "İptal",
+    "Toast.LanguagesStillLoading": "Liste Hala Doluyor. Lütfen az süre sonra tekrar deneyin.",
+    "Toast.NoLanguagesAvailable": "Dil Listesini yüklemek için internet ağı kullanılamamaktadır.",
+    "DeleteLanguageMessage": "En az bir dil seçmek zorundasın",
+    "DeleteLanguageTitle": "Değiştirilemez {0}"
+  },
+  "LibraryViewModel": {
+    "Title": "Kütüphane"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Arşiv"
+  },
+  "MenuViewModel": {
+    "Title": "Menü",
+    "Search": "Ara",
+    "Explore": "Bul",
+    "MyContent": "Bilgilerim",
+    "Library": "Kütüphane",
+    "Settings": "Ayarlar",
+    "HelpAndFeedback": "Yardım ve Destek",
+    "Home": "Home",
+    "Favorites": "Favorites",
+    "Profile": "Profile"
+  },
+  "MyContentViewModel": {
+    "Title": "Favorites",
+    "DownloadedContent": "Downloaded Content",
+    "FollowedPodcasts": "Podcast",
+    "MyTracks": "Benim parça"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Podcast",
+    "EmptyTitle": "Şu anda herhangi bir podcast takip değil",
+    "EmptySubline": "Bir Podcast bir Podcast açıp takip düğmesini tıklatarak uygulayın."
+  },
+  "MyTracksViewModel": {
+    "Title": "Benim parça",
+    "ShufflePlay": "Karışık Çal",
+    "AvailableOffline": "Çevrimdışı musait",
+    "AvailableOfflineDownload": "İndirilmiş Çalma Listesi",
+    "AvailableOfflineDownloading": "{0}{1} arası İndirilen",
+    "RemoveOfflineConfirm": "Tüm yüklenen öğeleri silmek istiyor musunuz?",
+    "EmptyTitle": "Bu Çalma Listesi Boş",
+    "EmptySubline": "Parçadaki 3 noktaya tıkla ve Çalma listesine ekle.",
+    "MobileDownloadDisabled": "Devam etmek için ayarlardan mobil ağ üzerinden indirmeyi etkinleştir",
+    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Downloaded Content",
+    "FollowedPodcasts": "Podcast",
+    "MyTracks": "Benim parça",
+    "EmptyTitle": "You have not downloaded any content",
+    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Podcast",
+    "EmptyTitle": "Şu anda herhangi bir podcast takip değil",
+    "EmptySubline": "Bir Podcast bir Podcast açıp takip düğmesini tıklatarak uygulayın."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "İzleyin",
+    "Following": "Takip",
+    "ManageDownloads": "İndirme yönetmek",
+    "GetNotified": "Size bildirilsin",
+    "GetNotifiedMessage": "ne zaman dışarı yeni bölümleri bulunmaktadır",
+    "UnfollowConfirm": "Bu podcast unfollow istiyor musunuz?",
+    "MobileDownloadDisabled": "Son parçalara otomatik olarak indirmek için ayarları mobil ağ üzerinden indirme etkinleştirmek",
+    "ToggleFollowOfflineError": "İzleyin veya bir podcast unfollow için çevrimiçi modunda olması gerekir",
+    "Week": "week {0}",
+    "ThisWeek": "This week",
+    "LastWeek": "Last week",
+    "AslaksenTheme1": "Mucizeler Tanrısın'na iman et",
+    "AslaksenTheme2": "Ben Mesih ile haçlandım",
+    "AslaksenTheme3": "Tanrı'dan korkmak ve O'nu sevmek",
+    "AslaksenTheme4": "Alçakgönüllülük meselenin tam kendisidir"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Çalma Listesi"
+  },
+  "PlayerViewModel": {
+    "Title": "Now playing",
+    "PlayingCount": "{0} {1} arasında"
+  },
+  "QueueViewModel": {
+    "Title": "Sıralı"
+  },
+  "SearchViewModel": {
+    "Title": "Ara",
+    "SearchHint": "Ara",
+    "SearchResults": "Arama Sonuçları",
+    "SearchHistory": "Son Aramalar",
+    "SearchSuggestions": "Şu sorguyu mu aramak istiyorsunuz: ",
+    "SearchNoResults": "Hiç bir sonuç bulunamadı.",
+    "WelcomeTitle": "Burada ara!",
+    "WelcomeSubTitle": "Ara sekmesinden BMM de tarama yapabilirsin",
+    "DeleteConfirm": "Arama Geçmişini silmek istediğine emin misin?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profile",
+    "HeadlineSettings": "Ayarlar",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionEnablePushHeader": "Bildirimleri etkinleştir",
+    "OptionPushNotifications": "Push bildirimleri",
+    "OptionPushNotificationsSubtitle": "Seni takip itmeli çoğaltma bildirilerini podcast için etkinleştir",
+    "OptionExternalStorage": "Storage location",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "External {0} MB",
+    "OptionEnablePushText": "Yeni parçalar için bildirim aç",
+    "OptionDownloadMobileNetworkHeader": "Çalma listesini mobil ağ üzerinden indir",
+    "OptionDownloadMobileNetworkText": "3G / 4G ile Çalma Listesi indir. Bu veri planını etkileyebilir",
+    "HeadlineGeneral": "Genel",
+    "OptionLanguageAppHeader": "Uygulama Dili",
+    "OptionLanguageAppText": "Uygulama Dilini değiştir",
+    "OptionLanguageContentHeader": "İçerik Dili",
+    "OptionLanguageContentText": "Dil seçeneklerini tüm içeriğe göre sırala",
+    "HeadlineAbout": "Hakkında",
+    "OptionCopyrightHeader": "Telif Hakkı",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
+    "OptionContactHeader": "İletişim",
+    "OptionContactText": "Soru ya da Yardım? Bize buradan ulaş.",
+    "OptionAppVersionHeader": "Uygulama Versiyonu",
+    "AppInfoTitle": "Uygulama Bilgi",
+    "AppInfoAppVersion": "Uygulama Versiyon: ",
+    "AppInfoDeviceModel": "Aygıt model: ",
+    "AppInfoDevicePlatform": "Aygıt platformu: ",
+    "AppInfoDeviceVersion": "Aygıt versiyon: ",
+    "LoggedInAs": "Signed in as",
+    "LogoutConfirm": "Çıkış yapmak istediğine emin misin?",
+    "Logout": "Çıkış"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Location for offline tracks",
+    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Çalma Listesi",
+    "ShufflePlay": "Karışık Çal",
+    "MenuDelete": "Çalma listesini Sil",
+    "MenuEdit": "Edit playlist",
+    "AvailableOffline": "Çevrimdışı musait",
+    "AvailableOfflineDownload": "İndirilmiş Çalma Listesi",
+    "AvailableOfflineDownloading": "{0}{1} arası İndirilen",
+    "RemoveOfflineConfirm": "Tüm yüklenen öğeleri silmek istiyor musunuz?",
+    "CreatePrompt": "Çalma Listesi Adı Gir",
+    "CreateFailure": "Çalma Listesi oluşturulamadı",
+    "DeleteConfirm": "{0} çalma Listesini silmek istediğine emin misin?",
+    "DeleteFailure": "{0} Çalma Listesi silinemedi",
+    "CreateEmptyFailure": "Çalma Listesi oluşturmak için başlık gir",
+    "RenameEmptyFailure": "Çalma Listesini Yeniden adlandırmak için başlık gir",
+    "SearchHint": "Ara",
+    "EmptyTitle": "Bu Çalma Listesi Boş",
+    "EmptySubline": "Parçadaki 3 noktaya tıkla ve Çalma listesine ekle.",
+    "MobileDownloadDisabled": "Devam etmek için ayarlardan mobil ağ üzerinden indirmeyi etkinleştir",
+    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Rename playlist",
+    "MenuSave": "Kaydet",
+    "EmptyName": "The playlist has no name",
+    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "DiscardChangesTitle": "Discard Changes?",
+    "DiscardChangesMessage": "The changes you made won't be saved",
+    "DiscardChanges": "Discard",
+    "KeepEditing": "Keep Editing"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Çalma Listesi",
+    "MenuDelete": "Sil",
+    "DeleteConfirm": "{0} çalma Listesini silmek istediğine emin misin?",
+    "DeleteFailure": "{0} Çalma Listesi silinemedi",
+    "ShufflePlay": "Karışık Çal",
+    "SearchHint": "Ara"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Çalma Listesine yeni parça ekle",
+    "SearchHint": "Ara",
+    "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
+    "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddAlbum": "Albümleri içerdiğinden albüm çalma listesine eklenemedi.",
+    "FailedToAddUnknownType": "\"{0}\" bir çalma listesine ekleme şu anda desteklenmiyor.",
+    "CreatePlaylistPrompt": "Çalma Listesi Adı Gir",
+    "TrackAddedToTrackCollection": "Çalma Listesine Eklendi"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Çalma listesine ekle",
+    "Track.DeleteFromPlaylist": "Çalma listesinden çıkar",
+    "Track.AddToMyTracks": "Benim parça ekleyin",
+    "Track.RemoveFromMyTracks": "Benim parça kaldırma",
+    "Track.AddedToMyTracks": "Benim parça için eklendi",
+    "Track.RemovedFromMyTracks": "Benim parça kaldırma",
+    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.AddToQueue": "Sıraya Ekle",
+    "Track.QueueToPlayNext": "Play next",
+    "Track.AddedToQueue": "Sıraya Eklendi",
+    "Track.GoToAlbum": "Albüm' e Git",
+    "Track.GoToContributor": "Kullanıcılara Git",
+    "Track.GoToContributor.Composer": "Besteci {0}",
+    "Track.GoToContributor.Interpret": "Sanatçı: {0}",
+    "Track.GoToContributor.Lyricist": "Söz yazarı {0}",
+    "Track.GoToContributor.Arranger": "Aranjör: {0}",
+    "Track.Download": "Parça İndir",
+    "Track.MoreInformation": "Daha bilgi",
+    "Track.Share": "Share track",
+    "Album.Play": "Oynat",
+    "Album.AddToPlaylist": "Albüm çalma listesine ekle",
+    "Album.AddToMyTracks": "Benim parça için albüm ekle",
+    "Album.AddedToMyTracks": "Albüm için My parça eklendi",
+    "Album.AddToQueue": "Sıraya Ekle",
+    "Album.Share": "Share album",
+    "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
+    "FailedToAddAlbum": "Albümleri içerdiğinden albüm çalma listesine eklenemedi.",
+    "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddUnknownType": "\"{0}\" bir çalma listesine ekleme şu anda desteklenmiyor.",
+    "MyTracks": "Benim parça",
+    "Contributor.Play": "Oynat",
+    "Contributor.Share": "Share contributor",
+    "TrackCollection.DeletePlaylist": "Çalma listesini Sil",
+    "TrackCollection.EditPlaylist": "Edit playlist",
+    "OfflineTrackCollection.DeletePlaylist": "Çalma listesini Sil",
+    "Cancel": "İptal"
+  },
+  "Notifications": {
+    "Downloading": "{0} İndiriliyor",
+    "ItemsDownloaded": "{0}{1} arası parçalar"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcast"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "External references",
+    "AboutTrack": "Parça hakkında",
+    "Title": "Parçayla ilgili Bilgi",
+    "TrackTitle": "Başlık",
+    "SongNumber": "Song number",
+    "Album": "Albüm",
+    "Artist": "Sanatçı",
+    "Duration": "Süre",
+    "PublishDate": "Yayın Tarihi",
+    "Lyricist": "Söz Yazarı",
+    "Arranger": "Aranjör",
+    "Composer": "Besteci",
+    "Publisher": "Publisher",
+    "Copyright": "Telif Hakkı"
+  },
+  "CopyrightViewModel": {
+    "Title": "Telif Hakkı"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Recent Messages"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Recent Music"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Tüm Dosyalar İndirildi!"
+  }
+}
