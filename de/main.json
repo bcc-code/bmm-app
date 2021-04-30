@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "Konnte das BMM-Team nicht kontaktieren, sende eine e-Mail an: {0}",
+    "External": "Externer Speicher",
+    "Internal": "Interner Speicher",
+    "BytesMB": "{0} MB frei",
+    "UnexpectedError": "Leider ist ein unbekannter Fehler aufgetreten.",
+    "InternetConnectionOffline": "Die Internetverbindung scheint offline zu sein.",
+    "ItemNotFound": "Das angefragte Element konnte nicht gefunden werden.",
+    "OfflineBanner": "Nur Titel auf diesem Gerät werden gezeigt.",
+    "Song": "Lied",
+    "Speech": "Nachricht",
+    "Audiobook": "Hörbuch",
+    "Exegesis": "Auslegung"
+  },
+  "Streak": {
+    "Message": "Dein Status diese Woche",
+    "MessagePerfect": "Eine perfekte Woche. Gut gemacht!",
+    "PerfectWeekCountSingular": "{0} perfekte Woche",
+    "PerfectWeekCountPlural": "{0} perfekte Wochen",
+    "PerfectWeekCountNone": "Noch keine perfekte Woche",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "D",
+    "WeekdayWednesday": "M",
+    "WeekdayThursday": "D",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Link konnte nicht geöffnet werden",
+    "ErrorMessage": "Leider war es nicht möglich den Link '{0}' zu öffnen."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "Ein Verbindungsfehler ist aufgetreten: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Leider unterstützt Ihr Gerät dieses Dateiformat nicht.",
+    "ErrorVideoNotSupported": "Videos werden derzeit leider nicht unterstützt.",
+    "ErrorFileNotOffline": "Du kannst einen Titel, der nicht heruntergeladen wurde, nicht im Offline-Modus abspielen.",
+    "ErrorPlayerStopped": "Die Wiedergabe wurde gestoppt.",
+    "ErrorPlayerStoppedGeneric": "Ein Fehler ist aufgetreten und die Wiedergabe wurde gestoppt.",
+    "ErrorPlayerLiveRadioStopped": "Die Live-Übertragung hat geendet.",
+    "ErrorPlayerLiveRadioTooEarly": "Die Live-Übertragung hat noch nicht gestartet. Bitte versuche es später noch einmal.",
+    "ErrorPlayerStart": "Nicht in der Lage den Titel zu starten."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "Der Speicherplatz für die Offline-Dateien ist nicht ausreichend"
+  },
+  "AlbumViewModel": {
+    "Title": "Album",
+    "SearchHint": "Suche",
+    "AddAlbumToPlaylist": "Album zu Playlist hinzufügen",
+    "AddAlbumToMyTracks": "Album zu meinen Titeln hinzufügen",
+    "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
+    "ShufflePlay": "Zufällige Wiedergabe"
+  },
+  "AlbumsViewModel": {
+    "Title": "Archiv",
+    "SearchHint": "Suche"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Automatischer Download",
+    "None": "Keine",
+    "PluralLatestTracks": "Die {0} neuesten Titel",
+    "AutomaticDownloadSubtitle": "Anzahl der automatisch herunterzuladenden Titel bei einem abonnierten Podcast."
+  },
+  "ContributorViewModel": {
+    "Title": "Mitwirkender",
+    "SearchHint": "Suche",
+    "HeaderText": "Erscheint in diesen Titeln"
+  },
+  "HomeViewModel": {
+    "More": "Mehr"
+  },
+  "ExploreViewModel": {
+    "Title": "Erkunden"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Beliebt",
+    "SearchHint": "Suche"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Start",
+    "SearchHint": "Suche",
+    "FraKaareHeader": "Von Kåre",
+    "AslaksenTeaserHeader": "Glaubensworte",
+    "ShowAll": "Alle anzeigen",
+    "PlayRandom": "Zufällig",
+    "PlayNewest": "Neueste",
+    "LatestTrack": "Neuester Titel",
+    "NextBroadcast": "Nächste Sendung",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "in {0}h",
+    "Messages": "Reden",
+    "Music": "Musik"
+  },
+  "AslaksenNotification": {
+    "Title": "Glaubensworte",
+    "Message": "Willst du jetzt die Fragen beantworten?",
+    "ButtonYes": "Ja",
+    "ButtonCancel": "Später"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Mitwirkende",
+    "SearchHint": "Suche"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Hilfe und Feedback",
+    "GuideIntroTitle": "Wie du das beste aus der BMM App heraus holst",
+    "GuideIntroSubtitle": "Wischen, um mehr zu erfahren",
+    "GuideOfflineTitle": "Offline-Playlists",
+    "GuideOfflineSubtitle": "Lade deine Playlists auf dein Gerät herunter und höre sie offline. Das kannst du in der Playlist aktivieren.",
+    "GuideAddToPlaylistTitle": "Zu Playlist oder \"Meinen Titeln\" hinzufügen",
+    "GuideAddToPlaylistSubtitle": "Speichere deine Lieblingstitel in deinen eigenen Playlisten oder in deiner persönlichen BMM Sammlung \"Meine Titel\" indem du auf die drei Punkte rechts von dem Titel drückst.",
+    "GuideLanguagesTitle": "Mehrere Sprachen",
+    "GuideLanguagesSubtitle": "Wähle deine bevorzugten Inhaltssprachen und deren Priorität unter Einstellungen > Inhaltssprachen.",
+    "GuideLibraryTitle": "Bibliothek",
+    "GuideLibrarySubtitle": "Bekomme schnell Zugriff auf die gewünschten Inhalte. Die Bibliothek besteht aus allen verfügbaren Podcasts und einem Archiv um Inhalte zu durchsuchen. ",
+    "GuideSearchTitle": "Suche",
+    "GuideSearchSubtitle": "Finde einen Titel oder suche nach einem Thema. Deine Suchworte werden automatisch gespeichert.",
+    "ButtonSendMail": "Sende eine E-Mail an das BMM Team"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "Wir richten deinen Benutzer ein. Das kann etwas dauern."
+  },
+  "LoginViewModel": {
+    "Title": "Einloggen",
+    "LoginFailureTitle": "Einloggen fehlgeschlagen",
+    "LoginFailureMessage": "Bitte gib die Anmeldedaten erneut ein.",
+    "LoginNoConnectionMessage": "Derzeit besteht leider keine Internetverbindung. Bitte versuche es später noch einmal",
+    "WrongMailAddressTitle": "Ungültige e-Mail",
+    "WrongMailAddress": "Bitte eine gültige e-Mail-Adresse eingeben. Die Verwendung des Benutzernamens für die Anmeldung wird nicht mehr unterstützt.",
+    "TbxUsername.Hint": "E-Mail",
+    "TbxPassword.Hint": "Passwort",
+    "BtnLogin.Text": "Einloggen",
+    "LoginInfo": "Melde dich mit deinem BCC Login an"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "Wir stellen bald den Support für Geräte mit {0} {1} oder älter ein. Falls möglich, solltest du dein Handy updaten.",
+    "DeviceSupportEnded": "Leider unterstützt BMM Geräte mit {0} {1} oder älter nicht mehr. Bitte update dein Handy oder kaufe ein neues.",
+    "AppSupportEnding": "Du benutzt eine alte Version von BMM und der Support für diese Version wird bald eingestellt. Bitte update BMM.",
+    "AppSupportEnded": "Du benutzt eine alte Version von BMM, die nicht mehr unterstützt wird. Bitte update BMM.",
+    "UpdateButton": "Aktualisieren"
+  },
+  "LanguageAppViewModel": {
+    "Title": "Appsprache"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Inhaltssprachen",
+    "Dialog.Title": "Wähle eine Sprache",
+    "Dialog.Cancel": "Abbrechen",
+    "Toast.LanguagesStillLoading": "Diese Liste wird noch geladen. Bitte versuche es in ein paar Sekunden erneut.",
+    "Toast.NoLanguagesAvailable": "Es scheint, dass keine Verbindung verfügbar ist, um die Liste der Sprachen zu Laden.",
+    "DeleteLanguageMessage": "Du musst mindestens eine Sprache auswählen",
+    "DeleteLanguageTitle": "{0} kann nicht entfernt werden"
+  },
+  "LibraryViewModel": {
+    "Title": "Bibliothek"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Archiv"
+  },
+  "MenuViewModel": {
+    "Title": "Menü",
+    "Search": "Suche",
+    "Explore": "Erkunden",
+    "MyContent": "Meine Inhalte",
+    "Library": "Bibliothek",
+    "Settings": "Einstellungen",
+    "HelpAndFeedback": "Hilfe und Feedback",
+    "Home": "Start",
+    "Favorites": "Favoriten",
+    "Profile": "Profil"
+  },
+  "MyContentViewModel": {
+    "Title": "Favoriten",
+    "DownloadedContent": "Offline-Inhalte",
+    "FollowedPodcasts": "Abonnierte Podcasts",
+    "MyTracks": "Meine Titel"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Abonnierte Podcasts",
+    "EmptyTitle": "Du hast zurzeit keine Podcast abonniert",
+    "EmptySubline": "Folge einem Podcast indem du den Podcast öffnest und dann abonnieren klickst."
+  },
+  "MyTracksViewModel": {
+    "Title": "Meine Titel",
+    "ShufflePlay": "Zufällige Wiedergabe",
+    "AvailableOffline": "Offline verfügbar",
+    "AvailableOfflineDownload": "Playlist herunterladen",
+    "AvailableOfflineDownloading": "noch {0} von {1} Downloads",
+    "RemoveOfflineConfirm": "Willst Du wirklich alle Downloads löschen?",
+    "EmptyTitle": "Diese Playlist ist leer",
+    "EmptySubline": "Drücke auf die drei Punkte neben einem Titel um ihn zu einer Playlist hinzuzufügen.",
+    "MobileDownloadDisabled": "Aktiviere das Downloaden über Mobilfunknetz in den Einstellungen um fortzufahren",
+    "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Offline-Inhalte",
+    "FollowedPodcasts": "Abonnierte Podcasts",
+    "MyTracks": "Meine Titel",
+    "EmptyTitle": "Du hast keine offline verfügbaren Inhalte",
+    "EmptySubline": "Downloade eine Playlist oder folge einem Podcast um sie offline verfügbar zu machen."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Abonnierte Podcasts",
+    "EmptyTitle": "Du hast zurzeit keine Podcast abonniert",
+    "EmptySubline": "Folge einem Podcast indem du den Podcast öffnest und dann abonnieren klickst."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "Abonnieren",
+    "Following": "Abonniert",
+    "ManageDownloads": "Downloads verwalten",
+    "GetNotified": "Lass dich benachrichtigen",
+    "GetNotifiedMessage": "sobald es neue Folgen gibt",
+    "UnfollowConfirm": "Möchtest du das Abonnement für diesen Podcast beenden?",
+    "MobileDownloadDisabled": "Erlaube das Herunterladen über das Mobilfunknetz in den Einstellungen um die neuesten Folgen automatisch herunterzuladen",
+    "ToggleFollowOfflineError": "Du kannst einen Podcast nur abonnieren oder davon abmelden wenn du online bist",
+    "Week": " Woche {0}",
+    "ThisWeek": "Diese Woche",
+    "LastWeek": "Letzte Woche",
+    "AslaksenTheme1": "Glaube an den Gott der Wunder",
+    "AslaksenTheme2": "Ich bin mit Christus gekreuzigt",
+    "AslaksenTheme3": "Gott fürchten und lieben",
+    "AslaksenTheme4": "Demut ist die eigentliche Sache"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Playlisten"
+  },
+  "PlayerViewModel": {
+    "Title": "Spielt jetzt",
+    "PlayingCount": "{0} von {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Warteschlange"
+  },
+  "SearchViewModel": {
+    "Title": "Suche",
+    "SearchHint": "Suche",
+    "SearchResults": "Suchergebnisse",
+    "SearchHistory": "Letzte Suchanfragen",
+    "SearchSuggestions": "Meintest du: ",
+    "SearchNoResults": "Sorry, wir konnten nichts finden.",
+    "WelcomeTitle": "Fange hier an zu suchen!",
+    "WelcomeSubTitle": "Benutze das Suchfeld oben um nach Inhalt auf BMM zu suchen",
+    "DeleteConfirm": "Bist du sicher, dass du den Suchverlauf leeren möchtest?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profil",
+    "HeadlineSettings": "Einstellungen",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Spiele Musik nach der heutigen Fra Kåre Sendung",
+    "OptionEnablePushHeader": "Push-Benachrichtigungen erlauben",
+    "OptionPushNotifications": "Push-Benachrichtigungen",
+    "OptionPushNotificationsSubtitle": "Aktiviere Push-Benachrichtigungen für Podcasts, die ich abonniert habe",
+    "OptionExternalStorage": "Speicherort",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "External {0} MB",
+    "OptionEnablePushText": "Erhalte eine Push-Benachrichtigung, wenn neue Inhalte verfügbar sind",
+    "OptionDownloadMobileNetworkHeader": "Downloaden über Mobilfunknetz",
+    "OptionDownloadMobileNetworkText": "Erlaube Inhalte über 3G/4G herunterzuladen. Dies kann sich auf dein Datenvolumen auswirken",
+    "HeadlineGeneral": "Allgemein",
+    "OptionLanguageAppHeader": "Appsprache",
+    "OptionLanguageAppText": "Appsprache ändern",
+    "OptionLanguageContentHeader": "Sprache für Audioinhalte",
+    "OptionLanguageContentText": "Inhaltssprachen auf BMM ändern",
+    "HeadlineAbout": "Über",
+    "OptionCopyrightHeader": "Copyright",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
+    "OptionContactHeader": "Kontakt",
+    "OptionContactText": "Fragen oder Feedback? Nehme hier Kontakt mit dem BMM Team auf.",
+    "OptionAppVersionHeader": "App-Version",
+    "AppInfoTitle": "App-Informationen",
+    "AppInfoAppVersion": "App-Version: ",
+    "AppInfoDeviceModel": "Gerätemodell: ",
+    "AppInfoDevicePlatform": "Geräteplattform: ",
+    "AppInfoDeviceVersion": "Geräteversion: ",
+    "LoggedInAs": "Eingeloggt als",
+    "LogoutConfirm": "Bist du sicher, dass du dich abmelden möchtest?",
+    "Logout": "Ausloggen"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Speicherort für Offline-Dateien",
+    "RemoveAllFiles": "Möchtest du einen neuen Speicherort auswählen und alle Downloads löschen?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Playlist",
+    "ShufflePlay": "Zufällige Wiedergabe",
+    "MenuDelete": "Playlist löschen",
+    "MenuEdit": "Playliste bearbeiten",
+    "AvailableOffline": "Offline verfügbar",
+    "AvailableOfflineDownload": "Playlist herunterladen",
+    "AvailableOfflineDownloading": "noch {0} von {1} Downloads",
+    "RemoveOfflineConfirm": "Willst Du wirklich alle Downloads löschen?",
+    "CreatePrompt": "Gib einen Namen für die Playlist ein",
+    "CreateFailure": "Fehler beim Erstellen der Playlist",
+    "DeleteConfirm": "Bist du sicher, dass du die die Playlist \"{0}\" löschen möchtest?",
+    "DeleteFailure": "Fehler beim Löschen der Playlist \"{0}\"",
+    "CreateEmptyFailure": "Gib einen Namen ein, um eine Playlist zu erstellen",
+    "RenameEmptyFailure": "Gib einen Namen für diese Playlist ein",
+    "SearchHint": "Suche",
+    "EmptyTitle": "Diese Playlist ist leer",
+    "EmptySubline": "Drücke auf die drei Punkte neben einem Titel um ihn zu einer Playlist hinzuzufügen.",
+    "MobileDownloadDisabled": "Aktiviere das Downloaden über Mobilfunknetz in den Einstellungen um fortzufahren",
+    "NotEnoughtSpaceToDownload": "Nicht genügend Speicherplatz um alle Titel herunterzuladen",
+    "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Playlist umbenennen",
+    "MenuSave": "Speichern",
+    "EmptyName": "Die Playliste hat keinen Namen",
+    "SaveFailure": "Etwas lief schief. Bitte überprüfe deine Internetverbindung und versuche es noch einmal",
+    "DiscardChangesTitle": "Änderungen verwerfen?",
+    "DiscardChangesMessage": "Die Än­de­rung die du gemacht hast werden nicht gespeichert",
+    "DiscardChanges": "Verwerfen",
+    "KeepEditing": "Weiter Bearbeiten"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Playlist",
+    "MenuDelete": "Löschen",
+    "DeleteConfirm": "Bist du sicher, dass du die die Playlist \"{0}\" löschen möchtest?",
+    "DeleteFailure": "Fehler beim Löschen der Playlist \"{0}\"",
+    "ShufflePlay": "Zufällige Wiedergabe",
+    "SearchHint": "Suche"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Diesen Titel zur Playlist hinzufügen",
+    "SearchHint": "Suche",
+    "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
+    "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen weil es Alben enthält.",
+    "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
+    "CreatePlaylistPrompt": "Gib einen Namen für die Playlist ein",
+    "TrackAddedToTrackCollection": "Zur Playlist hinzugefügt"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Zur Playliste hinzufügen",
+    "Track.DeleteFromPlaylist": "Aus der Playlist entfernen",
+    "Track.AddToMyTracks": "Zu meinen Titeln hinzugefügt",
+    "Track.RemoveFromMyTracks": "Aus meinen Titeln entfernen",
+    "Track.AddedToMyTracks": "Zu meinen Titeln hinzugefügt",
+    "Track.RemovedFromMyTracks": "Aus meinen Titeln entfernt",
+    "Track.FailedToRemoveFromMyTracks": "Fehler beim Entfernen des Titel aus meine Titel",
+    "Track.AddToQueue": "Zur Warteschlange hinzufügen",
+    "Track.QueueToPlayNext": "Als nächstes abspielen",
+    "Track.AddedToQueue": "Zur Warteschlange hinzugefügt",
+    "Track.GoToAlbum": "Album öffnen",
+    "Track.GoToContributor": "Zur Person",
+    "Track.GoToContributor.Composer": "Komponist: {0}",
+    "Track.GoToContributor.Interpret": "Interpret: {0}",
+    "Track.GoToContributor.Lyricist": "Texter: {0}",
+    "Track.GoToContributor.Arranger": "Arrangeur: {0}",
+    "Track.Download": "Titel herunterladen",
+    "Track.MoreInformation": "Mehr Informationen",
+    "Track.Share": "Titel teilen",
+    "Album.Play": "Abspielen",
+    "Album.AddToPlaylist": "Album zu Playlist hinzufügen",
+    "Album.AddToMyTracks": "Album zu meinen Titeln hinzufügen",
+    "Album.AddedToMyTracks": "Album wurde zu meinen Titeln hinzugefügt",
+    "Album.AddToQueue": "Zur Warteschlange hinzufügen",
+    "Album.Share": "Album teilen",
+    "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
+    "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen weil es Alben enthält.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
+    "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
+    "MyTracks": "Meine Titel",
+    "Contributor.Play": "Abspielen",
+    "Contributor.Share": "Mitwirkenden teilen",
+    "TrackCollection.DeletePlaylist": "Playlist löschen",
+    "TrackCollection.EditPlaylist": "Playliste bearbeiten",
+    "OfflineTrackCollection.DeletePlaylist": "Playlist löschen",
+    "Cancel": "Abbrechen"
+  },
+  "Notifications": {
+    "Downloading": "{0} wird heruntergeladen",
+    "ItemsDownloaded": "{0} von {1}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcasts"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "Externe Referenzen",
+    "AboutTrack": "Über den Titel",
+    "Title": "Informationen",
+    "TrackTitle": "Titel",
+    "SongNumber": "Liednummer",
+    "Album": "Album",
+    "Artist": "Künstler",
+    "Duration": "Dauer",
+    "PublishDate": "Veröffentlichungsdatum",
+    "Lyricist": "Verfasser",
+    "Arranger": "Arrangeur",
+    "Composer": "Komponist",
+    "Publisher": "Herausgeber",
+    "Copyright": "Copyright"
+  },
+  "CopyrightViewModel": {
+    "Title": "Copyright"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Neue Reden"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Neue Musik"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Alle Dateien wurden heruntergeladen!"
+  }
+}
