@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "BMM tiimin tavoittaminen epäonnistui. Voit lähettää sähköpostin osoitteeseen: {0}",
+    "External": "Ulkoinen",
+    "Internal": "Sisäinen",
+    "BytesMB": "{0} MB",
+    "UnexpectedError": "Valitettavasti tapahtui tuntematon virhe.",
+    "InternetConnectionOffline": "Internet-yhteys näyttää olevan offline-tilassa.",
+    "ItemNotFound": "Valittua asiaa ei ole.",
+    "OfflineBanner": "Näytä vain puhelimessa olevat kappaleet",
+    "Song": "Laulu",
+    "Speech": "Viesti",
+    "Audiobook": "Äänikirja",
+    "Exegesis": "Exegesis"
+  },
+  "Streak": {
+    "Message": "Your streak this week",
+    "MessagePerfect": "A perfect week. Well done!",
+    "PerfectWeekCountSingular": "{0} perfect week",
+    "PerfectWeekCountPlural": "{0} perfect weeks",
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Linkin avaus epäonnistui",
+    "ErrorMessage": "Valitettavasti linkin avaus ei onnistunut."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "Yhteys virhe: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Tähän raitaan ei ole linkitetty kelvollista tiedostoa.",
+    "ErrorVideoNotSupported": "Videoita ei tueta tällä hetkellä.",
+    "ErrorFileNotOffline": "Et voi toistaa kappaletta jota ei ole ladattu, kun olet offline-tilassa.",
+    "ErrorPlayerStopped": "Soitin pysähtyi.",
+    "ErrorPlayerStoppedGeneric": "Kyseisen kappaleen soittaminen epäonnistui.",
+    "ErrorPlayerLiveRadioStopped": "Live striimi on loppunut.",
+    "ErrorPlayerLiveRadioTooEarly": "Live striimi ei ole vielä alkanut, yritä myöhemmin uudestaan.",
+    "ErrorPlayerStart": "Kappaleen soitto ei onnistu."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "Ei ole tarpeeksi tallennustilaa offline tiedostoille."
+  },
+  "AlbumViewModel": {
+    "Title": "Albumi",
+    "SearchHint": "Haku",
+    "AddAlbumToPlaylist": "Lisää albumi soittolistaan",
+    "AddAlbumToMyTracks": "Lisätä albumin minun kappaleita",
+    "FailedToAdd": "Kappaleen lisääminen soittolistalle epäonnistui. Yritä myöhemmin uudelleen.",
+    "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
+    "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
+    "ShufflePlay": "Satunnaisjärjestys"
+  },
+  "AlbumsViewModel": {
+    "Title": "Arkisto",
+    "SearchHint": "Haku"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Automaattinen lataus",
+    "None": "Ei asetettu",
+    "PluralLatestTracks": "{0} uusinta kappaletta",
+    "AutomaticDownloadSubtitle": "Määritä kuinka monta kappaletta ladataan automaattisesti seuratusta podcastista."
+  },
+  "ContributorViewModel": {
+    "Title": "Tekijä",
+    "SearchHint": "Haku",
+    "HeaderText": "Esiintyy näissä kappaleissa"
+  },
+  "HomeViewModel": {
+    "More": "Lisää"
+  },
+  "ExploreViewModel": {
+    "Title": "Selaa"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Suositut",
+    "SearchHint": "Haku"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Home",
+    "SearchHint": "Haku",
+    "FraKaareHeader": "Terveiset Kårelta",
+    "AslaksenTeaserHeader": "Uskon sanoja",
+    "ShowAll": "Näytä kaikki",
+    "PlayRandom": "Satunnaistoisto",
+    "PlayNewest": "Soita uusin",
+    "LatestTrack": "Viimeisimmät",
+    "NextBroadcast": "Seuraava lähetys",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "alkaa",
+    "Messages": "Puheet",
+    "Music": "Musiikki"
+  },
+  "AslaksenNotification": {
+    "Title": "Uskon sanoja",
+    "Message": "Haluatko vastata kysymyksiin nyt?",
+    "ButtonYes": "Kyllä",
+    "ButtonCancel": "Myöhemmin"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Tekijät",
+    "SearchHint": "Haku"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Ohje & palaute",
+    "GuideIntroTitle": "Näin saat eniten irti BMM-sovelluksesta",
+    "GuideIntroSubtitle": "Pyyhkäise oppiaksesi lisää",
+    "GuideOfflineTitle": "Offline soittolista",
+    "GuideOfflineSubtitle": "Lataa soittolistasi laitteeseesi ja kuuntele ilman internet-yhteyttä. Voit tehdä tämän avatessasi soittolistan.",
+    "GuideAddToPlaylistTitle": "Lisää soittolistaan tai minun kappaleisiini",
+    "GuideAddToPlaylistSubtitle": "Tallenna suosikkikappaleet soittolistaasi tai omaan BMM ”Minun kappaleeni” kokoelmaan, painamalla asetuspainiketta kappaleen oikeasta reunasta.",
+    "GuideLanguagesTitle": "Useita kieliä",
+    "GuideLanguagesSubtitle": "Valitse oman BMM:n sisällön kieli. Tämä voidaan tehdä Asetukset > Sisällönkieli.\n",
+    "GuideLibraryTitle": "Kirjato",
+    "GuideLibrarySubtitle": "Löydä nopeasti haluamasi sisältö. Kirjasto-osa sisältää kaikki saatavilla olevat PODCASTIT sekä ARKISTOn josta voit selata kaikkea sisältöä. ",
+    "GuideSearchTitle": "Haku",
+    "GuideSearchSubtitle": "Hae tiettyä kappaletta tai etsi hakusanan avulla löytääksesi siihen liittyvää sisältöä. Hakusi tallentuu automaattisesti.",
+    "ButtonSendMail": "Lähetä sähköpostia BMM tiimille"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "Tiliäsi valmistellaan. Tämä voi kestää hetken."
+  },
+  "LoginViewModel": {
+    "Title": "Kirjaudu sisään",
+    "LoginFailureTitle": "Kirjautuminen epäonnistui",
+    "LoginFailureMessage": "Yritä uudelleen käyttämällä oikeita kirjautumistietoja",
+    "LoginNoConnectionMessage": "Yhteyttä ei ole tällä hetkellä saatavilla. Yritä myöhemmin uudelleen",
+    "WrongMailAddressTitle": "Sähköpostiosoite ei kelpaa",
+    "WrongMailAddress": "Käytä toimivaa sähköpostiosoitetta. Käyttäjänimen käyttäminen kirjautumiseen ei enään onnistu.",
+    "TbxUsername.Hint": "Sähköposti",
+    "TbxPassword.Hint": "Salasana",
+    "BtnLogin.Text": "Kirjaudu sisään",
+    "LoginInfo": "Sign in with your BCC login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "Puhelimien joiden käyttöjärjestelmänä on  {0} {1} tai vanhempi tuki loppuu. Jos mahdollista päivitä puhelimesi.",
+    "DeviceSupportEnded": "Valitettavasti emme enää tue laitetta joka on vanhempi kuin  {0} {1}. Päivitä puhelin uudempaan.",
+    "AppSupportEnding": "Käytät vanhaa BMM appi versiota. Version tuki loppuu. Päivitä BMM appi.",
+    "AppSupportEnded": "Käytät vanhaa BMM appi versiota jota ei enää tueta. Päivitä BMM appi.",
+    "UpdateButton": "Päivitä"
+  },
+  "LanguageAppViewModel": {
+    "Title": "Sovelluksen kieli"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Sisällön kieli",
+    "Dialog.Title": "Valitse kieli",
+    "Dialog.Cancel": "Peruuta",
+    "Toast.LanguagesStillLoading": "Listaa ladataan yhä, yritä muutaman sekunnin kuluttua uudelleen.",
+    "Toast.NoLanguagesAvailable": "Verkkoyhteyttä ei voida muodostaa kielilistan lataamiseksi.",
+    "DeleteLanguageMessage": "Sisällön kieleksi tulee valita vähintään yksi kieli",
+    "DeleteLanguageTitle": "Ei voi poistaa {0}"
+  },
+  "LibraryViewModel": {
+    "Title": "Kirjasto"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Arkisto"
+  },
+  "MenuViewModel": {
+    "Title": "Valikko",
+    "Search": "Haku",
+    "Explore": "Selaa",
+    "MyContent": "Oma sisältöni",
+    "Library": "Kirjasto",
+    "Settings": "Asetukset",
+    "HelpAndFeedback": "Ohje ja palaute",
+    "Home": "Home",
+    "Favorites": "Favorites",
+    "Profile": "Profile"
+  },
+  "MyContentViewModel": {
+    "Title": "Favorites",
+    "DownloadedContent": "Tallennettu sisält",
+    "FollowedPodcasts": "Seuratut podcastit",
+    "MyTracks": "Minun kappaleeni"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Seuratut podcastit",
+    "EmptyTitle": "Olet tällä hetkellä ole jälkeen mitään Podcastit",
+    "EmptySubline": "Seuraa Podcast avaamalla Podcast ja seuraa-painikkeen."
+  },
+  "MyTracksViewModel": {
+    "Title": "Minun kappaleeni",
+    "ShufflePlay": "Satunnaisjärjestys",
+    "AvailableOffline": "Käytettävissä offline-tilassa",
+    "AvailableOfflineDownload": "Lataa soittolista",
+    "AvailableOfflineDownloading": "Ladataan {0} {1}:stä",
+    "RemoveOfflineConfirm": "Haluatko varmasti poistaa kaikki ladatut kappaleet?",
+    "EmptyTitle": "Tämä soittolista on tyhjä",
+    "EmptySubline": "Paina kolmea pistettä kappaleen kohdalla lisätäksesi kappaleita tälle soittolistalle.",
+    "MobileDownloadDisabled": "Salli ensin tiedostojen lataaminen mobiilidatan avulla",
+    "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Tallennettu sisält",
+    "FollowedPodcasts": "Seuratut podcastit",
+    "MyTracks": "Minun kappaleeni",
+    "EmptyTitle": "Et ole ladannut mitään sisältöä",
+    "EmptySubline": "Lataa soittolista tai seuraa podcastia jotta voit käyttää offlinessa."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Seuratut podcastit",
+    "EmptyTitle": "Olet tällä hetkellä ole jälkeen mitään Podcastit",
+    "EmptySubline": "Seuraa Podcast avaamalla Podcast ja seuraa-painikkeen."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "Seuraa",
+    "Following": "Lopeta Seuraaminen",
+    "ManageDownloads": "Hallitse latauksia",
+    "GetNotified": "Saat ilmoituksen",
+    "GetNotifiedMessage": "kun uusia jaksoja julkaistaan",
+    "UnfollowConfirm": "Lopeta tämän podcastin seuraaminen?",
+    "MobileDownloadDisabled": "Tietokoneellaan kautta matkapuhelinverkon asetuksissa ladata uusimmat kappaleet automaattisesti",
+    "ToggleFollowOfflineError": "Sinun täytyy olla online-tilassa tai unfollow podcast",
+    "Week": "viikko",
+    "ThisWeek": "This week",
+    "LastWeek": "Last week",
+    "AslaksenTheme1": "Usko ihmeiden Jumalaan",
+    "AslaksenTheme2": "Minut on ristiinnaulittu Kristuksen kanssa",
+    "AslaksenTheme3": "Jumalan pelkääminen ja rakastaminen",
+    "AslaksenTheme4": "Nöyryys on itse asia"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Soittolistat"
+  },
+  "PlayerViewModel": {
+    "Title": "Nyt soi",
+    "PlayingCount": "Soitetaan {0} {1}:sta"
+  },
+  "QueueViewModel": {
+    "Title": "Jono"
+  },
+  "SearchViewModel": {
+    "Title": "Haku",
+    "SearchHint": "Haku",
+    "SearchResults": "Hakutulokset",
+    "SearchHistory": "Viimeisimmät haut",
+    "SearchSuggestions": "Tarkoititko: ",
+    "SearchNoResults": "Emme löytäneet mitään.",
+    "WelcomeTitle": "Aloita etsiminen täältä!",
+    "WelcomeSubTitle": "Käytä hakukenttää etsiäksesi sisältöä BMM:stä",
+    "DeleteConfirm": "Oletko varma, että haluat poistaa hakuhistorian?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profile",
+    "HeadlineSettings": "Asetukset",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionEnablePushHeader": "Ota ponnahdusilmoitukset käyttöön",
+    "OptionPushNotifications": "Push-ilmoitukset",
+    "OptionPushNotificationsSubtitle": "Push-ilmoitukset päälle seuraamistasi podcasteista",
+    "OptionExternalStorage": "Tallennus kohde",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "External {0} MB",
+    "OptionEnablePushText": "Vastaanota ponnahdusilmoituksia uusista sisällöistä",
+    "OptionDownloadMobileNetworkHeader": "Lataa mobiiliverkon kautta",
+    "OptionDownloadMobileNetworkText": "Salli ohjelman ladata sisältöä käyttäen 3G/4G:tä. Ota huomioon liittymäsi datapaketti",
+    "HeadlineGeneral": "Yleistä",
+    "OptionLanguageAppHeader": "Sovelluksen kieli",
+    "OptionLanguageAppText": "Vaihda sovelluksen kieli",
+    "OptionLanguageContentHeader": "Sisällön kieli",
+    "OptionLanguageContentText": "Vaihda BMM:n sisällön kieltä",
+    "HeadlineAbout": "Tietoja",
+    "OptionCopyrightHeader": "Copyright",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
+    "OptionContactHeader": "Yhteydenotto",
+    "OptionContactText": "Kysymyksiä tai palautetta? Ota yhteyttä tästä.",
+    "OptionAppVersionHeader": "Sovelluksen versio",
+    "AppInfoTitle": "Sovelluksen tiedot",
+    "AppInfoAppVersion": "Sovelluksen versio: ",
+    "AppInfoDeviceModel": "Laitteen malli: ",
+    "AppInfoDevicePlatform": "Laitteen käyttöympäristö: ",
+    "AppInfoDeviceVersion": "Laitteen versio: ",
+    "LoggedInAs": "Signed in as",
+    "LogoutConfirm": "Haluatko varmasti kirjautua ulos?",
+    "Logout": "Kirjaudu ulos"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Offline kappaleiden tallennus sijainti",
+    "RemoveAllFiles": "Haluatko vaihtaa offline kappaleiden tallennus sijaintia vai poistetaanko kaikki kappaleet?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Soittolista",
+    "ShufflePlay": "Satunnaisjärjestys",
+    "MenuDelete": "Poista soittolista",
+    "MenuEdit": "Edit playlist",
+    "AvailableOffline": "Käytettävissä offline-tilassa",
+    "AvailableOfflineDownload": "Lataa soittolista",
+    "AvailableOfflineDownloading": "Ladataan {0} {1}:stä",
+    "RemoveOfflineConfirm": "Haluatko varmasti poistaa kaikki ladatut kappaleet?",
+    "CreatePrompt": "Nimeä soittolista",
+    "CreateFailure": "Soittolistan luominen epäonnistui",
+    "DeleteConfirm": "Tahdotko varmasti poistaa soittolistan \"{0}\"?",
+    "DeleteFailure": "Virhe poistaessa soittolistaa \"{0}\"",
+    "CreateEmptyFailure": "Lisää otsikko luodaksesi soittolistan",
+    "RenameEmptyFailure": "Nimeä soittolista uudelleen",
+    "SearchHint": "Haku",
+    "EmptyTitle": "Tämä soittolista on tyhjä",
+    "EmptySubline": "Paina kolmea pistettä kappaleen kohdalla lisätäksesi kappaleita tälle soittolistalle.",
+    "MobileDownloadDisabled": "Salli ensin tiedostojen lataaminen mobiilidatan avulla",
+    "NotEnoughtSpaceToDownload": "Ei tarpeeksi tallennustilaa kaikkien kappaleiden lataamiselle",
+    "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Rename playlist",
+    "MenuSave": "Tallenna",
+    "EmptyName": "The playlist has no name",
+    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "DiscardChangesTitle": "Discard Changes?",
+    "DiscardChangesMessage": "The changes you made won't be saved",
+    "DiscardChanges": "Discard",
+    "KeepEditing": "Keep Editing"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Soittolista",
+    "MenuDelete": "Poista",
+    "DeleteConfirm": "Tahdotko varmasti poistaa soittolistan \"{0}\"?",
+    "DeleteFailure": "Virhe poistaessa soittolistaa \"{0}\"",
+    "ShufflePlay": "Satunnaisjärjestys",
+    "SearchHint": "Haku"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Lisää kappale ...",
+    "SearchHint": "Haku",
+    "FailedToAdd": "Kappaleen lisääminen soittolistalle epäonnistui. Yritä myöhemmin uudelleen.",
+    "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
+    "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
+    "FailedToAddAlbum": "Albumin lisätä soittoluetteloon, koska se sisältää albumit epäonnistui.",
+    "FailedToAddUnknownType": "Lisäämällä \"{0}\" soittolista ei tällä hetkellä tueta.",
+    "CreatePlaylistPrompt": "Nimeä soittolista",
+    "TrackAddedToTrackCollection": "Lisätty soittolistaan"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Lisää soittolistaan",
+    "Track.DeleteFromPlaylist": "Poista soittolistalta",
+    "Track.AddToMyTracks": "Lisää minun kappaleisiini",
+    "Track.RemoveFromMyTracks": "Poistaa minun kappaleita",
+    "Track.AddedToMyTracks": "Lisätään minun kappaleita",
+    "Track.RemovedFromMyTracks": "Poistaa minun kappaleita",
+    "Track.FailedToRemoveFromMyTracks": "Kappaleiden poisto Omista Kappaleista epäonnistui",
+    "Track.AddToQueue": "Lisää jonoon",
+    "Track.QueueToPlayNext": "Seuraava kappale",
+    "Track.AddedToQueue": "Lisätty jonoon",
+    "Track.GoToAlbum": "Siirry albumiin",
+    "Track.GoToContributor": "Lauluntekijät",
+    "Track.GoToContributor.Composer": "Säveltäjä: {0}",
+    "Track.GoToContributor.Interpret": "Tulkki: {0}",
+    "Track.GoToContributor.Lyricist": "Sanoittaja: {0}",
+    "Track.GoToContributor.Arranger": "Sovittaja: {0}",
+    "Track.Download": "Lataa kappale",
+    "Track.MoreInformation": "Lisätietoja",
+    "Track.Share": "Jaa kappale",
+    "Album.Play": "Toista",
+    "Album.AddToPlaylist": "Lisää albumi soittolistaan",
+    "Album.AddToMyTracks": "Lisätä albumin minun kappaleita",
+    "Album.AddedToMyTracks": "Albumi lisättiin oma kappaleita",
+    "Album.AddToQueue": "Lisää jonoon",
+    "Album.Share": "Jaa albumi",
+    "FailedToAdd": "Kappaleen lisääminen soittolistalle epäonnistui. Yritä myöhemmin uudelleen.",
+    "FailedToAddAlbum": "Albumin lisätä soittoluetteloon, koska se sisältää albumit epäonnistui.",
+    "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
+    "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
+    "FailedToAddUnknownType": "Lisäämällä \"{0}\" soittolista ei tällä hetkellä tueta.",
+    "MyTracks": "Minun kappaleeni",
+    "Contributor.Play": "Toista",
+    "Contributor.Share": "Jakamisen avustaja",
+    "TrackCollection.DeletePlaylist": "Poista soittolista",
+    "TrackCollection.EditPlaylist": "Edit playlist",
+    "OfflineTrackCollection.DeletePlaylist": "Poista soittolista",
+    "Cancel": "Peruuta"
+  },
+  "Notifications": {
+    "Downloading": "Ladataan {0}",
+    "ItemsDownloaded": "Kappale {0} {1}:sta"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcastit"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "External references",
+    "AboutTrack": "Tietoa Kappaleesta",
+    "Title": "Kappaleen tiedot",
+    "TrackTitle": "Otsikko",
+    "SongNumber": "Laulun numero",
+    "Album": "Albumi",
+    "Artist": "Artisti",
+    "Duration": "Kesto",
+    "PublishDate": "Julkaisupäivä",
+    "Lyricist": "Sanoittaja",
+    "Arranger": "Sovittaja",
+    "Composer": "Säveltäjä",
+    "Publisher": "Julkaisija",
+    "Copyright": "Copyright"
+  },
+  "CopyrightViewModel": {
+    "Title": "Copyright"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Recent Messages"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Recent Music"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Kaikki tiedostot on ladattu!"
+  }
+}
