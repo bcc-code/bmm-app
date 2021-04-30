@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "Nem éred el a BMM csapatot? Küldj e-mailt erre: {0}",
+    "External": "Külső",
+    "Internal": "Belső",
+    "BytesMB": "{0} MB szabad",
+    "UnexpectedError": "Sajnos ismeretlen hiba lépet fel.",
+    "InternetConnectionOffline": "Az Internet-kapcsolat ném elérhető.",
+    "ItemNotFound": "A kért elem nem létezik.",
+    "OfflineBanner": "Csak a telefonon lévő számok megjelenítése",
+    "Song": "Ének",
+    "Speech": "Üzenet",
+    "Audiobook": "Hangoskönyv",
+    "Exegesis": "Szómagyarázat"
+  },
+  "Streak": {
+    "Message": "E heti sorozatod.",
+    "MessagePerfect": "Perfekt hét. Szép munka!",
+    "PerfectWeekCountSingular": "{0} perfekt hét",
+    "PerfectWeekCountPlural": "{0} perfekt hetek",
+    "PerfectWeekCountNone": "Még nincs perfekt hét",
+    "WeekdayMonday": "H",
+    "WeekdayTuesday": "K",
+    "WeekdayWednesday": "Sz",
+    "WeekdayThursday": "K",
+    "WeekdayFriday": "P"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Nem lehet a linket megnyitni",
+    "ErrorMessage": "Sajnos nem sikerült megnyitni a (z) '{0}' linket."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "Kapcsolódási hiba: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Sajnos a készüléked nem támogatja ezt a fájlformátumot.",
+    "ErrorVideoNotSupported": "Sajnos a videók jelenleg nem elérhetőek.",
+    "ErrorFileNotOffline": "A nem letölött számokat offline-módban nem lehet lejátszani.",
+    "ErrorPlayerStopped": "A lejátszó leállt.",
+    "ErrorPlayerStoppedGeneric": "Hiba történt és a jelenlegi szám lejátszása leállt.",
+    "ErrorPlayerLiveRadioStopped": "Az élő közvetítés véget ért.",
+    "ErrorPlayerLiveRadioTooEarly": "Az élő közvetítés még nem kezdődött el, próbálkozz később újra.",
+    "ErrorPlayerStart": "Szám lejatszáza sikertelen."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "Nincs elég tárhely az offline adatok tárolásához"
+  },
+  "AlbumViewModel": {
+    "Title": "Album",
+    "SearchHint": "Keresés",
+    "AddAlbumToPlaylist": "Album hozzáadása a lejátszási listához",
+    "AddAlbumToMyTracks": "Nyomomban album felvétele",
+    "FailedToAdd": "Nem sikerült hozzáadni a számot a lejátszási listához. Próbáld újra később.",
+    "AlbumFailedToAddAlreadyExists": "Ez az album már szerepel a lejátszási lista.",
+    "TrackAlreadyExistInTrackCollection": "Szám már létezik a {0} lejátszási listában",
+    "ShufflePlay": "Véletlenszerű lejátszás"
+  },
+  "AlbumsViewModel": {
+    "Title": "Archívum",
+    "SearchHint": "Keresés"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Automatikus letöltés",
+    "None": "Egyik sem",
+    "PluralLatestTracks": "utolsó zeneszámok {0}",
+    "AutomaticDownloadSubtitle": "Meghatározott mennyiségű zeneszámok automatikus letöltése, podcast esetén."
+  },
+  "ContributorViewModel": {
+    "Title": "Közreműködő",
+    "SearchHint": "Keresés",
+    "HeaderText": "Ezekben a számokban található"
+  },
+  "HomeViewModel": {
+    "More": "Több"
+  },
+  "ExploreViewModel": {
+    "Title": "Felfedezés"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Népszerű",
+    "SearchHint": "Keresés"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Főoldal",
+    "SearchHint": "Keresés",
+    "FraKaareHeader": "Kårétől",
+    "AslaksenTeaserHeader": "Hit szava",
+    "ShowAll": "Összes megjelenítése",
+    "PlayRandom": "Véletlenszerű lejátszás",
+    "PlayNewest": "Legújabb lejátszása",
+    "LatestTrack": "Legújabb számok",
+    "NextBroadcast": "Következő közvetítés",
+    "BmmRadio": "Élő BMM",
+    "CountdownHours": "{0} óra múlva",
+    "Messages": "Üzenetek",
+    "Music": "Zene"
+  },
+  "AslaksenNotification": {
+    "Title": "Hit szava",
+    "Message": "Szeretnél most a kérdésekre válaszolni?",
+    "ButtonYes": "Igen",
+    "ButtonCancel": "Később"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Közreműködők",
+    "SearchHint": "Keresés"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Súgó & visszajelzések",
+    "GuideIntroTitle": "Hogy lehet a legtöbbet kihozni a BMM alkalmazásból",
+    "GuideIntroSubtitle": "Lapozz, ha többet akarsz tudni",
+    "GuideOfflineTitle": "Offline lejátszási listák",
+    "GuideOfflineSubtitle": "Töltsd le a lejátszási listaid a készülékedre és hallgasd őket internetkapcsolat nélkül. A lejátszási listában állíthatod ezt be.",
+    "GuideAddToPlaylistTitle": "Hozzáadása lejátszási listához vagy a \"My Tracks\"",
+    "GuideAddToPlaylistSubtitle": "Mentse a kedvenc zeneszámokat saját lejátszási listákat, vagy a személyes Fővárosi közterület gyűjtemény \"Az én-m sín\" koppintson a beállítások gomb jobb oldalán a pályán.",
+    "GuideLanguagesTitle": "Többnyelvű",
+    "GuideLanguagesSubtitle": "Allítsd fonossági sorrendbe a BMM tartalmadnak nyelveit. A beallításoknál a \"tartalom nyelve\" alatt teheted ezt meg.",
+    "GuideLibraryTitle": "Könyvtár",
+    "GuideLibrarySubtitle": "Gyors hozzáférést kap a kívánt tartalmat. A könyvtár áll a rendelkezésre álló podcastok és egy archív részben tartalom tallózásához. ",
+    "GuideSearchTitle": "Keresés",
+    "GuideSearchSubtitle": "Bizonyos szám megkeresése, vagy kapcsolodó tartalom után való téma keresése. A keresési találatok automatikusan mentődnek.",
+    "ButtonSendMail": "Küldd e-mailt a BMM-csapatnak"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "Létrehozzuk a fiókodat. Ez pár percet tarthat."
+  },
+  "LoginViewModel": {
+    "Title": "Bejelentkezés",
+    "LoginFailureTitle": "Sikertelen bejelentkezés",
+    "LoginFailureMessage": "Próbáld meg újra a megfelelő hitelesítő adatokkal",
+    "LoginNoConnectionMessage": "Jelenleg nincs kapcsolat. Próbálj újra később",
+    "WrongMailAddressTitle": "Érvénytelen e-mail",
+    "WrongMailAddress": "Adj meg egy érvényes e-mail címet. A felhasználónév bejelentkezre már nem támogatott.",
+    "TbxUsername.Hint": "E-mail",
+    "TbxPassword.Hint": "Jelszó",
+    "BtnLogin.Text": "Bejelentkezés",
+    "LoginInfo": "Jelentkezz be a BCC felhasználoddal"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "Hamarosan megszűnik a segítségnyújtás a {0} {1} vagy régebbi verzióval futó telefonokra. Ha lehetséges, frissítsd a telefonodat.",
+    "DeviceSupportEnded": "Sajnos nem nyújtunk tovább segítséget a {0} {1} verziónál régebbi készülékekre. Ha lehetséges, szerezzél újabb telefont.",
+    "AppSupportEnding": "A BMM applikációnak régebbi verzióját használod. Hamarosan megszűnik arra a segítségnyújtás. Frissítsd a BMM applikációt.",
+    "AppSupportEnded": "A BMM applikációnak régebbi verzióját használod, amire már nem nyújtunk segítséget. Frissítsd a BMM applikációt.",
+    "UpdateButton": "Frissítés"
+  },
+  "LanguageAppViewModel": {
+    "Title": "Alkalmazás nyelve"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Tartalom nyelve",
+    "Dialog.Title": "Nyelv kiválasztása",
+    "Dialog.Cancel": "Mégse",
+    "Toast.LanguagesStillLoading": "A lista még mindig tölt. Próbáld újra pár másodperc mulva.",
+    "Toast.NoLanguagesAvailable": "Úgy tűnik, hogy nincs elérhető kapcsolat a nyelvek listájának betöltéséhez.",
+    "DeleteLanguageMessage": "Meg kell adnod legalább egy tartalmi nyelvet",
+    "DeleteLanguageTitle": " {0} nem távolítható el"
+  },
+  "LibraryViewModel": {
+    "Title": "Könyvtár"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Archívum"
+  },
+  "MenuViewModel": {
+    "Title": "Menü",
+    "Search": "Keresés",
+    "Explore": "Felfedezés",
+    "MyContent": "Saját tartalmam",
+    "Library": "Könyvtár",
+    "Settings": "Beállítások",
+    "HelpAndFeedback": "Súgó és visszajelzések",
+    "Home": "Főoldal",
+    "Favorites": "Kedvencek",
+    "Profile": "Profil"
+  },
+  "MyContentViewModel": {
+    "Title": "Kedvencek",
+    "DownloadedContent": "Letöltött tartalom",
+    "FollowedPodcasts": "Podcastok",
+    "MyTracks": "Az én-m sín"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Podcastok",
+    "EmptyTitle": "Jelenleg nem követi bármely podcast",
+    "EmptySubline": "Kövesse a Podcast megnyitásával a Podcast, és kattintson az alábbi gombra."
+  },
+  "MyTracksViewModel": {
+    "Title": "Az én-m sín",
+    "ShufflePlay": "Véletlenszerű lejátszás",
+    "AvailableOffline": "Offline elérhető",
+    "AvailableOfflineDownload": "Lejátszási lista letöltése",
+    "AvailableOfflineDownloading": "Letöltés {0} / {1}",
+    "RemoveOfflineConfirm": "Biztosan törölni kivánod az összes letöltött elemet?",
+    "EmptyTitle": "Üres a lejátszási lista",
+    "EmptySubline": "Nyomd meg a három pontot a zeneszámon, hogy hozzáadd a lejátszási listához.",
+    "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
+    "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Letöltött tartalom",
+    "FollowedPodcasts": "Podcastok",
+    "MyTracks": "Az én-m sín",
+    "EmptyTitle": "Nincs letöltött tartalom",
+    "EmptySubline": "Töltsd le a lejátszási listát vagy kövesd a podcastot, ha offline állapotban elérhető."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Podcastok",
+    "EmptyTitle": "Jelenleg nem követi bármely podcast",
+    "EmptySubline": "Kövesse a Podcast megnyitásával a Podcast, és kattintson az alábbi gombra."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "Kövesse",
+    "Following": "A következő",
+    "ManageDownloads": "Letöltések kezelése",
+    "GetNotified": "Értesítést kapni",
+    "GetNotifiedMessage": "ha új epízódok megjelenek",
+    "UnfollowConfirm": "Biztosan nem akarod tovább követni ezt a podcastot?",
+    "MobileDownloadDisabled": "A legújabb számok automatikus letöltése a mobilhálózaton keresztül engedélyezése a beállításokban",
+    "ToggleFollowOfflineError": "Podcast követése vagy lemondása csak online-módban lehetséges",
+    "Week": "{0}.hét",
+    "ThisWeek": "Ez a hét",
+    "LastWeek": "Elöző hét",
+    "AslaksenTheme1": "Higgyél a csoda Istenében",
+    "AslaksenTheme2": "Krisztussal megfeszíttettem",
+    "AslaksenTheme3": "Istent félni és szeretni",
+    "AslaksenTheme4": "Az alázat maga a lényeg"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Lejátszási listák"
+  },
+  "PlayerViewModel": {
+    "Title": "Nincs lejátszás",
+    "PlayingCount": "{0} / {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Várólista"
+  },
+  "SearchViewModel": {
+    "Title": "Keresés",
+    "SearchHint": "Keresés",
+    "SearchResults": "Keresési találatok",
+    "SearchHistory": "Legutóbbi keresések",
+    "SearchSuggestions": "Úgy értetted:",
+    "SearchNoResults": "Nincs találat.",
+    "WelcomeTitle": "Itt indítsd a keresést!",
+    "WelcomeSubTitle": "A Keresés mező segítségével kereshetsz tartalmat a BMM-en",
+    "DeleteConfirm": "Biztosan törölni kivánod a keresési előzményeket?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profil",
+    "HeadlineSettings": "Beállítások",
+    "OptionAutoplayHeader": "Automatikus lejátszás",
+    "OptionAutoplayText": "Zene lejátszása a mai “Fra Kåre” adás meghallgatása után",
+    "OptionEnablePushHeader": "Értesítések engedélyezése",
+    "OptionPushNotifications": "Push-értesítések",
+    "OptionPushNotificationsSubtitle": "Push-értesítések aktiválása a követett podcastokra",
+    "OptionExternalStorage": "Tárhely",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "External {0} MB",
+    "OptionEnablePushText": "Értesítések küldése, ha új tartalom érhető el",
+    "OptionDownloadMobileNetworkHeader": "Lejátszási listák lelöltése mobil hálózaton keresztül",
+    "OptionDownloadMobileNetworkText": "Lejátszási listák letöltésének engedélyezése 3G / 4G haszálatával. Ez hatással lehet a adatforgalmadra.",
+    "HeadlineGeneral": "Általános",
+    "OptionLanguageAppHeader": "Alkalmazás nyelve",
+    "OptionLanguageAppText": "Alkalmazás nyelvének megváltoztatása",
+    "OptionLanguageContentHeader": "Tartalom nyelve",
+    "OptionLanguageContentText": "Nyelvek kiválasztása minden látható tartalomra",
+    "HeadlineAbout": "Az alkalmazásról",
+    "OptionCopyrightHeader": "Szerzői jog",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
+    "OptionContactHeader": "Kapcsolat",
+    "OptionContactText": "Kérdések és visszajelzések? Itt lépj kapcsolatba a csapattal.",
+    "OptionAppVersionHeader": "Alkalmazás verziója",
+    "AppInfoTitle": "Alkalmazás információ",
+    "AppInfoAppVersion": "Alkalmazás verziója:",
+    "AppInfoDeviceModel": "Készülék modellje:",
+    "AppInfoDevicePlatform": "Készülék platform:",
+    "AppInfoDeviceVersion": "Készülék verziója:",
+    "LoggedInAs": "Belépve, mint",
+    "LogoutConfirm": "Biztosan ki szeretnél jelentkezni?",
+    "Logout": "Kijelentkezés"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Offline adatok tárhelye",
+    "RemoveAllFiles": "Szeretnél egy új tárhelyet létrehozni és minden offline számot törölni?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Lejátszási lista",
+    "ShufflePlay": "Véletlenszerű lejátszás",
+    "MenuDelete": "Lejátszási lista törlése",
+    "MenuEdit": "Lejátszási lista szerkesztése",
+    "AvailableOffline": "Offline elérhető",
+    "AvailableOfflineDownload": "Lejátszási lista letöltése",
+    "AvailableOfflineDownloading": "Letöltés {0} / {1}",
+    "RemoveOfflineConfirm": "Biztosan törölni kivánod az összes letöltött elemet?",
+    "CreatePrompt": "Lejátszási lista név megadása",
+    "CreateFailure": "Lejátszási lista létrehozása sikertelen",
+    "DeleteConfirm": "Biztosan törölni kivánod a(z) \"{0}\" lejátszási listát?",
+    "DeleteFailure": "Nem sikerült törölni a lejátszási listát: \"{0}\"",
+    "CreateEmptyFailure": "Cím megadása lejátszási lista létrehozásához",
+    "RenameEmptyFailure": "Cím megadása lejátszási lista átnevezéséhez",
+    "SearchHint": "Keresés",
+    "EmptyTitle": "Üres a lejátszási lista",
+    "EmptySubline": "Nyomd meg a három pontot a zeneszámon, hogy hozzáadd a lejátszási listához",
+    "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
+    "NotEnoughtSpaceToDownload": "Nincs elég tárhely minden szám letöltéséhez",
+    "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Lejátszási lista szerkesztése",
+    "RenameLabel": "Lejátszási lista átnevezése",
+    "MenuSave": "Mentés",
+    "EmptyName": "A lejátszási listának nincs neve",
+    "SaveFailure": "A változásokat nem sikerült frissíteni. Vizsgáld meg az internet kapcsolatodat és próbáld újra",
+    "DiscardChangesTitle": "Módosítás visszavonása?",
+    "DiscardChangesMessage": "A végrehajtott módosításaid nem leszek elmentve",
+    "DiscardChanges": "Visszavonás",
+    "KeepEditing": "Módosítás folytatása"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Lejátszási lista",
+    "MenuDelete": "Törlés",
+    "DeleteConfirm": "Biztosan törölni kivánod a(z) \"{0}\" lejátszási listát?",
+    "DeleteFailure": "Nem sikerült törölni a lejátszási listát: \"{0}\"",
+    "ShufflePlay": "Véletlenszerű lejátszás",
+    "SearchHint": "Keresés"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Szám hozzáadása lejátszási listához",
+    "SearchHint": "Keresés",
+    "FailedToAdd": "Nem sikerült hozzáadni a számot a lejátszási listához. Próbáld újra később.",
+    "AlbumFailedToAddAlreadyExists": "Ez az album már szerepel a lejátszási lista.",
+    "TrackAlreadyExistInTrackCollection": "Szám már létezik a {0} lejátszási listában",
+    "FailedToAddAlbum": "Nem sikerült az album felvétele a lejátszási lista, mert albumot tartalmaz.",
+    "FailedToAddUnknownType": "A \"{0}\" hozzáadása a lejátszási listához jelenleg nem támogatott.",
+    "CreatePlaylistPrompt": "Lejátszási lista név megadása",
+    "TrackAddedToTrackCollection": "Hozzáadva a lejátszási listához"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Hozzáadás lejátszási listához",
+    "Track.DeleteFromPlaylist": "Eltávolítás lejátszási listáról",
+    "Track.AddToMyTracks": "Az én-m szám hozzáadása",
+    "Track.RemoveFromMyTracks": "Az én-m sín eltávolítása",
+    "Track.AddedToMyTracks": "Hozzáadott-hoz az én-m sín",
+    "Track.RemovedFromMyTracks": "Az én-m sín eltávolítása",
+    "Track.FailedToRemoveFromMyTracks": "Hiba történt a cím eltávolításakor a címeimből",
+    "Track.AddToQueue": "Hozzáadás várólistához",
+    "Track.QueueToPlayNext": "Következő lejátszása",
+    "Track.AddedToQueue": "Hozzáadva a várólistához",
+    "Track.GoToAlbum": "Váltás erre az albumra",
+    "Track.GoToContributor": "Váltás közreműködőkhöz",
+    "Track.GoToContributor.Composer": "Zeneszerző: {0}",
+    "Track.GoToContributor.Interpret": "Előadó: {0}",
+    "Track.GoToContributor.Lyricist": "Szövegíró: {0}",
+    "Track.GoToContributor.Arranger": "Rendező: {0}",
+    "Track.Download": "Szám letöltse",
+    "Track.MoreInformation": "További információ",
+    "Track.Share": "Szám megosztása",
+    "Album.Play": "Lejátszás",
+    "Album.AddToPlaylist": "Album hozzáadása a lejátszási listához",
+    "Album.AddToMyTracks": "Nyomomban album felvétele",
+    "Album.AddedToMyTracks": "Hozzáadott-hoz az én-m sín album",
+    "Album.AddToQueue": "Hozzáadás várólistához",
+    "Album.Share": "Album megosztása",
+    "FailedToAdd": "Nem sikerült hozzáadni a számot a lejátszási listához. Próbáld újra később.",
+    "FailedToAddAlbum": "Nem sikerült az album felvétele a lejátszási lista, mert albumot tartalmaz.",
+    "AlbumFailedToAddAlreadyExists": "Ez az album már szerepel a lejátszási lista.",
+    "TrackAlreadyExistInTrackCollection": "Szám már létezik a {0} lejátszási listában",
+    "FailedToAddUnknownType": "A \"{0}\" hozzáadása a lejátszási listához jelenleg nem támogatott.",
+    "MyTracks": "Az én-m sín",
+    "Contributor.Play": "Lejátszás",
+    "Contributor.Share": "Közreműködő megosztása",
+    "TrackCollection.DeletePlaylist": "Lejátszási lista törlése",
+    "TrackCollection.EditPlaylist": "Lejátszási lista szerkesztése",
+    "OfflineTrackCollection.DeletePlaylist": "Lejátszási lista törlése",
+    "Cancel": "Mégse"
+  },
+  "Notifications": {
+    "Downloading": "Letöltés {0}",
+    "ItemsDownloaded": "{1} / {0}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcastok"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "Extern referenciák",
+    "AboutTrack": "Arról, hogy a pálya",
+    "Title": "Szám információ",
+    "TrackTitle": "Cím",
+    "SongNumber": "Ének száma",
+    "Album": "Album",
+    "Artist": "Előadó",
+    "Duration": "Időtartam",
+    "PublishDate": "Megjelenés dátuma",
+    "Lyricist": "Szövegíró",
+    "Arranger": "Rendező",
+    "Composer": "Zeneszerző",
+    "Publisher": "Kiadó",
+    "Copyright": "Szerzői jog"
+  },
+  "CopyrightViewModel": {
+    "Title": "Szerzői jog"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Legújabb üzenetek"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Legújabb zene"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Minden fájl le lett töltve!"
+  }
+}
