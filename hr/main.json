@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "Nije uspio kontaktirati BMM, možete poslati e-mail na: {0}",
+    "External": "External",
+    "Internal": "Internal",
+    "BytesMB": "{0} MB",
+    "UnexpectedError": "Sorry, an unexpected error has occurred.",
+    "InternetConnectionOffline": "Internet priključak izgleda izvan mreže.",
+    "ItemNotFound": "The requested item does not exist.",
+    "OfflineBanner": "Showing only tracks on this phone",
+    "Song": "Song",
+    "Speech": "Message",
+    "Audiobook": "Audiobook",
+    "Exegesis": "Exegesis"
+  },
+  "Streak": {
+    "Message": "Your streak this week",
+    "MessagePerfect": "A perfect week. Well done!",
+    "PerfectWeekCountSingular": "{0} perfect week",
+    "PerfectWeekCountPlural": "{0} perfect weeks",
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Unable to open link",
+    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "Pojavila se pogreška u vezu: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Nažalost, vaš uređaj ne podržava ovaj format.",
+    "ErrorVideoNotSupported": "Nažalost, videa su trenutno nije podržan.",
+    "ErrorFileNotOffline": "Pjesme koje ne preuzimaju se ne može reproducirati u izvanmrežnom načinu rada.",
+    "ErrorPlayerStopped": "The player has stopped.",
+    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
+    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
+    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
+    "ErrorPlayerStart": "Unable to start playback."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "There is not enough space to store offline files"
+  },
+  "AlbumViewModel": {
+    "Title": "Album",
+    "SearchHint": "Search",
+    "AddAlbumToPlaylist": "Dodaj album na popis za reproduciranje",
+    "AddAlbumToMyTracks": "Add album to My Tracks",
+    "FailedToAdd": "Dodavanje pjesme na popis za reproduciranje nije uspjelo. Pokušajte ponovo kasnije.",
+    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "ShufflePlay": "Miješanje"
+  },
+  "AlbumsViewModel": {
+    "Title": "Arhiva",
+    "SearchHint": "Search"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Automatsko preuzimanje",
+    "None": "Niti jedan",
+    "PluralLatestTracks": "{0} najnovije pjesme",
+    "AutomaticDownloadSubtitle": "Količinu pjesama za preuzimanje automatski kada slijedeći ovaj podcast."
+  },
+  "ContributorViewModel": {
+    "Title": "Contributor",
+    "SearchHint": "Search",
+    "HeaderText": "Se pojavljuje na ovim stazama"
+  },
+  "HomeViewModel": {
+    "More": "Više"
+  },
+  "ExploreViewModel": {
+    "Title": "Istražite"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Popularni",
+    "SearchHint": "Search"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Home",
+    "SearchHint": "Search",
+    "FraKaareHeader": "From Kåre",
+    "AslaksenTeaserHeader": "Words of faith",
+    "ShowAll": "Pokaži sve",
+    "PlayRandom": "Play random",
+    "PlayNewest": "Play newest",
+    "LatestTrack": "Najnovije pjesme",
+    "NextBroadcast": "Next broadcast",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "in {0}h",
+    "Messages": "Poruke",
+    "Music": "Glazba"
+  },
+  "AslaksenNotification": {
+    "Title": "Words of faith",
+    "Message": "Do you want to answer the questions now?",
+    "ButtonYes": "Yes",
+    "ButtonCancel": "Later"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "Contributors",
+    "SearchHint": "Search"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Pomoć i povratne informacije",
+    "GuideIntroTitle": "Kako da biste dobili najviše iz BMM aplikacija",
+    "GuideIntroSubtitle": "Prijeđite prstom da biste saznali više",
+    "GuideOfflineTitle": "Izvanmrežni popisi za reproduciranje",
+    "GuideOfflineSubtitle": "Preuzimanje popisa za reproduciranje na uređaju i slušajte ih bez internet veze. Uključite ovo u popisu za reproduciranje.",
+    "GuideAddToPlaylistTitle": "Add to playlist or 'My Tracks'",
+    "GuideAddToPlaylistSubtitle": "Save your favorite tracks to your own playlists or to your personal BMM collection 'My Tracks' by tapping the options button to the right of the track.",
+    "GuideLanguagesTitle": "Više jezika",
+    "GuideLanguagesSubtitle": "Postavljanje prioriteta jezika BMM sadržaja. To može biti učinjeno u postavkama > jezik sadržaja.\n",
+    "GuideLibraryTitle": "Library Section",
+    "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
+    "GuideSearchTitle": "Search",
+    "GuideSearchSubtitle": "Pronaći određenu pjesmu ili pretraživanje za pronalaženje srodnih sadržaja. Pretraživanja se spremaju automatski.",
+    "ButtonSendMail": "Pošaljite e-mail na BMM tim"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+  },
+  "LoginViewModel": {
+    "Title": "Prijava",
+    "LoginFailureTitle": "Prijava nije uspjela",
+    "LoginFailureMessage": "Molimo pokušajte ponovno koristiti ispravne vjerodajnice",
+    "LoginNoConnectionMessage": "Je trenutno nije dostupna veza. Pokušajte ponovo kasnije",
+    "WrongMailAddressTitle": "Invalid email",
+    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "TbxUsername.Hint": "E-pošte",
+    "TbxPassword.Hint": "Lozinku",
+    "BtnLogin.Text": "Prijava",
+    "LoginInfo": "Sign in with your BCC login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
+    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
+    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
+    "UpdateButton": "Update"
+  },
+  "LanguageAppViewModel": {
+    "Title": "Aplikacija jezik"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Content languages",
+    "Dialog.Title": "Select a language",
+    "Dialog.Cancel": "Cancel",
+    "Toast.LanguagesStillLoading": "The list is still loading. Please try again in a few seconds.",
+    "Toast.NoLanguagesAvailable": "It appears that no connection is available to load the list of languages.",
+    "DeleteLanguageMessage": "You must select at least one content language",
+    "DeleteLanguageTitle": "Cannot remove {0}"
+  },
+  "LibraryViewModel": {
+    "Title": "Library"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Arhiva"
+  },
+  "MenuViewModel": {
+    "Title": "Menu",
+    "Search": "Search",
+    "Explore": "Istražite",
+    "MyContent": "My Content",
+    "Library": "Library",
+    "Settings": "Postavke",
+    "HelpAndFeedback": "Help and Feedback",
+    "Home": "Home",
+    "Favorites": "Favorites",
+    "Profile": "Profile"
+  },
+  "MyContentViewModel": {
+    "Title": "Favorites",
+    "DownloadedContent": "Downloaded Content",
+    "FollowedPodcasts": "Followed Podcasts",
+    "MyTracks": "My Tracks"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Followed Podcasts",
+    "EmptyTitle": "You are currently not following any podcast",
+    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+  },
+  "MyTracksViewModel": {
+    "Title": "My Tracks",
+    "ShufflePlay": "Miješanje",
+    "AvailableOffline": "Dostupno izvan mreže",
+    "AvailableOfflineDownload": "Preuzimanje popisa za reproduciranje",
+    "AvailableOfflineDownloading": "Skidanje {0} {1}",
+    "RemoveOfflineConfirm": "Želite izbrisati sve preuzete stavke?",
+    "EmptyTitle": "Ovaj popis je prazan",
+    "EmptySubline": "Press the three dots on a track to add the track to this track list.",
+    "MobileDownloadDisabled": "Omogućiti preuzimanje putem mobilne mreže u postavkama za nastavak",
+    "AskToResumeDownloading": "Tu su nove stavke u ovaj popis. Želite li nastaviti preuzimajući datoteku?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Downloaded Content",
+    "FollowedPodcasts": "Followed Podcasts",
+    "MyTracks": "My Tracks",
+    "EmptyTitle": "You have not downloaded any content",
+    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Followed Podcasts",
+    "EmptyTitle": "You are currently not following any podcast",
+    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+  },
+  "PodcastViewModel": {
+    "Title": "Podcast",
+    "Follow": "Follow",
+    "Following": "Following",
+    "ManageDownloads": "Manage downloads",
+    "GetNotified": "Get notified",
+    "GetNotifiedMessage": "when new episodes are out",
+    "UnfollowConfirm": "Do you really want to unfollow this podcast?",
+    "MobileDownloadDisabled": "Enable downloading via mobile network in settings to download the latest tracks automatically",
+    "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
+    "Week": "week {0}",
+    "ThisWeek": "This week",
+    "LastWeek": "Last week",
+    "AslaksenTheme1": "Believe in the God of miracles",
+    "AslaksenTheme2": "I have been crucified with Christ",
+    "AslaksenTheme3": "To fear and love God",
+    "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Popis liste za slušanje"
+  },
+  "PlayerViewModel": {
+    "Title": "Now playing",
+    "PlayingCount": "{0} of {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Queue"
+  },
+  "SearchViewModel": {
+    "Title": "Search",
+    "SearchHint": "Search",
+    "SearchResults": "Search results",
+    "SearchHistory": "Recent searches",
+    "SearchSuggestions": "Did you mean: ",
+    "SearchNoResults": "We couldn't find anything.",
+    "WelcomeTitle": "Start search here!",
+    "WelcomeSubTitle": "Use the search field to search for content on BMM",
+    "DeleteConfirm": "Are you sure you want to delete the search history?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profile",
+    "HeadlineSettings": "Postavke",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionEnablePushHeader": "Enable push notifications",
+    "OptionPushNotifications": "Push Notifications",
+    "OptionPushNotificationsSubtitle": "Enable push notifications for podcasts you follow",
+    "OptionExternalStorage": "Storage location",
+    "OptionMBInternalText": "Internal {0} MB",
+    "OptionMBExternalText": "External {0} MB",
+    "OptionEnablePushText": "Receive push notifications when there is new content available",
+    "OptionDownloadMobileNetworkHeader": "Download via mobile network",
+    "OptionDownloadMobileNetworkText": "Neka aplikacija preuzeti popise koristeći 3G / 4G. To može utjecati na podatkovne tarife",
+    "HeadlineGeneral": "Opće",
+    "OptionLanguageAppHeader": "Aplikacija jezik",
+    "OptionLanguageAppText": "Promijenili jezik aplikacije",
+    "OptionLanguageContentHeader": "Jezik sadržaja",
+    "OptionLanguageContentText": "Odabir i postavljanje prioriteta jezika za sve sadržaja",
+    "HeadlineAbout": "O",
+    "OptionCopyrightHeader": "Autorska prava",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
+    "OptionContactHeader": "Kontakt",
+    "OptionContactText": "Pitanja ili komentar? Kontaktirati ovdje.",
+    "OptionAppVersionHeader": "Verzija aplikacije",
+    "AppInfoTitle": "Aplikacija informacije",
+    "AppInfoAppVersion": "Verzija aplikacije: ",
+    "AppInfoDeviceModel": "Model uređaja: ",
+    "AppInfoDevicePlatform": "Platforme uređaja: ",
+    "AppInfoDeviceVersion": "Verzija uređaja: ",
+    "LoggedInAs": "Signed in as",
+    "LogoutConfirm": "Jeste li sigurni da želite odjaviti?",
+    "Logout": "Odjavi se"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Location for offline tracks",
+    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Popis za reproduciranje",
+    "ShufflePlay": "Miješanje",
+    "MenuDelete": "Delete playlist",
+    "MenuEdit": "Edit playlist",
+    "AvailableOffline": "Dostupno izvan mreže",
+    "AvailableOfflineDownload": "Preuzimanje popisa za reproduciranje",
+    "AvailableOfflineDownloading": "Skidanje {0} {1}",
+    "RemoveOfflineConfirm": "Želite izbrisati sve preuzete stavke?",
+    "CreatePrompt": "Unesite naziv popisa za reproduciranje",
+    "CreateFailure": "Stvaranje popisa za reproduciranje nije uspjelo",
+    "DeleteConfirm": "Jeste li sigurni da želite izbrisati popis za reproduciranje \"{0}\"?",
+    "DeleteFailure": "Nije uspjelo brisanje naslova \"{0}\"",
+    "CreateEmptyFailure": "Unesite naslov za stvaranje popisa za reproduciranje",
+    "RenameEmptyFailure": "Unesite naslov za preimenovanje popisa za reproduciranje",
+    "SearchHint": "Search",
+    "EmptyTitle": "Ovaj popis je prazan",
+    "EmptySubline": "Pritisnite tipku tri točkice na putu za dodavanje skladbe na ovaj popis za reproduciranje.",
+    "MobileDownloadDisabled": "Omogućiti preuzimanje putem mobilne mreže u postavkama za nastavak",
+    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "AskToResumeDownloading": "Tu su nove stavke u ovaj popis. Želite li nastaviti preuzimajući datoteku?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Rename playlist",
+    "MenuSave": "Save",
+    "EmptyName": "The playlist has no name",
+    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "DiscardChangesTitle": "Discard Changes?",
+    "DiscardChangesMessage": "The changes you made won't be saved",
+    "DiscardChanges": "Discard",
+    "KeepEditing": "Keep Editing"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Popis za reproduciranje",
+    "MenuDelete": "Delete",
+    "DeleteConfirm": "Jeste li sigurni da želite izbrisati popis za reproduciranje \"{0}\"?",
+    "DeleteFailure": "Nije uspjelo brisanje naslova \"{0}\"",
+    "ShufflePlay": "Miješanje",
+    "SearchHint": "Search"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Dodati pjesme na popis za reproduciranje",
+    "SearchHint": "Search",
+    "FailedToAdd": "Dodavanje pjesme na popis za reproduciranje nije uspjelo. Pokušajte ponovo kasnije.",
+    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddAlbum": "Nije uspio dodati album na popis za reproduciranje jer sadrži albume.",
+    "FailedToAddUnknownType": "Dodavanje \"{0}\" na popis trenutno nije podržano.",
+    "CreatePlaylistPrompt": "Unesite naziv popisa za reproduciranje",
+    "TrackAddedToTrackCollection": "Added to the playlist"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Dodavanje na listu",
+    "Track.DeleteFromPlaylist": "Remove from playlist",
+    "Track.AddToMyTracks": "Add to My Tracks",
+    "Track.RemoveFromMyTracks": "Remove from My Tracks",
+    "Track.AddedToMyTracks": "Added to My Tracks",
+    "Track.RemovedFromMyTracks": "Removed from My Tracks",
+    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.AddToQueue": "Add to queue",
+    "Track.QueueToPlayNext": "Play next",
+    "Track.AddedToQueue": "Added to queue",
+    "Track.GoToAlbum": "Idi na album",
+    "Track.GoToContributor": "Go to contributors",
+    "Track.GoToContributor.Composer": "Composer: {0}",
+    "Track.GoToContributor.Interpret": "Performer: {0}",
+    "Track.GoToContributor.Lyricist": "Lyricist: {0}",
+    "Track.GoToContributor.Arranger": "Arranger: {0}",
+    "Track.Download": "Download track",
+    "Track.MoreInformation": "More information",
+    "Track.Share": "Share track",
+    "Album.Play": "Play",
+    "Album.AddToPlaylist": "Dodaj album na popis za reproduciranje",
+    "Album.AddToMyTracks": "Add album to My Tracks",
+    "Album.AddedToMyTracks": "Album added to My Tracks",
+    "Album.AddToQueue": "Add to queue",
+    "Album.Share": "Share album",
+    "FailedToAdd": "Dodavanje pjesme na popis za reproduciranje nije uspjelo. Pokušajte ponovo kasnije.",
+    "FailedToAddAlbum": "Nije uspio dodati album na popis za reproduciranje jer sadrži albume.",
+    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddUnknownType": "Dodavanje \"{0}\" na popis trenutno nije podržano.",
+    "MyTracks": "My Tracks",
+    "Contributor.Play": "Play",
+    "Contributor.Share": "Share contributor",
+    "TrackCollection.DeletePlaylist": "Delete playlist",
+    "TrackCollection.EditPlaylist": "Edit playlist",
+    "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
+    "Cancel": "Cancel"
+  },
+  "Notifications": {
+    "Downloading": "Downloading {0}",
+    "ItemsDownloaded": "Item {0} of {1}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Podcasts"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "External references",
+    "AboutTrack": "About the track",
+    "Title": "Track information",
+    "TrackTitle": "Title",
+    "SongNumber": "Song number",
+    "Album": "Album",
+    "Artist": "Artist",
+    "Duration": "Duration",
+    "PublishDate": "Publish date",
+    "Lyricist": "Lyricist",
+    "Arranger": "Arranger",
+    "Composer": "Composer",
+    "Publisher": "Publisher",
+    "Copyright": "Autorska prava"
+  },
+  "CopyrightViewModel": {
+    "Title": "Autorska prava"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Recent Messages"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Recent Music"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "All files have been downloaded!"
+  }
+}
