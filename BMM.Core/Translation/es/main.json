@@ -209,7 +209,7 @@
     "EmptySubline": "Siga un Podcast un Podcast de apertura y clic en el botón de seguir."
   },
   "PodcastViewModel": {
-    "Title": "Podcast",
+    "Title": "podcast",
     "Follow": "Siga",
     "Following": "Después de",
     "ManageDownloads": "Gestionar descargas",
