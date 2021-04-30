@@ -1,0 +1,414 @@
+{
+  "Global": {
+    "ContactError": "Kon nie kontak die BMM span, jy kan 'n e-pos stuur na: {0}",
+    "External": "External",
+    "Internal": "Internal",
+    "BytesMB": "{0} MB",
+    "UnexpectedError": "Sorry, an unexpected error has occurred.",
+    "InternetConnectionOffline": "Die internet blyk te wees op die regte pad.",
+    "ItemNotFound": "The requested item does not exist.",
+    "OfflineBanner": "Showing only tracks on this phone",
+    "Song": "Song",
+    "Speech": "Boodskap",
+    "Audiobook": "Audiobook",
+    "Exegesis": "Exegesis"
+  },
+  "Streak": {
+    "Message": "Your streak this week",
+    "MessagePerfect": "A perfect week. Well done!",
+    "PerfectWeekCountSingular": "{0} perfect week",
+    "PerfectWeekCountPlural": "{0} perfect weeks",
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
+  },
+  "DeepLinkHandler": {
+    "ErrorTitle": "Unable to open link",
+    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+  },
+  "RequestExceptionHandler": {
+    "RequestFailedMessage": "A verbindings fout het voorgekom: {0}"
+  },
+  "MediaPlayer": {
+    "ErrorMediaNotSupported": "Daar is geen ondersteunde lêer in verband met hierdie snit.",
+    "ErrorVideoNotSupported": "Video's word tans nie ge-ondersteun nie.",
+    "ErrorFileNotOffline": "Jy kan nie 'n spoor wat nie afgelaai is, in offline-modus speel nie.",
+    "ErrorPlayerStopped": "The player has stopped.",
+    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
+    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
+    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
+    "ErrorPlayerStart": "Unable to start playback."
+  },
+  "GlobalMediaDownloader": {
+    "OutOfSpaceMessage": "There is not enough space to store offline files"
+  },
+  "AlbumViewModel": {
+    "Title": "Album",
+    "SearchHint": "Soek",
+    "AddAlbumToPlaylist": "Voeg album by speellys",
+    "AddAlbumToMyTracks": "Voeg album by My spore",
+    "FailedToAdd": "Misluk om die spoor by die snitlys byte voeg. Probeer asseblief later weer.",
+    "AlbumFailedToAddAlreadyExists": "Hierdie album is reeds in jou speellys.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "ShufflePlay": "Skommel Speel"
+  },
+  "AlbumsViewModel": {
+    "Title": "Argief",
+    "SearchHint": "Soek"
+  },
+  "AutomaticDownloadViewModel": {
+    "Title": "Outomatiese aflaai",
+    "None": "Geen",
+    "PluralLatestTracks": "{0} jongste snitte",
+    "AutomaticDownloadSubtitle": "Vasgestelde bedrag van snitte afgelaai word outomaties as volg op hierdie potgooi."
+  },
+  "ContributorViewModel": {
+    "Title": "Bydaer",
+    "SearchHint": "Soek",
+    "HeaderText": "Verskyn op hierdie liedjies"
+  },
+  "HomeViewModel": {
+    "More": "Meer"
+  },
+  "ExploreViewModel": {
+    "Title": "Ontdek"
+  },
+  "ExplorePopularViewModel": {
+    "Title": "Gewild",
+    "SearchHint": "Soek"
+  },
+  "ExploreNewestViewModel": {
+    "Title": "Home",
+    "SearchHint": "Soek",
+    "FraKaareHeader": "Van Kåre",
+    "AslaksenTeaserHeader": "Words of faith",
+    "ShowAll": "Wys alle",
+    "PlayRandom": "Play random",
+    "PlayNewest": "Play newest",
+    "LatestTrack": "Nuutste snede",
+    "NextBroadcast": "Next broadcast",
+    "BmmRadio": "BMM Live",
+    "CountdownHours": "in {0}h",
+    "Messages": "Toesprake",
+    "Music": "Musiek"
+  },
+  "AslaksenNotification": {
+    "Title": "Words of faith",
+    "Message": "Do you want to answer the questions now?",
+    "ButtonYes": "Yes",
+    "ButtonCancel": "Later"
+  },
+  "ExploreContributorsViewModel": {
+    "Title": "bydraers",
+    "SearchHint": "Soek"
+  },
+  "HelpFeedbackViewModel": {
+    "Title": "Help & Terugvoering",
+    "GuideIntroTitle": "Hoe om die meeste uit die BMM app te kry",
+    "GuideIntroSubtitle": "Swipe om meer te leer",
+    "GuideOfflineTitle": "Offline snitlys",
+    "GuideOfflineSubtitle": "Laai jou snitlys af op jou toestel en luister daarna sonder internet konneksie. Jy kan dit in die snitlys aanskakel.",
+    "GuideAddToPlaylistTitle": "Voeg speellys of 'My spore'",
+    "GuideAddToPlaylistSubtitle": "Stoor jou gunsteling snitte om jou eie speellyste of om jou persoonlike BMM versameling 'My spore' deur die opsies-knoppie aan die regterkant van die baan te tik.",
+    "GuideLanguagesTitle": "Verskeie tale",
+    "GuideLanguagesSubtitle": "Prioritiseer jou tale om dit van jou BMM inhoud te beheer. Dit kan gedoen word in Instellings> Taal inhoud.",
+    "GuideLibraryTitle": "Biblioteek artikel",
+    "GuideLibrarySubtitle": "Kry vinnige toegang tot die inhoud wat jy wil hê. Die biblioteek afdeling bestaan uit al die beskikbare potgooie en 'n argief artikel te blaai inhoud. ",
+    "GuideSearchTitle": "Soek",
+    "GuideSearchSubtitle": "Vind 'n bepaalde baan, of soek vir vakke om verwante inhoud te vind. Jou navrae word outomaties gestoor.",
+    "ButtonSendMail": "Stuur 'n E-pos vir die BMM Span"
+  },
+  "UserSetupViewModel": {
+    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+  },
+  "LoginViewModel": {
+    "Title": "Teken in",
+    "LoginFailureTitle": "Intekening was onsuksesvol",
+    "LoginFailureMessage": "Probeer asseblief weer met gebruik van korrekte data",
+    "LoginNoConnectionMessage": "Daar is tans geen verbinding beskikbaar. Probeers asb. later weer",
+    "WrongMailAddressTitle": "Invalid email",
+    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "TbxUsername.Hint": "E-pos",
+    "TbxPassword.Hint": "Wagwoord",
+    "BtnLogin.Text": "Teken in",
+    "LoginInfo": "Sign in with your BCC login"
+  },
+  "SupportEndedViewModel": {
+    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
+    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
+    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
+    "UpdateButton": "Update"
+  },
+  "LanguageAppViewModel": {
+    "Title": "App taal"
+  },
+  "LanguageContentViewModel": {
+    "Title": "Taal van inhoud",
+    "Dialog.Title": "Kies 'n taal",
+    "Dialog.Cancel": "Kanselleer",
+    "Toast.LanguagesStillLoading": "Die lys is nog besig om te laai, probeer weer in 'n paar sekondes.",
+    "Toast.NoLanguagesAvailable": "Blyk dat daar geen verbinding beskikbaar is om die lys van tale af te laai.",
+    "DeleteLanguageMessage": "Jy moet tenminste een inhouds-taal kies",
+    "DeleteLanguageTitle": "Kan nie verwyder nie {0}"
+  },
+  "LibraryViewModel": {
+    "Title": "Biblioteek"
+  },
+  "LibraryArchiveViewModel": {
+    "Title": "Argief"
+  },
+  "MenuViewModel": {
+    "Title": "Spyskaart",
+    "Search": "Soek",
+    "Explore": "Ontdek",
+    "MyContent": "My Inhoud",
+    "Library": "Biblioteek",
+    "Settings": "Instellings",
+    "HelpAndFeedback": "Help en Terugvoering",
+    "Home": "Home",
+    "Favorites": "Favorites",
+    "Profile": "Profile"
+  },
+  "MyContentViewModel": {
+    "Title": "Favorites",
+    "DownloadedContent": "Downloaded Content",
+    "FollowedPodcasts": "Potgooie",
+    "MyTracks": "My spore"
+  },
+  "FollowedPodcastsViewModel": {
+    "Title": "Potgooie",
+    "EmptyTitle": "Jy is tans nie na enige potgooie",
+    "EmptySubline": "Volg 'n potgooi deur opening 'n potgooi en die volg-knoppie te klik."
+  },
+  "MyTracksViewModel": {
+    "Title": "My spore",
+    "ShufflePlay": "Skommel Speel",
+    "AvailableOffline": "Beskikbaar van lyn af",
+    "AvailableOfflineDownload": "Laai Snitlys af",
+    "AvailableOfflineDownloading": "Laai af {0} of {1}",
+    "RemoveOfflineConfirm": "Wil jy regtig al die afgelaaide items verwyder?",
+    "EmptyTitle": "Die snitlys is leeg",
+    "EmptySubline": "Druk die drie kolletjies op 'n spoor om die spoor by hierdie snitlys by te voeg.",
+    "MobileDownloadDisabled": "Aktiveer aflaai via selfoon netwerk in instellings om voort te gaan",
+    "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?"
+  },
+  "DownloadedContentViewModel": {
+    "Title": "Downloaded Content",
+    "FollowedPodcasts": "Potgooie",
+    "MyTracks": "My spore",
+    "EmptyTitle": "You have not downloaded any content",
+    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+  },
+  "DownloadedFollowedPodcastsViewModel": {
+    "Title": "Potgooie",
+    "EmptyTitle": "Jy is tans nie na enige potgooie",
+    "EmptySubline": "Volg 'n potgooi deur opening 'n potgooi en die volg-knoppie te klik."
+  },
+  "PodcastViewModel": {
+    "Title": "Potgooi",
+    "Follow": "Volg",
+    "Following": "Volg",
+    "ManageDownloads": "Bestuur aflaaie",
+    "GetNotified": "Kry kennis gestel word",
+    "GetNotifiedMessage": "wanneer nuwe episodes is uit",
+    "UnfollowConfirm": "Wil jy regtig unfollow hierdie potgooi?",
+    "MobileDownloadDisabled": "In staat stel om via mobiele netwerk in instellings af te laai die nuutste snitte outomaties af te laai",
+    "ToggleFollowOfflineError": "Jy moet in aanlyn-modus te volg of unfollow 'n potgooi",
+    "Week": "week {0}",
+    "ThisWeek": "This week",
+    "LastWeek": "Last week",
+    "AslaksenTheme1": "Believe in the God of miracles",
+    "AslaksenTheme2": "I have been crucified with Christ",
+    "AslaksenTheme3": "To fear and love God",
+    "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistsViewModel": {
+    "Title": "Speellys"
+  },
+  "PlayerViewModel": {
+    "Title": "Now playing",
+    "PlayingCount": "{0} van {1}"
+  },
+  "QueueViewModel": {
+    "Title": "Snitlys tou"
+  },
+  "SearchViewModel": {
+    "Title": "Soek",
+    "SearchHint": "Soek",
+    "SearchResults": "Soek resultate",
+    "SearchHistory": "Onlangse soektogte",
+    "SearchSuggestions": "Het jy bedoel: ",
+    "SearchNoResults": "Ons kon niks vind nie.",
+    "WelcomeTitle": "Begin soektog hier!",
+    "WelcomeSubTitle": "Gebruik die soek veld om na inhoud op BMM te soek",
+    "DeleteConfirm": "Is jy seker jy wil die die soekgeskiedenis verwyder?"
+  },
+  "SettingsViewModel": {
+    "Title": "Profile",
+    "HeadlineSettings": "Instellings",
+    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionEnablePushHeader": "Aktiveer stoot notifikasies",
+    "OptionPushNotifications": "Stoot kennisgewings",
+    "OptionPushNotificationsSubtitle": "Ontsper stoot kennisgewings vir potgooie jy volg",
+    "OptionExternalStorage": "Storage location",
+    "OptionMBInternalText": "Internal {0} MB free",
+    "OptionMBExternalText": "External {0} MB free",
+    "OptionEnablePushText": "Ontvang stoot notifikasies wanneer daar nuwe inhoud beskikbaar is",
+    "OptionDownloadMobileNetworkHeader": "Download via selfoon netwerk",
+    "OptionDownloadMobileNetworkText": "Laat die app inhoud aflaai deur 3G / 4G. Dit kan jou data plan affekteer",
+    "HeadlineGeneral": "Algemeen",
+    "OptionLanguageAppHeader": "App taal",
+    "OptionLanguageAppText": "Verander die App se taal",
+    "OptionLanguageContentHeader": "Taal van inhoud",
+    "OptionLanguageContentText": "Verander die inhoud se taal in BMM",
+    "HeadlineAbout": "Om",
+    "OptionCopyrightHeader": "Kopiereg",
+    "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag",
+    "OptionContactHeader": "Kontrak",
+    "OptionContactText": "Vrae of terugvoering? Kontak die span hier.",
+    "OptionAppVersionHeader": "App weergawe",
+    "AppInfoTitle": "App Informasie",
+    "AppInfoAppVersion": "App weergawe: ",
+    "AppInfoDeviceModel": "Toestel model: ",
+    "AppInfoDevicePlatform": "Toestel platform: ",
+    "AppInfoDeviceVersion": "Toestel weergawe: ",
+    "LoggedInAs": "Signed in as",
+    "LogoutConfirm": "Is jy seker dat jy uit wil teken?",
+    "Logout": "Teken uit"
+  },
+  "StorageManagementViewModel": {
+    "Title": "Location for offline tracks",
+    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+  },
+  "TrackCollectionViewModel": {
+    "Title": "Snitlys",
+    "ShufflePlay": "Skommel Speel",
+    "MenuDelete": "Verwyder snitlys",
+    "MenuEdit": "Edit playlist",
+    "AvailableOffline": "Beskikbaar van lyn af",
+    "AvailableOfflineDownload": "Laai Snitlys af",
+    "AvailableOfflineDownloading": "Laai af {0} of {1}",
+    "RemoveOfflineConfirm": "Wil jy regtig al die afgelaaide items verwyder?",
+    "CreatePrompt": "Gee 'n snitlys naam",
+    "CreateFailure": "Het misluk om die snitlys te skep",
+    "DeleteConfirm": "Is jy seker jy wil die snitlys verwyder \"{0}\"?",
+    "DeleteFailure": "Misluk om die snitlys te verwyder \"{0}\"",
+    "CreateEmptyFailure": "Gee 'n titel om 'n snitlys te skep",
+    "RenameEmptyFailure": "Gee 'n titel om die snitlys te hernoem",
+    "SearchHint": "Soek",
+    "EmptyTitle": "Die snitlys is leeg",
+    "EmptySubline": "Druk die drie kolletjies op 'n spoor om die spoor by hierdie snitlys by te voeg.",
+    "MobileDownloadDisabled": "Aktiveer aflaai via selfoon netwerk in instellings om voort te gaan",
+    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?"
+  },
+  "EditTrackCollectionViewModel": {
+    "Title": "Edit Playlist",
+    "RenameLabel": "Rename playlist",
+    "MenuSave": "Stoor",
+    "EmptyName": "The playlist has no name",
+    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "DiscardChangesTitle": "Discard Changes?",
+    "DiscardChangesMessage": "The changes you made won't be saved",
+    "DiscardChanges": "Discard",
+    "KeepEditing": "Keep Editing"
+  },
+  "OfflineTrackCollectionViewModel": {
+    "Title": "Snitlys",
+    "MenuDelete": "Verwyder",
+    "DeleteConfirm": "Is jy seker jy wil die snitlys verwyder \"{0}\"?",
+    "DeleteFailure": "Misluk om die snitlys te verwyder \"{0}\"",
+    "ShufflePlay": "Skommel Speel",
+    "SearchHint": "Soek"
+  },
+  "TrackCollectionsAddToViewModel": {
+    "Title": "Voeg snit by snitlys",
+    "SearchHint": "Soek",
+    "FailedToAdd": "Misluk om die spoor by die snitlys byte voeg. Probeer asseblief later weer.",
+    "AlbumFailedToAddAlreadyExists": "Hierdie album is reeds in jou speellys.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddAlbum": "Kon nie die album by die speellys te voeg omdat dit bevat albums.",
+    "FailedToAddUnknownType": "'N \"{0}\" by 'n speellys word tans ondersteun nie.",
+    "CreatePlaylistPrompt": "Gee 'n snitlys naam",
+    "TrackAddedToTrackCollection": "By die snitlys bygevoeg"
+  },
+  "UserDialogs": {
+    "Track.AddToPlaylist": "Voeg by snitlys",
+    "Track.DeleteFromPlaylist": "Verwyder van snitlys",
+    "Track.AddToMyTracks": "Voeg by My spore",
+    "Track.RemoveFromMyTracks": "Verwyder uit My spore",
+    "Track.AddedToMyTracks": "Bygevoeg om My spore",
+    "Track.RemovedFromMyTracks": "Verwyder uit My spore",
+    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.AddToQueue": "Voeg by Snitlys tou",
+    "Track.QueueToPlayNext": "Play next",
+    "Track.AddedToQueue": "By Snitlys tou bygevoeg",
+    "Track.GoToAlbum": "Gaan na album",
+    "Track.GoToContributor": "Gaan na bydraers",
+    "Track.GoToContributor.Composer": "Komponis: {0}",
+    "Track.GoToContributor.Interpret": "Kunstanaar: {0}",
+    "Track.GoToContributor.Lyricist": "Liriekskrywer: {0}",
+    "Track.GoToContributor.Arranger": "Arranger: {0}",
+    "Track.Download": "Laai spoor af",
+    "Track.MoreInformation": "Meer informasie",
+    "Track.Share": "Share track",
+    "Album.Play": "Speel",
+    "Album.AddToPlaylist": "Voeg album by speellys",
+    "Album.AddToMyTracks": "Voeg album by My spore",
+    "Album.AddedToMyTracks": "Album bygevoeg om My spore",
+    "Album.AddToQueue": "Voeg by Snitlys tou",
+    "Album.Share": "Share album",
+    "FailedToAdd": "Misluk om die spoor by die snitlys byte voeg. Probeer asseblief later weer.",
+    "FailedToAddAlbum": "Kon nie die album by die speellys te voeg omdat dit bevat albums.",
+    "AlbumFailedToAddAlreadyExists": "Hierdie album is reeds in jou speellys.",
+    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAddUnknownType": "'N \"{0}\" by 'n speellys word tans ondersteun nie.",
+    "MyTracks": "My spore",
+    "Contributor.Play": "Speel",
+    "Contributor.Share": "Share contributor",
+    "TrackCollection.DeletePlaylist": "Verwyder snitlys",
+    "TrackCollection.EditPlaylist": "Edit playlist",
+    "OfflineTrackCollection.DeletePlaylist": "Verwyder snitlys",
+    "Cancel": "Kanselleer"
+  },
+  "Notifications": {
+    "Downloading": "Laai af {0}",
+    "ItemsDownloaded": "Item {0} van {1}"
+  },
+  "PodcastsViewModel": {
+    "Title": "Potgooie"
+  },
+  "TrackInfoViewModel": {
+    "ExternalReferences": "External references",
+    "AboutTrack": "Oor die snede",
+    "Title": "Snit Informasie",
+    "TrackTitle": "Titel",
+    "SongNumber": "Song number",
+    "Album": "Album",
+    "Artist": "Kunstenaar",
+    "Duration": "Tydsduur",
+    "PublishDate": "Publiseer datum",
+    "Lyricist": "Liriekskrywer",
+    "Arranger": "Arranger",
+    "Composer": "Komponis",
+    "Publisher": "Publisher",
+    "Copyright": "Kopiereg"
+  },
+  "CopyrightViewModel": {
+    "Title": "Kopiereg"
+  },
+  "ExploreRecentSpeechesViewModel": {
+    "Title": "Recent Messages"
+  },
+  "ExploreRecentMusicViewModel": {
+    "Title": "Recent Music"
+  },
+  "DownloadManager": {
+    "DownloadingFinished": "Alle lêers is afgelaai!"
+  }
+}
