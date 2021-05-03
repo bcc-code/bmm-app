@@ -71,6 +71,7 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink("^/music$", NavigateTo<ExploreRecentMusicViewModel>),
                 new RegexDeepLink("^/contributors$", NavigateTo<ExploreContributorsViewModel>),
                 new RegexDeepLink("^/featured$", NavigateTo<CuratedPlaylistsViewModel>),
+                new RegexDeepLinkWithParameters("^/playlist/curated/(?<id>[0-9]+)(/(?<name>.*))?$", OpenCuratedPlaylist),
                 new RegexDeepLinkWithParameters("^/playlist/private/(?<id>[0-9]+)(/(?<name>.*))?$", OpenTrackCollection),
                 new RegexDeepLinkWithParameters("^/playlist/contributor/(?<id>[0-9]+)(/(?<name>.*))?$", OpenContributor),
                 new RegexDeepLinkWithParameters("^/playlist/podcast/(?<id>[0-9]+)(/(?<name>.*))?$", OpenPodcast),
@@ -105,6 +106,11 @@ namespace BMM.Core.Implementations.DeepLinking
         private Task OpenPodcast(int id, string name)
         {
             return _navigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = id, Title = name});
+        }
+
+        private Task OpenCuratedPlaylist(int id, string name)
+        {
+            return _navigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = id, Title = name});
         }
 
         private Task OpenTrackCollection(int id, string name)

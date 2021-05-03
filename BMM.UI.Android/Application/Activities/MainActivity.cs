@@ -38,7 +38,7 @@ namespace BMM.UI.Droid.Application.Activities
         AutoVerify = true,
         DataSchemes = new[] { "https", "http" },
         DataHosts = new[] { GlobalConstants.BmmUrlProd, GlobalConstants.BmmUrlInt },
-        DataPathPatterns = new[] { "/archive", "/album/.*", "/track/.*", "/playlist/private/.*", "/playlist/contributor/.*", "/playlist/podcast/.*", "/podcasts/.*", "/playlist/latest", "/copyright", "/", "/daily-fra-kaare", "/music", "/speeches", "/contributors", "/featured" }
+        DataPathPatterns = new[] { "/archive", "/album/.*", "/track/.*", "/playlist/curated/.*", "/playlist/private/.*", "/playlist/contributor/.*", "/playlist/podcast/.*", "/podcasts/.*", "/playlist/latest", "/copyright", "/", "/daily-fra-kaare", "/music", "/speeches", "/contributors", "/featured" }
     )]
     public class MainActivity : BaseFragmentActivity<MainActivityViewModel>
     {
