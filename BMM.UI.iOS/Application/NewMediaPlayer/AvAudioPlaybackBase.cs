@@ -46,10 +46,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 AllowsExternalPlayback = false
             };
 
-            if (VersionHelper.SupportsAutomaticWaitPlayerProperty)
-            {
-                _player.AutomaticallyWaitsToMinimizeStalling = false;
-            }
+            _player.AutomaticallyWaitsToMinimizeStalling = false;
 
             var avSession = AVAudioSession.SharedInstance();
 
