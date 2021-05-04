@@ -129,7 +129,7 @@
     "LoginFailureTitle": "Inicio de Sesión fallido",
     "LoginFailureMessage": "Inténtalo nuevamente utilizando credenciales correctas",
     "LoginNoConnectionMessage": "Actualmente no hay ninguna conexión. Por favor Inténtalo más tarde",
-    "WrongMailAddressTitle": "Invalid email",
+    "WrongMailAddressTitle": "email no es válida",
     "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
     "TbxUsername.Hint": "Correo electrónico",
     "TbxPassword.Hint": "Contraseña",
