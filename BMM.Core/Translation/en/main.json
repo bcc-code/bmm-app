@@ -287,11 +287,11 @@
   },
   "TrackCollectionViewModel": {
     "Title": "Playlist",
-    "ShufflePlay": "Shuffle Play",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Delete playlist",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Available offline",
-    "AvailableOfflineDownload": "Download playlist",
+    "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} of {1} downloads remaining",
     "RemoveOfflineConfirm": "Do you really want to delete all downloaded items?",
     "CreatePrompt": "Enter a playlist name",
