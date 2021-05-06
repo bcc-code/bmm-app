@@ -453,6 +453,9 @@
     <BundleResource Include="Resources\icon_search_active.png" />
     <BundleResource Include="Resources\icon_search_active@2x.png" />
     <BundleResource Include="Resources\icon_search_active@3x.png" />
+    <BundleResource Include="Resources\icon_tick.png" />
+    <BundleResource Include="Resources\icon_tick@2x.png" />
+    <BundleResource Include="Resources\icon_tick@3x.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
@@ -730,10 +733,10 @@
     <InterfaceDefinition Include="Application\ViewController\ExploreRecentMusicViewController.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
+    <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
