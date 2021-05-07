@@ -64,8 +64,7 @@ namespace BMM.UI.iOS
             set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AvailableOfflineDownload");
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsOfflineAvailable);
-
-            // set.Bind(DownloadButton.Layer).For(v => v.BorderWidth).To(vm => vm.IsDownloading).WithConversion<BoolToNfloatConverter>();
+            set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
 
             set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
@@ -79,7 +78,7 @@ namespace BMM.UI.iOS
             // set.Bind(PlaylistEmptyTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("EmptySubline");
 
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShufflePlay");
+            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShufflePlay");
 
             // Fix the height of the table-header manually by watching the trigger
             ((TrackCollectionViewModel)DataContext).PropertyChanged += (sender, e) => { if (e.PropertyName == "IsDownloading") UpdateTableHeaderHeight(); };
