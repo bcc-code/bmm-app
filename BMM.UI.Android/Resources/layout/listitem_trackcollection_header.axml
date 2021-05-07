@@ -7,8 +7,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical"
-        android:gravity="center"
-        app:MvxBind="Visibility Visibility(Documents.Count)">
+        android:gravity="center">
     <LinearLayout
             android:background="@drawable/icon_playlist"
             android:layout_width="48dp"
@@ -42,13 +41,15 @@
                 style="@style/Button_Secondary"
                 android:drawableLeft="@drawable/icon_download"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:MvxBind="Click ToggleOfflineCommand"/>
         <Button
                 android:text="Shuffle"
                 style="@style/Button_Primary"
                 android:drawableLeft="@drawable/icon_play_white"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:MvxBind="Click ShufflePlayCommand"/>
     </LinearLayout>
 
     <View
@@ -63,5 +64,6 @@
             android:layout_marginBottom="7dp"
             android:layout_marginLeft="@dimen/track_padding"
             android:textColor="@color/bright_gray"
-            android:text="23 tracks"/>
+            android:text="23 tracks"
+            app:MvxBind="Text Format('{0} tracks', IntToString(Documents.Count))"/>
 </LinearLayout>
