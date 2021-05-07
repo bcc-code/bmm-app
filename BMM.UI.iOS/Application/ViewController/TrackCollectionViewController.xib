@@ -67,7 +67,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Z8C-8f-DbM">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Z8C-8f-DbM">
                                 <rect key="frame" x="70.666666666666686" y="135" width="273" height="40"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-Gf-W9x" customClass="DownloadButton">
@@ -107,11 +107,13 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z8C-8f-DbM" secondAttribute="trailing" constant="16" id="F8p-LT-sKC"/>
                             <constraint firstItem="Boq-CE-h65" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="MLH-TW-DwK"/>
                             <constraint firstAttribute="trailing" secondItem="VLY-P3-Ge3" secondAttribute="trailing" constant="16" id="Of4-qd-Z6u"/>
+                            <constraint firstItem="Z8C-8f-DbM" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="UYv-3q-99Q"/>
                             <constraint firstItem="VLY-P3-Ge3" firstAttribute="leading" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="cyb-Bw-hLV"/>
-                            <constraint firstItem="Z8C-8f-DbM" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="eRe-Kf-I8f"/>
                             <constraint firstItem="VLY-P3-Ge3" firstAttribute="top" secondItem="Boq-CE-h65" secondAttribute="bottom" constant="8" id="hAX-dJ-JEg"/>
+                            <constraint firstItem="Z8C-8f-DbM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="pT4-s7-5Li"/>
                             <constraint firstItem="Z8C-8f-DbM" firstAttribute="top" secondItem="VLY-P3-Ge3" secondAttribute="bottom" constant="24" id="pcf-TQ-TIo"/>
                             <constraint firstAttribute="bottom" secondItem="Z8C-8f-DbM" secondAttribute="bottom" constant="32" id="t6d-DX-qjp"/>
                             <constraint firstItem="Boq-CE-h65" firstAttribute="top" secondItem="Bpp-Gt-LEf" secondAttribute="top" constant="32" id="zHh-uP-i1B"/>
