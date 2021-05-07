@@ -55,12 +55,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AndroidSigningKeyStore></AndroidSigningKeyStore>
-    <AndroidSigningStorePass></AndroidSigningStorePass>
+    <AndroidSigningKeyStore>
+    </AndroidSigningKeyStore>
+    <AndroidSigningStorePass>
+    </AndroidSigningStorePass>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidKeyStore>false</AndroidKeyStore>
-    <AndroidSigningKeyAlias></AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass></AndroidSigningKeyPass>
+    <AndroidSigningKeyAlias>
+    </AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>
+    </AndroidSigningKeyPass>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
@@ -372,7 +376,15 @@
     <AndroidResource Include="Resources\drawable\icon_chevron_right.xml" />
     <AndroidResource Include="Resources\drawable\icon_download.xml" />
     <AndroidResource Include="Resources\drawable\icon_favorites_active_no_fill.xml" />
+    <AndroidResource Include="Resources\drawable\icon_play.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_playlist.xml" />
+    <AndroidResource Include="Resources\drawable\icon_play_white.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_podcast.xml" />
     <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
     <AndroidResource Include="Resources\drawable\navigation_favorites.xml" />
@@ -414,6 +426,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_podcast_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_podcast_newest_track.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -544,7 +557,6 @@
     <AndroidResource Include="Resources\layout\listitem_trackrelation_external.axml" />
     <AndroidResource Include="Resources\layout\fragment_podcasts.axml" />
     <AndroidResource Include="Resources\layout\fragment_podcast.axml" />
-    <AndroidResource Include="Resources\layout\listitem_podcast_header.axml" />
     <AndroidResource Include="Resources\layout\listitem_podcasts.axml" />
     <AndroidResource Include="Resources\layout\fragment_library_archive.axml" />
     <AndroidResource Include="Resources\layout\fragment_automatic_download.axml" />
@@ -2002,6 +2014,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\listitem_featured_playlist.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\button_background_rounded.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

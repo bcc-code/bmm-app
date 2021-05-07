@@ -1,106 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/appbar_view"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/white"
-    local:MvxBind="Visibility Visibility(Documents.Count)">
-    <RelativeLayout
-        android:background="?android:attr/selectableItemBackground"
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relativeLayout1"
-        android:paddingRight="@dimen/element_margin_medium"
-        android:paddingLeft="@dimen/element_margin_medium"
-        android:paddingTop="@dimen/element_margin_medium"
-        android:paddingBottom="@dimen/element_margin_medium"
-        local:MvxBind="Click ToggleOfflineCommand">
-        <LinearLayout
-            android:orientation="vertical"
-            android:id="@+id/text_view"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_toLeftOf="@+id/download_switch"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true">
-            <TextView
-                android:id="@+id/text_view_title"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_large"
-                android:layout_gravity="center_vertical"
-                local:MvxLang="Text AvailableOffline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/text_view_subtitle"
-                android:singleLine="true"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/text_small"
-                android:layout_gravity="center_vertical"
-                local:MvxLang="Text AvailableOfflineDownload"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/download_switch"
-            local:MvxBind="Checked IsOfflineAvailable, Mode=OneWay"
-            android:focusable="false"
-            android:clickable="false"
-            android:background="@null"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:MvxBind="Visibility Visibility(Documents.Count)">
+    <LinearLayout
+            android:background="@drawable/icon_playlist"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="31dp"/>
+    <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:paddingLeft="@dimen/element_margin_medium"
-            android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout2"
-        android:paddingBottom="@dimen/element_margin_small"
-        android:divider="?android:dividerHorizontal"
-        android:showDividers="beginning"
-        local:MvxBind="Visibility Visibility(IsDownloading); Click">
-    <!--Override Click event to do nothing, prevented app crash-->
-        <TextView
-            android:id="@+id/text_view_title"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_tinier"
-            android:layout_gravity="center_horizontal"
-            local:MvxBind="Text DownloadingText"
-            android:layout_width="match_parent"
+            android:layout_marginTop="4dp"
+            style="@style/Heading2"
+            android:text="BUK Roadtrip">
+    </TextView>
+    <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
-            android:gravity="center_horizontal"
-            android:paddingTop="@dimen/element_margin_small"
-            android:paddingBottom="@dimen/element_margin_small" />
-        <ProgressBar
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:progressDrawable="@drawable/progressbar_downloading"
-            android:layout_width="match_parent"
-            android:id="@+id/progressbar_downloading"
-            android:max="1000"
-            local:MvxBind="Progress FloatProgressToInt(DownloadStatus, 1000)"
-            android:layout_marginLeft="@dimen/element_margin_medium"
-            android:layout_marginRight="@dimen/element_margin_medium"
-            android:layout_height="2dp" />
-    </LinearLayout>
+            android:textSize="17sp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="20dp"
+            android:text="Private">
+    </TextView>
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearLayout3"
-        android:divider="?android:dividerHorizontal"
-        android:showDividers="beginning"
-        local:MvxBind="Click">
-    <!--Override Click event to do nothing, prevented app crash-->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="37dp">
+        <Button
+                android:text="Download"
+                style="@style/Button_Secondary"
+                android:drawableLeft="@drawable/icon_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        <Button
+                android:text="Shuffle"
+                style="@style/Button_Primary"
+                android:drawableLeft="@drawable/icon_play_white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
     </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/track_divider_line"/>
+    <TextView
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="@dimen/track_padding"
+            android:textColor="@color/bright_gray"
+            android:text="23 tracks"/>
 </LinearLayout>
