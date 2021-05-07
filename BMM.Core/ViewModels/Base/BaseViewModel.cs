@@ -9,7 +9,6 @@ using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
-using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;

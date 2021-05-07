@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Linq;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
@@ -18,6 +19,8 @@ namespace BMM.UI.iOS
         private bool _isDownloading;
         private string _label;
         private UIImage _normalStateImage;
+        private NSLayoutConstraint _heightConstraint;
+        private NSLayoutConstraint _widthConstraint;
 
         public DownloadButton()
         {
@@ -123,16 +126,25 @@ namespace BMM.UI.iOS
             TranslatesAutoresizingMaskIntoConstraints = false;
             Layer.MasksToBounds = true;
             ClipsToBounds = false;
+            _heightConstraint ??= HeightAnchor.ConstraintEqualTo(40);
+            _widthConstraint ??= WidthAnchor.ConstraintEqualTo(40);
             UpdateCurrentState();
+        }
+
+        private void EnableSmallSizeConstraints(bool enabled)
+        {
+            if (_heightConstraint != null)
+                _heightConstraint.Active = enabled;
+
+            if (_widthConstraint != null)
+                _widthConstraint.Active = enabled;
         }
 
         private void RenderDownloadState(UIImage stateImage)
         {
             SetImage(stateImage, UIControlState.Normal);
             SetTitle("", UIControlState.Normal);
-            RemoveConstraints(Constraints);
-            HeightAnchor.ConstraintEqualTo(40).Active = true;
-            WidthAnchor.ConstraintEqualTo(40).Active = true;
+            EnableSmallSizeConstraints(true);
             ImageEdgeInsets = UIEdgeInsets.Zero;
             ContentEdgeInsets = UIEdgeInsets.Zero;
             LayoutIfNeeded();
@@ -145,7 +157,7 @@ namespace BMM.UI.iOS
             SetTitle(Label, UIControlState.Normal);
             ImageEdgeInsets = new UIEdgeInsets(0, -6, 0, 0);
             ContentEdgeInsets = new UIEdgeInsets(8, 16, 8, 16);
-            RemoveConstraints(Constraints);
+            EnableSmallSizeConstraints(false);
             LayoutIfNeeded();
         }
 
