@@ -66,7 +66,6 @@ namespace BMM.Core.ViewModels.MyContent
                         RaisePropertyChanged(() => IsEmpty);
                         break;
                     case nameof(MyCollection):
-                        IsOfflineAvailable = Mvx.IoCProvider.Resolve<IOfflineTrackCollectionStorage>().IsOfflineAvailable(MyCollection);
                         RaisePropertyChanged(() => IsEmpty);
                         RaisePropertyChanged(() => DownloadingText);
                         break;
@@ -86,6 +85,7 @@ namespace BMM.Core.ViewModels.MyContent
         public void Prepare(TrackCollection trackCollection)
         {
             MyCollection = trackCollection;
+            IsOfflineAvailable = Mvx.IoCProvider.Resolve<IOfflineTrackCollectionStorage>().IsOfflineAvailable(MyCollection);
         }
 
         protected override async Task Initialization()
