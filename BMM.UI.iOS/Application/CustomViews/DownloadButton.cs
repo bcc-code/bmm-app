@@ -1,6 +1,5 @@
 using System;
 using System.ComponentModel;
-using System.Linq;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
@@ -12,7 +11,7 @@ namespace BMM.UI.iOS
     public class DownloadButton : UIButton
     {
         private CAShapeLayer _circleLayer;
-        private DownloadButtonState _currentState;
+        private DownloadButtonState _currentState = DownloadButtonState.NotDownloaded;
         private UIImage _downloadedImage;
         private float _downloadProgress;
         private bool _isDownloaded;
@@ -80,9 +79,6 @@ namespace BMM.UI.iOS
             get => _isDownloaded;
             set
             {
-                if (_isDownloaded == value)
-                    return;
-
                 _isDownloaded = value;
                 UpdateCurrentState();
             }
@@ -93,9 +89,6 @@ namespace BMM.UI.iOS
             get => _isDownloading;
             set
             {
-                if (_isDownloading == value)
-                    return;
-
                 _isDownloading = value;
                 UpdateCurrentState();
             }
@@ -201,13 +194,16 @@ namespace BMM.UI.iOS
                 (false, false) => DownloadButtonState.NotDownloaded
             };
 
+            if (_currentState == newState)
+                return;
+
+            UpdateUiForState(newState);
             _currentState = newState;
-            UpdateUiToState();
         }
 
-        private void UpdateUiToState()
+        private void UpdateUiForState(DownloadButtonState newState)
         {
-            switch (_currentState)
+            switch (newState)
             {
                 case DownloadButtonState.NotDownloaded:
                     RenderNormalState();
