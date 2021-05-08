@@ -26,22 +26,17 @@ namespace BMM.UI.iOS
             InitUi();
         }
 
-        public DownloadButton(NSCoder coder) : base(coder)
-        {
-            InitUi();
-        }
-
         public DownloadButton(CGRect frame) : base(frame)
         {
             InitUi();
         }
 
-        protected internal DownloadButton(IntPtr handle) : base(handle)
+        public DownloadButton(NSCoder coder) : base(coder)
         {
             InitUi();
         }
 
-        protected DownloadButton(NSObjectFlag t) : base(t)
+        protected internal DownloadButton(IntPtr handle) : base(handle)
         {
             InitUi();
         }
@@ -59,7 +54,7 @@ namespace BMM.UI.iOS
             set
             {
                 _downloadedImage = value;
-                UpdateCurrentState();
+                UpdateUiForState(_currentState);
             }
         }
 
@@ -100,7 +95,7 @@ namespace BMM.UI.iOS
             set
             {
                 _label = value;
-                UpdateCurrentState();
+                UpdateUiForState(_currentState);
             }
         }
 
@@ -110,7 +105,7 @@ namespace BMM.UI.iOS
             set
             {
                 _normalStateImage = value;
-                UpdateCurrentState();
+                UpdateUiForState(_currentState);
             }
         }
 
@@ -121,7 +116,7 @@ namespace BMM.UI.iOS
             ClipsToBounds = false;
             _heightConstraint ??= HeightAnchor.ConstraintEqualTo(40);
             _widthConstraint ??= WidthAnchor.ConstraintEqualTo(40);
-            UpdateCurrentState();
+            UpdateUiForState(_currentState);
         }
 
         private void EnableSmallSizeConstraints(bool enabled)
@@ -158,6 +153,7 @@ namespace BMM.UI.iOS
         {
             if (show)
             {
+                _circleLayer?.RemoveFromSuperLayer();
                 // the math behind: https://stackoverflow.com/questions/32165027/start-and-end-angle-of-uibezierpath
                 const int lineWidth = 2;
                 var startAngle = -new nfloat(Math.PI / 2);
