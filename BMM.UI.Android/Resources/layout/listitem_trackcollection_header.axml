@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             style="@style/Heading2"
-            android:text="BUK Roadtrip">
+            android:text="BUK Roadtrip"
+            app:MvxBind="Text MyCollection.Name">
     </TextView>
     <TextView
             android:layout_width="wrap_content"
@@ -50,10 +51,10 @@
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:background="@drawable/circular_shape"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:max="100"
+                android:max="105"
                 android:clickable="true"
                 android:progress="65"
-                app:MvxBind="Progress FloatProgressToInt(DownloadStatus, 100); Click ToggleOfflineCommand; Visibility Visibility(IsDownloading) "/>
+                app:MvxBind="Progress FloatProgressToInt(DownloadStatus, 100)+5; Click ToggleOfflineCommand; Visibility Visibility(IsDownloading) "/>
         <Button
                 style="@style/Button_Secondary"
                 android:drawableLeft="@drawable/icon_tick"

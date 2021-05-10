@@ -85,5 +85,4 @@
 				local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
 		</mvvmcross.droidx.MvxSwipeRefreshLayout>
 	</RelativeLayout>
-    <include layout="@layout/shuffle_button"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
