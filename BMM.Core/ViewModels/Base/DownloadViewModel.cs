@@ -42,6 +42,8 @@ namespace BMM.Core.ViewModels.Base
 
         public bool IsDownloading => IsOfflineAvailable && DownloadedFilesCount < ToBeDownloadedCount && ToBeDownloadedCount > 0;
 
+        public bool IsDownloaded => IsOfflineAvailable && !IsDownloading;
+
         public string DownloadingText => !IsDownloading
             ? ""
             : TextSource.GetText("AvailableOfflineDownloading",
@@ -192,6 +194,7 @@ namespace BMM.Core.ViewModels.Base
         private void RaiseDownloadProgressChanged()
         {
             RaisePropertyChanged(() => IsDownloading);
+            RaisePropertyChanged(() => IsDownloaded);
             RaisePropertyChanged(() => DownloadingText);
             RaisePropertyChanged(() => DownloadStatus);
         }

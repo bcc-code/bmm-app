@@ -366,8 +366,20 @@
     <AndroidResource Include="Resources\drawable\border_top.xml" />
     <AndroidResource Include="Resources\drawable\button_pause_mini.xml" />
     <AndroidResource Include="Resources\drawable\button_play_mini.xml" />
+    <AndroidResource Include="Resources\drawable\button_ripple.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\circle.xml" />
     <AndroidResource Include="Resources\drawable\circle_background.xml" />
+    <AndroidResource Include="Resources\drawable\circular_progress_bar.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\circular_shape.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_left.xml" />
     <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_right.xml">
       <SubType>Designer</SubType>
@@ -386,6 +398,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_podcast.xml" />
+    <AndroidResource Include="Resources\drawable\icon_tick.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
     <AndroidResource Include="Resources\drawable\navigation_favorites.xml" />
     <AndroidResource Include="Resources\drawable\navigation_favorites_active.xml" />

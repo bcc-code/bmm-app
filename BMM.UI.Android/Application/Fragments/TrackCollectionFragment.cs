@@ -17,15 +17,6 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.TrackCollectionFragment")]
     public class TrackCollectionFragment : BaseFragment<TrackCollectionViewModel>
     {
-        public override void OnStart()
-        {
-            base.OnStart();
-
-            var set = this.CreateBindingSet<TrackCollectionFragment, TrackCollectionViewModel>();
-            set.Bind(ParentActivity.SupportActionBar).For(sa => sa.Title).To(vm => vm.MyCollection.Name);
-            set.Apply();
-        }
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
