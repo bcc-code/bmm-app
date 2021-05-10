@@ -173,7 +173,6 @@ namespace BMM.Core.ViewModels.Base
                 var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource.GetText("RemoveOfflineConfirm"));
                 if (!result)
                 {
-                    IsOfflineAvailable = !IsOfflineAvailable;
                     return;
                 }
 
