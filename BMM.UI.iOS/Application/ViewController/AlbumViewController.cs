@@ -22,7 +22,7 @@ namespace BMM.UI.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            addNavigationBarItemForOptions();
+            AddNavigationBarItemForOptions();
 
             var source = new DocumentsTableViewSource(AlbumTable);
 
@@ -54,10 +54,10 @@ namespace BMM.UI.iOS
             };
 
             AlbumTable.ReloadData();
-            blurBackground();
+            BlurBackground();
         }
 
-        private void blurBackground()
+        private void BlurBackground()
         {
             var blur = UIBlurEffect.FromStyle(UIBlurEffectStyle.Light);
             var blurEffect = new UIVisualEffectView(blur);
@@ -68,10 +68,10 @@ namespace BMM.UI.iOS
             blurView.Add(blurEffect);
         }
 
-        private void addNavigationBarItemForOptions()
+        private void AddNavigationBarItemForOptions()
         {
             var sidebarButton = new UIBarButtonItem(
-                UIImage.FromFile("icon_topbar_options_static.png"),
+                new UIImage("icon_options"),
                 UIBarButtonItemStyle.Plain,
                 (object sender, EventArgs e) =>
                 {

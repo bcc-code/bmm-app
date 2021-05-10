@@ -435,6 +435,9 @@
     <BundleResource Include="Resources\icon_library_active.png" />
     <BundleResource Include="Resources\icon_library_active@2x.png" />
     <BundleResource Include="Resources\icon_library_active@3x.png" />
+    <BundleResource Include="Resources\icon_options.png" />
+    <BundleResource Include="Resources\icon_options@2x.png" />
+    <BundleResource Include="Resources\icon_options@3x.png" />
     <BundleResource Include="Resources\icon_playlist.png" />
     <BundleResource Include="Resources\icon_playlist@2x.png" />
     <BundleResource Include="Resources\icon_playlist@3x.png" />
@@ -584,9 +587,6 @@
     <BundleResource Include="Resources\navigationbarbackground.png" />
     <BundleResource Include="Resources\navigationbarbackground%402x.png" />
     <BundleResource Include="Resources\navigationbarbackground%403x.png" />
-    <BundleResource Include="Resources\icon_topbar_options_static.png" />
-    <BundleResource Include="Resources\icon_topbar_options_static%402x.png" />
-    <BundleResource Include="Resources\icon_topbar_options_static%403x.png" />
     <BundleResource Include="Resources\icon_add_static.png" />
     <BundleResource Include="Resources\icon_add_static%402x.png" />
     <BundleResource Include="Resources\icon_add_static%403x.png" />

@@ -80,7 +80,7 @@ namespace BMM.UI.iOS
         private void AddNavigationBarItemForOptions()
         {
             var sidebarButton = new UIBarButtonItem(
-                UIImage.FromFile("icon_topbar_options_static.png"),
+                new UIImage("icon_options"),
                 UIBarButtonItemStyle.Plain,
                 (object sender, EventArgs e) =>
                 {
