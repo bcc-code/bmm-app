@@ -38,8 +38,16 @@ namespace BMM.UI.iOS
 		[Outlet]
 		UIKit.UIButton ShuffleButton { get; set; }
 
+		[Outlet]
+		UIKit.UILabel TrackCountLabel { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
+			if (TrackCountLabel != null) {
+				TrackCountLabel.Dispose ();
+				TrackCountLabel = null;
+			}
+
 			if (CollectionTable != null) {
 				CollectionTable.Dispose ();
 				CollectionTable = null;
