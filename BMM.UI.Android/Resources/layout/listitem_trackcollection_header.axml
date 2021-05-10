@@ -18,8 +18,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
             style="@style/Heading2"
-            android:text="BUK Roadtrip"
+            android:text="BUK Roadtrip with an extra long title crossing 2 lines"
             app:MvxBind="Text MyCollection.Name">
     </TextView>
     <TextView
@@ -27,7 +31,6 @@
             android:layout_height="wrap_content"
             android:textSize="17sp"
             android:fontFamily="sans-serif"
-            android:layout_marginTop="4dp"
             android:layout_marginBottom="20dp"
             android:text="Private">
     </TextView>
