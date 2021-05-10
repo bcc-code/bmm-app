@@ -44,7 +44,6 @@ namespace BMM.UI.iOS
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsOfflineAvailable);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
-            set.Bind(DownloadButton).For(v => v.Hidden).To(vm => vm.IsEmpty);
 
             set.Bind(TrackCountLabel).To(vm => vm.Documents.Count).WithConversion<FormatConverter>("{0} tracks");
 
