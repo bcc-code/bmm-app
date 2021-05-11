@@ -66,7 +66,9 @@ namespace BMM.Core.ViewModels
         {
             if (message.TrackCollection.Id != MyCollection.Id)
                 return;
+            MyCollection.Name = message.TrackCollection.Name;
             MyCollection.Tracks = message.TrackCollection.Tracks;
+            RaisePropertyChanged(() => MyCollection);
             Documents.SwitchTo(message.TrackCollection.Tracks);
             ExceptionHandler.FireAndForgetWithoutUserMessages(TryRefresh);
         }

@@ -1,11 +1,13 @@
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using System;
+using System.ComponentModel;
 using BMM.Core.ValueConverters;
 using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
@@ -62,8 +64,16 @@ namespace BMM.UI.iOS
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
 
             CollectionTable.ReloadData();
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
 
             set.Apply();
+        }
+
+        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // Since the Name of the playlist could grow or shrink the header size is adjusted
+            if (e.PropertyName == nameof(TrackCollectionViewModel.MyCollection))
+                CollectionTable.ResizeHeaderView();
         }
 
         private void HideOfflineBannerIfNecessary()
