@@ -96,6 +96,9 @@ namespace BMM.Core.ViewModels.Base
             return list.Where(Filter.WherePredicate).ToList();
         }
 
+        public string TrackCountString => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel))
+            .GetText("PluralTracks", Documents.Count);
+
         public DocumentsViewModel(IDocumentFilter documentFilter = null, IMvxLanguageBinder textSource = null)
             : base(textSource)
         {
@@ -346,6 +349,7 @@ namespace BMM.Core.ViewModels.Base
                     if (documents != null)
                     {
                         Documents.ReplaceWith(documents);
+                        RaisePropertyChanged(() => TrackCountString);
                     }
                 });
         }
@@ -374,6 +378,7 @@ namespace BMM.Core.ViewModels.Base
         private void RefreshDocumentsList()
         {
             RaisePropertyChanged(() => Documents);
+            RaisePropertyChanged(() => TrackCountString);
         }
     }
 }

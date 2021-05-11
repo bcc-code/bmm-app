@@ -32,7 +32,8 @@
             android:textSize="17sp"
             android:fontFamily="sans-serif"
             android:layout_marginBottom="20dp"
-            android:text="Private">
+            android:text="Private"
+            app:MvxLang="Text Private">
     </TextView>
     <LinearLayout
             android:layout_width="wrap_content"
@@ -73,7 +74,7 @@
                 android:drawableLeft="@drawable/icon_play_white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:MvxBind="Click ShufflePlayCommand"/>
+                app:MvxBind="Click ShufflePlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
     </LinearLayout>
 
     <View
@@ -89,5 +90,22 @@
             android:layout_marginLeft="@dimen/track_padding"
             android:textColor="@color/bright_gray"
             android:text="23 tracks"
-            app:MvxBind="Text Format('{0} tracks', IntToString(Documents.Count))"/>
+            app:MvxBind="Text TrackCountString; Visibility InvertedVisibility(And(IsLoading, EqualTo(Documents.Count, 0)))"/>
+
+    <LinearLayout
+            app:MvxBind="Visibility Visibility(And(IsLoading, EqualTo(Documents.Count, 0)))"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true">
+        <ProgressBar
+                style="@style/ProgressGreen"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar1"
+                android:layout_centerInParent="true" />
+    </LinearLayout>
 </LinearLayout>
