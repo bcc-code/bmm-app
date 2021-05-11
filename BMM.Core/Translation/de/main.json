@@ -1,6 +1,6 @@
 {
   "Global": {
-    "ContactError": "Konnte das BMM-Team nicht kontaktieren, sende eine e-Mail an: {0}",
+    "ContactError": "Konnte das BMM-Team nicht kontaktieren, sende eine E-Mail an: {0}",
     "External": "Externer Speicher",
     "Internal": "Interner Speicher",
     "BytesMB": "{0} MB frei",
@@ -129,8 +129,8 @@
     "LoginFailureTitle": "Einloggen fehlgeschlagen",
     "LoginFailureMessage": "Bitte gib die Anmeldedaten erneut ein.",
     "LoginNoConnectionMessage": "Derzeit besteht leider keine Internetverbindung. Bitte versuche es später noch einmal",
-    "WrongMailAddressTitle": "Ungültige e-Mail",
-    "WrongMailAddress": "Bitte eine gültige e-Mail-Adresse eingeben. Die Verwendung des Benutzernamens für die Anmeldung wird nicht mehr unterstützt.",
+    "WrongMailAddressTitle": "Ungültige E-Mail",
+    "WrongMailAddress": "Bitte eine gültige E-Mail-Adresse eingeben. Die Verwendung des Benutzernamens für die Anmeldung wird nicht mehr unterstützt.",
     "TbxUsername.Hint": "E-Mail",
     "TbxPassword.Hint": "Passwort",
     "BtnLogin.Text": "Einloggen",
