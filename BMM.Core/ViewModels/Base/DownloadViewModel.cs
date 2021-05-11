@@ -168,6 +168,7 @@ namespace BMM.Core.ViewModels.Base
 
                 await DownloadAction();
                 IsOfflineAvailable = !IsOfflineAvailable;
+                await RaisePropertyChanged(() => IsDownloaded);
             }
             else
             {
@@ -182,6 +183,7 @@ namespace BMM.Core.ViewModels.Base
 
                 await RaisePropertyChanged(() => Documents);
                 IsOfflineAvailable = !IsOfflineAvailable;
+                await RaisePropertyChanged(() => IsDownloaded);
             }
         }
 

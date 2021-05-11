@@ -44,7 +44,7 @@ namespace BMM.UI.iOS
             set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
             set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AvailableOfflineDownload");
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);
-            set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsOfflineAvailable);
+            set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
 
             set.Bind(TrackCountLabel).To(vm => vm.Documents.Count).WithConversion<FormatConverter>("{0} tracks");
