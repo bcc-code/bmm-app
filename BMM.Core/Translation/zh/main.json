@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "播放列表",
-    "ShufflePlay": "洗牌玩",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Delete playlist",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "脱机可用",
-    "AvailableOfflineDownload": "下载播放列表",
+    "AvailableOfflineDownload": "下载",
     "AvailableOfflineDownloading": "下载 {1} {0}",
     "RemoveOfflineConfirm": "你真的想要删除所有已下载的项目？",
     "CreatePrompt": "输入播放列表的名称",
@@ -305,7 +308,8 @@
     "EmptySubline": "按轨道向此播放列表添加轨道的三个点。",
     "MobileDownloadDisabled": "启用通过移动网络在设置才可继续下载",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "该播放列表中有新的项目。你想要恢复下载吗？"
+    "AskToResumeDownloading": "该播放列表中有新的项目。你想要恢复下载吗？",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
