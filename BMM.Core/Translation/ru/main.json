@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Плейлист",
-    "ShufflePlay": "Воспроизведение в случайном порядке",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Удалить плейлист",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Доступно в оффлайн режиме",
-    "AvailableOfflineDownload": "Скачать список воспроизведения",
+    "AvailableOfflineDownload": "Скачать",
     "AvailableOfflineDownloading": "Загрузка {0} из {1}",
     "RemoveOfflineConfirm": "Вы действительно хотите удалить все загруженные элементы?",
     "CreatePrompt": "Ввести название списка воспроизведения",
@@ -305,7 +308,8 @@
     "EmptySubline": "Нажимайте три точки на треках, чтобы добавлять их в этот плейлист.",
     "MobileDownloadDisabled": "Чтобы продолжить, в настройках разрешить загрузку через сеть мобильной связи",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?"
+    "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
