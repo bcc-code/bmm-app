@@ -285,13 +285,16 @@
     "Title": "Offline adatok tárhelye",
     "RemoveAllFiles": "Szeretnél egy új tárhelyet létrehozni és minden offline számot törölni?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Lejátszási lista",
-    "ShufflePlay": "Véletlenszerű lejátszás",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Lejátszási lista törlése",
     "MenuEdit": "Lejátszási lista szerkesztése",
     "AvailableOffline": "Offline elérhető",
-    "AvailableOfflineDownload": "Lejátszási lista letöltése",
+    "AvailableOfflineDownload": "Letöltés",
     "AvailableOfflineDownloading": "Letöltés {0} / {1}",
     "RemoveOfflineConfirm": "Biztosan törölni kivánod az összes letöltött elemet?",
     "CreatePrompt": "Lejátszási lista név megadása",
@@ -305,7 +308,8 @@
     "EmptySubline": "Nyomd meg a három pontot a zeneszámon, hogy hozzáadd a lejátszási listához",
     "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
     "NotEnoughtSpaceToDownload": "Nincs elég tárhely minden szám letöltéséhez",
-    "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?"
+    "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Lejátszási lista szerkesztése",
