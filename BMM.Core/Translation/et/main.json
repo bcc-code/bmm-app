@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Esitusloend",
-    "ShufflePlay": "Juhuesitus",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Kustuta esitusloend",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Kättesaadav ühenduseta",
-    "AvailableOfflineDownload": "Lae see esitusloend alla",
+    "AvailableOfflineDownload": "Lae alla",
     "AvailableOfflineDownloading": "Laen alla {0} {1}-st",
     "RemoveOfflineConfirm": "Kas sa tõesti soovid kõik allalaetud failid kustutada?",
     "CreatePrompt": "Sisesta esitusloendi nimi",
@@ -305,7 +308,8 @@
     "EmptySubline": "Vajuta pala peal olevale kolmele punktikesele, et sellesse esitusloendisse veel lugusid lisada.",
     "MobileDownloadDisabled": "Jätkamiseks võimaldage allalaadimine mobiilse andmesidevõrgu abil",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Selles esitusloendis on uusi üksusi. Kas soovid jätkata allalaadimist?"
+    "AskToResumeDownloading": "Selles esitusloendis on uusi üksusi. Kas soovid jätkata allalaadimist?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
