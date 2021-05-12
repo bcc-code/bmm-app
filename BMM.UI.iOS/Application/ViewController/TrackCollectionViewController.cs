@@ -47,7 +47,7 @@ namespace BMM.UI.iOS
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
 
-            set.Bind(TrackCountLabel).To(vm => vm.Documents.Count).WithConversion<FormatConverter>("{0} tracks");
+            set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 
             set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
