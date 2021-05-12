@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Список відтворення",
-    "ShufflePlay": "відтворення у випадковому порядку",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Видалити список відтворення",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Доступний в автономному режимі",
-    "AvailableOfflineDownload": "завантажити плейлист",
+    "AvailableOfflineDownload": "Завантажити",
     "AvailableOfflineDownloading": "скачування {0} з {1}",
     "RemoveOfflineConfirm": "Ви дійсно хочете видалити всі завантажені елементи?",
     "CreatePrompt": "Введіть назву списку відтворення",
@@ -305,7 +308,8 @@
     "EmptySubline": "Натисніть три точки на шляху, щоб додати трек до цього списку відтворення.",
     "MobileDownloadDisabled": "Дозволити завантаження через мобільну мережу в настройках продовжити",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Є нові елементи в цьому списку відтворення. Ви хочете, щоб відновити завантаження?"
+    "AskToResumeDownloading": "Є нові елементи в цьому списку відтворення. Ви хочете, щоб відновити завантаження?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
