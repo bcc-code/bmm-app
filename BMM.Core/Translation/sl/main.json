@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Seznam predvajanja",
-    "ShufflePlay": "Naključno predvajanje",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Izbriši seznam predvajanja",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Na voljo brez povezave",
-    "AvailableOfflineDownload": "Prenesi seznam predvajanja",
+    "AvailableOfflineDownload": "Prenesi",
     "AvailableOfflineDownloading": "Prenašam {0} od {1}",
     "RemoveOfflineConfirm": "Ali res želite izbrisati vse prenesene elemente?",
     "CreatePrompt": "Vnesite ime seznama predvajanja",
@@ -305,7 +308,8 @@
     "EmptySubline": "Pritisnite na tri pike pri skladbi, da jo dodate na ta seznam predvajanja.",
     "MobileDownloadDisabled": "Za nadaljevanje v nastavitvah omogočite prenos preko mobilnega omrežja",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?"
+    "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
