@@ -16,6 +16,8 @@
 
     <!-- Semantic definitions -->
 
+    <dimen name="track_padding">16dp</dimen>
+
     <dimen name="row_settings_header_height">25dp</dimen>
     <dimen name="row_navigation_height">45dp</dimen>
     <dimen name="row_language_height">60dp</dimen>
@@ -51,7 +53,7 @@
     <dimen name="corner_radius_small">8dp</dimen>
     <dimen name="corner_radius_medium">12dp</dimen>
     <dimen name="corner_radius_large">16dp</dimen>
-  
+
     <dimen name="feature_item_image_width">40dp</dimen>
     <dimen name="feature_item_image_height">40dp</dimen>
     <dimen name="row_feature_item_height">60dp</dimen>

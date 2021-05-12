@@ -27,7 +27,7 @@
 
             <ImageView
                 android:id="@+id/trackPlaybackStateIcon"
-                android:layout_width="16dp"
+                android:layout_width="@dimen/track_padding"
                 android:layout_height="wrap_content"
                 local:MvxBind="DrawableId TrackPlaybackStateToDrawable(., ViewModel.CurrentTrack);" />
 

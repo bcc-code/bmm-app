@@ -27,12 +27,12 @@ namespace BMM.UI.iOS
 
             set.Apply();
 
-            addNavigationBarItemForAddPlaylist();
+            AddNavigationBarItemForAddPlaylist();
 
             TrackCollectionsTableView.ReloadData();
         }
 
-        private void addNavigationBarItemForAddPlaylist()
+        private void AddNavigationBarItemForAddPlaylist()
         {
             var sidebarButton = new UIBarButtonItem(
                 UIImage.FromFile("icon_add_static.png"),

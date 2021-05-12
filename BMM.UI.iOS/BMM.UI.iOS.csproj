@@ -435,6 +435,9 @@
     <BundleResource Include="Resources\icon_library_active.png" />
     <BundleResource Include="Resources\icon_library_active@2x.png" />
     <BundleResource Include="Resources\icon_library_active@3x.png" />
+    <BundleResource Include="Resources\icon_options.png" />
+    <BundleResource Include="Resources\icon_options@2x.png" />
+    <BundleResource Include="Resources\icon_options@3x.png" />
     <BundleResource Include="Resources\icon_playlist.png" />
     <BundleResource Include="Resources\icon_playlist@2x.png" />
     <BundleResource Include="Resources\icon_playlist@3x.png" />
@@ -453,6 +456,9 @@
     <BundleResource Include="Resources\icon_search_active.png" />
     <BundleResource Include="Resources\icon_search_active@2x.png" />
     <BundleResource Include="Resources\icon_search_active@3x.png" />
+    <BundleResource Include="Resources\icon_tick.png" />
+    <BundleResource Include="Resources\icon_tick@2x.png" />
+    <BundleResource Include="Resources\icon_tick@3x.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
@@ -581,9 +587,6 @@
     <BundleResource Include="Resources\navigationbarbackground.png" />
     <BundleResource Include="Resources\navigationbarbackground%402x.png" />
     <BundleResource Include="Resources\navigationbarbackground%403x.png" />
-    <BundleResource Include="Resources\icon_topbar_options_static.png" />
-    <BundleResource Include="Resources\icon_topbar_options_static%402x.png" />
-    <BundleResource Include="Resources\icon_topbar_options_static%403x.png" />
     <BundleResource Include="Resources\icon_add_static.png" />
     <BundleResource Include="Resources\icon_add_static%402x.png" />
     <BundleResource Include="Resources\icon_add_static%403x.png" />
@@ -730,10 +733,10 @@
     <InterfaceDefinition Include="Application\ViewController\ExploreRecentMusicViewController.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
+    <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />

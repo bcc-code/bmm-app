@@ -15,59 +15,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/appbar" />
-		<LinearLayout
-			local:MvxBind="Visibility Visibility(And(IsLoading, EqualTo(Documents.Count, 0)))"
-			android:orientation="vertical"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="center"
-			android:layout_centerInParent="true">
-			<ProgressBar
-				style="@style/ProgressGreen"
-				android:gravity="center"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/progressBar1"
-				android:layout_centerInParent="true" />
-		</LinearLayout>
-		<LinearLayout
-			local:MvxBind="Visibility Visibility(IsEmpty)"
-			android:orientation="vertical"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:id="@+id/gridLayout1"
-			android:layout_gravity="center"
-			android:layout_centerInParent="true">
-			<ImageView
-				android:src="@drawable/icon_category_song"
-				android:layout_width="40dp"
-				android:layout_height="40dp"
-				android:id="@+id/imageView1"
-				android:layout_gravity="center"
-				android:layout_weight="0"
-				android:layout_marginBottom="@dimen/element_margin_small" />
-			<TextView
-				local:MvxLang="Text EmptyTitle"
-				android:textAppearance="?android:attr/textAppearanceLarge"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/textView1"
-				android:layout_gravity="center"
-				android:layout_marginBottom="@dimen/element_margin_tiny"
-				android:textColor="@color/black"
-				android:textSize="@dimen/text_large"
-				android:gravity="center_horizontal|center_vertical" />
-			<TextView
-				local:MvxLang="Text EmptySubline"
-				android:textAppearance="?android:attr/textAppearanceMedium"
-				android:id="@+id/textView2"
-				android:layout_gravity="center"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:textColor="@color/gray"
-				android:textSize="@dimen/text_small"
-				android:gravity="center_horizontal|center_vertical" />
-		</LinearLayout>
 		<mvvmcross.droidx.MvxSwipeRefreshLayout
 			android:id="@+id/refresher"
 			android:layout_width="match_parent"
@@ -85,14 +32,4 @@
 				local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
 		</mvvmcross.droidx.MvxSwipeRefreshLayout>
 		</RelativeLayout>
-		<com.google.android.material.floatingactionbutton.FloatingActionButton
-			xmlns:app="http://schemas.android.com/apk/res-auto"
-			android:id="@+id/shuffle_button"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:src="@drawable/icon_shuffle_white"
-			local:MvxBind="Click ShufflePlayCommand"
-			android:layout_margin="@dimen/margin_medium"
-			android:layout_gravity="end|bottom"
-			app:backgroundTint="@color/colorPrimary" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

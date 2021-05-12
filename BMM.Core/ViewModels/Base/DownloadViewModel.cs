@@ -42,6 +42,8 @@ namespace BMM.Core.ViewModels.Base
 
         public bool IsDownloading => IsOfflineAvailable && DownloadedFilesCount < ToBeDownloadedCount && ToBeDownloadedCount > 0;
 
+        public bool IsDownloaded => IsOfflineAvailable && !IsDownloading;
+
         public string DownloadingText => !IsDownloading
             ? ""
             : TextSource.GetText("AvailableOfflineDownloading",
@@ -142,16 +144,11 @@ namespace BMM.Core.ViewModels.Base
 
         protected async Task ToggleOffline()
         {
-            IsOfflineAvailable = !IsOfflineAvailable;
-
             // TODO: Find a better way to show the user that downloading can't be triggered if the playlist hasn't been fully loaded.
             if (IsLoading)
-            {
-                IsOfflineAvailable = !IsOfflineAvailable;
                 return;
-            }
 
-            if (IsOfflineAvailable)
+            if (!IsOfflineAvailable)
             {
                 var mobileNetworkDownloadAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
 
@@ -160,18 +157,18 @@ namespace BMM.Core.ViewModels.Base
                 if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
                 {
                     await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource.GetText("MobileDownloadDisabled"));
-                    IsOfflineAvailable = !IsOfflineAvailable;
                     return;
                 }
 
                 if (_storageManager.SelectedStorage.FreeSpace <= await CalculateApproximateDownloadSize())
                 {
                     await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource.GetText("NotEnoughtSpaceToDownload"));
-                    IsOfflineAvailable = !IsOfflineAvailable;
                     return;
                 }
 
                 await DownloadAction();
+                IsOfflineAvailable = !IsOfflineAvailable;
+                await RaisePropertyChanged(() => IsDownloaded);
             }
             else
             {
@@ -179,13 +176,14 @@ namespace BMM.Core.ViewModels.Base
                 var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource.GetText("RemoveOfflineConfirm"));
                 if (!result)
                 {
-                    IsOfflineAvailable = !IsOfflineAvailable;
                     return;
                 }
 
                 await DeleteAction();
 
                 await RaisePropertyChanged(() => Documents);
+                IsOfflineAvailable = !IsOfflineAvailable;
+                await RaisePropertyChanged(() => IsDownloaded);
             }
         }
 
@@ -198,6 +196,7 @@ namespace BMM.Core.ViewModels.Base
         private void RaiseDownloadProgressChanged()
         {
             RaisePropertyChanged(() => IsDownloading);
+            RaisePropertyChanged(() => IsDownloaded);
             RaisePropertyChanged(() => DownloadingText);
             RaisePropertyChanged(() => DownloadStatus);
         }
