@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Snitlys",
-    "ShufflePlay": "Skommel Speel",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Verwyder snitlys",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Beskikbaar van lyn af",
-    "AvailableOfflineDownload": "Laai Snitlys af",
+    "AvailableOfflineDownload": "Laai af",
     "AvailableOfflineDownloading": "Laai af {0} of {1}",
     "RemoveOfflineConfirm": "Wil jy regtig al die afgelaaide items verwyder?",
     "CreatePrompt": "Gee 'n snitlys naam",
@@ -305,7 +308,8 @@
     "EmptySubline": "Druk die drie kolletjies op 'n spoor om die spoor by hierdie snitlys by te voeg.",
     "MobileDownloadDisabled": "Aktiveer aflaai via selfoon netwerk in instellings om voort te gaan",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?"
+    "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
