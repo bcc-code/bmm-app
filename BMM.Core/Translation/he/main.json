@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Playlist",
-    "ShufflePlay": "Shuffle Play",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Delete playlist",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Available offline",
-    "AvailableOfflineDownload": "Download playlist",
+    "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} of {1} downloads remaining",
     "RemoveOfflineConfirm": "Do you really want to delete all downloaded items?",
     "CreatePrompt": "Enter a playlist name",
@@ -305,7 +308,8 @@
     "EmptySubline": "Press the three dots on a track to add the track to this playlist.",
     "MobileDownloadDisabled": "Enable downloading via mobile network in settings to continue",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?"
+    "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
