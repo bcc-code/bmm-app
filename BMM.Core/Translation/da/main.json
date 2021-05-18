@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
-    "ShufflePlay": "Spill blandet",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Slett spilleliste",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Tilgjengelig offline",
-    "AvailableOfflineDownload": "Last ned spillelisten",
+    "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "Laster ned {0} av {1}",
     "RemoveOfflineConfirm": "Vil du virkelig slette alle nedlastede elementer?",
     "CreatePrompt": "Gi spillelisten et navn",
@@ -305,7 +308,8 @@
     "EmptySubline": "Trykk på de tre prikkene på et spor, for å legge til spor i denne spillelisten.",
     "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i instillinger for å fortsette",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?"
+    "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

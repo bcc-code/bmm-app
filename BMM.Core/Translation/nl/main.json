@@ -285,13 +285,16 @@
     "Title": "Plass for offline spor",
     "RemoveAllFiles": "Vil du velge annen lagringsplass og fjerne offline spor?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Afspeellijst",
-    "ShufflePlay": "Willekeurig afspelen",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Afspeellijst verwijderen",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Offline beschikbaar",
-    "AvailableOfflineDownload": "Afspeellijst downloaden",
+    "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} van de {1} aan het downloaden",
     "RemoveOfflineConfirm": "Wil je echt alle gedownloade items verwijderen?",
     "CreatePrompt": "Vul een naam voor de afspeellijst in",
@@ -305,7 +308,8 @@
     "EmptySubline": "Druk op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
     "MobileDownloadDisabled": "Schakel 'downloaden via mobiel netwerk' onder instellingen in om verder te gaan",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle sangene",
-    "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?"
+    "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

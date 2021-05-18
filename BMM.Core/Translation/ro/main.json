@@ -285,13 +285,16 @@
     "Title": "Locație pentru piesele offline",
     "RemoveAllFiles": "Dorești a selecta o nouă locaţie de stocare şi eliminarea tuturor pieselor offline?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Play-list",
-    "ShufflePlay": "Aleatoriu",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Șterge play-list",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Disponibile în modul off-line",
-    "AvailableOfflineDownload": "Descarcă play-list",
+    "AvailableOfflineDownload": "Descarcă",
     "AvailableOfflineDownloading": "Se descarcă {0} din {1}",
     "RemoveOfflineConfirm": "Sunteţi sigur că doriţi să ştergeţi toate elementele descărcate?",
     "CreatePrompt": "Adăugați un nume pentru play-list",
@@ -305,7 +308,8 @@
     "EmptySubline": "Apăsați pe cele trei puncte din dreptul unei piese pentru a o adauga în acest play-list.",
     "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a continua",
     "NotEnoughtSpaceToDownload": "Nu este suficient spaţiu pentru a descărca toate melodiile",
-    "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?"
+    "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

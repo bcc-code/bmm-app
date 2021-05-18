@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Çalma Listesi",
-    "ShufflePlay": "Karışık Çal",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Çalma listesini Sil",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Çevrimdışı musait",
-    "AvailableOfflineDownload": "İndirilmiş Çalma Listesi",
+    "AvailableOfflineDownload": "İndir",
     "AvailableOfflineDownloading": "{0}{1} arası İndirilen",
     "RemoveOfflineConfirm": "Tüm yüklenen öğeleri silmek istiyor musunuz?",
     "CreatePrompt": "Çalma Listesi Adı Gir",
@@ -305,7 +308,8 @@
     "EmptySubline": "Parçadaki 3 noktaya tıkla ve Çalma listesine ekle.",
     "MobileDownloadDisabled": "Devam etmek için ayarlardan mobil ağ üzerinden indirmeyi etkinleştir",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?"
+    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

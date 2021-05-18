@@ -285,13 +285,16 @@
     "Title": "Location for offline tracks",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Popis za reproduciranje",
-    "ShufflePlay": "Miješanje",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Delete playlist",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Dostupno izvan mreže",
-    "AvailableOfflineDownload": "Preuzimanje popisa za reproduciranje",
+    "AvailableOfflineDownload": "Preuzimanje datoteka",
     "AvailableOfflineDownloading": "Skidanje {0} {1}",
     "RemoveOfflineConfirm": "Želite izbrisati sve preuzete stavke?",
     "CreatePrompt": "Unesite naziv popisa za reproduciranje",
@@ -305,7 +308,8 @@
     "EmptySubline": "Pritisnite tipku tri točkice na putu za dodavanje skladbe na ovaj popis za reproduciranje.",
     "MobileDownloadDisabled": "Omogućiti preuzimanje putem mobilne mreže u postavkama za nastavak",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Tu su nove stavke u ovaj popis. Želite li nastaviti preuzimajući datoteku?"
+    "AskToResumeDownloading": "Tu su nove stavke u ovaj popis. Želite li nastaviti preuzimajući datoteku?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

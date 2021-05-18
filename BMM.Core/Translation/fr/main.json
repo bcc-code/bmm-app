@@ -285,13 +285,16 @@
     "Title": "Emplacement des titres hors-ligne",
     "RemoveAllFiles": "Voulez-vous sélectionner un nouvel emplacement de stockage et supprimer tous les titres hors ligne ?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Liste de lecture",
-    "ShufflePlay": "Lecture aléatoire",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Supprimer la liste de lecture",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Disponible en mode déconnecté",
-    "AvailableOfflineDownload": "Télécharger la liste de lecture",
+    "AvailableOfflineDownload": "Télécharger",
     "AvailableOfflineDownloading": "{0} de {1} téléchargements restants",
     "RemoveOfflineConfirm": "Voulez-vous vraiment supprimer tous les éléments téléchargés ?",
     "CreatePrompt": "Saisir un nom pour la liste de lecture",
@@ -305,7 +308,8 @@
     "EmptySubline": "Appuyer sur les trois points d'une piste pour ajouter les titres à cette liste de lecture.",
     "MobileDownloadDisabled": "Activez le téléchargement via les données mobile, dans les paramètres, pour pouvoir continuer",
     "NotEnoughtSpaceToDownload": "Pas assez d'espace pour télécharger tous les titres",
-    "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette liste de lecture. Vous voulez reprendre le téléchargement ?"
+    "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette liste de lecture. Vous voulez reprendre le téléchargement ?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

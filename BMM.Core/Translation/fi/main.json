@@ -285,13 +285,16 @@
     "Title": "Offline kappaleiden tallennus sijainti",
     "RemoveAllFiles": "Haluatko vaihtaa offline kappaleiden tallennus sijaintia vai poistetaanko kaikki kappaleet?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Soittolista",
-    "ShufflePlay": "Satunnaistoisto",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Poista soittolista",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Käytettävissä offline-tilassa",
-    "AvailableOfflineDownload": "Lataa soittolista",
+    "AvailableOfflineDownload": "Lataa",
     "AvailableOfflineDownloading": "Ladataan {0} {1}:stä",
     "RemoveOfflineConfirm": "Haluatko varmasti poistaa kaikki ladatut kappaleet?",
     "CreatePrompt": "Nimeä soittolista",
@@ -305,7 +308,8 @@
     "EmptySubline": "Paina kolmea pistettä kappaleen kohdalla lisätäksesi kappaleita tälle soittolistalle.",
     "MobileDownloadDisabled": "Salli ensin tiedostojen lataaminen mobiilidatan avulla",
     "NotEnoughtSpaceToDownload": "Ei tarpeeksi tallennustilaa kaikkien kappaleiden lataamiselle",
-    "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?"
+    "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

@@ -285,13 +285,16 @@
     "Title": "Място за песни/речи извън линия",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
+  "DocumentsViewModel": {
+    "PluralTracks": "{0} tracks"
+  },
   "TrackCollectionViewModel": {
     "Title": "Списък",
-    "ShufflePlay": "Разбъркано възпроизвеждане",
+    "ShufflePlay": "Shuffle",
     "MenuDelete": "Изтрий списъка",
     "MenuEdit": "Edit playlist",
     "AvailableOffline": "Достъпен в режим извън линия",
-    "AvailableOfflineDownload": "Изтегли списъка",
+    "AvailableOfflineDownload": "Изтегли",
     "AvailableOfflineDownloading": "Изтегляне на {0} на {1}",
     "RemoveOfflineConfirm": "Наистина ли искаш да изтриеш всички изтеглени елементи?",
     "CreatePrompt": "Въведи име на списъка",
@@ -305,7 +308,8 @@
     "EmptySubline": "Натисни трите точки на една песен, за да добавиш песен към този списък.",
     "MobileDownloadDisabled": "Разреши изтегляне чрез мобилна мрежа в настройки, за да продължиш",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?"
+    "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?",
+    "Private": "private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
