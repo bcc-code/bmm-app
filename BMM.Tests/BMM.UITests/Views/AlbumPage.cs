@@ -27,7 +27,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Marked("icon topbar options static");
+                return c => c.Marked("icon_options");
             }
         }
 
@@ -111,7 +111,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Marked("icon topbar options static");
+                return c => c.Marked("icon_options");
             }
         }
     }
