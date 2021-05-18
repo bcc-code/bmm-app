@@ -138,7 +138,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Calabash, Version=21.8.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.22.1\lib\Xamarin.iOS\Calabash.dll</HintPath>
+      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.22.2\lib\Xamarin.iOS\Calabash.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="FFImageLoading, Version=2.4.11.982, Culture=neutral, PublicKeyToken=null">
