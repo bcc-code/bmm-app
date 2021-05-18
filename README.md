@@ -9,7 +9,8 @@ If you have a feature request please submit it at [User Voice](https://uservoice
 > Warning: if you want to run your locally built version of BMM on your iPhone, you need an Developer license from Apple (~100$/year).
 > Even then, the process to get it to work is quite complicated and you should not rely on our help.
 
-1. Download and install [Visual Studio](https://docs.microsoft.com/en-us/xamarin/get-started/installation)
+1. Download and install [Visual Studio](https://docs.microsoft.com/en-us/xamarin/get-started/installation) (We use
+   Jetbrains Rider but if you do not have experience we recommend to use Visual Studio)
 2. Setup [Android](https://docs.microsoft.com/en-us/xamarin/android/get-started/installation) and [iOS](https://docs.microsoft.com/en-us/xamarin/ios/get-started/installation) environment
 
 ## Branching model
