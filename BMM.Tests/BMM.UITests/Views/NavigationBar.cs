@@ -68,7 +68,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Marked("icon_options");
+                return c => c.Marked("icon options");
             }
         }
 
