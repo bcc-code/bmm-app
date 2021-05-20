@@ -28,8 +28,14 @@ namespace BMM.Core.ViewModels
         public Playlist CuratedPlaylist
         {
             get => _curatedPlaylist;
-            set => SetProperty(ref _curatedPlaylist, value);
+            set
+            {
+                SetProperty(ref _curatedPlaylist, value);
+                RaisePropertyChanged(() => Title);
+            }
         }
+
+        public string Title => CuratedPlaylist.Title;
 
         public CuratedPlaylistViewModel(
             IStorageManager storageManager,

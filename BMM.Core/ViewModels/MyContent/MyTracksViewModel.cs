@@ -23,7 +23,17 @@ namespace BMM.Core.ViewModels.MyContent
     {
         private TrackCollection _myCollection;
 
-        public TrackCollection MyCollection { get => _myCollection; private set => SetProperty(ref _myCollection, value); }
+        public string Title => MyCollection.Name;
+
+        public TrackCollection MyCollection
+        {
+            get => _myCollection;
+            private set
+            {
+                SetProperty(ref _myCollection, value);
+                RaisePropertyChanged(() => Title);
+            }
+        }
 
         public bool IsEmpty => MyCollection.Tracks?.Count == 0 && !IsLoading && IsInitialized;
 

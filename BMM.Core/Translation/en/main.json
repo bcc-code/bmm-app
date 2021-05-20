@@ -226,6 +226,9 @@
     "AslaksenTheme3": "To fear and love God",
     "AslaksenTheme4": "Humility is everything"
   },
+  "CuratedPlaylistViewModel": {
+    "Title": "Playlist"
+  },
   "CuratedPlaylistsViewModel": {
     "Title": "Playlists"
   },

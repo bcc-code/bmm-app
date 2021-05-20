@@ -430,6 +430,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_menu.xml" />
+    <AndroidResource Include="Resources\layout\fragment_tracklist.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_audio.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -470,6 +474,10 @@
     <AndroidResource Include="Resources\drawable-xhdpi\xam_mediaManager_notify_ic.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\xam_mediaManager_notify_ic.png" />
     <AndroidResource Include="Resources\layout\listitem_search_suggestion.axml" />
+    <AndroidResource Include="Resources\layout\listitem_tracklist_header.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\menu\bottom_navigation_menu.xml" />
     <AndroidResource Include="Resources\menu\edit_trackcollection.xml" />
     <AndroidResource Include="Resources\values-v27\styles.xml" />

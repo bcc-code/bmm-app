@@ -25,28 +25,6 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.CuratedPlaylistFragment")]
     public class CuratedPlaylistFragment : BaseFragment<CuratedPlaylistViewModel>
     {
-        private string _toolbarTitle;
-
-        public string ToolbarTitle
-        {
-            get { return _toolbarTitle; }
-            set
-            {
-                _toolbarTitle = value;
-                CollapsingToolbar.SetExpandedTitleColor(Android.Resource.Color.Transparent);
-                CollapsingToolbar.SetTitle(_toolbarTitle);
-            }
-        }
-
-        public override void OnStart()
-        {
-            base.OnStart();
-
-            var set = this.CreateBindingSet<CuratedPlaylistFragment, CuratedPlaylistViewModel>();
-            set.Bind().For(sa => sa.ToolbarTitle).To(vm => vm.CuratedPlaylist.Title);
-            set.Apply();
-        }
-
         public override void OnDestroy()
         {
             ViewModel.PropertyChanged -= OnViewModelPropertyChanged;
@@ -94,9 +72,7 @@ namespace BMM.UI.Droid.Application.Fragments
             return view;
         }
 
-        protected override int FragmentId => Resource.Layout.fragment_curatedplaylist;
-
-        protected override Color ActionBarColor => new Color(ContextCompat.GetColor(Context, Android.Resource.Color.Transparent));
+        protected override int FragmentId => Resource.Layout.fragment_tracklist;
 
         private void InitRecyclerView(View view)
         {
