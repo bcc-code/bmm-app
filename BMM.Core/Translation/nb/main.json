@@ -92,8 +92,8 @@
     "NextBroadcast": "Neste sending",
     "BmmRadio": "BMM Live",
     "CountdownHours": "om {0}t",
-    "Messages": "Taler",
-    "Music": "Musikk"
+    "Messages": "Seneste Taler",
+    "Music": "Siste musikk"
   },
   "AslaksenNotification": {
     "Title": "Troens ord",
@@ -410,7 +410,7 @@
     "Title": "Siste Taler"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Siste musikk"
+    "Title": "Seneste Musikk"
   },
   "DownloadManager": {
     "DownloadingFinished": "Alle filene er lastet ned!"
