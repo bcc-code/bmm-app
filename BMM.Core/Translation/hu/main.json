@@ -286,11 +286,11 @@
     "RemoveAllFiles": "Szeretnél egy új tárhelyet létrehozni és minden offline számot törölni?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} Szám"
   },
   "TrackCollectionViewModel": {
     "Title": "Lejátszási lista",
-    "ShufflePlay": "Shuffle",
+    "ShufflePlay": "Keverés",
     "MenuDelete": "Lejátszási lista törlése",
     "MenuEdit": "Lejátszási lista szerkesztése",
     "AvailableOffline": "Offline elérhető",
@@ -309,7 +309,7 @@
     "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
     "NotEnoughtSpaceToDownload": "Nincs elég tárhely minden szám letöltéséhez",
     "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?",
-    "Private": "private"
+    "Private": "Személyes"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Lejátszási lista szerkesztése",
