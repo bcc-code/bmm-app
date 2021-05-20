@@ -92,8 +92,8 @@
     "NextBroadcast": "Next broadcast",
     "BmmRadio": "BMM Live",
     "CountdownHours": "en {0}h",
-    "Messages": "Mensajes",
-    "Music": "Música"
+    "Messages": "Recent Messages",
+    "Music": "Recent Music"
   },
   "AslaksenNotification": {
     "Title": "Palabras de fe",
