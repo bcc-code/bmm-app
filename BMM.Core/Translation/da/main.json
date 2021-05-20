@@ -92,8 +92,8 @@
     "NextBroadcast": "Næste sending",
     "BmmRadio": "BMM Live",
     "CountdownHours": "Om {0}t",
-    "Messages": "Beskeder",
-    "Music": "Musik"
+    "Messages": "Seneste taler",
+    "Music": "Nyeste musik"
   },
   "AslaksenNotification": {
     "Title": "Troens ord",
