@@ -92,8 +92,8 @@
     "NextBroadcast": "Következő közvetítés",
     "BmmRadio": "Élő BMM",
     "CountdownHours": "{0} óra múlva",
-    "Messages": "Üzenetek",
-    "Music": "Zene"
+    "Messages": "Legújabb üzenetek",
+    "Music": "Legújabb zene"
   },
   "AslaksenNotification": {
     "Title": "Hit szava",
