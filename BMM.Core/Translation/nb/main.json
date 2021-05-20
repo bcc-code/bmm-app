@@ -93,7 +93,7 @@
     "BmmRadio": "BMM Live",
     "CountdownHours": "om {0}t",
     "Messages": "Seneste Taler",
-    "Music": "Siste musikk"
+    "Music": "Seneste Musikk"
   },
   "AslaksenNotification": {
     "Title": "Troens ord",
@@ -407,7 +407,7 @@
     "Title": "Opphavsrett"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Siste Taler"
+    "Title": "Seneste Taler"
   },
   "ExploreRecentMusicViewModel": {
     "Title": "Seneste Musikk"
