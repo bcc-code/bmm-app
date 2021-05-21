@@ -18,7 +18,7 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels.Base
 {
-    public abstract class DownloadViewModel : DocumentsViewModel
+    public abstract class DownloadViewModel : DocumentsViewModel, ITrackListViewModel
     {
         private bool _isOfflineAvailable;
 
@@ -67,6 +67,9 @@ namespace BMM.Core.ViewModels.Base
         protected readonly IDownloadQueue DownloadQueue;
         protected readonly IConnection Connection;
         private readonly INetworkSettings _networkSettings;
+
+        public virtual bool ShowSharingInfo => false;
+        public virtual bool ShowImage => true;
 
         public DownloadViewModel(
             IStorageManager storageManager,

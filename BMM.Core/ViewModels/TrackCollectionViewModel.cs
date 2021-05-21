@@ -14,6 +14,13 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels
 {
+    public interface ITrackListViewModel
+    {
+        bool ShowSharingInfo { get; }
+
+        bool ShowImage { get; }
+    }
+
     public class TrackCollectionViewModel : MyTracksViewModel
     {
         private MvxSubscriptionToken _trackCollectionOrderChangedToken;
@@ -23,6 +30,10 @@ namespace BMM.Core.ViewModels
         public IMvxAsyncCommand EditCommand { get; }
 
         public bool IsConnectionOnline => Connection.GetStatus() == ConnectionStatus.Online;
+
+        public override bool ShowSharingInfo => true;
+
+        public override bool ShowImage => false;
 
         public TrackCollectionViewModel(
             IStorageManager storageManager,
