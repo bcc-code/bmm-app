@@ -158,7 +158,7 @@ namespace BMM.UI.iOS
                 const int lineWidth = 2;
                 var startAngle = -new nfloat(Math.PI / 2);
                 var endAngle = new nfloat(Math.PI * 2 + startAngle);
-                var radius = (Frame.Width - lineWidth * 2) / 2;
+                var radius = (Frame.Width - lineWidth) / 2;
                 var center = new CGPoint(Frame.Width / 2, Frame.Height / 2);
                 var circlePath = UIBezierPath.FromArc(center, radius, startAngle, endAngle, true);
 
