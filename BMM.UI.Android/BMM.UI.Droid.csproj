@@ -186,6 +186,7 @@
     <Compile Include="Application\Media\MediaMountedBroadcastReceiver.cs" />
     <Compile Include="Application\TemplateSelectors\PodcastTemplateSelector.cs" />
     <Compile Include="Application\TemplateSelectors\SettingsTemplateSelector.cs" />
+    <Compile Include="Application\TemplateSelectors\TrackListTemplateSelector.cs" />
     <Compile Include="Application\ValueConverters\CurrentDayColor.cs" />
     <Compile Include="Application\Bindings\MvxBackgroundTintBinding.cs" />
     <Compile Include="Application\ValueConverters\SectionedToFlatListValueConverter.cs" />

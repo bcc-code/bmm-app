@@ -23,7 +23,9 @@ namespace BMM.Core.ViewModels.MyContent
     {
         private TrackCollection _myCollection;
 
-        public string Title => MyCollection.Name;
+        public override string Title => MyCollection.Name;
+
+        public override string Image => null;
 
         public TrackCollection MyCollection
         {

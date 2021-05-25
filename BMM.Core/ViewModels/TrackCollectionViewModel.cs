@@ -19,6 +19,14 @@ namespace BMM.Core.ViewModels
         bool ShowSharingInfo { get; }
 
         bool ShowImage { get; }
+
+        bool IsDownloadable { get; }
+
+        bool IsDownloaded { get; }
+
+        string Title { get; }
+
+        string Image { get; }
     }
 
     public class TrackCollectionViewModel : MyTracksViewModel

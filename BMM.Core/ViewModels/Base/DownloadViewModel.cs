@@ -44,6 +44,10 @@ namespace BMM.Core.ViewModels.Base
 
         public bool IsDownloaded => IsOfflineAvailable && !IsDownloading;
 
+        public abstract string Title { get; }
+
+        public abstract string Image { get; }
+
         public string DownloadingText => !IsDownloading
             ? ""
             : TextSource.GetText("AvailableOfflineDownloading",
@@ -70,6 +74,7 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual bool ShowSharingInfo => false;
         public virtual bool ShowImage => true;
+        public bool IsDownloadable => true;
 
         public DownloadViewModel(
             IStorageManager storageManager,

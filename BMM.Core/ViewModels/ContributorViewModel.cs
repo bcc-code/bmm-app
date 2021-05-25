@@ -8,7 +8,7 @@ using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class ContributorViewModel : LoadMoreDocumentsViewModel, IMvxViewModel<int>
+    public class ContributorViewModel : LoadMoreDocumentsViewModel, IMvxViewModel<int>, ITrackListViewModel
     {
         private int _id;
 
@@ -17,8 +17,27 @@ namespace BMM.Core.ViewModels
         public Contributor Contributor
         {
             get => _contributor;
-            private set => SetProperty(ref _contributor, value);
+            private set
+            {
+                SetProperty(ref _contributor, value);
+                RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => Image);
+            }
         }
+
+        public bool ShowSharingInfo => false;
+
+        public bool ShowImage => true;
+
+        public bool IsDownloadable => false;
+
+        public bool IsDownloaded => false;
+        public bool IsOfflineAvailable => false;
+        public bool IsDownloading => false;
+
+        public string Title => Contributor?.Name;
+
+        public string Image => Contributor?.Cover;
 
         public ContributorViewModel()
         {

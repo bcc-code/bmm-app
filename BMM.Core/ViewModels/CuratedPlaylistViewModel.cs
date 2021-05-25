@@ -36,10 +36,10 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        public string Title => CuratedPlaylist.Title;
+        public override string Title => CuratedPlaylist.Title;
 
         public override bool ShowImage => true;
-        public string Image => CuratedPlaylist.Cover;
+        public override string Image => CuratedPlaylist.Cover;
 
         public CuratedPlaylistViewModel(
             IStorageManager storageManager,

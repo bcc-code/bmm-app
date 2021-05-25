@@ -1,14 +1,14 @@
-﻿namespace BMM.UI.Droid.Application.TemplateSelectors
+﻿using System;
+
+namespace BMM.UI.Droid.Application.TemplateSelectors
 {
+    [Obsolete]
     public class PodcastTemplateSelector : DocumentTemplateSelector
     {
         public override int GetItemLayoutId(int fromViewType)
         {
             switch (fromViewType)
             {
-                case ViewTypes.Track:
-                    return Resource.Layout.listitem_track;
-
                 case ViewTypes.Header:
                     return Resource.Layout.listitem_podcast_header;
 

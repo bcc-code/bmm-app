@@ -27,7 +27,7 @@ using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class PodcastViewModel : PodcastBaseViewModel, IMvxViewModel<Podcast>, IMvxViewModel<StartPlayingPodcast>
+    public class PodcastViewModel : PodcastBaseViewModel, IMvxViewModel<Podcast>, IMvxViewModel<StartPlayingPodcast>, ITrackListViewModel
     {
         public IMvxAsyncCommand ToggleFollowingCommand { get; }
         private readonly IPodcastOfflineManager _podcastDownloader;
@@ -74,6 +74,24 @@ namespace BMM.Core.ViewModels
 
         public override int CurrentLimit => Podcast?.Id == AslaksenTeaserViewModel.FraBegynnelsenPodcastId ? 60 : base.CurrentLimit;
 
+        public bool ShowSharingInfo => false;
+
+        public bool ShowImage => true;
+
+        public bool IsDownloadable => true;
+
+        public bool IsDownloaded => IsFollowing && !DownloadingFiles.Any();
+
+        public float DownloadStatus
+        {
+            get
+            {
+                if (!IsDownloading && !Documents.Any()) return 0f;
+                var progress = 1.0f / 2; //ToDo: proper math
+                return progress;
+            }
+        }
+
         public PodcastViewModel(
             IPodcastOfflineManager podcastDownloader,
             IConnection connection,
@@ -112,9 +130,11 @@ namespace BMM.Core.ViewModels
                 {
                     case "IsOfflineAvailable":
                         RaisePropertyChanged(() => IsDownloading);
+                        RaisePropertyChanged(() => IsDownloaded);
                         break;
                     case "DownloadingFiles":
                         RaisePropertyChanged(() => IsDownloading);
+                        RaisePropertyChanged(() => IsDownloaded);
 
                         foreach (var file in DownloadingFiles)
                         {

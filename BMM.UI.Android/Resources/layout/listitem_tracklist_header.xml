@@ -31,7 +31,7 @@
                 android:adjustViewBounds="false"
                 android:scaleType="centerCrop"
                 android:id="@+id/podcast_image"
-                card_view:MvxBind="LoadingPlaceholderImagePath 'placeholder_cover'; ErrorPlaceholderImagePath 'placeholder_cover'; ImagePath CoverUrlToFallbackImage(CuratedPlaylist.Cover, 'placeholder_cover')"
+                card_view:MvxBind="LoadingPlaceholderImagePath 'placeholder_cover'; ErrorPlaceholderImagePath 'placeholder_cover'; ImagePath CoverUrlToFallbackImage(Image, 'placeholder_cover')"
                 android:src="@drawable/placeholder_cover"
                 android:layout_marginBottom="0.0dp" />
     </androidx.cardview.widget.CardView>
@@ -71,7 +71,7 @@
                 android:drawableLeft="@drawable/icon_download"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:MvxBind="Click ToggleOfflineCommand; Visibility InvertedVisibility(IsOfflineAvailable)"/>
+                app:MvxBind="Click ToggleOfflineCommand; Visibility VisibilityAnd(!IsOfflineAvailable, IsDownloadable)"/>
         <ProgressBar
                 android:layout_width="40dp"
                 android:layout_height="40dp"
@@ -82,7 +82,7 @@
                 android:max="105"
                 android:clickable="true"
                 android:progress="65"
-                app:MvxBind="Progress FloatProgressToInt(DownloadStatus, 100)+5; Click ToggleOfflineCommand; Visibility Visibility(IsDownloading) "/>
+                app:MvxBind="Progress FloatProgressToInt(DownloadStatus, 100)+5; Click ToggleOfflineCommand; Visibility VisibilityAnd(IsDownloading, IsDownloadable) "/>
         <Button
                 style="@style/Button_Secondary"
                 android:drawableLeft="@drawable/icon_tick"
@@ -91,7 +91,7 @@
                 android:paddingRight="0dp"
                 android:paddingLeft="8dp"
                 android:minWidth="40dp"
-                app:MvxBind="Click ToggleOfflineCommand; Visibility Visibility(IsDownloaded)"/>
+                app:MvxBind="Click ToggleOfflineCommand; Visibility VisibilityAnd(IsDownloaded, IsDownloadable)"/>
         <Button
                 android:text="Shuffle"
                 style="@style/Button_Primary"
