@@ -122,18 +122,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
-    <PackageReference Include="akavache" Version="6.10.20" />
-    <PackageReference Include="akavache.core" Version="6.10.20" />
-    <PackageReference Include="akavache.sqlite3" Version="6.10.20" />
+    <PackageReference Include="akavache.sqlite3" Version="7.2.1" />
     <PackageReference Include="Castle.Core" Version="4.4.1" />
     <PackageReference Include="modernhttpclient" Version="2.4.2" />
-    <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="MvvmCross" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Tests" Version="7.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="Newtonsoft.Json.Bson" Version="1.0.2" />
-    <PackageReference Include="NUnit" Version="3.13.1" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
     <PackageReference Include="PInvoke.BCrypt" Version="0.5.184" />
     <PackageReference Include="PInvoke.Kernel32" Version="0.5.184" />
@@ -161,7 +159,7 @@
     <PackageReference Include="System.Memory" Version="4.5.3" />
     <PackageReference Include="System.Net.Primitives" Version="4.3.1" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
-    <PackageReference Include="System.Reactive" Version="4.4.1" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
     <PackageReference Include="System.Resources.ResourceManager" Version="4.3.0" />
     <PackageReference Include="System.Runtime" Version="4.3.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.3" />
@@ -170,12 +168,12 @@
     <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="4.7.0" />
     <PackageReference Include="System.Text.Encoding.Extensions" Version="4.3.0" />
     <PackageReference Include="System.Threading" Version="4.3.0" />
-    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.2" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     <PackageReference Include="Tavis.UriTemplates" Version="1.1.1" />
     <PackageReference Include="Validation" Version="2.4.18" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Implementations\PlayStatistics" />
+    <Folder Include="Implementations\PlayStatistics\" />
   </ItemGroup>
 </Project>
