@@ -74,7 +74,6 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual bool ShowSharingInfo => false;
         public virtual bool ShowImage => true;
-        public bool IsDownloadable => true;
 
         public DownloadViewModel(
             IStorageManager storageManager,

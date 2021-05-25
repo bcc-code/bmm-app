@@ -78,8 +78,6 @@ namespace BMM.Core.ViewModels
 
         public bool ShowImage => true;
 
-        public bool IsDownloadable => true;
-
         public bool IsDownloaded => IsFollowing && !DownloadingFiles.Any();
 
         public float DownloadStatus

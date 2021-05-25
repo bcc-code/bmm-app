@@ -20,7 +20,7 @@ namespace BMM.Core.ViewModels
 
         bool ShowImage { get; }
 
-        bool IsDownloadable { get; }
+        bool IsDownloadable => true;
 
         bool IsDownloaded { get; }
 
