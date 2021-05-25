@@ -16,8 +16,8 @@ namespace BMM.UI.iOS.Implementations
             var wait = new TaskCompletionSource<BrowserResult>();
 
             _authenticationSession = new ASWebAuthenticationSession(
-                new NSUrl(options.StartUrl),
-                options.EndUrl,
+                NSUrl.FromString(options.StartUrl),
+                NSUrl.FromString(options.EndUrl).Scheme,
                 (callbackUrl, error) =>
                 {
                     if (error != null)
