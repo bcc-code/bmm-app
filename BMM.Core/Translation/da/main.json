@@ -5,13 +5,13 @@
     "Internal": "Intern",
     "BytesMB": "{0} MB",
     "UnexpectedError": "Der er desværre opstået en ukendt fejl.",
-    "InternetConnectionOffline": "Internett-tilgangen ser ut til å være frakoblet.",
+    "InternetConnectionOffline": "Ingen forbindelse til internettet.",
     "ItemNotFound": "Indholdet kunne ikke findes.",
-    "OfflineBanner": "Viser kun downloadede sange og taler",
+    "OfflineBanner": "Viser downloadede sange og taler",
     "Song": "Sang",
-    "Speech": "Besked",
-    "Audiobook": "Lydbøger",
-    "Exegesis": "Exegesis"
+    "Speech": "Tale",
+    "Audiobook": "Lydbog",
+    "Exegesis": "Tydning"
   },
   "Streak": {
     "Message": "Din streak denne uge",
@@ -30,11 +30,11 @@
     "ErrorMessage": "Det var desværre ikke muligt at åbne linket '{0}'"
   },
   "RequestExceptionHandler": {
-    "RequestFailedMessage": "Det oppstod en tilkoblingsfeil: {0}"
+    "RequestFailedMessage": "Det skete en fejl med forbindelses: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Det finnes ingen fil i et støttet format til dette sporet.",
-    "ErrorVideoNotSupported": "Videoer støttes ikke for øyeblikket.",
+    "ErrorMediaNotSupported": "Din enhed understøtter ikke dette filformat.",
+    "ErrorVideoNotSupported": "Videoer støttes ikke i øjeblikket.",
     "ErrorFileNotOffline": "Du kan ikke spille av et spor som ikke er lastet ned i offline modus.",
     "ErrorPlayerStopped": "Afspilleren er stoppet",
     "ErrorPlayerStoppedGeneric": "Det skete en fejl med afspilningen.",
@@ -81,7 +81,7 @@
     "SearchHint": "Søk"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Hjem",
     "SearchHint": "Søk",
     "FraKaareHeader": "Fra Kåre",
     "AslaksenTeaserHeader": "Troens ord",
@@ -134,7 +134,7 @@
     "TbxUsername.Hint": "E-post",
     "TbxPassword.Hint": "Passord",
     "BtnLogin.Text": "Logg på",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Log ind med dit BCC-login"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Vi stopper snart understøttelsen af telefoner med {0}{1} eller ældre. Opdater din telefon hvis det er muligt.",
@@ -169,12 +169,12 @@
     "Library": "Bibliotek",
     "Settings": "Innstillinger",
     "HelpAndFeedback": "Hjelp og tilbakemelding",
-    "Home": "Home",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "Home": "Hjem",
+    "Favorites": "Favoritter",
+    "Profile": "Profil"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Favoritter",
     "DownloadedContent": "Downloadet indhold",
     "FollowedPodcasts": "Podcasts jeg følger",
     "MyTracks": "Mine spor"
@@ -222,9 +222,9 @@
     "ThisWeek": "Denne uge",
     "LastWeek": "Sidste uge",
     "AslaksenTheme1": "Tro på Underets gud",
-    "AslaksenTheme2": "I have been crucified with Christ",
-    "AslaksenTheme3": "To fear and love God",
-    "AslaksenTheme4": "Humility is everything"
+    "AslaksenTheme2": "Jeg er korsfæstet med Kristus",
+    "AslaksenTheme3": "At frygte og elske Gud",
+    "AslaksenTheme4": "Ydmyghed er selve sagen"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Spillelister"
@@ -248,14 +248,14 @@
     "DeleteConfirm": "Er du sikker på at du vil slette søkehistorikken?"
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "Profil",
     "HeadlineSettings": "Indstillinger",
-    "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionAutoplayHeader": "Auto-afspil",
+    "OptionAutoplayText": "Afspil musik efter dagens episode af Fra Kåre",
     "OptionEnablePushHeader": "Aktiver push-varsling",
     "OptionPushNotifications": "Push-varslinger",
     "OptionPushNotificationsSubtitle": "Aktiver push-varsler for podcaster du følger",
-    "OptionExternalStorage": "Storage location",
+    "OptionExternalStorage": "Lagringsplads",
     "OptionMBInternalText": "Internal {0} MB",
     "OptionMBExternalText": "External {0} MB",
     "OptionEnablePushText": "Få push-varsling når nytt innhold er tilgjengelig",
@@ -277,22 +277,22 @@
     "AppInfoDeviceModel": "Enhetsmodell: ",
     "AppInfoDevicePlatform": "Enhetsplattform: ",
     "AppInfoDeviceVersion": "Enhetsversjon: ",
-    "LoggedInAs": "Signed in as",
+    "LoggedInAs": "Logget ind som",
     "LogoutConfirm": "Er du sikker på at du vil logge av?",
     "Logout": "Logg av"
   },
   "StorageManagementViewModel": {
-    "Title": "Location for offline tracks",
-    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+    "Title": "Lagringsplads til offline indhold",
+    "RemoveAllFiles": "Vil du vælge en ny lagringsplads og fjerne alt offline indhold?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} sange/taler"
   },
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
-    "ShufflePlay": "Shuffle",
+    "ShufflePlay": "Spil blandet",
     "MenuDelete": "Slett spilleliste",
-    "MenuEdit": "Edit playlist",
+    "MenuEdit": "Rediger spilleliste",
     "AvailableOffline": "Tilgjengelig offline",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "Laster ned {0} av {1}",
@@ -307,20 +307,20 @@
     "EmptyTitle": "Denne spillelisten er tom",
     "EmptySubline": "Trykk på de tre prikkene på et spor, for å legge til spor i denne spillelisten.",
     "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i instillinger for å fortsette",
-    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "NotEnoughtSpaceToDownload": "Ikke nok lagringsplads til at downloade alt indhold",
     "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?",
-    "Private": "private"
+    "Private": "privat"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
-    "RenameLabel": "Rename playlist",
+    "Title": "Rediger spilleliste",
+    "RenameLabel": "Omdøb spilleliste",
     "MenuSave": "Gem",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "EmptyName": "Spillelisten har intet navn",
+    "SaveFailure": "Kunne ikke opdatere. Tjek din internetforbindelse og prøv igen.",
+    "DiscardChangesTitle": "Fortryd ændringer?",
+    "DiscardChangesMessage": "Ændringerne vil ikke blive gemt.",
+    "DiscardChanges": "Fortryd",
+    "KeepEditing": "Fortsæt redigering"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Spilleliste",
@@ -348,7 +348,7 @@
     "Track.RemoveFromMyTracks": "Fjern fra Mine spor",
     "Track.AddedToMyTracks": "Lagt til i Mine spor",
     "Track.RemovedFromMyTracks": "Fjernet fra Mine spor",
-    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.FailedToRemoveFromMyTracks": "Kunne ikke fjernes fra Mine spor",
     "Track.AddToQueue": "Legg til i køen",
     "Track.QueueToPlayNext": "Afspil som næste",
     "Track.AddedToQueue": "Lagt til i køen",
@@ -376,7 +376,7 @@
     "Contributor.Play": "Spill av",
     "Contributor.Share": "Del bidragsyder",
     "TrackCollection.DeletePlaylist": "Slett spilleliste",
-    "TrackCollection.EditPlaylist": "Edit playlist",
+    "TrackCollection.EditPlaylist": "Rediger spilleliste",
     "OfflineTrackCollection.DeletePlaylist": "Slett spillelisten",
     "Cancel": "Avbryt"
   },
@@ -400,7 +400,7 @@
     "Lyricist": "Tekstforfatter",
     "Arranger": "Arrangør",
     "Composer": "Komponist",
-    "Publisher": "Publisher",
+    "Publisher": "Udgiver",
     "Copyright": "Opphavsrett"
   },
   "CopyrightViewModel": {
