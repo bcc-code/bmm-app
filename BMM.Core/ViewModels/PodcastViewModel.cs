@@ -43,6 +43,9 @@ namespace BMM.Core.ViewModels
 
         public int? StartPlayingTrackId { get; set; }
 
+        public bool ShowDownloadButtons => false;
+        public bool ShowFollowButtons => true;
+
         private bool _isFollowing;
         public bool IsFollowing
         {
@@ -79,16 +82,6 @@ namespace BMM.Core.ViewModels
         public bool ShowImage => true;
 
         public bool IsDownloaded => IsFollowing && !DownloadingFiles.Any();
-
-        public float DownloadStatus
-        {
-            get
-            {
-                if (!IsDownloading && !Documents.Any()) return 0f;
-                var progress = 1.0f / 2; //ToDo: proper math
-                return progress;
-            }
-        }
 
         public PodcastViewModel(
             IPodcastOfflineManager podcastDownloader,

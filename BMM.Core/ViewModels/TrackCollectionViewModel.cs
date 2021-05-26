@@ -14,21 +14,6 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels
 {
-    public interface ITrackListViewModel
-    {
-        bool ShowSharingInfo { get; }
-
-        bool ShowImage { get; }
-
-        bool IsDownloadable => true;
-
-        bool IsDownloaded { get; }
-
-        string Title { get; }
-
-        string Image { get; }
-    }
-
     public class TrackCollectionViewModel : MyTracksViewModel
     {
         private MvxSubscriptionToken _trackCollectionOrderChangedToken;

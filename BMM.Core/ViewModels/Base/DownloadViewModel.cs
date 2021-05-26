@@ -42,11 +42,15 @@ namespace BMM.Core.ViewModels.Base
 
         public bool IsDownloading => IsOfflineAvailable && DownloadedFilesCount < ToBeDownloadedCount && ToBeDownloadedCount > 0;
 
+        public bool ShowDownloadButtons => true;
+
         public bool IsDownloaded => IsOfflineAvailable && !IsDownloading;
 
         public abstract string Title { get; }
 
         public abstract string Image { get; }
+
+        public bool ShowFollowButtons => false;
 
         public string DownloadingText => !IsDownloading
             ? ""

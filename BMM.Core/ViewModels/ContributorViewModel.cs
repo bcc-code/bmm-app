@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using MvvmCross.Localization;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
@@ -29,7 +31,7 @@ namespace BMM.Core.ViewModels
 
         public bool ShowImage => true;
 
-        public bool IsDownloadable => false;
+        public bool ShowDownloadButtons => false;
 
         public bool IsDownloaded => false;
         public bool IsOfflineAvailable => false;
@@ -38,6 +40,8 @@ namespace BMM.Core.ViewModels
         public string Title => Contributor?.Name;
 
         public string Image => Contributor?.Cover;
+
+        public bool ShowFollowButtons => false;
 
         public ContributorViewModel()
         {
