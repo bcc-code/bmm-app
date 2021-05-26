@@ -193,7 +193,7 @@
     "RemoveOfflineConfirm": "Vil du slette alt downloadet indhold?",
     "EmptyTitle": "Spillelisten er tom",
     "EmptySubline": "Tryk på de tre prikker i listen, for tilføje indhold til denne spilleliste.",
-    "MobileDownloadDisabled": "Aktiver download via mobildata i indstillinger for at fortsætte",
+    "MobileDownloadDisabled": "Aktiver download via mobildata i Indstillinger, for at fortsætte",
     "AskToResumeDownloading": "Der er nyt indhold i denne spilleliste. Vil du fortsætte med at downloade?"
   },
   "DownloadedContentViewModel": {
