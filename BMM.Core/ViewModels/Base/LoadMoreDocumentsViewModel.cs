@@ -34,6 +34,9 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual int CurrentLimit { get; private set; } = ApiConstants.LoadMoreSize;
 
+        public override string TrackCountString => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel))
+            .GetText(IsFullyLoaded ? "PluralTracks" : "PluralTracksLoaded", Documents.Count);
+
         protected LoadMoreDocumentsViewModel(IDocumentFilter documentFilter = null, IMvxLanguageBinder languageBinder = null)
             : base(documentFilter, languageBinder)
         {

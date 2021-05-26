@@ -45,6 +45,9 @@ namespace BMM.Core.ViewModels
 
         public bool ShowDownloadButtons => false;
         public bool ShowFollowButtons => true;
+        public bool ShowShuffleButton => false;
+
+        public bool ShowTrackCount => false;
 
         private bool _isFollowing;
         public bool IsFollowing

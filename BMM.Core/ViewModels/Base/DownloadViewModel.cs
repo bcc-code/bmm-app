@@ -52,6 +52,10 @@ namespace BMM.Core.ViewModels.Base
 
         public bool ShowFollowButtons => false;
 
+        public bool ShowShuffleButton => true;
+
+        public bool ShowTrackCount => true;
+
         public string DownloadingText => !IsDownloading
             ? ""
             : TextSource.GetText("AvailableOfflineDownloading",

@@ -15,5 +15,9 @@
         string Image { get; }
 
         bool ShowFollowButtons { get; }
+
+        bool ShowShuffleButton { get; }
+
+        bool ShowTrackCount { get; }
     }
 }
