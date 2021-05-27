@@ -50,6 +50,8 @@ namespace BMM.Core.ViewModels.Base
 
         public abstract string Image { get; }
 
+        public bool UseCircularImage => false;
+
         public bool ShowFollowButtons => false;
 
         public bool ShowShuffleButton => true;

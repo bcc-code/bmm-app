@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using MvvmCross.Localization;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
@@ -40,6 +38,8 @@ namespace BMM.Core.ViewModels
         public string Title => Contributor?.Name;
 
         public string Image => Contributor?.Cover;
+
+        public bool UseCircularImage => true;
 
         public bool ShowFollowButtons => false;
 

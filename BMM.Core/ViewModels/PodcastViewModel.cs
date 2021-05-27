@@ -45,6 +45,9 @@ namespace BMM.Core.ViewModels
         public int? StartPlayingTrackId { get; set; }
 
         public bool ShowDownloadButtons => false;
+
+        public bool UseCircularImage => true;
+
         public bool ShowFollowButtons => true;
         public bool ShowShuffleButton => false;
 

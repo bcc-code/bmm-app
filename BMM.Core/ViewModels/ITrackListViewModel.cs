@@ -13,6 +13,7 @@
         string Title { get; }
 
         string Image { get; }
+        bool UseCircularImage { get; }
 
         bool ShowFollowButtons { get; }
 
