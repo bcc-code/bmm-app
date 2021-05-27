@@ -118,18 +118,27 @@
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">0dp</item>
         <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingLeft">16dp</item>
         <item name="android:height">40dp</item>
         <item name="android:minHeight">40dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
-        <item name="android:drawablePadding">6dp</item>
         <item name="backgroundTint">@color/black</item>
+    </style>
+
+    <style name="IconButton_Primary" parent="Button_Primary">
+      <item name="android:paddingLeft">10dp</item>
+      <item name="android:drawablePadding">6dp</item>
     </style>
 
     <style name="Button_Secondary" parent="Button_Primary">
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/light_gray</item>
+    </style>
+
+    <style name="IconButton_Secondary" parent="Button_Secondary">
+      <item name="android:paddingLeft">10dp</item>
+      <item name="android:drawablePadding">6dp</item>
     </style>
 
     <style name="button_text">

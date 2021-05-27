@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -69,6 +70,7 @@ namespace BMM.Core.ViewModels
 
         public bool IsDownloading => IsFollowing && DownloadingFiles.Any();
 
+        [Obsolete]
         public string FollowButtonText
         {
             get

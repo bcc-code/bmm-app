@@ -290,7 +290,9 @@
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded"
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Download",
+    "Shuffle": "Shuffle"
   },
   "TrackCollectionViewModel": {
     "Title": "Playlist",

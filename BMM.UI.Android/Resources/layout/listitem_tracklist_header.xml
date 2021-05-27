@@ -63,7 +63,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginBottom="37dp"
+            android:layout_marginBottom="33dp"
             android:layout_marginTop="16dp">
         <RelativeLayout
                 android:layout_width="wrap_content"
@@ -74,13 +74,15 @@
                   style="@style/Button_Secondary"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  app:MvxLang="Text Follow"
                   app:MvxBind="Click ToggleFollowingCommand; Visibility InvertedVisibility(IsFollowing)"/>
           <Button
                   android:text="Following"
-                  style="@style/Button_Secondary"
+                  style="@style/IconButton_Secondary"
                   android:drawableLeft="@drawable/icon_notification"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  app:MvxLang="Text Following"
                   app:MvxBind="Click ToggleFollowingCommand; Visibility Visibility(IsFollowing)"/>
         </RelativeLayout>
         <RelativeLayout
@@ -89,10 +91,11 @@
                 app:MvxBind="Visibility Visibility(ShowDownloadButtons)">
           <Button
                   android:text="Download"
-                  style="@style/Button_Secondary"
+                  style="@style/IconButton_Secondary"
                   android:drawableLeft="@drawable/icon_download"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  app:MvxLang="Text Download, Source=DocumentsTextSource"
                   app:MvxBind="Click ToggleOfflineCommand; Visibility InvertedVisibility(IsOfflineAvailable)"/>
           <ProgressBar
                   android:layout_width="40dp"
@@ -106,7 +109,7 @@
                   android:progress="65"
                   app:MvxBind="Progress FloatProgressToInt(DownloadStatus, 100)+5; Click ToggleOfflineCommand; Visibility Visibility(IsDownloading) "/>
           <Button
-                  style="@style/Button_Secondary"
+                  style="@style/IconButton_Secondary"
                   android:drawableLeft="@drawable/icon_tick"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -121,10 +124,11 @@
            app:MvxBind="Visibility Visibility(ShowShuffleButton)">
           <Button
                   android:text="Shuffle"
-                  style="@style/Button_Primary"
+                  style="@style/IconButton_Primary"
                   android:drawableLeft="@drawable/icon_play_white"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
+                  app:MvxLang="Text Shuffle, Source=DocumentsTextSource"
                   app:MvxBind="Click ShufflePlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
         </RelativeLayout>
     </LinearLayout>

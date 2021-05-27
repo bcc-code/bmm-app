@@ -96,6 +96,8 @@ namespace BMM.Core.ViewModels.Base
             return list.Where(Filter.WherePredicate).ToList();
         }
 
+        public IMvxLanguageBinder DocumentsTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel));
+
         public virtual string TrackCountString => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel))
             .GetText("PluralTracks", Documents.Count);
 
