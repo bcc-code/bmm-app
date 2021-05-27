@@ -98,8 +98,7 @@ namespace BMM.Core.ViewModels.Base
 
         public IMvxLanguageBinder DocumentsTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel));
 
-        public virtual string TrackCountString => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel))
-            .GetText("PluralTracks", Documents.Count);
+        public virtual string TrackCountString => DocumentsTextSource.GetText("PluralTracks", Documents.Count);
 
         public DocumentsViewModel(IDocumentFilter documentFilter = null, IMvxLanguageBinder textSource = null)
             : base(textSource)

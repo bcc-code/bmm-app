@@ -27,6 +27,8 @@ namespace BMM.Core.ViewModels
 
         public bool ShowSharingInfo => false;
 
+        public bool ShowPlaylistIcon => false;
+
         public bool ShowImage => true;
 
         public bool ShowDownloadButtons => false;

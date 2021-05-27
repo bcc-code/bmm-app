@@ -35,7 +35,7 @@ namespace BMM.UI.iOS
             set.Bind(AlbumBlurCoverImage).For(v => v.ImagePath).To(vm => vm.Album.Cover);
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
             set.Bind(ShuffleButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShufflePlay");
-            set.Bind(ShuffleButton).For("Visibility").To(vm => vm.IsShuffleAvailable);
+            set.Bind(ShuffleButton).For("Visibility").To(vm => vm.ShowShuffleButton);
             set.Apply();
 
             // Hide the ShuffleButton and adjust TableHeaderView based on if there are track-documents in the listing

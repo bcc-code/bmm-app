@@ -27,6 +27,8 @@ namespace BMM.Core.ViewModels.MyContent
 
         public override string Image => null;
 
+        public override bool ShowPlaylistIcon => true;
+
         public TrackCollection MyCollection
         {
             get => _myCollection;

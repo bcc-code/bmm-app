@@ -9,11 +9,12 @@ using BMM.Api.Abstraction;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using MvvmCross.Commands;
+using MvvmCross.Localization;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>
+    public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, ITrackListViewModel
     {
         private int _id;
 
@@ -28,7 +29,13 @@ namespace BMM.Core.ViewModels
         public Album Album
         {
             get => _album;
-            set => SetProperty(ref _album, value);
+            set
+            {
+                SetProperty(ref _album, value);
+                RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => Image);
+                RaisePropertyChanged(() => ShowImage);
+            }
         }
 
         public AlbumViewModel(IShareLink shareLink)
@@ -73,8 +80,6 @@ namespace BMM.Core.ViewModels
             return $"{minutes} minutes {seconds} seconds";
         }
 
-        public bool IsShuffleAvailable => Documents.OfType<Track>().Any();
-
         /// <summary>
         /// In case we already have a title we can show the title immediately without waiting for <see cref="LoadItems"/>.
         /// </summary>
@@ -103,7 +108,28 @@ namespace BMM.Core.ViewModels
 
         private void UpdateView(object sender, NotifyCollectionChangedEventArgs e)
         {
-            RaisePropertyChanged(() => IsShuffleAvailable);
+            RaisePropertyChanged(() => ShowShuffleButton);
         }
+
+        public bool ShowSharingInfo => false;
+
+        public bool ShowDownloadButtons => false;
+
+        public bool IsDownloaded => false;
+
+        public string Title => Album?.Title;
+
+        public bool ShowPlaylistIcon => false;
+        public bool ShowImage => Album?.Cover != null;
+        public string Image => Album?.Cover;
+        public bool UseCircularImage => false;
+
+        public bool ShowFollowButtons => false;
+
+        public bool ShowShuffleButton => Documents.OfType<Track>().Any();
+
+        public bool ShowTrackCount => true;
+
+        public override string TrackCountString => Documents.OfType<Album>().Any() ? TextSource.GetText("PluralAlbums", Documents.Count) : base.TrackCountString;
     }
 }

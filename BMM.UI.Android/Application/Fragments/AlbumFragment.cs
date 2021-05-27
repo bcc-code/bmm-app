@@ -1,14 +1,15 @@
-﻿using Android.Graphics;
-using Android.OS;
+﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
-using AndroidX.Core.Content;
+using AndroidX.RecyclerView.Widget;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Adapters;
 using Google.Android.Material.AppBar;
-using MvvmCross.Binding.BindingContext;
 using MvvmCross.DroidX;
+using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Localization;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
@@ -19,28 +20,6 @@ namespace BMM.UI.Droid.Application.Fragments
     {
         MvxLanguageBinder DialogTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "UserDialogs");
 
-        private string _toolbarTitle;
-
-        public string ToolbarTitle
-        {
-            get=>  _toolbarTitle;
-
-            set
-            {
-                _toolbarTitle = value;
-                CollapsingToolbar.SetTitle(_toolbarTitle);
-            }
-        }
-
-        public override void OnStart()
-        {
-            base.OnStart();
-
-            var set = this.CreateBindingSet<AlbumFragment, AlbumViewModel>();
-            set.Bind().For(sa => sa.ToolbarTitle).To(vm => vm.Album.Title);
-            set.Apply();
-        }
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
@@ -50,7 +29,23 @@ namespace BMM.UI.Droid.Application.Fragments
 
             if (appBar != null && swipeToRefresh != null)
                 appBar.OffsetChanged += (sender, args) => swipeToRefresh.Enabled = args.VerticalOffset == 0;
+
+            InitRecyclerView(view);
+
             return view;
+        }
+
+        private void InitRecyclerView(View view)
+        {
+            var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
+            if (recyclerView != null)
+            {
+                recyclerView.Adapter = new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
+                recyclerView.HasFixedSize = true;
+
+                var layoutManager = new LinearLayoutManager(ParentActivity);
+                recyclerView.SetLayoutManager(layoutManager);
+            }
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
@@ -81,9 +76,11 @@ namespace BMM.UI.Droid.Application.Fragments
                     return base.OnOptionsItemSelected(item);
             }
         }
+        protected override MvxRecyclerAdapter CreateAdapter()
+        {
+            return new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
+        }
 
-        protected override int FragmentId => Resource.Layout.fragment_album;
-
-        protected override Color ActionBarColor => new Color(ContextCompat.GetColor(this.Context, Android.Resource.Color.Transparent));
+        protected override int FragmentId => Resource.Layout.fragment_tracklist;
     }
 }

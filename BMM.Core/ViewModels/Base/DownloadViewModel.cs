@@ -48,6 +48,8 @@ namespace BMM.Core.ViewModels.Base
 
         public abstract string Title { get; }
 
+        public virtual bool ShowPlaylistIcon => false;
+
         public abstract string Image { get; }
 
         public bool UseCircularImage => false;
