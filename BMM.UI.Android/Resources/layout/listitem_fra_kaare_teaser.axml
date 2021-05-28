@@ -136,7 +136,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="@dimen/text_large"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="Inter"
+            android:textFontWeight="700"
             local:MvxLang="Text PlayRandom, Source=ViewModel.TextSource"
             local:MvxBind="Click ViewModel.FraKaareTeaserViewModel.PlayRandomCommand"
             android:drawableLeft="@drawable/icon_shuffle_podcast" />

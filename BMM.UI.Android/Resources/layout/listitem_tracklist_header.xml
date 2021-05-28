@@ -43,6 +43,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginBottom="4dp"
             android:gravity="center"
+            android:textFontWeight="800"
             style="@style/Heading2"
             android:text="BUK Roadtrip with an extra long title crossing 2 lines"
             app:MvxBind="Text Title">
@@ -51,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
-            android:fontFamily="sans-serif"
+            android:textFontWeight="500"
             android:text="Private"
             android:layout_marginBottom="4dp"
             app:MvxLang="Text Private"

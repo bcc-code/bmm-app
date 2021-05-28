@@ -316,7 +316,7 @@
     "MobileDownloadDisabled": "Enable downloading via mobile network in settings to continue",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
