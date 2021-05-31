@@ -52,7 +52,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17sp"
-            android:textFontWeight="500"
             android:text="Private"
             android:layout_marginBottom="4dp"
             app:MvxLang="Text Private"

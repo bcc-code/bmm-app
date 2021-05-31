@@ -1,13 +1,17 @@
 ﻿<resources xmlns:app="http://schemas.android.com/apk/res-auto">
     <!-- Application theme -->
-    <style name="AppTheme" parent="AppTheme.Base" />
+    <style name="AppTheme" parent="AppTheme.Base">
+    </style>
 
-    <style name="AppTheme.Dark" parent="AppTheme" />
+    <style name="AppTheme.Dark" parent="AppTheme">
+    </style>
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppTheme.Base" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textFontWeight">500</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -102,7 +106,6 @@
 
     <style name="Heading2">
         <item name="android:textSize">28sp</item>
-        <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:lineHeight">32sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -111,7 +114,6 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/button_background_rounded</item>
         <item name="android:foreground">@drawable/button_ripple</item>
-        <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:textSize">19dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.04</item>
