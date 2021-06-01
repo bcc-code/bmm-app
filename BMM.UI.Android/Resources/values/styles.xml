@@ -75,6 +75,8 @@
         <item name="colorPrimary">@color/black</item>
         <item name="itemTextColor">@color/navigation_color_selector</item>
         <item name="itemIconTint">@color/navigation_color_selector</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">10dp</item>
     </style>
 
     <style name="ProgressGreen" parent="android:Widget.ProgressBar">
