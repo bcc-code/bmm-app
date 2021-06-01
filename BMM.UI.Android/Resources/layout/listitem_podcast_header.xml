@@ -30,7 +30,7 @@
                 android:singleLine="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_very_huge_title"
-                android:textStyle="bold"
+                android:textFontWeight="700"
                 android:layout_gravity="center_vertical"
                 android:text="Title"
                 local:MvxBind="Text Podcast.Title"

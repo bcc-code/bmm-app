@@ -54,11 +54,9 @@
             app:layout_constraintBottom_toBottomOf="@id/aslaksenImage"
             android:layout_marginLeft="@dimen/margin_small"
             android:text="Fra Kåre"
-            android:textStyle="bold"
             android:lineSpacingExtra="6sp"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:fontFamily="sans-serif-black"
             local:MvxBind="Text ViewModel.AslaksenTeaserViewModel.Podcast.Title" />
 
         <LinearLayout
@@ -81,7 +79,6 @@
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="2sp"
                 android:text="Show all"
-                android:fontFamily="sans-serif-medium"
                 local:MvxLang="Text ShowAll, Source=ViewModel.TextSource"
                 local:MvxBind="Click ViewModel.AslaksenTeaserViewModel.ShowAllCommand" />
 
@@ -125,7 +122,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_large"
-                android:fontFamily="sans-serif-black"
                 local:MvxLang="Text PlayRandom, Source=ViewModel.TextSource" />
 
         </LinearLayout>
@@ -162,7 +158,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_large"
-                android:fontFamily="sans-serif-black"
                 local:MvxLang="Text PlayNewest, Source=ViewModel.TextSource" />
 
         </LinearLayout>

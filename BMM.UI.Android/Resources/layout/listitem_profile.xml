@@ -4,6 +4,47 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
+
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:textFontWeight="500"
+                android:textSize="17sp"
+                android:text="Almost before we knew it, we had left the ground."
+                android:textColor="@color/black"
+                android:layout_marginBottom="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:textFontWeight="600"
+                android:textSize="17sp"
+                android:text="Almost before we knew it, we had left the ground."
+                android:textColor="@color/black"
+                android:layout_marginBottom="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:textFontWeight="700"
+                android:textSize="17sp"
+                android:text="Almost before we knew it, we had left the ground."
+                android:textColor="@color/black"
+                android:layout_marginBottom="4dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter"
+                android:textFontWeight="800"
+                android:textSize="17sp"
+                android:text="Almost before we knew it, we had left the ground."
+                android:textColor="@color/black"
+                android:layout_marginBottom="4dp"/>
+    </LinearLayout>
+    
     <androidx.cardview.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -51,7 +92,7 @@
                     android:layout_marginBottom="16dp"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textFontWeight="700"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:lineHeight="24sp"
@@ -109,7 +150,7 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textFontWeight="700"
 
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/chevron_image"

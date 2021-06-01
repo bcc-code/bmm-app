@@ -46,7 +46,7 @@
                 android:id="@+id/text_view_title"
                 android:singleLine="true"
                 local:MvxBind="Text Item.Name"
-                android:textStyle="bold"
+                android:textFontWeight="700"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_large"
                 android:layout_gravity="center_vertical" />
