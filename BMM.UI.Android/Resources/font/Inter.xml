@@ -1,13 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <font-family xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:app="http://schemas.android.com/apk/res-auto"
-             android:fontProviderAuthority="com.google.android.gms.fonts"
-             android:fontProviderPackage="com.google.android.gms"
-             android:fontProviderQuery="Inter"
-             android:fontProviderCerts="@array/com_google_android_gms_fonts_certs"
-             app:fontProviderAuthority="com.google.android.gms.fonts"
-             app:fontProviderPackage="com.google.android.gms"
-             app:fontProviderQuery="Inter"
-             app:fontProviderCerts="@array/com_google_android_gms_fonts_certs"
->
+             xmlns:app="http://schemas.android.com/apk/res-auto">
+    <font android:font="@font/inter_500"
+          android:fontStyle="normal"
+          android:fontWeight="500"
+          app:font="@font/inter_500"
+          app:fontStyle="normal"
+          app:fontWeight="500" />
+    <font android:font="@font/inter_600"
+          android:fontStyle="normal"
+          android:fontWeight="600"
+          app:font="@font/inter_600"
+          app:fontStyle="normal"
+          app:fontWeight="600" />
+    <font android:font="@font/inter_700"
+          android:fontStyle="normal"
+          android:fontWeight="700"
+          app:font="@font/inter_700"
+          app:fontStyle="normal"
+          app:fontWeight="700" />
+    <font android:font="@font/inter_800"
+          android:fontStyle="normal"
+          android:fontWeight="800"
+          app:font="@font/inter_800"
+          app:fontStyle="normal"
+          app:fontWeight="800" />
 </font-family>

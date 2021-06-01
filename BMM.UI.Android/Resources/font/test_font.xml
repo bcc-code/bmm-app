@@ -3,11 +3,10 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:fontProviderAuthority="com.google.android.gms.fonts"
              android:fontProviderPackage="com.google.android.gms"
-             android:fontProviderQuery="Playfair Display"
+             android:fontProviderQuery="name=Playfair Display&amp;weight=500&amp;italic=1"
              android:fontProviderCerts="@array/com_google_android_gms_fonts_certs"
              app:fontProviderAuthority="com.google.android.gms.fonts"
              app:fontProviderPackage="com.google.android.gms"
-             app:fontProviderQuery="Playfair Display"
-             app:fontProviderCerts="@array/com_google_android_gms_fonts_certs"
->
+             app:fontProviderQuery="name=Playfair Display&amp;weight=500&amp;italic=1"
+             app:fontProviderCerts="@array/com_google_android_gms_fonts_certs">
 </font-family>
