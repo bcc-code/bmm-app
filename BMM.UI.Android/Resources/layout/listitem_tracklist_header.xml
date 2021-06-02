@@ -100,8 +100,8 @@
           <ProgressBar
                   android:layout_width="40dp"
                   android:layout_height="40dp"
-                  android:paddingRight="16dp"
-                  android:paddingLeft="16dp"
+                  android:layout_marginLeft="8dp"
+                  android:layout_marginRight="8dp"
                   android:indeterminate="false"
                   android:progressDrawable="@drawable/circular_progress_bar"
                   android:background="@drawable/circular_shape"

@@ -49,6 +49,7 @@
             local:MvxBind="Click LoginCommand; Visibility Visibility(!IsLoading)"
             android:textColor="@color/white"
             android:textSize="@dimen/text_large"
+            android:letterSpacing="0"
             android:textAllCaps="false"
             android:padding="@dimen/padding_medium"
             android:background="@drawable/button_radius_corners" />
