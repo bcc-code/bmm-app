@@ -34,8 +34,14 @@
         <item name="colorAccent">@color/black</item>
     </style>
 
-    <style name="AppTheme.CollapseBarTextAppearance" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+    <style name="AppTheme.CollapseBarTextAppearance.Collapsed" parent="TextAppearance.AppCompat.Title">
         <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight">700</item>
+    </style>
+    
+    <style name="AppTheme.CollapseBarTextAppearance.Expanded" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight">700</item>
     </style>
 
     <style name="AppTheme.Tab">
@@ -47,6 +53,7 @@
     <style name="AppTheme.Tab.TextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/text_large</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight">700</item>
         <item name="textAllCaps">false</item>
         <item name="android:textAllCaps">false</item>
     </style>
@@ -58,7 +65,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
-
+    
     <style name="AppTheme.Login" parent="AppTheme.Dark">
         <item name="colorControlNormal">@color/gray</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
