@@ -25,7 +25,12 @@ namespace BMM.Core.ViewModels.Base
         public bool IsOfflineAvailable
         {
             get => _isOfflineAvailable;
-            protected set => SetProperty(ref _isOfflineAvailable, value);
+            protected set
+            {
+                SetProperty(ref _isOfflineAvailable, value);
+                RaisePropertyChanged(() => IsDownloaded);
+                RaisePropertyChanged(() => IsDownloading);
+            }
         }
 
         private int ToBeDownloadedCount => DownloadQueue.InitialDownloadCount;
@@ -167,7 +172,9 @@ namespace BMM.Core.ViewModels.Base
             if (IsLoading)
                 return;
 
-            if (!IsOfflineAvailable)
+            var newIsOfflineAvailable = !IsOfflineAvailable;
+
+            if (newIsOfflineAvailable)
             {
                 var mobileNetworkDownloadAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
 
@@ -185,8 +192,9 @@ namespace BMM.Core.ViewModels.Base
                     return;
                 }
 
+                IsOfflineAvailable = newIsOfflineAvailable;
+
                 await DownloadAction();
-                IsOfflineAvailable = !IsOfflineAvailable;
                 await RaisePropertyChanged(() => IsDownloaded);
             }
             else
@@ -198,10 +206,11 @@ namespace BMM.Core.ViewModels.Base
                     return;
                 }
 
+                IsOfflineAvailable = newIsOfflineAvailable;
+
                 await DeleteAction();
 
                 await RaisePropertyChanged(() => Documents);
-                IsOfflineAvailable = !IsOfflineAvailable;
                 await RaisePropertyChanged(() => IsDownloaded);
             }
         }

@@ -245,7 +245,6 @@
     <Compile Include="Application\Helpers\MvxRecyclerViewOnScrollListener.cs" />
     <Compile Include="Application\Adapters\LoadMoreRecyclerAdapter.cs" />
     <Compile Include="Application\ValueConverters\OfflineAvailableTrackValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\OfflineAvailableTrackStatusValueConverter.cs" />
     <Compile Include="Application\Fragments\TrackInfoFragment.cs" />
     <Compile Include="BmmApplication.cs" />
     <Compile Include="Application\TemplateSelectors\DocumentTemplateSelector.cs" />
@@ -255,7 +254,6 @@
     <Compile Include="Application\Implementations\Notifications\NotificationDisplayer.cs" />
     <Compile Include="Application\Implementations\Notifications\FirebaseTokenProvider.cs" />
     <Compile Include="Application\TemplateSelectors\ExploreNewestTemplateSelector.cs" />
-    <Compile Include="Application\ValueConverters\BrightOfflineAvailableTrackStatusValueConverter.cs" />
     <Compile Include="Application\Activities\BaseFragmentActivity.cs" />
     <Compile Include="Application\Implementations\UI\UriOpener.cs" />
   </ItemGroup>
