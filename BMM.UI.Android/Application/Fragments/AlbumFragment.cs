@@ -65,9 +65,6 @@ namespace BMM.UI.Droid.Application.Fragments
                 case Resource.Id.menu_AddAlbumToPlaylist:
                     ViewModel.AddToPlaylistCommand.Execute();
                     return true;
-                case Resource.Id.menu_AddAlbumToMyTracks:
-                    ViewModel.AddToMyTracksCommand.Execute();
-                    return true;
                 case Resource.Id.menu_ShareAlbum:
                     ViewModel.ShareCommand.Execute();
                     return true;

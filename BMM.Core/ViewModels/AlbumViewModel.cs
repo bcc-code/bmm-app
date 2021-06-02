@@ -22,7 +22,7 @@ namespace BMM.Core.ViewModels
         /// While iOS reuses <see cref="BaseViewModel.OptionsAction"/> Android creates a new menu using these commands.
         /// </summary>
         public IMvxCommand AddToPlaylistCommand { get; }
-        public IMvxCommand AddToMyTracksCommand { get; }
+
         public IMvxCommand ShareCommand { get; }
 
         private Album _album;
@@ -41,7 +41,6 @@ namespace BMM.Core.ViewModels
         public AlbumViewModel(IShareLink shareLink)
         {
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddAlbumToTrackCollection(Album.Id));
-            AddToMyTracksCommand = new ExceptionHandlingCommand(async () => await AddAlbumToMyTracks(Album.Id));
             ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.For(_album));
 
             var audiobookStyler = new AudiobookPodcastInfoProvider(TrackInfoProvider);

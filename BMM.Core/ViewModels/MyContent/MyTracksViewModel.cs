@@ -9,7 +9,6 @@ using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
-using BMM.Core.Implementations.MyTracks;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Messages;
 using BMM.Core.ViewModels.Base;
@@ -100,17 +99,6 @@ namespace BMM.Core.ViewModels.MyContent
         {
             MyCollection = trackCollection;
             IsOfflineAvailable = Mvx.IoCProvider.Resolve<IOfflineTrackCollectionStorage>().IsOfflineAvailable(MyCollection);
-        }
-
-        protected override async Task Initialization()
-        {
-            if (MyCollection == null)
-            {
-                var myTracksId = await Mvx.IoCProvider.Resolve<IMyTracksManager>().GetCachedMyTracksIdOrLoadIt();
-                MyCollection = new TrackCollection {Id = myTracksId, Name = TextSource.GetText("Title")};
-            }
-
-            await base.Initialization();
         }
 
         protected override async Task DownloadAction()

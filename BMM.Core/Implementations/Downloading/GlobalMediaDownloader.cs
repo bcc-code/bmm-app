@@ -14,7 +14,6 @@ using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
-using BMM.Core.Implementations.MyTracks;
 using BMM.Core.Messages;
 using MvvmCross.Plugin.Messenger;
 
@@ -60,10 +59,7 @@ namespace BMM.Core.Implementations.Downloading
         public async Task InitializeCacheAndSynchronizeTracks()
         {
             await _client.Podcast.GetAll(CachePolicy.BypassCache);
-            var allTrackCollections = await _client.TrackCollection.GetAll(CachePolicy.BypassCache);
-            var myTrackCollection = allTrackCollections.Where(c => c.Name.Equals(MyTracksManager.MyTracksPlaylistName)).ToList();
-            if (myTrackCollection.Count == 1)
-                await _client.TrackCollection.GetById(myTrackCollection.First().Id, CachePolicy.UseCache);
+            await _client.TrackCollection.GetAll(CachePolicy.BypassCache);
             await UpdateOfflineTracks();
         }
 

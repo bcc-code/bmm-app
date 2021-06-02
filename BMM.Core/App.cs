@@ -32,7 +32,6 @@ using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.LiveRadio;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Media;
-using BMM.Core.Implementations.MyTracks;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Notifications.Data;
 using BMM.Core.Implementations.Player;
@@ -183,8 +182,6 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPodcastOfflineManager, PodcastOfflineManager>();
             Mvx.IoCProvider.CallbackWhenRegistered<IPodcastOfflineManager>(manager => manager.InitAsync());
 
-            Mvx.IoCProvider.RegisterSingleton(InitializeMyTracksCollectionManager());
-
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IReceive<PodcastNotification>, PodcastNotificationReceiver>();
             Mvx.IoCProvider.RegisterType<IReceive<GeneralNotification>, GeneralNotificationReceiver>();
             Mvx.IoCProvider.RegisterType<INotificationHandler, NotificationHandler>();
@@ -290,30 +287,6 @@ namespace BMM.Core
             var builder = new TextProviderBuilder(new BmmJsonDictionaryTextProvider());
             Mvx.IoCProvider.RegisterSingleton<IMvxTextProviderBuilder>(builder);
             Mvx.IoCProvider.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
-        }
-
-        private static IMyTracksManager InitializeMyTracksCollectionManager()
-        {
-            var myTracksDownloader = Mvx.IoCProvider.IoCConstruct<MyTracksManager>();
-
-            Mvx.IoCProvider.Resolve<IMvxMessenger>()
-                .Subscribe<LoggedInOnlineMessage>(message =>
-                    {
-                        myTracksDownloader.InitAsync();
-                    },
-                    MvxReference.Strong);
-
-            Mvx.IoCProvider.Resolve<IMvxMessenger>()
-                .Subscribe<OfflineStatusChangedMessage>(message =>
-                    {
-                        if (message.Offline == false)
-                        {
-                            myTracksDownloader.InitAsync();
-                        }
-                    },
-                    MvxReference.Strong);
-
-            return myTracksDownloader;
         }
     }
 }

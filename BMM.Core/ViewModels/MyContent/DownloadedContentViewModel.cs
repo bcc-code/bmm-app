@@ -98,12 +98,6 @@ namespace BMM.Core.ViewModels.MyContent
                 Action = new MvxAsyncCommand<PinnedItem>(execute => _navigationService.Navigate<DownloadedFollowedPodcastsViewModel>()),
                 Icon = "icon_podcast"
             };
-            var myTracksPinnedItem = new PinnedItem
-            {
-                Title = MyContentDownloadedContentTextSource.GetText("MyTracks"),
-                Action = new MvxAsyncCommand<PinnedItem>(execute => _navigationService.Navigate<MyTracksViewModel>()),
-                Icon = "icon_favorites_active_no_fill"
-            };
 
             var pinnedItemsList = new List<PinnedItem>();
 
@@ -111,10 +105,6 @@ namespace BMM.Core.ViewModels.MyContent
             var followedPodcasts = podcasts?.Where(Mvx.IoCProvider.Resolve<IPodcastOfflineManager>().IsFollowing);
             if (followedPodcasts != null && followedPodcasts.Any())
                 pinnedItemsList.Add(followedPodcastPinnedItem);
-
-            var myTracksCollection = await Client.TrackCollection.GetById(MyTracksCollection.Id, CachePolicy.UseCache);
-            if (myTracksCollection.Tracks.Any(track => _storageManager.SelectedStorage.IsDownloaded(track)))
-                pinnedItemsList.Add(myTracksPinnedItem);
 
             return pinnedItemsList;
         }
