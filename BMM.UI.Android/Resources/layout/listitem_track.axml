@@ -90,11 +90,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <ImageView
-            android:id="@+id/downloadedIcon"
+        <include
+            layout="@layout/track_download_status"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            local:MvxBind="DrawableId OfflineAvailableTrackStatus(.); Visibility OfflineAvailableTrack(.)" />
+            android:layout_height="wrap_content" />
 
         <ImageView
             android:id="@+id/image_button_references"

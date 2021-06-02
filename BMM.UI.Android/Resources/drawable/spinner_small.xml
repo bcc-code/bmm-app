@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+                 android:drawable="@drawable/spinner_small_design" >
+    <target
+            android:name="progressBar"
+            android:animation="@anim/spinner_small_progress_bar" />
+    <target
+            android:name="root"
+            android:animation="@anim/spinner_small_root" />
+</animated-vector>

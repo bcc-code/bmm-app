@@ -18,14 +18,14 @@ namespace BMM.UI.Droid.Application.ValueConverters
                 return 0;
 
             if (IsOfflineAvailable(track))
-                return Resource.Drawable.icon_downloaded;
+                return Resource.Drawable.icon_download_done;
 
             var downloadQueue = Mvx.IoCProvider.Resolve<IDownloadQueue>();
 
             if (downloadQueue.IsDownloading(track))
-                return Resource.Drawable.icon_loading;
+                return Resource.Drawable.icon_download_progress;
             if (downloadQueue.IsQueued(track))
-                return Resource.Drawable.icon_pending;
+                return Resource.Drawable.icon_download_pending;
 
             return 0;
         }

@@ -191,6 +191,7 @@
     <Compile Include="Application\TemplateSelectors\TrackListTemplateSelector.cs" />
     <Compile Include="Application\ValueConverters\CurrentDayColor.cs" />
     <Compile Include="Application\Bindings\MvxBackgroundTintBinding.cs" />
+    <Compile Include="Application\ValueConverters\DownloadStatusVisibilityValueConverter.cs" />
     <Compile Include="Application\ValueConverters\SectionedToFlatListValueConverter.cs" />
     <Compile Include="Application\ValueConverters\StreakTextSourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\TrackAvailabilityToOpacityValueConverter.cs" />
@@ -264,6 +265,16 @@
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <AndroidResource Include="Resources\anim\spinner_small_progress_bar.xml" />
+    <AndroidResource Include="Resources\anim\spinner_small_root.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\anim\trim_end_interpolator.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\anim\trim_start_interpolator.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\color\navigation_color_selector.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -383,6 +394,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\spinner_small.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\spinner_small_design.xml" />
     <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_left.xml" />
     <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_right.xml">
       <SubType>Designer</SubType>
@@ -390,6 +406,18 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_chevron_right.xml" />
     <AndroidResource Include="Resources\drawable\icon_download.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download_done.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon_download_pending.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon_download_progress.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_favorites_active_no_fill.xml" />
     <AndroidResource Include="Resources\drawable\icon_play.xml">
       <SubType>Designer</SubType>
@@ -486,6 +514,10 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\xam_mediaManager_notify_ic.png" />
     <AndroidResource Include="Resources\layout\listitem_search_suggestion.axml" />
     <AndroidResource Include="Resources\layout\listitem_tracklist_header.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\track_download_status.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
