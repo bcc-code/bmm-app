@@ -627,7 +627,6 @@
     <BundleResource Include="Resources\slider_thumb_white.png" />
     <BundleResource Include="Resources\slider_thumb_white@2x.png" />
     <BundleResource Include="Resources\slider_thumb_white@3x.png" />
-    <BundleResource Include="Resources\white_gradient.png" />
     <BundleResource Include="Resources\placeholder_artist.png" />
     <BundleResource Include="Resources\placeholder_artist%402x.png" />
     <BundleResource Include="Resources\placeholder_artist%403x.png" />
