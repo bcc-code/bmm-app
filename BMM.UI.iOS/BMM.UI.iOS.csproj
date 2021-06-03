@@ -405,6 +405,9 @@
     <BundleResource Include="Resources\btv_teaser.png" />
     <BundleResource Include="Resources\btv_teaser@2x.png" />
     <BundleResource Include="Resources\btv_teaser@3x.png" />
+    <BundleResource Include="Resources\icon_bell.png" />
+    <BundleResource Include="Resources\icon_bell@2x.png" />
+    <BundleResource Include="Resources\icon_bell@3x.png" />
     <BundleResource Include="Resources\icon_chevron_right.png" />
     <BundleResource Include="Resources\icon_chevron_right@2x.png" />
     <BundleResource Include="Resources\icon_chevron_right@3x.png" />

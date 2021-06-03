@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using CoreGraphics;
@@ -7,6 +8,10 @@ using UIKit;
 using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Views;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
+using BMM.UI.iOS.Helpers;
+using Foundation;
+using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
 {
@@ -14,8 +19,7 @@ namespace BMM.UI.iOS
     {
         public PodcastViewController()
             : base("PodcastViewController")
-        {
-        }
+        { }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
 
@@ -27,6 +31,14 @@ namespace BMM.UI.iOS
             var refreshControl = new MvxUIRefreshControl {TintColor = AppColors.RefreshControlTintColor};
             PodcastTable.RefreshControl = refreshControl;
 
+            TitelLabel.ApplyTextTheme(AppTheme.Heading1.Value);
+            FollowButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
+            FollowingButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
+            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            ImageWrapper.SetGradientBackground(
+                new[] {UIColor.FromRGB(14, 54, 173).CGColor, UIColor.FromRGB(19, 103, 151).CGColor},
+                new NSNumber[] {0, 1});
+
             var source = new NotSelectableDocumentsTableViewSource(PodcastTable);
 
             var set = this.CreateBindingSet<PodcastViewController, PodcastViewModel>();
@@ -37,30 +49,43 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsFullyLoaded);
             set.Bind(OfflineBannerLabel).To(vm => vm.GlobalTextSource).WithConversion<MvxLanguageConverter>("OfflineBanner");
             set.Bind(PodcastCoverImageView).For(v => v.ImagePath).To(vm => vm.Podcast.Cover);
-            set.Bind(PodcastBlurCoverImage).For(v => v.ImagePath).To(vm => vm.Podcast.Cover);
-            set.Bind(FollowTitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("GetNotified");
-            set.Bind(FollowSubtitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("GetNotifiedMessage");
+
+            set.Bind(TitelLabel).To(vm => vm.Podcast.Title);
+
+            set.Bind(FollowingButton).For(v => v.Hidden).To(vm => vm.IsFollowing).WithConversion<InvertedVisibilityConverter>();
             set.Bind(FollowingButton).To(vm => vm.ToggleFollowingCommand);
+            set.Bind(FollowingButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("Following");
+
+            set.Bind(FollowButton).For(v => v.Hidden).To(vm => vm.IsFollowing);
             set.Bind(FollowButton).To(vm => vm.ToggleFollowingCommand);
-            set.Bind(FollowingTickImageView).For("Visibility").To(vm => vm.IsFollowing).WithConversion(new InvertedVisibilityConverter());
-            set.Bind(FollowingButton).For("Visibility").To(vm => vm.IsFollowing).WithConversion(new InvertedVisibilityConverter());
-            set.Bind(FollowButton).For("Visibility").To(vm => vm.IsFollowing);
-            set.Bind(ButtonLabel).To(vm => vm.FollowButtonText);
+            set.Bind(FollowButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("Follow");
+
+            // todo I think in podcasts it should be play instead of shuffle
+            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Shuffle");
+            set.Bind(PlayButton).To(vm => vm.ShufflePlayCommand);
+
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
+
             set.Apply();
 
             HideOfflineBannerIfNecessary();
 
-            PodcastTable.ReloadData();
-            BlurBackground();
+            PodcastTable.ResizeHeaderView();
+
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
 
             FollowButton.Layer.BorderColor = new CGColor(0, 1);
         }
 
+        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            PodcastTable.ResizeHeaderView();
+        }
+
         private void HideOfflineBannerIfNecessary()
         {
-            var offlineBannerVisible = (bool) new OfflineBannerVisibilityValueConverter().Convert(ViewModel, null, null, null);
+            var offlineBannerVisible = (bool)new OfflineBannerVisibilityValueConverter().Convert(ViewModel, null, null, null);
             if (!offlineBannerVisible)
             {
                 OfflineBannerView.Hidden = true;
@@ -68,26 +93,12 @@ namespace BMM.UI.iOS
             }
         }
 
-        private void BlurBackground()
-        {
-            var blur = UIBlurEffect.FromStyle(UIBlurEffectStyle.Light);
-            var blurEffect = new UIVisualEffectView(blur);
-            var screenWidth = UIScreen.MainScreen.Bounds.Width;
-
-            var frame = new CGRect(0, 0, screenWidth, 520);
-            blurEffect.Frame = frame;
-            blurView.Add(blurEffect);
-        }
-
         private void AddNavigationBarItemForOptions()
         {
             var sidebarButton = new UIBarButtonItem(
                 new UIImage("icon_options"),
                 UIBarButtonItemStyle.Plain,
-                (object sender, EventArgs e) =>
-                {
-                    ViewModel.OptionCommand.Execute(ViewModel.Podcast);
-                }
+                (object sender, EventArgs e) => { ViewModel.OptionCommand.Execute(ViewModel.Podcast); }
             );
 
             NavigationItem.SetRightBarButtonItem(sidebarButton, true);
