@@ -867,6 +867,11 @@
       <DependentUpon>OidcLoginViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants\AppColors.cs" />
+    <Compile Include="Constants\AppTheme.cs" />
+    <Compile Include="Constants\ButtonTheme.cs" />
+    <Compile Include="Constants\TextTheme.cs" />
+    <Compile Include="Constants\ThemeExtensions.cs" />
+    <Compile Include="Constants\Typography.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Application\AppDelegate.cs" />
     <Compile Include="Application\TableViewCell\TrackTableViewCell.cs" />

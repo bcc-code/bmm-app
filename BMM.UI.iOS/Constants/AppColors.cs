@@ -5,6 +5,7 @@ namespace BMM.UI.iOS.Constants
 {
     public static class AppColors
     {
+        public static readonly UIColor Paragraph2Color = UIColor.FromRGB(0.361f, 0.439f, 0.51f);
         public static readonly UIColor ColorPrimary = UIColor.FromRGB(131, 231, 107);
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
         public static readonly UIColor TabBarUnselectedColor = UIColor.FromRGB(143,160,175);
