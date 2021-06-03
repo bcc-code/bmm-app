@@ -7,9 +7,9 @@ namespace BMM.UI.iOS
 {
     sealed class TextViewWithDescription : UIView
     {
-        public UITextField TitleTextField { get; set; }
+        public UITextField TitleTextField { get; private set; }
 
-        public UILabel TitleLabel { get; set; }
+        public UILabel TitleLabel { get; private set; }
 
         public UIColor BorderColor
         {
