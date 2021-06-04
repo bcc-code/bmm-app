@@ -129,6 +129,6 @@ namespace BMM.Core.ViewModels
 
         public bool ShowTrackCount => true;
 
-        public override string TrackCountString => Documents.OfType<Album>().Any() ? TextSource.GetText("PluralAlbums", Documents.Count) : base.TrackCountString;
+        public override string TrackCountString => Documents.OfType<Album>().Any() ? TextSource.GetText("PluralAlbums", Documents.OfType<Album>().Count()) : base.TrackCountString;
     }
 }
