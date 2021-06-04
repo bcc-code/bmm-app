@@ -60,7 +60,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFU-BK-iCb" userLabel="GradientImageWrapper">
-                                <rect key="frame" x="107.5" y="20" width="160" height="160"/>
+                                <rect key="frame" x="107.5" y="32" width="160" height="160"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="t4g-Ns-abC" customClass="MvxCachedImageView">
                                         <rect key="frame" x="16" y="16" width="128" height="128"/>
@@ -88,7 +88,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBs-EE-ISq">
-                                <rect key="frame" x="16" y="200" width="343" height="122"/>
+                                <rect key="frame" x="16" y="212" width="343" height="110"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="BNu-je-Gnd"/>
                                 </constraints>
@@ -131,7 +131,7 @@
                             <constraint firstItem="UFU-BK-iCb" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="gzK-bm-bmm"/>
                             <constraint firstItem="tBs-EE-ISq" firstAttribute="top" secondItem="UFU-BK-iCb" secondAttribute="bottom" constant="20" id="k8C-7a-lPa"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UV0-yk-NnS" secondAttribute="trailing" constant="16" id="vTK-gw-JS7"/>
-                            <constraint firstItem="UFU-BK-iCb" firstAttribute="top" secondItem="dvX-pL-2wU" secondAttribute="top" constant="20" id="zt7-GD-McX"/>
+                            <constraint firstItem="UFU-BK-iCb" firstAttribute="top" secondItem="dvX-pL-2wU" secondAttribute="top" constant="32" id="zt7-GD-McX"/>
                         </constraints>
                     </view>
                 </tableView>
