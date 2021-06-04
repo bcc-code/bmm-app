@@ -88,7 +88,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBs-EE-ISq">
-                                <rect key="frame" x="16" y="212" width="343" height="110"/>
+                                <rect key="frame" x="16" y="212" width="343" height="109"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="BNu-je-Gnd"/>
                                 </constraints>
@@ -97,7 +97,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UV0-yk-NnS">
-                                <rect key="frame" x="72" y="342" width="231" height="40"/>
+                                <rect key="frame" x="72" y="341" width="231" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="que-rJ-xHy">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="40"/>
@@ -119,18 +119,28 @@
                                     <constraint firstAttribute="height" constant="40" id="kMq-ep-egL"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyT-6U-GQI" customClass="Separator">
+                                <rect key="frame" x="0.0" y="406" width="375" height="1"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="uqW-k3-vN7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="tBs-EE-ISq" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="3zz-zU-o7S"/>
-                            <constraint firstAttribute="bottom" secondItem="UV0-yk-NnS" secondAttribute="bottom" constant="25" id="54t-BL-EJL"/>
                             <constraint firstItem="UV0-yk-NnS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="6ib-cg-zkv"/>
+                            <constraint firstItem="MyT-6U-GQI" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" id="F8k-HU-nAw"/>
+                            <constraint firstAttribute="trailing" secondItem="MyT-6U-GQI" secondAttribute="trailing" id="PXW-nG-86O"/>
                             <constraint firstItem="UV0-yk-NnS" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="bX8-Ll-GaR"/>
                             <constraint firstItem="UV0-yk-NnS" firstAttribute="top" secondItem="tBs-EE-ISq" secondAttribute="bottom" constant="20" id="fo1-ff-2J5"/>
                             <constraint firstAttribute="trailing" secondItem="tBs-EE-ISq" secondAttribute="trailing" constant="16" id="gNP-CN-9Ft"/>
                             <constraint firstItem="UFU-BK-iCb" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="gzK-bm-bmm"/>
                             <constraint firstItem="tBs-EE-ISq" firstAttribute="top" secondItem="UFU-BK-iCb" secondAttribute="bottom" constant="20" id="k8C-7a-lPa"/>
+                            <constraint firstAttribute="bottom" secondItem="MyT-6U-GQI" secondAttribute="bottom" id="ov9-KG-ved"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UV0-yk-NnS" secondAttribute="trailing" constant="16" id="vTK-gw-JS7"/>
+                            <constraint firstItem="MyT-6U-GQI" firstAttribute="top" secondItem="UV0-yk-NnS" secondAttribute="bottom" constant="25" id="wA7-kE-27m"/>
                             <constraint firstItem="UFU-BK-iCb" firstAttribute="top" secondItem="dvX-pL-2wU" secondAttribute="top" constant="32" id="zt7-GD-McX"/>
                         </constraints>
                     </view>
@@ -156,6 +166,9 @@
         <image name="placeholder_album.png" width="320" height="320"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
