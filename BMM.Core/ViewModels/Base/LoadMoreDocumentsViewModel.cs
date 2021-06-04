@@ -75,6 +75,7 @@ namespace BMM.Core.ViewModels.Base
                         if (documents != null && documents.Any())
                         {
                             Documents.AddRange(documents);
+                            RaisePropertyChanged(() => TrackCountString);
                         }
 
                         // TODO: Update this if the API has a fixed size for statistics
