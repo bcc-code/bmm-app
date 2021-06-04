@@ -14,12 +14,6 @@ namespace BMM.UI.iOS
 	partial class CuratedPlaylistViewController
 	{
 		[Outlet]
-		UIKit.UIView blurView { get; set; }
-
-		[Outlet]
-		FFImageLoading.Cross.MvxCachedImageView CuratedPlaylistBlurCoverImage { get; set; }
-
-		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView CuratedPlaylistCoverImageView { get; set; }
 
 		[Outlet]
@@ -29,41 +23,22 @@ namespace BMM.UI.iOS
 		UIKit.UITableView CuratedPlaylistTable { get; set; }
 
 		[Outlet]
-		UIKit.UILabel DownloadingStatusLabel { get; set; }
+		UIKit.UILabel DescriptionLabel { get; set; }
 
 		[Outlet]
-		UIKit.UIView DownloadingStatusView { get; set; }
-
-		[Outlet]
-		UIKit.UIButton OfflineAvailableButton { get; set; }
-
-		[Outlet]
-		UIKit.UIProgressView OfflineAvailableProgress { get; set; }
-
-		[Outlet]
-		UIKit.UILabel OfflineAvailableSubtitleLabel { get; set; }
-
-		[Outlet]
-		UIKit.UISwitch OfflineAvailableSwitch { get; set; }
-
-		[Outlet]
-		UIKit.UILabel OfflineAvailableTitleLabel { get; set; }
+		BMM.UI.iOS.DownloadButton DownloadButton { get; set; }
 
 		[Outlet]
 		UIKit.UIButton ShuffleButton { get; set; }
 
+		[Outlet]
+		UIKit.UILabel TitleLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel TrackCountLabel { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (blurView != null) {
-				blurView.Dispose ();
-				blurView = null;
-			}
-
-			if (CuratedPlaylistBlurCoverImage != null) {
-				CuratedPlaylistBlurCoverImage.Dispose ();
-				CuratedPlaylistBlurCoverImage = null;
-			}
-
 			if (CuratedPlaylistCoverImageView != null) {
 				CuratedPlaylistCoverImageView.Dispose ();
 				CuratedPlaylistCoverImageView = null;
@@ -79,44 +54,29 @@ namespace BMM.UI.iOS
 				CuratedPlaylistTable = null;
 			}
 
-			if (DownloadingStatusLabel != null) {
-				DownloadingStatusLabel.Dispose ();
-				DownloadingStatusLabel = null;
-			}
-
-			if (DownloadingStatusView != null) {
-				DownloadingStatusView.Dispose ();
-				DownloadingStatusView = null;
-			}
-
-			if (OfflineAvailableButton != null) {
-				OfflineAvailableButton.Dispose ();
-				OfflineAvailableButton = null;
-			}
-
-			if (OfflineAvailableProgress != null) {
-				OfflineAvailableProgress.Dispose ();
-				OfflineAvailableProgress = null;
-			}
-
-			if (OfflineAvailableSubtitleLabel != null) {
-				OfflineAvailableSubtitleLabel.Dispose ();
-				OfflineAvailableSubtitleLabel = null;
-			}
-
-			if (OfflineAvailableSwitch != null) {
-				OfflineAvailableSwitch.Dispose ();
-				OfflineAvailableSwitch = null;
-			}
-
-			if (OfflineAvailableTitleLabel != null) {
-				OfflineAvailableTitleLabel.Dispose ();
-				OfflineAvailableTitleLabel = null;
+			if (DescriptionLabel != null) {
+				DescriptionLabel.Dispose ();
+				DescriptionLabel = null;
 			}
 
 			if (ShuffleButton != null) {
 				ShuffleButton.Dispose ();
 				ShuffleButton = null;
+			}
+
+			if (TitleLabel != null) {
+				TitleLabel.Dispose ();
+				TitleLabel = null;
+			}
+
+			if (TrackCountLabel != null) {
+				TrackCountLabel.Dispose ();
+				TrackCountLabel = null;
+			}
+
+			if (DownloadButton != null) {
+				DownloadButton.Dispose ();
+				DownloadButton = null;
 			}
 
 		}
