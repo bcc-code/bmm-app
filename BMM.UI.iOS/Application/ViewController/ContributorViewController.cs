@@ -26,6 +26,7 @@ namespace BMM.UI.iOS
 
             NameLabel.ApplyTextTheme(AppTheme.Heading1.Value);
             PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3.Value);
 
             var set = this.CreateBindingSet<ContributorViewController, ContributorViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.Contributor).WithConversion<ContributorNameConverter>();
@@ -34,7 +35,7 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
             set.Bind(source).For(s => s.IsFullyLoaded).To(s => s.IsFullyLoaded);
             set.Bind(CircleCoverImage).For(v => v.ImagePath).To(vm => vm.Contributor.Cover);
-
+            set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
             set.Bind(NameLabel).To(vm => vm.Contributor.Name);
             set.Bind(PlayButton).To(vm => vm.ShufflePlayCommand);
             set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Shuffle");

@@ -23,6 +23,9 @@ namespace BMM.UI.iOS
 		UIKit.UIButton PlayButton { get; set; }
 
 		[Outlet]
+		UIKit.UILabel TrackCountLabel { get; set; }
+
+		[Outlet]
 		UIKit.UITableView TracksTable { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -30,11 +33,6 @@ namespace BMM.UI.iOS
 			if (CircleCoverImage != null) {
 				CircleCoverImage.Dispose ();
 				CircleCoverImage = null;
-			}
-
-			if (TracksTable != null) {
-				TracksTable.Dispose ();
-				TracksTable = null;
 			}
 
 			if (NameLabel != null) {
@@ -45,6 +43,16 @@ namespace BMM.UI.iOS
 			if (PlayButton != null) {
 				PlayButton.Dispose ();
 				PlayButton = null;
+			}
+
+			if (TracksTable != null) {
+				TracksTable.Dispose ();
+				TracksTable = null;
+			}
+
+			if (TrackCountLabel != null) {
+				TrackCountLabel.Dispose ();
+				TrackCountLabel = null;
 			}
 
 		}
