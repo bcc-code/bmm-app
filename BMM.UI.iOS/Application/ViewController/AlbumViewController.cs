@@ -57,7 +57,10 @@ namespace BMM.UI.iOS
         {
             AlbumTable.ResizeHeaderView();
             if (e.PropertyName == nameof(AlbumViewModel.ShowShuffleButton))
-                StackViewToSeparatorConstraint.Constant = ViewModel.ShowShuffleButton ? 20 : 0;
+            {
+                StackViewToSeparatorConstraint.Constant = ViewModel.ShowShuffleButton ? StackViewToSeparatorConstraint.Constant : 0;
+                ButtonStackViewHeight.Constant = ViewModel.ShowShuffleButton ? ButtonStackViewHeight.Constant : 0;
+            }
         }
 
 

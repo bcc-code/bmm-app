@@ -12,6 +12,7 @@
                 <outlet property="AlbumCoverImageView" destination="t4g-Ns-abC" id="Pem-Mt-5ob"/>
                 <outlet property="AlbumHeaderView" destination="dvX-pL-2wU" id="eg1-dY-8bb"/>
                 <outlet property="AlbumTable" destination="l4p-Fv-ZIK" id="ws9-Aw-miv"/>
+                <outlet property="ButtonStackViewHeight" destination="Wiz-wK-A6E" id="iEA-SS-8k7"/>
                 <outlet property="ButtonTopConstraint" destination="FKl-ng-oER" id="sKr-rW-lBt"/>
                 <outlet property="DescriptionLabel" destination="hc3-4g-aLX" id="3pe-a4-cHq"/>
                 <outlet property="ShuffleButton" destination="jTG-0X-idr" id="66u-YL-aHN"/>
@@ -48,8 +49,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="album_cover"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jns-dj-qfe">
-                                <rect key="frame" x="16" y="212" width="343" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jns-dj-qfe">
+                                <rect key="frame" x="16" y="212" width="343" height="103.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Alv-Qv-BdK"/>
                                 </constraints>
@@ -58,10 +59,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="c1l-rF-vrA">
-                                <rect key="frame" x="131" y="277" width="113" height="123"/>
+                                <rect key="frame" x="131" y="360" width="113" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTG-0X-idr">
-                                        <rect key="frame" x="0.0" y="0.0" width="113" height="123"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="113" height="40"/>
                                         <color key="backgroundColor" red="0.46308052539825439" green="0.90309476852416992" blue="0.35757482051849365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Shuffle Play" image="icon_play.png">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,7 +77,7 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Wiz-wK-A6E"/>
+                                    <constraint firstAttribute="height" constant="40" id="Wiz-wK-A6E"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORP-bF-Gfg">
@@ -93,7 +94,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc3-4g-aLX">
-                                <rect key="frame" x="16" y="236.5" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="319.5" width="343" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="qYs-Kl-7Bm"/>
                                 </constraints>

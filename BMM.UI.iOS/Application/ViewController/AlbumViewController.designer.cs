@@ -23,6 +23,9 @@ namespace BMM.UI.iOS
 		UIKit.UITableView AlbumTable { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint ButtonStackViewHeight { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint ButtonTopConstraint { get; set; }
 
 		[Outlet]
@@ -72,6 +75,11 @@ namespace BMM.UI.iOS
 				ShuffleButton = null;
 			}
 
+			if (StackViewToSeparatorConstraint != null) {
+				StackViewToSeparatorConstraint.Dispose ();
+				StackViewToSeparatorConstraint = null;
+			}
+
 			if (TitleLabel != null) {
 				TitleLabel.Dispose ();
 				TitleLabel = null;
@@ -82,9 +90,9 @@ namespace BMM.UI.iOS
 				TrackCountLabel = null;
 			}
 
-			if (StackViewToSeparatorConstraint != null) {
-				StackViewToSeparatorConstraint.Dispose ();
-				StackViewToSeparatorConstraint = null;
+			if (ButtonStackViewHeight != null) {
+				ButtonStackViewHeight.Dispose ();
+				ButtonStackViewHeight = null;
 			}
 
 		}
