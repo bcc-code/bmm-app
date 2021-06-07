@@ -647,7 +647,6 @@
     <AndroidResource Include="Resources\layout\listitem_track.axml" />
     <AndroidResource Include="Resources\layout\fragment_search.axml" />
     <AndroidResource Include="Resources\layout\fragment_settings.axml" />
-    <AndroidResource Include="Resources\layout\fragment_trackcollection.axml" />
     <AndroidResource Include="Resources\layout\fragment_player.axml" />
     <AndroidResource Include="Resources\layout\activity_main.axml" />
     <AndroidResource Include="Resources\layout\toolbar_actionbar.axml" />
@@ -2076,12 +2075,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_notification.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\fonts_certs.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
