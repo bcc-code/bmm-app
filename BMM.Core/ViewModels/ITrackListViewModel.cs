@@ -10,6 +10,8 @@
 
         string Title { get; }
 
+        string Description { get; }
+
         bool ShowPlaylistIcon { get; }
         bool ShowImage { get; }
         string Image { get; }

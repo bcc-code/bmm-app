@@ -87,6 +87,8 @@ namespace BMM.Core.ViewModels
 
         public bool ShowSharingInfo => false;
 
+        public string Description => null;
+
         public bool ShowPlaylistIcon => false;
 
         public bool ShowImage => true;

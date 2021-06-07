@@ -39,6 +39,8 @@ namespace BMM.Core.ViewModels
 
         public string Title => Contributor?.Name;
 
+        public string Description => null;
+
         public string Image => Contributor?.Cover;
 
         public bool UseCircularImage => true;

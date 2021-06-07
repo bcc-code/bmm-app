@@ -32,11 +32,14 @@ namespace BMM.Core.ViewModels
             {
                 SetProperty(ref _curatedPlaylist, value);
                 RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => Description);
                 RaisePropertyChanged(() => Image);
             }
         }
 
         public override string Title => CuratedPlaylist.Title;
+
+        public override string Description => CuratedPlaylist.Description;
 
         public override bool ShowImage => true;
         public override string Image => CuratedPlaylist.Cover;

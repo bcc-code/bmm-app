@@ -33,6 +33,7 @@ namespace BMM.Core.ViewModels
             {
                 SetProperty(ref _album, value);
                 RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => Description);
                 RaisePropertyChanged(() => Image);
                 RaisePropertyChanged(() => ShowImage);
             }
@@ -117,6 +118,8 @@ namespace BMM.Core.ViewModels
         public bool IsDownloaded => false;
 
         public string Title => Album?.Title;
+
+        public string Description => Album?.Description;
 
         public bool ShowPlaylistIcon => false;
         public bool ShowImage => Album?.Cover != null;

@@ -56,6 +56,15 @@
             android:layout_marginBottom="4dp"
             app:MvxLang="Text Private"
             app:MvxBind="Visibility Visibility(ShowSharingInfo)"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4sp"
+            android:gravity="center"
+            android:text="Get the vibe going when travelling to camp. These songs will definitely get you in the right camp mood!"
+            android:layout_marginBottom="4dp"
+            app:MvxBind="Text Description; Visibility VisibilityString(Description)"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
