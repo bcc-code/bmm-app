@@ -6,8 +6,10 @@ using UIKit;
 
 namespace BMM.UI.iOS.Helpers
 {
-    //https://stackoverflow.com/questions/17555986/cagradientlayer-not-resizing-nicely-tearing-on-rotation
-    // This having an own view helps with resizing the gradient layer
+    // https://stackoverflow.com/questions/17555986/cagradientlayer-not-resizing-nicely-tearing-on-rotation
+    /// <summary>
+    /// Wrapping the gradient layer into an UIView allows us to resize the gradient with Auto Layout
+    /// </summary>
     public class GradientView: UIView
     {
         [Export ("layerClass")]
