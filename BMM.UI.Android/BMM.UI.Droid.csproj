@@ -280,26 +280,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-hdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_radio.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_radio_darth.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_radio_offline.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_radio_playing.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_play_podcast.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_repeat_one_active.png">
@@ -311,10 +295,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\podcast_background_fra_kaare.png" />
     <AndroidResource Include="Resources\drawable-mdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-mdpi\fra_kaare_til_buk_teaser_image.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_radio.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_repeat_one_active.png">
       <SubType>Designer</SubType>
@@ -327,10 +311,10 @@
     <AndroidResource Include="Resources\drawable-xhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_radio.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_repeat_one_active.png">
       <SubType>Designer</SubType>
@@ -343,10 +327,10 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_radio.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_repeat_one_active.png">
       <SubType>Designer</SubType>
@@ -359,10 +343,10 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_radio.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_unknown.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_repeat_one_active.png">
       <SubType>Designer</SubType>
@@ -529,14 +513,6 @@
     <AndroidResource Include="Resources\drawable\progressbar_downloading.xml" />
     <AndroidResource Include="Resources\drawable\button_play.xml" />
     <AndroidResource Include="Resources\drawable\button_pause.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown_playing.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown_playing.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown_playing.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown_playing.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown.png" />
     <AndroidResource Include="Resources\drawable\documents_divider.xml" />
     <AndroidResource Include="Resources\drawable\settings_divider.xml" />
     <AndroidResource Include="Resources\layout\listitem_isfullyloaded.axml" />
@@ -603,11 +579,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\image_kaare.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\image_kaare.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\image_kaare.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_downloaded_bright.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_downloaded_bright.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_downloaded_bright.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_downloaded_bright.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_downloaded_bright.png" />
     <AndroidResource Include="Resources\drawable-hdpi\btn_references_static.png" />
     <AndroidResource Include="Resources\drawable-mdpi\btn_references_static.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\btn_references_static.png" />
@@ -674,20 +645,14 @@
     <AndroidResource Include="Resources\drawable-hdpi\btn_video.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_add_static.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_back.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_playlist.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_download_active.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_download_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_downloaded.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_info_active.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_info_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_loading.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_next_inactive.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_next_static.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_options.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_options_active.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_pending.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_play.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_play_static.png" />
@@ -714,21 +679,14 @@
     <AndroidResource Include="Resources\drawable-mdpi\btn_video.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_add_static.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_back.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_song.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_download_active.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_download_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_downloaded.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_info_active.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_info_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_loading.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_next_inactive.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_next_static.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_options.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_options_active.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_pending.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_play.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_play_static.png" />
@@ -755,20 +713,14 @@
     <AndroidResource Include="Resources\drawable-xhdpi\btn_video.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_add_static.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_back.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_song.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_download_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_downloaded.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_info_active.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_info_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_loading.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_next_inactive.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_next_static.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_options.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_options_active.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_pending.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_play.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_play_static.png" />
@@ -796,21 +748,14 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\btn_video.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_add_static.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_back.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_download_active.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_download_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_downloaded.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_info_active.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_info_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_loading.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_next_inactive.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_next_static.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_options.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_options_active.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_pending.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_play.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_static.png" />
@@ -915,76 +860,16 @@
     </AndroidAsset>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_meeting.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\loading_spinner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_suggestion.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_meeting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_suggestion.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\loading_spinner.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_meeting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_suggestion.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\loading_spinner.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_meeting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_suggestion.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\loading_spinner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_meeting_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_playlist_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_meeting_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_song_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_meeting_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_playlist_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_song_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_meeting_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_playlist_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song_playing.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\rotate_spinner.xml" />
@@ -1224,29 +1109,7 @@
     <AndroidResource Include="Resources\layout\fragment_mytracks.axml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_favorites_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown_offline.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown_offline.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\icon_down_static.png" />
@@ -1315,52 +1178,10 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_back.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_meeting.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_meeting_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_playlist.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_playlist_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_song.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_song_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_song_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_suggestion.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_unknown.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_unknown_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_unknown_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_close_static.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_down_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_download_active.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_download_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_downloaded.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_edit_active.png" />
@@ -1373,9 +1194,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_info_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_loading.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_nav_album_active.png" />
@@ -1483,12 +1301,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_down_static.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1537,27 +1349,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_song_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_song_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\icon_down_static.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1603,12 +1394,6 @@
     <AndroidResource Include="Resources\drawable-xhdpi\input_search_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_song_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_song_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\listitem_archive.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -1624,85 +1409,13 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_offline_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_favorites_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_offline_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_favorites_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_offline_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_favorites_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_offline_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_favorites_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_offline_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\listitem_pinned_item.axml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_favorites.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_favorites.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_favorites.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_favorites.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_favorites.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_offline_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_trackrelation_external.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_offline_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_offline_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown_offline.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\icon_down_static.png" />
@@ -1750,33 +1463,6 @@
     <AndroidResource Include="Resources\drawable-mdpi\input_search_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_unknown_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_song_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_playlist_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_playlist_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_playlist_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_playlist_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\offline_banner.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -1822,42 +1508,6 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_radio_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_radio_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_radio_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_radio_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_radio_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_radio_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_radio_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_radio_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_radio_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_radio_darth.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_radio_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_radio_playing.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\listitem_fra_kaare_teaser.axml">
@@ -1910,9 +1560,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon_skip_forward_notification.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_offline_offline.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\icon_next_notification.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1929,9 +1576,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-mdpi\icon_skip_forward_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_offline_offline.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\icon_next_notification.png" />
@@ -2046,16 +1690,10 @@
     <AndroidResource Include="Resources\drawable-mdpi\notification_solid.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_download_active.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\notification_solid.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\notification_solid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_pending.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\notification_solid.png" />
