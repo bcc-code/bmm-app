@@ -1,9 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>8.0</LangVersion>
+    <LangVersion>8</LangVersion>
     <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
-    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -186,7 +185,6 @@
     <Compile Include="Application\NewMediaPlayer\Service\MusicService.cs" />
     <Compile Include="Application\Media\MediaMountedHandler.cs" />
     <Compile Include="Application\Media\MediaMountedBroadcastReceiver.cs" />
-    <Compile Include="Application\TemplateSelectors\PodcastTemplateSelector.cs" />
     <Compile Include="Application\TemplateSelectors\SettingsTemplateSelector.cs" />
     <Compile Include="Application\TemplateSelectors\TrackListTemplateSelector.cs" />
     <Compile Include="Application\ValueConverters\CurrentDayColor.cs" />
@@ -248,7 +246,6 @@
     <Compile Include="Application\Fragments\TrackInfoFragment.cs" />
     <Compile Include="BmmApplication.cs" />
     <Compile Include="Application\TemplateSelectors\DocumentTemplateSelector.cs" />
-    <Compile Include="Application\TemplateSelectors\TrackCollectionTemplateSelector.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Application\Implementations\Notifications\BmmMessagingService.cs" />
     <Compile Include="Application\Implementations\Notifications\NotificationDisplayer.cs" />
@@ -621,7 +618,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_trackrelation_external.png" />
     <AndroidResource Include="Resources\layout\listitem_trackrelation_external.axml" />
     <AndroidResource Include="Resources\layout\fragment_podcasts.axml" />
-    <AndroidResource Include="Resources\layout\fragment_podcast.axml" />
     <AndroidResource Include="Resources\layout\listitem_podcasts.axml" />
     <AndroidResource Include="Resources\layout\fragment_library_archive.axml" />
     <AndroidResource Include="Resources\layout\fragment_automatic_download.axml" />
@@ -635,12 +631,6 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_explore_with_appbar.axml" />
     <AndroidResource Include="Resources\layout\fragment_curatedplaylists.axml" />
-    <AndroidResource Include="Resources\layout\fragment_curatedplaylist.axml">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\shuffle_button.axml">
       <SubType>
       </SubType>
@@ -657,7 +647,6 @@
     <AndroidResource Include="Resources\layout\listitem_track.axml" />
     <AndroidResource Include="Resources\layout\fragment_search.axml" />
     <AndroidResource Include="Resources\layout\fragment_settings.axml" />
-    <AndroidResource Include="Resources\layout\fragment_album.axml" />
     <AndroidResource Include="Resources\layout\fragment_trackcollection.axml" />
     <AndroidResource Include="Resources\layout\fragment_player.axml" />
     <AndroidResource Include="Resources\layout\activity_main.axml" />
@@ -839,7 +828,6 @@
     <AndroidResource Include="Resources\layout\listitem_navigation_header.axml" />
     <AndroidResource Include="Resources\layout\fragment_copyright.axml" />
     <AndroidResource Include="Resources\layout\fragment_albums.axml" />
-    <AndroidResource Include="Resources\layout\fragment_contributor.axml" />
     <AndroidResource Include="Resources\layout\fragment_miniplayer.axml" />
     <AndroidResource Include="Resources\xml\searchable.xml" />
     <AndroidResource Include="Resources\drawable\togglebutton_playpause_portrait.xml" />

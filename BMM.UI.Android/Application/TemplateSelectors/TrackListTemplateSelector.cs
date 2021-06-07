@@ -2,7 +2,6 @@
 
 namespace BMM.UI.Droid.Application.TemplateSelectors
 {
-    [Obsolete]
     public class TrackListTemplateSelector : DocumentTemplateSelector
     {
         public override int GetItemLayoutId(int fromViewType)

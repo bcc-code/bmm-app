@@ -41,8 +41,5 @@
   <ItemGroup>
     <Compile Remove="ViewModels\PodcastSection.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Implementations\MyTracks" />
-  </ItemGroup>
 
 </Project>

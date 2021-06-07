@@ -18,18 +18,18 @@ namespace BMM.UI.Droid.Application.ValueConverters
             if (!(item is Track track))
                 return false;
 
-            if (IsIt(track))
+            if (HasItRightStatus(track))
                 return true;
             else
                 return false;
         }
 
-        protected abstract bool IsIt(Track track);
+        protected abstract bool HasItRightStatus(Track track);
     }
 
     public class DownloadStatusDoneValueConverter : DownloadStatusVisibilityValueConverter
     {
-        protected override bool IsIt(Track track)
+        protected override bool HasItRightStatus(Track track)
         {
             return Mvx.IoCProvider.Resolve<IStorageManager>().SelectedStorage.IsDownloaded(track);
         }
@@ -37,7 +37,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
 
     public class DownloadStatusPendingValueConverter : DownloadStatusVisibilityValueConverter
     {
-        protected override bool IsIt(Track track)
+        protected override bool HasItRightStatus(Track track)
         {
             var downloadQueue = Mvx.IoCProvider.Resolve<IDownloadQueue>();
             return downloadQueue.IsQueued(track);
@@ -46,7 +46,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
 
     public class DownloadStatusProgressValueConverter : DownloadStatusVisibilityValueConverter
     {
-        protected override bool IsIt(Track track)
+        protected override bool HasItRightStatus(Track track)
         {
             var downloadQueue = Mvx.IoCProvider.Resolve<IDownloadQueue>();
             return downloadQueue.IsDownloading(track);

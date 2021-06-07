@@ -12,13 +12,4 @@ namespace BMM.UI.Droid.Application.ValueConverters
             return value ? MvxVisibility.Visible : MvxVisibility.Hidden;
         }
     }
-
-    public class VisibilityAndValueConverter : MvxBaseVisibilityValueConverter<bool>
-    {
-        protected override MvxVisibility Convert(bool first, object parameter, CultureInfo culture)
-        {
-            bool second = parameter is bool ? (bool)parameter : false;
-            return first && second ? MvxVisibility.Visible : MvxVisibility.Collapsed;
-        }
-    }
 }
