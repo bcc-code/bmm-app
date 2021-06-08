@@ -143,6 +143,20 @@
                   app:MvxLang="Text Shuffle, Source=DocumentsTextSource"
                   app:MvxBind="Click ShufflePlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
         </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                app:MvxBind="Visibility Visibility(ShowPlayButton)">
+            <Button
+                    android:text="Shuffle"
+                    style="@style/IconButton_Primary"
+                    android:drawableLeft="@drawable/icon_play_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:MvxLang="Text Play, Source=DocumentsTextSource"
+                    app:MvxBind="Click PlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
+        </RelativeLayout>
     </LinearLayout>
 
     <View

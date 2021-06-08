@@ -24,6 +24,8 @@
 
         bool ShowShuffleButton { get; }
 
+        bool ShowPlayButton { get; }
+
         bool ShowTrackCount { get; }
     }
 }

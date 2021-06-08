@@ -129,6 +129,7 @@ namespace BMM.Core.ViewModels
         public bool ShowFollowButtons => false;
 
         public bool ShowShuffleButton => Documents.OfType<Track>().Any();
+        public bool ShowPlayButton => false;
 
         public bool ShowTrackCount => true;
 

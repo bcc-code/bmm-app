@@ -50,6 +50,7 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => true;
         public bool ShowShuffleButton => false;
+        public bool ShowPlayButton => true;
 
         public bool ShowTrackCount => false;
 
