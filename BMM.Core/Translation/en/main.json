@@ -293,7 +293,8 @@
     "PluralTracks": "{0} tracks",
     "PluralTracksLoaded": "{0} tracks loaded",
     "Download": "Download",
-    "Shuffle": "Shuffle"
+    "Shuffle": "Shuffle",
+    "Play": "Play"
   },
   "TrackCollectionViewModel": {
     "Title": "Playlist",

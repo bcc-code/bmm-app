@@ -37,8 +37,8 @@ namespace BMM.UI.iOS
             set.Bind(CircleCoverImage).For(v => v.ImagePath).To(vm => vm.Contributor.Cover);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
             set.Bind(NameLabel).To(vm => vm.Contributor.Name);
-            set.Bind(PlayButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Shuffle");
+            set.Bind(PlayButton).To(vm => vm.PlayCommand);
+            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Play");
 
             set.Apply();
 

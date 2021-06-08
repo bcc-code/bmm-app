@@ -60,9 +60,8 @@ namespace BMM.UI.iOS
             set.Bind(FollowButton).To(vm => vm.ToggleFollowingCommand);
             set.Bind(FollowButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("Follow");
 
-            // todo I think in podcasts it should be play instead of shuffle
-            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Shuffle");
-            set.Bind(PlayButton).To(vm => vm.ShufflePlayCommand);
+            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Play");
+            set.Bind(PlayButton).To(vm => vm.PlayCommand);
 
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);

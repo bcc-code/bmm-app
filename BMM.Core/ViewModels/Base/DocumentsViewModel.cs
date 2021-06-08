@@ -79,6 +79,8 @@ namespace BMM.Core.ViewModels.Base
 
         public IMvxCommand ShufflePlayCommand { get; private set; }
 
+        public IMvxCommand PlayCommand { get; private set; }
+
         public MvxObservableCollection<Document> Documents
         {
             get => _documents;
@@ -117,6 +119,17 @@ namespace BMM.Core.ViewModels.Base
             {
                 ConnectionStatus = message.ConnectionStatus;
                 RefreshDocumentsList();
+            });
+
+            PlayCommand = new ExceptionHandlingCommand(async () =>
+            {
+                var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
+                var tracks = Documents.OfType<IMediaTrack>().ToList();
+
+                if (tracks.Any())
+                {
+                    await mediaPlayer.Play(tracks, tracks.First(), GetType().Name);
+                }
             });
 
             ShufflePlayCommand = new ExceptionHandlingCommand(async () =>
