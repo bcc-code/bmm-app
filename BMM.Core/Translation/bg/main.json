@@ -53,7 +53,8 @@
     "FailedToAdd": "Неуспешно добавяне на песен към списъка. Моля, опитай отново по-късно.",
     "AlbumFailedToAddAlreadyExists": "Този албум е вече във вашия списък за изпълнение.",
     "TrackAlreadyExistInTrackCollection": "Песента/речта вече съществува в списъка {0}",
-    "ShufflePlay": "Разбъркано възпроизвеждане"
+    "ShufflePlay": "Разбъркано възпроизвеждане",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Архив",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Наистина ли искате да unfollow този подкаст?",
     "MobileDownloadDisabled": "Разреши изтегляне чрез мобилна мрежа в настройките за автоматично изтегляне на най-новите песни",
     "ToggleFollowOfflineError": "Трябва да си в режим на линия, за да последваш или да се откажеш да следваш подкаст",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Вярвай в Бога на чудесата",
     "AslaksenTheme2": "Съразпнах се с Христа",
     "AslaksenTheme3": "Да се боиш от Бога и да го обичаш",
     "AslaksenTheme4": "Смирението е самото нещо"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Списък"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Списъци"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Изтегли",
+    "Shuffle": "Shuffle",
+    "Play": "Пусни"
   },
   "TrackCollectionViewModel": {
     "Title": "Списък",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Разреши изтегляне чрез мобилна мрежа в настройки, за да продължиш",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
