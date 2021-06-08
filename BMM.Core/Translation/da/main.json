@@ -53,7 +53,8 @@
     "FailedToAdd": "Kunne ikke føje indholdet til spillelisten. Prøv igen senere.",
     "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
     "TrackAlreadyExistInTrackCollection": "Findes allerede i spillelisten.",
-    "ShufflePlay": "Afspil blandet"
+    "ShufflePlay": "Afspil blandet",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Arkiv",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Er du sikker på at du vil stoppe med at følge denne podcast?",
     "MobileDownloadDisabled": "Aktiver download via mobildata I Indstillinger, for at downloade indhold automatisk.",
     "ToggleFollowOfflineError": "Du kan ikke følge eller stoppe med at følge en podcast, når du er i offline-mode.",
-    "Week": "Uge {0}",
+    "Week": "Week {0}",
     "ThisWeek": "Denne uge",
     "LastWeek": "Sidste uge",
     "AslaksenTheme1": "Tro på Underets gud",
     "AslaksenTheme2": "Jeg er korsfæstet med Kristus",
     "AslaksenTheme3": "At frygte og elske Gud",
     "AslaksenTheme4": "Ydmyghed er selve sagen"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Spilleliste"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Spillelister"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Vil du vælge en ny lagringsplads og fjerne alt offline indhold?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} sange/taler"
+    "PluralTracks": "{0} sange/taler",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Download",
+    "Shuffle": "Afspil blandet",
+    "Play": "Afspil"
   },
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Aktiver download via mobildata I Indstillinger, for at fortsætte",
     "NotEnoughtSpaceToDownload": "Ikke nok lagringsplads til at downloade alt indhold",
     "AskToResumeDownloading": "Det er nyt indhold i denne spilleliste. Vil du fortsætte download?",
-    "Private": "privat"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Rediger spilleliste",
