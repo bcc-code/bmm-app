@@ -53,7 +53,8 @@
     "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
-    "ShufflePlay": "Zufällige Wiedergabe"
+    "ShufflePlay": "Zufällige Wiedergabe",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Archiv",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Möchtest du das Abonnement für diesen Podcast beenden?",
     "MobileDownloadDisabled": "Erlaube das Herunterladen über das Mobilfunknetz in den Einstellungen um die neuesten Folgen automatisch herunterzuladen",
     "ToggleFollowOfflineError": "Du kannst einen Podcast nur abonnieren oder davon abmelden wenn du online bist",
-    "Week": " Woche {0}",
+    "Week": "Week {0}",
     "ThisWeek": "Diese Woche",
     "LastWeek": "Letzte Woche",
     "AslaksenTheme1": "Glaube an den Gott der Wunder",
     "AslaksenTheme2": "Ich bin mit Christus gekreuzigt",
     "AslaksenTheme3": "Gott fürchten und lieben",
     "AslaksenTheme4": "Demut ist die eigentliche Sache"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Playlist"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Playlisten"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Möchtest du einen neuen Speicherort auswählen und alle Downloads löschen?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} Titel"
+    "PluralTracks": "{0} Titel",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Herunterladen",
+    "Shuffle": "Shuffle",
+    "Play": "Abspielen"
   },
   "TrackCollectionViewModel": {
     "Title": "Playlist",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Aktiviere das Downloaden über Mobilfunknetz in den Einstellungen um fortzufahren",
     "NotEnoughtSpaceToDownload": "Nicht genügend Speicherplatz um alle Titel herunterzuladen",
     "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?",
-    "Private": "privat"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Playliste bearbeiten",
