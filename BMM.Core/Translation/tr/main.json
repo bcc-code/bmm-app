@@ -53,7 +53,8 @@
     "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
     "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "Karışık Çal"
+    "ShufflePlay": "Karışık Çal",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Arşiv",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Bu podcast unfollow istiyor musunuz?",
     "MobileDownloadDisabled": "Son parçalara otomatik olarak indirmek için ayarları mobil ağ üzerinden indirme etkinleştirmek",
     "ToggleFollowOfflineError": "İzleyin veya bir podcast unfollow için çevrimiçi modunda olması gerekir",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Mucizeler Tanrısın'na iman et",
     "AslaksenTheme2": "Ben Mesih ile haçlandım",
     "AslaksenTheme3": "Tanrı'dan korkmak ve O'nu sevmek",
     "AslaksenTheme4": "Alçakgönüllülük meselenin tam kendisidir"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Çalma Listesi"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Çalma Listesi"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "İndir",
+    "Shuffle": "Shuffle",
+    "Play": "Oynat"
   },
   "TrackCollectionViewModel": {
     "Title": "Çalma Listesi",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Devam etmek için ayarlardan mobil ağ üzerinden indirmeyi etkinleştir",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
