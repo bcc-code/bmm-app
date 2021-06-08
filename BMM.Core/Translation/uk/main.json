@@ -53,7 +53,8 @@
     "FailedToAdd": "Не вдалося додати трек до списку відтворення. Будь-ласка спробуйте пізніше.",
     "AlbumFailedToAddAlreadyExists": "Цей альбом – вже у ваш плейлист.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "відтворення у випадковому порядку\n"
+    "ShufflePlay": "відтворення у випадковому порядку\n",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Архів",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Ви дійсно хочете unfollow цей подкаст?",
     "MobileDownloadDisabled": "Дозволити завантаження через мобільну мережу в настройках автоматично завантажувати останні треків",
     "ToggleFollowOfflineError": "Ви повинні бути в режимі онлайн, щоб слідувати або unfollow подкаст",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Believe in the God of miracles",
     "AslaksenTheme2": "I have been crucified with Christ",
     "AslaksenTheme3": "To fear and love God",
     "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Список відтворення"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Списки відтворення"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Завантажити",
+    "Shuffle": "Shuffle",
+    "Play": "Грати"
   },
   "TrackCollectionViewModel": {
     "Title": "Список відтворення",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Дозволити завантаження через мобільну мережу в настройках продовжити",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Є нові елементи в цьому списку відтворення. Ви хочете, щоб відновити завантаження?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
