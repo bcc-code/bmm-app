@@ -53,7 +53,8 @@
     "FailedToAdd": "Kappaleen lisääminen soittolistalle epäonnistui. Yritä myöhemmin uudelleen.",
     "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
     "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
-    "ShufflePlay": "Satunnaisjärjestys"
+    "ShufflePlay": "Satunnaisjärjestys",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Arkisto",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Lopeta tämän podcastin seuraaminen?",
     "MobileDownloadDisabled": "Tietokoneellaan kautta matkapuhelinverkon asetuksissa ladata uusimmat kappaleet automaattisesti",
     "ToggleFollowOfflineError": "Sinun täytyy olla online-tilassa tai unfollow podcast",
-    "Week": "viikko",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Usko ihmeiden Jumalaan",
     "AslaksenTheme2": "Minut on ristiinnaulittu Kristuksen kanssa",
     "AslaksenTheme3": "Jumalan pelkääminen ja rakastaminen",
     "AslaksenTheme4": "Nöyryys on itse asia"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Soittolista"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Soittolistat"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Haluatko vaihtaa offline kappaleiden tallennus sijaintia vai poistetaanko kaikki kappaleet?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Lataa",
+    "Shuffle": "Shuffle",
+    "Play": "Toista"
   },
   "TrackCollectionViewModel": {
     "Title": "Soittolista",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Salli ensin tiedostojen lataaminen mobiilidatan avulla",
     "NotEnoughtSpaceToDownload": "Ei tarpeeksi tallennustilaa kaikkien kappaleiden lataamiselle",
     "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
