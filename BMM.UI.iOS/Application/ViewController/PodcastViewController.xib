@@ -97,7 +97,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UV0-yk-NnS">
-                                <rect key="frame" x="72" y="341" width="231" height="40"/>
+                                <rect key="frame" x="68.5" y="341" width="238" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="que-rJ-xHy">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="40"/>
@@ -107,12 +107,16 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcA-qs-hCN">
                                         <rect key="frame" x="62" y="0.0" width="82" height="40"/>
                                         <color key="backgroundColor" red="0.46274509800000002" green="0.90196078430000004" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button" image="icon_notification.png"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="6"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
+                                        <state key="normal" title="Button" image="icon_notification.png">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
+                                        </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk1-Z4-sIR">
-                                        <rect key="frame" x="160" y="0.0" width="71" height="40"/>
+                                        <rect key="frame" x="160" y="0.0" width="78" height="40"/>
                                         <color key="backgroundColor" red="0.46274509800000002" green="0.90196078430000004" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button" image="icon_play.png"/>
+                                        <state key="normal" title="Button" image="icon_arrow_right.png"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -161,8 +165,8 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_arrow_right.png" width="24" height="24"/>
         <image name="icon_notification.png" width="28" height="28"/>
-        <image name="icon_play.png" width="17" height="16.5"/>
         <image name="placeholder_album.png" width="320" height="320"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

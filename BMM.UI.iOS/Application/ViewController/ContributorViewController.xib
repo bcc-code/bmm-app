@@ -53,12 +53,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3bx-ct-j9S">
-                                <rect key="frame" x="152" y="297.5" width="71" height="40"/>
+                                <rect key="frame" x="148.5" y="297.5" width="78" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GoW-oy-9Yf">
-                                        <rect key="frame" x="0.0" y="0.0" width="71" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="40"/>
                                         <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button" image="icon_play.png"/>
+                                        <state key="normal" title="Button" image="icon_arrow_right.png"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -112,7 +112,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_play.png" width="17" height="16.5"/>
+        <image name="icon_arrow_right.png" width="24" height="24"/>
         <image name="placeholder_artist.png" width="320" height="320"/>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
