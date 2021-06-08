@@ -13,8 +13,11 @@
         string Description { get; }
 
         bool ShowPlaylistIcon { get; }
+
         bool ShowImage { get; }
+
         string Image { get; }
+
         bool UseCircularImage { get; }
 
         bool ShowFollowButtons { get; }
