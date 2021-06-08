@@ -53,7 +53,8 @@
     "FailedToAdd": "Nem sikerült hozzáadni a számot a lejátszási listához. Próbáld újra később.",
     "AlbumFailedToAddAlreadyExists": "Ez az album már szerepel a lejátszási lista.",
     "TrackAlreadyExistInTrackCollection": "Szám már létezik a {0} lejátszási listában",
-    "ShufflePlay": "Véletlenszerű lejátszás"
+    "ShufflePlay": "Véletlenszerű lejátszás",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Archívum",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Biztosan nem akarod tovább követni ezt a podcastot?",
     "MobileDownloadDisabled": "A legújabb számok automatikus letöltése a mobilhálózaton keresztül engedélyezése a beállításokban",
     "ToggleFollowOfflineError": "Podcast követése vagy lemondása csak online-módban lehetséges",
-    "Week": "{0}.hét",
+    "Week": "Week {0}",
     "ThisWeek": "Ez a hét",
     "LastWeek": "Elöző hét",
     "AslaksenTheme1": "Higgyél a csoda Istenében",
     "AslaksenTheme2": "Krisztussal megfeszíttettem",
     "AslaksenTheme3": "Istent félni és szeretni",
     "AslaksenTheme4": "Az alázat maga a lényeg"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Lejátszási lista"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Lejátszási listák"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Szeretnél egy új tárhelyet létrehozni és minden offline számot törölni?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} Szám"
+    "PluralTracks": "{0} Szám",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Letöltés",
+    "Shuffle": "Keverés",
+    "Play": "Lejátszás"
   },
   "TrackCollectionViewModel": {
     "Title": "Lejátszási lista",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
     "NotEnoughtSpaceToDownload": "Nincs elég tárhely minden szám letöltéséhez",
     "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?",
-    "Private": "Személyes"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Lejátszási lista szerkesztése",
