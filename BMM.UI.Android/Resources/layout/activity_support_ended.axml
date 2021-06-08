@@ -34,7 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_large"
         android:textColor="#fff"
-        android:textStyle="bold"
+        android:textFontWeight="700"
+        android:letterSpacing="0"
         android:background="#ff76e65b"
         local:MvxLang="Text UpdateButton"
         local:MvxBind="Click ShowAppUpdatePageCommand; Visibility Visibility(ShouldShowAppUpdateButton)" />

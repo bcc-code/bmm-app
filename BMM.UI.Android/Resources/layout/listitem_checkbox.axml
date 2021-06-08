@@ -24,7 +24,7 @@
                 android:singleLine="true"
                 local:MvxBind="Text Title"
                 android:layout_gravity="center_vertical"
-                android:textStyle="bold"
+                android:textFontWeight="700"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_large"
                 android:layout_marginTop="12dp" />

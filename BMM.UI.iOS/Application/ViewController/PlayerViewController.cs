@@ -6,7 +6,6 @@ using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.NewMediaPlayer;
-using CoreAnimation;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
@@ -232,17 +231,7 @@ namespace BMM.UI.iOS
 
         private void AddGradientToTrackCoverImage()
         {
-            var gradientView = new GradientView
-            {
-                Frame = TrackCoverImageView.Bounds,
-                AutoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
-            };
-            if (gradientView.Layer is CAGradientLayer layer)
-            {
-                layer.Colors = AppColors.TrackCoverGradientColors;
-                layer.Locations = new NSNumber[] {0, .28f, .6f, 1};
-            }
-            TrackCoverImageView.AddSubview(gradientView);
+            TrackCoverImageView.SetGradientBackground(AppColors.TrackCoverGradientColors, new NSNumber[] {0, .28f, .6f, 1});
         }
 
         public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation()

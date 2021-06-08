@@ -31,5 +31,7 @@ namespace BMM.Api.Implementation.Models
         public IEnumerable<string> Tags { get; set; }
 
         public string Title { get; set; }
+
+        public string Description { get; set; }
     }
 }

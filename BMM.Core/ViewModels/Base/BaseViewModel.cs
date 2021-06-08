@@ -6,20 +6,16 @@ using Acr.UserDialogs;
 using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
-using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
-using BMM.Core.Implementations.MyTracks;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackCollections;
-using BMM.Core.Implementations.TrackCollections.Exceptions;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using BMM.Core.ViewModels.MyContent;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
@@ -112,7 +108,6 @@ namespace BMM.Core.ViewModels.Base
 
             var isInOnlineMode = Mvx.IoCProvider.Resolve<IConnection>().GetStatus() == ConnectionStatus.Online;
             var imageDelete = "icon_trash_static.png";
-            var myTracksManager = Mvx.IoCProvider.Resolve<IMyTracksManager>();
             var imageAddTo = "icon_nav_content_static.png";
             var imageShare = "icon_share.png";
 
@@ -127,44 +122,6 @@ namespace BMM.Core.ViewModels.Base
 
                     if (isInOnlineMode && !track.IsLivePlayback)
                     {
-                        if (IsInMyTracks(track))
-                        {
-                            actionSheet.AddHandled(dialogTextSource.GetText("Track.RemoveFromMyTracks"),
-                                async () =>
-                                {
-                                    var result = await RemoveTrackFromMyTracks(track);
-                                    if (result)
-                                    {
-                                        await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(dialogTextSource.GetText("Track.RemovedFromMyTracks"));
-                                    }
-                                    else
-                                    {
-                                        await Mvx.IoCProvider.Resolve<IToastDisplayer>().ErrorAsync(dialogTextSource.GetText("Track.FailedToRemoveFromMyTracks"));
-                                    }
-                                },
-                                imageDelete);
-                        }
-                        else
-                        {
-                            actionSheet.AddHandled(dialogTextSource.GetText("Track.AddToMyTracks"),
-                                async () =>
-                                {
-                                    try
-                                    {
-                                        var result = await myTracksManager.AddTrackToMyTracks(track.Id, track.Language);
-                                        var collection = await myTracksManager.LoadMyTracks();
-
-                                        await UpdateTrackCollectionFiles(collection);
-                                        await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(dialogTextSource.GetText("Track.AddedToMyTracks"));
-                                    }
-                                    catch (Exception)
-                                    {
-                                        await Mvx.IoCProvider.Resolve<IToastDisplayer>().ErrorAsync(dialogTextSource.GetText("FailedToAdd"));
-                                    }
-                                },
-                                imageAddTo);
-                        }
-
                         if (this is TrackCollectionViewModel trackCollectionVm)
                         {
                             actionSheet.AddHandled(dialogTextSource.GetText("Track.DeleteFromPlaylist"),
@@ -352,7 +309,6 @@ namespace BMM.Core.ViewModels.Base
                     Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
                         .SetTitle(album.Title)
                         .AddHandled(dialogTextSource.GetText("Album.AddToPlaylist"), async () => await AddAlbumToTrackCollection(album.Id), imageAddTo)
-                        .AddHandled(dialogTextSource.GetText("Album.AddToMyTracks"), async () => await AddAlbumToMyTracks(album.Id) , imageAddTo)
                         .AddHandled(dialogTextSource.GetText("Album.Share"), async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(album), imageShare)
                         .SetCancel(dialogTextSource.GetText("Cancel"))
                     );
@@ -403,12 +359,6 @@ namespace BMM.Core.ViewModels.Base
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        private bool IsInMyTracks(Track track)
-        {
-            var myTracksManager = Mvx.IoCProvider.Resolve<IMyTracksManager>();
-            return myTracksManager.MyTracksContainsTrack(track.Id, track.Language);
         }
 
         protected virtual async Task ShowTrackInfo(Track track)
@@ -519,81 +469,6 @@ namespace BMM.Core.ViewModels.Base
             }
 
             return false;
-        }
-
-        protected async Task AddAlbumToMyTracks(int albumId)
-        {
-            MvxLanguageBinder dialogTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "UserDialogs");
-            var myTracksName = dialogTextSource.GetText("MyTracks");
-
-            try
-            {
-                var myTracksManager = Mvx.IoCProvider.Resolve<IMyTracksManager>();
-                await myTracksManager.AddAlbumToMyTracks(albumId);
-
-                await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(dialogTextSource.GetText("Album.AddedToMyTracks"));
-            }
-            catch (AlbumAlreadyInTrackCollectionException)
-            {
-                await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(dialogTextSource.GetText("AlbumFailedToAddAlreadyExists", myTracksName));
-            }
-            catch (TrackAlreadyInTrackCollectionException)
-            {
-                await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(dialogTextSource.GetText("TrackAlreadyExistInTrackCollection", myTracksName));
-            }
-            catch (UnsupportedDocumentTypeException)
-            {
-                await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(dialogTextSource.GetText("FailedToAddUnknownType", DocumentType.Album.ToString()));
-            }
-            catch (BadRequestException)
-            {
-                await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(dialogTextSource.GetText("FailedToAddAlbum", myTracksName));
-            }
-            catch (Exception)
-            {
-                await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(GlobalTextSource.GetText("UnexpectedError"));
-            }
-        }
-
-        public async Task<bool> RemoveTrackFromMyTracks(Track track)
-        {
-            var myTracksManager = Mvx.IoCProvider.Resolve<IMyTracksManager>();
-            var collection = await myTracksManager.LoadMyTracks();
-
-            if (collection == null)
-            {
-                // We need to check the collection because because GetById swallows the exception. We should rework it so that GetById does not swallow it.
-                return false;
-            }
-            else
-            {
-                foreach (var t in collection.Tracks)
-                {
-                    if (t.Id == track.Id && t.Language.Equals(track.Language))
-                    {
-                        collection.Tracks.Remove(t);
-                        break;
-                    }
-                }
-
-                try
-                {
-                    await Client.TrackCollection.Save(collection);
-                    if (this is MyTracksViewModel && !(this is TrackCollectionViewModel))
-                    {
-                        var viewModel = (MyTracksViewModel)this;
-                        viewModel.Documents.Remove(track);
-                    }
-
-                    await UpdateTrackCollectionFiles(collection);
-                }
-                catch (Exception ex)
-                {
-                    ExceptionHandler.HandleException(ex);
-                }
-
-                return true;
-            }
         }
 
         protected async Task UpdateTrackCollectionFiles(TrackCollection trackCollection)

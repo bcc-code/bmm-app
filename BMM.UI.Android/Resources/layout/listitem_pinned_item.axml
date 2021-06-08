@@ -44,7 +44,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/text_view_title"
                 android:singleLine="true"
-                android:textStyle="bold"
+                android:textFontWeight="700"
                 local:MvxBind="Text Item.Title"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_large"

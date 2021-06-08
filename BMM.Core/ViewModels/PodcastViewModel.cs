@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -27,7 +28,7 @@ using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class PodcastViewModel : PodcastBaseViewModel, IMvxViewModel<Podcast>, IMvxViewModel<StartPlayingPodcast>
+    public class PodcastViewModel : PodcastBaseViewModel, IMvxViewModel<Podcast>, IMvxViewModel<StartPlayingPodcast>, ITrackListViewModel
     {
         public IMvxAsyncCommand ToggleFollowingCommand { get; }
         private readonly IPodcastOfflineManager _podcastDownloader;
@@ -42,6 +43,16 @@ namespace BMM.Core.ViewModels
         protected MvxSubscriptionToken DownloadedEpisodeRemovedToken;
 
         public int? StartPlayingTrackId { get; set; }
+
+        public bool ShowDownloadButtons => false;
+
+        public bool UseCircularImage => true;
+
+        public bool ShowFollowButtons => true;
+        public bool ShowShuffleButton => false;
+        public bool ShowPlayButton => true;
+
+        public bool ShowTrackCount => false;
 
         private bool _isFollowing;
         public bool IsFollowing
@@ -63,6 +74,7 @@ namespace BMM.Core.ViewModels
 
         public bool IsDownloading => IsFollowing && DownloadingFiles.Any();
 
+        [Obsolete]
         public string FollowButtonText
         {
             get
@@ -73,6 +85,16 @@ namespace BMM.Core.ViewModels
         }
 
         public override int CurrentLimit => Podcast?.Id == AslaksenTeaserViewModel.FraBegynnelsenPodcastId ? 60 : base.CurrentLimit;
+
+        public bool ShowSharingInfo => false;
+
+        public string Description => null;
+
+        public bool ShowPlaylistIcon => false;
+
+        public bool ShowImage => true;
+
+        public bool IsDownloaded => IsFollowing && !DownloadingFiles.Any();
 
         public PodcastViewModel(
             IPodcastOfflineManager podcastDownloader,
@@ -112,9 +134,11 @@ namespace BMM.Core.ViewModels
                 {
                     case "IsOfflineAvailable":
                         RaisePropertyChanged(() => IsDownloading);
+                        RaisePropertyChanged(() => IsDownloaded);
                         break;
                     case "DownloadingFiles":
                         RaisePropertyChanged(() => IsDownloading);
+                        RaisePropertyChanged(() => IsDownloaded);
 
                         foreach (var file in DownloadingFiles)
                         {

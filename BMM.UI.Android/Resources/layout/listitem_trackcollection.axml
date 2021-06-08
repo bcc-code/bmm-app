@@ -46,7 +46,7 @@
                 android:id="@+id/text_view_title"
                 android:singleLine="true"
                 local:MvxBind="Text Item.Name"
-                android:textStyle="bold"
+                android:textFontWeight="700"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_large"
                 android:layout_gravity="center_vertical" />
@@ -57,7 +57,7 @@
                 android:id="@+id/linearLayout1"
                 android:layout_gravity="center_vertical">
                 <ImageView
-                    android:src="@drawable/icon_downloaded"
+                    android:src="@drawable/icon_download_done"
                     local:MvxBind="Visibility OfflineAvailabilityToVisibility(Item)"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

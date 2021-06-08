@@ -12,7 +12,6 @@
         android:background="@color/track_divider_line" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

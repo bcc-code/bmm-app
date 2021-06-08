@@ -14,25 +14,13 @@ namespace BMM.UI.iOS
 	partial class PodcastViewController
 	{
 		[Outlet]
-		UIKit.UIView blurView { get; set; }
-
-		[Outlet]
-		UIKit.UILabel ButtonLabel { get; set; }
-
-		[Outlet]
 		UIKit.UIButton FollowButton { get; set; }
 
 		[Outlet]
 		UIKit.UIButton FollowingButton { get; set; }
 
 		[Outlet]
-		UIKit.UIImageView FollowingTickImageView { get; set; }
-
-		[Outlet]
-		UIKit.UILabel FollowSubtitleLabel { get; set; }
-
-		[Outlet]
-		UIKit.UILabel FollowTitleLabel { get; set; }
+		UIKit.UIView ImageWrapper { get; set; }
 
 		[Outlet]
 		UIKit.UILabel OfflineBannerLabel { get; set; }
@@ -44,7 +32,7 @@ namespace BMM.UI.iOS
 		UIKit.NSLayoutConstraint OfflineBannerViewHeightConstraint { get; set; }
 
 		[Outlet]
-		FFImageLoading.Cross.MvxCachedImageView PodcastBlurCoverImage { get; set; }
+		UIKit.UIButton PlayButton { get; set; }
 
 		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView PodcastCoverImageView { get; set; }
@@ -55,18 +43,11 @@ namespace BMM.UI.iOS
 		[Outlet]
 		UIKit.UITableView PodcastTable { get; set; }
 
+		[Outlet]
+		UIKit.UILabel TitelLabel { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
-			if (blurView != null) {
-				blurView.Dispose ();
-				blurView = null;
-			}
-
-			if (ButtonLabel != null) {
-				ButtonLabel.Dispose ();
-				ButtonLabel = null;
-			}
-
 			if (FollowButton != null) {
 				FollowButton.Dispose ();
 				FollowButton = null;
@@ -77,24 +58,24 @@ namespace BMM.UI.iOS
 				FollowingButton = null;
 			}
 
-			if (FollowingTickImageView != null) {
-				FollowingTickImageView.Dispose ();
-				FollowingTickImageView = null;
+			if (OfflineBannerLabel != null) {
+				OfflineBannerLabel.Dispose ();
+				OfflineBannerLabel = null;
 			}
 
-			if (FollowSubtitleLabel != null) {
-				FollowSubtitleLabel.Dispose ();
-				FollowSubtitleLabel = null;
+			if (OfflineBannerView != null) {
+				OfflineBannerView.Dispose ();
+				OfflineBannerView = null;
 			}
 
-			if (FollowTitleLabel != null) {
-				FollowTitleLabel.Dispose ();
-				FollowTitleLabel = null;
+			if (OfflineBannerViewHeightConstraint != null) {
+				OfflineBannerViewHeightConstraint.Dispose ();
+				OfflineBannerViewHeightConstraint = null;
 			}
 
-			if (PodcastBlurCoverImage != null) {
-				PodcastBlurCoverImage.Dispose ();
-				PodcastBlurCoverImage = null;
+			if (PlayButton != null) {
+				PlayButton.Dispose ();
+				PlayButton = null;
 			}
 
 			if (PodcastCoverImageView != null) {
@@ -112,19 +93,14 @@ namespace BMM.UI.iOS
 				PodcastTable = null;
 			}
 
-			if (OfflineBannerView != null) {
-				OfflineBannerView.Dispose ();
-				OfflineBannerView = null;
+			if (TitelLabel != null) {
+				TitelLabel.Dispose ();
+				TitelLabel = null;
 			}
 
-			if (OfflineBannerLabel != null) {
-				OfflineBannerLabel.Dispose ();
-				OfflineBannerLabel = null;
-			}
-
-			if (OfflineBannerViewHeightConstraint != null) {
-				OfflineBannerViewHeightConstraint.Dispose ();
-				OfflineBannerViewHeightConstraint = null;
+			if (ImageWrapper != null) {
+				ImageWrapper.Dispose ();
+				ImageWrapper = null;
 			}
 
 		}

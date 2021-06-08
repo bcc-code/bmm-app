@@ -1,13 +1,17 @@
 ﻿<resources xmlns:app="http://schemas.android.com/apk/res-auto">
     <!-- Application theme -->
-    <style name="AppTheme" parent="AppTheme.Base" />
+    <style name="AppTheme" parent="AppTheme.Base">
+    </style>
 
-    <style name="AppTheme.Dark" parent="AppTheme" />
+    <style name="AppTheme.Dark" parent="AppTheme">
+    </style>
     <!--
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppTheme.Base" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textFontWeight">500</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -28,10 +32,17 @@
     <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlNormal">@color/colorPrimary</item>
         <item name="colorAccent">@color/black</item>
+        <item name="android:textFontWeight">700</item>
     </style>
 
-    <style name="AppTheme.CollapseBarTextAppearance" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+    <style name="AppTheme.CollapseBarTextAppearance.Collapsed" parent="TextAppearance.AppCompat.Title">
         <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight">700</item>
+    </style>
+    
+    <style name="AppTheme.CollapseBarTextAppearance.Expanded" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight">700</item>
     </style>
 
     <style name="AppTheme.Tab">
@@ -43,6 +54,7 @@
     <style name="AppTheme.Tab.TextAppearance" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">@dimen/text_large</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:textFontWeight">700</item>
         <item name="textAllCaps">false</item>
         <item name="android:textAllCaps">false</item>
     </style>
@@ -54,7 +66,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
-
+    
     <style name="AppTheme.Login" parent="AppTheme.Dark">
         <item name="colorControlNormal">@color/gray</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
@@ -71,6 +83,8 @@
         <item name="colorPrimary">@color/black</item>
         <item name="itemTextColor">@color/navigation_color_selector</item>
         <item name="itemIconTint">@color/navigation_color_selector</item>
+        <item name="android:textFontWeight">600</item>
+        <item name="android:textSize">10dp</item>
     </style>
 
     <style name="ProgressGreen" parent="android:Widget.ProgressBar">
@@ -102,7 +116,6 @@
 
     <style name="Heading2">
         <item name="android:textSize">28sp</item>
-        <item name="android:fontFamily">sans-serif-black</item>
         <item name="android:lineHeight">32sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
@@ -111,25 +124,34 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/button_background_rounded</item>
         <item name="android:foreground">@drawable/button_ripple</item>
-        <item name="android:fontFamily">sans-serif-black</item>
+        <item name="android:textFontWeight">700</item>
         <item name="android:textSize">19dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.04</item>
         <item name="android:paddingTop">0dp</item>
         <item name="android:paddingBottom">0dp</item>
         <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingLeft">16dp</item>
         <item name="android:height">40dp</item>
         <item name="android:minHeight">40dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
-        <item name="android:drawablePadding">6dp</item>
         <item name="backgroundTint">@color/black</item>
+    </style>
+
+    <style name="IconButton_Primary" parent="Button_Primary">
+      <item name="android:paddingLeft">10dp</item>
+      <item name="android:drawablePadding">6dp</item>
     </style>
 
     <style name="Button_Secondary" parent="Button_Primary">
         <item name="android:textColor">@color/black</item>
         <item name="backgroundTint">@color/light_gray</item>
+    </style>
+
+    <style name="IconButton_Secondary" parent="Button_Secondary">
+      <item name="android:paddingLeft">10dp</item>
+      <item name="android:drawablePadding">6dp</item>
     </style>
 
     <style name="button_text">

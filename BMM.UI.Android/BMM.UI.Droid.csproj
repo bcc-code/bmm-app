@@ -115,6 +115,7 @@
     <Compile Include="Application\Adapters\PodcastContextHeaderRecyclerAdapter.cs" />
     <Compile Include="Application\Bindings\ColorStateListHelper.cs" />
     <Compile Include="Application\Bindings\MvxCardBackgroundColor.cs" />
+    <Compile Include="Application\Bindings\MvxCardCircle.cs" />
     <Compile Include="Application\Bindings\MvxCardVisibility.cs" />
     <Compile Include="Application\DownloadManager\AndroidDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
@@ -184,10 +185,11 @@
     <Compile Include="Application\NewMediaPlayer\Service\MusicService.cs" />
     <Compile Include="Application\Media\MediaMountedHandler.cs" />
     <Compile Include="Application\Media\MediaMountedBroadcastReceiver.cs" />
-    <Compile Include="Application\TemplateSelectors\PodcastTemplateSelector.cs" />
     <Compile Include="Application\TemplateSelectors\SettingsTemplateSelector.cs" />
+    <Compile Include="Application\TemplateSelectors\TrackListTemplateSelector.cs" />
     <Compile Include="Application\ValueConverters\CurrentDayColor.cs" />
     <Compile Include="Application\Bindings\MvxBackgroundTintBinding.cs" />
+    <Compile Include="Application\ValueConverters\DownloadStatusVisibilityValueConverter.cs" />
     <Compile Include="Application\ValueConverters\SectionedToFlatListValueConverter.cs" />
     <Compile Include="Application\ValueConverters\StreakTextSourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\TrackAvailabilityToOpacityValueConverter.cs" />
@@ -241,17 +243,14 @@
     <Compile Include="Application\Helpers\MvxRecyclerViewOnScrollListener.cs" />
     <Compile Include="Application\Adapters\LoadMoreRecyclerAdapter.cs" />
     <Compile Include="Application\ValueConverters\OfflineAvailableTrackValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\OfflineAvailableTrackStatusValueConverter.cs" />
     <Compile Include="Application\Fragments\TrackInfoFragment.cs" />
     <Compile Include="BmmApplication.cs" />
     <Compile Include="Application\TemplateSelectors\DocumentTemplateSelector.cs" />
-    <Compile Include="Application\TemplateSelectors\TrackCollectionTemplateSelector.cs" />
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="Application\Implementations\Notifications\BmmMessagingService.cs" />
     <Compile Include="Application\Implementations\Notifications\NotificationDisplayer.cs" />
     <Compile Include="Application\Implementations\Notifications\FirebaseTokenProvider.cs" />
     <Compile Include="Application\TemplateSelectors\ExploreNewestTemplateSelector.cs" />
-    <Compile Include="Application\ValueConverters\BrightOfflineAvailableTrackStatusValueConverter.cs" />
     <Compile Include="Application\Activities\BaseFragmentActivity.cs" />
     <Compile Include="Application\Implementations\UI\UriOpener.cs" />
   </ItemGroup>
@@ -261,6 +260,16 @@
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </None>
+    <AndroidResource Include="Resources\anim\spinner_small_progress_bar.xml" />
+    <AndroidResource Include="Resources\anim\spinner_small_root.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\anim\trim_end_interpolator.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\anim\trim_start_interpolator.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\color\navigation_color_selector.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -380,6 +389,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\spinner_small.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\spinner_small_design.xml" />
     <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_left.xml" />
     <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_right.xml">
       <SubType>Designer</SubType>
@@ -387,6 +401,18 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_chevron_right.xml" />
     <AndroidResource Include="Resources\drawable\icon_download.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download_done.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon_download_pending.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon_download_progress.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_favorites_active_no_fill.xml" />
     <AndroidResource Include="Resources\drawable\icon_play.xml">
       <SubType>Designer</SubType>
@@ -419,6 +445,14 @@
     <AndroidResource Include="Resources\drawable\navigation_search_active.xml" />
     <AndroidResource Include="Resources\drawable\navigation_search_selector.xml" />
     <AndroidResource Include="Resources\drawable\ripple_random_button_fra_kaare.xml" />
+    <AndroidResource Include="Resources\font\inter.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\font\inter_700.ttf" />
+    <AndroidResource Include="Resources\font\inter_600.ttf" />
+    <AndroidResource Include="Resources\font\inter_500.ttf" />
+    <AndroidResource Include="Resources\font\inter_800.ttf" />
     <AndroidResource Include="Resources\layout\activity_user_setup.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -430,6 +464,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_menu.xml" />
+    <AndroidResource Include="Resources\layout\fragment_tracklist.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_audio.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -470,6 +508,14 @@
     <AndroidResource Include="Resources\drawable-xhdpi\xam_mediaManager_notify_ic.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\xam_mediaManager_notify_ic.png" />
     <AndroidResource Include="Resources\layout\listitem_search_suggestion.axml" />
+    <AndroidResource Include="Resources\layout\listitem_tracklist_header.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\track_download_status.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\menu\bottom_navigation_menu.xml" />
     <AndroidResource Include="Resources\menu\edit_trackcollection.xml" />
     <AndroidResource Include="Resources\values-v27\styles.xml" />
@@ -572,7 +618,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_trackrelation_external.png" />
     <AndroidResource Include="Resources\layout\listitem_trackrelation_external.axml" />
     <AndroidResource Include="Resources\layout\fragment_podcasts.axml" />
-    <AndroidResource Include="Resources\layout\fragment_podcast.axml" />
     <AndroidResource Include="Resources\layout\listitem_podcasts.axml" />
     <AndroidResource Include="Resources\layout\fragment_library_archive.axml" />
     <AndroidResource Include="Resources\layout\fragment_automatic_download.axml" />
@@ -586,12 +631,6 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_explore_with_appbar.axml" />
     <AndroidResource Include="Resources\layout\fragment_curatedplaylists.axml" />
-    <AndroidResource Include="Resources\layout\fragment_curatedplaylist.axml">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\shuffle_button.axml">
       <SubType>
       </SubType>
@@ -608,8 +647,6 @@
     <AndroidResource Include="Resources\layout\listitem_track.axml" />
     <AndroidResource Include="Resources\layout\fragment_search.axml" />
     <AndroidResource Include="Resources\layout\fragment_settings.axml" />
-    <AndroidResource Include="Resources\layout\fragment_album.axml" />
-    <AndroidResource Include="Resources\layout\fragment_trackcollection.axml" />
     <AndroidResource Include="Resources\layout\fragment_player.axml" />
     <AndroidResource Include="Resources\layout\activity_main.axml" />
     <AndroidResource Include="Resources\layout\toolbar_actionbar.axml" />
@@ -790,7 +827,6 @@
     <AndroidResource Include="Resources\layout\listitem_navigation_header.axml" />
     <AndroidResource Include="Resources\layout\fragment_copyright.axml" />
     <AndroidResource Include="Resources\layout\fragment_albums.axml" />
-    <AndroidResource Include="Resources\layout\fragment_contributor.axml" />
     <AndroidResource Include="Resources\layout\fragment_miniplayer.axml" />
     <AndroidResource Include="Resources\xml\searchable.xml" />
     <AndroidResource Include="Resources\drawable\togglebutton_playpause_portrait.xml" />
@@ -2033,6 +2069,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\button_background_rounded.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon_notification.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

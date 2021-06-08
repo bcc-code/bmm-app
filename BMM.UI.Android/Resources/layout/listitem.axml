@@ -17,7 +17,7 @@
         android:text="Title"
         android:textColor="@color/black"
         android:textSize="@dimen/text_large"
-        android:textStyle="bold"
+        android:textFontWeight="700"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"
         local:layout_constraintTop_toTopOf="parent"

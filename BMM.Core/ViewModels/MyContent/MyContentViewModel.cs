@@ -49,12 +49,6 @@ namespace BMM.Core.ViewModels.MyContent
                     Title = MyContentTextSource.GetText("FollowedPodcasts"),
                     Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<FollowedPodcastsViewModel>()),
                     Icon = "icon_podcast"
-                },
-                new PinnedItem
-                {
-                    Title = MyContentTextSource.GetText("MyTracks"),
-                    Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<MyTracksViewModel>()),
-                    Icon = "icon_favorites_active_no_fill"
                 }
             };
         }

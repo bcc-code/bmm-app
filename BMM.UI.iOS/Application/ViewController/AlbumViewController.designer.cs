@@ -1,74 +1,100 @@
 ﻿// WARNING
 //
-// This file has been generated automatically by Visual Studio from the outlets and
-// actions declared in your storyboard file.
-// Manual changes to this file will not be maintained.
+// This file has been generated automatically by Rider IDE
+//   to store outlets and actions made in Xcode.
+// If it is removed, they will be lost.
+// Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System;
 using System.CodeDom.Compiler;
-using FFImageLoading.Cross;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    [Register ("AlbumViewController")]
-    partial class AlbumViewController
-    {
-        [Outlet]
-        MvxCachedImageView AlbumBlurCoverImage { get; set; }
+	[Register ("AlbumViewController")]
+	partial class AlbumViewController
+	{
+		[Outlet]
+		FFImageLoading.Cross.MvxCachedImageView AlbumCoverImageView { get; set; }
 
+		[Outlet]
+		UIKit.UIView AlbumHeaderView { get; set; }
 
-        [Outlet]
-        MvxCachedImageView AlbumCoverImageView { get; set; }
+		[Outlet]
+		UIKit.UITableView AlbumTable { get; set; }
 
+		[Outlet]
+		UIKit.NSLayoutConstraint ButtonStackViewHeight { get; set; }
 
-        [Outlet]
-        UIKit.UIView AlbumHeaderView { get; set; }
+		[Outlet]
+		UIKit.NSLayoutConstraint ButtonTopConstraint { get; set; }
 
+		[Outlet]
+		UIKit.UILabel DescriptionLabel { get; set; }
 
-        [Outlet]
-        UIKit.UITableView AlbumTable { get; set; }
+		[Outlet]
+		UIKit.UIButton ShuffleButton { get; set; }
 
+		[Outlet]
+		UIKit.NSLayoutConstraint StackViewToSeparatorConstraint { get; set; }
 
-        [Outlet]
-        UIKit.UIView blurView { get; set; }
+		[Outlet]
+		UIKit.UILabel TitleLabel { get; set; }
 
+		[Outlet]
+		UIKit.UILabel TrackCountLabel { get; set; }
 
-        [Outlet]
-        UIKit.UIButton ShuffleButton { get; set; }
+		void ReleaseDesignerOutlets ()
+		{
+			if (AlbumCoverImageView != null) {
+				AlbumCoverImageView.Dispose ();
+				AlbumCoverImageView = null;
+			}
 
-        void ReleaseDesignerOutlets ()
-        {
-            if (AlbumBlurCoverImage != null) {
-                AlbumBlurCoverImage.Dispose ();
-                AlbumBlurCoverImage = null;
-            }
+			if (AlbumHeaderView != null) {
+				AlbumHeaderView.Dispose ();
+				AlbumHeaderView = null;
+			}
 
-            if (AlbumCoverImageView != null) {
-                AlbumCoverImageView.Dispose ();
-                AlbumCoverImageView = null;
-            }
+			if (AlbumTable != null) {
+				AlbumTable.Dispose ();
+				AlbumTable = null;
+			}
 
-            if (AlbumHeaderView != null) {
-                AlbumHeaderView.Dispose ();
-                AlbumHeaderView = null;
-            }
+			if (ButtonTopConstraint != null) {
+				ButtonTopConstraint.Dispose ();
+				ButtonTopConstraint = null;
+			}
 
-            if (AlbumTable != null) {
-                AlbumTable.Dispose ();
-                AlbumTable = null;
-            }
+			if (DescriptionLabel != null) {
+				DescriptionLabel.Dispose ();
+				DescriptionLabel = null;
+			}
 
-            if (blurView != null) {
-                blurView.Dispose ();
-                blurView = null;
-            }
+			if (ShuffleButton != null) {
+				ShuffleButton.Dispose ();
+				ShuffleButton = null;
+			}
 
-            if (ShuffleButton != null) {
-                ShuffleButton.Dispose ();
-                ShuffleButton = null;
-            }
-        }
-    }
+			if (StackViewToSeparatorConstraint != null) {
+				StackViewToSeparatorConstraint.Dispose ();
+				StackViewToSeparatorConstraint = null;
+			}
+
+			if (TitleLabel != null) {
+				TitleLabel.Dispose ();
+				TitleLabel = null;
+			}
+
+			if (TrackCountLabel != null) {
+				TrackCountLabel.Dispose ();
+				TrackCountLabel = null;
+			}
+
+			if (ButtonStackViewHeight != null) {
+				ButtonStackViewHeight.Dispose ();
+				ButtonStackViewHeight = null;
+			}
+
+		}
+	}
 }

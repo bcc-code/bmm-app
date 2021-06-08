@@ -6,8 +6,7 @@
     <string name="action_slidingpane">Other</string>
 
     <string name="document_templateselector">BMM.UI.Droid.Application.TemplateSelectors.DocumentTemplateSelector, BMM.UI.Android</string>
-    <string name="trackcollection_templateselector">BMM.UI.Droid.Application.TemplateSelectors.TrackCollectionTemplateSelector, BMM.UI.Android</string>
-    <string name="podcast_templateselector">BMM.UI.Droid.Application.TemplateSelectors.PodcastTemplateSelector, BMM.UI.Android</string>
+    <string name="tracklist_templateselector">BMM.UI.Droid.Application.TemplateSelectors.TrackListTemplateSelector, BMM.UI.Android</string>
     <string name="explorenewest_templateselector">BMM.UI.Droid.Application.TemplateSelectors.ExploreNewestTemplateSelector, BMM.UI.Android</string>
     <string name="settings_templateselector">BMM.UI.Droid.Application.TemplateSelectors.SettingsTemplateSelector, BMM.UI.Android</string>
 </resources>

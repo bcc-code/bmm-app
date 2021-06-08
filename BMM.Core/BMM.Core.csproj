@@ -29,7 +29,7 @@
     <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
     <PackageReference Include="MvvmCross.Plugin.Visibility" Version="7.1.2" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="System.Reactive" Version="4.4.1" />
+    <PackageReference Include="System.Reactive" Version="5.0.0" />
     <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
     <PackageReference Include="Tavis.UriTemplates" Version="1.1.1" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />

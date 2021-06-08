@@ -18,7 +18,7 @@
         android:id="@+id/page_4"
         android:enabled="true"
         android:icon="@drawable/navigation_favorites_selector"
-        android:title="Favorites" />
+        android:title="Favorites"/>
     <item
         android:id="@+id/page_5"
         android:enabled="true"

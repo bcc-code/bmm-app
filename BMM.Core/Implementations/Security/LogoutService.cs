@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Caching;
-using BMM.Core.Implementations.MyTracks;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.TrackCollections;
@@ -15,15 +14,13 @@ namespace BMM.Core.Implementations.Security
         private readonly ICache _cache;
         private readonly IOfflineTrackCollectionStorage _trackCollectionStorage;
         private readonly IPodcastOfflineManager _podcastOfflineManager;
-        private readonly IMyTracksManager _myTracksManager;
 
         public LogoutService(
             IOidcAuthService oidcAuthService,
             IAnalytics analytics,
             ICache cache,
             IOfflineTrackCollectionStorage trackCollectionStorage,
-            IPodcastOfflineManager podcastOfflineManager,
-            IMyTracksManager myTracksManager
+            IPodcastOfflineManager podcastOfflineManager
         )
         {
             _oidcAuthService = oidcAuthService;
@@ -31,7 +28,6 @@ namespace BMM.Core.Implementations.Security
             _cache = cache;
             _trackCollectionStorage = trackCollectionStorage;
             _podcastOfflineManager = podcastOfflineManager;
-            _myTracksManager = myTracksManager;
         }
 
         public async Task PerformLogout()
@@ -43,7 +39,6 @@ namespace BMM.Core.Implementations.Security
             await _cache.Clear();
             await _trackCollectionStorage.Clear();
             await _podcastOfflineManager.Clear();
-            await _myTracksManager.InvalidateMyTracksCollection();
         }
     }
 }

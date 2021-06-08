@@ -28,7 +28,7 @@
 				android:layout_width="match_parent"
 				android:layout_height="match_parent"
 				local:layout_behavior="@string/appbar_scrolling_view_behavior"
-				local:MvxTemplateSelector="@string/trackcollection_templateselector"
+				local:MvxTemplateSelector="@string/tracklist_templateselector"
 				local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
 		</mvvmcross.droidx.MvxSwipeRefreshLayout>
 		</RelativeLayout>

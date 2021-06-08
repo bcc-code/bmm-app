@@ -17,32 +17,9 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.TrackCollectionFragment")]
     public class TrackCollectionFragment : BaseFragment<TrackCollectionViewModel>
     {
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        protected override MvxRecyclerAdapter CreateAdapter()
         {
-            var view = base.OnCreateView(inflater, container, savedInstanceState);
-
-            var swipeToRefresh = view.FindViewById<MvxSwipeRefreshLayout>(Resource.Id.refresher);
-            var appBar = view.FindViewById<AppBarLayout>(Resource.Id.appbar);
-
-            if (appBar != null && swipeToRefresh != null)
-                appBar.OffsetChanged += (sender, args) => swipeToRefresh.Enabled = args.VerticalOffset == 0;
-
-            InitRecyclerView(view);
-
-            return view;
-        }
-
-        private void InitRecyclerView(View view)
-        {
-            var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.trackcollection_recycler_view);
-            if (recyclerView != null)
-            {
-                recyclerView.Adapter = new HeaderRecyclerAdapter((IMvxAndroidBindingContext) BindingContext);
-                recyclerView.HasFixedSize = true;
-
-                var layoutManager = new LinearLayoutManager(ParentActivity);
-                recyclerView.SetLayoutManager(layoutManager);
-            }
+            return new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
@@ -70,6 +47,6 @@ namespace BMM.UI.Droid.Application.Fragments
             }
         }
 
-        protected override int FragmentId => Resource.Layout.fragment_trackcollection;
+        protected override int FragmentId => Resource.Layout.fragment_tracklist;
     }
 }

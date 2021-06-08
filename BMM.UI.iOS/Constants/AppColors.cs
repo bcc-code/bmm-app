@@ -5,9 +5,10 @@ namespace BMM.UI.iOS.Constants
 {
     public static class AppColors
     {
+        public static readonly UIColor Paragraph2Color = UIColor.FromRGB(0.361f, 0.439f, 0.51f);
         public static readonly UIColor ColorPrimary = UIColor.FromRGB(131, 231, 107);
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
-        public static readonly UIColor TabBarUnselectedColor = UIColor.FromRGB(143,160,175);
+        public static readonly UIColor TabBarUnselectedColor = UIColor.FromRGB(143, 160, 175);
 
         // Track
         public static readonly UIColor TrackTitleColor = UIColor.FromRGB(13, 19, 26);
@@ -25,11 +26,15 @@ namespace BMM.UI.iOS.Constants
 
         // Player
         public static readonly UIColor PlayerBackgroundColor = UIColor.FromRGB(13, 19, 26);
-        public static readonly CGColor[] TrackCoverGradientColors = {
+
+        public static readonly CGColor[] TrackCoverGradientColors =
+        {
             UIColor.FromRGB(0, 0, 0).ColorWithAlpha(0).CGColor,
             UIColor.FromRGB(3, 4, 6).ColorWithAlpha(.09f).CGColor,
             UIColor.FromRGB(9, 14, 19).ColorWithAlpha(.28f).CGColor,
             UIColor.FromRGB(13, 19, 26).ColorWithAlpha(.5f).CGColor
         };
+
+        public static readonly UIColor SeparatorColor = UIColor.FromRGB(185, 195, 204).ColorWithAlpha(0.5f);
     }
 }
