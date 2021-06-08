@@ -53,7 +53,8 @@
     "FailedToAdd": "Kunne ikke legge til sporet i spillelisten. Prøv igjen senere.",
     "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
     "TrackAlreadyExistInTrackCollection": "Spor allerede eksisterer in spilleliste {0}",
-    "ShufflePlay": "Spill blandet"
+    "ShufflePlay": "Spill blandet",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Arkiv",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Er du sikker på at du vil slutte å følge denne podcasten?",
     "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillingene for å laste ned de nyeste sporene automatisk",
     "ToggleFollowOfflineError": "Du må være i tilkoblet modus for å følge eller slutte å følge en podcast",
-    "Week": "Uke {0}",
+    "Week": "Week {0}",
     "ThisWeek": "Denne uken",
     "LastWeek": "Siste uke",
     "AslaksenTheme1": "Tro på underets Gud",
     "AslaksenTheme2": "Jeg er korsfestet med Kristus",
     "AslaksenTheme3": "Frykte og elske Gud",
     "AslaksenTheme4": "Ydmykhet er selve saken"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Spilleliste"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Spillelister"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Vil du velge annen lagringsplass og fjerne offline spor?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Last ned",
+    "Shuffle": "Shuffle",
+    "Play": "Spill av"
   },
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillinger for å fortsette",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle spor",
     "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Rediger spilleliste",
