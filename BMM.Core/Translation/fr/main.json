@@ -53,7 +53,8 @@
     "FailedToAdd": "Impossible d'ajouter la piste à la liste. Veuillez réessayer ultérieurement.",
     "AlbumFailedToAddAlreadyExists": "Cet album est déjà dans votre liste de lecture.",
     "TrackAlreadyExistInTrackCollection": "Le titre existe déjà dans la playlist {0}",
-    "ShufflePlay": "Lecture aléatoire"
+    "ShufflePlay": "Lecture aléatoire",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Archive",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Vous voulez vous vraiment ne plus suivre ce podcast ?",
     "MobileDownloadDisabled": "Activez le téléchargement via le réseau de téléphonie mobile dans les paramètres pour télécharger les dernières pistes automatiquement",
     "ToggleFollowOfflineError": "Vous devez être en mode en ligne pour suivre ou unfollow un podcast",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Crois au Dieu des miracles",
     "AslaksenTheme2": "Je suis crucifié avec Christ",
     "AslaksenTheme3": "Craindre et aimer Dieu",
     "AslaksenTheme4": "L'humilité, c'est l'essentiel"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Liste de lecture"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Listes de lecture"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Voulez-vous sélectionner un nouvel emplacement de stockage et supprimer tous les titres hors ligne ?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Télécharger",
+    "Shuffle": "Shuffle",
+    "Play": "Lecture"
   },
   "TrackCollectionViewModel": {
     "Title": "Liste de lecture",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Activez le téléchargement via les données mobile, dans les paramètres, pour pouvoir continuer",
     "NotEnoughtSpaceToDownload": "Pas assez d'espace pour télécharger tous les titres",
     "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette liste de lecture. Vous voulez reprendre le téléchargement ?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
