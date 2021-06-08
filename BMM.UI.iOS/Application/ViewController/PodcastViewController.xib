@@ -107,7 +107,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcA-qs-hCN">
                                         <rect key="frame" x="62" y="0.0" width="82" height="40"/>
                                         <color key="backgroundColor" red="0.46274509800000002" green="0.90196078430000004" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Button" image="icon_bell.png"/>
+                                        <state key="normal" title="Button" image="icon_notification.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk1-Z4-sIR">
                                         <rect key="frame" x="160" y="0.0" width="71" height="40"/>
@@ -161,7 +161,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_bell.png" width="28" height="28"/>
+        <image name="icon_notification.png" width="28" height="28"/>
         <image name="icon_play.png" width="17" height="16.5"/>
         <image name="placeholder_album.png" width="320" height="320"/>
         <systemColor name="systemBlueColor">
