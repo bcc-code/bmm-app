@@ -53,7 +53,8 @@
     "FailedToAdd": "Kon het nummer niet aan de afspeellijst toevoegen. Probeer het later opnieuw.",
     "AlbumFailedToAddAlreadyExists": "Dit album is al in uw afspeellijst.",
     "TrackAlreadyExistInTrackCollection": "Nummer bestaat al in afspeellijst {0}",
-    "ShufflePlay": "Willekeurig afspelen"
+    "ShufflePlay": "Willekeurig afspelen",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Archief",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Wilt u deze podcast ontvolgen?",
     "MobileDownloadDisabled": "Schakel 'downloaden via het mobiel netwerk' in om de nieuwste nummers automatisch te downloaden",
     "ToggleFollowOfflineError": "Je moet in de online-modus zijn om een podcast te volgen of te ontvolgen",
-    "Week": "Week",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Geloof in de God van wonderen",
     "AslaksenTheme2": "Ik ben met Christus gekruisigd",
     "AslaksenTheme3": "God vrezen en liefhebben",
     "AslaksenTheme4": "Ootmoed is alles"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Afspeellijst"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Afspeellijsten"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Vil du velge annen lagringsplass og fjerne offline spor?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Download",
+    "Shuffle": "Shuffle",
+    "Play": "Afspelen"
   },
   "TrackCollectionViewModel": {
     "Title": "Afspeellijst",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Schakel 'downloaden via mobiel netwerk' onder instellingen in om verder te gaan",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle sangene",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
