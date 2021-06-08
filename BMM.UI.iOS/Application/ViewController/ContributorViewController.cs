@@ -40,8 +40,6 @@ namespace BMM.UI.iOS
             set.Bind(PlayButton).To(vm => vm.ShufflePlayCommand);
             set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Shuffle");
 
-            // set.Bind(TrackTableTitle).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("HeaderText");
-
             set.Apply();
 
             TracksTable.ResizeHeaderView();
