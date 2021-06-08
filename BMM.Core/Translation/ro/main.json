@@ -53,7 +53,8 @@
     "FailedToAdd": "Nu s-a putut adăuga piesa în play-list. Vă rugăm să încercați din nou mai târziu.",
     "AlbumFailedToAddAlreadyExists": "Acest album este deja în lista de redare.",
     "TrackAlreadyExistInTrackCollection": "Piesa este deja în lista de redare {0}",
-    "ShufflePlay": "Aleatoriu"
+    "ShufflePlay": "Aleatoriu",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Arhivă",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Chiar vrei să nu mai urmărești acest podcast?",
     "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a descărca automat cele mai recente melodii",
     "ToggleFollowOfflineError": "Este nevoie să fi online pentru a urmări sau a anula urmărirea unui podcast",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Crede în Dumnezeul minunilor",
     "AslaksenTheme2": "Eu sunt răstignit cu Hristos",
     "AslaksenTheme3": "A se teme și a-L iubi pe Dumnezeu",
     "AslaksenTheme4": "Smerenia este lucrul principal"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Play-list"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Play-list-uri"
@@ -286,7 +290,11 @@
     "RemoveAllFiles": "Dorești a selecta o nouă locaţie de stocare şi eliminarea tuturor pieselor offline?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Descarcă",
+    "Shuffle": "Shuffle",
+    "Play": "Cântă"
   },
   "TrackCollectionViewModel": {
     "Title": "Play-list",
@@ -309,7 +317,7 @@
     "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a continua",
     "NotEnoughtSpaceToDownload": "Nu este suficient spaţiu pentru a descărca toate melodiile",
     "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
