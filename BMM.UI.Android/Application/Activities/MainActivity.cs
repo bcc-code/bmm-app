@@ -97,7 +97,7 @@ namespace BMM.UI.Droid.Application.Activities
 
         public async Task<bool> ClearAllNavBackStackHintHandler(ClearAllNavBackStackHint hint)
         {
-            if (!SupportFragmentManager.IsDestroyed)
+            if (!SupportFragmentManager.IsDestroyed && !SupportFragmentManager.IsStateSaved)
                 SupportFragmentManager.PopBackStackImmediate();
 
             _mediaPlayer.ViewHasBeenDestroyed();
