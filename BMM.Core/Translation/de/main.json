@@ -54,7 +54,7 @@
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
     "ShufflePlay": "Zufällige Wiedergabe",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} Alben"
   },
   "AlbumsViewModel": {
     "Title": "Archiv",
@@ -219,7 +219,7 @@
     "UnfollowConfirm": "Möchtest du das Abonnement für diesen Podcast beenden?",
     "MobileDownloadDisabled": "Erlaube das Herunterladen über das Mobilfunknetz in den Einstellungen um die neuesten Folgen automatisch herunterzuladen",
     "ToggleFollowOfflineError": "Du kannst einen Podcast nur abonnieren oder davon abmelden wenn du online bist",
-    "Week": "Week {0}",
+    "Week": "Woche {0}",
     "ThisWeek": "Diese Woche",
     "LastWeek": "Letzte Woche",
     "AslaksenTheme1": "Glaube an den Gott der Wunder",
@@ -291,7 +291,7 @@
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} Titel",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracksLoaded": "{0} Titel geladen",
     "Download": "Herunterladen",
     "Shuffle": "Shuffle",
     "Play": "Abspielen"
@@ -317,7 +317,7 @@
     "MobileDownloadDisabled": "Aktiviere das Downloaden über Mobilfunknetz in den Einstellungen um fortzufahren",
     "NotEnoughtSpaceToDownload": "Nicht genügend Speicherplatz um alle Titel herunterzuladen",
     "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?",
-    "Private": "Private"
+    "Private": "Privat"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Playliste bearbeiten",
