@@ -39,6 +39,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="t4g-Ns-abC" customClass="MvxCachedImageView">
                                 <rect key="frame" x="107.5" y="32" width="160" height="160"/>
+                                <accessibility key="accessibilityConfiguration" identifier="album_cover"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="CTe-ee-pNb"/>
                                     <constraint firstAttribute="width" constant="160" id="TKY-cr-Go4"/>
@@ -52,6 +53,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jns-dj-qfe">
                                 <rect key="frame" x="16" y="212" width="343" height="99"/>
+                                <accessibility key="accessibilityConfiguration" identifier="album_header"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Alv-Qv-BdK"/>
                                 </constraints>

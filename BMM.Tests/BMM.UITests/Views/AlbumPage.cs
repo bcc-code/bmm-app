@@ -35,7 +35,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("cover_image");
+                return c => c.Id("podcast_image");
             }
         }
 
@@ -43,7 +43,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("collapsing_toolbar");
+                return c => c.Id("title");
             }
         }
 

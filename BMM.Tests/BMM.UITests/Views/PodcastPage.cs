@@ -5,40 +5,22 @@ namespace BMM.UITests.Views
     public interface IPodcastPage: IListPage
     {
         Func<AppQuery, AppQuery> Title { get; }
-        Func<AppQuery, AppQuery> Getnotified { get; }
-        Func<AppQuery, AppQuery> Subsubtitle { get; }
         Func<AppQuery, AppQuery> Follow { get; }
         Func<AppQuery, AppQuery> NumberTrack { get; }
         Func<AppQuery, AppQuery> CoverImage { get; }
-        Func<AppQuery, AppQuery> Title_track { get; }
+        Func<AppQuery, AppQuery> TrackTitle { get; }
         Func<AppQuery, AppQuery> DownloadedImage { get; }
         Func<AppQuery, AppQuery> Following { get; }
         Func<AppQuery, AppQuery> PlaylistRowOptionsFromTitle { get; }
     }
-    
+
     public class AndroidPodcastPage : ListPage, IPodcastPage
     {
         public Func<AppQuery, AppQuery> Title
         {
             get
             {
-                return c => c.Id("text_view_title");
-            }
-        }
-
-        public Func<AppQuery, AppQuery> Getnotified
-        {
-            get
-            {
-                return c => c.Id("text_view_subtitle");
-            }
-        }
-
-        public Func<AppQuery, AppQuery> Subsubtitle
-        {
-            get
-            {
-                return c => c.Id("text_view_sub_subtitle");
+                return c => c.Id("title");
             }
         }
 
@@ -62,15 +44,15 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("cover_image");
+                return c => c.Id("podcast_image");
             }
         }
 
-        public Func<AppQuery, AppQuery> Title_track
+        public Func<AppQuery, AppQuery> TrackTitle
         {
             get
             {
-                return c => c.Marked("text_view_title");
+                return c => c.Marked("trackTitle");
             }
         }
 
@@ -86,7 +68,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Marked("follow_button");
+                return c => c.Marked("following_button");
             }
         }
 
@@ -105,23 +87,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("FollowTitleLabel");
-            }
-        }
-
-        public Func<AppQuery, AppQuery> Getnotified
-        {
-            get
-            {
-                return c => c.Marked("FollowTitleLabel");
-            }
-        }
-
-        public Func<AppQuery, AppQuery> Subsubtitle
-        {
-            get
-            {
-                return c => c.Id("FollowSubtitleLabel");
+                return c => c.Id("title");
             }
         }
 
@@ -149,7 +115,7 @@ namespace BMM.UITests.Views
             }
         }
 
-        public Func<AppQuery, AppQuery> Title_track
+        public Func<AppQuery, AppQuery> TrackTitle
         {
             get
             {

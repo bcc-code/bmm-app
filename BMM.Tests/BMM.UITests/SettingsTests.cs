@@ -10,9 +10,9 @@ namespace BMM.UITests
     [TestFixture(Platform.iOS, Category = Categories.iOS)]
     public class SettingsTests
     {
-        IBmmApp _bmmApp;
-        IApp _app;
-        readonly Platform _platform;
+        private IBmmApp _bmmApp;
+        private IApp _app;
+        private readonly Platform _platform;
         private const string PodcastTitleFraKaareGerman = "Von Kåre";
         private const string PodcastTitleFraKaareEnglish = "From Kåre";
         private const string ErrorSongsAreEqual = "The Songs are equal";
@@ -46,10 +46,11 @@ namespace BMM.UITests
             _app.Back();
 
             _app.WaitForElement(_bmmApp.Menu.GermanProfileMenuItem, languageChangeError);
-            _app.ScrollDownTo(q => q.Marked("Appsprache"), _bmmApp.SettingsPage.SettingsList, ScrollStrategy.Gesture);
+            _app.ScrollDownTo(q => q.Marked("Appsprache"), _bmmApp.SettingsPage.SettingsList);
         }
 
         [Test]
+
         // ToDo: This test fails sometimes
         public async Task AssertContentLanguageChanged()
         {
@@ -60,7 +61,7 @@ namespace BMM.UITests
             RemoveTwoTopContentLanguages(_platform);
 
             OpenLibraryAndPodcast(PodcastTitleFraKaareGerman);
-            var songName1 = _app.Query(_bmmApp.PodcastPage.Title_track)[0].Text;
+            var songName1 = _app.Query(_bmmApp.PodcastPage.TrackTitle)[0].Text;
             _app.Back();
 
             AddLanguageToMyContentLanguage(English);
@@ -68,7 +69,7 @@ namespace BMM.UITests
             RemoveContentLanguageOnTopOfList(_platform);
 
             OpenLibraryAndPodcast(PodcastTitleFraKaareEnglish);
-            var songName2 = _app.Query(_bmmApp.PodcastPage.Title_track)[0].Text;
+            var songName2 = _app.Query(_bmmApp.PodcastPage.TrackTitle)[0].Text;
 
             Assert.AreNotEqual(songName1, songName2, ErrorSongsAreEqual);
 
@@ -79,7 +80,7 @@ namespace BMM.UITests
             RemoveContentLanguageOnTopOfList(_platform);
 
             OpenLibraryAndPodcast(PodcastTitleFraKaareGerman);
-            var songName1SecondCheck = _app.Query(_bmmApp.PodcastPage.Title_track)[0].Text;
+            var songName1SecondCheck = _app.Query(_bmmApp.PodcastPage.TrackTitle)[0].Text;
             Assert.AreEqual(songName1, songName1SecondCheck, ErrorSongsAreNotEqual);
         }
 
@@ -92,6 +93,7 @@ namespace BMM.UITests
             {
                 _app.Tap(_bmmApp.ContentLanguagePage.EditBtn);
             }
+
             _app.Tap(_bmmApp.ContentLanguagePage.AddBtn);
             _app.Tap(language);
         }
@@ -111,7 +113,7 @@ namespace BMM.UITests
         {
             _bmmApp.Menu.OpenLibrary(_app);
             _app.Tap(podcastTitle);
-            _app.WaitForElement(_bmmApp.PodcastPage.Title_track, "Timed out waiting for element..."); // Wait until first track appears meaning that the list has loaded
+            _app.WaitForElement(_bmmApp.PodcastPage.TrackTitle, "Timed out waiting for element..."); // Wait until first track appears meaning that the list has loaded
         }
 
         private void RemoveContentLanguageOnTopOfList(Platform platform)

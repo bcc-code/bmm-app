@@ -78,6 +78,7 @@
                 android:layout_marginBottom="23dp"
                 app:MvxBind="Visibility Visibility(ShowFollowButtons)">
           <Button
+                  android:id="@+id/follow_button"
                   android:text="Follow"
                   style="@style/Button_Secondary"
                   android:layout_width="wrap_content"
@@ -85,6 +86,7 @@
                   app:MvxLang="Text Follow"
                   app:MvxBind="Click ToggleFollowingCommand; Visibility InvertedVisibility(IsFollowing)"/>
           <Button
+                  android:id="@+id/following_button" 
                   android:text="Following"
                   style="@style/IconButton_Secondary"
                   android:drawableLeft="@drawable/icon_notification"
@@ -135,6 +137,7 @@
            android:layout_marginBottom="23dp"
            app:MvxBind="Visibility Visibility(ShowShuffleButton)">
           <Button
+                  android:id="@+id/shuffle_button"
                   android:text="Shuffle"
                   style="@style/IconButton_Primary"
                   android:drawableLeft="@drawable/icon_play_white"

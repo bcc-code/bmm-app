@@ -89,6 +89,7 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBs-EE-ISq">
                                 <rect key="frame" x="16" y="212" width="343" height="109"/>
+                                <accessibility key="accessibilityConfiguration" identifier="title"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="BNu-je-Gnd"/>
                                 </constraints>
@@ -102,11 +103,13 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="que-rJ-xHy">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="40"/>
                                         <color key="backgroundColor" red="0.46274509800000002" green="0.90196078430000004" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="follow_button"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mcA-qs-hCN">
                                         <rect key="frame" x="62" y="0.0" width="82" height="40"/>
                                         <color key="backgroundColor" red="0.46274509800000002" green="0.90196078430000004" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="following_button"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="6" maxX="0.0" maxY="6"/>
                                         <inset key="titleEdgeInsets" minX="0.0" minY="8" maxX="0.0" maxY="8"/>
                                         <state key="normal" title="Button" image="icon_notification.png">
@@ -116,6 +119,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mk1-Z4-sIR">
                                         <rect key="frame" x="160" y="0.0" width="78" height="40"/>
                                         <color key="backgroundColor" red="0.46274509800000002" green="0.90196078430000004" blue="0.35686274509999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="play_button"/>
                                         <state key="normal" title="Button" image="icon_arrow_right.png"/>
                                     </button>
                                 </subviews>
