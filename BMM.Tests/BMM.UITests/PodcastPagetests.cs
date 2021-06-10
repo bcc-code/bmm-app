@@ -63,7 +63,7 @@ namespace BMM.UITests
 
             _app.WaitForElement(_bmmApp.PodcastPage.Following);
             var downloadImages = _app.WaitForElement(_bmmApp.PodcastPage.DownloadedImage);
-            await Task.Delay(TimeSpan.FromSeconds(2));
+            await Task.Delay(TimeSpan.FromSeconds(5));
             Assert.AreEqual(3, downloadImages.Length);
         }
     }
