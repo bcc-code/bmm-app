@@ -6,6 +6,7 @@ using Foundation;
 using System;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Helpers;
+using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -33,6 +34,7 @@ namespace BMM.UI.iOS
                 set.Bind(metaLabel).WithConversion<DocumentToMetaValueConverter>();
                 set.Bind(metaLabel).For(l => l.TextColor).WithConversion<TrackToMetaColorConverter>();
                 set.Bind(DownloadStatusImageView).For(i => i.ImagePath).To(vm => vm).WithConversion<OfflineAvailableTrackStatusConverter>();
+                set.Bind(DownloadStatusImageView).For(i => i.BindVisibility()).To(vm => vm).WithConversion<OfflineAvailableTrackValueConverter>();
                 set.Bind(StatusImage)
                     .For(v => v.Image)
                     .To(vm => ((DocumentsViewModel)vm.ViewModel).CurrentTrack)

@@ -56,6 +56,15 @@
             android:layout_marginBottom="4dp"
             app:MvxLang="Text Private"
             app:MvxBind="Visibility Visibility(ShowSharingInfo)"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4sp"
+            android:gravity="center"
+            android:text="Get the vibe going when travelling to camp. These songs will definitely get you in the right camp mood!"
+            android:layout_marginBottom="4dp"
+            app:MvxBind="Text Description; Visibility VisibilityString(Description)"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
@@ -69,6 +78,7 @@
                 android:layout_marginBottom="23dp"
                 app:MvxBind="Visibility Visibility(ShowFollowButtons)">
           <Button
+                  android:id="@+id/follow_button"
                   android:text="Follow"
                   style="@style/Button_Secondary"
                   android:layout_width="wrap_content"
@@ -76,6 +86,7 @@
                   app:MvxLang="Text Follow"
                   app:MvxBind="Click ToggleFollowingCommand; Visibility InvertedVisibility(IsFollowing)"/>
           <Button
+                  android:id="@+id/following_button" 
                   android:text="Following"
                   style="@style/IconButton_Secondary"
                   android:drawableLeft="@drawable/icon_notification"
@@ -126,6 +137,7 @@
            android:layout_marginBottom="23dp"
            app:MvxBind="Visibility Visibility(ShowShuffleButton)">
           <Button
+                  android:id="@+id/shuffle_button"
                   android:text="Shuffle"
                   style="@style/IconButton_Primary"
                   android:drawableLeft="@drawable/icon_play_white"
@@ -133,6 +145,20 @@
                   android:layout_height="wrap_content"
                   app:MvxLang="Text Shuffle, Source=DocumentsTextSource"
                   app:MvxBind="Click ShufflePlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                app:MvxBind="Visibility Visibility(ShowPlayButton)">
+            <Button
+                    android:text="Shuffle"
+                    style="@style/IconButton_Primary"
+                    android:drawableLeft="@drawable/icon_play_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:MvxLang="Text Play, Source=DocumentsTextSource"
+                    app:MvxBind="Click PlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
         </RelativeLayout>
     </LinearLayout>
 

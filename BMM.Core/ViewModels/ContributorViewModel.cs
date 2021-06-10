@@ -39,13 +39,16 @@ namespace BMM.Core.ViewModels
 
         public string Title => Contributor?.Name;
 
+        public string Description => null;
+
         public string Image => Contributor?.Cover;
 
         public bool UseCircularImage => true;
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleButton => true;
+        public bool ShowShuffleButton => false;
+        public bool ShowPlayButton => true;
 
         public bool ShowTrackCount => true;
 

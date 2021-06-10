@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\..\packages\Xamarin.UITest.3.0.18\build\Xamarin.UITest.props" Condition="Exists('..\..\packages\Xamarin.UITest.3.0.18\build\Xamarin.UITest.props')" />
+  <Import Project="..\..\packages\Xamarin.UITest.3.0.19\build\Xamarin.UITest.props" Condition="Exists('..\..\packages\Xamarin.UITest.3.0.19\build\Xamarin.UITest.props')" />
   <Import Project="..\..\packages\NUnit.3.13.1\build\NUnit.props" Condition="Exists('..\..\packages\NUnit.3.13.1\build\NUnit.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -61,8 +61,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xamarin.UITest, Version=3.0.18.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\packages\Xamarin.UITest.3.0.18\lib\net45\Xamarin.UITest.dll</HintPath>
+    <Reference Include="Xamarin.UITest, Version=3.0.19.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\packages\Xamarin.UITest.3.0.19\lib\net45\Xamarin.UITest.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -122,7 +122,7 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\NUnit.3.13.1\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\NUnit.3.13.1\build\NUnit.props'))" />
-    <Error Condition="!Exists('..\..\packages\Xamarin.UITest.3.0.18\build\Xamarin.UITest.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.UITest.3.0.18\build\Xamarin.UITest.props'))" />
+    <Error Condition="!Exists('..\..\packages\Xamarin.UITest.3.0.19\build\Xamarin.UITest.props')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.UITest.3.0.19\build\Xamarin.UITest.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

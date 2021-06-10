@@ -49,7 +49,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="YoI-fx-ZbL">
-                                <rect key="frame" x="70.5" y="285.5" width="234" height="40"/>
+                                <rect key="frame" x="67" y="285.5" width="241" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P26-lx-xta" customClass="DownloadButton">
                                         <rect key="frame" x="0.0" y="0.0" width="105" height="40"/>
@@ -57,9 +57,9 @@
                                         <state key="normal" title="Download" image="icon_download.png"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTG-0X-idr">
-                                        <rect key="frame" x="121" y="0.0" width="113" height="40"/>
+                                        <rect key="frame" x="121" y="0.0" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.46308052539825439" green="0.90309476852416992" blue="0.35757482051849365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Shuffle Play" image="icon_play.png">
+                                        <state key="normal" title="Shuffle Play" image="icon_arrow_right.png">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -144,8 +144,8 @@
         </view>
     </objects>
     <resources>
+        <image name="icon_arrow_right.png" width="24" height="24"/>
         <image name="icon_download.png" width="24" height="24"/>
-        <image name="icon_play.png" width="17" height="16.5"/>
         <image name="placeholder_album.png" width="320" height="320"/>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -18,7 +18,7 @@ namespace BMM.UI.iOS.Constants
             button.SetTitleColor(theme.TextTheme.Color.ColorWithAlpha(0.75f), UIControlState.Highlighted);
             button.Layer.CornerRadius = 20;
             button.ImageEdgeInsets = new UIEdgeInsets(0, -6, 0, 0);
-            button.ContentEdgeInsets = new UIEdgeInsets(8, 16, 8, 16);
+            button.ContentEdgeInsets = new UIEdgeInsets(6, 16, 6, 16);
         }
     }
 }

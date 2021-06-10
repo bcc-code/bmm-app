@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using UIKit;
 
 namespace BMM.UI.iOS.Constants
@@ -17,6 +16,7 @@ namespace BMM.UI.iOS.Constants
             Font = Typography.Paragraph2.Value,
             Color = AppColors.Paragraph2Color
         });
+
         public static readonly Lazy<TextTheme> Subtitle3 = new Lazy<TextTheme>(() => new TextTheme
         {
             Font = Typography.Paragraph2.Value,

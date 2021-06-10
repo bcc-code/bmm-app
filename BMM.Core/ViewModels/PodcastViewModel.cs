@@ -50,6 +50,7 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => true;
         public bool ShowShuffleButton => false;
+        public bool ShowPlayButton => true;
 
         public bool ShowTrackCount => false;
 
@@ -86,6 +87,8 @@ namespace BMM.Core.ViewModels
         public override int CurrentLimit => Podcast?.Id == AslaksenTeaserViewModel.FraBegynnelsenPodcastId ? 60 : base.CurrentLimit;
 
         public bool ShowSharingInfo => false;
+
+        public string Description => null;
 
         public bool ShowPlaylistIcon => false;
 

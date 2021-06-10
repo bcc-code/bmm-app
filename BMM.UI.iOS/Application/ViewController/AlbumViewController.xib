@@ -39,6 +39,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="t4g-Ns-abC" customClass="MvxCachedImageView">
                                 <rect key="frame" x="107.5" y="32" width="160" height="160"/>
+                                <accessibility key="accessibilityConfiguration" identifier="album_cover"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="CTe-ee-pNb"/>
                                     <constraint firstAttribute="width" constant="160" id="TKY-cr-Go4"/>
@@ -52,6 +53,7 @@
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jns-dj-qfe">
                                 <rect key="frame" x="16" y="212" width="343" height="99"/>
+                                <accessibility key="accessibilityConfiguration" identifier="album_header"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Alv-Qv-BdK"/>
                                 </constraints>
@@ -60,12 +62,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="c1l-rF-vrA">
-                                <rect key="frame" x="131" y="355.5" width="113" height="40"/>
+                                <rect key="frame" x="127.5" y="355.5" width="120" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTG-0X-idr">
-                                        <rect key="frame" x="0.0" y="0.0" width="113" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="40"/>
                                         <color key="backgroundColor" red="0.46308052539825439" green="0.90309476852416992" blue="0.35757482051849365" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Shuffle Play" image="icon_play.png">
+                                        <state key="normal" title="Shuffle Play" image="icon_arrow_right.png">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -141,7 +143,7 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_play.png" width="17" height="16.5"/>
+        <image name="icon_arrow_right.png" width="24" height="24"/>
         <image name="placeholder_album.png" width="320" height="320"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
