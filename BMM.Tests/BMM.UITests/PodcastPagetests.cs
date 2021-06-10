@@ -52,5 +52,19 @@ namespace BMM.UITests
             Assert.IsNotEmpty(trackTitles, ErrorTracksNotFound);
             Assert.IsNotEmpty(_app.Query(_bmmApp.PodcastPage.CoverImage), ErrorImageNotFound);
         }
+
+        [Test]
+        public async Task FollowingPodcast_StartsDownloadingTracks()
+        {
+            await _bmmApp.LoginToApp();
+            _bmmApp.Menu.OpenLibrary(_app);
+            _app.Tap(_bmmApp.LibraryPodcastsPage.BtnFraKare);
+            _app.Tap(_bmmApp.PodcastPage.Follow);
+
+            _app.WaitForElement(_bmmApp.PodcastPage.Following);
+            var downloadImages = _app.WaitForElement(_bmmApp.PodcastPage.DownloadedImage);
+            await Task.Delay(TimeSpan.FromSeconds(2));
+            Assert.AreEqual(3, downloadImages.Length);
+        }
     }
 }

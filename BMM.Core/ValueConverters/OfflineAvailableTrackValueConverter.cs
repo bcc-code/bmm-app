@@ -7,7 +7,7 @@ using MvvmCross;
 using MvvmCross.Plugin.Visibility;
 using MvvmCross.UI;
 
-namespace BMM.UI.Droid.Application.ValueConverters
+namespace BMM.Core.ValueConverters
 {
     public class OfflineAvailableTrackValueConverter : MvxBaseVisibilityValueConverter<CellWrapperViewModel<Document>>
     {

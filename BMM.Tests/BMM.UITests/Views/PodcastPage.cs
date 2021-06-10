@@ -60,7 +60,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Marked("imageView1");
+                return c => c.Marked("track_download_icon");
             }
         }
 
@@ -127,7 +127,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Marked("icon_downloaded.png");
+                return c => c.Marked("icon_download");
             }
         }
 
