@@ -2,26 +2,21 @@
 using NUnit.Framework;
 using Xamarin.UITest;
 using System.Threading.Tasks;
+
 namespace BMM.UITests
 {
     [TestFixture(Platform.Android, Category = Categories.Android)]
     [TestFixture(Platform.iOS, Category = Categories.iOS)]
     public class PodcastPageTests
     {
-        private const string errorFromKaareNotFound = "From Kåre is not found";
-        private const string expectedTitle = "From Kåre";
-        private const string errorFollowNotFound = "Follow is not found";
-        private const string errorNewEpisodesNotFound = "New episodes sub-title is not found";
-        private int i = 0;
-        private const string errorGetNotifiedNotFound = "Get notified sub-title is not found";
-        private const string errorImageNotFound = "Image is not found";
-        private int numberExpected = 0;
-        private const string errorTracksNotFound = "Tracks are not found";
+        private const string ErrorFromKaareTitleNotFound = "From Kåre is not found";
+        private const string ErrorFollowNotFound = "Follow is not found";
+        private const string ErrorImageNotFound = "Image is not found";
+        private const string ErrorTracksNotFound = "Tracks are not found";
 
-
-        IBmmApp _bmmApp;
-        IApp _app;
-        readonly Platform _platform;
+        private IBmmApp _bmmApp;
+        private IApp _app;
+        private readonly Platform _platform;
 
         public PodcastPageTests(Platform platform)
         {
@@ -40,37 +35,36 @@ namespace BMM.UITests
         {
             await _bmmApp.LoginToApp();
             _bmmApp.Menu.OpenLibrary(_app);
-            _app.WaitForElement(_bmmApp.LibraryPodcastsPage.BtnFraKare, errorFromKaareNotFound, TimeSpan.FromSeconds(5));
+            _app.WaitForElement(_bmmApp.LibraryPodcastsPage.BtnFraKare, ErrorFromKaareTitleNotFound, TimeSpan.FromSeconds(5));
             _app.Tap("From Kåre");
             _app.WaitForElement(_bmmApp.PodcastPage.Follow);
 
-            string actualTitle = _app.Query(_bmmApp.PodcastPage.ItemWithTitle("From Kåre")) [0].Text;
-            while (actualTitle != "From Kåre")
-            {
-                actualTitle = _app.Query(_bmmApp.PodcastPage.ItemWithTitle("From Kåre")) [i].Text;
-                i = i + 1;
-            }
-
-            Assert.AreEqual(expectedTitle, actualTitle, errorFromKaareNotFound);
-
-            string expectedGetnotified = "Get notified";
-            string actualGetnotified = _app.Query(_bmmApp.PodcastPage.Getnotified)[0].Text;
-            Assert.AreEqual(expectedGetnotified, actualGetnotified, errorGetNotifiedNotFound);
-
-            string expectedSubtitle = "when new episodes are out";
-            string actualsubtitle = _app.Query(_bmmApp.PodcastPage.Subsubtitle)[0].Text;
-            Assert.AreEqual(expectedSubtitle, actualsubtitle, errorNewEpisodesNotFound);
+            _app.WaitForElement(_bmmApp.PodcastPage.Title, ErrorFromKaareTitleNotFound);
 
             await Task.Delay(1500);
             if (_app.Query(_bmmApp.PodcastPage.Follow).Length == 0)
             {
-                _app.WaitForElement(_bmmApp.PodcastPage.Following, errorFollowNotFound, TimeSpan.FromSeconds(5));
+                _app.WaitForElement(_bmmApp.PodcastPage.Following, ErrorFollowNotFound, TimeSpan.FromSeconds(5));
             }
 
-            _app.WaitForElement(_bmmApp.PodcastPage.Title_track, "Tracks are not visible.", TimeSpan.FromSeconds(5));
-            int actualNumber = _app.Query(_bmmApp.PodcastPage.Title_track).Length;
-            Assert.AreNotEqual(actualNumber, numberExpected, errorTracksNotFound);
-            Assert.IsNotEmpty(_app.Query(_bmmApp.PodcastPage.CoverImage), errorImageNotFound);
+            _app.WaitForElement(_bmmApp.PodcastPage.TrackTitle, "Tracks are not visible.", TimeSpan.FromSeconds(5));
+            var trackTitles = _app.Query(_bmmApp.PodcastPage.TrackTitle);
+            Assert.IsNotEmpty(trackTitles, ErrorTracksNotFound);
+            Assert.IsNotEmpty(_app.Query(_bmmApp.PodcastPage.CoverImage), ErrorImageNotFound);
+        }
+
+        [Test]
+        public async Task FollowingPodcast_StartsDownloadingTracks()
+        {
+            await _bmmApp.LoginToApp();
+            _bmmApp.Menu.OpenLibrary(_app);
+            _app.Tap(_bmmApp.LibraryPodcastsPage.BtnFraKare);
+            _app.Tap(_bmmApp.PodcastPage.Follow);
+
+            _app.WaitForElement(_bmmApp.PodcastPage.Following);
+            var downloadImages = _app.WaitForElement(_bmmApp.PodcastPage.DownloadedImage);
+            await Task.Delay(TimeSpan.FromSeconds(5));
+            Assert.AreEqual(3, downloadImages.Length);
         }
     }
 }

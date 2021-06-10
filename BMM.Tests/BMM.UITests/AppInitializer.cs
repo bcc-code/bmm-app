@@ -126,7 +126,7 @@ namespace BMM.UITests
 
                 platformApp.App = ConfigureApp
                     .Android
-                    .ApkFile(Configuration.PathToRoot + @"/BMM.UI.Android/bin/Release/org.brunstad.bmm.apk")
+                    .InstalledApp("org.brunstad.bmm")
                     .EnableLocalScreenshots()
                     .WaitTimes(new BmmWaitTimes())
                     .StartApp();

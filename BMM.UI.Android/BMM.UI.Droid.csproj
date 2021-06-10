@@ -242,7 +242,6 @@
     <Compile Include="Application\ValueConverters\DeleteCommandValueConverter.cs" />
     <Compile Include="Application\Helpers\MvxRecyclerViewOnScrollListener.cs" />
     <Compile Include="Application\Adapters\LoadMoreRecyclerAdapter.cs" />
-    <Compile Include="Application\ValueConverters\OfflineAvailableTrackValueConverter.cs" />
     <Compile Include="Application\Fragments\TrackInfoFragment.cs" />
     <Compile Include="BmmApplication.cs" />
     <Compile Include="Application\TemplateSelectors\DocumentTemplateSelector.cs" />
