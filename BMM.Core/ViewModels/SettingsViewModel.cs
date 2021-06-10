@@ -222,10 +222,15 @@ namespace BMM.Core.ViewModels
                 items.Add(_externalStorage);
             }
 
-            ObserveMobileNetworkAllowed(mobileNetworkDownloadSetting);
-            ObservePushNotificationStatus(pushNotificationsSetting);
-            ObserveAutoplayEnabled(autoplaySetting);
-            ObserveStreakHidden(streakHiddenSetting);
+            ObserveCheckbox(mobileNetworkDownloadSetting, MobileNetworkAllowedChanged);
+            ObserveCheckbox(pushNotificationsSetting,
+                notificationsEnabled =>
+                {
+                    _settingsStorage.SetPushNotificationsAllowed(notificationsEnabled);
+                    _messenger.Publish(new PushNotificationsStatusChangedMessage(this, notificationsEnabled));
+                });
+            ObserveCheckbox(autoplaySetting, isChecked => _settingsStorage.SetAutoplayEnabled(isChecked));
+            ObserveCheckbox(streakHiddenSetting, isChecked => _settingsStorage.SetStreakHidden(isChecked));
 
             _analytics.LogEvent("Open Settings screen",
                 new Dictionary<string, object>
@@ -329,47 +334,21 @@ namespace BMM.Core.ViewModels
             throw new Exception("Forcefully crash the app!");
         }
 
-        private void ObserveMobileNetworkAllowed(ICheckboxListItem checkbox)
+        private void MobileNetworkAllowedChanged(bool mobileNetworkDownloadAllowed)
+        {
+            _settingsStorage.SetMobileNetworkDownloadAllowed(mobileNetworkDownloadAllowed);
+            _mediaDownloader.SynchronizeOfflineTracks();
+            _messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, mobileNetworkDownloadAllowed));
+        }
+
+        private void ObserveCheckbox(ICheckboxListItem checkbox, Action<bool> onChanged)
         {
             checkbox.PropertyChanged += (sender, e) =>
             {
                 if (e.PropertyName == "IsChecked")
                 {
-                    var mobileNetworkDownloadAllowed = checkbox.IsChecked;
-                    _settingsStorage.SetMobileNetworkDownloadAllowed(mobileNetworkDownloadAllowed);
-                    _mediaDownloader.SynchronizeOfflineTracks();
-                    _messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, mobileNetworkDownloadAllowed));
-                }
-            };
-        }
-
-        private void ObserveAutoplayEnabled(ICheckboxListItem checkbox)
-        {
-            checkbox.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsChecked")
-                    _settingsStorage.SetAutoplayEnabled(checkbox.IsChecked);
-            };
-        }
-
-        private void ObserveStreakHidden(ICheckboxListItem checkbox)
-        {
-            checkbox.PropertyChanged += (sennder, e) =>
-            {
-                if (e.PropertyName == "IsChecked")
-                    _settingsStorage.SetStreakHidden(checkbox.IsChecked);
-            };
-        }
-
-        private void ObservePushNotificationStatus(ICheckboxListItem checkbox)
-        {
-            checkbox.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsChecked")
-                {
-                    var notificationsEnabled = checkbox.IsChecked;
-                    _settingsStorage.SetPushNotificationsAllowed(notificationsEnabled);
-                    _messenger.Publish(new PushNotificationsStatusChangedMessage(this, notificationsEnabled));
+                    var newValue = checkbox.IsChecked;
+                    onChanged(newValue);
                 }
             };
         }
