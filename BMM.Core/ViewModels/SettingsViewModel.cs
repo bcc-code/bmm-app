@@ -185,6 +185,13 @@ namespace BMM.Core.ViewModels
                 IsChecked = await _settingsStorage.GetAutoplayEnabled()
             };
 
+            var streakHiddenSetting = new CheckboxListItem
+            {
+                Title = "Hide streak",
+                Text = "Hide your streak and perfect week counter",
+                IsChecked = await _settingsStorage.GetStreakHidden()
+            };
+
             var mobileNetworkDownloadSetting = new CheckboxListItem
             {
                 Title = TextSource.GetText("OptionDownloadMobileNetworkHeader"),
@@ -200,6 +207,7 @@ namespace BMM.Core.ViewModels
             };
 
             items.Add(autoplaySetting);
+            items.Add(streakHiddenSetting);
             items.Add(mobileNetworkDownloadSetting);
             items.Add(pushNotificationsSetting);
 
@@ -217,6 +225,7 @@ namespace BMM.Core.ViewModels
             ObserveMobileNetworkAllowed(mobileNetworkDownloadSetting);
             ObservePushNotificationStatus(pushNotificationsSetting);
             ObserveAutoplayEnabled(autoplaySetting);
+            ObserveStreakHidden(streakHiddenSetting);
 
             _analytics.LogEvent("Open Settings screen",
                 new Dictionary<string, object>
@@ -340,6 +349,15 @@ namespace BMM.Core.ViewModels
             {
                 if (e.PropertyName == "IsChecked")
                     _settingsStorage.SetAutoplayEnabled(checkbox.IsChecked);
+            };
+        }
+
+        private void ObserveStreakHidden(ICheckboxListItem checkbox)
+        {
+            checkbox.PropertyChanged += (sennder, e) =>
+            {
+                if (e.PropertyName == "IsChecked")
+                    _settingsStorage.SetStreakHidden(checkbox.IsChecked);
             };
         }
 

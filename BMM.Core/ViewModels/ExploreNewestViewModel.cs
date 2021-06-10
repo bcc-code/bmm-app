@@ -5,6 +5,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
+using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
@@ -18,6 +19,7 @@ namespace BMM.Core.ViewModels
     public class ExploreNewestViewModel : DocumentsViewModel
     {
         private readonly IStreakObserver _streakObserver;
+        private readonly ISettingsStorage _settings;
 
         public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
 
@@ -27,9 +29,10 @@ namespace BMM.Core.ViewModels
 
         private MvxSubscriptionToken _listeningStreakToken;
 
-        public ExploreNewestViewModel(IStreakObserver streakObserver, IMvxMessenger messenger)
+        public ExploreNewestViewModel(IStreakObserver streakObserver, IMvxMessenger messenger, ISettingsStorage settings)
         {
             _streakObserver = streakObserver;
+            _settings = settings;
             FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
@@ -87,8 +90,9 @@ namespace BMM.Core.ViewModels
         {
             var docs = (await Client.Discover.GetDocuments(policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
+            var hideStreak = await _settings.GetStreakHidden();
             HideTeasers(docs);
-            var filteredDocs = HideTeaserPodcastsInList(docs);
+            var filteredDocs = HideStreakInList( hideStreak, HideTeaserPodcastsInList(docs));
             TranslateDocs(filteredDocs);
             return filteredDocs;
         }
@@ -114,6 +118,13 @@ namespace BMM.Core.ViewModels
             var tracksInSameSection = GetAdjacentTracksInSameSection(item);
 
             return base.DocumentAction(item, tracksInSameSection);
+        }
+
+        private IList<Document> HideStreakInList(bool hideStreak, IList<Document> documents)
+        {
+            if (hideStreak)
+                return documents.Where(d => d.DocumentType != DocumentType.ListeningStreak).ToList();
+            return documents;
         }
 
         private IList<Document> HideTeaserPodcastsInList(IList<Document> documents)

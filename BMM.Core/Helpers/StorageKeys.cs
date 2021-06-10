@@ -9,13 +9,13 @@
 
         public static readonly string MobileDownloadEnabled = "mobile_download_enabled";
         public static readonly string AutoplayEnabled = "autoplay_enabled";
+        public static readonly string StreakHidden = "streak_hidden";
         public static readonly string PushNotificationsEnabled = "push_notifications_enabled";
         public static readonly string UseExternalStorage = "use_external_storage";
 
         public static readonly string LocalPodcasts = "local_podcasts";
         public static readonly string AutomaticallyDownloadedTracks = "local_podcasts_automatic_download";
         public static readonly string LocalTrackCollections = "local_track_collections";
-        public static readonly string MyTracksCollectionId = "my_tracks_collection_id";
 
         public const string UnfinishedTrackPlayedEvent = "play_statistics";
         public const string FinishedTrackPlayedEvents = "finished_track_played_events";
