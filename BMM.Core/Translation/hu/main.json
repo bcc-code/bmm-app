@@ -256,6 +256,8 @@
     "HeadlineSettings": "Beállítások",
     "OptionAutoplayHeader": "Automatikus lejátszás",
     "OptionAutoplayText": "Zene lejátszása a mai “Fra Kåre” adás meghallgatása után",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your streak and perfect week counter",
     "OptionEnablePushHeader": "Értesítések engedélyezése",
     "OptionPushNotifications": "Push-értesítések",
     "OptionPushNotificationsSubtitle": "Push-értesítések aktiválása a követett podcastokra",
