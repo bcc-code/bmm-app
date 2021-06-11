@@ -53,7 +53,8 @@
     "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
     "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "Juhuesitus"
+    "ShufflePlay": "Juhuesitus",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Arhiiv",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Kas soovite tõesti unfollow selles podcast?",
     "MobileDownloadDisabled": "Võimaldab rippida seaded automaatselt uusimate muusikapalade allalaadimine mobiilsidevõrgu kaudu",
     "ToggleFollowOfflineError": "Sa pead olema järgida või unfollow podcast",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Believe in the God of miracles",
     "AslaksenTheme2": "I have been crucified with Christ",
     "AslaksenTheme3": "To fear and love God",
     "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Esitusloend"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Esitusloendid"
@@ -252,6 +256,8 @@
     "HeadlineSettings": "Seaded",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "Luba teated",
     "OptionPushNotifications": "Dünaamilise pisikuva teatised",
     "OptionPushNotificationsSubtitle": "Push teatised veebiaadressi määramiseks järgige lubama",
@@ -286,7 +292,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Lae alla",
+    "Shuffle": "Shuffle",
+    "Play": "Esita"
   },
   "TrackCollectionViewModel": {
     "Title": "Esitusloend",
@@ -309,7 +319,7 @@
     "MobileDownloadDisabled": "Jätkamiseks võimaldage allalaadimine mobiilse andmesidevõrgu abil",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Selles esitusloendis on uusi üksusi. Kas soovid jätkata allalaadimist?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

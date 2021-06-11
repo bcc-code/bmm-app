@@ -53,7 +53,8 @@
     "FailedToAdd": "Failed to add the track to the playlist. Please try again later.",
     "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "洗牌玩"
+    "ShufflePlay": "洗牌玩",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "存档",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Do you really want to unfollow this podcast?",
     "MobileDownloadDisabled": "Enable downloading via mobile network in settings to download the latest tracks automatically",
     "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Believe in the God of miracles",
     "AslaksenTheme2": "I have been crucified with Christ",
     "AslaksenTheme3": "To fear and love God",
     "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "播放列表"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "播放列表"
@@ -252,6 +256,8 @@
     "HeadlineSettings": "Settings",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "启用推式通知",
     "OptionPushNotifications": "推式通知",
     "OptionPushNotificationsSubtitle": "启用推式通知播客你追随",
@@ -286,7 +292,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "下载",
+    "Shuffle": "Shuffle",
+    "Play": "播放"
   },
   "TrackCollectionViewModel": {
     "Title": "播放列表",
@@ -309,7 +319,7 @@
     "MobileDownloadDisabled": "启用通过移动网络在设置才可继续下载",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "该播放列表中有新的项目。你想要恢复下载吗？",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

@@ -53,7 +53,8 @@
     "FailedToAdd": "Kunne ikke legge til sporet i spillelisten. Prøv igjen senere.",
     "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
     "TrackAlreadyExistInTrackCollection": "Spor allerede eksisterer in spilleliste {0}",
-    "ShufflePlay": "Spill blandet"
+    "ShufflePlay": "Spill blandet",
+    "PluralAlbums": "{0} album"
   },
   "AlbumsViewModel": {
     "Title": "Arkiv",
@@ -226,6 +227,9 @@
     "AslaksenTheme3": "Frykte og elske Gud",
     "AslaksenTheme4": "Ydmykhet er selve saken"
   },
+  "CuratedPlaylistViewModel": {
+    "Title": "Spilleliste"
+  },
   "CuratedPlaylistsViewModel": {
     "Title": "Spillelister"
   },
@@ -252,6 +256,8 @@
     "HeadlineSettings": "Innstillinger",
     "OptionAutoplayHeader": "Automatisk avspilling",
     "OptionAutoplayText": "Spill musikk automatisk etter dagens episode av Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "Aktiver push-varsling",
     "OptionPushNotifications": "Push-varslinger",
     "OptionPushNotificationsSubtitle": "Aktiver push-varsler for podcaster du følger",
@@ -286,7 +292,11 @@
     "RemoveAllFiles": "Vil du velge annen lagringsplass og fjerne offline spor?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} spor",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Last ned",
+    "Shuffle": "Shuffle",
+    "Play": "Spill av"
   },
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
@@ -309,7 +319,7 @@
     "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillinger for å fortsette",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle spor",
     "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?",
-    "Private": "private"
+    "Private": "Privat"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Rediger spilleliste",

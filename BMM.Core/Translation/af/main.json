@@ -53,7 +53,8 @@
     "FailedToAdd": "Misluk om die spoor by die snitlys byte voeg. Probeer asseblief later weer.",
     "AlbumFailedToAddAlreadyExists": "Hierdie album is reeds in jou speellys.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "Skommel Speel"
+    "ShufflePlay": "Skommel Speel",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Argief",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Wil jy regtig unfollow hierdie potgooi?",
     "MobileDownloadDisabled": "In staat stel om via mobiele netwerk in instellings af te laai die nuutste snitte outomaties af te laai",
     "ToggleFollowOfflineError": "Jy moet in aanlyn-modus te volg of unfollow 'n potgooi",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Believe in the God of miracles",
     "AslaksenTheme2": "I have been crucified with Christ",
     "AslaksenTheme3": "To fear and love God",
     "AslaksenTheme4": "Humility is everything"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Snitlys"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Speellys"
@@ -252,6 +256,8 @@
     "HeadlineSettings": "Instellings",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "Aktiveer stoot notifikasies",
     "OptionPushNotifications": "Stoot kennisgewings",
     "OptionPushNotificationsSubtitle": "Ontsper stoot kennisgewings vir potgooie jy volg",
@@ -286,7 +292,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Laai af",
+    "Shuffle": "Shuffle",
+    "Play": "Speel"
   },
   "TrackCollectionViewModel": {
     "Title": "Snitlys",
@@ -309,7 +319,7 @@
     "MobileDownloadDisabled": "Aktiveer aflaai via selfoon netwerk in instellings om voort te gaan",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

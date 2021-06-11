@@ -53,7 +53,8 @@
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
     "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "Воспроизведение в случайном порядке"
+    "ShufflePlay": "Воспроизведение в случайном порядке",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Архив",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Do you really want to unfollow this podcast?",
     "MobileDownloadDisabled": "Enable downloading via mobile network in settings to download the latest tracks automatically",
     "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Верь в Бога чудес!",
     "AslaksenTheme2": "Я сораспят со Христом",
     "AslaksenTheme3": "Бояться и любить Бога",
     "AslaksenTheme4": "Всё дело в смирении"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Плейлист"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Списки воспроизведения"
@@ -252,6 +256,8 @@
     "HeadlineSettings": "Параметры",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "Включить \"Push\" - уведомления",
     "OptionPushNotifications": "Push Notifications",
     "OptionPushNotificationsSubtitle": "Enable push notifications for podcasts you follow",
@@ -286,7 +292,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Скачать",
+    "Shuffle": "Shuffle",
+    "Play": "Играть"
   },
   "TrackCollectionViewModel": {
     "Title": "Плейлист",
@@ -309,7 +319,7 @@
     "MobileDownloadDisabled": "Чтобы продолжить, в настройках разрешить загрузку через сеть мобильной связи",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

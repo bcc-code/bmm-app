@@ -53,7 +53,8 @@
     "FailedToAdd": "No se pudo agregar la pista a la lista de reproducción. Inténtalo de nuevo más tarde.",
     "AlbumFailedToAddAlreadyExists": "Este álbum ya está en la lista de reproducción.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "Aleatorio"
+    "ShufflePlay": "Aleatorio",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Archivo",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "¿Realmente quieres dejar de seguir este podcast?",
     "MobileDownloadDisabled": "Permitir la descarga a través de la red móvil en ajustes para descargar automáticamente las últimas pistas",
     "ToggleFollowOfflineError": "Usted necesita estar en modo online para seguir o dejar de seguir un podcast",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Cree en el Dios de los milagros",
     "AslaksenTheme2": "Con Cristo estoy juntamente crucificado",
     "AslaksenTheme3": "Temer y amar a Dios",
     "AslaksenTheme4": "Humildad es todo el asunto"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Lista de reproducción"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Listas de reproducción"
@@ -252,6 +256,8 @@
     "HeadlineSettings": "Configuración",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "Activar notificaciones push",
     "OptionPushNotifications": "Notificaciones push",
     "OptionPushNotificationsSubtitle": "Activar notificaciones push para podcasts que sigues",
@@ -286,7 +292,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Descarga",
+    "Shuffle": "Shuffle",
+    "Play": "Reproducir"
   },
   "TrackCollectionViewModel": {
     "Title": "Lista de reproducción",
@@ -309,7 +319,7 @@
     "MobileDownloadDisabled": "Habilitar descarga vía red móvil en ajustes para continuar",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Hay nuevos elementos en esta lista de reproducción. ¿Desea reanudar la descarga?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

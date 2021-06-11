@@ -53,7 +53,8 @@
     "FailedToAdd": "Skladbe ni bilo mogoče dodati na seznam predvajanja. Prosim, ponovno poskusite kasneje.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že dodan na tvoj seznam predvajanja.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
-    "ShufflePlay": "Naključno predvajanje"
+    "ShufflePlay": "Naključno predvajanje",
+    "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Arhiv",
@@ -218,13 +219,16 @@
     "UnfollowConfirm": "Ali se res želiš odjaviti od tega podcasta?",
     "MobileDownloadDisabled": "Omogoči prenos preko mobilnega omrežja v nastavitvah za avtomatični prenos najnovejših skladb",
     "ToggleFollowOfflineError": "Moraš biti v online načinu, če želiš slediti ali se odjaviti od podcasta",
-    "Week": "week {0}",
+    "Week": "Week {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Verjemi v Boga čudežev",
     "AslaksenTheme2": "Jaz sem križan s Kristusom",
     "AslaksenTheme3": "Bati se in ljubiti Boga",
     "AslaksenTheme4": "Ponižnost je vsa stvar"
+  },
+  "CuratedPlaylistViewModel": {
+    "Title": "Seznam predvajanja"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "Popis liste za slušanje"
@@ -252,6 +256,8 @@
     "HeadlineSettings": "Postavke",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "Omogoči prikazna obvestila",
     "OptionPushNotifications": "Potisna obvestila",
     "OptionPushNotificationsSubtitle": "Omogoči potisna obvestila za podcaste, ki jim slediš",
@@ -286,7 +292,11 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks"
+    "PluralTracks": "{0} tracks",
+    "PluralTracksLoaded": "{0} tracks loaded",
+    "Download": "Prenesi",
+    "Shuffle": "Shuffle",
+    "Play": "Predvajaj"
   },
   "TrackCollectionViewModel": {
     "Title": "Seznam predvajanja",
@@ -309,7 +319,7 @@
     "MobileDownloadDisabled": "Za nadaljevanje v nastavitvah omogočite prenos preko mobilnega omrežja",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?",
-    "Private": "private"
+    "Private": "Private"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
