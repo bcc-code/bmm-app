@@ -28,6 +28,10 @@ namespace BMM.UI.Droid.Application.Implementations
                 return false;
 
             var vmType = typeof(T);
+
+            if (CurrentFragmentManager.BackStackEntryCount < 1)
+                return false;
+
             return Enumerable.Range(0, CurrentFragmentManager.BackStackEntryCount - 1)
                     .Reverse()
                     .Any(index => GetAssociatedViewModelType(CurrentFragmentManager.FindFragmentByTag(

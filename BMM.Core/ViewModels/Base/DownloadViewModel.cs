@@ -18,14 +18,19 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels.Base
 {
-    public abstract class DownloadViewModel : DocumentsViewModel
+    public abstract class DownloadViewModel : DocumentsViewModel, ITrackListViewModel
     {
         private bool _isOfflineAvailable;
 
         public bool IsOfflineAvailable
         {
             get => _isOfflineAvailable;
-            protected set => SetProperty(ref _isOfflineAvailable, value);
+            protected set
+            {
+                SetProperty(ref _isOfflineAvailable, value);
+                RaisePropertyChanged(() => IsDownloaded);
+                RaisePropertyChanged(() => IsDownloading);
+            }
         }
 
         private int ToBeDownloadedCount => DownloadQueue.InitialDownloadCount;
@@ -42,7 +47,26 @@ namespace BMM.Core.ViewModels.Base
 
         public bool IsDownloading => IsOfflineAvailable && DownloadedFilesCount < ToBeDownloadedCount && ToBeDownloadedCount > 0;
 
+        public bool ShowDownloadButtons => true;
+
         public bool IsDownloaded => IsOfflineAvailable && !IsDownloading;
+
+        public abstract string Title { get; }
+
+        public virtual string Description => null;
+
+        public virtual bool ShowPlaylistIcon => false;
+
+        public abstract string Image { get; }
+
+        public bool UseCircularImage => false;
+
+        public bool ShowFollowButtons => false;
+
+        public bool ShowShuffleButton => true;
+        public bool ShowPlayButton => false;
+
+        public bool ShowTrackCount => true;
 
         public string DownloadingText => !IsDownloading
             ? ""
@@ -67,6 +91,9 @@ namespace BMM.Core.ViewModels.Base
         protected readonly IDownloadQueue DownloadQueue;
         protected readonly IConnection Connection;
         private readonly INetworkSettings _networkSettings;
+
+        public virtual bool ShowSharingInfo => false;
+        public virtual bool ShowImage => true;
 
         public DownloadViewModel(
             IStorageManager storageManager,
@@ -148,7 +175,9 @@ namespace BMM.Core.ViewModels.Base
             if (IsLoading)
                 return;
 
-            if (!IsOfflineAvailable)
+            var newIsOfflineAvailable = !IsOfflineAvailable;
+
+            if (newIsOfflineAvailable)
             {
                 var mobileNetworkDownloadAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
 
@@ -166,8 +195,9 @@ namespace BMM.Core.ViewModels.Base
                     return;
                 }
 
+                IsOfflineAvailable = newIsOfflineAvailable;
+
                 await DownloadAction();
-                IsOfflineAvailable = !IsOfflineAvailable;
                 await RaisePropertyChanged(() => IsDownloaded);
             }
             else
@@ -179,10 +209,11 @@ namespace BMM.Core.ViewModels.Base
                     return;
                 }
 
+                IsOfflineAvailable = newIsOfflineAvailable;
+
                 await DeleteAction();
 
                 await RaisePropertyChanged(() => Documents);
-                IsOfflineAvailable = !IsOfflineAvailable;
                 await RaisePropertyChanged(() => IsDownloaded);
             }
         }

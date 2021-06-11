@@ -24,8 +24,16 @@ namespace BMM.Core.ViewModels
         public Podcast Podcast
         {
             get => _podcast;
-            set => SetProperty(ref _podcast, value);
+            set
+            {
+                SetProperty(ref _podcast, value);
+                RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => Image);
+            }
         }
+
+        public string Title => Podcast.Title;
+        public string Image => Podcast.Cover;
     }
 }
 

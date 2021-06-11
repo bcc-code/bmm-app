@@ -27,7 +27,7 @@
                 local:MvxBind="Text Title"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_large"
-                android:textStyle="bold"
+                android:textFontWeight="700"
 				android:layout_gravity="center_vertical" />
         </LinearLayout>
     </RelativeLayout>

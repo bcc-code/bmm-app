@@ -1,4 +1,5 @@
-﻿using MvvmCross.Commands;
+﻿using System;
+using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.Models
@@ -18,14 +19,17 @@ namespace BMM.Core.Models
 
         public bool IsChecked
         {
-            get { return _isChecked; }
+            get => _isChecked;
             set
             {
                 _isChecked = value;
                 RaisePropertyChanged();
+                OnChanged?.Invoke(value);
             }
         }
 
         public IMvxCommand OnSelected { get; set; }
+
+        public Action<bool> OnChanged { get; set; }
     }
 }

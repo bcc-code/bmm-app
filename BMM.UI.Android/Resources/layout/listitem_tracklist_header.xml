@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:gravity="center">
+    <LinearLayout
+            android:background="@drawable/icon_playlist"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:MvxBind="Visibility Visibility(ShowPlaylistIcon)"/>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_height="160dp"
+            android:layout_width="160dp"
+            android:layout_marginBottom="8dp"
+            card_view:cardCornerRadius="16dp"
+            card_view:cardElevation="0dp"
+            card_view:MvxBind="Visibility Visibility(ShowImage); CardCircle UseCircularImage">
+        <ffimageloading.cross.MvxCachedImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:id="@+id/podcast_image"
+                card_view:MvxBind="LoadingPlaceholderImagePath 'placeholder_cover'; ErrorPlaceholderImagePath 'placeholder_cover'; ImagePath CoverUrlToFallbackImage(Image, 'placeholder_cover')"
+                android:src="@drawable/placeholder_cover"
+                android:layout_marginBottom="0.0dp" />
+    </androidx.cardview.widget.CardView>
+    <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp"
+            android:gravity="center"
+            android:textFontWeight="800"
+            style="@style/Heading2"
+            android:text="BUK Roadtrip with an extra long title crossing 2 lines"
+            app:MvxBind="Text Title">
+    </TextView>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Private"
+            android:layout_marginBottom="4dp"
+            app:MvxLang="Text Private"
+            app:MvxBind="Visibility Visibility(ShowSharingInfo)"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:lineSpacingExtra="4sp"
+            android:gravity="center"
+            android:text="Get the vibe going when travelling to camp. These songs will definitely get you in the right camp mood!"
+            android:layout_marginBottom="4dp"
+            app:MvxBind="Text Description; Visibility VisibilityString(Description)"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="16dp">
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                app:MvxBind="Visibility Visibility(ShowFollowButtons)">
+          <Button
+                  android:id="@+id/follow_button"
+                  android:text="Follow"
+                  style="@style/Button_Secondary"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:MvxLang="Text Follow"
+                  app:MvxBind="Click ToggleFollowingCommand; Visibility InvertedVisibility(IsFollowing)"/>
+          <Button
+                  android:id="@+id/following_button" 
+                  android:text="Following"
+                  style="@style/IconButton_Secondary"
+                  android:drawableLeft="@drawable/icon_notification"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:MvxLang="Text Following"
+                  app:MvxBind="Click ToggleFollowingCommand; Visibility Visibility(IsFollowing)"/>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                app:MvxBind="Visibility Visibility(ShowDownloadButtons)">
+          <Button
+                  android:text="Download"
+                  style="@style/IconButton_Secondary"
+                  android:drawableLeft="@drawable/icon_download"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:MvxLang="Text Download, Source=DocumentsTextSource"
+                  app:MvxBind="Click ToggleOfflineCommand; Visibility InvertedVisibility(IsOfflineAvailable)"/>
+          <ProgressBar
+                  android:layout_width="40dp"
+                  android:layout_height="40dp"
+                  android:layout_marginLeft="8dp"
+                  android:layout_marginRight="8dp"
+                  android:indeterminate="false"
+                  android:progressDrawable="@drawable/circular_progress_bar"
+                  android:background="@drawable/circular_shape"
+                  style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                  android:max="105"
+                  android:clickable="true"
+                  android:progress="65"
+                  app:MvxBind="Progress FloatProgressToInt(DownloadStatus, 100)+5; Click ToggleOfflineCommand; Visibility Visibility(IsDownloading) "/>
+          <Button
+                  style="@style/IconButton_Secondary"
+                  android:drawableLeft="@drawable/icon_tick"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:paddingRight="0dp"
+                  android:paddingLeft="8dp"
+                  android:minWidth="40dp"
+                  app:MvxBind="Click ToggleOfflineCommand; Visibility Visibility(IsDownloaded)"/>
+        </RelativeLayout>
+        <RelativeLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="23dp"
+           app:MvxBind="Visibility Visibility(ShowShuffleButton)">
+          <Button
+                  android:id="@+id/shuffle_button"
+                  android:text="Shuffle"
+                  style="@style/IconButton_Primary"
+                  android:drawableLeft="@drawable/icon_play_white"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  app:MvxLang="Text Shuffle, Source=DocumentsTextSource"
+                  app:MvxBind="Click ShufflePlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="23dp"
+                app:MvxBind="Visibility Visibility(ShowPlayButton)">
+            <Button
+                    android:text="Shuffle"
+                    style="@style/IconButton_Primary"
+                    android:drawableLeft="@drawable/icon_play_white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:MvxLang="Text Play, Source=DocumentsTextSource"
+                    app:MvxBind="Click PlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_height="1dp"
+            android:background="@color/track_divider_line"/>
+    <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="left"
+      app:MvxBind="Visibility Visibility(ShowTrackCount)">
+      <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="20dp"
+              android:layout_marginBottom="8dp"
+              android:layout_marginLeft="@dimen/track_padding"
+              android:textColor="@color/bright_gray"
+              android:text="23 tracks"
+              app:MvxBind="Text TrackCountString; Visibility InvertedVisibility(And(IsLoading, EqualTo(Documents.Count, 0)))"/>
+    </RelativeLayout>
+
+    <LinearLayout
+            app:MvxBind="Visibility Visibility(And(IsLoading, EqualTo(Documents.Count, 0)))"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_gravity="center"
+            android:layout_centerInParent="true">
+        <ProgressBar
+                style="@style/ProgressGreen"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar1"
+                android:layout_centerInParent="true" />
+    </LinearLayout>
+</LinearLayout>

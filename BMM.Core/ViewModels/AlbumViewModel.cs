@@ -9,11 +9,12 @@ using BMM.Api.Abstraction;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using MvvmCross.Commands;
+using MvvmCross.Localization;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>
+    public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, ITrackListViewModel
     {
         private int _id;
 
@@ -21,20 +22,26 @@ namespace BMM.Core.ViewModels
         /// While iOS reuses <see cref="BaseViewModel.OptionsAction"/> Android creates a new menu using these commands.
         /// </summary>
         public IMvxCommand AddToPlaylistCommand { get; }
-        public IMvxCommand AddToMyTracksCommand { get; }
+
         public IMvxCommand ShareCommand { get; }
 
         private Album _album;
         public Album Album
         {
             get => _album;
-            set => SetProperty(ref _album, value);
+            set
+            {
+                SetProperty(ref _album, value);
+                RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => Description);
+                RaisePropertyChanged(() => Image);
+                RaisePropertyChanged(() => ShowImage);
+            }
         }
 
         public AlbumViewModel(IShareLink shareLink)
         {
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddAlbumToTrackCollection(Album.Id));
-            AddToMyTracksCommand = new ExceptionHandlingCommand(async () => await AddAlbumToMyTracks(Album.Id));
             ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.For(_album));
 
             var audiobookStyler = new AudiobookPodcastInfoProvider(TrackInfoProvider);
@@ -73,8 +80,6 @@ namespace BMM.Core.ViewModels
             return $"{minutes} minutes {seconds} seconds";
         }
 
-        public bool IsShuffleAvailable => Documents.OfType<Track>().Any();
-
         /// <summary>
         /// In case we already have a title we can show the title immediately without waiting for <see cref="LoadItems"/>.
         /// </summary>
@@ -103,7 +108,31 @@ namespace BMM.Core.ViewModels
 
         private void UpdateView(object sender, NotifyCollectionChangedEventArgs e)
         {
-            RaisePropertyChanged(() => IsShuffleAvailable);
+            RaisePropertyChanged(() => ShowShuffleButton);
         }
+
+        public bool ShowSharingInfo => false;
+
+        public bool ShowDownloadButtons => false;
+
+        public bool IsDownloaded => false;
+
+        public string Title => Album?.Title;
+
+        public string Description => Album?.Description;
+
+        public bool ShowPlaylistIcon => false;
+        public bool ShowImage => Album?.Cover != null;
+        public string Image => Album?.Cover;
+        public bool UseCircularImage => false;
+
+        public bool ShowFollowButtons => false;
+
+        public bool ShowShuffleButton => Documents.OfType<Track>().Any();
+        public bool ShowPlayButton => false;
+
+        public bool ShowTrackCount => true;
+
+        public override string TrackCountString => Documents.OfType<Album>().Any() ? TextSource.GetText("PluralAlbums", Documents.OfType<Album>().Count()) : base.TrackCountString;
     }
 }

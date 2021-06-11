@@ -14,7 +14,7 @@
         android:layout_centerVertical="true"
         android:textColor="@color/black"
         android:textSize="@dimen/text_large"
-        android:textStyle="bold"
+        android:textFontWeight="700"
         android:paddingLeft="@dimen/element_margin_medium" />
     <RadioButton
         local:MvxBind="Checked IsSelected"

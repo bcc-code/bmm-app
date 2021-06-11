@@ -22,6 +22,9 @@ namespace BMM.UI.iOS
             if (request.ViewModelType == typeof(MiniPlayerViewModel))
             {
                 var tabBarViewController = TabBarViewController as MenuViewController;
+                if (tabBarViewController == null)
+                    return Task.FromResult(false);
+
                 foreach (var childViewController in tabBarViewController.ChildViewControllers.OfType<ContainmentViewController>())
                 {
                     // we create a view controller for each tab because we can't attach the same UIViewController so multiple ViewController

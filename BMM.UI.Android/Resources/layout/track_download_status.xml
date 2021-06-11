@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:local="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/track_download_icon"
+	local:MvxBind="Visibility OfflineAvailableTrack(.)"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:gravity="center">
+	<ImageView
+			android:src="@drawable/icon_download_pending"
+			android:id="@+id/downloadedIcon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			local:MvxBind="Visibility Visibility(DownloadStatusPending(.))" />
+	<ProgressBar
+			android:layout_width="16dp"
+			android:layout_height="16dp"
+			android:indeterminate="true"
+			android:indeterminateDrawable="@drawable/spinner_small"
+			local:MvxBind="Visibility Visibility(DownloadStatusProgress(.))" />
+	<ImageView
+			android:src="@drawable/icon_download_done"
+			android:id="@+id/downloadedIcon"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			local:MvxBind="Visibility Visibility(DownloadStatusDone(.))" />
+</LinearLayout>

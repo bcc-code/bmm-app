@@ -4,9 +4,6 @@ xmlns:local="http://schemas.android.com/apk/res-auto">
   android:id="@+id/menu_AddAlbumToPlaylist"
   local:showAsAction="never" />
   <item
-    android:id="@+id/menu_AddAlbumToMyTracks"
-    local:showAsAction="never" />
-  <item
     android:id="@+id/menu_ShareAlbum"
     local:showAsAction="never" />
 </menu>

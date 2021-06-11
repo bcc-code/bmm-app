@@ -12,11 +12,11 @@ using AndroidX.AppCompat.Widget;
 using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.ViewModels;
 using Google.Android.Material.AppBar;
 using MvvmCross;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
-using MvvmCross.Platforms.Android.Views.AppCompat;
 using MvvmCross.Platforms.Android.Views.Fragments;
 
 namespace BMM.UI.Droid.Application.Fragments
@@ -120,6 +120,10 @@ namespace BMM.UI.Droid.Application.Fragments
                 };
 
                 recyclerView.AddOnScrollListener(onScrollListener);
+            }
+            else if (ViewModel is ITrackListViewModel)
+            {
+                recyclerView.Adapter = CreateAdapter();
             }
 
             recyclerView.SetLayoutManager(layoutManager);

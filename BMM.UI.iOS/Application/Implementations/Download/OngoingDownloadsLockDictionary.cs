@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
+using Foundation;
 
 namespace BMM.UI.iOS.Implementations.Download
 {
@@ -11,7 +12,7 @@ namespace BMM.UI.iOS.Implementations.Download
     /// </summary>
     public class OngoingDownloadsLockDictionary
     {
-        private readonly Dictionary<string, OngoingDownload> _downloads = new Dictionary<string, OngoingDownload>();
+        private readonly Dictionary<System.nuint, OngoingDownload> _downloads = new Dictionary<System.nuint, OngoingDownload>();
         private readonly ReaderWriterLockSlim _downloadsLock = new ReaderWriterLockSlim();
 
         public void Add(OngoingDownload download)
@@ -19,7 +20,7 @@ namespace BMM.UI.iOS.Implementations.Download
             _downloadsLock.EnterWriteLock();
             try
             {
-                _downloads.Add(download.Downloadable.Url, download);
+                _downloads.Add(download.DownloadTask.TaskIdentifier, download);
             }
             finally
             {
@@ -27,13 +28,13 @@ namespace BMM.UI.iOS.Implementations.Download
             }
         }
 
-        public OngoingDownload? GetByUrl(string url)
+        public OngoingDownload? GetDownloadByTask(NSUrlSessionTask task)
         {
             _downloadsLock.EnterReadLock();
             try
             {
-                if (_downloads.ContainsKey(url))
-                    return _downloads[url];
+                if (_downloads.ContainsKey(task.TaskIdentifier))
+                    return _downloads[task.TaskIdentifier];
 
                 return null;
             }
@@ -43,13 +44,13 @@ namespace BMM.UI.iOS.Implementations.Download
             }
         }
 
-        public void RemoveByUrl(string url)
+        public void RemoveDownloadForTask(NSUrlSessionTask task)
         {
             _downloadsLock.EnterWriteLock();
             try
             {
-                if (_downloads.ContainsKey(url))
-                    _downloads.Remove(url);
+                if (_downloads.ContainsKey(task.TaskIdentifier))
+                    _downloads.Remove(task.TaskIdentifier);
             }
             finally
             {

@@ -4,6 +4,7 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
+    
     <androidx.cardview.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -51,7 +52,7 @@
                     android:layout_marginBottom="16dp"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:textFontWeight="700"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:lineHeight="24sp"
@@ -109,7 +110,8 @@
                     android:gravity="center_vertical"
                     android:textColor="@color/black"
                     android:textSize="16sp"
-                    android:textStyle="bold"
+                    android:textFontWeight="700"
+                    android:letterSpacing="0"
 
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/chevron_image"

@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Api;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 
@@ -31,8 +34,15 @@ namespace BMM.Core.Implementations.Podcasts
                 if (automaticallyDownloadedTracks <= 0)
                     continue;
 
-                var podcastTracks = await _client.Podcast.GetTracks(podcastId, CachePolicy.UseCacheAndWaitForUpdates);
-                tracks.AddRange(podcastTracks.Take(automaticallyDownloadedTracks));
+                try
+                {
+                    var podcastTracks = await _client.Podcast.GetTracks(podcastId, CachePolicy.UseCacheAndWaitForUpdates);
+                    tracks.AddRange(podcastTracks.Take(automaticallyDownloadedTracks));
+                }
+                catch (NotFoundException)
+                {
+                    await SaveFollowedPodcast(followedPodcasts.Except(new []{podcastId}));
+                }
             }
 
             return tracks;
@@ -58,6 +68,11 @@ namespace BMM.Core.Implementations.Podcasts
         public async Task<ICollection<int>> GetFollowedPodcasts()
         {
             return await _blobCache.GetOrCreateObject(StorageKeys.LocalPodcasts, () => new List<int>(), null);
+        }
+
+        private async Task SaveFollowedPodcast(IEnumerable<int> podcastIds)
+        {
+            await _blobCache.InsertObject(StorageKeys.LocalPodcasts, podcastIds);
         }
     }
 }

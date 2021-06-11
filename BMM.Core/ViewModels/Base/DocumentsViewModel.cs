@@ -79,6 +79,8 @@ namespace BMM.Core.ViewModels.Base
 
         public IMvxCommand ShufflePlayCommand { get; private set; }
 
+        public IMvxCommand PlayCommand { get; private set; }
+
         public MvxObservableCollection<Document> Documents
         {
             get => _documents;
@@ -96,8 +98,9 @@ namespace BMM.Core.ViewModels.Base
             return list.Where(Filter.WherePredicate).ToList();
         }
 
-        public string TrackCountString => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel))
-            .GetText("PluralTracks", Documents.Count);
+        public IMvxLanguageBinder DocumentsTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel));
+
+        public virtual string TrackCountString => DocumentsTextSource.GetText("PluralTracks", Documents.Count);
 
         public DocumentsViewModel(IDocumentFilter documentFilter = null, IMvxLanguageBinder textSource = null)
             : base(textSource)
@@ -116,6 +119,17 @@ namespace BMM.Core.ViewModels.Base
             {
                 ConnectionStatus = message.ConnectionStatus;
                 RefreshDocumentsList();
+            });
+
+            PlayCommand = new ExceptionHandlingCommand(async () =>
+            {
+                var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
+                var tracks = Documents.OfType<IMediaTrack>().ToList();
+
+                if (tracks.Any())
+                {
+                    await mediaPlayer.Play(tracks, tracks.First(), GetType().Name);
+                }
             });
 
             ShufflePlayCommand = new ExceptionHandlingCommand(async () =>

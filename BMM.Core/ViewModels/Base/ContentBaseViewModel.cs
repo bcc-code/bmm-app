@@ -7,7 +7,6 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.FileStorage;
-using BMM.Core.Implementations.MyTracks;
 using BMM.Core.Implementations.TrackCollections;
 using MvvmCross;
 using MvvmCross.Commands;
@@ -17,8 +16,6 @@ namespace BMM.Core.ViewModels.Base
     public class ContentBaseViewModel : DocumentsViewModel
     {
         public IMvxAsyncCommand CreatePlaylistCommand { get; private set; }
-
-        protected TrackCollection MyTracksCollection = new TrackCollection();
 
         protected readonly IOfflineTrackCollectionStorage _downloader;
         protected readonly IStorageManager _storageManager;
@@ -63,21 +60,6 @@ namespace BMM.Core.ViewModels.Base
             return success;
         }
 
-        protected IList<TrackCollection> ExcludeMyTracksCollection(IList<TrackCollection> allCollections)
-        {
-            foreach (TrackCollection collection in allCollections)
-            {
-                if (collection.Name.Equals(MyTracksManager.MyTracksPlaylistName))
-                {
-                    MyTracksCollection = collection;
-                    allCollections.Remove(collection);
-                    break;
-                }
-            }
-
-            return allCollections;
-        }
-
         public bool IsOfflineAvailable(TrackCollection trackCollection)
         {
             return _downloader.IsOfflineAvailable(trackCollection);
@@ -90,10 +72,7 @@ namespace BMM.Core.ViewModels.Base
             if (allCollections == null)
                 return null;
 
-            allCollections = allCollections.OrderByDescending(c => c.Id).ToList();
-            var allCollectionsExceptMyTracks = ExcludeMyTracksCollection(allCollections);
-
-            return allCollectionsExceptMyTracks;
+            return allCollections.OrderByDescending(c => c.Id).ToList();
         }
 
         protected override async Task DocumentAction(Document item, IList<Track> list)

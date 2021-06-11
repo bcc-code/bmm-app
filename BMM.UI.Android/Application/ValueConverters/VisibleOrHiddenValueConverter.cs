@@ -12,4 +12,12 @@ namespace BMM.UI.Droid.Application.ValueConverters
             return value ? MvxVisibility.Visible : MvxVisibility.Hidden;
         }
     }
+
+    public class VisibilityStringValueConverter : MvxBaseVisibilityValueConverter<string>
+    {
+        protected override MvxVisibility Convert(string value, object parameter, CultureInfo culture)
+        {
+            return string.IsNullOrEmpty(value) ? MvxVisibility.Collapsed : MvxVisibility.Visible;
+        }
+    }
 }

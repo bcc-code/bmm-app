@@ -23,6 +23,12 @@ namespace BMM.Core.Implementations.Connection
             return result ?? _config.AutoplayEnabledDefaultSetting;
         }
 
+        public async Task<bool> GetStreakHidden()
+        {
+            var result = await _storage.GetOrCreateObject<bool?>(StorageKeys.StreakHidden, () => null);
+            return result ?? false;
+        }
+
         public async Task<bool> GetMobileNetworkDownloadAllowed()
         {
             return await _storage.GetOrCreateObject(StorageKeys.MobileDownloadEnabled, () => GlobalConstants.MobileDownloadEnabledDefault);
@@ -56,6 +62,11 @@ namespace BMM.Core.Implementations.Connection
         public async Task SetAutoplayEnabled(bool autoplayEnabled)
         {
             await _storage.InsertObject(StorageKeys.AutoplayEnabled, autoplayEnabled);
+        }
+
+        public async Task SetStreakHidden(bool streakHidden)
+        {
+            await _storage.InsertObject(StorageKeys.StreakHidden, streakHidden);
         }
     }
 }

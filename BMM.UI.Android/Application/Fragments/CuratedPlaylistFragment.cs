@@ -25,26 +25,9 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.CuratedPlaylistFragment")]
     public class CuratedPlaylistFragment : BaseFragment<CuratedPlaylistViewModel>
     {
-        private string _toolbarTitle;
-
-        public string ToolbarTitle
+        protected override MvxRecyclerAdapter CreateAdapter()
         {
-            get { return _toolbarTitle; }
-            set
-            {
-                _toolbarTitle = value;
-                CollapsingToolbar.SetExpandedTitleColor(Android.Resource.Color.Transparent);
-                CollapsingToolbar.SetTitle(_toolbarTitle);
-            }
-        }
-
-        public override void OnStart()
-        {
-            base.OnStart();
-
-            var set = this.CreateBindingSet<CuratedPlaylistFragment, CuratedPlaylistViewModel>();
-            set.Bind().For(sa => sa.ToolbarTitle).To(vm => vm.CuratedPlaylist.Title);
-            set.Apply();
+            return new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
         }
 
         public override void OnDestroy()
@@ -77,37 +60,6 @@ namespace BMM.UI.Droid.Application.Fragments
             }
         }
 
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-        {
-            var view = base.OnCreateView(inflater, container, savedInstanceState);
-
-            var swipeToRefresh = view.FindViewById<MvxSwipeRefreshLayout>(Resource.Id.refresher);
-            var appBar = view.FindViewById<AppBarLayout>(Resource.Id.appbar);
-
-            if (appBar != null && swipeToRefresh != null)
-                appBar.OffsetChanged += (sender, args) => swipeToRefresh.Enabled = args.VerticalOffset == 0;
-
-            ViewModel.PropertyChanged += OnViewModelPropertyChanged;
-
-            InitRecyclerView(view);
-
-            return view;
-        }
-
-        protected override int FragmentId => Resource.Layout.fragment_curatedplaylist;
-
-        protected override Color ActionBarColor => new Color(ContextCompat.GetColor(Context, Android.Resource.Color.Transparent));
-
-        private void InitRecyclerView(View view)
-        {
-            var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
-            if (recyclerView == null)
-                return;
-            recyclerView.Adapter = new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
-            recyclerView.HasFixedSize = true;
-
-            var layoutManager = new LinearLayoutManager(ParentActivity);
-            recyclerView.SetLayoutManager(layoutManager);
-        }
+        protected override int FragmentId => Resource.Layout.fragment_tracklist;
     }
 }

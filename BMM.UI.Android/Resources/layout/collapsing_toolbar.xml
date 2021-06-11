@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        local:expandedTitleTextAppearance="@style/AppTheme.CollapseBarTextAppearance"
+        local:collapsedTitleTextAppearance="@style/AppTheme.CollapseBarTextAppearance.Collapsed"
+        local:expandedTitleTextAppearance="@style/AppTheme.CollapseBarTextAppearance.Expanded"
         local:layout_scrollFlags="scroll|exitUntilCollapsed"
         local:expandedTitleMarginStart="16dp"
         local:expandedTitleMarginBottom="22dp">

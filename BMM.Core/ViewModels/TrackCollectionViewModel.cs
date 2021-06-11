@@ -24,6 +24,10 @@ namespace BMM.Core.ViewModels
 
         public bool IsConnectionOnline => Connection.GetStatus() == ConnectionStatus.Online;
 
+        public override bool ShowSharingInfo => true;
+
+        public override bool ShowImage => false;
+
         public TrackCollectionViewModel(
             IStorageManager storageManager,
             IDownloadedTracksOnlyFilter documentFilter,

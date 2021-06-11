@@ -55,10 +55,10 @@
             app:layout_constraintBottom_toBottomOf="@id/fraKareImage"
             android:layout_marginLeft="@dimen/margin_small"
             android:text="Fra Kåre"
-            android:textStyle="bold"
             android:lineSpacingExtra="6sp"
             android:textColor="@color/white"
             android:textSize="18sp"
+            android:textFontWeight="700"
             local:MvxBind="Text ViewModel.FraKaareTeaserViewModel.Podcast.Title" />
 
         <LinearLayout
@@ -76,12 +76,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
+                android:textFontWeight="700"
                 android:textSize="16sp"
-                android:textStyle="bold"
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="2sp"
                 android:text="Show all"
-                android:fontFamily="sans-serif-medium"
                 local:MvxLang="Text ShowAll, Source=ViewModel.TextSource"
                 local:MvxBind="Click ViewModel.FraKaareTeaserViewModel.ShowAllCommand" />
 
@@ -136,7 +135,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:textSize="@dimen/text_large"
-            android:fontFamily="sans-serif-black"
+            android:textFontWeight="700"
+            android:letterSpacing="0"
             local:MvxLang="Text PlayRandom, Source=ViewModel.TextSource"
             local:MvxBind="Click ViewModel.FraKaareTeaserViewModel.PlayRandomCommand"
             android:drawableLeft="@drawable/icon_shuffle_podcast" />
