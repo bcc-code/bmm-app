@@ -256,6 +256,8 @@
     "HeadlineSettings": "Postavke",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your streak and perfect week counter",
     "OptionEnablePushHeader": "Enable push notifications",
     "OptionPushNotifications": "Push Notifications",
     "OptionPushNotificationsSubtitle": "Enable push notifications for podcasts you follow",
