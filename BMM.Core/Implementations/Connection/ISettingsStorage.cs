@@ -14,5 +14,9 @@ namespace BMM.Core.Implementations.Connection
         Task<bool> GetAutoplayEnabled();
 
         Task SetAutoplayEnabled(bool autoplayEnabled);
+
+        Task<bool> GetStreakHidden();
+
+        Task SetStreakHidden(bool streakHidden);
     }
 }

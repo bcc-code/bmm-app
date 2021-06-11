@@ -172,36 +172,47 @@ namespace BMM.Core.ViewModels
 
         private async Task<List<IListItem>> BuildSettingsSection()
         {
-            var items = new List<IListItem>();
-
-            var header = new SectionHeader {ShowDivider = false, Title = TextSource.GetText("HeadlineSettings")};
-
-            items.Add(header);
-
-            var autoplaySetting = new CheckboxListItem
+            var items = new List<IListItem>
             {
-                Title = TextSource.GetText("OptionAutoplayHeader"),
-                Text = TextSource.GetText("OptionAutoplayText"),
-                IsChecked = await _settingsStorage.GetAutoplayEnabled()
+                new SectionHeader {ShowDivider = false, Title = TextSource.GetText("HeadlineSettings")},
+                new CheckboxListItem
+                {
+                    Title = TextSource.GetText("OptionAutoplayHeader"),
+                    Text = TextSource.GetText("OptionAutoplayText"),
+                    IsChecked = await _settingsStorage.GetAutoplayEnabled(),
+                    OnChanged = isChecked => _settingsStorage.SetAutoplayEnabled(isChecked)
+                },
+                new CheckboxListItem
+                {
+                    Title = TextSource.GetText("OptionStreakHiddenHeader"),
+                    Text = TextSource.GetText("OptionStreakHiddenText"),
+                    IsChecked = await _settingsStorage.GetStreakHidden(),
+                    OnChanged = isChecked => _settingsStorage.SetStreakHidden(isChecked)
+                },
+                new CheckboxListItem
+                {
+                    Title = TextSource.GetText("OptionDownloadMobileNetworkHeader"),
+                    Text = TextSource.GetText("OptionDownloadMobileNetworkText"),
+                    IsChecked = await _networkSettings.GetMobileNetworkDownloadAllowed(),
+                    OnChanged = mobileNetworkDownloadAllowed =>
+                    {
+                        _settingsStorage.SetMobileNetworkDownloadAllowed(mobileNetworkDownloadAllowed);
+                        _mediaDownloader.SynchronizeOfflineTracks();
+                        _messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, mobileNetworkDownloadAllowed));
+                    }
+                },
+                new CheckboxListItem
+                {
+                    Title = TextSource.GetText("OptionPushNotifications"),
+                    Text = TextSource.GetText("OptionPushNotificationsSubtitle"),
+                    IsChecked = await _networkSettings.GetPushNotificationsAllowed(),
+                    OnChanged = notificationsEnabled =>
+                    {
+                        _settingsStorage.SetPushNotificationsAllowed(notificationsEnabled);
+                        _messenger.Publish(new PushNotificationsStatusChangedMessage(this, notificationsEnabled));
+                    }
+                }
             };
-
-            var mobileNetworkDownloadSetting = new CheckboxListItem
-            {
-                Title = TextSource.GetText("OptionDownloadMobileNetworkHeader"),
-                Text = TextSource.GetText("OptionDownloadMobileNetworkText"),
-                IsChecked = await _networkSettings.GetMobileNetworkDownloadAllowed()
-            };
-
-            var pushNotificationsSetting = new CheckboxListItem
-            {
-                Title = TextSource.GetText("OptionPushNotifications"),
-                Text = TextSource.GetText("OptionPushNotificationsSubtitle"),
-                IsChecked = await _networkSettings.GetPushNotificationsAllowed()
-            };
-
-            items.Add(autoplaySetting);
-            items.Add(mobileNetworkDownloadSetting);
-            items.Add(pushNotificationsSetting);
 
             if (_storageManager.HasMultipleStorageSupport)
             {
@@ -213,10 +224,6 @@ namespace BMM.Core.ViewModels
                 };
                 items.Add(_externalStorage);
             }
-
-            ObserveMobileNetworkAllowed(mobileNetworkDownloadSetting);
-            ObservePushNotificationStatus(pushNotificationsSetting);
-            ObserveAutoplayEnabled(autoplaySetting);
 
             _analytics.LogEvent("Open Settings screen",
                 new Dictionary<string, object>
@@ -239,7 +246,7 @@ namespace BMM.Core.ViewModels
 
         private async Task<List<IListItem>> BuildGeneralSection()
         {
-            var items = new List<IListItem>
+            return new List<IListItem>
             {
                 new SectionHeader {Title = TextSource.GetText("HeadlineGeneral")},
                 new SelectableListItem
@@ -255,8 +262,6 @@ namespace BMM.Core.ViewModels
                     OnSelected = _navigationService.NavigateCommand<LanguageContentViewModel>()
                 }
             };
-
-            return items;
         }
 
         private async Task<List<IListItem>> BuildAboutSection()
@@ -318,42 +323,6 @@ namespace BMM.Core.ViewModels
         private void CrashTheApp()
         {
             throw new Exception("Forcefully crash the app!");
-        }
-
-        private void ObserveMobileNetworkAllowed(ICheckboxListItem checkbox)
-        {
-            checkbox.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsChecked")
-                {
-                    var mobileNetworkDownloadAllowed = checkbox.IsChecked;
-                    _settingsStorage.SetMobileNetworkDownloadAllowed(mobileNetworkDownloadAllowed);
-                    _mediaDownloader.SynchronizeOfflineTracks();
-                    _messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, mobileNetworkDownloadAllowed));
-                }
-            };
-        }
-
-        private void ObserveAutoplayEnabled(ICheckboxListItem checkbox)
-        {
-            checkbox.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsChecked")
-                    _settingsStorage.SetAutoplayEnabled(checkbox.IsChecked);
-            };
-        }
-
-        private void ObservePushNotificationStatus(ICheckboxListItem checkbox)
-        {
-            checkbox.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsChecked")
-                {
-                    var notificationsEnabled = checkbox.IsChecked;
-                    _settingsStorage.SetPushNotificationsAllowed(notificationsEnabled);
-                    _messenger.Publish(new PushNotificationsStatusChangedMessage(this, notificationsEnabled));
-                }
-            };
         }
 
         private async Task Logout()
