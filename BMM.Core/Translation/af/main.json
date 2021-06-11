@@ -256,6 +256,8 @@
     "HeadlineSettings": "Instellings",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your streak and perfect week counter",
     "OptionEnablePushHeader": "Aktiveer stoot notifikasies",
     "OptionPushNotifications": "Stoot kennisgewings",
     "OptionPushNotificationsSubtitle": "Ontsper stoot kennisgewings vir potgooie jy volg",
