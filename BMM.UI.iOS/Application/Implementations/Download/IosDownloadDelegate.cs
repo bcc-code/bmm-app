@@ -19,17 +19,17 @@ namespace BMM.UI.iOS.Implementations.Download
 
         public override void DidCompleteWithError(NSUrlSession session, NSUrlSessionTask task, NSError error)
         {
-            var originalRequestUrl = task.OriginalRequest.Url.ToString();
+            var originalRequestUrl = task?.OriginalRequest?.Url.AbsoluteString;
             try
             {
                 if (error == null)
                     return;
 
-                var download = _fileDownloader.OngoingDownloadsLockDictionary.GetByUrl(originalRequestUrl);
+                var download = _fileDownloader.OngoingDownloadsLockDictionary.GetDownloadByTask(task);
                 if (download != null)
                 {
                     download.Value.TaskCompletionSource.TrySetException(new IosDownloadException(originalRequestUrl, error));
-                    _fileDownloader.OngoingDownloadsLockDictionary.RemoveByUrl(originalRequestUrl);
+                    _fileDownloader.OngoingDownloadsLockDictionary.RemoveDownloadForTask(task);
                     return;
                 }
 
@@ -45,10 +45,10 @@ namespace BMM.UI.iOS.Implementations.Download
 
         public override void DidFinishDownloading(NSUrlSession session, NSUrlSessionDownloadTask downloadTask, NSUrl temporaryLocation)
         {
-            var originalRequestUrl = downloadTask.OriginalRequest.Url.ToString();
+            var originalRequestUrl = downloadTask?.OriginalRequest?.Url.AbsoluteString;
             try
             {
-                var download = _fileDownloader.OngoingDownloadsLockDictionary.GetByUrl(originalRequestUrl);
+                var download = _fileDownloader.OngoingDownloadsLockDictionary.GetDownloadByTask(downloadTask);
                 if (download == null)
                 {
                     var exception = new IosDownloadDoesNotExistException(originalRequestUrl);
@@ -56,7 +56,7 @@ namespace BMM.UI.iOS.Implementations.Download
                     return;
                 }
 
-                _fileDownloader.OngoingDownloadsLockDictionary.RemoveByUrl(originalRequestUrl);
+                _fileDownloader.OngoingDownloadsLockDictionary.RemoveDownloadForTask(downloadTask);
 
                 if (_fileDownloader.MoveFile(temporaryLocation, download.Value.Downloadable, out NSError moveError))
                 {
