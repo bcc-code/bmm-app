@@ -256,6 +256,8 @@
     "HeadlineSettings": "Innstillinger",
     "OptionAutoplayHeader": "Automatisk avspilling",
     "OptionAutoplayText": "Spill musikk automatisk etter dagens episode av Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your streak and perfect week counter",
     "OptionEnablePushHeader": "Aktiver push-varsling",
     "OptionPushNotifications": "Push-varslinger",
     "OptionPushNotificationsSubtitle": "Aktiver push-varsler for podcaster du følger",
