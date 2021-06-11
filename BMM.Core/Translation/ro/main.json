@@ -256,6 +256,8 @@
     "HeadlineSettings": "Setări",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionStreakHiddenHeader": "Hide streak",
+    "OptionStreakHiddenText": "Hide your streak and perfect week counter",
     "OptionEnablePushHeader": "Activează notificări",
     "OptionPushNotifications": "Forțează notificările",
     "OptionPushNotificationsSubtitle": "Activare notificări pentru podcast-uri urmărite",
