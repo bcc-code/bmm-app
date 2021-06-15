@@ -1,4 +1,6 @@
 ﻿using System;
+using Android.Content;
+using Android.Util;
 using AndroidX.CardView.Widget;
 using MvvmCross.Platforms.Android.Binding.Target;
 
@@ -22,7 +24,11 @@ namespace BMM.UI.Droid.Application.Bindings
         {
             var card = (CardView)target;
             if (value is bool test && test)
-                card.Radius = 10000; // this takes pixel whereas most other units are in dp
+            {
+                int imageHeightInDp = 160; // should be the same value as in listitem_tracklist_header.xml
+                var pixel = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, imageHeightInDp, AndroidGlobals.ApplicationContext.Resources.DisplayMetrics) / 2;
+                card.Radius = pixel;
+            }
             // Caution: this does not work if it changes dynamically
         }
     }
