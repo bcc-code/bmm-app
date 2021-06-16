@@ -25,8 +25,7 @@ namespace BMM.UI.Droid.Application.Bindings
             var card = (CardView)target;
             if (value is bool test && test)
             {
-                int imageHeightInDp = 160; // should be the same value as in listitem_tracklist_header.xml
-                var pixel = (int)TypedValue.ApplyDimension(ComplexUnitType.Dip, imageHeightInDp, AndroidGlobals.ApplicationContext.Resources.DisplayMetrics) / 2;
+                var pixel = card.LayoutParameters.Height / 2;
                 card.Radius = pixel;
             }
             // Caution: this does not work if it changes dynamically
