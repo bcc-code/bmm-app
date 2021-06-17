@@ -38,7 +38,11 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
                 uri = description.MediaUri;
                 var userAgent = Util.GetUserAgent(_applicationContext, "BMM Android");
                 var bandwidthMeter = new DefaultBandwidthMeter.Builder(_applicationContext).Build();
-                var dataSourceFactory = new DefaultHttpDataSourceFactory(userAgent, bandwidthMeter);
+                var dataSourceFactory = new DefaultHttpDataSourceFactory(userAgent,
+                    bandwidthMeter,
+                    DefaultHttpDataSource.DefaultConnectTimeoutMillis,
+                    DefaultHttpDataSource.DefaultReadTimeoutMillis,
+                    true);
 
                 // todo find a better solution to pass headers async
                 var headers = _headers.GetHeaders().GetAwaiter().GetResult();
