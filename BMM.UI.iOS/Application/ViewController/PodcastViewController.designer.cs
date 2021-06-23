@@ -20,9 +20,6 @@ namespace BMM.UI.iOS
 		UIKit.UIButton FollowingButton { get; set; }
 
 		[Outlet]
-		UIKit.UIView ImageWrapper { get; set; }
-
-		[Outlet]
 		UIKit.UILabel OfflineBannerLabel { get; set; }
 
 		[Outlet]
@@ -96,11 +93,6 @@ namespace BMM.UI.iOS
 			if (TitelLabel != null) {
 				TitelLabel.Dispose ();
 				TitelLabel = null;
-			}
-
-			if (ImageWrapper != null) {
-				ImageWrapper.Dispose ();
-				ImageWrapper = null;
 			}
 
 		}

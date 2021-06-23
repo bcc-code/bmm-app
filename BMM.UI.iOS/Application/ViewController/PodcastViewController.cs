@@ -35,9 +35,6 @@ namespace BMM.UI.iOS
             FollowButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
             FollowingButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
             PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
-            ImageWrapper.SetGradientBackground(
-                new[] {UIColor.FromRGB(14, 54, 173).CGColor, UIColor.FromRGB(19, 103, 151).CGColor},
-                new NSNumber[] {0, 1});
 
             var source = new NotSelectableDocumentsTableViewSource(PodcastTable);
 

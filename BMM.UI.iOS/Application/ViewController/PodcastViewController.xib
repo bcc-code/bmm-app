@@ -12,7 +12,6 @@
             <connections>
                 <outlet property="FollowButton" destination="que-rJ-xHy" id="Z5W-Jz-eoj"/>
                 <outlet property="FollowingButton" destination="mcA-qs-hCN" id="62J-dO-mQg"/>
-                <outlet property="ImageWrapper" destination="UFU-BK-iCb" id="RRQ-kh-Arn"/>
                 <outlet property="OfflineBannerLabel" destination="tCL-pz-wbX" id="name-outlet-tCL-pz-wbX"/>
                 <outlet property="OfflineBannerView" destination="JEQ-Pn-dAX" id="eg1-dY-8bX"/>
                 <outlet property="OfflineBannerViewHeightConstraint" destination="XPZ-z0-l6X" id="name-outlet-XPZ-z0-l6X"/>
@@ -59,34 +58,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="407"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFU-BK-iCb" userLabel="GradientImageWrapper">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="t4g-Ns-abC" customClass="MvxCachedImageView">
                                 <rect key="frame" x="107.5" y="32" width="160" height="160"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_album.png" translatesAutoresizingMaskIntoConstraints="NO" id="t4g-Ns-abC" customClass="MvxCachedImageView">
-                                        <rect key="frame" x="16" y="16" width="128" height="128"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                                <integer key="value" value="64"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="podcast_cover"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
-                                    <constraint firstItem="t4g-Ns-abC" firstAttribute="top" secondItem="UFU-BK-iCb" secondAttribute="top" constant="16" id="0Sp-02-DMP"/>
-                                    <constraint firstAttribute="bottom" secondItem="t4g-Ns-abC" secondAttribute="bottom" constant="16" id="Ed9-eS-rwU"/>
-                                    <constraint firstAttribute="height" constant="160" id="IzA-nU-tj4"/>
-                                    <constraint firstItem="t4g-Ns-abC" firstAttribute="leading" secondItem="UFU-BK-iCb" secondAttribute="leading" constant="16" id="S0f-q2-L3R"/>
-                                    <constraint firstAttribute="trailing" secondItem="t4g-Ns-abC" secondAttribute="trailing" constant="16" id="XAI-pr-f1t"/>
-                                    <constraint firstAttribute="width" constant="160" id="nMx-Hm-gci"/>
+                                    <constraint firstAttribute="height" constant="160" id="dNK-pA-mXn"/>
+                                    <constraint firstAttribute="width" constant="160" id="oc0-mr-vMg"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
                                         <integer key="value" value="80"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="podcast_cover"/>
                                 </userDefinedRuntimeAttributes>
-                            </view>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBs-EE-ISq">
                                 <rect key="frame" x="16" y="212" width="343" height="109"/>
                                 <accessibility key="accessibilityConfiguration" identifier="title"/>
@@ -140,16 +124,16 @@
                             <constraint firstItem="tBs-EE-ISq" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="3zz-zU-o7S"/>
                             <constraint firstItem="UV0-yk-NnS" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="6ib-cg-zkv"/>
                             <constraint firstItem="MyT-6U-GQI" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" id="F8k-HU-nAw"/>
+                            <constraint firstItem="t4g-Ns-abC" firstAttribute="top" secondItem="dvX-pL-2wU" secondAttribute="top" constant="32" id="H6n-zK-UpC"/>
                             <constraint firstAttribute="trailing" secondItem="MyT-6U-GQI" secondAttribute="trailing" id="PXW-nG-86O"/>
+                            <constraint firstItem="t4g-Ns-abC" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="U8z-2c-vTM"/>
                             <constraint firstItem="UV0-yk-NnS" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="bX8-Ll-GaR"/>
                             <constraint firstItem="UV0-yk-NnS" firstAttribute="top" secondItem="tBs-EE-ISq" secondAttribute="bottom" constant="20" id="fo1-ff-2J5"/>
                             <constraint firstAttribute="trailing" secondItem="tBs-EE-ISq" secondAttribute="trailing" constant="16" id="gNP-CN-9Ft"/>
-                            <constraint firstItem="UFU-BK-iCb" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="gzK-bm-bmm"/>
-                            <constraint firstItem="tBs-EE-ISq" firstAttribute="top" secondItem="UFU-BK-iCb" secondAttribute="bottom" constant="20" id="k8C-7a-lPa"/>
                             <constraint firstAttribute="bottom" secondItem="MyT-6U-GQI" secondAttribute="bottom" id="ov9-KG-ved"/>
+                            <constraint firstItem="tBs-EE-ISq" firstAttribute="top" secondItem="t4g-Ns-abC" secondAttribute="bottom" constant="20" id="qQT-Y7-n79"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="UV0-yk-NnS" secondAttribute="trailing" constant="16" id="vTK-gw-JS7"/>
                             <constraint firstItem="MyT-6U-GQI" firstAttribute="top" secondItem="UV0-yk-NnS" secondAttribute="bottom" constant="25" id="wA7-kE-27m"/>
-                            <constraint firstItem="UFU-BK-iCb" firstAttribute="top" secondItem="dvX-pL-2wU" secondAttribute="top" constant="32" id="zt7-GD-McX"/>
                         </constraints>
                     </view>
                 </tableView>
@@ -172,9 +156,6 @@
         <image name="icon_arrow_right.png" width="24" height="24"/>
         <image name="icon_notification.png" width="28" height="28"/>
         <image name="placeholder_album.png" width="320" height="320"/>
-        <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
