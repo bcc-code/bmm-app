@@ -743,6 +743,7 @@
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\Separator.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
+    <Compile Include="Application\Delegates\CustomUIAdaptivePresentationControllerDelegate.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
@@ -855,6 +856,7 @@
       <DependentUpon>LibraryViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\PlayerNavigationController.cs" />
+    <Compile Include="Application\ViewController\ShareTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\UserSetupViewController.cs" />
     <Compile Include="Application\ViewController\UserSetupViewController.designer.cs">
       <DependentUpon>UserSetupViewController.cs</DependentUpon>

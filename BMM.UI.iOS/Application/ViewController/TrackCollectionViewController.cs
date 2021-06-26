@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
     public partial class TrackCollectionViewController : BaseViewController<TrackCollectionViewModel>
     {
         public TrackCollectionViewController()
-            : base("TrackCollectionViewController")
+            : base(nameof(TrackCollectionViewController))
         {
         }
 

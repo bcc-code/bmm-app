@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api;
@@ -16,6 +17,8 @@ using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.ViewModels.Parameters;
+using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
@@ -92,6 +95,22 @@ namespace BMM.Core.ViewModels.Base
                 _showTrackInfoCommand = _showTrackInfoCommand ?? new ExceptionHandlingCommand<Track>(ShowTrackInfo);
                 return _showTrackInfoCommand;
             }
+        }
+
+        private IMvxAsyncCommand _closeCommand;
+
+        public IMvxAsyncCommand CloseCommand
+        {
+            get
+            {
+                _closeCommand = _closeCommand ?? new MvxAsyncCommand(Close);
+                return _closeCommand;
+            }
+        }
+
+        private async Task Close(CancellationToken cancellationToken)
+        {
+            await _navigationService.Close(this, cancellationToken);
         }
 
         // ToDo: this method does not belong here. Create it's own class instead
@@ -329,14 +348,19 @@ namespace BMM.Core.ViewModels.Base
                         var imageRename = "icon_edit_static.png";
                         Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
                             .SetTitle(((TrackCollection) item).Name)
+                            .AddHandled(dialogTextSource.GetText("TrackCollection.SharePlaylist"),
+                                async () =>
+                                {
+                                    await ShareTrackCollection(item.Id);
+                                }, imageShare)
                             .AddHandled(dialogTextSource.GetText("TrackCollection.DeletePlaylist"),
                                 async () => await DeleteTrackCollection((TrackCollection) item), imageDelete)
                             .AddHandled(dialogTextSource.GetText("TrackCollection.EditPlaylist"),
                                 async () =>
                                 {
                                     var trackCollection = (TrackCollection)item;
-                                    await _navigationService.Navigate<EditTrackCollectionViewModel, EditTrackCollectionParameters>(new EditTrackCollectionParameters
-                                        {TrackCollectionId = trackCollection.Id});
+                                    await _navigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
+                                        new TrackCollectionParameter(trackCollection.Id));
                                 },
                                 imageRename)
                             .SetCancel(dialogTextSource.GetText("Cancel"))
@@ -359,6 +383,12 @@ namespace BMM.Core.ViewModels.Base
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        protected async Task ShareTrackCollection(int trackCollectionId)
+        {
+            await _navigationService.Navigate<ShareTrackCollectionViewModel, ITrackCollectionParameter>(
+                new TrackCollectionParameter(trackCollectionId));
         }
 
         protected virtual async Task ShowTrackInfo(Track track)

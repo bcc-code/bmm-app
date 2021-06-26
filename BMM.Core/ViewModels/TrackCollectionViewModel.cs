@@ -9,6 +9,8 @@ using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.ViewModels.MyContent;
+using BMM.Core.ViewModels.Parameters;
+using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 
@@ -21,6 +23,8 @@ namespace BMM.Core.ViewModels
         public IMvxAsyncCommand DeleteCommand { get; }
 
         public IMvxAsyncCommand EditCommand { get; }
+
+        public IMvxAsyncCommand ShareCommand { get; }
 
         public bool IsConnectionOnline => Connection.GetStatus() == ConnectionStatus.Online;
 
@@ -50,8 +54,17 @@ namespace BMM.Core.ViewModels
             );
 
             EditCommand = new ExceptionHandlingCommand(
-                () => _navigationService.Navigate<EditTrackCollectionViewModel, EditTrackCollectionParameters>(new EditTrackCollectionParameters
-                    {TrackCollectionId = MyCollection.Id}));
+                async () =>
+                {
+                    await _navigationService
+                        .Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
+                            new TrackCollectionParameter(MyCollection.Id));
+                });
+
+            ShareCommand = new ExceptionHandlingCommand(async () =>
+            {
+                await ShareTrackCollection(MyCollection.Id);
+            });
         }
 
         protected override Task Initialization()
