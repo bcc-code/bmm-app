@@ -303,6 +303,7 @@
     "ShufflePlay": "Shuffle",
     "MenuDelete": "Delete playlist",
     "MenuEdit": "Edit playlist",
+    "MenuShare": "Share playlist",
     "AvailableOffline": "Available offline",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} of {1} downloads remaining",
@@ -331,6 +332,10 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "Done": "Done"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlist",
@@ -387,6 +392,7 @@
     "Contributor.Share": "Share contributor",
     "TrackCollection.DeletePlaylist": "Delete playlist",
     "TrackCollection.EditPlaylist": "Edit playlist",
+    "TrackCollection.SharePlaylist": "Share playlist",
     "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
     "Cancel": "Cancel"
   },

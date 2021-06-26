@@ -1,6 +1,9 @@
 ﻿<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_share"
+        local:showAsAction="never" />
+    <item
         android:id="@+id/menu_delete"
         local:showAsAction="never" />
     <item

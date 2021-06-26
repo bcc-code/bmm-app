@@ -26,8 +26,9 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             base.OnCreateOptionsMenu(menu, inflater);
             inflater.Inflate(Resource.Menu.trackcollection, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("MenuDelete"));
-            menu.GetItem(1).SetTitle(ViewModel.TextSource.GetText("MenuEdit"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("MenuShare"));
+            menu.GetItem(1).SetTitle(ViewModel.TextSource.GetText("MenuDelete"));
+            menu.GetItem(2).SetTitle(ViewModel.TextSource.GetText("MenuEdit"));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -40,6 +41,10 @@ namespace BMM.UI.Droid.Application.Fragments
 
                 case Resource.Id.menu_edit:
                     ViewModel.EditCommand.Execute();
+                    return true;
+                
+                case Resource.Id.menu_share:
+                    ViewModel.ShareCommand.Execute();
                     return true;
 
                 default:
