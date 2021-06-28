@@ -54,7 +54,7 @@
     "AlbumFailedToAddAlreadyExists": "Ez az album már szerepel a lejátszási lista.",
     "TrackAlreadyExistInTrackCollection": "Szám már létezik a {0} lejátszási listában",
     "ShufflePlay": "Véletlenszerű lejátszás",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} album"
   },
   "AlbumsViewModel": {
     "Title": "Archívum",
@@ -219,7 +219,7 @@
     "UnfollowConfirm": "Biztosan nem akarod tovább követni ezt a podcastot?",
     "MobileDownloadDisabled": "A legújabb számok automatikus letöltése a mobilhálózaton keresztül engedélyezése a beállításokban",
     "ToggleFollowOfflineError": "Podcast követése vagy lemondása csak online-módban lehetséges",
-    "Week": "Week {0}",
+    "Week": "{0}. hét",
     "ThisWeek": "Ez a hét",
     "LastWeek": "Elöző hét",
     "AslaksenTheme1": "Higgyél a csoda Istenében",
@@ -256,8 +256,8 @@
     "HeadlineSettings": "Beállítások",
     "OptionAutoplayHeader": "Automatikus lejátszás",
     "OptionAutoplayText": "Zene lejátszása a mai “Fra Kåre” adás meghallgatása után",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHiddenHeader": "Sáv elrejtése",
+    "OptionStreakHiddenText": "A hallgatási statisztika elrejtése",
     "OptionEnablePushHeader": "Értesítések engedélyezése",
     "OptionPushNotifications": "Push-értesítések",
     "OptionPushNotificationsSubtitle": "Push-értesítések aktiválása a követett podcastokra",
@@ -293,7 +293,7 @@
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} Szám",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracksLoaded": "{0} szám be van töltve",
     "Download": "Letöltés",
     "Shuffle": "Keverés",
     "Play": "Lejátszás"
@@ -319,7 +319,7 @@
     "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
     "NotEnoughtSpaceToDownload": "Nincs elég tárhely minden szám letöltéséhez",
     "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?",
-    "Private": "Private"
+    "Private": "Személyes"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Lejátszási lista szerkesztése",
