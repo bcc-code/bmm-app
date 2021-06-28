@@ -8,22 +8,22 @@
     "InternetConnectionOffline": "Se pare că nu există nici o conexiune la internet.",
     "ItemNotFound": "Fișierul dorit nu există.",
     "OfflineBanner": "Se afișează doar conținut salvat pe acest telefon",
-    "Song": "Song",
+    "Song": "Cântec",
     "Speech": "Mesaj",
-    "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Audiobook": "Carte audio",
+    "Exegesis": "Tălmăcire"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "WeekdayMonday": "M",
-    "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "Message": "Linia ta săptămâna aceasta",
+    "MessagePerfect": "O săptămână perfectă! Foarte bine!",
+    "PerfectWeekCountSingular": "{0} săptămână perfectă",
+    "PerfectWeekCountPlural": "{0} săptămâni perfecte",
+    "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte",
+    "WeekdayMonday": "L",
+    "WeekdayTuesday": "Ma",
+    "WeekdayWednesday": "Mi",
+    "WeekdayThursday": "J",
+    "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nu s-a putut deschide linkul",
@@ -54,7 +54,7 @@
     "AlbumFailedToAddAlreadyExists": "Acest album este deja în lista de redare.",
     "TrackAlreadyExistInTrackCollection": "Piesa este deja în lista de redare {0}",
     "ShufflePlay": "Aleatoriu",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albume"
   },
   "AlbumsViewModel": {
     "Title": "Arhivă",
@@ -82,19 +82,19 @@
     "SearchHint": "Caută"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Acasă",
     "SearchHint": "Caută",
     "FraKaareHeader": "De la Kåre",
     "AslaksenTeaserHeader": "Cuvintele credinței",
     "ShowAll": "Toate",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
+    "PlayRandom": "Redare aleatorie",
+    "PlayNewest": "Redă ce-i mai nou",
     "LatestTrack": "Ultima piesă",
     "NextBroadcast": "Următoarea transmisiune",
     "BmmRadio": "BMM Live",
     "CountdownHours": "în {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music"
+    "Messages": "Ultimele vorbiri",
+    "Music": "Ultimele cântări"
   },
   "AslaksenNotification": {
     "Title": "Cuvintele credinței",
@@ -123,7 +123,7 @@
     "ButtonSendMail": "Trimite un e-mail Echipei BMM"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Îți configurăm contul. Asta ar putea dura câteva momente."
   },
   "LoginViewModel": {
     "Title": "Autentificare",
