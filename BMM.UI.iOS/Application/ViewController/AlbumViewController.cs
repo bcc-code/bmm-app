@@ -63,7 +63,6 @@ namespace BMM.UI.iOS
             }
         }
 
-
         private void AddNavigationBarItemForOptions()
         {
             var sidebarButton = new UIBarButtonItem(

@@ -16,9 +16,11 @@ namespace BMM.UI.iOS.Constants
             button.TitleLabel.Font = theme.TextTheme.Font;
             button.SetTitleColor(theme.TextTheme.Color, UIControlState.Normal);
             button.SetTitleColor(theme.TextTheme.Color.ColorWithAlpha(0.75f), UIControlState.Highlighted);
-            button.Layer.CornerRadius = 20;
-            button.ImageEdgeInsets = new UIEdgeInsets(0, -6, 0, 0);
-            button.ContentEdgeInsets = new UIEdgeInsets(6, 16, 6, 16);
+            button.ImageEdgeInsets = theme.ImageEdgeInsets;
+            button.ContentEdgeInsets = theme.ContentEdgeInsets;
+
+            if (theme.HasRoundedCorners)
+                button.Layer.CornerRadius = button.Frame.Height * 0.5f;
         }
     }
 }

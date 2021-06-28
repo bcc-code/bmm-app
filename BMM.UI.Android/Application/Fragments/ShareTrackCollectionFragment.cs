@@ -2,9 +2,7 @@
 using Android.Runtime;
 using Android.Views;
 using AndroidX.Activity;
-using AndroidX.RecyclerView.Widget;
 using BMM.Core.ViewModels;
-using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
@@ -23,16 +21,6 @@ namespace BMM.UI.Droid.Application.Fragments
             ParentActivity?.SupportActionBar?.SetHomeAsUpIndicator(Resource.Drawable.icon_close_static);
 
             return view;
-        }
-
-        private void InitRecyclerView(View view)
-        {
-            var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.trackcollection_recycler_view);
-            if (recyclerView == null)
-                return;
-
-            var layoutManager = new LinearLayoutManager(ParentActivity);
-            recyclerView.SetLayoutManager(layoutManager);
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)

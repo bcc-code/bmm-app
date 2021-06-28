@@ -28,7 +28,6 @@ namespace BMM.UI.iOS
 
             var source = new NotSelectableDocumentsTableViewSource(CuratedPlaylistTable);
 
-
             TitleLabel.ApplyTextTheme(AppTheme.Heading1.Value);
             DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2.Value);
             ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);

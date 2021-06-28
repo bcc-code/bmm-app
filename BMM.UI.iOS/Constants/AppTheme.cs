@@ -7,6 +7,12 @@ namespace BMM.UI.iOS.Constants
     {
         public static readonly Lazy<TextTheme> Heading1 = new Lazy<TextTheme>(() => new TextTheme
         {
+            Font = Typography.Header1.Value,
+            Color = AppColors.TrackTitleColor
+        });
+
+        public static readonly Lazy<TextTheme> Heading2 = new Lazy<TextTheme>(() => new TextTheme
+        {
             Font = Typography.Header2.Value,
             Color = AppColors.TrackTitleColor
         });
@@ -23,16 +29,24 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.TrackMetaColor
         });
 
-        public static readonly Lazy<ButtonTheme> ButtonPrimary = new Lazy<ButtonTheme>(() => new ButtonTheme
+        public static readonly Lazy<ButtonTheme> ButtonPrimary = new Lazy<ButtonTheme>(() => new StandardButtonTheme
         {
             TextTheme = new TextTheme {Font = Typography.Title1.Value, Color = UIColor.White},
             ButtonColor = AppColors.TrackTitleColor
         });
 
-        public static readonly Lazy<ButtonTheme> ButtonSecondary = new Lazy<ButtonTheme>(() => new ButtonTheme
+        public static readonly Lazy<ButtonTheme> ButtonSecondary = new Lazy<ButtonTheme>(() => new StandardButtonTheme
         {
             TextTheme = new TextTheme {Font = Typography.Title1.Value, Color = AppColors.TrackTitleColor},
             ButtonColor = AppColors.StreakBackGroundColor
+        });
+
+        public static readonly Lazy<ButtonTheme> ButtonTertiary = new Lazy<ButtonTheme>(() => new ButtonTheme
+        {
+            TextTheme = new TextTheme {Font = Typography.Title1.Value, Color = UIColor.White},
+            ButtonColor = AppColors.TrackTitleColor,
+            ContentEdgeInsets = new UIEdgeInsets(0, 34, 0, 34),
+            HasRoundedCorners = true
         });
     }
 }
