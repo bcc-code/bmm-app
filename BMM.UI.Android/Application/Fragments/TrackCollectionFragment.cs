@@ -42,7 +42,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 case Resource.Id.menu_edit:
                     ViewModel.EditCommand.Execute();
                     return true;
-                
+
                 case Resource.Id.menu_share:
                     ViewModel.ShareCommand.Execute();
                     return true;

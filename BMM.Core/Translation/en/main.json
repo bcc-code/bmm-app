@@ -335,7 +335,8 @@
   },
   "ShareTrackCollectionViewModel": {
     "Title": "Share Playlist",
-    "Done": "Done"
+    "Done": "Done",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link."
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlist",
