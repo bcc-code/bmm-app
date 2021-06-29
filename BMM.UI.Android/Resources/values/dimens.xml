@@ -3,6 +3,7 @@
     <!-- Standard dimensions -->
 
     <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_mini">6dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_large">32dp</dimen>
@@ -41,6 +42,8 @@
 
     <dimen name="explore_contributor_cardview_dimen">150dp</dimen>
     <dimen name="contributor_image_dimen">44dp</dimen>
+
+    <dimen name="share_playlist_icon_dimen">48dp</dimen>
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>
     <dimen name="row_contributor_height">60dp</dimen>
@@ -68,4 +71,7 @@
     <dimen name="text_huge">17sp</dimen>
     <dimen name="text_very_huge">18sp</dimen>
     <dimen name="text_very_huge_title">20sp</dimen>
+
+     <!-- Constraint Layout -->
+    <dimen name="match_constraint">0dp</dimen>
 </resources>

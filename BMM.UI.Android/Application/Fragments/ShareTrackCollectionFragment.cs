@@ -1,8 +1,12 @@
 ﻿using Android.OS;
 using Android.Runtime;
+using Android.Text;
+using Android.Text.Style;
 using Android.Views;
 using AndroidX.Activity;
+using AndroidX.Core.Content;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Extensions;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
@@ -13,12 +17,13 @@ namespace BMM.UI.Droid.Application.Fragments
     {
         protected override int FragmentId => Resource.Layout.fragment_share_trackcollection;
 
+        protected override bool IsTabBarVisible => false;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            //Activity?.OnBackPressedDispatcher.AddCallback(this, new EditTrackCollectionOnBackPressedCallback(ViewModel));
-            ParentActivity?.SupportActionBar?.SetHomeAsUpIndicator(Resource.Drawable.icon_close_static);
+            Toolbar.NavigationIcon = null;
 
             return view;
         }
@@ -27,7 +32,16 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             base.OnCreateOptionsMenu(menu, inflater);
             inflater.Inflate(Resource.Menu.share_trackcollection, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("Done"));
+            var item = menu.GetItem(0);
+
+            var title = new SpannableString(ViewModel.TextSource.GetText("Done"));
+            title.SetSpan(
+                new ForegroundColorSpan(Context.GetColorFromResource(Resource.Color.colorPrimary)),
+                0,
+                title.Length(),
+                0);
+
+            item.SetTitle(title);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
