@@ -122,6 +122,8 @@
     <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedHandler.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
+    <Compile Include="Application\Extensions\ContextExtensions.cs" />
+    <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
     <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\LibraryFragment.cs" />
@@ -357,6 +359,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_podcast.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
     <AndroidResource Include="Resources\drawable\border_top.xml" />
     <AndroidResource Include="Resources\drawable\button_pause_mini.xml" />
     <AndroidResource Include="Resources\drawable\button_play_mini.xml" />

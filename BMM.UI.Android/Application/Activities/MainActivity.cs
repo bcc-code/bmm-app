@@ -5,6 +5,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Notifications;
@@ -15,6 +16,7 @@ using BMM.UI.Droid.Application.Fragments;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
+using Google.Android.Material.BottomNavigation;
 using MvvmCross.ViewModels;
 using MvvmCross;
 using MvvmCross.Navigation;
@@ -44,10 +46,11 @@ namespace BMM.UI.Droid.Application.Activities
     {
         private IMediaPlayer _mediaPlayer;
         private AndroidMediaPlayer _androidPlayer;
+        private BottomNavigationView? _bottomNavigationView;
 
         private string _unhandledDeepLink;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
             // We see a lot of crashes in this method and the theory is that the app is opened immediately here skipping the SplashScreen.
             // And then it would not be initialized and probably crash right away.
@@ -109,6 +112,14 @@ namespace BMM.UI.Droid.Application.Activities
         {
             ClearBackStack();
             return true;
+        }
+
+        public void SetBottomBarVisibility(ViewStates viewState)
+        {
+            var bottomBar = _bottomNavigationView ??= FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
+
+            if (bottomBar != null && bottomBar.Visibility != viewState)
+                bottomBar.Visibility = viewState;
         }
 
         private void ClearBackStack()

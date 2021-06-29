@@ -7,7 +7,51 @@
 
     <include
             android:id="@+id/Toolbar"
-            layout="@layout/toolbar_actionbar"
-            local:layout_constraintTop_toTopOf="parent"/>
+            layout="@layout/toolbar_actionbar" />
+
+    <RelativeLayout
+        android:id="@+id/TopView"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_margin="@dimen/margin_medium"
+        android:background="@drawable/background_share_track_collection"
+        local:layout_constraintTop_toBottomOf="@+id/Toolbar"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:layout_constraintHeight_percent="0.5">
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/HalfDividerView"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="1dp"
+        local:layout_constraintTop_toTopOf="@+id/TopView"
+        local:layout_constraintStart_toStartOf="@+id/TopView"
+        local:layout_constraintEnd_toEndOf="@+id/TopView"
+        local:layout_constraintBottom_toBottomOf="@+id/TopView"/>
+
+    <ImageView
+        android:id="@+id/PlaylistIcon"
+        android:layout_width="@dimen/share_playlist_icon_dimen"
+        android:layout_height="@dimen/share_playlist_icon_dimen"
+        android:src="@drawable/icon_playlist"
+        android:layout_marginBottom="@dimen/margin_mini"
+        local:layout_constraintStart_toStartOf="@+id/TopView"
+        local:layout_constraintEnd_toEndOf="@+id/TopView"
+        local:layout_constraintBottom_toTopOf="@+id/HalfDividerView" />
+
+    <TextView
+        android:id="@+id/PlaylistName"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_mini"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:gravity="center_horizontal"
+        android:textFontWeight="800"
+        style="@style/Heading2"
+        local:layout_constraintStart_toStartOf="@+id/TopView"
+        local:layout_constraintEnd_toEndOf="@+id/TopView"
+        local:layout_constraintTop_toBottomOf="@+id/HalfDividerView"
+        local:MvxBind="Text TrackCollectionName" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
