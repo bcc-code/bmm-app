@@ -9,7 +9,7 @@
             android:id="@+id/Toolbar"
             layout="@layout/toolbar_actionbar" />
 
-    <RelativeLayout
+    <View
         android:id="@+id/TopView"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"
@@ -18,8 +18,7 @@
         local:layout_constraintTop_toBottomOf="@+id/Toolbar"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
-        local:layout_constraintHeight_percent="0.5">
-    </RelativeLayout>
+        local:layout_constraintHeight_percent="0.4" />
 
     <View
         android:id="@+id/HalfDividerView"
@@ -54,4 +53,66 @@
         local:layout_constraintTop_toBottomOf="@+id/HalfDividerView"
         local:MvxBind="Text TrackCollectionName" />
 
+    <ImageView
+        android:id="@+id/FriendsIcon"
+        android:layout_width="@dimen/friends_icon_dimen"
+        android:layout_height="@dimen/friends_icon_dimen"
+        android:src="@drawable/icon_friends"
+        android:layout_marginTop="@dimen/margin_small"
+        local:layout_constraintStart_toStartOf="@+id/TopView"
+        local:layout_constraintEnd_toStartOf="@+id/PlaylistType"
+        local:layout_constraintTop_toBottomOf="@+id/PlaylistName"
+        local:layout_constraintHorizontal_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/PlaylistType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_marginStart="@dimen/margin_small"
+        style="@style/Subtitle1"
+        local:layout_constraintStart_toEndOf="@+id/FriendsIcon"
+        local:layout_constraintEnd_toEndOf="@+id/TopView"
+        local:layout_constraintTop_toTopOf="@+id/FriendsIcon"
+        local:layout_constraintBottom_toBottomOf="@+id/FriendsIcon"
+        local:MvxBind="Text TrackCollectionShareType" />
+
+    <Button
+        android:id="@+id/MakePrivateButton"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        style="@style/IconButton_Secondary_Large"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        local:layout_constraintBottom_toTopOf="@+id/ShareLinkButton"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxLang="Text MakePrivate" />
+    
+    <Button
+        android:id="@+id/ShareLinkButton"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        style="@style/IconButton_Primary_Large"
+        android:drawableLeft="@drawable/icon_link"
+        android:layout_marginBottom="@dimen/margin_medium_plus"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        local:layout_constraintBottom_toTopOf="@+id/Note"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxLang="Text ShareLink" />
+
+    <TextView
+        android:id="@+id/Note"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:gravity="center"
+        style="@style/Subtitle1"
+        android:layout_marginBottom="@dimen/margin_medium"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxLang="Text ShareNote" />
+    
 </androidx.constraintlayout.widget.ConstraintLayout>
