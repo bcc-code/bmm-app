@@ -377,6 +377,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon_friends.xml" />
+    <AndroidResource Include="Resources\drawable\icon_link.xml" />
     <AndroidResource Include="Resources\drawable\spinner_small.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

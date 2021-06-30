@@ -120,6 +120,13 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Subtitle1">
+        <item name="android:textSize">17sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
     <style name="Button_Primary" parent="android:Widget.Material.Button.Borderless">
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@drawable/button_background_rounded</item>
@@ -154,6 +161,17 @@
       <item name="android:drawablePadding">6dp</item>
     </style>
 
+    <style name="IconButton_Primary_Large" parent="IconButton_Primary">
+        <item name="android:height">@dimen/large_button_height</item>
+        <item name="android:paddingLeft">@dimen/padding_large</item>
+        <item name="android:paddingRight">@dimen/padding_huge</item>
+    </style>
+
+    <style name="IconButton_Secondary_Large" parent="IconButton_Secondary">
+        <item name="android:height">@dimen/large_button_height</item>
+        <item name="android:paddingHorizontal">@dimen/padding_large</item>
+    </style>
+    
     <style name="button_text">
         <item name="android:layout_width">fill_parent</item>
         <item name="android:layout_height">fill_parent</item>
