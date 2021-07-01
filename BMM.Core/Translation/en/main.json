@@ -338,7 +338,9 @@
     "Done": "Done",
     "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
     "ShareLink": "Share link",
-    "MakePrivate": "Make private"
+    "MakePrivate": "Make private",
+    "Private": "Private",
+    "SharedWithFormat": "Shared with {0} format"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlist",

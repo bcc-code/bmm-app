@@ -10,6 +10,8 @@ namespace BMM.Api.Implementation.Models
 
         public int TrackCount { get => Tracks?.Count > 0 ? Tracks.Count : _trackCount; set => _trackCount = value; }
 
+        public int FollowerCount { get; set; }
+        public string ShareLink { get; set; }
         public List<Track> Tracks { get; set; }
     }
 }

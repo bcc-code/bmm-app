@@ -22,6 +22,11 @@ namespace BMM.Core.Helpers
             await GenerateLink($"playlist/contributor/{contributor.Id}/{contributor.Name}");
         }
 
+        public async Task For(string link)
+        {
+            await GenerateLink(link);
+        }
+
         /// <summary>
         /// See https://docs.microsoft.com/en-us/xamarin/essentials/share?context=xamarin%2Fxamarin-forms&tabs=ios for more information
         /// </summary>

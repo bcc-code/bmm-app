@@ -13,7 +13,8 @@
                 <outlet property="MakePrivateButton" destination="Q76-RE-eQV" id="lbK-mu-Fm2"/>
                 <outlet property="NoteLabel" destination="hWC-6U-L67" id="8uX-jb-BS5"/>
                 <outlet property="PlaylistName" destination="vWD-Td-xqG" id="6OD-JN-YEd"/>
-                <outlet property="PlaylistType" destination="Ywx-Pd-2Vb" id="wVA-Cl-ok9"/>
+                <outlet property="PlaylistState" destination="Ywx-Pd-2Vb" id="wVA-Cl-ok9"/>
+                <outlet property="PlaylistStateIcon" destination="eIv-Ga-dIS" id="xy7-FB-GVe"/>
                 <outlet property="ShareLinkButton" destination="z4e-9g-GyW" id="OJi-Ea-qRU"/>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
             </connections>
@@ -24,34 +25,35 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sn-ch-0B4">
-                    <rect key="frame" x="16" y="60" width="382" height="382"/>
+                    <rect key="frame" x="16" y="60" width="382" height="368"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_playlist.png" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-GT-beH">
-                            <rect key="frame" x="167" y="136.5" width="48" height="48"/>
+                            <rect key="frame" x="167" y="129.5" width="48" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="IoD-lC-wbT"/>
                                 <constraint firstAttribute="width" constant="48" id="vTc-uk-BtU"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CoN-M4-jaV">
-                            <rect key="frame" x="0.0" y="190.5" width="382" height="1"/>
+                            <rect key="frame" x="0.0" y="183.5" width="382" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="LAo-Rk-75R"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWD-Td-xqG">
-                            <rect key="frame" x="16" y="197.5" width="350" height="20.5"/>
+                            <rect key="frame" x="16" y="190.5" width="350" height="20.5"/>
                             <accessibility key="accessibilityConfiguration" identifier="PlaylistName"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U0h-Nl-whi">
-                            <rect key="frame" x="156.5" y="226" width="69.5" height="24"/>
+                            <rect key="frame" x="156.5" y="219" width="69.5" height="24"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_friends.png" translatesAutoresizingMaskIntoConstraints="NO" id="eIv-Ga-dIS">
                                     <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="PlaylistStateIcon"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="24" id="27x-ls-Mln"/>
                                         <constraint firstAttribute="height" constant="24" id="ISI-0M-isy"/>
@@ -59,7 +61,7 @@
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywx-Pd-2Vb">
                                     <rect key="frame" x="32" y="0.0" width="37.5" height="24"/>
-                                    <accessibility key="accessibilityConfiguration" identifier="PlaylistType"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="PlaylistState"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -72,7 +74,6 @@
                         <constraint firstItem="CoN-M4-jaV" firstAttribute="centerY" secondItem="1sn-ch-0B4" secondAttribute="centerY" id="56f-va-gMc"/>
                         <constraint firstItem="CoN-M4-jaV" firstAttribute="top" secondItem="OoP-GT-beH" secondAttribute="bottom" constant="6" id="8N5-uv-bAB"/>
                         <constraint firstItem="U0h-Nl-whi" firstAttribute="top" secondItem="vWD-Td-xqG" secondAttribute="bottom" constant="8" id="Bcd-yJ-SU8"/>
-                        <constraint firstAttribute="width" secondItem="1sn-ch-0B4" secondAttribute="height" multiplier="1:1" id="D3U-Ou-uu0"/>
                         <constraint firstItem="vWD-Td-xqG" firstAttribute="top" secondItem="CoN-M4-jaV" secondAttribute="bottom" constant="6" id="Dia-6d-pIR"/>
                         <constraint firstItem="CoN-M4-jaV" firstAttribute="leading" secondItem="1sn-ch-0B4" secondAttribute="leading" id="EIQ-a6-OY5"/>
                         <constraint firstItem="U0h-Nl-whi" firstAttribute="centerX" secondItem="vWD-Td-xqG" secondAttribute="centerX" id="I9z-Ag-Ebb"/>
@@ -141,6 +142,7 @@
                 <constraint firstItem="z4e-9g-GyW" firstAttribute="top" secondItem="Q76-RE-eQV" secondAttribute="bottom" constant="16" id="She-Xh-yiN"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="Q76-RE-eQV" secondAttribute="trailing" constant="16" id="Xnh-21-h0x"/>
                 <constraint firstItem="Q76-RE-eQV" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="eUs-QP-5BH"/>
+                <constraint firstItem="1sn-ch-0B4" firstAttribute="height" secondItem="VFw-uV-y3f" secondAttribute="height" multiplier="0.45" id="fOb-hd-6eS"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="hWC-6U-L67" secondAttribute="trailing" constant="16" id="j3Q-7t-enC"/>
                 <constraint firstItem="hWC-6U-L67" firstAttribute="top" secondItem="z4e-9g-GyW" secondAttribute="bottom" constant="24" id="k2s-yK-4nE"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="z4e-9g-GyW" secondAttribute="trailing" constant="16" id="nQw-0Z-TQQ"/>

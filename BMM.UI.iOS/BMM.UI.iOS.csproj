@@ -757,6 +757,7 @@
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
     <Compile Include="Application\Extensions\UiTableExtensions.cs" />
+    <Compile Include="Application\Extensions\ViewExtensions.cs" />
     <Compile Include="Application\Helpers\GradientView.cs" />
     <Compile Include="Application\Helpers\IosConstants.cs" />
     <Compile Include="Application\Helpers\IosSupportVersionChecker.cs" />

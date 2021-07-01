@@ -23,26 +23,19 @@ namespace BMM.UI.iOS
 		UIKit.UILabel PlaylistName { get; set; }
 
 		[Outlet]
-		UIKit.UILabel PlaylistType { get; set; }
+		UIKit.UILabel PlaylistState { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView PlaylistStateIcon { get; set; }
 
 		[Outlet]
 		UIKit.UIButton ShareLinkButton { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (PlaylistName != null) {
-				PlaylistName.Dispose ();
-				PlaylistName = null;
-			}
-
-			if (PlaylistType != null) {
-				PlaylistType.Dispose ();
-				PlaylistType = null;
-			}
-
-			if (ShareLinkButton != null) {
-				ShareLinkButton.Dispose ();
-				ShareLinkButton = null;
+			if (MakePrivateButton != null) {
+				MakePrivateButton.Dispose ();
+				MakePrivateButton = null;
 			}
 
 			if (NoteLabel != null) {
@@ -50,9 +43,24 @@ namespace BMM.UI.iOS
 				NoteLabel = null;
 			}
 
-			if (MakePrivateButton != null) {
-				MakePrivateButton.Dispose ();
-				MakePrivateButton = null;
+			if (PlaylistName != null) {
+				PlaylistName.Dispose ();
+				PlaylistName = null;
+			}
+
+			if (PlaylistState != null) {
+				PlaylistState.Dispose ();
+				PlaylistState = null;
+			}
+
+			if (ShareLinkButton != null) {
+				ShareLinkButton.Dispose ();
+				ShareLinkButton = null;
+			}
+
+			if (PlaylistStateIcon != null) {
+				PlaylistStateIcon.Dispose ();
+				PlaylistStateIcon = null;
 			}
 
 		}
