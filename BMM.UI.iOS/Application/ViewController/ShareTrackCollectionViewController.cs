@@ -1,8 +1,11 @@
 using System;
+using BMM.Core.ValueConverters.TrackCollections;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
+using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using UIKit;
 
@@ -11,6 +14,8 @@ namespace BMM.UI.iOS
     [MvxModalPresentation(WrapInNavigationController = true, ModalPresentationStyle = UIModalPresentationStyle.PageSheet)]
     public partial class ShareTrackCollectionViewController : BaseViewController<ShareTrackCollectionViewModel>
     {
+        private bool _isPrivate;
+
         public ShareTrackCollectionViewController() : base(null)
         {
         }
@@ -20,6 +25,17 @@ namespace BMM.UI.iOS
         }
 
         public override Type ParentViewControllerType => null;
+
+        public bool IsPrivate
+        {
+            get => _isPrivate;
+            set
+            {
+                _isPrivate = value;
+                MakePrivateButton.Hidden = _isPrivate;
+                PlaylistStateIcon.SetHiddenIfNeeded(_isPrivate);
+            }
+        }
 
         public override void ViewDidLoad()
         {
@@ -45,13 +61,28 @@ namespace BMM.UI.iOS
                 .To(vm => vm.TrackCollectionName);
 
             set
-                .Bind(PlaylistType)
-                .To(vm => vm.TrackCollectionShareType);
+                .Bind(PlaylistState)
+                .To(vm => vm.FollowersCount)
+                .WithConversion<FollowersCountToTrackCollectionStateConverter>();
 
             set
                 .Bind(NoteLabel)
                 .To(vm => vm.TextSource)
                 .WithConversion<MvxLanguageConverter>("ShareNote");
+
+            set
+                .Bind(ShareLinkButton)
+                .To(vm => vm.ShareCommand);
+
+            set
+                .Bind(this)
+                .For(v => v.IsPrivate)
+                .To(vm => vm.FollowersCount)
+                .WithConversion<FollowersCountToIsPrivateConverter>();
+
+            set
+                .Bind(MakePrivateButton)
+                .To(vm => vm.MakePrivateCommand);
 
             set.Apply();
         }
@@ -60,7 +91,7 @@ namespace BMM.UI.iOS
         {
             PlaylistName.ApplyTextTheme(AppTheme.Heading2.Value);
             NoteLabel.ApplyTextTheme(AppTheme.Paragraph2.Value);
-            PlaylistType.ApplyTextTheme(AppTheme.Paragraph2.Value);
+            PlaylistState.ApplyTextTheme(AppTheme.Paragraph2.Value);
 
             MakePrivateButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
             ShareLinkButton.ApplyButtonStyle(AppTheme.ButtonTertiary.Value);

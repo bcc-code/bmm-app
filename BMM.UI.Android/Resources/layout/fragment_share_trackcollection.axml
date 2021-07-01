@@ -18,7 +18,7 @@
         local:layout_constraintTop_toBottomOf="@+id/Toolbar"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
-        local:layout_constraintHeight_percent="0.4" />
+        local:layout_constraintHeight_percent="0.45" />
 
     <View
         android:id="@+id/HalfDividerView"
@@ -27,7 +27,7 @@
         local:layout_constraintTop_toTopOf="@+id/TopView"
         local:layout_constraintStart_toStartOf="@+id/TopView"
         local:layout_constraintEnd_toEndOf="@+id/TopView"
-        local:layout_constraintBottom_toBottomOf="@+id/TopView"/>
+        local:layout_constraintBottom_toBottomOf="@+id/TopView" />
 
     <ImageView
         android:id="@+id/PlaylistIcon"
@@ -54,28 +54,29 @@
         local:MvxBind="Text TrackCollectionName" />
 
     <ImageView
-        android:id="@+id/FriendsIcon"
+        android:id="@+id/PlaylistStatusIcon"
         android:layout_width="@dimen/friends_icon_dimen"
         android:layout_height="@dimen/friends_icon_dimen"
         android:src="@drawable/icon_friends"
-        android:layout_marginTop="@dimen/margin_small"
         local:layout_constraintStart_toStartOf="@+id/TopView"
-        local:layout_constraintEnd_toStartOf="@+id/PlaylistType"
-        local:layout_constraintTop_toBottomOf="@+id/PlaylistName"
-        local:layout_constraintHorizontal_chainStyle="packed" />
+        local:layout_constraintEnd_toStartOf="@+id/PlaylistStatus"
+        local:layout_constraintTop_toTopOf="@+id/PlaylistStatus"
+        local:layout_constraintBottom_toBottomOf="@+id/PlaylistStatus"
+        local:layout_constraintHorizontal_chainStyle="packed"
+        local:MvxBind="Visibility InvertedVisibility(FollowersCountToIsPrivate(FollowersCount))" />
 
     <TextView
-        android:id="@+id/PlaylistType"
+        android:id="@+id/PlaylistStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/margin_medium"
         android:layout_marginStart="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"
         style="@style/Subtitle1"
-        local:layout_constraintStart_toEndOf="@+id/FriendsIcon"
+        local:layout_constraintStart_toEndOf="@+id/PlaylistStatusIcon"
         local:layout_constraintEnd_toEndOf="@+id/TopView"
-        local:layout_constraintTop_toTopOf="@+id/FriendsIcon"
-        local:layout_constraintBottom_toBottomOf="@+id/FriendsIcon"
-        local:MvxBind="Text TrackCollectionShareType" />
+        local:layout_constraintTop_toBottomOf="@+id/PlaylistName"
+        local:MvxBind="Text FollowersCountToTrackCollectionState(FollowersCount)" />
 
     <Button
         android:id="@+id/MakePrivateButton"
@@ -87,6 +88,9 @@
         local:layout_constraintBottom_toTopOf="@+id/ShareLinkButton"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="
+            Visibility InvertedVisibility(FollowersCountToIsPrivate(FollowersCount));
+            Click MakePrivateCommand"
         local:MvxLang="Text MakePrivate" />
     
     <Button
@@ -100,6 +104,7 @@
         local:layout_constraintBottom_toTopOf="@+id/Note"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="Click ShareCommand"
         local:MvxLang="Text ShareLink" />
 
     <TextView

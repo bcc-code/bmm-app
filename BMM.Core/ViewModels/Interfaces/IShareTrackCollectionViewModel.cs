@@ -6,6 +6,6 @@ namespace BMM.Core.ViewModels.Interfaces
     public interface IShareTrackCollectionViewModel : IMvxViewModel<ITrackCollectionParameter>
     {
         string TrackCollectionName { get; }
-        string TrackCollectionShareType { get; }
+        int FollowersCount { get; }
     }
 }

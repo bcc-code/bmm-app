@@ -2,9 +2,11 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.Parameters.Interface;
+using MvvmCross.Commands;
 
 namespace BMM.Core.ViewModels
 {
@@ -13,8 +15,15 @@ namespace BMM.Core.ViewModels
           IShareTrackCollectionViewModel
     {
         private int _trackCollectionId;
+        private int _followersCount;
         private string _trackCollectionName;
-        private string _trackCollectionShareType;
+        private string _shareLink;
+
+        public ShareTrackCollectionViewModel(IShareLink shareLink)
+        {
+            ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.For(_shareLink));
+            MakePrivateCommand = new ExceptionHandlingCommand(async () => await Client.TrackCollection.ResetShare(_trackCollectionId));
+        }
 
         public string TrackCollectionName
         {
@@ -22,11 +31,14 @@ namespace BMM.Core.ViewModels
             private set => SetProperty(ref _trackCollectionName, value);
         }
 
-        public string TrackCollectionShareType
+        public int FollowersCount
         {
-            get => _trackCollectionShareType;
-            private set => SetProperty(ref _trackCollectionShareType, value);
+            get => _followersCount;
+            private set => SetProperty(ref _followersCount, value);
         }
+
+        public IMvxAsyncCommand ShareCommand { get; }
+        public IMvxAsyncCommand MakePrivateCommand { get; }
 
         public void Prepare(ITrackCollectionParameter parameter)
         {
@@ -36,8 +48,9 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var trackCollection = await Client.TrackCollection.GetById(_trackCollectionId, policy);
+            _shareLink = trackCollection.ShareLink;
             TrackCollectionName = trackCollection.Name;
-            TrackCollectionShareType = "Private";
+            FollowersCount = trackCollection.FollowerCount;
             return trackCollection.Tracks;
         }
     }
