@@ -13,7 +13,6 @@ namespace BMM.Api.Implementation.Models
                 ? collection.Tracks.Select(track => new TrackReference {Id = track.Id, Language = track.Language}).ToList()
                 : new List<TrackReference>();
             Name = collection.Name;
-            Access = collection.Access;
             Id = collection.Id;
         }
 

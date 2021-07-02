@@ -11,10 +11,6 @@ namespace BMM.Api.Implementation.Models
             DocumentType = DocumentType.TrackCollection;
         }
 
-        private IList<string> _access;
-
-        public IList<string> Access { get => _access ?? (_access = new List<string>()); set => _access = value; }
-
         public string Name { get; set; }
     }
 }
