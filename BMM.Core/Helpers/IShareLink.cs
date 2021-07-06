@@ -8,6 +8,6 @@ namespace BMM.Core.Helpers
         Task For(Track track);
         Task For(Album album);
         Task For(Contributor contributor);
-        Task For(string link);
+        Task PerformRequestFor(string link);
     }
 }

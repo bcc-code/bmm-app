@@ -21,7 +21,7 @@ namespace BMM.Core.ViewModels
 
         public ShareTrackCollectionViewModel(IShareLink shareLink)
         {
-            ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.For(_shareLink));
+            ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.PerformRequestFor(_shareLink));
             MakePrivateCommand = new ExceptionHandlingCommand(async () => await Client.TrackCollection.ResetShare(_trackCollectionId));
         }
 
