@@ -22,9 +22,12 @@ namespace BMM.Core.Helpers
             await GenerateLink($"playlist/contributor/{contributor.Id}/{contributor.Name}");
         }
 
-        public async Task For(string link)
+        public async Task PerformRequestFor(string link)
         {
-            await GenerateLink(link);
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Uri = link
+            });
         }
 
         /// <summary>
@@ -33,10 +36,7 @@ namespace BMM.Core.Helpers
         public async Task GenerateLink(string link)
         {
             var url = new Uri("https://" + GlobalConstants.BmmUrl + "/" + link);
-            await Share.RequestAsync(new ShareTextRequest
-            {
-                Uri = url.AbsoluteUri
-            });
+            await PerformRequestFor(url.AbsoluteUri);
             // ToDo: provide Subject for Android
         }
     }

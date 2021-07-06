@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using BMM.Core.Implementations.DeepLinking.Base;
+using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
 
 namespace BMM.Core.Implementations.DeepLinking
 {
-    public interface IDeepLinkParser
-    {
-        bool CanNavigateTo(Uri uri, out Func<Task> action);
-    }
-
-    public class RegexDeepLink : IDeepLinkParser
+    public class RegexDeepLink : DeepLinkParserBase, IDeepLinkParser
     {
         private readonly Func<Task> _action;
 
@@ -21,7 +18,7 @@ namespace BMM.Core.Implementations.DeepLinking
             _regex = regex;
         }
 
-        public bool CanNavigateTo(Uri uri, out Func<Task> action)
+        protected override bool CanNavigateTo(Uri uri, out Func<Task> action)
         {
             action = _action;
 

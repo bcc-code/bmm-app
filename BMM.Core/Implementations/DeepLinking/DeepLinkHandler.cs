@@ -10,6 +10,8 @@ using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
+using BMM.Core.Implementations.DeepLinking.Parameters;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -71,12 +73,13 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink("^/music$", NavigateTo<ExploreRecentMusicViewModel>),
                 new RegexDeepLink("^/contributors$", NavigateTo<ExploreContributorsViewModel>),
                 new RegexDeepLink("^/featured$", NavigateTo<CuratedPlaylistsViewModel>),
-                new RegexDeepLinkWithParameters("^/playlist/curated/(?<id>[0-9]+)(/(?<name>.*))?$", OpenCuratedPlaylist),
-                new RegexDeepLinkWithParameters("^/playlist/private/(?<id>[0-9]+)(/(?<name>.*))?$", OpenTrackCollection),
-                new RegexDeepLinkWithParameters("^/playlist/contributor/(?<id>[0-9]+)(/(?<name>.*))?$", OpenContributor),
-                new RegexDeepLinkWithParameters("^/playlist/podcast/(?<id>[0-9]+)(/(?<name>.*))?$", OpenPodcast),
-                new RegexDeepLinkWithParameters("^/album/(?<id>[0-9]+)$", OpenAlbum),
-                new TrackLinkParser("^/track/(?<id>[0-9]+)(/(?<language>.*))?$", (id, name, startTimeInMs) => PlayTrackById(id, startTimeInMs)),
+                new RegexDeepLink<StandardDeepLinkParameters>("^/playlist/curated/(?<id>[0-9]+)(/(?<name>.*))?$", OpenCuratedPlaylist),
+                new RegexDeepLink<StandardDeepLinkParameters>("^/playlist/private/(?<id>[0-9]+)(/(?<name>.*))?$", OpenTrackCollection),
+                new RegexDeepLink<StandardDeepLinkParameters>("^/playlist/podcast/(?<id>[0-9]+)(/(?<name>.*))?$", OpenPodcast),
+                new RegexDeepLink<IdDeepLinkParameters>("^/playlist/contributor/(?<id>[0-9]+)(/(?<name>.*))?$", OpenContributor),
+                new RegexDeepLink<IdDeepLinkParameters>("^/album/(?<id>[0-9]+)$", OpenAlbum),
+                new RegexDeepLink<TrackCollectionDeepLinkParameters>("^/shared_playlist/(?<sharingsecret>.*)?$", OpenSharedTrackCollection ),
+                new TrackLinkParser("^/track/(?<id>[0-9]+)(/(?<language>.*))?$", PlayTrackById),
                 new RegexDeepLink("^/$", DoNothing)
             };
         }
@@ -93,29 +96,34 @@ namespace BMM.Core.Implementations.DeepLinking
             }
         }
 
-        private Task OpenAlbum(int id, string unusedName)
+        private Task OpenSharedTrackCollection(TrackCollectionDeepLinkParameters trackCollectionDeepLinkParameters)
         {
-            return _navigationService.Navigate<AlbumViewModel, int>(id);
+            return Task.CompletedTask;
         }
 
-        private Task OpenContributor(int id, string unusedName)
+        private Task OpenAlbum(IdDeepLinkParameters idDeepLinksParameters)
         {
-            return _navigationService.Navigate<ContributorViewModel, int>(id);
+            return _navigationService.Navigate<AlbumViewModel, int>(idDeepLinksParameters.Id);
         }
 
-        private Task OpenPodcast(int id, string name)
+        private Task OpenContributor(IdDeepLinkParameters idLinkParameters)
         {
-            return _navigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = id, Title = name});
+            return _navigationService.Navigate<ContributorViewModel, int>(idLinkParameters.Id);
         }
 
-        private Task OpenCuratedPlaylist(int id, string name)
+        private Task OpenPodcast(StandardDeepLinkParameters deepLinkParameters)
         {
-            return _navigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = id, Title = name});
+            return _navigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
         }
 
-        private Task OpenTrackCollection(int id, string name)
+        private Task OpenCuratedPlaylist(StandardDeepLinkParameters deepLinkParameters)
         {
-            return _navigationService.Navigate<TrackCollectionViewModel, TrackCollection>(new TrackCollection {Id = id, Name = name});
+            return _navigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
+        }
+
+        private Task OpenTrackCollection(StandardDeepLinkParameters deepLinkParameters)
+        {
+            return _navigationService.Navigate<TrackCollectionViewModel, TrackCollection>(new TrackCollection {Id = deepLinkParameters.Id, Name = deepLinkParameters.Name});
         }
 
         private Task DoNothing()
@@ -131,10 +139,10 @@ namespace BMM.Core.Implementations.DeepLinking
             await PlayTracks(trackToPlay, PlaybackOriginName);
         }
 
-        private async Task PlayTrackById(int id, long startTimeInMs = 0)
+        private async Task PlayTrackById(TrackLinkParameters trackLinkParameters)
         {
-            var requestedTrack = await _client.Tracks.GetById(id);
-            await PlayTracks(new[] { requestedTrack }, PlaybackOriginName, startTimeInMs);
+            var requestedTrack = await _client.Tracks.GetById(trackLinkParameters.Id);
+            await PlayTracks(new[] { requestedTrack }, PlaybackOriginName, trackLinkParameters.StartTimeInMs);
         }
 
         public bool Open(Uri uri)
@@ -146,7 +154,7 @@ namespace BMM.Core.Implementations.DeepLinking
 
             foreach (var link in _links)
             {
-                if (link.CanNavigateTo(uri, out var action))
+                if (link.PerformCanNavigateTo(uri, out var action))
                 {
                     _exceptionHandler.FireAndForgetOnMainThread(async () =>
                     {
