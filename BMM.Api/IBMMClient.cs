@@ -31,5 +31,7 @@ namespace BMM.Api
         IUsersClient Users { get; }
 
         IDiscoverClient Discover { get; }
+
+        ISharedPlaylistClient SharedPlaylist { get; }
     }
 }

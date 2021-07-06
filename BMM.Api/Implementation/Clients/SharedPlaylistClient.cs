@@ -26,7 +26,7 @@ namespace BMM.Api.Implementation.Clients
 
         public async Task<bool> Follow(string sharingSecret)
         {
-            var uri = new UriTemplate(ApiUris.TrackCollectionResetShare);
+            var uri = new UriTemplate(ApiUris.SharedPlaylistFollow);
             uri.SetParameter(SharingSecret, sharingSecret);
             return await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
         }

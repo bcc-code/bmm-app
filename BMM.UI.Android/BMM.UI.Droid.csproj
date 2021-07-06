@@ -132,6 +132,7 @@
     <Compile Include="Application\Fragments\LibraryArchiveFragment.cs" />
     <Compile Include="Application\Fragments\DownloadedFollowedPodcastsFragment.cs" />
     <Compile Include="Application\Fragments\PodcastsFragment.cs" />
+    <Compile Include="Application\Fragments\SharedTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\ShareTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\StorageManagementFragment.cs" />
     <Compile Include="Application\Fragments\MyContentFragment.cs" />
@@ -484,6 +485,7 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_profile.xml" />
+    <AndroidResource Include="Resources\layout\listitem_shared_trackcollection_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_streak.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

@@ -450,7 +450,7 @@ namespace BMM.Core.ViewModels.Base
 
                 case DocumentType.TrackCollection:
                     var trackCollection = (TrackCollection)item;
-                    await _navigationService.Navigate<TrackCollectionViewModel, TrackCollection>(new TrackCollection { Id = trackCollection.Id, Name = trackCollection.Name });
+                    await _navigationService.Navigate<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(trackCollection.Id, trackCollection.Name));
                     break;
 
                 case DocumentType.Podcast:

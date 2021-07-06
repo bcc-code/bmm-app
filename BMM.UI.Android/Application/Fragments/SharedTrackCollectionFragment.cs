@@ -3,21 +3,28 @@ using Android.Runtime;
 using Android.Text;
 using Android.Text.Style;
 using Android.Views;
-using AndroidX.Activity;
-using AndroidX.Core.Content;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Extensions;
+using BMM.UI.Droid.Application.TemplateSelectors;
+using MvvmCross.DroidX.RecyclerView;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxFragmentPresentation(typeof(MainActivityViewModel), Resource.Id.content_frame, true)]
-    [Register("bmm.ui.droid.application.fragments.ShareTrackCollectionFragment")]
-    public class ShareTrackCollectionFragment : BaseFragment<ShareTrackCollectionViewModel>
+    [Register("bmm.ui.droid.application.fragments.SharedTrackCollectionFragment")]
+    public class SharedTrackCollectionFragment : BaseFragment<SharedTrackCollectionViewModel>
     {
-        protected override int FragmentId => Resource.Layout.fragment_share_trackcollection;
+        protected override int FragmentId => Resource.Layout.fragment_tracklist;
 
         protected override bool IsTabBarVisible => false;
+
+        protected override MvxRecyclerAdapter CreateAdapter()
+        {
+            return new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext, ViewTypes.SharedTrackCollectionHeader);
+        }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {

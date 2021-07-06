@@ -8,6 +8,8 @@ using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using UIKit;
+using Xamarin.Essentials;
+using AppTheme = BMM.UI.iOS.Constants.AppTheme;
 
 namespace BMM.UI.iOS
 {
@@ -73,6 +75,12 @@ namespace BMM.UI.iOS
             set
                 .Bind(ShareLinkButton)
                 .To(vm => vm.ShareCommand);
+
+            set
+                .Bind(ShareLinkButton)
+                .For(v => v.BindTitle())
+                .To(vm => vm.TextSource)
+                .WithConversion<MvxLanguageConverter>("ShareLink");
 
             set
                 .Bind(this)
