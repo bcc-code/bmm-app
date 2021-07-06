@@ -446,8 +446,7 @@ namespace BMM.Core.ViewModels.Base
                 {
                     TrackCollection collection = new TrackCollection
                     {
-                        Name = result.Text,
-                        Access = new[] {Mvx.IoCProvider.Resolve<IUserStorage>().GetUser().Username}
+                        Name = result.Text
                     };
 
                     try
