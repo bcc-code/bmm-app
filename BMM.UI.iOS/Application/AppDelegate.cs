@@ -52,7 +52,6 @@ namespace BMM.UI.iOS
             Console.Error.WriteLine("Failed to register for remote notifications");
         }
 
-
         public override void WillTerminate(UIApplication application)
         {
             Mvx.IoCProvider.Resolve<IDownloadQueue>().AppWasKilled();

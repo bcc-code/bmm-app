@@ -342,6 +342,12 @@
     "Private": "Private",
     "SharedWithFormat": "Shared with {0} format"
   },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Done": "Done",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists"
+  },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlist",
     "MenuDelete": "Delete",

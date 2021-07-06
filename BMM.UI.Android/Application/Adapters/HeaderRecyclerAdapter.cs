@@ -10,10 +10,13 @@ namespace BMM.UI.Droid.Application.Adapters
     /// </summary>
     public class HeaderRecyclerAdapter : LoadMoreRecyclerAdapter
     {
+        private readonly int _headerViewType;
+
         protected virtual int NumberOfAdditionalItems => 1;
 
-        public HeaderRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
+        public HeaderRecyclerAdapter(IMvxAndroidBindingContext bindingContext, int? headerViewType = null) : base(bindingContext)
         {
+            _headerViewType = headerViewType ?? ViewTypes.Header;
         }
 
         public override int ItemCount => base.ItemCount + NumberOfAdditionalItems;
@@ -31,7 +34,7 @@ namespace BMM.UI.Droid.Application.Adapters
         public override int GetItemViewType(int position)
         {
             if (position == 0)
-                return ItemTemplateSelector.GetItemLayoutId(ViewTypes.Header);
+                return ItemTemplateSelector.GetItemLayoutId(_headerViewType);
 
             return base.GetItemViewType(position);
         }

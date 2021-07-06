@@ -1,4 +1,5 @@
 using BMM.Core.ViewModels.Parameters.Interface;
+using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels.Interfaces
@@ -7,5 +8,7 @@ namespace BMM.Core.ViewModels.Interfaces
     {
         string TrackCollectionName { get; }
         int FollowersCount { get; }
+        IMvxAsyncCommand ShareCommand { get; }
+        IMvxAsyncCommand MakePrivateCommand { get; }
     }
 }
