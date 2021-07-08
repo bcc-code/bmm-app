@@ -8,6 +8,7 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
+using BMM.Core.Messages;
 using BMM.Core.ViewModels.MyContent;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
@@ -19,6 +20,7 @@ namespace BMM.Core.ViewModels
     public class TrackCollectionViewModel : MyTracksViewModel
     {
         private MvxSubscriptionToken _trackCollectionOrderChangedToken;
+        private MvxSubscriptionToken _playlistStateChangedMessageSubscriptionKey;
 
         public IMvxAsyncCommand DeleteCommand { get; }
 
@@ -70,12 +72,16 @@ namespace BMM.Core.ViewModels
         protected override Task Initialization()
         {
             _trackCollectionOrderChangedToken = _messenger.Subscribe<TrackCollectionOrderChangedMessage>(HandleTrackCollectionOrderChanged);
+            _playlistStateChangedMessageSubscriptionKey =
+                _messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
+
             return base.Initialization();
         }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
-            _trackCollectionOrderChangedToken.Dispose();
+            _messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
+            _messenger.Unsubscribe<TrackCollectionOrderChangedMessage>(_trackCollectionOrderChangedToken);
             base.ViewDestroy(viewFinishing);
         }
 

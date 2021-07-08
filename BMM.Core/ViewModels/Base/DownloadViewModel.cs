@@ -57,6 +57,8 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual bool ShowPlaylistIcon => false;
 
+        public virtual bool ShowAddToPlaylistButton => false;
+
         public abstract string Image { get; }
 
         public bool UseCircularImage => false;
@@ -67,6 +69,7 @@ namespace BMM.Core.ViewModels.Base
         public bool ShowPlayButton => false;
 
         public bool ShowTrackCount => true;
+
 
         public string DownloadingText => !IsDownloading
             ? ""

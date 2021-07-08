@@ -9,6 +9,7 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
+using BMM.Core.Messages;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Commands;
@@ -37,9 +38,12 @@ namespace BMM.Core.ViewModels
             AddToMyPlaylistCommand = new ExceptionHandlingCommand(async () =>
             {
                 await Client.SharedPlaylist.Follow(_sharingSecret);
+                _messenger.Publish(new PlaylistStateChangedMessage(this, MyCollection.Id));
                 await CloseCommand.ExecuteAsync();
             });
         }
+
+        public override bool ShowAddToPlaylistButton => true;
 
         public IMvxAsyncCommand AddToMyPlaylistCommand { get; }
 

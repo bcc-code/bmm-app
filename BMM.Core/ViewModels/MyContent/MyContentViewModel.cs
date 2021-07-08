@@ -5,14 +5,18 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
+using BMM.Core.Messages;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
+using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels.MyContent
 {
     public class MyContentViewModel : ContentBaseViewModel
     {
+        private MvxSubscriptionToken _playlistStateChangedMessageSubscriptionKey;
+
         // This TextSource is needed because the TrackCollectionsAddToViewModel reuses the fragment axml. Otherwise we would need to duplicate the translations.
         // ReSharper disable once UnusedMember.Global
         public IMvxLanguageBinder MyContentTextSource =>
@@ -21,6 +25,19 @@ namespace BMM.Core.ViewModels.MyContent
         public MyContentViewModel(IOfflineTrackCollectionStorage downloader, IStorageManager storageManager)
             : base(downloader, storageManager)
         {
+        }
+
+        protected override Task Initialization()
+        {
+            _playlistStateChangedMessageSubscriptionKey =
+                _messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
+            return base.Initialization();
+        }
+
+        public override void ViewDestroy(bool viewFinishing = true)
+        {
+            _messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
+            base.ViewDestroy(viewFinishing);
         }
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)

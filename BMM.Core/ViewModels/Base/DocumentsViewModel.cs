@@ -206,7 +206,7 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual CacheKeys? CacheKey => null;
 
-        protected void SubscribeToChanges()
+        protected virtual void SubscribeToChanges()
         {
             if (!CacheKey.HasValue)
             {

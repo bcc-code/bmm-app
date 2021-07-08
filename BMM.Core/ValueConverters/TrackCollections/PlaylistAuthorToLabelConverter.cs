@@ -1,0 +1,20 @@
+using System;
+using System.Globalization;
+using BMM.Core.Helpers;
+using BMM.Core.ViewModels;
+using MvvmCross.Converters;
+using MvvmCross.Localization;
+
+namespace BMM.Core.ValueConverters.TrackCollections
+{
+    public class PlaylistAuthorToLabelConverter : MvxValueConverter<string>
+    {
+        private readonly IMvxLanguageBinder _languageBinder =
+            new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(ShareTrackCollectionViewModel));
+
+        protected override object Convert(string value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return $"{_languageBinder.GetText("By")} {value}";
+        }
+    }
+}

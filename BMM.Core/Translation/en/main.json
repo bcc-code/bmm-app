@@ -340,7 +340,8 @@
     "ShareLink": "Share link",
     "MakePrivate": "Make private",
     "Private": "Private",
-    "SharedWithFormat": "Shared with {0} format"
+    "SharedWithFormat": "Shared with {0} people",
+    "By": "by"
   },
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",

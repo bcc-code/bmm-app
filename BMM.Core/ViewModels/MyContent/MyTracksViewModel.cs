@@ -36,12 +36,20 @@ namespace BMM.Core.ViewModels.MyContent
             {
                 SetProperty(ref _myCollection, value);
                 RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => PlaylistAuthor);
+                RaisePropertyChanged(() => CanEdit);
+                RaisePropertyChanged(() => FollowersCount);
             }
         }
+
+        public string PlaylistAuthor => MyCollection.AuthorName;
+        public bool CanEdit => MyCollection.CanEdit;
+        public int FollowersCount => MyCollection.FollowerCount;
 
         public bool IsEmpty => MyCollection.Tracks?.Count == 0 && !IsLoading && IsInitialized;
 
         private readonly ITrackCollectionManager _trackCollectionManager;
+        private string _playlistAuthor;
 
         public MyTracksViewModel(
             IStorageManager storageManager,

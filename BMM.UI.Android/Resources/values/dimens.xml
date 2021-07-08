@@ -6,7 +6,8 @@
     <dimen name="margin_mini">6dp</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
-    <dimen name="margin_medium_plus">24dp</dimen>
+    <dimen name="margin_xmedium">20dp</dimen>
+    <dimen name="margin_xxmedium">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_huge">64dp</dimen>
 
@@ -15,6 +16,8 @@
     <dimen name="padding_medium">16dp</dimen>
     <dimen name="padding_large">32dp</dimen>
     <dimen name="padding_huge">64dp</dimen>
+    
+    <dimen name="divider_height">1dp</dimen>
 
     <!-- Buttons -->
     <dimen name="large_button_height">56dp</dimen>
@@ -47,7 +50,7 @@
     <dimen name="explore_contributor_cardview_dimen">150dp</dimen>
     <dimen name="contributor_image_dimen">44dp</dimen>
 
-    <dimen name="share_playlist_icon_dimen">48dp</dimen>
+    <dimen name="playlist_icon_dimen">48dp</dimen>
     <dimen name="friends_icon_dimen">20dp</dimen>
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>
