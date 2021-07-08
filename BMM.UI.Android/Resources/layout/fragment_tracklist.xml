@@ -8,8 +8,7 @@
 		android:layout_height="wrap_content"
 		android:id="@+id/relativeLayout1">
 		<include
-			layout="@layout/toolbar_actionbar"
-			android:layout_alignParentTop="true" />
+			layout="@layout/toolbar_actionbar" />
 		<include 
 			layout="@layout/offline_banner"
 			android:layout_width="match_parent"
@@ -32,4 +31,17 @@
 				local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
 		</mvvmcross.droidx.MvxSwipeRefreshLayout>
 	</RelativeLayout>
+
+	<Button
+		android:id="@+id/AddToMyPlaylistButton"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		style="@style/IconButton_Primary_Large"
+		android:layout_marginBottom="@dimen/margin_xxmedium"
+		android:layout_marginHorizontal="@dimen/margin_medium"
+		local:layout_anchorGravity="bottom"
+        local:layout_anchor="@id/relativeLayout1"
+		local:MvxBind="Visibility Visibility(ShowAddToPlaylistButton); Click AddToMyPlaylistCommand"
+		local:MvxLang="Text AddToMyPlaylist" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

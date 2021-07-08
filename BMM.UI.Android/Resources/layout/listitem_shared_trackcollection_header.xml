@@ -1,62 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="32dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        android:gravity="center">
-    <LinearLayout
-            android:background="@drawable/icon_playlist"
-            android:layout_width="48dp"
-            android:layout_height="48dp" />
+        android:layout_height="wrap_content">
+
+    <ImageView
+            android:id="@+id/PlaylistIcon"
+            android:layout_width="@dimen/playlist_icon_dimen"
+            android:layout_height="@dimen/playlist_icon_dimen"
+            android:src="@drawable/icon_playlist"
+            android:layout_marginTop="@dimen/margin_large"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:id="@+id/PlaylistName"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginBottom="4dp"
-            android:gravity="center"
-            android:textFontWeight="800"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:gravity="center_horizontal"
             style="@style/Heading2"
-            android:text="BUK Roadtrip with an extra long title crossing 2 lines"
-            app:MvxBind="Text Title">
-    </TextView>
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/PlaylistIcon"
+            local:MvxBind="Text Title" />
 
     <TextView
+            android:id="@+id/PlaylistAuthor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:text="Private"
-            android:layout_marginBottom="4dp"
-            app:MvxLang="Text Private"
-            app:MvxBind="Visibility Visibility(ShowSharingInfo)"/>
-    
-    <View
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="1dp"
-            android:background="@color/track_divider_line"/>
-    <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            app:MvxBind="Visibility Visibility(ShowTrackCount)">
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginLeft="@dimen/track_padding"
-                android:textColor="@color/bright_gray"
-                android:text="23 tracks"
-                app:MvxBind="Text TrackCountString; Visibility InvertedVisibility(And(IsLoading, EqualTo(Documents.Count, 0)))"/>
-    </RelativeLayout>
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_mini"
+            style="@style/Subtitle1"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/PlaylistName"
+            local:MvxBind="Text PlaylistAuthorToLabel(PlaylistAuthor)" />
 
-</LinearLayout>
+    <View
+            android:id="@+id/Divider"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginTop="@dimen/margin_large"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/PlaylistAuthor"
+            android:background="@color/track_divider_line" />
+
+    <TextView
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xmedium"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/track_padding"
+            android:gravity="start"
+            style="@style/Subtitle3"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/Divider"
+            local:MvxBind="Text TrackCountString; Visibility InvertedVisibility(And(IsLoading, EqualTo(Documents.Count, 0)))"/>
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

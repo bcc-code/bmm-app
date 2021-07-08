@@ -12,6 +12,8 @@ namespace BMM.Api.Implementation.Models
 
         public int FollowerCount { get; set; }
         public string ShareLink { get; set; }
+        public string AuthorName { get; set; }
+        public bool CanEdit { get; set; }
         public List<Track> Tracks { get; set; }
     }
 }

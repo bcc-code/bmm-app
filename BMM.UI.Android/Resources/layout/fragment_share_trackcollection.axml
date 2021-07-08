@@ -31,8 +31,8 @@
 
     <ImageView
         android:id="@+id/PlaylistIcon"
-        android:layout_width="@dimen/share_playlist_icon_dimen"
-        android:layout_height="@dimen/share_playlist_icon_dimen"
+        android:layout_width="@dimen/playlist_icon_dimen"
+        android:layout_height="@dimen/playlist_icon_dimen"
         android:src="@drawable/icon_playlist"
         android:layout_marginBottom="@dimen/margin_mini"
         local:layout_constraintStart_toStartOf="@+id/TopView"
@@ -46,8 +46,7 @@
         android:layout_marginTop="@dimen/margin_mini"
         android:layout_marginHorizontal="@dimen/margin_medium"
         android:gravity="center_horizontal"
-        android:textFontWeight="800"
-        style="@style/Heading2"
+        style="@style/Heading3"
         local:layout_constraintStart_toStartOf="@+id/TopView"
         local:layout_constraintEnd_toEndOf="@+id/TopView"
         local:layout_constraintTop_toBottomOf="@+id/HalfDividerView"
@@ -63,7 +62,7 @@
         local:layout_constraintTop_toTopOf="@+id/PlaylistStatus"
         local:layout_constraintBottom_toBottomOf="@+id/PlaylistStatus"
         local:layout_constraintHorizontal_chainStyle="packed"
-        local:MvxBind="Visibility InvertedVisibility(FollowersCountToIsPrivate(FollowersCount))" />
+        local:MvxBind="Visibility Visibility(TrackCollectionToPlaylistStatusIconIsVisible(TrackCollection))" />
 
     <TextView
         android:id="@+id/PlaylistStatus"
@@ -76,7 +75,7 @@
         local:layout_constraintStart_toEndOf="@+id/PlaylistStatusIcon"
         local:layout_constraintEnd_toEndOf="@+id/TopView"
         local:layout_constraintTop_toBottomOf="@+id/PlaylistName"
-        local:MvxBind="Text FollowersCountToTrackCollectionState(FollowersCount)" />
+        local:MvxBind="Text TrackCollectionToSharingState(TrackCollection)" />
 
     <Button
         android:id="@+id/MakePrivateButton"
@@ -89,7 +88,7 @@
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
         local:MvxBind="
-            Visibility InvertedVisibility(FollowersCountToIsPrivate(FollowersCount));
+            Visibility Visibility(FollowersCountToMakePrivateButtonIsVisible(FollowersCount));
             Click MakePrivateCommand"
         local:MvxLang="Text MakePrivate" />
     
@@ -99,7 +98,7 @@
         android:layout_height="wrap_content"
         style="@style/IconButton_Primary_Large"
         android:drawableLeft="@drawable/icon_link"
-        android:layout_marginBottom="@dimen/margin_medium_plus"
+        android:layout_marginBottom="@dimen/margin_xxmedium"
         android:layout_marginHorizontal="@dimen/margin_medium"
         local:layout_constraintBottom_toTopOf="@+id/Note"
         local:layout_constraintStart_toStartOf="parent"

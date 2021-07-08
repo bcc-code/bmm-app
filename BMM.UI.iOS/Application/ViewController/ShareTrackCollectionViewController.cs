@@ -8,7 +8,6 @@ using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using UIKit;
-using Xamarin.Essentials;
 using AppTheme = BMM.UI.iOS.Constants.AppTheme;
 
 namespace BMM.UI.iOS
@@ -17,6 +16,7 @@ namespace BMM.UI.iOS
     public partial class ShareTrackCollectionViewController : BaseViewController<ShareTrackCollectionViewModel>
     {
         private bool _isPrivate;
+        private bool _isSharingStatusIconVisible;
 
         public ShareTrackCollectionViewController() : base(null)
         {
@@ -64,8 +64,8 @@ namespace BMM.UI.iOS
 
             set
                 .Bind(PlaylistState)
-                .To(vm => vm.FollowersCount)
-                .WithConversion<FollowersCountToTrackCollectionStateConverter>();
+                .To(vm => vm.TrackCollection)
+                .WithConversion<TrackCollectionToSharingStateConverter>();
 
             set
                 .Bind(NoteLabel)
@@ -84,15 +84,31 @@ namespace BMM.UI.iOS
 
             set
                 .Bind(this)
-                .For(v => v.IsPrivate)
-                .To(vm => vm.FollowersCount)
-                .WithConversion<FollowersCountToIsPrivateConverter>();
+                .For(v => v.IsSharingStatusIconVisible)
+                .To(vm => vm.TrackCollection)
+                .WithConversion<TrackCollectionToPlaylistStatusIconIsVisibleConverter>();
 
             set
                 .Bind(MakePrivateButton)
                 .To(vm => vm.MakePrivateCommand);
 
+            set
+                .Bind(MakePrivateButton)
+                .For(v => v.BindVisible())
+                .To(vm => vm.FollowersCount)
+                .WithConversion<FollowersCountToMakePrivateButtonIsVisibleConverter>();
+
             set.Apply();
+        }
+
+        public bool IsSharingStatusIconVisible
+        {
+            get => _isSharingStatusIconVisible;
+            set
+            {
+                _isSharingStatusIconVisible = value;
+                PlaylistStateIcon.SetHiddenIfNeeded(!_isSharingStatusIconVisible);
+            }
         }
 
         private void SetThemes()

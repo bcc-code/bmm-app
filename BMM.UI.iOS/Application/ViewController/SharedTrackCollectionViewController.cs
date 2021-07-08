@@ -1,5 +1,6 @@
 using System;
 using BMM.Core.ValueConverters;
+using BMM.Core.ValueConverters.TrackCollections;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
@@ -38,6 +39,17 @@ namespace BMM.UI.iOS
             }
         }
 
+        public string Author
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                AuthorNameLabel.Text = _name;
+                CollectionTableView.ResizeHeaderView();
+            }
+        }
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -69,6 +81,12 @@ namespace BMM.UI.iOS
                 .Bind(this)
                 .For(v => v.Name)
                 .To(vm => vm.MyCollection.Name);
+
+            set
+                .Bind(this)
+                .For(v => v.Author)
+                .To(vm => vm.PlaylistAuthor)
+                .WithConversion<PlaylistAuthorToLabelConverter>();
 
             set
                 .Bind(PlaylistName)
@@ -105,7 +123,6 @@ namespace BMM.UI.iOS
                 .Bind(AddToMyPlaylistButton)
                 .To(vm => vm.AddToMyPlaylistCommand);
 
-            AuthorNameLabel.Text = "by Karsten Kuepper";
             set.Apply();
         }
 

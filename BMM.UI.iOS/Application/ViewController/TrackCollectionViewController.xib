@@ -16,6 +16,8 @@
                 <outlet property="OfflineBannerView" destination="JEQ-Pn-dAX" id="eg1-dY-8bX"/>
                 <outlet property="OfflineBannerViewHeightConstraint" destination="XPZ-z0-l6X" id="name-outlet-XPZ-z0-l6X"/>
                 <outlet property="PlaylistHeaderView" destination="Bpp-Gt-LEf" id="GrG-RR-eIY"/>
+                <outlet property="PlaylistIcon" destination="Fir-nT-lLO" id="hAD-s2-7hN"/>
+                <outlet property="PlaylistState" destination="otL-5R-Wsb" id="Cyo-3p-slI"/>
                 <outlet property="ShuffleButton" destination="Xev-U7-dfN" id="Zx2-jU-Ep7"/>
                 <outlet property="TrackCountLabel" destination="vsX-tP-cBA" id="1yr-QW-qow"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
@@ -52,7 +54,7 @@
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="Bpp-Gt-LEf" userLabel="TableHeaderView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="292"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_playlist.png" translatesAutoresizingMaskIntoConstraints="NO" id="Boq-CE-h65">
@@ -69,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Z8C-8f-DbM">
-                                <rect key="frame" x="70.666666666666686" y="171" width="273" height="40"/>
+                                <rect key="frame" x="70.666666666666686" y="199" width="273" height="40"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-Gf-W9x" customClass="DownloadButton">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
@@ -109,14 +111,14 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvc-K0-jVM" userLabel="Divider" customClass="Separator">
-                                <rect key="frame" x="0.0" y="243" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="271" width="414" height="1"/>
                                 <color key="backgroundColor" red="0.72549019607843135" green="0.76470588235294112" blue="0.80000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="6un-wK-mc8"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-tP-cBA">
-                                <rect key="frame" x="16" y="265" width="382" height="20"/>
+                                <rect key="frame" x="16" y="293" width="382" height="20"/>
                                 <attributedString key="attributedText">
                                     <fragment content="23 tracks">
                                         <attributes>
@@ -128,11 +130,32 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xHt-Q5-Nhy">
+                                <rect key="frame" x="172.33333333333334" y="151" width="69.333333333333343" height="24"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_friends.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fir-nT-lLO">
+                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="PlaylistStateIcon"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="NxL-rh-0Zn"/>
+                                            <constraint firstAttribute="width" constant="24" id="jTx-PK-h1Y"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="otL-5R-Wsb">
+                                        <rect key="frame" x="32" y="0.0" width="37.333333333333343" height="24"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="PlaylistState"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vsX-tP-cBA" firstAttribute="leading" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="2g1-Gj-Utr"/>
                             <constraint firstAttribute="trailing" secondItem="yvc-K0-jVM" secondAttribute="trailing" id="6cc-gO-3nH"/>
+                            <constraint firstItem="xHt-Q5-Nhy" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="8Ir-Br-l1x"/>
                             <constraint firstAttribute="trailing" secondItem="vsX-tP-cBA" secondAttribute="trailing" constant="16" id="9bA-Xd-S4a"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z8C-8f-DbM" secondAttribute="trailing" constant="16" id="F8p-LT-sKC"/>
                             <constraint firstItem="Boq-CE-h65" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="MLH-TW-DwK"/>
@@ -144,7 +167,8 @@
                             <constraint firstItem="VLY-P3-Ge3" firstAttribute="leading" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="cyb-Bw-hLV"/>
                             <constraint firstItem="VLY-P3-Ge3" firstAttribute="top" secondItem="Boq-CE-h65" secondAttribute="bottom" constant="8" id="hAX-dJ-JEg"/>
                             <constraint firstItem="Z8C-8f-DbM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="pT4-s7-5Li"/>
-                            <constraint firstItem="Z8C-8f-DbM" firstAttribute="top" secondItem="VLY-P3-Ge3" secondAttribute="bottom" constant="24" id="pcf-TQ-TIo"/>
+                            <constraint firstItem="gtd-Gf-W9x" firstAttribute="top" secondItem="xHt-Q5-Nhy" secondAttribute="bottom" constant="24" id="vOq-af-yHF"/>
+                            <constraint firstItem="xHt-Q5-Nhy" firstAttribute="top" secondItem="VLY-P3-Ge3" secondAttribute="bottom" constant="4" id="wrO-Oq-k6L"/>
                             <constraint firstAttribute="bottom" secondItem="vsX-tP-cBA" secondAttribute="bottom" constant="7" id="ynD-qr-jBS"/>
                             <constraint firstItem="Boq-CE-h65" firstAttribute="top" secondItem="Bpp-Gt-LEf" secondAttribute="top" constant="32" id="zHh-uP-i1B"/>
                         </constraints>
@@ -167,6 +191,7 @@
     <resources>
         <image name="icon_arrow_right.png" width="24" height="24"/>
         <image name="icon_download.png" width="24" height="24"/>
-        <image name="icon_playlist.png" width="24" height="24"/>
+        <image name="icon_friends.png" width="24.333333969116211" height="24"/>
+        <image name="icon_playlist.png" width="48.333332061767578" height="48"/>
     </resources>
 </document>
