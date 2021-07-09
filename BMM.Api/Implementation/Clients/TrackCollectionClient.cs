@@ -94,5 +94,12 @@ namespace BMM.Api.Implementation.Clients
             uri.SetParameter("id", id);
             return await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
         }
+
+        public async Task<bool> Unfollow(int id)
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionUnfollow);
+            uri.SetParameter("id", id);
+            return await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
+        }
     }
 }
