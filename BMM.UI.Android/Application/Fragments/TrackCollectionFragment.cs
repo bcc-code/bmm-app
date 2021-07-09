@@ -1,12 +1,9 @@
 ﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
-using AndroidX.RecyclerView.Widget;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
-using Google.Android.Material.AppBar;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.DroidX;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
@@ -17,6 +14,33 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.TrackCollectionFragment")]
     public class TrackCollectionFragment : BaseFragment<TrackCollectionViewModel>
     {
+        private bool _canEdit;
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            var view =  base.OnCreateView(inflater, container, savedInstanceState);
+
+            var set = this.CreateBindingSet<TrackCollectionFragment, TrackCollectionViewModel>();
+
+            set
+                .Bind(this)
+                .For(v => v.CanEdit)
+                .To(vm => vm.CanEdit);
+
+            set.Apply();
+            return view;
+        }
+
+        public bool CanEdit
+        {
+            get => _canEdit;
+            set
+            {
+                _canEdit = value;
+                Activity.InvalidateOptionsMenu();
+            }
+        }
+
         protected override MvxRecyclerAdapter CreateAdapter()
         {
             return new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
@@ -25,10 +49,25 @@ namespace BMM.UI.Droid.Application.Fragments
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
             base.OnCreateOptionsMenu(menu, inflater);
+
+            if (CanEdit)
+                CreateMenuIfPrivate(menu, inflater);
+            else
+                CreateMenuIfShared(menu, inflater);
+        }
+
+        private void CreateMenuIfPrivate(IMenu menu, MenuInflater inflater)
+        {
             inflater.Inflate(Resource.Menu.trackcollection, menu);
             menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("MenuShare"));
             menu.GetItem(1).SetTitle(ViewModel.TextSource.GetText("MenuDelete"));
             menu.GetItem(2).SetTitle(ViewModel.TextSource.GetText("MenuEdit"));
+        }
+
+        private void CreateMenuIfShared(IMenu menu, MenuInflater inflater)
+        {
+            inflater.Inflate(Resource.Menu.trackcollection_shared, menu);
+            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("MenuRemove"));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

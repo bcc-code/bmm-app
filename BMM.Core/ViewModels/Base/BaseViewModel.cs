@@ -345,26 +345,12 @@ namespace BMM.Core.ViewModels.Base
                 case DocumentType.TrackCollection:
                     if (isInOnlineMode)
                     {
-                        var imageRename = "icon_edit_static.png";
-                        Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
-                            .SetTitle(((TrackCollection) item).Name)
-                            .AddHandled(dialogTextSource.GetText("TrackCollection.SharePlaylist"),
-                                async () =>
-                                {
-                                    await ShareTrackCollection(item.Id);
-                                }, imageShare)
-                            .AddHandled(dialogTextSource.GetText("TrackCollection.DeletePlaylist"),
-                                async () => await DeleteTrackCollection((TrackCollection) item), imageDelete)
-                            .AddHandled(dialogTextSource.GetText("TrackCollection.EditPlaylist"),
-                                async () =>
-                                {
-                                    var trackCollection = (TrackCollection)item;
-                                    await _navigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
-                                        new TrackCollectionParameter(trackCollection.Id));
-                                },
-                                imageRename)
-                            .SetCancel(dialogTextSource.GetText("Cancel"))
-                        );
+                        var trackCollection = (TrackCollection)item;
+
+                        if (trackCollection.CanEdit)
+                            ShowActionSheetIfPrivateTrackCollection(trackCollection, dialogTextSource, imageShare, imageDelete);
+                        else
+                            ShowActionSheetIfSharedTrackCollection(trackCollection.Name, dialogTextSource, imageDelete);
                     }
                     else
                     {
@@ -383,6 +369,45 @@ namespace BMM.Core.ViewModels.Base
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void ShowActionSheetIfSharedTrackCollection(string title, IMvxLanguageBinder dialogTextSource, string imageDelete)
+        {
+            var userDialogs = Mvx.IoCProvider.Resolve<IUserDialogs>();
+
+            userDialogs.ActionSheet(new ActionSheetConfig()
+                .SetTitle(title)
+                .AddHandled(dialogTextSource.GetText(
+                    "TrackCollection.RemovePlaylist"),
+                    async () => { })
+                .SetCancel(dialogTextSource.GetText("Cancel")));
+        }
+
+        private void ShowActionSheetIfPrivateTrackCollection(
+            TrackCollection trackCollection,
+            IMvxLanguageBinder dialogTextSource,
+            string imageShare,
+            string imageDelete)
+        {
+            var imageRename = "icon_edit_static.png";
+            Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
+                .SetTitle(trackCollection.Name)
+                .AddHandled(dialogTextSource.GetText("TrackCollection.SharePlaylist"),
+                    async () =>
+                    {
+                        await ShareTrackCollection(trackCollection.Id);
+                    }, imageShare)
+                .AddHandled(dialogTextSource.GetText("TrackCollection.DeletePlaylist"),
+                    async () => await DeleteTrackCollection(trackCollection), imageDelete)
+                .AddHandled(dialogTextSource.GetText("TrackCollection.EditPlaylist"),
+                    async () =>
+                    {
+                        await _navigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
+                            new TrackCollectionParameter(trackCollection.Id));
+                    },
+                    imageRename)
+                .SetCancel(dialogTextSource.GetText("Cancel"))
+            );
         }
 
         protected async Task ShareTrackCollection(int trackCollectionId)

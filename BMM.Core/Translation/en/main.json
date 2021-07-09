@@ -304,6 +304,7 @@
     "MenuDelete": "Delete playlist",
     "MenuEdit": "Edit playlist",
     "MenuShare": "Share playlist",
+    "MenuRemove": "Remove playlist",
     "AvailableOffline": "Available offline",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} of {1} downloads remaining",
@@ -405,6 +406,7 @@
     "TrackCollection.DeletePlaylist": "Delete playlist",
     "TrackCollection.EditPlaylist": "Edit playlist",
     "TrackCollection.SharePlaylist": "Share playlist",
+    "TrackCollection.RemovePlaylist": "Remove playlist",
     "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
     "Cancel": "Cancel"
   },
