@@ -350,7 +350,7 @@ namespace BMM.Core.ViewModels.Base
                         if (trackCollection.CanEdit)
                             ShowActionSheetIfPrivateTrackCollection(trackCollection, dialogTextSource, imageShare, imageDelete);
                         else
-                            ShowActionSheetIfSharedTrackCollection(trackCollection.Name, dialogTextSource, imageDelete);
+                            ShowActionSheetIfSharedTrackCollection(trackCollection, dialogTextSource, imageDelete);
                     }
                     else
                     {
@@ -371,15 +371,19 @@ namespace BMM.Core.ViewModels.Base
             }
         }
 
-        private void ShowActionSheetIfSharedTrackCollection(string title, IMvxLanguageBinder dialogTextSource, string imageDelete)
+        private void ShowActionSheetIfSharedTrackCollection(
+            TrackCollection trackCollection,
+            IMvxLanguageBinder dialogTextSource,
+            string imageDelete)
         {
             var userDialogs = Mvx.IoCProvider.Resolve<IUserDialogs>();
 
             userDialogs.ActionSheet(new ActionSheetConfig()
-                .SetTitle(title)
+                .SetTitle(trackCollection.Name)
                 .AddHandled(dialogTextSource.GetText(
                     "TrackCollection.RemovePlaylist"),
-                    async () => { })
+                    async () => await RemoveSharedPlaylist(trackCollection.Id),
+                    imageDelete)
                 .SetCancel(dialogTextSource.GetText("Cancel")));
         }
 
@@ -414,6 +418,11 @@ namespace BMM.Core.ViewModels.Base
         {
             await _navigationService.Navigate<ShareTrackCollectionViewModel, ITrackCollectionParameter>(
                 new TrackCollectionParameter(trackCollectionId));
+        }
+
+        protected async Task RemoveSharedPlaylist(int trackCollectionId)
+        {
+            await Client.TrackCollection.Unfollow(trackCollectionId);
         }
 
         protected virtual async Task ShowTrackInfo(Track track)

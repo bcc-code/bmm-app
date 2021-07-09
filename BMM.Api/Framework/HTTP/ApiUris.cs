@@ -31,6 +31,7 @@
         public static string TrackCollection = "track_collection/{id}";
         public static string TrackCollectionAlbum = "track_collection/{id}/album/{albumId}";
         public static string TrackCollectionResetShare = "track_collection/{id}/reset-share";
+        public static string TrackCollectionUnfollow = "track_collection/{id}/unfollow";
         public static string TrackFiles = "track/{id}/files/";
         public static string StatisticsGlobalDownloadedMost = "statistics/global/{type}/downloaded/most{?size,from}";
         public const string StatisticsPostTrackPlayedEvent = "statistics/track/played/";

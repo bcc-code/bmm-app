@@ -28,6 +28,8 @@ namespace BMM.Core.ViewModels
 
         public IMvxAsyncCommand ShareCommand { get; }
 
+        public IMvxAsyncCommand RemoveCommand { get; }
+
         public bool IsConnectionOnline => Connection.GetStatus() == ConnectionStatus.Online;
 
         public override bool ShowSharingInfo => true;
@@ -66,6 +68,11 @@ namespace BMM.Core.ViewModels
             ShareCommand = new ExceptionHandlingCommand(async () =>
             {
                 await ShareTrackCollection(MyCollection.Id);
+            });
+
+            RemoveCommand = new ExceptionHandlingCommand(async () =>
+            {
+                await RemoveSharedPlaylist(MyCollection.Id);
             });
         }
 

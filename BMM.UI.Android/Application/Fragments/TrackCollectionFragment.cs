@@ -86,6 +86,10 @@ namespace BMM.UI.Droid.Application.Fragments
                     ViewModel.ShareCommand.Execute();
                     return true;
 
+                case Resource.Id.menu_remove:
+                    ViewModel.RemoveCommand.Execute();
+                    return true;
+
                 default:
                     return base.OnOptionsItemSelected(item);
             }
