@@ -53,6 +53,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case ViewTypes.NullObject:
                     return Resource.Layout.listitem_isfullyloaded;
 
+                case ViewTypes.ChapterHeader:
+                    return Resource.Layout.listitem_chapter_header;
+
                 default:
                     return Resource.Layout.listitem_track;
             }

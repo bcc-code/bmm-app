@@ -17,6 +17,12 @@ namespace BMM.UI.iOS
 		UIKit.UIImageView DownloadStatusImageView { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView SharedPlaylistIcon { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint SharedPlaylistIconWidthConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UILabel SubtitleLabel { get; set; }
 
 		[Outlet]
@@ -37,6 +43,16 @@ namespace BMM.UI.iOS
 			if (TitleLabel != null) {
 				TitleLabel.Dispose ();
 				TitleLabel = null;
+			}
+
+			if (SharedPlaylistIconWidthConstraint != null) {
+				SharedPlaylistIconWidthConstraint.Dispose ();
+				SharedPlaylistIconWidthConstraint = null;
+			}
+
+			if (SharedPlaylistIcon != null) {
+				SharedPlaylistIcon.Dispose ();
+				SharedPlaylistIcon = null;
 			}
 
 		}

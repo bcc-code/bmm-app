@@ -34,8 +34,7 @@
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <MtouchExtraArgs>
-    </MtouchExtraArgs>
+    <MtouchExtraArgs>--framework:"$(HOME)/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_i386_x86_64-simulator/RevealServer.framework"</MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
@@ -1079,7 +1078,6 @@
       <DependentUpon>DownloadedFollowedPodcastsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\Layout\FillWidthLayout.cs" />
-    <Compile Include="Application\TableViewSource\MyContentTableViewSource.cs" />
     <Compile Include="Application\ViewController\SupportEndedViewController.cs" />
     <Compile Include="Application\ViewController\SupportEndedViewController.designer.cs">
       <DependentUpon>SupportEndedViewController.cs</DependentUpon>

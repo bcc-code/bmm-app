@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
         public double? InitialLargeTitleHeight { get; set; }
 
         public MyContentViewController()
-            : base("MyContentViewController")
+            : base(nameof(MyContentViewController))
         { }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
@@ -28,9 +28,10 @@ namespace BMM.UI.iOS
             var refreshControl = new MvxUIRefreshControl {TintColor = AppColors.RefreshControlTintColor};
             MyCollectionTable.RefreshControl = refreshControl;
 
-            var source = new DocumentsTableViewSource(MyCollectionTable);
+            var source = new NotSelectableDocumentsTableViewSource(MyCollectionTable);
 
             var set = this.CreateBindingSet<MyContentViewController, MyContentViewModel>();
+
             set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();

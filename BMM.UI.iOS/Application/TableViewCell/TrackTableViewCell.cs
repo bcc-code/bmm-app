@@ -58,13 +58,9 @@ namespace BMM.UI.iOS
                     _bindingsManager.AddBinding(ReferenceButton, ReferenceButtonVisible);
                 }
 
-                _bindingsManager.Update((CellWrapperViewModel<Document>) DataContext);
+                if (DataContext is CellWrapperViewModel<Document> wrappedCell)
+                    _bindingsManager.Update(wrappedCell);
             };
-        }
-
-        public static TrackTableViewCell Create()
-        {
-            return (TrackTableViewCell)Nib.Instantiate(null, null)[0];
         }
     }
 }

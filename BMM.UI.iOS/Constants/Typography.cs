@@ -37,5 +37,7 @@ namespace BMM.UI.iOS.Constants
             var font = UIFont.SystemFontOfSize(15);
             return font;
         });
+
+        public static readonly Lazy<UIFont> Subtitle3 = new Lazy<UIFont>(() => UIFont.SystemFontOfSize(13));
     }
 }
