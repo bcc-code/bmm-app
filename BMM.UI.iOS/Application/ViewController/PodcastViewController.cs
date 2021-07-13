@@ -31,7 +31,7 @@ namespace BMM.UI.iOS
             var refreshControl = new MvxUIRefreshControl {TintColor = AppColors.RefreshControlTintColor};
             PodcastTable.RefreshControl = refreshControl;
 
-            TitelLabel.ApplyTextTheme(AppTheme.Heading1.Value);
+            TitelLabel.ApplyTextTheme(AppTheme.Heading2.Value);
             FollowButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
             FollowingButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
             PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);

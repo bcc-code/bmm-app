@@ -29,8 +29,8 @@ namespace BMM.UI.iOS
 
             NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate()
             {
-                OnDidDismiss = OnDidDismiss,
-                OnDidAttemptToDismiss = OnDidAttemptToDismiss
+                OnDidDismiss = HandleDismiss,
+                OnDidAttemptToDismiss = HandleDismiss
             };
 
             var saveButton = new UIBarButtonItem(
@@ -85,17 +85,10 @@ namespace BMM.UI.iOS
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
-        private void OnDidAttemptToDismiss(UIPresentationController presentationController)
+        private void HandleDismiss(UIPresentationController presentationController)
         {
             ViewModel.DiscardAndCloseCommand.Execute();
-        }
-
-        private void OnDidDismiss(UIPresentationController presentationController)
-        {
-            ViewModel.DiscardAndCloseCommand.Execute();
-
-            if (presentationController.Delegate is CustomUIAdaptivePresentationControllerDelegate customUiAdaptivePresentationControllerDelegate)
-                customUiAdaptivePresentationControllerDelegate.Clear();
+            ClearPresentationDelegate(presentationController);
         }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)

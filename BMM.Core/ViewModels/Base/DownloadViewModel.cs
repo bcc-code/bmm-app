@@ -70,7 +70,6 @@ namespace BMM.Core.ViewModels.Base
 
         public bool ShowTrackCount => true;
 
-
         public string DownloadingText => !IsDownloading
             ? ""
             : TextSource.GetText("AvailableOfflineDownloading",

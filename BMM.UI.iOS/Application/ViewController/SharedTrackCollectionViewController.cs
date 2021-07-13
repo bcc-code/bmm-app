@@ -56,8 +56,8 @@ namespace BMM.UI.iOS
 
             NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate
             {
-                OnDidDismiss = OnDidDismiss,
-                OnDidAttemptToDismiss = OnDidAttemptToDismiss
+                OnDidDismiss = HandleDismiss,
+                OnDidAttemptToDismiss = HandleDismiss
             };
 
             PrepareHeader();
@@ -128,7 +128,7 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            PlaylistName.ApplyTextTheme(AppTheme.Heading1.Value);
+            PlaylistName.ApplyTextTheme(AppTheme.Heading2.Value);
             AuthorNameLabel.ApplyTextTheme(AppTheme.Paragraph2.Value);
             AddToMyPlaylistButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
         }
@@ -147,17 +147,10 @@ namespace BMM.UI.iOS
             NavigationItem.SetLeftBarButtonItem(closeButton, true);
         }
 
-        private void OnDidAttemptToDismiss(UIPresentationController presentationController)
+        private void HandleDismiss(UIPresentationController presentationController)
         {
             ViewModel.CloseCommand.Execute();
-        }
-
-        private void OnDidDismiss(UIPresentationController presentationController)
-        {
-            ViewModel.CloseCommand.Execute();
-
-            if (presentationController.Delegate is CustomUIAdaptivePresentationControllerDelegate customUiAdaptivePresentationControllerDelegate)
-                customUiAdaptivePresentationControllerDelegate.Clear();
+            ClearPresentationDelegate(presentationController);
         }
     }
 }

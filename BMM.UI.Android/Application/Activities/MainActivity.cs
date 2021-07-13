@@ -53,7 +53,7 @@ namespace BMM.UI.Droid.Application.Activities
 
         private string _unhandledDeepLink;
 
-        protected override async void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle bundle)
         {
             // We see a lot of crashes in this method and the theory is that the app is opened immediately here skipping the SplashScreen.
             // And then it would not be initialized and probably crash right away.
