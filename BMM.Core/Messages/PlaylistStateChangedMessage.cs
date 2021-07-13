@@ -9,6 +9,6 @@ namespace BMM.Core.Messages
             Id = id;
         }
 
-        public int Id { get; set; }
+        public int Id { get; }
     }
 }

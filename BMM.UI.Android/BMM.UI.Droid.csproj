@@ -987,9 +987,6 @@
     <AndroidResource Include="Resources\drawable\splashscreen.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="obj\Release\90\res\drawable\" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\fragment_storage_management.axml">
       <SubType>Designer</SubType>
     </AndroidResource>

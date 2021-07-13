@@ -34,6 +34,8 @@ namespace BMM.Core.ViewModels.Base
     /// </summary>
     public class BaseViewModel : MvxViewModel
     {
+        private IMvxAsyncCommand _closeCommand;
+
         protected IExceptionHandler ExceptionHandler => Mvx.IoCProvider.Resolve<IExceptionHandler>();
 
         protected readonly IMvxMessenger _messenger;
@@ -96,8 +98,6 @@ namespace BMM.Core.ViewModels.Base
                 return _showTrackInfoCommand;
             }
         }
-
-        private IMvxAsyncCommand _closeCommand;
 
         public IMvxAsyncCommand CloseCommand
         {

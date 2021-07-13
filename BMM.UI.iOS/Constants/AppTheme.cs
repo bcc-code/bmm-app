@@ -5,15 +5,15 @@ namespace BMM.UI.iOS.Constants
 {
     public static class AppTheme
     {
-        public static readonly Lazy<TextTheme> Heading1 = new Lazy<TextTheme>(() => new TextTheme
-        {
-            Font = Typography.Header1.Value,
-            Color = AppColors.TrackTitleColor
-        });
-
         public static readonly Lazy<TextTheme> Heading2 = new Lazy<TextTheme>(() => new TextTheme
         {
             Font = Typography.Header2.Value,
+            Color = AppColors.TrackTitleColor
+        });
+
+        public static readonly Lazy<TextTheme> Heading3 = new Lazy<TextTheme>(() => new TextTheme
+        {
+            Font = Typography.Header3.Value,
             Color = AppColors.TrackTitleColor
         });
 

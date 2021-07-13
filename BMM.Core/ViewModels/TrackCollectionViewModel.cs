@@ -53,27 +53,17 @@ namespace BMM.Core.ViewModels
                 networkSettings
             )
         {
-            DeleteCommand = new ExceptionHandlingCommand(
-                async () => await DeleteTrackCollection(MyCollection)
-            );
+            DeleteCommand = new ExceptionHandlingCommand(() => DeleteTrackCollection(MyCollection));
 
-            EditCommand = new ExceptionHandlingCommand(
-                async () =>
-                {
-                    await _navigationService
-                        .Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
-                            new TrackCollectionParameter(MyCollection.Id));
-                });
+            EditCommand = new ExceptionHandlingCommand(() =>
+                 {
+                     return _navigationService
+                         .Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
+                             new TrackCollectionParameter(MyCollection.Id));
+                 });
 
-            ShareCommand = new ExceptionHandlingCommand(async () =>
-            {
-                await ShareTrackCollection(MyCollection.Id);
-            });
-
-            RemoveCommand = new ExceptionHandlingCommand(async () =>
-            {
-                await RemoveSharedPlaylist(MyCollection.Id);
-            });
+            ShareCommand = new ExceptionHandlingCommand(() => ShareTrackCollection(MyCollection.Id));
+            RemoveCommand = new ExceptionHandlingCommand(() => RemoveSharedPlaylist(MyCollection.Id));
         }
 
         protected override Task Initialization()
