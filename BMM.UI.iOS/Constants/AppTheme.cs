@@ -25,7 +25,7 @@ namespace BMM.UI.iOS.Constants
 
         public static readonly Lazy<TextTheme> Subtitle3 = new Lazy<TextTheme>(() => new TextTheme
         {
-            Font = Typography.Paragraph2.Value,
+            Font = Typography.Subtitle3.Value,
             Color = AppColors.TrackMetaColor
         });
 

@@ -8,7 +8,8 @@ namespace BMM.UI.iOS
     public class NotSelectableDocumentsTableViewSource : DocumentsTableViewSource
     {
         public NotSelectableDocumentsTableViewSource(UITableView tableView) : base(tableView)
-        { }
+        {
+        }
 
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {

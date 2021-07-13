@@ -52,6 +52,7 @@
 
     <dimen name="playlist_icon_dimen">48dp</dimen>
     <dimen name="friends_icon_dimen">20dp</dimen>
+    <dimen name="shared_playlist_icon">24dp</dimen>
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>
     <dimen name="row_contributor_height">60dp</dimen>

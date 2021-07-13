@@ -178,7 +178,11 @@
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Followed Podcasts",
-    "MyTracks": "My Tracks"
+    "MyTracks": "My Tracks",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "TrackCountFormat": "{0} Tracks",
+    "ByFormat": "By {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Followed Podcasts",

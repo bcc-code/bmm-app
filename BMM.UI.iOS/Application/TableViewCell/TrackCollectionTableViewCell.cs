@@ -4,8 +4,9 @@ using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using System;
-using BMM.Core.ValueConverters;
+using BMM.Core.ValueConverters.TrackCollections;
 using BMM.Core.ViewModels.Base;
+using BMM.UI.iOS.Constants;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -15,7 +16,9 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName("TrackCollectionTableViewCell", NSBundle.MainBundle);
         public static readonly NSString Key = new NSString("TrackCollectionTableViewCell");
 
+        private const int SharePlaylistIconWidth = 24;
         private nfloat initialDownloadStatusImageWidth;
+        private bool _isPlaylistSharedByMe;
 
         public TrackCollectionTableViewCell(IntPtr handle)
             : base(handle)
@@ -24,7 +27,15 @@ namespace BMM.UI.iOS
             {
                 var set = this.CreateBindingSet<TrackCollectionTableViewCell, CellWrapperViewModel<TrackCollection>>();
                 set.Bind(TitleLabel).To(vm => vm.Item.Name);
-                set.Bind(SubtitleLabel).To(vm => vm.Item.TrackCount).WithConversion<FormatConverter>("{0} Tracks");
+
+                set.Bind(SubtitleLabel)
+                    .To(vm => vm.Item)
+                    .WithConversion<TrackCollectionToListViewItemSubtitleLabelConverter>();
+
+                set.Bind(this)
+                    .For(v => v.IsPlaylistSharedByMe)
+                    .To(vm => vm.Item)
+                    .WithConversion<TrackCollectionToIsSharedByMeConverter>();
                 set.Apply();
             });
 
@@ -82,6 +93,27 @@ namespace BMM.UI.iOS
                     DownloadStatusImageView.NeedsUpdateConstraints();
                 }
             };
+        }
+
+        public bool IsPlaylistSharedByMe
+        {
+            get => _isPlaylistSharedByMe;
+            set
+            {
+                _isPlaylistSharedByMe = value;
+                SharedPlaylistIconWidthConstraint.Constant = _isPlaylistSharedByMe ? SharePlaylistIconWidth : 0;
+            }
+        }
+
+        public override void AwakeFromNib()
+        {
+            base.AwakeFromNib();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            SubtitleLabel.ApplyTextTheme(AppTheme.Subtitle3.Value);
         }
     }
 }

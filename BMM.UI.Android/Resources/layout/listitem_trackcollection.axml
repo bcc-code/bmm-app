@@ -39,7 +39,7 @@
             android:orientation="vertical"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/image_view_row_icon"
-            android:layout_toLeftOf="@+id/image_button_options">
+            android:layout_toLeftOf="@+id/SharedPlaylistIcon">
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -66,20 +66,28 @@
                 <TextView
                     android:id="@+id/text_view_sub_title"
                     android:singleLine="true"
-                    local:MvxBind="Text Format('{0} Tracks', IntToString(Item.TrackCount))"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/text_small"
+                    style="@style/Subtitle3"
+                    local:MvxBind="Text TrackCollectionToListViewItemSubtitleLabel(Item)"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
             </LinearLayout>
         </LinearLayout>
+        <ImageView
+            android:id="@+id/SharedPlaylistIcon"
+            android:layout_width="@dimen/shared_playlist_icon"
+            android:layout_height="@dimen/shared_playlist_icon"
+            android:src="@drawable/icon_friends"
+            android:layout_toStartOf="@+id/image_button_options"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_centerVertical="true"
+            local:MvxBind="Visibility Visibility(TrackCollectionToIsSharedByMe(Item))" />
         <ImageView
             android:src="@drawable/icon_chevron_right"
             android:layout_width="wrap_content"
             android:minHeight="@dimen/row_document_height"
             android:layout_height="fill_parent"
             android:id="@+id/image_button_options"
-            android:paddingLeft="@dimen/element_margin_medium"
+            android:paddingLeft="@dimen/margin_small"
             android:paddingRight="@dimen/element_margin_medium"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true" />
