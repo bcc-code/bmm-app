@@ -20,7 +20,13 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
 
         public PendingIntent GetIntent(Context context)
         {
-            return PendingIntent.GetBroadcast(context, 100, new Intent(_action).SetPackage(context.PackageName), PendingIntentFlags.CancelCurrent);
+            var intent = new Intent(_action);
+            intent.SetPackage(context.PackageName);
+
+            ComponentName componentName = new ComponentName(context, Java.Lang.Class.FromType(typeof(CustomActionBroadcastReceiver)));
+            intent.SetComponent(componentName);
+
+            return PendingIntent.GetBroadcast(context, 100, intent, 0);
         }
     }
 }
