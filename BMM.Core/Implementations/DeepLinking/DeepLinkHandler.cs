@@ -75,10 +75,10 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink("^/music$", NavigateTo<ExploreRecentMusicViewModel>),
                 new RegexDeepLink("^/contributors$", NavigateTo<ExploreContributorsViewModel>),
                 new RegexDeepLink("^/featured$", NavigateTo<CuratedPlaylistsViewModel>),
-                new RegexDeepLink<StandardDeepLinkParameters>("^/playlist/curated/(?<id>[0-9]+)(/(?<name>.*))?$", OpenCuratedPlaylist),
-                new RegexDeepLink<StandardDeepLinkParameters>("^/playlist/private/(?<id>[0-9]+)(/(?<name>.*))?$", OpenTrackCollection),
-                new RegexDeepLink<StandardDeepLinkParameters>("^/playlist/podcast/(?<id>[0-9]+)(/(?<name>.*))?$", OpenPodcast),
-                new RegexDeepLink<TrackCollectionDeepLinkParameters>("^/playlist/shared/(?<sharingsecret>.*)?$", OpenSharedTrackCollection ),
+                new RegexDeepLink<IdAndNameParameters>("^/playlist/curated/(?<id>[0-9]+)(/(?<name>.*))?$", OpenCuratedPlaylist),
+                new RegexDeepLink<IdAndNameParameters>("^/playlist/private/(?<id>[0-9]+)(/(?<name>.*))?$", OpenTrackCollection),
+                new RegexDeepLink<IdAndNameParameters>("^/playlist/podcast/(?<id>[0-9]+)(/(?<name>.*))?$", OpenPodcast),
+                new RegexDeepLink<SharingSecretParameters>("^/playlist/shared/(?<sharingsecret>.*)?$", OpenSharedTrackCollection ),
                 new RegexDeepLink<IdDeepLinkParameters>("^/playlist/contributor/(?<id>[0-9]+)(/(?<name>.*))?$", OpenContributor),
                 new RegexDeepLink<IdDeepLinkParameters>("^/album/(?<id>[0-9]+)$", OpenAlbum),
                 new TrackLinkParser("^/track/(?<id>[0-9]+)(/(?<language>.*))?$", PlayTrackById),
@@ -98,10 +98,10 @@ namespace BMM.Core.Implementations.DeepLinking
             }
         }
 
-        private Task OpenSharedTrackCollection(TrackCollectionDeepLinkParameters trackCollectionDeepLinkParameters)
+        private Task OpenSharedTrackCollection(SharingSecretParameters sharingSecretParameters)
         {
             return _navigationService.Navigate<SharedTrackCollectionViewModel, ITrackCollectionParameter>(
-                new TrackCollectionParameter(sharingSecret: trackCollectionDeepLinkParameters.SharingSecret));
+                new TrackCollectionParameter(sharingSecret: sharingSecretParameters.SharingSecret));
         }
 
         private Task OpenAlbum(IdDeepLinkParameters idDeepLinksParameters)
@@ -114,17 +114,17 @@ namespace BMM.Core.Implementations.DeepLinking
             return _navigationService.Navigate<ContributorViewModel, int>(idLinkParameters.Id);
         }
 
-        private Task OpenPodcast(StandardDeepLinkParameters deepLinkParameters)
+        private Task OpenPodcast(IdAndNameParameters deepLinkParameters)
         {
             return _navigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
         }
 
-        private Task OpenCuratedPlaylist(StandardDeepLinkParameters deepLinkParameters)
+        private Task OpenCuratedPlaylist(IdAndNameParameters deepLinkParameters)
         {
             return _navigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
         }
 
-        private Task OpenTrackCollection(StandardDeepLinkParameters deepLinkParameters)
+        private Task OpenTrackCollection(IdAndNameParameters deepLinkParameters)
         {
             return _navigationService.Navigate<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(deepLinkParameters.Id, deepLinkParameters.Name));
         }

@@ -43,7 +43,7 @@ namespace BMM.Core.ViewModels
             });
         }
 
-        public override bool ShowAddToPlaylistButton => true;
+        public override bool ShowFollowSharedPlaylistButton => true;
 
         public IMvxAsyncCommand AddToMyPlaylistCommand { get; }
 

@@ -28,17 +28,6 @@ namespace BMM.UI.iOS
 
         public override Type ParentViewControllerType => null;
 
-        public bool IsPrivate
-        {
-            get => _isPrivate;
-            set
-            {
-                _isPrivate = value;
-                MakePrivateButton.Hidden = _isPrivate;
-                PlaylistStateIcon.SetHiddenIfNeeded(_isPrivate);
-            }
-        }
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

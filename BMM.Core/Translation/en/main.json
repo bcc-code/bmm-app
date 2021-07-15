@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Message",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -181,8 +182,7 @@
     "MyTracks": "My Tracks",
     "MyPlaylists": "My playlists",
     "SharedWithMe": "Shared with me",
-    "TrackCountFormat": "{0} Tracks",
-    "ByFormat": "By {0}"
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Followed Podcasts",
@@ -305,10 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Playlist",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Delete playlist",
-    "MenuEdit": "Edit playlist",
-    "MenuShare": "Share playlist",
-    "MenuRemove": "Remove playlist",
     "AvailableOffline": "Available offline",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} of {1} downloads remaining",
@@ -325,7 +321,11 @@
     "MobileDownloadDisabled": "Enable downloading via mobile network in settings to continue",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Delete playlist",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -340,17 +340,13 @@
   },
   "ShareTrackCollectionViewModel": {
     "Title": "Share Playlist",
-    "Done": "Done",
     "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
     "ShareLink": "Share link",
     "MakePrivate": "Make private",
-    "Private": "Private",
-    "SharedWithFormat": "Shared with {0} people",
-    "By": "by"
+    "SharedWithFormat": "Shared with {0} people"
   },
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",
-    "Done": "Done",
     "Close": "Close",
     "AddToMyPlaylist": "Add to my playlists"
   },
@@ -407,10 +403,6 @@
     "MyTracks": "My Tracks",
     "Contributor.Play": "Play",
     "Contributor.Share": "Share contributor",
-    "TrackCollection.DeletePlaylist": "Delete playlist",
-    "TrackCollection.EditPlaylist": "Edit playlist",
-    "TrackCollection.SharePlaylist": "Share playlist",
-    "TrackCollection.RemovePlaylist": "Remove playlist",
     "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
     "Cancel": "Cancel"
   },
