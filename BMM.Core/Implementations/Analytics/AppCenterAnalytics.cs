@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BMM.Api.Framework;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Security;
 
 namespace BMM.Core.Implementations.Analytics
@@ -24,8 +25,8 @@ namespace BMM.Core.Implementations.Analytics
         public void LogEvent(string eventName, IDictionary<string, object> parameters)
         {
             var user = _userStorage.GetUser();
-            if (!parameters.ContainsKey("PersonId") && user != null)
-                parameters.Add("PersonId", _userStorage.GetUser().PersonId);
+            if (!parameters.ContainsKey(nameof(User.AnalyticsIdentifier)) && user != null)
+                parameters.Add(nameof(User.AnalyticsIdentifier), _userStorage.GetUser().AnalyticsIdentifier);
 
             Dictionary<string, string> dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
             _logger.Info("Analytics", eventName + " {" + string.Join(",", dString.Select(kv => $"{kv.Key}={kv.Value}")) + "}");

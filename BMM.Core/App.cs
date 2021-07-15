@@ -233,6 +233,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<AfterStartupSupportEndsPopupDisplayer>();
             Mvx.IoCProvider.RegisterType<PartialDownloadRemover>();
             Mvx.IoCProvider.RegisterType<PodcastInitializer>();
+            Mvx.IoCProvider.RegisterType<OidcUserStartupTask>();
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IStartupManager, StartupManager>();
             Mvx.IoCProvider.CallbackWhenRegistered<IStartupManager>(manager => manager.Initialize(CreatableTypes()));

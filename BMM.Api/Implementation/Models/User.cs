@@ -28,5 +28,7 @@ namespace BMM.Api.Implementation.Models
         /// Therefore we decided to use our resources somewhere else.
         /// </summary>
         public string ProfileImage { get; set; }
+
+        public string AnalyticsIdentifier { get; set; }
     }
 }

@@ -289,6 +289,14 @@ namespace BMM.Core.ViewModels
                 }
             };
 
+            var analyticsIdentifier =  _userStorage.GetUser().AnalyticsIdentifier;
+            items.Add(new SelectableListItem
+            {
+                Title = "Analytics Identifier",
+                Text = analyticsIdentifier,
+                OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(analyticsIdentifier))
+            });
+
             if (_developerPermission.IsBmmDeveloper())
             {
                 var firebaseToken = await _tokenProvider.GetToken();

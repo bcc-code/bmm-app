@@ -280,6 +280,7 @@
     "OptionAppVersionHeader": "App version",
     "AppInfoTitle": "App information",
     "AppInfoAppVersion": "App version: ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "Device model: ",
     "AppInfoDevicePlatform": "Device platform: ",
     "AppInfoDeviceVersion": "Device version: ",
