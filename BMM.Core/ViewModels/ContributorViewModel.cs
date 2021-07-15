@@ -52,7 +52,7 @@ namespace BMM.Core.ViewModels
 
         public bool ShowTrackCount => true;
 
-        public bool ShowAddToPlaylistButton => false;
+        public bool ShowFollowSharedPlaylistButton => false;
 
         public ContributorViewModel()
         {

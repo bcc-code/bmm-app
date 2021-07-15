@@ -59,15 +59,15 @@ namespace BMM.UI.Droid.Application.Fragments
         private void CreateMenuIfPrivate(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.trackcollection, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("MenuShare"));
-            menu.GetItem(1).SetTitle(ViewModel.TextSource.GetText("MenuDelete"));
-            menu.GetItem(2).SetTitle(ViewModel.TextSource.GetText("MenuEdit"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("SharePlaylist"));
+            menu.GetItem(1).SetTitle(ViewModel.TextSource.GetText("DeletePlaylist"));
+            menu.GetItem(2).SetTitle(ViewModel.TextSource.GetText("EditPlaylist"));
         }
 
         private void CreateMenuIfShared(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.trackcollection_shared, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("MenuRemove"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("RemovePlaylist"));
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

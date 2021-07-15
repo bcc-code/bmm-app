@@ -396,14 +396,14 @@ namespace BMM.Core.ViewModels.Base
             var imageRename = "icon_edit_static.png";
             Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
-                .AddHandled(dialogTextSource.GetText("TrackCollection.SharePlaylist"),
+                .AddHandled(TextSource.GetText("SharePlaylist"),
                     async () =>
                     {
                         await ShareTrackCollection(trackCollection.Id);
                     }, imageShare)
-                .AddHandled(dialogTextSource.GetText("TrackCollection.DeletePlaylist"),
+                .AddHandled(TextSource.GetText("DeletePlaylist"),
                     async () => await DeleteTrackCollection(trackCollection), imageDelete)
-                .AddHandled(dialogTextSource.GetText("TrackCollection.EditPlaylist"),
+                .AddHandled(TextSource.GetText("EditPlaylist"),
                     async () =>
                     {
                         await _navigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(

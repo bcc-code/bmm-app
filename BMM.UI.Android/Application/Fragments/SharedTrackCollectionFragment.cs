@@ -41,7 +41,7 @@ namespace BMM.UI.Droid.Application.Fragments
             inflater.Inflate(Resource.Menu.share_trackcollection, menu);
             var item = menu.GetItem(0);
 
-            var title = new SpannableString(ViewModel.TextSource.GetText("Done"));
+            var title = new SpannableString(ViewModel.GlobalTextSource.GetText("Done"));
             title.SetSpan(
                 new ForegroundColorSpan(Context.GetColorFromResource(Resource.Color.colorPrimary)),
                 0,
