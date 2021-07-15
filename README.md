@@ -98,23 +98,3 @@ https://proxyman.io - it's awesome
 
 ## Updating Firebase packages
 When the app doesn't start after upgrading a firebase package or throws some weird message clean this folder: `~/Library/Caches/XamarinBuildDownload` 
-
-# Running UITests
-
-> For best results you should run UITests on a physical device
-
-## Preparation
-
-### iOS
-For running **iOS** you have to build and deploy the app to the device with the **DEBUG** configuration.
-
-### Android
-For running **Android** you have to build and deploy the app with **RELEASE** configuration.
-Furthermore, you have to set a valid version number like `android:versionName="1.22.0-alpha"` into `AndroidManifest.xml`
-as well in `GlobalConstants.cs`:
-```
-public const string AppVersion = "1.22.0-alpha";
-```
-
-## Common pitfalls
-While doing UITests you should only have one device (physical or virtual) connected else you have to define which device you want to use in the AppConfiguration
