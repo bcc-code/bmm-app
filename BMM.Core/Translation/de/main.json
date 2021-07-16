@@ -12,7 +12,7 @@
     "Speech": "Rede",
     "Audiobook": "Hörbuch",
     "Exegesis": "Auslegung",
-    "Done": "Done"
+    "Done": "Fertig"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -53,7 +53,7 @@
     "AddAlbumToMyTracks": "Album zu meinen Titeln hinzufügen",
     "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
-    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
     "ShufflePlay": "Zufällige Wiedergabe",
     "PluralAlbums": "{0} Alben"
   },
@@ -180,9 +180,9 @@
     "DownloadedContent": "Offline-Inhalte",
     "FollowedPodcasts": "Abonnierte Podcasts",
     "MyTracks": "Meine Titel",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Meine Playlisten",
+    "SharedWithMe": "Mit mir geteilt",
+    "ByFormat": "von {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Abonnierte Podcasts",
@@ -324,8 +324,8 @@
     "Private": "Privat",
     "DeletePlaylist": "Playlist löschen",
     "EditPlaylist": "Playliste bearbeiten",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "SharePlaylist": "Playliste teilen",
+    "RemovePlaylist": "Playliste entfernen"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Playliste bearbeiten",
@@ -339,17 +339,17 @@
     "KeepEditing": "Weiter Bearbeiten"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Playliste teilen",
+    "ShareNote": "Personen die den Link der geteilten Playliste haben, können auf die Liste zugreifen und die hinzugefügten Titel hören.",
+    "ShareLink": "Link teilen",
+    "MakePrivate": "Private machen",
+    "SharedWithFormat": "Mit {0} Personen geteilt"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Geteilte Playliste",
+    "Close": "Schließen",
+    "AddToMyPlaylist": "Zu meinen Playlisten hinzufügen",
+    "FollowOwnTrackCollection": "Du kannst nicht deiner eigenen Playliste folgen."
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlist",
@@ -364,7 +364,7 @@
     "SearchHint": "Suchen",
     "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
-    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
     "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen weil es Alben enthält.",
     "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
     "CreatePlaylistPrompt": "Gib einen Namen für deine Playlist ein",
@@ -399,7 +399,7 @@
     "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
     "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen weil es Alben enthält.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
-    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Wiedergabeliste {0} vorhanden",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
     "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
     "MyTracks": "Meine Titel",
     "Contributor.Play": "Abspielen",
