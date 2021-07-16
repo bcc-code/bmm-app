@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Messages",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Contenu téléchargé",
     "FollowedPodcasts": "Podcasts suivis",
-    "MyTracks": "Mes Titres"
+    "MyTracks": "Mes Titres",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcasts suivis",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Liste de lecture",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Supprimer la liste de lecture",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "Disponible en mode déconnecté",
     "AvailableOfflineDownload": "Télécharger",
     "AvailableOfflineDownloading": "{0} de {1} téléchargements restants",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Activez le téléchargement via les données mobile, dans les paramètres, pour pouvoir continuer",
     "NotEnoughtSpaceToDownload": "Pas assez d'espace pour télécharger tous les titres",
     "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette liste de lecture. Vous voulez reprendre le téléchargement ?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Supprimer la liste de lecture",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Liste de lecture",
@@ -385,8 +404,6 @@
     "MyTracks": "Mes Titres",
     "Contributor.Play": "Lecture",
     "Contributor.Share": "Partager le contributeur",
-    "TrackCollection.DeletePlaylist": "Supprimer la liste de lecture",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Supprimer la liste de lecture",
     "Cancel": "Annuler"
   },
