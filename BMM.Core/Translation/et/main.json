@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Sõnum",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Saated",
-    "MyTracks": "Minu rajad"
+    "MyTracks": "Minu rajad",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Saated",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Esitusloend",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Kustuta esitusloend",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "Kättesaadav ühenduseta",
     "AvailableOfflineDownload": "Lae alla",
     "AvailableOfflineDownloading": "Laen alla {0} {1}-st",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Jätkamiseks võimaldage allalaadimine mobiilse andmesidevõrgu abil",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Selles esitusloendis on uusi üksusi. Kas soovid jätkata allalaadimist?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Kustuta esitusloend",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Esitusloend",
@@ -385,8 +404,6 @@
     "MyTracks": "Minu rajad",
     "Contributor.Play": "Esita",
     "Contributor.Share": "Share contributor",
-    "TrackCollection.DeletePlaylist": "Kustuta esitusloend",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Kustuta esitusloend",
     "Cancel": "Tühista"
   },
