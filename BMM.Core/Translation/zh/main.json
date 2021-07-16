@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Message",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Followed Podcasts",
-    "MyTracks": "My Tracks"
+    "MyTracks": "My Tracks",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Followed Podcasts",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "播放列表",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Delete playlist",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "脱机可用",
     "AvailableOfflineDownload": "下载",
     "AvailableOfflineDownloading": "下载 {1} {0}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "启用通过移动网络在设置才可继续下载",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "该播放列表中有新的项目。你想要恢复下载吗？",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Delete playlist",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "播放列表",
@@ -385,8 +404,6 @@
     "MyTracks": "My Tracks",
     "Contributor.Play": "播放",
     "Contributor.Share": "Share contributor",
-    "TrackCollection.DeletePlaylist": "Delete playlist",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
     "Cancel": "Cancel"
   },
