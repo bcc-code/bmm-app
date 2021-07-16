@@ -32,7 +32,7 @@ namespace BMM.Core.Implementations.Feedback
             sb.AppendLine("Device version: " + _deviceInfo.VersionString);
             sb.AppendLine("Full name: " + user.FullName);
             sb.AppendLine("Username: " + user.Username);
-            sb.AppendLine("AnalyticsId: " + user.AnalyticsId);
+            sb.AppendLine("PersonId: " + user.PersonId);
 
             var email = new EmailMessage
             {
