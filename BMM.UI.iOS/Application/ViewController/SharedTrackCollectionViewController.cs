@@ -56,8 +56,7 @@ namespace BMM.UI.iOS
 
             NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate
             {
-                OnDidDismiss = HandleDismiss,
-                OnDidAttemptToDismiss = HandleDismiss
+                OnDidDismiss = HandleDismiss
             };
 
             PrepareHeader();

@@ -30,7 +30,7 @@ namespace BMM.UI.iOS
             NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate()
             {
                 OnDidDismiss = HandleDismiss,
-                OnDidAttemptToDismiss = HandleDismiss
+                OnDidAttemptToDismiss = HandleDismissAttempt
             };
 
             var saveButton = new UIBarButtonItem(
@@ -83,6 +83,11 @@ namespace BMM.UI.iOS
             set.Apply();
             tableView.ResizeHeaderView();
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        private void HandleDismissAttempt(UIPresentationController presentationcontroller)
+        {
+            ViewModel.DiscardAndCloseCommand.Execute();
         }
 
         private void HandleDismiss(UIPresentationController presentationController)

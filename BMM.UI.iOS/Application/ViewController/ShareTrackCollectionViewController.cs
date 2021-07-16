@@ -34,8 +34,7 @@ namespace BMM.UI.iOS
 
             NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate
             {
-                OnDidDismiss = HandleDismiss,
-                OnDidAttemptToDismiss = HandleDismiss
+                OnDidDismiss = HandleDismiss
             };
 
             PrepareHeader();
@@ -113,7 +112,7 @@ namespace BMM.UI.iOS
         private void PrepareHeader()
         {
             var saveButton = new UIBarButtonItem(
-                ViewModel.TextSource.GetText("Done"),
+                ViewModel.GlobalTextSource.GetText("Done"),
                 UIBarButtonItemStyle.Plain,
                 (sender, e) =>
                 {

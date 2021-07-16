@@ -380,8 +380,8 @@ namespace BMM.Core.ViewModels.Base
 
             userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
-                .AddHandled(dialogTextSource.GetText(
-                    "TrackCollection.RemovePlaylist"),
+                .AddHandled(TextSource.GetText(
+                    "RemovePlaylist"),
                     async () => await RemoveSharedPlaylist(trackCollection.Id),
                     imageDelete)
                 .SetCancel(dialogTextSource.GetText("Cancel")));

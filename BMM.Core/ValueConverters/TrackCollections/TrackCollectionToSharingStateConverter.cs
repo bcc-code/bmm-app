@@ -23,7 +23,7 @@ namespace BMM.Core.ValueConverters.TrackCollections
         protected override object Convert(TrackCollection trackCollection, Type targetType, object parameter, CultureInfo culture)
         {
             if (!trackCollection.CanEdit)
-                return string.Format(_myContentLanguageBinder.GetText("By"), trackCollection.AuthorName);
+                return string.Format(_myContentLanguageBinder.GetText("ByFormat"), trackCollection.AuthorName);
 
             return trackCollection.FollowerCount == 0
                 ? _trackCollectionLanguageBinder.GetText("Private")

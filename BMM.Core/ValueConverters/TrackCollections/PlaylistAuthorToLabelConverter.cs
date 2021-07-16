@@ -15,7 +15,10 @@ namespace BMM.Core.ValueConverters.TrackCollections
 
         protected override object Convert(string value, Type targetType, object parameter, CultureInfo culture)
         {
-            return string.Format(_languageBinder.GetText("By"), value);
+            if (string.IsNullOrEmpty(value))
+                return string.Empty;
+
+            return string.Format(_languageBinder.GetText("ByFormat"), value);
         }
     }
 }

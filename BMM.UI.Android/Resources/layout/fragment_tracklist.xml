@@ -41,7 +41,7 @@
 		android:layout_marginHorizontal="@dimen/margin_medium"
 		local:layout_anchorGravity="bottom"
         local:layout_anchor="@id/relativeLayout1"
-		local:MvxBind="Visibility Visibility(ShowAddToPlaylistButton); Click AddToMyPlaylistCommand"
+		local:MvxBind="Visibility Visibility(ShowFollowSharedPlaylistButton); Click AddToMyPlaylistCommand"
 		local:MvxLang="Text AddToMyPlaylist" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
