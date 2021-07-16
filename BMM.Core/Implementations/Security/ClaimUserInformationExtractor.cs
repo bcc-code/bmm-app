@@ -13,11 +13,6 @@ namespace BMM.Core.Implementations.Security
     {
         private const string PersonIdClaimName = "https://login.bcc.no/claims/personId";
 
-        public User ExtractUser(ClaimsPrincipal claims)
-        {
-            return ExtractUser(claims.Claims);
-        }
-
         public User ExtractUser(IEnumerable<Claim> claims)
         {
             var claimsList = claims.ToArray();
@@ -26,6 +21,7 @@ namespace BMM.Core.Implementations.Security
             var lastName = GetClaimValueByClaimName(claimsList, JwtClaimTypes.FamilyName);
             var picture = GetClaimValueByClaimName(claimsList, JwtClaimTypes.Picture);
             var subject = GetClaimValueByClaimName(claimsList, JwtClaimTypes.Subject);
+            var birthdateString = GetClaimValueByClaimName(claimsList, "birthdate");
 
             var personId = int.Parse(personIdString);
             var user = new User
@@ -34,8 +30,12 @@ namespace BMM.Core.Implementations.Security
                 LastName = lastName,
                 PersonId = personId,
                 ProfileImage = picture,
-                AnalyticsId = CreateAnalyticsId(personIdString, subject)
+                AnalyticsId = CreateAnalyticsId(personIdString, subject),
+                LastUpdated = DateTime.UtcNow
             };
+
+            if (DateTime.TryParse(birthdateString.Replace("\"", ""), out DateTime birthdate))
+                user.Birthdate = birthdate.ToUniversalTime();
 
             return user;
         }

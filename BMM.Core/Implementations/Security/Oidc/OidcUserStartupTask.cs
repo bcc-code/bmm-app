@@ -46,7 +46,8 @@ namespace BMM.Core.Implementations.Security.Oidc
             var user = _userStorage.GetUser();
             var accessTokenFromStorage = await _credentialsStorage.GetAccessToken();
 
-            if (user != null && !string.IsNullOrEmpty(accessTokenFromStorage))
+            if (user != null && !string.IsNullOrEmpty(accessTokenFromStorage) &&
+                (user.LastUpdated == null || user.LastUpdated.Value < DateTime.UtcNow.AddDays(-7)))
             {
                 var result = await _client.GetUserInfoAsync(await _accessTokenProvider.GetAccessToken());
                 if (result.IsError)
@@ -56,8 +57,10 @@ namespace BMM.Core.Implementations.Security.Oidc
 
                 user.AnalyticsId = userInfo.AnalyticsId;
                 user.ProfileImage = userInfo.ProfileImage;
-                user.FirstName = user.FirstName;
-                user.LastName = user.LastName;
+                user.FirstName = userInfo.FirstName;
+                user.LastName = userInfo.LastName;
+                user.Birthdate = userInfo.Birthdate;
+                user.LastUpdated = DateTime.UtcNow;
 
                 await _userStorage.StoreUser(user);
             }

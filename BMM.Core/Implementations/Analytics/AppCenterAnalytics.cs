@@ -38,6 +38,10 @@ namespace BMM.Core.Implementations.Analytics
                 if (!parameters.ContainsKey(nameof(user.PersonId)) && user != null)
                     parameters.Add(nameof(user.PersonId), user.PersonId);
             }
+
+            if (user?.Age != null)
+                parameters.Add(nameof(user.Age), user.Age);
+
             Dictionary<string, string> dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
             _logger.Info("Analytics", eventName + " {" + string.Join(",", dString.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent(eventName, dString);
