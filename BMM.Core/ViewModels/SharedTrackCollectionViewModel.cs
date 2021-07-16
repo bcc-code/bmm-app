@@ -59,16 +59,16 @@ namespace BMM.Core.ViewModels
 
         public IMvxAsyncCommand AddToMyPlaylistCommand { get; }
 
-        public override void Prepare(ITrackCollectionParameter parameter)
-        {
-            _sharingSecret = parameter.SharingSecret;
-        }
-
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy cachePolicy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var trackCollection = await Client.SharedPlaylist.Get(_sharingSecret);
             MyCollection = trackCollection;
             return MyCollection.Tracks;
+        }
+
+        public void Prepare(ISharedTrackCollectionParameter parameter)
+        {
+            _sharingSecret = parameter.SharingSecret;
         }
     }
 }

@@ -5,17 +5,14 @@ namespace BMM.Core.ViewModels.Parameters
     public class TrackCollectionParameter : ITrackCollectionParameter
     {
         public TrackCollectionParameter(
-            int? trackCollectionId = null,
-            string name = "",
-            string sharingSecret = "")
+            int trackCollectionId,
+            string name = "")
         {
             TrackCollectionId = trackCollectionId;
             Name = name;
-            SharingSecret = sharingSecret;
         }
 
-        public int? TrackCollectionId { get; }
+        public int TrackCollectionId { get; }
         public string Name { get; }
-        public string SharingSecret { get; }
     }
 }

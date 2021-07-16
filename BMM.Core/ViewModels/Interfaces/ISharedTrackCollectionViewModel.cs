@@ -4,7 +4,7 @@ using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels.Interfaces
 {
-    public interface ISharedTrackCollectionViewModel : IMvxViewModel<ITrackCollectionParameter>
+    public interface ISharedTrackCollectionViewModel : IMvxViewModel<ISharedTrackCollectionParameter>
     {
         IMvxAsyncCommand AddToMyPlaylistCommand { get; }
     }

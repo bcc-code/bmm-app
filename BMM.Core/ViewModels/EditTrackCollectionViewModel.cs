@@ -55,7 +55,7 @@ namespace BMM.Core.ViewModels
 
         public void Prepare(ITrackCollectionParameter parameter)
         {
-            _trackCollectionId = parameter.TrackCollectionId.Value;
+            _trackCollectionId = parameter.TrackCollectionId;
         }
 
         private async Task CloseWithDiscardIfNeeded()

@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.MyContent;
@@ -23,7 +24,9 @@ namespace BMM.Core.ValueConverters.TrackCollections
         protected override object Convert(TrackCollection trackCollection, Type targetType, object parameter, CultureInfo culture)
         {
             if (!trackCollection.CanEdit)
-                return string.Format(_myContentLanguageBinder.GetText("ByFormat"), trackCollection.AuthorName);
+            {
+                return _myContentLanguageBinder.ConvertPlaylistAuthorToLabel(trackCollection.AuthorName);
+            }
 
             return trackCollection.FollowerCount == 0
                 ? _trackCollectionLanguageBinder.GetText("Private")

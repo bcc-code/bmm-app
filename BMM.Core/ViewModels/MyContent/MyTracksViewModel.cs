@@ -108,11 +108,9 @@ namespace BMM.Core.ViewModels.MyContent
         {
             MyCollection = new TrackCollection
             {
+                Id = trackCollection.TrackCollectionId,
                 Name = trackCollection.Name
             };
-
-            if (trackCollection.TrackCollectionId.HasValue)
-                MyCollection.Id = trackCollection.TrackCollectionId.Value;
 
             IsOfflineAvailable = Mvx.IoCProvider.Resolve<IOfflineTrackCollectionStorage>().IsOfflineAvailable(MyCollection);
         }

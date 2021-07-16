@@ -100,8 +100,8 @@ namespace BMM.Core.Implementations.DeepLinking
 
         private Task OpenSharedTrackCollection(SharingSecretParameters sharingSecretParameters)
         {
-            return _navigationService.Navigate<SharedTrackCollectionViewModel, ITrackCollectionParameter>(
-                new TrackCollectionParameter(sharingSecret: sharingSecretParameters.SharingSecret));
+            return _navigationService.Navigate<SharedTrackCollectionViewModel, ISharedTrackCollectionParameter>(
+                new SharedTrackCollectionParameter(sharingSecret: sharingSecretParameters.SharingSecret));
         }
 
         private Task OpenAlbum(IdDeepLinkParameters idDeepLinksParameters)

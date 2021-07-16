@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.MyContent;
@@ -22,10 +23,7 @@ namespace BMM.Core.ValueConverters.TrackCollections
             if (trackCollection.CanEdit)
                 return string.Format(_documentsViewModelLanguageBinder.GetText("PluralTracks"), trackCollection.TrackCount);
 
-            if (string.IsNullOrEmpty(trackCollection.AuthorName))
-                return string.Empty;
-
-            return string.Format(_myContentViewModelLanguageBinder.GetText("ByFormat"), trackCollection.AuthorName);
+            return _myContentViewModelLanguageBinder.ConvertPlaylistAuthorToLabel(trackCollection.AuthorName);
         }
     }
 }

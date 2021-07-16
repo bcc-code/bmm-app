@@ -55,7 +55,7 @@ namespace BMM.Core.ViewModels
 
         public void Prepare(ITrackCollectionParameter parameter)
         {
-            _trackCollectionId = parameter.TrackCollectionId.Value;
+            _trackCollectionId = parameter.TrackCollectionId;
         }
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
