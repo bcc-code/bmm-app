@@ -8,7 +8,10 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
+using BMM.Core.Messages;
 using BMM.Core.ViewModels.MyContent;
+using BMM.Core.ViewModels.Parameters;
+using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 
@@ -17,10 +20,15 @@ namespace BMM.Core.ViewModels
     public class TrackCollectionViewModel : MyTracksViewModel
     {
         private MvxSubscriptionToken _trackCollectionOrderChangedToken;
+        private MvxSubscriptionToken _playlistStateChangedMessageSubscriptionKey;
 
         public IMvxAsyncCommand DeleteCommand { get; }
 
         public IMvxAsyncCommand EditCommand { get; }
+
+        public IMvxAsyncCommand ShareCommand { get; }
+
+        public IMvxAsyncCommand RemoveCommand { get; }
 
         public bool IsConnectionOnline => Connection.GetStatus() == ConnectionStatus.Online;
 
@@ -45,24 +53,32 @@ namespace BMM.Core.ViewModels
                 networkSettings
             )
         {
-            DeleteCommand = new ExceptionHandlingCommand(
-                async () => await DeleteTrackCollection(MyCollection)
-            );
+            DeleteCommand = new ExceptionHandlingCommand(() => DeleteTrackCollection(MyCollection));
 
-            EditCommand = new ExceptionHandlingCommand(
-                () => _navigationService.Navigate<EditTrackCollectionViewModel, EditTrackCollectionParameters>(new EditTrackCollectionParameters
-                    {TrackCollectionId = MyCollection.Id}));
+            EditCommand = new ExceptionHandlingCommand(() =>
+                 {
+                     return _navigationService
+                         .Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
+                             new TrackCollectionParameter(MyCollection.Id));
+                 });
+
+            ShareCommand = new ExceptionHandlingCommand(() => ShareTrackCollection(MyCollection.Id));
+            RemoveCommand = new ExceptionHandlingCommand(() => RemoveSharedPlaylist(MyCollection.Id));
         }
 
         protected override Task Initialization()
         {
             _trackCollectionOrderChangedToken = _messenger.Subscribe<TrackCollectionOrderChangedMessage>(HandleTrackCollectionOrderChanged);
+            _playlistStateChangedMessageSubscriptionKey =
+                _messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
+
             return base.Initialization();
         }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
-            _trackCollectionOrderChangedToken.Dispose();
+            _messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
+            _messenger.Unsubscribe<TrackCollectionOrderChangedMessage>(_trackCollectionOrderChangedToken);
             base.ViewDestroy(viewFinishing);
         }
 

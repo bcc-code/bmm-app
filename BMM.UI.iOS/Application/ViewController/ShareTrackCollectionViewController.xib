@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ShareTrackCollectionViewController">
+            <connections>
+                <outlet property="MakePrivateButton" destination="Q76-RE-eQV" id="lbK-mu-Fm2"/>
+                <outlet property="NoteLabel" destination="hWC-6U-L67" id="8uX-jb-BS5"/>
+                <outlet property="PlaylistName" destination="vWD-Td-xqG" id="6OD-JN-YEd"/>
+                <outlet property="PlaylistState" destination="Ywx-Pd-2Vb" id="wVA-Cl-ok9"/>
+                <outlet property="PlaylistStateIcon" destination="eIv-Ga-dIS" id="xy7-FB-GVe"/>
+                <outlet property="ShareLinkButton" destination="z4e-9g-GyW" id="OJi-Ea-qRU"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sn-ch-0B4">
+                    <rect key="frame" x="16" y="60" width="382" height="368"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_playlist.png" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-GT-beH">
+                            <rect key="frame" x="167" y="129.5" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="IoD-lC-wbT"/>
+                                <constraint firstAttribute="width" constant="48" id="vTc-uk-BtU"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CoN-M4-jaV">
+                            <rect key="frame" x="0.0" y="183.5" width="382" height="1"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="LAo-Rk-75R"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vWD-Td-xqG">
+                            <rect key="frame" x="16" y="190.5" width="350" height="20.5"/>
+                            <accessibility key="accessibilityConfiguration" identifier="PlaylistName"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="U0h-Nl-whi">
+                            <rect key="frame" x="156.5" y="219" width="69.5" height="24"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_friends.png" translatesAutoresizingMaskIntoConstraints="NO" id="eIv-Ga-dIS">
+                                    <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="PlaylistStateIcon"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="27x-ls-Mln"/>
+                                        <constraint firstAttribute="height" constant="24" id="ISI-0M-isy"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ywx-Pd-2Vb">
+                                    <rect key="frame" x="32" y="0.0" width="37.5" height="24"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="PlaylistState"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="CoN-M4-jaV" firstAttribute="centerY" secondItem="1sn-ch-0B4" secondAttribute="centerY" id="56f-va-gMc"/>
+                        <constraint firstItem="CoN-M4-jaV" firstAttribute="top" secondItem="OoP-GT-beH" secondAttribute="bottom" constant="6" id="8N5-uv-bAB"/>
+                        <constraint firstItem="U0h-Nl-whi" firstAttribute="top" secondItem="vWD-Td-xqG" secondAttribute="bottom" constant="8" id="Bcd-yJ-SU8"/>
+                        <constraint firstItem="vWD-Td-xqG" firstAttribute="top" secondItem="CoN-M4-jaV" secondAttribute="bottom" constant="6" id="Dia-6d-pIR"/>
+                        <constraint firstItem="CoN-M4-jaV" firstAttribute="leading" secondItem="1sn-ch-0B4" secondAttribute="leading" id="EIQ-a6-OY5"/>
+                        <constraint firstItem="U0h-Nl-whi" firstAttribute="centerX" secondItem="vWD-Td-xqG" secondAttribute="centerX" id="I9z-Ag-Ebb"/>
+                        <constraint firstAttribute="trailing" secondItem="CoN-M4-jaV" secondAttribute="trailing" id="VtF-3N-lQq"/>
+                        <constraint firstItem="OoP-GT-beH" firstAttribute="centerX" secondItem="1sn-ch-0B4" secondAttribute="centerX" id="Xrg-Ou-JHm"/>
+                        <constraint firstItem="vWD-Td-xqG" firstAttribute="leading" secondItem="1sn-ch-0B4" secondAttribute="leading" constant="16" id="dBf-jC-wwx"/>
+                        <constraint firstAttribute="trailing" secondItem="vWD-Td-xqG" secondAttribute="trailing" constant="16" id="jYL-1o-Sbb"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="16"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hWC-6U-L67">
+                    <rect key="frame" x="16" y="825.5" width="382" height="20.5"/>
+                    <accessibility key="accessibilityConfiguration" identifier="Note"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4e-9g-GyW" customClass="LeftImageButton">
+                    <rect key="frame" x="16" y="745.5" width="382" height="56"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration" identifier="ShareLinkButton"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="jeQ-GP-O8H"/>
+                    </constraints>
+                    <state key="normal" title="Share Link" image="icon_link.png">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                            <real key="value" value="2.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q76-RE-eQV">
+                    <rect key="frame" x="16" y="673.5" width="382" height="56"/>
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.94117647058823528" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <accessibility key="accessibilityConfiguration" identifier="MakePrivateButton"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="2ho-fG-VQ1"/>
+                    </constraints>
+                    <state key="normal" title="Make private">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
+                            <real key="value" value="2.5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VFw-uV-y3f"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="z4e-9g-GyW" firstAttribute="centerX" secondItem="hWC-6U-L67" secondAttribute="centerX" id="2e8-zW-oUO"/>
+                <constraint firstItem="VFw-uV-y3f" firstAttribute="bottom" secondItem="hWC-6U-L67" secondAttribute="bottom" constant="16" id="53M-XI-77m"/>
+                <constraint firstItem="1sn-ch-0B4" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="5fN-co-haD"/>
+                <constraint firstItem="1sn-ch-0B4" firstAttribute="top" secondItem="VFw-uV-y3f" secondAttribute="top" constant="16" id="BcU-RV-Dj1"/>
+                <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="1sn-ch-0B4" secondAttribute="trailing" constant="16" id="I70-8r-OtA"/>
+                <constraint firstItem="z4e-9g-GyW" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="JDj-Lg-ue0"/>
+                <constraint firstItem="z4e-9g-GyW" firstAttribute="top" secondItem="Q76-RE-eQV" secondAttribute="bottom" constant="16" id="She-Xh-yiN"/>
+                <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="Q76-RE-eQV" secondAttribute="trailing" constant="16" id="Xnh-21-h0x"/>
+                <constraint firstItem="Q76-RE-eQV" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="eUs-QP-5BH"/>
+                <constraint firstItem="1sn-ch-0B4" firstAttribute="height" secondItem="VFw-uV-y3f" secondAttribute="height" multiplier="0.45" id="fOb-hd-6eS"/>
+                <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="hWC-6U-L67" secondAttribute="trailing" constant="16" id="j3Q-7t-enC"/>
+                <constraint firstItem="hWC-6U-L67" firstAttribute="top" secondItem="z4e-9g-GyW" secondAttribute="bottom" constant="24" id="k2s-yK-4nE"/>
+                <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="z4e-9g-GyW" secondAttribute="trailing" constant="16" id="nQw-0Z-TQQ"/>
+                <constraint firstItem="hWC-6U-L67" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="wTd-bh-NFK"/>
+            </constraints>
+            <point key="canvasLocation" x="57.971014492753625" y="53.571428571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon_friends.png" width="24" height="24"/>
+        <image name="icon_link.png" width="24" height="24"/>
+        <image name="icon_playlist.png" width="48" height="48"/>
+    </resources>
+</document>

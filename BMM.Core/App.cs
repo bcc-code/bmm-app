@@ -273,6 +273,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterDecorator<IContributorClient, CachedContributorClientDecorator, ContributorClient>();
             Mvx.IoCProvider.RegisterType<IUsersClient, UsersClient>();
             Mvx.IoCProvider.RegisterDecorator<IDiscoverClient, CachedDiscoverClientDecorator, DiscoverClient>();
+            Mvx.IoCProvider.RegisterType<ISharedPlaylistClient, SharedPlaylistClient>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBMMClient, InjectedBmmClient>();
         }

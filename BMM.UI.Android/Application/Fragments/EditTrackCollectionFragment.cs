@@ -22,6 +22,8 @@ namespace BMM.UI.Droid.Application.Fragments
     {
         protected override int FragmentId => Resource.Layout.fragment_edit_trackcollection;
 
+        protected override bool IsTabBarVisible => false;
+
         private ItemTouchHelper _touchHelper;
         private EditText _textField;
         private NestedScrollView _nestedScrollView;

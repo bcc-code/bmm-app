@@ -27,7 +27,11 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
-            NavigationController.PresentationController.Delegate = new EditTrackCollectionPresentationControllerDelegate(ViewModel);
+            NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate()
+            {
+                OnDidDismiss = HandleDismiss,
+                OnDidAttemptToDismiss = HandleDismissAttempt
+            };
 
             var saveButton = new UIBarButtonItem(
                 ViewModel.TextSource.GetText("MenuSave"),
@@ -81,35 +85,21 @@ namespace BMM.UI.iOS
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
+        private void HandleDismissAttempt(UIPresentationController presentationcontroller)
+        {
+            ViewModel.DiscardAndCloseCommand.Execute();
+        }
+
+        private void HandleDismiss(UIPresentationController presentationController)
+        {
+            ViewModel.DiscardAndCloseCommand.Execute();
+            ClearPresentationDelegate(presentationController);
+        }
+
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(EditTrackCollectionViewModel.HasChanges))
                 ModalInPresentation = ViewModel.HasChanges;
         }
-
-        private class EditTrackCollectionPresentationControllerDelegate : UIAdaptivePresentationControllerDelegate
-        {
-            private readonly EditTrackCollectionViewModel _viewModel;
-
-            public EditTrackCollectionPresentationControllerDelegate(EditTrackCollectionViewModel viewModel)
-            {
-                _viewModel = viewModel;
-            }
-
-            /// <summary>
-            /// This method is called when the property ModalInPresentation of the ViewController is set to true.
-            /// The view controller shakes and indicates that open changes in the modal are left when tried to dismiss.
-            /// </summary>
-            public override void DidAttemptToDismiss(UIPresentationController presentationController)
-            {
-                _viewModel.DiscardAndCloseCommand.Execute();
-            }
-
-            public override void DidDismiss(UIPresentationController presentationController)
-            {
-                _viewModel.DiscardAndCloseCommand.Execute();
-            }
-        }
-
     }
 }

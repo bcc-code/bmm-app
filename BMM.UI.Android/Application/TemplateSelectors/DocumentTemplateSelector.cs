@@ -20,6 +20,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int ChapterHeader = 14;
         public const int DiscoverSectionHeader = 15;
         public const int Streak = 16;
+        public const int SharedTrackCollectionHeader = 17;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<CellWrapperViewModel<Document>>
@@ -51,6 +52,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
 
                 case ViewTypes.NullObject:
                     return Resource.Layout.listitem_isfullyloaded;
+
+                case ViewTypes.ChapterHeader:
+                    return Resource.Layout.listitem_chapter_header;
 
                 default:
                     return Resource.Layout.listitem_track;

@@ -30,6 +30,8 @@
         public static string TrackCollections = "track_collection/";
         public static string TrackCollection = "track_collection/{id}";
         public static string TrackCollectionAlbum = "track_collection/{id}/album/{albumId}";
+        public static string TrackCollectionResetShare = "track_collection/{id}/reset-share";
+        public static string TrackCollectionUnfollow = "track_collection/{id}/unfollow";
         public static string TrackFiles = "track/{id}/files/";
         public static string StatisticsGlobalDownloadedMost = "statistics/global/{type}/downloaded/most{?size,from}";
         public const string StatisticsPostTrackPlayedEvent = "statistics/track/played/";
@@ -65,5 +67,8 @@
             "statistics/user/{username}/{type}/viewed/recently{?size,from}";
 
         public static string Discover = "discover";
+
+        public static string SharedPlaylist = "/shared_playlist/{sharingSecret}";
+        public static string SharedPlaylistFollow = "/shared_playlist/{sharingSecret}/follow";
     }
 }

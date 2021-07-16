@@ -36,6 +36,12 @@ namespace BMM.UI.iOS
 		UIKit.UIView PlaylistHeaderView { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView PlaylistIcon { get; set; }
+
+		[Outlet]
+		UIKit.UILabel PlaylistState { get; set; }
+
+		[Outlet]
 		UIKit.UIButton ShuffleButton { get; set; }
 
 		[Outlet]
@@ -43,11 +49,6 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (TrackCountLabel != null) {
-				TrackCountLabel.Dispose ();
-				TrackCountLabel = null;
-			}
-
 			if (CollectionTable != null) {
 				CollectionTable.Dispose ();
 				CollectionTable = null;
@@ -86,6 +87,21 @@ namespace BMM.UI.iOS
 			if (ShuffleButton != null) {
 				ShuffleButton.Dispose ();
 				ShuffleButton = null;
+			}
+
+			if (TrackCountLabel != null) {
+				TrackCountLabel.Dispose ();
+				TrackCountLabel = null;
+			}
+
+			if (PlaylistState != null) {
+				PlaylistState.Dispose ();
+				PlaylistState = null;
+			}
+
+			if (PlaylistIcon != null) {
+				PlaylistIcon.Dispose ();
+				PlaylistIcon = null;
 			}
 
 		}

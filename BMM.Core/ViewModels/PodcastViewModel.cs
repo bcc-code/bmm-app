@@ -54,6 +54,8 @@ namespace BMM.Core.ViewModels
 
         public bool ShowTrackCount => false;
 
+        public bool ShowFollowSharedPlaylistButton => false;
+
         private bool _isFollowing;
         public bool IsFollowing
         {

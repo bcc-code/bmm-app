@@ -28,6 +28,8 @@ namespace BMM.Api.Framework.HTTP
                     throw new TrackAlreadyInTrackCollectionException();
                 if (status.Errors.Any(e => e.StartsWith("AlbumAlreadyInTrackCollection")))
                     throw new AlbumAlreadyInTrackCollectionException();
+                if (status.Errors.Any(e => e.StartsWith("You cannot follow your own track_collection")))
+                    throw new FollowOwnTrackCollectionException();
             }
             throw new BadRequestException();
         }

@@ -122,6 +122,8 @@
     <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedHandler.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
+    <Compile Include="Application\Extensions\ContextExtensions.cs" />
+    <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
     <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\LibraryFragment.cs" />
@@ -130,6 +132,8 @@
     <Compile Include="Application\Fragments\LibraryArchiveFragment.cs" />
     <Compile Include="Application\Fragments\DownloadedFollowedPodcastsFragment.cs" />
     <Compile Include="Application\Fragments\PodcastsFragment.cs" />
+    <Compile Include="Application\Fragments\SharedTrackCollectionFragment.cs" />
+    <Compile Include="Application\Fragments\ShareTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\StorageManagementFragment.cs" />
     <Compile Include="Application\Fragments\MyContentFragment.cs" />
     <Compile Include="Application\Fragments\MyTracksFragment.cs" />
@@ -356,6 +360,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_podcast.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
     <AndroidResource Include="Resources\drawable\border_top.xml" />
     <AndroidResource Include="Resources\drawable\button_pause_mini.xml" />
     <AndroidResource Include="Resources\drawable\button_play_mini.xml" />
@@ -373,6 +378,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon_friends.xml" />
+    <AndroidResource Include="Resources\drawable\icon_link.xml" />
     <AndroidResource Include="Resources\drawable\spinner_small.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -448,6 +455,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_menu.xml" />
+    <AndroidResource Include="Resources\layout\fragment_share_trackcollection.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_tracklist.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -474,6 +485,7 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_profile.xml" />
+    <AndroidResource Include="Resources\layout\listitem_shared_trackcollection_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_streak.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -502,6 +514,11 @@
     </AndroidResource>
     <AndroidResource Include="Resources\menu\bottom_navigation_menu.xml" />
     <AndroidResource Include="Resources\menu\edit_trackcollection.xml" />
+    <AndroidResource Include="Resources\menu\share_trackcollection.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\trackcollection_shared.xml" />
     <AndroidResource Include="Resources\values-v27\styles.xml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\xml\auto_backup_rules.xml" />
@@ -968,9 +985,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\splashscreen.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="obj\Release\90\res\drawable\" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\fragment_storage_management.axml">

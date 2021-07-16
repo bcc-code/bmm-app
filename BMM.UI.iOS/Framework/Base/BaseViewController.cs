@@ -37,6 +37,12 @@ namespace BMM.UI.iOS
             }
         }
 
+        protected static void ClearPresentationDelegate(UIPresentationController presentationController)
+        {
+            if (presentationController.Delegate is CustomUIAdaptivePresentationControllerDelegate customUiAdaptivePresentationControllerDelegate)
+                customUiAdaptivePresentationControllerDelegate.Clear();
+        }
+
         public virtual void RegisterViewController(IBaseViewController viewController)
         {
             throw new Exception(this.GetType() + " has no implementation for inserting a view called " + viewController.GetType().ToString());

@@ -58,5 +58,15 @@ namespace BMM.Core.Implementations.ApiClients
         {
             return _client.Create(collection);
         }
+
+        public Task<bool> ResetShare(int id)
+        {
+            return _client.ResetShare(id);
+        }
+
+        public Task<bool> Unfollow(int id)
+        {
+            return _client.Unfollow(id);
+        }
     }
 }

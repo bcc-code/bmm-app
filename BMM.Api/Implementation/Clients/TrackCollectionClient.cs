@@ -87,5 +87,19 @@ namespace BMM.Api.Implementation.Clients
                 return int.Parse(response.Headers.GetValues("X-Document-Id").FirstOrDefault());
             }
         }
+
+        public async Task<bool> ResetShare(int id)
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionResetShare);
+            uri.SetParameter("id", id);
+            return await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
+        }
+
+        public async Task<bool> Unfollow(int id)
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionUnfollow);
+            uri.SetParameter("id", id);
+            return await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
+        }
     }
 }

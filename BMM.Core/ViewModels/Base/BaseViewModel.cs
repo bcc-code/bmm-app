@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api;
@@ -16,6 +17,8 @@ using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.ViewModels.Parameters;
+using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
@@ -31,6 +34,8 @@ namespace BMM.Core.ViewModels.Base
     /// </summary>
     public class BaseViewModel : MvxViewModel
     {
+        private IMvxAsyncCommand _closeCommand;
+
         protected IExceptionHandler ExceptionHandler => Mvx.IoCProvider.Resolve<IExceptionHandler>();
 
         protected readonly IMvxMessenger _messenger;
@@ -92,6 +97,20 @@ namespace BMM.Core.ViewModels.Base
                 _showTrackInfoCommand = _showTrackInfoCommand ?? new ExceptionHandlingCommand<Track>(ShowTrackInfo);
                 return _showTrackInfoCommand;
             }
+        }
+
+        public IMvxAsyncCommand CloseCommand
+        {
+            get
+            {
+                _closeCommand = _closeCommand ?? new MvxAsyncCommand(Close);
+                return _closeCommand;
+            }
+        }
+
+        private async Task Close(CancellationToken cancellationToken)
+        {
+            await _navigationService.Close(this, cancellationToken);
         }
 
         // ToDo: this method does not belong here. Create it's own class instead
@@ -326,21 +345,12 @@ namespace BMM.Core.ViewModels.Base
                 case DocumentType.TrackCollection:
                     if (isInOnlineMode)
                     {
-                        var imageRename = "icon_edit_static.png";
-                        Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
-                            .SetTitle(((TrackCollection) item).Name)
-                            .AddHandled(dialogTextSource.GetText("TrackCollection.DeletePlaylist"),
-                                async () => await DeleteTrackCollection((TrackCollection) item), imageDelete)
-                            .AddHandled(dialogTextSource.GetText("TrackCollection.EditPlaylist"),
-                                async () =>
-                                {
-                                    var trackCollection = (TrackCollection)item;
-                                    await _navigationService.Navigate<EditTrackCollectionViewModel, EditTrackCollectionParameters>(new EditTrackCollectionParameters
-                                        {TrackCollectionId = trackCollection.Id});
-                                },
-                                imageRename)
-                            .SetCancel(dialogTextSource.GetText("Cancel"))
-                        );
+                        var trackCollection = (TrackCollection)item;
+
+                        if (trackCollection.CanEdit)
+                            ShowActionSheetIfPrivateTrackCollection(trackCollection, dialogTextSource, imageShare, imageDelete);
+                        else
+                            ShowActionSheetIfSharedTrackCollection(trackCollection, dialogTextSource, imageDelete);
                     }
                     else
                     {
@@ -359,6 +369,60 @@ namespace BMM.Core.ViewModels.Base
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private void ShowActionSheetIfSharedTrackCollection(
+            TrackCollection trackCollection,
+            IMvxLanguageBinder dialogTextSource,
+            string imageDelete)
+        {
+            var userDialogs = Mvx.IoCProvider.Resolve<IUserDialogs>();
+
+            userDialogs.ActionSheet(new ActionSheetConfig()
+                .SetTitle(trackCollection.Name)
+                .AddHandled(TextSource.GetText(
+                    "RemovePlaylist"),
+                    async () => await RemoveSharedPlaylist(trackCollection.Id),
+                    imageDelete)
+                .SetCancel(dialogTextSource.GetText("Cancel")));
+        }
+
+        private void ShowActionSheetIfPrivateTrackCollection(
+            TrackCollection trackCollection,
+            IMvxLanguageBinder dialogTextSource,
+            string imageShare,
+            string imageDelete)
+        {
+            var imageRename = "icon_edit_static.png";
+            Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
+                .SetTitle(trackCollection.Name)
+                .AddHandled(TextSource.GetText("SharePlaylist"),
+                    async () =>
+                    {
+                        await ShareTrackCollection(trackCollection.Id);
+                    }, imageShare)
+                .AddHandled(TextSource.GetText("DeletePlaylist"),
+                    async () => await DeleteTrackCollection(trackCollection), imageDelete)
+                .AddHandled(TextSource.GetText("EditPlaylist"),
+                    async () =>
+                    {
+                        await _navigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
+                            new TrackCollectionParameter(trackCollection.Id));
+                    },
+                    imageRename)
+                .SetCancel(dialogTextSource.GetText("Cancel"))
+            );
+        }
+
+        protected async Task ShareTrackCollection(int trackCollectionId)
+        {
+            await _navigationService.Navigate<ShareTrackCollectionViewModel, ITrackCollectionParameter>(
+                new TrackCollectionParameter(trackCollectionId));
+        }
+
+        protected async Task RemoveSharedPlaylist(int trackCollectionId)
+        {
+            await Client.TrackCollection.Unfollow(trackCollectionId);
         }
 
         protected virtual async Task ShowTrackInfo(Track track)
@@ -420,7 +484,7 @@ namespace BMM.Core.ViewModels.Base
 
                 case DocumentType.TrackCollection:
                     var trackCollection = (TrackCollection)item;
-                    await _navigationService.Navigate<TrackCollectionViewModel, TrackCollection>(new TrackCollection { Id = trackCollection.Id, Name = trackCollection.Name });
+                    await _navigationService.Navigate<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(trackCollection.Id, trackCollection.Name));
                     break;
 
                 case DocumentType.Podcast:

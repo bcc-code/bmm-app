@@ -34,8 +34,7 @@
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <MtouchExtraArgs>
-    </MtouchExtraArgs>
+    <MtouchExtraArgs></MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
@@ -406,6 +405,12 @@
     <BundleResource Include="Resources\btv_teaser.png" />
     <BundleResource Include="Resources\btv_teaser@2x.png" />
     <BundleResource Include="Resources\btv_teaser@3x.png" />
+    <BundleResource Include="Resources\icon_friends.png" />
+    <BundleResource Include="Resources\icon_friends@2x.png" />
+    <BundleResource Include="Resources\icon_friends@3x.png" />
+    <BundleResource Include="Resources\icon_link.png" />
+    <BundleResource Include="Resources\icon_link@2x.png" />
+    <BundleResource Include="Resources\icon_link@3x.png" />
     <BundleResource Include="Resources\icon_notification.png" />
     <BundleResource Include="Resources\icon_notification@2x.png" />
     <BundleResource Include="Resources\icon_notification@3x.png" />
@@ -709,6 +714,8 @@
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\ShareTrackCollectionViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\UserSetupViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\MyContentViewController.xib">
       <SubType>Designer</SubType>
@@ -741,13 +748,16 @@
   <ItemGroup>
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
+    <Compile Include="Application\CustomViews\LeftImageButton.cs" />
     <Compile Include="Application\CustomViews\Separator.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
+    <Compile Include="Application\Delegates\CustomUIAdaptivePresentationControllerDelegate.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
     <Compile Include="Application\Extensions\UiTableExtensions.cs" />
+    <Compile Include="Application\Extensions\ViewExtensions.cs" />
     <Compile Include="Application\Helpers\GradientView.cs" />
     <Compile Include="Application\Helpers\IosConstants.cs" />
     <Compile Include="Application\Helpers\IosSupportVersionChecker.cs" />
@@ -855,6 +865,14 @@
       <DependentUpon>LibraryViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\PlayerNavigationController.cs" />
+    <Compile Include="Application\ViewController\SharedTrackCollectionViewController.cs" />
+    <Compile Include="Application\ViewController\SharedTrackCollectionViewController.designer.cs">
+      <DependentUpon>SharedTrackCollectionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\ShareTrackCollectionViewController.designer.cs">
+      <DependentUpon>ShareTrackCollectionViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\ShareTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\UserSetupViewController.cs" />
     <Compile Include="Application\ViewController\UserSetupViewController.designer.cs">
       <DependentUpon>UserSetupViewController.cs</DependentUpon>
@@ -1060,7 +1078,6 @@
       <DependentUpon>DownloadedFollowedPodcastsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\Layout\FillWidthLayout.cs" />
-    <Compile Include="Application\TableViewSource\MyContentTableViewSource.cs" />
     <Compile Include="Application\ViewController\SupportEndedViewController.cs" />
     <Compile Include="Application\ViewController\SupportEndedViewController.designer.cs">
       <DependentUpon>SupportEndedViewController.cs</DependentUpon>

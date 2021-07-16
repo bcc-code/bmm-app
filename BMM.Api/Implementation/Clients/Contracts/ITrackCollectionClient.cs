@@ -26,5 +26,11 @@ namespace BMM.Api.Implementation.Clients.Contracts
 
         /// <summary>Creates a new track collection.</summary>
         Task<int> Create(TrackCollection collection);
+
+        /// <summary>Sets track collection as private</summary>
+        Task<bool> ResetShare(int id);
+
+        /// <summary>Unfollows shared track collection</summary>
+        Task<bool> Unfollow(int id);
     }
 }

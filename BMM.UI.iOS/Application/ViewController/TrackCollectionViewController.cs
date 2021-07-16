@@ -3,6 +3,7 @@ using MvvmCross.Binding.BindingContext;
 using System;
 using System.ComponentModel;
 using BMM.Core.ValueConverters;
+using BMM.Core.ValueConverters.TrackCollections;
 using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
@@ -14,12 +15,25 @@ namespace BMM.UI.iOS
 {
     public partial class TrackCollectionViewController : BaseViewController<TrackCollectionViewModel>
     {
+        private bool _isSharingStatusIconVisible;
+
         public TrackCollectionViewController()
-            : base("TrackCollectionViewController")
+            : base(nameof(TrackCollectionViewController))
         {
         }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
+
+        public bool IsSharingStatusIconVisible
+        {
+            get => _isSharingStatusIconVisible;
+            set
+            {
+                _isSharingStatusIconVisible = value;
+                PlaylistIcon.SetHiddenIfNeeded(!_isSharingStatusIconVisible);
+                CollectionTable.ResizeHeaderView();
+            }
+        }
 
         public override void ViewDidLoad()
         {
@@ -38,6 +52,17 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<TrackCollectionViewController, TrackCollectionViewModel>();
 
             set.Bind(NameLabel).To(vm => vm.MyCollection.Name);
+
+            set
+                .Bind(PlaylistState)
+                .To(vm => vm.MyCollection)
+                .WithConversion<TrackCollectionToSharingStateConverter>();
+
+            set
+                .Bind(this)
+                .For(v => v.IsSharingStatusIconVisible)
+                .To(vm => vm.MyCollection)
+                .WithConversion<TrackCollectionToPlaylistStatusIconIsVisibleConverter>();
 
             DownloadButton.DownloadedImage = new UIImage("icon_tick");
             DownloadButton.NormalStateImage = new UIImage("icon_download");
@@ -67,6 +92,13 @@ namespace BMM.UI.iOS
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
 
             set.Apply();
+
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            PlaylistState.ApplyTextTheme(AppTheme.Paragraph2.Value);
         }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)

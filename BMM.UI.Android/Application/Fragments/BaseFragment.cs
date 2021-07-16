@@ -13,6 +13,7 @@ using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Extensions;
 using Google.Android.Material.AppBar;
 using MvvmCross;
 using MvvmCross.DroidX.RecyclerView;
@@ -31,6 +32,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
 
         protected abstract int FragmentId { get; }
+        protected virtual bool IsTabBarVisible => true;
 
         private Color? _fragmentBaseColor;
 
@@ -73,6 +75,12 @@ namespace BMM.UI.Droid.Application.Fragments
             {
                 ParentActivity.HideKeyboard();
             }
+        }
+
+        public override void OnResume()
+        {
+            base.OnResume();
+            (Activity as MainActivity)?.SetBottomBarVisibility(IsTabBarVisible.ToViewState());
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

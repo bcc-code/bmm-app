@@ -27,5 +27,7 @@
         bool ShowPlayButton { get; }
 
         bool ShowTrackCount { get; }
+
+        bool ShowFollowSharedPlaylistButton { get; }
     }
 }

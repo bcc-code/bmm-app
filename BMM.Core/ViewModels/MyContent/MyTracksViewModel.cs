@@ -12,13 +12,14 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Messages;
 using BMM.Core.ViewModels.Base;
+using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels.MyContent
 {
-    public class MyTracksViewModel : DownloadViewModel, IMvxViewModel<TrackCollection>
+    public class MyTracksViewModel : DownloadViewModel, IMvxViewModel<ITrackCollectionParameter>
     {
         private TrackCollection _myCollection;
 
@@ -31,16 +32,24 @@ namespace BMM.Core.ViewModels.MyContent
         public TrackCollection MyCollection
         {
             get => _myCollection;
-            private set
+            protected set
             {
                 SetProperty(ref _myCollection, value);
                 RaisePropertyChanged(() => Title);
+                RaisePropertyChanged(() => PlaylistAuthor);
+                RaisePropertyChanged(() => CanEdit);
+                RaisePropertyChanged(() => FollowersCount);
             }
         }
+
+        public string PlaylistAuthor => MyCollection.AuthorName;
+        public bool CanEdit => MyCollection.CanEdit;
+        public int FollowersCount => MyCollection.FollowerCount;
 
         public bool IsEmpty => MyCollection.Tracks?.Count == 0 && !IsLoading && IsInitialized;
 
         private readonly ITrackCollectionManager _trackCollectionManager;
+        private string _playlistAuthor;
 
         public MyTracksViewModel(
             IStorageManager storageManager,
@@ -95,9 +104,14 @@ namespace BMM.Core.ViewModels.MyContent
             };
         }
 
-        public void Prepare(TrackCollection trackCollection)
+        public virtual void Prepare(ITrackCollectionParameter trackCollection)
         {
-            MyCollection = trackCollection;
+            MyCollection = new TrackCollection
+            {
+                Id = trackCollection.TrackCollectionId,
+                Name = trackCollection.Name
+            };
+
             IsOfflineAvailable = Mvx.IoCProvider.Resolve<IOfflineTrackCollectionStorage>().IsOfflineAvailable(MyCollection);
         }
 

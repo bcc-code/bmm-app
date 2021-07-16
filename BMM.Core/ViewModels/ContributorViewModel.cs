@@ -52,6 +52,8 @@ namespace BMM.Core.ViewModels
 
         public bool ShowTrackCount => true;
 
+        public bool ShowFollowSharedPlaylistButton => false;
+
         public ContributorViewModel()
         {
             TrackInfoProvider = new CustomTrackInfoProvider(TrackInfoProvider,

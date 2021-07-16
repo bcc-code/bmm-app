@@ -22,16 +22,21 @@ namespace BMM.Core.Helpers
             await GenerateLink($"playlist/contributor/{contributor.Id}/{contributor.Name}");
         }
 
+        public async Task PerformRequestFor(string link)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Uri = link
+            });
+        }
+
         /// <summary>
         /// See https://docs.microsoft.com/en-us/xamarin/essentials/share?context=xamarin%2Fxamarin-forms&tabs=ios for more information
         /// </summary>
         public async Task GenerateLink(string link)
         {
             var url = new Uri("https://" + GlobalConstants.BmmUrl + "/" + link);
-            await Share.RequestAsync(new ShareTextRequest
-            {
-                Uri = url.AbsoluteUri
-            });
+            await PerformRequestFor(url.AbsoluteUri);
             // ToDo: provide Subject for Android
         }
     }

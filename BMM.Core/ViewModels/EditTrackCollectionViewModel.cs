@@ -10,13 +10,14 @@ using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
+using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class EditTrackCollectionViewModel : DocumentsViewModel, IMvxViewModel<EditTrackCollectionParameters>
+    public class EditTrackCollectionViewModel : DocumentsViewModel, IMvxViewModel<ITrackCollectionParameter>
     {
         private readonly IUserDialogs _userDialogs;
         private readonly ILogger _logger;
@@ -52,7 +53,7 @@ namespace BMM.Core.ViewModels
             return trackCollection.Tracks;
         }
 
-        public void Prepare(EditTrackCollectionParameters parameter)
+        public void Prepare(ITrackCollectionParameter parameter)
         {
             _trackCollectionId = parameter.TrackCollectionId;
         }
@@ -128,10 +129,5 @@ namespace BMM.Core.ViewModels
         { }
 
         public TrackCollection TrackCollection { get; set; }
-    }
-
-    public struct EditTrackCollectionParameters
-    {
-        public int TrackCollectionId { get; set; }
     }
 }

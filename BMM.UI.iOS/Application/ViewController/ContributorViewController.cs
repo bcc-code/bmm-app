@@ -24,7 +24,7 @@ namespace BMM.UI.iOS
 
             var source = new DocumentsTableViewSource(TracksTable);
 
-            NameLabel.ApplyTextTheme(AppTheme.Heading1.Value);
+            NameLabel.ApplyTextTheme(AppTheme.Heading2.Value);
             PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
             TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3.Value);
 
