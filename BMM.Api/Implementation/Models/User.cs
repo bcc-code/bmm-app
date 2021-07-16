@@ -29,6 +29,6 @@ namespace BMM.Api.Implementation.Models
         /// </summary>
         public string ProfileImage { get; set; }
 
-        public string AnalyticsIdentifier { get; set; }
+        public string AnalyticsId { get; set; }
     }
 }

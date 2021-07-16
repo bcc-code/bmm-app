@@ -9,7 +9,7 @@ namespace BMM.Api.Implementation.Models
 
         public int? PersonId { get; set; }
 
-        public string AnalyticsIdentifier { get; set; }
+        public string AnalyticsId { get; set; }
 
         public int? TrackId { get; set; }
 

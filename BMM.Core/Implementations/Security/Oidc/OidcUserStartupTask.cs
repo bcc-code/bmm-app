@@ -54,7 +54,7 @@ namespace BMM.Core.Implementations.Security.Oidc
 
                 var userInfo = _userInformationExtractor.ExtractUser(result.Claims);
 
-                user.AnalyticsIdentifier = userInfo.AnalyticsIdentifier;
+                user.AnalyticsId = userInfo.AnalyticsId;
                 user.ProfileImage = userInfo.ProfileImage;
                 user.FirstName = user.FirstName;
                 user.LastName = user.LastName;

@@ -34,7 +34,7 @@ namespace BMM.Core.Implementations.Security
                 LastName = lastName,
                 PersonId = personId,
                 ProfileImage = picture,
-                AnalyticsIdentifier = CreateAnalyticsIdentifier(personIdString, subject)
+                AnalyticsId = CreateAnalyticsId(personIdString, subject)
             };
 
             return user;
@@ -49,7 +49,7 @@ namespace BMM.Core.Implementations.Security
             return claimValue;
         }
 
-        private string CreateAnalyticsIdentifier(string personId, string subject)
+        private string CreateAnalyticsId(string personId, string subject)
         {
             var stringToHash = personId + subject;
             var md5 = MD5.Create();

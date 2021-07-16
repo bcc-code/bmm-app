@@ -29,6 +29,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
 
         bool UseExtendedStreakLogging { get; }
 
-        bool UseAnalyticsIdentifier { get; }
+        bool UseAnalyticsId { get; }
     }
 }

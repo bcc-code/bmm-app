@@ -28,10 +28,10 @@ namespace BMM.Core.Implementations.Analytics
         public void LogEvent(string eventName, IDictionary<string, object> parameters)
         {
             var user = _userStorage.GetUser();
-            if (_remoteConfig.UseAnalyticsIdentifier)
+            if (_remoteConfig.UseAnalyticsId)
             {
-                if (!parameters.ContainsKey(nameof(User.AnalyticsIdentifier)) && user != null)
-                    parameters.Add(nameof(User.AnalyticsIdentifier), user.AnalyticsIdentifier);
+                if (!parameters.ContainsKey(nameof(User.AnalyticsId)) && user != null)
+                    parameters.Add(nameof(User.AnalyticsId), user.AnalyticsId);
             }
             else
             {

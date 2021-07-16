@@ -289,12 +289,12 @@ namespace BMM.Core.ViewModels
                 }
             };
 
-            var analyticsIdentifier =  _userStorage.GetUser().AnalyticsIdentifier;
+            var analyticsId =  _userStorage.GetUser().AnalyticsId;
             items.Add(new SelectableListItem
             {
-                Title = "Analytics Identifier",
-                Text = analyticsIdentifier,
-                OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(analyticsIdentifier))
+                Title = "Analytics id",
+                Text = analyticsId,
+                OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(analyticsId))
             });
 
             if (_developerPermission.IsBmmDeveloper())

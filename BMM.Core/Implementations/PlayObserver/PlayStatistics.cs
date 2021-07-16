@@ -205,7 +205,7 @@ namespace BMM.Core.Implementations.PlayObserver
             {
                 Id = Guid.NewGuid(),
                 PersonId = user.PersonId,
-                AnalyticsIdentifier = user.AnalyticsIdentifier,
+                AnalyticsId = user.AnalyticsId,
                 TrackId = CurrentTrack.Id,
                 Percentage = measurements.Percentage,
                 SpentTime = measurements.SpentTime,
@@ -243,8 +243,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"sentAfterStartup", ev.SentAfterStartup},
                 {"playbackOrigin", ev.PlaybackOrigin}
             };
-            if (_config.UseAnalyticsIdentifier)
-                dict.Add(nameof(User.AnalyticsIdentifier), ev.AnalyticsIdentifier);
+            if (_config.UseAnalyticsId)
+                dict.Add(nameof(User.AnalyticsId), ev.AnalyticsId);
             else
                 dict.Add(nameof(User.PersonId), ev.PersonId);
             _analytics.LogEvent("Track played", dict);
