@@ -11,7 +11,8 @@
     "Song": "Ének",
     "Speech": "Üzenet",
     "Audiobook": "Hangoskönyv",
-    "Exegesis": "Szómagyarázat"
+    "Exegesis": "Szómagyarázat",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "E heti sorozatod.",
@@ -178,7 +179,10 @@
     "Title": "Kedvencek",
     "DownloadedContent": "Letöltött tartalom",
     "FollowedPodcasts": "Podcastok",
-    "MyTracks": "Az én-m sín"
+    "MyTracks": "Az én-m sín",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcastok",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Lejátszási lista",
     "ShufflePlay": "Keverés",
-    "MenuDelete": "Lejátszási lista törlése",
-    "MenuEdit": "Lejátszási lista szerkesztése",
     "AvailableOffline": "Offline elérhető",
     "AvailableOfflineDownload": "Letöltés",
     "AvailableOfflineDownloading": "Letöltés {0} / {1}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
     "NotEnoughtSpaceToDownload": "Nincs elég tárhely minden szám letöltéséhez",
     "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?",
-    "Private": "Személyes"
+    "Private": "Személyes",
+    "DeletePlaylist": "Lejátszási lista törlése",
+    "EditPlaylist": "Lejátszási lista szerkesztése",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Lejátszási lista szerkesztése",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "A végrehajtott módosításaid nem leszek elmentve",
     "DiscardChanges": "Visszavonás",
     "KeepEditing": "Módosítás folytatása"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Lejátszási lista",
@@ -385,8 +404,6 @@
     "MyTracks": "Az én-m sín",
     "Contributor.Play": "Lejátszás",
     "Contributor.Share": "Közreműködő megosztása",
-    "TrackCollection.DeletePlaylist": "Lejátszási lista törlése",
-    "TrackCollection.EditPlaylist": "Lejátszási lista szerkesztése",
     "OfflineTrackCollection.DeletePlaylist": "Lejátszási lista törlése",
     "Cancel": "Mégse"
   },
