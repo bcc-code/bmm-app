@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Речи",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Подкаст",
-    "MyTracks": "Моите песни"
+    "MyTracks": "Моите песни",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Подкаст",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Списък",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Изтрий списъка",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "Достъпен в режим извън линия",
     "AvailableOfflineDownload": "Изтегли",
     "AvailableOfflineDownloading": "Изтегляне на {0} на {1}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Разреши изтегляне чрез мобилна мрежа в настройки, за да продължиш",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Изтрий списъка",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Списък",
@@ -385,8 +404,6 @@
     "MyTracks": "Моите песни",
     "Contributor.Play": "Пусни",
     "Contributor.Share": "Сподели сътрудник",
-    "TrackCollection.DeletePlaylist": "Изтрий списъка",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Изтрий списък",
     "Cancel": "Отказ"
   },

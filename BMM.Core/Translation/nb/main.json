@@ -11,7 +11,8 @@
     "Song": "Sang",
     "Speech": "Tale",
     "Audiobook": "Lydbok",
-    "Exegesis": "Tydning"
+    "Exegesis": "Tydning",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Din streak denne uken",
@@ -178,7 +179,10 @@
     "Title": "Favoritter",
     "DownloadedContent": "Nedlastet innhold",
     "FollowedPodcasts": "Podcaster jeg følger",
-    "MyTracks": "Mine spor"
+    "MyTracks": "Mine spor",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcaster jeg følger",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Slett spilleliste",
-    "MenuEdit": "Rediger spilleliste",
     "AvailableOffline": "Tilgjengelig offline",
     "AvailableOfflineDownload": "Last ned",
     "AvailableOfflineDownloading": "Laster ned {0} av {1}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillinger for å fortsette",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle spor",
     "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?",
-    "Private": "Privat"
+    "Private": "Privat",
+    "DeletePlaylist": "Slett spilleliste",
+    "EditPlaylist": "Rediger spilleliste",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Rediger spilleliste",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "Endringer som du har gjort blir ikke lagret",
     "DiscardChanges": "Forkast",
     "KeepEditing": "Fortsett å redigere"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Spilleliste",
@@ -385,8 +404,6 @@
     "MyTracks": "Mine spor",
     "Contributor.Play": "Spill av",
     "Contributor.Share": "Del bidragsyter",
-    "TrackCollection.DeletePlaylist": "Slett spilleliste",
-    "TrackCollection.EditPlaylist": "Rediger spilleliste",
     "OfflineTrackCollection.DeletePlaylist": "Slett spillelisten",
     "Cancel": "Avbryt"
   },

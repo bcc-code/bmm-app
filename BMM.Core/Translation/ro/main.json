@@ -11,7 +11,8 @@
     "Song": "Cântec",
     "Speech": "Mesaj",
     "Audiobook": "Carte audio",
-    "Exegesis": "Tălmăcire"
+    "Exegesis": "Tălmăcire",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Linia ta săptămâna aceasta",
@@ -178,7 +179,10 @@
     "Title": "Favorite",
     "DownloadedContent": "Conținut descărcat",
     "FollowedPodcasts": "Podcast-uri urmărite",
-    "MyTracks": "Piesele mele"
+    "MyTracks": "Piesele mele",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcast-uri urmărite",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Play-list",
     "ShufflePlay": "Amestecă",
-    "MenuDelete": "Șterge play-list",
-    "MenuEdit": "Editare listă de redare",
     "AvailableOffline": "Disponibile în modul off-line",
     "AvailableOfflineDownload": "Descarcă",
     "AvailableOfflineDownloading": "Se descarcă {0} din {1}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a continua",
     "NotEnoughtSpaceToDownload": "Nu este suficient spaţiu pentru a descărca toate melodiile",
     "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?",
-    "Private": "Privat"
+    "Private": "Privat",
+    "DeletePlaylist": "Șterge play-list",
+    "EditPlaylist": "Editare listă de redare",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Editare listă de redare",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "Modificările pe care le-ați făcut nu vor fi salvate",
     "DiscardChanges": "Înlătură",
     "KeepEditing": "Păstrează editarea"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Play-list",
@@ -385,8 +404,6 @@
     "MyTracks": "Piesele mele",
     "Contributor.Play": "Cântă",
     "Contributor.Share": "Distribuie contribuitor",
-    "TrackCollection.DeletePlaylist": "Șterge play-list",
-    "TrackCollection.EditPlaylist": "Editare listă de redare",
     "OfflineTrackCollection.DeletePlaylist": "Șterge play-list",
     "Cancel": "Anulare"
   },

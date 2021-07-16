@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Boodskap",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Potgooie",
-    "MyTracks": "My spore"
+    "MyTracks": "My spore",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Potgooie",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Snitlys",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Verwyder snitlys",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "Beskikbaar van lyn af",
     "AvailableOfflineDownload": "Laai af",
     "AvailableOfflineDownloading": "Laai af {0} of {1}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Aktiveer aflaai via selfoon netwerk in instellings om voort te gaan",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Verwyder snitlys",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Snitlys",
@@ -385,8 +404,6 @@
     "MyTracks": "My spore",
     "Contributor.Play": "Speel",
     "Contributor.Share": "Share contributor",
-    "TrackCollection.DeletePlaylist": "Verwyder snitlys",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Verwyder snitlys",
     "Cancel": "Kanselleer"
   },
