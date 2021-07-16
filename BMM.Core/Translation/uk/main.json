@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Повідомлення",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Підкаст",
-    "MyTracks": "Мої треки"
+    "MyTracks": "Мої треки",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Підкаст",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Список відтворення",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Видалити список відтворення",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "Доступний в автономному режимі",
     "AvailableOfflineDownload": "Завантажити",
     "AvailableOfflineDownloading": "скачування {0} з {1}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Дозволити завантаження через мобільну мережу в настройках продовжити",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Є нові елементи в цьому списку відтворення. Ви хочете, щоб відновити завантаження?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Видалити список відтворення",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Список відтворення",
@@ -385,8 +404,6 @@
     "MyTracks": "Мої треки",
     "Contributor.Play": "Грати",
     "Contributor.Share": "Share contributor",
-    "TrackCollection.DeletePlaylist": "Видалити список відтворення",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Видалити список відтворення",
     "Cancel": "Скасувати"
   },
