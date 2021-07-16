@@ -348,7 +348,8 @@
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",
     "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists"
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlist",

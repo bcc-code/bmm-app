@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Connection;
@@ -18,6 +20,7 @@ namespace BMM.Core.ViewModels
 {
     public class SharedTrackCollectionViewModel : TrackCollectionViewModel, ISharedTrackCollectionViewModel
     {
+        private readonly IUserDialogs _userDialogs;
         private string _sharingSecret;
 
         public SharedTrackCollectionViewModel(
@@ -26,7 +29,8 @@ namespace BMM.Core.ViewModels
             ITrackCollectionManager trackCollectionManager,
             IConnection connection,
             IDownloadQueue downloadQueue,
-            INetworkSettings networkSettings)
+            INetworkSettings networkSettings,
+            IUserDialogs userDialogs)
             : base(
                 storageManager,
                 documentFilter,
@@ -35,11 +39,19 @@ namespace BMM.Core.ViewModels
                 downloadQueue,
                 networkSettings)
         {
+            _userDialogs = userDialogs;
             AddToMyPlaylistCommand = new ExceptionHandlingCommand(async () =>
             {
-                await Client.SharedPlaylist.Follow(_sharingSecret);
-                _messenger.Publish(new PlaylistStateChangedMessage(this, MyCollection.Id));
-                await CloseCommand.ExecuteAsync();
+                try
+                {
+                    await Client.SharedPlaylist.Follow(_sharingSecret);
+                    _messenger.Publish(new PlaylistStateChangedMessage(this, MyCollection.Id));
+                    await CloseCommand.ExecuteAsync();
+                }
+                catch (FollowOwnTrackCollectionException)
+                {
+                    await userDialogs.AlertAsync(TextSource.GetText("FollowOwnTrackCollection"));
+                }
             });
         }
 
