@@ -28,6 +28,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
 
             public const string UseExtendedStreakLogging = "extended_streak_logging";
             public const string AutoplayEnabledDefaultSetting = "autoplay_enabled_default_setting";
+
+            public const string UseAnalyticsIdentifier = "use_analytics_identifier";
         }
 
         public static readonly Dictionary<string, string> Defaults = new Dictionary<string, string>
@@ -42,7 +44,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.EditProfileUrl, "https://members.bcc.no/profile/"},
             {Variables.IdentityUserInfoEndpoint, "https://login.bcc.no/userinfo"},
             {Variables.UseExtendedStreakLogging, true.ToString()},
-            {Variables.AutoplayEnabledDefaultSetting, false.ToString()}
+            {Variables.AutoplayEnabledDefaultSetting, false.ToString()},
+            {Variables.UseAnalyticsIdentifier, false.ToString()}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -55,6 +58,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         {
             await _platformSpecificRemoteConfig.UpdateValuesFromFirebaseRemoteConfig();
         }
+
+        public bool UseAnalyticsIdentifier => _platformSpecificRemoteConfig.GetBoolValue(Variables.UseAnalyticsIdentifier);
 
         public bool AutoplayEnabledDefaultSetting => _platformSpecificRemoteConfig.GetBoolValue(Variables.AutoplayEnabledDefaultSetting);
 

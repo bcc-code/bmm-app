@@ -28,5 +28,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool AutoplayEnabledDefaultSetting { get; }
 
         bool UseExtendedStreakLogging { get; }
+
+        bool UseAnalyticsIdentifier { get; }
     }
 }
