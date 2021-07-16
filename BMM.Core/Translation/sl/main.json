@@ -11,7 +11,8 @@
     "Song": "Song",
     "Speech": "Sporočilo",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Posnetki",
-    "MyTracks": "Moje skladbe"
+    "MyTracks": "Moje skladbe",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Posnetki",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Seznam predvajanja",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Izbriši seznam predvajanja",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "Na voljo brez povezave",
     "AvailableOfflineDownload": "Prenesi",
     "AvailableOfflineDownloading": "Prenašam {0} od {1}",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Za nadaljevanje v nastavitvah omogočite prenos preko mobilnega omrežja",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Izbriši seznam predvajanja",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Seznam predvajanja",
@@ -385,8 +404,6 @@
     "MyTracks": "Moje skladbe",
     "Contributor.Play": "Predvajaj",
     "Contributor.Share": "Share contributor",
-    "TrackCollection.DeletePlaylist": "Izbriši seznam predvajanja",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Izbriši seznam predvajanja",
     "Cancel": "Prekliči"
   },
