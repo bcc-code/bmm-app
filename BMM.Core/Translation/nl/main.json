@@ -11,7 +11,8 @@
     "Song": "Lied",
     "Speech": "Toespraak",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis"
+    "Exegesis": "Exegesis",
+    "Done": "Done"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -178,7 +179,10 @@
     "Title": "Favorites",
     "DownloadedContent": "Gedownloade bestanden",
     "FollowedPodcasts": "Podcasts",
-    "MyTracks": "Mijn nummers"
+    "MyTracks": "Mijn nummers",
+    "MyPlaylists": "My playlists",
+    "SharedWithMe": "Shared with me",
+    "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcasts",
@@ -301,8 +305,6 @@
   "TrackCollectionViewModel": {
     "Title": "Afspeellijst",
     "ShufflePlay": "Shuffle",
-    "MenuDelete": "Afspeellijst verwijderen",
-    "MenuEdit": "Edit playlist",
     "AvailableOffline": "Offline beschikbaar",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} van de {1} aan het downloaden",
@@ -319,7 +321,11 @@
     "MobileDownloadDisabled": "Schakel 'downloaden via mobiel netwerk' onder instellingen in om verder te gaan",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle sangene",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?",
-    "Private": "Private"
+    "Private": "Private",
+    "DeletePlaylist": "Afspeellijst verwijderen",
+    "EditPlaylist": "Edit playlist",
+    "SharePlaylist": "Share playlist",
+    "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
@@ -331,6 +337,19 @@
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
     "KeepEditing": "Keep Editing"
+  },
+  "ShareTrackCollectionViewModel": {
+    "Title": "Share Playlist",
+    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareLink": "Share link",
+    "MakePrivate": "Make private",
+    "SharedWithFormat": "Shared with {0} people"
+  },
+  "SharedTrackCollectionViewModel": {
+    "Title": "Shared Playlist",
+    "Close": "Close",
+    "AddToMyPlaylist": "Add to my playlists",
+    "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Afspeellijst",
@@ -385,8 +404,6 @@
     "MyTracks": "Mijn nummers",
     "Contributor.Play": "Afspelen",
     "Contributor.Share": "Deel bijdrager",
-    "TrackCollection.DeletePlaylist": "Afspeellijst verwijderen",
-    "TrackCollection.EditPlaylist": "Edit playlist",
     "OfflineTrackCollection.DeletePlaylist": "Afspeellijst verwijderen",
     "Cancel": "Annuleren"
   },
