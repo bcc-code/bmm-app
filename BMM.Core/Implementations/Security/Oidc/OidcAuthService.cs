@@ -62,7 +62,7 @@ namespace BMM.Core.Implementations.Security.Oidc
                 await _credentialsStorage.SetRefreshToken(result.RefreshToken);
                 await _credentialsStorage.SetAccessTokenExpirationDate(result.AccessTokenExpiration);
 
-                var user = _claimUserInformationExtractor.ExtractUser(result.User);
+                var user = _claimUserInformationExtractor.ExtractUser(result.User.Claims);
                 return user;
             }
             catch (Exception exception) when (exception.Message.Contains("Error loading discovery document"))
