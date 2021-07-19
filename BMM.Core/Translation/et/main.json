@@ -284,6 +284,7 @@
     "OptionAppVersionHeader": "Rakenduse versioon",
     "AppInfoTitle": "Rakenduse teave",
     "AppInfoAppVersion": "Rakenduse versioon: ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "Seadme mudel: ",
     "AppInfoDevicePlatform": "Seadme platvorm: ",
     "AppInfoDeviceVersion": "Seadme versioon: ",
