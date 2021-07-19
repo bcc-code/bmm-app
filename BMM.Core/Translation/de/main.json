@@ -284,6 +284,7 @@
     "OptionAppVersionHeader": "App-Version",
     "AppInfoTitle": "App-Informationen",
     "AppInfoAppVersion": "App-Version: ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "Gerätemodell: ",
     "AppInfoDevicePlatform": "Geräteplattform: ",
     "AppInfoDeviceVersion": "Geräteversion: ",
@@ -342,7 +343,7 @@
     "Title": "Playliste teilen",
     "ShareNote": "Personen die den Link der geteilten Playliste haben, können auf die Liste zugreifen und die hinzugefügten Titel hören.",
     "ShareLink": "Link teilen",
-    "MakePrivate": "Private machen",
+    "MakePrivate": "Privat machen",
     "SharedWithFormat": "Mit {0} Personen geteilt"
   },
   "SharedTrackCollectionViewModel": {
