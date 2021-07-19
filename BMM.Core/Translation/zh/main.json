@@ -284,6 +284,7 @@
     "OptionAppVersionHeader": "应用程序版本",
     "AppInfoTitle": "应用程序信息",
     "AppInfoAppVersion": "应用程序版本︰ ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "设备型号︰ ",
     "AppInfoDevicePlatform": "设备平台︰ ",
     "AppInfoDeviceVersion": "设备版本︰ ",
