@@ -28,23 +28,26 @@ namespace BMM.Core.Implementations.Analytics
         public void LogEvent(string eventName, IDictionary<string, object> parameters)
         {
             var user = _userStorage.GetUser();
-            if (_remoteConfig.UseAnalyticsId)
+            if (user != null)
             {
-                if (!parameters.ContainsKey(nameof(User.AnalyticsId)) && user != null)
-                    parameters.Add(nameof(User.AnalyticsId), user.AnalyticsId);
-            }
-            else
-            {
-                if (!parameters.ContainsKey(nameof(user.PersonId)) && user != null)
-                    parameters.Add(nameof(user.PersonId), user.PersonId);
-            }
+                if (_remoteConfig.UseAnalyticsId)
+                    AddIfNew(parameters, nameof(user.AnalyticsId), user.AnalyticsId);
+                else
+                    AddIfNew(parameters, nameof(user.PersonId), user.PersonId);
 
-            if (user?.Age != null)
-                parameters.Add(nameof(user.Age), user.Age);
+                if (user.Age != null)
+                    parameters.Add(nameof(user.Age), user.Age);
+            }
 
             Dictionary<string, string> dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
             _logger.Info("Analytics", eventName + " {" + string.Join(",", dString.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent(eventName, dString);
+        }
+
+        private static void AddIfNew(IDictionary<string, object> parameters, string key, object value)
+        {
+            if (!parameters.ContainsKey(key))
+                parameters.Add(key, value);
         }
     }
 }

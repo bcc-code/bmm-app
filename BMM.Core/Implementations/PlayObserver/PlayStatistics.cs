@@ -243,10 +243,12 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"sentAfterStartup", ev.SentAfterStartup},
                 {"playbackOrigin", ev.PlaybackOrigin}
             };
+
             if (_config.UseAnalyticsId)
                 dict.Add(nameof(User.AnalyticsId), ev.AnalyticsId);
             else
                 dict.Add(nameof(User.PersonId), ev.PersonId);
+
             _analytics.LogEvent("Track played", dict);
 
             await _client.PostTrackPlayedEvent(new[] {ev});
