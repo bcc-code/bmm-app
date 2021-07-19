@@ -284,6 +284,7 @@
     "OptionAppVersionHeader": "Sovelluksen versio",
     "AppInfoTitle": "Sovelluksen tiedot",
     "AppInfoAppVersion": "Sovelluksen versio: ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "Laitteen malli: ",
     "AppInfoDevicePlatform": "Laitteen käyttöympäristö: ",
     "AppInfoDeviceVersion": "Laitteen versio: ",
