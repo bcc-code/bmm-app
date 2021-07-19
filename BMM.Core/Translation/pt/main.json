@@ -284,6 +284,7 @@
     "OptionAppVersionHeader": "Versão do App",
     "AppInfoTitle": "Informações app",
     "AppInfoAppVersion": "Versão do App: ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "Modelo do dispositivo: ",
     "AppInfoDevicePlatform": "Plataforma de dispositivo: ",
     "AppInfoDeviceVersion": "Versão do dispositivo: ",
