@@ -80,6 +80,14 @@ namespace BMM.UI.Droid
 #endif
         }
 
+        protected override IMvxIocOptions CreateIocOptions()
+        {
+            return new MvxIocOptions
+            {
+                PropertyInjectorOptions = MvxPropertyInjectorOptions.MvxInject
+            };
+        }
+
         protected override IMvxAndroidViewPresenter CreateViewPresenter()
         {
             var customPresenter = new ViewModelAwareViewPresenter(AndroidViewAssemblies);

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net.Http;
 using Acr.UserDialogs;
 using Akavache;
@@ -10,6 +11,9 @@ using BMM.Api.Implementation;
 using BMM.Api.Implementation.Clients;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.RequestInterceptor;
+using BMM.Core.GuardedActions;
+using BMM.Core.GuardedActions.Abstractions;
+using BMM.Core.GuardedActions.Abstractions.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -241,6 +245,24 @@ namespace BMM.Core
             {
                 HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
             });
+
+            Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
+
+            RegisterGuardedActions();
+        }
+
+        private void RegisterGuardedActions()
+        {
+            var typesToRegister = AppDomain
+                .CurrentDomain
+                .GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(p => p.IsClass && typeof(IBaseGuardedAction).IsAssignableFrom(p) && !p.IsAbstract)
+                .ToList();
+
+            typesToRegister
+                .AsInterfaces()
+                .RegisterAsDynamic();
         }
 
         private static void InitializeApiClient(ApiBaseUri serverUri)
