@@ -284,6 +284,7 @@
     "OptionAppVersionHeader": "App-version",
     "AppInfoTitle": "App-information",
     "AppInfoAppVersion": "App-version: ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "Enhedsmodel: ",
     "AppInfoDevicePlatform": "Enhedsplatform: ",
     "AppInfoDeviceVersion": "Enhedsversion: ",

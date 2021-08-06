@@ -12,7 +12,7 @@
     "Speech": "Fala de ",
     "Audiobook": "Livro de áudio",
     "Exegesis": "Exegesis",
-    "Done": "Done"
+    "Done": "Feito"
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -223,7 +223,7 @@
     "UnfollowConfirm": "Você realmente quer deixar de seguir este podcast?",
     "MobileDownloadDisabled": "Habilitar download através da rede móvel nas configurações para baixar as últimas faixas automaticamente",
     "ToggleFollowOfflineError": "Você precisa estar no modo online para seguir ou deixar de seguir um podcast",
-    "Week": "Week {0}",
+    "Week": "Semana {0}",
     "ThisWeek": "Esta semana",
     "LastWeek": "Ultima semana",
     "AslaksenTheme1": "Creia no Deus dos milagres",
@@ -284,6 +284,7 @@
     "OptionAppVersionHeader": "Versão do App",
     "AppInfoTitle": "Informações app",
     "AppInfoAppVersion": "Versão do App: ",
+    "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "Modelo do dispositivo: ",
     "AppInfoDevicePlatform": "Plataforma de dispositivo: ",
     "AppInfoDeviceVersion": "Versão do dispositivo: ",
