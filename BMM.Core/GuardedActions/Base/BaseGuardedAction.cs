@@ -1,12 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using BMM.Core.Constants;
-using BMM.Core.GuardedActions.Abstractions.Delegates;
-using BMM.Core.GuardedActions.Abstractions.Interfaces;
+using BMM.Core.ExceptionHandlers.Interfaces;
+using BMM.Core.ExceptionHandlers.Interfaces.Base;
+using BMM.Core.GuardedActions.Base.Interfaces;
 using MvvmCross.IoC;
 
-namespace BMM.Core.GuardedActions.Abstractions
+namespace BMM.Core.GuardedActions.Base
 {
     public abstract class BaseGuardedAction : IBaseGuardedAction
     {
@@ -14,6 +14,9 @@ namespace BMM.Core.GuardedActions.Abstractions
 
         [MvxInject]
         public IGuardInvoker Invoker { get; set; }
+
+        [MvxInject]
+        public IGenericActionExceptionHandler GenericExceptionHandler { get; set; }
 
         public void Attach<T>(string key, T value)
         {
@@ -41,20 +44,14 @@ namespace BMM.Core.GuardedActions.Abstractions
 
         protected virtual void OnAttached<T>(string key, T value) { }
         protected virtual void OnDataContextAttached<T>(T value) { }
-        protected virtual IEnumerable<HandleException> GetExceptionHandlers() => new List<HandleException>();
+        protected virtual IEnumerable<IActionExceptionHandler> GetExceptionHandlers() => new List<IActionExceptionHandler>();
 
-        protected IEnumerable<HandleException> ExceptionHandlers()
+        protected IEnumerable<IActionExceptionHandler> ExceptionHandlers()
         {
             foreach (var exceptionHandler in GetExceptionHandlers())
                 yield return exceptionHandler;
 
-            yield return DefaultExceptionHandler;
-        }
-
-        private bool DefaultExceptionHandler(Exception exception)
-        {
-            System.Diagnostics.Debug.WriteLine(exception.Message);
-            return true;
+            yield return GenericExceptionHandler;
         }
     }
 }

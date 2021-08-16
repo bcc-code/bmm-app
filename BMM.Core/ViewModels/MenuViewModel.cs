@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.Test.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
@@ -14,6 +16,13 @@ namespace BMM.Core.ViewModels
 {
     public class MenuViewModel : BaseViewModel
     {
+        private readonly ITestActionInterface _testActionInterface;
+
+        public MenuViewModel(ITestActionInterface testActionInterface)
+        {
+            _testActionInterface = testActionInterface;
+        }
+
         public IMvxCommand SearchCommand { get; private set; }
 
         public IMvxCommand ExploreCommand { get; private set; }
@@ -31,6 +40,8 @@ namespace BMM.Core.ViewModels
             MyContentCommand = MenuEntry<MyContentViewModel>();
             LibraryCommand = MenuEntry<LibraryViewModel>();
             SettingsCommand = MenuEntry<SettingsViewModel>();
+
+            _testActionInterface.ExecuteGuarded();
 
             return base.Initialize();
         }

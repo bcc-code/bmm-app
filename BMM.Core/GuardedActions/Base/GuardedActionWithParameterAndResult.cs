@@ -1,23 +1,23 @@
 using System;
 using System.Threading.Tasks;
-using BMM.Core.GuardedActions.Abstractions.Interfaces;
+using BMM.Core.GuardedActions.Base.Interfaces;
 using MvvmCross.Commands;
 
-namespace BMM.Core.GuardedActions.Abstractions
+namespace BMM.Core.GuardedActions.Base
 {
-    public abstract class GuardedActionWithParameter<TParameter>
+    public abstract class GuardedActionWithParameterAndResult<TParameter, TResult>
         : BaseGuardedAction,
-          IGuardedActionWithParameter<TParameter>
+          IGuardedActionWithParameterAndResult<TParameter, TResult>
     {
         private IMvxAsyncCommand<TParameter> _command;
-        public IMvxAsyncCommand<TParameter> Command => _command ??= new MvxAsyncCommand<TParameter>(GuardedExecute, GuardedCanExecute);
+        public IMvxAsyncCommand<TParameter> Command => _command ??= new MvxAsyncCommand<TParameter>(ExecuteGuarded, GuardedCanExecute);
 
-        protected abstract Task Execute(TParameter parameter);
+        protected abstract Task<TResult> Execute(TParameter parameter);
         protected virtual bool CanExecute(TParameter parameter) => true;
-        protected virtual Task OnException(Exception ex, TParameter parameter) => Task.CompletedTask;
+        protected virtual Task OnException(Exception exception, TParameter parameter) => Task.CompletedTask;
         protected virtual Task OnFinally(TParameter parameter) => Task.CompletedTask;
 
-        public async Task GuardedExecute(TParameter parameter)
+        public async Task<TResult> ExecuteGuarded(TParameter parameter)
             => await Invoker.Invoke(
                 () => Execute(parameter),
                 ex => OnException(ex, parameter),

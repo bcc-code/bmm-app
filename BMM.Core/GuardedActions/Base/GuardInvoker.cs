@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BMM.Core.GuardedActions.Abstractions.Delegates;
-using BMM.Core.GuardedActions.Abstractions.Interfaces;
+using BMM.Core.ExceptionHandlers.Interfaces;
+using BMM.Core.ExceptionHandlers.Interfaces.Base;
+using BMM.Core.GuardedActions.Base.Interfaces;
 
-namespace BMM.Core.GuardedActions.Abstractions
+namespace BMM.Core.GuardedActions.Base
 {
     public class GuardInvoker : IGuardInvoker
     {
@@ -13,7 +14,7 @@ namespace BMM.Core.GuardedActions.Abstractions
             Func<Task> task,
             Func<Exception, Task> onException,
             Func<Task> onFinally,
-            IEnumerable<HandleException> exceptionHandlers)
+            IEnumerable<IActionExceptionHandler> exceptionHandlers)
         {
             await Task.Run(
                 async () =>
@@ -40,7 +41,7 @@ namespace BMM.Core.GuardedActions.Abstractions
             Func<Task<TResult>> task,
             Func<Exception, Task> onException,
             Func<Task> onFinally,
-            IEnumerable<HandleException> exceptionHandlers)
+            IEnumerable<IActionExceptionHandler> exceptionHandlers)
         {
             return await Task.Run(
                 async () =>
@@ -67,18 +68,29 @@ namespace BMM.Core.GuardedActions.Abstractions
 
         private static async Task HandleException(
             Func<Exception, Task> onException,
-            IEnumerable<HandleException> exceptionHandlers,
+            IEnumerable<IActionExceptionHandler> exceptionHandlers,
             Exception e)
         {
-            var handlers = exceptionHandlers?.ToList() ?? new List<HandleException>();
-            foreach (var handleException in handlers)
+            var handlers = exceptionHandlers?.ToList() ?? new List<IActionExceptionHandler>();
+
+            bool handled = false;
+            var genericHandler = handlers.First(h => h.GetType().GetInterfaces().Contains(typeof(IGenericActionExceptionHandler)));
+
+            foreach (var handler in handlers.Where(h => h != genericHandler))
             {
-                if (handleException(e))
-                    break;
+                if (!handler.GetTriggeringExceptionTypes().Contains(e.GetType()))
+                    continue;
+
+                await handler.HandleException(e);
+                handled = true;
+                break;
             }
 
+            if (!handled)
+                await genericHandler.HandleException(e);
+
             if (onException != null)
-                await onException(e).ConfigureAwait(false);
+                await onException(e);
         }
     }
 }

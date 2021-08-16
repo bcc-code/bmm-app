@@ -1,7 +1,7 @@
 using BMM.Core.Constants;
-using BMM.Core.GuardedActions.Abstractions.Interfaces;
+using BMM.Core.GuardedActions.Base.Interfaces;
 
-namespace BMM.Core.GuardedActions.GuardedActionExtensions
+namespace BMM.Core.Extensions
 {
     public static class GuardedActionsExtensions
     {

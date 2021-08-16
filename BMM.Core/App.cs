@@ -11,9 +11,9 @@ using BMM.Api.Implementation;
 using BMM.Api.Implementation.Clients;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.RequestInterceptor;
-using BMM.Core.GuardedActions;
-using BMM.Core.GuardedActions.Abstractions;
-using BMM.Core.GuardedActions.Abstractions.Interfaces;
+using BMM.Core.ExceptionHandlers.Interfaces.Base;
+using BMM.Core.GuardedActions.Base;
+using BMM.Core.GuardedActions.Base.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -247,17 +247,17 @@ namespace BMM.Core
             });
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
-
-            RegisterGuardedActions();
+            RegisterDynamic(typeof(IBaseGuardedAction));
+            RegisterDynamic(typeof(IActionExceptionHandler));
         }
 
-        private void RegisterGuardedActions()
+        private void RegisterDynamic(Type baseType)
         {
             var typesToRegister = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
                 .SelectMany(s => s.GetTypes())
-                .Where(p => p.IsClass && typeof(IBaseGuardedAction).IsAssignableFrom(p) && !p.IsAbstract)
+                .Where(p => p.IsClass && baseType.IsAssignableFrom(p) && !p.IsAbstract)
                 .ToList();
 
             typesToRegister

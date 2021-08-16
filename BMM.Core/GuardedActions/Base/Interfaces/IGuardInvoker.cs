@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BMM.Core.GuardedActions.Abstractions.Delegates;
+using BMM.Core.ExceptionHandlers.Interfaces.Base;
 
-namespace BMM.Core.GuardedActions.Abstractions.Interfaces
+namespace BMM.Core.GuardedActions.Base.Interfaces
 {
     public interface IGuardInvoker
     {
@@ -11,12 +11,12 @@ namespace BMM.Core.GuardedActions.Abstractions.Interfaces
             Func<Task> task,
             Func<Exception, Task> onException,
             Func<Task> onFinally,
-            IEnumerable<HandleException> exceptionHandlers);
+            IEnumerable<IActionExceptionHandler> exceptionHandlers);
 
         Task<TResult> Invoke<TResult>(
             Func<Task<TResult>> task,
             Func<Exception, Task> onException,
             Func<Task> onFinally,
-            IEnumerable<HandleException> exceptionHandlers);
+            IEnumerable<IActionExceptionHandler> exceptionHandlers);
     }
 }

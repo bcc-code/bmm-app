@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using MvvmCross.Commands;
 
-namespace BMM.Core.GuardedActions.Abstractions.Interfaces
+namespace BMM.Core.GuardedActions.Base.Interfaces
 {
     public interface IGuardedAction : IBaseGuardedAction
     {
