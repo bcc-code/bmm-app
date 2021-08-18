@@ -1,6 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using Acr.UserDialogs;
 using Akavache;
 using BMM.Api;
@@ -71,6 +73,9 @@ namespace BMM.Core
 {
     public class App : MvxApplication
     {
+        private IEnumerable<Assembly> _assemblies;
+        private const string MainAssemblyName = "BMM";
+
         /// <summary>
         /// Called once at startup to initialize classes and start the app
         /// </summary>
@@ -247,16 +252,20 @@ namespace BMM.Core
             });
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
+
+            _assemblies = AppDomain
+                .CurrentDomain
+                .GetAssemblies()
+                .Where(a => a.FullName.StartsWith(MainAssemblyName));
+
             RegisterDynamic(typeof(IBaseGuardedAction));
             RegisterDynamic(typeof(IActionExceptionHandler));
         }
 
         private void RegisterDynamic(Type baseType)
         {
-            var typesToRegister = AppDomain
-                .CurrentDomain
-                .GetAssemblies()
-                .SelectMany(s => s.GetTypes())
+            var typesToRegister = _assemblies
+                .SelectMany(c => c.CreatableTypes())
                 .Where(p => p.IsClass && baseType.IsAssignableFrom(p) && !p.IsAbstract)
                 .ToList();
 
