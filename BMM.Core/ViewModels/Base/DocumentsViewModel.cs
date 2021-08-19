@@ -279,7 +279,7 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual void RefreshInBackground()
         {
-            ExceptionHandler.FireAndForgetWithoutUserMessages(() => LoadData(CachePolicy.UseCacheAndWaitForUpdates));
+            ExceptionHandler.FireAndForgetWithoutUserMessages(() => LoadData(CachePolicy.IgnoreCache));
         }
 
         public virtual async Task RefreshInBackgroundAfterCacheUpdate()
@@ -305,7 +305,7 @@ namespace BMM.Core.ViewModels.Base
             IsRefreshing = true;
             try
             {
-                await LoadData(CachePolicy.BypassCache);
+                await LoadData(CachePolicy.ForceGetAndUpdateCache);
             }
             finally
             {
@@ -336,7 +336,7 @@ namespace BMM.Core.ViewModels.Base
             var documents = await LoadItems(policy);
             documents = ExcludeVideos(documents);
             documents = await EnrichDocumentsWithAdditionalData(documents);
-            await ReplaceItems(documents);
+            ReplaceItems(documents);
         }
 
         protected async Task<IEnumerable<Document>> EnrichDocumentsWithAdditionalData(IEnumerable<Document> documents)
@@ -355,17 +355,30 @@ namespace BMM.Core.ViewModels.Base
             return docList;
         }
 
-        protected Task ReplaceItems(IEnumerable<Document> documents)
+        protected void ReplaceItems(IEnumerable<Document> documents)
         {
-            return Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()
-                .ExecuteOnMainThreadAsync(() =>
-                {
-                    if (documents != null)
-                    {
-                        Documents.ReplaceWith(documents);
-                        RaisePropertyChanged(() => TrackCountString);
-                    }
-                });
+            if (documents == null)
+                return;
+
+            var docList = documents.ToList();
+
+            if (!HasDocumentListChanged(docList))
+                return;
+
+            Documents.ReplaceWith(docList);
+            RaisePropertyChanged(() => TrackCountString);
+        }
+
+        private bool HasDocumentListChanged(IList<Document> newList)
+        {
+            var allIDs = Documents
+                .Select(x => x.Id)
+                .ToList();
+
+            if (Documents.Count == newList.Count && newList.All(x => allIDs.Contains(x.Id)))
+                return false;
+
+            return true;
         }
 
         protected override async Task DocumentAction(Document item, IList<Track> list)

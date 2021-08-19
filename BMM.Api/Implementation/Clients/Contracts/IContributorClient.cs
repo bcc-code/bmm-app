@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 
 namespace BMM.Api.Implementation.Clients.Contracts
@@ -31,10 +32,11 @@ namespace BMM.Api.Implementation.Clients.Contracts
 
         /// <summary>Gets the tracks for the specified contributor.</summary>
         /// <param name="contributorId">The contributor identifier.</param>
+        /// <param name="cachePolicy">Cache Policy</param>
         /// <param name="size">The number of items to get.</param>
         /// <param name="from">The number of items to skip.</param>
         /// <param name="contentTypes">List of types of the contents.</param>
         /// <returns>The tracks.</returns>
-        Task<IList<Track>> GetTracks(int contributorId, int size = ApiConstants.LoadMoreSize, int from = 0, IEnumerable<string> contentTypes = null);
+        Task<IList<Track>> GetTracks(int contributorId, CachePolicy cachePolicy, int size = ApiConstants.LoadMoreSize, int @from = 0, IEnumerable<string> contentTypes = null);
     }
 }

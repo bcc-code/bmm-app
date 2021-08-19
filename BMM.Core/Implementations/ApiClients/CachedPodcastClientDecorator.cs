@@ -33,7 +33,7 @@ namespace BMM.Core.Implementations.ApiClients
 
             if (all.All(p => p.Id != id))
             {
-                all = await GetAll(CachePolicy.BypassCache);
+                all = await GetAll(CachePolicy.ForceGetAndUpdateCache);
             }
 
             return all.First(p => p.Id == id);

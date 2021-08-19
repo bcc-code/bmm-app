@@ -64,7 +64,7 @@ namespace BMM.Core.ViewModels.Base
             {
                 IsLoading = true;
 
-                var documents = await LoadItems(CurrentLimit, ApiConstants.LoadMoreSize, CachePolicy.BypassCache);
+                var documents = await LoadItems(CurrentLimit, ApiConstants.LoadMoreSize, CachePolicy.IgnoreCache);
                 documents = ExcludeVideos(documents);
                 documents = await EnrichDocumentsWithAdditionalData(documents);
                 CurrentLimit = CurrentLimit + ApiConstants.LoadMoreSize;

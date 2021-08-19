@@ -86,7 +86,7 @@ namespace BMM.Core.ViewModels
 
         public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
-            return await Client.Contributors.GetTracks(_id, from: startIndex, size: size);
+            return await Client.Contributors.GetTracks(_id, policy, size, startIndex);
         }
     }
 }
