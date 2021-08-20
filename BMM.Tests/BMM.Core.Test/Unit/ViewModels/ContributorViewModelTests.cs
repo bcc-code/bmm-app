@@ -34,7 +34,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             var refreshing = contributorViewModel.IsRefreshing;
             await contributorViewModel.LoadItems(1, 1, CachePolicy.UseCache);
 
-            Client.Setup(x => x.Contributors.GetTracks(It.IsAny<int>(), size: It.IsAny<int>(),@from: It.IsAny<int>(),contentTypes: It.IsAny<IEnumerable<string>>()))
+            Client.Setup(x => x.Contributors.GetTracks(It.IsAny<int>(), It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>(), It.IsAny<IEnumerable<string>>()))
                 .Returns(Task.Run(() => { Thread.Sleep(1000); return CreateListOfTracks(); }));
 
             //it should not be called using await //Why???
@@ -49,14 +49,14 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task LoadItems_ShouldReturnATestContributors()
         {
             // Arrange
-            Client.Setup(x => x.Contributors.GetTracks(It.IsAny<int>(), size: It.IsAny<int>(), @from: It.IsAny<int>(), contentTypes: null)).Returns(Task.FromResult<IList<Track>>(null));
+            Client.Setup(x => x.Contributors.GetTracks(It.IsAny<int>(), It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>(), null)).Returns(Task.FromResult<IList<Track>>(null));
             var contributor = new ContributorViewModel();
 
             // Act
             await contributor.LoadItems();
 
             // Assert
-            Client.Verify(x => x.Contributors.GetTracks(It.IsAny<int>(), size: It.IsAny<int>(), @from: It.IsAny<int>(), contentTypes: null), Times.Once);
+            Client.Verify(x => x.Contributors.GetTracks(It.IsAny<int>(), It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>(), null), Times.Once);
         }
 
         private IList<Track> CreateListOfTracks()

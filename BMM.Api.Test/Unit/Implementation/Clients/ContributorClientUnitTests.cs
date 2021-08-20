@@ -88,7 +88,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
                 .Returns(Task.FromResult(CreateASampleListOfTracks()));
 
             // Act
-            var result = await apiInfoClient.GetTracks(1);
+            var result = await apiInfoClient.GetTracks(1, default);
 
             // Assert
             Assert.NotNull(result);

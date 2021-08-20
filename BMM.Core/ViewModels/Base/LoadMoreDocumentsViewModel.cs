@@ -1,21 +1,33 @@
-﻿using System;
-using BMM.Api;
+﻿using BMM.Api;
 using BMM.Api.Implementation.Models;
-using MvvmCross;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.DocumentFilters;
-using MvvmCross.Base;
 using MvvmCross.Commands;
+using MvvmCross.IoC;
 using MvvmCross.Localization;
 
 namespace BMM.Core.ViewModels.Base
 {
     public abstract class LoadMoreDocumentsViewModel : DocumentsViewModel, ILoadMoreDocumentsViewModel
     {
+        private ILoadMoreDocumentsAction _loadMoreDocumentsAction;
+
+        [MvxInject]
+        public ILoadMoreDocumentsAction LoadMoreDocumentsAction
+        {
+            get => _loadMoreDocumentsAction;
+            set
+            {
+                _loadMoreDocumentsAction = value;
+                _loadMoreDocumentsAction.AttachDataContext(this);
+            }
+        }
+
         private IMvxAsyncCommand _loadMoreCommand;
 
         public IMvxAsyncCommand LoadMoreCommand => _loadMoreCommand ?? (_loadMoreCommand = new ExceptionHandlingCommand(LoadMore));
@@ -26,13 +38,14 @@ namespace BMM.Core.ViewModels.Base
         /// </summary>
         private bool _isFullyLoaded;
 
+
         public bool IsFullyLoaded
         {
             get => _isFullyLoaded;
-            protected set => SetProperty(ref _isFullyLoaded, value);
+            set => SetProperty(ref _isFullyLoaded, value);
         }
 
-        public virtual int CurrentLimit { get; private set; } = ApiConstants.LoadMoreSize;
+        public virtual int CurrentLimit { get; set; } = ApiConstants.LoadMoreSize;
 
         public override string TrackCountString => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel))
             .GetText(IsFullyLoaded ? "PluralTracks" : "PluralTracksLoaded", Documents.Count);
@@ -55,44 +68,7 @@ namespace BMM.Core.ViewModels.Base
 
         protected async Task LoadMore()
         {
-            if (IsLoading || IsFullyLoaded)
-            {
-                return;
-            }
-
-            try
-            {
-                IsLoading = true;
-
-                var documents = await LoadItems(CurrentLimit, ApiConstants.LoadMoreSize, CachePolicy.IgnoreCache);
-                documents = ExcludeVideos(documents);
-                documents = await EnrichDocumentsWithAdditionalData(documents);
-                CurrentLimit = CurrentLimit + ApiConstants.LoadMoreSize;
-
-                await Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()
-                    .ExecuteOnMainThreadAsync(() =>
-                    {
-                        if (documents != null && documents.Any())
-                        {
-                            Documents.AddRange(documents);
-                            RaisePropertyChanged(() => TrackCountString);
-                        }
-
-                        // TODO: Update this if the API has a fixed size for statistics
-                        else
-                        {
-                            IsFullyLoaded = true;
-                        }
-                    });
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.HandleException(ex);
-            }
-            finally
-            {
-                IsLoading = false;
-            }
+            await LoadMoreDocumentsAction.ExecuteGuarded();
         }
 
         protected void ResetCurrentLimit()
