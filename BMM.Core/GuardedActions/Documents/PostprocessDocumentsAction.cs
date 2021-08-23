@@ -5,7 +5,6 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Implementations.TrackListenedObservation;
-using MvvmCross;
 
 namespace BMM.Core.GuardedActions.Documents
 {
@@ -33,11 +32,10 @@ namespace BMM.Core.GuardedActions.Documents
                 .Where(d => videoDocuments.All(v => v.Id != d.Id))
                 .ToList();
 
-            var listenedTracksStorage = Mvx.IoCProvider.Resolve<IListenedTracksStorage>();
             foreach (var doc in filteredDocuments)
             {
                 if (doc is Track track)
-                    track.IsListened = await listenedTracksStorage.TrackIsListened(track);
+                    track.IsListened = await _listenedTracksStorage.TrackIsListened(track);
             }
 
             return filteredDocuments;

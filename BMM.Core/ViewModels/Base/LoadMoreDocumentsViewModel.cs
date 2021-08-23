@@ -38,7 +38,6 @@ namespace BMM.Core.ViewModels.Base
         /// </summary>
         private bool _isFullyLoaded;
 
-
         public bool IsFullyLoaded
         {
             get => _isFullyLoaded;

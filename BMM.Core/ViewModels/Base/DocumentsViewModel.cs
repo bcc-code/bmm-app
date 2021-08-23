@@ -6,6 +6,7 @@ using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.DocumentFilters;
@@ -18,8 +19,8 @@ using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross;
-using MvvmCross.Base;
 using MvvmCross.Commands;
+using MvvmCross.IoC;
 using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
@@ -156,6 +157,9 @@ namespace BMM.Core.ViewModels.Base
             _downloadQueueFinishedSubscriptionToken = _messenger.Subscribe<QueueFinishedMessage>(HandleDownloadQueueFinishedMessage);
             _contentLanguageChangedToken = _messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
         }
+
+        [MvxInject]
+        public IPostprocessDocumentsAction PostprocessDocumentsAction { get; set; }
 
         private void HandleContentLanguageChanged(ContentLanguagesChangedMessage obj)
         {
@@ -334,25 +338,8 @@ namespace BMM.Core.ViewModels.Base
         protected async Task LoadData(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var documents = await LoadItems(policy);
-            documents = ExcludeVideos(documents);
-            documents = await EnrichDocumentsWithAdditionalData(documents);
+            documents = await PostprocessDocumentsAction.ExecuteGuarded(documents);
             ReplaceItems(documents);
-        }
-
-        protected async Task<IEnumerable<Document>> EnrichDocumentsWithAdditionalData(IEnumerable<Document> documents)
-        {
-            if (documents == null)
-                return null;
-
-            var docList = documents.ToList();
-            var listenedTracksStorage = Mvx.IoCProvider.Resolve<IListenedTracksStorage>();
-            foreach (var doc in docList)
-            {
-                if (doc is Track track)
-                    track.IsListened = await listenedTracksStorage.TrackIsListened(track);
-            }
-
-            return docList;
         }
 
         protected void ReplaceItems(IEnumerable<Document> documents)
@@ -384,17 +371,6 @@ namespace BMM.Core.ViewModels.Base
         protected override async Task DocumentAction(Document item, IList<Track> list)
         {
             await base.DocumentAction(item, FilteredDocuments(list).ToList());
-        }
-
-        public IEnumerable<Document> ExcludeVideos(IEnumerable<Document> documents)
-        {
-            if (documents == null)
-            {
-                return null;
-            }
-
-            IEnumerable<Track> videoDocuments = documents.OfType<Track>().Where(t => t.Subtype == TrackSubType.Video);
-            return documents.Where(d => videoDocuments.All(v => v.Id != d.Id)); // Filter out documents of video type
         }
 
         ///<summary>
