@@ -59,5 +59,7 @@
 
         public const string AndroidUpdateLink = "https://play.google.com/store/apps/details?id=org.brunstad.bmm";
         public const string IosUpdateLink = "itms-apps://apps.apple.com/no/app/bmm-brunstad/id777577855";
+
+        public const string UserVoiceLink = "https://uservoice.bcc.no/?tags=bmm";
     }
 }

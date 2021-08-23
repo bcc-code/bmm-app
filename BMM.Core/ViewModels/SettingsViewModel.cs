@@ -156,7 +156,7 @@ namespace BMM.Core.ViewModels
 
         private async Task<List<IListItem>> BuildProfileSection()
         {
-            return new List<IListItem>
+            return new()
             {
                 new ProfileListItem
                 {
@@ -269,6 +269,12 @@ namespace BMM.Core.ViewModels
             var items = new List<IListItem>
             {
                 new SectionHeader {Title = TextSource.GetText("HeadlineAbout")},
+                new SelectableListItem
+                {
+                    Title = TextSource.GetText("UserVoiceHeader"),
+                    Text = TextSource.GetText("UserVoiceText"),
+                    OnSelected = new MvxCommand(() => _uriOpener.OpenUri(new Uri(GlobalConstants.UserVoiceLink)))
+                },
                 new SelectableListItem
                 {
                     Title = TextSource.GetText("OptionCopyrightHeader"),
