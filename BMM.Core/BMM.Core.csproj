@@ -42,8 +42,5 @@
   <ItemGroup>
     <Compile Remove="ViewModels\PodcastSection.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GuardedActions\Player" />
-  </ItemGroup>
 
 </Project>

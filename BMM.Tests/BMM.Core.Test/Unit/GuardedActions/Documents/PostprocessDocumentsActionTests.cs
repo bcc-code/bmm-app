@@ -11,6 +11,7 @@ using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.GuardedActions.Documents
 {
+    [TestFixture]
     public class PostprocessDocumentsActionTests : GuardedActionWithParameterAndResultTests<
         PostprocessDocumentsAction,
         IEnumerable<Document>,

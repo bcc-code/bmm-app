@@ -13,6 +13,7 @@ namespace BMM.Core.Test.Unit.GuardedActions.Base
     {
         public override void SetUp()
         {
+            base.SetUp();
             GuardedAction.Invoker = GuardInvokerMock;
 
             GuardInvokerMock.Invoke(

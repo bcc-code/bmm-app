@@ -423,6 +423,7 @@ namespace BMM.Core.ViewModels.Base
         protected async Task RemoveSharedPlaylist(int trackCollectionId)
         {
             await Client.TrackCollection.Unfollow(trackCollectionId);
+            await CloseCommand.ExecuteAsync();
         }
 
         protected virtual async Task ShowTrackInfo(Track track)

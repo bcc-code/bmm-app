@@ -8,6 +8,7 @@ using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
@@ -19,6 +20,7 @@ using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross;
+using MvvmCross.Base;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
 using MvvmCross.Localization;
@@ -32,7 +34,7 @@ namespace BMM.Core.ViewModels.Base
         private IBlobCache _blobCache;
         private bool _isRefreshing;
         private bool _isInitialized;
-        private MvxObservableCollection<Document> _documents;
+        private IBmmObservableCollection<Document> _documents;
         private ITrackModel _currentTrack;
         public readonly IDocumentFilter Filter;
 
@@ -82,7 +84,7 @@ namespace BMM.Core.ViewModels.Base
 
         public IMvxCommand PlayCommand { get; private set; }
 
-        public MvxObservableCollection<Document> Documents
+        public IBmmObservableCollection<Document> Documents
         {
             get => _documents;
             private set => SetProperty(ref _documents, value);
@@ -107,7 +109,7 @@ namespace BMM.Core.ViewModels.Base
             : base(textSource)
         {
             Filter = documentFilter ?? new NullFilter();
-            Documents = new MvxObservableCollection<Document>();
+            Documents = new BmmObservableCollection<Document>();
 
             CurrentTrack = Mvx.IoCProvider.Resolve<IMediaPlayer>().CurrentTrack;
             _currentTrackChangedToken = _messenger.Subscribe<CurrentTrackChangedMessage>(message =>
@@ -160,6 +162,9 @@ namespace BMM.Core.ViewModels.Base
 
         [MvxInject]
         public IPostprocessDocumentsAction PostprocessDocumentsAction { get; set; }
+
+        [MvxInject]
+        public IMvxMainThreadAsyncDispatcher MvxMainThreadAsyncDispatcher { get; set; }
 
         private void HandleContentLanguageChanged(ContentLanguagesChangedMessage obj)
         {
@@ -352,8 +357,11 @@ namespace BMM.Core.ViewModels.Base
             if (!HasDocumentListChanged(docList))
                 return;
 
-            Documents.ReplaceWith(docList);
-            RaisePropertyChanged(() => TrackCountString);
+            MvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
+            {
+                Documents.ReplaceWith(docList);
+                RaisePropertyChanged(() => TrackCountString);
+            });
         }
 
         private bool HasDocumentListChanged(IList<Document> newList)
