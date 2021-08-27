@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
@@ -29,7 +31,10 @@ namespace BMM.Core.ViewModels
 
         private MvxSubscriptionToken _listeningStreakToken;
 
-        public ExploreNewestViewModel(IStreakObserver streakObserver, IMvxMessenger messenger, ISettingsStorage settings)
+        public ExploreNewestViewModel(
+            IStreakObserver streakObserver,
+            IMvxMessenger messenger,
+            ISettingsStorage settings)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -94,7 +99,7 @@ namespace BMM.Core.ViewModels
             HideTeasers(docs);
             var filteredDocs = HideStreakInList( hideStreak, HideTeaserPodcastsInList(docs));
             TranslateDocs(filteredDocs);
-            return filteredDocs;
+            return PreparePlaylistCollectionItem(filteredDocs).ToList();
         }
 
         public override void RefreshInBackground()
@@ -145,7 +150,7 @@ namespace BMM.Core.ViewModels
             FraKaareTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d => d.DocumentType == DocumentType.Podcast && d.Id == FraKaareTeaserViewModel.FraKårePodcastId);
         }
 
-        private IEnumerable<Document> TranslateDocs(IList<Document> documents)
+        private void TranslateDocs(IList<Document> documents)
         {
             foreach (var document in documents)
             {
@@ -157,8 +162,23 @@ namespace BMM.Core.ViewModels
 
                 sectionHeader.Title = GetText(sectionHeader.TranslationParent, sectionHeader.TranslationId);
             }
+        }
 
-            return documents;
+        private IEnumerable<Document> PreparePlaylistCollectionItem(IList<Document> filteredDocs)
+        {
+            var playlists = filteredDocs
+                .OfType<Playlist>()
+                .ToList();
+
+            if (!playlists.Any())
+                return filteredDocs;
+
+            int indexOfFirstPlaylist = filteredDocs
+                .IndexOf(playlists.First());
+
+            var playlistsCollection = new PlaylistsCollection(new ObservableCollection<Document>(playlists));
+            filteredDocs.Insert(indexOfFirstPlaylist, playlistsCollection);
+            return filteredDocs.Except(playlists);
         }
 
         private List<Track> GetAdjacentTracksInSameSection(Document item)

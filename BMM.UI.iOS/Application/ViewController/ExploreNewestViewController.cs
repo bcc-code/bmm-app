@@ -15,8 +15,7 @@ namespace BMM.UI.iOS
     {
         public double? InitialLargeTitleHeight { get; set; }
 
-        public ExploreNewestViewController()
-            : base("ExploreNewestViewController")
+        public ExploreNewestViewController() : base(nameof(ExploreNewestViewController))
         { }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);

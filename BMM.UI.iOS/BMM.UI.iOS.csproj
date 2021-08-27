@@ -34,7 +34,7 @@
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <MtouchExtraArgs></MtouchExtraArgs>
+    <MtouchExtraArgs>--framework:"$(HOME)/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_i386_x86_64-simulator/RevealServer.framework"</MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
@@ -707,11 +707,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ChapterHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\SectionHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
@@ -746,6 +748,10 @@
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
+      <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\LeftImageButton.cs" />
@@ -826,6 +832,10 @@
     <Compile Include="Application\TableViewCell\PinnedItemTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\PinnedItemTableViewCell.designer.cs">
       <DependentUpon>PinnedItemTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.designer.cs">
+      <DependentUpon>PlaylistsCollectionTableViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\TableViewCell\StreakTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">

@@ -25,6 +25,9 @@ namespace BMM.Api.Implementation.Models
         [IgnoreDataMember]
         ChapterHeader,
 
+        [IgnoreDataMember]
+        PlaylistsCollection,
+
         [EnumMember(Value = "section_header")]
         DiscoverSectionHeader,
 

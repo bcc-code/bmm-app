@@ -24,7 +24,8 @@ namespace BMM.UI.iOS
                 FeaturedPlaylistTableViewCell.Key,
                 ChapterHeaderTableViewCell.Key,
                 DiscoverSectionHeaderTableViewCell.Key,
-                StreakTableViewCell.Key
+                StreakTableViewCell.Key,
+                PlaylistsCollectionTableViewCell.Key
             };
 
             foreach (string nibName in nibNames)
@@ -87,6 +88,10 @@ namespace BMM.UI.iOS
 
                 case DocumentType.ListeningStreak:
                     nibName = StreakTableViewCell.Key;
+                    break;
+
+                case DocumentType.PlaylistsCollection:
+                    nibName = PlaylistsCollectionTableViewCell.Key;
                     break;
             }
 
