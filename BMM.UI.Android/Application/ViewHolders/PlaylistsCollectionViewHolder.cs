@@ -31,8 +31,6 @@ namespace BMM.UI.Droid.Application.ViewHolders
 
         private void Bind()
         {
-            var set = this.CreateBindingSet<PlaylistsCollectionViewHolder, CellWrapperViewModel<PlaylistsCollection>>();
-
             var playlistsCollectionRecyclerView = ItemView.FindViewById<MvxRecyclerView>(Resource.Id.PlaylistsCollectionRecyclerView);
             var layoutManager = new LinearLayoutManager(ItemView.Context, LinearLayoutManager.Horizontal, false);
 
@@ -43,8 +41,6 @@ namespace BMM.UI.Droid.Application.ViewHolders
             playlistsCollectionRecyclerView!.AddItemDecoration(spacingItemDecoration);
             playlistsCollectionRecyclerView.SetLayoutManager(layoutManager);
             playlistsCollectionRecyclerView.Adapter = new HorizontalPlaylistsRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
-
-            set.Apply();
         }
     }
 }

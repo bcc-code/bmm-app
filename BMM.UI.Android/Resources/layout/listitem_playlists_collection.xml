@@ -9,4 +9,4 @@
         local:MvxItemTemplate="@layout/listitem_cover_with_title"
         local:MvxBind="
             ItemsSource Item.Playlists;
-            ItemClick DocumentSelectedCommand(ViewModel.DocumentSelectedCommand)" />
+            ItemClick ViewModel.DocumentSelectedCommand" />

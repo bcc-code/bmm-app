@@ -34,7 +34,7 @@
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <MtouchExtraArgs>--framework:"$(HOME)/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_i386_x86_64-simulator/RevealServer.framework"</MtouchExtraArgs>
+    <MtouchExtraArgs></MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
   </PropertyGroup>
