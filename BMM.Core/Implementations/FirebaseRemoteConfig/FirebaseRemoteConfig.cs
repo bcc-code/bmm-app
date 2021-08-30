@@ -30,6 +30,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string AutoplayEnabledDefaultSetting = "autoplay_enabled_default_setting";
 
             public const string UseAnalyticsId = "use_analytics_id";
+
+            public const string UserVoiceLink = "user_voice_link";
         }
 
         public static readonly Dictionary<string, string> Defaults = new Dictionary<string, string>
@@ -45,7 +47,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.IdentityUserInfoEndpoint, "https://login.bcc.no/userinfo"},
             {Variables.UseExtendedStreakLogging, true.ToString()},
             {Variables.AutoplayEnabledDefaultSetting, false.ToString()},
-            {Variables.UseAnalyticsId, false.ToString()}
+            {Variables.UseAnalyticsId, false.ToString()},
+            {Variables.UserVoiceLink, "https://uservoice.bcc.no/?tags=bmm"}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -60,6 +63,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         }
 
         public bool UseAnalyticsId => _platformSpecificRemoteConfig.GetBoolValue(Variables.UseAnalyticsId);
+
+        public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
 
         public bool AutoplayEnabledDefaultSetting => _platformSpecificRemoteConfig.GetBoolValue(Variables.AutoplayEnabledDefaultSetting);
 

@@ -1,12 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using BMM.Core.Helpers.Interfaces;
-using MvvmCross;
-using MvvmCross.Base;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.Helpers

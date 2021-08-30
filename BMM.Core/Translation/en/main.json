@@ -292,7 +292,7 @@
     "LogoutConfirm": "Are you sure you want to log out?",
     "Logout": "Log out",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Let us know about your idea on how we can improve BMM."
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",

@@ -30,5 +30,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool UseExtendedStreakLogging { get; }
 
         bool UseAnalyticsId { get; }
+
+        string UserVoiceLink { get; }
     }
 }

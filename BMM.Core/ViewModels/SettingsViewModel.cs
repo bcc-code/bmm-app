@@ -273,7 +273,7 @@ namespace BMM.Core.ViewModels
                 {
                     Title = TextSource.GetText("UserVoiceHeader"),
                     Text = TextSource.GetText("UserVoiceText"),
-                    OnSelected = new MvxCommand(() => _uriOpener.OpenUri(new Uri(GlobalConstants.UserVoiceLink)))
+                    OnSelected = new MvxCommand(() => _uriOpener.OpenUri(new Uri(_remoteConfig.UserVoiceLink)))
                 },
                 new SelectableListItem
                 {
