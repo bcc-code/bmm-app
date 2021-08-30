@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Geräteversion: ",
     "LoggedInAs": "Eingeloggt als",
     "LogoutConfirm": "Bist du sicher, dass du dich abmelden möchtest?",
-    "Logout": "Ausloggen"
+    "Logout": "Ausloggen",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
