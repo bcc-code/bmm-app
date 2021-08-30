@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Versão do dispositivo: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Tem certeza que deseja sair?",
-    "Logout": "Sair"
+    "Logout": "Sair",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Localização para faixas offline",
