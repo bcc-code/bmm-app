@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Enhetsversjon: ",
     "LoggedInAs": "Logget inn som",
     "LogoutConfirm": "Er du sikker på at du vil logge av?",
-    "Logout": "Logg av"
+    "Logout": "Logg av",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Plass for offline spor",
