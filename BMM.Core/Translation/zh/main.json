@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "设备版本︰ ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "你确定你想要注销？",
-    "Logout": "注销"
+    "Logout": "注销",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",
