@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Versión del dispositivo: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "¿Está seguro que desea desconectarse?",
-    "Logout": "Salir"
+    "Logout": "Salir",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",
