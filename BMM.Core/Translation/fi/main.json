@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Laitteen versio: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Haluatko varmasti kirjautua ulos?",
-    "Logout": "Kirjaudu ulos"
+    "Logout": "Kirjaudu ulos",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Offline kappaleiden tallennus sijainti",
