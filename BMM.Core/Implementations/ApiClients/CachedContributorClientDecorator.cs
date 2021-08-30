@@ -51,13 +51,18 @@ namespace BMM.Core.Implementations.ApiClients
             return _client.GetCover(contributorId);
         }
 
-        public Task<IList<Track>> GetTracks(int contributorId, int size = ApiConstants.LoadMoreSize, int @from = 0, IEnumerable<string> contentTypes = null)
+        public Task<IList<Track>> GetTracks(
+            int contributorId,
+            CachePolicy cachePolicy,
+            int size = ApiConstants.LoadMoreSize,
+            int from = 0,
+            IEnumerable<string> contentTypes = null)
         {
             return _clientCache.GetLoadMoreItems(
-                (s, f) => _client.GetTracks(contributorId, s, f, contentTypes),
+                (s, f) => _client.GetTracks(contributorId, cachePolicy, s, f, contentTypes),
                 size,
                 from,
-                CachePolicy.UseCacheAndRefreshOutdated,
+                cachePolicy,
                 TimeSpan.FromHours(1),
                 CacheKeys.ContributorGetTracks,
                 "contentTypes:" + (contentTypes == null ? "null" : string.Join(",", contentTypes)),

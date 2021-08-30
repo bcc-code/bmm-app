@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using Acr.UserDialogs;
 using Akavache;
 using BMM.Api;
@@ -10,6 +13,9 @@ using BMM.Api.Implementation;
 using BMM.Api.Implementation.Clients;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.RequestInterceptor;
+using BMM.Core.ExceptionHandlers.Interfaces.Base;
+using BMM.Core.GuardedActions.Base;
+using BMM.Core.GuardedActions.Base.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -67,6 +73,9 @@ namespace BMM.Core
 {
     public class App : MvxApplication
     {
+        private IEnumerable<Assembly> _assemblies;
+        private const string MainAssemblyName = "BMM";
+
         /// <summary>
         /// Called once at startup to initialize classes and start the app
         /// </summary>
@@ -241,6 +250,28 @@ namespace BMM.Core
             {
                 HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
             });
+
+            Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
+
+            _assemblies = AppDomain
+                .CurrentDomain
+                .GetAssemblies()
+                .Where(a => a.FullName.StartsWith(MainAssemblyName));
+
+            RegisterDynamic(typeof(IBaseGuardedAction));
+            RegisterDynamic(typeof(IActionExceptionHandler));
+        }
+
+        private void RegisterDynamic(Type baseType)
+        {
+            var typesToRegister = _assemblies
+                .SelectMany(c => c.CreatableTypes())
+                .Where(p => p.IsClass && baseType.IsAssignableFrom(p) && !p.IsAbstract)
+                .ToList();
+
+            typesToRegister
+                .AsInterfaces()
+                .RegisterAsDynamic();
         }
 
         private static void InitializeApiClient(ApiBaseUri serverUri)

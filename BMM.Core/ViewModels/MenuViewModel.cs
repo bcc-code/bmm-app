@@ -3,10 +3,8 @@ using System.Threading.Tasks;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
-using BMM.Core.Implementations.Notifications;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.MyContent;
-using BMM.Core.ViewModels.Parameters;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 

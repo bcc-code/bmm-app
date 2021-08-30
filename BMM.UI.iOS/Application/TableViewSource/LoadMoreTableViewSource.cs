@@ -33,7 +33,7 @@ namespace BMM.UI.iOS
             }
         }
 
-        public override UITableViewCell GetCell (UITableView tableView, NSIndexPath indexPath)
+        public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             MvxObservableCollection<CellWrapperViewModel<Document>> data = ItemsSource as MvxObservableCollection<CellWrapperViewModel<Document>>;
 
@@ -55,7 +55,7 @@ namespace BMM.UI.iOS
             return cell;
         }
 
-        public override nint RowsInSection (UITableView tableview, nint section)
+        public override nint RowsInSection(UITableView tableview, nint section)
         {
             MvxObservableCollection<CellWrapperViewModel<Document>> data = ItemsSource as MvxObservableCollection<CellWrapperViewModel<Document>>;
 
@@ -67,12 +67,12 @@ namespace BMM.UI.iOS
             }
         }
 
-        public override void WillDisplay (UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
+        public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
         {
             MvxObservableCollection<CellWrapperViewModel<Document>> data = ItemsSource as MvxObservableCollection<CellWrapperViewModel<Document>>;
 
             if (!IsFullyLoaded && LoadMoreCommand != null && indexPath.Row == data.Count - 1) {
-                LoadMoreCommand.Execute ();
+                LoadMoreCommand.Execute();
             }
         }
     }

@@ -6,7 +6,9 @@ using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
@@ -20,6 +22,7 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Commands;
+using MvvmCross.IoC;
 using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
@@ -31,7 +34,7 @@ namespace BMM.Core.ViewModels.Base
         private IBlobCache _blobCache;
         private bool _isRefreshing;
         private bool _isInitialized;
-        private MvxObservableCollection<Document> _documents;
+        private IBmmObservableCollection<Document> _documents;
         private ITrackModel _currentTrack;
         public readonly IDocumentFilter Filter;
 
@@ -81,7 +84,7 @@ namespace BMM.Core.ViewModels.Base
 
         public IMvxCommand PlayCommand { get; private set; }
 
-        public MvxObservableCollection<Document> Documents
+        public IBmmObservableCollection<Document> Documents
         {
             get => _documents;
             private set => SetProperty(ref _documents, value);
@@ -106,7 +109,7 @@ namespace BMM.Core.ViewModels.Base
             : base(textSource)
         {
             Filter = documentFilter ?? new NullFilter();
-            Documents = new MvxObservableCollection<Document>();
+            Documents = new BmmObservableCollection<Document>();
 
             CurrentTrack = Mvx.IoCProvider.Resolve<IMediaPlayer>().CurrentTrack;
             _currentTrackChangedToken = _messenger.Subscribe<CurrentTrackChangedMessage>(message =>
@@ -156,6 +159,12 @@ namespace BMM.Core.ViewModels.Base
             _downloadQueueFinishedSubscriptionToken = _messenger.Subscribe<QueueFinishedMessage>(HandleDownloadQueueFinishedMessage);
             _contentLanguageChangedToken = _messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
         }
+
+        [MvxInject]
+        public IPostprocessDocumentsAction PostprocessDocumentsAction { get; set; }
+
+        [MvxInject]
+        public IMvxMainThreadAsyncDispatcher MvxMainThreadAsyncDispatcher { get; set; }
 
         private void HandleContentLanguageChanged(ContentLanguagesChangedMessage obj)
         {
@@ -279,7 +288,7 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual void RefreshInBackground()
         {
-            ExceptionHandler.FireAndForgetWithoutUserMessages(() => LoadData(CachePolicy.UseCacheAndWaitForUpdates));
+            ExceptionHandler.FireAndForgetWithoutUserMessages(() => LoadData(CachePolicy.IgnoreCache));
         }
 
         public virtual async Task RefreshInBackgroundAfterCacheUpdate()
@@ -305,7 +314,7 @@ namespace BMM.Core.ViewModels.Base
             IsRefreshing = true;
             try
             {
-                await LoadData(CachePolicy.BypassCache);
+                await LoadData(CachePolicy.ForceGetAndUpdateCache);
             }
             finally
             {
@@ -334,54 +343,42 @@ namespace BMM.Core.ViewModels.Base
         protected async Task LoadData(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var documents = await LoadItems(policy);
-            documents = ExcludeVideos(documents);
-            documents = await EnrichDocumentsWithAdditionalData(documents);
-            await ReplaceItems(documents);
+            documents = await PostprocessDocumentsAction.ExecuteGuarded(documents);
+            ReplaceItems(documents);
         }
 
-        protected async Task<IEnumerable<Document>> EnrichDocumentsWithAdditionalData(IEnumerable<Document> documents)
+        protected void ReplaceItems(IEnumerable<Document> documents)
         {
             if (documents == null)
-                return null;
+                return;
 
             var docList = documents.ToList();
-            var listenedTracksStorage = Mvx.IoCProvider.Resolve<IListenedTracksStorage>();
-            foreach (var doc in docList)
-            {
-                if (doc is Track track)
-                    track.IsListened = await listenedTracksStorage.TrackIsListened(track);
-            }
 
-            return docList;
+            if (!HasDocumentListChanged(docList))
+                return;
+
+            MvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
+            {
+                Documents.ReplaceWith(docList);
+                RaisePropertyChanged(() => TrackCountString);
+            });
         }
 
-        protected Task ReplaceItems(IEnumerable<Document> documents)
+        private bool HasDocumentListChanged(IList<Document> newList)
         {
-            return Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()
-                .ExecuteOnMainThreadAsync(() =>
-                {
-                    if (documents != null)
-                    {
-                        Documents.ReplaceWith(documents);
-                        RaisePropertyChanged(() => TrackCountString);
-                    }
-                });
+            var allIDs = Documents
+                .Select(x => x.Id)
+                .ToList();
+
+            if (Documents.Count == newList.Count && newList.All(x => allIDs.Contains(x.Id)))
+                return false;
+
+            return true;
         }
 
         protected override async Task DocumentAction(Document item, IList<Track> list)
         {
             await base.DocumentAction(item, FilteredDocuments(list).ToList());
-        }
-
-        public IEnumerable<Document> ExcludeVideos(IEnumerable<Document> documents)
-        {
-            if (documents == null)
-            {
-                return null;
-            }
-
-            IEnumerable<Track> videoDocuments = documents.OfType<Track>().Where(t => t.Subtype == TrackSubType.Video);
-            return documents.Where(d => videoDocuments.All(v => v.Id != d.Id)); // Filter out documents of video type
         }
 
         ///<summary>

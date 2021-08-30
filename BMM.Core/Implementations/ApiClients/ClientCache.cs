@@ -32,6 +32,9 @@ namespace BMM.Core.Implementations.ApiClients
 
         public async Task<T> Get<T>(Func<Task<T>> actionIfNotCached, CachePolicy cachePolicy, TimeSpan maxAge, CacheKeys key, params string[] keyParameters)
         {
+            if (cachePolicy == CachePolicy.IgnoreCache)
+                return await actionIfNotCached.Invoke();
+
             var cacheParts = new List<string>
             {
                 "ClientCache",
@@ -44,14 +47,11 @@ namespace BMM.Core.Implementations.ApiClients
             var cacheId = string.Join("|", cacheParts);
 
             CachedItem<T> item;
-            if (cachePolicy == CachePolicy.BypassCache)
-            {
+
+            if (cachePolicy == CachePolicy.ForceGetAndUpdateCache)
                 item = await FetchAndUpdateCache(actionIfNotCached, cacheId);
-            }
             else
-            {
                 item = await _cache.GetOrFetchObject(cacheId, actionIfNotCached);
-            }
 
             bool isCachedItemOutdated = item.DateCreated + maxAge < DateTime.UtcNow;
             if (isCachedItemOutdated && cachePolicy == CachePolicy.UseCacheAndRefreshOutdated)
@@ -74,17 +74,16 @@ namespace BMM.Core.Implementations.ApiClients
             return item.Item;
         }
 
-        public async Task<IList<T>> GetLoadMoreItems<T>(Func<int, int, Task<IList<T>>> actionIfNotCached, int size, int @from, CachePolicy cachePolicy, TimeSpan maxAge,
-            CacheKeys key, params string[] keyParameters)
+        public async Task<IList<T>> GetLoadMoreItems<T>(
+            Func<int, int, Task<IList<T>>> actionIfNotCached,
+            int size,
+            int @from,
+            CachePolicy cachePolicy,
+            TimeSpan maxAge,
+            CacheKeys key,
+            params string[] keyParameters)
         {
-            IList<T> items;
-            if (@from == 0)
-                items = await Get(() => actionIfNotCached.Invoke(size, @from), cachePolicy, maxAge, key, keyParameters);
-            else
-                // Only use the cache for the first items but not if you load more
-                items = await actionIfNotCached.Invoke(size, @from);
-
-            return items;
+            return await Get(() => actionIfNotCached.Invoke(size, @from), cachePolicy, maxAge, key, keyParameters);
         }
 
         private async Task<CachedItem<T>> FetchAndUpdateCache<T>(Func<Task<T>> actionIfNotCached, string cacheKey)

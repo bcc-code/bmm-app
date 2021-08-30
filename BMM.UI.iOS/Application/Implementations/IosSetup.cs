@@ -105,5 +105,13 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterSingleton<IViewModelAwareViewPresenter>(presenter);
             return presenter;
         }
+
+        protected override IMvxIocOptions CreateIocOptions()
+        {
+            return new MvxIocOptions
+            {
+                PropertyInjectorOptions = MvxPropertyInjectorOptions.MvxInject
+            };
+        }
     }
 }

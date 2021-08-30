@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
@@ -68,8 +69,9 @@ namespace BMM.Api.Implementation.Clients
         }
 
         public Task<IList<Track>> GetTracks(int contributorId,
+            CachePolicy cachePolicy,
             int size = ApiConstants.LoadMoreSize,
-            int from = 0,
+            int @from = 0,
             IEnumerable<string> contentTypes = null)
         {
             var uri = new UriTemplate(ApiUris.ContributorTracks);

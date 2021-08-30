@@ -58,8 +58,8 @@ namespace BMM.Core.Implementations.Downloading
 
         public async Task InitializeCacheAndSynchronizeTracks()
         {
-            await _client.Podcast.GetAll(CachePolicy.BypassCache);
-            await _client.TrackCollection.GetAll(CachePolicy.BypassCache);
+            await _client.Podcast.GetAll(CachePolicy.ForceGetAndUpdateCache);
+            await _client.TrackCollection.GetAll(CachePolicy.ForceGetAndUpdateCache);
             await UpdateOfflineTracks();
         }
 
