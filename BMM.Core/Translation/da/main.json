@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Enhedsversion: ",
     "LoggedInAs": "Logget ind som",
     "LogoutConfirm": "Er du sikker på at du vil logge ud?",
-    "Logout": "Log ud"
+    "Logout": "Log ud",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Lagringsplads til offline indhold",
