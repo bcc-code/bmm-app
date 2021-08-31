@@ -10,7 +10,7 @@ namespace BMM.Core.GuardedActions.Base
 {
     public abstract class BaseGuardedAction : IBaseGuardedAction
     {
-        private readonly Dictionary<string, object> _executionContext = new();
+        private readonly Dictionary<string, object> _executionContext = new Dictionary<string, object>();
 
         [MvxInject]
         public IGuardInvoker Invoker { get; set; }
