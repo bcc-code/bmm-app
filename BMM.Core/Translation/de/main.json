@@ -292,7 +292,7 @@
     "LogoutConfirm": "Bist du sicher, dass du dich abmelden möchtest?",
     "Logout": "Ausloggen",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können."
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
