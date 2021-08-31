@@ -156,7 +156,7 @@ namespace BMM.Core.ViewModels
 
         private async Task<List<IListItem>> BuildProfileSection()
         {
-            return new()
+            return new List<IListItem>
             {
                 new ProfileListItem
                 {
