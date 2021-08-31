@@ -18,6 +18,8 @@ namespace BMM.Api.Implementation.Models
 
         public string TranslationId { get; set; }
 
+        public bool UseCoverCarousel { get; set; }
+
         [JsonIgnore]
         public bool HasLink => string.IsNullOrEmpty(Link);
     }

@@ -21,6 +21,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int DiscoverSectionHeader = 15;
         public const int Streak = 16;
         public const int SharedTrackCollectionHeader = 17;
+        public const int PlaylistsCollection = 18;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<CellWrapperViewModel<Document>>
@@ -55,6 +56,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
 
                 case ViewTypes.ChapterHeader:
                     return Resource.Layout.listitem_chapter_header;
+
+                case ViewTypes.PlaylistsCollection:
+                    return Resource.Layout.listitem_covers_carousel_collection;
 
                 default:
                     return Resource.Layout.listitem_track;
@@ -96,7 +100,10 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case DocumentType.ListeningStreak:
                     return ViewTypes.Streak;
 
-            default:
+                case DocumentType.PlaylistsCollection:
+                    return ViewTypes.PlaylistsCollection;
+
+                default:
                     return ViewTypes.Unknown;
             }
         }

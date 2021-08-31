@@ -1,6 +1,8 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reactive.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
@@ -29,7 +31,10 @@ namespace BMM.Core.ViewModels
 
         private MvxSubscriptionToken _listeningStreakToken;
 
-        public ExploreNewestViewModel(IStreakObserver streakObserver, IMvxMessenger messenger, ISettingsStorage settings)
+        public ExploreNewestViewModel(
+            IStreakObserver streakObserver,
+            IMvxMessenger messenger,
+            ISettingsStorage settings)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -92,8 +97,9 @@ namespace BMM.Core.ViewModels
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
             var hideStreak = await _settings.GetStreakHidden();
             HideTeasers(docs);
-            var filteredDocs = HideStreakInList( hideStreak, HideTeaserPodcastsInList(docs));
+            var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             TranslateDocs(filteredDocs);
+            PrepareCoversCarouselItems(filteredDocs);
             return filteredDocs;
         }
 
@@ -145,7 +151,7 @@ namespace BMM.Core.ViewModels
             FraKaareTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d => d.DocumentType == DocumentType.Podcast && d.Id == FraKaareTeaserViewModel.FraKårePodcastId);
         }
 
-        private IEnumerable<Document> TranslateDocs(IList<Document> documents)
+        private void TranslateDocs(IList<Document> documents)
         {
             foreach (var document in documents)
             {
@@ -157,8 +163,35 @@ namespace BMM.Core.ViewModels
 
                 sectionHeader.Title = GetText(sectionHeader.TranslationParent, sectionHeader.TranslationId);
             }
+        }
 
-            return documents;
+        private void PrepareCoversCarouselItems(IList<Document> filteredDocs)
+        {
+            var carouselHeaders = filteredDocs
+                .OfType<DiscoverSectionHeader>()
+                .Where(d => d.UseCoverCarousel)
+                .ToList();
+
+            foreach (var carouselHeader in carouselHeaders)
+            {
+                var coverDocuments = new List<CoverDocument>();
+                int currentIndex = filteredDocs.IndexOf(carouselHeader) + 1;
+
+                while (true)
+                {
+                    if (currentIndex >= filteredDocs.Count)
+                        break;
+
+                    if (!(filteredDocs[currentIndex] is CoverDocument element))
+                        break;
+
+                    coverDocuments.Add(element);
+                    filteredDocs.RemoveAt(currentIndex);
+                }
+
+                if (coverDocuments.Any())
+                    filteredDocs.Insert(currentIndex, new CoverCarouselCollection(new ObservableCollection<Document>(coverDocuments)));
+            }
         }
 
         private List<Track> GetAdjacentTracksInSameSection(Document item)

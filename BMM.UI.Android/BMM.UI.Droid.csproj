@@ -113,6 +113,7 @@
     <Compile Include="Application\Adapters\DragAndDrop\IOnStartDragListener.cs" />
     <Compile Include="Application\Adapters\DragAndDrop\DragAndDropItemViewHolder.cs" />
     <Compile Include="Application\Adapters\DragAndDrop\UpAndDownDraggingTouchCallback.cs" />
+    <Compile Include="Application\Adapters\CoversCarouselRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\PodcastContextHeaderRecyclerAdapter.cs" />
     <Compile Include="Application\Bindings\ColorStateListHelper.cs" />
     <Compile Include="Application\Bindings\MvxCardBackgroundColor.cs" />
@@ -153,6 +154,8 @@
     <Compile Include="Application\Implementations\Oidc\WebkitWebViewBrowsercs.cs" />
     <Compile Include="Application\Implementations\ViewModelAwareViewPresenter.cs" />
     <Compile Include="Application\Implementations\FileStorage\AndroidFileStorage.cs" />
+    <Compile Include="Application\ItemDecorators\Enums\ItemDecorationOrientation.cs" />
+    <Compile Include="Application\ItemDecorators\SpacingItemDecorator.cs" />
     <Compile Include="Application\NewMediaPlayer\AudioFocus\AudioFocusExoPlayerDecorator.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\MediaControllerCallback.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\PlaybackStateCompatMapper.cs" />
@@ -214,6 +217,8 @@
   <ItemGroup>
     <Compile Include="Application\Adapters\TrackInfoAdapter.cs" />
     <Compile Include="AndroidMvxLog.cs" />
+    <Compile Include="Application\ViewHolders\CoverWithTitleViewHolder.cs" />
+    <Compile Include="Application\ViewHolders\CoversCarouselCollectionViewHolder.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -378,6 +383,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\cover_with_title_background.xml" />
     <AndroidResource Include="Resources\drawable\icon_friends.xml" />
     <AndroidResource Include="Resources\drawable\icon_link.xml" />
     <AndroidResource Include="Resources\drawable\spinner_small.xml">
@@ -467,6 +473,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_chapter_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_cover_with_title.xml" />
     <AndroidResource Include="Resources\layout\listitem_detail.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -475,6 +482,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_covers_carousel_collection.xml" />
     <AndroidResource Include="Resources\layout\listitem_podcast_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_podcast_newest_track.axml">
       <SubType>Designer</SubType>

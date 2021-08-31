@@ -4,6 +4,7 @@ using BMM.Core.ViewModels.Base;
 using MvvmCross.Converters;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using MvvmCross.ViewModels;
@@ -19,7 +20,7 @@ namespace BMM.Core.ValueConverters
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var items = (MvxObservableCollection<Document>)value;
+            var items = (ObservableCollection<Document>)value;
             var viewModel = (DocumentsViewModel)parameter;
 
             IList<CellWrapperViewModel<Document>> cellWrapperDocuments =
