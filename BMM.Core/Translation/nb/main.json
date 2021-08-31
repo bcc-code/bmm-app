@@ -12,7 +12,7 @@
     "Speech": "Tale",
     "Audiobook": "Lydbok",
     "Exegesis": "Tydning",
-    "Done": "Done"
+    "Done": "Ferdig"
   },
   "Streak": {
     "Message": "Din streak denne uken",
@@ -180,9 +180,9 @@
     "DownloadedContent": "Nedlastet innhold",
     "FollowedPodcasts": "Podcaster jeg følger",
     "MyTracks": "Mine spor",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Mine spillelister",
+    "SharedWithMe": "Delt med meg",
+    "ByFormat": "fra {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcaster jeg følger",
@@ -260,8 +260,8 @@
     "HeadlineSettings": "Innstillinger",
     "OptionAutoplayHeader": "Automatisk avspilling",
     "OptionAutoplayText": "Spill musikk automatisk etter dagens episode av Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHiddenHeader": "Skjul din streak",
+    "OptionStreakHiddenText": "Skjul lytte statistikken din",
     "OptionEnablePushHeader": "Aktiver push-varsling",
     "OptionPushNotifications": "Push-varslinger",
     "OptionPushNotificationsSubtitle": "Aktiver push-varsler for podcaster du følger",
@@ -292,7 +292,7 @@
     "LogoutConfirm": "Er du sikker på at du vil logge av?",
     "Logout": "Logg av",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Har du ideer til hvordan vi kan forbedre BMM? Fortell oss om det."
   },
   "StorageManagementViewModel": {
     "Title": "Plass for offline spor",
@@ -300,7 +300,7 @@
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} spor",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracksLoaded": "{0} spor lastet",
     "Download": "Last ned",
     "Shuffle": "Shuffle",
     "Play": "Spill av"
@@ -327,8 +327,8 @@
     "Private": "Privat",
     "DeletePlaylist": "Slett spilleliste",
     "EditPlaylist": "Rediger spilleliste",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "SharePlaylist": "Del spilleliste",
+    "RemovePlaylist": "Fjern spillelisten"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Rediger spilleliste",
@@ -342,17 +342,17 @@
     "KeepEditing": "Fortsett å redigere"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
+    "Title": "Del spilleliste",
     "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "ShareLink": "Dele lenke",
+    "MakePrivate": "gjør privat",
+    "SharedWithFormat": "Delt med {0} personer"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Delt spilleliste",
+    "Close": "Lukk",
+    "AddToMyPlaylist": "Legg til mine spillelister",
+    "FollowOwnTrackCollection": "Du kan ikke følge din egen spilleliste"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Spilleliste",
