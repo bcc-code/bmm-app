@@ -58,7 +58,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                     return Resource.Layout.listitem_chapter_header;
 
                 case ViewTypes.PlaylistsCollection:
-                    return Resource.Layout.listitem_playlists_collection;
+                    return Resource.Layout.listitem_covers_carousel_collection;
 
                 default:
                     return Resource.Layout.listitem_track;

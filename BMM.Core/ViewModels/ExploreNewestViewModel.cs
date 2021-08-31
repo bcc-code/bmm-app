@@ -97,9 +97,10 @@ namespace BMM.Core.ViewModels
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
             var hideStreak = await _settings.GetStreakHidden();
             HideTeasers(docs);
-            var filteredDocs = HideStreakInList( hideStreak, HideTeaserPodcastsInList(docs));
+            var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             TranslateDocs(filteredDocs);
-            return PreparePlaylistCollectionItem(filteredDocs).ToList();
+            PrepareCoversCarouselItems(filteredDocs);
+            return filteredDocs;
         }
 
         public override void RefreshInBackground()
@@ -164,21 +165,33 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        private IEnumerable<Document> PreparePlaylistCollectionItem(IList<Document> filteredDocs)
+        private void PrepareCoversCarouselItems(IList<Document> filteredDocs)
         {
-            var playlists = filteredDocs
-                .OfType<Playlist>()
+            var carouselHeaders = filteredDocs
+                .OfType<DiscoverSectionHeader>()
+                .Where(d => d.UseCoverCarousel)
                 .ToList();
 
-            if (!playlists.Any())
-                return filteredDocs;
+            foreach (var carouselHeader in carouselHeaders)
+            {
+                var coverDocuments = new List<CoverDocument>();
+                int currentIndex = filteredDocs.IndexOf(carouselHeader) + 1;
 
-            int indexOfFirstPlaylist = filteredDocs
-                .IndexOf(playlists.First());
+                if (currentIndex >= filteredDocs.Count)
+                    break;
 
-            var playlistsCollection = new PlaylistsCollection(new ObservableCollection<Document>(playlists));
-            filteredDocs.Insert(indexOfFirstPlaylist, playlistsCollection);
-            return filteredDocs.Except(playlists);
+                while (true)
+                {
+                    if (!(filteredDocs[currentIndex] is CoverDocument element))
+                        break;
+
+                    coverDocuments.Add(element);
+                    filteredDocs.RemoveAt(currentIndex);
+                }
+
+                if (coverDocuments.Any())
+                    filteredDocs.Insert(currentIndex, new CoverCarouselCollection(new ObservableCollection<Document>(coverDocuments)));
+            }
         }
 
         private List<Track> GetAdjacentTracksInSameSection(Document item)

@@ -7,7 +7,6 @@ namespace BMM.Api.Implementation.Models
     {
         public Playlist()
         {
-
             DocumentType = DocumentType.Playlist;
         }
 

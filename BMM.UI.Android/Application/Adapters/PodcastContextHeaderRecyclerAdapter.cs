@@ -27,8 +27,8 @@ namespace BMM.UI.Droid.Application.Adapters
 
             switch (viewType)
             {
-                case Resource.Layout.listitem_playlists_collection:
-                    return new PlaylistsCollectionViewHolder(view, itemBindingContext);
+                case Resource.Layout.listitem_covers_carousel_collection:
+                    return new CoversCarouselCollectionViewHolder(view, itemBindingContext);
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

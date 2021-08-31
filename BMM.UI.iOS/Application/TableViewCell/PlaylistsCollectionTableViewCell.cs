@@ -17,7 +17,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<PlaylistsCollectionTableViewCell, CellWrapperViewModel<PlaylistsCollection>>();
+                var set = this.CreateBindingSet<PlaylistsCollectionTableViewCell, CellWrapperViewModel<CoverCarouselCollection>>();
 
                 var source = new MvxCollectionViewSource(PlaylistsCollectionView, CoverWithTitleCollectionViewCell.Key);
                 PlaylistsCollectionView.RegisterNibForCell(CoverWithTitleCollectionViewCell.Nib, CoverWithTitleCollectionViewCell.Key);
@@ -25,7 +25,7 @@ namespace BMM.UI.iOS
                 set
                     .Bind(source)
                     .For(s => s.ItemsSource)
-                    .To(vm => vm.Item.Playlists)
+                    .To(vm => vm.Item.CoverDocuments)
                     .WithConversion<DocumentListValueConverter>(CellDataContext.ViewModel);
 
                  set

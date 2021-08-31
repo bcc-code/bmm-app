@@ -6,9 +6,9 @@ using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BMM.UI.Droid.Application.Adapters
 {
-    public class HorizontalPlaylistsRecyclerAdapter : MvxRecyclerAdapter
+    public class CoversCarouselRecyclerAdapter : MvxRecyclerAdapter
     {
-        public HorizontalPlaylistsRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
+        public CoversCarouselRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
         {
         }
 

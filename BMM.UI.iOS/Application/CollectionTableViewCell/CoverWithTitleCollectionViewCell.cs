@@ -20,7 +20,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<CoverWithTitleCollectionViewCell, CellWrapperViewModel<Playlist>>();
+                var set = this.CreateBindingSet<CoverWithTitleCollectionViewCell, CellWrapperViewModel<ITrackListDisplayable>>();
 
                 set.Bind(TitleLabel).To(vm => vm.Item.Title);
                 ImageView.ErrorAndLoadingPlaceholderImagePathForCover();
