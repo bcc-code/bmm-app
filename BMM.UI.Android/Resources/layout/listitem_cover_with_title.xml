@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ffimageloading.cross.MvxCachedImageView
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:local="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/CoverImageView"
         android:layout_width="160dp"
-        android:layout_height="160dp"
-        android:overScrollMode="never"
-        android:adjustViewBounds="false"
-        android:scaleType="centerCrop"
-        android:background="@drawable/cover_with_title_background"
-        local:MvxBind="
-            LoadingPlaceholderImagePath 'placeholder_cover';
-            ErrorPlaceholderImagePath 'placeholder_cover';
-            ImagePath CoverUrlToFallbackImage(Cover, 'placeholder_cover')"
-        android:src="@drawable/placeholder_cover" />
+        android:layout_height="200dp"
+        android:orientation="vertical">
+
+    <ffimageloading.cross.MvxCachedImageView
+            android:id="@+id/CoverImageView"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:overScrollMode="never"
+            android:adjustViewBounds="false"
+            android:scaleType="centerCrop"
+            android:background="@drawable/cover_with_title_background"
+            local:MvxBind="
+                LoadingPlaceholderImagePath 'placeholder_cover';
+                ErrorPlaceholderImagePath 'placeholder_cover';
+                ImagePath CoverUrlToFallbackImage(Cover, 'placeholder_cover')"
+            android:src="@drawable/placeholder_cover" />
+
+    <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:gravity="center_horizontal"
+            style="@style/Title4"
+            local:MvxBind="Text Title" />
+    
+</LinearLayout>

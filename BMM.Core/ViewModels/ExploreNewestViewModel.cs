@@ -177,11 +177,11 @@ namespace BMM.Core.ViewModels
                 var coverDocuments = new List<CoverDocument>();
                 int currentIndex = filteredDocs.IndexOf(carouselHeader) + 1;
 
-                if (currentIndex >= filteredDocs.Count)
-                    break;
-
                 while (true)
                 {
+                    if (currentIndex >= filteredDocs.Count)
+                        break;
+
                     if (!(filteredDocs[currentIndex] is CoverDocument element))
                         break;
 
