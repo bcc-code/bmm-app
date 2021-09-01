@@ -2,3 +2,5 @@ We update the BMM app as often as possible to make the app better and more relia
 
 Included in this version:
 - Share your playlists with your friends!
+- New Fra Kåre logo
+- bigger covers and more playlists on the homescreen
