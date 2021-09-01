@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Verzija uređaja: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Jeste li sigurni da želite odjaviti?",
-    "Logout": "Odjavi se"
+    "Logout": "Odjavi se",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",

@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Aygıt versiyon: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Çıkış yapmak istediğine emin misin?",
-    "Logout": "Çıkış"
+    "Logout": "Çıkış",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",

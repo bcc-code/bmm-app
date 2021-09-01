@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Устройство версия: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Сигурен ли си, че искаш да излезеш?",
-    "Logout": "Изход"
+    "Logout": "Изход",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Място за песни/речи извън линия",

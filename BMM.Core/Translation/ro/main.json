@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Versiunea dispozitivului: ",
     "LoggedInAs": "Autentificat ca",
     "LogoutConfirm": "Sunteţi sigur că doriţi să vă deconectați?",
-    "Logout": "Deconectare"
+    "Logout": "Deconectare",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",

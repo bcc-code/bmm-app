@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Version de l'appareil : ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Êtes-vous sûr de que vouloir fermer la session ?",
-    "Logout": "Deconnexion"
+    "Logout": "Deconnexion",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Emplacement des titres hors-ligne",

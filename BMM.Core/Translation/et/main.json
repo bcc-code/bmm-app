@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Seadme versioon: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Oled kindel, et soovid välja logida?",
-    "Logout": "Logi välja"
+    "Logout": "Logi välja",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",

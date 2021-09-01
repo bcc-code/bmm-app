@@ -284,13 +284,15 @@
     "OptionAppVersionHeader": "App-Version",
     "AppInfoTitle": "App-Informationen",
     "AppInfoAppVersion": "App-Version: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Hersteller:",
     "AppInfoDeviceModel": "Gerätemodell: ",
     "AppInfoDevicePlatform": "Geräteplattform: ",
     "AppInfoDeviceVersion": "Geräteversion: ",
     "LoggedInAs": "Eingeloggt als",
     "LogoutConfirm": "Bist du sicher, dass du dich abmelden möchtest?",
-    "Logout": "Ausloggen"
+    "Logout": "Ausloggen",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können."
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",

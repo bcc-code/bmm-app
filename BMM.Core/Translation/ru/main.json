@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Версия устройства: ",
     "LoggedInAs": "Signed in as",
     "LogoutConfirm": "Вы уверены, что вы хотите выйти?",
-    "Logout": "Выход"
+    "Logout": "Выход",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",

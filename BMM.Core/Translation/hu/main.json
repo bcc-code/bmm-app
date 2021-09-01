@@ -290,7 +290,9 @@
     "AppInfoDeviceVersion": "Készülék verziója:",
     "LoggedInAs": "Belépve, mint",
     "LogoutConfirm": "Biztosan ki szeretnél jelentkezni?",
-    "Logout": "Kijelentkezés"
+    "Logout": "Kijelentkezés",
+    "UserVoiceHeader": "User Voice",
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
   },
   "StorageManagementViewModel": {
     "Title": "Offline adatok tárhelye",
