@@ -51,19 +51,19 @@ namespace BMM.Api.Implementation.Models
         public bool ShowFriday => Friday != null;
 
         [JsonIgnore]
-        public string MondayColor => Monday == true ? "#B2474E" : null;
+        public string MondayColor => Monday == true ? "#DBE459" : null;
 
         [JsonIgnore]
-        public string TuesdayColor => Tuesday == true ? "#874A6C" : null;
+        public string TuesdayColor => Tuesday == true ? "#B9CC68" : null;
 
         [JsonIgnore]
-        public string WednesdayColor => Wednesday == true ? "#543B79" : null;
+        public string WednesdayColor => Wednesday == true ? "#83A174" : null;
 
         [JsonIgnore]
-        public string ThursdayColor => Thursday == true ? "#364AA8" : null;
+        public string ThursdayColor => Thursday == true ? "#4E7780" : null;
 
         [JsonIgnore]
-        public string FridayColor => Friday == true ? "#255BD0" : null;
+        public string FridayColor => Friday == true ? "#265789" : null;
 
         public string ToText()
         {
