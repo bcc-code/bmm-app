@@ -352,28 +352,11 @@ namespace BMM.Core.ViewModels.Base
             if (documents == null)
                 return;
 
-            var docList = documents.ToList();
-
-            if (!HasDocumentListChanged(docList))
-                return;
-
             MvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
             {
-                Documents.ReplaceWith(docList);
+                Documents.ReplaceWith(documents);
                 RaisePropertyChanged(() => TrackCountString);
             });
-        }
-
-        private bool HasDocumentListChanged(IList<Document> newList)
-        {
-            var allIDs = Documents
-                .Select(x => x.Id)
-                .ToList();
-
-            if (Documents.Count == newList.Count && newList.All(x => allIDs.Contains(x.Id)))
-                return false;
-
-            return true;
         }
 
         protected override async Task DocumentAction(Document item, IList<Track> list)
