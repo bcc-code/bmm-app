@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Configurations>Debug;Release;INT</Configurations>
+    <Configurations>Debug;INT;Release</Configurations>
     <LangVersion>default</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,6 +17,13 @@
     <EmbeddedResource Remove="Implementations\TrackInformation\Helpers\**" />
     <None Remove="Implementations\Notifications\Parsing\**" />
     <None Remove="Implementations\TrackInformation\Helpers\**" />
+    <EmbeddedResource Include="Translation\en\main.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Generator>BMMTranslationKeysGenerator</Generator>
+    </EmbeddedResource>
+    <Compile Update="Translation\en\Translations.designer.cs">
+      <DependentUpon>main.json</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
@@ -42,5 +49,9 @@
   <ItemGroup>
     <Compile Remove="ViewModels\PodcastSection.cs" />
   </ItemGroup>
+  
+  <Target Name="TranslationKeysGenerator" BeforeTargets="ResolveAssemblyReferences">
+    <Exec Command="..\Tools\BMM.TranslationKeysGenerator\build_project.sh '..\Tools\BMM.TranslationKeysGenerator\BMM.TranslationKeysGenerator.csproj'" ContinueOnError="WarnAndContinue" />
+  </Target>
 
 </Project>

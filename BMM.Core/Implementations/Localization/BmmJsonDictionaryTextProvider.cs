@@ -1,4 +1,5 @@
-﻿using MvvmCross;
+﻿using System;
+using MvvmCross;
 using System.Collections.Generic;
 using System.IO;
 using MvvmCross.Base;
@@ -42,7 +43,8 @@ namespace BMM.Core.Implementations.Localization
             {
                 foreach (var current in currentDictionary.Value)
                 {
-                    AddOrReplace(namespaceKey, currentDictionary.Key, current.Key, current.Value);
+                    string translationKey = $"{currentDictionary.Key}_{current.Key.Replace(".", "_")}";
+                    AddOrReplace(string.Empty, string.Empty, translationKey, current.Value);
                 }
             }
         }
