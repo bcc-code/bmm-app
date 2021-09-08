@@ -42,6 +42,6 @@
 		local:layout_anchorGravity="bottom"
         local:layout_anchor="@id/relativeLayout1"
 		local:MvxBind="Visibility Visibility(ShowFollowSharedPlaylistButton); Click AddToMyPlaylistCommand"
-		local:MvxLang="Text AddToMyPlaylist" />
+		local:MvxLang="Text SharedTrackCollectionViewModel_AddToMyPlaylist" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

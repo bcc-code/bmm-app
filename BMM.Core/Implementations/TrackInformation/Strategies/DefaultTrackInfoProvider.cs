@@ -4,13 +4,15 @@ using System.Text.RegularExpressions;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Localization.Interfaces;
 using MvvmCross.Localization;
 
 namespace BMM.Core.Implementations.TrackInformation.Strategies
 {
     public class DefaultTrackInfoProvider : ITrackInfoProvider
     {
-        private IMvxLanguageBinder GlobalTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "Global");
+        private IBMMLanguageBinder TextSource => BMMLanguageBinderLocator.TextSource;
 
         public TrackInformation GetTrackInformation(ITrackModel track, CultureInfo culture)
         {
@@ -67,7 +69,7 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
                 translationKey = TrackSubType.Song.ToString();
             }
 
-            return GlobalTextSource.GetText(translationKey);
+            return TextSource.GetText($"Global_{translationKey}");
         }
 
         public string RemoveYear(string input)

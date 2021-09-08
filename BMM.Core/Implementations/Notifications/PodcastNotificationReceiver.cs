@@ -22,8 +22,6 @@ namespace BMM.Core.Implementations.Notifications
         private readonly IAnalytics _analytics;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IGlobalMediaDownloader _mediaDownloader;
-        private readonly INotificationDisplayer _notificationDisplayer;
-        private readonly IMvxLanguageBinder _languageBinder;
         private readonly IDownloadQueue _downloadQueue;
         private readonly IMvxMessenger _messenger;
         private readonly IMvxNavigationService _navigationService;
@@ -35,15 +33,14 @@ namespace BMM.Core.Implementations.Notifications
         private TaskCompletionSource<bool> _tcs;
 
         public PodcastNotificationReceiver(
-            INotificationDisplayer notificationDisplayer,
             IGlobalMediaDownloader mediaDownloader,
             IAnalytics analytics,
             IMvxMessenger messenger,
             IExceptionHandler exceptionHandler,
             IDownloadQueue downloadQueue,
-            IMvxNavigationService navigationService, IUiDependentExecutor executor, IMvxLanguageBinder languageBinder = null)
+            IMvxNavigationService navigationService,
+            IUiDependentExecutor executor)
         {
-            _notificationDisplayer = notificationDisplayer;
             _mediaDownloader = mediaDownloader;
             _analytics = analytics;
             _exceptionHandler = exceptionHandler;
@@ -53,7 +50,6 @@ namespace BMM.Core.Implementations.Notifications
             _messenger = messenger;
 
             _tcs = new TaskCompletionSource<bool>();
-            _languageBinder = languageBinder ?? new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "DownloadManager");
         }
 
         public void Dispose()

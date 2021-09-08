@@ -10,7 +10,7 @@
 	android:padding="7dp"
 	android:gravity="center">
 	<TextView
-		local:MvxLang="Text OfflineBanner, Source=GlobalTextSource"
+		local:MvxLang="Text Global_OfflineBanner"
 		android:id="@+id/offline_banner_text"
     android:textColor="@color/white"
 		android:layout_width="wrap_content"

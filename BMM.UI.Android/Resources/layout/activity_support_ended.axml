@@ -37,7 +37,7 @@
         android:textFontWeight="700"
         android:letterSpacing="0"
         android:background="#ff76e65b"
-        local:MvxLang="Text UpdateButton"
+        local:MvxLang="Text SupportEndedViewModel_UpdateButton"
         local:MvxBind="Click ShowAppUpdatePageCommand; Visibility Visibility(ShouldShowAppUpdateButton)" />
 
 </LinearLayout>

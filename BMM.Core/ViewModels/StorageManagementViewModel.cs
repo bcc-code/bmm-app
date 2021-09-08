@@ -8,6 +8,7 @@ using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Messages;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
 
@@ -69,7 +70,7 @@ namespace BMM.Core.ViewModels
         {
             if (SelectedStorage != fileStorage)
             {
-                bool result = await _userDialog.ConfirmAsync(TextSource.GetText("RemoveAllFiles"));
+                bool result = await _userDialog.ConfirmAsync(TextSource[Translations.StorageManagementViewModel_RemoveAllFiles]);
                 if (result)
                 {
                     await _settingsStorage.SetStorageLocation(fileStorage.StorageKind == StorageKind.External);

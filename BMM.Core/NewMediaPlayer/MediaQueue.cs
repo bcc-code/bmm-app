@@ -5,9 +5,11 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Media;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.MyContent;
 using MvvmCross;
 using MvvmCross.Base;
@@ -21,15 +23,19 @@ namespace BMM.Core.NewMediaPlayer
     public class MediaQueue : IMediaQueue
     {
         private readonly MediaFileUrlSetter _mediaFileUrlSetter;
-        private readonly MvxLanguageBinder _textSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "MediaPlayer");
         private readonly IToastDisplayer _toastDisplayer;
+        private readonly IBMMLanguageBinder _bmmLanguageBinder;
 
         public IList<IMediaTrack> Tracks { get; private set; }
 
-        public MediaQueue(MediaFileUrlSetter mediaFileUrlSetter, IToastDisplayer toastDisplayer)
+        public MediaQueue(
+            MediaFileUrlSetter mediaFileUrlSetter,
+            IToastDisplayer toastDisplayer,
+            IBMMLanguageBinder bmmLanguageBinder)
         {
             _mediaFileUrlSetter = mediaFileUrlSetter;
             _toastDisplayer = toastDisplayer;
+            _bmmLanguageBinder = bmmLanguageBinder;
             Tracks = new List<IMediaTrack>();
         }
 
@@ -64,7 +70,7 @@ namespace BMM.Core.NewMediaPlayer
 
                 if (!filteredList.Any() || (currentTrack != null && currentTrack.Availability != ResourceAvailability.Local))
                 {
-                    await _toastDisplayer.ErrorAsync(_textSource.GetText("ErrorFileNotOffline"));
+                    await _toastDisplayer.ErrorAsync(_bmmLanguageBinder[Translations.MediaPlayer_ErrorFileNotOffline]);
                     return false;
                 }
             }
@@ -113,7 +119,7 @@ namespace BMM.Core.NewMediaPlayer
             {
                 if (track.Availability != ResourceAvailability.Local)
                 {
-                    await _toastDisplayer.WarnAsync(_textSource.GetText("ErrorFileNotOffline"));
+                    await _toastDisplayer.WarnAsync(_bmmLanguageBinder[Translations.MediaPlayer_ErrorFileNotOffline]);
                     return true;
                 }
             }

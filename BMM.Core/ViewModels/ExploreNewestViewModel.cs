@@ -219,10 +219,6 @@ namespace BMM.Core.ViewModels
             return tracks;
         }
 
-        private string GetText(string viewModelName, string entryKey)
-        {
-            return new MvxLanguageBinder(GlobalConstants.GeneralNamespace,
-                viewModelName).GetText(entryKey);
-        }
+        private string GetText(string viewModelName, string entryKey) => TextSource[$"{viewModelName}_{entryKey}"];
     }
 }

@@ -101,7 +101,7 @@
                   style="@style/Button_Secondary"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  app:MvxLang="Text Follow"
+                  app:MvxLang="Text PodcastViewModel_Follow"
                   app:MvxBind="Click ToggleFollowingCommand; Visibility InvertedVisibility(IsFollowing)"/>
           <Button
                   android:id="@+id/following_button" 
@@ -110,7 +110,7 @@
                   android:drawableLeft="@drawable/icon_notification"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  app:MvxLang="Text Following"
+                  app:MvxLang="Text PodcastViewModel_Following"
                   app:MvxBind="Click ToggleFollowingCommand; Visibility Visibility(IsFollowing)"/>
         </RelativeLayout>
         <RelativeLayout
@@ -124,7 +124,7 @@
                   android:drawableLeft="@drawable/icon_download"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  app:MvxLang="Text Download, Source=DocumentsTextSource"
+                  app:MvxLang="Text DocumentsViewModel_Download"
                   app:MvxBind="Click ToggleOfflineCommand; Visibility InvertedVisibility(IsOfflineAvailable)"/>
           <ProgressBar
                   android:layout_width="40dp"
@@ -161,7 +161,7 @@
                   android:drawableLeft="@drawable/icon_play_white"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  app:MvxLang="Text Shuffle, Source=DocumentsTextSource"
+                  app:MvxLang="Text DocumentsViewModel_Shuffle"
                   app:MvxBind="Click ShufflePlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
         </RelativeLayout>
         <RelativeLayout
@@ -175,7 +175,7 @@
                     android:drawableLeft="@drawable/icon_play_white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:MvxLang="Text Play, Source=DocumentsTextSource"
+                    app:MvxLang="Text DocumentsViewModel_Play"
                     app:MvxBind="Click PlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
         </RelativeLayout>
     </LinearLayout>

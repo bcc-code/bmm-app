@@ -79,7 +79,7 @@
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="2sp"
                 android:text="Show all"
-                local:MvxLang="Text ShowAll, Source=ViewModel.TextSource"
+                local:MvxLang="Text ExploreNewestViewModel_ShowAll, Source=ViewModel.TextSource"
                 local:MvxBind="Click ViewModel.AslaksenTeaserViewModel.ShowAllCommand" />
 
             <ImageView
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_large"
-                local:MvxLang="Text PlayRandom, Source=ViewModel.TextSource" />
+                local:MvxLang="Text ExploreNewestViewModel_PlayRandom, Source=ViewModel.TextSource" />
 
         </LinearLayout>
 
@@ -158,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_large"
-                local:MvxLang="Text PlayNewest, Source=ViewModel.TextSource" />
+                local:MvxLang="Text ExploreNewestViewModel_PlayNewest, Source=ViewModel.TextSource" />
 
         </LinearLayout>
 

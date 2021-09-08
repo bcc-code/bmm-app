@@ -1,4 +1,5 @@
 using System;
+using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.NewMediaPlayer;
 using Foundation;
@@ -37,7 +38,7 @@ namespace BMM.UI.iOS
             }
         }
 
-        private string TitleKey => $"{ViewModel.GetType().Name}_Title";
+        private string TitleKey => ViewModelUtils.GetVMTitleKey(ViewModel.GetType());
 
         protected static void ClearPresentationDelegate(UIPresentationController presentationController)
         {

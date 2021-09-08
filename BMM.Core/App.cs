@@ -88,6 +88,7 @@ namespace BMM.Core
             Registrations.Start(GlobalConstants.ApplicationName);
             BlobCache.ApplicationName = GlobalConstants.PackageName;
 
+            SetupLanguageBinder();
             Mvx.IoCProvider.RegisterType<IDeviceInfo, DeviceInfo>();
             Mvx.IoCProvider.RegisterTypeIfMissing<IUiDependentExecutor, NullDependentExecutor>();
             Mvx.IoCProvider.RegisterType<IFirebaseRemoteConfig, FirebaseRemoteConfig>();
@@ -139,7 +140,8 @@ namespace BMM.Core
                 () => new ExceptionHandler(
                     new ToastDisplayer(UserDialogs.Instance),
                     Mvx.IoCProvider.Resolve<ILogger>(),
-                    Mvx.IoCProvider.Resolve<IAnalytics>())
+                    Mvx.IoCProvider.Resolve<IAnalytics>(),
+                    Mvx.IoCProvider.Resolve<IBMMLanguageBinder>())
             );
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<BackgroundTaskExecutor, BackgroundTaskExecutor>();
@@ -235,7 +237,7 @@ namespace BMM.Core
                         BlobCache.InMemory.InvalidateAll();
                     },
                     MvxReference.Strong);
-            
+
             Mvx.IoCProvider.ConstructAndRegisterSingleton<BackgroundLogger, BackgroundLogger>();
 
             Mvx.IoCProvider.RegisterType<PersistedEventWriter>();
@@ -254,8 +256,6 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
 
-            SetupLanguageBinder();
-
             _assemblies = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
@@ -269,7 +269,7 @@ namespace BMM.Core
         {
             var languageBinder = new BMMLanguageBinder();
             BMMLanguageBinderLocator.SetImplementation(languageBinder);
-            Mvx.IoCProvider.RegisterSingleton(typeof(IBMMLanguageBinder), new BMMLanguageBinder());
+            Mvx.IoCProvider.RegisterSingleton(typeof(IBMMLanguageBinder), languageBinder);
         }
 
         private void RegisterDynamic(Type baseType)

@@ -12,6 +12,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
@@ -103,13 +104,13 @@ namespace BMM.Core.ViewModels
         {
             if (_availableLanguages.Count == 0)
             {
-                await _toastDisplayer.WarnAsync(TextSource.GetText("Toast.NoLanguagesAvailable"));
+                await _toastDisplayer.WarnAsync(TextSource[Translations.LanguageContentViewModel_Toast_NoLanguagesAvailable]);
                 return;
             }
 
             var actionSheet = new ActionSheetConfig()
-                .SetTitle(TextSource.GetText("Dialog.Title"))
-                .SetCancel(TextSource.GetText("Dialog.Cancel"));
+                .SetTitle(TextSource[Translations.LanguageContentViewModel_Dialog_Title])
+                .SetCancel(TextSource[Translations.LanguageContentViewModel_Dialog_Cancel]);
 
             var valueConverter = new LanguageNameValueConverter();
             foreach (var language in _availableLanguages)
@@ -149,7 +150,7 @@ namespace BMM.Core.ViewModels
             else
             {
                 var valueConverter = new LanguageNameValueConverter();
-                _userDialogs.Alert(TextSource.GetText("DeleteLanguageMessage"), TextSource.GetText("DeleteLanguageTitle", (string)valueConverter.Convert(item, null, null, null)));
+                _userDialogs.Alert(TextSource[Translations.LanguageContentViewModel_DeleteLanguageMessage], TextSource.GetText(Translations.LanguageContentViewModel_DeleteLanguageTitle, (string)valueConverter.Convert(item, null, null, null)));
             }
         }
     }

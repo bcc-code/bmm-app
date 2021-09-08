@@ -86,7 +86,7 @@
                 android:textColor="#ffffff"
                 android:lineSpacingExtra="2sp"
                 android:text="Show all"
-                local:MvxLang="Text ShowAll, Source=ViewModel.TextSource"
+                local:MvxLang="Text ExploreNewestViewModel_ShowAll, Source=ViewModel.TextSource"
                 local:MvxBind="Click ViewModel.FraKaareTeaserViewModel.ShowAllCommand" />
 
             <ImageView
@@ -142,7 +142,7 @@
             android:textSize="@dimen/text_large"
             android:textFontWeight="700"
             android:letterSpacing="0"
-            local:MvxLang="Text PlayRandom, Source=ViewModel.TextSource"
+            local:MvxLang="Text ExploreNewestViewModel_PlayRandom, Source=ViewModel.TextSource"
             local:MvxBind="Click ViewModel.FraKaareTeaserViewModel.PlayRandomCommand"
             android:drawableLeft="@drawable/icon_shuffle_podcast" />
 

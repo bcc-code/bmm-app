@@ -1,4 +1,5 @@
 ﻿using System;
+using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
@@ -34,7 +35,7 @@ namespace BMM.UI.iOS
         private static UIViewController AddTabByViewModel(this TTabbedViewController client, UISegmentedControl segmentedControll, BaseViewModel vm, int index)
         {
             segmentedControll.InsertSegment(
-                vm.TextSource.GetText("Title"),
+                vm.TextSource.GetText(ViewModelUtils.GetVMTitleKey(vm.GetType())),
                 index,
                 false
             );
