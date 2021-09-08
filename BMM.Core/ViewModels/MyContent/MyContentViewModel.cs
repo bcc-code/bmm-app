@@ -8,6 +8,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Messages;
 using BMM.Core.Models;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
@@ -18,11 +19,6 @@ namespace BMM.Core.ViewModels.MyContent
     public class MyContentViewModel : ContentBaseViewModel
     {
         private MvxSubscriptionToken _playlistStateChangedMessageSubscriptionKey;
-
-        // This TextSource is needed because the TrackCollectionsAddToViewModel reuses the fragment axml. Otherwise we would need to duplicate the translations.
-        // ReSharper disable once UnusedMember.Global
-        public IMvxLanguageBinder MyContentTextSource =>
-            new MvxLanguageBinder(GlobalConstants.GeneralNamespace, typeof(MyContentViewModel).Name);
 
         public MyContentViewModel(IOfflineTrackCollectionStorage downloader, IStorageManager storageManager)
             : base(downloader, storageManager)
@@ -64,7 +60,7 @@ namespace BMM.Core.ViewModels.MyContent
                 .Except(sharedWithMe)
                 .ToList();
 
-            var myPlaylistHeader = GetHeader("MyPlaylists");
+            var myPlaylistHeader = GetHeader(Translations.MyContentViewModel_MyPlaylists);
 
             listOfDocuments.Add(myPlaylistHeader);
             listOfDocuments.AddRange(BuildPinnedItems());
@@ -73,7 +69,7 @@ namespace BMM.Core.ViewModels.MyContent
             if (!sharedWithMe.Any())
                 return listOfDocuments;
 
-            var sharedWithMeHeader = GetHeader("SharedWithMe");
+            var sharedWithMeHeader = GetHeader(Translations.MyContentViewModel_SharedWithMe);
 
             listOfDocuments.Add(sharedWithMeHeader);
             listOfDocuments.AddRange(sharedWithMe);
@@ -86,7 +82,7 @@ namespace BMM.Core.ViewModels.MyContent
             return new ChapterHeader
             {
                 DocumentType = DocumentType.ChapterHeader,
-                Title = MyContentTextSource.GetText(titleKey)
+                Title = TextSource[titleKey]
             };
         }
 
@@ -94,15 +90,15 @@ namespace BMM.Core.ViewModels.MyContent
         {
             return new List<PinnedItem>
             {
-                new PinnedItem
+                new()
                 {
-                    Title = MyContentTextSource.GetText("DownloadedContent"),
+                    Title = TextSource[Translations.MyContentViewModel_DownloadedContent],
                     Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<DownloadedContentViewModel>()),
                     Icon = "icon_download"
                 },
-                new PinnedItem
+                new()
                 {
-                    Title = MyContentTextSource.GetText("FollowedPodcasts"),
+                    Title = TextSource[Translations.MyContentViewModel_FollowedPodcasts],
                     Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<FollowedPodcastsViewModel>()),
                     Icon = "icon_podcast"
                 }

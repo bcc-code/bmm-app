@@ -9,6 +9,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Commands;
@@ -199,7 +200,7 @@ namespace BMM.Core.ViewModels
 
         private async Task DeleteHistory()
         {
-            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource.GetText("DeleteConfirm"));
+            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource[Translations.SearchViewModel_DeleteConfirm]);
             if (result)
             {
                 await BlobCache.InvalidateObject<List<string>>(StorageKeys.History);

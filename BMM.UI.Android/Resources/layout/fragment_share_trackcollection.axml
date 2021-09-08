@@ -90,7 +90,7 @@
         local:MvxBind="
             Visibility Visibility(FollowersCountToMakePrivateButtonIsVisible(FollowersCount));
             Click MakePrivateCommand"
-        local:MvxLang="Text MakePrivate" />
+        local:MvxLang="Text ShareTrackCollectionViewModel_MakePrivate" />
     
     <Button
         android:id="@+id/ShareLinkButton"
@@ -104,7 +104,7 @@
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
         local:MvxBind="Click ShareCommand"
-        local:MvxLang="Text ShareLink" />
+        local:MvxLang="Text ShareTrackCollectionViewModel_ShareLink" />
 
     <TextView
         android:id="@+id/Note"
@@ -117,6 +117,6 @@
         local:layout_constraintBottom_toBottomOf="parent"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
-        local:MvxLang="Text ShareNote" />
+        local:MvxLang="Text ShareTrackCollectionViewModel_ShareNote" />
     
 </androidx.constraintlayout.widget.ConstraintLayout>

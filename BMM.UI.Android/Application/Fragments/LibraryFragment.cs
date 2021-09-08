@@ -4,6 +4,7 @@ using Android.Views;
 using BMM.Core.ViewModels;
 using System.Collections.Generic;
 using AndroidX.ViewPager.Widget;
+using BMM.Core.Translation;
 using Google.Android.Material.Tabs;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using MvvmCross.Platforms.Android.Views.ViewPager;
@@ -25,12 +26,12 @@ namespace BMM.UI.Droid.Application.Fragments
                 if (ViewModel.ViewModelPodcasts != null)
                 {
                     fragments.Add(new MvxViewPagerFragmentInfo(
-                        ViewModel.ViewModelPodcasts.TextSource.GetText("Title"),
+                        ViewModel.ViewModelPodcasts.TextSource[Translations.PodcastsViewModel_Title],
                         "Podcasts",
                         typeof(PodcastsFragment),
                         MvxViewModelRequest.GetDefaultRequest(typeof(PodcastsViewModel))));
                     fragments.Add(new MvxViewPagerFragmentInfo(
-                        ViewModel.ViewModelArchive.TextSource.GetText("Title"),
+                        ViewModel.ViewModelArchive.TextSource[Translations.LibraryViewModel_Title],
                         "LibraryArchive",
                         typeof(LibraryArchiveFragment),
                         MvxViewModelRequest.GetDefaultRequest(typeof(LibraryArchiveViewModel))));

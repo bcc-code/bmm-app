@@ -8,6 +8,7 @@ using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Translation;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
 using MvvmCross.ViewModels;
@@ -135,6 +136,6 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowSharedPlaylistButton => false;
 
-        public override string TrackCountString => Documents.OfType<Album>().Any() ? TextSource.GetText("PluralAlbums", Documents.OfType<Album>().Count()) : base.TrackCountString;
+        public override string TrackCountString => Documents.OfType<Album>().Any() ? TextSource.GetText(Translations.AlbumViewModel_PluralAlbums, Documents.OfType<Album>().Count()) : base.TrackCountString;
     }
 }

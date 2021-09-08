@@ -24,7 +24,7 @@
             android:layout_weight="0"
             android:layout_marginBottom="@dimen/element_margin_small" />
         <TextView
-            local:MvxLang="Text EmptyTitle"
+            local:MvxLang="Text FollowedPodcastsViewModel_EmptyTitle"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,7 +35,7 @@
             android:textSize="@dimen/text_large"
             android:gravity="center_horizontal|center_vertical" />
         <TextView
-            local:MvxLang="Text EmptySubline"
+            local:MvxLang="Text FollowedPodcastsViewModel_EmptySubline"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:id="@+id/textView2"
             android:layout_gravity="center"

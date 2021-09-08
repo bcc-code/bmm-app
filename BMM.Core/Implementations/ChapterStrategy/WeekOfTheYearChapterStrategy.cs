@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models;
 using BMM.Core.Translation;
@@ -14,16 +15,16 @@ namespace BMM.Core.Implementations.ChapterStrategy
 {
     public class WeekOfTheYearChapterStrategy : IChapterStrategy
     {
-        private readonly IBMMLanguageBinder _textSource;
         private readonly Calendar _calendar;
         private readonly DateTimeFormatInfo _currentInfo;
 
-        public WeekOfTheYearChapterStrategy(IBMMLanguageBinder bmmLanguageBinder)
+        public WeekOfTheYearChapterStrategy()
         {
-            _textSource = bmmLanguageBinder;
             _currentInfo = DateTimeFormatInfo.CurrentInfo;
             _calendar = _currentInfo.Calendar;
         }
+
+        private IBMMLanguageBinder TextSource => BMMLanguageBinderLocator.TextSource;
 
         public IList<Document> AddChapterHeaders(IList<Track> tracks, IEnumerable<Document> existingDocs)
         {
@@ -74,12 +75,12 @@ namespace BMM.Core.Implementations.ChapterStrategy
         private string GetTitleForWeekOfYearInYear(int weekOfTheYear, int year)
         {
             if (IsCurrentCalendarWeekInCurrentYear(weekOfTheYear, year))
-                return _textSource[Translations.PodcastViewModel_ThisWeek];
+                return TextSource[Translations.PodcastViewModel_ThisWeek];
 
             if (IsPreviousCalendarWeekInCurrentYear(weekOfTheYear, year))
-                return _textSource[Translations.PodcastViewModel_LastWeek];
+                return TextSource[Translations.PodcastViewModel_LastWeek];
 
-            return _textSource.GetText(Translations.PodcastViewModel_Week, weekOfTheYear);
+            return TextSource.GetText(Translations.PodcastViewModel_Week, weekOfTheYear);
         }
 
         private bool IsCurrentCalendarWeekInCurrentYear(int week, int year)

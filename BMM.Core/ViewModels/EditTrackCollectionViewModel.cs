@@ -9,6 +9,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Commands;
@@ -63,10 +64,10 @@ namespace BMM.Core.ViewModels
             if (HasChanges)
             {
                 var shouldDiscard = await _userDialogs.ConfirmAsync(
-                    TextSource.GetText("DiscardChangesMessage"),
-                    TextSource.GetText("DiscardChangesTitle"),
-                    TextSource.GetText("DiscardChanges"),
-                    TextSource.GetText("KeepEditing"));
+                    TextSource[Translations.EditTrackCollectionViewModel_DiscardChangesMessage],
+                    TextSource[Translations.EditTrackCollectionViewModel_DiscardChangesTitle],
+                    TextSource[Translations.EditTrackCollectionViewModel_DiscardChanges],
+                    TextSource[Translations.EditTrackCollectionViewModel_KeepEditing]);
                 if (!shouldDiscard)
                     return;
             }
@@ -81,7 +82,7 @@ namespace BMM.Core.ViewModels
 
             if (string.IsNullOrWhiteSpace(TrackCollectionTitle))
             {
-                await _userDialogs.AlertAsync(TextSource.GetText("EmptyName"));
+                await _userDialogs.AlertAsync(TextSource[Translations.EditTrackCollectionViewModel_EmptyName]);
                 return;
             }
 
@@ -96,7 +97,7 @@ namespace BMM.Core.ViewModels
             catch (Exception ex)
             {
                 _logger.Error(nameof(EditTrackCollectionViewModel), "Updating TrackCollection failed", ex);
-                await _userDialogs.AlertAsync(TextSource.GetText("SaveFailure"));
+                await _userDialogs.AlertAsync(TextSource[Translations.EditTrackCollectionViewModel_SaveFailure]);
             }
         }
 

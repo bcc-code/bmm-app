@@ -1,6 +1,7 @@
 ﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using Google.Android.Material.BottomNavigation;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
@@ -42,19 +43,19 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             // ToDo: use proper axml bindings instead of manual code
             var search = _navigationView.Menu.FindItem(Resource.Id.page_1);
-            search?.SetTitle(ViewModel.TextSource.GetText("Home"));
+            search?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Home]);
 
             var explore = _navigationView.Menu.FindItem(Resource.Id.page_2);
-            explore?.SetTitle(ViewModel.TextSource.GetText("Library"));
+            explore?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Library]);
 
             var myContent = _navigationView.Menu.FindItem(Resource.Id.page_3);
-            myContent?.SetTitle(ViewModel.TextSource.GetText("Search"));
+            myContent?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Search]);
 
             var library = _navigationView.Menu.FindItem(Resource.Id.page_4);
-            library?.SetTitle(ViewModel.TextSource.GetText("Favorites"));
+            library?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Favorites]);
 
             var settings = _navigationView.Menu.FindItem(Resource.Id.page_5);
-            settings?.SetTitle(ViewModel.TextSource.GetText("Profile"));
+            settings?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Profile]);
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)

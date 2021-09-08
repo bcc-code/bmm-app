@@ -3,6 +3,7 @@ using Android.Runtime;
 using Android.Views;
 using AndroidX.RecyclerView.Widget;
 using BMM.Core.Helpers;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using Google.Android.Material.AppBar;
@@ -18,8 +19,6 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.AlbumFragment")]
     public class AlbumFragment : BaseFragment<AlbumViewModel>
     {
-        MvxLanguageBinder DialogTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "UserDialogs");
-
         protected override MvxRecyclerAdapter CreateAdapter()
         {
             return new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
@@ -29,8 +28,8 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             base.OnCreateOptionsMenu(menu, inflater);
             inflater.Inflate(Resource.Menu.album, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("AddAlbumToPlaylist"));
-            menu.GetItem(1).SetTitle(DialogTextSource.GetText("Album.Share"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.AlbumViewModel_AddAlbumToPlaylist]);
+            menu.GetItem(1).SetTitle(ViewModel.TextSource[Translations.UserDialogs_Album_Share]);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

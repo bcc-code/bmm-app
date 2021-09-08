@@ -32,7 +32,7 @@
             android:textSize="17sp"
             android:layout_marginBottom="20dp"
             android:text="Private"
-            app:MvxLang="Text Private">
+            app:MvxLang="Text TrackCollectionViewModel_Private">
     </TextView>
     <LinearLayout
             android:layout_width="wrap_content"

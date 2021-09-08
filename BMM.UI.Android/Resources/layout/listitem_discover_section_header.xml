@@ -64,7 +64,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:lineHeight="20sp"
-            local:MvxLang="Text ShowAll, Source=ViewModel.TextSource" />
+            local:MvxLang="Text ExploreNewestViewModel_ShowAll, Source=ViewModel.TextSource" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

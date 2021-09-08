@@ -8,6 +8,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.LiveRadio;
 using BMM.Core.NewMediaPlayer;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
@@ -26,14 +27,12 @@ namespace BMM.Core.ViewModels
 
         public IMvxCommand PlayCommand { get; }
 
-        public IMvxLanguageBinder ExploreNewestTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(ExploreNewestViewModel));
-
         public bool ShowBmmLive => IsBroadcasting || IsBroadcastUpcoming;
 
         public bool IsBroadcasting => Track != null && (Track.RecordedAt < _liveTime.TimeOnServer);
         public bool IsBroadcastUpcoming => Track != null && !IsBroadcasting;
 
-        public string Title => (IsBroadcastUpcoming ? ExploreNewestTextSource.GetText("NextBroadcast") + " – " : "") + ExploreNewestTextSource.GetText("BmmRadio");
+        public string Title => (IsBroadcastUpcoming ? TextSource[Translations.ExploreNewestViewModel_NextBroadcast] + " – " : "") + TextSource[Translations.ExploreNewestViewModel_BmmRadio];
 
         public TimeSpan? TimeLeft => Track != null && Track.RecordedAt != DateTime.MinValue ? Track.RecordedAt - _liveTime.TimeOnServer as TimeSpan? : null;
 

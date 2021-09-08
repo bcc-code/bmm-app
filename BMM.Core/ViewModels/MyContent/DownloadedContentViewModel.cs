@@ -8,6 +8,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackCollections;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Commands;
@@ -20,11 +21,6 @@ namespace BMM.Core.ViewModels.MyContent
         private readonly IConnection _connection;
 
         public bool IsEmpty { get; private set; }
-
-        // This TextSource is needed because the TrackCollectionsAddToViewModel reuses the fragment axml. Otherwise we would need to duplicate the translations.
-        // ReSharper disable once UnusedMember.Global
-        public IMvxLanguageBinder MyContentDownloadedContentTextSource =>
-            new MvxLanguageBinder(GlobalConstants.GeneralNamespace, typeof(DownloadedContentViewModel).Name);
 
         public DownloadedContentViewModel(
             IOfflineTrackCollectionStorage downloader,
@@ -94,7 +90,7 @@ namespace BMM.Core.ViewModels.MyContent
         {
             var followedPodcastPinnedItem = new PinnedItem
             {
-                Title = MyContentDownloadedContentTextSource.GetText("FollowedPodcasts"),
+                Title = TextSource[Translations.DownloadedContentViewModel_FollowedPodcasts],
                 Action = new MvxAsyncCommand<PinnedItem>(execute => _navigationService.Navigate<DownloadedFollowedPodcastsViewModel>()),
                 Icon = "icon_podcast"
             };

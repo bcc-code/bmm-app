@@ -6,8 +6,10 @@ using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Translation;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Localization;
@@ -17,18 +19,20 @@ namespace BMM.Core.Implementations.Exceptions
     public class ExceptionHandler : IExceptionHandler
     {
         private readonly IToastDisplayer _toastDisplayer;
-        private readonly IMvxLanguageBinder _textSource;
-        private readonly IMvxLanguageBinder _globalTextSource;
         private readonly ILogger _logger;
         private readonly IAnalytics _analytics;
+        private readonly IBMMLanguageBinder _bmmLanguageBinder;
 
-        public ExceptionHandler(IToastDisplayer toastDisplayer, ILogger logger, IAnalytics analytics)
+        public ExceptionHandler(
+            IToastDisplayer toastDisplayer,
+            ILogger logger,
+            IAnalytics analytics,
+            IBMMLanguageBinder bmmLanguageBinder)
         {
             _toastDisplayer = toastDisplayer;
             _logger = logger;
             _analytics = analytics;
-            _textSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "RequestExceptionHandler");
-            _globalTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "Global");
+            _bmmLanguageBinder = bmmLanguageBinder;
         }
 
         public void FireAndForget(Func<Task> action)
@@ -102,12 +106,12 @@ namespace BMM.Core.Implementations.Exceptions
             if (ex is InternetProblemsException)
             {
                 _logger.Debug("Internet issues", ex.Message);
-                toastDisplayer?.Error(_globalTextSource.GetText("InternetConnectionOffline"));
+                toastDisplayer?.Error(_bmmLanguageBinder[Translations.Global_InternetConnectionOffline]);
             }
             else if (ex is WebException)
             {
                 _logger.Debug("Request failed", ex.Message);
-                toastDisplayer?.Error(_textSource.GetText("RequestFailedMessage", ex.Message));
+                toastDisplayer?.Error(_bmmLanguageBinder.GetText(Translations.RequestExceptionHandler_RequestFailedMessage, ex.Message));
             }
             else if (ex is UnauthorizedException unauthorizedException)
             {
@@ -116,7 +120,7 @@ namespace BMM.Core.Implementations.Exceptions
             else
             {
                 _logger.Error("Unexpected Error", ex.Message, ex);
-                toastDisplayer?.Error(_globalTextSource.GetText("UnexpectedError"));
+                toastDisplayer?.Error(_bmmLanguageBinder[Translations.Global_UnexpectedError]);
             }
         }
 

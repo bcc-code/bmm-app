@@ -42,7 +42,7 @@
                 android:maxLines="2"
                 android:textSize="@dimen/text_large"
                 android:text="Now playing"
-                local:MvxLang="Text Title"
+                local:MvxLang="Text PlayerViewModel_Title"
                 android:textColor="#ffffff" />
 
             <TextView

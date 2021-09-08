@@ -14,7 +14,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
 
         protected override string Convert(string value, Type targetType, object parameter, CultureInfo culture)
         {
-            return BMMLanguageBinder.GetText(value);
+            return BMMLanguageBinder.GetText($"Streak_{value}");
         }
     }
 }

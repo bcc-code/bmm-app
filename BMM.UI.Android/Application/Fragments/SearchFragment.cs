@@ -2,6 +2,7 @@
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.DroidX.RecyclerView;
@@ -27,7 +28,7 @@ namespace BMM.UI.Droid.Application.Fragments
             var searchMenu = menu.FindItem(Resource.Id.action_search);
 
             _searchView = searchMenu.ActionView as SearchView;
-            _searchView.QueryHint = ViewModel.TextSource.GetText("SearchHint");
+            _searchView.QueryHint = ViewModel.TextSource[Translations.SearchViewModel_SearchHint];
 
             //Workaround for tablets to show full screen
             _searchView.MaxWidth = 100000;

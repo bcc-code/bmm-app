@@ -1,5 +1,6 @@
 ﻿using Android.Runtime;
 using Android.Views;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using MvvmCross.DroidX.RecyclerView;
@@ -21,7 +22,7 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             base.OnCreateOptionsMenu(menu, inflater);
             inflater.Inflate(Resource.Menu.podcast, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("ManageDownloads"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.PodcastViewModel_ManageDownloads]);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

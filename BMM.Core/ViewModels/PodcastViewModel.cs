@@ -18,6 +18,7 @@ using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.MyContent;
 using BMM.Core.ViewModels.Parameters;
 using MvvmCross;
@@ -81,7 +82,7 @@ namespace BMM.Core.ViewModels
         {
             get
             {
-                var text = IsFollowing ? TextSource.GetText("Following") : TextSource.GetText("Follow");
+                var text = IsFollowing ? TextSource[Translations.PodcastViewModel_Following] : TextSource[Translations.PodcastViewModel_Follow];
                 return text.ToUpper();
             }
         }
@@ -249,7 +250,7 @@ namespace BMM.Core.ViewModels
                 await RaisePropertyChanged(() => IsFollowing);
                 await RaisePropertyChanged(() => FollowButtonText);
 
-                await _userDialogs.AlertAsync(TextSource.GetText("ToggleFollowOfflineError"));
+                await _userDialogs.AlertAsync(TextSource[Translations.PodcastViewModel_ToggleFollowOfflineError]);
                 return;
             }
 
@@ -269,7 +270,7 @@ namespace BMM.Core.ViewModels
             }
             else
             {
-                string lang = TextSource.GetText("UnfollowConfirm", new List<string> {Podcast.Title});
+                string lang = TextSource.GetText(Translations.PodcastViewModel_UnfollowConfirm, new List<string> {Podcast.Title});
                 var userConfirmed = await _userDialogs.ConfirmAsync(lang);
                 if (!userConfirmed)
                 {
@@ -313,7 +314,7 @@ namespace BMM.Core.ViewModels
 
             if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
             {
-                await _toastDisplayer.WarnAsync(TextSource.GetText("MobileDownloadDisabled"));
+                await _toastDisplayer.WarnAsync(TextSource[Translations.PodcastViewModel_MobileDownloadDisabled]);
             }
         }
     }
