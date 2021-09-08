@@ -11,6 +11,7 @@ using System.Linq;
 using AndroidX.AppCompat.Widget;
 using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;
+using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Extensions;
@@ -272,13 +273,13 @@ namespace BMM.UI.Droid.Application.Fragments
             }
         }
 
-        protected override string Title => ViewModel.TextSource.GetText("Title");
+        protected override string Title => ViewModel.TextSource[ViewModelUtils.GetVMTitleKey(ViewModel.GetType())];
 
         private void RegisterViewModelPropertyChangedListener()
         {
             ViewModel.PropertyChanged += (sender, e) =>
             {
-                if (e.PropertyName == "TextSource")
+                if (e.PropertyName == nameof(ViewModel.TextSource))
                 {
                     if (ParentActivity != null)
                     {

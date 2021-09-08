@@ -13,8 +13,10 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
 using BMM.Core.Implementations.DeepLinking.Parameters;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
@@ -37,9 +39,7 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly ILogger _logger;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IUserAuthChecker _authChecker;
-
-        private readonly IMvxLanguageBinder _textSource;
-        private readonly IMvxLanguageBinder _globalTextSource;
+        private readonly IBMMLanguageBinder _bmmLanguageBinder;
 
         private readonly IList<IDeepLinkParser> _links;
 
@@ -51,7 +51,8 @@ namespace BMM.Core.Implementations.DeepLinking
             IUserDialogs userDialogs,
             ILogger logger,
             IExceptionHandler exceptionHandler,
-            IUserAuthChecker authChecker
+            IUserAuthChecker authChecker,
+            IBMMLanguageBinder bmmLanguageBinder
         )
         {
             _client = client;
@@ -62,8 +63,7 @@ namespace BMM.Core.Implementations.DeepLinking
             _logger = logger;
             _exceptionHandler = exceptionHandler;
             _authChecker = authChecker;
-            _textSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "DeepLinkHandler");
-            _globalTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "Global");
+            _bmmLanguageBinder = bmmLanguageBinder;
 
             _links = new List<IDeepLinkParser>
             {
@@ -168,11 +168,11 @@ namespace BMM.Core.Implementations.DeepLinking
                         }
                         catch (InternetProblemsException)
                         {
-                            await ShowErrorMessage(uri, "InternetConnectionOffline");
+                            await ShowErrorMessage(uri, Translations.Global_InternetConnectionOffline);
                         }
                         catch (NotFoundException)
                         {
-                            await ShowErrorMessage(uri, "ItemNotFound");
+                            await ShowErrorMessage(uri, Translations.Global_ItemNotFound);
                         }
                         catch (Exception ex)
                         {
@@ -194,11 +194,11 @@ namespace BMM.Core.Implementations.DeepLinking
 
         private Task ShowErrorMessage(Uri uri, string additionalGlobalTextSourceId = null)
         {
-            var errorMessage = _textSource.GetText("ErrorMessage", uri.AbsoluteUri);
-            var errorTitle = _textSource.GetText("ErrorTitle");
+            var errorMessage = _bmmLanguageBinder.GetText(Translations.DeepLinkHandler_ErrorMessage, uri.AbsoluteUri);
+            var errorTitle = _bmmLanguageBinder[Translations.DeepLinkHandler_ErrorTitle];
             if (additionalGlobalTextSourceId != null)
             {
-                errorMessage = errorMessage + "\n" + _globalTextSource.GetText(additionalGlobalTextSourceId);
+                errorMessage = errorMessage + "\n" + _bmmLanguageBinder[additionalGlobalTextSourceId];
             }
 
             return _userDialogs.AlertAsync(errorMessage, errorTitle);

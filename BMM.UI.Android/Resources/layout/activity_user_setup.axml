@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_large"
                 android:textSize="@dimen/text_large"
-                local:MvxLang="Text SettingUpAccountMessage"
+                local:MvxLang="Text UserSetupViewModel_SettingUpAccountMessage"
                 android:textColor="#ff76e65b"
                 android:gravity="center"/>
 

@@ -36,14 +36,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_large"
             android:textSize="@dimen/text_large"
-            local:MvxLang="Text LoginInfo, Source=OidcTextSource"
+            local:MvxLang="Text LoginViewModel_LoginInfo"
             android:textColor="#ff76e65b"
             android:gravity="center"
             local:MvxBind="Visibility Visibility(!IsLoading)" />
 
         <Button
             android:id="@+id/BtnLogin"
-            local:MvxLang="Text BtnLogin.Text, Source=OidcTextSource"
+            local:MvxLang="Text LoginViewModel_BtnLogin_Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             local:MvxBind="Click LoginCommand; Visibility Visibility(!IsLoading)"

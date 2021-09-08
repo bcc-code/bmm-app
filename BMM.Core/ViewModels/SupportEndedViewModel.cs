@@ -4,6 +4,7 @@ using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
 
@@ -44,9 +45,9 @@ namespace BMM.Core.ViewModels
             switch (_supportEndedInfo)
             {
                 case SupportEndedMessage.DeviceSupportEnded:
-                    return TextSource.GetText("DeviceSupportEnded", _deviceInfo.Platform, ChoseCurrentPlatformMinimumRequiredDeviceVersion());
+                    return TextSource.GetText(Translations.SupportEndedViewModel_DeviceSupportEnded, _deviceInfo.Platform, ChoseCurrentPlatformMinimumRequiredDeviceVersion());
                 case SupportEndedMessage.ApplicationVersionSupportEnded:
-                    return TextSource.GetText("AppSupportEnded");
+                    return TextSource[Translations.SupportEndedViewModel_AppSupportEnded];
                 default:
                     throw new Exception("Couldn't get text for Support Ended Info.");
             }

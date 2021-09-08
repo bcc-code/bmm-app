@@ -7,10 +7,12 @@ using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Notifications.Data;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
@@ -25,19 +27,25 @@ namespace BMM.Core.Implementations.PlayObserver
         private readonly IBlobCache _localStorage;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IUriOpener _uriOpener;
-
-        public IMvxLanguageBinder TextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "AslaksenNotification");
+        private readonly IBMMLanguageBinder _bmmLanguageBinder;
 
         private HashSet<int> _notifiedTracksIds;
         private ITrackModel _currentlyPlayingAslaksenTrack;
         private DateTime? _lastNotification;
 
-        public AslaksenNotification(IMvxMessenger messenger, INotificationDisplayer notificationDisplayer, IBlobCache localStorage, IExceptionHandler exceptionHandler, IUriOpener uriOpener)
+        public AslaksenNotification(
+            IMvxMessenger messenger,
+            INotificationDisplayer notificationDisplayer,
+            IBlobCache localStorage,
+            IExceptionHandler exceptionHandler,
+            IUriOpener uriOpener,
+            IBMMLanguageBinder bmmLanguageBinder)
         {
             _notificationDisplayer = notificationDisplayer;
             _localStorage = localStorage;
             _exceptionHandler = exceptionHandler;
             _uriOpener = uriOpener;
+            _bmmLanguageBinder = bmmLanguageBinder;
             _trackCompletedToken = messenger.Subscribe<TrackCompletedMessage>(TrackCompleted);
             _trackChangedToken = messenger.Subscribe<CurrentTrackChangedMessage>(TrackChanged);
         }
@@ -69,8 +77,11 @@ namespace BMM.Core.Implementations.PlayObserver
                 var url = "https://aslaksen.bcc.no/quiz/";
                 _notificationDisplayer.DisplayNotificationOrPopup(new WordOfFaithNotification
                 {
-                    Title = TextSource.GetText("Title"), Message = TextSource.GetText("Message"), Url = url, YesText = TextSource.GetText("ButtonYes"),
-                    CancelText = TextSource.GetText("ButtonCancel")
+                    Title = _bmmLanguageBinder[Translations.AslaksenNotification_Title],
+                    Message = _bmmLanguageBinder[Translations.AslaksenNotification_Message],
+                    Url = url,
+                    YesText = _bmmLanguageBinder[Translations.AslaksenNotification_ButtonYes],
+                    CancelText = _bmmLanguageBinder[Translations.AslaksenNotification_ButtonCancel]
                 });
                 await StoreLastNotificationTime(DateTime.Now); // We don't take norwegian timezone but the timezone of the user
             }

@@ -1,6 +1,7 @@
 ﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using MvvmCross.Binding.BindingContext;
@@ -59,15 +60,15 @@ namespace BMM.UI.Droid.Application.Fragments
         private void CreateMenuIfPrivate(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.trackcollection, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("SharePlaylist"));
-            menu.GetItem(1).SetTitle(ViewModel.TextSource.GetText("DeletePlaylist"));
-            menu.GetItem(2).SetTitle(ViewModel.TextSource.GetText("EditPlaylist"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_SharePlaylist]);
+            menu.GetItem(1).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_DeletePlaylist]);
+            menu.GetItem(2).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_EditPlaylist]);
         }
 
         private void CreateMenuIfShared(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.trackcollection_shared, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("RemovePlaylist"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_RemovePlaylist]);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)

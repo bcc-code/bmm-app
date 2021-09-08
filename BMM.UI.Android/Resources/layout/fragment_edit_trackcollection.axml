@@ -27,7 +27,7 @@
                     android:layout_margin="16dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    local:MvxLang="Hint RenameLabel">
+                    local:MvxLang="Hint EditTrackCollectionViewModel_RenameLabel">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/title_text_field"

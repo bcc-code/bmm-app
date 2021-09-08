@@ -13,6 +13,7 @@ using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Translation;
 
 namespace BMM.Core.ViewModels
 {
@@ -105,7 +106,7 @@ namespace BMM.Core.ViewModels
 
         private int QueueLength { get; set; }
 
-        public string PlayingText => QueueLength > 0 ? TextSource.GetText("PlayingCount", CurrentIndex + 1, QueueLength) : string.Empty;
+        public string PlayingText => QueueLength > 0 ? TextSource.GetText(Translations.PlayerViewModel_PlayingCount, CurrentIndex + 1, QueueLength) : string.Empty;
 
         public PlayerViewModel(IMediaPlayer mediaPlayer, IUriOpener uriOpener, IExceptionHandler exceptionHandler) : base(mediaPlayer)
         {

@@ -3,7 +3,10 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Localization;
 
@@ -11,7 +14,9 @@ namespace BMM.Core.Implementations.ChapterStrategy
 {
     public class AslaksenTagChapterStrategy : IChapterStrategy
     {
-        private readonly MvxLanguageBinder _textSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(PodcastViewModel));
+        private const string AslaksenHeaderTranslationBase = "PodcastViewModel_AslaksenTheme";
+
+        private IBMMLanguageBinder TextSource => BMMLanguageBinderLocator.TextSource;
 
         public IList<Document> AddChapterHeaders(IList<Track> tracks, IEnumerable<Document> existingDocs)
         {
@@ -30,7 +35,7 @@ namespace BMM.Core.Implementations.ChapterStrategy
                     var chapter = new ChapterHeader
                     {
                         Id = int.Parse(match.Value),
-                        Title = _textSource.GetText("AslaksenTheme" + match.Value)
+                        Title = TextSource.GetText($"{AslaksenHeaderTranslationBase}{match.Value}")
                     };
                     tracksForTag.Insert(0, chapter);
                 }

@@ -6,6 +6,7 @@ using Android.Widget;
 using AndroidX.Activity;
 using AndroidX.Core.Widget;
 using AndroidX.RecyclerView.Widget;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Adapters.DragAndDrop;
@@ -64,7 +65,7 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             base.OnCreateOptionsMenu(menu, inflater);
             inflater.Inflate(Resource.Menu.edit_trackcollection, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource.GetText("MenuSave"));
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.EditTrackCollectionViewModel_MenuSave]);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
