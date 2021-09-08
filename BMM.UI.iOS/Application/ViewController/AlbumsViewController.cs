@@ -9,7 +9,7 @@ namespace BMM.UI.iOS
     public partial class AlbumsViewController : BaseViewController<AlbumsViewModel>
     {
         public AlbumsViewController()
-            : base("AlbumsViewController")
+            : base(nameof(AlbumsViewController))
         {
         }
 

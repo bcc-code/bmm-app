@@ -2,6 +2,7 @@ using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using System;
 using System.ComponentModel;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ValueConverters.TrackCollections;
 using MvvmCross.Localization;
@@ -67,7 +68,7 @@ namespace BMM.UI.iOS
             DownloadButton.DownloadedImage = new UIImage("icon_tick");
             DownloadButton.NormalStateImage = new UIImage("icon_download");
             set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
-            set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AvailableOfflineDownload");
+            set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_AvailableOfflineDownload);
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
@@ -78,11 +79,11 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
 
-            set.Bind(OfflineBannerLabel).To(vm => vm.GlobalTextSource).WithConversion<MvxLanguageConverter>("OfflineBanner");
+            set.Bind(OfflineBannerLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.Global_OfflineBanner);
             HideOfflineBannerIfNecessary();
 
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShufflePlay");
+            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_ShufflePlay);
             set.Bind(ShuffleButton).For(v => v.Hidden).To(vm => vm.IsEmpty);
 
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);

@@ -7,6 +7,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Translation;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
 using MvvmCross.Localization;
@@ -46,11 +47,20 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual int CurrentLimit { get; set; } = ApiConstants.LoadMoreSize;
 
-        public override string TrackCountString => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel))
-            .GetText(IsFullyLoaded ? "PluralTracks" : "PluralTracksLoaded", Documents.Count);
+        public override string TrackCountString
+        {
+            get
+            {
+                string translationKeys = IsFullyLoaded
+                    ? Translations.DocumentsViewModel_PluralTracks
+                    : Translations.DocumentsViewModel_PluralTracksLoaded;
 
-        protected LoadMoreDocumentsViewModel(IDocumentFilter documentFilter = null, IMvxLanguageBinder languageBinder = null)
-            : base(documentFilter, languageBinder)
+                return TextSource.GetText(translationKeys, Documents.Count);
+            }
+        }
+
+        protected LoadMoreDocumentsViewModel(IDocumentFilter documentFilter = null)
+            : base(documentFilter)
         {
             IsFullyLoaded = false;
 

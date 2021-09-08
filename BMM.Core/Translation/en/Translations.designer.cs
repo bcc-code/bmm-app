@@ -1,5 +1,5 @@
 
-namespace BMM.Core.Translation.en
+namespace BMM.Core.Translation
 {
 	public static class Translations
 	{

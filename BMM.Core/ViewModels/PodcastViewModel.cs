@@ -108,7 +108,7 @@ namespace BMM.Core.ViewModels
             IListenedTracksStorage listenedTracksStorage,
             INetworkSettings networkSettings,
             IMvxLanguageBinder languageBinder = null)
-            : base(downloadedOnlyFilter, languageBinder)
+            : base(downloadedOnlyFilter)
         {
             _podcastDownloader = podcastDownloader;
             _connection = connection;

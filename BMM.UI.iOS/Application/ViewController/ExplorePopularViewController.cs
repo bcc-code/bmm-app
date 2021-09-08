@@ -9,7 +9,7 @@ namespace BMM.UI.iOS
     public partial class ExplorePopularViewController : BaseViewController<ExplorePopularViewModel>
     {
         public ExplorePopularViewController()
-            : base("ExplorePopularViewController")
+            : base(nameof(ExplorePopularViewController))
         {
         }
 

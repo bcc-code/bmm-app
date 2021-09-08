@@ -1,5 +1,6 @@
 using MvvmCross.Binding.BindingContext;
 using System;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels.MyContent;
 using MvvmCross.Localization;
@@ -30,8 +31,8 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<MyTracksViewController, MyTracksViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.MyCollection).WithConversion<TrackCollectionNameConverter>();
 
-            set.Bind(OfflineAvailableTitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AvailableOffline");
-            set.Bind(OfflineAvailableSubtitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AvailableOfflineDownload");
+            set.Bind(OfflineAvailableTitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_AvailableOffline);
+            set.Bind(OfflineAvailableSubtitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_AvailableOfflineDownload);
             set.Bind(OfflineAvailableSwitch).To(vm => vm.IsOfflineAvailable).OneWay();
             set.Bind(OfflineAvailableButton).To(vm => vm.ToggleOfflineCommand);
 
@@ -51,15 +52,15 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
 
-            set.Bind(OfflineBannerLabel).To(vm => vm.GlobalTextSource).WithConversion<MvxLanguageConverter>("OfflineBanner");
+            set.Bind(OfflineBannerLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.Global_OfflineBanner);
             HideOfflineBannerIfNecessary();
 
             set.Bind(EmptyStateView).For(s => s.Hidden).To(vm => vm.IsEmpty).WithConversion<InvertedVisibilityConverter>();
-            set.Bind(PlaylistEmptyHeadlineLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("EmptyTitle");
-            set.Bind(PlaylistEmptyTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("EmptySubline");
+            set.Bind(PlaylistEmptyHeadlineLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_EmptyTitle);
+            set.Bind(PlaylistEmptyTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_EmptySubline);
 
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShufflePlay");
+            set.Bind(ShuffleButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_ShufflePlay);
 
             // Fix the height of the table-header manually by watching the trigger
             ((MyTracksViewModel)DataContext).PropertyChanged += (sender, e) => { if (e.PropertyName == "IsDownloading") UpdateTableHeaderHeight(); };

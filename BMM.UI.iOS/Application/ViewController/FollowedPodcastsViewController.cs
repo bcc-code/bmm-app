@@ -1,4 +1,5 @@
 ﻿using System;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels.MyContent;
 using Foundation;
@@ -11,7 +12,7 @@ namespace BMM.UI.iOS
 {
     public partial class FollowedPodcastsViewController : BaseViewController<FollowedPodcastsViewModel>
     {
-        public FollowedPodcastsViewController() : base("FollowedPodcastsViewController")
+        public FollowedPodcastsViewController() : base(nameof(FollowedPodcastsViewController))
         {
         }
 
@@ -35,8 +36,8 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.DocumentSelectedCommand).WithConversion(new DocumentSelectedCommandValueConverter());
 
             set.Bind(EmptyStateView).For(s => s.Hidden).To(vm => vm.ShowEmptyFollowedPodcasts).WithConversion<InvertedVisibilityConverter>();
-            set.Bind(PlaylistEmptyHeadlineLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("EmptyTitle");
-            set.Bind(PlaylistEmptyTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("EmptySubline");
+            set.Bind(PlaylistEmptyHeadlineLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.FollowedPodcastsViewModel_EmptyTitle);
+            set.Bind(PlaylistEmptyTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.FollowedPodcastsViewModel_EmptySubline);
 
             set.Apply();
 

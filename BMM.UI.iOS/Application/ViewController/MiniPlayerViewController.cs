@@ -11,7 +11,7 @@ namespace BMM.UI.iOS
 {
     public partial class MiniPlayerViewController : BaseViewController<MiniPlayerViewModel>
     {
-        public MiniPlayerViewController() : base("MiniPlayerViewController")
+        public MiniPlayerViewController() : base(nameof(MiniPlayerViewController))
         { }
 
         public override System.Type ParentViewControllerType => typeof(ContainmentViewController);

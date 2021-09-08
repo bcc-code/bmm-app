@@ -39,7 +39,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task SelectSection_ShouldNotCallOpenUriWhenThereIsNoExternalRelation()
         {
             // Arrange
-            var trackInfoViewModel = new TrackInfoViewModel(_uriOpenerMock.Object, ExceptionHandler.Object, _deepLinkHandlerMock.Object, TextResource.Object);
+            var trackInfoViewModel = new TrackInfoViewModel(_uriOpenerMock.Object, ExceptionHandler.Object, _deepLinkHandlerMock.Object);
             trackInfoViewModel.Prepare(Track);
             await trackInfoViewModel.Initialize();
             var section = trackInfoViewModel.BuildSections().FirstOrDefault();
@@ -55,7 +55,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task SelectSection_ShouldCallOpenUriWhenThereITrackContainExternalRelationInformation()
         {
             // Arrange
-            var trackInfoViewModel = new TrackInfoViewModel(_uriOpenerMock.Object, ExceptionHandler.Object, _deepLinkHandlerMock.Object, TextResource.Object);
+            var trackInfoViewModel = new TrackInfoViewModel(_uriOpenerMock.Object, ExceptionHandler.Object, _deepLinkHandlerMock.Object);
             trackInfoViewModel.Prepare(TrackWithExternalRelations);
             await trackInfoViewModel.Initialize();
             var section = trackInfoViewModel.BuildSections().FirstOrDefault();

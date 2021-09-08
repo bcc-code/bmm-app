@@ -1,4 +1,5 @@
 using System;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels.MyContent;
 using BMM.UI.iOS.Constants;
@@ -9,7 +10,7 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    [MvxTabPresentation(TabName = "Favorites", TabIconName = "icon_favorites", TabSelectedIconName = "icon_favorites_active", WrapInNavigationController = false)]
+    [MvxTabPresentation(TabName = Translations.MenuViewModel_Favorites, TabIconName = "icon_favorites", TabSelectedIconName = "icon_favorites_active", WrapInNavigationController = false)]
     public partial class MyContentViewController : BaseViewController<MyContentViewModel>, IHaveLargeTitle
     {
         public double? InitialLargeTitleHeight { get; set; }

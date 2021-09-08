@@ -1,4 +1,5 @@
 ﻿using System;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
@@ -6,14 +7,14 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    [MvxTabPresentation(TabName = "Library", TabIconName = "icon_library", TabSelectedIconName = "icon_library_active", WrapInNavigationController = false)]
+    [MvxTabPresentation(TabName = Translations.MenuViewModel_Library, TabIconName = "icon_library", TabSelectedIconName = "icon_library_active", WrapInNavigationController = false)]
     public partial class LibraryViewController : BaseViewController<LibraryViewModel>, TTabbedViewController, IHaveLargeTitle
     {
         public double? InitialLargeTitleHeight { get; set; }
 
         public UIViewController[] TabViewControllers { get; private set; }
 
-        public LibraryViewController() : base("LibraryViewController")
+        public LibraryViewController() : base(nameof(LibraryViewController))
         { }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);

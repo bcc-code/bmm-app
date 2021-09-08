@@ -1,16 +1,18 @@
 using System;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
+using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 
 namespace BMM.UI.iOS
 {
-    [MvxTabPresentation(TabName = "Home", TabIconName = "icon_home", TabSelectedIconName = "icon_home_active", WrapInNavigationController = false)]
+    [MvxTabPresentation(TabName = Translations.MenuViewModel_Home, TabIconName = "icon_home", TabSelectedIconName = "icon_home_active", WrapInNavigationController = false)]
     public partial class ExploreNewestViewController : BaseViewController<ExploreNewestViewModel>, IHaveLargeTitle
     {
         public double? InitialLargeTitleHeight { get; set; }
@@ -37,21 +39,19 @@ namespace BMM.UI.iOS
             set.Bind(podcastSource).To(vm => vm.FraKaareTeaserViewModel.Documents).WithConversion<DocumentListValueConverter>(ViewModel.FraKaareTeaserViewModel);
             set.Bind(podcastSource).For(s => s.SelectionChangedCommand).To(vm => vm.FraKaareTeaserViewModel.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
             set.Bind(PodcastShowAllButton).To(vm => vm.FraKaareTeaserViewModel.ShowAllCommand);
-            set.Bind(PodcastShowAllButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShowAll");
-            set.Bind(PodcastTitleLabel).For(l => l.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("FraKaareHeader");
-            set.Bind(FraKaarePlayRandomButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("PlayRandom");;
+            set.Bind(PodcastShowAllButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_ShowAll);
+            set.Bind(PodcastTitleLabel).For(l => l.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_FraKaareHeader);
+            set.Bind(FraKaarePlayRandomButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_PlayRandom);;
             set.Bind(FraKaarePlayRandomButton).To(vm => vm.FraKaareTeaserViewModel.PlayRandomCommand);
 
             set.Bind(AslaksenTeaser).For(t => t.Hidden).To(vm => vm.AslaksenTeaserViewModel.ShowTeaser).WithConversion<InvertedVisibilityConverter>();
             set.Bind(AslaksenShowAllButton).To(vm => vm.AslaksenTeaserViewModel.ShowAllCommand);
-            set.Bind(AslaksenShowAllButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShowAll");
-            set.Bind(AslaksenTitle).For(l => l.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AslaksenTeaserHeader");
+            set.Bind(AslaksenShowAllButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_ShowAll);
+            set.Bind(AslaksenTitle).For(l => l.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_AslaksenTeaserHeader);
             set.Bind(AslaksenPlayRandomButton).To(vm => vm.AslaksenTeaserViewModel.PlayRandomCommand);
-            set.Bind(AslaksenPlayRandomButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("PlayRandom");
+            set.Bind(AslaksenPlayRandomButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_PlayRandom);
             set.Bind(AslaksenPlayNewestButton).To(vm => vm.AslaksenTeaserViewModel.PlayNewestCommand);
-            set.Bind(AslaksenPlayNewestButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("PlayNewest");
-
-            set.Bind(ListHeaderLabel).For(l => l.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("RecentTracks");
+            set.Bind(AslaksenPlayNewestButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_PlayNewest);
 
             set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();

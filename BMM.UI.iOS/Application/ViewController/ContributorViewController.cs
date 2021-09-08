@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
@@ -38,7 +39,7 @@ namespace BMM.UI.iOS
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
             set.Bind(NameLabel).To(vm => vm.Contributor.Name);
             set.Bind(PlayButton).To(vm => vm.PlayCommand);
-            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Play");
+            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.DocumentsViewModel_Play);
 
             set.Apply();
 

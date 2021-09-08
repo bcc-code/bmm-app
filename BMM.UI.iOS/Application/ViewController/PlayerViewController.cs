@@ -1,5 +1,6 @@
 using System;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
@@ -21,7 +22,7 @@ namespace BMM.UI.iOS
         private UIViewVisibilityController _trackReferenceButtonVisibilityController;
 
         public PlayerViewController()
-            : base("PlayerViewController")
+            : base(nameof(PlayerViewController))
         { }
 
         public override Type ParentViewControllerType => typeof(UINavigationController);
@@ -86,7 +87,7 @@ namespace BMM.UI.iOS
 
             set.Bind(TrackTitleLabel).To(vm => vm.CurrentTrack).WithConversion<TrackToTitleValueConverter>(ViewModel);
             set.Bind(TrackSubtitleLabel).To(vm => vm.CurrentTrack).WithConversion<TrackToSubtitleUppercaseConverter>(ViewModel);
-            set.Bind(TitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("Title");
+            set.Bind(TitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.PlayerViewModel_Title);
             set.Bind(subtitleLabel).To(vm => vm.PlayingText);
 
             set.Bind(BtvLinkButton).For(v => v.TitleLabel).To(vm => vm.BtvLinkTitle);

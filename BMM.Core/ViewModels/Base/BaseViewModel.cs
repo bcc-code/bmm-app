@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Transactions;
 using Acr.UserDialogs;
 using BMM.Api;
 using BMM.Api.Abstraction;
@@ -12,15 +13,18 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
 using MvvmCross.Commands;
+using MvvmCross.IoC;
 using MvvmCross.Localization;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
@@ -44,20 +48,6 @@ namespace BMM.Core.ViewModels.Base
 
         protected IBMMClient Client => Mvx.IoCProvider.Resolve<IBMMClient>();
 
-        public IMvxLanguageBinder TextSource { get; protected set; }
-
-        public IMvxLanguageBinder GlobalTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "Global");
-
-        public BaseViewModel(IMvxLanguageBinder textSource)
-            : this()
-        {
-            if (textSource != null)
-            {
-                // This allows to inject a Mock of the textSource for Unit Testing
-                TextSource = textSource;
-            }
-        }
-
         public BaseViewModel()
         {
             Mvx.IoCProvider.Resolve<INotificationCenter>().AppLanguageChanged += (sender, e) =>
@@ -66,8 +56,10 @@ namespace BMM.Core.ViewModels.Base
             };
             _messenger = Mvx.IoCProvider.Resolve<IMvxMessenger>();
             _navigationService = Mvx.IoCProvider.Resolve<IMvxNavigationService>();
-            TextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, GetType().Name);
         }
+
+        [MvxInject]
+        public IBMMLanguageBinder TextSource { get; set; }
 
         private bool _isLoading;
 
@@ -123,8 +115,6 @@ namespace BMM.Core.ViewModels.Base
                         {"documentType", item.DocumentType}, {"id", item.Id}
                     });
 
-            MvxLanguageBinder dialogTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "UserDialogs");
-
             var isInOnlineMode = Mvx.IoCProvider.Resolve<IConnection>().GetStatus() == ConnectionStatus.Online;
             var imageDelete = "icon_trash_static.png";
             var imageAddTo = "icon_nav_content_static.png";
@@ -143,12 +133,12 @@ namespace BMM.Core.ViewModels.Base
                     {
                         if (this is TrackCollectionViewModel trackCollectionVm)
                         {
-                            actionSheet.AddHandled(dialogTextSource.GetText("Track.DeleteFromPlaylist"),
+                            actionSheet.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_DeleteFromPlaylist),
                                 async () => await trackCollectionVm.DeleteTrackFromTrackCollection((Track)item),
                                 imageDelete);
                         }
 
-                        actionSheet.AddHandled(dialogTextSource.GetText("Track.AddToPlaylist"),
+                        actionSheet.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_AddToPlaylist),
                             async () =>
                             {
                                 _messenger.Publish(new TogglePlayerMessage(this, false));
@@ -169,13 +159,13 @@ namespace BMM.Core.ViewModels.Base
                         // todo #17871 enable for android as well
                         if (DeviceInfo.Platform == DevicePlatform.iOS)
                         {
-                            actionSheet.AddHandled(dialogTextSource.GetText("Track.QueueToPlayNext"),
+                            actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_QueueToPlayNext],
                                 async () =>
                                 {
                                     var success = await mediaPlayer.QueueToPlayNext(track, GetType().Name);
                                     if (success)
                                     {
-                                        await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(dialogTextSource.GetText("Track.AddedToQueue", track.Title));
+                                        await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(TextSource.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
 
                                         Mvx.IoCProvider.Resolve<IAnalytics>()
                                             .LogEvent(Event.TrackHasBeenAddedToBePlayedNext,
@@ -187,13 +177,13 @@ namespace BMM.Core.ViewModels.Base
                                 },
                                 imageQueue);
                         }
-                        actionSheet.AddHandled(dialogTextSource.GetText("Track.AddToQueue"),
+                        actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_AddToQueue],
                             async () =>
                             {
                                 var success = await mediaPlayer.AddToEndOfQueue(track, GetType().Name);
                                 if (success)
                                 {
-                                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(dialogTextSource.GetText("Track.AddedToQueue", track.Title));
+                                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(TextSource.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
 
                                     Mvx.IoCProvider.Resolve<IAnalytics>()
                                         .LogEvent(Event.TrackHasBeenAddedToEndOfQueue,
@@ -208,14 +198,14 @@ namespace BMM.Core.ViewModels.Base
 
                     if (!track.IsLivePlayback)
                     {
-                        actionSheet.AddHandled(dialogTextSource.GetText("Track.Share"), async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(track), imageShare);
+                        actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(track), imageShare);
                     }
 
                     // Only show this option if we are not inside an album (what apparently is the one you would be guided to here)
                     if (!(this is AlbumViewModel) && isInOnlineMode && track.ParentId != 0)
                     {
                         var imageAlbum = "icon_nav_album_static.png";
-                        actionSheet.AddHandled(dialogTextSource.GetText("Track.GoToAlbum"),
+                        actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_GoToAlbum],
                             async () =>
                             {
                                 _messenger.Publish(new TogglePlayerMessage(this, false));
@@ -239,7 +229,7 @@ namespace BMM.Core.ViewModels.Base
                             var imageContributor = "icon_nav_contributor_static.png";
                             var trackHasOnlyOneContributor = contributors.Count == 1;
 
-                            actionSheet.AddHandled(dialogTextSource.GetText("Track.GoToContributor"), async () =>
+                            actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_GoToContributor], async () =>
                             {
                                 var contributorConfig = new ActionSheetConfig();
 
@@ -252,7 +242,7 @@ namespace BMM.Core.ViewModels.Base
                                         if (trackHasOnlyOneContributor)
                                             await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
-                                            contributorConfig.AddHandled(dialogTextSource.GetText("Track.GoToContributor.Composer", rel.Name),
+                                            contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Composer, rel.Name),
                                                 async () =>
                                                 {
                                                     _messenger.Publish(new TogglePlayerMessage(this, false));
@@ -267,7 +257,7 @@ namespace BMM.Core.ViewModels.Base
                                         if (trackHasOnlyOneContributor)
                                             await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
-                                            contributorConfig.AddHandled(dialogTextSource.GetText("Track.GoToContributor.Interpret", rel.Name),
+                                            contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Interpret, rel.Name),
                                                 async () =>
                                                 {
                                                     _messenger.Publish(new TogglePlayerMessage(this, false));
@@ -281,7 +271,7 @@ namespace BMM.Core.ViewModels.Base
                                         if (trackHasOnlyOneContributor)
                                             await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
-                                            contributorConfig.AddHandled(dialogTextSource.GetText("Track.GoToContributor.Lyricist", rel.Name),
+                                            contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Lyricist, rel.Name),
                                                 async () =>
                                                 {
                                                     _messenger.Publish(new TogglePlayerMessage(this, false));
@@ -295,7 +285,7 @@ namespace BMM.Core.ViewModels.Base
                                         if (trackHasOnlyOneContributor)
                                             await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
-                                            contributorConfig.AddHandled(dialogTextSource.GetText("Track.GoToContributor.Arranger", rel.Name),
+                                            contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Arranger, rel.Name),
                                                 async () =>
                                                 {
                                                     _messenger.Publish(new TogglePlayerMessage(this, false));
@@ -304,7 +294,7 @@ namespace BMM.Core.ViewModels.Base
                                     }
                                 }
 
-                                contributorConfig.SetCancel(dialogTextSource.GetText("Cancel"));
+                                contributorConfig.SetCancel(TextSource[Translations.UserDialogs_Cancel]);
 
                                 if (!trackHasOnlyOneContributor)
                                     Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(contributorConfig);
@@ -313,12 +303,12 @@ namespace BMM.Core.ViewModels.Base
                         }
                     }
                     var imageInfo = "icon_info_static.png";
-                    actionSheet.AddHandled(dialogTextSource.GetText("Track.MoreInformation"),
+                    actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_MoreInformation],
                         async () => { await ShowTrackInfo((Track)item); },
                         imageInfo);
 
 
-                    actionSheet.SetCancel(dialogTextSource.GetText("Cancel"));
+                    actionSheet.SetCancel(TextSource[Translations.UserDialogs_Cancel]);
 
                     Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(actionSheet);
                     break;
@@ -327,9 +317,9 @@ namespace BMM.Core.ViewModels.Base
                     var album = (Album)item;
                     Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
                         .SetTitle(album.Title)
-                        .AddHandled(dialogTextSource.GetText("Album.AddToPlaylist"), async () => await AddAlbumToTrackCollection(album.Id), imageAddTo)
-                        .AddHandled(dialogTextSource.GetText("Album.Share"), async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(album), imageShare)
-                        .SetCancel(dialogTextSource.GetText("Cancel"))
+                        .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddAlbumToTrackCollection(album.Id), imageAddTo)
+                        .AddHandled(TextSource[Translations.UserDialogs_Album_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(album), imageShare)
+                        .SetCancel(TextSource[Translations.UserDialogs_Cancel])
                     );
                     break;
 
@@ -337,8 +327,8 @@ namespace BMM.Core.ViewModels.Base
                     var contributor = (Contributor)item;
                     Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
                         .SetTitle(contributor.Name)
-                        .AddHandled(dialogTextSource.GetText("Contributor.Share"), async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(contributor), imageShare)
-                        .SetCancel(dialogTextSource.GetText("Cancel"))
+                        .AddHandled(TextSource[Translations.UserDialogs_Contributor_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(contributor), imageShare)
+                        .SetCancel(TextSource[Translations.UserDialogs_Cancel])
                     );
                     break;
 
@@ -348,15 +338,15 @@ namespace BMM.Core.ViewModels.Base
                         var trackCollection = (TrackCollection)item;
 
                         if (trackCollection.CanEdit)
-                            ShowActionSheetIfPrivateTrackCollection(trackCollection, dialogTextSource, imageShare, imageDelete);
+                            ShowActionSheetIfPrivateTrackCollection(trackCollection, imageShare, imageDelete);
                         else
-                            ShowActionSheetIfSharedTrackCollection(trackCollection, dialogTextSource, imageDelete);
+                            ShowActionSheetIfSharedTrackCollection(trackCollection, imageDelete);
                     }
                     else
                     {
                         Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
                             .SetTitle(((TrackCollection)item).Name)
-                            .SetCancel(dialogTextSource.GetText("Cancel"))
+                            .SetCancel(TextSource[Translations.UserDialogs_Cancel])
                     );
                     }
                     break;
@@ -373,44 +363,42 @@ namespace BMM.Core.ViewModels.Base
 
         private void ShowActionSheetIfSharedTrackCollection(
             TrackCollection trackCollection,
-            IMvxLanguageBinder dialogTextSource,
             string imageDelete)
         {
             var userDialogs = Mvx.IoCProvider.Resolve<IUserDialogs>();
 
             userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
-                .AddHandled(TextSource.GetText(
-                    "RemovePlaylist"),
+                .AddHandled(
+                    TextSource[Translations.TrackCollectionViewModel_RemovePlaylist],
                     async () => await RemoveSharedPlaylist(trackCollection.Id),
                     imageDelete)
-                .SetCancel(dialogTextSource.GetText("Cancel")));
+                .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
         }
 
         private void ShowActionSheetIfPrivateTrackCollection(
             TrackCollection trackCollection,
-            IMvxLanguageBinder dialogTextSource,
             string imageShare,
             string imageDelete)
         {
             var imageRename = "icon_edit_static.png";
             Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
-                .AddHandled(TextSource.GetText("SharePlaylist"),
+                .AddHandled(TextSource[Translations.TrackCollectionViewModel_SharePlaylist],
                     async () =>
                     {
                         await ShareTrackCollection(trackCollection.Id);
                     }, imageShare)
-                .AddHandled(TextSource.GetText("DeletePlaylist"),
+                .AddHandled(TextSource[Translations.TrackCollectionViewModel_DeletePlaylist],
                     async () => await DeleteTrackCollection(trackCollection), imageDelete)
-                .AddHandled(TextSource.GetText("EditPlaylist"),
+                .AddHandled(TextSource[Translations.TrackCollectionViewModel_EditPlaylist],
                     async () =>
                     {
                         await _navigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
                             new TrackCollectionParameter(trackCollection.Id));
                     },
                     imageRename)
-                .SetCancel(dialogTextSource.GetText("Cancel"))
+                .SetCancel(TextSource[Translations.UserDialogs_Cancel])
             );
         }
 
@@ -502,9 +490,7 @@ namespace BMM.Core.ViewModels.Base
 
         protected virtual async Task<bool> CreateTrackCollection()
         {
-            MvxLanguageBinder dialogTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "TrackCollectionViewModel");
-
-            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().PromptAsync(dialogTextSource.GetText("CreatePrompt"));
+            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().PromptAsync(TextSource[Translations.TrackCollectionViewModel_CreatePrompt]);
             if (result.Ok)
             {
                 if (!string.IsNullOrEmpty(result.Text))
@@ -524,11 +510,11 @@ namespace BMM.Core.ViewModels.Base
                         ExceptionHandler.HandleException(ex);
                     }
 
-                    await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(dialogTextSource.GetText("CreateFailure"));
+                    await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(TextSource[Translations.TrackCollectionViewModel_CreateFailure]);
                 }
                 else
                 {
-                    await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(dialogTextSource.GetText("CreateEmptyFailure"));
+                    await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(TextSource[Translations.TrackCollectionViewModel_CreateEmptyFailure]);
                 }
             }
 
@@ -556,9 +542,7 @@ namespace BMM.Core.ViewModels.Base
 
         protected virtual async Task<bool> DeleteTrackCollection(TrackCollection item)
         {
-            MvxLanguageBinder dialogTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "TrackCollectionViewModel");
-
-            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(dialogTextSource.GetText("DeleteConfirm", item.Name));
+            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource.GetText(Translations.TrackCollectionViewModel_DeleteConfirm, item.Name));
             if (!result)
             {
                 return false;
@@ -582,7 +566,7 @@ namespace BMM.Core.ViewModels.Base
                 ExceptionHandler.HandleException(ex);
             }
 
-            await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(dialogTextSource.GetText("DeleteFailure", item.Name));
+            await Mvx.IoCProvider.Resolve<IUserDialogs>().AlertAsync(TextSource.GetText(Translations.TrackCollectionViewModel_DeleteFailure, item.Name));
             return false;
         }
 
