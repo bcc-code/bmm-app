@@ -7,7 +7,7 @@ namespace BMM.UI.iOS
     public partial class ExploreContributorsViewController : BaseViewController<ExploreContributorsViewModel>
     {
         public ExploreContributorsViewController()
-            : base("ExploreContributorsViewController")
+            : base(nameof(ExploreContributorsViewController))
         {
         }
 

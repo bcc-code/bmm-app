@@ -1,16 +1,17 @@
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 
 namespace BMM.UI.iOS
 {
-    [MvxTabPresentation(TabName = "Profile", TabIconName = "icon_profile", TabSelectedIconName = "icon_profile_active", WrapInNavigationController = false)]
+    [MvxTabPresentation(TabName = Translations.MenuViewModel_Profile, TabIconName = "icon_profile", TabSelectedIconName = "icon_profile_active", WrapInNavigationController = false)]
     public partial class SettingsViewController : BaseViewController<SettingsViewModel>, IHaveLargeTitle
     {
         public double? InitialLargeTitleHeight { get; set; }
 
         public SettingsViewController()
-            : base("SettingsViewController")
+            : base(nameof(SettingsViewController))
         { }
 
         public override System.Type ParentViewControllerType => typeof(ContainmentNavigationViewController);

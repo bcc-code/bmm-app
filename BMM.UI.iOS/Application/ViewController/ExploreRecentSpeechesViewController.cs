@@ -9,7 +9,7 @@ namespace BMM.UI.iOS
     public partial class ExploreRecentSpeechesViewController : BaseViewController<ExploreRecentSpeechesViewModel>
     {
         public ExploreRecentSpeechesViewController()
-            : base("ExploreRecentSpeechesViewController")
+            : base(nameof(ExploreRecentSpeechesViewController))
         {
         }
 

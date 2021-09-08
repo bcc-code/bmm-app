@@ -11,6 +11,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.TrackCollections.Exceptions;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.ViewModels;
 
@@ -55,28 +56,28 @@ namespace BMM.Core.ViewModels
             try
             {
                 await _trackCollectionManager.AddToTrackCollection(targetTrackCollection, _documentId, _documentType);
-                await _toastDisplayer.Success(TextSource.GetText("TrackAddedToTrackCollection"));
+                await _toastDisplayer.Success(TextSource[Translations.TrackCollectionsAddToViewModel_TrackAddedToTrackCollection]);
             }
             catch (UnsupportedDocumentTypeException)
             {
-                await _userDialogs.AlertAsync(TextSource.GetText("FailedToAddUnknownType", _documentType.ToString()));
+                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_FailedToAddUnknownType, _documentType.ToString()));
             }
             catch (AlbumAlreadyInTrackCollectionException)
             {
-                await _userDialogs.AlertAsync(TextSource.GetText("AlbumFailedToAddAlreadyExists", targetTrackCollection.Name));
+                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_AlbumFailedToAddAlreadyExists, targetTrackCollection.Name));
             }
             catch (TrackAlreadyInTrackCollectionException)
             {
-                await _userDialogs.AlertAsync(TextSource.GetText("TrackAlreadyExistInTrackCollection", targetTrackCollection.Name));
+                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_TrackAlreadyExistInTrackCollection, targetTrackCollection.Name));
             }
             catch (BadRequestException ex)
             {
-                await _userDialogs.AlertAsync(TextSource.GetText("FailedToAdd", targetTrackCollection.Name));
+                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_FailedToAdd, targetTrackCollection.Name));
                 _logger.Error("TrackOrAlbumAddedToTrackCollection", "Bad request", ex);
             }
             catch (Exception ex)
             {
-                await _userDialogs.AlertAsync(GlobalTextSource.GetText("UnexpectedError"));
+                await _userDialogs.AlertAsync(TextSource[Translations.Global_UnexpectedError]);
                 _logger.Error("TrackOrAlbumAddedToTrackCollection", "Unexpected error", ex);
             }
 

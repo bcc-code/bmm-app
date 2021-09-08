@@ -62,9 +62,6 @@ namespace BMM.UI.iOS
 		UIKit.UIButton FraKaarePlayRandomButton { get; set; }
 
 		[Outlet]
-		UIKit.UILabel ListHeaderLabel { get; set; }
-
-		[Outlet]
 		UIKit.UIImageView PlayIcon { get; set; }
 
 		[Outlet]
@@ -165,9 +162,9 @@ namespace BMM.UI.iOS
 				CountdownLabel = null;
 			}
 
-			if (ListHeaderLabel != null) {
-				ListHeaderLabel.Dispose ();
-				ListHeaderLabel = null;
+			if (FraKaarePlayRandomButton != null) {
+				FraKaarePlayRandomButton.Dispose ();
+				FraKaarePlayRandomButton = null;
 			}
 
 			if (PlayIcon != null) {
@@ -208,11 +205,6 @@ namespace BMM.UI.iOS
 			if (TrackTableView != null) {
 				TrackTableView.Dispose ();
 				TrackTableView = null;
-			}
-
-			if (FraKaarePlayRandomButton != null) {
-				FraKaarePlayRandomButton.Dispose ();
-				FraKaarePlayRandomButton = null;
 			}
 
 		}

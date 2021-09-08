@@ -8,7 +8,7 @@ namespace BMM.UI.iOS
 {
     public partial class TrackCollectionsAddToViewController : BaseViewController<TrackCollectionsAddToViewModel>
     {
-        public TrackCollectionsAddToViewController() : base("TrackCollectionsAddToViewController")
+        public TrackCollectionsAddToViewController() : base(nameof(TrackCollectionsAddToViewController))
         {
         }
 

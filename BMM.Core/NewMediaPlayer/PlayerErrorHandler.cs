@@ -4,63 +4,66 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Translation;
 using MvvmCross.Localization;
 
 namespace BMM.Core.NewMediaPlayer
 {
     public class PlayerErrorHandler : IPlayerErrorHandler
     {
-        private const string ErrorPlayerStopped = "ErrorPlayerStopped";
-        private const string ErrorPlayerStart = "ErrorPlayerStart";
-        private const string ErrorPlayerStoppedGeneric = "ErrorPlayerStoppedGeneric";
-        private const string ErrorPlayerLiveRadioStopped = "ErrorPlayerLiveRadioStopped";
-        private const string ErrorPlayerLiveRadioTooEarly = "ErrorPlayerLiveRadioTooEarly";
+        private const string ErrorPlayerStopped = Translations.MediaPlayer_ErrorPlayerStopped;
+        private const string ErrorPlayerStart = Translations.MediaPlayer_ErrorPlayerStart;
+        private const string ErrorPlayerStoppedGeneric = Translations.MediaPlayer_ErrorPlayerStoppedGeneric;
+        private const string ErrorPlayerLiveRadioStopped = Translations.MediaPlayer_ErrorPlayerLiveRadioStopped;
+        private const string ErrorPlayerLiveRadioTooEarly = Translations.MediaPlayer_ErrorPlayerLiveRadioTooEarly;
 
         private readonly ILogger _logger;
         private readonly IToastDisplayer _toastDisplayer;
-        private readonly IMvxLanguageBinder _textSource;
         private readonly IAnalytics _analytics;
+        private readonly IBMMLanguageBinder _bmmLanguageBinder;
 
-        public PlayerErrorHandler(ILogger logger, IToastDisplayer toastDisplayer, IAnalytics analytics)
+        public PlayerErrorHandler(
+            ILogger logger,
+            IToastDisplayer toastDisplayer,
+            IAnalytics analytics,
+            IBMMLanguageBinder bmmLanguageBinder)
         {
             _logger = logger;
             _toastDisplayer = toastDisplayer;
             _analytics = analytics;
-
-            _textSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "MediaPlayer");
+            _bmmLanguageBinder = bmmLanguageBinder;
         }
 
         public void InternetProblems(string technicalMessage)
         {
-            MvxLanguageBinder globalTextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "Global");
-
             // iOS provides very good human readable messages but in Android we unfortunately have to generalize.
-            InternetProblems(technicalMessage, globalTextSource.GetText("InternetConnectionOffline"));
+            InternetProblems(technicalMessage, _bmmLanguageBinder[Translations.Global_InternetConnectionOffline]);
         }
 
         public void InternetProblems(string technicalMessage, string localizedUserReadableMessage)
         {
             // InternetProblems are totally expected and don't need to be logged as an error. Other problems however might point to problems in the app or on the server.
 
-            var message = _textSource.GetText(ErrorPlayerStopped);
+            var message = _bmmLanguageBinder.GetText(ErrorPlayerStopped);
             _toastDisplayer.Error($"{message} {localizedUserReadableMessage}");
             _logger.Warn("MediaPlayer", $"The player has stopped because of internet problems. {technicalMessage}");
         }
 
         public void LiveRadioStopped()
         {
-            _toastDisplayer.Error(_textSource.GetText(ErrorPlayerLiveRadioStopped));
+            _toastDisplayer.Error(_bmmLanguageBinder.GetText(ErrorPlayerLiveRadioStopped));
         }
 
         public void LiveRadioTooEarly()
         {
-            _toastDisplayer.Error(_textSource.GetText(ErrorPlayerLiveRadioTooEarly));
+            _toastDisplayer.Error(_bmmLanguageBinder.GetText(ErrorPlayerLiveRadioTooEarly));
         }
 
         public void StartError(Exception exception)
         {
-            _toastDisplayer.Error(_textSource.GetText(ErrorPlayerStart));
+            _toastDisplayer.Error(_bmmLanguageBinder.GetText(ErrorPlayerStart));
             _logger.Error("MediaPlayer", "Unable to start playback", exception);
         }
 
@@ -68,8 +71,8 @@ namespace BMM.Core.NewMediaPlayer
         {
             // Android does not provide a usable and localized error message. Therefore we have to use a generic message instead.
             var localizedErrorMessage = userReadableMessage != null
-                ? $"{_textSource.GetText(ErrorPlayerStopped)} {userReadableMessage}"
-                : _textSource.GetText(ErrorPlayerStoppedGeneric);
+                ? $"{_bmmLanguageBinder.GetText(ErrorPlayerStopped)} {userReadableMessage}"
+                : _bmmLanguageBinder.GetText(ErrorPlayerStoppedGeneric);
 
             _toastDisplayer.Error(localizedErrorMessage);
             LogPlaybackError(technicalMessage, currentlyPlayedTrack);

@@ -7,7 +7,7 @@ namespace BMM.UI.iOS
     public partial class LanguageAppViewController : BaseViewController<LanguageAppViewModel>
     {
         public LanguageAppViewController()
-            : base("LanguageAppViewController")
+            : base(nameof(LanguageAppViewController))
         {
         }
 

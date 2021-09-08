@@ -12,6 +12,7 @@ using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
+using BMM.Core.Translation;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
@@ -72,7 +73,7 @@ namespace BMM.Core.ViewModels.Base
 
         public string DownloadingText => !IsDownloading
             ? ""
-            : TextSource.GetText("AvailableOfflineDownloading",
+            : TextSource.GetText(Translations.TrackCollectionViewModel_AvailableOfflineDownloading,
                 (ToBeDownloadedCount - DownloadedFilesCount).ToString(),
                 ToBeDownloadedCount.ToString());
 
@@ -187,13 +188,13 @@ namespace BMM.Core.ViewModels.Base
 
                 if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
                 {
-                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource.GetText("MobileDownloadDisabled"));
+                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.TrackCollectionViewModel_MobileDownloadDisabled]);
                     return;
                 }
 
                 if (_storageManager.SelectedStorage.FreeSpace <= await CalculateApproximateDownloadSize())
                 {
-                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource.GetText("NotEnoughtSpaceToDownload"));
+                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.TrackCollectionViewModel_NotEnoughtSpaceToDownload]);
                     return;
                 }
 
@@ -205,7 +206,7 @@ namespace BMM.Core.ViewModels.Base
             else
             {
                 // todo fix this get the name fo the entity to delete
-                var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource.GetText("RemoveOfflineConfirm"));
+                var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource[Translations.TrackCollectionViewModel_RemoveOfflineConfirm]);
                 if (!result)
                 {
                     return;

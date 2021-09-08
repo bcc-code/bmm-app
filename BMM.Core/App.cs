@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
+using System.Resources;
 using Acr.UserDialogs;
 using Akavache;
 using BMM.Api;
@@ -37,6 +38,7 @@ using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.LiveRadio;
 using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Media;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Notifications.Data;
@@ -233,8 +235,7 @@ namespace BMM.Core
                         BlobCache.InMemory.InvalidateAll();
                     },
                     MvxReference.Strong);
-
-
+            
             Mvx.IoCProvider.ConstructAndRegisterSingleton<BackgroundLogger, BackgroundLogger>();
 
             Mvx.IoCProvider.RegisterType<PersistedEventWriter>();
@@ -253,6 +254,8 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
 
+            SetupLanguageBinder();
+
             _assemblies = AppDomain
                 .CurrentDomain
                 .GetAssemblies()
@@ -260,6 +263,13 @@ namespace BMM.Core
 
             RegisterDynamic(typeof(IBaseGuardedAction));
             RegisterDynamic(typeof(IActionExceptionHandler));
+        }
+
+        private static void SetupLanguageBinder()
+        {
+            var languageBinder = new BMMLanguageBinder();
+            BMMLanguageBinderLocator.SetImplementation(languageBinder);
+            Mvx.IoCProvider.RegisterSingleton(typeof(IBMMLanguageBinder), new BMMLanguageBinder());
         }
 
         private void RegisterDynamic(Type baseType)

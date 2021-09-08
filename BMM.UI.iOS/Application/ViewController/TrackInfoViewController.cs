@@ -5,7 +5,7 @@ namespace BMM.UI.iOS
 {
     public partial class TrackInfoViewController : BaseViewController<TrackInfoViewModel>
     {
-        public TrackInfoViewController() : base("TrackInfoViewController")
+        public TrackInfoViewController() : base(nameof(TrackInfoViewController))
         {
         }
 

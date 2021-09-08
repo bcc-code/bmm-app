@@ -21,6 +21,7 @@ using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Models;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Commands;
@@ -77,8 +78,7 @@ namespace BMM.Core.ViewModels
             IExceptionHandler exceptionHandler,
             IProfileLoader profileLoader,
             IUserStorage userStorage,
-            IFirebaseRemoteConfig remoteConfig,
-            IMvxLanguageBinder textSource = null)
+            IFirebaseRemoteConfig remoteConfig)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -99,16 +99,11 @@ namespace BMM.Core.ViewModels
             _userStorage = userStorage;
             _remoteConfig = remoteConfig;
 
-            if (textSource != null)
-            {
-                TextSource = textSource;
-            }
-
             _storageManager.Storages.CollectionChanged += Storages_CollectionChanged;
 
             PropertyChanged += (sender, e) =>
             {
-                if (e.PropertyName == "TextSource")
+                if (e.PropertyName == nameof(TextSource))
                 {
                     BuildSections();
                 }
@@ -160,9 +155,9 @@ namespace BMM.Core.ViewModels
             {
                 new ProfileListItem
                 {
-                    Text = TextSource.GetText("Logout"),
+                    Text = TextSource[Translations.SettingsViewModel_Logout],
                     LogoutCommand = new ExceptionHandlingCommand(async () => await Logout()),
-                    Title = TextSource.GetText("LoggedInAs"),
+                    Title = TextSource[Translations.SettingsViewModel_LoggedInAs],
                     UserProfileUrl = _profilePictureUrl,
                     Username = _userStorage.GetUser().FullName,
                     EditProfileCommand = new ExceptionHandlingCommand(async () => _uriOpener.OpenUri(new Uri(_remoteConfig.EditProfileUrl)))
@@ -174,25 +169,25 @@ namespace BMM.Core.ViewModels
         {
             var items = new List<IListItem>
             {
-                new SectionHeader {ShowDivider = false, Title = TextSource.GetText("HeadlineSettings")},
+                new SectionHeader {ShowDivider = false, Title = TextSource[Translations.SettingsViewModel_HeadlineSettings]},
                 new CheckboxListItem
                 {
-                    Title = TextSource.GetText("OptionAutoplayHeader"),
-                    Text = TextSource.GetText("OptionAutoplayText"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionAutoplayHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionAutoplayText],
                     IsChecked = await _settingsStorage.GetAutoplayEnabled(),
                     OnChanged = isChecked => _settingsStorage.SetAutoplayEnabled(isChecked)
                 },
                 new CheckboxListItem
                 {
-                    Title = TextSource.GetText("OptionStreakHiddenHeader"),
-                    Text = TextSource.GetText("OptionStreakHiddenText"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionStreakHiddenHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionStreakHiddenText],
                     IsChecked = await _settingsStorage.GetStreakHidden(),
                     OnChanged = isChecked => _settingsStorage.SetStreakHidden(isChecked)
                 },
                 new CheckboxListItem
                 {
-                    Title = TextSource.GetText("OptionDownloadMobileNetworkHeader"),
-                    Text = TextSource.GetText("OptionDownloadMobileNetworkText"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkText],
                     IsChecked = await _networkSettings.GetMobileNetworkDownloadAllowed(),
                     OnChanged = mobileNetworkDownloadAllowed =>
                     {
@@ -203,8 +198,8 @@ namespace BMM.Core.ViewModels
                 },
                 new CheckboxListItem
                 {
-                    Title = TextSource.GetText("OptionPushNotifications"),
-                    Text = TextSource.GetText("OptionPushNotificationsSubtitle"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionPushNotifications],
+                    Text = TextSource[Translations.SettingsViewModel_OptionPushNotificationsSubtitle],
                     IsChecked = await _networkSettings.GetPushNotificationsAllowed(),
                     OnChanged = notificationsEnabled =>
                     {
@@ -218,7 +213,7 @@ namespace BMM.Core.ViewModels
             {
                 _externalStorage = new SelectableListItem
                 {
-                    Title = TextSource.GetText("OptionExternalStorage"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionExternalStorage],
                     Text = CurrentStorageInfo(_storageManager.SelectedStorage),
                     OnSelected = _navigationService.NavigateCommand<StorageManagementViewModel>()
                 };
@@ -240,25 +235,25 @@ namespace BMM.Core.ViewModels
             var gigabytesString = ByteToStringHelper.BytesToMegaBytes(storage.UsableSpace);
 
             return storage.StorageKind == StorageKind.Internal
-                ? TextSource.GetText("OptionMBInternalText", gigabytesString)
-                : TextSource.GetText("OptionMBExternalText", gigabytesString);
+                ? TextSource.GetText(Translations.SettingsViewModel_OptionMBInternalText, gigabytesString)
+                : TextSource.GetText(Translations.SettingsViewModel_OptionMBExternalText, gigabytesString);
         }
 
         private async Task<List<IListItem>> BuildGeneralSection()
         {
             return new List<IListItem>
             {
-                new SectionHeader {Title = TextSource.GetText("HeadlineGeneral")},
+                new SectionHeader {Title = TextSource[Translations.SettingsViewModel_HeadlineGeneral]},
                 new SelectableListItem
                 {
-                    Title = TextSource.GetText("OptionLanguageAppHeader"),
-                    Text = TextSource.GetText("OptionLanguageAppText"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionLanguageAppHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionLanguageAppText],
                     OnSelected = _navigationService.NavigateCommand<LanguageAppViewModel>()
                 },
                 new SelectableListItem
                 {
-                    Title = TextSource.GetText("OptionLanguageContentHeader"),
-                    Text = TextSource.GetText("OptionLanguageContentText"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionLanguageContentHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionLanguageContentText],
                     OnSelected = _navigationService.NavigateCommand<LanguageContentViewModel>()
                 }
             };
@@ -268,28 +263,28 @@ namespace BMM.Core.ViewModels
         {
             var items = new List<IListItem>
             {
-                new SectionHeader {Title = TextSource.GetText("HeadlineAbout")},
+                new SectionHeader {Title = TextSource[Translations.SettingsViewModel_HeadlineAbout]},
                 new SelectableListItem
                 {
-                    Title = TextSource.GetText("UserVoiceHeader"),
-                    Text = TextSource.GetText("UserVoiceText"),
+                    Title = TextSource[Translations.SettingsViewModel_UserVoiceHeader],
+                    Text = TextSource[Translations.SettingsViewModel_UserVoiceText],
                     OnSelected = new MvxCommand(() => _uriOpener.OpenUri(new Uri(_remoteConfig.UserVoiceLink)))
                 },
                 new SelectableListItem
                 {
-                    Title = TextSource.GetText("OptionCopyrightHeader"),
-                    Text = TextSource.GetText("OptionCopyrightText"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionCopyrightHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionCopyrightText],
                     OnSelected = _navigationService.NavigateCommand<CopyrightViewModel>()
                 },
                 new SelectableListItem
                 {
-                    Title = TextSource.GetText("OptionContactHeader"),
-                    Text = TextSource.GetText("OptionContactText"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionContactHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionContactText],
                     OnSelected = new MvxAsyncCommand(_contacter.Contact)
                 },
                 new SelectableListItem
                 {
-                    Title = TextSource.GetText("OptionAppVersionHeader"),
+                    Title = TextSource[Translations.SettingsViewModel_OptionAppVersionHeader],
                     Text = GlobalConstants.AppVersion,
                     OnSelected = new ExceptionHandlingCommand(async () => await ShowInfo())
                 }
@@ -341,7 +336,7 @@ namespace BMM.Core.ViewModels
 
         private async Task Logout()
         {
-            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource.GetText("LogoutConfirm"));
+            var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource[Translations.SettingsViewModel_LogoutConfirm]);
             if (!result) return;
 
             await _logoutService.PerformLogout();
@@ -355,16 +350,16 @@ namespace BMM.Core.ViewModels
         private async Task ShowInfo()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(TextSource.GetText("AppInfoAppVersion") + GlobalConstants.AppVersion);
-            sb.AppendLine(TextSource.GetText("AppInfoManufacturer") + _deviceInfo.Manufacturer);
-            sb.AppendLine(TextSource.GetText("AppInfoDeviceModel") + _deviceInfo.Model);
-            sb.AppendLine(TextSource.GetText("AppInfoDevicePlatform") + _deviceInfo.Platform);
-            sb.AppendLine(TextSource.GetText("AppInfoDeviceVersion") + _deviceInfo.VersionString);
+            sb.AppendLine(TextSource[Translations.SettingsViewModel_AppInfoAppVersion] + GlobalConstants.AppVersion);
+            sb.AppendLine(TextSource[Translations.SettingsViewModel_AppInfoManufacturer] + _deviceInfo.Manufacturer);
+            sb.AppendLine(TextSource[Translations.SettingsViewModel_AppInfoDeviceModel] + _deviceInfo.Model);
+            sb.AppendLine(TextSource[Translations.SettingsViewModel_AppInfoDevicePlatform] + _deviceInfo.Platform);
+            sb.AppendLine(TextSource[Translations.SettingsViewModel_AppInfoDeviceVersion] + _deviceInfo.VersionString);
 
             await Mvx.IoCProvider.Resolve<IUserDialogs>()
                 .AlertAsync(new AlertConfig
                 {
-                    Title = TextSource.GetText("AppInfoTitle"),
+                    Title = TextSource[Translations.SettingsViewModel_AppInfoTitle],
                     Message = sb.ToString()
                 });
         }

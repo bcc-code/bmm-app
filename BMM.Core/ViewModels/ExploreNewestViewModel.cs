@@ -2,15 +2,16 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reactive.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Localization;
@@ -22,6 +23,7 @@ namespace BMM.Core.ViewModels
     {
         private readonly IStreakObserver _streakObserver;
         private readonly ISettingsStorage _settings;
+        private readonly IBMMLanguageBinder _bmmLanguageBinder;
 
         public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
 
@@ -34,10 +36,12 @@ namespace BMM.Core.ViewModels
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
             IMvxMessenger messenger,
-            ISettingsStorage settings)
+            ISettingsStorage settings,
+            IBMMLanguageBinder bmmLanguageBinder)
         {
             _streakObserver = streakObserver;
             _settings = settings;
+            _bmmLanguageBinder = bmmLanguageBinder;
             FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
@@ -85,8 +89,8 @@ namespace BMM.Core.ViewModels
 
         private void UpdatePodcastName()
         {
-            FraKaareTeaserViewModel.Podcast.Title = TextSource.GetText("FraKaareHeader");
-            AslaksenTeaserViewModel.Podcast.Title = TextSource.GetText("AslaksenTeaserHeader");
+            FraKaareTeaserViewModel.Podcast.Title = TextSource[Translations.ExploreNewestViewModel_FraKaareHeader];
+            AslaksenTeaserViewModel.Podcast.Title = TextSource[Translations.ExploreNewestViewModel_AslaksenTeaserHeader];
         }
 
         public override CacheKeys? CacheKey => CacheKeys.DiscoverGetDocuments;

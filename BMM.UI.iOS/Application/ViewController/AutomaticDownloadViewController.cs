@@ -1,5 +1,6 @@
 using System;
 using BMM.Core;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
@@ -8,7 +9,7 @@ namespace BMM.UI.iOS
 {
     public partial class AutomaticDownloadViewController : BaseViewController<AutomaticDownloadViewModel>
     {
-        public AutomaticDownloadViewController() : base("AutomaticDownloadViewController")
+        public AutomaticDownloadViewController() : base(nameof(AutomaticDownloadViewController))
         {
         }
 
@@ -27,8 +28,8 @@ namespace BMM.UI.iOS
         	var set = this.CreateBindingSet<AutomaticDownloadViewController, AutomaticDownloadViewModel>();
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DownloadOptionsSelectedCommand)
                 .WithConversion(new DownloadOptionSelectedCommandValueConverter());
-            set.Bind(SubtitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AutomaticDownloadSubtitle");
-        	set.Apply(); 
+            set.Bind(SubtitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.AutomaticDownloadViewModel_AutomaticDownloadSubtitle);
+        	set.Apply();
 
         	AutomaticDownloadTableView.ReloadData();
         }

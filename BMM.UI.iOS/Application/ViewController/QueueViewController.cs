@@ -8,7 +8,7 @@ namespace BMM.UI.iOS
     public partial class QueueViewController : BaseViewController<QueueViewModel>
     {
         public QueueViewController()
-            : base("QueueViewController")
+            : base(nameof(QueueViewController))
         {
         }
 

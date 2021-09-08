@@ -1,4 +1,5 @@
 using System;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters.TrackCollections;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
@@ -58,7 +59,7 @@ namespace BMM.UI.iOS
             set
                 .Bind(NoteLabel)
                 .To(vm => vm.TextSource)
-                .WithConversion<MvxLanguageConverter>("ShareNote");
+                .WithConversion<MvxLanguageConverter>(Translations.ShareTrackCollectionViewModel_ShareNote);
 
             set
                 .Bind(ShareLinkButton)
@@ -68,7 +69,7 @@ namespace BMM.UI.iOS
                 .Bind(ShareLinkButton)
                 .For(v => v.BindTitle())
                 .To(vm => vm.TextSource)
-                .WithConversion<MvxLanguageConverter>("ShareLink");
+                .WithConversion<MvxLanguageConverter>(Translations.ShareTrackCollectionViewModel_ShareLink);
 
             set
                 .Bind(this)
@@ -112,7 +113,7 @@ namespace BMM.UI.iOS
         private void PrepareHeader()
         {
             var saveButton = new UIBarButtonItem(
-                ViewModel.GlobalTextSource.GetText("Done"),
+                ViewModel.TextSource[Translations.Global_Done],
                 UIBarButtonItemStyle.Plain,
                 (sender, e) =>
                 {

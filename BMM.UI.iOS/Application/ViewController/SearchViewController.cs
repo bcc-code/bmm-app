@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
@@ -12,14 +13,14 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    [MvxTabPresentation(TabName = "Search", TabIconName = "icon_search", TabSelectedIconName = "icon_search_active", WrapInNavigationController = false)]
+    [MvxTabPresentation(TabName = Translations.MenuViewModel_Search, TabIconName = "icon_search", TabSelectedIconName = "icon_search_active", WrapInNavigationController = false)]
     public partial class SearchViewController : BaseViewController<SearchViewModel>
     {
         private readonly System.nint SearchTermTextFieldTag;
         private UIKit.UITextField SearchTermTextField;
 
         public SearchViewController()
-            : base("SearchViewController")
+            : base(nameof(SearchViewController))
         {
             SearchTermTextFieldTag = new System.nint(100);
         }
@@ -51,30 +52,30 @@ namespace BMM.UI.iOS
 
             var set = this.CreateBindingSet<SearchViewController, SearchViewModel>();
             set.Bind(SearchTermTextField).To(vm => vm.SearchTerm);
-            set.Bind(SearchTermTextField).For(s => s.Placeholder).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("SearchHint");
+            set.Bind(SearchTermTextField).For(s => s.Placeholder).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchHint);
 
             set.Bind(resultsTable).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(ResultsHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("SearchResults");
+            set.Bind(ResultsHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchResults);
             set.Bind(resultsTable).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
             set.Bind(resultsTable).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
             set.Bind(resultsTable).For(s => s.IsFullyLoaded).To(s => s.IsFullyLoaded);
 
             set.Bind(suggestionsTable).To(vm => vm.SearchSuggestions);
             set.Bind(suggestionsTable).For(s => s.SelectionChangedCommand).To(s => s.SearchByTermCommand);
-            set.Bind(SuggestionsHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("SearchSuggestions");
+            set.Bind(SuggestionsHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchSuggestions);
             set.Bind(SearchSuggestionTable).For(s => s.Hidden).To(vm => vm.ShowSuggestions).WithConversion<InvertedVisibilityConverter>();
 
             set.Bind(historyTable).To(vm => vm.SearchHistory);
             set.Bind(historyTable).For(s => s.SelectionChangedCommand).To(s => s.SearchByTermCommand);
-            set.Bind(HistoryHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("SearchHistory");
+            set.Bind(HistoryHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchHistory);
             set.Bind(SearchHistoryTable).For(s => s.Hidden).To(vm => vm.ShowHistory).WithConversion<InvertedVisibilityConverter>();
             set.Bind(ClearHistoryButton).To(vm => vm.DeleteHistoryCommand);
 
-            set.Bind(NoResultsLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("SearchNoResults");
+            set.Bind(NoResultsLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchNoResults);
             set.Bind(EmptyResultsView).For(s => s.Hidden).To(vm => vm.NoResults).WithConversion<InvertedVisibilityConverter>();
 
-            set.Bind(WelcomeTitleLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("WelcomeTitle");
-            set.Bind(WelcomeSubTitleLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("WelcomeSubTitle");
+            set.Bind(WelcomeTitleLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_WelcomeTitle);
+            set.Bind(WelcomeSubTitleLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_WelcomeSubTitle);
             set.Bind(SearchExecutedView).For(s => s.Hidden).To(vm => vm.SearchExecuted).WithConversion<InvertedVisibilityConverter>();
 
             set.Apply();

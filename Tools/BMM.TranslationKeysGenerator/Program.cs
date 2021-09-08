@@ -15,7 +15,7 @@ namespace BMM.TranslationKeysGenerator
         private static void Run(Options options)
         {
             var generator = new KeysGenerator();
-            generator.GenerateThemeColorsFile(options.SolutionPath, options.CurrentFilePath);
+            generator.GenerateTranslationKeysFile(options.SolutionPath, options.CurrentFilePath);
         }
     }
 }

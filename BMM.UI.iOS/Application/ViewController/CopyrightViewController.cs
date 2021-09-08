@@ -5,7 +5,7 @@ namespace BMM.UI.iOS
     public partial class CopyrightViewController : BaseViewController<CopyrightViewModel>
     {
         public CopyrightViewController()
-            : base("CopyrightViewController")
+            : base(nameof(CopyrightViewController))
         {
         }
 

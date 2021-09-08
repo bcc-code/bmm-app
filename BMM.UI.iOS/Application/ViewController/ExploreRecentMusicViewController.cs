@@ -9,7 +9,7 @@ namespace BMM.UI.iOS
     public partial class ExploreRecentMusicViewController : BaseViewController<ExploreRecentMusicViewModel>
     {
         public ExploreRecentMusicViewController()
-            : base("ExploreRecentMusicViewController")
+            : base(nameof(ExploreRecentMusicViewController))
         {
         }
 

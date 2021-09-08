@@ -1,4 +1,5 @@
 using System;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ValueConverters.TrackCollections;
 using BMM.Core.ViewModels;
@@ -116,7 +117,7 @@ namespace BMM.UI.iOS
                 .Bind(AddToMyPlaylistButton)
                 .For(v => v.BindTitle())
                 .To(vm => vm.TextSource)
-                .WithConversion<MvxLanguageConverter>("AddToMyPlaylist");
+                .WithConversion<MvxLanguageConverter>(Translations.SharedTrackCollectionViewModel_AddToMyPlaylist);
 
             set
                 .Bind(AddToMyPlaylistButton)
@@ -135,7 +136,7 @@ namespace BMM.UI.iOS
         private void PrepareHeader()
         {
             var closeButton = new UIBarButtonItem(
-                ViewModel.TextSource.GetText("Close"),
+                ViewModel.TextSource[Translations.SharedTrackCollectionViewModel_Close],
                 UIBarButtonItemStyle.Plain,
                 (sender, e) =>
                 {

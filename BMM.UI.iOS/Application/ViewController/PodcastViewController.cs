@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using CoreGraphics;
@@ -18,7 +19,7 @@ namespace BMM.UI.iOS
     public partial class PodcastViewController : BaseViewController<PodcastViewModel>
     {
         public PodcastViewController()
-            : base("PodcastViewController")
+            : base(nameof(PodcastViewController))
         { }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
@@ -44,20 +45,20 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
             set.Bind(source).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsFullyLoaded);
-            set.Bind(OfflineBannerLabel).To(vm => vm.GlobalTextSource).WithConversion<MvxLanguageConverter>("OfflineBanner");
+            set.Bind(OfflineBannerLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.Global_OfflineBanner);
             set.Bind(PodcastCoverImageView).For(v => v.ImagePath).To(vm => vm.Podcast.Cover);
 
             set.Bind(TitelLabel).To(vm => vm.Podcast.Title);
 
             set.Bind(FollowingButton).For(v => v.Hidden).To(vm => vm.IsFollowing).WithConversion<InvertedVisibilityConverter>();
             set.Bind(FollowingButton).To(vm => vm.ToggleFollowingCommand);
-            set.Bind(FollowingButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("Following");
+            set.Bind(FollowingButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.PodcastViewModel_Following);
 
             set.Bind(FollowButton).For(v => v.Hidden).To(vm => vm.IsFollowing);
             set.Bind(FollowButton).To(vm => vm.ToggleFollowingCommand);
-            set.Bind(FollowButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("Follow");
+            set.Bind(FollowButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.PodcastViewModel_Follow);
 
-            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.DocumentsTextSource).WithConversion<MvxLanguageConverter>("Play");
+            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.DocumentsViewModel_Play);
             set.Bind(PlayButton).To(vm => vm.PlayCommand);
 
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);

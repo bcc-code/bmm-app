@@ -6,7 +6,7 @@ namespace BMM.UI.iOS
 {
     public partial class LibraryArchiveViewController : BaseViewController<LibraryArchiveViewModel>
     {
-        public LibraryArchiveViewController() : base("LibraryArchiveViewController")
+        public LibraryArchiveViewController() : base(nameof(LibraryArchiveViewController))
         {
         }
 

@@ -3,16 +3,18 @@ using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
-using BMM.Core.Helpers;
+using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
-using MvvmCross.Localization;
 
 namespace BMM.UI.iOS
 {
     public partial class StreakTableViewCell : BaseTrackTableViewCell
     {
-        public static readonly NSString Key = new NSString("StreakTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(StreakTableViewCell));
+        private IBMMLanguageBinder BMMLanguageBinder => BMMLanguageBinderLocator.TextSource;
 
         public StreakTableViewCell(IntPtr handle)
             : base(handle)
@@ -25,13 +27,11 @@ namespace BMM.UI.iOS
                 ThursdayColorView.Layer.BorderColor = AppColors.StreakColorBubbleBorderColor.CGColor;
                 FridayColorView.Layer.BorderColor = AppColors.StreakColorBubbleBorderColor.CGColor;
 
-                var streakTableViewSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "Streak");
-                MondayLabel.Text = streakTableViewSource.GetText("WeekdayMonday");
-                TuesdayLabel.Text = streakTableViewSource.GetText("WeekdayTuesday");
-                WednesdayLabel.Text = streakTableViewSource.GetText("WeekdayWednesday");
-                ThursdayLabel.Text = streakTableViewSource.GetText("WeekdayThursday");
-                FridayLabel.Text = streakTableViewSource.GetText("WeekdayFriday");
-
+                MondayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayMonday];
+                TuesdayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayTuesday];
+                WednesdayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayWednesday];
+                ThursdayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayThursday];
+                FridayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayFriday];
 
                 var set = this.CreateBindingSet<StreakTableViewCell, CellWrapperViewModel<ListeningStreak>>();
                 set.Bind(StreakLabel).To(v => v.Item).WithConversion<StreakMessageValueConverter>();
