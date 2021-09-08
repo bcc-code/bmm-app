@@ -1,4 +1,5 @@
 using System;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using CoreAnimation;
 using Foundation;
@@ -16,7 +17,7 @@ namespace BMM.UI.iOS
         public override Type ParentViewControllerType => null;
 
         public UserSetupViewController()
-            : base("UserSetupViewController")
+            : base(nameof(UserSetupViewController))
         { }
 
         public override void ViewDidLoad()
@@ -24,7 +25,7 @@ namespace BMM.UI.iOS
             base.ViewDidLoad();
 
             var set = this.CreateBindingSet<UserSetupViewController, UserSetupViewModel>();
-            set.Bind(SettingUpMessage).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("SettingUpAccountMessage");
+            set.Bind(SettingUpMessage).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.UserSetupViewModel_SettingUpAccountMessage);
             set.Bind(LoadingSpinnerImageView).For(v => v.Hidden).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
             set.Apply();
 

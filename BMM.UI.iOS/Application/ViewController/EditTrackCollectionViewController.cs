@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Extensions;
 using Foundation;
@@ -34,7 +35,7 @@ namespace BMM.UI.iOS
             };
 
             var saveButton = new UIBarButtonItem(
-                ViewModel.TextSource.GetText("MenuSave"),
+                ViewModel.TextSource[Translations.EditTrackCollectionViewModel_MenuSave],
                 UIBarButtonItemStyle.Plain,
                 (sender, e) => { ViewModel.SaveAndCloseCommand.Execute(); }
             );
@@ -78,7 +79,7 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<EditTrackCollectionViewController, EditTrackCollectionViewModel>();
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(titleView.TitleTextField).To(vm => vm.TrackCollectionTitle);
-            set.Bind(titleView.TitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("RenameLabel");
+            set.Bind(titleView.TitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.EditTrackCollectionViewModel_RenameLabel);
             set.Bind(saveButton).For(v => v.Enabled).To(vm => vm.HasChanges).WithConversion<VisibilityConverter>();
             set.Apply();
             tableView.ResizeHeaderView();

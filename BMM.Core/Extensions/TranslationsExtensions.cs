@@ -1,3 +1,4 @@
+using BMM.Core.Translation;
 using MvvmCross.Localization;
 
 namespace BMM.Core.Extensions
@@ -9,7 +10,7 @@ namespace BMM.Core.Extensions
             if (string.IsNullOrEmpty(authorName))
                 return string.Empty;
 
-            return string.Format(mvxLanguageBinder.GetText("ByFormat"), authorName);
+            return string.Format(mvxLanguageBinder.GetText(Translations.MyContentViewModel_ByFormat), authorName);
         }
     }
 }

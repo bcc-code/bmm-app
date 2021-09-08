@@ -19,13 +19,13 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
-            Title = ViewModel.TextSource.GetText("Title");
+            Title = ViewModel.TextSource[TitleKey];
 
             ViewModel.PropertyChanged += (sender, e) =>
             {
-                if (e.PropertyName == "TextSource")
+                if (e.PropertyName == nameof(ViewModel.TextSource))
                 {
-                    Title = ViewModel.TextSource.GetText("Title");
+                    Title = ViewModel.TextSource[TitleKey];
                 }
             };
 
@@ -36,6 +36,8 @@ namespace BMM.UI.iOS
                     : UINavigationItemLargeTitleDisplayMode.Never;
             }
         }
+
+        private string TitleKey => $"{ViewModel.GetType().Name}_Title";
 
         protected static void ClearPresentationDelegate(UIPresentationController presentationController)
         {

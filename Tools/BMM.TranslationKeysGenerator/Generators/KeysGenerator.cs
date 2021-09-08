@@ -12,7 +12,7 @@ namespace BMM.TranslationKeysGenerator.Generators
     {
         private const string TranslationKeysClassName = "Translations";
 
-        public void GenerateThemeColorsFile(string solutionPath, string inputFile)
+        public void GenerateTranslationKeysFile(string solutionPath, string inputFile)
         {
             try
             {
@@ -53,8 +53,9 @@ namespace BMM.TranslationKeysGenerator.Generators
         {
             string directory = Path.GetDirectoryName(inputFile);
             string path = directory.Replace(solutionPath, "");
-            string @namespace = path.Replace(Path.DirectorySeparatorChar.ToString(), ".").Trim('.');
-            return @namespace;
+            string fullNamespace = path.Replace(Path.DirectorySeparatorChar.ToString(), ".").Trim('.');
+            int indexOfLastDot = fullNamespace.LastIndexOf('.');
+            return fullNamespace.Substring(0, indexOfLastDot);
         }
 
         private static string BuildFile(string @namespace, IEnumerable<string> keys)

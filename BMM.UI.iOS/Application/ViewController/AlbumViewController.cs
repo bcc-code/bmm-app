@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using BMM.Core.ValueConverters;
@@ -14,7 +15,7 @@ namespace BMM.UI.iOS
     public partial class AlbumViewController : BaseViewController<AlbumViewModel>
     {
         public AlbumViewController()
-            : base("AlbumViewController")
+            : base(nameof(AlbumViewController))
         {
         }
 
@@ -41,7 +42,7 @@ namespace BMM.UI.iOS
             set.Bind(TitleLabel).To(vm => vm.Album.Title);
             set.Bind(DescriptionLabel).To(vm => vm.Album.Description);
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShufflePlay");
+            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.AlbumViewModel_ShufflePlay);
             set.Bind(ShuffleButton).For(v => v.Hidden).To(vm => vm.ShowShuffleButton).WithConversion<InvertedVisibilityConverter>();
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 

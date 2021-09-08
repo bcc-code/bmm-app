@@ -19,6 +19,7 @@ using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Translation;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Commands;
@@ -101,12 +102,9 @@ namespace BMM.Core.ViewModels.Base
             return list.Where(Filter.WherePredicate).ToList();
         }
 
-        public IMvxLanguageBinder DocumentsTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(DocumentsViewModel));
+        public virtual string TrackCountString => TextSource.GetText(Translations.DocumentsViewModel_PluralTracks, Documents.Count);
 
-        public virtual string TrackCountString => DocumentsTextSource.GetText("PluralTracks", Documents.Count);
-
-        public DocumentsViewModel(IDocumentFilter documentFilter = null, IMvxLanguageBinder textSource = null)
-            : base(textSource)
+        public DocumentsViewModel(IDocumentFilter documentFilter = null)
         {
             Filter = documentFilter ?? new NullFilter();
             Documents = new BmmObservableCollection<Document>();

@@ -1,4 +1,5 @@
 ﻿using System;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using BMM.Core.ValueConverters;
@@ -14,7 +15,7 @@ namespace BMM.UI.iOS
     public partial class CuratedPlaylistViewController : BaseViewController<CuratedPlaylistViewModel>
     {
         public CuratedPlaylistViewController()
-            : base("CuratedPlaylistViewController")
+            : base(nameof(CuratedPlaylistViewController))
         { }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
@@ -47,11 +48,11 @@ namespace BMM.UI.iOS
             set.Bind(DescriptionLabel).To(vm => vm.CuratedPlaylist.Description);
 
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("ShufflePlay");;
+            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_ShufflePlay);;
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 
             set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
-            set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>("AvailableOfflineDownload");
+            set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_AvailableOfflineDownload);
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);

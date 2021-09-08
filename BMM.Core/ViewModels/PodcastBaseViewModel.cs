@@ -2,7 +2,6 @@
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.ViewModels.Base;
-using MvvmCross.Localization;
 
 namespace BMM.Core.ViewModels
 {
@@ -10,8 +9,8 @@ namespace BMM.Core.ViewModels
     {
         private Podcast _podcast;
 
-        public PodcastBaseViewModel(IDocumentFilter documentFilter = null, IMvxLanguageBinder languageBinder = null)
-            : base(documentFilter, languageBinder)
+        public PodcastBaseViewModel(IDocumentFilter documentFilter = null)
+            : base(documentFilter)
         {
             _podcast = new Podcast
             {

@@ -5,6 +5,7 @@ using Android.Text.Style;
 using Android.Views;
 using AndroidX.Activity;
 using AndroidX.Core.Content;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Extensions;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
@@ -34,7 +35,7 @@ namespace BMM.UI.Droid.Application.Fragments
             inflater.Inflate(Resource.Menu.share_trackcollection, menu);
             var item = menu.GetItem(0);
 
-            var title = new SpannableString(ViewModel.GlobalTextSource.GetText("Done"));
+            var title = new SpannableString(ViewModel.TextSource[Translations.Global_Done]);
             title.SetSpan(
                 new ForegroundColorSpan(Context.GetColorFromResource(Resource.Color.colorPrimary)),
                 0,

@@ -18,7 +18,7 @@ namespace BMM.UI.iOS
 
         public System.Type ParentViewControllerType => typeof(MenuViewController);
 
-        public ContainmentViewController() : base("ContainmentViewController", null)
+        public ContainmentViewController() : base(nameof(ContainmentViewController), null)
         { }
 
         public override void ViewDidLoad()

@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
 {
     public partial class PodcastsViewController : BaseViewController<PodcastsViewModel>
     {
-        public PodcastsViewController() : base("PodcastsViewController")
+        public PodcastsViewController() : base(nameof(PodcastsViewController))
         {
         }
 

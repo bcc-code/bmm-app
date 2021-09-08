@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
 {
     public partial class CuratedPlaylistsViewController : BaseViewController<CuratedPlaylistsViewModel>
     {
-        public CuratedPlaylistsViewController() : base("CuratedPlaylistsViewController")
+        public CuratedPlaylistsViewController() : base(nameof(CuratedPlaylistsViewController))
         {
         }
 

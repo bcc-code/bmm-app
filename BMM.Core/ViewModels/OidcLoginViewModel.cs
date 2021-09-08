@@ -10,6 +10,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.PostLoginActions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
 using MvvmCross.Localization;
@@ -56,10 +57,6 @@ namespace BMM.Core.ViewModels
 
         public bool IsInitialLogin { get; set; }
 
-        /* We want to get rid of this OidcTextSource and bind back to TextSource if we decide to use OidcLogin permanently.
-         * Remember to change back bindings to TextSource in OidcLoginViewModel and its View (Android) and in OidcLoginViewController (iOS). */
-        public IMvxLanguageBinder OidcTextSource => new MvxLanguageBinder(GlobalConstants.GeneralNamespace, "LoginViewModel");
-
         public override void Prepare(OidcLoginParameters parameter)
         {
             if (parameter.IsInitialLogin)
@@ -76,7 +73,7 @@ namespace BMM.Core.ViewModels
             // Ensure the API is online when sending the login request
             if (_connection.GetStatus() != ConnectionStatus.Online)
             {
-                await _userDialogs.AlertAsync(OidcTextSource.GetText("LoginNoConnectionMessage"), OidcTextSource.GetText("LoginFailureTitle"));
+                await _userDialogs.AlertAsync(TextSource[Translations.LoginViewModel_LoginNoConnectionMessage], TextSource[Translations.LoginViewModel_LoginFailureTitle]);
                 IsLoading = false;
                 return;
             }

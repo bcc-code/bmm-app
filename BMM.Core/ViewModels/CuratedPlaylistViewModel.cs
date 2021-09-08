@@ -55,7 +55,6 @@ namespace BMM.Core.ViewModels
         {
             _playlistManager = playlistManager;
             TrackInfoProvider = new AudiobookPodcastInfoProvider(TrackInfoProvider);
-            TextSource = new MvxLanguageBinder(GlobalConstants.GeneralNamespace, nameof(TrackCollectionViewModel));
         }
 
         public void Prepare(Playlist curatedPlaylist)

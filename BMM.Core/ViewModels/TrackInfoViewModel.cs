@@ -7,10 +7,10 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
-using MvvmCross.Localization;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
@@ -19,17 +19,11 @@ namespace BMM.Core.ViewModels
     {
         private readonly IUriOpener _uriOpener;
         private readonly IExceptionHandler _exceptionHandler;
-        private readonly IDeepLinkHandler _deepLinkHandler;
 
-        public TrackInfoViewModel(IUriOpener uriOpener, IExceptionHandler exceptionHandler, IDeepLinkHandler deepLinkHandler, IMvxLanguageBinder textSource = null)
+        public TrackInfoViewModel(IUriOpener uriOpener, IExceptionHandler exceptionHandler, IDeepLinkHandler deepLinkHandler)
         {
             _uriOpener = uriOpener;
             _exceptionHandler = exceptionHandler;
-            _deepLinkHandler = deepLinkHandler;
-            if (textSource != null)
-            {
-                TextSource = textSource;
-            }
         }
 
         private Track _track;
@@ -62,14 +56,14 @@ namespace BMM.Core.ViewModels
             {
                 sections.Add(new ListSection<IListContentItem>
                 {
-                    Title = TextSource.GetText("ExternalReferences"),
+                    Title = TextSource[Translations.TrackInfoViewModel_ExternalReferences],
                     Items = externalRelations
                 });
             }
 
             sections.Add(new ListSection<IListContentItem>
             {
-                Title = TextSource.GetText("AboutTrack"),
+                Title = TextSource[Translations.TrackInfoViewModel_AboutTrack],
                 Items = aboutTrackInfos
             });
 
@@ -107,7 +101,7 @@ namespace BMM.Core.ViewModels
 
             items.Add(new SelectableListItem
             {
-                Title = TextSource.GetText("TrackTitle"),
+                Title = TextSource[Translations.TrackInfoViewModel_TrackTitle],
                 Text = Track.Meta.Title
             });
 
@@ -115,14 +109,14 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("SongNumber"),
+                    Title = TextSource[Translations.TrackInfoViewModel_SongNumber],
                     Text = SeparateByComma(SongNumbers)
                 });
             }
 
             items.Add(new SelectableListItem
             {
-                Title = TextSource.GetText("Album"),
+                Title = TextSource[Translations.TrackInfoViewModel_Album],
                 Text = Track.Meta.Album
             });
 
@@ -130,7 +124,7 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("Artist"),
+                    Title = TextSource[Translations.TrackInfoViewModel_Artist],
                     Text = SeparateByComma(InterpreterNames)
                 });
             }
@@ -139,7 +133,7 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("Duration"),
+                    Title = TextSource[Translations.TrackInfoViewModel_Duration],
                     Text = FormattedDuration
                 });
             }
@@ -148,7 +142,7 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("PublishDate"),
+                    Title = TextSource[Translations.TrackInfoViewModel_PublishDate],
                     Text = TimeInNorway
                 });
             }
@@ -157,7 +151,7 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("Lyricist"),
+                    Title = TextSource[Translations.TrackInfoViewModel_Lyricist],
                     Text = SeparateByComma(LyricistNames)
                 });
             }
@@ -166,7 +160,7 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("Composer"),
+                    Title = TextSource[Translations.TrackInfoViewModel_Composer],
                     Text = SeparateByComma(ComposerNames)
                 });
             }
@@ -175,7 +169,7 @@ namespace BMM.Core.ViewModels
 			{
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("Arranger"),
+                    Title = TextSource[Translations.TrackInfoViewModel_Arranger],
                     Text = SeparateByComma(ArrangerNames)
                 });
             }
@@ -184,7 +178,7 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("Publisher"),
+                    Title = TextSource[Translations.TrackInfoViewModel_Publisher],
                     Text = Track.Meta.Publisher
                 });
             }
@@ -193,7 +187,7 @@ namespace BMM.Core.ViewModels
             {
                 items.Add(new SelectableListItem
                 {
-                    Title = TextSource.GetText("Copyright"),
+                    Title = TextSource[Translations.TrackInfoViewModel_Copyright],
                     Text = Track.Meta.Copyright
                 });
             }
