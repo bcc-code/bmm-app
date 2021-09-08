@@ -5,6 +5,7 @@ using BMM.Api;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Test.Helpers;
@@ -35,6 +36,8 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
             Ioc.RegisterSingleton(new Mock<IConnection>().Object);
 
             DocumentsViewModel = new DocumentsViewModelImplementation();
+            DocumentsViewModel.PostprocessDocumentsAction = new Mock<IPostprocessDocumentsAction>().Object;
+            DocumentsViewModel.MvxMainThreadAsyncDispatcher = mockDispatcher;
         }
 
         [Test]
