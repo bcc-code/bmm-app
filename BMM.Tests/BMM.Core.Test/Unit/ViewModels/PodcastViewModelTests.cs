@@ -11,6 +11,7 @@ using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Implementations.UI;
@@ -37,7 +38,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IUserDialogs> _userDialogs;
         private Mock<IToastDisplayer> _toastDisplayer;
         private Mock<INetworkSettings> _networkSettings;
-        private Mock<IMvxLanguageBinder> _languageBinder;
+        private Mock<IBMMLanguageBinder> _languageBinder;
         private Mock<IViewModelAwareViewPresenter> _viewPresenter;
         private Mock<IDownloadedTracksOnlyFilter> _downloadedOnlyFilter;
         private Mock<IListenedTracksStorage> _listenedTrackStorage;
@@ -54,7 +55,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             _userDialogs = new Mock<IUserDialogs>();
             _toastDisplayer = new Mock<IToastDisplayer>();
             _networkSettings = new Mock<INetworkSettings>();
-            _languageBinder = new Mock<IMvxLanguageBinder>();
+            _languageBinder = new Mock<IBMMLanguageBinder>();
             _inMemoryCache = new InMemoryBlobCache();
             _viewPresenter = new Mock<IViewModelAwareViewPresenter>();
             _downloadedOnlyFilter = new Mock<IDownloadedTracksOnlyFilter>();
@@ -92,7 +93,7 @@ namespace BMM.Core.Test.Unit.ViewModels
 
         public PodcastViewModel CreatePodcastViewModel()
         {
-            return new PodcastViewModel(
+            var viewModel = new PodcastViewModel(
                 _podcastDownloader.Object,
                 _connection.Object,
                 _mediaDownloader.Object,
@@ -102,6 +103,9 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _listenedTrackStorage.Object,
                 _networkSettings.Object,
                 _languageBinder.Object);
+
+            viewModel.TextSource = _languageBinder.Object;
+            return viewModel;
         }
 
         [Test]
@@ -126,7 +130,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             // Arrange
             var followButtonText = "text";
             _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
-            _languageBinder.Setup(x => x.GetText(It.IsAny<string>())).Returns(followButtonText);
+            _languageBinder.Setup(x => x[It.IsAny<string>()]).Returns(followButtonText);
 
             var podcastViewModel = CreatePodcastViewModel();
 

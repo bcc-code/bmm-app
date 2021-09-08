@@ -14,7 +14,7 @@ using NUnit.Framework;
 namespace BMM.Core.Test.Unit.ViewModels
 {
     [TestFixture]
-    public class TrackInfoViewModelTests: BaseViewModelTests
+    public class TrackInfoViewModelTests : BaseViewModelTests
     {
         private Mock<IUriOpener> _uriOpenerMock;
         private Mock<IDeepLinkHandler> _deepLinkHandlerMock;
@@ -22,7 +22,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         [SetUp]
         public void Init()
         {
-            base.Setup();
+            Setup();
             base.AdditionalSetup();
 
             TextResource.Setup(x => x.GetText(It.IsAny<string>())).Returns("Test");
@@ -40,6 +40,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             var trackInfoViewModel = new TrackInfoViewModel(_uriOpenerMock.Object, ExceptionHandler.Object, _deepLinkHandlerMock.Object);
+            trackInfoViewModel.TextSource = TextResource.Object;
             trackInfoViewModel.Prepare(Track);
             await trackInfoViewModel.Initialize();
             var section = trackInfoViewModel.BuildSections().FirstOrDefault();
@@ -56,6 +57,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             var trackInfoViewModel = new TrackInfoViewModel(_uriOpenerMock.Object, ExceptionHandler.Object, _deepLinkHandlerMock.Object);
+            trackInfoViewModel.TextSource = TextResource.Object;
             trackInfoViewModel.Prepare(TrackWithExternalRelations);
             await trackInfoViewModel.Initialize();
             var section = trackInfoViewModel.BuildSections().FirstOrDefault();

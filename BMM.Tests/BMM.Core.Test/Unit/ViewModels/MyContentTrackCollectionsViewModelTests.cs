@@ -43,6 +43,7 @@ namespace BMM.Core.Test.Unit.ViewModels
                 new Mock<IOfflineTrackCollectionStorage>().Object,
                 new Mock<IStorageManager>().Object,
                 _connectionMock.Object);
+            newestViewModel.TextSource = TextResource.Object;
 
             // Act
             await newestViewModel.LoadItems();
@@ -76,6 +77,7 @@ namespace BMM.Core.Test.Unit.ViewModels
                 mockStorage.Object,
                 _connectionMock.Object);
 
+            newestViewModel.TextSource = TextResource.Object;
             _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Offline);
 
             // Act

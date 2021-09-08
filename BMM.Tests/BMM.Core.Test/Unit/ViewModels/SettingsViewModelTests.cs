@@ -111,7 +111,7 @@ namespace BMM.Core.Test.Unit.ViewModels
 
         public SettingsViewModel CreateSettingsViewModel()
         {
-            return new SettingsViewModel(
+            var settingsViewModel = new SettingsViewModel(
                 _deviceInfo.Object,
                 _networkSettings.Object,
                 _tokenProvider.Object,
@@ -129,8 +129,10 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _exceptionHandler.Object,
                 _profileLoader.Object,
                 _userStorage.Object,
-                _remoteConfig.Object,
-                _textSource.Object);
+                _remoteConfig.Object);
+
+            settingsViewModel.TextSource = TextResource.Object;
+            return settingsViewModel;
         }
 
         [Test]
@@ -211,6 +213,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             // Arrange
             var settingsViewModel = CreateSettingsViewModel();
             settingsViewModel.ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            settingsViewModel.TextSource = TextResource.Object;
             await settingsViewModel.Initialize();
 
             // Act
