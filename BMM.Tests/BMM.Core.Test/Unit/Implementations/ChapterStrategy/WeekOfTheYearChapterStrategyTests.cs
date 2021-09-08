@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.ChapterStrategy;
+using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models;
 using Moq;
 using MvvmCross.Localization;
@@ -12,14 +14,20 @@ namespace BMM.Core.Test.Unit.Implementations.ChapterStrategy
 {
     public class WeekOfTheYearChapterStrategyTests
     {
+        private readonly Mock<IBMMLanguageBinder> _textSource = new();
         private WeekOfTheYearChapterStrategy _chapterStrategy;
-        private Mock<IMvxLanguageBinder> _textSource = new Mock<IMvxLanguageBinder>();
-
 
         [SetUp]
         public void Setup()
         {
-            _chapterStrategy = new WeekOfTheYearChapterStrategy(_textSource.Object);
+            _chapterStrategy = new WeekOfTheYearChapterStrategy();
+            BMMLanguageBinderLocator.SetImplementation(_textSource.Object);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            BMMLanguageBinderLocator.ClearImplementation();
         }
 
         [Test]

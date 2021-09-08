@@ -2,6 +2,7 @@
 using BMM.Api.Framework;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using Moq;
 using MvvmCross.Base;
@@ -9,6 +10,7 @@ using MvvmCross.Navigation;
 using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.Tests;
+using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.ViewModels.Base
 {
@@ -19,7 +21,7 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
             Client = new Mock<IBMMClient>();
             MediaQueue = new Mock<IMediaQueue>();
             ExceptionHandler = new Mock<IExceptionHandler>();
-            TextResource = new Mock<IMvxLanguageBinder>();
+            TextResource = new Mock<IBMMLanguageBinder>();
             Analytics = new Mock<IAnalytics>();
             MvxMessenger = new Mock<IMvxMessenger>();
             NavigationService = new Mock<IMvxNavigationService>();
@@ -44,7 +46,7 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
 
         protected Mock<IExceptionHandler> ExceptionHandler { get; private set; }
 
-        protected Mock<IMvxLanguageBinder> TextResource { get; private set; }
+        protected Mock<IBMMLanguageBinder> TextResource { get; private set; }
 
         protected Mock<IMvxMessenger> MvxMessenger { get; private set; }
 
