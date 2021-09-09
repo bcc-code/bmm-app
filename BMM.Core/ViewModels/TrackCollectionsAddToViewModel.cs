@@ -2,7 +2,9 @@
 using Acr.UserDialogs;
 using BMM.Api.Implementation.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Core.Implementations.FileStorage;
@@ -37,6 +39,14 @@ namespace BMM.Core.ViewModels
         {
             _documentId = document.DocumentId;
             _documentType = document.DocumentType;
+        }
+
+        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        {
+            var items = await base.LoadItems(policy);
+            return items
+                .OfType<TrackCollection>()
+                .Where(t => t.CanEdit);
         }
 
         protected override async Task DocumentAction(Document item, IList<Track> list)
