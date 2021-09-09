@@ -14,7 +14,7 @@ namespace BMM.Core.Test.Unit.Implementations.ChapterStrategy
 {
     public class WeekOfTheYearChapterStrategyTests
     {
-        private readonly Mock<IBMMLanguageBinder> _textSource = new();
+        private readonly Mock<IBMMLanguageBinder> _textSource = new Mock<IBMMLanguageBinder>();
         private WeekOfTheYearChapterStrategy _chapterStrategy;
 
         [SetUp]

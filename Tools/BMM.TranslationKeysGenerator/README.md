@@ -11,6 +11,9 @@ If the tool does not work as expected, please follow these steps:
      - Path should point to 'Tools\\BMM.TranslationKeysGenerator\\run_program.sh'
      - Arguments to script need to be '\"$SOLUTION_FOLDER$\" \"$FILE$\"'
      - In some cases it is needed to make run_program.sh executable by using chmod  
+   
+IMPORTANT! 
+      If you are using Jetbrains Rider on Windows, you need to change Custom tool Path from 'Tools\BMM.TranslationKeysGenerator\run_program.sh' to 'Tools/BMM.TranslationKeysGenerator/Output/bin/BMM.TranslationKeysGenerator.exe' 
 
 
  - Visual Studio for Mac: 
