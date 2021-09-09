@@ -36,7 +36,7 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
             //Arrange
             var documents = new List<Track>
             {
-                new()
+                new Track()
                 {
                     Subtype = TrackSubType.Video
                 }

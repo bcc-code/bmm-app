@@ -90,13 +90,13 @@ namespace BMM.Core.ViewModels.MyContent
         {
             return new List<PinnedItem>
             {
-                new()
+                new PinnedItem()
                 {
                     Title = TextSource[Translations.MyContentViewModel_DownloadedContent],
                     Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<DownloadedContentViewModel>()),
                     Icon = "icon_download"
                 },
-                new()
+                new PinnedItem()
                 {
                     Title = TextSource[Translations.MyContentViewModel_FollowedPodcasts],
                     Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<FollowedPodcastsViewModel>()),
