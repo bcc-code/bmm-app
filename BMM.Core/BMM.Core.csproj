@@ -51,7 +51,7 @@
   </ItemGroup>
   
   <Target Name="TranslationKeysGenerator" BeforeTargets="ResolveAssemblyReferences">
-    <Exec Command="..\Tools\BMM.TranslationKeysGenerator\build_project.sh '..\Tools\BMM.TranslationKeysGenerator\BMM.TranslationKeysGenerator.csproj'" ContinueOnError="WarnAndContinue" />
+    <Exec Command="..\Tools\BMM.TranslationKeysGenerator\build_and_run_project.sh '..\Tools\BMM.TranslationKeysGenerator' '..\Tools\BMM.TranslationKeysGenerator\BMM.TranslationKeysGenerator.csproj' '..' 'BMM.Core\Translation\en\main.json'" ContinueOnError="WarnAndContinue" />
   </Target>
 
 </Project>
