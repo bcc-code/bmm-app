@@ -50,7 +50,7 @@
     <Compile Remove="ViewModels\PodcastSection.cs" />
   </ItemGroup>
   
-  <Target Name="TranslationKeysGenerator" BeforeTargets="ResolveAssemblyReferences">
+  <Target Name="TranslationKeysGenerator" BeforeTargets="PreBuildEvent">
     <Exec Command="..\Tools\BMM.TranslationKeysGenerator\build_and_run_project.sh '..\Tools\BMM.TranslationKeysGenerator' '..\Tools\BMM.TranslationKeysGenerator\BMM.TranslationKeysGenerator.csproj' '..' 'BMM.Core\Translation\en\main.json'" ContinueOnError="WarnAndContinue" />
   </Target>
 
