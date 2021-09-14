@@ -284,7 +284,7 @@
     "OptionAppVersionHeader": "App-versjon",
     "AppInfoTitle": "App-informasjon",
     "AppInfoAppVersion": "App-versjon: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Produsent:",
     "AppInfoDeviceModel": "Enhetsmodell: ",
     "AppInfoDevicePlatform": "Enhetsplattform: ",
     "AppInfoDeviceVersion": "Enhetsversjon: ",
@@ -343,7 +343,7 @@
   },
   "ShareTrackCollectionViewModel": {
     "Title": "Del spilleliste",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
+    "ShareNote": "Ved å dele en spilleliste, vil andre kunne lytte til sporene du har lagt til på listen, hvis de har tilgang til lenken.",
     "ShareLink": "Dele lenke",
     "MakePrivate": "gjør privat",
     "SharedWithFormat": "Delt med {0} personer"
