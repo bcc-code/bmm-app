@@ -12,7 +12,7 @@
     "Speech": "Tale",
     "Audiobook": "Lydbog",
     "Exegesis": "Tydning",
-    "Done": "Done"
+    "Done": "Færdig"
   },
   "Streak": {
     "Message": "Din streak denne uge",
@@ -55,7 +55,7 @@
     "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
     "TrackAlreadyExistInTrackCollection": "Findes allerede i spillelisten.",
     "ShufflePlay": "Afspil blandet",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albummer"
   },
   "AlbumsViewModel": {
     "Title": "Arkiv",
@@ -180,9 +180,9 @@
     "DownloadedContent": "Downloadet indhold",
     "FollowedPodcasts": "Podcasts jeg følger",
     "MyTracks": "Mine spor",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Mine spillelister",
+    "SharedWithMe": "Delt med mig",
+    "ByFormat": "af {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcasts jeg følger",
@@ -223,7 +223,7 @@
     "UnfollowConfirm": "Er du sikker på at du vil stoppe med at følge denne podcast?",
     "MobileDownloadDisabled": "Aktiver download via mobildata I Indstillinger, for at downloade indhold automatisk.",
     "ToggleFollowOfflineError": "Du kan ikke følge eller stoppe med at følge en podcast, når du er i offline-mode.",
-    "Week": "Week {0}",
+    "Week": "Uge {0}",
     "ThisWeek": "Denne uge",
     "LastWeek": "Sidste uge",
     "AslaksenTheme1": "Tro på Underets gud",
@@ -260,8 +260,8 @@
     "HeadlineSettings": "Indstillinger",
     "OptionAutoplayHeader": "Auto-afspil",
     "OptionAutoplayText": "Afspil musik efter dagens episode af Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHiddenHeader": "Skjul streak",
+    "OptionStreakHiddenText": "Skjul din lytte-statistik",
     "OptionEnablePushHeader": "Aktiver notifikationer",
     "OptionPushNotifications": "Notifikationer",
     "OptionPushNotificationsSubtitle": "Aktiver notifikationer på podcaster du følger",
@@ -284,7 +284,7 @@
     "OptionAppVersionHeader": "App-version",
     "AppInfoTitle": "App-information",
     "AppInfoAppVersion": "App-version: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Producent: ",
     "AppInfoDeviceModel": "Enhedsmodel: ",
     "AppInfoDevicePlatform": "Enhedsplatform: ",
     "AppInfoDeviceVersion": "Enhedsversion: ",
@@ -292,7 +292,7 @@
     "LogoutConfirm": "Er du sikker på at du vil logge ud?",
     "Logout": "Log ud",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Idéer til forbedringer af BMM? Del dem med os."
   },
   "StorageManagementViewModel": {
     "Title": "Lagringsplads til offline indhold",
@@ -300,7 +300,7 @@
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} sange/taler",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracksLoaded": "{0} sange & taler hentet",
     "Download": "Download",
     "Shuffle": "Afspil blandet",
     "Play": "Afspil"
@@ -324,11 +324,11 @@
     "MobileDownloadDisabled": "Aktiver download via mobildata I Indstillinger, for at fortsætte",
     "NotEnoughtSpaceToDownload": "Ikke nok lagringsplads til at downloade alt indhold",
     "AskToResumeDownloading": "Det er nyt indhold i denne spilleliste. Vil du fortsætte download?",
-    "Private": "Private",
+    "Private": "Privat",
     "DeletePlaylist": "Slett spilleliste",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Rediger spilleliste",
+    "SharePlaylist": "Del spilleliste",
+    "RemovePlaylist": "Slet spilleliste"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Rediger spilleliste",
@@ -342,17 +342,17 @@
     "KeepEditing": "Fortsæt redigering"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Del spilleliste",
+    "ShareNote": "Ved at dele en spilleliste kan andre tilgå den via linket, og lytte til de sange og taler du tilføjer.",
+    "ShareLink": "Del link",
+    "MakePrivate": "Gør privat",
+    "SharedWithFormat": "Delt med {0} personer"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Delt spilleliste",
+    "Close": "Luk",
+    "AddToMyPlaylist": "Føj til mine spillelister",
+    "FollowOwnTrackCollection": "Du kan ikke følge din egen spilleliste"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Spilleliste",
