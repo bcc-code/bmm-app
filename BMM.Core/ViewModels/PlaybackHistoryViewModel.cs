@@ -50,7 +50,7 @@ namespace BMM.Core.ViewModels
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            return await _preparePlaybackHistoryAction.ExecureGuarded();
+            return await _preparePlaybackHistoryAction.ExecuteGuarded();
         }
     }
 }

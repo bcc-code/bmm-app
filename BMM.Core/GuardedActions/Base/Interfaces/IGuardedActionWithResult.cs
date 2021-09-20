@@ -6,6 +6,6 @@ namespace BMM.Core.GuardedActions.Base.Interfaces
     public interface IGuardedActionWithResult<TResult> : IBaseGuardedAction
     {
         IMvxAsyncCommand Command { get; }
-        Task<TResult> ExecureGuarded();
+        Task<TResult> ExecuteGuarded();
     }
 }

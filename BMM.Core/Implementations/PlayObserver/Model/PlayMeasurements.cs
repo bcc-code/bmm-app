@@ -21,5 +21,7 @@ namespace BMM.Core.Implementations.PlayObserver.Model
         public DateTime TimestampEnd { get; set; }
 
         public double SpentTime { get; set; }
+
+        public double LastPosition { get; set; }
     }
 }

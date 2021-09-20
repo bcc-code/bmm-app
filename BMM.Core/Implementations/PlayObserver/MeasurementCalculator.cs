@@ -36,8 +36,18 @@ namespace BMM.Core.Implementations.PlayObserver
                 TrackLength = trackLength,
                 TimestampStart = portions.First().StartTime,
                 TimestampEnd = portions.Last().EndTime,
-                SpentTime = CalculateSpentTime(portions)
+                SpentTime = CalculateSpentTime(portions),
+                LastPosition = GetLastPosition(portions)
             };
+        }
+
+        private double GetLastPosition(IList<ListenedPortion> portions)
+        {
+            var newestPortion = portions
+                .OrderByDescending(p => p.EndTime)
+                .First();
+
+            return newestPortion.End;
         }
 
         public double CalculateSpentTime(IList<ListenedPortion> portions)

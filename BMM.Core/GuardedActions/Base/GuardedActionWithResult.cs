@@ -10,7 +10,7 @@ namespace BMM.Core.GuardedActions.Base
           IGuardedActionWithResult<TResult>
     {
         private IMvxAsyncCommand _command;
-        public IMvxAsyncCommand Command => _command ??= new MvxAsyncCommand(ExecureGuarded, GuardedCanExecute);
+        public IMvxAsyncCommand Command => _command ??= new MvxAsyncCommand(ExecuteGuarded, GuardedCanExecute);
 
         protected abstract Task<TResult> Execute();
         protected virtual bool CanExecute() => true;
@@ -18,7 +18,7 @@ namespace BMM.Core.GuardedActions.Base
         protected virtual Task OnException(Exception ex) => Task.CompletedTask;
         protected virtual Task OnFinally() => Task.CompletedTask;
 
-        public async Task<TResult> ExecureGuarded() => await Invoker.Invoke(Execute, OnException, OnFinally, ExceptionHandlers());
+        public async Task<TResult> ExecuteGuarded() => await Invoker.Invoke(Execute, OnException, OnFinally, ExceptionHandlers());
 
         private bool GuardedCanExecute()
         {

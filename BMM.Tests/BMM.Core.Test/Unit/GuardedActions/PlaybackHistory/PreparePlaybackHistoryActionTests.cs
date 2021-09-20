@@ -49,7 +49,7 @@ namespace BMM.Core.Test.Unit.GuardedActions.PlaybackHistory
                 .Returns(listOfPlaybackHistoryEntries);
 
             //Act
-            var result = await GuardedAction.ExecureGuarded();
+            var result = await GuardedAction.ExecuteGuarded();
 
             //Assert
             var tracks = result
