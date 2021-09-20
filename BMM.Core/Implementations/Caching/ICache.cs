@@ -10,6 +10,10 @@ namespace BMM.Core.Implementations.Caching
         Task<CachedItem<T>> GetOrFetchObject<T>(string key, Func<Task<T>> fetchFunc, DateTimeOffset? absoluteExpiration = null);
 
         Task UpdateItem<T>(string key, CachedItem<T> item);
+
+        Task<T> GetObject<T>(string key);
+
+        Task InsertObject<T>(string key, T obj);
     }
 
     public class CachedItem<T>

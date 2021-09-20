@@ -33,7 +33,7 @@ namespace BMM.Core.ViewModels
         public override void Start()
         {
             base.Start();
-            _analytics.LogEvent(string.Format(LoggingEvents.ViewModelOpenedFormat, GetType().Name), new Dictionary<string, object>());
+            _analytics.LogEvent(string.Format(Event.ViewModelOpenedFormat, GetType().Name), new Dictionary<string, object>());
         }
 
         protected override async Task DocumentAction(Document item, IList<Track> list)
