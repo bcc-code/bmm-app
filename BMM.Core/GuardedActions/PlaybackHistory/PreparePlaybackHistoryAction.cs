@@ -6,6 +6,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.PlaybackHistory.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models;
+using BMM.Core.Models.PlaybackHistory;
 
 namespace BMM.Core.GuardedActions.PlaybackHistory
 {
@@ -23,17 +24,33 @@ namespace BMM.Core.GuardedActions.PlaybackHistory
 
         protected override async Task<IEnumerable<Document>> Execute()
         {
-            var playbackHistoryGroups = await _playbackHistoryService.GetAll();
+            var playbackHistoryEntries = await _playbackHistoryService.GetAll();
+
+            if (!playbackHistoryEntries.Any())
+                return Enumerable.Empty<Document>();
+
             var documents = new List<Document>();
 
-            foreach (var playbackHistory in playbackHistoryGroups)
+            var groupedEntries = playbackHistoryEntries
+                .OrderByDescending(x => x.PlayedAtUTC)
+                .GroupBy(l => new
+                {
+                    l.PlayedAtUTC.Year,
+                    l.PlayedAtUTC.Month,
+                    l.PlayedAtUTC.Day
+                })
+                .Where(g => g.Any())
+                .Select(g => new PlaybackHistoryGroup(g.ToList(), g.First().PlayedAtUTC))
+                .ToList();
+
+            foreach (var groupedEntry in groupedEntries)
             {
                 documents.Add(new ChapterHeader
                 {
-                    Title = playbackHistory.GroupDateTime.ToString(DateFormat)
+                    Title = groupedEntry.GroupDateTime.ToString(DateFormat)
                 });
 
-                var tracks = playbackHistory
+                var tracks = groupedEntry
                     .PlayedTracks
                     .Select(x => x.MediaTrack);
 

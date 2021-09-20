@@ -8,7 +8,6 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models.PlaybackHistory;
-using BMM.Core.Models.PlaybackHistory.Interfaces;
 
 namespace BMM.Core.Implementations.Player
 {
@@ -25,7 +24,7 @@ namespace BMM.Core.Implementations.Player
 
         public async Task AddPlayedTrack(IMediaTrack mediaTrack)
         {
-            var playbackHistory = await GetPlaybackHistory();
+            var playbackHistory = await GetAll();
 
             var lastTrack = playbackHistory
                 .LastOrDefault()
@@ -44,29 +43,7 @@ namespace BMM.Core.Implementations.Player
                 playbackHistory);
         }
 
-        public async Task<IEnumerable<IPlaybackHistoryGroup>> GetAll()
-        {
-            var playbackHistory = await GetPlaybackHistory();
-
-            if (!playbackHistory.Any())
-                return Enumerable.Empty<IPlaybackHistoryGroup>();
-
-            var result = playbackHistory
-                .OrderByDescending(x => x.PlayedAtUTC)
-                .GroupBy(l => new
-                {
-                    l.PlayedAtUTC.Year,
-                    l.PlayedAtUTC.Month,
-                    l.PlayedAtUTC.Day
-                })
-                .Where(g => g.Any())
-                .Select(g => new PlaybackHistoryGroup(g.ToList(), g.First().PlayedAtUTC))
-                .ToList();
-
-            return result;
-        }
-
-        private async Task<List<PlaybackHistoryEntry>> GetPlaybackHistory()
+        public async Task<List<PlaybackHistoryEntry>> GetAll()
         {
             List<PlaybackHistoryEntry> playbackHistoryEntries;
 
