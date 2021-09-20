@@ -12,7 +12,7 @@ namespace BMM.Core.GuardedActions.Base
         private IMvxAsyncCommand<TParameter> _command;
         public IMvxAsyncCommand<TParameter> Command => _command ??= new MvxAsyncCommand<TParameter>(ExecuteGuarded, GuardedCanExecute);
 
-        protected abstract Task Execute(TParameter parameter);
+        protected abstract Task Execute(TParameter vmType);
         protected virtual bool CanExecute(TParameter parameter) => true;
         protected virtual Task OnException(Exception ex, TParameter parameter) => Task.CompletedTask;
         protected virtual Task OnFinally(TParameter parameter) => Task.CompletedTask;

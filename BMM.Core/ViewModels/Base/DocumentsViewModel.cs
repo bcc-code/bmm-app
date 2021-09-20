@@ -24,9 +24,7 @@ using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
-using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
-using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels.Base
 {

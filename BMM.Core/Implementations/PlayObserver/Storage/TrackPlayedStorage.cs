@@ -11,7 +11,7 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
 {
     public class TrackPlayedStorage : ITrackPlayedStorage
     {
-        private const string StorageKey = StorageKeys.FinishedTrackPlayedEvents;
+        private readonly string _storageKey = StorageKeys.FinishedTrackPlayedEvents;
         private readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
         private readonly IBlobCache _blobCache;
 
@@ -41,7 +41,7 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
 
         public async Task<IList<TrackPlayedEvent>> GetExistingEvents()
         {
-            var result = await _blobCache.GetOrCreateObject<IList<TrackPlayedEvent>>(StorageKey, () => new List<TrackPlayedEvent>());
+            var result = await _blobCache.GetOrCreateObject<IList<TrackPlayedEvent>>(_storageKey, () => new List<TrackPlayedEvent>());
             return result;
         }
 
@@ -63,7 +63,7 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
         // this method should be called inside of a lock / semaphore
         private async Task SaveEvents(IList<TrackPlayedEvent> playedEvents)
         {
-            await _blobCache.InsertObject(StorageKey, playedEvents);
+            await _blobCache.InsertObject(_storageKey, playedEvents);
         }
     }
 }
