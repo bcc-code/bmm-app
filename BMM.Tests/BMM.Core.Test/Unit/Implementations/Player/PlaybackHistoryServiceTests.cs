@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
-using BMM.Core.Implementations.Persistence.Interfaces;
+using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Player;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models.PlaybackHistory;
@@ -19,21 +19,21 @@ namespace BMM.Core.Test.Unit.Implementations.Player
 	public class PlaybackHistoryServiceTests : BaseTests<IPlaybackHistoryService>
 	{
 		private const int DefaultTrackId = 1;
-		private IBlobCacheWrapper _blobCacheWrapperMock;
+		private ICache _cacheWrapper;
 
 		protected override IPlaybackHistoryService CreateTestSubject()
 		{
-			return new PlaybackHistoryService(_blobCacheWrapperMock);
+			return new PlaybackHistoryService(_cacheWrapper);
 		}
 
 		protected override Task PrepareMocks()
 		{
-            _blobCacheWrapperMock = Substitute.For<IBlobCacheWrapper>();
+            _cacheWrapper = Substitute.For<ICache>();
 			return base.PrepareMocks();
 		}
 
 		[Test]
-		public void TrackShouldNotBeAddedToHistory_WhenIsTheSameAsLastEntry()
+		public async Task TrackShouldNotBeAddedToHistory_WhenIsTheSameAsLastEntry()
 		{
 			//Arrange
 			var mediaTrackMock = new Track()
@@ -46,15 +46,15 @@ namespace BMM.Core.Test.Unit.Implementations.Player
 				new PlaybackHistoryEntry(mediaTrackMock, DateTime.UtcNow)
 			};
 
-			_blobCacheWrapperMock
+			_cacheWrapper
 				.GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory)
 				.Returns(listOfPlaybackHistoryEntries);
 
 			//Act
-			Subject.AddPlayedTrack(mediaTrackMock);
+			await Subject.AddPlayedTrack(mediaTrackMock);
 
 			//Assert
-			_blobCacheWrapperMock
+			await _cacheWrapper
 				.DidNotReceive()
 				.InsertObject(
 					StorageKeys.PlaybackHistory,
@@ -62,7 +62,7 @@ namespace BMM.Core.Test.Unit.Implementations.Player
 		}
 
         [Test]
-        public void LastHistoryEntryIsRemoved_WhenMaxEntriesLimitIsExceeded()
+        public async Task LastHistoryEntryIsRemoved_WhenMaxEntriesLimitIsExceeded()
         {
             //Arrange
             var mediaTrackMock = new Track()
@@ -75,15 +75,15 @@ namespace BMM.Core.Test.Unit.Implementations.Player
             for (int i = 0; i < PlaybackHistoryService.MaxEntries; i++)
                 listOfPlaybackHistoryEntries.Add(new PlaybackHistoryEntry(Substitute.For<Track>(), DateTime.UtcNow));
 
-            _blobCacheWrapperMock
+            _cacheWrapper
                 .GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory)
                 .Returns(listOfPlaybackHistoryEntries);
 
             //Act
-            Subject.AddPlayedTrack(mediaTrackMock);
+            await Subject.AddPlayedTrack(mediaTrackMock);
 
             //Assert
-            _blobCacheWrapperMock
+            await _cacheWrapper
                 .Received(1)
                 .InsertObject(
                     StorageKeys.PlaybackHistory,
@@ -103,7 +103,7 @@ namespace BMM.Core.Test.Unit.Implementations.Player
                 new PlaybackHistoryEntry(Substitute.For<Track>(), DateTime.UtcNow.AddDays(1))
             };
 
-            _blobCacheWrapperMock
+            _cacheWrapper
                 .GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory)
                 .Returns(listOfPlaybackHistoryEntries);
 
@@ -131,7 +131,7 @@ namespace BMM.Core.Test.Unit.Implementations.Player
                 new PlaybackHistoryEntry(Substitute.For<Track>(), DateTime.UtcNow.AddDays(1)),
             };
 
-            _blobCacheWrapperMock
+            _cacheWrapper
                 .GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory)
                 .Returns(listOfPlaybackHistoryEntries);
 

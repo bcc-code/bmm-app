@@ -1,13 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
-using BMM.Core.Implementations.Persistence.Interfaces;
+using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models.PlaybackHistory;
 using BMM.Core.Models.PlaybackHistory.Interfaces;
@@ -17,15 +15,15 @@ namespace BMM.Core.Implementations.Player
     public class PlaybackHistoryService : IPlaybackHistoryService
     {
         public const int MaxEntries = 100;
-        private readonly IBlobCacheWrapper _blobCacheWrapper;
+        private readonly ICache _cache;
 
         public PlaybackHistoryService(
-            IBlobCacheWrapper blobCacheWrapper)
+            ICache cache)
         {
-            _blobCacheWrapper = blobCacheWrapper;
+            _cache = cache;
         }
 
-        public async void AddPlayedTrack(IMediaTrack mediaTrack)
+        public async Task AddPlayedTrack(IMediaTrack mediaTrack)
         {
             var playbackHistory = await GetPlaybackHistory();
 
@@ -41,7 +39,7 @@ namespace BMM.Core.Implementations.Player
 
             playbackHistory.Add(new PlaybackHistoryEntry((Track) mediaTrack, DateTime.UtcNow));
 
-            await _blobCacheWrapper.InsertObject(
+            await _cache.InsertObject(
                 StorageKeys.PlaybackHistory,
                 playbackHistory);
         }
@@ -74,7 +72,7 @@ namespace BMM.Core.Implementations.Player
 
             try
             {
-                playbackHistoryEntries = await _blobCacheWrapper.GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory);
+                playbackHistoryEntries = await _cache.GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory);
             }
             catch (KeyNotFoundException)
             {
