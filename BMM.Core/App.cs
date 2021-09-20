@@ -42,7 +42,10 @@ using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Media;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Notifications.Data;
+using BMM.Core.Implementations.Persistence;
+using BMM.Core.Implementations.Persistence.Interfaces;
 using BMM.Core.Implementations.Player;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.PlayObserver;
 using BMM.Core.Implementations.PlayObserver.Storage;
@@ -124,6 +127,7 @@ namespace BMM.Core
 
             // By default the UserAccount BlobCache is used. If LocalMachine is needed manual creation is needed
             Mvx.IoCProvider.RegisterSingleton<IBlobCache>(BlobCache.UserAccount);
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBlobCacheWrapper, BlobCacheWrapper>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<INotificationCenter, NotificationCenter>();
 
@@ -211,6 +215,7 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IPlayerErrorHandler, PlayerErrorHandler>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlayerAnalytics, PlayerAnalytics>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlaybackHistoryService, PlaybackHistoryService>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IMediaPlayer, ViewModelHandlingMediaPlayerDecorator>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ILiveTime, LiveTime>();
             Mvx.IoCProvider.RegisterType<IMeasurementCalculator, MeasurementCalculator>();

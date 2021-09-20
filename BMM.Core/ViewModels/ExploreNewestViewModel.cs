@@ -1,9 +1,11 @@
+using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
@@ -14,6 +16,7 @@ using BMM.Core.Messages;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
+using MvvmCross.Commands;
 using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 
@@ -24,6 +27,7 @@ namespace BMM.Core.ViewModels
         private readonly IStreakObserver _streakObserver;
         private readonly ISettingsStorage _settings;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
+        private readonly INavigateToViewModelAction _navigateToViewModelAction;
 
         public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
 
@@ -37,17 +41,21 @@ namespace BMM.Core.ViewModels
             IStreakObserver streakObserver,
             IMvxMessenger messenger,
             ISettingsStorage settings,
-            IBMMLanguageBinder bmmLanguageBinder)
+            IBMMLanguageBinder bmmLanguageBinder,
+            INavigateToViewModelAction navigateToViewModelAction)
         {
             _streakObserver = streakObserver;
             _settings = settings;
             _bmmLanguageBinder = bmmLanguageBinder;
+            _navigateToViewModelAction = navigateToViewModelAction;
             FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
             _listeningStreakToken = messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
         }
+
+        public IMvxAsyncCommand<Type> NavigateToViewModelCommand => _navigateToViewModelAction.Command;
 
         private void ListeningStreakChanged(ListeningStreakChangedMessage message)
         {
@@ -151,8 +159,10 @@ namespace BMM.Core.ViewModels
             var documentsBeforeFirstHeader = documents
                 .TakeWhile(d => d.DocumentType != DocumentType.DiscoverSectionHeader)
                 .ToList();
-            AslaksenTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d => d.DocumentType == DocumentType.Podcast && d.Id == AslaksenTeaserViewModel.AslaksenPodcastId);
-            FraKaareTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d => d.DocumentType == DocumentType.Podcast && d.Id == FraKaareTeaserViewModel.FraKårePodcastId);
+            AslaksenTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d =>
+                d.DocumentType == DocumentType.Podcast && d.Id == AslaksenTeaserViewModel.AslaksenPodcastId);
+            FraKaareTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d =>
+                d.DocumentType == DocumentType.Podcast && d.Id == FraKaareTeaserViewModel.FraKårePodcastId);
         }
 
         private void TranslateDocs(IList<Document> documents)

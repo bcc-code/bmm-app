@@ -17,15 +17,17 @@
         public static readonly string AutomaticallyDownloadedTracks = "local_podcasts_automatic_download";
         public static readonly string LocalTrackCollections = "local_track_collections";
 
-        public const string UnfinishedTrackPlayedEvent = "play_statistics";
-        public const string FinishedTrackPlayedEvents = "finished_track_played_events";
+        public static readonly string UnfinishedTrackPlayedEvent = "play_statistics";
+        public static readonly string FinishedTrackPlayedEvents = "finished_track_played_events";
         public static readonly string CurrentDownload = "current_download";
-        public const string LatestListeningStreak = "latest_listening_streak";
+        public static readonly string LatestListeningStreak = "latest_listening_streak";
 
-        public const string ListenedTracks = "listened_tracks";
-        public const string NotifiedAslaksenTracks = "notified_aslaksen_tracks";
-        public const string LastAslaksenNotification = "last_aslaksen_notification";
+        public static readonly string ListenedTracks = "listened_tracks";
+        public static readonly string NotifiedAslaksenTracks = "notified_aslaksen_tracks";
+        public static readonly string LastAslaksenNotification = "last_aslaksen_notification";
 
-        public const string LocalPlaylists = "local_playlists";
+        public static readonly string LocalPlaylists = "local_playlists";
+
+        public static readonly string PlaybackHistory = "playback_history";
     }
 }

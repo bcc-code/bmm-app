@@ -1,4 +1,5 @@
 ﻿using Android.Runtime;
+using Android.Views;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using Google.Android.Material.AppBar;
@@ -13,7 +14,7 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.ExploreNewestFragment")]
     public class ExploreNewestFragment : BaseFragment<ExploreNewestViewModel>
     {
-        public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Android.OS.Bundle savedInstanceState)
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Android.OS.Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
@@ -22,21 +23,24 @@ namespace BMM.UI.Droid.Application.Fragments
             if (appBar != null && swipeToRefresh != null)
                 appBar.OffsetChanged += (sender, args) => swipeToRefresh.Enabled = args.VerticalOffset == 0;
 
-            //// ToDo: Since the ImageViews are null we have to find another solution to changing the layout for smaller devices
-            //var radioBackgroundLiveUpcoming = view.FindViewById<ImageView>(Resource.Id.radioBackgroundLiveUpcoming);
-            //var radioBackgroundLiveBroadcasting = view.FindViewById<ImageView>(Resource.Id.radioBackgroundLiveBroadcasting);
-            //if (Resources.DisplayMetrics.WidthPixels <= 480)
-            //{
-            //    radioBackgroundLiveUpcoming.SetScaleType(ImageView.ScaleType.CenterCrop);
-            //    radioBackgroundLiveUpcoming.SetPadding(0, 0, 50, 0);
-
-            //    radioBackgroundLiveBroadcasting.SetScaleType(ImageView.ScaleType.CenterCrop);
-            //    radioBackgroundLiveBroadcasting.SetPadding(0, 0, 50, 0);
-            //}
             var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
             recyclerView.Adapter = CreateAdapter();
 
             return view;
+        }
+
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        {
+            base.OnCreateOptionsMenu(menu, inflater);
+            inflater.Inflate(Resource.Menu.playback_history, menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.playback_history)
+                ViewModel.NavigateToViewModelCommand.Execute(typeof(PlaybackHistoryViewModel));
+
+            return base.OnOptionsItemSelected(item);
         }
 
         protected override MvxRecyclerAdapter CreateAdapter()

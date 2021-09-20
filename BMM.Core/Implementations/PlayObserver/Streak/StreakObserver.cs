@@ -42,7 +42,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         private readonly MvxSubscriptionToken _trackCompletedToken;
         private readonly MvxSubscriptionToken _trackChangedToken;
 
-        private const string StorageKey = StorageKeys.LatestListeningStreak;
+        private readonly string _storageKey = StorageKeys.LatestListeningStreak;
 
         /// <summary>
         /// timer to check every few seconds <see cref="RetryIntervalInSeconds"/> if enough has been listened to update the streak.
@@ -184,7 +184,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         {
             try
             {
-                return await _localStorage.GetObject<ListeningStreak>(StorageKey);
+                return await _localStorage.GetObject<ListeningStreak>(_storageKey);
             }
             catch (Exception)
             {
@@ -194,7 +194,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
 
         private async Task Store(ListeningStreak streak)
         {
-            await _localStorage.InsertObject(StorageKey, streak);
+            await _localStorage.InsertObject(_storageKey, streak);
         }
     }
 }

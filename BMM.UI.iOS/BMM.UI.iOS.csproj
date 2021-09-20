@@ -716,6 +716,7 @@
     <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\PlaybackHistoryViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ShareTrackCollectionViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\UserSetupViewController.xib" />
@@ -873,6 +874,10 @@
     <Compile Include="Application\ViewController\LibraryViewController.cs" />
     <Compile Include="Application\ViewController\LibraryViewController.designer.cs">
       <DependentUpon>LibraryViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\PlaybackHistoryViewController.cs" />
+    <Compile Include="Application\ViewController\PlaybackHistoryViewController.designer.cs">
+      <DependentUpon>PlaybackHistoryViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\PlayerNavigationController.cs" />
     <Compile Include="Application\ViewController\SharedTrackCollectionViewController.cs" />

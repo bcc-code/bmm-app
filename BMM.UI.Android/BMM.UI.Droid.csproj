@@ -129,6 +129,7 @@
     <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\LibraryFragment.cs" />
     <Compile Include="Application\Fragments\FollowedPodcastsFragment.cs" />
+    <Compile Include="Application\Fragments\PlaybackHistoryFragment.cs" />
     <Compile Include="Application\Fragments\PodcastFragment.cs" />
     <Compile Include="Application\Fragments\LibraryArchiveFragment.cs" />
     <Compile Include="Application\Fragments\DownloadedFollowedPodcastsFragment.cs" />
@@ -461,6 +462,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_menu.xml" />
+    <AndroidResource Include="Resources\layout\fragment_playback_history.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_share_trackcollection.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -522,6 +527,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\menu\bottom_navigation_menu.xml" />
     <AndroidResource Include="Resources\menu\edit_trackcollection.xml" />
+    <AndroidResource Include="Resources\menu\playback_history.xml" />
     <AndroidResource Include="Resources\menu\share_trackcollection.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
