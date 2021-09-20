@@ -22,7 +22,7 @@ namespace BMM.Core.Implementations.PlayObserver
 {
     /// <summary>
     /// Tracks what songs the user listens to and logs extensive information about each track (e.g. percentage listened and total listen time).
-    /// 
+    ///
     /// Edge cases:
     /// - Listen the second half of a track, have RepeatMode = One and listens to the first half of the track.
     ///   Then we will have 2 logs of ~50% which will not be counted as a play in Azure Portal(where we consider a play if the track is listened more than 60%)
@@ -219,7 +219,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 AlbumId = CurrentTrack.ParentId,
                 Tags = CurrentTrack.Tags,
                 Language = CurrentTrack.Language,
-                PlaybackOrigin = CurrentTrack.PlaybackOrigin
+                PlaybackOrigin = CurrentTrack.PlaybackOrigin,
+                LastPosition = measurements.LastPosition
             };
         }
 

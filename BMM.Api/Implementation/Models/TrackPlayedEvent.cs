@@ -44,6 +44,8 @@ namespace BMM.Api.Implementation.Models
 
         public string PlaybackOrigin { get; set; }
 
+        public double LastPosition { get; set; }
+
         private sealed class IdEqualityComparer : IEqualityComparer<TrackPlayedEvent>
         {
             public bool Equals(TrackPlayedEvent x, TrackPlayedEvent y)
