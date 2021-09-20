@@ -242,7 +242,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"tags", string.Join(",", ev.Tags)},
                 {"language", ev.Language},
                 {"sentAfterStartup", ev.SentAfterStartup},
-                {"playbackOrigin", ev.PlaybackOrigin}
+                {"playbackOrigin", ev.PlaybackOrigin},
+                {"lastPosition", ev.LastPosition}
             };
 
             if (_config.UseAnalyticsId)

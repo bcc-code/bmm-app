@@ -468,6 +468,9 @@
     <BundleResource Include="Resources\icon_tick.png" />
     <BundleResource Include="Resources\icon_tick@2x.png" />
     <BundleResource Include="Resources\icon_tick@3x.png" />
+    <BundleResource Include="Resources\icon_playback_history.png" />
+    <BundleResource Include="Resources\icon_playback_history@2x.png" />
+    <BundleResource Include="Resources\icon_playback_history@3x.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
