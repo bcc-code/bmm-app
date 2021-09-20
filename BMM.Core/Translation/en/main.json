@@ -12,7 +12,9 @@
     "Speech": "Message",
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
-    "Done": "Done"
+    "Done": "Done",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "Your streak this week",

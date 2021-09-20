@@ -4,7 +4,7 @@
     xmlns:local="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/playback_history"
-          android:icon="@drawable/icon_repeat_static"
+          android:icon="@drawable/icon_playback_history"
           android:showAsAction="always"
           local:showAsAction="always"/>
 

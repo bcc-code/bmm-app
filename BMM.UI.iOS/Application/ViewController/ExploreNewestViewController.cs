@@ -35,8 +35,7 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
-            _playbackHistoryButton = new UIBarButtonItem(UIImage.FromBundle("icon_repeat_static.png"), UIBarButtonItemStyle.Plain, null);
-            NavigationItem.RightBarButtonItem = _playbackHistoryButton;
+            SetPlaybackHistoryButton();
 
             var refreshControl = new MvxUIRefreshControl {TintColor = AppColors.RefreshControlTintColor};
             TrackTableView.RefreshControl = refreshControl;
@@ -71,7 +70,7 @@ namespace BMM.UI.iOS
                 .For(v => v.BindTitle())
                 .To(vm => vm.TextSource)
                 .WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_PlayRandom);
-            ;
+
             set.Bind(FraKaarePlayRandomButton).To(vm => vm.FraKaareTeaserViewModel.PlayRandomCommand);
 
             set.Bind(AslaksenTeaser)
@@ -143,6 +142,13 @@ namespace BMM.UI.iOS
                 if (args.PropertyName == "ShowBmmLive")
                     SetTableHeaderHeight();
             };
+        }
+
+        private void SetPlaybackHistoryButton()
+        {
+            _playbackHistoryButton = new UIBarButtonItem(UIImage.FromBundle("icon_playback_history"), UIBarButtonItemStyle.Plain, null);
+            _playbackHistoryButton.TintColor = UIColor.Black;
+            NavigationItem.RightBarButtonItem = _playbackHistoryButton;
         }
 
         public override void ViewDidLayoutSubviews()

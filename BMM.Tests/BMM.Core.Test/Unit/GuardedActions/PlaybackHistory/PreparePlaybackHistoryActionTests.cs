@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.PlaybackHistory;
 using BMM.Core.GuardedActions.PlaybackHistory.Interfaces;
+using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models.PlaybackHistory;
 using BMM.Core.Test.Unit.GuardedActions.Base;
@@ -17,16 +18,18 @@ namespace BMM.Core.Test.Unit.GuardedActions.PlaybackHistory
     public class PreparePlaybackHistoryActionTests : GuardedActionWithResultTestBase<IPreparePlaybackHistoryAction, IEnumerable<Document>>
     {
         private IPlaybackHistoryService _playbackHistoryServiceMock;
+        private IBMMLanguageBinder _bmmLanguageBinderMock;
 
         protected override void PrepareMocks()
         {
             base.PrepareMocks();
             _playbackHistoryServiceMock = Substitute.For<IPlaybackHistoryService>();
+            _bmmLanguageBinderMock = Substitute.For<IBMMLanguageBinder>();
         }
 
         protected override IPreparePlaybackHistoryAction CreateAction()
         {
-            return new PreparePlaybackHistoryAction(_playbackHistoryServiceMock);
+            return new PreparePlaybackHistoryAction(_playbackHistoryServiceMock, _bmmLanguageBinderMock);
         }
 
         [TestCase]

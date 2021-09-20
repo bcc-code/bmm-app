@@ -287,6 +287,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\icon_playback_history.png" />
     <AndroidResource Include="Resources\drawable-hdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-hdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_right_light.png" />
@@ -303,6 +304,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon_shuffle_podcast.png" />
     <AndroidResource Include="Resources\drawable-hdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-hdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_playback_history.png" />
     <AndroidResource Include="Resources\drawable-mdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-mdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist.png" />
@@ -318,6 +320,7 @@
     <AndroidResource Include="Resources\drawable-mdpi\icon_play_podcast.png" />
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_playback_history.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right_light.png" />
@@ -334,6 +337,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_play_podcast.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_playback_history.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right_light.png" />
@@ -350,6 +354,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_podcast.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_playback_history.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right_light.png" />
