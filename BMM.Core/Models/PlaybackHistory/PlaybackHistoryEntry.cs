@@ -6,13 +6,15 @@ namespace BMM.Core.Models.PlaybackHistory
 {
     public class PlaybackHistoryEntry : IPlaybackHistoryEntry
     {
-        public PlaybackHistoryEntry(Track mediaTrack, DateTime playedAtUtc)
+        public PlaybackHistoryEntry(Track mediaTrack, long lastPosition, DateTime playedAtUtc)
         {
             MediaTrack = mediaTrack;
+            LastPosition = lastPosition;
             PlayedAtUTC = playedAtUtc;
         }
 
-        public Track MediaTrack { get; }
+        public Track MediaTrack { get; set; }
+        public long LastPosition { get; set; }
         public DateTime PlayedAtUTC { get; }
     }
 }

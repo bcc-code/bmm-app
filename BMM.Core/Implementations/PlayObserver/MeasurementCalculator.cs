@@ -41,13 +41,15 @@ namespace BMM.Core.Implementations.PlayObserver
             };
         }
 
-        private double GetLastPosition(IList<ListenedPortion> portions)
+        private long GetLastPosition(IList<ListenedPortion> portions)
         {
             var newestPortion = portions
                 .OrderByDescending(p => p.EndTime)
                 .First();
 
-            return newestPortion.End;
+            var time = (newestPortion.Start + newestPortion.End) / 1000;
+
+            return (long)newestPortion.End;
         }
 
         public double CalculateSpentTime(IList<ListenedPortion> portions)

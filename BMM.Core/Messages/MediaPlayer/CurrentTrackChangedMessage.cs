@@ -5,10 +5,13 @@ namespace BMM.Core.Messages.MediaPlayer
 {
     public class CurrentTrackChangedMessage : MvxMessage
     {
-        public CurrentTrackChangedMessage(object sender) : base(sender)
+        public CurrentTrackChangedMessage(
+            ITrackModel currentTrack,
+            object sender) : base(sender)
         {
+            CurrentTrack = currentTrack;
         }
 
-        public ITrackModel CurrentTrack;
+        public ITrackModel CurrentTrack { get; }
     }
 }

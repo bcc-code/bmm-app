@@ -4,10 +4,12 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.ViewModels;
 using Moq;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.ViewModels
@@ -15,13 +17,22 @@ namespace BMM.Core.Test.Unit.ViewModels
     [TestFixture]
     public class SearchViewModelTests : DocumentViewModelTests
     {
+        private IPostprocessDocumentsAction _postprocessDocumentsActionMock;
         protected SearchViewModel ViewModel { get; set; }
 
         protected override void AdditionalSetup()
         {
             base.AdditionalSetup();
 
-            ViewModel = new SearchViewModel();
+            _postprocessDocumentsActionMock = Substitute.For<IPostprocessDocumentsAction>();
+            _postprocessDocumentsActionMock
+                .ExecuteGuarded(Arg.Any<IEnumerable<Document>>())
+                .Returns(args => (IEnumerable<Document>) args[0]);
+
+            ViewModel = new SearchViewModel
+            {
+                PostprocessDocumentsAction = _postprocessDocumentsActionMock
+            };
         }
 
         [Test]

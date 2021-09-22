@@ -19,9 +19,12 @@ using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models;
 using BMM.Core.Test.Unit.ViewModels.Base;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
+using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
 using Moq;
 using MvvmCross.Localization;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.ViewModels
@@ -155,7 +158,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Assert
-            Assert.AreEqual(13, settingsViewModel.ListItems.Count);
+            Assert.AreEqual(16, settingsViewModel.ListItems.Count);
             _networkSettings.Verify(x => x.GetMobileNetworkDownloadAllowed(), Times.AtLeastOnce);
             _networkSettings.Verify(x => x.GetPushNotificationsAllowed(), Times.AtLeastOnce);
         }
@@ -182,7 +185,10 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Act
-            var item = settingsViewModel.ListItems.ElementAt(3);
+            var item = settingsViewModel
+                .ListItems
+                .First(s => s.Title == Translations.SettingsViewModel_OptionDownloadMobileNetworkHeader);
+
             ((CheckboxListItem)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
             ((CheckboxListItem)item).IsChecked = true;
 
@@ -199,7 +205,10 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Act
-            var item = settingsViewModel.ListItems.ElementAt(4);
+            var item = settingsViewModel
+                .ListItems
+                .First(s => s.Title == Translations.SettingsViewModel_OptionPushNotifications);
+
             ((CheckboxListItem)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
             ((CheckboxListItem)item).IsChecked = true;
 
@@ -217,7 +226,10 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Act
-            var items = settingsViewModel.ListItems.LastOrDefault();
+            var items = settingsViewModel
+                .ListItems
+                .First(s => s.Title == Translations.SettingsViewModel_OptionAppVersionHeader);
+
             ((SelectableListItem)items)?.OnSelected.Execute();
 
             // Assert

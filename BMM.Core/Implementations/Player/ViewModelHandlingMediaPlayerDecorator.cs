@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.LiveRadio;
-using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -30,7 +29,6 @@ namespace BMM.Core.Implementations.Player
         private readonly IPlayerErrorHandler _playerErrorHandler;
 
         private readonly ILiveTime _liveTime;
-        private readonly IPlaybackHistoryService _playbackHistoryService;
 
         private bool _isViewmodelShown;
 
@@ -41,8 +39,7 @@ namespace BMM.Core.Implementations.Player
             IMediaQueue queue,
             IMediaPlayerInitializer mediaPlayerInitializer,
             IPlayerErrorHandler playerErrorHandler,
-            ILiveTime liveTime,
-            IPlaybackHistoryService playbackHistoryService)
+            ILiveTime liveTime)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -51,7 +48,6 @@ namespace BMM.Core.Implementations.Player
             _mediaPlayerInitializer = mediaPlayerInitializer;
             _playerErrorHandler = playerErrorHandler;
             _liveTime = liveTime;
-            _playbackHistoryService = playbackHistoryService;
 
             _mediaPlayer.ContinuingPreviousSession = () => { ShowViewmodelIfNecessary(); };
         }
@@ -91,7 +87,6 @@ namespace BMM.Core.Implementations.Player
         {
             if (!ShowErrorIfOutdatedLiveRadio(currentTrack))
             {
-                _playbackHistoryService.AddPlayedTrack(currentTrack);
                 await _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs);
                 ShowViewmodelIfNecessary();
             }
@@ -99,7 +94,6 @@ namespace BMM.Core.Implementations.Player
 
         public Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
         {
-            _playbackHistoryService.AddPlayedTrack(currentTrack);
             var enrichedTracks = EnrichTracksWithPlaybackOrigin(mediaTracks, playbackOrigin);
             return Play(enrichedTracks, currentTrack, startTimeInMs);
         }

@@ -8,14 +8,14 @@ namespace BMM.Core.Models.PlaybackHistory
     {
         public PlaybackHistoryGroup(
             IList<PlaybackHistoryEntry> playedTracks,
-            DateTime groupDateTimeUTC)
+            DateTime groupDateTime)
         {
             PlayedTracks = playedTracks;
-            GroupDateTimeUTC = groupDateTimeUTC;
+            GroupDateTime = groupDateTime;
         }
 
         public IList<PlaybackHistoryEntry> PlayedTracks { get; }
 
-        public DateTime GroupDateTimeUTC { get; }
+        public DateTime GroupDateTime { get; }
     }
 }

@@ -183,7 +183,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.AudioFocus
             Mvx.IoCProvider.Resolve<IMvxMessenger>().Publish(new PlaybackSeekedMessage(this)
             {
                 CurrentPosition = CurrentPosition,
-                SeekedPosition = 0
+                SeekedPosition = GetCorrectSeekedPositionValue(p1)
             });
 
             _player.SeekTo(p0, p1);
@@ -312,6 +312,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.AudioFocus
         public long TotalBufferedDuration => _player.TotalBufferedDuration;
 
         public IPlayerVideoComponent VideoComponent => _player.VideoComponent;
+
+        private static long GetCorrectSeekedPositionValue(long p1)
+            => p1 < 0 ? 0 : p1;
 
         #endregion
 

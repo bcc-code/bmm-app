@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Constants;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.PlaybackHistory.Interfaces;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -30,10 +33,24 @@ namespace BMM.Core.ViewModels
             _analytics = analytics;
         }
 
+        public bool HasAnyEntry => Documents.Any();
+
         public override void Start()
         {
             base.Start();
             _analytics.LogEvent(string.Format(Event.ViewModelOpenedFormat, GetType().Name), new Dictionary<string, object>());
+        }
+
+        public override void ViewAppearing()
+        {
+            base.ViewAppearing();
+            Documents.CollectionChanged += DocumentsOnCollectionChanged;
+        }
+
+        public override void ViewDisappeared()
+        {
+            base.ViewDisappeared();
+            Documents.CollectionChanged -= DocumentsOnCollectionChanged;
         }
 
         protected override async Task DocumentAction(Document item, IList<Track> list)
@@ -41,16 +58,17 @@ namespace BMM.Core.ViewModels
             if (!(item is IMediaTrack mediaTrack))
                 return;
 
-            var mediaTracksList = list
-                .OfType<IMediaTrack>()
-                .ToList();
-
-            await _mediaPlayer.Play(mediaTracksList, mediaTrack, GetType().Name);
+            await _mediaPlayer.Play(mediaTrack.EncloseInArray(), mediaTrack, GetType().Name, mediaTrack.LastPosition);
         }
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             return await _preparePlaybackHistoryAction.ExecuteGuarded();
+        }
+
+        private void DocumentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged(nameof(HasAnyEntry));
         }
     }
 }

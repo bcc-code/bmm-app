@@ -439,7 +439,8 @@
     "Title": "Copyright"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Playback History"
+    "Title": "Playback History",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Recent Messages"

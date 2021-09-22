@@ -1,4 +1,5 @@
-﻿using BMM.Api.Implementation.Models;
+﻿using System;
+using BMM.Api.Implementation.Models;
 
 namespace BMM.Api.Abstraction
 {
@@ -12,5 +13,9 @@ namespace BMM.Api.Abstraction
         ITrackMetadata Metadata { get; }
 
         string GetUniqueKey { get; }
+
+        long LastPosition { get; set; }
+
+        DateTime LastPlayedAtUTC { get; set; }
     }
 }

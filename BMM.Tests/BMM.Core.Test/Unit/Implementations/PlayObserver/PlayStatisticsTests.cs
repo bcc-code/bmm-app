@@ -4,6 +4,7 @@ using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.PlayObserver;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages.MediaPlayer;
@@ -21,6 +22,7 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
         private Mock<IAnalytics> _analytics;
         private Mock<IUserStorage> _userStorage;
         private Mock<IStatisticsClient> _statisticsClient;
+        private Mock<IPlaybackHistoryService> _playbackHistorySerivce;
 
         [SetUp]
         public void Init()
@@ -30,6 +32,7 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             _userStorage = new Mock<IUserStorage>();
             _userStorage.Setup(storage => storage.GetUser()).Returns(new User {PersonId = 1111});
             _statisticsClient = new Mock<IStatisticsClient>();
+            _playbackHistorySerivce = new Mock<IPlaybackHistoryService>();
             _playStatistics = new PlayStatistics(_analytics.Object,
                 _userStorage.Object,
                 new Mock<ILogger>().Object,
@@ -37,7 +40,8 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
                 _statisticsClient.Object,
                 new ThreadBlockingExceptionHandler(),
                 _messenger.Object,
-                new Mock<IFirebaseRemoteConfig>().Object);
+                new Mock<IFirebaseRemoteConfig>().Object,
+                _playbackHistorySerivce.Object);
             _playStatistics.TriggerClear = () => { _playStatistics.Clear(); };
         }
 
@@ -59,8 +63,8 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
         public void SeekingAddsPortion()
         {
             // Arrange
-            var firstTrack = new CurrentTrackChangedMessage(this) {CurrentTrack = CreateTrack(1)};
-            var secondTrack = new CurrentTrackChangedMessage(this) {CurrentTrack = CreateTrack(2)};
+            var firstTrack = new CurrentTrackChangedMessage(CreateTrack(1), this);
+            var secondTrack = new CurrentTrackChangedMessage(CreateTrack(2), this);
 
             // Act
             _playStatistics.OnCurrentTrackChanged(firstTrack);
@@ -73,7 +77,7 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
         [Test]
         public void CorrectOrder_LogsTrackPlayed()
         {
-            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(this) {CurrentTrack = CreateTrack(1)});
+            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(CreateTrack(1), this));
             _playStatistics.OnTrackCompleted(new TrackCompletedMessage(this) { });
             _analytics.Verify(x => x.LogEvent(It.Is<string>(s => s == "Track played"),
                 It.Is<IDictionary<string, object>>(d => (int)d["trackId"] == 1)));
@@ -82,7 +86,7 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
         [Test]
         public void TestSeekEvents_SimulateTrackWithStartTime()
         {
-            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(this) {CurrentTrack = CreateTrack(1)});
+            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(CreateTrack(1), this));
             _playStatistics.OnSeeked(100, 0);
             _playStatistics.OnSeeked(0, 5);
 
