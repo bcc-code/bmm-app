@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaybackHistoryViewController">
             <connections>
+                <outlet property="NoHistoryLabel" destination="sIL-i6-LRb" id="orj-gX-w1g"/>
                 <outlet property="PlaybackHistoryTableView" destination="wrC-aF-6zp" id="0Qn-aw-ca8"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
@@ -18,6 +19,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No playback history yet." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIL-i6-LRb">
+                    <rect key="frame" x="16" y="437.5" width="382" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wrC-aF-6zp">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -26,10 +33,13 @@
                     <color key="sectionIndexBackgroundColor" red="0.047047488391399384" green="0.060586217790842056" blue="0.078763902187347412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="0.047047488391399384" green="0.060586217790842056" blue="0.078763902187347412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="sIL-i6-LRb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BJD-df-fZk"/>
                 <constraint firstAttribute="bottom" secondItem="wrC-aF-6zp" secondAttribute="bottom" id="OKY-zn-vvw"/>
+                <constraint firstAttribute="trailing" secondItem="sIL-i6-LRb" secondAttribute="trailing" constant="16" id="dbx-dO-uU1"/>
                 <constraint firstAttribute="trailing" secondItem="wrC-aF-6zp" secondAttribute="trailing" id="elX-7q-wbI"/>
+                <constraint firstItem="sIL-i6-LRb" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fk3-tg-52T"/>
                 <constraint firstItem="wrC-aF-6zp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vV1-jH-USz"/>
                 <constraint firstItem="wrC-aF-6zp" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="wBd-dt-uZA"/>
             </constraints>

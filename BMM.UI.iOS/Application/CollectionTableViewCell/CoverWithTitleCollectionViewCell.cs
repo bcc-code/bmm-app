@@ -2,6 +2,7 @@
 using BMM.Api.Implementation.Models;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
 using Foundation;
@@ -38,6 +39,7 @@ namespace BMM.UI.iOS
             base.AwakeFromNib();
             ImageView.Layer.CornerRadius = 16f;
             ImageView.ClipsToBounds = true;
+            TitleLabel.ApplyTextTheme(AppTheme.Title4.Value);
         }
     }
 }
