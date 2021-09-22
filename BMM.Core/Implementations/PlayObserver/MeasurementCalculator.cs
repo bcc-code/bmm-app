@@ -47,8 +47,6 @@ namespace BMM.Core.Implementations.PlayObserver
                 .OrderByDescending(p => p.EndTime)
                 .First();
 
-            var time = (newestPortion.Start + newestPortion.End) / 1000;
-
             return (long)newestPortion.End;
         }
 

@@ -313,8 +313,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.AudioFocus
 
         public IPlayerVideoComponent VideoComponent => _player.VideoComponent;
 
-        private static long GetCorrectSeekedPositionValue(long p1)
-            => p1 < 0 ? 0 : p1;
+        private static long GetCorrectSeekedPositionValue(long seekedPosition)
+            => Math.Max(0, seekedPosition);
 
         #endregion
 
