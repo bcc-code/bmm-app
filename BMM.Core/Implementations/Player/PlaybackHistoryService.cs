@@ -25,14 +25,10 @@ namespace BMM.Core.Implementations.Player
 
         private readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
         private readonly ICache _cache;
-        private readonly ILogger _logger;
 
-        public PlaybackHistoryService(
-            ICache cache,
-            ILogger logger)
+        public PlaybackHistoryService(ICache cache)
         {
             _cache = cache;
-            _logger = logger;
         }
 
         public async Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAtUTC)

@@ -176,7 +176,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.AudioFocus
         }
 
         /// <summary>
-        /// Triggered when user changes tracks.
+        /// Triggered when seeking through the playback
         /// </summary>
         public void SeekTo(int p0, long p1)
         {

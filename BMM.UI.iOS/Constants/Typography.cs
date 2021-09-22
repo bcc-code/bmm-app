@@ -20,6 +20,12 @@ namespace BMM.UI.iOS.Constants
             return font;
         });
 
+        public static readonly Lazy<UIFont> Title4 = new Lazy<UIFont>(() =>
+        {
+            var font = UIFont.SystemFontOfSize(14, UIFontWeight.Regular);
+            return font;
+        });
+
         public static readonly Lazy<UIFont> Header2 = new Lazy<UIFont>(() =>
         {
             var font = UIFont.SystemFontOfSize(28, UIFontWeight.Heavy);

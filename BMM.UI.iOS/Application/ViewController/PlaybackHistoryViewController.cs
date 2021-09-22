@@ -1,6 +1,9 @@
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Constants;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -18,6 +21,8 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
+            SetThemes();
+
             var source = new DocumentsTableViewSource(PlaybackHistoryTableView);
 
             var set = this.CreateBindingSet<PlaybackHistoryViewController, PlaybackHistoryViewModel>();
@@ -26,7 +31,25 @@ namespace BMM.UI.iOS
                 .For(s => s.SelectionChangedCommand)
                 .To(s => s.DocumentSelectedCommand)
                 .WithConversion<DocumentSelectedCommandValueConverter>();
+
+            set.Bind(NoHistoryLabel)
+                .To(vm => vm.TextSource[Translations.PlaybackHistoryViewModel_NoHistoryYet]);
+
+            set.Bind(NoHistoryLabel)
+                .For(v => v.BindVisible())
+                .To(vm => vm.HasAnyEntry)
+                .WithConversion<InvertedBoolConverter>();
+
+            set.Bind(PlaybackHistoryTableView)
+                .For(v => v.BindVisible())
+                .To(vm => vm.HasAnyEntry);
+
             set.Apply();
+        }
+
+        private void SetThemes()
+        {
+            NoHistoryLabel.ApplyTextTheme(AppTheme.Title4.Value);
         }
     }
 }

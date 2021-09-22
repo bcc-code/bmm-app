@@ -14,6 +14,9 @@ namespace BMM.UI.iOS
 	partial class PlaybackHistoryViewController
 	{
 		[Outlet]
+		UIKit.UILabel NoHistoryLabel { get; set; }
+
+		[Outlet]
 		UIKit.UITableView PlaybackHistoryTableView { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -21,6 +24,11 @@ namespace BMM.UI.iOS
 			if (PlaybackHistoryTableView != null) {
 				PlaybackHistoryTableView.Dispose ();
 				PlaybackHistoryTableView = null;
+			}
+
+			if (NoHistoryLabel != null) {
+				NoHistoryLabel.Dispose ();
+				NoHistoryLabel = null;
 			}
 
 		}
