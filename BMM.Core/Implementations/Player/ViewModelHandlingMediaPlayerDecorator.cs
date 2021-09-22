@@ -122,13 +122,13 @@ namespace BMM.Core.Implementations.Player
         public void SkipForward(double timeInSeconds)
         {
             var newPosition = PlaybackState.CurrentPosition + timeInSeconds * 1000;
-            SeekTo((long) newPosition);
+            SeekTo((long)newPosition);
         }
 
         public void SkipBackward(double timeInSeconds)
         {
             var newPosition = PlaybackState.CurrentPosition - timeInSeconds * 1000;
-            SeekTo((long) newPosition);
+            SeekTo((long)newPosition);
         }
 
         public void ToggleRepeatType()
