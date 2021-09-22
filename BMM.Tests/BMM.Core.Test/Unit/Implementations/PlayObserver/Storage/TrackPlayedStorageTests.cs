@@ -17,9 +17,9 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver.Storage
         {
             var storage = new TrackPlayedStorage(BlobCache.InMemory);
 
-            var event1 = new TrackPlayedEvent {Id = Guid.NewGuid()};
-            var event2 = new TrackPlayedEvent {Id = Guid.NewGuid()};
-            var event3 = new TrackPlayedEvent {Id = Guid.NewGuid()};
+            var event1 = new TrackPlayedEvent {Id = Guid.NewGuid(), Track = new Track()};
+            var event2 = new TrackPlayedEvent {Id = Guid.NewGuid(), Track = new Track()};
+            var event3 = new TrackPlayedEvent {Id = Guid.NewGuid(), Track = new Track()};
 
             var eventsToBeAdded = new List<TrackPlayedEvent>
             {
@@ -35,6 +35,5 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver.Storage
             Assert.IsNotEmpty(remainingEvents);
             Assert.AreEqual(event1.Id, remainingEvents.First().Id);
         }
-
     }
 }

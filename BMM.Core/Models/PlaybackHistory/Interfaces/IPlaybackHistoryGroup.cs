@@ -6,6 +6,6 @@ namespace BMM.Core.Models.PlaybackHistory.Interfaces
     public interface IPlaybackHistoryGroup
     {
         IList<PlaybackHistoryEntry> PlayedTracks { get; }
-        DateTime GroupDateTimeUTC { get; }
+        DateTime GroupDateTime { get; }
     }
 }

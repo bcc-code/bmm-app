@@ -10,6 +10,7 @@ using MvvmCross.Navigation;
 using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.Tests;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.ViewModels.Base
@@ -25,6 +26,10 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
             Analytics = new Mock<IAnalytics>();
             MvxMessenger = new Mock<IMvxMessenger>();
             NavigationService = new Mock<IMvxNavigationService>();
+
+            TextResource
+                .Setup(x => x[It.IsAny<string>()])
+                .Returns<string>(x => x);
 
             Ioc.RegisterSingleton(Client.Object);
             Ioc.RegisterSingleton(MediaQueue.Object);

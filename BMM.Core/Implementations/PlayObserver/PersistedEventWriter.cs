@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
@@ -6,6 +7,7 @@ using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Startup;
 
 namespace BMM.Core.Implementations.PlayObserver
@@ -21,22 +23,28 @@ namespace BMM.Core.Implementations.PlayObserver
         private readonly IBlobCache _localStorage;
         private readonly ILogger _logger;
         private readonly IAnalytics _analytics;
+        private readonly IPlaybackHistoryService _playbackHistoryService;
 
-        public PersistedEventWriter(IPlayStatistics playStatistics, IBlobCache localStorage, ILogger logger, IAnalytics analytics)
+        public PersistedEventWriter(
+            IPlayStatistics playStatistics,
+            IBlobCache localStorage,
+            ILogger logger,
+            IAnalytics analytics,
+            IPlaybackHistoryService playbackHistoryService)
         {
             _playStatistics = playStatistics;
             _localStorage = localStorage;
             _logger = logger;
             _analytics = analytics;
+            _playbackHistoryService = playbackHistoryService;
         }
 
         public async Task RunAfterStartup()
         {
             var storedEvent = await _localStorage.GetOrCreateObject<TrackPlayedEvent>(StorageKeys.UnfinishedTrackPlayedEvent, () => null);
+
             if (storedEvent == null)
-            {
                 return;
-            }
 
             storedEvent.SentAfterStartup = true;
 
@@ -44,12 +52,15 @@ namespace BMM.Core.Implementations.PlayObserver
             _analytics.LogEvent("Log Track played after startup",
                 new Dictionary<string, object>
                 {
-                    {"TrackId", storedEvent.TrackId},
-                    {"TimestampStart", storedEvent.TimestampStart},
-                    {"TimestampEnd", storedEvent.TimestampEnd},
-                    {"SpentTime", storedEvent.SpentTime},
-                    {"UniqueSecondsListened", storedEvent.UniqueSecondsListened}
+                    {nameof(storedEvent.TrackId), storedEvent.TrackId},
+                    {nameof(storedEvent.TimestampStart), storedEvent.TimestampStart},
+                    {nameof(storedEvent.TimestampEnd), storedEvent.TimestampEnd},
+                    {nameof(storedEvent.SpentTime), storedEvent.SpentTime},
+                    {nameof(storedEvent.UniqueSecondsListened), storedEvent.UniqueSecondsListened},
+                    {nameof(storedEvent.LastPosition), storedEvent.LastPosition}
                 });
+
+            await _playbackHistoryService.AddPlayedTrack(storedEvent.Track, storedEvent.LastPosition, storedEvent.TimestampStart ?? DateTime.UtcNow);
             await _playStatistics.WriteEvent(storedEvent);
             await _localStorage.InsertObject<TrackPlayedEvent>(StorageKeys.UnfinishedTrackPlayedEvent, null);
         }

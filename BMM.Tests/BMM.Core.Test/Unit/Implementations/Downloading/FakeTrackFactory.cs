@@ -10,6 +10,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             return new Track
             {
                 Id = id,
+                Language = "en",
                 Media = new List<TrackMedia>
                 {
                     new TrackMedia

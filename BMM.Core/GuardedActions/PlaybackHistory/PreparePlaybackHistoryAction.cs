@@ -9,6 +9,7 @@ using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models;
 using BMM.Core.Models.PlaybackHistory;
+using BMM.Core.Models.PlaybackHistory.Interfaces;
 using BMM.Core.Translation;
 
 namespace BMM.Core.GuardedActions.PlaybackHistory
@@ -38,17 +39,7 @@ namespace BMM.Core.GuardedActions.PlaybackHistory
 
             var documents = new List<Document>();
 
-            var groupedEntries = playbackHistoryEntries
-                .OrderByDescending(x => x.PlayedAtUTC)
-                .GroupBy(l => new
-                {
-                    l.PlayedAtUTC.Year,
-                    l.PlayedAtUTC.Month,
-                    l.PlayedAtUTC.Day
-                })
-                .Where(g => g.Any())
-                .Select(g => new PlaybackHistoryGroup(g.ToList(), g.First().PlayedAtUTC))
-                .ToList();
+            var groupedEntries = GroupByDay(playbackHistoryEntries);
 
             foreach (var groupedEntry in groupedEntries)
             {
@@ -59,7 +50,8 @@ namespace BMM.Core.GuardedActions.PlaybackHistory
 
                 var tracks = groupedEntry
                     .PlayedTracks
-                    .Select(x => x.MediaTrack);
+                    .Select(t => t.MediaTrack)
+                    .ToList();
 
                 documents.AddRange(tracks);
             }
@@ -67,15 +59,30 @@ namespace BMM.Core.GuardedActions.PlaybackHistory
             return documents;
         }
 
-        private string GetTitle(PlaybackHistoryGroup groupedEntry)
+        private static IEnumerable<PlaybackHistoryGroup> GroupByDay(IEnumerable<PlaybackHistoryEntry> playbackHistoryEntries)
         {
-            if (groupedEntry.GroupDateTimeUTC.ToLocalTime().Date == DateTime.Today)
+            return playbackHistoryEntries
+                .OrderByDescending(x => x.PlayedAtUTC.ToLocalTime())
+                .GroupBy(l => new
+                {
+                    l.PlayedAtUTC.ToLocalTime().Year,
+                    l.PlayedAtUTC.ToLocalTime().Month,
+                    l.PlayedAtUTC.ToLocalTime().Day
+                })
+                .Where(g => g.Any())
+                .Select(g => new PlaybackHistoryGroup(g.ToList(), g.First().PlayedAtUTC.ToLocalTime()))
+                .ToList();
+        }
+
+        private string GetTitle(IPlaybackHistoryGroup groupedEntry)
+        {
+            if (groupedEntry.GroupDateTime.Date == DateTime.Today)
                 return _bmmLanguageBinder[Translations.Global_Today];
 
-            if (groupedEntry.GroupDateTimeUTC.ToLocalTime().Date == DateTime.Today.AddDays(-1))
+            if (groupedEntry.GroupDateTime.Date == DateTime.Today.AddDays(-1))
                 return _bmmLanguageBinder[Translations.Global_Yesterday];
 
-            return groupedEntry.GroupDateTimeUTC.ToString(DateFormat);
+            return groupedEntry.GroupDateTime.ToString(DateFormat);
         }
     }
 }

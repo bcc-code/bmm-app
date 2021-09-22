@@ -20,7 +20,21 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:MvxTemplateSelector="@string/document_templateselector"
             local:MvxBind="
+                Visibility Visibility(HasAnyEntry);
                 ItemsSource DocumentList(Documents, .);
                 ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+
+    <TextView
+            android:id="@+id/NoEntriesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            style="@style/Title4"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/Toolbar"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:MvxLang="Text PlaybackHistoryViewModel_NoHistoryYet"
+            local:MvxBind="Visibility InvertedVisibility(HasAnyEntry)" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

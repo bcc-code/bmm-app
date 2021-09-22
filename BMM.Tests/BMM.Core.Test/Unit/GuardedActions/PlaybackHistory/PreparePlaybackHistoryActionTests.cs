@@ -8,6 +8,7 @@ using BMM.Core.GuardedActions.PlaybackHistory.Interfaces;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models.PlaybackHistory;
+using BMM.Core.Models.PlaybackHistory.Interfaces;
 using BMM.Core.Test.Unit.GuardedActions.Base;
 using NSubstitute;
 using NUnit.Framework;
@@ -17,6 +18,8 @@ namespace BMM.Core.Test.Unit.GuardedActions.PlaybackHistory
     [TestFixture]
     public class PreparePlaybackHistoryActionTests : GuardedActionWithResultTestBase<IPreparePlaybackHistoryAction, IEnumerable<Document>>
     {
+        private const long DefaultLastPosition = 1000;
+
         private IPlaybackHistoryService _playbackHistoryServiceMock;
         private IBMMLanguageBinder _bmmLanguageBinderMock;
 
@@ -42,9 +45,9 @@ namespace BMM.Core.Test.Unit.GuardedActions.PlaybackHistory
 
             var listOfPlaybackHistoryEntries = new List<PlaybackHistoryEntry>()
             {
-                new PlaybackHistoryEntry(expectedThirdTrack, DateTime.UtcNow.AddDays(2)),
-                new PlaybackHistoryEntry(expectedFirstTrack, DateTime.UtcNow),
-                new PlaybackHistoryEntry(expectedSecondTrack, DateTime.UtcNow.AddDays(1))
+                new PlaybackHistoryEntry(expectedThirdTrack, DefaultLastPosition, DateTime.UtcNow.AddDays(2)),
+                new PlaybackHistoryEntry(expectedFirstTrack, DefaultLastPosition, DateTime.UtcNow),
+                new PlaybackHistoryEntry(expectedSecondTrack, DefaultLastPosition, DateTime.UtcNow.AddDays(1))
             };
 
             _playbackHistoryServiceMock

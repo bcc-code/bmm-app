@@ -24,6 +24,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         private readonly ILogger _logger;
         private readonly IToastDisplayer _toastDisplayer;
         private readonly IPlayerErrorHandler _playerErrorHandler;
+        private readonly IMediaPlayer _mediaPlayer;
         private readonly IPlayerAnalytics _playerAnalytics;
         private const int TrackFinishedMarginInMs = 2000;
 
@@ -107,7 +108,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 return;
 
             var model = _metadataMapper.LookupTrackFromMetadata(metadata, _mediaQueue);
-            _messenger.Publish(new CurrentTrackChangedMessage(this) {CurrentTrack = model});
+            _messenger.Publish(new CurrentTrackChangedMessage(model, this));
             _latestTrackModel = model;
         }
     }

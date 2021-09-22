@@ -92,7 +92,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         public bool IsShuffleEnabled => _queue.IsShuffleEnabled;
 
-        public long Position => _audioPlayback.Position;
+        public long CurrentPosition => _audioPlayback.Position;
 
         public IPlaybackState PlaybackState => new PlaybackState
         {
@@ -273,7 +273,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
 
             PlaybackStateChanged();
-            _messenger.Publish(new CurrentTrackChangedMessage(this) {CurrentTrack = track});
+            _messenger.Publish(new CurrentTrackChangedMessage(track, this));
         }
 
         private void PlaybackStateChanged()
@@ -302,7 +302,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _currentTrack = null;
             _currentTrackIndex = 0;
             _audioPlayback.Stop();
-            _messenger.Publish(new CurrentTrackChangedMessage(this) { CurrentTrack = null });
+            _messenger.Publish(new CurrentTrackChangedMessage(null, this));
         }
 
         public void Dispose()

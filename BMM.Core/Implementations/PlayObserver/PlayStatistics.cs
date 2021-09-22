@@ -11,10 +11,12 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.PlayObserver.Model;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 using MvvmCross.Plugin.Messenger;
 
@@ -37,6 +39,7 @@ namespace BMM.Core.Implementations.PlayObserver
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IMvxMessenger _messenger;
         private readonly IFirebaseRemoteConfig _config;
+        private readonly IPlaybackHistoryService _playbackHistoryService;
 
         public double StartOfNextPortion { get; private set; }
         public DateTime StartTimeOfNextPortion { get; private set; }
@@ -55,8 +58,16 @@ namespace BMM.Core.Implementations.PlayObserver
 
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
 
-        public PlayStatistics(IAnalytics analytics, IUserStorage userStorage, ILogger logger, IMeasurementCalculator measurementCalculator, IStatisticsClient client,
-            IExceptionHandler exceptionHandler, IMvxMessenger messenger, IFirebaseRemoteConfig config)
+        public PlayStatistics(
+            IAnalytics analytics,
+            IUserStorage userStorage,
+            ILogger logger,
+            IMeasurementCalculator measurementCalculator,
+            IStatisticsClient client,
+            IExceptionHandler exceptionHandler,
+            IMvxMessenger messenger,
+            IFirebaseRemoteConfig config,
+            IPlaybackHistoryService playbackHistoryService)
         {
             _analytics = analytics;
             _userStorage = userStorage;
@@ -66,6 +77,7 @@ namespace BMM.Core.Implementations.PlayObserver
             _exceptionHandler = exceptionHandler;
             _messenger = messenger;
             _config = config;
+            _playbackHistoryService = playbackHistoryService;
         }
 
         public void OnPlaybackStateChanged(IPlaybackState state)
@@ -181,8 +193,9 @@ namespace BMM.Core.Implementations.PlayObserver
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);
 
                 var ev = ComposeEvent(measurements);
-                await WriteEvent(ev);
+                await _playbackHistoryService.AddPlayedTrack((Track)CurrentTrack, ev.LastPosition, ev.TimestampStart ?? DateTime.UtcNow);
 
+                await WriteEvent(ev);
                 TriggerClear();
             }
             finally
@@ -220,7 +233,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 Tags = CurrentTrack.Tags,
                 Language = CurrentTrack.Language,
                 PlaybackOrigin = CurrentTrack.PlaybackOrigin,
-                LastPosition = measurements.LastPosition
+                LastPosition = measurements.LastPosition,
+                Track = (Track)CurrentTrack
             };
         }
 

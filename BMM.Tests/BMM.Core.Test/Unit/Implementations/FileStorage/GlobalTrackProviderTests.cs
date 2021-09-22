@@ -61,7 +61,6 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
                 .Setup(x => x.GetCollectionTracksSupposedToBeDownloaded())
                 .ReturnsAsync(playlistTracks);
 
-
             var result = await globalTrackProvider.GetTracksSupposedToBeDownloaded();
 
             Assert.AreEqual(7, result.Count());

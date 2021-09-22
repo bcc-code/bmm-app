@@ -132,6 +132,9 @@ namespace BMM.Core.NewMediaPlayer
             if (newMediaTracks.Any(t => t.IsLivePlayback))
                 return false;
 
+            if (newMediaTracks.Count != Tracks.Count)
+                return false;
+
             var comparer = new MediaTrackComparer();
             var onlyInNew = newMediaTracks.Except(this.Tracks, comparer);
             var onlyInQueue = Tracks.Except(newMediaTracks, comparer);
@@ -153,12 +156,12 @@ namespace BMM.Core.NewMediaPlayer
     {
         public bool Equals(IMediaTrack x, IMediaTrack y)
         {
-            return y != null && x != null && x.Id == y.Id;
+            return x.Equals(y);
         }
 
         public int GetHashCode(IMediaTrack obj)
         {
-            return obj.Id.GetHashCode();
+            return obj.GetHashCode();
         }
     }
 }

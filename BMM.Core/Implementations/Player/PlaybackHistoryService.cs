@@ -1,62 +1,103 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using Akavache;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Models.PlaybackHistory;
+using Newtonsoft.Json;
 
 namespace BMM.Core.Implementations.Player
 {
     public class PlaybackHistoryService : IPlaybackHistoryService
     {
         public const int MaxEntries = 100;
+
+        private List<PlaybackHistoryEntry> _allEntries;
+
+        private readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
         private readonly ICache _cache;
+        private readonly ILogger _logger;
 
         public PlaybackHistoryService(
-            ICache cache)
+            ICache cache,
+            ILogger logger)
         {
             _cache = cache;
+            _logger = logger;
         }
 
-        public async Task AddPlayedTrack(IMediaTrack mediaTrack)
+        public async Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAtUTC)
         {
-            var playbackHistory = await GetAll();
-
-            var lastTrack = playbackHistory
-                .LastOrDefault()
-                ?.MediaTrack;
-
-            if (lastTrack != null && lastTrack.Id == mediaTrack.Id)
-                return;
-
-            if (playbackHistory.Count >= MaxEntries)
-                playbackHistory.RemoveAt(0);
-
-            playbackHistory.Add(new PlaybackHistoryEntry((Track) mediaTrack, DateTime.UtcNow));
-
-            await _cache.InsertObject(
-                StorageKeys.PlaybackHistory,
-                playbackHistory);
-        }
-
-        public async Task<List<PlaybackHistoryEntry>> GetAll()
-        {
-            List<PlaybackHistoryEntry> playbackHistoryEntries;
-
             try
             {
-                playbackHistoryEntries = await _cache.GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory);
+                await _writeSemaphore.WaitAsync();
+
+                mediaTrack = ((Track)mediaTrack).CopyBySerialization();
+                mediaTrack.LastPosition = lastPosition;
+                mediaTrack.LastPlayedAtUTC = playedAtUTC;
+
+                await GetAll();
+
+                var lastHistoryEntry = _allEntries
+                    .LastOrDefault();
+
+                if (lastHistoryEntry != null && lastHistoryEntry.MediaTrack.Id == mediaTrack.Id)
+                {
+                    lastHistoryEntry.LastPosition = lastPosition;
+                    lastHistoryEntry.MediaTrack = (Track)mediaTrack;
+                    await _cache.InsertObject(
+                        StorageKeys.PlaybackHistory,
+                        _allEntries);
+
+                    return;
+                }
+
+                if (_allEntries.Count >= MaxEntries)
+                    _allEntries.RemoveAt(0);
+
+                _allEntries.Add(new PlaybackHistoryEntry((Track) mediaTrack, lastPosition, playedAtUTC));
+
+                await _cache.InsertObject(
+                    StorageKeys.PlaybackHistory,
+                    _allEntries);
+            }
+            finally
+            {
+                _writeSemaphore.Release();
+            }
+        }
+
+        public async Task<IReadOnlyList<PlaybackHistoryEntry>> GetAll()
+        {
+            if (_allEntries == null)
+                await LoadAll();
+
+            return _allEntries.AsReadOnly();
+        }
+
+        private async Task LoadAll()
+        {
+            try
+            {
+                _allEntries = await _cache.GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory);
             }
             catch (KeyNotFoundException)
             {
-                playbackHistoryEntries = new List<PlaybackHistoryEntry>();
+                _allEntries = new List<PlaybackHistoryEntry>();
             }
-
-            return playbackHistoryEntries;
+            catch (Exception)
+            {
+                await _cache.Invalidate(StorageKeys.PlaybackHistory);
+            }
         }
     }
 }

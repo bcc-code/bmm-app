@@ -19,6 +19,7 @@ namespace BMM.Core.Test.Unit.Implementations.Player
 	public class PlaybackHistoryServiceTests : BaseTests<IPlaybackHistoryService>
 	{
 		private const int DefaultTrackId = 1;
+		private const long DefaultLastPosition = 1000;
 		private ICache _cacheWrapper;
 
 		protected override IPlaybackHistoryService CreateTestSubject()
@@ -33,9 +34,11 @@ namespace BMM.Core.Test.Unit.Implementations.Player
 		}
 
 		[Test]
-		public async Task TrackShouldNotBeAddedToHistory_WhenIsTheSameAsLastEntry()
+		public async Task TrackShouldHaveUpdateLastPosition_WhenIsTheSameAsLastEntry()
 		{
 			//Arrange
+            long expectedLastPosition = DefaultLastPosition * 2;
+
 			var mediaTrackMock = new Track()
 			{
 				Id = DefaultTrackId
@@ -43,7 +46,7 @@ namespace BMM.Core.Test.Unit.Implementations.Player
 
 			var listOfPlaybackHistoryEntries = new List<PlaybackHistoryEntry>
 			{
-				new PlaybackHistoryEntry(mediaTrackMock, DateTime.UtcNow)
+				new PlaybackHistoryEntry(mediaTrackMock, DefaultLastPosition, DateTime.UtcNow)
 			};
 
 			_cacheWrapper
@@ -51,14 +54,14 @@ namespace BMM.Core.Test.Unit.Implementations.Player
 				.Returns(listOfPlaybackHistoryEntries);
 
 			//Act
-			await Subject.AddPlayedTrack(mediaTrackMock);
+			await Subject.AddPlayedTrack(mediaTrackMock, expectedLastPosition, DateTime.UtcNow);
 
 			//Assert
 			await _cacheWrapper
-				.DidNotReceive()
+				.Received(1)
 				.InsertObject(
 					StorageKeys.PlaybackHistory,
-					Arg.Any<List<PlaybackHistoryEntry>>());
+					Arg.Is<List<PlaybackHistoryEntry>>(p => p.First().LastPosition == expectedLastPosition));
 		}
 
         [Test]
@@ -73,14 +76,14 @@ namespace BMM.Core.Test.Unit.Implementations.Player
             var listOfPlaybackHistoryEntries = new List<PlaybackHistoryEntry>();
 
             for (int i = 0; i < PlaybackHistoryService.MaxEntries; i++)
-                listOfPlaybackHistoryEntries.Add(new PlaybackHistoryEntry(Substitute.For<Track>(), DateTime.UtcNow));
+                listOfPlaybackHistoryEntries.Add(new PlaybackHistoryEntry(Substitute.For<Track>(), DefaultLastPosition, DateTime.UtcNow));
 
             _cacheWrapper
                 .GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory)
                 .Returns(listOfPlaybackHistoryEntries);
 
             //Act
-            await Subject.AddPlayedTrack(mediaTrackMock);
+            await Subject.AddPlayedTrack(mediaTrackMock, DefaultLastPosition, DateTime.UtcNow);
 
             //Assert
             await _cacheWrapper

@@ -22,6 +22,6 @@ namespace BMM.Core.Implementations.PlayObserver.Model
 
         public double SpentTime { get; set; }
 
-        public double LastPosition { get; set; }
+        public long LastPosition { get; set; }
     }
 }

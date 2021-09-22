@@ -48,5 +48,10 @@ namespace BMM.Core.Implementations.Caching
         {
             await _blobCache.InsertObject(key, obj);
         }
+
+        public async Task Invalidate(string key)
+        {
+            await _blobCache.Invalidate(key);
+        }
     }
 }
