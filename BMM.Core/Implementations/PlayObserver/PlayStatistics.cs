@@ -16,7 +16,6 @@ using BMM.Core.Implementations.PlayObserver.Model;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
-using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 using MvvmCross.Plugin.Messenger;
 
@@ -193,7 +192,7 @@ namespace BMM.Core.Implementations.PlayObserver
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);
 
                 var ev = ComposeEvent(measurements);
-                await _playbackHistoryService.AddPlayedTrack((Track)CurrentTrack, ev.LastPosition, ev.TimestampStart ?? DateTime.UtcNow);
+                await _playbackHistoryService.AddPlayedTrack((Track)CurrentTrack, ev.LastPosition, ev.TimestampStart);
 
                 await WriteEvent(ev);
                 TriggerClear();

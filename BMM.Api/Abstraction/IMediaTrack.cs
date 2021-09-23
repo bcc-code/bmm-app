@@ -16,6 +16,6 @@ namespace BMM.Api.Abstraction
 
         long LastPosition { get; set; }
 
-        DateTime LastPlayedAtUTC { get; set; }
+        DateTime? LastPlayedAtUTC { get; set; }
     }
 }

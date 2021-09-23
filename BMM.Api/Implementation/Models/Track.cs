@@ -56,7 +56,7 @@ namespace BMM.Api.Implementation.Models
 
         public long LastPosition { get; set; }
 
-        public DateTime LastPlayedAtUTC { get; set; } = DateTime.MinValue;
+        public DateTime? LastPlayedAtUTC { get; set; }
 
         public bool Equals(Track other)
         {
@@ -88,7 +88,7 @@ namespace BMM.Api.Implementation.Models
             {
                 int hashCode = GetUniqueKey.GetHashCode();
                 hashCode = (hashCode * 397) ^ LastPosition.GetHashCode();
-                hashCode = (hashCode * 397) ^ LastPlayedAtUTC.ToBinary().GetHashCode();
+                hashCode = (hashCode * 397) ^ (LastPlayedAtUTC != null ? LastPlayedAtUTC.Value.ToBinary().GetHashCode() : 0);
                 return hashCode;
             }
         }
