@@ -52,15 +52,15 @@ namespace BMM.Core.Implementations.PlayObserver
             _analytics.LogEvent("Log Track played after startup",
                 new Dictionary<string, object>
                 {
-                    {nameof(storedEvent.TrackId), storedEvent.TrackId},
-                    {nameof(storedEvent.TimestampStart), storedEvent.TimestampStart},
-                    {nameof(storedEvent.TimestampEnd), storedEvent.TimestampEnd},
-                    {nameof(storedEvent.SpentTime), storedEvent.SpentTime},
-                    {nameof(storedEvent.UniqueSecondsListened), storedEvent.UniqueSecondsListened},
-                    {nameof(storedEvent.LastPosition), storedEvent.LastPosition}
+                    {"TrackId", storedEvent.TrackId},
+                    {"TimestampStart", storedEvent.TimestampStart},
+                    {"TimestampEnd", storedEvent.TimestampEnd},
+                    {"SpentTime", storedEvent.SpentTime},
+                    {"UniqueSecondsListened", storedEvent.UniqueSecondsListened},
+                    {"LastPosition", storedEvent.LastPosition}
                 });
 
-            await _playbackHistoryService.AddPlayedTrack(storedEvent.Track, storedEvent.LastPosition, storedEvent.TimestampStart ?? DateTime.UtcNow);
+            await _playbackHistoryService.AddPlayedTrack(storedEvent.Track, storedEvent.LastPosition, storedEvent.TimestampStart);
             await _playStatistics.WriteEvent(storedEvent);
             await _localStorage.InsertObject<TrackPlayedEvent>(StorageKeys.UnfinishedTrackPlayedEvent, null);
         }

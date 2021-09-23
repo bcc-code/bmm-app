@@ -24,9 +24,9 @@ namespace BMM.Api.Implementation.Models
         /// </summary>
         public double? TrackLength { get; set; }
 
-        public DateTime? TimestampStart { get; set; }
+        public DateTime TimestampStart { get; set; }
 
-        public DateTime? TimestampEnd { get; set; }
+        public DateTime TimestampEnd { get; set; }
 
         public double? SpentTime { get; set; }
 
