@@ -13,8 +13,8 @@
     "Audiobook": "Lydbok",
     "Exegesis": "Tydning",
     "Done": "Ferdig",
-    "Today": "Today",
-    "Yesterday": "Yesterday"
+    "Today": "I dag",
+    "Yesterday": "I går"
   },
   "Streak": {
     "Message": "Din streak denne uken",
@@ -440,7 +440,7 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Recently played",
-    "NoHistoryYet": "No playback history yet."
+    "NoHistoryYet": "Ingen avspillingshistorikk ennå"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Seneste Taler"
