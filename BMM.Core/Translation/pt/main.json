@@ -12,7 +12,9 @@
     "Speech": "Fala de ",
     "Audiobook": "Livro de áudio",
     "Exegesis": "Exegesis",
-    "Done": "Feito"
+    "Done": "Feito",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Direitos autorais"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Mensagens recentes"
