@@ -12,7 +12,9 @@
     "Speech": "Przemowa",
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
-    "Done": "Done"
+    "Done": "Done",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "Twoja seria w tym tygodniu",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Prawa autorskie"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Przemowy"
