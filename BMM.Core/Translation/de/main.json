@@ -439,8 +439,8 @@
     "Title": "Copyright"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYet": "No playback history yet."
+    "Title": "Vor kurzem gespielt",
+    "NoHistoryYet": "Noch keine Abspielhistorie."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Neue Reden"
