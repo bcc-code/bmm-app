@@ -12,7 +12,9 @@
     "Speech": "Rede",
     "Audiobook": "Hörbuch",
     "Exegesis": "Auslegung",
-    "Done": "Fertig"
+    "Done": "Fertig",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Copyright"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Neue Reden"
