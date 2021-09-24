@@ -12,7 +12,9 @@
     "Speech": "Tale",
     "Audiobook": "Lydbog",
     "Exegesis": "Tydning",
-    "Done": "Færdig"
+    "Done": "Færdig",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "Din streak denne uge",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Copyright"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Nyeste taler"
