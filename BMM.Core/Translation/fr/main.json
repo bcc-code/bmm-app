@@ -12,7 +12,9 @@
     "Speech": "Messages",
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
-    "Done": "Done"
+    "Done": "Done",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Droits d'auteur"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Recent Messages"
