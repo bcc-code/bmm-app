@@ -12,7 +12,9 @@
     "Speech": "Üzenet",
     "Audiobook": "Hangoskönyv",
     "Exegesis": "Szómagyarázat",
-    "Done": "Kész"
+    "Done": "Kész",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "E heti sorozatod.",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Szerzői jog"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Legújabb üzenetek"
