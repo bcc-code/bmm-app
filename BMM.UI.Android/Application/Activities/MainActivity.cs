@@ -163,7 +163,7 @@ namespace BMM.UI.Droid.Application.Activities
             if (intent.Data != null)
             {
                 var deepLink = new System.Uri(intent.Data.ToString());
-                Mvx.IoCProvider.Resolve<IDeepLinkHandler>().Open(deepLink);
+                Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(deepLink);
             }
         }
 
@@ -209,7 +209,7 @@ namespace BMM.UI.Droid.Application.Activities
             if (_unhandledDeepLink != null)
             {
                 var url = new System.Uri(_unhandledDeepLink);
-                _androidPlayer.AfterConnectedAction = () => { Mvx.IoCProvider.Resolve<IDeepLinkHandler>().Open(url); };
+                _androidPlayer.AfterConnectedAction = () => { Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(url); };
                 _unhandledDeepLink = null;
             }
 
