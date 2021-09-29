@@ -1,4 +1,5 @@
-﻿using Android.Runtime;
+﻿using Android.OS;
+using Android.Runtime;
 using Android.Views;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
@@ -14,7 +15,12 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.ExploreNewestFragment")]
     public class ExploreNewestFragment : BaseFragment<ExploreNewestViewModel>
     {
-        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Android.OS.Bundle savedInstanceState)
+        private PodcastContextHeaderRecyclerAdapter _podcastContextHeaderRecyclerAdapter;
+
+        private PodcastContextHeaderRecyclerAdapter PodcastContextHeaderRecyclerAdapter =>
+            _podcastContextHeaderRecyclerAdapter ??= new PodcastContextHeaderRecyclerAdapter((IMvxAndroidBindingContext) BindingContext, ViewModel);
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
@@ -23,10 +29,14 @@ namespace BMM.UI.Droid.Application.Fragments
             if (appBar != null && swipeToRefresh != null)
                 appBar.OffsetChanged += (sender, args) => swipeToRefresh.Enabled = args.VerticalOffset == 0;
 
-            var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
-            recyclerView.Adapter = CreateAdapter();
-
             return view;
+        }
+
+        protected override void InitRecyclerView(MvxRecyclerView recyclerView)
+        {
+            base.InitRecyclerView(recyclerView);
+            recyclerView.SetItemViewCacheSize(20);
+            recyclerView!.Adapter = PodcastContextHeaderRecyclerAdapter;
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)

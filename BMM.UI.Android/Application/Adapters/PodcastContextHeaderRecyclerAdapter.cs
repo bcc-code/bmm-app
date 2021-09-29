@@ -29,6 +29,8 @@ namespace BMM.UI.Droid.Application.Adapters
             {
                 case Resource.Layout.listitem_covers_carousel_collection:
                     return new CoversCarouselCollectionViewHolder(view, itemBindingContext);
+                case Resource.Layout.listitem_fra_kaare_teaser:
+                    return new FraKaareTeaserViewHolder(view, itemBindingContext);
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

@@ -6,114 +6,106 @@
     android:layout_height="@dimen/row_document_height"
     android:background="?android:attr/selectableItemBackground">
 
-    <LinearLayout
-        android:id="@+id/trackInfoContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:gravity="center_vertical"
-        app:layout_constraintTop_toTopOf="parent"
+    <ImageView
+        android:id="@+id/trackPlaybackStateIcon"
+        android:layout_width="@dimen/track_padding"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/trackButtonsContainer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0">
+        app:layout_constraintTop_toTopOf="@+id/trackTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/trackTitle"
+        local:MvxBind="DrawableId TrackPlaybackStateToDrawable(., ViewModel.CurrentTrack);" />
 
-        <LinearLayout
-            android:id="@+id/trackTitleAndStateIconContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+    <TextView
+        android:id="@+id/trackTitle"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textFontWeight="700"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:lineHeight="20sp"
+        app:layout_constraintStart_toEndOf="@+id/trackPlaybackStateIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
+        app:layout_constraintBottom_toTopOf="@+id/trackSubtitle"
+        app:layout_constraintVertical_chainStyle="packed"
+        local:MvxBind="Text DocumentToTitle(.); TextColor TrackPlaybackStateToColor(., ViewModel.CurrentTrack)" />
 
-            <ImageView
-                android:id="@+id/trackPlaybackStateIcon"
-                android:layout_width="@dimen/track_padding"
-                android:layout_height="wrap_content"
-                local:MvxBind="DrawableId TrackPlaybackStateToDrawable(., ViewModel.CurrentTrack);" />
-
-            <TextView
-                android:id="@+id/trackTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textFontWeight="700"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:lineHeight="20sp"
-                local:MvxBind="Text DocumentToTitle(.); TextColor TrackPlaybackStateToColor(., ViewModel.CurrentTrack)" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/subtitleAndMetaContainer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/trackSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/gray"
-            android:textSize="13sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:lineHeight="20sp"
-            local:MvxBind="Text DocumentToSubtitle(.); Alpha TrackAvailabilityToOpacity(.)" />
-
-        <TextView
-            android:id="@+id/trackMeta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/bright_gray"
-            android:layout_marginLeft="4dp"
-            android:textSize="13sp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:lineHeight="20sp"
-            local:MvxBind="Text DocumentToMeta(.); Alpha TrackAvailabilityToOpacity(.)" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/trackButtonsContainer"
+    <TextView
+        android:id="@+id/trackSubtitle"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:textSize="13sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:lineHeight="20sp"
+        android:layout_marginStart="@dimen/margin_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trackTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        local:MvxBind="Text DocumentToSubtitle(.); Alpha TrackAvailabilityToOpacity(.)" />
+
+    <TextView
+        android:id="@+id/trackMeta"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:textColor="@color/bright_gray"
+        android:textSize="13sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:lineHeight="20sp"
+        android:layout_marginLeft="@dimen/margin_tiny"
+        app:layout_constraintTop_toTopOf="@+id/trackSubtitle"
+        app:layout_constraintBottom_toBottomOf="@+id/trackSubtitle"
+        app:layout_constraintStart_toEndOf="@+id/trackSubtitle"
+        app:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
+        local:MvxBind="Text DocumentToMeta(.); Alpha TrackAvailabilityToOpacity(.)" />
+
+    <MvxFrameControl
+        android:id="@+id/trackDownloadStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_references"
+        app:layout_constraintBottom_toBottomOf="parent"
+        local:MvxTemplate="@layout/track_download_status"
+        local:MvxBind="DataContext ." />
+
+    <ImageView
+        android:id="@+id/image_button_references"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_medium"
+        android:src="@drawable/btn_references_static"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_button_options"
+        app:layout_constraintBottom_toBottomOf="parent"
+        local:MvxBind="Click ShowTrackInfoCommand(.); Visibility Visibility(TrackHasExternalRelations(Item))"/>
+
+    <ImageView
+        android:id="@+id/image_button_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/padding_medium"
+        android:paddingEnd="@dimen/padding_medium"
+        android:src="@drawable/btn_options_static"
+        android:background="?selectableItemBackgroundBorderless"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        local:MvxBind="Click OptionButtonCommand(.)" />
 
-        <include
-            layout="@layout/track_download_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <ImageView
-            android:id="@+id/image_button_references"
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/BarrierForRightItems"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_medium"
-            android:src="@drawable/btn_references_static"
-            android:layout_toLeftOf="@id/image_button_options"
-            local:MvxBind="Click ShowTrackInfoCommand(.); Visibility Visibility(TrackHasExternalRelations(Item))"/>
-
-        <ImageView
-            android:id="@+id/image_button_options"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/padding_medium"
-            android:paddingEnd="@dimen/padding_medium"
-            android:src="@drawable/btn_options_static"
-            android:background="?selectableItemBackgroundBorderless"
-            local:MvxBind="Click OptionButtonCommand(.)" />
-
-    </LinearLayout>
+            app:barrierDirection="start"
+            app:constraint_referenced_ids="
+                        trackDownloadStatus,
+                        image_button_references,
+                        image_button_options"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

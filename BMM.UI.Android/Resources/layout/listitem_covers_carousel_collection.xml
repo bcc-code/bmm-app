@@ -4,7 +4,7 @@
         xmlns:local="http://schemas.android.com/apk/res-auto"
         android:id="@+id/CoversCarouselCollectionRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/horizontal_scrolling_cover_item_height"
         android:layout_marginVertical="@dimen/margin_medium"
         local:MvxItemTemplate="@layout/listitem_cover_with_title"
         local:MvxBind="
