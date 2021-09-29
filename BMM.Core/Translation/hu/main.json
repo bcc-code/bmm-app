@@ -12,7 +12,9 @@
     "Speech": "Üzenet",
     "Audiobook": "Hangoskönyv",
     "Exegesis": "Szómagyarázat",
-    "Done": "Done"
+    "Done": "Kész",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "E heti sorozatod.",
@@ -64,7 +66,7 @@
   "AutomaticDownloadViewModel": {
     "Title": "Automatikus letöltés",
     "None": "Egyik sem",
-    "PluralLatestTracks": "utolsó zeneszámok {0}",
+    "PluralLatestTracks": "{0} utolsó zeneszám",
     "AutomaticDownloadSubtitle": "Meghatározott mennyiségű zeneszámok automatikus letöltése, podcast esetén."
   },
   "ContributorViewModel": {
@@ -180,9 +182,9 @@
     "DownloadedContent": "Letöltött tartalom",
     "FollowedPodcasts": "Podcastok",
     "MyTracks": "Az én-m sín",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Lejátszási listám",
+    "SharedWithMe": "Velem megosztva",
+    "ByFormat": "{0} által"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcastok",
@@ -284,15 +286,15 @@
     "OptionAppVersionHeader": "Alkalmazás verziója",
     "AppInfoTitle": "Alkalmazás információ",
     "AppInfoAppVersion": "Alkalmazás verziója:",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Szerkesztő:",
     "AppInfoDeviceModel": "Készülék modellje:",
     "AppInfoDevicePlatform": "Készülék platform:",
     "AppInfoDeviceVersion": "Készülék verziója:",
     "LoggedInAs": "Belépve, mint",
     "LogoutConfirm": "Biztosan ki szeretnél jelentkezni?",
     "Logout": "Kijelentkezés",
-    "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceHeader": "Felhasználói hang",
+    "UserVoiceText": "Van ötleted a BMM fejlesztésére? Mesélj nekünk róla."
   },
   "StorageManagementViewModel": {
     "Title": "Offline adatok tárhelye",
@@ -327,8 +329,8 @@
     "Private": "Személyes",
     "DeletePlaylist": "Lejátszási lista törlése",
     "EditPlaylist": "Lejátszási lista szerkesztése",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "SharePlaylist": "Lejátszási lista megosztása",
+    "RemovePlaylist": "Lejátszási lista törlése"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Lejátszási lista szerkesztése",
@@ -342,17 +344,17 @@
     "KeepEditing": "Módosítás folytatása"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Lejátszási lista megosztása",
+    "ShareNote": "A lejátszási lista megosztásával az emberek hozzáférhetnek és meghallgathatják a hozzáadott számokat, ha rendelkeznek a linkkel.",
+    "ShareLink": "Link megosztása",
+    "MakePrivate": "Legyen privát",
+    "SharedWithFormat": "{0} személlyel megosztva"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Megosztott lejátszási lista",
+    "Close": "Bezárás",
+    "AddToMyPlaylist": "Hozzáadás lejátszási listámhoz",
+    "FollowOwnTrackCollection": "Nem követheted saját számgyűjteményedet"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Lejátszási lista",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Szerzői jog"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Legújabb üzenetek"

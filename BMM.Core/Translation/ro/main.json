@@ -12,7 +12,9 @@
     "Speech": "Mesaj",
     "Audiobook": "Carte audio",
     "Exegesis": "Tălmăcire",
-    "Done": "Done"
+    "Done": "Done",
+    "Today": "Today",
+    "Yesterday": "Yesterday"
   },
   "Streak": {
     "Message": "Linia ta săptămâna aceasta",
@@ -435,6 +437,10 @@
   },
   "CopyrightViewModel": {
     "Title": "Drepturi de autor"
+  },
+  "PlaybackHistoryViewModel": {
+    "Title": "Recently played",
+    "NoHistoryYet": "No playback history yet."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Ultimele vorbiri"
