@@ -17,7 +17,7 @@ namespace BMM.Core.ValueConverters
 
             var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
 
-            return new ExceptionHandlingCommand(async () => { deepLinkHandler.Open(new Uri(item.Link)); });
+            return new ExceptionHandlingCommand(async () => { deepLinkHandler.OpenFromInsideOfApp(new Uri(item.Link)); });
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BMM.Core.Implementations
         public void OpenUri(Uri uri)
         {
             // Check first if we can handle the link in the BMM app
-            if (_deepLinkHandler.Open(uri))
+            if (_deepLinkHandler.OpenFromInsideOfApp(uri))
                 return;
 
             _uriOpener.OpenUri(uri);

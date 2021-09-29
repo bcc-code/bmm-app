@@ -44,7 +44,7 @@ namespace BMM.UI.iOS
         public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
         {
             var uri = new Uri(userActivity.WebPageUrl.AbsoluteString);
-            return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().Open(uri);
+            return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(uri);
         }
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
