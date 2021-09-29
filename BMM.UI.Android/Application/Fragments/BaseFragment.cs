@@ -61,6 +61,8 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public MainActivity ParentActivity => (MainActivity)Activity;
 
+        protected MvxRecyclerView RecyclerView { get; private set; }
+
         protected virtual string Title => string.Empty;
 
         protected BaseFragment()
@@ -96,11 +98,31 @@ namespace BMM.UI.Droid.Application.Fragments
 
             CollapsingToolbar = view.FindViewById<CollapsingToolbarLayout>(Resource.Id.collapsing_toolbar);
 
-            var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
-            InitRecyclerView(recyclerView);
+            RecyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
+            InitRecyclerView(RecyclerView);
             SetStatusBarColor(ColorOfUppermostFragment());
 
             return view;
+        }
+
+        public override void OnStart()
+        {
+            base.OnStart();
+            AttachEvents();
+        }
+
+        public override void OnStop()
+        {
+            base.OnStop();
+            DetachEvents();
+        }
+
+        protected virtual void AttachEvents()
+        {
+        }
+
+        protected virtual void DetachEvents()
+        {
         }
 
         protected virtual void InitRecyclerView(MvxRecyclerView recyclerView)

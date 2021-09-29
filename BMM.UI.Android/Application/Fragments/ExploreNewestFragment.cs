@@ -3,6 +3,7 @@ using Android.Runtime;
 using Android.Views;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
+using BMM.UI.Droid.Application.Listeners;
 using Google.Android.Material.AppBar;
 using MvvmCross.DroidX;
 using MvvmCross.DroidX.RecyclerView;
@@ -51,6 +52,18 @@ namespace BMM.UI.Droid.Application.Fragments
                 ViewModel.NavigateToViewModelCommand.Execute(typeof(PlaybackHistoryViewModel));
 
             return base.OnOptionsItemSelected(item);
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            RecyclerView.AddOnScrollListener(new ImageServiceRecyclerViewScrollListener());
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            RecyclerView.ClearOnScrollListeners();
         }
 
         protected override MvxRecyclerAdapter CreateAdapter()
