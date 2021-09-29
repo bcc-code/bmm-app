@@ -2,14 +2,14 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:local="http://schemas.android.com/apk/res-auto"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/horizontal_scrolling_cover_item_width"
+        android:layout_height="@dimen/horizontal_scrolling_cover_item_height"
         android:orientation="vertical">
 
     <ffimageloading.cross.MvxCachedImageView
             android:id="@+id/CoverImageView"
-            android:layout_width="160dp"
-            android:layout_height="160dp"
+            android:layout_width="@dimen/horizontal_scrolling_cover_image_size"
+            android:layout_height="@dimen/horizontal_scrolling_cover_image_size"
             android:overScrollMode="never"
             android:adjustViewBounds="false"
             android:scaleType="centerCrop"
@@ -17,14 +17,15 @@
             local:MvxBind="
                 LoadingPlaceholderImagePath 'placeholder_cover';
                 ErrorPlaceholderImagePath 'placeholder_cover';
-                ImagePath CoverUrlToFallbackImage(Cover, 'placeholder_cover')"
-            android:src="@drawable/placeholder_cover" />
+                ImagePath CoverUrlToFallbackImage(Cover, 'placeholder_cover')" />
 
     <TextView
             android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_tiny"
+            android:maxLines="2"
+            android:ellipsize="end"
             android:gravity="center_horizontal"
             style="@style/Title4"
             local:MvxBind="Text Title" />

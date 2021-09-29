@@ -14,4 +14,5 @@
         android:layout_height="match_parent"
         local:MvxTemplateSelector="@string/explorenewest_templateselector"
         local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+
 </mvvmcross.droidx.MvxSwipeRefreshLayout>

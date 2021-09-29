@@ -16,8 +16,10 @@
     <dimen name="padding_medium">16dp</dimen>
     <dimen name="padding_large">32dp</dimen>
     <dimen name="padding_huge">64dp</dimen>
-    
+
     <dimen name="divider_height">1dp</dimen>
+
+    <dimen name="default_icon_size">24dp</dimen>
 
     <!-- Buttons -->
     <dimen name="large_button_height">56dp</dimen>
@@ -54,6 +56,11 @@
     <dimen name="friends_icon_dimen">20dp</dimen>
     <dimen name="shared_playlist_icon">24dp</dimen>
     <dimen name="from_kaare_image_size">40dp</dimen>
+
+    <dimen name="horizontal_scrolling_cover_image_size">160dp</dimen>
+    <dimen name="horizontal_scrolling_cover_item_width">160dp</dimen>
+    <dimen name="horizontal_scrolling_cover_item_height">204dp</dimen>
+
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>
     <dimen name="row_contributor_height">60dp</dimen>

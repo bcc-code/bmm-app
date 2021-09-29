@@ -220,6 +220,7 @@
     <Compile Include="AndroidMvxLog.cs" />
     <Compile Include="Application\ViewHolders\CoverWithTitleViewHolder.cs" />
     <Compile Include="Application\ViewHolders\CoversCarouselCollectionViewHolder.cs" />
+    <Compile Include="Application\ViewHolders\FraKaareTeaserViewHolder.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -448,6 +449,10 @@
     <AndroidResource Include="Resources\drawable\navigation_search_active.xml" />
     <AndroidResource Include="Resources\drawable\navigation_search_selector.xml" />
     <AndroidResource Include="Resources\drawable\ripple_random_button_fra_kaare.xml" />
+    <AndroidResource Include="Resources\drawable\teaser_rounded_background.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\font\inter.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

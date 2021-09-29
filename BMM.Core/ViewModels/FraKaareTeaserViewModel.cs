@@ -29,10 +29,19 @@ namespace BMM.Core.ViewModels
         public override CacheKeys? CacheKey => CacheKeys.PodcastGetTracks;
 
         private bool _showTeaser;
+        private CellWrapperViewModel<Document> _track;
 
         public bool ShowTeaser { get => _showTeaser; set => SetProperty(ref _showTeaser, value); }
 
         public IMvxAsyncCommand PlayRandomCommand { get; }
+
+        public CellWrapperViewModel<Document> Track
+        {
+            get => _track;
+            private set => SetProperty(ref _track, value);
+        }
+
+        public IMvxAsyncCommand TrackClickedCommand { get; }
 
         public FraKaareTeaserViewModel(IMvxNavigationService navigationService, IMediaPlayer mediaPlayer, IAnalytics analytics, ISettingsStorage settings)
         {
@@ -53,11 +62,22 @@ namespace BMM.Core.ViewModels
 
                 _analytics.LogEvent("Fra Kaare play random command was used");
             });
+
+            TrackClickedCommand = new ExceptionHandlingCommand(async () =>
+            {
+                DocumentSelectedCommand?.Execute(Track.Item);
+            });
         }
 
         public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
             var items = await Client.Podcast.GetTracks(Podcast.Id, policy);
+
+            var item = items.FirstOrDefault();
+
+            if (item != null)
+                Track = new CellWrapperViewModel<Document>(item, this);
+
             return items.Take(1).ToList();
         }
 

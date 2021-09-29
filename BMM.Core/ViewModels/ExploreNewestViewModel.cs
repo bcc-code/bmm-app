@@ -9,7 +9,6 @@ using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
-using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
@@ -17,7 +16,6 @@ using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels
@@ -26,7 +24,6 @@ namespace BMM.Core.ViewModels
     {
         private readonly IStreakObserver _streakObserver;
         private readonly ISettingsStorage _settings;
-        private readonly IBMMLanguageBinder _bmmLanguageBinder;
         private readonly INavigateToViewModelAction _navigateToViewModelAction;
 
         public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
@@ -41,12 +38,10 @@ namespace BMM.Core.ViewModels
             IStreakObserver streakObserver,
             IMvxMessenger messenger,
             ISettingsStorage settings,
-            IBMMLanguageBinder bmmLanguageBinder,
             INavigateToViewModelAction navigateToViewModelAction)
         {
             _streakObserver = streakObserver;
             _settings = settings;
-            _bmmLanguageBinder = bmmLanguageBinder;
             _navigateToViewModelAction = navigateToViewModelAction;
             FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
