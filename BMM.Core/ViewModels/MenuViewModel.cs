@@ -18,7 +18,7 @@ namespace BMM.Core.ViewModels
 
         public IMvxCommand MyContentCommand { get; private set; }
 
-        public IMvxCommand LibraryCommand { get; private set; }
+        public IMvxCommand BrowseCommand { get; private set; }
 
         public IMvxCommand SettingsCommand { get; private set; }
 
@@ -27,7 +27,7 @@ namespace BMM.Core.ViewModels
             SearchCommand = MenuEntry<SearchViewModel>();
             ExploreCommand = MenuEntry<ExploreNewestViewModel>();
             MyContentCommand = MenuEntry<MyContentViewModel>();
-            LibraryCommand = MenuEntry<LibraryViewModel>();
+            BrowseCommand = MenuEntry<BrowseViewModel>();
             SettingsCommand = MenuEntry<SettingsViewModel>();
 
             return base.Initialize();

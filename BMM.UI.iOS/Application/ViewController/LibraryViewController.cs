@@ -8,7 +8,7 @@ using UIKit;
 namespace BMM.UI.iOS
 {
     [MvxTabPresentation(TabName = Translations.MenuViewModel_Library, TabIconName = "icon_library", TabSelectedIconName = "icon_library_active", WrapInNavigationController = false)]
-    public partial class LibraryViewController : BaseViewController<LibraryViewModel>, TTabbedViewController, IHaveLargeTitle
+    public partial class LibraryViewController : BaseViewController<BrowseViewModel>, TTabbedViewController, IHaveLargeTitle
     {
         public double? InitialLargeTitleHeight { get; set; }
 

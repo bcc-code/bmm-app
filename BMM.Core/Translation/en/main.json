@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "You must select at least one content language",
     "DeleteLanguageTitle": "Cannot remove {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Library"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archive"
@@ -170,7 +170,7 @@
     "Search": "Search",
     "Explore": "Explore",
     "MyContent": "My Content",
-    "Library": "Library",
+    "Browse": "Browse",
     "Settings": "Settings",
     "HelpAndFeedback": "Help and Feedback",
     "Home": "Home",

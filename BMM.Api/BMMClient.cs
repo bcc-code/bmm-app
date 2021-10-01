@@ -47,7 +47,9 @@ namespace BMM.Api
 
         public IDiscoverClient Discover { get; private set; }
 
-        public ISharedPlaylistClient SharedPlaylist { get; set; }
+        public ISharedPlaylistClient SharedPlaylist { get; private set; }
+
+        public IBrowseClient Browse { get; private set; }
 
         private void InitClients(IRequestHandler requestHandler, ApiBaseUri uri, ILogger logger)
         {
@@ -66,6 +68,7 @@ namespace BMM.Api
             File = new FileClient(requestHandler, uri, logger);
             Discover = new DiscoverClient(requestHandler, uri, logger);
             SharedPlaylist = new SharedPlaylistClient(requestHandler, uri, logger);
+            Browse = new BrowseClient(requestHandler, uri, logger);
         }
     }
 }

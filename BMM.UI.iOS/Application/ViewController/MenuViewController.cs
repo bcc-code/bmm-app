@@ -47,7 +47,7 @@ namespace BMM.UI.iOS
                 return;
 
             ViewModel.ExploreCommand.Execute();
-            ViewModel.LibraryCommand.Execute();
+            ViewModel.BrowseCommand.Execute();
             ViewModel.SearchCommand.Execute();
             ViewModel.MyContentCommand.Execute();
             ViewModel.SettingsCommand.Execute();

@@ -23,6 +23,6 @@ namespace BMM.UI.Droid.Application.Fragments
             return view;
         }
 
-        protected override int FragmentId => Resource.Layout.fragment_explore_with_appbar;
+        protected override int FragmentId => Resource.Layout.fragment_explore;
     }
 }

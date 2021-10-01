@@ -119,13 +119,13 @@ namespace BMM.Core.Translation
 		public const string LanguageContentViewModel_Toast_NoLanguagesAvailable = nameof(LanguageContentViewModel_Toast_NoLanguagesAvailable);
 		public const string LanguageContentViewModel_DeleteLanguageMessage = nameof(LanguageContentViewModel_DeleteLanguageMessage);
 		public const string LanguageContentViewModel_DeleteLanguageTitle = nameof(LanguageContentViewModel_DeleteLanguageTitle);
-		public const string LibraryViewModel_Title = nameof(LibraryViewModel_Title);
+		public const string BrowseViewModel_Title = nameof(BrowseViewModel_Title);
 		public const string LibraryArchiveViewModel_Title = nameof(LibraryArchiveViewModel_Title);
 		public const string MenuViewModel_Title = nameof(MenuViewModel_Title);
 		public const string MenuViewModel_Search = nameof(MenuViewModel_Search);
 		public const string MenuViewModel_Explore = nameof(MenuViewModel_Explore);
 		public const string MenuViewModel_MyContent = nameof(MenuViewModel_MyContent);
-		public const string MenuViewModel_Library = nameof(MenuViewModel_Library);
+		public const string MenuViewModel_Browse = nameof(MenuViewModel_Browse);
 		public const string MenuViewModel_Settings = nameof(MenuViewModel_Settings);
 		public const string MenuViewModel_HelpAndFeedback = nameof(MenuViewModel_HelpAndFeedback);
 		public const string MenuViewModel_Home = nameof(MenuViewModel_Home);

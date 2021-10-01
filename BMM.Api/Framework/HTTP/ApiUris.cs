@@ -70,5 +70,7 @@
 
         public static string SharedPlaylist = "/shared_playlist/{sharingSecret}";
         public static string SharedPlaylistFollow = "/shared_playlist/{sharingSecret}/follow";
+
+        public static string Browse = "browse";
     }
 }
