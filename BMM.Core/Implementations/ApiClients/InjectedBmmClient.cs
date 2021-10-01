@@ -36,6 +36,8 @@ namespace BMM.Core.Implementations.ApiClients
 
         public ISharedPlaylistClient SharedPlaylist { get; }
 
+        public IBrowseClient Browse { get; }
+
         public InjectedBmmClient()
         {
             ApiInfo = Mvx.IoCProvider.Resolve<IApiInfoClient>();
@@ -53,6 +55,7 @@ namespace BMM.Core.Implementations.ApiClients
             File = Mvx.IoCProvider.Resolve<IFileClient>();
             Discover = Mvx.IoCProvider.Resolve<IDiscoverClient>();
             SharedPlaylist = Mvx.IoCProvider.Resolve<ISharedPlaylistClient>();
+            Browse = Mvx.IoCProvider.Resolve<IBrowseClient>();
         }
     }
 }

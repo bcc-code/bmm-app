@@ -7,7 +7,7 @@
     <item
         android:id="@+id/page_2"
         android:enabled="true"
-        android:icon="@drawable/navigation_library_selector"
+        android:icon="@drawable/navigation_browse_selector"
         android:title="Browse" />
     <item
         android:id="@+id/page_3"

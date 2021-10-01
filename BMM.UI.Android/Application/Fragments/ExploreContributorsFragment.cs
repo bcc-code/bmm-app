@@ -8,6 +8,6 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.ExploreContributorsFragment")]
     public class ExploreContributorsFragment : BaseFragment<ExploreContributorsViewModel>
     {
-        protected override int FragmentId => Resource.Layout.fragment_explore_with_appbar;
+        protected override int FragmentId => Resource.Layout.fragment_explore;
     }
 }

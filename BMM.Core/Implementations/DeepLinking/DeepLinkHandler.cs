@@ -68,7 +68,7 @@ namespace BMM.Core.Implementations.DeepLinking
             _links = new List<IDeepLinkParser>
             {
                 new RegexDeepLink("^/copyright$", NavigateTo<CopyrightViewModel>),
-                new RegexDeepLink("^/archive$", () => _navigationService.Navigate<LibraryViewModel, LibraryViewModel.Tab>(LibraryViewModel.Tab.Archive)),
+              //  new RegexDeepLink("^/archive$", () => _navigationService.Navigate<BrowseViewModel, BrowseViewModel.Tab>(BrowseViewModel.Tab.Archive)),
                 new RegexDeepLink("^/daily-fra-kaare$", PlayFraKaare),
                 new RegexDeepLink("^/playlist/latest$", NavigateTo<ExploreNewestViewModel>),
                 new RegexDeepLink("^/speeches$", NavigateTo<ExploreRecentSpeechesViewModel>),

@@ -105,6 +105,7 @@
     <Compile Include="Application\Activities\SupportEndedActivity.cs" />
     <Compile Include="Application\Activities\UserSetupActivity.cs" />
     <Compile Include="Application\Activities\OidcLoginActivity.cs" />
+    <Compile Include="Application\Adapters\BrowseRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\DocumentDragAndDropAdapter.cs" />
     <Compile Include="Application\Adapters\DragAndDrop\ListDeleteClickListener.cs" />
     <Compile Include="Application\Adapters\DragAndDrop\LanguageListAdapter.cs" />
@@ -127,7 +128,7 @@
     <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
     <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />
-    <Compile Include="Application\Fragments\LibraryFragment.cs" />
+    <Compile Include="Application\Fragments\BrowseFragment.cs" />
     <Compile Include="Application\Fragments\FollowedPodcastsFragment.cs" />
     <Compile Include="Application\Fragments\PlaybackHistoryFragment.cs" />
     <Compile Include="Application\Fragments\PodcastFragment.cs" />
@@ -232,7 +233,6 @@
     <Compile Include="Application\Fragments\CopyrightFragment.cs" />
     <Compile Include="Application\Fragments\ExploreContributorsFragment.cs" />
     <Compile Include="Application\Fragments\ExploreNewestFragment.cs" />
-    <Compile Include="Application\Fragments\ExplorePopularFragment.cs" />
     <Compile Include="Application\Fragments\LanguageAppFragment.cs" />
     <Compile Include="Application\Fragments\LanguageContentFragment.cs" />
     <Compile Include="Application\Fragments\MenuFragment.cs" />
@@ -394,6 +394,8 @@
     <AndroidResource Include="Resources\drawable\cover_with_title_background.xml" />
     <AndroidResource Include="Resources\drawable\icon_friends.xml" />
     <AndroidResource Include="Resources\drawable\icon_link.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_browse_active.xml" />
     <AndroidResource Include="Resources\drawable\spinner_small.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -433,16 +435,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
     <AndroidResource Include="Resources\drawable\navigation_favorites.xml" />
     <AndroidResource Include="Resources\drawable\navigation_favorites_active.xml" />
     <AndroidResource Include="Resources\drawable\navigation_favorites_selector.xml" />
     <AndroidResource Include="Resources\drawable\navigation_home.xml" />
     <AndroidResource Include="Resources\drawable\navigation_home_active.xml" />
     <AndroidResource Include="Resources\drawable\navigation_home_selector.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_library.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_library_active.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_library_selector.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_browse_selector.xml" />
     <AndroidResource Include="Resources\drawable\navigation_profile.xml" />
     <AndroidResource Include="Resources\drawable\navigation_profile_active.xml" />
     <AndroidResource Include="Resources\drawable\navigation_profile_selector.xml" />
@@ -518,7 +517,6 @@
     <AndroidResource Include="Resources\drawable\seekbar_miniplayer.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_explore_page.axml" />
     <AndroidResource Include="Resources\layout\fragment_downloadedcontent.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -614,7 +612,6 @@
     <AndroidResource Include="Resources\drawable-v21\gray_click_effect_ratio2.xml" />
     <AndroidResource Include="Resources\drawable-v21\gray_click_effect_ratio3.xml" />
     <AndroidResource Include="Resources\drawable-v21\gray_click_effect_ratio7.xml" />
-    <AndroidResource Include="Resources\layout\fragment_explore_page_newest.axml" />
     <AndroidResource Include="Resources\layout\listitem_header.axml" />
     <AndroidResource Include="Resources\drawable-hdpi\image_kaare.png" />
     <AndroidResource Include="Resources\drawable-mdpi\image_kaare.png" />
@@ -636,13 +633,7 @@
     <AndroidResource Include="Resources\layout\fragment_automatic_download.axml" />
     <AndroidResource Include="Resources\layout\listitem_automatic_download.axml" />
     <AndroidResource Include="Resources\layout\fragment_downloadedfollowedpodcasts.axml" />
-    <AndroidResource Include="Resources\layout\fragment_explore_with_appbar.axml">
-      <SubType>
-      </SubType>
-      <Generator>
-      </Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_explore_with_appbar.axml" />
+    <AndroidResource Include="Resources\layout\fragment_explore.axml" />
     <AndroidResource Include="Resources\layout\fragment_curatedplaylists.axml" />
     <AndroidResource Include="Resources\layout\shuffle_button.axml">
       <SubType>
@@ -1442,7 +1433,7 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\fragment_library.axml">
+    <AndroidResource Include="Resources\layout\fragment_browse.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

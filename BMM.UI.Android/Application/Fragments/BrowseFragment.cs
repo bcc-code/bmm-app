@@ -1,6 +1,4 @@
-﻿using Android.OS;
-using Android.Runtime;
-using Android.Views;
+﻿using Android.Runtime;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Listeners;
@@ -13,15 +11,15 @@ using MvvmCross.Platforms.Android.Presenters.Attributes;
 namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxFragmentPresentation(typeof(MainActivityViewModel), Resource.Id.content_frame, true)]
-    [Register("bmm.ui.droid.application.fragments.ExploreNewestFragment")]
-    public class ExploreNewestFragment : BaseFragment<ExploreNewestViewModel>
+    [Register("bmm.ui.droid.application.fragments.BrowseFragment")]
+    public class BrowseFragment : BaseFragment<BrowseViewModel>
     {
-        private PodcastContextHeaderRecyclerAdapter _podcastContextHeaderRecyclerAdapter;
+        private BrowseRecyclerAdapter _browseRecyclerAdapter;
         private MvxSwipeRefreshLayout _swipeRefreshLayout;
         private AppBarLayout _appBarLayout;
 
-        private PodcastContextHeaderRecyclerAdapter PodcastContextHeaderRecyclerAdapter =>
-            _podcastContextHeaderRecyclerAdapter ??= new PodcastContextHeaderRecyclerAdapter((IMvxAndroidBindingContext) BindingContext, ViewModel);
+        private BrowseRecyclerAdapter BrowseRecyclerAdapter =>
+            _browseRecyclerAdapter ??= new BrowseRecyclerAdapter((IMvxAndroidBindingContext) BindingContext);
 
         private MvxSwipeRefreshLayout SwipeRefreshLayout
             => _swipeRefreshLayout ??= View.FindViewById<MvxSwipeRefreshLayout>(Resource.Id.refresher);
@@ -33,21 +31,7 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             base.InitRecyclerView(recyclerView);
             recyclerView.SetItemViewCacheSize(20);
-            recyclerView!.Adapter = PodcastContextHeaderRecyclerAdapter;
-        }
-
-        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
-        {
-            base.OnCreateOptionsMenu(menu, inflater);
-            inflater.Inflate(Resource.Menu.playback_history, menu);
-        }
-
-        public override bool OnOptionsItemSelected(IMenuItem item)
-        {
-            if (item.ItemId == Resource.Id.playback_history)
-                ViewModel.NavigateToViewModelCommand.Execute(typeof(PlaybackHistoryViewModel));
-
-            return base.OnOptionsItemSelected(item);
+            recyclerView!.Adapter = BrowseRecyclerAdapter;
         }
 
         protected override void AttachEvents()
@@ -75,6 +59,6 @@ namespace BMM.UI.Droid.Application.Fragments
             SwipeRefreshLayout.Enabled = e.VerticalOffset == 0;
         }
 
-        protected override int FragmentId => Resource.Layout.fragment_explore;
+        protected override int FragmentId => Resource.Layout.fragment_browse;
     }
 }

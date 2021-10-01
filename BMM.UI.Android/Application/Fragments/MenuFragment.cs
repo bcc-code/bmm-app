@@ -45,8 +45,8 @@ namespace BMM.UI.Droid.Application.Fragments
             var search = _navigationView.Menu.FindItem(Resource.Id.page_1);
             search?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Home]);
 
-            var explore = _navigationView.Menu.FindItem(Resource.Id.page_2);
-            explore?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Library]);
+            var browse = _navigationView.Menu.FindItem(Resource.Id.page_2);
+            browse?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Browse]);
 
             var myContent = _navigationView.Menu.FindItem(Resource.Id.page_3);
             myContent?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Search]);
@@ -66,7 +66,7 @@ namespace BMM.UI.Droid.Application.Fragments
                     ViewModel.ExploreCommand.Execute();
                     return true;
                 case Resource.Id.page_2:
-                    ViewModel.LibraryCommand.Execute();
+                    ViewModel.BrowseCommand.Execute();
                     return true;
                 case Resource.Id.page_3:
                     ViewModel.SearchCommand.Execute();
