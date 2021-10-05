@@ -127,6 +127,7 @@
     <Compile Include="Application\Extensions\ContextExtensions.cs" />
     <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
+    <Compile Include="Application\Fragments\BrowseDetailsFragment.cs" />
     <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\BrowseFragment.cs" />
     <Compile Include="Application\Fragments\FollowedPodcastsFragment.cs" />
@@ -467,6 +468,10 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\activity_oidc_login.axml" />
     <AndroidResource Include="Resources\layout\collapsing_toolbar.xml" />
+    <AndroidResource Include="Resources\layout\fragment_browse_details.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_edit_trackcollection.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

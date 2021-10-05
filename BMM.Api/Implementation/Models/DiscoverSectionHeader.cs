@@ -22,5 +22,8 @@ namespace BMM.Api.Implementation.Models
 
         [JsonIgnore]
         public bool HasLink => string.IsNullOrEmpty(Link);
+
+        [JsonIgnore]
+        public bool IsSeparatorVisible { get; set; } = true;
     }
 }

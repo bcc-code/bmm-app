@@ -47,6 +47,9 @@ namespace BMM.Api.Framework.JsonConverter
 
                 case "listening_streak":
                     return new ListeningStreak();
+
+                case "chapter_header":
+                    return new ChapterHeader();
             }
 
             return new UnsupportedDocument();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using Android.Graphics;
 using AndroidX.Core.Content;
@@ -16,6 +17,15 @@ namespace BMM.UI.Droid.Application.ValueConverters
 {
     public class TrackPlaybackStateToColorValueConverter : MvxValueConverter<CellWrapperViewModel<Document>, Color>
     {
+        private readonly IConnection _connection;
+        private readonly IStorageManager _storageManager;
+
+        public TrackPlaybackStateToColorValueConverter()
+        {
+            _connection = Mvx.IoCProvider.Resolve<IConnection>();
+            _storageManager = Mvx.IoCProvider.Resolve<IStorageManager>();
+        }
+
         protected override Color Convert(CellWrapperViewModel<Document> document, Type targetType, object currentTrack, CultureInfo culture)
         {
             var item = document.Item;
@@ -34,9 +44,8 @@ namespace BMM.UI.Droid.Application.ValueConverters
 
         private bool TrackIsNotAvailableOffline(Track track)
         {
-            var userIsOffline = Mvx.IoCProvider.Resolve<IConnection>().GetStatus() == ConnectionStatus.Offline;
-            var trackIsNotDownloaded = !Mvx.IoCProvider.Resolve<IStorageManager>().SelectedStorage.IsDownloaded(track);
-
+            var userIsOffline = _connection.GetStatus() == ConnectionStatus.Offline;
+            var trackIsNotDownloaded = !_storageManager.SelectedStorage.IsDownloaded(track);
             return userIsOffline && trackIsNotDownloaded;
         }
 

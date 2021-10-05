@@ -22,7 +22,7 @@ namespace BMM.Api.Implementation.Models
         [EnumMember(Value = "pinned_item")]
         PinnedItem,
 
-        [IgnoreDataMember]
+        [EnumMember(Value = "chapter_header")]
         ChapterHeader,
 
         [IgnoreDataMember]

@@ -1,4 +1,5 @@
 using System;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Models;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;

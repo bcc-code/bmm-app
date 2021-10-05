@@ -1,6 +1,4 @@
-using BMM.Api.Implementation.Models;
-
-namespace BMM.Core.Models
+namespace BMM.Api.Implementation.Models
 {
     public class ChapterHeader : Document
     {
