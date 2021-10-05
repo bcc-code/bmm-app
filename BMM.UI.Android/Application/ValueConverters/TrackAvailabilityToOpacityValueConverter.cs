@@ -15,6 +15,13 @@ namespace BMM.UI.Droid.Application.ValueConverters
         private const float FullOpacity = 1f;
         private const float HalfOpacity = .5f;
 
+        private readonly IStorageManager _storageManager;
+
+        public TrackAvailabilityToOpacityValueConverter()
+        {
+            _storageManager = Mvx.IoCProvider.Resolve<IStorageManager>();
+        }
+
         protected override float Convert(CellWrapperViewModel<Document> value, Type targetType, object parameter, CultureInfo culture)
         {
             var item = value.Item;
@@ -29,7 +36,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
 
         private bool TrackIsAvailable(Track track, bool isConnectionStatusOnline)
         {
-            var trackIsDownloaded = Mvx.IoCProvider.Resolve<IStorageManager>().SelectedStorage.IsDownloaded(track);
+            var trackIsDownloaded = _storageManager.SelectedStorage.IsDownloaded(track);
             return isConnectionStatusOnline || trackIsDownloaded;
         }
     }

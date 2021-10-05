@@ -11,6 +11,7 @@ namespace BMM.UI.Droid.Application.Adapters
 {
     public class PodcastContextHeaderRecyclerAdapter : HeaderRecyclerAdapter
     {
+        private readonly RecyclerView.RecycledViewPool _commonRecyclerViewPool;
         private readonly ExploreNewestViewModel _viewModel;
 
         protected override int NumberOfAdditionalItems => 3;
@@ -18,6 +19,7 @@ namespace BMM.UI.Droid.Application.Adapters
         public PodcastContextHeaderRecyclerAdapter(IMvxAndroidBindingContext bindingContext, ExploreNewestViewModel exploreNewestViewModel) : base(bindingContext)
         {
             _viewModel = exploreNewestViewModel;
+            _commonRecyclerViewPool = new RecyclerView.RecycledViewPool();
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -28,7 +30,13 @@ namespace BMM.UI.Droid.Application.Adapters
             switch (viewType)
             {
                 case Resource.Layout.listitem_covers_carousel_collection:
-                    return new CoversCarouselCollectionViewHolder(view, itemBindingContext);
+                {
+                    var coversCarouselCollectionViewHolder = new CoversCarouselCollectionViewHolder(view, itemBindingContext)
+                    {
+                        RecycledViewPool = _commonRecyclerViewPool
+                    };
+                    return coversCarouselCollectionViewHolder;
+                }
                 case Resource.Layout.listitem_fra_kaare_teaser:
                     return new FraKaareTeaserViewHolder(view, itemBindingContext);
                 default:

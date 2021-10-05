@@ -104,7 +104,6 @@
             android:layout_height="wrap_content"
             app:barrierDirection="start"
             app:constraint_referenced_ids="
-                        trackDownloadStatus,
                         image_button_references,
                         image_button_options"/>
 

@@ -8,8 +8,11 @@ namespace BMM.UI.Droid.Application.Adapters
 {
     public class BrowseRecyclerAdapter : LoadMoreRecyclerAdapter
     {
+        private readonly RecyclerView.RecycledViewPool _commonRecyclerViewPool;
+
         public BrowseRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
         {
+            _commonRecyclerViewPool = new RecyclerView.RecycledViewPool();
         }
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
@@ -20,7 +23,13 @@ namespace BMM.UI.Droid.Application.Adapters
             switch (viewType)
             {
                 case Resource.Layout.listitem_covers_carousel_collection:
-                    return new CoversCarouselCollectionViewHolder(view, itemBindingContext);
+                {
+                    var coversCarouselCollectionViewHolder = new CoversCarouselCollectionViewHolder(view, itemBindingContext)
+                    {
+                        RecycledViewPool = _commonRecyclerViewPool
+                    };
+                    return coversCarouselCollectionViewHolder;
+                }
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

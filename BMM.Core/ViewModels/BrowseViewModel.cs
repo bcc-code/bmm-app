@@ -30,6 +30,9 @@ namespace BMM.Core.ViewModels
                 .Where(d => d.UseCoverCarousel)
                 .ToList();
 
+            if (carouselHeaders.Any())
+                carouselHeaders.First().IsSeparatorVisible = false;
+
             foreach (var carouselHeader in carouselHeaders)
             {
                 var coverDocuments = new List<CoverDocument>();

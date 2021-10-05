@@ -31,10 +31,18 @@ namespace BMM.UI.Droid.Application.ViewHolders
         {
         }
 
+        public RecyclerView.RecycledViewPool RecycledViewPool { get; set; }
+
         private void Bind()
         {
             _coversCarouselCollectionRecyclerView = ItemView.FindViewById<MvxRecyclerView>(Resource.Id.CoversCarouselCollectionRecyclerView);
-            _layoutManager = new LinearLayoutManager(ItemView.Context, LinearLayoutManager.Horizontal, false);
+            _coversCarouselCollectionRecyclerView!.SetRecycledViewPool(RecycledViewPool);
+            _coversCarouselCollectionRecyclerView.NestedScrollingEnabled = false;
+
+            _layoutManager = new LinearLayoutManager(ItemView.Context, LinearLayoutManager.Horizontal, false)
+            {
+                RecycleChildrenOnDetach = true
+            };
 
             var spacingItemDecoration = new SpacingItemDecoration(
                 ItemSpacing.DpToPixels(),
