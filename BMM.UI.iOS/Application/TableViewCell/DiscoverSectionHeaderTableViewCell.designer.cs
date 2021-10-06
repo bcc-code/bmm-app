@@ -14,6 +14,9 @@ namespace BMM.UI.iOS
 	partial class DiscoverSectionHeaderTableViewCell
 	{
 		[Outlet]
+		BMM.UI.iOS.Separator Divider { get; set; }
+
+		[Outlet]
 		UIKit.UIButton LinkButton { get; set; }
 
 		[Outlet]
@@ -29,6 +32,11 @@ namespace BMM.UI.iOS
 			if (Titel != null) {
 				Titel.Dispose ();
 				Titel = null;
+			}
+
+			if (Divider != null) {
+				Divider.Dispose ();
+				Divider = null;
 			}
 
 		}

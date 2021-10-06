@@ -2,6 +2,7 @@ using System;
 using BMM.Api.Implementation.Models;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Extensions;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
@@ -37,6 +38,12 @@ namespace BMM.UI.iOS
                 PlaylistsCollectionView.Source = source;
                 set.Apply();
             });
+        }
+
+        public nfloat CollectionViewOffset
+        {
+            get => PlaylistsCollectionView.ContentOffset.X;
+            set => PlaylistsCollectionView.SetXOffset(value, false);
         }
 
         private CellWrapperViewModel<Document> CellDataContext => (CellWrapperViewModel<Document>)DataContext;
