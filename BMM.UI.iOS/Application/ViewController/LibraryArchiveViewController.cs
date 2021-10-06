@@ -10,7 +10,7 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override Type ParentViewControllerType => typeof(LibraryViewController);
+        public override Type ParentViewControllerType => typeof(BrowseViewController);
 
         public override void ViewDidLoad()
         {

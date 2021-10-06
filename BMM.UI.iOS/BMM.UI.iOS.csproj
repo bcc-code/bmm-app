@@ -384,6 +384,12 @@
     <Reference Include="System.IO.Compression" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\icon_browse@3x.png" />
+    <BundleResource Include="Resources\icon_browse@2x.png" />
+    <BundleResource Include="Resources\icon_browse.png" />
+    <BundleResource Include="Resources\icon_browse_active@2x.png" />
+    <BundleResource Include="Resources\icon_browse_active@3x.png" />
+    <BundleResource Include="Resources\icon_browse_active.png" />
     <BundleResource Include="Resources\aslaksen.png" />
     <BundleResource Include="Resources\aslaksen@2x.png" />
     <BundleResource Include="Resources\aslaksen@3x.png" />
@@ -438,12 +444,6 @@
     <BundleResource Include="Resources\icon_home_active.png" />
     <BundleResource Include="Resources\icon_home_active@2x.png" />
     <BundleResource Include="Resources\icon_home_active@3x.png" />
-    <BundleResource Include="Resources\icon_library.png" />
-    <BundleResource Include="Resources\icon_library@2x.png" />
-    <BundleResource Include="Resources\icon_library@3x.png" />
-    <BundleResource Include="Resources\icon_library_active.png" />
-    <BundleResource Include="Resources\icon_library_active@2x.png" />
-    <BundleResource Include="Resources\icon_library_active@3x.png" />
     <BundleResource Include="Resources\icon_options.png" />
     <BundleResource Include="Resources\icon_options@2x.png" />
     <BundleResource Include="Resources\icon_options@3x.png" />
@@ -718,6 +718,7 @@
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\ViewController\BrowseDetailsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\PlaybackHistoryViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
@@ -729,7 +730,7 @@
     <InterfaceDefinition Include="Application\ViewController\MyTracksViewController.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\LibraryViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\BrowseViewController.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\DownloadedContentViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\FollowedPodcastsViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\PinnedItemTableViewCell.xib">
@@ -765,6 +766,7 @@
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
+    <Compile Include="Application\Extensions\CollectionViewExtensions.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
     <Compile Include="Application\Extensions\UiTableExtensions.cs" />
     <Compile Include="Application\Extensions\ViewExtensions.cs" />
@@ -852,6 +854,7 @@
     <Compile Include="Application\TableViewSource\Base\ITableCellType.cs" />
     <Compile Include="Application\TableViewSource\Base\TableCellType.cs" />
     <Compile Include="Application\TableViewSource\Base\VariableRowHeightTableViewSource.cs" />
+    <Compile Include="Application\TableViewSource\BrowseDetailsTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\EditingTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\NotSelectableDocumentsTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\TrackInfoTableViewSource.cs" />
@@ -868,15 +871,19 @@
     <Compile Include="Application\ValueConverter\TrackToSubtitleColorConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToSubtitleUppercaseConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToTitleColorConverter.cs" />
+    <Compile Include="Application\ViewController\BrowseDetailsViewController.cs" />
+    <Compile Include="Application\ViewController\BrowseDetailsViewController.designer.cs">
+      <DependentUpon>BrowseDetailsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\ViewController\EditTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\FollowedPodcastsViewController.cs" />
     <Compile Include="Application\ViewController\FollowedPodcastsViewController.designer.cs">
       <DependentUpon>FollowedPodcastsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\IHaveLargeTitle.cs" />
-    <Compile Include="Application\ViewController\LibraryViewController.cs" />
-    <Compile Include="Application\ViewController\LibraryViewController.designer.cs">
-      <DependentUpon>LibraryViewController.cs</DependentUpon>
+    <Compile Include="Application\ViewController\BrowseViewController.cs" />
+    <Compile Include="Application\ViewController\BrowseViewController.designer.cs">
+      <DependentUpon>BrowseViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.cs" />
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.designer.cs">
@@ -997,10 +1004,6 @@
     <Compile Include="Application\ViewController\ExploreNewestViewController.cs" />
     <Compile Include="Application\ViewController\ExploreNewestViewController.designer.cs">
       <DependentUpon>ExploreNewestViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ExplorePopularViewController.cs" />
-    <Compile Include="Application\ViewController\ExplorePopularViewController.designer.cs">
-      <DependentUpon>ExplorePopularViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\DownloadedContentViewController.designer.cs">
       <DependentUpon>DownloadedContentViewController.cs</DependentUpon>
@@ -1144,7 +1147,6 @@
     <InterfaceDefinition Include="Application\TableViewCell\LoadingTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\ContainmentViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ExploreNewestViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ExplorePopularViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\DownloadedContentViewController.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
