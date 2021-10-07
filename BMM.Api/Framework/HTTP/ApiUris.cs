@@ -73,8 +73,5 @@
 
         public static string Browse = "browse";
         public static string BrowseEvents = "browse/events{?skip,take}";
-        public static string BrowseAudiobooks = "browse/audiobooks";
-        public static string BrowseMusic = "browse/music";
-        public static string BrowsePodcasts = "browse/podcasts";
     }
 }

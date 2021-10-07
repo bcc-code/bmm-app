@@ -4,13 +4,11 @@ namespace BMM.Core.ViewModels.Parameters
 {
     public class BrowseDetailsParameters : IBrowseDetailsParameters
     {
-        public BrowseDetailsParameters(BrowseDetailsType browseDetailsType, string title)
+        public BrowseDetailsParameters(string path)
         {
-            BrowseDetailsType = browseDetailsType;
-            Title = title;
+            Path = path;
         }
 
-        public BrowseDetailsType BrowseDetailsType { get; }
-        public string Title { get; }
+        public string Path { get; }
     }
 }

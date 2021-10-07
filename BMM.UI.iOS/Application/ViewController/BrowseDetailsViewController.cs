@@ -30,11 +30,15 @@ namespace BMM.UI.iOS
 
             var source = new NotSelectableDocumentsTableViewSource(BrowseTableView);
 
-            var set = this.CreateBindingSet<BrowseDetailsViewController, BrowseViewModel>();
+            var set = this.CreateBindingSet<BrowseDetailsViewController, BrowseDetailsViewModel>();
 
             set.Bind(source)
                 .To(vm => vm.Documents)
                 .WithConversion<DocumentListValueConverter>(ViewModel);
+
+            set.Bind(source)
+                .For(s => s.LoadMoreCommand)
+                .To(s => s.LoadMoreCommand);
 
             set.Bind(source)
                 .For(s => s.SelectionChangedCommand)
@@ -43,8 +47,7 @@ namespace BMM.UI.iOS
 
             set.Bind(source)
                 .For(s => s.IsFullyLoaded)
-                .To(vm => vm.IsLoading)
-                .WithConversion<InvertedVisibilityConverter>();
+                .To(vm => vm.IsFullyLoaded);
 
             set.Bind(refreshControl)
                 .For(r => r.IsRefreshing)
@@ -53,6 +56,10 @@ namespace BMM.UI.iOS
             set.Bind(refreshControl)
                 .For(r => r.RefreshCommand)
                 .To(vm => vm.ReloadCommand);
+
+            set.Bind(this)
+                .For(v => v.Title)
+                .To(vm => vm.Title);
 
             set.Apply();
         }
