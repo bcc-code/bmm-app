@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Content;
+using BMM.Core.Constants;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Interactions;
@@ -44,8 +45,6 @@ namespace BMM.UI.Droid.Application.Fragments
         public bool IsVisible => PlayerFragmentContainer.Visibility == ViewStates.Visible;
 
         protected override int FragmentId => Resource.Layout.fragment_player;
-
-        protected override string Title => " ";
 
         private IMvxInteraction<TogglePlayerInteraction> _interaction;
 
@@ -107,6 +106,7 @@ namespace BMM.UI.Droid.Application.Fragments
             new PreventBottomSheetChangesWhileSwipeHappens(_bottomSheetManager, _swipeDetector).Register();
 
             UpdateStatusBarColor();
+            Title = StringConstants.Space;
 
             return view;
         }
