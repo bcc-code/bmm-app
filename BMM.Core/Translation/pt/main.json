@@ -174,11 +174,11 @@
     "Settings": "Configurações",
     "HelpAndFeedback": "Ajuda e Feedback",
     "Home": "Início",
-    "Favorites": "Favorites",
+    "Favorites": "Favoritos",
     "Profile": "Perfil"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Favoritos",
     "DownloadedContent": "Conteúdo baixado",
     "FollowedPodcasts": "Podcasts seguidos ",
     "MyTracks": "Meus rastros",
@@ -260,8 +260,8 @@
   "SettingsViewModel": {
     "Title": "Perfil",
     "HeadlineSettings": "Configurações",
-    "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionAutoplayHeader": "Reprodução automática",
+    "OptionAutoplayText": "Reproduzir hino depois de ouvir o episódio de hoje de Fra Kåre",
     "OptionStreakHiddenHeader": "Hide streak",
     "OptionStreakHiddenText": "Hide your listening statistic",
     "OptionEnablePushHeader": "Habilitar notificações push",
@@ -290,7 +290,7 @@
     "AppInfoDeviceModel": "Modelo do dispositivo: ",
     "AppInfoDevicePlatform": "Plataforma de dispositivo: ",
     "AppInfoDeviceVersion": "Versão do dispositivo: ",
-    "LoggedInAs": "Signed in as",
+    "LoggedInAs": "Logar como ",
     "LogoutConfirm": "Tem certeza que deseja sair?",
     "Logout": "Sair",
     "UserVoiceHeader": "User Voice",
