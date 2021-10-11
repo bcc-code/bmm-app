@@ -1,4 +1,5 @@
-﻿using Android.Graphics;
+﻿using System.Diagnostics.CodeAnalysis;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -8,6 +9,7 @@ using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.ViewModels;
 using System.Linq;
+using Android.Content;
 using AndroidX.AppCompat.Widget;
 using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;
@@ -31,11 +33,11 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public Toolbar Toolbar { get; protected set; }
 
-
         protected abstract int FragmentId { get; }
         protected virtual bool IsTabBarVisible => true;
 
         private Color? _fragmentBaseColor;
+        private string _title;
 
         protected virtual Color FragmentBaseColor
         {
@@ -63,7 +65,15 @@ namespace BMM.UI.Droid.Application.Fragments
 
         protected MvxRecyclerView RecyclerView { get; private set; }
 
-        protected virtual string Title => string.Empty;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                SetTitle();
+            }
+        }
 
         protected BaseFragment()
         {
@@ -101,6 +111,7 @@ namespace BMM.UI.Droid.Application.Fragments
             RecyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
             InitRecyclerView(RecyclerView);
             SetStatusBarColor(ColorOfUppermostFragment());
+            Bind();
 
             return view;
         }
@@ -122,6 +133,10 @@ namespace BMM.UI.Droid.Application.Fragments
         }
 
         protected virtual void DetachEvents()
+        {
+        }
+
+        protected virtual void Bind()
         {
         }
 
@@ -278,24 +293,47 @@ namespace BMM.UI.Droid.Application.Fragments
         public override void OnViewStateRestored(Bundle savedInstanceState)
         {
             base.OnViewStateRestored(savedInstanceState);
-            if (!string.IsNullOrEmpty(Title) && Toolbar != null)
-                ParentActivity.SupportActionBar.Title = Title;
+            SetTitle();
+        }
+
+        private void SetTitle()
+        {
+            bool shouldUpdateTitle = !string.IsNullOrEmpty(Title)
+                                     && Toolbar != null
+                                     && ParentActivity.SupportActionBar.Title != Title;
+
+            if (!shouldUpdateTitle)
+                return;
+
+            ParentActivity.SupportActionBar.Title = Title;
+
+            if (CollapsingToolbar != null)
+                CollapsingToolbar.Title = Title;
         }
     }
 
     public abstract class BaseFragment<TViewModel> : BaseFragment where TViewModel : BaseViewModel, IMvxViewModel
     {
+        protected virtual bool HasCustomTitle => false;
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
+
+            if (!HasCustomTitle)
+                Title = ViewModel.TextSource[ViewModelUtils.GetVMTitleKey(ViewModel.GetType())];
+
+            return view;
+        }
+
         public new TViewModel ViewModel
         {
             get => (TViewModel)base.ViewModel;
             set {
                 base.ViewModel = value;
-
                 RegisterViewModelPropertyChangedListener();
             }
         }
-
-        protected override string Title => ViewModel.TextSource[ViewModelUtils.GetVMTitleKey(ViewModel.GetType())];
 
         private void RegisterViewModelPropertyChangedListener()
         {

@@ -30,11 +30,23 @@ namespace BMM.UI.iOS
                 }
             };
 
-            if (VersionHelper.SupportsLargeTitles)
+            SetupLargeTitle();
+        }
+
+        private void SetupLargeTitle()
+        {
+            if (!VersionHelper.SupportsLargeTitles)
+                return;
+
+            if (this is IHaveLargeTitle)
             {
-                NavigationItem.LargeTitleDisplayMode = this is IHaveLargeTitle
-                    ? UINavigationItemLargeTitleDisplayMode.Always
-                    : UINavigationItemLargeTitleDisplayMode.Never;
+                NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Always;
+                NavigationController.NavigationBar.PrefersLargeTitles = true;
+                NavigationController.NavigationBar.SizeToFit();
+            }
+            else
+            {
+                NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Never;
             }
         }
 

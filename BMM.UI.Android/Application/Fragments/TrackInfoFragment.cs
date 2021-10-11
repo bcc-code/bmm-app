@@ -23,9 +23,8 @@ namespace BMM.UI.Droid.Application.Fragments
                 list.Adapter = new TrackInfoAdapter(ParentActivity, (IMvxAndroidBindingContext)ParentActivity.BindingContext);
             }
 
+            Title = ViewModel.Track.Meta.Title;
             base.OnViewCreated(view, savedInstanceState);
         }
-
-        protected override string Title => ViewModel.Track.Meta.Title;
     }
 }

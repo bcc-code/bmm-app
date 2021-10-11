@@ -29,7 +29,6 @@ namespace BMM.UI.iOS
             var nib = UINib.FromName(PodcastCollectionViewCell.Key, NSBundle.MainBundle);
             CuratedPlaylistsCollectionView.RegisterNibForCell(nib, PodcastCollectionViewCell.Key);
 
-
             var refreshControl = new MvxUIRefreshControl();
             CuratedPlaylistsCollectionView.RefreshControl = refreshControl;
             refreshControl.TintColor = AppColors.RefreshControlTintColor;
