@@ -9,7 +9,7 @@
     <ffimageloading.cross.MvxCachedImageView
             android:id="@+id/CoverImageView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/card_view_height"
+            android:layout_height="wrap_content"
             android:overScrollMode="never"
             android:adjustViewBounds="false"
             android:scaleType="centerCrop"
@@ -17,7 +17,7 @@
             local:MvxBind="
                 LoadingPlaceholderImagePath 'placeholder_cover';
                 ErrorPlaceholderImagePath 'placeholder_cover';
-                ImagePath CoverUrlToFallbackImage(Item.Cover, 'placeholder_cover')" />
+                ImageViewPath CoverUrlToFallbackImage(Item.Cover, 'placeholder_cover')" />
 
     <TextView
             android:id="@+id/Title"

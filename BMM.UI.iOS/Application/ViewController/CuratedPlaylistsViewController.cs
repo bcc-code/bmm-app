@@ -10,11 +10,13 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class CuratedPlaylistsViewController : BaseViewController<CuratedPlaylistsViewModel>
+    public partial class CuratedPlaylistsViewController : BaseViewController<CuratedPlaylistsViewModel>, IHaveLargeTitle
     {
         public CuratedPlaylistsViewController() : base(nameof(CuratedPlaylistsViewController))
         {
         }
+
+        public double? InitialLargeTitleHeight { get; set; }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
 
@@ -24,10 +26,10 @@ namespace BMM.UI.iOS
 
             CuratedPlaylistsCollectionView.CollectionViewLayout = new FillWidthLayout();
 
-            var source = new MvxCollectionViewSource(CuratedPlaylistsCollectionView, PodcastCollectionViewCell.Key);
+            var source = new MvxCollectionViewSource(CuratedPlaylistsCollectionView, CoverWithTitleCollectionViewCell.Key);
 
-            var nib = UINib.FromName(PodcastCollectionViewCell.Key, NSBundle.MainBundle);
-            CuratedPlaylistsCollectionView.RegisterNibForCell(nib, PodcastCollectionViewCell.Key);
+            var nib = UINib.FromName(CoverWithTitleCollectionViewCell.Key, NSBundle.MainBundle);
+            CuratedPlaylistsCollectionView.RegisterNibForCell(nib, CoverWithTitleCollectionViewCell.Key);
 
             var refreshControl = new MvxUIRefreshControl();
             CuratedPlaylistsCollectionView.RefreshControl = refreshControl;
@@ -41,8 +43,6 @@ namespace BMM.UI.iOS
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
 
             set.Apply();
-
-            CuratedPlaylistsCollectionView.ReloadData();
         }
     }
 }

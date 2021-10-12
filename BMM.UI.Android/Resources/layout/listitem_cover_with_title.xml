@@ -17,7 +17,7 @@
             local:MvxBind="
                 LoadingPlaceholderImagePath 'placeholder_cover';
                 ErrorPlaceholderImagePath 'placeholder_cover';
-                ImagePath CoverUrlToFallbackImage(Cover, 'placeholder_cover')" />
+                ImageViewPath CoverUrlToFallbackImage(Cover, 'placeholder_cover')" />
 
     <TextView
             android:id="@+id/Title"

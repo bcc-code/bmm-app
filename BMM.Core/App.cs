@@ -252,6 +252,7 @@ namespace BMM.Core
             Mvx.IoCProvider.CallbackWhenRegistered<IStartupManager>(manager => manager.Initialize(CreatableTypes()));
             ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
             {
+                InvalidateLayout = false,
                 HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
             });
 

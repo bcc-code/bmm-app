@@ -43,6 +43,9 @@ namespace BMM.UI.Droid.Application.ItemDecorators
             else
                 SetLeftHorizontalSpacing(outRect, childPosition);
 
+            if (IsInFirstRow(childPosition))
+                outRect.Top = _verticalSpacing;
+
             outRect.Bottom = _verticalSpacing;
         }
 
@@ -53,6 +56,9 @@ namespace BMM.UI.Droid.Application.ItemDecorators
         }
 
         private bool IsMultiColumn => _itemsPerLine > 1;
+
+        private bool IsInFirstRow(int childPosition)
+            => childPosition + 1 <= _itemsPerLine;
 
         private bool IsFirstInLine(int childPosition)
             => childPosition % _itemsPerLine == 0;

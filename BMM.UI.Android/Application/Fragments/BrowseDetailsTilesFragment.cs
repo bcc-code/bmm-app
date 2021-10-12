@@ -56,9 +56,15 @@ namespace BMM.UI.Droid.Application.Fragments
 
             recyclerView!.AddItemDecoration(spacingItemDecoration);
             recyclerView.HasFixedSize = true;
+
             var layoutManager = new GridLayoutManager(ParentActivity, ItemsPerRow);
             recyclerView.SetLayoutManager(layoutManager);
-            recyclerView.Adapter = new CoversCarouselRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
+
+            recyclerView.Adapter = new CoversCarouselRecyclerAdapter(
+                (IMvxAndroidBindingContext)BindingContext,
+                recyclerView,
+                ItemsPerRow,
+                ItemSpacing);
         }
     }
 }

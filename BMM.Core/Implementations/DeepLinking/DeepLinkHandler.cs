@@ -28,9 +28,11 @@ namespace BMM.Core.Implementations.DeepLinking
 {
     public class DeepLinkHandler : IDeepLinkHandler
     {
-        private string[] _tileCollectionPaths = new[]
+        private readonly string _baseBrowsePath = "browse/";
+        private readonly string[] _tileCollectionPaths = new[]
         {
-            "browse/podcasts"
+            "browse/podcasts",
+            "browse/music",
         };
 
         private const string PlaybackOriginName = "DeepLink";
@@ -85,22 +87,20 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink<IdDeepLinkParameters>("^/playlist/contributor/(?<id>[0-9]+)(/(?<name>.*))?$", OpenContributor),
                 new RegexDeepLink<IdDeepLinkParameters>("^/album/(?<id>[0-9]+)$", OpenAlbum),
                 new TrackLinkParser("^/track/(?<id>[0-9]+)(/(?<language>.*))?$", PlayTrackById),
-                new RegexDeepLink<GenericDocumentsViewParameters>("^/(?<path>.*)?$", OpenGenericDocumentsView),
+                new RegexDeepLink<GenericDocumentsViewParameters>("^/browse/(?<path>.*)?$", OpenGenericDocumentsView),
                 new RegexDeepLink("^/$", DoNothing)
             };
         }
 
         private async Task OpenGenericDocumentsView(GenericDocumentsViewParameters genericDocumentsViewParameters)
         {
-            if (_tileCollectionPaths.Any(p => p.Contains(genericDocumentsViewParameters.Path)))
-            {
-                var browseDetailsParameters = new BrowseDetailsParameters(genericDocumentsViewParameters.Path);
-                await _navigationService.Navigate<BrowseDetailsTilesViewModel, IBrowseDetailsParameters>(browseDetailsParameters);
-                return;
-            }
+            string fullPath = $"{_baseBrowsePath}{genericDocumentsViewParameters.Path}";
+            var parameter = new BrowseDetailsParameters(fullPath);
 
-            var parameter = new BrowseDetailsParameters(genericDocumentsViewParameters.Path);
-            await _navigationService.Navigate<BrowseDetailsListViewModel, IBrowseDetailsParameters>(parameter);
+            if (_tileCollectionPaths.Any(p => p.Contains(fullPath)))
+                await NavigateTo<BrowseDetailsTilesViewModel, IBrowseDetailsParameters>(parameter);
+            else
+                await NavigateTo<BrowseDetailsListViewModel, IBrowseDetailsParameters>(parameter);
         }
 
         /// <summary>
@@ -111,6 +111,12 @@ namespace BMM.Core.Implementations.DeepLinking
         {
             if (!_viewPresenter.IsViewModelShown<T>())
                 await _navigationService.Navigate<T>();
+        }
+
+        private async Task NavigateTo<TVm, TParam>(TParam param) where TVm : IMvxViewModel<TParam>
+        {
+            if (!_viewPresenter.IsViewModelShown<TVm>())
+                await _navigationService.Navigate<TVm, TParam>(param);
         }
 
         private Task OpenSharedTrackCollection(SharingSecretParameters sharingSecretParameters)

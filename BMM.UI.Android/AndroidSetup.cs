@@ -166,6 +166,7 @@ namespace BMM.UI.Droid
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardVisibility", card => new MvxCardVisibility(card)));
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardCircle", card => new MvxCardCircle(card)));
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardBackgroundColor", card => new MvxCardBackgroundColor(card)));
+            MvxCachedImageViewPathBinding.Register(registry);
         }
 
         private void InitializeMediaPlayer()
