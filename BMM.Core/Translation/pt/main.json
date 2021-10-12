@@ -138,7 +138,7 @@
     "TbxUsername.Hint": "E-mail",
     "TbxPassword.Hint": "Senha",
     "BtnLogin.Text": "Login",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Faça login com o seu login BCC"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Em breve, interromperemos o suporte para telefones em execução {0} {1} ou mais. Se possível, você deve atualizar seu telefone.",
@@ -334,10 +334,10 @@
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
-    "RenameLabel": "Rename playlist",
+    "RenameLabel": "Renomear lista de reprodução",
     "MenuSave": "Salvar",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
+    "EmptyName": "Esta lista de reprodução não possui nome ",
+    "SaveFailure": "Algo deu errado. Verifique sua conexão com a internet e tente novamente",
     "DiscardChangesTitle": "Discard Changes?",
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
