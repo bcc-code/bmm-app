@@ -116,7 +116,9 @@
     <Compile Include="Application\Adapters\DragAndDrop\UpAndDownDraggingTouchCallback.cs" />
     <Compile Include="Application\Adapters\CoversCarouselRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\PodcastContextHeaderRecyclerAdapter.cs" />
+    <Compile Include="Application\Bindings\Base\BMMAndroidTargetBinding.cs" />
     <Compile Include="Application\Bindings\ColorStateListHelper.cs" />
+    <Compile Include="Application\Bindings\MvxCachedImageViewPathBinding.cs" />
     <Compile Include="Application\Bindings\MvxCardBackgroundColor.cs" />
     <Compile Include="Application\Bindings\MvxCardCircle.cs" />
     <Compile Include="Application\Bindings\MvxCardVisibility.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="Application\DownloadManager\DownloadCompletedHandler.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\Extensions\ContextExtensions.cs" />
+    <Compile Include="Application\Extensions\ViewExtensions.cs" />
     <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
     <Compile Include="Application\Fragments\BrowseDetailsListFragment.cs" />
@@ -648,7 +651,6 @@
     <AndroidResource Include="Resources\layout\listitem_automatic_download.axml" />
     <AndroidResource Include="Resources\layout\fragment_downloadedfollowedpodcasts.axml" />
     <AndroidResource Include="Resources\layout\fragment_explore.axml" />
-    <AndroidResource Include="Resources\layout\fragment_curatedplaylists.axml" />
     <AndroidResource Include="Resources\layout\shuffle_button.axml">
       <SubType>
       </SubType>

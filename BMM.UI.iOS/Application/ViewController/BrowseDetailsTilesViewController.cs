@@ -65,8 +65,6 @@ namespace BMM.UI.iOS
                 .To(vm => vm.Title);
 
             set.Apply();
-
-            DocumentsTilesCollectionView.ReloadData();
         }
     }
 }
