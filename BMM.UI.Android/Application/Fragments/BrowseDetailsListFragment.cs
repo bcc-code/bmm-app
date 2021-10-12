@@ -9,9 +9,9 @@ namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxFragmentPresentation(typeof(MainActivityViewModel), Resource.Id.content_frame, true)]
     [Register("bmm.ui.droid.application.fragments.BrowseDetailsFragment")]
-    public class BrowseDetailsFragment : BaseFragment<BrowseDetailsViewModel>
+    public class BrowseDetailsListFragment : BaseFragment<BrowseDetailsListViewModel>
     {
-        protected override int FragmentId => Resource.Layout.fragment_browse_details;
+        protected override int FragmentId => Resource.Layout.fragment_browse_list_details;
 
         protected override bool HasCustomTitle => true;
 
@@ -26,7 +26,7 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             base.Bind();
 
-            var set = this.CreateBindingSet<BrowseDetailsFragment, BrowseDetailsViewModel>();
+            var set = this.CreateBindingSet<BrowseDetailsListFragment, BrowseDetailsListViewModel>();
 
             set.Bind(this)
                 .For(v => v.Title)

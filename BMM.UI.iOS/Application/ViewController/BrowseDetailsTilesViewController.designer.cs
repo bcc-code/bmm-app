@@ -10,17 +10,17 @@ using System.CodeDom.Compiler;
 
 namespace BMM.UI.iOS
 {
-	[Register ("BrowseDetailsViewController")]
-	partial class BrowseDetailsViewController
+	[Register ("BrowseDetailsTilesViewController")]
+	partial class BrowseDetailsTilesViewController
 	{
 		[Outlet]
-		UIKit.UITableView BrowseTableView { get; set; }
+		UIKit.UICollectionView DocumentsTilesCollectionView { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (BrowseTableView != null) {
-				BrowseTableView.Dispose ();
-				BrowseTableView = null;
+			if (DocumentsTilesCollectionView != null) {
+				DocumentsTilesCollectionView.Dispose ();
+				DocumentsTilesCollectionView = null;
 			}
 
 		}

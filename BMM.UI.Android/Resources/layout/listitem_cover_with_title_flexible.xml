@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <ffimageloading.cross.MvxCachedImageView
+            android:id="@+id/CoverImageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/card_view_height"
+            android:overScrollMode="never"
+            android:adjustViewBounds="false"
+            android:scaleType="centerCrop"
+            android:background="@drawable/cover_with_title_background"
+            local:MvxBind="
+                LoadingPlaceholderImagePath 'placeholder_cover';
+                ErrorPlaceholderImagePath 'placeholder_cover';
+                ImagePath CoverUrlToFallbackImage(Item.Cover, 'placeholder_cover')" />
+
+    <TextView
+            android:id="@+id/Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            style="@style/Title4"
+            local:MvxBind="Text Item.Title" />
+
+</LinearLayout>

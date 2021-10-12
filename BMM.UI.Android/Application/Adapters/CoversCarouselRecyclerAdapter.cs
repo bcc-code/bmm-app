@@ -20,6 +20,7 @@ namespace BMM.UI.Droid.Application.Adapters
             switch (viewType)
             {
                 case Resource.Layout.listitem_cover_with_title:
+                case Resource.Layout.listitem_cover_with_title_flexible:
                     return new CoverWithTitleViewHolder(view, itemBindingContext);
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);

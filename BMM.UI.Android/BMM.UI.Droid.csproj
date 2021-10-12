@@ -127,7 +127,8 @@
     <Compile Include="Application\Extensions\ContextExtensions.cs" />
     <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
-    <Compile Include="Application\Fragments\BrowseDetailsFragment.cs" />
+    <Compile Include="Application\Fragments\BrowseDetailsListFragment.cs" />
+    <Compile Include="Application\Fragments\BrowseDetailsTilesFragment.cs" />
     <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\BrowseFragment.cs" />
     <Compile Include="Application\Fragments\FollowedPodcastsFragment.cs" />
@@ -468,7 +469,11 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\activity_oidc_login.axml" />
     <AndroidResource Include="Resources\layout\collapsing_toolbar.xml" />
-    <AndroidResource Include="Resources\layout\fragment_browse_details.axml">
+    <AndroidResource Include="Resources\layout\fragment_browse_list_details.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_browse_details_tiles.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
@@ -494,6 +499,10 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_chapter_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_cover_with_title.xml" />
+    <AndroidResource Include="Resources\layout\listitem_cover_with_title_flexible.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_detail.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
