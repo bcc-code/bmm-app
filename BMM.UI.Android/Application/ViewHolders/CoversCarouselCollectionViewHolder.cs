@@ -44,10 +44,7 @@ namespace BMM.UI.Droid.Application.ViewHolders
                 RecycleChildrenOnDetach = true
             };
 
-            var spacingItemDecoration = new SpacingItemDecoration(
-                ItemSpacing.DpToPixels(),
-                SideSpacing.DpToPixels());
-
+            var spacingItemDecoration = new SpacingItemDecoration(ItemSpacing.DpToPixels(), sideSpacing: SideSpacing.DpToPixels());
             var adapter = new CoversCarouselRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
 
             _coversCarouselCollectionRecyclerView!.AddItemDecoration(spacingItemDecoration);

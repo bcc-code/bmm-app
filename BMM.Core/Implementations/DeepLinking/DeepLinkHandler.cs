@@ -21,7 +21,6 @@ using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
-using MvvmCross.Localization;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
@@ -29,6 +28,11 @@ namespace BMM.Core.Implementations.DeepLinking
 {
     public class DeepLinkHandler : IDeepLinkHandler
     {
+        private string[] _tileCollectionPaths = new[]
+        {
+            "browse/podcasts"
+        };
+
         private const string PlaybackOriginName = "DeepLink";
 
         private readonly IBMMClient _client;
@@ -74,7 +78,6 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink("^/music$", NavigateTo<ExploreRecentMusicViewModel>),
                 new RegexDeepLink("^/contributors$", NavigateTo<ExploreContributorsViewModel>),
                 new RegexDeepLink("^/featured$", NavigateTo<CuratedPlaylistsViewModel>),
-                new RegexDeepLink<GenericDocumentsViewParameters>("^/(?<path>.*)?$", OpenGenericDocumentsView),
                 new RegexDeepLink<IdAndNameParameters>("^/playlist/curated/(?<id>[0-9]+)(/(?<name>.*))?$", OpenCuratedPlaylist),
                 new RegexDeepLink<IdAndNameParameters>("^/playlist/private/(?<id>[0-9]+)(/(?<name>.*))?$", OpenTrackCollection),
                 new RegexDeepLink<IdAndNameParameters>("^/playlist/podcast/(?<id>[0-9]+)(/(?<name>.*))?$", OpenPodcast),
@@ -82,14 +85,22 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink<IdDeepLinkParameters>("^/playlist/contributor/(?<id>[0-9]+)(/(?<name>.*))?$", OpenContributor),
                 new RegexDeepLink<IdDeepLinkParameters>("^/album/(?<id>[0-9]+)$", OpenAlbum),
                 new TrackLinkParser("^/track/(?<id>[0-9]+)(/(?<language>.*))?$", PlayTrackById),
+                new RegexDeepLink<GenericDocumentsViewParameters>("^/(?<path>.*)?$", OpenGenericDocumentsView),
                 new RegexDeepLink("^/$", DoNothing)
             };
         }
 
         private async Task OpenGenericDocumentsView(GenericDocumentsViewParameters genericDocumentsViewParameters)
         {
+            if (_tileCollectionPaths.Any(p => p.Contains(genericDocumentsViewParameters.Path)))
+            {
+                var browseDetailsParameters = new BrowseDetailsParameters(genericDocumentsViewParameters.Path);
+                await _navigationService.Navigate<BrowseDetailsTilesViewModel, IBrowseDetailsParameters>(browseDetailsParameters);
+                return;
+            }
+
             var parameter = new BrowseDetailsParameters(genericDocumentsViewParameters.Path);
-            await _navigationService.Navigate<BrowseDetailsViewModel, IBrowseDetailsParameters>(parameter);
+            await _navigationService.Navigate<BrowseDetailsListViewModel, IBrowseDetailsParameters>(parameter);
         }
 
         /// <summary>

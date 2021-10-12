@@ -718,7 +718,8 @@
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\BrowseDetailsViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\BrowseDetailsTilesViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\BrowseDetailsListViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\PlaybackHistoryViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
@@ -871,9 +872,13 @@
     <Compile Include="Application\ValueConverter\TrackToSubtitleColorConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToSubtitleUppercaseConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToTitleColorConverter.cs" />
-    <Compile Include="Application\ViewController\BrowseDetailsViewController.cs" />
-    <Compile Include="Application\ViewController\BrowseDetailsViewController.designer.cs">
-      <DependentUpon>BrowseDetailsViewController.cs</DependentUpon>
+    <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.cs" />
+    <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.designer.cs">
+      <DependentUpon>BrowseDetailsTilesViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\BrowseDetailsListViewController.cs" />
+    <Compile Include="Application\ViewController\BrowseDetailsListViewController.designer.cs">
+      <DependentUpon>BrowseDetailsListViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\EditTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\FollowedPodcastsViewController.cs" />

@@ -7,9 +7,9 @@ using MvvmCross.Platforms.Ios.Views;
 
 namespace BMM.UI.iOS
 {
-    public partial class BrowseDetailsViewController : BaseViewController<BrowseDetailsViewModel>, IHaveLargeTitle
+    public partial class BrowseDetailsListViewController : BaseViewController<BrowseDetailsListViewModel>, IHaveLargeTitle
     {
-        public BrowseDetailsViewController() : base(nameof(BrowseViewController))
+        public BrowseDetailsListViewController() : base(nameof(BrowseDetailsListViewController))
         {
         }
 
@@ -30,7 +30,7 @@ namespace BMM.UI.iOS
 
             var source = new NotSelectableDocumentsTableViewSource(BrowseTableView);
 
-            var set = this.CreateBindingSet<BrowseDetailsViewController, BrowseDetailsViewModel>();
+            var set = this.CreateBindingSet<BrowseDetailsListViewController, BrowseDetailsListViewModel>();
 
             set.Bind(source)
                 .To(vm => vm.Documents)

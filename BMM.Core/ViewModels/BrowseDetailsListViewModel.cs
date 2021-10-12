@@ -9,7 +9,7 @@ using BMM.Core.ViewModels.Parameters.Interface;
 
 namespace BMM.Core.ViewModels
 {
-    public class BrowseDetailsViewModel : LoadMoreDocumentsViewModel, IBrowseDetailsViewModel
+    public class BrowseDetailsListViewModel : LoadMoreDocumentsViewModel, IBrowseDetailsViewModel
     {
         private string _path;
         private string _title = StringConstants.Space;
