@@ -69,7 +69,8 @@
 
     <dimen name="player_header_button_width">80dp</dimen>
 
-    <dimen name="corner_radius_very_small">4dp</dimen>
+    <dimen name="corner_radius_tiny">4dp</dimen>
+    <dimen name="corner_radius_mini">6dp</dimen>
     <dimen name="corner_radius_small">8dp</dimen>
     <dimen name="corner_radius_medium">12dp</dimen>
     <dimen name="corner_radius_large">16dp</dimen>

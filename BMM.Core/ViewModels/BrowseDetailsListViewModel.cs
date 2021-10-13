@@ -23,7 +23,7 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
             var response = await Client.Browse.GetDocuments(_path, startIndex, size);
-            Title = response.Title;
+            Title = TextSource.GetTranslationsSafe(response.TranslationString, response.Title);
             IsFullyLoaded = !response.SupportsPaging;
             return response.Items;
         }

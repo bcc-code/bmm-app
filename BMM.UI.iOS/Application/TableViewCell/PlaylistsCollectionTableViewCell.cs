@@ -21,7 +21,7 @@ namespace BMM.UI.iOS
                 var set = this.CreateBindingSet<PlaylistsCollectionTableViewCell, CellWrapperViewModel<CoverCarouselCollection>>();
 
                 var source = new MvxCollectionViewSource(PlaylistsCollectionView, CoverWithTitleCollectionViewCell.Key);
-                PlaylistsCollectionView.RegisterNibForCell(CoverWithTitleCollectionViewCell.Nib, CoverWithTitleCollectionViewCell.Key);
+                PlaylistsCollectionView!.RegisterNibForCell(CoverWithTitleCollectionViewCell.Nib, CoverWithTitleCollectionViewCell.Key);
 
                 set
                     .Bind(source)

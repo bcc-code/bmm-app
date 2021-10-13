@@ -7,14 +7,15 @@ using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Extensions;
 using UIKit;
 using BMM.Api.Implementation.Models;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Helpers;
 
 namespace BMM.UI.iOS
 {
     public partial class FeaturedPlaylistTableViewCell : MvxTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("FeaturedPlaylistTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("FeaturedPlaylistTableViewCell");
+        public static readonly UINib Nib = UINib.FromName(nameof(FeaturedPlaylistTableViewCell), NSBundle.MainBundle);
+        public static readonly NSString Key = new NSString(nameof(FeaturedPlaylistTableViewCell));
 
         public FeaturedPlaylistTableViewCell(IntPtr handle)
             : base(handle)
@@ -31,6 +32,11 @@ namespace BMM.UI.iOS
                 set.Apply();
             });
         }
-    }
 
+        public override void AwakeFromNib()
+        {
+            base.AwakeFromNib();
+            TitleLabel.ApplyTextTheme(AppTheme.Title2.Value);
+        }
+    }
 }

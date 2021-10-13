@@ -11,6 +11,12 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.BmmBlack
         });
 
+        public static readonly Lazy<TextTheme> Title2 = new Lazy<TextTheme>(() => new TextTheme
+        {
+            Font = Typography.Title2.Value,
+            Color = AppColors.BmmBlack
+        });
+
         public static readonly Lazy<TextTheme> Title4 = new Lazy<TextTheme>(() => new TextTheme
         {
             Font = Typography.Title4.Value,
