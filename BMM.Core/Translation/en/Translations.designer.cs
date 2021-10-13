@@ -347,5 +347,9 @@ namespace BMM.Core.Translation
 		public const string ExploreRecentSpeechesViewModel_Title = nameof(ExploreRecentSpeechesViewModel_Title);
 		public const string ExploreRecentMusicViewModel_Title = nameof(ExploreRecentMusicViewModel_Title);
 		public const string DownloadManager_DownloadingFinished = nameof(DownloadManager_DownloadingFinished);
+		public const string Browse_EventsTitle = nameof(Browse_EventsTitle);
+		public const string Browse_AudiobooksTitle = nameof(Browse_AudiobooksTitle);
+		public const string Browse_MusicTitle = nameof(Browse_MusicTitle);
+		public const string Browse_PodcastsTitle = nameof(Browse_PodcastsTitle);
 	}
 }

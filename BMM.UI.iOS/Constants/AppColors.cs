@@ -27,7 +27,7 @@ namespace BMM.UI.iOS.Constants
         // Player
         public static readonly UIColor PlayerBackgroundColor = UIColor.FromRGB(13, 19, 26);
 
-        public static readonly UIColor BmmBlack = UIColor.Black;
+        public static readonly UIColor BmmBlack = UIColor.FromRGB(13, 19, 26);
 
         public static readonly CGColor[] TrackCoverGradientColors =
         {

@@ -13,13 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:cardCornerRadius="@dimen/corner_radius_very_small"
+        app:cardCornerRadius="@dimen/corner_radius_mini"
         app:cardElevation="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- 
+        <!--
         We define LoadingPlaceholderImagePath and ErrorPlaceholderImagePath here
         because the list items are reusable and if we do net set those values
         the image of the previous document would be used

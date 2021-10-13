@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "All files have been downloaded!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Audiobooks",
+    "MusicTitle": "Music",
+    "PodcastsTitle": "Podcasts"
   }
 }
