@@ -6,6 +6,7 @@ using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
@@ -26,6 +27,8 @@ namespace BMM.Core.ViewModels
         private readonly IStreakObserver _streakObserver;
         private readonly ISettingsStorage _settings;
         private readonly INavigateToViewModelAction _navigateToViewModelAction;
+        private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
+        private readonly ITranslateDocsAction _translateDocsAction;
 
         public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
 
@@ -39,11 +42,15 @@ namespace BMM.Core.ViewModels
             IStreakObserver streakObserver,
             IMvxMessenger messenger,
             ISettingsStorage settings,
-            INavigateToViewModelAction navigateToViewModelAction)
+            INavigateToViewModelAction navigateToViewModelAction,
+            IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
+            ITranslateDocsAction translateDocsAction)
         {
             _streakObserver = streakObserver;
             _settings = settings;
             _navigateToViewModelAction = navigateToViewModelAction;
+            _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
+            _translateDocsAction = translateDocsAction;
             FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
@@ -106,9 +113,8 @@ namespace BMM.Core.ViewModels
             var hideStreak = await _settings.GetStreakHidden();
             HideTeasers(docs);
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
-            TranslateDocs(filteredDocs);
-            PrepareCoversCarouselItems(filteredDocs);
-            return filteredDocs;
+            var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
+            return await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
         }
 
         public override void RefreshInBackground()
@@ -159,46 +165,6 @@ namespace BMM.Core.ViewModels
                 d.DocumentType == DocumentType.Podcast && d.Id == AslaksenTeaserViewModel.AslaksenPodcastId);
             FraKaareTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d =>
                 d.DocumentType == DocumentType.Podcast && d.Id == FraKaareTeaserViewModel.FraKårePodcastId);
-        }
-
-        private void TranslateDocs(IList<Document> documents)
-        {
-            foreach (var document in documents)
-            {
-                if (!(document is DiscoverSectionHeader sectionHeader))
-                    continue;
-
-                sectionHeader.Title = TextSource.GetTranslationsSafe(sectionHeader.GetTranslationKey(), sectionHeader.Title);
-            }
-        }
-
-        private void PrepareCoversCarouselItems(IList<Document> filteredDocs)
-        {
-            var carouselHeaders = filteredDocs
-                .OfType<DiscoverSectionHeader>()
-                .Where(d => d.UseCoverCarousel)
-                .ToList();
-
-            foreach (var carouselHeader in carouselHeaders)
-            {
-                var coverDocuments = new List<CoverDocument>();
-                int currentIndex = filteredDocs.IndexOf(carouselHeader) + 1;
-
-                while (true)
-                {
-                    if (currentIndex >= filteredDocs.Count)
-                        break;
-
-                    if (!(filteredDocs[currentIndex] is CoverDocument element))
-                        break;
-
-                    coverDocuments.Add(element);
-                    filteredDocs.RemoveAt(currentIndex);
-                }
-
-                if (coverDocuments.Any())
-                    filteredDocs.Insert(currentIndex, new CoverCarouselCollection(new ObservableCollection<Document>(coverDocuments)));
-            }
         }
 
         private List<Track> GetAdjacentTracksInSameSection(Document item)

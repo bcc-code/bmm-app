@@ -1,71 +1,40 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.ViewModels.Base;
 
 namespace BMM.Core.ViewModels
 {
     public class BrowseViewModel : DocumentsViewModel
     {
+        private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
+        private readonly ITranslateDocsAction _translateDocsAction;
+
+        public BrowseViewModel(
+            IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
+            ITranslateDocsAction translateDocsAction)
+        {
+            _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
+            _translateDocsAction = translateDocsAction;
+        }
+
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var browseItems = await Client.Browse.Get();
 
-            var browseItemsList = browseItems?.ToList();
-            TranslateDocs(browseItemsList);
-            PrepareCoversCarouselItems(browseItemsList);
+            var translatedItems = await _translateDocsAction.ExecuteGuarded(browseItems.ToList());
+            var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedItems);
 
-            return browseItemsList;
-        }
-
-        private void TranslateDocs(IList<Document> documents)
-        {
-            foreach (var document in documents)
-            {
-                if (!(document is DiscoverSectionHeader sectionHeader))
-                    continue;
-
-                sectionHeader.Title = TextSource.GetTranslationsSafe(sectionHeader.GetTranslationKey(), sectionHeader.Title);
-            }
-        }
-
-        private static void PrepareCoversCarouselItems(IList<Document> filteredDocs)
-        {
-            if (filteredDocs == null)
-                return;
-
-            var carouselHeaders = filteredDocs
+            carouselAdjustedItems
                 .OfType<DiscoverSectionHeader>()
-                .Where(d => d.UseCoverCarousel)
-                .ToList();
+                .FirstOrDefault()
+                .IfNotNull(header => header.IsSeparatorVisible = false);
 
-            if (carouselHeaders.Any())
-                carouselHeaders.First().IsSeparatorVisible = false;
-
-            foreach (var carouselHeader in carouselHeaders)
-            {
-                var coverDocuments = new List<CoverDocument>();
-                int currentIndex = filteredDocs.IndexOf(carouselHeader) + 1;
-
-                while (true)
-                {
-                    if (currentIndex >= filteredDocs.Count)
-                        break;
-
-                    if (!(filteredDocs[currentIndex] is CoverDocument element))
-                        break;
-
-                    coverDocuments.Add(element);
-                    filteredDocs.RemoveAt(currentIndex);
-                }
-
-                if (coverDocuments.Any())
-                    filteredDocs.Insert(currentIndex, new CoverCarouselCollection(new ObservableCollection<Document>(coverDocuments)));
-            }
+            return carouselAdjustedItems;
         }
     }
 }
