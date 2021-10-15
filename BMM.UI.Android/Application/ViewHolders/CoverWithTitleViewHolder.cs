@@ -32,14 +32,13 @@ namespace BMM.UI.Droid.Application.ViewHolders
             imageView!.ClipToOutline = true;
         }
 
-        public override void OnAttachedToWindow()
+        public void Update()
         {
-            base.OnAttachedToWindow();
-
             if (_elementWidth == Unspecified)
                 return;
 
-            CoverImageView.UpdateHeight(_elementWidth);
+            ItemView.UpdateWidth(_elementWidth);
+            CoverImageView.UpdateSize(_elementWidth);
         }
     }
 }

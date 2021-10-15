@@ -1,10 +1,7 @@
-using System;
 using System.Linq;
-using System.Net;
 using System.Threading.Tasks;
 using BMM.Api;
 using BMM.Api.Abstraction;
-using BMM.Api.Framework.Exceptions;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Documents.Interfaces;
@@ -30,8 +27,7 @@ namespace BMM.Core.GuardedActions.Documents
 
         protected override async Task Execute()
         {
-            if (LoadMoreDocumentsViewModel.IsLoading
-                || LoadMoreDocumentsViewModel.IsFullyLoaded)
+            if (LoadMoreDocumentsViewModel.IsLoading || LoadMoreDocumentsViewModel.IsFullyLoaded)
                 return;
 
             LoadMoreDocumentsViewModel.IsLoading = true;
