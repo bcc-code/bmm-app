@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.ViewModels.Base;
 
 namespace BMM.Core.ViewModels
@@ -15,9 +16,21 @@ namespace BMM.Core.ViewModels
             var browseItems = await Client.Browse.Get();
 
             var browseItemsList = browseItems?.ToList();
+            TranslateDocs(browseItemsList);
             PrepareCoversCarouselItems(browseItemsList);
 
             return browseItemsList;
+        }
+
+        private void TranslateDocs(IList<Document> documents)
+        {
+            foreach (var document in documents)
+            {
+                if (!(document is DiscoverSectionHeader sectionHeader))
+                    continue;
+
+                sectionHeader.Title = TextSource.GetTranslationsSafe(sectionHeader.GetTranslationKey(), sectionHeader.Title);
+            }
         }
 
         private static void PrepareCoversCarouselItems(IList<Document> filteredDocs)

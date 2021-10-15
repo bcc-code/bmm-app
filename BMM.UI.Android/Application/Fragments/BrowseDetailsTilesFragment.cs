@@ -49,9 +49,11 @@ namespace BMM.UI.Droid.Application.Fragments
             if (recyclerView == null)
                 return;
 
+            int itemSpacing = ItemSpacing.DpToPixels();
+
             var spacingItemDecoration = new SpacingItemDecoration(
-                ItemSpacing.DpToPixels(),
-                ItemSpacing.DpToPixels(),
+                itemSpacing / 2,
+                itemSpacing,
                 itemsPerLine: ItemsPerRow);
 
             recyclerView!.AddItemDecoration(spacingItemDecoration);
@@ -64,7 +66,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 (IMvxAndroidBindingContext)BindingContext,
                 recyclerView,
                 ItemsPerRow,
-                ItemSpacing);
+                itemSpacing);
         }
     }
 }

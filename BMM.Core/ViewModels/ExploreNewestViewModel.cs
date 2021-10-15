@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
@@ -167,10 +168,7 @@ namespace BMM.Core.ViewModels
                 if (!(document is DiscoverSectionHeader sectionHeader))
                     continue;
 
-                if (sectionHeader.TranslationParent == null || sectionHeader.TranslationId == null)
-                    continue;
-
-                sectionHeader.Title = GetText(sectionHeader.TranslationParent, sectionHeader.TranslationId);
+                sectionHeader.Title = TextSource.GetTranslationsSafe(sectionHeader.GetTranslationKey(), sectionHeader.Title);
             }
         }
 
@@ -223,7 +221,5 @@ namespace BMM.Core.ViewModels
 
             return tracks;
         }
-
-        private string GetText(string viewModelName, string entryKey) => TextSource[$"{viewModelName}_{entryKey}"];
     }
 }

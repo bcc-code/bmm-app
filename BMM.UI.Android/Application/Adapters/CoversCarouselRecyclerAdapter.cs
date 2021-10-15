@@ -38,8 +38,11 @@ namespace BMM.UI.Droid.Application.Adapters
                     return new CoverWithTitleViewHolder(view, itemBindingContext);
                 case Resource.Layout.listitem_cover_with_title_flexible:
                 {
-                    int itemWidth = _recyclerView.Width / _itemsPerRow - _itemSpacing * (_itemsPerRow - 1);
-                    return new CoverWithTitleViewHolder(view, itemBindingContext, itemWidth);
+                    //int itemSize = (_recyclerView.Width - _itemSpacing * (_itemsPerRow - 1)) / _itemsPerRow;
+                    int itemSize = _recyclerView.Width / _itemsPerRow - _itemSpacing / 2;
+                    var vh = new CoverWithTitleViewHolder(view, itemBindingContext, itemSize);
+                    vh.Update();
+                    return vh;
                 }
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);

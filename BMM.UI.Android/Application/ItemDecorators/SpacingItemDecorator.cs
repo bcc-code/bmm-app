@@ -13,7 +13,7 @@ namespace BMM.UI.Droid.Application.ItemDecorators
         private readonly int _verticalSpacing;
 
         public SpacingItemDecoration(
-            int horizontalSpacing,
+            int horizontalSpacing = 0,
             int verticalSpacing = 0,
             int sideSpacing = 0,
             int itemsPerLine = 1)
