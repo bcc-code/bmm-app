@@ -1,3 +1,4 @@
+using System;
 using Newtonsoft.Json;
 
 namespace BMM.Core.Extensions
@@ -11,6 +12,14 @@ namespace BMM.Core.Extensions
         {
             string serialized = JsonConvert.SerializeObject(objectToCopy);
             return JsonConvert.DeserializeObject<T>(serialized);
+        }
+
+        public static void IfNotNull<T>(this T obj, Action<T> action)
+        {
+            if (obj == null)
+                return;
+
+            action(obj);
         }
     }
 }
