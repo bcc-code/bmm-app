@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Трябва да избереш поне един език на съдържанието",
     "DeleteLanguageTitle": "Не може да се премахне "
   },
-  "LibraryViewModel": {
-    "Title": "Библиотека"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Архив"
@@ -170,7 +170,7 @@
     "Search": "Търси",
     "Explore": "Разгледай",
     "MyContent": "Мое съдържание",
-    "Library": "Библиотека",
+    "Browse": "Browse",
     "Settings": "Настройки",
     "HelpAndFeedback": "Помощ и обратна връзка",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Всички файлове са изтеглени!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Аудиокниги",
+    "MusicTitle": "Музика",
+    "PodcastsTitle": "Подкаст"
   }
 }
