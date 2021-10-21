@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Android.Graphics;
+﻿using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -9,7 +8,6 @@ using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.ViewModels;
 using System.Linq;
-using Android.Content;
 using AndroidX.AppCompat.Widget;
 using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;

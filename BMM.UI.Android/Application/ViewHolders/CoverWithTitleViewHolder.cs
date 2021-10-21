@@ -1,7 +1,3 @@
-using System;
-using Android.Content;
-using Android.Runtime;
-using Android.Sax;
 using Android.Views;
 using BMM.UI.Droid.Application.Extensions;
 using FFImageLoading.Cross;

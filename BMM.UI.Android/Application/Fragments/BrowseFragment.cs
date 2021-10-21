@@ -49,7 +49,7 @@ namespace BMM.UI.Droid.Application.Fragments
             base.DetachEvents();
 
             if (AppBarLayout != null)
-                AppBarLayout.OffsetChanged += AppBarOnOffsetChanged;
+                AppBarLayout.OffsetChanged -= AppBarOnOffsetChanged;
 
             RecyclerView.ClearOnScrollListeners();
         }
