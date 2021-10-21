@@ -13,8 +13,8 @@
     "Audiobook": "Hangoskönyv",
     "Exegesis": "Szómagyarázat",
     "Done": "Kész",
-    "Today": "Today",
-    "Yesterday": "Yesterday"
+    "Today": "Ma",
+    "Yesterday": "Tegnap"
   },
   "Streak": {
     "Message": "E heti sorozatod.",
@@ -160,7 +160,7 @@
     "DeleteLanguageTitle": " {0} nem távolítható el"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Böngész"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archívum"
@@ -170,7 +170,7 @@
     "Search": "Keresés",
     "Explore": "Felfedezés",
     "MyContent": "Saját tartalmam",
-    "Browse": "Browse",
+    "Browse": "Böngész",
     "Settings": "Beállítások",
     "HelpAndFeedback": "Súgó és visszajelzések",
     "Home": "Főoldal",
@@ -439,8 +439,8 @@
     "Title": "Szerzői jog"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYet": "No playback history yet."
+    "Title": "Nemrég lejátszott",
+    "NoHistoryYet": "Még nincs lejátszási története"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Legújabb üzenetek"
@@ -452,7 +452,7 @@
     "DownloadingFinished": "Minden fájl le lett töltve!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Események",
     "AudiobooksTitle": "Hangoskönyvek",
     "MusicTitle": "Zene",
     "PodcastsTitle": "Podcastok"
