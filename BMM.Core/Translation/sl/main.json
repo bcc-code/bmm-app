@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Izberite vsaj en jezik vsebine",
     "DeleteLanguageTitle": "Ni mogoče odstraniti {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Knjižnica"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhiv"
@@ -170,7 +170,7 @@
     "Search": "Išči",
     "Explore": "Razišči",
     "MyContent": "Moje vsebine",
-    "Library": "Knjižnica",
+    "Browse": "Browse",
     "Settings": "Nastavitve",
     "HelpAndFeedback": "Pomoč in povratne informacije",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Vse datoteke so bile prenesene!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Audioknjige",
+    "MusicTitle": "Glazba",
+    "PodcastsTitle": "Posnetki"
   }
 }
