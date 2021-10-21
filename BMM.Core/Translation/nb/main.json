@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Du må ha minst ett innholdsspråk tilgjengelig",
     "DeleteLanguageTitle": "Kunne ikke fjerne {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Bibliotek"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arkiv"
@@ -170,7 +170,7 @@
     "Search": "Søk",
     "Explore": "Utforsk",
     "MyContent": "Mitt innhold",
-    "Library": "Bibliotek",
+    "Browse": "Browse",
     "Settings": "Innstillinger",
     "HelpAndFeedback": "Hjelp og tilbakemelding",
     "Home": "Hjem",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Alle filene er lastet ned!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Lydbøker",
+    "MusicTitle": "Musikk",
+    "PodcastsTitle": "Podcaster"
   }
 }
