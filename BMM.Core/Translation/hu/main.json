@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Meg kell adnod legalább egy tartalmi nyelvet",
     "DeleteLanguageTitle": " {0} nem távolítható el"
   },
-  "LibraryViewModel": {
-    "Title": "Könyvtár"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archívum"
@@ -170,7 +170,7 @@
     "Search": "Keresés",
     "Explore": "Felfedezés",
     "MyContent": "Saját tartalmam",
-    "Library": "Könyvtár",
+    "Browse": "Browse",
     "Settings": "Beállítások",
     "HelpAndFeedback": "Súgó és visszajelzések",
     "Home": "Főoldal",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Minden fájl le lett töltve!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Hangoskönyvek",
+    "MusicTitle": "Zene",
+    "PodcastsTitle": "Podcastok"
   }
 }
