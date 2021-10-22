@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackCollections;
@@ -12,7 +13,6 @@ using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Localization;
 
 namespace BMM.Core.ViewModels.MyContent
 {
@@ -29,18 +29,34 @@ namespace BMM.Core.ViewModels.MyContent
             )
             : base(
                   downloader,
-                  storageManager
-                  )
+                  storageManager)
         {
             _connection = connection;
+        }
 
-            Documents.CollectionChanged += (sender, e) => RaisePropertyChanged(() => IsEmpty);
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+            Documents.CollectionChanged += DocumentsOnCollectionChanged;
+            PropertyChanged += OnPropertyChanged;
+        }
 
-            PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsLoading")
-                    RaisePropertyChanged(() => IsEmpty);
-            };
+        public override void ViewDisappearing()
+        {
+            base.ViewDisappearing();
+            Documents.CollectionChanged -= DocumentsOnCollectionChanged;
+            PropertyChanged -= OnPropertyChanged;
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(IsLoading))
+                RaisePropertyChanged(() => IsEmpty);
+        }
+
+        private void DocumentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged(() => IsEmpty);
         }
 
         private async Task<IList<TrackCollection>> TrackCollectionContainOfflineFiles(IList<TrackCollection> allCollections, CachePolicy cachePolicy)
@@ -91,7 +107,7 @@ namespace BMM.Core.ViewModels.MyContent
             var followedPodcastPinnedItem = new PinnedItem
             {
                 Title = TextSource[Translations.DownloadedContentViewModel_FollowedPodcasts],
-                Action = new MvxAsyncCommand<PinnedItem>(execute => _navigationService.Navigate<DownloadedFollowedPodcastsViewModel>()),
+                Action = new MvxAsyncCommand<PinnedItem>(execute => NavigationService.Navigate<DownloadedFollowedPodcastsViewModel>()),
                 Icon = "icon_podcast"
             };
 

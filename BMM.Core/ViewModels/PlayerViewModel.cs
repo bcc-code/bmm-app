@@ -113,9 +113,9 @@ namespace BMM.Core.ViewModels
             _uriOpener = uriOpener;
             _exceptionHandler = exceptionHandler;
 
-            CloseViewModelCommand = new MvxCommand(() => _navigationService.Close(this));
+            CloseViewModelCommand = new MvxCommand(() => NavigationService.Close(this));
             ClosePlayerCommand = new MvxCommand(() => _closePlayerInteraction.Raise(new TogglePlayerInteraction {Open = false}));
-            OpenQueueCommand = _navigationService.NavigateCommand<QueueViewModel>();
+            OpenQueueCommand = NavigationService.NavigateCommand<QueueViewModel>();
             ToggleRepeatCommand = new MvxCommand(() => MediaPlayer.ToggleRepeatType());
             ToggleShuffleCommand = new MvxCommand(() => MediaPlayer.ToggleShuffle());
             NextCommand = new MvxCommand(MediaPlayer.PlayNext, () => IsSkipToNextEnabled);
@@ -125,8 +125,8 @@ namespace BMM.Core.ViewModels
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
             OpenExternalReferenceCommand = new MvxCommand(() => OpenBtvLink());
 
-            _repeatToken = _messenger.Subscribe<RepeatModeChangedMessage>(m => RepeatType = m.RepeatType);
-            _shuffleToken = _messenger.Subscribe<ShuffleModeChangedMessage>(m => IsShuffleEnabled = m.IsShuffleEnabled);
+            _repeatToken = Messenger.Subscribe<RepeatModeChangedMessage>(m => RepeatType = m.RepeatType);
+            _shuffleToken = Messenger.Subscribe<ShuffleModeChangedMessage>(m => IsShuffleEnabled = m.IsShuffleEnabled);
 
             // read current values
             RepeatType = MediaPlayer.RepeatType;
@@ -144,7 +144,7 @@ namespace BMM.Core.ViewModels
         {
             base.ViewAppearing();
 
-            _toggleToken = _messenger.SubscribeOnMainThread<TogglePlayerMessage>(OnTogglePlayerMessage);
+            _toggleToken = Messenger.SubscribeOnMainThread<TogglePlayerMessage>(OnTogglePlayerMessage);
         }
 
         public override void ViewAppeared()
@@ -161,7 +161,7 @@ namespace BMM.Core.ViewModels
         {
             base.ViewDisappeared();
 
-            _messenger.Unsubscribe<TogglePlayerMessage>(_toggleToken);
+            Messenger.Unsubscribe<TogglePlayerMessage>(_toggleToken);
         }
 
         protected override async Task OptionsAction(Document item)

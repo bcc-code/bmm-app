@@ -49,10 +49,19 @@ namespace BMM.UI.iOS
             set.Apply();
 
             AlbumTable.ResizeHeaderView();
+        }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
+        }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {

@@ -85,15 +85,15 @@ namespace BMM.UI.Droid.Application.Fragments
             }
         }
 
-        public override void OnStart()
+        protected override void AttachEvents()
         {
-            base.OnStart();
+            base.AttachEvents();
             _nestedScrollView.ScrollChange += ClearTextFieldFocus;
         }
 
-        public override void OnPause()
+        protected override void DetachEvents()
         {
-            base.OnPause();
+            base.DetachEvents();
             _nestedScrollView.ScrollChange -= ClearTextFieldFocus;
         }
 

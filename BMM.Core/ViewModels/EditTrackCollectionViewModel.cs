@@ -72,7 +72,7 @@ namespace BMM.Core.ViewModels
                     return;
             }
 
-            await _navigationService.Close(this);
+            await NavigationService.Close(this);
         }
 
         private async Task SaveAndClose()
@@ -91,8 +91,8 @@ namespace BMM.Core.ViewModels
             try
             {
                 await Client.TrackCollection.Save(_trackCollection);
-                _messenger.Publish(new TrackCollectionOrderChangedMessage(this) {TrackCollection = _trackCollection});
-                await _navigationService.Close(this);
+                Messenger.Publish(new TrackCollectionOrderChangedMessage(this) {TrackCollection = _trackCollection});
+                await NavigationService.Close(this);
             }
             catch (Exception ex)
             {

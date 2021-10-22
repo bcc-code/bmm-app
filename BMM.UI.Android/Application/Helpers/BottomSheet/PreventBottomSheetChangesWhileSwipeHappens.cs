@@ -23,40 +23,45 @@ namespace BMM.UI.Droid.Application.Helpers.BottomSheet
         }
 
         public void Register()
-        { 
-            _swipeDetector.OnSwipeDetected += (sender, swipeEvent) =>
+        {
+            _swipeDetector.OnSwipeDetected += SwipeDetectorOnOnSwipeDetected;
+            _bottomSheetManager.OnBottomSheetStateChanged += BottomSheetManagerOnOnBottomSheetStateChanged;
+        }
+
+        public void Unregister()
+        {
+            _swipeDetector.OnSwipeDetected -= SwipeDetectorOnOnSwipeDetected;
+            _bottomSheetManager.OnBottomSheetStateChanged -= BottomSheetManagerOnOnBottomSheetStateChanged;
+        }
+
+        private void BottomSheetManagerOnOnBottomSheetStateChanged(object sender, int state)
+        {
+            if (state == BottomSheetBehavior.StateDragging)
             {
-                if (swipeEvent.EventType == SwipeEventType.Move)
+                if (_blockBottomSheetDragging)
                 {
-                    _blockBottomSheetDragging = true;
+                    _bottomSheetManager.ResetStateChange(_previousState);
                 }
-
-                if (swipeEvent.EventType == SwipeEventType.End)
-                {
-                    _blockBottomSheetDragging = false;
-                }
-            };
-
-            _bottomSheetManager.OnBottomSheetStateChanged += (sender, state) =>
+            }
+            else
             {
-                if (state == BottomSheetBehavior.StateDragging)
-                {
-                    if (_blockBottomSheetDragging)
-                    {
-                        _bottomSheetManager.ResetStateChange(_previousState);
-                    }
-                }
-                else
-                {
-                    var bottomSheetIsExpanded = state == BottomSheetBehavior.StateExpanded;
-                    var bottomSheetIsHidden = state == BottomSheetBehavior.StateHidden;
+                var bottomSheetIsExpanded = state == BottomSheetBehavior.StateExpanded;
+                var bottomSheetIsHidden = state == BottomSheetBehavior.StateHidden;
 
-                    if (bottomSheetIsExpanded || bottomSheetIsHidden)
-                    {
-                        _previousState = state;
-                    }
+                if (bottomSheetIsExpanded || bottomSheetIsHidden)
+                {
+                    _previousState = state;
                 }
-            };
+            }
+        }
+
+        private void SwipeDetectorOnOnSwipeDetected(object sender, SwipeEvent swipeEvent)
+        {
+            if (swipeEvent.EventType == SwipeEventType.Move)
+                _blockBottomSheetDragging = true;
+
+            if (swipeEvent.EventType == SwipeEventType.End)
+                _blockBottomSheetDragging = false;
         }
     }
 }

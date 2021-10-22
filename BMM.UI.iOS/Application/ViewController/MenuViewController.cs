@@ -63,9 +63,9 @@ namespace BMM.UI.iOS
                 });
         }
 
-        public override void ViewDidDisappear(bool animated)
+        public override void ViewWillDisappear(bool animated)
         {
-            base.ViewDidDisappear(animated);
+            base.ViewWillDisappear(animated);
             ViewModel.PropertyChanged -= OnTextSourceChanged;
         }
 

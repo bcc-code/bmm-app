@@ -27,6 +27,8 @@ namespace BMM.UI.Droid.Application.Fragments
 
             var searchMenu = menu.FindItem(Resource.Id.action_search);
 
+            Unsubscribe();
+
             _searchView = searchMenu.ActionView as SearchView;
             _searchView.QueryHint = ViewModel.TextSource[Translations.SearchViewModel_SearchHint];
 
@@ -39,22 +41,52 @@ namespace BMM.UI.Droid.Application.Fragments
             set.Bind(searchText).For(sa => sa.Text).To(vm => vm.SearchTerm);
             set.Apply();
 
-            _searchView.QueryTextSubmit += (s, e) =>
-            {
-                ViewModel.SearchCommand.Execute();
-                _searchView.ClearFocus();
-                e.Handled = true;
-            };
-
             _searchView.OnActionViewExpanded();
             _searchView.ClearFocus();
+            Subscribe();
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            Subscribe();
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            Unsubscribe();
+        }
+
+        private void Subscribe()
+        {
+            if (_searchView == null)
+                return;
+
+            _searchView.QueryTextSubmit -= SearchViewOnQueryTextSubmit;
+            _searchView.QueryTextSubmit += SearchViewOnQueryTextSubmit;
+        }
+
+        private void Unsubscribe()
+        {
+            if (_searchView == null)
+                return;
+
+            _searchView.QueryTextSubmit -= SearchViewOnQueryTextSubmit;
+        }
+
+        private void SearchViewOnQueryTextSubmit(object sender, SearchView.QueryTextSubmitEventArgs e)
+        {
+            ViewModel.SearchCommand.Execute();
+            _searchView.ClearFocus();
+            e.Handled = true;
         }
 
         public override void OnPrepareOptionsMenu(IMenu menu)
         {
             base.OnPrepareOptionsMenu(menu);
 
-            if (ViewModel.SearchTerm == "")
+            if (ViewModel.SearchTerm == string.Empty)
                 ViewModel.SearchTerm = SearchViewModel.SearchedString;
 
             if (!string.IsNullOrEmpty(ViewModel.SearchTerm))

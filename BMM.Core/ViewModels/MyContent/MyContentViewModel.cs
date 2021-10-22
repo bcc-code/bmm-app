@@ -28,13 +28,13 @@ namespace BMM.Core.ViewModels.MyContent
         protected override Task Initialization()
         {
             _playlistStateChangedMessageSubscriptionKey =
-                _messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
+                Messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
             return base.Initialization();
         }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
-            _messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
+            Messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
             base.ViewDestroy(viewFinishing);
         }
 
@@ -93,13 +93,13 @@ namespace BMM.Core.ViewModels.MyContent
                 new PinnedItem()
                 {
                     Title = TextSource[Translations.MyContentViewModel_DownloadedContent],
-                    Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<DownloadedContentViewModel>()),
+                    Action = new MvxAsyncCommand<PinnedItem>(async execute => await NavigationService.Navigate<DownloadedContentViewModel>()),
                     Icon = "icon_download"
                 },
                 new PinnedItem()
                 {
                     Title = TextSource[Translations.MyContentViewModel_FollowedPodcasts],
-                    Action = new MvxAsyncCommand<PinnedItem>(async execute => await _navigationService.Navigate<FollowedPodcastsViewModel>()),
+                    Action = new MvxAsyncCommand<PinnedItem>(async execute => await NavigationService.Navigate<FollowedPodcastsViewModel>()),
                     Icon = "icon_podcast"
                 }
             };

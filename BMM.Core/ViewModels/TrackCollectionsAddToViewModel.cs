@@ -81,7 +81,7 @@ namespace BMM.Core.ViewModels
                 _logger.Error("TrackOrAlbumAddedToTrackCollection", "Unexpected error", ex);
             }
 
-            await _navigationService.Close(this);
+            await NavigationService.Close(this);
         }
 
         public class Parameter

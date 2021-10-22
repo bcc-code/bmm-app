@@ -108,13 +108,13 @@ namespace BMM.Core.ViewModels.Base
             Documents = new BmmObservableCollection<Document>();
 
             CurrentTrack = Mvx.IoCProvider.Resolve<IMediaPlayer>().CurrentTrack;
-            _currentTrackChangedToken = _messenger.Subscribe<CurrentTrackChangedMessage>(message =>
+            _currentTrackChangedToken = Messenger.Subscribe<CurrentTrackChangedMessage>(message =>
             {
                 CurrentTrack = message.CurrentTrack;
             });
 
             ConnectionStatus = Mvx.IoCProvider.Resolve<IConnection>().GetStatus();
-            _connectionStatusChangedToken = _messenger.Subscribe<ConnectionStatusChangedMessage>(message =>
+            _connectionStatusChangedToken = Messenger.Subscribe<ConnectionStatusChangedMessage>(message =>
             {
                 ConnectionStatus = message.ConnectionStatus;
                 RefreshDocumentsList();
@@ -142,18 +142,18 @@ namespace BMM.Core.ViewModels.Base
                 }
             });
 
-            _trackMarkedAsListenedToken = _messenger.Subscribe<TrackMarkedAsListenedMessage>(HandleTrackMarkedAsListenedMessage);
+            _trackMarkedAsListenedToken = Messenger.Subscribe<TrackMarkedAsListenedMessage>(HandleTrackMarkedAsListenedMessage);
 
-            _fileDownloadStartedSubscriptionToken = _messenger.Subscribe<FileDownloadStartedMessage>(HandleFileDownloadStartedMessage);
+            _fileDownloadStartedSubscriptionToken = Messenger.Subscribe<FileDownloadStartedMessage>(HandleFileDownloadStartedMessage);
 
-            _fileDownloadCompletedSubscriptionToken = _messenger.Subscribe<FileDownloadCompletedMessage>(HandleFileDownloadCompletedMessage);
+            _fileDownloadCompletedSubscriptionToken = Messenger.Subscribe<FileDownloadCompletedMessage>(HandleFileDownloadCompletedMessage);
 
-            _fileDownloadCanceledSubscriptionToken = _messenger.Subscribe<FileDownloadCanceledMessage>(HandleFileDownloadCanceledMessage);
+            _fileDownloadCanceledSubscriptionToken = Messenger.Subscribe<FileDownloadCanceledMessage>(HandleFileDownloadCanceledMessage);
 
-            _downloadQueueChangedSubscriptionToken = _messenger.Subscribe<DownloadQueueChangedMessage>(HandleDownloadQueueChangedMessage);
+            _downloadQueueChangedSubscriptionToken = Messenger.Subscribe<DownloadQueueChangedMessage>(HandleDownloadQueueChangedMessage);
 
-            _downloadQueueFinishedSubscriptionToken = _messenger.Subscribe<QueueFinishedMessage>(HandleDownloadQueueFinishedMessage);
-            _contentLanguageChangedToken = _messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
+            _downloadQueueFinishedSubscriptionToken = Messenger.Subscribe<QueueFinishedMessage>(HandleDownloadQueueFinishedMessage);
+            _contentLanguageChangedToken = Messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
         }
 
         [MvxInject]
@@ -218,7 +218,7 @@ namespace BMM.Core.ViewModels.Base
                 return;
             }
 
-            _cacheToken = _messenger.Subscribe<CacheUpdatedMessage>(async message =>
+            _cacheToken = Messenger.Subscribe<CacheUpdatedMessage>(async message =>
             {
                 if (message.Type == CacheKey)
                     await RefreshInBackgroundAfterCacheUpdate();
@@ -233,7 +233,7 @@ namespace BMM.Core.ViewModels.Base
 
             if (_cacheToken != null)
             {
-                _messenger.Unsubscribe<CacheUpdatedMessage>(_cacheToken);
+                Messenger.Unsubscribe<CacheUpdatedMessage>(_cacheToken);
             }
         }
 

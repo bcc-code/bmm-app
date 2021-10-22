@@ -1,4 +1,5 @@
-﻿using Android.OS;
+﻿using System.ComponentModel;
+using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using BMM.Core.Translation;
@@ -28,15 +29,25 @@ namespace BMM.UI.Droid.Application.Fragments
 
             RebuildMenu();
 
-            ViewModel.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsOnline" || e.PropertyName == "TextSource")
-                {
-                    RebuildMenu();
-                }
-            };
-
             return view;
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
+        }
+
+        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(ViewModel.TextSource))
+                RebuildMenu();
         }
 
         private void RebuildMenu()

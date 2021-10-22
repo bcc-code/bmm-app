@@ -27,7 +27,7 @@ namespace BMM.Core.ViewModels
             MakePrivateCommand = new ExceptionHandlingCommand(async () =>
             {
                 await Client.TrackCollection.ResetShare(_trackCollectionId);
-                _messenger.Publish(new PlaylistStateChangedMessage(this, TrackCollection.Id));
+                Messenger.Publish(new PlaylistStateChangedMessage(this, TrackCollection.Id));
                 await ReloadCommand.ExecuteAsync();
             });
         }

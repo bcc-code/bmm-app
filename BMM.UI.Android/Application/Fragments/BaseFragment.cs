@@ -1,4 +1,5 @@
-﻿using Android.Graphics;
+﻿using System;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Views;
@@ -36,6 +37,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private Color? _fragmentBaseColor;
         private string _title;
+        private MvxRecyclerViewOnScrollListener _onScrollListener;
 
         protected virtual Color FragmentBaseColor
         {
@@ -128,10 +130,18 @@ namespace BMM.UI.Droid.Application.Fragments
 
         protected virtual void AttachEvents()
         {
+            if (_onScrollListener == null)
+                return;
+
+            _onScrollListener.LoadMoreEvent += OnScrollListenerOnLoadMoreEvent;
         }
 
         protected virtual void DetachEvents()
         {
+            if (_onScrollListener == null)
+                return;
+
+            _onScrollListener.LoadMoreEvent -= OnScrollListenerOnLoadMoreEvent;
         }
 
         protected virtual void Bind()
@@ -141,9 +151,7 @@ namespace BMM.UI.Droid.Application.Fragments
         protected virtual void InitRecyclerView(MvxRecyclerView recyclerView)
         {
             if (recyclerView == null)
-            {
                 return;
-            }
 
             recyclerView.HasFixedSize = true;
 
@@ -152,18 +160,8 @@ namespace BMM.UI.Droid.Application.Fragments
             if (ViewModel is ILoadMoreDocumentsViewModel)
             {
                 recyclerView.Adapter = CreateAdapter();
-
-                var onScrollListener = new MvxRecyclerViewOnScrollListener(layoutManager);
-                onScrollListener.LoadMoreEvent += (sender, e) =>
-                {
-                    var vm = (ILoadMoreDocumentsViewModel) ViewModel;
-                    if (vm != null && vm.IsInitialized && !vm.IsLoading && !vm.IsFullyLoaded)
-                    {
-                        vm.LoadMoreCommand.Execute();
-                    }
-                };
-
-                recyclerView.AddOnScrollListener(onScrollListener);
+                _onScrollListener = new MvxRecyclerViewOnScrollListener(layoutManager);
+                recyclerView.AddOnScrollListener(_onScrollListener);
             }
             else if (ViewModel is ITrackListViewModel)
             {
@@ -171,6 +169,15 @@ namespace BMM.UI.Droid.Application.Fragments
             }
 
             recyclerView.SetLayoutManager(layoutManager);
+        }
+
+        private void OnScrollListenerOnLoadMoreEvent(object sender, EventArgs e)
+        {
+            var vm = (ILoadMoreDocumentsViewModel) ViewModel;
+            if (vm != null && vm.IsInitialized && !vm.IsLoading && !vm.IsFullyLoaded)
+            {
+                vm.LoadMoreCommand.Execute();
+            }
         }
 
         protected virtual MvxRecyclerAdapter CreateAdapter()
@@ -324,30 +331,6 @@ namespace BMM.UI.Droid.Application.Fragments
             return view;
         }
 
-        public new TViewModel ViewModel
-        {
-            get => (TViewModel)base.ViewModel;
-            set {
-                base.ViewModel = value;
-                RegisterViewModelPropertyChangedListener();
-            }
-        }
-
-        private void RegisterViewModelPropertyChangedListener()
-        {
-            ViewModel.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == nameof(ViewModel.TextSource))
-                {
-                    if (ParentActivity != null)
-                    {
-                        if (!string.IsNullOrEmpty(Title) && Toolbar != null)
-                            ParentActivity.SupportActionBar.Title = Title;
-                        else if (Toolbar != null)
-                            ParentActivity.SupportActionBar.Title = "";
-                    }
-                }
-            };
-        }
+        public new TViewModel ViewModel => (TViewModel)base.ViewModel;
     }
 }

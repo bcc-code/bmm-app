@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Transactions;
 using Acr.UserDialogs;
 using BMM.Api;
 using BMM.Api.Abstraction;
@@ -14,7 +13,6 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Localization.Interfaces;
-using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
@@ -25,7 +23,6 @@ using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
-using MvvmCross.Localization;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
@@ -42,21 +39,19 @@ namespace BMM.Core.ViewModels.Base
 
         protected IExceptionHandler ExceptionHandler => Mvx.IoCProvider.Resolve<IExceptionHandler>();
 
-        protected readonly IMvxMessenger _messenger;
-
-        protected readonly IMvxNavigationService _navigationService;
+        protected readonly IMvxMessenger Messenger;
+        protected readonly IMvxNavigationService NavigationService;
 
         protected IBMMClient Client => Mvx.IoCProvider.Resolve<IBMMClient>();
 
         public BaseViewModel()
         {
-            Mvx.IoCProvider.Resolve<INotificationCenter>().AppLanguageChanged += (sender, e) =>
-            {
-                RaisePropertyChanged(() => TextSource);
-            };
-            _messenger = Mvx.IoCProvider.Resolve<IMvxMessenger>();
-            _navigationService = Mvx.IoCProvider.Resolve<IMvxNavigationService>();
+            Messenger = Mvx.IoCProvider.Resolve<IMvxMessenger>();
+            NavigationService = Mvx.IoCProvider.Resolve<IMvxNavigationService>();
         }
+
+        [MvxInject]
+        public INotificationCenter NotificationCenter { get; set; }
 
         [MvxInject]
         public IBMMLanguageBinder TextSource { get; set; }
@@ -100,9 +95,26 @@ namespace BMM.Core.ViewModels.Base
             }
         }
 
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+            NotificationCenter.AppLanguageChanged += NotificationCenterOnAppLanguageChanged;
+        }
+
+        public override void ViewDisappearing()
+        {
+            base.ViewDisappearing();
+            NotificationCenter.AppLanguageChanged -= NotificationCenterOnAppLanguageChanged;
+        }
+
+        private void NotificationCenterOnAppLanguageChanged(object sender, EventArgs e)
+        {
+            RaisePropertyChanged(() => TextSource);
+        }
+
         private async Task Close(CancellationToken cancellationToken)
         {
-            await _navigationService.Close(this, cancellationToken);
+            await NavigationService.Close(this, cancellationToken);
         }
 
         // ToDo: this method does not belong here. Create it's own class instead
@@ -141,8 +153,8 @@ namespace BMM.Core.ViewModels.Base
                         actionSheet.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_AddToPlaylist),
                             async () =>
                             {
-                                _messenger.Publish(new TogglePlayerMessage(this, false));
-                                await _navigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
+                                Messenger.Publish(new TogglePlayerMessage(this, false));
+                                await NavigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
                                 {
                                     DocumentId = item.Id,
                                     DocumentType = item.DocumentType
@@ -208,8 +220,8 @@ namespace BMM.Core.ViewModels.Base
                         actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_GoToAlbum],
                             async () =>
                             {
-                                _messenger.Publish(new TogglePlayerMessage(this, false));
-                                await _navigationService.Navigate<AlbumViewModel, Album>(new Album {Id = track.ParentId, Title = track.Album});
+                                Messenger.Publish(new TogglePlayerMessage(this, false));
+                                await NavigationService.Navigate<AlbumViewModel, Album>(new Album {Id = track.ParentId, Title = track.Album});
                             },
                             imageAlbum);
                     }
@@ -240,13 +252,13 @@ namespace BMM.Core.ViewModels.Base
                                         var rel = (TrackRelationComposer)relation;
 
                                         if (trackHasOnlyOneContributor)
-                                            await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                            await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
                                             contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Composer, rel.Name),
                                                 async () =>
                                                 {
-                                                    _messenger.Publish(new TogglePlayerMessage(this, false));
-                                                    await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                                    Messenger.Publish(new TogglePlayerMessage(this, false));
+                                                    await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                                 });
 
                                     }
@@ -255,13 +267,13 @@ namespace BMM.Core.ViewModels.Base
                                         var rel = (TrackRelationInterpreter)relation;
 
                                         if (trackHasOnlyOneContributor)
-                                            await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                            await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
                                             contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Interpret, rel.Name),
                                                 async () =>
                                                 {
-                                                    _messenger.Publish(new TogglePlayerMessage(this, false));
-                                                    await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                                    Messenger.Publish(new TogglePlayerMessage(this, false));
+                                                    await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                                 });
                                     }
                                     else if (relation.Type == TrackRelationType.Lyricist)
@@ -269,13 +281,13 @@ namespace BMM.Core.ViewModels.Base
                                         var rel = (TrackRelationLyricist)relation;
 
                                         if (trackHasOnlyOneContributor)
-                                            await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                            await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
                                             contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Lyricist, rel.Name),
                                                 async () =>
                                                 {
-                                                    _messenger.Publish(new TogglePlayerMessage(this, false));
-                                                    await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                                    Messenger.Publish(new TogglePlayerMessage(this, false));
+                                                    await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                                 });
                                     }
                                     else if (relation.Type == TrackRelationType.Arranger)
@@ -283,13 +295,13 @@ namespace BMM.Core.ViewModels.Base
 										var rel = (TrackRelationArranger)relation;
 
                                         if (trackHasOnlyOneContributor)
-                                            await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                            await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                         else
                                             contributorConfig.AddHandled(TextSource.GetText(Translations.UserDialogs_Track_GoToContributor_Arranger, rel.Name),
                                                 async () =>
                                                 {
-                                                    _messenger.Publish(new TogglePlayerMessage(this, false));
-                                                    await _navigationService.Navigate<ContributorViewModel, int>(rel.Id);
+                                                    Messenger.Publish(new TogglePlayerMessage(this, false));
+                                                    await NavigationService.Navigate<ContributorViewModel, int>(rel.Id);
                                                 });
                                     }
                                 }
@@ -353,7 +365,7 @@ namespace BMM.Core.ViewModels.Base
 
                 case DocumentType.Podcast:
                     var podcastId = item.Id;
-                    await _navigationService.Navigate<AutomaticDownloadViewModel, int>(podcastId);
+                    await NavigationService.Navigate<AutomaticDownloadViewModel, int>(podcastId);
                     break;
 
                 default:
@@ -394,7 +406,7 @@ namespace BMM.Core.ViewModels.Base
                 .AddHandled(TextSource[Translations.TrackCollectionViewModel_EditPlaylist],
                     async () =>
                     {
-                        await _navigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
+                        await NavigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
                             new TrackCollectionParameter(trackCollection.Id));
                     },
                     imageRename)
@@ -404,7 +416,7 @@ namespace BMM.Core.ViewModels.Base
 
         protected async Task ShareTrackCollection(int trackCollectionId)
         {
-            await _navigationService.Navigate<ShareTrackCollectionViewModel, ITrackCollectionParameter>(
+            await NavigationService.Navigate<ShareTrackCollectionViewModel, ITrackCollectionParameter>(
                 new TrackCollectionParameter(trackCollectionId));
         }
 
@@ -422,8 +434,8 @@ namespace BMM.Core.ViewModels.Base
                 return;
             }
 
-            _messenger.Publish(new TogglePlayerMessage(this, false));
-            await _navigationService.Navigate<TrackInfoViewModel, Track>(track);
+            Messenger.Publish(new TogglePlayerMessage(this, false));
+            await NavigationService.Navigate<TrackInfoViewModel, Track>(track);
         }
 
         private IMvxCommand<Document> _documentSelectedCommand;
@@ -463,26 +475,26 @@ namespace BMM.Core.ViewModels.Base
                     break;
 
                 case DocumentType.Album:
-                    await _navigationService.Navigate<AlbumViewModel, Album>((Album)item);
+                    await NavigationService.Navigate<AlbumViewModel, Album>((Album)item);
                     break;
 
                 case DocumentType.Contributor:
-                    await _navigationService.Navigate<ContributorViewModel, int>(item.Id);
+                    await NavigationService.Navigate<ContributorViewModel, int>(item.Id);
                     break;
 
                 case DocumentType.TrackCollection:
                     var trackCollection = (TrackCollection)item;
-                    await _navigationService.Navigate<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(trackCollection.Id, trackCollection.Name));
+                    await NavigationService.Navigate<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(trackCollection.Id, trackCollection.Name));
                     break;
 
                 case DocumentType.Podcast:
                     var podcast = (Podcast)item;
-                    await _navigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = podcast.Id, Title = podcast.Title});
+                    await NavigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = podcast.Id, Title = podcast.Title});
                     break;
 
                 case DocumentType.Playlist:
                     var playlist = (Playlist)item;
-                    await _navigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = playlist.Id, Title = playlist.Title});
+                    await NavigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = playlist.Id, Title = playlist.Title});
                     break;
             }
         }
@@ -571,7 +583,7 @@ namespace BMM.Core.ViewModels.Base
 
         protected Task AddAlbumToTrackCollection(int albumId)
         {
-            return _navigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
+            return NavigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
             {
                 DocumentId = albumId,
                 DocumentType = DocumentType.Album

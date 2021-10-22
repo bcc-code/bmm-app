@@ -32,9 +32,6 @@ namespace BMM.UI.Droid.Application.Activities
 
             SetContentView(Resource.Layout.activity_oidc_login);
 
-            var loginBtn = FindViewById<Button>(Resource.Id.BtnLogin);
-            loginBtn.Click += delegate { ViewModel.LoginCommand.Execute(); };
-
             if (ViewModel.IsInitialLogin)
                 ViewModel.LoginCommand.Execute();
         }

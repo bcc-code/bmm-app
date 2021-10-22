@@ -19,25 +19,37 @@ namespace BMM.Core.ViewModels
         private readonly IStorageManager _storageManager;
         private readonly ISettingsStorage _settingsStorage;
         private readonly IUserDialogs _userDialog;
-        private readonly IGlobalMediaDownloader _globalMediaDownloader;
         private readonly IAnalytics _analytics;
         private IFileStorage _selectedStorage;
 
         private IMvxAsyncCommand<IFileStorage> _storageSelectedCommand;
 
-        public StorageManagementViewModel(IStorageManager storageManager, ISettingsStorage settingsStorage, IUserDialogs userDialog, IGlobalMediaDownloader globalMediaDownloader,
+        public StorageManagementViewModel(
+            IStorageManager storageManager,
+            ISettingsStorage settingsStorage,
+            IUserDialogs userDialog,
             IAnalytics analytics)
         {
             _storageManager = storageManager;
             _settingsStorage = settingsStorage;
             _userDialog = userDialog;
-            _globalMediaDownloader = globalMediaDownloader;
             _analytics = analytics;
             _selectedStorage = _storageManager.SelectedStorage;
-            _storageManager.Storages.CollectionChanged += Storages_CollectionChanged;
         }
 
-        private void Storages_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        public override void ViewAppeared()
+        {
+            base.ViewAppeared();
+            _storageManager.Storages.CollectionChanged += OnStoragesCollectionChanged;
+        }
+
+        public override void ViewDisappearing()
+        {
+            base.ViewDisappearing();
+            _storageManager.Storages.CollectionChanged -= OnStoragesCollectionChanged;
+        }
+
+        private void OnStoragesCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
             RaisePropertyChanged(() => Storages);
             _selectedStorage = _storageManager.SelectedStorage;
@@ -53,7 +65,7 @@ namespace BMM.Core.ViewModels
             {
                 _selectedStorage = value;
                 RaisePropertyChanged(() => SelectedStorage);
-                _messenger.Publish(new SelectedStorageChangedMessage(this, value));
+                Messenger.Publish(new SelectedStorageChangedMessage(this, value));
             }
         }
 
