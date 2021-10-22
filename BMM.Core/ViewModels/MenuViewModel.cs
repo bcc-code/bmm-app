@@ -37,8 +37,8 @@ namespace BMM.Core.ViewModels
         {
             return new ExceptionHandlingCommand(async () =>
                 {
-                    await _navigationService.ChangePresentation(new MenuClickedHint());
-                    await _navigationService.NavigateToNewRoot<T>();
+                    await NavigationService.ChangePresentation(new MenuClickedHint());
+                    await NavigationService.NavigateToNewRoot<T>();
                 },
                 canExecute
             );

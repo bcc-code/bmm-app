@@ -57,7 +57,7 @@ namespace BMM.Core.ViewModels
 
             EditCommand = new ExceptionHandlingCommand(() =>
                  {
-                     return _navigationService
+                     return NavigationService
                          .Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
                              new TrackCollectionParameter(MyCollection.Id));
                  });
@@ -68,17 +68,17 @@ namespace BMM.Core.ViewModels
 
         protected override Task Initialization()
         {
-            _trackCollectionOrderChangedToken = _messenger.Subscribe<TrackCollectionOrderChangedMessage>(HandleTrackCollectionOrderChanged);
+            _trackCollectionOrderChangedToken = Messenger.Subscribe<TrackCollectionOrderChangedMessage>(HandleTrackCollectionOrderChanged);
             _playlistStateChangedMessageSubscriptionKey =
-                _messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
+                Messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
 
             return base.Initialization();
         }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
-            _messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
-            _messenger.Unsubscribe<TrackCollectionOrderChangedMessage>(_trackCollectionOrderChangedToken);
+            Messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
+            Messenger.Unsubscribe<TrackCollectionOrderChangedMessage>(_trackCollectionOrderChangedToken);
             base.ViewDestroy(viewFinishing);
         }
 
@@ -99,7 +99,7 @@ namespace BMM.Core.ViewModels
 
             if (success)
             {
-                await _navigationService.Close(this);
+                await NavigationService.Close(this);
             }
 
             return success;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,23 +99,32 @@ namespace BMM.Core.ViewModels
             _profileLoader = profileLoader;
             _userStorage = userStorage;
             _remoteConfig = remoteConfig;
-
-            _storageManager.Storages.CollectionChanged += Storages_CollectionChanged;
-
-            PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == nameof(TextSource))
-                {
-                    BuildSections();
-                }
-            };
-
-            _messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
+            Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
-        private void Storages_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        public override void ViewAppeared()
         {
-            BuildSections();
+            base.ViewAppeared();
+            PropertyChanged += OnPropertyChanged;
+            _storageManager.Storages.CollectionChanged += OnStoragesCollectionChanged;
+        }
+
+        public override void ViewDisappearing()
+        {
+            base.ViewDisappearing();
+            PropertyChanged -= OnPropertyChanged;
+            _storageManager.Storages.CollectionChanged -= OnStoragesCollectionChanged;
+        }
+
+        private async void OnStoragesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            await BuildSections();
+        }
+
+        private async void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(TextSource))
+                await BuildSections();
         }
 
         private void ChangeStorageText(IFileStorage fileStorage)
@@ -193,7 +203,7 @@ namespace BMM.Core.ViewModels
                     {
                         _settingsStorage.SetMobileNetworkDownloadAllowed(mobileNetworkDownloadAllowed);
                         _mediaDownloader.SynchronizeOfflineTracks();
-                        _messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, mobileNetworkDownloadAllowed));
+                        Messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, mobileNetworkDownloadAllowed));
                     }
                 },
                 new CheckboxListItem
@@ -204,7 +214,7 @@ namespace BMM.Core.ViewModels
                     OnChanged = notificationsEnabled =>
                     {
                         _settingsStorage.SetPushNotificationsAllowed(notificationsEnabled);
-                        _messenger.Publish(new PushNotificationsStatusChangedMessage(this, notificationsEnabled));
+                        Messenger.Publish(new PushNotificationsStatusChangedMessage(this, notificationsEnabled));
                     }
                 }
             };
@@ -215,7 +225,7 @@ namespace BMM.Core.ViewModels
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionExternalStorage],
                     Text = CurrentStorageInfo(_storageManager.SelectedStorage),
-                    OnSelected = _navigationService.NavigateCommand<StorageManagementViewModel>()
+                    OnSelected = NavigationService.NavigateCommand<StorageManagementViewModel>()
                 };
                 items.Add(_externalStorage);
             }
@@ -248,13 +258,13 @@ namespace BMM.Core.ViewModels
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionLanguageAppHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionLanguageAppText],
-                    OnSelected = _navigationService.NavigateCommand<LanguageAppViewModel>()
+                    OnSelected = NavigationService.NavigateCommand<LanguageAppViewModel>()
                 },
                 new SelectableListItem
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionLanguageContentHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionLanguageContentText],
-                    OnSelected = _navigationService.NavigateCommand<LanguageContentViewModel>()
+                    OnSelected = NavigationService.NavigateCommand<LanguageContentViewModel>()
                 }
             };
         }
@@ -274,7 +284,7 @@ namespace BMM.Core.ViewModels
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionCopyrightHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionCopyrightText],
-                    OnSelected = _navigationService.NavigateCommand<CopyrightViewModel>()
+                    OnSelected = NavigationService.NavigateCommand<CopyrightViewModel>()
                 },
                 new SelectableListItem
                 {
@@ -344,7 +354,7 @@ namespace BMM.Core.ViewModels
 
             // Event is fired after UI updated to ensure depending UI changes
             // are not called too early
-            _messenger.Publish(new LoggedOutMessage(this));
+            Messenger.Publish(new LoggedOutMessage(this));
         }
 
         private async Task ShowInfo()

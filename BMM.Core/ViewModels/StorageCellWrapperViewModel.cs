@@ -5,19 +5,19 @@ namespace BMM.Core.ViewModels
 {
     public class StorageCellWrapperViewModel : SelectableCellWrapperViewModel<IFileStorage>
     {
-        private StorageManagementViewModel _viewModel => (StorageManagementViewModel)ViewModel;
+        private StorageManagementViewModel StorageManagementViewModel => (StorageManagementViewModel)ViewModel;
 
         public StorageCellWrapperViewModel(IFileStorage item, BaseViewModel viewModel) : base(item, viewModel)
         {
-            _viewModel.PropertyChanged += (sender, args) =>
+            StorageManagementViewModel.PropertyChanged += (sender, args) =>
             {
-                if (args.PropertyName == nameof(StorageManagementViewModel.SelectedStorage))
+                if (args.PropertyName == nameof(ViewModels.StorageManagementViewModel.SelectedStorage))
                 {
                     RaisePropertyChanged(() => IsSelected);
                 }
             };
         }
 
-        public override bool IsSelected => _viewModel.SelectedStorage == Item;
+        public override bool IsSelected => StorageManagementViewModel.SelectedStorage == Item;
     }
 }

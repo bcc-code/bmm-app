@@ -119,17 +119,17 @@ namespace BMM.Core.ViewModels
 
             PlayPauseCommand = new MvxCommand(MediaPlayer.PlayPause);
 
-            _updateStateToken = _messenger.Subscribe<PlaybackStatusChangedMessage>(
+            _updateStateToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(
                 msg =>
                 {
                     UpdatePlaybackState(msg.PlaybackState);
                 });
-            _updatePositionToken = _messenger.Subscribe<PlaybackPositionChangedMessage>(message =>
+            _updatePositionToken = Messenger.Subscribe<PlaybackPositionChangedMessage>(message =>
             {
                 CurrentPosition = message.CurrentPosition;
                 Downloaded = message.BufferedPosition;
             });
-            _updateMetadataToken = _messenger.Subscribe<CurrentTrackChangedMessage>(async message =>
+            _updateMetadataToken = Messenger.Subscribe<CurrentTrackChangedMessage>(async message =>
             {
                 CurrentTrack = message.CurrentTrack;
                 Duration = message.CurrentTrack?.Duration ?? 0;

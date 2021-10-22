@@ -132,6 +132,7 @@
     <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
     <Compile Include="Application\Fragments\Base\BaseCoversTileCollectionFragment.cs" />
+    <Compile Include="Application\Fragments\Base\SwipeToRefreshFragment.cs" />
     <Compile Include="Application\Fragments\BrowseDetailsListFragment.cs" />
     <Compile Include="Application\Fragments\BrowseDetailsTilesFragment.cs" />
     <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />

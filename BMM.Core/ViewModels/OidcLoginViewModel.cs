@@ -86,7 +86,7 @@ namespace BMM.Core.ViewModels
                 // The corresponding activity has a launch mode of SingleTask
                 // and therefore never gets destroyed. Close it manually
                 if (_deviceInfo.IsAndroid)
-                    await _navigationService.Close(this);
+                    await NavigationService.Close(this);
                 await _appNavigator.NavigateAfterLoggedIn();
             }
             catch (UserCanceledOidcLoginException)
@@ -95,7 +95,7 @@ namespace BMM.Core.ViewModels
             }
             catch (UserDoesNotExistInApiException)
             {
-                await _navigationService.Navigate<UserSetupViewModel, UserSetupViewModelParameters>(new UserSetupViewModelParameters { UserToCreate = user});
+                await NavigationService.Navigate<UserSetupViewModel, UserSetupViewModelParameters>(new UserSetupViewModelParameters { UserToCreate = user});
             }
             catch (Exception exception)
             {

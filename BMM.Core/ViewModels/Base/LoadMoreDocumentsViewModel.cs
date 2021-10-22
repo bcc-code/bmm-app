@@ -1,6 +1,7 @@
 ﻿using BMM.Api;
 using BMM.Api.Implementation.Models;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Core.Extensions;
@@ -10,13 +11,19 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Translation;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
-using MvvmCross.Localization;
 
 namespace BMM.Core.ViewModels.Base
 {
     public abstract class LoadMoreDocumentsViewModel : DocumentsViewModel, ILoadMoreDocumentsViewModel
     {
         private ILoadMoreDocumentsAction _loadMoreDocumentsAction;
+        private IMvxAsyncCommand _loadMoreCommand;
+
+        protected LoadMoreDocumentsViewModel(IDocumentFilter documentFilter = null)
+            : base(documentFilter)
+        {
+            IsFullyLoaded = false;
+        }
 
         [MvxInject]
         public ILoadMoreDocumentsAction LoadMoreDocumentsAction
@@ -29,9 +36,7 @@ namespace BMM.Core.ViewModels.Base
             }
         }
 
-        private IMvxAsyncCommand _loadMoreCommand;
-
-        public IMvxAsyncCommand LoadMoreCommand => _loadMoreCommand ?? (_loadMoreCommand = new ExceptionHandlingCommand(LoadMore));
+        public IMvxAsyncCommand LoadMoreCommand => _loadMoreCommand ??= new ExceptionHandlingCommand(LoadMore);
 
         /// <summary>
         /// An indicator if all views on that screen are fully loaded. This can easily be used within a list-view in that view, to indicate, that there is something loading.
@@ -59,13 +64,23 @@ namespace BMM.Core.ViewModels.Base
             }
         }
 
-        protected LoadMoreDocumentsViewModel(IDocumentFilter documentFilter = null)
-            : base(documentFilter)
+        public override void ViewAppeared()
         {
-            IsFullyLoaded = false;
+            base.ViewAppeared();
+            PropertyChanged += OnPropertyChanged;
+        }
 
+        public override void ViewDisappearing()
+        {
+            base.ViewDisappearing();
+            PropertyChanged -= OnPropertyChanged;
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
             // Bind IsFullyLoaded also to the FilterEnabled boolean.
-            PropertyChanged += (sender, e) => { if (e.PropertyName == "FilterEnabled") RaisePropertyChanged(() => IsFullyLoaded); };
+            if (e.PropertyName == "FilterEnabled")
+                RaisePropertyChanged(() => IsFullyLoaded);
         }
 
         public sealed override Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)

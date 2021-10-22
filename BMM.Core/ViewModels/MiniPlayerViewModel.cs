@@ -15,9 +15,9 @@ namespace BMM.Core.ViewModels
             {
                 // since Android does not use proper ViewModel navigation to show the PlayerViewModel we have to use this bit hacky solution.
                 if (DeviceInfo.Platform == DevicePlatform.Android)
-                    _messenger.Publish(new TogglePlayerMessage(this, true));
+                    Messenger.Publish(new TogglePlayerMessage(this, true));
                 else
-                    await _navigationService.Navigate<PlayerViewModel>();
+                    await NavigationService.Navigate<PlayerViewModel>();
             });
             UpdatePlaybackState(MediaPlayer.PlaybackState);
         }

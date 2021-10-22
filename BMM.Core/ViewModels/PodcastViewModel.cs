@@ -150,7 +150,7 @@ namespace BMM.Core.ViewModels
                 }
             };
 
-            DownloadedEpisodeRemovedToken = _messenger.Subscribe<DownloadedEpisodeRemovedMessage>(async message =>
+            DownloadedEpisodeRemovedToken = Messenger.Subscribe<DownloadedEpisodeRemovedMessage>(async message =>
             {
                 await RaisePropertyChanged(() => Documents);
             });

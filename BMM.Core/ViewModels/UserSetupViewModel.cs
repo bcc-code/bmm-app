@@ -52,7 +52,7 @@ namespace BMM.Core.ViewModels
                 }
 
                 await _currentUserLoader.CreateUserInApiAndTryToLoadIt(_userToCreate);
-                _messenger.Publish(new LoggedInOnlineMessage(this));
+                Messenger.Publish(new LoggedInOnlineMessage(this));
                 await _appNavigator.NavigateAfterLoggedIn();
             }
             catch (Exception)

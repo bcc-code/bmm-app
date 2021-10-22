@@ -47,6 +47,7 @@ namespace BMM.UI.Droid.Application.Fragments
         protected override int FragmentId => Resource.Layout.fragment_player;
 
         private IMvxInteraction<TogglePlayerInteraction> _interaction;
+        private PreventBottomSheetChangesWhileSwipeHappens _preventBottomSheetChangesWhileSwipeHappens;
 
         public IMvxInteraction<TogglePlayerInteraction> Interaction
         {
@@ -91,7 +92,6 @@ namespace BMM.UI.Droid.Application.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             _swipeDetector = new HorizontalSwipeDetector();
-            _swipeDetector.OnSwipeDetected += HandleSwipe;
             _analytics = Mvx.IoCProvider.Resolve<IAnalytics>();
 
             var view = base.OnCreateView(inflater, container, savedInstanceState);
@@ -100,10 +100,10 @@ namespace BMM.UI.Droid.Application.Fragments
 
             var bottomSheet = BottomSheetBehavior.From(PlayerFragmentContainer);
             _bottomSheetManager = new BottomSheetManager(bottomSheet);
-            _bottomSheetManager.OnBottomSheetStateChanged += HandleBottomSheetStateChanged;
             bottomSheet.SetBottomSheetCallback(_bottomSheetManager);
 
-            new PreventBottomSheetChangesWhileSwipeHappens(_bottomSheetManager, _swipeDetector).Register();
+            _preventBottomSheetChangesWhileSwipeHappens =
+                new PreventBottomSheetChangesWhileSwipeHappens(_bottomSheetManager, _swipeDetector);
 
             UpdateStatusBarColor();
             Title = StringConstants.Space;
@@ -132,8 +132,6 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
-            ViewModel.PropertyChanged += OnViewModelPropertyChanged;
-
             _seekBar = ParentActivity.FindViewById<SeekBar>(Resource.Id.player_seekbar);
             _seekBar.SetOnSeekBarChangeListener(this);
             _imageView = ParentActivity.FindViewById<ImageView>(Resource.Id.coverImagePlaceholder);
@@ -145,9 +143,26 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public override void OnDestroy()
         {
-            ViewModel.PropertyChanged -= OnViewModelPropertyChanged;
             base.OnDestroy();
             _analytics.LogEvent("PlayerFragment - OnDestroy()");
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            ViewModel.PropertyChanged += OnViewModelPropertyChanged;
+            _bottomSheetManager.OnBottomSheetStateChanged += HandleBottomSheetStateChanged;
+            _swipeDetector.OnSwipeDetected += HandleSwipe;
+            _preventBottomSheetChangesWhileSwipeHappens.Register();
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            ViewModel.PropertyChanged -= OnViewModelPropertyChanged;
+            _bottomSheetManager.OnBottomSheetStateChanged -= HandleBottomSheetStateChanged;
+            _swipeDetector.OnSwipeDetected -= HandleSwipe;
+            _preventBottomSheetChangesWhileSwipeHappens.Unregister();
         }
 
         public void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs args)

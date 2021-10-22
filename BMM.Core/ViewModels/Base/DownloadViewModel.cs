@@ -113,7 +113,7 @@ namespace BMM.Core.ViewModels.Base
 
             ToggleOfflineCommand = new ExceptionHandlingCommand(async () => await ToggleOffline());
 
-            _messenger.Subscribe<DownloadCanceledMessage>(async message =>
+            Messenger.Subscribe<DownloadCanceledMessage>(async message =>
                 {
                     if (IsDownloading && IsOfflineAvailable)
                     {

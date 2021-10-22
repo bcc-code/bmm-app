@@ -62,7 +62,7 @@ namespace BMM.Core.ViewModels.MyContent
         {
             _trackCollectionManager = trackCollectionManager;
 
-            _messenger.Subscribe<DownloadCanceledMessage>(async message =>
+            Messenger.Subscribe<DownloadCanceledMessage>(async message =>
                 {
                     if (IsDownloading && IsOfflineAvailable)
                     {

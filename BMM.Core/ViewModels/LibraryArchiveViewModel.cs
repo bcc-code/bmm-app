@@ -64,7 +64,7 @@ namespace BMM.Core.ViewModels
         protected Task DocumentYearAction(ListItem item)
         {
             int year = int.Parse(item.Title);
-            return _navigationService.Navigate<AlbumsViewModel, int>(year);
+            return NavigationService.Navigate<AlbumsViewModel, int>(year);
         }
 
         public virtual Task ReplaceDocuments(IEnumerable<DocumentYear> documents)
