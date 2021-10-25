@@ -83,16 +83,16 @@ namespace BMM.UI.Droid.Application.Fragments
         public override void OnPause()
         {
             base.OnPause();
+            DetachEvents();
 
             if (Activity is MainActivity)
-            {
                 ParentActivity.HideKeyboard();
-            }
         }
 
         public override void OnResume()
         {
             base.OnResume();
+            AttachEvents();
             (Activity as MainActivity)?.SetBottomBarVisibility(IsTabBarVisible.ToViewState());
         }
 
@@ -114,18 +114,6 @@ namespace BMM.UI.Droid.Application.Fragments
             Bind();
 
             return view;
-        }
-
-        public override void OnStart()
-        {
-            base.OnStart();
-            AttachEvents();
-        }
-
-        public override void OnStop()
-        {
-            base.OnStop();
-            DetachEvents();
         }
 
         protected virtual void AttachEvents()

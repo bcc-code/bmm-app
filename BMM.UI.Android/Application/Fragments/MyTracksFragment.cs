@@ -6,8 +6,6 @@ using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.MyContent;
 using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Fragments.Base;
-using Google.Android.Material.AppBar;
-using MvvmCross.DroidX;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;

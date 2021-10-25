@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
@@ -73,35 +74,47 @@ namespace BMM.Core.ViewModels.MyContent
                     }
                 },
                 MvxReference.Strong);
+        }
 
-            PropertyChanged += (sender, e) =>
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            PropertyChanged += OnPropertyChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            PropertyChanged -= OnPropertyChanged;
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
             {
-                switch (e.PropertyName)
-                {
-                    case nameof(IsOfflineAvailable):
-                        RaisePropertyChanged(() => IsDownloading);
-                        break;
-                    case nameof(IsInitialized):
-                        RaisePropertyChanged(() => IsEmpty);
-                        break;
-                    case nameof(IsLoading):
-                        RaisePropertyChanged(() => IsEmpty);
-                        break;
-                    case nameof(MyCollection):
-                        RaisePropertyChanged(() => IsEmpty);
-                        RaisePropertyChanged(() => DownloadingText);
-                        break;
-                    case nameof(DownloadingFiles):
-                        RaisePropertyChanged(() => IsDownloading);
-                        RaisePropertyChanged(() => DownloadStatus);
-                        RaisePropertyChanged(() => DownloadingText);
+                case nameof(IsOfflineAvailable):
+                    RaisePropertyChanged(() => IsDownloading);
+                    break;
+                case nameof(IsInitialized):
+                    RaisePropertyChanged(() => IsEmpty);
+                    break;
+                case nameof(IsLoading):
+                    RaisePropertyChanged(() => IsEmpty);
+                    break;
+                case nameof(MyCollection):
+                    RaisePropertyChanged(() => IsEmpty);
+                    RaisePropertyChanged(() => DownloadingText);
+                    break;
+                case nameof(DownloadingFiles):
+                    RaisePropertyChanged(() => IsDownloading);
+                    RaisePropertyChanged(() => DownloadStatus);
+                    RaisePropertyChanged(() => DownloadingText);
 
-                        break;
-                    case nameof(TextSource):
-                        RaisePropertyChanged(() => DownloadingText);
-                        break;
-                }
-            };
+                    break;
+                case nameof(TextSource):
+                    RaisePropertyChanged(() => DownloadingText);
+                    break;
+            }
         }
 
         public virtual void Prepare(ITrackCollectionParameter trackCollection)

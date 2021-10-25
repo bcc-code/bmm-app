@@ -34,16 +34,16 @@ namespace BMM.Core.ViewModels.MyContent
             _connection = connection;
         }
 
-        public override void ViewAppeared()
+        protected override void AttachEvents()
         {
-            base.ViewAppeared();
+            base.AttachEvents();
             Documents.CollectionChanged += DocumentsOnCollectionChanged;
             PropertyChanged += OnPropertyChanged;
         }
 
-        public override void ViewDisappearing()
+        protected override void DetachEvents()
         {
-            base.ViewDisappearing();
+            base.DetachEvents();
             Documents.CollectionChanged -= DocumentsOnCollectionChanged;
             PropertyChanged -= OnPropertyChanged;
         }

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
@@ -26,20 +28,35 @@ namespace BMM.Core.ViewModels.MyContent
             {
                 await TryRefresh();
             });
+        }
 
-            PropertyChanged += (sender, e) =>
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            PropertyChanged += OnPropertyChanged;
+            Documents.CollectionChanged += DocumentsOnCollectionChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            PropertyChanged -= OnPropertyChanged;
+            Documents.CollectionChanged -= DocumentsOnCollectionChanged;
+        }
+
+        private void DocumentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);
+        }
+
+        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
             {
-                switch (e.PropertyName)
-                {
-                    case "IsLoading":
-                        RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);
-                        break;
-                }
-            };
-            Documents.CollectionChanged += (sender, e) =>
-            {
-                RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);
-            };
+                case nameof(IsLoading):
+                    RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);
+                    break;
+            }
         }
 
         public bool ShowEmptyFollowedPodcasts => (Documents.Count == 0) && !IsLoading;
