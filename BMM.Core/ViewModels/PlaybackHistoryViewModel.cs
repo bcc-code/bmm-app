@@ -41,15 +41,15 @@ namespace BMM.Core.ViewModels
             _analytics.LogEvent(string.Format(Event.ViewModelOpenedFormat, GetType().Name), new Dictionary<string, object>());
         }
 
-        public override void ViewAppearing()
+        protected override void AttachEvents()
         {
-            base.ViewAppearing();
+            base.AttachEvents();
             Documents.CollectionChanged += DocumentsOnCollectionChanged;
         }
 
-        public override void ViewDisappeared()
+        protected override void DetachEvents()
         {
-            base.ViewDisappeared();
+            base.DetachEvents();
             Documents.CollectionChanged -= DocumentsOnCollectionChanged;
         }
 

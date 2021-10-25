@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -56,12 +57,25 @@ namespace BMM.Core.ViewModels
         {
             await base.Initialize();
             await Load();
-            Languages.CollectionChanged += delegate
-            {
-                _exceptionHandler.HandleException(_cache.Clear());
-                _exceptionHandler.HandleException(_contentLanguageManager.SetContentLanguages(Languages.Select(l => l.TwoLetterISOLanguageName)));
-                _exceptionHandler.HandleException(_mediaDownloader.InitializeCacheAndSynchronizeTracks());
-            };
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            Languages.CollectionChanged += LanguagesOnCollectionChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            Languages.CollectionChanged -= LanguagesOnCollectionChanged;
+        }
+
+        private void LanguagesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            _exceptionHandler.HandleException(_cache.Clear());
+            _exceptionHandler.HandleException(_contentLanguageManager.SetContentLanguages(Languages.Select(l => l.TwoLetterISOLanguageName)));
+            _exceptionHandler.HandleException(_mediaDownloader.InitializeCacheAndSynchronizeTracks());
         }
 
         private async Task Load()

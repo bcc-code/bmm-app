@@ -98,12 +98,22 @@ namespace BMM.Core.ViewModels.Base
         public override void ViewAppeared()
         {
             base.ViewAppeared();
-            NotificationCenter.AppLanguageChanged += NotificationCenterOnAppLanguageChanged;
+            AttachEvents();
         }
 
         public override void ViewDisappearing()
         {
             base.ViewDisappearing();
+            DetachEvents();
+        }
+
+        protected virtual void AttachEvents()
+        {
+            NotificationCenter.AppLanguageChanged += NotificationCenterOnAppLanguageChanged;
+        }
+
+        protected virtual void DetachEvents()
+        {
             NotificationCenter.AppLanguageChanged -= NotificationCenterOnAppLanguageChanged;
         }
 

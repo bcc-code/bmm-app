@@ -41,10 +41,21 @@ namespace BMM.Core.ViewModels
             _logger = logger;
             SaveAndCloseCommand = new MvxAsyncCommand(SaveAndClose);
             DiscardAndCloseCommand = new ExceptionHandlingCommand(CloseWithDiscardIfNeeded);
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
             PropertyChanged += OnPropertyChanged;
             Documents.CollectionChanged += DocumentsOnCollectionChanged;
         }
 
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            PropertyChanged -= OnPropertyChanged;
+            Documents.CollectionChanged -= DocumentsOnCollectionChanged;
+        }
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {

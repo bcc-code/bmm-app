@@ -51,15 +51,15 @@ namespace BMM.UI.iOS
             AlbumTable.ResizeHeaderView();
         }
 
-        public override void ViewDidAppear(bool animated)
+        protected override void AttachEvents()
         {
-            base.ViewDidAppear(animated);
+            base.AttachEvents();
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
-        public override void ViewWillDisappear(bool animated)
+        protected override void DetachEvents()
         {
-            base.ViewWillDisappear(animated);
+            base.DetachEvents();
             ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }
 

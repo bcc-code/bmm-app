@@ -64,15 +64,15 @@ namespace BMM.Core.ViewModels.Base
             }
         }
 
-        public override void ViewAppeared()
+        protected override void AttachEvents()
         {
-            base.ViewAppeared();
+            base.AttachEvents();
             PropertyChanged += OnPropertyChanged;
         }
 
-        public override void ViewDisappearing()
+        protected override void DetachEvents()
         {
-            base.ViewDisappearing();
+            base.DetachEvents();
             PropertyChanged -= OnPropertyChanged;
         }
 

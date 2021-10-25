@@ -80,6 +80,26 @@ namespace BMM.UI.iOS
             UpdateOrientation();
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+            AttachEvents();
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+            DetachEvents();
+        }
+
+        protected virtual void AttachEvents()
+        {
+        }
+
+        protected virtual void DetachEvents()
+        {
+        }
+
         public override void ViewSafeAreaInsetsDidChange()
         {
             base.ViewSafeAreaInsetsDidChange();

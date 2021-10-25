@@ -69,8 +69,18 @@ namespace BMM.Core.ViewModels
                         Meta = string.IsNullOrWhiteSpace(track.Artist) || track.Artist == track.Title ? ReadableDuration(track.Duration) : track.Artist
                     };
                 });
+        }
 
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
             Documents.CollectionChanged += UpdateView;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            Documents.CollectionChanged -= UpdateView;
         }
 
         public string ReadableDuration(long durationInMilliseconds)

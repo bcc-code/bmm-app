@@ -37,15 +37,15 @@ namespace BMM.Core.ViewModels
             _selectedStorage = _storageManager.SelectedStorage;
         }
 
-        public override void ViewAppeared()
+        protected override void AttachEvents()
         {
-            base.ViewAppeared();
+            base.AttachEvents();
             _storageManager.Storages.CollectionChanged += OnStoragesCollectionChanged;
         }
 
-        public override void ViewDisappearing()
+        protected override void DetachEvents()
         {
-            base.ViewDisappearing();
+            base.DetachEvents();
             _storageManager.Storages.CollectionChanged -= OnStoragesCollectionChanged;
         }
 
