@@ -83,7 +83,18 @@ namespace BMM.UI.iOS
             set.Bind(saveButton).For(v => v.Enabled).To(vm => vm.HasChanges).WithConversion<VisibilityConverter>();
             set.Apply();
             tableView.ResizeHeaderView();
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }
 
         private void HandleDismissAttempt(UIPresentationController presentationcontroller)
