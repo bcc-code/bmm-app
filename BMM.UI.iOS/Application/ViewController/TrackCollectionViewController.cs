@@ -90,11 +90,22 @@ namespace BMM.UI.iOS
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
 
             CollectionTable.ReloadData();
-            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
 
             set.Apply();
 
             SetThemes();
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }
 
         private void SetThemes()

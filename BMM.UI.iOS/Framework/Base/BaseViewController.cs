@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.NewMediaPlayer;
@@ -21,14 +22,6 @@ namespace BMM.UI.iOS
             base.ViewDidLoad();
 
             Title = ViewModel.TextSource[TitleKey];
-
-            ViewModel.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == nameof(ViewModel.TextSource))
-                {
-                    Title = ViewModel.TextSource[TitleKey];
-                }
-            };
 
             SetupLargeTitle();
         }
@@ -94,10 +87,18 @@ namespace BMM.UI.iOS
 
         protected virtual void AttachEvents()
         {
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
         protected virtual void DetachEvents()
         {
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
+        }
+
+        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(ViewModel.TextSource))
+                Title = ViewModel.TextSource[TitleKey];
         }
 
         public override void ViewSafeAreaInsetsDidChange()

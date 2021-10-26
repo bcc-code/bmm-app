@@ -44,7 +44,18 @@ namespace BMM.UI.iOS
             set.Apply();
 
             TracksTable.ResizeHeaderView();
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
             ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)

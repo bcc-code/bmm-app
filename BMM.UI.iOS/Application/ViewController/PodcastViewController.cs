@@ -70,9 +70,19 @@ namespace BMM.UI.iOS
 
             PodcastTable.ResizeHeaderView();
 
-            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
-
             FollowButton.Layer.BorderColor = new CGColor(0, 1);
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)

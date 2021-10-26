@@ -36,15 +36,6 @@ namespace BMM.UI.iOS
             set.Bind(OfflineAvailableSwitch).To(vm => vm.IsOfflineAvailable).OneWay();
             set.Bind(OfflineAvailableButton).To(vm => vm.ToggleOfflineCommand);
 
-            OfflineAvailableSwitch.ValueChanged += (object sender, EventArgs e) =>
-            {
-                // Only update if the value is really changed :) Not just if you slide it on and off in one swipe.
-                if (ViewModel.IsOfflineAvailable != OfflineAvailableSwitch.On)
-                {
-                    ViewModel.ToggleOfflineCommand.Execute();
-                }
-            };
-
             set.Bind(OfflineAvailableProgress).To(vm => vm.DownloadStatus);
             set.Bind(DownloadingStatusLabel).To(vm => vm.DownloadingText);
 
@@ -72,6 +63,25 @@ namespace BMM.UI.iOS
             CollectionTable.ReloadData();
 
             set.Apply();
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            OfflineAvailableSwitch.ValueChanged += OfflineAvailableSwitchOnValueChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            OfflineAvailableSwitch.ValueChanged -= OfflineAvailableSwitchOnValueChanged;
+        }
+
+        private void OfflineAvailableSwitchOnValueChanged(object sender, EventArgs e)
+        {
+            // Only update if the value is really changed :) Not just if you slide it on and off in one swipe.
+            if (ViewModel.IsOfflineAvailable != OfflineAvailableSwitch.On)
+                ViewModel.ToggleOfflineCommand.Execute();
         }
 
         private void HideOfflineBannerIfNecessary()
