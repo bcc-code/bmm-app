@@ -8,12 +8,10 @@ namespace BMM.UI.Droid.Application.Implementations.Notifications
     public class RemoteMessageNotification : IPlatformNotification
     {
         private readonly RemoteMessage _message;
-        private readonly RemoteMessage.Notification _notification;
 
         public RemoteMessageNotification(RemoteMessage message)
         {
             _message = message;
-            _notification = _message.GetNotification();
         }
 
         public string Title => GetString("title");
