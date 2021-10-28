@@ -122,6 +122,7 @@
     <Compile Include="Application\Bindings\MvxCardBackgroundColor.cs" />
     <Compile Include="Application\Bindings\MvxCardCircle.cs" />
     <Compile Include="Application\Bindings\MvxCardVisibility.cs" />
+    <Compile Include="Application\Constants\NotificationKeys.cs" />
     <Compile Include="Application\DownloadManager\AndroidDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedHandler.cs" />

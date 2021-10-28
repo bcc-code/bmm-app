@@ -72,6 +72,7 @@ namespace BMM.Core.Implementations.Notifications
             var receiver = Mvx.IoCProvider.Resolve<IReceiveLocal<T>>();
             receiver.UserClickedLocalNotification(notification);
         }
+
         private void HandleRemoteNotification<T>(T notification, NotificationType type) where T : RemoteNotification
         {
             var receiver = Mvx.IoCProvider.Resolve<IReceive<T>>();

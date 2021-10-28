@@ -87,9 +87,19 @@ namespace BMM.UI.iOS
         public override void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
             var handler = Mvx.IoCProvider.Resolve<INotificationHandler>();
-            handler.OnNotificationReceived(new IosNotification(userInfo));
+
+            var iosNotification = new IosNotification(userInfo);
+
+            if (NotificationClickedWhenAppWasClosedOrInBackground(application))
+                handler.UserClickedNotification(iosNotification);
+            else
+                handler.OnNotificationReceived(iosNotification);
+
             completionHandler(UIBackgroundFetchResult.NewData);
         }
+
+        private bool NotificationClickedWhenAppWasClosedOrInBackground(UIApplication application)
+            => application.ApplicationState == UIApplicationState.Inactive;
 
         // Just used by the UI tests
         [Export("ClearAllLocalData")]
