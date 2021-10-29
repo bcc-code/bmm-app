@@ -1,4 +1,6 @@
-﻿using Acr.UserDialogs;
+﻿using System.Net.Http;
+using Acr.UserDialogs;
+using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Core;
@@ -11,6 +13,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -19,8 +22,10 @@ using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
+using BMM.UI.iOS.Networking;
 using BMM.UI.iOS.NewMediaPlayer;
 using BMM.UI.iOS.UI;
+using FFImageLoading;
 using IdentityModel.OidcClient.Browser;
 using MvvmCross;
 using MvvmCross.Base;
@@ -78,6 +83,21 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
 
             RegisterMediaPlayer();
+        }
+
+        public override void InitializeSecondary()
+        {
+            base.InitializeSecondary();
+            InitializeImageService();
+        }
+
+        private static void InitializeImageService()
+        {
+            ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
+            {
+                InvalidateLayout = false,
+                HttpClient = new HttpClient(new AuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
+            });
         }
 
         private void RegisterMediaPlayer()

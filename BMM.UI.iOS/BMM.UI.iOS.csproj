@@ -794,6 +794,7 @@
     <Compile Include="Application\Implementations\Oidc\SafariViewControllerBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\WebAuthenticationSessionBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\WKWebViewBrowser.cs" />
+    <Compile Include="Application\Networking\AuthenticatedNativeHttpImageClientHandler.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemFactory.cs" />
     <Compile Include="Application\NewMediaPlayer\IMediaRemoteControl.cs" />
     <Compile Include="Application\Implementations\ClipboardService.cs" />

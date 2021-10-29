@@ -165,6 +165,7 @@
     <Compile Include="Application\ItemDecorators\Enums\ItemDecorationOrientation.cs" />
     <Compile Include="Application\ItemDecorators\SpacingItemDecorator.cs" />
     <Compile Include="Application\Listeners\ImageServiceRecyclerViewScrollListener.cs" />
+    <Compile Include="Application\Networking\AuthenticatedNativeHttpImageClientHandler.cs" />
     <Compile Include="Application\NewMediaPlayer\AudioFocus\AudioFocusExoPlayerDecorator.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\MediaControllerCallback.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\PlaybackStateCompatMapper.cs" />
