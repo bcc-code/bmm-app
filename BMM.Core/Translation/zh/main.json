@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "You must select at least one content language",
     "DeleteLanguageTitle": "Cannot remove {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Library"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "存档"
@@ -170,7 +170,7 @@
     "Search": "Search",
     "Explore": "探索",
     "MyContent": "My Content",
-    "Library": "Library",
+    "Browse": "Browse",
     "Settings": "Settings",
     "HelpAndFeedback": "Help and Feedback",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "All files have been downloaded!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "有声读物",
+    "MusicTitle": "音乐",
+    "PodcastsTitle": "Podcasts"
   }
 }

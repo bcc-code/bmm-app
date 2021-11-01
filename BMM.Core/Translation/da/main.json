@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Vælg mindst ét indholdssprog",
     "DeleteLanguageTitle": "Kunne ikke fjerne {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Bibliotek"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arkiv"
@@ -170,7 +170,7 @@
     "Search": "Søg",
     "Explore": "Udforsk",
     "MyContent": "Mit indhold",
-    "Library": "Bibliotek",
+    "Browse": "Browse",
     "Settings": "Indstillinger",
     "HelpAndFeedback": "Hjælp og tilbagemelding",
     "Home": "Hjem",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Alle filer er downloadet"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Lydbøger",
+    "MusicTitle": "Musik",
+    "PodcastsTitle": "Podcasts"
   }
 }

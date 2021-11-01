@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Vali vähemalt üks sisu keel",
     "DeleteLanguageTitle": "Ei saa eemaldada {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Raamatukogu"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhiiv"
@@ -170,7 +170,7 @@
     "Search": "Otsi",
     "Explore": "Avasta",
     "MyContent": "Minu sisu",
-    "Library": "Raamatukogu",
+    "Browse": "Browse",
     "Settings": "Seaded",
     "HelpAndFeedback": "Abi ja tagasiside",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Kõik failid on alla laetud!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Audioraamatud",
+    "MusicTitle": "Muusika",
+    "PodcastsTitle": "Saated"
   }
 }

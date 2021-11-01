@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Sisällön kieleksi tulee valita vähintään yksi kieli",
     "DeleteLanguageTitle": "Ei voi poistaa {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Kirjasto"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arkisto"
@@ -170,7 +170,7 @@
     "Search": "Etsi",
     "Explore": "Selaa",
     "MyContent": "Oma sisältöni",
-    "Library": "Kirjasto",
+    "Browse": "Browse",
     "Settings": "Asetukset",
     "HelpAndFeedback": "Ohje ja palaute",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Kaikki tiedostot on ladattu!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Äänikirjat",
+    "MusicTitle": "Musiikki",
+    "PodcastsTitle": "Podcastit"
   }
 }

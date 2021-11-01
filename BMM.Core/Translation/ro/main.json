@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Trebuie să ai cel puţin o limbă a conţinutului disponibilă",
     "DeleteLanguageTitle": "Nu se poate șterge {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Bibliotecă"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhivă"
@@ -170,7 +170,7 @@
     "Search": "Caută",
     "Explore": "Explorare",
     "MyContent": "Conţinutul meu",
-    "Library": "Bibliotecă",
+    "Browse": "Browse",
     "Settings": "Setări",
     "HelpAndFeedback": "Ajutor şi Feedback",
     "Home": "Acasă",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Toate fişierele au fost descărcate!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Cărți audio",
+    "MusicTitle": "Muzică",
+    "PodcastsTitle": "Podcast-uri"
   }
 }

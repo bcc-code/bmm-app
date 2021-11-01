@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "En az bir dil seçmek zorundasın",
     "DeleteLanguageTitle": "Değiştirilemez {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Kütüphane"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arşiv"
@@ -170,7 +170,7 @@
     "Search": "Ara",
     "Explore": "Bul",
     "MyContent": "Bilgilerim",
-    "Library": "Kütüphane",
+    "Browse": "Browse",
     "Settings": "Ayarlar",
     "HelpAndFeedback": "Yardım ve Destek",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Tüm Dosyalar İndirildi!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Sesli Kitaplar",
+    "MusicTitle": "Müzik",
+    "PodcastsTitle": "Podcast"
   }
 }

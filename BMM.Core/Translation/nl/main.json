@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Je moet ten minste één inhoudstaal kiezen",
     "DeleteLanguageTitle": "Kan {0} niet verwijderen"
   },
-  "LibraryViewModel": {
-    "Title": "Bibliotheek"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archief"
@@ -170,7 +170,7 @@
     "Search": "Zoeken",
     "Explore": "Ontdekken",
     "MyContent": "Mijn bestanden",
-    "Library": "Bibliotheek",
+    "Browse": "Browse",
     "Settings": "Instellingen",
     "HelpAndFeedback": "Help en Feedback",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "Alle bestanden zijn gedownload!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Audioboeken",
+    "MusicTitle": "Muziek",
+    "PodcastsTitle": "Podcasts"
   }
 }

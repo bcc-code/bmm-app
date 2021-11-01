@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "You must select at least one content language",
     "DeleteLanguageTitle": "Cannot remove {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Library"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhiva"
@@ -170,7 +170,7 @@
     "Search": "Search",
     "Explore": "Istražite",
     "MyContent": "My Content",
-    "Library": "Library",
+    "Browse": "Browse",
     "Settings": "Postavke",
     "HelpAndFeedback": "Help and Feedback",
     "Home": "Home",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "All files have been downloaded!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Audioknjige",
+    "MusicTitle": "Glazba",
+    "PodcastsTitle": "Podcasts"
   }
 }

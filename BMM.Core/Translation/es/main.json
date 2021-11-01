@@ -159,8 +159,8 @@
     "DeleteLanguageMessage": "Debe seleccionar al menos un idioma para el contenido",
     "DeleteLanguageTitle": "No se puede quitar {0}"
   },
-  "LibraryViewModel": {
-    "Title": "Biblioteca"
+  "BrowseViewModel": {
+    "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archivo"
@@ -170,7 +170,7 @@
     "Search": "Buscar",
     "Explore": "Explorar",
     "MyContent": "Mi contenido",
-    "Library": "Biblioteca",
+    "Browse": "Browse",
     "Settings": "Configuración",
     "HelpAndFeedback": "Ayuda y comentarios",
     "Home": "Inicio",
@@ -450,5 +450,11 @@
   },
   "DownloadManager": {
     "DownloadingFinished": "¡Todos los archivos han sido descargados!"
+  },
+  "Browse": {
+    "EventsTitle": "Events",
+    "AudiobooksTitle": "Libros audio",
+    "MusicTitle": "Música",
+    "PodcastsTitle": "Podcasts"
   }
 }
