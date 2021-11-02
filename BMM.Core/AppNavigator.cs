@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
@@ -14,7 +18,10 @@ using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Messages;
 using BMM.Core.Models;
+using BMM.Core.Models.Storage;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
+using Microsoft.AppCenter.Crashes;
 using MvvmCross;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
@@ -42,6 +49,8 @@ namespace BMM.Core
         private readonly IUserStorage _userStorage;
         private readonly IAppContentLogger _appContentLogger;
         private readonly ILanguagesLogger _languagesLogger;
+        private readonly ICache _cache;
+        private readonly IMediaPlayer _mediaPlayer;
         private readonly SupportVersionChecker _supportVersionChecker;
         private Stopwatch _stopwatch;
 
@@ -55,6 +64,8 @@ namespace BMM.Core
             IUserStorage userStorage,
             IAppContentLogger appContentLogger,
             ILanguagesLogger languagesLogger,
+            ICache cache,
+            IMediaPlayer mediaPlayer,
             SupportVersionChecker supportVersionChecker
             )
         {
@@ -67,6 +78,8 @@ namespace BMM.Core
             _userStorage = userStorage;
             _appContentLogger = appContentLogger;
             _languagesLogger = languagesLogger;
+            _cache = cache;
+            _mediaPlayer = mediaPlayer;
             _supportVersionChecker = supportVersionChecker;
         }
 
@@ -119,12 +132,42 @@ namespace BMM.Core
                     Log("Logged in and online");
                 }
 
-                NavigateAfterLoggedIn();
+                NavigateAfterLoggedIn().ContinueWith(_ => RestoreMediaQueue());
             }
             else
             {
                 Log("Not logged in");
                 NavigateToLogin(true);
+            }
+        }
+
+        private async Task RestoreMediaQueue()
+        {
+            try
+            {
+                var rememberedQueue = await _cache.GetObject<IList<Track>>(StorageKeys.RememberedQueue);
+                var currentTrackPosition = await _cache.GetObject<CurrentTrackPositionStorage>(StorageKeys.CurrentTrackPosition);
+
+                bool canRestoreMediaQueue = rememberedQueue != null
+                                            && currentTrackPosition != null;
+
+                if (!canRestoreMediaQueue)
+                    return;
+
+                var currentTrack = rememberedQueue
+                    .FirstOrDefault(t => t.Id == currentTrackPosition.CurrentTrackId);
+
+                if (currentTrack == null)
+                    return;
+
+                await _mediaPlayer.Play(new List<IMediaTrack>(rememberedQueue), currentTrack, currentTrackPosition.LastPosition);
+                _mediaPlayer.Pause();
+            }
+            catch (Exception e)
+            {
+                await _cache.InsertObject<IList<Track>>(StorageKeys.RememberedQueue, null);
+                await _cache.InsertObject<CurrentTrackPositionStorage>(StorageKeys.CurrentTrackPosition, null);
+                Log($"Error during {nameof(RestoreMediaQueue)}. EX: {e.Message}. Remembered queue cleared");
             }
         }
 

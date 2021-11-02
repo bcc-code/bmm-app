@@ -14,6 +14,14 @@ namespace BMM.Core.Implementations.PlayObserver
 
         public ITrackModel CurrentTrack => _playStatistics.CurrentTrack;
 
+        public IList<IMediaTrack> CurrentQueue => _playStatistics.CurrentQueue;
+
+        public bool IsCurrentQueueSaved
+        {
+            get => _playStatistics.IsCurrentQueueSaved;
+            set => _playStatistics.IsCurrentQueueSaved = value;
+        }
+
         public bool IsPlaying => _playStatistics.IsPlaying;
 
         public IList<ListenedPortion> PortionsListened => _playStatistics.PortionsListened;
@@ -36,6 +44,11 @@ namespace BMM.Core.Implementations.PlayObserver
         public virtual void OnCurrentTrackChanged(CurrentTrackChangedMessage message)
         {
             _playStatistics.OnCurrentTrackChanged(message);
+        }
+
+        public virtual void OnCurrentQueueChanged(CurrentQueueChangedMessage message)
+        {
+            _playStatistics.OnCurrentQueueChanged(message);
         }
 
         public virtual void OnSeeked(double currentPosition, double seekedPosition)

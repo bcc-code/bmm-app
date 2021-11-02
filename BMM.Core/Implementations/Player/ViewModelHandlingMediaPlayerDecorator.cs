@@ -29,6 +29,7 @@ namespace BMM.Core.Implementations.Player
         private readonly IPlayerErrorHandler _playerErrorHandler;
 
         private readonly ILiveTime _liveTime;
+        private readonly IMvxMessenger _mvxMessenger;
 
         private bool _isViewmodelShown;
 
@@ -39,7 +40,8 @@ namespace BMM.Core.Implementations.Player
             IMediaQueue queue,
             IMediaPlayerInitializer mediaPlayerInitializer,
             IPlayerErrorHandler playerErrorHandler,
-            ILiveTime liveTime)
+            ILiveTime liveTime,
+            IMvxMessenger mvxMessenger)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -48,6 +50,7 @@ namespace BMM.Core.Implementations.Player
             _mediaPlayerInitializer = mediaPlayerInitializer;
             _playerErrorHandler = playerErrorHandler;
             _liveTime = liveTime;
+            _mvxMessenger = mvxMessenger;
 
             _mediaPlayer.ContinuingPreviousSession = () => { ShowViewmodelIfNecessary(); };
         }
@@ -87,6 +90,7 @@ namespace BMM.Core.Implementations.Player
         {
             if (!ShowErrorIfOutdatedLiveRadio(currentTrack))
             {
+                _mvxMessenger.Publish(new CurrentQueueChangedMessage(mediaFiles, this));
                 await _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs);
                 ShowViewmodelIfNecessary();
             }
