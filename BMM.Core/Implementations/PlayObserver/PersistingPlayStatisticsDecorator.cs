@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Akavache;
+using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
@@ -11,6 +13,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.PlayObserver.Model;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.Models.Storage;
 
 namespace BMM.Core.Implementations.PlayObserver
 {
@@ -36,8 +39,14 @@ namespace BMM.Core.Implementations.PlayObserver
 
         private const string Tag = nameof(PersistingPlayStatisticsDecorator);
 
-        public PersistingPlayStatisticsDecorator(IPlayStatistics playStatistics, ILogger logger, IBlobCache localStorage, IExceptionHandler exceptionHandler,
-            IMeasurementCalculator measurementCalculator, IFirebaseRemoteConfig config, IAnalytics analytics) : base(playStatistics)
+        public PersistingPlayStatisticsDecorator(
+            IPlayStatistics playStatistics,
+            ILogger logger,
+            IBlobCache localStorage,
+            IExceptionHandler exceptionHandler,
+            IMeasurementCalculator measurementCalculator,
+            IFirebaseRemoteConfig config,
+            IAnalytics analytics) : base(playStatistics)
         {
             _logger = logger;
             _localStorage = localStorage;
@@ -69,13 +78,11 @@ namespace BMM.Core.Implementations.PlayObserver
             RunStorageEditingTask(async () =>
             {
                 if (!IsPlaying || CurrentTrack == null)
-                {
                     return;
-                }
 
                 var endTime = DateTime.UtcNow;
                 var elapsedTimeSinceLastPortion = endTime - StartTimeOfNextPortion;
-                var endPosition = StartOfNextPortion + elapsedTimeSinceLastPortion.TotalMilliseconds;
+                double endPosition = StartOfNextPortion + elapsedTimeSinceLastPortion.TotalMilliseconds;
 
                 var portions = PortionsListened.Clone();
                 portions.Add(new ListenedPortion {Start = StartOfNextPortion, StartTime = StartTimeOfNextPortion, End = endPosition, EndTime = endTime});
@@ -90,7 +97,21 @@ namespace BMM.Core.Implementations.PlayObserver
                 _logger.Info(Tag, $"Persist state, Portions: ${portions.Count}, spentTime: {measurements.SpentTime}, seconds listened: {measurements.UniqueSecondsListened}");
 
                 await _localStorage.InsertObject(StorageKeys.UnfinishedTrackPlayedEvent, playedEvent);
+                await PersistCurrentQueue(playedEvent);
             });
+        }
+
+        private async Task PersistCurrentQueue(TrackPlayedEvent playedEvent)
+        {
+            await _localStorage.InsertObject(
+                StorageKeys.CurrentTrackPosition,
+                new CurrentTrackPositionStorage(CurrentTrack.Id, playedEvent.LastPosition));
+
+            if (!IsCurrentQueueSaved)
+            {
+                await _localStorage.InsertObject(StorageKeys.RememberedQueue, CurrentQueue);
+                IsCurrentQueueSaved = true;
+            }
         }
 
         public override void Clear()

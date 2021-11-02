@@ -17,6 +17,7 @@ namespace BMM.Core.Implementations.PlayObserver
         private MvxSubscriptionToken _trackChangedToken;
         private MvxSubscriptionToken _trackCompletedToken;
         private MvxSubscriptionToken _playbackSeekedToken;
+        private readonly MvxSubscriptionToken _queueChangedToken;
 
         public PlayObserverOrchestrator(IMvxMessenger messenger, IPlayStatistics playStatistics, IAnalytics analytics, IFirebaseRemoteConfig config)
         {
@@ -31,6 +32,7 @@ namespace BMM.Core.Implementations.PlayObserver
                 _playStatistics.OnPlaybackStateChanged(message.PlaybackState);
             });
             _trackChangedToken = messenger.Subscribe<CurrentTrackChangedMessage>(OnCurrentTrackChanged);
+            _queueChangedToken = messenger.Subscribe<CurrentQueueChangedMessage>(OnCurrentQueueChanged);
             _trackCompletedToken = messenger.Subscribe<TrackCompletedMessage>(message =>
             {
                 Log("TrackCompleted", new Dictionary<string, object>());
@@ -43,6 +45,11 @@ namespace BMM.Core.Implementations.PlayObserver
             });
 
             _playStatistics.TriggerClear += () => { _playStatistics.Clear(); };
+        }
+
+        private void OnCurrentQueueChanged(CurrentQueueChangedMessage message)
+        {
+            _playStatistics.OnCurrentQueueChanged(message);
         }
 
         private void OnCurrentTrackChanged(CurrentTrackChangedMessage message)

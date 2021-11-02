@@ -46,6 +46,8 @@ namespace BMM.Core.Implementations.PlayObserver
         private const string Tag = "PlayStatistics";
 
         public ITrackModel CurrentTrack { get; private set; }
+        public IList<IMediaTrack> CurrentQueue { get; private set; }
+        public bool IsCurrentQueueSaved { get; set; }
         public bool IsPlaying { get; private set; }
 
         /// <summary>
@@ -93,6 +95,12 @@ namespace BMM.Core.Implementations.PlayObserver
             }
 
             IsPlaying = state.IsPlaying;
+        }
+
+        public void OnCurrentQueueChanged(CurrentQueueChangedMessage message)
+        {
+            CurrentQueue = message.Queue;
+            IsCurrentQueueSaved = false;
         }
 
         public void OnSeeked(double currentPosition, double seekedPosition)

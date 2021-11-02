@@ -12,6 +12,8 @@ namespace BMM.Core.Implementations.PlayObserver
     {
         void OnCurrentTrackChanged(CurrentTrackChangedMessage message);
 
+        void OnCurrentQueueChanged(CurrentQueueChangedMessage message);
+
         void OnSeeked(double currentPosition, double seekedPosition);
 
         void OnTrackCompleted(TrackCompletedMessage message);
@@ -19,6 +21,10 @@ namespace BMM.Core.Implementations.PlayObserver
         void OnPlaybackStateChanged(IPlaybackState state);
 
         ITrackModel CurrentTrack { get; }
+
+        IList<IMediaTrack> CurrentQueue { get; }
+
+        bool IsCurrentQueueSaved { get; set; }
 
         bool IsPlaying { get; }
 
