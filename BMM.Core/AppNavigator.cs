@@ -160,8 +160,10 @@ namespace BMM.Core
                 if (currentTrack == null)
                     return;
 
-                await _mediaPlayer.Play(new List<IMediaTrack>(rememberedQueue), currentTrack, currentTrackPosition.LastPosition);
-                _mediaPlayer.Pause();
+                await _mediaPlayer.PrepareToPlay(new List<IMediaTrack>(rememberedQueue),
+                    currentTrack,
+                    currentTrackPosition.PlaybackOrigin,
+                    currentTrackPosition.LastPosition);
             }
             catch (Exception e)
             {

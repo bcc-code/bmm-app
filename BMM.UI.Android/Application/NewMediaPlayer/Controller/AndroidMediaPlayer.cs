@@ -22,6 +22,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 {
     public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatformSpecificMediaPlayer
     {
+        private const string StartTimeInMsKey = "startTimeInMs";
+
         private readonly IMediaQueue _mediaQueue;
         private readonly MediaControllerCallback _callback;
         private readonly PlaybackStateCompatMapper _mapper;
@@ -138,12 +140,27 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                     if (await _mediaQueue.Replace(mediaTracks, currentTrack))
                     {
                         var bundle = new Bundle();
-                        bundle.PutLong("startTimeInMs", startTimeInMs);
-
+                        bundle.PutLong(StartTimeInMsKey, startTimeInMs);
                         controls.PlayFromMediaId(currentTrack.Id.ToString(), bundle);
                     }
                 }
             }
+        }
+
+        public async Task PrepareToPlay(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        {
+            if (_mediaController == null)
+                return;
+
+            var controls = _mediaController.GetTransportControls();
+            bool replaceSuccessful = await _mediaQueue.Replace(mediaTracks, currentTrack);
+
+            if (!replaceSuccessful)
+                return;
+
+            var bundle = new Bundle();
+            bundle.PutLong(StartTimeInMsKey, startTimeInMs);
+            controls.PrepareFromMediaId(currentTrack.Id.ToString(), bundle);
         }
 
         public void PlayPause()
