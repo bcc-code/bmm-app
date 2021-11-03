@@ -88,10 +88,30 @@ namespace BMM.Core.Implementations.Player
 
         public async Task Play(IList<IMediaTrack> mediaFiles, IMediaTrack currentTrack, long startTimeInMs = 0)
         {
+            await ExecuteWithUpdatingQueue(
+                mediaFiles,
+                currentTrack,
+                () => _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs));
+        }
+
+        public async Task PrepareToPlay(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        {
+            var enrichedTracks = EnrichTracksWithPlaybackOrigin(mediaTracks, playbackOrigin);
+            await ExecuteWithUpdatingQueue(
+                enrichedTracks,
+                currentTrack,
+                () => _mediaPlayer.PrepareToPlay(mediaTracks, currentTrack, playbackOrigin, startTimeInMs));
+        }
+
+        private async Task ExecuteWithUpdatingQueue(
+            IList<IMediaTrack> mediaTracks,
+            IMediaTrack currentTrack,
+            Func<Task> taskToExecute)
+        {
             if (!ShowErrorIfOutdatedLiveRadio(currentTrack))
             {
-                _mvxMessenger.Publish(new CurrentQueueChangedMessage(mediaFiles, this));
-                await _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs);
+                _mvxMessenger.Publish(new CurrentQueueChangedMessage(mediaTracks, this));
+                await taskToExecute.Invoke();
                 ShowViewmodelIfNecessary();
             }
         }

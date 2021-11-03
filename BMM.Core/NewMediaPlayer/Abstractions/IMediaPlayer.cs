@@ -55,6 +55,8 @@ namespace BMM.Core.NewMediaPlayer.Abstractions
 
         Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0);
 
+        Task PrepareToPlay(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0);
+
         void PlayPause();
 
         /// <summary>

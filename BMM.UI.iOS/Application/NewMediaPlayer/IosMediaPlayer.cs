@@ -121,6 +121,12 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
 
+        public async Task PrepareToPlay(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        {
+            await Play(mediaTracks, currentTrack, startTimeInMs);
+            PlayPause();
+        }
+
         public void PlayPause()
         {
             if (_audioPlayback.Status == PlayStatus.Ended)
@@ -269,7 +275,9 @@ namespace BMM.UI.iOS.NewMediaPlayer
             if (shouldPlay) // Even if the user is online we should not play a not-downloaded track from Downloaded Content
             {
                 _audioPlayback.Play(_currentTrack);
-                if (startTimeInMs > 0) _audioPlayback.SeekTo(startTimeInMs);
+
+                if (startTimeInMs > 0)
+                    _audioPlayback.SeekTo(startTimeInMs);
             }
 
             PlaybackStateChanged();
