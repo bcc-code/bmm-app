@@ -41,7 +41,6 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IBMMLanguageBinder> _languageBinder;
         private Mock<IViewModelAwareViewPresenter> _viewPresenter;
         private Mock<IDownloadedTracksOnlyFilter> _downloadedOnlyFilter;
-        private Mock<IListenedTracksStorage> _listenedTrackStorage;
         private IBlobCache _inMemoryCache;
 
         [SetUp]
@@ -59,7 +58,6 @@ namespace BMM.Core.Test.Unit.ViewModels
             _inMemoryCache = new InMemoryBlobCache();
             _viewPresenter = new Mock<IViewModelAwareViewPresenter>();
             _downloadedOnlyFilter = new Mock<IDownloadedTracksOnlyFilter>();
-            _listenedTrackStorage = new Mock<IListenedTracksStorage>();
             var _mainThreadDispatcher = new Mock<IMvxMainThreadDispatcher>();
             var _mainThreadAsyncDispatcher = new Mock<IMvxMainThreadAsyncDispatcher>();
 
@@ -100,9 +98,7 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _userDialogs.Object,
                 _toastDisplayer.Object,
                 _downloadedOnlyFilter.Object,
-                _listenedTrackStorage.Object,
-                _networkSettings.Object,
-                _languageBinder.Object);
+                _networkSettings.Object);
 
             viewModel.TextSource = _languageBinder.Object;
             return viewModel;

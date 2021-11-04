@@ -15,7 +15,6 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Podcasts;
-using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Translation;
@@ -23,7 +22,6 @@ using BMM.Core.ViewModels.MyContent;
 using BMM.Core.ViewModels.Parameters;
 using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
 
@@ -106,9 +104,7 @@ namespace BMM.Core.ViewModels
             IUserDialogs userDialogs,
             IToastDisplayer toastDisplayer,
             IDownloadedTracksOnlyFilter downloadedOnlyFilter,
-            IListenedTracksStorage listenedTracksStorage,
-            INetworkSettings networkSettings,
-            IMvxLanguageBinder languageBinder = null)
+            INetworkSettings networkSettings)
             : base(downloadedOnlyFilter)
         {
             _podcastDownloader = podcastDownloader;
@@ -195,26 +191,24 @@ namespace BMM.Core.ViewModels
                     itemsWithChapters = items;
                     break;
             }
-
+            
             return itemsWithChapters;
         }
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await StartPlayingIfRequested();
+        }
 
         public override CacheKeys? CacheKey => CacheKeys.PodcastGetTracks;
 
         protected override async Task Initialization()
         {
-            // base.Initialization requires the Podcast to be loaded
             Podcast = await Client.Podcast.GetById(Podcast.Id, CachePolicy.UseCacheAndRefreshOutdated);
 
-            var dependentActions = Task.Run(async () =>
-            {
-                await base.Initialization();
-                await StartPlayingIfRequested(); // The list of documents needs to be loaded before we can play the track
-            });
-
             await Task.WhenAll(
-                dependentActions,
+                base.Initialization(),
                 CheckIfIsFollowingThisPodcast(),
                 BackgroundInitialization(UpdateOfflineTracks)
             );
@@ -231,14 +225,14 @@ namespace BMM.Core.ViewModels
 
         private async Task StartPlayingIfRequested()
         {
-            if (StartPlayingTrackId.HasValue)
-            {
-                var track = Documents.FirstOrDefault(t => t.Id == StartPlayingTrackId.Value);
-                if (track != null)
-                {
-                    await DocumentAction(track);
-                }
-            }
+            if (!StartPlayingTrackId.HasValue)
+                return;
+
+            var track = Documents.FirstOrDefault(t => t.Id == StartPlayingTrackId.Value);
+            if (track != null)
+                await DocumentAction(track);
+
+            StartPlayingTrackId = null;
         }
 
         private async Task ToggleFollowing()

@@ -6,7 +6,6 @@ using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Messages;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
-using BMM.UI.iOS.NewMediaPlayer;
 using Firebase.CloudMessaging;
 using Foundation;
 using MvvmCross;
