@@ -37,7 +37,6 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _storageManager.Object,
                 _settingsStorage.Object,
                 new Mock<IUserDialogs>().Object,
-                new Mock<IGlobalMediaDownloader>().Object,
                 new Mock<IAnalytics>().Object);
 
             // Assert

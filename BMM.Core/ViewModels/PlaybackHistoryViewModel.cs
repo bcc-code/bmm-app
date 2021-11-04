@@ -41,18 +41,6 @@ namespace BMM.Core.ViewModels
             _analytics.LogEvent(string.Format(Event.ViewModelOpenedFormat, GetType().Name), new Dictionary<string, object>());
         }
 
-        protected override void AttachEvents()
-        {
-            base.AttachEvents();
-            Documents.CollectionChanged += DocumentsOnCollectionChanged;
-        }
-
-        protected override void DetachEvents()
-        {
-            base.DetachEvents();
-            Documents.CollectionChanged -= DocumentsOnCollectionChanged;
-        }
-
         protected override async Task DocumentAction(Document item, IList<Track> list)
         {
             if (!(item is IMediaTrack mediaTrack))
@@ -61,14 +49,15 @@ namespace BMM.Core.ViewModels
             await _mediaPlayer.Play(mediaTrack.EncloseInArray(), mediaTrack, GetType().Name, mediaTrack.LastPosition);
         }
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await RaisePropertyChanged(nameof(HasAnyEntry));
+        }
+
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             return await _preparePlaybackHistoryAction.ExecuteGuarded();
-        }
-
-        private void DocumentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            RaisePropertyChanged(nameof(HasAnyEntry));
         }
     }
 }
