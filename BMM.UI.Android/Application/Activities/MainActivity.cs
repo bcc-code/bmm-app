@@ -5,7 +5,6 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
-using Android.Widget;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Notifications;
@@ -183,37 +182,38 @@ namespace BMM.UI.Droid.Application.Activities
             }
         }
 
-        protected override void OnPostResume()
-        {
-            base.OnPostResume();
-            CheckUnhandledIntent();
-        }
-
         private void CheckUnhandledIntent()
         {
-            if (SplashScreen.UnhandledIntent != null)
-            {
-                var intent = SplashScreen.UnhandledIntent;
-                SplashScreen.UnhandledIntent = null;
-
-                Mvx.IoCProvider.Resolve<INotificationHandler>().UserClickedNotification(new AndroidIntentNotification(intent));
-            }
+            if (SplashScreen.UnhandledIntent == null)
+                return;
+            
+            var intent = SplashScreen.UnhandledIntent;
+            SplashScreen.UnhandledIntent = null;
+            
+            Mvx.IoCProvider.Resolve<INotificationHandler>().UserClickedNotification(new AndroidIntentNotification(intent));
         }
 
         protected override void OnStart()
         {
             base.OnStart();
 
-            CheckUnhandledIntent();
-
-            if (_unhandledDeepLink != null)
+            _androidPlayer.AfterConnectedAction = () =>
             {
-                var url = new System.Uri(_unhandledDeepLink);
-                _androidPlayer.AfterConnectedAction = () => { Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(url); };
-                _unhandledDeepLink = null;
-            }
+                CheckUnhandledIntent();
+                HandleDeepLink();
+            };
 
             _androidPlayer.Connect(this);
+        }
+
+        private void HandleDeepLink()
+        {
+            if (_unhandledDeepLink == null)
+                return;
+            
+            var url = new System.Uri(_unhandledDeepLink);
+            Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(url);
+            _unhandledDeepLink = null;
         }
 
         protected override void OnDestroy()

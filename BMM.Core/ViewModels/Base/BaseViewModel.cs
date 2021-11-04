@@ -460,7 +460,6 @@ namespace BMM.Core.ViewModels.Base
                     }
 
                     await mediaPlayer.Play(list.OfType<IMediaTrack>().ToList(), track, GetType().Name);
-
                     break;
 
                 case DocumentType.Album:
