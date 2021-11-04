@@ -67,6 +67,8 @@ namespace BMM.Core.ViewModels
         }
 
         private IEnumerable<IDownloadFile> _downloadingFiles;
+        private bool _forceRefreshFromServers;
+
         protected IEnumerable<IDownloadFile> DownloadingFiles
         {
             get => _downloadingFiles;
@@ -154,6 +156,12 @@ namespace BMM.Core.ViewModels
             });
         }
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await StartPlayingIfRequested();
+        }
+
         public void Prepare(Podcast podcast)
         {
             Podcast = podcast;
@@ -161,12 +169,19 @@ namespace BMM.Core.ViewModels
 
         public void Prepare(StartPlayingPodcast podcast)
         {
+            _forceRefreshFromServers = true;
             Podcast = new Podcast {Id = podcast.Id, Title = podcast.Title};
             StartPlayingTrackId = podcast.TrackId;
         }
 
         public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
+            if (_forceRefreshFromServers)
+            {
+                policy = CachePolicy.ForceGetAndUpdateCache;
+                _forceRefreshFromServers = false;
+            }
+
             var items = await Client.Podcast.GetTracks(Podcast.Id, policy, size, startIndex);
             var existingDocs = startIndex == 0 ? new List<Document>() as IEnumerable<Document> : Documents;
 
@@ -191,14 +206,8 @@ namespace BMM.Core.ViewModels
                     itemsWithChapters = items;
                     break;
             }
-            
-            return itemsWithChapters;
-        }
 
-        public override async Task Load()
-        {
-            await base.Load();
-            await StartPlayingIfRequested();
+            return itemsWithChapters;
         }
 
         public override CacheKeys? CacheKey => CacheKeys.PodcastGetTracks;
