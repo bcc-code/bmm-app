@@ -121,7 +121,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
 
-        public async Task PrepareToPlay(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
         {
             await Play(mediaTracks, currentTrack, startTimeInMs);
             PlayPause();
