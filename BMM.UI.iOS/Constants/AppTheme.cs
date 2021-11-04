@@ -29,6 +29,12 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.TrackTitleColor
         });
 
+        public static readonly Lazy<TextTheme> Paragraph1 = new Lazy<TextTheme>(() => new TextTheme
+        {
+            Font = Typography.Paragraph1.Value,
+            Color = AppColors.BmmGray
+        });
+
         public static readonly Lazy<TextTheme> Paragraph2 = new Lazy<TextTheme>(() => new TextTheme
         {
             Font = Typography.Paragraph2.Value,
