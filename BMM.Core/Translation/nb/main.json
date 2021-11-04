@@ -440,7 +440,8 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Nylig avspilt",
-    "NoHistoryYet": "Ingen avspillingshistorikk ennå"
+    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
+    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Seneste Taler"
