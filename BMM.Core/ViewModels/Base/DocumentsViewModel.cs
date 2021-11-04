@@ -340,15 +340,15 @@ namespace BMM.Core.ViewModels.Base
         {
             var documents = await LoadItems(policy);
             documents = await PostprocessDocumentsAction.ExecuteGuarded(documents);
-            ReplaceItems(documents);
+            await ReplaceItems(documents);
         }
 
-        protected void ReplaceItems(IEnumerable<Document> documents)
+        protected async Task ReplaceItems(IEnumerable<Document> documents)
         {
             if (documents == null)
                 return;
 
-            MvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
+            await MvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
             {
                 Documents.ReplaceWith(documents);
                 RaisePropertyChanged(() => TrackCountString);
