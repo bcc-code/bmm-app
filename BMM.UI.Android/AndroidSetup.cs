@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Reflection;
 using Acr.UserDialogs;
 using Android.OS;
@@ -10,6 +11,7 @@ using AndroidX.AppCompat.Widget;
 using AndroidX.CardView.Widget;
 using AndroidX.DrawerLayout.Widget;
 using AndroidX.ViewPager.Widget;
+using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Core;
@@ -22,6 +24,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Player;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -35,11 +38,13 @@ using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.Implementations.Oidc;
 using BMM.UI.Droid.Application.Implementations.UI;
 using BMM.UI.Droid.Application.Media;
+using BMM.UI.Droid.Application.Networking;
 using BMM.UI.Droid.Application.NewMediaPlayer;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Playback;
 using Com.Google.Android.Exoplayer2.Ext.Mediasession;
+using FFImageLoading;
 using Google.Android.Material.FloatingActionButton;
 using Google.Android.Material.Navigation;
 using IdentityModel.OidcClient.Browser;
@@ -160,6 +165,15 @@ namespace BMM.UI.Droid
             InitializeMediaPlayer();
         }
 
+        private static void InitializeImageService()
+        {
+            ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
+            {
+                InvalidateLayout = false,
+                HttpClient = new HttpClient(new DroidAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
+            });
+        }
+
         private void RegisterAdditionalBindings(IMvxTargetBindingFactoryRegistry registry)
         {
             registry.RegisterFactory(new MvxCustomBindingFactory<View>("BackgroundTint", view => new MvxBackgroundTintBinding(view)));
@@ -188,6 +202,7 @@ namespace BMM.UI.Droid
             try
             {
                 base.InitializeSecondary();
+                InitializeImageService();
             }
             catch (Exception e)
             {
