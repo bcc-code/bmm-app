@@ -10,28 +10,35 @@ using System.CodeDom.Compiler;
 
 namespace BMM.UI.iOS
 {
-    [Register("PlaybackHistoryViewController")]
-    partial class PlaybackHistoryViewController
-    {
-        [Outlet]
-        UIKit.UILabel NoHistoryLabel { get; set; }
+	[Register ("PlaybackHistoryViewController")]
+	partial class PlaybackHistoryViewController
+	{
+		[Outlet]
+		UIKit.UILabel NoEntriesLabelSubtitle { get; set; }
 
-        [Outlet]
-        UIKit.UITableView PlaybackHistoryTableView { get; set; }
+		[Outlet]
+		UIKit.UILabel NoEntriesLabelTitle { get; set; }
 
-        void ReleaseDesignerOutlets()
-        {
-            if (PlaybackHistoryTableView != null)
-            {
-                PlaybackHistoryTableView.Dispose();
-                PlaybackHistoryTableView = null;
-            }
+		[Outlet]
+		UIKit.UITableView PlaybackHistoryTableView { get; set; }
 
-            if (NoHistoryLabel != null)
-            {
-                NoHistoryLabel.Dispose();
-                NoHistoryLabel = null;
-            }
-        }
-    }
+		void ReleaseDesignerOutlets ()
+		{
+			if (PlaybackHistoryTableView != null) {
+				PlaybackHistoryTableView.Dispose ();
+				PlaybackHistoryTableView = null;
+			}
+
+			if (NoEntriesLabelTitle != null) {
+				NoEntriesLabelTitle.Dispose ();
+				NoEntriesLabelTitle = null;
+			}
+
+			if (NoEntriesLabelSubtitle != null) {
+				NoEntriesLabelSubtitle.Dispose ();
+				NoEntriesLabelSubtitle = null;
+			}
+
+		}
+	}
 }

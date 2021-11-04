@@ -44,6 +44,12 @@ namespace BMM.UI.iOS.Constants
             return font;
         });
 
+        public static readonly Lazy<UIFont> Paragraph1 = new Lazy<UIFont>(() =>
+        {
+            var font = UIFont.SystemFontOfSize(17);
+            return font;
+        });
+
         public static readonly Lazy<UIFont> Paragraph2 = new Lazy<UIFont>(() =>
         {
             var font = UIFont.SystemFontOfSize(15);

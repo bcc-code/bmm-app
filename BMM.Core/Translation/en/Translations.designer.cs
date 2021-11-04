@@ -343,7 +343,8 @@ namespace BMM.Core.Translation
 		public const string TrackInfoViewModel_Copyright = nameof(TrackInfoViewModel_Copyright);
 		public const string CopyrightViewModel_Title = nameof(CopyrightViewModel_Title);
 		public const string PlaybackHistoryViewModel_Title = nameof(PlaybackHistoryViewModel_Title);
-		public const string PlaybackHistoryViewModel_NoHistoryYet = nameof(PlaybackHistoryViewModel_NoHistoryYet);
+		public const string PlaybackHistoryViewModel_NoHistoryYetTitle = nameof(PlaybackHistoryViewModel_NoHistoryYetTitle);
+		public const string PlaybackHistoryViewModel_NoHistoryYetSubtitle = nameof(PlaybackHistoryViewModel_NoHistoryYetSubtitle);
 		public const string ExploreRecentSpeechesViewModel_Title = nameof(ExploreRecentSpeechesViewModel_Title);
 		public const string ExploreRecentMusicViewModel_Title = nameof(ExploreRecentMusicViewModel_Title);
 		public const string DownloadManager_DownloadingFinished = nameof(DownloadManager_DownloadingFinished);

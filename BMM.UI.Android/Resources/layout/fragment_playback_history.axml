@@ -6,35 +6,52 @@
 	android:layout_height="match_parent">
 
 	<include
-            android:id="@+id/Toolbar"
-            layout="@layout/toolbar_actionbar" />
+        android:id="@+id/Toolbar"
+        layout="@layout/toolbar_actionbar" />
 
 	<mvvmcross.droidx.recyclerview.MvxRecyclerView
-            android:id="@+id/PlaybackHistoryRecyclerView"
-            android:scrollbars="vertical"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="@dimen/match_constraint"
-            local:layout_constraintTop_toBottomOf="@+id/Toolbar"
-            local:layout_constraintStart_toStartOf="parent"
-            local:layout_constraintEnd_toEndOf="parent"
-            local:layout_constraintBottom_toBottomOf="parent"
-            local:MvxTemplateSelector="@string/document_templateselector"
-            local:MvxBind="
-                Visibility Visibility(HasAnyEntry);
-                ItemsSource DocumentList(Documents, .);
-                ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+        android:id="@+id/PlaybackHistoryRecyclerView"
+        android:scrollbars="vertical"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        local:layout_constraintTop_toBottomOf="@+id/Toolbar"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:MvxTemplateSelector="@string/document_templateselector"
+        local:MvxBind="
+            Visibility Visibility(HasAnyEntry);
+            ItemsSource DocumentList(Documents, .);
+            ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
 
     <TextView
-            android:id="@+id/NoEntriesLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_medium"
-            style="@style/Title4"
-            local:layout_constraintStart_toStartOf="parent"
-            local:layout_constraintEnd_toEndOf="parent"
-            local:layout_constraintTop_toBottomOf="@+id/Toolbar"
-            local:layout_constraintBottom_toBottomOf="parent"
-            local:MvxLang="Text PlaybackHistoryViewModel_NoHistoryYet"
-            local:MvxBind="Visibility InvertedVisibility(HasAnyEntry)" />
+        android:id="@+id/NoEntriesLabelTitle"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:gravity="start"
+        style="@style/Heading3"
+        local:layout_constraintVertical_chainStyle="packed"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:layout_constraintTop_toBottomOf="@+id/Toolbar"
+        local:layout_constraintBottom_toTopOf="@+id/NoEntriesLabelSubtitle"
+        local:MvxLang="Text PlaybackHistoryViewModel_NoHistoryYetTitle"
+        local:MvxBind="Visibility InvertedVisibility(HasAnyEntry)" />
+
+    <TextView
+        android:id="@+id/NoEntriesLabelSubtitle"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:gravity="start"
+        android:layout_marginTop="@dimen/margin_small"
+        style="@style/Paragraph1"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:layout_constraintTop_toBottomOf="@+id/NoEntriesLabelTitle"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:MvxLang="Text PlaybackHistoryViewModel_NoHistoryYetSubtitle"
+        local:MvxBind="Visibility InvertedVisibility(HasAnyEntry)" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override System.Type ParentViewControllerType => typeof(UINavigationController);
+        public override System.Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
 
         public override void ViewDidLoad()
         {
@@ -32,10 +32,18 @@ namespace BMM.UI.iOS
                 .To(s => s.DocumentSelectedCommand)
                 .WithConversion<DocumentSelectedCommandValueConverter>();
 
-            set.Bind(NoHistoryLabel)
-                .To(vm => vm.TextSource[Translations.PlaybackHistoryViewModel_NoHistoryYet]);
+            set.Bind(NoEntriesLabelTitle)
+                .To(vm => vm.TextSource[Translations.PlaybackHistoryViewModel_NoHistoryYetTitle]);
 
-            set.Bind(NoHistoryLabel)
+            set.Bind(NoEntriesLabelSubtitle)
+                .To(vm => vm.TextSource[Translations.PlaybackHistoryViewModel_NoHistoryYetSubtitle]);
+
+            set.Bind(NoEntriesLabelTitle)
+                .For(v => v.BindVisible())
+                .To(vm => vm.HasAnyEntry)
+                .WithConversion<InvertedBoolConverter>();
+
+            set.Bind(NoEntriesLabelSubtitle)
                 .For(v => v.BindVisible())
                 .To(vm => vm.HasAnyEntry)
                 .WithConversion<InvertedBoolConverter>();
@@ -49,7 +57,8 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            NoHistoryLabel.ApplyTextTheme(AppTheme.Title4.Value);
+            NoEntriesLabelTitle.ApplyTextTheme(AppTheme.Heading3.Value);
+            NoEntriesLabelSubtitle.ApplyTextTheme(AppTheme.Paragraph1.Value);
         }
     }
 }
