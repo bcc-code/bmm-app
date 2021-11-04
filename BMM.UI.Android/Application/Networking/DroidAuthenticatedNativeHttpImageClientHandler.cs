@@ -8,11 +8,11 @@ using Xamarin.Android.Net;
 
 namespace BMM.UI.Droid.Application.Networking
 {
-    public class AuthenticatedNativeHttpImageClientHandler : AndroidClientHandler
+    public class DroidAuthenticatedNativeHttpImageClientHandler : AndroidClientHandler
     {
         private readonly IMediaRequestHttpHeaders _headerProvider;
 
-        public AuthenticatedNativeHttpImageClientHandler(IMediaRequestHttpHeaders headerProvider)
+        public DroidAuthenticatedNativeHttpImageClientHandler(IMediaRequestHttpHeaders headerProvider)
         {
             _headerProvider = headerProvider;
         }

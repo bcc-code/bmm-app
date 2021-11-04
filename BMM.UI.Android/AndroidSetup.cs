@@ -170,7 +170,7 @@ namespace BMM.UI.Droid
             ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
             {
                 InvalidateLayout = false,
-                HttpClient = new HttpClient(new AuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
+                HttpClient = new HttpClient(new DroidAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
             });
         }
 

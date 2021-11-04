@@ -7,11 +7,11 @@ using BMM.Core.Extensions;
 
 namespace BMM.UI.iOS.Networking
 {
-    public class AuthenticatedNativeHttpImageClientHandler : NSUrlSessionHandler
+    public class iOSAuthenticatedNativeHttpImageClientHandler : NSUrlSessionHandler
     {
         private readonly IMediaRequestHttpHeaders _headerProvider;
 
-        public AuthenticatedNativeHttpImageClientHandler(IMediaRequestHttpHeaders headerProvider)
+        public iOSAuthenticatedNativeHttpImageClientHandler(IMediaRequestHttpHeaders headerProvider)
         {
             _headerProvider = headerProvider;
         }

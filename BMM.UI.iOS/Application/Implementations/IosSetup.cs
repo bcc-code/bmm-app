@@ -96,7 +96,7 @@ namespace BMM.UI.iOS
             ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
             {
                 InvalidateLayout = false,
-                HttpClient = new HttpClient(new AuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
+                HttpClient = new HttpClient(new iOSAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
             });
         }
 
