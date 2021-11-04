@@ -147,7 +147,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             }
         }
 
-        public async Task PrepareToPlay(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
         {
             if (_mediaController == null)
                 return;

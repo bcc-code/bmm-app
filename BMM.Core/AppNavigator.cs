@@ -160,7 +160,7 @@ namespace BMM.Core
                 if (currentTrack == null)
                     return;
 
-                await _mediaPlayer.PrepareToPlay(new List<IMediaTrack>(rememberedQueue),
+                await _mediaPlayer.RecoverQueue(new List<IMediaTrack>(rememberedQueue),
                     currentTrack,
                     currentTrackPosition.PlaybackOrigin,
                     currentTrackPosition.LastPosition);
