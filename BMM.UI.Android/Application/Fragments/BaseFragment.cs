@@ -34,6 +34,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
         protected abstract int FragmentId { get; }
         protected virtual bool IsTabBarVisible => true;
+        protected virtual bool ShouldClearMenuItemsAtStart => true;
 
         private Color? _fragmentBaseColor;
         private string _title;
@@ -279,7 +280,9 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            menu.Clear();
+            if (ShouldClearMenuItemsAtStart)
+                menu.Clear();
+
             base.OnCreateOptionsMenu(menu, inflater);
         }
 

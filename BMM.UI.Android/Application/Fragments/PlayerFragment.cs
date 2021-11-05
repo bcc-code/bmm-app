@@ -9,6 +9,7 @@ using Android.Widget;
 using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Content;
 using BMM.Core.Constants;
+using BMM.Core.Diagnostic.Interfaces;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Interactions;
@@ -31,6 +32,8 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.PlayerFragment")]
     public class PlayerFragment : BaseFragment<PlayerViewModel>, SeekBar.IOnSeekBarChangeListener
     {
+        private const int TimeToCheckEmptyPlayerErrorInMillis = 2000;
+
         private BottomSheetManager _bottomSheetManager;
         private HorizontalSwipeDetector _swipeDetector;
         private ImageView _imageView;
@@ -48,6 +51,8 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private IMvxInteraction<TogglePlayerInteraction> _interaction;
         private PreventBottomSheetChangesWhileSwipeHappens _preventBottomSheetChangesWhileSwipeHappens;
+
+        protected override bool ShouldClearMenuItemsAtStart => false;
 
         public IMvxInteraction<TogglePlayerInteraction> Interaction
         {
@@ -108,7 +113,21 @@ namespace BMM.UI.Droid.Application.Fragments
             UpdateStatusBarColor();
             Title = StringConstants.Space;
 
+            var timeDiagnosticTool = Mvx.IoCProvider.Resolve<ITimeDiagnosticTool>();
+
+            timeDiagnosticTool
+                .LogIfConditionIsTrueAfterSpecifiedTime(
+                    CheckIfPlayerIsEmpty,
+                    TimeToCheckEmptyPlayerErrorInMillis,
+                    Event.EmptyPlayer);
+
             return view;
+        }
+
+        private bool CheckIfPlayerIsEmpty()
+        {
+            var titleTextView = View.FindViewById<TextView>(Resource.Id.title);
+            return string.IsNullOrEmpty(titleTextView?.Text);
         }
 
         public override void OnStart()

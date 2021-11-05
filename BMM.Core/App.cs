@@ -13,6 +13,8 @@ using BMM.Api.Implementation;
 using BMM.Api.Implementation.Clients;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.RequestInterceptor;
+using BMM.Core.Diagnostic;
+using BMM.Core.Diagnostic.Interfaces;
 using BMM.Core.ExceptionHandlers.Interfaces.Base;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Base.Interfaces;
@@ -252,6 +254,7 @@ namespace BMM.Core
             Mvx.IoCProvider.CallbackWhenRegistered<IStartupManager>(manager => manager.Initialize(CreatableTypes()));
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITimeDiagnosticTool, TimeDiagnosticTool>();
 
             _assemblies = AppDomain
                 .CurrentDomain
