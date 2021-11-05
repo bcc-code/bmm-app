@@ -12,5 +12,6 @@
         public const string OptionsMenuHasBeenOpened = "Options menu has been opened";
         public const string TrackHasBeenDownloaded = "Track has been downloaded";
         public const string ViewModelOpenedFormat = "{0} opened";
+        public const string EmptyPlayer = "Empty player";
     }
 }

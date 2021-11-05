@@ -9,6 +9,7 @@ using Android.Widget;
 using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Content;
 using BMM.Core.Constants;
+using BMM.Core.Diagnostic.Interfaces;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Interactions;
@@ -31,6 +32,8 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.PlayerFragment")]
     public class PlayerFragment : BaseFragment<PlayerViewModel>, SeekBar.IOnSeekBarChangeListener
     {
+        private const int TimeToCheckEmptyPlayerErrorInMillis = 5000;
+
         private BottomSheetManager _bottomSheetManager;
         private HorizontalSwipeDetector _swipeDetector;
         private ImageView _imageView;
@@ -89,6 +92,12 @@ namespace BMM.UI.Droid.Application.Fragments
             ViewModel.IsSeeking = false;
         }
 
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        {
+            base.OnCreateOptionsMenu(menu, inflater);
+            inflater.Inflate(Resource.Menu.playback_history, menu);
+        }
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             _swipeDetector = new HorizontalSwipeDetector();
@@ -108,7 +117,21 @@ namespace BMM.UI.Droid.Application.Fragments
             UpdateStatusBarColor();
             Title = StringConstants.Space;
 
+            var timeDiagnosticTool = Mvx.IoCProvider.Resolve<ITimeDiagnosticTool>();
+
+            timeDiagnosticTool
+                .LogIfConditionIsTrueAfterSpecifiedTime(
+                    CheckIfPlayerIsEmpty,
+                    TimeToCheckEmptyPlayerErrorInMillis,
+                    Event.EmptyPlayer);
+
             return view;
+        }
+
+        private bool CheckIfPlayerIsEmpty()
+        {
+            var titleTextView = View.FindViewById<TextView>(Resource.Id.title);
+            return string.IsNullOrEmpty(titleTextView!.Text);
         }
 
         public override void OnStart()
