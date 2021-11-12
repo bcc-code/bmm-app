@@ -9,6 +9,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
     {
         Task Play(IMediaTrack mediaTrack = null);
 
+        Task LoadTrackToPlay(IMediaTrack mediaTrack = null);
+
         Task PlayPause();
 
         void Stop();
@@ -27,6 +29,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         long Buffered { get; }
 
-        void SeekTo(long newPositionInMs);
+        void SeekTo(long newPositionInMs, bool playAutomatically = true);
     }
 }

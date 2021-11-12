@@ -123,8 +123,17 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
         {
-            await Play(mediaTracks, currentTrack, startTimeInMs);
-            PlayPause();
+            _currentTrack = currentTrack;
+            _currentTrackIndex = mediaTracks.IndexOf(currentTrack);
+
+            await _queue.Replace(mediaTracks, currentTrack);
+            await _audioPlayback.LoadTrackToPlay(currentTrack);
+
+            if (startTimeInMs > 0)
+                _audioPlayback.SeekTo(startTimeInMs, false);
+
+            PlaybackStateChanged();
+            _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, this));
         }
 
         public void PlayPause()

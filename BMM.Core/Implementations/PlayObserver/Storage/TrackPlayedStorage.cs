@@ -42,7 +42,7 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
         public async Task<IList<TrackPlayedEvent>> GetExistingEvents()
         {
             var result = await _blobCache.GetOrCreateObject<IList<TrackPlayedEvent>>(_storageKey, () => new List<TrackPlayedEvent>());
-            return result;
+            return result ?? new List<TrackPlayedEvent>();
         }
 
         public async Task DeleteEvents(IList<TrackPlayedEvent> trackPlayedEvents)

@@ -16,6 +16,8 @@ namespace BMM.Core.Implementations.Caching
         Task InsertObject<T>(string key, T obj);
 
         Task Invalidate(string key);
+
+        Task<bool> ContainsKeys(params string[] keys);
     }
 
     public class CachedItem<T>

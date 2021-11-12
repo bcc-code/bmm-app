@@ -129,11 +129,11 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 });
         }
 
-        public void SeekTo(long newPositionInMs)
+        public void SeekTo(long newPositionInMs, bool playAutomatically = true)
         {
             CurrentItem?.Seek(CMTime.FromSeconds(newPositionInMs / 1000.0, 10), finished =>
             {
-                if (Status == PlayStatus.Paused || Status == PlayStatus.Ended)
+                if (playAutomatically && (Status == PlayStatus.Paused || Status == PlayStatus.Ended))
                 {
                     _status = PlayStatus.Playing;
                     Player.Play();
@@ -176,8 +176,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
                 Status = PlayStatus.Buffering;
 
-                CurrentItem?.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
-                CurrentItem?.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
+                RemoveObservers();
 
                 // ToDo: is it really necessary to re-initialize the player?
                 InitializePlayer();
@@ -185,9 +184,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 var playerItem = await _playerItemFactory.Create(_currentMediaTrack);
 
                 Player.ReplaceCurrentItemWithPlayerItem(playerItem);
-                CurrentItem.AddObserver(this, LoadedTimeRangesObserver, InitialAndNewObservingOptions, LoadedTimeRangesObservationContext.Handle);
+                AttachObservers();
                 CurrentItem.SeekingWaitsForVideoCompositionRendering = true;
-                CurrentItem.AddObserver(this, StatusObserver, InitialAndNewObservingOptions, StatusObservationContext.Handle);
 
                 Player.Play();
             }
@@ -196,6 +194,30 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 Status = PlayStatus.Stopped;
                 _playerErrorHandler.StartError(ex);
             }
+        }
+
+        public async Task LoadTrackToPlay(IMediaTrack mediaTrack = null)
+        {
+            if (mediaTrack != null)
+                _currentMediaTrack = mediaTrack;
+
+            InitializePlayer();
+            var playerItem = await _playerItemFactory.Create(_currentMediaTrack);
+            Status = PlayStatus.Paused;
+            Player.ReplaceCurrentItemWithPlayerItem(playerItem);
+            AttachObservers();
+        }
+
+        private void AttachObservers()
+        {
+            CurrentItem.AddObserver(this, LoadedTimeRangesObserver, InitialAndNewObservingOptions, LoadedTimeRangesObservationContext.Handle);
+            CurrentItem.AddObserver(this, StatusObserver, InitialAndNewObservingOptions, StatusObservationContext.Handle);
+        }
+
+        private void RemoveObservers()
+        {
+            CurrentItem?.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
+            CurrentItem?.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
         }
 
         public async Task PlayPause()

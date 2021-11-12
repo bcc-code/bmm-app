@@ -1,5 +1,3 @@
-using BMM.Api.Abstraction;
-
 namespace BMM.Core.Models.Storage
 {
     public class CurrentTrackPositionStorage
