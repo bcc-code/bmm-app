@@ -19,7 +19,7 @@ namespace BMM.Core
         protected override async Task NavigateToFirstViewModel(object hint = null)
         {
             // todo make this maybe async after PR is merged: https://github.com/MvvmCross/MvvmCross/pull/3222
-             _appNavigator.NavigateAtAppStart();
+            _appNavigator.NavigateAtAppStart();
         }
     }
 }

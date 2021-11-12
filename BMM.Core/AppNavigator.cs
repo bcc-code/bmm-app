@@ -21,7 +21,6 @@ using BMM.Core.Models;
 using BMM.Core.Models.Storage;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
-using Microsoft.AppCenter.Crashes;
 using MvvmCross;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
@@ -145,6 +144,11 @@ namespace BMM.Core
         {
             try
             {
+                bool queueSaved = await _cache.ContainsKeys(StorageKeys.RememberedQueue, StorageKeys.CurrentTrackPosition);
+
+                if (!queueSaved)
+                    return;
+
                 var rememberedQueue = await _cache.GetObject<IList<Track>>(StorageKeys.RememberedQueue);
                 var currentTrackPosition = await _cache.GetObject<CurrentTrackPositionStorage>(StorageKeys.CurrentTrackPosition);
 
@@ -167,8 +171,8 @@ namespace BMM.Core
             }
             catch (Exception e)
             {
-                await _cache.InsertObject<IList<Track>>(StorageKeys.RememberedQueue, null);
-                await _cache.InsertObject<CurrentTrackPositionStorage>(StorageKeys.CurrentTrackPosition, null);
+                await _cache.Invalidate(StorageKeys.RememberedQueue);
+                await _cache.Invalidate(StorageKeys.CurrentTrackPosition);
                 Log($"Error during {nameof(RestoreMediaQueue)}. EX: {e.Message}. Remembered queue cleared");
             }
         }

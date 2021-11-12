@@ -53,5 +53,11 @@ namespace BMM.Core.Implementations.Caching
         {
             await _blobCache.Invalidate(key);
         }
+
+        public async Task<bool> ContainsKeys(params string[] keys)
+        {
+            var allKeys = await _blobCache.GetAllKeys();
+            return keys.All(k => allKeys.Contains(k));
+        }
     }
 }
