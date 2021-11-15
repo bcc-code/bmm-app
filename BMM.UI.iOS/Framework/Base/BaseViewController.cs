@@ -22,6 +22,7 @@ namespace BMM.UI.iOS
             base.ViewDidLoad();
 
             Title = ViewModel.TextSource[TitleKey];
+            SubscribeToTextSourceChange();
 
             SetupLargeTitle();
         }
@@ -69,14 +70,8 @@ namespace BMM.UI.iOS
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-
-            UpdateOrientation();
-        }
-
-        public override void ViewDidAppear(bool animated)
-        {
-            base.ViewDidAppear(animated);
             AttachEvents();
+            UpdateOrientation();
         }
 
         public override void ViewWillDisappear(bool animated)
@@ -87,10 +82,25 @@ namespace BMM.UI.iOS
 
         protected virtual void AttachEvents()
         {
-            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
         }
 
         protected virtual void DetachEvents()
+        {
+        }
+
+        public override void DidMoveToParentViewController(UIViewController parent)
+        {
+            base.DidMoveToParentViewController(parent);
+            if (parent == null)
+                UnsubscribeFromTextSourceChange();
+        }
+
+        private void SubscribeToTextSourceChange()
+        {
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        private void UnsubscribeFromTextSourceChange()
         {
             ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }

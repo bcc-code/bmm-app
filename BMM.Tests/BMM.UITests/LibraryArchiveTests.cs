@@ -7,6 +7,7 @@ namespace BMM.UITests
 {
     [TestFixture(Platform.Android, Category = Categories.Android)]
     [TestFixture(Platform.iOS, Category = Categories.iOS)]
+    [Ignore("The Library Archive section is not currently accessible from the application.")]
     public class LibraryArchiveTests
     {
         private IBmmApp _bmmApp;
@@ -29,7 +30,7 @@ namespace BMM.UITests
         public async Task OpenLibraryArchive_AssertAllArchiveYearsExist()
         {
             await _bmmApp.LoginToApp();
-            _bmmApp.Menu.OpenLibrary(_app);
+            _bmmApp.Menu.OpenBrowse(_app);
             _app.Tap("Archive");
 
             _app.WaitForElement(_bmmApp.LibraryArchivePage.Year(DateTime.Now.Year.ToString()));

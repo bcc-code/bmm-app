@@ -102,16 +102,16 @@ namespace BMM.Core.ViewModels
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
-        protected override void AttachEvents()
+        public override void ViewCreated()
         {
-            base.AttachEvents();
+            base.ViewCreated();
             PropertyChanged += OnPropertyChanged;
             _storageManager.Storages.CollectionChanged += OnStoragesCollectionChanged;
         }
 
-        protected override void DetachEvents()
+        public override void ViewDestroy(bool viewFinishing = true)
         {
-            base.DetachEvents();
+            base.ViewDestroy(viewFinishing);
             PropertyChanged -= OnPropertyChanged;
             _storageManager.Storages.CollectionChanged -= OnStoragesCollectionChanged;
         }
