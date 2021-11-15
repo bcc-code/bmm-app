@@ -14,6 +14,8 @@ namespace BMM.UITests
         private const string ErrorImageNotFound = "Image is not found";
         private const string ErrorTracksNotFound = "Tracks are not found";
 
+        private const string Kare = "From Kåre";
+
         private IBmmApp _bmmApp;
         private IApp _app;
         private readonly Platform _platform;
@@ -34,9 +36,9 @@ namespace BMM.UITests
         public async Task OpenPodcast_AssertAllElementsAreVisible()
         {
             await _bmmApp.LoginToApp();
-            _bmmApp.Menu.OpenLibrary(_app);
-            _app.WaitForElement(_bmmApp.LibraryPodcastsPage.BtnFraKare, ErrorFromKaareTitleNotFound, TimeSpan.FromSeconds(5));
-            _app.Tap("From Kåre");
+            _bmmApp.Menu.OpenBrowse(_app);
+            _app.ScrollDownTo(Kare);
+            _app.Tap(Kare);
             _app.WaitForElement(_bmmApp.PodcastPage.Follow);
 
             _app.WaitForElement(_bmmApp.PodcastPage.Title, ErrorFromKaareTitleNotFound);
@@ -57,14 +59,15 @@ namespace BMM.UITests
         public async Task FollowingPodcast_StartsDownloadingTracks()
         {
             await _bmmApp.LoginToApp();
-            _bmmApp.Menu.OpenLibrary(_app);
-            _app.Tap(_bmmApp.LibraryPodcastsPage.BtnFraKare);
+            _bmmApp.Menu.OpenBrowse(_app);
+            _app.ScrollDownTo(Kare);
+            _app.Tap(Kare);
+            _app.WaitForElement(_bmmApp.PodcastPage.Follow);
             _app.Tap(_bmmApp.PodcastPage.Follow);
-
             _app.WaitForElement(_bmmApp.PodcastPage.Following);
             var downloadImages = _app.WaitForElement(_bmmApp.PodcastPage.DownloadedImage);
             await Task.Delay(TimeSpan.FromSeconds(5));
-            Assert.AreEqual(3, downloadImages.Length);
+            Assert.GreaterOrEqual(downloadImages.Length, 1);
         }
     }
 }

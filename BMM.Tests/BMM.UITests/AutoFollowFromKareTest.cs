@@ -36,7 +36,8 @@ namespace BMM.UITests
             await _bmmApp.LoginToApp();
             _bmmApp.Menu.OpenProfilePage(_app);
             _app.Tap(_bmmApp.SettingsPage.DownloadViaMobileNetworkSwitch);
-            _bmmApp.Menu.OpenLibrary(_app);
+            _bmmApp.Menu.OpenBrowse(_app);
+            _app.ScrollDownTo(Kare);
             _app.Tap(Kare);
             _app.ScrollUpTo(Kare);
 
@@ -64,6 +65,6 @@ namespace BMM.UITests
                     Assert.Ignore("AutoFollow not working properly in iOS");
                 }
             }
-        }   
+        }
     }
 }

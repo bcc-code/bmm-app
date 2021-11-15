@@ -27,7 +27,7 @@ namespace BMM.UITests.Views
 
         void OpenMyContent(IApp app);
 
-        void OpenLibrary(IApp app);
+        void OpenBrowse(IApp app);
 
         void OpenProfilePage(IApp app);
     }
@@ -35,9 +35,9 @@ namespace BMM.UITests.Views
     public abstract class Menu : IMenu
     {
         public const string LabelSearch = "Search";
-        public const string LabelExplore = "Explore";
+        public const string LabelExplore = "Home";
         public const string LabelMyContent = "My Content";
-        public const string LabelLibrary = "Library";
+        public const string LabelBrowse = "Browse";
         public const string LabelProfile = "Profile";
 
         public abstract Func<AppQuery, AppQuery> BottomBar { get; }
@@ -74,7 +74,7 @@ namespace BMM.UITests.Views
             OpenMenuItem(app, MyContentMenuItem);
         }
 
-        public void OpenLibrary(IApp app)
+        public void OpenBrowse(IApp app)
         {
             OpenMenuItem(app, LibraryMenuItem);
         }
@@ -95,7 +95,7 @@ namespace BMM.UITests.Views
 
         public override Func<AppQuery, AppQuery> MyContentMenuItem { get { return c => BottomBar(c).Descendant().Marked(LabelMyContent); } }
 
-        public override Func<AppQuery, AppQuery> LibraryMenuItem { get { return c => BottomBar(c).Descendant().Marked(LabelLibrary); } }
+        public override Func<AppQuery, AppQuery> LibraryMenuItem { get { return c => BottomBar(c).Descendant().Marked(LabelBrowse); } }
 
         public override Func<AppQuery, AppQuery> ProfileMenuItem { get { return c => BottomBar(c).Descendant().Marked(LabelProfile); } }
 
@@ -112,7 +112,7 @@ namespace BMM.UITests.Views
 
         public override Func<AppQuery, AppQuery> MyContentMenuItem { get { return c => BottomBar(c).Descendant().Text(LabelMyContent); } }
 
-        public override Func<AppQuery, AppQuery> LibraryMenuItem { get { return c => BottomBar(c).Descendant().Text(LabelLibrary); } }
+        public override Func<AppQuery, AppQuery> LibraryMenuItem { get { return c => BottomBar(c).Descendant().Text(LabelBrowse); } }
 
         public override Func<AppQuery, AppQuery> ProfileMenuItem { get { return c => BottomBar(c).Descendant().Text(LabelProfile); } }
 

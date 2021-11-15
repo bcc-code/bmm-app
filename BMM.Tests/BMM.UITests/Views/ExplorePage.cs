@@ -6,6 +6,7 @@ namespace BMM.UITests.Views
     public interface IExplorePage : IListPage
     {
         Func<AppQuery, AppQuery> FraaKaareTeaser { get; }
+        Func<AppQuery, AppQuery> FraaKaareShowAll { get; }
         Func<AppQuery, AppQuery> TrackList { get; }
     }
 
@@ -16,6 +17,14 @@ namespace BMM.UITests.Views
             get
             {
                 return c => c.Marked("From Kåre");
+            }
+        }
+
+        public Func<AppQuery, AppQuery> FraaKaareShowAll
+        {
+            get
+            {
+                return c => c.Id("showAll");
             }
         }
 
@@ -35,6 +44,14 @@ namespace BMM.UITests.Views
             get
             {
                 return c => c.Marked("From Kåre");
+            }
+        }
+
+        public Func<AppQuery, AppQuery> FraaKaareShowAll
+        {
+            get
+            {
+                return c => c.Id("showAll");
             }
         }
 

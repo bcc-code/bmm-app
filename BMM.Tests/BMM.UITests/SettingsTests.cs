@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Xamarin.UITest;
@@ -60,7 +61,7 @@ namespace BMM.UITests
 
             RemoveTwoTopContentLanguages(_platform);
 
-            OpenLibraryAndPodcast(PodcastTitleFraKaareGerman);
+            OpenFromKarePodcast(PodcastTitleFraKaareGerman);
             var songName1 = _app.Query(_bmmApp.PodcastPage.TrackTitle)[0].Text;
             _app.Back();
 
@@ -68,7 +69,7 @@ namespace BMM.UITests
 
             RemoveContentLanguageOnTopOfList(_platform);
 
-            OpenLibraryAndPodcast(PodcastTitleFraKaareEnglish);
+            OpenFromKarePodcast(PodcastTitleFraKaareEnglish);
             var songName2 = _app.Query(_bmmApp.PodcastPage.TrackTitle)[0].Text;
 
             Assert.AreNotEqual(songName1, songName2, ErrorSongsAreEqual);
@@ -79,7 +80,7 @@ namespace BMM.UITests
 
             RemoveContentLanguageOnTopOfList(_platform);
 
-            OpenLibraryAndPodcast(PodcastTitleFraKaareGerman);
+            OpenFromKarePodcast(PodcastTitleFraKaareGerman);
             var songName1SecondCheck = _app.Query(_bmmApp.PodcastPage.TrackTitle)[0].Text;
             Assert.AreEqual(songName1, songName1SecondCheck, ErrorSongsAreNotEqual);
         }
@@ -109,10 +110,11 @@ namespace BMM.UITests
             _app.Tap(listItem);
         }
 
-        private void OpenLibraryAndPodcast(string podcastTitle)
+        private void OpenFromKarePodcast(string expectedFromKaarePodcastTitle)
         {
-            _bmmApp.Menu.OpenLibrary(_app);
-            _app.Tap(podcastTitle);
+            _bmmApp.Menu.OpenExplore(_app);
+            _app.Tap(_bmmApp.ExplorePage.FraaKaareShowAll);
+            _app.WaitForElement(expectedFromKaarePodcastTitle);
             _app.WaitForElement(_bmmApp.PodcastPage.TrackTitle, "Timed out waiting for element..."); // Wait until first track appears meaning that the list has loaded
         }
 

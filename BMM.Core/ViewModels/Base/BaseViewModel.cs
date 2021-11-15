@@ -107,14 +107,24 @@ namespace BMM.Core.ViewModels.Base
             DetachEvents();
         }
 
+        public override void ViewCreated()
+        {
+            base.ViewCreated();
+            NotificationCenter.AppLanguageChanged += NotificationCenterOnAppLanguageChanged;
+        }
+
+        public override void ViewDestroy(bool viewFinishing = true)
+        {
+            base.ViewDestroy(viewFinishing);
+            NotificationCenter.AppLanguageChanged -= NotificationCenterOnAppLanguageChanged;
+        }
+
         protected virtual void AttachEvents()
         {
-            NotificationCenter.AppLanguageChanged += NotificationCenterOnAppLanguageChanged;
         }
 
         protected virtual void DetachEvents()
         {
-            NotificationCenter.AppLanguageChanged -= NotificationCenterOnAppLanguageChanged;
         }
 
         private void NotificationCenterOnAppLanguageChanged(object sender, EventArgs e)

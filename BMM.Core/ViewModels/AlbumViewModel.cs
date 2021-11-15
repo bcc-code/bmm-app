@@ -83,6 +83,12 @@ namespace BMM.Core.ViewModels
             Documents.CollectionChanged -= UpdateView;
         }
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await RaisePropertyChanged(() => ShowShuffleButton);
+        }
+
         public string ReadableDuration(long durationInMilliseconds)
         {
             var span = TimeSpan.FromMilliseconds(durationInMilliseconds);
@@ -109,12 +115,6 @@ namespace BMM.Core.ViewModels
         {
             Album = await Client.Albums.GetById(_id);
             return Album?.Children;
-        }
-
-        public override void ViewDestroy(bool viewFinishing = true)
-        {
-            Documents.CollectionChanged -= UpdateView;
-            base.ViewDestroy(viewFinishing);
         }
 
         private void UpdateView(object sender, NotifyCollectionChangedEventArgs e)
