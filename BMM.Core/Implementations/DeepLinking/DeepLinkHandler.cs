@@ -179,7 +179,9 @@ namespace BMM.Core.Implementations.DeepLinking
                 return false;
 
             if (shouldLogEvent)
-                _analytics.LogEvent("deep link opened", new Dictionary<string, object> {{"uri", uri.AbsolutePath}});
+                _analytics.LogEvent("deep link opened", new Dictionary<string, object> { { "uri", uri.AbsolutePath } });
+            else
+                _analytics.LogEvent("internal link opened", new Dictionary<string, object> { { "uri", uri.AbsolutePath } });
 
             foreach (var link in _links)
             {
