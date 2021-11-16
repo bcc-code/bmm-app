@@ -58,7 +58,7 @@ namespace BMM.Core.ViewModels
             {
                 var randomEpisode = await Client.Podcast.GetRandomTrack(Podcast.Id);
 
-                await _mediaPlayer.Play(new List<IMediaTrack> {randomEpisode}, randomEpisode, GetType().Name);
+                await _mediaPlayer.Play(new List<IMediaTrack> {randomEpisode}, randomEpisode, PlaybackOriginString);
 
                 _analytics.LogEvent("Fra Kaare play random command was used");
             });
@@ -101,7 +101,7 @@ namespace BMM.Core.ViewModels
 
             foreach (var track in tracksToBePlayed)
             {
-                await _mediaPlayer.AddToEndOfQueue(track, GetType().Name);
+                await _mediaPlayer.AddToEndOfQueue(track, PlaybackOriginString);
             }
         }
 

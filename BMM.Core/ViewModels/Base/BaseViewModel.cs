@@ -64,6 +64,13 @@ namespace BMM.Core.ViewModels.Base
             set => SetProperty(ref _isLoading, value);
         }
 
+        public virtual string PlaybackOriginString => string.Join("|", new List<string> { GetType().Name }.Concat(PlaybackOrigin()));
+
+        public virtual IEnumerable<string> PlaybackOrigin()
+        {
+            return new List<string>();
+        }
+
         private IMvxAsyncCommand<Document> _optionsCommand;
 
         public IMvxAsyncCommand<Document> OptionCommand
@@ -184,7 +191,7 @@ namespace BMM.Core.ViewModels.Base
                             actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_QueueToPlayNext],
                                 async () =>
                                 {
-                                    var success = await mediaPlayer.QueueToPlayNext(track, GetType().Name);
+                                    var success = await mediaPlayer.QueueToPlayNext(track, PlaybackOriginString);
                                     if (success)
                                     {
                                         await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(TextSource.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
@@ -202,7 +209,7 @@ namespace BMM.Core.ViewModels.Base
                         actionSheet.AddHandled(TextSource[Translations.UserDialogs_Track_AddToQueue],
                             async () =>
                             {
-                                var success = await mediaPlayer.AddToEndOfQueue(track, GetType().Name);
+                                var success = await mediaPlayer.AddToEndOfQueue(track, PlaybackOriginString);
                                 if (success)
                                 {
                                     await Mvx.IoCProvider.Resolve<IToastDisplayer>().Success(TextSource.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
@@ -440,7 +447,7 @@ namespace BMM.Core.ViewModels.Base
         {
             if (track == null)
             {
-                Mvx.IoCProvider.Resolve<IAnalytics>().LogEvent("4934 the track is null", new Dictionary<string, object> { { "CallingType", this.GetType().FullName } });
+                Mvx.IoCProvider.Resolve<IAnalytics>().LogEvent("4934 the track is null", new Dictionary<string, object> { { "CallingType", GetType().FullName } });
                 return;
             }
 
@@ -481,7 +488,7 @@ namespace BMM.Core.ViewModels.Base
                         list.Add(track);
                     }
 
-                    await mediaPlayer.Play(list.OfType<IMediaTrack>().ToList(), track, GetType().Name);
+                    await mediaPlayer.Play(list.OfType<IMediaTrack>().ToList(), track, PlaybackOriginString);
                     break;
 
                 case DocumentType.Album:

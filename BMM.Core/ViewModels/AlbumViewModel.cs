@@ -10,7 +10,6 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Translation;
 using MvvmCross.Commands;
-using MvvmCross.Localization;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
@@ -38,6 +37,11 @@ namespace BMM.Core.ViewModels
                 RaisePropertyChanged(() => Image);
                 RaisePropertyChanged(() => ShowImage);
             }
+        }
+
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] { Album.Id.ToString() };
         }
 
         public AlbumViewModel(IShareLink shareLink)

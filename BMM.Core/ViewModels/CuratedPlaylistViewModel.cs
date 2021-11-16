@@ -41,6 +41,11 @@ namespace BMM.Core.ViewModels
 
         public override string Description => CuratedPlaylist.Description;
 
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] { CuratedPlaylist.Id.ToString(), CuratedPlaylist.Title };
+        }
+
         public override bool ShowImage => true;
         public override string Image => CuratedPlaylist.Cover;
 

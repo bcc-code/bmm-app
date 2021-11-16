@@ -99,6 +99,11 @@ namespace BMM.Core.ViewModels
 
         public bool IsDownloaded => IsFollowing && !DownloadingFiles.Any();
 
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] { Podcast.Id.ToString(), Podcast.Title };
+        }
+
         public PodcastViewModel(
             IPodcastOfflineManager podcastDownloader,
             IConnection connection,
