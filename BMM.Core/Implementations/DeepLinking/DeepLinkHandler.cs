@@ -169,19 +169,16 @@ namespace BMM.Core.Implementations.DeepLinking
             await PlayTracks(new[] { requestedTrack }, PlaybackOriginName, trackLinkParameters.StartTimeInMs);
         }
 
-        public bool OpenFromInsideOfApp(Uri uri) => Open(uri, false);
+        public bool OpenFromInsideOfApp(Uri uri) => Open(uri, "internal link opened");
 
-        public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, true);
+        public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, "deep link opened");
 
-        private bool Open(Uri uri, bool shouldLogEvent)
+        private bool Open(Uri uri, string analyticsEventName)
         {
             if (!IsBmmUrl(uri))
                 return false;
 
-            if (shouldLogEvent)
-                _analytics.LogEvent("deep link opened", new Dictionary<string, object> { { "uri", uri.AbsolutePath } });
-            else
-                _analytics.LogEvent("internal link opened", new Dictionary<string, object> { { "uri", uri.AbsolutePath } });
+            _analytics.LogEvent(analyticsEventName, new Dictionary<string, object> { { "uri", uri.AbsolutePath } });
 
             foreach (var link in _links)
             {
