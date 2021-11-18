@@ -186,10 +186,10 @@ namespace BMM.UI.Droid.Application.Activities
         {
             if (SplashScreen.UnhandledIntent == null)
                 return;
-            
+
             var intent = SplashScreen.UnhandledIntent;
             SplashScreen.UnhandledIntent = null;
-            
+
             Mvx.IoCProvider.Resolve<INotificationHandler>().UserClickedNotification(new AndroidIntentNotification(intent));
         }
 
@@ -210,7 +210,7 @@ namespace BMM.UI.Droid.Application.Activities
         {
             if (_unhandledDeepLink == null)
                 return;
-            
+
             var url = new System.Uri(_unhandledDeepLink);
             Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(url);
             _unhandledDeepLink = null;

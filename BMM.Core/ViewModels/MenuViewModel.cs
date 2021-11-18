@@ -6,12 +6,20 @@ using BMM.Core.Implementations;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.MyContent;
 using MvvmCross.Commands;
+using MvvmCross.Presenters;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
     public class MenuViewModel : BaseViewModel
     {
+        private readonly IViewModelAwareViewPresenter _viewModelAwareViewPresenter;
+
+        public MenuViewModel(IViewModelAwareViewPresenter viewModelAwareViewPresenter)
+        {
+            _viewModelAwareViewPresenter = viewModelAwareViewPresenter;
+        }
+
         public IMvxCommand SearchCommand { get; private set; }
 
         public IMvxCommand ExploreCommand { get; private set; }
@@ -37,6 +45,9 @@ namespace BMM.Core.ViewModels
         {
             return new ExceptionHandlingCommand(async () =>
                 {
+                    if (_viewModelAwareViewPresenter.IsViewModelShown<T>())
+                        return;
+
                     await NavigationService.ChangePresentation(new MenuClickedHint());
                     await NavigationService.NavigateToNewRoot<T>();
                 },

@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace BMM.Api.Implementation.Models
 {
     [JsonObject]
-    public class BaseTrackCollection : Document
+    public abstract class BaseTrackCollection : Document
     {
-        public BaseTrackCollection()
+        protected BaseTrackCollection()
         {
             DocumentType = DocumentType.TrackCollection;
         }

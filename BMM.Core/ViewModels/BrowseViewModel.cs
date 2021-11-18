@@ -5,6 +5,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
+using BMM.Core.Implementations.UI.Interfaces;
 using BMM.Core.ViewModels.Base;
 
 namespace BMM.Core.ViewModels
@@ -24,7 +25,7 @@ namespace BMM.Core.ViewModels
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            var browseItems = await Client.Browse.Get();
+            var browseItems = await Client.Browse.Get(policy);
 
             var translatedItems = await _translateDocsAction.ExecuteGuarded(browseItems.ToList());
             var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedItems);

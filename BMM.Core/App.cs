@@ -58,6 +58,7 @@ using BMM.Core.Implementations.Startup;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Implementations.UI.Interfaces;
 using BMM.Core.Implementations.Validators;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer;
@@ -255,6 +256,7 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITimeDiagnosticTool, TimeDiagnosticTool>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDocumentVisualEqualityChecker, DocumentVisualEqualityChecker>();
 
             _assemblies = AppDomain
                 .CurrentDomain
@@ -316,7 +318,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<IUsersClient, UsersClient>();
             Mvx.IoCProvider.RegisterDecorator<IDiscoverClient, CachedDiscoverClientDecorator, DiscoverClient>();
             Mvx.IoCProvider.RegisterType<ISharedPlaylistClient, SharedPlaylistClient>();
-            Mvx.IoCProvider.RegisterType<IBrowseClient, BrowseClient>();
+            Mvx.IoCProvider.RegisterDecorator<IBrowseClient, CachedBrowseClientDecorator, BrowseClient>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBMMClient, InjectedBmmClient>();
         }

@@ -12,6 +12,7 @@
         DiscoverGetDocuments,
         PlaylistGetAll,
         PlaylistGetTracks,
-        PlaylistGetById
+        PlaylistGetById,
+        BrowseGet
     }
 }

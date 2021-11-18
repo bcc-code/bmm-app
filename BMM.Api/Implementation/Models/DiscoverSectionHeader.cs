@@ -3,7 +3,9 @@ using Newtonsoft.Json;
 namespace BMM.Api.Implementation.Models
 {
     [JsonObject]
-    public class DiscoverSectionHeader : Document, ITranslationDetailsHolder
+    public class DiscoverSectionHeader
+        : Document,
+          ITranslationDetailsHolder
     {
         public DiscoverSectionHeader()
         {

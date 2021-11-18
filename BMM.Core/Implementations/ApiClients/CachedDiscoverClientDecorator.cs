@@ -18,6 +18,7 @@ namespace BMM.Core.Implementations.ApiClients
             _client = client;
             _clientCache = clientCache;
         }
+
         public Task<IEnumerable<Document>> GetDocuments(CachePolicy cachePolicy)
         {
             return _clientCache.Get(

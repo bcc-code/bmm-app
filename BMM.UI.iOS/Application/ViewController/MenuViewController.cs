@@ -134,7 +134,7 @@ namespace BMM.UI.iOS
             if (tabBarController.SelectedViewController is ContainmentViewController selectedVc
                 && viewController is ContainmentViewController newMvxVc)
             {
-                var isAlreadySelected = selectedVc.NavigationRootViewModel?.GetType() == newMvxVc?.NavigationRootViewModel?.GetType();
+                bool isAlreadySelected = selectedVc.NavigationRootViewModel?.GetType() == newMvxVc?.NavigationRootViewModel?.GetType();
 
                 if (!isAlreadySelected)
                     return true;
@@ -143,6 +143,8 @@ namespace BMM.UI.iOS
                     selectedVc.PopToRootViewController(true);
                 else
                     selectedVc.ScrollToTop();
+
+                return false;
             }
 
             return true;

@@ -5,13 +5,14 @@ using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients;
 using BMM.Api.Implementation.Models;
 using Moq;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace BMM.Api.Test.Unit.Implementation.Clients
 {
     [TestFixture]
     public class StatisticsClientTests : ClientTests
-    {        
+    {
         [SetUp]
         protected override void Initialization()
         {
@@ -150,7 +151,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
 
         private IList<Document> GetASampleListOfDocuments()
         {
-            return new List<Document>(){ new Document()};
+            return new List<Document> { Substitute.For<Document>() };
         }
     }
 }

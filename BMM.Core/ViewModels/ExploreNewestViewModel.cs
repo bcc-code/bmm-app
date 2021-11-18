@@ -13,6 +13,7 @@ using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Implementations.UI.Interfaces;
 using BMM.Core.Messages;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;

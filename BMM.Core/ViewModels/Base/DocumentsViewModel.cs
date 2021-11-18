@@ -343,7 +343,7 @@ namespace BMM.Core.ViewModels.Base
             await ReplaceItems(documents);
         }
 
-        protected async Task ReplaceItems(IEnumerable<Document> documents)
+        protected virtual async Task ReplaceItems(IEnumerable<Document> documents)
         {
             if (documents == null)
                 return;
