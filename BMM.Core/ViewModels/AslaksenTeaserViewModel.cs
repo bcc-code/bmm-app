@@ -63,7 +63,7 @@ namespace BMM.Core.ViewModels
                 var randomIndex = _random.Next(docs.Count);
                 var randomTrack = docs[randomIndex];
 
-                await _mediaPlayer.Play(new List<IMediaTrack> {randomTrack}, randomTrack, GetType().Name);
+                await _mediaPlayer.Play(new List<IMediaTrack> {randomTrack}, randomTrack, PlaybackOriginString);
 
                 _analytics.LogEvent("Aslaksen play random command was used");
 
@@ -81,7 +81,7 @@ namespace BMM.Core.ViewModels
                 if (filteredDocs.Any())
                     docs = filteredDocs;
 
-                await _mediaPlayer.Play(docs, docs.First(), GetType().Name);
+                await _mediaPlayer.Play(docs, docs.First(), PlaybackOriginString);
 
                 _analytics.LogEvent("Aslaksen play newest command was used");
             });

@@ -80,6 +80,7 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink("^/music$", NavigateTo<ExploreRecentMusicViewModel>),
                 new RegexDeepLink("^/contributors$", NavigateTo<ExploreContributorsViewModel>),
                 new RegexDeepLink("^/featured$", NavigateTo<CuratedPlaylistsViewModel>),
+                new RegexDeepLink("^/archive", NavigateTo<LibraryArchiveViewModel>),
                 new RegexDeepLink<IdAndNameParameters>("^/playlist/curated/(?<id>[0-9]+)(/(?<name>.*))?$", OpenCuratedPlaylist),
                 new RegexDeepLink<IdAndNameParameters>("^/playlist/private/(?<id>[0-9]+)(/(?<name>.*))?$", OpenTrackCollection),
                 new RegexDeepLink<IdAndNameParameters>("^/playlist/podcast/(?<id>[0-9]+)(/(?<name>.*))?$", OpenPodcast),
@@ -169,17 +170,16 @@ namespace BMM.Core.Implementations.DeepLinking
             await PlayTracks(new[] { requestedTrack }, PlaybackOriginName, trackLinkParameters.StartTimeInMs);
         }
 
-        public bool OpenFromInsideOfApp(Uri uri) => Open(uri, false);
+        public bool OpenFromInsideOfApp(Uri uri) => Open(uri, "internal link opened");
 
-        public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, true);
+        public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, "deep link opened");
 
-        private bool Open(Uri uri, bool shouldLogEvent)
+        private bool Open(Uri uri, string analyticsEventName)
         {
             if (!IsBmmUrl(uri))
                 return false;
 
-            if (shouldLogEvent)
-                _analytics.LogEvent("deep link opened", new Dictionary<string, object> {{"uri", uri.AbsolutePath}});
+            _analytics.LogEvent(analyticsEventName, new Dictionary<string, object> { { "uri", uri.AbsolutePath } });
 
             foreach (var link in _links)
             {

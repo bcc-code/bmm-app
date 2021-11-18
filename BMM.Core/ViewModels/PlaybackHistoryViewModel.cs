@@ -43,7 +43,7 @@ namespace BMM.Core.ViewModels
             if (!(item is IMediaTrack mediaTrack))
                 return;
 
-            await _mediaPlayer.Play(mediaTrack.EncloseInArray(), mediaTrack, GetType().Name, mediaTrack.LastPosition);
+            await _mediaPlayer.Play(mediaTrack.EncloseInArray(), mediaTrack, PlaybackOriginString, mediaTrack.LastPosition);
         }
 
         public override async Task Load()

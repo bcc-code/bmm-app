@@ -127,7 +127,7 @@ namespace BMM.Core.ViewModels.Base
 
                 if (tracks.Any())
                 {
-                    await mediaPlayer.Play(tracks, tracks.First(), GetType().Name);
+                    await mediaPlayer.Play(tracks, tracks.First(), PlaybackOriginString);
                 }
             });
 
@@ -138,7 +138,7 @@ namespace BMM.Core.ViewModels.Base
 
                 if (tracks.Any())
                 {
-                    await mediaPlayer.ShuffleList(tracks, GetType().Name);
+                    await mediaPlayer.ShuffleList(tracks, PlaybackOriginString);
                 }
             });
 
