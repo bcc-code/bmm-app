@@ -36,9 +36,8 @@ namespace BMM.UITests
             await _bmmApp.LoginToApp();
             _bmmApp.Menu.OpenProfilePage(_app);
             _app.Tap(_bmmApp.SettingsPage.DownloadViaMobileNetworkSwitch);
-            _bmmApp.Menu.OpenBrowse(_app);
-            _app.ScrollDownTo(Kare);
-            _app.Tap(Kare);
+            _bmmApp.Menu.OpenExplore(_app);
+            _app.Tap(_bmmApp.ExplorePage.FraaKaareShowAll);
             _app.ScrollUpTo(Kare);
 
             if (_platform == Platform.Android)
