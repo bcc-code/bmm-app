@@ -178,7 +178,7 @@ namespace BMM.UI.Droid
                 HttpClient = new HttpClient(new DroidAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
                 DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
                 {
-                    DiskCacheDuration = TimeSpan.FromDays(7)
+                    DiskCacheDuration = ImageServiceConstants.DiskCacheDuration
                 }),
                 MaxMemoryCacheSize = ImageServiceConstants.ImageCacheMemorySize
             });
