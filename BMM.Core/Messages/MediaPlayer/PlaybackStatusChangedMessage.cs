@@ -5,11 +5,12 @@ namespace BMM.Core.Messages.MediaPlayer
 {
     public class PlaybackStatusChangedMessage : MvxMessage
     {
-        public PlaybackStatusChangedMessage(object sender) : base(sender)
+        public PlaybackStatusChangedMessage(object sender, IPlaybackState playbackState) : base(sender)
         {
+            PlaybackState = playbackState;
         }
 
-        public IPlaybackState PlaybackState { get; set; }
+        public IPlaybackState PlaybackState { get; }
     }
 
     public class PlaybackPositionChangedMessage : MvxMessage

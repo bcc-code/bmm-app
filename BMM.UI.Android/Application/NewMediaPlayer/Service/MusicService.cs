@@ -181,8 +181,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         /// </summary>
         public override void OnDestroy()
         {
-            var currentPlayerPosition = ExoPlayer.CurrentPosition;
             Mvx.IoCProvider.Resolve<IDownloadQueue>().AppWasKilled();
+            Mvx.IoCProvider.Resolve<IMvxMessenger>().Publish(new PlaybackStatusChangedMessage(this, new DefaultPlaybackState()));
 
             _mediaSession.Active = false;
             _mediaSession.Release();

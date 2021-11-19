@@ -187,10 +187,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public void Stop()
         {
             _mediaController.GetTransportControls().Stop();
-            _messenger.Publish(new PlaybackStatusChangedMessage(this)
-            {
-                PlaybackState = _mediaController.PlaybackState.ToPlaybackState(_mediaQueue)
-            });
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue)));
             _messenger.Publish(new CurrentTrackChangedMessage(null, this));
             Disconnect();
         }
