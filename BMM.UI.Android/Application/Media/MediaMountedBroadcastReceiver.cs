@@ -5,7 +5,7 @@ using MvvmCross;
 
 namespace BMM.UI.Droid.Application.Media
 {
-    [BroadcastReceiver(Enabled = true, Exported = true), IntentFilter(new[] { Intent.ActionMediaRemoved, Intent.ActionMediaMounted, Intent.ActionMediaUnmounted, Intent.ActionMediaBadRemoval }, DataScheme = "file")]    
+    [BroadcastReceiver(Enabled = true, Exported = true), IntentFilter(new[] { Intent.ActionMediaRemoved, Intent.ActionMediaMounted, Intent.ActionMediaUnmounted, Intent.ActionMediaBadRemoval }, DataScheme = "file")]
     public class MediaMountedBroadcastReceiver : BroadcastReceiver
     {
         public override void OnReceive(Context context, Intent intent)

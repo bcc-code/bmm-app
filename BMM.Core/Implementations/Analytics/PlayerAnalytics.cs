@@ -97,7 +97,7 @@ namespace BMM.Core.Implementations.Analytics
                             .Replace(".mp3", "");
 
                    if (!mp3.Tag?.Title?.StartsWith(downloadedTrack.Title) == null ||
-                        !mp3.Tag?.Album?.StartsWith(downloadedTrack.Album) == null || 
+                        !mp3.Tag?.Album?.StartsWith(downloadedTrack.Album) == null ||
                         uniqueKeyInFile != downloadedTrack.GetUniqueKey)
                    {
                        _analytics.LogEvent("Played file was not the requested track",

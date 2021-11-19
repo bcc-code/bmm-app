@@ -54,7 +54,7 @@ namespace BMM.UITests.Views
                 return c=>c.Marked("textView3");
             }
         }
-        
+
         public Func<AppQuery, AppQuery> DoneBtn
         {
             get

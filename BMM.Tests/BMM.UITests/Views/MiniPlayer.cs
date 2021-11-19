@@ -46,8 +46,8 @@ namespace BMM.UITests.Views
     {
         public Func<AppQuery, AppQuery> MiniPlayer
         {
-            get 
-            {				
+            get
+            {
                 return c => c.Id("MiniPlayerView");
             }
         }
@@ -55,10 +55,9 @@ namespace BMM.UITests.Views
         public Func<AppQuery, AppQuery> MiniPlayerTrackTitleElement
         {
             get
-            { 
+            {
                 return c => MiniPlayer(c).Descendant().Id("TrackTitleLabel");
             }
-          
         }
 
         public Func<AppQuery, AppQuery> MiniPlayerTrackSubTitleElement

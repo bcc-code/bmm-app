@@ -14,7 +14,7 @@ namespace BMM.UI.iOS
 
         static ExternalRelationListItemTableViewCell()
         {
-            Nib = UINib.FromName("ExternalRelationListItemTableViewCell", NSBundle.MainBundle); 
+            Nib = UINib.FromName("ExternalRelationListItemTableViewCell", NSBundle.MainBundle);
         }
 
         public ExternalRelationListItemTableViewCell(IntPtr handle) : base(handle)

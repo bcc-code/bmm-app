@@ -295,10 +295,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private void PlaybackStateChanged()
         {
-            var message = new PlaybackStatusChangedMessage(this)
-            {
-                PlaybackState = PlaybackState
-            };
+            var message = new PlaybackStatusChangedMessage(this, PlaybackState);
 
             // command center can't just use IMvxMessenger because those messages don't get delivered if the app is not in focus
             _commandCenter.PlaybackStateChanged(message.PlaybackState, _currentTrack);

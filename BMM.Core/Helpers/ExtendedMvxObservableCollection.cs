@@ -12,7 +12,6 @@ namespace BMM.Core.Helpers
 
         public ExtendedMvxObservableCollection()
         {
-                
         }
 
         /// <summary>
@@ -22,7 +21,6 @@ namespace BMM.Core.Helpers
         public ExtendedMvxObservableCollection(IEnumerable<T> items)
             : base(items)
         {
-           
         }
 
         public void RemoveAtWithoutTriggeringEvents(int position)

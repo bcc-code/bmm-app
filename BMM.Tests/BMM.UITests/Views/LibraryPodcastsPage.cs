@@ -56,7 +56,7 @@ namespace BMM.UITests.Views
         }
 
         public Func<AppQuery, AppQuery> CoverImages
-        {   
+        {
             get
             {
                 return c => c.Id("podcast_image");

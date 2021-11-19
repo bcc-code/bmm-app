@@ -68,7 +68,7 @@ namespace BMM.UITests.Views
         public Func<AppQuery, AppQuery> DownloadViaMobileNetworkSwitch
         {
             get
-            { 
+            {
                 return c => c.Text("Download via mobile network");
             }
         }

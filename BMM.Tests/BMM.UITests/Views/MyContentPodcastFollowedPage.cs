@@ -19,7 +19,7 @@ namespace BMM.UITests.Views
                 return c => c.Marked("title");
             }
         }
-   
+
         public Func<AppQuery, AppQuery> FollowedImage
         {
             get

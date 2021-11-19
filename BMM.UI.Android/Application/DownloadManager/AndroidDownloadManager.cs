@@ -129,7 +129,7 @@ namespace BMM.UI.Droid.Application.DownloadManager
         }
 
         /// <summary>
-        /// Since the android DownloadManager does not provide any way of being notified when a file is download is finished this 
+        /// Since the android DownloadManager does not provide any way of being notified when a file is download is finished this
         /// watcher polls the download and updates its status. This allows for the UI to update when the download is finished.
         /// </summary>
         void StartDownloadWatcher()
