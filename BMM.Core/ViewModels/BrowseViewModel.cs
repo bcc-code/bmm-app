@@ -24,7 +24,7 @@ namespace BMM.Core.ViewModels
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            var browseItems = await Client.Browse.Get();
+            var browseItems = await Client.Browse.Get(policy);
 
             var translatedItems = await _translateDocsAction.ExecuteGuarded(browseItems.ToList());
             var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedItems);

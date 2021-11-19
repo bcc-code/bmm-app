@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Reflection;
 using Acr.UserDialogs;
@@ -15,6 +16,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Core;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -45,6 +47,8 @@ using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Playback;
 using Com.Google.Android.Exoplayer2.Ext.Mediasession;
 using FFImageLoading;
+using FFImageLoading.Cache;
+using FFImageLoading.Config;
 using Google.Android.Material.FloatingActionButton;
 using Google.Android.Material.Navigation;
 using IdentityModel.OidcClient.Browser;
@@ -58,6 +62,7 @@ using MvvmCross.Platforms.Android;
 using MvvmCross.Platforms.Android.Core;
 using MvvmCross.Platforms.Android.Presenters;
 using MvvmCross.ViewModels;
+using Xamarin.Essentials;
 using TrackMediaHelper = BMM.UI.Droid.Application.Implementations.Media.TrackMediaHelper;
 
 namespace BMM.UI.Droid
@@ -167,10 +172,15 @@ namespace BMM.UI.Droid
 
         private static void InitializeImageService()
         {
-            ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
+            ImageService.Instance.Initialize(new Configuration
             {
                 InvalidateLayout = false,
-                HttpClient = new HttpClient(new DroidAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
+                HttpClient = new HttpClient(new DroidAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
+                DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
+                {
+                    DiskCacheDuration = ImageServiceConstants.DiskCacheDuration
+                }),
+                MaxMemoryCacheSize = ImageServiceConstants.ImageCacheMemorySize
             });
         }
 

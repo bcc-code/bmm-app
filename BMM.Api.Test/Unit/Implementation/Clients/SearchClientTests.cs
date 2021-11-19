@@ -5,6 +5,7 @@ using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients;
 using BMM.Api.Implementation.Models;
 using Moq;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace BMM.Api.Test.Unit.Implementation.Clients
@@ -57,7 +58,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
 
         private IList<Document> CreateASampleListOfDocuments()
         {
-            return new List<Document>() {new Document()};
+            return new List<Document>() { Substitute.For<Document>() };
         }
 
         private IList<string> CreateASampleListOfSugestions()

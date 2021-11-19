@@ -67,7 +67,8 @@ namespace BMM.Api.Implementation.Models
 
             return GetUniqueKey == other.GetUniqueKey
                    && LastPosition == other.LastPosition
-                   && LastPlayedAtUTC == other.LastPlayedAtUTC;
+                   && LastPlayedAtUTC == other.LastPlayedAtUTC
+                   && ArtworkUri == other.ArtworkUri;
         }
 
         public override bool Equals(object obj)
@@ -89,6 +90,7 @@ namespace BMM.Api.Implementation.Models
                 int hashCode = GetUniqueKey.GetHashCode();
                 hashCode = (hashCode * 397) ^ LastPosition.GetHashCode();
                 hashCode = (hashCode * 397) ^ (LastPlayedAtUTC != null ? LastPlayedAtUTC.Value.ToBinary().GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ArtworkUri != null ? ArtworkUri.GetHashCode() : 0);
                 return hashCode;
             }
         }

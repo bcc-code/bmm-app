@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.Views;
+using BMM.Core.Extensions;
 using Google.Android.Material.BottomSheet;
 
 namespace BMM.UI.Droid.Application.Helpers.BottomSheet
@@ -38,8 +39,7 @@ namespace BMM.UI.Droid.Application.Helpers.BottomSheet
             _bottomSheet.State = BottomSheetBehavior.StateHidden;
         }
 
-        public bool IsOpen => _bottomSheet.State != BottomSheetBehavior.StateHidden;
-
+        public bool IsOpen => _bottomSheet.State.IsNoneOf(BottomSheetBehavior.StateHidden, BottomSheetBehavior.StateCollapsed);
         public event EventHandler<int> OnBottomSheetStateChanged;
     }
 }

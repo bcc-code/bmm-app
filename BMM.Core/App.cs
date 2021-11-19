@@ -62,7 +62,6 @@ using BMM.Core.Implementations.Validators;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using FFImageLoading;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.IoC;
@@ -316,7 +315,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<IUsersClient, UsersClient>();
             Mvx.IoCProvider.RegisterDecorator<IDiscoverClient, CachedDiscoverClientDecorator, DiscoverClient>();
             Mvx.IoCProvider.RegisterType<ISharedPlaylistClient, SharedPlaylistClient>();
-            Mvx.IoCProvider.RegisterType<IBrowseClient, BrowseClient>();
+            Mvx.IoCProvider.RegisterDecorator<IBrowseClient, CachedBrowseClientDecorator, BrowseClient>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBMMClient, InjectedBmmClient>();
         }

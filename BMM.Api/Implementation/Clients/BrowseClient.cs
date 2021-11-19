@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
@@ -14,7 +15,7 @@ namespace BMM.Api.Implementation.Clients
         {
         }
 
-        public Task<IEnumerable<Document>> Get()
+        public Task<IEnumerable<Document>> Get(CachePolicy policy)
         {
             var uri = new UriTemplate(ApiUris.Browse);
             return Get<IEnumerable<Document>>(uri);

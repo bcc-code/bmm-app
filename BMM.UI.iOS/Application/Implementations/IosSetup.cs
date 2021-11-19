@@ -1,9 +1,12 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.IO;
+using System.Net.Http;
 using Acr.UserDialogs;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Core;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -26,6 +29,8 @@ using BMM.UI.iOS.Networking;
 using BMM.UI.iOS.NewMediaPlayer;
 using BMM.UI.iOS.UI;
 using FFImageLoading;
+using FFImageLoading.Cache;
+using FFImageLoading.Config;
 using IdentityModel.OidcClient.Browser;
 using MvvmCross;
 using MvvmCross.Base;
@@ -33,6 +38,7 @@ using MvvmCross.IoC;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Platforms.Ios.Presenters;
 using MvvmCross.ViewModels;
+using Xamarin.Essentials;
 
 namespace BMM.UI.iOS
 {
@@ -93,10 +99,15 @@ namespace BMM.UI.iOS
 
         private static void InitializeImageService()
         {
-            ImageService.Instance.Initialize(new FFImageLoading.Config.Configuration
+            ImageService.Instance.Initialize(new Configuration
             {
                 InvalidateLayout = false,
-                HttpClient = new HttpClient(new iOSAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
+                HttpClient = new HttpClient(new iOSAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
+                DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
+                {
+                    DiskCacheDuration = ImageServiceConstants.DiskCacheDuration
+                }),
+                MaxMemoryCacheSize = ImageServiceConstants.ImageCacheMemorySize
             });
         }
 

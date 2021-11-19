@@ -4,12 +4,13 @@ using MvvmCross.Binding.BindingContext;
 
 namespace BMM.UI.iOS
 {
-    public partial class LibraryArchiveViewController : BaseViewController<LibraryArchiveViewModel>
+    public partial class LibraryArchiveViewController : BaseViewController<LibraryArchiveViewModel>, IHaveLargeTitle
     {
         public LibraryArchiveViewController() : base(nameof(LibraryArchiveViewController))
         {
         }
 
+        public double? InitialLargeTitleHeight { get; set; }
         public override Type ParentViewControllerType => typeof(BrowseViewController);
 
         public override void ViewDidLoad()

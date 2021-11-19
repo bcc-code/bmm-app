@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace BMM.Api.Implementation.Models
 {
     [JsonObject, JsonConverter(typeof(DocumentConverter))]
-    public class Document
+    public abstract class Document
     {
         [JsonProperty(PropertyName = "type"), JsonConverter(typeof(StringEnumConverter))]
         public DocumentType DocumentType { get; set; }
