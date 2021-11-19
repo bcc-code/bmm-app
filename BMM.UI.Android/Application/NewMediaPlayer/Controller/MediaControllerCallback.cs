@@ -71,10 +71,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 _messenger.Publish(completedEvent);
             }
 
-            _messenger.Publish(new PlaybackStatusChangedMessage(this)
-            {
-                PlaybackState = state.ToPlaybackState(_mediaQueue)
-            });
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, state.ToPlaybackState(_mediaQueue)));
 
             if (state.ErrorMessage != null)
             {
