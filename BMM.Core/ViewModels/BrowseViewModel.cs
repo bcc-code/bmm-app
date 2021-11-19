@@ -5,7 +5,6 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
-using BMM.Core.Implementations.UI.Interfaces;
 using BMM.Core.ViewModels.Base;
 
 namespace BMM.Core.ViewModels

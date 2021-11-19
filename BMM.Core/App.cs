@@ -58,12 +58,10 @@ using BMM.Core.Implementations.Startup;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Implementations.UI;
-using BMM.Core.Implementations.UI.Interfaces;
 using BMM.Core.Implementations.Validators;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using FFImageLoading;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.IoC;
@@ -256,7 +254,6 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITimeDiagnosticTool, TimeDiagnosticTool>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDocumentVisualEqualityChecker, DocumentVisualEqualityChecker>();
 
             _assemblies = AppDomain
                 .CurrentDomain
