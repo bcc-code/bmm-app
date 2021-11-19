@@ -440,7 +440,8 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Nemrég lejátszott",
-    "NoHistoryYet": "Még nincs lejátszási története"
+    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
+    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Legújabb üzenetek"

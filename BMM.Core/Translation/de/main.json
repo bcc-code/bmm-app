@@ -440,7 +440,8 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Vor kurzem gespielt",
-    "NoHistoryYet": "Noch keine Abspielhistorie."
+    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
+    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Neue Reden"
