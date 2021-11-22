@@ -9,13 +9,16 @@ namespace BMM.UI.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            NavigationBar.BarTintColor = AppColors.PlayerBackgroundColor;
-            NavigationBar.Translucent = false;
-            NavigationBar.TintColor = AppColors.ColorPrimary;
-            NavigationBar.TitleTextAttributes = new UIStringAttributes
+            var appearance = new UINavigationBarAppearance();
+            appearance.ConfigureWithOpaqueBackground();
+            appearance.BackgroundColor = AppColors.PlayerBackgroundColor;
+            appearance.TitleTextAttributes = new UIStringAttributes
             {
                 ForegroundColor = UIColor.White
             };
+            NavigationBar.StandardAppearance = appearance;
+            NavigationBar.ScrollEdgeAppearance = appearance;
+            NavigationBar.TintColor = AppColors.ColorPrimary;
         }
 
         public override UIStatusBarStyle PreferredStatusBarStyle()
