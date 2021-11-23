@@ -6,19 +6,42 @@ namespace BMM.UI.iOS
 {
     public class PlayerNavigationController: MvxNavigationController
     {
+        private UIColor BarBackgroundColor => AppColors.PlayerBackgroundColor;
+        private UIColor BarForegroundColor => UIColor.White;
+        
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            if (UIDevice.CurrentDevice.CheckSystemVersion(13, 0))
+                SetNewNavigationBarAppearance();
+            else
+                SetOldNavigationBarAppearance();
+            
+            NavigationBar.TintColor = AppColors.ColorPrimary;
+        }
+
+        private void SetNewNavigationBarAppearance()
+        {
             var appearance = new UINavigationBarAppearance();
             appearance.ConfigureWithOpaqueBackground();
-            appearance.BackgroundColor = AppColors.PlayerBackgroundColor;
+            appearance.BackgroundColor = BarBackgroundColor;
             appearance.TitleTextAttributes = new UIStringAttributes
             {
-                ForegroundColor = UIColor.White
+                ForegroundColor = BarForegroundColor
             };
             NavigationBar.StandardAppearance = appearance;
             NavigationBar.ScrollEdgeAppearance = appearance;
-            NavigationBar.TintColor = AppColors.ColorPrimary;
+        }
+
+        private void SetOldNavigationBarAppearance()
+        {
+            NavigationBar.BarTintColor = BarBackgroundColor;
+            NavigationBar.Translucent = false;
+            NavigationBar.TitleTextAttributes = new UIStringAttributes
+            {
+                ForegroundColor = BarForegroundColor
+            };
         }
 
         public override UIStatusBarStyle PreferredStatusBarStyle()
