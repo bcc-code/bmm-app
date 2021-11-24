@@ -20,6 +20,7 @@ namespace BMM.Core.ViewModels
                     await NavigationService.Navigate<PlayerViewModel>();
             });
             UpdatePlaybackState(MediaPlayer.PlaybackState);
+            SetupSubscriptions();
         }
 
         public IMvxCommand OpenPlayerCommand { get; set; }

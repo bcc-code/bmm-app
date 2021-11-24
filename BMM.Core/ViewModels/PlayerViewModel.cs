@@ -133,6 +133,7 @@ namespace BMM.Core.ViewModels
             IsShuffleEnabled = MediaPlayer.IsShuffleEnabled;
             UpdatePlaybackState(MediaPlayer.PlaybackState);
             UpdateExternalRelations();
+            SetupSubscriptions();
         }
 
         public void Prepare(bool showPlayer)
@@ -143,7 +144,6 @@ namespace BMM.Core.ViewModels
         public override void ViewAppearing()
         {
             base.ViewAppearing();
-
             _toggleToken = Messenger.SubscribeOnMainThread<TogglePlayerMessage>(OnTogglePlayerMessage);
         }
 
@@ -216,7 +216,6 @@ namespace BMM.Core.ViewModels
         protected override async Task OnCurrentTrackChanged(CurrentTrackChangedMessage message)
         {
             await base.OnCurrentTrackChanged(message);
-
             UpdateExternalRelations();
         }
 

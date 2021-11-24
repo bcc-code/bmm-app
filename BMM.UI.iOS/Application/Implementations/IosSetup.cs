@@ -15,8 +15,8 @@ using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Networking;
 using BMM.Core.Implementations.Notifications;
-using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -25,7 +25,6 @@ using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
-using BMM.UI.iOS.Networking;
 using BMM.UI.iOS.NewMediaPlayer;
 using BMM.UI.iOS.UI;
 using FFImageLoading;
@@ -102,7 +101,7 @@ namespace BMM.UI.iOS
             ImageService.Instance.Initialize(new Configuration
             {
                 InvalidateLayout = false,
-                HttpClient = new HttpClient(new iOSAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
+                HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
                 DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
                 {
                     DiskCacheDuration = ImageServiceConstants.DiskCacheDuration

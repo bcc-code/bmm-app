@@ -120,7 +120,6 @@ namespace BMM.Core
 
             if (CallSynchronous(IsAuthenticated))
             {
-
                 if (IsOffline())
                 {
                     Log("Logged in but offline");
