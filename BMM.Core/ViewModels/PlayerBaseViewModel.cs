@@ -119,11 +119,14 @@ namespace BMM.Core.ViewModels
 
             PlayPauseCommand = new MvxCommand(MediaPlayer.PlayPause);
 
+            CurrentTrack = MediaPlayer.CurrentTrack;
+            Duration = MediaPlayer.CurrentTrack?.Duration ?? 0;
+        }
+
+        protected void SetupSubscriptions()
+        {
             _updateStateToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(
-                msg =>
-                {
-                    UpdatePlaybackState(msg.PlaybackState);
-                });
+                msg => { UpdatePlaybackState(msg.PlaybackState); });
             _updatePositionToken = Messenger.Subscribe<PlaybackPositionChangedMessage>(message =>
             {
                 CurrentPosition = message.CurrentPosition;
@@ -135,9 +138,6 @@ namespace BMM.Core.ViewModels
                 Duration = message.CurrentTrack?.Duration ?? 0;
                 await OnCurrentTrackChanged(message);
             });
-
-            CurrentTrack = MediaPlayer.CurrentTrack;
-            Duration = MediaPlayer.CurrentTrack?.Duration ?? 0;
         }
 
         protected virtual async Task OnCurrentTrackChanged(CurrentTrackChangedMessage message)

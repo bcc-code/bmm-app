@@ -24,6 +24,7 @@ using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Networking;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Player;
 using BMM.Core.Implementations.Security;
@@ -40,7 +41,6 @@ using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.Implementations.Oidc;
 using BMM.UI.Droid.Application.Implementations.UI;
 using BMM.UI.Droid.Application.Media;
-using BMM.UI.Droid.Application.Networking;
 using BMM.UI.Droid.Application.NewMediaPlayer;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
@@ -166,7 +166,6 @@ namespace BMM.UI.Droid
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
 
             UserDialogs.Init(() => Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
-
             InitializeMediaPlayer();
         }
 
@@ -175,7 +174,7 @@ namespace BMM.UI.Droid
             ImageService.Instance.Initialize(new Configuration
             {
                 InvalidateLayout = false,
-                HttpClient = new HttpClient(new DroidAuthenticatedNativeHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
+                HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
                 DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
                 {
                     DiskCacheDuration = ImageServiceConstants.DiskCacheDuration

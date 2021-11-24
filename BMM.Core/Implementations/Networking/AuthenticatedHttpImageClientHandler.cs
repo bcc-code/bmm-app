@@ -5,13 +5,13 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework.Exceptions;
 using BMM.Core.Extensions;
 
-namespace BMM.UI.iOS.Networking
+namespace BMM.Core.Implementations.Networking
 {
-    public class iOSAuthenticatedNativeHttpImageClientHandler : NSUrlSessionHandler
+    public class AuthenticatedHttpImageClientHandler : HttpClientHandler
     {
         private readonly IMediaRequestHttpHeaders _headerProvider;
 
-        public iOSAuthenticatedNativeHttpImageClientHandler(IMediaRequestHttpHeaders headerProvider)
+        public AuthenticatedHttpImageClientHandler(IMediaRequestHttpHeaders headerProvider)
         {
             _headerProvider = headerProvider;
         }
