@@ -5,6 +5,7 @@ using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Notifications;
@@ -49,8 +50,16 @@ namespace BMM.UI.Droid.Application.Activities
         private IMediaPlayer _mediaPlayer;
         private AndroidMediaPlayer _androidPlayer;
         private BottomNavigationView? _bottomNavigationView;
-
+        private FrameLayout _miniPlayerFrame;
         private string _unhandledDeepLink;
+
+        private BottomNavigationView BottomNavigationView
+            => _bottomNavigationView ??= FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
+
+        private FrameLayout MiniPlayerFrame
+            => _miniPlayerFrame ??= FindViewById<FrameLayout>(Resource.Id.miniplayer_frame);
+
+        private PlayerFragment PlayerFragment => SupportFragmentManager.FindFragmentById(Resource.Id.player_frame) as PlayerFragment;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -106,7 +115,6 @@ namespace BMM.UI.Droid.Application.Activities
                 SupportFragmentManager.PopBackStackImmediate();
 
             _mediaPlayer.ViewHasBeenDestroyed();
-
             return true;
         }
 
@@ -118,10 +126,23 @@ namespace BMM.UI.Droid.Application.Activities
 
         public void SetBottomBarVisibility(ViewStates viewState)
         {
-            var bottomBar = _bottomNavigationView ??= FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
+            var bottomBar = BottomNavigationView;
 
             if (bottomBar != null && bottomBar.Visibility != viewState)
                 bottomBar.Visibility = viewState;
+        }
+
+        public int GetSnackbarBottomMargin()
+        {
+            int bottomBarHeight = BottomNavigationView?.Height ?? 0;
+            int miniPlayerHeight = 0;
+
+            var playerFragment = PlayerFragment;
+
+            if (playerFragment != null && !playerFragment.IsOpen)
+                miniPlayerHeight = MiniPlayerFrame?.Height ?? 0;
+
+            return bottomBarHeight + miniPlayerHeight;
         }
 
         private void ClearBackStack()
@@ -134,7 +155,7 @@ namespace BMM.UI.Droid.Application.Activities
 
         public override void OnBackPressed()
         {
-            var playerFrag = SupportFragmentManager.FindFragmentById(Resource.Id.player_frame) as PlayerFragment;
+            var playerFrag = PlayerFragment;
 
             if (playerFrag != null && playerFrag.IsOpen)
             {

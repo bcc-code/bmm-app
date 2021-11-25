@@ -45,6 +45,8 @@ using BMM.UI.Droid.Application.NewMediaPlayer;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Playback;
+using BMM.UI.iOS;
+using BMM.UI.iOS.UI;
 using Com.Google.Android.Exoplayer2.Ext.Mediasession;
 using FFImageLoading;
 using FFImageLoading.Cache;
@@ -130,6 +132,7 @@ namespace BMM.UI.Droid
         {
             base.InitializeFirstChance();
 
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, DroidUserDialogsFactory>();
             Mvx.IoCProvider.CallbackWhenRegistered<IMvxTargetBindingFactoryRegistry>(RegisterAdditionalBindings);
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IStopwatchManager, StopwatchManager>();
@@ -142,12 +145,14 @@ namespace BMM.UI.Droid
 #if DEBUG
             Mvx.IoCProvider.RegisterType<ILogger>(
                 // Use direct instance of UserDialog.Instance to avoid nested-loops
-                () => new ErrorDialogDisplayingLogger(UserDialogs.Instance, new AndroidLogger(), Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>())
-            );
+                () => new ErrorDialogDisplayingLogger(Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
+                    new AndroidLogger(),
+                    Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()));
 #else
             Mvx.IoCProvider.RegisterType<ILogger, AndroidLogger>();
 #endif
 
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, DroidExceptionHandlingUserDialogs>();
             Mvx.IoCProvider.RegisterType<IClipboardService, ClipboardService>();
 
             Mvx.IoCProvider.RegisterSingleton<ISdkVersionHelper>(new SdkVersionHelper(Build.VERSION.SdkInt));
@@ -164,8 +169,6 @@ namespace BMM.UI.Droid
             Mvx.IoCProvider.RegisterType<MediaMountedHandler, MediaMountedHandler>();
 
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
-
-            UserDialogs.Init(() => Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
             InitializeMediaPlayer();
         }
 

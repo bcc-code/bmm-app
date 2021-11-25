@@ -139,14 +139,13 @@ namespace BMM.Core
 
                 // Use direct instance of UserDialog.Instance to avoid nested-loops with ExceptionHandlingUserDialogs
                 () => new ExceptionHandler(
-                    new ToastDisplayer(UserDialogs.Instance),
+                    new ToastDisplayer(Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create()),
                     Mvx.IoCProvider.Resolve<ILogger>(),
                     Mvx.IoCProvider.Resolve<IAnalytics>(),
                     Mvx.IoCProvider.Resolve<IBMMLanguageBinder>())
             );
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<BackgroundTaskExecutor, BackgroundTaskExecutor>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, ExceptionHandlingUserDialogs>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IToastDisplayer, ToastDisplayer>();
 
             Mvx.IoCProvider.RegisterDecorator<IContacter, ErrorCatchingContacterDecorator, EmailContacter>();

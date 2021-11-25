@@ -1,3 +1,4 @@
+using System;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
@@ -43,5 +44,13 @@ namespace BMM.UI.iOS
 
             set.Apply();
         }
+
+        public override void ViewDidLayoutSubviews()
+        {
+            base.ViewDidLayoutSubviews();
+            MiniPlayerHeight = View!.Frame.Height;
+        }
+
+        public static nfloat MiniPlayerHeight { get; set; }
     }
 }
