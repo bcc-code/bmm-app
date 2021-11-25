@@ -13,8 +13,8 @@
     "Audiobook": "Carte audio",
     "Exegesis": "Tălmăcire",
     "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday"
+    "Today": "Astăzi",
+    "Yesterday": "Ieri"
   },
   "Streak": {
     "Message": "Linia ta săptămâna aceasta",
@@ -182,8 +182,8 @@
     "DownloadedContent": "Conținut descărcat",
     "FollowedPodcasts": "Podcast-uri urmărite",
     "MyTracks": "Piesele mele",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
+    "MyPlaylists": "Play-list-urile mele",
+    "SharedWithMe": "Distribuite cu mine",
     "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
@@ -329,7 +329,7 @@
     "Private": "Privat",
     "DeletePlaylist": "Șterge play-list",
     "EditPlaylist": "Editare listă de redare",
-    "SharePlaylist": "Share playlist",
+    "SharePlaylist": "Distribuie play-list",
     "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
