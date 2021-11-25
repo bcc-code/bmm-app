@@ -7,7 +7,7 @@ using MvvmCross.Base;
 
 namespace BMM.Core.Implementations.UI
 {
-    public class ToastDisplayer: IToastDisplayer
+    public class ToastDisplayer : IToastDisplayer
     {
         private const int ToastDuration = 4000;
         private readonly IUserDialogs _userDialogs;

@@ -52,6 +52,7 @@ namespace BMM.UI.iOS
             // because it's called after creating the DI containers in Mvx.
             Firebase.Core.App.Configure();
 
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, iOSUserDialogsFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IStopwatchManager, StopwatchManager>();
             var stopwatch = Mvx.IoCProvider.Resolve<IStopwatchManager>();
             stopwatch.StartAndGetStopwatch(StopwatchType.AppStart);
@@ -61,12 +62,16 @@ namespace BMM.UI.iOS
 #if DEBUG
             Mvx.IoCProvider.RegisterType<ILogger>(
                 // Use direct instance of UserDialog.Instance to avoid nested-loops
-                () => new ErrorDialogDisplayingLogger(UserDialogs.Instance, new IosLogger(), Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>())
+                () => new ErrorDialogDisplayingLogger(
+                    Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
+                    new IosLogger(),
+                    Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>())
             );
 #else
             Mvx.IoCProvider.RegisterType<ILogger, IosLogger>();
 #endif
 
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, iOSExceptionHandlingUserDialogs>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IUiDependentExecutor, BottomNavigationLoadedDependentExecutor>();
             Mvx.IoCProvider.RegisterType<ISimpleHttpClient, NetworkAccessAwareHttpClient>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackMediaHelper, TrackMediaHelper>();

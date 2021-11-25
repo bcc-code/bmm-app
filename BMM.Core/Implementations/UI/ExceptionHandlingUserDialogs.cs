@@ -7,14 +7,16 @@ using BMM.Core.Implementations.Exceptions;
 
 namespace BMM.Core.Implementations.UI
 {
-    public class ExceptionHandlingUserDialogs : IUserDialogs
+    public abstract class ExceptionHandlingUserDialogs : IUserDialogs
     {
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IUserDialogs _userDialogs;
 
-        public ExceptionHandlingUserDialogs(IExceptionHandler exceptionHandler)
+        protected ExceptionHandlingUserDialogs(
+            IUserDialogs userDialogs,
+            IExceptionHandler exceptionHandler)
         {
-            _userDialogs = UserDialogs.Instance;
+            _userDialogs = userDialogs;
             _exceptionHandler = exceptionHandler;
         }
 

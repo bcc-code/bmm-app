@@ -157,11 +157,14 @@
     <Compile Include="Application\Implementations\FirebaseRemoteConfig\AndroidFirebaseRemoteConfig.cs" />
     <Compile Include="Application\Implementations\AndroidLogger.cs" />
     <Compile Include="Application\Implementations\ClipboardService.cs" />
+    <Compile Include="Application\Implementations\DroidUserDialogs.cs" />
     <Compile Include="Application\Implementations\Notifications\AndroidIntentNotification.cs" />
     <Compile Include="Application\Implementations\Notifications\RemoteMessageNotification.cs" />
     <Compile Include="Application\Implementations\Oidc\BrowserSelector.cs" />
     <Compile Include="Application\Implementations\Oidc\ChromeCustomTabsBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\WebkitWebViewBrowsercs.cs" />
+    <Compile Include="Application\Implementations\UI\DroidExceptionHandlingUserDialogs.cs" />
+    <Compile Include="Application\Implementations\UI\DroidUserDialogsFactory.cs" />
     <Compile Include="Application\Implementations\ViewModelAwareViewPresenter.cs" />
     <Compile Include="Application\Implementations\FileStorage\AndroidFileStorage.cs" />
     <Compile Include="Application\ItemDecorators\Enums\ItemDecorationOrientation.cs" />

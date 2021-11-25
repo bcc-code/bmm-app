@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -30,6 +31,14 @@ namespace BMM.UI.iOS
             TabBar.UnselectedItemTintColor = AppColors.TabBarUnselectedColor;
             TabBar.AccessibilityIdentifier = "tab_bar";
         }
+
+        public override void ViewDidLayoutSubviews()
+        {
+            base.ViewDidLayoutSubviews();
+            BottomBarHeight = TabBar.Frame.Height;
+        }
+
+        public static nfloat BottomBarHeight { get; private set; }
 
         protected override void SetTitleAndTabBarItem(UIViewController viewController, MvxTabPresentationAttribute attribute)
         {
