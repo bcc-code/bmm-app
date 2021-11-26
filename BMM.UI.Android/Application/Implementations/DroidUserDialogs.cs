@@ -7,12 +7,10 @@ using AndroidX.AppCompat.App;
 using BMM.UI.Droid.Application.Activities;
 using Google.Android.Material.Snackbar;
 
-namespace BMM.UI.iOS
+namespace BMM.UI.Droid.Application.Implementations
 {
     public class DroidUserDialogs : UserDialogsImpl
     {
-        private int DefaultSnackbarMargin = 16;
-
         public DroidUserDialogs(Func<Activity> getTopActivity) : base(getTopActivity)
         {
         }
