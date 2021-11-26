@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.UI;
@@ -43,6 +44,19 @@ namespace BMM.Core.ViewModels
         {
             Sections = BuildSections();
             return base.Initialize();
+        }
+
+        protected override void SaveStateToBundle(IMvxBundle bundle)
+        {
+            base.SaveStateToBundle(bundle);
+            bundle.SaveParameter(Track);
+        }
+
+        protected override void ReloadFromBundle(IMvxBundle state)
+        {
+            base.ReloadFromBundle(state);
+            var param = state.RetrieveParameter<Track>();
+            Prepare(param);
         }
 
         public IEnumerable<ListSection<IListContentItem>> BuildSections()
