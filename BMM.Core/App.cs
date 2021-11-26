@@ -136,8 +136,6 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IConnection, XamarinEssentialsConnection>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IExceptionHandler>(
-
-                // Use direct instance of UserDialog.Instance to avoid nested-loops with ExceptionHandlingUserDialogs
                 () => new ExceptionHandler(
                     new ToastDisplayer(Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create()),
                     Mvx.IoCProvider.Resolve<ILogger>(),

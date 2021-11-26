@@ -144,7 +144,6 @@ namespace BMM.UI.Droid
             Mvx.IoCProvider.RegisterType<INotificationSubscriptionTokenProvider, FirebaseTokenProvider>();
 #if DEBUG
             Mvx.IoCProvider.RegisterType<ILogger>(
-                // Use direct instance of UserDialog.Instance to avoid nested-loops
                 () => new ErrorDialogDisplayingLogger(Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
                     new AndroidLogger(),
                     Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()));
