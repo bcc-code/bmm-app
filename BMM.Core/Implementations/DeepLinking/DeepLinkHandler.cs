@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api;
@@ -14,6 +15,7 @@ using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
 using BMM.Core.Implementations.DeepLinking.Parameters;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
@@ -46,6 +48,7 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IUserAuthChecker _authChecker;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
+        private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
 
         private readonly IList<IDeepLinkParser> _links;
 
@@ -173,6 +176,11 @@ namespace BMM.Core.Implementations.DeepLinking
         public bool OpenFromInsideOfApp(Uri uri) => Open(uri, "internal link opened");
 
         public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, "deep link opened");
+
+        public bool DeepLinkStartsPlaying(string deepLink)
+        {
+            return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(new Uri(deepLink), out _);
+        }
 
         private bool Open(Uri uri, string analyticsEventName)
         {

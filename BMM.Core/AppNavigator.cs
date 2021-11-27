@@ -14,6 +14,7 @@ using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Messages;
@@ -50,6 +51,7 @@ namespace BMM.Core
         private readonly ILanguagesLogger _languagesLogger;
         private readonly ICache _cache;
         private readonly IMediaPlayer _mediaPlayer;
+        private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
         private readonly SupportVersionChecker _supportVersionChecker;
         private Stopwatch _stopwatch;
 
@@ -65,6 +67,7 @@ namespace BMM.Core
             ILanguagesLogger languagesLogger,
             ICache cache,
             IMediaPlayer mediaPlayer,
+            IRememberedQueueInfoService rememberedQueueInfoService,
             SupportVersionChecker supportVersionChecker
             )
         {
@@ -79,6 +82,7 @@ namespace BMM.Core
             _languagesLogger = languagesLogger;
             _cache = cache;
             _mediaPlayer = mediaPlayer;
+            _rememberedQueueInfoService = rememberedQueueInfoService;
             _supportVersionChecker = supportVersionChecker;
         }
 
@@ -143,6 +147,9 @@ namespace BMM.Core
         {
             try
             {
+                if (_rememberedQueueInfoService.PreventRecoveringQueue)
+                    return;
+
                 bool queueSaved = await _cache.ContainsKeys(StorageKeys.RememberedQueue, StorageKeys.CurrentTrackPosition);
 
                 if (!queueSaved)
@@ -173,6 +180,10 @@ namespace BMM.Core
                 await _cache.Invalidate(StorageKeys.RememberedQueue);
                 await _cache.Invalidate(StorageKeys.CurrentTrackPosition);
                 Log($"Error during {nameof(RestoreMediaQueue)}. EX: {e.Message}. Remembered queue cleared");
+            }
+            finally
+            {
+                _rememberedQueueInfoService.NotifyAfterRecoveringQueue();
             }
         }
 

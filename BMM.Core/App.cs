@@ -90,6 +90,7 @@ namespace BMM.Core
             BlobCache.ApplicationName = GlobalConstants.PackageName;
 
             SetupLanguageBinder();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRememberedQueueInfoService, RememberedQueueInfoService>();
             Mvx.IoCProvider.RegisterType<IDeviceInfo, DeviceInfo>();
             Mvx.IoCProvider.RegisterTypeIfMissing<IUiDependentExecutor, NullDependentExecutor>();
             Mvx.IoCProvider.RegisterType<IFirebaseRemoteConfig, FirebaseRemoteConfig>();
@@ -104,7 +105,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<IBmmVersionProvider, BmmVersionProvider>();
 
             Mvx.IoCProvider.RegisterType<IAnalytics, AppCenterAnalytics>();
-            Mvx.IoCProvider.RegisterType<IDeepLinkHandler, DeepLinkHandler>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeepLinkHandler, DeepLinkHandler>();
             Mvx.IoCProvider.RegisterType<IShareLink, ShareLink>();
             Mvx.IoCProvider.RegisterType<IAppNavigator, AppNavigator>();
             Mvx.IoCProvider.RegisterTypeIfMissing<ICredentialsStorage, AkavacheCredentialsStorage>();
