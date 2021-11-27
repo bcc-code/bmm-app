@@ -9,6 +9,7 @@ using Android.Widget;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
@@ -83,10 +84,7 @@ namespace BMM.UI.Droid.Application.Activities
 
             var viewPresenter = Mvx.IoCProvider.GetSingleton<IMvxAndroidViewPresenter>();
 
-            if (Intent?.Data != null)
-            {
-                _unhandledDeepLink = Intent.Data.ToString();
-            }
+            SetPendingDeepLink();
 
             if (bundle == null)
             {
@@ -180,11 +178,8 @@ namespace BMM.UI.Droid.Application.Activities
 
         protected override void OnNewIntent(Intent intent)
         {
-            if (intent.Data != null)
-            {
-                var deepLink = new System.Uri(intent.Data.ToString());
-                Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(deepLink);
-            }
+            SetPendingDeepLink();
+            HandleDeepLink();
         }
 
         protected override void OnResume()
@@ -201,6 +196,14 @@ namespace BMM.UI.Droid.Application.Activities
             {
                 documentsViewModel.RefreshInBackground();
             }
+        }
+        
+        private void SetPendingDeepLink()
+        {
+            _unhandledDeepLink = Intent?.Data?.ToString();
+
+            if (!string.IsNullOrEmpty(_unhandledDeepLink))
+                Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPendingDeepLink(_unhandledDeepLink);
         }
 
         private void CheckUnhandledIntent()

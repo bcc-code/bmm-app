@@ -17,5 +17,7 @@ namespace BMM.Core.Helpers
         /// <returns>True if the handler was able to resolve the link, false otherwise.</returns>
         /// <param name="uri">URI.</param>
         bool OpenFromOutsideOfApp(Uri uri);
+
+        bool DeepLinkStartsPlaying(string deepLink);
     }
 }
