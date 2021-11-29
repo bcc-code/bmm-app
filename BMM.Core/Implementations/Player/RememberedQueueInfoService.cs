@@ -1,24 +1,16 @@
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.Player.Interfaces;
 
 namespace BMM.Core.Implementations.Player
 {
     public class RememberedQueueInfoService : IRememberedQueueInfoService
     {
-        private readonly IDeepLinkHandler _deepLinkHandler;
-
-        public RememberedQueueInfoService(IDeepLinkHandler deepLinkHandler)
-        {
-            _deepLinkHandler = deepLinkHandler;
-        }
-
         public bool PreventRecoveringQueue { get; private set; }
 
-        public void SetPendingDeepLink(string unhandledDeepLink)
+        public void SetPlayerHasPendingOperation()
         {
-            PreventRecoveringQueue = _deepLinkHandler.DeepLinkStartsPlaying(unhandledDeepLink);
+            PreventRecoveringQueue = true;
         }
-        
+
         public void NotifyAfterRecoveringQueue()
         {
             PreventRecoveringQueue = false;
