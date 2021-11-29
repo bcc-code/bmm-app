@@ -48,7 +48,6 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IUserAuthChecker _authChecker;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
-        private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
 
         private readonly IList<IDeepLinkParser> _links;
 
@@ -177,7 +176,7 @@ namespace BMM.Core.Implementations.DeepLinking
 
         public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, "deep link opened");
 
-        public bool DeepLinkStartsPlaying(string deepLink)
+        public bool WillDeepLinkStartPlayer(string deepLink)
         {
             return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(new Uri(deepLink), out _);
         }

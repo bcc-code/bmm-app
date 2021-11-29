@@ -197,24 +197,33 @@ namespace BMM.UI.Droid.Application.Activities
                 documentsViewModel.RefreshInBackground();
             }
         }
-        
+
         private void SetPendingDeepLink()
         {
             _unhandledDeepLink = Intent?.Data?.ToString();
 
-            if (!string.IsNullOrEmpty(_unhandledDeepLink))
-                Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPendingDeepLink(_unhandledDeepLink);
+            if (string.IsNullOrEmpty(_unhandledDeepLink))
+                return;
+
+            var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
+            if (deepLinkHandler.WillDeepLinkStartPlayer(_unhandledDeepLink))
+                Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPlayerHasPendingOperation();
         }
 
-        private void CheckUnhandledIntent()
+        private static void HandleNotification()
         {
             if (SplashScreen.UnhandledIntent == null)
                 return;
 
             var intent = SplashScreen.UnhandledIntent;
             SplashScreen.UnhandledIntent = null;
+            var notification = new AndroidIntentNotification(intent);
+            var notificationHandler = Mvx.IoCProvider.Resolve<INotificationHandler>();
 
-            Mvx.IoCProvider.Resolve<INotificationHandler>().UserClickedNotification(new AndroidIntentNotification(intent));
+            notificationHandler.UserClickedNotification(notification);
+
+            if (notificationHandler.WillNotificationStartPlayer(notification))
+                Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPlayerHasPendingOperation();
         }
 
         protected override void OnStart()
@@ -223,7 +232,7 @@ namespace BMM.UI.Droid.Application.Activities
 
             _androidPlayer.AfterConnectedAction = () =>
             {
-                CheckUnhandledIntent();
+                HandleNotification();
                 HandleDeepLink();
             };
 

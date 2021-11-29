@@ -2,7 +2,6 @@ using System;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Notifications;
-using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Messages;
 using BMM.UI.iOS.Implementations.Download;
@@ -43,9 +42,8 @@ namespace BMM.UI.iOS
         [Export("application:continueUserActivity:restorationHandler:")]
         public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
         {
-            var deepLink = userActivity.WebPageUrl.AbsoluteString;
-            Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPendingDeepLink(deepLink);
-            return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(new Uri(deepLink));
+            var uri = new Uri(userActivity.WebPageUrl.AbsoluteString);
+            return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(uri);
         }
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)

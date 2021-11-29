@@ -10,5 +10,7 @@
         void UserClickedNotification(IPlatformNotification message);
 
         void OnNotificationReceivedInForeground(IPlatformNotification notification);
+
+        bool WillNotificationStartPlayer(IPlatformNotification notification);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BMM.Api.Framework;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Notifications.Data;
 using MvvmCross;
 
@@ -54,6 +55,11 @@ namespace BMM.Core.Implementations.Notifications
         public void OnNotificationReceivedInForeground(IPlatformNotification notification)
         {
             ParseAndHandleNotification(notification, NotificationType.ReceivedWhileUsing);
+        }
+
+        public bool WillNotificationStartPlayer(IPlatformNotification notification)
+        {
+            return _parser.ParseNotification(notification) is PodcastNotification;
         }
 
         public void OnNotificationReceived(IPlatformNotification message)
