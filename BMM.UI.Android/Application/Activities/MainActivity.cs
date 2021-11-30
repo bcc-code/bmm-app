@@ -84,7 +84,7 @@ namespace BMM.UI.Droid.Application.Activities
 
             var viewPresenter = Mvx.IoCProvider.GetSingleton<IMvxAndroidViewPresenter>();
 
-            SetPendingDeepLink();
+            SetPendingDeepLink(Intent);
 
             if (bundle == null)
             {
@@ -178,7 +178,7 @@ namespace BMM.UI.Droid.Application.Activities
 
         protected override void OnNewIntent(Intent intent)
         {
-            SetPendingDeepLink();
+            SetPendingDeepLink(intent);
             HandleDeepLink();
         }
 
@@ -198,9 +198,9 @@ namespace BMM.UI.Droid.Application.Activities
             }
         }
 
-        private void SetPendingDeepLink()
+        private void SetPendingDeepLink(Intent intent)
         {
-            _unhandledDeepLink = Intent?.Data?.ToString();
+            _unhandledDeepLink = intent?.Data?.ToString();
 
             if (string.IsNullOrEmpty(_unhandledDeepLink))
                 return;
