@@ -6,10 +6,12 @@ using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidX.AppCompat.App;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Player.Interfaces;
+using BMM.Core.Models.Themes;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
@@ -53,6 +55,7 @@ namespace BMM.UI.Droid.Application.Activities
         private BottomNavigationView? _bottomNavigationView;
         private FrameLayout _miniPlayerFrame;
         private string _unhandledDeepLink;
+        private static int? _currentAppTheme;
 
         private BottomNavigationView BottomNavigationView
             => _bottomNavigationView ??= FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
@@ -70,7 +73,7 @@ namespace BMM.UI.Droid.Application.Activities
 
             _androidPlayer = Mvx.IoCProvider.Resolve<IPlatformSpecificMediaPlayer>() as AndroidMediaPlayer;
             _mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
-            _mediaPlayer.ViewHasBeenDestroyed();
+            _mediaPlayer.ViewHasBeenDestroyed(ThemeHasChanged());
 
             SetContentView(Resource.Layout.activity_main);
             base.OnCreate(bundle);
@@ -98,7 +101,12 @@ namespace BMM.UI.Droid.Application.Activities
             // Cleaning the back stack to have a clean state. We don't need to do this when the app is started with a deeplink
             // because the this activity is in this case always called first so there is nothing to remove in the back stack.
             if (Intent?.Data == null)
-                Mvx.IoCProvider.Resolve<IMvxNavigationService>().ChangePresentation(new ClearAllNavBackStackHint());
+            {
+                if (!ThemeHasChanged())
+                    Mvx.IoCProvider.Resolve<IMvxNavigationService>().ChangePresentation(new ClearAllNavBackStackHint());
+            }
+
+            SetCurrentTheme();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
@@ -112,7 +120,7 @@ namespace BMM.UI.Droid.Application.Activities
             if (!SupportFragmentManager.IsDestroyed && !SupportFragmentManager.IsStateSaved)
                 SupportFragmentManager.PopBackStackImmediate();
 
-            _mediaPlayer.ViewHasBeenDestroyed();
+            _mediaPlayer.ViewHasBeenDestroyed(false);
             return true;
         }
 
@@ -198,6 +206,19 @@ namespace BMM.UI.Droid.Application.Activities
             }
         }
 
+        private void SetCurrentTheme()
+        {
+            _currentAppTheme = AppCompatDelegate.DefaultNightMode;
+        }
+
+        private bool ThemeHasChanged()
+        {
+            if (_currentAppTheme == null)
+                return false;
+
+            return _currentAppTheme != AppCompatDelegate.DefaultNightMode;
+        }
+
         private void SetPendingDeepLink(Intent intent)
         {
             _unhandledDeepLink = intent?.Data?.ToString();
@@ -230,8 +251,9 @@ namespace BMM.UI.Droid.Application.Activities
         {
             base.OnStart();
 
-            _androidPlayer.AfterConnectedAction = () =>
+            _androidPlayer.AfterConnectedAction = async () =>
             {
+                await _androidPlayer.RestoreLastPlayingTrackAfterThemeChangedIfAvailable();
                 HandleNotification();
                 HandleDeepLink();
             };
@@ -251,6 +273,9 @@ namespace BMM.UI.Droid.Application.Activities
 
         protected override void OnDestroy()
         {
+            if (ThemeHasChanged())
+                _androidPlayer.SaveCurrentTrackAndQueueAfterThemeChanged();
+
             _androidPlayer.Disconnect();
             base.OnDestroy();
         }

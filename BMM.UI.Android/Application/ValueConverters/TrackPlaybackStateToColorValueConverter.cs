@@ -34,12 +34,12 @@ namespace BMM.UI.Droid.Application.ValueConverters
             var isDark = document.ViewModel is IDarkStyleOnAndroidViewModel;
 
             if (TrackHasPlayerFocus(track, currentTrack))
-                return new Color(ContextCompat.GetColor(context, Resource.Color.colorPrimary));
+                return new Color(ContextCompat.GetColor(context, Resource.Color.tint_color));
 
             if (TrackIsNotAvailableOffline(track))
                 return new Color(ContextCompat.GetColor(context, isDark ? Resource.Color.med_white : Resource.Color.med_black));
 
-            return new Color(ContextCompat.GetColor(context, isDark ? Resource.Color.white : Resource.Color.black));
+            return new Color(ContextCompat.GetColor(context, isDark ? Resource.Color.white : Resource.Color.label_primary_color));
         }
 
         private bool TrackIsNotAvailableOffline(Track track)

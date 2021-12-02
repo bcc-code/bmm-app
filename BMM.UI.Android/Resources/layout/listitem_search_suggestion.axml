@@ -18,10 +18,9 @@
         android:id="@+id/text_view_title"
         android:singleLine="true"
         local:MvxBind="Text ."
-        android:textColor="@drawable/navigation_header_text"
-        android:textSize="@dimen/text_large"
         android:layout_gravity="center_vertical"
         android:layout_toRightOf="@+id/image_view_navigation_icon"
         android:layout_centerVertical="true"
-        android:gravity="center_vertical" />
+        android:gravity="center_vertical"
+        style="@style/Subtitle2_Label1" />
 </RelativeLayout>

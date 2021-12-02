@@ -4,11 +4,10 @@ using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
 {
-    public partial class ChapterHeaderTableViewCell: MvxTableViewCell
+    public partial class ChapterHeaderTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new NSString(nameof(ChapterHeaderTableViewCell));
 
@@ -23,6 +22,8 @@ namespace BMM.UI.iOS
             });
         }
 
+        protected override bool HasHighlightEffect => false;
+
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
@@ -31,7 +32,7 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            Titel.ApplyTextTheme(AppTheme.Subtitle3.Value);
+            Titel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
     }
 }

@@ -18,8 +18,6 @@ namespace BMM.UI.iOS
 
         public override void ViewDidLoad()
         {
-            Title = "Settings";
-
             base.ViewDidLoad();
 
             var source = new SettingsTableViewSource(SettingsTableView);
@@ -29,6 +27,5 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.ItemSelectedCommand);
             set.Apply();
         }
-
     }
 }

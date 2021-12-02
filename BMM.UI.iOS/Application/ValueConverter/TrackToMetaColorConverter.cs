@@ -16,7 +16,7 @@ namespace BMM.UI.iOS
             if (value.ViewModel is IDarkStyleOnIosViewModel)
                 return UIColor.White.ColorWithAlpha(0.5f);
 
-            return AppColors.TrackMetaColor;
+            return AppColors.LabelTertiaryColor;
         }
     }
 }

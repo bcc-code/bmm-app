@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout 
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -35,6 +35,7 @@
         android:layout_height="@dimen/playlist_icon_dimen"
         android:src="@drawable/icon_playlist"
         android:layout_marginBottom="@dimen/margin_mini"
+        android:tint="@color/label_primary_color"
         local:layout_constraintStart_toStartOf="@+id/TopView"
         local:layout_constraintEnd_toEndOf="@+id/TopView"
         local:layout_constraintBottom_toTopOf="@+id/HalfDividerView" />
@@ -91,7 +92,7 @@
             Visibility Visibility(FollowersCountToMakePrivateButtonIsVisible(FollowersCount));
             Click MakePrivateCommand"
         local:MvxLang="Text ShareTrackCollectionViewModel_MakePrivate" />
-    
+
     <Button
         android:id="@+id/ShareLinkButton"
         android:layout_width="@dimen/match_constraint"
@@ -118,5 +119,5 @@
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
         local:MvxLang="Text ShareTrackCollectionViewModel_ShareNote" />
-    
+
 </androidx.constraintlayout.widget.ConstraintLayout>

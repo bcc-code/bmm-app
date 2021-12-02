@@ -44,6 +44,22 @@ namespace BMM.Core.Implementations.Caching
             return await _blobCache.GetObject<T>(key);
         }
 
+        public async Task<T> GetObjectSafe<T>(string key, T defaultValue)
+        {
+            T result = defaultValue;
+
+            try
+            {
+                result = await _blobCache.GetObject<T>(key);
+            }
+            catch
+            {
+                //ignore
+            }
+
+            return result;
+        }
+
         public async Task InsertObject<T>(string key, T obj)
         {
             await _blobCache.InsertObject(key, obj);

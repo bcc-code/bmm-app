@@ -102,12 +102,12 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            PlaylistName.ApplyTextTheme(AppTheme.Heading3.Value);
-            NoteLabel.ApplyTextTheme(AppTheme.Paragraph2.Value);
-            PlaylistState.ApplyTextTheme(AppTheme.Paragraph2.Value);
+            PlaylistName.ApplyTextTheme(AppTheme.Heading3);
+            NoteLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);
+            PlaylistState.ApplyTextTheme(AppTheme.Paragraph2);
 
-            MakePrivateButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
-            ShareLinkButton.ApplyButtonStyle(AppTheme.ButtonTertiary.Value);
+            MakePrivateButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
+            ShareLinkButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
         }
 
         private void PrepareHeader()

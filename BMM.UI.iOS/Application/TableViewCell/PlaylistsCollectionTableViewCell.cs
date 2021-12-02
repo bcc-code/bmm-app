@@ -9,7 +9,7 @@ using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
 {
-    public partial class PlaylistsCollectionTableViewCell : MvxTableViewCell
+    public partial class PlaylistsCollectionTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new NSString(nameof(PlaylistsCollectionTableViewCell));
 

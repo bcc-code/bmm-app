@@ -243,6 +243,9 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private void SetBlurredBackground(Bitmap cover)
         {
+            if (!IsOpen)
+                return;
+
             var blurredCover = BitmapHelper.BlurImage(Context, cover);
             PlayerFragmentContainer.Background = new BitmapDrawable(blurredCover);
 
@@ -301,8 +304,10 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             if (Activity?.Window == null || Activity?.Resources == null || !SdkVersion.SupportsNavigationBarColors)
                 return;
-            Activity.Window.SetNavigationBarColor(new Color(ContextCompat.GetColor(Context, Resource.Color.white)));
-            if (SdkVersion.SupportsNavigationBarDividerColor)
+            Activity.Window.ClearFlags(WindowManagerFlags.TranslucentNavigation);
+            Activity.Window.SetNavigationBarColor(new Color(ContextCompat.GetColor(Context, Resource.Color.label_primary_reverted_color)));
+            
+            if (SdkVersion.SupportsNavigationBarDividerColor)   
                 Activity.Window.NavigationBarDividerColor = ContextCompat.GetColor(Context, Resource.Color.dark_gray);
         }
 

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+
+    <!-- General colors -->
+    <color name="colorPrimaryDark">#6CBD5C</color>
+    <color name="colorAccent">#C2EF66</color>
+    <color name="track_divider_line">#80B9C3CC</color>
+    <color name="player_statusbar">#222930</color>
+    <color name="player_click_effects">#5C7082</color>
+
+    <!-- White to Black -->
+    <color name="white">#FFFFFF</color>
+    <color name="dim_white">#CCFFFFFF</color>
+    <color name="med_white">#80ffffff</color>
+    <color name="light_gray">#ECF0F3</color>
+    <color name="bright_gray">#8FA0AF</color>
+    <color name="gray">#5C7082</color>
+    <color name="dark_gray">#80B9C3CC</color>
+    <color name="black">#0D131A</color>
+    <color name="med_black">#800D131A</color>
+
+    <!-- Login colors -->
+    <color name="startColor">#0a0e13</color>
+    <color name="centerColor">#141f29</color>
+    <color name="endColor">#1c2937</color>
+    <color name="bcc_login">#2ECC71</color>
+
+    <!-- Podcast colors -->
+    <color name="black_shaded">#19000000</color>
+    <color name="white_shaded">#88FFFFFF</color>
+
+    <!-- Fra Kaare Teaser -->
+    <color name="fra_kaare_track_background_color">#33ffffff</color>
+
+    <color name="tint_color">#83E76B</color>
+    <color name="label_primary_color">#FFFFFF</color>
+    <color name="label_primary_reverted_color">#0D131A</color>
+    <color name="label_secondary_color">#9FB2C4</color>
+    <color name="label_tertiary_color">#6D8193</color>
+    <color name="placeholder_color">#536577</color>
+    <color name="background_primary_color">#202F40</color>
+    <color name="background_secondary_color">#0F161F</color>
+    <color name="on_tint_one_color">#FFFFFF</color>
+    <color name="on_tint_two_color">#80FFFFFF</color>
+    <color name="on_tint_three_color">#33FFFFFF</color>
+    <color name="notification_color">#1C8FF8</color>
+    <color name="radio_color">#E12D59</color>
+    <color name="highlight_color">#3B4C5F</color>
+</resources>

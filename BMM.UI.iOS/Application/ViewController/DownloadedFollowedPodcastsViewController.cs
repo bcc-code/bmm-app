@@ -2,6 +2,7 @@
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels.MyContent;
+using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
@@ -24,10 +25,10 @@ namespace BMM.UI.iOS
 
             PodcastCollectionView.CollectionViewLayout = new FillWidthLayout();
 
-            var source = new MvxCollectionViewSource(PodcastCollectionView, PodcastCollectionViewCell.Key);
+            var source = new MvxCollectionViewSource(PodcastCollectionView, CoverWithTitleCollectionViewCell.Key);
 
-            var nib = UINib.FromName(PodcastCollectionViewCell.Key, NSBundle.MainBundle);
-            PodcastCollectionView.RegisterNibForCell(nib, PodcastCollectionViewCell.Key);
+            var nib = UINib.FromName(CoverWithTitleCollectionViewCell.Key, NSBundle.MainBundle);
+            PodcastCollectionView.RegisterNibForCell(nib, CoverWithTitleCollectionViewCell.Key);
 
             PodcastCollectionView.Source = source;
 
@@ -43,6 +44,13 @@ namespace BMM.UI.iOS
             set.Apply();
 
             PodcastCollectionView.ReloadData();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            PlaylistEmptyHeadlineLabel.ApplyTextTheme(AppTheme.Title2);
+            PlaylistEmptyTextLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
     }
 }

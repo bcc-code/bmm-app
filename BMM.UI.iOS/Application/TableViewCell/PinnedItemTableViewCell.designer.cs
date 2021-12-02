@@ -7,6 +7,7 @@
 using Foundation;
 using System;
 using System.CodeDom.Compiler;
+using FFImageLoading.Cross;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -19,7 +20,7 @@ namespace BMM.UI.iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        FFImageLoading.Cross.MvxCachedImageView TypeImage { get; set; }
+        MvxCachedImageView TypeImage { get; set; }
 
         void ReleaseDesignerOutlets ()
         {

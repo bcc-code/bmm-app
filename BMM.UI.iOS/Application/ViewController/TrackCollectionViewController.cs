@@ -110,7 +110,10 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            PlaylistState.ApplyTextTheme(AppTheme.Paragraph2.Value);
+            NameLabel.ApplyTextTheme(AppTheme.Heading2);
+            PlaylistState.ApplyTextTheme(AppTheme.Subtitle1Label2);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
         }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)

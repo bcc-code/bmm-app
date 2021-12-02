@@ -49,6 +49,12 @@ namespace BMM.Core.ViewModels.MyContent
             RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);
         }
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);
+        }
+
         private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             switch (e.PropertyName)

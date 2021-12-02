@@ -39,7 +39,7 @@ namespace BMM.UI.iOS
             base.AwakeFromNib();
             ImageView.Layer.CornerRadius = 16f;
             ImageView.ClipsToBounds = true;
-            TitleLabel.ApplyTextTheme(AppTheme.Title4.Value);
+            TitleLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
         }
     }
 }

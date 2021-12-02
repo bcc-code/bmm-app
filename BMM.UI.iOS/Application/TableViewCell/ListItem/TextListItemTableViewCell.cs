@@ -1,16 +1,15 @@
 ﻿using System;
 using BMM.Core.Models;
+using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class TextListItemTableViewCell : MvxTableViewCell
+    public partial class TextListItemTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly NSString Key = new NSString("TextListItemTableViewCell");
-        public static readonly UINib Nib;
+        public static readonly NSString Key = new NSString(nameof(TextListItemTableViewCell));
 
         public TextListItemTableViewCell(IntPtr handle)
             : base(handle)
@@ -24,9 +23,11 @@ namespace BMM.UI.iOS
             });
         }
 
-        public static TextListItemTableViewCell Create()
+        public override void AwakeFromNib()
         {
-            return (TextListItemTableViewCell)Nib.Instantiate(null, null)[0];
+            base.AwakeFromNib();
+            TitleLabel.ApplyTextTheme(AppTheme.Title2);
+            TextLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
         }
     }
 }

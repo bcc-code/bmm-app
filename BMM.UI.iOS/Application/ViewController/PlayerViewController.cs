@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
@@ -135,6 +136,8 @@ namespace BMM.UI.iOS
             var recognizer = new UISwipeGestureRecognizer(() => {ViewModel.CloseViewModelCommand.Execute();}) {Direction = UISwipeGestureRecognizerDirection.Down};
             View.AddGestureRecognizer(recognizer);
         }
+
+        protected override void SetNavigationBarAppearance() => Expression.Empty();
 
         /// <summary>
         /// We need to adjust this constraint manually because "safe area" is not supported on iOS lower than version 11.

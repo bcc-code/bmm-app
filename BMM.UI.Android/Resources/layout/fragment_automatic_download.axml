@@ -12,20 +12,21 @@
       android:layout_height="match_parent"
       android:scrollbars="vertical">
     <TextView
+        android:id="@+id/textView1"
         android:layout_marginTop="@dimen/element_margin_small"
         android:layout_marginBottom="@dimen/element_margin_small"
         android:text="Set amount of tracks to be dowloaded automatically when following this."
         local:MvxLang="Text AutomaticDownloadViewModel_AutomaticDownloadSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView1"
+        style="@style/Subtitle2_Label3"
         android:layout_below="@+id/appbar"
         android:padding="@dimen/element_margin_medium" />
     <MvxListView
         android:id="@+id/download_options_list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-		    android:layout_below="@id/textView1"
+        android:layout_below="@id/textView1"
         local:MvxItemTemplate="@layout/listitem_automatic_download"
         local:MvxBind="ItemsSource DownloadOptions; ItemClick DownloadOptionSelectedCommand(DownloadOptionsSelectedCommand)" />
   </RelativeLayout>

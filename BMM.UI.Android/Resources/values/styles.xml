@@ -9,40 +9,51 @@
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
-    <style name="AppTheme.Base" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight">
         <item name="fontFamily">@font/inter</item>
         <item name="android:textFontWeight">500</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/tint_color</item>
+        <item name="colorPrimaryDark">@color/background_primary_color</item>
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">false</item>
-        <item name="android:navigationBarColor">@color/black</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:navigationBarColor">@color/label_primary_reverted_color</item>
+        <item name="android:windowBackground">@color/background_secondary_color</item>
 
         <item name="colorControlNormal">@color/gray</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
-        <item name="colorControlHighlight">@color/med_gray</item>
+        <item name="colorControlActivated">@color/tint_color</item>
+        <item name="colorControlHighlight">@color/highlight_color</item>
 
         <item name="android:textCursorDrawable">@null</item>
+
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowAnimationStyle">@style/WindowTransitionAnimation</item>
+    </style>
+
+    <style name="WindowTransitionAnimation">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 
     <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/tint_color</item>
         <item name="colorAccent">@color/black</item>
         <item name="android:textFontWeight">700</item>
+        <item name="android:textColorPrimary">@color/label_primary_color</item>
     </style>
 
     <style name="AppTheme.CollapseBarTextAppearance.Collapsed" parent="TextAppearance.AppCompat.Title">
         <item name="android:textStyle">bold</item>
         <item name="android:textFontWeight">700</item>
+        <item name="android:textColor">@color/label_primary_color</item>
     </style>
-    
+
     <style name="AppTheme.CollapseBarTextAppearance.Expanded" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
         <item name="android:textStyle">bold</item>
         <item name="android:textFontWeight">700</item>
+        <item name="android:textColor">@color/label_primary_color</item>
     </style>
 
     <style name="AppTheme.Tab">
@@ -66,21 +77,15 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowBackground">@drawable/splashscreen</item>
     </style>
-    
+
     <style name="AppTheme.Login" parent="AppTheme.Dark">
         <item name="colorControlNormal">@color/gray</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
-        <item name="colorControlHighlight">@color/med_gray</item>
-    </style>
-
-    <style name="AppTheme.Login.Edit" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="colorControlNormal">@color/gray</item>
-        <item name="colorControlActivated">@color/colorPrimary</item>
-        <item name="colorControlHighlight">@color/med_gray</item>
+        <item name="colorControlActivated">@color/tint_color</item>
+        <item name="colorControlHighlight">@color/highlight_color</item>
     </style>
 
     <style name="AppTheme.BottomNavigationTheme" parent="AppTheme.Base">
-        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimary">@color/label_primary_color</item>
         <item name="itemTextColor">@color/navigation_color_selector</item>
         <item name="itemIconTint">@color/navigation_color_selector</item>
         <item name="android:textFontWeight">600</item>
@@ -117,7 +122,7 @@
     <style name="Heading2">
         <item name="android:textSize">28sp</item>
         <item name="android:lineHeight">32sp</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/label_primary_color</item>
         <item name="android:textFontWeight">800</item>
     </style>
 
@@ -129,32 +134,75 @@
         <item name="android:textSize">17sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/label_secondary_color</item>
+    </style>
+
+    <style name="Subtitle2">
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textFontWeight">500</item>
+    </style>
+
+    <style name="Subtitle2_Label1" parent="Subtitle2">
+        <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+
+    <style name="Subtitle2_Label2" parent="Subtitle2">
+        <item name="android:textColor">@color/label_secondary_color</item>
+    </style>
+
+    <style name="Subtitle2_Label3" parent="Subtitle2">
+        <item name="android:textColor">@color/label_tertiary_color</item>
     </style>
 
     <style name="Subtitle3">
         <item name="android:textSize">13sp</item>
         <item name="android:lineHeight">20sp</item>
         <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/bright_gray</item>
     </style>
 
-    <style name="Title4">
-        <item name="android:textSize">14sp</item>
+    <style name="Subtitle3_Label1" parent="Subtitle3">
+        <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+
+    <style name="Subtitle3_Label2" parent="Subtitle3">
+        <item name="android:textColor">@color/label_secondary_color</item>
+    </style>
+
+    <style name="Subtitle3_Label3" parent="Subtitle3">
+        <item name="android:textColor">@color/label_tertiary_color</item>
+    </style>
+
+    <style name="Title1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">700</item>
+        <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+
+    <style name="Title2">
+        <item name="android:textSize">16sp</item>
         <item name="android:lineHeight">20sp</item>
-        <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textFontWeight">700</item>
+        <item name="android:textColor">@color/label_primary_color</item>
     </style>
 
     <style name="Paragraph1">
         <item name="android:textSize">17sp</item>
         <item name="android:lineHeight">28sp</item>
         <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/label_secondary_color</item>
+    </style>
+
+    <style name="Paragraph2">
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textColor">@color/label_secondary_color</item>
     </style>
 
     <style name="Button_Primary" parent="android:Widget.Material.Button.Borderless">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/label_primary_color</item>
         <item name="android:background">@drawable/button_background_rounded</item>
         <item name="android:foreground">@drawable/button_ripple</item>
         <item name="android:textFontWeight">700</item>
@@ -169,12 +217,14 @@
         <item name="android:minHeight">40dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
-        <item name="backgroundTint">@color/black</item>
+        <item name="backgroundTint">@color/label_primary_reverted_color</item>
     </style>
 
     <style name="IconButton_Primary" parent="Button_Primary">
-      <item name="android:paddingLeft">10dp</item>
-      <item name="android:drawablePadding">6dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="backgroundTint">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_primary_reverted_color</item>
     </style>
 
     <style name="IconButton_Primary_Large" parent="IconButton_Primary">
@@ -184,8 +234,8 @@
     </style>
 
     <style name="Button_Secondary" parent="Button_Primary">
-        <item name="android:textColor">@color/black</item>
-        <item name="backgroundTint">@color/light_gray</item>
+        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="backgroundTint">@color/background_secondary_color</item>
     </style>
 
     <style name="IconButton_Secondary" parent="Button_Secondary">
@@ -196,19 +246,6 @@
     <style name="IconButton_Secondary_Large" parent="IconButton_Secondary">
         <item name="android:height">@dimen/large_button_height</item>
         <item name="android:paddingHorizontal">@dimen/padding_large</item>
-    </style>
-    
-    <style name="button_text">
-        <item name="android:layout_width">fill_parent</item>
-        <item name="android:layout_height">fill_parent</item>
-        <item name="android:textColor">#0f151c</item>
-        <item name="android:gravity">center</item>
-        <item name="android:layout_margin">2dp</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:shadowColor">#000000</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">2</item>
     </style>
 
     <style name="ExtendedToolbarTitle">

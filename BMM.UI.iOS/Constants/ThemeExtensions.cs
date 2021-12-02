@@ -19,6 +19,9 @@ namespace BMM.UI.iOS.Constants
             button.ImageEdgeInsets = theme.ImageEdgeInsets;
             button.ContentEdgeInsets = theme.ContentEdgeInsets;
 
+            if (theme.IconTint != null)
+                button.TintColor = theme.IconTint;
+
             if (theme.HasRoundedCorners)
                 button.Layer.CornerRadius = button.Frame.Height * 0.5f;
         }

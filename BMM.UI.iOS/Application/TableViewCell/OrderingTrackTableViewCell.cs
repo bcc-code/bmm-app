@@ -34,24 +34,23 @@ namespace BMM.UI.iOS
         {
             _titleLabel = new UILabel
             {
-                TranslatesAutoresizingMaskIntoConstraints = false,
-                Font = UIFont.SystemFontOfSize(16, UIFontWeight.Bold),
-                TextColor = AppColors.TrackTitleColor
+                TranslatesAutoresizingMaskIntoConstraints = false
             };
+            _titleLabel.ApplyTextTheme(AppTheme.Title2);
+
             _subtitleLabel = new UILabel
             {
                 TranslatesAutoresizingMaskIntoConstraints = false,
-                Font = UIFont.SystemFontOfSize(13),
-                TextColor = AppColors.TrackSubtitleColor,
                 TextAlignment = UITextAlignment.Left
             };
+            _subtitleLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
+
             _metaLabel = new UILabel
             {
                 TranslatesAutoresizingMaskIntoConstraints = false,
-                Font = UIFont.SystemFontOfSize(13),
-                TextColor = AppColors.TrackMetaColor,
                 TextAlignment = UITextAlignment.Left
             };
+            _metaLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
 
             ContentView.AddSubview(_titleLabel);
             ContentView.AddSubview(_subtitleLabel);
@@ -74,6 +73,8 @@ namespace BMM.UI.iOS
                 _metaLabel.LeadingAnchor.ConstraintEqualTo(_subtitleLabel.TrailingAnchor, 4),
                 ContentView.TrailingAnchor.ConstraintEqualTo(_metaLabel.TrailingAnchor, 16),
             });
+
+            BackgroundColor = AppColors.BackgroundPrimaryColor;
         }
     }
 }

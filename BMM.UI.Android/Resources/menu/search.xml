@@ -1,9 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:local="http://schemas.android.com/apk/res-auto">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto">
 	<item
-	android:id="@+id/action_search"
-	android:icon="@android:drawable/ic_menu_search"
-	local:showAsAction="always"
-	local:actionViewClass="androidx.appcompat.widget.SearchView" />
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/ic_menu_search"
+        local:showAsAction="always"
+        local:actionViewClass="androidx.appcompat.widget.SearchView" />
 </menu>

@@ -1,4 +1,6 @@
-﻿using BMM.Core.Messages.MediaPlayer;
+﻿using System;
+using BMM.Core.Extensions;
+using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using PS = Android.Support.V4.Media.Session.PlaybackStateCompat;
@@ -67,7 +69,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
                 CurrentIndex = state.ActiveQueueItemId,
                 QueueLength = mediaQueue.Tracks.Count,
                 CurrentPosition = state.Position,
-                BufferedPosition = state.BufferedPosition,
+                BufferedPosition = state.BufferedPosition.WithPossibleLowestValue(0),
                 PlayStatus = state.PlayStatus()
             };
         }

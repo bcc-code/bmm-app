@@ -84,6 +84,12 @@ namespace BMM.Core.ViewModels.MyContent
             }
         }
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await RaisePropertyChanged(() => IsEmpty);
+        }
+
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var allCollectionsExceptMyTracks = await base.LoadItems(policy) as IList<TrackCollection>;

@@ -1,22 +1,20 @@
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using Foundation;
 using System;
 using System.Globalization;
 using BMM.Core.ValueConverters;
-using UIKit;
+using BMM.UI.iOS.Constants;
 
 namespace BMM.UI.iOS
 {
-    public partial class LanguageContentTableViewCell : MvxTableViewCell
+    public partial class LanguageContentTableViewCell : BaseBMMTableViewCell
     {
         public int Index {
             get { return 0; }
             set { IndexLabel.Text = value + ""; }
         }
 
-        public static readonly UINib Nib = UINib.FromName("LanguageContentTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("LanguageContentTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(LanguageContentTableViewCell));
 
         public LanguageContentTableViewCell(IntPtr handle)
             : base(handle)
@@ -29,9 +27,11 @@ namespace BMM.UI.iOS
             });
         }
 
-        public static LanguageContentTableViewCell Create()
+        public override void AwakeFromNib()
         {
-            return (LanguageContentTableViewCell)Nib.Instantiate(null, null)[0];
+            base.AwakeFromNib();
+            TextLabel.ApplyTextTheme(AppTheme.Title2);
+            IndexLabel.ApplyTextTheme(AppTheme.Title2);
         }
     }
 }

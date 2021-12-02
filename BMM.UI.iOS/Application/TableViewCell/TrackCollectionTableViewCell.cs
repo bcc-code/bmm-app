@@ -11,7 +11,7 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class TrackCollectionTableViewCell : MvxTableViewCell
+    public partial class TrackCollectionTableViewCell : BaseBMMTableViewCell
     {
         public static readonly UINib Nib = UINib.FromName("TrackCollectionTableViewCell", NSBundle.MainBundle);
         public static readonly NSString Key = new NSString("TrackCollectionTableViewCell");
@@ -113,7 +113,8 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            SubtitleLabel.ApplyTextTheme(AppTheme.Subtitle3.Value);
+            TitleLabel.ApplyTextTheme(AppTheme.Title2);
+            SubtitleLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
     }
 }

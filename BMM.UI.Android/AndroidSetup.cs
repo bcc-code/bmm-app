@@ -20,6 +20,7 @@ using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
@@ -35,6 +36,7 @@ using BMM.UI.Droid.Application.Bindings;
 using BMM.UI.Droid.Application.DownloadManager;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.Implementations;
+using BMM.UI.Droid.Application.Implementations.Device;
 using BMM.UI.Droid.Application.Implementations.FileStorage;
 using BMM.UI.Droid.Application.Implementations.FirebaseRemoteConfig;
 using BMM.UI.Droid.Application.Implementations.Notifications;
@@ -168,6 +170,7 @@ namespace BMM.UI.Droid
             Mvx.IoCProvider.RegisterType<MediaMountedHandler, MediaMountedHandler>();
 
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
+            Mvx.IoCProvider.RegisterType<IFeatureSupportInfoService, DroidFeaturePreviewPermission>();
             InitializeMediaPlayer();
         }
 

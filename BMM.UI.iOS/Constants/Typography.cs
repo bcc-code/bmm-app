@@ -26,12 +26,6 @@ namespace BMM.UI.iOS.Constants
             return font;
         });
 
-        public static readonly Lazy<UIFont> Title4 = new Lazy<UIFont>(() =>
-        {
-            var font = UIFont.SystemFontOfSize(14, UIFontWeight.Regular);
-            return font;
-        });
-
         public static readonly Lazy<UIFont> Header2 = new Lazy<UIFont>(() =>
         {
             var font = UIFont.SystemFontOfSize(28, UIFontWeight.Heavy);
@@ -56,6 +50,10 @@ namespace BMM.UI.iOS.Constants
             return font;
         });
 
-        public static readonly Lazy<UIFont> Subtitle3 = new Lazy<UIFont>(() => UIFont.SystemFontOfSize(13));
+        public static readonly Lazy<UIFont> Subtitle1 = new Lazy<UIFont>(() => UIFont.SystemFontOfSize(17, UIFontWeight.Medium));
+
+        public static readonly Lazy<UIFont> Subtitle2 = new Lazy<UIFont>(() => UIFont.SystemFontOfSize(15, UIFontWeight.Medium));
+
+        public static readonly Lazy<UIFont> Subtitle3 = new Lazy<UIFont>(() => UIFont.SystemFontOfSize(13, UIFontWeight.Medium));
     }
 }

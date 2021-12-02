@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:minHeight="@dimen/row_document_height"
     android:layout_height="wrap_content"
-    android:divider="@drawable/settings_divider"
-    android:showDividers="end"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,11 +22,9 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                local:MvxBind="Text Title"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_large"
-                android:textFontWeight="700"
-				android:layout_gravity="center_vertical" />
+				android:layout_gravity="center_vertical"
+                style="@style/Title2"
+                local:MvxBind="Text Title" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

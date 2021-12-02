@@ -19,12 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/appbar"
-            android:clipToPadding="false"
-            android:paddingTop="@dimen/element_margin_tiny"
-            android:paddingBottom="@dimen/element_margin_tiny"
-            android:paddingRight="@dimen/element_margin_tiny"
-            android:paddingLeft="@dimen/element_margin_tiny"
-            local:MvxItemTemplate="@layout/listitem_podcasts"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxItemTemplate="@layout/listitem_cover_with_title_flexible"
             local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
     </mvvmcross.droidx.MvxSwipeRefreshLayout>
 </RelativeLayout>

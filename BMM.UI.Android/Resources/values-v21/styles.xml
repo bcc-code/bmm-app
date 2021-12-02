@@ -23,7 +23,7 @@
         <item name="android:layout_marginTop">@dimen/element_margin_medium</item>
         <item name="android:layout_marginBottom">@dimen/element_margin_medium</item>
         <item name="android:indeterminate">true</item>
-        <item name="android:indeterminateTint">@color/colorPrimary</item>
+        <item name="android:indeterminateTint">@color/tint_color</item>
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
 

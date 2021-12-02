@@ -147,6 +147,12 @@ namespace BMM.Core.ViewModels.MyContent
 
         public override CacheKeys? CacheKey => CacheKeys.TrackCollectionGetById;
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await RaisePropertyChanged(() => IsEmpty);
+        }
+
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy cachePolicy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             TrackCollection searchCollection = await Client.TrackCollection.GetById(MyCollection.Id, cachePolicy);

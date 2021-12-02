@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
@@ -34,6 +35,11 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         private Activity _activity;
         private MediaBrowserCompat _mediaBrowser;
         private MediaControllerCompat _mediaController;
+
+        private ITrackModel _lastTrack;
+        private IList<IMediaTrack> _lastQueue;
+        private long _lastPosition;
+        private bool _lastPlayingStatus;
 
         public AndroidMediaPlayer(IMediaQueue mediaQueue, MediaControllerCallback callback, PlaybackStateCompatMapper mapper, IMvxMessenger messenger,
             IMetadataMapper metadataMapper, ILogger logger, IMvxAndroidCurrentTopActivity activity)
@@ -126,7 +132,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         {
             if (_mediaController != null)
             {
-                var queueStaysTheSame = _mediaQueue.IsSameQueue(mediaTracks);
+                bool queueStaysTheSame = _mediaQueue.IsSameQueue(mediaTracks);
 
                 var controls = _mediaController.GetTransportControls();
                 if (queueStaysTheSame && _mediaController.Queue != null)
@@ -147,7 +153,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             }
         }
 
-        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin = "", long startTimeInMs = 0)
         {
             if (_mediaController == null)
                 return;
@@ -282,7 +288,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             controls.Play();
         }
 
-        public override void OnConnected()
+        public override async void OnConnected()
         {
             if (_mediaController == null)
             {
@@ -300,6 +306,31 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             AfterConnectedAction = null;
         }
 
+        public void SaveCurrentTrackAndQueueAfterThemeChanged()
+        {
+            _lastTrack = CurrentTrack;
+            _lastPosition = CurrentPosition;
+            _lastQueue = _mediaQueue?.Tracks;
+            _lastPlayingStatus = IsPlaying;
+        }
+
+        public async Task RestoreLastPlayingTrackAfterThemeChangedIfAvailable()
+        {
+            if (_lastTrack == null || _lastQueue == null || !_lastQueue.Any())
+                return;
+
+            await RecoverQueue(_lastQueue, (IMediaTrack)_lastTrack, startTimeInMs: _lastPosition);
+            ClearCurrentTrackAndQueueAfterThemeChanged();
+        }
+
+        private void ClearCurrentTrackAndQueueAfterThemeChanged()
+        {
+            _lastTrack = default;
+            _lastPosition = default;
+            _lastQueue = default;
+            _lastPlayingStatus = default;
+        }
+
         public override void OnConnectionFailed()
         {
             Mvx.IoCProvider.Resolve<IPlayerAnalytics>().MediaBrowserConnectionFailed();
@@ -308,7 +339,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public override void OnConnectionSuspended()
         {
             Disconnect();
-
             Mvx.IoCProvider.Resolve<IPlayerAnalytics>().MediaBrowserConnectionSuspended();
         }
     }

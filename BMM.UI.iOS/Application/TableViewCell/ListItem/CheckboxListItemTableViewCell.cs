@@ -3,14 +3,13 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using Foundation;
 using System;
-using UIKit;
+using BMM.UI.iOS.Constants;
 
 namespace BMM.UI.iOS
 {
-    public partial class CheckboxListItemTableViewCell : MvxTableViewCell
+    public partial class CheckboxListItemTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("CheckboxListItemTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("CheckboxListItemTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(CheckboxListItemTableViewCell));
 
         public CheckboxListItemTableViewCell(IntPtr handle)
             : base(handle)
@@ -25,9 +24,11 @@ namespace BMM.UI.iOS
             });
         }
 
-        public static CheckboxListItemTableViewCell Create()
+        public override void AwakeFromNib()
         {
-            return (CheckboxListItemTableViewCell)Nib.Instantiate(null, null)[0];
+            base.AwakeFromNib();
+            TitleLabel.ApplyTextTheme(AppTheme.Title2);
+            TextLabel.ApplyTextTheme(AppTheme.Subtitle2Label2);
         }
     }
 }

@@ -4,7 +4,7 @@
         android:width="48dp"
         android:viewportHeight="48"
         android:viewportWidth="48"
-        android:tint="@color/colorPrimary">
+        android:tint="@color/tint_color">
     <group
             android:name="root"
             android:translateX="24.0"

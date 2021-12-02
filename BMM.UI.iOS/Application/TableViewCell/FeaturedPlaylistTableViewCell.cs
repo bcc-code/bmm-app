@@ -1,6 +1,5 @@
 ﻿using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using Foundation;
 using System;
 using BMM.Core.ValueConverters;
@@ -12,7 +11,7 @@ using BMM.UI.iOS.Helpers;
 
 namespace BMM.UI.iOS
 {
-    public partial class FeaturedPlaylistTableViewCell : MvxTableViewCell
+    public partial class FeaturedPlaylistTableViewCell : BaseBMMTableViewCell
     {
         public static readonly UINib Nib = UINib.FromName(nameof(FeaturedPlaylistTableViewCell), NSBundle.MainBundle);
         public static readonly NSString Key = new NSString(nameof(FeaturedPlaylistTableViewCell));
@@ -36,7 +35,7 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-            TitleLabel.ApplyTextTheme(AppTheme.Title2.Value);
+            TitleLabel.ApplyTextTheme(AppTheme.Title2);
         }
     }
 }

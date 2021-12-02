@@ -3,13 +3,12 @@ using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Helpers;
-using MvvmCross.Platforms.Ios.Binding.Views;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class PinnedItemTableViewCell : MvxTableViewCell
+    public partial class PinnedItemTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new NSString("PinnedItemTableViewCell");
 
@@ -22,7 +21,9 @@ namespace BMM.UI.iOS
             {
                 var set = this.CreateBindingSet<PinnedItemTableViewCell, CellWrapperViewModel<PinnedItem>>();
                 set.Bind(TitleLabel).To(vm => vm.Item.Title);
-                set.Bind(TypeImage).For(i => i.ImagePath).To(vm => vm.Item.Icon)
+                set.Bind(TypeImage)
+                    .For(v => v.ImagePath)
+                    .To(vm => vm.Item.Icon)
                     .WithConversion<PinnedItemIconToImageConverter>(new object[] { (Func<Document>)(() => ((CellWrapperViewModel<Document>)DataContext).Item), "" });
                 set.Apply();
             });
@@ -37,6 +38,12 @@ namespace BMM.UI.iOS
 
                 _bindingsManager.Update((CellWrapperViewModel<Document>) DataContext);
             };
+        }
+
+        public override void AwakeFromNib()
+        {
+            base.AwakeFromNib();
+            TitleLabel.ApplyTextTheme(AppTheme.Title2);
         }
     }
 }

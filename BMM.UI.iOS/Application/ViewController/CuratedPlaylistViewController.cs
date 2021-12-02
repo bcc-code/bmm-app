@@ -29,13 +29,13 @@ namespace BMM.UI.iOS
 
             var source = new NotSelectableDocumentsTableViewSource(CuratedPlaylistTable);
 
-            TitleLabel.ApplyTextTheme(AppTheme.Heading2.Value);
-            DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2.Value);
+            TitleLabel.ApplyTextTheme(AppTheme.Heading2);
+            DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
             ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
-            DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondary.Value);
+            DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
             DownloadButton.DownloadedImage = new UIImage("icon_tick");
             DownloadButton.NormalStateImage = new UIImage("icon_download");
-            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3.Value);
+            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
 
             var set = this.CreateBindingSet<CuratedPlaylistViewController, CuratedPlaylistViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.CuratedPlaylist.Title);

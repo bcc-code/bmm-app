@@ -226,6 +226,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_Logout = nameof(SettingsViewModel_Logout);
 		public const string SettingsViewModel_UserVoiceHeader = nameof(SettingsViewModel_UserVoiceHeader);
 		public const string SettingsViewModel_UserVoiceText = nameof(SettingsViewModel_UserVoiceText);
+		public const string SettingsViewModel_ThemeHeader = nameof(SettingsViewModel_ThemeHeader);
+		public const string SettingsViewModel_ThemeText = nameof(SettingsViewModel_ThemeText);
 		public const string StorageManagementViewModel_Title = nameof(StorageManagementViewModel_Title);
 		public const string StorageManagementViewModel_RemoveAllFiles = nameof(StorageManagementViewModel_RemoveAllFiles);
 		public const string DocumentsViewModel_PluralTracks = nameof(DocumentsViewModel_PluralTracks);
@@ -352,5 +354,9 @@ namespace BMM.Core.Translation
 		public const string Browse_AudiobooksTitle = nameof(Browse_AudiobooksTitle);
 		public const string Browse_MusicTitle = nameof(Browse_MusicTitle);
 		public const string Browse_PodcastsTitle = nameof(Browse_PodcastsTitle);
+		public const string ThemeSettingsViewModel_Title = nameof(ThemeSettingsViewModel_Title);
+		public const string ThemeSettingsViewModel_Light = nameof(ThemeSettingsViewModel_Light);
+		public const string ThemeSettingsViewModel_Dark = nameof(ThemeSettingsViewModel_Dark);
+		public const string ThemeSettingsViewModel_System = nameof(ThemeSettingsViewModel_System);
 	}
 }

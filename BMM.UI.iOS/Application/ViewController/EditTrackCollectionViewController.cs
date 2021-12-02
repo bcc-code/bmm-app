@@ -1,8 +1,10 @@
 using System;
 using System.ComponentModel;
 using BMM.Api.Implementation.Models;
+using BMM.Core;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
@@ -51,7 +53,8 @@ namespace BMM.UI.iOS
                 TranslatesAutoresizingMaskIntoConstraints = false,
                 SeparatorStyle = UITableViewCellSeparatorStyle.None,
                 RowHeight = 64,
-                KeyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag
+                KeyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag,
+                BackgroundColor = AppColors.BackgroundPrimaryColor
             };
 
             var titleView = new TextViewWithDescription();
@@ -73,6 +76,7 @@ namespace BMM.UI.iOS
                 tableView.TopAnchor.ConstraintEqualTo(View.TopAnchor),
                 tableView.BottomAnchor.ConstraintEqualTo(View.BottomAnchor),
             });
+
             tableView.SetEditing(true, false);
 
             var source = new EditingTableViewSource<Document, OrderingTrackTableViewCell>(tableView);

@@ -28,11 +28,6 @@ namespace BMM.UI.iOS
 
             var source = new DocumentsTableViewSource(AlbumTable);
 
-            TitleLabel.ApplyTextTheme(AppTheme.Heading2.Value);
-            DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2.Value);
-            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
-            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3.Value);
-
             var set = this.CreateBindingSet<AlbumViewController, AlbumViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.Album).WithConversion<AlbumTitleConverter>();
             set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
@@ -49,6 +44,15 @@ namespace BMM.UI.iOS
             set.Apply();
 
             AlbumTable.ResizeHeaderView();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            TitleLabel.ApplyTextTheme(AppTheme.Heading2);
+            DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
 
         protected override void AttachEvents()

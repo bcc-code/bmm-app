@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -40,7 +40,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                     <constraints>
                         <constraint firstItem="T8B-3m-Y4n" firstAttribute="leading" secondItem="zt5-2t-Djq" secondAttribute="leading" id="PBH-qc-edE"/>
                         <constraint firstItem="T8B-3m-Y4n" firstAttribute="top" secondItem="sIL-i6-LRb" secondAttribute="bottom" constant="8" id="SKw-CQ-BVA"/>
@@ -53,14 +53,14 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wrC-aF-6zp">
                     <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                     <color key="separatorColor" red="0.12705199420452118" green="0.15311096608638763" blue="0.18207567930221558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="sectionIndexBackgroundColor" red="0.047047488391399384" green="0.060586217790842056" blue="0.078763902187347412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="sectionIndexBackgroundColor" name="BackgroundPrimaryColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="1Ot-pU-5Hd"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
             <constraints>
                 <constraint firstItem="zt5-2t-Djq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="H3l-Tx-sNV"/>
                 <constraint firstAttribute="bottom" secondItem="wrC-aF-6zp" secondAttribute="bottom" id="OKY-zn-vvw"/>
@@ -74,8 +74,8 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="BackgroundPrimaryColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

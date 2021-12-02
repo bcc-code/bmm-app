@@ -1,20 +1,18 @@
 ﻿using BMM.Api.Implementation.Models;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using Foundation;
 using System;
 using BMM.Core.ValueConverters;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class ContributorTableViewCell : MvxTableViewCell
+    public partial class ContributorTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("ContributorTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("ContributorTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(ContributorTableViewCell));
 
         public ContributorTableViewCell(IntPtr handle)
             : base(handle)
@@ -33,9 +31,10 @@ namespace BMM.UI.iOS
             });
         }
 
-        public static ContributorTableViewCell Create()
+        public override void AwakeFromNib()
         {
-            return (ContributorTableViewCell)Nib.Instantiate(null, null)[0];
+            base.AwakeFromNib();
+            TitleLabel.ApplyTextTheme(AppTheme.Title2);
         }
     }
 }

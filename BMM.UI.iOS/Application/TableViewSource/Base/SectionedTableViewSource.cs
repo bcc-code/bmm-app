@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BMM.Core.Models;
+using BMM.UI.iOS.Constants;
 using Foundation;
 using UIKit;
 
@@ -74,18 +75,17 @@ namespace BMM.UI.iOS
 
             var view = new UIView
             {
-                BackgroundColor = UIColor.White
+                BackgroundColor = AppColors.BackgroundPrimaryColor
             };
 
             var label = new UILabel
             {
                 Opaque = false,
-                TextColor = UIColor.FromRGB(124, 134, 149),
-                Font = UIFont.SystemFontOfSize(13f, UIFontWeight.Regular),
                 Text = title,
                 TranslatesAutoresizingMaskIntoConstraints = false
             };
 
+            label.ApplyTextTheme(AppTheme.Subtitle3Label3);
             view.AddSubview(label);
 
             label.TopAnchor.ConstraintEqualTo(view.TopAnchor, 20).Active = true;

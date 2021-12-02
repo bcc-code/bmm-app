@@ -11,7 +11,7 @@ namespace BMM.Core.ValueConverters
         protected override string Convert(Track track, Type targetType, object parameter, CultureInfo culture)
         {
             var viewmodel = (PlayerBaseViewModel)parameter;
-            return viewmodel.TrackInfoProvider.GetTrackInformation(track, culture).Label;
+            return viewmodel.TrackInfoProvider.GetTrackInformation(track, culture)?.Label;
         }
     }
 }

@@ -27,7 +27,7 @@
             android:maxLines="2"
             android:ellipsize="end"
             android:gravity="center_horizontal"
-            style="@style/Title4"
+            style="@style/Subtitle3_Label1"
             local:MvxBind="Text Item.Title" />
 
 </LinearLayout>

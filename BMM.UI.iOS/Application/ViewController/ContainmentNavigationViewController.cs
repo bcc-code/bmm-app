@@ -45,7 +45,7 @@ namespace BMM.UI.iOS
                 NavigationBar.ShadowImage = new UIImage();
             }
 
-            NavigationBar.TintColor = AppColors.ColorPrimary;
+            NavigationBar.TintColor = AppColors.TintColor;
             NavigationBar.Translucent = true;
         }
 

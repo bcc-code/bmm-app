@@ -12,10 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/imageButton1"
         android:layout_centerVertical="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_large"
-        android:textFontWeight="700"
-        android:paddingLeft="@dimen/element_margin_medium" />
+        android:paddingLeft="@dimen/element_margin_medium"
+        style="@style/Title2" />
     <ImageButton
         android:background="?android:attr/selectableItemBackground"
         local:MvxBind="Click DeleteCommand(.)"

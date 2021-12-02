@@ -4,16 +4,15 @@
              xmlns:app="http://schemas.android.com/apk/res-auto"
              android:layout_width="match_parent"
              android:layout_height="wrap_content">
-    
+
     <androidx.cardview.widget.CardView
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
-            app:cardBackgroundColor="@color/light_gray"
+            app:cardBackgroundColor="@color/background_secondary_color"
             app:cardCornerRadius="@dimen/corner_radius_large"
-            app:cardElevation="0dp"
-    >
+            app:cardElevation="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:background="@android:color/transparent"
@@ -23,12 +22,11 @@
                     android:id="@+id/signed_in_as_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/bright_gray"
-                    android:textSize="15sp"
                     android:maxLines="1"
                     android:ellipsize="end"
                     android:lineHeight="20sp"
                     android:textAlignment="center"
+                    style="@style/Subtitle2_Label3"
                     app:MvxBind="Text Title"
 
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -50,13 +48,10 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginBottom="16dp"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textFontWeight="700"
                     android:maxLines="1"
                     android:ellipsize="end"
-                    android:lineHeight="24sp"
                     android:textAlignment="center"
+                    style="@style/Title1"
                     app:MvxBind="Text Username"
 
                     app:layout_constraintBottom_toTopOf="@+id/divider"
@@ -108,10 +103,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textFontWeight="700"
                     android:letterSpacing="0"
+                    style="@style/Title2"
 
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@id/chevron_image"
@@ -126,7 +119,7 @@
                 android:layout_marginEnd="16dp"
                 app:layout_constraintTop_toBottomOf="@id/divider"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" /> 
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

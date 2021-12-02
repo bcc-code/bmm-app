@@ -10,7 +10,7 @@
         android:id="@+id/collapsing_toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+        android:background="@color/background_primary_color"
         local:collapsedTitleTextAppearance="@style/AppTheme.CollapseBarTextAppearance.Collapsed"
         local:expandedTitleTextAppearance="@style/AppTheme.CollapseBarTextAppearance.Expanded"
         local:layout_scrollFlags="scroll|exitUntilCollapsed"

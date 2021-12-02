@@ -9,6 +9,9 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
     {
         public TrackInformation GetTrackInformation(ITrackModel track, CultureInfo culture)
         {
+            if (track == null)
+                return default;
+
             var list = new List<string>();
             if (track.Title != track.Artist)
                 list.Add(track.Title);

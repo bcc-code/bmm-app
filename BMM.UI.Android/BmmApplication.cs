@@ -1,11 +1,13 @@
 using System;
 using Android.App;
 using Android.Runtime;
-using BMM.Api.Framework;
+using AndroidX.AppCompat.App;
 using BMM.Core;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Activities;
 using BMM.UI.Droid.Application.Fragments;
+using BMM.UI.Droid.Utils;
 using Java.Interop;
 using MvvmCross;
 using MvvmCross.Platforms.Android;
@@ -24,6 +26,22 @@ namespace BMM.UI.Droid
 
         public BmmApplication(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer)
         { }
+
+        public override void OnCreate()
+        {
+            base.OnCreate();
+            SetThemeIfNeeded();
+        }
+
+        private void SetThemeIfNeeded()
+        {
+            var theme = AppSettings.SelectedTheme;
+
+            if (theme == Core.Models.Themes.Theme.System)
+                return;
+
+            AppCompatDelegate.DefaultNightMode = ThemeUtils.GetUIModeForTheme(theme);
+        }
 
         [Export("AudioIsPlaying")]
         public string AudioIsPlaying(string miniPlayer)

@@ -8,7 +8,7 @@ namespace BMM.Core.NewMediaPlayer.Abstractions
 {
     public interface IMediaPlayer : ICommonMediaPlayer
     {
-        void ViewHasBeenDestroyed();
+        void ViewHasBeenDestroyed(bool themeChanged);
 
         void Play();
 

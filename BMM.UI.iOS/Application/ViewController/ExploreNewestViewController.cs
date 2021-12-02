@@ -145,7 +145,7 @@ namespace BMM.UI.iOS
         private void SetPlaybackHistoryButton()
         {
             _playbackHistoryButton = new UIBarButtonItem(UIImage.FromBundle("icon_playback_history"), UIBarButtonItemStyle.Plain, null);
-            _playbackHistoryButton.TintColor = UIColor.Black;
+            _playbackHistoryButton.TintColor = AppColors.LabelPrimaryColor;
             NavigationItem.RightBarButtonItem = _playbackHistoryButton;
         }
 

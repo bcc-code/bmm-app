@@ -5,6 +5,7 @@ using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.NewMediaPlayer;
+using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding.Views;
@@ -89,6 +90,19 @@ namespace BMM.UI.iOS
                 Direction = UISwipeGestureRecognizerDirection.Down | UISwipeGestureRecognizerDirection.Up,
                 CancelsTouchesInView = false
             });
+
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            ResultsHeaderLabel.ApplyTextTheme(AppTheme.Title1);
+            HistoryHeaderLabel.ApplyTextTheme(AppTheme.Title1);
+            SuggestionsHeaderLabel.ApplyTextTheme(AppTheme.Title1);
+            WelcomeTitleLabel.ApplyTextTheme(AppTheme.Title2);
+            NoResultsLabel.ApplyTextTheme(AppTheme.Title2);
+            WelcomeSubTitleLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
+            SearchTermTextField.TextColor = AppColors.LabelPrimaryColor;
         }
 
         public override void ViewWillAppear(bool animated)
@@ -139,13 +153,17 @@ namespace BMM.UI.iOS
             //Styling input field
             SearchTermTextField.BorderStyle = UITextBorderStyle.None;
             SearchTermTextField.Layer.CornerRadius = 3f;
-            SearchTermTextField.TintColor = AppColors.ColorPrimary;
+            SearchTermTextField.AttributedPlaceholder = new NSAttributedString (
+                string.Empty,
+                Typography.Subtitle2.Value,
+                AppColors.LabelTertiaryColor);
 
             //Add Search Icon
-            UIImageView SearchIcon = new UIImageView(UIImage.FromBundle("input_search_icon.png"));
-            SearchIcon.Frame = new RectangleF(0, 0, 30, 14);
-            SearchIcon.ContentMode = UIViewContentMode.Center;
-            SearchTermTextField.LeftView = SearchIcon;
+            var searchImageView = new UIImageView(UIImage.FromBundle("InputSearchIcon"));
+            searchImageView.TintColor = AppColors.LabelTertiaryColor;
+            searchImageView.Frame = new RectangleF(0, 0, 30, 14);
+            searchImageView.ContentMode = UIViewContentMode.Center;
+            SearchTermTextField.LeftView = searchImageView;
             SearchTermTextField.LeftViewMode = UITextFieldViewMode.Always;
 
             CustomClearButton();

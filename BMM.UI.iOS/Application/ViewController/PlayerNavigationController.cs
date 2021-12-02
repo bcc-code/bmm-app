@@ -4,11 +4,11 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public class PlayerNavigationController: MvxNavigationController
+    public class PlayerNavigationController : MvxNavigationController
     {
         private UIColor BarBackgroundColor => AppColors.PlayerBackgroundColor;
         private UIColor BarForegroundColor => UIColor.White;
-        
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -17,8 +17,8 @@ namespace BMM.UI.iOS
                 SetNewNavigationBarAppearance();
             else
                 SetOldNavigationBarAppearance();
-            
-            NavigationBar.TintColor = AppColors.ColorPrimary;
+
+            NavigationBar.TintColor = AppColors.TintColor;
         }
 
         private void SetNewNavigationBarAppearance()
@@ -42,11 +42,6 @@ namespace BMM.UI.iOS
             {
                 ForegroundColor = BarForegroundColor
             };
-        }
-
-        public override UIStatusBarStyle PreferredStatusBarStyle()
-        {
-            return UIStatusBarStyle.LightContent;
         }
     }
 }

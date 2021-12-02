@@ -1,3 +1,4 @@
+using System;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Translation;
 using MvvmCross.Localization;
@@ -17,6 +18,11 @@ namespace BMM.Core.Extensions
         public static string GetTranslationKey(this ITranslationDetailsHolder translationDetailsHolder)
         {
             return $"{translationDetailsHolder.TranslationParent}_{translationDetailsHolder.TranslationId}";
+        }
+
+        public static string GetTranslationKey(this Type basicType, string key)
+        {
+            return $"{basicType.Name}_{key}";
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace BMM.UI.Droid.Application.TemplateSelectors
+﻿namespace BMM.UI.Droid.Application.TemplateSelectors
 {
     public class TrackListTemplateSelector : DocumentTemplateSelector
     {

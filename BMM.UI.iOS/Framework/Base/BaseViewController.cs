@@ -2,6 +2,7 @@ using System;
 using System.ComponentModel;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.NewMediaPlayer;
 using Foundation;
 using MvvmCross.Platforms.Ios.Views;
@@ -25,6 +26,24 @@ namespace BMM.UI.iOS
             SubscribeToTextSourceChange();
 
             SetupLargeTitle();
+            SetNavigationBarAppearance();
+        }
+
+        protected virtual void SetNavigationBarAppearance()
+        {
+            if (NavigationController?.NavigationBar == null || !UIDevice.CurrentDevice.CheckSystemVersion(13, 0))
+                return;
+
+            var appearance = new UINavigationBarAppearance();
+            appearance.ConfigureWithOpaqueBackground();
+            appearance.BackgroundColor = AppColors.BackgroundPrimaryColor;
+            appearance.TitleTextAttributes = new UIStringAttributes
+            {
+                ForegroundColor = AppColors.LabelPrimaryColor
+            };
+            appearance.ShadowColor = UIColor.Clear;
+            NavigationController.NavigationBar.StandardAppearance = appearance;
+            NavigationController.NavigationBar.ScrollEdgeAppearance = appearance;
         }
 
         private void SetupLargeTitle()
@@ -60,11 +79,6 @@ namespace BMM.UI.iOS
         public bool IsVisible()
         {
             return IsViewLoaded && View.Window != null;
-        }
-
-        public override UIStatusBarStyle PreferredStatusBarStyle()
-        {
-            return UIStatusBarStyle.LightContent;
         }
 
         public override void ViewWillAppear(bool animated)

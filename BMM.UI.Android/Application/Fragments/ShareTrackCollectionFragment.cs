@@ -23,9 +23,7 @@ namespace BMM.UI.Droid.Application.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
-
             Toolbar.NavigationIcon = null;
-
             return view;
         }
 
@@ -37,7 +35,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
             var title = new SpannableString(ViewModel.TextSource[Translations.Global_Done]);
             title.SetSpan(
-                new ForegroundColorSpan(Context.GetColorFromResource(Resource.Color.colorPrimary)),
+                new ForegroundColorSpan(Context.GetColorFromResource(Resource.Color.tint_color)),
                 0,
                 title.Length(),
                 0);

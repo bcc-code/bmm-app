@@ -22,7 +22,7 @@
             android:id="@+id/image_view_row_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:cardBackgroundColor="@color/light_gray"
+            local:cardBackgroundColor="@color/background_secondary_color"
             local:cardElevation="0dp"
             local:cardCornerRadius="6dp">
 
@@ -46,9 +46,7 @@
                 android:id="@+id/text_view_title"
                 android:singleLine="true"
                 local:MvxBind="Text Item.Name"
-                android:textFontWeight="700"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_large"
+                style="@style/Title2"
                 android:layout_gravity="center_vertical" />
             <LinearLayout
                 android:orientation="horizontal"
@@ -66,7 +64,7 @@
                 <TextView
                     android:id="@+id/text_view_sub_title"
                     android:singleLine="true"
-                    style="@style/Subtitle3"
+                    style="@style/Subtitle3_Label2"
                     local:MvxBind="Text TrackCollectionToListViewItemSubtitleLabel(Item)"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

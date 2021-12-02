@@ -2,8 +2,11 @@
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AndroidX.Core.Content;
+using AndroidX.Core.Content.Resources;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Extensions;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
@@ -40,6 +43,12 @@ namespace BMM.UI.Droid.Application.Fragments
             var set = this.CreateBindingSet<SearchFragment, SearchViewModel>();
             set.Bind(searchText).For(sa => sa.Text).To(vm => vm.SearchTerm);
             set.Apply();
+
+            searchText!.SetTextColor(Context.GetColorFromResource(Resource.Color.label_primary_color));
+            searchText!.SetHintTextColor(Context.GetColorFromResource(Resource.Color.label_secondary_color));
+
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
+                searchText!.SetTextCursorDrawable(Resource.Drawable.edit_text_cursor);
 
             _searchView.OnActionViewExpanded();
             _searchView.ClearFocus();

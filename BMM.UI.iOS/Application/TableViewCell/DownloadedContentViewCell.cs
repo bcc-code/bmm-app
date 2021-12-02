@@ -2,13 +2,12 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.ViewModels;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using System;
 using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class DownloadedContentViewCell : MvxTableViewCell
+    public partial class DownloadedContentViewCell : BaseBMMTableViewCell
     {
         public static readonly UINib Nib = UINib.FromName("DownloadedContentViewCell", NSBundle.MainBundle);
         public static readonly NSString Key = new NSString("DownloadedContentViewCell");
