@@ -304,6 +304,14 @@
       <HintPath>..\packages\PInvoke.Windows.Core.0.5.184\lib\netstandard2.0\PInvoke.Windows.Core.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Plugin.Settings, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SidebarNavigation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\SidebarNavigation.2.1.0\lib\xamarinios10\SidebarNavigation.dll</HintPath>
       <Private>True</Private>
@@ -394,12 +402,6 @@
     <BundleResource Include="Resources\aslaksen.png" />
     <BundleResource Include="Resources\aslaksen@2x.png" />
     <BundleResource Include="Resources\aslaksen@3x.png" />
-    <BundleResource Include="Resources\btn_pause_mini.png" />
-    <BundleResource Include="Resources\btn_pause_mini@2x.png" />
-    <BundleResource Include="Resources\btn_pause_mini@3x.png" />
-    <BundleResource Include="Resources\btn_play_mini.png" />
-    <BundleResource Include="Resources\btn_play_mini@2x.png" />
-    <BundleResource Include="Resources\btn_play_mini@3x.png" />
     <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image.png" />
     <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
     <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
@@ -412,9 +414,6 @@
     <BundleResource Include="Resources\btv_teaser.png" />
     <BundleResource Include="Resources\btv_teaser@2x.png" />
     <BundleResource Include="Resources\btv_teaser@3x.png" />
-    <BundleResource Include="Resources\icon_friends.png" />
-    <BundleResource Include="Resources\icon_friends@2x.png" />
-    <BundleResource Include="Resources\icon_friends@3x.png" />
     <BundleResource Include="Resources\icon_link.png" />
     <BundleResource Include="Resources\icon_link@2x.png" />
     <BundleResource Include="Resources\icon_link@3x.png" />
@@ -622,15 +621,9 @@
     <BundleResource Include="Resources\icon_queue_static.png" />
     <BundleResource Include="Resources\icon_queue_static%402x.png" />
     <BundleResource Include="Resources\icon_queue_static%403x.png" />
-    <BundleResource Include="Resources\input_search_icon.png" />
-    <BundleResource Include="Resources\input_search_icon%402x.png" />
-    <BundleResource Include="Resources\input_search_icon%403x.png" />
     <BundleResource Include="Resources\progress_slider_background_white_dark%402x.png" />
     <BundleResource Include="Resources\progress_slider_background_white_dark%403x.png" />
     <BundleResource Include="Resources\progress_slider_background_white_dark.png" />
-    <BundleResource Include="Resources\icon_selected.png" />
-    <BundleResource Include="Resources\icon_selected%402x.png" />
-    <BundleResource Include="Resources\icon_selected%403x.png" />
     <BundleResource Include="Resources\icon_category_unknown_darth.png" />
     <BundleResource Include="Resources\icon_category_unknown_darth%402x.png" />
     <BundleResource Include="Resources\icon_category_unknown_darth%403x.png" />
@@ -718,6 +711,7 @@
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\SectionHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\SelectThemeTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsTilesViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsListViewController.xib" />
@@ -725,6 +719,7 @@
     <InterfaceDefinition Include="Application\ViewController\PlaybackHistoryViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ShareTrackCollectionViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\ThemeSettingsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\UserSetupViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\MyContentViewController.xib">
       <SubType>Designer</SubType>
@@ -755,6 +750,7 @@
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
@@ -770,6 +766,7 @@
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
     <Compile Include="Application\Extensions\CollectionViewExtensions.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
+    <Compile Include="Application\Extensions\StringExtensions.cs" />
     <Compile Include="Application\Extensions\UiTableExtensions.cs" />
     <Compile Include="Application\Extensions\ViewExtensions.cs" />
     <Compile Include="Application\Helpers\GradientView.cs" />
@@ -777,6 +774,7 @@
     <Compile Include="Application\Helpers\IosSupportVersionChecker.cs" />
     <Compile Include="Application\Helpers\VisibilityBindingsManager.cs" />
     <Compile Include="Application\Helpers\UIViewVisibilityController.cs" />
+    <Compile Include="Application\Implementations\Device\iOSFeatureSupportInfoService.cs" />
     <Compile Include="Application\Implementations\Download\OngoingDownloadsLockDictionary.cs" />
     <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadDoesNotExistException.cs" />
     <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadException.cs" />
@@ -812,6 +810,7 @@
     <Compile Include="Application\NewMediaPlayer\SeekableRemoteCommandCenter.cs" />
     <Compile Include="Application\NewMediaPlayer\RemoteCommandCenter.cs" />
     <Compile Include="Application\NewMediaPlayer\VersionHelper.cs" />
+    <Compile Include="Application\TableViewCell\Base\BaseBMMTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\Base\BaseTrackTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.designer.cs" />
@@ -847,6 +846,10 @@
     <Compile Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.designer.cs">
       <DependentUpon>PlaylistsCollectionTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\SelectThemeTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\SelectThemeTableViewCell.designer.cs">
+      <DependentUpon>SelectThemeTableViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\TableViewCell\StreakTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">
@@ -907,6 +910,10 @@
       <DependentUpon>ShareTrackCollectionViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\ShareTrackCollectionViewController.cs" />
+    <Compile Include="Application\ViewController\ThemeSettingsViewController.cs" />
+    <Compile Include="Application\ViewController\ThemeSettingsViewController.designer.cs">
+      <DependentUpon>ThemeSettingsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\ViewController\UserSetupViewController.cs" />
     <Compile Include="Application\ViewController\UserSetupViewController.designer.cs">
       <DependentUpon>UserSetupViewController.cs</DependentUpon>
@@ -1132,6 +1139,7 @@
     <Compile Include="Application\ViewController\CuratedPlaylistViewController.designer.cs">
       <DependentUpon>CuratedPlaylistViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ThemeUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Application\TableViewCell\TrackTableViewCell.xib" />
@@ -1184,6 +1192,16 @@
     <ITunesArtwork Include="Resources\iTunesArtwork.png" />
   </ItemGroup>
   <ItemGroup>
+    <ImageAsset Include="Resources\Colors.xcassets\HighlightColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColorReverted.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@3x.png" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -1268,6 +1286,56 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\iTunesArtwork@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Colors.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\TintColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\LabelSecondaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\LabelTertiaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\PlaceholderColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\BackgroundPrimaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\BackgroundSecondaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnTintOneColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnTintTwoColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\NotificationColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\RadioColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon.png" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\icon_playlist.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\icon_playlist%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\icon_playlist%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_playlist@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected.png" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right.png" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\BMM.Core\Translation\bg\main.json">
@@ -1429,6 +1497,24 @@
       <Project>{5b0f239b-7bb5-4c18-ab02-44dcbd597d61}</Project>
       <Name>BMM.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Colors.xcassets\TintColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\LabelPrimaryColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\LabelSecondaryColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\LabelTertiaryColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\PlaceholderColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\BackgroundPrimaryColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\BackgroundSecondaryColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\OnTintOneColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\OnTintTwoColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\NotificationColor.colorset\" />
+    <Folder Include="Resources\Colors.xcassets\RadioColor.colorset\" />
+    <Folder Include="Resources\Images.xcassets\PlayMiniIcon.imageset\" />
+    <Folder Include="Resources\Images.xcassets\PauseMiniIcon.imageset\" />
+    <Folder Include="Resources\Images.xcassets\InputSearchIcon.imageset\" />
+    <Folder Include="Resources\Images.xcassets\SelectedIcon.imageset\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

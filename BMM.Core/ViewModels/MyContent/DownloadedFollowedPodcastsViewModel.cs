@@ -45,6 +45,12 @@ namespace BMM.Core.ViewModels.MyContent
             Documents.CollectionChanged -= DocumentsOnCollectionChanged;
         }
 
+        public override async Task Load()
+        {
+            await base.Load();
+            await RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);
+        }
+
         private void DocumentsOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RaisePropertyChanged(() => ShowEmptyFollowedPodcasts);

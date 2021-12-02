@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:minHeight="@dimen/row_document_height"
     android:layout_height="wrap_content"
-    android:divider="@drawable/settings_divider"
-    android:showDividers="end"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,20 +22,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                local:MvxBind="Text StorageName(Item)"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_large"
-                android:layout_marginTop="@dimen/margin_small" />
+                android:layout_marginTop="@dimen/margin_small"
+                local:MvxBind="Text StorageName(Item)"
+                style="@style/Title2"/>
             <TextView
                 android:id="@+id/subtitle"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                local:MvxBind="Text StorageSize(Item)"
                 android:layout_gravity="center_vertical"
-                android:textColor="@color/gray"
-                android:textSize="@dimen/text_small"
-                android:layout_marginBottom="@dimen/margin_small" />
+                android:layout_marginBottom="@dimen/margin_small"
+                local:MvxBind="Text StorageSize(Item)"
+                style="@style/Subtitle2_Label2" />
         </LinearLayout>
         <RadioButton
             local:MvxBind="Checked IsSelected"

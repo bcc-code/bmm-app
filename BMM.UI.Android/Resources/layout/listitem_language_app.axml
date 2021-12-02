@@ -12,10 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/radioButton1"
         android:layout_centerVertical="true"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_large"
-        android:textFontWeight="700"
-        android:paddingLeft="@dimen/element_margin_medium" />
+        android:paddingLeft="@dimen/element_margin_medium"
+        style="@style/Title2" />
     <RadioButton
         local:MvxBind="Checked IsSelected"
         android:text=""
@@ -25,7 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/element_margin_medium"
-        android:layout_marginRight="@dimen/element_margin_medium"
+        android:layout_marginRight="@dimen/margin_small"
         android:focusable="false"
         android:focusableInTouchMode="false"
         android:clickable="false" />

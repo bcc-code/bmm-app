@@ -55,12 +55,10 @@ namespace BMM.UI.Droid.Application.Fragments
                     return new Color();
                 }
 
-                return new Color(ContextCompat.GetColor(Activity.BaseContext, Resource.Color.white));
+                return new Color(Activity.GetColorFromResource(Resource.Color.background_primary_color));
             }
             set => _fragmentBaseColor = value;
         }
-
-        protected virtual Color ActionBarColor => new Color(ContextCompat.GetColor(Activity.BaseContext, Resource.Color.white));
 
         public MainActivity ParentActivity => (MainActivity)Activity;
 
@@ -221,27 +219,14 @@ namespace BMM.UI.Droid.Application.Fragments
                 return;
             }
 
-            var darkenedStatusBarColor = BitmapHelper.Darken(color);
-
-            if (Toolbar != null)
-            {
-                ParentActivity.SupportActionBar.SetBackgroundDrawable(new ColorDrawable(ActionBarColor));
-            }
-
-            CollapsingToolbar?.SetContentScrimColor(color);
-            var toolbarTextColor = BitmapHelper.BackgroundColorRequiresDarkText(color) ? Color.Black : Color.White;
-            CollapsingToolbar?.SetExpandedTitleColor(toolbarTextColor);
-            CollapsingToolbar?.SetCollapsedTitleTextColor(toolbarTextColor);
-
             var window = Activity.Window;
             window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
             window.ClearFlags(WindowManagerFlags.TranslucentStatus);
-            window.SetStatusBarColor(darkenedStatusBarColor);
+            window.SetStatusBarColor(color);
 
-            window.DecorView.SystemUiVisibility = BitmapHelper.BackgroundColorRequiresDarkText(darkenedStatusBarColor)
+            window.DecorView.SystemUiVisibility = BitmapHelper.BackgroundColorRequiresDarkText(color)
                 ? window.DecorView.SystemUiVisibility.AddFlag(SystemUiFlags.LightStatusBar)
                 : window.DecorView.SystemUiVisibility.RemoveFlag(SystemUiFlags.LightStatusBar);
-
         }
 
         protected virtual bool CheckIfFragmentIsDetachedFromActivity() => Activity?.BaseContext == null || Context == null;

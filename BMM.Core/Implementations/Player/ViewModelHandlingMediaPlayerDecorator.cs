@@ -122,8 +122,11 @@ namespace BMM.Core.Implementations.Player
             return Play(enrichedTracks, currentTrack, startTimeInMs);
         }
 
-        public void ViewHasBeenDestroyed()
+        public void ViewHasBeenDestroyed(bool themeChanged)
         {
+            if (themeChanged)
+                return;
+
             _isViewmodelShown = false;
         }
 

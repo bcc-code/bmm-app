@@ -6,6 +6,7 @@
     <item android:id="@+id/playback_history"
           android:icon="@drawable/icon_playback_history"
           android:showAsAction="always"
+          local:iconTint="@color/label_primary_color"
           local:showAsAction="always"/>
 
 </menu>

@@ -7,13 +7,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="32dp"
-        android:background="@color/white"
         android:orientation="vertical"
         android:gravity="center">
     <LinearLayout
             android:background="@drawable/icon_playlist"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:backgroundTint="@color/label_primary_color"
             app:MvxBind="Visibility Visibility(ShowPlaylistIcon)"/>
 
     <androidx.cardview.widget.CardView
@@ -157,7 +157,7 @@
                   android:id="@+id/shuffle_button"
                   android:text="Shuffle"
                   style="@style/IconButton_Primary"
-                  android:drawableLeft="@drawable/icon_play_white"
+                  android:drawableLeft="@drawable/icon_play_button"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   app:MvxLang="Text DocumentsViewModel_Shuffle"
@@ -171,7 +171,7 @@
             <Button
                     android:text="Shuffle"
                     style="@style/IconButton_Primary"
-                    android:drawableLeft="@drawable/icon_play_white"
+                    android:drawableLeft="@drawable/icon_play_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:MvxLang="Text DocumentsViewModel_Play"

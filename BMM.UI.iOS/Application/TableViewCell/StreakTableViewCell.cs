@@ -11,7 +11,7 @@ using BMM.UI.iOS.Constants;
 
 namespace BMM.UI.iOS
 {
-    public partial class StreakTableViewCell : BaseTrackTableViewCell
+    public partial class StreakTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new NSString(nameof(StreakTableViewCell));
         private IBMMLanguageBinder BMMLanguageBinder => BMMLanguageBinderLocator.TextSource;
@@ -21,11 +21,11 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                MondayColorView.Layer.BorderColor = AppColors.StreakColorBubbleBorderColor.CGColor;
-                TuesdayColorView.Layer.BorderColor = AppColors.StreakColorBubbleBorderColor.CGColor;
-                WednesdayColorView.Layer.BorderColor = AppColors.StreakColorBubbleBorderColor.CGColor;
-                ThursdayColorView.Layer.BorderColor = AppColors.StreakColorBubbleBorderColor.CGColor;
-                FridayColorView.Layer.BorderColor = AppColors.StreakColorBubbleBorderColor.CGColor;
+                MondayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                TuesdayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                WednesdayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                ThursdayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                FridayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
 
                 MondayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayMonday];
                 TuesdayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayTuesday];
@@ -124,6 +124,20 @@ namespace BMM.UI.iOS
 
                 set.Apply();
             });
+        }
+
+        protected override bool HasHighlightEffect => false;
+
+        public override void AwakeFromNib()
+        {
+            base.AwakeFromNib();
+            StreakLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
+            StreakSublabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
+            MondayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
+            TuesdayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
+            WednesdayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
+            ThursdayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
+            FridayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
         }
     }
 }

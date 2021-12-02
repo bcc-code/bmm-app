@@ -4,8 +4,6 @@
     android:layout_width="match_parent"
     android:minHeight="@dimen/row_document_height"
     android:layout_height="wrap_content"
-    android:divider="@drawable/settings_divider"
-    android:showDividers="end"
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,7 +29,6 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="2dp"
             android:text="Title"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_large" />
+            style="@style/Title2" />
     </RelativeLayout>
 </LinearLayout>

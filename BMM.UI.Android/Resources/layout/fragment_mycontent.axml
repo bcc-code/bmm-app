@@ -31,5 +31,5 @@
         local:MvxBind="Click CreatePlaylistCommand; Visibility Visibility(IsInOnlineMode);"
         android:layout_margin="@dimen/margin_medium"
         android:layout_gravity="end|bottom"
-        app:backgroundTint="@color/colorPrimary" />
+        app:backgroundTint="@color/tint_color" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

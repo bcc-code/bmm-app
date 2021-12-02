@@ -25,9 +25,9 @@ namespace BMM.UI.iOS
 
             var source = new DocumentsTableViewSource(TracksTable);
 
-            NameLabel.ApplyTextTheme(AppTheme.Heading2.Value);
+            NameLabel.ApplyTextTheme(AppTheme.Heading2);
             PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
-            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3.Value);
+            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
 
             var set = this.CreateBindingSet<ContributorViewController, ContributorViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.Contributor).WithConversion<ContributorNameConverter>();

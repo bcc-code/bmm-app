@@ -1,20 +1,18 @@
 ﻿using System;
 using BMM.Core.Models;
+using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class ExternalRelationListItemTableViewCell : MvxTableViewCell
+    public partial class ExternalRelationListItemTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly NSString Key = new NSString("ExternalRelationListItemTableViewCell");
-        public static readonly UINib Nib;
+        public static readonly NSString Key = new NSString(nameof(ExternalRelationListItemTableViewCell));
 
         static ExternalRelationListItemTableViewCell()
         {
-            Nib = UINib.FromName("ExternalRelationListItemTableViewCell", NSBundle.MainBundle);
         }
 
         public ExternalRelationListItemTableViewCell(IntPtr handle) : base(handle)
@@ -25,6 +23,12 @@ namespace BMM.UI.iOS
                 set.Bind(TitleLabel).To(listItem => listItem.Title);
                 set.Apply();
             });
+        }
+
+        public override void AwakeFromNib()
+        {
+            base.AwakeFromNib();
+            TitleLabel.ApplyTextTheme(AppTheme.Title2);
         }
     }
 }

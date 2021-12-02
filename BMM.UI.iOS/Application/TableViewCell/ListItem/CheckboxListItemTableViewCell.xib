@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -49,6 +50,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="OcY-vN-BeE" secondAttribute="trailing" constant="67" id="ylW-T8-c44"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
             <connections>
                 <outlet property="Switch" destination="N9n-Ay-mVk" id="ayy-vy-acY"/>
                 <outlet property="TextLabel" destination="iOw-KR-vJW" id="BF2-BB-KMn"/>
@@ -57,4 +59,9 @@
             <point key="canvasLocation" x="447.82608695652175" y="270.87053571428572"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <namedColor name="BackgroundPrimaryColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

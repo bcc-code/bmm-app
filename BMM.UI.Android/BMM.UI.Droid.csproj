@@ -102,6 +102,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
     <Compile Include="Application\Activities\SupportEndedActivity.cs" />
     <Compile Include="Application\Activities\UserSetupActivity.cs" />
     <Compile Include="Application\Activities\OidcLoginActivity.cs" />
@@ -148,12 +149,14 @@
     <Compile Include="Application\Fragments\StorageManagementFragment.cs" />
     <Compile Include="Application\Fragments\MyContentFragment.cs" />
     <Compile Include="Application\Fragments\MyTracksFragment.cs" />
+    <Compile Include="Application\Fragments\ThemeSettingsFragment.cs" />
     <Compile Include="Application\Helpers\AndroidSupportVersionChecker.cs" />
     <Compile Include="Application\Helpers\BitmapHelper.cs" />
     <Compile Include="Application\Helpers\BottomSheet\PreventBottomSheetChangesWhileSwipeHappens.cs" />
     <Compile Include="Application\Helpers\BottomSheet\BottomSheetManager.cs" />
     <Compile Include="Application\Helpers\HideKeyboardExtensions.cs" />
     <Compile Include="Application\Helpers\SetupHelper.cs" />
+    <Compile Include="Application\Implementations\Device\DroidFeaturePreviewPermission.cs" />
     <Compile Include="Application\Implementations\FirebaseRemoteConfig\AndroidFirebaseRemoteConfig.cs" />
     <Compile Include="Application\Implementations\AndroidLogger.cs" />
     <Compile Include="Application\Implementations\ClipboardService.cs" />
@@ -192,6 +195,7 @@
     <Compile Include="Application\NewMediaPlayer\Service\CustomErrorMessageProvider.cs" />
     <Compile Include="Application\NewMediaPlayer\Service\CustomShuffleOrder.cs" />
     <Compile Include="Application\NewMediaPlayer\Playback\IdleRecoveringControlDispatcher.cs" />
+    <Compile Include="Utils\ThemeUtils.cs" />
     <Reference Include="System.IO.Compression" />
     <Compile Include="Application\Helpers\Gesture\HorizontalSwipeDetector.cs" />
     <Compile Include="Application\Helpers\Gesture\SwipeDirection.cs" />
@@ -292,6 +296,10 @@
     </AndroidResource>
     <AndroidResource Include="Resources\anim\trim_start_interpolator.xml">
       <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\color-night\textfield_background.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\color\navigation_color_selector.xml">
       <SubType>Designer</SubType>
@@ -403,6 +411,7 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\cover_with_title_background.xml" />
+    <AndroidResource Include="Resources\drawable\edit_text_cursor.xml" />
     <AndroidResource Include="Resources\drawable\icon_friends.xml" />
     <AndroidResource Include="Resources\drawable\icon_link.xml" />
     <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
@@ -432,15 +441,11 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_favorites_active_no_fill.xml" />
-    <AndroidResource Include="Resources\drawable\icon_play.xml">
+    <AndroidResource Include="Resources\drawable\icon_play_button.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_playlist.xml" />
-    <AndroidResource Include="Resources\drawable\icon_play_white.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_podcast.xml" />
     <AndroidResource Include="Resources\drawable\icon_tick.xml">
       <SubType>Designer</SubType>
@@ -499,6 +504,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_theme_settings.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_tracklist.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -521,7 +530,6 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_covers_carousel_collection.xml" />
-    <AndroidResource Include="Resources\layout\listitem_podcast_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_podcast_newest_track.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -533,6 +541,10 @@
     <AndroidResource Include="Resources\layout\listitem_profile.xml" />
     <AndroidResource Include="Resources\layout\listitem_shared_trackcollection_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_streak.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_theme_selector.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
@@ -565,6 +577,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\trackcollection_shared.xml" />
+    <AndroidResource Include="Resources\values-night\colors.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\values-v27\styles.xml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\xml\auto_backup_rules.xml" />
@@ -651,7 +667,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_trackrelation_external.png" />
     <AndroidResource Include="Resources\layout\listitem_trackrelation_external.axml" />
     <AndroidResource Include="Resources\layout\fragment_podcasts.axml" />
-    <AndroidResource Include="Resources\layout\listitem_podcasts.axml" />
     <AndroidResource Include="Resources\layout\fragment_library_archive.axml" />
     <AndroidResource Include="Resources\layout\fragment_automatic_download.axml" />
     <AndroidResource Include="Resources\layout\listitem_automatic_download.axml" />
@@ -1086,6 +1101,9 @@
     <PackageReference Include="Xam.Plugins.Android.ExoPlayer.MediaSession">
       <Version>2.11.8</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugins.Settings">
+      <Version>3.1.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.ConstraintLayout">
       <Version>2.0.4</Version>
     </PackageReference>
@@ -1149,9 +1167,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_share.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_downloaded_content.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\fragment_mycontent.axml" />

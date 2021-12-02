@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plist version="1.0">
   <dict>
-    <key>UIUserInterfaceStyle</key>
-    <string>Light</string>
     <key>UISupportedInterfaceOrientations</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>
@@ -18,7 +16,7 @@
       <integer>2</integer>
     </array>
     <key>MinimumOSVersion</key>
-    <string>10.0</string>
+    <string>11.0</string>
     <key>CFBundleDisplayName</key>
     <string>BMM</string>
     <key>CFBundleURLTypes</key>
@@ -40,7 +38,7 @@
       <string>remote-notification</string>
     </array>
     <key>UIViewControllerBasedStatusBarAppearance</key>
-    <true />
+    <false />
     <key>UISupportedInterfaceOrientations~ipad</key>
     <array>
       <string>UIInterfaceOrientationPortrait</string>

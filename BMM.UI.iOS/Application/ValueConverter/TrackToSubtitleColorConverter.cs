@@ -24,7 +24,7 @@ namespace BMM.UI.iOS
             if (value.ViewModel is IDarkStyleOnIosViewModel)
                 return UIColor.White.ColorWithAlpha(0.8f);
 
-            return AppColors.TrackSubtitleColor;
+            return AppColors.LabelSecondaryColor;
 
         }
 

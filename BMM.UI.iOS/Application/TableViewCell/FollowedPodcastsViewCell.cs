@@ -2,13 +2,12 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.ViewModels;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using System;
 using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class FollowedPodcastsViewCell : MvxTableViewCell
+    public partial class FollowedPodcastsViewCell : BaseBMMTableViewCell
     {
         public static readonly UINib Nib = UINib.FromName("FollowedPodcastsViewCell", NSBundle.MainBundle);
         public static readonly NSString Key = new NSString("FollowedPodcastsViewCell");

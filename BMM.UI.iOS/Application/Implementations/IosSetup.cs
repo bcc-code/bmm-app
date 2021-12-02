@@ -10,6 +10,7 @@ using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Exceptions;
@@ -23,6 +24,7 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.DownloadManager;
 using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
+using BMM.UI.iOS.Implementations.Device;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
 using BMM.UI.iOS.NewMediaPlayer;
@@ -90,7 +92,8 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IFileDownloader, IosFileDownloader>();
 
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
-
+            
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IFeatureSupportInfoService, iOSFeatureSupportInfoService>();
             RegisterMediaPlayer();
         }
 

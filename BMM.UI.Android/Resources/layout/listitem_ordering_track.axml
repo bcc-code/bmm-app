@@ -29,12 +29,10 @@
                 android:id="@+id/trackTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textFontWeight="700"
                 android:maxLines="1"
                 android:ellipsize="end"
                 android:lineHeight="20sp"
+                style="@style/Title2"
                 local:MvxBind="Text Title(.)" />
 
         </LinearLayout>
@@ -51,23 +49,19 @@
                 android:id="@+id/trackSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/gray"
-                android:textSize="13sp"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:lineHeight="20sp"
+                style="@style/Subtitle3_Label2"
                 local:MvxBind="Text Subtitle(.)" />
 
             <TextView
                 android:id="@+id/trackMeta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/bright_gray"
                 android:layout_marginLeft="4dp"
-                android:textSize="13sp"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:lineHeight="20sp"
+                style="@style/Subtitle3_Label3"
                 local:MvxBind="Text MetaTitle(.)" />
 
         </LinearLayout>

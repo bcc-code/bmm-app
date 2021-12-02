@@ -2,6 +2,7 @@ using System;
 using BMM.Core;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Constants;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
 
@@ -32,6 +33,12 @@ namespace BMM.UI.iOS
         	set.Apply();
 
         	AutomaticDownloadTableView.ReloadData();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            SubtitleLabel.ApplyTextTheme(AppTheme.Subtitle2Label3);
         }
     }
 }

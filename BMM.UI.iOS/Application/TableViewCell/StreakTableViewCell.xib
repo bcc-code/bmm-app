@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -268,7 +269,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                         <constraints>
                             <constraint firstItem="kIx-ud-4Rb" firstAttribute="leading" secondItem="azN-f7-K7s" secondAttribute="leading" id="0pe-7y-dwt"/>
                             <constraint firstAttribute="bottom" secondItem="kIx-ud-4Rb" secondAttribute="bottom" id="GVp-ne-4Bg"/>
@@ -277,6 +278,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="azN-f7-K7s" secondAttribute="trailing" constant="16" id="4cm-i2-tuo"/>
                     <constraint firstAttribute="trailing" secondItem="opM-Uc-T3L" secondAttribute="trailing" constant="16" id="F9Q-V0-2LD"/>
@@ -314,6 +316,9 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
     <resources>
+        <namedColor name="BackgroundPrimaryColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

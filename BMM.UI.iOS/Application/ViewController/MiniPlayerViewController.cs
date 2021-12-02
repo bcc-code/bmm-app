@@ -21,7 +21,7 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
-            ProgressBar.ProgressColor = AppColors.ColorPrimary;
+            ProgressBar.ProgressColor = AppColors.TintColor;
 
             var set = this.CreateBindingSet<MiniPlayerViewController, MiniPlayerViewModel>();
             set.Bind(ProgressBar).For(s => s.Progress).To(vm => vm.SliderPosition)
@@ -43,6 +43,13 @@ namespace BMM.UI.iOS
                 .WithConversion<CoverUrlToFallbackImageValueConverter>(IosConstants.CoverPlaceholderImage);
 
             set.Apply();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            TrackTitleLabel.ApplyTextTheme(AppTheme.Title2);
+            TrackSubtitleLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
         }
 
         public override void ViewDidLayoutSubviews()

@@ -1,16 +1,14 @@
 ﻿using System;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class AutomaticDownloadTableViewCell : MvxTableViewCell
+    public partial class AutomaticDownloadTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("AutomaticDownloadTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("AutomaticDownloadTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(AutomaticDownloadTableViewCell));
 
         protected AutomaticDownloadTableViewCell(IntPtr handle) : base(handle)
         {
@@ -23,9 +21,11 @@ namespace BMM.UI.iOS
             });
         }
 
-        public static AutomaticDownloadTableViewCell Create()
+        public override void AwakeFromNib()
         {
-	        return (AutomaticDownloadTableViewCell)Nib.Instantiate(null, null)[0];
+            base.AwakeFromNib();
+            TextLabel.ApplyTextTheme(AppTheme.Paragraph1Label1);
+            IsSelectedImage.TintColor = AppColors.LabelPrimaryColor;
         }
     }
 }

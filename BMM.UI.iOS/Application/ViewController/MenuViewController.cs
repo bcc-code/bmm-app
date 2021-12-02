@@ -25,11 +25,28 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
             Delegate = new MenuVTabBarDelegate();
-            View.BackgroundColor = UIColor.White;
-            TabBar.BarTintColor = UIColor.White;
-            TabBar.TintColor = AppColors.TrackTitleColor;
-            TabBar.UnselectedItemTintColor = AppColors.TabBarUnselectedColor;
+            View.BackgroundColor = AppColors.BackgroundPrimaryColor;
+            TabBar.BarTintColor = AppColors.BackgroundPrimaryColor;
+            TabBar.TintColor = AppColors.LabelPrimaryColor;
+            TabBar.UnselectedItemTintColor = AppColors.LabelTertiaryColor;
             TabBar.AccessibilityIdentifier = "tab_bar";
+            SetBottomBarAppearance();
+        }
+
+        protected virtual void SetBottomBarAppearance()
+        {
+            if (!UIDevice.CurrentDevice.CheckSystemVersion(13, 0))
+                return;
+
+            var appearance = new UITabBarAppearance();
+            appearance.ConfigureWithOpaqueBackground();
+            appearance.BackgroundColor = AppColors.BackgroundPrimaryColor;
+            TabBar.StandardAppearance = appearance;
+
+            if (!UIDevice.CurrentDevice.CheckSystemVersion(15, 0))
+                return;
+
+            TabBar.ScrollEdgeAppearance = appearance;
         }
 
         public override void ViewDidLayoutSubviews()

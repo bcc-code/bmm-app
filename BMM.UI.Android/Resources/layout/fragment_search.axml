@@ -24,16 +24,15 @@
                 android:id="@+id/relativeLayout1">
                 <TextView
                     android:id="@+id/text_view_searchhistory"
-                    android:singleLine="true"
-                    android:textColor="@drawable/navigation_header_text"
-                    android:textSize="@dimen/text_large"
                     local:MvxLang="Text SearchViewModel_SearchHistory"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/element_margin_medium"
                     android:layout_toLeftOf="@+id/imagebutton_deletehistory"
-                    android:layout_alignParentLeft="true" />
+                    android:layout_alignParentLeft="true"
+                    android:singleLine="true"
+                    style="@style/Title2" />
                 <ImageButton
                     local:MvxBind="Click DeleteHistoryCommand"
                     android:id="@+id/imagebutton_deletehistory"
@@ -51,7 +50,6 @@
             </RelativeLayout>
             <MvxListView
                 android:id="@+id/search_history"
-                android:divider="@drawable/documents_divider"
                 local:MvxItemTemplate="@layout/listitem_search_suggestion"
                 local:MvxBind="ItemsSource SearchHistory; ItemClick SearchByTermCommand"
                 android:layout_width="wrap_content"
@@ -86,9 +84,8 @@
                     android:id="@+id/textView1"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/element_margin_tiny"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_large"
-                    android:gravity="center_horizontal|center_vertical" />
+                    android:gravity="center_horizontal|center_vertical"
+                    style="@style/Title2" />
                 <TextView
                     local:MvxLang="Text SearchViewModel_WelcomeSubTitle"
                     android:textAppearance="?android:attr/textAppearanceMedium"
@@ -96,9 +93,8 @@
                     android:layout_gravity="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/text_small"
-                    android:gravity="center_horizontal|center_vertical" />
+                    android:gravity="center_horizontal|center_vertical"
+                    style="@style/Subtitle3_Label2" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>

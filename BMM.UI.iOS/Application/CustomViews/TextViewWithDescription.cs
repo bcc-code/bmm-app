@@ -45,25 +45,27 @@ namespace BMM.UI.iOS
             TranslatesAutoresizingMaskIntoConstraints = false;
             TitleLabel = new UILabel
             {
-                Font = UIFont.SystemFontOfSize(15),
-                TextColor = AppColors.TrackSubtitleColor,
                 TranslatesAutoresizingMaskIntoConstraints = false
             };
+            TitleLabel.ApplyTextTheme(AppTheme.Subtitle2Label2);
+
             TitleTextField = new UITextField
             {
                 TranslatesAutoresizingMaskIntoConstraints = false,
                 Font = UIFont.SystemFontOfSize(26, UIFontWeight.Bold),
                 AdjustsFontSizeToFitWidth = true,
-                MinimumFontSize = 18,
-                TextColor = AppColors.TrackTitleColor,
             };
+
+            TitleTextField.Font = Typography.Header3.Value;
+            TitleTextField.TextColor = AppColors.LabelPrimaryColor;
+
             TitleTextField.Started += TitleTextFieldOnEditingChanged;
             TitleTextField.Ended += TitleTextFieldOnEditingChanged;
 
             Layer.CornerRadius = 16;
             Layer.BorderWidth = 2;
             Layer.BorderColor = UIColor.Clear.CGColor;
-            BackgroundColor = AppColors.StreakBackGroundColor;
+            BackgroundColor = AppColors.BackgroundSecondaryColor;
             AddSubview(TitleLabel);
             AddSubview(TitleTextField);
 
@@ -85,12 +87,12 @@ namespace BMM.UI.iOS
             var textField = (UITextField)sender;
             if (textField.IsEditing)
             {
-                BackgroundColor = UIColor.White;
-                BorderColor = AppColors.ColorPrimary;
+                BackgroundColor = AppColors.BackgroundPrimaryColor;
+                BorderColor = AppColors.TintColor;
             }
             else
             {
-                BackgroundColor = AppColors.StreakBackGroundColor;
+                BackgroundColor = AppColors.BackgroundSecondaryColor;
                 BorderColor = UIColor.Clear;
             }
         }

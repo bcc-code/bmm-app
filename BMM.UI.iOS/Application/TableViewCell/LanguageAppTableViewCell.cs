@@ -1,17 +1,15 @@
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using Foundation;
 using System;
-using UIKit;
 using BMM.Core.ValueConverters;
+using BMM.UI.iOS.Constants;
 
 namespace BMM.UI.iOS
 {
-    public partial class LanguageAppTableViewCell : MvxTableViewCell
+    public partial class LanguageAppTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("LanguageAppTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("LanguageAppTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(LanguageAppTableViewCell));
 
         public LanguageAppTableViewCell(IntPtr handle)
             : base(handle)
@@ -25,9 +23,11 @@ namespace BMM.UI.iOS
             });
         }
 
-        public static LanguageAppTableViewCell Create()
+        public override void AwakeFromNib()
         {
-            return (LanguageAppTableViewCell)Nib.Instantiate(null, null)[0];
+            base.AwakeFromNib();
+            TextLabel.ApplyTextTheme(AppTheme.Title2);
+            IsSelectedImage.TintColor = AppColors.LabelPrimaryColor;
         }
     }
 }

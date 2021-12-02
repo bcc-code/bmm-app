@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
@@ -27,5 +28,7 @@ namespace BMM.UI.iOS
 
             QueueTableView.ReloadData();
         }
+
+        protected override void SetNavigationBarAppearance() => Expression.Empty();
     }
 }

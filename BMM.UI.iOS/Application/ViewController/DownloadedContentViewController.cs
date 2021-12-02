@@ -43,6 +43,13 @@ namespace BMM.UI.iOS
             set.Apply();
 
             MyCollectionTable.ReloadData();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            NoOfflineTrackCollectionHeadlineLabel.ApplyTextTheme(AppTheme.Title2);
+            NoOfflineTrackCollectionTextLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
     }
 }

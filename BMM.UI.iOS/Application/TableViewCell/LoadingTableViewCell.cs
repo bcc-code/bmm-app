@@ -1,23 +1,15 @@
-﻿using MvvmCross.Platforms.Ios.Binding.Views;
-using CoreAnimation;
+﻿using CoreAnimation;
 using Foundation;
 using System;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class LoadingTableViewCell : MvxTableViewCell
+    public partial class LoadingTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("LoadingTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("LoadingTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(LoadingTableViewCell));
 
         public LoadingTableViewCell(IntPtr handle) : base(handle)
         {
-        }
-
-        public static LoadingTableViewCell Create()
-        {
-            return (LoadingTableViewCell)Nib.Instantiate(null, null)[0];
         }
 
         public void AnimateSpinner()

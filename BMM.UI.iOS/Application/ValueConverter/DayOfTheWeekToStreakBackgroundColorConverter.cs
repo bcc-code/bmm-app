@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
         protected override UIColor Convert(ListeningStreak streak, Type targetType, object parameter, CultureInfo culture)
         {
             if (streak.DayOfTheWeek.ToString() == (string)parameter && DateTime.UtcNow < streak.EligibleUntil.ToUniversalTime())
-                return AppColors.StreakBackGroundColor;
+                return AppColors.BackgroundSecondaryColor;
 
             return UIColor.Clear;
         }

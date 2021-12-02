@@ -1,6 +1,7 @@
 using System;
 using System.Globalization;
 using BMM.Api.Implementation.Models;
+using BMM.UI.iOS.Extensions;
 using MvvmCross.Converters;
 
 namespace BMM.UI.iOS
@@ -13,9 +14,9 @@ namespace BMM.UI.iOS
             var pinnedItem = (PinnedItem)((Func<Document>)parameters[0]).Invoke();
 
             if (pinnedItem?.Icon != "")
-                return "res:" + pinnedItem.Icon + ".png";
-            else
-                return "res:icon_category_unknown.png";
+                return $"res:{pinnedItem!.Icon.ToIosImageName()}";
+
+            return "res:icon_category_unknown.png";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

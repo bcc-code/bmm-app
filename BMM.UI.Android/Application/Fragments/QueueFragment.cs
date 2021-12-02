@@ -11,8 +11,6 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.QueueFragment")]
     public class QueueFragment : BaseFragment<QueueViewModel>
     {
-        protected override Color ActionBarColor => Resources.GetColor(Resource.Color.black);
-
         protected override int FragmentId => Resource.Layout.fragment_queue;
 
         protected override Color FragmentBaseColor => Resources.GetColor(Resource.Color.player_statusbar);

@@ -51,6 +51,8 @@ namespace BMM.Core.ViewModels
         private readonly IProfileLoader _profileLoader;
         private readonly IUserStorage _userStorage;
         private readonly IFirebaseRemoteConfig _remoteConfig;
+        private readonly IFeaturePreviewPermission _featurePreviewPermission;
+        private readonly IFeatureSupportInfoService _featureSupportInfoService;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -79,7 +81,9 @@ namespace BMM.Core.ViewModels
             IExceptionHandler exceptionHandler,
             IProfileLoader profileLoader,
             IUserStorage userStorage,
-            IFirebaseRemoteConfig remoteConfig)
+            IFirebaseRemoteConfig remoteConfig,
+            IFeaturePreviewPermission featurePreviewPermission,
+            IFeatureSupportInfoService featureSupportInfoService)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -99,6 +103,8 @@ namespace BMM.Core.ViewModels
             _profileLoader = profileLoader;
             _userStorage = userStorage;
             _remoteConfig = remoteConfig;
+            _featurePreviewPermission = featurePreviewPermission;
+            _featureSupportInfoService = featureSupportInfoService;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -251,7 +257,7 @@ namespace BMM.Core.ViewModels
 
         private async Task<List<IListItem>> BuildGeneralSection()
         {
-            return new List<IListItem>
+            var generalSectionItems = new List<IListItem>
             {
                 new SectionHeader {Title = TextSource[Translations.SettingsViewModel_HeadlineGeneral]},
                 new SelectableListItem
@@ -267,6 +273,18 @@ namespace BMM.Core.ViewModels
                     OnSelected = NavigationService.NavigateCommand<LanguageContentViewModel>()
                 }
             };
+            
+            if (!_featurePreviewPermission.IsFeaturePreviewEnabled() || !_featureSupportInfoService.SupportsDarkMode)
+                return generalSectionItems;
+            
+            generalSectionItems.Add(new SelectableListItem
+            {
+                Title = TextSource[Translations.SettingsViewModel_ThemeHeader],
+                Text = TextSource[Translations.SettingsViewModel_ThemeText],
+                OnSelected = NavigationService.NavigateCommand<ThemeSettingsViewModel>()
+            });
+
+            return generalSectionItems;
         }
 
         private async Task<List<IListItem>> BuildAboutSection()

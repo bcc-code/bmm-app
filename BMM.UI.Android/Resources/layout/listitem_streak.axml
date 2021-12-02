@@ -15,9 +15,8 @@
         android:layout_marginBottom="0dp"
         android:gravity="center"
         android:text="Your streak this week"
+        style="@style/Subtitle3_Label1"
         app:MvxBind="Text StreakMessage(Item)"
-        android:textColor="@color/black"
-        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/day_streak_boxes"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -56,7 +55,7 @@
                 android:layout_marginRight="18dp"
                 android:layout_marginBottom="12dp"
                 android:orientation="vertical">
-                  
+
                 <View
                   android:layout_width="12dp"
                   android:layout_height="12dp"
@@ -67,12 +66,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textFontWeight="800"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    app:MvxBind="Text StreakTextSource('WeekdayMonday')"
-                    android:text="X" />
+                    style="@style/Subtitle3_Label1"
+                    tools:text="X"
+                    app:MvxBind="Text StreakTextSource('WeekdayMonday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -94,7 +91,7 @@
                 android:layout_marginBottom="12dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
-                
+
                 <View
                   android:layout_width="12dp"
                   android:layout_height="12dp"
@@ -105,12 +102,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textFontWeight="800"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    app:MvxBind="Text StreakTextSource('WeekdayTuesday')"
-                    android:text="T" />
+                    style="@style/Subtitle3_Label1"
+                    tools:text="T"
+                    app:MvxBind="Text StreakTextSource('WeekdayTuesday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -143,12 +138,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textFontWeight="800"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    app:MvxBind="Text StreakTextSource('WeekdayWednesday')"
-                    android:text="W" />
+                    tools:text="W"
+                    style="@style/Subtitle3_Label1"
+                    app:MvxBind="Text StreakTextSource('WeekdayWednesday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -181,12 +174,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textFontWeight="800"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    app:MvxBind="Text StreakTextSource('WeekdayThursday')"
-                    android:text="T" />
+                    tools:text="T"
+                    style="@style/Subtitle3_Label1"
+                    app:MvxBind="Text StreakTextSource('WeekdayThursday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -219,15 +210,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="14sp"
-                    android:textFontWeight="800"
-                    android:textColor="@color/black"
                     android:gravity="center"
-                    app:MvxBind="Text StreakTextSource('WeekdayFriday')"
-                    android:text="F" />
+                    tools:text="T"
+                    style="@style/Subtitle3_Label1"
+                    app:MvxBind="Text StreakTextSource('WeekdayFriday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
 
     </LinearLayout>
 
@@ -242,8 +230,8 @@
         android:gravity="center"
         android:text="1 perfect week"
         app:MvxBind="Text PerfectWeekCount(Item)"
-        android:textColor="@color/bright_gray"
-        android:textSize="14sp"
+        android:textColor="@color/label_tertiary_color"
+        style="@style/Subtitle3_Label3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

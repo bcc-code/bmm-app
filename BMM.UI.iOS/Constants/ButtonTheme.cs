@@ -8,6 +8,7 @@ namespace BMM.UI.iOS.Constants
         public UIColor ButtonColor { get; set; }
         public UIEdgeInsets ImageEdgeInsets { get; set; }
         public UIEdgeInsets ContentEdgeInsets { get; set; }
+        public UIColor IconTint { get; set; }
         public bool HasRoundedCorners { get; set; }
     }
 

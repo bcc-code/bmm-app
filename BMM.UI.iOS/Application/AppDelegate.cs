@@ -1,9 +1,12 @@
 using System;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
+using BMM.Core.Models.Themes;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
 using Firebase.CloudMessaging;
@@ -36,7 +39,33 @@ namespace BMM.UI.iOS
 
             app.ApplicationIconBadgeNumber = 0;
 
+            SetThemeForApp();
             return result;
+        }
+
+        private void SetThemeForApp()
+        {
+            var theme = AppSettings.SelectedTheme;
+
+            if (theme == Theme.System)
+                return;
+
+            var userInterfaceStyle = theme switch
+            {
+                Theme.Light => UIUserInterfaceStyle.Light,
+                Theme.Dark => UIUserInterfaceStyle.Dark,
+                _ => UIUserInterfaceStyle.Unspecified
+            };
+
+            if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsDarkMode)
+                return;
+                
+            UIApplication.SharedApplication.KeyWindow.OverrideUserInterfaceStyle = userInterfaceStyle;
+
+            if (theme == Theme.Dark)
+                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
+            else
+                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.DarkContent, true);
         }
 
         [Export("application:continueUserActivity:restorationHandler:")]

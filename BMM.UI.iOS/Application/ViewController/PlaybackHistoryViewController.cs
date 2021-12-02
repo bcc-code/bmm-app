@@ -57,8 +57,8 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            NoEntriesLabelTitle.ApplyTextTheme(AppTheme.Heading3.Value);
-            NoEntriesLabelSubtitle.ApplyTextTheme(AppTheme.Paragraph1.Value);
+            NoEntriesLabelTitle.ApplyTextTheme(AppTheme.Heading3);
+            NoEntriesLabelSubtitle.ApplyTextTheme(AppTheme.Paragraph1Label2);
         }
     }
 }

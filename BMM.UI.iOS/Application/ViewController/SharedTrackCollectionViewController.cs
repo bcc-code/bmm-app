@@ -128,8 +128,8 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            PlaylistName.ApplyTextTheme(AppTheme.Heading2.Value);
-            AuthorNameLabel.ApplyTextTheme(AppTheme.Paragraph2.Value);
+            PlaylistName.ApplyTextTheme(AppTheme.Heading2);
+            AuthorNameLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);
             AddToMyPlaylistButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
         }
 

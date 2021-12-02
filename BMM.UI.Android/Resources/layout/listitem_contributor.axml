@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/row_contributor_height"
     android:paddingStart="@dimen/padding_medium"
@@ -12,11 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        app:cardCornerRadius="@dimen/contributor_image_radius"
-        app:cardElevation="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        local:cardCornerRadius="@dimen/contributor_image_radius"
+        local:cardElevation="0dp"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintBottom_toBottomOf="parent">
 
         <ffimageloading.cross.MvxCachedImageView
             android:id="@+id/contributor_image"
@@ -34,25 +33,23 @@
         android:layout_height="wrap_content"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_large"
-        android:textFontWeight="700"
         android:gravity="center_vertical"
         android:layout_marginLeft="@dimen/element_margin_small"
+        style="@style/Title2"
         local:MvxBind="Text Item.Name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/card_view"
-        app:layout_constraintEnd_toStartOf="@+id/chevron_image"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0" />
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintStart_toEndOf="@+id/card_view"
+        local:layout_constraintEnd_toStartOf="@+id/chevron_image"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintHorizontal_bias="0" />
 
     <ImageView
             android:id="@+id/chevron_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/icon_chevron_right"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

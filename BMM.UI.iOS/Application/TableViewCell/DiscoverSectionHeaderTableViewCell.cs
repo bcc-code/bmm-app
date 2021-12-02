@@ -3,15 +3,15 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding;
-using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
 {
-    public partial class DiscoverSectionHeaderTableViewCell : MvxTableViewCell
+    public partial class DiscoverSectionHeaderTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new NSString(nameof(DiscoverSectionHeaderTableViewCell));
 
@@ -30,6 +30,15 @@ namespace BMM.UI.iOS
                     .To(vm => vm.Item.IsSeparatorVisible);
                 set.Apply();
             });
+        }
+
+        protected override bool HasHighlightEffect => false;
+
+        public override void AwakeFromNib()
+        {
+            base.AwakeFromNib();
+            Titel.ApplyTextTheme(AppTheme.Heading3);
+            LinkButton.ApplyButtonStyle(AppTheme.ButtonSecondarySmall);
         }
     }
 }

@@ -24,18 +24,16 @@
                 android:singleLine="true"
                 local:MvxBind="Text Title"
                 android:layout_gravity="center_vertical"
-                android:textFontWeight="700"
-                android:textColor="@color/black"
-                android:textSize="@dimen/text_large"
-                android:layout_marginTop="12dp" />
+                android:layout_marginTop="12dp"
+                style="@style/Title2" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 local:MvxBind="Text Text"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/text_medium"
-                android:textColor="@color/gray"
-                android:layout_marginBottom="12dp" />
+                android:layout_marginBottom="12dp"
+                style="@style/Subtitle2_Label2" />
         </LinearLayout>
         <CheckBox
             android:text=""

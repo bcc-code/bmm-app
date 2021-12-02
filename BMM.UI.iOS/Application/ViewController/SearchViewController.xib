@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -61,7 +62,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                     <constraints>
                         <constraint firstAttribute="centerX" secondItem="4YP-fU-bfT" secondAttribute="centerX" id="2L4-XJ-Qdg"/>
                         <constraint firstAttribute="centerX" secondItem="U1Q-a8-sxc" secondAttribute="centerX" id="Han-4d-K9J"/>
@@ -75,7 +76,7 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5lv-ui-Zn6" userLabel="History Table View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                     <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="6Hc-F6-NYF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -110,7 +111,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                         <constraints>
                             <constraint firstItem="Ony-mB-jn4" firstAttribute="leading" secondItem="6Hc-F6-NYF" secondAttribute="leading" constant="15" id="0Zo-xa-FN9"/>
                             <constraint firstAttribute="bottom" secondItem="Ony-mB-jn4" secondAttribute="bottom" constant="1" id="4rd-o3-GLe"/>
@@ -130,7 +131,7 @@
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="E99-qJ-7pX" userLabel="Results Table View">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                             <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <view key="tableHeaderView" contentMode="scaleToFill" id="s4x-DJ-dMn">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -153,7 +154,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="PG3-Q7-Nbn" secondAttribute="bottom" id="DvZ-kp-wQe"/>
                                     <constraint firstItem="PG3-Q7-Nbn" firstAttribute="leading" secondItem="s4x-DJ-dMn" secondAttribute="leading" constant="15" id="Mc1-Mi-qwS"/>
@@ -167,7 +168,7 @@
                         </tableView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8uj-cq-qci" userLabel="Suggestions Table View">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                             <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <view key="tableHeaderView" contentMode="scaleToFill" id="gMm-yj-aeR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
@@ -190,7 +191,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="uE4-B6-ygQ" secondAttribute="bottom" constant="1" id="GJr-EQ-Q7K"/>
                                     <constraint firstAttribute="trailing" secondItem="9bS-qV-fDs" secondAttribute="trailing" id="M5c-bJ-Fq0"/>
@@ -215,7 +216,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                             <constraints>
                                 <constraint firstItem="z61-aT-pGc" firstAttribute="leading" secondItem="ps7-d3-hu5" secondAttribute="leading" constant="18" id="Hmg-wL-n1j"/>
                                 <constraint firstAttribute="trailing" secondItem="z61-aT-pGc" secondAttribute="trailing" constant="18" id="Sg9-OF-QB7"/>
@@ -224,7 +225,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="8uj-cq-qci" secondAttribute="trailing" id="0Ol-u4-9zs"/>
                         <constraint firstItem="ps7-d3-hu5" firstAttribute="leading" secondItem="0JZ-uC-p2Y" secondAttribute="leading" id="9Kq-G4-GQu"/>
@@ -241,7 +242,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="CwH-6a-iFu" secondAttribute="bottom" id="1f4-Nk-2bO"/>
                 <constraint firstAttribute="trailing" secondItem="0JZ-uC-p2Y" secondAttribute="trailing" id="2Br-7g-fVD"/>
@@ -262,5 +263,8 @@
     <resources>
         <image name="icon_category_song@3x.png" width="128" height="128"/>
         <image name="icon_close_static.png" width="24" height="24"/>
+        <namedColor name="BackgroundPrimaryColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

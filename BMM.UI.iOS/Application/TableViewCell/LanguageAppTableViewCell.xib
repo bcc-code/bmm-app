@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +27,7 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_selected.png" translatesAutoresizingMaskIntoConstraints="NO" id="YbA-4b-1C7">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SelectedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="YbA-4b-1C7">
                         <rect key="frame" x="273" y="15.5" width="24" height="24"/>
                     </imageView>
                 </subviews>
@@ -43,6 +44,7 @@
                     <constraint firstAttribute="centerY" secondItem="YbA-4b-1C7" secondAttribute="centerY" id="x8n-w1-0u7"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
             <connections>
                 <outlet property="IsSelectedImage" destination="YbA-4b-1C7" id="ByY-w8-eCy"/>
                 <outlet property="TextLabel" destination="QTV-4p-tWY" id="urc-Nv-s35"/>
@@ -51,6 +53,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_selected.png" width="24" height="24"/>
+        <image name="SelectedIcon" width="24" height="24"/>
+        <namedColor name="BackgroundPrimaryColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

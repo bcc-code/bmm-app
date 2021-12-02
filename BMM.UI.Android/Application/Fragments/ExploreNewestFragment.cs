@@ -1,12 +1,9 @@
-﻿using Android.OS;
-using Android.Runtime;
+﻿using Android.Runtime;
 using Android.Views;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Fragments.Base;
 using BMM.UI.Droid.Application.Listeners;
-using Google.Android.Material.AppBar;
-using MvvmCross.DroidX;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;

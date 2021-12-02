@@ -20,7 +20,7 @@ namespace BMM.UI.iOS
             var document = wrapper.Item as Track;
 
             if (TrackIsCurrentlySelected(document, currentPlayedTrack))
-                return AppColors.ColorPrimary;
+                return AppColors.TintColor;
 
             if (!TrackIsAvailable(document))
                 return UIColor.Gray;
@@ -28,8 +28,7 @@ namespace BMM.UI.iOS
             if (wrapper.ViewModel is IDarkStyleOnIosViewModel)
                 return UIColor.White;
 
-            return AppColors.TrackTitleColor;
-
+            return AppColors.LabelPrimaryColor;
         }
 
         private bool TrackIsCurrentlySelected(Document track, Document currentTrack)

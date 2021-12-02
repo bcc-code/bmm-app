@@ -1,14 +1,12 @@
 ﻿using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
 using Foundation;
 using System;
-using UIKit;
+using BMM.UI.iOS.Constants;
 
 namespace BMM.UI.iOS
 {
-    public partial class SearchSuggestionTableViewCell : MvxTableViewCell
+    public partial class SearchSuggestionTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("SearchSuggestionTableViewCell", NSBundle.MainBundle);
         public static readonly NSString Key = new NSString("SearchSuggestionTableViewCell");
 
         public SearchSuggestionTableViewCell(IntPtr handle) : base(handle)
@@ -21,9 +19,10 @@ namespace BMM.UI.iOS
                 });
         }
 
-        public static SearchSuggestionTableViewCell Create()
+        public override void AwakeFromNib()
         {
-            return (SearchSuggestionTableViewCell)Nib.Instantiate(null, null)[0];
+            base.AwakeFromNib();
+            TextLabel.ApplyTextTheme(AppTheme.Subtitle2Label1);
         }
     }
 }

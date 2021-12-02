@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground">
 
-
     <TextView
         android:id="@+id/title"
         android:layout_width="0dp"
@@ -15,11 +14,9 @@
         android:layout_marginTop="12dp"
         android:singleLine="true"
         android:text="Title"
-        android:textColor="@color/black"
-        android:textSize="@dimen/text_large"
-        android:textFontWeight="700"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"
+        style="@style/Title2"
         local:layout_constraintTop_toTopOf="parent"
         local:layout_constraintBottom_toTopOf="@id/subtitle"
         local:layout_constraintStart_toStartOf="parent"
@@ -33,10 +30,9 @@
         android:layout_gravity="center_vertical"
         android:layout_marginBottom="12dp"
         android:text="dJysaTJIRXCyNbGfK4Lg3M:APA91bGmXfe6K6fJ9DIYQhgeBJNm3FN-QNJQ_ll5eGiyOk0dGPdM_CxDeniGqDAsvO9Od3SDU1SScj6xBm9QADZnqVaiNhhfGdLfgwOBCDvO6bn-95H1QpWP64QByIJXNZa3-Z-RB2_f"
-        android:textColor="@color/gray"
-        android:textSize="@dimen/text_medium"
         android:layout_marginLeft="@dimen/margin_medium"
         android:layout_marginRight="@dimen/margin_medium"
+        style="@style/Subtitle3_Label2"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintTop_toBottomOf="@id/title"
         local:layout_constraintBottom_toBottomOf="parent"

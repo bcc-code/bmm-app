@@ -13,6 +13,8 @@ namespace BMM.Core.Implementations.Caching
 
         Task<T> GetObject<T>(string key);
 
+        Task<T> GetObjectSafe<T>(string key, T defaultValue);
+
         Task InsertObject<T>(string key, T obj);
 
         Task Invalidate(string key);
