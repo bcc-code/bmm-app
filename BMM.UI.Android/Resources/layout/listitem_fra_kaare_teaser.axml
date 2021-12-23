@@ -6,7 +6,7 @@
     android:id="@+id/FraKaareConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/margin_small"
+    android:layout_marginVertical="@dimen/margin_small"
     android:layout_marginLeft="@dimen/margin_medium"
     android:layout_marginRight="@dimen/margin_medium"
     android:background="@drawable/teaser_rounded_background"

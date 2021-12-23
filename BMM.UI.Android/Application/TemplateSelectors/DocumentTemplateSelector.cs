@@ -22,6 +22,8 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int Streak = 16;
         public const int SharedTrackCollectionHeader = 17;
         public const int PlaylistsCollection = 18;
+        public const int InfoMessage = 19;
+        public const int SimpleMargin = 20;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<CellWrapperViewModel<Document>>
@@ -60,6 +62,12 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case ViewTypes.PlaylistsCollection:
                     return Resource.Layout.listitem_covers_carousel_collection;
 
+                case ViewTypes.InfoMessage:
+                    return Resource.Layout.listitem_info_message;
+                
+                case ViewTypes.SimpleMargin:
+                    return Resource.Layout.listitem_simple_margin;
+                
                 default:
                     return Resource.Layout.listitem_track;
             }
@@ -103,6 +111,21 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case DocumentType.PlaylistsCollection:
                     return ViewTypes.PlaylistsCollection;
 
+                case DocumentType.InfoMessage:
+                    return ViewTypes.InfoMessage;
+                
+                case DocumentType.LiveRadio:
+                    return ViewTypes.LiveRadio;
+                
+                case DocumentType.AslaksenTeaser:
+                    return ViewTypes.AslaksenTeaser;
+                
+                case DocumentType.FraKaareTeaser:
+                    return ViewTypes.FraKaareTeaser;
+                
+                case DocumentType.SimpleMargin:
+                    return ViewTypes.SimpleMargin;
+                
                 default:
                     return ViewTypes.Unknown;
             }

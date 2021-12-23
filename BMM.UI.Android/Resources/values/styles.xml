@@ -136,6 +136,13 @@
         <item name="android:textSize">17sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">500</item>
+    </style>
+
+    <style name="Subtitle1_Label1" parent="Subtitle1">
+        <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+    
+    <style name="Subtitle1_Label2" parent="Subtitle1">
         <item name="android:textColor">@color/label_secondary_color</item>
     </style>
 

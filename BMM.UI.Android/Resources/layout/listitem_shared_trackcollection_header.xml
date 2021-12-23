@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_mini"
-            style="@style/Subtitle1"
+            style="@style/Subtitle1_Label2"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintTop_toBottomOf="@+id/PlaylistName"

@@ -82,7 +82,7 @@ namespace BMM.UI.iOS
 
         public override void WillTerminate(UIApplication application)
         {
-            Mvx.IoCProvider.Resolve<IDownloadQueue>().AppWasKilled();
+            Mvx.IoCProvider?.Resolve<IDownloadQueue>()?.AppWasKilled();
         }
 
         /**
