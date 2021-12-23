@@ -294,7 +294,9 @@
     "LogoutConfirm": "Bist du sicher, dass du dich abmelden möchtest?",
     "Logout": "Ausloggen",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können."
+    "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können.",
+    "ThemeHeader": "App theme",
+    "ThemeText": "Choose if you would like to use light or dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Hörbücher",
     "MusicTitle": "Musik",
     "PodcastsTitle": "Podcasts"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Theme settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }
