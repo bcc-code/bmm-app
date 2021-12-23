@@ -294,7 +294,9 @@
     "LogoutConfirm": "Er du sikker på at du vil logge ud?",
     "Logout": "Log ud",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Idéer til forbedringer af BMM? Del dem med os."
+    "UserVoiceText": "Idéer til forbedringer af BMM? Del dem med os.",
+    "ThemeHeader": "App theme",
+    "ThemeText": "Choose if you would like to use light or dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Lagringsplads til offline indhold",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Lydbøger",
     "MusicTitle": "Musik",
     "PodcastsTitle": "Podcasts"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Theme settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }
