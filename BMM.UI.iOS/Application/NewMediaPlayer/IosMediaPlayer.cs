@@ -121,7 +121,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
 
-        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
         {
             _currentTrack = currentTrack;
             _currentTrackIndex = mediaTracks.IndexOf(currentTrack);

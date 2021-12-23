@@ -94,13 +94,12 @@ namespace BMM.Core.Implementations.Player
                 () => _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs));
         }
 
-        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin, long startTimeInMs = 0)
+        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
         {
-            var enrichedTracks = EnrichTracksWithPlaybackOrigin(mediaTracks, playbackOrigin);
             await ExecuteWithUpdatingQueue(
-                enrichedTracks,
+                mediaTracks,
                 currentTrack,
-                () => _mediaPlayer.RecoverQueue(mediaTracks, currentTrack, playbackOrigin, startTimeInMs));
+                () => _mediaPlayer.RecoverQueue(mediaTracks, currentTrack, startTimeInMs));
         }
 
         private async Task ExecuteWithUpdatingQueue(

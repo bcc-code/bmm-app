@@ -172,7 +172,6 @@ namespace BMM.Core
 
                 await _mediaPlayer.RecoverQueue(new List<IMediaTrack>(rememberedQueue),
                     currentTrack,
-                    currentTrackPosition.PlaybackOrigin,
                     currentTrackPosition.LastPosition);
             }
             catch (Exception e)
