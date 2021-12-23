@@ -39,7 +39,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         private ITrackModel _lastTrack;
         private IList<IMediaTrack> _lastQueue;
         private long _lastPosition;
-        private bool _lastPlayingStatus;
 
         public AndroidMediaPlayer(IMediaQueue mediaQueue, MediaControllerCallback callback, PlaybackStateCompatMapper mapper, IMvxMessenger messenger,
             IMetadataMapper metadataMapper, ILogger logger, IMvxAndroidCurrentTopActivity activity)
@@ -153,7 +152,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             }
         }
 
-        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, string playbackOrigin = "", long startTimeInMs = 0)
+        public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
         {
             if (_mediaController == null)
                 return;
@@ -311,7 +310,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             _lastTrack = CurrentTrack;
             _lastPosition = CurrentPosition;
             _lastQueue = _mediaQueue?.Tracks;
-            _lastPlayingStatus = IsPlaying;
         }
 
         public async Task RestoreLastPlayingTrackAfterThemeChangedIfAvailable()
@@ -319,7 +317,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             if (_lastTrack == null || _lastQueue == null || !_lastQueue.Any())
                 return;
 
-            await RecoverQueue(_lastQueue, (IMediaTrack)_lastTrack, startTimeInMs: _lastPosition);
+            await RecoverQueue(_lastQueue, (IMediaTrack)_lastTrack, _lastPosition);
             ClearCurrentTrackAndQueueAfterThemeChanged();
         }
 
@@ -328,7 +326,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             _lastTrack = default;
             _lastPosition = default;
             _lastQueue = default;
-            _lastPlayingStatus = default;
         }
 
         public override void OnConnectionFailed()

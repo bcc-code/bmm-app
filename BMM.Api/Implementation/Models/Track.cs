@@ -149,7 +149,6 @@ namespace BMM.Api.Implementation.Models
         [JsonIgnore]
         public bool IsListened { get; set; }
 
-        [JsonIgnore]
         public string PlaybackOrigin { get; set; }
 
         #endregion

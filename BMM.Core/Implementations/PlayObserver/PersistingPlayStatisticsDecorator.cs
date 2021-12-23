@@ -105,7 +105,7 @@ namespace BMM.Core.Implementations.PlayObserver
         {
             await _localStorage.InsertObject(
                 StorageKeys.CurrentTrackPosition,
-                new CurrentTrackPositionStorage(CurrentTrack.Id, playedEvent.LastPosition, playedEvent.PlaybackOrigin));
+                new CurrentTrackPositionStorage(CurrentTrack.Id, playedEvent.LastPosition));
 
             if (!IsCurrentQueueSaved)
             {
