@@ -294,7 +294,9 @@
     "LogoutConfirm": "你确定你想要注销？",
     "Logout": "注销",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
+    "ThemeHeader": "App theme",
+    "ThemeText": "Choose if you would like to use light or dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "有声读物",
     "MusicTitle": "音乐",
     "PodcastsTitle": "Podcasts"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Theme settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }
