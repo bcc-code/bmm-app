@@ -294,7 +294,9 @@
     "LogoutConfirm": "Er du sikker på at du vil logge av?",
     "Logout": "Logg av",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Har du ideer til hvordan vi kan forbedre BMM? Fortell oss om det."
+    "UserVoiceText": "Har du ideer til hvordan vi kan forbedre BMM? Fortell oss om det.",
+    "ThemeHeader": "App theme",
+    "ThemeText": "Choose if you would like to use light or dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Plass for offline spor",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Lydbøker",
     "MusicTitle": "Musikk",
     "PodcastsTitle": "Podcaster"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Theme settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }
