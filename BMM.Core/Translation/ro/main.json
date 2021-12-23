@@ -294,7 +294,9 @@
     "LogoutConfirm": "Sunteţi sigur că doriţi să vă deconectați?",
     "Logout": "Deconectare",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Ai idei de cum putem îmbunătăți BMM? Scrie-ne despre ele!"
+    "UserVoiceText": "Ai idei de cum putem îmbunătăți BMM? Scrie-ne despre ele!",
+    "ThemeHeader": "App theme",
+    "ThemeText": "Choose if you would like to use light or dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Cărți audio",
     "MusicTitle": "Muzică",
     "PodcastsTitle": "Podcast-uri"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Theme settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }
