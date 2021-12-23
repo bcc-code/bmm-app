@@ -56,6 +56,7 @@
     <dimen name="friends_icon_dimen">20dp</dimen>
     <dimen name="shared_playlist_icon">24dp</dimen>
     <dimen name="from_kaare_image_size">40dp</dimen>
+    <dimen name="info_message_icon_size">20dp</dimen>
 
     <dimen name="horizontal_scrolling_cover_image_size">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_width">160dp</dimen>

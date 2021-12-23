@@ -195,6 +195,7 @@
     <Compile Include="Application\NewMediaPlayer\Service\CustomErrorMessageProvider.cs" />
     <Compile Include="Application\NewMediaPlayer\Service\CustomShuffleOrder.cs" />
     <Compile Include="Application\NewMediaPlayer\Playback\IdleRecoveringControlDispatcher.cs" />
+    <Compile Include="Application\ViewHolders\InfoMessageViewHolder.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Reference Include="System.IO.Compression" />
     <Compile Include="Application\Helpers\Gesture\HorizontalSwipeDetector.cs" />
@@ -414,6 +415,11 @@
     <AndroidResource Include="Resources\drawable\edit_text_cursor.xml" />
     <AndroidResource Include="Resources\drawable\icon_friends.xml" />
     <AndroidResource Include="Resources\drawable\icon_link.xml" />
+    <AndroidResource Include="Resources\drawable\icon_union.xml" />
+    <AndroidResource Include="Resources\drawable\info_message_rounded_background.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
     <AndroidResource Include="Resources\drawable\navigation_browse_active.xml" />
     <AndroidResource Include="Resources\drawable\spinner_small.xml">
@@ -525,6 +531,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_info_message.axml" />
     <AndroidResource Include="Resources\layout\listitem_ordering_track.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -540,6 +547,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_profile.xml" />
     <AndroidResource Include="Resources\layout\listitem_shared_trackcollection_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_simple_margin.xml" />
     <AndroidResource Include="Resources\layout\listitem_streak.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

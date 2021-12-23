@@ -27,13 +27,14 @@ namespace BMM.Core.NewMediaPlayer
 
         public async Task<KeyValuePair<string, string>> GetHeader()
         {
-            return new KeyValuePair<string, string>("MobileDownloadAllowed", (await IsMobileDownloadAllowed()).ToString());
+            return new KeyValuePair<string, string>("MobileDownloadAllowed", IsMobileDownloadAllowed().ToString());
         }
 
-        private async Task<bool> IsMobileDownloadAllowed()
+        private bool IsMobileDownloadAllowed()
         {
             if (_mobileDownloadAllowedAtAppStart.HasValue)
                 return _mobileDownloadAllowedAtAppStart.Value;
+            
             return false;
         }
     }

@@ -59,22 +59,7 @@ namespace BMM.UI.iOS
 		UIKit.UILabel CountdownLabel { get; set; }
 
 		[Outlet]
-		UIKit.UIButton FraKaarePlayRandomButton { get; set; }
-
-		[Outlet]
 		UIKit.UIImageView PlayIcon { get; set; }
-
-		[Outlet]
-		UIKit.UIButton PodcastShowAllButton { get; set; }
-
-		[Outlet]
-		UIKit.UILabel PodcastTitleLabel { get; set; }
-
-		[Outlet]
-		UIKit.UITableView PodcastTrackListTableView { get; set; }
-
-		[Outlet]
-		UIKit.UIView PodcastView { get; set; }
 
 		[Outlet]
 		UIKit.UIImageView RadioIcon { get; set; }
@@ -162,34 +147,9 @@ namespace BMM.UI.iOS
 				CountdownLabel = null;
 			}
 
-			if (FraKaarePlayRandomButton != null) {
-				FraKaarePlayRandomButton.Dispose ();
-				FraKaarePlayRandomButton = null;
-			}
-
 			if (PlayIcon != null) {
 				PlayIcon.Dispose ();
 				PlayIcon = null;
-			}
-
-			if (PodcastShowAllButton != null) {
-				PodcastShowAllButton.Dispose ();
-				PodcastShowAllButton = null;
-			}
-
-			if (PodcastTitleLabel != null) {
-				PodcastTitleLabel.Dispose ();
-				PodcastTitleLabel = null;
-			}
-
-			if (PodcastTrackListTableView != null) {
-				PodcastTrackListTableView.Dispose ();
-				PodcastTrackListTableView = null;
-			}
-
-			if (PodcastView != null) {
-				PodcastView.Dispose ();
-				PodcastView = null;
 			}
 
 			if (RadioIcon != null) {

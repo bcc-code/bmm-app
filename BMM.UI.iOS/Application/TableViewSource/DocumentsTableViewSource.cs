@@ -25,7 +25,12 @@ namespace BMM.UI.iOS
                 ChapterHeaderTableViewCell.Key,
                 DiscoverSectionHeaderTableViewCell.Key,
                 StreakTableViewCell.Key,
-                PlaylistsCollectionTableViewCell.Key
+                PlaylistsCollectionTableViewCell.Key,
+                FraKaareTableViewCell.Key,
+                InfoMessageTableViewCell.Key,
+                AslaksenTableViewCell.Key,
+                BMMRadioTableViewCell.Key,
+                SimpleMarginTableViewCell.Key
             };
 
             foreach (string nibName in nibNames)
@@ -92,6 +97,26 @@ namespace BMM.UI.iOS
 
                 case DocumentType.PlaylistsCollection:
                     nibName = PlaylistsCollectionTableViewCell.Key;
+                    break;
+                
+                case DocumentType.FraKaareTeaser:
+                    nibName = FraKaareTableViewCell.Key;
+                    break;
+                
+                case DocumentType.AslaksenTeaser:
+                    nibName = AslaksenTableViewCell.Key;
+                    break;
+                
+                case DocumentType.LiveRadio:
+                    nibName = BMMRadioTableViewCell.Key;
+                    break;
+                
+                case DocumentType.InfoMessage:
+                    nibName = InfoMessageTableViewCell.Key;
+                    break;
+                
+                case DocumentType.SimpleMargin:
+                    nibName = SimpleMarginTableViewCell.Key;
                     break;
             }
 

@@ -17,7 +17,7 @@ namespace BMM.UI.Droid.Application.Fragments
         private PodcastContextHeaderRecyclerAdapter _podcastContextHeaderRecyclerAdapter;
 
         private PodcastContextHeaderRecyclerAdapter PodcastContextHeaderRecyclerAdapter =>
-            _podcastContextHeaderRecyclerAdapter ??= new PodcastContextHeaderRecyclerAdapter((IMvxAndroidBindingContext) BindingContext, ViewModel);
+            _podcastContextHeaderRecyclerAdapter ??= new PodcastContextHeaderRecyclerAdapter((IMvxAndroidBindingContext) BindingContext);
 
         protected override void InitRecyclerView(MvxRecyclerView recyclerView)
         {

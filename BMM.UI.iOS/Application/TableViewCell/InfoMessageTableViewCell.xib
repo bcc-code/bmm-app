@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="cxk-wN-pdQ" customClass="InfoMessageTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2hZ-zR-KV9">
+                        <rect key="frame" x="16" y="8" width="288" height="54"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UnionIcon" translatesAutoresizingMaskIntoConstraints="NO" id="wkD-3D-53s">
+                                <rect key="frame" x="20" y="17" width="20" height="20"/>
+                                <color key="tintColor" name="LabelPrimaryColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="FCO-nR-dYM"/>
+                                    <constraint firstAttribute="height" constant="20" id="ZbV-Ej-UZI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0W-m1-XLo">
+                                <rect key="frame" x="56" y="18" width="216" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="BackgroundSecondaryColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="G0W-m1-XLo" secondAttribute="bottom" constant="18" id="JZs-ii-Poe"/>
+                            <constraint firstItem="wkD-3D-53s" firstAttribute="leading" secondItem="2hZ-zR-KV9" secondAttribute="leading" constant="20" id="NJy-Bx-iGK"/>
+                            <constraint firstAttribute="trailing" secondItem="G0W-m1-XLo" secondAttribute="trailing" constant="16" id="UU2-r4-7Px"/>
+                            <constraint firstItem="G0W-m1-XLo" firstAttribute="top" secondItem="2hZ-zR-KV9" secondAttribute="top" constant="18" id="plE-l3-lYD"/>
+                            <constraint firstItem="wkD-3D-53s" firstAttribute="centerY" secondItem="2hZ-zR-KV9" secondAttribute="centerY" id="sLv-2a-6Gt"/>
+                            <constraint firstItem="G0W-m1-XLo" firstAttribute="leading" secondItem="wkD-3D-53s" secondAttribute="trailing" constant="16" id="v9L-ef-1YC"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="2hZ-zR-KV9" secondAttribute="trailing" constant="16" id="DIb-Jz-gUx"/>
+                    <constraint firstAttribute="bottom" secondItem="2hZ-zR-KV9" secondAttribute="bottom" constant="8" id="DuD-rZ-ocn"/>
+                    <constraint firstItem="2hZ-zR-KV9" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="Y1u-4j-UzA"/>
+                    <constraint firstItem="2hZ-zR-KV9" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="8" id="aXx-ZX-aCj"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <connections>
+                <outlet property="InfoMessageLabel" destination="G0W-m1-XLo" id="MJU-z8-6cK"/>
+            </connections>
+            <point key="canvasLocation" x="92.799999999999997" y="152.47376311844079"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="UnionIcon" width="19" height="20"/>
+        <namedColor name="BackgroundPrimaryColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BackgroundSecondaryColor">
+            <color red="0.92549020051956177" green="0.94117647409439087" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LabelPrimaryColor">
+            <color red="0.050980392843484879" green="0.074509806931018829" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

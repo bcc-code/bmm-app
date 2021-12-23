@@ -12,6 +12,7 @@ using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Security;
 using Moq;
 using MvvmCross.Plugin.Messenger;
@@ -34,6 +35,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
         private Mock<IAppContentLogger> _appContentLogger;
         private Mock<IGlobalTrackProvider> _globalTrackProvider;
         private readonly FakeTrackFactory _fakeTrackFactory = new FakeTrackFactory();
+        private Mock<IAppLanguageProvider> _appLanguageProvider;
 
         private List<Track> TrackOfflineTracks => new List<Track>
         {
@@ -56,9 +58,10 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             _downloadQueue = new Mock<IDownloadQueue>();
             _appContentLogger = new Mock<IAppContentLogger>();
             _globalTrackProvider = new Mock<IGlobalTrackProvider>();
+            _appLanguageProvider = new Mock<IAppLanguageProvider>();
 
             var discoverClient = new Mock<IDiscoverClient>();
-            discoverClient.Setup(x => x.GetDocuments(It.IsAny<CachePolicy>())).ReturnsAsync(new List<Document>());
+            discoverClient.Setup(x => x.GetDocuments(It.IsAny<string>(), It.IsAny<CachePolicy>())).ReturnsAsync(new List<Document>());
             _client.Setup(x => x.Discover).Returns(discoverClient.Object);
             _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
             _networkSettings.Setup(x => x.GetMobileNetworkDownloadAllowed()).ReturnsAsync(true);
@@ -79,7 +82,8 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
                 _client.Object,
                 _downloadQueue.Object,
                 _appContentLogger.Object,
-                _globalTrackProvider.Object
+                _globalTrackProvider.Object,
+                _appLanguageProvider.Object
             );
         }
 

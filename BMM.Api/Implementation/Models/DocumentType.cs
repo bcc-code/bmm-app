@@ -27,6 +27,18 @@ namespace BMM.Api.Implementation.Models
 
         [IgnoreDataMember]
         PlaylistsCollection,
+        
+        [IgnoreDataMember]
+        AslaksenTeaser,
+        
+        [IgnoreDataMember]
+        FraKaareTeaser,
+        
+        [IgnoreDataMember]
+        LiveRadio,
+        
+        [IgnoreDataMember]
+        SimpleMargin,
 
         [EnumMember(Value = "section_header")]
         DiscoverSectionHeader,
@@ -36,6 +48,9 @@ namespace BMM.Api.Implementation.Models
 
         [EnumMember(Value = "listening_streak")]
         ListeningStreak,
+        
+        [EnumMember(Value = "InfoMessage")]
+        InfoMessage,
 
         [EnumMember(Value = "unsupported")]
         Unsupported

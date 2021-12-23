@@ -14,6 +14,7 @@ using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Messages;
 using MvvmCross.Plugin.Messenger;
 
@@ -27,6 +28,7 @@ namespace BMM.Core.Implementations.Downloading
         private readonly IDownloadQueue _downloadQueue;
         private readonly IAppContentLogger _appContentLogger;
         private readonly IGlobalTrackProvider _globalTrackProvider;
+        private readonly IAppLanguageProvider _appLanguageProvider;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IMvxMessenger _messenger;
         private readonly INetworkSettings _networkSettings;
@@ -42,7 +44,8 @@ namespace BMM.Core.Implementations.Downloading
             IBMMClient client,
             IDownloadQueue downloadQueue,
             IAppContentLogger appContentLogger,
-            IGlobalTrackProvider globalTrackProvider)
+            IGlobalTrackProvider globalTrackProvider,
+            IAppLanguageProvider appLanguageProvider)
         {
             _storageManager = storageManager;
             _exceptionHandler = exceptionHandler;
@@ -54,6 +57,7 @@ namespace BMM.Core.Implementations.Downloading
             _downloadQueue = downloadQueue;
             _appContentLogger = appContentLogger;
             _globalTrackProvider = globalTrackProvider;
+            _appLanguageProvider = appLanguageProvider;
         }
 
         public async Task InitializeCacheAndSynchronizeTracks()
@@ -124,7 +128,7 @@ namespace BMM.Core.Implementations.Downloading
         /// </summary>
         private Task UpdateHomescreen()
         {
-            return _client.Discover.GetDocuments(CachePolicy.UseCacheAndWaitForUpdates);
+            return _client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), CachePolicy.UseCacheAndWaitForUpdates);
         }
 
         private async Task UpdateOfflineTracks()

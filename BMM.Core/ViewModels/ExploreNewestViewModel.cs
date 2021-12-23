@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
@@ -27,6 +29,7 @@ namespace BMM.Core.ViewModels
         private readonly INavigateToViewModelAction _navigateToViewModelAction;
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
         private readonly ITranslateDocsAction _translateDocsAction;
+        private readonly IAppLanguageProvider _appLanguageProvider;
 
         public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
 
@@ -42,13 +45,15 @@ namespace BMM.Core.ViewModels
             ISettingsStorage settings,
             INavigateToViewModelAction navigateToViewModelAction,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
-            ITranslateDocsAction translateDocsAction)
+            ITranslateDocsAction translateDocsAction,
+            IAppLanguageProvider appLanguageProvider)
         {
             _streakObserver = streakObserver;
             _settings = settings;
             _navigateToViewModelAction = navigateToViewModelAction;
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
             _translateDocsAction = translateDocsAction;
+            _appLanguageProvider = appLanguageProvider;
             FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
@@ -60,7 +65,7 @@ namespace BMM.Core.ViewModels
 
         private void ListeningStreakChanged(ListeningStreakChangedMessage message)
         {
-            var index = this.Documents.FindIndex(document => document.DocumentType == DocumentType.ListeningStreak);
+            var index = Documents.FindIndex(document => document.DocumentType == DocumentType.ListeningStreak);
             if (index >= 0)
                 Documents.ReplaceRange(new[] {message.ListeningStreak}, index, 1);
         }
@@ -106,13 +111,30 @@ namespace BMM.Core.ViewModels
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            var docs = (await Client.Discover.GetDocuments(policy)).ToList();
+            var docs = (await Client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
-            var hideStreak = await _settings.GetStreakHidden();
+            bool hideStreak = await _settings.GetStreakHidden();
             HideTeasers(docs);
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
+            AddAdditionalElements(translatedDocs);
             return await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
+        }
+
+        private void AddAdditionalElements(IList<Document> translatedDocs)
+        {
+            int indexToAddAdditionalElements = translatedDocs.LastIndexOfElementType(typeof(InfoMessage), 1);
+
+            if (AslaksenTeaserViewModel.ShowTeaser)
+                translatedDocs.Insert(indexToAddAdditionalElements, new AslaksenTeaser());
+
+            if (FraKaareTeaserViewModel.ShowTeaser)
+                translatedDocs.Insert(indexToAddAdditionalElements, new FraKaareTeaser());
+
+            if (RadioViewModel.ShowBmmLive)
+                translatedDocs.Insert(indexToAddAdditionalElements, new LiveRadio());
+            
+            translatedDocs.Insert(0, new SimpleMargin());
         }
 
         public override void RefreshInBackground()

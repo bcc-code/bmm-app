@@ -27,13 +27,27 @@ namespace BMM.Core.GuardedActions.Documents
 
             foreach (var document in adjustedDocs)
             {
-                if (!(document is DiscoverSectionHeader sectionHeader))
-                    continue;
-
-                sectionHeader.Title = _bmmLanguageBinder.GetTranslationsSafe(sectionHeader.GetTranslationKey(), sectionHeader.Title);
+                HandleDiscoverSection(document);
+                HandleInfoMessage(document);
             }
 
             return adjustedDocs;
+        }
+
+        private void HandleDiscoverSection(Document document)
+        {
+            if (!(document is DiscoverSectionHeader sectionHeader))
+                return;
+
+            sectionHeader.Title = _bmmLanguageBinder.GetTranslationsSafe(sectionHeader.GetTranslationKey(), sectionHeader.Title);
+        }
+
+        private void HandleInfoMessage(Document document)
+        {
+            if (!(document is InfoMessage infoMessage))
+                return;
+
+            infoMessage.MessageText = _bmmLanguageBinder.GetTranslationsSafe(infoMessage.GetTranslationKey(), infoMessage.TranslatedMessage);
         }
     }
 }

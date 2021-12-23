@@ -58,6 +58,12 @@ namespace BMM.UI.iOS.Constants
             Font = Typography.Subtitle1.Value,
             Color = AppColors.LabelSecondaryColor
         };
+        
+        public static TextTheme Subtitle1Label1 = new TextTheme
+        {
+            Font = Typography.Subtitle1.Value,
+            Color = AppColors.LabelPrimaryColor
+        };
 
         public static TextTheme Subtitle2Label1 = new TextTheme
         {

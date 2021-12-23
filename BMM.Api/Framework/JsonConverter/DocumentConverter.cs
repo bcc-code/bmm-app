@@ -50,6 +50,9 @@ namespace BMM.Api.Framework.JsonConverter
 
                 case "chapter_header":
                     return new ChapterHeader();
+                
+                case "InfoMessage":
+                    return new InfoMessage();
             }
 
             return new UnsupportedDocument();

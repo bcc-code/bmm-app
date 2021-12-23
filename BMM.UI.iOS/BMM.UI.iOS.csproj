@@ -705,13 +705,18 @@
   <ItemGroup>
     <None Include="app.config" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\AslaksenTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\BMMRadioTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ChapterHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\FraKaareTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\InfoMessageTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\SectionHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\SelectThemeTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\SimpleMarginTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsTilesViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsListViewController.xib" />
@@ -810,8 +815,16 @@
     <Compile Include="Application\NewMediaPlayer\SeekableRemoteCommandCenter.cs" />
     <Compile Include="Application\NewMediaPlayer\RemoteCommandCenter.cs" />
     <Compile Include="Application\NewMediaPlayer\VersionHelper.cs" />
+    <Compile Include="Application\TableViewCell\AslaksenTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\AslaksenTableViewCell.designer.cs">
+      <DependentUpon>AslaksenTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\TableViewCell\Base\BaseBMMTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\Base\BaseTrackTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\BMMRadioTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\BMMRadioTableViewCell.designer.cs">
+      <DependentUpon>BMMRadioTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.designer.cs" />
     <Compile Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.cs" />
@@ -825,6 +838,14 @@
     <Compile Include="Application\TableViewCell\FollowedPodcastsViewCell.cs" />
     <Compile Include="Application\TableViewCell\FollowedPodcastsViewCell.designer.cs">
       <DependentUpon>FollowedPodcastsViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\FraKaareTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\FraKaareTableViewCell.designer.cs">
+      <DependentUpon>FraKaareTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\InfoMessageTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\InfoMessageTableViewCell.designer.cs">
+      <DependentUpon>InfoMessageTableViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.designer.cs">
@@ -850,6 +871,10 @@
     <Compile Include="Application\TableViewCell\SelectThemeTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\SelectThemeTableViewCell.designer.cs">
       <DependentUpon>SelectThemeTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\SimpleMarginTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\SimpleMarginTableViewCell.designer.cs">
+      <DependentUpon>SimpleMarginTableViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\TableViewCell\StreakTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">
@@ -1336,6 +1361,8 @@
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%403x.png" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification.png" />
+    <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Union.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\BMM.Core\Translation\bg\main.json">

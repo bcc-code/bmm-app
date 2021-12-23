@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/InfoMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginVertical="@dimen/margin_small"
+        android:background="@drawable/info_message_rounded_background">
+
+    <ImageView
+            android:id="@+id/UnionIcon"
+            android:layout_width="@dimen/info_message_icon_size"
+            android:layout_height="@dimen/info_message_icon_size"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/icon_union"
+            android:layout_marginStart="@dimen/margin_xmedium" />
+
+    <TextView
+            android:id="@+id/InfoMessageLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginVertical="@dimen/margin_medium"
+            local:MvxBind="Text Item.MessageText"
+            style="@style/Subtitle1_Label1" />
+    
+</LinearLayout>
