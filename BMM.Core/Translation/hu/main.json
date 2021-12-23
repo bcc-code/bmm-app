@@ -294,7 +294,9 @@
     "LogoutConfirm": "Biztosan ki szeretnél jelentkezni?",
     "Logout": "Kijelentkezés",
     "UserVoiceHeader": "Felhasználói hang",
-    "UserVoiceText": "Van ötleted a BMM fejlesztésére? Mesélj nekünk róla."
+    "UserVoiceText": "Van ötleted a BMM fejlesztésére? Mesélj nekünk róla.",
+    "ThemeHeader": "App theme",
+    "ThemeText": "Choose if you would like to use light or dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Offline adatok tárhelye",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Hangoskönyvek",
     "MusicTitle": "Zene",
     "PodcastsTitle": "Podcastok"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Theme settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }
