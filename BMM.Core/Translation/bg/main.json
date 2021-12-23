@@ -294,7 +294,9 @@
     "LogoutConfirm": "Сигурен ли си, че искаш да излезеш?",
     "Logout": "Изход",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
+    "ThemeHeader": "App theme",
+    "ThemeText": "Choose if you would like to use light or dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Място за песни/речи извън линия",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Аудиокниги",
     "MusicTitle": "Музика",
     "PodcastsTitle": "Подкаст"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Theme settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "System"
   }
 }
