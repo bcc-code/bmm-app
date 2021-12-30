@@ -196,6 +196,13 @@
         <item name="android:textColor">@color/label_primary_color</item>
     </style>
 
+    <style name="Title3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:lineHeight">20sp</item>
+        <item name="android:textFontWeight">800</item>
+        <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+
     <style name="Paragraph1">
         <item name="android:textSize">17sp</item>
         <item name="android:lineHeight">28sp</item>

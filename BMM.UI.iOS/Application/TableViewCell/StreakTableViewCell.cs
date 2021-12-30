@@ -131,13 +131,13 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-            StreakLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
+            StreakLabel.ApplyTextTheme(AppTheme.Subtitle2Label1);
             StreakSublabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
-            MondayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
-            TuesdayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
-            WednesdayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
-            ThursdayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
-            FridayLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
+            MondayLabel.ApplyTextTheme(AppTheme.Title3);
+            TuesdayLabel.ApplyTextTheme(AppTheme.Title3);
+            WednesdayLabel.ApplyTextTheme(AppTheme.Title3);
+            ThursdayLabel.ApplyTextTheme(AppTheme.Title3);
+            FridayLabel.ApplyTextTheme(AppTheme.Title3);
         }
     }
 }

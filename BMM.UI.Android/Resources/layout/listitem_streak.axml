@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/margin_small"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -15,7 +16,7 @@
         android:layout_marginBottom="0dp"
         android:gravity="center"
         android:text="Your streak this week"
-        style="@style/Subtitle3_Label1"
+        style="@style/Subtitle2_Label1"
         app:MvxBind="Text StreakMessage(Item)"
         app:layout_constraintBottom_toTopOf="@id/day_streak_boxes"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -67,7 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    style="@style/Subtitle3_Label1"
+                    style="@style/Title3"
                     tools:text="X"
                     app:MvxBind="Text StreakTextSource('WeekdayMonday')" />
             </LinearLayout>
@@ -103,7 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    style="@style/Subtitle3_Label1"
+                    style="@style/Title3"
                     tools:text="T"
                     app:MvxBind="Text StreakTextSource('WeekdayTuesday')" />
             </LinearLayout>
@@ -140,7 +141,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     tools:text="W"
-                    style="@style/Subtitle3_Label1"
+                    style="@style/Title3"
                     app:MvxBind="Text StreakTextSource('WeekdayWednesday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -176,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     tools:text="T"
-                    style="@style/Subtitle3_Label1"
+                    style="@style/Title3"
                     app:MvxBind="Text StreakTextSource('WeekdayThursday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -212,7 +213,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     tools:text="T"
-                    style="@style/Subtitle3_Label1"
+                    style="@style/Title3"
                     app:MvxBind="Text StreakTextSource('WeekdayFriday')" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

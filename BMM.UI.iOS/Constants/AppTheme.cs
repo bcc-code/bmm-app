@@ -28,6 +28,12 @@ namespace BMM.UI.iOS.Constants
             Font = Typography.Title2.Value,
             Color = AppColors.LabelPrimaryColor
         };
+        
+        public static TextTheme Title3 = new TextTheme
+        {
+            Font = Typography.Title3.Value,
+            Color = AppColors.LabelPrimaryColor
+        };
 
         public static TextTheme Heading3 = new TextTheme
         {
