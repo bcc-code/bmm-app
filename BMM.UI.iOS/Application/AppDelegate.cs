@@ -23,6 +23,7 @@ namespace BMM.UI.iOS
     public class AppDelegate : MvxApplicationDelegate<IosSetup, Core.App>
     {
         private FirebaseMessagingDelegate _messagingDelegate;
+        private bool DarkModeSupported => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
@@ -57,9 +58,9 @@ namespace BMM.UI.iOS
                 _ => UIUserInterfaceStyle.Unspecified
             };
 
-            if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsDarkMode)
+            if (!DarkModeSupported)
                 return;
-                
+
             UIApplication.SharedApplication.KeyWindow.OverrideUserInterfaceStyle = userInterfaceStyle;
 
             if (theme == Theme.Dark)
