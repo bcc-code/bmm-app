@@ -33,7 +33,8 @@ namespace BMM.Core.ViewModels
                 .OfType<DiscoverSectionHeader>()
                 .FirstOrDefault()
                 .IfNotNull(header => header.IsSeparatorVisible = false);
-
+            
+            carouselAdjustedItems.Add(new SimpleMargin());
             return carouselAdjustedItems;
         }
     }

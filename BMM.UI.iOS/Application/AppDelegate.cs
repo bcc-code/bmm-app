@@ -50,7 +50,7 @@ namespace BMM.UI.iOS
 
             if (theme == Theme.System)
                 return;
-
+            
             var userInterfaceStyle = theme switch
             {
                 Theme.Light => UIUserInterfaceStyle.Light,
@@ -58,10 +58,10 @@ namespace BMM.UI.iOS
                 _ => UIUserInterfaceStyle.Unspecified
             };
 
-            if (!DarkModeSupported)
+            if (!DarkModeSupported || Window == null)
                 return;
 
-            UIApplication.SharedApplication.KeyWindow.OverrideUserInterfaceStyle = userInterfaceStyle;
+            Window.OverrideUserInterfaceStyle = userInterfaceStyle;
 
             if (theme == Theme.Dark)
                 UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);

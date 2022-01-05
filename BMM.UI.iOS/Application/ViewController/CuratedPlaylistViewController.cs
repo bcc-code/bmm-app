@@ -29,13 +29,8 @@ namespace BMM.UI.iOS
 
             var source = new NotSelectableDocumentsTableViewSource(CuratedPlaylistTable);
 
-            TitleLabel.ApplyTextTheme(AppTheme.Heading2);
-            DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
-            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
-            DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
-            DownloadButton.DownloadedImage = new UIImage("icon_tick");
-            DownloadButton.NormalStateImage = new UIImage("icon_download");
-            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
+            DownloadButton.DownloadedImage = UIImage.FromBundle("TickIcon");
+            DownloadButton.NormalStateImage = UIImage.FromBundle("IconDownload");
 
             var set = this.CreateBindingSet<CuratedPlaylistViewController, CuratedPlaylistViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.CuratedPlaylist.Title);
@@ -62,6 +57,16 @@ namespace BMM.UI.iOS
             set.Apply();
 
             CuratedPlaylistTable.ReloadData();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            TitleLabel.ApplyTextTheme(AppTheme.Heading2);
+            DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
+            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
 
         public override void ViewDidLayoutSubviews()

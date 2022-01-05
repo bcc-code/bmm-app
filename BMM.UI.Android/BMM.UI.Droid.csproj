@@ -589,6 +589,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\values-night-v27\styles.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\values-v27\styles.xml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\xml\auto_backup_rules.xml" />

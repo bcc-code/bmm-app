@@ -23,6 +23,11 @@ namespace BMM.Core.Implementations.Security.Oidc
         Task<bool> IsAuthenticated();
 
         /// <summary>
+        /// Refreshes the access_token.
+        /// </summary>
+        Task RefreshAccessToken();
+        
+        /// <summary>
         /// Refreshes the access_token with the refresh_token
         /// </summary>
         Task RefreshAccessTokenWithRetry();
