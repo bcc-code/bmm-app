@@ -65,8 +65,8 @@ namespace BMM.UI.iOS
                 .To(vm => vm.MyCollection)
                 .WithConversion<TrackCollectionToPlaylistStatusIconIsVisibleConverter>();
 
-            DownloadButton.DownloadedImage = new UIImage("icon_tick");
-            DownloadButton.NormalStateImage = new UIImage("icon_download");
+            DownloadButton.DownloadedImage = UIImage.FromBundle("TickIcon");
+            DownloadButton.NormalStateImage = UIImage.FromBundle("IconDownload");
             set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
             set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_AvailableOfflineDownload);
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);

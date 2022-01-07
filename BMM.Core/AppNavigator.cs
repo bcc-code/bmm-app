@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
@@ -53,6 +54,7 @@ namespace BMM.Core
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
         private readonly SupportVersionChecker _supportVersionChecker;
+        private readonly IAccessTokenProvider _accessTokenProvider;
         private Stopwatch _stopwatch;
 
         public AppNavigator(
@@ -68,8 +70,8 @@ namespace BMM.Core
             ICache cache,
             IMediaPlayer mediaPlayer,
             IRememberedQueueInfoService rememberedQueueInfoService,
-            SupportVersionChecker supportVersionChecker
-            )
+            SupportVersionChecker supportVersionChecker,
+            IAccessTokenProvider accessTokenProvider)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -84,6 +86,7 @@ namespace BMM.Core
             _mediaPlayer = mediaPlayer;
             _rememberedQueueInfoService = rememberedQueueInfoService;
             _supportVersionChecker = supportVersionChecker;
+            _accessTokenProvider = accessTokenProvider;
         }
 
         /// <summary>
@@ -147,6 +150,11 @@ namespace BMM.Core
         {
             try
             {
+                bool isAccessTokenValid = await _accessTokenProvider.IsAccessTokenValid();
+
+                if (!isAccessTokenValid)
+                    await _oidcAuthService.RefreshAccessToken();
+
                 if (_rememberedQueueInfoService.PreventRecoveringQueue)
                     return;
 
@@ -173,6 +181,10 @@ namespace BMM.Core
                 await _mediaPlayer.RecoverQueue(new List<IMediaTrack>(rememberedQueue),
                     currentTrack,
                     currentTrackPosition.LastPosition);
+            }
+            catch (InternetProblemsException)
+            {
+                //ignore
             }
             catch (Exception e)
             {

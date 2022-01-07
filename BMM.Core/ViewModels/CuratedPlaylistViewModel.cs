@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
@@ -15,7 +14,6 @@ using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Base;
-using MvvmCross.Localization;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels

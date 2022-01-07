@@ -44,6 +44,15 @@ namespace BMM.Core.Implementations.Security
             return _accessToken;
         }
 
+        public async Task<bool> IsAccessTokenValid()
+        {
+            if (_expirationDate == null)
+                _expirationDate = await _credentialsStorage.GetAccessTokenExpirationDate();
+
+            bool accessTokenNeedsRefresh = AccessTokenNeedsRefresh();
+            return !accessTokenNeedsRefresh;
+        }
+
         private async Task RefreshAccessTokenIfNeeded()
         {
             if (_expirationDate == null)

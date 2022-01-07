@@ -465,9 +465,6 @@
     <BundleResource Include="Resources\icon_search_active.png" />
     <BundleResource Include="Resources\icon_search_active@2x.png" />
     <BundleResource Include="Resources\icon_search_active@3x.png" />
-    <BundleResource Include="Resources\icon_tick.png" />
-    <BundleResource Include="Resources\icon_tick@2x.png" />
-    <BundleResource Include="Resources\icon_tick@3x.png" />
     <BundleResource Include="Resources\icon_playback_history.png" />
     <BundleResource Include="Resources\icon_playback_history@2x.png" />
     <BundleResource Include="Resources\icon_playback_history@3x.png" />
@@ -1361,6 +1358,10 @@
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%403x.png" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification.png" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick.png" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@3x.png" />
     <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Union.pdf" />
   </ItemGroup>

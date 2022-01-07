@@ -101,7 +101,7 @@ namespace BMM.Core.Implementations.Security.Oidc
             }
         }
 
-        private async Task RefreshAccessToken()
+        public async Task RefreshAccessToken()
         {
             var refreshToken = await _credentialsStorage.GetRefreshToken();
 
