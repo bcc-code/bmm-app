@@ -1,7 +1,9 @@
 using System.Threading.Tasks;
+using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Theme.Interfaces;
 using BMM.Core.Models.Themes;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Utils;
 using MvvmCross.Base;
 using UIKit;
@@ -22,7 +24,7 @@ namespace BMM.UI.iOS.Actions
             await _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
             {
                 UIView.Animate(
-                    0.3f,
+                    ViewConstants.DefaultAnimationDuration,
                     () =>
                     {
                         UIApplication.SharedApplication.KeyWindow.OverrideUserInterfaceStyle = ThemeUtils.GetUIUserInterfaceStyleForTheme(theme);

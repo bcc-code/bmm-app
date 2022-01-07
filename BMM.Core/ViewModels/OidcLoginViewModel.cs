@@ -57,9 +57,11 @@ namespace BMM.Core.ViewModels
 
         public bool IsInitialLogin { get; set; }
 
-        public override void Prepare(OidcLoginParameters parameter)
+        public override async Task Initialize()
         {
-            if (parameter.IsInitialLogin)
+            await base.Initialize();
+            
+            if (NavigationParameter.IsInitialLogin)
             {
                 IsLoading = true;
                 IsInitialLogin = true;

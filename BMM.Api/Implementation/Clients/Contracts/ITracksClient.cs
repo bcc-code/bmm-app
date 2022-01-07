@@ -54,6 +54,6 @@ namespace BMM.Api.Implementation.Clients.Contracts
             IEnumerable<string> tags = null, IEnumerable<string> excludeTags = null);
 
         /// <summary>Gets the track with the specified identifier.</summary>
-        Task<Track> GetById(int id);
+        Task<Track> GetById(int id, string desiredLanguage = default);
     }
 }

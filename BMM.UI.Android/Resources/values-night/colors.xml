@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
     <color name="tint_color">#83E76B</color>
-    <color name="label_primary_color">#FFFFFF</color>
+    <color name="label_primary_color">#E9F0F7</color>
     <color name="label_primary_reverted_color">#0D131A</color>
-    <color name="label_secondary_color">#9FB2C4</color>
-    <color name="label_tertiary_color">#6D8193</color>
+    <color name="label_secondary_color">#C4CED8</color>
+    <color name="label_tertiary_color">#949DA6</color>
     <color name="placeholder_color">#536577</color>
+    <color name="placeholder_two_color">#5F6973</color>
     <color name="background_primary_color">#1B242B</color>
     <color name="background_secondary_color">#28333D</color>
     <color name="on_tint_one_color">#FFFFFF</color>

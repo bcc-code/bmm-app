@@ -40,8 +40,13 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         private IList<IMediaTrack> _lastQueue;
         private long _lastPosition;
 
-        public AndroidMediaPlayer(IMediaQueue mediaQueue, MediaControllerCallback callback, PlaybackStateCompatMapper mapper, IMvxMessenger messenger,
-            IMetadataMapper metadataMapper, ILogger logger, IMvxAndroidCurrentTopActivity activity)
+        public AndroidMediaPlayer(
+            IMediaQueue mediaQueue,
+            MediaControllerCallback callback,
+            PlaybackStateCompatMapper mapper,
+            IMvxMessenger messenger,
+            IMetadataMapper metadataMapper,
+            ILogger logger)
         {
             _mediaQueue = mediaQueue;
             _callback = callback;

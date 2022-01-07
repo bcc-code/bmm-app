@@ -224,9 +224,7 @@ namespace BMM.UI.Droid.Application.Fragments
             window.ClearFlags(WindowManagerFlags.TranslucentStatus);
             window.SetStatusBarColor(color);
 
-            window.DecorView.SystemUiVisibility = BitmapHelper.BackgroundColorRequiresDarkText(color)
-                ? window.DecorView.SystemUiVisibility.AddFlag(SystemUiFlags.LightStatusBar)
-                : window.DecorView.SystemUiVisibility.RemoveFlag(SystemUiFlags.LightStatusBar);
+            window.DecorView.SystemUiVisibility = color.GetStatusBArVisibilityBasedOnColor(window);
         }
 
         protected virtual bool CheckIfFragmentIsDetachedFromActivity() => Activity?.BaseContext == null || Context == null;

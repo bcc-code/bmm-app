@@ -15,6 +15,7 @@ namespace BMM.Api.Implementation.Models
             DocumentType = DocumentType.Track;
         }
 
+        [JsonProperty(PropertyName = "languages")]
         public IEnumerable<string> AvailableLanguages { get; set; }
 
         public string Comment { get; set; }

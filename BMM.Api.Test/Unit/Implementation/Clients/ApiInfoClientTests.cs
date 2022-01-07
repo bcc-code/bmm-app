@@ -15,7 +15,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<ApiInfo>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<ApiInfo>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
         }
 
@@ -24,7 +24,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var name = "TestName";
-            RequestHandler.Setup(x => x.GetResolvedResponse<ApiInfo>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<ApiInfo>(It.IsAny<IRequest>(), null, null))
                 .ReturnsAsync(new ApiInfo() { Name = name });
 
             var albumClient = new ApiInfoClient(RequestHandler.Object, MockedUri, Logger.Object);

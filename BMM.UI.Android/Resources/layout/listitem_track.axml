@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/row_document_height"
     android:background="?android:attr/selectableItemBackground">
@@ -10,9 +9,9 @@
         android:id="@+id/trackPlaybackStateIcon"
         android:layout_width="@dimen/track_padding"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/trackTitle"
-        app:layout_constraintBottom_toBottomOf="@+id/trackTitle"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintTop_toTopOf="@+id/trackTitle"
+        local:layout_constraintBottom_toBottomOf="@+id/trackTitle"
         local:MvxBind="DrawableId TrackPlaybackStateToDrawable(., ViewModel.CurrentTrack);" />
 
     <TextView
@@ -24,11 +23,11 @@
         android:ellipsize="end"
         android:lineHeight="20sp"
         style="@style/Title2"
-        app:layout_constraintStart_toEndOf="@+id/trackPlaybackStateIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
-        app:layout_constraintBottom_toTopOf="@+id/trackSubtitle"
-        app:layout_constraintVertical_chainStyle="packed"
+        local:layout_constraintStart_toEndOf="@+id/trackPlaybackStateIcon"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
+        local:layout_constraintBottom_toTopOf="@+id/trackSubtitle"
+        local:layout_constraintVertical_chainStyle="packed"
         local:MvxBind="Text DocumentToTitle(.); TextColor TrackPlaybackStateToColor(., ViewModel.CurrentTrack)" />
 
     <TextView
@@ -40,9 +39,9 @@
         android:lineHeight="20sp"
         android:layout_marginStart="@dimen/margin_medium"
         style="@style/Subtitle3_Label2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trackTitle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintTop_toBottomOf="@+id/trackTitle"
+        local:layout_constraintBottom_toBottomOf="parent"
         local:MvxBind="Text DocumentToSubtitle(.); Alpha TrackAvailabilityToOpacity(.)" />
 
     <TextView
@@ -54,22 +53,42 @@
         android:lineHeight="20sp"
         android:layout_marginLeft="@dimen/margin_tiny"
         style="@style/Subtitle3_Label3"
-        app:layout_constraintTop_toTopOf="@+id/trackSubtitle"
-        app:layout_constraintBottom_toBottomOf="@+id/trackSubtitle"
-        app:layout_constraintStart_toEndOf="@+id/trackSubtitle"
-        app:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
+        local:layout_constraintTop_toTopOf="@+id/trackSubtitle"
+        local:layout_constraintBottom_toBottomOf="@+id/trackSubtitle"
+        local:layout_constraintStart_toEndOf="@+id/trackSubtitle"
+        local:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
         local:MvxBind="Text DocumentToMeta(.); Alpha TrackAvailabilityToOpacity(.)" />
 
-    <MvxFrameControl
+    <LinearLayout 
         android:id="@+id/trackDownloadStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
         android:layout_gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image_button_references"
-        app:layout_constraintBottom_toBottomOf="parent"
-        local:MvxTemplate="@layout/track_download_status"
-        local:MvxBind="DataContext ." />
+        local:MvxBind="Visibility OfflineAvailableTrack(.)"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintEnd_toStartOf="@+id/image_button_references"
+        local:layout_constraintBottom_toBottomOf="parent">
+        <ImageView
+            android:src="@drawable/icon_download_pending"
+            android:id="@+id/downloadedIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Visibility Visibility(DownloadStatusPending(.))" />
+        <ProgressBar
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:indeterminate="true"
+            android:indeterminateDrawable="@drawable/spinner_small"
+            local:MvxBind="Visibility Visibility(DownloadStatusProgress(.))" />
+        <ImageView
+            android:src="@drawable/icon_download_done"
+            android:id="@+id/downloadedIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Visibility Visibility(DownloadStatusDone(.))" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/image_button_references"
@@ -77,9 +96,9 @@
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/padding_medium"
         android:src="@drawable/btn_references_static"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image_button_options"
-        app:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintEnd_toStartOf="@+id/image_button_options"
+        local:layout_constraintBottom_toBottomOf="parent"
         local:MvxBind="Click ShowTrackInfoCommand(.); Visibility Visibility(TrackHasExternalRelations(Item))"/>
 
     <ImageView
@@ -90,17 +109,17 @@
         android:paddingEnd="@dimen/padding_medium"
         android:src="@drawable/btn_options_static"
         android:background="?selectableItemBackgroundBorderless"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:layout_constraintBottom_toBottomOf="parent"
         local:MvxBind="Click OptionButtonCommand(.)" />
 
     <androidx.constraintlayout.widget.Barrier
             android:id="@+id/BarrierForRightItems"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:barrierDirection="start"
-            app:constraint_referenced_ids="
+            local:barrierDirection="start"
+            local:constraint_referenced_ids="
                         image_button_references,
                         image_button_options"/>
 

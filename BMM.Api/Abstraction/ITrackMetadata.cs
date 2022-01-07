@@ -45,6 +45,8 @@ namespace BMM.Api.Abstraction
         bool IsListened { get; set; }
 
         string Language { get; set; }
+        
+        IEnumerable<string> AvailableLanguages { get; set; }
 
         string PlaybackOrigin { get; set; }
 

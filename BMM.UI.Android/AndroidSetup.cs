@@ -29,6 +29,7 @@ using BMM.Core.Implementations.Networking;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Player;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -41,6 +42,7 @@ using BMM.UI.Droid.Application.Implementations.FileStorage;
 using BMM.UI.Droid.Application.Implementations.FirebaseRemoteConfig;
 using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.Implementations.Oidc;
+using BMM.UI.Droid.Application.Implementations.Track;
 using BMM.UI.Droid.Application.Implementations.UI;
 using BMM.UI.Droid.Application.Media;
 using BMM.UI.Droid.Application.NewMediaPlayer;
@@ -155,6 +157,7 @@ namespace BMM.UI.Droid
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, DroidExceptionHandlingUserDialogs>();
             Mvx.IoCProvider.RegisterType<IClipboardService, ClipboardService>();
+            Mvx.IoCProvider.RegisterType<ITrackOptionsService, DroidTrackOptionsService>();
 
             Mvx.IoCProvider.RegisterSingleton<ISdkVersionHelper>(new SdkVersionHelper(Build.VERSION.SdkInt));
             Mvx.IoCProvider.RegisterType<ISimpleHttpClient, SimpleHttpClient>();
@@ -195,6 +198,8 @@ namespace BMM.UI.Droid
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardCircle", card => new MvxCardCircle(card)));
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardBackgroundColor", card => new MvxCardBackgroundColor(card)));
             MvxCachedImageViewPathBinding.Register(registry);
+            BackgroundResourceBinding.Register(registry);
+            ImageButtonIconResourceBinding.Register(registry);
         }
 
         private void InitializeMediaPlayer()

@@ -10,6 +10,8 @@ namespace BMM.UI.iOS.Constants
         public UIEdgeInsets ContentEdgeInsets { get; set; }
         public UIColor IconTint { get; set; }
         public bool HasRoundedCorners { get; set; }
+        public bool HasBorder { get; set; }
+        public UIColor BorderColor { get; set; }
     }
 
     public class StandardButtonTheme : ButtonTheme

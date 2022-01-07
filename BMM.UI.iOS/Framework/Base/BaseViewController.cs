@@ -17,6 +17,8 @@ namespace BMM.UI.iOS
         public BaseViewController(string nib)
             : base(nib, null)
         { }
+        
+        protected virtual string GetTitle() => ViewModel.TextSource[TitleKey];
 
         public override void ViewDidLoad()
         {
@@ -122,9 +124,9 @@ namespace BMM.UI.iOS
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(ViewModel.TextSource))
-                Title = ViewModel.TextSource[TitleKey];
+                Title = GetTitle();
         }
-
+        
         public override void ViewSafeAreaInsetsDidChange()
         {
             base.ViewSafeAreaInsetsDidChange();

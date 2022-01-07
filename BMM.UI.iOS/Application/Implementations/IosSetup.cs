@@ -18,6 +18,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Networking;
 using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -27,6 +28,7 @@ using BMM.UI.iOS.Implementations;
 using BMM.UI.iOS.Implementations.Device;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
+using BMM.UI.iOS.Implementations.Track;
 using BMM.UI.iOS.NewMediaPlayer;
 using BMM.UI.iOS.UI;
 using FFImageLoading;
@@ -80,6 +82,7 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<INotificationDisplayer, NotificationDisplayer>();
             Mvx.IoCProvider.RegisterType<UserNotificationCenterDelegate>();
             Mvx.IoCProvider.RegisterType<IClipboardService, ClipboardService>();
+            Mvx.IoCProvider.RegisterType<ITrackOptionsService, iOSTrackOptionsService>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificRemoteConfig, IosFirebaseRemoteConfig>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeviceSupportVersionChecker, IosSupportVersionChecker>();
 

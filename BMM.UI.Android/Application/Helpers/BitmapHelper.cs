@@ -3,6 +3,8 @@ using Android.Content;
 using Android.Graphics;
 using Android.Renderscripts;
 using Android.Views;
+using AndroidX.Core.Content;
+using AndroidX.Palette.Graphics;
 
 namespace BMM.UI.Droid.Application.Helpers
 {
@@ -55,6 +57,15 @@ namespace BMM.UI.Droid.Application.Helpers
             {
                 return Color.Black;
             }
+        }
+
+        public static Color GetMutedColor(Bitmap bitmap)
+        {
+            var palette = Palette
+                .From(bitmap)
+                .Generate();
+
+            return new Color(palette.GetMutedColor(Color.Black));
         }
 
         public static Color GetDarkenedColor(Bitmap bitmap)

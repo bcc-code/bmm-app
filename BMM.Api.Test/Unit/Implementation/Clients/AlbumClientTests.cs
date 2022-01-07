@@ -16,10 +16,10 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<Album>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Album>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
         }
 
@@ -27,7 +27,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         public async Task GetAll_ShouldReturnAlbumIfWeReceiveProperRespond()
         {
             // Arrange
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null, null))
                 .ReturnsAsync(CreateListOfTestAlbums());
 
             var albumClient = new AlbumClient(RequestHandler.Object, MockedUri, Logger.Object);
@@ -45,7 +45,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var testID = "bmmtestId";
-            RequestHandler.Setup(x => x.GetResolvedResponse<Album>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Album>(It.IsAny<IRequest>(), null, null))
                 .ReturnsAsync(new Album(){ BmmId = testID });
 
             var albumClient = new AlbumClient(RequestHandler.Object, MockedUri, Logger.Object);
@@ -62,7 +62,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         public async Task GetPublishedByYear_ShouldReturnAlbumIfWeReceiveProperRespond()
         {
             // Arrange
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null, null))
                 .ReturnsAsync(CreateListOfTestAlbums());
 
             var albumClient = new AlbumClient(RequestHandler.Object, MockedUri, Logger.Object);
@@ -79,7 +79,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         public async Task GetRecordedByYear_ShouldReturnAlbumIfWeReceiveProperRespond()
         {
             // Arrange
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Album>>(It.IsAny<IRequest>(), null, null))
                 .ReturnsAsync(CreateListOfTestAlbums());
 
             var albumClient = new AlbumClient(RequestHandler.Object, MockedUri, Logger.Object);

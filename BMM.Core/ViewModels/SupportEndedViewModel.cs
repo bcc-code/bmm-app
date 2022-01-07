@@ -20,7 +20,6 @@ namespace BMM.Core.ViewModels
         private readonly IDeviceInfo _deviceInfo;
         private readonly IFirebaseRemoteConfig _remoteConfig;
         private readonly IUriOpener _uriOpener;
-        private SupportEndedMessage _supportEndedInfo;
 
         public IMvxCommand ShowAppUpdatePageCommand { get; }
 
@@ -42,7 +41,7 @@ namespace BMM.Core.ViewModels
 
         private string ChooseSupportEndedMessage()
         {
-            switch (_supportEndedInfo)
+            switch (NavigationParameter.SupportEndedMessage)
             {
                 case SupportEndedMessage.DeviceSupportEnded:
                     return TextSource.GetText(Translations.SupportEndedViewModel_DeviceSupportEnded, _deviceInfo.Platform, ChoseCurrentPlatformMinimumRequiredDeviceVersion());
@@ -68,12 +67,7 @@ namespace BMM.Core.ViewModels
 
         private bool CurrentPageIsAppSupportEndedPage()
         {
-            return _supportEndedInfo == SupportEndedMessage.ApplicationVersionSupportEnded;
-        }
-
-        public override void Prepare(SupportEndedParameters parameter)
-        {
-            _supportEndedInfo = parameter.SupportEndedMessage;
+            return NavigationParameter.SupportEndedMessage == SupportEndedMessage.ApplicationVersionSupportEnded;
         }
     }
 }

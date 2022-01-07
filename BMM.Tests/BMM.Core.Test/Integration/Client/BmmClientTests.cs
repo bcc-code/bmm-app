@@ -88,7 +88,7 @@ namespace BMM.Core.Test.Integration.Client
 
         public class TokenRequestInterceptor : IRequestInterceptor
         {
-            public Task InterceptRequest(IRequest request)
+            public Task InterceptRequest(IRequest request, IDictionary<string, string> customHeaders = default)
             {
                 var user = "ola.normann";
                 var token = "e2cf257fa093288c19a5160671910858";
@@ -103,7 +103,7 @@ namespace BMM.Core.Test.Integration.Client
 
         public class UserAgentRequestInterceptor : IRequestInterceptor
         {
-            public Task InterceptRequest(IRequest request)
+            public Task InterceptRequest(IRequest request, IDictionary<string, string> customHeaders = default)
             {
                 request.Headers.Add("User-Agent", "BMM Integration Tests");
                 return Task.CompletedTask;

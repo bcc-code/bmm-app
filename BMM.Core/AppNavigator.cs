@@ -151,7 +151,7 @@ namespace BMM.Core
             try
             {
                 bool isAccessTokenValid = await _accessTokenProvider.IsAccessTokenValid();
-
+                
                 if (!isAccessTokenValid)
                     await _oidcAuthService.RefreshAccessToken();
 

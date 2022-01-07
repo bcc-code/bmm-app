@@ -32,6 +32,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string UseAnalyticsId = "use_analytics_id";
 
             public const string UserVoiceLink = "user_voice_link";
+            
+            public const string SongTreasuresSongLink = "songtreasures_song_link";
         }
 
         public static readonly Dictionary<string, string> Defaults = new Dictionary<string, string>
@@ -48,7 +50,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.UseExtendedStreakLogging, true.ToString()},
             {Variables.AutoplayEnabledDefaultSetting, false.ToString()},
             {Variables.UseAnalyticsId, false.ToString()},
-            {Variables.UserVoiceLink, "https://uservoice.bcc.no/?tags=bmm"}
+            {Variables.UserVoiceLink, "https://uservoice.bcc.no/?tags=bmm"},
+            {Variables.SongTreasuresSongLink, "https://songtreasures.app/songs/{0}/{1}"}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -65,6 +68,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public bool UseAnalyticsId => _platformSpecificRemoteConfig.GetBoolValue(Variables.UseAnalyticsId);
 
         public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
+        
+        public string SongTreasuresSongLink => _platformSpecificRemoteConfig.GetStringValue(Variables.SongTreasuresSongLink);
 
         public bool AutoplayEnabledDefaultSetting => _platformSpecificRemoteConfig.GetBoolValue(Variables.AutoplayEnabledDefaultSetting);
 

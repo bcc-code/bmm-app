@@ -17,7 +17,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
         }
 
@@ -26,7 +26,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act
@@ -42,7 +42,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act
@@ -58,7 +58,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act
@@ -74,7 +74,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act
@@ -90,7 +90,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act
@@ -106,7 +106,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act
@@ -122,7 +122,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act
@@ -138,7 +138,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var statisticsClient = new StatisticsClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(GetASampleListOfDocuments()));
 
             // Act

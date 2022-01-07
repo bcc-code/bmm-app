@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -14,7 +15,7 @@ namespace BMM.Api.Test.Helper
 {
     public class TestRequestInterceptor : IRequestInterceptor
     {
-        public Task InterceptRequest(IRequest request)
+        public Task InterceptRequest(IRequest request, IDictionary<string, string> customHeaders = default)
         {
             request.Headers.Add("Accept-Language", "en-US");
             request.Headers.Add("Accept", "application/json");

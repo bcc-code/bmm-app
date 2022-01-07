@@ -14,6 +14,17 @@ namespace BMM.UI.Droid.Application.Extensions
             lp.Width = width;
             view.LayoutParameters = lp;
         }
+        
+        public static void UpdateHeight(this View view, int height)
+        {
+            var lp = view.LayoutParameters;
+
+            if (lp!.Height == height)
+                return;
+
+            lp.Height = height;
+            view.LayoutParameters = lp;
+        }
 
         public static void UpdateSize(this View view, int size)
         {

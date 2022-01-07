@@ -6,8 +6,8 @@ namespace BMM.UI.iOS
 {
     public class PlayerNavigationController : MvxNavigationController
     {
-        private UIColor BarBackgroundColor => AppColors.PlayerBackgroundColor;
-        private UIColor BarForegroundColor => UIColor.White;
+        private UIColor BarBackgroundColor => AppColors.BackgroundPrimaryColor;
+        private UIColor BarForegroundColor => AppColors.LabelPrimaryColor;
 
         public override void ViewDidLoad()
         {

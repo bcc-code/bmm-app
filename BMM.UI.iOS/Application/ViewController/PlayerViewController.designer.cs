@@ -7,7 +7,6 @@
 //
 using Foundation;
 using System.CodeDom.Compiler;
-using FFImageLoading.Cross;
 
 namespace BMM.UI.iOS
 {
@@ -15,81 +14,93 @@ namespace BMM.UI.iOS
 	partial class PlayerViewController
 	{
 		[Outlet]
-		UIKit.UIButton BtvLinkButton { get; set; }
+		UIKit.UIStackView BottomButtonsStackLayout { get; set; }
 
 		[Outlet]
-		UIKit.UIStackView BtvLinkContainer { get; set; }
+		UIKit.NSLayoutConstraint BottomMarginConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UISlider BufferedProgressSlider { get; set; }
 
 		[Outlet]
-		UIKit.NSLayoutConstraint CoverViewTopConstraint { get; set; }
+		UIKit.UIButton ChangeLanguageButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton ClosePlayerButton { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint CoverHeightConstraint { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint CoverTopMarginConstraint { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint CoverWidthConstraint { get; set; }
+
+		[Outlet]
+		UIKit.UILabel EndTimeLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIButton NextButtton { get; set; }
 
 		[Outlet]
 		UIKit.UISlider PlayingProgressSlider { get; set; }
 
 		[Outlet]
-		UIKit.UIButton QueueNextButton { get; set; }
+		UIKit.UIButton PlayPauseButton { get; set; }
 
 		[Outlet]
-		UIKit.UIButton QueuePreviousButton { get; set; }
+		UIKit.UIButton PreviousButton { get; set; }
 
 		[Outlet]
-		UIKit.UIButton QueueRandomButton { get; set; }
+		UIKit.UIButton QueueButton { get; set; }
 
 		[Outlet]
-		UIKit.UIButton QueueRepeatButton { get; set; }
+		UIKit.NSLayoutConstraint SeparatorBottomMarginConstraint { get; set; }
 
 		[Outlet]
-		UIKit.UIButton SkipBackwardButton { get; set; }
+		UIKit.NSLayoutConstraint SeparatorTopMarginConstraint { get; set; }
+
+		[Outlet]
+		UIKit.UIView ShadowView { get; set; }
+
+		[Outlet]
+		UIKit.UIButton ShuffleButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton SkipBackButton { get; set; }
 
 		[Outlet]
 		UIKit.UIButton SkipForwardButton { get; set; }
 
-		[Outlet ("SubtitleLabel")]
-		UIKit.UILabel subtitleLabel { get; set; }
+		[Outlet]
+		UIKit.NSLayoutConstraint SliderBottomMarginConstraint { get; set; }
 
 		[Outlet]
-		UIKit.UILabel TimePlayedLabel { get; set; }
+		UIKit.UILabel SliderPositionTimeLabel { get; set; }
 
 		[Outlet]
-		UIKit.UILabel TimeTotalLabel { get; set; }
+		MarqueeLabel.iOS.MarqueeLabel SubtitleLabel { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 
 		[Outlet]
-		UIKit.UIView TrackCoverContainerView { get; set; }
+		FFImageLoading.Cross.MvxCachedImageView TrackCoverImageView { get; set; }
 
 		[Outlet]
-		MvxCachedImageView TrackCoverImageView { get; set; }
-
-		[Outlet]
-		UIKit.UIButton TrackOptionsButton { get; set; }
-
-		[Outlet]
-		UIKit.UIButton TrackPlayPauseButton { get; set; }
-
-		[Outlet]
-		UIKit.UIButton TrackReferernceButton { get; set; }
-
-		[Outlet]
-		UIKit.UILabel TrackSubtitleLabel { get; set; }
-
-		[Outlet]
-		UIKit.UILabel TrackTitleLabel { get; set; }
+		UIKit.UIButton ViewLyricsButton { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (BtvLinkButton != null) {
-				BtvLinkButton.Dispose ();
-				BtvLinkButton = null;
+			if (BottomButtonsStackLayout != null) {
+				BottomButtonsStackLayout.Dispose ();
+				BottomButtonsStackLayout = null;
 			}
 
-			if (BtvLinkContainer != null) {
-				BtvLinkContainer.Dispose ();
-				BtvLinkContainer = null;
+			if (BottomMarginConstraint != null) {
+				BottomMarginConstraint.Dispose ();
+				BottomMarginConstraint = null;
 			}
 
 			if (BufferedProgressSlider != null) {
@@ -97,34 +108,84 @@ namespace BMM.UI.iOS
 				BufferedProgressSlider = null;
 			}
 
+			if (ChangeLanguageButton != null) {
+				ChangeLanguageButton.Dispose ();
+				ChangeLanguageButton = null;
+			}
+
+			if (ClosePlayerButton != null) {
+				ClosePlayerButton.Dispose ();
+				ClosePlayerButton = null;
+			}
+
+			if (CoverHeightConstraint != null) {
+				CoverHeightConstraint.Dispose ();
+				CoverHeightConstraint = null;
+			}
+
+			if (CoverTopMarginConstraint != null) {
+				CoverTopMarginConstraint.Dispose ();
+				CoverTopMarginConstraint = null;
+			}
+
+			if (CoverWidthConstraint != null) {
+				CoverWidthConstraint.Dispose ();
+				CoverWidthConstraint = null;
+			}
+
+			if (EndTimeLabel != null) {
+				EndTimeLabel.Dispose ();
+				EndTimeLabel = null;
+			}
+
+			if (NextButtton != null) {
+				NextButtton.Dispose ();
+				NextButtton = null;
+			}
+
 			if (PlayingProgressSlider != null) {
 				PlayingProgressSlider.Dispose ();
 				PlayingProgressSlider = null;
 			}
 
-			if (QueueNextButton != null) {
-				QueueNextButton.Dispose ();
-				QueueNextButton = null;
+			if (PlayPauseButton != null) {
+				PlayPauseButton.Dispose ();
+				PlayPauseButton = null;
 			}
 
-			if (QueuePreviousButton != null) {
-				QueuePreviousButton.Dispose ();
-				QueuePreviousButton = null;
+			if (PreviousButton != null) {
+				PreviousButton.Dispose ();
+				PreviousButton = null;
 			}
 
-			if (QueueRandomButton != null) {
-				QueueRandomButton.Dispose ();
-				QueueRandomButton = null;
+			if (QueueButton != null) {
+				QueueButton.Dispose ();
+				QueueButton = null;
 			}
 
-			if (QueueRepeatButton != null) {
-				QueueRepeatButton.Dispose ();
-				QueueRepeatButton = null;
+			if (SeparatorBottomMarginConstraint != null) {
+				SeparatorBottomMarginConstraint.Dispose ();
+				SeparatorBottomMarginConstraint = null;
 			}
 
-			if (SkipBackwardButton != null) {
-				SkipBackwardButton.Dispose ();
-				SkipBackwardButton = null;
+			if (SeparatorTopMarginConstraint != null) {
+				SeparatorTopMarginConstraint.Dispose ();
+				SeparatorTopMarginConstraint = null;
+			}
+
+			if (ShadowView != null) {
+				ShadowView.Dispose ();
+				ShadowView = null;
+			}
+
+			if (ShuffleButton != null) {
+				ShuffleButton.Dispose ();
+				ShuffleButton = null;
+			}
+
+			if (SkipBackButton != null) {
+				SkipBackButton.Dispose ();
+				SkipBackButton = null;
 			}
 
 			if (SkipForwardButton != null) {
@@ -132,19 +193,19 @@ namespace BMM.UI.iOS
 				SkipForwardButton = null;
 			}
 
-			if (subtitleLabel != null) {
-				subtitleLabel.Dispose ();
-				subtitleLabel = null;
+			if (SliderBottomMarginConstraint != null) {
+				SliderBottomMarginConstraint.Dispose ();
+				SliderBottomMarginConstraint = null;
 			}
 
-			if (TimePlayedLabel != null) {
-				TimePlayedLabel.Dispose ();
-				TimePlayedLabel = null;
+			if (SliderPositionTimeLabel != null) {
+				SliderPositionTimeLabel.Dispose ();
+				SliderPositionTimeLabel = null;
 			}
 
-			if (TimeTotalLabel != null) {
-				TimeTotalLabel.Dispose ();
-				TimeTotalLabel = null;
+			if (SubtitleLabel != null) {
+				SubtitleLabel.Dispose ();
+				SubtitleLabel = null;
 			}
 
 			if (TitleLabel != null) {
@@ -152,44 +213,14 @@ namespace BMM.UI.iOS
 				TitleLabel = null;
 			}
 
-			if (TrackCoverContainerView != null) {
-				TrackCoverContainerView.Dispose ();
-				TrackCoverContainerView = null;
-			}
-
 			if (TrackCoverImageView != null) {
 				TrackCoverImageView.Dispose ();
 				TrackCoverImageView = null;
 			}
 
-			if (TrackOptionsButton != null) {
-				TrackOptionsButton.Dispose ();
-				TrackOptionsButton = null;
-			}
-
-			if (TrackPlayPauseButton != null) {
-				TrackPlayPauseButton.Dispose ();
-				TrackPlayPauseButton = null;
-			}
-
-			if (TrackReferernceButton != null) {
-				TrackReferernceButton.Dispose ();
-				TrackReferernceButton = null;
-			}
-
-			if (TrackSubtitleLabel != null) {
-				TrackSubtitleLabel.Dispose ();
-				TrackSubtitleLabel = null;
-			}
-
-			if (TrackTitleLabel != null) {
-				TrackTitleLabel.Dispose ();
-				TrackTitleLabel = null;
-			}
-
-			if (CoverViewTopConstraint != null) {
-				CoverViewTopConstraint.Dispose ();
-				CoverViewTopConstraint = null;
+			if (ViewLyricsButton != null) {
+				ViewLyricsButton.Dispose ();
+				ViewLyricsButton = null;
 			}
 
 		}

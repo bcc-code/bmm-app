@@ -29,17 +29,6 @@ namespace BMM.UI.iOS.Constants
         public static readonly UIColor QueueBackgroundColor = UIColor.FromRGB(12, 15, 20);
         public static readonly UIColor QueueBackgroundSelectedColor = UIColor.FromRGB(28, 36, 43);
 
-        // Player
-        public static readonly UIColor PlayerBackgroundColor = UIColor.FromRGB(13, 19, 26);
-
-        public static readonly CGColor[] TrackCoverGradientColors =
-        {
-            UIColor.FromRGB(0, 0, 0).ColorWithAlpha(0).CGColor,
-            UIColor.FromRGB(3, 4, 6).ColorWithAlpha(.09f).CGColor,
-            UIColor.FromRGB(9, 14, 19).ColorWithAlpha(.28f).CGColor,
-            UIColor.FromRGB(13, 19, 26).ColorWithAlpha(.5f).CGColor
-        };
-
         public static readonly UIColor SeparatorColor = UIColor.FromRGB(185, 195, 204).ColorWithAlpha(0.5f);
     }
 }
