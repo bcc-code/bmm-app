@@ -295,8 +295,8 @@
     "Logout": "Ausloggen",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können.",
-    "ThemeHeader": "App theme",
-    "ThemeText": "Choose if you would like to use light or dark theme"
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
@@ -461,9 +461,9 @@
     "PodcastsTitle": "Podcasts"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Theme settings",
+    "Title": "Dark mode settings",
     "Light": "Light",
     "Dark": "Dark",
-    "System": "System"
+    "System": "Follow system settings (Auto)"
   }
 }
