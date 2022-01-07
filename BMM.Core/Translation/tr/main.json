@@ -295,8 +295,8 @@
     "Logout": "Çıkış",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "App theme",
-    "ThemeText": "Choose if you would like to use light or dark theme"
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",
@@ -461,9 +461,9 @@
     "PodcastsTitle": "Podcast"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Theme settings",
+    "Title": "Dark mode settings",
     "Light": "Light",
     "Dark": "Dark",
-    "System": "System"
+    "System": "Follow system settings (Auto)"
   }
 }
