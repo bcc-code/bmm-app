@@ -295,8 +295,8 @@
     "Logout": "Deconectare",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Ai idei de cum putem îmbunătăți BMM? Scrie-ne despre ele!",
-    "ThemeHeader": "App theme",
-    "ThemeText": "Choose if you would like to use light or dark theme"
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
@@ -461,9 +461,9 @@
     "PodcastsTitle": "Podcast-uri"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Theme settings",
+    "Title": "Dark mode settings",
     "Light": "Light",
     "Dark": "Dark",
-    "System": "System"
+    "System": "Follow system settings (Auto)"
   }
 }
