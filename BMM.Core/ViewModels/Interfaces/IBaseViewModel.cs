@@ -7,5 +7,6 @@ namespace BMM.Core.ViewModels.Interfaces
     {
         IMvxAsyncCommand CloseCommand { get; }
         bool IsLoading { get; set; }
+        string PlaybackOriginString { get; }
     }
 }

@@ -168,20 +168,11 @@ namespace BMM.UI.Droid.Application.Activities
                 if (playerFrag.IsVisible)
                 {
                     playerFrag.ClosePlayer();
-                }
-                else
-                {
-                    var queueFrag = SupportFragmentManager.FindFragmentById(Resource.Id.content_frame) as QueueFragment;
-                    if (queueFrag != null)
-                        queueFrag.CloseQueue();
-                    else
-                        base.OnBackPressed();
+                    return;
                 }
             }
-            else
-            {
-                base.OnBackPressed();
-            }
+        
+            base.OnBackPressed();
         }
 
         protected override void OnNewIntent(Intent intent)

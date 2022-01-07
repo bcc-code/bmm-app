@@ -1,7 +1,7 @@
 using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
-using BMM.Core.Models.PO;
+using BMM.Core.Models.POs;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Platforms.Ios.Binding;
 

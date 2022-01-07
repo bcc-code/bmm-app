@@ -7,6 +7,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
+using BMM.Api.Implementation.Constants;
 using BMM.Api.Implementation.Models;
 using Tavis.UriTemplates;
 
@@ -58,12 +59,20 @@ namespace BMM.Api.Implementation.Clients
             return Get<IList<Track>>(uri);
         }
 
-        public Task<Track> GetById(int id)
+        public Task<Track> GetById(int id, string desiredLanguage = default)
         {
             var uri = new UriTemplate(ApiUris.Track);
             uri.SetParameter("id", id);
 
-            return Get<Track>(uri);
+            if (string.IsNullOrEmpty(desiredLanguage))
+                return Get<Track>(uri);
+            
+            var headers = new Dictionary<string, string>
+            {
+                { HeadersNames.AcceptLanguage, desiredLanguage }
+            };
+
+            return Get<Track>(uri, headers);
         }
 
         public Task<Stream> GetCover(int id)

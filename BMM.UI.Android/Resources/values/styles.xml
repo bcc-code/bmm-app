@@ -141,7 +141,7 @@
     <style name="Subtitle1_Label1" parent="Subtitle1">
         <item name="android:textColor">@color/label_primary_color</item>
     </style>
-    
+
     <style name="Subtitle1_Label2" parent="Subtitle1">
         <item name="android:textColor">@color/label_secondary_color</item>
     </style>
@@ -203,6 +203,13 @@
         <item name="android:textColor">@color/label_primary_color</item>
     </style>
 
+    <style name="Title4">
+        <item name="android:textSize">20sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">400</item>
+        <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+
     <style name="Paragraph1">
         <item name="android:textSize">17sp</item>
         <item name="android:lineHeight">28sp</item>
@@ -254,6 +261,21 @@
         <item name="backgroundTint">@color/background_secondary_color</item>
     </style>
 
+    <style name="Button_Tertiary">
+        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:background">@drawable/button_background_rounded_transparent</item>
+        <item name="android:foreground">@drawable/button_ripple</item>
+        <item name="android:textFontWeight">700</item>
+        <item name="android:textSize">19dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:letterSpacing">0.04</item>
+        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingBottom">0dp</item>
+        <item name="android:height">40dp</item>
+        <item name="android:minHeight">40dp</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
     <style name="IconButton_Secondary" parent="Button_Secondary">
       <item name="android:paddingLeft">10dp</item>
       <item name="android:drawablePadding">6dp</item>
@@ -267,5 +289,14 @@
     <style name="ExtendedToolbarTitle">
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">21sp</item>
+    </style>
+
+    <style name="FadeInAlertDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <style name="NotFullscreen" parent="AppTheme">
+        <item name="android:windowFullscreen">false</item>
     </style>
 </resources>

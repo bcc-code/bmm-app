@@ -2,7 +2,6 @@ using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Models.PO;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;

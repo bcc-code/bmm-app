@@ -6,7 +6,7 @@ using BMM.Core.GuardedActions.Theme.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Implementations.Storage;
-using BMM.Core.Models.PO;
+using BMM.Core.Models.POs;
 using BMM.Core.Models.Themes;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
@@ -32,9 +32,9 @@ namespace BMM.Core.ViewModels
 
             var settingsList = new List<ThemeSettingPO>
             {
-                new ThemeSettingPO(Theme.Light, TextSource[GetType().GetTranslationKey(Theme.Light.ToString())]),
-                new ThemeSettingPO(Theme.Dark, TextSource[GetType().GetTranslationKey(Theme.Dark.ToString())]),
-                new ThemeSettingPO(Theme.System, TextSource[GetType().GetTranslationKey(Theme.System.ToString())])
+                new(Theme.Light, TextSource[GetType().GetTranslationKey(Theme.Light.ToString())]),
+                new(Theme.Dark, TextSource[GetType().GetTranslationKey(Theme.Dark.ToString())]),
+                new(Theme.System, TextSource[GetType().GetTranslationKey(Theme.System.ToString())])
             };
 
             var appThemeSetting = AppSettings.SelectedTheme;

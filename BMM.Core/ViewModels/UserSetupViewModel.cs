@@ -20,7 +20,6 @@ namespace BMM.Core.ViewModels
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IAppNavigator _appNavigator;
         private readonly IOidcAuthService _oidcAuthService;
-        private User _userToCreate;
 
         public UserSetupViewModel(ICurrentUserLoader currentUserLoader, IExceptionHandler exceptionHandler, IAppNavigator appNavigator, IOidcAuthService oidcAuthService)
         {
@@ -29,11 +28,6 @@ namespace BMM.Core.ViewModels
             _appNavigator = appNavigator;
             _oidcAuthService = oidcAuthService;
             IsLoading = true;
-        }
-
-        public override void Prepare(UserSetupViewModelParameters parameter)
-        {
-            _userToCreate = parameter.UserToCreate;
         }
 
         public override void ViewAppeared()
@@ -46,12 +40,10 @@ namespace BMM.Core.ViewModels
         {
             try
             {
-                if (_userToCreate == null)
-                {
+                if (NavigationParameter.UserToCreate == null)
                     throw new Exception($"No user or null was passed to {typeof(UserSetupViewModel).Name} pass a valid user inside of {typeof(UserSetupViewModelParameters).Name}");
-                }
 
-                await _currentUserLoader.CreateUserInApiAndTryToLoadIt(_userToCreate);
+                await _currentUserLoader.CreateUserInApiAndTryToLoadIt(NavigationParameter.UserToCreate);
                 Messenger.Publish(new LoggedInOnlineMessage(this));
                 await _appNavigator.NavigateAfterLoggedIn();
             }

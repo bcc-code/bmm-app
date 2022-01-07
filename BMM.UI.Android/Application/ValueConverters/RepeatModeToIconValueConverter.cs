@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using BMM.Core.Constants;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.UI.Droid.Application.Constants;
 using MvvmCross.Converters;
 
 namespace BMM.UI.Droid.Application.ValueConverters
@@ -9,28 +11,17 @@ namespace BMM.UI.Droid.Application.ValueConverters
     {
         protected override int Convert(RepeatType repeatType, Type targetType, object parameter, CultureInfo culture)
         {
-            int iconId;
-
             switch (repeatType)
             {
                 case RepeatType.None:
-                    iconId = Resource.Drawable.icon_repeat_static;
-                    break;
-
+                    return Resource.Drawable.icon_repeat;
                 case RepeatType.RepeatAll:
-                    iconId = Resource.Drawable.icon_repeat_active;
-                    break;
-
+                    return Resource.Drawable.icon_repeat_selected;
                 case RepeatType.RepeatOne:
-                    iconId = Resource.Drawable.icon_repeat_one_active;
-                    break;
-
+                    return Resource.Drawable.icon_repeat_single;
                 default:
-                    iconId = Resource.Drawable.icon_repeat_static;
-                    break;
+                    return ValueConstants.None;
             }
-
-            return iconId;
         }
     }
 }

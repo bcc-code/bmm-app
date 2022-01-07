@@ -25,7 +25,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchArch>x86_64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -34,9 +34,10 @@
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <MtouchExtraArgs></MtouchExtraArgs>
+    <MtouchExtraArgs>--framework:"$(HOME)/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_i386_x86_64-simulator/RevealServer.framework"</MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -183,6 +184,10 @@
     </Reference>
     <Reference Include="IdentityModel.OidcClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5580d04c1b6c37c1">
       <HintPath>..\packages\IdentityModel.OidcClient.3.1.2\lib\netstandard2.0\IdentityModel.OidcClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MarqueeLabel.iOS, Version=1.0.6612.25932, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\MarqueeLabel.iOS.1.0.0\lib\xamarinios10\MarqueeLabel.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -518,12 +523,6 @@
     <BundleResource Include="Resources\icon_next_active.png" />
     <BundleResource Include="Resources\icon_next_active%402x.png" />
     <BundleResource Include="Resources\icon_next_active%403x.png" />
-    <BundleResource Include="Resources\icon_next_static.png" />
-    <BundleResource Include="Resources\icon_next_static%402x.png" />
-    <BundleResource Include="Resources\icon_next_static%403x.png" />
-    <BundleResource Include="Resources\icon_play_static.png" />
-    <BundleResource Include="Resources\icon_play_static%402x.png" />
-    <BundleResource Include="Resources\icon_play_static%403x.png" />
     <BundleResource Include="Resources\icon_prev_active.png" />
     <BundleResource Include="Resources\icon_prev_active%402x.png" />
     <BundleResource Include="Resources\icon_prev_active%403x.png" />
@@ -581,15 +580,6 @@
     <BundleResource Include="Resources\icon_prev_inactive.png" />
     <BundleResource Include="Resources\icon_prev_inactive%402x.png" />
     <BundleResource Include="Resources\icon_prev_inactive%403x.png" />
-    <BundleResource Include="Resources\icon_next_inactive.png" />
-    <BundleResource Include="Resources\icon_next_inactive%402x.png" />
-    <BundleResource Include="Resources\icon_next_inactive%403x.png" />
-    <BundleResource Include="Resources\icon_next_inactive 2.png" />
-    <BundleResource Include="Resources\icon_next_inactive 2%402x.png" />
-    <BundleResource Include="Resources\icon_next_inactive 2%403x.png" />
-    <BundleResource Include="Resources\icon_prev_static.png" />
-    <BundleResource Include="Resources\icon_prev_static%402x.png" />
-    <BundleResource Include="Resources\icon_prev_static%403x.png" />
     <BundleResource Include="Resources\navigationbarbackground_dark.png" />
     <BundleResource Include="Resources\navigationbarbackground_dark%402x.png" />
     <BundleResource Include="Resources\navigationbarbackground_dark%403x.png" />
@@ -612,12 +602,6 @@
     <BundleResource Include="Resources\icon_category_suggestion%402x.png" />
     <BundleResource Include="Resources\icon_category_suggestion%403x.png" />
     <BundleResource Include="Resources\placeholder_cover.png" />
-    <BundleResource Include="Resources\icon_down_static.png" />
-    <BundleResource Include="Resources\icon_down_static%402x.png" />
-    <BundleResource Include="Resources\icon_down_static%403x.png" />
-    <BundleResource Include="Resources\icon_queue_static.png" />
-    <BundleResource Include="Resources\icon_queue_static%402x.png" />
-    <BundleResource Include="Resources\icon_queue_static%403x.png" />
     <BundleResource Include="Resources\progress_slider_background_white_dark%402x.png" />
     <BundleResource Include="Resources\progress_slider_background_white_dark%403x.png" />
     <BundleResource Include="Resources\progress_slider_background_white_dark.png" />
@@ -714,9 +698,12 @@
     <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\SelectThemeTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\SimpleMarginTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\StandardHeaderTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\StandardSelectableTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsTilesViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsListViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\ChangeTrackLanguageViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\PlaybackHistoryViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
@@ -767,6 +754,8 @@
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
     <Compile Include="Application\Extensions\CollectionViewExtensions.cs" />
+    <Compile Include="Application\Extensions\UIColorExtensions.cs" />
+    <Compile Include="Application\Extensions\YUVColorExtensions.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
     <Compile Include="Application\Extensions\StringExtensions.cs" />
     <Compile Include="Application\Extensions\UiTableExtensions.cs" />
@@ -796,6 +785,7 @@
     <Compile Include="Application\Implementations\Oidc\SafariViewControllerBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\WebAuthenticationSessionBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\WKWebViewBrowser.cs" />
+    <Compile Include="Application\Implementations\Track\iOSTrackOptionsService.cs" />
     <Compile Include="Application\Implementations\UI\iOSUserDialogsFactory.cs" />
     <Compile Include="Application\Implementations\UI\iOSExceptionHandlingUserDialogs.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemFactory.cs" />
@@ -873,6 +863,14 @@
     <Compile Include="Application\TableViewCell\SimpleMarginTableViewCell.designer.cs">
       <DependentUpon>SimpleMarginTableViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\TableViewCell\StandardHeaderTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\StandardHeaderTableViewCell.designer.cs">
+      <DependentUpon>StandardHeaderTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\StandardSelectableTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\StandardSelectableTableViewCell.designer.cs">
+      <DependentUpon>StandardSelectableTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\TableViewCell\StreakTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">
       <DependentUpon>StreakTableViewCell.cs</DependentUpon>
@@ -885,6 +883,7 @@
     <Compile Include="Application\TableViewSource\Base\TableCellType.cs" />
     <Compile Include="Application\TableViewSource\Base\VariableRowHeightTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\BrowseDetailsTableViewSource.cs" />
+    <Compile Include="Application\TableViewSource\ChangeTrackLanguageTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\EditingTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\NotSelectableDocumentsTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\TrackInfoTableViewSource.cs" />
@@ -899,7 +898,6 @@
     <Compile Include="Application\ValueConverter\TrackToMetaColorConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToStatusImageConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToSubtitleColorConverter.cs" />
-    <Compile Include="Application\ValueConverter\TrackToSubtitleUppercaseConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToTitleColorConverter.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.designer.cs">
@@ -908,6 +906,10 @@
     <Compile Include="Application\ViewController\BrowseDetailsListViewController.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsListViewController.designer.cs">
       <DependentUpon>BrowseDetailsListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.cs" />
+    <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.designer.cs">
+      <DependentUpon>ChangeTrackLanguageViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\EditTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\FollowedPodcastsViewController.cs" />
@@ -919,6 +921,7 @@
     <Compile Include="Application\ViewController\BrowseViewController.designer.cs">
       <DependentUpon>BrowseViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\ViewController\Interfaces\IPlayerNavigationViewController.cs" />
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.cs" />
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.designer.cs">
       <DependentUpon>PlaybackHistoryViewController.cs</DependentUpon>
@@ -1161,7 +1164,10 @@
     <Compile Include="Application\ViewController\CuratedPlaylistViewController.designer.cs">
       <DependentUpon>CuratedPlaylistViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ColorPalette\PixelColor.cs" />
+    <Compile Include="Utils\ColorPalette\YUVColor.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
+    <Compile Include="Utils\ColorPalette\ColorPaletteGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Application\TableViewCell\TrackTableViewCell.xib" />
@@ -1216,6 +1222,10 @@
   <ItemGroup>
     <ImageAsset Include="Resources\Colors.xcassets\HighlightColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColorReverted.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowDownIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowDownIcon.imageset\icon_arrow_down.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@2x.png" />
@@ -1325,6 +1335,17 @@
     <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link.png" />
     <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\icon_more.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover_dark.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\icon_next.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseIcon.imageset\icon_pause.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\PlayIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PlayIcon.imageset\play.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini.png" />
@@ -1346,6 +1367,12 @@
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\icon_previous.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\QueueIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\QueueIcon.imageset\icon_queue.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\RepeatIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\RepeatIcon.imageset\icon_repeat.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected.png" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%402x.png" />
@@ -1358,6 +1385,12 @@
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%403x.png" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\icon_shuffle.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\icon_skip_back.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\icon_skip_forward.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick.png" />
     <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@2x.png" />

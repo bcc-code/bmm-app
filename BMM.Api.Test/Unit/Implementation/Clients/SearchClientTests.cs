@@ -17,10 +17,10 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<string>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<string>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
         }
 
@@ -29,7 +29,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var searchClient = new SearchClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateASampleListOfDocuments()));
 
             // Act
@@ -45,7 +45,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var searchClient = new SearchClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<string>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<string>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateASampleListOfSugestions()));
 
             // Act

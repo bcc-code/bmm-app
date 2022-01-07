@@ -24,6 +24,7 @@ namespace BMM.UI.iOS
     {
         private FirebaseMessagingDelegate _messagingDelegate;
         private bool DarkModeSupported => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
+        public static UIWindow MainWindow;
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
@@ -41,6 +42,7 @@ namespace BMM.UI.iOS
             app.ApplicationIconBadgeNumber = 0;
 
             SetThemeForApp();
+            MainWindow = Window;
             return result;
         }
 

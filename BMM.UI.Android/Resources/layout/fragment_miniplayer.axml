@@ -32,10 +32,10 @@
             local:cardElevation="0dp">
 
             <ffimageloading.cross.MvxCachedImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/placeholder_cover"
-                local:MvxBind="LoadingPlaceholderImagePath 'res:placeholder_cover'; ErrorPlaceholderImagePath 'res:placeholder_cover'; ImagePath CoverUrlToFallbackImage(CurrentTrack.ArtworkUri, 'res:placeholder_cover')" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/placeholder_cover"
+                    local:MvxBind="LoadingPlaceholderImagePath 'res:placeholder_cover'; ErrorPlaceholderImagePath 'res:placeholder_cover'; ImagePath CoverUrlToFallbackImage(CurrentTrack.ArtworkUri, 'res:placeholder_cover')" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout

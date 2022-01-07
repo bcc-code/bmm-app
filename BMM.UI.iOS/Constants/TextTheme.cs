@@ -7,5 +7,7 @@ namespace BMM.UI.iOS.Constants
         public UIColor Color { get; set; }
 
         public UIFont Font { get; set; }
+
+        public int? MinimumFontSize { get; set; }
     }
 }

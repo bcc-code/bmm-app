@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Utils;
+using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Interactions;
 using BMM.Core.Messages;
@@ -13,23 +17,29 @@ using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Translation;
+using BMM.Core.Utils;
+using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.ViewModels
 {
-    public sealed class PlayerViewModel : PlayerBaseViewModel, IMvxViewModel<bool>
+    public sealed class PlayerViewModel : PlayerBaseViewModel, IPlayerViewModel, IMvxViewModel<bool>
     {
         private MvxSubscriptionToken _toggleToken;
         private MvxSubscriptionToken _repeatToken;
         private MvxSubscriptionToken _shuffleToken;
+        
+        private string _songTreasureLink;
 
         private readonly IUriOpener _uriOpener;
-        private readonly IExceptionHandler _exceptionHandler;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
 
         private readonly MvxInteraction<TogglePlayerInteraction> _closePlayerInteraction = new MvxInteraction<TogglePlayerInteraction>();
 
         private bool _directlyShowPlayerForAndroid;
-
+        private bool _hasExternalRelations;
+        
         public IMvxInteraction<TogglePlayerInteraction> ClosePlayerInteraction => _closePlayerInteraction;
 
         public MvxCommand CloseViewModelCommand { get; }
@@ -42,6 +52,8 @@ namespace BMM.Core.ViewModels
 
         public IMvxCommand ToggleRepeatCommand { get; }
 
+        public IMvxAsyncCommand NavigateToLanguageChangeCommand { get; }
+
         public MvxCommand PreviousOrSeekToStartCommand { get; }
 
         public MvxCommand PreviousCommand { get; }
@@ -52,7 +64,7 @@ namespace BMM.Core.ViewModels
 
         public MvxCommand SkipBackwardCommand { get; }
 
-        public MvxCommand OpenExternalReferenceCommand { get; }
+        public MvxCommand OpenLyricsCommand { get; }
 
         private bool _isShuffleEnabled;
         public bool IsShuffleEnabled
@@ -80,6 +92,8 @@ namespace BMM.Core.ViewModels
         }
 
         private bool _isSkipToPreviousEnabled;
+        private string _trackLanguage;
+
         public bool IsSkipToPreviousEnabled
         {
             get => _isSkipToPreviousEnabled;
@@ -91,16 +105,21 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        private bool _hasExternalRelations;
         public bool HasExternalRelations
         {
             get => _hasExternalRelations;
             private set => SetProperty(ref _hasExternalRelations, value);
         }
+        
+        public string TrackLanguage
+        {
+            get => _trackLanguage;
+            private set => SetProperty(ref _trackLanguage, value);
+        }
 
-        private Uri _btvLink;
-        public string BtvLinkTitle { get; private set; }
-        public bool HasBtvLink => _btvLink != null;
+        public bool CanNavigateToLanguageChange => NavigateToLanguageChangeCommand.CanExecute();
+        
+        public bool HasLyrics => OpenLyricsCommand.CanExecute();
 
         private long CurrentIndex { get; set; }
 
@@ -108,11 +127,18 @@ namespace BMM.Core.ViewModels
 
         public string PlayingText => QueueLength > 0 ? TextSource.GetText(Translations.PlayerViewModel_PlayingCount, CurrentIndex + 1, QueueLength) : string.Empty;
 
-        public PlayerViewModel(IMediaPlayer mediaPlayer, IUriOpener uriOpener, IExceptionHandler exceptionHandler) : base(mediaPlayer)
+        public PlayerViewModel(
+            IMediaPlayer mediaPlayer,
+            IUriOpener uriOpener,
+            IFirebaseRemoteConfig firebaseRemoteConfig,
+            IChangeTrackLanguageAction changeTrackLanguageAction) : base(mediaPlayer)
         {
             _uriOpener = uriOpener;
-            _exceptionHandler = exceptionHandler;
+            _firebaseRemoteConfig = firebaseRemoteConfig;
+                
+            changeTrackLanguageAction.AttachDataContext(this);
 
+            NavigateToLanguageChangeCommand = changeTrackLanguageAction.Command;
             CloseViewModelCommand = new MvxCommand(() => NavigationService.Close(this));
             ClosePlayerCommand = new MvxCommand(() => _closePlayerInteraction.Raise(new TogglePlayerInteraction {Open = false}));
             OpenQueueCommand = NavigationService.NavigateCommand<QueueViewModel>();
@@ -123,7 +149,7 @@ namespace BMM.Core.ViewModels
             PreviousOrSeekToStartCommand = new MvxCommand(MediaPlayer.PlayPreviousOrSeekToStart, () => IsSkipToPreviousEnabled);
             SkipForwardCommand = new MvxCommand(() => MediaPlayer.JumpForward());
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
-            OpenExternalReferenceCommand = new MvxCommand(() => OpenBtvLink());
+            OpenLyricsCommand = new MvxCommand(OpenLyricsLink, () => !string.IsNullOrEmpty(_songTreasureLink));
 
             _repeatToken = Messenger.Subscribe<RepeatModeChangedMessage>(m => RepeatType = m.RepeatType);
             _shuffleToken = Messenger.Subscribe<ShuffleModeChangedMessage>(m => IsShuffleEnabled = m.IsShuffleEnabled);
@@ -135,6 +161,8 @@ namespace BMM.Core.ViewModels
             UpdateExternalRelations();
             SetupSubscriptions();
         }
+
+        private void OpenLyricsLink() => _uriOpener.OpenUri(new Uri(_songTreasureLink));
 
         public void Prepare(bool showPlayer)
         {
@@ -152,15 +180,12 @@ namespace BMM.Core.ViewModels
             base.ViewAppeared();
 
             if (_directlyShowPlayerForAndroid)
-            {
                 _closePlayerInteraction.Raise(new TogglePlayerInteraction {Open = true});
-            }
         }
 
         public override void ViewDisappeared()
         {
             base.ViewDisappeared();
-
             Messenger.Unsubscribe<TogglePlayerMessage>(_toggleToken);
         }
 
@@ -201,49 +226,51 @@ namespace BMM.Core.ViewModels
             return base.ShowTrackInfo(CurrentTrack as Track);
         }
 
-        private void OpenBtvLink()
+        protected override async Task OnCurrentTrackChanged()
         {
-            try
-            {
-                _uriOpener.OpenUri(_btvLink);
-            }
-            catch (FormatException ex)
-            {
-                _exceptionHandler.HandleException(ex);
-            }
-        }
+            await base.OnCurrentTrackChanged();
 
-        protected override async Task OnCurrentTrackChanged(CurrentTrackChangedMessage message)
-        {
-            await base.OnCurrentTrackChanged(message);
             UpdateExternalRelations();
+            await RaisePropertyChanged(() => CanNavigateToLanguageChange);
+            NavigateToLanguageChangeCommand.RaiseCanExecuteChanged();
         }
 
         private void UpdateExternalRelations()
         {
-            HasExternalRelations = CurrentTrack?.Relations != null &&
-                                   CurrentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
-
-            _btvLink = null;
-            BtvLinkTitle = null;
-            if (HasExternalRelations)
+            try
             {
-                var btvHost = new Uri("https://brunstad.tv/").Host;
-                foreach (var link in CurrentTrack.Relations.OfType<TrackRelationExternal>())
+                if (CurrentTrack == null)
                 {
-                    if (!Uri.TryCreate(link.Url, UriKind.Absolute, out var uri))
-                        continue;
-                    if (uri.Host == btvHost)
-                    {
-                        _btvLink = uri;
-                        BtvLinkTitle = link.Name;
-                        break;
-                    }
+                    _songTreasureLink = string.Empty;
+                    return;
+                }
+
+                TrackLanguage = new CultureInfo(CurrentTrack.Language).NativeName;
+            
+                HasExternalRelations = CurrentTrack?.Relations != null &&
+                                       CurrentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
+            
+                var existingSongbook = CurrentTrack
+                    ?.Relations
+                    ?.OfType<TrackRelationSongbook>()
+                    .FirstOrDefault();
+
+                if (existingSongbook != null)
+                {
+                    _songTreasureLink = string.Format(_firebaseRemoteConfig.SongTreasuresSongLink,
+                        SongbookUtils.GetShortName(existingSongbook.Name),
+                        existingSongbook.Id);
+                }
+                else
+                {
+                    _songTreasureLink = string.Empty;
                 }
             }
-
-            RaisePropertyChanged(() => HasBtvLink);
-            RaisePropertyChanged(() => BtvLinkTitle);
+            finally
+            {
+                RaisePropertyChanged(() => HasLyrics);
+                OpenLyricsCommand.RaiseCanExecuteChanged();
+            }
         }
     }
 }

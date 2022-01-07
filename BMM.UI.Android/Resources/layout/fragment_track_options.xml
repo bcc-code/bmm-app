@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/TrackOptionsConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        local:MvxBind="BackgroundColor PlatformColor(ThemeRepository[primaryBackgroundColor])">
+
+    <View
+            android:id="@+id/OverlaySpace"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            android:background="@android:color/black"
+            android:alpha="0.6"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:MvxBind="Click CloseOptionsCommand"
+    />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/TrackOptionsInnerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:background="@color/background_primary_color"
+            local:layout_constrainedHeight="true"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent">
+
+        <mvvmcross.droidx.recyclerview.MvxRecyclerView
+                android:id="@+id/TrackOptionsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:overScrollMode="never"
+                android:splitMotionEvents="false"
+                local:layout_constrainedHeight="true"
+                local:layout_constraintVertical_bias="0"
+                local:layout_constraintTop_toTopOf="parent"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxItemTemplate="@layout/listitem_standard_icon_option"
+                local:MvxBind="
+                    ItemsSource Options;
+                    ItemClick OptionSelectedCommand" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,7 +11,7 @@ namespace BMM.Core.Implementations.ApiClients
     {
         public IList<IRequestInterceptor> RequestInterceptors;
 
-        public async Task InterceptRequest(IRequest request)
+        public async Task InterceptRequest(IRequest request,  IDictionary<string, string> customHeaders = default)
         {
             // Do not run the test in parallel as all of them are accessing the request.header array. Consciously avoiding thread-safe collections.
             foreach (var interceptor in RequestInterceptors)

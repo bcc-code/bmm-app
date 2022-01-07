@@ -20,13 +20,13 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x =>  x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<Track>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Track>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<TrackRaw>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<TrackRaw>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
         }
 
@@ -40,7 +40,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
             response.Content.Headers.Add("X-Document-Id", "10001");
 
             RequestHandler
-                .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null))
+                .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null, null))
                 .Callback((IRequest request, CancellationToken? cancellationToken) =>
                 {
                     Assert.AreEqual("https://localhost/track/", request.Uri.ToString());
@@ -62,7 +62,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         public void Save_SuccessfullyCreated()
         {
             RequestHandler
-                .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null))
+                .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null, null))
                 .Callback((IRequest request, CancellationToken? cancellationToken) =>
                 {
                     Assert.AreEqual("https://localhost/track/2000", request.Uri.ToString());
@@ -85,7 +85,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var trackClient = new TracksClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateSampleTracks()));
 
             // Act
@@ -101,7 +101,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var trackClient = new TracksClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<Track>(It.IsAny<IRequest>(), null)).Throws<KeyNotFoundException>();
+            RequestHandler.Setup(x => x.GetResolvedResponse<Track>(It.IsAny<IRequest>(), null, null)).Throws<KeyNotFoundException>();
 
             // Act & Assert
             Assert.ThrowsAsync<KeyNotFoundException>(() => trackClient.GetById(1));
@@ -113,7 +113,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
             // Arrange
             var id = 98910;
             var trackClient = new TracksClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<Track>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Track>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(new Track(){ Id = id}));
 
             // Act
@@ -129,7 +129,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var trackClient = new TracksClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null, null))
                 .ReturnsAsync(CreateSampleTracks());
 
             // Act

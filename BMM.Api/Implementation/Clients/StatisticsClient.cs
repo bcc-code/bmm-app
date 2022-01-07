@@ -102,9 +102,7 @@ namespace BMM.Api.Implementation.Clients
         public virtual async Task PostTrackPlayedEvent(IEnumerable<TrackPlayedEvent> trackPlayedEvents)
         {
             var uri = new UriTemplate(ApiUris.StatisticsPostTrackPlayedEvent);
-
             var request = BuildRequest(uri, HttpMethod.Post, trackPlayedEvents);
-
             await RequestIsSuccessful(request);
         }
     }

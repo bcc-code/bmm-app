@@ -17,13 +17,13 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected  override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Podcast>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Podcast>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<Podcast>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Podcast>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
         }
@@ -33,7 +33,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var podcastClient = new PodcastClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Podcast>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Podcast>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateASamplePodcasts()));
 
             // Act
@@ -50,7 +50,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
             // Arrange
             var id = 1;
             var podcastClient = new PodcastClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<Podcast>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Podcast>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(new Podcast(){Id = id }));
 
             // Act
@@ -67,7 +67,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
             // Arrange
             var id = 1;
             var podcastClient = new PodcastClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateASampleListOfTracks()));
 
             // Act
