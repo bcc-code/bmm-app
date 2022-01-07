@@ -295,8 +295,8 @@
     "Logout": "Kijelentkezés",
     "UserVoiceHeader": "Felhasználói hang",
     "UserVoiceText": "Van ötleted a BMM fejlesztésére? Mesélj nekünk róla.",
-    "ThemeHeader": "Alkalmazás témája",
-    "ThemeText": "Válassz ki, hogy világos vagy sötét témát szeretnél-e használni."
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Offline adatok tárhelye",
@@ -461,9 +461,9 @@
     "PodcastsTitle": "Podcastok"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Téma beállításai",
+    "Title": "Dark mode settings",
     "Light": "Világos",
     "Dark": "Sötét",
-    "System": "Rendszer"
+    "System": "Follow system settings (Auto)"
   }
 }
