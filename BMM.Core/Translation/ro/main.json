@@ -12,19 +12,19 @@
     "Speech": "Mesaj",
     "Audiobook": "Carte audio",
     "Exegesis": "Tălmăcire",
-    "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday"
+    "Done": "Gata",
+    "Today": "Astăzi",
+    "Yesterday": "Ieri"
   },
   "Streak": {
-    "Message": "Linia ta săptămâna aceasta",
+    "Message": "Progresul tău săptămâna aceasta",
     "MessagePerfect": "O săptămână perfectă! Foarte bine!",
     "PerfectWeekCountSingular": "{0} săptămână perfectă",
     "PerfectWeekCountPlural": "{0} săptămâni perfecte",
     "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte",
     "WeekdayMonday": "L",
-    "WeekdayTuesday": "Ma",
-    "WeekdayWednesday": "Mi",
+    "WeekdayTuesday": "M",
+    "WeekdayWednesday": "M",
     "WeekdayThursday": "J",
     "WeekdayFriday": "V"
   },
@@ -182,9 +182,9 @@
     "DownloadedContent": "Conținut descărcat",
     "FollowedPodcasts": "Podcast-uri urmărite",
     "MyTracks": "Piesele mele",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Play-list-urile mele",
+    "SharedWithMe": "Distribuite cu mine",
+    "ByFormat": "de la {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcast-uri urmărite",
@@ -262,7 +262,7 @@
     "HeadlineSettings": "Setări",
     "OptionAutoplayHeader": "Redare automată",
     "OptionAutoplayText": "Redă muzică după ce asculți episodul de astăzi de la Kåre",
-    "OptionStreakHiddenHeader": "Ascunde linia",
+    "OptionStreakHiddenHeader": "Ascunde progres",
     "OptionStreakHiddenText": "Ascunde statistica de ascultare",
     "OptionEnablePushHeader": "Activează notificări",
     "OptionPushNotifications": "Forțează notificările",
@@ -286,7 +286,7 @@
     "OptionAppVersionHeader": "Versiunea aplicației",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Producător: ",
     "AppInfoDeviceModel": "Modelul dispozitivului: ",
     "AppInfoDevicePlatform": "Platforma dispozitivului: ",
     "AppInfoDeviceVersion": "Versiunea dispozitivului: ",
@@ -294,7 +294,9 @@
     "LogoutConfirm": "Sunteţi sigur că doriţi să vă deconectați?",
     "Logout": "Deconectare",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Ai idei de cum putem îmbunătăți BMM? Scrie-ne despre ele!",
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
@@ -329,8 +331,8 @@
     "Private": "Privat",
     "DeletePlaylist": "Șterge play-list",
     "EditPlaylist": "Editare listă de redare",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "SharePlaylist": "Distribuie play-list",
+    "RemovePlaylist": "Elimină play-list"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Editare listă de redare",
@@ -344,17 +346,17 @@
     "KeepEditing": "Păstrează editarea"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Distribuie play-list",
+    "ShareNote": "Prin a distribui un play-list, persoanele vor avea acces să asculte piesele pe care le adaugi, dacă au linkul.",
+    "ShareLink": "Distribuie link",
+    "MakePrivate": "Fă-l privat",
+    "SharedWithFormat": "Distribuit la {0} persoane"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Play-list distribuit",
+    "Close": "Închide",
+    "AddToMyPlaylist": "Adaugă la play-list-urile mele",
+    "FollowOwnTrackCollection": "Nu poți urmări play-list-ul propriu"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Play-list",
@@ -439,9 +441,9 @@
     "Title": "Drepturi de autor"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Redate recent",
+    "NoHistoryYetTitle": "Acum poți vedea ce ai ascultat",
+    "NoHistoryYetSubtitle": "Odată ce ai ascultat ceva, asta va apărea în istoricul de aici"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Ultimele vorbiri"
@@ -453,9 +455,15 @@
     "DownloadingFinished": "Toate fişierele au fost descărcate!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Evenimente",
     "AudiobooksTitle": "Cărți audio",
     "MusicTitle": "Muzică",
     "PodcastsTitle": "Podcast-uri"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Dark mode settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "Follow system settings (Auto)"
   }
 }

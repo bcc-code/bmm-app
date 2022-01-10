@@ -294,7 +294,9 @@
     "LogoutConfirm": "Biztosan ki szeretnél jelentkezni?",
     "Logout": "Kijelentkezés",
     "UserVoiceHeader": "Felhasználói hang",
-    "UserVoiceText": "Van ötleted a BMM fejlesztésére? Mesélj nekünk róla."
+    "UserVoiceText": "Van ötleted a BMM fejlesztésére? Mesélj nekünk róla.",
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Offline adatok tárhelye",
@@ -440,8 +442,8 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Nemrég lejátszott",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "NoHistoryYetTitle": "Most már láthatod, hogy mit hallgatottál már",
+    "NoHistoryYetSubtitle": "Csak kezdjél el hallgatni, és az előzményeid itt fognak megjelenni."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Legújabb üzenetek"
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Hangoskönyvek",
     "MusicTitle": "Zene",
     "PodcastsTitle": "Podcastok"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Dark mode settings",
+    "Light": "Világos",
+    "Dark": "Sötét",
+    "System": "Follow system settings (Auto)"
   }
 }

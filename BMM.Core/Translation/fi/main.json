@@ -294,7 +294,9 @@
     "LogoutConfirm": "Haluatko varmasti kirjautua ulos?",
     "Logout": "Kirjaudu ulos",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Offline kappaleiden tallennus sijainti",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Äänikirjat",
     "MusicTitle": "Musiikki",
     "PodcastsTitle": "Podcastit"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Dark mode settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "Follow system settings (Auto)"
   }
 }

@@ -294,7 +294,9 @@
     "LogoutConfirm": "¿Está seguro que desea desconectarse?",
     "Logout": "Salir",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it."
+    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
+    "ThemeHeader": "Dark mode",
+    "ThemeText": "Choose between a light and a dark theme"
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",
@@ -457,5 +459,11 @@
     "AudiobooksTitle": "Libros audio",
     "MusicTitle": "Música",
     "PodcastsTitle": "Podcasts"
+  },
+  "ThemeSettingsViewModel": {
+    "Title": "Dark mode settings",
+    "Light": "Light",
+    "Dark": "Dark",
+    "System": "Follow system settings (Auto)"
   }
 }
