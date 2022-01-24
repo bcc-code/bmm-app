@@ -117,7 +117,7 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IProfileLoader, ProfileLoader>();
             Mvx.IoCProvider.RegisterType<ISecureStorageProxy, SecureStorageProxy>();
-            Mvx.IoCProvider.RegisterType<IOidcCredentialsStorage, OidcCredentialsStorage>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IOidcCredentialsStorage, OidcCredentialsStorage>();
 
             Mvx.IoCProvider.RegisterSingleton(new HttpClient
             {
