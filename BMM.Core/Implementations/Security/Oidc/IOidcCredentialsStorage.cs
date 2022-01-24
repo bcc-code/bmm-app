@@ -17,6 +17,6 @@ namespace BMM.Core.Implementations.Security.Oidc
 
         Task SetAccessTokenExpirationDate(DateTime time);
 
-        void FlushStorage();
+        Task FlushStorage();
     }
 }
