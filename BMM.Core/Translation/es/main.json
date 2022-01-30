@@ -12,9 +12,9 @@
     "Speech": "Mensaje",
     "Audiobook": "Audio libro",
     "Exegesis": "Exegesis",
-    "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday"
+    "Done": "Listo",
+    "Today": "Hoy",
+    "Yesterday": "Ayer"
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
@@ -93,11 +93,11 @@
     "PlayRandom": "Play random",
     "PlayNewest": "Play newest",
     "LatestTrack": "Última pista",
-    "NextBroadcast": "Next broadcast",
-    "BmmRadio": "BMM Live",
+    "NextBroadcast": "Siguiente transmisión en vivo",
+    "BmmRadio": "BMM en vivo",
     "CountdownHours": "en {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music"
+    "Messages": "Lo más reciente",
+    "Music": "Música reciente"
   },
   "AslaksenNotification": {
     "Title": "Palabras de fe",
