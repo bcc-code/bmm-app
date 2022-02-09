@@ -56,6 +56,9 @@ namespace BMM.UI.iOS
 		UIKit.UIButton QueueButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton RepeatButton { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint SeparatorBottomMarginConstraint { get; set; }
 
 		[Outlet]
@@ -178,11 +181,6 @@ namespace BMM.UI.iOS
 				ShadowView = null;
 			}
 
-			if (ShuffleButton != null) {
-				ShuffleButton.Dispose ();
-				ShuffleButton = null;
-			}
-
 			if (SkipBackButton != null) {
 				SkipBackButton.Dispose ();
 				SkipBackButton = null;
@@ -221,6 +219,16 @@ namespace BMM.UI.iOS
 			if (ViewLyricsButton != null) {
 				ViewLyricsButton.Dispose ();
 				ViewLyricsButton = null;
+			}
+
+			if (RepeatButton != null) {
+				RepeatButton.Dispose ();
+				RepeatButton = null;
+			}
+
+			if (ShuffleButton != null) {
+				ShuffleButton.Dispose ();
+				ShuffleButton = null;
 			}
 
 		}

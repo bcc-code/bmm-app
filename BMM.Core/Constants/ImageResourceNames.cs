@@ -2,7 +2,7 @@ namespace BMM.Core.Constants
 {
     public class ImageResourceNames
     {
-        public const string IconTrash = "Icon_Trash_Static";
+        public const string IconRemove = "Icon_Remove";
         public const string IconPlaylist = "Icon_Playlist";
         public const string IconShare = "Icon_Share";
         public const string IconPlay = "Icon_Play";

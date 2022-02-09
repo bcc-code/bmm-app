@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AU-qS-4Jp" userLabel="Corner Radius Wrapper">
                         <rect key="frame" x="18" y="10" width="40" height="40"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaylistIcon" translatesAutoresizingMaskIntoConstraints="NO" id="1Wy-dl-sVU">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlaylist" translatesAutoresizingMaskIntoConstraints="NO" id="1Wy-dl-sVU">
                                 <rect key="frame" x="8" y="8" width="24" height="24"/>
                                 <color key="tintColor" name="LabelPrimaryColor"/>
                                 <constraints>
@@ -115,7 +115,7 @@
     </objects>
     <resources>
         <image name="FriendsIcon" width="24" height="24"/>
-        <image name="PlaylistIcon" width="48" height="48"/>
+        <image name="IconPlaylist" width="48" height="48"/>
         <image name="icon_chevron_right.png" width="24" height="24"/>
         <image name="icon_downloaded.png" width="16" height="16"/>
         <namedColor name="BackgroundPrimaryColor">
