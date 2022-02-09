@@ -15,5 +15,10 @@ namespace BMM.UI.iOS.Extensions
                 .ToTitleCase(underscoreRemovedString)
                 .Replace(StringConstants.Space, string.Empty);
         }
+        
+        public static string ToStandardIosImageName(this string imagePath)
+        {
+            return imagePath.Replace(StringConstants.Underscore, string.Empty);
+        }
     }
 }

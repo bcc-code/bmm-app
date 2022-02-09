@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sn-ch-0B4">
                     <rect key="frame" x="16" y="60" width="382" height="368"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaylistIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-GT-beH">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlaylist" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-GT-beH">
                             <rect key="frame" x="167" y="129.5" width="48" height="48"/>
                             <color key="tintColor" name="LabelPrimaryColor"/>
                             <constraints>
@@ -157,7 +157,7 @@
     <resources>
         <image name="FriendsIcon" width="24" height="24"/>
         <image name="LinkIcon" width="24" height="24"/>
-        <image name="PlaylistIcon" width="48" height="48"/>
+        <image name="IconPlaylist" width="48" height="48"/>
         <namedColor name="BackgroundPrimaryColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -72,7 +72,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     options.Add(
                         new StandardIconOptionPO(
                             _bmmLanguageBinder[Translations.UserDialogs_Track_DeleteFromPlaylist],
-                            ImageResourceNames.IconTrash,
+                            ImageResourceNames.IconRemove,
                             new MvxAsyncCommand(() => trackCollectionVm.DeleteTrackFromTrackCollection(track))));
                 }
 

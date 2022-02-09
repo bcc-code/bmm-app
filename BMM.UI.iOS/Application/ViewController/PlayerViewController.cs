@@ -30,6 +30,8 @@ namespace BMM.UI.iOS
         private bool _canNavigateToLanguageChange;
         private bool _hasLyrics;
         private int _defaultBottomMarginConstant = 24;
+        private bool _isShuffleEnabled;
+        private RepeatType _repeatType;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
@@ -83,12 +85,13 @@ namespace BMM.UI.iOS
             set.Bind(PreviousButton).To(vm => vm.PreviousOrSeekToStartCommand);
             set.Bind(PreviousButton).For(v => v.Enabled).To(vm => vm.IsSkipToPreviousEnabled);
             
-            // set.Bind(QueueRandomButton).For(v => v.Selected).To(vm => vm.IsShuffleEnabled);
-            // set.Bind(QueueRandomButton).To(vm => vm.ToggleShuffleCommand);
-            // set.Bind(QueueRandomButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedVisibilityConverter>();
-            //
-            // set.Bind(QueueRepeatButton).To(vm => vm.ToggleRepeatCommand);
-            // set.Bind(QueueRepeatButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(this).For(v => v.IsShuffleEnabled).To(vm => vm.IsShuffleEnabled);
+            set.Bind(ShuffleButton).To(vm => vm.ToggleShuffleCommand);
+            
+            set.Bind(RepeatButton).To(vm => vm.ToggleRepeatCommand);
+            set.Bind(this)
+                .For(v => v.RepeatType)
+                .To(vm => vm.RepeatType);
             
             TrackCoverImageView.ErrorAndLoadingPlaceholderImagePath("NewPlaceholderCover");
             
@@ -161,16 +164,10 @@ namespace BMM.UI.iOS
                 {
                     UpdateTrackReferenceButtonVisibility();
                 }
-
-                if (e.PropertyName == nameof(ViewModel.RepeatType))
-                {
-                    UpdateRepeatImage();
-                }
             };
 
             MoveTitleLabelsIntoNavigationBar();
             UpdateTrackReferenceButtonVisibility();
-            UpdateRepeatImage();
 
             // Add swipe-down gesture to all modal ViewControllers, since you expect, that you can move them downwards, the direction they came from.
             var recognizer = new UISwipeGestureRecognizer(() => {ViewModel.CloseViewModelCommand.Execute();}) {Direction = UISwipeGestureRecognizerDirection.Down};
@@ -193,6 +190,36 @@ namespace BMM.UI.iOS
             BottomMarginConstraint.Constant = _defaultBottomMarginConstant;
             SliderBottomMarginConstraint.Constant = 12;
             CoverTopMarginConstraint.Constant = 40;
+        }
+
+        public RepeatType RepeatType
+        {
+            get => _repeatType;
+            set
+            {
+                _repeatType = value;
+                UpdateRepeatImage(_repeatType);
+            }
+        }
+
+        public bool IsShuffleEnabled
+        {
+            get => _isShuffleEnabled;
+            set
+            {
+                _isShuffleEnabled = value;
+
+                if (_isShuffleEnabled)
+                {
+                    ShuffleButton.BackgroundColor = AppColors.LabelPrimaryColor;
+                    ShuffleButton.TintColor = AppColors.LabelPrimaryColorReverted;
+                }
+                else
+                {
+                    ShuffleButton.TintColor = AppColors.LabelPrimaryColor;
+                    ShuffleButton.BackgroundColor = UIColor.Clear;
+                }
+            }
         }
 
         public bool CanNavigateToLanguageChange
@@ -357,36 +384,26 @@ namespace BMM.UI.iOS
             NavigationItem.TitleView = containerStack;
         }
 
-        private void UpdateRepeatImage()
+        private void UpdateRepeatImage(RepeatType repeatType)
         {
-            var iconPrefix = "icon_repeat_";
-            var extension = ".png";
+            bool isSelected = repeatType != RepeatType.None;
+            
+            string iconState = repeatType == RepeatType.RepeatOne
+                ? "RepeatOneIcon"
+                : "RepeatIcon";
 
-            string iconState;
+            RepeatButton.SetImage(UIImage.FromBundle(iconState), UIControlState.Normal);
 
-            switch (ViewModel.RepeatType)
+            if (isSelected)
             {
-                case RepeatType.RepeatAll:
-                    iconState = "active";
-                    break;
-
-                case RepeatType.RepeatOne:
-                    iconState = "one_active";
-                    break;
-
-                case RepeatType.None:
-                    iconState = "static";
-                    break;
-
-                default:
-                    iconState = "static";
-                    break;
+                RepeatButton.BackgroundColor = AppColors.LabelPrimaryColor;
+                RepeatButton.TintColor = AppColors.LabelPrimaryColorReverted;
             }
-
-            var imageUrl = iconPrefix + iconState + extension;
-
-            var image = new UIImage(imageUrl);
-          //  QueueRepeatButton.SetImage(image, UIControlState.Normal);
+            else
+            {
+                RepeatButton.BackgroundColor = UIColor.Clear;
+                RepeatButton.TintColor = AppColors.LabelPrimaryColor;
+            }
         }
 
         private void UpdateTrackReferenceButtonVisibility()

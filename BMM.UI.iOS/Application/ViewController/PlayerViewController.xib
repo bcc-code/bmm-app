@@ -25,10 +25,11 @@
                 <outlet property="PlayingProgressSlider" destination="rqQ-bW-ZmQ" id="38b-bs-2L9"/>
                 <outlet property="PreviousButton" destination="YtY-6b-jCI" id="8wD-TV-Q0p"/>
                 <outlet property="QueueButton" destination="iaf-9h-v6M" id="AJ2-jf-cfx"/>
+                <outlet property="RepeatButton" destination="J4y-ww-FeI" id="ooF-MG-3fc"/>
                 <outlet property="SeparatorBottomMarginConstraint" destination="xMt-Rp-FXd" id="nQk-q2-vie"/>
                 <outlet property="SeparatorTopMarginConstraint" destination="Cep-Kh-FPe" id="yEm-l4-uyx"/>
                 <outlet property="ShadowView" destination="rYN-px-sr1" id="TQ2-kR-EkY"/>
-                <outlet property="ShuffleButton" destination="KAj-8a-y2I" id="cSq-35-rzp"/>
+                <outlet property="ShuffleButton" destination="KAj-8a-y2I" id="EDi-dr-0fG"/>
                 <outlet property="SkipBackButton" destination="s5j-lo-SN9" id="Pln-9Q-ith"/>
                 <outlet property="SkipForwardButton" destination="9N8-Me-Jbx" id="4y5-2S-zRK"/>
                 <outlet property="SliderBottomMarginConstraint" destination="4m7-NJ-QhM" id="JHe-Xe-pqZ"/>
@@ -98,6 +99,11 @@
                             <color key="tintColor" name="LabelPrimaryColor"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="RepeatIcon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KAj-8a-y2I">
                             <rect key="frame" x="171" y="0.0" width="40" height="40"/>
@@ -108,6 +114,11 @@
                             <color key="tintColor" name="LabelPrimaryColor"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="ShuffleIcon"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="20"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
                         </button>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiC-cD-5Cu">
                             <rect key="frame" x="223" y="0.0" width="40" height="40"/>
@@ -138,25 +149,25 @@
                         <constraint firstAttribute="height" constant="1" id="rqa-i6-oh9"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFS-LJ-CWj">
-                    <rect key="frame" x="16" y="16" width="40" height="40"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFS-LJ-CWj">
+                    <rect key="frame" x="12" y="12" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="HuK-6B-O0L"/>
                         <constraint firstAttribute="height" constant="40" id="QkV-mK-MlA"/>
                     </constraints>
                     <color key="tintColor" name="LabelPrimaryColor"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="ArrowDownIcon"/>
+                    <state key="normal" image="IconDownArrow"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaf-9h-v6M">
-                    <rect key="frame" x="358" y="16" width="40" height="40"/>
+                    <rect key="frame" x="362" y="12" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="40" id="qLx-kp-yFs"/>
                         <constraint firstAttribute="height" constant="40" id="t6H-00-eMX"/>
                     </constraints>
                     <color key="tintColor" name="LabelPrimaryColor"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="QueueIcon"/>
+                    <state key="normal" image="IconQueue"/>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="ZtT-Tu-K41">
                     <rect key="frame" x="16" y="519" width="382" height="48"/>
@@ -293,18 +304,18 @@
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="SCY-QA-nwU" secondAttribute="trailing" constant="16" id="3y2-En-Cbl"/>
                 <constraint firstItem="ZtT-Tu-K41" firstAttribute="top" secondItem="y40-s0-dpz" secondAttribute="bottom" constant="24" id="4m7-NJ-QhM"/>
                 <constraint firstItem="csf-As-ARZ" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="ASp-qd-yKU"/>
-                <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="iaf-9h-v6M" secondAttribute="trailing" constant="16" id="ATg-6E-Pbs"/>
+                <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="iaf-9h-v6M" secondAttribute="trailing" constant="12" id="ATg-6E-Pbs"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="csf-As-ARZ" secondAttribute="trailing" constant="16" id="AnM-yB-GdX"/>
                 <constraint firstItem="bna-ML-NDm" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="BVw-IU-NIh"/>
-                <constraint firstItem="iaf-9h-v6M" firstAttribute="top" secondItem="r0d-W3-y3K" secondAttribute="top" constant="16" id="BaW-qT-st5"/>
+                <constraint firstItem="iaf-9h-v6M" firstAttribute="top" secondItem="r0d-W3-y3K" secondAttribute="top" constant="12" id="BaW-qT-st5"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="jsC-GB-jT3" secondAttribute="trailing" constant="16" id="CRM-LD-Pfg"/>
                 <constraint firstItem="DS1-31-Cvu" firstAttribute="top" secondItem="ZtT-Tu-K41" secondAttribute="bottom" constant="24" id="Cep-Kh-FPe"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="DS1-31-Cvu" secondAttribute="trailing" id="DIe-wX-XJY"/>
-                <constraint firstItem="uFS-LJ-CWj" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="FI4-pn-9yE"/>
+                <constraint firstItem="uFS-LJ-CWj" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="12" id="FI4-pn-9yE"/>
                 <constraint firstItem="Ug9-Uj-hs6" firstAttribute="top" secondItem="r0d-W3-y3K" secondAttribute="top" constant="100" id="H3W-DQ-BLW"/>
                 <constraint firstItem="jsC-GB-jT3" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="IQu-g9-y7c"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="ZtT-Tu-K41" secondAttribute="trailing" constant="16" id="WWT-il-Wvv"/>
-                <constraint firstItem="uFS-LJ-CWj" firstAttribute="top" secondItem="r0d-W3-y3K" secondAttribute="top" constant="16" id="Xqr-Fg-TFk"/>
+                <constraint firstItem="uFS-LJ-CWj" firstAttribute="top" secondItem="r0d-W3-y3K" secondAttribute="top" constant="12" id="Xqr-Fg-TFk"/>
                 <constraint firstItem="y40-s0-dpz" firstAttribute="top" secondItem="SCY-QA-nwU" secondAttribute="bottom" constant="12" id="Ydf-zr-g0o"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="bna-ML-NDm" secondAttribute="trailing" constant="16" id="ZPf-rz-Bll"/>
                 <constraint firstItem="DS1-31-Cvu" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" id="aGL-zT-TA0"/>
@@ -328,14 +339,14 @@
         </view>
     </objects>
     <resources>
-        <image name="ArrowDownIcon" width="40" height="40"/>
         <image name="CastIcon" width="24" height="24"/>
+        <image name="IconDownArrow" width="24" height="24"/>
+        <image name="IconQueue" width="24" height="24"/>
         <image name="MoreIcon" width="24" height="24"/>
         <image name="NextIcon" width="32" height="32"/>
         <image name="PauseIcon" width="48" height="48"/>
         <image name="PlayIcon" width="48" height="48"/>
         <image name="PreviousIcon" width="32" height="32"/>
-        <image name="QueueIcon" width="40" height="40"/>
         <image name="RepeatIcon" width="24" height="24"/>
         <image name="ShuffleIcon" width="24" height="24"/>
         <image name="SkipBackIcon" width="32" height="32"/>
