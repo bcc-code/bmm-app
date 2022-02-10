@@ -41,6 +41,12 @@ namespace BMM.UI.iOS
 		UIKit.UILabel EndTimeLabel { get; set; }
 
 		[Outlet]
+		UIKit.UIButton ExternalRelationButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton MoreButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton NextButtton { get; set; }
 
 		[Outlet]
@@ -141,6 +147,11 @@ namespace BMM.UI.iOS
 				EndTimeLabel = null;
 			}
 
+			if (MoreButton != null) {
+				MoreButton.Dispose ();
+				MoreButton = null;
+			}
+
 			if (NextButtton != null) {
 				NextButtton.Dispose ();
 				NextButtton = null;
@@ -166,6 +177,11 @@ namespace BMM.UI.iOS
 				QueueButton = null;
 			}
 
+			if (RepeatButton != null) {
+				RepeatButton.Dispose ();
+				RepeatButton = null;
+			}
+
 			if (SeparatorBottomMarginConstraint != null) {
 				SeparatorBottomMarginConstraint.Dispose ();
 				SeparatorBottomMarginConstraint = null;
@@ -179,6 +195,11 @@ namespace BMM.UI.iOS
 			if (ShadowView != null) {
 				ShadowView.Dispose ();
 				ShadowView = null;
+			}
+
+			if (ShuffleButton != null) {
+				ShuffleButton.Dispose ();
+				ShuffleButton = null;
 			}
 
 			if (SkipBackButton != null) {
@@ -221,14 +242,9 @@ namespace BMM.UI.iOS
 				ViewLyricsButton = null;
 			}
 
-			if (RepeatButton != null) {
-				RepeatButton.Dispose ();
-				RepeatButton = null;
-			}
-
-			if (ShuffleButton != null) {
-				ShuffleButton.Dispose ();
-				ShuffleButton = null;
+			if (ExternalRelationButton != null) {
+				ExternalRelationButton.Dispose ();
+				ExternalRelationButton = null;
 			}
 
 		}

@@ -4,7 +4,9 @@ using BMM.Core.ViewModels.Base;
 using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
+using BMM.Core.Implementations.UI;
 using BMM.Core.ValueConverters;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Helpers;
 using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
@@ -50,7 +52,7 @@ namespace BMM.UI.iOS
                 {
                     return;
                 }
-
+                
                 if (_bindingsManager == null)
                 {
                     _bindingsManager = new VisibilityBindingsManager<CellWrapperViewModel<Document>>();
@@ -60,6 +62,10 @@ namespace BMM.UI.iOS
 
                 if (DataContext is CellWrapperViewModel<Document> wrappedCell)
                     _bindingsManager.Update(wrappedCell);
+
+                ReferenceButton!.TintColor = ((CellWrapperViewModel<Document>)DataContext).ViewModel is IDarkStyleOnIosViewModel
+                    ? UIColor.White
+                    : AppColors.LabelPrimaryColor;
             };
         }
     }

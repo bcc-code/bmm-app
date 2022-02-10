@@ -37,7 +37,7 @@ namespace BMM.UI.iOS.Implementations.Track
                 actionSheet.AddHandled(
                     standardIconOptionPO.Title,
                     () => standardIconOptionPO.ClickCommand.ExecuteAsync(),
-                    standardIconOptionPO.ImagePath.ToStandardIosImageName());
+                    standardIconOptionPO.ImagePath?.ToStandardIosImageName());
             }
             
             actionSheet.SetCancel(_bmmLanguageBinder[Translations.UserDialogs_Cancel]);

@@ -12,19 +12,21 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 		private const double Range = 0.075;
 		private const float MinContrastDistance = 0.5f;
 		private const float VariantColorDistance = 0.3f;
+		private const float MaxColorValue = 255.0f;
 		private const int MaxImageSize = 40;
 
+		private readonly List<PixelColor> _listOfColors = new List<PixelColor>();
+		
 		public UIColor MutedColor { get; private set; }
 		public UIColor VibrantColor { get; private set; }
 		public UIColor LightMutedColor { get; private set; }
 		public UIColor LightVibrantColor { get; private set; }
 		public UIColor DarkMutedColor { get; private set; }
 		public UIColor DarkVibrantColor { get; private set; }
-		private List<PixelColor> listOfColors = new List<PixelColor>();
 
-		public void Generate (UIImage image)
+		public void Generate(UIImage image)
 		{
-			listOfColors.Clear();
+			_listOfColors.Clear();
 
 			image = ScaleImageDown(image);
 
@@ -33,32 +35,28 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 				for (int x = 1; x < image.Size.Width - 1; x++)
 				{
 					var color = GetPixelColor (new CGPoint (x, y), image);
-					var index = IndexOfItemWithColorFromRange(listOfColors, color.ToYUV(), Range);
+					int index = IndexOfItemWithColorFromRange(_listOfColors, color.ToYUV(), Range);
 
 					if(index == -1)
-					{
-						listOfColors.Add(new PixelColor {Color = color.ToYUV(), NumberOfOccurrences = 0});
-					}
+						_listOfColors.Add(new PixelColor {Color = color.ToYUV(), NumberOfOccurrences = 0});
 					else
-					{
-						listOfColors [index].NumberOfOccurrences++;
-					}
+						_listOfColors [index].NumberOfOccurrences++;
 				}
 			}
 
-			FindColorPalette ((float)(image.Size.Width * image.Size.Height));
+			FindColorPalette();
 		}
 
 		private UIImage ScaleImageDown(UIImage sourceImage)
 		{
 			var sourceSize = sourceImage.Size;
-			var maxResizeFactor = Math.Min(MaxImageSize / sourceSize.Width, MaxImageSize / sourceSize.Height);
+			double maxResizeFactor = Math.Min(MaxImageSize / sourceSize.Width, MaxImageSize / sourceSize.Height);
 
 			if (maxResizeFactor > 1) 
 				return sourceImage;
 			
-			var width = maxResizeFactor * sourceSize.Width;
-			var height = maxResizeFactor * sourceSize.Height;
+			double width = maxResizeFactor * sourceSize.Width;
+			double height = maxResizeFactor * sourceSize.Height;
 
 			UIGraphics.BeginImageContext(new CGSize(width, height));
 			sourceImage.Draw(new CGRect(0, 0, width, height));
@@ -73,21 +71,19 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 		{
 			var rawData = new byte[4];
 			var handle = GCHandle.Alloc(rawData);
-			UIColor resultColor = null;
+			UIColor resultColor;
 			try
 			{
-				using (var colorSpace = CGColorSpace.CreateDeviceRGB())
-				{
-					using (var context = new CGBitmapContext(rawData, 1, 1, 8, 4, colorSpace, CGImageAlphaInfo.PremultipliedLast))
-					{
-						context.DrawImage(new CGRect(-point.X, point.Y - image.Size.Height, image.Size.Width, image.Size.Height), image.CGImage);
-						float red   = (rawData[0]) / 255.0f;
-						float green = (rawData[1]) / 255.0f;
-						float blue  = (rawData[2]) / 255.0f;
-						float alpha = (rawData[3]) / 255.0f;
-						resultColor = UIColor.FromRGBA(red, green, blue, alpha);
-					}
-				}
+				using var colorSpace = CGColorSpace.CreateDeviceRGB();
+				using var context = new CGBitmapContext(rawData, 1, 1, 8, 4, colorSpace, CGImageAlphaInfo.PremultipliedLast);
+
+				context.DrawImage(new CGRect(-point.X, point.Y - image.Size.Height, image.Size.Width, image.Size.Height), image.CGImage);
+				float red   = rawData[0] / MaxColorValue;
+				float green = rawData[1] / MaxColorValue;
+				float blue  = rawData[2] / MaxColorValue;
+				float alpha = rawData[3] / MaxColorValue;
+				
+				resultColor = UIColor.FromRGBA(red, green, blue, alpha);
 			}
 			finally
 			{
@@ -97,19 +93,13 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 			return resultColor;
 		}
 
-		private void FindColorPalette(float numberOfPixels)
+		private void FindColorPalette()
 		{
-			YUVColor dominantColor;
 			YUVColor accentColor;
-
 			YUVColor mutedColor;
 			YUVColor vibrantColor;
-			YUVColor lightMutedColor;
-			YUVColor lightVibrantColor;
-			YUVColor darkMutedColor;
-			YUVColor darkVibrantColor;
 
-			int count = listOfColors.Count;
+			int count = _listOfColors.Count;
 
 			if(count >= 2)
 			{
@@ -121,16 +111,16 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 
 					for (int i = 1; i < count; i++)
 					{
-						if (listOfColors[i - 1].NumberOfOccurrences >= listOfColors[i].NumberOfOccurrences)
+						if (_listOfColors[i - 1].NumberOfOccurrences >= _listOfColors[i].NumberOfOccurrences)
 							continue;
 						
-						(listOfColors [i - 1], listOfColors [i]) = (listOfColors [i], listOfColors [i - 1]);
+						(_listOfColors [i - 1], _listOfColors [i]) = (_listOfColors [i], _listOfColors [i - 1]);
 						isInOrder = false;
 					}
 				}
 			}
 
-			dominantColor = listOfColors[0].Color;
+			var dominantColor = _listOfColors[0].Color;
 
 			double biggestDifference = 0;
 			int accentColorIndex = 1;
@@ -139,26 +129,24 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 			{
 				for (int i = 1; i < count; i++)
 				{
-					if(listOfColors[i].Color.DistanceTo(listOfColors[0].Color) > biggestDifference)
-					{
-						biggestDifference = listOfColors [i].Color.DistanceTo (listOfColors [0].Color);
-						accentColorIndex = i;
-					}
+					if (!(_listOfColors[i].Color.DistanceTo(_listOfColors[0].Color) > biggestDifference))
+						continue;
+					
+					biggestDifference = _listOfColors [i].Color.DistanceTo (_listOfColors [0].Color);
+					accentColorIndex = i;
 				}
 
-				accentColor = listOfColors [accentColorIndex].Color;
+				accentColor = _listOfColors [accentColorIndex].Color;
 			}
 			else
 			{
-				accentColor = listOfColors[0].Color;
+				accentColor = _listOfColors[0].Color;
 			}
 
-			if(accentColor.DistanceTo(dominantColor) < MinContrastDistance)
-			{
+			if (accentColor.DistanceTo(dominantColor) < MinContrastDistance)
 				accentColor = accentColor.ColorAtDistanceFrom(dominantColor, MinContrastDistance);
-			}
 
-			if(dominantColor.Y < accentColor.Y)
+			if (dominantColor.Y < accentColor.Y)
 			{
 				mutedColor = dominantColor;
 				vibrantColor = accentColor;
@@ -169,20 +157,20 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 				vibrantColor = dominantColor;
 			}
 
-			lightMutedColor = mutedColor.LighttenByDistane (VariantColorDistance);
-			lightVibrantColor = vibrantColor.LighttenByDistane (VariantColorDistance);
+			var lightMutedColor = mutedColor.LighttenByDistane (VariantColorDistance);
+			var lightVibrantColor = vibrantColor.LighttenByDistane (VariantColorDistance);
 
-			darkMutedColor = mutedColor.DarkenByDistane (VariantColorDistance);
-			darkVibrantColor = vibrantColor.DarkenByDistane (VariantColorDistance);
+			var darkMutedColor = mutedColor.DarkenByDistane (VariantColorDistance);
+			var darkVibrantColor = vibrantColor.DarkenByDistane (VariantColorDistance);
 
-			MutedColor = mutedColor.ToRGBUIColor ();
-			VibrantColor = vibrantColor.ToRGBUIColor ();
+			MutedColor = mutedColor.ToRGBUIColor();
+			VibrantColor = vibrantColor.ToRGBUIColor();
 
-			LightMutedColor = lightMutedColor.ToRGBUIColor ();
-			LightVibrantColor = lightVibrantColor.ToRGBUIColor ();
+			LightMutedColor = lightMutedColor.ToRGBUIColor();
+			LightVibrantColor = lightVibrantColor.ToRGBUIColor();
 
-			DarkMutedColor = darkMutedColor.ToRGBUIColor ();
-			DarkVibrantColor = darkVibrantColor.ToRGBUIColor ();
+			DarkMutedColor = darkMutedColor.ToRGBUIColor();
+			DarkVibrantColor = darkVibrantColor.ToRGBUIColor();
 		}
 		
 		private static int IndexOfItemWithColorFromRange(IReadOnlyList<PixelColor> list, YUVColor color, double range)

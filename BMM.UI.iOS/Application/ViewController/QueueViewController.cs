@@ -4,6 +4,7 @@ using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Interfaces;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platforms.Ios.Binding.Views;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -15,17 +16,18 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override System.Type ParentViewControllerType => typeof(UINavigationController);
+        public override Type ParentViewControllerType => typeof(UINavigationController);
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            var source = new QueueTableViewSource(QueueTableView);
+            var source = new BaseSimpleTableViewSource(QueueTableView, TrackTableViewCell.Key);
 
             var set = this.CreateBindingSet<QueueViewController, QueueViewModel>();
             set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
+
             set.Apply();
         }
 

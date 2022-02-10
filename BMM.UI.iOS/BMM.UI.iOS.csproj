@@ -532,9 +532,6 @@
     <BundleResource Include="..\BMM.Core\Translation\hu\main.json">
       <Link>Translation\hu\main.json</Link>
     </BundleResource>
-    <BundleResource Include="Resources\btn_references_static.png" />
-    <BundleResource Include="Resources\btn_references_static%402x.png" />
-    <BundleResource Include="Resources\btn_references_static%403x.png" />
     <BundleResource Include="Resources\icon_trackrelation_external.png" />
     <BundleResource Include="Resources\icon_trackrelation_external%402x.png" />
     <BundleResource Include="Resources\icon_trackrelation_external%403x.png" />
@@ -814,6 +811,8 @@
     <Compile Include="Constants\AppColors.cs" />
     <Compile Include="Constants\AppTheme.cs" />
     <Compile Include="Constants\ButtonTheme.cs" />
+    <Compile Include="Constants\iOSScreenHeight.cs" />
+    <Compile Include="Constants\Player\CoverConstants.cs" />
     <Compile Include="Constants\TextTheme.cs" />
     <Compile Include="Constants\ThemeExtensions.cs" />
     <Compile Include="Constants\Typography.cs" />
@@ -939,7 +938,6 @@
     </Compile>
     <Compile Include="Application\ValueConverter\ContributorNameConverter.cs" />
     <Compile Include="Application\TableViewSource\LanguageEditableTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\QueueTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\AudioTableViewSource.cs" />
     <Compile Include="Application\ValueConverter\OfflineAvailableTrackStatusConverter.cs" />
     <Compile Include="Application\ViewController\TrackInfoViewController.cs" />
@@ -1022,6 +1020,7 @@
     </Compile>
     <Compile Include="Utils\ColorPalette\PixelColor.cs" />
     <Compile Include="Utils\ColorPalette\YUVColor.cs" />
+    <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Compile Include="Utils\ColorPalette\ColorPaletteGenerator.cs" />
   </ItemGroup>
@@ -1094,14 +1093,24 @@
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@3x.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\icon_info.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\icon_link.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\icon_pause.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\icon_person.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\play.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\icon_playlist.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\icon_queue.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\icon_remove.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\icon_repeat.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\icon_repeat_one.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\icon_share.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json">
@@ -1201,10 +1210,6 @@
     <ImageAsset Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\NotificationColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\RadioColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@3x.png" />
     <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\icon_more.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\Contents.json" />
@@ -1212,10 +1217,6 @@
     <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover_dark.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\icon_next.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\PauseIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\PauseIcon.imageset\icon_pause.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\PlayIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\PlayIcon.imageset\play.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini.png" />
@@ -1235,10 +1236,6 @@
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@3x.png" />
     <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\icon_previous.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\RepeatIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\RepeatIcon.imageset\icon_repeat.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\RepeatOneIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\RepeatOneIcon.imageset\icon_repeat_one.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected.png" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%402x.png" />

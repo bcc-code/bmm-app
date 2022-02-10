@@ -8,12 +8,13 @@ using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
-using BMM.UI.iOS.Helpers;
+using BMM.UI.iOS.Utils;
 using BMM.UI.iOS.Utils.ColorPalette;
 using CoreGraphics;
 using FFImageLoading.Args;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
+using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using UIKit;
 
@@ -22,43 +23,38 @@ namespace BMM.UI.iOS
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.PageSheet, WrapInNavigationController = true)]
     public partial class PlayerViewController : BaseViewController<PlayerViewModel>
     {
-        private UIViewVisibilityController _trackReferenceButtonVisibilityController;
+        private const int DefaultBottomMarginConstant = 24;
+        private const float BackgroundShadowRadiusPercentageVolume = 0.2f;
+        private const float BackgroundAccentAlpha = 0.5f;
+        private const float BackgroundAccentColorPercentageVolume = 0.1f;
+        private const float CoverSizeToWidthPercentage = 0.45f;
+        private const float SliderThumbSize = 10;
+        private const float SmallCoverTopMarginConstraint = 40;
+        private const float MediumCoverTopMarginConstraint = 60;
+        private const float BigCoverTopMarginConstraint = 100;
+        
         private bool _isPlaying;
         private readonly UIImage _playIcon;
         private readonly UIImage _pauseIcon;
-        private string _lastCoverUri;
         private bool _canNavigateToLanguageChange;
         private bool _hasLyrics;
-        private int _defaultBottomMarginConstant = 24;
         private bool _isShuffleEnabled;
         private RepeatType _repeatType;
+        private int _bottomMargin = DefaultBottomMarginConstant;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
         {
-            _playIcon = UIImage.FromBundle("PlayIcon")!.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
-            _pauseIcon = UIImage.FromBundle("PauseIcon")!.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+            _playIcon = UIImage.FromBundle(ImageResourceNames.IconPlay.ToStandardIosImageName())!.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+            _pauseIcon = UIImage.FromBundle(ImageResourceNames.IconPause.ToStandardIosImageName())!.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
         }
 
         public override Type ParentViewControllerType => typeof(UINavigationController);
-
         protected override string GetTitle() => string.Empty;
+        public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation() => UIInterfaceOrientation.Portrait;
+        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations() => UIInterfaceOrientationMask.Portrait;
 
-        private UIImage MakeCircleWith(CGSize size, UIColor backgroundColor)
-        {
-            UIGraphics.BeginImageContextWithOptions(size, false, 0.0f);
-            var context = UIGraphics.GetCurrentContext();
-            context?.SetFillColor(backgroundColor.CGColor);
-            context?.SetStrokeColor(UIColor.Clear.CGColor);
-            var bounds = new CGRect(CGPoint.Empty, size);
-            context?.AddEllipseInRect(bounds);
-            context?.DrawPath(CGPathDrawingMode.Fill);
-            var image = UIGraphics.GetImageFromCurrentImageContext();
-            UIGraphics.EndImageContext();
-            return image;
-        }
-
-        public override async void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
@@ -93,12 +89,12 @@ namespace BMM.UI.iOS
                 .For(v => v.RepeatType)
                 .To(vm => vm.RepeatType);
             
-            TrackCoverImageView.ErrorAndLoadingPlaceholderImagePath("NewPlaceholderCover");
+            TrackCoverImageView.ErrorAndLoadingPlaceholderImagePath(ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName());
             
             set.Bind(TrackCoverImageView)
                 .For(v => v.ImagePath)
                 .To(vm => vm.CurrentTrack.ArtworkUri)
-                .WithConversion<CoverUrlToFallbackImageValueConverter>("NewPlaceholderCover");
+                .WithConversion<CoverUrlToFallbackImageValueConverter>(ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName());
             TrackCoverImageView.OnFinish += TrackCoverImageViewOnOnFinish;
                 
             set.Bind(SliderPositionTimeLabel).To(vm => vm.SliderPosition).WithConversion<MillisecondsToTimeValueConverter>();
@@ -124,8 +120,7 @@ namespace BMM.UI.iOS
                  .For(v => v.HasLyrics)
                  .To(vm => vm.HasLyrics);
             
-            // set.Bind(TrackOptionsButton).To(vm => vm.OptionCommand);
-            // set.Bind(TrackReferernceButton).To(vm => vm.ShowTrackInfoCommand);
+            set.Bind(MoreButton).To(vm => vm.OptionCommand);
             set.Bind(ChangeLanguageButton)
                 .For(v => v.BindTitle())
                 .To(vm => vm.TrackLanguage);
@@ -144,32 +139,22 @@ namespace BMM.UI.iOS
             set.Bind(SubtitleLabel).To(vm => vm.CurrentTrack).WithConversion<TrackToSubtitleValueConverter>(ViewModel);
             SubtitleLabel.FadeLength = 10;
             SubtitleLabel.ScrollDuration = 6;
+
+            set.Bind(ExternalRelationButton)
+                .For(v => v.BindVisible())
+                .To(vm => vm.HasExternalRelations);
             
-            // set.Bind(BtvLinkButton).For(v => v.TitleLabel).To(vm => vm.BtvLinkTitle);
-            // set.Bind(BtvLinkButton).To(vm => vm.OpenExternalReferenceCommand);
-            // set.Bind(BtvLinkContainer).For(v => v.Hidden).To(vm => vm.HasBtvLink).WithConversion<InvertedVisibilityConverter>();
-            //
-            // set.Bind(TrackCoverContainerView.Swipe(UISwipeGestureRecognizerDirection.Right)).For(v => v.Command).To(vm => vm.PreviousCommand);
-            // set.Bind(TrackCoverContainerView.Swipe(UISwipeGestureRecognizerDirection.Left)).For(v => v.Command).To(vm => vm.NextCommand);
+            set.Bind(ExternalRelationButton)
+                .To(vm => vm.ShowTrackInfoCommand);
+
+            set.Bind(TrackCoverImageView.Swipe(UISwipeGestureRecognizerDirection.Right)).For(v => v.Command).To(vm => vm.PreviousCommand);
+            set.Bind(TrackCoverImageView.Swipe(UISwipeGestureRecognizerDirection.Left)).For(v => v.Command).To(vm => vm.NextCommand);
             set.Apply();
             
             PlayingProgressSlider.TouchDown += (sender, e) => { ViewModel.IsSeeking = true; };
             PlayingProgressSlider.TouchUpInside += (sender, e) => { ViewModel.IsSeeking = false; };
             PlayingProgressSlider.TouchUpOutside += (sender, e) => { ViewModel.IsSeeking = false; };
 
-            ViewModel.PropertyChanged += (sender, e) =>
-            {
-                var currentTrackChanged = e.PropertyName == nameof(ViewModel.CurrentTrack) || e.PropertyName == "";
-                if (currentTrackChanged && ViewModel.CurrentTrack != null)
-                {
-                    UpdateTrackReferenceButtonVisibility();
-                }
-            };
-
-            MoveTitleLabelsIntoNavigationBar();
-            UpdateTrackReferenceButtonVisibility();
-
-            // Add swipe-down gesture to all modal ViewControllers, since you expect, that you can move them downwards, the direction they came from.
             var recognizer = new UISwipeGestureRecognizer(() => {ViewModel.CloseViewModelCommand.Execute();}) {Direction = UISwipeGestureRecognizerDirection.Down};
             View.AddGestureRecognizer(recognizer);
 
@@ -181,15 +166,31 @@ namespace BMM.UI.iOS
                 OnDidAttemptToDismiss = HandleDismiss
             };
 
-            if (UIScreen.MainScreen.Bounds.Height > 667)
-                return;
+            SetViewMargins();
+        }
+
+        private void SetViewMargins()
+        {
+            SetCoverTopMargin();
             
-            _defaultBottomMarginConstant = 12;
-            SeparatorTopMarginConstraint.Constant = 12;
-            SeparatorBottomMarginConstraint.Constant = 12;
-            BottomMarginConstraint.Constant = _defaultBottomMarginConstant;
-            SliderBottomMarginConstraint.Constant = 12;
-            CoverTopMarginConstraint.Constant = 40;
+            if (UIScreen.MainScreen.Bounds.Height > iOSScreenHeight.iPhoneSE2)
+                return;
+
+            _bottomMargin = DefaultBottomMarginConstant / 2;
+            SeparatorTopMarginConstraint.Constant = _bottomMargin;
+            SeparatorBottomMarginConstraint.Constant = _bottomMargin;
+            BottomMarginConstraint.Constant = _bottomMargin;
+            SliderBottomMarginConstraint.Constant = _bottomMargin;
+        }
+
+        private void SetCoverTopMargin()
+        {
+            if (UIScreen.MainScreen.Bounds.Height <= iOSScreenHeight.iPhoneSE)
+                CoverTopMarginConstraint.Constant = SmallCoverTopMarginConstraint;
+            else if (UIScreen.MainScreen.Bounds.Height <= iOSScreenHeight.iPhoneSE2)
+                CoverTopMarginConstraint.Constant = MediumCoverTopMarginConstraint;
+            else
+                CoverTopMarginConstraint.Constant = BigCoverTopMarginConstraint;
         }
 
         public RepeatType RepeatType
@@ -228,17 +229,12 @@ namespace BMM.UI.iOS
             set
             {
                 _canNavigateToLanguageChange = value;
-                
-                UIView.Animate(
-                    ViewConstants.DefaultAnimationDuration,
-                    0,
-                    UIViewAnimationOptions.AllowUserInteraction,
-                    () =>
-                    {
-                        ChangeLanguageButton.SetHiddenIfNeeded(!_canNavigateToLanguageChange);
-                        SetBottomMarginConstant();
-                        BottomButtonsStackLayout.LayoutIfNeeded();
-                    }, null);
+                View.RunAnimation(ViewConstants.DefaultAnimationDuration, () =>
+                {
+                    ChangeLanguageButton.SetHiddenIfNeeded(!_canNavigateToLanguageChange);
+                    SetBottomMarginConstant();
+                    BottomButtonsStackLayout.LayoutIfNeeded();
+                });
             }
         }
 
@@ -248,17 +244,12 @@ namespace BMM.UI.iOS
             set
             {
                 _hasLyrics = value;
-                
-                UIView.Animate(
-                    ViewConstants.DefaultAnimationDuration,
-                    0,
-                    UIViewAnimationOptions.AllowUserInteraction,
-                    () =>
-                    {
-                        ViewLyricsButton.SetHiddenIfNeeded(!_hasLyrics);
-                        SetBottomMarginConstant();
-                        BottomButtonsStackLayout.LayoutIfNeeded();
-                    }, null);
+                View.RunAnimation(ViewConstants.DefaultAnimationDuration, () =>
+                {
+                    ViewLyricsButton.SetHiddenIfNeeded(!_hasLyrics);
+                    SetBottomMarginConstant();
+                    BottomButtonsStackLayout.LayoutIfNeeded();
+                });
             }
         }
 
@@ -267,7 +258,7 @@ namespace BMM.UI.iOS
             if (!_canNavigateToLanguageChange && !_hasLyrics)
                 BottomMarginConstraint.Constant = 0;
             else
-                BottomMarginConstraint.Constant = _defaultBottomMarginConstant;
+                BottomMarginConstraint.Constant = _bottomMargin;
         }
         
         private void TrackCoverImageViewOnOnFinish(object sender, FinishEventArgs e)
@@ -283,16 +274,12 @@ namespace BMM.UI.iOS
 
             if (!shouldTintBackground)
             {
-                UIView.Animate(
-                    ViewConstants.LongAnimationDuration,
-                    0,
-                    UIViewAnimationOptions.AllowUserInteraction,
-                    () =>
-                    {
-                        View!.BackgroundColor = backgroundColor;
-                        ShadowView.Layer.ShadowColor = UIColor.Clear.CGColor;
-                    }, null);
-                return; 
+                View.RunAnimation(ViewConstants.LongAnimationDuration, () =>
+                {
+                    View!.BackgroundColor = backgroundColor;
+                    ShadowView.Layer.ShadowColor = UIColor.Clear.CGColor;
+                });
+                return;
             }
 
             var coverImage = TrackCoverImageView.Image;
@@ -301,28 +288,22 @@ namespace BMM.UI.iOS
             Task.Run(() => { palette.Generate(coverImage); })
                 .ContinueWith(t =>
                 {
-                    InvokeOnMainThread(() =>
-                    {
-                        UIView.Animate(
-                            ViewConstants.LongAnimationDuration,
-                            0,
-                            UIViewAnimationOptions.AllowUserInteraction,
-                            () =>
-                            {
-                                ShadowView.Layer.ShadowColor = new CGColor(palette.MutedColor.CGColor, 0.5f);
-                                ShadowView.Layer.ShadowOpacity = 1f;
-                                ShadowView.Layer.ShadowOffset = CGSize.Empty;
-                                ShadowView.Layer.ShadowRadius = View.Frame.Width * 0.2f;
-                                ShadowView.Layer.ShadowPath = UIBezierPath.FromRect(TrackCoverImageView.Bounds).CGPath;
-
-                                View.BackgroundColor = Blend(backgroundColor,
-                                    palette.MutedColor,
-                                    0.9f,
-                                    0.1f);
-                            },
-                            null);
-                    });
+                    View.RunAnimation(ViewConstants.LongAnimationDuration, () => SetCoverShadow(palette, backgroundColor));
                 });
+        }
+
+        private void SetCoverShadow(ColorPaletteGenerator palette, UIColor backgroundColor)
+        {
+            ShadowView.Layer.ShadowColor = new CGColor(palette.MutedColor.CGColor, BackgroundAccentAlpha);
+            ShadowView.Layer.ShadowOpacity = 1f;
+            ShadowView.Layer.ShadowOffset = CGSize.Empty;
+            ShadowView.Layer.ShadowRadius = View!.Frame.Width * BackgroundShadowRadiusPercentageVolume;
+            ShadowView.Layer.ShadowPath = UIBezierPath.FromRect(TrackCoverImageView.Bounds).CGPath;
+
+            View.BackgroundColor = backgroundColor.Blend(
+                palette.MutedColor,
+                1f - BackgroundAccentColorPercentageVolume,
+                BackgroundAccentColorPercentageVolume);
         }
 
         public bool IsPlaying
@@ -351,12 +332,12 @@ namespace BMM.UI.iOS
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            var coverSize = View.Frame.Width * 0.45f;
+            var coverSize = View.Frame.Width * CoverSizeToWidthPercentage;
             
             CoverHeightConstraint.Constant = coverSize;
             CoverWidthConstraint.Constant = coverSize;
             
-            var circleImage = MakeCircleWith(new CGSize(10, 10), AppColors.LabelPrimaryColor);
+            var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
             
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
@@ -365,34 +346,15 @@ namespace BMM.UI.iOS
 
         protected override void SetNavigationBarAppearance() => Expression.Empty();
 
-        /// <summary>
-        /// This method is needed because it's not possible to add the views
-        /// directly into the navigation bar XIB while it's possible using storyboards
-        /// </summary>
-        private void MoveTitleLabelsIntoNavigationBar()
-        {
-            // TitleLabel.RemoveFromSuperview();
-            // subtitleLabel.RemoveFromSuperview();
-            var containerStack = new UIStackView
-            {
-                Axis = UILayoutConstraintAxis.Vertical,
-                Spacing = 2
-            };
-            // containerStack.AddArrangedSubview(TitleLabel);
-            // containerStack.AddArrangedSubview(subtitleLabel);
-            containerStack.TranslatesAutoresizingMaskIntoConstraints = false;
-            NavigationItem.TitleView = containerStack;
-        }
-
         private void UpdateRepeatImage(RepeatType repeatType)
         {
             bool isSelected = repeatType != RepeatType.None;
             
-            string iconState = repeatType == RepeatType.RepeatOne
-                ? "RepeatOneIcon"
-                : "RepeatIcon";
+            string iconName = repeatType == RepeatType.RepeatOne
+                ? ImageResourceNames.IconRepeatOne
+                : ImageResourceNames.IconRepeat;
 
-            RepeatButton.SetImage(UIImage.FromBundle(iconState), UIControlState.Normal);
+            RepeatButton.SetImage(UIImage.FromBundle(iconName.ToStandardIosImageName()), UIControlState.Normal);
 
             if (isSelected)
             {
@@ -406,55 +368,6 @@ namespace BMM.UI.iOS
             }
         }
 
-        private void UpdateTrackReferenceButtonVisibility()
-        {
-            if (_trackReferenceButtonVisibilityController == null)
-            {
-               // _trackReferenceButtonVisibilityController = new UIViewVisibilityController(TrackReferernceButton);
-            }
-
-            var valueConverter = new TrackHasExternalRelationsValueConverter();
-            var referenceButtonVisible = valueConverter.Convert(ViewModel.CurrentTrack, null, null, null);
-            if (referenceButtonVisible is bool visible)
-            {
-//                _trackReferenceButtonVisibilityController.ViewIsVisible = visible;
-            }
-            else
-            {
-    //            _trackReferenceButtonVisibilityController.ViewIsVisible = false;
-            }
-        }
-
-        public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation()
-        {
-            return UIInterfaceOrientation.Portrait;
-        }
-
-        public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations()
-        {
-            return UIInterfaceOrientationMask.Portrait;
-        }
-        
-        private UIColor Blend(UIColor color1, UIColor color2, float intensity1 = 0.5f, float intensity2 = 0.5f)
-        {
-            float total = intensity1 + intensity2;
-            
-            float l1 = intensity1 / total;
-            float l2 = intensity2 / total;
-
-            (nfloat R, nfloat G, nfloat B, nfloat A) colorsOne = (R: 0f, G: 0f, B: 0f, A: 0f);
-            (nfloat R, nfloat G, nfloat B, nfloat A) colorsTwo = (R: 0f, G: 0f, B: 0f, A: 0f);
-
-            color1.GetRGBA(out colorsOne.R, out colorsOne.G, out colorsOne.B, out colorsOne.A);
-            color2.GetRGBA(out colorsTwo.R, out colorsTwo.G, out colorsTwo.B, out colorsTwo.A);
-
-            return new UIColor(
-                l1 * colorsOne.R + l2 * colorsTwo.R,
-                l1 * colorsOne.G + l2 * colorsTwo.G,
-                l1 * colorsOne.B + l2 * colorsTwo.B,
-                l1 * colorsOne.A + l2 * colorsTwo.A);
-        }
-        
         private void HandleDismiss(UIPresentationController presentationController)
         {
             ViewModel.CloseCommand.Execute();

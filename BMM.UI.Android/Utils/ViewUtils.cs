@@ -13,55 +13,6 @@ namespace BMM.UI.Droid.Utils
 {
     public class ViewUtils
     {
-        public static Drawable GenerateBackgroundWithShadow(View view,
-            int cornerRadius,
-            Color shadowColor,
-            int elevation)
-        {
-            float[] outerRadius =
-            {
-                cornerRadius, cornerRadius, cornerRadius,
-                cornerRadius, cornerRadius, cornerRadius, cornerRadius,
-                cornerRadius
-            };
-
-            Paint backgroundPaint = new Paint();
-            backgroundPaint.SetStyle(Paint.Style.Fill);
-            backgroundPaint.SetShadowLayer(cornerRadius,
-                0,
-                0,
-                0);
-
-            var shapeDrawablePadding = new Rect();
-            shapeDrawablePadding.Left = elevation;
-            shapeDrawablePadding.Right = elevation;
-            shapeDrawablePadding.Top = elevation;
-            shapeDrawablePadding.Bottom = elevation;
-
-            var shapeDrawable = new ShapeDrawable();
-            shapeDrawable.SetPadding(shapeDrawablePadding);
-
-            shapeDrawable.Paint.Color = Color.Gray;
-            shapeDrawable.Paint
-            .SetShadowLayer(cornerRadius / 3,
-                0,
-                0,
-                shadowColor);
-
-            view.SetLayerType(LayerType.Software, shapeDrawable.Paint);
-
-            shapeDrawable.Shape = new RoundRectShape(outerRadius, null, null);
-
-            LayerDrawable drawable = new LayerDrawable(new Drawable[] { shapeDrawable });
-            drawable.SetLayerInset(0,
-                elevation,
-                elevation * 2,
-                elevation,
-                elevation * 2);
-
-            return drawable;
-        }
-        
         public static void SetSpecifiedNavigationBarColor(Activity activity, Color color) 
             => SetNavigationBarColor(activity, color);
 
