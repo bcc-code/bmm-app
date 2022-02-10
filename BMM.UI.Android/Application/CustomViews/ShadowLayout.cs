@@ -14,10 +14,10 @@ namespace BMM.UI.Droid.Application.CustomViews
         private static int _maxAlpha = 255;
         private static float _minRadius = 0.1f;
 
-        private Rect _bounds = new Rect();
-        private Canvas _canvas = new Canvas();
+        private readonly Rect _bounds = new Rect();
+        private readonly Canvas _canvas = new Canvas();
 
-        private Paint _paint = new Paint(PaintFlags.AntiAlias)
+        private readonly Paint _paint = new Paint(PaintFlags.AntiAlias)
         {
             Dither = true,
             FilterBitmap = true
@@ -143,14 +143,14 @@ namespace BMM.UI.Droid.Application.CustomViews
                         _canvas.SetBitmap(_bitmap);
                         _invalidateShadow = false;
                         base.DispatchDraw(_canvas);
-                        var extractedAlpha = _bitmap.ExtractAlpha();
+                        var extractedAlphaBitmap = _bitmap.ExtractAlpha();
                         _canvas.DrawColor(0, BlendMode.Clear);
                         _paint.Color = AdjustShadowAlpha(false);
-                        _canvas.DrawBitmap(extractedAlpha,
+                        _canvas.DrawBitmap(extractedAlphaBitmap,
                             _shadowDx,
                             _shadowDy,
                             _paint);
-                        extractedAlpha.Recycle();
+                        extractedAlphaBitmap.Recycle();
                     }
                     else
                     {

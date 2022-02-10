@@ -125,6 +125,7 @@
     <Compile Include="Application\Bindings\MvxCardBackgroundColor.cs" />
     <Compile Include="Application\Bindings\MvxCardCircle.cs" />
     <Compile Include="Application\Bindings\MvxCardVisibility.cs" />
+    <Compile Include="Application\Constants\AndroidScreenSizesHeight.cs" />
     <Compile Include="Application\Constants\NotificationKeys.cs" />
     <Compile Include="Application\Constants\ValueConstants.cs" />
     <Compile Include="Application\CustomViews\ShadowLayout.cs" />
@@ -437,6 +438,7 @@
     <AndroidResource Include="Resources\drawable\icon_playback_history.xml" />
     <AndroidResource Include="Resources\drawable\icon_previous.xml" />
     <AndroidResource Include="Resources\drawable\icon_queue.xml" />
+    <AndroidResource Include="Resources\drawable\icon_remove.xml" />
     <AndroidResource Include="Resources\drawable\icon_repeat.xml" />
     <AndroidResource Include="Resources\drawable\icon_repeat_selected.xml">
       <SubType>Designer</SubType>
@@ -670,10 +672,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_rearrange.png" />
     <AndroidResource Include="Resources\layout\listitem_trackcollection_header.axml" />
     <AndroidResource Include="Resources\layout\listitem_header.axml" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_references_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\btn_references_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\btn_references_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_references_static.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_trackrelation_external.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_trackrelation_external.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_trackrelation_external.png" />

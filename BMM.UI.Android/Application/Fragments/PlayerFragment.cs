@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using Android.Animation;
 using Android.Graphics;
-using Android.Icu.Text;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -14,6 +13,8 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Interactions;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Constants;
+using BMM.UI.Droid.Application.Constants.Player;
 using BMM.UI.Droid.Application.CustomViews;
 using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Helpers;
@@ -37,6 +38,8 @@ namespace BMM.UI.Droid.Application.Fragments
     public class PlayerFragment : BaseFragment<PlayerViewModel>, SeekBar.IOnSeekBarChangeListener
     {
         private const int TimeToCheckEmptyPlayerErrorInMillis = 2000;
+        private const int BackgroundAccentAlpha = 170;
+        private const float BackgroundAccentColorPercentageVolume = 0.1f;
 
         private BottomSheetManager _bottomSheetManager;
         private HorizontalSwipeDetector _swipeDetector;
@@ -62,9 +65,10 @@ namespace BMM.UI.Droid.Application.Fragments
         private FrameLayout _coverContainer;
         private string _lastCoverUri;
         private float _coverTopPaddingMultiplier;
-        private Bitmap _coverPlaceholder;
 
         protected override bool ShouldClearMenuItemsAtStart => false;
+        
+        private float DefaultCoverShadowRadiusSize => View.Width * 0.25f;
 
         public IMvxInteraction<TogglePlayerInteraction> Interaction
         {
@@ -143,6 +147,7 @@ namespace BMM.UI.Droid.Application.Fragments
             var subtitleLabel = view.FindViewById<TextView>(Resource.Id.SubtitleLabel);
             subtitleLabel!.Selected = true;
             view.Post(SetSizes);
+            UpdateCover();
 
             return view;
         }
@@ -222,18 +227,12 @@ namespace BMM.UI.Droid.Application.Fragments
                 IMvxCommand command = null;
 
                 if (swipeEvent.Direction == SwipeDirection.Right)
-                {
                     command = ViewModel.NextCommand;
-                }
                 else if (swipeEvent.Direction == SwipeDirection.Left)
-                {
                     command = ViewModel.PreviousCommand;
-                }
 
                 if (command != null && command.CanExecute())
-                {
                     command.Execute();
-                }
             }
         }
 
@@ -262,10 +261,8 @@ namespace BMM.UI.Droid.Application.Fragments
                         coverBitmap = coverImage.Bitmap;
                     }
 
-                    _coverPlaceholder ??= GetBitmapFromVectorDrawable(Resource.Drawable.new_placeholder_cover);
-                    
                     bool shouldTintBackground = coverBitmap != null;
-                    coverBitmap ??= _coverPlaceholder;
+                    coverBitmap ??= GetBitmapFromVectorDrawable(Resource.Drawable.new_placeholder_cover);
 
                     await Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()
                         .ExecuteOnMainThreadAsync(() => { SetCover(coverBitmap, shouldTintBackground); });
@@ -278,9 +275,9 @@ namespace BMM.UI.Droid.Application.Fragments
             
             var bitmap = Bitmap.CreateBitmap(drawable!.IntrinsicWidth,
                 drawable.IntrinsicHeight,
-                Bitmap.Config.Argb8888);
+                Bitmap.Config.Argb8888!);
 
-            var canvas = new Canvas(bitmap);
+            var canvas = new Canvas(bitmap!);
             drawable.SetBounds(0,
                 0,
                 canvas.Width,
@@ -293,13 +290,11 @@ namespace BMM.UI.Droid.Application.Fragments
         private void SetCover(Bitmap cover, bool shouldTintBackground)
         {
             _imageView.SetImageBitmap(cover);
-
             _coverMainColor = BitmapHelper.GetMutedColor(cover);
-            cover.Dispose();
             
             var coverMainColorWithAlpha = new Color(_coverMainColor)
             {
-                A = 170
+                A = BackgroundAccentAlpha
             };
             
             if (shouldTintBackground)
@@ -311,7 +306,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 ColorUtils.BlendARGB(
                 Context.GetColorFromResource(Resource.Color.background_secondary_color).ToArgb(),
                 _coverMainColor.ToArgb(),
-                0.1f)
+                BackgroundAccentColorPercentageVolume)
                 : Context.GetColorFromResource(Resource.Color.background_secondary_color);
 
             var newBackgroundAccentColor = new Color(accentColor);
@@ -333,26 +328,9 @@ namespace BMM.UI.Droid.Application.Fragments
             UpdateStatusBarColor();
         }
 
-        private void SetOnTouchListener()
-        {
-            _imageView.SetOnTouchListener(_swipeDetector);
-        }
+        private void SetOnTouchListener() => _imageView.SetOnTouchListener(_swipeDetector);
 
-        public void ShowPlayer()
-        {
-            PlayerFragmentContainer.Visibility = ViewStates.Visible;
-            UpdateStatusBarColor();
-            ViewUtils.SetSpecifiedNavigationBarColor(Activity, _backgroundAccentColor);
-        }
-
-        public void HidePlayer()
-        {
-            PlayerFragmentContainer.Visibility = ViewStates.Invisible;
-            UpdateStatusBarColor();
-            ViewUtils.SetDefaultNavigationBarColor(Activity);
-        }
-
-        public void OpenPlayer()
+        private void OpenPlayer()
         {
             _bottomSheetManager.Open();
             UpdateCover();
@@ -389,30 +367,30 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private void SetSizes()
         {
-            float coverSizeMultiplier = 0.4f;
+            float coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Medium;
 
             float widthToHeightRatio = View.Width / (float)View.Height;
             
-            if (View.Height <= 1280)
-                _coverTopPaddingMultiplier = 0.5f;
-            else if (View.Height <= 1920)
-                _coverTopPaddingMultiplier = 0.75f;
+            if (View.Height <= AndroidScreenSizesHeight.HD)
+                _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
+            else if (View.Height <= AndroidScreenSizesHeight.FullHD)
+                _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Medium;
             else
             {
-                if (widthToHeightRatio > 0.8f)
+                if (widthToHeightRatio > CoverConstants.WidthToHighRatio.NearlySquare)
                 {
-                    _coverTopPaddingMultiplier = 0.5f;
-                    coverSizeMultiplier = 0.3f;
+                    _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
+                    coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Small;
                 }
                 else
                 {
-                    _coverTopPaddingMultiplier = 1f;
-                    coverSizeMultiplier = 0.45f;
+                    _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Big;
+                    coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Big;
                 }
             }
 
             _coverShadowLayout.TopPaddingMultiplier = _coverTopPaddingMultiplier;
-            _coverShadowLayout!.SetShadowRadius(View.Width * 0.25f);
+            _coverShadowLayout!.SetShadowRadius(DefaultCoverShadowRadiusSize);
             _coverImage.UpdateSize((int)(View.Width * coverSizeMultiplier));
             UpdateTitleSize();
         }

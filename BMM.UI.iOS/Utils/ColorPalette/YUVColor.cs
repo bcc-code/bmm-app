@@ -11,9 +11,9 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 
         public UIColor ToRGBUIColor()
         {
-            nfloat r = Y + (1.140f * V);
-            nfloat g = Y - (0.395f * U) - (0.581f * V);
-            nfloat b = Y + (2.032f * U);
+            nfloat r = Y + 1.140f * V;
+            nfloat g = Y - 0.395f * U - (0.581f * V);
+            nfloat b = Y + 2.032f * U;
 
             return new UIColor(r,
                 g,
@@ -28,7 +28,12 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 
         public object Clone()
         {
-            return new YUVColor() { Y = Y, U = U, V = V };
+            return new YUVColor
+            {
+                Y = Y,
+                U = U,
+                V = V
+            };
         }
     }
 }

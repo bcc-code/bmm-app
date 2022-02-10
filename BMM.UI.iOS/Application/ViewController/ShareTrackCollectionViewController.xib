@@ -105,7 +105,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="jeQ-GP-O8H"/>
                     </constraints>
-                    <state key="normal" title="Share Link" image="LinkIcon">
+                    <state key="normal" title="Share Link" image="IconLink">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -156,7 +156,7 @@
     </objects>
     <resources>
         <image name="FriendsIcon" width="24" height="24"/>
-        <image name="LinkIcon" width="24" height="24"/>
+        <image name="IconLink" width="24" height="24"/>
         <image name="IconPlaylist" width="48" height="48"/>
         <namedColor name="BackgroundPrimaryColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
