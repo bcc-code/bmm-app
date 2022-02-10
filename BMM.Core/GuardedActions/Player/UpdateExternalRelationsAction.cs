@@ -7,6 +7,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.Player
@@ -29,7 +30,9 @@ namespace BMM.Core.GuardedActions.Player
             if (currentTrack == null)
                 return Task.CompletedTask;
 
-            PlayerViewModel.TrackLanguage = new CultureInfo(currentTrack.Language).NativeName;
+            if (currentTrack.Language != ContentLanguageManager.LanguageIndependentContent)
+                PlayerViewModel.TrackLanguage = new CultureInfo(currentTrack.Language).NativeName;
+            
             PlayerViewModel.HasExternalRelations = currentTrack.Relations != null &&
                                                    currentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
 

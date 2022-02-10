@@ -597,6 +597,7 @@
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\LeftImageButton.cs" />
@@ -812,7 +813,6 @@
     <Compile Include="Constants\AppTheme.cs" />
     <Compile Include="Constants\ButtonTheme.cs" />
     <Compile Include="Constants\iOSScreenHeight.cs" />
-    <Compile Include="Constants\Player\CoverConstants.cs" />
     <Compile Include="Constants\TextTheme.cs" />
     <Compile Include="Constants\ThemeExtensions.cs" />
     <Compile Include="Constants\Typography.cs" />
@@ -1023,6 +1023,7 @@
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Compile Include="Utils\ColorPalette\ColorPaletteGenerator.cs" />
+    <Compile Include="Utils\ViewUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Application\TableViewCell\TrackTableViewCell.xib" />

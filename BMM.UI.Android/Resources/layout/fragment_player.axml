@@ -60,8 +60,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/cover_rounded_background">
-                    <ImageView
-                        android:id="@+id/CoverImagePlaceholder"
+                    <bmm.ui.droid.application.customViews.BmmCachedImageView
+                        android:id="@+id/CoverImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/new_placeholder_cover"

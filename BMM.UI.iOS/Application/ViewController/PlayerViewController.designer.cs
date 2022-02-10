@@ -95,7 +95,7 @@ namespace BMM.UI.iOS
 		UIKit.UILabel TitleLabel { get; set; }
 
 		[Outlet]
-		FFImageLoading.Cross.MvxCachedImageView TrackCoverImageView { get; set; }
+		BmmCachedImageView TrackCoverImageView { get; set; }
 
 		[Outlet]
 		UIKit.UIButton ViewLyricsButton { get; set; }

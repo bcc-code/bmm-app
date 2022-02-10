@@ -12,6 +12,7 @@ using BMM.UI.iOS.Utils;
 using BMM.UI.iOS.Utils.ColorPalette;
 using CoreGraphics;
 using FFImageLoading.Args;
+using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
@@ -41,6 +42,7 @@ namespace BMM.UI.iOS
         private bool _isShuffleEnabled;
         private RepeatType _repeatType;
         private int _bottomMargin = DefaultBottomMarginConstant;
+        private IDisposable _coverImageObserver;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
@@ -95,7 +97,7 @@ namespace BMM.UI.iOS
                 .For(v => v.ImagePath)
                 .To(vm => vm.CurrentTrack.ArtworkUri)
                 .WithConversion<CoverUrlToFallbackImageValueConverter>(ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName());
-            TrackCoverImageView.OnFinish += TrackCoverImageViewOnOnFinish;
+            TrackCoverImageView.ImageChanged += TrackCoverImageViewOnImageChanged;
                 
             set.Bind(SliderPositionTimeLabel).To(vm => vm.SliderPosition).WithConversion<MillisecondsToTimeValueConverter>();
             set.Bind(SliderPositionTimeLabel).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
@@ -169,6 +171,12 @@ namespace BMM.UI.iOS
             SetViewMargins();
         }
 
+        private void TrackCoverImageViewOnImageChanged(object sender, EventArgs e)
+        {
+            bool shouldTintBackground = TrackCoverImageView.Image?.AccessibilityIdentifier != ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName();
+            SetCoverShadowLayer(shouldTintBackground);
+        }
+
         private void SetViewMargins()
         {
             SetCoverTopMargin();
@@ -229,7 +237,7 @@ namespace BMM.UI.iOS
             set
             {
                 _canNavigateToLanguageChange = value;
-                View.RunAnimation(ViewConstants.DefaultAnimationDuration, () =>
+                ViewUtils.RunAnimation(ViewConstants.DefaultAnimationDuration, () =>
                 {
                     ChangeLanguageButton.SetHiddenIfNeeded(!_canNavigateToLanguageChange);
                     SetBottomMarginConstant();
@@ -244,7 +252,7 @@ namespace BMM.UI.iOS
             set
             {
                 _hasLyrics = value;
-                View.RunAnimation(ViewConstants.DefaultAnimationDuration, () =>
+                ViewUtils.RunAnimation(ViewConstants.DefaultAnimationDuration, () =>
                 {
                     ViewLyricsButton.SetHiddenIfNeeded(!_hasLyrics);
                     SetBottomMarginConstant();
@@ -261,11 +269,6 @@ namespace BMM.UI.iOS
                 BottomMarginConstraint.Constant = _bottomMargin;
         }
         
-        private void TrackCoverImageViewOnOnFinish(object sender, FinishEventArgs e)
-        {
-            InvokeOnMainThread(() => SetCoverShadowLayer(!string.IsNullOrEmpty(ViewModel.CurrentTrack?.ArtworkUri)));
-        }
-
         private void SetCoverShadowLayer(bool shouldTintBackground)
         {
             var backgroundColor = UIDevice.CurrentDevice.CheckSystemVersion(13, 0)
@@ -274,11 +277,12 @@ namespace BMM.UI.iOS
 
             if (!shouldTintBackground)
             {
-                View.RunAnimation(ViewConstants.LongAnimationDuration, () =>
-                {
-                    View!.BackgroundColor = backgroundColor;
-                    ShadowView.Layer.ShadowColor = UIColor.Clear.CGColor;
-                });
+                ViewUtils.RunAnimation(ViewConstants.LongAnimationDuration,
+                    () =>
+                    {
+                        View!.BackgroundColor = backgroundColor;
+                        ShadowView.Layer.ShadowColor = UIColor.Clear.CGColor;
+                    });
                 return;
             }
 
@@ -288,7 +292,7 @@ namespace BMM.UI.iOS
             Task.Run(() => { palette.Generate(coverImage); })
                 .ContinueWith(t =>
                 {
-                    View.RunAnimation(ViewConstants.LongAnimationDuration, () => SetCoverShadow(palette, backgroundColor));
+                    InvokeOnMainThread(() => ViewUtils.RunAnimation(ViewConstants.LongAnimationDuration, () => SetCoverShadow(palette, backgroundColor)));
                 });
         }
 

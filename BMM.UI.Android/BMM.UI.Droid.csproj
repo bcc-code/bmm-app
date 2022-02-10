@@ -127,7 +127,9 @@
     <Compile Include="Application\Bindings\MvxCardVisibility.cs" />
     <Compile Include="Application\Constants\AndroidScreenSizesHeight.cs" />
     <Compile Include="Application\Constants\NotificationKeys.cs" />
+    <Compile Include="Application\Constants\Player\CoverConstants.cs" />
     <Compile Include="Application\Constants\ValueConstants.cs" />
+    <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
     <Compile Include="Application\CustomViews\ShadowLayout.cs" />
     <Compile Include="Application\DownloadManager\AndroidDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
@@ -343,6 +345,11 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_play_podcast.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_shuffle_podcast.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\new_placeholder_cover_night.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-hdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-hdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-hdpi\podcast_background_fra_kaare.png" />
@@ -355,6 +362,11 @@
     <AndroidResource Include="Resources\drawable-mdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_shuffle_podcast.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\new_placeholder_cover_night.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-mdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_fra_kaare.png" />
@@ -368,6 +380,11 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_shuffle_podcast.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\new_placeholder_cover_night.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-xhdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_fra_kaare.png" />
@@ -381,6 +398,11 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_shuffle_podcast.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\new_placeholder_cover_night.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxhdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_fra_kaare.png" />
@@ -394,6 +416,11 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_contributor_fallback.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_shuffle_podcast.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\new_placeholder_cover_night.png">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
     <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
@@ -644,6 +671,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\values-night\Strings.xml" />
     <AndroidResource Include="Resources\values-v27\styles.xml" />
     <AndroidResource Include="Resources\values-xhdpi\dimens.xml">
       <SubType>Designer</SubType>
@@ -693,10 +721,6 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_standard_header.xml">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\new_placeholder_cover.xml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
