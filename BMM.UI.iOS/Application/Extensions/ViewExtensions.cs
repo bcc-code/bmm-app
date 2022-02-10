@@ -1,6 +1,3 @@
-using System;
-using BMM.Core.Constants;
-using CoreGraphics;
 using UIKit;
 
 namespace BMM.UI.iOS.Extensions
@@ -17,19 +14,6 @@ namespace BMM.UI.iOS.Extensions
                 return;
 
             view.Hidden = isHidden;
-        }
-        
-        public static void RunAnimation(this UIView view, float duration, Action action)
-        {
-            view.InvokeOnMainThread(() =>
-            {
-                UIView.Animate(
-                    duration,
-                    0,
-                    UIViewAnimationOptions.AllowUserInteraction,
-                    action,
-                    null);
-            });
         }
     }
 }

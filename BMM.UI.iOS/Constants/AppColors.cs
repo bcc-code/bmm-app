@@ -1,4 +1,3 @@
-using CoreGraphics;
 using UIKit;
 
 namespace BMM.UI.iOS.Constants
@@ -24,10 +23,6 @@ namespace BMM.UI.iOS.Constants
 
         // Track
         public static readonly UIColor NewestTrackBackgroundColor = UIColor.White.ColorWithAlpha(0.2f);
-
-        // Queue
-        public static readonly UIColor QueueBackgroundColor = UIColor.FromRGB(12, 15, 20);
-        public static readonly UIColor QueueBackgroundSelectedColor = UIColor.FromRGB(28, 36, 43);
 
         public static readonly UIColor SeparatorColor = UIColor.FromRGB(185, 195, 204).ColorWithAlpha(0.5f);
     }

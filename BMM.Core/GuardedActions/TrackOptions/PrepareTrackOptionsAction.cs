@@ -161,9 +161,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                         ImageResourceNames.IconAlbum,
                         new MvxAsyncCommand(async () =>
                         {
-                            await _mvxNavigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
-                            _mvxMessenger.Publish(new TogglePlayerMessage(this, false));
-                            await Task.Delay(ViewConstants.DefaultAnimationDurationInMilliseconds);
+                            await ClosePlayer();
                             await _mvxNavigationService.Navigate<AlbumViewModel, Album>(new Album
                                 { Id = track.ParentId, Title = track.Album });
                         })));
@@ -265,9 +263,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     ImageResourceNames.IconInfo,
                     new MvxAsyncCommand(async () =>
                     {
-                        await _mvxNavigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
-                        _mvxMessenger.Publish(new TogglePlayerMessage(this, false));
-                        await Task.Delay(ViewConstants.DefaultAnimationDurationInMilliseconds);
+                        await ClosePlayer();
                         await _mvxNavigationService.Navigate<TrackInfoViewModel, Track>(track);
                     })));
 
@@ -276,10 +272,15 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
         private async Task GoToContributorVM(int id)
         {
+            await ClosePlayer();
+            await _mvxNavigationService.Navigate<ContributorViewModel, int>(id);
+        }
+
+        private async Task ClosePlayer()
+        {
             await _mvxNavigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
             _mvxMessenger.Publish(new TogglePlayerMessage(this, false));
             await Task.Delay(ViewConstants.DefaultAnimationDurationInMilliseconds);
-            await _mvxNavigationService.Navigate<ContributorViewModel, int>(id);
         }
     }
 }

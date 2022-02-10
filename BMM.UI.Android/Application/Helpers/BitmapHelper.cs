@@ -59,18 +59,13 @@ namespace BMM.UI.Droid.Application.Helpers
             }
         }
 
-        public static Color GetMutedColor(Bitmap bitmap)
+        public static Color GetDominantColor(Bitmap bitmap)
         {
             var palette = Palette
                 .From(bitmap)
                 .Generate();
 
-            return new Color(palette.GetMutedColor(Color.Black));
-        }
-
-        public static Color GetDarkenedColor(Bitmap bitmap)
-        {
-            return Darken(GetColor(bitmap));
+            return new Color(palette.GetDominantColor(Color.Black));
         }
 
         public static Color Darken(Color color)

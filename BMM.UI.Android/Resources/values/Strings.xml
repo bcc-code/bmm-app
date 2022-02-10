@@ -4,6 +4,7 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="action_slidingpane">Other</string>
+    <string name="is_night_mode">false</string>
 
     <string name="document_templateselector">BMM.UI.Droid.Application.TemplateSelectors.DocumentTemplateSelector, BMM.UI.Android</string>
     <string name="tracklist_templateselector">BMM.UI.Droid.Application.TemplateSelectors.TrackListTemplateSelector, BMM.UI.Android</string>

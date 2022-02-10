@@ -11,7 +11,12 @@ namespace BMM.UI.Droid.Application.Extensions
         {
             return Build.VERSION.SdkInt >= BuildVersionCodes.M
                 ? new Color(ContextCompat.GetColor(context, id))
-                : context.Resources.GetColor(id);
+                : context.Resources!.GetColor(id);
+        }
+        
+        public static bool IsNightMode(this Context context)
+        {
+            return context.Resources!.GetString(Resource.String.is_night_mode) == true.ToString().ToLower();
         }
     }
 }
