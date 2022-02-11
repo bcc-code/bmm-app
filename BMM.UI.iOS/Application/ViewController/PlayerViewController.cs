@@ -33,7 +33,7 @@ namespace BMM.UI.iOS
         private const float SmallCoverTopMarginConstraint = 40;
         private const float MediumCoverTopMarginConstraint = 60;
         private const float BigCoverTopMarginConstraint = 100;
-        
+
         private bool _isPlaying;
         private readonly UIImage _playIcon;
         private readonly UIImage _pauseIcon;
@@ -42,7 +42,6 @@ namespace BMM.UI.iOS
         private bool _isShuffleEnabled;
         private RepeatType _repeatType;
         private int _bottomMargin = DefaultBottomMarginConstant;
-        private IDisposable _coverImageObserver;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
@@ -66,77 +65,77 @@ namespace BMM.UI.iOS
             set.Bind(PlayingProgressSlider).For(s => s.MaxValue).To(vm => vm.Duration);
             set.Bind(PlayingProgressSlider).For(s => s.Value).To(vm => vm.SliderPosition);
             set.Bind(PlayingProgressSlider).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
-            
+
             set.Bind(BufferedProgressSlider).For(s => s.MaxValue).To(vm => vm.Duration);
             set.Bind(BufferedProgressSlider).For(s => s.Value).To(vm => vm.Downloaded);
             set.Bind(BufferedProgressSlider).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
-            
+
             set.Bind(SkipBackButton).To(vm => vm.SkipBackwardCommand);
             set.Bind(SkipBackButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedVisibilityConverter>();
-            
+
             set.Bind(SkipForwardButton).To(vm => vm.SkipForwardCommand);
             set.Bind(SkipForwardButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedVisibilityConverter>();
-            
+
             set.Bind(NextButtton).To(vm => vm.NextCommand);
             set.Bind(NextButtton).For(v => v.Enabled).To(vm => vm.IsSkipToNextEnabled);
-            
+
             set.Bind(PreviousButton).To(vm => vm.PreviousOrSeekToStartCommand);
             set.Bind(PreviousButton).For(v => v.Enabled).To(vm => vm.IsSkipToPreviousEnabled);
-            
+
             set.Bind(this).For(v => v.IsShuffleEnabled).To(vm => vm.IsShuffleEnabled);
             set.Bind(ShuffleButton).To(vm => vm.ToggleShuffleCommand);
-            
+
             set.Bind(RepeatButton).To(vm => vm.ToggleRepeatCommand);
             set.Bind(this)
                 .For(v => v.RepeatType)
                 .To(vm => vm.RepeatType);
-            
+
             TrackCoverImageView.ErrorAndLoadingPlaceholderImagePath(ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName());
-            
+
             set.Bind(TrackCoverImageView)
                 .For(v => v.ImagePath)
                 .To(vm => vm.CurrentTrack.ArtworkUri)
                 .WithConversion<CoverUrlToFallbackImageValueConverter>(ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName());
             TrackCoverImageView.ImageChanged += TrackCoverImageViewOnImageChanged;
-                
+
             set.Bind(SliderPositionTimeLabel).To(vm => vm.SliderPosition).WithConversion<MillisecondsToTimeValueConverter>();
             set.Bind(SliderPositionTimeLabel).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
-            
+
             set.Bind(EndTimeLabel).To(vm => vm.Duration).WithConversion<MillisecondsToTimeValueConverter>();
             set.Bind(EndTimeLabel).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
 
             set.Bind(ClosePlayerButton)
                 .To(vm => vm.CloseViewModelCommand);
-            
+
             set.Bind(QueueButton)
                 .To(vm => vm.OpenQueueCommand);
-            
+
             set.Bind(ViewLyricsButton)
                 .For(v => v.BindTitle())
                 .To(vm => vm.TextSource[Translations.PlayerViewModel_ViewLyrics]);
-            
+
             set.Bind(ViewLyricsButton)
                 .To(vm => vm.OpenLyricsCommand);
-            
+
             set.Bind(this)
                  .For(v => v.HasLyrics)
                  .To(vm => vm.HasLyrics);
-            
+
             set.Bind(MoreButton).To(vm => vm.OptionCommand);
             set.Bind(ChangeLanguageButton)
                 .For(v => v.BindTitle())
                 .To(vm => vm.TrackLanguage);
-            
+
             set.Bind(ChangeLanguageButton)
                 .To(vm => vm.NavigateToLanguageChangeCommand);
-                
+
             set.Bind(this)
                 .For(v => v.CanNavigateToLanguageChange)
                 .To(vm => vm.CanNavigateToLanguageChange);
-            
+
             set.Bind(PlayPauseButton).To(vm => vm.PlayPauseCommand);
             set.Bind(this).For(v => v.IsPlaying).To(vm => vm.IsPlaying);
-            
+
             set.Bind(TitleLabel).To(vm => vm.CurrentTrack).WithConversion<TrackToTitleValueConverter>(ViewModel);
             set.Bind(SubtitleLabel).To(vm => vm.CurrentTrack).WithConversion<TrackToSubtitleValueConverter>(ViewModel);
             SubtitleLabel.FadeLength = 10;
@@ -145,14 +144,14 @@ namespace BMM.UI.iOS
             set.Bind(ExternalRelationButton)
                 .For(v => v.BindVisible())
                 .To(vm => vm.HasExternalRelations);
-            
+
             set.Bind(ExternalRelationButton)
                 .To(vm => vm.ShowTrackInfoCommand);
 
             set.Bind(TrackCoverImageView.Swipe(UISwipeGestureRecognizerDirection.Right)).For(v => v.Command).To(vm => vm.PreviousCommand);
             set.Bind(TrackCoverImageView.Swipe(UISwipeGestureRecognizerDirection.Left)).For(v => v.Command).To(vm => vm.NextCommand);
             set.Apply();
-            
+
             PlayingProgressSlider.TouchDown += (sender, e) => { ViewModel.IsSeeking = true; };
             PlayingProgressSlider.TouchUpInside += (sender, e) => { ViewModel.IsSeeking = false; };
             PlayingProgressSlider.TouchUpOutside += (sender, e) => { ViewModel.IsSeeking = false; };
@@ -161,7 +160,7 @@ namespace BMM.UI.iOS
             View.AddGestureRecognizer(recognizer);
 
             SetThemes();
-            
+
             NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate
             {
                 OnDidDismiss = HandleDismiss,
@@ -180,7 +179,7 @@ namespace BMM.UI.iOS
         private void SetViewMargins()
         {
             SetCoverTopMargin();
-            
+
             if (UIScreen.MainScreen.Bounds.Height > iOSScreenHeight.iPhoneSE2)
                 return;
 
@@ -268,7 +267,7 @@ namespace BMM.UI.iOS
             else
                 BottomMarginConstraint.Constant = _bottomMargin;
         }
-        
+
         private void SetCoverShadowLayer(bool shouldTintBackground)
         {
             var backgroundColor = UIDevice.CurrentDevice.CheckSystemVersion(13, 0)
@@ -320,7 +319,7 @@ namespace BMM.UI.iOS
                 var icon = _isPlaying
                     ? _pauseIcon
                     : _playIcon;
-                
+
                 PlayPauseButton.SetImage(icon, UIControlState.Normal);
             }
         }
@@ -337,12 +336,12 @@ namespace BMM.UI.iOS
         {
             base.ViewWillAppear(animated);
             var coverSize = View.Frame.Width * CoverSizeToWidthPercentage;
-            
+
             CoverHeightConstraint.Constant = coverSize;
             CoverWidthConstraint.Constant = coverSize;
-            
+
             var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
-            
+
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
             BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
@@ -353,7 +352,7 @@ namespace BMM.UI.iOS
         private void UpdateRepeatImage(RepeatType repeatType)
         {
             bool isSelected = repeatType != RepeatType.None;
-            
+
             string iconName = repeatType == RepeatType.RepeatOne
                 ? ImageResourceNames.IconRepeatOne
                 : ImageResourceNames.IconRepeat;
