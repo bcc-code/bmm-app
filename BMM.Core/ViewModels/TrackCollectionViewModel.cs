@@ -36,11 +36,6 @@ namespace BMM.Core.ViewModels
         public override bool ShowSharingInfo => true;
 
         public override bool ShowImage => false;
-        
-        public override IEnumerable<string> PlaybackOrigin()
-        {
-            return new[] {MyCollection.Id.ToString(), MyCollection.Name};
-        }
 
         public TrackCollectionViewModel(
             IStorageManager storageManager,
@@ -70,6 +65,11 @@ namespace BMM.Core.ViewModels
 
             ShareCommand = new ExceptionHandlingCommand(() => ShareTrackCollection(MyCollection.Id));
             RemoveCommand = new ExceptionHandlingCommand(() => RemoveSharedPlaylist(MyCollection.Id));
+        }
+        
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] {MyCollection.Id.ToString(), MyCollection.Name};
         }
 
         protected override Task Initialization()

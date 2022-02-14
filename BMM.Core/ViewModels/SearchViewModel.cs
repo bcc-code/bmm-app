@@ -128,6 +128,11 @@ namespace BMM.Core.ViewModels
                 }
             };
         }
+        
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] {SearchedString};
+        }
 
         protected override async Task Initialization()
         {

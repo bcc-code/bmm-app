@@ -67,6 +67,11 @@ namespace BMM.Core.ViewModels
                     };
                 });
         }
+        
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] {Contributor.Id.ToString()};
+        }
 
         public void Prepare(int contributorId)
         {
