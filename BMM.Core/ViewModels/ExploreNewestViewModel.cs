@@ -10,8 +10,10 @@ using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.PlayObserver.Streak;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
 using BMM.Core.Translation;
@@ -30,6 +32,8 @@ namespace BMM.Core.ViewModels
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
         private readonly ITranslateDocsAction _translateDocsAction;
         private readonly IAppLanguageProvider _appLanguageProvider;
+        private readonly IUserStorage _user;
+        private readonly IFirebaseRemoteConfig _config;
 
         public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
 
@@ -46,7 +50,7 @@ namespace BMM.Core.ViewModels
             INavigateToViewModelAction navigateToViewModelAction,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
             ITranslateDocsAction translateDocsAction,
-            IAppLanguageProvider appLanguageProvider)
+            IAppLanguageProvider appLanguageProvider, IUserStorage user, IFirebaseRemoteConfig config)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -54,6 +58,8 @@ namespace BMM.Core.ViewModels
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
             _translateDocsAction = translateDocsAction;
             _appLanguageProvider = appLanguageProvider;
+            _user = user;
+            _config = config;
             FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
@@ -111,7 +117,8 @@ namespace BMM.Core.ViewModels
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            var docs = (await Client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), policy)).ToList();
+            var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
+            var docs = (await Client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), age, policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
             bool hideStreak = await _settings.GetStreakHidden();
             HideTeasers(docs);
