@@ -10,7 +10,6 @@ using MvvmCross;
 
 namespace BMM.Core.ViewModels
 {
-    // QueueViewModel is actually not dark on Android. We should change that. But right now IDarkStyleViewModel is only used by iOS
     public class QueueViewModel : DocumentsViewModel
     {
         private readonly IMediaQueue _mediaQueue;
