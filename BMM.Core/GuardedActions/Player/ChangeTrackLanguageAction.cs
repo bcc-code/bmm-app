@@ -35,7 +35,7 @@ namespace BMM.Core.GuardedActions.Player
         {
             string selectedLang = await _mvxNavigationService.Navigate<ChangeTrackLanguageViewModel, ITrackModel, string>(PlayerViewModel.CurrentTrack);
             
-            if (string.IsNullOrEmpty(selectedLang))
+            if (string.IsNullOrEmpty(selectedLang) || selectedLang == PlayerViewModel.CurrentTrack?.Language)
                 return;
 
             var track = await _tracksClient.GetById(_mediaPlayer.CurrentTrack.Id, selectedLang);
