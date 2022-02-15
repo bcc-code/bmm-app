@@ -1,11 +1,13 @@
 using System;
 using System.ComponentModel;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
+using MvvmCross;
 using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding;
 using UIKit;

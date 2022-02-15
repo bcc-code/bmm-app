@@ -11,6 +11,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Device;
+using BMM.Core.Implementations.Dialogs;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Exceptions;
@@ -26,6 +27,7 @@ using BMM.UI.iOS.DownloadManager;
 using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
 using BMM.UI.iOS.Implementations.Device;
+using BMM.UI.iOS.Implementations.Dialogs;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
 using BMM.UI.iOS.Implementations.Track;
@@ -83,6 +85,7 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterType<UserNotificationCenterDelegate>();
             Mvx.IoCProvider.RegisterType<IClipboardService, ClipboardService>();
             Mvx.IoCProvider.RegisterType<ITrackOptionsService, iOSTrackOptionsService>();
+            Mvx.IoCProvider.RegisterType<IBMMUserDialogs, iOSBMMUserDialogs>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificRemoteConfig, IosFirebaseRemoteConfig>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeviceSupportVersionChecker, IosSupportVersionChecker>();
 

@@ -170,6 +170,7 @@
     <Compile Include="Application\Helpers\HideKeyboardExtensions.cs" />
     <Compile Include="Application\Helpers\SetupHelper.cs" />
     <Compile Include="Application\Implementations\Device\DroidFeaturePreviewPermission.cs" />
+    <Compile Include="Application\Implementations\Dialogs\DroidBMMUserDialogs.cs" />
     <Compile Include="Application\Implementations\FirebaseRemoteConfig\AndroidFirebaseRemoteConfig.cs" />
     <Compile Include="Application\Implementations\AndroidLogger.cs" />
     <Compile Include="Application\Implementations\ClipboardService.cs" />
@@ -450,6 +451,7 @@
     <AndroidResource Include="Resources\drawable\edit_text_cursor.xml" />
     <AndroidResource Include="Resources\drawable\icon_album.xml" />
     <AndroidResource Include="Resources\drawable\icon_arrow_down.xml" />
+    <AndroidResource Include="Resources\drawable\icon_edit.xml" />
     <AndroidResource Include="Resources\drawable\icon_external_sound.xml" />
     <AndroidResource Include="Resources\drawable\icon_friends.xml" />
     <AndroidResource Include="Resources\drawable\icon_information.xml" />

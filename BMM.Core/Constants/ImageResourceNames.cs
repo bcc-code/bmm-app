@@ -14,5 +14,7 @@ namespace BMM.Core.Constants
         public const string NewPlaceholderCover = "New_Placeholder_Cover";
         public const string IconRepeatOne = "Icon_Repeat_One";
         public const string IconRepeat = "Icon_Repeat";
+        public const string IconFavorites = "Icon_Favorites";
+        public const string IconEdit = "Icon_Edit";
     }
 }

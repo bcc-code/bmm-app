@@ -527,6 +527,7 @@
   },
   "properties": {
     "preserves-vector-representation": false,
+    "template-rendering-intent": "template",
     "on-demand-resources-tags": []
   }
 }
