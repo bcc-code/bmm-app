@@ -14,7 +14,7 @@ namespace BMM.Core.NewMediaPlayer
             _connection = connection;
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             var value = _connection.IsUsingNetworkWithoutExtraCosts() ? "Wifi" : "Mobile";
             return new KeyValuePair<string, string>("AppConnectivity", value);

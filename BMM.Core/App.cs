@@ -41,6 +41,7 @@ using BMM.Core.Implementations.LiveRadio;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Media;
+using BMM.Core.Implementations.Networking;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Notifications.Data;
 using BMM.Core.Implementations.Player;
@@ -166,6 +167,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<ContentLanguageHeaderProvider>();
             Mvx.IoCProvider.RegisterType<JsonContentTypeHeaderProvider>();
             Mvx.IoCProvider.RegisterType<BmmVersionHeaderProvider>();
+            Mvx.IoCProvider.RegisterType<ExperimentIdHeaderProvider>();
             Mvx.IoCProvider.RegisterType<ConnectivityHeaderProvider>();
             Mvx.IoCProvider.RegisterType<MobileDownloadAllowedHeaderProvider>();
             Mvx.IoCProvider.RegisterType<HeaderRequestInterceptor>();

@@ -14,7 +14,7 @@ namespace BMM.Api.RequestInterceptor
             _bmmVersionProvider = bmmVersionProvider;
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             return new KeyValuePair<string, string>("BMM-Version", _bmmVersionProvider.BmmVersion);
         }

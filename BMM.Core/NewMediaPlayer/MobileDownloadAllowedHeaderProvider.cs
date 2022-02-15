@@ -25,7 +25,7 @@ namespace BMM.Core.NewMediaPlayer
             _mobileDownloadAllowedAtAppStart = await _networkSettings.GetMobileNetworkDownloadAllowed();
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             return new KeyValuePair<string, string>("MobileDownloadAllowed", IsMobileDownloadAllowed().ToString());
         }

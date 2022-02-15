@@ -14,7 +14,7 @@ namespace BMM.Core.NewMediaPlayer
             _accessTokenProvider = accessTokenProvider;
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             var accessToken = await _accessTokenProvider.GetAccessToken().ConfigureAwait(false);
             return new KeyValuePair<string, string>("Authorization", $"Bearer {accessToken}");

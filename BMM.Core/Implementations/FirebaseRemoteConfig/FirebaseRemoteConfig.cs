@@ -34,6 +34,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string UserVoiceLink = "user_voice_link";
             
             public const string SongTreasuresSongLink = "songtreasures_song_link";
+            public const string ExperimentId = "experiment_id";
         }
 
         public static readonly Dictionary<string, string> Defaults = new Dictionary<string, string>
@@ -51,7 +52,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.AutoplayEnabledDefaultSetting, false.ToString()},
             {Variables.UseAnalyticsId, false.ToString()},
             {Variables.UserVoiceLink, "https://uservoice.bcc.no/?tags=bmm"},
-            {Variables.SongTreasuresSongLink, "https://songtreasures.app/songs/{0}/{1}"}
+            {Variables.SongTreasuresSongLink, "https://songtreasures.app/songs/{0}/{1}"},
+            {Variables.ExperimentId, ""}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -80,6 +82,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public string IdentityUserInfoEndpoint => _platformSpecificRemoteConfig.GetStringValue(Variables.IdentityUserInfoEndpoint);
 
         public string[] SupportedContentLanguages => _platformSpecificRemoteConfig.GetStringValue(Variables.SupportedContentLanguages).Split(',');
+
+        public string ExperimentId => _platformSpecificRemoteConfig.GetStringValue(Variables.ExperimentId);
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
             _semanticVersionParser.ParseStringToSemanticVersionObject(_platformSpecificRemoteConfig.GetStringValue(Variables.AndroidVersionPlannedToBeUnsupported));
