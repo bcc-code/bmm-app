@@ -1,7 +1,7 @@
 {
   "images": [
     {
-      "filename": "new_placeholder_cover-1.pdf",
+      "filename": "icon_edit.pdf",
       "idiom": "universal"
     },
     {
@@ -23,7 +23,6 @@
           "value": "dark"
         }
       ],
-      "filename": "new_placeholder_cover_dark.pdf",
       "idiom": "universal"
     },
     {
@@ -63,7 +62,6 @@
           "value": "light"
         }
       ],
-      "filename": "new_placeholder_cover.pdf",
       "idiom": "universal"
     },
     {
@@ -529,8 +527,7 @@
   },
   "properties": {
     "preserves-vector-representation": false,
-    "on-demand-resources-tags": [
-      "dupa"
-    ]
+    "template-rendering-intent": "template",
+    "on-demand-resources-tags": []
   }
 }

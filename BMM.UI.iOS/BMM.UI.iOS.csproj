@@ -34,7 +34,7 @@
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <MtouchExtraArgs>--framework:"$(HOME)/Library/Application Support/Reveal/RevealServer/RevealServer.xcframework/ios-arm64_i386_x86_64-simulator/RevealServer.framework"</MtouchExtraArgs>
+    <MtouchExtraArgs></MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
@@ -68,7 +68,7 @@
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchUseThumb>true</MtouchUseThumb>
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
-    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchArch>x86_64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -620,6 +620,7 @@
     <Compile Include="Application\Helpers\VisibilityBindingsManager.cs" />
     <Compile Include="Application\Helpers\UIViewVisibilityController.cs" />
     <Compile Include="Application\Implementations\Device\iOSFeatureSupportInfoService.cs" />
+    <Compile Include="Application\Implementations\Dialogs\iOSBMMUserDialogs.cs" />
     <Compile Include="Application\Implementations\Download\OngoingDownloadsLockDictionary.cs" />
     <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadDoesNotExistException.cs" />
     <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadException.cs" />
@@ -1092,6 +1093,10 @@
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends.png" />
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\icon_edit.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\icon_favorites.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\icon_info.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\Contents.json" />
@@ -1214,6 +1219,7 @@
     <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\icon_more.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover-1.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover_dark.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\Contents.json" />

@@ -49,9 +49,7 @@ namespace BMM.UI.iOS
             BindingContext.DataContextChanged += (sender, e) =>
             {
                 if (DataContext == null)
-                {
                     return;
-                }
                 
                 if (_bindingsManager == null)
                 {

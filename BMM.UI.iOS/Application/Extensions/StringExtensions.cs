@@ -18,7 +18,7 @@ namespace BMM.UI.iOS.Extensions
         
         public static string ToStandardIosImageName(this string imagePath)
         {
-            return imagePath.Replace(StringConstants.Underscore, string.Empty);
+            return imagePath?.Replace(StringConstants.Underscore, string.Empty);
         }
     }
 }

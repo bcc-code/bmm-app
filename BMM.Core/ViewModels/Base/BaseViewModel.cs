@@ -14,6 +14,7 @@ using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Dialogs;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Localization.Interfaces;
@@ -166,10 +167,8 @@ namespace BMM.Core.ViewModels.Base
                         {"documentType", item.DocumentType}, {"id", item.Id}
                     });
 
+            var bmmUserDialogs = Mvx.IoCProvider.Resolve<IBMMUserDialogs>();
             var isInOnlineMode = Mvx.IoCProvider.Resolve<IConnection>().GetStatus() == ConnectionStatus.Online;
-            var imageDelete = "icon_trash_static.png";
-            var imageAddTo = "icon_nav_content_static.png";
-            var imageShare = "icon_share.png";
 
             switch (item.DocumentType)
             {
@@ -180,21 +179,19 @@ namespace BMM.Core.ViewModels.Base
 
                 case DocumentType.Album:
                     var album = (Album)item;
-                    Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
+                    bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                         .SetTitle(album.Title)
-                        .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddAlbumToTrackCollection(album.Id), imageAddTo)
-                        .AddHandled(TextSource[Translations.UserDialogs_Album_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(album), imageShare)
-                        .SetCancel(TextSource[Translations.UserDialogs_Cancel])
-                    );
+                        .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddAlbumToTrackCollection(album.Id), ImageResourceNames.IconFavorites)
+                        .AddHandled(TextSource[Translations.UserDialogs_Album_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(album), ImageResourceNames.IconShare)
+                        .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
                     break;
 
                 case DocumentType.Contributor:
                     var contributor = (Contributor)item;
-                    Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
+                    bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                         .SetTitle(contributor.Name)
-                        .AddHandled(TextSource[Translations.UserDialogs_Contributor_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(contributor), imageShare)
-                        .SetCancel(TextSource[Translations.UserDialogs_Cancel])
-                    );
+                        .AddHandled(TextSource[Translations.UserDialogs_Contributor_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(contributor), ImageResourceNames.IconShare)
+                        .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
                     break;
 
                 case DocumentType.TrackCollection:
@@ -203,13 +200,13 @@ namespace BMM.Core.ViewModels.Base
                         var trackCollection = (TrackCollection)item;
 
                         if (trackCollection.CanEdit)
-                            ShowActionSheetIfPrivateTrackCollection(trackCollection, imageShare, imageDelete);
+                            ShowActionSheetIfPrivateTrackCollection(bmmUserDialogs, trackCollection, ImageResourceNames.IconShare, ImageResourceNames.IconRemove);
                         else
-                            ShowActionSheetIfSharedTrackCollection(trackCollection, imageDelete);
+                            ShowActionSheetIfSharedTrackCollection(bmmUserDialogs, trackCollection, ImageResourceNames.IconRemove);
                     }
                     else
                     {
-                        Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
+                        bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                             .SetTitle(((TrackCollection)item).Name)
                             .SetCancel(TextSource[Translations.UserDialogs_Cancel])
                     );
@@ -227,11 +224,10 @@ namespace BMM.Core.ViewModels.Base
         }
 
         private void ShowActionSheetIfSharedTrackCollection(
+            IBMMUserDialogs userDialogs,
             TrackCollection trackCollection,
             string imageDelete)
         {
-            var userDialogs = Mvx.IoCProvider.Resolve<IUserDialogs>();
-
             userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
                 .AddHandled(
@@ -242,12 +238,12 @@ namespace BMM.Core.ViewModels.Base
         }
 
         private void ShowActionSheetIfPrivateTrackCollection(
+            IBMMUserDialogs userDialogs,
             TrackCollection trackCollection,
             string imageShare,
             string imageDelete)
         {
-            var imageRename = "icon_edit_static.png";
-            Mvx.IoCProvider.Resolve<IUserDialogs>().ActionSheet(new ActionSheetConfig()
+            userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
                 .AddHandled(TextSource[Translations.TrackCollectionViewModel_SharePlaylist],
                     async () =>
@@ -262,7 +258,7 @@ namespace BMM.Core.ViewModels.Base
                         await NavigationService.Navigate<EditTrackCollectionViewModel, ITrackCollectionParameter>(
                             new TrackCollectionParameter(trackCollection.Id));
                     },
-                    imageRename)
+                    ImageResourceNames.IconEdit)
                 .SetCancel(TextSource[Translations.UserDialogs_Cancel])
             );
         }

@@ -177,7 +177,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5j-lo-SN9">
                             <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="ClW-Jw-VWg"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="56" id="ClW-Jw-VWg"/>
                                 <constraint firstAttribute="height" constant="48" id="bMu-cr-ErA"/>
                             </constraints>
                             <color key="tintColor" name="LabelPrimaryColor"/>
@@ -187,7 +187,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YtY-6b-jCI">
                             <rect key="frame" x="81.333333333333329" y="0.0" width="56.999999999999986" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="EMg-Kh-hu6"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="56" id="EMg-Kh-hu6"/>
                                 <constraint firstAttribute="height" constant="48" id="ho1-bt-V2H"/>
                             </constraints>
                             <color key="tintColor" name="LabelPrimaryColor"/>
@@ -199,17 +199,16 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="9L1-Np-at4"/>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="mma-AX-dxN"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="56" id="mma-AX-dxN"/>
                             </constraints>
                             <color key="tintColor" name="LabelPrimaryColor"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="IconPlay"/>
-                            <state key="selected" image="PauseIcon"/>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5gZ-wz-gnY">
                             <rect key="frame" x="243.66666666666669" y="0.0" width="57" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="NDZ-o9-UIt"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="56" id="NDZ-o9-UIt"/>
                                 <constraint firstAttribute="height" constant="48" id="yJ6-NW-0GN"/>
                             </constraints>
                             <color key="tintColor" name="LabelPrimaryColor"/>
@@ -219,7 +218,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9N8-Me-Jbx">
                             <rect key="frame" x="324.66666666666669" y="0.0" width="57.333333333333314" height="48"/>
                             <constraints>
-                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="56" id="Zlc-L5-bSI"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="999" constant="56" id="Zlc-L5-bSI"/>
                                 <constraint firstAttribute="height" constant="48" id="uyP-d4-Twn"/>
                             </constraints>
                             <color key="tintColor" name="LabelPrimaryColor"/>
@@ -341,7 +340,6 @@
                 <constraint firstItem="DS1-31-Cvu" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" id="aGL-zT-TA0"/>
                 <constraint firstItem="SCY-QA-nwU" firstAttribute="top" secondItem="jsC-GB-jT3" secondAttribute="bottom" constant="6" id="fur-AG-1S4"/>
                 <constraint firstItem="jsC-GB-jT3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ug9-Uj-hs6" secondAttribute="bottom" constant="16" id="g6z-EN-paF"/>
-                <constraint firstItem="bna-ML-NDm" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lgp-IA-VDZ"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="bottom" secondItem="csf-As-ARZ" secondAttribute="bottom" constant="16" id="lx5-6A-4fD"/>
                 <constraint firstItem="csf-As-ARZ" firstAttribute="top" secondItem="bna-ML-NDm" secondAttribute="bottom" constant="24" id="noo-FI-UGT"/>
                 <constraint firstItem="Ug9-Uj-hs6" firstAttribute="centerX" secondItem="r0d-W3-y3K" secondAttribute="centerX" id="pa1-sL-5jz"/>
@@ -352,9 +350,6 @@
                 <constraint firstItem="y40-s0-dpz" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="ynt-mi-HVq"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-            <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="PlayerView"/>
-            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="323.1884057971015" y="374.33035714285711"/>
         </view>
     </objects>
@@ -362,12 +357,11 @@
         <image name="CastIcon" width="24" height="24"/>
         <image name="IconDownArrow" width="24" height="24"/>
         <image name="IconLink" width="24" height="24"/>
+        <image name="IconPlay" width="48" height="48"/>
         <image name="IconQueue" width="24" height="24"/>
         <image name="IconRepeat" width="24" height="24"/>
         <image name="MoreIcon" width="24" height="24"/>
         <image name="NextIcon" width="32" height="32"/>
-        <image name="IconPause" width="48" height="48"/>
-        <image name="IconPlay" width="48" height="48"/>
         <image name="PreviousIcon" width="32" height="32"/>
         <image name="ShuffleIcon" width="24" height="24"/>
         <image name="SkipBackIcon" width="32" height="32"/>
