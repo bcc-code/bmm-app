@@ -1,4 +1,6 @@
 using Android.Views;
+using BMM.Core.Constants;
+using BMM.UI.Droid.Application.Constants.Player;
 
 namespace BMM.UI.Droid.Application.Extensions
 {
@@ -36,6 +38,12 @@ namespace BMM.UI.Droid.Application.Extensions
             lp.Height = size;
             lp.Width = size;
             view.LayoutParameters = lp;
+        }
+        
+        public static bool IsLong(this View view)
+        {
+            float widthToHeightRatio = view.Width / (float)view.Height;
+            return widthToHeightRatio < CoverConstants.WidthToHighRatio.LongThreshold;
         }
     }
 }

@@ -375,7 +375,6 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             float coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Medium;
 
-            float widthToHeightRatio = View.Width / (float)View.Height;
             
             if (View.Height <= AndroidScreenSizesHeight.HD)
                 _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
@@ -383,15 +382,15 @@ namespace BMM.UI.Droid.Application.Fragments
                 _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Medium;
             else
             {
-                if (widthToHeightRatio > CoverConstants.WidthToHighRatio.Long)
-                {
-                    _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
-                    coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Small;
-                }
-                else
+                if (View.IsLong())
                 {
                     _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Big;
                     coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Big;
+                }
+                else
+                {
+                    _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
+                    coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Small;
                 }
             }
 
