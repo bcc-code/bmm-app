@@ -241,7 +241,8 @@
   },
   "PlayerViewModel": {
     "Title": "Now playing",
-    "PlayingCount": "Lecture {0} sur {1}"
+    "PlayingCount": "Lecture {0} sur {1}",
+    "ViewLyrics": "View Lyrics"
   },
   "QueueViewModel": {
     "Title": "File d'attente"
@@ -465,5 +466,10 @@
     "Light": "Light",
     "Dark": "Dark",
     "System": "Follow system settings (Auto)"
+  },
+  "ChangeTrackLanguageViewModel": {
+    "Title": "Track Language",
+    "PreferredLanguages": "Your preferred languages",
+    "AllLanguages": "Toutes les langues"
   }
 }
