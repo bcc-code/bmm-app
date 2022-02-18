@@ -16,12 +16,14 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
                 return default;
 
             var subtitleList = new List<string>();
+            string title = GetTitle(track);
             
             string songNumber = track.Relations?.OfType<TrackRelationSongbook>()
                 .Select(song => song.ShortName)
                 .FirstOrDefault();
             
-            subtitleList.AddIfNotNullOrEmpty(songNumber);
+            if (title != songNumber)
+                subtitleList.AddIfNotNullOrEmpty(songNumber);
 
             if (!IsArtistUsedAsTitle(track))
                 subtitleList.AddIfNotNullOrEmpty(track.Artist);
@@ -30,7 +32,7 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
 
             return new TrackInformation
             {
-                Label = GetTitle(track),
+                Label = title,
                 Subtitle = string.Join($" {StringConstants.Dash} ", subtitleList)
             };
         }

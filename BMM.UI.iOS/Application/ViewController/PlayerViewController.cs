@@ -1,7 +1,6 @@
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
@@ -41,7 +40,8 @@ namespace BMM.UI.iOS
         private bool _isShuffleEnabled;
         private RepeatType _repeatType;
         private int _bottomMargin = DefaultBottomMarginConstant;
-
+        private UIStatusBarStyle _previousStatusBarStyle;
+        
         public PlayerViewController()
             : base(nameof(PlayerViewController))
         {
@@ -49,6 +49,7 @@ namespace BMM.UI.iOS
             _pauseIcon = UIImage.FromBundle(ImageResourceNames.IconPause.ToStandardIosImageName())!.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
         }
 
+        private bool SupportsNotFullscreenPageSheetPresentation => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
         public override Type ParentViewControllerType => typeof(UINavigationController);
         protected override string GetTitle() => string.Empty;
         public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation() => UIInterfaceOrientation.Portrait;
@@ -179,7 +180,7 @@ namespace BMM.UI.iOS
             base.DetachEvents();
             TrackCoverImageView.ImageChanged -= TrackCoverImageViewOnImageChanged;
         }
-
+        
         private async void TrackCoverImageViewOnImageChanged(object sender, EventArgs e)
         {
             string coverPlaceholderPath = ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName();
@@ -362,10 +363,30 @@ namespace BMM.UI.iOS
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
             BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
+            
+            RunIfDeviceSupportsNotFullscreenPageSheetPresentation(() =>
+            {
+                _previousStatusBarStyle = UIApplication.SharedApplication.StatusBarStyle;
+                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
+            });
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+            RunIfDeviceSupportsNotFullscreenPageSheetPresentation(() => UIApplication.SharedApplication.SetStatusBarStyle(_previousStatusBarStyle, true));
         }
 
         protected override void SetNavigationBarAppearance() => Expression.Empty();
 
+        private void RunIfDeviceSupportsNotFullscreenPageSheetPresentation(Action action)
+        {
+            if (!SupportsNotFullscreenPageSheetPresentation)
+                return;
+
+            action?.Invoke();
+        }
+        
         private void UpdateRepeatImage(RepeatType repeatType)
         {
             bool isSelected = repeatType != RepeatType.None;
