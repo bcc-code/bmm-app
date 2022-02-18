@@ -17,7 +17,7 @@ namespace BMM.UI.Droid.Application.Constants.Player
         /// </summary>
         public class WidthToHighRatio
         {
-            public const float Long = 0.6f;
+            public const float LongThreshold = 0.6f;
         }
         
         /// <summary>
