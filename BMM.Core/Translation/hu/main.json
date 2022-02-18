@@ -241,7 +241,8 @@
   },
   "PlayerViewModel": {
     "Title": "Nincs lejátszás",
-    "PlayingCount": "{0} / {1}"
+    "PlayingCount": "{0} / {1}",
+    "ViewLyrics": "View Lyrics"
   },
   "QueueViewModel": {
     "Title": "Várólista"
@@ -465,5 +466,10 @@
     "Light": "Világos",
     "Dark": "Sötét",
     "System": "Rendszerbeállítások követése (Auto)"
+  },
+  "ChangeTrackLanguageViewModel": {
+    "Title": "Track Language",
+    "PreferredLanguages": "Your preferred languages",
+    "AllLanguages": "Minden nyelv"
   }
 }
