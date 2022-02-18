@@ -128,7 +128,7 @@ namespace BMM.Core.ViewModels
 
         #endregion
 
-        public readonly ITrackInfoProvider TrackInfoProvider = new PlayerTrackInfoProvider();
+        public virtual ITrackInfoProvider TrackInfoProvider { get; }
 
         // Caution: On Android this ViewModel lives the whole time, whereas iOS creates a new instance every time the player is opened
         public PlayerBaseViewModel(IMediaPlayer mediaPlayer)

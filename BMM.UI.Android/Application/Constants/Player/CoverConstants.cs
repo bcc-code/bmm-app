@@ -13,11 +13,11 @@ namespace BMM.UI.Droid.Application.Constants.Player
         }
         
         /// <summary>
-        /// Holds width to height ratio and describes at geometry figures 
+        /// Holds width to height ratio
         /// </summary>
         public class WidthToHighRatio
         {
-            public const float NearlySquare = 0.8f;
+            public const float Long = 0.6f;
         }
         
         /// <summary>

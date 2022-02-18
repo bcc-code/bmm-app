@@ -126,6 +126,7 @@ namespace BMM.UI.Droid.Application.Fragments
             var bottomSheet = BottomSheetBehavior.From(PlayerFragmentContainer);
             _bottomSheetManager = new BottomSheetManager(bottomSheet);
             bottomSheet.SetBottomSheetCallback(_bottomSheetManager);
+            _bottomSheetManager.Close();
 
             _preventBottomSheetChangesWhileSwipeHappens =
                 new PreventBottomSheetChangesWhileSwipeHappens(_bottomSheetManager, _swipeDetector);
@@ -382,7 +383,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Medium;
             else
             {
-                if (widthToHeightRatio > CoverConstants.WidthToHighRatio.NearlySquare)
+                if (widthToHeightRatio > CoverConstants.WidthToHighRatio.Long)
                 {
                     _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
                     coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Small;
