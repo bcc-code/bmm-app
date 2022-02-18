@@ -139,12 +139,12 @@ namespace BMM.UI.Droid.Application.CustomViews
                     if (_bounds.Width() != 0
                         && _bounds.Height() != 0)
                     {
-                        _bitmap = Bitmap.CreateBitmap(_bounds.Width(), _bounds.Height(), Bitmap.Config.Argb8888);
+                        _bitmap = Bitmap.CreateBitmap(_bounds.Width(), _bounds.Height(), Bitmap.Config.Argb8888!);
                         _canvas.SetBitmap(_bitmap);
                         _invalidateShadow = false;
                         base.DispatchDraw(_canvas);
                         var extractedAlphaBitmap = _bitmap.ExtractAlpha();
-                        _canvas.DrawColor(0, BlendMode.Clear);
+                        _canvas.DrawColor(Color.Transparent, PorterDuff.Mode.Clear!);
                         _paint.Color = AdjustShadowAlpha(false);
                         _canvas.DrawBitmap(extractedAlphaBitmap,
                             _shadowDx,
@@ -154,7 +154,7 @@ namespace BMM.UI.Droid.Application.CustomViews
                     }
                     else
                     {
-                        _bitmap = Bitmap.CreateBitmap(1, 1, Bitmap.Config.Rgb565);
+                        _bitmap = Bitmap.CreateBitmap(1, 1, Bitmap.Config.Rgb565!);
                     }
 
                 }

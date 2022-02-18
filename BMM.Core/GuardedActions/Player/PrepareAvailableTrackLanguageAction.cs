@@ -44,7 +44,7 @@ namespace BMM.Core.GuardedActions.Player
             var selectablePOs = new List<BasePO>();
             selectablePOs.AddRange(await GetPreferredLanguageSection(allAvailableLanguages));
 
-            var alreadyAddedLanguages = selectablePOs.OfType<StandardSelectablePO>().Select(s => s.Label);
+            var alreadyAddedLanguages = selectablePOs.OfType<StandardSelectablePO>().Select(s => s.Value);
             selectablePOs.AddRange(GetRestOfLanguages(allAvailableLanguages, alreadyAddedLanguages));
 
             selectablePOs

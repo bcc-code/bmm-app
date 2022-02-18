@@ -4,15 +4,10 @@ using Acr.UserDialogs;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Tracks.Interfaces;
-using BMM.Core.Messages;
 using BMM.Core.Models.POs;
 using BMM.Core.Translation;
-using BMM.Core.ViewModels;
-using BMM.Core.ViewModels.Parameters;
-using BMM.Core.ViewModels.Parameters.Interface;
 using BMM.UI.iOS.Extensions;
 using MvvmCross.Base;
-using MvvmCross.Navigation;
 
 namespace BMM.UI.iOS.Implementations.Track
 {

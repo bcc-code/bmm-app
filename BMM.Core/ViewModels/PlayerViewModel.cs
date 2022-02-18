@@ -5,6 +5,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations;
+using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Interactions;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
@@ -38,6 +39,7 @@ namespace BMM.Core.ViewModels
         
         private bool _directlyShowPlayerForAndroid;
         private bool _hasExternalRelations;
+        private PlayerTrackInfoProvider _playerTrackInfoProvider;
 
         public IMvxInteraction<TogglePlayerInteraction> ClosePlayerInteraction => _closePlayerInteraction;
 
@@ -142,6 +144,8 @@ namespace BMM.Core.ViewModels
             SetupSubscriptions();
         }
 
+        public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
+
         private void OpenLyricsLink() => _uriOpener.OpenUri(new Uri(SongTreasureLink));
 
         public void Prepare(bool showPlayer)
@@ -203,7 +207,7 @@ namespace BMM.Core.ViewModels
         {
             return base.ShowTrackInfo(CurrentTrack as Track);
         }
-
+        
         protected override async Task OnCurrentTrackChanged()
         {
             await base.OnCurrentTrackChanged();

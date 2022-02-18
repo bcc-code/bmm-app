@@ -200,7 +200,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                             goToContributorOptions.Add(new StandardIconOptionPO(
                                                 _bmmLanguageBinder.GetText(Translations.UserDialogs_Track_GoToContributor_Composer,
                                                     rel.Name),
-                                                null,
+                                                ImageResourceNames.IconPerson,
                                                 new MvxAsyncCommand(() => GoToContributorVM(rel.Id))));
                                         }
                                     }
@@ -215,7 +215,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                             goToContributorOptions.Add(new StandardIconOptionPO(
                                                 _bmmLanguageBinder.GetText(Translations.UserDialogs_Track_GoToContributor_Interpret,
                                                     rel.Name),
-                                                null,
+                                                ImageResourceNames.IconPerson,
                                                 new MvxAsyncCommand(() => GoToContributorVM(rel.Id))));
                                         }
                                     }
@@ -230,7 +230,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                             goToContributorOptions.Add(new StandardIconOptionPO(
                                                 _bmmLanguageBinder.GetText(Translations.UserDialogs_Track_GoToContributor_Lyricist,
                                                     rel.Name),
-                                                null,
+                                                ImageResourceNames.IconPerson,
                                                 new MvxAsyncCommand(() => GoToContributorVM(rel.Id))));
                                         }
                                     }
@@ -245,7 +245,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                             goToContributorOptions.Add(new StandardIconOptionPO(
                                                 _bmmLanguageBinder.GetText(Translations.UserDialogs_Track_GoToContributor_Arranger,
                                                     rel.Name),
-                                                null,
+                                                ImageResourceNames.IconPerson,
                                                 new MvxAsyncCommand(() => GoToContributorVM(rel.Id))));
                                         }
                                     }

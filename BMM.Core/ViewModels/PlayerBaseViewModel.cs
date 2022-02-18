@@ -24,9 +24,19 @@ namespace BMM.Core.ViewModels
         
         private readonly DebounceDispatcher _currentTrackDebounceDispatcher;
 
-        public MvxCommand PlayPauseCommand { get; }
-
         private ITrackModel _currentTrack;
+        
+        public MvxCommand PlayPauseCommand { get; }
+        
+        /// <summary>
+        /// When changing the song on Android, exo player sends few current track updates, where few of them is just null.
+        ///
+        /// Exemplary sequence looks like that:
+        /// Current Song => (next button clicked) => null => Current Song => null => null => Next Song
+        ///
+        /// This is changing in very short time, so adding debouncer with small slippage prevents plaver view from flickering,
+        /// as finally we react for only one update.
+        /// </summary>
         public ITrackModel CurrentTrack
         {
             get => _currentTrack;
@@ -118,7 +128,7 @@ namespace BMM.Core.ViewModels
 
         #endregion
 
-        public readonly ITrackInfoProvider TrackInfoProvider = new PlayerTrackInfoProvider();
+        public virtual ITrackInfoProvider TrackInfoProvider { get; }
 
         // Caution: On Android this ViewModel lives the whole time, whereas iOS creates a new instance every time the player is opened
         public PlayerBaseViewModel(IMediaPlayer mediaPlayer)

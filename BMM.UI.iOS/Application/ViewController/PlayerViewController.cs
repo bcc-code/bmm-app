@@ -1,6 +1,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
@@ -11,8 +12,6 @@ using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Utils;
 using BMM.UI.iOS.Utils.ColorPalette;
 using CoreGraphics;
-using FFImageLoading.Args;
-using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
@@ -96,7 +95,6 @@ namespace BMM.UI.iOS
                 .For(v => v.ImagePath)
                 .To(vm => vm.CurrentTrack.ArtworkUri)
                 .WithConversion<CoverUrlToFallbackImageValueConverter>(ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName());
-            TrackCoverImageView.ImageChanged += TrackCoverImageViewOnImageChanged;
 
             set.Bind(SliderPositionTimeLabel).To(vm => vm.SliderPosition).WithConversion<MillisecondsToTimeValueConverter>();
             set.Bind(SliderPositionTimeLabel).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
@@ -170,9 +168,29 @@ namespace BMM.UI.iOS
             SetViewMargins();
         }
 
-        private void TrackCoverImageViewOnImageChanged(object sender, EventArgs e)
+        protected override void AttachEvents()
         {
-            bool shouldTintBackground = TrackCoverImageView.Image?.AccessibilityIdentifier != ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName();
+            base.AttachEvents();
+            TrackCoverImageView.ImageChanged += TrackCoverImageViewOnImageChanged;
+        }
+        
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            TrackCoverImageView.ImageChanged -= TrackCoverImageViewOnImageChanged;
+        }
+
+        private async void TrackCoverImageViewOnImageChanged(object sender, EventArgs e)
+        {
+            string coverPlaceholderPath = ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName();
+            await Task.Delay(ViewConstants.QuickAnimationDurationInMilliseconds / 2);
+            
+            bool shouldTintBackground =
+                !TrackCoverImageView.IsLoading
+                && !TrackCoverImageView.IsError
+                && TrackCoverImageView.Image?.AccessibilityIdentifier != coverPlaceholderPath
+                && TrackCoverImageView.ImagePath != coverPlaceholderPath;
+            
             SetCoverShadowLayer(shouldTintBackground);
         }
 
@@ -339,9 +357,8 @@ namespace BMM.UI.iOS
 
             CoverHeightConstraint.Constant = coverSize;
             CoverWidthConstraint.Constant = coverSize;
-
+            
             var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
-
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
             BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
