@@ -241,7 +241,8 @@
   },
   "PlayerViewModel": {
     "Title": "Spilles nå",
-    "PlayingCount": "{0} av {1}"
+    "PlayingCount": "{0} av {1}",
+    "ViewLyrics": "View Lyrics"
   },
   "QueueViewModel": {
     "Title": "Kø"
@@ -465,5 +466,10 @@
     "Light": "Light",
     "Dark": "Dark",
     "System": "Follow system settings (Auto)"
+  },
+  "ChangeTrackLanguageViewModel": {
+    "Title": "Track Language",
+    "PreferredLanguages": "Your preferred languages",
+    "AllLanguages": "Alle språk"
   }
 }
