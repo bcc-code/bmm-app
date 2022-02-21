@@ -27,7 +27,7 @@ namespace BMM.Core.Implementations.Security
             {
                 _client = new HttpClient();
                 var authHeader = await _authorizationHeaderProvider.GetHeader();
-                _client.DefaultRequestHeaders.Add(authHeader.Key, authHeader.Value);
+                _client.DefaultRequestHeaders.Add(authHeader.Value.Key, authHeader.Value.Value);
             }
 
             var response = await _client.GetAsync(_remoteConfig.IdentityUserInfoEndpoint);

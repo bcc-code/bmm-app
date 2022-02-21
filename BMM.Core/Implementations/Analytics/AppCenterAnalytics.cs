@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using BMM.Api.Framework;
-using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Constants;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Security;
 
@@ -38,6 +38,9 @@ namespace BMM.Core.Implementations.Analytics
                 if (user.Age != null)
                     parameters.Add(nameof(user.Age), user.Age);
             }
+
+            if (!string.IsNullOrEmpty(_remoteConfig.ExperimentId))
+                AddIfNew(parameters, HeaderNames.ExperimentId, _remoteConfig.ExperimentId);
 
             Dictionary<string, string> dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
             _logger.Info("Analytics", eventName + " {" + string.Join(",", dString.Select(kv => $"{kv.Key}={kv.Value}")) + "}");

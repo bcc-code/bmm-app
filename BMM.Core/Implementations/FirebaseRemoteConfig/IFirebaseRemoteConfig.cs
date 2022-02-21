@@ -34,5 +34,9 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         string UserVoiceLink { get; }
         
         string SongTreasuresSongLink  { get; }
+        
+        string ExperimentId { get; }
+        
+        bool SendAgeToDiscover { get; }
     }
 }

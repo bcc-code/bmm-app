@@ -14,7 +14,9 @@ using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Messages;
 using MvvmCross.Plugin.Messenger;
 
@@ -34,6 +36,8 @@ namespace BMM.Core.Implementations.Downloading
         private readonly INetworkSettings _networkSettings;
         private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
         private readonly IStorageManager _storageManager;
+        private readonly IUserStorage _user;
+        private readonly IFirebaseRemoteConfig _config;
 
         public GlobalMediaDownloader(IStorageManager storageManager,
             IExceptionHandler exceptionHandler,
@@ -45,7 +49,9 @@ namespace BMM.Core.Implementations.Downloading
             IDownloadQueue downloadQueue,
             IAppContentLogger appContentLogger,
             IGlobalTrackProvider globalTrackProvider,
-            IAppLanguageProvider appLanguageProvider)
+            IAppLanguageProvider appLanguageProvider,
+            IUserStorage user,
+            IFirebaseRemoteConfig config)
         {
             _storageManager = storageManager;
             _exceptionHandler = exceptionHandler;
@@ -58,6 +64,8 @@ namespace BMM.Core.Implementations.Downloading
             _appContentLogger = appContentLogger;
             _globalTrackProvider = globalTrackProvider;
             _appLanguageProvider = appLanguageProvider;
+            _user = user;
+            _config = config;
         }
 
         public async Task InitializeCacheAndSynchronizeTracks()
@@ -128,7 +136,8 @@ namespace BMM.Core.Implementations.Downloading
         /// </summary>
         private Task UpdateHomescreen()
         {
-            return _client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), CachePolicy.UseCacheAndWaitForUpdates);
+            var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
+            return _client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), age, CachePolicy.UseCacheAndWaitForUpdates);
         }
 
         private async Task UpdateOfflineTracks()

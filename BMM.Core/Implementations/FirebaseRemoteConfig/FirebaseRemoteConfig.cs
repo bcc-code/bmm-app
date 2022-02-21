@@ -32,8 +32,10 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string UseAnalyticsId = "use_analytics_id";
 
             public const string UserVoiceLink = "user_voice_link";
-            
+
             public const string SongTreasuresSongLink = "songtreasures_song_link";
+            public const string ExperimentId = "experiment_id";
+            public const string SendAgeToDiscover = "send_age_to_discover";
         }
 
         public static readonly Dictionary<string, string> Defaults = new Dictionary<string, string>
@@ -51,7 +53,9 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.AutoplayEnabledDefaultSetting, false.ToString()},
             {Variables.UseAnalyticsId, false.ToString()},
             {Variables.UserVoiceLink, "https://uservoice.bcc.no/?tags=bmm"},
-            {Variables.SongTreasuresSongLink, "https://songtreasures.app/songs/{0}/{1}"}
+            {Variables.SongTreasuresSongLink, "https://songtreasures.app/songs/{0}/{1}"},
+            {Variables.ExperimentId, string.Empty},
+            {Variables.SendAgeToDiscover, false.ToString()}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -68,7 +72,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public bool UseAnalyticsId => _platformSpecificRemoteConfig.GetBoolValue(Variables.UseAnalyticsId);
 
         public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
-        
+
         public string SongTreasuresSongLink => _platformSpecificRemoteConfig.GetStringValue(Variables.SongTreasuresSongLink);
 
         public bool AutoplayEnabledDefaultSetting => _platformSpecificRemoteConfig.GetBoolValue(Variables.AutoplayEnabledDefaultSetting);
@@ -79,24 +83,35 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
 
         public string IdentityUserInfoEndpoint => _platformSpecificRemoteConfig.GetStringValue(Variables.IdentityUserInfoEndpoint);
 
-        public string[] SupportedContentLanguages => _platformSpecificRemoteConfig.GetStringValue(Variables.SupportedContentLanguages).Split(',');
+        public string[] SupportedContentLanguages =>
+            _platformSpecificRemoteConfig.GetStringValue(Variables.SupportedContentLanguages).Split(',');
+
+        public string ExperimentId => _platformSpecificRemoteConfig.GetStringValue(Variables.ExperimentId);
+
+        public bool SendAgeToDiscover => _platformSpecificRemoteConfig.GetBoolValue(Variables.SendAgeToDiscover);
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
-            _semanticVersionParser.ParseStringToSemanticVersionObject(_platformSpecificRemoteConfig.GetStringValue(Variables.AndroidVersionPlannedToBeUnsupported));
+            _semanticVersionParser.ParseStringToSemanticVersionObject(
+                _platformSpecificRemoteConfig.GetStringValue(Variables.AndroidVersionPlannedToBeUnsupported));
 
         public SemanticVersion MinimumRequiredAndroidVersion =>
-            _semanticVersionParser.ParseStringToSemanticVersionObject(_platformSpecificRemoteConfig.GetStringValue(Variables.MinimumRequiredAndroidVersion));
+            _semanticVersionParser.ParseStringToSemanticVersionObject(
+                _platformSpecificRemoteConfig.GetStringValue(Variables.MinimumRequiredAndroidVersion));
 
         public SemanticVersion IosVersionPlannedToBeUnsupported =>
-            _semanticVersionParser.ParseStringToSemanticVersionObject(_platformSpecificRemoteConfig.GetStringValue(Variables.IosVersionPlannedToBeUnsupported));
+            _semanticVersionParser.ParseStringToSemanticVersionObject(
+                _platformSpecificRemoteConfig.GetStringValue(Variables.IosVersionPlannedToBeUnsupported));
 
         public SemanticVersion MinimumRequiredIosVersion =>
-            _semanticVersionParser.ParseStringToSemanticVersionObject(_platformSpecificRemoteConfig.GetStringValue(Variables.MinimumRequiredIosVersion));
+            _semanticVersionParser.ParseStringToSemanticVersionObject(
+                _platformSpecificRemoteConfig.GetStringValue(Variables.MinimumRequiredIosVersion));
 
         public SemanticVersion MinimumRequiredAppVersion =>
-            _semanticVersionParser.ParseStringToSemanticVersionObject(_platformSpecificRemoteConfig.GetStringValue(Variables.MinimumRequiredAppVersion));
+            _semanticVersionParser.ParseStringToSemanticVersionObject(
+                _platformSpecificRemoteConfig.GetStringValue(Variables.MinimumRequiredAppVersion));
 
         public SemanticVersion AppVersionPlannedToBeUnsupported =>
-            _semanticVersionParser.ParseStringToSemanticVersionObject(_platformSpecificRemoteConfig.GetStringValue(Variables.AppVersionPlannedToBeUnsupported));
+            _semanticVersionParser.ParseStringToSemanticVersionObject(
+                _platformSpecificRemoteConfig.GetStringValue(Variables.AppVersionPlannedToBeUnsupported));
     }
 }

@@ -12,6 +12,7 @@ using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Security;
 using Moq;
@@ -61,7 +62,8 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             _appLanguageProvider = new Mock<IAppLanguageProvider>();
 
             var discoverClient = new Mock<IDiscoverClient>();
-            discoverClient.Setup(x => x.GetDocuments(It.IsAny<string>(), It.IsAny<CachePolicy>())).ReturnsAsync(new List<Document>());
+            discoverClient.Setup(x => x.GetDocuments(It.IsAny<string>(), It.IsAny<int?>(), It.IsAny<CachePolicy>()))
+                .ReturnsAsync(new List<Document>());
             _client.Setup(x => x.Discover).Returns(discoverClient.Object);
             _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
             _networkSettings.Setup(x => x.GetMobileNetworkDownloadAllowed()).ReturnsAsync(true);
@@ -73,6 +75,9 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
 
         public GlobalMediaDownloader CreateGlobalMediaDownloader()
         {
+            var userStorage = new Mock<IUserStorage>();
+            var config = new Mock<IFirebaseRemoteConfig>();
+            config.Setup(x => x.SendAgeToDiscover).Returns(false);
             return new GlobalMediaDownloader(_storageManager.Object,
                 _exceptionHandler.Object,
                 _analytics.Object,
@@ -83,7 +88,9 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
                 _downloadQueue.Object,
                 _appContentLogger.Object,
                 _globalTrackProvider.Object,
-                _appLanguageProvider.Object
+                _appLanguageProvider.Object,
+                userStorage.Object,
+                config.Object
             );
         }
 

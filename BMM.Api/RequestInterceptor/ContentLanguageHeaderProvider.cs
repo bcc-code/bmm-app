@@ -14,11 +14,11 @@ namespace BMM.Api.RequestInterceptor
             _contentLanguageManager = contentLanguageManager;
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             var contentLanguages = await _contentLanguageManager.GetContentLanguagesIncludingHidden();
             var languages = string.Join(",", contentLanguages);
-            return new KeyValuePair<string, string>(HeadersNames.AcceptLanguage, languages);
+            return new KeyValuePair<string, string>(HeaderNames.AcceptLanguage, languages);
         }
     }
 }

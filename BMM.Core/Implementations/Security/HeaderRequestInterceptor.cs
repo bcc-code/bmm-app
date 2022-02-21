@@ -19,7 +19,8 @@ namespace BMM.Core.Implementations.Security
             foreach (var provider in _headerProviders)
             {
                 var header = await provider.GetHeader();
-                request.Headers.Add(header.Key, header.Value);
+                if (header.HasValue)
+                    request.Headers.Add(header.Value.Key, header.Value.Value);
             }
 
             if (customHeaders == default)

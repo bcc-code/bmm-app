@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Constants;
 using BMM.Core.Implementations.Security;
 
 namespace BMM.Core.NewMediaPlayer
@@ -14,10 +15,10 @@ namespace BMM.Core.NewMediaPlayer
             _accessTokenProvider = accessTokenProvider;
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             var accessToken = await _accessTokenProvider.GetAccessToken().ConfigureAwait(false);
-            return new KeyValuePair<string, string>("Authorization", $"Bearer {accessToken}");
+            return new KeyValuePair<string, string>(HeaderNames.Authorization, $"Bearer {accessToken}");
         }
     }
 }

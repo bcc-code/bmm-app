@@ -5,6 +5,6 @@ namespace BMM.Api.Abstraction
 {
     public interface IHeaderProvider
     {
-        Task<KeyValuePair<string, string>> GetHeader();
+        Task<KeyValuePair<string, string>?> GetHeader();
     }
 }

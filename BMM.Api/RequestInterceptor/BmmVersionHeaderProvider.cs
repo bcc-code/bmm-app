@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Api.Implementation.Constants;
 
 namespace BMM.Api.RequestInterceptor
 {
@@ -14,9 +15,9 @@ namespace BMM.Api.RequestInterceptor
             _bmmVersionProvider = bmmVersionProvider;
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
-            return new KeyValuePair<string, string>("BMM-Version", _bmmVersionProvider.BmmVersion);
+            return new KeyValuePair<string, string>(HeaderNames.BmmVersion, _bmmVersionProvider.BmmVersion);
         }
     }
 }
