@@ -18,7 +18,7 @@ namespace BMM.Api.RequestInterceptor
         {
             var contentLanguages = await _contentLanguageManager.GetContentLanguagesIncludingHidden();
             var languages = string.Join(",", contentLanguages);
-            return new KeyValuePair<string, string>(HeadersNames.AcceptLanguage, languages);
+            return new KeyValuePair<string, string>(HeaderNames.AcceptLanguage, languages);
         }
     }
 }

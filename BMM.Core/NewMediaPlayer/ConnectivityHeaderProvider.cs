@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Api.Implementation.Constants;
 
 namespace BMM.Core.NewMediaPlayer
 {
@@ -17,7 +18,7 @@ namespace BMM.Core.NewMediaPlayer
         public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             var value = _connection.IsUsingNetworkWithoutExtraCosts() ? "Wifi" : "Mobile";
-            return new KeyValuePair<string, string>("AppConnectivity", value);
+            return new KeyValuePair<string, string>(HeaderNames.AppConnectivity, value);
         }
     }
 }

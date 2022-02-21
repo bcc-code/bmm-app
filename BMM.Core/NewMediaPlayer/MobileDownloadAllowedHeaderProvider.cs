@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Constants;
 using BMM.Core.Implementations.Connection;
 
 namespace BMM.Core.NewMediaPlayer
@@ -27,7 +28,7 @@ namespace BMM.Core.NewMediaPlayer
 
         public async Task<KeyValuePair<string, string>?> GetHeader()
         {
-            return new KeyValuePair<string, string>("MobileDownloadAllowed", IsMobileDownloadAllowed().ToString());
+            return new KeyValuePair<string, string>(HeaderNames.MobileDownloadAllowed, IsMobileDownloadAllowed().ToString());
         }
 
         private bool IsMobileDownloadAllowed()

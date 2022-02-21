@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Constants;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 
 namespace BMM.Core.Implementations.Networking
@@ -18,7 +19,7 @@ namespace BMM.Core.Implementations.Networking
         {
             if (!string.IsNullOrEmpty(_config.ExperimentId))
             {
-                return new KeyValuePair<string, string>("ExperimentId", _config.ExperimentId);
+                return new KeyValuePair<string, string>(HeaderNames.ExperimentId, _config.ExperimentId);
             }
 
             return null;

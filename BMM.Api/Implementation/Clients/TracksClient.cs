@@ -69,7 +69,7 @@ namespace BMM.Api.Implementation.Clients
             
             var headers = new Dictionary<string, string>
             {
-                { HeadersNames.AcceptLanguage, desiredLanguage }
+                { HeaderNames.AcceptLanguage, desiredLanguage }
             };
 
             return Get<Track>(uri, headers);
