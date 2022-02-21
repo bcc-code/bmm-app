@@ -49,7 +49,9 @@ namespace BMM.Core.Implementations.Downloading
             IDownloadQueue downloadQueue,
             IAppContentLogger appContentLogger,
             IGlobalTrackProvider globalTrackProvider,
-            IAppLanguageProvider appLanguageProvider, IUserStorage user, IFirebaseRemoteConfig config)
+            IAppLanguageProvider appLanguageProvider,
+            IUserStorage user,
+            IFirebaseRemoteConfig config)
         {
             _storageManager = storageManager;
             _exceptionHandler = exceptionHandler;

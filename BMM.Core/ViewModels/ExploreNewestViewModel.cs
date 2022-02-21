@@ -50,7 +50,9 @@ namespace BMM.Core.ViewModels
             INavigateToViewModelAction navigateToViewModelAction,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
             ITranslateDocsAction translateDocsAction,
-            IAppLanguageProvider appLanguageProvider, IUserStorage user, IFirebaseRemoteConfig config)
+            IAppLanguageProvider appLanguageProvider,
+            IUserStorage user,
+            IFirebaseRemoteConfig config)
         {
             _streakObserver = streakObserver;
             _settings = settings;
