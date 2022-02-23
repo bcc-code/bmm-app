@@ -468,8 +468,8 @@
     "System": "Follow system settings (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Sporets språk",
+    "PreferredLanguages": "Dine prioriterte språk",
     "AllLanguages": "Alle språk"
   }
 }
