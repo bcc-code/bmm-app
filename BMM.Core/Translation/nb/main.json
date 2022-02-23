@@ -242,7 +242,7 @@
   "PlayerViewModel": {
     "Title": "Spilles nå",
     "PlayingCount": "{0} av {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "Sangtekst"
   },
   "QueueViewModel": {
     "Title": "Kø"
