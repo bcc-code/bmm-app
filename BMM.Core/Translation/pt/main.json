@@ -241,7 +241,8 @@
   },
   "PlayerViewModel": {
     "Title": "Reproduzindo agora ",
-    "PlayingCount": "{0} de {1}"
+    "PlayingCount": "{0} de {1}",
+    "ViewLyrics": "View Lyrics"
   },
   "QueueViewModel": {
     "Title": "Fila"
@@ -465,5 +466,10 @@
     "Light": "Light",
     "Dark": "Dark",
     "System": "Follow system settings (Auto)"
+  },
+  "ChangeTrackLanguageViewModel": {
+    "Title": "Track Language",
+    "PreferredLanguages": "Your preferred languages",
+    "AllLanguages": "Todas as línguas"
   }
 }
