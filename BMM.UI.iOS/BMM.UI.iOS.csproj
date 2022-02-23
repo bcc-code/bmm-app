@@ -1079,6 +1079,7 @@
   <ItemGroup>
     <ImageAsset Include="Resources\Colors.xcassets\HighlightColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColorReverted.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\SeparatorColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />

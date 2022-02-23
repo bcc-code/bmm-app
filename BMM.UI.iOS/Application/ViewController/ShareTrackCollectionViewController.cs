@@ -107,7 +107,7 @@ namespace BMM.UI.iOS
             PlaylistState.ApplyTextTheme(AppTheme.Paragraph2);
 
             MakePrivateButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
-            ShareLinkButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            ShareLinkButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
         }
 
         private void PrepareHeader()

@@ -35,7 +35,7 @@ namespace BMM.UI.iOS
             TitelLabel.ApplyTextTheme(AppTheme.Heading2);
             FollowButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
             FollowingButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
-            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
 
             var source = new NotSelectableDocumentsTableViewSource(PodcastTable);
 

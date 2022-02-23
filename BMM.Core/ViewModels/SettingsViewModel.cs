@@ -274,7 +274,7 @@ namespace BMM.Core.ViewModels
                 }
             };
             
-            if (!_featurePreviewPermission.IsFeaturePreviewEnabled() || !_featureSupportInfoService.SupportsDarkMode)
+            if (!_featureSupportInfoService.SupportsDarkMode)
                 return generalSectionItems;
             
             generalSectionItems.Add(new SelectableListItem

@@ -25,10 +25,6 @@ namespace BMM.UI.iOS
 
             var source = new DocumentsTableViewSource(TracksTable);
 
-            NameLabel.ApplyTextTheme(AppTheme.Heading2);
-            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
-            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
-
             var set = this.CreateBindingSet<ContributorViewController, ContributorViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.Contributor).WithConversion<ContributorNameConverter>();
             set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
@@ -44,6 +40,14 @@ namespace BMM.UI.iOS
             set.Apply();
 
             TracksTable.ResizeHeaderView();
+            SetThemes();
+        }
+
+        private void SetThemes()
+        {
+            NameLabel.ApplyTextTheme(AppTheme.Heading2);
+            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
         }
 
         protected override void AttachEvents()

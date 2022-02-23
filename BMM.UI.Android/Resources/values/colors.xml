@@ -4,7 +4,6 @@
     <!-- General colors -->
     <color name="colorPrimaryDark">#6CBD5C</color>
     <color name="colorAccent">#C2EF66</color>
-    <color name="track_divider_line">#80B9C3CC</color>
     <color name="player_statusbar">#222930</color>
     <color name="player_click_effects">#5C7082</color>
 
@@ -47,4 +46,5 @@
     <color name="notification_color">#1C8FF8</color>
     <color name="radio_color">#E12D59</color>
     <color name="highlight_color">#8DA0B5</color>
+    <color name="separator_color">#26000C1A</color>
 </resources>

@@ -108,12 +108,12 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.LabelTertiaryColor
         };
 
-        public static readonly Lazy<ButtonTheme> ButtonPrimary = new Lazy<ButtonTheme>(() => new StandardButtonTheme
+        public static readonly ButtonTheme ButtonPrimary = new StandardButtonTheme
         {
             TextTheme = Title1Label1Reverted,
             ButtonColor = AppColors.LabelPrimaryColor,
             IconTint = AppColors.LabelPrimaryColorReverted
-        });
+        };
 
         public static readonly ButtonTheme ButtonSecondaryMedium = new StandardButtonTheme
         {

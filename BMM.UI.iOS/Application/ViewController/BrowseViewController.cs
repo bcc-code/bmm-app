@@ -19,7 +19,6 @@ namespace BMM.UI.iOS
     {
         private bool _isRefreshing;
         private BrowseDetailsTableViewSource _source;
-        private bool _isLoading;
         public double? InitialLargeTitleHeight { get; set; }
 
         public UIViewController[] TabViewControllers { get; private set; }

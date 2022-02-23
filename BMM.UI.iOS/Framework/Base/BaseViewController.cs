@@ -43,16 +43,16 @@ namespace BMM.UI.iOS
             {
                 ForegroundColor = AppColors.LabelPrimaryColor
             };
-            appearance.ShadowColor = UIColor.Clear;
+            appearance.ShadowColor = AppColors.SeparatorColor;
+            
             NavigationController.NavigationBar.StandardAppearance = appearance;
+            
+            appearance.ShadowColor = UIColor.Clear;
             NavigationController.NavigationBar.ScrollEdgeAppearance = appearance;
         }
 
         private void SetupLargeTitle()
         {
-            if (!VersionHelper.SupportsLargeTitles)
-                return;
-
             if (this is IHaveLargeTitle)
             {
                 NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Always;

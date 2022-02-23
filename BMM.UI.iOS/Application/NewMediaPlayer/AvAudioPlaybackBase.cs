@@ -52,11 +52,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             NSError activationError;
             // By setting the Audio Session category to AVAudioSessionCategoryPlayback, audio will continue to play when the silent switch is enabled, or when the screen is locked.
-            if (VersionHelper.SupportsAirPlayTwo)
-                avSession.SetCategory(AVAudioSession.CategoryPlayback, AVAudioSession.ModeDefault, AVAudioSessionRouteSharingPolicy.LongForm, 0, out activationError);
-            else
-                avSession.SetCategory(AVAudioSessionCategory.Playback);
-
+            avSession.SetCategory(AVAudioSession.CategoryPlayback, AVAudioSession.ModeDefault, AVAudioSessionRouteSharingPolicy.LongForm, 0, out activationError);
             avSession.SetActive(true, out activationError);
             if (activationError != null)
             {

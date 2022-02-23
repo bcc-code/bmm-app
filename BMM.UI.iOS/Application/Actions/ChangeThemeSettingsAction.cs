@@ -29,10 +29,18 @@ namespace BMM.UI.iOS.Actions
                     {
                         UIApplication.SharedApplication.KeyWindow.OverrideUserInterfaceStyle = ThemeUtils.GetUIUserInterfaceStyleForTheme(theme);
 
-                        if (theme == Theme.Dark)
-                            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
-                        else
-                            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.DarkContent, true);
+                        switch (theme)
+                        {
+                            case Theme.Dark:
+                                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
+                                break;
+                            case Theme.Light:
+                                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.DarkContent, true);
+                                break;
+                            default:
+                                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.Default, true);
+                                break;
+                        }
                     });
             });
         }
