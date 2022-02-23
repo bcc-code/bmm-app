@@ -53,7 +53,7 @@ namespace BMM.UI.iOS
         {
             TitleLabel.ApplyTextTheme(AppTheme.Heading2);
             DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
-            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
 
@@ -84,7 +84,7 @@ namespace BMM.UI.iOS
             var sidebarButton = new UIBarButtonItem(
                 new UIImage("icon_options"),
                 UIBarButtonItemStyle.Plain,
-                (object sender, EventArgs e) =>
+                (sender, e) =>
                 {
                     ViewModel.OptionCommand.Execute(ViewModel.Album);
                 }

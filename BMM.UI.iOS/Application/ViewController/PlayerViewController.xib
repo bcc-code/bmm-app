@@ -146,7 +146,7 @@
                 </stackView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DS1-31-Cvu">
                     <rect key="frame" x="0.0" y="591" width="414" height="1"/>
-                    <color key="backgroundColor" name="PlaceholderColor"/>
+                    <color key="backgroundColor" name="SeparatorColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="rqa-i6-oh9"/>
                     </constraints>
@@ -380,6 +380,9 @@
         </namedColor>
         <namedColor name="PlaceholderColor">
             <color red="0.72549021244049072" green="0.76470589637756348" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SeparatorColor">
+            <color red="0.0" green="0.047058824449777603" blue="0.10196078568696976" alpha="0.14901961386203766" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

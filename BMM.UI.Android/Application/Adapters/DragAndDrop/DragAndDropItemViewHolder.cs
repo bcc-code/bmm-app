@@ -21,12 +21,12 @@ namespace BMM.UI.Droid.Application.Adapters.DragAndDrop
 
         public void OnItemSelected()
         {
-            _itemView.SetBackgroundResource(Resource.Color.light_gray);
+            _itemView.SetBackgroundResource(Resource.Color.background_secondary_color);
         }
 
         public void OnItemClear()
         {
-            _itemView.SetBackgroundColor(Color.White);
+            _itemView.SetBackgroundResource(Resource.Color.background_primary_color);
         }
     }
 }

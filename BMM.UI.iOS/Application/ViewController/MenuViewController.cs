@@ -40,9 +40,19 @@ namespace BMM.UI.iOS
 
             var appearance = new UITabBarAppearance();
             appearance.ConfigureWithOpaqueBackground();
+            appearance.StackedLayoutAppearance.Selected.IconColor = AppColors.LabelPrimaryColor;
+            appearance.StackedLayoutAppearance.Selected.TitleTextAttributes = new UIStringAttributes
+            {
+                ForegroundColor = AppColors.LabelPrimaryColor
+            };
+            appearance.StackedLayoutAppearance.Normal.IconColor = AppColors.LabelTertiaryColor;
+            appearance.StackedLayoutAppearance.Normal.TitleTextAttributes = new UIStringAttributes
+            {
+                ForegroundColor = AppColors.LabelTertiaryColor
+            };
             appearance.BackgroundColor = AppColors.BackgroundPrimaryColor;
             TabBar.StandardAppearance = appearance;
-
+            
             if (!UIDevice.CurrentDevice.CheckSystemVersion(15, 0))
                 return;
 

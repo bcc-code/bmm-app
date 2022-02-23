@@ -59,8 +59,7 @@ namespace BMM.UI.iOS
             var containmentNavigationController = Activator.CreateInstance<ContainmentNavigationViewController>();
             containmentViewController.RegisterViewController(containmentNavigationController);
             containmentNavigationController.RegisterViewController(viewController as IBaseViewController);
-            if (VersionHelper.SupportsLargeTitles)
-                containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
+            containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
             return base.ShowTabViewController(containmentViewController, attribute, request);
         }
 

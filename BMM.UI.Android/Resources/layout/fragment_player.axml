@@ -221,7 +221,7 @@
                 android:id="@+id/Separator"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="@dimen/divider_height"
-                android:background="@color/placeholder_color"
+                android:background="@color/separator_color"
                 android:layout_marginBottom="@dimen/player_standard_margin"
                 local:layout_constraintBottom_toTopOf="@+id/ShuffleButton"
                 local:layout_constraintStart_toStartOf="parent"

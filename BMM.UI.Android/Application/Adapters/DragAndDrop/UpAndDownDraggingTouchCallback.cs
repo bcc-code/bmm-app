@@ -8,7 +8,6 @@ namespace BMM.UI.Droid.Application.Adapters.DragAndDrop
         private readonly IDragAndDropAdapter _adapter;
 
         public override bool IsItemViewSwipeEnabled => false;
-
         public override bool IsLongPressDragEnabled => true;
 
         public UpAndDownDraggingTouchCallback(IDragAndDropAdapter adapter)

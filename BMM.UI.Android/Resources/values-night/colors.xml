@@ -15,4 +15,5 @@
     <color name="notification_color">#1C8FF8</color>
     <color name="radio_color">#E12D59</color>
     <color name="highlight_color">#3B4C5F</color>
+    <color name="separator_color">#38CCE5FC</color>
 </resources>

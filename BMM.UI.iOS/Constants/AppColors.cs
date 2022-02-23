@@ -18,12 +18,11 @@ namespace BMM.UI.iOS.Constants
         public static UIColor RadioColor => UIColor.FromName(nameof(RadioColor));
         public static UIColor TintColor => UIColor.FromName(nameof(TintColor));
         public static UIColor HighlightColor => UIColor.FromName(nameof(HighlightColor));
+        public static UIColor SeparatorColor => UIColor.FromName(nameof(SeparatorColor));
 
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
 
         // Track
         public static readonly UIColor NewestTrackBackgroundColor = UIColor.White.ColorWithAlpha(0.2f);
-
-        public static readonly UIColor SeparatorColor = UIColor.FromRGB(185, 195, 204).ColorWithAlpha(0.5f);
     }
 }
