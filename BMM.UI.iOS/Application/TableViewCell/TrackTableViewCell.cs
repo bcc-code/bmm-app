@@ -15,8 +15,8 @@ namespace BMM.UI.iOS
 {
     public partial class TrackTableViewCell : BaseTrackTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("TrackTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("TrackTableViewCell");
+        public static readonly UINib Nib = UINib.FromName(nameof(TrackTableViewCell), NSBundle.MainBundle);
+        public static readonly NSString Key = new NSString(nameof(TrackTableViewCell));
 
         private VisibilityBindingsManager<CellWrapperViewModel<Document>> _bindingsManager;
 
@@ -61,9 +61,12 @@ namespace BMM.UI.iOS
                 if (DataContext is CellWrapperViewModel<Document> wrappedCell)
                     _bindingsManager.Update(wrappedCell);
 
-                ReferenceButton!.TintColor = ((CellWrapperViewModel<Document>)DataContext).ViewModel is IDarkStyleOnIosViewModel
-                    ? UIColor.White
-                    : AppColors.LabelPrimaryColor;
+                BeginInvokeOnMainThread(() =>
+                {
+                    ReferenceButton!.TintColor = ((CellWrapperViewModel<Document>)DataContext).ViewModel is IDarkStyleOnIosViewModel
+                        ? UIColor.White
+                        : AppColors.LabelPrimaryColor;
+                });
             };
         }
     }

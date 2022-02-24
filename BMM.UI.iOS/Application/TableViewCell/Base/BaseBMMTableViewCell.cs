@@ -23,7 +23,6 @@ namespace BMM.UI.iOS
 
             _selectionView = new UIView();
             _selectionView.BackgroundColor = AppColors.HighlightColor;
-
         }
 
         public override void AwakeFromNib()
