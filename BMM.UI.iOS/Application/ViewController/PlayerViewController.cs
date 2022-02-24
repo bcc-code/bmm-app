@@ -358,11 +358,14 @@ namespace BMM.UI.iOS
 
             CoverHeightConstraint.Constant = coverSize;
             CoverWidthConstraint.Constant = coverSize;
-            
-            var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
-            PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
-            PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
-            BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
+
+            BeginInvokeOnMainThread(() =>
+            {
+                var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
+                PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
+                PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
+                BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
+            });
             
             RunIfDeviceSupportsNotFullscreenPageSheetPresentation(() =>
             {

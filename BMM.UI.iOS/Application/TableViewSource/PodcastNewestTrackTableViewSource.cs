@@ -10,16 +10,19 @@ namespace BMM.UI.iOS
             base(tableView, TrackTableViewCell.Key)
         { }
 
-        protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
+        public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            var cell = base.GetOrCreateCellFor(tableView, indexPath, item);
+            var cell = base.GetCell(tableView, indexPath);
 
-            UIView backgroundColorView = new UIView
+            TableView.BeginInvokeOnMainThread(() =>
             {
-                BackgroundColor = AppColors.NewestTrackBackgroundColor
-            };
-            cell.SelectedBackgroundView = backgroundColorView;
-            cell.BackgroundColor = UIColor.Clear;
+                var backgroundColorView = new UIView
+                {
+                    BackgroundColor = AppColors.NewestTrackBackgroundColor
+                };
+                cell.SelectedBackgroundView = backgroundColorView;
+                cell.BackgroundColor = UIColor.Clear;
+            });
 
             return cell;
         }
