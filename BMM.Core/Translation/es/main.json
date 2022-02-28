@@ -11,7 +11,7 @@
     "Song": "Canción",
     "Speech": "Mensaje",
     "Audiobook": "Audio libro",
-    "Exegesis": "Exegesis",
+    "Exegesis": "Exégesis",
     "Done": "Listo",
     "Today": "Hoy",
     "Yesterday": "Ayer"
@@ -40,13 +40,13 @@
     "ErrorVideoNotSupported": "Lamentablemente, los videos no son compatibles en este momento.",
     "ErrorFileNotOffline": "Las pistas que no han sido descargadas no pueden reproducirse sin conexión.",
     "ErrorPlayerStopped": "El reproductor se detuvo ",
-    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
-    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
-    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorPlayerStoppedGeneric": "Se ha producido un error de reproducción que ha detenido la pista actual.",
+    "ErrorPlayerLiveRadioStopped": "La transmisión en vivo ha terminado.",
+    "ErrorPlayerLiveRadioTooEarly": "La transmisión en vivo aún no ha comenzado, por favor inténtalo más tarde.",
+    "ErrorPlayerStart": "No se puede iniciar la reproducción."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "There is not enough space to store offline files"
+    "OutOfSpaceMessage": "No hay suficiente espacio para almacenar archivos offline"
   },
   "AlbumViewModel": {
     "Title": "Álbum",
@@ -55,9 +55,9 @@
     "AddAlbumToMyTracks": "Añadir álbum a Mis pistas",
     "FailedToAdd": "No se pudo agregar la pista a la lista de reproducción. Inténtalo de nuevo más tarde.",
     "AlbumFailedToAddAlreadyExists": "Este álbum ya está en la lista de reproducción.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "TrackAlreadyExistInTrackCollection": "Esta pista ya existe en la lista de reproducción {0}",
     "ShufflePlay": "Aleatorio",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} álbumes"
   },
   "AlbumsViewModel": {
     "Title": "Archivo",
@@ -90,8 +90,8 @@
     "FraKaareHeader": "De Kåre",
     "AslaksenTeaserHeader": "Palabras de fe",
     "ShowAll": "Mostrar todos",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
+    "PlayRandom": "Reproducir aleatoriamente",
+    "PlayNewest": "Reproducir lo más reciente",
     "LatestTrack": "Última pista",
     "NextBroadcast": "Siguiente transmisión en vivo",
     "BmmRadio": "BMM en vivo",
@@ -126,7 +126,7 @@
     "ButtonSendMail": "Enviar un correo electrónico al equipo de Bmm"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Estamos preparando tu cuenta. Esto puede llevar unos minutos."
   },
   "LoginViewModel": {
     "Title": "Iniciar Sesión",
@@ -134,11 +134,11 @@
     "LoginFailureMessage": "Inténtalo nuevamente utilizando credenciales correctas",
     "LoginNoConnectionMessage": "Actualmente no hay ninguna conexión. Por favor Inténtalo más tarde",
     "WrongMailAddressTitle": "email no es válida",
-    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "WrongMailAddress": "Por favor, proporciona una dirección de correo electrónico válida. Ya no puedes utilizar el nombre de usuario para iniciar sesión.",
     "TbxUsername.Hint": "Correo electrónico",
     "TbxPassword.Hint": "Contraseña",
     "BtnLogin.Text": "Inicio de sesión",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Inicia sesión con tu cuenta de BCC"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
