@@ -6,7 +6,6 @@ using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.Combiners;
-using UIKit;
 
 namespace BMM.UI.iOS
 {

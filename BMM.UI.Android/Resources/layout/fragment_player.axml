@@ -1,405 +1,331 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/playerFragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#0d131a"
-        android:clickable="true"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        local:behavior_peekHeight="0dp"
-        local:behavior_skipCollapsed="true"
-        local:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-        <LinearLayout
-            android:id="@+id/headerContainer"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintEnd_toStartOf="@+id/queueBtn"
-            app:layout_constraintStart_toEndOf="@+id/closePlayerBtn"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/playerTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:maxLines="2"
-                android:textSize="@dimen/text_large"
-                android:text="Now playing"
-                local:MvxLang="Text PlayerViewModel_Title"
-                android:textColor="#ffffff" />
-
-            <TextView
-                android:id="@+id/currentTrack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:textSize="@dimen/text_small"
-                android:text="1 of 20"
-                local:MvxBind="Text PlayingText"
-                android:textColor="#80ffffff" />
-        </LinearLayout>
+            android:id="@+id/playerFragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background_secondary_color"
+            android:clickable="true"
+            local:behavior_peekHeight="0dp"
+            local:behavior_skipCollapsed="true"
+            local:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <ImageButton
-            android:id="@+id/closePlayerBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:src="@drawable/icon_down_static"
-            android:background="?selectableItemBackgroundBorderless"
-            local:MvxBind="Click ClosePlayerCommand"
-            app:layout_constraintBottom_toBottomOf="@+id/headerContainer"
-            app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="@+id/headerContainer" />
+                android:id="@+id/ClosePlayerButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_arrow_down"
+                android:padding="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginStart="@dimen/margin_small"
+                android:background="?selectableItemBackgroundBorderless"
+                local:MvxBind="Click ClosePlayerCommand"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/queueBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            local:MvxBind="Click OpenQueueCommand"
-            android:background="?selectableItemBackgroundBorderless"
-            app:layout_constraintBottom_toBottomOf="@+id/headerContainer"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toTopOf="@+id/headerContainer"
-            android:src="@drawable/icon_queue" />
+                android:id="@+id/QueueButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_small"
+                local:MvxBind="Click OpenQueueCommand"
+                android:background="?selectableItemBackgroundBorderless"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/icon_queue" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginRight="12dp"
-            android:gravity="center"
-            app:cardCornerRadius="@dimen/corner_radius_large"
-            app:layout_constraintDimensionRatio="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/headerContainer">
+        <bmm.ui.droid.application.customViews.ShadowLayout
+                android:id="@+id/CoverShadowLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:clipChildren="false"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintTop_toTopOf="parent">
 
             <FrameLayout
-                android:id="@+id/coverContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-                <ffimageloading.cross.MvxCachedImageView
-                    android:id="@+id/coverImagePlaceholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:adjustViewBounds="true"
-                    local:MvxBind="LoadingPlaceholderImagePath 'res:placeholder_cover'; ErrorPlaceholderImagePath 'res:placeholder_cover'; ImagePath CoverUrlToFallbackImage(CurrentTrack.ArtworkUri, 'res:placeholder_cover')" />
-
-                <View
-                    android:id="@+id/gradient"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/gradient_player" />
-
-            </FrameLayout>
-
-            <LinearLayout
-                android:id="@+id/btvExternalContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginTop="16dp"
-                android:gravity="right|center_vertical|end"
-                android:orientation="horizontal"
-                local:MvxBind="Visibility Visibility(HasBtvLink)">
-
-                 <LinearLayout
-                    android:id="@+id/btvContainer"
+                <FrameLayout
+                    android:id="@+id/CoverContainer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="right|center_vertical|end"
-                    android:orientation="horizontal"
-                    local:MvxBind="Click OpenExternalReferenceCommand">
-
-                    <TextView
-                        android:id="@+id/teaserText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:gravity="center"
-                        android:textAllCaps="true"
-                        android:textSize="12sp"
-                        android:textColor="@color/white"
-                        android:letterSpacing="0.08"
-                        android:lineSpacingExtra="12sp"
-                        android:layout_marginRight="6dp"
-                        android:text="Watch Live-TV"
-                        local:MvxBind="Text BtvLinkTitle"/>
-
-                    <ImageView
-                        android:id="@+id/btv_teaser"
+                    android:background="@drawable/cover_rounded_background">
+                    <bmm.ui.droid.application.customViews.BmmCachedImageView
+                        android:id="@+id/CoverImageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/btv_teaser" />
+                        android:src="@drawable/new_placeholder_cover"
+                        android:background="@drawable/cover_rounded_background"
+                        android:adjustViewBounds="true" />
+                </FrameLayout>
 
-                 </LinearLayout>
+                <ImageButton
+                    android:layout_width="@dimen/circle_button_size"
+                    android:layout_height="@dimen/circle_button_size"
+                    android:layout_marginBottom="@dimen/margin_xsmall_negative"
+                    android:layout_marginEnd="@dimen/margin_xsmall_negative"
+                    android:background="@drawable/button_rounded_background"
+                    android:src="@drawable/icon_link"
+                    android:layout_gravity="bottom|end"
+                    local:MvxBind="
+                        Click ShowTrackInfoCommand;
+                        Visibility Visibility(HasExternalRelations)"/>
+            </FrameLayout>
 
-            </LinearLayout>
+        </bmm.ui.droid.application.customViews.ShadowLayout>
+        
+        <TextView
+                android:id="@+id/TitleLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_mini"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center_horizontal|bottom"
+                local:autoSizeTextType="uniform"
+                local:autoSizeMaxTextSize="24sp"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintBottom_toTopOf="@+id/SubtitleLabel"
+                local:MvxBind="Text TrackToTitle(CurrentTrack, .)"
+                style="@style/Heading3" />
 
-            <LinearLayout
-                android:id="@+id/titleContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="bottom"
-                android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp"
-                android:layout_marginBottom="12dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:gravity="bottom|start"
-                    android:lineSpacingExtra="8sp"
-                    android:text="Gjennom tukt og prøver, og få del i frelsen ved Jesu liv"
-                    android:textColor="#ffffff"
-                    android:textSize="24sp"
-                    android:textStyle="bold"
-                    local:MvxBind="Text TrackToTitle(CurrentTrack, .)"
-                    app:lineHeight="32sp" />
-
-                    <LinearLayout
-                        android:id="@+id/descContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical|end"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/desc"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="8dp"
-                            android:layout_weight="1"
-                            android:singleLine="true"
-                            android:maxLines="1"
-                            android:gravity="start|center_vertical"
-                            android:lineSpacingExtra="12sp"
-                            android:text="Sommerstævnet Juli 2014"
-                            android:textAllCaps="true"
-                            android:textColor="#66ffffff"
-                            android:letterSpacing="0.08"
-                            android:textSize="12sp"
-                            local:MvxBind="Text TrackToSubtitle(CurrentTrack, .)" />
-
-                        <ImageButton
-                            android:id="@+id/optionsBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="?selectableItemBackgroundBorderless"
-                            local:MvxBind="Click OptionCommand"
-                            android:src="@drawable/btn_options_static" />
-
-                         <ImageButton
-                            android:id="@+id/references_static"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            local:MvxBind="Click ShowTrackInfoCommand; Visibility Visibility(HasExternalRelations)"
-                            android:background="?selectableItemBackgroundBorderless"
-                            android:src="@drawable/btn_references_static" />
-
-                    </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+        <TextView
+                android:id="@+id/SubtitleLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                android:gravity="center_horizontal"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintBottom_toTopOf="@+id/PlayerSeekbar"
+                local:MvxBind="Text TrackToSubtitle(CurrentTrack, .)"
+                style="@style/Subtitle1_Label2" />
 
         <SeekBar
-            android:id="@+id/player_seekbar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            style="@style/SeekBarPlayer"
-            local:MvxBind="Max Duration; Progress SliderPosition, Mode=OneWay; SecondaryProgress Downloaded; Visibility VisibleOrHidden(!IsSeekingDisabled)"
-            android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                android:id="@+id/PlayerSeekbar"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                style="@style/SeekBarPlayer"
+                local:MvxBind="Max Duration; Progress SliderPosition, Mode=OneWay; SecondaryProgress Downloaded; Visibility VisibleOrHidden(!IsSeekingDisabled)"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_small"
+                android:paddingHorizontal="4dp"
+                local:layout_constraintBottom_toTopOf="@+id/SliderPositionTimeLabel"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
-            android:id="@+id/sliderPositionTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="00:00"
-            android:textStyle="bold"
-            android:textSize="12sp"
-            android:layout_marginLeft="3dp"
-            android:textColor="#5c7082"
-            local:MvxBind="Text MillisecondsToTime(SliderPosition); Visibility VisibleOrHidden(!IsSeekingDisabled)"
-            app:layout_constraintStart_toStartOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/player_seekbar" />
+                android:id="@+id/SliderPositionTimeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintBottom_toTopOf="@+id/PlayPauseButton"
+                local:layout_constraintStart_toStartOf="parent"
+                local:MvxBind="Text MillisecondsToTime(SliderPosition); Visibility VisibleOrHidden(!IsSeekingDisabled)"
+                style="@style/Subtitle2_Label1" />
 
         <TextView
-            android:id="@+id/endTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="04:31"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_marginRight="3dp"
-            android:textColor="#5c7082"
-            local:MvxBind="Text MillisecondsToTime(Duration); Visibility VisibleOrHidden(!IsSeekingDisabled)"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
-            app:layout_constraintTop_toBottomOf="@+id/player_seekbar" />
-
-        <LinearLayout
-            android:id="@+id/mainControlsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="14dp"
-            android:layout_marginLeft="14dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginEnd="14dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/additionalControlsContainer"
-            app:layout_constraintTop_toBottomOf="@+id/endTime">
-
-            <Space
+                android:id="@+id/EndTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginTop="@dimen/margin_small"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintBottom_toTopOf="@+id/PlayPauseButton"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxBind="Text MillisecondsToTime(Duration); Visibility VisibleOrHidden(!IsSeekingDisabled)"
+                style="@style/Subtitle2_Label1" />
 
-            <ImageButton
-                android:id="@+id/previousBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:src="@drawable/button_previous"
+        <ImageButton
+                android:id="@+id/PlayPauseButton"
+                android:layout_width="@dimen/player_standard_button_size"
+                android:layout_height="@dimen/player_standard_button_size"
                 android:background="?selectableItemBackgroundBorderless"
-                local:MvxBind="Click PreviousOrSeekToStartCommand;" />
+                android:src="@drawable/togglebutton_play_pause"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintBottom_toTopOf="@+id/Separator"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxBind="
+                    DrawableId PlayingStateToPlayPauseIdName(IsPlaying), Mode=OneWay;
+                    Click PlayPauseCommand" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <ToggleButton
-                android:id="@+id/playPauseBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/transparent"
-                android:textSize="0sp"
-                android:drawableTop="@drawable/togglebutton_playpause_portrait"
+        <ImageButton
+                android:id="@+id/PreviousButton"
+                android:layout_width="@dimen/player_standard_button_size"
+                android:layout_height="@dimen/player_standard_button_size"
                 android:background="?selectableItemBackgroundBorderless"
-                local:MvxBind="Checked IsPlaying, Mode=OneWay; Click PlayPauseCommand" />
+                android:src="@drawable/icon_previous"
+                android:layout_marginEnd="@dimen/margin_xxmedium"
+                local:layout_constraintEnd_toStartOf="@+id/PlayPauseButton"
+                local:layout_constraintTop_toTopOf="@+id/PlayPauseButton"
+                local:layout_constraintBottom_toBottomOf="@+id/PlayPauseButton"
+                local:MvxBind="Click PreviousOrSeekToStartCommand;"  />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <ImageButton
-                android:id="@+id/nextBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+        <ImageButton
+                android:id="@+id/SkipBackButton"
+                android:layout_width="@dimen/player_standard_button_size"
+                android:layout_height="@dimen/player_standard_button_size"
                 android:background="?selectableItemBackgroundBorderless"
-                android:src="@drawable/button_next"
-                local:MvxBind="Click NextCommand;" />
+                android:src="@drawable/icon_skip_back"
+                android:layout_marginEnd="@dimen/margin_xxmedium"
+                local:layout_constraintEnd_toStartOf="@+id/PreviousButton"
+                local:layout_constraintTop_toTopOf="@+id/PlayPauseButton"
+                local:layout_constraintBottom_toBottomOf="@+id/PlayPauseButton"
+                local:MvxBind="
+                    Click SkipBackwardCommand;
+                    Visibility VisibleOrHidden(!IsSeekingDisabled)" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/additionalControlsContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="14dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent">
-                
-            <ToggleButton
-                android:id="@+id/shuffleBtn"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_weight="1"
-                android:textColor="@android:color/transparent"
-                android:textSize="0sp"
-                android:drawableTop="@drawable/toggle_shuffle_portrait"
+        <ImageButton
+                android:id="@+id/NextButton"
+                android:layout_width="@dimen/player_standard_button_size"
+                android:layout_height="@dimen/player_standard_button_size"
                 android:background="?selectableItemBackgroundBorderless"
-                local:MvxBind="Checked IsShuffleEnabled, Mode=OneWay; Click ToggleShuffleCommand" />
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                local:layout_constraintStart_toEndOf="@+id/PlayPauseButton"
+                local:layout_constraintTop_toTopOf="@+id/PlayPauseButton"
+                local:layout_constraintBottom_toBottomOf="@+id/PlayPauseButton"
+                local:MvxBind="
+                    Click NextCommand;
+                    IconResource IsNextTrackAvailableToBackgroundResource(IsSkipToNextEnabled), Mode=OneWay;" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-                
-            <ImageButton
-                android:id="@+id/skipBackBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                local:MvxBind="Click SkipBackwardCommand; Visibility VisibleOrHidden(!IsSeekingDisabled)"
+        <ImageButton
+                android:id="@+id/SkipForwardButton"
+                android:layout_width="@dimen/player_standard_button_size"
+                android:layout_height="@dimen/player_standard_button_size"
                 android:background="?selectableItemBackgroundBorderless"
-                android:src="@drawable/icon_skip_back_static" />
+                android:src="@drawable/icon_skip_forward"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                local:layout_constraintStart_toEndOf="@+id/NextButton"
+                local:layout_constraintTop_toTopOf="@+id/PlayPauseButton"
+                local:layout_constraintBottom_toBottomOf="@+id/PlayPauseButton"
+                local:MvxBind="Click SkipForwardCommand; Visibility VisibleOrHidden(!IsSeekingDisabled)" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+        <View
+                android:id="@+id/Separator"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="@dimen/divider_height"
+                android:background="@color/separator_color"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintBottom_toTopOf="@+id/ShuffleButton"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent" />
 
-            <ImageButton
-                android:id="@+id/skipForwardBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                local:MvxBind="Click SkipForwardCommand; Visibility VisibleOrHidden(!IsSeekingDisabled)"
+        <ImageButton
+                android:id="@+id/ShuffleButton"
+                android:layout_width="@dimen/player_small_button_size"
+                android:layout_height="@dimen/player_small_button_size"
                 android:background="?selectableItemBackgroundBorderless"
-                android:src="@drawable/icon_skip_forward_static" />
+                android:src="@drawable/icon_shuffle"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintHorizontal_chainStyle="spread"
+                local:layout_constraintBottom_toTopOf="@+id/BottomButtonsBarrier"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toStartOf="@+id/RepeatButton"
+                local:MvxBind="
+                    BackgroundResource IsSelectedToBackgroundResource(IsShuffleEnabled), Mode=OneWay;
+                    DrawableId ShuffleEnabledToIcon(IsShuffleEnabled), Mode=OneWay;
+                    Click ToggleShuffleCommand"  />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+        <ImageButton
+                android:id="@+id/RepeatButton"
+                android:layout_width="@dimen/player_small_button_size"
+                android:layout_height="@dimen/player_small_button_size"
+                android:background="@drawable/button_rounded_background"
+                android:layout_marginTop="@dimen/margin_xxmedium"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintBottom_toTopOf="@+id/BottomButtonsBarrier"
+                local:layout_constraintStart_toEndOf="@+id/ShuffleButton"
+                local:layout_constraintEnd_toStartOf="@+id/CastButton"
+                local:MvxBind="
+                    BackgroundResource RepeatModeToBackgroundResource(RepeatType), Mode=OneWay;
+                    DrawableId RepeatModeToIcon(RepeatType), Mode=OneWay;
+                    Click ToggleRepeatCommand"  />
 
-            <ImageButton
-                android:id="@+id/repeatBtn"
-                android:layout_width="wrap_content"
+        <ImageButton
+                android:id="@+id/CastButton"
+                android:layout_width="@dimen/player_small_button_size"
+                android:layout_height="@dimen/player_small_button_size"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/icon_external_sound"
+                android:layout_marginTop="@dimen/margin_xxmedium"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                android:visibility="gone"
+                local:layout_constraintBottom_toTopOf="@+id/BottomButtonsBarrier"
+                local:layout_constraintStart_toEndOf="@+id/RepeatButton"
+                local:layout_constraintEnd_toStartOf="@+id/MoreButton" />
+
+        <ImageButton
+                android:id="@+id/MoreButton"
+                android:layout_width="@dimen/player_small_button_size"
+                android:layout_height="@dimen/player_small_button_size"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/icon_more"
+                android:layout_marginTop="@dimen/margin_xxmedium"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintBottom_toTopOf="@+id/BottomButtonsBarrier"
+                local:layout_constraintStart_toEndOf="@+id/CastButton"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxBind="Click OptionCommand" />
+
+        <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/BottomButtonsBarrier"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                local:MvxBind="DrawableId RepeatModeToIcon(RepeatType), Mode=OneWay; Click ToggleRepeatCommand"
-                android:button="@drawable/toggle_repeat_portrait" 
-                android:background="?selectableItemBackgroundBorderless" />
-        </LinearLayout>
+                local:barrierDirection="top"
+                local:constraint_referenced_ids="ViewLyricsButton,ChangeLanguageButton" />
+
+        <Button
+                android:id="@+id/ViewLyricsButton"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_goneMarginEnd="@dimen/margin_medium"
+                local:layout_constraintHorizontal_chainStyle="packed"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toStartOf="@+id/ChangeLanguageButton"
+                local:MvxLang="Text PlayerViewModel_ViewLyrics"
+                style="@style/Button_Tertiary"
+                local:MvxBind="
+                    Click OpenLyricsCommand;
+                    Visibility Visibility(HasLyrics)" />
+
+        <Button
+                android:id="@+id/ChangeLanguageButton"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xmedium"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/player_standard_margin"
+                local:layout_constraintStart_toEndOf="@+id/ViewLyricsButton"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:MvxBind="
+                    Text TrackLanguage;
+                    Click NavigateToLanguageChangeCommand;
+                    Visibility Visibility(CanNavigateToLanguageChange)"
+                style="@style/Button_Tertiary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

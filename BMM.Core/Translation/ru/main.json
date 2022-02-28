@@ -241,7 +241,8 @@
   },
   "PlayerViewModel": {
     "Title": "Now playing",
-    "PlayingCount": "Воспроизведение {0} из {1}"
+    "PlayingCount": "Воспроизведение {0} из {1}",
+    "ViewLyrics": "View Lyrics"
   },
   "QueueViewModel": {
     "Title": "Очередь"
@@ -465,5 +466,10 @@
     "Light": "Light",
     "Dark": "Dark",
     "System": "Follow system settings (Auto)"
+  },
+  "ChangeTrackLanguageViewModel": {
+    "Title": "Track Language",
+    "PreferredLanguages": "Your preferred languages",
+    "AllLanguages": "Все языки"
   }
 }

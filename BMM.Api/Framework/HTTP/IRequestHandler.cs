@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -12,7 +13,9 @@ namespace BMM.Api.Framework.HTTP
         /// <returns>The resolved response.</returns>
         /// <param name="request">Request.</param>
         /// <param name="cancellationToken"></param>
-        Task<T> GetResolvedResponse<T>(IRequest request,
+        Task<T> GetResolvedResponse<T>(
+            IRequest request,
+            IDictionary<string, string> customHeaders = default,
             CancellationToken? cancellationToken = null);
 
         /// <summary>
@@ -21,6 +24,9 @@ namespace BMM.Api.Framework.HTTP
         /// <returns>The response.</returns>
         /// <param name="request">Request.</param>
         /// <param name="cancellationToken"></param>
-        Task<HttpResponseMessage> GetResponse(IRequest request, CancellationToken? cancellationToken = null);
+        Task<HttpResponseMessage> GetResponse(
+            IRequest request,
+            IDictionary<string, string> customHeaders = default,
+            CancellationToken? cancellationToken = null);
     }
 }

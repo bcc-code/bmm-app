@@ -21,7 +21,8 @@ namespace BMM.Core.NewMediaPlayer
             foreach (var headerProvider in providers)
             {
                 var header = await headerProvider.GetHeader();
-                headers.Add(header);
+                if (header.HasValue)
+                    headers.Add(header.Value);
             }
 
             return headers;

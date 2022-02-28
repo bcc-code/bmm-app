@@ -14,13 +14,20 @@ namespace BMM.Core.Implementations.Security
             _headerProviders = headerProviders;
         }
 
-        public async Task InterceptRequest(IRequest request)
+        public async Task InterceptRequest(IRequest request, IDictionary<string, string> customHeaders)
         {
             foreach (var provider in _headerProviders)
             {
                 var header = await provider.GetHeader();
-                request.Headers.Add(header.Key, header.Value);
+                if (header.HasValue)
+                    request.Headers.Add(header.Value.Key, header.Value.Value);
             }
+
+            if (customHeaders == default)
+                return;
+            
+            foreach (var customHeader in customHeaders)
+                request.Headers[customHeader.Key] = customHeader.Value;
         }
     }
 }

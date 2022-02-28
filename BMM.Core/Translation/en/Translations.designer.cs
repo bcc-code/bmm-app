@@ -179,6 +179,7 @@ namespace BMM.Core.Translation
 		public const string CuratedPlaylistsViewModel_Title = nameof(CuratedPlaylistsViewModel_Title);
 		public const string PlayerViewModel_Title = nameof(PlayerViewModel_Title);
 		public const string PlayerViewModel_PlayingCount = nameof(PlayerViewModel_PlayingCount);
+		public const string PlayerViewModel_ViewLyrics = nameof(PlayerViewModel_ViewLyrics);
 		public const string QueueViewModel_Title = nameof(QueueViewModel_Title);
 		public const string SearchViewModel_Title = nameof(SearchViewModel_Title);
 		public const string SearchViewModel_SearchHint = nameof(SearchViewModel_SearchHint);
@@ -358,5 +359,8 @@ namespace BMM.Core.Translation
 		public const string ThemeSettingsViewModel_Light = nameof(ThemeSettingsViewModel_Light);
 		public const string ThemeSettingsViewModel_Dark = nameof(ThemeSettingsViewModel_Dark);
 		public const string ThemeSettingsViewModel_System = nameof(ThemeSettingsViewModel_System);
+		public const string ChangeTrackLanguageViewModel_Title = nameof(ChangeTrackLanguageViewModel_Title);
+		public const string ChangeTrackLanguageViewModel_PreferredLanguages = nameof(ChangeTrackLanguageViewModel_PreferredLanguages);
+		public const string ChangeTrackLanguageViewModel_AllLanguages = nameof(ChangeTrackLanguageViewModel_AllLanguages);
 	}
 }

@@ -9,7 +9,7 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/track_divider_line"
+        android:background="@color/separator_color"
         android:layout_marginTop="8dp"
         local:MvxBind="Visibility Visibility(ShowDivider)"/>
 

@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="player_standard_button_size">52dp</dimen>
+    <dimen name="player_small_button_size">44dp</dimen>
+    <dimen name="player_standard_margin">28dp</dimen>
+</resources>

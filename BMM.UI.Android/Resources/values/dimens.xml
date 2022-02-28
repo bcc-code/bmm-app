@@ -5,12 +5,15 @@
     <dimen name="margin_tiny">4dp</dimen>
     <dimen name="margin_mini">6dp</dimen>
     <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_xsmall">12dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_xmedium">20dp</dimen>
     <dimen name="margin_xxmedium">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
     <dimen name="margin_huge">64dp</dimen>
 
+    <dimen name="margin_xsmall_negative">-12dp</dimen>
+    
     <dimen name="padding_tiny">4dp</dimen>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
@@ -20,6 +23,7 @@
     <dimen name="divider_height">1dp</dimen>
 
     <dimen name="default_icon_size">24dp</dimen>
+    <dimen name="circle_button_size">40dp</dimen>
 
     <!-- Buttons -->
     <dimen name="large_button_height">56dp</dimen>
@@ -61,7 +65,7 @@
     <dimen name="horizontal_scrolling_cover_image_size">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_width">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_height">204dp</dimen>
-
+    
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>
     <dimen name="row_contributor_height">60dp</dimen>

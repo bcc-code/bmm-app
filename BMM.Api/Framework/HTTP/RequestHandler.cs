@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -30,19 +31,25 @@ namespace BMM.Api.Framework.HTTP
             _jsonSettings = new JsonSerializerSettings {ContractResolver = new IgnoreIdContractResolver()};
         }
 
-        public async Task<T> GetResolvedResponse<T>(IRequest request, CancellationToken? cancellationToken = null)
+        public async Task<T> GetResolvedResponse<T>(
+            IRequest request,
+            IDictionary<string, string> customHeaders = default,
+            CancellationToken? cancellationToken = null)
         {
-            using (HttpResponseMessage response = await GetResponse(request, cancellationToken))
+            using (HttpResponseMessage response = await GetResponse(request, customHeaders, cancellationToken))
                 return await _responseDeserializer.DeserializeResponse<T>(response);
         }
 
-        public async Task<HttpResponseMessage> GetResponse(IRequest request, CancellationToken? cancellationToken = null)
+        public async Task<HttpResponseMessage> GetResponse(
+            IRequest request,
+            IDictionary<string, string> customHeaders = default,
+            CancellationToken? cancellationToken = null)
         {
-            var requestMessage = await BuildRequestMessage(request);
+            var requestMessage = await BuildRequestMessage(request, customHeaders);
             return await GetResponseByHttpRequest(requestMessage, cancellationToken);
         }
 
-        protected async Task<HttpRequestMessage> BuildRequestMessage(IRequest request)
+        protected async Task<HttpRequestMessage> BuildRequestMessage(IRequest request, IDictionary<string, string> customHeaders = default)
         {
             var httpRequest = new HttpRequestMessage(request.Method, request.Uri);
 
@@ -65,9 +72,7 @@ namespace BMM.Api.Framework.HTTP
             }
 
             if (_interceptor != null)
-            {
-                await _interceptor.InterceptRequest(request);
-            }
+                await _interceptor.InterceptRequest(request, customHeaders);
 
             foreach (var kv in request.Headers)
             {

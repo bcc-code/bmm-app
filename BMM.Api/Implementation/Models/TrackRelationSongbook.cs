@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BMM.Api.Utils;
+using Newtonsoft.Json;
 
 namespace BMM.Api.Implementation.Models
 {
@@ -18,6 +19,6 @@ namespace BMM.Api.Implementation.Models
         public int Timestamp { get; set; }
 
         [JsonIgnore]
-        public string ShortName => Name.Replace("herrens_veier", "HV ").Replace("mandelblomsten", "FMB ") + Id;
+        public string ShortName => $"{SongbookUtils.GetShortName(Name)} {Id}";
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using Android.Animation;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
@@ -7,17 +8,21 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.ConstraintLayout.Widget;
-using AndroidX.Core.Content;
+using AndroidX.Core.Graphics;
 using BMM.Core.Constants;
 using BMM.Core.Diagnostic.Interfaces;
 using BMM.Core.Implementations.Analytics;
-using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Interactions;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Constants;
+using BMM.UI.Droid.Application.Constants.Player;
+using BMM.UI.Droid.Application.CustomViews;
+using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.Helpers.BottomSheet;
 using BMM.UI.Droid.Application.Helpers.Gesture;
-using FFImageLoading;
+using BMM.UI.Droid.Application.Listeners;
+using FFImageLoading.Drawables;
 using Google.Android.Material.BottomSheet;
 using MvvmCross;
 using MvvmCross.Base;
@@ -25,6 +30,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Commands;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using MvvmCross.ViewModels;
+using ViewUtils = BMM.UI.Droid.Utils.ViewUtils;
 
 namespace BMM.UI.Droid.Application.Fragments
 {
@@ -33,14 +39,16 @@ namespace BMM.UI.Droid.Application.Fragments
     public class PlayerFragment : BaseFragment<PlayerViewModel>, SeekBar.IOnSeekBarChangeListener
     {
         private const int TimeToCheckEmptyPlayerErrorInMillis = 2000;
+        private const int BackgroundAccentAlpha = 170;
+        private const float BackgroundAccentColorPercentageVolume = 0.1f;
+        private const string NotNightModePlaceholderCover = "res:new_placeholder_cover";
+        private const string NightModePlaceholderCover = "res:new_placeholder_cover_night";
 
         private BottomSheetManager _bottomSheetManager;
         private HorizontalSwipeDetector _swipeDetector;
-        private ImageView _imageView;
         private SeekBar _seekBar;
         private IAnalytics _analytics;
 
-        [Obsolete("We should use a more MVVM like approach and not handle with direct references like that")]
         private ConstraintLayout PlayerFragmentContainer { get; set; }
 
         public bool IsOpen => _bottomSheetManager.IsOpen;
@@ -51,8 +59,20 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private IMvxInteraction<TogglePlayerInteraction> _interaction;
         private PreventBottomSheetChangesWhileSwipeHappens _preventBottomSheetChangesWhileSwipeHappens;
+        private Color _coverMainColor;
+        private ShadowLayout _coverShadowLayout;
+        private BmmCachedImageView _coverImage;
+        private Color _backgroundAccentColor;
+        private TextView _titleLabel;
+        private FrameLayout _coverContainer;
+        private float _coverTopPaddingMultiplier;
+        private string _coverImagePath;
 
         protected override bool ShouldClearMenuItemsAtStart => false;
+        
+        private float DefaultCoverShadowRadiusSize => View.Width * 0.25f;
+        
+        private string CoverPlaceholderPath { get; set; }
 
         public IMvxInteraction<TogglePlayerInteraction> Interaction
         {
@@ -106,6 +126,7 @@ namespace BMM.UI.Droid.Application.Fragments
             var bottomSheet = BottomSheetBehavior.From(PlayerFragmentContainer);
             _bottomSheetManager = new BottomSheetManager(bottomSheet);
             bottomSheet.SetBottomSheetCallback(_bottomSheetManager);
+            _bottomSheetManager.Close();
 
             _preventBottomSheetChangesWhileSwipeHappens =
                 new PreventBottomSheetChangesWhileSwipeHappens(_bottomSheetManager, _swipeDetector);
@@ -121,14 +142,56 @@ namespace BMM.UI.Droid.Application.Fragments
                     TimeToCheckEmptyPlayerErrorInMillis,
                     Event.EmptyPlayer);
 
+            _coverContainer = view.FindViewById<FrameLayout>(Resource.Id.CoverContainer);
+            _coverShadowLayout = view.FindViewById<ShadowLayout>(Resource.Id.CoverShadowLayout);
+            _coverImage = view.FindViewById<BmmCachedImageView>(Resource.Id.CoverImageView);
+            _backgroundAccentColor = Context.GetColorFromResource(Resource.Color.background_secondary_color);
+            _titleLabel = view.FindViewById<TextView>(Resource.Id.TitleLabel);
+            _coverContainer!.ClipToOutline = true;
+            
+            var subtitleLabel = view.FindViewById<TextView>(Resource.Id.SubtitleLabel);
+            subtitleLabel!.Selected = true;
+            view.Post(SetSizes);
+            SetupCoverImage();
+            BindCover();
+                
             return view;
         }
-
-        private bool CheckIfPlayerIsEmpty()
+        
+        private void SetupCoverImage()
         {
-            var titleTextView = View.FindViewById<TextView>(Resource.Id.title);
-            return string.IsNullOrEmpty(titleTextView?.Text);
+            CoverPlaceholderPath = Context.IsNightMode()
+                ? NightModePlaceholderCover
+                : NotNightModePlaceholderCover;
+
+            _coverImage.LoadingPlaceholderImagePath = CoverPlaceholderPath;
+            _coverImage.ErrorPlaceholderImagePath = CoverPlaceholderPath;
         }
+
+        private void BindCover()
+        {
+            var set = this.CreateBindingSet<PlayerFragment, PlayerViewModel>();
+
+            set.Bind(this)
+                .For(v => v.CoverImagePath)
+                .To(vm => vm.CurrentTrack.ArtworkUri);
+            
+            set.Apply();
+        }
+
+        public string CoverImagePath
+        {
+            get => _coverImagePath;
+            set
+            {
+                _coverImagePath = value;
+                _coverImage.ImagePath = string.IsNullOrEmpty(_coverImagePath)
+                    ? CoverPlaceholderPath
+                    : _coverImagePath;
+            }
+        }
+
+        private bool CheckIfPlayerIsEmpty() => string.IsNullOrEmpty(_titleLabel?.Text);
 
         public override void OnStart()
         {
@@ -151,9 +214,8 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
-            _seekBar = ParentActivity.FindViewById<SeekBar>(Resource.Id.player_seekbar);
+            _seekBar = ParentActivity.FindViewById<SeekBar>(Resource.Id.PlayerSeekbar);
             _seekBar.SetOnSeekBarChangeListener(this);
-            _imageView = ParentActivity.FindViewById<ImageView>(Resource.Id.coverImagePlaceholder);
 
             UpdateStatusBarColor();
 
@@ -173,6 +235,7 @@ namespace BMM.UI.Droid.Application.Fragments
             _bottomSheetManager.OnBottomSheetStateChanged += HandleBottomSheetStateChanged;
             _swipeDetector.OnSwipeDetected += HandleSwipe;
             _preventBottomSheetChangesWhileSwipeHappens.Register();
+            _coverImage.ImageChanged += CoverImageOnImageChanged;
         }
 
         protected override void DetachEvents()
@@ -182,17 +245,28 @@ namespace BMM.UI.Droid.Application.Fragments
             _bottomSheetManager.OnBottomSheetStateChanged -= HandleBottomSheetStateChanged;
             _swipeDetector.OnSwipeDetected -= HandleSwipe;
             _preventBottomSheetChangesWhileSwipeHappens.Unregister();
+            _coverImage.ImageChanged -= CoverImageOnImageChanged;
         }
 
         public void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            var propertyName = args.PropertyName;
-            var allPropertiesHaveChanged = string.IsNullOrEmpty(propertyName);
+            string propertyName = args.PropertyName;
+            bool allPropertiesHaveChanged = string.IsNullOrEmpty(propertyName);
 
-            if (allPropertiesHaveChanged || args.PropertyName == "CurrentTrack")
+            if (allPropertiesHaveChanged || args.PropertyName == nameof(ViewModel.CurrentTrack))
+                UpdateTitleSize();
+        }
+
+        private void CoverImageOnImageChanged(object sender, EventArgs e)
+        {
+            if (!(_coverImage.Drawable is SelfDisposingBitmapDrawable selfDisposingBitmapDrawable)
+                || string.IsNullOrEmpty(selfDisposingBitmapDrawable.InCacheKey))
             {
-                UpdateCover();
+                SetCoverShadow(true);
+                return;
             }
+
+            SetCoverShadow(!CoverPlaceholderPath.Contains(selfDisposingBitmapDrawable.InCacheKey));
         }
 
         private void HandleSwipe(object sender, SwipeEvent swipeEvent)
@@ -202,18 +276,12 @@ namespace BMM.UI.Droid.Application.Fragments
                 IMvxCommand command = null;
 
                 if (swipeEvent.Direction == SwipeDirection.Right)
-                {
                     command = ViewModel.NextCommand;
-                }
                 else if (swipeEvent.Direction == SwipeDirection.Left)
-                {
                     command = ViewModel.PreviousCommand;
-                }
 
                 if (command != null && command.CanExecute())
-                {
                     command.Execute();
-                }
             }
         }
 
@@ -221,103 +289,115 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             UpdateStatusBarColor();
             if (state == BottomSheetBehavior.StateHidden)
-                SetLightNavigationBar();
+                ViewUtils.SetDefaultNavigationBarColor(Activity);
         }
 
-        private void UpdateCover()
+        private void SetCoverShadow(bool shouldTintBackground)
         {
-            Mvx.IoCProvider.Resolve<IExceptionHandler>()
-                .FireAndForgetWithoutUserMessages(async () =>
-                {
-                    var coverImage = ViewModel.CurrentTrack?.ArtworkUri == null
-                        ? await ImageService.Instance.LoadCompiledResource("placeholder_cover").AsBitmapDrawableAsync()
-                        : await ImageService.Instance.LoadUrl(ViewModel.CurrentTrack?.ArtworkUri).AsBitmapDrawableAsync();
-
-                    if (coverImage?.Bitmap == null)
-                        return;
-
-                    await Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()
-                        .ExecuteOnMainThreadAsync(() => { SetBlurredBackground(coverImage.Bitmap); });
-                });
-        }
-
-        private void SetBlurredBackground(Bitmap cover)
-        {
-            if (!IsOpen)
+            if (!(_coverImage.Drawable is BitmapDrawable bitmapDrawable))
                 return;
 
-            var blurredCover = BitmapHelper.BlurImage(Context, cover);
-            PlayerFragmentContainer.Background = new BitmapDrawable(blurredCover);
+            _coverMainColor = BitmapHelper.GetDominantColor(bitmapDrawable.Bitmap);
+            
+            var coverMainColorWithAlpha = new Color(_coverMainColor)
+            {
+                A = BackgroundAccentAlpha
+            };
+            
+            if (shouldTintBackground)
+                _coverShadowLayout.SetShadowColor(coverMainColorWithAlpha);
+            else
+                _coverShadowLayout.SetShadowColor(Color.Transparent);
+            
+            int accentColor = shouldTintBackground ?
+                ColorUtils.BlendARGB(
+                Context.GetColorFromResource(Resource.Color.background_secondary_color).ToArgb(),
+                _coverMainColor.ToArgb(),
+                BackgroundAccentColorPercentageVolume)
+                : Context.GetColorFromResource(Resource.Color.background_secondary_color);
 
-            FragmentBaseColor = BitmapHelper.GetColor(blurredCover);
+            var newBackgroundAccentColor = new Color(accentColor);
+            var animation = ValueAnimator.OfArgb(_backgroundAccentColor, newBackgroundAccentColor);
+
+            animation!.AddUpdateListener(new AnimationUpdateListener(valueAnimator =>
+            {
+                var newColor = new Color((int)valueAnimator.AnimatedValue);
+                PlayerFragmentContainer.SetBackgroundColor(newColor);
+                
+                if (IsOpen && IsVisible)
+                    ViewUtils.SetSpecifiedNavigationBarColor(Activity, newColor);
+            }));
+
+            animation.SetDuration(ViewConstants.LongAnimationDurationInMilliseconds);
+            animation.Start();
+
+            _backgroundAccentColor = newBackgroundAccentColor;
             UpdateStatusBarColor();
         }
 
-        private void SetOnTouchListener()
-        {
-            _imageView.SetOnTouchListener(_swipeDetector);
-        }
+        private void SetOnTouchListener() => _coverImage.SetOnTouchListener(_swipeDetector);
 
-        public void ShowPlayer()
-        {
-            PlayerFragmentContainer.Visibility = ViewStates.Visible;
-            UpdateStatusBarColor();
-            SetDarkNavigationBar();
-        }
-
-        public void HidePlayer()
-        {
-            PlayerFragmentContainer.Visibility = ViewStates.Invisible;
-            UpdateStatusBarColor();
-            SetLightNavigationBar();
-        }
-
-        public void OpenPlayer()
+        private void OpenPlayer()
         {
             _bottomSheetManager.Open();
-
-            UpdateCover();
-
             SetOnTouchListener();
-            SetDarkNavigationBar();
+            ViewUtils.SetSpecifiedNavigationBarColor(Activity, _backgroundAccentColor);
         }
 
         public void ClosePlayer()
         {
-            SetLightNavigationBar();
+            ViewUtils.SetDefaultNavigationBarColor(Activity);
             _bottomSheetManager.Close();
         }
 
         private void UpdateStatusBarColor()
         {
             if (IsOpen && IsVisible)
+                SetStatusBarColor(_backgroundAccentColor);
+            else
+                SetStatusBarColor(ColorOfUppermostFragment());
+        }
+
+        private void UpdateTitleSize()
+        {
+            View.Post(() =>
             {
-                SetStatusBarColor(FragmentBaseColor);
-            }
+                int coverBottom = _coverContainer!.Bottom;
+                int titleLabelBottom = _titleLabel.Bottom;
+                int margin = Resources.GetDimensionPixelSize(Resource.Dimension.margin_xmedium);
+
+                int desiredTitleLabelHeight = titleLabelBottom - coverBottom - margin - _coverShadowLayout.PaddingTop;
+                _titleLabel.UpdateHeight(desiredTitleLabelHeight);
+            });
+        }
+
+        private void SetSizes()
+        {
+            float coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Medium;
+
+            
+            if (View.Height <= AndroidScreenSizesHeight.HD)
+                _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
+            else if (View.Height <= AndroidScreenSizesHeight.FullHD)
+                _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Medium;
             else
             {
-                SetStatusBarColor(ColorOfUppermostFragment());
+                if (View.IsLong())
+                {
+                    _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Big;
+                    coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Big;
+                }
+                else
+                {
+                    _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
+                    coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Small;
+                }
             }
-        }
 
-        private void SetLightNavigationBar()
-        {
-            if (Activity?.Window == null || Activity?.Resources == null || !SdkVersion.SupportsNavigationBarColors)
-                return;
-            Activity.Window.ClearFlags(WindowManagerFlags.TranslucentNavigation);
-            Activity.Window.SetNavigationBarColor(new Color(ContextCompat.GetColor(Context, Resource.Color.label_primary_reverted_color)));
-            
-            if (SdkVersion.SupportsNavigationBarDividerColor)   
-                Activity.Window.NavigationBarDividerColor = ContextCompat.GetColor(Context, Resource.Color.dark_gray);
-        }
-
-        private void SetDarkNavigationBar()
-        {
-            if (Activity?.Window == null || Activity?.Resources == null || !SdkVersion.SupportsNavigationBarColors)
-                return;
-            Activity.Window.SetNavigationBarColor(new Color(ContextCompat.GetColor(Context, Android.Resource.Color.Black)));
-            if (SdkVersion.SupportsNavigationBarDividerColor)
-                Activity.Window.NavigationBarDividerColor = ContextCompat.GetColor(Context, Android.Resource.Color.Transparent);
+            _coverShadowLayout.TopPaddingMultiplier = _coverTopPaddingMultiplier;
+            _coverShadowLayout!.SetShadowRadius(DefaultCoverShadowRadiusSize);
+            _coverImage.UpdateSize((int)(View.Width * coverSizeMultiplier));
+            UpdateTitleSize();
         }
     }
 }

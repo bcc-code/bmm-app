@@ -112,7 +112,7 @@ namespace BMM.UI.iOS
         {
             NameLabel.ApplyTextTheme(AppTheme.Heading2);
             PlaylistState.ApplyTextTheme(AppTheme.Subtitle1Label2);
-            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary.Value);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
         }
 

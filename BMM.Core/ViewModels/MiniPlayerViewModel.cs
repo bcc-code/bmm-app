@@ -1,4 +1,5 @@
 ﻿using BMM.Core.Helpers;
+using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross.Commands;
@@ -8,6 +9,8 @@ namespace BMM.Core.ViewModels
 {
     public sealed class MiniPlayerViewModel : PlayerBaseViewModel
     {
+        private MiniPlayerTrackInfoProvider _miniPlayerTrackInfoProvider;
+
         public MiniPlayerViewModel(IMediaPlayer mediaPlayer)
             : base(mediaPlayer)
         {
@@ -24,5 +27,6 @@ namespace BMM.Core.ViewModels
         }
 
         public IMvxCommand OpenPlayerCommand { get; set; }
+        public override ITrackInfoProvider TrackInfoProvider => _miniPlayerTrackInfoProvider ??= new MiniPlayerTrackInfoProvider();
     }
 }

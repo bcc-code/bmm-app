@@ -2,7 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations;
+using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Interactions;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
@@ -12,63 +15,61 @@ using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 using BMM.Core.Implementations.UI;
-using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Translation;
+using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.ViewModels
 {
-    public sealed class PlayerViewModel : PlayerBaseViewModel, IMvxViewModel<bool>
+    public sealed class PlayerViewModel : PlayerBaseViewModel, IPlayerViewModel, IMvxViewModel<bool>
     {
+        private readonly IUriOpener _uriOpener;
+        private readonly IUpdateExternalRelationsAction _updateExternalRelationsAction;
+        private readonly MvxInteraction<TogglePlayerInteraction> _closePlayerInteraction = new();
+        private RepeatType _repeatType;
+        private bool _isShuffleEnabled;
+        private bool _isSkipToNextEnabled;
+        private bool _isSkipToPreviousEnabled;
+        private string _trackLanguage;
+        private long _currentIndex;
+        private int _queueLength;
+        
         private MvxSubscriptionToken _toggleToken;
         private MvxSubscriptionToken _repeatToken;
         private MvxSubscriptionToken _shuffleToken;
-
-        private readonly IUriOpener _uriOpener;
-        private readonly IExceptionHandler _exceptionHandler;
-
-        private readonly MvxInteraction<TogglePlayerInteraction> _closePlayerInteraction = new MvxInteraction<TogglePlayerInteraction>();
-
+        
         private bool _directlyShowPlayerForAndroid;
+        private bool _hasExternalRelations;
+        private PlayerTrackInfoProvider _playerTrackInfoProvider;
 
         public IMvxInteraction<TogglePlayerInteraction> ClosePlayerInteraction => _closePlayerInteraction;
 
         public MvxCommand CloseViewModelCommand { get; }
-
         public MvxCommand ClosePlayerCommand { get; }
-
         public IMvxCommand OpenQueueCommand { get; }
-
         public IMvxCommand ToggleShuffleCommand { get; }
-
         public IMvxCommand ToggleRepeatCommand { get; }
-
+        public IMvxAsyncCommand NavigateToLanguageChangeCommand { get; }
         public MvxCommand PreviousOrSeekToStartCommand { get; }
-
         public MvxCommand PreviousCommand { get; }
-
         public MvxCommand NextCommand { get; }
-
         public MvxCommand SkipForwardCommand { get; }
-
         public MvxCommand SkipBackwardCommand { get; }
+        public MvxCommand OpenLyricsCommand { get; }
+        
+        public string SongTreasureLink { get; set; }
 
-        public MvxCommand OpenExternalReferenceCommand { get; }
-
-        private bool _isShuffleEnabled;
         public bool IsShuffleEnabled
         {
             get => _isShuffleEnabled;
             private set => SetProperty(ref _isShuffleEnabled, value);
         }
 
-        private RepeatType _repeatType = RepeatType.None;
         public RepeatType RepeatType
         {
             get => _repeatType;
             private set => SetProperty(ref _repeatType, value);
         }
 
-        private bool _isSkipToNextEnabled;
         public bool IsSkipToNextEnabled
         {
             get => _isSkipToNextEnabled;
@@ -79,7 +80,6 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        private bool _isSkipToPreviousEnabled;
         public bool IsSkipToPreviousEnabled
         {
             get => _isSkipToPreviousEnabled;
@@ -91,28 +91,37 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        private bool _hasExternalRelations;
         public bool HasExternalRelations
         {
             get => _hasExternalRelations;
-            private set => SetProperty(ref _hasExternalRelations, value);
+            set => SetProperty(ref _hasExternalRelations, value);
+        }
+        
+        public string TrackLanguage
+        {
+            get => _trackLanguage;
+            set => SetProperty(ref _trackLanguage, value);
         }
 
-        private Uri _btvLink;
-        public string BtvLinkTitle { get; private set; }
-        public bool HasBtvLink => _btvLink != null;
+        public bool CanNavigateToLanguageChange => NavigateToLanguageChangeCommand.CanExecute();
+        
+        public bool HasLyrics => OpenLyricsCommand.CanExecute();
 
-        private long CurrentIndex { get; set; }
+        public string PlayingText => _queueLength > 0 ? TextSource.GetText(Translations.PlayerViewModel_PlayingCount, _currentIndex + 1, _queueLength) : string.Empty;
 
-        private int QueueLength { get; set; }
-
-        public string PlayingText => QueueLength > 0 ? TextSource.GetText(Translations.PlayerViewModel_PlayingCount, CurrentIndex + 1, QueueLength) : string.Empty;
-
-        public PlayerViewModel(IMediaPlayer mediaPlayer, IUriOpener uriOpener, IExceptionHandler exceptionHandler) : base(mediaPlayer)
+        public PlayerViewModel(
+            IMediaPlayer mediaPlayer,
+            IUriOpener uriOpener,
+            IChangeTrackLanguageAction changeTrackLanguageAction,
+            IUpdateExternalRelationsAction updateExternalRelationsAction) : base(mediaPlayer)
         {
             _uriOpener = uriOpener;
-            _exceptionHandler = exceptionHandler;
+            _updateExternalRelationsAction = updateExternalRelationsAction;
 
+            _updateExternalRelationsAction.AttachDataContext(this);
+            changeTrackLanguageAction.AttachDataContext(this);
+
+            NavigateToLanguageChangeCommand = changeTrackLanguageAction.Command;
             CloseViewModelCommand = new MvxCommand(() => NavigationService.Close(this));
             ClosePlayerCommand = new MvxCommand(() => _closePlayerInteraction.Raise(new TogglePlayerInteraction {Open = false}));
             OpenQueueCommand = NavigationService.NavigateCommand<QueueViewModel>();
@@ -123,7 +132,7 @@ namespace BMM.Core.ViewModels
             PreviousOrSeekToStartCommand = new MvxCommand(MediaPlayer.PlayPreviousOrSeekToStart, () => IsSkipToPreviousEnabled);
             SkipForwardCommand = new MvxCommand(() => MediaPlayer.JumpForward());
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
-            OpenExternalReferenceCommand = new MvxCommand(() => OpenBtvLink());
+            OpenLyricsCommand = new MvxCommand(OpenLyricsLink, () => !string.IsNullOrEmpty(SongTreasureLink));
 
             _repeatToken = Messenger.Subscribe<RepeatModeChangedMessage>(m => RepeatType = m.RepeatType);
             _shuffleToken = Messenger.Subscribe<ShuffleModeChangedMessage>(m => IsShuffleEnabled = m.IsShuffleEnabled);
@@ -132,9 +141,12 @@ namespace BMM.Core.ViewModels
             RepeatType = MediaPlayer.RepeatType;
             IsShuffleEnabled = MediaPlayer.IsShuffleEnabled;
             UpdatePlaybackState(MediaPlayer.PlaybackState);
-            UpdateExternalRelations();
             SetupSubscriptions();
         }
+
+        public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
+
+        private void OpenLyricsLink() => _uriOpener.OpenUri(new Uri(SongTreasureLink));
 
         public void Prepare(bool showPlayer)
         {
@@ -152,15 +164,12 @@ namespace BMM.Core.ViewModels
             base.ViewAppeared();
 
             if (_directlyShowPlayerForAndroid)
-            {
                 _closePlayerInteraction.Raise(new TogglePlayerInteraction {Open = true});
-            }
         }
 
         public override void ViewDisappeared()
         {
             base.ViewDisappeared();
-
             Messenger.Unsubscribe<TogglePlayerMessage>(_toggleToken);
         }
 
@@ -173,9 +182,7 @@ namespace BMM.Core.ViewModels
             var currentDocument = queue.Tracks.FirstOrDefault(track => track.Id == CurrentTrack.Id) as Document;
 
             if (currentDocument != null)
-            {
                 await base.OptionsAction(currentDocument);
-            }
         }
 
         private void OnTogglePlayerMessage(TogglePlayerMessage message)
@@ -190,8 +197,8 @@ namespace BMM.Core.ViewModels
             IsSkipToNextEnabled = state.IsSkipToNextEnabled;
             IsSkipToPreviousEnabled = state.IsSkipToPreviousEnabled;
 
-            CurrentIndex = state.CurrentIndex;
-            QueueLength = state.QueueLength;
+            _currentIndex = state.CurrentIndex;
+            _queueLength = state.QueueLength;
             RaisePropertyChanged(() => PlayingText);
         }
 
@@ -200,50 +207,14 @@ namespace BMM.Core.ViewModels
         {
             return base.ShowTrackInfo(CurrentTrack as Track);
         }
-
-        private void OpenBtvLink()
+        
+        protected override async Task OnCurrentTrackChanged()
         {
-            try
-            {
-                _uriOpener.OpenUri(_btvLink);
-            }
-            catch (FormatException ex)
-            {
-                _exceptionHandler.HandleException(ex);
-            }
-        }
+            await base.OnCurrentTrackChanged();
 
-        protected override async Task OnCurrentTrackChanged(CurrentTrackChangedMessage message)
-        {
-            await base.OnCurrentTrackChanged(message);
-            UpdateExternalRelations();
-        }
-
-        private void UpdateExternalRelations()
-        {
-            HasExternalRelations = CurrentTrack?.Relations != null &&
-                                   CurrentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
-
-            _btvLink = null;
-            BtvLinkTitle = null;
-            if (HasExternalRelations)
-            {
-                var btvHost = new Uri("https://brunstad.tv/").Host;
-                foreach (var link in CurrentTrack.Relations.OfType<TrackRelationExternal>())
-                {
-                    if (!Uri.TryCreate(link.Url, UriKind.Absolute, out var uri))
-                        continue;
-                    if (uri.Host == btvHost)
-                    {
-                        _btvLink = uri;
-                        BtvLinkTitle = link.Name;
-                        break;
-                    }
-                }
-            }
-
-            RaisePropertyChanged(() => HasBtvLink);
-            RaisePropertyChanged(() => BtvLinkTitle);
+            await _updateExternalRelationsAction.ExecuteGuarded();
+            await RaisePropertyChanged(() => CanNavigateToLanguageChange);
+            NavigateToLanguageChangeCommand.RaiseCanExecuteChanged();
         }
     }
 }

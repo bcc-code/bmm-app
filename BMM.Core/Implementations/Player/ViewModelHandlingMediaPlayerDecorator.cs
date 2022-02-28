@@ -188,6 +188,13 @@ namespace BMM.Core.Implementations.Player
             _queue.Clear();
         }
 
+        public async Task ChangeLanguageOfCurrentTrack(string language)
+        {
+            Pause();
+            CurrentTrack.Language = language;
+            await Play(_queue.Tracks, (IMediaTrack)CurrentTrack, CurrentPosition);
+        }
+
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
         {
             var enrichedTrack = EnrichTrackWithPlaybackOrigin(track, playbackOrigin);
@@ -256,7 +263,26 @@ namespace BMM.Core.Implementations.Player
             await _mediaPlayer.ShuffleList(enrichedTracks, playbackOrigin);
             ShowViewmodelIfNecessary();
         }
+        
+        public async Task  ReplaceTrack(IMediaTrack newLanguageTrack)
+        {
+            long currentPosition = CurrentPosition;
+            
+            Pause();
 
+            var mediaFiles = _queue.Tracks.ToList();
+            var currentFile = mediaFiles.FirstOrDefault(m => m.Id == CurrentTrack.Id);
+            if (currentFile == null)
+                return;
+            
+            int indexOfCurrentTrack = mediaFiles.IndexOf(currentFile);
+            mediaFiles[indexOfCurrentTrack] = newLanguageTrack;
+            
+            await Play(mediaFiles, newLanguageTrack, currentPosition);
+        }
+
+        public long CurrentPosition => _mediaPlayer.CurrentPosition;
+        
         public ITrackModel CurrentTrack => _mediaPlayer.CurrentTrack;
 
         public bool IsPlaying => _mediaPlayer.IsPlaying;

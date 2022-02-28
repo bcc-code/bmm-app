@@ -3,6 +3,8 @@ using Android.Content;
 using Android.Graphics;
 using Android.Renderscripts;
 using Android.Views;
+using AndroidX.Core.Content;
+using AndroidX.Palette.Graphics;
 
 namespace BMM.UI.Droid.Application.Helpers
 {
@@ -57,9 +59,13 @@ namespace BMM.UI.Droid.Application.Helpers
             }
         }
 
-        public static Color GetDarkenedColor(Bitmap bitmap)
+        public static Color GetDominantColor(Bitmap bitmap)
         {
-            return Darken(GetColor(bitmap));
+            var palette = Palette
+                .From(bitmap)
+                .Generate();
+
+            return new Color(palette.GetDominantColor(Color.Black));
         }
 
         public static Color Darken(Color color)

@@ -49,7 +49,7 @@
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintTop_toBottomOf="@+id/PlaylistAuthor"
-            android:background="@color/track_divider_line" />
+            android:background="@color/separator_color" />
 
     <TextView
             android:layout_width="@dimen/match_constraint"

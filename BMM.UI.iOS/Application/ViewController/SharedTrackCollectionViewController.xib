@@ -33,7 +33,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="292"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaylistIcon" translatesAutoresizingMaskIntoConstraints="NO" id="MGR-8R-ABe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlaylist" translatesAutoresizingMaskIntoConstraints="NO" id="MGR-8R-ABe">
                                 <rect key="frame" x="183" y="32" width="48" height="48"/>
                                 <color key="tintColor" name="LabelPrimaryColor"/>
                                 <constraints>
@@ -129,7 +129,7 @@
         </view>
     </objects>
     <resources>
-        <image name="PlaylistIcon" width="48" height="48"/>
+        <image name="IconPlaylist" width="48" height="48"/>
         <namedColor name="BackgroundPrimaryColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

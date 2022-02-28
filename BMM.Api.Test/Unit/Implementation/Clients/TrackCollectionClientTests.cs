@@ -17,10 +17,10 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<TrackCollection>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<TrackCollection>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<TrackCollection>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<TrackCollection>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
         }
 
@@ -29,7 +29,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var trackCollectionClient = new TrackCollectionClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<TrackCollection>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<TrackCollection>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateSampleTrackCollection()));
 
             // Act
@@ -46,7 +46,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
             // Arrange
             int id = 100;
             var trackCollectionClient = new TrackCollectionClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<TrackCollection>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<TrackCollection>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(new TrackCollection(){ Id = id}));
 
             // Act

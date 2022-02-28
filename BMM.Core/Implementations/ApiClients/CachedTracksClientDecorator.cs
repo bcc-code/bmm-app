@@ -34,9 +34,6 @@ namespace BMM.Core.Implementations.ApiClients
                 "excludeTags:" + (excludeTags == null ? "null" : string.Join(",", excludeTags)));
         }
 
-        public Task<Track> GetById(int id)
-        {
-            return _client.GetById(id);
-        }
+        public Task<Track> GetById(int id, string desiredLanguage = default) => _client.GetById(id, desiredLanguage);
     }
 }

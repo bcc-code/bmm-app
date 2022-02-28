@@ -1,7 +1,9 @@
 using System.Threading.Tasks;
+using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Theme.Interfaces;
 using BMM.Core.Models.Themes;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Utils;
 using MvvmCross.Base;
 using UIKit;
@@ -22,15 +24,23 @@ namespace BMM.UI.iOS.Actions
             await _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
             {
                 UIView.Animate(
-                    0.3f,
+                    ViewConstants.DefaultAnimationDuration,
                     () =>
                     {
                         UIApplication.SharedApplication.KeyWindow.OverrideUserInterfaceStyle = ThemeUtils.GetUIUserInterfaceStyleForTheme(theme);
 
-                        if (theme == Theme.Dark)
-                            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
-                        else
-                            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.DarkContent, true);
+                        switch (theme)
+                        {
+                            case Theme.Dark:
+                                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
+                                break;
+                            case Theme.Light:
+                                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.DarkContent, true);
+                                break;
+                            default:
+                                UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.Default, true);
+                                break;
+                        }
                     });
             });
         }

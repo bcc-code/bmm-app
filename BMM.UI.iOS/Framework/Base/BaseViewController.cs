@@ -17,6 +17,8 @@ namespace BMM.UI.iOS
         public BaseViewController(string nib)
             : base(nib, null)
         { }
+        
+        protected virtual string GetTitle() => ViewModel.TextSource[TitleKey];
 
         public override void ViewDidLoad()
         {
@@ -41,16 +43,16 @@ namespace BMM.UI.iOS
             {
                 ForegroundColor = AppColors.LabelPrimaryColor
             };
-            appearance.ShadowColor = UIColor.Clear;
+            appearance.ShadowColor = AppColors.SeparatorColor;
+            
             NavigationController.NavigationBar.StandardAppearance = appearance;
+            
+            appearance.ShadowColor = UIColor.Clear;
             NavigationController.NavigationBar.ScrollEdgeAppearance = appearance;
         }
 
         private void SetupLargeTitle()
         {
-            if (!VersionHelper.SupportsLargeTitles)
-                return;
-
             if (this is IHaveLargeTitle)
             {
                 NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Always;
@@ -122,9 +124,9 @@ namespace BMM.UI.iOS
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(ViewModel.TextSource))
-                Title = ViewModel.TextSource[TitleKey];
+                Title = GetTitle();
         }
-
+        
         public override void ViewSafeAreaInsetsDidChange()
         {
             base.ViewSafeAreaInsetsDidChange();

@@ -151,7 +151,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var trackClientMock = new Mock<ITracksClient>(MockBehavior.Strict);
 
             trackClientMock
-                .Setup(tracksClient => tracksClient.GetById(It.IsAny<int>()))
+                .Setup(tracksClient => tracksClient.GetById(It.IsAny<int>(), null))
                 .Returns(Task.FromResult(track));
 
             var trackClient = trackClientMock.Object;

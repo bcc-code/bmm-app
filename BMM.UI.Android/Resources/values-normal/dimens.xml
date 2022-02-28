@@ -1,6 +1,0 @@
-<resources>
-    <dimen name="fragment_player_height">80dp</dimen>
-    <dimen name="fragment_player_picture_hight">320dp</dimen>
-  <dimen name="card_view_height">160dp</dimen>
-  <dimen name="podcast_title">17sp</dimen>
-</resources>

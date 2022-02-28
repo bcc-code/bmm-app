@@ -25,7 +25,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchArch>x86_64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -37,6 +37,7 @@
     <MtouchExtraArgs></MtouchExtraArgs>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,7 +68,7 @@
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchUseThumb>true</MtouchUseThumb>
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
-    <MtouchArch>i386, x86_64</MtouchArch>
+    <MtouchArch>x86_64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -183,6 +184,10 @@
     </Reference>
     <Reference Include="IdentityModel.OidcClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5580d04c1b6c37c1">
       <HintPath>..\packages\IdentityModel.OidcClient.3.1.2\lib\netstandard2.0\IdentityModel.OidcClient.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MarqueeLabel.iOS, Version=1.0.6612.25932, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\MarqueeLabel.iOS.1.0.0\lib\xamarinios10\MarqueeLabel.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
@@ -405,18 +410,6 @@
     <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image.png" />
     <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
     <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
-    <BundleResource Include="Resources\btn_pause_static.png" />
-    <BundleResource Include="Resources\btn_pause_static@2x.png" />
-    <BundleResource Include="Resources\btn_pause_static@3x.png" />
-    <BundleResource Include="Resources\btn_play_static.png" />
-    <BundleResource Include="Resources\btn_play_static@2x.png" />
-    <BundleResource Include="Resources\btn_play_static@3x.png" />
-    <BundleResource Include="Resources\btv_teaser.png" />
-    <BundleResource Include="Resources\btv_teaser@2x.png" />
-    <BundleResource Include="Resources\btv_teaser@3x.png" />
-    <BundleResource Include="Resources\icon_link.png" />
-    <BundleResource Include="Resources\icon_link@2x.png" />
-    <BundleResource Include="Resources\icon_link@3x.png" />
     <BundleResource Include="Resources\icon_notification.png" />
     <BundleResource Include="Resources\icon_notification@2x.png" />
     <BundleResource Include="Resources\icon_notification@3x.png" />
@@ -435,9 +428,6 @@
     <BundleResource Include="Resources\icon_favorites_active.png" />
     <BundleResource Include="Resources\icon_favorites_active@2x.png" />
     <BundleResource Include="Resources\icon_favorites_active@3x.png" />
-    <BundleResource Include="Resources\icon_favorites_active_no_fill.png" />
-    <BundleResource Include="Resources\icon_favorites_active_no_fill@2x.png" />
-    <BundleResource Include="Resources\icon_favorites_active_no_fill@3x.png" />
     <BundleResource Include="Resources\icon_home.png" />
     <BundleResource Include="Resources\icon_home@2x.png" />
     <BundleResource Include="Resources\icon_home@3x.png" />
@@ -447,12 +437,6 @@
     <BundleResource Include="Resources\icon_options.png" />
     <BundleResource Include="Resources\icon_options@2x.png" />
     <BundleResource Include="Resources\icon_options@3x.png" />
-    <BundleResource Include="Resources\icon_playlist.png" />
-    <BundleResource Include="Resources\icon_playlist@2x.png" />
-    <BundleResource Include="Resources\icon_playlist@3x.png" />
-    <BundleResource Include="Resources\icon_podcast.png" />
-    <BundleResource Include="Resources\icon_podcast@2x.png" />
-    <BundleResource Include="Resources\icon_podcast@3x.png" />
     <BundleResource Include="Resources\icon_profile.png" />
     <BundleResource Include="Resources\icon_profile@2x.png" />
     <BundleResource Include="Resources\icon_profile@3x.png" />
@@ -483,74 +467,24 @@
     <BundleResource Include="Resources\icon_shuffle_podcast.png" />
     <BundleResource Include="Resources\icon_shuffle_podcast@2x.png" />
     <BundleResource Include="Resources\icon_shuffle_podcast@3x.png" />
-    <BundleResource Include="Resources\icon_skip_back_inactive.png" />
-    <BundleResource Include="Resources\icon_skip_back_inactive@2x.png" />
-    <BundleResource Include="Resources\icon_skip_back_inactive@3x.png" />
-    <BundleResource Include="Resources\icon_skip_forward_inactive.png" />
-    <BundleResource Include="Resources\icon_skip_forward_inactive@2x.png" />
-    <BundleResource Include="Resources\icon_skip_forward_inactive@3x.png" />
-    <BundleResource Include="Resources\image_kaare.png" />
-    <BundleResource Include="Resources\image_kaare@2x.png" />
-    <BundleResource Include="Resources\image_kaare@3x.png" />
-    <BundleResource Include="Resources\logo_small%402x.png" />
-    <BundleResource Include="Resources\logo_small.png" />
     <BundleResource Include="Resources\icon_category_unknown.png" />
     <BundleResource Include="Resources\icon_category_unknown%402x.png" />
     <BundleResource Include="Resources\icon_category_unknown%403x.png" />
     <BundleResource Include="Resources\icon_category_song.png" />
     <BundleResource Include="Resources\icon_category_song%402x.png" />
     <BundleResource Include="Resources\icon_category_song%403x.png" />
-    <BundleResource Include="Resources\icon_nav_explore_active.png" />
-    <BundleResource Include="Resources\icon_nav_explore_active%402x.png" />
-    <BundleResource Include="Resources\icon_nav_explore_active%403x.png" />
-    <BundleResource Include="Resources\icon_nav_explore_static.png" />
-    <BundleResource Include="Resources\icon_nav_explore_static%402x.png" />
-    <BundleResource Include="Resources\icon_nav_explore_static%403x.png" />
     <BundleResource Include="Resources\icon_close_static.png" />
     <BundleResource Include="Resources\icon_close_static%402x.png" />
     <BundleResource Include="Resources\icon_close_static%403x.png" />
-    <BundleResource Include="Resources\icon_nav_content_active.png" />
-    <BundleResource Include="Resources\icon_nav_content_active%402x.png" />
-    <BundleResource Include="Resources\icon_nav_content_active%403x.png" />
     <BundleResource Include="Resources\icon_nav_content_static.png" />
     <BundleResource Include="Resources\icon_nav_content_static%402x.png" />
     <BundleResource Include="Resources\icon_nav_content_static%403x.png" />
-    <BundleResource Include="Resources\icon_next_active.png" />
-    <BundleResource Include="Resources\icon_next_active%402x.png" />
-    <BundleResource Include="Resources\icon_next_active%403x.png" />
-    <BundleResource Include="Resources\icon_next_static.png" />
-    <BundleResource Include="Resources\icon_next_static%402x.png" />
-    <BundleResource Include="Resources\icon_next_static%403x.png" />
-    <BundleResource Include="Resources\icon_play_static.png" />
-    <BundleResource Include="Resources\icon_play_static%402x.png" />
-    <BundleResource Include="Resources\icon_play_static%403x.png" />
-    <BundleResource Include="Resources\icon_prev_active.png" />
-    <BundleResource Include="Resources\icon_prev_active%402x.png" />
-    <BundleResource Include="Resources\icon_prev_active%403x.png" />
-    <BundleResource Include="Resources\icon_repeat_active.png" />
-    <BundleResource Include="Resources\icon_repeat_active%402x.png" />
-    <BundleResource Include="Resources\icon_repeat_active%403x.png" />
-    <BundleResource Include="Resources\icon_repeat_one_active.png" />
-    <BundleResource Include="Resources\icon_repeat_one_active%402x.png" />
-    <BundleResource Include="Resources\icon_repeat_one_active%403x.png" />
-    <BundleResource Include="Resources\icon_repeat_static.png" />
-    <BundleResource Include="Resources\icon_repeat_static%402x.png" />
-    <BundleResource Include="Resources\icon_repeat_static%403x.png" />
-    <BundleResource Include="Resources\icon_shuffle_active.png" />
-    <BundleResource Include="Resources\icon_shuffle_active%402x.png" />
-    <BundleResource Include="Resources\icon_shuffle_active%403x.png" />
-    <BundleResource Include="Resources\icon_shuffle_static.png" />
-    <BundleResource Include="Resources\icon_shuffle_static%402x.png" />
-    <BundleResource Include="Resources\icon_shuffle_static%403x.png" />
     <BundleResource Include="Resources\btn_options_active.png" />
     <BundleResource Include="Resources\btn_options_active%402x.png" />
     <BundleResource Include="Resources\btn_options_active%403x.png" />
     <BundleResource Include="Resources\btn_options_static.png" />
     <BundleResource Include="Resources\btn_options_static%402x.png" />
     <BundleResource Include="Resources\btn_options_static%403x.png" />
-    <BundleResource Include="Resources\icon_back_static.png" />
-    <BundleResource Include="Resources\icon_back_static%402x.png" />
-    <BundleResource Include="Resources\icon_back_static%403x.png" />
     <BundleResource Include="Resources\notification.png" />
     <BundleResource Include="Resources\notification@2x.png" />
     <BundleResource Include="Resources\notification@3x.png" />
@@ -560,85 +494,28 @@
     <BundleResource Include="Resources\podcast_background_aslaksen_phone.png" />
     <BundleResource Include="Resources\podcast_background_aslaksen_phone@2x.png" />
     <BundleResource Include="Resources\podcast_background_aslaksen_phone@3x.png" />
-    <BundleResource Include="Resources\shadowimage.png" />
-    <BundleResource Include="Resources\shadowimage%402x.png" />
-    <BundleResource Include="Resources\shadowimage%403x.png" />
     <BundleResource Include="Resources\icon_category_playlist.png" />
     <BundleResource Include="Resources\icon_category_playlist%402x.png" />
     <BundleResource Include="Resources\icon_category_playlist%403x.png" />
-    <BundleResource Include="Resources\icon_user_profile.png" />
-    <BundleResource Include="Resources\icon_user_profile%402x.png" />
-    <BundleResource Include="Resources\icon_user_profile%403x.png" />
     <BundleResource Include="Resources\login_logo.png" />
     <BundleResource Include="Resources\login_logo%402x.png" />
     <BundleResource Include="Resources\login_logo%403x.png" />
-    <BundleResource Include="Resources\options_background.png" />
-    <BundleResource Include="Resources\options_background%402x.png" />
-    <BundleResource Include="Resources\options_background%403x.png" />
-    <BundleResource Include="Resources\slider_handle.png" />
-    <BundleResource Include="Resources\slider_handle%402x.png" />
-    <BundleResource Include="Resources\slider_handle%403x.png" />
-    <BundleResource Include="Resources\icon_prev_inactive.png" />
-    <BundleResource Include="Resources\icon_prev_inactive%402x.png" />
-    <BundleResource Include="Resources\icon_prev_inactive%403x.png" />
-    <BundleResource Include="Resources\icon_next_inactive.png" />
-    <BundleResource Include="Resources\icon_next_inactive%402x.png" />
-    <BundleResource Include="Resources\icon_next_inactive%403x.png" />
-    <BundleResource Include="Resources\icon_next_inactive 2.png" />
-    <BundleResource Include="Resources\icon_next_inactive 2%402x.png" />
-    <BundleResource Include="Resources\icon_next_inactive 2%403x.png" />
-    <BundleResource Include="Resources\icon_prev_static.png" />
-    <BundleResource Include="Resources\icon_prev_static%402x.png" />
-    <BundleResource Include="Resources\icon_prev_static%403x.png" />
-    <BundleResource Include="Resources\navigationbarbackground_dark.png" />
-    <BundleResource Include="Resources\navigationbarbackground_dark%402x.png" />
-    <BundleResource Include="Resources\navigationbarbackground_dark%403x.png" />
-    <BundleResource Include="Resources\navigationbarbackground.png" />
-    <BundleResource Include="Resources\navigationbarbackground%402x.png" />
-    <BundleResource Include="Resources\navigationbarbackground%403x.png" />
     <BundleResource Include="Resources\icon_add_static.png" />
     <BundleResource Include="Resources\icon_add_static%402x.png" />
     <BundleResource Include="Resources\icon_add_static%403x.png" />
-    <BundleResource Include="Resources\icon_category_song_darth.png" />
-    <BundleResource Include="Resources\icon_category_song_darth%402x.png" />
-    <BundleResource Include="Resources\icon_category_song_darth%403x.png" />
     <BundleResource Include="Resources\loading_spinner.png" />
     <BundleResource Include="Resources\loading_spinner%402x.png" />
     <BundleResource Include="Resources\loading_spinner%403x.png" />
-    <BundleResource Include="Resources\selected_tab.png" />
-    <BundleResource Include="Resources\selected_tab%402x.png" />
-    <BundleResource Include="Resources\selected_tab%403x.png" />
     <BundleResource Include="Resources\icon_category_suggestion.png" />
     <BundleResource Include="Resources\icon_category_suggestion%402x.png" />
     <BundleResource Include="Resources\icon_category_suggestion%403x.png" />
     <BundleResource Include="Resources\placeholder_cover.png" />
-    <BundleResource Include="Resources\icon_down_static.png" />
-    <BundleResource Include="Resources\icon_down_static%402x.png" />
-    <BundleResource Include="Resources\icon_down_static%403x.png" />
-    <BundleResource Include="Resources\icon_queue_static.png" />
-    <BundleResource Include="Resources\icon_queue_static%402x.png" />
-    <BundleResource Include="Resources\icon_queue_static%403x.png" />
-    <BundleResource Include="Resources\progress_slider_background_white_dark%402x.png" />
-    <BundleResource Include="Resources\progress_slider_background_white_dark%403x.png" />
-    <BundleResource Include="Resources\progress_slider_background_white_dark.png" />
-    <BundleResource Include="Resources\icon_category_unknown_darth.png" />
-    <BundleResource Include="Resources\icon_category_unknown_darth%402x.png" />
-    <BundleResource Include="Resources\icon_category_unknown_darth%403x.png" />
-    <BundleResource Include="Resources\slider_thumb_white.png" />
-    <BundleResource Include="Resources\slider_thumb_white@2x.png" />
-    <BundleResource Include="Resources\slider_thumb_white@3x.png" />
     <BundleResource Include="Resources\placeholder_artist.png" />
     <BundleResource Include="Resources\placeholder_artist%402x.png" />
     <BundleResource Include="Resources\placeholder_artist%403x.png" />
     <BundleResource Include="Resources\placeholder_album.png" />
     <BundleResource Include="Resources\placeholder_album%402x.png" />
     <BundleResource Include="Resources\placeholder_album%403x.png" />
-    <BundleResource Include="Resources\progress_slider_background_transparent.png" />
-    <BundleResource Include="Resources\progress_slider_background_transparent%402x.png" />
-    <BundleResource Include="Resources\progress_slider_background_transparent%403x.png" />
-    <BundleResource Include="Resources\icon_category_song_active.png" />
-    <BundleResource Include="Resources\icon_category_song_active%402x.png" />
-    <BundleResource Include="Resources\icon_category_song_active%403x.png" />
     <BundleResource Include="Resources\icon_downloaded.png" />
     <BundleResource Include="Resources\icon_downloaded%402x.png" />
     <BundleResource Include="Resources\icon_downloaded%403x.png" />
@@ -648,40 +525,6 @@
     <BundleResource Include="Resources\icon_pending.png" />
     <BundleResource Include="Resources\icon_pending%402x.png" />
     <BundleResource Include="Resources\icon_pending%403x.png" />
-    <BundleResource Include="Resources\progress_slider_handle_green.png" />
-    <BundleResource Include="Resources\icon_category_unknown_active.png" />
-    <BundleResource Include="Resources\icon_category_unknown_active%402x.png" />
-    <BundleResource Include="Resources\icon_category_unknown_active%403x.png" />
-    <BundleResource Include="Resources\icon_nav_album_active.png" />
-    <BundleResource Include="Resources\icon_nav_album_active%402x.png" />
-    <BundleResource Include="Resources\icon_nav_album_active%403x.png" />
-    <BundleResource Include="Resources\icon_nav_album_static.png" />
-    <BundleResource Include="Resources\icon_nav_album_static%402x.png" />
-    <BundleResource Include="Resources\icon_nav_album_static%403x.png" />
-    <BundleResource Include="Resources\icon_nav_contributor_active.png" />
-    <BundleResource Include="Resources\icon_nav_contributor_active%402x.png" />
-    <BundleResource Include="Resources\icon_nav_contributor_active%403x.png" />
-    <BundleResource Include="Resources\icon_nav_contributor_static.png" />
-    <BundleResource Include="Resources\icon_nav_contributor_static%402x.png" />
-    <BundleResource Include="Resources\icon_nav_contributor_static%403x.png" />
-    <BundleResource Include="Resources\icon_info_static.png" />
-    <BundleResource Include="Resources\icon_info_static%402x.png" />
-    <BundleResource Include="Resources\icon_info_static%403x.png" />
-    <BundleResource Include="Resources\icon_info_active.png" />
-    <BundleResource Include="Resources\icon_info_active%402x.png" />
-    <BundleResource Include="Resources\icon_info_active%403x.png" />
-    <BundleResource Include="Resources\icon_edit_active.png" />
-    <BundleResource Include="Resources\icon_edit_active%402x.png" />
-    <BundleResource Include="Resources\icon_edit_active%403x.png" />
-    <BundleResource Include="Resources\icon_edit_static.png" />
-    <BundleResource Include="Resources\icon_edit_static%402x.png" />
-    <BundleResource Include="Resources\icon_edit_static%403x.png" />
-    <BundleResource Include="Resources\icon_trash_active.png" />
-    <BundleResource Include="Resources\icon_trash_active%402x.png" />
-    <BundleResource Include="Resources\icon_trash_active%403x.png" />
-    <BundleResource Include="Resources\icon_trash_static.png" />
-    <BundleResource Include="Resources\icon_trash_static%402x.png" />
-    <BundleResource Include="Resources\icon_trash_static%403x.png" />
     <BundleResource Include="GoogleService-Info.plist" />
     <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded.png" />
     <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded%402x.png" />
@@ -689,15 +532,9 @@
     <BundleResource Include="..\BMM.Core\Translation\hu\main.json">
       <Link>Translation\hu\main.json</Link>
     </BundleResource>
-    <BundleResource Include="Resources\btn_references_static.png" />
-    <BundleResource Include="Resources\btn_references_static%402x.png" />
-    <BundleResource Include="Resources\btn_references_static%403x.png" />
     <BundleResource Include="Resources\icon_trackrelation_external.png" />
     <BundleResource Include="Resources\icon_trackrelation_external%402x.png" />
     <BundleResource Include="Resources\icon_trackrelation_external%403x.png" />
-    <BundleResource Include="Resources\icon_podcast_follow_tick.png" />
-    <BundleResource Include="Resources\icon_podcast_follow_tick%402x.png" />
-    <BundleResource Include="Resources\icon_podcast_follow_tick%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -714,9 +551,12 @@
     <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\SelectThemeTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\SimpleMarginTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\StandardHeaderTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\StandardSelectableTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsTilesViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\BrowseDetailsListViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\ChangeTrackLanguageViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\PlaybackHistoryViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
@@ -757,6 +597,7 @@
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\LeftImageButton.cs" />
@@ -767,6 +608,8 @@
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
     <Compile Include="Application\Extensions\CollectionViewExtensions.cs" />
+    <Compile Include="Application\Extensions\UIColorExtensions.cs" />
+    <Compile Include="Application\Extensions\YUVColorExtensions.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
     <Compile Include="Application\Extensions\StringExtensions.cs" />
     <Compile Include="Application\Extensions\UiTableExtensions.cs" />
@@ -777,6 +620,7 @@
     <Compile Include="Application\Helpers\VisibilityBindingsManager.cs" />
     <Compile Include="Application\Helpers\UIViewVisibilityController.cs" />
     <Compile Include="Application\Implementations\Device\iOSFeatureSupportInfoService.cs" />
+    <Compile Include="Application\Implementations\Dialogs\iOSBMMUserDialogs.cs" />
     <Compile Include="Application\Implementations\Download\OngoingDownloadsLockDictionary.cs" />
     <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadDoesNotExistException.cs" />
     <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadException.cs" />
@@ -796,6 +640,7 @@
     <Compile Include="Application\Implementations\Oidc\SafariViewControllerBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\WebAuthenticationSessionBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\WKWebViewBrowser.cs" />
+    <Compile Include="Application\Implementations\Track\iOSTrackOptionsService.cs" />
     <Compile Include="Application\Implementations\UI\iOSUserDialogsFactory.cs" />
     <Compile Include="Application\Implementations\UI\iOSExceptionHandlingUserDialogs.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemFactory.cs" />
@@ -873,6 +718,14 @@
     <Compile Include="Application\TableViewCell\SimpleMarginTableViewCell.designer.cs">
       <DependentUpon>SimpleMarginTableViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\TableViewCell\StandardHeaderTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\StandardHeaderTableViewCell.designer.cs">
+      <DependentUpon>StandardHeaderTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\StandardSelectableTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\StandardSelectableTableViewCell.designer.cs">
+      <DependentUpon>StandardSelectableTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\TableViewCell\StreakTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">
       <DependentUpon>StreakTableViewCell.cs</DependentUpon>
@@ -885,6 +738,7 @@
     <Compile Include="Application\TableViewSource\Base\TableCellType.cs" />
     <Compile Include="Application\TableViewSource\Base\VariableRowHeightTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\BrowseDetailsTableViewSource.cs" />
+    <Compile Include="Application\TableViewSource\ChangeTrackLanguageTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\EditingTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\NotSelectableDocumentsTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\TrackInfoTableViewSource.cs" />
@@ -899,7 +753,6 @@
     <Compile Include="Application\ValueConverter\TrackToMetaColorConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToStatusImageConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToSubtitleColorConverter.cs" />
-    <Compile Include="Application\ValueConverter\TrackToSubtitleUppercaseConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToTitleColorConverter.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.designer.cs">
@@ -908,6 +761,10 @@
     <Compile Include="Application\ViewController\BrowseDetailsListViewController.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsListViewController.designer.cs">
       <DependentUpon>BrowseDetailsListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.cs" />
+    <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.designer.cs">
+      <DependentUpon>ChangeTrackLanguageViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\EditTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\FollowedPodcastsViewController.cs" />
@@ -919,6 +776,7 @@
     <Compile Include="Application\ViewController\BrowseViewController.designer.cs">
       <DependentUpon>BrowseViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\ViewController\Interfaces\IPlayerNavigationViewController.cs" />
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.cs" />
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.designer.cs">
       <DependentUpon>PlaybackHistoryViewController.cs</DependentUpon>
@@ -955,6 +813,7 @@
     <Compile Include="Constants\AppColors.cs" />
     <Compile Include="Constants\AppTheme.cs" />
     <Compile Include="Constants\ButtonTheme.cs" />
+    <Compile Include="Constants\iOSScreenHeight.cs" />
     <Compile Include="Constants\TextTheme.cs" />
     <Compile Include="Constants\ThemeExtensions.cs" />
     <Compile Include="Constants\Typography.cs" />
@@ -1080,7 +939,6 @@
     </Compile>
     <Compile Include="Application\ValueConverter\ContributorNameConverter.cs" />
     <Compile Include="Application\TableViewSource\LanguageEditableTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\QueueTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\AudioTableViewSource.cs" />
     <Compile Include="Application\ValueConverter\OfflineAvailableTrackStatusConverter.cs" />
     <Compile Include="Application\ViewController\TrackInfoViewController.cs" />
@@ -1161,7 +1019,12 @@
     <Compile Include="Application\ViewController\CuratedPlaylistViewController.designer.cs">
       <DependentUpon>CuratedPlaylistViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\ColorPalette\PixelColor.cs" />
+    <Compile Include="Utils\ColorPalette\YUVColor.cs" />
+    <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
+    <Compile Include="Utils\ColorPalette\ColorPaletteGenerator.cs" />
+    <Compile Include="Utils\ViewUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Application\TableViewCell\TrackTableViewCell.xib" />
@@ -1216,6 +1079,13 @@
   <ItemGroup>
     <ImageAsset Include="Resources\Colors.xcassets\HighlightColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColorReverted.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\SeparatorColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\icon_album.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\icon_arrow_down.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@2x.png" />
@@ -1224,6 +1094,32 @@
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends.png" />
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\icon_edit.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\icon_favorites.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\icon_info.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\icon_link.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\icon_pause.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\icon_person.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\play.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\icon_playlist.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\icon_queue.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\icon_remove.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\icon_repeat.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\icon_repeat_one.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\icon_share.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\LaunchImage.launchimage\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -1321,10 +1217,14 @@
     <ImageAsset Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\NotificationColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\RadioColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\LinkIcon.imageset\icon_link@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\icon_more.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover-1.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover_dark.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\icon_next.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini.png" />
@@ -1337,15 +1237,13 @@
     <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon.png" />
     <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\icon_playlist.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\icon_playlist%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\PlaylistIcon.imageset\icon_playlist%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_playlist@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\icon_previous.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected.png" />
     <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%402x.png" />
@@ -1358,6 +1256,12 @@
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%403x.png" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\icon_shuffle.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\icon_skip_back.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\icon_skip_forward.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick.png" />
     <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@2x.png" />
@@ -1423,92 +1327,18 @@
     <Content Include="..\BMM.Core\Translation\uk\main.json">
       <Link>Translation\uk\main.json</Link>
     </Content>
-    <BundleResource Include="Resources\icon_share%403x.png" />
-    <BundleResource Include="Resources\icon_share.png" />
-    <BundleResource Include="Resources\icon_share%402x.png" />
     <BundleResource Include="Resources\icon_arrow_right.png" />
     <BundleResource Include="Resources\icon_arrow_right%402x.png" />
     <BundleResource Include="Resources\icon_arrow_right%403x.png" />
-    <BundleResource Include="Resources\icon_category_meeting.png" />
-    <BundleResource Include="Resources\icon_category_meeting%402x.png" />
-    <BundleResource Include="Resources\icon_category_meeting%403x.png" />
-    <BundleResource Include="Resources\icon_category_meeting_playing.png" />
-    <BundleResource Include="Resources\icon_category_meeting_playing%402x.png" />
-    <BundleResource Include="Resources\icon_category_meeting_playing%403x.png" />
-    <BundleResource Include="Resources\icon_category_playlist_active.png" />
-    <BundleResource Include="Resources\icon_category_playlist_active%402x.png" />
-    <BundleResource Include="Resources\icon_category_playlist_active%403x.png" />
-    <BundleResource Include="Resources\icon_category_song_offline.png" />
-    <BundleResource Include="Resources\icon_category_song_offline%402x.png" />
-    <BundleResource Include="Resources\icon_category_song_offline%403x.png" />
-    <BundleResource Include="Resources\icon_category_unknown_offline%402x.png" />
-    <BundleResource Include="Resources\icon_category_unknown_offline%403x.png" />
-    <BundleResource Include="Resources\icon_category_unknown_offline.png" />
-    <BundleResource Include="Resources\icon_category_offline_active.png" />
-    <BundleResource Include="Resources\icon_category_offline_active%402x.png" />
-    <BundleResource Include="Resources\icon_category_offline_active%403x.png" />
-    <BundleResource Include="Resources\icon_category_favorites_active.png" />
-    <BundleResource Include="Resources\icon_category_favorites_active%402x.png" />
-    <BundleResource Include="Resources\icon_category_favorites_active%403x.png" />
     <BundleResource Include="Resources\icon_category_favorites%402x.png" />
     <BundleResource Include="Resources\icon_category_favorites%403x.png" />
     <BundleResource Include="Resources\icon_category_favorites.png" />
-    <BundleResource Include="Resources\icon_category_offline%402x.png" />
-    <BundleResource Include="Resources\icon_category_offline%403x.png" />
-    <BundleResource Include="Resources\icon_category_offline.png" />
-    <BundleResource Include="Resources\icon_category_offline_offline.png" />
-    <BundleResource Include="Resources\icon_category_offline_offline%402x.png" />
-    <BundleResource Include="Resources\icon_category_offline_offline%403x.png" />
-    <BundleResource Include="Resources\icon_category_unknown_offline.png" />
-    <BundleResource Include="Resources\icon_category_unknown_offline%402x.png" />
-    <BundleResource Include="Resources\icon_category_unknown_offline%403x.png" />
-    <BundleResource Include="Resources\icon_nav_connect_active.png" />
-    <BundleResource Include="Resources\icon_nav_connect_active%402x.png" />
-    <BundleResource Include="Resources\icon_nav_connect_active%403x.png" />
-    <BundleResource Include="Resources\icon_nav_connect_static.png" />
-    <BundleResource Include="Resources\icon_nav_connect_static%402x.png" />
-    <BundleResource Include="Resources\icon_nav_connect_static%403x.png" />
-    <BundleResource Include="Resources\icon_nav_my-content_active.png" />
-    <BundleResource Include="Resources\icon_nav_my-content_active%402x.png" />
-    <BundleResource Include="Resources\icon_nav_my-content_active%403x.png" />
-    <BundleResource Include="Resources\icon_nav_my-content_static.png" />
-    <BundleResource Include="Resources\icon_nav_my-content_static%402x.png" />
-    <BundleResource Include="Resources\icon_nav_my-content_static%403x.png" />
-    <BundleResource Include="Resources\icon_option_static.png" />
-    <BundleResource Include="Resources\icon_option_static%402x.png" />
-    <BundleResource Include="Resources\icon_option_static%403x.png" />
-    <BundleResource Include="Resources\icon_play.png" />
-    <BundleResource Include="Resources\icon_play%402x.png" />
-    <BundleResource Include="Resources\icon_play%403x.png" />
-    <BundleResource Include="Resources\icon_play_small.png" />
-    <BundleResource Include="Resources\icon_play_small%402x.png" />
-    <BundleResource Include="Resources\icon_play_small%403x.png" />
-    <BundleResource Include="Resources\icon_skip_back_static.png" />
-    <BundleResource Include="Resources\icon_skip_back_static%402x.png" />
-    <BundleResource Include="Resources\icon_skip_back_static%403x.png" />
-    <BundleResource Include="Resources\icon_skip_forward_static.png" />
-    <BundleResource Include="Resources\icon_skip_forward_static%402x.png" />
-    <BundleResource Include="Resources\icon_skip_forward_static%403x.png" />
-    <BundleResource Include="Resources\progress_slider_handle_green%402x.png" />
-    <BundleResource Include="Resources\progress_slider_handle_green%403x.png" />
     <BundleResource Include="Resources\radio_background.png" />
     <BundleResource Include="Resources\radio_background%402x.png" />
     <BundleResource Include="Resources\radio_background%403x.png" />
     <BundleResource Include="Resources\icon_radio_static.png" />
     <BundleResource Include="Resources\icon_radio_static%402x.png" />
     <BundleResource Include="Resources\icon_radio_static%403x.png" />
-    <BundleResource Include="Resources\icon_category_radio%403x.png" />
-    <BundleResource Include="Resources\icon_category_radio%402x.png" />
-    <BundleResource Include="Resources\icon_category_radio.png" />
-    <BundleResource Include="Resources\icon_category_radio_active.png" />
-    <BundleResource Include="Resources\icon_category_radio_active%402x.png" />
-    <BundleResource Include="Resources\icon_category_radio_active%403x.png" />
-    <BundleResource Include="Resources\icon_category_radio_darth.png" />
-    <BundleResource Include="Resources\icon_category_radio_darth%402x.png" />
-    <BundleResource Include="Resources\icon_category_radio_darth%403x.png" />
-    <BundleResource Include="Resources\icon_category_radio_offline.png" />
-    <BundleResource Include="Resources\icon_category_radio_offline%402x.png" />
-    <BundleResource Include="Resources\icon_category_radio_offline%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

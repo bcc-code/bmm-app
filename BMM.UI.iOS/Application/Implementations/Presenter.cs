@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Core.Implementations;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.Interfaces;
 using BMM.UI.iOS.NewMediaPlayer;
 using MvvmCross.Platforms.Ios.Presenters;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
@@ -43,7 +44,7 @@ namespace BMM.UI.iOS
             if (!ModalViewControllers.Any())
                 return await base.ShowChildViewController(viewController, attribute, request);
 
-            if (ModalViewControllers.FirstOrDefault() is UINavigationController navigationController && !(viewController is QueueViewController))
+            if (ModalViewControllers.FirstOrDefault() is UINavigationController navigationController && !(viewController is IPlayerNavigationViewController))
             {
                 if (navigationController.ChildViewControllers.FirstOrDefault() is PlayerViewController)
                     await CloseModalViewControllers();
@@ -58,8 +59,7 @@ namespace BMM.UI.iOS
             var containmentNavigationController = Activator.CreateInstance<ContainmentNavigationViewController>();
             containmentViewController.RegisterViewController(containmentNavigationController);
             containmentNavigationController.RegisterViewController(viewController as IBaseViewController);
-            if (VersionHelper.SupportsLargeTitles)
-                containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
+            containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
             return base.ShowTabViewController(containmentViewController, attribute, request);
         }
 

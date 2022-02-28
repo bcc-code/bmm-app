@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.Implementations.UI;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Utils;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 
@@ -14,23 +14,41 @@ namespace BMM.Core.ViewModels
 {
     public class PlayerBaseViewModel : BaseViewModel
     {
+        private const int CurrentTrackUpdateDebounceDelayInMillis = 100;
+
         protected readonly IMediaPlayer MediaPlayer;
 
         private MvxSubscriptionToken _updatePositionToken;
         private MvxSubscriptionToken _updateStateToken;
         private MvxSubscriptionToken _updateMetadataToken;
-
-        public MvxCommand PlayPauseCommand { get; }
+        
+        private readonly DebounceDispatcher _currentTrackDebounceDispatcher;
 
         private ITrackModel _currentTrack;
+        
+        public MvxCommand PlayPauseCommand { get; }
+        
+        /// <summary>
+        /// When changing the song on Android, exo player sends few current track updates, where few of them is just null.
+        ///
+        /// Exemplary sequence looks like that:
+        /// Current Song => (next button clicked) => null => Current Song => null => null => Next Song
+        ///
+        /// This is changing in very short time, so adding debouncer with small slippage prevents plaver view from flickering,
+        /// as finally we react for only one update.
+        /// </summary>
         public ITrackModel CurrentTrack
         {
             get => _currentTrack;
             private set
             {
-                SetProperty(ref _currentTrack, value);
-                RaisePropertyChanged(() => Downloaded); // Since Downloaded depends on CurrentTrack we need to raise PropertyChanged
-                RaisePropertyChanged(() => IsSeekingDisabled);
+                _currentTrackDebounceDispatcher.Run(() =>
+                {
+                    SetProperty(ref _currentTrack, value);
+                    RaisePropertyChanged(() => Downloaded); // Since Downloaded depends on CurrentTrack we need to raise PropertyChanged
+                    RaisePropertyChanged(() => IsSeekingDisabled);
+                    OnCurrentTrackChanged();
+                });
             }
         }
 
@@ -110,11 +128,13 @@ namespace BMM.Core.ViewModels
 
         #endregion
 
-        public readonly ITrackInfoProvider TrackInfoProvider = new PlayerTrackInfoProvider();
+        public virtual ITrackInfoProvider TrackInfoProvider { get; }
 
         // Caution: On Android this ViewModel lives the whole time, whereas iOS creates a new instance every time the player is opened
         public PlayerBaseViewModel(IMediaPlayer mediaPlayer)
         {
+            _currentTrackDebounceDispatcher = new DebounceDispatcher(CurrentTrackUpdateDebounceDelayInMillis);
+            
             MediaPlayer = mediaPlayer;
 
             PlayPauseCommand = new MvxCommand(MediaPlayer.PlayPause);
@@ -136,22 +156,11 @@ namespace BMM.Core.ViewModels
             {
                 CurrentTrack = message.CurrentTrack;
                 Duration = message.CurrentTrack?.Duration ?? 0;
-                await OnCurrentTrackChanged(message);
             });
         }
 
-        protected virtual async Task OnCurrentTrackChanged(CurrentTrackChangedMessage message)
-        {
-        }
-
-        private void ShowErrorFileNotOffline(string fileNotOfflineText, IToastDisplayer toastDisplayer)
-        {
-            toastDisplayer.Warn(fileNotOfflineText);
-
-            RaisePropertyChanged(() => CurrentTrack);
-            RaisePropertyChanged(() => Downloaded);
-        }
-
+        protected virtual Task OnCurrentTrackChanged() => Task.CompletedTask;
+        
         protected virtual void UpdatePlaybackState(IPlaybackState state)
         {
             IsPlaying = state.IsPlaying;

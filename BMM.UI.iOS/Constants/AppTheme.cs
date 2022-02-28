@@ -38,7 +38,8 @@ namespace BMM.UI.iOS.Constants
         public static TextTheme Heading3 = new TextTheme
         {
             Font = Typography.Header3.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelPrimaryColor,
+            MinimumFontSize = 12
         };
 
         public static TextTheme Paragraph1Label1 = new TextTheme
@@ -107,12 +108,12 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.LabelTertiaryColor
         };
 
-        public static readonly Lazy<ButtonTheme> ButtonPrimary = new Lazy<ButtonTheme>(() => new StandardButtonTheme
+        public static readonly ButtonTheme ButtonPrimary = new StandardButtonTheme
         {
             TextTheme = Title1Label1Reverted,
             ButtonColor = AppColors.LabelPrimaryColor,
             IconTint = AppColors.LabelPrimaryColorReverted
-        });
+        };
 
         public static readonly ButtonTheme ButtonSecondaryMedium = new StandardButtonTheme
         {
@@ -126,6 +127,14 @@ namespace BMM.UI.iOS.Constants
             TextTheme = Title2,
             ButtonColor = AppColors.BackgroundSecondaryColor,
             IconTint = AppColors.LabelPrimaryColor
+        };
+        
+        public static readonly ButtonTheme ButtonTertiaryMedium = new StandardButtonTheme
+        {
+            TextTheme = Title1,
+            ButtonColor = UIColor.Clear,
+            HasBorder = true,
+            BorderColor = AppColors.PlaceholderColor
         };
     }
 }

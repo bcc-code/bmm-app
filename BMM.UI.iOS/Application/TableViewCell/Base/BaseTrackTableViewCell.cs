@@ -6,7 +6,7 @@ using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
 {
-    public class BaseTrackTableViewCell: BaseBMMTableViewCell
+    public class BaseTrackTableViewCell : BaseBMMTableViewCell
     {
         public BaseTrackTableViewCell(IntPtr handle): base(handle) {}
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using BMM.Api.Abstraction;
 using BMM.Api.RequestInterceptor;
+using BMM.Core.Implementations.Networking;
 using BMM.Core.NewMediaPlayer;
 using MvvmCross;
 
@@ -21,7 +22,8 @@ namespace BMM.Core.Implementations.ApiClients
                 {
                     Mvx.IoCProvider.Resolve<ContentLanguageHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<JsonContentTypeHeaderProvider>(),
-                    Mvx.IoCProvider.Resolve<BmmVersionHeaderProvider>()
+                    Mvx.IoCProvider.Resolve<BmmVersionHeaderProvider>(),
+                    Mvx.IoCProvider.Resolve<ExperimentIdHeaderProvider>()
                 };
             }
         }
@@ -35,6 +37,7 @@ namespace BMM.Core.Implementations.ApiClients
                     Mvx.IoCProvider.Resolve<ContentLanguageHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<JsonContentTypeHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<BmmVersionHeaderProvider>(),
+                    Mvx.IoCProvider.Resolve<ExperimentIdHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<ConnectivityHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<MobileDownloadAllowedHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<IAuthorizationHeaderProvider>()

@@ -32,5 +32,11 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool UseAnalyticsId { get; }
 
         string UserVoiceLink { get; }
+        
+        string SongTreasuresSongLink  { get; }
+        
+        string ExperimentId { get; }
+        
+        bool SendAgeToDiscover { get; }
     }
 }

@@ -179,9 +179,6 @@ namespace BMM.UI.iOS
 
         private float GetPositionForSearchField()
         {
-            if (!VersionHelper.SupportsSafeAreaLayoutGuide)
-                return 26;
-
             UIView view = NavigationController.View;
             UILayoutGuide safeGuide = view.SafeAreaLayoutGuide;
             var topSafeAreaHeight = safeGuide.LayoutFrame.Y - view.Frame.Y;

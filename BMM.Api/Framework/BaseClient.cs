@@ -46,10 +46,10 @@ namespace BMM.Api.Framework
             return filtered;
         }
 
-        protected Task<T> Get<T>(UriTemplate uri)
+        protected Task<T> Get<T>(UriTemplate uri, IDictionary<string, string> customHeaders = default)
         {
             var request = BuildRequest(uri, HttpMethod.Get);
-            return RequestHandler.GetResolvedResponse<T>(request);
+            return RequestHandler.GetResolvedResponse<T>(request, customHeaders);
         }
 
         protected async Task<Stream> GetCoverBase(int id, string uriString)

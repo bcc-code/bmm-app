@@ -28,7 +28,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1sn-ch-0B4">
                     <rect key="frame" x="16" y="60" width="382" height="368"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PlaylistIcon" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-GT-beH">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlaylist" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-GT-beH">
                             <rect key="frame" x="167" y="129.5" width="48" height="48"/>
                             <color key="tintColor" name="LabelPrimaryColor"/>
                             <constraints>
@@ -105,7 +105,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="56" id="jeQ-GP-O8H"/>
                     </constraints>
-                    <state key="normal" title="Share Link" image="LinkIcon">
+                    <state key="normal" title="Share Link" image="IconLink">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
@@ -156,8 +156,8 @@
     </objects>
     <resources>
         <image name="FriendsIcon" width="24" height="24"/>
-        <image name="LinkIcon" width="24" height="24"/>
-        <image name="PlaylistIcon" width="48" height="48"/>
+        <image name="IconLink" width="24" height="24"/>
+        <image name="IconPlaylist" width="48" height="48"/>
         <namedColor name="BackgroundPrimaryColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

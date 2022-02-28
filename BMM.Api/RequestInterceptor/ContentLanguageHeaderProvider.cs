@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Constants;
 
 namespace BMM.Api.RequestInterceptor
 {
@@ -13,11 +14,11 @@ namespace BMM.Api.RequestInterceptor
             _contentLanguageManager = contentLanguageManager;
         }
 
-        public async Task<KeyValuePair<string, string>> GetHeader()
+        public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             var contentLanguages = await _contentLanguageManager.GetContentLanguagesIncludingHidden();
             var languages = string.Join(",", contentLanguages);
-            return new KeyValuePair<string, string>("Accept-Language", languages);
+            return new KeyValuePair<string, string>(HeaderNames.AcceptLanguage, languages);
         }
     }
 }

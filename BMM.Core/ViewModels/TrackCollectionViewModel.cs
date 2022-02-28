@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
@@ -64,6 +65,11 @@ namespace BMM.Core.ViewModels
 
             ShareCommand = new ExceptionHandlingCommand(() => ShareTrackCollection(MyCollection.Id));
             RemoveCommand = new ExceptionHandlingCommand(() => RemoveSharedPlaylist(MyCollection.Id));
+        }
+        
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] {MyCollection.Id.ToString(), MyCollection.Name};
         }
 
         protected override Task Initialization()

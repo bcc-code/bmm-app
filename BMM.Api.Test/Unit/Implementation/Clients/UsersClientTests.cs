@@ -18,7 +18,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null, null))
                 .Throws(new ResponseException(new HttpRequestMessage(), new HttpResponseMessage(){StatusCode = HttpStatusCode.Forbidden}));
         }
 
@@ -37,7 +37,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         public async Task Login_ShouldReturnNullIfUnauthorizedStatusCodeReceived()
         {
             // Arrange
-            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null, null))
                 .Throws(new UnauthorizedException(new HttpRequestMessage(), new HttpResponseMessage {StatusCode = HttpStatusCode.Unauthorized}));
             var userClient = new UsersClient(RequestHandler.Object, new ApiBaseUri("https://bmm-api.brunstad.org"), Logger.Object);
 
@@ -52,7 +52,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         public async Task Login_ShouldReturnUserIfAccessTokenMatches()
         {
             // Arrange
-            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(new User()));
             var userClient = new UsersClient(RequestHandler.Object, new ApiBaseUri("https://bmm-api.brunstad.org"), Logger.Object);
 
@@ -68,7 +68,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         public async Task Login_ShouldReturnUserIfUsernameAndPasswordMatches()
         {
             // Arrange
-            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<User>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(new User()));
             var userClient = new UsersClient(RequestHandler.Object, new ApiBaseUri("https://bmm-api.brunstad.org"), Logger.Object);
 

@@ -1,4 +1,3 @@
-using CoreGraphics;
 using UIKit;
 
 namespace BMM.UI.iOS.Constants
@@ -19,27 +18,11 @@ namespace BMM.UI.iOS.Constants
         public static UIColor RadioColor => UIColor.FromName(nameof(RadioColor));
         public static UIColor TintColor => UIColor.FromName(nameof(TintColor));
         public static UIColor HighlightColor => UIColor.FromName(nameof(HighlightColor));
+        public static UIColor SeparatorColor => UIColor.FromName(nameof(SeparatorColor));
 
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
 
         // Track
         public static readonly UIColor NewestTrackBackgroundColor = UIColor.White.ColorWithAlpha(0.2f);
-
-        // Queue
-        public static readonly UIColor QueueBackgroundColor = UIColor.FromRGB(12, 15, 20);
-        public static readonly UIColor QueueBackgroundSelectedColor = UIColor.FromRGB(28, 36, 43);
-
-        // Player
-        public static readonly UIColor PlayerBackgroundColor = UIColor.FromRGB(13, 19, 26);
-
-        public static readonly CGColor[] TrackCoverGradientColors =
-        {
-            UIColor.FromRGB(0, 0, 0).ColorWithAlpha(0).CGColor,
-            UIColor.FromRGB(3, 4, 6).ColorWithAlpha(.09f).CGColor,
-            UIColor.FromRGB(9, 14, 19).ColorWithAlpha(.28f).CGColor,
-            UIColor.FromRGB(13, 19, 26).ColorWithAlpha(.5f).CGColor
-        };
-
-        public static readonly UIColor SeparatorColor = UIColor.FromRGB(185, 195, 204).ColorWithAlpha(0.5f);
     }
 }

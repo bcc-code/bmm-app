@@ -25,9 +25,7 @@ namespace BMM.UI.Droid.Application.Helpers
             var pastVisiblesItems = _layoutManager.FindFirstVisibleItemPosition();
 
             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount)
-            {
                 LoadMoreEvent(this, null);
-            }
         }
     }
 }

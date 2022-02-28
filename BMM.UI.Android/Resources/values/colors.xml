@@ -4,7 +4,6 @@
     <!-- General colors -->
     <color name="colorPrimaryDark">#6CBD5C</color>
     <color name="colorAccent">#C2EF66</color>
-    <color name="track_divider_line">#80B9C3CC</color>
     <color name="player_statusbar">#222930</color>
     <color name="player_click_effects">#5C7082</color>
 
@@ -38,6 +37,7 @@
     <color name="label_secondary_color">#5C7082</color>
     <color name="label_tertiary_color">#8FA0AF</color>
     <color name="placeholder_color">#B9C3CC</color>
+    <color name="placeholder_two_color">#B9C3CC</color>
     <color name="background_primary_color">#FFFFFF</color>
     <color name="background_secondary_color">#ECF0F3</color>
     <color name="on_tint_one_color">#FFFFFF</color>
@@ -46,4 +46,5 @@
     <color name="notification_color">#1C8FF8</color>
     <color name="radio_color">#E12D59</color>
     <color name="highlight_color">#8DA0B5</color>
+    <color name="separator_color">#26000C1A</color>
 </resources>

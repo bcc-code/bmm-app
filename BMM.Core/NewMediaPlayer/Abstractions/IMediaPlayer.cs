@@ -27,6 +27,8 @@ namespace BMM.Core.NewMediaPlayer.Abstractions
         void SkipForward(double timeInSeconds);
 
         void SkipBackward(double timeInSeconds);
+        
+        Task ReplaceTrack(IMediaTrack newLanguageTrack);
     }
 
     public interface IPlatformSpecificMediaPlayer : ICommonMediaPlayer
@@ -77,5 +79,7 @@ namespace BMM.Core.NewMediaPlayer.Abstractions
         void SeekTo(long newPosition);
 
         Task ShuffleList(IList<IMediaTrack> tracks, string playbackOrigin);
+        
+        long CurrentPosition { get; }
     }
 }

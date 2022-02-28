@@ -20,13 +20,13 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         protected override void Initialization()
         {
             base.Initialization();
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Contributor>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Contributor>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
 
-            RequestHandler.Setup(x => x.GetResolvedResponse<Contributor>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Contributor>(It.IsAny<IRequest>(), null, null))
                 .Throws(new Exception());
         }
 
@@ -35,7 +35,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var apiInfoClient = new ContributorClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Contributor>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Contributor>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateASampleListOfContributors()));
 
             // Act
@@ -52,7 +52,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
             // Arrange
             int id = 190;
             var apiInfoClient = new ContributorClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<Contributor>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<Contributor>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(new Contributor() { Id = id }));
 
             // Act
@@ -68,7 +68,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var apiInfoClient = new ContributorClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Contributor>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Contributor>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateASampleListOfContributors()));
 
             // Act
@@ -84,7 +84,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var apiInfoClient = new ContributorClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Track>>(It.IsAny<IRequest>(), null, null))
                 .Returns(Task.FromResult(CreateASampleListOfTracks()));
 
             // Act
@@ -104,7 +104,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
 
 
             RequestHandler
-                .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null))
+                .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null, null))
                 .Callback((IRequest request, CancellationToken? cancellationToken) =>
                 {
                     Assert.AreEqual("https://localhost/contributor/", request.Uri.ToString());
