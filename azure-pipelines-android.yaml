@@ -7,6 +7,9 @@ pool:
     - Xamarin.Android
     - JDK
 
+variables:
+  incrementVersionCode: 'true'
+
 steps:
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
@@ -25,3 +28,21 @@ steps:
 
       echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
     displayName: 'Get  VersionCode'
+
+  - bash: |
+      let VERSIONCODE=++VERSIONCODE
+      
+      echo "New version set to: $((VERSIONCODE))"
+      
+      echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
+      displayName: 'Increment VersionCode'
+      condition: eq(variables['incrementVersionCode'], 'true')
+
+  - bash: |
+      url="https://bmm-api.brunstad.org/AppVersion/AndroidVersionInfo"
+  
+      versionInfo=$(curl -k --user $(bmmApiCredentials) $url)
+  
+      echo "Receive version info: $versionInfo"
+      echo "##vso[task.setvariable variable=VersionInfo]$versionInfo"
+    displayName: 'Get version info'
