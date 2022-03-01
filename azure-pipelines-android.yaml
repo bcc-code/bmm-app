@@ -36,7 +36,6 @@ steps:
       
       echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
       displayName: 'Increment VersionCode'
-      condition: eq(variables['incrementVersionCode'], 'true')
 
   - bash: |
       url="https://bmm-api.brunstad.org/AppVersion/AndroidVersionInfo"
