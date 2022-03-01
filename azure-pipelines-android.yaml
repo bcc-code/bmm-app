@@ -35,7 +35,7 @@ steps:
       echo "New version set to: $((VERSIONCODE))"
       
       echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
-      displayName: 'Increment VersionCode'
+    displayName: 'Increment VersionCode'
 
   - bash: |
       url="https://bmm-api.brunstad.org/AppVersion/AndroidVersionInfo"
