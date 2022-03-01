@@ -45,3 +45,8 @@ steps:
       echo "Receive version info: $versionInfo"
       echo "##vso[task.setvariable variable=VersionInfo]$versionInfo"
     displayName: 'Get version info'
+
+  - task: Bash@3
+    inputs:
+      filePath: 'version-info.sh'
+    displayName: 'Construct new version number'
