@@ -52,27 +52,27 @@ steps:
     displayName: 'Construct new version number'
 
   - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
-      displayName: 'Rest call PUT AppVersion/AndroidVersionCode'
-      inputs:
-        webserviceEndpoint: 'BMM Api (Basic Auth)'
-        relativeUrl: AppVersion/AndroidVersionCode
-        httpVerb: PUT
-        body: '$(VersionCode)'
-        headers: |
-          {
-            "Content-Length": "6",
-            "Authorization": "$(bmmApiBasicAuth)"
-          }
+    displayName: 'Rest call PUT AppVersion/AndroidVersionCode'
+    inputs:
+      webserviceEndpoint: 'BMM Api (Basic Auth)'
+      relativeUrl: AppVersion/AndroidVersionCode
+      httpVerb: PUT
+      body: '$(VersionCode)'
+      headers: |
+        {
+          "Content-Length": "6",
+          "Authorization": "$(bmmApiBasicAuth)"
+        }
 
   - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
-      displayName: 'Rest call PUT AppVersion/AndroidVersionInfo'
-      inputs:
-        webserviceEndpoint: 'BMM Api (Basic Auth)'
-        relativeUrl: AppVersion/AndroidVersionInfo
-        httpVerb: PUT
-        body: '$(VersionInfo_String)'
-        headers: |
-          {
-            "Content-Length": "$(VersionInfo_Length)",
-            "Authorization": "$(bmmApiBasicAuth)"
-          }
+    displayName: 'Rest call PUT AppVersion/AndroidVersionInfo'
+    inputs:
+      webserviceEndpoint: 'BMM Api (Basic Auth)'
+      relativeUrl: AppVersion/AndroidVersionInfo
+      httpVerb: PUT
+      body: '$(VersionInfo_String)'
+      headers: |
+        {
+          "Content-Length": "$(VersionInfo_Length)",
+          "Authorization": "$(bmmApiBasicAuth)"
+        }
