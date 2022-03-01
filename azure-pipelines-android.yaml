@@ -76,3 +76,39 @@ steps:
           "Content-Length": "$(VersionInfo_Length)",
           "Authorization": "$(bmmApiBasicAuth)"
         }
+
+  - bash: |
+      pattern="DEV"
+      replacement=$(VersionNumber)
+      echo "new version number is $replacement"
+      sed -i.bak s/$pattern/$replacement/ GlobalConstants.cs
+      rm -f GlobalConstants.cs.bak
+    workingDirectory: BMM.Core/Helpers
+    displayName: 'Update AppVersion in GlobalConstants'
+
+  - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0
+    displayName: 'Set Version Code in AndroidManifest.xml'
+    inputs:
+      sourcePath: BMM.UI.Android/Properties/AndroidManifest.xml
+      versionCode: '$(VersionCode)'
+      versionName: '$(VersionNumber)'
+
+  - task: DeleteFiles@1
+    displayName: 'Delete files from '
+    inputs:
+      Contents: |
+        **/bin
+        **/obj
+
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 5.8.0'
+    inputs:
+      versionSpec: 5.8.0
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: '*.sln'
+      feedsToUse: config
+      nugetConfigPath: nuget.config
+      restoreDirectory: packages
