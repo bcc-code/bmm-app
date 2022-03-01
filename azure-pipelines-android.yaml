@@ -134,7 +134,6 @@ steps:
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
       msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) '
-      jdkVersionOption: 1.8
 
   - task: XamarinAndroid@1
     displayName: 'Build APK'
@@ -145,4 +144,3 @@ steps:
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
       msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)"'
-      jdkVersionOption: 1.8
