@@ -112,3 +112,15 @@ steps:
       feedsToUse: config
       nugetConfigPath: nuget.config
       restoreDirectory: packages
+
+  - task: MSBuild@1
+    displayName: 'Build solution **/*UITests.csproj'
+    inputs:
+      solution: '**/*UITests.csproj'
+      platform: AnyCPU
+      configuration: Release
+
+  - task: DownloadSecureFile@1
+    displayName: 'Download keystone'
+    inputs:
+      secureFile: 'e86cdf1c-08a3-4012-a9c6-216c01d3d81f'
