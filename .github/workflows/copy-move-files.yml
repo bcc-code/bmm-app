@@ -1,0 +1,27 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  push:
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    env:
+      API_TOKEN_GITHUB: ${{ secrets.DEVELOPER_DOCS_KEY }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Push Folder Content
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        with:
+          source_file: 'docs/.'
+          destination_branch: 'master'
+          destination_repo: 'bcc-code/bcc-code.github.io'
+          destination_folder: '_projects/bmm-app'
+          user_email: 'nicolai.velzel@gmail.com'
+          user_name: 'nvelinz'
+          commit_message: 'Update Wordpress Project Docs'
