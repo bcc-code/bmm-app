@@ -127,16 +127,6 @@ steps:
       secureFile: 'e86cdf1c-08a3-4012-a9c6-216c01d3d81f'
 
   - task: XamarinAndroid@1
-    displayName: 'Build APK'
-    inputs:
-      projectFile: '*droid*/*Droid*.csproj'
-      outputDirectory: '$(Build.BinariesDirectory)/bin/Release'
-      configuration: Release
-      msbuildVersionOption: latest
-      msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)"'
-
-  - task: XamarinAndroid@1
     displayName: 'Build aab (Android App Bundle)'
     inputs:
       projectFile: '*droid*/*Droid*.csproj'
