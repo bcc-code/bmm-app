@@ -153,7 +153,7 @@ steps:
       apkFiles: '$(Build.BinariesDirectory)/bin/Release/*.apk'
       apksignerKeystoreFile: 'keystore.ks'
       apksignerKeystorePassword: '$(KeystoreSigningPassword)'
-      apksignerKeystoreAlias: '$(KeystoreSigningAlias)'
+      apksignerKeystoreAlias: 'bmm-brunstad'
       apksignerKeyPassword: '$(KeystoreSigningPassword)'
 
   - task: CopyFiles@1
