@@ -135,4 +135,73 @@ steps:
       configuration: Release
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) /p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+
+  - task: XamarinAndroid@1
+    displayName: 'Build APK'
+    inputs:
+      projectFile: '*droid*/*Droid*.csproj'
+      outputDirectory: '$(Build.BinariesDirectory)/bin/Release'
+      configuration: Release
+      msbuildVersionOption: latest
+      msbuildArchitectureOption: x64
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+
+  - task: AndroidSigning@3
+    displayName: 'Signing and aligning APK file(s) $(Build.BinariesDirectory)/bin/Release/*.apk'
+    inputs:
+      apkFiles: '$(Build.BinariesDirectory)/bin/Release/*.apk'
+      apksignerKeystoreFile: 'keystore.ks'
+      apksignerKeystorePassword: '$(KeystoreSigningPassword)'
+      apksignerKeystoreAlias: '$(KeystoreSigningAlias)'
+      apksignerKeyPassword: '$(KeystoreSigningPassword)'
+
+  - task: CopyFiles@1
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(Build.BinariesDirectory)/bin/Release'
+      Contents: |
+        *.apk
+        *aab
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      CleanTargetFolder: true
+      flattenFolders: true
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files Release notes'
+    inputs:
+      SourceFolder: 'release-notes'
+      Contents: |
+        $(ReleaseNotesName)
+        test.md
+        generic.md
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
+
+  - task: NodeTool@0
+    displayName: 'Use Node 10.x to run appcenter cmd'
+    inputs:
+      versionSpec: 10.x
+
+  - task: AppCenterTest@1
+    displayName: 'Prepare AppCenter Tests'
+    inputs:
+      appFile: '$(Build.BinariesDirectory)/bin/Release/$(AppId).apk'
+      frameworkOption: uitest
+      uiTestBuildDirectory: '$(Build.SourcesDirectory)/BMM.Tests/BMM.UITests/bin/Release'
+      runTests: false
+      showDebugOutput: true
+    continueOnError: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+      ArtifactName: BMM.Droid
+
+
+
+
+
+
+
