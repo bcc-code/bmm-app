@@ -122,7 +122,8 @@ steps:
       configuration: Release
 
   - task: DownloadSecureFile@1
-    displayName: 'Download keystone'
+    name: keystore
+    displayName: 'Download keystore'
     inputs:
       secureFile: 'e86cdf1c-08a3-4012-a9c6-216c01d3d81f'
 
