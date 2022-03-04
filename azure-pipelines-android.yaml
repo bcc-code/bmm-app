@@ -186,7 +186,7 @@ steps:
   - task: AppCenterTest@1
     displayName: 'Prepare AppCenter Tests'
     inputs:
-      appFile: '$(Build.BinariesDirectory)/bin/Release/$(AppId).apk'
+      appFile: '$(Build.BinariesDirectory)/bin/Release/org.brunstad.bmm.apk'
       frameworkOption: uitest
       uiTestBuildDirectory: '$(Build.SourcesDirectory)/BMM.Tests/BMM.UITests/bin/Release'
       runTests: false
