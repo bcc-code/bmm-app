@@ -16,7 +16,7 @@ steps:
   - task: InstallAppleCertificate@2
     displayName: 'Install an Apple certificate'
     inputs:
-      certSecureFile: 'bcc-iphone-distribution.p12'
+      certSecureFile: 'e011c064-5607-4548-987d-55bd18c6dfb4'
       certPwd: '$(AppleDistributionCertPassword)'
       setUpPartitionIdACLForPrivateKey: false
 
