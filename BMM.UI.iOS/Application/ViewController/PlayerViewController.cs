@@ -50,6 +50,7 @@ namespace BMM.UI.iOS
         }
 
         private bool SupportsNotFullscreenPageSheetPresentation => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
+        private bool NeedsSetProgressBarThumbColorToBeForcedFromMainThread => !UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
         public override Type ParentViewControllerType => typeof(UINavigationController);
         protected override string GetTitle() => string.Empty;
         public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation() => UIInterfaceOrientation.Portrait;
@@ -359,19 +360,24 @@ namespace BMM.UI.iOS
             CoverHeightConstraint.Constant = coverSize;
             CoverWidthConstraint.Constant = coverSize;
 
-            BeginInvokeOnMainThread(() =>
-            {
-                var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
-                PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
-                PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
-                BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
-            });
+            if (NeedsSetProgressBarThumbColorToBeForcedFromMainThread)
+                BeginInvokeOnMainThread(SetProgressBarThumb);
+            else
+                SetProgressBarThumb();
             
             RunIfDeviceSupportsNotFullscreenPageSheetPresentation(() =>
             {
                 _previousStatusBarStyle = UIApplication.SharedApplication.StatusBarStyle;
                 UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
             });
+        }
+
+        private void SetProgressBarThumb()
+        {
+            var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
+            PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
+            PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
+            BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
         }
 
         public override void ViewWillDisappear(bool animated)
