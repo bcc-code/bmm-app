@@ -19,6 +19,7 @@ steps:
       certSecureFile: 'e011c064-5607-4548-987d-55bd18c6dfb4'
       certPwd: '$(AppleDistributionCertPassword)'
       setUpPartitionIdACLForPrivateKey: false
+    enabled: false
 
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install an Apple provisioning profile for Distribution'
