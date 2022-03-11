@@ -8,6 +8,12 @@ pool:
     - Xamarin.Android
     - JDK
 
+trigger:
+  branches:
+    include:
+      - develop
+      - main
+
 variables:
   incrementVersionCode: 'true'
 
