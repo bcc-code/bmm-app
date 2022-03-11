@@ -127,9 +127,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             Setup();
-            Client.Setup(x => x.Search.GetAll(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>(), null,null,null,null,null,null,null))
-                .Returns(Task.FromResult<IList<Document>>(null));
-            var searchViewModel = new SearchViewModel()
+            Client.Setup(x => x.Search.GetAll(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>()))
+                .Returns(Task.FromResult<SearchResults>(null));
+            var searchViewModel = new SearchViewModel
             {
                 SearchTerm = "test"
             };

@@ -19,8 +19,7 @@
         public static string Live = "live";
         public static string CurrentUser = "CurrentUser";
 
-        public static string Search =
-            "search/{term}{?content%2Dtype[]*,resource%2Dtype[]*,datetime%2Dfrom,datetime%2Dto,tags[]*,language,size,from,unpublished}";
+        public static string Search = "search/{term}{?size,from}";
 
         public static string Suggestions = "suggest/{term}";
         public static string Tracks = "track/{?tags[]*,exclude%2Dtags[]*,content%2Dtype[]*,language,size,from}";

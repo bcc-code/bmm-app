@@ -5,12 +5,14 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Akavache;
+using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
+using Microsoft.AppCenter.Crashes;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
@@ -228,7 +230,13 @@ namespace BMM.Core.ViewModels
                 return null;
             }
 
-            return await Client.Search.GetAll(SearchTerm, from: startIndex, size: size);
+            var results = await Client.Search.GetAll(SearchTerm,
+                startIndex == CurrentLimit ? NextPageFromPosition : startIndex,
+                size == CurrentLimit && size != ApiConstants.LoadMoreSize ? NextPageFromPosition : size);
+            NextPageFromPosition = results.NextPageFromPosition;
+            return results.Items;
         }
+
+        public int NextPageFromPosition { get; set; }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
@@ -16,51 +15,16 @@ namespace BMM.Api.Implementation.Clients
             : base(handler, baseUri, logger)
         { }
 
-        public async Task<IList<Document>> GetAll(string term, int size = ApiConstants.LoadMoreSize, int from = 0, IEnumerable<string> resourceTypes = null,
-            IEnumerable<string> contentTypes = null, DateTime? datetimeFrom = null, DateTime? datetimeTo = null, IEnumerable<string> tags = null,
-            IEnumerable<string> excludeTags = null, UnpublishedEnum? unpublished = null)
+        public async Task<SearchResults> GetAll(string term, int from = 0, int size = ApiConstants.LoadMoreSize)
         {
             var uri = new UriTemplate(ApiUris.Search);
             uri.SetParameter("term", term);
             uri.SetParameter("size", size);
             uri.SetParameter("from", from);
 
-            if (resourceTypes != null)
-            {
-                uri.SetParameter("resource%2Dtype[]", resourceTypes);
-            }
-
-            if (contentTypes != null)
-            {
-                uri.SetParameter("content%2Dtype[]", contentTypes);
-            }
-
-            if (datetimeFrom != null)
-            {
-                uri.SetParameter("datetime%2Dfrom", datetimeFrom);
-            }
-
-            if (datetimeTo != null)
-            {
-                uri.SetParameter("datetime%2Dto", datetimeTo);
-            }
-
-            if (tags != null)
-            {
-                uri.SetParameter("tags[]", tags);
-            }
-
-            if (excludeTags != null)
-            {
-                uri.SetParameter("exclude-tags[]", excludeTags);
-            }
-
-            if (unpublished != null)
-            {
-                uri.SetParameter("unpublished", unpublished.ToString().ToLower());
-            }
-
-            return FilterUnsupportedDocuments(await Get<IList<Document>>(uri)).ToList();
+            var results = await Get<SearchResults>(uri);
+            results.Items = FilterUnsupportedDocuments(results.Items.ToList());
+            return results;
         }
 
         public Task<IList<string>> GetSuggestions(string term)
