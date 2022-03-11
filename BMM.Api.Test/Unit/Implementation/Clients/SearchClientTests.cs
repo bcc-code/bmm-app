@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients;
@@ -37,7 +38,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
 
             // Assert
             Assert.NotNull(result);
-            Assert.AreEqual(result.Count, CreateASampleListOfDocuments().Count);
+            Assert.AreEqual(result.Items.Count(), CreateASampleListOfDocuments().Count);
         }
 
         [Test]

@@ -5,12 +5,14 @@ using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Akavache;
+using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
+using Microsoft.AppCenter.Crashes;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
@@ -166,8 +168,6 @@ namespace BMM.Core.ViewModels
                     await LoadSuggestions();
                 else
                 {
-                    IsFullyLoaded = false;
-
                     if (SearchHistory.Contains(SearchTerm))
                         SearchHistory.RemoveAt(SearchHistory.IndexOf(SearchTerm));
 
@@ -176,7 +176,7 @@ namespace BMM.Core.ViewModels
                     if (SearchHistory.Count > GlobalConstants.SearchHistoryCount)
                         SearchHistory.RemoveAt(SearchHistory.Count - 1);
 
-                    await BlobCache.InsertObject<List<string>>(StorageKeys.History, SearchHistory.ToList());
+                    await BlobCache.InsertObject(StorageKeys.History, SearchHistory.ToList());
                 }
             }
             catch (Exception ex)
@@ -228,7 +228,19 @@ namespace BMM.Core.ViewModels
                 return null;
             }
 
-            return await Client.Search.GetAll(SearchTerm, from: startIndex, size: size);
+            var results = await Client.Search.GetAll(SearchTerm, startIndex, size);
+            NextPageFromPosition = results.NextPageFromPosition;
+            IsFullyLoaded = results.IsFullyLoaded;
+            return results.Items;
+        }
+
+        private int NextPageFromPosition { get; set; }
+
+        public override int CurrentLimit => NextPageFromPosition;
+
+        protected void ResetCurrentLimit()
+        {
+            NextPageFromPosition = ApiConstants.LoadMoreSize;
         }
     }
 }
