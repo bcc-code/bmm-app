@@ -10,5 +10,6 @@ namespace BMM.Api.Implementation.Models
         /// Instead we need to rely on this field to get the from position of the next page.
         /// </summary>
         public int NextPageFromPosition { get; set; }
+        public bool IsFullyLoaded { get; set; }
     }
 }

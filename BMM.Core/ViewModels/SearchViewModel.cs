@@ -168,8 +168,6 @@ namespace BMM.Core.ViewModels
                     await LoadSuggestions();
                 else
                 {
-                    IsFullyLoaded = false;
-
                     if (SearchHistory.Contains(SearchTerm))
                         SearchHistory.RemoveAt(SearchHistory.IndexOf(SearchTerm));
 
@@ -178,7 +176,7 @@ namespace BMM.Core.ViewModels
                     if (SearchHistory.Count > GlobalConstants.SearchHistoryCount)
                         SearchHistory.RemoveAt(SearchHistory.Count - 1);
 
-                    await BlobCache.InsertObject<List<string>>(StorageKeys.History, SearchHistory.ToList());
+                    await BlobCache.InsertObject(StorageKeys.History, SearchHistory.ToList());
                 }
             }
             catch (Exception ex)
@@ -230,13 +228,19 @@ namespace BMM.Core.ViewModels
                 return null;
             }
 
-            var results = await Client.Search.GetAll(SearchTerm,
-                startIndex == CurrentLimit ? NextPageFromPosition : startIndex,
-                size == CurrentLimit && size != ApiConstants.LoadMoreSize ? NextPageFromPosition : size);
+            var results = await Client.Search.GetAll(SearchTerm, startIndex, size);
             NextPageFromPosition = results.NextPageFromPosition;
+            IsFullyLoaded = results.IsFullyLoaded;
             return results.Items;
         }
 
-        public int NextPageFromPosition { get; set; }
+        private int NextPageFromPosition { get; set; }
+
+        public override int CurrentLimit => NextPageFromPosition;
+
+        protected void ResetCurrentLimit()
+        {
+            NextPageFromPosition = ApiConstants.LoadMoreSize;
+        }
     }
 }

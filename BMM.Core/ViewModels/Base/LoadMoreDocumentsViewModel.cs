@@ -94,10 +94,5 @@ namespace BMM.Core.ViewModels.Base
         {
             await LoadMoreDocumentsAction.ExecuteGuarded();
         }
-
-        protected void ResetCurrentLimit()
-        {
-            CurrentLimit = ApiConstants.LoadMoreSize;
-        }
     }
 }

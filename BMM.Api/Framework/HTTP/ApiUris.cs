@@ -19,7 +19,7 @@
         public static string Live = "live";
         public static string CurrentUser = "CurrentUser";
 
-        public static string Search = "search/{term}{?size,from}";
+        public static string Search = "search/v2/{term}{?size,from}";
 
         public static string Suggestions = "suggest/{term}";
         public static string Tracks = "track/{?tags[]*,exclude%2Dtags[]*,content%2Dtype[]*,language,size,from}";
