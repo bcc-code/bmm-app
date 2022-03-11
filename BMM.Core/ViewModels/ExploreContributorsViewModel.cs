@@ -12,7 +12,7 @@ namespace BMM.Core.ViewModels
 {
     public class ExploreContributorsViewModel : LoadMoreDocumentsViewModel
     {
-        // Kåre is supposed to be always the first entry of the list
+        // Kåre is supposed to always be the first entry of the list
         private readonly List<int> _orderedListStart = new List<int>
         {
             36491, //Kåre J. Smith
@@ -22,7 +22,7 @@ namespace BMM.Core.ViewModels
         private readonly IEnumerable<int> _alphabetical = new List<int>()
         {
             66376, //Aksel J. Smith
-            43806, //Alise Helgheim
+            92568, //Alise Johnsen
             36514, //Arild Tombre
             59268, //Astrid Reinhardt
             60455, //Atle Johnsen
@@ -78,7 +78,7 @@ namespace BMM.Core.ViewModels
           81631, //Rebekka Frivold
           75152, //Elisa Frivold
           59596, //Oliver Tangen
-          43806, //Alise Helgheim
+          92568, //Alise Johnsen
           64808, //Pia Veronica Jacobsen
           80142, //Pia Gjosund
           41600, //Dag Helge Bernhardsen
