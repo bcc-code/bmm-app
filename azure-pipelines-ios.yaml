@@ -85,6 +85,8 @@ steps:
       filePath: 'version-info.sh'
     displayName: 'Construct new version number'
 
+## We don't update later because that would result in the same version number for parallel builds.
+## skipping versions in case of build errors is more acceptable than not being able to run builds in parallel.
   - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
     displayName: 'Rest call PUT AppVersion/iOSVersionCode'
     inputs:
