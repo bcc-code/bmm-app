@@ -19,16 +19,18 @@ trigger:
       - docs/*
 
 variables:
-  AppleDistributionCertPassword: 'password'
-  signingIdentity: 'iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)'
-  signingProvisioningProfileID: '7aa6caac-4848-4828-8656-35706723e182'
+    - name: signingIdentity
+      value: 'iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)'
+    - name: signingProvisioningProfileID
+      value: '7aa6caac-4848-4828-8656-35706723e182'
+    - group: 'AppleCertificate'
 
 steps:
   - task: InstallAppleCertificate@2
     displayName: 'Install an Apple certificate'
     inputs:
-      certSecureFile: 'bcc-iphone-distribution.p12'
-      certPwd: 'pah}h4sai]L6'
+      certSecureFile: '$(P12File)'
+      certPwd: '$(P12Password)'
 
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install an Apple provisioning profile for Distribution'
