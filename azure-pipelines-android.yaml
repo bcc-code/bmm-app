@@ -13,9 +13,12 @@ trigger:
     include:
       - develop
       - main
-
-variables:
-  incrementVersionCode: 'true'
+      - release/*
+      - hotfix/*
+  paths:
+    exclude:
+      - docs
+      - docs/*
 
 steps:
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
