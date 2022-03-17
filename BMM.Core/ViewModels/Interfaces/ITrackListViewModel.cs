@@ -1,6 +1,6 @@
-﻿namespace BMM.Core.ViewModels
+﻿namespace BMM.Core.ViewModels.Interfaces
 {
-    public interface ITrackListViewModel
+    public interface ITrackListViewModel : IShowShuffleOrResumeButtonHolderViewModel
     {
         bool ShowSharingInfo { get; }
 
@@ -21,8 +21,6 @@
         bool UseCircularImage { get; }
 
         bool ShowFollowButtons { get; }
-
-        bool ShowShuffleButton { get; }
 
         bool ShowPlayButton { get; }
 

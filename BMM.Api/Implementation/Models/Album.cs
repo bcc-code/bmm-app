@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BMM.Api.Implementation.Models.Interfaces;
 using Newtonsoft.Json;
 
 namespace BMM.Api.Implementation.Models
@@ -33,5 +34,8 @@ namespace BMM.Api.Implementation.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
+        
+        public int? LatestTrackId { get; set; }
+        public int LatestTrackPosition { get; set; }
     }
 }

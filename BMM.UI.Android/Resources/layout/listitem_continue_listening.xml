@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="@dimen/horizontal_scrolling_continue_listening_item_width"
+        android:layout_height="@dimen/horizontal_scrolling_continue_listening_item_height"
+        android:gravity="center"
+        local:cardCornerRadius="@dimen/continue_listening_item_corner_radius"
+        local:cardElevation="@dimen/dimen_none">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/BackgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            local:MvxBind="Click TileClickedCommand(.)" >
+    
+        <ffimageloading.cross.MvxCachedImageView
+                android:id="@+id/CoverImageView"
+                android:layout_width="@dimen/continue_listening_cover_size"
+                android:layout_height="@dimen/continue_listening_cover_size"
+                android:overScrollMode="never"
+                android:adjustViewBounds="false"
+                android:scaleType="centerCrop"
+                android:background="@drawable/cover_with_title_background"
+                android:layout_marginTop="@dimen/margin_xxmedium"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                local:layout_constraintTop_toTopOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:MvxBind="
+                    LoadingPlaceholderImagePath 'placeholder_cover';
+                    ErrorPlaceholderImagePath 'placeholder_cover';
+                    ImageViewPath CoverUrlToFallbackImage(Item.CoverUrl, 'placeholder_cover')" />
+
+        <ImageButton
+                android:id="@+id/MoreButton"
+                android:layout_width="@dimen/default_icon_size"
+                android:layout_height="@dimen/default_icon_size"
+                android:background="?selectableItemBackgroundBorderless"
+                android:layout_marginTop="@dimen/margin_xxmedium"
+                android:layout_marginEnd="@dimen/margin_xxmedium"
+                android:src="@drawable/icon_options"
+                android:tint="@color/on_color_one_color"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintTop_toTopOf="parent"
+                local:MvxBind="Click OptionButtonCommand(.)" />
+        
+        <ImageButton
+                android:id="@+id/PlayButton"
+                android:layout_width="@dimen/continue_listening_play_big_icon_size"
+                android:layout_height="@dimen/continue_listening_play_big_icon_size"
+                android:background="@drawable/button_background_rounded_black_ripple"
+                android:src="@drawable/icon_play_small"
+                android:layout_marginBottom="@dimen/margin_xxmedium"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:MvxBind="Click ContinueListeningCommand(.)" />
+
+        <ImageButton
+                android:id="@+id/ShuffleButton"
+                android:layout_width="@dimen/continue_listening_play_big_icon_size"
+                android:layout_height="@dimen/continue_listening_play_big_icon_size"
+                android:background="@drawable/button_background_rounded_oncolor_five_border_ripple"
+                android:src="@drawable/icon_shuffle"
+                android:layout_marginStart="@dimen/element_margin_small"
+                android:layout_marginBottom="@dimen/margin_xxmedium"
+                android:tint="@color/on_color_one_color"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toEndOf="@+id/PlayButton"
+                local:MvxBind="
+                    Click ShuffleButtonCommand(.);
+                    Visibility Visibility(HasValueToVisible(Item.ShufflePodcastId))" />
+
+        <ImageButton
+                android:id="@+id/DownloadedButton"
+                android:layout_width="@dimen/default_icon_size"
+                android:layout_height="@dimen/default_icon_size"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_download_mini"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/element_margin_small"
+                android:tint="@color/on_color_one_color"
+                local:layout_goneMarginEnd="@dimen/margin_large"
+                local:MvxBind="Visibility Visibility(DownloadStatusDone(Item.Track))"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintEnd_toStartOf="@+id/ReferenceButton" />
+
+        <ImageButton
+                android:id="@+id/ReferenceButton"
+                android:layout_width="@dimen/default_icon_size"
+                android:layout_height="@dimen/default_icon_size"
+                android:background="?selectableItemBackgroundBorderless"
+                android:src="@drawable/icon_link"
+                android:layout_marginBottom="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_large"
+                android:tint="@color/on_color_one_color"
+                local:MvxBind="
+                    Click ShowTrackInfoCommand(.);
+                    Visibility Visibility(TrackHasExternalRelations(Item.Track))"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintEnd_toEndOf="parent" />
+        
+        <TextView
+                android:id="@+id/RemainingLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_mini"
+                local:layout_constraintBottom_toTopOf="@+id/PlayButton"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toStartOf="@+id/HalfGuideline"
+                style="@style/Subtitle3_OnColor1"
+                local:MvxBind="Text Item.Subtitle" />
+
+        <TextView
+                android:id="@+id/SubtitleLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                local:layout_constraintBottom_toTopOf="@+id/TitleLabel"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                style="@style/Paragraph1_OnColor2"
+                local:MvxBind="Text Item.Title" />
+
+        <TextView
+                android:id="@+id/PlayingStatusIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xsmall"
+                android:text="•"
+                style="@style/Subtitle3_OnColor1"
+                local:layout_constraintBottom_toBottomOf="@+id/TitleLabel"
+                local:layout_constraintTop_toTopOf="@+id/TitleLabel"
+                local:layout_constraintStart_toStartOf="parent"
+                local:MvxBind="Visibility Visibility(IsTrackPlayingToVisible(Item.Track, ViewModel.CurrentTrack))"/>
+        
+        <TextView
+                android:id="@+id/TitleLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                android:maxLines="2"
+                local:layout_constraintBottom_toTopOf="@+id/BottomTextBarrier"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                style="@style/Title1_OnColor1"
+                local:MvxBind="Text Item.Label" />
+
+        <TextView
+                android:id="@+id/DayOfWeekLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                local:layout_constraintBottom_toTopOf="@+id/PlayButton"
+                local:layout_constraintStart_toStartOf="parent"
+                style="@style/Subtitle3_OnColor1"
+                local:MvxBind="Text DateTimeToPodcastPublishDayOfWeekLabel(Item.Date)" />
+
+        <TextView
+                android:id="@+id/DateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_tiny"
+                android:layout_marginEnd="@dimen/margin_xxmedium"
+                android:layout_marginBottom="@dimen/margin_medium"
+                local:layout_constraintStart_toEndOf="@+id/DayOfWeekLabel"
+                local:layout_constraintBottom_toTopOf="@+id/PlayButton"
+                style="@style/Subtitle3_OnColor2"
+                local:MvxBind="Text DateTimeToPodcastPublishDateLabel(Item.Date)" />
+        
+        <bmm.ui.droid.application.customViews.ProgressBarView
+                android:id="@+id/ProgressBarView"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_mini"
+                android:layout_marginEnd="@dimen/margin_xxmedium"
+                local:layout_constraintStart_toEndOf="@+id/HalfGuideline"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintTop_toTopOf="@+id/RemainingLabel"
+                local:layout_constraintBottom_toBottomOf="@+id/RemainingLabel"
+                local:MvxBind="Percentage Item.Percentage"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/HalfGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                local:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/BottomTextBarrier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                local:barrierDirection="top"
+                local:constraint_referenced_ids="DateLabel,RemainingLabel" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

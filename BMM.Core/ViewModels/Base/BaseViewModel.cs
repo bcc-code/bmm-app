@@ -173,8 +173,11 @@ namespace BMM.Core.ViewModels.Base
             switch (item.DocumentType)
             {
                 case DocumentType.Track:
-                    var optionsList = await PrepareTrackOptionsAction.ExecuteGuarded(new PrepareTrackOptionsParameters(this, (Track)item));
-                    await TrackOptionsService.OpenOptions(optionsList);
+                    await OpenTrackOptions((Track)item);
+                    break;
+                
+                case DocumentType.Tile:
+                    await OpenTrackOptions(((ContinueListeningTile)item).Track);
                     break;
 
                 case DocumentType.Album:
@@ -221,6 +224,12 @@ namespace BMM.Core.ViewModels.Base
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+        }
+
+        private async Task OpenTrackOptions(Track item)
+        {
+            var optionsList = await PrepareTrackOptionsAction.ExecuteGuarded(new PrepareTrackOptionsParameters(this, item));
+            await TrackOptionsService.OpenOptions(optionsList);
         }
 
         private void ShowActionSheetIfSharedTrackCollection(

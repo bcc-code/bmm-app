@@ -22,11 +22,18 @@ namespace BMM.UI.iOS.Constants
             Font = Typography.Title1.Value,
             Color = AppColors.LabelPrimaryColorReverted
         };
+        
+        public static TextTheme Title1OnColor1 = new TextTheme
+        {
+            Font = Typography.Title1.Value,
+            Color = AppColors.OnColorOneColor
+        };
 
         public static TextTheme Title2 = new TextTheme
         {
             Font = Typography.Title2.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelPrimaryColor,
+            MinimumFontSize = 12
         };
         
         public static TextTheme Title3 = new TextTheme
@@ -52,6 +59,12 @@ namespace BMM.UI.iOS.Constants
         {
             Font = Typography.Paragraph1.Value,
             Color = AppColors.LabelSecondaryColor
+        };
+        
+        public static TextTheme Paragraph1OnColor2 = new TextTheme
+        {
+            Font = Typography.Paragraph1.Value,
+            Color = AppColors.OnColorTwoColor
         };
 
         public static TextTheme Paragraph2 = new TextTheme
@@ -87,7 +100,8 @@ namespace BMM.UI.iOS.Constants
         public static TextTheme Subtitle2Label3 = new TextTheme
         {
             Font = Typography.Subtitle2.Value,
-            Color = AppColors.LabelTertiaryColor
+            Color = AppColors.LabelTertiaryColor,
+            MinimumFontSize = 10
         };
 
         public static TextTheme Subtitle3Label1 = new TextTheme
@@ -106,6 +120,18 @@ namespace BMM.UI.iOS.Constants
         {
             Font = Typography.Subtitle3.Value,
             Color = AppColors.LabelTertiaryColor
+        };
+        
+        public static TextTheme Subtitle3OnColor1 = new TextTheme
+        {
+            Font = Typography.Subtitle3.Value,
+            Color = AppColors.OnColorOneColor
+        };
+        
+        public static TextTheme Subtitle3OnColor2 = new TextTheme
+        {
+            Font = Typography.Subtitle3.Value,
+            Color = AppColors.OnColorTwoColor
         };
 
         public static readonly ButtonTheme ButtonPrimary = new StandardButtonTheme
@@ -134,7 +160,19 @@ namespace BMM.UI.iOS.Constants
             TextTheme = Title1,
             ButtonColor = UIColor.Clear,
             HasBorder = true,
-            BorderColor = AppColors.PlaceholderColor
+            BorderColor = AppColors.PlaceholderColor,
+            ImageEdgeInsets = UIEdgeInsets.Zero,
+            ContentEdgeInsets = UIEdgeInsets.Zero
+        };
+        
+        public static readonly ButtonTheme ButtonTertiaryMediumOnColorFive = new StandardButtonTheme
+        {
+            TextTheme = Title1,
+            ButtonColor = UIColor.Clear,
+            HasBorder = true,
+            BorderColor = AppColors.OnColorFiveColor,
+            ImageEdgeInsets = UIEdgeInsets.Zero,
+            ContentEdgeInsets = UIEdgeInsets.Zero
         };
     }
 }

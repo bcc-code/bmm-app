@@ -24,18 +24,6 @@ namespace BMM.UI.iOS
                 
                 var podcastSource = new PodcastNewestTrackTableViewSource(PodcastTrackListTableView);
                 
-                set.Bind(podcastSource)
-                    .To(vm => ((ExploreNewestViewModel)vm.ViewModel).FraKaareTeaserViewModel.Documents)
-                    .WithConversion<DocumentListValueConverter>(((ExploreNewestViewModel)((CellWrapperViewModel<Document>)DataContext).ViewModel).FraKaareTeaserViewModel);
-                
-                set.Bind(podcastSource)
-                    .For(s => s.SelectionChangedCommand)
-                    .To(vm => ((ExploreNewestViewModel)vm.ViewModel).FraKaareTeaserViewModel.DocumentSelectedCommand)
-                    .WithConversion<DocumentSelectedCommandValueConverter>();
-                
-                set.Bind(PodcastShowAllButton)
-                    .To(vm => ((ExploreNewestViewModel)vm.ViewModel).FraKaareTeaserViewModel.ShowAllCommand);
-                
                 set.Bind(PodcastShowAllButton)
                     .For(v => v.BindTitle())
                     .To(vm => ((ExploreNewestViewModel)vm.ViewModel).TextSource)
@@ -50,9 +38,6 @@ namespace BMM.UI.iOS
                     .For(v => v.BindTitle())
                     .To(vm => ((ExploreNewestViewModel)vm.ViewModel).TextSource)
                     .WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_PlayRandom);
-                
-                set.Bind(FraKaarePlayRandomButton)
-                    .To(vm => ((ExploreNewestViewModel)vm.ViewModel).FraKaareTeaserViewModel.PlayRandomCommand);
                 
                 set.Apply();
             });

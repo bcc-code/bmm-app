@@ -18,6 +18,7 @@ using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Translation;
+using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.MyContent;
 using BMM.Core.ViewModels.Parameters;
 using MvvmCross;
@@ -48,7 +49,8 @@ namespace BMM.Core.ViewModels
         public bool UseCircularImage => true;
 
         public bool ShowFollowButtons => true;
-        public bool ShowShuffleButton => false;
+        public bool ShowShuffleOrResumeButton => false;
+        public string ShowShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
         public bool ShowPlayButton => true;
 
         public bool ShowTrackCount => false;

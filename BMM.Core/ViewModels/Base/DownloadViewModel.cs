@@ -13,6 +13,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Translation;
+using BMM.Core.ViewModels.Interfaces;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
@@ -59,6 +60,7 @@ namespace BMM.Core.ViewModels.Base
         public virtual bool ShowPlaylistIcon => false;
 
         public virtual bool ShowFollowSharedPlaylistButton => false;
+        public virtual string ShowShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
 
         public abstract string Image { get; }
 
@@ -66,7 +68,7 @@ namespace BMM.Core.ViewModels.Base
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleButton => true;
+        public bool ShowShuffleOrResumeButton => true;
         public bool ShowPlayButton => false;
 
         public bool ShowTrackCount => true;

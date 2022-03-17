@@ -16,7 +16,6 @@ namespace BMM.UI.iOS
     [MvxModalPresentation(WrapInNavigationController = true, ModalPresentationStyle = UIModalPresentationStyle.PageSheet)]
     public partial class ShareTrackCollectionViewController : BaseViewController<ShareTrackCollectionViewModel>
     {
-        private bool _isPrivate;
         private bool _isSharingStatusIconVisible;
 
         public ShareTrackCollectionViewController() : base(null)

@@ -1,5 +1,6 @@
 ﻿using System;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;

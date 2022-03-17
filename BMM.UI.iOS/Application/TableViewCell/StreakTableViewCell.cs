@@ -21,17 +21,11 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                MondayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
-                TuesdayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
-                WednesdayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
-                ThursdayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
-                FridayColorView.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
-
-                MondayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayMonday];
-                TuesdayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayTuesday];
-                WednesdayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayWednesday];
-                ThursdayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayThursday];
-                FridayLabel.Text = BMMLanguageBinder[Translations.Streak_WeekdayFriday];
+                MondayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                TuesdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                WednesdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                ThursdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+                FridayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
 
                 var set = this.CreateBindingSet<StreakTableViewCell, CellWrapperViewModel<ListeningStreak>>();
                 set.Bind(StreakLabel).To(v => v.Item).WithConversion<StreakMessageValueConverter>();
@@ -131,13 +125,8 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-            StreakLabel.ApplyTextTheme(AppTheme.Subtitle2Label1);
-            StreakSublabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
-            MondayLabel.ApplyTextTheme(AppTheme.Title3);
-            TuesdayLabel.ApplyTextTheme(AppTheme.Title3);
-            WednesdayLabel.ApplyTextTheme(AppTheme.Title3);
-            ThursdayLabel.ApplyTextTheme(AppTheme.Title3);
-            FridayLabel.ApplyTextTheme(AppTheme.Title3);
+            StreakLabel.ApplyTextTheme(AppTheme.Title2);
+            StreakSublabel.ApplyTextTheme(AppTheme.Subtitle2Label3);
         }
     }
 }

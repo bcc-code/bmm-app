@@ -1,241 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="@dimen/margin_small"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_marginVertical="@dimen/margin_small"
+    android:layout_marginHorizontal="@dimen/margin_medium"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:id="@+id/Title"
+        android:layout_width="@dimen/match_constraint"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="0dp"
-        android:gravity="center"
-        android:text="Your streak this week"
-        style="@style/Subtitle2_Label1"
-        app:MvxBind="Text StreakMessage(Item)"
-        app:layout_constraintBottom_toTopOf="@id/day_streak_boxes"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/day_streak_boxes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="16dp"
-        android:orientation="horizontal"
-        android:padding="5dp"
-
-        app:layout_constraintBottom_toTopOf="@id/sub_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:MvxBind="CardVisibility Item.ShowMonday; CardBackgroundColor CurrentDayColor(Item, 1)"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="12dp"
-                android:orientation="vertical">
-
-                <View
-                  android:layout_width="12dp"
-                  android:layout_height="12dp"
-                  android:layout_marginBottom="8dp"
-                  app:MvxBind="BackgroundTint Item.MondayColor"
-                  android:background="@drawable/circle"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    style="@style/Title3"
-                    tools:text="X"
-                    app:MvxBind="Text StreakTextSource('WeekdayMonday')" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:MvxBind="CardVisibility Item.ShowTuesday; CardBackgroundColor CurrentDayColor(Item, 2)"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="12dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <View
-                  android:layout_width="12dp"
-                  android:layout_height="12dp"
-                  android:layout_marginBottom="8dp"
-                  app:MvxBind="BackgroundTint Item.TuesdayColor"
-                  android:background="@drawable/circle"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    style="@style/Title3"
-                    tools:text="T"
-                    app:MvxBind="Text StreakTextSource('WeekdayTuesday')" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:MvxBind="CardVisibility Item.ShowWednesday; CardBackgroundColor CurrentDayColor(Item, 3)"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="12dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginBottom="8dp"
-                    app:MvxBind="BackgroundTint Item.WednesdayColor"
-                    android:background="@drawable/circle"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    tools:text="W"
-                    style="@style/Title3"
-                    app:MvxBind="Text StreakTextSource('WeekdayWednesday')" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:MvxBind="CardVisibility Item.ShowThursday; CardBackgroundColor CurrentDayColor(Item, 4)"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="12dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginBottom="8dp"
-                    app:MvxBind="BackgroundTint Item.ThursdayColor"
-                    android:background="@drawable/circle"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    tools:text="T"
-                    style="@style/Title3"
-                    app:MvxBind="Text StreakTextSource('WeekdayThursday')" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:MvxBind="CardVisibility Item.ShowFriday; CardBackgroundColor CurrentDayColor(Item, 5)"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="0dp"
-            android:layout_margin="8dp">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="18dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="18dp"
-                android:layout_marginBottom="12dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <View
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:layout_marginBottom="8dp"
-                    app:MvxBind="BackgroundTint Item.FridayColor"
-                    android:background="@drawable/circle"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    tools:text="T"
-                    style="@style/Title3"
-                    app:MvxBind="Text StreakTextSource('WeekdayFriday')" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+        local:MvxBind="Text StreakMessage(Item)"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="@+id/HalfGuideline"
+        local:layout_constraintTop_toTopOf="parent"
+        style="@style/Title2" />
 
     <TextView
-        android:id="@+id/sub_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
-        android:text="1 perfect week"
-        app:MvxBind="Text PerfectWeekCount(Item)"
+        android:id="@+id/Subtitle"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"    
         android:textColor="@color/label_tertiary_color"
-        style="@style/Subtitle3_Label3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/day_streak_boxes" />
+        local:MvxBind="Text PerfectWeekCount(Item)"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="@+id/HalfGuideline"
+        local:layout_constraintTop_toBottomOf="@+id/Title"
+        local:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Subtitle2_Label3" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/MondayCard"
+        android:layout_width="@dimen/streak_card_size"
+        android:layout_height="@dimen/streak_card_size"
+        local:layout_constraintStart_toStartOf="@+id/HalfGuideline"
+        local:layout_constraintEnd_toStartOf="@+id/TuesdayCard"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintHorizontal_chainStyle="spread"
+        local:cardCornerRadius="@dimen/streak_card_corner_radius"
+        local:cardElevation="@dimen/dimen_none"
+        local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 1)">
+        <View
+            android:layout_width="@dimen/streak_circle_size"
+            android:layout_height="@dimen/streak_circle_size"
+            android:layout_gravity="center"
+            local:MvxBind="BackgroundTint Item.MondayColor"
+            android:background="@drawable/circle" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/TuesdayCard"
+            android:layout_width="@dimen/streak_card_size"
+            android:layout_height="@dimen/streak_card_size"
+            local:layout_constraintStart_toEndOf="@+id/MondayCard"
+            local:layout_constraintEnd_toStartOf="@+id/WednesdayCard"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:cardCornerRadius="@dimen/streak_card_corner_radius"
+            local:cardElevation="@dimen/dimen_none"
+            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 2)">
+        <View
+            android:layout_width="@dimen/streak_circle_size"
+            android:layout_height="@dimen/streak_circle_size"
+            android:layout_gravity="center"
+            local:MvxBind="BackgroundTint Item.TuesdayColor"
+            android:background="@drawable/circle" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/WednesdayCard"
+            android:layout_width="@dimen/streak_card_size"
+            android:layout_height="@dimen/streak_card_size"
+            local:layout_constraintStart_toEndOf="@+id/TuesdayCard"
+            local:layout_constraintEnd_toStartOf="@+id/ThursdayCard"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:cardCornerRadius="@dimen/streak_card_corner_radius"
+            local:cardElevation="@dimen/dimen_none"
+            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 3)">
+        <View
+            android:layout_width="@dimen/streak_circle_size"
+            android:layout_height="@dimen/streak_circle_size"
+            android:layout_gravity="center"
+            local:MvxBind="BackgroundTint Item.WednesdayColor"
+            android:background="@drawable/circle" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/ThursdayCard"
+            android:layout_width="@dimen/streak_card_size"
+            android:layout_height="@dimen/streak_card_size"
+            local:layout_constraintStart_toEndOf="@+id/WednesdayCard"
+            local:layout_constraintEnd_toStartOf="@+id/FridayCard"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:cardCornerRadius="@dimen/streak_card_corner_radius"
+            local:cardElevation="@dimen/dimen_none"
+            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 4)">
+        <View
+            android:layout_width="@dimen/streak_circle_size"
+            android:layout_height="@dimen/streak_circle_size"
+            android:layout_gravity="center"
+            local:MvxBind="BackgroundTint Item.ThursdayColor"
+            android:background="@drawable/circle"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/FridayCard"
+            android:layout_width="@dimen/streak_card_size"
+            android:layout_height="@dimen/streak_card_size"
+            local:layout_constraintStart_toEndOf="@+id/ThursdayCard"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:cardCornerRadius="@dimen/streak_card_corner_radius"
+            local:cardElevation="@dimen/dimen_none"
+            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 5)">
+        <View
+            android:layout_width="@dimen/streak_circle_size"
+            android:layout_height="@dimen/streak_circle_size"
+            android:layout_gravity="center"
+            local:MvxBind="BackgroundTint Item.FridayColor"
+            android:background="@drawable/circle"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HalfGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            local:layout_constraintGuide_percent="0.5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

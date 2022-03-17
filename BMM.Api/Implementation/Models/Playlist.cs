@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using BMM.Api.Implementation.Models.Interfaces;
+using Newtonsoft.Json;
 
 namespace BMM.Api.Implementation.Models
 {

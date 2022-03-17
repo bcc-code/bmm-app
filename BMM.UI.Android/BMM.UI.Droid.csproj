@@ -107,6 +107,7 @@
     <Compile Include="Application\Activities\UserSetupActivity.cs" />
     <Compile Include="Application\Activities\OidcLoginActivity.cs" />
     <Compile Include="Application\Adapters\BrowseRecyclerAdapter.cs" />
+    <Compile Include="Application\Adapters\ContinueAudiobookCarouselRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\DocumentDragAndDropAdapter.cs" />
     <Compile Include="Application\Adapters\DragAndDrop\ListDeleteClickListener.cs" />
     <Compile Include="Application\Adapters\DragAndDrop\LanguageListAdapter.cs" />
@@ -130,6 +131,7 @@
     <Compile Include="Application\Constants\Player\CoverConstants.cs" />
     <Compile Include="Application\Constants\ValueConstants.cs" />
     <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
+    <Compile Include="Application\CustomViews\ProgressBarView.cs" />
     <Compile Include="Application\CustomViews\ShadowLayout.cs" />
     <Compile Include="Application\DownloadManager\AndroidDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
@@ -211,11 +213,14 @@
     <Compile Include="Application\NewMediaPlayer\Service\CustomErrorMessageProvider.cs" />
     <Compile Include="Application\NewMediaPlayer\Service\CustomShuffleOrder.cs" />
     <Compile Include="Application\NewMediaPlayer\Playback\IdleRecoveringControlDispatcher.cs" />
+    <Compile Include="Application\ValueConverters\HexToColorValueConverter.cs" />
     <Compile Include="Application\ValueConverters\IsNextTrackAvailableToBackgroundResourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\PlayingStateToPlayPauseIdNameValueConverter.cs" />
     <Compile Include="Application\ValueConverters\RepeatModeToBackgroundResourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\IsSelectedToBackgroundResourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\ShuffleEnabledToIconValueConverter.cs" />
+    <Compile Include="Application\ViewHolders\ContinueListeningCarouselCollectionViewHolder.cs" />
+    <Compile Include="Application\ViewHolders\ContinueListeningTileViewHolder.cs" />
     <Compile Include="Application\ViewHolders\InfoMessageViewHolder.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Compile Include="Utils\ViewUtils.cs" />
@@ -238,9 +243,7 @@
     <Compile Include="Application\TemplateSelectors\TrackListTemplateSelector.cs" />
     <Compile Include="Application\ValueConverters\CurrentDayColor.cs" />
     <Compile Include="Application\Bindings\MvxBackgroundTintBinding.cs" />
-    <Compile Include="Application\ValueConverters\DownloadStatusVisibilityValueConverter.cs" />
     <Compile Include="Application\ValueConverters\SectionedToFlatListValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\StreakTextSourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\TrackAvailabilityToOpacityValueConverter.cs" />
     <Compile Include="Application\ValueConverters\TrackPlaybackStateToColorValueConverter.cs" />
     <Compile Include="Application\ValueConverters\TrackPlaybackStateToDrawableValueConverter.cs" />
@@ -426,6 +429,19 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
     <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
     <AndroidResource Include="Resources\drawable\border_top.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded_black.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\button_background_rounded_black_ripple.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\button_background_rounded_oncolor_five_border.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded_oncolor_five_border_ripple.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\button_pause_mini.xml" />
     <AndroidResource Include="Resources\drawable\button_play_mini.xml" />
     <AndroidResource Include="Resources\drawable\button_ripple.xml">
@@ -451,6 +467,7 @@
     <AndroidResource Include="Resources\drawable\edit_text_cursor.xml" />
     <AndroidResource Include="Resources\drawable\icon_album.xml" />
     <AndroidResource Include="Resources\drawable\icon_arrow_down.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download_mini.xml" />
     <AndroidResource Include="Resources\drawable\icon_edit.xml" />
     <AndroidResource Include="Resources\drawable\icon_external_sound.xml" />
     <AndroidResource Include="Resources\drawable\icon_friends.xml" />
@@ -462,6 +479,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\icon_options.xml" />
     <AndroidResource Include="Resources\drawable\icon_pause.xml" />
     <AndroidResource Include="Resources\drawable\icon_person.xml" />
     <AndroidResource Include="Resources\drawable\icon_playback_history.xml" />
@@ -596,6 +614,14 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_chapter_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_continue_listening.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_continue_listening_collection.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_cover_with_title.xml" />
     <AndroidResource Include="Resources\layout\listitem_cover_with_title_flexible.xml">
       <SubType>Designer</SubType>
@@ -1026,10 +1052,12 @@
     <ProjectReference Include="..\BMM.Api\BMM.Api.csproj">
       <Project>{0c493c0d-e2a7-4d84-912f-303ad20234ae}</Project>
       <Name>BMM.Api</Name>
+      <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
     <ProjectReference Include="..\BMM.Core\BMM.Core.csproj">
       <Project>{5b0f239b-7bb5-4c18-ab02-44dcbd597d61}</Project>
       <Name>BMM.Core</Name>
+      <ReferenceSourceTarget></ReferenceSourceTarget>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

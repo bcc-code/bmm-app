@@ -5,5 +5,6 @@ namespace BMM.Core.Constants
         public static string Space => " ";
         public static string Underscore => "_";
         public static string Dash => "-";
+        public static string Comma => ",";
     }
 }

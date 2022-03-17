@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using BMM.Api.Implementation.Models;
-using BMM.UI.Droid.Application.Extensions;
 using MvvmCross;
 using MvvmCross.Converters;
 using MvvmCross.Platforms.Android;

@@ -50,7 +50,6 @@ namespace BMM.Core.ViewModels.MyContent
         public bool IsEmpty => MyCollection.Tracks?.Count == 0 && !IsLoading && IsInitialized;
 
         private readonly ITrackCollectionManager _trackCollectionManager;
-        private string _playlistAuthor;
 
         public MyTracksViewModel(
             IStorageManager storageManager,

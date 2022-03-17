@@ -1,3 +1,5 @@
+using BMM.Api.Implementation.Models.Interfaces;
+
 namespace BMM.Api.Implementation.Models
 {
     public class InfoMessage : Document, ITranslationDetailsHolder

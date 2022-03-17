@@ -5,6 +5,7 @@ using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
@@ -30,18 +31,20 @@ namespace BMM.Core.ViewModels
         private readonly ISettingsStorage _settings;
         private readonly INavigateToViewModelAction _navigateToViewModelAction;
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
+        private readonly IPrepareContinueListeningCarouselItemsAction _prepareContinueListeningCarouselItemsAction;
         private readonly ITranslateDocsAction _translateDocsAction;
         private readonly IAppLanguageProvider _appLanguageProvider;
         private readonly IUserStorage _user;
         private readonly IFirebaseRemoteConfig _config;
-
-        public FraKaareTeaserViewModel FraKaareTeaserViewModel { get; private set; }
 
         public AslaksenTeaserViewModel AslaksenTeaserViewModel { get; private set; }
 
         public ExploreRadioViewModel RadioViewModel { get; private set; }
 
         private MvxSubscriptionToken _listeningStreakToken;
+        private ExceptionHandlingCommand<ContinueListeningTile> _continuePlayingCommand;
+        private ExceptionHandlingCommand<ContinueListeningTile> _tileClickedCommand;
+        private ExceptionHandlingCommand<ContinueListeningTile> _shuffleButtonCommand;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
@@ -49,20 +52,27 @@ namespace BMM.Core.ViewModels
             ISettingsStorage settings,
             INavigateToViewModelAction navigateToViewModelAction,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
+            IPrepareContinueListeningCarouselItemsAction prepareContinueListeningCarouselItemsAction,
             ITranslateDocsAction translateDocsAction,
             IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
-            IFirebaseRemoteConfig config)
+            IFirebaseRemoteConfig config,
+            IContinuePlayingAction continuePlayingAction,
+            ITileClickedAction tileClickedAction,
+            IShuffleButtonClickedAction shuffleButtonClickedAction)
         {
             _streakObserver = streakObserver;
             _settings = settings;
             _navigateToViewModelAction = navigateToViewModelAction;
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
+            _prepareContinueListeningCarouselItemsAction = prepareContinueListeningCarouselItemsAction;
             _translateDocsAction = translateDocsAction;
             _appLanguageProvider = appLanguageProvider;
             _user = user;
             _config = config;
-            FraKaareTeaserViewModel = Mvx.IoCProvider.IoCConstruct<FraKaareTeaserViewModel>();
+            ContinuePlayingCommand = continuePlayingAction.Command;
+            TileClickedCommand = tileClickedAction.Command;
+            ShuffleButtonCommand = shuffleButtonClickedAction.Command;
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
             _listeningStreakToken = messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
@@ -70,7 +80,10 @@ namespace BMM.Core.ViewModels
         }
 
         public IMvxAsyncCommand<Type> NavigateToViewModelCommand => _navigateToViewModelAction.Command;
-
+        public IMvxAsyncCommand<ContinueListeningTile> ContinuePlayingCommand { get; }
+        public IMvxAsyncCommand<ContinueListeningTile> TileClickedCommand { get; }
+        public IMvxAsyncCommand<ContinueListeningTile> ShuffleButtonCommand { get; }
+        
         private void ListeningStreakChanged(ListeningStreakChangedMessage message)
         {
             var index = Documents.FindIndex(document => document.DocumentType == DocumentType.ListeningStreak);
@@ -84,7 +97,6 @@ namespace BMM.Core.ViewModels
             UpdatePodcastName();
 
             return Task.WhenAll(
-                FraKaareTeaserViewModel.Initialize(),
                 AslaksenTeaserViewModel.Initialize(),
                 RadioViewModel.Initialize(),
                 base.Initialization()
@@ -94,7 +106,6 @@ namespace BMM.Core.ViewModels
         public override Task Refresh()
         {
             return Task.WhenAll(
-                FraKaareTeaserViewModel.Refresh(),
                 AslaksenTeaserViewModel.Refresh(),
                 RadioViewModel.Refresh(),
                 base.Refresh()
@@ -104,14 +115,12 @@ namespace BMM.Core.ViewModels
         public override Task Load()
         {
             return Task.WhenAll(
-                FraKaareTeaserViewModel.Load(),
                 base.Load()
             );
         }
 
         private void UpdatePodcastName()
         {
-            FraKaareTeaserViewModel.Podcast.Title = TextSource[Translations.ExploreNewestViewModel_FraKaareHeader];
             AslaksenTeaserViewModel.Podcast.Title = TextSource[Translations.ExploreNewestViewModel_AslaksenTeaserHeader];
         }
 
@@ -127,7 +136,8 @@ namespace BMM.Core.ViewModels
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
             AddAdditionalElements(translatedDocs);
-            return await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
+            var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
+            return await _prepareContinueListeningCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
         }
 
         private void AddAdditionalElements(IList<Document> translatedDocs)
@@ -136,9 +146,6 @@ namespace BMM.Core.ViewModels
 
             if (AslaksenTeaserViewModel.ShowTeaser)
                 translatedDocs.Insert(indexToAddAdditionalElements, new AslaksenTeaser());
-
-            if (FraKaareTeaserViewModel.ShowTeaser)
-                translatedDocs.Insert(indexToAddAdditionalElements, new FraKaareTeaser());
 
             if (RadioViewModel.ShowBmmLive)
                 translatedDocs.Insert(indexToAddAdditionalElements, new LiveRadio());
@@ -149,7 +156,6 @@ namespace BMM.Core.ViewModels
         public override void RefreshInBackground()
         {
             base.RefreshInBackground();
-            FraKaareTeaserViewModel.RefreshInBackground();
             AslaksenTeaserViewModel.RefreshInBackground();
         }
 
@@ -192,13 +198,15 @@ namespace BMM.Core.ViewModels
                 .ToList();
             AslaksenTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d =>
                 d.DocumentType == DocumentType.Podcast && d.Id == AslaksenTeaserViewModel.AslaksenPodcastId);
-            FraKaareTeaserViewModel.ShowTeaser = documentsBeforeFirstHeader.Any(d =>
-                d.DocumentType == DocumentType.Podcast && d.Id == FraKaareTeaserViewModel.FraKårePodcastId);
         }
 
         private List<Track> GetAdjacentTracksInSameSection(Document item)
         {
-            var index = Documents.IndexOf(item);
+            int index = Documents.IndexOf(item);
+
+            if (index == -1 && item is Track trackToPlay)
+                return trackToPlay.EncloseInArray().ToList();
+            
             var tracks = new List<Track>();
             int previousCounter = 1;
             while (index - previousCounter > 0 && Documents[index - previousCounter] is Track track)

@@ -25,20 +25,26 @@ namespace BMM.Api.Implementation.Models
         [EnumMember(Value = "chapter_header")]
         ChapterHeader,
 
+        [EnumMember(Value = "Tile")]
+        Tile,
+
         [IgnoreDataMember]
         PlaylistsCollection,
-        
+
         [IgnoreDataMember]
         AslaksenTeaser,
-        
+
         [IgnoreDataMember]
         FraKaareTeaser,
-        
+
         [IgnoreDataMember]
         LiveRadio,
-        
+
         [IgnoreDataMember]
         SimpleMargin,
+
+        [IgnoreDataMember]
+        ContinueListeningCollection,
 
         [EnumMember(Value = "section_header")]
         DiscoverSectionHeader,
@@ -48,7 +54,7 @@ namespace BMM.Api.Implementation.Models
 
         [EnumMember(Value = "listening_streak")]
         ListeningStreak,
-        
+
         [EnumMember(Value = "InfoMessage")]
         InfoMessage,
 

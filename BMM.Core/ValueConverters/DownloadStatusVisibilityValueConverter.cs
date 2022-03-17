@@ -3,25 +3,16 @@ using System.Globalization;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
-using BMM.Core.ViewModels;
 using MvvmCross;
 using MvvmCross.Converters;
 
-namespace BMM.UI.Droid.Application.ValueConverters
+namespace BMM.Core.ValueConverters
 {
-    public abstract class DownloadStatusVisibilityValueConverter : MvxValueConverter<CellWrapperViewModel<Document>, bool>
+    public abstract class DownloadStatusVisibilityValueConverter : MvxValueConverter<Track, bool>
     {
-        protected override bool Convert(CellWrapperViewModel<Document> value, Type targetType, object parameter, CultureInfo culture)
+        protected override bool Convert(Track track, Type targetType, object parameter, CultureInfo culture)
         {
-            var item = value.Item;
-
-            if (!(item is Track track))
-                return false;
-
-            if (HasItRightStatus(track))
-                return true;
-            else
-                return false;
+            return HasItRightStatus(track);
         }
 
         protected abstract bool HasItRightStatus(Track track);

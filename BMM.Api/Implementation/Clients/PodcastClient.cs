@@ -48,8 +48,14 @@ namespace BMM.Api.Implementation.Clients
         {
             var uri = new UriTemplate(ApiUris.PodcastRandom);
             uri.SetParameter("id", podcastId);
-
             return Get<Track>(uri);
+        }
+
+        public Task<IList<Track>> GetShuffle(int podcastId)
+        {
+            var uri = new UriTemplate(ApiUris.Shuffle);
+            uri.SetParameter("id", podcastId);
+            return Get<IList<Track>>(uri);
         }
     }
 }

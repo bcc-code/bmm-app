@@ -5,6 +5,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Interactions;
 using BMM.Core.Messages;
@@ -23,6 +24,7 @@ namespace BMM.Core.ViewModels
     public sealed class PlayerViewModel : PlayerBaseViewModel, IPlayerViewModel, IMvxViewModel<bool>
     {
         private readonly IUriOpener _uriOpener;
+        private readonly IAnalytics _analytics;
         private readonly IUpdateExternalRelationsAction _updateExternalRelationsAction;
         private readonly MvxInteraction<TogglePlayerInteraction> _closePlayerInteraction = new();
         private RepeatType _repeatType;
@@ -112,10 +114,12 @@ namespace BMM.Core.ViewModels
         public PlayerViewModel(
             IMediaPlayer mediaPlayer,
             IUriOpener uriOpener,
+            IAnalytics analytics,
             IChangeTrackLanguageAction changeTrackLanguageAction,
             IUpdateExternalRelationsAction updateExternalRelationsAction) : base(mediaPlayer)
         {
             _uriOpener = uriOpener;
+            _analytics = analytics;
             _updateExternalRelationsAction = updateExternalRelationsAction;
 
             _updateExternalRelationsAction.AttachDataContext(this);
@@ -146,7 +150,11 @@ namespace BMM.Core.ViewModels
 
         public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
 
-        private void OpenLyricsLink() => _uriOpener.OpenUri(new Uri(SongTreasureLink));
+        private void OpenLyricsLink()
+        {
+            _uriOpener.OpenUri(new Uri(SongTreasureLink));
+            _analytics.LogEvent(Event.LyricsOpened);
+        }
 
         public void Prepare(bool showPlayer)
         {

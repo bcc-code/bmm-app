@@ -152,7 +152,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginBottom="23dp"
-           app:MvxBind="Visibility Visibility(ShowShuffleButton)">
+           app:MvxBind="Visibility Visibility(ShowShuffleOrResumeButton)">
           <Button
                   android:id="@+id/shuffle_button"
                   android:text="Shuffle"
@@ -160,8 +160,10 @@
                   android:drawableLeft="@drawable/icon_play_button"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  app:MvxLang="Text DocumentsViewModel_Shuffle"
-                  app:MvxBind="Click ShufflePlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
+                  app:MvxBind="
+                    Click ShufflePlayCommand;
+                    Visibility InvertedVisibility(IsEmpty);
+                    Text ShowShuffleOrResumeText" />
         </RelativeLayout>
         <RelativeLayout
                 android:layout_width="wrap_content"

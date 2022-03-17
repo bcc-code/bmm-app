@@ -12,9 +12,15 @@ namespace BMM.Core.ValueConverters
         protected override IMvxCommand Convert(CellWrapperViewModel<Document> value, Type targetType, object parameter, CultureInfo culture)
         {
             var viewModel = value.ViewModel;
-            var item = value.Item;
 
-            return new MvxCommand(() => viewModel.ShowTrackInfoCommand.Execute((Track)item));
+            var trackItem = value.Item switch
+            {
+                Track track => track,
+                ContinueListeningTile continueListeningTile => continueListeningTile.Track,
+                _ => null
+            };
+
+            return new MvxCommand(() => viewModel.ShowTrackInfoCommand.Execute(trackItem));
         }
     }
 }

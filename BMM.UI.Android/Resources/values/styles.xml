@@ -181,12 +181,26 @@
     <style name="Subtitle3_Label3" parent="Subtitle3">
         <item name="android:textColor">@color/label_tertiary_color</item>
     </style>
+    
+    <style name="Subtitle3_OnColor1" parent="Subtitle3">
+        <item name="android:textColor">@color/on_color_one_color</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="Subtitle3_OnColor2" parent="Subtitle3">
+        <item name="android:textColor">@color/on_color_two_color</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
 
     <style name="Title1">
         <item name="android:textSize">18sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">700</item>
         <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+    
+    <style name="Title1_OnColor1" parent="Title1">
+        <item name="android:textColor">@color/on_color_one_color</item>
     </style>
 
     <style name="Title2">
@@ -215,6 +229,11 @@
         <item name="android:lineHeight">28sp</item>
         <item name="android:textFontWeight">500</item>
         <item name="android:textColor">@color/label_secondary_color</item>
+    </style>
+
+    <style name="Paragraph1_OnColor2" parent="Paragraph1">
+        <item name="android:textColor">@color/on_color_two_color</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
     <style name="Paragraph2">
