@@ -21,12 +21,7 @@
     "MessagePerfect": "O săptămână perfectă! Foarte bine!",
     "PerfectWeekCountSingular": "{0} săptămână perfectă",
     "PerfectWeekCountPlural": "{0} săptămâni perfecte",
-    "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte",
-    "WeekdayMonday": "L",
-    "WeekdayTuesday": "M",
-    "WeekdayWednesday": "M",
-    "WeekdayThursday": "J",
-    "WeekdayFriday": "V"
+    "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nu s-a putut deschide linkul",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Play-list",
     "ShufflePlay": "Amestecă",
+    "Resume": "Resume",
     "AvailableOffline": "Disponibile în modul off-line",
     "AvailableOfflineDownload": "Descarcă",
     "AvailableOfflineDownloading": "Se descarcă {0} din {1}",
