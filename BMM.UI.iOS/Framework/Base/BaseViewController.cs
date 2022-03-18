@@ -3,7 +3,6 @@ using System.ComponentModel;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
-using BMM.UI.iOS.NewMediaPlayer;
 using Foundation;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
@@ -12,6 +11,7 @@ namespace BMM.UI.iOS
 {
     public abstract class BaseViewController<TViewModel> : MvxViewController<TViewModel>, IBaseViewController where TViewModel : BaseViewModel
     {
+        private bool SupportsNavigationBarSeparator => UIDevice.CurrentDevice.CheckSystemVersion(14, 0);
         public abstract Type ParentViewControllerType { get; }
 
         public BaseViewController(string nib)
@@ -43,7 +43,10 @@ namespace BMM.UI.iOS
             {
                 ForegroundColor = AppColors.LabelPrimaryColor
             };
-            appearance.ShadowColor = AppColors.SeparatorColor;
+            
+            appearance.ShadowColor = SupportsNavigationBarSeparator
+                ? AppColors.SeparatorColor
+                : UIColor.Clear;
             
             NavigationController.NavigationBar.StandardAppearance = appearance;
             

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using BMM.Api.Implementation.Models.Interfaces;
 
 namespace BMM.Api.Implementation.Models
 {

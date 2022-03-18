@@ -6,6 +6,7 @@ using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Extensions;
 using UIKit;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Interfaces;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Helpers;
 

@@ -23,11 +23,6 @@ namespace BMM.Core.Translation
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
 		public const string Streak_PerfectWeekCountPlural = nameof(Streak_PerfectWeekCountPlural);
 		public const string Streak_PerfectWeekCountNone = nameof(Streak_PerfectWeekCountNone);
-		public const string Streak_WeekdayMonday = nameof(Streak_WeekdayMonday);
-		public const string Streak_WeekdayTuesday = nameof(Streak_WeekdayTuesday);
-		public const string Streak_WeekdayWednesday = nameof(Streak_WeekdayWednesday);
-		public const string Streak_WeekdayThursday = nameof(Streak_WeekdayThursday);
-		public const string Streak_WeekdayFriday = nameof(Streak_WeekdayFriday);
 		public const string DeepLinkHandler_ErrorTitle = nameof(DeepLinkHandler_ErrorTitle);
 		public const string DeepLinkHandler_ErrorMessage = nameof(DeepLinkHandler_ErrorMessage);
 		public const string RequestExceptionHandler_RequestFailedMessage = nameof(RequestExceptionHandler_RequestFailedMessage);
@@ -238,6 +233,7 @@ namespace BMM.Core.Translation
 		public const string DocumentsViewModel_Play = nameof(DocumentsViewModel_Play);
 		public const string TrackCollectionViewModel_Title = nameof(TrackCollectionViewModel_Title);
 		public const string TrackCollectionViewModel_ShufflePlay = nameof(TrackCollectionViewModel_ShufflePlay);
+		public const string TrackCollectionViewModel_Resume = nameof(TrackCollectionViewModel_Resume);
 		public const string TrackCollectionViewModel_AvailableOffline = nameof(TrackCollectionViewModel_AvailableOffline);
 		public const string TrackCollectionViewModel_AvailableOfflineDownload = nameof(TrackCollectionViewModel_AvailableOfflineDownload);
 		public const string TrackCollectionViewModel_AvailableOfflineDownloading = nameof(TrackCollectionViewModel_AvailableOfflineDownloading);

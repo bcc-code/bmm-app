@@ -30,7 +30,8 @@ namespace BMM.UI.iOS
                 InfoMessageTableViewCell.Key,
                 AslaksenTableViewCell.Key,
                 BMMRadioTableViewCell.Key,
-                SimpleMarginTableViewCell.Key
+                SimpleMarginTableViewCell.Key,
+                ContinueListeningCollectionTableViewCell.Key
             };
 
             foreach (string nibName in nibNames)
@@ -117,6 +118,10 @@ namespace BMM.UI.iOS
                 
                 case DocumentType.SimpleMargin:
                     nibName = SimpleMarginTableViewCell.Key;
+                    break;
+                
+                case DocumentType.ContinueListeningCollection:
+                    nibName = ContinueListeningCollectionTableViewCell.Key;
                     break;
             }
 

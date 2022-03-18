@@ -1,4 +1,4 @@
-namespace BMM.Api.Implementation.Models
+namespace BMM.Api.Implementation.Models.Interfaces
 {
     public interface ITranslationDetailsHolder
     {

@@ -13,5 +13,8 @@
         public const string TrackHasBeenDownloaded = "Track has been downloaded";
         public const string ViewModelOpenedFormat = "{0} opened";
         public const string EmptyPlayer = "Empty player";
+        public const string AlbumResumed = "Album resumed";
+        public const string LyricsOpened = "Lyrics opened";
+        public const string TrackLanguageChanged = "Track language changed";
     }
 }

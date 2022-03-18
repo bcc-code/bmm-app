@@ -4,6 +4,8 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Translation;
+using BMM.Core.ViewModels.Interfaces;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
@@ -47,7 +49,8 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleButton => false;
+        public bool ShowShuffleOrResumeButton => false;
+        public string ShowShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
         public bool ShowPlayButton => true;
 
         public bool ShowTrackCount => true;

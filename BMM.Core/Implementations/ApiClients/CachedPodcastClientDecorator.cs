@@ -59,5 +59,10 @@ namespace BMM.Core.Implementations.ApiClients
         {
             return _client.GetRandomTrack(podcastId);
         }
+
+        public Task<IList<Track>> GetShuffle(int podcastId)
+        {
+            return _client.GetShuffle(podcastId);
+        }
     }
 }

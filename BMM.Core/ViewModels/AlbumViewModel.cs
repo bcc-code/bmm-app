@@ -6,16 +6,20 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using BMM.Api.Abstraction;
+using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Translation;
+using BMM.Core.ViewModels.Interfaces;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, ITrackListViewModel
+    public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, IAlbumViewModel
     {
+        private readonly IResumeOrShufflePlayAction _resumeOrShufflePlayAction;
         private int _id;
 
         /// <summary>
@@ -25,7 +29,10 @@ namespace BMM.Core.ViewModels
 
         public IMvxCommand ShareCommand { get; }
 
+        public override IMvxCommand ShufflePlayCommand => _resumeOrShufflePlayAction.Command;
+
         private Album _album;
+
         public Album Album
         {
             get => _album;
@@ -36,6 +43,7 @@ namespace BMM.Core.ViewModels
                 RaisePropertyChanged(() => Description);
                 RaisePropertyChanged(() => Image);
                 RaisePropertyChanged(() => ShowImage);
+                RaisePropertyChanged(() => ShowShuffleOrResumeText);
             }
         }
 
@@ -44,8 +52,11 @@ namespace BMM.Core.ViewModels
             return new[] { Album.Id.ToString() };
         }
 
-        public AlbumViewModel(IShareLink shareLink)
+        public AlbumViewModel(IShareLink shareLink, IResumeOrShufflePlayAction resumeOrShufflePlayAction)
         {
+            _resumeOrShufflePlayAction = resumeOrShufflePlayAction;
+            _resumeOrShufflePlayAction.AttachDataContext(this);
+            
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddAlbumToTrackCollection(Album.Id));
             ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.For(_album));
 
@@ -90,7 +101,7 @@ namespace BMM.Core.ViewModels
         public override async Task Load()
         {
             await base.Load();
-            await RaisePropertyChanged(() => ShowShuffleButton);
+            await RaisePropertyChanged(() => ShowShuffleOrResumeButton);
         }
 
         public string ReadableDuration(long durationInMilliseconds)
@@ -123,7 +134,7 @@ namespace BMM.Core.ViewModels
 
         private void UpdateView(object sender, NotifyCollectionChangedEventArgs e)
         {
-            RaisePropertyChanged(() => ShowShuffleButton);
+            RaisePropertyChanged(() => ShowShuffleOrResumeButton);
         }
 
         public bool ShowSharingInfo => false;
@@ -143,7 +154,17 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleButton => Documents.OfType<Track>().Any();
+        public bool ShowShuffleOrResumeButton => Documents.OfType<Track>().Any();
+        public string ShowShuffleOrResumeText => GetShowShuffleOrResumeText();
+
+        private string GetShowShuffleOrResumeText()
+        {
+            if (Album != null && Album.LatestTrackId.HasValue)
+                return TextSource[Translations.TrackCollectionViewModel_Resume];
+            
+            return TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
+        }
+
         public bool ShowPlayButton => false;
 
         public bool ShowTrackCount => true;

@@ -47,4 +47,10 @@
     <color name="radio_color">#E12D59</color>
     <color name="highlight_color">#8DA0B5</color>
     <color name="separator_color">#26000C1A</color>
+    <color name="tile_default_color">#E6EEF3</color>
+    <color name="on_color_one_color">#0D131A</color>
+    <color name="on_color_two_color">#B30D131A</color>
+    <color name="on_color_three_color">#800D131A</color>
+    <color name="on_color_four_color">#4D0D131A</color>
+    <color name="on_color_five_color">#1A0D131A</color>
 </resources>

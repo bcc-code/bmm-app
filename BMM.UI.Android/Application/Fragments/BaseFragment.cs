@@ -15,6 +15,7 @@ using AndroidX.RecyclerView.Widget;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.ViewModels;
+using BMM.Core.ViewModels.Interfaces;
 using BMM.UI.Droid.Application.Extensions;
 using Google.Android.Material.AppBar;
 using MvvmCross;

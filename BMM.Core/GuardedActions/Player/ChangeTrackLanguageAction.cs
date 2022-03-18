@@ -6,6 +6,7 @@ using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Interfaces;
@@ -18,15 +19,18 @@ namespace BMM.Core.GuardedActions.Player
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IMvxNavigationService _mvxNavigationService;
         private readonly ITracksClient _tracksClient;
+        private readonly IAnalytics _analytics;
 
         public ChangeTrackLanguageAction(
             IMediaPlayer mediaPlayer,
             IMvxNavigationService mvxNavigationService,
-            ITracksClient tracksClient)
+            ITracksClient tracksClient,
+            IAnalytics analytics)
         {
             _mediaPlayer = mediaPlayer;
             _mvxNavigationService = mvxNavigationService;
             _tracksClient = tracksClient;
+            _analytics = analytics;
         }
         
         private IPlayerViewModel PlayerViewModel => this.GetDataContext();
@@ -40,6 +44,7 @@ namespace BMM.Core.GuardedActions.Player
 
             var track = await _tracksClient.GetById(_mediaPlayer.CurrentTrack.Id, selectedLang);
             await _mediaPlayer.ReplaceTrack(track);
+            _analytics.LogEvent(Event.TrackLanguageChanged);
         }
 
         protected override bool CanExecute()

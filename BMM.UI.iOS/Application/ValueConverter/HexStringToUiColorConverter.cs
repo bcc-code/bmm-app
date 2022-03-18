@@ -6,12 +6,17 @@ using Xamarin.Essentials;
 
 namespace BMM.UI.iOS
 {
-    public class HexStringToUiColorConverter: MvxValueConverter<string, UIColor>
+    public class HexStringToUiColorConverter : MvxValueConverter<string, UIColor>
     {
         protected override UIColor Convert(string value, Type targetType, object parameter, CultureInfo culture)
         {
             if (string.IsNullOrEmpty(value))
+            {
+                if (parameter is UIColor defaultColor)
+                    return defaultColor;
+                
                 return UIColor.Clear;
+            }
 
             var systemColor = ColorConverters.FromHex(value);
 

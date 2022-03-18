@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mvvmcross.droidx.recyclerview.MvxRecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ContinueListeningCarouselCollectionRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/horizontal_scrolling_continue_listening_collection_height"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:layout_marginBottom="@dimen/margin_small"
+        local:MvxItemTemplate="@layout/listitem_continue_listening"
+        local:MvxBind="
+            ItemsSource DocumentList(Item.ContinueListeningElements, ViewModel);
+            ItemClick ViewModel.DocumentSelectedCommand" />

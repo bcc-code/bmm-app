@@ -75,19 +75,19 @@
             android:id="@+id/downloadedIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Visibility Visibility(DownloadStatusPending(.))" />
+            local:MvxBind="Visibility Visibility(DownloadStatusPending(Item))" />
         <ProgressBar
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:indeterminate="true"
             android:indeterminateDrawable="@drawable/spinner_small"
-            local:MvxBind="Visibility Visibility(DownloadStatusProgress(.))" />
+            local:MvxBind="Visibility Visibility(DownloadStatusProgress(Item))" />
         <ImageView
             android:src="@drawable/icon_download_done"
             android:id="@+id/downloadedIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Visibility Visibility(DownloadStatusDone(.))" />
+            local:MvxBind="Visibility Visibility(DownloadStatusDone(Item))" />
     </LinearLayout>
 
     <ImageView

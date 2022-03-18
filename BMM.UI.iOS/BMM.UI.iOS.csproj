@@ -538,10 +538,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.xib" />
+    <InterfaceDefinition Include="Application\CustomViews\ProgressBarView.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\AslaksenTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\BMMRadioTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ChapterHeaderTableViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\FraKaareTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\InfoMessageTableViewCell.xib" />
@@ -593,6 +596,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
+    <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.designer.cs">
+      <DependentUpon>ContinueListeningCollectionViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
@@ -601,6 +608,8 @@
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\LeftImageButton.cs" />
+    <Compile Include="Application\CustomViews\ProgressBarView.cs" />
+    <Compile Include="Application\CustomViews\ProgressBarView.designer.cs" />
     <Compile Include="Application\CustomViews\Separator.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
     <Compile Include="Application\Delegates\CustomUIAdaptivePresentationControllerDelegate.cs" />
@@ -669,6 +678,10 @@
     </Compile>
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.designer.cs" />
+    <Compile Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.designer.cs">
+      <DependentUpon>ContinueListeningCollectionTableViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.designer.cs">
       <DependentUpon>DiscoverSectionHeaderTableViewCell.cs</DependentUpon>
@@ -1022,6 +1035,7 @@
     <Compile Include="Utils\ColorPalette\PixelColor.cs" />
     <Compile Include="Utils\ColorPalette\YUVColor.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
+    <Compile Include="Utils\NibLoader.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Compile Include="Utils\ColorPalette\ColorPaletteGenerator.cs" />
     <Compile Include="Utils\ViewUtils.cs" />
@@ -1079,7 +1093,13 @@
   <ItemGroup>
     <ImageAsset Include="Resources\Colors.xcassets\HighlightColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColorReverted.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnColorFiveColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnColorFourColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnColorOneColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnColorThreeColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnColorTwoColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\SeparatorColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\TileDefaultColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
@@ -1094,6 +1114,8 @@
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends.png" />
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownloadMini.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownloadMini.imageset\icon_download.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\icon_edit.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\Contents.json" />
@@ -1102,6 +1124,8 @@
     <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\icon_info.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\icon_link.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconOptions.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconOptions.imageset\Option.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\icon_pause.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\Contents.json" />

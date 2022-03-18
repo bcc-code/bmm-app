@@ -20,6 +20,7 @@ using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
+using BMM.Core.ViewModels.Interfaces;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Commands;
@@ -28,7 +29,7 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels.Base
 {
-    public abstract class DocumentsViewModel : BaseViewModel
+    public abstract class DocumentsViewModel : BaseViewModel, IDocumentsViewModel
     {
         private IBlobCache _blobCache;
         private bool _isRefreshing;
@@ -79,7 +80,7 @@ namespace BMM.Core.ViewModels.Base
             set => SetProperty(ref _isInitialized, value);
         }
 
-        public IMvxCommand ShufflePlayCommand { get; private set; }
+        public virtual IMvxCommand ShufflePlayCommand { get; private set; }
 
         public IMvxCommand PlayCommand { get; private set; }
 

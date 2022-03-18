@@ -17,16 +17,10 @@ namespace BMM.UI.iOS
 		UIKit.UIView FridayColorView { get; set; }
 
 		[Outlet]
-		UIKit.UILabel FridayLabel { get; set; }
-
-		[Outlet]
 		UIKit.UIView FridayView { get; set; }
 
 		[Outlet]
 		UIKit.UIView MondayColorView { get; set; }
-
-		[Outlet]
-		UIKit.UILabel MondayLabel { get; set; }
 
 		[Outlet]
 		UIKit.UIView MondayView { get; set; }
@@ -41,25 +35,16 @@ namespace BMM.UI.iOS
 		UIKit.UIView ThursdayColorView { get; set; }
 
 		[Outlet]
-		UIKit.UILabel ThursdayLabel { get; set; }
-
-		[Outlet]
 		UIKit.UIView ThursdayView { get; set; }
 
 		[Outlet]
 		UIKit.UIView TuesdayColorView { get; set; }
 
 		[Outlet]
-		UIKit.UILabel TuesdayLabel { get; set; }
-
-		[Outlet]
 		UIKit.UIView TuesDayView { get; set; }
 
 		[Outlet]
 		UIKit.UIView WednesdayColorView { get; set; }
-
-		[Outlet]
-		UIKit.UILabel WednesdayLabel { get; set; }
 
 		[Outlet]
 		UIKit.UIView WednesdayView { get; set; }
@@ -124,31 +109,6 @@ namespace BMM.UI.iOS
 			if (WednesdayView != null) {
 				WednesdayView.Dispose ();
 				WednesdayView = null;
-			}
-
-			if (MondayLabel != null) {
-				MondayLabel.Dispose ();
-				MondayLabel = null;
-			}
-
-			if (TuesdayLabel != null) {
-				TuesdayLabel.Dispose ();
-				TuesdayLabel = null;
-			}
-
-			if (WednesdayLabel != null) {
-				WednesdayLabel.Dispose ();
-				WednesdayLabel = null;
-			}
-
-			if (ThursdayLabel != null) {
-				ThursdayLabel.Dispose ();
-				ThursdayLabel = null;
-			}
-
-			if (FridayLabel != null) {
-				FridayLabel.Dispose ();
-				FridayLabel = null;
 			}
 
 		}

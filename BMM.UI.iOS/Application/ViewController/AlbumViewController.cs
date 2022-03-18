@@ -1,14 +1,10 @@
 using System;
 using System.ComponentModel;
-using BMM.Core.Implementations.UI;
-using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
-using MvvmCross;
-using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
 
@@ -39,8 +35,8 @@ namespace BMM.UI.iOS
             set.Bind(TitleLabel).To(vm => vm.Album.Title);
             set.Bind(DescriptionLabel).To(vm => vm.Album.Description);
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.AlbumViewModel_ShufflePlay);
-            set.Bind(ShuffleButton).For(v => v.Hidden).To(vm => vm.ShowShuffleButton).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.ShowShuffleOrResumeText);
+            set.Bind(ShuffleButton).For(v => v.BindVisible()).To(vm => vm.ShowShuffleOrResumeButton);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 
             set.Apply();
@@ -72,10 +68,10 @@ namespace BMM.UI.iOS
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             AlbumTable.ResizeHeaderView();
-            if (e.PropertyName == nameof(AlbumViewModel.ShowShuffleButton))
+            if (e.PropertyName == nameof(AlbumViewModel.ShowShuffleOrResumeButton))
             {
-                StackViewToSeparatorConstraint.Constant = ViewModel.ShowShuffleButton ? StackViewToSeparatorConstraint.Constant : 0;
-                ButtonStackViewHeight.Constant = ViewModel.ShowShuffleButton ? ButtonStackViewHeight.Constant : 0;
+                StackViewToSeparatorConstraint.Constant = ViewModel.ShowShuffleOrResumeButton ? StackViewToSeparatorConstraint.Constant : 0;
+                ButtonStackViewHeight.Constant = ViewModel.ShowShuffleOrResumeButton ? ButtonStackViewHeight.Constant : 0;
             }
         }
 

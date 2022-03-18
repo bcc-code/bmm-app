@@ -28,5 +28,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task<IList<Track>> GetTracks(int podcastId, CachePolicy cachePolicy, int size = ApiConstants.LoadMoreSize, int from = 0);
 
         Task<Track> GetRandomTrack(int podcastId);
+        
+        Task<IList<Track>> GetShuffle(int podcastId);
     }
 }

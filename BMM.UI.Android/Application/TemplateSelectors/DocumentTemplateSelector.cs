@@ -24,6 +24,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int PlaylistsCollection = 18;
         public const int InfoMessage = 19;
         public const int SimpleMargin = 20;
+        public const int ContinueListeningCollection = 21;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<CellWrapperViewModel<Document>>
@@ -67,6 +68,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ViewTypes.SimpleMargin:
                     return Resource.Layout.listitem_simple_margin;
+                
+                case ViewTypes.ContinueListeningCollection:
+                    return Resource.Layout.listitem_continue_listening_collection;
                 
                 default:
                     return Resource.Layout.listitem_track;
@@ -125,6 +129,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case DocumentType.SimpleMargin:
                     return ViewTypes.SimpleMargin;
+                
+                case DocumentType.ContinueListeningCollection:
+                    return ViewTypes.ContinueListeningCollection;
                 
                 default:
                     return ViewTypes.Unknown;
