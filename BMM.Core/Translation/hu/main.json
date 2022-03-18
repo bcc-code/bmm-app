@@ -21,12 +21,7 @@
     "MessagePerfect": "Perfekt hét. Szép munka!",
     "PerfectWeekCountSingular": "{0} perfekt hét",
     "PerfectWeekCountPlural": "{0} perfekt hetek",
-    "PerfectWeekCountNone": "Még nincs perfekt hét",
-    "WeekdayMonday": "H",
-    "WeekdayTuesday": "K",
-    "WeekdayWednesday": "Sz",
-    "WeekdayThursday": "Cs",
-    "WeekdayFriday": "P"
+    "PerfectWeekCountNone": "Még nincs perfekt hét"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nem lehet a linket megnyitni",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Lejátszási lista",
     "ShufflePlay": "Keverés",
+    "Resume": "Resume",
     "AvailableOffline": "Offline elérhető",
     "AvailableOfflineDownload": "Letöltés",
     "AvailableOfflineDownloading": "Letöltés {0} / {1}",

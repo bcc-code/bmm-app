@@ -21,12 +21,7 @@
     "MessagePerfect": "En perfekt uke. Bra gjort!",
     "PerfectWeekCountSingular": "{0} perfekt uke",
     "PerfectWeekCountPlural": "{0} perfekte uker",
-    "PerfectWeekCountNone": "Ingen perfekt uke så langt",
-    "WeekdayMonday": "M",
-    "WeekdayTuesday": "T",
-    "WeekdayWednesday": "O",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "PerfectWeekCountNone": "Ingen perfekt uke så langt"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Kan ikke åpne lenken",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
     "ShufflePlay": "Shuffle",
+    "Resume": "Resume",
     "AvailableOffline": "Tilgjengelig offline",
     "AvailableOfflineDownload": "Last ned",
     "AvailableOfflineDownloading": "Laster ned {0} av {1}",

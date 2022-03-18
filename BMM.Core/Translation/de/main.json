@@ -21,12 +21,7 @@
     "MessagePerfect": "Eine perfekte Woche. Gut gemacht!",
     "PerfectWeekCountSingular": "{0} perfekte Woche",
     "PerfectWeekCountPlural": "{0} perfekte Wochen",
-    "PerfectWeekCountNone": "Noch keine perfekte Woche",
-    "WeekdayMonday": "M",
-    "WeekdayTuesday": "D",
-    "WeekdayWednesday": "M",
-    "WeekdayThursday": "D",
-    "WeekdayFriday": "F"
+    "PerfectWeekCountNone": "Noch keine perfekte Woche"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Link konnte nicht geöffnet werden",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Playlist",
     "ShufflePlay": "Shuffle",
+    "Resume": "Resume",
     "AvailableOffline": "Offline verfügbar",
     "AvailableOfflineDownload": "Herunterladen",
     "AvailableOfflineDownloading": "noch {0} von {1} Downloads",
