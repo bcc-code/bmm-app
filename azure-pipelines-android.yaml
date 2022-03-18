@@ -1,0 +1,211 @@
+pool:
+  name: Azure Pipelines
+  vmImage: 'windows-2022'
+  demands:
+    - npm
+    - msbuild
+    - MSBuild
+    - Xamarin.Android
+    - JDK
+
+trigger:
+  branches:
+    include:
+      - develop
+      - main
+      - release/*
+      - hotfix/*
+  paths:
+    exclude:
+      - docs
+      - docs/*
+
+steps:
+  - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+    displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
+    inputs:
+      targetFiles: |
+        **/GlobalConstants.cs
+        **/TestSecrets.cs
+      actionOnMissing: fail
+
+  - bash: |
+      URL="https://bmm-api.brunstad.org/AppVersion/AndroidVersionCode"
+
+      VERSIONCODE=$(curl -k --user $(bmmApiCredentials) $URL)
+
+      echo "Receive version: $((VERSIONCODE))"
+
+      echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
+    displayName: 'Get  VersionCode'
+
+  - bash: |
+      let VERSIONCODE=++VERSIONCODE
+      
+      echo "New version set to: $((VERSIONCODE))"
+      
+      echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
+    displayName: 'Increment VersionCode'
+
+  - bash: |
+      url="https://bmm-api.brunstad.org/AppVersion/AndroidVersionInfo"
+  
+      versionInfo=$(curl -k --user $(bmmApiCredentials) $url)
+  
+      echo "Receive version info: $versionInfo"
+      echo "##vso[task.setvariable variable=VersionInfo]$versionInfo"
+    displayName: 'Get version info'
+
+  - task: Bash@3
+    inputs:
+      filePath: 'version-info.sh'
+    displayName: 'Construct new version number'
+  
+  ## We don't update later because that would result in the same version number for parallel builds.
+  ## skipping versions in case of build errors is more acceptable than not being able to run builds in parallel.
+  - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
+    displayName: 'Rest call PUT AppVersion/AndroidVersionCode'
+    inputs:
+      webserviceEndpoint: 'BMM Api (Basic Auth)'
+      relativeUrl: AppVersion/AndroidVersionCode
+      httpVerb: PUT
+      body: '$(VersionCode)'
+      headers: |
+        {
+          "Content-Length": "6",
+          "Authorization": "$(bmmApiBasicAuth)"
+        }
+
+  - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
+    displayName: 'Rest call PUT AppVersion/AndroidVersionInfo'
+    inputs:
+      webserviceEndpoint: 'BMM Api (Basic Auth)'
+      relativeUrl: AppVersion/AndroidVersionInfo
+      httpVerb: PUT
+      body: '$(VersionInfo_String)'
+      headers: |
+        {
+          "Content-Length": "$(VersionInfo_Length)",
+          "Authorization": "$(bmmApiBasicAuth)"
+        }
+
+  - bash: |
+      pattern="DEV"
+      replacement=$(VersionNumber)
+      echo "new version number is $replacement"
+      sed -i.bak s/$pattern/$replacement/ GlobalConstants.cs
+      rm -f GlobalConstants.cs.bak
+    workingDirectory: BMM.Core/Helpers
+    displayName: 'Update AppVersion in GlobalConstants'
+
+  - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0
+    displayName: 'Set Version Code in AndroidManifest.xml'
+    inputs:
+      sourcePath: BMM.UI.Android/Properties/AndroidManifest.xml
+      versionCode: '$(VersionCode)'
+      versionName: '$(VersionNumber)'
+
+  - task: DeleteFiles@1
+    displayName: 'Delete files from '
+    inputs:
+      Contents: |
+        **/bin
+        **/obj
+
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 5.8.0'
+    inputs:
+      versionSpec: 5.8.0
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: '*.sln'
+      feedsToUse: config
+      nugetConfigPath: nuget.config
+      restoreDirectory: packages
+
+  - task: MSBuild@1
+    displayName: 'Build solution **/*UITests.csproj'
+    inputs:
+      solution: '**/*UITests.csproj'
+      platform: AnyCPU
+      configuration: Release
+
+  - task: DownloadSecureFile@1
+    name: keystore
+    displayName: 'Download keystore'
+    inputs:
+      secureFile: 'e86cdf1c-08a3-4012-a9c6-216c01d3d81f'
+
+  - task: XamarinAndroid@1
+    displayName: 'Build aab (Android App Bundle)'
+    inputs:
+      projectFile: '*droid*/*Droid*.csproj'
+      outputDirectory: '$(Build.BinariesDirectory)/bin/Release'
+      configuration: Release
+      msbuildVersionOption: latest
+      msbuildArchitectureOption: x64
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+
+  - task: XamarinAndroid@1
+    displayName: 'Build APK'
+    inputs:
+      projectFile: '*droid*/*Droid*.csproj'
+      outputDirectory: '$(Build.BinariesDirectory)/bin/Release'
+      configuration: Release
+      msbuildVersionOption: latest
+      msbuildArchitectureOption: x64
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+
+  - task: AndroidSigning@3
+    displayName: 'Signing and aligning APK file(s) $(Build.BinariesDirectory)/bin/Release/*.apk'
+    inputs:
+      apkFiles: '$(Build.BinariesDirectory)/bin/Release/*.apk'
+      apksignerKeystoreFile: 'keystore.ks'
+      apksignerKeystorePassword: '$(KeystoreSigningPassword)'
+      apksignerKeystoreAlias: 'bmm-brunstad'
+      apksignerKeyPassword: '$(KeystoreSigningPassword)'
+
+  - task: CopyFiles@1
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(Build.BinariesDirectory)/bin/Release'
+      Contents: |
+        *.apk
+        *aab
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      CleanTargetFolder: true
+      flattenFolders: true
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files Release notes'
+    inputs:
+      SourceFolder: 'release-notes'
+      Contents: |
+        $(ReleaseNotesName)
+        test.md
+        generic.md
+      TargetFolder: '$(build.artifactstagingdirectory)'
+      flattenFolders: true
+
+  - task: NodeTool@0
+    displayName: 'Use Node 10.x to run appcenter cmd'
+    inputs:
+      versionSpec: 10.x
+
+  - task: AppCenterTest@1
+    displayName: 'Prepare AppCenter Tests'
+    inputs:
+      appFile: '$(Build.BinariesDirectory)/bin/Release/org.brunstad.bmm.apk'
+      frameworkOption: uitest
+      uiTestBuildDirectory: '$(Build.SourcesDirectory)/BMM.Tests/BMM.UITests/bin/Release'
+      runTests: false
+      showDebugOutput: true
+    continueOnError: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+      ArtifactName: BMM.Droid

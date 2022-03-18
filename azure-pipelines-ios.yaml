@@ -1,0 +1,227 @@
+pool:
+  name: Azure Pipelines
+  vmImage: 'macOS-latest'
+  demands:
+    - xcode
+    - msbuild
+    - Xamarin.iOS
+
+trigger:
+  branches:
+    include:
+      - develop
+      - main
+      - release/*
+      - hotfix/*
+  paths:
+    exclude:
+      - docs
+      - docs/*
+
+variables:
+    - name: signingIdentity
+      value: 'iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)'
+    - name: signingProvisioningProfileID
+      value: '7aa6caac-4848-4828-8656-35706723e182'
+    - group: 'AppleCertificate'
+
+steps:
+  - task: InstallAppleCertificate@2
+    displayName: 'Install an Apple certificate'
+    inputs:
+      certSecureFile: '$(P12File)'
+      certPwd: '$(P12Password)'
+
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install an Apple provisioning profile for Distribution'
+    inputs:
+      provProfileSecureFile: 'BMM_Provisioning_Profile_2021.mobileprovision'
+
+  - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+    displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
+    inputs:
+      targetFiles: |
+        **/GlobalConstants.cs
+        **/TestSecrets.cs
+      actionOnMissing: fail
+      keepToken: true
+
+  - bash: |
+      /bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_12_7"
+      xcodeRoot=/Applications/Xcode_12.4.app
+      /bin/bash -c "echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'${xcodeRoot};sudo xcode-select --switch ${xcodeRoot}/Contents/Developer"
+    displayName: 'Force SDK and Xcode version'
+    enabled: false
+
+  - bash: |
+      URL="https://bmm-api.brunstad.org/AppVersion/iOSVersionCode"
+      
+      VERSIONCODE=$(curl -k --user $(bmmApiCredentials) $URL)
+      
+      echo "Receive version: $((VERSIONCODE))"
+      
+      echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
+    displayName: 'Get  IOS VersionCode'
+
+  - bash: |
+      let VERSIONCODE=++VERSIONCODE
+      
+      echo "New version set to: $((VERSIONCODE))"
+      
+      echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
+    displayName: 'Increment IOS VersionCode'
+
+  - bash: |
+      url="https://bmm-api.brunstad.org/AppVersion/iOSVersionInfo"
+      
+      versionInfo=$(curl -k --user $(bmmApiCredentials) $url)
+      
+      echo "Receive version info: $versionInfo"
+      echo "##vso[task.setvariable variable=VersionInfo]$versionInfo"
+    displayName: 'Get version info'
+
+  - task: Bash@3
+    inputs:
+      filePath: 'version-info.sh'
+    displayName: 'Construct new version number'
+
+## We don't update later because that would result in the same version number for parallel builds.
+## skipping versions in case of build errors is more acceptable than not being able to run builds in parallel.
+  - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
+    displayName: 'Rest call PUT AppVersion/iOSVersionCode'
+    inputs:
+      webserviceEndpoint: 'BMM Api (Basic Auth)'
+      relativeUrl: AppVersion/iOSVersionCode
+      httpVerb: PUT
+      body: '$(VersionCode)'
+      headers: |
+        {
+          "Content-Length": "3",
+          "Authorization": "$(bmmApiBasicAuth)"
+        }
+
+  - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
+    displayName: 'Rest call PUT AppVersion/iOSVersionInfo'
+    inputs:
+      webserviceEndpoint: 'BMM Api (Basic Auth)'
+      relativeUrl: AppVersion/iOSVersionInfo
+      httpVerb: PUT
+      body: '$(VersionInfo_String)'
+      headers: |
+        {
+          "Content-Length": "$(VersionInfo_Length)",
+          "Authorization": "$(bmmApiBasicAuth)"
+        }
+
+  - task: vs-publisher-473885.motz-mobile-buildtasks.ios-bundle-version.ios-bundle-version@0
+    displayName: 'Bump iOS Versions in BMM.UI.iOS/Info.plist'
+    inputs:
+      sourcePath: BMM.UI.iOS/Info.plist
+      versionCode: '$(VersionCode)'
+      versionCodeOffset: 0
+      versionName: '$(VersionMajorMinorPatch)'
+
+  - bash: |
+      pattern="DEV"
+      replacement=$(VersionNumber)
+      sed -i.bak s/$pattern/$replacement/ GlobalConstants.cs
+      rm -f GlobalConstants.cs.bak
+    workingDirectory: BMM.Core/Helpers
+    displayName: 'Update AppVersion in GlobalConstants'
+
+  - bash: |
+      echo "username: $userName"
+      
+      /bin/bash -c "echo \"$userName\" > 'BMM.UI.iOS/metadata/review_information/demo_user.txt'"
+      /bin/bash -c "echo \"$password\" > 'BMM.UI.iOS/metadata/review_information/demo_password.txt'"
+    displayName: 'Set demo user'
+    env:
+      userName: $(TEST_USERNAME_PLACEHOLDER)
+      password: $(TEST_PASSWORD_PLACEHOLDER)
+
+  - task: DeleteFiles@1
+    displayName: 'Delete files from '
+    inputs:
+      Contents: |
+        **/bin
+        **/obj
+
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.6.0'
+    inputs:
+      versionSpec: 5.6.0
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+    inputs:
+      restoreSolution: '*.sln'
+      feedsToUse: config
+      nugetConfigPath: nuget.config
+      restoreDirectory: packages
+
+  - task: MSBuild@1
+    displayName: 'Build solution **/*UITests.csproj'
+    inputs:
+      solution: '**/*UITests.csproj'
+      platform: AnyCPU
+
+  - task: XamariniOS@2
+    displayName: 'Build Xamarin.iOS solution BMM.UI.iOS/BMM.UI.iOS.csproj'
+    inputs:
+      solutionFile: BMM.UI.iOS/BMM.UI.iOS.csproj
+      clean: true
+      signingIdentity: '$(signingIdentity)'
+      signingProvisioningProfileID: '$(signingProvisioningProfileID)'
+
+  - task: XamariniOS@2
+    displayName: 'Build Xamarin.iOS solution for UI Test'
+    inputs:
+      solutionFile: BMM.UI.iOS/BMM.UI.iOS.csproj
+      configuration: Debug
+      clean: true
+      signingIdentity: '$(signingIdentity)'
+      signingProvisioningProfileID: '$(signingProvisioningProfileID)'
+      
+  - task: ArchiveFiles@1
+    displayName: 'Create dSYM archive with symbols '
+    inputs:
+      rootFolder: 'BMM.UI.iOS/bin/iPhone/Release/BMM.app.dSYM'
+      archiveFile: '$(Build.ArtifactStagingDirectory)/BMM.app.dSYM.zip'
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)'
+      Contents: '**/*.ipa'
+      TargetFolder: '$(build.artifactstagingdirectory)'
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files Release notes'
+    inputs:
+      SourceFolder: 'release-notes'
+      Contents: |
+        $(ReleaseNotesName)
+        test.md
+        generic.md
+      TargetFolder: '$(build.artifactstagingdirectory)'
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files metadata'
+    inputs:
+      SourceFolder: BMM.UI.iOS/metadata
+      Contents: '*/*'
+      TargetFolder: '$(build.artifactstagingdirectory)/metadata'
+
+  - task: AppCenterTest@1
+    displayName: 'Prepare AppCenter Tests'
+    inputs:
+      appFile: '$(build.artifactstagingdirectory)/**/Debug/*.ipa'
+      frameworkOption: uitest
+      uiTestBuildDirectory: '$(Build.SourcesDirectory)/BMM.Tests/BMM.UITests/bin/Debug'
+      runTests: false
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: BMM.IOS'
+    inputs:
+      PathtoPublish: '$(build.artifactstagingdirectory)'
+      ArtifactName: BMM.IOS
