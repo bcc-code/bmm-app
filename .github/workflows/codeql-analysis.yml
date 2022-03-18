@@ -12,18 +12,26 @@
 name: "CodeQL"
 
 on:
-  push:
-    branches: [ develop, main ]
-  pull_request:
-    # The branches below must be a subset of the branches above
-    branches: [ develop ]
-  schedule:
-    - cron: '36 22 * * 5'
+    workflow_dispatch
+#   push:
+#     branches: [ develop, main ]
+#   pull_request:
+#     # The branches below must be a subset of the branches above
+#     branches: [ develop ]
+#   schedule:
+#     - cron: '36 22 * * 5'
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: windows-2022
+    demands:
+      - npm
+      - msbuild
+      - MSBuild
+      - Xamarin.Android
+      - JDK
+
     permissions:
       actions: read
       contents: read
@@ -32,7 +40,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'csharp', 'ruby' ]
+        language: [ 'csharp' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
 
@@ -52,8 +60,90 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v1
+#     - name: Autobuild
+#       uses: github/codeql-action/autobuild@v1
+    - name: Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs
+      uses: qetza.replacetokens.replacetokens-task.replacetokens@3
+      with:
+        targetFiles: |
+          **/GlobalConstants.cs
+          **/TestSecrets.cs
+        actionOnMissing: fail
+
+    - name: Delete files from
+      uses: DeleteFiles@1
+      with:
+        Contents: |
+          **/bin
+          **/obj
+
+    - name: Use NuGet 5.8.0
+      uses: NuGetToolInstaller@0
+      with:
+        versionSpec: 5.8.0
+
+    - name: NuGet restore
+      uses: NuGetCommand@2
+      with:
+        restoreSolution: '*.sln'
+        feedsToUse: config
+        nugetConfigPath: nuget.config
+        restoreDirectory: packages
+
+    - name: Build solution **/*UITests.csproj
+      uses: MSBuild@1
+      with:
+        solution: '**/*UITests.csproj'
+        platform: AnyCPU
+        configuration: Release
+
+    - name: Download keystore
+      uses: DownloadSecureFile@1
+      with:
+        secureFile: 'e86cdf1c-08a3-4012-a9c6-216c01d3d81f'
+
+    - name: 'Build APK'
+      uses: XamarinAndroid@1
+      with:
+        projectFile: '*droid*/*Droid*.csproj'
+        outputDirectory: '$(Build.BinariesDirectory)/bin/Release'
+        configuration: Release
+        msbuildVersionOption: latest
+        msbuildArchitectureOption: x64
+        msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+
+    - name: 'Copy Files to: $(build.artifactstagingdirectory)'
+      uses: CopyFiles@1
+      with:
+        SourceFolder: '$(Build.BinariesDirectory)/bin/Release'
+        Contents: |
+          *.apk
+          *aab
+        TargetFolder: '$(build.artifactstagingdirectory)'
+        CleanTargetFolder: true
+        flattenFolders: true
+
+    - name: 'Copy Files Release notes'
+      uses: CopyFiles@2
+      with:
+        SourceFolder: 'release-notes'
+        Contents: |
+          $(ReleaseNotesName)
+          test.md
+          generic.md
+        TargetFolder: '$(build.artifactstagingdirectory)'
+        flattenFolders: true
+
+    - uses: NodeTool@0
+      name: 'Use Node 10.x to run appcenter cmd'
+      with:
+        versionSpec: 10.x
+
+    - uses: PublishBuildArtifacts@1
+      name: 'Publish Artifact: drop'
+      with:
+        PathtoPublish: '$(build.artifactstagingdirectory)'
+        ArtifactName: BMM.Droid
 
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 https://git.io/JvXDl
