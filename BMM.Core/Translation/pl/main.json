@@ -21,12 +21,7 @@
     "MessagePerfect": "Perfekcyjny tydzień. Dobra robota!",
     "PerfectWeekCountSingular": "{0} perfekcyjny tydzień",
     "PerfectWeekCountPlural": "{0} perfekcyjnych tygodni",
-    "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
-    "WeekdayMonday": "P",
-    "WeekdayTuesday": "W",
-    "WeekdayWednesday": "Ś",
-    "WeekdayThursday": "C",
-    "WeekdayFriday": "P"
+    "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nie można otworzyć linku",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Playlista",
     "ShufflePlay": "Shuffle",
+    "Resume": "Resume",
     "AvailableOffline": "Dostępne offline",
     "AvailableOfflineDownload": "Pobierz",
     "AvailableOfflineDownloading": "Pobrane {0} z {1}",
