@@ -21,12 +21,7 @@
     "MessagePerfect": "Una semana perfecta. ¡Bien hecho!\n",
     "PerfectWeekCountSingular": "Semanas perfecta",
     "PerfectWeekCountPlural": "Semanas perfecta",
-    "PerfectWeekCountNone": "Sin semanas perfectas, todavía\n",
-    "WeekdayMonday": "L",
-    "WeekdayTuesday": "M",
-    "WeekdayWednesday": "M",
-    "WeekdayThursday": "J",
-    "WeekdayFriday": "V"
+    "PerfectWeekCountNone": "Sin semanas perfectas, todavía\n"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "No puede abrirse el enlace",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Lista de reproducción",
     "ShufflePlay": "Aleatorio",
+    "Resume": "Resume",
     "AvailableOffline": "Disponible sin conexión",
     "AvailableOfflineDownload": "Descarga",
     "AvailableOfflineDownloading": "Descargando {0} de {1}",
