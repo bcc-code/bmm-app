@@ -21,12 +21,7 @@
     "MessagePerfect": "A perfect week. Well done!",
     "PerfectWeekCountSingular": "{0} perfect week",
     "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "WeekdayMonday": "M",
-    "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "PerfectWeekCountNone": "No perfect weeks, yet"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Unable to open link",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Çalma Listesi",
     "ShufflePlay": "Shuffle",
+    "Resume": "Resume",
     "AvailableOffline": "Çevrimdışı musait",
     "AvailableOfflineDownload": "İndir",
     "AvailableOfflineDownloading": "{0}{1} arası İndirilen",
