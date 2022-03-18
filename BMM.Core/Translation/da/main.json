@@ -21,12 +21,7 @@
     "MessagePerfect": "En perfekt uge. Godt gået!",
     "PerfectWeekCountSingular": "{0} perfekt uge",
     "PerfectWeekCountPlural": "{0} perfekte uger",
-    "PerfectWeekCountNone": "Ingen perfekte uger, endnu",
-    "WeekdayMonday": "M",
-    "WeekdayTuesday": "T",
-    "WeekdayWednesday": "O",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "PerfectWeekCountNone": "Ingen perfekte uger, endnu"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Kunne ikke åbne linket",
@@ -313,6 +308,7 @@
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
     "ShufflePlay": "Afspil blandet",
+    "Resume": "Resume",
     "AvailableOffline": "Tilgængelig offline",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "Downloader {0} af {1}",
