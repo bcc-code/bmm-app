@@ -31,15 +31,6 @@ steps:
         **/GlobalConstants.cs
         **/TestSecrets.cs
       actionOnMissing: fail
-  
-  - bash: |
-      echo $(Build.SourceBranch)
-      echo "source branch: $(Build.SourceBranch)"
-      echo "branch name: $(branchName)"
-      BRANCH="$(branchName)"
-      echo "branch: $(BRANCH)"
-      echo "##vso[task.setvariable variable=Branch]$(BRANCH)"
-    displayName: 'Get Branch'
 
   - bash: |
       URL="https://bmm-api.brunstad.org/AppVersion/AndroidVersionCode"

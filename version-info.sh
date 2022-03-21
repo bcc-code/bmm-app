@@ -1,11 +1,11 @@
 #!/bin/bash
 
 versionInfo=$VERSIONINFO
-branch="$(echo $BRANCHNAME)"
+branch=$BRANCHNAME
 
 ## These two lines can be used to run the script locally
 #versionInfo="\"1.12.4.3.0.0\""
-#branch="refs/heads/main"
+#branch="main"
 
 # major.minor.patch.beta.alpha.hotfix-beta
 # develop -> 1.1.0-alpha1      1.0.0.0.1.0
@@ -40,7 +40,7 @@ printPatch=$patch
 
 printRevision=""
 
-if [[ "$branch" == "refs/heads/release/"* ]]
+if [[ "$branch" == "release/"* ]]
   then
     printMinor=$(($printMinor + 1))
     printPatch=0
@@ -48,13 +48,13 @@ if [[ "$branch" == "refs/heads/release/"* ]]
     printRevision="-beta$beta"
     hotfixbeta=0
 
-elif [[ "$branch" == "refs/heads/hotfix/"* ]]
+elif [[ "$branch" == "hotfix/"* ]]
   then
     printPatch=$(($printPatch + 1))
     hotfixbeta=$(($hotfixbeta + 1))
     printRevision="-beta$hotfixbeta"
 
-elif [ "$branch" == "refs/heads/main" ]
+elif [ "$branch" == "main" ]
   then
     if [ "$hotfixbeta" -eq 0 ]
       then
