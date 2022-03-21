@@ -19,5 +19,7 @@ namespace BMM.UI.Droid.Application.Helpers
         /// Older Android versions try to use TLS 1.0 for SSL connection. But often servers require TLS 1.2 or greater therefore causing problems with SSL handshakes.
         /// </summary>
         public bool HasProblemsWithSslHandshakes => _sdkVersion <= BuildVersionCodes.Lollipop;
+
+        public bool SupportsBackgroundActivityRestriction => _sdkVersion >= BuildVersionCodes.P;
     }
 }

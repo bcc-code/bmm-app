@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.App.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
@@ -55,6 +57,7 @@ namespace BMM.Core
         private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
         private readonly SupportVersionChecker _supportVersionChecker;
         private readonly IAccessTokenProvider _accessTokenProvider;
+        private readonly IOnStartAction _onStartAction;
         private Stopwatch _stopwatch;
 
         public AppNavigator(
@@ -71,7 +74,8 @@ namespace BMM.Core
             IMediaPlayer mediaPlayer,
             IRememberedQueueInfoService rememberedQueueInfoService,
             SupportVersionChecker supportVersionChecker,
-            IAccessTokenProvider accessTokenProvider)
+            IAccessTokenProvider accessTokenProvider,
+            IOnStartAction onStartAction)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -87,6 +91,7 @@ namespace BMM.Core
             _rememberedQueueInfoService = rememberedQueueInfoService;
             _supportVersionChecker = supportVersionChecker;
             _accessTokenProvider = accessTokenProvider;
+            _onStartAction = onStartAction;
         }
 
         /// <summary>
@@ -137,7 +142,9 @@ namespace BMM.Core
                     Log("Logged in and online");
                 }
 
-                NavigateAfterLoggedIn().ContinueWith(_ => RestoreMediaQueue());
+                NavigateAfterLoggedIn()
+                    .ContinueWith(_ => RestoreMediaQueue())
+                    .ContinueWith(_ => _onStartAction.ExecuteGuarded());
             }
             else
             {

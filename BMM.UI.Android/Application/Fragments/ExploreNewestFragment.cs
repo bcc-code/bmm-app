@@ -1,4 +1,7 @@
-﻿using Android.Runtime;
+﻿using Android.App;
+using Android.OS;
+using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;

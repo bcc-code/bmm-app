@@ -42,9 +42,6 @@ namespace BMM.Core.ViewModels
         public ExploreRadioViewModel RadioViewModel { get; private set; }
 
         private MvxSubscriptionToken _listeningStreakToken;
-        private ExceptionHandlingCommand<ContinueListeningTile> _continuePlayingCommand;
-        private ExceptionHandlingCommand<ContinueListeningTile> _tileClickedCommand;
-        private ExceptionHandlingCommand<ContinueListeningTile> _shuffleButtonCommand;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,

@@ -226,7 +226,6 @@ namespace BMM.Core
 
             Mvx.IoCProvider.IoCConstruct<ConnectionStatusLogger>();
             InitializeTranslation();
-            RegisterCustomAppStart<AppStart>();
 
             Mvx.IoCProvider.Resolve<IMvxMessenger>()
                 .Subscribe<LoggedOutMessage>(message =>
@@ -262,6 +261,7 @@ namespace BMM.Core
 
             RegisterDynamic(typeof(IBaseGuardedAction));
             RegisterDynamic(typeof(IActionExceptionHandler));
+            RegisterCustomAppStart<AppStart>();
         }
 
         private static void SetupLanguageBinder()
