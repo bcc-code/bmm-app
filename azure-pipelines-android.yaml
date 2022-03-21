@@ -20,6 +20,9 @@ trigger:
       - docs
       - docs/*
 
+variables:
+  branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
+
 steps:
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
@@ -32,7 +35,8 @@ steps:
   - bash: |
       echo $(Build.SourceBranch)
       echo "source branch: $(Build.SourceBranch)"
-      BRANCH="$(Build.SourceBranch)"
+      echo "branch name: $(branchName)"
+      BRANCH="$(branchName)"
       echo "branch: $(BRANCH)"
       echo "##vso[task.setvariable variable=Branch]$(BRANCH)"
     displayName: 'Get Branch'
