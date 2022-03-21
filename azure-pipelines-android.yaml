@@ -30,7 +30,8 @@ steps:
       actionOnMissing: fail
   
   - bash: |
-      BRANCH=$(branch.sourceBranch)
+      echo $(Build.SourceBranch)
+      BRANCH=$(Build.SourceBranch)
       echo "branch: $((BRANCH))"
       echo "##vso[task.setvariable variable=Branch]$((BRANCH))"
     displayName: 'Get Branch'
