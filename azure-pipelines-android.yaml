@@ -20,6 +20,9 @@ trigger:
       - docs
       - docs/*
 
+variables:
+  branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
+
 steps:
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
@@ -28,12 +31,6 @@ steps:
         **/GlobalConstants.cs
         **/TestSecrets.cs
       actionOnMissing: fail
-  
-  - bash: |
-      BRANCH=$(branch.sourceBranch)
-      echo "branch: $((BRANCH))"
-      echo "##vso[task.setvariable variable=Branch]$((BRANCH))"
-    displayName: 'Get Branch'
 
   - bash: |
       URL="https://bmm-api.brunstad.org/AppVersion/AndroidVersionCode"

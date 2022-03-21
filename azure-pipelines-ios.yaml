@@ -23,6 +23,8 @@ variables:
       value: 'iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)'
     - name: signingProvisioningProfileID
       value: '7aa6caac-4848-4828-8656-35706723e182'
+    - name: branchName
+      value: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
     - group: 'AppleCertificate'
 
 steps:
