@@ -1,7 +1,7 @@
 #!/bin/bash
 
 versionInfo=$VERSIONINFO
-branch=$(Build.SourceBranch)
+branch=$BRANCH
 
 ## These two lines can be used to run the script locally
 #versionInfo="\"1.12.4.3.0.0\""

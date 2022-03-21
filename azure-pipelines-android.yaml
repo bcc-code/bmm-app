@@ -28,22 +28,23 @@ steps:
         **/GlobalConstants.cs
         **/TestSecrets.cs
       actionOnMissing: fail
+  
+  - bash: |
+      BRANCH=$(branch.sourceBranch)
+      echo "branch: $((BRANCH))"
+      echo "##vso[task.setvariable variable=Branch]$((BRANCH))"
+    displayName: 'Get Branch'
 
   - bash: |
       URL="https://bmm-api.brunstad.org/AppVersion/AndroidVersionCode"
-
       VERSIONCODE=$(curl -k --user $(bmmApiCredentials) $URL)
-
       echo "Receive version: $((VERSIONCODE))"
-
       echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
-    displayName: 'Get  VersionCode'
+    displayName: 'Get VersionCode'
 
   - bash: |
       let VERSIONCODE=++VERSIONCODE
-      
       echo "New version set to: $((VERSIONCODE))"
-      
       echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
     displayName: 'Increment VersionCode'
 
