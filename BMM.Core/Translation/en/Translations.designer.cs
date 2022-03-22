@@ -18,6 +18,10 @@ namespace BMM.Core.Translation
 		public const string Global_Done = nameof(Global_Done);
 		public const string Global_Today = nameof(Global_Today);
 		public const string Global_Yesterday = nameof(Global_Yesterday);
+		public const string Global_BackgroundActivityRestrictedTitle = nameof(Global_BackgroundActivityRestrictedTitle);
+		public const string Global_BackgroundActivityRestrictedMessage = nameof(Global_BackgroundActivityRestrictedMessage);
+		public const string Global_GoToSettings = nameof(Global_GoToSettings);
+		public const string Global_NotNow = nameof(Global_NotNow);
 		public const string Streak_Message = nameof(Streak_Message);
 		public const string Streak_MessagePerfect = nameof(Streak_MessagePerfect);
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);

@@ -16,5 +16,6 @@
         public const string AlbumResumed = "Album resumed";
         public const string LyricsOpened = "Lyrics opened";
         public const string TrackLanguageChanged = "Track language changed";
+        public const string BackgroundActivityRestrictedPopupShown = "Background Activity restricted popup shown";
     }
 }

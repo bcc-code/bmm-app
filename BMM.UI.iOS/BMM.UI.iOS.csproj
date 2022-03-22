@@ -596,6 +596,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
+    <Compile Include="Application\Actions\OnStartAction.cs" />
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.designer.cs">
       <DependentUpon>ContinueListeningCollectionViewCell.cs</DependentUpon>

@@ -7,5 +7,7 @@
         bool SupportsNavigationBarDividerColor { get; }
 
         bool HasProblemsWithSslHandshakes { get; }
+        
+        bool SupportsBackgroundActivityRestriction { get; }
     }
 }
