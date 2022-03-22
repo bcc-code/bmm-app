@@ -53,6 +53,9 @@ namespace BMM.UI.iOS
 		UIKit.UILabel SubtitleLabel { get; set; }
 
 		[Outlet]
+		UIKit.UIView TitleClickableArea { get; set; }
+
+		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -82,6 +85,16 @@ namespace BMM.UI.iOS
 				DownloadedIcon = null;
 			}
 
+			if (IsPlayingButton != null) {
+				IsPlayingButton.Dispose ();
+				IsPlayingButton = null;
+			}
+
+			if (OptionsButton != null) {
+				OptionsButton.Dispose ();
+				OptionsButton = null;
+			}
+
 			if (PlayButton != null) {
 				PlayButton.Dispose ();
 				PlayButton = null;
@@ -107,11 +120,6 @@ namespace BMM.UI.iOS
 				ShuffleButton = null;
 			}
 
-			if (OptionsButton != null) {
-				OptionsButton.Dispose ();
-				OptionsButton = null;
-			}
-
 			if (SubtitleLabel != null) {
 				SubtitleLabel.Dispose ();
 				SubtitleLabel = null;
@@ -122,9 +130,9 @@ namespace BMM.UI.iOS
 				TitleLabel = null;
 			}
 
-			if (IsPlayingButton != null) {
-				IsPlayingButton.Dispose ();
-				IsPlayingButton = null;
+			if (TitleClickableArea != null) {
+				TitleClickableArea.Dispose ();
+				TitleClickableArea = null;
 			}
 
 		}

@@ -100,6 +100,10 @@ namespace BMM.UI.iOS
                     .For(v => v.CurrentPlayerTrack)
                     .To(vm => ((DocumentsViewModel)vm.ViewModel).CurrentTrack);
 
+                set.Bind(TitleClickableArea)
+                    .For(v => v.BindTap())
+                    .WithConversion<ContinueListeningCommandValueConverter>();
+
                 set.Bind(PlayButton).WithConversion<ContinueListeningCommandValueConverter>();
                 set.Apply();
             });

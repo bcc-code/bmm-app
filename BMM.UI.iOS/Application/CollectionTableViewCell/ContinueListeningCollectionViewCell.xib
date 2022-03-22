@@ -80,13 +80,13 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Td8-cp-Gdn">
-                                <rect key="frame" x="24" y="207" width="206" height="20.5"/>
+                                <rect key="frame" x="24" y="207" width="58.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bu0-bb-AF0">
-                                <rect key="frame" x="24" y="180.5" width="206" height="20.5"/>
+                                <rect key="frame" x="24" y="180.5" width="58.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -158,12 +158,19 @@
                                 <color key="textColor" name="OnColorOneColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niM-cx-Wgm">
+                                <rect key="frame" x="24" y="207" width="58.5" height="45"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078431372551" green="0.93333333333333335" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zXu-fo-osj" firstAttribute="leading" secondItem="ZFw-32-Mig" secondAttribute="leading" constant="24" id="0Ow-8X-xrv"/>
                             <constraint firstItem="IA3-ua-uip" firstAttribute="top" secondItem="ZFw-32-Mig" secondAttribute="top" id="5y4-jV-DbU"/>
-                            <constraint firstAttribute="trailing" secondItem="Td8-cp-Gdn" secondAttribute="trailing" constant="24" id="9hM-pK-Tw1"/>
+                            <constraint firstItem="niM-cx-Wgm" firstAttribute="leading" secondItem="Td8-cp-Gdn" secondAttribute="leading" id="7be-uM-TPP"/>
+                            <constraint firstItem="niM-cx-Wgm" firstAttribute="trailing" secondItem="Td8-cp-Gdn" secondAttribute="trailing" id="7lU-kH-QVY"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Td8-cp-Gdn" secondAttribute="trailing" constant="24" id="9hM-pK-Tw1"/>
+                            <constraint firstItem="niM-cx-Wgm" firstAttribute="top" secondItem="Td8-cp-Gdn" secondAttribute="top" id="BYa-Sx-lHe"/>
                             <constraint firstAttribute="height" constant="332" id="Cdq-UT-Fc2"/>
                             <constraint firstItem="rbQ-NG-xXQ" firstAttribute="leading" secondItem="ZFw-32-Mig" secondAttribute="leading" constant="24" id="DFe-yZ-hpn"/>
                             <constraint firstItem="E98-PZ-CAc" firstAttribute="centerY" secondItem="CEp-cE-Uu5" secondAttribute="centerY" id="DVC-eE-Rou"/>
@@ -178,6 +185,7 @@
                             <constraint firstItem="IA3-ua-uip" firstAttribute="centerX" secondItem="ZFw-32-Mig" secondAttribute="centerX" id="TkE-Ro-C6k"/>
                             <constraint firstItem="zXu-fo-osj" firstAttribute="top" secondItem="OQT-M6-Meh" secondAttribute="bottom" constant="16" id="YbF-w2-brY"/>
                             <constraint firstItem="Td8-cp-Gdn" firstAttribute="leading" secondItem="xQ9-gF-VhF" secondAttribute="trailing" constant="6" id="b38-4g-cWj"/>
+                            <constraint firstItem="zXu-fo-osj" firstAttribute="top" secondItem="niM-cx-Wgm" secondAttribute="bottom" constant="16" id="bLB-7p-ZMP"/>
                             <constraint firstAttribute="bottom" secondItem="IA3-ua-uip" secondAttribute="bottom" id="cxt-Kf-Z9m"/>
                             <constraint firstAttribute="trailing" secondItem="OQT-M6-Meh" secondAttribute="trailing" constant="24" id="er4-uj-nua"/>
                             <constraint firstItem="OQT-M6-Meh" firstAttribute="top" secondItem="Td8-cp-Gdn" secondAttribute="bottom" constant="4" id="fcb-pC-uLs"/>
@@ -215,6 +223,7 @@
                 <outlet property="RemainingLabel" destination="NUa-fl-I5R" id="D77-j7-skH"/>
                 <outlet property="ShuffleButton" destination="CEp-cE-Uu5" id="7cC-hC-dF3"/>
                 <outlet property="SubtitleLabel" destination="Bu0-bb-AF0" id="y3x-Zh-Iwg"/>
+                <outlet property="TitleClickableArea" destination="niM-cx-Wgm" id="ErL-z6-oMe"/>
                 <outlet property="TitleLabel" destination="Td8-cp-Gdn" id="QJC-Mn-Fj0"/>
             </connections>
             <point key="canvasLocation" x="212.80000000000001" y="214.09295352323841"/>

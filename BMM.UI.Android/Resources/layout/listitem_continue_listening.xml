@@ -108,6 +108,8 @@
                 android:layout_marginStart="@dimen/margin_xxmedium"
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginEnd="@dimen/margin_mini"
+                android:maxLines="1"
+                android:ellipsize="end"
                 local:layout_constraintBottom_toTopOf="@+id/PlayButton"
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toStartOf="@+id/HalfGuideline"
@@ -145,7 +147,7 @@
                 android:layout_marginHorizontal="@dimen/margin_xxmedium"
                 android:layout_marginBottom="@dimen/margin_tiny"
                 android:maxLines="2"
-                local:layout_constraintBottom_toTopOf="@+id/BottomTextBarrier"
+                local:layout_constraintBottom_toTopOf="@+id/TopTextBarrier"
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Title1_OnColor1"
@@ -194,11 +196,27 @@
                 local:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/BottomTextBarrier"
+                android:id="@+id/TopTextBarrier"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 local:barrierDirection="top"
                 local:constraint_referenced_ids="DateLabel,RemainingLabel" />
 
+        <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/BottomTextBarrier"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                local:barrierDirection="bottom"
+                local:constraint_referenced_ids="DateLabel,RemainingLabel" />
+        
+        <View
+                android:id="@+id/TitleClickableArea"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="@dimen/match_constraint"
+                local:layout_constraintStart_toStartOf="@+id/TitleLabel"
+                local:layout_constraintEnd_toEndOf="@+id/TitleLabel"
+                local:layout_constraintTop_toTopOf="@+id/TitleLabel"
+                local:layout_constraintBottom_toBottomOf="@+id/BottomTextBarrier"
+                local:MvxBind="Click ContinueListeningCommand(.)" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

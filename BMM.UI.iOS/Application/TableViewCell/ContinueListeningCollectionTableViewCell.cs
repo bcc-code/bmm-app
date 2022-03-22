@@ -40,11 +40,7 @@ namespace BMM.UI.iOS
             });
         }
 
-        public nfloat CollectionViewOffset
-        {
-            get => ContinueListeningCollection.ContentOffset.X;
-            set => ContinueListeningCollection.SetXOffset(value, false);
-        }
+        protected override bool HasHighlightEffect => false;
 
         private CellWrapperViewModel<Document> CellDataContext => (CellWrapperViewModel<Document>)DataContext;
     }
