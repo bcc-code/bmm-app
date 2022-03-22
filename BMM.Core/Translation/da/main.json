@@ -14,7 +14,11 @@
     "Exegesis": "Tydning",
     "Done": "Færdig",
     "Today": "Today",
-    "Yesterday": "Yesterday"
+    "Yesterday": "Yesterday",
+    "BackgroundActivityRestrictedTitle": "Allow background activity",
+    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
+    "GoToSettings": "Go to Settings",
+    "NotNow": "Not now"
   },
   "Streak": {
     "Message": "Din streak denne uge",
