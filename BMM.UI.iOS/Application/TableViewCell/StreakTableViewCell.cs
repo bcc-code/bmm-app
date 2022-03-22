@@ -3,9 +3,6 @@ using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
-using BMM.Core.Implementations.Localization;
-using BMM.Core.Implementations.Localization.Interfaces;
-using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 
@@ -14,7 +11,6 @@ namespace BMM.UI.iOS
     public partial class StreakTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new NSString(nameof(StreakTableViewCell));
-        private IBMMLanguageBinder BMMLanguageBinder => BMMLanguageBinderLocator.TextSource;
 
         public StreakTableViewCell(IntPtr handle)
             : base(handle)

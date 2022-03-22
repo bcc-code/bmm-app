@@ -40,6 +40,8 @@ namespace BMM.UI.iOS
             });
         }
 
+        protected override bool HasHighlightEffect => false;
+
         public nfloat CollectionViewOffset
         {
             get => PlaylistsCollectionView.ContentOffset.X;

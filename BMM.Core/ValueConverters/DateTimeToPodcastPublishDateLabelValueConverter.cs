@@ -1,15 +1,16 @@
 using System;
 using System.Globalization;
 using BMM.Core.Constants;
+using BMM.Core.Helpers;
 using MvvmCross.Converters;
 
 namespace BMM.Core.ValueConverters
 {
     public class DateTimeToPodcastPublishDateLabelValueConverter : MvxValueConverter<DateTime?, string>
     {
-        protected override string Convert(DateTime? value, Type targetType, object parameter, CultureInfo culture)
+        protected override string Convert(DateTime? date, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
+            if (date == null)
                 return string.Empty;
             
             string dateFormat = culture.DateTimeFormat.LongDatePattern
@@ -19,7 +20,10 @@ namespace BMM.Core.ValueConverters
                 .Trim(StringConstants.Comma.ToCharArray())
                 .Trim();
             
-            return value.Value.ToString(dateFormat, CultureInfo.CurrentUICulture);
+            return date
+                .Value
+                .ToNorwegianTime()
+                .ToString(dateFormat, CultureInfo.CurrentUICulture);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace BMM.UI.iOS.Constants
         {
             Font = Typography.Title2.Value,
             Color = AppColors.LabelPrimaryColor,
-            MinimumFontSize = 12
+            MinimumFontSize = 10
         };
         
         public static TextTheme Title3 = new TextTheme
@@ -46,7 +46,7 @@ namespace BMM.UI.iOS.Constants
         {
             Font = Typography.Header3.Value,
             Color = AppColors.LabelPrimaryColor,
-            MinimumFontSize = 12
+            MinimumFontSize = 10
         };
 
         public static TextTheme Paragraph1Label1 = new TextTheme
