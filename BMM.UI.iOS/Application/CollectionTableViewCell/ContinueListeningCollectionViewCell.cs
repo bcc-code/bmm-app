@@ -21,6 +21,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName(nameof(ContinueListeningCollectionViewCell), NSBundle.MainBundle);
         private DateTime? _date;
         private ITrackModel _currentPlayerTrack;
+        private string _subtitle;
 
         public ContinueListeningCollectionViewCell(IntPtr handle): base(Key, handle)
         {
@@ -62,7 +63,8 @@ namespace BMM.UI.iOS
                     .To(vm => vm.Item.Date)
                     .WithConversion<DateTimeToPodcastPublishDayOfWeekLabelValueConverter>();
 
-                set.Bind(RemainingLabel)
+                set.Bind(this)
+                    .For(v => v.Subtitle)
                     .To(vm => vm.Item.Subtitle);
                 
                 set.Bind(ProgressBarView)
@@ -108,6 +110,41 @@ namespace BMM.UI.iOS
                 set.Apply();
             });
         }
+        
+        public string Subtitle
+        {
+            get => _subtitle;
+            set
+            {
+                _subtitle = value;
+                
+                if (_subtitle != null)
+                    UpdateProgressBarSizeIfNeeded();
+
+                RemainingLabel.Text = _subtitle;
+            }
+        }
+
+        private void UpdateProgressBarSizeIfNeeded()
+        {
+            var newString = new NSString(_subtitle);
+            var attribs = new UIStringAttributes
+            {
+                Font = RemainingLabel.Font
+            };
+
+            var size = newString.GetSizeUsingAttributes(attribs);
+            UpdateSizeOfProgressBar(size.Width >= ContentWidthHelper.Frame.Width * 0.5f);
+        }
+
+        private void UpdateSizeOfProgressBar(bool isSmall)
+        {
+            float multipleFactor = isSmall
+                ? 0.25f
+                : 0.5f;
+
+            ProgressBarWidthConstraint.Constant = ContentWidthHelper.Frame.Width * multipleFactor;
+        }
 
         public ITrackModel CurrentPlayerTrack
         {
@@ -141,10 +178,7 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-            BackgroundView.Layer.CornerRadius = 32f;
-            BackgroundView.ClipsToBounds = true;
-            CoverImageView.Layer.CornerRadius = 16f;
-            CoverImageView.ClipsToBounds = true;
+            ProgressBarWidthConstraint.Constant = ContentWidthHelper.Frame.Width / 2;
             ShuffleButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMediumOnColorFive);
             SubtitleLabel.ApplyTextTheme(AppTheme.Paragraph1OnColor2);
             TitleLabel.ApplyTextTheme(AppTheme.Title1OnColor1);

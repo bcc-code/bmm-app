@@ -17,6 +17,9 @@ namespace BMM.UI.iOS
 		UIKit.UIView BackgroundView { get; set; }
 
 		[Outlet]
+		UIKit.UIView ContentWidthHelper { get; set; }
+
+		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView CoverImageView { get; set; }
 
 		[Outlet]
@@ -39,6 +42,9 @@ namespace BMM.UI.iOS
 
 		[Outlet]
 		BMM.UI.iOS.CustomViews.ProgressBarView ProgressBarView { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint ProgressBarWidthConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UIButton ReferenceButton { get; set; }
@@ -125,14 +131,24 @@ namespace BMM.UI.iOS
 				SubtitleLabel = null;
 			}
 
+			if (TitleClickableArea != null) {
+				TitleClickableArea.Dispose ();
+				TitleClickableArea = null;
+			}
+
 			if (TitleLabel != null) {
 				TitleLabel.Dispose ();
 				TitleLabel = null;
 			}
 
-			if (TitleClickableArea != null) {
-				TitleClickableArea.Dispose ();
-				TitleClickableArea = null;
+			if (ContentWidthHelper != null) {
+				ContentWidthHelper.Dispose ();
+				ContentWidthHelper = null;
+			}
+
+			if (ProgressBarWidthConstraint != null) {
+				ProgressBarWidthConstraint.Dispose ();
+				ProgressBarWidthConstraint = null;
 			}
 
 		}
