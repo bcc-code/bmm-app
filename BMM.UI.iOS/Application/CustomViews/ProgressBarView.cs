@@ -19,8 +19,8 @@ namespace BMM.UI.iOS.CustomViews
         public static readonly NSString Key = new NSString(nameof(ProgressBarView));
 
         private int _percentage;
-        private CAShapeLayer _foregroundLayer;
-        private CAShapeLayer _backgroundLayer;
+        private UIView _foregroundView;
+        private UIView _backgroundView;
 
         public ProgressBarView(RectangleF bounds) : base(bounds)
         {
@@ -48,40 +48,28 @@ namespace BMM.UI.iOS.CustomViews
             this.CreateBindingContext();
         }
 
-        private void SetDimensions()
-        {
-            HeightConstraint.Constant = 5;
-        }
-
         public override void LayoutSubviews()
         {
             base.LayoutSubviews();
-
-            _backgroundLayer?.RemoveFromSuperLayer();
-            _foregroundLayer?.RemoveFromSuperLayer();
-
-            var backgroundPath = UIBezierPath.FromRect(new CGRect(0, 0, Frame.Width, Frame.Height));
-
-            _backgroundLayer = new CAShapeLayer
+            
+            _backgroundView?.RemoveFromSuperview();
+            _foregroundView?.RemoveFromSuperview();
+            
+            _backgroundView = new UIView(new CGRect(0, 0, Frame.Width, Frame.Height))
             {
-                Path = backgroundPath.CGPath,
-                FillColor = AppColors.OnColorFiveColor.CGColor,
-                ContentsScale = UIScreen.MainScreen.Scale
+                BackgroundColor = AppColors.OnColorFiveColor
             };
-
-            Layer.AddSublayer(_backgroundLayer);
-
+            
+            Add(_backgroundView);
+            
             var desiredWidth = Frame.Width * Percentage / 100f;
-            var foregroundPath = UIBezierPath.FromRect(new CGRect(0, 0, desiredWidth, Frame.Height));
-
-            _foregroundLayer = new CAShapeLayer
+            
+            _foregroundView = new UIView(new CGRect(0, 0, desiredWidth, Frame.Height))
             {
-                Path = foregroundPath.BezierPathByReversingPath().CGPath,
-                FillColor = AppColors.OnColorOneColor.CGColor,
-                ContentsScale = UIScreen.MainScreen.Scale
+                BackgroundColor = AppColors.OnColorOneColor
             };
 
-            Layer.AddSublayer(_foregroundLayer);
+            Add(_foregroundView);
         }
     }
 }

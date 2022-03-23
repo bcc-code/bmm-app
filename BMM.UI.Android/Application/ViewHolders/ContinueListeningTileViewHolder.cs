@@ -18,9 +18,12 @@ namespace BMM.UI.Droid.Application.ViewHolders
 {
     public class ContinueListeningTileViewHolder : MvxRecyclerViewHolder
     {
+        private const int RemainingLabelFontSize = 13;
         private DateTime? _date;
         private TextView _remainingLabel;
         private ProgressBarView _progressBarView;
+        private TextView _titleLabel;
+        private string _subtitleLabel;
 
         public ContinueListeningTileViewHolder(View itemView, IMvxAndroidBindingContext context) : base(itemView, context)
         {
@@ -35,6 +38,8 @@ namespace BMM.UI.Droid.Application.ViewHolders
         {
             _remainingLabel = ItemView.FindViewById<TextView>(Resource.Id.RemainingLabel);
             _progressBarView = ItemView.FindViewById<ProgressBarView>(Resource.Id.ProgressBarView);
+            _titleLabel = ItemView.FindViewById<TextView>(Resource.Id.TitleLabel);
+            
             var backgroundView = ItemView.FindViewById<ConstraintLayout>(Resource.Id.BackgroundView);
             var imageView = ItemView.FindViewById<MvxCachedImageView>(Resource.Id.CoverImageView);
             imageView!.ClipToOutline = true;
@@ -50,7 +55,39 @@ namespace BMM.UI.Droid.Application.ViewHolders
                 .For(v => v.Date)
                 .To(po => po.Item.Date);
             
+            set.Bind(this)
+                .For(v => v.SubtitleLabel)
+                .To(po => po.Item.Subtitle);
+            
             set.Apply();
+        }
+
+        public string SubtitleLabel
+        {
+            get => _subtitleLabel;
+            set
+            {
+                _subtitleLabel = value;
+                _remainingLabel.Text = value;
+                
+                if (_subtitleLabel == null)
+                    return;
+
+                ItemView.Post(() =>
+                {
+                    int requiredWidth = _remainingLabel.CalculateRequiredTextViewSize(RemainingLabelFontSize);
+                    UpdateProgressBarSizeIfNeeded(requiredWidth >= _titleLabel.MeasuredWidth * 0.5f);
+                });
+            }
+        }
+
+        private void UpdateProgressBarSizeIfNeeded(bool isSmall)
+        {
+            float multipleFactor = isSmall
+                ? 0.25f
+                : 0.5f;
+
+            _progressBarView.UpdateWidth((int)(_titleLabel.MeasuredWidth * multipleFactor));
         }
 
         public DateTime? Date

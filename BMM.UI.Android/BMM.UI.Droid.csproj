@@ -141,6 +141,7 @@
     <Compile Include="Application\Extensions\BoolExtensions.cs" />
     <Compile Include="Application\Extensions\ColorExtensions.cs" />
     <Compile Include="Application\Extensions\ContextExtensions.cs" />
+    <Compile Include="Application\Extensions\TextViewExtensions.cs" />
     <Compile Include="Application\Extensions\ViewExtensions.cs" />
     <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
     <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />

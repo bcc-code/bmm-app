@@ -81,7 +81,7 @@
                 android:layout_marginBottom="@dimen/margin_large"
                 android:layout_marginEnd="@dimen/element_margin_small"
                 android:tint="@color/on_color_one_color"
-                local:layout_goneMarginEnd="@dimen/margin_large"
+                local:layout_goneMarginEnd="@dimen/margin_xxmedium"
                 local:MvxBind="Visibility Visibility(DownloadStatusDone(Item.Track))"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintEnd_toStartOf="@+id/ReferenceButton" />
@@ -93,7 +93,7 @@
                 android:background="?selectableItemBackgroundBorderless"
                 android:src="@drawable/icon_link"
                 android:layout_marginBottom="@dimen/margin_large"
-                android:layout_marginEnd="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin_xxmedium"
                 android:tint="@color/on_color_one_color"
                 local:MvxBind="
                     Click ShowTrackInfoCommand(.);
@@ -112,9 +112,8 @@
                 android:ellipsize="end"
                 local:layout_constraintBottom_toTopOf="@+id/PlayButton"
                 local:layout_constraintStart_toStartOf="parent"
-                local:layout_constraintEnd_toStartOf="@+id/HalfGuideline"
-                style="@style/Subtitle3_OnColor1"
-                local:MvxBind="Text Item.Subtitle" />
+                local:layout_constraintEnd_toStartOf="@+id/ProgressBarView"
+                style="@style/Subtitle3_OnColor1" />
 
         <TextView
                 android:id="@+id/SubtitleLabel"
@@ -178,22 +177,14 @@
         
         <bmm.ui.droid.application.customViews.ProgressBarView
                 android:id="@+id/ProgressBarView"
-                android:layout_width="@dimen/match_constraint"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_mini"
                 android:layout_marginEnd="@dimen/margin_xxmedium"
-                local:layout_constraintStart_toEndOf="@+id/HalfGuideline"
                 local:layout_constraintEnd_toEndOf="parent"
                 local:layout_constraintTop_toTopOf="@+id/RemainingLabel"
                 local:layout_constraintBottom_toBottomOf="@+id/RemainingLabel"
                 local:MvxBind="Percentage Item.Percentage"/>
-
-        <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/HalfGuideline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                local:layout_constraintGuide_percent="0.5" />
 
         <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/TopTextBarrier"

@@ -18,16 +18,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="254" height="332"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-32-Mig">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-32-Mig">
                         <rect key="frame" x="0.0" y="0.0" width="254" height="332"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbQ-NG-xXQ" customClass="MvxCachedImageView">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbQ-NG-xXQ" customClass="MvxCachedImageView">
                                 <rect key="frame" x="24" y="24" width="112" height="112"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="112" id="kip-QL-Gta"/>
                                     <constraint firstAttribute="height" constant="112" id="l43-aK-H56"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="16"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zXu-fo-osj">
                                 <rect key="frame" x="24" y="268" width="40" height="40"/>
@@ -57,7 +62,7 @@
                                 <state key="normal" image="ShuffleIcon"/>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="E98-PZ-CAc">
-                                <rect key="frame" x="168" y="276" width="54" height="24"/>
+                                <rect key="frame" x="176" y="276" width="54" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconDownloadMini" translatesAutoresizingMaskIntoConstraints="NO" id="u4s-VJ-fv7">
                                         <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -121,8 +126,9 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCM-By-8nG" customClass="ProgressBarView">
                                         <rect key="frame" x="103.5" y="9.5" width="102.5" height="2"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="102.5" id="59g-cv-XQe"/>
                                             <constraint firstAttribute="height" constant="2" id="pHJ-p4-Zlv"/>
                                         </constraints>
                                     </view>
@@ -139,6 +145,7 @@
                                     <constraint firstItem="Yi6-7k-CLO" firstAttribute="leading" secondItem="XsF-ib-aBt" secondAttribute="trailing" constant="2" id="YYe-ki-Acb"/>
                                     <constraint firstAttribute="trailing" secondItem="GCM-By-8nG" secondAttribute="trailing" id="ckH-B4-JdS"/>
                                     <constraint firstItem="NUa-fl-I5R" firstAttribute="leading" secondItem="OQT-M6-Meh" secondAttribute="leading" id="hi7-M5-PfT"/>
+                                    <constraint firstItem="GCM-By-8nG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NUa-fl-I5R" secondAttribute="trailing" constant="8" id="mlS-Uf-VAw"/>
                                     <constraint firstItem="XsF-ib-aBt" firstAttribute="top" secondItem="OQT-M6-Meh" secondAttribute="top" id="zhg-Ar-eJR"/>
                                 </constraints>
                             </view>
@@ -162,6 +169,13 @@
                                 <rect key="frame" x="24" y="207" width="58.5" height="45"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PZy-bj-a0g">
+                                <rect key="frame" x="24" y="0.0" width="206" height="1"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Va7-KH-Yoz"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.90196078431372551" green="0.93333333333333335" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -169,6 +183,7 @@
                             <constraint firstItem="IA3-ua-uip" firstAttribute="top" secondItem="ZFw-32-Mig" secondAttribute="top" id="5y4-jV-DbU"/>
                             <constraint firstItem="niM-cx-Wgm" firstAttribute="leading" secondItem="Td8-cp-Gdn" secondAttribute="leading" id="7be-uM-TPP"/>
                             <constraint firstItem="niM-cx-Wgm" firstAttribute="trailing" secondItem="Td8-cp-Gdn" secondAttribute="trailing" id="7lU-kH-QVY"/>
+                            <constraint firstItem="PZy-bj-a0g" firstAttribute="leading" secondItem="ZFw-32-Mig" secondAttribute="leading" constant="24" id="8O6-gK-sdu"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Td8-cp-Gdn" secondAttribute="trailing" constant="24" id="9hM-pK-Tw1"/>
                             <constraint firstItem="niM-cx-Wgm" firstAttribute="top" secondItem="Td8-cp-Gdn" secondAttribute="top" id="BYa-Sx-lHe"/>
                             <constraint firstAttribute="height" constant="332" id="Cdq-UT-Fc2"/>
@@ -177,10 +192,10 @@
                             <constraint firstAttribute="bottom" secondItem="zXu-fo-osj" secondAttribute="bottom" constant="24" id="F8I-g9-YXT"/>
                             <constraint firstItem="xQ9-gF-VhF" firstAttribute="centerY" secondItem="Td8-cp-Gdn" secondAttribute="centerY" id="Fcz-3P-jIK"/>
                             <constraint firstItem="Bu0-bb-AF0" firstAttribute="trailing" secondItem="Td8-cp-Gdn" secondAttribute="trailing" id="H32-2D-65v"/>
-                            <constraint firstAttribute="trailing" secondItem="E98-PZ-CAc" secondAttribute="trailing" constant="32" id="HXI-kg-Jg4"/>
+                            <constraint firstAttribute="trailing" secondItem="E98-PZ-CAc" secondAttribute="trailing" constant="24" id="HXI-kg-Jg4"/>
                             <constraint firstItem="CEp-cE-Uu5" firstAttribute="bottom" secondItem="zXu-fo-osj" secondAttribute="bottom" id="MsQ-Sp-YIu"/>
                             <constraint firstItem="CEp-cE-Uu5" firstAttribute="leading" secondItem="zXu-fo-osj" secondAttribute="trailing" constant="10" id="NmE-t7-G5c"/>
-                            <constraint firstItem="IA3-ua-uip" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NUa-fl-I5R" secondAttribute="trailing" constant="8" id="OPv-46-njH"/>
+                            <constraint firstItem="PZy-bj-a0g" firstAttribute="top" secondItem="ZFw-32-Mig" secondAttribute="top" id="P8a-ci-54S"/>
                             <constraint firstAttribute="trailing" secondItem="I9T-Ch-Kz8" secondAttribute="trailing" constant="24" id="RKB-Za-GbL"/>
                             <constraint firstItem="IA3-ua-uip" firstAttribute="centerX" secondItem="ZFw-32-Mig" secondAttribute="centerX" id="TkE-Ro-C6k"/>
                             <constraint firstItem="zXu-fo-osj" firstAttribute="top" secondItem="OQT-M6-Meh" secondAttribute="bottom" constant="16" id="YbF-w2-brY"/>
@@ -196,9 +211,14 @@
                             <constraint firstItem="Td8-cp-Gdn" firstAttribute="leading" secondItem="ZFw-32-Mig" secondAttribute="leading" constant="24" id="s6Y-1I-2VU"/>
                             <constraint firstItem="rbQ-NG-xXQ" firstAttribute="top" secondItem="ZFw-32-Mig" secondAttribute="top" constant="24" id="v1y-GK-KVn"/>
                             <constraint firstAttribute="width" constant="254" id="vVe-SQ-3U3"/>
-                            <constraint firstItem="GCM-By-8nG" firstAttribute="leading" secondItem="IA3-ua-uip" secondAttribute="trailing" id="vf8-At-yG6"/>
+                            <constraint firstAttribute="trailing" secondItem="PZy-bj-a0g" secondAttribute="trailing" constant="24" id="wQn-5Y-RJa"/>
                             <constraint firstItem="Bu0-bb-AF0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rbQ-NG-xXQ" secondAttribute="bottom" constant="20" id="yzp-P5-UqM"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="36"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
@@ -211,6 +231,7 @@
             <size key="customSize" width="254" height="332"/>
             <connections>
                 <outlet property="BackgroundView" destination="ZFw-32-Mig" id="jOF-4y-Vbl"/>
+                <outlet property="ContentWidthHelper" destination="PZy-bj-a0g" id="Fh8-SK-4l3"/>
                 <outlet property="CoverImageView" destination="rbQ-NG-xXQ" id="xkx-lY-t8U"/>
                 <outlet property="DateLabel" destination="Yi6-7k-CLO" id="xZK-oo-mIT"/>
                 <outlet property="DayOfWeekLabel" destination="XsF-ib-aBt" id="rm5-Ko-rPV"/>
@@ -219,6 +240,7 @@
                 <outlet property="OptionsButton" destination="I9T-Ch-Kz8" id="cUr-HA-xG4"/>
                 <outlet property="PlayButton" destination="zXu-fo-osj" id="Uj9-nT-8No"/>
                 <outlet property="ProgressBarView" destination="GCM-By-8nG" id="hpR-H4-l7d"/>
+                <outlet property="ProgressBarWidthConstraint" destination="59g-cv-XQe" id="GVS-cf-KBd"/>
                 <outlet property="ReferenceButton" destination="Bcj-w1-b37" id="ihX-v6-uTp"/>
                 <outlet property="RemainingLabel" destination="NUa-fl-I5R" id="D77-j7-skH"/>
                 <outlet property="ShuffleButton" destination="CEp-cE-Uu5" id="7cC-hC-dF3"/>
