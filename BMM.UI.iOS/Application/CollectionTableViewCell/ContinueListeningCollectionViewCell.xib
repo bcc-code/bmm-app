@@ -24,6 +24,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rbQ-NG-xXQ" customClass="MvxCachedImageView">
                                 <rect key="frame" x="24" y="24" width="112" height="112"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="TileCover"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="112" id="kip-QL-Gta"/>
                                     <constraint firstAttribute="height" constant="112" id="l43-aK-H56"/>

@@ -15,6 +15,7 @@ namespace BMM.UITests
         private const string ErrorTracksNotFound = "Tracks are not found";
 
         private const string Kare = "From Kåre";
+        private const string Podcasts = "Podcasts";
 
         private IBmmApp _bmmApp;
         private IApp _app;
@@ -37,6 +38,8 @@ namespace BMM.UITests
         {
             await _bmmApp.LoginToApp();
             _bmmApp.Menu.OpenBrowse(_app);
+            _app.ScrollDownTo(Podcasts);
+            _app.Tap(_bmmApp.BrowsePage.PodcastsShowAll);
             _app.ScrollDownTo(Kare);
             _app.Tap(Kare);
             _app.WaitForElement(_bmmApp.PodcastPage.Follow);
@@ -60,6 +63,8 @@ namespace BMM.UITests
         {
             await _bmmApp.LoginToApp();
             _bmmApp.Menu.OpenBrowse(_app);
+            _app.ScrollDownTo(Podcasts);
+            _app.Tap(_bmmApp.BrowsePage.PodcastsShowAll);
             _app.ScrollDownTo(Kare);
             _app.Tap(Kare);
             _app.WaitForElement(_bmmApp.PodcastPage.Follow);

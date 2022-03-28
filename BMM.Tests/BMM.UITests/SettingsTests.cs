@@ -113,7 +113,7 @@ namespace BMM.UITests
         private void OpenFromKarePodcast(string expectedFromKaarePodcastTitle)
         {
             _bmmApp.Menu.OpenExplore(_app);
-            _app.Tap(_bmmApp.ExplorePage.FraaKaareShowAll);
+            _app.Tap(c => c.Text(expectedFromKaarePodcastTitle));
             _app.WaitForElement(expectedFromKaarePodcastTitle);
             _app.WaitForElement(_bmmApp.PodcastPage.TrackTitle, "Timed out waiting for element..."); // Wait until first track appears meaning that the list has loaded
         }

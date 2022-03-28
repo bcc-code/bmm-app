@@ -348,7 +348,7 @@ namespace BMM.UI.iOS
         {
             ViewLyricsButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMedium);
             ChangeLanguageButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMedium);
-            TitleLabel.ApplyTextTheme(AppTheme.Heading3);
+            TitleLabel.ApplyTextTheme(AppTheme.Heading3AutoSize);
             SubtitleLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);
         }
 

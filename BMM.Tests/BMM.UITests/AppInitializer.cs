@@ -37,6 +37,7 @@ namespace BMM.UITests
         IQueuePage QueuePage { get; set; }
         IContentLanguagePage ContentLanguagePage { get; set; }
         IExplorePage ExplorePage { get; set; }
+        IBrowsePage BrowsePage { get; set; }
         Task LoginToApp();
         void StartTrackWithinPlaylist();
     }
@@ -68,6 +69,7 @@ namespace BMM.UITests
         public IQueuePage QueuePage { get; set; }
         public IExplorePage ExplorePage { get; set; }
         public IContentLanguagePage ContentLanguagePage { get; set; }
+        public IBrowsePage BrowsePage { get; set; }
 
         public async Task LoginToApp()
         {
