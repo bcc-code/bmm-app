@@ -121,8 +121,8 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-            StreakLabel.ApplyTextTheme(AppTheme.Title2);
-            StreakSublabel.ApplyTextTheme(AppTheme.Subtitle2Label3);
+            StreakLabel.ApplyTextTheme(AppTheme.Title2AutoSize);
+            StreakSublabel.ApplyTextTheme(AppTheme.Subtitle2Label3AutoSize);
         }
     }
 }

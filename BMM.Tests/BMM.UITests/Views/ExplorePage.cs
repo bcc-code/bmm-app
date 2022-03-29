@@ -24,7 +24,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("showAll");
+                return c => c.Text("From Kåre");
             }
         }
 
@@ -51,7 +51,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("showAll");
+                return c => c.Text("From Kåre");
             }
         }
 

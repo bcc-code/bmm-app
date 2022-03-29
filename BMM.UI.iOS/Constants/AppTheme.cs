@@ -32,6 +32,12 @@ namespace BMM.UI.iOS.Constants
         public static TextTheme Title2 = new TextTheme
         {
             Font = Typography.Title2.Value,
+            Color = AppColors.LabelPrimaryColor
+        };
+        
+        public static TextTheme Title2AutoSize = new TextTheme
+        {
+            Font = Typography.Title2.Value,
             Color = AppColors.LabelPrimaryColor,
             MinimumFontSize = 10
         };
@@ -43,6 +49,12 @@ namespace BMM.UI.iOS.Constants
         };
 
         public static TextTheme Heading3 = new TextTheme
+        {
+            Font = Typography.Header3.Value,
+            Color = AppColors.LabelPrimaryColor
+        };
+        
+        public static TextTheme Heading3AutoSize = new TextTheme
         {
             Font = Typography.Header3.Value,
             Color = AppColors.LabelPrimaryColor,
@@ -98,6 +110,12 @@ namespace BMM.UI.iOS.Constants
         };
 
         public static TextTheme Subtitle2Label3 = new TextTheme
+        {
+            Font = Typography.Subtitle2.Value,
+            Color = AppColors.LabelTertiaryColor
+        };
+        
+        public static TextTheme Subtitle2Label3AutoSize = new TextTheme
         {
             Font = Typography.Subtitle2.Value,
             Color = AppColors.LabelTertiaryColor,
