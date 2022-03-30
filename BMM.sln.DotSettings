@@ -132,5 +132,6 @@ public void $MethodName$()
 	//Assert
 }</s:String>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Aslaksen/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=sangtekst/@EntryIndexedValue">True</s:Boolean>
 
 </wpf:ResourceDictionary>
