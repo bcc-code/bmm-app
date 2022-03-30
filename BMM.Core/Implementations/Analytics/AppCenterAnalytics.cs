@@ -22,7 +22,7 @@ namespace BMM.Core.Implementations.Analytics
 
         public void LogEvent(string eventName)
         {
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(eventName);
+            LogEvent(eventName, new Dictionary<string, object>());
         }
 
         public void LogEvent(string eventName, IDictionary<string, object> parameters)
