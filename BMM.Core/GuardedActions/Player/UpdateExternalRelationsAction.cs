@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
@@ -59,7 +60,7 @@ namespace BMM.Core.GuardedActions.Player
             var sangtekstElement = currentTrack
                 ?.Relations
                 ?.OfType<TrackRelationExternal>()
-                .FirstOrDefault(x => x.Name == SangtekstRelationName);
+                .FirstOrDefault(x => string.Equals(x.Name, SangtekstRelationName, StringComparison.OrdinalIgnoreCase));
 
             if (sangtekstElement == null)
                 return string.Empty;
