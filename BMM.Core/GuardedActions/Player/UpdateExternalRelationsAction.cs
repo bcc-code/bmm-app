@@ -1,6 +1,8 @@
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Utils;
 using BMM.Core.Extensions;
@@ -14,6 +16,7 @@ namespace BMM.Core.GuardedActions.Player
 {
     public class UpdateExternalRelationsAction : GuardedAction, IUpdateExternalRelationsAction
     {
+        private const string SangtekstRelationName = "Sangtekst";
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
 
         public UpdateExternalRelationsAction(IFirebaseRemoteConfig firebaseRemoteConfig)
@@ -36,19 +39,33 @@ namespace BMM.Core.GuardedActions.Player
             PlayerViewModel.HasExternalRelations = currentTrack.Relations != null &&
                                                    currentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
 
+            PlayerViewModel.SongTreasureLink =  GetLyricsLink(currentTrack);
+            return Task.CompletedTask;
+        }
+
+        private string GetLyricsLink(ITrackModel currentTrack)
+        {
             var existingSongbook = currentTrack
                 ?.Relations
                 ?.OfType<TrackRelationSongbook>()
                 .FirstOrDefault();
 
-            string songTreasureLink = existingSongbook != null
-                ? string.Format(_firebaseRemoteConfig.SongTreasuresSongLink,
+            if (existingSongbook != null)
+            {
+                return string.Format(_firebaseRemoteConfig.SongTreasuresSongLink,
                     SongbookUtils.GetShortName(existingSongbook.Name),
-                    existingSongbook.Id)
-                : string.Empty;
-            
-            PlayerViewModel.SongTreasureLink = songTreasureLink;
-            return Task.CompletedTask;
+                    existingSongbook.Id);
+            }
+
+            var sangtekstElement = currentTrack
+                ?.Relations
+                ?.OfType<TrackRelationExternal>()
+                .FirstOrDefault(x => string.Equals(x.Name, SangtekstRelationName, StringComparison.OrdinalIgnoreCase));
+
+            if (sangtekstElement == null)
+                return string.Empty;
+
+            return sangtekstElement.Url;
         }
 
         protected override async Task OnFinally()

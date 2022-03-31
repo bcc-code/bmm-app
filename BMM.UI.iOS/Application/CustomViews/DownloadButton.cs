@@ -180,7 +180,7 @@ namespace BMM.UI.iOS
             }
         }
 
-        private void UpdateCurrentState()
+        public void UpdateCurrentState(bool forceUpdate = false)
         {
             var newState = (IsDownloaded, IsDownloading) switch
             {
@@ -190,7 +190,7 @@ namespace BMM.UI.iOS
                 (false, false) => DownloadButtonState.NotDownloaded
             };
 
-            if (_currentState == newState)
+            if (!forceUpdate && _currentState == newState)
                 return;
 
             UpdateUiForState(newState);

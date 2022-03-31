@@ -94,6 +94,7 @@ namespace BMM.UI.iOS
             set.Apply();
 
             SetThemes();
+            DownloadButton.UpdateCurrentState(true);
         }
 
         protected override void AttachEvents()

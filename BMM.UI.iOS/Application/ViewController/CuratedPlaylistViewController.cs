@@ -56,8 +56,9 @@ namespace BMM.UI.iOS
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
             set.Apply();
 
-            CuratedPlaylistTable.ReloadData();
             SetThemes();
+            CuratedPlaylistTable.ReloadData();
+            DownloadButton.UpdateCurrentState(true);
         }
 
         private void SetThemes()
