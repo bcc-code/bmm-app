@@ -11,7 +11,7 @@ namespace BMM.Core.Implementations.Storage
 
         public static Theme SelectedTheme
         {
-            get => GetValueOrDefault(nameof(SelectedTheme), Theme.Light);
+            get => GetValueOrDefault(nameof(SelectedTheme), Theme.System);
             set => AddOrUpdateValue(value, nameof(SelectedTheme));
         }
 
