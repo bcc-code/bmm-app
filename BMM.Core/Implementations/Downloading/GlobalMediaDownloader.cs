@@ -164,7 +164,6 @@ namespace BMM.Core.Implementations.Downloading
             if (tracksToBeDownloaded.Any())
             {
                 _downloadQueue.Enqueue(tracksToBeDownloaded);
-
                 _downloadQueue.StartDownloading();
             }
 

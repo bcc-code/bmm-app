@@ -41,8 +41,8 @@ namespace BMM.UI.iOS
 
             set.Apply();
 
-            AlbumTable.ResizeHeaderView();
             SetThemes();
+            AlbumTable.ResizeHeaderView();
         }
 
         private void SetThemes()

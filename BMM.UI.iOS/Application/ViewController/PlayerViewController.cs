@@ -41,7 +41,8 @@ namespace BMM.UI.iOS
         private RepeatType _repeatType;
         private int _bottomMargin = DefaultBottomMarginConstant;
         private UIStatusBarStyle _previousStatusBarStyle;
-        
+        private UIColor _lastMutedColor;
+
         public PlayerViewController()
             : base(nameof(PlayerViewController))
         {
@@ -51,6 +52,7 @@ namespace BMM.UI.iOS
 
         private bool SupportsNotFullscreenPageSheetPresentation => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
         private bool NeedsSetProgressBarThumbColorToBeForcedFromMainThread => !UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
+        private bool DarkModeSupported => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
         public override Type ParentViewControllerType => typeof(UINavigationController);
         protected override string GetTitle() => string.Empty;
         public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation() => UIInterfaceOrientation.Portrait;
@@ -168,6 +170,26 @@ namespace BMM.UI.iOS
             };
 
             SetViewMargins();
+        }
+
+        public override void TraitCollectionDidChange(UITraitCollection? previousTraitCollection)
+        {
+            base.TraitCollectionDidChange(previousTraitCollection);
+            
+            if (!DarkModeSupported)
+                return;
+            
+            var backgroundColor = AppColors.BackgroundSecondaryColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection);
+
+            var colorToSet = _lastMutedColor == null
+                ? backgroundColor
+                : BlendBackgroundColor(_lastMutedColor, backgroundColor);
+
+            if (View != null)
+                View.BackgroundColor = colorToSet;
+            
+            SetupProgressBarThumb();
+            SetThemes();
         }
 
         protected override void AttachEvents()
@@ -317,14 +339,19 @@ namespace BMM.UI.iOS
 
         private void SetCoverShadow(ColorPaletteGenerator palette, UIColor backgroundColor)
         {
+            _lastMutedColor = palette.MutedColor;
             ShadowView.Layer.ShadowColor = new CGColor(palette.MutedColor.CGColor, BackgroundAccentAlpha);
             ShadowView.Layer.ShadowOpacity = 1f;
             ShadowView.Layer.ShadowOffset = CGSize.Empty;
             ShadowView.Layer.ShadowRadius = View!.Frame.Width * BackgroundShadowRadiusPercentageVolume;
             ShadowView.Layer.ShadowPath = UIBezierPath.FromRect(TrackCoverImageView.Bounds).CGPath;
+            View.BackgroundColor = BlendBackgroundColor(palette.MutedColor, backgroundColor);
+        }
 
-            View.BackgroundColor = backgroundColor.Blend(
-                palette.MutedColor,
+        private static UIColor BlendBackgroundColor(UIColor accentColor, UIColor backgroundColor)
+        {
+            return backgroundColor.Blend(
+                accentColor,
                 1f - BackgroundAccentColorPercentageVolume,
                 BackgroundAccentColorPercentageVolume);
         }
@@ -359,17 +386,20 @@ namespace BMM.UI.iOS
 
             CoverHeightConstraint.Constant = coverSize;
             CoverWidthConstraint.Constant = coverSize;
-
-            if (NeedsSetProgressBarThumbColorToBeForcedFromMainThread)
-                BeginInvokeOnMainThread(SetProgressBarThumb);
-            else
-                SetProgressBarThumb();
-            
+            SetupProgressBarThumb();
             RunIfDeviceSupportsNotFullscreenPageSheetPresentation(() =>
             {
                 _previousStatusBarStyle = UIApplication.SharedApplication.StatusBarStyle;
                 UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, true);
             });
+        }
+
+        private void SetupProgressBarThumb()
+        {
+            if (NeedsSetProgressBarThumbColorToBeForcedFromMainThread)
+                BeginInvokeOnMainThread(SetProgressBarThumb);
+            else
+                SetProgressBarThumb();
         }
 
         private void SetProgressBarThumb()
