@@ -1102,6 +1102,7 @@
     <ImageAsset Include="Resources\Colors.xcassets\OnColorTwoColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\SeparatorColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\TileDefaultColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-83_5@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
