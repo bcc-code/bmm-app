@@ -12,6 +12,7 @@
         public const string OptionsMenuHasBeenOpened = "Options menu has been opened";
         public const string TrackHasBeenDownloaded = "Track has been downloaded";
         public const string TrackDownloadingException = "Exception during track downloading";
+        public const string PlaylistNotFoundException = "Playlist not found exception";
         public const string ViewModelOpenedFormat = "{0} opened";
         public const string EmptyPlayer = "Empty player";
         public const string AlbumResumed = "Album resumed";

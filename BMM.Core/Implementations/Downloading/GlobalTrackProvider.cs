@@ -19,13 +19,13 @@ namespace BMM.Core.Implementations.Downloading
         public GlobalTrackProvider(
             IPodcastOfflineTrackProvider podcastOfflineTrackProvider,
             ITrackCollectionOfflineTrackProvider trackCollectionOfflineTrackProvider,
-            IPlaylistOfflineTrackProvider playlistOfflineTrackProvider
-            )
+            IPlaylistOfflineTrackProvider playlistOfflineTrackProvider)
         {
             _podcastOfflineTrackProvider = podcastOfflineTrackProvider;
             _trackCollectionOfflineTrackProvider = trackCollectionOfflineTrackProvider;
             _playlistOfflineTrackProvider = playlistOfflineTrackProvider;
         }
+        
         public async Task<IEnumerable<Track>> GetTracksSupposedToBeDownloaded()
         {
             var podcastTracksSupposedToBeDownloaded = await _podcastOfflineTrackProvider.GetPodcastTracksSupposedToBeDownloaded();
