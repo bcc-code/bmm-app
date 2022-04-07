@@ -21,7 +21,7 @@ jobs:
           source_file: 'docs/.'
           destination_branch: 'master'
           destination_repo: 'bcc-code/bcc-code.github.io'
-          destination_folder: 'projects/bmm-app'
+          destination_folder: '_projects/bmm-app'
           user_email: 'nicolai.velzel@gmail.com'
           user_name: 'nvelinz'
           commit_message: 'Update Wordpress Project Docs'
