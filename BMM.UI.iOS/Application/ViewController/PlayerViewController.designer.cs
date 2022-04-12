@@ -50,7 +50,7 @@ namespace BMM.UI.iOS
 		UIKit.UIButton NextButtton { get; set; }
 
 		[Outlet]
-		UIKit.UISlider PlayingProgressSlider { get; set; }
+		BmmSliderView PlayingProgressSlider { get; set; }
 
 		[Outlet]
 		UIKit.UIButton PlayPauseButton { get; set; }

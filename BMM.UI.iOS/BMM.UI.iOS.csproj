@@ -607,6 +607,7 @@
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
+    <Compile Include="Application\CustomViews\BmmSliderView.cs" />
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\LeftImageButton.cs" />
