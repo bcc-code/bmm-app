@@ -195,10 +195,10 @@ namespace BMM.Core.ViewModels
                 },
                 new CheckboxListItem
                 {
-                    Title = TextSource[Translations.SettingsViewModel_OptionStreakHiddenHeader],
-                    Text = TextSource[Translations.SettingsViewModel_OptionStreakHiddenText],
-                    IsChecked = await _settingsStorage.GetStreakHidden(),
-                    OnChanged = isChecked => _settingsStorage.SetStreakHidden(isChecked)
+                    Title = TextSource[Translations.SettingsViewModel_OptionStreakHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionStreakText],
+                    IsChecked = !await _settingsStorage.GetStreakHidden(),
+                    OnChanged = isChecked => _settingsStorage.SetStreakHidden(!isChecked)
                 },
                 new CheckboxListItem
                 {

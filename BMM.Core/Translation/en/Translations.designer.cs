@@ -197,8 +197,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_HeadlineSettings = nameof(SettingsViewModel_HeadlineSettings);
 		public const string SettingsViewModel_OptionAutoplayHeader = nameof(SettingsViewModel_OptionAutoplayHeader);
 		public const string SettingsViewModel_OptionAutoplayText = nameof(SettingsViewModel_OptionAutoplayText);
-		public const string SettingsViewModel_OptionStreakHiddenHeader = nameof(SettingsViewModel_OptionStreakHiddenHeader);
-		public const string SettingsViewModel_OptionStreakHiddenText = nameof(SettingsViewModel_OptionStreakHiddenText);
+		public const string SettingsViewModel_OptionStreakHeader = nameof(SettingsViewModel_OptionStreakHeader);
+		public const string SettingsViewModel_OptionStreakText = nameof(SettingsViewModel_OptionStreakText);
 		public const string SettingsViewModel_OptionEnablePushHeader = nameof(SettingsViewModel_OptionEnablePushHeader);
 		public const string SettingsViewModel_OptionPushNotifications = nameof(SettingsViewModel_OptionPushNotifications);
 		public const string SettingsViewModel_OptionPushNotificationsSubtitle = nameof(SettingsViewModel_OptionPushNotificationsSubtitle);
