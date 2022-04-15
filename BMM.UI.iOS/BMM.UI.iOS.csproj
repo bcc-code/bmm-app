@@ -1209,6 +1209,8 @@
     <ImageAsset Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\NotificationColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\RadioColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\9104280_break_time_sleep_rest_sleep-hour_icon.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\icon_more.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\Contents.json" />

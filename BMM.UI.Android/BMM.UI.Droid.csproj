@@ -503,6 +503,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_skip_back.xml" />
     <AndroidResource Include="Resources\drawable\icon_skip_forward.xml" />
+    <AndroidResource Include="Resources\drawable\icon_sleep_timer.xml" />
     <AndroidResource Include="Resources\drawable\icon_union.xml" />
     <AndroidResource Include="Resources\drawable\icon_info.xml" />
     <AndroidResource Include="Resources\drawable\info_message_rounded_background.xml">

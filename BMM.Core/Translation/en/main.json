@@ -241,7 +241,11 @@
   "PlayerViewModel": {
     "Title": "Now playing",
     "PlayingCount": "{0} of {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Queue"

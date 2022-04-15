@@ -19,7 +19,7 @@ namespace BMM.Core.ViewModels
             OptionSelectedCommand = new MvxAsyncCommand<StandardIconOptionPO>(async option =>
             {
                 await CloseCommand.ExecuteAsync();
-                await option.ClickCommand.ExecuteAsync();
+                option.ClickCommand.Execute();
             });
         }
 
