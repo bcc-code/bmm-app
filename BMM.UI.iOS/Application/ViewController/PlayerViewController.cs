@@ -404,7 +404,7 @@ namespace BMM.UI.iOS
 
         private void SetProgressBarThumb()
         {
-            var circleImage = ImageUtils.MakeCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
+            var circleImage = ImageUtils.MakePlayerThumbCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
             BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);

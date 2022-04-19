@@ -15,6 +15,7 @@ namespace BMM.Core.ViewModels
     public class PlayerBaseViewModel : BaseViewModel
     {
         private const int CurrentTrackUpdateDebounceDelayInMillis = 100;
+        private const int UpdateCurrentPositionThrottlingInMillis = 500;
 
         protected readonly IMediaPlayer MediaPlayer;
 
@@ -23,6 +24,7 @@ namespace BMM.Core.ViewModels
         private MvxSubscriptionToken _updateMetadataToken;
         
         private readonly DebounceDispatcher _currentTrackDebounceDispatcher;
+        private readonly ThrottlingDispatcher _currentPositionThrottlingDispatcher;
 
         private ITrackModel _currentTrack;
         
@@ -104,10 +106,23 @@ namespace BMM.Core.ViewModels
             get => _currentPosition;
             set
             {
-                SetProperty(ref _currentPosition, value);
-                RaisePropertyChanged(() => SliderPosition);
+                void UpdateCurrentPosition(long value)
+                {
+                    if (SetProperty(ref _currentPosition, value))
+                        RaisePropertyChanged(() => SliderPosition);
+                }
+                
+                if (IsSeeking || IsFirstCurrentPositionSet(value))
+                {
+                    UpdateCurrentPosition(value);
+                    return;
+                }
+
+                _currentPositionThrottlingDispatcher.Run(() => UpdateCurrentPosition(value));
             }
         }
+
+        private bool IsFirstCurrentPositionSet(long value) => CurrentPosition == 0 && value != 0;
 
         private long _downloaded;
         public long Downloaded
@@ -134,6 +149,7 @@ namespace BMM.Core.ViewModels
         public PlayerBaseViewModel(IMediaPlayer mediaPlayer)
         {
             _currentTrackDebounceDispatcher = new DebounceDispatcher(CurrentTrackUpdateDebounceDelayInMillis);
+            _currentPositionThrottlingDispatcher = new ThrottlingDispatcher(UpdateCurrentPositionThrottlingInMillis);
             
             MediaPlayer = mediaPlayer;
 

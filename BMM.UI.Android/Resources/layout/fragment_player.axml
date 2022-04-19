@@ -121,13 +121,17 @@
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
                 style="@style/SeekBarPlayer"
-                local:MvxBind="Max Duration; Progress SliderPosition, Mode=OneWay; SecondaryProgress Downloaded; Visibility VisibleOrHidden(!IsSeekingDisabled)"
                 android:layout_marginHorizontal="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/margin_small"
                 android:paddingHorizontal="4dp"
                 local:layout_constraintBottom_toTopOf="@+id/SliderPositionTimeLabel"
                 local:layout_constraintStart_toStartOf="parent"
-                local:layout_constraintEnd_toEndOf="parent" />
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxBind="
+                    Max Duration;
+                    Progress SliderPosition, Mode=OneWay;
+                    SecondaryProgress Downloaded;
+                    Visibility VisibleOrHidden(!IsSeekingDisabled)" />
 
         <TextView
                 android:id="@+id/SliderPositionTimeLabel"

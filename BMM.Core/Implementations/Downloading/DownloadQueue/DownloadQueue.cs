@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -109,16 +110,9 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                         _queuedDownloads.TryTake(out var item);
                         _currentDownloadingDownloadable = item;
                         _messenger.Publish(new FileDownloadStartedMessage(this));
-                        await _fileDownloader.DownloadFile(item);
-                        _finishedDownloadCount++;
+                        await SafeDownload(item);
                         _messenger.Publish(new FileDownloadCompletedMessage(this));
-                        _analytics.LogEvent(Event.TrackHasBeenDownloaded,
-                            new Dictionary<string, object>
-                            {
-                                { "trackId", item.Id },
-                                { "tags", string.Join(",", item.Tags.ToArray()) },
-                                { "url", item.Url }
-                            });
+                        _analytics.LogEvent(Event.TrackHasBeenDownloaded, PrepareAdditionalEventArguments(item));
                     }
                 }
                 catch (TaskCanceledException)
@@ -128,14 +122,6 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
 
                     // We don't need to show an error message if the task was canceled due to a user interaction
                 }
-                catch
-                {
-                    CancelQueue();
-                    downloadSucceeded = false;
-
-                    // We could show a more speaking error message
-                    throw;
-                }
                 finally
                 {
                     _isDownloading = false;
@@ -144,6 +130,34 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                     _messenger.Publish(new QueueFinishedMessage(this, downloadSucceeded));
                 }
             });
+        }
+
+        private static Dictionary<string, object> PrepareAdditionalEventArguments(IDownloadable item)
+        {
+            return new Dictionary<string, object>
+            {
+                { "trackId", item.Id },
+                { "tags", string.Join(",", item.Tags.ToArray()) },
+                { "url", item.Url }
+            };
+        }
+
+        private async Task SafeDownload(IDownloadable item)
+        {
+            try
+            {
+                await _fileDownloader.DownloadFile(item);
+            }
+            catch (Exception e)
+            {
+                var arguments = PrepareAdditionalEventArguments(item);
+                arguments.Add("exception", e.Message);
+                _analytics.LogEvent(Event.TrackDownloadingException, arguments);
+            }
+            finally
+            {
+                _finishedDownloadCount++;
+            }
         }
     }
 }
