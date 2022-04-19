@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using AVFoundation;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.NewMediaPlayer.Constants;
 using Foundation;
 using MvvmCross.Plugin.Messenger;
 
@@ -23,11 +25,11 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private readonly IMvxMessenger _messenger;
         private readonly ILogger _logger;
         private readonly ICommandCenter _commandCenter;
-        private readonly IExceptionHandler _exceptionHandler;
         private readonly NSObject _avAudioSessionInterruptionNotification;
 
         private IMediaTrack _currentTrack;
         private int _currentTrackIndex;
+        private decimal? _playbackSpeed;
 
         public IosMediaPlayer(
             IAudioPlayback audioPlayback,
@@ -43,7 +45,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _messenger = messenger;
             _logger = logger;
             _commandCenter = commandCenter;
-            _exceptionHandler = exceptionHandler;
 
             _audioPlayback.OnMediaFinished = OnMediaFinished;
             _audioPlayback.OnPositionChanged = PlaybackPositionChanged;
@@ -54,7 +55,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                     args.Option != AVAudioSessionInterruptionOptions.ShouldResume ||
                     _audioPlayback.Status == PlayStatus.Stopped ||
                     _audioPlayback.Status == PlayStatus.Ended) return;
-                _exceptionHandler.HandleException(_audioPlayback.Play());
+                exceptionHandler.HandleException(_audioPlayback.Play());
                 PlaybackStateChanged();
             });
         }
@@ -116,7 +117,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             if (result || CurrentTrack == null)
             {
-                var index = mediaTracks.IndexOf(currentTrack);
+                int index = mediaTracks.IndexOf(currentTrack);
                 PlayTrack(currentTrack, index, result, startTimeInMs);
             }
         }
@@ -219,6 +220,14 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 SeekTo(0);
             }
         }
+
+        public void ChangePlaybackSpeed(decimal playbackSpeed)
+        {
+            _playbackSpeed = playbackSpeed;
+            _audioPlayback.IfNotNull(ap => ap.Rate = (float)playbackSpeed);
+        }
+
+        public decimal CurrentPlaybackSpeed => _playbackSpeed ?? PlayerConstants.DefaultPlaybackSpeed;
 
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
         {
