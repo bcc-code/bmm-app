@@ -246,7 +246,9 @@
     "Minutes": "{0} minutes",
     "Hour": "{0} hour",
     "Hours": "{0} hours",
-    "Disable": "Disable"
+    "Disable": "Disable",
+    "PlaybackSpeed": "Playback speed",
+    "Default": "Default"
   },
   "QueueViewModel": {
     "Title": "Queue"

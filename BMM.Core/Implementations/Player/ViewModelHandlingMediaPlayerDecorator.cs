@@ -8,6 +8,7 @@ using BMM.Core.Implementations.LiveRadio;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.ViewModels;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
@@ -17,8 +18,6 @@ namespace BMM.Core.Implementations.Player
     public class ViewModelHandlingMediaPlayerDecorator : IMediaPlayer
     {
         private const double JumpStepsInSeconds = 15d;
-
-        private readonly MvxSubscriptionToken _token;
 
         private readonly IDeviceInfo _deviceInfo;
         private readonly IMvxNavigationService _navigationService;
@@ -92,6 +91,7 @@ namespace BMM.Core.Implementations.Player
                 mediaFiles,
                 currentTrack,
                 () => _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs));
+            ChangePlaybackSpeed(PlayerConstants.DefaultPlaybackSpeed);
         }
 
         public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
@@ -188,12 +188,9 @@ namespace BMM.Core.Implementations.Player
             _queue.Clear();
         }
 
-        public async Task ChangeLanguageOfCurrentTrack(string language)
-        {
-            Pause();
-            CurrentTrack.Language = language;
-            await Play(_queue.Tracks, (IMediaTrack)CurrentTrack, CurrentPosition);
-        }
+        public void ChangePlaybackSpeed(decimal playbackSpeed) => _mediaPlayer.ChangePlaybackSpeed(playbackSpeed);
+        
+        public decimal CurrentPlaybackSpeed => _mediaPlayer.CurrentPlaybackSpeed;
 
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
         {

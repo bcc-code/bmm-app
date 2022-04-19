@@ -40,5 +40,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool SendAgeToDiscover { get; }
         
         bool IsSleepTimerEnabled { get; }
+        
+        bool IsPlaybackSpeedEnabled { get; }
     }
 }

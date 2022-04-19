@@ -485,6 +485,7 @@
     <AndroidResource Include="Resources\drawable\icon_pause.xml" />
     <AndroidResource Include="Resources\drawable\icon_person.xml" />
     <AndroidResource Include="Resources\drawable\icon_playback_history.xml" />
+    <AndroidResource Include="Resources\drawable\icon_playback_speed.xml" />
     <AndroidResource Include="Resources\drawable\icon_previous.xml" />
     <AndroidResource Include="Resources\drawable\icon_queue.xml" />
     <AndroidResource Include="Resources\drawable\icon_remove.xml" />

@@ -46,7 +46,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
         private PeriodicExecutor _progressUpdater = new PeriodicExecutor();
 
-        public IExoPlayer ExoPlayer
+        public static IExoPlayer CurrentExoPlayerInstance { get; private set; }
+        
+        private IExoPlayer ExoPlayer
         {
             get
             {
@@ -63,6 +65,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                     // ToDo: we actually allow Music and Speeches within one playlist. Now it's always music.
                     playerInstance.AudioAttributes = new AudioAttributes.Builder().SetContentType(C.ContentTypeMusic).SetUsage(C.UsageMedia).Build();
                     _exoPlayer = new AudioFocusExoPlayerDecorator(playerInstance, audioManager, Mvx.IoCProvider.Resolve<ILogger>());
+                    CurrentExoPlayerInstance = _exoPlayer;
                 }
 
                 return _exoPlayer;

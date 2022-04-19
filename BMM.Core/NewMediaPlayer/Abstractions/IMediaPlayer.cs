@@ -72,6 +72,10 @@ namespace BMM.Core.NewMediaPlayer.Abstractions
 
         void PlayPreviousOrSeekToStart();
 
+        void ChangePlaybackSpeed(decimal playbackSpeed);
+
+        decimal CurrentPlaybackSpeed { get; }
+
         Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin);
 
         Task<bool> QueueToPlayNext(IMediaTrack track, string playbackOrigin);
