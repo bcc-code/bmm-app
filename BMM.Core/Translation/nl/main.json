@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "Aan het afspelen",
     "PlayingCount": "{0} van {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Wachtrij"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Instellingen",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Push-meldingen inschakelen",
     "OptionPushNotifications": "Push-meldingen",
     "OptionPushNotificationsSubtitle": "Schakel push-meldingen in voor podcasts die je volgt",
