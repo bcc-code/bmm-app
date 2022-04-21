@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "In riproduzione",
     "PlayingCount": "{0} di {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Coda"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Impostazioni",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Abilita le notifiche push",
     "OptionPushNotifications": "Notifiche push",
     "OptionPushNotificationsSubtitle": "Abilitare le notifiche push per i podcast che potete seguire",
