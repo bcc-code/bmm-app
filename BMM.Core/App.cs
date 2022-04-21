@@ -202,6 +202,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<NotificationParser>();
 
             Mvx.IoCProvider.RegisterType<ILogoutService, LogoutService>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ISleepTimerService, SleepTimerService>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackCollectionManager, TrackCollectionManager>();
 

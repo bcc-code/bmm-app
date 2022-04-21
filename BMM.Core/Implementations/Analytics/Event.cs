@@ -19,5 +19,7 @@
         public const string LyricsOpened = "Lyrics opened";
         public const string TrackLanguageChanged = "Track language changed";
         public const string BackgroundActivityRestrictedPopupShown = "Background Activity restricted popup shown";
+        public const string SleepTimerOptionsOpened = "Sleep timer options menu opened";
+        public const string SleepTimerOptionSelected = "Sleep timer option selected";
     }
 }

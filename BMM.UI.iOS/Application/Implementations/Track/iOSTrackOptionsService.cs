@@ -31,7 +31,7 @@ namespace BMM.UI.iOS.Implementations.Track
             {
                 actionSheet.AddHandled(
                     standardIconOptionPO.Title,
-                    () => standardIconOptionPO.ClickCommand.ExecuteAsync(),
+                    async () => standardIconOptionPO.ClickCommand.Execute(),
                     standardIconOptionPO.ImagePath?.ToStandardIosImageName());
             }
             

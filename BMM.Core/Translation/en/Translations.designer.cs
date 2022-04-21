@@ -179,6 +179,11 @@ namespace BMM.Core.Translation
 		public const string PlayerViewModel_Title = nameof(PlayerViewModel_Title);
 		public const string PlayerViewModel_PlayingCount = nameof(PlayerViewModel_PlayingCount);
 		public const string PlayerViewModel_ViewLyrics = nameof(PlayerViewModel_ViewLyrics);
+		public const string PlayerViewModel_SleepTimer = nameof(PlayerViewModel_SleepTimer);
+		public const string PlayerViewModel_Minutes = nameof(PlayerViewModel_Minutes);
+		public const string PlayerViewModel_Hour = nameof(PlayerViewModel_Hour);
+		public const string PlayerViewModel_Hours = nameof(PlayerViewModel_Hours);
+		public const string PlayerViewModel_Disable = nameof(PlayerViewModel_Disable);
 		public const string QueueViewModel_Title = nameof(QueueViewModel_Title);
 		public const string SearchViewModel_Title = nameof(SearchViewModel_Title);
 		public const string SearchViewModel_SearchHint = nameof(SearchViewModel_SearchHint);
@@ -193,8 +198,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_HeadlineSettings = nameof(SettingsViewModel_HeadlineSettings);
 		public const string SettingsViewModel_OptionAutoplayHeader = nameof(SettingsViewModel_OptionAutoplayHeader);
 		public const string SettingsViewModel_OptionAutoplayText = nameof(SettingsViewModel_OptionAutoplayText);
-		public const string SettingsViewModel_OptionStreakHiddenHeader = nameof(SettingsViewModel_OptionStreakHiddenHeader);
-		public const string SettingsViewModel_OptionStreakHiddenText = nameof(SettingsViewModel_OptionStreakHiddenText);
+		public const string SettingsViewModel_OptionStreakHeader = nameof(SettingsViewModel_OptionStreakHeader);
+		public const string SettingsViewModel_OptionStreakText = nameof(SettingsViewModel_OptionStreakText);
 		public const string SettingsViewModel_OptionEnablePushHeader = nameof(SettingsViewModel_OptionEnablePushHeader);
 		public const string SettingsViewModel_OptionPushNotifications = nameof(SettingsViewModel_OptionPushNotifications);
 		public const string SettingsViewModel_OptionPushNotificationsSubtitle = nameof(SettingsViewModel_OptionPushNotificationsSubtitle);

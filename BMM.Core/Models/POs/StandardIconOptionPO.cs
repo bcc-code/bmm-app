@@ -9,7 +9,7 @@ namespace BMM.Core.Models.POs
         public StandardIconOptionPO(
             string title,
             string imagePath,
-            IMvxAsyncCommand clickCommand)
+            IMvxCommand clickCommand)
         {
             Title = title;
             ImagePath = imagePath;
@@ -18,6 +18,6 @@ namespace BMM.Core.Models.POs
         
         public string Title { get; }
         public string ImagePath { get; }
-        public IMvxAsyncCommand ClickCommand { get; }
+        public IMvxCommand ClickCommand { get; }
     }
 }

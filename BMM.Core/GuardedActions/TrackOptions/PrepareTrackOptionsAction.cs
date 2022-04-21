@@ -7,11 +7,15 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.TrackOptions.Interfaces;
+using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.GuardedActions.TrackOptions.Parameters.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
+using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
@@ -31,19 +35,28 @@ namespace BMM.Core.GuardedActions.TrackOptions
         GuardedActionWithParameterAndResult<IPrepareTrackOptionsParameters, IList<StandardIconOptionPO>>,
         IPrepareTrackOptionsAction
     {
+        private const string SleepTimerOptionKey = "Selected sleep timer option"; 
         private readonly IConnection _connection;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
         private readonly IMvxMessenger _mvxMessenger;
         private readonly IMvxNavigationService _mvxNavigationService;
         private readonly IShareLink _shareLink;
         private readonly ITrackOptionsService _trackOptionsService;
+        private readonly IFeaturePreviewPermission _featurePreviewPermission;
+        private readonly ISleepTimerService _sleepTimerService;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
+        private readonly IAnalytics _analytics;
 
         public PrepareTrackOptionsAction(IConnection connection,
             IBMMLanguageBinder bmmLanguageBinder,
             IMvxMessenger mvxMessenger,
             IMvxNavigationService mvxNavigationService,
             IShareLink shareLink,
-            ITrackOptionsService trackOptionsService)
+            ITrackOptionsService trackOptionsService,
+            IFeaturePreviewPermission featurePreviewPermission,
+            ISleepTimerService sleepTimerService,
+            IFirebaseRemoteConfig firebaseRemoteConfig,
+            IAnalytics analytics)
         {
             _connection = connection;
             _bmmLanguageBinder = bmmLanguageBinder;
@@ -51,7 +64,13 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _mvxNavigationService = mvxNavigationService;
             _shareLink = shareLink;
             _trackOptionsService = trackOptionsService;
+            _featurePreviewPermission = featurePreviewPermission;
+            _sleepTimerService = sleepTimerService;
+            _firebaseRemoteConfig = firebaseRemoteConfig;
+            _analytics = analytics;
         }
+        
+        private bool IsSleepTimerOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsSleepTimerEnabled;
 
         protected override async Task<IList<StandardIconOptionPO>> Execute(IPrepareTrackOptionsParameters parameter)
         {
@@ -60,6 +79,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             var sourceVM = parameter.SourceVM;
             var track = (Track)parameter.Track;
+            bool shouldShowSleepTimerOption = sourceVM is PlayerViewModel && IsSleepTimerOptionAvailable;
 
             bool isInOnlineMode = _connection.GetStatus() == ConnectionStatus.Online;
 
@@ -257,6 +277,15 @@ namespace BMM.Core.GuardedActions.TrackOptions
                 }
             }
 
+            if (shouldShowSleepTimerOption)
+            {
+                options.Add(
+                    new StandardIconOptionPO(
+                        _bmmLanguageBinder[Translations.PlayerViewModel_SleepTimer],
+                        ImageResourceNames.IconSleepTimer,
+                        new MvxAsyncCommand(async () => await SleepTimerClickedAction())));
+            }
+
             options.Add(
                 new StandardIconOptionPO(
                     _bmmLanguageBinder[Translations.UserDialogs_Track_MoreInformation],
@@ -268,6 +297,53 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     })));
 
             return options;
+        }
+
+        private async Task SleepTimerClickedAction()
+        {
+            IMvxCommand CreateOptionTapCommand(SleepTimerOption sleepTimerOption)
+            {
+                return new MvxCommand(() =>
+                {
+                    _sleepTimerService.Set(sleepTimerOption);
+                    _analytics.LogEvent(Event.SleepTimerOptionSelected, new Dictionary<string, object>
+                    {
+                        {SleepTimerOptionKey, sleepTimerOption.ToString()}
+                    });
+                });
+            }
+
+            StandardIconOptionPO PrepareMinutesOption(SleepTimerOption sleepTimerOption)
+            {
+                return new StandardIconOptionPO(
+                    _bmmLanguageBinder.GetText(Translations.PlayerViewModel_Minutes, (int)sleepTimerOption),
+                    ImageResourceNames.IconSleepTimer,
+                    CreateOptionTapCommand(sleepTimerOption));
+            }
+
+            var sleepTimerOptions = new List<StandardIconOptionPO>
+            {
+                PrepareMinutesOption(SleepTimerOption.FiveMinutes),
+                PrepareMinutesOption(SleepTimerOption.TenMinutes),
+                PrepareMinutesOption(SleepTimerOption.FifteenMinutes),
+                PrepareMinutesOption(SleepTimerOption.ThirtyMinutes),
+                PrepareMinutesOption(SleepTimerOption.FortyFiveMinutes),
+                new(
+                    _bmmLanguageBinder.GetText(Translations.PlayerViewModel_Hour, 1),
+                    ImageResourceNames.IconSleepTimer,
+                    CreateOptionTapCommand(SleepTimerOption.OneHour))
+            };
+
+            if (_sleepTimerService.IsEnabled)
+            {
+                sleepTimerOptions.Add(new StandardIconOptionPO(
+                    _bmmLanguageBinder.GetText(Translations.PlayerViewModel_Disable),
+                    ImageResourceNames.IconRemove,
+                    CreateOptionTapCommand(SleepTimerOption.NotSet)));
+            }
+
+            _analytics.LogEvent(Event.SleepTimerOptionsOpened);
+            await _trackOptionsService.OpenOptions(sleepTimerOptions);
         }
 
         private async Task GoToContributorVM(int id)
