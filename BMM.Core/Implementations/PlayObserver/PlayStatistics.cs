@@ -49,6 +49,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public IList<IMediaTrack> CurrentQueue { get; private set; }
         public bool IsCurrentQueueSaved { get; set; }
         public bool IsPlaying { get; private set; }
+        public decimal DesiredRate { get; set; } = 1;
 
         /// <summary>
         /// We want to be able to extend <see cref="Clear"/> in <see cref="PlayStatisticsDecorator"/>. Therefore we use this Action as work-around to pass the command through all Decorator layers.
@@ -83,10 +84,10 @@ namespace BMM.Core.Implementations.PlayObserver
 
         public void OnPlaybackStateChanged(IPlaybackState state)
         {
-            // We add a portion when the user pauses the playback.
-            if (!state.IsPlaying && IsPlaying)
+            // We add a portion when the user pauses the playback or changes the playback rate.
+            if (!state.IsPlaying && IsPlaying || DesiredRate != state.DesiredPlaybackRate)
             {
-                AddPortionListened(state.CurrentPosition);
+                AddPortionListened(state.CurrentPosition, state.DesiredPlaybackRate);
             }
             else if (state.IsPlaying && !IsPlaying)
             {
@@ -95,7 +96,9 @@ namespace BMM.Core.Implementations.PlayObserver
             }
 
             IsPlaying = state.IsPlaying;
+            DesiredRate = state.DesiredPlaybackRate;
         }
+
 
         public void OnCurrentQueueChanged(CurrentQueueChangedMessage message)
         {
@@ -108,7 +111,7 @@ namespace BMM.Core.Implementations.PlayObserver
             if (CurrentTrack == null)
                 return;
 
-            AddPortionListened(currentPosition);
+            AddPortionListened(currentPosition, DesiredRate);
             StartNextPortion(seekedPosition);
         }
 
@@ -144,14 +147,14 @@ namespace BMM.Core.Implementations.PlayObserver
             {
                 if (CurrentTrack != null)
                 {
-                    AddPortionListened(CurrentTrack.Duration);
+                    AddPortionListened(CurrentTrack.Duration, DesiredRate);
                     await LogPlayedTrack();
                     StartNextPortion();
                 }
             });
         }
 
-        public void AddPortionListened(double currentPosition)
+        public void AddPortionListened(double currentPosition, decimal playbackRate)
         {
             if (StartOfNextPortion == currentPosition)
                 return;
@@ -162,7 +165,14 @@ namespace BMM.Core.Implementations.PlayObserver
                         {{"Track", CurrentTrack?.Id}, {"Portions", PortionsListened.Count}, {"StartOfNewPortion", StartOfNextPortion}, {"EndOfNewPortion", currentPosition}});
             }
 
-            PortionsListened.Add(new ListenedPortion {Start = StartOfNextPortion, StartTime = StartTimeOfNextPortion, End = currentPosition, EndTime = DateTime.UtcNow});
+            PortionsListened.Add(new ListenedPortion
+            {
+                Start = StartOfNextPortion,
+                StartTime = StartTimeOfNextPortion,
+                End = currentPosition,
+                EndTime = DateTime.UtcNow,
+                PlaybackRate = playbackRate
+            });
             StartNextPortion(currentPosition);
         }
 
@@ -170,7 +180,16 @@ namespace BMM.Core.Implementations.PlayObserver
         {
             var list = PortionsListened.Clone();
             if (StartOfNextPortion != position)
-                list.Add(new ListenedPortion {Start = StartOfNextPortion, StartTime = StartTimeOfNextPortion, End = position, EndTime = DateTime.UtcNow});
+            {
+                list.Add(new ListenedPortion
+                {
+                    Start = StartOfNextPortion,
+                    StartTime = StartTimeOfNextPortion,
+                    End = position,
+                    EndTime = DateTime.UtcNow,
+                    PlaybackRate = DesiredRate
+                });
+            }
 
             return _measurementCalculator.Calculate(CurrentTrack.Duration, list);
         }

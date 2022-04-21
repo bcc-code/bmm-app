@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 using AVFoundation;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
-using BMM.Core.Extensions;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using BMM.Core.NewMediaPlayer.Constants;
 using Foundation;
 using MvvmCross.Plugin.Messenger;
 
@@ -100,6 +98,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             IsPlaying = IsPlaying,
             PlayStatus = _audioPlayback.Status,
             PlaybackRate = _audioPlayback.Rate,
+            DesiredPlaybackRate = _audioPlayback.DesiredRate,
             IsSkipToNextEnabled = GetPlayNextIndex().HasValue,
             IsSkipToPreviousEnabled = CurrentTrack?.IsLivePlayback == false || GetPlayPreviousIndex().HasValue,
             CurrentIndex = _currentTrackIndex,
@@ -151,6 +150,10 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
 
+        public void ChangePlaybackSpeed(decimal playbackSpeed) => _audioPlayback.DesiredRate = playbackSpeed;
+
+        public decimal CurrentPlaybackSpeed => _audioPlayback.DesiredRate;
+        
         private int? GetPlayNextIndex()
         {
             if (_currentTrackIndex < _queue.Tracks.Count - 1)
@@ -220,15 +223,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 SeekTo(0);
             }
         }
-
-        public void ChangePlaybackSpeed(decimal playbackSpeed)
-        {
-            _playbackSpeed = playbackSpeed;
-            _audioPlayback.IfNotNull(ap => ap.Rate = (float)playbackSpeed);
-        }
-
-        public decimal CurrentPlaybackSpeed => _playbackSpeed ?? PlayerConstants.DefaultPlaybackSpeed;
-
+        
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
         {
             return _queue.Append(track);

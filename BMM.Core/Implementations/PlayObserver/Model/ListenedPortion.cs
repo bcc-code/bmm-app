@@ -8,5 +8,6 @@ namespace BMM.Core.Implementations.PlayObserver.Model
         public DateTime StartTime { get; set; }
         public double End { get; set; }
         public DateTime EndTime { get; set; }
+        public decimal PlaybackRate { get; set; }
     }
 }

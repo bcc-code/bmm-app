@@ -64,9 +64,12 @@ namespace BMM.Core.Implementations.PlayObserver
 
             double startedListening = orderedPortions.First().Start;
             double endedListening = orderedPortions.First().End;
+            decimal playbackRate = orderedPortions.First().PlaybackRate;
 
             foreach (var portion in orderedPortions)
             {
+                playbackRate = portion.PlaybackRate;
+                
                 if (!portion.Start.Equals(startedListening))
                 {
                     if (portion.Start > endedListening)
@@ -74,7 +77,7 @@ namespace BMM.Core.Implementations.PlayObserver
                         if (endedListening - startedListening >= MinPortionDurationInMs)
                         {
                             status = ListenedStatus.Jumped;
-                            msListened += endedListening - startedListening;
+                            msListened += (endedListening - startedListening) * (double)playbackRate;
                         }
                         else
                         {
@@ -92,7 +95,7 @@ namespace BMM.Core.Implementations.PlayObserver
             // Add the last listened portion
             if (endedListening - startedListening >= MinPortionDurationInMs)
             {
-                msListened += endedListening - startedListening;
+                msListened += (endedListening - startedListening) * (double)playbackRate;
             }
 
             var uniqueSecondsListened = Math.Ceiling(TimeSpan.FromMilliseconds(msListened).TotalSeconds);

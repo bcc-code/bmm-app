@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AVFoundation;
 using BMM.Api.Abstraction;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.NewMediaPlayer;
+using BMM.Core.NewMediaPlayer.Constants;
 using CoreMedia;
 using Foundation;
 
@@ -25,6 +27,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private PlayStatus _status;
 
         private IMediaTrack _currentMediaTrack;
+        private decimal? _desiredRate;
 
         private AVPlayerItem CurrentItem => Player.CurrentItem;
 
@@ -38,6 +41,21 @@ namespace BMM.UI.iOS.NewMediaPlayer
                     _status = value;
                     OnStateChanged?.Invoke();
                 }
+            }
+        }
+
+        public decimal DesiredRate
+        {
+            get => _desiredRate ?? PlayerConstants.DefaultPlaybackSpeed;
+            set
+            {
+                _desiredRate = value;
+
+                if (Status != PlayStatus.Playing)
+                    return;
+                
+                Rate = (float)value;
+                OnStateChanged?.Invoke();
             }
         }
 
@@ -56,10 +74,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
             set
             {
-                if (Player != null)
-                {
-                    Player.Rate = value;
-                }
+                Player.IfNotNull(p => p.Rate = value);
             }
         }
 
@@ -136,7 +151,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 if (playAutomatically && (Status == PlayStatus.Paused || Status == PlayStatus.Ended))
                 {
                     _status = PlayStatus.Playing;
-                    Player.Play();
+                    PlayAndSetRate();
                 }
 
                 OnStateChanged?.Invoke();
@@ -153,7 +168,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
                 Status = PlayStatus.Playing;
                 // We are simply paused so just start again
-                Player.Play();
+                PlayAndSetRate();
                 return;
             }
             if (sameMediaTrack && Status == PlayStatus.Ended)
@@ -187,7 +202,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 AttachObservers();
                 CurrentItem.SeekingWaitsForVideoCompositionRendering = true;
 
-                Player.Play();
+                PlayAndSetRate();
             }
             catch (Exception ex)
             {
@@ -206,6 +221,12 @@ namespace BMM.UI.iOS.NewMediaPlayer
             Status = PlayStatus.Paused;
             Player.ReplaceCurrentItemWithPlayerItem(playerItem);
             AttachObservers();
+        }
+        
+        private void PlayAndSetRate()
+        {
+            Player.Play();
+            Rate = (float)DesiredRate;
         }
 
         private void AttachObservers()
@@ -267,7 +288,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             if (CurrentItem.Status == AVPlayerItemStatus.ReadyToPlay && isBuffering)
             {
                 Status = PlayStatus.Playing;
-                Player.Play();
+                PlayAndSetRate();
                 _playerAnalytics.TrackPlaybackStarted(_currentMediaTrack);
             }
             else if (CurrentItem.Status == AVPlayerItemStatus.Failed)
