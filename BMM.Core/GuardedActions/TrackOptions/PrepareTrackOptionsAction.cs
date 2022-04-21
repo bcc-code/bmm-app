@@ -13,6 +13,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Tracks.Interfaces;
@@ -34,6 +35,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
         GuardedActionWithParameterAndResult<IPrepareTrackOptionsParameters, IList<StandardIconOptionPO>>,
         IPrepareTrackOptionsAction
     {
+        private const string SleepTimerOptionKey = "Selected sleep timer option"; 
         private readonly IConnection _connection;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
         private readonly IMvxMessenger _mvxMessenger;
@@ -42,6 +44,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
         private readonly ITrackOptionsService _trackOptionsService;
         private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly ISleepTimerService _sleepTimerService;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
+        private readonly IAnalytics _analytics;
 
         public PrepareTrackOptionsAction(IConnection connection,
             IBMMLanguageBinder bmmLanguageBinder,
@@ -50,7 +54,9 @@ namespace BMM.Core.GuardedActions.TrackOptions
             IShareLink shareLink,
             ITrackOptionsService trackOptionsService,
             IFeaturePreviewPermission featurePreviewPermission,
-            ISleepTimerService sleepTimerService)
+            ISleepTimerService sleepTimerService,
+            IFirebaseRemoteConfig firebaseRemoteConfig,
+            IAnalytics analytics)
         {
             _connection = connection;
             _bmmLanguageBinder = bmmLanguageBinder;
@@ -60,6 +66,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _trackOptionsService = trackOptionsService;
             _featurePreviewPermission = featurePreviewPermission;
             _sleepTimerService = sleepTimerService;
+            _firebaseRemoteConfig = firebaseRemoteConfig;
+            _analytics = analytics;
         }
 
         protected override async Task<IList<StandardIconOptionPO>> Execute(IPrepareTrackOptionsParameters parameter)
@@ -69,7 +77,9 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             var sourceVM = parameter.SourceVM;
             var track = (Track)parameter.Track;
-            bool shouldShowSleepTimerOption = sourceVM is PlayerViewModel && _featurePreviewPermission.IsFeaturePreviewEnabled();
+            bool shouldShowSleepTimerOption = sourceVM is PlayerViewModel
+                                              && _featurePreviewPermission.IsFeaturePreviewEnabled()
+                                              && _firebaseRemoteConfig.IsSleepTimerEnabled;
 
             bool isInOnlineMode = _connection.GetStatus() == ConnectionStatus.Online;
 
@@ -293,7 +303,14 @@ namespace BMM.Core.GuardedActions.TrackOptions
         {
             IMvxCommand CreateOptionTapCommand(SleepTimerOption sleepTimerOption)
             {
-                return new MvxCommand(() => _sleepTimerService.Set(sleepTimerOption));
+                return new MvxCommand(() =>
+                {
+                    _sleepTimerService.Set(sleepTimerOption);
+                    _analytics.LogEvent(Event.SleepTimerOptionSelected, new Dictionary<string, object>
+                    {
+                        {SleepTimerOptionKey, sleepTimerOption.ToString()}
+                    });
+                });
             }
 
             StandardIconOptionPO PrepareMinutesOption(SleepTimerOption sleepTimerOption)
@@ -325,6 +342,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     CreateOptionTapCommand(SleepTimerOption.NotSet)));
             }
 
+            _analytics.LogEvent(Event.SleepTimerOptionsOpened);
             await _trackOptionsService.OpenOptions(sleepTimerOptions);
         }
 

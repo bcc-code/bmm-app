@@ -38,5 +38,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         string ExperimentId { get; }
         
         bool SendAgeToDiscover { get; }
+        
+        bool IsSleepTimerEnabled { get; }
     }
 }
