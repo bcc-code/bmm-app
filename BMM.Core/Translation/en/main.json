@@ -245,6 +245,7 @@
     "SleepTimer": "Sleep timer",
     "Minutes": "{0} minutes",
     "Hour": "{0} hour",
+    "Hours": "{0} hours",
     "Disable": "Disable"
   },
   "QueueViewModel": {

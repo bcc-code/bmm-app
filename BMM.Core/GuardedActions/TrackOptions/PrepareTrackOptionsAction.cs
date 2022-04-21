@@ -69,6 +69,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _firebaseRemoteConfig = firebaseRemoteConfig;
             _analytics = analytics;
         }
+        
+        private bool IsSleepTimerOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsSleepTimerEnabled;
 
         protected override async Task<IList<StandardIconOptionPO>> Execute(IPrepareTrackOptionsParameters parameter)
         {
@@ -77,9 +79,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             var sourceVM = parameter.SourceVM;
             var track = (Track)parameter.Track;
-            bool shouldShowSleepTimerOption = sourceVM is PlayerViewModel
-                                              && _featurePreviewPermission.IsFeaturePreviewEnabled()
-                                              && _firebaseRemoteConfig.IsSleepTimerEnabled;
+            bool shouldShowSleepTimerOption = sourceVM is PlayerViewModel && IsSleepTimerOptionAvailable;
 
             bool isInOnlineMode = _connection.GetStatus() == ConnectionStatus.Online;
 
