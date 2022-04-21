@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "Redat acum",
     "PlayingCount": "{0} din {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Listă"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Setări",
     "OptionAutoplayHeader": "Redare automată",
     "OptionAutoplayText": "Redă muzică după ce asculți episodul de astăzi de la Kåre",
-    "OptionStreakHiddenHeader": "Ascunde progres",
-    "OptionStreakHiddenText": "Ascunde statistica de ascultare",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Activează notificări",
     "OptionPushNotifications": "Forțează notificările",
     "OptionPushNotificationsSubtitle": "Activare notificări pentru podcast-uri urmărite",
