@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "Reproduzindo agora ",
     "PlayingCount": "{0} de {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Fila"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Configurações",
     "OptionAutoplayHeader": "Reprodução automática",
     "OptionAutoplayText": "Reproduzir hino depois de ouvir o episódio de hoje de Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Habilitar notificações push",
     "OptionPushNotifications": "Notificações push",
     "OptionPushNotificationsSubtitle": "Habilitar notificações do impulso para podcasts que você siga",
