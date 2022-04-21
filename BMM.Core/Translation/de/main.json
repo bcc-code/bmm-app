@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "Spielt jetzt",
     "PlayingCount": "{0} von {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Warteschlange"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Einstellungen",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Spiele Musik nach der heutigen Fra Kåre Sendung",
-    "OptionStreakHiddenHeader": "Streak ausblenden",
-    "OptionStreakHiddenText": "Deine Hörstatistik nicht anzeigen",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Push-Benachrichtigungen erlauben",
     "OptionPushNotifications": "Push-Benachrichtigungen",
     "OptionPushNotificationsSubtitle": "Aktiviere Push-Benachrichtigungen für Podcasts, die ich abonniert habe",
