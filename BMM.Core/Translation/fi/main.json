@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "Nyt soi",
     "PlayingCount": "Soitetaan {0} {1}:sta",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Jono"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Asetukset",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Ota ponnahdusilmoitukset käyttöön",
     "OptionPushNotifications": "Push-ilmoitukset",
     "OptionPushNotificationsSubtitle": "Push-ilmoitukset päälle seuraamistasi podcasteista",
