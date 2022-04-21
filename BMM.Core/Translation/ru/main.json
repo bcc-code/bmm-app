@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "Now playing",
     "PlayingCount": "Воспроизведение {0} из {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Очередь"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Параметры",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Включить \"Push\" - уведомления",
     "OptionPushNotifications": "Push Notifications",
     "OptionPushNotificationsSubtitle": "Enable push notifications for podcasts you follow",
