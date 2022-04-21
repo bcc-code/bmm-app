@@ -21,5 +21,7 @@
         public const string BackgroundActivityRestrictedPopupShown = "Background Activity restricted popup shown";
         public const string SleepTimerOptionsOpened = "Sleep timer options menu opened";
         public const string SleepTimerOptionSelected = "Sleep timer option selected";
+        public const string PlaybackSpeedOptionsOpened = "Playback speed options menu opened";
+        public const string PlaybackSpeedOptionSelected = "Playback speed option selected";
     }
 }

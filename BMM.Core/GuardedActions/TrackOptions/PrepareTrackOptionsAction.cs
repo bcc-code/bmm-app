@@ -39,6 +39,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
         IPrepareTrackOptionsAction
     {
         private const string SleepTimerOptionKey = "Selected sleep timer option"; 
+        private const string PlaybackSpeedOptionKey = "Selected playback speed option"; 
         private const string PlaybackSpeedStringFormat = "0.00";
         
         private readonly IConnection _connection;
@@ -324,7 +325,14 @@ namespace BMM.Core.GuardedActions.TrackOptions
         {
             IMvxCommand CreatePlaybackSpeedTapCommand(decimal playbackSpeed)
             {
-                return new MvxCommand(() => _mediaPlayer.ChangePlaybackSpeed(playbackSpeed));
+                return new MvxCommand(() =>
+                {
+                    _mediaPlayer.ChangePlaybackSpeed(playbackSpeed);
+                    _analytics.LogEvent(Event.PlaybackSpeedOptionSelected, new Dictionary<string, object>
+                    {
+                        {PlaybackSpeedOptionKey, playbackSpeed}
+                    });
+                });
             }
 
             StandardIconOptionPO CreatePlaybackSpeedOption(decimal playbackSpeed)
@@ -347,6 +355,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     CreatePlaybackSpeedTapCommand(PlayerConstants.DefaultPlaybackSpeed)));
             }
 
+            _analytics.LogEvent(Event.PlaybackSpeedOptionsOpened);
             await _trackOptionsService.OpenOptions(playbackSpeedOptions);
         }
 
