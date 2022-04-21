@@ -120,7 +120,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public bool IsShuffleEnabled =>
             _mediaController?.ShuffleMode == PlaybackStateCompat.ShuffleModeGroup || _mediaController?.ShuffleMode == PlaybackStateCompat.ShuffleModeAll;
 
-        public IPlaybackState PlaybackState => _mediaController?.PlaybackState?.ToPlaybackState(_mediaQueue) ?? new DefaultPlaybackState();
+        public IPlaybackState PlaybackState => _mediaController?.PlaybackState?.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed) ?? new DefaultPlaybackState();
 
         public long CurrentPosition => PlaybackState.CurrentPosition;
 
@@ -200,7 +200,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public void Stop()
         {
             _mediaController.GetTransportControls().Stop();
-            _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue)));
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
             _messenger.Publish(new CurrentTrackChangedMessage(null, this));
             Disconnect();
         }
@@ -232,6 +232,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         {
             _currentPlaybackSpeed = playbackSpeed;
             MusicService.CurrentExoPlayerInstance.IfNotNull(s => s.PlaybackParameters = new PlaybackParameters((float)playbackSpeed));
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
         }
 
         public decimal CurrentPlaybackSpeed => _currentPlaybackSpeed ?? PlayerConstants.DefaultPlaybackSpeed;

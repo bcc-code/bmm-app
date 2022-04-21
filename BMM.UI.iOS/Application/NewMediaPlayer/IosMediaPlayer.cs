@@ -27,7 +27,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private IMediaTrack _currentTrack;
         private int _currentTrackIndex;
-        private decimal? _playbackSpeed;
 
         public IosMediaPlayer(
             IAudioPlayback audioPlayback,

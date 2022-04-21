@@ -59,7 +59,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
             return (state.Actions & playbackState) != 0L;
         }
 
-        public static IPlaybackState ToPlaybackState(this PS state, IMediaQueue mediaQueue)
+        public static IPlaybackState ToPlaybackState(this PS state, IMediaQueue mediaQueue, decimal desiredPlaybackSpeed)
         {
             return new PlaybackState
             {
@@ -70,7 +70,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
                 QueueLength = mediaQueue.Tracks.Count,
                 CurrentPosition = state.Position,
                 BufferedPosition = state.BufferedPosition.WithPossibleLowestValue(0),
-                PlayStatus = state.PlayStatus()
+                PlayStatus = state.PlayStatus(),
+                DesiredPlaybackRate = desiredPlaybackSpeed
             };
         }
     }

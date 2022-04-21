@@ -24,7 +24,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         private readonly ILogger _logger;
         private readonly IToastDisplayer _toastDisplayer;
         private readonly IPlayerErrorHandler _playerErrorHandler;
-        private readonly IMediaPlayer _mediaPlayer;
         private readonly IPlayerAnalytics _playerAnalytics;
         private const int TrackFinishedMarginInMs = 2000;
 
@@ -71,7 +70,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 _messenger.Publish(completedEvent);
             }
 
-            _messenger.Publish(new PlaybackStatusChangedMessage(this, state.ToPlaybackState(_mediaQueue)));
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, state.ToPlaybackState(_mediaQueue, (decimal)state.PlaybackSpeed)));
 
             if (state.ErrorMessage != null)
             {

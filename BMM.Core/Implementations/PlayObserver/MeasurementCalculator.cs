@@ -64,20 +64,17 @@ namespace BMM.Core.Implementations.PlayObserver
 
             double startedListening = orderedPortions.First().Start;
             double endedListening = orderedPortions.First().End;
-            decimal playbackRate = orderedPortions.First().PlaybackRate;
 
             foreach (var portion in orderedPortions)
             {
-                playbackRate = portion.PlaybackRate;
-                
                 if (!portion.Start.Equals(startedListening))
                 {
                     if (portion.Start > endedListening)
                     {
-                        if (endedListening - startedListening >= MinPortionDurationInMs)
+                        if (ShouldIncludePortion(endedListening, startedListening))
                         {
                             status = ListenedStatus.Jumped;
-                            msListened += (endedListening - startedListening) * (double)playbackRate;
+                            msListened += endedListening - startedListening;
                         }
                         else
                         {
@@ -93,13 +90,17 @@ namespace BMM.Core.Implementations.PlayObserver
             }
 
             // Add the last listened portion
-            if (endedListening - startedListening >= MinPortionDurationInMs)
+            if (ShouldIncludePortion(endedListening, startedListening))
             {
-                msListened += (endedListening - startedListening) * (double)playbackRate;
+                msListened += (endedListening - startedListening) * (double)orderedPortions.Last().PlaybackRate;
             }
 
-            var uniqueSecondsListened = Math.Ceiling(TimeSpan.FromMilliseconds(msListened).TotalSeconds);
-            return uniqueSecondsListened;
+            return Math.Ceiling(TimeSpan.FromMilliseconds(msListened).TotalSeconds);
+        }
+
+        private static bool ShouldIncludePortion(double endedListening, double startedListening)
+        {
+            return endedListening - startedListening >= MinPortionDurationInMs;
         }
     }
 }

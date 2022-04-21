@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Akavache;
-using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
