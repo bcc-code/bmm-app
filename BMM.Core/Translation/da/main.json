@@ -241,7 +241,12 @@
   "PlayerViewModel": {
     "Title": "Spiller nu",
     "PlayingCount": "{0} af {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable"
   },
   "QueueViewModel": {
     "Title": "Spillekø"
@@ -262,8 +267,8 @@
     "HeadlineSettings": "Indstillinger",
     "OptionAutoplayHeader": "Auto-afspil",
     "OptionAutoplayText": "Afspil musik efter dagens episode af Fra Kåre",
-    "OptionStreakHiddenHeader": "Skjul streak",
-    "OptionStreakHiddenText": "Skjul din lytte-statistik",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Aktiver notifikationer",
     "OptionPushNotifications": "Notifikationer",
     "OptionPushNotificationsSubtitle": "Aktiver notifikationer på podcaster du følger",
