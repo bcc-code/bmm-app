@@ -49,7 +49,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public IList<IMediaTrack> CurrentQueue { get; private set; }
         public bool IsCurrentQueueSaved { get; set; }
         public bool IsPlaying { get; private set; }
-        public decimal DesiredRate { get; set; } = 1;
+        public decimal DesiredPlaybackRate { get; set; } = 1;
 
         /// <summary>
         /// We want to be able to extend <see cref="Clear"/> in <see cref="PlayStatisticsDecorator"/>. Therefore we use this Action as work-around to pass the command through all Decorator layers.
@@ -85,7 +85,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public void OnPlaybackStateChanged(IPlaybackState state)
         {
             // We add a portion when the user pauses the playback or changes the playback rate.
-            if (!state.IsPlaying && IsPlaying || DesiredRate != state.DesiredPlaybackRate)
+            if (!state.IsPlaying && IsPlaying || DesiredPlaybackRate != state.DesiredPlaybackRate)
             {
                 AddPortionListened(state.CurrentPosition, state.DesiredPlaybackRate);
             }
@@ -96,7 +96,7 @@ namespace BMM.Core.Implementations.PlayObserver
             }
 
             IsPlaying = state.IsPlaying;
-            DesiredRate = state.DesiredPlaybackRate;
+            DesiredPlaybackRate = state.DesiredPlaybackRate;
         }
 
 
@@ -111,7 +111,7 @@ namespace BMM.Core.Implementations.PlayObserver
             if (CurrentTrack == null)
                 return;
 
-            AddPortionListened(currentPosition, DesiredRate);
+            AddPortionListened(currentPosition, DesiredPlaybackRate);
             StartNextPortion(seekedPosition);
         }
 
@@ -147,7 +147,7 @@ namespace BMM.Core.Implementations.PlayObserver
             {
                 if (CurrentTrack != null)
                 {
-                    AddPortionListened(CurrentTrack.Duration, DesiredRate);
+                    AddPortionListened(CurrentTrack.Duration, DesiredPlaybackRate);
                     await LogPlayedTrack();
                     StartNextPortion();
                 }
@@ -187,7 +187,7 @@ namespace BMM.Core.Implementations.PlayObserver
                     StartTime = StartTimeOfNextPortion,
                     End = position,
                     EndTime = DateTime.UtcNow,
-                    PlaybackRate = DesiredRate
+                    PlaybackRate = DesiredPlaybackRate
                 });
             }
 

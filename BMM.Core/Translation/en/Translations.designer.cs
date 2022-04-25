@@ -185,7 +185,8 @@ namespace BMM.Core.Translation
 		public const string PlayerViewModel_Hours = nameof(PlayerViewModel_Hours);
 		public const string PlayerViewModel_Disable = nameof(PlayerViewModel_Disable);
 		public const string PlayerViewModel_PlaybackSpeed = nameof(PlayerViewModel_PlaybackSpeed);
-		public const string PlayerViewModel_Default = nameof(PlayerViewModel_Default);
+		public const string PlayerViewModel_Normal = nameof(PlayerViewModel_Normal);
+		public const string PlayerViewModel_Selected = nameof(PlayerViewModel_Selected);
 		public const string QueueViewModel_Title = nameof(QueueViewModel_Title);
 		public const string SearchViewModel_Title = nameof(SearchViewModel_Title);
 		public const string SearchViewModel_SearchHint = nameof(SearchViewModel_SearchHint);

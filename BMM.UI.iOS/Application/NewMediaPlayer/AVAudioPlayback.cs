@@ -46,7 +46,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         public decimal DesiredRate
         {
-            get => _desiredRate ?? PlayerConstants.DefaultPlaybackSpeed;
+            get => _desiredRate ?? PlayerConstants.NormalPlaybackSpeed;
             set
             {
                 _desiredRate = value;

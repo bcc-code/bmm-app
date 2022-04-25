@@ -28,7 +28,7 @@ namespace BMM.Core.Implementations.PlayObserver
 
         bool IsPlaying { get; }
         
-        decimal DesiredRate { get; }
+        decimal DesiredPlaybackRate { get; }
 
         IList<ListenedPortion> PortionsListened { get; }
 

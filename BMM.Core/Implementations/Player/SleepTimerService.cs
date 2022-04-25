@@ -50,5 +50,6 @@ namespace BMM.Core.Implementations.Player
         }
 
         public bool IsEnabled => _currentOption != SleepTimerOption.NotSet;
+        public SleepTimerOption CurrentSleepTimerOption => _currentOption;
     }
 }

@@ -248,7 +248,8 @@
     "Hours": "{0} hours",
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
-    "Default": "Default"
+    "Normal": "Normal",
+    "Selected": "Selected"
   },
   "QueueViewModel": {
     "Title": "Queue"

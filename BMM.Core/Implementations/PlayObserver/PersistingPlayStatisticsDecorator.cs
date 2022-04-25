@@ -89,7 +89,7 @@ namespace BMM.Core.Implementations.PlayObserver
                     StartTime = StartTimeOfNextPortion,
                     End = endPosition,
                     EndTime = endTime,
-                    PlaybackRate = DesiredRate
+                    PlaybackRate = DesiredPlaybackRate
                 });
 
                 var measurements = _measurementCalculator.Calculate(CurrentTrack.Duration, portions);

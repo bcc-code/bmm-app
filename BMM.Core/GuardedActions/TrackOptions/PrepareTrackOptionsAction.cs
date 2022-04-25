@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Framework;
@@ -328,7 +329,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                 return new MvxCommand(() =>
                 {
                     _mediaPlayer.ChangePlaybackSpeed(playbackSpeed);
-                    _analytics.LogEvent(Event.PlaybackSpeedOptionSelected, new Dictionary<string, object>
+                    _analytics.LogEvent(Event.PlaybackSpeedChanged, new Dictionary<string, object>
                     {
                         {PlaybackSpeedOptionKey, playbackSpeed}
                     });
@@ -338,7 +339,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
             StandardIconOptionPO CreatePlaybackSpeedOption(decimal playbackSpeed)
             {
                 return new StandardIconOptionPO(
-                    $"{playbackSpeed.ToString(PlaybackSpeedStringFormat, CultureInfo.InvariantCulture)}x",
+                    GetPlaybackSpeedOptionTitle($"{playbackSpeed.ToString(PlaybackSpeedStringFormat, CultureInfo.InvariantCulture)}x", playbackSpeed),
                     ImageResourceNames.IconPlaybackSpeed,
                     CreatePlaybackSpeedTapCommand(playbackSpeed));
             }
@@ -347,16 +348,28 @@ namespace BMM.Core.GuardedActions.TrackOptions
                 .Select(CreatePlaybackSpeedOption)
                 .ToList();
 
-            if (_mediaPlayer.CurrentPlaybackSpeed != PlayerConstants.DefaultPlaybackSpeed)
-            {
-                playbackSpeedOptions.Add(new StandardIconOptionPO(
-                    _bmmLanguageBinder[Translations.PlayerViewModel_Default],
-                    ImageResourceNames.IconRemove,
-                    CreatePlaybackSpeedTapCommand(PlayerConstants.DefaultPlaybackSpeed)));
-            }
+            playbackSpeedOptions.Add(new StandardIconOptionPO(
+                GetPlaybackSpeedOptionTitle(_bmmLanguageBinder[Translations.PlayerViewModel_Normal], PlayerConstants.NormalPlaybackSpeed),
+                ImageResourceNames.IconPlaybackSpeed,
+                CreatePlaybackSpeedTapCommand(PlayerConstants.NormalPlaybackSpeed)));
 
             _analytics.LogEvent(Event.PlaybackSpeedOptionsOpened);
             await _trackOptionsService.OpenOptions(playbackSpeedOptions);
+        }
+
+        private string GetPlaybackSpeedOptionTitle(string optionName, decimal speed)
+        {
+            var titleStringBuilder = new StringBuilder(optionName);
+
+            if (IsCurrentPlaybackSpeed(speed))
+                titleStringBuilder.Append($" ({_bmmLanguageBinder.GetText(Translations.PlayerViewModel_Selected)})");
+
+            return titleStringBuilder.ToString();
+        }
+
+        private bool IsCurrentPlaybackSpeed(decimal playbackSpeed)
+        {
+            return _mediaPlayer.CurrentPlaybackSpeed == playbackSpeed;
         }
 
         private async Task SleepTimerClickedAction()
@@ -365,6 +378,12 @@ namespace BMM.Core.GuardedActions.TrackOptions
             {
                 return new MvxCommand(() =>
                 {
+                    if (sleepTimerOption == SleepTimerOption.NotSet)
+                    {
+                        _sleepTimerService.Disable();
+                        return;
+                    }
+                    
                     _sleepTimerService.Set(sleepTimerOption);
                     _analytics.LogEvent(Event.SleepTimerOptionSelected, new Dictionary<string, object>
                     {
@@ -376,7 +395,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
             StandardIconOptionPO PrepareMinutesOption(SleepTimerOption sleepTimerOption)
             {
                 return new StandardIconOptionPO(
-                    _bmmLanguageBinder.GetText(Translations.PlayerViewModel_Minutes, (int)sleepTimerOption),
+                    GetSleepTimerOptionTitle(_bmmLanguageBinder.GetText(Translations.PlayerViewModel_Minutes, (int)sleepTimerOption), sleepTimerOption),
                     ImageResourceNames.IconSleepTimer,
                     CreateOptionTapCommand(sleepTimerOption));
             }
@@ -389,7 +408,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                 PrepareMinutesOption(SleepTimerOption.ThirtyMinutes),
                 PrepareMinutesOption(SleepTimerOption.FortyFiveMinutes),
                 new(
-                    _bmmLanguageBinder.GetText(Translations.PlayerViewModel_Hour, 1),
+                    GetSleepTimerOptionTitle(_bmmLanguageBinder.GetText(Translations.PlayerViewModel_Hour, 1), SleepTimerOption.OneHour),
                     ImageResourceNames.IconSleepTimer,
                     CreateOptionTapCommand(SleepTimerOption.OneHour))
             };
@@ -406,6 +425,21 @@ namespace BMM.Core.GuardedActions.TrackOptions
             await _trackOptionsService.OpenOptions(sleepTimerOptions);
         }
 
+        private string GetSleepTimerOptionTitle(string optionName, SleepTimerOption sleepTimerOption)
+        {
+            var titleStringBuilder = new StringBuilder(optionName);
+
+            if (IsCurrentSleepTimerOption(sleepTimerOption))
+                titleStringBuilder.Append($" ({_bmmLanguageBinder.GetText(Translations.PlayerViewModel_Selected)})");
+
+            return titleStringBuilder.ToString();
+        }
+        
+        private bool IsCurrentSleepTimerOption(SleepTimerOption sleepTimerOption)
+        {
+            return _sleepTimerService.CurrentSleepTimerOption == sleepTimerOption;
+        }
+        
         private async Task GoToContributorVM(int id)
         {
             await ClosePlayer();

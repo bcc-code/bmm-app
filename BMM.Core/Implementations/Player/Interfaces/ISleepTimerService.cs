@@ -8,5 +8,6 @@ namespace BMM.Core.Implementations.Player.Interfaces
         void Disable();
 
         bool IsEnabled { get; }
+        SleepTimerOption CurrentSleepTimerOption { get; }
     }
 }

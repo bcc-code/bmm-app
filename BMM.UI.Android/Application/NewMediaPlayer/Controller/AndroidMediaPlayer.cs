@@ -235,7 +235,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
         }
 
-        public decimal CurrentPlaybackSpeed => _currentPlaybackSpeed ?? PlayerConstants.DefaultPlaybackSpeed;
+        public decimal CurrentPlaybackSpeed => _currentPlaybackSpeed ?? PlayerConstants.NormalPlaybackSpeed;
 
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
         {
