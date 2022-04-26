@@ -22,6 +22,7 @@ namespace BMM.Core.Translation
 		public const string Global_BackgroundActivityRestrictedMessage = nameof(Global_BackgroundActivityRestrictedMessage);
 		public const string Global_GoToSettings = nameof(Global_GoToSettings);
 		public const string Global_NotNow = nameof(Global_NotNow);
+		public const string Global_EnableWifiToContinue = nameof(Global_EnableWifiToContinue);
 		public const string Streak_Message = nameof(Streak_Message);
 		public const string Streak_MessagePerfect = nameof(Streak_MessagePerfect);
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
@@ -148,7 +149,6 @@ namespace BMM.Core.Translation
 		public const string MyTracksViewModel_RemoveOfflineConfirm = nameof(MyTracksViewModel_RemoveOfflineConfirm);
 		public const string MyTracksViewModel_EmptyTitle = nameof(MyTracksViewModel_EmptyTitle);
 		public const string MyTracksViewModel_EmptySubline = nameof(MyTracksViewModel_EmptySubline);
-		public const string MyTracksViewModel_MobileDownloadDisabled = nameof(MyTracksViewModel_MobileDownloadDisabled);
 		public const string MyTracksViewModel_AskToResumeDownloading = nameof(MyTracksViewModel_AskToResumeDownloading);
 		public const string DownloadedContentViewModel_Title = nameof(DownloadedContentViewModel_Title);
 		public const string DownloadedContentViewModel_FollowedPodcasts = nameof(DownloadedContentViewModel_FollowedPodcasts);
@@ -259,7 +259,6 @@ namespace BMM.Core.Translation
 		public const string TrackCollectionViewModel_SearchHint = nameof(TrackCollectionViewModel_SearchHint);
 		public const string TrackCollectionViewModel_EmptyTitle = nameof(TrackCollectionViewModel_EmptyTitle);
 		public const string TrackCollectionViewModel_EmptySubline = nameof(TrackCollectionViewModel_EmptySubline);
-		public const string TrackCollectionViewModel_MobileDownloadDisabled = nameof(TrackCollectionViewModel_MobileDownloadDisabled);
 		public const string TrackCollectionViewModel_NotEnoughtSpaceToDownload = nameof(TrackCollectionViewModel_NotEnoughtSpaceToDownload);
 		public const string TrackCollectionViewModel_AskToResumeDownloading = nameof(TrackCollectionViewModel_AskToResumeDownloading);
 		public const string TrackCollectionViewModel_Private = nameof(TrackCollectionViewModel_Private);

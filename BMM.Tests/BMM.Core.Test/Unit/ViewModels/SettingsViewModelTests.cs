@@ -52,7 +52,6 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IProfileLoader> _profileLoader;
         private Mock<IFirebaseRemoteConfig> _remoteConfig;
         private Mock<IDeviceInfo> _deviceInfo;
-        private Mock<IFeaturePreviewPermission> _featurePreviewPermission;
         private Mock<IFeatureSupportInfoService> _featureSupportInfoService;
 
         [SetUp]
@@ -104,7 +103,6 @@ namespace BMM.Core.Test.Unit.ViewModels
             _exceptionHandler = new Mock<IExceptionHandler>();
             _profileLoader = new Mock<IProfileLoader>();
             _remoteConfig = new Mock<IFirebaseRemoteConfig>();
-            _featurePreviewPermission = new Mock<IFeaturePreviewPermission>();
             _featureSupportInfoService = new Mock<IFeatureSupportInfoService>();
 
             _textSource.Setup(x => x.GetText(It.IsAny<string>())).Returns(String.Empty);
@@ -137,7 +135,6 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _profileLoader.Object,
                 _userStorage.Object,
                 _remoteConfig.Object,
-                _featurePreviewPermission.Object,
                 _featureSupportInfoService.Object);
 
             settingsViewModel.TextSource = TextResource.Object;

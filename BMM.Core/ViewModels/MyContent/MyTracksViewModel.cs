@@ -130,7 +130,6 @@ namespace BMM.Core.ViewModels.MyContent
         protected override async Task DownloadAction()
         {
             await _trackCollectionManager.DownloadTrackCollection(MyCollection);
-
             await RaisePropertyChanged(() => Documents);
         }
 

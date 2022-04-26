@@ -180,28 +180,24 @@ namespace BMM.Core.ViewModels.Base
             if (IsLoading)
                 return;
 
-            var newIsOfflineAvailable = !IsOfflineAvailable;
+            bool newIsOfflineAvailable = !IsOfflineAvailable;
 
             if (newIsOfflineAvailable)
             {
-                var mobileNetworkDownloadAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
-
-                var isUsingNetworkWithoutExtraCosts = Connection.IsUsingNetworkWithoutExtraCosts();
-
-                if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
-                {
-                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.TrackCollectionViewModel_MobileDownloadDisabled]);
-                    return;
-                }
+                bool mobileNetworkDownloadAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
+                bool isUsingNetworkWithoutExtraCosts = Connection.IsUsingNetworkWithoutExtraCosts();
 
                 if (_storageManager.SelectedStorage.FreeSpace <= await CalculateApproximateDownloadSize())
                 {
                     await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.TrackCollectionViewModel_NotEnoughtSpaceToDownload]);
                     return;
                 }
-
+                
+                if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
+                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.Global_EnableWifiToContinue]);
+                
                 IsOfflineAvailable = newIsOfflineAvailable;
-
+                
                 await DownloadAction();
                 await RaisePropertyChanged(() => IsDownloaded);
             }

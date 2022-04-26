@@ -318,9 +318,8 @@ namespace BMM.Core.ViewModels
 
         private async Task MobileNetworkUsageWarning()
         {
-            var mobileNetworkDownloadAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
-
-            var isUsingNetworkWithoutExtraCosts = _connection.IsUsingNetworkWithoutExtraCosts();
+            bool mobileNetworkDownloadAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
+            bool isUsingNetworkWithoutExtraCosts = _connection.IsUsingNetworkWithoutExtraCosts();
 
             if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
             {

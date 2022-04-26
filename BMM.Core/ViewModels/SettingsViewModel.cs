@@ -51,7 +51,6 @@ namespace BMM.Core.ViewModels
         private readonly IProfileLoader _profileLoader;
         private readonly IUserStorage _userStorage;
         private readonly IFirebaseRemoteConfig _remoteConfig;
-        private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
         private SelectableListItem _externalStorage;
 
@@ -82,7 +81,6 @@ namespace BMM.Core.ViewModels
             IProfileLoader profileLoader,
             IUserStorage userStorage,
             IFirebaseRemoteConfig remoteConfig,
-            IFeaturePreviewPermission featurePreviewPermission,
             IFeatureSupportInfoService featureSupportInfoService)
         {
             _deviceInfo = deviceInfo;
@@ -103,7 +101,6 @@ namespace BMM.Core.ViewModels
             _profileLoader = profileLoader;
             _userStorage = userStorage;
             _remoteConfig = remoteConfig;
-            _featurePreviewPermission = featurePreviewPermission;
             _featureSupportInfoService = featureSupportInfoService;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
