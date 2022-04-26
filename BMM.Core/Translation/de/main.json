@@ -246,7 +246,10 @@
     "Minutes": "{0} minutes",
     "Hour": "{0} hour",
     "Hours": "{0} hours",
-    "Disable": "Disable"
+    "Disable": "Disable",
+    "PlaybackSpeed": "Playback speed",
+    "Normal": "Normal",
+    "Selected": "Selected"
   },
   "QueueViewModel": {
     "Title": "Warteschlange"
