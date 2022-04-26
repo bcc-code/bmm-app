@@ -9,14 +9,16 @@ using Android.Support.V4.Media;
 using Android.Support.V4.Media.Session;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.NewMediaPlayer.Constants;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Playback;
 using BMM.UI.Droid.Application.NewMediaPlayer.Service;
+using Com.Google.Android.Exoplayer2;
 using MvvmCross;
-using MvvmCross.Platforms.Android;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
@@ -39,6 +41,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         private ITrackModel _lastTrack;
         private IList<IMediaTrack> _lastQueue;
         private long _lastPosition;
+        private decimal? _currentPlaybackSpeed;
 
         public AndroidMediaPlayer(
             IMediaQueue mediaQueue,
@@ -117,7 +120,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public bool IsShuffleEnabled =>
             _mediaController?.ShuffleMode == PlaybackStateCompat.ShuffleModeGroup || _mediaController?.ShuffleMode == PlaybackStateCompat.ShuffleModeAll;
 
-        public IPlaybackState PlaybackState => _mediaController?.PlaybackState?.ToPlaybackState(_mediaQueue) ?? new DefaultPlaybackState();
+        public IPlaybackState PlaybackState => _mediaController?.PlaybackState?.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed) ?? new DefaultPlaybackState();
 
         public long CurrentPosition => PlaybackState.CurrentPosition;
 
@@ -197,7 +200,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public void Stop()
         {
             _mediaController.GetTransportControls().Stop();
-            _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue)));
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
             _messenger.Publish(new CurrentTrackChangedMessage(null, this));
             Disconnect();
         }
@@ -224,6 +227,15 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 }
             }
         }
+
+        public void ChangePlaybackSpeed(decimal playbackSpeed)
+        {
+            _currentPlaybackSpeed = playbackSpeed;
+            MusicService.CurrentExoPlayerInstance.IfNotNull(s => s.PlaybackParameters = new PlaybackParameters((float)playbackSpeed));
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
+        }
+
+        public decimal CurrentPlaybackSpeed => _currentPlaybackSpeed ?? PlayerConstants.NormalPlaybackSpeed;
 
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
         {

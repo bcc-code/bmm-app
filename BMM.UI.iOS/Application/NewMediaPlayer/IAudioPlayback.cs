@@ -23,7 +23,9 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         PlayStatus Status { get; }
 
-        float Rate { get; }
+        float Rate { get; set; }
+        
+        decimal DesiredRate { get; set; }
 
         long Position { get; }
 

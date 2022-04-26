@@ -9,6 +9,8 @@ namespace BMM.Core.Messages.MediaPlayer
         PlayStatus PlayStatus { get; }
 
         double PlaybackRate { get; }
+        
+        decimal DesiredPlaybackRate { get; }
 
         bool IsSkipToNextEnabled { get; }
 
@@ -30,6 +32,8 @@ namespace BMM.Core.Messages.MediaPlayer
         public PlayStatus PlayStatus => PlayStatus.Stopped;
 
         public double PlaybackRate => 0;
+        
+        public decimal DesiredPlaybackRate => 1;
 
         public bool IsSkipToNextEnabled => false;
 
@@ -58,6 +62,7 @@ namespace BMM.Core.Messages.MediaPlayer
             IsPlaying = original.IsPlaying;
             PlayStatus = original.PlayStatus;
             PlaybackRate = original.PlaybackRate;
+            DesiredPlaybackRate = original.DesiredPlaybackRate;
             IsSkipToNextEnabled = original.IsSkipToNextEnabled;
             IsSkipToPreviousEnabled = original.IsSkipToPreviousEnabled;
             CurrentIndex = original.CurrentIndex;
@@ -71,6 +76,7 @@ namespace BMM.Core.Messages.MediaPlayer
         public PlayStatus PlayStatus { get; set; }
 
         public double PlaybackRate { get; set; }
+        public decimal DesiredPlaybackRate { get; set; }
 
         public bool IsSkipToNextEnabled { get; set; }
 

@@ -27,6 +27,8 @@ namespace BMM.Core.Implementations.PlayObserver
         bool IsCurrentQueueSaved { get; set; }
 
         bool IsPlaying { get; }
+        
+        decimal DesiredPlaybackRate { get; }
 
         IList<ListenedPortion> PortionsListened { get; }
 

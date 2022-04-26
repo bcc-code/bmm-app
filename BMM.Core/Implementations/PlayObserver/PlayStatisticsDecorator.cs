@@ -23,6 +23,7 @@ namespace BMM.Core.Implementations.PlayObserver
         }
 
         public bool IsPlaying => _playStatistics.IsPlaying;
+        public decimal DesiredPlaybackRate => _playStatistics.DesiredPlaybackRate;
 
         public IList<ListenedPortion> PortionsListened => _playStatistics.PortionsListened;
 

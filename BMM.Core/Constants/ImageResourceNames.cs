@@ -17,5 +17,6 @@ namespace BMM.Core.Constants
         public const string IconFavorites = "Icon_Favorites";
         public const string IconEdit = "Icon_Edit";
         public const string IconSleepTimer = "Icon_Sleep_Timer";
+        public const string IconPlaybackSpeed = "Icon_Playback_Speed";
     }
 }

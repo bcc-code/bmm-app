@@ -38,6 +38,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string SendAgeToDiscover = "send_age_to_discover";
             
             public const string IsSleepTimerEnabled = "is_sleep_timer_enabled";
+            public const string IsPlaybackSpeedEnabled = "is_playback_speed_enabled";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -58,7 +59,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.SongTreasuresSongLink, "https://songtreasures.app/songs/{0}/{1}"},
             {Variables.ExperimentId, string.Empty},
             {Variables.SendAgeToDiscover, false.ToString()},
-            {Variables.IsSleepTimerEnabled, false.ToString()}
+            {Variables.IsSleepTimerEnabled, false.ToString()},
+            {Variables.IsPlaybackSpeedEnabled, false.ToString()}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -94,6 +96,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public bool SendAgeToDiscover => _platformSpecificRemoteConfig.GetBoolValue(Variables.SendAgeToDiscover);
         
         public bool IsSleepTimerEnabled => _platformSpecificRemoteConfig.GetBoolValue(Variables.IsSleepTimerEnabled);
+        
+        public bool IsPlaybackSpeedEnabled => _platformSpecificRemoteConfig.GetBoolValue(Variables.IsPlaybackSpeedEnabled);
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
             _semanticVersionParser.ParseStringToSemanticVersionObject(

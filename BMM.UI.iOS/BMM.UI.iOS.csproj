@@ -1136,6 +1136,8 @@
     <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\icon_person.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\play.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaybackSpeed.imageset\8680259_speed_line_icon.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaybackSpeed.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\icon_playlist.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\Contents.json" />

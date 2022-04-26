@@ -71,7 +71,7 @@ namespace BMM.Core.Implementations.PlayObserver
                 {
                     if (portion.Start > endedListening)
                     {
-                        if (endedListening - startedListening >= MinPortionDurationInMs)
+                        if (ShouldIncludePortion(endedListening, startedListening))
                         {
                             status = ListenedStatus.Jumped;
                             msListened += endedListening - startedListening;
@@ -90,13 +90,17 @@ namespace BMM.Core.Implementations.PlayObserver
             }
 
             // Add the last listened portion
-            if (endedListening - startedListening >= MinPortionDurationInMs)
+            if (ShouldIncludePortion(endedListening, startedListening))
             {
-                msListened += endedListening - startedListening;
+                msListened += (endedListening - startedListening) * (double)orderedPortions.Last().PlaybackRate;
             }
 
-            var uniqueSecondsListened = Math.Ceiling(TimeSpan.FromMilliseconds(msListened).TotalSeconds);
-            return uniqueSecondsListened;
+            return Math.Ceiling(TimeSpan.FromMilliseconds(msListened).TotalSeconds);
+        }
+
+        private static bool ShouldIncludePortion(double endedListening, double startedListening)
+        {
+            return endedListening - startedListening >= MinPortionDurationInMs;
         }
     }
 }

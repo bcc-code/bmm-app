@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace BMM.Core.Extensions
@@ -10,6 +11,14 @@ namespace BMM.Core.Extensions
                 return;
             
             list.Add(stringValue);
+        }
+        
+        public static void AddIf<T>(this IList<T> list, Func<bool> shouldAddFunc, T obj)
+        {
+            if (!shouldAddFunc.Invoke())
+                return;
+            
+            list.Add(obj);
         }
     }
 }
