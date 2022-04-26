@@ -66,7 +66,7 @@
         public static string StatisticsUserViewedRecently =
             "statistics/user/{username}/{type}/viewed/recently{?size,from}";
 
-        public static string Discover = "discover{?lang}";
+        public static string Discover = "discover{?lang,age}";
 
         public static string SharedPlaylist = "/shared_playlist/{sharingSecret}";
         public static string SharedPlaylistFollow = "/shared_playlist/{sharingSecret}/follow";
