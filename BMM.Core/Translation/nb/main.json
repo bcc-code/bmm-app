@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Din streak denne uken",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Vil du virkelig slette alle nedlastede elementer?",
     "EmptyTitle": "Denne spillelisten er tom",
     "EmptySubline": "Trykk på de tre prikkene på et spor, for å legge til spor i denne spillelisten.",
-    "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillinger for å fortsette",
     "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Få beskjed",
     "GetNotifiedMessage": "når nye episoder er ute",
     "UnfollowConfirm": "Er du sikker på at du vil slutte å følge denne podcasten?",
-    "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillingene for å laste ned de nyeste sporene automatisk",
     "ToggleFollowOfflineError": "Du må være i tilkoblet modus for å følge eller slutte å følge en podcast",
     "Week": "Uke {0}",
     "ThisWeek": "Denne uken",
@@ -334,7 +334,6 @@
     "SearchHint": "Søk",
     "EmptyTitle": "Denne spillelisten er tom",
     "EmptySubline": "Trykk på de tre prikkene på et spor, for å legge til spor i denne spillelisten.",
-    "MobileDownloadDisabled": "Aktiver nedlasting via mobilnett i innstillinger for å fortsette",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle spor",
     "AskToResumeDownloading": "Det finnes nye elementer i denne spillelisten. Vil du fortsette nedlastingen?",
     "Private": "Privat",
