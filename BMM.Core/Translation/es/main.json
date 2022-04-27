@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "¿Deseas eliminar todos los archivos descargados?",
     "EmptyTitle": "Esta lista de reproduccion está vacía",
     "EmptySubline": "Pulsa los tres puntos en una pista para añadir la pista a esta lista de reproducción.",
-    "MobileDownloadDisabled": "Habilitar descarga vía red móvil en ajustes para continuar",
     "AskToResumeDownloading": "Hay nuevos elementos en esta lista de reproducción. ¿Desea reanudar la descarga?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Obtener notificaciones",
     "GetNotifiedMessage": "cuando salen los nuevos episodios",
     "UnfollowConfirm": "¿Realmente quieres dejar de seguir este podcast?",
-    "MobileDownloadDisabled": "Permitir la descarga a través de la red móvil en ajustes para descargar automáticamente las últimas pistas",
     "ToggleFollowOfflineError": "Usted necesita estar en modo online para seguir o dejar de seguir un podcast",
     "Week": "Semana {0}",
     "ThisWeek": "Esta semana",
@@ -334,7 +334,6 @@
     "SearchHint": "Buscar",
     "EmptyTitle": "Esta lista de reproduccion está vacía",
     "EmptySubline": "Pulsa los tres puntos en una pista para añadir la pista a esta lista de reproducción.",
-    "MobileDownloadDisabled": "Habilitar descarga vía red móvil en ajustes para continuar",
     "NotEnoughtSpaceToDownload": "No tienes suficiente espacio para descargar todas las pistas",
     "AskToResumeDownloading": "Hay nuevos elementos en esta lista de reproducción. ¿Desea reanudar la descarga?",
     "Private": "Privado",
