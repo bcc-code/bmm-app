@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Wil jy regtig al die afgelaaide items verwyder?",
     "EmptyTitle": "Die snitlys is leeg",
     "EmptySubline": "Druk die drie kolletjies op 'n spoor om die spoor by hierdie snitlys by te voeg.",
-    "MobileDownloadDisabled": "Aktiveer aflaai via selfoon netwerk in instellings om voort te gaan",
     "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Kry kennis gestel word",
     "GetNotifiedMessage": "wanneer nuwe episodes is uit",
     "UnfollowConfirm": "Wil jy regtig unfollow hierdie potgooi?",
-    "MobileDownloadDisabled": "In staat stel om via mobiele netwerk in instellings af te laai die nuutste snitte outomaties af te laai",
     "ToggleFollowOfflineError": "Jy moet in aanlyn-modus te volg of unfollow 'n potgooi",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -334,7 +334,6 @@
     "SearchHint": "Soek",
     "EmptyTitle": "Die snitlys is leeg",
     "EmptySubline": "Druk die drie kolletjies op 'n spoor om die spoor by hierdie snitlys by te voeg.",
-    "MobileDownloadDisabled": "Aktiveer aflaai via selfoon netwerk in instellings om voort te gaan",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Daar is nuwe items in hierdie snitlys. Wil jy voortgaan om dit af te laai?",
     "Private": "Private",
