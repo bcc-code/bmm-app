@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Vuoi davvero eliminare tutti gli elementi scaricati?",
     "EmptyTitle": "Questa playlist è vuota",
     "EmptySubline": "Premere i tre puntini su una traccia per aggiungere il brano alla playlist.",
-    "MobileDownloadDisabled": "Consenti il download tramite rete mobile nelle impostazioni per continuare",
     "AskToResumeDownloading": "Ci sono nuovi elementi nella playlist. Vuoi riprendere il download?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Ricevi una notifica",
     "GetNotifiedMessage": "quando i nuovi episodi sono fuori",
     "UnfollowConfirm": "Vuoi davvero smettere di seguire questo podcast?",
-    "MobileDownloadDisabled": "Consentire il download tramite rete mobile nelle impostazioni per scaricare automaticamente le ultime tracce",
     "ToggleFollowOfflineError": "È necessario essere in modalità online a seguire o smettere di seguire un podcast",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -334,7 +334,6 @@
     "SearchHint": "Cerca",
     "EmptyTitle": "Questa playlist è vuota",
     "EmptySubline": "Premere i tre puntini su una traccia per aggiungere il brano alla playlist.",
-    "MobileDownloadDisabled": "Consenti il download tramite rete mobile nelle impostazioni per continuare",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Ci sono nuovi elementi nella playlist. Vuoi riprendere il download?",
     "Private": "Private",
