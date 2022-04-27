@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Наистина ли искаш да изтриеш всички изтеглени елементи?",
     "EmptyTitle": "Този списък е празен",
     "EmptySubline": "Натисни трите точки на една песен, за да добавиш песен към този списък.",
-    "MobileDownloadDisabled": "Разреши изтегляне чрез мобилна мрежа в настройки, за да продължиш",
     "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Получаване на известие",
     "GetNotifiedMessage": "когато излязат нови епизоди",
     "UnfollowConfirm": "Наистина ли искате да unfollow този подкаст?",
-    "MobileDownloadDisabled": "Разреши изтегляне чрез мобилна мрежа в настройките за автоматично изтегляне на най-новите песни",
     "ToggleFollowOfflineError": "Трябва да си в режим на линия, за да последваш или да се откажеш да следваш подкаст",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -241,7 +241,15 @@
   "PlayerViewModel": {
     "Title": "Now playing",
     "PlayingCount": "{0} от {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable",
+    "PlaybackSpeed": "Playback speed",
+    "Normal": "Normal",
+    "Selected": "Selected"
   },
   "QueueViewModel": {
     "Title": "Опашка"
@@ -262,8 +270,8 @@
     "HeadlineSettings": "Настройки",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Разреши натискане известия",
     "OptionPushNotifications": "Уведомления",
     "OptionPushNotificationsSubtitle": "Давам възможност на тласък уведомления за подкасти следвате",
@@ -326,7 +334,6 @@
     "SearchHint": "Търси",
     "EmptyTitle": "Този списък е празен",
     "EmptySubline": "Натисни трите точки на една песен, за да добавиш песен към този списък.",
-    "MobileDownloadDisabled": "Разреши изтегляне чрез мобилна мрежа в настройки, за да продължиш",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?",
     "Private": "Private",

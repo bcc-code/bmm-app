@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Tüm yüklenen öğeleri silmek istiyor musunuz?",
     "EmptyTitle": "Bu Çalma Listesi Boş",
     "EmptySubline": "Parçadaki 3 noktaya tıkla ve Çalma listesine ekle.",
-    "MobileDownloadDisabled": "Devam etmek için ayarlardan mobil ağ üzerinden indirmeyi etkinleştir",
     "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Size bildirilsin",
     "GetNotifiedMessage": "ne zaman dışarı yeni bölümleri bulunmaktadır",
     "UnfollowConfirm": "Bu podcast unfollow istiyor musunuz?",
-    "MobileDownloadDisabled": "Son parçalara otomatik olarak indirmek için ayarları mobil ağ üzerinden indirme etkinleştirmek",
     "ToggleFollowOfflineError": "İzleyin veya bir podcast unfollow için çevrimiçi modunda olması gerekir",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -241,7 +241,15 @@
   "PlayerViewModel": {
     "Title": "Now playing",
     "PlayingCount": "{0} {1} arasında",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable",
+    "PlaybackSpeed": "Playback speed",
+    "Normal": "Normal",
+    "Selected": "Selected"
   },
   "QueueViewModel": {
     "Title": "Sıralı"
@@ -262,8 +270,8 @@
     "HeadlineSettings": "Ayarlar",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Bildirimleri etkinleştir",
     "OptionPushNotifications": "Push bildirimleri",
     "OptionPushNotificationsSubtitle": "Seni takip itmeli çoğaltma bildirilerini podcast için etkinleştir",
@@ -326,7 +334,6 @@
     "SearchHint": "Ara",
     "EmptyTitle": "Bu Çalma Listesi Boş",
     "EmptySubline": "Parçadaki 3 noktaya tıkla ve Çalma listesine ekle.",
-    "MobileDownloadDisabled": "Devam etmek için ayarlardan mobil ağ üzerinden indirmeyi etkinleştir",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?",
     "Private": "Private",

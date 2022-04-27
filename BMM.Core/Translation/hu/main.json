@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "E heti sorozatod.",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Biztosan törölni kivánod az összes letöltött elemet?",
     "EmptyTitle": "Üres a lejátszási lista",
     "EmptySubline": "Nyomd meg a három pontot a zeneszámon, hogy hozzáadd a lejátszási listához.",
-    "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
     "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Értesítést kapni",
     "GetNotifiedMessage": "ha új epízódok megjelenek",
     "UnfollowConfirm": "Biztosan nem akarod tovább követni ezt a podcastot?",
-    "MobileDownloadDisabled": "A legújabb számok automatikus letöltése a mobilhálózaton keresztül engedélyezése a beállításokban",
     "ToggleFollowOfflineError": "Podcast követése vagy lemondása csak online-módban lehetséges",
     "Week": "{0}. hét",
     "ThisWeek": "Ez a hét",
@@ -241,7 +241,15 @@
   "PlayerViewModel": {
     "Title": "Nincs lejátszás",
     "PlayingCount": "{0} / {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable",
+    "PlaybackSpeed": "Playback speed",
+    "Normal": "Normal",
+    "Selected": "Selected"
   },
   "QueueViewModel": {
     "Title": "Várólista"
@@ -262,8 +270,8 @@
     "HeadlineSettings": "Beállítások",
     "OptionAutoplayHeader": "Automatikus lejátszás",
     "OptionAutoplayText": "Zene lejátszása a mai “Fra Kåre” adás meghallgatása után",
-    "OptionStreakHiddenHeader": "Sáv elrejtése",
-    "OptionStreakHiddenText": "A hallgatási statisztika elrejtése",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Értesítések engedélyezése",
     "OptionPushNotifications": "Push-értesítések",
     "OptionPushNotificationsSubtitle": "Push-értesítések aktiválása a követett podcastokra",
@@ -326,7 +334,6 @@
     "SearchHint": "Keresés",
     "EmptyTitle": "Üres a lejátszási lista",
     "EmptySubline": "Nyomd meg a három pontot a zeneszámon, hogy hozzáadd a lejátszási listához",
-    "MobileDownloadDisabled": "A folytatáshoz engedélyezd a beállításokban a mobil hálózaton keresztüli letöltést",
     "NotEnoughtSpaceToDownload": "Nincs elég tárhely minden szám letöltéséhez",
     "AskToResumeDownloading": "Új elemek vannak ebben a lejátszási listában. Szeretnéd folytatni a letöltést?",
     "Private": "Személyes",

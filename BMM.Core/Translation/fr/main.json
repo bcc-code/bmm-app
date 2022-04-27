@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Voulez-vous vraiment supprimer tous les éléments téléchargés?",
     "EmptyTitle": "Cette liste de lecture est vide",
     "EmptySubline": "Appuyer sur les trois points d'une piste pour ajouter les titres à cette liste de lecture.",
-    "MobileDownloadDisabled": "Activez le téléchargement via les données mobile, dans les paramètres, pour pouvoir continuer",
     "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette liste de lecture. Vous voulez reprendre le téléchargement?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Reçois des messages",
     "GetNotifiedMessage": "quand les nouveaux épisodes sont sortis",
     "UnfollowConfirm": "Vous voulez vous vraiment ne plus suivre ce podcast ?",
-    "MobileDownloadDisabled": "Activez le téléchargement via le réseau de téléphonie mobile dans les paramètres pour télécharger les dernières pistes automatiquement",
     "ToggleFollowOfflineError": "Vous devez être en mode en ligne pour suivre ou unfollow un podcast",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -241,7 +241,15 @@
   "PlayerViewModel": {
     "Title": "Now playing",
     "PlayingCount": "Lecture {0} sur {1}",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable",
+    "PlaybackSpeed": "Playback speed",
+    "Normal": "Normal",
+    "Selected": "Selected"
   },
   "QueueViewModel": {
     "Title": "File d'attente"
@@ -262,8 +270,8 @@
     "HeadlineSettings": "Paramètres",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Activer les notifications Push",
     "OptionPushNotifications": "Notifications Push",
     "OptionPushNotificationsSubtitle": "Activer les notifications push pour les podcasts que vous suivez",
@@ -326,7 +334,6 @@
     "SearchHint": "Rechercher",
     "EmptyTitle": "Cette liste de lecture est vide",
     "EmptySubline": "Appuyer sur les trois points d'une piste pour ajouter les titres à cette liste de lecture.",
-    "MobileDownloadDisabled": "Activez le téléchargement via les données mobile, dans les paramètres, pour pouvoir continuer",
     "NotEnoughtSpaceToDownload": "Pas assez d'espace pour télécharger tous les titres",
     "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette liste de lecture. Vous voulez reprendre le téléchargement ?",
     "Private": "Private",

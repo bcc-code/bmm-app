@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Haluatko varmasti poistaa kaikki ladatut kappaleet?",
     "EmptyTitle": "Tämä soittolista on tyhjä",
     "EmptySubline": "Paina kolmea pistettä kappaleen kohdalla lisätäksesi kappaleita tälle soittolistalle.",
-    "MobileDownloadDisabled": "Salli ensin tiedostojen lataaminen mobiilidatan avulla",
     "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Saat ilmoituksen",
     "GetNotifiedMessage": "kun uusia jaksoja julkaistaan",
     "UnfollowConfirm": "Lopeta tämän podcastin seuraaminen?",
-    "MobileDownloadDisabled": "Tietokoneellaan kautta matkapuhelinverkon asetuksissa ladata uusimmat kappaleet automaattisesti",
     "ToggleFollowOfflineError": "Sinun täytyy olla online-tilassa tai unfollow podcast",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -241,7 +241,15 @@
   "PlayerViewModel": {
     "Title": "Nyt soi",
     "PlayingCount": "Soitetaan {0} {1}:sta",
-    "ViewLyrics": "View Lyrics"
+    "ViewLyrics": "View Lyrics",
+    "SleepTimer": "Sleep timer",
+    "Minutes": "{0} minutes",
+    "Hour": "{0} hour",
+    "Hours": "{0} hours",
+    "Disable": "Disable",
+    "PlaybackSpeed": "Playback speed",
+    "Normal": "Normal",
+    "Selected": "Selected"
   },
   "QueueViewModel": {
     "Title": "Jono"
@@ -262,8 +270,8 @@
     "HeadlineSettings": "Asetukset",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHiddenHeader": "Hide streak",
-    "OptionStreakHiddenText": "Hide your listening statistic",
+    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Ota ponnahdusilmoitukset käyttöön",
     "OptionPushNotifications": "Push-ilmoitukset",
     "OptionPushNotificationsSubtitle": "Push-ilmoitukset päälle seuraamistasi podcasteista",
@@ -326,7 +334,6 @@
     "SearchHint": "Etsi",
     "EmptyTitle": "Tämä soittolista on tyhjä",
     "EmptySubline": "Paina kolmea pistettä kappaleen kohdalla lisätäksesi kappaleita tälle soittolistalle.",
-    "MobileDownloadDisabled": "Salli ensin tiedostojen lataaminen mobiilidatan avulla",
     "NotEnoughtSpaceToDownload": "Ei tarpeeksi tallennustilaa kaikkien kappaleiden lataamiselle",
     "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?",
     "Private": "Private",
