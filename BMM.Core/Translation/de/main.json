@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Willst Du wirklich alle Downloads löschen?",
     "EmptyTitle": "Diese Playlist ist leer",
     "EmptySubline": "Drücke auf die drei Punkte neben einem Titel um ihn zu einer Playlist hinzuzufügen.",
-    "MobileDownloadDisabled": "Aktiviere das Downloaden über Mobilfunknetz in den Einstellungen um fortzufahren",
     "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Lass dich benachrichtigen",
     "GetNotifiedMessage": "sobald es neue Folgen gibt",
     "UnfollowConfirm": "Möchtest du das Abonnement für diesen Podcast beenden?",
-    "MobileDownloadDisabled": "Erlaube das Herunterladen über das Mobilfunknetz in den Einstellungen um die neuesten Folgen automatisch herunterzuladen",
     "ToggleFollowOfflineError": "Du kannst einen Podcast nur abonnieren oder davon abmelden wenn du online bist",
     "Week": "Woche {0}",
     "ThisWeek": "Diese Woche",
@@ -334,7 +334,6 @@
     "SearchHint": "Suchen",
     "EmptyTitle": "Diese Playlist ist leer",
     "EmptySubline": "Drücke auf die drei Punkte neben einem Titel um ihn zu einer Playlist hinzuzufügen.",
-    "MobileDownloadDisabled": "Aktiviere das Downloaden über Mobilfunknetz in den Einstellungen um fortzufahren",
     "NotEnoughtSpaceToDownload": "Nicht genügend Speicherplatz um alle Titel herunterzuladen",
     "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?",
     "Private": "Privat",
