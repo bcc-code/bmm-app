@@ -23,6 +23,7 @@ namespace BMM.Core.Translation
 		public const string Global_GoToSettings = nameof(Global_GoToSettings);
 		public const string Global_NotNow = nameof(Global_NotNow);
 		public const string Global_DownloadPlaylistOnceOnWifi = nameof(Global_DownloadPlaylistOnceOnWifi);
+		public const string Global_DownloadPodcastOnceOnWifi = nameof(Global_DownloadPodcastOnceOnWifi);
 		public const string Streak_Message = nameof(Streak_Message);
 		public const string Streak_MessagePerfect = nameof(Streak_MessagePerfect);
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
@@ -165,7 +166,6 @@ namespace BMM.Core.Translation
 		public const string PodcastViewModel_GetNotified = nameof(PodcastViewModel_GetNotified);
 		public const string PodcastViewModel_GetNotifiedMessage = nameof(PodcastViewModel_GetNotifiedMessage);
 		public const string PodcastViewModel_UnfollowConfirm = nameof(PodcastViewModel_UnfollowConfirm);
-		public const string PodcastViewModel_MobileDownloadDisabled = nameof(PodcastViewModel_MobileDownloadDisabled);
 		public const string PodcastViewModel_ToggleFollowOfflineError = nameof(PodcastViewModel_ToggleFollowOfflineError);
 		public const string PodcastViewModel_Week = nameof(PodcastViewModel_Week);
 		public const string PodcastViewModel_ThisWeek = nameof(PodcastViewModel_ThisWeek);

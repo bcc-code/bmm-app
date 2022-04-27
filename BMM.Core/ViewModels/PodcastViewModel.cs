@@ -323,7 +323,7 @@ namespace BMM.Core.ViewModels
 
             if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
             {
-                await _toastDisplayer.WarnAsync(TextSource[Translations.PodcastViewModel_MobileDownloadDisabled]);
+                await _toastDisplayer.WarnAsync(TextSource[Translations.Global_DownloadPodcastOnceOnWifi]);
             }
         }
     }
