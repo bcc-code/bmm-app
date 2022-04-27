@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Você quer mesmo excluir todos os itens baixados?",
     "EmptyTitle": "Esta lista está vazia",
     "EmptySubline": "Pressione os três pontos em uma faixa para adicionar a faixa nesta lista.",
-    "MobileDownloadDisabled": "Habilitar download através da rede móvel nas configurações para continuar",
     "AskToResumeDownloading": "Existem novos itens nesta lista de reprodução. Deseja retomar o download?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Seja notificado ",
     "GetNotifiedMessage": "quando novos episódios saírem",
     "UnfollowConfirm": "Você realmente quer deixar de seguir este podcast?",
-    "MobileDownloadDisabled": "Habilitar download através da rede móvel nas configurações para baixar as últimas faixas automaticamente",
     "ToggleFollowOfflineError": "Você precisa estar no modo online para seguir ou deixar de seguir um podcast",
     "Week": "Semana {0}",
     "ThisWeek": "Esta semana",
@@ -334,7 +334,6 @@
     "SearchHint": "Busca",
     "EmptyTitle": "Esta lista está vazia",
     "EmptySubline": "Pressione os três pontos em uma faixa para adicionar a faixa nesta lista.",
-    "MobileDownloadDisabled": "Habilitar download através da rede móvel nas configurações para continuar",
     "NotEnoughtSpaceToDownload": "Não há espaço suficiente para baixar todas as faixas",
     "AskToResumeDownloading": "Há novos itens nesta lista. Você quer continuar o download?",
     "Private": "Private",
