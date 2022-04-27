@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Wil je echt alle gedownloade items verwijderen?",
     "EmptyTitle": "Deze afspeellijst is leeg",
     "EmptySubline": "Druk op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
-    "MobileDownloadDisabled": "Schakel 'downloaden via mobiel netwerk' onder instellingen in om verder te gaan",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Ontvang een melding",
     "GetNotifiedMessage": "wanneer er nieuwe afleveringen uit zijn",
     "UnfollowConfirm": "Wilt u deze podcast ontvolgen?",
-    "MobileDownloadDisabled": "Schakel 'downloaden via het mobiel netwerk' in om de nieuwste nummers automatisch te downloaden",
     "ToggleFollowOfflineError": "Je moet in de online-modus zijn om een podcast te volgen of te ontvolgen",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -334,7 +334,6 @@
     "SearchHint": "Zoeken",
     "EmptyTitle": "Deze afspeellijst is leeg",
     "EmptySubline": "Druk op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
-    "MobileDownloadDisabled": "Schakel 'downloaden via mobiel netwerk' onder instellingen in om verder te gaan",
     "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle sangene",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?",
     "Private": "Private",
