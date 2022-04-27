@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Twoja seria w tym tygodniu",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Czy na pewno chcesz usunąć wszystkie pobrane pliki?",
     "EmptyTitle": "Playlista jest pusta",
     "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać go do tej playlisty.",
-    "MobileDownloadDisabled": "Aby kontynuować, włącz w ustawieniach pobieranie za pomocą sieci mobilnej.",
     "AskToResumeDownloading": "Dodano nowe utwory do playlisty. Czy chcesz wznowić pobieranie?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Otrzymuj powiadomienia",
     "GetNotifiedMessage": "kiedy nowe odcinki są dostępne",
     "UnfollowConfirm": "Czy naprawdę chcesz przestać obserwować ten podcast?",
-    "MobileDownloadDisabled": "Włącz pobieranie za pośrednictwem sieci telefonii komórkowej aby najnowsze utwory były pobierane automatycznie",
     "ToggleFollowOfflineError": "Musisz być w trybie online, aby obserwować lub przestać obserwować podcast",
     "Week": "Week {0}",
     "ThisWeek": "W tym tygodniu",
@@ -334,7 +334,6 @@
     "SearchHint": "Szukaj",
     "EmptyTitle": "Playlista jest pusta",
     "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać utwory do tej playlisty.",
-    "MobileDownloadDisabled": "Aby kontynuować, włącz w ustawieniach pobieranie za pomocą sieci mobilnej.",
     "NotEnoughtSpaceToDownload": "Brak wolnego miejsca aby pobrać utwory z tej playlisty",
     "AskToResumeDownloading": "Dodano nowe utwory do playlisty. Czy chcesz wznowić pobieranie?",
     "Private": "Private",
