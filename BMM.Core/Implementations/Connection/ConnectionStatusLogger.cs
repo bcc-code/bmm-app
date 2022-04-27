@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BMM.Api.Framework;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Messages;
 using MvvmCross.Plugin.Messenger;
 
@@ -11,12 +12,20 @@ namespace BMM.Core.Implementations.Connection
     {
         private readonly IAnalytics _analytics;
         private readonly IMvxMessenger _messenger;
+        private readonly IConnection _connection;
+        private readonly IGlobalMediaDownloader _globalMediaDownloader;
         private DateTime _lastConnectionChange;
 
-        public ConnectionStatusLogger(IAnalytics analytics, IMvxMessenger messenger, IConnection connection)
+        public ConnectionStatusLogger(
+            IAnalytics analytics,
+            IMvxMessenger messenger,
+            IConnection connection,
+            IGlobalMediaDownloader globalMediaDownloader)
         {
             _analytics = analytics;
             _messenger = messenger;
+            _connection = connection;
+            _globalMediaDownloader = globalMediaDownloader;
             connection.StatusChanged += ConnectionStatusChanged;
         }
 
@@ -25,6 +34,16 @@ namespace BMM.Core.Implementations.Connection
             PublishConnectionStatusChangedMessage(connectionStatus);
             LogConnectionStatusChanged(connectionStatus);
             LogIfConnectionStatusChangedBackAndForth(connectionStatus);
+            SynchronizeOfflineTracks(connectionStatus);
+        }
+
+        private void SynchronizeOfflineTracks(ConnectionStatus connectionStatus)
+        {
+            if (connectionStatus == ConnectionStatus.Online
+                && _connection.IsUsingNetworkWithoutExtraCosts())
+            {
+                _globalMediaDownloader.SynchronizeOfflineTracks();
+            }
         }
 
         private void PublishConnectionStatusChangedMessage(ConnectionStatus connectionStatus)

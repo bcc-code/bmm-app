@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Do you really want to delete all downloaded items?",
     "EmptyTitle": "This playlist is empty",
     "EmptySubline": "Press the three dots on a track to add the track to this track list.",
-    "MobileDownloadDisabled": "Enable downloading via mobile network in settings to continue",
     "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Get notified",
     "GetNotifiedMessage": "when new episodes are out",
     "UnfollowConfirm": "Do you really want to unfollow this podcast?",
-    "MobileDownloadDisabled": "Enable downloading via mobile network in settings to download the latest tracks automatically",
     "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -334,7 +334,6 @@
     "SearchHint": "Search",
     "EmptyTitle": "This playlist is empty",
     "EmptySubline": "Press the three dots on a track to add the track to this playlist.",
-    "MobileDownloadDisabled": "Enable downloading via mobile network in settings to continue",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?",
     "Private": "Private",
