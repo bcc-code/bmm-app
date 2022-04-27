@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Ali res želite izbrisati vse prenesene elemente?",
     "EmptyTitle": "Ta seznam predvajanja je prazen",
     "EmptySubline": "Pritisnite na tri pike pri skladbi, da jo dodate na ta seznam skladb.",
-    "MobileDownloadDisabled": "Za nadaljevanje omogoči nalaganje preko mobilnega omrežja",
     "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Prejmi obvestilo",
     "GetNotifiedMessage": "ko so na voljo nove epizode",
     "UnfollowConfirm": "Ali se res želiš odjaviti od tega podcasta?",
-    "MobileDownloadDisabled": "Omogoči prenos preko mobilnega omrežja v nastavitvah za avtomatični prenos najnovejših skladb",
     "ToggleFollowOfflineError": "Moraš biti v online načinu, če želiš slediti ali se odjaviti od podcasta",
     "Week": "Week {0}",
     "ThisWeek": "This week",
@@ -334,7 +334,6 @@
     "SearchHint": "Išči",
     "EmptyTitle": "Ta seznam predvajanja je prazen",
     "EmptySubline": "Pritisnite na tri pike pri skladbi, da jo dodate na ta seznam predvajanja.",
-    "MobileDownloadDisabled": "Za nadaljevanje v nastavitvah omogočite prenos preko mobilnega omrežja",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?",
     "Private": "Private",
