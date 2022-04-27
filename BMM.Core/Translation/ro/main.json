@@ -18,7 +18,9 @@
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now"
+    "NotNow": "Not now",
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Progresul tău săptămâna aceasta",
@@ -199,7 +201,6 @@
     "RemoveOfflineConfirm": "Sunteţi sigur că doriţi să ştergeţi toate fișierele descărcate?",
     "EmptyTitle": "Acest play-list este gol",
     "EmptySubline": "Apăsați pe cele trei puncte din dreptul unei piese pentru a o adăuga în această listă.",
-    "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a continua",
     "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?"
   },
   "DownloadedContentViewModel": {
@@ -222,7 +223,6 @@
     "GetNotified": "Primește notificări",
     "GetNotifiedMessage": "când apar episoade noi",
     "UnfollowConfirm": "Chiar vrei să nu mai urmărești acest podcast?",
-    "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a descărca automat cele mai recente melodii",
     "ToggleFollowOfflineError": "Este nevoie să fi online pentru a urmări sau a anula urmărirea unui podcast",
     "Week": "Săptămâna",
     "ThisWeek": "Această săptămână",
@@ -334,7 +334,6 @@
     "SearchHint": "Caută",
     "EmptyTitle": "Acest play-list este gol",
     "EmptySubline": "Apăsați pe cele trei puncte din dreptul unei piese pentru a o adauga în acest play-list.",
-    "MobileDownloadDisabled": "Activați \"Permite descărcarea prin reţeaua de telefonie mobilă\" din Setări pentru a continua",
     "NotEnoughtSpaceToDownload": "Nu este suficient spaţiu pentru a descărca toate melodiile",
     "AskToResumeDownloading": "Există elemente noi în play-list. Doriți să continuați descărcarea?",
     "Private": "Privat",
