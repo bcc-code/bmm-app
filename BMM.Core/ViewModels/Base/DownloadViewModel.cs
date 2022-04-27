@@ -194,7 +194,7 @@ namespace BMM.Core.ViewModels.Base
                 }
                 
                 if (!mobileNetworkDownloadAllowed && !isUsingNetworkWithoutExtraCosts)
-                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.Global_EnableWifiToContinue]);
+                    await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.Global_DownloadPlaylistOnceOnWifi]);
                 
                 IsOfflineAvailable = newIsOfflineAvailable;
                 

@@ -19,7 +19,7 @@
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
     "NotNow": "Not now",
-    "EnableWifiToContinue": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
+    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
   },
   "Streak": {
     "Message": "Your streak this week",

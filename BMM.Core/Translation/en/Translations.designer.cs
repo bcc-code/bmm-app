@@ -22,7 +22,7 @@ namespace BMM.Core.Translation
 		public const string Global_BackgroundActivityRestrictedMessage = nameof(Global_BackgroundActivityRestrictedMessage);
 		public const string Global_GoToSettings = nameof(Global_GoToSettings);
 		public const string Global_NotNow = nameof(Global_NotNow);
-		public const string Global_EnableWifiToContinue = nameof(Global_EnableWifiToContinue);
+		public const string Global_DownloadPlaylistOnceOnWifi = nameof(Global_DownloadPlaylistOnceOnWifi);
 		public const string Streak_Message = nameof(Streak_Message);
 		public const string Streak_MessagePerfect = nameof(Streak_MessagePerfect);
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
