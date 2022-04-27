@@ -19,6 +19,9 @@ trigger:
     exclude:
       - docs
       - docs/*
+pr:
+  branches:
+    include: []
 
 variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]

@@ -17,6 +17,9 @@ trigger:
     exclude:
       - docs
       - docs/*
+pr:
+  branches:
+    include: []
 
 variables:
     - name: signingIdentity
