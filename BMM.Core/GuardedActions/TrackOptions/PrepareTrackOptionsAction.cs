@@ -58,6 +58,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
         private readonly List<decimal> _availablePlaybackSpeed = new()
         {
             0.75m,
+            1.0m,
             1.25m,
             1.5m
         };
@@ -338,8 +339,12 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             StandardIconOptionPO CreatePlaybackSpeedOption(decimal playbackSpeed)
             {
+                string optionName = playbackSpeed == PlayerConstants.NormalPlaybackSpeed
+                    ? _bmmLanguageBinder[Translations.PlayerViewModel_Normal]
+                    : $"{playbackSpeed.ToString(PlaybackSpeedStringFormat, CultureInfo.InvariantCulture)}x";
+                    
                 return new StandardIconOptionPO(
-                    GetPlaybackSpeedOptionTitle($"{playbackSpeed.ToString(PlaybackSpeedStringFormat, CultureInfo.InvariantCulture)}x", playbackSpeed),
+                    GetPlaybackSpeedOptionTitle(optionName, playbackSpeed),
                     ImageResourceNames.IconPlaybackSpeed,
                     CreatePlaybackSpeedTapCommand(playbackSpeed));
             }
@@ -347,11 +352,6 @@ namespace BMM.Core.GuardedActions.TrackOptions
             var playbackSpeedOptions = _availablePlaybackSpeed
                 .Select(CreatePlaybackSpeedOption)
                 .ToList();
-
-            playbackSpeedOptions.Add(new StandardIconOptionPO(
-                GetPlaybackSpeedOptionTitle(_bmmLanguageBinder[Translations.PlayerViewModel_Normal], PlayerConstants.NormalPlaybackSpeed),
-                ImageResourceNames.IconPlaybackSpeed,
-                CreatePlaybackSpeedTapCommand(PlayerConstants.NormalPlaybackSpeed)));
 
             _analytics.LogEvent(Event.PlaybackSpeedOptionsOpened);
             await _trackOptionsService.OpenOptions(playbackSpeedOptions);
