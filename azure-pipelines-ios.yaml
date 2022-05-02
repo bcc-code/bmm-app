@@ -13,10 +13,6 @@ trigger:
       - main
       - release/*
       - hotfix/*
-  paths:
-    exclude:
-      - docs
-      - docs/*
 pr:
   branches:
     include: []
