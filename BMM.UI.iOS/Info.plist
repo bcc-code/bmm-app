@@ -62,5 +62,12 @@
     <array>
       <string>mailto</string>
     </array>
+	<key>NSSiriUsageDescription</key>
+	<string>BMM wants to handle Siri commands</string>
+    <key>NSUserActivityTypes</key>
+    <array>
+      <string>INPlayMediaIntent</string>
+      <string>INSearchForMediaIntent</string>
+    </array>
   </dict>
 </plist>

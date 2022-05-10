@@ -1,16 +1,28 @@
 using System;
+using System.Diagnostics;
+using System.Linq;
+using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Clients.Contracts;
+using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
+using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using BMM.Core.Models.Themes;
+using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Translation;
+using BMM.UI.iOS.Actions.Interfaces;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
 using Firebase.CloudMessaging;
 using Foundation;
+using Intents;
 using MvvmCross;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Plugin.Messenger;
@@ -39,11 +51,30 @@ namespace BMM.UI.iOS
             RegisterForNotifications(app);
 #endif
 
+            AskForSiriAuthorization();
             app.ApplicationIconBadgeNumber = 0;
 
             SetThemeForApp();
             MainWindow = Window;
             return result;
+        }
+
+        private void AskForSiriAuthorization()
+        {
+            INPreferences.RequestSiriAuthorization (status => {});
+
+            InvokeInBackground(() =>
+            {
+                var vocabulary = new NSMutableOrderedSet<NSString>();
+                
+                foreach (string fromKareSiriPhrase in SiriConstants.FromKareSiriPhrases)
+                    vocabulary.Add(new NSString(fromKareSiriPhrase));
+                
+                vocabulary.Add(new NSString(BMMLanguageBinderLocator.TextSource[Translations.ExploreNewestViewModel_FraKaareHeader]));
+                
+                INVocabulary.SharedVocabulary.RemoveAllVocabularyStrings();
+                INVocabulary.SharedVocabulary.SetVocabularyStrings(new NSOrderedSet<NSString>(vocabulary), INVocabularyStringType.MediaShowTitle);
+            });
         }
 
         private void SetThemeForApp()
@@ -86,6 +117,17 @@ namespace BMM.UI.iOS
         public override void WillTerminate(UIApplication application)
         {
             Mvx.IoCProvider?.Resolve<IDownloadQueue>()?.AppWasKilled();
+        }
+
+        public override async void HandleIntent(UIApplication application, INIntent intent, Action<INIntentResponse> completionHandler)
+        {
+            if (!(intent is INPlayMediaIntent playMediaIntent))
+                return;
+
+            var handleSiriMediaPlayRequestAction = Mvx.IoCProvider.Resolve<IHandleSiriMediaPlayRequestAction>();
+            var intentResponse = await handleSiriMediaPlayRequestAction!.ExecuteGuarded(playMediaIntent);
+            
+            completionHandler(new INPlayMediaIntentResponse(intentResponse, null));
         }
 
         /**

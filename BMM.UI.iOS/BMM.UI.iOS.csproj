@@ -597,7 +597,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
+    <Compile Include="Application\Actions\HandleSiriMediaPlayRequestAction.cs" />
+    <Compile Include="Application\Actions\Interfaces\IHandleSiriMediaPlayRequestAction.cs" />
+    <Compile Include="Application\Actions\Interfaces\IPlayMusicFromSiriAction.cs" />
+    <Compile Include="Application\Actions\Interfaces\ISearchForMusicFromSiriAction.cs" />
     <Compile Include="Application\Actions\OnStartAction.cs" />
+    <Compile Include="Application\Actions\PlayMusicFromSiriAction.cs" />
+    <Compile Include="Application\Actions\SearchForMusicFromSiriAction.cs" />
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.designer.cs">
       <DependentUpon>ContinueListeningCollectionViewCell.cs</DependentUpon>
@@ -830,6 +836,7 @@
     <Compile Include="Constants\AppTheme.cs" />
     <Compile Include="Constants\ButtonTheme.cs" />
     <Compile Include="Constants\iOSScreenHeight.cs" />
+    <Compile Include="Constants\SiriConstants.cs" />
     <Compile Include="Constants\TextTheme.cs" />
     <Compile Include="Constants\ThemeExtensions.cs" />
     <Compile Include="Constants\Typography.cs" />
@@ -1350,6 +1357,11 @@
     <ProjectReference Include="..\BMM.Core\BMM.Core.csproj">
       <Project>{5b0f239b-7bb5-4c18-ab02-44dcbd597d61}</Project>
       <Name>BMM.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BMM.UI.iOS.SiriIntents\BMM.UI.iOS.SiriIntents.csproj">
+      <IsAppExtension>true</IsAppExtension>
+      <Project>{DDD61C48-3384-4D74-8FF7-1AB4BA7C3604}</Project>
+      <Name>BMM.UI.iOS.SiriIntents</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

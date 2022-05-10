@@ -26,5 +26,12 @@ namespace BMM.Core.Extensions
 
             return source.IndexOf(lastIndex) + increaseByIfFound;
         }
+        
+        public static T GetRandom<T>(this IEnumerable<T> list)
+        {
+            return list
+                .OrderBy(x => Guid.NewGuid())
+                .First();
+        }
     }
 }
