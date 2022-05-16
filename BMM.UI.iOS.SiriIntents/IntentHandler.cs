@@ -28,7 +28,7 @@ namespace BMM.UI.iOS.SiriIntents
 			return this;
 		}
 
-		public async void HandlePlayMedia(INPlayMediaIntent intent, Action<INPlayMediaIntentResponse> completion)
+		public void HandlePlayMedia(INPlayMediaIntent intent, Action<INPlayMediaIntentResponse> completion)
 		{
 			var response = new INPlayMediaIntentResponse(INPlayMediaIntentResponseCode.HandleInApp, null);
 			completion(response);

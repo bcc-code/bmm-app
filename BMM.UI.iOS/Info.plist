@@ -68,6 +68,7 @@
     <array>
       <string>INPlayMediaIntent</string>
       <string>INSearchForMediaIntent</string>
+      <string>FraKaare</string>
     </array>
   </dict>
 </plist>

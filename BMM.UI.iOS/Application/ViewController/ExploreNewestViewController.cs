@@ -4,9 +4,8 @@ using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
+using BMM.UI.iOS.Utils;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Localization;
-using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
@@ -29,7 +28,7 @@ namespace BMM.UI.iOS
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
 
-        public override void ViewDidLoad()
+        public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
 
@@ -64,6 +63,10 @@ namespace BMM.UI.iOS
                 if (args.PropertyName == "ShowBmmLive")
                     SetTableHeaderHeight();
             };
+
+            await SiriUtils.AskForAuthorizationAndPopulateUserVocabulary();
+            await SiriUtils.DonateFromKaareShortcut();
+            await SiriUtils.DonatePlayMusicShortcut();
         }
 
         private void SetPlaybackHistoryButton()

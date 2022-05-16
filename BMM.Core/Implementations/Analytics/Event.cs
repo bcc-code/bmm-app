@@ -23,5 +23,9 @@
         public const string SleepTimerOptionSelected = "Sleep timer option selected";
         public const string PlaybackSpeedOptionsOpened = "Playback speed options menu opened";
         public const string PlaybackSpeedChanged = "Playback speed changed";
+        public const string SiriSearch = "Siri search";
+        public const string SiriMusicPlayed = "Siri music played";
+        public const string FromKaarePlayed = "Siri From Kåre played";
+        public const string SiriDifferentLanguage = "Different Siri language";
     }
 }

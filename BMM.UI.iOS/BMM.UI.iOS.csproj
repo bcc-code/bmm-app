@@ -537,6 +537,7 @@
     <BundleResource Include="Resources\icon_trackrelation_external%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <None Include="app.config" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.xib" />
@@ -596,12 +597,16 @@
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Actions\AddSiriShortcutAction.cs" />
     <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
     <Compile Include="Application\Actions\HandleSiriMediaPlayRequestAction.cs" />
+    <Compile Include="Application\Actions\InitializeSiriShortcutsSettingsAction.cs" />
     <Compile Include="Application\Actions\Interfaces\IHandleSiriMediaPlayRequestAction.cs" />
+    <Compile Include="Application\Actions\Interfaces\IPlayFromKareAction.cs" />
     <Compile Include="Application\Actions\Interfaces\IPlayMusicFromSiriAction.cs" />
     <Compile Include="Application\Actions\Interfaces\ISearchForMusicFromSiriAction.cs" />
     <Compile Include="Application\Actions\OnStartAction.cs" />
+    <Compile Include="Application\Actions\PlayFromKareAction.cs" />
     <Compile Include="Application\Actions\PlayMusicFromSiriAction.cs" />
     <Compile Include="Application\Actions\SearchForMusicFromSiriAction.cs" />
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.cs" />
@@ -622,6 +627,7 @@
     <Compile Include="Application\CustomViews\Separator.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
     <Compile Include="Application\Delegates\CustomUIAdaptivePresentationControllerDelegate.cs" />
+    <Compile Include="Application\Delegates\IINUIAddVoiceShortcutViewControllerDelegate.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
@@ -812,6 +818,10 @@
       <DependentUpon>ShareTrackCollectionViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\ShareTrackCollectionViewController.cs" />
+    <Compile Include="Application\ViewController\SiriShortcutsViewController.cs" />
+    <Compile Include="Application\ViewController\SiriShortcutsViewController.designer.cs">
+      <DependentUpon>SiriShortcutsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\ViewController\ThemeSettingsViewController.cs" />
     <Compile Include="Application\ViewController\ThemeSettingsViewController.designer.cs">
       <DependentUpon>ThemeSettingsViewController.cs</DependentUpon>
@@ -1046,6 +1056,7 @@
     <Compile Include="Utils\ColorPalette\YUVColor.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
     <Compile Include="Utils\NibLoader.cs" />
+    <Compile Include="Utils\SiriUtils.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Compile Include="Utils\ColorPalette\ColorPaletteGenerator.cs" />
     <Compile Include="Utils\ViewUtils.cs" />

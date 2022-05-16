@@ -1,23 +1,16 @@
 using System;
-using System.Diagnostics;
+using System.Collections.Generic;
 using System.Linq;
-using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Clients.Contracts;
-using BMM.Api.Implementation.Models;
-using BMM.Core.Extensions;
 using BMM.Core.Helpers;
-using BMM.Core.Implementations.Device;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
-using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using BMM.Core.Models.Themes;
-using BMM.Core.NewMediaPlayer.Abstractions;
-using BMM.Core.Translation;
 using BMM.UI.iOS.Actions.Interfaces;
-using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
 using Firebase.CloudMessaging;
@@ -51,30 +44,30 @@ namespace BMM.UI.iOS
             RegisterForNotifications(app);
 #endif
 
-            AskForSiriAuthorization();
             app.ApplicationIconBadgeNumber = 0;
 
             SetThemeForApp();
             MainWindow = Window;
+            CheckSiriLanguage();
+
             return result;
         }
 
-        private void AskForSiriAuthorization()
+        private static void CheckSiriLanguage()
         {
-            INPreferences.RequestSiriAuthorization (status => {});
-
-            InvokeInBackground(() =>
+            string siriLanguageCode = INPreferences.SiriLanguageCode.Split("-").First();
+            string appLanguageCode = Mvx.IoCProvider.Resolve<IAppLanguageProvider>().GetAppLanguage();
+            
+            if (!string.Equals(appLanguageCode, siriLanguageCode, StringComparison.InvariantCultureIgnoreCase))
             {
-                var vocabulary = new NSMutableOrderedSet<NSString>();
-                
-                foreach (string fromKareSiriPhrase in SiriConstants.FromKareSiriPhrases)
-                    vocabulary.Add(new NSString(fromKareSiriPhrase));
-                
-                vocabulary.Add(new NSString(BMMLanguageBinderLocator.TextSource[Translations.ExploreNewestViewModel_FraKaareHeader]));
-                
-                INVocabulary.SharedVocabulary.RemoveAllVocabularyStrings();
-                INVocabulary.SharedVocabulary.SetVocabularyStrings(new NSOrderedSet<NSString>(vocabulary), INVocabularyStringType.MediaShowTitle);
-            });
+                Mvx.IoCProvider.Resolve<IAnalytics>().LogEvent(
+                    Event.SiriDifferentLanguage,
+                    new Dictionary<string, object>()
+                    {
+                        {"current_language", appLanguageCode},
+                        {"siri_language", siriLanguageCode}
+                    });
+            }
         }
 
         private void SetThemeForApp()
@@ -105,6 +98,11 @@ namespace BMM.UI.iOS
         [Export("application:continueUserActivity:restorationHandler:")]
         public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
         {
+            string url = userActivity?.WebPageUrl?.AbsoluteString;
+            
+            if (string.IsNullOrEmpty(url))
+                return false;
+            
             var uri = new Uri(userActivity.WebPageUrl.AbsoluteString);
             return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(uri);
         }

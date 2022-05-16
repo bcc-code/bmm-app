@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -26,7 +27,6 @@ using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels
@@ -271,14 +271,18 @@ namespace BMM.Core.ViewModels
                 }
             };
             
-            if (!_featureSupportInfoService.SupportsDarkMode)
-                return generalSectionItems;
-            
-            generalSectionItems.Add(new SelectableListItem
+            generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsDarkMode, new SelectableListItem
             {
                 Title = TextSource[Translations.SettingsViewModel_ThemeHeader],
                 Text = TextSource[Translations.SettingsViewModel_ThemeText],
                 OnSelected = NavigationService.NavigateCommand<ThemeSettingsViewModel>()
+            });
+            
+            generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsSiriShortcuts, new SelectableListItem
+            {
+                Title = TextSource[Translations.SettingsViewModel_SiriShortcutsHeader],
+                Text = TextSource[Translations.SettingsViewModel_SiriShortcutsText],
+                OnSelected = NavigationService.NavigateCommand<SiriShortcutsViewModel>()
             });
 
             return generalSectionItems;

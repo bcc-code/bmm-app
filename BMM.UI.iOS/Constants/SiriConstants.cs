@@ -2,6 +2,9 @@ namespace BMM.UI.iOS.Constants
 {
     public static class SiriConstants
     {
+        public const string FromKareIdentifier = "from_kaare";
+        public const string PlayMusicIdentifier = "play_music";
+        
         public static readonly string[] FromKareSiriPhrases =
         {
             "from kor ae",
