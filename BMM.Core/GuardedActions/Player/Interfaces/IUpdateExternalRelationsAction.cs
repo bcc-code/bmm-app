@@ -3,7 +3,9 @@ using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.Player.Interfaces
 {
-    public interface IUpdateExternalRelationsAction : IDataContextGuardedAction<IPlayerViewModel>
+    public interface IUpdateExternalRelationsAction
+        : IGuardedAction,
+          IDataContextGuardedAction<IPlayerViewModel>
     {
     }
 }

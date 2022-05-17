@@ -26,20 +26,36 @@ namespace BMM.UI.iOS.Utils
             await interaction.DonateInteractionAsync();
         }
         
-        public static void AddFromKaareShortcut()
+        public static async Task AddFromKaareShortcut()
         {
+            var tcs = new TaskCompletionSource<bool>();
+            
             var fromKaareIntent = CreateFromKaareIntent();
             var viewController = new INUIAddVoiceShortcutViewController(new INShortcut(fromKaareIntent));
             viewController.Delegate = new AddVoiceShortcutViewControllerDelegate();
-            SiriShortcutsViewController.CurrentInstance.PresentViewController(viewController, true, null);
+            SiriShortcutsViewController.CurrentInstance.PresentViewController(viewController, true,
+                () =>
+                {
+                    tcs.TrySetResult(true);
+                });
+            
+            await tcs.Task;
         }
         
-        public static void AddPlayMusicShortcut()
+        public static async Task AddPlayMusicShortcut()
         {
+            var tcs = new TaskCompletionSource<bool>();
+            
             var playMusicIntent = CreatePlayMusicIntent();
             var viewController = new INUIAddVoiceShortcutViewController(new INShortcut(playMusicIntent));
             viewController.Delegate = new AddVoiceShortcutViewControllerDelegate();
-            SiriShortcutsViewController.CurrentInstance.PresentViewController(viewController, true, null);
+            SiriShortcutsViewController.CurrentInstance.PresentViewController(viewController, true,
+                () =>
+                {
+                    tcs.TrySetResult(true);
+                });
+            
+            await tcs.Task;
         }
 
         public static async Task AskForAuthorizationAndPopulateUserVocabulary()

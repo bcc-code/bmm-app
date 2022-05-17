@@ -3,7 +3,9 @@ using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.SiriShortcuts.Interfaces
 {
-    public interface IInitializeSiriShortcutsSettingsAction : IDataContextGuardedAction<ISiriShortcutsViewModel>
+    public interface IInitializeSiriShortcutsSettingsAction
+        : IGuardedAction,
+          IDataContextGuardedAction<ISiriShortcutsViewModel>
     {
     }
 }

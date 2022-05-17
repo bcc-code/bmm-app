@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Siri.Interfaces;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models.POs;
 using BMM.Core.Translation;
+using BMM.Core.ViewModels.Interfaces;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Utils;
 using MvvmCross.Base;
@@ -28,10 +30,12 @@ namespace BMM.UI.iOS.Actions
             _bmmLanguageBinder = bmmLanguageBinder;
             _mvxMainThreadAsyncDispatcher = mvxMainThreadAsyncDispatcher;
         }
+
+        private ISiriShortcutsViewModel SiriShortcutsViewModel => this.GetDataContext();
         
         protected override async Task Execute(StandardSelectablePO siriShortcut)
         {
-            await _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
+            await _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(async () =>
             {
                 if (siriShortcut.IsSelected)
                 {
@@ -43,15 +47,17 @@ namespace BMM.UI.iOS.Actions
                 {
                     case SiriConstants.FromKareIdentifier:
                     {
-                        SiriUtils.AddFromKaareShortcut();
+                        await SiriUtils.AddFromKaareShortcut();
                         break;
                     }
                     case SiriConstants.PlayMusicIdentifier:
                     {
-                        SiriUtils.AddPlayMusicShortcut();
+                        await SiriUtils.AddPlayMusicShortcut();
                         break;
                     }
                 }
+
+                await SiriShortcutsViewModel.Refresh();
             });
         }
     }
