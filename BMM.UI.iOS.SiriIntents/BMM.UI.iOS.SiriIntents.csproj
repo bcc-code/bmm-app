@@ -27,10 +27,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+    <CodesignProvision>BMM Siri Intents Provisioning Profile 2022</CodesignProvision>
     <OutputPath>bin\iPhone\Release</OutputPath>
     <DefineConstants></DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchVerbosity></MtouchVerbosity>
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchFloat32>true</MtouchFloat32>
@@ -57,6 +58,25 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <WarningLevel>4</WarningLevel>
     <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <_BundlerDebug>false</_BundlerDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchFastDev>true</MtouchFastDev>
+    <MtouchVerbosity></MtouchVerbosity>
+    <MtouchFloat32>true</MtouchFloat32>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <IOSDebuggerPort>47530</IOSDebuggerPort>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchArch>ARM64</MtouchArch>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITests|iPhone' ">
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+    <CodesignProvision>BMM Siri Intents Provisioning Profile 2022</CodesignProvision>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <WarningLevel>4</WarningLevel>
     <MtouchDebug>true</MtouchDebug>
     <_BundlerDebug>false</_BundlerDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
