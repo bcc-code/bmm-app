@@ -278,7 +278,7 @@ namespace BMM.Core.ViewModels
                 OnSelected = NavigationService.NavigateCommand<ThemeSettingsViewModel>()
             });
             
-            generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsSiriShortcuts, new SelectableListItem
+            generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsSiri, new SelectableListItem
             {
                 Title = TextSource[Translations.SettingsViewModel_SiriShortcutsHeader],
                 Text = TextSource[Translations.SettingsViewModel_SiriShortcutsText],

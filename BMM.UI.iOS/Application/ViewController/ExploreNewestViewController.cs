@@ -1,10 +1,12 @@
 using System;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Utils;
+using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
@@ -64,7 +66,9 @@ namespace BMM.UI.iOS
                     SetTableHeaderHeight();
             };
 
-            await SiriUtils.AskForAuthorizationAndPopulateUserVocabulary();
+            if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsSiri)
+                return;
+            
             await SiriUtils.DonateFromKaareShortcut();
             await SiriUtils.DonatePlayMusicShortcut();
         }

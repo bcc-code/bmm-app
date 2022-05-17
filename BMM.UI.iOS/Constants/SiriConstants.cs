@@ -15,6 +15,13 @@ namespace BMM.UI.iOS.Constants
             "From Kåre",
             "Fra Kåre",
         };
+                
+        public static readonly string[] AvailableLanguages =
+        {
+            "en",
+            "de",
+            "nb"
+        };
         
         public const string PlaybackOrigin = "Siri";
     }

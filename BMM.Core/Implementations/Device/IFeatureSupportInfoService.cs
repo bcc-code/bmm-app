@@ -4,6 +4,6 @@ namespace BMM.Core.Implementations.Device
     {
         bool SupportsDarkMode { get; }
         
-        bool SupportsSiriShortcuts { get; }
+        bool SupportsSiri { get; }
     }
 }

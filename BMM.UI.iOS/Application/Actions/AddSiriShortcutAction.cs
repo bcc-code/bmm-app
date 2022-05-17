@@ -34,7 +34,10 @@ namespace BMM.UI.iOS.Actions
             await _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
             {
                 if (siriShortcut.IsSelected)
+                {
                     _userDialogs.Toast(new ToastConfig(_bmmLanguageBinder[Translations.SiriShortcutsViewModel_ShortcutAlreadyAdded]));
+                    return;
+                }
 
                 switch (siriShortcut.Value)
                 {

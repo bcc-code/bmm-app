@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Notifications;
@@ -13,6 +14,7 @@ using BMM.Core.Models.Themes;
 using BMM.UI.iOS.Actions.Interfaces;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
+using BMM.UI.iOS.Utils;
 using Firebase.CloudMessaging;
 using Foundation;
 using Intents;
@@ -53,16 +55,24 @@ namespace BMM.UI.iOS
             return result;
         }
 
-        private static void CheckSiriLanguage()
+        private static async void CheckSiriLanguage()
         {
-            string siriLanguageCode = INPreferences.SiriLanguageCode.Split("-").First();
+            if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsSiri)
+                return;
+            
+            await SiriUtils.AskForAuthorizationAndPopulateUserVocabulary();
+            string siriLanguageCode = INPreferences.SiriLanguageCode?.Split("-")?.First();
+            
+            if (siriLanguageCode == null)
+                return;
+            
             string appLanguageCode = Mvx.IoCProvider.Resolve<IAppLanguageProvider>().GetAppLanguage();
             
             if (!string.Equals(appLanguageCode, siriLanguageCode, StringComparison.InvariantCultureIgnoreCase))
             {
                 Mvx.IoCProvider.Resolve<IAnalytics>().LogEvent(
                     Event.SiriDifferentLanguage,
-                    new Dictionary<string, object>()
+                    new Dictionary<string, object>
                     {
                         {"current_language", appLanguageCode},
                         {"siri_language", siriLanguageCode}

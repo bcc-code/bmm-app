@@ -5,6 +5,6 @@ namespace BMM.UI.Droid.Application.Implementations.Device
     public class DroidFeaturePreviewPermission : IFeatureSupportInfoService
     {
         public bool SupportsDarkMode => true;
-        public bool SupportsSiriShortcuts => false;
+        public bool SupportsSiri => false;
     }
 }
