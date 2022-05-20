@@ -21,11 +21,11 @@
     "NotNow": "Not now",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "SiriFromKaareInvocationPhrase": "Spill Fra Kåre på BMM",
+    "SiriPlayMusicInvocationPhrase": "Spill musikk på BMM",
+    "FromKaareSiriShortcutName": "Spill Fra Kåre",
+    "PlayMusicSiriShortcutName": "Spill musikk",
+    "DailyMessage": "Dagens tale"
   },
   "Streak": {
     "Message": "Din streak denne uken",
