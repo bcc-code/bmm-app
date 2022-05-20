@@ -20,7 +20,12 @@
     "GoToSettings": "Go to Settings",
     "NotNow": "Not now",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
+    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
+    "FromKaareSiriShortcutName": "Play From Kåre",
+    "PlayMusicSiriShortcutName": "Play Music",
+    "DailyMessage": "Daily message"
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
@@ -304,7 +309,9 @@
     "UserVoiceHeader": "Voz de Usuario",
     "UserVoiceText": "¿Tienes ideas para mejorar BMM? Cuéntanos.",
     "ThemeHeader": "Modo oscuro",
-    "ThemeText": "Elige entre un tema claro y uno oscuro"
+    "ThemeText": "Elige entre un tema claro y uno oscuro",
+    "SiriShortcutsHeader": "Siri Shortcuts",
+    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
   },
   "StorageManagementViewModel": {
     "Title": "Ubicación de las pistas sin conexión",
@@ -478,5 +485,9 @@
     "Title": "Idioma de la pista",
     "PreferredLanguages": "Tus idiomas preferidos",
     "AllLanguages": "Todos los idiomas"
+  },
+  "SiriShortcutsViewModel": {
+    "Title": "Siri Shortcuts",
+    "ShortcutAlreadyAdded": "This shortcut has already been added"
   }
 }
