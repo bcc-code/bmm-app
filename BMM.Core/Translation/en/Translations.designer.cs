@@ -24,6 +24,11 @@ namespace BMM.Core.Translation
 		public const string Global_NotNow = nameof(Global_NotNow);
 		public const string Global_DownloadPlaylistOnceOnWifi = nameof(Global_DownloadPlaylistOnceOnWifi);
 		public const string Global_DownloadPodcastOnceOnWifi = nameof(Global_DownloadPodcastOnceOnWifi);
+		public const string Global_SiriFromKaareInvocationPhrase = nameof(Global_SiriFromKaareInvocationPhrase);
+		public const string Global_SiriPlayMusicInvocationPhrase = nameof(Global_SiriPlayMusicInvocationPhrase);
+		public const string Global_FromKaareSiriShortcutName = nameof(Global_FromKaareSiriShortcutName);
+		public const string Global_PlayMusicSiriShortcutName = nameof(Global_PlayMusicSiriShortcutName);
+		public const string Global_DailyMessage = nameof(Global_DailyMessage);
 		public const string Streak_Message = nameof(Streak_Message);
 		public const string Streak_MessagePerfect = nameof(Streak_MessagePerfect);
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
@@ -236,6 +241,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_UserVoiceText = nameof(SettingsViewModel_UserVoiceText);
 		public const string SettingsViewModel_ThemeHeader = nameof(SettingsViewModel_ThemeHeader);
 		public const string SettingsViewModel_ThemeText = nameof(SettingsViewModel_ThemeText);
+		public const string SettingsViewModel_SiriShortcutsHeader = nameof(SettingsViewModel_SiriShortcutsHeader);
+		public const string SettingsViewModel_SiriShortcutsText = nameof(SettingsViewModel_SiriShortcutsText);
 		public const string StorageManagementViewModel_Title = nameof(StorageManagementViewModel_Title);
 		public const string StorageManagementViewModel_RemoveAllFiles = nameof(StorageManagementViewModel_RemoveAllFiles);
 		public const string DocumentsViewModel_PluralTracks = nameof(DocumentsViewModel_PluralTracks);
@@ -369,5 +376,7 @@ namespace BMM.Core.Translation
 		public const string ChangeTrackLanguageViewModel_Title = nameof(ChangeTrackLanguageViewModel_Title);
 		public const string ChangeTrackLanguageViewModel_PreferredLanguages = nameof(ChangeTrackLanguageViewModel_PreferredLanguages);
 		public const string ChangeTrackLanguageViewModel_AllLanguages = nameof(ChangeTrackLanguageViewModel_AllLanguages);
+		public const string SiriShortcutsViewModel_Title = nameof(SiriShortcutsViewModel_Title);
+		public const string SiriShortcutsViewModel_ShortcutAlreadyAdded = nameof(SiriShortcutsViewModel_ShortcutAlreadyAdded);
 	}
 }

@@ -8,6 +8,7 @@ using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
+using BMM.Api.Implementation.Constants;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
@@ -33,8 +34,8 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly string _baseBrowsePath = "browse/";
         private readonly string[] _tileCollectionPaths = new[]
         {
-            "browse/podcasts",
-            "browse/music",
+            EndpointConstants.BrowsePodcast,
+            EndpointConstants.BrowseMusic
         };
 
         private const string PlaybackOriginName = "DeepLink";
