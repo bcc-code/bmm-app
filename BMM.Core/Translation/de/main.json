@@ -21,11 +21,11 @@
     "NotNow": "Not now",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "SiriFromKaareInvocationPhrase": "Spiel Von Kåre auf BMM",
+    "SiriPlayMusicInvocationPhrase": "Spiel Musik auf BMM",
+    "FromKaareSiriShortcutName": "Spiel Von Kåre",
+    "PlayMusicSiriShortcutName": "Spiel Musik",
+    "DailyMessage": "Rede des Tages"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -246,13 +246,13 @@
   "PlayerViewModel": {
     "Title": "Spielt jetzt",
     "PlayingCount": "{0} von {1}",
-    "ViewLyrics": "View Lyrics",
+    "ViewLyrics": "Liedtext",
     "SleepTimer": "Sleep timer",
     "Minutes": "{0} Minuten",
     "Hour": "{0} Stunde",
     "Hours": "{0} Stunden",
     "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
+    "PlaybackSpeed": "Abspielgeschwindigkeit",
     "Normal": "Normal",
     "Selected": "Selected"
   },
