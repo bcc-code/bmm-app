@@ -247,14 +247,14 @@
     "Title": "Spielt jetzt",
     "PlayingCount": "{0} von {1}",
     "ViewLyrics": "Liedtext",
-    "SleepTimer": "Sleep timer",
+    "SleepTimer": "Sleeptimer",
     "Minutes": "{0} Minuten",
     "Hour": "{0} Stunde",
     "Hours": "{0} Stunden",
-    "Disable": "Disable",
+    "Disable": "Deaktivieren",
     "PlaybackSpeed": "Abspielgeschwindigkeit",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Ausgewählt"
   },
   "QueueViewModel": {
     "Title": "Warteschlange"
@@ -310,8 +310,8 @@
     "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können.",
     "ThemeHeader": "Dark mode",
     "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "SiriShortcutsHeader": "Siri-Kurzbefehle",
+    "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM "
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
@@ -327,7 +327,7 @@
   "TrackCollectionViewModel": {
     "Title": "Playlist",
     "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "Resume": "Weiterhören",
     "AvailableOffline": "Offline verfügbar",
     "AvailableOfflineDownload": "Herunterladen",
     "AvailableOfflineDownloading": "noch {0} von {1} Downloads",
@@ -482,12 +482,12 @@
     "System": "Follow system settings (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Titelsprache",
+    "PreferredLanguages": "Bevorzugte Sprachen",
     "AllLanguages": "Alle Sprachen"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri-Kurzbefehle",
+    "ShortcutAlreadyAdded": "Der Kurzbefehl wurde bereits hinzugefügt"
   }
 }
