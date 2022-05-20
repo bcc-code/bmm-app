@@ -311,7 +311,7 @@
     "ThemeHeader": "Dark mode",
     "ThemeText": "Choose between a light and a dark theme",
     "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add BMM Siri Shortcuts to your device"
+    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",

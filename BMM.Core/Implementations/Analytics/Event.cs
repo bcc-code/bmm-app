@@ -25,7 +25,7 @@
         public const string PlaybackSpeedChanged = "Playback speed changed";
         public const string SiriSearch = "Siri search";
         public const string SiriMusicPlayed = "Siri music played";
-        public const string FromKaarePlayed = "Siri From Kåre played";
+        public const string SiriFromKaarePlayed = "Siri From Kåre played";
         public const string SiriDifferentLanguage = "Different Siri language";
     }
 }

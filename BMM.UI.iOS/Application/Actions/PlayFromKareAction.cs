@@ -32,7 +32,7 @@ namespace BMM.UI.iOS.Actions
 
         protected override async Task<bool> Execute()
         {
-            _analytics.LogEvent(Event.FromKaarePlayed);
+            _analytics.LogEvent(Event.SiriFromKaarePlayed);
             
             var fromKareList = await _podcastClient.GetTracks(FraKaareTeaserViewModel.FraKårePodcastId, CachePolicy.IgnoreCache);
             
