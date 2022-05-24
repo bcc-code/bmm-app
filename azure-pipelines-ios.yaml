@@ -13,13 +13,10 @@ trigger:
       - main
       - release/*
       - hotfix/*
-  paths:
-    exclude:
-      - docs
-      - docs/*
 pr:
   branches:
     include: []
+    exclude: [ crowdin-translation ]
 
 variables:
     - name: branchName
