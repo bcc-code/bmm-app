@@ -67,7 +67,7 @@
     <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
     <CodesignProvision>BMM Provisioning Profile 2022</CodesignProvision>
     <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;</DefineConstants>
+    <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;UI_TESTS</DefineConstants>
     <MtouchLink>None</MtouchLink>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>

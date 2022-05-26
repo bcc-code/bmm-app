@@ -9,7 +9,7 @@ namespace BMM.UI.iOS.SiriIntents
 	// is placed in AppDelegate.cs in HandleIntent method.
 	
 	[Register ("IntentHandler")]
-	public class IntentHandler : INExtension, IINPlayMediaIntentHandling, IINSearchForMediaIntentHandling
+	public class IntentHandler : INExtension, IINPlayMediaIntentHandling
 	{
 		protected IntentHandler (IntPtr handle) : base (handle)
 		{
@@ -21,11 +21,6 @@ namespace BMM.UI.iOS.SiriIntents
 		{
 			var response = new INPlayMediaIntentResponse(INPlayMediaIntentResponseCode.HandleInApp, null);
 			completion(response);
-		}
-
-		public void HandleSearch(INSearchForMediaIntent intent, Action<INSearchForMediaIntentResponse> completion)
-		{
-			completion(new INSearchForMediaIntentResponse(INSearchForMediaIntentResponseCode.ContinueInApp, null));
 		}
 	}
 }

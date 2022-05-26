@@ -16,7 +16,17 @@ namespace BMM.UI.iOS.Implementations.Device
         }
         
         public bool SupportsDarkMode => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
-        public bool SupportsSiri => UIDevice.CurrentDevice.CheckSystemVersion(13, 0)
-                                    && SiriConstants.AvailableLanguages.Contains(_appLanguageProvider.GetAppLanguage());
+        public bool SupportsSiri
+        {
+            get
+            {
+#if UI_TESTS
+                return false;
+#endif
+                
+                return UIDevice.CurrentDevice.CheckSystemVersion(13, 0)
+                       && SiriConstants.AvailableLanguages.Contains(_appLanguageProvider.GetAppLanguage());
+            }
+        }
     }
 }
