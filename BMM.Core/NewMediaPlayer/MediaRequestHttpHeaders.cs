@@ -16,9 +16,8 @@ namespace BMM.Core.NewMediaPlayer
 
         public async Task<IList<KeyValuePair<string, string>>> GetHeaders()
         {
-            var providers = _mediaRequestHeaders.GetProviders();
             var headers = new List<KeyValuePair<string, string>>();
-            foreach (var headerProvider in providers)
+            foreach (var headerProvider in HeaderProviders)
             {
                 var header = await headerProvider.GetHeader();
                 if (header.HasValue)
@@ -27,5 +26,7 @@ namespace BMM.Core.NewMediaPlayer
 
             return headers;
         }
+
+        public IList<IHeaderProvider> HeaderProviders => _mediaRequestHeaders.GetProviders();
     }
 }

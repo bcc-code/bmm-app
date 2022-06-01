@@ -1,8 +1,10 @@
-﻿using Android.Content;
+﻿using Acr.UserDialogs;
+using Android.Content;
 using Android.Net;
 using Android.Support.V4.Media;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations.Security;
 using Com.Google.Android.Exoplayer2.Ext.Mediasession;
 using Com.Google.Android.Exoplayer2.Source;
 using Com.Google.Android.Exoplayer2.Source.Hls;
@@ -14,11 +16,15 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
     public class SingleMediaSourceFactory : Java.Lang.Object, TimelineQueueEditor.IMediaSourceFactory
     {
         private readonly Context _applicationContext;
-        private readonly IMediaRequestHttpHeaders _headers;
+        private readonly IMediaRequestHttpHeaders _mediaRequestHeaders;
+        private readonly IAccessTokenProvider _accessTokenProvider;
 
-        public SingleMediaSourceFactory(Context applicationContext, IMediaRequestHttpHeaders headers)
+        public SingleMediaSourceFactory(Context applicationContext,
+            IMediaRequestHttpHeaders mediaRequestHeaders,
+            IAccessTokenProvider accessTokenProvider)
         {
-            _headers = headers;
+            _mediaRequestHeaders = mediaRequestHeaders;
+            _accessTokenProvider = accessTokenProvider;
             _applicationContext = applicationContext;
         }
 
@@ -44,9 +50,10 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
                     DefaultHttpDataSource.DefaultReadTimeoutMillis,
                     true);
 
-                // todo find a better solution to pass headers async
-                var headers = _headers.GetHeaders().GetAwaiter().GetResult();
-                sourceFactory = new HttpSourceFactory(dataSourceFactory, headers);
+                sourceFactory = new HttpSourceFactory(
+                    dataSourceFactory,
+                    _mediaRequestHeaders,
+                    _accessTokenProvider);
 
                 var subtype = description.Extras.GetString(MetadataMapper.MetadataKeySubtype);
                 if (subtype == TrackSubType.Live.ToString())

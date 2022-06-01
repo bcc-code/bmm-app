@@ -49,7 +49,8 @@
     "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
     "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
     "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorPlayerStart": "Unable to start playback.",
+    "ErrorCannotStartPlayingAtTheMoment": "The player cannot start playing this track at the moment."
   },
   "GlobalMediaDownloader": {
     "OutOfSpaceMessage": "There is not enough space to store offline files"

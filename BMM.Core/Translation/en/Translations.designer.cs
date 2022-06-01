@@ -45,6 +45,7 @@ namespace BMM.Core.Translation
 		public const string MediaPlayer_ErrorPlayerLiveRadioStopped = nameof(MediaPlayer_ErrorPlayerLiveRadioStopped);
 		public const string MediaPlayer_ErrorPlayerLiveRadioTooEarly = nameof(MediaPlayer_ErrorPlayerLiveRadioTooEarly);
 		public const string MediaPlayer_ErrorPlayerStart = nameof(MediaPlayer_ErrorPlayerStart);
+		public const string MediaPlayer_ErrorCannotStartPlayingAtTheMoment = nameof(MediaPlayer_ErrorCannotStartPlayingAtTheMoment);
 		public const string GlobalMediaDownloader_OutOfSpaceMessage = nameof(GlobalMediaDownloader_OutOfSpaceMessage);
 		public const string AlbumViewModel_Title = nameof(AlbumViewModel_Title);
 		public const string AlbumViewModel_SearchHint = nameof(AlbumViewModel_SearchHint);

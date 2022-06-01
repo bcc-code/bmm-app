@@ -1,4 +1,5 @@
 using System;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
@@ -31,6 +32,8 @@ namespace BMM.Core.Implementations.Security
             });
         }
 
+        public string AccessToken => _accessToken;
+
         public async Task<string> GetAccessToken()
         {
             await RefreshAccessTokenIfNeeded();
@@ -42,6 +45,16 @@ namespace BMM.Core.Implementations.Security
                 _logger.Error(GetType().Name, "Access token is still null after refreshing from secure storage");
 
             return _accessToken;
+        }
+        
+        public bool CheckIsTokenValid(string accessToken)
+        {
+            if (string.IsNullOrEmpty(accessToken))
+                return false;
+
+            var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
+            var tokenInfo = jwtSecurityTokenHandler.ReadToken(accessToken);
+            return tokenInfo.ValidTo > DateTime.UtcNow;
         }
 
         public async Task<bool> IsAccessTokenValid()
