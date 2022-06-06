@@ -218,8 +218,7 @@ namespace BMM.UI.Droid.Application.Activities
                 return;
 
             var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
-            if (deepLinkHandler.WillDeepLinkStartPlayer(_unhandledDeepLink))
-                Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPlayerHasPendingOperation();
+            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(_unhandledDeepLink);
         }
 
         private static void HandleNotification()

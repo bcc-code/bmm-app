@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Acr.UserDialogs;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
@@ -112,8 +114,12 @@ namespace BMM.UI.iOS
             
             if (string.IsNullOrEmpty(url))
                 return false;
+
+            var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
             
             var uri = new Uri(userActivity.WebPageUrl.AbsoluteString);
+
+            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(userActivity.WebPageUrl.AbsoluteString);
             return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(uri);
         }
 
