@@ -74,8 +74,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             await _platformSpecificRemoteConfig.UpdateValuesFromFirebaseRemoteConfig();
         }
 
-        public bool UseAnalyticsId => _platformSpecificRemoteConfig.GetBoolValue(Variables.UseAnalyticsId);
-
         public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
 
         public string SongTreasuresSongLink => _platformSpecificRemoteConfig.GetStringValue(Variables.SongTreasuresSongLink);

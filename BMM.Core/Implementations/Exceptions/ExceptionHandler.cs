@@ -119,7 +119,7 @@ namespace BMM.Core.Implementations.Exceptions
             }
             else
             {
-                _logger.Error("Unexpected Error", ex.Message, ex);
+                _logger.Error("Unexpected Error", ex.Message, ex, toastDisplayer != null);
                 toastDisplayer?.Error(_bmmLanguageBinder[Translations.Global_UnexpectedError]);
             }
         }
