@@ -40,8 +40,7 @@ namespace BMM.Core.Implementations.Security.Oidc
 
         public Task<DateTime?> GetAccessTokenExpirationDate()
         {
-            //return _semaphoreSlim.Run(() => _secureStorage.GetDateAsync(AccessTokenExpirationDateKey));
-            return _semaphoreSlim.Run(() => (DateTime?)DateTime.UtcNow.AddDays(-1));// _secureStorage.GetDateAsync(AccessTokenExpirationDateKey));
+            return _semaphoreSlim.Run(() => _secureStorage.GetDateAsync(AccessTokenExpirationDateKey));
         }
 
         public Task SetAccessTokenExpirationDate(DateTime time)
