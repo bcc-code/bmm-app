@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 
-namespace BMM.Core.Implementations.Security.Oidc
+namespace BMM.Core.Implementations.Security.Oidc.Interfaces
 {
     public interface IOidcAuthService
     {

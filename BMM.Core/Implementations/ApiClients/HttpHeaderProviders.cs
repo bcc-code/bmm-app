@@ -57,5 +57,18 @@ namespace BMM.Core.Implementations.ApiClients
                 };
             }
         }
+        
+        public class AndroidMediaRequests : IPredefinedHeaderSet
+        {
+            public IList<IHeaderProvider> GetProviders()
+            {
+                return new List<IHeaderProvider>
+                {
+                    Mvx.IoCProvider.Resolve<ConnectivityHeaderProvider>(),
+                    Mvx.IoCProvider.Resolve<MobileDownloadAllowedHeaderProvider>(),
+                    Mvx.IoCProvider.Resolve<ISyncAuthorizationHeaderProvider>()
+                };
+            }
+        }
     }
 }

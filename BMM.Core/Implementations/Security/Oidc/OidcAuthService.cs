@@ -4,6 +4,7 @@ using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using IdentityModel.OidcClient;
 using IdentityModel.OidcClient.Browser;
 
@@ -60,7 +61,6 @@ namespace BMM.Core.Implementations.Security.Oidc
 
                 await _credentialsStorage.SetAccessToken(result.AccessToken);
                 await _credentialsStorage.SetRefreshToken(result.RefreshToken);
-                await _credentialsStorage.SetAccessTokenExpirationDate(result.AccessTokenExpiration);
 
                 var user = _claimUserInformationExtractor.ExtractUser(result.User.Claims);
                 return user;
@@ -116,7 +116,6 @@ namespace BMM.Core.Implementations.Security.Oidc
                     throw new Exception(result.Error);
 
                 await _credentialsStorage.SetAccessToken(result.AccessToken);
-                await _credentialsStorage.SetAccessTokenExpirationDate(result.AccessTokenExpiration);
             }
             catch (Exception exception) when (IsInternetException(exception))
             {
@@ -128,16 +127,12 @@ namespace BMM.Core.Implementations.Security.Oidc
         {
             var hasAccessToken = await _credentialsStorage.GetAccessToken() != null;
             var hasRefreshToken = await _credentialsStorage.GetRefreshToken() != null;
-            var hasExpirationDate = await _credentialsStorage.GetAccessTokenExpirationDate() != null;
             var hasUser = _userStorage.GetUser() != null;
-
-            if (hasUser && hasAccessToken && hasRefreshToken && hasExpirationDate)
-                return true;
 
             if (hasUser && hasAccessToken && !hasRefreshToken)
                 _logger.Error(GetType().Name, "User and access_token are available but no refresh_token");
-
-            return false;
+            
+            return hasUser && hasAccessToken && hasRefreshToken;
         }
 
         public Task<bool> IsUserAuthenticated()

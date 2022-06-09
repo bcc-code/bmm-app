@@ -3,13 +3,13 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Core.Implementations.ApiClients;
 
-namespace BMM.Core.NewMediaPlayer
+namespace BMM.UI.Droid.Application.NewMediaPlayer
 {
-    public class MediaRequestHttpHeaders : IMediaRequestHttpHeaders
+    public class DroidMediaRequestHttpHeaders : IMediaRequestHttpHeaders
     {
-        private readonly HttpHeaderProviders.MediaRequests _mediaRequestHeaders;
+        private readonly HttpHeaderProviders.AndroidMediaRequests _mediaRequestHeaders;
 
-        public MediaRequestHttpHeaders(HttpHeaderProviders.MediaRequests mediaRequestHeaders)
+        public DroidMediaRequestHttpHeaders(HttpHeaderProviders.AndroidMediaRequests mediaRequestHeaders)
         {
             _mediaRequestHeaders = mediaRequestHeaders;
         }

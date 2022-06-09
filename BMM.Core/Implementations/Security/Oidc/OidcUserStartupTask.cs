@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Implementations.Startup;
 using IdentityModel.OidcClient;
 

@@ -1,6 +1,5 @@
-﻿using System.Linq;
+﻿using System.Threading.Tasks;
 using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Security;
 using Com.Google.Android.Exoplayer2.Upstream;
@@ -29,26 +28,12 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
             if (!(_httpFactory.CreateDataSource() is DefaultHttpDataSource source))
                 return null;
             
-            if (!_accessTokenProvider.CheckIsTokenValid(_accessTokenProvider.AccessToken))
-                _accessTokenProvider.GetAccessToken().FireAndForget();
-
-            // Filtering out IAuthorizationHeaderProvider, because we need to avoid
-            // waiting for refresh token operation here, as this is sync method.
-            var headersProviders = _mediaRequestHttpHeaders
-                .HeaderProviders
-                .Where(hp => !(hp is IAuthorizationHeaderProvider));
-
-            foreach (var headersProvider in headersProviders)
-            {
-                var header = headersProvider.GetHeader().Result;
-                if (header == null)
-                    continue;
-
-                var headerKeyValuePair = header.Value;
-                source.SetRequestProperty(headerKeyValuePair.Key, headerKeyValuePair.Value);
-            }
+            Task.Run(_accessTokenProvider.UpdateAccessTokenIfNeeded).FireAndForget();
+            var headers = _mediaRequestHttpHeaders.GetHeaders().Result;
             
-            source.SetRequestProperty(HeaderNames.Authorization, $"Bearer {_accessTokenProvider.AccessToken}");
+            foreach (var header in headers)
+                source.SetRequestProperty(header.Key, header.Value);
+            
             return source;
         }
     }

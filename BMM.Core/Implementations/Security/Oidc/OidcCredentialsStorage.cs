@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BMM.Core.Extensions;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 
 namespace BMM.Core.Implementations.Security.Oidc
 {

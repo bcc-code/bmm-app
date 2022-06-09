@@ -1,4 +1,6 @@
+using System;
 using System.Threading.Tasks;
+using BMM.Core.Models.App;
 
 namespace BMM.Core.Implementations.Security
 {
@@ -6,11 +8,13 @@ namespace BMM.Core.Implementations.Security
     {
         /// <summary>
         /// Is is not guaranteed that this access token is valid.
-        /// Only use in places, there async operation cannot be properly awaited. 
+        /// Only use in places, where async operation cannot be properly awaited. 
         /// </summary>
         string AccessToken { get; }
-        bool CheckIsTokenValid(string accessToken);
+        AccessTokenState CheckAccessTokenState();
         Task<string> GetAccessToken();
-        Task<bool> IsAccessTokenValid();
+        Task Initialize();
+        Task UpdateAccessTokenIfNeeded();
+        DateTime GetTokenExpirationDate();
     }
 }

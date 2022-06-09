@@ -4,6 +4,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.PostLoginActions;
 using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Messages;
 using BMM.Core.ViewModels.Base;
 
