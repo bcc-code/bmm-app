@@ -51,7 +51,7 @@ namespace BMM.UI.Droid.Application.Implementations
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error without exception", dic);
         }
 
-        public void Error(string tag, string message, Exception exception, bool wasErrorMessagePresentedToUser)
+        public void Error(string tag, string message, Exception exception, bool presentedToUser)
         {
             var throwableException = Throwable.FromException(exception);
             Log.Error(tag, throwableException, message);
@@ -60,7 +60,7 @@ namespace BMM.UI.Droid.Application.Implementations
             {
                 { "Tag", tag },
                 { "Message", message },
-                { "Presented to user", wasErrorMessagePresentedToUser.ToString() }
+                { "PresentedToUser", presentedToUser.ToString() }
             };
             
             AddAnalyticsId(parameters);

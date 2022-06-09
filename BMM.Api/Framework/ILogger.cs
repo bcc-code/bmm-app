@@ -8,6 +8,6 @@ namespace BMM.Api.Framework
         void Info(string tag, string message);
         void Warn(string tag, string message);
         void Error(string tag, string message);
-        void Error(string tag, string message, Exception exception, bool wasErrorMessagePresentedToUser = false);
+        void Error(string tag, string message, Exception exception, bool presentedToUser = false);
     }
 }

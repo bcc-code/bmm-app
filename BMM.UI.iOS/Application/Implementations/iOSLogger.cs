@@ -54,7 +54,7 @@ namespace BMM.UI.iOS.Implementations
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error without exception", dic);
         }
 
-        public void Error(string tag, string message, Exception exception, bool wasErrorMessagePresentedToUser)
+        public void Error(string tag, string message, Exception exception, bool presentedToUser)
         {
             WriteToConsole(tag, "Error", message + " Exception: " + exception.Message);
 
@@ -62,7 +62,7 @@ namespace BMM.UI.iOS.Implementations
             {
                 { "Tag", tag },
                 { "Message", message },
-                { "Presented to user", wasErrorMessagePresentedToUser.ToString() }
+                { "PresentedToUser", presentedToUser.ToString() }
             };
 
             AddAnalyticsId(parameters);

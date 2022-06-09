@@ -287,7 +287,6 @@ namespace BMM.Core.Implementations.PlayObserver
             };
 
             dict.Add(nameof(User.AnalyticsId), ev.AnalyticsId);
-            dict.Add(nameof(User.PersonId), ev.PersonId);
 
             _analytics.LogEvent("Track played", dict);
 

@@ -32,7 +32,6 @@ namespace BMM.Core.Implementations.Analytics
             if (user != null)
             {
                 parameters.AddIfNew(nameof(user.AnalyticsId), user.AnalyticsId);
-                parameters.AddIfNew(nameof(user.PersonId), user.PersonId);
 
                 if (user.Age != null)
                     parameters.Add(nameof(user.Age), user.Age);
