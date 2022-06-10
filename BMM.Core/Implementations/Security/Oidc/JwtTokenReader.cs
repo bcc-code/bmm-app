@@ -6,7 +6,7 @@ namespace BMM.Core.Implementations.Security.Oidc
 {
     public class JwtTokenReader : IJwtTokenReader
     {
-        public DateTime GetExpirationTme(string accessToken)
+        public DateTime GetExpirationTime(string accessToken)
         {
             var jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
             var tokenInfo = jwtSecurityTokenHandler.ReadToken(accessToken);

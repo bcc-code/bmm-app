@@ -15,6 +15,10 @@ namespace BMM.Core.NewMediaPlayer
             _accessTokenProvider = accessTokenProvider;
         }
         
+        /// <summary>
+        /// Can't do async in ExoPlayer when trying to play a track, so we can't wait for token refresh.
+        /// Not a problem since the token should have been refreshed by that point anyways.
+        /// </summary>
         public async Task<KeyValuePair<string, string>?> GetHeader()
         {
             await Task.CompletedTask;

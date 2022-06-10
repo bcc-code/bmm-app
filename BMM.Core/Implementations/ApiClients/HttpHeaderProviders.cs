@@ -58,6 +58,9 @@ namespace BMM.Core.Implementations.ApiClients
             }
         }
         
+        /// <summary>
+        /// Set of headers that do not have async operations.
+        /// </summary>
         public class AndroidMediaRequests : IPredefinedHeaderSet
         {
             public IList<IHeaderProvider> GetProviders()

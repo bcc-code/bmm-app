@@ -79,7 +79,7 @@ namespace BMM.Core.Implementations.Security
             }
         }
 
-        public DateTime GetTokenExpirationDate() => _jwtTokenReader.GetExpirationTme(AccessToken);
+        public DateTime GetTokenExpirationDate() => _jwtTokenReader.GetExpirationTime(AccessToken);
 
         private async Task RefreshAccessToken()
         {

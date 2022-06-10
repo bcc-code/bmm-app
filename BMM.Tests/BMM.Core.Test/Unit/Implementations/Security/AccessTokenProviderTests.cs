@@ -39,7 +39,7 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         public async Task ShouldRefresh_WhenExpirationDate_IsOlderThanNow()
         {
             var timeInPast = DateTime.Now.AddHours(-2);
-            _mockJwtTokenReader.Setup(x => x.GetExpirationTme(It.IsAny<string>())).Returns(timeInPast);
+            _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(timeInPast);
 
             var _ = await _provider.GetAccessToken();
             const string failMessage = "The refresh should be called when the access token is expired";
@@ -50,7 +50,7 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         public async Task Should_Not_Refresh_WhenExpirationDate_IsNewerThanNow()
         {
             var timeInFuture = DateTime.Now.AddHours(2);
-            _mockJwtTokenReader.Setup(x => x.GetExpirationTme(It.IsAny<string>())).Returns(timeInFuture);
+            _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(timeInFuture);
 
             var _ = await _provider.GetAccessToken();
             const string failMessage = "The refresh should not be called when the access token is not expired";
@@ -62,7 +62,7 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         {
             const string invalidToken = "asfkdsafsdlkfjdsklfjslkj";
 
-            _mockJwtTokenReader.Setup(x => x.GetExpirationTme(It.IsAny<string>())).Returns(DateTime.Now.AddHours(-2));
+            _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(DateTime.Now.AddHours(-2));
             _mockStorage.Setup(x => x.GetAccessToken()).ReturnsAsync(invalidToken);
             _mockAuthService.Setup(x => x.RefreshAccessTokenWithRetry()).Throws<OperationCanceledException>();
 
@@ -77,7 +77,7 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         public void Throws_OnInternetProblems()
         {
             var timeInPast = DateTime.Now.AddHours(-2);
-            _mockJwtTokenReader.Setup(x => x.GetExpirationTme(It.IsAny<string>())).Returns(timeInPast);
+            _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(timeInPast);
             
             _mockAuthService.Setup(x => x.RefreshAccessTokenWithRetry()).Throws(new InternetProblemsException(new Exception("test")));
             Assert.ThrowsAsync<InternetProblemsException>(async () => await _provider.GetAccessToken());
@@ -86,7 +86,7 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         [Test]
         public async Task Returns_WhitespaceOrNull_When_Storage_HasNullValue()
         {
-            _mockJwtTokenReader.Setup(x => x.GetExpirationTme(It.IsAny<string>())).Returns(DateTime.Now.AddHours(-2));
+            _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(DateTime.Now.AddHours(-2));
             _mockStorage.Setup(x => x.GetAccessToken()).ReturnsAsync("");
 
             var token = await _provider.GetAccessToken();
