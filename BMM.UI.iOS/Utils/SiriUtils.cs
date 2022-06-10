@@ -1,31 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BMM.Core.Extensions;
+using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Device;
+using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Translation;
 using BMM.UI.iOS.Constants;
 using Foundation;
 using Intents;
 using IntentsUI;
+using MvvmCross;
 
 namespace BMM.UI.iOS.Utils
 {
     public static class SiriUtils
     {
-        public static async Task DonatePlayMusicShortcut()
+        private static IExceptionHandler ExceptionHandler => Mvx.IoCProvider.Resolve<IExceptionHandler>(); 
+        private static IFeatureSupportInfoService FeatureSupportInfoService => Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>(); 
+        
+        public static void Initialize()
+        {
+            if (!FeatureSupportInfoService.SupportsSiri)
+                return;
+
+            ExceptionHandler.FireAndForgetOnMainThread(async () =>
+            {
+                await AskForAuthorizationAndPopulateUserVocabulary();
+                string siriLanguageCode = INPreferences.SiriLanguageCode?.Split("-")?.First();
+
+                if (siriLanguageCode == null)
+                    return;
+
+                string appLanguageCode = Mvx.IoCProvider.Resolve<IAppLanguageProvider>().GetAppLanguage();
+
+                if (!string.Equals(appLanguageCode, siriLanguageCode, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    Mvx.IoCProvider.Resolve<IAnalytics>()
+                        .LogEvent(
+                            Event.SiriDifferentLanguage,
+                            new Dictionary<string, object>
+                            {
+                                { "current_language", appLanguageCode },
+                                { "siri_language", siriLanguageCode }
+                            });
+                }
+
+                await DonatePlayMusicShortcut();
+                await DonateFromKaareShortcut();
+            });
+        }
+
+        private static async Task DonatePlayMusicShortcut()
         {
             var playMusicIntent = CreatePlayMusicIntent();
-            var interaction = new INInteraction(playMusicIntent, new INAddMediaIntentResponse(INAddMediaIntentResponseCode.Success, null));
+            var interaction = new INInteraction(playMusicIntent,
+                new INAddMediaIntentResponse(INAddMediaIntentResponseCode.Success, null));
             await interaction.DonateInteractionAsync();
         }
-        
-        public static async Task DonateFromKaareShortcut()
+
+        private static async Task DonateFromKaareShortcut()
         {
             var fromKaareIntent = CreateFromKaareIntent();
-            var interaction = new INInteraction(fromKaareIntent, new INAddMediaIntentResponse(INAddMediaIntentResponseCode.Success, null));
+            var interaction = new INInteraction(fromKaareIntent,
+                new INAddMediaIntentResponse(INAddMediaIntentResponseCode.Success, null));
             await interaction.DonateInteractionAsync();
         }
-        
+
         public static async Task AddFromKaareShortcut()
         {
             var tcs = new TaskCompletionSource<bool>();

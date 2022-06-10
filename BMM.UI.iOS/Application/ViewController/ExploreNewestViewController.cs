@@ -68,9 +68,8 @@ namespace BMM.UI.iOS
 
             if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsSiri)
                 return;
-            
-            await SiriUtils.DonateFromKaareShortcut();
-            await SiriUtils.DonatePlayMusicShortcut();
+
+            SiriUtils.Initialize();
         }
 
         private void SetPlaybackHistoryButton()

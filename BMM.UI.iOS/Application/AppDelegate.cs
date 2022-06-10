@@ -50,34 +50,8 @@ namespace BMM.UI.iOS
 
             SetThemeForApp();
             MainWindow = Window;
-            CheckSiriLanguage();
 
             return result;
-        }
-
-        private static async void CheckSiriLanguage()
-        {
-            if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsSiri)
-                return;
-            
-            await SiriUtils.AskForAuthorizationAndPopulateUserVocabulary();
-            string siriLanguageCode = INPreferences.SiriLanguageCode?.Split("-")?.First();
-            
-            if (siriLanguageCode == null)
-                return;
-            
-            string appLanguageCode = Mvx.IoCProvider.Resolve<IAppLanguageProvider>().GetAppLanguage();
-            
-            if (!string.Equals(appLanguageCode, siriLanguageCode, StringComparison.InvariantCultureIgnoreCase))
-            {
-                Mvx.IoCProvider.Resolve<IAnalytics>().LogEvent(
-                    Event.SiriDifferentLanguage,
-                    new Dictionary<string, object>
-                    {
-                        {"current_language", appLanguageCode},
-                        {"siri_language", siriLanguageCode}
-                    });
-            }
         }
 
         private void SetThemeForApp()
