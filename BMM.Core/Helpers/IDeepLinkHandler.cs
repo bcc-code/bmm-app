@@ -18,6 +18,6 @@ namespace BMM.Core.Helpers
         /// <param name="uri">URI.</param>
         bool OpenFromOutsideOfApp(Uri uri);
 
-        bool WillDeepLinkStartPlayer(string deepLink);
+        void SetDeepLinkWillStartPlayerIfNeeded(string deepLink);
     }
 }

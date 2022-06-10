@@ -43,6 +43,7 @@ namespace BMM.Core
 
     public class AppNavigator : IAppNavigator
     {
+        private const int TimeToDetectIfAppOpenedFromDeepLinkInMs = 500;
         private readonly IDeviceInfo _deviceInfo;
         private readonly IMvxNavigationService _navigationService;
         private readonly IMvxMessenger _messenger;
@@ -162,6 +163,9 @@ namespace BMM.Core
                 if (!isAccessTokenValid)
                     await _oidcAuthService.RefreshAccessToken();
 
+                if (_deviceInfo.IsIos)
+                    await Task.Delay(TimeToDetectIfAppOpenedFromDeepLinkInMs);
+                
                 if (_rememberedQueueInfoService.PreventRecoveringQueue)
                     return;
 
