@@ -229,6 +229,9 @@ namespace BMM.Core.ViewModels
             }
 
             var results = await Client.Search.GetAll(SearchTerm, startIndex, size);
+            if (results == null)
+                return Enumerable.Empty<Document>();
+            
             NextPageFromPosition = results.NextPageFromPosition;
             IsFullyLoaded = results.IsFullyLoaded;
             return results.Items;

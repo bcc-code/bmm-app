@@ -23,8 +23,8 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             // Arrange
             var listenedPortion = new List<ListenedPortion>
             {
-                new ListenedPortion {Start = 0, End = 10000},
-                new ListenedPortion {Start = 5000, End = 10000}
+                PreparePortion(0, 10000),
+                PreparePortion(5000, 10000)
             };
 
             // Act
@@ -40,8 +40,8 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             // Arrange
             var listenedPortions = new List<ListenedPortion>
             {
-                new ListenedPortion {Start = 0, End = 90},
-                new ListenedPortion {Start = 10000, End = 60000}
+                PreparePortion(0, 90),
+                PreparePortion(10000, 60000)
             };
 
             // Act
@@ -58,8 +58,8 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             // Arrange
             var listenedPortions = new List<ListenedPortion>
             {
-                new ListenedPortion {Start = 0, End = 5000},
-                new ListenedPortion {Start = 50000, End = 60000}
+                PreparePortion(0, 5000),
+                PreparePortion(50000, 60000)
             };
 
             // Act
@@ -76,10 +76,10 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             // Arrange
             var listenedPortions = new List<ListenedPortion>
             {
-                new ListenedPortion {Start = 0, End = 10000},
-                new ListenedPortion {Start = 0, End = 60000},
-                new ListenedPortion {Start = 50000, End = 60000},
-                new ListenedPortion {Start = 90000, End = 100000}
+                PreparePortion(0, 10000),
+                PreparePortion(0, 60000),
+                PreparePortion(50000, 60000),
+                PreparePortion(90000, 100000)
             };
 
             // Act
@@ -96,12 +96,12 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             // Arrange
             var listenedPortions = new List<ListenedPortion>
             {
-                new ListenedPortion {Start = 0, End = 3000},
-                new ListenedPortion {Start = 6000, End = 9000},
-                new ListenedPortion {Start = 10000, End = 14000},
-                new ListenedPortion {Start = 14000, End = 18000},
-                new ListenedPortion {Start = 18000, End = 20000},
-                new ListenedPortion {Start = 25000, End = 29000}
+                PreparePortion(0, 3000),
+                PreparePortion(6000, 9000),
+                PreparePortion(10000, 14000),
+                PreparePortion(14000, 18000),
+                PreparePortion(18000, 20000),
+                PreparePortion(25000, 29000),
             };
 
             // Act
@@ -130,8 +130,8 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             // Arrange
             var listenedPortions = new List<ListenedPortion>
             {
-                new ListenedPortion(),
-                new ListenedPortion {Start = 0, End = 0}
+                PreparePortion(0, 0),
+                PreparePortion(0, 0)
             };
 
             // Act
@@ -147,9 +147,9 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             // Arrange
             var listenedPortions = new List<ListenedPortion>
             {
-                new ListenedPortion {Start = 24085, End = 24915},
-                new ListenedPortion {Start = 0, End = 2384},
-                new ListenedPortion {Start = 16348, End = 24429},
+                PreparePortion(24085, 24915),
+                PreparePortion(0, 2384),
+                PreparePortion(16348, 24429)
             };
 
             // Act
@@ -157,6 +157,16 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
 
             // Assert
             Assert.AreEqual(11, result);
+        }
+
+        private ListenedPortion PreparePortion(double start, double end, decimal playbackRate = 1)
+        {
+            return new ListenedPortion
+            {
+                Start = start,
+                End = end,
+                PlaybackRate = playbackRate
+            };
         }
     }
 }
