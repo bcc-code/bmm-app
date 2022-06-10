@@ -19,6 +19,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Networking;
 using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
@@ -69,7 +70,7 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterType<ILogger>(
                 () => new ErrorDialogDisplayingLogger(
                     Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
-                    new IosLogger(),
+                    new IosLogger(Mvx.IoCProvider.Resolve<IUserStorage>()),
                     Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>())
             );
 #else

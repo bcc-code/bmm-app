@@ -2,6 +2,7 @@
 using System.Linq;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Constants;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Security;
 
@@ -30,27 +31,20 @@ namespace BMM.Core.Implementations.Analytics
             var user = _userStorage.GetUser();
             if (user != null)
             {
-                if (_remoteConfig.UseAnalyticsId)
-                    AddIfNew(parameters, nameof(user.AnalyticsId), user.AnalyticsId);
-                else
-                    AddIfNew(parameters, nameof(user.PersonId), user.PersonId);
+                parameters.AddIfNew(nameof(user.AnalyticsId), user.AnalyticsId);
 
                 if (user.Age != null)
                     parameters.Add(nameof(user.Age), user.Age);
             }
 
             if (!string.IsNullOrEmpty(_remoteConfig.ExperimentId))
-                AddIfNew(parameters, HeaderNames.ExperimentId, _remoteConfig.ExperimentId);
+                parameters.AddIfNew(HeaderNames.ExperimentId, _remoteConfig.ExperimentId);
 
             Dictionary<string, string> dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
             _logger.Info("Analytics", eventName + " {" + string.Join(",", dString.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent(eventName, dString);
         }
 
-        private static void AddIfNew(IDictionary<string, object> parameters, string key, object value)
-        {
-            if (!parameters.ContainsKey(key))
-                parameters.Add(key, value);
-        }
+
     }
 }

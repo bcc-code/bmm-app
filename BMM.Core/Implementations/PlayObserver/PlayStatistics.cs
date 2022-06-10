@@ -286,10 +286,7 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"lastPosition", ev.LastPosition}
             };
 
-            if (_config.UseAnalyticsId)
-                dict.Add(nameof(User.AnalyticsId), ev.AnalyticsId);
-            else
-                dict.Add(nameof(User.PersonId), ev.PersonId);
+            dict.Add(nameof(User.AnalyticsId), ev.AnalyticsId);
 
             _analytics.LogEvent("Track played", dict);
 
