@@ -1,4 +1,5 @@
 ﻿using System;
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content;
 using Android.Media;
@@ -13,6 +14,7 @@ using BMM.Api.Framework;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.Droid.Application.Helpers;
@@ -146,7 +148,10 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             _notificationBuilder = new NowPlayingNotificationBuilder(this, metadataMapper, queue, Mvx.IoCProvider.Resolve<NotificationChannelBuilder>());
             _notificationManager = NotificationManagerCompat.From(this);
 
-            var mediaSourceFactory = new SingleMediaSourceFactory(this, Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>());
+            var mediaSourceFactory = new SingleMediaSourceFactory(
+                this,
+                Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>(),
+                Mvx.IoCProvider.Resolve<IAccessTokenProvider>());
             MediaSessionConnector mediaSessionConnector = null;
             _mediaSourceSetter = new MediaSourceSetter(() => mediaSessionConnector,
                 source => new TimelineQueueEditor(_mediaController, source, new QueueDataAdapter(), mediaSourceFactory));

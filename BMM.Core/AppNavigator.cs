@@ -20,6 +20,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Messages;
 using BMM.Core.Models;
 using BMM.Core.Models.Storage;
@@ -133,6 +134,7 @@ namespace BMM.Core
 
             if (CallSynchronous(IsAuthenticated))
             {
+                _accessTokenProvider.Initialize();
                 if (IsOffline())
                 {
                     Log("Logged in but offline");
@@ -158,10 +160,7 @@ namespace BMM.Core
         {
             try
             {
-                bool isAccessTokenValid = await _accessTokenProvider.IsAccessTokenValid();
-                
-                if (!isAccessTokenValid)
-                    await _oidcAuthService.RefreshAccessToken();
+                await _accessTokenProvider.UpdateAccessTokenIfNeeded();
 
                 if (_deviceInfo.IsIos)
                     await Task.Delay(TimeToDetectIfAppOpenedFromDeepLinkInMs);

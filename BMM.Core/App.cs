@@ -54,6 +54,7 @@ using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.PostLoginActions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Implementations.Serialization;
 using BMM.Core.Implementations.Startup;
 using BMM.Core.Implementations.TrackCollections;
@@ -155,11 +156,13 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<EnvironmentLanguageReader>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContentLanguageManager, ContentLanguageManager>();
             Mvx.IoCProvider.RegisterType<IAppLanguageProvider, AppLanguageProvider>();
-
+            
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IJwtTokenReader, JwtTokenReader>();
+            
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAccessTokenProvider, AccessTokenProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAuthorizationHeaderProvider, BearerTokenAuthorizationHeaderProvider>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ISyncAuthorizationHeaderProvider, BearerTokenSyncAuthorizationHeaderProvider>();
 
-            Mvx.IoCProvider.RegisterType<IMediaRequestHttpHeaders, MediaRequestHttpHeaders>();
             Mvx.IoCProvider.RegisterType<IRequestHandlerFactory, RequestHandlerFactory>();
             Mvx.IoCProvider.RegisterType<HttpHeaderProviders.UnauthorizedRequests>();
             Mvx.IoCProvider.RegisterType<HttpHeaderProviders.AuthorizedRequests>();
