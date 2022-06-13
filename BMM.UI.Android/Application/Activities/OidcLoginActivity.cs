@@ -2,7 +2,6 @@ using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Widget;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.ViewModels;
 using IdentityModel.OidcClient.Browser;
@@ -14,7 +13,8 @@ namespace BMM.UI.Droid.Application.Activities
         Theme = "@style/AppTheme.Login",
         Name = "bmm.ui.droid.application.activities.OidcLoginActivity",
         ScreenOrientation = ScreenOrientation.Portrait,
-        LaunchMode = LaunchMode.SingleTask
+        LaunchMode = LaunchMode.SingleTask,
+        Exported = true
     )]
     [IntentFilter(
         new[] {Intent.ActionView},
