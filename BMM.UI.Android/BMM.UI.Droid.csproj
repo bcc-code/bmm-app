@@ -3,6 +3,7 @@
   <PropertyGroup>
     <LangVersion>8</LangVersion>
     <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
+    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -20,7 +21,6 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
@@ -48,7 +48,6 @@
     <AotAssemblies>false</AotAssemblies>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidDexTool>d8</AndroidDexTool>
-    <AndroidLinkTool></AndroidLinkTool>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -293,7 +292,7 @@
     <Compile Include="Application\ValueConverters\IntToStringValueConverter.cs" />
     <Compile Include="Application\ValueConverters\ToUpperValueConverter.cs" />
     <Compile Include="Application\Implementations\FileStorage\StorageManager.cs" />
-    <Compile Include="SplashScreen.cs" />
+    <Compile Include="SplashScreenActivity.cs" />
     <Compile Include="AndroidSetup.cs" />
     <Compile Include="Application\Fragments\BaseFragment.cs" />
     <Compile Include="Application\Implementations\Media\TrackMediaHelper.cs" />

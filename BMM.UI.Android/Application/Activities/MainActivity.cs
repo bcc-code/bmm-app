@@ -223,11 +223,11 @@ namespace BMM.UI.Droid.Application.Activities
 
         private static void HandleNotification()
         {
-            if (SplashScreen.UnhandledIntent == null)
+            if (SplashScreenActivity.UnhandledIntent == null)
                 return;
 
-            var intent = SplashScreen.UnhandledIntent;
-            SplashScreen.UnhandledIntent = null;
+            var intent = SplashScreenActivity.UnhandledIntent;
+            SplashScreenActivity.UnhandledIntent = null;
             var notification = new AndroidIntentNotification(intent);
             var notificationHandler = Mvx.IoCProvider.Resolve<INotificationHandler>();
 
