@@ -3,105 +3,105 @@ using System.Threading;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
-using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.Extensions;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Messages;
+using BMM.Core.Models.App;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.Implementations.Security
 {
     public class AccessTokenProvider : IAccessTokenProvider
     {
+        private const int TimeToRefreshTokenBeforeExpirationInHours = 3;
         private readonly SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
         private readonly IOidcCredentialsStorage _credentialsStorage;
         private readonly IOidcAuthService _authService;
         private readonly ILogger _logger;
-        private DateTime? _expirationDate;
-        private string _accessToken;
+        private readonly IJwtTokenReader _jwtTokenReader;
         private MvxSubscriptionToken _loggedOutMessageToken;
 
-        public AccessTokenProvider(IOidcCredentialsStorage credentialsStorage, IOidcAuthService authService, IMvxMessenger messenger, ILogger logger)
+        public AccessTokenProvider(
+            IOidcCredentialsStorage credentialsStorage,
+            IOidcAuthService authService,
+            IMvxMessenger messenger,
+            ILogger logger,
+            IJwtTokenReader jwtTokenReader)
         {
             _credentialsStorage = credentialsStorage;
             _authService = authService;
             _logger = logger;
+            _jwtTokenReader = jwtTokenReader;
             _loggedOutMessageToken = messenger.Subscribe<LoggedOutMessage>(message =>
             {
-                _expirationDate = null;
-                _accessToken = null;
+                AccessToken = null;
             });
+        }
+
+        public string AccessToken { get; private set; }
+
+        public AccessTokenState CheckAccessTokenState()
+        {
+            var expirationDate = GetTokenExpirationDate();
+
+            if (expirationDate < DateTime.UtcNow)
+                return AccessTokenState.Expired;
+            
+            if (expirationDate < DateTime.UtcNow.AddHours(TimeToRefreshTokenBeforeExpirationInHours))
+                return AccessTokenState.AboutToExpire;
+            
+            return AccessTokenState.Valid;
         }
 
         public async Task<string> GetAccessToken()
         {
-            await RefreshAccessTokenIfNeeded();
-
-            if (string.IsNullOrEmpty(_accessToken))
-                _accessToken = await _credentialsStorage.GetAccessToken();
-
-            if (string.IsNullOrEmpty(_accessToken))
-                _logger.Error(GetType().Name, "Access token is still null after refreshing from secure storage");
-
-            return _accessToken;
+            await UpdateAccessTokenIfNeeded();
+            return AccessToken;
         }
 
-        public async Task<bool> IsAccessTokenValid()
+        public async Task Initialize()
         {
-            if (_expirationDate == null)
-                _expirationDate = await _credentialsStorage.GetAccessTokenExpirationDate();
-
-            bool accessTokenNeedsRefresh = AccessTokenNeedsRefresh();
-            return !accessTokenNeedsRefresh;
+            AccessToken = await _credentialsStorage.GetAccessToken();
         }
 
-        private async Task RefreshAccessTokenIfNeeded()
+        public async Task UpdateAccessTokenIfNeeded()
         {
-            if (_expirationDate == null)
-                _expirationDate = await _credentialsStorage.GetAccessTokenExpirationDate();
-
-            if (!AccessTokenNeedsRefresh())
-                return;
-
-            try
+            var accessTokenState = CheckAccessTokenState();
+            
+            switch (accessTokenState)
             {
-                await _lock.WaitAsync();
-                _expirationDate = await _credentialsStorage.GetAccessTokenExpirationDate();
-
-                // check again inside of the lock
-                // to make sure refresh is not called several times
-                if (!AccessTokenNeedsRefresh())
-                    return;
-
-                await _authService.RefreshAccessTokenWithRetry();
-                _expirationDate = await _credentialsStorage.GetAccessTokenExpirationDate();
-                _accessToken = await _credentialsStorage.GetAccessToken();
-            }
-            catch (InternetProblemsException)
-            {
-                throw;
-            }
-            catch (Exception ex)
-            {
-                _logger.Error(GetType().Name, "Refreshing the access token failed", ex);
-                _accessToken = null;
-                _expirationDate = null;
-            }
-            finally
-            {
-                _lock.Release();
+                case AccessTokenState.Expired:
+                    await RefreshAccessToken();
+                    break;
+                case AccessTokenState.AboutToExpire:
+                    Task.Run(RefreshAccessToken).FireAndForget();
+                    break;
             }
         }
 
-        private bool AccessTokenNeedsRefresh()
-        {
-            if (!_expirationDate.HasValue)
-            {
-                _logger.Error(GetType().Name, "Access token expiration date is null");
-                return true;
-            }
+        public DateTime GetTokenExpirationDate() => _jwtTokenReader.GetExpirationTime(AccessToken);
 
-            var expirationDateInUtc = _expirationDate.Value.ToUniversalTime();
-            var currentUtc = DateTime.UtcNow;
-            return expirationDateInUtc < currentUtc;
+        private async Task RefreshAccessToken()
+        {
+            await _lock.Run(async () =>
+            {
+                try
+                {
+                    if (CheckAccessTokenState() == AccessTokenState.Valid)
+                        return;
+                    
+                    await _authService.RefreshAccessTokenWithRetry();
+                    AccessToken = await _credentialsStorage.GetAccessToken();
+                }
+                catch (InternetProblemsException)
+                {
+                    throw;
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(GetType().Name, "Refreshing the access token failed", ex);
+                }
+            });
         }
     }
 }

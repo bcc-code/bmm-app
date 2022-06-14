@@ -218,17 +218,16 @@ namespace BMM.UI.Droid.Application.Activities
                 return;
 
             var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
-            if (deepLinkHandler.WillDeepLinkStartPlayer(_unhandledDeepLink))
-                Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPlayerHasPendingOperation();
+            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(_unhandledDeepLink);
         }
 
         private static void HandleNotification()
         {
-            if (SplashScreen.UnhandledIntent == null)
+            if (SplashScreenActivity.UnhandledIntent == null)
                 return;
 
-            var intent = SplashScreen.UnhandledIntent;
-            SplashScreen.UnhandledIntent = null;
+            var intent = SplashScreenActivity.UnhandledIntent;
+            SplashScreenActivity.UnhandledIntent = null;
             var notification = new AndroidIntentNotification(intent);
             var notificationHandler = Mvx.IoCProvider.Resolve<INotificationHandler>();
 

@@ -49,6 +49,7 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IUserAuthChecker _authChecker;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
+        private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
 
         private readonly IList<IDeepLinkParser> _links;
 
@@ -61,8 +62,8 @@ namespace BMM.Core.Implementations.DeepLinking
             ILogger logger,
             IExceptionHandler exceptionHandler,
             IUserAuthChecker authChecker,
-            IBMMLanguageBinder bmmLanguageBinder
-        )
+            IBMMLanguageBinder bmmLanguageBinder,
+            IRememberedQueueInfoService rememberedQueueInfoService)
         {
             _client = client;
             _navigationService = navigationService;
@@ -73,6 +74,7 @@ namespace BMM.Core.Implementations.DeepLinking
             _exceptionHandler = exceptionHandler;
             _authChecker = authChecker;
             _bmmLanguageBinder = bmmLanguageBinder;
+            _rememberedQueueInfoService = rememberedQueueInfoService;
 
             _links = new List<IDeepLinkParser>
             {
@@ -177,9 +179,15 @@ namespace BMM.Core.Implementations.DeepLinking
 
         public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, "deep link opened");
 
-        public bool WillDeepLinkStartPlayer(string deepLink)
+        public void SetDeepLinkWillStartPlayerIfNeeded(string deepLink)
         {
-            return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(new Uri(deepLink), out _);
+            if (WillDeepLinkStartPlayer(new Uri(deepLink))) 
+                _rememberedQueueInfoService.SetPlayerHasPendingOperation();
+        }
+
+        private bool WillDeepLinkStartPlayer(Uri uri)
+        {
+            return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(uri, out _);
         }
 
         private bool Open(Uri uri, string analyticsEventName)

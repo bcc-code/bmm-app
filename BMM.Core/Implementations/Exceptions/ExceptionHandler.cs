@@ -7,6 +7,7 @@ using BMM.Api.Framework.Exceptions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Translation;
@@ -119,7 +120,7 @@ namespace BMM.Core.Implementations.Exceptions
             }
             else
             {
-                _logger.Error("Unexpected Error", ex.Message, ex);
+                _logger.Error("Unexpected Error", ex.Message, ex, toastDisplayer != null);
                 toastDisplayer?.Error(_bmmLanguageBinder[Translations.Global_UnexpectedError]);
             }
         }
@@ -130,11 +131,11 @@ namespace BMM.Core.Implementations.Exceptions
             appNavigator.NavigateToLogin(false);
             FireAndForgetWithoutUserMessages(async () =>
             {
-                var expirationDate = await Mvx.IoCProvider.Resolve<IOidcCredentialsStorage>().GetAccessTokenExpirationDate();
-                var accessTokenExpiryDateString = expirationDate.HasValue ? expirationDate.Value.ToString("MM/dd/yyyy HH:mm:ss") : "";
-                var currentDate = DateTime.Now;
+                var expirationDate = Mvx.IoCProvider.Resolve<IAccessTokenProvider>().GetTokenExpirationDate();
+                var accessTokenExpiryDateString = expirationDate.ToString("MM/dd/yyyy HH:mm:ss");
+                var currentDate = DateTime.UtcNow;
                 var currentDateString = currentDate.ToString("MM/dd/yyyy HH:mm:ss");
-                var tokenExpired = !expirationDate.HasValue || expirationDate.Value < currentDate;
+                var tokenExpired = expirationDate < currentDate;
                 var parameters = new Dictionary<string, object>
                 {
                     {"RequestUrl", ex.Request.RequestUri},
