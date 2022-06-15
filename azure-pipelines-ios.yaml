@@ -122,7 +122,9 @@ steps:
   - task: vs-publisher-473885.motz-mobile-buildtasks.ios-bundle-version.ios-bundle-version@0
     displayName: 'Bump iOS Versions in Info.plist'
     inputs:
-      sourcePath: '**/Info.plist'
+      sourcePath:
+        - 'BMM.UI.iOS/Info.plist'
+        - 'BMM.UI.iOS.SiriIntents/Info.plist'
       versionCode: '$(VersionCode)'
       versionCodeOffset: 0
       versionName: '$(VersionMajorMinorPatch)'
