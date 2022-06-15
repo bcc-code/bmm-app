@@ -22,6 +22,7 @@ using BMM.UI.Droid.Application.NewMediaPlayer.AudioFocus;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Playback;
+using BMM.UI.Droid.Utils;
 using Com.Google.Android.Exoplayer2;
 using Com.Google.Android.Exoplayer2.Ext.Mediasession;
 using Com.Google.Android.Exoplayer2.Trackselection;
@@ -123,13 +124,12 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             base.OnCreate();
 
             var sessionIntent = PackageManager.GetLaunchIntentForPackage(PackageName);
-            var pendingIntent = PendingIntent.GetActivity(this, 0 /*request code*/, sessionIntent, 0); //PendingIntentFlags.UpdateCurrent
+            var pendingIntent = PendingIntent.GetActivity(this, 0, sessionIntent, PendingIntentsUtils.GetImmutable());
 
-            _mediaSession = new MediaSessionCompat(this, "MusicService");
-            _mediaSession.SetSessionActivity(pendingIntent);
+            _mediaSession = new MediaSessionCompat(this, "MusicService", null, pendingIntent);
             _mediaSession.Active = true;
             SessionToken = _mediaSession.SessionToken;
-
+            
             _mediaController = new MediaControllerCompat(this, _mediaSession);
             _mediaController.RegisterCallback(
                 new MusicServiceMediaCallback
@@ -144,10 +144,10 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             var metadataMapper = Mvx.IoCProvider.Resolve<IMetadataMapper>();
             var queue = Mvx.IoCProvider.Resolve<IMediaQueue>();
             var analytics = Mvx.IoCProvider.Resolve<IAnalytics>();
-
+            
             _notificationBuilder = new NowPlayingNotificationBuilder(this, metadataMapper, queue, Mvx.IoCProvider.Resolve<NotificationChannelBuilder>());
             _notificationManager = NotificationManagerCompat.From(this);
-
+            
             var mediaSourceFactory = new SingleMediaSourceFactory(
                 this,
                 Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>(),
@@ -156,9 +156,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             _mediaSourceSetter = new MediaSourceSetter(() => mediaSessionConnector,
                 source => new TimelineQueueEditor(_mediaController, source, new QueueDataAdapter(), mediaSourceFactory));
             mediaSessionConnector = new MediaSessionConnector(_mediaSession);
-
+            
             var preparer = new ExoPlaybackPreparer(ExoPlayer, queue, metadataMapper, mediaSourceFactory, _mediaSourceSetter, analytics);
-
+            
             mediaSessionConnector.SetPlayer(ExoPlayer);
             mediaSessionConnector.SetPlaybackPreparer(preparer);
             mediaSessionConnector.SetControlDispatcher(new IdleRecoveringControlDispatcher(_mediaSourceSetter));

@@ -14,7 +14,7 @@ namespace BMM.UI.Droid.Application.Implementations.FirebaseRemoteConfig
             _firebaseRemote = Firebase.RemoteConfig.FirebaseRemoteConfig.Instance;
 
             var defaults = Core.Implementations.FirebaseRemoteConfig.FirebaseRemoteConfig.Defaults.ToDictionary(pair => pair.Key, pair => new Java.Lang.String(pair.Value) as Object);
-            _firebaseRemote.SetDefaults(defaults);
+            _firebaseRemote.SetDefaultsAsync(defaults);
         }
 
         public bool GetBoolValue(string id)

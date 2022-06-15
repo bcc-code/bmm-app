@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using BMM.UI.Droid.Utils;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
 {
@@ -26,7 +27,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
             ComponentName componentName = new ComponentName(context, Java.Lang.Class.FromType(typeof(CustomActionBroadcastReceiver)));
             intent.SetComponent(componentName);
 
-            return PendingIntent.GetBroadcast(context, 100, intent, 0);
+            return PendingIntent.GetBroadcast(context, 100, intent, PendingIntentsUtils.GetImmutable());
         }
     }
 }
