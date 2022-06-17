@@ -1,16 +1,25 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Acr.UserDialogs;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using BMM.Core.Models.Themes;
+using BMM.UI.iOS.Actions.Interfaces;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
+using BMM.UI.iOS.Utils;
 using Firebase.CloudMessaging;
 using Foundation;
+using Intents;
 using MvvmCross;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Plugin.Messenger;
@@ -43,6 +52,7 @@ namespace BMM.UI.iOS
 
             SetThemeForApp();
             MainWindow = Window;
+
             return result;
         }
 
@@ -74,7 +84,16 @@ namespace BMM.UI.iOS
         [Export("application:continueUserActivity:restorationHandler:")]
         public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
         {
+            string url = userActivity?.WebPageUrl?.AbsoluteString;
+            
+            if (string.IsNullOrEmpty(url))
+                return false;
+
+            var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
+            
             var uri = new Uri(userActivity.WebPageUrl.AbsoluteString);
+
+            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(userActivity.WebPageUrl.AbsoluteString);
             return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(uri);
         }
 
@@ -86,6 +105,17 @@ namespace BMM.UI.iOS
         public override void WillTerminate(UIApplication application)
         {
             Mvx.IoCProvider?.Resolve<IDownloadQueue>()?.AppWasKilled();
+        }
+
+        public override async void HandleIntent(UIApplication application, INIntent intent, Action<INIntentResponse> completionHandler)
+        {
+            if (!(intent is INPlayMediaIntent playMediaIntent))
+                return;
+
+            var handleSiriMediaPlayRequestAction = Mvx.IoCProvider.Resolve<IHandleSiriMediaPlayRequestAction>();
+            var intentResponse = await handleSiriMediaPlayRequestAction!.ExecuteGuarded(playMediaIntent);
+            
+            completionHandler(new INPlayMediaIntentResponse(intentResponse, null));
         }
 
         /**

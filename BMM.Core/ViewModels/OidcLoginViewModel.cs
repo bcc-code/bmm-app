@@ -10,6 +10,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.PostLoginActions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
@@ -31,6 +32,7 @@ namespace BMM.Core.ViewModels
         private readonly IExceptionHandler _exceptionHandler;
         private readonly ICurrentUserLoader _currentUserLoader;
         private readonly IAppNavigator _appNavigator;
+        private readonly IAccessTokenProvider _accessTokenProvider;
 
         public OidcLoginViewModel(
             IDeviceInfo deviceInfo,
@@ -39,7 +41,8 @@ namespace BMM.Core.ViewModels
             IUserDialogs userDialogs,
             IExceptionHandler exceptionHandler,
             ICurrentUserLoader currentUserLoader,
-            IAppNavigator appNavigator)
+            IAppNavigator appNavigator,
+            IAccessTokenProvider accessTokenProvider)
         {
             _deviceInfo = deviceInfo;
             _oidcAuthService = oidcAuthService;
@@ -48,6 +51,7 @@ namespace BMM.Core.ViewModels
             _exceptionHandler = exceptionHandler;
             _currentUserLoader = currentUserLoader;
             _appNavigator = appNavigator;
+            _accessTokenProvider = accessTokenProvider;
             LoginCommand = new ExceptionHandlingCommand(
                 async () => await StartLoginFlow()
             );
@@ -84,6 +88,7 @@ namespace BMM.Core.ViewModels
             try
             {
                 user = await _oidcAuthService.PerformLogin();
+                await _accessTokenProvider.Initialize();
                 await _currentUserLoader.TryToLoadUserFromApi(user);
                 // The corresponding activity has a launch mode of SingleTask
                 // and therefore never gets destroyed. Close it manually

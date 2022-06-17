@@ -11,5 +11,7 @@
 	<array>
 		<string>$(AppIdentifierPrefix)org.brunstad.bmm</string>
 	</array>
+	<key>com.apple.developer.siri</key>
+	<true/>
 </dict>
 </plist>

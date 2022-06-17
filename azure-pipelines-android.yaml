@@ -18,6 +18,7 @@ trigger:
 pr:
   branches:
     include: []
+    exclude: [ crowdin-translation ]
 
 variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
@@ -143,7 +144,7 @@ steps:
       configuration: Release
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) -p:AndroidNdkDirectory=$(ANDROID_NDK_HOME)'
 
   - task: XamarinAndroid@1
     displayName: 'Build APK'
@@ -153,7 +154,7 @@ steps:
       configuration: Release
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory=$(ANDROID_NDK_HOME)'
 
   - task: AndroidSigning@3
     displayName: 'Signing and aligning APK file(s) $(Build.BinariesDirectory)/bin/Release/*.apk'

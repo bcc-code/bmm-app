@@ -14,14 +14,14 @@ namespace BMM.UI.Droid
         Icon = "@drawable/app_icon",
         Theme = "@style/AppTheme.Splash",
         NoHistory = true,
-        Name = "bmm.ui.droid.SplashScreen",
+        Name = "bmm.ui.droid.SplashScreenActivity",
         Exported = true)]
     [IntentFilter(new[] {PodcastNotification.Type, GeneralNotification.Type, WordOfFaithNotification.Type}, Categories = new[] {Intent.CategoryDefault})]
-    public class SplashScreen : MvxSplashScreenActivity
+    public class SplashScreenActivity : MvxSplashScreenActivity
     {
         public static Intent UnhandledIntent;
 
-        public SplashScreen() : base(Resource.Layout.splash_screen)
+        public SplashScreenActivity() : base(Resource.Layout.splash_screen)
         {
         }
 

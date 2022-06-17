@@ -4,6 +4,8 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
         <LangVersion>default</LangVersion>
+        <Configurations>Debug;Release;UITests</Configurations>
+        <Platforms>AnyCPU;iPhone</Platforms>
     </PropertyGroup>
 
     <ItemGroup>

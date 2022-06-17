@@ -3,7 +3,9 @@ using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.Player.Interfaces
 {
-    public interface IPrepareAvailableTrackLanguageAction : IDataContextGuardedAction<IChangeTrackLanguageViewModel>
+    public interface IPrepareAvailableTrackLanguageAction 
+        : IGuardedAction,
+          IDataContextGuardedAction<IChangeTrackLanguageViewModel>
     {
     }
 }

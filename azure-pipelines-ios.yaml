@@ -16,12 +16,9 @@ trigger:
 pr:
   branches:
     include: []
+    exclude: [ crowdin-translation ]
 
 variables:
-    - name: signingIdentity
-      value: 'iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)'
-    - name: signingProvisioningProfileID
-      value: '7aa6caac-4848-4828-8656-35706723e182'
     - name: branchName
       value: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
     - group: 'AppleCertificate'
@@ -36,8 +33,13 @@ steps:
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install an Apple provisioning profile for Distribution'
     inputs:
-      provProfileSecureFile: 'BMM_Provisioning_Profile_2021.mobileprovision'
+      provProfileSecureFile: 'BMM_Provisioning_Profile_2022.mobileprovision'
 
+  - task: InstallAppleProvisioningProfile@1
+    displayName: 'Install an Apple provisioning profile for Distribution - Siri Intents Extension'
+    inputs:
+      provProfileSecureFile: 'BMM_Siri_Intents_Provisioning_Profile_2022.mobileprovision'
+      
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
     inputs:
@@ -115,9 +117,17 @@ steps:
         }
 
   - task: vs-publisher-473885.motz-mobile-buildtasks.ios-bundle-version.ios-bundle-version@0
-    displayName: 'Bump iOS Versions in BMM.UI.iOS/Info.plist'
+    displayName: 'Bump iOS Versions in Info.plist'
     inputs:
-      sourcePath: BMM.UI.iOS/Info.plist
+      sourcePath: 'BMM.UI.iOS/Info.plist'
+      versionCode: '$(VersionCode)'
+      versionCodeOffset: 0
+      versionName: '$(VersionMajorMinorPatch)'
+
+  - task: vs-publisher-473885.motz-mobile-buildtasks.ios-bundle-version.ios-bundle-version@0
+    displayName: 'Bump iOS.SiriIntent Versions in Info.plist'
+    inputs:
+      sourcePath: 'BMM.UI.iOS.SiriIntents/Info.plist'
       versionCode: '$(VersionCode)'
       versionCodeOffset: 0
       versionName: '$(VersionMajorMinorPatch)'
@@ -166,22 +176,21 @@ steps:
       solution: '**/*UITests.csproj'
       platform: AnyCPU
 
+## Signing certificate and provisioning profile is set up in .csproj
+## because azure pipelines doesn't allow to have multiple certificates/provisioning profiles in one task
+## and we need one for main iOS project and the second for the Siri Intents extension
   - task: XamariniOS@2
     displayName: 'Build Xamarin.iOS solution BMM.UI.iOS/BMM.UI.iOS.csproj'
     inputs:
       solutionFile: BMM.UI.iOS/BMM.UI.iOS.csproj
       clean: true
-      signingIdentity: '$(signingIdentity)'
-      signingProvisioningProfileID: '$(signingProvisioningProfileID)'
 
   - task: XamariniOS@2
     displayName: 'Build Xamarin.iOS solution for UI Test'
     inputs:
       solutionFile: BMM.UI.iOS/BMM.UI.iOS.csproj
-      configuration: Debug
+      configuration: UITests
       clean: true
-      signingIdentity: '$(signingIdentity)'
-      signingProvisioningProfileID: '$(signingProvisioningProfileID)'
       
   - task: ArchiveFiles@1
     displayName: 'Create dSYM archive with symbols '

@@ -7,10 +7,14 @@ namespace BMM.Core.Models.POs
     {
         private bool _isSelected;
 
-        public StandardSelectablePO(string label, string value = null)
+        public StandardSelectablePO(
+            string label,
+            string value = null,
+            bool isSelected = false)
         {
             Label = label;
             Value = value;
+            IsSelected = isSelected;
         }
 
         public string Label { get; }

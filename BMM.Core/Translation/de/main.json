@@ -20,7 +20,12 @@
     "GoToSettings": "Go to Settings",
     "NotNow": "Not now",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile."
+    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "SiriFromKaareInvocationPhrase": "Spiel Von Kåre auf BMM",
+    "SiriPlayMusicInvocationPhrase": "Spiel Musik auf BMM",
+    "FromKaareSiriShortcutName": "Spiel Von Kåre",
+    "PlayMusicSiriShortcutName": "Spiel Musik",
+    "DailyMessage": "Rede des Tages"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -241,15 +246,15 @@
   "PlayerViewModel": {
     "Title": "Spielt jetzt",
     "PlayingCount": "{0} von {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
+    "ViewLyrics": "Liedtext",
+    "SleepTimer": "Sleeptimer",
     "Minutes": "{0} Minuten",
     "Hour": "{0} Stunde",
     "Hours": "{0} Stunden",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
+    "Disable": "Deaktivieren",
+    "PlaybackSpeed": "Abspielgeschwindigkeit",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Ausgewählt"
   },
   "QueueViewModel": {
     "Title": "Warteschlange"
@@ -304,7 +309,9 @@
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können.",
     "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme"
+    "ThemeText": "Choose between a light and a dark theme",
+    "SiriShortcutsHeader": "Siri-Kurzbefehle",
+    "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM "
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
@@ -320,7 +327,7 @@
   "TrackCollectionViewModel": {
     "Title": "Playlist",
     "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "Resume": "Weiterhören",
     "AvailableOffline": "Offline verfügbar",
     "AvailableOfflineDownload": "Herunterladen",
     "AvailableOfflineDownloading": "noch {0} von {1} Downloads",
@@ -475,8 +482,12 @@
     "System": "Follow system settings (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Titelsprache",
+    "PreferredLanguages": "Bevorzugte Sprachen",
     "AllLanguages": "Alle Sprachen"
+  },
+  "SiriShortcutsViewModel": {
+    "Title": "Siri-Kurzbefehle",
+    "ShortcutAlreadyAdded": "Der Kurzbefehl wurde bereits hinzugefügt"
   }
 }

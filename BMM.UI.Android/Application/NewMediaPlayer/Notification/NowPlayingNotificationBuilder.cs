@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
@@ -7,6 +8,7 @@ using AndroidX.Core.App;
 using AndroidX.Media.Session;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.Droid.Application.Activities;
+using BMM.UI.Droid.Utils;
 using FFImageLoading;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
@@ -114,7 +116,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
                 .SetShowCancelButton(true);
 
             var notificationIntent = new Intent(applicationContext, typeof(MainActivity));
-            var contentIntent = PendingIntent.GetActivity(applicationContext, 0, notificationIntent, 0);
+            var contentIntent = PendingIntent.GetActivity(applicationContext, 0, notificationIntent, PendingIntentsUtils.GetImmutable());
 
             builder = builder.SetContentIntent(contentIntent)
                 .SetContentText(description.Subtitle)

@@ -118,7 +118,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
 
-        private const int IncompletePlaybackThresholdInSeconds = 2;
+        private const int IncompletePlaybackThresholdInSeconds = 10;
 
         public AVAudioPlayback(IPlayerErrorHandler playerErrorHandler, IPlayerAnalytics playerAnalytics, AvPlayerItemFactory playerItemFactory)
         {

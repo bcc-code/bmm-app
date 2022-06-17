@@ -40,7 +40,7 @@ namespace BMM.Core.Implementations.Exceptions
             _mainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() => _userDialogs.AlertAsync(message));
         }
 
-        public void Error(string tag, string message, Exception exception)
+        public void Error(string tag, string message, Exception exception, bool presentedToUser)
         {
             _logger.Error(tag, message, exception);
 

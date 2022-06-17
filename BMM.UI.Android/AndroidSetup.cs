@@ -20,6 +20,7 @@ using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.ApiClients;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Dialogs;
 using BMM.Core.Implementations.DownloadManager;
@@ -151,12 +152,14 @@ namespace BMM.UI.Droid
 #if DEBUG
             Mvx.IoCProvider.RegisterType<ILogger>(
                 () => new ErrorDialogDisplayingLogger(Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
-                    new AndroidLogger(),
+                    new AndroidLogger(Mvx.IoCProvider.Resolve<IUserStorage>()),
                     Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()));
 #else
             Mvx.IoCProvider.RegisterType<ILogger, AndroidLogger>();
 #endif
-
+            
+            Mvx.IoCProvider.RegisterType<HttpHeaderProviders.AndroidMediaRequests>();
+            Mvx.IoCProvider.RegisterType<IMediaRequestHttpHeaders, DroidMediaRequestHttpHeaders>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, DroidExceptionHandlingUserDialogs>();
             Mvx.IoCProvider.RegisterType<IClipboardService, ClipboardService>();
             Mvx.IoCProvider.RegisterType<ITrackOptionsService, DroidTrackOptionsService>();

@@ -55,7 +55,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var bmmClient = GetBmmClientThatReturnsTrackAndTrackCollection(track, true);
             var trackCollectionManager = GetTrackCollectionManager(bmmClient);
             trackCollectionManager.AddToTrackCollection(_trackCollection, track.Id, DocumentType.Track);
-            _logger.Verify(logger => logger.Error(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<NullTrackException>()), Times.AtLeastOnce);
+            _logger.Verify(logger => logger.Error(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<NullTrackException>().InnerException, It.IsAny<bool>()), Times.AtLeastOnce);
         }
 
         [Test]
