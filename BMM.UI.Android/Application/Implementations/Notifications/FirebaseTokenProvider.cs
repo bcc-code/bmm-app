@@ -1,17 +1,15 @@
 ﻿using System.Threading.Tasks;
-using Android.Gms.Extensions;
 using BMM.Core.Implementations.Notifications;
 using Firebase.Iid;
-using Firebase.Messaging;
 
 namespace BMM.UI.Droid.Application.Implementations.Notifications
 {
     public class FirebaseTokenProvider : INotificationSubscriptionTokenProvider
     {
-        public async Task<string> GetToken()
+        // todo should replaced when the bindings are ready: https://firebase.google.com/docs/reference/android/com/google/firebase/messaging/FirebaseMessaging#getToken()
+        public Task<string> GetToken()
         {
-            var tokenObject = await FirebaseMessaging.Instance.GetToken();
-            return tokenObject.ToString();
+            return Task.FromResult(FirebaseInstanceId.Instance.Token);
         }
     }
 }
