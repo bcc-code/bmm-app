@@ -18,19 +18,18 @@ namespace BMM.UI.iOS.Actions
         : GuardedActionWithResult<bool>,
           IPlayMusicFromSiriAction
     {
-        private const int PlaylistsToTake = 8;
-        private readonly IBrowseClient _browseClient;
+        private readonly ITracksClient _tracksClient;
         private readonly IPlaylistClient _playlistClient;
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IAnalytics _analytics;
 
         public PlayMusicFromSiriAction(
-            IBrowseClient browseClient,
+            ITracksClient tracksClient,
             IPlaylistClient playlistClient,
             IMediaPlayer mediaPlayer,
             IAnalytics analytics)
         {
-            _browseClient = browseClient;
+            _tracksClient = tracksClient;
             _playlistClient = playlistClient;
             _mediaPlayer = mediaPlayer;
             _analytics = analytics;
@@ -40,20 +39,11 @@ namespace BMM.UI.iOS.Actions
         {
             _analytics.LogEvent(Event.SiriMusicPlayed);
             
-            var response = await _browseClient.GetDocuments(EndpointConstants.BrowseMusic, 0, PlaylistsToTake);
-
-            if (response.Items == null || !response.Items.Any())
-                return false;
-
-            var randomPlaylist = response
-                .Items
-                .GetRandom();
-            
-            var tracks = await _playlistClient.GetTracks(randomPlaylist.Id, CachePolicy.IgnoreCache);
+            var tracks = await _tracksClient.GetRecommendations();
 
             if (tracks == null || !tracks.Any())
                 return false;
-            
+
             var mediaTracks = tracks
                 .OfType<IMediaTrack>()
                 .ToList();

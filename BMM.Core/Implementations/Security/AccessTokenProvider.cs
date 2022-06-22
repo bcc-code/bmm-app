@@ -20,6 +20,7 @@ namespace BMM.Core.Implementations.Security
         private readonly ILogger _logger;
         private readonly IJwtTokenReader _jwtTokenReader;
         private MvxSubscriptionToken _loggedOutMessageToken;
+        private bool _initialized;
 
         public AccessTokenProvider(
             IOidcCredentialsStorage credentialsStorage,
@@ -34,6 +35,7 @@ namespace BMM.Core.Implementations.Security
             _jwtTokenReader = jwtTokenReader;
             _loggedOutMessageToken = messenger.Subscribe<LoggedOutMessage>(message =>
             {
+                _initialized = false;
                 AccessToken = null;
             });
         }
@@ -55,6 +57,9 @@ namespace BMM.Core.Implementations.Security
 
         public async Task<string> GetAccessToken()
         {
+            if (!_initialized)
+                await Initialize();
+            
             await UpdateAccessTokenIfNeeded();
             return AccessToken;
         }
@@ -62,6 +67,7 @@ namespace BMM.Core.Implementations.Security
         public async Task Initialize()
         {
             AccessToken = await _credentialsStorage.GetAccessToken();
+            _initialized = true;
         }
 
         public async Task UpdateAccessTokenIfNeeded()

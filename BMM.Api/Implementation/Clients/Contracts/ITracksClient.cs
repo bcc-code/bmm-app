@@ -55,5 +55,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
 
         /// <summary>Gets the track with the specified identifier.</summary>
         Task<Track> GetById(int id, string desiredLanguage = default);
+        
+        Task<IList<Track>> GetRecommendations();
     }
 }

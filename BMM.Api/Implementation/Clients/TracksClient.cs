@@ -75,6 +75,12 @@ namespace BMM.Api.Implementation.Clients
             return Get<Track>(uri, headers);
         }
 
+        public Task<IList<Track>> GetRecommendations()
+        {
+            var uri = new UriTemplate(ApiUris.TrackRecommendation);
+            return Get<IList<Track>>(uri);
+        }
+
         public Task<Stream> GetCover(int id)
         {
             return GetCoverBase(id, ApiUris.TrackCover);
