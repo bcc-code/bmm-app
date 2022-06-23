@@ -35,6 +35,7 @@ namespace BMM.UI.iOS
                      .To(vm => vm.ViewModel.DocumentSelectedCommand)
                      .WithConversion(new DocumentSelectedCommandValueConverter());
 
+                ContinueListeningCollection.AccessibilityIdentifier = nameof(ContinueListeningCollection);
                 ContinueListeningCollection.Source = source;
                 set.Apply();
             });

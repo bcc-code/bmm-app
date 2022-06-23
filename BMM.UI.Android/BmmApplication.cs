@@ -3,6 +3,7 @@ using Android.App;
 using Android.Runtime;
 using AndroidX.AppCompat.App;
 using BMM.Core;
+using BMM.Core.Helpers;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Activities;
@@ -81,6 +82,13 @@ namespace BMM.UI.Droid
         public void InvokeUiTestBrowser()
         {
             RunsUiTest = true;
+        }
+        
+        //UI Tests
+        [Export("GoToLink")]
+        public void GoToLink(string link)
+        {
+            Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromInsideOfApp(new Uri(link));
         }
     }
 }
