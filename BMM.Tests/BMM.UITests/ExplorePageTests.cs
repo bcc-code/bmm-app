@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using NUnit.Framework;
 using Xamarin.UITest;
 
@@ -34,6 +35,17 @@ namespace BMM.UITests
 
         private void TestFraaKaarePresent()
         {
+            const int maxScrollTries = 20;
+            int currentScrollTries = 0;
+
+            _app.WaitForElement(_bmmApp.ExplorePage.ContinueCollectionCarousel);
+            
+            while (!_app.Query(_bmmApp.ExplorePage.FraaKaareTeaser).Any() && currentScrollTries < maxScrollTries)
+            {
+                currentScrollTries++;
+                _app.SwipeRightToLeft(_bmmApp.ExplorePage.ContinueCollectionCarousel, 0.3, 100);
+            }
+            
             _app.WaitForElement(_bmmApp.ExplorePage.FraaKaareTeaser, "Fra Kåre teaser couldn't be loaded");
         }
     }

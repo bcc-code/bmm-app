@@ -40,10 +40,15 @@ namespace BMM.UITests
         IBrowsePage BrowsePage { get; set; }
         Task LoginToApp();
         void StartTrackWithinPlaylist();
+        Task OpenFraKaare();
     }
 
     public class BmmApp : IBmmApp
     {
+        private const string FraaKareLink = "https://bmm.brunstad.org/playlist/podcast/1"; 
+        private const int DelayAfterOpeningDeepLink = 500;
+        private const string GoToLinkMethodName = "GoToLink";
+        private string GoToLinkPlatformMethodName => Platform == Platform.Android ? GoToLinkMethodName : $"{GoToLinkMethodName}:"; 
         public IApp App { get; set; }
         public IMusicListPage MusicListPage { get; set; }
         public IMyContentPlaylistPage MyContentPlaylistPage { get; set; }
@@ -70,6 +75,7 @@ namespace BMM.UITests
         public IExplorePage ExplorePage { get; set; }
         public IContentLanguagePage ContentLanguagePage { get; set; }
         public IBrowsePage BrowsePage { get; set; }
+        public Platform Platform { get; set; }
 
         public async Task LoginToApp()
         {
@@ -98,6 +104,12 @@ namespace BMM.UITests
             App.Tap(MyContentPlaylistsPage.ItemWithTitle(MyContentPlaylistsPage.UiTestSamplePlaylist.Name));
             App.Tap(MyContentPlaylistPage.ItemWithTitle(MyContentPlaylistsPage.UiTestSamplePlaylist.SecondTrackTitle));
         }
+
+        public async Task OpenFraKaare()
+        {
+            App.Invoke(GoToLinkPlatformMethodName, FraaKareLink);
+            await Task.Delay(DelayAfterOpeningDeepLink);
+        }
     }
 
     public class BmmWaitTimes : IWaitTimes
@@ -121,6 +133,7 @@ namespace BMM.UITests
             LogCurrentTestName();
 
             var platformApp = new BmmApp();
+            platformApp.Platform = platform;
 
             if (platform == Platform.Android)
             {

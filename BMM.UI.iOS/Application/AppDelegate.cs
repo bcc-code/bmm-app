@@ -169,6 +169,13 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.Resolve<IMvxMessenger>().Publish(new LoggedOutMessage(this));
         }
 
+        //UI Tests
+        [Export("GoToLink:")]
+        public void GoToLink(string link)
+        {
+            Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromInsideOfApp(new Uri(link));
+        }
+        
         // Just used for the login in the UI tests
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {

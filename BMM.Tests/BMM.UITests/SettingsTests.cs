@@ -57,6 +57,8 @@ namespace BMM.UITests
         {
             await _bmmApp.LoginToApp();
 
+            _bmmApp.Menu.OpenProfilePage(_app);
+
             AddLanguageToMyContentLanguage(Deutsch);
 
             RemoveTwoTopContentLanguages(_platform);
@@ -87,7 +89,6 @@ namespace BMM.UITests
 
         private void AddLanguageToMyContentLanguage(string language)
         {
-            _bmmApp.Menu.OpenProfilePage(_app);
             ScrollToAndOpen(_bmmApp.SettingsPage.ContentLanguage);
 
             if (_platform == Platform.iOS)
@@ -112,8 +113,7 @@ namespace BMM.UITests
 
         private void OpenFromKarePodcast(string expectedFromKaarePodcastTitle)
         {
-            _bmmApp.Menu.OpenExplore(_app);
-            _app.Tap(c => c.Text(expectedFromKaarePodcastTitle));
+            _bmmApp.OpenFraKaare();
             _app.WaitForElement(expectedFromKaarePodcastTitle);
             _app.WaitForElement(_bmmApp.PodcastPage.TrackTitle, "Timed out waiting for element..."); // Wait until first track appears meaning that the list has loaded
         }

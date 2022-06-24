@@ -6,8 +6,7 @@ namespace BMM.UITests.Views
     public interface IExplorePage : IListPage
     {
         Func<AppQuery, AppQuery> FraaKaareTeaser { get; }
-        Func<AppQuery, AppQuery> FraaKaareShowAll { get; }
-        Func<AppQuery, AppQuery> TrackList { get; }
+        Func<AppQuery, AppQuery> ContinueCollectionCarousel { get; }
     }
 
     public class AndroidExplorePage : ListPage, IExplorePage
@@ -17,6 +16,14 @@ namespace BMM.UITests.Views
             get
             {
                 return c => c.Marked("From Kåre");
+            }
+        }
+
+        public Func<AppQuery, AppQuery> ContinueCollectionCarousel
+        {
+            get
+            {
+                return c => c.Id("ContinueListeningCarouselCollectionRecyclerView");
             }
         }
 
@@ -44,6 +51,14 @@ namespace BMM.UITests.Views
             get
             {
                 return c => c.Marked("From Kåre");
+            }
+        }
+
+        public Func<AppQuery, AppQuery> ContinueCollectionCarousel
+        {
+            get
+            {
+                return c => c.Id("ContinueListeningCollection");
             }
         }
 
