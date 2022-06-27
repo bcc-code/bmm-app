@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Core.NewMediaPlayer;
@@ -9,12 +10,14 @@ namespace BMM.UI.iOS.NewMediaPlayer
     {
         Task Play(IMediaTrack mediaTrack = null);
 
-        Task LoadTrackToPlay(IMediaTrack mediaTrack = null);
+        Task LoadToPlay(IList<IMediaTrack> tracks, IMediaTrack desiredTrack);
+
+      //  Task LoadTrackToPlay(IMediaTrack mediaTrack = null);
 
         Task PlayPause();
 
         void Stop();
-
+        
         Action OnMediaFinished { get; set; }
 
         Action<long, long> OnPositionChanged { set; }

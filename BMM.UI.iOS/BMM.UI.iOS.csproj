@@ -686,6 +686,7 @@
     <Compile Include="Application\Implementations\UI\iOSUserDialogsFactory.cs" />
     <Compile Include="Application\Implementations\UI\iOSExceptionHandlingUserDialogs.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemFactory.cs" />
+    <Compile Include="Application\NewMediaPlayer\BMMPlayerItem.cs" />
     <Compile Include="Application\NewMediaPlayer\IMediaRemoteControl.cs" />
     <Compile Include="Application\Implementations\ClipboardService.cs" />
     <Compile Include="Application\Implementations\HttpClient\NetworkAccessAwareHttpClient.cs" />

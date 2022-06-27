@@ -113,10 +113,12 @@ namespace BMM.UI.iOS.NewMediaPlayer
             if (!_queue.IsSameQueue(mediaTracks))
                 result = await _queue.Replace(mediaTracks, currentTrack);
 
+            await _audioPlayback.LoadToPlay(mediaTracks, currentTrack);
+            
             if (result || CurrentTrack == null)
             {
                 int index = mediaTracks.IndexOf(currentTrack);
-                PlayTrack(currentTrack, index, result, startTimeInMs);
+                PlayTrack(currentTrack, index, true, startTimeInMs);
             }
         }
 
@@ -124,13 +126,13 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             _currentTrack = currentTrack;
             _currentTrackIndex = mediaTracks.IndexOf(currentTrack);
-
+            
             await _queue.Replace(mediaTracks, currentTrack);
-            await _audioPlayback.LoadTrackToPlay(currentTrack);
-
+            await _audioPlayback.LoadToPlay(mediaTracks, currentTrack);
+            
             if (startTimeInMs > 0)
                 _audioPlayback.SeekTo(startTimeInMs, false);
-
+            
             PlaybackStateChanged();
             _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, this));
         }
