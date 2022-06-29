@@ -281,21 +281,28 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private int CalculateDistanceBetweenTracksInQueue(BMMPlayerItem playerItem)
         {
-            if (CurrentItem == null)
-                return NumericConstants.Undefined;;
+            try
+            {
+                if (CurrentItem == null || Player?.Items == null || !Player.Items.Any())
+                    return NumericConstants.Undefined;
 
-            int desiredPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(playerItem));
-            int currentPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(CurrentItem));
+                int desiredPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(playerItem));
+                int currentPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(CurrentItem));
 
-            if (currentPlayerItemIndex == NumericConstants.Undefined || desiredPlayerItemIndex == NumericConstants.Undefined)
-                return NumericConstants.Undefined;
+                if (currentPlayerItemIndex == NumericConstants.Undefined || desiredPlayerItemIndex == NumericConstants.Undefined)
+                    return NumericConstants.Undefined;
 
-            int distance = desiredPlayerItemIndex - currentPlayerItemIndex;
+                int distance = desiredPlayerItemIndex - currentPlayerItemIndex;
             
-            if (distance < NumericConstants.Zero)
-                return NumericConstants.Undefined;
+                if (distance < NumericConstants.Zero)
+                    return NumericConstants.Undefined;
             
-            return distance;
+                return distance;
+            }
+            catch
+            {
+                return NumericConstants.Undefined;
+            }
         }
 
         public async Task PlayPause()

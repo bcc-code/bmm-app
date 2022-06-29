@@ -12,8 +12,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         Task LoadToPlay(IList<IMediaTrack> tracks, IMediaTrack desiredTrack);
 
-      //  Task LoadTrackToPlay(IMediaTrack mediaTrack = null);
-
         Task PlayPause();
 
         void Stop();
