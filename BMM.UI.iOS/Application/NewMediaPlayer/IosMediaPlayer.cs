@@ -111,10 +111,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
             bool result = true;
 
             if (!_queue.IsSameQueue(mediaTracks))
-                result = await _queue.Replace(mediaTracks, currentTrack);
+                result = await ReplaceQueue(mediaTracks, currentTrack);
 
-            await _audioPlayback.LoadToPlay(mediaTracks, currentTrack);
-            
             if (result || CurrentTrack == null)
             {
                 int index = mediaTracks.IndexOf(currentTrack);
@@ -126,9 +124,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             _currentTrack = currentTrack;
             _currentTrackIndex = mediaTracks.IndexOf(currentTrack);
-            
-            await _queue.Replace(mediaTracks, currentTrack);
-            await _audioPlayback.LoadToPlay(mediaTracks, currentTrack);
+
+            await ReplaceQueue(mediaTracks, currentTrack);
             
             if (startTimeInMs > 0)
                 _audioPlayback.SeekTo(startTimeInMs, false);
@@ -298,6 +295,12 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _messenger.Publish(new CurrentTrackChangedMessage(track, this));
         }
 
+        private async Task<bool> ReplaceQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack)
+        {
+            await _audioPlayback.LoadToPlay(mediaTracks, currentTrack);
+            return await _queue.Replace(mediaTracks, currentTrack);
+        }
+        
         private void PlaybackStateChanged()
         {
             var message = new PlaybackStatusChangedMessage(this, PlaybackState);

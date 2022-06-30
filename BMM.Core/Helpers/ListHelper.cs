@@ -16,7 +16,7 @@ namespace BMM.Core.Helpers
                 }
             }
 
-            return NumericConstants.Undefined;;
+            return NumericConstants.Undefined;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AVFoundation;
@@ -268,40 +269,44 @@ namespace BMM.UI.iOS.NewMediaPlayer
         
         private bool TryToOpenTrackFromQueue(BMMPlayerItem playerItem)
         {
-            int distanceBetweenTracksInQueue = CalculateDistanceBetweenTracksInQueue(playerItem);
+            int? distanceBetweenTracksInQueue = CalculateDistanceBetweenTracksInQueue(playerItem);
 
-            if (distanceBetweenTracksInQueue == NumericConstants.Undefined)
+            if (distanceBetweenTracksInQueue == null)
                 return false;
-            
+
             for (int i = 0; i < distanceBetweenTracksInQueue; i++)
+            {
+                // AdvanceToNextItem method is very quick, so it shouldn't cause performance problems, even in many iterations.
+                // It also doesn't start downloading a song immediately, so there is no worry about starting many downloads when iterating. 
                 Player.AdvanceToNextItem();
+            }
 
             return true;
         }
 
-        private int CalculateDistanceBetweenTracksInQueue(BMMPlayerItem playerItem)
+        private int? CalculateDistanceBetweenTracksInQueue(BMMPlayerItem playerItem)
         {
             try
             {
                 if (CurrentItem == null || Player?.Items == null || !Player.Items.Any())
-                    return NumericConstants.Undefined;
+                    return null;
 
                 int desiredPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(playerItem));
                 int currentPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(CurrentItem));
 
                 if (currentPlayerItemIndex == NumericConstants.Undefined || desiredPlayerItemIndex == NumericConstants.Undefined)
-                    return NumericConstants.Undefined;
+                    return null;
 
                 int distance = desiredPlayerItemIndex - currentPlayerItemIndex;
             
                 if (distance < NumericConstants.Zero)
-                    return NumericConstants.Undefined;
+                    return null;
             
                 return distance;
             }
             catch
             {
-                return NumericConstants.Undefined;
+                return null;
             }
         }
 
