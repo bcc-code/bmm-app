@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AVFoundation;
@@ -18,10 +17,14 @@ namespace BMM.UI.iOS.NewMediaPlayer
 {
     public class AVAudioPlayback : AvAudioPlaybackBase, IAudioPlayback
     {
+        // Maximum count of created AVPlayerItem when replacing queue.
+        // Creating AVPlayerItem is a complex operation, so this limit has been introduced to avoid performance problems.
+        private const int MaximumTracksToLoadToPlayerQueue = 50;
+        
         // See https://nshipster.com/nserror/ for explanation of error codes
         // We might need to extend that list
         private readonly IList<nint> _internetProblemsErrorCodes = new List<nint> {-1009, -1018, -1019, -1020};
-
+        
         private readonly IPlayerErrorHandler _playerErrorHandler;
 
         private readonly IPlayerAnalytics _playerAnalytics;
@@ -225,8 +228,15 @@ namespace BMM.UI.iOS.NewMediaPlayer
             BMMPlayerItem desiredPlayerItem = null; 
             RemoveObservers();
             InitializePlayer();
+
+            int indexOfDesiredTrack = tracksToQueue
+                .IndexOf(desiredTrack);
+
+            var trackToLoadToPlayerQueue = tracksToQueue
+                .Skip(indexOfDesiredTrack)
+                .Take(MaximumTracksToLoadToPlayerQueue);
             
-            foreach (var track in tracksToQueue)
+            foreach (var track in trackToLoadToPlayerQueue)
             {
                 var playerItem = await _playerItemFactory.Create(track);
                 
