@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using BMM.Core.Constants;
 
 namespace BMM.Core.Helpers
 {
@@ -15,7 +16,7 @@ namespace BMM.Core.Helpers
                 }
             }
 
-            return -1;
+            return NumericConstants.Undefined;
         }
     }
 }

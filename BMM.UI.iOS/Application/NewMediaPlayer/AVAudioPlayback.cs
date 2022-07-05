@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using AVFoundation;
 using BMM.Api.Abstraction;
+using BMM.Core.Constants;
 using BMM.Core.Extensions;
+using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Constants;
@@ -15,10 +17,14 @@ namespace BMM.UI.iOS.NewMediaPlayer
 {
     public class AVAudioPlayback : AvAudioPlaybackBase, IAudioPlayback
     {
+        // Maximum count of created AVPlayerItem when replacing queue.
+        // Creating AVPlayerItem is a complex operation, so this limit has been introduced to avoid performance problems.
+        private const int MaximumTracksToLoadToPlayerQueue = 50;
+        
         // See https://nshipster.com/nserror/ for explanation of error codes
         // We might need to extend that list
         private readonly IList<nint> _internetProblemsErrorCodes = new List<nint> {-1009, -1018, -1019, -1020};
-
+        
         private readonly IPlayerErrorHandler _playerErrorHandler;
 
         private readonly IPlayerAnalytics _playerAnalytics;
@@ -29,7 +35,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private IMediaTrack _currentMediaTrack;
         private decimal? _desiredRate;
 
-        private AVPlayerItem CurrentItem => Player.CurrentItem;
+        private BMMPlayerItem CurrentItem => (BMMPlayerItem)Player.CurrentItem;
 
         public PlayStatus Status
         {
@@ -162,10 +168,10 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             var sameMediaTrack = mediaTrack == null || mediaTrack.Equals(_currentMediaTrack);
 
-            if (Status == PlayStatus.Paused && sameMediaTrack && !_currentMediaTrack.IsLivePlayback)
+            if (Status.IsOneOf(PlayStatus.Paused, PlayStatus.Stopped) && sameMediaTrack && !_currentMediaTrack.IsLivePlayback)
             {
                 // Live playback should be reinitialized since otherwise we don't detect if the transmission has been stopped in the meantime.
-
+                
                 Status = PlayStatus.Playing;
                 // We are simply paused so just start again
                 PlayAndSetRate();
@@ -182,7 +188,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 _currentMediaTrack = mediaTrack;
             }
 
-
             _playerAnalytics.LogIfDownloadedTrackHasDifferentAttributesThanTrackFromTheApi(_currentMediaTrack);
 
             try
@@ -192,13 +197,19 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 Status = PlayStatus.Buffering;
 
                 RemoveObservers();
+                
+                var playerItem = Player
+                    .Items
+                    .OfType<BMMPlayerItem>()
+                    .FirstOrDefault(i => i.MediaTrack.Equals(_currentMediaTrack));
 
-                // ToDo: is it really necessary to re-initialize the player?
-                InitializePlayer();
+                if (playerItem == null || !TryToOpenTrackFromQueue(playerItem))
+                {
+                    playerItem = await _playerItemFactory.Create(mediaTrack);
+                    Player.RemoveAllItems();
+                    Player.ReplaceCurrentItemWithPlayerItem(playerItem);
+                }
 
-                var playerItem = await _playerItemFactory.Create(_currentMediaTrack);
-
-                Player.ReplaceCurrentItemWithPlayerItem(playerItem);
                 AttachObservers();
                 CurrentItem.SeekingWaitsForVideoCompositionRendering = true;
 
@@ -211,18 +222,38 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
 
-        public async Task LoadTrackToPlay(IMediaTrack mediaTrack = null)
+        public async Task LoadToPlay(IList<IMediaTrack> tracksToQueue, IMediaTrack desiredTrack)
         {
-            if (mediaTrack != null)
-                _currentMediaTrack = mediaTrack;
-
+            BMMPlayerItem lastMediaItem = null; 
+            BMMPlayerItem desiredPlayerItem = null; 
+            RemoveObservers();
             InitializePlayer();
-            var playerItem = await _playerItemFactory.Create(_currentMediaTrack);
+
+            int indexOfDesiredTrack = tracksToQueue
+                .IndexOf(desiredTrack);
+
+            var trackToLoadToPlayerQueue = tracksToQueue
+                .Skip(indexOfDesiredTrack)
+                .Take(MaximumTracksToLoadToPlayerQueue);
+            
+            foreach (var track in trackToLoadToPlayerQueue)
+            {
+                var playerItem = await _playerItemFactory.Create(track);
+                
+                if (track.Equals(desiredTrack))
+                    desiredPlayerItem = playerItem;
+                
+                Player.InsertItem(playerItem, lastMediaItem);
+                lastMediaItem = playerItem;
+            }
+            
+            TryToOpenTrackFromQueue(desiredPlayerItem);
+
             Status = PlayStatus.Paused;
-            Player.ReplaceCurrentItemWithPlayerItem(playerItem);
             AttachObservers();
+            _currentMediaTrack = desiredTrack;
         }
-        
+
         private void PlayAndSetRate()
         {
             Player.Play();
@@ -233,12 +264,60 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             CurrentItem.AddObserver(this, LoadedTimeRangesObserver, InitialAndNewObservingOptions, LoadedTimeRangesObservationContext.Handle);
             CurrentItem.AddObserver(this, StatusObserver, InitialAndNewObservingOptions, StatusObservationContext.Handle);
+            CurrentItem.AreObserversAttached = true;
         }
 
         private void RemoveObservers()
         {
-            CurrentItem?.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
-            CurrentItem?.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
+            if (CurrentItem == null || !CurrentItem.AreObserversAttached)
+                return;
+            
+            CurrentItem.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
+            CurrentItem.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
+            CurrentItem.AreObserversAttached = false;
+        }
+        
+        private bool TryToOpenTrackFromQueue(BMMPlayerItem playerItem)
+        {
+            int? distanceBetweenTracksInQueue = CalculateDistanceBetweenTracksInQueue(playerItem);
+
+            if (distanceBetweenTracksInQueue == null)
+                return false;
+
+            for (int i = 0; i < distanceBetweenTracksInQueue; i++)
+            {
+                // AdvanceToNextItem method is very quick, so it shouldn't cause performance problems, even in many iterations.
+                // It also doesn't start downloading a song immediately, so there is no worry about starting many downloads when iterating. 
+                Player.AdvanceToNextItem();
+            }
+
+            return true;
+        }
+
+        private int? CalculateDistanceBetweenTracksInQueue(BMMPlayerItem playerItem)
+        {
+            try
+            {
+                if (CurrentItem == null || Player?.Items == null || !Player.Items.Any())
+                    return null;
+
+                int desiredPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(playerItem));
+                int currentPlayerItemIndex = Player.Items.FindIndex(x => x.Equals(CurrentItem));
+
+                if (currentPlayerItemIndex == NumericConstants.Undefined || desiredPlayerItemIndex == NumericConstants.Undefined)
+                    return null;
+
+                int distance = desiredPlayerItemIndex - currentPlayerItemIndex;
+            
+                if (distance < NumericConstants.Zero)
+                    return null;
+            
+                return distance;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public async Task PlayPause()
@@ -255,8 +334,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         public void Stop()
         {
-            CurrentItem?.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
-            CurrentItem?.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
+            RemoveObservers();
 
             AVAudioSession.SharedInstance().SetActive(false, AVAudioSessionSetActiveOptions.NotifyOthersOnDeactivation);
 

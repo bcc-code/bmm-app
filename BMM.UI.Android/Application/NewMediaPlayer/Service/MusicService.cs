@@ -11,6 +11,7 @@ using AndroidX.Core.App;
 using AndroidX.Media;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Core.Constants;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Exceptions;
@@ -26,6 +27,7 @@ using BMM.UI.Droid.Utils;
 using Com.Google.Android.Exoplayer2;
 using Com.Google.Android.Exoplayer2.Ext.Mediasession;
 using Com.Google.Android.Exoplayer2.Trackselection;
+using Com.Google.Android.Exoplayer2.Upstream;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Plugin.Messenger;
@@ -36,6 +38,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
     [Service(Name = "brunstad.MusicService")]
     public class MusicService : MediaBrowserServiceCompat
     {
+        private const int DefaultBufferTimeInMs = 15000;
+        private const int MinBufferTimeInMs = 300000;
+        private const int MaxBufferTimeInMs = 300000;
         private NotificationManagerCompat _notificationManager;
 
         private NowPlayingNotificationBuilder _notificationBuilder;
@@ -58,6 +63,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                 if (_exoPlayer == null)
                 {
                     var audioManager = (AudioManager)GetSystemService(AudioService);
+                    
                     var playerInstance = new SimpleExoPlayer.Builder(ApplicationContext)
                         .SetTrackSelector(new DefaultTrackSelector(ApplicationContext))
                         .SetLoadControl(new LoadControl())
@@ -272,6 +278,16 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
         private class LoadControl : DefaultLoadControl
         {
+            public LoadControl() : base(new DefaultAllocator(true, C.DefaultBufferSegmentSize),
+                MinBufferTimeInMs,
+                MaxBufferTimeInMs,
+                DefaultBufferTimeInMs,
+                MinBufferTimeInMs,
+                NumericConstants.Undefined,
+                true)
+            {
+            }
+            
             /// <summary>
             /// Duration in microseconds of media to retain in the buffer prior to the current playback position, for fast backward seeking.
             /// </summary>

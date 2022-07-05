@@ -15,7 +15,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _headers = headers;
         }
 
-        public async Task<AVPlayerItem> Create(IMediaTrack mediaTrack)
+        public async Task<BMMPlayerItem> Create(IMediaTrack mediaTrack)
         {
             var mediaUrl = MediaFileUrlHelper.GetUrlFor(mediaTrack);
 
@@ -27,7 +27,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             AVAsset asset = AVUrlAsset.Create(mediaUrl, options);
 
-            var playerItem = AVPlayerItem.FromAsset(asset);
+            var playerItem = new BMMPlayerItem(asset, mediaTrack);
             return playerItem;
         }
 
