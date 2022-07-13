@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.PlayObserver.Model;
+using BMM.Core.NewMediaPlayer.Constants;
 
 namespace BMM.Core.Implementations.PlayObserver
 {
@@ -37,8 +38,18 @@ namespace BMM.Core.Implementations.PlayObserver
                 TimestampStart = portions.First().StartTime,
                 TimestampEnd = portions.Last().EndTime,
                 SpentTime = CalculateSpentTime(portions),
-                LastPosition = GetLastPosition(portions)
+                LastPosition = GetLastPosition(portions),
+                AdjustedPlaybackSpeed = GetAdjustedPlaybackSpeed(portions)
             };
+        }
+
+        private decimal GetAdjustedPlaybackSpeed(IList<ListenedPortion> portions)
+        {
+            var lastPortionWithUnusualPlaybackSpeed = portions
+                .OrderByDescending(p => p.EndTime)
+                .FirstOrDefault(p => p.PlaybackRate != PlayerConstants.NormalPlaybackSpeed);
+
+            return lastPortionWithUnusualPlaybackSpeed?.PlaybackRate ?? PlayerConstants.NormalPlaybackSpeed;
         }
 
         private long GetLastPosition(IList<ListenedPortion> portions)
@@ -52,7 +63,8 @@ namespace BMM.Core.Implementations.PlayObserver
 
         public double CalculateSpentTime(IList<ListenedPortion> portions)
         {
-            return TimeSpan.FromMilliseconds(portions.Sum(portion => portion.End - portion.Start)).TotalSeconds;
+            double sumOfSpentTime = portions.Sum(portion => (portion.End - portion.Start) / (double)portion.PlaybackRate);
+            return TimeSpan.FromMilliseconds(sumOfSpentTime).TotalSeconds;
         }
 
         public double CalculateUniqueSecondsListened(IList<ListenedPortion> portions, out ListenedStatus status)
@@ -91,9 +103,7 @@ namespace BMM.Core.Implementations.PlayObserver
 
             // Add the last listened portion
             if (ShouldIncludePortion(endedListening, startedListening))
-            {
-                msListened += (endedListening - startedListening) * (double)orderedPortions.Last().PlaybackRate;
-            }
+                msListened += endedListening - startedListening;
 
             return Math.Ceiling(TimeSpan.FromMilliseconds(msListened).TotalSeconds);
         }

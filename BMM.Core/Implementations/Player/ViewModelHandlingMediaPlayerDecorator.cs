@@ -91,7 +91,6 @@ namespace BMM.Core.Implementations.Player
                 mediaFiles,
                 currentTrack,
                 () => _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs));
-            ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
         }
 
         public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)

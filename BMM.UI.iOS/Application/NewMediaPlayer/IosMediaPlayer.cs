@@ -9,6 +9,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.NewMediaPlayer.Constants;
 using Foundation;
 using MvvmCross.Plugin.Messenger;
 
@@ -117,6 +118,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             {
                 int index = mediaTracks.IndexOf(currentTrack);
                 PlayTrack(currentTrack, index, true, startTimeInMs);
+                ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
             }
         }
 
