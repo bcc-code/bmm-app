@@ -80,7 +80,7 @@ namespace BMM.Core.Implementations.PlayObserver
 
                 var endTime = DateTime.UtcNow;
                 var elapsedTimeSinceLastPortion = endTime - StartTimeOfNextPortion;
-                double endPosition = StartOfNextPortion + elapsedTimeSinceLastPortion.TotalMilliseconds;
+                double endPosition = StartOfNextPortion + elapsedTimeSinceLastPortion.TotalMilliseconds * (double)DesiredPlaybackRate;
 
                 var portions = PortionsListened.Clone();
                 portions.Add(new ListenedPortion

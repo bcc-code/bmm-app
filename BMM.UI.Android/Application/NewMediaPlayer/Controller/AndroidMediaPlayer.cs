@@ -157,6 +157,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                         controls.PlayFromMediaId(currentTrack.Id.ToString(), bundle);
                     }
                 }
+                
+                ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
             }
         }
 

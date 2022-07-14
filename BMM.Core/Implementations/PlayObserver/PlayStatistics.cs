@@ -16,6 +16,7 @@ using BMM.Core.Implementations.PlayObserver.Model;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.ViewModels;
 using MvvmCross.Plugin.Messenger;
 
@@ -49,7 +50,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public IList<IMediaTrack> CurrentQueue { get; private set; }
         public bool IsCurrentQueueSaved { get; set; }
         public bool IsPlaying { get; private set; }
-        public decimal DesiredPlaybackRate { get; set; } = 1;
+        public decimal DesiredPlaybackRate { get; set; } = PlayerConstants.NormalPlaybackSpeed;
 
         /// <summary>
         /// We want to be able to extend <see cref="Clear"/> in <see cref="PlayStatisticsDecorator"/>. Therefore we use this Action as work-around to pass the command through all Decorator layers.
@@ -87,7 +88,7 @@ namespace BMM.Core.Implementations.PlayObserver
             // We add a portion when the user pauses the playback or changes the playback rate.
             if (!state.IsPlaying && IsPlaying || DesiredPlaybackRate != state.DesiredPlaybackRate)
             {
-                AddPortionListened(state.CurrentPosition, state.DesiredPlaybackRate);
+                AddPortionListened(state.CurrentPosition, DesiredPlaybackRate);
             }
             else if (state.IsPlaying && !IsPlaying)
             {
@@ -240,6 +241,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public TrackPlayedEvent ComposeEvent(PlayMeasurements measurements)
         {
             var user = _userStorage.GetUser();
+            
             return new TrackPlayedEvent
             {
                 Id = Guid.NewGuid(),
@@ -260,7 +262,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 Language = CurrentTrack.Language,
                 PlaybackOrigin = CurrentTrack.PlaybackOrigin,
                 LastPosition = measurements.LastPosition,
-                Track = (Track)CurrentTrack
+                Track = (Track)CurrentTrack,
+                AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed
             };
         }
 
@@ -283,7 +286,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"language", ev.Language},
                 {"sentAfterStartup", ev.SentAfterStartup},
                 {"playbackOrigin", ev.PlaybackOrigin},
-                {"lastPosition", ev.LastPosition}
+                {"lastPosition", ev.LastPosition},
+                {"adjustedPlaybackSpeed", ev.AdjustedPlaybackSpeed}
             };
 
             dict.Add(nameof(User.AnalyticsId), ev.AnalyticsId);

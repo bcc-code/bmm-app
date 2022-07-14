@@ -23,5 +23,7 @@ namespace BMM.Core.Implementations.PlayObserver.Model
         public double SpentTime { get; set; }
 
         public long LastPosition { get; set; }
+        
+        public decimal AdjustedPlaybackSpeed { get; set; }
     }
 }
