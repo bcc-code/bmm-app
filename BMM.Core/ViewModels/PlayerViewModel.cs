@@ -137,6 +137,10 @@ namespace BMM.Core.ViewModels
             SkipForwardCommand = new MvxCommand(() => MediaPlayer.JumpForward());
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
             OpenLyricsCommand = new MvxCommand(OpenLyricsLink, () => !string.IsNullOrEmpty(SongTreasureLink));
+            SeekToPositionCommand = new MvxCommand<float>(f =>
+            {
+                MediaPlayer.SeekTo(Convert.ToInt64(f));  
+            });
 
             _repeatToken = Messenger.Subscribe<RepeatModeChangedMessage>(m => RepeatType = m.RepeatType);
             _shuffleToken = Messenger.Subscribe<ShuffleModeChangedMessage>(m => IsShuffleEnabled = m.IsShuffleEnabled);
@@ -149,6 +153,7 @@ namespace BMM.Core.ViewModels
         }
 
         public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
+        public IMvxCommand<float> SeekToPositionCommand { get; set; }
 
         private void OpenLyricsLink()
         {

@@ -30,8 +30,15 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         // stores which track is being played and might be inaccurate. It's only used to report to analytics.
         private ITrackModel _latestTrackModel;
 
-        public MediaControllerCallback(IMvxMessenger messenger, IMetadataMapper metadataMapper, PlaybackStateCompatMapper mapper, IMediaQueue mediaQueue,
-            IPlayerAnalytics playerAnalytics, ILogger logger, IToastDisplayer toastDisplayer, IPlayerErrorHandler playerErrorHandler)
+        public MediaControllerCallback(
+            IMvxMessenger messenger,
+            IMetadataMapper metadataMapper,
+            PlaybackStateCompatMapper mapper,
+            IMediaQueue mediaQueue,
+            IPlayerAnalytics playerAnalytics,
+            ILogger logger,
+            IToastDisplayer toastDisplayer,
+            IPlayerErrorHandler playerErrorHandler)
         {
             _messenger = messenger;
             _metadataMapper = metadataMapper;
@@ -70,7 +77,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 _messenger.Publish(completedEvent);
             }
 
-            _messenger.Publish(new PlaybackStatusChangedMessage(this, state.ToPlaybackState(_mediaQueue, (decimal)state.PlaybackSpeed)));
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, state.ToPlaybackState(_mediaQueue)));
 
             if (state.ErrorMessage != null)
             {
