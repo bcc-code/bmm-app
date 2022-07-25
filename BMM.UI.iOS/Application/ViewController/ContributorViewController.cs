@@ -5,7 +5,6 @@ using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
@@ -13,7 +12,7 @@ namespace BMM.UI.iOS
     public partial class ContributorViewController : BaseViewController<ContributorViewModel>
     {
         public ContributorViewController()
-            : base("ContributorViewController")
+            : base(nameof(ContributorViewController))
         {
         }
 
@@ -34,9 +33,11 @@ namespace BMM.UI.iOS
             set.Bind(CircleCoverImage).For(v => v.ImagePath).To(vm => vm.Contributor.Cover);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
             set.Bind(NameLabel).To(vm => vm.Contributor.Name);
-            set.Bind(PlayButton).To(vm => vm.PlayCommand);
-            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.DocumentsViewModel_Play);
-
+            set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
+            set.Bind(ShuffleButton)
+                .For(v => v.BindTitle())
+                .To(vm => vm.TextSource[Translations.DocumentsViewModel_Shuffle]);
+            
             set.Apply();
 
             TracksTable.ResizeHeaderView();
@@ -46,7 +47,7 @@ namespace BMM.UI.iOS
         private void SetThemes()
         {
             NameLabel.ApplyTextTheme(AppTheme.Heading2);
-            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
         }
 

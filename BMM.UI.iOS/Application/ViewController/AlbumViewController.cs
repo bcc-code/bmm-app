@@ -35,7 +35,7 @@ namespace BMM.UI.iOS
             set.Bind(TitleLabel).To(vm => vm.Album.Title);
             set.Bind(DescriptionLabel).To(vm => vm.Album.Description);
             set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.ShowShuffleOrResumeText);
+            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.ShuffleOrResumeText);
             set.Bind(ShuffleButton).For(v => v.BindVisible()).To(vm => vm.ShowShuffleOrResumeButton);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 

@@ -43,7 +43,7 @@ namespace BMM.Core.ViewModels
                 RaisePropertyChanged(() => Description);
                 RaisePropertyChanged(() => Image);
                 RaisePropertyChanged(() => ShowImage);
-                RaisePropertyChanged(() => ShowShuffleOrResumeText);
+                RaisePropertyChanged(() => ShuffleOrResumeText);
             }
         }
 
@@ -155,7 +155,7 @@ namespace BMM.Core.ViewModels
         public bool ShowFollowButtons => false;
 
         public bool ShowShuffleOrResumeButton => Documents.OfType<Track>().Any();
-        public string ShowShuffleOrResumeText => GetShowShuffleOrResumeText();
+        public string ShuffleOrResumeText => GetShowShuffleOrResumeText();
 
         private string GetShowShuffleOrResumeText()
         {

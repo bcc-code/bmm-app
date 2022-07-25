@@ -163,7 +163,7 @@
                   app:MvxBind="
                     Click ShufflePlayCommand;
                     Visibility InvertedVisibility(IsEmpty);
-                    Text ShowShuffleOrResumeText" />
+                    Text ShuffleOrResumeText" />
         </RelativeLayout>
         <RelativeLayout
                 android:layout_width="wrap_content"

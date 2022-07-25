@@ -69,5 +69,10 @@ namespace BMM.Core.Implementations.ApiClients
                 "id" + contributorId
             );
         }
+
+        public Task<IList<Track>> GetRandomTracks(int contributorId, int size = ApiConstants.LoadMoreSize)
+        {
+            return _client.GetRandomTracks(contributorId, size);
+        }
     }
 }

@@ -60,7 +60,7 @@ namespace BMM.Core.ViewModels.Base
         public virtual bool ShowPlaylistIcon => false;
 
         public virtual bool ShowFollowSharedPlaylistButton => false;
-        public virtual string ShowShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
+        public virtual string ShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
 
         public abstract string Image { get; }
 

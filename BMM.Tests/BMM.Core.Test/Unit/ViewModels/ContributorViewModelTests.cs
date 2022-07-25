@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Contributors.Interfaces;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.ViewModels;
 using Moq;
@@ -15,6 +16,7 @@ namespace BMM.Core.Test.Unit.ViewModels
     public class ContributorViewModelTests : BaseViewModelTests
     {
         private int id = 1;
+        private IShuffleContributorAction _shuffleContributorActionMock;
 
         [SetUp]
         public void Init()
@@ -22,13 +24,14 @@ namespace BMM.Core.Test.Unit.ViewModels
             base.Setup();
             base.AdditionalSetup();
             Client.Setup(x => x.Contributors.GetById(It.IsAny<int>())).Returns(Task.FromResult(new Contributor() { Id = id, DocumentType = DocumentType.Contributor, Name = "Test" }));
+            _shuffleContributorActionMock = Mock.Of<IShuffleContributorAction>();
         }
 
         [Test]
         public async Task Refresh_CheckIfRefreshWorks()
         {
             //Arrange
-            var contributorViewModel = new ContributorViewModel();
+            var contributorViewModel = new ContributorViewModel(_shuffleContributorActionMock);
 
             //Act
             var refreshing = contributorViewModel.IsRefreshing;
@@ -50,7 +53,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             Client.Setup(x => x.Contributors.GetTracks(It.IsAny<int>(), It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>(), null)).Returns(Task.FromResult<IList<Track>>(null));
-            var contributor = new ContributorViewModel();
+            var contributor = new ContributorViewModel(_shuffleContributorActionMock);
 
             // Act
             await contributor.LoadItems();
