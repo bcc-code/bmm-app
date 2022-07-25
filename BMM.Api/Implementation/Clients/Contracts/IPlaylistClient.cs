@@ -13,6 +13,8 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task<Playlist> GetById(int id, CachePolicy cachePolicy);
 
         Task<Stream> GetCover(int podcastId);
+        
+        Task<GenericDocumentsHolder> GetDocuments(string lang, int? age, CachePolicy cachePolicy);
 
         Task<IList<Track>> GetTracks(int podcastId, CachePolicy cachePolicy);
     }

@@ -1,10 +1,10 @@
 ﻿using System;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
-using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
+using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
 
@@ -12,11 +12,14 @@ namespace BMM.UI.iOS
 {
     public partial class CuratedPlaylistsViewController : BaseViewController<CuratedPlaylistsViewModel>, IHaveLargeTitle
     {
-        public CuratedPlaylistsViewController() : base(nameof(CuratedPlaylistsViewController))
-        {
-        }
-
+        private bool _isRefreshing;
+        private BrowseDetailsTableViewSource _source;
         public double? InitialLargeTitleHeight { get; set; }
+
+        public UIViewController[] TabViewControllers { get; private set; }
+
+        public CuratedPlaylistsViewController() : base(nameof(BrowseViewController))
+        { }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
 
@@ -24,25 +27,53 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
-            CuratedPlaylistsCollectionView.CollectionViewLayout = new FillWidthLayout();
+            var refreshControl = new MvxUIRefreshControl
+            {
+                TintColor = AppColors.RefreshControlTintColor
+            };
 
-            var source = new MvxCollectionViewSource(CuratedPlaylistsCollectionView, CoverWithTitleCollectionViewCell.Key);
+            BrowseTableView.RefreshControl = refreshControl;
 
-            var nib = UINib.FromName(CoverWithTitleCollectionViewCell.Key, NSBundle.MainBundle);
-            CuratedPlaylistsCollectionView.RegisterNibForCell(nib, CoverWithTitleCollectionViewCell.Key);
-
-            var refreshControl = new MvxUIRefreshControl();
-            CuratedPlaylistsCollectionView.RefreshControl = refreshControl;
-            refreshControl.TintColor = AppColors.RefreshControlTintColor;
-            CuratedPlaylistsCollectionView.Source = source;
+            _source = new BrowseDetailsTableViewSource(BrowseTableView);
 
             var set = this.CreateBindingSet<CuratedPlaylistsViewController, CuratedPlaylistsViewModel>();
-            set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.DocumentSelectedCommand).WithConversion(new DocumentSelectedCommandValueConverter());
-            set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
-            set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
+
+            set.Bind(_source)
+                .To(vm => vm.Documents)
+                .WithConversion<DocumentListValueConverter>(ViewModel);
+
+            set.Bind(_source)
+                .For(s => s.SelectionChangedCommand)
+                .To(s => s.DocumentSelectedCommand)
+                .WithConversion<DocumentSelectedCommandValueConverter>();
+
+            set.Bind(_source)
+                .For(s => s.IsFullyLoaded)
+                .To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
+
+            set.Bind(refreshControl)
+                .For(r => r.IsRefreshing)
+                .To(vm => vm.IsRefreshing);
+
+            set.Bind(refreshControl)
+                .For(r => r.RefreshCommand)
+                .To(vm => vm.ReloadCommand);
+
+            set.Bind(this)
+                .For(v => v.IsRefreshing)
+                .To(vm => vm.IsRefreshing);
 
             set.Apply();
+        }
+
+        public bool IsRefreshing
+        {
+            get => _isRefreshing;
+            set
+            {
+                _isRefreshing = value;
+                _source.ClearOffsets();
+            }
         }
     }
 }
