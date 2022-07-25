@@ -136,9 +136,34 @@ namespace BMM.Core.NewMediaPlayer
                 return false;
 
             var comparer = new MediaTrackComparer();
-            var onlyInNew = newMediaTracks.Except(this.Tracks, comparer);
+            var onlyInNew = newMediaTracks.Except(Tracks, comparer);
             var onlyInQueue = Tracks.Except(newMediaTracks, comparer);
-            return !onlyInNew.Any() && !onlyInQueue.Any();
+            
+            bool tracksChanged = onlyInNew.Any() || onlyInQueue.Any();
+
+            if (tracksChanged)
+                return false;
+
+            return CheckAllTracksOnTheSamePosition(newMediaTracks);
+        }
+
+        private bool CheckAllTracksOnTheSamePosition(IList<IMediaTrack> newMediaTracks)
+        {
+            bool allTracksOnTheSamePosition = true;
+
+            for (int i = 0; i < Tracks.Count; i++)
+            {
+                var queueTrack = Tracks[i];
+                var newTrack = newMediaTracks[i];
+
+                if (queueTrack.Equals(newTrack))
+                    continue;
+
+                allTracksOnTheSamePosition = false;
+                break;
+            }
+
+            return allTracksOnTheSamePosition;
         }
 
         public IMediaTrack GetTrackById(int id)
