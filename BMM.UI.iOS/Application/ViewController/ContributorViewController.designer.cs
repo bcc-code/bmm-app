@@ -20,7 +20,7 @@ namespace BMM.UI.iOS
 		UIKit.UILabel NameLabel { get; set; }
 
 		[Outlet]
-		UIKit.UIButton PlayButton { get; set; }
+		UIKit.UIButton ShuffleButton { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TrackCountLabel { get; set; }
@@ -40,9 +40,9 @@ namespace BMM.UI.iOS
 				NameLabel = null;
 			}
 
-			if (PlayButton != null) {
-				PlayButton.Dispose ();
-				PlayButton = null;
+			if (ShuffleButton != null) {
+				ShuffleButton.Dispose ();
+				ShuffleButton = null;
 			}
 
 			if (TracksTable != null) {

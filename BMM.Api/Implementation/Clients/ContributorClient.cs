@@ -86,5 +86,13 @@ namespace BMM.Api.Implementation.Clients
 
             return Get<IList<Track>>(uri);
         }
+
+        public Task<IList<Track>> GetRandomTracks(int contributorId, int size = ApiConstants.LoadMoreSize)
+        {
+            var uri = new UriTemplate(ApiUris.ContributorRandomTracks);
+            uri.SetParameter("id", contributorId);
+            uri.SetParameter("size", size);
+            return Get<IList<Track>>(uri);
+        }
     }
 }

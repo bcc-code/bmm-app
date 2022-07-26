@@ -13,7 +13,7 @@
             <connections>
                 <outlet property="CircleCoverImage" destination="Cp7-Fo-0Dw" id="ZV3-O2-3Vo"/>
                 <outlet property="NameLabel" destination="gAG-Rv-ztw" id="0EU-8E-O6e"/>
-                <outlet property="PlayButton" destination="GoW-oy-9Yf" id="5pX-nk-Uc2"/>
+                <outlet property="ShuffleButton" destination="GoW-oy-9Yf" id="5pX-nk-Uc2"/>
                 <outlet property="TrackCountLabel" destination="M3f-Rj-KTR" id="igy-ac-1am"/>
                 <outlet property="TracksTable" destination="j3y-Vn-SGF" id="MHR-Ew-I1z"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>

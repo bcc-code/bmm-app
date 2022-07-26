@@ -2,16 +2,20 @@
 using System.Collections.Generic;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Contributors.Interfaces;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Models.Contributors;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
+using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
     public class ContributorViewModel : LoadMoreDocumentsViewModel, IMvxViewModel<int>, ITrackListViewModel
     {
+        private readonly MvxAsyncCommand _shufflePlayCommand;
         private int _id;
 
         private Contributor _contributor;
@@ -49,16 +53,21 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleOrResumeButton => false;
-        public string ShowShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
-        public bool ShowPlayButton => true;
+        public bool ShowShuffleOrResumeButton => true;
+        public string ShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
+        public bool ShowPlayButton => false;
 
         public bool ShowTrackCount => true;
 
         public bool ShowFollowSharedPlaylistButton => false;
 
-        public ContributorViewModel()
+        public ContributorViewModel(IShuffleContributorAction shuffleContributorAction)
         {
+            _shufflePlayCommand = new MvxAsyncCommand(async () =>
+            {
+                await shuffleContributorAction.ExecuteGuarded(new ShuffleContributorActionParameter(_id, PlaybackOriginString));
+            });
+            
             TrackInfoProvider = new CustomTrackInfoProvider(TrackInfoProvider,
                 (track, culture, defaultTrack) =>
                 {
@@ -70,6 +79,8 @@ namespace BMM.Core.ViewModels
                     };
                 });
         }
+
+        public override IMvxCommand ShufflePlayCommand => _shufflePlayCommand;
         
         public override IEnumerable<string> PlaybackOrigin()
         {

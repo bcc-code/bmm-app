@@ -13,6 +13,7 @@
         public static string Contributor = "contributor/{id}";
         public static string ContributorCover = "contributor/{id}/cover";
         public static string ContributorTracks = "contributor/{id}/track/{?size,from,content%2Dtype[]*,language}";
+        public static string ContributorRandomTracks = "contributor/{id}/random/{?size}";
         public static string Login = "login/authentication";
         public static string LoginJwt = "login/authentication_jwt";
 		public static string Notifications = "notifications/{deviceId}";

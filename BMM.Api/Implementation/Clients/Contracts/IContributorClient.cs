@@ -38,5 +38,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
         /// <param name="contentTypes">List of types of the contents.</param>
         /// <returns>The tracks.</returns>
         Task<IList<Track>> GetTracks(int contributorId, CachePolicy cachePolicy, int size = ApiConstants.LoadMoreSize, int @from = 0, IEnumerable<string> contentTypes = null);
+        
+        Task<IList<Track>> GetRandomTracks(int contributorId, int size = ApiConstants.LoadMoreSize);
     }
 }

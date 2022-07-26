@@ -50,7 +50,7 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => true;
         public bool ShowShuffleOrResumeButton => false;
-        public string ShowShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
+        public string ShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
         public bool ShowPlayButton => true;
 
         public bool ShowTrackCount => false;
