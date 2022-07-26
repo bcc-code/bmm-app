@@ -555,6 +555,7 @@
     <BundleResource Include="Resources\icon_trackrelation_external%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <None Include="app.config" />
@@ -612,7 +613,6 @@
     <InterfaceDefinition Include="Application\ViewController\ExploreRecentSpeechesViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ExploreRecentMusicViewController.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Actions\AddSiriShortcutAction.cs" />
@@ -812,6 +812,10 @@
     <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.cs" />
     <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.designer.cs">
       <DependentUpon>ChangeTrackLanguageViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\CuratedPlaylistsViewController.cs" />
+    <Compile Include="Application\ViewController\CuratedPlaylistsViewController.designer.cs">
+      <DependentUpon>CuratedPlaylistsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\EditTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\FollowedPodcastsViewController.cs" />
@@ -1062,10 +1066,6 @@
     <Compile Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.designer.cs">
       <DependentUpon>FeaturedPlaylistTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\CuratedPlaylistsViewController.cs" />
-    <Compile Include="Application\ViewController\CuratedPlaylistsViewController.designer.cs">
-      <DependentUpon>CuratedPlaylistsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\CuratedPlaylistViewController.cs" />
     <Compile Include="Application\ViewController\CuratedPlaylistViewController.designer.cs">

@@ -36,6 +36,14 @@ namespace BMM.Api
             return await GetCoverBase(podcastId, ApiUris.PlaylistCover);
         }
 
+        public Task<GenericDocumentsHolder> GetDocuments(string lang, int? age, CachePolicy cachePolicy)
+        {
+            var uri = new UriTemplate(ApiUris.PlaylistDocuments);
+            uri.SetParameter("lang", lang);
+            uri.SetParameter("age", age);
+            return Get<GenericDocumentsHolder>(uri);
+        }
+
         // todo this times often out because it is so slow
         public Task<IList<Track>> GetTracks(int podcastId, CachePolicy cachePolicy)
         {

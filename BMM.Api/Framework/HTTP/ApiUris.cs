@@ -47,6 +47,7 @@
         public const string Playlists = "playlist";
         public const string Playlist = "playlist/{id}";
         public const string PlaylistTracks = "playlist/{id}/track";
+        public const string PlaylistDocuments = "playlist/documents{?lang,age}";
         public const string PlaylistCover = "podcast/{id}/cover";
 
         public static string FacetsAlbumPublishedYears = "facets/album_published/years";
