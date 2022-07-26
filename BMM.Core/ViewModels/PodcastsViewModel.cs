@@ -18,10 +18,7 @@ namespace BMM.Core.ViewModels
 
         public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            var unwantedIds = CuratedPlaylistsViewModel.FeaturedIds;
-
-            var podcasts = await Client.Podcast.GetAll(policy);
-            return podcasts?.Where(x => !unwantedIds.Contains(x.Id));
+            return await Client.Podcast.GetAll(policy);
         }
     }
 }

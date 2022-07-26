@@ -20,8 +20,6 @@ namespace BMM.Core.ViewModels
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
         public override CacheKeys? CacheKey => CacheKeys.PlaylistGetAll;
 
-        public static readonly List<int> FeaturedIds = new List<int> { 31, 32, 33, 35, 36, 37 };
-
         public CuratedPlaylistsViewModel(
             IAppLanguageProvider appLanguageProvider,
             IUserStorage userStorage,
@@ -40,12 +38,6 @@ namespace BMM.Core.ViewModels
                 .Playlist
                 .GetDocuments(_appLanguageProvider.GetAppLanguage(), _userStorage.GetUser().Age, policy);
 
-            playlistsDocuments
-                .Items
-                .OfType<DiscoverSectionHeader>()
-                .ToList()
-                .ForEach(header => header.UseCoverCarousel = true);
-            
             var translatedItems = await _translateDocsAction.ExecuteGuarded(playlistsDocuments.Items.ToList());
             var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedItems);
 
