@@ -23,15 +23,15 @@ namespace BMM.UI.iOS
         {
         }
         
-        public IMvxCommand<float> SliderTouchedCommand { get; set; }
+        public IMvxCommand<long> SliderTouchedCommand { get; set; }
 
         public override void TouchesEnded(NSSet touches, UIEvent evt)
         {
             if (touches.Any())
             {
                 var locationInView = ((UITouch)touches.First()).LocationInView(this);
-                var touchedValue = (locationInView.X / Frame.Width) * MaxValue;
-                SliderTouchedCommand?.Execute((float)touchedValue);
+                var touchedValue = locationInView.X / Frame.Width * MaxValue;
+                SliderTouchedCommand?.Execute(Convert.ToInt64(touchedValue));
             }
             
             base.TouchesEnded(touches, evt);
