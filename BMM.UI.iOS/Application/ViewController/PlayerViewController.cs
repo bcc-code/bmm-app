@@ -68,6 +68,7 @@ namespace BMM.UI.iOS
             set.Bind(PlayingProgressSlider).For(s => s.MaxValue).To(vm => vm.Duration);
             set.Bind(PlayingProgressSlider).For(s => s.Value).To(vm => vm.SliderPosition);
             set.Bind(PlayingProgressSlider).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
+            set.Bind(PlayingProgressSlider).For(b => b.SliderTouchedCommand).To(vm => vm.SeekToPositionCommand);
 
             set.Bind(BufferedProgressSlider).For(s => s.MaxValue).To(vm => vm.Duration);
             set.Bind(BufferedProgressSlider).For(s => s.Value).To(vm => vm.Downloaded);

@@ -3,6 +3,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.NewMediaPlayer.Constants;
 using PS = Android.Support.V4.Media.Session.PlaybackStateCompat;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
@@ -59,7 +60,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
             return (state.Actions & playbackState) != 0L;
         }
 
-        public static IPlaybackState ToPlaybackState(this PS state, IMediaQueue mediaQueue, decimal desiredPlaybackSpeed)
+        public static IPlaybackState ToPlaybackState(this PS state, IMediaQueue mediaQueue, decimal desiredPlaybackSpeed = PlayerConstants.NormalPlaybackSpeed)
         {
             return new PlaybackState
             {
