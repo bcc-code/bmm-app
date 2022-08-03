@@ -152,7 +152,7 @@ namespace BMM.UI.Droid
 #if DEBUG
             Mvx.IoCProvider.RegisterType<ILogger>(
                 () => new ErrorDialogDisplayingLogger(Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
-                    new AndroidLogger(Mvx.IoCProvider.Resolve<IUserStorage>()),
+                    new AndroidLogger(Mvx.IoCProvider.Resolve<IUserStorage>(), Mvx.IoCProvider.Resolve<IConnection>()),
                     Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()));
 #else
             Mvx.IoCProvider.RegisterType<ILogger, AndroidLogger>();

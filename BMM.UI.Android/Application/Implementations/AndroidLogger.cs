@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Android.Util;
 using BMM.Api.Framework;
+using BMM.Core.Constants;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Utils;
 using Java.Lang;
 using Microsoft.AppCenter.Crashes;
 using AppCenterLog = Com.Microsoft.Appcenter.Utils.AppCenterLog;
@@ -13,10 +15,12 @@ namespace BMM.UI.Droid.Application.Implementations
     public class AndroidLogger: ILogger
     {
         private readonly IUserStorage _userStorage;
+        private readonly IConnection _connection;
 
-        public AndroidLogger(IUserStorage userStorage)
+        public AndroidLogger(IUserStorage userStorage, IConnection connection)
         {
             _userStorage = userStorage;
+            _connection = connection;
         }
         
         public void Debug(string tag, string message)
@@ -45,7 +49,10 @@ namespace BMM.UI.Droid.Application.Implementations
                 {"Tag", tag},
                 {"Message", message}
             };
+            
             AddAnalyticsId(dic);
+            AddConnectionType(dic);
+            
             Crashes.TrackError(new ErrorWithoutException(tag + " - " + message), dic);
             AppCenterLog.Error(tag, message);
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error without exception", dic);
@@ -64,6 +71,7 @@ namespace BMM.UI.Droid.Application.Implementations
             };
             
             AddAnalyticsId(parameters);
+            AddConnectionType(parameters);
             
             Crashes.TrackError(throwableException, parameters);
             AppCenterLog.Error(tag, message, throwableException);
@@ -72,6 +80,11 @@ namespace BMM.UI.Droid.Application.Implementations
             parameters.Add("Exception", exception.ToString());
             
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error with exception", parameters);
+        }
+        
+        private void AddConnectionType(Dictionary<string, string> parameters)
+        {
+            parameters.Add(AnalyticsConstants.ConnectionParameterName, AnalyticsUtils.GetConnectionType(_connection));
         }
         
         private void AddAnalyticsId(IDictionary<string, string> dic)

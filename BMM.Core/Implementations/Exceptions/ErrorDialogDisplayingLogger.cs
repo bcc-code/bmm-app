@@ -36,14 +36,12 @@ namespace BMM.Core.Implementations.Exceptions
         public void Error(string tag, string message)
         {
             _logger.Error(tag, message);
-
             _mainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() => _userDialogs.AlertAsync(message));
         }
 
         public void Error(string tag, string message, Exception exception, bool presentedToUser)
         {
-            _logger.Error(tag, message, exception);
-
+            _logger.Error(tag, message, exception, presentedToUser);
             _mainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() => _userDialogs.AlertAsync(exception.Message));
         }
     }

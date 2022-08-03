@@ -70,7 +70,7 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterType<ILogger>(
                 () => new ErrorDialogDisplayingLogger(
                     Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
-                    new IosLogger(Mvx.IoCProvider.Resolve<IUserStorage>()),
+                    new IosLogger(Mvx.IoCProvider.Resolve<IUserStorage>(), Mvx.IoCProvider.Resolve<IConnection>()),
                     Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>())
             );
 #else
