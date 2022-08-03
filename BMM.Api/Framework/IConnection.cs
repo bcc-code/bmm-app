@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using Xamarin.Essentials;
 
 namespace BMM.Api.Framework
 {
@@ -9,5 +12,7 @@ namespace BMM.Api.Framework
         ConnectionStatus GetStatus();
 
         bool IsUsingNetworkWithoutExtraCosts();
+
+        IEnumerable<ConnectionProfile> GetActiveConnectionProfiles();
     }
 }

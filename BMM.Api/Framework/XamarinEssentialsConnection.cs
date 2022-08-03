@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xamarin.Essentials;
 
@@ -29,5 +30,7 @@ namespace BMM.Api.Framework
                    || Connectivity.ConnectionProfiles.Contains(ConnectionProfile.Ethernet)
                    || Connectivity.ConnectionProfiles.Contains(ConnectionProfile.Bluetooth);
         }
+
+        public IEnumerable<ConnectionProfile> GetActiveConnectionProfiles() => Connectivity.ConnectionProfiles;
     }
 }

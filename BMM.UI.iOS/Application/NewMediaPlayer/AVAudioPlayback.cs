@@ -168,25 +168,28 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             var sameMediaTrack = mediaTrack == null || mediaTrack.Equals(_currentMediaTrack);
 
-            if (Status.IsOneOf(PlayStatus.Paused, PlayStatus.Stopped) && sameMediaTrack && !_currentMediaTrack.IsLivePlayback)
+            if (CurrentItem != null)
             {
-                // Live playback should be reinitialized since otherwise we don't detect if the transmission has been stopped in the meantime.
+                if (Status.IsOneOf(PlayStatus.Paused, PlayStatus.Stopped)
+                    && sameMediaTrack
+                    && !_currentMediaTrack.IsLivePlayback)
+                {
+                    Status = PlayStatus.Playing;
+
+                    // We are simply paused so just start again
+                    PlayAndSetRate();
+                    return;
+                }
                 
-                Status = PlayStatus.Playing;
-                // We are simply paused so just start again
-                PlayAndSetRate();
-                return;
-            }
-            if (sameMediaTrack && Status == PlayStatus.Ended)
-            {
-                SeekTo(0);
-                return;
+                if (sameMediaTrack && Status != PlayStatus.Ended)
+                {
+                    SeekTo(0);
+                    return;
+                }
             }
 
             if (mediaTrack != null)
-            {
                 _currentMediaTrack = mediaTrack;
-            }
 
             _playerAnalytics.LogIfDownloadedTrackHasDifferentAttributesThanTrackFromTheApi(_currentMediaTrack);
 
@@ -205,7 +208,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
                 if (playerItem == null || !TryToOpenTrackFromQueue(playerItem))
                 {
-                    playerItem = await _playerItemFactory.Create(mediaTrack);
+                    playerItem = await _playerItemFactory.Create(_currentMediaTrack);
                     Player.RemoveAllItems();
                     Player.ReplaceCurrentItemWithPlayerItem(playerItem);
                 }
@@ -281,7 +284,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             int? distanceBetweenTracksInQueue = CalculateDistanceBetweenTracksInQueue(playerItem);
 
-            if (distanceBetweenTracksInQueue == null)
+            if (distanceBetweenTracksInQueue == null || distanceBetweenTracksInQueue == NumericConstants.Zero)
                 return false;
 
             for (int i = 0; i < distanceBetweenTracksInQueue; i++)

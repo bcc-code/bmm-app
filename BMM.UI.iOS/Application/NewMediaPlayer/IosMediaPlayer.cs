@@ -67,7 +67,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             if (_queue.RepeatMode == RepeatType.RepeatOne || _queue.RepeatMode == RepeatType.RepeatAll && _queue.Tracks.Count == 1)
             {
                 _messenger.Publish(trackCompletedMessage);
-                SeekTo(0);
+                _audioPlayback.Play();
             }
             else if (GetPlayNextIndex().HasValue)
             {

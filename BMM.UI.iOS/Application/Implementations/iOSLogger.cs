@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using BMM.Api.Framework;
+using BMM.Core.Constants;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Utils;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Crashes;
 
@@ -11,10 +13,12 @@ namespace BMM.UI.iOS.Implementations
     public class IosLogger : ILogger
     {
         private readonly IUserStorage _userStorage;
+        private readonly IConnection _connection;
 
-        public IosLogger(IUserStorage userStorage)
+        public IosLogger(IUserStorage userStorage, IConnection connection)
         {
             _userStorage = userStorage;
+            _connection = connection;
         }
         
         private void WriteToConsole(string tag, string level, string message)
@@ -49,6 +53,7 @@ namespace BMM.UI.iOS.Implementations
                 {"Message", message}
             };
             AddAnalyticsId(dic);
+            AddConnectionType(dic);
             Crashes.TrackError(new ErrorWithoutException(tag + " - " + message), dic);
             AppCenterLog.Error(tag, message);
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error without exception", dic);
@@ -66,6 +71,7 @@ namespace BMM.UI.iOS.Implementations
             };
 
             AddAnalyticsId(parameters);
+            AddConnectionType(parameters);
 
             Crashes.TrackError(exception, parameters); 
             AppCenterLog.Error(tag, message, exception);
@@ -75,7 +81,12 @@ namespace BMM.UI.iOS.Implementations
 
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error with exception", parameters);
         }
-        
+
+        private void AddConnectionType(Dictionary<string, string> parameters)
+        {
+            parameters.Add(AnalyticsConstants.ConnectionParameterName, AnalyticsUtils.GetConnectionType(_connection));
+        }
+
         private void AddAnalyticsId(IDictionary<string, string> dic)
         {
             var user = _userStorage.GetUser();
