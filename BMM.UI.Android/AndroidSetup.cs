@@ -158,8 +158,6 @@ namespace BMM.UI.Droid
             Mvx.IoCProvider.RegisterType<ILogger, AndroidLogger>();
 #endif
             
-            Mvx.IoCProvider.RegisterType<HttpHeaderProviders.AndroidMediaRequests>();
-            Mvx.IoCProvider.RegisterType<IMediaRequestHttpHeaders, DroidMediaRequestHttpHeaders>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, DroidExceptionHandlingUserDialogs>();
             Mvx.IoCProvider.RegisterType<IClipboardService, ClipboardService>();
             Mvx.IoCProvider.RegisterType<ITrackOptionsService, DroidTrackOptionsService>();

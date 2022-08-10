@@ -53,22 +53,6 @@ namespace BMM.Core.Implementations.ApiClients
                 {
                     Mvx.IoCProvider.Resolve<ConnectivityHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<MobileDownloadAllowedHeaderProvider>(),
-                    Mvx.IoCProvider.Resolve<IAuthorizationHeaderProvider>()
-                };
-            }
-        }
-        
-        /// <summary>
-        /// Set of headers that do not have async operations.
-        /// </summary>
-        public class AndroidMediaRequests : IPredefinedHeaderSet
-        {
-            public IList<IHeaderProvider> GetProviders()
-            {
-                return new List<IHeaderProvider>
-                {
-                    Mvx.IoCProvider.Resolve<ConnectivityHeaderProvider>(),
-                    Mvx.IoCProvider.Resolve<MobileDownloadAllowedHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<ISyncAuthorizationHeaderProvider>()
                 };
             }
