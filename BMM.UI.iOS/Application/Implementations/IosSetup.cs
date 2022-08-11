@@ -77,7 +77,6 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterType<ILogger, IosLogger>();
 #endif
 
-            Mvx.IoCProvider.RegisterType<IMediaRequestHttpHeaders, MediaRequestHttpHeaders>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, iOSExceptionHandlingUserDialogs>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IUiDependentExecutor, BottomNavigationLoadedDependentExecutor>();
             Mvx.IoCProvider.RegisterType<ISimpleHttpClient, NetworkAccessAwareHttpClient>();

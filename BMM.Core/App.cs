@@ -162,6 +162,8 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAccessTokenProvider, AccessTokenProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAuthorizationHeaderProvider, BearerTokenAuthorizationHeaderProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ISyncAuthorizationHeaderProvider, BearerTokenSyncAuthorizationHeaderProvider>();
+            
+            Mvx.IoCProvider.RegisterType<IMediaRequestHttpHeaders, MediaRequestHttpHeaders>();
 
             Mvx.IoCProvider.RegisterType<IRequestHandlerFactory, RequestHandlerFactory>();
             Mvx.IoCProvider.RegisterType<HttpHeaderProviders.UnauthorizedRequests>();

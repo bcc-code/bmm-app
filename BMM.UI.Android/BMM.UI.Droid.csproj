@@ -196,7 +196,6 @@
     <Compile Include="Application\NewMediaPlayer\Controller\MediaControllerCallback.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\PlaybackStateCompatMapper.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\PeriodicExecutor.cs" />
-    <Compile Include="Application\NewMediaPlayer\DroidMediaRequestHttpHeaders.cs" />
     <Compile Include="Application\NewMediaPlayer\MetadataMapper.cs" />
     <Compile Include="Application\NewMediaPlayer\Notification\CustomAction.cs" />
     <Compile Include="Application\NewMediaPlayer\Notification\ExoPlayerAction.cs" />

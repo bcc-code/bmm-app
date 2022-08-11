@@ -95,7 +95,7 @@ namespace BMM.Core.Implementations.Security
                 {
                     if (CheckAccessTokenState() == AccessTokenState.Valid)
                         return;
-                    
+
                     await _authService.RefreshAccessTokenWithRetry();
                     AccessToken = await _credentialsStorage.GetAccessToken();
                 }
