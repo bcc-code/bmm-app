@@ -100,7 +100,7 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
 
             _isDownloading = true;
 
-            _exceptionHandler.FireAndForget(async () =>
+            _exceptionHandler.FireAndForgetWithoutUserMessages(async () =>
             {
                 var downloadSucceeded = true;
                 try
