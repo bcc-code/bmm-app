@@ -9,6 +9,7 @@ using BMM.UI.Droid.Application.Activities;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Notifications.Data;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
+using BMM.UI.Droid.Utils;
 using MvvmCross.Base;
 
 namespace BMM.UI.Droid.Application.Implementations.Notifications
@@ -40,7 +41,7 @@ namespace BMM.UI.Droid.Application.Implementations.Notifications
                     intent = new Intent(Intent.ActionView, Uri.Parse(aslaksen.Url));
                 }
 
-                var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentFlags.OneShot);
+                var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentsUtils.GetImmutable());
                 var notificationBuilder = new NotificationCompat.Builder(context, notification.ChannelId);
                 notificationBuilder
                     .SetStyle(new NotificationCompat.BigTextStyle().BigText(notification.Message))
