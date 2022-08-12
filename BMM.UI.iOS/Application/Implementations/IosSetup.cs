@@ -66,7 +66,7 @@ namespace BMM.UI.iOS
 
             Mvx.IoCProvider.RegisterType<INotificationSubscriptionTokenProvider, FirebaseTokenProvider>();
 
-#if DEBUG
+#if DEBUG && !UI_TESTS
             Mvx.IoCProvider.RegisterType<ILogger>(
                 () => new ErrorDialogDisplayingLogger(
                     Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
