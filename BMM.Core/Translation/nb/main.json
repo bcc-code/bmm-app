@@ -32,7 +32,15 @@
     "MessagePerfect": "En perfekt uke. Bra gjort!",
     "PerfectWeekCountSingular": "{0} perfekt uke",
     "PerfectWeekCountPlural": "{0} perfekte uker",
-    "PerfectWeekCountNone": "Ingen perfekt uke så langt"
+    "PerfectWeekCountNone": "Ingen perfekt uke så langt",
+    "EligibleUntilMessage": "{0} hours and {1} minutes left today",
+    "DaysInARowSingular": "{0} day in a row",
+    "DaysInARowPlural": "{0} days in a row",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "O",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Kan ikke åpne lenken",
