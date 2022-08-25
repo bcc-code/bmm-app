@@ -1,10 +1,8 @@
 using System;
 using System.Globalization;
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using MvvmCross.Converters;
-using MvvmCross.Localization;
 
 namespace BMM.UI.Droid.Application.ValueConverters
 {

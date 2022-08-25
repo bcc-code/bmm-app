@@ -17,7 +17,6 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext)]
     public partial class ListeningStreakDetailsViewController : BaseViewController<ListeningStreakDetailsViewModel>
     {
-        private IMvxInteraction _closeInteraction;
         private const float AlphaPercentage = 0.5f;
 
         public ListeningStreakDetailsViewController() : base(nameof(ListeningStreakDetailsViewController))
@@ -168,6 +167,12 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
         
         private void SetThemes()
         {
+            MondayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+            TuesdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+            WednesdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+            ThursdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+            FridayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
+            
             Title.ApplyTextTheme(AppTheme.Title1);
             Subtitle.ApplyTextTheme(AppTheme.Subtitle3Label4);
             MondayLetter.ApplyTextTheme(AppTheme.Subtitle3Label1);
@@ -178,36 +183,5 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
             DaysInARowLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
             PerfectWeeksLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
-        
-        // protected override void Bind(
-        //     MvxFluentBindingDescriptionSet<BaseViewController<ListeningStreakDetailsViewModel>, ListeningStreakDetailsViewModel> set)
-        // {
-        //     set.Bind(this)
-        //         .For(v => v.CloseInteraction)
-        //         .To(vm => vm.CloseInteraction)
-        //         .Mode(MvxBindingMode.OneWay);
-        //
-        //     set.Bind(CloseButton)
-        //         .To(vm => vm.CloseWithAnimationCommand);
-        //
-        //     set.Bind(SwitchAccountLabel)
-        //         .To(vm => vm.TextSource[nameof(AppResources.SwitchAccount)]);
-        //
-        //     set.Bind(TapToCloseView.Tap())
-        //         .For(v => v.Command)
-        //         .To(vm => vm.CloseWithAnimationCommand);
-        //
-        //     var source = new MvxSimpleTableViewSource(LinkedAccountsTableView, LinkedAccountViewCell.Key);
-        //
-        //     set.Bind(source)
-        //         .For(s => s.ItemsSource)
-        //         .To(vm => vm.LinkedAccounts);
-        //
-        //     set.Bind(source)
-        //         .For(v => v.SelectedItem)
-        //         .To(vm => vm.SelectedLinkedAccount);
-        //
-        //     LinkedAccountsTableView.Source = source;
-        // }
     }
 }
