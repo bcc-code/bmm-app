@@ -32,7 +32,15 @@
     "MessagePerfect": "Perfekt hét. Szép munka!",
     "PerfectWeekCountSingular": "{0} perfekt hét",
     "PerfectWeekCountPlural": "{0} perfekt hetek",
-    "PerfectWeekCountNone": "Még nincs perfekt hét"
+    "PerfectWeekCountNone": "Még nincs perfekt hét",
+    "EligibleUntilMessage": "{0} hours and {1} minutes left today",
+    "DaysInARowSingular": "{0} day in a row",
+    "DaysInARowPlural": "{0} days in a row",
+    "WeekdayMonday": "H",
+    "WeekdayTuesday": "K",
+    "WeekdayWednesday": "Sz",
+    "WeekdayThursday": "K",
+    "WeekdayFriday": "P"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nem lehet a linket megnyitni",

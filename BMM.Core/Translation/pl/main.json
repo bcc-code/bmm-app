@@ -32,7 +32,15 @@
     "MessagePerfect": "Perfekcyjny tydzień. Dobra robota!",
     "PerfectWeekCountSingular": "{0} perfekcyjny tydzień",
     "PerfectWeekCountPlural": "{0} perfekcyjnych tygodni",
-    "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co"
+    "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
+    "EligibleUntilMessage": "{0} hours and {1} minutes left today",
+    "DaysInARowSingular": "{0} day in a row",
+    "DaysInARowPlural": "{0} days in a row",
+    "WeekdayMonday": "P",
+    "WeekdayTuesday": "W",
+    "WeekdayWednesday": "Ś",
+    "WeekdayThursday": "W",
+    "WeekdayFriday": "P"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nie można otworzyć linku",

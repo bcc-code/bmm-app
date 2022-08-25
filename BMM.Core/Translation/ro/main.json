@@ -32,7 +32,15 @@
     "MessagePerfect": "O săptămână perfectă! Foarte bine!",
     "PerfectWeekCountSingular": "{0} săptămână perfectă",
     "PerfectWeekCountPlural": "{0} săptămâni perfecte",
-    "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte"
+    "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte",
+    "EligibleUntilMessage": "{0} hours and {1} minutes left today",
+    "DaysInARowSingular": "{0} day in a row",
+    "DaysInARowPlural": "{0} days in a row",
+    "WeekdayMonday": "L",
+    "WeekdayTuesday": "Ma",
+    "WeekdayWednesday": "Mi",
+    "WeekdayThursday": "Ma",
+    "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nu s-a putut deschide linkul",
