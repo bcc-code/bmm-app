@@ -78,6 +78,7 @@
     <dimen name="streak_card_size">28dp</dimen>
     <dimen name="streak_card_corner_radius">14dp</dimen>
     <dimen name="streak_circle_size">12dp</dimen>
+    <dimen name="streak_separator_size">24dp</dimen>
     
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>
@@ -92,6 +93,7 @@
     <dimen name="corner_radius_small">8dp</dimen>
     <dimen name="corner_radius_medium">12dp</dimen>
     <dimen name="corner_radius_large">16dp</dimen>
+    <dimen name="corner_radius_huge">36dp</dimen>
 
     <dimen name="feature_item_image_width">40dp</dimen>
     <dimen name="feature_item_image_height">40dp</dimen>

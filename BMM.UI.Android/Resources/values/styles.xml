@@ -181,6 +181,10 @@
     <style name="Subtitle3_Label3" parent="Subtitle3">
         <item name="android:textColor">@color/label_tertiary_color</item>
     </style>
+
+    <style name="Subtitle3_Label4" parent="Subtitle3">
+        <item name="android:textColor">@color/placeholder_color</item>
+    </style>
     
     <style name="Subtitle3_OnColor1" parent="Subtitle3">
         <item name="android:textColor">@color/on_color_one_color</item>
