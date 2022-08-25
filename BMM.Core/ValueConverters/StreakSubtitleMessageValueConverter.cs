@@ -23,9 +23,9 @@ namespace BMM.Core.ValueConverters
                     culture);
             }
 
-            var streakMessageValueConverter = new StreakMessageValueConverter();
+            var converter = new PerfectWeekCountValueConverter();
             
-            return (string)streakMessageValueConverter.Convert(listeningStreak,
+            return (string)converter.Convert(listeningStreak,
                 typeof(string),
                 null,
                 culture);
