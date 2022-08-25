@@ -52,6 +52,12 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
             base.ViewDidLoad();
             var set = this.CreateBindingSet<ListeningStreakDetailsViewController, ListeningStreakDetailsViewModel>();
             
+            MondayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayMonday];
+            TuesdayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayTuesday];
+            WednesdayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayWednesday];
+            ThursdayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayThursday];
+            FridayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayFriday];
+            
             set.Bind(TapToCloseView.Tap())
                 .For(v => v.Command)
                 .To(vm => vm.CloseCommand);
