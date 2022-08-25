@@ -12,7 +12,6 @@ namespace BMM.Core.ViewModels
 {
     public class OptionsListViewModel : BaseViewModel<IOptionsListParameter>, ITrackOptionsViewModel
     {
-
         public OptionsListViewModel()
         {
             CloseOptionsCommand = new MvxCommand(() => CloseInteraction.Raise());
