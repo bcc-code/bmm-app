@@ -34,6 +34,14 @@ namespace BMM.Core.Translation
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
 		public const string Streak_PerfectWeekCountPlural = nameof(Streak_PerfectWeekCountPlural);
 		public const string Streak_PerfectWeekCountNone = nameof(Streak_PerfectWeekCountNone);
+		public const string Streak_EligibleUntilMessage = nameof(Streak_EligibleUntilMessage);
+		public const string Streak_DaysInARowSingular = nameof(Streak_DaysInARowSingular);
+		public const string Streak_DaysInARowPlural = nameof(Streak_DaysInARowPlural);
+		public const string Streak_WeekdayMonday = nameof(Streak_WeekdayMonday);
+		public const string Streak_WeekdayTuesday = nameof(Streak_WeekdayTuesday);
+		public const string Streak_WeekdayWednesday = nameof(Streak_WeekdayWednesday);
+		public const string Streak_WeekdayThursday = nameof(Streak_WeekdayThursday);
+		public const string Streak_WeekdayFriday = nameof(Streak_WeekdayFriday);
 		public const string DeepLinkHandler_ErrorTitle = nameof(DeepLinkHandler_ErrorTitle);
 		public const string DeepLinkHandler_ErrorMessage = nameof(DeepLinkHandler_ErrorMessage);
 		public const string RequestExceptionHandler_RequestFailedMessage = nameof(RequestExceptionHandler_RequestFailedMessage);

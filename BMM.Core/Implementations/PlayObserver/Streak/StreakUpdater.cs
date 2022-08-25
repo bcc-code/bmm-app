@@ -27,6 +27,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         public void MarkTodayAsListened(ListeningStreak streak)
         {
             streak.LastChanged = DateTime.UtcNow;
+            streak.DaysInARow++;
             switch (streak.DayOfTheWeek)
             {
                 case DayOfWeek.Monday:

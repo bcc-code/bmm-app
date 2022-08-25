@@ -4,7 +4,8 @@
     android:layout_marginVertical="@dimen/margin_small"
     android:layout_marginHorizontal="@dimen/margin_medium"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    local:MvxBind="Click ListeningStreakClickedCommand(.)">
 
     <TextView
         android:id="@+id/Title"
@@ -27,7 +28,7 @@
         android:maxLines="1"
         local:autoSizeTextType="uniform"
         local:autoSizeMaxTextSize="15sp"
-        local:MvxBind="Text PerfectWeekCount(Item)"
+        local:MvxBind="Text StreakSubtitleMessage(Item)"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="@+id/HalfGuideline"
         local:layout_constraintTop_toBottomOf="@+id/Title"

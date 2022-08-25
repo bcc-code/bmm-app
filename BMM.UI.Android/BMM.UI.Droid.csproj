@@ -154,6 +154,7 @@
     <Compile Include="Application\Fragments\BrowseFragment.cs" />
     <Compile Include="Application\Fragments\FollowedPodcastsFragment.cs" />
     <Compile Include="Application\Fragments\ChangeTrackLanguageFragment.cs" />
+    <Compile Include="Application\Fragments\ListeningStreakDetailsFragment.cs" />
     <Compile Include="Application\Fragments\PlaybackHistoryFragment.cs" />
     <Compile Include="Application\Fragments\PodcastFragment.cs" />
     <Compile Include="Application\Fragments\LibraryArchiveFragment.cs" />
@@ -214,6 +215,7 @@
     <Compile Include="Application\NewMediaPlayer\Service\CustomErrorMessageProvider.cs" />
     <Compile Include="Application\NewMediaPlayer\Service\CustomShuffleOrder.cs" />
     <Compile Include="Application\NewMediaPlayer\Playback\IdleRecoveringControlDispatcher.cs" />
+    <Compile Include="Application\ValueConverters\StreakTextSourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\HexToColorValueConverter.cs" />
     <Compile Include="Application\ValueConverters\IsNextTrackAvailableToBackgroundResourceValueConverter.cs" />
     <Compile Include="Application\ValueConverters\PlayingStateToPlayPauseIdNameValueConverter.cs" />
@@ -431,6 +433,10 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
     <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
     <AndroidResource Include="Resources\drawable\border_top.xml" />
+    <AndroidResource Include="Resources\drawable\bottom_slide_popup_background.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\button_background_rounded_black.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -593,6 +599,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_edit_trackcollection.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_listening_streak_details.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>

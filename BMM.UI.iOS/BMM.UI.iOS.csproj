@@ -556,6 +556,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\ListeningStreakDetailsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <None Include="app.config" />
@@ -828,6 +829,8 @@
       <DependentUpon>BrowseViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\Interfaces\IPlayerNavigationViewController.cs" />
+    <Compile Include="Application\ViewController\ListeningStreakDetailsViewController.cs" />
+    <Compile Include="Application\ViewController\ListeningStreakDetailsViewController.designer.cs" />
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.cs" />
     <Compile Include="Application\ViewController\PlaybackHistoryViewController.designer.cs">
       <DependentUpon>PlaybackHistoryViewController.cs</DependentUpon>

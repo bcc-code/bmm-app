@@ -7,6 +7,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Documents.Interfaces;
+using BMM.Core.GuardedActions.ExploreNewest.Interfaces;
 using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
@@ -56,7 +57,8 @@ namespace BMM.Core.ViewModels
             IFirebaseRemoteConfig config,
             IContinuePlayingAction continuePlayingAction,
             ITileClickedAction tileClickedAction,
-            IShuffleButtonClickedAction shuffleButtonClickedAction)
+            IShuffleButtonClickedAction shuffleButtonClickedAction,
+            IListeningStreakClickedAction listeningStreakClickedAction)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -70,6 +72,7 @@ namespace BMM.Core.ViewModels
             ContinuePlayingCommand = continuePlayingAction.Command;
             TileClickedCommand = tileClickedAction.Command;
             ShuffleButtonCommand = shuffleButtonClickedAction.Command;
+            ListeningStreakClickedCommand = listeningStreakClickedAction.Command;
             AslaksenTeaserViewModel = Mvx.IoCProvider.IoCConstruct<AslaksenTeaserViewModel>();
             RadioViewModel = Mvx.IoCProvider.IoCConstruct<ExploreRadioViewModel>();
             _listeningStreakToken = messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
@@ -80,6 +83,7 @@ namespace BMM.Core.ViewModels
         public IMvxAsyncCommand<ContinueListeningTile> ContinuePlayingCommand { get; }
         public IMvxAsyncCommand<ContinueListeningTile> TileClickedCommand { get; }
         public IMvxAsyncCommand<ContinueListeningTile> ShuffleButtonCommand { get; }
+        public IMvxAsyncCommand<ListeningStreak> ListeningStreakClickedCommand { get; }
         
         private void ListeningStreakChanged(ListeningStreakChangedMessage message)
         {

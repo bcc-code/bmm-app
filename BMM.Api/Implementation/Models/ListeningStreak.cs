@@ -1,4 +1,5 @@
 using System;
+using BMM.Api.Implementation.Models.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
@@ -35,6 +36,11 @@ namespace BMM.Api.Implementation.Models
 
         public DateTime LastChanged { get; set; }
         public DateTime EligibleUntil { get; set; }
+        
+        public int DaysInARow { get; set; }
+        
+        [JsonConverter(typeof(StringEnumConverter))]
+        public HomeScreenText HomeScreenText { get; set; }
 
         [JsonConverter(typeof(StringEnumConverter))]
         public DayOfWeek DayOfTheWeek { get; set; }

@@ -5,6 +5,7 @@ using Foundation;
 using System;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
+using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
 {
@@ -25,8 +26,12 @@ namespace BMM.UI.iOS
 
                 var set = this.CreateBindingSet<StreakTableViewCell, CellWrapperViewModel<ListeningStreak>>();
                 set.Bind(StreakLabel).To(v => v.Item).WithConversion<StreakMessageValueConverter>();
-                set.Bind(StreakSublabel).To(v => v.Item).WithConversion<PerfectWeekCountValueConverter>();
+                set.Bind(StreakSublabel).To(v => v.Item).WithConversion<StreakSubtitleMessageValueConverter>();
 
+                set.Bind(this)
+                    .For(v => v.BindTap())
+                    .WithConversion<ListeningStreakClickedCommandValueConverter>();
+                
                 set.Bind(MondayView)
                     .For(v => v.Alpha)
                     .To(v => v.Item.ShowMonday)
