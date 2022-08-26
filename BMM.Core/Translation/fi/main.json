@@ -32,7 +32,15 @@
     "MessagePerfect": "A perfect week. Well done!",
     "PerfectWeekCountSingular": "{0} perfect week",
     "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet"
+    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "EligibleUntilMessage": "{0} hours and {1} minutes left today",
+    "DaysInARowSingular": "{0} day in a row",
+    "DaysInARowPlural": "{0} days in a row",
+    "WeekdayMonday": "M",
+    "WeekdayTuesday": "T",
+    "WeekdayWednesday": "W",
+    "WeekdayThursday": "T",
+    "WeekdayFriday": "F"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Linkin avaus epäonnistui",
