@@ -155,6 +155,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                     // keep some information from the server to allow offline update of the next episode as well.
                     localStreak.DayOfTheWeek = streakFromServer.DayOfTheWeek;
                     localStreak.TodaysFraKaareTrackId = streakFromServer.TodaysFraKaareTrackId;
+                    localStreak.EligibleUntil = streakFromServer.EligibleUntil;
 
                     documents[index] = localStreak;
                 }
