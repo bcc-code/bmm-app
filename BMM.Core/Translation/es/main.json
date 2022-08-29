@@ -30,8 +30,8 @@
   "Streak": {
     "Message": "Tu racha de esta semana",
     "MessagePerfect": "Una semana perfecta. ¡Bien hecho!\n",
-    "PerfectWeekCountSingular": "Semanas perfecta",
-    "PerfectWeekCountPlural": "Semanas perfecta",
+    "PerfectWeekCountSingular": "{0} semana perfecta",
+    "PerfectWeekCountPlural": "{0} semanas perfecta",
     "PerfectWeekCountNone": "Sin semanas perfectas, todavía\n",
     "EligibleUntilMessage": "{0} hours and {1} minutes left today",
     "DaysInARowSingular": "{0} day in a row",
@@ -39,7 +39,7 @@
     "WeekdayMonday": "L",
     "WeekdayTuesday": "M",
     "WeekdayWednesday": "M",
-    "WeekdayThursday": "M",
+    "WeekdayThursday": "J",
     "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
