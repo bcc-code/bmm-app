@@ -34,7 +34,7 @@
     "PerfectWeekCountPlural": "{0} perfekte uker",
     "PerfectWeekCountNone": "Ingen perfekt uke så langt",
     "EligibleUntilMessage": "{0} timer og {1} minutter igjen i dag",
-    "DaysInARowSingular": "{1} dag på rad",
+    "DaysInARowSingular": "{0} dag på rad",
     "DaysInARowPlural": "{0} dager på rad",
     "WeekdayMonday": "M",
     "WeekdayTuesday": "T",
