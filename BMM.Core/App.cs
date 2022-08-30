@@ -161,6 +161,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<EnvironmentLanguageReader>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContentLanguageManager, ContentLanguageManager>();
             Mvx.IoCProvider.RegisterType<IAppLanguageProvider, AppLanguageProvider>();
+            Mvx.IoCProvider.RegisterType<LanguageDescriptionMapper>();
             
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IJwtTokenReader, JwtTokenReader>();
             

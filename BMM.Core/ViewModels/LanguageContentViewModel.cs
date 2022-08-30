@@ -30,9 +30,10 @@ namespace BMM.Core.ViewModels
         private readonly ICache _cache;
         private readonly IGlobalMediaDownloader _mediaDownloader;
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
+        private readonly LanguageDescriptionMapper _languageMapper;
 
         public LanguageContentViewModel(IContentLanguageManager contentLanguageManager, IToastDisplayer toastDisplayer,
-            IUserDialogs userDialogs, IExceptionHandler exceptionHandler, ICache cache, IGlobalMediaDownloader mediaDownloader, IFirebaseRemoteConfig firebaseRemoteConfig)
+            IUserDialogs userDialogs, IExceptionHandler exceptionHandler, ICache cache, IGlobalMediaDownloader mediaDownloader, IFirebaseRemoteConfig firebaseRemoteConfig, LanguageDescriptionMapper languageMapper)
         {
             _contentLanguageManager = contentLanguageManager;
             _toastDisplayer = toastDisplayer;
@@ -41,6 +42,7 @@ namespace BMM.Core.ViewModels
             _cache = cache;
             _mediaDownloader = mediaDownloader;
             _firebaseRemoteConfig = firebaseRemoteConfig;
+            _languageMapper = languageMapper;
 
             Languages = new MvxObservableCollection<CultureInfo>();
             _availableLanguages = new List<CultureInfo>();
@@ -100,7 +102,7 @@ namespace BMM.Core.ViewModels
 
             foreach (var languageIso in languages)
             {
-                // Skip language-independent content. Every one wants to listen to instrumental songs, right? So we add it as fixed value.
+                // Skip language-independent content. Everybody wants to listen to instrumental songs, right? So we add it as fixed value.
                 if (languageIso == ContentLanguageManager.LanguageIndependentContent)
                     continue;
 
