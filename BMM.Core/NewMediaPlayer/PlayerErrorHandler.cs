@@ -44,8 +44,6 @@ namespace BMM.Core.NewMediaPlayer
 
         public void InternetProblems(string technicalMessage, string localizedUserReadableMessage)
         {
-            // InternetProblems are totally expected and don't need to be logged as an error. Other problems however might point to problems in the app or on the server.
-
             var message = _bmmLanguageBinder.GetText(ErrorPlayerStopped);
             _toastDisplayer.Error($"{message} {localizedUserReadableMessage}");
             _logger.Warn("MediaPlayer", $"The player has stopped because of internet problems. {technicalMessage}");
