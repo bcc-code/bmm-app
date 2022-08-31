@@ -22,8 +22,7 @@ pr:
 
 variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
-  androidNDK21: 'C:\Program Files (x86)\Android\android-sdk\ndk\21.4.7075529'
-
+  
 steps:
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
@@ -96,9 +95,6 @@ steps:
       rm -f GlobalConstants.cs.bak
     workingDirectory: BMM.Core/Helpers
     displayName: 'Update AppVersion in GlobalConstants'
-
-  - powershell: .\install-ndk-r21.ps1
-    displayName: "Install Android NDK r21"
   
   - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0
     displayName: 'Set Version Code in AndroidManifest.xml'
@@ -148,7 +144,7 @@ steps:
       configuration: Release
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) -p:AndroidNdkDirectory="$(androidNDK21)"'
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
 
   - task: XamarinAndroid@1
     displayName: 'Build APK'
@@ -158,7 +154,7 @@ steps:
       configuration: Release
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory="$(androidNDK21)"'
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
 
   - task: AndroidSigning@3
     displayName: 'Signing and aligning APK file(s) $(Build.BinariesDirectory)/bin/Release/*.apk'
