@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using AVFoundation;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using BMM.Core.NewMediaPlayer.Constants;
 using Foundation;
 using MvvmCross.Plugin.Messenger;
 
@@ -67,7 +67,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             if (_queue.RepeatMode == RepeatType.RepeatOne || _queue.RepeatMode == RepeatType.RepeatAll && _queue.Tracks.Count == 1)
             {
                 _messenger.Publish(trackCompletedMessage);
-                _audioPlayback.Play();
+                SeekTo(0);
             }
             else if (GetPlayNextIndex().HasValue)
             {
@@ -112,13 +112,12 @@ namespace BMM.UI.iOS.NewMediaPlayer
             bool result = true;
 
             if (!_queue.IsSameQueue(mediaTracks))
-                result = await ReplaceQueue(mediaTracks, currentTrack);
+                result = await _queue.Replace(mediaTracks, currentTrack);
 
             if (result || CurrentTrack == null)
             {
                 int index = mediaTracks.IndexOf(currentTrack);
-                PlayTrack(currentTrack, index, true, startTimeInMs);
-                ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
+                PlayTrack(currentTrack, index, result, startTimeInMs).FireAndForget();
             }
         }
 
@@ -127,13 +126,24 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _currentTrack = currentTrack;
             _currentTrackIndex = mediaTracks.IndexOf(currentTrack);
 
-            await ReplaceQueue(mediaTracks, currentTrack);
-            
+            await _queue.Replace(mediaTracks, currentTrack);
+            await _audioPlayback.SetPlayerTrack(currentTrack);
+            await PreloadNextTrackIfNeeded();
+
             if (startTimeInMs > 0)
                 _audioPlayback.SeekTo(startTimeInMs, false);
-            
+
             PlaybackStateChanged();
             _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, this));
+        }
+
+        private async Task PreloadNextTrackIfNeeded()
+        {
+            int? nextTrackIndex = GetPlayNextIndex();
+            if (nextTrackIndex == null)
+                return;
+
+            await _audioPlayback.PreloadTrack(_queue.Tracks[nextTrackIndex.Value]);
         }
 
         public void PlayPause()
@@ -141,7 +151,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             if (_audioPlayback.Status == PlayStatus.Ended)
             {
                 // After the queue has been completed start again at the first track
-                PlayTrackByIndex(0);
+                PlayTrackByIndex(0).FireAndForget();
             }
             else
             {
@@ -175,7 +185,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             if (newIndex.HasValue)
             {
-                PlayTrackByIndex(newIndex.Value);
+                PlayTrackByIndex(newIndex.Value).FireAndForget();
             }
             else
             {
@@ -204,7 +214,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             if (newIndex.HasValue)
             {
-                PlayTrackByIndex(newIndex.Value);
+                PlayTrackByIndex(newIndex.Value).FireAndForget();
             }
             else
             {
@@ -269,12 +279,12 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 SetShuffle(true);
         }
 
-        private void PlayTrackByIndex(int index)
+        private async Task PlayTrackByIndex(int index)
         {
-            PlayTrack(_queue.Tracks[index], index, true);
+            await PlayTrack(_queue.Tracks[index], index, true);
         }
 
-        private void PlayTrack(IMediaTrack track, int index, bool shouldPlay, long startTimeInMs = 0)
+        private async Task PlayTrack(IMediaTrack track, int index, bool shouldPlay, long startTimeInMs = 0)
         {
             _messenger.Publish(new PlaybackSeekedMessage(this)
             {
@@ -287,7 +297,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             if (shouldPlay) // Even if the user is online we should not play a not-downloaded track from Downloaded Content
             {
-                _audioPlayback.Play(_currentTrack);
+                await _audioPlayback.Play(_currentTrack);
 
                 if (startTimeInMs > 0)
                     _audioPlayback.SeekTo(startTimeInMs);
@@ -295,14 +305,9 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             PlaybackStateChanged();
             _messenger.Publish(new CurrentTrackChangedMessage(track, this));
+            await PreloadNextTrackIfNeeded();
         }
 
-        private async Task<bool> ReplaceQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack)
-        {
-            await _audioPlayback.LoadToPlay(mediaTracks, currentTrack);
-            return await _queue.Replace(mediaTracks, currentTrack);
-        }
-        
         private void PlaybackStateChanged()
         {
             var message = new PlaybackStatusChangedMessage(this, PlaybackState);

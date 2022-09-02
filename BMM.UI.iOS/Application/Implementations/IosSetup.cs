@@ -33,6 +33,7 @@ using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
 using BMM.UI.iOS.Implementations.Track;
 using BMM.UI.iOS.NewMediaPlayer;
+using BMM.UI.iOS.NewMediaPlayer.Interfaces;
 using BMM.UI.iOS.UI;
 using FFImageLoading;
 using FFImageLoading.Cache;
@@ -129,8 +130,10 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterType<IMediaPlayerInitializer>(Mvx.IoCProvider.Resolve<ICommandCenter>);
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificMediaPlayer, IosMediaPlayer>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IMediaRemoteControl, MediaRemoteControl>();
-
-            Mvx.IoCProvider.RegisterType<AvPlayerItemFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAVPlayerItemRepository, AVPlayerItemRepository>();
+            
+            Mvx.IoCProvider.RegisterType<IAVPlayerItemFactory, AVPlayerItemFactory>();
+            Mvx.IoCProvider.RegisterType<ICacheAVPlayerItemFactory, CacheAVPlayerItemFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAudioPlayback, AVAudioPlayback>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICommandCenter, SeekableRemoteCommandCenter>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<MediaQueue, MediaQueue>();

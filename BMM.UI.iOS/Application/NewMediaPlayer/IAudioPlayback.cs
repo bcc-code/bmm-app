@@ -10,12 +10,14 @@ namespace BMM.UI.iOS.NewMediaPlayer
     {
         Task Play(IMediaTrack mediaTrack = null);
 
-        Task LoadToPlay(IList<IMediaTrack> tracks, IMediaTrack desiredTrack);
+        Task SetPlayerTrack(IMediaTrack mediaTrack);
+        
+        Task PreloadTrack(IMediaTrack mediaTrack);
 
         Task PlayPause();
 
         void Stop();
-        
+
         Action OnMediaFinished { get; set; }
 
         Action<long, long> OnPositionChanged { set; }
