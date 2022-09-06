@@ -255,14 +255,14 @@
     "Title": "En reproducción",
     "PlayingCount": "{0} de {1}",
     "ViewLyrics": "Ver Letra",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
+    "SleepTimer": "Temporizador para dormir",
+    "Minutes": "{0} minutos",
+    "Hour": "{0} hora",
+    "Hours": "{0} horas",
+    "Disable": "Desactivar",
+    "PlaybackSpeed": "Velocidad de reproducción",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Seleccionada"
   },
   "QueueViewModel": {
     "Title": "Cola"
@@ -283,8 +283,8 @@
     "HeadlineSettings": "Configuración",
     "OptionAutoplayHeader": "Reproducción automática",
     "OptionAutoplayText": "Reproducir música después de escuchar el episodio de hoy de Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakHeader": "Racha en Inicio",
+    "OptionStreakText": "Mostrar las estadísticas de escucha en la pantalla de inicio",
     "OptionEnablePushHeader": "Activar notificaciones push",
     "OptionPushNotifications": "Notificaciones push",
     "OptionPushNotificationsSubtitle": "Activar notificaciones push para podcasts que sigues",
@@ -318,8 +318,8 @@
     "UserVoiceText": "¿Tienes ideas para mejorar BMM? Cuéntanos.",
     "ThemeHeader": "Modo oscuro",
     "ThemeText": "Elige entre un tema claro y uno oscuro",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "SiriShortcutsHeader": "Accesos directos de Siri",
+    "SiriShortcutsText": "Añadir accesos directos de Siri para BMM a tu dispositivo"
   },
   "StorageManagementViewModel": {
     "Title": "Ubicación de las pistas sin conexión",
@@ -335,7 +335,7 @@
   "TrackCollectionViewModel": {
     "Title": "Lista de reproducción",
     "ShufflePlay": "Aleatorio",
-    "Resume": "Resume",
+    "Resume": "Continuar",
     "AvailableOffline": "Disponible sin conexión",
     "AvailableOfflineDownload": "Descarga",
     "AvailableOfflineDownloading": "Descargando {0} de {1}",
@@ -495,7 +495,7 @@
     "AllLanguages": "Todos los idiomas"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Accesos directos de Siri",
+    "ShortcutAlreadyAdded": "Este acceso directo ya ha sido añadido"
   }
 }
