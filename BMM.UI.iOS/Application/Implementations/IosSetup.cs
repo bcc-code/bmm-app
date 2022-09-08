@@ -133,7 +133,6 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAVPlayerItemRepository, AVPlayerItemRepository>();
             
             Mvx.IoCProvider.RegisterType<IAVPlayerItemFactory, AVPlayerItemFactory>();
-            Mvx.IoCProvider.RegisterType<ICacheAVPlayerItemFactory, CacheAVPlayerItemFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAudioPlayback, AVAudioPlayback>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICommandCenter, SeekableRemoteCommandCenter>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<MediaQueue, MediaQueue>();

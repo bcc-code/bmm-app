@@ -5,5 +5,7 @@ namespace BMM.Core.Implementations.Device
         bool SupportsDarkMode { get; }
         
         bool SupportsSiri { get; }
+        
+        bool SupportsAVPlayerItemCache { get; }
     }
 }

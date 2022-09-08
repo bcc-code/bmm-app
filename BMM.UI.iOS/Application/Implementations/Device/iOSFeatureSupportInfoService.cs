@@ -28,5 +28,7 @@ namespace BMM.UI.iOS.Implementations.Device
                        && SiriConstants.AvailableLanguages.Contains(_appLanguageProvider.GetAppLanguage());
             }
         }
+
+        public bool SupportsAVPlayerItemCache => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
     }
 }

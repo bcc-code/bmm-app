@@ -10,6 +10,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Utils;
 using Foundation;
 using MvvmCross.Plugin.Messenger;
 
@@ -17,6 +18,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 {
     public class IosMediaPlayer : IPlatformSpecificMediaPlayer, IDisposable
     {
+        private readonly TimeSpan _timeToWaitBeforePreloadingNextItem = TimeSpan.FromSeconds(8);
         private long SeekToStartThresholdInMs = 5000;
 
         private readonly IShuffleableQueue _queue;
@@ -28,6 +30,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private IMediaTrack _currentTrack;
         private int _currentTrackIndex;
+        private DebounceDispatcher _debounceDispatcher;
 
         public IosMediaPlayer(
             IAudioPlayback audioPlayback,
@@ -43,6 +46,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _messenger = messenger;
             _logger = logger;
             _commandCenter = commandCenter;
+            
+            _debounceDispatcher = new DebounceDispatcher((int)_timeToWaitBeforePreloadingNextItem.TotalMilliseconds);
 
             _audioPlayback.OnMediaFinished = OnMediaFinished;
             _audioPlayback.OnPositionChanged = PlaybackPositionChanged;
@@ -128,13 +133,18 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             await _queue.Replace(mediaTracks, currentTrack);
             await _audioPlayback.SetPlayerTrack(currentTrack);
-            await PreloadNextTrackIfNeeded();
+            WaitAndPreloadNextTrack();
 
             if (startTimeInMs > 0)
                 _audioPlayback.SeekTo(startTimeInMs, false);
 
             PlaybackStateChanged();
             _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, this));
+        }
+
+        private void WaitAndPreloadNextTrack()
+        {
+            _debounceDispatcher.Run(async () => await PreloadNextTrackIfNeeded());
         }
 
         private async Task PreloadNextTrackIfNeeded()
@@ -305,7 +315,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             PlaybackStateChanged();
             _messenger.Publish(new CurrentTrackChangedMessage(track, this));
-            await PreloadNextTrackIfNeeded();
+            WaitAndPreloadNextTrack();
         }
 
         private void PlaybackStateChanged()

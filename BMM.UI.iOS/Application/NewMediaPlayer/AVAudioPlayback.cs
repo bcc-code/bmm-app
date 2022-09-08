@@ -195,10 +195,10 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 Status = PlayStatus.Buffering;
 
                 RemoveObservers();
-
+                InitializePlayer();
+                
                 var playerItem = await _avPlayerItemRepository.Get(_currentMediaTrack);
 
-                playerItem.Seek(CMTime.Zero);
                 Player.ReplaceCurrentItemWithPlayerItem(playerItem);
                 AttachObservers();
                 CurrentItem.SeekingWaitsForVideoCompositionRendering = true;
