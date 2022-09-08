@@ -44,38 +44,13 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 return;
 
             CancelPreviousDownloadingIfNeeded();
-            await PrepareSpaceForFile(mediaTrack.TrackMediaFile.Size);
+            PrepareSpaceForFile(mediaTrack.TrackMediaFile.Size);
             var cacheAVPlayerItemLoader = new CacheAVPlayerItemLoader(_mediaRequestHttpHeaders, mediaTrack.GetUniqueKey);
             cacheAVPlayerItemLoader.FinishedLoading += CacheAVPlayerItemLoaderOnFinishedLoading;
             await cacheAVPlayerItemLoader.StartDataRequest(mediaTrack.Url);
             _loaders.TryAdd(mediaTrack.GetUniqueKey, cacheAVPlayerItemLoader);
         }
-
-        private void CancelPreviousDownloadingIfNeeded()
-        {
-            var loaders = _loaders
-                .Values
-                .Where(x => !x.MoreThanAHalfFinished);
-
-            foreach (var loader in loaders)
-            {
-                loader.Cancel();
-                loader.FinishedLoading -= CacheAVPlayerItemLoaderOnFinishedLoading;
-                _loaders.TryRemove(loader.UniqueKey, out _);
-            }
-        }
-
-        private void CacheAVPlayerItemLoaderOnFinishedLoading(object sender, bool endedWithError)
-        {
-            string uniqueKey = ((CacheAVPlayerItemLoader)sender).UniqueKey;
-            
-            if (!_loaders.TryGetValue(uniqueKey, out var loader))
-                return;
-            
-            loader.FinishedLoading -= CacheAVPlayerItemLoaderOnFinishedLoading;
-            _loaders.TryRemove(uniqueKey, out _);
-        }
-
+        
         public async Task<AVPlayerItem> Get(IMediaTrack mediaTrack)
         {
             if (_featureSupportInfoService.SupportsAVPlayerItemCache && TryGetCachedFileNameIfAvailableAndValid(mediaTrack.GetUniqueKey, out string fileName))
@@ -124,6 +99,31 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 .ToArray();
         }
 
+        private void CancelPreviousDownloadingIfNeeded()
+        {
+            var loaders = _loaders
+                .Values
+                .Where(x => !x.MoreThanAHalfFinished);
+
+            foreach (var loader in loaders)
+            {
+                loader.Cancel();
+                loader.FinishedLoading -= CacheAVPlayerItemLoaderOnFinishedLoading;
+                _loaders.TryRemove(loader.UniqueKey, out _);
+            }
+        }
+
+        private void CacheAVPlayerItemLoaderOnFinishedLoading(object sender, bool endedWithError)
+        {
+            string uniqueKey = ((CacheAVPlayerItemLoader)sender).UniqueKey;
+            
+            if (!_loaders.TryGetValue(uniqueKey, out var loader))
+                return;
+            
+            loader.FinishedLoading -= CacheAVPlayerItemLoaderOnFinishedLoading;
+            _loaders.TryRemove(uniqueKey, out _);
+        }
+
         private bool TryGetCachedFileNameIfAvailableAndValid(string uniqueKey, out string path)
         {
             path = null;
@@ -139,7 +139,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             return true;
         }
 
-        private async Task PrepareSpaceForFile(long size)
+        private void PrepareSpaceForFile(long size)
         {
             var allFiles = GetAllCachedFiles(true);
 

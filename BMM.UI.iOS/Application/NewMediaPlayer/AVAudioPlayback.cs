@@ -168,13 +168,11 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             if (Status == PlayStatus.Paused && sameMediaTrack && !_currentMediaTrack.IsLivePlayback)
             {
-                // Live playback should be reinitialized since otherwise we don't detect if the transmission has been stopped in the meantime.
-
                 Status = PlayStatus.Playing;
-                // We are simply paused so just start again
                 PlayAndSetRate();
                 return;
             }
+            
             if (sameMediaTrack && Status == PlayStatus.Ended)
             {
                 SeekTo(0);
@@ -182,9 +180,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
 
             if (mediaTrack != null)
-            {
                 _currentMediaTrack = mediaTrack;
-            }
 
             _playerAnalytics.LogIfDownloadedTrackHasDifferentAttributesThanTrackFromTheApi(_currentMediaTrack);
 

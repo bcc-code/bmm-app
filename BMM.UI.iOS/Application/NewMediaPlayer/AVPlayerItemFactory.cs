@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using AVFoundation;
 using BMM.Api.Abstraction;
