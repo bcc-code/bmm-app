@@ -30,8 +30,8 @@
   "Streak": {
     "Message": "Seu progresso semanal ",
     "MessagePerfect": "Uma semana perfeita. Bom trabalho!",
-    "PerfectWeekCountSingular": "semanas perfeitas",
-    "PerfectWeekCountPlural": "semanas perfeitas",
+    "PerfectWeekCountSingular": "{0} semana perfeitas",
+    "PerfectWeekCountPlural": "{0} semanas perfeitas",
     "PerfectWeekCountNone": "Ainda não há semanas perfeitas",
     "EligibleUntilMessage": "{0} hours and {1} minutes left today",
     "DaysInARowSingular": "{0} day in a row",
