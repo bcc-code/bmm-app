@@ -135,7 +135,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _profileLoader.Object,
                 _userStorage.Object,
                 _remoteConfig.Object,
-                _featureSupportInfoService.Object);
+                _featureSupportInfoService.Object,
+                _userDialogs.Object);
 
             settingsViewModel.TextSource = TextResource.Object;
             return settingsViewModel;

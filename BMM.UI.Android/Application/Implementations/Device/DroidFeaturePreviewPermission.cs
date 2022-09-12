@@ -6,5 +6,6 @@ namespace BMM.UI.Droid.Application.Implementations.Device
     {
         public bool SupportsDarkMode => true;
         public bool SupportsSiri => false;
+        public bool SupportsAVPlayerItemCache => false;
     }
 }

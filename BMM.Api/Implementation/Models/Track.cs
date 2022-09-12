@@ -107,7 +107,7 @@ namespace BMM.Api.Implementation.Models
 
         #region track media
 
-        private TrackMediaFile TrackMediaFile
+        public TrackMediaFile TrackMediaFile
         {
             get { return Media?.FirstOrDefault(e => e.Type == TrackMediaType)?.Files?.FirstOrDefault(); }
         }

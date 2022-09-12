@@ -2,38 +2,38 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AVFoundation;
 using BMM.Api.Abstraction;
+using BMM.Core.Extensions;
+using BMM.UI.iOS.NewMediaPlayer.Interfaces;
 using Foundation;
 
 namespace BMM.UI.iOS.NewMediaPlayer
 {
-    public class AvPlayerItemFactory
+    public class AVPlayerItemFactory : IAVPlayerItemFactory
     {
         private readonly IMediaRequestHttpHeaders _headers;
 
-        public AvPlayerItemFactory(IMediaRequestHttpHeaders headers)
+        public AVPlayerItemFactory(IMediaRequestHttpHeaders headers)
         {
             _headers = headers;
         }
 
-        public async Task<BMMPlayerItem> Create(IMediaTrack mediaTrack)
+        public async Task<AVPlayerItem> Create(IMediaTrack mediaTrack)
         {
             var mediaUrl = MediaFileUrlHelper.GetUrlFor(mediaTrack);
 
             AVUrlAssetOptions options = null;
-            if (TrackIsNotDownloaded(mediaTrack))
-            {
+            
+            if (!mediaTrack.IsDownloaded())
                 options = GetOptionsWithHeaders(await _headers.GetHeaders());
-            }
 
-            AVAsset asset = AVUrlAsset.Create(mediaUrl, options);
-
-            var playerItem = new BMMPlayerItem(asset, mediaTrack);
-            return playerItem;
+            var asset = AVUrlAsset.Create(mediaUrl, options);
+            return AVPlayerItem.FromAsset(asset);
         }
 
-        private bool TrackIsNotDownloaded(IMediaTrack mediaTrack)
+        public AVPlayerItem Create(string cacheFilePath)
         {
-            return mediaTrack.LocalPath == null;
+            var asset = AVUrlAsset.Create(new NSUrl(cacheFilePath, false));
+            return AVPlayerItem.FromAsset(asset);
         }
 
         private AVUrlAssetOptions GetOptionsWithHeaders(IList<KeyValuePair<string, string>> headers)

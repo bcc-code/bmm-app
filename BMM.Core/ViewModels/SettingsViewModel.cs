@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.DebugInfo.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -52,6 +53,7 @@ namespace BMM.Core.ViewModels
         private readonly IUserStorage _userStorage;
         private readonly IFirebaseRemoteConfig _remoteConfig;
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
+        private readonly IUserDialogs _userDialogs;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -81,7 +83,8 @@ namespace BMM.Core.ViewModels
             IProfileLoader profileLoader,
             IUserStorage userStorage,
             IFirebaseRemoteConfig remoteConfig,
-            IFeatureSupportInfoService featureSupportInfoService)
+            IFeatureSupportInfoService featureSupportInfoService,
+            IUserDialogs userDialogs)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -102,6 +105,7 @@ namespace BMM.Core.ViewModels
             _userStorage = userStorage;
             _remoteConfig = remoteConfig;
             _featureSupportInfoService = featureSupportInfoService;
+            _userDialogs = userDialogs;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -353,9 +357,24 @@ namespace BMM.Core.ViewModels
                     Text = "Causes an exception that stops the app",
                     OnSelected = new MvxCommand(CrashTheApp)
                 });
+
+                if (_deviceInfo.IsIos)
+                {
+                    items.Add(new SelectableListItem
+                    {
+                        Title = "Show cached tracks",
+                        Text = "Shows all cached Player Items and their size",
+                        OnSelected = new MvxAsyncCommand(ShowCachedTracks)
+                    });
+                }
             }
 
             return items;
+        }
+
+        private async Task ShowCachedTracks()
+        {
+            await Mvx.IoCProvider.Resolve<IShowTracksCacheInfoAction>().ExecuteGuarded();
         }
 
         private void CrashTheApp()

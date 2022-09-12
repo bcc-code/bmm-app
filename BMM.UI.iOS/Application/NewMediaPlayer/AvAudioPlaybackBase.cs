@@ -8,7 +8,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 {
     public abstract class AvAudioPlaybackBase : NSObject
     {
-        private AVQueuePlayer _player;
+        private AVPlayer _player;
 
         private NSObject _periodicTimeObserverObject;
 
@@ -23,7 +23,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         public static readonly NSString LoadedTimeRangesObservationContext = new NSString("TimeRanges");
         public const string LoadedTimeRangesObserver = "loadedTimeRanges";
 
-        protected AVQueuePlayer Player
+        protected AVPlayer Player
         {
             get
             {
@@ -38,7 +38,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             DeinitializePlayer();
 
-            _player = new AVQueuePlayer
+            _player = new AVPlayer
             {
                 // This setting is for video playback and by default it's set to true. Since we only play audio we set it to false.
                 // If you would want to use it you also need the "external-accessory" permission in UIBackgroundModes in Info.plist.
@@ -68,7 +68,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             if (_player is null)
                 return;
-            
+
             _player.RemoveTimeObserver(_periodicTimeObserverObject);
             _player.RemoveObserver(this, RateObserver, RateObservationContext.Handle);
 
