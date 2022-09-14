@@ -64,6 +64,7 @@ using BMM.Core.Implementations.Validators;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using Microsoft.AppCenter;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.IoC;
@@ -90,6 +91,10 @@ namespace BMM.Core
 
             Registrations.Start(GlobalConstants.ApplicationName);
             BlobCache.ApplicationName = GlobalConstants.PackageName;
+
+#if DEBUG
+            AppCenter.LogLevel = LogLevel.Info;
+#endif
 
             SetupLanguageBinder();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRememberedQueueInfoService, RememberedQueueInfoService>();

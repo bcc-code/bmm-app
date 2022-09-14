@@ -1,28 +1,22 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
-using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
-using BMM.Core.Implementations.Notifications;
-using BMM.Core.Implementations.Player.Interfaces;
-using BMM.Core.Models.Themes;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
+using BMM.UI.Droid.Application.Actions.Interfaces;
 using BMM.UI.Droid.Application.Fragments;
 using BMM.UI.Droid.Application.Helpers;
-using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using Google.Android.Material.BottomNavigation;
 using MvvmCross.ViewModels;
 using MvvmCross;
-using MvvmCross.Navigation;
 using MvvmCross.Platforms.Android.Presenters;
 using MvvmCross.Platforms.Android.Views.Fragments;
 
@@ -37,24 +31,12 @@ namespace BMM.UI.Droid.Application.Activities
          ScreenOrientation = ScreenOrientation.Portrait,
          Exported = true
     )]
-    [IntentFilter(
-        new[] { Intent.ActionView },
-        Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable },
-        AutoVerify = true,
-        DataSchemes = new[] { "https", "http" },
-        DataHosts = new[] { GlobalConstants.BmmUrlProd, GlobalConstants.BmmUrlInt },
-        DataPathPatterns = new[]
-        {
-            "/archive", "/album/.*", "/track/.*", "/playlist/curated/.*", "/playlist/private/.*", "/playlist/shared/.*", "/playlist/contributor/.*", "/playlist/podcast/.*", "/podcasts/.*", "/playlist/latest", "/copyright", "/", "/daily-fra-kaare", "/music", "/speeches", "/contributors", "/featured", "/browse/.*"
-        }
-    )]
     public class MainActivity : BaseFragmentActivity<MainActivityViewModel>
     {
         private IMediaPlayer _mediaPlayer;
         private AndroidMediaPlayer _androidPlayer;
         private BottomNavigationView? _bottomNavigationView;
         private FrameLayout _miniPlayerFrame;
-        private string _unhandledDeepLink;
         private static int? _currentAppTheme;
 
         private BottomNavigationView BottomNavigationView
@@ -79,16 +61,8 @@ namespace BMM.UI.Droid.Application.Activities
             base.OnCreate(bundle);
 
             Xamarin.Essentials.Platform.Init(this, bundle);
-
-            // This is necessary when we open the app through a deep link. For some reason Start() is not called automatically.
-            // ToDo: Due to the fact that the app doesn't start properly we also see a white screen instead of the SplashScreen
-            var startup = Mvx.IoCProvider.Resolve<IMvxAppStart>();
-            startup.Start();
-
             var viewPresenter = Mvx.IoCProvider.GetSingleton<IMvxAndroidViewPresenter>();
-
-            SetPendingDeepLink(Intent);
-
+            
             if (bundle == null)
             {
                 var menuViewModelRequest = new MvxViewModelRequest(typeof(MenuViewModel), null, null);
@@ -97,14 +71,6 @@ namespace BMM.UI.Droid.Application.Activities
 
             viewPresenter.AddPresentationHintHandler<ClearAllNavBackStackHint>(ClearAllNavBackStackHintHandler);
             viewPresenter.AddPresentationHintHandler<MenuClickedHint>(NavigationRootChangedHintHandler);
-
-            // Cleaning the back stack to have a clean state. We don't need to do this when the app is started with a deeplink
-            // because the this activity is in this case always called first so there is nothing to remove in the back stack.
-            if (Intent?.Data == null)
-            {
-                if (!ThemeHasChanged())
-                    Mvx.IoCProvider.Resolve<IMvxNavigationService>().ChangePresentation(new ClearAllNavBackStackHint());
-            }
 
             SetCurrentTheme();
         }
@@ -175,12 +141,6 @@ namespace BMM.UI.Droid.Application.Activities
             base.OnBackPressed();
         }
 
-        protected override void OnNewIntent(Intent intent)
-        {
-            SetPendingDeepLink(intent);
-            HandleDeepLink();
-        }
-
         protected override void OnResume()
         {
             base.OnResume();
@@ -197,44 +157,17 @@ namespace BMM.UI.Droid.Application.Activities
             }
         }
 
-        private void SetCurrentTheme()
+        private static void SetCurrentTheme()
         {
             _currentAppTheme = AppCompatDelegate.DefaultNightMode;
         }
 
-        private bool ThemeHasChanged()
+        private static bool ThemeHasChanged()
         {
             if (_currentAppTheme == null)
                 return false;
 
             return _currentAppTheme != AppCompatDelegate.DefaultNightMode;
-        }
-
-        private void SetPendingDeepLink(Intent intent)
-        {
-            _unhandledDeepLink = intent?.Data?.ToString();
-
-            if (string.IsNullOrEmpty(_unhandledDeepLink))
-                return;
-
-            var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
-            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(_unhandledDeepLink);
-        }
-
-        private static void HandleNotification()
-        {
-            if (SplashScreenActivity.UnhandledIntent == null)
-                return;
-
-            var intent = SplashScreenActivity.UnhandledIntent;
-            SplashScreenActivity.UnhandledIntent = null;
-            var notification = new AndroidIntentNotification(intent);
-            var notificationHandler = Mvx.IoCProvider.Resolve<INotificationHandler>();
-
-            notificationHandler.UserClickedNotification(notification);
-
-            if (notificationHandler.WillNotificationStartPlayer(notification))
-                Mvx.IoCProvider.Resolve<IRememberedQueueInfoService>().SetPlayerHasPendingOperation();
         }
 
         protected override void OnStart()
@@ -244,21 +177,21 @@ namespace BMM.UI.Droid.Application.Activities
             _androidPlayer.AfterConnectedAction = async () =>
             {
                 await _androidPlayer.RestoreLastPlayingTrackAfterThemeChangedIfAvailable();
-                HandleNotification();
-                HandleDeepLink();
+                await HandleNotification();
+                await HandleDeepLink();
             };
 
             _androidPlayer.Connect(this);
         }
-
-        private void HandleDeepLink()
+        
+        private static async Task HandleNotification()
         {
-            if (_unhandledDeepLink == null)
-                return;
+            await Mvx.IoCProvider.Resolve<IHandleNotificationAction>().ExecuteGuarded();
+        }
 
-            var url = new System.Uri(_unhandledDeepLink);
-            Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(url);
-            _unhandledDeepLink = null;
+        private static async Task HandleDeepLink()
+        {
+            await Mvx.IoCProvider.Resolve<IHandleDeepLinkAction>().ExecuteGuarded(SplashScreenActivity.UnhandledDeepLink);
         }
 
         protected override void OnDestroy()

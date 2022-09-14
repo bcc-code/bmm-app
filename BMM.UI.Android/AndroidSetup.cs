@@ -35,6 +35,8 @@ using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.UI.Droid.Application.Actions;
+using BMM.UI.Droid.Application.Actions.Interfaces;
 using BMM.UI.Droid.Application.Bindings;
 using BMM.UI.Droid.Application.DownloadManager;
 using BMM.UI.Droid.Application.Helpers;
@@ -178,6 +180,7 @@ namespace BMM.UI.Droid
 
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
             Mvx.IoCProvider.RegisterType<IFeatureSupportInfoService, DroidFeaturePreviewPermission>();
+            
             InitializeMediaPlayer();
         }
 
