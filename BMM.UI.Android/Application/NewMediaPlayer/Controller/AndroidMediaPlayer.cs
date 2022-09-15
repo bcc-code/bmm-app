@@ -125,7 +125,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public IPlaybackState PlaybackState => _mediaController?.PlaybackState?.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed) ?? new DefaultPlaybackState();
 
         public long CurrentPosition => PlaybackState.CurrentPosition;
-
+        
         public async Task ShuffleList(IList<IMediaTrack> tracks, string playbackOrigin)
         {
             if (_mediaController != null)

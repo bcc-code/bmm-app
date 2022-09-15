@@ -149,7 +149,6 @@ namespace BMM.Core.ViewModels
             RepeatType = MediaPlayer.RepeatType;
             IsShuffleEnabled = MediaPlayer.IsShuffleEnabled;
             UpdatePlaybackState(MediaPlayer.PlaybackState);
-            SetupSubscriptions();
         }
 
         public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
