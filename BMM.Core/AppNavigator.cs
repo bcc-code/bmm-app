@@ -219,9 +219,15 @@ namespace BMM.Core
         public async Task NavigateAfterLoggedIn()
         {
             if (_deviceInfo.IsIos)
+            {
                 await _navigationService.NavigateToNewRoot<MenuViewModel>();
+            }
             else
+            {
                 await _navigationService.NavigateToNewRoot<ExploreNewestViewModel>();
+                await _navigationService.Navigate<MenuViewModel>();
+            }
+
             _messenger.Publish(new LoggedInMessage(this));
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
 using Android.Content.PM;
@@ -6,6 +7,7 @@ using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
+using BMM.Core;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
@@ -15,10 +17,10 @@ using BMM.UI.Droid.Application.Fragments;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using Google.Android.Material.BottomNavigation;
-using MvvmCross.ViewModels;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Presenters;
 using MvvmCross.Platforms.Android.Views.Fragments;
+using MvvmCross.ViewModels;
 
 namespace BMM.UI.Droid.Application.Activities
 {
@@ -33,6 +35,13 @@ namespace BMM.UI.Droid.Application.Activities
     )]
     public class MainActivity : BaseFragmentActivity<MainActivityViewModel>
     {
+        private readonly IReadOnlyList<string> _fragmentRestoringBundleKeys = new List<string>()
+        {
+            "android:fragments",
+            "android:viewHierarchyState",
+            "androidx.lifecycle.BundlableSavedStateRegistry.key"
+        }.AsReadOnly();
+        
         private IMediaPlayer _mediaPlayer;
         private AndroidMediaPlayer _androidPlayer;
         private BottomNavigationView? _bottomNavigationView;
@@ -49,26 +58,30 @@ namespace BMM.UI.Droid.Application.Activities
 
         protected override void OnCreate(Bundle bundle)
         {
+            bool themeHasChanged = ThemeHasChanged();
+            bool shouldCallInitialNavigation = !themeHasChanged && bundle != null;
+
+            if (!themeHasChanged)
+                RemoveFragmentRestoringFromBundle(bundle);
+            
             // We see a lot of crashes in this method and the theory is that the app is opened immediately here skipping the SplashScreen.
             // And then it would not be initialized and probably crash right away.
             SetupHelper.EnsureInitialized();
 
             _androidPlayer = Mvx.IoCProvider.Resolve<IPlatformSpecificMediaPlayer>() as AndroidMediaPlayer;
             _mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
-            _mediaPlayer.ViewHasBeenDestroyed(ThemeHasChanged());
+            _mediaPlayer.ViewHasBeenDestroyed(themeHasChanged);
 
             SetContentView(Resource.Layout.activity_main);
             base.OnCreate(bundle);
 
             Xamarin.Essentials.Platform.Init(this, bundle);
-            var viewPresenter = Mvx.IoCProvider.GetSingleton<IMvxAndroidViewPresenter>();
-            
-            if (bundle == null)
-            {
-                var menuViewModelRequest = new MvxViewModelRequest(typeof(MenuViewModel), null, null);
-                viewPresenter.Show(menuViewModelRequest);
-            }
 
+            // as we not restoring fragments, we need to call initial navigation when the app was restored from deep background
+            if (shouldCallInitialNavigation)
+                Mvx.IoCProvider.Resolve<IAppNavigator>().NavigateAtAppStart();
+            
+            var viewPresenter = Mvx.IoCProvider.GetSingleton<IMvxAndroidViewPresenter>();
             viewPresenter.AddPresentationHintHandler<ClearAllNavBackStackHint>(ClearAllNavBackStackHintHandler);
             viewPresenter.AddPresentationHintHandler<MenuClickedHint>(NavigationRootChangedHintHandler);
 
@@ -157,6 +170,18 @@ namespace BMM.UI.Droid.Application.Activities
             }
         }
 
+        private void RemoveFragmentRestoringFromBundle(Bundle bundle)
+        {
+            if (bundle == null)
+                return;
+            
+            foreach (string fragmentRestoringBundleKey in _fragmentRestoringBundleKeys)
+            {
+                if (bundle.ContainsKey(fragmentRestoringBundleKey))
+                    bundle.Remove(fragmentRestoringBundleKey);
+            }
+        }
+        
         private static void SetCurrentTheme()
         {
             _currentAppTheme = AppCompatDelegate.DefaultNightMode;

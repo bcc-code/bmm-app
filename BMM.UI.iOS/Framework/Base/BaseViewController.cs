@@ -121,6 +121,9 @@ namespace BMM.UI.iOS
 
         private void UnsubscribeFromTextSourceChange()
         {
+            if (ViewModel == null)
+                return;
+            
             ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
         }
 

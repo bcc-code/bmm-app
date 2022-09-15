@@ -21,6 +21,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
         private readonly ConcurrentDictionary<string, CacheAVPlayerItemLoader> _loaders = new ConcurrentDictionary<string, CacheAVPlayerItemLoader>();
         private string _currentFileInUse;
+        private bool? _isThereSufficientSpaceToStartCaching;
 
         public AVPlayerItemRepository(
             IAVPlayerItemFactory avPlayerItemFactory,
@@ -34,7 +35,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         
         public async Task AddAndLoad(IMediaTrack mediaTrack)
         {
-            bool shouldSkip = !_featureSupportInfoService.SupportsAVPlayerItemCache
+            bool shouldSkip = !CheckCachingEnabled()
                             || _loaders.ContainsKey(mediaTrack.GetUniqueKey)
                             || mediaTrack.IsDownloaded()
                             || TryGetCachedFileNameIfAvailableAndValid(mediaTrack.GetUniqueKey, out _)
@@ -50,10 +51,10 @@ namespace BMM.UI.iOS.NewMediaPlayer
             await cacheAVPlayerItemLoader.StartDataRequest(mediaTrack.Url);
             _loaders.TryAdd(mediaTrack.GetUniqueKey, cacheAVPlayerItemLoader);
         }
-        
+
         public async Task<AVPlayerItem> Get(IMediaTrack mediaTrack)
         {
-            if (_featureSupportInfoService.SupportsAVPlayerItemCache && TryGetCachedFileNameIfAvailableAndValid(mediaTrack.GetUniqueKey, out string fileName))
+            if (CheckCachingEnabled() && TryGetCachedFileNameIfAvailableAndValid(mediaTrack.GetUniqueKey, out string fileName))
             {
                 _currentFileInUse = Path.Combine(CacheMediaFileHandle.AVPlayerItemsCacheDirectoryPath, fileName);
                 return _avPlayerItemFactory.Create(_currentFileInUse);
@@ -65,7 +66,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         public void SynchronizeCacheFiles()
         {
-            if (!_featureSupportInfoService.SupportsAVPlayerItemCache)
+            if (!CheckCachingEnabled())
                 return;
             
             var cacheFiles = GetAllCachedFiles(false);
@@ -170,6 +171,14 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 if (currentMemoryReleased >= memoryToRelease)
                     break;
             }
+        }
+        
+        private bool CheckCachingEnabled()
+        {
+            if (!_featureSupportInfoService.SupportsAVPlayerItemCache)
+                return false;
+
+            return _isThereSufficientSpaceToStartCaching ??= CacheMediaFileHandle.CheckSufficientSpaceToStartCaching();
         }
     }
 }
