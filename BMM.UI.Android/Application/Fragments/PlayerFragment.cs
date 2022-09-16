@@ -290,6 +290,9 @@ namespace BMM.UI.Droid.Application.Fragments
             UpdateStatusBarColor();
             if (state == BottomSheetBehavior.StateHidden)
                 ViewUtils.SetDefaultNavigationBarColor(Activity);
+            
+            if (state == BottomSheetBehavior.StateExpanded)
+                View?.Post(SetSizes);
         }
 
         private void SetCoverShadow(bool shouldTintBackground)
@@ -360,7 +363,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private void UpdateTitleSize()
         {
-            View.Post(() =>
+            View?.Post(() =>
             {
                 int coverBottom = _coverContainer!.Bottom;
                 int titleLabelBottom = _titleLabel.Bottom;
@@ -373,9 +376,11 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private void SetSizes()
         {
+            if (View == null)
+                return;
+            
             float coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Medium;
 
-            
             if (View.Height <= AndroidScreenSizesHeight.HD)
                 _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Small;
             else if (View.Height <= AndroidScreenSizesHeight.FullHD)
@@ -397,6 +402,7 @@ namespace BMM.UI.Droid.Application.Fragments
             _coverShadowLayout.TopPaddingMultiplier = _coverTopPaddingMultiplier;
             _coverShadowLayout!.SetShadowRadius(DefaultCoverShadowRadiusSize);
             _coverImage.UpdateSize((int)(View.Width * coverSizeMultiplier));
+            
             UpdateTitleSize();
         }
     }

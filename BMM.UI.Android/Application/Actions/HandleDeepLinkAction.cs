@@ -4,6 +4,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.Helpers;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.Droid.Application.Actions.Interfaces;
+using BMM.UI.Droid.Application.Activities;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 
 namespace BMM.UI.Droid.Application.Actions
@@ -33,11 +34,11 @@ namespace BMM.UI.Droid.Application.Actions
             if (_mediaPlayer.IsConnected)
             {
                 _deepLinkHandler.OpenFromOutsideOfApp(new Uri(deepLink));
-                SplashScreenActivity.UnhandledDeepLink = null;
+                MainActivity.UnhandledDeepLink = null;
                 return;
             }
             
-            SplashScreenActivity.UnhandledDeepLink = deepLink;
+            MainActivity.UnhandledDeepLink = deepLink;
             _deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(deepLink);
         }
     }

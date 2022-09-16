@@ -2,12 +2,15 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using AndroidX.AppCompat.App;
 using BMM.Core;
+using BMM.Core.Extensions;
+using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
@@ -33,6 +36,34 @@ namespace BMM.UI.Droid.Application.Activities
          ScreenOrientation = ScreenOrientation.Portrait,
          Exported = true
     )]
+    [IntentFilter(
+        new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable },
+        AutoVerify = true,
+        DataSchemes = new[] { "https", "http" },
+        DataHosts = new[] { GlobalConstants.BmmUrlProd, GlobalConstants.BmmUrlInt },
+        DataPathPatterns = new[]
+        {
+            "/archive",
+            "/album/.*",
+            "/track/.*",
+            "/playlist/curated/.*",
+            "/playlist/private/.*",
+            "/playlist/shared/.*",
+            "/playlist/contributor/.*",
+            "/playlist/podcast/.*",
+            "/podcasts/.*",
+            "/playlist/latest",
+            "/copyright",
+            "/",
+            "/daily-fra-kaare",
+            "/music",
+            "/speeches",
+            "/contributors",
+            "/featured",
+            "/browse/.*"
+        }
+    )]
     public class MainActivity : BaseFragmentActivity<MainActivityViewModel>
     {
         private readonly IReadOnlyList<string> _fragmentRestoringBundleKeys = new List<string>()
@@ -47,6 +78,7 @@ namespace BMM.UI.Droid.Application.Activities
         private BottomNavigationView? _bottomNavigationView;
         private FrameLayout _miniPlayerFrame;
         private static int? _currentAppTheme;
+        public static string UnhandledDeepLink;
 
         private BottomNavigationView BottomNavigationView
             => _bottomNavigationView ??= FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
@@ -58,8 +90,11 @@ namespace BMM.UI.Droid.Application.Activities
 
         protected override void OnCreate(Bundle bundle)
         {
+            string deepLink = Intent?.Data?.ToString();
+            bool wasRestored = bundle != null;
             bool themeHasChanged = ThemeHasChanged();
-            bool shouldCallInitialNavigation = !themeHasChanged && bundle != null;
+            
+            bool shouldCallInitialNavigation = (!themeHasChanged && wasRestored) || !string.IsNullOrEmpty(deepLink);
 
             if (!themeHasChanged)
                 RemoveFragmentRestoringFromBundle(bundle);
@@ -80,11 +115,9 @@ namespace BMM.UI.Droid.Application.Activities
             // as we not restoring fragments, we need to call initial navigation when the app was restored from deep background
             if (shouldCallInitialNavigation)
                 Mvx.IoCProvider.Resolve<IAppNavigator>().NavigateAtAppStart();
-            
-            var viewPresenter = Mvx.IoCProvider.GetSingleton<IMvxAndroidViewPresenter>();
-            viewPresenter.AddPresentationHintHandler<ClearAllNavBackStackHint>(ClearAllNavBackStackHintHandler);
-            viewPresenter.AddPresentationHintHandler<MenuClickedHint>(NavigationRootChangedHintHandler);
 
+            HandleDeepLink(deepLink).FireAndForget();
+            InitializePresenter();
             SetCurrentTheme();
         }
 
@@ -94,7 +127,7 @@ namespace BMM.UI.Droid.Application.Activities
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        public async Task<bool> ClearAllNavBackStackHintHandler(ClearAllNavBackStackHint hint)
+        private async Task<bool> ClearAllNavBackStackHintHandler(ClearAllNavBackStackHint hint)
         {
             if (!SupportFragmentManager.IsDestroyed && !SupportFragmentManager.IsStateSaved)
                 SupportFragmentManager.PopBackStackImmediate();
@@ -103,7 +136,7 @@ namespace BMM.UI.Droid.Application.Activities
             return true;
         }
 
-        public async Task<bool> NavigationRootChangedHintHandler(MenuClickedHint hint)
+        private async Task<bool> NavigationRootChangedHintHandler(MenuClickedHint hint)
         {
             ClearBackStack();
             return true;
@@ -169,7 +202,20 @@ namespace BMM.UI.Droid.Application.Activities
                 documentsViewModel.RefreshInBackground();
             }
         }
+        
+        protected override async void OnNewIntent(Intent intent)
+        {
+            await HandleDeepLink(intent?.Data?.ToString());
+        }
 
+        private void InitializePresenter()
+        {
+            var viewPresenter = Mvx.IoCProvider.GetSingleton<IMvxAndroidViewPresenter>();
+            viewPresenter.Show(new MvxViewModelRequest(typeof(MenuViewModel), null, null));
+            viewPresenter.AddPresentationHintHandler<ClearAllNavBackStackHint>(ClearAllNavBackStackHintHandler);
+            viewPresenter.AddPresentationHintHandler<MenuClickedHint>(NavigationRootChangedHintHandler);
+        }
+        
         private void RemoveFragmentRestoringFromBundle(Bundle bundle)
         {
             if (bundle == null)
@@ -203,7 +249,7 @@ namespace BMM.UI.Droid.Application.Activities
             {
                 await _androidPlayer.RestoreLastPlayingTrackAfterThemeChangedIfAvailable();
                 await HandleNotification();
-                await HandleDeepLink();
+                await HandleDeepLink(UnhandledDeepLink);
             };
 
             _androidPlayer.Connect(this);
@@ -214,9 +260,9 @@ namespace BMM.UI.Droid.Application.Activities
             await Mvx.IoCProvider.Resolve<IHandleNotificationAction>().ExecuteGuarded();
         }
 
-        private static async Task HandleDeepLink()
+        private async Task HandleDeepLink(string deepLink)
         {
-            await Mvx.IoCProvider.Resolve<IHandleDeepLinkAction>().ExecuteGuarded(SplashScreenActivity.UnhandledDeepLink);
+            await Mvx.IoCProvider.Resolve<IHandleDeepLinkAction>().ExecuteGuarded(deepLink);
         }
 
         protected override void OnDestroy()
