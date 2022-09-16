@@ -102,6 +102,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
+    <Compile Include="Application\Actions\HandleDeepLinkAction.cs" />
+    <Compile Include="Application\Actions\HandleNotificationAction.cs" />
+    <Compile Include="Application\Actions\Interfaces\IHandleDeepLinkAction.cs" />
+    <Compile Include="Application\Actions\Interfaces\IHandleNotificationAction.cs" />
     <Compile Include="Application\Actions\OnStartAction.cs" />
     <Compile Include="Application\Activities\SupportEndedActivity.cs" />
     <Compile Include="Application\Activities\UserSetupActivity.cs" />

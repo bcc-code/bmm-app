@@ -59,9 +59,10 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             _messenger = messenger;
         }
 
+        public bool IsConnected { get; private set; }
         public Action ContinuingPreviousSession { get; set; }
 
-        public Action AfterConnectedAction { get; set; }
+        public Func<Task> AfterConnectedAction { get; set; }
 
         public void Connect(Activity activity)
         {
@@ -85,6 +86,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 
         public void Disconnect()
         {
+            IsConnected = false;
             if (_mediaController != null)
             {
                 _mediaController.UnregisterCallback(_callback);
@@ -123,7 +125,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         public IPlaybackState PlaybackState => _mediaController?.PlaybackState?.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed) ?? new DefaultPlaybackState();
 
         public long CurrentPosition => PlaybackState.CurrentPosition;
-
+        
         public async Task ShuffleList(IList<IMediaTrack> tracks, string playbackOrigin)
         {
             if (_mediaController != null)
@@ -308,6 +310,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 
         public override async void OnConnected()
         {
+            IsConnected = true;
             if (_mediaController == null)
             {
                 _mediaController = new MediaControllerCompat(_activity, _mediaBrowser.SessionToken);
@@ -320,7 +323,10 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 _callback.OnMetadataChanged(_mediaController.Metadata);
             }
 
-            AfterConnectedAction?.Invoke();
+            if (AfterConnectedAction == null)
+                return;
+            
+            await AfterConnectedAction.Invoke();
             AfterConnectedAction = null;
         }
 

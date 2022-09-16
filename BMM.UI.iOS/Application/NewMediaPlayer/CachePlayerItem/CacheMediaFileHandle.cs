@@ -123,9 +123,14 @@ namespace BMM.UI.iOS.NewMediaPlayer
             NSFileManager.DefaultManager.Move(FilePath, newName, out _);
         }
         
-        public bool HasValidSize()
+        public static bool CheckSufficientSpaceToStartCaching()
         {
-            return GetFileSize() == FilePath.GetCachePlayerItemExpectedSize();
+            var cacheFolderAttributes = NSFileManager.DefaultManager.GetFileSystemAttributes(AVPlayerItemsCacheDirectoryPath, out var error);
+            
+            if (!string.IsNullOrEmpty(error?.ToString()))
+                return false;
+
+            return (long)cacheFolderAttributes.FreeSize > MaximumSpaceForCache;
         }
     }
 }

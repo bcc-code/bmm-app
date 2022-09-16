@@ -1,4 +1,3 @@
-using Android;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -16,10 +15,19 @@ namespace BMM.UI.Droid
         NoHistory = true,
         Name = "bmm.ui.droid.SplashScreenActivity",
         Exported = true)]
-    [IntentFilter(new[] {PodcastNotification.Type, GeneralNotification.Type, WordOfFaithNotification.Type}, Categories = new[] {Intent.CategoryDefault})]
+    [IntentFilter(new[]
+        {
+            PodcastNotification.Type,
+            GeneralNotification.Type,
+            WordOfFaithNotification.Type
+        },
+        Categories = new[]
+        {
+            Intent.CategoryDefault
+        })]
     public class SplashScreenActivity : MvxSplashScreenActivity
     {
-        public static Intent UnhandledIntent;
+        public static Intent UnhandledNotification;
 
         public SplashScreenActivity() : base(Resource.Layout.splash_screen)
         {
@@ -32,20 +40,12 @@ namespace BMM.UI.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
-            CheckNotification(savedInstanceState);
-
-            /* We use it in order to prevent SplashScreen from freezing when we tap on notification.
-             * Problem is described in the link: https://github.com/MvvmCross/MvvmCross/issues/3042#issuecomment-454200794
-             * Issue doesn't exist in MvvmCross version 6.3.+ so if we update it than check should be deleted from the project. */
-            if (!IsTaskRoot)
-            {
-                Finish();
-            }
+            SetNotificationToHandle();
         }
-
-        private void CheckNotification(Bundle savedInstanceState)
+        
+        private void SetNotificationToHandle()
         {
-            if (savedInstanceState != null || Intent == null)
+            if (Intent == null)
                 return;
 
             var extras = Intent.Extras;
@@ -57,7 +57,7 @@ namespace BMM.UI.Droid
             bool isNotification = keySet.Contains(NotificationKeys.GoogleMessageId);
 
             if (isNotification)
-                UnhandledIntent = Intent;
+                UnhandledNotification = Intent;
         }
     }
 }

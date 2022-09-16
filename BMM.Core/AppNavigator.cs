@@ -222,6 +222,7 @@ namespace BMM.Core
                 await _navigationService.NavigateToNewRoot<MenuViewModel>();
             else
                 await _navigationService.NavigateToNewRoot<ExploreNewestViewModel>();
+
             _messenger.Publish(new LoggedInMessage(this));
         }
 

@@ -20,7 +20,7 @@
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">false</item>
         <item name="android:navigationBarColor">@color/label_primary_reverted_color</item>
-        <item name="android:windowBackground">@color/background_secondary_color</item>
+        <item name="android:windowBackground">@drawable/splashscreen</item>
 
         <item name="colorControlNormal">@color/gray</item>
         <item name="colorControlActivated">@color/tint_color</item>

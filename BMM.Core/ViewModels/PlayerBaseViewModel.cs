@@ -15,7 +15,6 @@ namespace BMM.Core.ViewModels
     public class PlayerBaseViewModel : BaseViewModel
     {
         private const int CurrentTrackUpdateDebounceDelayInMillis = 100;
-        private const int UpdateCurrentPositionThrottlingInMillis = 500;
 
         protected readonly IMediaPlayer MediaPlayer;
 
@@ -24,7 +23,6 @@ namespace BMM.Core.ViewModels
         private MvxSubscriptionToken _updateMetadataToken;
         
         private readonly DebounceDispatcher _currentTrackDebounceDispatcher;
-        private readonly ThrottlingDispatcher _currentPositionThrottlingDispatcher;
 
         private ITrackModel _currentTrack;
         
@@ -60,7 +58,7 @@ namespace BMM.Core.ViewModels
         /// - it's hard to get good information about the current position
         /// - BTV only provides the data for a short time window. I don't know how to get details about that time window.
         /// </summary>
-        public bool IsSeekingDisabled => CurrentTrack.IsLivePlayback;
+        public bool IsSeekingDisabled => CurrentTrack?.IsLivePlayback ?? true;
 
         private long _duration;
         public long Duration
@@ -106,23 +104,10 @@ namespace BMM.Core.ViewModels
             get => _currentPosition;
             set
             {
-                void UpdateCurrentPosition(long value)
-                {
-                    if (SetProperty(ref _currentPosition, value))
-                        RaisePropertyChanged(() => SliderPosition);
-                }
-                
-                if (IsSeeking || IsFirstCurrentPositionSet(value))
-                {
-                    UpdateCurrentPosition(value);
-                    return;
-                }
-
-                _currentPositionThrottlingDispatcher.Run(() => UpdateCurrentPosition(value));
+                SetProperty(ref _currentPosition, value);
+                RaisePropertyChanged(() => SliderPosition);
             }
         }
-
-        private bool IsFirstCurrentPositionSet(long value) => CurrentPosition == 0 && value != 0;
 
         private long _downloaded;
         public long Downloaded
@@ -149,18 +134,31 @@ namespace BMM.Core.ViewModels
         public PlayerBaseViewModel(IMediaPlayer mediaPlayer)
         {
             _currentTrackDebounceDispatcher = new DebounceDispatcher(CurrentTrackUpdateDebounceDelayInMillis);
-            _currentPositionThrottlingDispatcher = new ThrottlingDispatcher(UpdateCurrentPositionThrottlingInMillis);
             
             MediaPlayer = mediaPlayer;
 
             PlayPauseCommand = new MvxCommand(MediaPlayer.PlayPause);
-
             CurrentTrack = MediaPlayer.CurrentTrack;
             Duration = MediaPlayer.CurrentTrack?.Duration ?? 0;
         }
 
-        protected void SetupSubscriptions()
+        protected override void AttachEvents()
         {
+            base.AttachEvents();
+            SetupSubscriptions();
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            DetachSubscriptions();
+        }
+
+        private void SetupSubscriptions()
+        {
+            CurrentTrack = MediaPlayer.CurrentTrack;
+            UpdatePlaybackState(MediaPlayer.PlaybackState);
+            
             _updateStateToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(
                 msg => { UpdatePlaybackState(msg.PlaybackState); });
             _updatePositionToken = Messenger.Subscribe<PlaybackPositionChangedMessage>(message =>
@@ -174,11 +172,21 @@ namespace BMM.Core.ViewModels
                 Duration = message.CurrentTrack?.Duration ?? 0;
             });
         }
-
+        
+        private void DetachSubscriptions()
+        {
+            Messenger.Unsubscribe<PlaybackStatusChangedMessage>(_updateStateToken);
+            Messenger.Unsubscribe<CurrentTrackChangedMessage>(_updateMetadataToken);
+            Messenger.Unsubscribe<PlaybackPositionChangedMessage>(_updatePositionToken);
+        }
+        
         protected virtual Task OnCurrentTrackChanged() => Task.CompletedTask;
         
         protected virtual void UpdatePlaybackState(IPlaybackState state)
         {
+            if (state == null)
+                return;
+            
             IsPlaying = state.IsPlaying;
             CurrentPosition = state.CurrentPosition;
             Downloaded = state.BufferedPosition;
