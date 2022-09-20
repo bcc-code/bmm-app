@@ -7,6 +7,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.Region.Interfaces;
 using BMM.Core.Models.POs;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Translation;
@@ -19,6 +20,7 @@ namespace BMM.Core.GuardedActions.Player
     {
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
         private readonly IContentLanguageManager _contentLanguageManager;
+        private readonly ICultureInfoRepository _cultureInfoRepository;
         private LanguageNameValueConverter _languageNameValueConverter;
         
         private IChangeTrackLanguageViewModel ChangeTrackLanguageViewModel => this.GetDataContext();
@@ -26,10 +28,12 @@ namespace BMM.Core.GuardedActions.Player
 
         public PrepareAvailableTrackLanguageAction(
             IBMMLanguageBinder bmmLanguageBinder,
-            IContentLanguageManager contentLanguageManager)
+            IContentLanguageManager contentLanguageManager,
+            ICultureInfoRepository cultureInfoRepository)
         {
             _bmmLanguageBinder = bmmLanguageBinder;
             _contentLanguageManager = contentLanguageManager;
+            _cultureInfoRepository = cultureInfoRepository;
         }
         
         protected override async Task Execute()
@@ -62,7 +66,7 @@ namespace BMM.Core.GuardedActions.Player
             var preferredLanguagesToAdd = preferredLanguages
                 .Where(allAvailableLanguages.Contains)
                 .ToList();
-            
+
             return GetDisplayableLanguages(Translations.ChangeTrackLanguageViewModel_PreferredLanguages, preferredLanguagesToAdd);
         }
 
@@ -93,7 +97,7 @@ namespace BMM.Core.GuardedActions.Player
         
         private string GetDisplayableLanguageName(string lang)
         {
-            var cultureInfo = new CultureInfo(lang);
+            var cultureInfo = _cultureInfoRepository.Get(lang);
 
             return (string)LanguageNameValueConverter.Convert(cultureInfo,
                 typeof(string),
