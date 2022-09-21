@@ -26,7 +26,7 @@
         public const string RootFolderForResources = "Translation";
 
         // Static list of default content languages which will be used if Firebase Remote Config can't connect to the server.
-        public static readonly string DefaultContentLanguages = "af,bg,cs,de,el,en,es,et,fi,fr,he,hr,hu,it,nb,nl,pl,pt,ro,ru,sl,ta,tr,zh,yue,zxx";
+        public static readonly string DefaultContentLanguages = "af,bg,cs,da,de,el,en,es,et,fi,fr,he,hr,hu,it,nb,nl,pl,pt,ro,ru,sl,ta,tr,zh,yue,zxx";
 
         // Static list of languages, this app has been translated into. That are folders within RootFolderForResources, wherein there is a JSON file per view-model, having the same name as the ViewModel.
         public static readonly string[] AvailableAppLanguages = { "af", "bg", "da", "de", "en", "es", "et", "fi", "fr", "hu", "it", "nb", "nl", "pl", "pt", "ro", "ru", "sl", "tr", "uk" };
