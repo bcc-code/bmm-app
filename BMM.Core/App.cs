@@ -52,6 +52,8 @@ using BMM.Core.Implementations.PlayObserver.Storage;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.PostLoginActions;
+using BMM.Core.Implementations.Region;
+using BMM.Core.Implementations.Region.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Security.Oidc.Interfaces;
@@ -161,6 +163,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<EnvironmentLanguageReader>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContentLanguageManager, ContentLanguageManager>();
             Mvx.IoCProvider.RegisterType<IAppLanguageProvider, AppLanguageProvider>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICultureInfoRepository, CultureInfoRepository>();
             
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IJwtTokenReader, JwtTokenReader>();
             

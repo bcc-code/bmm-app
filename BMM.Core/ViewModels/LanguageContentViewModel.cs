@@ -12,6 +12,7 @@ using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
+using BMM.Core.Implementations.Region.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
@@ -30,9 +31,17 @@ namespace BMM.Core.ViewModels
         private readonly ICache _cache;
         private readonly IGlobalMediaDownloader _mediaDownloader;
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
+        private readonly ICultureInfoRepository _cultureInfoRepository;
 
-        public LanguageContentViewModel(IContentLanguageManager contentLanguageManager, IToastDisplayer toastDisplayer,
-            IUserDialogs userDialogs, IExceptionHandler exceptionHandler, ICache cache, IGlobalMediaDownloader mediaDownloader, IFirebaseRemoteConfig firebaseRemoteConfig)
+        public LanguageContentViewModel(
+            IContentLanguageManager contentLanguageManager,
+            IToastDisplayer toastDisplayer,
+            IUserDialogs userDialogs,
+            IExceptionHandler exceptionHandler,
+            ICache cache,
+            IGlobalMediaDownloader mediaDownloader,
+            IFirebaseRemoteConfig firebaseRemoteConfig,
+            ICultureInfoRepository cultureInfoRepository)
         {
             _contentLanguageManager = contentLanguageManager;
             _toastDisplayer = toastDisplayer;
@@ -41,6 +50,7 @@ namespace BMM.Core.ViewModels
             _cache = cache;
             _mediaDownloader = mediaDownloader;
             _firebaseRemoteConfig = firebaseRemoteConfig;
+            _cultureInfoRepository = cultureInfoRepository;
 
             Languages = new MvxObservableCollection<CultureInfo>();
             _availableLanguages = new List<CultureInfo>();
@@ -84,7 +94,7 @@ namespace BMM.Core.ViewModels
             {
                 // Init the languages, chosen by the user
                 var contentLanguages = await _contentLanguageManager.GetContentLanguages();
-                Languages.ReplaceWith(contentLanguages.Select(code => new CultureInfo(code)));
+                Languages.ReplaceWith(contentLanguages.Select(code => _cultureInfoRepository.Get(code)));
 
                 RefreshAvailableContentLanguages();
             }
@@ -100,11 +110,11 @@ namespace BMM.Core.ViewModels
 
             foreach (var languageIso in languages)
             {
-                // Skip language-independent content. Every one wants to listen to instrumental songs, right? So we add it as fixed value.
+                // Skip language-independent content. Everybody wants to listen to instrumental songs, right? So we add it as fixed value.
                 if (languageIso == ContentLanguageManager.LanguageIndependentContent)
                     continue;
 
-                _availableLanguages.Add(new CultureInfo(languageIso));
+                _availableLanguages.Add(_cultureInfoRepository.Get(languageIso));
             }
 
             _availableLanguages.Sort((x, y) => string.CompareOrdinal(x.NativeName, y.NativeName));

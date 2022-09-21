@@ -4,6 +4,7 @@ using System.Reactive.Linq;
 using Akavache;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Region.Interfaces;
 using MvvmCross;
 using MvvmCross.Plugin.JsonLocalization;
 
@@ -12,17 +13,22 @@ namespace BMM.Core.Implementations.Languages
     public class AppLanguageProvider : IAppLanguageProvider
     {
         private readonly IBlobCache _storage;
+        private readonly ICultureInfoRepository _cultureInfoRepository;
         private readonly EnvironmentLanguageReader _environmentLanguageReader;
 
-        public AppLanguageProvider(IBlobCache storage, EnvironmentLanguageReader environmentLanguageReader)
+        public AppLanguageProvider(
+            IBlobCache storage,
+            ICultureInfoRepository cultureInfoRepository,
+            EnvironmentLanguageReader environmentLanguageReader)
         {
             _storage = storage;
+            _cultureInfoRepository = cultureInfoRepository;
             _environmentLanguageReader = environmentLanguageReader;
         }
 
         public void InitializeAtStartup(string language)
         {
-            var culture = new CultureInfo(language);
+            var culture = _cultureInfoRepository.Get(language);
             CultureInfo.DefaultThreadCurrentUICulture = culture;
             CultureInfo.CurrentUICulture = culture;
         }

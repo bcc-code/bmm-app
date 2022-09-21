@@ -10,6 +10,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
+using BMM.Core.Implementations.Region.Interfaces;
 using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.Player
@@ -18,10 +19,14 @@ namespace BMM.Core.GuardedActions.Player
     {
         private const string SangtekstRelationName = "Sangtekst";
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
+        private readonly ICultureInfoRepository _cultureInfoRepository;
 
-        public UpdateExternalRelationsAction(IFirebaseRemoteConfig firebaseRemoteConfig)
+        public UpdateExternalRelationsAction(
+            IFirebaseRemoteConfig firebaseRemoteConfig,
+            ICultureInfoRepository cultureInfoRepository)
         {
             _firebaseRemoteConfig = firebaseRemoteConfig;
+            _cultureInfoRepository = cultureInfoRepository;
         }
         
         private IPlayerViewModel PlayerViewModel => this.GetDataContext();
@@ -34,7 +39,7 @@ namespace BMM.Core.GuardedActions.Player
                 return Task.CompletedTask;
 
             if (currentTrack.Language != ContentLanguageManager.LanguageIndependentContent)
-                PlayerViewModel.TrackLanguage = new CultureInfo(currentTrack.Language).NativeName;
+                PlayerViewModel.TrackLanguage = _cultureInfoRepository.Get(currentTrack.Language).NativeName;
             
             PlayerViewModel.HasExternalRelations = currentTrack.Relations != null &&
                                                    currentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
