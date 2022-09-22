@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
@@ -34,7 +35,6 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         private readonly IMvxMessenger _messenger;
         private readonly IBlobCache _localStorage;
         private readonly IExceptionHandler _exceptionHandler;
-        private readonly StreakUpdater _updater = new StreakUpdater();
         private readonly IAnalytics _analytics;
         private readonly IUserStorage _userStorage;
         private ListeningStreak _latestStreak;
@@ -70,7 +70,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         {
             if (_latestStreak == null || message.CurrentTrack == null ||
                 message.CurrentTrack.Id != _latestStreak.TodaysFraKaareTrackId || DateTime.UtcNow >= _latestStreak.EligibleUntil.ToUniversalTime() ||
-                _updater.IsTodayAlreadyListened(_latestStreak))
+                _latestStreak.IsTodayAlreadyListened())
             {
                 _minListeningTimer?.Dispose();
                 _minListeningTimer = null;
@@ -112,7 +112,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
 
         private async Task<bool> UpdateStreakIfListened(ITrackModel track, Func<PlayMeasurements> measurementsFactory)
         {
-            if (_latestStreak != null && track?.Id == _latestStreak.TodaysFraKaareTrackId && !_updater.IsTodayAlreadyListened(_latestStreak) &&
+            if (_latestStreak != null && track?.Id == _latestStreak.TodaysFraKaareTrackId && !_latestStreak.IsTodayAlreadyListened() &&
                 DateTime.UtcNow < _latestStreak.EligibleUntil.ToUniversalTime())
             {
                 var measurements = measurementsFactory.Invoke();
@@ -123,7 +123,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                 }
                 if (measurements.Percentage > MinListeningPercentage)
                 {
-                    _updater.MarkTodayAsListened(_latestStreak);
+                    _latestStreak.MarkTodayAsListened();
                     _analytics.LogEvent("mark today as listened",
                         new Dictionary<string, object>
                         {

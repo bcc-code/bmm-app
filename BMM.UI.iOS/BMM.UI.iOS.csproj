@@ -1190,6 +1190,10 @@
     <ImageAsset Include="Resources\Images.xcassets\IconPlaybackSpeed.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\icon_playlist.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\icon_queue.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\Contents.json" />
@@ -1271,11 +1275,7 @@
     <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover_dark.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\icon_next.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PlayMiniIcon.imageset\btn_play_mini%403x.png" />
     <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini.png" />
     <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%402x.png" />
     <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%403x.png" />
@@ -1458,7 +1458,6 @@
     <Folder Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\" />
     <Folder Include="Resources\Colors.xcassets\NotificationColor.colorset\" />
     <Folder Include="Resources\Colors.xcassets\RadioColor.colorset\" />
-    <Folder Include="Resources\Images.xcassets\PlayMiniIcon.imageset\" />
     <Folder Include="Resources\Images.xcassets\PauseMiniIcon.imageset\" />
     <Folder Include="Resources\Images.xcassets\InputSearchIcon.imageset\" />
     <Folder Include="Resources\Images.xcassets\SelectedIcon.imageset\" />

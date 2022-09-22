@@ -16,8 +16,8 @@ namespace BMM.Api.Abstraction
 
         long LastPosition { get; set; }
 
-        DateTime? LastPlayedAtUTC { get; set; }
-        
+        DateTime? LastPlayedAt { get; set; }
+
         TrackMediaFile TrackMediaFile { get; }
     }
 }

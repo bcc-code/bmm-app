@@ -4,6 +4,7 @@ using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using CoreAnimation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
@@ -17,6 +18,7 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext)]
     public partial class ListeningStreakDetailsViewController : BaseViewController<ListeningStreakDetailsViewModel>
     {
+        private bool _isSubtitleVisible;
         private const float AlphaPercentage = 0.5f;
 
         public ListeningStreakDetailsViewController() : base(nameof(ListeningStreakDetailsViewController))
@@ -51,37 +53,37 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
         {
             base.ViewDidLoad();
             var set = this.CreateBindingSet<ListeningStreakDetailsViewController, ListeningStreakDetailsViewModel>();
-            
+
             MondayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayMonday];
             TuesdayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayTuesday];
             WednesdayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayWednesday];
             ThursdayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayThursday];
             FridayLetter.Text = ViewModel.TextSource[Translations.Streak_WeekdayFriday];
-            
+
             set.Bind(TapToCloseView.Tap())
                 .For(v => v.Command)
                 .To(vm => vm.CloseCommand);
 
             set.Bind(Title)
                 .To(vm => vm.TextSource[Translations.Streak_Message]);
-            
+
             set.Bind(Subtitle)
                 .To(vm => vm.ListeningStreak.EligibleUntil)
                 .WithConversion<StreakEligibleUntilMessageTextValueConverter>();
-            
-            set.Bind(Subtitle)
-                .For(v => v.BindVisible())
-                .To(vm => vm.ListeningStreak.EligibleUntil)
+
+            set.Bind(this)
+                .For(v => v.IsSubtitleVisible)
+                .To(vm => vm.ListeningStreak)
                 .WithConversion<StreakEligibleUntilMessageVisibilityValueConverter>();
-                        
+
             set.Bind(DaysInARowLabel)
                 .To(vm => vm.ListeningStreak)
                 .WithConversion<DaysInARowMessageValueConverter>();
-            
+
             set.Bind(PerfectWeeksLabel)
                 .To(vm => vm.ListeningStreak)
                 .WithConversion<PerfectWeekCountValueConverter>();
-            
+
             set.Bind(MondayView)
                 .For(v => v.Alpha)
                 .To(v => v.ListeningStreak.ShowMonday)
@@ -170,7 +172,17 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
             SetThemes();
             set.Apply();
         }
-        
+
+        public bool IsSubtitleVisible
+        {
+            get => _isSubtitleVisible;
+            set
+            {
+                _isSubtitleVisible = value;
+                Subtitle.SetHiddenIfNeeded(!_isSubtitleVisible);
+            }
+        }
+
         private void SetThemes()
         {
             MondayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
@@ -178,7 +190,7 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
             WednesdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
             ThursdayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
             FridayColorView!.Layer.BorderColor = AppColors.PlaceholderColor.CGColor;
-            
+
             Title.ApplyTextTheme(AppTheme.Title1);
             Subtitle.ApplyTextTheme(AppTheme.Subtitle3Label4);
             MondayLetter.ApplyTextTheme(AppTheme.Subtitle3Label1);

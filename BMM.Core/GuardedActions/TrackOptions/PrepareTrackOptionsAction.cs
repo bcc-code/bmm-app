@@ -39,10 +39,10 @@ namespace BMM.Core.GuardedActions.TrackOptions
         GuardedActionWithParameterAndResult<IPrepareTrackOptionsParameters, IList<StandardIconOptionPO>>,
         IPrepareTrackOptionsAction
     {
-        private const string SleepTimerOptionKey = "Selected sleep timer option"; 
-        private const string PlaybackSpeedOptionKey = "Selected playback speed option"; 
+        private const string SleepTimerOptionKey = "Selected sleep timer option";
+        private const string PlaybackSpeedOptionKey = "Selected playback speed option";
         private const string PlaybackSpeedStringFormat = "0.00";
-        
+
         private readonly IConnection _connection;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
         private readonly IMvxMessenger _mvxMessenger;
@@ -87,7 +87,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _analytics = analytics;
             _mediaPlayer = mediaPlayer;
         }
-        
+
         private bool IsSleepTimerOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsSleepTimerEnabled;
         private bool IsPlaybackSpeedOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsPlaybackSpeedEnabled;
 
@@ -98,13 +98,11 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             var sourceVM = parameter.SourceVM;
             var track = (Track)parameter.Track;
-            
+
             bool shouldShowSleepTimerOption = sourceVM is PlayerViewModel && IsSleepTimerOptionAvailable;
             bool shouldShowPlaybackSpeedOption = sourceVM is PlayerViewModel && IsPlaybackSpeedOptionAvailable;
 
             bool isInOnlineMode = _connection.GetStatus() == ConnectionStatus.Online;
-
-            var actionSheet = new ActionSheetConfig();
 
             if (isInOnlineMode && !track.IsLivePlayback)
             {
@@ -142,8 +140,10 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
                 if (DeviceInfo.Platform == DevicePlatform.iOS)
                 {
-                    actionSheet.AddHandled(_bmmLanguageBinder[Translations.UserDialogs_Track_QueueToPlayNext],
-                        async () =>
+                    options.Add(new StandardIconOptionPO(
+                        _bmmLanguageBinder[Translations.UserDialogs_Track_QueueToPlayNext],
+                        ImageResourceNames.IconPlayMini,
+                        new MvxAsyncCommand(async () =>
                         {
                             var success = await mediaPlayer.QueueToPlayNext(track, sourceVM.PlaybackOriginString);
                             if (success)
@@ -158,8 +158,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                             { "track", track.Id }
                                         });
                             }
-                        },
-                        ImageResourceNames.IconPlay);
+                        })));
                 }
 
                 options.Add(
@@ -291,7 +290,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                         }
                                     }
                                 }
-                                
+
                                 if (goToContributorOptions.Any())
                                     await _trackOptionsService.OpenOptions(goToContributorOptions);
                             })));
@@ -322,7 +321,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             return options;
         }
-        
+
         private async Task PlaybackSpeedClickedAction()
         {
             IMvxCommand CreatePlaybackSpeedTapCommand(decimal playbackSpeed)
@@ -342,7 +341,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                 string optionName = playbackSpeed == PlayerConstants.NormalPlaybackSpeed
                     ? _bmmLanguageBinder[Translations.PlayerViewModel_Normal]
                     : $"{playbackSpeed.ToString(PlaybackSpeedStringFormat, CultureInfo.InvariantCulture)}x";
-                    
+
                 return new StandardIconOptionPO(
                     GetPlaybackSpeedOptionTitle(optionName, playbackSpeed),
                     ImageResourceNames.IconPlaybackSpeed,
@@ -383,7 +382,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                         _sleepTimerService.Disable();
                         return;
                     }
-                    
+
                     _sleepTimerService.Set(sleepTimerOption);
                     _analytics.LogEvent(Event.SleepTimerOptionSelected, new Dictionary<string, object>
                     {
@@ -434,12 +433,12 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             return titleStringBuilder.ToString();
         }
-        
+
         private bool IsCurrentSleepTimerOption(SleepTimerOption sleepTimerOption)
         {
             return _sleepTimerService.CurrentSleepTimerOption == sleepTimerOption;
         }
-        
+
         private async Task GoToContributorVM(int id)
         {
             await ClosePlayer();

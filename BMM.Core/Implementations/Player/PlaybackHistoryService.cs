@@ -31,7 +31,7 @@ namespace BMM.Core.Implementations.Player
             _cache = cache;
         }
 
-        public async Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAtUTC)
+        public async Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAt)
         {
             try
             {
@@ -39,7 +39,7 @@ namespace BMM.Core.Implementations.Player
 
                 mediaTrack = ((Track)mediaTrack).CopyBySerialization();
                 mediaTrack.LastPosition = lastPosition;
-                mediaTrack.LastPlayedAtUTC = playedAtUTC;
+                mediaTrack.LastPlayedAt = playedAt;
 
                 await GetAll();
 
@@ -60,7 +60,7 @@ namespace BMM.Core.Implementations.Player
                 if (_allEntries.Count >= MaxEntries)
                     _allEntries.RemoveAt(0);
 
-                _allEntries.Add(new PlaybackHistoryEntry((Track) mediaTrack, lastPosition, playedAtUTC));
+                _allEntries.Add(new PlaybackHistoryEntry((Track) mediaTrack, lastPosition, playedAt));
 
                 await _cache.InsertObject(
                     StorageKeys.PlaybackHistory,

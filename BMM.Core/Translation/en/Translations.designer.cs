@@ -34,7 +34,8 @@ namespace BMM.Core.Translation
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
 		public const string Streak_PerfectWeekCountPlural = nameof(Streak_PerfectWeekCountPlural);
 		public const string Streak_PerfectWeekCountNone = nameof(Streak_PerfectWeekCountNone);
-		public const string Streak_EligibleUntilMessage = nameof(Streak_EligibleUntilMessage);
+		public const string Streak_EligibleUntilHoursAndMinutesMessage = nameof(Streak_EligibleUntilHoursAndMinutesMessage);
+		public const string Streak_EligibleUntilMinutesOnlyMessage = nameof(Streak_EligibleUntilMinutesOnlyMessage);
 		public const string Streak_DaysInARowSingular = nameof(Streak_DaysInARowSingular);
 		public const string Streak_DaysInARowPlural = nameof(Streak_DaysInARowPlural);
 		public const string Streak_WeekdayMonday = nameof(Streak_WeekdayMonday);
