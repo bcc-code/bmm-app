@@ -114,12 +114,6 @@
     "Messages": "Przemowy",
     "Music": "Muzyka"
   },
-  "AslaksenNotification": {
-    "Title": "Słowa wiary",
-    "Message": "Czy chcesz teraz odpowiedzieć na pytania?",
-    "ButtonYes": "Tak",
-    "ButtonCancel": "Później"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Wykonawcy",
     "SearchHint": "Szukaj"
