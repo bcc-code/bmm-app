@@ -114,12 +114,6 @@
     "Messages": "Recent Messages",
     "Music": "Recent Music"
   },
-  "AslaksenNotification": {
-    "Title": "Думи на вярата",
-    "Message": "Желаеш ли да отговориш на въпросите?",
-    "ButtonYes": "Да",
-    "ButtonCancel": "По-късно"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Сътрудници",
     "SearchHint": "Търси"
