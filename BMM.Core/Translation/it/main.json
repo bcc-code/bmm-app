@@ -114,12 +114,6 @@
     "Messages": "Recent Messages",
     "Music": "Recent Music"
   },
-  "AslaksenNotification": {
-    "Title": "La parola della fede",
-    "Message": "Vuoi rispondere alle domande ora?",
-    "ButtonYes": "Sì",
-    "ButtonCancel": "Più tardi"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Collaboratori",
     "SearchHint": "Cerca"
