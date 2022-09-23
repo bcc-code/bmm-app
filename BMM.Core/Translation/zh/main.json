@@ -114,12 +114,6 @@
     "Messages": "Recent Messages",
     "Music": "Recent Music"
   },
-  "AslaksenNotification": {
-    "Title": "Words of faith",
-    "Message": "Do you want to answer the questions now?",
-    "ButtonYes": "Yes",
-    "ButtonCancel": "Later"
-  },
   "ExploreContributorsViewModel": {
     "Title": "派遣国",
     "SearchHint": "搜索"
