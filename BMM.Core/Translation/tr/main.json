@@ -114,12 +114,6 @@
     "Messages": "Recent Messages",
     "Music": "Recent Music"
   },
-  "AslaksenNotification": {
-    "Title": "İman sözü",
-    "Message": "Soruları şimdi cevaplamak ister misin?",
-    "ButtonYes": "Evet",
-    "ButtonCancel": "Sonra"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Konuşmacılar",
     "SearchHint": "Ara"
