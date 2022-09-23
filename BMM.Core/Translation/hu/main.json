@@ -114,12 +114,6 @@
     "Messages": "Legújabb üzenetek",
     "Music": "Legújabb zene"
   },
-  "AslaksenNotification": {
-    "Title": "Hit szava",
-    "Message": "Szeretnél most a kérdésekre válaszolni?",
-    "ButtonYes": "Igen",
-    "ButtonCancel": "Később"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Közreműködők",
     "SearchHint": "Keresés"
