@@ -114,12 +114,6 @@
     "Messages": "Ultimele vorbiri",
     "Music": "Ultimele cântări"
   },
-  "AslaksenNotification": {
-    "Title": "Cuvintele credinței",
-    "Message": "Dorești să răspunzi acum la întrebări?",
-    "ButtonYes": "Da",
-    "ButtonCancel": "Mai târziu"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Contribuitori",
     "SearchHint": "Caută"
