@@ -25,11 +25,6 @@ namespace BMM.Core.Implementations.Notifications
                         var ids = message.GetIntList(PodcastNotification.TrackIdsKey);
                         return new PodcastNotification(message.GetInt(PodcastNotification.PodcastIdKey), ids);
                     }
-                    case WordOfFaithNotification.Type:
-                    {
-                        var url = message.GetString(WordOfFaithNotification.UrlKey);
-                        return new WordOfFaithNotification {Title = message.Title, Message = message.Body, Url = url};
-                    }
                     case GeneralNotification.Type:
                     {
                         var url = message.GetString(GeneralNotification.ActionUrlKey);

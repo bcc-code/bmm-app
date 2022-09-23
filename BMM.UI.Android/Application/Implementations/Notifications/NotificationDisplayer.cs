@@ -36,11 +36,6 @@ namespace BMM.UI.Droid.Application.Implementations.Notifications
                 var intent = new Intent(context, typeof(MainActivity));
                 intent.AddFlags(ActivityFlags.ClearTop);
 
-                if (notification is WordOfFaithNotification aslaksen)
-                {
-                    intent = new Intent(Intent.ActionView, Uri.Parse(aslaksen.Url));
-                }
-
                 var pendingIntent = PendingIntent.GetActivity(context, 0, intent, PendingIntentsUtils.GetImmutable());
                 var notificationBuilder = new NotificationCompat.Builder(context, notification.ChannelId);
                 notificationBuilder
