@@ -114,12 +114,6 @@
     "Messages": "Recent Messages",
     "Music": "Recent Music"
   },
-  "AslaksenNotification": {
-    "Title": "Besede vere",
-    "Message": "Ali želiš sedaj odgovoriti na vprašanja? ",
-    "ButtonYes": "Ja",
-    "ButtonCancel": "Kasneje"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Ustvarjalci",
     "SearchHint": "Išči"
