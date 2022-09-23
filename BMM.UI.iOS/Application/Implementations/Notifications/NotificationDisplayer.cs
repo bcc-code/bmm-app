@@ -45,22 +45,7 @@ namespace BMM.UI.iOS
         private void DisplayMessageWindow(LocalNotification notification)
         {
             var message = UIAlertController.Create(notification.Title, notification.Message, UIAlertControllerStyle.Alert);
-
-            if (notification is WordOfFaithNotification link)
-            {
-                message.AddAction(UIAlertAction.Create(link.CancelText, UIAlertActionStyle.Cancel, null));
-                message.AddAction(UIAlertAction.Create(link.YesText,
-                    UIAlertActionStyle.Default,
-                    action =>
-                    {
-                        Mvx.IoCProvider.Resolve<IUriOpener>().OpenUri(new Uri(link.Url));
-                    }));
-            }
-            else
-            {
-                message.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
-            }
-
+            message.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
             var viewController = ((Presenter)_viewPresenter).CurrentRootViewController;
             viewController.PresentViewController(message, true, null);
         }
@@ -73,16 +58,6 @@ namespace BMM.UI.iOS
                 AlertBody = notification.Message,
                 SoundName = UILocalNotification.DefaultSoundName
             };
-
-            if (notification is WordOfFaithNotification link)
-            {
-                var userInfo = new NSMutableDictionary
-                {
-                    [WordOfFaithNotification.UrlKey] = (NSString)link.Url,
-                    [LocalNotification.TypeKey] = (NSString)WordOfFaithNotification.Type
-                };
-                localNotification.UserInfo = userInfo;
-            }
 
             UIApplication.SharedApplication.PresentLocalNotificationNow(localNotification);
         }

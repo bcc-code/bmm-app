@@ -90,10 +90,6 @@ namespace BMM.Core.Translation
 		public const string ExploreNewestViewModel_CountdownHours = nameof(ExploreNewestViewModel_CountdownHours);
 		public const string ExploreNewestViewModel_Messages = nameof(ExploreNewestViewModel_Messages);
 		public const string ExploreNewestViewModel_Music = nameof(ExploreNewestViewModel_Music);
-		public const string AslaksenNotification_Title = nameof(AslaksenNotification_Title);
-		public const string AslaksenNotification_Message = nameof(AslaksenNotification_Message);
-		public const string AslaksenNotification_ButtonYes = nameof(AslaksenNotification_ButtonYes);
-		public const string AslaksenNotification_ButtonCancel = nameof(AslaksenNotification_ButtonCancel);
 		public const string ExploreContributorsViewModel_Title = nameof(ExploreContributorsViewModel_Title);
 		public const string ExploreContributorsViewModel_SearchHint = nameof(ExploreContributorsViewModel_SearchHint);
 		public const string HelpFeedbackViewModel_Title = nameof(HelpFeedbackViewModel_Title);

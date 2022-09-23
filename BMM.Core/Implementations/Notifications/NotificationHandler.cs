@@ -1,5 +1,4 @@
 ﻿using BMM.Api.Framework;
-using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Notifications.Data;
 using MvvmCross;
 
@@ -9,7 +8,6 @@ namespace BMM.Core.Implementations.Notifications
     /// Notifications:
     /// - PodcastNotification (RemoteNotification)
     /// - GeneralNotification (RemoteNotification)
-    /// - WordOfFaithNotification (LocalNotification, MessageWindow)
     /// Possible problems:
     /// - Android does not support MessageWindows yet
     /// </summary>
@@ -33,10 +31,6 @@ namespace BMM.Core.Implementations.Notifications
             else if (notification is GeneralNotification generalNotification)
             {
                 HandleRemoteNotification(generalNotification, type);
-            }
-            else if (notification is WordOfFaithNotification wofNotification)
-            {
-                HandleLocalNotification(wofNotification, type);
             }
             else
             {
@@ -71,12 +65,6 @@ namespace BMM.Core.Implementations.Notifications
         {
             var notification =  _parser.ParseNotification(message);
             HandleNotification(notification, type);
-        }
-
-        private void HandleLocalNotification<T>(T notification, NotificationType type) where T : LocalNotification
-        {
-            var receiver = Mvx.IoCProvider.Resolve<IReceiveLocal<T>>();
-            receiver.UserClickedLocalNotification(notification);
         }
 
         private void HandleRemoteNotification<T>(T notification, NotificationType type) where T : RemoteNotification

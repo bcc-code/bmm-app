@@ -23,8 +23,6 @@
         public static readonly string LatestListeningStreak = "latest_listening_streak";
 
         public static readonly string ListenedTracks = "listened_tracks";
-        public static readonly string NotifiedAslaksenTracks = "notified_aslaksen_tracks";
-        public static readonly string LastAslaksenNotification = "last_aslaksen_notification";
 
         public static readonly string LocalPlaylists = "local_playlists";
 

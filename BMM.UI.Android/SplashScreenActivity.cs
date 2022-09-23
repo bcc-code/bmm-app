@@ -18,8 +18,7 @@ namespace BMM.UI.Droid
     [IntentFilter(new[]
         {
             PodcastNotification.Type,
-            GeneralNotification.Type,
-            WordOfFaithNotification.Type
+            GeneralNotification.Type
         },
         Categories = new[]
         {
