@@ -114,12 +114,6 @@
     "Messages": "Lo más reciente",
     "Music": "Música reciente"
   },
-  "AslaksenNotification": {
-    "Title": "Palabras de fe",
-    "Message": "¿Deseas responder ahora las preguntas?",
-    "ButtonYes": "Sí",
-    "ButtonCancel": "Más Tarde"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Colaboradores",
     "SearchHint": "Buscar"
