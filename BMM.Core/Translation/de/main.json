@@ -114,12 +114,6 @@
     "Messages": "Neue Reden",
     "Music": "Neue Musik"
   },
-  "AslaksenNotification": {
-    "Title": "Glaubensworte",
-    "Message": "Willst du jetzt die Fragen beantworten?",
-    "ButtonYes": "Ja",
-    "ButtonCancel": "Später"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Mitwirkende",
     "SearchHint": "Suchen"
