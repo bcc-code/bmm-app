@@ -114,12 +114,6 @@
     "Messages": "Recent Messages",
     "Music": "Recent Music"
   },
-  "AslaksenNotification": {
-    "Title": "Слово Веры",
-    "Message": "Хотел бы ты ответить на вопросы сейчас?",
-    "ButtonYes": "Да",
-    "ButtonCancel": "Позже"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Исполнители",
     "SearchHint": "Поиск"
