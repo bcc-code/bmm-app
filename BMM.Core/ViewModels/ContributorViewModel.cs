@@ -65,7 +65,7 @@ namespace BMM.Core.ViewModels
         {
             _shufflePlayCommand = new MvxAsyncCommand(async () =>
             {
-                await shuffleContributorAction.ExecuteGuarded(new ShuffleContributorActionParameter(_id, PlaybackOriginString));
+                await shuffleContributorAction.ExecuteGuarded(new ShuffleActionParameter(_id, PlaybackOriginString));
             });
             
             TrackInfoProvider = new CustomTrackInfoProvider(TrackInfoProvider,

@@ -3,7 +3,7 @@ using BMM.Core.Models.Contributors.Interfaces;
 
 namespace BMM.Core.GuardedActions.Contributors.Interfaces
 {
-    public interface IShuffleContributorAction : IGuardedActionWithParameter<IShuffleActionParameter>
+    public interface IShufflePodcastAction : IGuardedActionWithParameter<IShuffleActionParameter>
     {
     }
 }

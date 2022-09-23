@@ -9,25 +9,25 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 
 namespace BMM.Core.GuardedActions.Contributors
 {
-    public class ShuffleContributorAction
+    public class ShufflePodcastAction
         : GuardedActionWithParameter<IShuffleActionParameter>,
-          IShuffleContributorAction
+          IShufflePodcastAction
     {
-        private readonly IContributorClient _contributorClient;
+        private readonly IPodcastClient _podcastClient;
         private readonly IMediaPlayer _mediaPlayer;
 
-        public ShuffleContributorAction(
-            IContributorClient contributorClient,
-            IMediaPlayer mediaPlayer)
+        public ShufflePodcastAction(
+            IMediaPlayer mediaPlayer,
+            IPodcastClient podcastClient)
         {
-            _contributorClient = contributorClient;
             _mediaPlayer = mediaPlayer;
+            _podcastClient = podcastClient;
         }
         
         protected override async Task Execute(IShuffleActionParameter parameter)
         {
-            var randomTracks = await _contributorClient.GetRandomTracks(parameter.Id);
-            var tracksToPlay = randomTracks
+            var podcastTracks = await _podcastClient.GetShuffle(parameter.Id);
+            var tracksToPlay = podcastTracks
                 .OfType<IMediaTrack>()
                 .ToList();
             await _mediaPlayer.Play(tracksToPlay, tracksToPlay.First(), parameter.PlaybackOrigin);

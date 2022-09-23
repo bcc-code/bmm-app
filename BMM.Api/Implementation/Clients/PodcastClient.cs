@@ -51,10 +51,11 @@ namespace BMM.Api.Implementation.Clients
             return Get<Track>(uri);
         }
 
-        public Task<IList<Track>> GetShuffle(int podcastId)
+        public Task<IList<Track>> GetShuffle(int podcastId, int size = ApiConstants.LoadMoreSize)
         {
             var uri = new UriTemplate(ApiUris.Shuffle);
             uri.SetParameter("id", podcastId);
+            uri.SetParameter("size", size);
             return Get<IList<Track>>(uri);
         }
     }

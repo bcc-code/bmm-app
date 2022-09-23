@@ -29,7 +29,7 @@ namespace BMM.UI.iOS
 		UIKit.NSLayoutConstraint OfflineBannerViewHeightConstraint { get; set; }
 
 		[Outlet]
-		UIKit.UIButton PlayButton { get; set; }
+		UIKit.UIButton ShuffleButton { get; set; }
 
 		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView PodcastCoverImageView { get; set; }
@@ -70,9 +70,9 @@ namespace BMM.UI.iOS
 				OfflineBannerViewHeightConstraint = null;
 			}
 
-			if (PlayButton != null) {
-				PlayButton.Dispose ();
-				PlayButton = null;
+			if (ShuffleButton != null) {
+				ShuffleButton.Dispose ();
+				ShuffleButton = null;
 			}
 
 			if (PodcastCoverImageView != null) {

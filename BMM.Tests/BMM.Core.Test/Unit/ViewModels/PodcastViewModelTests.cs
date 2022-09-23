@@ -6,6 +6,7 @@ using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Contributors.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
@@ -41,6 +42,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IBMMLanguageBinder> _languageBinder;
         private Mock<IViewModelAwareViewPresenter> _viewPresenter;
         private Mock<IDownloadedTracksOnlyFilter> _downloadedOnlyFilter;
+        private Mock<IShufflePodcastAction> _shufflePodcastAction;
         private IBlobCache _inMemoryCache;
 
         [SetUp]
@@ -58,6 +60,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             _inMemoryCache = new InMemoryBlobCache();
             _viewPresenter = new Mock<IViewModelAwareViewPresenter>();
             _downloadedOnlyFilter = new Mock<IDownloadedTracksOnlyFilter>();
+            _shufflePodcastAction = new Mock<IShufflePodcastAction>();
             var _mainThreadDispatcher = new Mock<IMvxMainThreadDispatcher>();
             var _mainThreadAsyncDispatcher = new Mock<IMvxMainThreadAsyncDispatcher>();
 
@@ -98,7 +101,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _userDialogs.Object,
                 _toastDisplayer.Object,
                 _downloadedOnlyFilter.Object,
-                _networkSettings.Object);
+                _networkSettings.Object,
+                _shufflePodcastAction.Object);
 
             viewModel.TextSource = _languageBinder.Object;
             return viewModel;
