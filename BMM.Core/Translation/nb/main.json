@@ -114,12 +114,6 @@
     "Messages": "Nye taler",
     "Music": "Ny musikk"
   },
-  "AslaksenNotification": {
-    "Title": "Troens ord",
-    "Message": "Ønsker du å svare på spørsmålene nå?",
-    "ButtonYes": "Ja",
-    "ButtonCancel": "Senere"
-  },
   "ExploreContributorsViewModel": {
     "Title": "Bidragsytere",
     "SearchHint": "Søk"
