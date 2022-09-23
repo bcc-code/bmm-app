@@ -6,6 +6,7 @@ using Acr.UserDialogs;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Contributors.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Caching;
@@ -17,6 +18,7 @@ using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
+using BMM.Core.Models.Contributors;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.MyContent;
@@ -36,9 +38,11 @@ namespace BMM.Core.ViewModels
         private readonly IGlobalMediaDownloader _mediaDownloader;
         private readonly IUserDialogs _userDialogs;
         private readonly INetworkSettings _networkSettings;
+        private readonly IShufflePodcastAction _shufflePodcastAction;
         private readonly IToastDisplayer _toastDisplayer;
         private readonly WeekOfTheYearChapterStrategy _weekOfTheYearChapterStrategy = new WeekOfTheYearChapterStrategy();
         private readonly AslaksenTagChapterStrategy _aslaksenTagChapterStrategy = new AslaksenTagChapterStrategy();
+        private readonly MvxAsyncCommand _shufflePodcastCommand;
 
         protected MvxSubscriptionToken DownloadedEpisodeRemovedToken;
 
@@ -49,9 +53,9 @@ namespace BMM.Core.ViewModels
         public bool UseCircularImage => true;
 
         public bool ShowFollowButtons => true;
-        public bool ShowShuffleOrResumeButton => false;
+        public bool ShowShuffleOrResumeButton => true;
         public string ShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
-        public bool ShowPlayButton => true;
+        public bool ShowPlayButton => false;
 
         public bool ShowTrackCount => false;
 
@@ -113,7 +117,8 @@ namespace BMM.Core.ViewModels
             IUserDialogs userDialogs,
             IToastDisplayer toastDisplayer,
             IDownloadedTracksOnlyFilter downloadedOnlyFilter,
-            INetworkSettings networkSettings)
+            INetworkSettings networkSettings,
+            IShufflePodcastAction shufflePodcastAction)
             : base(downloadedOnlyFilter)
         {
             _podcastDownloader = podcastDownloader;
@@ -122,6 +127,12 @@ namespace BMM.Core.ViewModels
             _userDialogs = userDialogs;
             _toastDisplayer = toastDisplayer;
             _networkSettings = networkSettings;
+            
+            _shufflePodcastCommand = new MvxAsyncCommand(async () =>
+                {
+                    await shufflePodcastAction.ExecuteGuarded(new ShuffleActionParameter(Podcast.Id, PlaybackOriginString));
+                });
+            
             ToggleFollowingCommand = new ExceptionHandlingCommand(async () => await ToggleFollowing());
 
             var viewPresenter = Mvx.IoCProvider.Resolve<IViewModelAwareViewPresenter>();
@@ -162,6 +173,8 @@ namespace BMM.Core.ViewModels
                 await RaisePropertyChanged(() => Documents);
             });
         }
+
+        public override IMvxCommand ShufflePlayCommand => _shufflePodcastCommand;
 
         public override async Task Load()
         {

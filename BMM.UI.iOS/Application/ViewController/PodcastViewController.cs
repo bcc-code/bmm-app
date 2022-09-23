@@ -35,7 +35,7 @@ namespace BMM.UI.iOS
             TitelLabel.ApplyTextTheme(AppTheme.Heading2);
             FollowButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
             FollowingButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
-            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
 
             var source = new NotSelectableDocumentsTableViewSource(PodcastTable);
 
@@ -58,8 +58,8 @@ namespace BMM.UI.iOS
             set.Bind(FollowButton).To(vm => vm.ToggleFollowingCommand);
             set.Bind(FollowButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.PodcastViewModel_Follow);
 
-            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.DocumentsViewModel_Play);
-            set.Bind(PlayButton).To(vm => vm.PlayCommand);
+            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_ShufflePlay);
+            set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
 
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);

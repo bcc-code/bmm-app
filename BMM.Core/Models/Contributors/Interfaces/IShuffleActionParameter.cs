@@ -1,8 +1,8 @@
 namespace BMM.Core.Models.Contributors.Interfaces
 {
-    public interface IShuffleContributorActionParameter
+    public interface IShuffleActionParameter
     {
-        int ContributorId { get; }
+        int Id { get; }
         string PlaybackOrigin { get; }
     }
 }

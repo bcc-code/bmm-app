@@ -42,7 +42,7 @@
         public const string PodcastTracks = "podcast/{id}/track/{?size,from}";
         public const string PodcastCover = "podcast/{id}/cover/";
         public const string PodcastRandom = "podcast/{id}/random";
-        public const string Shuffle = "podcast/{id}/shuffle";
+        public const string Shuffle = "podcast/{id}/shuffle{?size}";
 
         public const string Playlists = "playlist";
         public const string Playlist = "playlist/{id}";
