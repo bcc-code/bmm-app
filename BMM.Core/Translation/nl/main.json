@@ -114,12 +114,6 @@
     "Messages": "Recente berichten",
     "Music": "Recente muziek"
   },
-  "AslaksenNotification": {
-    "Title": "Woorden van geloof",
-    "Message": "Wil je de vraag nu beantwoorden?",
-    "ButtonYes": "Ja",
-    "ButtonCancel": "Later "
-  },
   "ExploreContributorsViewModel": {
     "Title": "Bijdragers",
     "SearchHint": "Zoek"
