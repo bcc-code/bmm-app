@@ -56,7 +56,7 @@
             style="@style/Subtitle3_Label4"
             local:MvxBind="
                 Text StreakEligibleUntilMessageText(ListeningStreak.EligibleUntil);
-                Visibility Visibility(StreakEligibleUntilMessageVisibility(ListeningStreak.EligibleUntil)) "
+                Visibility Visibility(StreakEligibleUntilMessageVisibility(ListeningStreak)) "
             local:layout_constraintLeft_toLeftOf="parent"
             local:layout_constraintRight_toRightOf="parent"
             local:layout_constraintTop_toBottomOf="@+id/title" />
@@ -276,7 +276,7 @@
             local:layout_constraintEnd_toEndOf="@+id/VerticalSeparator"
             local:layout_constraintBottom_toBottomOf="parent"
             local:layout_constraintTop_toBottomOf="@id/day_streak_boxes" />
-        
+
         <TextView
             android:id="@+id/PerfectWeeks"
             android:layout_width="@dimen/match_constraint"

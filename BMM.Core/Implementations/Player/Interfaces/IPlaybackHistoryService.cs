@@ -8,7 +8,7 @@ namespace BMM.Core.Implementations.Player.Interfaces
 {
     public interface IPlaybackHistoryService
     {
-        Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAtUTC);
+        Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAt);
         Task<IReadOnlyList<PlaybackHistoryEntry>> GetAll();
     }
 }

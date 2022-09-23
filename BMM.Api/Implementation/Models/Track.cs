@@ -57,7 +57,7 @@ namespace BMM.Api.Implementation.Models
 
         public long LastPosition { get; set; }
 
-        public DateTime? LastPlayedAtUTC { get; set; }
+        public DateTime? LastPlayedAt { get; set; }
 
         public bool Equals(Track other)
         {
@@ -68,7 +68,7 @@ namespace BMM.Api.Implementation.Models
 
             return GetUniqueKey == other.GetUniqueKey
                    && LastPosition == other.LastPosition
-                   && LastPlayedAtUTC == other.LastPlayedAtUTC
+                   && LastPlayedAt == other.LastPlayedAt
                    && ArtworkUri == other.ArtworkUri;
         }
 
@@ -90,7 +90,7 @@ namespace BMM.Api.Implementation.Models
             {
                 int hashCode = GetUniqueKey.GetHashCode();
                 hashCode = (hashCode * 397) ^ LastPosition.GetHashCode();
-                hashCode = (hashCode * 397) ^ (LastPlayedAtUTC != null ? LastPlayedAtUTC.Value.ToBinary().GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (LastPlayedAt != null ? LastPlayedAt.Value.ToBinary().GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (ArtworkUri != null ? ArtworkUri.GetHashCode() : 0);
                 return hashCode;
             }

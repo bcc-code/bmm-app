@@ -17,7 +17,11 @@ namespace BMM.Api.Framework.HTTP
             }
 
             // Try to parse the response into the requested object
-            var settings = new JsonSerializerSettings {ContractResolver = new UnderscoreMappingResolver()};
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new UnderscoreMappingResolver(),
+                DateTimeZoneHandling = DateTimeZoneHandling.Utc
+            };
 
             var jsonString = await response.Content.ReadAsStringAsync();
 

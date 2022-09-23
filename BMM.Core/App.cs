@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Reflection;
-using Acr.UserDialogs;
 using Akavache;
 using BMM.Api;
 using BMM.Api.Abstraction;
@@ -164,13 +163,13 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContentLanguageManager, ContentLanguageManager>();
             Mvx.IoCProvider.RegisterType<IAppLanguageProvider, AppLanguageProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICultureInfoRepository, CultureInfoRepository>();
-            
+
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IJwtTokenReader, JwtTokenReader>();
-            
+
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAccessTokenProvider, AccessTokenProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAuthorizationHeaderProvider, BearerTokenAuthorizationHeaderProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ISyncAuthorizationHeaderProvider, BearerTokenSyncAuthorizationHeaderProvider>();
-            
+
             Mvx.IoCProvider.RegisterType<IMediaRequestHttpHeaders, MediaRequestHttpHeaders>();
 
             Mvx.IoCProvider.RegisterType<IRequestHandlerFactory, RequestHandlerFactory>();

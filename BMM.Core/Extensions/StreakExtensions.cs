@@ -1,11 +1,11 @@
 ﻿using System;
 using BMM.Api.Implementation.Models;
 
-namespace BMM.Core.Implementations.PlayObserver.Streak
+namespace BMM.Core.Extensions
 {
-    class StreakUpdater
+    public static class StreakExtensions
     {
-        public bool IsTodayAlreadyListened(ListeningStreak streak)
+        public static bool IsTodayAlreadyListened(this ListeningStreak streak)
         {
             switch (streak.DayOfTheWeek)
             {
@@ -24,7 +24,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             }
         }
 
-        public void MarkTodayAsListened(ListeningStreak streak)
+        public static void MarkTodayAsListened(this ListeningStreak streak)
         {
             streak.LastChanged = DateTime.UtcNow;
             streak.DaysInARow++;
