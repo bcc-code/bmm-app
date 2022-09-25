@@ -28,7 +28,7 @@
     "DailyMessage": "Mindennapi üzenet"
   },
   "Streak": {
-    "Message": "E heti sorozatod.",
+    "Message": "E heti sorozatod",
     "MessagePerfect": "Perfekt hét. Szép munka!",
     "PerfectWeekCountSingular": "{0} perfekt hét",
     "PerfectWeekCountPlural": "{0} perfekt hetek",
@@ -190,7 +190,7 @@
     "Title": "Kedvencek",
     "DownloadedContent": "Letöltött tartalom",
     "FollowedPodcasts": "Podcastok",
-    "MyTracks": "Az én-m sín",
+    "MyTracks": "Zeneszámaim",
     "MyPlaylists": "Lejátszási listám",
     "SharedWithMe": "Velem megosztva",
     "ByFormat": "{0} által"
@@ -201,7 +201,7 @@
     "EmptySubline": "Kövesse a Podcast megnyitásával a Podcast, és kattintson az alábbi gombra."
   },
   "MyTracksViewModel": {
-    "Title": "Az én-m sín",
+    "Title": "Zeneszámaim",
     "ShufflePlay": "Véletlenszerű lejátszás",
     "AvailableOffline": "Offline elérhető",
     "AvailableOfflineDownload": "Lejátszási lista letöltése",
@@ -214,7 +214,7 @@
   "DownloadedContentViewModel": {
     "Title": "Letöltött tartalom",
     "FollowedPodcasts": "Podcastok",
-    "MyTracks": "Az én-m sín",
+    "MyTracks": "Zeneszámaim",
     "EmptyTitle": "Nincs letöltött tartalom",
     "EmptySubline": "Töltsd le a lejátszási listát vagy kövesd a podcastot, ha offline állapotban elérhető."
   },
@@ -249,7 +249,7 @@
   "PlayerViewModel": {
     "Title": "Nincs lejátszás",
     "PlayingCount": "{0} / {1}",
-    "ViewLyrics": "Ének szövege",
+    "ViewLyrics": "Énekszöveg",
     "SleepTimer": "Ebresztő óra",
     "Minutes": "{0} perc",
     "Hour": "{0} óra",
@@ -278,7 +278,7 @@
     "HeadlineSettings": "Beállítások",
     "OptionAutoplayHeader": "Automatikus lejátszás",
     "OptionAutoplayText": "Zene lejátszása a mai “Fra Kåre” adás meghallgatása után",
-    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakHeader": "Streak a kezdőképernyőn",
     "OptionStreakText": "Hallgatási statisztika megmutatása a főképernyőn",
     "OptionEnablePushHeader": "Értesítések engedélyezése",
     "OptionPushNotifications": "Push-értesítések",
@@ -322,7 +322,7 @@
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} Szám",
-    "PluralTracksLoaded": "{0} szám be van töltve",
+    "PluralTracksLoaded": "{0} szám van betöltve",
     "Download": "Letöltés",
     "Shuffle": "Keverés",
     "Play": "Lejátszás"
@@ -398,9 +398,9 @@
   "UserDialogs": {
     "Track.AddToPlaylist": "Hozzáadás lejátszási listához",
     "Track.DeleteFromPlaylist": "Eltávolítás lejátszási listáról",
-    "Track.AddToMyTracks": "Az én-m szám hozzáadása",
-    "Track.RemoveFromMyTracks": "Az én-m sín eltávolítása",
-    "Track.AddedToMyTracks": "Hozzáadott-hoz az én-m sín",
+    "Track.AddToMyTracks": "Hozzáadás a zeneszámaimhoz",
+    "Track.RemoveFromMyTracks": "Eltávolítás a zeneszámaimből",
+    "Track.AddedToMyTracks": "Hozzáadva a zeneszámaimhoz",
     "Track.RemovedFromMyTracks": "Az én-m sín eltávolítása",
     "Track.FailedToRemoveFromMyTracks": "Hiba történt a cím eltávolításakor a címeimből",
     "Track.AddToQueue": "Hozzáadás várólistához",
@@ -485,7 +485,7 @@
     "System": "Rendszerbeállítások követése (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Cím nyelve",
+    "Title": "Tartalom nyelve",
     "PreferredLanguages": "Elsőleges nyelvek",
     "AllLanguages": "Minden nyelv"
   },
