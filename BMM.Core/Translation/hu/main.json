@@ -15,17 +15,17 @@
     "Done": "Kész",
     "Today": "Ma",
     "Yesterday": "Tegnap",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
+    "BackgroundActivityRestrictedTitle": "Háttér tevékenység engedélyezése",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
+    "GoToSettings": "Beállításokhoz",
+    "NotNow": "Nem most",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "SiriFromKaareInvocationPhrase": "Fra Kåre lejátszása a BMM-en",
+    "SiriPlayMusicInvocationPhrase": "Zene lejátszása a BMM-en",
+    "FromKaareSiriShortcutName": "Fra Kåre lejátszása",
+    "PlayMusicSiriShortcutName": "Zene lejátszása",
+    "DailyMessage": "Mindennapi üzenet"
   },
   "Streak": {
     "Message": "E heti sorozatod.",
@@ -33,8 +33,8 @@
     "PerfectWeekCountSingular": "{0} perfekt hét",
     "PerfectWeekCountPlural": "{0} perfekt hetek",
     "PerfectWeekCountNone": "Még nincs perfekt hét",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
+    "EligibleUntilHoursAndMinutesMessage": "{0} óra és {1} perc van ma még hátra",
+    "EligibleUntilMinutesOnlyMessage": "{0} perc van ma még hátra",
     "DaysInARowSingular": "{0} day in a row",
     "DaysInARowPlural": "{0} days in a row",
     "WeekdayMonday": "H",
@@ -251,13 +251,13 @@
     "PlayingCount": "{0} / {1}",
     "ViewLyrics": "View Lyrics",
     "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
+    "Minutes": "{0} perc",
+    "Hour": "{0} óra",
+    "Hours": "{0} óra",
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Kiválasztott"
   },
   "QueueViewModel": {
     "Title": "Várólista"
@@ -313,7 +313,7 @@
     "UserVoiceText": "Van ötleted a BMM fejlesztésére? Mesélj nekünk róla.",
     "ThemeHeader": "Sötét üzemmód",
     "ThemeText": "Válasszon a világos és a sötét téma között",
-    "SiriShortcutsHeader": "Siri Shortcuts",
+    "SiriShortcutsHeader": "Siri-parancsok",
     "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
   },
   "StorageManagementViewModel": {
@@ -330,7 +330,7 @@
   "TrackCollectionViewModel": {
     "Title": "Lejátszási lista",
     "ShufflePlay": "Keverés",
-    "Resume": "Resume",
+    "Resume": "Folytatás",
     "AvailableOffline": "Offline elérhető",
     "AvailableOfflineDownload": "Letöltés",
     "AvailableOfflineDownloading": "Letöltés {0} / {1}",
@@ -486,11 +486,11 @@
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "PreferredLanguages": "Elsőleges nyelvek",
     "AllLanguages": "Minden nyelv"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri-parancsok",
+    "ShortcutAlreadyAdded": "Ez a parancs már hozzá lett adva"
   }
 }
