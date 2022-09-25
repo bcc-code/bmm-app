@@ -35,8 +35,8 @@
     "PerfectWeekCountNone": "Még nincs perfekt hét",
     "EligibleUntilHoursAndMinutesMessage": "{0} óra és {1} perc van ma még hátra",
     "EligibleUntilMinutesOnlyMessage": "{0} perc van ma még hátra",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "DaysInARowSingular": "{0} nap egymasután",
+    "DaysInARowPlural": "{0} nap egymasután",
     "WeekdayMonday": "H",
     "WeekdayTuesday": "K",
     "WeekdayWednesday": "Sz",
@@ -249,14 +249,14 @@
   "PlayerViewModel": {
     "Title": "Nincs lejátszás",
     "PlayingCount": "{0} / {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
+    "ViewLyrics": "Ének szövege",
+    "SleepTimer": "Ebresztő óra",
     "Minutes": "{0} perc",
     "Hour": "{0} óra",
     "Hours": "{0} óra",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
+    "Disable": "Deaktíválás",
+    "PlaybackSpeed": "Lejátszási sebesség ",
+    "Normal": "Átlagos",
     "Selected": "Kiválasztott"
   },
   "QueueViewModel": {
@@ -279,7 +279,7 @@
     "OptionAutoplayHeader": "Automatikus lejátszás",
     "OptionAutoplayText": "Zene lejátszása a mai “Fra Kåre” adás meghallgatása után",
     "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakText": "Hallgatási statisztika megmutatása a főképernyőn",
     "OptionEnablePushHeader": "Értesítések engedélyezése",
     "OptionPushNotifications": "Push-értesítések",
     "OptionPushNotificationsSubtitle": "Push-értesítések aktiválása a követett podcastokra",
@@ -314,7 +314,7 @@
     "ThemeHeader": "Sötét üzemmód",
     "ThemeText": "Válasszon a világos és a sötét téma között",
     "SiriShortcutsHeader": "Siri-parancsok",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "SiriShortcutsText": "Siri-parancsok hozzáadása a BMM-re"
   },
   "StorageManagementViewModel": {
     "Title": "Offline adatok tárhelye",
@@ -485,7 +485,7 @@
     "System": "Rendszerbeállítások követése (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
+    "Title": "Cím nyelve",
     "PreferredLanguages": "Elsőleges nyelvek",
     "AllLanguages": "Minden nyelv"
   },
