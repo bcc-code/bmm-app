@@ -33,7 +33,8 @@
     "PerfectWeekCountSingular": "{0} perfekt uke",
     "PerfectWeekCountPlural": "{0} perfekte uker",
     "PerfectWeekCountNone": "Ingen perfekt uke så langt",
-    "EligibleUntilMessage": "{0} timer og {1} minutter igjen i dag",
+    "EligibleUntilHoursAndMinutesMessage": "{0} timer og {1} minutter igjen i dag",
+    "EligibleUntilMinutesOnlyMessage": "{1} minutter igjen i dag",
     "DaysInARowSingular": "{0} dag på rad",
     "DaysInARowPlural": "{0} dager på rad",
     "WeekdayMonday": "M",
@@ -112,12 +113,6 @@
     "CountdownHours": "om {0}t",
     "Messages": "Nye taler",
     "Music": "Ny musikk"
-  },
-  "AslaksenNotification": {
-    "Title": "Troens ord",
-    "Message": "Ønsker du å svare på spørsmålene nå?",
-    "ButtonYes": "Ja",
-    "ButtonCancel": "Senere"
   },
   "ExploreContributorsViewModel": {
     "Title": "Bidragsytere",

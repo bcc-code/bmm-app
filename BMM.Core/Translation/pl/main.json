@@ -33,7 +33,8 @@
     "PerfectWeekCountSingular": "{0} perfekcyjny tydzień",
     "PerfectWeekCountPlural": "{0} perfekcyjnych tygodni",
     "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
-    "EligibleUntilMessage": "{0} hours and {1} minutes left today",
+    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
+    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
     "DaysInARowSingular": "{0} day in a row",
     "DaysInARowPlural": "{0} days in a row",
     "WeekdayMonday": "P",
@@ -112,12 +113,6 @@
     "CountdownHours": "za {0}godz.",
     "Messages": "Przemowy",
     "Music": "Muzyka"
-  },
-  "AslaksenNotification": {
-    "Title": "Słowa wiary",
-    "Message": "Czy chcesz teraz odpowiedzieć na pytania?",
-    "ButtonYes": "Tak",
-    "ButtonCancel": "Później"
   },
   "ExploreContributorsViewModel": {
     "Title": "Wykonawcy",

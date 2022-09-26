@@ -33,7 +33,8 @@
     "PerfectWeekCountSingular": "{0} perfect week",
     "PerfectWeekCountPlural": "{0} perfect weeks",
     "PerfectWeekCountNone": "No perfect weeks, yet",
-    "EligibleUntilMessage": "{0} hours and {1} minutes left today",
+    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
+    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
     "DaysInARowSingular": "{0} day in a row",
     "DaysInARowPlural": "{0} days in a row",
     "WeekdayMonday": "M",
@@ -112,12 +113,6 @@
     "CountdownHours": "in {0}h",
     "Messages": "Recent Messages",
     "Music": "Recent Music"
-  },
-  "AslaksenNotification": {
-    "Title": "Words of faith",
-    "Message": "Do you want to answer the questions now?",
-    "ButtonYes": "Yes",
-    "ButtonCancel": "Later"
   },
   "ExploreContributorsViewModel": {
     "Title": "Kaastegijad",
