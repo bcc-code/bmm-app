@@ -17,7 +17,7 @@
     "Yesterday": "Gestern",
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
+    "GoToSettings": "Zu den Einstellungen",
     "NotNow": "Später",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
@@ -311,8 +311,8 @@
     "Logout": "Ausloggen",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
+    "ThemeHeader": "Nachtmodus",
+    "ThemeText": "Wähle zwischen einem hellen und einem dunklen Design",
     "SiriShortcutsHeader": "Siri-Kurzbefehle",
     "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM "
   },
@@ -460,8 +460,8 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Vor kurzem gespielt",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "NoHistoryYetTitle": "Du kannst jetzt sehen, was du gehört hast.",
+    "NoHistoryYetSubtitle": "Fange einfach an abzuspielen und deine Hör-Historie wird hier auftauchen."
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Neue Reden"
@@ -479,10 +479,10 @@
     "PodcastsTitle": "Podcasts"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Nachtmodus Einstellung",
+    "Light": "Hell",
+    "Dark": "Dunkel",
+    "System": "Automatisch (folge Systemeinstellungen)"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Titelsprache",
