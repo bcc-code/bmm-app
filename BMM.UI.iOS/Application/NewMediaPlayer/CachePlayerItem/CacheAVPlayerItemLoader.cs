@@ -1,18 +1,17 @@
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Core.Extensions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
-using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.UI.iOS.NewMediaPlayer.Interfaces;
 using Foundation;
 using MvvmCross;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.UI.iOS.NewMediaPlayer
 {
-    public class CacheAVPlayerItemLoader
+    public class CacheAVPlayerItemLoader : ICacheAVPlayerItemLoader
     {
         private readonly IMvxMessenger _mvxMessenger;
         private readonly IMediaRequestHttpHeaders _mediaRequestHttpHeaders;
@@ -37,11 +36,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
         public bool IsFullyDownloaded { get; private set; }
         public bool MoreThanAHalfFinished { get; private set; }
         public string UniqueKey { get; private set; }
-        
-        /// <summary>
-        ///     Notifies about finishing of download.
-        ///     Bool parameter indicated if download was finished because of an error.
-        /// </summary>
         public event EventHandler<bool> FinishedLoading;
 
         public async Task StartDataRequest(string url)
@@ -152,8 +146,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _dataTask = null;
             DetachMessageListener();
         }
-        
-        public void Finish()
+
+        private void Finish()
         {
             _session?.FinishTasksAndInvalidate();
             CloseFileHandle();

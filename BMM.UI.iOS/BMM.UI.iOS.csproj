@@ -693,14 +693,17 @@
     <Compile Include="Application\Implementations\UI\iOSExceptionHandlingUserDialogs.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemRepository.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemFactory.cs" />
+    <Compile Include="Application\NewMediaPlayer\CacheAVPlayerItemLoaderFactory.cs" />
     <Compile Include="Application\NewMediaPlayer\CachePlayerItem\CacheAVPlayerItemURLSessionDelegate.cs" />
     <Compile Include="Application\NewMediaPlayer\CachePlayerItem\CacheAVPlayerItemLoader.cs" />
     <Compile Include="Application\NewMediaPlayer\CachePlayerItem\CacheMediaFileHandle.cs" />
+    <Compile Include="Application\NewMediaPlayer\CachePlayerItem\Interfaces\ICacheAVPlayerItemLoader.cs" />
     <Compile Include="Application\NewMediaPlayer\IMediaRemoteControl.cs" />
     <Compile Include="Application\Implementations\ClipboardService.cs" />
     <Compile Include="Application\Implementations\HttpClient\NetworkAccessAwareHttpClient.cs" />
     <Compile Include="Application\NewMediaPlayer\Interfaces\IAVPlayerItemRepository.cs" />
     <Compile Include="Application\NewMediaPlayer\Interfaces\IAVPlayerItemFactory.cs" />
+    <Compile Include="Application\NewMediaPlayer\Interfaces\ICacheAVPlayerItemLoaderFactory.cs" />
     <Compile Include="Application\NewMediaPlayer\MediaRemoteControl.cs" />
     <Compile Include="Application\Implementations\UI\UriOpener.cs" />
     <Compile Include="Application\NewMediaPlayer\AVAudioPlayback.cs" />
