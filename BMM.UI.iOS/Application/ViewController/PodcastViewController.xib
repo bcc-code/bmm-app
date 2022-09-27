@@ -16,7 +16,7 @@
                 <outlet property="OfflineBannerLabel" destination="tCL-pz-wbX" id="name-outlet-tCL-pz-wbX"/>
                 <outlet property="OfflineBannerView" destination="JEQ-Pn-dAX" id="eg1-dY-8bX"/>
                 <outlet property="OfflineBannerViewHeightConstraint" destination="XPZ-z0-l6X" id="name-outlet-XPZ-z0-l6X"/>
-                <outlet property="PlayButton" destination="Mk1-Z4-sIR" id="jFc-0A-Awl"/>
+                <outlet property="ShuffleButton" destination="Mk1-Z4-sIR" id="jFc-0A-Awl"/>
                 <outlet property="PodcastCoverImageView" destination="t4g-Ns-abC" id="Pem-Mt-5ob"/>
                 <outlet property="PodcastHeaderView" destination="dvX-pL-2wU" id="eg1-dY-8bb"/>
                 <outlet property="PodcastTable" destination="l4p-Fv-ZIK" id="ws9-Aw-miv"/>

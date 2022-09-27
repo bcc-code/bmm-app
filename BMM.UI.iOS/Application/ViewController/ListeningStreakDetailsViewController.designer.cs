@@ -6,9 +6,8 @@
 // Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System.CodeDom.Compiler;
 
-namespace CityIndex.Mobile.iOS.ViewControllers.Settings
+namespace BMM.UI.iOS
 {
 	[Register ("ListeningStreakDetailsViewController")]
 	partial class ListeningStreakDetailsViewController

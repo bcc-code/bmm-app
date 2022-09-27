@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,11 +10,13 @@ using BMM.Core.Implementations.Device;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.NewMediaPlayer.Interfaces;
 using Foundation;
+using MvvmCross.Plugin.Messenger;
 
 namespace BMM.UI.iOS.NewMediaPlayer
 {
     public class AVPlayerItemRepository : IAVPlayerItemRepository
     {
+        private readonly IMvxMessenger _mvxMessenger;
         private readonly IAVPlayerItemFactory _avPlayerItemFactory;
         private readonly IMediaRequestHttpHeaders _mediaRequestHttpHeaders;
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
@@ -24,10 +25,12 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private bool? _isThereSufficientSpaceToStartCaching;
 
         public AVPlayerItemRepository(
+            IMvxMessenger mvxMessenger,
             IAVPlayerItemFactory avPlayerItemFactory,
             IMediaRequestHttpHeaders mediaRequestHttpHeaders,
             IFeatureSupportInfoService featureSupportInfoService)
         {
+            _mvxMessenger = mvxMessenger;
             _avPlayerItemFactory = avPlayerItemFactory;
             _mediaRequestHttpHeaders = mediaRequestHttpHeaders;
             _featureSupportInfoService = featureSupportInfoService;
@@ -46,7 +49,10 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             CancelPreviousDownloadingIfNeeded();
             PrepareSpaceForFile(mediaTrack.TrackMediaFile.Size);
-            var cacheAVPlayerItemLoader = new CacheAVPlayerItemLoader(_mediaRequestHttpHeaders, mediaTrack.GetUniqueKey);
+            var cacheAVPlayerItemLoader = new CacheAVPlayerItemLoader(
+                _mvxMessenger,
+                _mediaRequestHttpHeaders,
+                mediaTrack.GetUniqueKey);
             cacheAVPlayerItemLoader.FinishedLoading += CacheAVPlayerItemLoaderOnFinishedLoading;
             await cacheAVPlayerItemLoader.StartDataRequest(mediaTrack.Url);
             _loaders.TryAdd(mediaTrack.GetUniqueKey, cacheAVPlayerItemLoader);

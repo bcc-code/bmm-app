@@ -1,24 +1,39 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Core.Extensions;
+using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.NewMediaPlayer;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using Foundation;
+using MvvmCross;
+using MvvmCross.Plugin.Messenger;
 
 namespace BMM.UI.iOS.NewMediaPlayer
 {
     public class CacheAVPlayerItemLoader
     {
+        private readonly IMvxMessenger _mvxMessenger;
         private readonly IMediaRequestHttpHeaders _mediaRequestHttpHeaders;
         private CacheMediaFileHandle _cacheMediaFileHandle;
         private NSUrlSession _session;
         private NSUrlResponse _response;
+        private NSUrlSessionDataTask _dataTask;
+        private MvxSubscriptionToken _playbackStateSubscriptionToken;
+        private IAudioPlayback _audioPlayback;
 
-        public CacheAVPlayerItemLoader(IMediaRequestHttpHeaders mediaRequestHttpHeaders,
+        public CacheAVPlayerItemLoader(
+            IMvxMessenger mvxMessenger,
+            IMediaRequestHttpHeaders mediaRequestHttpHeaders,
             string uniqueKey)
         {
+            _mvxMessenger = mvxMessenger;
             _mediaRequestHttpHeaders = mediaRequestHttpHeaders;
             UniqueKey = uniqueKey;
         }
 
+        private IAudioPlayback AudioPlayback => _audioPlayback ??= Mvx.IoCProvider.Resolve<IAudioPlayback>();
         public bool IsFullyDownloaded { get; private set; }
         public bool MoreThanAHalfFinished { get; private set; }
         public string UniqueKey { get; private set; }
@@ -32,7 +47,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         public async Task StartDataRequest(string url)
         {
             var configuration = NSUrlSessionConfiguration.BackgroundSessionConfiguration(UniqueKey);
-
+            
             var urlSessionDelegate = new CacheAVPlayerItemURLSessionDelegate();
             urlSessionDelegate.ReceivedData = (urlSession, task, data) =>
             {
@@ -52,7 +67,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 _response = response;
                 _cacheMediaFileHandle = CacheMediaFileHandle.CreateNewFile(UniqueKey, response.ExpectedContentLength);
             };
-
+            
             urlSessionDelegate.CompletedWithError = (urlSession, task, nsError) =>
             {
                 _session?.InvalidateAndCancel();
@@ -74,8 +89,37 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 Headers = await GetOptionsWithHeaders()
             };
 
-            var dataTask = _session.CreateDataTask(nsMutableUrlRequest);
-            dataTask.Resume();
+            _dataTask = _session.CreateDataTask(nsMutableUrlRequest);
+            AttachMessageListener();
+            ResumeDataTask(AudioPlayback.Status);
+        }
+
+        private void OnPlaybackStateChangedAction(PlaybackStatusChangedMessage message)
+        {
+            if (_dataTask == null)
+                return;
+                
+            bool shouldSuspend = message.PlaybackState.PlayStatus == PlayStatus.Buffering
+                                 && _dataTask.State == NSUrlSessionTaskState.Running;
+
+            if (shouldSuspend)
+                _dataTask.Suspend();
+            else
+                ResumeDataTask(message.PlaybackState.PlayStatus);
+        }
+
+        private void ResumeDataTask(PlayStatus playStatus)
+        {
+            if (_dataTask == null)
+                return;
+            
+            bool canResume = playStatus.IsNoneOf(PlayStatus.Buffering, PlayStatus.Stopped)
+                             && _dataTask.State == NSUrlSessionTaskState.Suspended;
+
+            if (!canResume)
+                return;
+
+            _dataTask.Resume();
         }
 
         private async Task<NSMutableDictionary> GetOptionsWithHeaders()
@@ -95,22 +139,37 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 return;
 
             long currentSize = _cacheMediaFileHandle.GetFileSize();
-            
-            // ReSharper disable once PossibleLossOfFraction
-            MoreThanAHalfFinished = currentSize / _response.ExpectedContentLength > 0.5;
+            MoreThanAHalfFinished = currentSize / (double)_response.ExpectedContentLength > 0.5;
             IsFullyDownloaded = currentSize == _response.ExpectedContentLength;
         }
 
         public void Cancel()
         {
+            _dataTask?.Cancel();
             _session?.InvalidateAndCancel();
             CloseFileHandle();
+            _dataTask?.Dispose();
+            _dataTask = null;
+            DetachMessageListener();
         }
         
         public void Finish()
         {
             _session?.FinishTasksAndInvalidate();
             CloseFileHandle();
+            _dataTask?.Dispose();
+            _dataTask = null;
+            DetachMessageListener();
+        }
+        
+        private void AttachMessageListener()
+        {
+            _playbackStateSubscriptionToken = _mvxMessenger.Subscribe<PlaybackStatusChangedMessage>(OnPlaybackStateChangedAction);
+        }
+        
+        private void DetachMessageListener()
+        {
+            _mvxMessenger.Unsubscribe<PlaybackStatusChangedMessage>(_playbackStateSubscriptionToken);
         }
 
         private void CloseFileHandle()
