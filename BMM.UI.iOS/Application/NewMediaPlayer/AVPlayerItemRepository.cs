@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,20 +16,20 @@ namespace BMM.UI.iOS.NewMediaPlayer
     public class AVPlayerItemRepository : IAVPlayerItemRepository
     {
         private readonly IAVPlayerItemFactory _avPlayerItemFactory;
-        private readonly IMediaRequestHttpHeaders _mediaRequestHttpHeaders;
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
-        private readonly ConcurrentDictionary<string, CacheAVPlayerItemLoader> _loaders = new ConcurrentDictionary<string, CacheAVPlayerItemLoader>();
+        private readonly ICacheAVPlayerItemLoaderFactory _cacheAVPlayerItemLoaderFactory;
+        private readonly ConcurrentDictionary<string, ICacheAVPlayerItemLoader> _loaders = new ConcurrentDictionary<string, ICacheAVPlayerItemLoader>();
         private string _currentFileInUse;
         private bool? _isThereSufficientSpaceToStartCaching;
 
         public AVPlayerItemRepository(
             IAVPlayerItemFactory avPlayerItemFactory,
-            IMediaRequestHttpHeaders mediaRequestHttpHeaders,
-            IFeatureSupportInfoService featureSupportInfoService)
+            IFeatureSupportInfoService featureSupportInfoService,
+            ICacheAVPlayerItemLoaderFactory cacheAVPlayerItemLoaderFactory)
         {
             _avPlayerItemFactory = avPlayerItemFactory;
-            _mediaRequestHttpHeaders = mediaRequestHttpHeaders;
             _featureSupportInfoService = featureSupportInfoService;
+            _cacheAVPlayerItemLoaderFactory = cacheAVPlayerItemLoaderFactory;
         }
         
         public async Task AddAndLoad(IMediaTrack mediaTrack)
@@ -46,7 +45,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
             CancelPreviousDownloadingIfNeeded();
             PrepareSpaceForFile(mediaTrack.TrackMediaFile.Size);
-            var cacheAVPlayerItemLoader = new CacheAVPlayerItemLoader(_mediaRequestHttpHeaders, mediaTrack.GetUniqueKey);
+            var cacheAVPlayerItemLoader = _cacheAVPlayerItemLoaderFactory.Create(mediaTrack.GetUniqueKey);
             cacheAVPlayerItemLoader.FinishedLoading += CacheAVPlayerItemLoaderOnFinishedLoading;
             await cacheAVPlayerItemLoader.StartDataRequest(mediaTrack.Url);
             _loaders.TryAdd(mediaTrack.GetUniqueKey, cacheAVPlayerItemLoader);
@@ -116,7 +115,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private void CacheAVPlayerItemLoaderOnFinishedLoading(object sender, bool endedWithError)
         {
-            string uniqueKey = ((CacheAVPlayerItemLoader)sender).UniqueKey;
+            string uniqueKey = ((ICacheAVPlayerItemLoader)sender).UniqueKey;
             
             if (!_loaders.TryGetValue(uniqueKey, out var loader))
                 return;

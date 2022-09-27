@@ -2,18 +2,15 @@
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
-using BMM.UI.iOS;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using CoreAnimation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
-using MvvmCross.ViewModels;
 using UIKit;
 
-namespace CityIndex.Mobile.iOS.ViewControllers.Settings
+namespace BMM.UI.iOS
 {
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.OverCurrentContext)]
     public partial class ListeningStreakDetailsViewController : BaseViewController<ListeningStreakDetailsViewModel>
@@ -27,7 +24,7 @@ namespace CityIndex.Mobile.iOS.ViewControllers.Settings
 
         public override Type ParentViewControllerType { get; }
 
-        public override async void ViewWillAppear(bool animated)
+        public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
             AlphaView.Alpha = 0;

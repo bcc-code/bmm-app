@@ -30,7 +30,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private IMediaTrack _currentTrack;
         private int _currentTrackIndex;
-        private DebounceDispatcher _debounceDispatcher;
+        private readonly DebounceDispatcher _debounceDispatcher;
 
         public IosMediaPlayer(
             IAudioPlayback audioPlayback,
