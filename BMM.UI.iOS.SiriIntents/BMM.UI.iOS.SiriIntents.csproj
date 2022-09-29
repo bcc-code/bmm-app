@@ -73,7 +73,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
-    <CodesignProvision>BMM Siri Intents Provisioning Profile 2022</CodesignProvision>
+    <CodesignProvision>BMM Siri Intents Provisioning Profile</CodesignProvision>
     <OutputPath>bin\iPhone\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <WarningLevel>4</WarningLevel>
