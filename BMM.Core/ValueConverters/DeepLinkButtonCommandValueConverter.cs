@@ -18,7 +18,7 @@ namespace BMM.Core.ValueConverters
 
             return new ExceptionHandlingCommand(async () =>
             {
-                deepLinkHandler.OpenFromInsideOfApp(new Uri(item.Link));
+                deepLinkHandler.OpenFromInsideOfApp(new Uri(item.Link), value.ViewModel.PlaybackOriginString);
             });
         }
     }

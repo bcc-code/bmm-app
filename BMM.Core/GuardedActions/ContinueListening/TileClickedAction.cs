@@ -22,7 +22,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
         
         protected override Task Execute(ContinueListeningTile parameter)
         {
-            _deepLinkHandler.OpenFromInsideOfApp(parameter.ShowAllLink);
+            _deepLinkHandler.OpenFromInsideOfApp(parameter.ShowAllLink, nameof(ContinueListeningTile));
             return Task.CompletedTask;
         }
     }

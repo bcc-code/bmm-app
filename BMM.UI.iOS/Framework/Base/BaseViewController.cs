@@ -86,6 +86,8 @@ namespace BMM.UI.iOS
             return IsViewLoaded && View.Window != null;
         }
 
+        public string ViewModelName => typeof(TViewModel).Name;
+
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);

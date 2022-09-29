@@ -27,5 +27,6 @@
         public const string SiriMusicPlayed = "Siri music played";
         public const string SiriFromKaarePlayed = "Siri From Kåre played";
         public const string SiriDifferentLanguage = "Different Siri language";
+        public const string BottomBarButtonClicked = "Bottom Bar button clicked";
     }
 }

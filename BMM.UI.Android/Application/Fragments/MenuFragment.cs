@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
+using System.Linq;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using Google.Android.Material.BottomNavigation;
+using Google.Android.Material.Navigation;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
@@ -12,7 +14,7 @@ namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxFragmentPresentation(typeof(MainActivityViewModel), Resource.Id.bottom_navigation_frame)]
     [Register("bmm.ui.droid.application.fragments.MenuFragment")]
-    public class MenuFragment : BaseFragment<MenuViewModel>, BottomNavigationView.IOnNavigationItemSelectedListener
+    public class MenuFragment : BaseFragment<MenuViewModel>, NavigationBarView.IOnItemSelectedListener
     {
         private BottomNavigationView _navigationView;
 
@@ -25,7 +27,7 @@ namespace BMM.UI.Droid.Application.Fragments
             var view = this.BindingInflate(Resource.Layout.fragment_menu, null);
 
             _navigationView = view.FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
-            _navigationView.SetOnNavigationItemSelectedListener(this);
+            _navigationView!.SetOnItemSelectedListener(this);
 
             RebuildMenu();
 
@@ -52,18 +54,17 @@ namespace BMM.UI.Droid.Application.Fragments
 
         private void RebuildMenu()
         {
-            // ToDo: use proper axml bindings instead of manual code
-            var search = _navigationView.Menu.FindItem(Resource.Id.page_1);
-            search?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Home]);
+            var explore = _navigationView.Menu.FindItem(Resource.Id.page_1);
+            explore?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Home]);
 
             var browse = _navigationView.Menu.FindItem(Resource.Id.page_2);
             browse?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Browse]);
 
-            var myContent = _navigationView.Menu.FindItem(Resource.Id.page_3);
-            myContent?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Search]);
+            var search = _navigationView.Menu.FindItem(Resource.Id.page_3);
+            search?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Search]);
 
-            var library = _navigationView.Menu.FindItem(Resource.Id.page_4);
-            library?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Favorites]);
+            var myContent = _navigationView.Menu.FindItem(Resource.Id.page_4);
+            myContent?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Favorites]);
 
             var settings = _navigationView.Menu.FindItem(Resource.Id.page_5);
             settings?.SetTitle(ViewModel.TextSource[Translations.MenuViewModel_Profile]);
@@ -71,26 +72,10 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public bool OnNavigationItemSelected(IMenuItem item)
         {
-            switch (item.ItemId)
-            {
-                case Resource.Id.page_1:
-                    ViewModel.ExploreCommand.Execute();
-                    return true;
-                case Resource.Id.page_2:
-                    ViewModel.BrowseCommand.Execute();
-                    return true;
-                case Resource.Id.page_3:
-                    ViewModel.SearchCommand.Execute();
-                    return true;
-                case Resource.Id.page_4:
-                    ViewModel.MyContentCommand.Execute();
-                    return true;
-                case Resource.Id.page_5:
-                    ViewModel.SettingsCommand.Execute();
-                    return true;
-            }
-
-            return false;
+            var navigationItem = ViewModel.NavigationCommands.ElementAt(item.Order);
+            navigationItem.Value.Execute();
+            ViewModel.LogBottomBarButtonClicked(navigationItem.Key);
+            return true;
         }
 
         // Prevent interfering with other fragments
