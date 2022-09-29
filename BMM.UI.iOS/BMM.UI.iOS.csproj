@@ -101,7 +101,7 @@
     <Optimize>true</Optimize>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
-    <CodesignProvision>BMM Provisioning Profile 2022</CodesignProvision>
+    <CodesignProvision>BMM Provisioning Profile</CodesignProvision>
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchUseThumb>true</MtouchUseThumb>
     <OutputPath>bin\iPhone\Release</OutputPath>
