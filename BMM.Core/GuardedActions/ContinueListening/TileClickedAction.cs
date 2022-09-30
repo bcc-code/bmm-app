@@ -1,6 +1,7 @@
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
@@ -22,7 +23,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
         
         protected override Task Execute(ContinueListeningTile parameter)
         {
-            _deepLinkHandler.OpenFromInsideOfApp(parameter.ShowAllLink, nameof(ContinueListeningTile));
+            _deepLinkHandler.OpenFromInsideOfApp(parameter.ShowAllLink, PlaybackOrigins.Tile);
             return Task.CompletedTask;
         }
     }
