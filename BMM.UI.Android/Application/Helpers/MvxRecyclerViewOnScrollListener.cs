@@ -1,5 +1,7 @@
 ﻿using System;
 using AndroidX.RecyclerView.Widget;
+using BMM.Api.Framework;
+using MvvmCross;
 
 namespace BMM.UI.Droid.Application.Helpers
 {
@@ -21,11 +23,16 @@ namespace BMM.UI.Droid.Application.Helpers
             base.OnScrolled(recyclerView, dx, dy);
 
             var visibleItemCount = recyclerView.ChildCount;
-            var totalItemCount = recyclerView.GetAdapter().ItemCount;
+            var adapter = recyclerView.GetAdapter();
+            
+            if (adapter == null)
+                return;
+            
+            var totalItemCount = adapter.ItemCount;
             var pastVisiblesItems = _layoutManager.FindFirstVisibleItemPosition();
 
             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount)
-                LoadMoreEvent(this, null);
+                LoadMoreEvent?.Invoke(this, null);
         }
     }
 }

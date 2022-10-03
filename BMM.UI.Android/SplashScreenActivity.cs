@@ -1,9 +1,11 @@
+using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Notifications.Data;
 using BMM.UI.Droid.Application.Constants;
+using MvvmCross.Exceptions;
 using MvvmCross.Platforms.Android.Views;
 
 namespace BMM.UI.Droid
@@ -40,6 +42,21 @@ namespace BMM.UI.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             SetNotificationToHandle();
+        }
+        
+        /// <summary>
+        /// Prevents MvvmCross crash, when calling CancelMonitor in base.OnPause().
+        /// </summary>
+        protected override void OnPause()
+        {
+            try
+            {
+                base.OnPause();
+            }
+            catch (MvxException e)
+            {
+                Console.WriteLine(e);
+            }
         }
         
         private void SetNotificationToHandle()
