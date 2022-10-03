@@ -175,7 +175,7 @@ namespace BMM.Core.Implementations.DeepLinking
             await PlayTracks(new[] { requestedTrack }, PlaybackOriginName, trackLinkParameters.StartTimeInMs);
         }
 
-        public bool OpenFromInsideOfApp(Uri uri) => Open(uri, "internal link opened");
+        public bool OpenFromInsideOfApp(Uri uri, string origin) => Open(uri, "internal link opened", origin);
 
         public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, "deep link opened");
 
@@ -190,12 +190,12 @@ namespace BMM.Core.Implementations.DeepLinking
             return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(uri, out _);
         }
 
-        private bool Open(Uri uri, string analyticsEventName)
+        private bool Open(Uri uri, string analyticsEventName, string origin = "")
         {
             if (!IsBmmUrl(uri))
                 return false;
 
-            _analytics.LogEvent(analyticsEventName, new Dictionary<string, object> { { "uri", uri.AbsolutePath } });
+            SendAnalyticsEvent(uri, analyticsEventName, origin);
 
             foreach (var link in _links)
             {
@@ -227,6 +227,19 @@ namespace BMM.Core.Implementations.DeepLinking
             }
 
             return false;
+        }
+
+        private void SendAnalyticsEvent(Uri uri, string analyticsEventName, string origin)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "uri", uri.AbsolutePath }
+            };
+            
+            if (!string.IsNullOrEmpty(origin))
+                parameters.Add("origin", origin);
+
+            _analytics.LogEvent(analyticsEventName, parameters);
         }
 
         private bool IsBmmUrl(Uri uri)

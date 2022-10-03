@@ -9,7 +9,8 @@ namespace BMM.Core.Helpers
         /// </summary>
         /// <returns>True if the handler was able to resolve the link, false otherwise.</returns>
         /// <param name="uri">URI.</param>
-        bool OpenFromInsideOfApp(Uri uri);
+        /// <param name="origin">Place where the deep link has been opened from. Needed for Analytics.</param>
+        bool OpenFromInsideOfApp(Uri uri, string origin = "");
 
         /// <summary>
         /// Open the specified uri with logging analytics event.

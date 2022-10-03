@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
@@ -20,6 +21,7 @@ namespace BMM.UI.iOS
         private readonly NSNotificationCenter _notificationCenter = NSNotificationCenter.DefaultCenter;
         private readonly List<string> _translationLabels = new List<string>();
         private bool _tabInitialized;
+        private UIViewController _selectedViewController;
 
         public override void ViewDidLoad()
         {
@@ -33,6 +35,21 @@ namespace BMM.UI.iOS
             SetBottomBarAppearance();
         }
 
+        public override UIViewController SelectedViewController
+        {
+            get => base.SelectedViewController;
+            set
+            {
+                base.SelectedViewController = value;
+                var actualViewController = (IBaseViewController)base.SelectedViewController
+                    .ChildViewControllers
+                    .First()
+                    .ChildViewControllers
+                    .First();
+                ViewModel.LogBottomBarButtonClicked(actualViewController.ViewModelName);
+            }
+        }
+        
         protected virtual void SetBottomBarAppearance()
         {
             if (!UIDevice.CurrentDevice.CheckSystemVersion(13, 0))
@@ -82,11 +99,9 @@ namespace BMM.UI.iOS
             if (_tabInitialized)
                 return;
 
-            ViewModel.ExploreCommand.Execute();
-            ViewModel.BrowseCommand.Execute();
-            ViewModel.SearchCommand.Execute();
-            ViewModel.MyContentCommand.Execute();
-            ViewModel.SettingsCommand.Execute();
+            foreach (var navigationCommand in ViewModel.NavigationCommands)
+                navigationCommand.Value.Execute();
+                
             _tabInitialized = true;
 
             _notificationCenter.PostNotificationName(MenuLoadedNotification, null);

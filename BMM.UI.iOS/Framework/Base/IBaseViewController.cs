@@ -9,5 +9,7 @@ namespace BMM.UI.iOS
         void RegisterViewController(IBaseViewController viewController);
 
         bool IsVisible();
+
+        string ViewModelName => string.Empty;
     }
 }

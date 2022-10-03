@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.MyContent;
 using MvvmCross.Commands;
-using MvvmCross.Presenters;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
@@ -14,29 +15,26 @@ namespace BMM.Core.ViewModels
     public class MenuViewModel : BaseViewModel
     {
         private readonly IViewModelAwareViewPresenter _viewModelAwareViewPresenter;
+        private readonly IAnalytics _analytics;
 
-        public MenuViewModel(IViewModelAwareViewPresenter viewModelAwareViewPresenter)
+        public MenuViewModel(
+            IViewModelAwareViewPresenter viewModelAwareViewPresenter,
+            IAnalytics analytics)
         {
             _viewModelAwareViewPresenter = viewModelAwareViewPresenter;
+            _analytics = analytics;
         }
 
-        public IMvxCommand SearchCommand { get; private set; }
-
-        public IMvxCommand ExploreCommand { get; private set; }
-
-        public IMvxCommand MyContentCommand { get; private set; }
-
-        public IMvxCommand BrowseCommand { get; private set; }
-
-        public IMvxCommand SettingsCommand { get; private set; }
+        public IDictionary<string, IMvxCommand> NavigationCommands { get; } = new Dictionary<string, IMvxCommand>();
 
         public override Task Initialize()
         {
-            SearchCommand = MenuEntry<SearchViewModel>();
-            ExploreCommand = MenuEntry<ExploreNewestViewModel>();
-            MyContentCommand = MenuEntry<MyContentViewModel>();
-            BrowseCommand = MenuEntry<BrowseViewModel>();
-            SettingsCommand = MenuEntry<SettingsViewModel>();
+            NavigationCommands.Clear();
+            NavigationCommands.Add(nameof(ExploreNewestViewModel), MenuEntry<ExploreNewestViewModel>());
+            NavigationCommands.Add(nameof(BrowseViewModel), MenuEntry<BrowseViewModel>());
+            NavigationCommands.Add(nameof(SearchViewModel), MenuEntry<SearchViewModel>());
+            NavigationCommands.Add(nameof(MyContentViewModel), MenuEntry<MyContentViewModel>());
+            NavigationCommands.Add(nameof(SettingsViewModel), MenuEntry<SettingsViewModel>());
 
             return base.Initialize();
         }
@@ -53,6 +51,14 @@ namespace BMM.Core.ViewModels
                 },
                 canExecute
             );
+        }
+
+        public void LogBottomBarButtonClicked(string viewModelName)
+        {
+            _analytics.LogEvent(Event.BottomBarButtonClicked, new Dictionary<string, object>()
+            {
+                {"ViewModel", viewModelName}
+            });
         }
     }
 }
