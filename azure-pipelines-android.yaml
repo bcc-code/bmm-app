@@ -15,10 +15,6 @@ trigger:
       - main
       - release/*
       - hotfix/*
-pr:
-  branches:
-    include: []
-    exclude: [ crowdin-translation ]
 
 variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
