@@ -197,11 +197,11 @@
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcast seguiti",
-    "EmptyTitle": "Attualmente non si stanno seguendo qualsiasi podcast",
-    "EmptySubline": "Seguire un Podcast aprendo un Podcast e facendo clic sul pulsante Segui."
+    "EmptyTitle": "Attualmente non stai seguendo alcun podcast",
+    "EmptySubline": "Segui un Podcast aprendo un Podcast e fai clic sul pulsante Segui."
   },
   "MyTracksViewModel": {
-    "Title": "Mie tracce",
+    "Title": "Le mie tracce",
     "ShufflePlay": "Riproduzione casuale",
     "AvailableOffline": "Disponibile non in linea",
     "AvailableOfflineDownload": "Scarica la playlist",
