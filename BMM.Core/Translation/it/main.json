@@ -129,9 +129,9 @@
     "GuideLanguagesTitle": "Più lingue",
     "GuideLanguagesSubtitle": "Definisci la priorità della lingua dei tuoi contenuti BMM. Questo può essere fatto in Impostazioni > Lingua dei contenuti.\n",
     "GuideLibraryTitle": "Sezione di libreria",
-    "GuideLibrarySubtitle": "Accedere rapidamente al contenuto desiderato. La sezione della biblioteca è costituito da tutti i podcast disponibili e una sezione di archivio di esplorare il contenuto. ",
+    "GuideLibrarySubtitle": "Accedere rapidamente al contenuto desiderato. La sezione della biblioteca è costituita da tutti i podcast disponibili e da una sezione di archivio il cui contenuto è da esplorare. ",
     "GuideSearchTitle": "Cerca",
-    "GuideSearchSubtitle": "Trova un determinato brano, oppure fai una ricerca su argomenti per trovare contenuti correlati. Le tue ricerche sono salvate automaticamente.",
+    "GuideSearchSubtitle": "Trova un determinato brano, oppure fai una ricerca su argomenti per trovare contenuti correlati. Le tue ricerche vengono salvate automaticamente.",
     "ButtonSendMail": "Invia un'e-mail al Team di BMM"
   },
   "UserSetupViewModel": {
@@ -164,7 +164,7 @@
     "Dialog.Title": "Seleziona una lingua",
     "Dialog.Cancel": "Annulla",
     "Toast.LanguagesStillLoading": "L'elenco sta ancora caricando. Riprova tra pochi secondi.",
-    "Toast.NoLanguagesAvailable": "Sembra che non ci sia nessuna connessione disponibile per caricare l'elenco delle lingue.",
+    "Toast.NoLanguagesAvailable": "Sembra che non ci sia alcuna connessione disponibile per caricare l'elenco delle lingue.",
     "DeleteLanguageMessage": "Devi selezionare almeno una lingua per i contenuti",
     "DeleteLanguageTitle": "Non è possibile rimuovere {0}"
   },
@@ -189,14 +189,14 @@
   "MyContentViewModel": {
     "Title": "Favorites",
     "DownloadedContent": "Downloaded Content",
-    "FollowedPodcasts": "Podcast",
+    "FollowedPodcasts": "Podcast seguiti",
     "MyTracks": "Mie tracce",
     "MyPlaylists": "My playlists",
     "SharedWithMe": "Shared with me",
     "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
-    "Title": "Podcast",
+    "Title": "Podcast seguiti",
     "EmptyTitle": "Attualmente non si stanno seguendo qualsiasi podcast",
     "EmptySubline": "Seguire un Podcast aprendo un Podcast e facendo clic sul pulsante Segui."
   },
