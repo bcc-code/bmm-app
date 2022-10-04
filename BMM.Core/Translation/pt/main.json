@@ -13,19 +13,19 @@
     "Audiobook": "Livro de áudio",
     "Exegesis": "Exegesis",
     "Done": "Feito",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
-    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "Today": "Hoje",
+    "Yesterday": "Ontem",
+    "BackgroundActivityRestrictedTitle": "Permitir atividade em segundo plano",
+    "BackgroundActivityRestrictedMessage": "As configurações do seu dispositivo impedem que o BMM funcione em segundo plano. Você não poderá ouvir quando o telefone estiver bloqueado por alguns minutos. Para alterá-lo, vá para as configurações do aplicativo e \"Permitir atividade em segundo plano\" na seção \"Bateria\".",
+    "GoToSettings": "Vá para as configurações",
+    "NotNow": "Agora não",
+    "DownloadPlaylistOnceOnWifi": "A lista de reprodução será baixada na próxima vez que você estiver conectado(a) à Wi-Fi. Você pode ativar \"Download via rede móvel\" em seu perfil.",
+    "DownloadPodcastOnceOnWifi": "As faixas mais recentes deste podcast serão baixadas na próxima vez que você estiver conectado(a) à Wi-Fi. Você pode ativar \"Download via rede móvel\" em seu perfil.",
+    "SiriFromKaareInvocationPhrase": "Reproduzir De Kåre no BMM",
+    "SiriPlayMusicInvocationPhrase": "Reproduzir música no BMM",
+    "FromKaareSiriShortcutName": "Reproduzir De Kåre",
+    "PlayMusicSiriShortcutName": "Reproduzir Música",
+    "DailyMessage": "Mensagem diária"
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -33,10 +33,10 @@
     "PerfectWeekCountSingular": "{0} semana perfeitas",
     "PerfectWeekCountPlural": "{0} semanas perfeitas",
     "PerfectWeekCountNone": "Ainda não há semanas perfeitas",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "EligibleUntilHoursAndMinutesMessage": "{0} horas {1} minutos restantes hoje",
+    "EligibleUntilMinutesOnlyMessage": "minutos restantes hoje",
+    "DaysInARowSingular": "dia seguido",
+    "DaysInARowPlural": "dias seguidos",
     "WeekdayMonday": "S",
     "WeekdayTuesday": "T",
     "WeekdayWednesday": "Q",
@@ -72,7 +72,7 @@
     "AlbumFailedToAddAlreadyExists": "Este álbum já está em sua lista de reprodução.",
     "TrackAlreadyExistInTrackCollection": "A faixa já existe na lista de reprodução {0}",
     "ShufflePlay": "Reprodução Aleatória",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} álbuns"
   },
   "AlbumsViewModel": {
     "Title": "Arquivo",
@@ -151,7 +151,7 @@
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Em breve, interromperemos o suporte para telefones em execução {0} {1} ou mais. Se possível, você deve atualizar seu telefone.",
-    "DeviceSupportEnded": "Infelizmente, não oferecemos mais suporte a dispositivos anteriores a {0} {1}. Atualize seu dispositivo ou atualize para um telefone mais recente.",
+    "DeviceSupportEnded": "Infelizmente não oferecemos mais suporte à dispositivos anteriores a {0} {1}. Atualize o seu dispositivo ou atualize para um telefone mais recente.",
     "AppSupportEnding": "Você está usando uma versão antiga do aplicativo BMM. Em breve, interromperemos o suporte para essa versão. Por favor atualize o BMM.",
     "AppSupportEnded": "Você está usando uma versão antiga do aplicativo BMM, que não é mais suportada. Por favor atualize o BMM.",
     "UpdateButton": "Atualizar"
@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Não é possível remover {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Navegar"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arquivo"
@@ -179,7 +179,7 @@
     "Search": "Busca",
     "Explore": "Explorar",
     "MyContent": "Meu conteúdo",
-    "Browse": "Browse",
+    "Browse": "Navegar",
     "Settings": "Configurações",
     "HelpAndFeedback": "Ajuda e Feedback",
     "Home": "Início",
@@ -191,9 +191,9 @@
     "DownloadedContent": "Conteúdo baixado",
     "FollowedPodcasts": "Podcasts seguidos ",
     "MyTracks": "Meus rastros",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Minhas listas de reprodução",
+    "SharedWithMe": "Compartilhado comigo",
+    "ByFormat": "por {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcasts seguidos ",
@@ -249,15 +249,15 @@
   "PlayerViewModel": {
     "Title": "Reproduzindo agora ",
     "PlayingCount": "{0} de {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
+    "ViewLyrics": "Mostrar letra",
+    "SleepTimer": "Despertador",
+    "Minutes": "{0} minutos",
+    "Hour": "{0} hora",
+    "Hours": "{0} horas",
+    "Disable": "Desativar",
+    "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Selecionado"
   },
   "QueueViewModel": {
     "Title": "Fila"
@@ -279,7 +279,7 @@
     "OptionAutoplayHeader": "Reprodução automática",
     "OptionAutoplayText": "Reproduzir hino depois de ouvir o episódio de hoje de Fra Kåre",
     "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakText": "Mostre sua estatística de reprodução na tela inicial",
     "OptionEnablePushHeader": "Habilitar notificações push",
     "OptionPushNotifications": "Notificações push",
     "OptionPushNotificationsSubtitle": "Habilitar notificações do impulso para podcasts que você siga",
@@ -309,12 +309,12 @@
     "LoggedInAs": "Logar como ",
     "LogoutConfirm": "Tem certeza que deseja sair?",
     "Logout": "Sair",
-    "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "UserVoiceHeader": "Voz do usuário",
+    "UserVoiceText": "Tem ideias sobre como melhorar o BMM? Conte-nos sobre isso.",
+    "ThemeHeader": "Modo escuro",
+    "ThemeText": "Escolha entre um tema claro e um escuro",
+    "SiriShortcutsHeader": "Atalhos da Siri",
+    "SiriShortcutsText": "Adicione atalhos da Siri para BMM ao seu dispositivo"
   },
   "StorageManagementViewModel": {
     "Title": "Localização para faixas offline",
@@ -324,13 +324,13 @@
     "PluralTracks": "{0} tracks",
     "PluralTracksLoaded": "{0} tracks loaded",
     "Download": "Baixar",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Aleatório",
     "Play": "Reproduzir"
   },
   "TrackCollectionViewModel": {
     "Title": "Lista de reprodução",
-    "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "ShufflePlay": "Aleatório",
+    "Resume": "Retomar",
     "AvailableOffline": "Disponível off-line",
     "AvailableOfflineDownload": "Baixar",
     "AvailableOfflineDownloading": "Baixar {0} de {1}",
@@ -346,35 +346,35 @@
     "EmptySubline": "Pressione os três pontos em uma faixa para adicionar a faixa nesta lista.",
     "NotEnoughtSpaceToDownload": "Não há espaço suficiente para baixar todas as faixas",
     "AskToResumeDownloading": "Há novos itens nesta lista. Você quer continuar o download?",
-    "Private": "Private",
+    "Private": "Privado",
     "DeletePlaylist": "Excluir lista de reprodução",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Editar lista de reprodução",
+    "SharePlaylist": "Compartilhar lista de reprodução",
+    "RemovePlaylist": "Excluir lista de reprodução"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
+    "Title": "Editar lista de reprodução",
     "RenameLabel": "Renomear lista de reprodução",
     "MenuSave": "Salvar",
     "EmptyName": "Esta lista de reprodução não possui nome ",
     "SaveFailure": "Algo deu errado. Verifique sua conexão com a internet e tente novamente",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "DiscardChangesTitle": "Descartar mudanças?",
+    "DiscardChangesMessage": "As alterações feitas não serão salvas",
+    "DiscardChanges": "Descartar",
+    "KeepEditing": "Continue editando"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Compartilhar lista de reprodução",
+    "ShareNote": "Ao compartilhar uma lista de reprodução, as pessoas poderão acessar e ouvir as faixas que você adicionar, caso tenham o link.",
+    "ShareLink": "Compartilhar link",
+    "MakePrivate": "Tornar privado",
+    "SharedWithFormat": "Compartilhado com {0} pessoas"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Lista de reprodução compartilhada",
+    "Close": "Fechar",
+    "AddToMyPlaylist": "Adicionar às minhas listas de reprodução",
+    "FollowOwnTrackCollection": "Você não pode seguir sua própria coleção de faixas"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Lista de reprodução",
@@ -459,9 +459,9 @@
     "Title": "Direitos autorais"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Reproduzido recentemente",
+    "NoHistoryYetTitle": "Agora você pode ver o que está ouvindo",
+    "NoHistoryYetSubtitle": "Basta começar a ouvir e seu histórico aparecerá aqui"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Mensagens recentes"
@@ -473,24 +473,24 @@
     "DownloadingFinished": "Todos os arquivos foram baixados!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Eventos",
     "AudiobooksTitle": "Audiobooks",
     "MusicTitle": "Música",
     "PodcastsTitle": "Podcasts"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Configurações do modo escuro",
+    "Light": "Claro",
+    "Dark": "Escuro",
+    "System": "Siga as configurações do sistema (Automático)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Idioma da faixa",
+    "PreferredLanguages": "Seus idiomas preferidos",
     "AllLanguages": "Todas as línguas"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Atalhos da Siri",
+    "ShortcutAlreadyAdded": "Este atalho já foi adicionado"
   }
 }
