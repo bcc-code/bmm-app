@@ -16,13 +16,13 @@
     "Today": "Astăzi",
     "Yesterday": "Ieri",
     "BackgroundActivityRestrictedTitle": "Permite activitatea în background",
-    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
+    "BackgroundActivityRestrictedMessage": "Setările dispozitivului tău nu îi permite aplicației BMM să ruleze în background. Aplicația se va opri câteva minute după ce stingi ecranul telefonului. Pentru a schimba acest lucru, mergi la setările aplicațiilor și „Permite activitatea în background” din secțiunea „Baterie”.",
     "GoToSettings": "Mergi la Setări",
     "NotNow": "Mai târziu",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
+    "DownloadPlaylistOnceOnWifi": "Acest play-list va fi descărcat când ești pe Wifi. Poți activa „Descărcare prin date mobile” în profilul tău.",
+    "DownloadPodcastOnceOnWifi": "Ultimele piese ale acestui podcast vor fi descărcate când ești pe Wifi. Poți activa „Descărcare prin date mobile” în profilul tău.",
+    "SiriFromKaareInvocationPhrase": "Pornește De la Kåre în BMM",
+    "SiriPlayMusicInvocationPhrase": "Pornește muzică de pe BMM",
     "FromKaareSiriShortcutName": "Pornește De la Kåre",
     "PlayMusicSiriShortcutName": "Pornește muzica",
     "DailyMessage": "Mesajul zilei"
@@ -35,8 +35,8 @@
     "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte",
     "EligibleUntilHoursAndMinutesMessage": "Au mai rămas {0} ore și {1} minute din ziua de astăzi",
     "EligibleUntilMinutesOnlyMessage": "Au mai rămas {0} minute astăzi",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "DaysInARowSingular": "{0} zi consecutiv",
+    "DaysInARowPlural": "{0} zile consecutive",
     "WeekdayMonday": "L",
     "WeekdayTuesday": "Ma",
     "WeekdayWednesday": "Mi",
@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Nu se poate șterge {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Explorează"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhivă"
@@ -179,7 +179,7 @@
     "Search": "Caută",
     "Explore": "Explorare",
     "MyContent": "Conţinutul meu",
-    "Browse": "Browse",
+    "Browse": "Explorează",
     "Settings": "Setări",
     "HelpAndFeedback": "Ajutor şi Feedback",
     "Home": "Acasă",
@@ -249,15 +249,15 @@
   "PlayerViewModel": {
     "Title": "Redat acum",
     "PlayingCount": "{0} din {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
+    "ViewLyrics": "Vezi versuri",
+    "SleepTimer": "Temporizator de somn",
+    "Minutes": "{0} minute",
+    "Hour": "{0} oră",
+    "Hours": "{0} ore",
+    "Disable": "Dezactivează",
+    "PlaybackSpeed": "Viteză de redare",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Selectate"
   },
   "QueueViewModel": {
     "Title": "Listă"
@@ -278,8 +278,8 @@
     "HeadlineSettings": "Setări",
     "OptionAutoplayHeader": "Redare automată",
     "OptionAutoplayText": "Redă muzică după ce asculți episodul de astăzi de la Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakHeader": "Progres pe ecranul de pornire",
+    "OptionStreakText": "Arată statisticile de redare în ecranul principal",
     "OptionEnablePushHeader": "Activează notificări",
     "OptionPushNotifications": "Forțează notificările",
     "OptionPushNotificationsSubtitle": "Activare notificări pentru podcast-uri urmărite",
@@ -311,10 +311,10 @@
     "Logout": "Deconectare",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Ai idei de cum putem îmbunătăți BMM? Scrie-ne despre ele!",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "ThemeHeader": "Modul întunecat",
+    "ThemeText": "Alege între o vizualizare luminoasă sau întunecată",
+    "SiriShortcutsHeader": "Scurtături pentru Siri",
+    "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM"
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
@@ -330,7 +330,7 @@
   "TrackCollectionViewModel": {
     "Title": "Play-list",
     "ShufflePlay": "Amestecă",
-    "Resume": "Resume",
+    "Resume": "Continuă",
     "AvailableOffline": "Disponibile în modul off-line",
     "AvailableOfflineDownload": "Descarcă",
     "AvailableOfflineDownloading": "Se descarcă {0} din {1}",
@@ -479,18 +479,18 @@
     "PodcastsTitle": "Podcast-uri"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
+    "Title": "Setările modului întunecat",
+    "Light": "Luminos",
     "Dark": "Întunecat",
-    "System": "Follow system settings (Auto)"
+    "System": "Preia setările sistemului (Automat)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Limba piesei",
+    "PreferredLanguages": "Limbile tale prioritare",
     "AllLanguages": "Toate limbile"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Scurtături pentru Siri",
+    "ShortcutAlreadyAdded": "Această scurtătură a fost deja adăugată"
   }
 }
