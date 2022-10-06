@@ -15,17 +15,17 @@
     "Done": "Gata",
     "Today": "Astăzi",
     "Yesterday": "Ieri",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
+    "BackgroundActivityRestrictedTitle": "Permite activitatea în background",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
+    "GoToSettings": "Mergi la Setări",
+    "NotNow": "Mai târziu",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
     "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "FromKaareSiriShortcutName": "Pornește De la Kåre",
+    "PlayMusicSiriShortcutName": "Pornește muzica",
+    "DailyMessage": "Mesajul zilei"
   },
   "Streak": {
     "Message": "Progresul tău săptămâna aceasta",
@@ -33,8 +33,8 @@
     "PerfectWeekCountSingular": "{0} săptămână perfectă",
     "PerfectWeekCountPlural": "{0} săptămâni perfecte",
     "PerfectWeekCountNone": "Încă nu sunt săptămâni perfecte",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
+    "EligibleUntilHoursAndMinutesMessage": "Au mai rămas {0} ore și {1} minute din ziua de astăzi",
+    "EligibleUntilMinutesOnlyMessage": "Au mai rămas {0} minute astăzi",
     "DaysInARowSingular": "{0} day in a row",
     "DaysInARowPlural": "{0} days in a row",
     "WeekdayMonday": "L",
@@ -481,7 +481,7 @@
   "ThemeSettingsViewModel": {
     "Title": "Dark mode settings",
     "Light": "Light",
-    "Dark": "Dark",
+    "Dark": "Întunecat",
     "System": "Follow system settings (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
