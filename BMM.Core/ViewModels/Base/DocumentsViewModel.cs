@@ -125,6 +125,7 @@ namespace BMM.Core.ViewModels.Base
             _connectionStatusChangedToken = Messenger.Subscribe<ConnectionStatusChangedMessage>(message =>
             {
                 ConnectionStatus = message.ConnectionStatus;
+                RefreshTracksStatesInDocuments();
             });
 
             PlayCommand = new ExceptionHandlingCommand(async () =>

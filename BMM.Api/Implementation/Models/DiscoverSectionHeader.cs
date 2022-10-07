@@ -22,14 +22,5 @@ namespace BMM.Api.Implementation.Models
         public string TranslationId { get; set; }
 
         public bool UseCoverCarousel { get; set; }
-        
-        [JsonIgnore]
-        public bool HasLink => string.IsNullOrEmpty(Link);
-
-        [JsonIgnore]
-        public bool IsSeparatorVisible { get; set; } = true;
-
-        [JsonIgnore]
-        public string Origin { get; set; }
     }
 }

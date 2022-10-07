@@ -22,6 +22,7 @@ using BMM.Core.Messages;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.ContinueListening;
+using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
@@ -92,15 +93,16 @@ namespace BMM.Core.ViewModels
             bool hideStreak = await _settings.GetStreakHidden();
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
-            SetAdditionalElements(translatedDocs);
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
-            return await _prepareContinueListeningCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
+            var presentationItems = await _prepareContinueListeningCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
+            SetAdditionalElements(presentationItems);
+            return presentationItems;
         }
 
-        private void SetAdditionalElements(IList<Document> translatedDocs)
+        private void SetAdditionalElements(IList<IDocumentPO> translatedDocs)
         {
-            translatedDocs.Insert(0, new SimpleMargin());
-            foreach (var discoverSectionHeader in translatedDocs.OfType<DiscoverSectionHeader>())
+            translatedDocs.Insert(0, new SimpleMarginPO());
+            foreach (var discoverSectionHeader in translatedDocs.OfType<DiscoverSectionHeaderPO>())
                 discoverSectionHeader.Origin = PlaybackOriginString;
         }
 

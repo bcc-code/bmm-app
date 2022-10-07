@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Linq;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Models.POs.Tracks;
 using MvvmCross.Converters;
 
 namespace BMM.Core.ValueConverters

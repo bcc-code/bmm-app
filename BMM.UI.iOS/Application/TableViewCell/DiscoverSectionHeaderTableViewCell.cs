@@ -24,11 +24,11 @@ namespace BMM.UI.iOS
                 var set = this.CreateBindingSet<DiscoverSectionHeaderTableViewCell, DiscoverSectionHeaderPO>();
                 set.Bind(Titel).To(po => po.DiscoverSectionHeader.Title);
                 set.Bind(LinkButton).For(v => v.BindTitle()).To(po => po.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_ShowAll);
-                set.Bind(LinkButton).For(v => v.Hidden).To(po => po.DiscoverSectionHeader.HasLink).WithConversion<VisibilityConverter>();
+                set.Bind(LinkButton).For(v => v.Hidden).To(po => po.HasLink).WithConversion<VisibilityConverter>();
                 set.Bind(LinkButton).To(po => po.DeepLinkButtonClickedCommand);
                 set.Bind(Divider)
                     .For(v => v.BindVisible())
-                    .To(po => po.DiscoverSectionHeader.IsSeparatorVisible);
+                    .To(po => po.IsSeparatorVisible);
                 set.Apply();
             });
         }

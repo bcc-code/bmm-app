@@ -48,16 +48,17 @@ namespace BMM.Core.ViewModels
             var translatedItems = await _translateDocsAction.ExecuteGuarded(playlistsDocuments.Items.ToList());
             var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedItems);
 
-            carouselAdjustedItems
-                .OfType<DiscoverSectionHeader>()
-                .FirstOrDefault()
-                .IfNotNull(header => header.IsSeparatorVisible = false);
-
             var presentationItems = _documentsPOFactory.Create(
                 carouselAdjustedItems,
                 DocumentSelectedCommand,
                 OptionCommand,
                 TrackInfoProvider).ToList();
+            
+            presentationItems
+                .OfType<DiscoverSectionHeaderPO>()
+                .FirstOrDefault()
+                .IfNotNull(header => header.IsSeparatorVisible = false);
+            
             presentationItems.Add(new SimpleMarginPO());
             return presentationItems;
         }
