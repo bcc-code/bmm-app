@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Linq;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.Tracks;
 using MvvmCross.Converters;
 
 namespace BMM.Core.ValueConverters
@@ -10,12 +11,7 @@ namespace BMM.Core.ValueConverters
     {
         protected override bool Convert(Track track, Type targetType, object parameter, CultureInfo culture)
         {
-            if (track != null && track.Relations != null)
-            {
-                return track.Relations.Any(relation => relation.Type == TrackRelationType.External);
-            }
-
-            return false;
+            return track.Relations?.Any(relation => relation.Type == TrackRelationType.External) ?? false;
         }
     }
 }

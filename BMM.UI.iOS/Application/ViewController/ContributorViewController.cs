@@ -26,8 +26,8 @@ namespace BMM.UI.iOS
 
             var set = this.CreateBindingSet<ContributorViewController, ContributorViewModel>();
             set.Bind(this).For(c => c.Title).To(vm => vm.Contributor).WithConversion<ContributorNameConverter>();
-            set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
+            set.Bind(source).To(vm => vm.Documents);
+            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
             set.Bind(source).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
             set.Bind(source).For(s => s.IsFullyLoaded).To(s => s.IsFullyLoaded);
             set.Bind(CircleCoverImage).For(v => v.ImagePath).To(vm => vm.Contributor.Cover);

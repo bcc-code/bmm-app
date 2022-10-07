@@ -6,6 +6,7 @@ using BMM.Core.Implementations.ChapterStrategy;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Base.Interfaces;
 using Moq;
 using MvvmCross.Localization;
 using NUnit.Framework;
@@ -40,7 +41,7 @@ namespace BMM.Core.Test.Unit.Implementations.ChapterStrategy
                 new Track {RecordedAt = DateTime.Parse("2010-05-20")}
             };
 
-            var result = _chapterStrategy.AddChapterHeaders(newTracks, new List<Document>());
+            var result = _chapterStrategy.AddChapterHeaders(newTracks, new List<IDocumentPO>());
 
             var numberOfChapters = result.Count(r => r is ChapterHeader);
 
@@ -56,7 +57,7 @@ namespace BMM.Core.Test.Unit.Implementations.ChapterStrategy
                 new Track {RecordedAt = DateTime.Parse("2009-05-17")}
             };
 
-            var result = _chapterStrategy.AddChapterHeaders(newTracks, new List<Document>());
+            var result = _chapterStrategy.AddChapterHeaders(newTracks, new List<IDocumentPO>());
 
             var numberOfChapters = result.Count(r => r is ChapterHeader);
 

@@ -2,14 +2,10 @@ using System;
 using System.Globalization;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Translation;
-using BMM.Core.ViewModels.Base;
-using BMM.Core.ViewModels.MyContent;
 using MvvmCross.Converters;
-using MvvmCross.Localization;
 
 namespace BMM.Core.ValueConverters.TrackCollections
 {

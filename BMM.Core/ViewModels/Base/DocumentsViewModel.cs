@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
@@ -18,8 +20,12 @@ using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
+using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
 using MvvmCross;
 using MvvmCross.Base;
@@ -34,15 +40,15 @@ namespace BMM.Core.ViewModels.Base
         private IBlobCache _blobCache;
         private bool _isRefreshing;
         private bool _isInitialized;
-        private IBmmObservableCollection<Document> _documents;
+        private IBmmObservableCollection<IDocumentPO> _documents;
         private ITrackModel _currentTrack;
         public readonly IDocumentFilter Filter;
 
-        private readonly MvxSubscriptionToken _fileDownloadStartedSubscriptionToken;
-        private readonly MvxSubscriptionToken _fileDownloadCompletedSubscriptionToken;
-        private readonly MvxSubscriptionToken _fileDownloadCanceledSubscriptionToken;
-        private readonly MvxSubscriptionToken _downloadQueueChangedSubscriptionToken;
-        private readonly MvxSubscriptionToken _downloadQueueFinishedSubscriptionToken;
+        private MvxSubscriptionToken _fileDownloadStartedSubscriptionToken;
+        private MvxSubscriptionToken _fileDownloadCompletedSubscriptionToken;
+        private MvxSubscriptionToken _fileDownloadCanceledSubscriptionToken;
+        private MvxSubscriptionToken _downloadQueueChangedSubscriptionToken;
+        private MvxSubscriptionToken _downloadQueueFinishedSubscriptionToken;
 
         private readonly MvxSubscriptionToken _trackMarkedAsListenedToken;
         private readonly MvxSubscriptionToken _contentLanguageChangedToken;
@@ -50,7 +56,7 @@ namespace BMM.Core.ViewModels.Base
         private readonly MvxSubscriptionToken _connectionStatusChangedToken;
         private MvxSubscriptionToken _cacheToken;
 
-        public ITrackInfoProvider TrackInfoProvider = new DefaultTrackInfoProvider();
+        public ITrackInfoProvider TrackInfoProvider { get; protected set; }= new DefaultTrackInfoProvider();
 
         public ITrackModel CurrentTrack
         {
@@ -84,16 +90,16 @@ namespace BMM.Core.ViewModels.Base
 
         public IMvxCommand PlayCommand { get; private set; }
 
-        public IBmmObservableCollection<Document> Documents
+        public IBmmObservableCollection<IDocumentPO> Documents
         {
             get => _documents;
             private set => SetProperty(ref _documents, value);
         }
 
-        protected override async Task DocumentAction(Document item)
+        protected override async Task DocumentAction(IDocumentPO item)
         {
             if (item != null)
-                await DocumentAction(item, Documents.OfType<Track>().ToList());
+                await DocumentAction(item, Documents.OfType<TrackPO>().Select(t => t.Track).ToList());
         }
 
         public IList<T> FilteredDocuments<T>(IList<T> list) where T : Document
@@ -106,25 +112,25 @@ namespace BMM.Core.ViewModels.Base
         public DocumentsViewModel(IDocumentFilter documentFilter = null)
         {
             Filter = documentFilter ?? new NullFilter();
-            Documents = new BmmObservableCollection<Document>();
+            Documents = new BmmObservableCollection<IDocumentPO>();
 
             CurrentTrack = Mvx.IoCProvider.Resolve<IMediaPlayer>().CurrentTrack;
             _currentTrackChangedToken = Messenger.Subscribe<CurrentTrackChangedMessage>(message =>
             {
                 CurrentTrack = message.CurrentTrack;
+                RefreshTracksStatesInDocuments();
             });
 
             ConnectionStatus = Mvx.IoCProvider.Resolve<IConnection>().GetStatus();
             _connectionStatusChangedToken = Messenger.Subscribe<ConnectionStatusChangedMessage>(message =>
             {
                 ConnectionStatus = message.ConnectionStatus;
-                RefreshDocumentsList();
             });
 
             PlayCommand = new ExceptionHandlingCommand(async () =>
             {
                 var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
-                var tracks = Documents.OfType<IMediaTrack>().ToList();
+                var tracks = Documents.OfType<TrackPO>().Select(t => (IMediaTrack)t.Track).ToList();
 
                 if (tracks.Any())
                 {
@@ -135,7 +141,7 @@ namespace BMM.Core.ViewModels.Base
             ShufflePlayCommand = new ExceptionHandlingCommand(async () =>
             {
                 var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
-                var tracks = Documents.OfType<IMediaTrack>().ToList();
+                var tracks = Documents.OfType<TrackPO>().Select(t => (IMediaTrack)t.Track).ToList();
 
                 if (tracks.Any())
                 {
@@ -144,17 +150,17 @@ namespace BMM.Core.ViewModels.Base
             });
 
             _trackMarkedAsListenedToken = Messenger.Subscribe<TrackMarkedAsListenedMessage>(HandleTrackMarkedAsListenedMessage);
-
-            _fileDownloadStartedSubscriptionToken = Messenger.Subscribe<FileDownloadStartedMessage>(HandleFileDownloadStartedMessage);
-
-            _fileDownloadCompletedSubscriptionToken = Messenger.Subscribe<FileDownloadCompletedMessage>(HandleFileDownloadCompletedMessage);
-
-            _fileDownloadCanceledSubscriptionToken = Messenger.Subscribe<FileDownloadCanceledMessage>(HandleFileDownloadCanceledMessage);
-
-            _downloadQueueChangedSubscriptionToken = Messenger.Subscribe<DownloadQueueChangedMessage>(HandleDownloadQueueChangedMessage);
-
-            _downloadQueueFinishedSubscriptionToken = Messenger.Subscribe<QueueFinishedMessage>(HandleDownloadQueueFinishedMessage);
             _contentLanguageChangedToken = Messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
+        }
+
+        private void RefreshTracksStatesInDocuments()
+        {
+            var tracksToRefresh = Documents
+                .OfType<ITrackHolderPO>()
+                .ToList();
+
+            foreach (var track in tracksToRefresh)
+                track.RefreshState();
         }
 
         [MvxInject]
@@ -170,7 +176,7 @@ namespace BMM.Core.ViewModels.Base
 
         protected void HandleTrackMarkedAsListenedMessage(TrackMarkedAsListenedMessage message)
         {
-            foreach (var document in Documents.OfType<Track>())
+            foreach (var document in Documents.OfType<TrackPO>().Select(t => t.Track))
             {
                 if (document.Id == message.TrackId)
                 {
@@ -182,27 +188,28 @@ namespace BMM.Core.ViewModels.Base
 
         protected virtual void HandleDownloadQueueChangedMessage(DownloadQueueChangedMessage obj)
         {
-            RefreshDocumentsList();
+            RefreshAllTracks();
         }
 
         protected virtual void HandleFileDownloadStartedMessage(FileDownloadStartedMessage message)
         {
-            RefreshDocumentsList();
+            var trackHolderPO = Documents.FirstOrDefault(d => d.Id == message.TrackId) as ITrackHolderPO;
+            trackHolderPO?.RefreshState();
         }
 
         protected virtual void HandleFileDownloadCompletedMessage(FileDownloadCompletedMessage message)
         {
-            RefreshDocumentsList();
+            RefreshAllTracks();
         }
 
         protected virtual void HandleFileDownloadCanceledMessage(FileDownloadCanceledMessage message)
         {
-            RefreshDocumentsList();
+            RefreshAllTracks();
         }
 
         protected virtual void HandleDownloadQueueFinishedMessage(QueueFinishedMessage message)
         {
-            RefreshDocumentsList();
+            RefreshAllTracks();
         }
 
         protected virtual Task Initialization()
@@ -226,6 +233,26 @@ namespace BMM.Core.ViewModels.Base
             });
 
             // ToDo: By default subscribe to nothing but make it possible to subscribe to Podcast with ID 1 etc.
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            _fileDownloadStartedSubscriptionToken = Messenger.Subscribe<FileDownloadStartedMessage>(HandleFileDownloadStartedMessage);
+            _fileDownloadCompletedSubscriptionToken = Messenger.Subscribe<FileDownloadCompletedMessage>(HandleFileDownloadCompletedMessage);
+            _fileDownloadCanceledSubscriptionToken = Messenger.Subscribe<FileDownloadCanceledMessage>(HandleFileDownloadCanceledMessage);
+            _downloadQueueChangedSubscriptionToken = Messenger.Subscribe<DownloadQueueChangedMessage>(HandleDownloadQueueChangedMessage);
+            _downloadQueueFinishedSubscriptionToken = Messenger.Subscribe<QueueFinishedMessage>(HandleDownloadQueueFinishedMessage);
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            Messenger.Unsubscribe<FileDownloadStartedMessage>(_fileDownloadStartedSubscriptionToken);
+            Messenger.Unsubscribe<FileDownloadCompletedMessage>(_fileDownloadCompletedSubscriptionToken);
+            Messenger.Unsubscribe<FileDownloadCanceledMessage>(_fileDownloadCanceledSubscriptionToken);
+            Messenger.Unsubscribe<DownloadQueueChangedMessage>(_downloadQueueChangedSubscriptionToken);
+            Messenger.Unsubscribe<QueueFinishedMessage>(_downloadQueueFinishedSubscriptionToken);
         }
 
         public override void ViewDestroy(bool viewFinishing = true)
@@ -258,7 +285,7 @@ namespace BMM.Core.ViewModels.Base
             // ToDo: show something useful in case nothing can be loaded
         }
 
-        public abstract Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated);
+        public abstract Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated);
 
         public async Task TryRefresh()
         {
@@ -344,7 +371,7 @@ namespace BMM.Core.ViewModels.Base
             await ReplaceItems(documents);
         }
 
-        protected virtual async Task ReplaceItems(IEnumerable<Document> documents)
+        protected virtual async Task ReplaceItems(IEnumerable<IDocumentPO> documents)
         {
             if (documents == null)
                 return;
@@ -356,20 +383,15 @@ namespace BMM.Core.ViewModels.Base
             });
         }
 
-        protected override async Task DocumentAction(Document item, IList<Track> list)
+        protected override async Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
             await base.DocumentAction(item, FilteredDocuments(list).ToList());
         }
 
-        ///<summary>
-        /// Unfortunately it's not able to only refresh a single item.
-        /// Therefore we raise property changed on the whole list which makes all items being re-rendered.
-        /// To fix it we would need Document to implement INotifyPropertyChanged
-        /// </summary>
-        private void RefreshDocumentsList()
+        protected void RefreshAllTracks()
         {
-            RaisePropertyChanged(() => Documents);
-            RaisePropertyChanged(() => TrackCountString);
+            foreach (var trackHolderPO in Documents.OfType<ITrackHolderPO>().ToList())
+                trackHolderPO.RefreshState();
         }
     }
 }

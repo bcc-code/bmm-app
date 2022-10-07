@@ -23,12 +23,7 @@ namespace BMM.UI.Droid.Application.Helpers
             base.OnScrolled(recyclerView, dx, dy);
 
             var visibleItemCount = recyclerView.ChildCount;
-            var adapter = recyclerView.GetAdapter();
-            
-            if (adapter == null)
-                return;
-            
-            var totalItemCount = adapter.ItemCount;
+            var totalItemCount = recyclerView.GetAdapter()?.ItemCount;
             var pastVisiblesItems = _layoutManager.FindFirstVisibleItemPosition();
 
             if ((visibleItemCount + pastVisiblesItems) >= totalItemCount)

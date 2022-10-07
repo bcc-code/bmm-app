@@ -1,7 +1,6 @@
 using System;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Translation;
-using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
@@ -30,7 +29,7 @@ namespace BMM.UI.iOS
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
 
-        public override async void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
@@ -42,12 +41,11 @@ namespace BMM.UI.iOS
             var source = new NotSelectableDocumentsTableViewSource(TrackTableView);
 
             var set = this.CreateBindingSet<ExploreNewestViewController, ExploreNewestViewModel>();
-            
-            set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
+
+            set.Bind(source).To(vm => vm.Documents);
             set.Bind(source)
                 .For(s => s.SelectionChangedCommand)
-                .To(s => s.DocumentSelectedCommand)
-                .WithConversion<DocumentSelectedCommandValueConverter>();
+                .To(s => s.DocumentSelectedCommand);
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
@@ -59,12 +57,6 @@ namespace BMM.UI.iOS
             set.Apply();
 
             TrackTableView.ReloadData();
-
-            ViewModel.RadioViewModel.PropertyChanged += (sender, args) =>
-            {
-                if (args.PropertyName == "ShowBmmLive")
-                    SetTableHeaderHeight();
-            };
 
             if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsSiri)
                 return;

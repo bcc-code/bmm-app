@@ -98,14 +98,12 @@ namespace BMM.UI.iOS
 
             set
                 .Bind(source)
-                .To(vm => vm.Documents)
-                .WithConversion<DocumentListValueConverter>(ViewModel);
+                .To(vm => vm.Documents);
 
             set
                 .Bind(source)
                 .For(s => s.SelectionChangedCommand)
-                .To(s => s.DocumentSelectedCommand)
-                .WithConversion<DocumentSelectedCommandValueConverter>();
+                .To(s => s.DocumentSelectedCommand);
 
             set
                 .Bind(source)

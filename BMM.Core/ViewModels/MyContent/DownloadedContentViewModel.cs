@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackCollections;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Other;
+using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
@@ -23,13 +28,12 @@ namespace BMM.Core.ViewModels.MyContent
         public bool IsEmpty { get; private set; }
 
         public DownloadedContentViewModel(
-            IOfflineTrackCollectionStorage downloader,
             IStorageManager storageManager,
-            IConnection connection
-            )
+            IConnection connection,
+            ITrackCollectionPOFactory trackCollectionPOFactory)
             : base(
-                  downloader,
-                  storageManager)
+                storageManager,
+                trackCollectionPOFactory)
         {
             _connection = connection;
         }
@@ -59,29 +63,24 @@ namespace BMM.Core.ViewModels.MyContent
             RaisePropertyChanged(() => IsEmpty);
         }
 
-        private async Task<IList<TrackCollection>> TrackCollectionContainOfflineFiles(IList<TrackCollection> allCollections, CachePolicy cachePolicy)
+        private async Task<IList<TrackCollectionPO>> TrackCollectionContainOfflineFiles(IList<TrackCollectionPO> allCollections, CachePolicy cachePolicy)
         {
-            var offlineCollection = allCollections?.Where(IsOfflineAvailable).ToList();
+            var offlineCollection = allCollections?.Where(tc => tc.IsAvailableOffline).ToList();
             var isOnline = _connection.GetStatus() == ConnectionStatus.Online;
 
             if (isOnline || offlineCollection == null)
-            {
                 return offlineCollection;
-            }
-            else
-            {
-                List<TrackCollection> returnList = new List<TrackCollection>();
-                foreach (var trackCollection in offlineCollection)
-                {
-                    var collectionTracks = await Client.TrackCollection.GetById(trackCollection.Id, cachePolicy);
-                    if (collectionTracks.Tracks.Any(track => _storageManager.SelectedStorage.IsDownloaded(track)))
-                    {
-                        returnList.Add(trackCollection);
-                    }
-                }
 
-                return returnList;
+            var returnList = new List<TrackCollectionPO>();
+            foreach (var trackCollection in offlineCollection)
+            {
+                var collectionTracks = await Client.TrackCollection.GetById(trackCollection.Id, cachePolicy);
+                
+                if (collectionTracks.Tracks.Any(track => _storageManager.SelectedStorage.IsDownloaded(track)))
+                    returnList.Add(trackCollection);
             }
+
+            return returnList;
         }
 
         public override async Task Load()
@@ -90,13 +89,13 @@ namespace BMM.Core.ViewModels.MyContent
             await RaisePropertyChanged(() => IsEmpty);
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            var allCollectionsExceptMyTracks = await base.LoadItems(policy) as IList<TrackCollection>;
+            var allCollectionsExceptMyTracks = await base.LoadItems(policy) as IList<TrackCollectionPO>;
 
             var offlineTrackCollections = await TrackCollectionContainOfflineFiles(allCollectionsExceptMyTracks, policy);
 
-            List<Document> offlineTrackCollectionsPlusPinnedItems = new List<Document>();
+            var offlineTrackCollectionsPlusPinnedItems = new List<DocumentPO>();
 
             offlineTrackCollectionsPlusPinnedItems.AddRange(await BuildPinnedItems());
             if (offlineTrackCollections != null)
@@ -108,7 +107,7 @@ namespace BMM.Core.ViewModels.MyContent
             return offlineTrackCollectionsPlusPinnedItems;
         }
 
-        private async Task<IEnumerable<PinnedItem>> BuildPinnedItems()
+        private async Task<IEnumerable<PinnedItemPO>> BuildPinnedItems()
         {
             var followedPodcastPinnedItem = new PinnedItem
             {
@@ -117,12 +116,12 @@ namespace BMM.Core.ViewModels.MyContent
                 Icon = "icon_podcast"
             };
 
-            var pinnedItemsList = new List<PinnedItem>();
+            var pinnedItemsList = new List<PinnedItemPO>();
 
             var podcasts = await Client.Podcast.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
             var followedPodcasts = podcasts?.Where(Mvx.IoCProvider.Resolve<IPodcastOfflineManager>().IsFollowing);
             if (followedPodcasts != null && followedPodcasts.Any())
-                pinnedItemsList.Add(followedPodcastPinnedItem);
+                pinnedItemsList.Add(new PinnedItemPO(followedPodcastPinnedItem));
 
             return pinnedItemsList;
         }

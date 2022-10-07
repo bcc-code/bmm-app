@@ -9,5 +9,5 @@
         android:layout_marginBottom="@dimen/margin_small"
         local:MvxItemTemplate="@layout/listitem_cover_with_title"
         local:MvxBind="
-            ItemsSource Item.CoverDocuments;
-            ItemClick ViewModel.DocumentSelectedCommand" />
+            ItemsSource CoverDocuments;
+            ItemClick DocumentSelectedCommand" />

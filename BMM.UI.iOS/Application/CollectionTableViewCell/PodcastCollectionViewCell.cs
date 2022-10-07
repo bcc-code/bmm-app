@@ -1,6 +1,7 @@
 ﻿using System;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Interfaces;
+using BMM.Core.Models.POs.Base;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Extensions;
@@ -21,13 +22,13 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<PodcastCollectionViewCell, CellWrapperViewModel<ITrackListDisplayable>>();
+                var set = this.CreateBindingSet<PodcastCollectionViewCell, ITrackListHolderPO>();
 
-                set.Bind(TitleLabel).To(vm => vm.Item.Title);
+                set.Bind(TitleLabel).To(vm => vm.Title);
                 ImageView.ErrorAndLoadingPlaceholderImagePathForCover();
                 set.Bind(ImageView)
                     .For(v => v.ImagePath)
-                    .To(vm => vm.Item.Cover)
+                    .To(vm => vm.Cover)
                     .WithConversion<CoverUrlToFallbackImageValueConverter>(IosConstants.CoverPlaceholderImage);
 
                 set.Apply();

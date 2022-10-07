@@ -3,6 +3,7 @@ using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
+using BMM.Core.Models.POs.Contributors;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
@@ -20,12 +21,12 @@ namespace BMM.UI.iOS
             this.DelayBind(() =>
             {
                 CoverImageView.ErrorAndLoadingPlaceholderImagePath(IosConstants.ArtistPlaceholderImage);
-                var set = this.CreateBindingSet<ContributorTableViewCell, CellWrapperViewModel<Contributor>>();
-                set.Bind(TitleLabel).To(vm => vm.Item.Name);
-                set.Bind(OptionsButton).WithConversion<OptionButtonCommandValueConverter>();
+                var set = this.CreateBindingSet<ContributorTableViewCell, ContributorPO>();
+                set.Bind(TitleLabel).To(vm => vm.Contributor.Name);
+                set.Bind(OptionsButton).To(po => po.OptionButtonClickedCommand);
                 set.Bind(CoverImageView)
                     .For(v => v.ImagePath)
-                    .To(vm => vm.Item.Cover)
+                    .To(vm => vm.Contributor.Cover)
                     .WithConversion<CoverUrlToFallbackImageValueConverter>(IosConstants.ArtistPlaceholderImage);
                 set.Apply();
             });

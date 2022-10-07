@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.ViewModels;
 using Moq;
@@ -18,6 +22,9 @@ namespace BMM.Core.Test.Unit.ViewModels
     public class SearchViewModelTests : DocumentViewModelTests
     {
         private IPostprocessDocumentsAction _postprocessDocumentsActionMock;
+        private ITrackPOFactory _trackPOFactoryMock;
+        private IDocumentsPOFactory _documentsPOFactoryMock;
+        
         protected SearchViewModel ViewModel { get; set; }
 
         protected override void AdditionalSetup()
@@ -26,10 +33,13 @@ namespace BMM.Core.Test.Unit.ViewModels
 
             _postprocessDocumentsActionMock = Substitute.For<IPostprocessDocumentsAction>();
             _postprocessDocumentsActionMock
-                .ExecuteGuarded(Arg.Any<IEnumerable<Document>>())
-                .Returns(args => (IEnumerable<Document>) args[0]);
+                .ExecuteGuarded(Arg.Any<IEnumerable<IDocumentPO>>())
+                .Returns(args => (IEnumerable<IDocumentPO>) args[0]);
 
-            ViewModel = new SearchViewModel
+            _trackPOFactoryMock = Substitute.For<ITrackPOFactory>();
+            _documentsPOFactoryMock = Substitute.For<IDocumentsPOFactory>();
+
+            ViewModel = new SearchViewModel(_trackPOFactoryMock, _documentsPOFactoryMock)
             {
                 PostprocessDocumentsAction = _postprocessDocumentsActionMock
             };
@@ -129,7 +139,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             Setup();
             Client.Setup(x => x.Search.GetAll(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<int>()))
                 .Returns(Task.FromResult<SearchResults>(null));
-            var searchViewModel = new SearchViewModel
+            var searchViewModel = new SearchViewModel(_trackPOFactoryMock, _documentsPOFactoryMock)
             {
                 SearchTerm = "test"
             };

@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/trackTitle"
         app:layout_constraintBottom_toBottomOf="@+id/trackTitle"
-        local:MvxBind="DrawableId TrackPlaybackStateToDrawable(., ViewModel.CurrentTrack);" />
+        local:MvxBind="DrawableId TrackPlaybackStateToDrawable(TrackState)" />
 
     <TextView
         android:id="@+id/trackTitle"

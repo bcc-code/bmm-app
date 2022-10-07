@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Player.Interfaces;
+using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.TrackInformation.Strategies;
@@ -116,7 +117,8 @@ namespace BMM.Core.ViewModels
             IUriOpener uriOpener,
             IAnalytics analytics,
             IChangeTrackLanguageAction changeTrackLanguageAction,
-            IUpdateExternalRelationsAction updateExternalRelationsAction) : base(mediaPlayer)
+            IUpdateExternalRelationsAction updateExternalRelationsAction,
+            IShowTrackInfoAction showTrackInfoAction) : base(mediaPlayer)
         {
             _uriOpener = uriOpener;
             _analytics = analytics;
@@ -141,6 +143,7 @@ namespace BMM.Core.ViewModels
             {
                 MediaPlayer.SeekTo(position);  
             });
+            ShowTrackInfoCommand = new MvxCommand(() => showTrackInfoAction.Command.ExecuteAsync((Track)CurrentTrack));
 
             _repeatToken = Messenger.Subscribe<RepeatModeChangedMessage>(m => RepeatType = m.RepeatType);
             _shuffleToken = Messenger.Subscribe<ShuffleModeChangedMessage>(m => IsShuffleEnabled = m.IsShuffleEnabled);
@@ -151,8 +154,10 @@ namespace BMM.Core.ViewModels
             UpdatePlaybackState(MediaPlayer.PlaybackState);
         }
 
+
         public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
         public IMvxCommand<long> SeekToPositionCommand { get; set; }
+        public IMvxCommand ShowTrackInfoCommand { get; set; }
 
         private void OpenLyricsLink()
         {
@@ -214,12 +219,6 @@ namespace BMM.Core.ViewModels
             RaisePropertyChanged(() => PlayingText);
         }
 
-        // Since CurrentTrack is a ITrackModel, this method always gets a null value passed in from Mvx. Therefore we override it and pass CurrentTrack directly.
-        protected override Task ShowTrackInfo(Track track)
-        {
-            return base.ShowTrackInfo(CurrentTrack as Track);
-        }
-        
         protected override async Task OnCurrentTrackChanged()
         {
             await base.OnCurrentTrackChanged();

@@ -1,5 +1,5 @@
-using System.Reflection;
-using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.ListeningStreakPO;
+using BMM.Core.Models.POs.Other;
 using Foundation;
 using UIKit;
 
@@ -13,18 +13,15 @@ namespace BMM.UI.iOS
 
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
-            PropertyInfo documentProperty = item.GetType().GetProperty("Item");
-            Document document = documentProperty?.GetValue(item) as Document;
-
             var cell = base.GetOrCreateCellFor(tableView, indexPath, item);
-            if (document == null)
+            if (item == null)
                 return cell;
 
-            switch (document.DocumentType)
+            switch (item)
             {
-                case DocumentType.ChapterHeader:
-                case DocumentType.DiscoverSectionHeader:
-                case DocumentType.ListeningStreak:
+                case ChapterHeaderPO:
+                case DiscoverSectionHeaderPO:
+                case ListeningStreakPO:
                     cell.SelectionStyle = UITableViewCellSelectionStyle.None;
                     break;
             }

@@ -9,5 +9,5 @@
         android:layout_marginBottom="@dimen/margin_small"
         local:MvxItemTemplate="@layout/listitem_continue_listening"
         local:MvxBind="
-            ItemsSource DocumentList(Item.ContinueListeningElements, ViewModel);
-            ItemClick ViewModel.DocumentSelectedCommand" />
+            ItemsSource ContinueListeningTiles;
+            ItemClick DocumentSelectedCommand" />

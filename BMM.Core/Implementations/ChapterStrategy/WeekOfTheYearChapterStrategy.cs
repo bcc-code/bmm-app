@@ -7,6 +7,9 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Localization;
@@ -26,9 +29,9 @@ namespace BMM.Core.Implementations.ChapterStrategy
 
         private IBMMLanguageBinder TextSource => BMMLanguageBinderLocator.TextSource;
 
-        public IList<Document> AddChapterHeaders(IList<Track> tracks, IEnumerable<Document> existingDocs)
+        public IList<Document> AddChapterHeaders(IList<Track> tracks, IEnumerable<IDocumentPO> existingDocs)
         {
-            var chapters = existingDocs.OfType<ChapterHeader>().ToList();
+            var chapters = existingDocs.OfType<ChapterHeaderPO>().ToList();
             var groupedTracks = tracks.GroupBy(GroupByWeekOfTheYearAndYear);
 
             var trackWithChapters = new List<Document>();
@@ -67,7 +70,7 @@ namespace BMM.Core.Implementations.ChapterStrategy
             return int.Parse(groupedTrackKey.weekOfTheYear.ToString() + groupedTrackKey.year.ToString());
         }
 
-        private bool ChapterForIdExists(int chapterId, List<ChapterHeader> chapters)
+        private bool ChapterForIdExists(int chapterId, List<ChapterHeaderPO> chapters)
         {
             return chapters.Any(c => c.Id == chapterId);
         }

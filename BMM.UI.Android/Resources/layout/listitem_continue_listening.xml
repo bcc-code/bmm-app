@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            local:MvxBind="Click TileClickedCommand(.)" >
+            local:MvxBind="Click TileClickedCommand" >
     
         <ffimageloading.cross.MvxCachedImageView
                 android:id="@+id/CoverImageView"
@@ -30,7 +30,7 @@
                 local:MvxBind="
                     LoadingPlaceholderImagePath 'placeholder_cover';
                     ErrorPlaceholderImagePath 'placeholder_cover';
-                    ImageViewPath CoverUrlToFallbackImage(Item.CoverUrl, 'placeholder_cover')" />
+                    ImageViewPath CoverUrlToFallbackImage(ContinueListeningTile.CoverUrl, 'placeholder_cover')" />
 
         <ImageButton
                 android:id="@+id/MoreButton"
@@ -43,7 +43,7 @@
                 android:tint="@color/on_color_one_color"
                 local:layout_constraintEnd_toEndOf="parent"
                 local:layout_constraintTop_toTopOf="parent"
-                local:MvxBind="Click OptionButtonCommand(.)" />
+                local:MvxBind="Click OptionButtonClickedCommand" />
         
         <ImageButton
                 android:id="@+id/PlayButton"
@@ -55,7 +55,7 @@
                 android:layout_marginStart="@dimen/margin_xxmedium"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toStartOf="parent"
-                local:MvxBind="Click ContinueListeningCommand(.)" />
+                local:MvxBind="Click ContinueListeningCommand" />
 
         <ImageButton
                 android:id="@+id/ShuffleButton"
@@ -69,8 +69,8 @@
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toEndOf="@+id/PlayButton"
                 local:MvxBind="
-                    Click ShuffleButtonCommand(.);
-                    Visibility Visibility(HasValueToVisible(Item.ShufflePodcastId))" />
+                    Click ShuffleButtonClickedCommand;
+                    Visibility Visibility(HasValueToVisible(ContinueListeningTile.ShufflePodcastId))" />
 
         <ImageButton
                 android:id="@+id/DownloadedButton"
@@ -82,7 +82,7 @@
                 android:layout_marginEnd="@dimen/element_margin_small"
                 android:tint="@color/on_color_one_color"
                 local:layout_goneMarginEnd="@dimen/margin_xxmedium"
-                local:MvxBind="Visibility Visibility(DownloadStatusDone(Item.Track))"
+                local:MvxBind="Visibility Visibility(DownloadStatusDone(ContinueListeningTile.Track))"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintEnd_toStartOf="@+id/ReferenceButton" />
 
@@ -96,8 +96,8 @@
                 android:layout_marginEnd="@dimen/margin_xxmedium"
                 android:tint="@color/on_color_one_color"
                 local:MvxBind="
-                    Click ShowTrackInfoCommand(.);
-                    Visibility Visibility(TrackHasExternalRelations(Item.Track))"
+                    Click ShowTrackInfoCommand;
+                    Visibility Visibility(TrackHasExternalRelations(ContinueListeningTile.Track))"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintEnd_toEndOf="parent" />
         
@@ -125,7 +125,7 @@
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Paragraph1_OnColor2"
-                local:MvxBind="Text Item.Title" />
+                local:MvxBind="Text ContinueListeningTile.Title" />
 
         <TextView
                 android:id="@+id/PlayingStatusIcon"
@@ -137,7 +137,7 @@
                 local:layout_constraintBottom_toBottomOf="@+id/TitleLabel"
                 local:layout_constraintTop_toTopOf="@+id/TitleLabel"
                 local:layout_constraintStart_toStartOf="parent"
-                local:MvxBind="Visibility Visibility(IsTrackPlayingToVisible(Item.Track, ViewModel.CurrentTrack))"/>
+                local:MvxBind="Visibility Visibility(IsCurrentlySelected)"/>
         
         <TextView
                 android:id="@+id/TitleLabel"
@@ -150,7 +150,7 @@
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Title1_OnColor1"
-                local:MvxBind="Text Item.Label" />
+                local:MvxBind="Text ContinueListeningTile.Label" />
 
         <TextView
                 android:id="@+id/DayOfWeekLabel"
@@ -161,7 +161,7 @@
                 local:layout_constraintBottom_toTopOf="@+id/PlayButton"
                 local:layout_constraintStart_toStartOf="parent"
                 style="@style/Subtitle3_OnColor1"
-                local:MvxBind="Text DateTimeToPodcastPublishDayOfWeekLabel(Item.Date)" />
+                local:MvxBind="Text DateTimeToPodcastPublishDayOfWeekLabel(ContinueListeningTile.Date)" />
 
         <TextView
                 android:id="@+id/DateLabel"
@@ -173,7 +173,7 @@
                 local:layout_constraintStart_toEndOf="@+id/DayOfWeekLabel"
                 local:layout_constraintBottom_toTopOf="@+id/PlayButton"
                 style="@style/Subtitle3_OnColor2"
-                local:MvxBind="Text DateTimeToPodcastPublishDateLabel(Item.Date)" />
+                local:MvxBind="Text DateTimeToPodcastPublishDateLabel(ContinueListeningTile.Date)" />
         
         <bmm.ui.droid.application.customViews.ProgressBarView
                 android:id="@+id/ProgressBarView"
@@ -184,7 +184,7 @@
                 local:layout_constraintEnd_toEndOf="parent"
                 local:layout_constraintTop_toTopOf="@+id/RemainingLabel"
                 local:layout_constraintBottom_toBottomOf="@+id/RemainingLabel"
-                local:MvxBind="Percentage Item.Percentage"/>
+                local:MvxBind="Percentage ContinueListeningTile.Percentage"/>
 
         <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/TopTextBarrier"
@@ -208,6 +208,6 @@
                 local:layout_constraintEnd_toEndOf="@+id/TitleLabel"
                 local:layout_constraintTop_toTopOf="@+id/TitleLabel"
                 local:layout_constraintBottom_toBottomOf="@+id/BottomTextBarrier"
-                local:MvxBind="Click ContinueListeningCommand(.)" />
+                local:MvxBind="Click ContinueListeningCommand" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -32,8 +32,6 @@ namespace BMM.UI.Droid.Application.Adapters
                 }
                 case Resource.Layout.listitem_continue_listening_collection:
                     return new ContinueListeningCarouselCollectionViewHolder(view, itemBindingContext);
-                case Resource.Layout.listitem_fra_kaare_teaser:
-                    return new FraKaareTeaserViewHolder(view, itemBindingContext);
                 case Resource.Layout.listitem_info_message:
                     return new InfoMessageViewHolder(view, itemBindingContext);
                 default:

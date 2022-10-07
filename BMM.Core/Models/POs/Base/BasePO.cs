@@ -1,3 +1,5 @@
+using BMM.Core.Implementations.Localization;
+using BMM.Core.Implementations.Localization.Interfaces;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.Models.POs.Base
@@ -8,5 +10,6 @@ namespace BMM.Core.Models.POs.Base
     /// </summary>
     public abstract class BasePO : MvxNotifyPropertyChanged
     {
+        public IBMMLanguageBinder TextSource => BMMLanguageBinderLocator.TextSource;
     }
 }

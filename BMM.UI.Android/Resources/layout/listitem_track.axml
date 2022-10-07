@@ -12,7 +12,7 @@
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintTop_toTopOf="@+id/trackTitle"
         local:layout_constraintBottom_toBottomOf="@+id/trackTitle"
-        local:MvxBind="DrawableId TrackPlaybackStateToDrawable(., ViewModel.CurrentTrack);" />
+        local:MvxBind="DrawableId TrackPlaybackStateToDrawable(TrackState)" />
 
     <TextView
         android:id="@+id/trackTitle"
@@ -28,7 +28,9 @@
         local:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
         local:layout_constraintBottom_toTopOf="@+id/trackSubtitle"
         local:layout_constraintVertical_chainStyle="packed"
-        local:MvxBind="Text DocumentToTitle(.); TextColor TrackPlaybackStateToColor(., ViewModel.CurrentTrack)" />
+        local:MvxBind="
+            Text TrackTitle;
+            TextColor TrackPlaybackStateToColor(TrackState)" />
 
     <TextView
         android:id="@+id/trackSubtitle"
@@ -42,7 +44,9 @@
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintTop_toBottomOf="@+id/trackTitle"
         local:layout_constraintBottom_toBottomOf="parent"
-        local:MvxBind="Text DocumentToSubtitle(.); Alpha TrackAvailabilityToOpacity(.)" />
+        local:MvxBind="
+            Text TrackSubtitle;
+            Alpha TrackAvailabilityToOpacity(TrackState)" />
 
     <TextView
         android:id="@+id/trackMeta"
@@ -57,7 +61,9 @@
         local:layout_constraintBottom_toBottomOf="@+id/trackSubtitle"
         local:layout_constraintStart_toEndOf="@+id/trackSubtitle"
         local:layout_constraintEnd_toStartOf="@+id/BarrierForRightItems"
-        local:MvxBind="Text DocumentToMeta(.); Alpha TrackAvailabilityToOpacity(.)" />
+        local:MvxBind="
+            Text TrackMeta;
+            Alpha TrackAvailabilityToOpacity(TrackState)" />
 
     <LinearLayout 
         android:id="@+id/trackDownloadStatus"
@@ -72,22 +78,22 @@
         local:layout_constraintBottom_toBottomOf="parent">
         <ImageView
             android:src="@drawable/icon_download_pending"
-            android:id="@+id/downloadedIcon"
+            android:id="@+id/queuedIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Visibility Visibility(DownloadStatusPending(Item))" />
+            local:MvxBind="Visibility Visibility(TrackState.IsQueued)" />
         <ProgressBar
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:indeterminate="true"
             android:indeterminateDrawable="@drawable/spinner_small"
-            local:MvxBind="Visibility Visibility(DownloadStatusProgress(Item))" />
+            local:MvxBind="Visibility Visibility(TrackState.IsDownloading)" />
         <ImageView
             android:src="@drawable/icon_download_done"
             android:id="@+id/downloadedIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Visibility Visibility(DownloadStatusDone(Item))" />
+            local:MvxBind="Visibility Visibility(TrackState.IsDownloaded)" />
     </LinearLayout>
 
     <ImageView
@@ -100,7 +106,9 @@
         local:layout_constraintTop_toTopOf="parent"
         local:layout_constraintEnd_toStartOf="@+id/image_button_options"
         local:layout_constraintBottom_toBottomOf="parent"
-        local:MvxBind="Click ShowTrackInfoCommand(.); Visibility Visibility(TrackHasExternalRelations(Item))"/>
+        local:MvxBind="
+            Click ShowTrackInfoCommand;
+            Visibility Visibility(TrackHasExternalRelations(Track))"/>
 
     <ImageView
         android:id="@+id/image_button_options"
@@ -113,7 +121,7 @@
         local:layout_constraintTop_toTopOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
         local:layout_constraintBottom_toBottomOf="parent"
-        local:MvxBind="Click OptionButtonCommand(.)" />
+        local:MvxBind="Click OptionButtonClickedCommand" />
 
     <androidx.constraintlayout.widget.Barrier
             android:id="@+id/BarrierForRightItems"

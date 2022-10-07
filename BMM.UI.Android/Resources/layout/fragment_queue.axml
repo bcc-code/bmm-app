@@ -19,7 +19,7 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:MvxTemplateSelector="@string/document_templateselector"
             local:MvxBind="
-                ItemsSource DocumentList(Documents, .);
-                ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+                ItemsSource Documents;
+                ItemClick DocumentSelectedCommand" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

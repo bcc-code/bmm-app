@@ -1,4 +1,16 @@
 ﻿using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.Albums;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Carousels;
+using BMM.Core.Models.POs.ContinueListening;
+using BMM.Core.Models.POs.Contributors;
+using BMM.Core.Models.POs.InfoMessages;
+using BMM.Core.Models.POs.ListeningStreakPO;
+using BMM.Core.Models.POs.Other;
+using BMM.Core.Models.POs.Playlists;
+using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.TrackCollections;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ViewModels;
 using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 
@@ -14,9 +26,6 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int Unknown = 6;
         public const int PinnedItem = 7;
         public const int Header = 10;
-        public const int LiveRadio = 11;
-        public const int FraKaareTeaser = 12;
-        public const int AslaksenTeaser = 13;
         public const int ChapterHeader = 14;
         public const int DiscoverSectionHeader = 15;
         public const int Streak = 16;
@@ -27,7 +36,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int ContinueListeningCollection = 21;
     }
 
-    public class DocumentTemplateSelector : MvxTemplateSelector<CellWrapperViewModel<Document>>
+    public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
     {
         public override int GetItemLayoutId(int fromViewType)
         {
@@ -77,60 +86,49 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
             }
         }
 
-        protected override int SelectItemViewType(CellWrapperViewModel<Document> forItemObject)
+        protected override int SelectItemViewType(DocumentPO forItemObject)
         {
-            if (forItemObject?.Item == null)
-            {
+            if (forItemObject == null)
                 return ViewTypes.NullObject;
-            }
-
-            switch (forItemObject.Item.DocumentType)
+            
+            switch (forItemObject)
             {
-                case DocumentType.Track:
+                case TrackPO:
                     return ViewTypes.Track;
 
-                case DocumentType.Contributor:
+                case ContributorPO:
                     return ViewTypes.Contributor;
 
-                case DocumentType.TrackCollection:
+                case TrackCollectionPO:
                     return ViewTypes.TrackCollection;
 
-                case DocumentType.PinnedItem:
+                case PinnedItemPO:
                     return ViewTypes.PinnedItem;
 
-                case DocumentType.Album:
-                case DocumentType.Playlist:
-                case DocumentType.Podcast:
+                case AlbumPO:
+                case PlaylistPO:
+                case PodcastPO:
                     return ViewTypes.TrackList;
 
-                case DocumentType.ChapterHeader:
+                case ChapterHeaderPO:
                     return ViewTypes.ChapterHeader;
 
-                case DocumentType.DiscoverSectionHeader:
+                case DiscoverSectionHeaderPO:
                     return ViewTypes.DiscoverSectionHeader;
 
-                case DocumentType.ListeningStreak:
+                case ListeningStreakPO:
                     return ViewTypes.Streak;
 
-                case DocumentType.PlaylistsCollection:
+                case CoverCarouselCollectionPO:
                     return ViewTypes.PlaylistsCollection;
 
-                case DocumentType.InfoMessage:
+                case InfoMessagePO:
                     return ViewTypes.InfoMessage;
-                
-                case DocumentType.LiveRadio:
-                    return ViewTypes.LiveRadio;
-                
-                case DocumentType.AslaksenTeaser:
-                    return ViewTypes.AslaksenTeaser;
-                
-                case DocumentType.FraKaareTeaser:
-                    return ViewTypes.FraKaareTeaser;
-                
-                case DocumentType.SimpleMargin:
+
+                case SimpleMarginPO:
                     return ViewTypes.SimpleMargin;
                 
-                case DocumentType.ContinueListeningCollection:
+                case ContinueListeningCollectionPO:
                     return ViewTypes.ContinueListeningCollection;
                 
                 default:

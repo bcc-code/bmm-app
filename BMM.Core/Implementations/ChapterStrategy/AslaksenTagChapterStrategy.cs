@@ -6,6 +6,9 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Localization;
@@ -18,9 +21,9 @@ namespace BMM.Core.Implementations.ChapterStrategy
 
         private IBMMLanguageBinder TextSource => BMMLanguageBinderLocator.TextSource;
 
-        public IList<Document> AddChapterHeaders(IList<Track> tracks, IEnumerable<Document> existingDocs)
+        public IList<Document> AddChapterHeaders(IList<Track> tracks, IEnumerable<IDocumentPO> existingDocs)
         {
-            var chapters = existingDocs.OfType<ChapterHeader>().ToList();
+            var chapters = existingDocs.OfType<ChapterHeaderPO>().Select(ch => ch.ChapterHeader).ToList();
             var aslaksenTextRegex = new Regex("aslaksen - \\d");
             var chapterIdRegex = new Regex("\\d");
             var groupedTracks = tracks.GroupBy(t => t.Tags.First(tag => aslaksenTextRegex.IsMatch(tag)));

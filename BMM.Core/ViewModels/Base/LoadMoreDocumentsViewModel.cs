@@ -8,6 +8,9 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
 using MvvmCross.Commands;
 using MvvmCross.IoC;
@@ -19,11 +22,16 @@ namespace BMM.Core.ViewModels.Base
         private ILoadMoreDocumentsAction _loadMoreDocumentsAction;
         private IMvxAsyncCommand _loadMoreCommand;
 
-        protected LoadMoreDocumentsViewModel(IDocumentFilter documentFilter = null)
+        protected LoadMoreDocumentsViewModel(
+            ITrackPOFactory trackPOFactory,
+            IDocumentFilter documentFilter = null)
             : base(documentFilter)
         {
+            TrackPOFactory = trackPOFactory;
             IsFullyLoaded = false;
         }
+
+        protected ITrackPOFactory TrackPOFactory { get; }
 
         [MvxInject]
         public ILoadMoreDocumentsAction LoadMoreDocumentsAction
@@ -83,12 +91,12 @@ namespace BMM.Core.ViewModels.Base
                 RaisePropertyChanged(() => IsFullyLoaded);
         }
 
-        public sealed override Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public sealed override Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             return LoadItems(0, CurrentLimit, policy);
         }
 
-        public abstract Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy);
+        public abstract Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy);
 
         protected async Task LoadMore()
         {

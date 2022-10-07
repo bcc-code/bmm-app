@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
@@ -7,9 +8,11 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Messages;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ViewModels.MyContent;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
@@ -43,7 +46,8 @@ namespace BMM.Core.ViewModels
             ITrackCollectionManager trackCollectionManager,
             IConnection connection,
             IDownloadQueue downloadQueue,
-            INetworkSettings networkSettings
+            INetworkSettings networkSettings,
+            ITrackPOFactory trackPOFactory
         )
             : base(
                 storageManager,
@@ -51,8 +55,8 @@ namespace BMM.Core.ViewModels
                 trackCollectionManager,
                 downloadQueue,
                 connection,
-                networkSettings
-            )
+                networkSettings,
+                trackPOFactory)
         {
             DeleteCommand = new ExceptionHandlingCommand(() => DeleteTrackCollection(MyCollection));
 
@@ -95,7 +99,7 @@ namespace BMM.Core.ViewModels
             MyCollection.Name = message.TrackCollection.Name;
             MyCollection.Tracks = message.TrackCollection.Tracks;
             RaisePropertyChanged(() => MyCollection);
-            Documents.SwitchTo(message.TrackCollection.Tracks);
+            Documents.SwitchTo(message.TrackCollection.Tracks.Select(t => TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t)));
             ExceptionHandler.FireAndForgetWithoutUserMessages(TryRefresh);
         }
 
@@ -119,9 +123,7 @@ namespace BMM.Core.ViewModels
             try
             {
                 await Client.TrackCollection.Save(collection);
-
-                Documents.Remove(item);
-
+                Documents.Remove(Documents.First(x=> x.Id == item.Id));
                 await UpdateTrackCollectionFiles(collection);
             }
             catch (Exception ex)

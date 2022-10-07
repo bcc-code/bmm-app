@@ -1,5 +1,6 @@
 using System;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.Carousels;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Extensions;
@@ -18,7 +19,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<PlaylistsCollectionTableViewCell, CellWrapperViewModel<CoverCarouselCollection>>();
+                var set = this.CreateBindingSet<PlaylistsCollectionTableViewCell, CoverCarouselCollectionPO>();
 
                 var source = new MvxCollectionViewSource(PlaylistsCollectionView, CoverWithTitleCollectionViewCell.Key);
                 PlaylistsCollectionView!.RegisterNibForCell(CoverWithTitleCollectionViewCell.Nib, CoverWithTitleCollectionViewCell.Key);
@@ -26,14 +27,12 @@ namespace BMM.UI.iOS
                 set
                     .Bind(source)
                     .For(s => s.ItemsSource)
-                    .To(vm => vm.Item.CoverDocuments)
-                    .WithConversion<DocumentListValueConverter>(CellDataContext.ViewModel);
+                    .To(po => po.CoverDocuments);
 
-                 set
-                     .Bind(source)
-                     .For(s => s.SelectionChangedCommand)
-                     .To(vm => vm.ViewModel.DocumentSelectedCommand)
-                     .WithConversion(new DocumentSelectedCommandValueConverter());
+                set
+                    .Bind(source)
+                    .For(s => s.SelectionChangedCommand)
+                    .To(vm => vm.DocumentSelectedCommand);
 
                 PlaylistsCollectionView.Source = source;
                 set.Apply();
@@ -47,7 +46,5 @@ namespace BMM.UI.iOS
             get => PlaylistsCollectionView.ContentOffset.X;
             set => PlaylistsCollectionView.SetXOffset(value, false);
         }
-
-        private CellWrapperViewModel<Document> CellDataContext => (CellWrapperViewModel<Document>)DataContext;
     }
 }

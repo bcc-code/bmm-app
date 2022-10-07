@@ -566,12 +566,9 @@
     <InterfaceDefinition Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\CustomViews\ProgressBarView.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\AslaksenTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\BMMRadioTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ChapterHeaderTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\FraKaareTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\InfoMessageTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ListItem\SectionHeaderTableViewCell.xib" />
@@ -714,16 +711,7 @@
     <Compile Include="Application\NewMediaPlayer\SeekableRemoteCommandCenter.cs" />
     <Compile Include="Application\NewMediaPlayer\RemoteCommandCenter.cs" />
     <Compile Include="Application\NewMediaPlayer\VersionHelper.cs" />
-    <Compile Include="Application\TableViewCell\AslaksenTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\AslaksenTableViewCell.designer.cs">
-      <DependentUpon>AslaksenTableViewCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Application\TableViewCell\Base\BaseBMMTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\Base\BaseTrackTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\BMMRadioTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\BMMRadioTableViewCell.designer.cs">
-      <DependentUpon>BMMRadioTableViewCell.cs</DependentUpon>
-    </Compile>
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.designer.cs" />
     <Compile Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.cs" />
@@ -741,10 +729,6 @@
     <Compile Include="Application\TableViewCell\FollowedPodcastsViewCell.cs" />
     <Compile Include="Application\TableViewCell\FollowedPodcastsViewCell.designer.cs">
       <DependentUpon>FollowedPodcastsViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\FraKaareTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\FraKaareTableViewCell.designer.cs">
-      <DependentUpon>FraKaareTableViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\TableViewCell\InfoMessageTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\InfoMessageTableViewCell.designer.cs">
@@ -808,10 +792,8 @@
     <Compile Include="Application\ValueConverter\HexStringToUiColorConverter.cs" />
     <Compile Include="Application\ValueConverter\BoolToNfloatConverter.cs" />
     <Compile Include="Application\ValueConverter\OfflineBannerVisibilityValueConverter.cs" />
-    <Compile Include="Application\ValueConverter\GrayOutTrackIfNecessaryConverter.cs" />
     <Compile Include="Application\ValueConverter\PercentageValueConverter.cs" />
     <Compile Include="Application\ValueConverter\PinnedItemIconToImageConverter.cs" />
-    <Compile Include="Application\ValueConverter\TrackToMetaColorConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToStatusImageConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToSubtitleColorConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToTitleColorConverter.cs" />

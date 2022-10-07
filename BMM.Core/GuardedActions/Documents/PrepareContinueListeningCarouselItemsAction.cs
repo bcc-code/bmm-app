@@ -3,17 +3,31 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Documents.Interfaces;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
+using BMM.Core.ViewModels;
 
 namespace BMM.Core.GuardedActions.Documents
 {
     public class PrepareContinueListeningCarouselItemsAction
-        : GuardedActionWithParameterAndResult<IList<Document>, IList<Document>>,
+        : GuardedActionWithParameterAndResult<IList<Document>, IList<IDocumentPO>>,
           IPrepareContinueListeningCarouselItemsAction
     {
-        protected override async Task<IList<Document>> Execute(IList<Document> docs)
+        private readonly IDocumentsPOFactory _documentsPOFactory;
+
+        public PrepareContinueListeningCarouselItemsAction(IDocumentsPOFactory documentsPOFactory)
+        {
+            _documentsPOFactory = documentsPOFactory;
+        }
+
+        private ExploreNewestViewModel DataContext => this.GetDataContext();
+        
+        protected override async Task<IList<IDocumentPO>> Execute(IList<Document> docs)
         {
             await Task.CompletedTask;
             var adjustedList = docs.ToList();
@@ -43,7 +57,11 @@ namespace BMM.Core.GuardedActions.Documents
                 adjustedList.Insert(startIndex, new ContinueListeningCollection(new ObservableCollection<Document>(continueListeningTiles)));
             }
             
-            return adjustedList;
+            return _documentsPOFactory.Create(
+                adjustedList,
+                DataContext.DocumentSelectedCommand,
+                DataContext.OptionCommand,
+                DataContext.TrackInfoProvider).ToList();
         }
     }
 }

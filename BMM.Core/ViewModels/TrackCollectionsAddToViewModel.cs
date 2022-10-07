@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
+using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.TrackCollections.Exceptions;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.ViewModels;
@@ -26,9 +30,16 @@ namespace BMM.Core.ViewModels
         private DocumentType _documentType;
         private readonly ILogger _logger;
 
-        public TrackCollectionsAddToViewModel(IOfflineTrackCollectionStorage downloader, ITrackCollectionManager trackCollectionManager, IUserDialogs userDialogs,
-            IToastDisplayer toastDisplayer, IStorageManager storageManager, ILogger logger)
-            : base(downloader, storageManager)
+        public TrackCollectionsAddToViewModel(
+            ITrackCollectionManager trackCollectionManager,
+            IUserDialogs userDialogs,
+            IToastDisplayer toastDisplayer,
+            IStorageManager storageManager,
+            ILogger logger,
+            ITrackCollectionPOFactory trackCollectionPOFactory)
+            : base(
+                storageManager,
+                trackCollectionPOFactory)
         {
             _trackCollectionManager = trackCollectionManager;
             _userDialogs = userDialogs;
@@ -42,20 +53,20 @@ namespace BMM.Core.ViewModels
             _documentType = document.DocumentType;
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var items = await base.LoadItems(policy);
             return items
-                .OfType<TrackCollection>()
-                .Where(t => t.CanEdit);
+                .OfType<TrackCollectionPO>()
+                .Where(t => t.TrackCollection.CanEdit);
         }
 
-        protected override async Task DocumentAction(Document item, IList<Track> list)
+        protected override async Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
-            var targetTrackCollection = (TrackCollection)item;
+            var targetTrackCollection = (TrackCollectionPO)item;
             try
             {
-                await _trackCollectionManager.AddToTrackCollection(targetTrackCollection, _documentId, _documentType);
+                await _trackCollectionManager.AddToTrackCollection(targetTrackCollection.TrackCollection, _documentId, _documentType);
                 await _toastDisplayer.Success(TextSource[Translations.TrackCollectionsAddToViewModel_TrackAddedToTrackCollection]);
             }
             catch (UnsupportedDocumentTypeException)
@@ -64,15 +75,15 @@ namespace BMM.Core.ViewModels
             }
             catch (AlbumAlreadyInTrackCollectionException)
             {
-                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_AlbumFailedToAddAlreadyExists, targetTrackCollection.Name));
+                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_AlbumFailedToAddAlreadyExists, targetTrackCollection.TrackCollection.Name));
             }
             catch (TrackAlreadyInTrackCollectionException)
             {
-                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_TrackAlreadyExistInTrackCollection, targetTrackCollection.Name));
+                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_TrackAlreadyExistInTrackCollection, targetTrackCollection.TrackCollection.Name));
             }
             catch (BadRequestException ex)
             {
-                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_FailedToAdd, targetTrackCollection.Name));
+                await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_FailedToAdd, targetTrackCollection.TrackCollection.Name));
                 _logger.Error("TrackOrAlbumAddedToTrackCollection", "Bad request", ex);
             }
             catch (Exception ex)

@@ -4,10 +4,15 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Messages;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Other;
+using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
@@ -20,8 +25,12 @@ namespace BMM.Core.ViewModels.MyContent
     {
         private MvxSubscriptionToken _playlistStateChangedMessageSubscriptionKey;
 
-        public MyContentViewModel(IOfflineTrackCollectionStorage downloader, IStorageManager storageManager)
-            : base(downloader, storageManager)
+        public MyContentViewModel(
+            IStorageManager storageManager,
+            ITrackCollectionPOFactory trackCollectionPOFactory)
+            : base(
+                storageManager,
+                trackCollectionPOFactory)
         {
         }
 
@@ -38,22 +47,22 @@ namespace BMM.Core.ViewModels.MyContent
             base.ViewDestroy(viewFinishing);
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var allCollectionsExceptMyTracks = await base.LoadItems(policy);
             return PrepareGroupedDocuments(allCollectionsExceptMyTracks);
         }
 
-        private IEnumerable<Document> PrepareGroupedDocuments(IEnumerable<Document> documentsCollections)
+        private IEnumerable<IDocumentPO> PrepareGroupedDocuments(IEnumerable<IDocumentPO> documentsCollections)
         {
-            var listOfDocuments = new List<Document>();
+            var listOfDocuments = new List<IDocumentPO>();
 
             var trackCollectionsList = documentsCollections
-                .OfType<TrackCollection>()
+                .OfType<TrackCollectionPO>()
                 .ToList();
 
             var sharedWithMe = trackCollectionsList
-                .Where(t => !t.CanEdit)
+                .Where(t => !t.TrackCollection.CanEdit)
                 .ToList();
 
             var trackCollectionList = trackCollectionsList
@@ -62,7 +71,7 @@ namespace BMM.Core.ViewModels.MyContent
 
             var myPlaylistHeader = GetHeader(Translations.MyContentViewModel_MyPlaylists);
 
-            listOfDocuments.Add(myPlaylistHeader);
+            listOfDocuments.Add(new ChapterHeaderPO(myPlaylistHeader));
             listOfDocuments.AddRange(BuildPinnedItems());
             listOfDocuments.AddRange(trackCollectionList);
 
@@ -71,7 +80,7 @@ namespace BMM.Core.ViewModels.MyContent
 
             var sharedWithMeHeader = GetHeader(Translations.MyContentViewModel_SharedWithMe);
 
-            listOfDocuments.Add(sharedWithMeHeader);
+            listOfDocuments.Add(new ChapterHeaderPO(sharedWithMeHeader));
             listOfDocuments.AddRange(sharedWithMe);
 
             return listOfDocuments;
@@ -86,23 +95,23 @@ namespace BMM.Core.ViewModels.MyContent
             };
         }
 
-        private IEnumerable<PinnedItem> BuildPinnedItems()
+        private IEnumerable<PinnedItemPO> BuildPinnedItems()
         {
             return new List<PinnedItem>
             {
-                new PinnedItem()
+                new()
                 {
                     Title = TextSource[Translations.MyContentViewModel_DownloadedContent],
                     Action = new MvxAsyncCommand<PinnedItem>(async execute => await NavigationService.Navigate<DownloadedContentViewModel>()),
                     Icon = "icon_download"
                 },
-                new PinnedItem()
+                new()
                 {
                     Title = TextSource[Translations.MyContentViewModel_FollowedPodcasts],
                     Action = new MvxAsyncCommand<PinnedItem>(async execute => await NavigationService.Navigate<FollowedPodcastsViewModel>()),
                     Icon = "icon_podcast"
                 }
-            };
+            }.Select(pi => new PinnedItemPO(pi));
         }
     }
 }

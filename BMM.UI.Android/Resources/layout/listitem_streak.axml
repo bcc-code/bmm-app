@@ -5,7 +5,7 @@
     android:layout_marginHorizontal="@dimen/margin_medium"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    local:MvxBind="Click ListeningStreakClickedCommand(.)">
+    local:MvxBind="Click ListeningStreakClickedCommand">
 
     <TextView
         android:id="@+id/Title"
@@ -14,7 +14,7 @@
         android:maxLines="1"
         local:autoSizeTextType="uniform"
         local:autoSizeMaxTextSize="20sp"
-        local:MvxBind="Text StreakMessage(Item)"
+        local:MvxBind="Text StreakMessage(ListeningStreak)"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="@+id/HalfGuideline"
         local:layout_constraintTop_toTopOf="parent"
@@ -28,7 +28,7 @@
         android:maxLines="1"
         local:autoSizeTextType="uniform"
         local:autoSizeMaxTextSize="15sp"
-        local:MvxBind="Text StreakSubtitleMessage(Item)"
+        local:MvxBind="Text StreakSubtitleMessage(ListeningStreak)"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="@+id/HalfGuideline"
         local:layout_constraintTop_toBottomOf="@+id/Title"
@@ -46,12 +46,12 @@
         local:layout_constraintHorizontal_chainStyle="spread"
         local:cardCornerRadius="@dimen/streak_card_corner_radius"
         local:cardElevation="@dimen/dimen_none"
-        local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 1)">
+        local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 1)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
             android:layout_gravity="center"
-            local:MvxBind="BackgroundTint Item.MondayColor"
+            local:MvxBind="BackgroundTint ListeningStreak.MondayColor"
             android:background="@drawable/circle" />
     </androidx.cardview.widget.CardView>
 
@@ -65,12 +65,12 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 2)">
+            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 2)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
             android:layout_gravity="center"
-            local:MvxBind="BackgroundTint Item.TuesdayColor"
+            local:MvxBind="BackgroundTint ListeningStreak.TuesdayColor"
             android:background="@drawable/circle" />
     </androidx.cardview.widget.CardView>
 
@@ -84,12 +84,12 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 3)">
+            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 3)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
             android:layout_gravity="center"
-            local:MvxBind="BackgroundTint Item.WednesdayColor"
+            local:MvxBind="BackgroundTint ListeningStreak.WednesdayColor"
             android:background="@drawable/circle" />
     </androidx.cardview.widget.CardView>
 
@@ -103,12 +103,12 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 4)">
+            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 4)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
             android:layout_gravity="center"
-            local:MvxBind="BackgroundTint Item.ThursdayColor"
+            local:MvxBind="BackgroundTint ListeningStreak.ThursdayColor"
             android:background="@drawable/circle"/>
     </androidx.cardview.widget.CardView>
 
@@ -122,12 +122,12 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(Item, 5)">
+            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 5)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
             android:layout_gravity="center"
-            local:MvxBind="BackgroundTint Item.FridayColor"
+            local:MvxBind="BackgroundTint ListeningStreak.FridayColor"
             android:background="@drawable/circle"/>
     </androidx.cardview.widget.CardView>
 

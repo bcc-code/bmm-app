@@ -9,9 +9,12 @@ using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Messages;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
@@ -23,6 +26,34 @@ namespace BMM.Core.ViewModels.MyContent
     public class MyTracksViewModel : DownloadViewModel, IMvxViewModel<ITrackCollectionParameter>
     {
         private TrackCollection _myCollection;
+        
+        public MyTracksViewModel(
+            IStorageManager storageManager,
+            IDownloadedTracksOnlyFilter documentFilter,
+            ITrackCollectionManager trackCollectionManager,
+            IDownloadQueue downloadQueue,
+            IConnection connection,
+            INetworkSettings networkSettings,
+            ITrackPOFactory trackPOFactory)
+            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
+        {
+            _trackCollectionManager = trackCollectionManager;
+            TrackPOFactory = trackPOFactory;
+
+            Messenger.Subscribe<DownloadCanceledMessage>(async message =>
+                {
+                    if (IsDownloading && IsOfflineAvailable)
+                    {
+                        await _trackCollectionManager.RemoveDownloadedTrackCollection(MyCollection);
+
+                        IsOfflineAvailable = !IsOfflineAvailable;
+                        await RaisePropertyChanged(() => Documents);
+                    }
+                },
+                MvxReference.Strong);
+        }
+        
+        protected ITrackPOFactory TrackPOFactory { get; }
 
         public override string Title => MyCollection.Name;
 
@@ -50,30 +81,6 @@ namespace BMM.Core.ViewModels.MyContent
         public bool IsEmpty => MyCollection.Tracks?.Count == 0 && !IsLoading && IsInitialized;
 
         private readonly ITrackCollectionManager _trackCollectionManager;
-
-        public MyTracksViewModel(
-            IStorageManager storageManager,
-            IDownloadedTracksOnlyFilter documentFilter,
-            ITrackCollectionManager trackCollectionManager,
-            IDownloadQueue downloadQueue,
-            IConnection connection,
-            INetworkSettings networkSettings)
-            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
-        {
-            _trackCollectionManager = trackCollectionManager;
-
-            Messenger.Subscribe<DownloadCanceledMessage>(async message =>
-                {
-                    if (IsDownloading && IsOfflineAvailable)
-                    {
-                        await _trackCollectionManager.RemoveDownloadedTrackCollection(MyCollection);
-
-                        IsOfflineAvailable = !IsOfflineAvailable;
-                        await RaisePropertyChanged(() => Documents);
-                    }
-                },
-                MvxReference.Strong);
-        }
 
         protected override void AttachEvents()
         {
@@ -151,9 +158,9 @@ namespace BMM.Core.ViewModels.MyContent
             await RaisePropertyChanged(() => IsEmpty);
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy cachePolicy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy cachePolicy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            TrackCollection searchCollection = await Client.TrackCollection.GetById(MyCollection.Id, cachePolicy);
+            var searchCollection = await Client.TrackCollection.GetById(MyCollection.Id, cachePolicy);
 
             //Unable to load the data. Therefore we don't change anything and swallow the request.
             //ToDo: find a better user experience than just swallowing requests
@@ -162,7 +169,7 @@ namespace BMM.Core.ViewModels.MyContent
                 MyCollection = searchCollection;
             }
 
-            return MyCollection.Tracks;
+            return MyCollection.Tracks.Select(t => TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
     }
 }

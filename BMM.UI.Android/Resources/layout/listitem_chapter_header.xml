@@ -15,5 +15,5 @@
     android:maxLines="1"
     android:ellipsize="end"
     android:textColor="@color/bright_gray"
-    local:MvxBind="Text Item.Title"/>
+    local:MvxBind="Text ChapterHeader.Title"/>
 </RelativeLayout>

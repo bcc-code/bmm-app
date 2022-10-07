@@ -22,6 +22,13 @@ using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
+using BMM.Core.Models.POs.Albums;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Playlists;
+using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.TrackCollections;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
@@ -92,17 +99,6 @@ namespace BMM.Core.ViewModels.Base
             {
                 _optionsCommand ??= new ExceptionHandlingCommand<Document>(OptionsAction);
                 return _optionsCommand;
-            }
-        }
-
-        private IMvxCommand<Track> _showTrackInfoCommand;
-
-        public IMvxCommand<Track> ShowTrackInfoCommand
-        {
-            get
-            {
-                _showTrackInfoCommand ??= new ExceptionHandlingCommand<Track>(ShowTrackInfo);
-                return _showTrackInfoCommand;
             }
         }
 
@@ -284,25 +280,11 @@ namespace BMM.Core.ViewModels.Base
             await CloseCommand.ExecuteAsync();
         }
 
-        protected virtual async Task ShowTrackInfo(Track track)
-        {
-            if (track == null)
-            {
-                Mvx.IoCProvider.Resolve<IAnalytics>().LogEvent("4934 the track is null", new Dictionary<string, object> { { "CallingType", GetType().FullName } });
-                return;
-            }
+        private IMvxCommand<IDocumentPO> _documentSelectedCommand;
 
-            await NavigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
-            Messenger.Publish(new TogglePlayerMessage(this, false));
-            await Task.Delay(ViewConstants.DefaultAnimationDurationInMilliseconds);
-            await NavigationService.Navigate<TrackInfoViewModel, Track>(track);
-        }
+        public IMvxCommand<IDocumentPO> DocumentSelectedCommand => _documentSelectedCommand ??= new ExceptionHandlingCommand<IDocumentPO>(DocumentAction);
 
-        private IMvxCommand<Document> _documentSelectedCommand;
-
-        public IMvxCommand<Document> DocumentSelectedCommand => _documentSelectedCommand ??= new ExceptionHandlingCommand<Document>(DocumentAction);
-
-        protected virtual async Task DocumentAction(Document item)
+        protected virtual async Task DocumentAction(IDocumentPO item)
         {
             if (item != null)
                 await DocumentAction(item, null);
@@ -313,12 +295,12 @@ namespace BMM.Core.ViewModels.Base
         /// </summary>
         /// <param name="item">Item.</param>
         /// <param name="list">List of tracks.</param>
-        protected virtual async Task DocumentAction(Document item, IList<Track> list)
+        protected virtual async Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
             switch (item.DocumentType)
             {
                 case DocumentType.Track:
-                    var track = (Track)item;
+                    var track = ((TrackPO)item).Track;
                     var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
 
                     if (list == null)
@@ -335,7 +317,7 @@ namespace BMM.Core.ViewModels.Base
                     break;
 
                 case DocumentType.Album:
-                    await NavigationService.Navigate<AlbumViewModel, Album>((Album)item);
+                    await NavigationService.Navigate<AlbumViewModel, Album>(((AlbumPO)item).Album);
                     break;
 
                 case DocumentType.Contributor:
@@ -343,17 +325,17 @@ namespace BMM.Core.ViewModels.Base
                     break;
 
                 case DocumentType.TrackCollection:
-                    var trackCollection = (TrackCollection)item;
+                    var trackCollection = ((TrackCollectionPO)item).TrackCollection;
                     await NavigationService.Navigate<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(trackCollection.Id, trackCollection.Name));
                     break;
 
                 case DocumentType.Podcast:
-                    var podcast = (Podcast)item;
+                    var podcast = ((PodcastPO)item).Podcast;
                     await NavigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = podcast.Id, Title = podcast.Title});
                     break;
 
                 case DocumentType.Playlist:
-                    var playlist = (Playlist)item;
+                    var playlist = ((PlaylistPO)item).Playlist;
                     await NavigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = playlist.Id, Title = playlist.Title});
                     break;
             }

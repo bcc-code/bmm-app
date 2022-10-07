@@ -1,11 +1,15 @@
 ﻿using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Contributors.Interfaces;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.Contributors;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 using MvvmCross.Commands;
@@ -61,7 +65,10 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowSharedPlaylistButton => false;
 
-        public ContributorViewModel(IShuffleContributorAction shuffleContributorAction)
+        public ContributorViewModel(
+            IShuffleContributorAction shuffleContributorAction,
+            ITrackPOFactory trackPOFactory)
+            : base(trackPOFactory)
         {
             _shufflePlayCommand = new MvxAsyncCommand(async () =>
             {
@@ -103,9 +110,9 @@ namespace BMM.Core.ViewModels
             Contributor = await Client.Contributors.GetById(_id);
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
-            return await Client.Contributors.GetTracks(_id, policy, size, startIndex);
+            return (await Client.Contributors.GetTracks(_id, policy, size, startIndex))?.Select(t => TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
     }
 }

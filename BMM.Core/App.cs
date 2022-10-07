@@ -30,6 +30,12 @@ using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.Factories.ContinueListening;
+using BMM.Core.Implementations.Factories.DiscoverSection;
+using BMM.Core.Implementations.Factories.Streak;
+using BMM.Core.Implementations.Factories.TrackCollections;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FeatureToggles;
 using BMM.Core.Implementations.Feedback;
 using BMM.Core.Implementations.FileStorage;
@@ -63,6 +69,7 @@ using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.Validators;
 using BMM.Core.Messages;
+using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using Microsoft.AppCenter;
@@ -265,7 +272,14 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITimeDiagnosticTool, TimeDiagnosticTool>();
-
+            
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDocumentsPOFactory, DocumentsPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackPOFactory, TrackPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackCollectionPOFactory, TrackCollectionPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IListeningStreakPOFactory, ListeningStreakPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDiscoverSectionHeaderPOFactory, DiscoverSectionHeaderPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContinueListeningTilePOFactory, ContinueListeningTilePOFactory>();
+            
             _assemblies = AppDomain
                 .CurrentDomain
                 .GetAssemblies()

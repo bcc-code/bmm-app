@@ -2,6 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
+using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -34,7 +35,7 @@ namespace BMM.UI.iOS.Actions
         {
             _analytics.LogEvent(Event.SiriFromKaarePlayed);
             
-            var fromKareList = await _podcastClient.GetTracks(FraKaareTeaserViewModel.FraKårePodcastId, CachePolicy.IgnoreCache);
+            var fromKareList = await _podcastClient.GetTracks(FraKaareConstants.FraKårePodcastId, CachePolicy.IgnoreCache);
             
             if (fromKareList == null || !fromKareList.Any())
                 return false;

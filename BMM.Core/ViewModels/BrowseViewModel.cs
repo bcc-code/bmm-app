@@ -5,24 +5,31 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Other;
 using BMM.Core.ViewModels.Base;
 
 namespace BMM.Core.ViewModels
 {
     public class BrowseViewModel : DocumentsViewModel
     {
+        private readonly IDocumentsPOFactory _documentsPOFactory;
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
         private readonly ITranslateDocsAction _translateDocsAction;
 
         public BrowseViewModel(
+            IDocumentsPOFactory documentsPOFactory,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
             ITranslateDocsAction translateDocsAction)
         {
+            _documentsPOFactory = documentsPOFactory;
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
             _translateDocsAction = translateDocsAction;
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var browseItems = await Client.Browse.Get(policy);
 
@@ -33,9 +40,14 @@ namespace BMM.Core.ViewModels
                 .OfType<DiscoverSectionHeader>()
                 .FirstOrDefault()
                 .IfNotNull(header => header.IsSeparatorVisible = false);
-            
-            carouselAdjustedItems.Add(new SimpleMargin());
-            return carouselAdjustedItems;
+
+            var presentationItems = _documentsPOFactory.Create(
+                carouselAdjustedItems,
+                DocumentSelectedCommand,
+                OptionCommand,
+                TrackInfoProvider).ToList();
+            presentationItems.Add(new SimpleMarginPO());
+            return presentationItems;
         }
     }
 }

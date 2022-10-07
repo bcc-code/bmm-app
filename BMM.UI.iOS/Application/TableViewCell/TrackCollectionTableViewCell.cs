@@ -4,6 +4,7 @@ using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using System;
+using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.ValueConverters.TrackCollections;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
@@ -13,11 +14,10 @@ namespace BMM.UI.iOS
 {
     public partial class TrackCollectionTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName("TrackCollectionTableViewCell", NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString("TrackCollectionTableViewCell");
+        public static readonly NSString Key = new(nameof(TrackCollectionTableViewCell));
 
         private const int SharePlaylistIconWidth = 24;
-        private nfloat initialDownloadStatusImageWidth;
+        private nfloat _initialDownloadStatusImageWidth;
         private bool _isPlaylistSharedByMe;
 
         public TrackCollectionTableViewCell(IntPtr handle)
@@ -25,16 +25,16 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<TrackCollectionTableViewCell, CellWrapperViewModel<TrackCollection>>();
-                set.Bind(TitleLabel).To(vm => vm.Item.Name);
+                var set = this.CreateBindingSet<TrackCollectionTableViewCell, TrackCollectionPO>();
+                set.Bind(TitleLabel).To(po => po.TrackCollection.Name);
 
                 set.Bind(SubtitleLabel)
-                    .To(vm => vm.Item)
+                    .To(po => po.TrackCollection)
                     .WithConversion<TrackCollectionToListViewItemSubtitleLabelConverter>();
 
                 set.Bind(this)
                     .For(v => v.IsPlaylistSharedByMe)
-                    .To(vm => vm.Item)
+                    .To(vm => vm.TrackCollection)
                     .WithConversion<TrackCollectionToIsSharedByMeConverter>();
                 set.Apply();
             });
@@ -48,33 +48,27 @@ namespace BMM.UI.iOS
                 }
 
                 // Find out the initial size of the DownloadStatusImageView ...
-                if (DownloadStatusImageView != null && initialDownloadStatusImageWidth == 0f)
+                if (DownloadStatusImageView != null && _initialDownloadStatusImageWidth == 0f)
                 {
                     foreach (var constraint in DownloadStatusImageView.Constraints)
                     {
                         if (constraint.FirstAttribute == NSLayoutAttribute.Width)
                         {
-                            initialDownloadStatusImageWidth = constraint.Constant;
+                            _initialDownloadStatusImageWidth = constraint.Constant;
                             break;
                         }
                     }
                 }
 
-                var dataContext = (CellWrapperViewModel<Document>) DataContext;
+                var trackCollectionPO = (TrackCollectionPO)DataContext;
 
-                var trackCollectionsViewModel = (ContentBaseViewModel) dataContext.ViewModel;
-
-                var trackCollection = (TrackCollection) dataContext.Item;
-
-                var isOfflineAvailable = trackCollectionsViewModel.IsOfflineAvailable(trackCollection);
-
-                if (isOfflineAvailable)
+                if (trackCollectionPO.IsAvailableOffline)
                 {
                     foreach (var constraint in DownloadStatusImageView.Constraints)
                     {
                         if (constraint.FirstAttribute == NSLayoutAttribute.Width)
                         {
-                            constraint.Constant = initialDownloadStatusImageWidth;
+                            constraint.Constant = _initialDownloadStatusImageWidth;
                         }
                     }
 

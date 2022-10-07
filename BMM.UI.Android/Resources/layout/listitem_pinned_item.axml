@@ -27,7 +27,7 @@
             <ImageView
                 android:layout_margin="8dp"
                 android:src="@drawable/icon_download"
-                local:MvxBind="DrawableName Format('@drawable/{0}', Item.Icon)"
+                local:MvxBind="DrawableName Format('@drawable/{0}', PinnedItem.Icon)"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </androidx.cardview.widget.CardView>
@@ -45,7 +45,7 @@
                 android:id="@+id/text_view_title"
                 android:singleLine="true"
                 android:layout_gravity="center_vertical"
-                local:MvxBind="Text Item.Title"
+                local:MvxBind="Text PinnedItem.Title"
                 style="@style/Title2" />
         </LinearLayout>
 

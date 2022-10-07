@@ -24,7 +24,6 @@ namespace BMM.UI.iOS
             foreach (var cellType in _tableCellTypes)
             {
                 var cellUibName = cellType.UibName;
-
                 tableView.RegisterNibForCellReuse(UINib.FromName(cellUibName, NSBundle.MainBundle), cellUibName);
             }
         }

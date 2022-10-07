@@ -6,6 +6,9 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.PlaybackHistory.Interfaces;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
@@ -28,6 +31,8 @@ namespace BMM.Core.ViewModels
             _preparePlaybackHistoryAction = preparePlaybackHistoryAction;
             _mediaPlayer = mediaPlayer;
             _analytics = analytics;
+            
+            _preparePlaybackHistoryAction.AttachDataContext(this);
         }
 
         public bool HasAnyEntry => Documents.Any();
@@ -38,11 +43,12 @@ namespace BMM.Core.ViewModels
             _analytics.LogEvent(string.Format(Event.ViewModelOpenedFormat, GetType().Name), new Dictionary<string, object>());
         }
 
-        protected override async Task DocumentAction(Document item, IList<Track> list)
+        protected override async Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
-            if (!(item is IMediaTrack mediaTrack))
+            if (item is not TrackPO trackPO)
                 return;
 
+            var mediaTrack = (IMediaTrack)trackPO.Track;
             await _mediaPlayer.Play(mediaTrack.EncloseInArray(), mediaTrack, PlaybackOriginString, mediaTrack.LastPosition);
         }
 
@@ -52,7 +58,7 @@ namespace BMM.Core.ViewModels
             await RaisePropertyChanged(nameof(HasAnyEntry));
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             return await _preparePlaybackHistoryAction.ExecuteGuarded();
         }

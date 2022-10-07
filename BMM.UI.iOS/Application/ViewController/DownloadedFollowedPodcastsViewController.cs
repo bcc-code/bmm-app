@@ -33,8 +33,8 @@ namespace BMM.UI.iOS
             PodcastCollectionView.Source = source;
 
             var set = this.CreateBindingSet<DownloadedFollowedPodcastsViewController, DownloadedFollowedPodcastsViewModel>();
-            set.Bind(source).For(s => s.ItemsSource).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.DocumentSelectedCommand).WithConversion(new DocumentSelectedCommandValueConverter());
+            set.Bind(source).For(s => s.ItemsSource).To(vm => vm.Documents);
+            set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.DocumentSelectedCommand);
             set.Bind(OfflineBannerLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.Global_OfflineBanner);
 
             set.Bind(EmptyStateView).For(s => s.Hidden).To(vm => vm.ShowEmptyFollowedPodcasts).WithConversion<InvertedVisibilityConverter>();

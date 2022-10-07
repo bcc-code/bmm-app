@@ -22,7 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             local:MvxItemTemplate="@layout/listitem_cover_with_title_flexible"
-            local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+            local:MvxBind="
+                ItemsSource Documents;
+                ItemClick DocumentSelectedCommand" />
     </mvvmcross.droidx.MvxSwipeRefreshLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
