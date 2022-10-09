@@ -6,18 +6,18 @@
     "BytesMB": "{0} MB",
     "UnexpectedError": "Une erreur inconnue est survenue.",
     "InternetConnectionOffline": "La connexion Internet semble être hors connexion.",
-    "ItemNotFound": "The requested item does not exist.",
+    "ItemNotFound": "L'élément recherché n'existe pas ",
     "OfflineBanner": "Showing only tracks on this phone",
     "Song": "Chanson",
     "Speech": "Messages",
-    "Audiobook": "Audiobook",
+    "Audiobook": "Livres audio",
     "Exegesis": "Exegesis",
-    "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
+    "Done": "Terminé",
+    "Today": "Aujourd'hui",
+    "Yesterday": "Jour précédent",
+    "BackgroundActivityRestrictedTitle": "Autorisé activité en arrière-plan",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
+    "GoToSettings": "Vers paramètres",
     "NotNow": "Not now",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
@@ -111,8 +111,8 @@
     "NextBroadcast": "Next broadcast",
     "BmmRadio": "BMM Live",
     "CountdownHours": "in {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music"
+    "Messages": "Derniers Messages",
+    "Music": "Musique récente"
   },
   "ExploreContributorsViewModel": {
     "Title": "Contributeurs",
@@ -135,7 +135,7 @@
     "ButtonSendMail": "Envoyer un email à l'équipe BMM"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Nous paramétrons votre compte. Cela peut prendre quelques minutes."
   },
   "LoginViewModel": {
     "Title": "Ouverture de session",
@@ -147,7 +147,7 @@
     "TbxUsername.Hint": "Messagerie",
     "TbxPassword.Hint": "Mot de passe",
     "BtnLogin.Text": "Login",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Se connecter à BCC Login"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
@@ -464,10 +464,10 @@
     "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "Derniers Messages"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "Musique récente"
   },
   "DownloadManager": {
     "DownloadingFinished": "Tous les fichiers ont été téléchargés !"
