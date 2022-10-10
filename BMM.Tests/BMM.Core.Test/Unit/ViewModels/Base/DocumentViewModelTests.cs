@@ -7,6 +7,7 @@ using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Implementations.TrackListenedObservation;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Test.Helpers;
 using Moq;
@@ -51,7 +52,7 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
             {
                 //Simulate load process
                 Thread.Sleep(1000);
-                return new List<Document>();
+                return new List<IDocumentPO>();
             };
 
             DocumentsViewModel.Refresh();
@@ -70,7 +71,7 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
             {
                 //Simulate load process
                 Thread.Sleep(1000);
-                return new List<Document>();
+                return new List<IDocumentPO>();
             };
             DocumentsViewModel.Load();
 
@@ -87,14 +88,13 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
             // Act & Assert
             Assert.ThrowsAsync<NoInternetException>(() => DocumentsViewModel.Load());
         }
-
-
+        
         [Test]
         public async Task Reload_Completed_NotReloading()
         {
             base.Setup();
 
-            DocumentsViewModel.LoadItemsAction = () => new List<Document>();
+            DocumentsViewModel.LoadItemsAction = () => new List<IDocumentPO>();
             await DocumentsViewModel.Refresh();
 
             Assert.False(DocumentsViewModel.IsRefreshing);
@@ -105,7 +105,7 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
         {
             base.Setup();
 
-            DocumentsViewModel.LoadItemsAction = () => new List<Document>();
+            DocumentsViewModel.LoadItemsAction = () => new List<IDocumentPO>();
             await DocumentsViewModel.Load();
 
             Assert.False(DocumentsViewModel.IsLoading);

@@ -35,8 +35,8 @@ namespace BMM.UI.iOS
             PodcastCollectionView.Source = source;
 
             var set = this.CreateBindingSet<PodcastsViewController, PodcastsViewModel>();
-            set.Bind(source).For(s => s.ItemsSource).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.DocumentSelectedCommand).WithConversion(new DocumentSelectedCommandValueConverter());
+            set.Bind(source).For(s => s.ItemsSource).To(vm => vm.Documents);
+            set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.DocumentSelectedCommand);
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
 

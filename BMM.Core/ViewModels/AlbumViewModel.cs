@@ -9,7 +9,12 @@ using BMM.Api.Abstraction;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Models.POs.Albums;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 using MvvmCross.Commands;
@@ -20,6 +25,7 @@ namespace BMM.Core.ViewModels
     public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, IAlbumViewModel
     {
         private readonly IResumeOrShufflePlayAction _resumeOrShufflePlayAction;
+        private readonly IDocumentsPOFactory _documentsPOFactory;
         private int _id;
 
         /// <summary>
@@ -52,9 +58,13 @@ namespace BMM.Core.ViewModels
             return new[] { Album.Id.ToString() };
         }
 
-        public AlbumViewModel(IShareLink shareLink, IResumeOrShufflePlayAction resumeOrShufflePlayAction)
+        public AlbumViewModel(
+            IShareLink shareLink,
+            IResumeOrShufflePlayAction resumeOrShufflePlayAction,
+            IDocumentsPOFactory documentsPOFactory)
         {
             _resumeOrShufflePlayAction = resumeOrShufflePlayAction;
+            _documentsPOFactory = documentsPOFactory;
             _resumeOrShufflePlayAction.AttachDataContext(this);
             
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddAlbumToTrackCollection(Album.Id));
@@ -126,10 +136,14 @@ namespace BMM.Core.ViewModels
             _id = id;
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             Album = await Client.Albums.GetById(_id);
-            return Album?.Children;
+            return _documentsPOFactory.Create(
+                Album?.Children,
+                DocumentSelectedCommand,
+                OptionCommand,
+                TrackInfoProvider);
         }
 
         private void UpdateView(object sender, NotifyCollectionChangedEventArgs e)
@@ -154,7 +168,7 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleOrResumeButton => Documents.OfType<Track>().Any();
+        public bool ShowShuffleOrResumeButton => Documents.OfType<TrackPO>().Any();
         public string ShuffleOrResumeText => GetShowShuffleOrResumeText();
 
         private string GetShowShuffleOrResumeText()
@@ -171,6 +185,6 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowSharedPlaylistButton => false;
 
-        public override string TrackCountString => Documents.OfType<Album>().Any() ? TextSource.GetText(Translations.AlbumViewModel_PluralAlbums, Documents.OfType<Album>().Count()) : base.TrackCountString;
+        public override string TrackCountString => Documents.OfType<AlbumPO>().Any() ? TextSource.GetText(Translations.AlbumViewModel_PluralAlbums, Documents.OfType<AlbumPO>().Count()) : base.TrackCountString;
     }
 }

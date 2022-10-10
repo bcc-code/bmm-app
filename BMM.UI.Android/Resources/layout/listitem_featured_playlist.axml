@@ -29,7 +29,7 @@
             android:layout_width="@dimen/feature_item_image_width"
             android:layout_height="@dimen/feature_item_image_height"
             android:src="@drawable/placeholder_cover"
-            local:MvxBind="LoadingPlaceholderImagePath 'res:placeholder_cover'; ErrorPlaceholderImagePath 'res:placeholder_cover'; ImagePath CoverUrlToFallbackImage(Item.Cover, 'res:placeholder_cover')"
+            local:MvxBind="LoadingPlaceholderImagePath 'res:placeholder_cover'; ErrorPlaceholderImagePath 'res:placeholder_cover'; ImagePath CoverUrlToFallbackImage(Cover, 'res:placeholder_cover')"
             android:adjustViewBounds="true" />
 
     </androidx.cardview.widget.CardView>
@@ -45,7 +45,7 @@
         android:text="Placeholder"
         android:layout_marginStart="12dp"
         style="@style/Title2"
-        local:MvxBind="Text Item.Title"
+        local:MvxBind="Text Title"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@id/card_view"
         app:layout_constraintEnd_toStartOf="@id/chevron_image"

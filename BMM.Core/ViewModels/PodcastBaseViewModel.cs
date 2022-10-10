@@ -1,5 +1,6 @@
 ﻿using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.ViewModels.Base;
 
@@ -9,8 +10,10 @@ namespace BMM.Core.ViewModels
     {
         private Podcast _podcast;
 
-        public PodcastBaseViewModel(IDocumentFilter documentFilter = null)
-            : base(documentFilter)
+        public PodcastBaseViewModel(
+            ITrackPOFactory trackPOFactory,
+            IDocumentFilter documentFilter = null)
+            : base(trackPOFactory, documentFilter)
         {
             _podcast = new Podcast
             {

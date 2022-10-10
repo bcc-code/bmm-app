@@ -1,15 +1,15 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace BMM.Api.Implementation.Models
 {
     public class ContinueListeningCollection : Document
     {
-        public ContinueListeningCollection(ObservableCollection<Document> continueListeningElements)
+        public ContinueListeningCollection(IEnumerable<Document> continueListeningElements)
         {
             ContinueListeningElements = continueListeningElements;
             DocumentType = DocumentType.ContinueListeningCollection;
         }
 
-        public ObservableCollection<Document> ContinueListeningElements { get; }
+        public IEnumerable<Document> ContinueListeningElements { get; }
     }
 }

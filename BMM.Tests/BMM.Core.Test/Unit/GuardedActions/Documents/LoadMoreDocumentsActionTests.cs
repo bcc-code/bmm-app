@@ -10,6 +10,10 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.Test.Unit.GuardedActions.Base;
 using BMM.Core.ViewModels.Base;
 using FluentAssertions;
@@ -26,7 +30,7 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
         private IPostprocessDocumentsAction _postprocessDocumentsActionMock;
         private IMvxMainThreadAsyncDispatcher _mvxMainThreadAsyncDispatcher;
         private ILoadMoreDocumentsViewModel _dataContextMock;
-        private IBmmObservableCollection<Document> _observableCollectionMock;
+        private IBmmObservableCollection<IDocumentPO> _observableCollectionMock;
 
         public override void SetUp()
         {
@@ -40,7 +44,7 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
             _postprocessDocumentsActionMock = Substitute.For<IPostprocessDocumentsAction>();
             _mvxMainThreadAsyncDispatcher = Substitute.For<IMvxMainThreadAsyncDispatcher>();
             _dataContextMock = Substitute.For<ILoadMoreDocumentsViewModel>();
-            _observableCollectionMock = Substitute.For<IBmmObservableCollection<Document>>();
+            _observableCollectionMock = Substitute.For<IBmmObservableCollection<IDocumentPO>>();
             _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(Arg.Do<Action>(action => action()));
 
             _dataContextMock
@@ -93,7 +97,7 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
         public async Task PostprocessDocumentsActionIsExecuted_WhenDocumentsAreLoaded()
         {
             //Arrange
-            var documentsMock = Substitute.For<IEnumerable<Document>>();
+            var documentsMock = Substitute.For<IEnumerable<IDocumentPO>>();
 
             _dataContextMock
                 .LoadItems(Arg.Any<int>(), Arg.Any<int>(), Arg.Any<CachePolicy>())
@@ -125,9 +129,9 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
         public async Task DocumentsArePopulatedOnDataContext_WhenProperlyRetrieved()
         {
             //Arrange
-            var documents = new List<Document>
+            var documents = new List<IDocumentPO>
             {
-                new Track()
+                Substitute.For<ITrackPO>()
             };
 
             _dataContextMock
@@ -143,7 +147,7 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
 
             //Assert
             _observableCollectionMock
-                .AddRange(Arg.Is<List<Document>>(p => p.Count == 1));
+                .AddRange(Arg.Is<List<DocumentPO>>(p => p.Count == 1));
         }
     }
 }

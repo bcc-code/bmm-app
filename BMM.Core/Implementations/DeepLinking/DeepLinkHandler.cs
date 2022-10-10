@@ -10,6 +10,7 @@ using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Constants;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
@@ -164,7 +165,7 @@ namespace BMM.Core.Implementations.DeepLinking
 
         private async Task PlayFraKaare()
         {
-            var items = await _client.Podcast.GetTracks(FraKaareTeaserViewModel.FraKårePodcastId, CachePolicy.UseCacheAndWaitForUpdates);
+            var items = await _client.Podcast.GetTracks(FraKaareConstants.FraKårePodcastId, CachePolicy.UseCacheAndWaitForUpdates);
             var trackToPlay = items.Take(1).ToList();
             await PlayTracks(trackToPlay, PlaybackOriginName);
         }

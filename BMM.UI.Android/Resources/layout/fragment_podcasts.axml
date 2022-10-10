@@ -21,6 +21,8 @@
             android:layout_below="@+id/appbar"
             android:layout_marginHorizontal="@dimen/margin_medium"
             local:MvxItemTemplate="@layout/listitem_cover_with_title_flexible"
-            local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+            local:MvxBind="
+                ItemsSource Documents;
+                ItemClick DocumentSelectedCommand" />
     </mvvmcross.droidx.MvxSwipeRefreshLayout>
 </RelativeLayout>

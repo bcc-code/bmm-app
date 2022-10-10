@@ -24,7 +24,6 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
         private IGlobalMediaDownloader _globalMediaDownloader;
         private Mock<ILogger> _logger;
         private Mock<IAnalytics> _analytics;
-        private Mock<IUserStorage> _userStorage;
         private Mock<IExceptionHandler> _exceptionHandler;
 
         [SetUp]
@@ -35,7 +34,6 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             _globalMediaDownloader = new Mock<IGlobalMediaDownloader>().Object;
             _logger = new Mock<ILogger>();
             _analytics = new Mock<IAnalytics>();
-            _userStorage = new Mock<IUserStorage>();
             _exceptionHandler = new Mock<IExceptionHandler>();
         }
 
@@ -55,7 +53,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var bmmClient = GetBmmClientThatReturnsTrackAndTrackCollection(track, true);
             var trackCollectionManager = GetTrackCollectionManager(bmmClient);
             trackCollectionManager.AddToTrackCollection(_trackCollection, track.Id, DocumentType.Track);
-            _logger.Verify(logger => logger.Error(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<NullTrackException>().InnerException, It.IsAny<bool>()), Times.AtLeastOnce);
+            _logger.Verify(logger => logger.Error(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<NullTrackException>(), It.IsAny<bool>()), Times.AtLeastOnce);
         }
 
         [Test]

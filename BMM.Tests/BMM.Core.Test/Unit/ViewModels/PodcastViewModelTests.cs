@@ -12,6 +12,8 @@ using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackListenedObservation;
@@ -44,6 +46,8 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IDownloadedTracksOnlyFilter> _downloadedOnlyFilter;
         private Mock<IShufflePodcastAction> _shufflePodcastAction;
         private IBlobCache _inMemoryCache;
+        private Mock<ITrackPOFactory> _trackPOFactory;
+        private Mock<IDocumentsPOFactory> _documentsPOFactory;
 
         [SetUp]
         public void Init()
@@ -61,6 +65,8 @@ namespace BMM.Core.Test.Unit.ViewModels
             _viewPresenter = new Mock<IViewModelAwareViewPresenter>();
             _downloadedOnlyFilter = new Mock<IDownloadedTracksOnlyFilter>();
             _shufflePodcastAction = new Mock<IShufflePodcastAction>();
+            _trackPOFactory = new Mock<ITrackPOFactory>();
+            _documentsPOFactory = new Mock<IDocumentsPOFactory>();
             var _mainThreadDispatcher = new Mock<IMvxMainThreadDispatcher>();
             var _mainThreadAsyncDispatcher = new Mock<IMvxMainThreadAsyncDispatcher>();
 
@@ -102,7 +108,9 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _toastDisplayer.Object,
                 _downloadedOnlyFilter.Object,
                 _networkSettings.Object,
-                _shufflePodcastAction.Object);
+                _shufflePodcastAction.Object,
+                _trackPOFactory.Object,
+                _documentsPOFactory.Object);
 
             viewModel.TextSource = _languageBinder.Object;
             return viewModel;

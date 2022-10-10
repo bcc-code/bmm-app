@@ -1,6 +1,8 @@
 using Android.Views;
 using AndroidX.RecyclerView.Widget;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.Droid.Application.Adapters.DragAndDrop;
 using MvvmCross.DroidX.RecyclerView;
@@ -30,7 +32,7 @@ namespace BMM.UI.Droid.Application.Adapters
         {
             base.OnBindViewHolder(holder, position);
             var itemHolder = (DragAndDropItemViewHolder)holder;
-            itemHolder.DeleteView.SetOnClickListener(new ListDeleteClickListener<Document>(this, DataContext.Documents, position));
+            itemHolder.DeleteView.SetOnClickListener(new ListDeleteClickListener<IDocumentPO>(this, DataContext.Documents, position));
             itemHolder.HandleView.SetOnTouchListener(new CustomTouchListener(itemHolder, _mDragStartListener));
         }
 

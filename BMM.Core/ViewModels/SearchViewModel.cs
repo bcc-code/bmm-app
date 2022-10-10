@@ -10,6 +10,10 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using Microsoft.AppCenter.Crashes;
@@ -38,6 +42,7 @@ namespace BMM.Core.ViewModels
     /// </summary>
     public class SearchViewModel : LoadMoreDocumentsViewModel
     {
+        private readonly IDocumentsPOFactory _documentsPOFactory;
         public Action OnFocusLoose;
 
         public MvxObservableCollection<string> SearchSuggestions { get; }
@@ -77,8 +82,11 @@ namespace BMM.Core.ViewModels
 
         public IMvxAsyncCommand DeleteHistoryCommand { get; }
 
-        public SearchViewModel()
+        public SearchViewModel(
+            ITrackPOFactory trackPOFactory,
+            IDocumentsPOFactory documentsPOFactory) : base(trackPOFactory)
         {
+            _documentsPOFactory = documentsPOFactory;
             SearchSuggestions = new MvxObservableCollection<string>();
             SearchHistory = new MvxObservableCollection<string>();
 
@@ -221,7 +229,7 @@ namespace BMM.Core.ViewModels
             SearchSuggestions.Clear();
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
             if (string.IsNullOrEmpty(SearchTerm))
             {
@@ -230,11 +238,15 @@ namespace BMM.Core.ViewModels
 
             var results = await Client.Search.GetAll(SearchTerm, startIndex, size);
             if (results == null)
-                return Enumerable.Empty<Document>();
+                return Enumerable.Empty<IDocumentPO>();
             
             NextPageFromPosition = results.NextPageFromPosition;
             IsFullyLoaded = results.IsFullyLoaded;
-            return results.Items;
+            return _documentsPOFactory.Create(
+                results.Items,
+                DocumentSelectedCommand,
+                OptionCommand,
+                TrackInfoProvider);
         }
 
         private int NextPageFromPosition { get; set; }

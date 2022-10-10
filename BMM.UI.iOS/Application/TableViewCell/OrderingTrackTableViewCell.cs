@@ -9,7 +9,7 @@ using UIKit;
 namespace BMM.UI.iOS
 {
     [Register(nameof(OrderingTrackTableViewCell))]
-    public class OrderingTrackTableViewCell : BaseTrackTableViewCell
+    public class OrderingTrackTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new NSString(nameof(OrderingTrackTableViewCell));
         private UILabel _titleLabel;

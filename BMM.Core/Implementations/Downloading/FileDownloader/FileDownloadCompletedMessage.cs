@@ -2,9 +2,9 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.Implementations.Downloading.FileDownloader
 {
-    public class FileDownloadCompletedMessage : MvxMessage
+    public class FileDownloadCompletedMessage : BaseFileDownloadMessage
     {
-        public FileDownloadCompletedMessage(object sender) : base(sender)
+        public FileDownloadCompletedMessage(object sender, int trackId) : base(sender, trackId)
         {
         }
     }

@@ -109,9 +109,9 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                     {
                         _queuedDownloads.TryTake(out var item);
                         _currentDownloadingDownloadable = item;
-                        _messenger.Publish(new FileDownloadStartedMessage(this));
+                        _messenger.Publish(new FileDownloadStartedMessage(this, item.Id));
                         await SafeDownload(item);
-                        _messenger.Publish(new FileDownloadCompletedMessage(this));
+                        _messenger.Publish(new FileDownloadCompletedMessage(this, item.Id));
                         _analytics.LogEvent(Event.TrackHasBeenDownloaded, PrepareAdditionalEventArguments(item));
                     }
                 }

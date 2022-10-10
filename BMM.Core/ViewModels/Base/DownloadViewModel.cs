@@ -96,6 +96,7 @@ namespace BMM.Core.ViewModels.Base
         protected readonly IDownloadQueue DownloadQueue;
         protected readonly IConnection Connection;
         private readonly INetworkSettings _networkSettings;
+        private MvxSubscriptionToken _downloadCancelledMessageToken;
 
         public virtual bool ShowSharingInfo => false;
         public virtual bool ShowImage => true;
@@ -114,18 +115,27 @@ namespace BMM.Core.ViewModels.Base
             _networkSettings = networkSettings;
 
             ToggleOfflineCommand = new ExceptionHandlingCommand(async () => await ToggleOffline());
+        }
 
-            Messenger.Subscribe<DownloadCanceledMessage>(async message =>
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            _downloadCancelledMessageToken = Messenger.Subscribe<DownloadCanceledMessage>(async message =>
+            {
+                if (IsDownloading && IsOfflineAvailable)
                 {
-                    if (IsDownloading && IsOfflineAvailable)
-                    {
-                        await DeleteAction();
+                    await DeleteAction();
 
-                        IsOfflineAvailable = !IsOfflineAvailable;
-                        await RaisePropertyChanged(() => Documents);
-                    }
-                },
-                MvxReference.Strong);
+                    IsOfflineAvailable = !IsOfflineAvailable;
+                    RefreshAllTracks();
+                }
+            });
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            Messenger.Unsubscribe<DownloadCanceledMessage>(_downloadCancelledMessageToken);
         }
 
         protected override void HandleFileDownloadStartedMessage(FileDownloadStartedMessage message)
@@ -214,7 +224,7 @@ namespace BMM.Core.ViewModels.Base
 
                 await DeleteAction();
 
-                await RaisePropertyChanged(() => Documents);
+                RefreshAllTracks();
                 await RaisePropertyChanged(() => IsDownloaded);
             }
         }

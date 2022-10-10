@@ -22,8 +22,10 @@
             android:layout_width="@dimen/contributor_image_dimen"
             android:layout_height="@dimen/contributor_image_dimen"
             android:src="@drawable/icon_contributor_fallback"
-            local:MvxBind="LoadingPlaceholderImagePath 'icon_contributor_fallback.png'; ErrorPlaceholderImagePath 'icon_contributor_fallback.png'; ImagePath CoverUrlToFallbackImage(Item.Cover, 'icon_contributor_fallback.png')"
-            />
+            local:MvxBind="
+                LoadingPlaceholderImagePath 'icon_contributor_fallback.png';
+                ErrorPlaceholderImagePath 'icon_contributor_fallback.png';
+                ImagePath CoverUrlToFallbackImage(Contributor.Cover, 'icon_contributor_fallback.png')" />
 
     </androidx.cardview.widget.CardView>
 
@@ -36,7 +38,7 @@
         android:gravity="center_vertical"
         android:layout_marginLeft="@dimen/element_margin_small"
         style="@style/Title2"
-        local:MvxBind="Text Item.Name"
+        local:MvxBind="Text Contributor.Name"
         local:layout_constraintTop_toTopOf="parent"
         local:layout_constraintStart_toEndOf="@+id/card_view"
         local:layout_constraintEnd_toStartOf="@+id/chevron_image"

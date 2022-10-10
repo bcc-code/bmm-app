@@ -7,6 +7,9 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Messages;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Podcasts;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels.MyContent
@@ -14,7 +17,6 @@ namespace BMM.Core.ViewModels.MyContent
     public class FollowedPodcastsViewModel : PodcastsViewModel
     {
         private readonly IPodcastOfflineManager _podcastDownloader;
-        private readonly IMvxMessenger _messenger;
 
         protected MvxSubscriptionToken FollowedPodcastChangedToken;
 
@@ -22,9 +24,8 @@ namespace BMM.Core.ViewModels.MyContent
             : base()
         {
             _podcastDownloader = podcastDownloader;
-            _messenger = messenger;
 
-            FollowedPodcastChangedToken = _messenger.Subscribe<FollowedPodcastsChangedMessage>(async message =>
+            FollowedPodcastChangedToken = Messenger.Subscribe<FollowedPodcastsChangedMessage>(async message =>
             {
                 await TryRefresh();
             });
@@ -67,10 +68,10 @@ namespace BMM.Core.ViewModels.MyContent
 
         public bool ShowEmptyFollowedPodcasts => (Documents.Count == 0) && !IsLoading;
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var podcasts = await Client.Podcast.GetAll(policy);
-            return podcasts?.Where(_podcastDownloader.IsFollowing);
+            return podcasts?.Where(_podcastDownloader.IsFollowing).Select(p => new PodcastPO(p));
         }
     }
 }

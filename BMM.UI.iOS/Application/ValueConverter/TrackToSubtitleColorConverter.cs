@@ -4,6 +4,7 @@ using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using MvvmCross;
@@ -12,27 +13,15 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public class TrackToSubtitleColorConverter: MvxValueConverter<CellWrapperViewModel<Document>, UIColor>
+    public class TrackToSubtitleColorConverter: MvxValueConverter<TrackState, UIColor>
     {
-        protected override UIColor Convert(CellWrapperViewModel<Document> value, Type targetType, object parameter, CultureInfo culture)
+        protected override UIColor Convert(TrackState trackState, Type targetType, object parameter, CultureInfo culture)
         {
-            var document = value.Item as Track;
-
-            if (!TrackIsAvailable(document))
+            if (!trackState.IsAvailable)
                 return UIColor.Gray;
-
-            if (value.ViewModel is IDarkStyleOnIosViewModel)
-                return UIColor.White.ColorWithAlpha(0.8f);
 
             return AppColors.LabelSecondaryColor;
 
-        }
-
-        private bool TrackIsAvailable(Track track)
-        {
-            var trackIsDownloaded = Mvx.IoCProvider.Resolve<IStorageManager>().SelectedStorage.IsDownloaded(track);
-            var isOnline = Mvx.IoCProvider.Resolve<IConnection>().GetStatus() == ConnectionStatus.Online;
-            return isOnline || trackIsDownloaded;
         }
     }
 }

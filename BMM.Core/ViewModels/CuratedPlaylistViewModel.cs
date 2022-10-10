@@ -8,9 +8,13 @@ using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
@@ -23,6 +27,7 @@ namespace BMM.Core.ViewModels
     public class CuratedPlaylistViewModel : DownloadViewModel, IMvxViewModel<Playlist>
     {
         private readonly IPlaylistManager _playlistManager;
+        private readonly ITrackPOFactory _trackPOFactory;
         private Playlist _curatedPlaylist;
 
         public Playlist CuratedPlaylist
@@ -55,10 +60,12 @@ namespace BMM.Core.ViewModels
             IDownloadQueue downloadQueue,
             IConnection connection,
             INetworkSettings networkSettings,
-            IPlaylistManager playlistManager)
+            IPlaylistManager playlistManager,
+            ITrackPOFactory trackPOFactory)
             : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
         {
             _playlistManager = playlistManager;
+            _trackPOFactory = trackPOFactory;
             TrackInfoProvider = new AudiobookPodcastInfoProvider(TrackInfoProvider);
         }
 
@@ -69,9 +76,10 @@ namespace BMM.Core.ViewModels
                 .ExecuteOnMainThreadAsync(async () => { IsOfflineAvailable = await Mvx.IoCProvider.Resolve<IOfflinePlaylistStorage>().IsOfflineAvailable(curatedPlaylist.Id); });
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            return await Client.Playlist.GetTracks(CuratedPlaylist.Id, policy);
+            var tracks = await Client.Playlist.GetTracks(CuratedPlaylist.Id, policy);
+            return tracks.Select(t => _trackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
 
         protected override async Task Initialization()
@@ -94,7 +102,7 @@ namespace BMM.Core.ViewModels
 
         protected override Task<long> CalculateApproximateDownloadSize()
         {
-            var sum = Documents.OfType<Track>().Sum(x => x.Media.Sum(t => t.Files.Sum(s => s.Size)));
+            var sum = Documents.OfType<TrackPO>().Sum(x => x.Track.Media.Sum(t => t.Files.Sum(s => s.Size)));
             return Task.FromResult(sum);
         }
     }

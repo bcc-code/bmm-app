@@ -1,73 +1,60 @@
-﻿using BMM.Api.Implementation.Models;
-using BMM.Core.ViewModels;
-using BMM.Core.ViewModels.Base;
-using MvvmCross.Binding.BindingContext;
+﻿using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
-using BMM.Core.Implementations.UI;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
-using BMM.UI.iOS.Helpers;
 using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class TrackTableViewCell : BaseTrackTableViewCell
+    public partial class TrackTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly UINib Nib = UINib.FromName(nameof(TrackTableViewCell), NSBundle.MainBundle);
-        public static readonly NSString Key = new NSString(nameof(TrackTableViewCell));
-
-        private VisibilityBindingsManager<CellWrapperViewModel<Document>> _bindingsManager;
+        public static readonly NSString Key = new(nameof(TrackTableViewCell));
 
         public TrackTableViewCell(IntPtr handle)
             : base(handle)
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<TrackTableViewCell, CellWrapperViewModel<Track>>();
-                set.Bind(TitleLabel).WithConversion<DocumentToTitleValueConverter>();
+                var set = this.CreateBindingSet<TrackTableViewCell, TrackPO>();
+                set.Bind(TitleLabel).To(po => po.TrackTitle);
                 set.Bind(TitleLabel)
                     .For(i => i.TextColor)
-                    .To(vm => ((DocumentsViewModel)vm.ViewModel).CurrentTrack)
-                    .WithConversion<TrackToTitleColorConverter>((Func<CellWrapperViewModel<Document>>) (() => (CellWrapperViewModel<Document>)DataContext));
-                set.Bind(accessoryView).WithConversion<DocumentToSubtitleValueConverter>();
-                set.Bind(accessoryView).For(i => i.TextColor).WithConversion<TrackToSubtitleColorConverter>();
-                set.Bind(metaLabel).WithConversion<DocumentToMetaValueConverter>();
-                set.Bind(metaLabel).For(l => l.TextColor).WithConversion<TrackToMetaColorConverter>();
-                set.Bind(DownloadStatusImageView).For(i => i.ImagePath).To(vm => vm).WithConversion<OfflineAvailableTrackStatusConverter>();
-                set.Bind(DownloadStatusImageView).For(i => i.BindVisibility()).To(vm => vm).WithConversion<OfflineAvailableTrackValueConverter>();
+                    .To(po => po.TrackState)
+                    .WithConversion<TrackToTitleColorConverter>();
+
+                set.Bind(accessoryView).To(po => po.TrackSubtitle);
+                set.Bind(accessoryView).For(i => i.TextColor).To(po => po.TrackState).WithConversion<TrackToSubtitleColorConverter>();
+                set.Bind(metaLabel).To(po => po.TrackMeta);
+                set.Bind(DownloadStatusImageView)
+                    .For(i => i.ImagePath)
+                    .To(po => po.TrackState)
+                    .WithConversion<OfflineAvailableTrackStatusConverter>();
+                set.Bind(DownloadStatusImageView)
+                    .For(i => i.BindVisibility())
+                    .To(po => po.TrackState)
+                    .WithConversion<OfflineAvailableTrackValueConverter>();
                 set.Bind(StatusImage)
                     .For(v => v.Image)
-                    .To(vm => ((DocumentsViewModel)vm.ViewModel).CurrentTrack)
-                    .WithConversion<TrackToStatusImageConverter>((Func<CellWrapperViewModel<Document>>) (() => (CellWrapperViewModel<Document>)DataContext));
-                set.Bind(OptionsButton).WithConversion<OptionButtonCommandValueConverter>();
-                set.Bind(ReferenceButton).WithConversion<ShowTrackInfoCommandValueConverter>();
+                    .To(po => po.TrackState)
+                    .WithConversion<TrackToStatusImageConverter>();
+                set.Bind(ReferenceButton)
+                    .For(v => v.BindVisible())
+                    .To(po => po.Track)
+                    .WithConversion<TrackHasExternalRelationsValueConverter>();
+                set.Bind(OptionsButton).To(po => po.OptionButtonClickedCommand);
+                set.Bind(ReferenceButton).To(po => po.ShowTrackInfoCommand);
                 set.Apply();
+
+                SetThemes();
             });
+        }
 
-            BindingContext.DataContextChanged += (sender, e) =>
-            {
-                if (DataContext == null)
-                    return;
-                
-                if (_bindingsManager == null)
-                {
-                    _bindingsManager = new VisibilityBindingsManager<CellWrapperViewModel<Document>>();
-                    _bindingsManager.AddBinding(DownloadStatusImageView, DownloadStatusVisible);
-                    _bindingsManager.AddBinding(ReferenceButton, ReferenceButtonVisible);
-                }
-
-                if (DataContext is CellWrapperViewModel<Document> wrappedCell)
-                    _bindingsManager.Update(wrappedCell);
-
-                BeginInvokeOnMainThread(() =>
-                {
-                    ReferenceButton!.TintColor = ((CellWrapperViewModel<Document>)DataContext).ViewModel is IDarkStyleOnIosViewModel
-                        ? UIColor.White
-                        : AppColors.LabelPrimaryColor;
-                });
-            };
+        private void SetThemes()
+        {
+            metaLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
     }
 }

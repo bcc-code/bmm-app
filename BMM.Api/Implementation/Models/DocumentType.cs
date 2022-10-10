@@ -32,15 +32,6 @@ namespace BMM.Api.Implementation.Models
         PlaylistsCollection,
 
         [IgnoreDataMember]
-        AslaksenTeaser,
-
-        [IgnoreDataMember]
-        FraKaareTeaser,
-
-        [IgnoreDataMember]
-        LiveRadio,
-
-        [IgnoreDataMember]
         SimpleMargin,
 
         [IgnoreDataMember]

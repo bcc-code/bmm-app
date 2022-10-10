@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_medium"
             android:layout_marginVertical="@dimen/margin_medium"
-            local:MvxBind="Text Item.MessageText"
+            local:MvxBind="Text InfoMessage.MessageText"
             style="@style/Subtitle1_Label1" />
     
 </LinearLayout>

@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Documents;
 using BMM.Core.Implementations.TrackListenedObservation;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.Test.Unit.GuardedActions.Base;
 using FluentAssertions;
 using NSubstitute;
@@ -14,8 +16,8 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
     [TestFixture]
     public class PostprocessDocumentsActionTests : GuardedActionWithParameterAndResultTests<
         PostprocessDocumentsAction,
-        IEnumerable<Document>,
-        IEnumerable<Document>>
+        IEnumerable<IDocumentPO>,
+        IEnumerable<IDocumentPO>>
     {
         private IListenedTracksStorage _listenedTracksStorageMock;
 
@@ -34,12 +36,19 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
         public async Task VideoDocumentsAreExcluded()
         {
             //Arrange
-            var documents = new List<Track>
+            var trackPOSubstitute = Substitute.For<ITrackPO>();
+            var track = new Track()
             {
-                new Track()
-                {
-                    Subtype = TrackSubType.Video
-                }
+                Subtype = TrackSubType.Video
+            };
+
+            trackPOSubstitute
+                .Track
+                .Returns(track);
+            
+            var documents = new List<ITrackPO>
+            {
+                trackPOSubstitute
             };
 
             //Act
@@ -65,10 +74,10 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
                 Id = 2
             };
 
-            var documents = new List<Track>
+            var documents = new List<ITrackPO>
             {
-                notListenedTrack,
-                listenedTrack
+                CreateTrackPO(notListenedTrack),
+                CreateTrackPO(listenedTrack)
             };
 
             _listenedTracksStorageMock
@@ -88,18 +97,29 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
                 .NotBeNullOrEmpty();
 
             result
-                .OfType<Track>()
-                .First(x => x.Id == notListenedTrack.Id)
+                .Select(d => (ITrackPO)d)
+                .First(x => x.Track.Id == notListenedTrack.Id)
+                .Track
                 .IsListened
                 .Should()
                 .BeFalse();
 
             result
-                .OfType<Track>()
-                .First(x => x.Id == listenedTrack.Id)
+                .Select(d => (ITrackPO)d)
+                .First(x => x.Track.Id == listenedTrack.Id)
+                .Track
                 .IsListened
                 .Should()
                 .BeTrue();
+        }
+
+        private ITrackPO CreateTrackPO(Track track)
+        {
+            var trackPOSubstitute = Substitute.For<ITrackPO>();
+            trackPOSubstitute
+                .Track
+                .Returns(track);
+            return trackPOSubstitute;
         }
     }
 }

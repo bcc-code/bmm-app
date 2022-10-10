@@ -21,8 +21,8 @@
         local:MvxTemplateSelector="@string/document_templateselector"
         local:MvxBind="
             Visibility Visibility(HasAnyEntry);
-            ItemsSource DocumentList(Documents, .);
-            ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+            ItemsSource Documents;
+            ItemClick DocumentSelectedCommand" />
 
     <TextView
         android:id="@+id/NoEntriesLabelTitle"

@@ -1,15 +1,15 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace BMM.Api.Implementation.Models
 {
     public class CoverCarouselCollection : Document
     {
-        public CoverCarouselCollection(ObservableCollection<Document> coverDocuments)
+        public CoverCarouselCollection(IEnumerable<Document> coverDocuments)
         {
             CoverDocuments = coverDocuments;
             DocumentType = DocumentType.PlaylistsCollection;
         }
 
-        public ObservableCollection<Document> CoverDocuments { get; }
+        public IEnumerable<Document> CoverDocuments { get; }
     }
 }

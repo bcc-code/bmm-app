@@ -3,6 +3,7 @@ using BMM.Core.ViewModels;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using System;
+using BMM.Core.Models.POs.TrackCollections;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -17,8 +18,8 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<FollowedPodcastsViewCell, CellWrapperViewModel<TrackCollection>>();
-                set.Bind(TitleLabel).To(vm => vm.Item.Name);
+                var set = this.CreateBindingSet<FollowedPodcastsViewCell, TrackCollectionPO>();
+                set.Bind(TitleLabel).To(vm => vm.TrackCollection.Name);
                 set.Apply();
             });
         }

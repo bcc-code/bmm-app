@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Test.Unit.ViewModels.Base;
@@ -40,9 +41,9 @@ namespace BMM.Core.Test.Unit.ViewModels
                 .Returns(Task.FromResult(new TrackCollection { Tracks = new List<Track>() }));
 
             var newestViewModel = new DownloadedContentViewModel(
-                new Mock<IOfflineTrackCollectionStorage>().Object,
                 new Mock<IStorageManager>().Object,
-                _connectionMock.Object);
+                _connectionMock.Object,
+                new Mock<ITrackCollectionPOFactory>().Object);
             newestViewModel.TextSource = TextResource.Object;
 
             // Act
@@ -73,9 +74,9 @@ namespace BMM.Core.Test.Unit.ViewModels
 
 
             var newestViewModel = new DownloadedContentViewModel(
-                new Mock<IOfflineTrackCollectionStorage>().Object,
                 mockStorage.Object,
-                _connectionMock.Object);
+                _connectionMock.Object,
+                new Mock<ITrackCollectionPOFactory>().Object);
 
             newestViewModel.TextSource = TextResource.Object;
             _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Offline);

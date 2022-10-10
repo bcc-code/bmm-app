@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Contributors.Interfaces;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.ViewModels;
 using Moq;
@@ -17,6 +19,7 @@ namespace BMM.Core.Test.Unit.ViewModels
     {
         private int id = 1;
         private IShuffleContributorAction _shuffleContributorActionMock;
+        private ITrackPOFactory _trackPOFactoryMock;
 
         [SetUp]
         public void Init()
@@ -25,13 +28,16 @@ namespace BMM.Core.Test.Unit.ViewModels
             base.AdditionalSetup();
             Client.Setup(x => x.Contributors.GetById(It.IsAny<int>())).Returns(Task.FromResult(new Contributor() { Id = id, DocumentType = DocumentType.Contributor, Name = "Test" }));
             _shuffleContributorActionMock = Mock.Of<IShuffleContributorAction>();
+            _trackPOFactoryMock = Mock.Of<ITrackPOFactory>();
         }
 
         [Test]
         public async Task Refresh_CheckIfRefreshWorks()
         {
             //Arrange
-            var contributorViewModel = new ContributorViewModel(_shuffleContributorActionMock);
+            var contributorViewModel = new ContributorViewModel(
+                _shuffleContributorActionMock,
+                _trackPOFactoryMock);
 
             //Act
             var refreshing = contributorViewModel.IsRefreshing;
@@ -53,7 +59,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             Client.Setup(x => x.Contributors.GetTracks(It.IsAny<int>(), It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>(), null)).Returns(Task.FromResult<IList<Track>>(null));
-            var contributor = new ContributorViewModel(_shuffleContributorActionMock);
+            var contributor = new ContributorViewModel(
+                _shuffleContributorActionMock,
+                _trackPOFactoryMock);
 
             // Act
             await contributor.LoadItems();

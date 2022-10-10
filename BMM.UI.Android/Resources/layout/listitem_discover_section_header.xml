@@ -13,7 +13,7 @@
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
         local:layout_constraintTop_toTopOf="parent"
-        local:MvxBind="Visibility Visibility(Item.IsSeparatorVisible)" />
+        local:MvxBind="Visibility Visibility(IsSeparatorVisible)" />
 
     <TextView
         android:id="@+id/title"
@@ -26,7 +26,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginBottom="8dp"
         style="@style/Heading3"
-        local:MvxBind="Text Item.Title"
+        local:MvxBind="Text DiscoverSectionHeader.Title"
         local:layout_constraintTop_toTopOf="parent"
         local:layout_constraintBottom_toBottomOf="parent"
         local:layout_constraintLeft_toLeftOf="parent"
@@ -41,13 +41,14 @@
         local:cardBackgroundColor="@color/background_secondary_color"
         local:cardCornerRadius="16dp"
         local:cardElevation="0dp"
-
         local:layout_constraintTop_toTopOf="parent"
         local:layout_constraintBottom_toBottomOf="parent"
         local:layout_constraintRight_toRightOf="parent"
         android:layout_marginTop="28dp"
         android:layout_marginRight="16dp"
-        local:MvxBind="Click DeepLinkButtonCommand(.); Visibility InvertedVisibility(Item.HasLink)">
+        local:MvxBind="
+            Click DeepLinkButtonClickedCommand;
+            Visibility InvertedVisibility(HasLink)">
 
         <TextView
             android:layout_marginTop="6dp"
@@ -60,7 +61,7 @@
             android:maxLines="1"
             android:ellipsize="end"
             android:lineHeight="20sp"
-            local:MvxLang="Text ExploreNewestViewModel_ShowAll, Source=ViewModel.TextSource" />
+            local:MvxLang="Text ExploreNewestViewModel_ShowAll" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,7 @@ namespace BMM.UI.iOS
 {
     public class BrowseDetailsTableViewSource : NotSelectableDocumentsTableViewSource
     {
-        private readonly Dictionary<int, nfloat> _offsetDictionary = new Dictionary<int, nfloat>();
+        private readonly Dictionary<int, nfloat> _offsetDictionary = new();
         private bool _preventSavingOffsets;
 
         public BrowseDetailsTableViewSource(UITableView tableView) : base(tableView)

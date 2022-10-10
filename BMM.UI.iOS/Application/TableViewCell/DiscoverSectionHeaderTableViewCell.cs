@@ -1,5 +1,6 @@
 using System;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
@@ -20,14 +21,14 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<DiscoverSectionHeaderTableViewCell, CellWrapperViewModel<DiscoverSectionHeader>>();
-                set.Bind(Titel).To(vm => vm.Item.Title);
-                set.Bind(LinkButton).For(v => v.BindTitle()).To(vm => vm.ViewModel.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_ShowAll);
-                set.Bind(LinkButton).WithConversion<DeepLinkButtonCommandValueConverter>();
-                set.Bind(LinkButton).For(v => v.Hidden).To(vm => vm.Item.HasLink).WithConversion<VisibilityConverter>();
+                var set = this.CreateBindingSet<DiscoverSectionHeaderTableViewCell, DiscoverSectionHeaderPO>();
+                set.Bind(Titel).To(po => po.DiscoverSectionHeader.Title);
+                set.Bind(LinkButton).For(v => v.BindTitle()).To(po => po.TextSource).WithConversion<MvxLanguageConverter>(Translations.ExploreNewestViewModel_ShowAll);
+                set.Bind(LinkButton).For(v => v.Hidden).To(po => po.HasLink).WithConversion<VisibilityConverter>();
+                set.Bind(LinkButton).To(po => po.DeepLinkButtonClickedCommand);
                 set.Bind(Divider)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.Item.IsSeparatorVisible);
+                    .To(po => po.IsSeparatorVisible);
                 set.Apply();
             });
         }

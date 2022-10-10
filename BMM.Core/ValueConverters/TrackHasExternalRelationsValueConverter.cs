@@ -10,12 +10,7 @@ namespace BMM.Core.ValueConverters
     {
         protected override bool Convert(Track track, Type targetType, object parameter, CultureInfo culture)
         {
-            if (track != null && track.Relations != null)
-            {
-                return track.Relations.Any(relation => relation.Type == TrackRelationType.External);
-            }
-
-            return false;
+            return track.Relations?.Any(relation => relation.Type == TrackRelationType.External) ?? false;
         }
     }
 }

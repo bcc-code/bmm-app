@@ -1,5 +1,6 @@
 using System;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Extensions;
@@ -18,7 +19,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<ContinueListeningCollectionTableViewCell, CellWrapperViewModel<ContinueListeningCollection>>();
+                var set = this.CreateBindingSet<ContinueListeningCollectionTableViewCell, ContinueListeningCollectionPO>();
 
                 var source = new MvxCollectionViewSource(ContinueListeningCollection, ContinueListeningCollectionViewCell.Key);
                 ContinueListeningCollection!.RegisterNibForCell(ContinueListeningCollectionViewCell.Nib, ContinueListeningCollectionViewCell.Key);
@@ -26,15 +27,8 @@ namespace BMM.UI.iOS
                 set
                     .Bind(source)
                     .For(s => s.ItemsSource)
-                    .To(vm => vm.Item.ContinueListeningElements)
-                    .WithConversion<DocumentListValueConverter>(CellDataContext.ViewModel);
-
-                 set
-                     .Bind(source)
-                     .For(s => s.SelectionChangedCommand)
-                     .To(vm => vm.ViewModel.DocumentSelectedCommand)
-                     .WithConversion(new DocumentSelectedCommandValueConverter());
-
+                    .To(vm => vm.ContinueListeningTiles);
+                
                 ContinueListeningCollection.AccessibilityIdentifier = nameof(ContinueListeningCollection);
                 ContinueListeningCollection.Source = source;
                 set.Apply();
@@ -42,7 +36,5 @@ namespace BMM.UI.iOS
         }
 
         protected override bool HasHighlightEffect => false;
-
-        private CellWrapperViewModel<Document> CellDataContext => (CellWrapperViewModel<Document>)DataContext;
     }
 }

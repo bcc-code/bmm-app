@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Documents.Interfaces;
+using TagLib.Riff;
 
 namespace BMM.Core.GuardedActions.Documents
 {
@@ -40,7 +41,7 @@ namespace BMM.Core.GuardedActions.Documents
                 }
 
                 if (coverDocuments.Any())
-                    adjustedList.Insert(currentIndex, new CoverCarouselCollection(new ObservableCollection<Document>(coverDocuments)));
+                    adjustedList.Insert(currentIndex, new CoverCarouselCollection(new List<Document>(coverDocuments)));
             }
 
             return adjustedList;

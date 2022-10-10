@@ -8,6 +8,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
@@ -214,7 +215,7 @@ namespace BMM.Core.Implementations.PlayObserver
                     return;
                 }
 
-                if (CurrentTrack.Tags?.Contains(FraKaareTeaserViewModel.FromKaareTagName) == true)
+                if (CurrentTrack.Tags?.Contains(FraKaareConstants.FromKaareTagName) == true)
                     _messenger.Publish(new FraKaareTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
 
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);

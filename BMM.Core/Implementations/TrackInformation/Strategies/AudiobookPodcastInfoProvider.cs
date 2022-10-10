@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Linq;
 using BMM.Api.Abstraction;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels;
 
@@ -26,9 +27,9 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
 
         public bool HasSpecificStyling(ITrackModel track)
         {
-            return track.Tags.Contains(FraKaareTeaserViewModel.FromKaareTagName)
-                   || track.Tags.Contains(AslaksenTeaserViewModel.HebrewTagName)
-                   || track.Tags.Contains(AslaksenTeaserViewModel.AsklaksenTagName);
+            return track.Tags.Contains(FraKaareConstants.FromKaareTagName)
+                   || track.Tags.Contains(AslaksenConstants.HebrewTagName)
+                   || track.Tags.Contains(AslaksenConstants.AsklaksenTagName);
         }
 
         public TrackInformation GetTrackInformation(ITrackModel track, CultureInfo culture, TrackInformation defaultTrack)
@@ -36,7 +37,7 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
             // We want to split the weekday from the rest of the pattern. Technically it would be better to set the order dynamically in case there is a language that commonly puts the weekday after the date.
             var patternWithoutWeekday = culture.DateTimeFormat.LongDatePattern.Replace("dddd", "").Trim().Trim(',').Trim();
 
-            if (track.Tags.Contains(AslaksenTeaserViewModel.AsklaksenTagName))
+            if (track.Tags.Contains(AslaksenConstants.AsklaksenTagName))
             {
                 return new TrackInformation
                 {

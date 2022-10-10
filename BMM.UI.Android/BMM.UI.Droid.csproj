@@ -272,7 +272,6 @@
     <Compile Include="AndroidMvxLog.cs" />
     <Compile Include="Application\ViewHolders\CoverWithTitleViewHolder.cs" />
     <Compile Include="Application\ViewHolders\CoversCarouselCollectionViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\FraKaareTeaserViewHolder.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -312,7 +311,6 @@
     <Compile Include="Application\Implementations\Notifications\BmmMessagingService.cs" />
     <Compile Include="Application\Implementations\Notifications\NotificationDisplayer.cs" />
     <Compile Include="Application\Implementations\Notifications\FirebaseTokenProvider.cs" />
-    <Compile Include="Application\TemplateSelectors\ExploreNewestTemplateSelector.cs" />
     <Compile Include="Application\Activities\BaseFragmentActivity.cs" />
     <Compile Include="Application\Implementations\UI\UriOpener.cs" />
   </ItemGroup>
@@ -655,10 +653,6 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_covers_carousel_collection.xml" />
-    <AndroidResource Include="Resources\layout\listitem_podcast_newest_track.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_discover_section_header.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -1188,11 +1182,6 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\radio_background_broadcasting.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_fra_kaare_teaser.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

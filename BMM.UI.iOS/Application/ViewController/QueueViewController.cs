@@ -25,8 +25,8 @@ namespace BMM.UI.iOS
             var source = new BaseSimpleTableViewSource(QueueTableView, TrackTableViewCell.Key);
 
             var set = this.CreateBindingSet<QueueViewController, QueueViewModel>();
-            set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
+            set.Bind(source).To(vm => vm.Documents);
+            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
 
             set.Apply();
         }

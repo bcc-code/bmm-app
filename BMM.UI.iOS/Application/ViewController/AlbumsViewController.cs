@@ -26,8 +26,8 @@ namespace BMM.UI.iOS
 
             var set = this.CreateBindingSet<AlbumsViewController, AlbumsViewModel>();
             set.Bind(this).For(v => v.Title).To(vm => vm.Year);
-            set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
+            set.Bind(source).To(vm => vm.Documents);
+            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
             set.Apply();

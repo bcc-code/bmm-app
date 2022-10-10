@@ -1,5 +1,8 @@
 ﻿using System;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.ViewModels;
 using Foundation;
 using MvvmCross.Commands;
@@ -35,13 +38,13 @@ namespace BMM.UI.iOS
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            MvxObservableCollection<CellWrapperViewModel<Document>> data = ItemsSource as MvxObservableCollection<CellWrapperViewModel<Document>>;
+            var data = (IBmmObservableCollection<IDocumentPO>)ItemsSource;
 
             UITableViewCell cell;
             if (data != null && indexPath.Row == data.Count)
             {
                 cell = tableView.DequeueReusableCell (LoadingTableViewCell.Key);
-                (cell as LoadingTableViewCell).AnimateSpinner();
+                (cell as LoadingTableViewCell)?.AnimateSpinner();
             }
             else
             {
@@ -57,8 +60,8 @@ namespace BMM.UI.iOS
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            MvxObservableCollection<CellWrapperViewModel<Document>> data = ItemsSource as MvxObservableCollection<CellWrapperViewModel<Document>>;
-
+            var data = (IBmmObservableCollection<IDocumentPO>)ItemsSource;
+            
             if (data != null && !IsFullyLoaded) {
                 // Add one row here for the loading-indicator.
                 return base.RowsInSection (tableview, section) + 1;
@@ -69,7 +72,7 @@ namespace BMM.UI.iOS
 
         public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
         {
-            MvxObservableCollection<CellWrapperViewModel<Document>> data = ItemsSource as MvxObservableCollection<CellWrapperViewModel<Document>>;
+            var data = (IBmmObservableCollection<IDocumentPO>)ItemsSource;
 
             if (!IsFullyLoaded && LoadMoreCommand != null && indexPath.Row == data.Count - 1) {
                 LoadMoreCommand.Execute();

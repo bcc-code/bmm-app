@@ -33,7 +33,7 @@
                 android:ellipsize="end"
                 android:lineHeight="20sp"
                 style="@style/Title2"
-                local:MvxBind="Text Title(.)" />
+                local:MvxBind="Text TrackTitle" />
 
         </LinearLayout>
 
@@ -52,7 +52,7 @@
                 android:maxLines="1"
                 android:ellipsize="end"
                 style="@style/Subtitle3_Label2"
-                local:MvxBind="Text Subtitle(.)" />
+                local:MvxBind="Text TrackSubtitle" />
 
             <TextView
                 android:id="@+id/trackMeta"
@@ -62,7 +62,7 @@
                 android:maxLines="1"
                 android:ellipsize="end"
                 style="@style/Subtitle3_Label3"
-                local:MvxBind="Text MetaTitle(.)" />
+                local:MvxBind="Text TrackMeta" />
 
         </LinearLayout>
 

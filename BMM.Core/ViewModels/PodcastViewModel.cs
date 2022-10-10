@@ -6,6 +6,7 @@ using Acr.UserDialogs;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Contributors.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
@@ -15,10 +16,14 @@ using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.DownloadManager;
+using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Models.Contributors;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.MyContent;
@@ -38,7 +43,7 @@ namespace BMM.Core.ViewModels
         private readonly IGlobalMediaDownloader _mediaDownloader;
         private readonly IUserDialogs _userDialogs;
         private readonly INetworkSettings _networkSettings;
-        private readonly IShufflePodcastAction _shufflePodcastAction;
+        private readonly IDocumentsPOFactory _documentsPOFactory;
         private readonly IToastDisplayer _toastDisplayer;
         private readonly WeekOfTheYearChapterStrategy _weekOfTheYearChapterStrategy = new WeekOfTheYearChapterStrategy();
         private readonly AslaksenTagChapterStrategy _aslaksenTagChapterStrategy = new AslaksenTagChapterStrategy();
@@ -93,7 +98,7 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        public override int CurrentLimit => Podcast?.Id == AslaksenTeaserViewModel.FraBegynnelsenPodcastId ? 60 : base.CurrentLimit;
+        public override int CurrentLimit => Podcast?.Id == AslaksenConstants.FraBegynnelsenPodcastId ? 60 : base.CurrentLimit;
 
         public bool ShowSharingInfo => false;
 
@@ -118,8 +123,10 @@ namespace BMM.Core.ViewModels
             IToastDisplayer toastDisplayer,
             IDownloadedTracksOnlyFilter downloadedOnlyFilter,
             INetworkSettings networkSettings,
-            IShufflePodcastAction shufflePodcastAction)
-            : base(downloadedOnlyFilter)
+            IShufflePodcastAction shufflePodcastAction,
+            ITrackPOFactory trackPOFactory,
+            IDocumentsPOFactory documentsPOFactory)
+            : base(trackPOFactory, downloadedOnlyFilter)
         {
             _podcastDownloader = podcastDownloader;
             _connection = connection;
@@ -127,7 +134,8 @@ namespace BMM.Core.ViewModels
             _userDialogs = userDialogs;
             _toastDisplayer = toastDisplayer;
             _networkSettings = networkSettings;
-            
+            _documentsPOFactory = documentsPOFactory;
+
             _shufflePodcastCommand = new MvxAsyncCommand(async () =>
                 {
                     await shufflePodcastAction.ExecuteGuarded(new ShuffleActionParameter(Podcast.Id, PlaybackOriginString));
@@ -194,7 +202,7 @@ namespace BMM.Core.ViewModels
             StartPlayingTrackId = podcast.TrackId;
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
             if (_forceRefreshFromServers)
             {
@@ -203,22 +211,22 @@ namespace BMM.Core.ViewModels
             }
 
             var items = await Client.Podcast.GetTracks(Podcast.Id, policy, size, startIndex);
-            var existingDocs = startIndex == 0 ? new List<Document>() as IEnumerable<Document> : Documents;
+            var existingDocs = startIndex == 0 ? new List<IDocumentPO>() as IEnumerable<IDocumentPO> : Documents;
 
             IEnumerable<Document> itemsWithChapters;
             switch (Podcast.Id)
             {
-                case FraKaareTeaserViewModel.FraKårePodcastId:
+                case FraKaareConstants.FraKårePodcastId:
                     itemsWithChapters = _weekOfTheYearChapterStrategy.AddChapterHeaders(items, existingDocs);
                     break;
 
-                case AslaksenTeaserViewModel.AslaksenPodcastId:
+                case AslaksenConstants.AslaksenPodcastId:
                     itemsWithChapters = _aslaksenTagChapterStrategy.AddChapterHeaders(items, existingDocs);
                     break;
 
                 // BTV asked to change the order of tracks for the Hebrew podcast
-                case AslaksenTeaserViewModel.HebrewPodcastId:
-                case AslaksenTeaserViewModel.FraBegynnelsenPodcastId:
+                case AslaksenConstants.HebrewPodcastId:
+                case AslaksenConstants.FraBegynnelsenPodcastId:
                     itemsWithChapters = items.OrderBy(x => x.Order).ToList();
                     break;
 
@@ -227,7 +235,11 @@ namespace BMM.Core.ViewModels
                     break;
             }
 
-            return itemsWithChapters;
+            return _documentsPOFactory.Create(
+                itemsWithChapters,
+                DocumentSelectedCommand,
+                OptionCommand,
+                TrackInfoProvider);
         }
 
         public override CacheKeys? CacheKey => CacheKeys.PodcastGetTracks;

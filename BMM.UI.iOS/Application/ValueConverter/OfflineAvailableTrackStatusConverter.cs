@@ -1,14 +1,10 @@
 ﻿using System;
-using BMM.Api.Implementation.Models;
-using BMM.Core.Implementations.Downloading.DownloadQueue;
-using BMM.Core.Implementations.FileStorage;
-using BMM.Core.ViewModels;
-using MvvmCross;
+using BMM.Core.Models.POs.Tracks;
 using MvvmCross.Converters;
 
 namespace BMM.UI.iOS
 {
-    public class OfflineAvailableTrackStatusConverter : MvxValueConverter
+    public class OfflineAvailableTrackStatusConverter : MvxValueConverter<TrackState, string>
     {
         public string IconDownloaded { get; protected set; }
 
@@ -23,35 +19,18 @@ namespace BMM.UI.iOS
             IconPending = "res:icon_pending";
         }
 
-        public override object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        protected override string Convert(TrackState trackState, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var v = (CellWrapperViewModel<Document>)value;
-
-            var item = v.Item;
-
-            if (!(item is Track track))
-            {
-                return null;
-            }
-
-            if (IsOfflineAvailable(track))
-            {
+            if (trackState.IsDownloaded)
                 return IconDownloaded;
-            }
-
-            var downloadQueue = Mvx.IoCProvider.Resolve<IDownloadQueue>();
-
-            if (downloadQueue.IsDownloading(track))
+            
+            if (trackState.IsDownloading)
                 return IconLoading;
-            if (downloadQueue.IsQueued(track))
+            
+            if (trackState.IsQueued)
                 return IconPending;
 
             return null;
-        }
-
-        private bool IsOfflineAvailable(Track value)
-        {
-            return Mvx.IoCProvider.Resolve<IStorageManager>().SelectedStorage.IsDownloaded(value);
         }
     }
 }

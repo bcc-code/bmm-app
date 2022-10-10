@@ -55,9 +55,9 @@ namespace BMM.UI.iOS
             set.Bind(SearchTermTextField).To(vm => vm.SearchTerm);
             set.Bind(SearchTermTextField).For(s => s.Placeholder).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchHint);
 
-            set.Bind(resultsTable).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
+            set.Bind(resultsTable).To(vm => vm.Documents);
             set.Bind(ResultsHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchResults);
-            set.Bind(resultsTable).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
+            set.Bind(resultsTable).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
             set.Bind(resultsTable).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
             set.Bind(resultsTable).For(s => s.IsFullyLoaded).To(s => s.IsFullyLoaded);
 

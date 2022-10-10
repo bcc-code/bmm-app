@@ -29,7 +29,6 @@ namespace BMM.UI.Droid.Application.Adapters
                 return base.GetItem(position);
         }
 
-
         public override void OnBindViewHolder(RecyclerView.ViewHolder holder, int position)
         {
             if (ShouldDisplayBottomSpinner && position == ItemCount - 1)

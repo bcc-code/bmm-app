@@ -28,8 +28,8 @@ namespace BMM.UI.iOS
             var source = new DocumentsTableViewSource(MyCollectionTable);
 
             var set = this.CreateBindingSet<DownloadedContentViewController, DownloadedContentViewModel>();
-            set.Bind(source).To(vm => vm.Documents).WithConversion<DocumentListValueConverter>(ViewModel);
-            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand).WithConversion<DocumentSelectedCommandValueConverter>();
+            set.Bind(source).To(vm => vm.Documents);
+            set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
             set.Bind(OfflineBannerLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.Global_OfflineBanner);
 

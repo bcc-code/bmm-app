@@ -6,6 +6,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Contributors;
 using MvvmCross;
 
 namespace BMM.Core.ViewModels
@@ -54,52 +58,11 @@ namespace BMM.Core.ViewModels
             60844  //Vegar Sandberg
         };
 
-        private readonly IEnumerable<int> _speekers = new List<int>
-        {
-          36514, //Arild Tombre
-          36515, //Gunnar Gangsø
-          36503, //Bjørn Nilsen
-          36517, //Sverre Riksfjord
-          36562, //Gershon Twilley
-          36501, //Bernt Stadven
-          49489, //Elias Aslaksen
-          36522, //Harald Kronstad
-          36519, //Trond Eriksen
-		  49809, //Sigurd Bratlie
-		  66376, //Aksel J. Smith
-		  90712, //Trygve Sandvik
-        };
-
-        private readonly IEnumerable<int> _singers = new List<int>
-        {
-          65224, //Jermund Pedersen
-          59268, //Astrid Reinhardt
-          45275, //Gjermund Frivold
-          81631, //Rebekka Frivold
-          75152, //Elisa Frivold
-          59596, //Oliver Tangen
-          92568, //Alise Johnsen
-          64808, //Pia Veronica Jacobsen
-          80142, //Pia Gjosund
-          41600, //Dag Helge Bernhardsen
-          60455, //Atle Johnsen
-          51294, //Hanne Trinkle
-          41642, //Hilde Smith Stadven
-          41598, //Jostein Ostmoen
-          49935, //Karethe Opitz
-          49933, //Kristiane Opitz
-          45272, //Linn Helgheim
-          41622, //Liv Ragnhild Fotland
-          60845, //Marte Hannson
-          60844  //Vegar Sandberg
-        };
-
         private readonly List<int> _randomContributors = new List<int>();
 
         private readonly IAnalytics _analytics;
 
-        public ExploreContributorsViewModel(IAnalytics analytics)
-            : base()
+        public ExploreContributorsViewModel(IAnalytics analytics, ITrackPOFactory trackPOFactory) : base(trackPOFactory)
         {
             _analytics = analytics;
         }
@@ -129,7 +92,7 @@ namespace BMM.Core.ViewModels
             return base.Initialization();
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(int startIndex, int size, CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var contributors = new List<Contributor>();
             if (startIndex < _randomContributors.Count)
@@ -153,7 +116,7 @@ namespace BMM.Core.ViewModels
             }
 
             contributors.RemoveAll(c => c == null);
-            return contributors;
+            return contributors.Select(c => new ContributorPO(OptionCommand, c));
         }
 
         private async Task<List<Contributor>> LoadContributors(IEnumerable<int> ids)
@@ -174,7 +137,7 @@ namespace BMM.Core.ViewModels
             return (await Task.WhenAll(contributorTasks)).ToList();
         }
 
-        protected override async Task DocumentAction(Document item, IList<Track> list)
+        protected override async Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
             if (item.DocumentType == DocumentType.Contributor)
             {

@@ -17,7 +17,7 @@
             local:MvxBind="
                 LoadingPlaceholderImagePath 'placeholder_cover';
                 ErrorPlaceholderImagePath 'placeholder_cover';
-                ImageViewPath CoverUrlToFallbackImage(Item.Cover, 'placeholder_cover')" />
+                ImageViewPath CoverUrlToFallbackImage(Cover, 'placeholder_cover')" />
 
     <TextView
             android:id="@+id/Title"
@@ -28,6 +28,6 @@
             android:ellipsize="end"
             android:gravity="center_horizontal"
             style="@style/Subtitle3_Label1"
-            local:MvxBind="Text Item.Title" />
+            local:MvxBind="Text Title" />
 
 </LinearLayout>

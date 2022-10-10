@@ -1,9 +1,9 @@
 ﻿using System;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
-using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
@@ -20,93 +20,89 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new NSString(nameof(ContinueListeningCollectionViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(ContinueListeningCollectionViewCell), NSBundle.MainBundle);
         private DateTime? _date;
-        private ITrackModel _currentPlayerTrack;
         private string _subtitle;
 
         public ContinueListeningCollectionViewCell(IntPtr handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<ContinueListeningCollectionViewCell, CellWrapperViewModel<ContinueListeningTile>>();
+                var set = this.CreateBindingSet<ContinueListeningCollectionViewCell, ContinueListeningTilePO>();
                 
                 set.Bind(BackgroundView)
                     .For(v => v.BackgroundColor)
-                    .To(po => po.Item.BackgroundColor)
+                    .To(po => po.ContinueListeningTile.BackgroundColor)
                     .WithConversion<HexStringToUiColorConverter>(AppColors.TileDefaultColor);
 
                 set.Bind(BackgroundView)
                     .For(v => v.BindTap())
-                    .To(po => po)
-                    .WithConversion<TileClickedCommandValueConverter>();
+                    .To(po => po.TileClickedCommand);
                 
                 CoverImageView.ErrorAndLoadingPlaceholderImagePathForCover();
                 set.Bind(CoverImageView)
                     .For(v => v.ImagePath)
-                    .To(vm => vm.Item.CoverUrl)
+                    .To(vm => vm.ContinueListeningTile.CoverUrl)
                     .WithConversion<CoverUrlToFallbackImageValueConverter>(IosConstants.CoverPlaceholderImage);
 
                 set.Bind(TitleLabel)
-                    .To(vm => vm.Item.Label);
+                    .To(vm => vm.ContinueListeningTile.Label);
                 
                 set.Bind(SubtitleLabel)
-                    .To(vm => vm.Item.Title);
+                    .To(vm => vm.ContinueListeningTile.Title);
 
                 set.Bind(this)
                     .For(v => v.Date)
-                    .To(vm => vm.Item.Date);
+                    .To(vm => vm.ContinueListeningTile.Date);
                 
                 set.Bind(DateLabel)
-                    .To(vm => vm.Item.Date)
+                    .To(vm => vm.ContinueListeningTile.Date)
                     .WithConversion<DateTimeToPodcastPublishDateLabelValueConverter>();
                 
                 set.Bind(DayOfWeekLabel)
-                    .To(vm => vm.Item.Date)
+                    .To(vm => vm.ContinueListeningTile.Date)
                     .WithConversion<DateTimeToPodcastPublishDayOfWeekLabelValueConverter>();
 
                 set.Bind(this)
                     .For(v => v.Subtitle)
-                    .To(vm => vm.Item.Subtitle);
+                    .To(vm => vm.ContinueListeningTile.Subtitle);
                 
                 set.Bind(ProgressBarView)
                     .For(v => v.Percentage)
-                    .To(vm => vm.Item.Percentage);
+                    .To(vm => vm.ContinueListeningTile.Percentage);
                 
                 set.Bind(ReferenceButton)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.Item.Track)
+                    .To(vm => vm.ContinueListeningTile.Track)
                     .WithConversion<TrackHasExternalRelationsValueConverter>();
-                
+
                 set.Bind(ReferenceButton)
-                    .To(vm => vm)
-                    .WithConversion<ShowTrackInfoCommandValueConverter>();
+                    .To(po => po.ShowTrackInfoCommand);
                 
                 set.Bind(DownloadedIcon)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.Item.Track)
+                    .To(vm => vm.ContinueListeningTile.Track)
                     .WithConversion<DownloadStatusDoneValueConverter>();
                 
                 set.Bind(OptionsButton)
-                    .To(vm => vm)
-                    .WithConversion<OptionButtonCommandValueConverter>();
+                    .To(po => po.OptionButtonClickedCommand);
 
                 set.Bind(ShuffleButton)
-                    .To(vm => vm)
-                    .WithConversion<ShuffleButtonCommandValueConverter>();
+                    .To(po => po.ShuffleButtonClickedCommand);
                 
                 set.Bind(ShuffleButton)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.Item.ShufflePodcastId)
+                    .To(vm => vm.ContinueListeningTile.ShufflePodcastId)
                     .WithConversion<HasValueToVisibleValueConverter>();
-                
-                set.Bind(this)
-                    .For(v => v.CurrentPlayerTrack)
-                    .To(vm => ((DocumentsViewModel)vm.ViewModel).CurrentTrack);
+
+                set.Bind(IsPlayingButton)
+                    .For(v => v.BindVisible())
+                    .To(po => po.IsCurrentlySelected);
 
                 set.Bind(TitleClickableArea)
                     .For(v => v.BindTap())
-                    .WithConversion<ContinueListeningCommandValueConverter>();
+                    .To(po => po.ContinueListeningCommand);
 
-                set.Bind(PlayButton).WithConversion<ContinueListeningCommandValueConverter>();
+                set.Bind(PlayButton)
+                    .To(po => po.ContinueListeningCommand);
                 set.Apply();
             });
         }
@@ -144,23 +140,6 @@ namespace BMM.UI.iOS
                 : 0.5f;
 
             ProgressBarWidthConstraint.Constant = ContentWidthHelper.Frame.Width * multipleFactor;
-        }
-
-        public ITrackModel CurrentPlayerTrack
-        {
-            get => _currentPlayerTrack;
-            set
-            {
-                _currentPlayerTrack = value;
-                if (_currentPlayerTrack == null)
-                {
-                    IsPlayingButton.Hidden = true;
-                    return;
-                }
-                
-                IsPlayingButton.Hidden = _currentPlayerTrack.Id !=
-                                         ((ContinueListeningTile)((CellWrapperViewModel<Document>)DataContext).Item).Track.Id;
-            }
         }
 
         public DateTime? Date

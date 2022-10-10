@@ -20,8 +20,8 @@
             android:scrollbars="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            local:MvxTemplateSelector="@string/explorenewest_templateselector"
-            local:MvxBind="ItemsSource DocumentList(Documents, .); ItemClick DocumentSelectedCommand(DocumentSelectedCommand)" />
+            local:MvxTemplateSelector="@string/document_templateselector"
+            local:MvxBind="ItemsSource Documents; ItemClick DocumentSelectedCommand" />
     </mvvmcross.droidx.MvxSwipeRefreshLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

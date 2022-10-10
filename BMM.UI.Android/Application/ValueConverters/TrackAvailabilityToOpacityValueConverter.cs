@@ -1,43 +1,21 @@
 ﻿using System;
 using System.Globalization;
-using BMM.Api.Framework;
-using BMM.Api.Implementation.Models;
-using BMM.Core.Implementations.FileStorage;
-using BMM.Core.ViewModels;
-using BMM.Core.ViewModels.Base;
-using MvvmCross;
+using BMM.Core.Models.POs.Tracks;
 using MvvmCross.Converters;
 
 namespace BMM.UI.Droid.Application.ValueConverters
 {
-    public class TrackAvailabilityToOpacityValueConverter : MvxValueConverter<CellWrapperViewModel<Document>, float>
+    public class TrackAvailabilityToOpacityValueConverter : MvxValueConverter<TrackState, float>
     {
         private const float FullOpacity = 1f;
         private const float HalfOpacity = .5f;
 
-        private readonly IStorageManager _storageManager;
-
-        public TrackAvailabilityToOpacityValueConverter()
+        protected override float Convert(TrackState trackState, Type targetType, object parameter, CultureInfo culture)
         {
-            _storageManager = Mvx.IoCProvider.Resolve<IStorageManager>();
-        }
-
-        protected override float Convert(CellWrapperViewModel<Document> value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var item = value.Item;
-            var track = (Track)item;
-            var isConnectionStatusOnline = ((DocumentsViewModel)value.ViewModel).ConnectionStatus == ConnectionStatus.Online;
-
-            if(TrackIsAvailable(track, isConnectionStatusOnline))
+            if (trackState.IsAvailable)
                 return FullOpacity;
 
             return HalfOpacity;
-        }
-
-        private bool TrackIsAvailable(Track track, bool isConnectionStatusOnline)
-        {
-            var trackIsDownloaded = _storageManager.SelectedStorage.IsDownloaded(track);
-            return isConnectionStatusOnline || trackIsDownloaded;
         }
     }
 }

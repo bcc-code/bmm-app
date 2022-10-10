@@ -9,6 +9,10 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Parameters.Interface;
@@ -22,6 +26,7 @@ namespace BMM.Core.ViewModels
     {
         private readonly IUserDialogs _userDialogs;
         private readonly ILogger _logger;
+        private readonly ITrackPOFactory _trackPOFactory;
         private int _trackCollectionId;
         private TrackCollection _trackCollection;
         private string _trackCollectionTitle;
@@ -35,10 +40,11 @@ namespace BMM.Core.ViewModels
 
         public IMvxAsyncCommand DiscardAndCloseCommand { get; }
 
-        public EditTrackCollectionViewModel(IUserDialogs userDialogs, ILogger logger)
+        public EditTrackCollectionViewModel(IUserDialogs userDialogs, ILogger logger, ITrackPOFactory trackPOFactory)
         {
             _userDialogs = userDialogs;
             _logger = logger;
+            _trackPOFactory = trackPOFactory;
             SaveAndCloseCommand = new MvxAsyncCommand(SaveAndClose);
             DiscardAndCloseCommand = new ExceptionHandlingCommand(CloseWithDiscardIfNeeded);
         }
@@ -57,12 +63,12 @@ namespace BMM.Core.ViewModels
             Documents.CollectionChanged -= DocumentsOnCollectionChanged;
         }
 
-        public override async Task<IEnumerable<Document>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+        public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var trackCollection = await Client.TrackCollection.GetById(_trackCollectionId, policy);
             _trackCollection = trackCollection;
             TrackCollectionTitle = trackCollection.Name;
-            return trackCollection.Tracks;
+            return trackCollection.Tracks.Select(t => _trackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
 
         public void Prepare(ITrackCollectionParameter parameter)
@@ -97,7 +103,7 @@ namespace BMM.Core.ViewModels
                 return;
             }
 
-            _trackCollection.Tracks = Documents.OfType<Track>().ToList();
+            _trackCollection.Tracks = Documents.OfType<TrackPO>().Select(t => t.Track).ToList();
             _trackCollection.Name = TrackCollectionTitle;
             try
             {

@@ -89,7 +89,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             downloadQueue.Enqueue(track);
             downloadQueue.StartDownloading();
 
-           _exceptionHandler.Verify(x => x.FireAndForget(It.IsAny<Func<Task>>()), Times.Once);
+           _exceptionHandler.Verify(x => x.FireAndForgetWithoutUserMessages(It.IsAny<Func<Task>>()), Times.Once);
         }
     }
 }
