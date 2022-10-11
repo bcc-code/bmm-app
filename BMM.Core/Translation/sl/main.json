@@ -10,11 +10,11 @@
     "OfflineBanner": "Showing only tracks on this phone",
     "Song": "Pesem",
     "Speech": "Sporočilo",
-    "Audiobook": "Audiobook",
+    "Audiobook": "Zvočna knjiga",
     "Exegesis": "Exegesis",
     "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
+    "Today": "Danes",
+    "Yesterday": "Včeraj",
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
@@ -37,11 +37,11 @@
     "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
     "DaysInARowSingular": "{0} day in a row",
     "DaysInARowPlural": "{0} days in a row",
-    "WeekdayMonday": "M",
+    "WeekdayMonday": "P",
     "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "WeekdayWednesday": "S",
+    "WeekdayThursday": "Č",
+    "WeekdayFriday": "P"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Unable to open link",
@@ -72,7 +72,7 @@
     "AlbumFailedToAddAlreadyExists": "Ta album je že dodan na tvoj seznam predvajanja.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
     "ShufflePlay": "Naključno predvajanje",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albumov"
   },
   "AlbumsViewModel": {
     "Title": "Arhiv",
@@ -100,16 +100,16 @@
     "SearchHint": "Išči"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Domov",
     "SearchHint": "Išči",
     "FraKaareHeader": "Od Kåreja",
     "AslaksenTeaserHeader": "Besede vere",
     "ShowAll": "Prikaži vse",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
+    "PlayRandom": "Naključno predvajanje",
+    "PlayNewest": "Predvajaj najnovejše",
     "LatestTrack": "Najnovejše skladbe",
-    "NextBroadcast": "Next broadcast",
-    "BmmRadio": "BMM Live",
+    "NextBroadcast": "Naslednji prenos",
+    "BmmRadio": "BMM v živo",
     "CountdownHours": "in {0}h",
     "Messages": "Recent Messages",
     "Music": "Recent Music"
@@ -182,18 +182,18 @@
     "Browse": "Browse",
     "Settings": "Nastavitve",
     "HelpAndFeedback": "Pomoč in povratne informacije",
-    "Home": "Home",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "Home": "Domov",
+    "Favorites": "Najljubše",
+    "Profile": "Profil"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Najljubše",
     "DownloadedContent": "Prenesi vsebino",
     "FollowedPodcasts": "Posnetki",
     "MyTracks": "Moje skladbe",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Moji seznami predvajanja",
+    "SharedWithMe": "Deljeno z mano",
+    "ByFormat": "od {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Posnetki",
@@ -232,9 +232,9 @@
     "GetNotifiedMessage": "ko so na voljo nove epizode",
     "UnfollowConfirm": "Ali se res želiš odjaviti od tega podcasta?",
     "ToggleFollowOfflineError": "Moraš biti v online načinu, če želiš slediti ali se odjaviti od podcasta",
-    "Week": "Week {0}",
-    "ThisWeek": "This week",
-    "LastWeek": "Last week",
+    "Week": "Teden {0}",
+    "ThisWeek": "Ta teden",
+    "LastWeek": "Prejšnji teden",
     "AslaksenTheme1": "Verjemi v Boga čudežev",
     "AslaksenTheme2": "Jaz sem križan s Kristusom",
     "AslaksenTheme3": "Bati se in ljubiti Boga",
@@ -249,15 +249,15 @@
   "PlayerViewModel": {
     "Title": "Now playing",
     "PlayingCount": "{0} od {1}",
-    "ViewLyrics": "View Lyrics",
+    "ViewLyrics": "Poglej besedilo",
     "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
-    "Selected": "Selected"
+    "Minutes": "{0} minut",
+    "Hour": "{0} ura",
+    "Hours": "{0} ur",
+    "Disable": "Onemogoči",
+    "PlaybackSpeed": "Hitrost predvajanja",
+    "Normal": "Normalno",
+    "Selected": "Izbrano"
   },
   "QueueViewModel": {
     "Title": "Čakalna vrsta"
@@ -274,9 +274,9 @@
     "DeleteConfirm": "Ali ste prepričani, da želite izbrisati zgodovino iskanja?"
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "Profil",
     "HeadlineSettings": "Postavke",
-    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayHeader": "Samodejno predvajanje",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
     "OptionStreakHeader": "Streak on Home",
     "OptionStreakText": "Show your listening statistic on the home screen",
@@ -324,13 +324,13 @@
     "PluralTracks": "{0} tracks",
     "PluralTracksLoaded": "{0} tracks loaded",
     "Download": "Prenesi",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Naključno",
     "Play": "Predvajaj"
   },
   "TrackCollectionViewModel": {
     "Title": "Seznam predvajanja",
-    "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "ShufflePlay": "Naključno",
+    "Resume": "Nadaljuj",
     "AvailableOffline": "Na voljo brez povezave",
     "AvailableOfflineDownload": "Prenesi",
     "AvailableOfflineDownloading": "Prenašam {0} od {1}",
@@ -353,7 +353,7 @@
     "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
+    "Title": "Uredi seznam predvajanja",
     "RenameLabel": "Rename playlist",
     "MenuSave": "Shrani",
     "EmptyName": "The playlist has no name",
@@ -452,7 +452,7 @@
     "Lyricist": "Avtor besedila",
     "Arranger": "Aranžer",
     "Composer": "Skladatelj",
-    "Publisher": "Publisher",
+    "Publisher": "Založnik",
     "Copyright": "Autorska prava"
   },
   "CopyrightViewModel": {
@@ -474,9 +474,9 @@
   },
   "Browse": {
     "EventsTitle": "Events",
-    "AudiobooksTitle": "Audioknjige",
+    "AudiobooksTitle": "Zvočne knjige",
     "MusicTitle": "Glasba",
-    "PodcastsTitle": "Posnetki"
+    "PodcastsTitle": "Podcasti"
   },
   "ThemeSettingsViewModel": {
     "Title": "Dark mode settings",
