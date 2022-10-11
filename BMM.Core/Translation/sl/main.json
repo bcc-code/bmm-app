@@ -188,7 +188,7 @@
   },
   "MyContentViewModel": {
     "Title": "Favorites",
-    "DownloadedContent": "Downloaded Content",
+    "DownloadedContent": "Prenesi vsebino",
     "FollowedPodcasts": "Posnetki",
     "MyTracks": "Moje skladbe",
     "MyPlaylists": "My playlists",
@@ -212,7 +212,7 @@
     "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Downloaded Content",
+    "Title": "Prenesi vsebino",
     "FollowedPodcasts": "Posnetki",
     "MyTracks": "Moje skladbe",
     "EmptyTitle": "You have not downloaded any content",
