@@ -16,7 +16,7 @@
     "Today": "Heute",
     "Yesterday": "Gestern",
     "BackgroundActivityRestrictedTitle": "Aktivität im Hintergrund erlauben",
-    "BackgroundActivityRestrictedMessage": "Deine Geräteeinstellung verhindern, dass BMM im Hintergrund läuft, das bedeutet, BMM wird nach einigen Minuten nicht weiter spielen können, wenn du dein Handy sperrst. Wenn du das ändern willst, öffne die App-Einstellungen und aktiviere \"Hintergrundaktivität erlauben\" im Bereich \"Batterie\".",
+    "BackgroundActivityRestrictedMessage": "Deine Geräteeinstellungen verhindern, dass BMM im Hintergrund läuft, das bedeutet, BMM wird nach einigen Minuten nicht weiter spielen können, wenn du dein Handy sperrst. Wenn du das ändern willst, öffne die App-Einstellungen und aktiviere \"Hintergrundaktivität erlauben\" im Bereich \"Batterie\".",
     "GoToSettings": "Zu den Einstellungen",
     "NotNow": "Später",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
