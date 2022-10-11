@@ -49,6 +49,8 @@ namespace BMM.Api.Abstraction
         IEnumerable<string> AvailableLanguages { get; set; }
 
         string PlaybackOrigin { get; set; }
+        
+        long LastPosition { get; set; }
 
         TrackMetadata Meta { get; set; }
     }

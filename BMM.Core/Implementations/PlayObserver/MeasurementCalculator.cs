@@ -26,7 +26,7 @@ namespace BMM.Core.Implementations.PlayObserver
                 return null;
 
             var trackLength = TimeSpan.FromMilliseconds(trackDuration).TotalSeconds;
-            if (uniqueSecondsListened == trackLength)
+            if (Math.Abs(uniqueSecondsListened - trackLength) < PlayStatistics.TimeCompareToleranceInMillis)
                 status = ListenedStatus.Complete;
 
             return new PlayMeasurements

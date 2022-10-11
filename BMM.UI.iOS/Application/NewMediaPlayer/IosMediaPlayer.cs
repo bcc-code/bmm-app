@@ -10,6 +10,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.Utils;
 using Foundation;
 using MvvmCross.Plugin.Messenger;
@@ -124,6 +125,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 int index = mediaTracks.IndexOf(currentTrack);
                 PlayTrack(currentTrack, index, result, startTimeInMs).FireAndForget();
             }
+            
+            ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
         }
 
         public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
