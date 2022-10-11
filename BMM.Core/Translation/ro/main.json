@@ -28,7 +28,7 @@
     "DailyMessage": "Mesajul zilei"
   },
   "Streak": {
-    "Message": "Progresul tău săptămâna aceasta",
+    "Message": "Progresul tău",
     "MessagePerfect": "O săptămână perfectă! Foarte bine!",
     "PerfectWeekCountSingular": "{0} săptămână perfectă",
     "PerfectWeekCountPlural": "{0} săptămâni perfecte",
@@ -123,7 +123,7 @@
     "GuideIntroTitle": "Cum poți beneficia cât mai mult de conținutul aplicației BMM",
     "GuideIntroSubtitle": "Glisați pentru a învăța mai multe",
     "GuideOfflineTitle": "Play-list-uri off-line",
-    "GuideOfflineSubtitle": "Descarcă play-list-urile pe dispozitivul tău și ascultă-le fără conexiune la internet. Poți selecta aceasta în play-list.",
+    "GuideOfflineSubtitle": "Descarcă play-list-urile pe dispozitivul tău și ascultă-le fără conexiune la internet. Poți alege asta în play-list.",
     "GuideAddToPlaylistTitle": "Adaugă în play-list sau la \"Piesele mele\"",
     "GuideAddToPlaylistSubtitle": "Salvează melodiile preferate în propriile playlist-uri sau la colecţia personală BMM \"Piesele mele\" prin apăsarea butonului de opțiuni din partea dreaptă a piesei.",
     "GuideLanguagesTitle": "Mai multe limbi",
@@ -324,12 +324,12 @@
     "PluralTracks": "{0} piese",
     "PluralTracksLoaded": "{0} piese încărcate",
     "Download": "Descarcă",
-    "Shuffle": "Amestecă",
+    "Shuffle": "Aleatoriu",
     "Play": "Cântă"
   },
   "TrackCollectionViewModel": {
     "Title": "Play-list",
-    "ShufflePlay": "Amestecă",
+    "ShufflePlay": "Aleatoriu",
     "Resume": "Continuă",
     "AvailableOffline": "Disponibile în modul off-line",
     "AvailableOfflineDownload": "Descarcă",
