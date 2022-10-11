@@ -8,7 +8,7 @@
     "InternetConnectionOffline": "Internetna povezava verjetno ni vključena.",
     "ItemNotFound": "The requested item does not exist.",
     "OfflineBanner": "Showing only tracks on this phone",
-    "Song": "Song",
+    "Song": "Pesem",
     "Speech": "Sporočilo",
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
@@ -373,7 +373,7 @@
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",
     "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
+    "AddToMyPlaylist": "Dodaj na moje sezname predvajanja",
     "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
@@ -444,7 +444,7 @@
     "AboutTrack": "O posnetku",
     "Title": "Informacije o posnetku",
     "TrackTitle": "Naslov",
-    "SongNumber": "Song number",
+    "SongNumber": "Številka pesmi",
     "Album": "Album",
     "Artist": "Izvajalec",
     "Duration": "Trajanje",
@@ -475,7 +475,7 @@
   "Browse": {
     "EventsTitle": "Events",
     "AudiobooksTitle": "Audioknjige",
-    "MusicTitle": "Glazba",
+    "MusicTitle": "Glasba",
     "PodcastsTitle": "Posnetki"
   },
   "ThemeSettingsViewModel": {
