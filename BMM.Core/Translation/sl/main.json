@@ -19,24 +19,24 @@
     "BackgroundActivityRestrictedMessage": "Tvoje nastavitve naprave ne dovoljujejo, da BMM deluje v ozadju. Ne boš mogel predvajati glasbe, ko bo telefon za nekaj minut zaklenjen. Za spremembo pojdi v nastavitve aplikacije in pod razdelkom \"Baterija\" izberi \"Dovoli delovanje v ozadju\". ",
     "GoToSettings": "Pojdi na nastavitve",
     "NotNow": "Kasneje",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "DownloadPlaylistOnceOnWifi": "Seznam predvajanja se bo prenesel, ko boš naslednjič uporabljal Wi-Fi. V svojem profilu lahko omogočiš \"Prenesi preko mobilnega omrežja\".",
+    "DownloadPodcastOnceOnWifi": "Zadnje skladbe tega podcasta se bodo prenesle, ko boš naslednjič uporabljal Wi-Fi. V svojem profilu lahko omogočiš \"Prenesi preko mobilnega omrežja\".",
+    "SiriFromKaareInvocationPhrase": "Predvajaj Od Kåreja na BMM",
+    "SiriPlayMusicInvocationPhrase": "Predvajaj glasbo na BMM",
+    "FromKaareSiriShortcutName": "Predvajaj Od Kåreja",
+    "PlayMusicSiriShortcutName": "Predvajaj glasbo",
+    "DailyMessage": "Govor dneva"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "Message": "Tvoj  niz ta teden",
+    "MessagePerfect": "Popoln teden. Bravo!",
+    "PerfectWeekCountSingular": "{0} popoln teden",
+    "PerfectWeekCountPlural": "{0} popolnih tednov",
+    "PerfectWeekCountNone": "Ni še popolnih tednov",
+    "EligibleUntilHoursAndMinutesMessage": "Danes je ostalo {0} ur in {1} minut ",
+    "EligibleUntilMinutesOnlyMessage": "Danes je ostalo {0} minut",
+    "DaysInARowSingular": "{0} zaporeden dan",
+    "DaysInARowPlural": "{0} zaporednih dni",
     "WeekdayMonday": "P",
     "WeekdayTuesday": "T",
     "WeekdayWednesday": "S",
@@ -44,7 +44,7 @@
     "WeekdayFriday": "P"
   },
   "DeepLinkHandler": {
-    "ErrorTitle": "Unable to open link",
+    "ErrorTitle": "Povezave ni bilo mogoče odpreti",
     "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
   },
   "RequestExceptionHandler": {
@@ -54,7 +54,7 @@
     "ErrorMediaNotSupported": "Na žalost vaša naprava ne podpira te oblike zapisa datoteke.",
     "ErrorVideoNotSupported": "Na žalost video posnetki trenutno niso podprti.",
     "ErrorFileNotOffline": "Skladb, ki niso prenesene, ni mogoče predvajati brez internetne povezave.",
-    "ErrorPlayerStopped": "The player has stopped.",
+    "ErrorPlayerStopped": "Predvajalnik se je ustavil. ",
     "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
     "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
     "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
@@ -111,8 +111,8 @@
     "NextBroadcast": "Naslednji prenos",
     "BmmRadio": "BMM v živo",
     "CountdownHours": "in {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music"
+    "Messages": "Najnovejši govori",
+    "Music": "Najnovejša glasba"
   },
   "ExploreContributorsViewModel": {
     "Title": "Ustvarjalci",
@@ -142,19 +142,19 @@
     "LoginFailureTitle": "Prijava ni uspela",
     "LoginFailureMessage": "Poskusite znova z uporabo pravilnih referenc",
     "LoginNoConnectionMessage": "Trenutno nobena povezava ni na voljo. Prosim, ponovno poskusite kasneje",
-    "WrongMailAddressTitle": "Invalid email",
+    "WrongMailAddressTitle": "Neveljaven mail",
     "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
     "TbxUsername.Hint": "E-pošta",
     "TbxPassword.Hint": "Geslo",
     "BtnLogin.Text": "Prijava",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Vpiši se s svojim BCC računom"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
     "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
     "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
     "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
-    "UpdateButton": "Update"
+    "UpdateButton": "Posodobitev"
   },
   "LanguageAppViewModel": {
     "Title": "Jezik aplikacije"
@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Ni mogoče odstraniti {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Išči"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhiv"
@@ -179,7 +179,7 @@
     "Search": "Išči",
     "Explore": "Razišči",
     "MyContent": "Moje vsebine",
-    "Browse": "Browse",
+    "Browse": "Išči",
     "Settings": "Nastavitve",
     "HelpAndFeedback": "Pomoč in povratne informacije",
     "Home": "Domov",
@@ -361,18 +361,18 @@
     "DiscardChangesTitle": "Discard Changes?",
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "KeepEditing": "Nadaljuj z urejanjem"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
+    "Title": "Deli seznam predvajanja",
     "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
+    "ShareLink": "Deli povezavo",
     "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "SharedWithFormat": "Deljeno z {0} osebami"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
+    "Title": "Deljen seznam predvajanja",
+    "Close": "Zapri",
     "AddToMyPlaylist": "Dodaj na moje sezname predvajanja",
     "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
@@ -389,7 +389,7 @@
     "SearchHint": "Išči",
     "FailedToAdd": "Skladbe ni bilo mogoče dodati na seznam predvajanja. Prosim, ponovno poskusite kasneje.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
     "FailedToAddAlbum": "Dodajanje albuma na seznam predvajanja ni uspelo, ker vsebuje albume.",
     "FailedToAddUnknownType": "Dodajanje \"{0}\" na seznam predvajanja trenutno ni možno.",
     "CreatePlaylistPrompt": "Vnesite ime seznama predvajanja",
@@ -404,7 +404,7 @@
     "Track.RemovedFromMyTracks": "Odstranjeno iz Mojih skladb",
     "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
     "Track.AddToQueue": "Dodaj v čakalno vrsto",
-    "Track.QueueToPlayNext": "Play next",
+    "Track.QueueToPlayNext": "Predvajaj naslednje",
     "Track.AddedToQueue": "Dodano v čakalno vrsto",
     "Track.GoToAlbum": "Pojdi na album",
     "Track.GoToContributor": "Pojdi na ustvarjalce",
@@ -414,13 +414,13 @@
     "Track.GoToContributor.Arranger": "Aranžer: {0}",
     "Track.Download": "Prenesi skladbo",
     "Track.MoreInformation": "Več informacij",
-    "Track.Share": "Share track",
+    "Track.Share": "Deli skladbo",
     "Album.Play": "Predvajaj",
     "Album.AddToPlaylist": "Dodaj album na seznam predvajanja",
     "Album.AddToMyTracks": "Dodaj album k Mojim posnetkom",
     "Album.AddedToMyTracks": "Album dodan k Mojim posnetkom",
     "Album.AddToQueue": "Dodaj v čakalno vrsto",
-    "Album.Share": "Share album",
+    "Album.Share": "Deli album",
     "FailedToAdd": "Dodajanje skladbe na seznam predvajanja ni uspelo. Prosim, poskusite ponovno kasneje.",
     "FailedToAddAlbum": "Dodajanje albuma na seznam predvajanja ni uspelo, ker vsebuje albume.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
@@ -428,7 +428,7 @@
     "FailedToAddUnknownType": "Dodajanje \"{0}\" na seznam predvajanja trenutno ni podprto.",
     "MyTracks": "Moje skladbe",
     "Contributor.Play": "Predvajaj",
-    "Contributor.Share": "Share contributor",
+    "Contributor.Share": "Deli ustvarjalca",
     "OfflineTrackCollection.DeletePlaylist": "Izbriši seznam predvajanja",
     "Cancel": "Prekliči"
   },
@@ -459,30 +459,30 @@
     "Title": "Avtorske pravice"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Nedavno predvajano",
+    "NoHistoryYetTitle": "Sedaj si lahko ogledaš svojo zgodovino predvajanja",
+    "NoHistoryYetSubtitle": "Začni s predvajanjem in tvoja zgodovina se bo pokazala tukaj"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "Najnovejši govori"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "Najnovejša glasba"
   },
   "DownloadManager": {
     "DownloadingFinished": "Vse datoteke so bile prenesene!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Dogodki",
     "AudiobooksTitle": "Zvočne knjige",
     "MusicTitle": "Glasba",
     "PodcastsTitle": "Podcasti"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Nastavitve za temen način",
+    "Light": "Svetlo",
+    "Dark": "Temno",
+    "System": "Sledi nastavitvam sistema (samodejno)"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Track Language",
@@ -490,7 +490,7 @@
     "AllLanguages": "Vsi jeziki"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri bližnjice",
+    "ShortcutAlreadyAdded": "Ta bližnjica je že bila dodana"
   }
 }
