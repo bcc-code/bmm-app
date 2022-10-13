@@ -8,6 +8,7 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.NewMediaPlayer.Constants;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Service;
 using MvvmCross.Plugin.Messenger;
@@ -50,6 +51,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             _playerErrorHandler = playerErrorHandler;
         }
 
+        public decimal CurrentPlaybackSpeed { get; set; } = PlayerConstants.NormalPlaybackSpeed;
+
         public override void OnQueueChanged(IList<MediaSessionCompat.QueueItem> queue)
         {
         }
@@ -77,7 +80,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 _messenger.Publish(completedEvent);
             }
 
-            _messenger.Publish(new PlaybackStatusChangedMessage(this, state.ToPlaybackState(_mediaQueue)));
+            _messenger.Publish(new PlaybackStatusChangedMessage(this, state.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
 
             if (state.ErrorMessage != null)
             {

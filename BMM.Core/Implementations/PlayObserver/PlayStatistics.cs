@@ -32,6 +32,7 @@ namespace BMM.Core.Implementations.PlayObserver
     /// </summary>
     public class PlayStatistics : IPlayStatistics
     {
+        public const double TimeCompareToleranceInMillis = 0.1;
         private readonly IAnalytics _analytics;
         private readonly IUserStorage _userStorage;
         private readonly ILogger _logger;
@@ -51,7 +52,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public IList<IMediaTrack> CurrentQueue { get; private set; }
         public bool IsCurrentQueueSaved { get; set; }
         public bool IsPlaying { get; private set; }
-        public decimal DesiredPlaybackRate { get; set; } = PlayerConstants.NormalPlaybackSpeed;
+        public decimal DesiredPlaybackRate { get; private set; } = PlayerConstants.NormalPlaybackSpeed;
 
         /// <summary>
         /// We want to be able to extend <see cref="Clear"/> in <see cref="PlayStatisticsDecorator"/>. Therefore we use this Action as work-around to pass the command through all Decorator layers.
@@ -100,8 +101,7 @@ namespace BMM.Core.Implementations.PlayObserver
             IsPlaying = state.IsPlaying;
             DesiredPlaybackRate = state.DesiredPlaybackRate;
         }
-
-
+        
         public void OnCurrentQueueChanged(CurrentQueueChangedMessage message)
         {
             CurrentQueue = message.Queue;
@@ -110,7 +110,9 @@ namespace BMM.Core.Implementations.PlayObserver
 
         public void OnSeeked(double currentPosition, double seekedPosition)
         {
-            if (CurrentTrack == null)
+            if (CurrentTrack == null
+                || StartOfNextPortion > currentPosition
+                || Math.Abs(currentPosition - seekedPosition) < TimeCompareToleranceInMillis)
                 return;
 
             AddPortionListened(currentPosition, DesiredPlaybackRate);
@@ -135,7 +137,7 @@ namespace BMM.Core.Implementations.PlayObserver
                     }
 
                     await LogPlayedTrack();
-                    StartNextPortion();
+                    StartNextPortion(message.CurrentTrack.LastPosition);
                 }
 
                 if (message.CurrentTrack != null)
@@ -158,7 +160,7 @@ namespace BMM.Core.Implementations.PlayObserver
 
         public void AddPortionListened(double currentPosition, decimal playbackRate)
         {
-            if (StartOfNextPortion == currentPosition)
+            if (Math.Abs(StartOfNextPortion - currentPosition) < TimeCompareToleranceInMillis)
                 return;
 
             if (_config.UseExtendedStreakLogging)
@@ -181,7 +183,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public PlayMeasurements GetMeasurementForNewPosition(long position)
         {
             var list = PortionsListened.Clone();
-            if (StartOfNextPortion != position)
+            if (Math.Abs(StartOfNextPortion - position) > TimeCompareToleranceInMillis)
             {
                 list.Add(new ListenedPortion
                 {

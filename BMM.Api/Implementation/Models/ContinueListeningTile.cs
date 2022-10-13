@@ -5,6 +5,7 @@ namespace BMM.Api.Implementation.Models
 {
     public class ContinueListeningTile : Document, ITrackHolder
     {
+        private int _lastPositionInMs;
         public Track Track { get; set; }
         public string BackgroundColor { get; set; }
         public string Title { get; set; }
@@ -15,6 +16,19 @@ namespace BMM.Api.Implementation.Models
         public int Percentage { get; set; }
         public Uri ShowAllLink { get; set; }
         public int? ShufflePodcastId { get; set; }
-        public int LastPositionInMs { get; set; }
+
+        public int LastPositionInMs
+        {
+            get => _lastPositionInMs;
+            set
+            {
+                _lastPositionInMs = value;
+                
+                if (Track == null)
+                    return;
+                
+                Track.LastPosition = value;
+            }
+        }
     }
 }

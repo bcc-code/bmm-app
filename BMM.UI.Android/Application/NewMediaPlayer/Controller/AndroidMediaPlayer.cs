@@ -41,7 +41,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
         private ITrackModel _lastTrack;
         private IList<IMediaTrack> _lastQueue;
         private long _lastPosition;
-        private decimal? _currentPlaybackSpeed;
+        private decimal _lastPlaybackSpeed;
 
         public AndroidMediaPlayer(
             IMediaQueue mediaQueue,
@@ -234,12 +234,13 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 
         public void ChangePlaybackSpeed(decimal playbackSpeed)
         {
-            _currentPlaybackSpeed = playbackSpeed;
+            CurrentPlaybackSpeed = playbackSpeed;
+            _callback.CurrentPlaybackSpeed = CurrentPlaybackSpeed;
             MusicService.CurrentExoPlayerInstance.IfNotNull(s => s.PlaybackParameters = new PlaybackParameters((float)playbackSpeed));
             _messenger.Publish(new PlaybackStatusChangedMessage(this, _mediaController.PlaybackState.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
         }
 
-        public decimal CurrentPlaybackSpeed => _currentPlaybackSpeed ?? PlayerConstants.NormalPlaybackSpeed;
+        public decimal CurrentPlaybackSpeed { get; private set; } = PlayerConstants.NormalPlaybackSpeed;
 
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
         {
@@ -335,6 +336,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             _lastTrack = CurrentTrack;
             _lastPosition = CurrentPosition;
             _lastQueue = _mediaQueue?.Tracks;
+            _lastPlaybackSpeed = CurrentPlaybackSpeed;
         }
 
         public async Task RestoreLastPlayingTrackAfterThemeChangedIfAvailable()
@@ -343,6 +345,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 return;
 
             await RecoverQueue(_lastQueue, (IMediaTrack)_lastTrack, _lastPosition);
+            ChangePlaybackSpeed(_lastPlaybackSpeed);
             ClearCurrentTrackAndQueueAfterThemeChanged();
         }
 
@@ -351,6 +354,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             _lastTrack = default;
             _lastPosition = default;
             _lastQueue = default;
+            _lastPlaybackSpeed = default;
         }
 
         public override void OnConnectionFailed()

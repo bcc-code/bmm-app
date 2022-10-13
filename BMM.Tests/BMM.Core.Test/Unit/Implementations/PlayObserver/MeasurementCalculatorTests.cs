@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.PlayObserver;
 using BMM.Core.Implementations.PlayObserver.Model;
@@ -159,6 +161,26 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
             Assert.AreEqual(11, result);
         }
 
+        [Test]
+        public void CalculateSpentTime_VariousPlaybackSpeed()
+        {
+            // Arrange
+            double expectedSpentTime = 18;
+            
+            var listenedPortions = new List<ListenedPortion>
+            {
+                PreparePortion(0, 6000, 1m),
+                PreparePortion(6000, 12000, 1.5m),
+                PreparePortion(12000, 22000, 1.25m)
+            };
+
+            // Act
+            double result = _measurementCalculator.CalculateSpentTime(listenedPortions);
+
+            // Assert
+            Assert.AreEqual(expectedSpentTime, result);
+        }
+        
         private ListenedPortion PreparePortion(double start, double end, decimal playbackRate = 1)
         {
             return new ListenedPortion
