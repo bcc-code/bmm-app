@@ -213,6 +213,9 @@
       <HintPath>..\packages\IdentityModel.OidcClient.3.1.2\lib\netstandard2.0\IdentityModel.OidcClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Lottie.iOS, Version=2.5.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Com.Airbnb.iOS.Lottie.2.5.13\lib\xamarinios10\Lottie.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="MarqueeLabel.iOS, Version=1.0.6612.25932, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\MarqueeLabel.iOS.1.0.0\lib\xamarinios10\MarqueeLabel.iOS.dll</HintPath>
       <Private>True</Private>
@@ -473,6 +476,7 @@
     <BundleResource Include="Resources\icon_playback_history.png" />
     <BundleResource Include="Resources\icon_playback_history@2x.png" />
     <BundleResource Include="Resources\icon_playback_history@3x.png" />
+    <BundleResource Include="Resources\play_animation_icon.json" />
     <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
     <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
@@ -642,6 +646,7 @@
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
     <Compile Include="Application\CustomViews\LeftImageButton.cs" />
+    <Compile Include="Application\CustomViews\LottieButton.cs" />
     <Compile Include="Application\CustomViews\ProgressBarView.cs" />
     <Compile Include="Application\CustomViews\ProgressBarView.designer.cs" />
     <Compile Include="Application\CustomViews\Separator.cs" />

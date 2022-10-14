@@ -19,11 +19,13 @@ using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
+using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Tracks;
+using BMM.Core.NewMediaPlayer;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
@@ -42,12 +44,11 @@ namespace BMM.Core.ViewModels
         private readonly IUserStorage _user;
         private readonly IFirebaseRemoteConfig _config;
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
-
-        private MvxSubscriptionToken _listeningStreakToken;
+        private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
+        private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
-            IMvxMessenger messenger,
             ISettingsStorage settings,
             INavigateToViewModelAction navigateToViewModelAction,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
@@ -68,7 +69,8 @@ namespace BMM.Core.ViewModels
             _user = user;
             _config = config;
             _listeningStreakPOFactory = listeningStreakPOFactory;
-            _listeningStreakToken = messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
+            _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
+            _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareContinueListeningCarouselItemsAction.AttachDataContext(this);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
         }
@@ -81,6 +83,18 @@ namespace BMM.Core.ViewModels
             
             if (index >= 0)
                 Documents.ReplaceRange(new[] { _listeningStreakPOFactory.Create(message.ListeningStreak)}, index, 1);
+        }
+
+        private void PlaybackStateChanged(PlaybackStatusChangedMessage playbackStatusChangedMessage)
+        {
+            if (playbackStatusChangedMessage.PlaybackState.PlayStatus.IsOneOf(PlayStatus.Playing, PlayStatus.Paused, PlayStatus.Stopped))
+                RefreshContinueListeningItems();
+        }
+
+        private void RefreshContinueListeningItems()
+        {
+            var itemsToRefresh = Documents.OfType<ContinueListeningCollectionPO>().ToList();
+            itemsToRefresh.ForEach(i => i.RefreshState());
         }
 
         public override CacheKeys? CacheKey => CacheKeys.DiscoverGetDocuments;

@@ -38,7 +38,7 @@ namespace BMM.UI.iOS
 		UIKit.UIButton OptionsButton { get; set; }
 
 		[Outlet]
-		UIKit.UIButton PlayButton { get; set; }
+		LottieButton PlayButton { get; set; }
 
 		[Outlet]
 		BMM.UI.iOS.CustomViews.ProgressBarView ProgressBarView { get; set; }
