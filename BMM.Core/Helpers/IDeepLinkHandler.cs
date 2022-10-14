@@ -19,6 +19,13 @@ namespace BMM.Core.Helpers
         /// <param name="uri">URI.</param>
         bool OpenFromOutsideOfApp(Uri uri);
 
+        /// <summary>
+        ///     Use this method to notify about 'ready to handle deep link' state, which means the app successfully loaded needed elements.
+        ///     In most cases it should be called after navigating to main navigation container.
+        ///     Also, if there is a pending deep link to handle, this method executes it.  
+        /// </summary>
+        void SetReadyToOpenDeepLinkAndHandlePending();
+
         void SetDeepLinkWillStartPlayerIfNeeded(string deepLink);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
@@ -52,7 +53,6 @@ namespace BMM.UI.iOS
 
             SetThemeForApp();
             MainWindow = Window;
-
             return result;
         }
 
@@ -87,14 +87,11 @@ namespace BMM.UI.iOS
             string url = userActivity?.WebPageUrl?.AbsoluteString;
             
             if (string.IsNullOrEmpty(url))
-                return false;
-
-            var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
+                return false; 
             
-            var uri = new Uri(userActivity.WebPageUrl.AbsoluteString);
-
-            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(userActivity.WebPageUrl.AbsoluteString);
-            return Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromOutsideOfApp(uri);
+            var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
+            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(url);
+            return deepLinkHandler.OpenFromOutsideOfApp(new Uri(url));
         }
 
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)

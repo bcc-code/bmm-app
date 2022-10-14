@@ -53,6 +53,8 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
 
         private readonly IList<IDeepLinkParser> _links;
+        private bool _readyToHandleDeepLink;
+        private Uri _pendingDeepLink;
 
         public DeepLinkHandler(
             IBMMClient client,
@@ -178,7 +180,28 @@ namespace BMM.Core.Implementations.DeepLinking
 
         public bool OpenFromInsideOfApp(Uri uri, string origin) => Open(uri, "internal link opened", origin);
 
-        public bool OpenFromOutsideOfApp(Uri uri) => Open(uri, "deep link opened");
+        public bool OpenFromOutsideOfApp(Uri uri)
+        {
+            if (_readyToHandleDeepLink)
+                return Open(uri, "deep link opened");
+
+            if (!_links.Any(l => l.PerformCanNavigateTo(uri, out _)))
+                return false;
+            
+            _pendingDeepLink = uri;
+            return true;
+        }
+
+        public void SetReadyToOpenDeepLinkAndHandlePending()
+        {
+            _readyToHandleDeepLink = true;
+            
+            if (_pendingDeepLink == null)
+                return;
+
+            OpenFromOutsideOfApp(_pendingDeepLink);
+            _pendingDeepLink = null;
+        }
 
         public void SetDeepLinkWillStartPlayerIfNeeded(string deepLink)
         {
