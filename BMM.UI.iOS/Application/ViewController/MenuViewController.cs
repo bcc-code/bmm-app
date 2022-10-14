@@ -1,12 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Linq;
+using System.Threading.Tasks;
+using BMM.Core.Helpers;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
 using Foundation;
+using MvvmCross;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using MvvmCross.ViewModels;
@@ -17,11 +19,12 @@ namespace BMM.UI.iOS
     [MvxRootPresentation(WrapInNavigationController = false)]
     public class MenuViewController : MvxTabBarViewController<MenuViewModel>
     {
+        private const int TimeForLoadingMenuViewControllersInMillis = 500;
+        
         public static readonly NSString MenuLoadedNotification = new NSString($"{nameof(MenuViewController)}.MenuLoaded");
         private readonly NSNotificationCenter _notificationCenter = NSNotificationCenter.DefaultCenter;
         private readonly List<string> _translationLabels = new List<string>();
         private bool _tabInitialized;
-        private UIViewController _selectedViewController;
 
         public override void ViewDidLoad()
         {
@@ -91,14 +94,14 @@ namespace BMM.UI.iOS
             base.SetTitleAndTabBarItem(viewController, attribute);
         }
 
-        public override void ViewDidAppear(bool animated)
+        public override async void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
             ViewModel.PropertyChanged += OnTextSourceChanged;
 
             if (_tabInitialized)
                 return;
-
+            
             foreach (var navigationCommand in ViewModel.NavigationCommands)
                 navigationCommand.Value.Execute();
                 
@@ -112,6 +115,9 @@ namespace BMM.UI.iOS
                     if (containmentController?.NavigationRootViewModel is DocumentsViewModel documentsViewModel)
                         documentsViewModel.RefreshInBackground();
                 });
+            
+            await Task.Delay(TimeForLoadingMenuViewControllersInMillis);
+            Mvx.IoCProvider.Resolve<IDeepLinkHandler>().SetReadyToOpenDeepLinkAndHandlePending();
         }
 
         public override void ViewWillDisappear(bool animated)

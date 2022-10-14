@@ -74,11 +74,11 @@ namespace BMM.UI.Droid.Application.Activities
         }.AsReadOnly();
         
         private IMediaPlayer _mediaPlayer;
+        private IDeepLinkHandler _deepLinkHandler;
         private AndroidMediaPlayer _androidPlayer;
         private BottomNavigationView? _bottomNavigationView;
         private FrameLayout _miniPlayerFrame;
         private static int? _currentAppTheme;
-        public static string UnhandledDeepLink;
 
         private BottomNavigationView BottomNavigationView
             => _bottomNavigationView ??= FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
@@ -105,6 +105,7 @@ namespace BMM.UI.Droid.Application.Activities
 
             _androidPlayer = Mvx.IoCProvider.Resolve<IPlatformSpecificMediaPlayer>() as AndroidMediaPlayer;
             _mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
+            _deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
             _mediaPlayer.ViewHasBeenDestroyed(themeHasChanged);
 
             SetContentView(Resource.Layout.activity_main);
@@ -249,7 +250,7 @@ namespace BMM.UI.Droid.Application.Activities
             {
                 await _androidPlayer.RestoreLastPlayingTrackAfterThemeChangedIfAvailable();
                 await HandleNotification();
-                await HandleDeepLink(UnhandledDeepLink);
+                _deepLinkHandler.SetReadyToOpenDeepLinkAndHandlePending();
             };
 
             _androidPlayer.Connect(this);

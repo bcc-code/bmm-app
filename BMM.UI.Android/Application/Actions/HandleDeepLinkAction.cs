@@ -31,15 +31,8 @@ namespace BMM.UI.Droid.Application.Actions
             if (string.IsNullOrEmpty(deepLink))
                 return;
 
-            if (_mediaPlayer.IsConnected)
-            {
-                _deepLinkHandler.OpenFromOutsideOfApp(new Uri(deepLink));
-                MainActivity.UnhandledDeepLink = null;
-                return;
-            }
-            
-            MainActivity.UnhandledDeepLink = deepLink;
             _deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(deepLink);
+            _deepLinkHandler.OpenFromOutsideOfApp(new Uri(deepLink));
         }
     }
 }
