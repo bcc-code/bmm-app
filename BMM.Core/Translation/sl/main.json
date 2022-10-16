@@ -321,8 +321,8 @@
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} skladb",
+    "PluralTracksLoaded": "{0} naloženih skladb",
     "Download": "Prenesi",
     "Shuffle": "Naključno",
     "Play": "Predvajaj"
@@ -344,23 +344,23 @@
     "SearchHint": "Išči",
     "EmptyTitle": "Ta seznam predvajanja je prazen",
     "EmptySubline": "Pritisnite na tri pike pri skladbi, da jo dodate na ta seznam predvajanja.",
-    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "NotEnoughtSpaceToDownload": "Ni dovolj prostora za prenos vseh skladb",
     "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želite nadaljevati prenos?",
-    "Private": "Private",
+    "Private": "Zasebno",
     "DeletePlaylist": "Izbriši seznam predvajanja",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Uredi seznam predvajanja",
+    "SharePlaylist": "Deli seznam predvajanja",
+    "RemovePlaylist": "Odstrani seznam predvajanja"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Uredi seznam predvajanja",
-    "RenameLabel": "Rename playlist",
+    "RenameLabel": "Preimenuj seznam predvajanja",
     "MenuSave": "Shrani",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
+    "EmptyName": "Seznam predvajanja je brez naslova",
+    "SaveFailure": "Ni mogoče posodobiti sprememb. Preveri svojo internetno povezavo in poskusi znova",
+    "DiscardChangesTitle": "Prekliči spremembe?",
+    "DiscardChangesMessage": "Spremembe ne bodo shranjene",
+    "DiscardChanges": "Prekliči",
     "KeepEditing": "Nadaljuj z urejanjem"
   },
   "ShareTrackCollectionViewModel": {
@@ -374,7 +374,7 @@
     "Title": "Deljen seznam predvajanja",
     "Close": "Zapri",
     "AddToMyPlaylist": "Dodaj na moje sezname predvajanja",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "FollowOwnTrackCollection": "Ne moreš slediti svojemu seznamu predvajanja"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Seznam predvajanja",
