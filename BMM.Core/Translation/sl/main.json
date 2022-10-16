@@ -313,11 +313,11 @@
     "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
     "ThemeHeader": "Dark mode",
     "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "SiriShortcutsHeader": "Siri bližnjice",
+    "SiriShortcutsText": "Dodaj Siri bližnjice za BMM na svojo napravo"
   },
   "StorageManagementViewModel": {
-    "Title": "Location for offline tracks",
+    "Title": "Lokacija za skladbe brez povezave",
     "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
@@ -424,7 +424,7 @@
     "FailedToAdd": "Dodajanje skladbe na seznam predvajanja ni uspelo. Prosim, poskusite ponovno kasneje.",
     "FailedToAddAlbum": "Dodajanje albuma na seznam predvajanja ni uspelo, ker vsebuje albume.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
     "FailedToAddUnknownType": "Dodajanje \"{0}\" na seznam predvajanja trenutno ni podprto.",
     "MyTracks": "Moje skladbe",
     "Contributor.Play": "Predvajaj",
@@ -485,8 +485,8 @@
     "System": "Sledi nastavitvam sistema (samodejno)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Jezik skladbe",
+    "PreferredLanguages": "Tvoj izbran jezik",
     "AllLanguages": "Vsi jeziki"
   },
   "SiriShortcutsViewModel": {
