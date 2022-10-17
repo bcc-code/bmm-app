@@ -11,6 +11,7 @@ namespace BMM.Core.Models.POs.ContinueListening
     {
         private readonly IMediaPlayer _mediaPlayer;
         private bool _isCurrentlySelected;
+        private bool _isCurrentlyPlaying;
 
         public ContinueListeningTilePO(
             IMvxAsyncCommand<Document> optionsClickedCommand,
@@ -64,9 +65,16 @@ namespace BMM.Core.Models.POs.ContinueListening
             set => SetProperty(ref _isCurrentlySelected, value);
         }
         
+        public bool IsCurrentlyPlaying
+        {
+            get => _isCurrentlyPlaying;
+            set => SetProperty(ref _isCurrentlyPlaying, value);
+        }
+        
         public void RefreshState()
         {
             IsCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(ContinueListeningTile.Track.Id);
+            IsCurrentlyPlaying = IsCurrentlySelected && _mediaPlayer.IsPlaying;
         }
     }
 }

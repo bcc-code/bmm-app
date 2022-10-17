@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Drawing;
+using System.Threading.Tasks;
+using Airbnb.Lottie;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
@@ -21,6 +25,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName(nameof(ContinueListeningCollectionViewCell), NSBundle.MainBundle);
         private DateTime? _date;
         private string _subtitle;
+        private bool _isCurrentlyPlaying;
 
         public ContinueListeningCollectionViewCell(IntPtr handle): base(Key, handle)
         {
@@ -103,10 +108,35 @@ namespace BMM.UI.iOS
 
                 set.Bind(PlayButton)
                     .To(po => po.ContinueListeningCommand);
+
+                set.Bind(this)
+                    .For(v => v.IsCurrentlyPlaying)
+                    .To(po => po.IsCurrentlyPlaying);
+                
                 set.Apply();
+
+                var animation = LOTAnimationView.AnimationNamed(LottieAnimationsNames.PlayAnimationIcon);
+                animation.BackgroundColor = AppColors.OnColorOneColor;
+                animation.LoopAnimation = true;
+
+                PlayButton!.AddAnimation(animation);
             });
         }
-        
+
+        public bool IsCurrentlyPlaying
+        {
+            get => _isCurrentlyPlaying;
+            set
+            {
+                _isCurrentlyPlaying = value;
+                
+                if (_isCurrentlyPlaying)
+                    PlayButton?.PlayAnimation();
+                else
+                    PlayButton?.StopAnimation();
+            }
+        }
+
         public string Subtitle
         {
             get => _subtitle;
