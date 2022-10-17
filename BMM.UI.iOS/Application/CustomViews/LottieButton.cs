@@ -11,8 +11,6 @@ namespace BMM.UI.iOS
     public class LottieButton : UIButton
     {
         private LOTAnimationView _animationView;
-        private NSLayoutConstraint _widthConstraint;
-        private NSLayoutConstraint _heightConstraint;
 
         public LottieButton()
         {
@@ -40,7 +38,6 @@ namespace BMM.UI.iOS
                 _animationView.BottomAnchor.ConstraintEqualTo(ImageView.BottomAnchor)
             });
 
-            _animationView.BackgroundColor = UIColor.Black;
             _animationView.Hidden = true;
         }
 

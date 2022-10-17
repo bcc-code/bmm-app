@@ -903,6 +903,7 @@
     <AndroidAsset Include="..\BMM.Core\Translation\hu\main.json">
       <Link>Assets\Translation\hu\main.json</Link>
     </AndroidAsset>
+    <AndroidAsset Include="Assets\play_animation_icon.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\loading_spinner.png" />
@@ -969,6 +970,9 @@
     </PackageReference>
     <PackageReference Include="akavache">
       <Version>7.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Android.Lottie">
+      <Version>4.2.2</Version>
     </PackageReference>
     <PackageReference Include="IdentityModel.OidcClient">
       <Version>3.1.2</Version>
