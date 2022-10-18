@@ -1,8 +1,11 @@
 using System;
 using System.ComponentModel;
+using BMM.Core.Implementations.Device;
+using BMM.UI.iOS.Constants;
 using CoreAnimation;
 using CoreGraphics;
 using Foundation;
+using MvvmCross;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -166,7 +169,7 @@ namespace BMM.UI.iOS
                 {
                     Path = circlePath.CGPath,
                     FillColor = UIColor.Clear.CGColor,
-                    StrokeColor = UIColor.Black.CGColor,
+                    StrokeColor = GetStrokeColor(),
                     LineWidth = lineWidth,
                     StrokeEnd = 0f
                 };
@@ -178,6 +181,15 @@ namespace BMM.UI.iOS
                 _circleLayer?.RemoveFromSuperLayer();
                 _circleLayer = null;
             }
+        }
+
+        private static CGColor GetStrokeColor()
+        {
+            var featureSupportInfoService = Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>();
+
+            return featureSupportInfoService.SupportsDarkMode
+                ? AppColors.LabelPrimaryColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection).CGColor
+                : UIColor.Black.CGColor;
         }
 
         public void UpdateCurrentState(bool forceUpdate = false)

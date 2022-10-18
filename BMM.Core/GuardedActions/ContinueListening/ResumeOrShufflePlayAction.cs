@@ -6,6 +6,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels.Interfaces;
 
@@ -28,7 +29,11 @@ namespace BMM.Core.GuardedActions.ContinueListening
         
         protected override async Task Execute()
         {
-            var tracks = AlbumViewModel.Documents.OfType<IMediaTrack>().ToList();
+            var tracks = AlbumViewModel
+                .Documents
+                .OfType<ITrackPO>()
+                .Select(t => (IMediaTrack)t.Track)
+                .ToList();
 
             if (!AlbumViewModel.Album.LatestTrackId.HasValue)
             {
