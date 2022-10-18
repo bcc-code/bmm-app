@@ -63,7 +63,7 @@ namespace BMM.Core.ViewModels.MyContent
             RaisePropertyChanged(() => IsEmpty);
         }
 
-        private async Task<IList<TrackCollectionPO>> TrackCollectionContainOfflineFiles(IList<TrackCollectionPO> allCollections, CachePolicy cachePolicy)
+        private async Task<IList<TrackCollectionPO>> TrackCollectionContainOfflineFiles(IEnumerable<TrackCollectionPO> allCollections, CachePolicy cachePolicy)
         {
             var offlineCollection = allCollections?.Where(tc => tc.IsAvailableOffline).ToList();
             var isOnline = _connection.GetStatus() == ConnectionStatus.Online;
@@ -91,7 +91,7 @@ namespace BMM.Core.ViewModels.MyContent
 
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            var allCollectionsExceptMyTracks = await base.LoadItems(policy) as IList<TrackCollectionPO>;
+            var allCollectionsExceptMyTracks = (await base.LoadItems(policy))?.OfType<TrackCollectionPO>();
 
             var offlineTrackCollections = await TrackCollectionContainOfflineFiles(allCollectionsExceptMyTracks, policy);
 
