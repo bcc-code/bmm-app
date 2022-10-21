@@ -6,7 +6,7 @@
     "BytesMB": "{0} MB",
     "UnexpectedError": "Prišlo je do nepričakovane napake.",
     "InternetConnectionOffline": "Internetna povezava verjetno ni vključena.",
-    "ItemNotFound": "The requested item does not exist.",
+    "ItemNotFound": "Predmet ne obstaja.",
     "OfflineBanner": "Showing only tracks on this phone",
     "Song": "Pesem",
     "Speech": "Sporočilo",
@@ -45,7 +45,7 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Povezave ni bilo mogoče odpreti",
-    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+    "ErrorMessage": "Ni bilo mogoče odpreti povezave {0}"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Prišlo je do napake pri povezavi: {0}"
@@ -55,13 +55,13 @@
     "ErrorVideoNotSupported": "Na žalost video posnetki trenutno niso podprti.",
     "ErrorFileNotOffline": "Skladb, ki niso prenesene, ni mogoče predvajati brez internetne povezave.",
     "ErrorPlayerStopped": "Predvajalnik se je ustavil. ",
-    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
-    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
-    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorPlayerStoppedGeneric": "Zaradi napake predvajanja se je trenutna skladba ustavila.",
+    "ErrorPlayerLiveRadioStopped": "Prenos v živo se je končal.",
+    "ErrorPlayerLiveRadioTooEarly": "Prenos v živo se še ni začel, prosim poskusi znova kasneje.",
+    "ErrorPlayerStart": "Predvajanja ni bilo mogoče začeti."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "There is not enough space to store offline files"
+    "OutOfSpaceMessage": "Ni dovolj prostora za shranjevanje datotek brez povezave."
   },
   "AlbumViewModel": {
     "Title": "Album",
@@ -70,7 +70,7 @@
     "AddAlbumToMyTracks": "Dodaj album k Mojim posnetkom",
     "FailedToAdd": "Skladbe ni bilo mogoče dodati na seznam predvajanja. Prosim, ponovno poskusite kasneje.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že dodan na tvoj seznam predvajanja.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
     "ShufflePlay": "Naključno predvajanje",
     "PluralAlbums": "{0} albumov"
   },
@@ -110,7 +110,7 @@
     "LatestTrack": "Najnovejše skladbe",
     "NextBroadcast": "Naslednji prenos",
     "BmmRadio": "BMM v živo",
-    "CountdownHours": "in {0}h",
+    "CountdownHours": "v {0} h",
     "Messages": "Najnovejši govori",
     "Music": "Najnovejša glasba"
   },
@@ -247,7 +247,7 @@
     "Title": "Popis liste za slušanje"
   },
   "PlayerViewModel": {
-    "Title": "Now playing",
+    "Title": "Zdaj predvajano",
     "PlayingCount": "{0} od {1}",
     "ViewLyrics": "Poglej besedilo",
     "SleepTimer": "Sleep timer",
@@ -311,8 +311,8 @@
     "Logout": "Odjava",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
+    "ThemeHeader": "Temen način",
+    "ThemeText": "Izberi med temno in svetlo temo",
     "SiriShortcutsHeader": "Siri bližnjice",
     "SiriShortcutsText": "Dodaj Siri bližnjice za BMM na svojo napravo"
   },
