@@ -1,6 +1,6 @@
 {
   "Global": {
-    "ContactError": "BMM tiimin tavoittaminen epäonnistui. Voit lähettää sähköpostin osoitteeseen: {0}",
+    "ContactError": "BMM tiimin tavoittaminen epäonnistui. Voit lähettää sähköpostin osoitteeseen: ",
     "External": "Ulkoinen",
     "Internal": "Sisäinen",
     "BytesMB": "{0} MB",
@@ -28,27 +28,27 @@
     "DailyMessage": "Päivän sanoma"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "Message": "Viikon suorituksesi",
+    "MessagePerfect": "Täydellinen viikko. Hienoa!\n",
+    "PerfectWeekCountSingular": "{0} täydellinen viikko",
+    "PerfectWeekCountPlural": "{0} täydellistä viikkoa",
+    "PerfectWeekCountNone": "Ei vielä täydellisiä viikkoja",
+    "EligibleUntilHoursAndMinutesMessage": "{0} tuntia ja {1} minuuttia jäljellä tänään",
+    "EligibleUntilMinutesOnlyMessage": "{0} minuuttia jäljellä tänään",
+    "DaysInARowSingular": "{0} päivää peräkkäin",
+    "DaysInARowPlural": "{0} päivää peräkkäin",
     "WeekdayMonday": "M",
     "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
+    "WeekdayWednesday": "K",
     "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "WeekdayFriday": "P"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Linkin avaus epäonnistui",
     "ErrorMessage": "Valitettavasti linkin avaus ei onnistunut."
   },
   "RequestExceptionHandler": {
-    "RequestFailedMessage": "Yhteys virhe: {0}"
+    "RequestFailedMessage": "Yhteysvirhe: {0}"
   },
   "MediaPlayer": {
     "ErrorMediaNotSupported": "Tähän raitaan ei ole linkitetty kelvollista tiedostoa.",
@@ -72,7 +72,7 @@
     "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
     "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
     "ShufflePlay": "Satunnaisjärjestys",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "albumia"
   },
   "AlbumsViewModel": {
     "Title": "Arkisto",
@@ -100,7 +100,7 @@
     "SearchHint": "Etsi"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Koti",
     "SearchHint": "Haku",
     "FraKaareHeader": "Terveiset Kårelta",
     "AslaksenTeaserHeader": "Uskon sanoja",
@@ -110,9 +110,9 @@
     "LatestTrack": "Viimeisimmät",
     "NextBroadcast": "Seuraava lähetys",
     "BmmRadio": "BMM Live",
-    "CountdownHours": "alkaa",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music"
+    "CountdownHours": "alkaa {0} tunnin kuluttua",
+    "Messages": "Viime sanomat",
+    "Music": "Viime musiikki"
   },
   "ExploreContributorsViewModel": {
     "Title": "Tekijät",
@@ -147,7 +147,7 @@
     "TbxUsername.Hint": "Sähköposti",
     "TbxPassword.Hint": "Salasana",
     "BtnLogin.Text": "Kirjaudu sisään",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Kirjaudu BCC tunnuksin"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Puhelimien joiden käyttöjärjestelmänä on  {0} {1} tai vanhempi tuki loppuu. Jos mahdollista päivitä puhelimesi.",
@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Ei voi poistaa {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Selaa"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arkisto"
@@ -179,21 +179,21 @@
     "Search": "Etsi",
     "Explore": "Selaa",
     "MyContent": "Oma sisältöni",
-    "Browse": "Browse",
+    "Browse": "Selaa",
     "Settings": "Asetukset",
     "HelpAndFeedback": "Ohje ja palaute",
-    "Home": "Home",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "Home": "Koti",
+    "Favorites": "Suosikit",
+    "Profile": "Profiili"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Suosikit",
     "DownloadedContent": "Tallennettu sisält",
     "FollowedPodcasts": "Seuratut podcastit",
     "MyTracks": "Minun kappaleeni",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Soittolistani",
+    "SharedWithMe": "Jaettu kanssani",
+    "ByFormat": "tekijä {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Seuratut podcastit",
@@ -232,9 +232,9 @@
     "GetNotifiedMessage": "kun uusia jaksoja julkaistaan",
     "UnfollowConfirm": "Lopeta tämän podcastin seuraaminen?",
     "ToggleFollowOfflineError": "Sinun täytyy olla online-tilassa tai unfollow podcast",
-    "Week": "Week {0}",
-    "ThisWeek": "This week",
-    "LastWeek": "Last week",
+    "Week": "Viikko {0}",
+    "ThisWeek": "Tämä viikko",
+    "LastWeek": "Viime viikko",
     "AslaksenTheme1": "Usko ihmeiden Jumalaan",
     "AslaksenTheme2": "Minut on ristiinnaulittu Kristuksen kanssa",
     "AslaksenTheme3": "Jumalan pelkääminen ja rakastaminen",
@@ -249,15 +249,15 @@
   "PlayerViewModel": {
     "Title": "Nyt soi",
     "PlayingCount": "Soitetaan {0} {1}:sta",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
-    "Selected": "Selected"
+    "ViewLyrics": "Katso sanat",
+    "SleepTimer": "Uniajastin",
+    "Minutes": "{0} minuuttia",
+    "Hour": "tuntia",
+    "Hours": "{0} tuntia",
+    "Disable": "Estä",
+    "PlaybackSpeed": "Toistonopeus",
+    "Normal": "Tavallinen",
+    "Selected": "Valittu"
   },
   "QueueViewModel": {
     "Title": "Jono"
@@ -274,12 +274,12 @@
     "DeleteConfirm": "Oletko varma, että haluat poistaa hakuhistorian?"
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "Profiili",
     "HeadlineSettings": "Asetukset",
     "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionAutoplayText": "Soita musiikkia tämänpäiväisen Terveisiä Kårelta jakson kuuntelun jälkeen",
+    "OptionStreakHeader": "Koti jakso",
+    "OptionStreakText": "Näytä kuuntelutilastosi kotinäytöllä",
     "OptionEnablePushHeader": "Ota ponnahdusilmoitukset käyttöön",
     "OptionPushNotifications": "Push-ilmoitukset",
     "OptionPushNotificationsSubtitle": "Push-ilmoitukset päälle seuraamistasi podcasteista",
@@ -295,42 +295,42 @@
     "OptionLanguageContentHeader": "Sisällön kieli",
     "OptionLanguageContentText": "Vaihda BMM:n sisällön kieltä",
     "HeadlineAbout": "Tietoja",
-    "OptionCopyrightHeader": "Copyright",
+    "OptionCopyrightHeader": "Tekijänoikeudet",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
     "OptionContactHeader": "Yhteydenotto",
     "OptionContactText": "Kysymyksiä tai palautetta? Ota yhteyttä tästä.",
     "OptionAppVersionHeader": "Sovelluksen versio",
     "AppInfoTitle": "Sovelluksen tiedot",
     "AppInfoAppVersion": "Sovelluksen versio: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Valmistaja",
     "AppInfoDeviceModel": "Laitteen malli: ",
     "AppInfoDevicePlatform": "Laitteen käyttöympäristö: ",
     "AppInfoDeviceVersion": "Laitteen versio: ",
-    "LoggedInAs": "Signed in as",
+    "LoggedInAs": "Kirjautunut nimellä",
     "LogoutConfirm": "Haluatko varmasti kirjautua ulos?",
     "Logout": "Kirjaudu ulos",
-    "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "UserVoiceHeader": "Palautteet",
+    "UserVoiceText": "Miten BMM olisi parempi? Kerro meille",
+    "ThemeHeader": "Pimeä asetus",
+    "ThemeText": "Valitse valoisan ja pimeän teeman väliltä",
+    "SiriShortcutsHeader": "Siriin",
+    "SiriShortcutsText": "Lisää Sirilinkit laitteesi BMM:än"
   },
   "StorageManagementViewModel": {
     "Title": "Offline kappaleiden tallennus sijainti",
     "RemoveAllFiles": "Haluatko vaihtaa offline kappaleiden tallennus sijaintia vai poistetaanko kaikki kappaleet?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} tiedostot",
+    "PluralTracksLoaded": "{0} tiedostoa ladattu",
     "Download": "Lataa",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Sekoita",
     "Play": "Toista"
   },
   "TrackCollectionViewModel": {
     "Title": "Soittolista",
-    "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "ShufflePlay": "Sekoita",
+    "Resume": "Jatka",
     "AvailableOffline": "Käytettävissä offline-tilassa",
     "AvailableOfflineDownload": "Lataa",
     "AvailableOfflineDownloading": "Ladataan {0} {1}:stä",
@@ -346,35 +346,35 @@
     "EmptySubline": "Paina kolmea pistettä kappaleen kohdalla lisätäksesi kappaleita tälle soittolistalle.",
     "NotEnoughtSpaceToDownload": "Ei tarpeeksi tallennustilaa kaikkien kappaleiden lataamiselle",
     "AskToResumeDownloading": "Soittolistalla on uusia kohteita. Haluatko jatkaa lataamista?",
-    "Private": "Private",
+    "Private": "Yksityinen",
     "DeletePlaylist": "Poista soittolista",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Muuta soittolistaa",
+    "SharePlaylist": "Jaa soittolista",
+    "RemovePlaylist": "Poista soittolista"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
-    "RenameLabel": "Rename playlist",
+    "Title": "Muuta soittolistaa",
+    "RenameLabel": "Uudelleennimeä soittolista",
     "MenuSave": "Tallenna",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "EmptyName": "Nimetön soittolista",
+    "SaveFailure": "Muutoksia ei voitu päivittää. Tarkista internetyhteytesi ja yritä uudelleen",
+    "DiscardChangesTitle": "Hylkää muutokset",
+    "DiscardChangesMessage": "Tekemiäsi muutoksia ei talleteta",
+    "DiscardChanges": "Poista",
+    "KeepEditing": "Jatka editointia"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Jaa soittolista",
+    "ShareNote": "Toisetkin voivat kuunnella jakamasi soittoliastan ja  lisäämäsi tiedostot jos heillä on linkki",
+    "ShareLink": "Jaa linkki",
+    "MakePrivate": "Tee yksityiseksi",
+    "SharedWithFormat": "Jaettu {0} henkilön kanssa"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Jaettu soittolista",
+    "Close": "Sulje\n",
+    "AddToMyPlaylist": "Lisää soittolistoihini",
+    "FollowOwnTrackCollection": "Oma tiedostokokoelmasi ei ole seurattavissa"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Soittolista",
@@ -409,7 +409,7 @@
     "Track.GoToAlbum": "Siirry albumiin",
     "Track.GoToContributor": "Lauluntekijät",
     "Track.GoToContributor.Composer": "Säveltäjä: {0}",
-    "Track.GoToContributor.Interpret": "Tulkki: {0}",
+    "Track.GoToContributor.Interpret": "Esittäjä: {0}",
     "Track.GoToContributor.Lyricist": "Sanoittaja: {0}",
     "Track.GoToContributor.Arranger": "Sovittaja: {0}",
     "Track.Download": "Lataa kappale",
@@ -453,44 +453,44 @@
     "Arranger": "Sovittaja",
     "Composer": "Säveltäjä",
     "Publisher": "Julkaisija",
-    "Copyright": "Copyright"
+    "Copyright": "Tekijänoikeudet"
   },
   "CopyrightViewModel": {
-    "Title": "Copyright"
+    "Title": "Tekijänoikeudet"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Äskettäin soitettu",
+    "NoHistoryYetTitle": "Nyt näet mitä olet kuunnellut",
+    "NoHistoryYetSubtitle": "Ala kuuntelu niin historiasi näkyy tässä"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "Viime sanomat"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "Viime musiikki"
   },
   "DownloadManager": {
     "DownloadingFinished": "Kaikki tiedostot on ladattu!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Tapahtumat",
     "AudiobooksTitle": "Äänikirjat",
     "MusicTitle": "Musiikki",
     "PodcastsTitle": "Podcastit"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Pimeämoodiasetukset",
+    "Light": "Valoisa",
+    "Dark": "Pimeä",
+    "System": "Käytä järjestelmäasetuksia (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Tiedoston kieli",
+    "PreferredLanguages": "Enisijaiset kielet",
     "AllLanguages": "Kaikki kielet"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siriin",
+    "ShortcutAlreadyAdded": "Tämä linkki jo lisätty"
   }
 }
