@@ -1,6 +1,6 @@
 {
   "Global": {
-    "ContactError": "BMM tiimin tavoittaminen epäonnistui. Voit lähettää sähköpostin osoitteeseen: ",
+    "ContactError": "BMM tiimin tavoittaminen epäonnistui. Voit lähettää sähköpostin osoitteeseen: {0}",
     "External": "Ulkoinen",
     "Internal": "Sisäinen",
     "BytesMB": "{0} MB",
