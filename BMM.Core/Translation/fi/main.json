@@ -72,7 +72,7 @@
     "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
     "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
     "ShufflePlay": "Satunnaisjärjestys",
-    "PluralAlbums": "albumia"
+    "PluralAlbums": "{0} albumia"
   },
   "AlbumsViewModel": {
     "Title": "Arkisto",
