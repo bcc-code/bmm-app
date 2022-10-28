@@ -54,6 +54,7 @@ namespace BMM.Core.ViewModels
         private readonly IFirebaseRemoteConfig _remoteConfig;
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
         private readonly IUserDialogs _userDialogs;
+        private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -84,7 +85,8 @@ namespace BMM.Core.ViewModels
             IUserStorage userStorage,
             IFirebaseRemoteConfig remoteConfig,
             IFeatureSupportInfoService featureSupportInfoService,
-            IUserDialogs userDialogs)
+            IUserDialogs userDialogs,
+            IFeaturePreviewPermission featurePreviewPermission)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -106,6 +108,7 @@ namespace BMM.Core.ViewModels
             _remoteConfig = remoteConfig;
             _featureSupportInfoService = featureSupportInfoService;
             _userDialogs = userDialogs;
+            _featurePreviewPermission = featurePreviewPermission;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -323,6 +326,12 @@ namespace BMM.Core.ViewModels
                 }
             };
 
+            items.AddIf(() => _featurePreviewPermission.IsFeaturePreviewEnabled(), new SelectableListItem
+            {
+                Title = TextSource[Translations.YearInReviewViewModel_Title],
+                OnSelected = NavigationService.NavigateCommand<YearInReviewViewModel>()
+            });
+            
             var analyticsId =  _userStorage.GetUser().AnalyticsId;
             items.Add(new SelectableListItem
             {

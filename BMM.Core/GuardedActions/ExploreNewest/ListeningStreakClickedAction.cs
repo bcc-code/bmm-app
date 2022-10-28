@@ -26,10 +26,9 @@ namespace BMM.Core.GuardedActions.ExploreNewest
 
         protected override async Task Execute(ListeningStreak parameter)
         {
-            await _mvxNavigationService.Navigate<YearInReviewViewModel>();
-            // await _mvxNavigationService.Navigate<ListeningStreakDetailsViewModel, IListeningStreakDetailsParameter>(
-            //     new ListeningStreakDetailsParameter(parameter));
-            // _analytics.LogEvent("Streak details opened");
+            await _mvxNavigationService.Navigate<ListeningStreakDetailsViewModel, IListeningStreakDetailsParameter>(
+                new ListeningStreakDetailsParameter(parameter));
+            _analytics.LogEvent("Streak details opened");
         }
     }
 }
