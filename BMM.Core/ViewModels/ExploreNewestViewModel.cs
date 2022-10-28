@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
@@ -57,7 +58,8 @@ namespace BMM.Core.ViewModels
             IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
             IFirebaseRemoteConfig config,
-            IListeningStreakPOFactory listeningStreakPOFactory)
+            IListeningStreakPOFactory listeningStreakPOFactory,
+            IStatisticsClient statisticsClient)
         {
             _streakObserver = streakObserver;
             _settings = settings;

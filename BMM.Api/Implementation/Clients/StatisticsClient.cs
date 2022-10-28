@@ -105,5 +105,11 @@ namespace BMM.Api.Implementation.Clients
             var request = BuildRequest(uri, HttpMethod.Post, trackPlayedEvents);
             await RequestIsSuccessful(request);
         }
+
+        public Task<IList<YearInReview>> GetYearInReview()
+        {
+            var uri = new UriTemplate(ApiUris.YearInReview);
+            return Get<IList<YearInReview>>(uri);
+        }
     }
 }

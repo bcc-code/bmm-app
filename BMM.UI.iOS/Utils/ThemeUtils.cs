@@ -14,5 +14,7 @@ namespace BMM.UI.iOS.Utils
                 _ => UIUserInterfaceStyle.Unspecified
             };
         }
+        
+        public static bool IsUsingDarkMode => AppDelegate.MainWindow.TraitCollection.UserInterfaceStyle == UIUserInterfaceStyle.Dark;
     }
 }

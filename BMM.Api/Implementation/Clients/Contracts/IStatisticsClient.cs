@@ -67,5 +67,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task<IList<Document>> GetUserViewedRecently(string username, DocumentType type, int size = ApiConstants.LoadMoreSize, int from = 0);
 
         Task PostTrackPlayedEvent(IEnumerable<TrackPlayedEvent> trackPlayedEvents);
+        
+        Task<IList<YearInReview>> GetYearInReview();
     }
 }

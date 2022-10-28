@@ -107,6 +107,7 @@
     <Compile Include="Application\Actions\Interfaces\IHandleDeepLinkAction.cs" />
     <Compile Include="Application\Actions\Interfaces\IHandleNotificationAction.cs" />
     <Compile Include="Application\Actions\OnStartAction.cs" />
+    <Compile Include="Application\Actions\ShareYearInReviewAction.cs" />
     <Compile Include="Application\Activities\SupportEndedActivity.cs" />
     <Compile Include="Application\Activities\UserSetupActivity.cs" />
     <Compile Include="Application\Activities\OidcLoginActivity.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Application\Adapters\DragAndDrop\UpAndDownDraggingTouchCallback.cs" />
     <Compile Include="Application\Adapters\CoversCarouselRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\PodcastContextHeaderRecyclerAdapter.cs" />
+    <Compile Include="Application\Adapters\YearInReviewRecyclerAdapter.cs" />
     <Compile Include="Application\Bindings\BackgroundResourceBinding.cs" />
     <Compile Include="Application\Bindings\Base\BMMAndroidTargetBinding.cs" />
     <Compile Include="Application\Bindings\ColorStateListHelper.cs" />
@@ -171,6 +173,7 @@
     <Compile Include="Application\Fragments\MyTracksFragment.cs" />
     <Compile Include="Application\Fragments\ThemeSettingsFragment.cs" />
     <Compile Include="Application\Fragments\TrackOptionsFragment.cs" />
+    <Compile Include="Application\Fragments\YearInReviewFragment.cs" />
     <Compile Include="Application\Helpers\AndroidSupportVersionChecker.cs" />
     <Compile Include="Application\Helpers\BitmapHelper.cs" />
     <Compile Include="Application\Helpers\BottomSheet\PreventBottomSheetChangesWhileSwipeHappens.cs" />
@@ -229,6 +232,7 @@
     <Compile Include="Application\ViewHolders\ContinueListeningCarouselCollectionViewHolder.cs" />
     <Compile Include="Application\ViewHolders\ContinueListeningTileViewHolder.cs" />
     <Compile Include="Application\ViewHolders\InfoMessageViewHolder.cs" />
+    <Compile Include="Application\ViewHolders\YearInReviewItemViewHolder.cs" />
     <Compile Include="Utils\PendingIntentsUtils.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Compile Include="Utils\ViewUtils.cs" />
@@ -626,6 +630,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_track_options.xml" />
+    <AndroidResource Include="Resources\layout\fragment_year_in_review.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\listitem_audio.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -687,6 +695,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_year_in_review.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\track_download_status.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -711,6 +723,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\values-night\dimens.xml" />
     <AndroidResource Include="Resources\values-night\Strings.xml" />
     <AndroidResource Include="Resources\values-v27\styles.xml" />
     <AndroidResource Include="Resources\values-xhdpi\dimens.xml">
@@ -726,6 +739,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\xml\auto_backup_rules.xml" />
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
     <AndroidResource Include="Resources\xml\global_tracker.xml" />
     <AndroidResource Include="Resources\drawable\progressbar_downloading.xml" />
     <AndroidResource Include="Resources\drawable\button_pause.xml" />

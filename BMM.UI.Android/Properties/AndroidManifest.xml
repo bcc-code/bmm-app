@@ -25,6 +25,16 @@
 				<action android:name="com.google.firebase.MESSAGING_EVENT" />
 			</intent-filter>
 		</service>
+		<provider
+				android:name="androidx.core.content.FileProvider"
+				android:authorities="org.brunstad.bmm.provider"
+				android:exported="false"
+				android:grantUriPermissions="true">
+			<meta-data
+					android:name="android.support.FILE_PROVIDER_PATHS"
+					android:resource="@xml/file_paths">
+			</meta-data>
+		</provider>
 	</application>
 	<uses-feature android:name="android.hardware.output" android:required="false" />
 	<permission android:name="org.brunstad.bmm.permission.C2D_MESSAGE" android:protectionLevel="signature" />

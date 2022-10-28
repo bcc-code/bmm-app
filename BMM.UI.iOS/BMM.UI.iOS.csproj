@@ -138,6 +138,12 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <NativeReference Include="$(HOME)\Library\Application Support\Reveal\RevealServer\RevealServer.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+    </NativeReference>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Acr.Support.2.1.0\lib\Xamarin.iOS10\Acr.Support.iOS.dll</HintPath>
@@ -562,9 +568,11 @@
     <BundleResource Include="Resources\icon_trackrelation_external%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ListeningStreakDetailsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\YearInReviewViewController.xib" />
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <None Include="app.config" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.xib" />
@@ -633,6 +641,7 @@
     <Compile Include="Application\Actions\PlayFromKareAction.cs" />
     <Compile Include="Application\Actions\PlayMusicFromSiriAction.cs" />
     <Compile Include="Application\Actions\SearchForMusicFromSiriAction.cs" />
+    <Compile Include="Application\Actions\ShareYearInReviewAction.cs" />
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.designer.cs">
       <DependentUpon>ContinueListeningCollectionViewCell.cs</DependentUpon>
@@ -640,6 +649,10 @@
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.designer.cs">
+      <DependentUpon>YearInReviewCollectionViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
     <Compile Include="Application\CustomViews\BmmSliderView.cs" />
@@ -867,6 +880,10 @@
     <Compile Include="Application\ViewController\OidcLoginViewController.cs" />
     <Compile Include="Application\ViewController\OidcLoginViewController.designer.cs">
       <DependentUpon>OidcLoginViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\ViewController\YearInReviewViewController.cs" />
+    <Compile Include="Application\ViewController\YearInReviewViewController.designer.cs">
+      <DependentUpon>YearInReviewViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Constants\AppColors.cs" />
     <Compile Include="Constants\AppTheme.cs" />
@@ -1100,7 +1117,6 @@
     <InterfaceDefinition Include="Application\TableViewCell\TrackCollectionTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\LanguageAppTableViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\LanguageContentTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\TracksViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\MiniPlayerViewController.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\LoadingTableViewCell.xib" />
     <InterfaceDefinition Include="Application\ViewController\ContainmentViewController.xib" />
@@ -1145,6 +1161,10 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-83_5@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\response-1.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\response-2.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\response.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\icon_album.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\Contents.json" />

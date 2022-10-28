@@ -4,6 +4,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.ExploreNewest.Interfaces;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.ViewModels;
+using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Navigation;
@@ -25,9 +26,10 @@ namespace BMM.Core.GuardedActions.ExploreNewest
 
         protected override async Task Execute(ListeningStreak parameter)
         {
-            await _mvxNavigationService.Navigate<ListeningStreakDetailsViewModel, IListeningStreakDetailsParameter>(
-                new ListeningStreakDetailsParameter(parameter));
-            _analytics.LogEvent("Streak details opened");
+            await _mvxNavigationService.Navigate<YearInReviewViewModel>();
+            // await _mvxNavigationService.Navigate<ListeningStreakDetailsViewModel, IListeningStreakDetailsParameter>(
+            //     new ListeningStreakDetailsParameter(parameter));
+            // _analytics.LogEvent("Streak details opened");
         }
     }
 }

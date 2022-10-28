@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Drawing;
-using System.Threading.Tasks;
 using Airbnb.Lottie;
-using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.ValueConverters;
-using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
