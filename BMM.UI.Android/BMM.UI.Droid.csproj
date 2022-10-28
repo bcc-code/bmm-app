@@ -200,6 +200,8 @@
     <Compile Include="Application\ItemDecorators\SpacingItemDecorator.cs" />
     <Compile Include="Application\Listeners\AnimationUpdateListener.cs" />
     <Compile Include="Application\Listeners\ImageServiceRecyclerViewScrollListener.cs" />
+    <Compile Include="Application\Listeners\Interfaces\IRecyclerViewSnapHandler.cs" />
+    <Compile Include="Application\Listeners\SnapOnScrollListener.cs" />
     <Compile Include="Application\NewMediaPlayer\AudioFocus\AudioFocusExoPlayerDecorator.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\MediaControllerCallback.cs" />
     <Compile Include="Application\NewMediaPlayer\Controller\PlaybackStateCompatMapper.cs" />

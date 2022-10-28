@@ -654,6 +654,7 @@
     <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.designer.cs">
       <DependentUpon>YearInReviewCollectionViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\CollectionViewSource\YearInReviewSource.cs" />
     <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
     <Compile Include="Application\CustomViews\BmmSliderView.cs" />
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
@@ -677,6 +678,7 @@
     <Compile Include="Application\Extensions\StringExtensions.cs" />
     <Compile Include="Application\Extensions\UiTableExtensions.cs" />
     <Compile Include="Application\Extensions\ViewExtensions.cs" />
+    <Compile Include="Application\Helpers\ICollectionViewSnapHandler.cs" />
     <Compile Include="Application\Helpers\GradientView.cs" />
     <Compile Include="Application\Helpers\IosConstants.cs" />
     <Compile Include="Application\Helpers\IosSupportVersionChecker.cs" />
@@ -1161,10 +1163,6 @@
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-83_5@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\response-1.png" />
-    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\response-2.png" />
-    <ImageAsset Include="Resources\Images.xcassets\FRAAA.imageset\response.png" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\icon_album.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\Contents.json" />
