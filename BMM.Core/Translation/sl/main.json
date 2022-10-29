@@ -1,17 +1,17 @@
 {
   "Global": {
     "ContactError": "Povezava z BMM ekipo ni uspela. E-poštno sporočilo lahko pošljete na: {0}",
-    "External": "External",
-    "Internal": "Internal",
+    "External": "Zunanji",
+    "Internal": "Notranji",
     "BytesMB": "{0} MB",
     "UnexpectedError": "Prišlo je do nepričakovane napake.",
     "InternetConnectionOffline": "Internetna povezava verjetno ni vključena.",
     "ItemNotFound": "Predmet ne obstaja.",
-    "OfflineBanner": "Showing only tracks on this phone",
+    "OfflineBanner": "Prikazane so samo prenesene skladbe",
     "Song": "Pesem",
     "Speech": "Sporočilo",
     "Audiobook": "Zvočna knjiga",
-    "Exegesis": "Exegesis",
+    "Exegesis": "Eksegeza",
     "Done": "Končano",
     "Today": "Danes",
     "Yesterday": "Včeraj",
@@ -135,7 +135,7 @@
     "ButtonSendMail": "Pošlji email BMM ekipi"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Tvoj račun je v pripravi. To lahko vzame nekaj časa."
   },
   "LoginViewModel": {
     "Title": "Prijava",
@@ -143,17 +143,17 @@
     "LoginFailureMessage": "Poskusite znova z uporabo pravilnih referenc",
     "LoginNoConnectionMessage": "Trenutno nobena povezava ni na voljo. Prosim, ponovno poskusite kasneje",
     "WrongMailAddressTitle": "Neveljaven mail",
-    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "WrongMailAddress": "Prosim navedi veljaven elektronski naslov. Uporaba tega uporabniškega imena za prijavo ni več podprta. ",
     "TbxUsername.Hint": "E-pošta",
     "TbxPassword.Hint": "Geslo",
     "BtnLogin.Text": "Prijava",
     "LoginInfo": "Vpiši se s svojim BCC računom"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
-    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
-    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
-    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
+    "DeviceSupportEnding": "Kmalu ne bo več mogoča podpora za telefone, ki so starejši od {0}{1}. Priporočljiva je nadgradnja telefona. ",
+    "DeviceSupportEnded": "Na žalost ne podpiramo več naprav, ki so starejše od {0}{1}. Prosim posodobi svojo napravo ali jo nagradi na novejšo. ",
+    "AppSupportEnding": "Uporabljaš staro verzijo BMM aplikacije. Kmalu bomo nehali podpirati to verzijo. Prosim posodobi BMM. ",
+    "AppSupportEnded": "Uporabljaš staro verzijo BMM aplikacije, ki ni več podprta. Prosim posodobi BMM. ",
     "UpdateButton": "Posodobitev"
   },
   "LanguageAppViewModel": {
@@ -215,8 +215,8 @@
     "Title": "Prenesi vsebino",
     "FollowedPodcasts": "Posnetki",
     "MyTracks": "Moje skladbe",
-    "EmptyTitle": "You have not downloaded any content",
-    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+    "EmptyTitle": "Nisi prenesel nobene vsebine",
+    "EmptySubline": "Prenesi seznam predvajanja ali sledi podcastu, da ti bo na voljo brez povezave. "
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Posnetki",
@@ -250,7 +250,7 @@
     "Title": "Zdaj predvajano",
     "PlayingCount": "{0} od {1}",
     "ViewLyrics": "Poglej besedilo",
-    "SleepTimer": "Sleep timer",
+    "SleepTimer": "Časovnik izklopa",
     "Minutes": "{0} minut",
     "Hour": "{0} ura",
     "Hours": "{0} ur",
@@ -277,7 +277,7 @@
     "Title": "Profil",
     "HeadlineSettings": "Postavke",
     "OptionAutoplayHeader": "Samodejno predvajanje",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionAutoplayText": "Predvajaj glasbo po predvajanju današnje epizode Od Kåreja ",
     "OptionStreakHeader": "Streak on Home",
     "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Omogoči prikazna obvestila",
