@@ -41,9 +41,9 @@ namespace BMM.UI.Droid.Application.Extensions
             view.LayoutParameters = lp;
         }
         
-        public static bool IsLong(this View view)
+        public static bool IsPortrait(this View view)
         {
-            return ViewUtils.IsLong(view.Width, view.Height);
+            return ViewUtils.IsPortrait(view.Width, view.Height);
         }
     }
 }

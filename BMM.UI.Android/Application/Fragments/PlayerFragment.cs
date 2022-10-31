@@ -387,7 +387,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Medium;
             else
             {
-                if (View.IsLong())
+                if (View.IsPortrait())
                 {
                     _coverTopPaddingMultiplier = CoverConstants.CoverTopPaddingMultiplierConstants.Big;
                     coverSizeMultiplier = CoverConstants.CoverSizeMultiplierConstants.Big;

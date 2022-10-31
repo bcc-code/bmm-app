@@ -30,7 +30,7 @@ namespace BMM.UI.Droid.Utils
             activity.Window.SetNavigationBarColor(color);
         }
         
-        public static bool IsLong(int width, int height)
+        public static bool IsPortrait(int width, int height)
         {
             float widthToHeightRatio = width / (float)height;
             return widthToHeightRatio < CoverConstants.WidthToHighRatio.LongThreshold;

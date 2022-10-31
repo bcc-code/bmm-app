@@ -326,12 +326,6 @@ namespace BMM.Core.ViewModels
                 }
             };
 
-            items.AddIf(() => _featurePreviewPermission.IsFeaturePreviewEnabled(), new SelectableListItem
-            {
-                Title = TextSource[Translations.YearInReviewViewModel_Title],
-                OnSelected = NavigationService.NavigateCommand<YearInReviewViewModel>()
-            });
-            
             var analyticsId =  _userStorage.GetUser().AnalyticsId;
             items.Add(new SelectableListItem
             {
