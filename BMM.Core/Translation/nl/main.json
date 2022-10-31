@@ -284,8 +284,8 @@
     "OptionPushNotifications": "Push-meldingen",
     "OptionPushNotificationsSubtitle": "Schakel push-meldingen in voor podcasts die je volgt",
     "OptionExternalStorage": "Lagringsplas",
-    "OptionMBInternalText": "Intern {0} MB ledig",
-    "OptionMBExternalText": "Ekstern {0} MB ledig",
+    "OptionMBInternalText": "Internal {0} MB free",
+    "OptionMBExternalText": "External {0} MB free",
     "OptionEnablePushText": "Push-meldingen ontvangen wanneer er nieuwe content beschikbaar is",
     "OptionDownloadMobileNetworkHeader": "Downloaden via het mobiele netwerk",
     "OptionDownloadMobileNetworkText": "Toestaan om bestanden te downloaden via 3G/4G. Dit kan effect hebben op je dataverbruik",
@@ -317,8 +317,8 @@
     "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
   },
   "StorageManagementViewModel": {
-    "Title": "Plass for offline spor",
-    "RemoveAllFiles": "Vil du velge annen lagringsplass og fjerne offline spor?"
+    "Title": "Location for offline tracks",
+    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} tracks",
@@ -344,7 +344,7 @@
     "SearchHint": "Zoeken",
     "EmptyTitle": "Deze afspeellijst is leeg",
     "EmptySubline": "Druk op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
-    "NotEnoughtSpaceToDownload": "Ikke nok plass til å laste ned alle sangene",
+    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?",
     "Private": "Private",
     "DeletePlaylist": "Afspeellijst verwijderen",
