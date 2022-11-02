@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Siri-parancsok",
     "ShortcutAlreadyAdded": "Ez a parancs már hozzá lett adva"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Your Year in Review",
+    "Share": "Share with your friends",
+    "ShareTitle": "Year in Review"
   }
 }
