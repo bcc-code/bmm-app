@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Accesos directos de Siri",
     "ShortcutAlreadyAdded": "Este acceso directo ya ha sido añadido"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Your Year in Review",
+    "Share": "Share with your friends",
+    "ShareTitle": "Year in Review"
   }
 }
