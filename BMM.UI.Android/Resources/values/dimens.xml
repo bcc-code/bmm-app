@@ -10,6 +10,7 @@
     <dimen name="margin_xmedium">20dp</dimen>
     <dimen name="margin_xxmedium">24dp</dimen>
     <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_xlarge">40dp</dimen>
     <dimen name="margin_huge">64dp</dimen>
 
     <dimen name="margin_xsmall_negative">-12dp</dimen>
@@ -79,6 +80,8 @@
     <dimen name="streak_card_corner_radius">14dp</dimen>
     <dimen name="streak_circle_size">12dp</dimen>
     <dimen name="streak_separator_size">24dp</dimen>
+    
+    <dimen name="year_in_review_card_elevation">16dp</dimen>
     
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>

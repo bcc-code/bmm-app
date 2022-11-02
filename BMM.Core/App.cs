@@ -36,6 +36,7 @@ using BMM.Core.Implementations.Factories.DiscoverSection;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Implementations.Factories.YearInReview;
 using BMM.Core.Implementations.FeatureToggles;
 using BMM.Core.Implementations.Feedback;
 using BMM.Core.Implementations.FileStorage;
@@ -279,6 +280,7 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IListeningStreakPOFactory, ListeningStreakPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDiscoverSectionHeaderPOFactory, DiscoverSectionHeaderPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContinueListeningTilePOFactory, ContinueListeningTilePOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewPOFactory, YearInReviewPOFactory>();
             
             _assemblies = AppDomain
                 .CurrentDomain

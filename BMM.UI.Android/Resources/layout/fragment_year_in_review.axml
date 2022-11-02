@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary_color">
+
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:gravity="center"
+        local:layout_constrainedHeight="true"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxLang="Text YearInReviewViewModel_Title"
+        style="@style/Title1" />
+
+    <TextView
+        android:id="@+id/Done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
+        android:paddingStart="@dimen/margin_small"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="Click CloseCommand"
+        local:MvxLang="Text Global_Done"
+        style="@style/Subtitle1_TintColor" />
+
+    <View
+        android:id="@+id/Separator"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/divider_height"
+        android:background="@color/separator_color"
+        android:layout_marginTop="@dimen/margin_medium"
+        local:layout_constraintTop_toBottomOf="@+id/Title"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent" />
+    
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView
+        android:id="@+id/YearInReviewRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clipToPadding="false"
+        android:layout_marginTop="@dimen/margin_xmedium"
+        android:paddingHorizontal="@dimen/margin_large"
+        local:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        local:layout_constraintTop_toBottomOf="@+id/Separator"
+        local:MvxItemTemplate="@layout/listitem_year_in_review"
+        local:MvxBind="ItemsSource YearInReviewElements" />
+    
+    <TextView
+        android:id="@+id/DescriptionLabel"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginHorizontal="@dimen/margin_xlarge"
+        android:gravity="center"
+        local:autoSizeTextType="uniform"
+        local:autoSizeMinTextSize="12sp"
+        local:autoSizeMaxTextSize="17sp"
+        local:layout_constrainedHeight="true"
+        local:layout_constraintTop_toBottomOf="@+id/YearInReviewRecyclerView"
+        local:layout_constraintBottom_toTopOf="@+id/ShareButton"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="Text Description"
+        style="@style/Subtitle1_Label1" />
+    
+    <Button
+        android:id="@+id/ShareButton"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_xxmedium"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        style="@style/Button_Primary_Large"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="Click ShareCommand"
+        local:MvxLang="Text YearInReviewViewModel_Share" />
+</androidx.constraintlayout.widget.ConstraintLayout>

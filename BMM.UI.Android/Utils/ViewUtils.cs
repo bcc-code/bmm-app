@@ -4,6 +4,7 @@ using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Graphics.Drawables.Shapes;
 using Android.Views;
+using BMM.UI.Droid.Application.Constants.Player;
 using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Helpers;
 using MvvmCross;
@@ -27,6 +28,12 @@ namespace BMM.UI.Droid.Utils
             
             activity.Window.ClearFlags(WindowManagerFlags.TranslucentNavigation);
             activity.Window.SetNavigationBarColor(color);
+        }
+        
+        public static bool IsPortrait(int width, int height)
+        {
+            float widthToHeightRatio = width / (float)height;
+            return widthToHeightRatio < CoverConstants.WidthToHighRatio.LongThreshold;
         }
     }
 }

@@ -146,6 +146,10 @@
         <item name="android:textColor">@color/label_secondary_color</item>
     </style>
 
+    <style name="Subtitle1_TintColor" parent="Subtitle1">
+        <item name="android:textColor">@color/tint_color</item>
+    </style>
+
     <style name="Subtitle2">
         <item name="android:textSize">15sp</item>
         <item name="android:lineHeight">20sp</item>
@@ -247,12 +251,19 @@
         <item name="android:textColor">@color/label_secondary_color</item>
     </style>
 
+    <style name="Paragraph3">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textColor">@color/label_tertiary_color</item>
+    </style>
+
     <style name="Button_Primary" parent="android:Widget.Material.Button.Borderless">
         <item name="android:textColor">@color/label_primary_color</item>
         <item name="android:background">@drawable/button_background_rounded</item>
         <item name="android:foreground">@drawable/button_ripple</item>
         <item name="android:textFontWeight">700</item>
-        <item name="android:textSize">19dp</item>
+        <item name="android:textSize">18dp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.04</item>
         <item name="android:paddingTop">0dp</item>
@@ -266,6 +277,12 @@
         <item name="backgroundTint">@color/label_primary_reverted_color</item>
     </style>
 
+    <style name="Button_Primary_Large" parent="Button_Primary">
+        <item name="android:height">@dimen/large_button_height</item>
+        <item name="backgroundTint">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_primary_reverted_color</item>
+    </style>
+    
     <style name="IconButton_Primary" parent="Button_Primary">
         <item name="android:paddingLeft">10dp</item>
         <item name="android:drawablePadding">6dp</item>

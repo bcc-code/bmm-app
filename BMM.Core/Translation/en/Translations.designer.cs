@@ -383,5 +383,8 @@ namespace BMM.Core.Translation
 		public const string ChangeTrackLanguageViewModel_AllLanguages = nameof(ChangeTrackLanguageViewModel_AllLanguages);
 		public const string SiriShortcutsViewModel_Title = nameof(SiriShortcutsViewModel_Title);
 		public const string SiriShortcutsViewModel_ShortcutAlreadyAdded = nameof(SiriShortcutsViewModel_ShortcutAlreadyAdded);
+		public const string YearInReviewViewModel_Title = nameof(YearInReviewViewModel_Title);
+		public const string YearInReviewViewModel_Share = nameof(YearInReviewViewModel_Share);
+		public const string YearInReviewViewModel_ShareTitle = nameof(YearInReviewViewModel_ShareTitle);
 	}
 }

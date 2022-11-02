@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.cardview.widget.CardView
+            android:id="@+id/YearInReviewCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            local:cardCornerRadius="24dp"
+            local:cardElevation="@dimen/year_in_review_card_elevation">
+        <ffimageloading.cross.MvxCachedImageView
+                android:id="@+id/YearInReviewImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                local:MvxBind="ImageViewPath Url" />
+    </androidx.cardview.widget.CardView>
+    
+    <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center_horizontal"
+            android:ellipsize="end"
+            android:layout_marginBottom="@dimen/margin_small"
+            local:MvxBind="Text Subtitle"
+            style="@style/Paragraph3" />
+</FrameLayout>
