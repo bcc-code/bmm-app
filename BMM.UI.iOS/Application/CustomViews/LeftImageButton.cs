@@ -18,14 +18,25 @@ namespace BMM.UI.iOS
         {
         }
 
+        public bool IsTitleCentered { get; set; } = true; 
+        
         public override UIControlContentHorizontalAlignment EffectiveContentHorizontalAlignment => UIControlContentHorizontalAlignment.Left;
 
         public override CGRect TitleRectForContentRect(CGRect rect)
         {
             var titleRect = base.TitleRectForContentRect(rect);
             var imageSize = CurrentImage.Size;
-            var availableWidth = rect.Width - ImageEdgeInsets.Right - imageSize.Width * 2 - titleRect.Width;
-            titleRect.Offset(Math.Round(availableWidth / 2), 0);
+            
+            if (IsTitleCentered)
+            {
+                var availableWidth = rect.Width - ImageEdgeInsets.Right - imageSize.Width * 2 - titleRect.Width;
+                titleRect.Offset(Math.Round(availableWidth / 2), 0);
+            }
+            else
+            {
+                titleRect.Offset(ImageEdgeInsets.Right, 0);
+            }
+            
             return titleRect;
         }
     }

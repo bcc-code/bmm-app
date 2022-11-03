@@ -1,3 +1,4 @@
+using BMM.Api.Implementation.Models;
 using Foundation;
 using UIKit;
 using BMM.Core.Models.POs.Albums;
@@ -11,6 +12,7 @@ using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Models.POs.YearInReview;
 
 namespace BMM.UI.iOS
 {
@@ -32,7 +34,9 @@ namespace BMM.UI.iOS
                 PlaylistsCollectionTableViewCell.Key,
                 InfoMessageTableViewCell.Key,
                 SimpleMarginTableViewCell.Key,
-                ContinueListeningCollectionTableViewCell.Key
+                ContinueListeningCollectionTableViewCell.Key,
+                YearInReviewViewCollapsedCell.Key,
+                YearInReviewViewExpandedCell.Key
             };
             
             foreach (string nibName in nibNames)
@@ -96,6 +100,14 @@ namespace BMM.UI.iOS
                 case ContinueListeningCollectionPO:
                     nibName = ContinueListeningCollectionTableViewCell.Key;
                     break;
+
+                case YearInReviewPreviewPO yearInReviewPreviewPO:
+                {
+                    nibName = yearInReviewPreviewPO.IsExpanded
+                        ? YearInReviewViewExpandedCell.Key
+                        : YearInReviewViewCollapsedCell.Key;
+                    break;
+                }
             }
 
             return tableView.DequeueReusableCell(nibName);

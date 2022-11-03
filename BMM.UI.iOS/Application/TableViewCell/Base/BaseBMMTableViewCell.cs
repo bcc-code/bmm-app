@@ -1,5 +1,6 @@
 using System;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.TableViewCell.Base;
 using Foundation;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using UIKit;

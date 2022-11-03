@@ -124,12 +124,22 @@ namespace BMM.Core.ViewModels
 
         protected override Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
-            if (!(item is TrackPO))
+            if ((item is TrackPO))
                 return base.DocumentAction(item, list);
 
             var tracksInSameSection = GetAdjacentTracksInSameSection(item);
 
             return base.DocumentAction(item, tracksInSameSection);
+        }
+
+        protected override Task OptionsAction(Document item)
+        {
+            if (item is not YearInReviewPreview)
+                return base.OptionsAction(item);
+
+            var yearInReviewItem = Documents.First(x => x.DocumentType == DocumentType.YearInReview);
+            Documents.RefreshItem(yearInReviewItem);
+            return Task.CompletedTask;
         }
 
         private IList<Document> HideStreakInList(bool hideStreak, IList<Document> documents)

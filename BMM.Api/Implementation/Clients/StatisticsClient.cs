@@ -106,10 +106,10 @@ namespace BMM.Api.Implementation.Clients
             await RequestIsSuccessful(request);
         }
 
-        public Task<IList<YearInReview>> GetYearInReview()
+        public Task<IList<YearInReviewItem>> GetYearInReview()
         {
             var uri = new UriTemplate(ApiUris.YearInReview);
-            return Get<IList<YearInReview>>(uri);
+            return Get<IList<YearInReviewItem>>(uri);
         }
     }
 }

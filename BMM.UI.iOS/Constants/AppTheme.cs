@@ -204,5 +204,17 @@ namespace BMM.UI.iOS.Constants
             ImageEdgeInsets = UIEdgeInsets.Zero,
             ContentEdgeInsets = UIEdgeInsets.Zero
         };
+
+        #region CustomButtonThemes
+        
+        public static readonly ButtonTheme YearInReviewButton = new StandardButtonTheme
+        {
+            TextTheme = Title1,
+            ButtonColor = AppColors.BackgroundPrimaryColor,
+            IconTint = AppColors.LabelPrimaryColor,
+            ImageEdgeInsets = new UIEdgeInsets(0, 6, 0, 16)
+        };
+        
+        #endregion
     }
 }

@@ -72,6 +72,7 @@ namespace BMM.UI.iOS
 
         public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
         {
+            base.WillDisplay(tableView, cell, indexPath);
             var data = (IBmmObservableCollection<IDocumentPO>)ItemsSource;
 
             if (!IsFullyLoaded && LoadMoreCommand != null && indexPath.Row == data.Count - 1) {

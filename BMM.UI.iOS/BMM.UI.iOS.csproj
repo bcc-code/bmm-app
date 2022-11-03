@@ -563,6 +563,12 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.xib" />
+    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewViewCollapsedCell.xib">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
+    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewViewExpandedCell.xib">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ListeningStreakDetailsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
@@ -666,6 +672,7 @@
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
     <Compile Include="Application\Extensions\CollectionViewExtensions.cs" />
     <Compile Include="Application\Extensions\NSUrlExtensions.cs" />
+    <Compile Include="Application\Extensions\NumericExtensions.cs" />
     <Compile Include="Application\Extensions\UIColorExtensions.cs" />
     <Compile Include="Application\Extensions\YUVColorExtensions.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
@@ -726,6 +733,7 @@
     <Compile Include="Application\NewMediaPlayer\RemoteCommandCenter.cs" />
     <Compile Include="Application\NewMediaPlayer\VersionHelper.cs" />
     <Compile Include="Application\TableViewCell\Base\BaseBMMTableViewCell.cs" />
+    <Compile Include="Application\TableViewCell\Base\IEventsHoldingTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.designer.cs" />
     <Compile Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.cs" />
@@ -788,6 +796,14 @@
     <Compile Include="Application\TableViewCell\StreakTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">
       <DependentUpon>StreakTableViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\YearInReviewViewCollapsedCell.cs" />
+    <Compile Include="Application\TableViewCell\YearInReviewViewCollapsedCell.designer.cs">
+      <DependentUpon>YearInReviewViewCollapsedCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\TableViewCell\YearInReviewViewExpandedCell.cs" />
+    <Compile Include="Application\TableViewCell\YearInReviewViewExpandedCell.designer.cs">
+      <DependentUpon>YearInReviewViewExpandedCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\TableViewSource\Base\BaseSimpleTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\Base\BaseTableViewSource.cs" />
@@ -1315,6 +1331,10 @@
     <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@3x.png" />
     <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Union.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review@1x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review@3x.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\BMM.Core\Translation\bg\main.json">
