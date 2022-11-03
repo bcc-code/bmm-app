@@ -353,7 +353,7 @@
     "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
+    "Title": "Aanpassen Playlist",
     "RenameLabel": "Rename playlist",
     "MenuSave": "Opslaan",
     "EmptyName": "The playlist has no name",
