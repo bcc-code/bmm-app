@@ -5,43 +5,43 @@
     "Internal": "Intern",
     "BytesMB": "{0} MB vrij",
     "UnexpectedError": "Er is helaas een onbekende fout opgetreden.",
-    "InternetConnectionOffline": "De internetverbinding lijkt niet beschikbaar te zijn.",
+    "InternetConnectionOffline": "De internetverbinding lijkt niet online te zijn.",
     "ItemNotFound": "Het gevraagde item bestaat niet.",
-    "OfflineBanner": "Geeft alleen de tracks op deze telefoon weer",
+    "OfflineBanner": "Geeft alleen de nummers op deze telefoon weer",
     "Song": "Lied",
     "Speech": "Toespraak",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis",
-    "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
-    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "Exegesis": "Schriftuitlegging",
+    "Done": "Gereed",
+    "Today": "Vandaag",
+    "Yesterday": "Gisteren",
+    "BackgroundActivityRestrictedTitle": "Achtergrond activiteit toestaan",
+    "BackgroundActivityRestrictedMessage": "Je device settings staan niet toe dat BMM op de achtergrond open blijft. Je kunt niet luisteren, als je telefoon gelocked is voor een paar minuten. Als je dit wilt wijzigen, selecteer bij instellingen 'sta achtergrond activiteit toe', onder het 'Batterij' kopje.",
+    "GoToSettings": "Ga naar instellingen",
+    "NotNow": "Niet nu",
+    "DownloadPlaylistOnceOnWifi": "De playlist zal opgeslagen worden als je weer verbinding makt met WiFi. Je kunt 'downloaden via mobiel netwerk' aanvinken in je profiel.",
+    "DownloadPodcastOnceOnWifi": "De laatste nummers van deze podcast zullen afgespeeld worden als je weer verbinding maakt met WiFi. Je kunt 'downloaden via mobiel netwerk' aanvinken in je profiel.",
+    "SiriFromKaareInvocationPhrase": "Luister Fra Kåre op BMM",
+    "SiriPlayMusicInvocationPhrase": "Luister muziek op BMM",
+    "FromKaareSiriShortcutName": "Luister Fra Kåre ",
+    "PlayMusicSiriShortcutName": "Speel muziek",
+    "DailyMessage": "Dagelijks bericht"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "Message": "Jouw Streak deze week",
+    "MessagePerfect": "Een perfecte week. Goed gedaan!",
+    "PerfectWeekCountSingular": "{0} perfecte weken ",
+    "PerfectWeekCountPlural": "{0} perfecte weken ",
+    "PerfectWeekCountNone": "Nog geen perfecte weken",
+    "EligibleUntilHoursAndMinutesMessage": "{0} uur en {1} minuten te gaan vandaag ",
+    "EligibleUntilMinutesOnlyMessage": "{0} minuten te gaan vandaag ",
+    "DaysInARowSingular": "{0} dagen op een rij",
+    "DaysInARowPlural": "{0} dagen op een rij",
     "WeekdayMonday": "M",
-    "WeekdayTuesday": "T",
+    "WeekdayTuesday": "D",
     "WeekdayWednesday": "W",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "WeekdayThursday": "D",
+    "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Kan link niet openen",
@@ -147,7 +147,7 @@
     "TbxUsername.Hint": "E-mail",
     "TbxPassword.Hint": "Wachtwoord",
     "BtnLogin.Text": "Inloggen",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Login met je BMM login"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Binnenkort ondersteunen we geen telefoons meer met {0} {1} of ouder. Update indien mogelijk je telefoon.",
@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Kan {0} niet verwijderen"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Bladeren"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archief"
@@ -179,21 +179,21 @@
     "Search": "Zoeken",
     "Explore": "Ontdekken",
     "MyContent": "Mijn bestanden",
-    "Browse": "Browse",
+    "Browse": "Bladeren",
     "Settings": "Instellingen",
     "HelpAndFeedback": "Help en Feedback",
     "Home": "Home",
-    "Favorites": "Favorites",
+    "Favorites": "Favorieten",
     "Profile": "Profiel"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Favorieten",
     "DownloadedContent": "Gedownloade bestanden",
     "FollowedPodcasts": "Podcasts",
     "MyTracks": "Mijn nummers",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Mijn afspeellijsten",
+    "SharedWithMe": "Gedeeld met mij",
+    "ByFormat": "door {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcasts",
@@ -233,8 +233,8 @@
     "UnfollowConfirm": "Wilt u deze podcast ontvolgen?",
     "ToggleFollowOfflineError": "Je moet in de online-modus zijn om een podcast te volgen of te ontvolgen",
     "Week": "Week {0}",
-    "ThisWeek": "This week",
-    "LastWeek": "Last week",
+    "ThisWeek": "Deze week",
+    "LastWeek": "Vorige week",
     "AslaksenTheme1": "Geloof in de God van wonderen",
     "AslaksenTheme2": "Ik ben met Christus gekruisigd",
     "AslaksenTheme3": "God vrezen en liefhebben",
@@ -249,15 +249,15 @@
   "PlayerViewModel": {
     "Title": "Aan het afspelen",
     "PlayingCount": "{0} van {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
-    "Selected": "Selected"
+    "ViewLyrics": "Bekijk lyrics",
+    "SleepTimer": "Slaaptimer",
+    "Minutes": "{0} minuten ",
+    "Hour": "{0} uur",
+    "Hours": "{0} uren",
+    "Disable": "Uitzetten",
+    "PlaybackSpeed": "Afspeelsnelheid",
+    "Normal": "Normaal",
+    "Selected": "Geselecteerd"
   },
   "QueueViewModel": {
     "Title": "Wachtrij"
@@ -276,16 +276,16 @@
   "SettingsViewModel": {
     "Title": "Profiel",
     "HeadlineSettings": "Instellingen",
-    "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionAutoplayHeader": "Automatisch afspelen",
+    "OptionAutoplayText": "Muziek afspelen nadat je de Fra Kåre aflevering van vandaag hebt geluisterd ",
+    "OptionStreakHeader": "Streak op de Home pagina ",
+    "OptionStreakText": "Toon je luister statistieken op je Home pagina ",
     "OptionEnablePushHeader": "Push-meldingen inschakelen",
     "OptionPushNotifications": "Push-meldingen",
     "OptionPushNotificationsSubtitle": "Schakel push-meldingen in voor podcasts die je volgt",
     "OptionExternalStorage": "Lagringsplas",
-    "OptionMBInternalText": "Internal {0} MB free",
-    "OptionMBExternalText": "External {0} MB free",
+    "OptionMBInternalText": "Internal {0} MB vrij",
+    "OptionMBExternalText": "External {0} MB vrij",
     "OptionEnablePushText": "Push-meldingen ontvangen wanneer er nieuwe content beschikbaar is",
     "OptionDownloadMobileNetworkHeader": "Downloaden via het mobiele netwerk",
     "OptionDownloadMobileNetworkText": "Toestaan om bestanden te downloaden via 3G/4G. Dit kan effect hebben op je dataverbruik",
@@ -302,27 +302,27 @@
     "OptionAppVersionHeader": "Versie van de app",
     "AppInfoTitle": "App-informatie",
     "AppInfoAppVersion": "Versie van de app: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Fabrikant",
     "AppInfoDeviceModel": "Apparaat model: ",
     "AppInfoDevicePlatform": "Apparaat platform: ",
     "AppInfoDeviceVersion": "Apparaat versie: ",
     "LoggedInAs": "Ingelogd als",
     "LogoutConfirm": "Weet je zeker dat je wilt uitloggen?",
     "Logout": "Uitloggen",
-    "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "UserVoiceHeader": "Gebruikersstem",
+    "UserVoiceText": "Heb je ideeën om BMM beter te maken? Vertel ons.",
+    "ThemeHeader": "Dark modus",
+    "ThemeText": "Kies tussen licht en donker thema",
+    "SiriShortcutsHeader": "Siri afkortingen",
+    "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device "
   },
   "StorageManagementViewModel": {
-    "Title": "Location for offline tracks",
-    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+    "Title": "Locatie voor offline nummers",
+    "RemoveAllFiles": "Wil je een nieuwe opslaglocatie selecteren en alle offline nummers verwijderen?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} nummers",
+    "PluralTracksLoaded": "{0} nummers geladen",
     "Download": "Download",
     "Shuffle": "Shuffle",
     "Play": "Afspelen"
@@ -330,7 +330,7 @@
   "TrackCollectionViewModel": {
     "Title": "Afspeellijst",
     "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "Resume": "Doorgaan",
     "AvailableOffline": "Offline beschikbaar",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "{0} van de {1} aan het downloaden",
@@ -344,19 +344,19 @@
     "SearchHint": "Zoeken",
     "EmptyTitle": "Deze afspeellijst is leeg",
     "EmptySubline": "Druk op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
-    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "NotEnoughtSpaceToDownload": "Niet genoeg ruimte om alle nummers te downloaden ",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?",
-    "Private": "Private",
+    "Private": "Privé",
     "DeletePlaylist": "Afspeellijst verwijderen",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Aanpassen afspeellijst",
+    "SharePlaylist": "Deel afspeellijst",
+    "RemovePlaylist": "Afspeellijst verwijderen"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Aanpassen Playlist",
-    "RenameLabel": "Rename playlist",
+    "RenameLabel": "Afspeellijst hernoemen",
     "MenuSave": "Opslaan",
-    "EmptyName": "The playlist has no name",
+    "EmptyName": "De afspeellijst heeft geen naam",
     "SaveFailure": "Could not update changes. Check your internet connection and try again",
     "DiscardChangesTitle": "Discard Changes?",
     "DiscardChangesMessage": "The changes you made won't be saved",
@@ -373,7 +373,7 @@
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",
     "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
+    "AddToMyPlaylist": "Toevoegen aan mijn afspeellijst",
     "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
@@ -485,17 +485,17 @@
     "System": "Follow system settings (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Nummer taal ",
+    "PreferredLanguages": "Voorkeur talen",
     "AllLanguages": "Alle talen"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri afkortingen",
+    "ShortcutAlreadyAdded": "Deze afkorting was al toegevoegd"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Jouw jaar overzicht",
+    "Share": "Deel met je vrienden",
+    "ShareTitle": "Jaar overzicht"
   }
 }
