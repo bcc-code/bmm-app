@@ -58,10 +58,10 @@
     "ErrorPlayerStoppedGeneric": "Een afspeelfout is opgetreden waardoor het huidige nummer is gestopt.",
     "ErrorPlayerLiveRadioStopped": "De live uitzending is afgelopen.",
     "ErrorPlayerLiveRadioTooEarly": "De live uitzending is nog niet begonnen, probeer het later nog eens.",
-    "ErrorPlayerStart": "Kan het afspelen niet starten."
+    "ErrorPlayerStart": "Kan niet afspelen."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "Er is niet genoeg opslagruimte om offline bestanden op te slaan"
+    "OutOfSpaceMessage": "Er is niet genoeg ruimte om offline bestanden op te slaan"
   },
   "AlbumViewModel": {
     "Title": "Album",
@@ -69,7 +69,7 @@
     "AddAlbumToPlaylist": "Album toevoegen aan afspeellijst",
     "AddAlbumToMyTracks": "Album toevoegen aan Mijn nummers",
     "FailedToAdd": "Kon het nummer niet aan de afspeellijst toevoegen. Probeer het later opnieuw.",
-    "AlbumFailedToAddAlreadyExists": "Dit album is al in uw afspeellijst.",
+    "AlbumFailedToAddAlreadyExists": "Dit album is al in je afspeellijst.",
     "TrackAlreadyExistInTrackCollection": "Nummer bestaat al in afspeellijst {0}",
     "ShufflePlay": "Willekeurig afspelen",
     "PluralAlbums": "{0} albums"
@@ -102,7 +102,7 @@
   "ExploreNewestViewModel": {
     "Title": "Home",
     "SearchHint": "Zoek",
-    "FraKaareHeader": "Van Kåre",
+    "FraKaareHeader": "Fra Kåre",
     "AslaksenTeaserHeader": "Woorden van geloof",
     "ShowAll": "Toon alle",
     "PlayRandom": "Willekeurig afspelen",
@@ -120,22 +120,22 @@
   },
   "HelpFeedbackViewModel": {
     "Title": "Help & Feedback",
-    "GuideIntroTitle": "Hoe kan ik de BMM App optimaal gebruiken?",
+    "GuideIntroTitle": "Hoe haal ik het meeste uit de BMM App?",
     "GuideIntroSubtitle": "Swipe om meer te ontdekken",
     "GuideOfflineTitle": "Offline afspeellijsten",
-    "GuideOfflineSubtitle": "Download je afspeellijsten naar dit apparaat en luister er naar zonder internetverbinding. Je kan dit aanzetten in de afspeellijst.",
+    "GuideOfflineSubtitle": "Download je afspeellijsten naar dit apparaat en luister zonder internetverbinding. Je kan dit aanzetten in de afspeellijst.",
     "GuideAddToPlaylistTitle": "Toevoegen aan afspeellijst of 'Mijn nummers'",
-    "GuideAddToPlaylistSubtitle": "Sla je favoriete nummers op in je eigen afspeellijsten of in je persoonlijke BMM-verzameling 'Mijn nummers' door te tikken op de optieknop aan de rechterkant van het nummer.",
+    "GuideAddToPlaylistSubtitle": "Sla je favoriete nummers op in je eigen afspeellijsten of in je persoonlijke BMM-collectie 'Mijn nummers' door te klikken op de optieknop aan de rechterkant van het nummer.",
     "GuideLanguagesTitle": "Meerdere talen",
-    "GuideLanguagesSubtitle": "Bepaal de prioriteit van je BMM content. Je kunt dit doen via Instellingen > Taal van de content.\n",
+    "GuideLanguagesSubtitle": "Bepaal de prioriteit van de talen van je BMM content. Je kunt dit doen via Instellingen > Taal van de content.\n",
     "GuideLibraryTitle": "Bibliotheek sectie",
-    "GuideLibrarySubtitle": "Krijg snel toegang tot de inhoud die u wilt. De bibliotheek-sectie bestaat uit alle beschikbare podcasts en een archief-sectie om door de inhoud te bladeren. ",
+    "GuideLibrarySubtitle": "Snelle toegang tot je favoriete content. De bibliotheek-sectie bestaat uit alle beschikbare podcasts en een archief-sectie om door de inhoud te bladeren. ",
     "GuideSearchTitle": "Zoeken",
-    "GuideSearchSubtitle": "Zoek naar een specifiek item, of zoek op een onderwerp om relevante inhoud te vinden. Je zoektermen worden automatisch opgeslagen.",
+    "GuideSearchSubtitle": "Vind een specifiek item, of zoek op een onderwerp om gerelateerde content te vinden. Je zoektermen worden automatisch opgeslagen.",
     "ButtonSendMail": "Stuur een e-mail naar het BMM Team"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We zijn je account aan het instellen. Dit kan een paar minuten duren."
+    "SettingUpAccountMessage": "We zijn je account aan het instellen. Dit kan een tijdje duren."
   },
   "LoginViewModel": {
     "Title": "Inloggen",
@@ -143,7 +143,7 @@
     "LoginFailureMessage": "Probeer het opnieuw met de juiste inloggegevens",
     "LoginNoConnectionMessage": "Er is momenteel geen internetverbinding beschikbaar. Probeer het later opnieuw",
     "WrongMailAddressTitle": "Ongeldig e-mailadres",
-    "WrongMailAddress": "Vul alstublieft een geldig e-mailadres in. Inloggen met de gebruikersnaam wordt niet meer ondersteund.",
+    "WrongMailAddress": "Vul alsjeblieft een geldig e-mailadres in. Inloggen met de gebruikersnaam wordt niet meer ondersteund.",
     "TbxUsername.Hint": "E-mail",
     "TbxPassword.Hint": "Wachtwoord",
     "BtnLogin.Text": "Inloggen",
@@ -160,12 +160,12 @@
     "Title": "Taal van de app"
   },
   "LanguageContentViewModel": {
-    "Title": "Talen van de inhoud",
+    "Title": "Talen van de content",
     "Dialog.Title": "Selecteer een taal",
     "Dialog.Cancel": "Annuleren",
     "Toast.LanguagesStillLoading": "De lijst is nog aan het laden, probeer het over een paar seconden opnieuw.",
     "Toast.NoLanguagesAvailable": "Het lijkt erop dat er geen verbinding beschikbaar is om de lijst met talen te laden.",
-    "DeleteLanguageMessage": "Je moet ten minste één inhoudstaal kiezen",
+    "DeleteLanguageMessage": "Je moet tenminste één content taal kiezen",
     "DeleteLanguageTitle": "Kan {0} niet verwijderen"
   },
   "BrowseViewModel": {
@@ -178,7 +178,7 @@
     "Title": "Menu",
     "Search": "Zoeken",
     "Explore": "Ontdekken",
-    "MyContent": "Mijn bestanden",
+    "MyContent": "Mijn content",
     "Browse": "Bladeren",
     "Settings": "Instellingen",
     "HelpAndFeedback": "Help en Feedback",
@@ -188,7 +188,7 @@
   },
   "MyContentViewModel": {
     "Title": "Favorieten",
-    "DownloadedContent": "Gedownloade bestanden",
+    "DownloadedContent": "Gedownloade content",
     "FollowedPodcasts": "Podcasts",
     "MyTracks": "Mijn nummers",
     "MyPlaylists": "Mijn afspeellijsten",
@@ -197,30 +197,30 @@
   },
   "FollowedPodcastsViewModel": {
     "Title": "Podcasts",
-    "EmptyTitle": "U volgt momenteel geen Podcast",
+    "EmptyTitle": "Je volgt momenteel geen Podcast",
     "EmptySubline": "Volg een Podcast door een Podcast te openen en op de knop 'Volgen' te klikken."
   },
   "MyTracksViewModel": {
     "Title": "Mijn nummers",
-    "ShufflePlay": "Willekeurig afspelen",
+    "ShufflePlay": "Shuffle",
     "AvailableOffline": "Offline beschikbaar",
     "AvailableOfflineDownload": "Afspeellijst downloaden",
     "AvailableOfflineDownloading": "{0} van de {1} aan het downloaden",
     "RemoveOfflineConfirm": "Wil je echt alle gedownloade items verwijderen?",
     "EmptyTitle": "Deze afspeellijst is leeg",
-    "EmptySubline": "Druk op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
+    "EmptySubline": "Klik op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Gedownloade bestanden",
+    "Title": "Gedownloade content",
     "FollowedPodcasts": "Podcasts",
     "MyTracks": "Mijn nummers",
-    "EmptyTitle": "Je hebt nog geen bestanden gedownload",
+    "EmptyTitle": "Je hebt nog geen content gedownload",
     "EmptySubline": "Download een afspeellijst of volg een podcast om deze offline beschikbaar te hebben."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Podcasts",
-    "EmptyTitle": "U volgt momenteel geen Podcast",
+    "EmptyTitle": "Je volgt momenteel geen Podcast",
     "EmptySubline": "Volg een Podcast door een Podcast te openen en op de knop 'Volgen' te klikken."
   },
   "PodcastViewModel": {
@@ -230,7 +230,7 @@
     "ManageDownloads": "Beheer downloads",
     "GetNotified": "Ontvang een melding",
     "GetNotifiedMessage": "wanneer er nieuwe afleveringen uit zijn",
-    "UnfollowConfirm": "Wilt u deze podcast ontvolgen?",
+    "UnfollowConfirm": "Wil je deze podcast ontvolgen?",
     "ToggleFollowOfflineError": "Je moet in de online-modus zijn om een podcast te volgen of te ontvolgen",
     "Week": "Week {0}",
     "ThisWeek": "Deze week",
@@ -270,7 +270,7 @@
     "SearchSuggestions": "Bedoelde je: ",
     "SearchNoResults": "We hebben niets gevonden.",
     "WelcomeTitle": "Begin hier met zoeken!",
-    "WelcomeSubTitle": "Gebruik het zoekveld om te zoeken naar inhoud op BMM",
+    "WelcomeSubTitle": "Gebruik het zoekveld om te zoeken naar content op BMM",
     "DeleteConfirm": "Weet je zeker dat je de zoekgeschiedenis wilt verwijderen?"
   },
   "SettingsViewModel": {
@@ -283,17 +283,17 @@
     "OptionEnablePushHeader": "Push-meldingen inschakelen",
     "OptionPushNotifications": "Push-meldingen",
     "OptionPushNotificationsSubtitle": "Schakel push-meldingen in voor podcasts die je volgt",
-    "OptionExternalStorage": "Lagringsplas",
-    "OptionMBInternalText": "Internal {0} MB vrij",
-    "OptionMBExternalText": "External {0} MB vrij",
+    "OptionExternalStorage": "Opslaglocatie",
+    "OptionMBInternalText": "Intern {0} MB vrij",
+    "OptionMBExternalText": "Extern {0} MB vrij",
     "OptionEnablePushText": "Push-meldingen ontvangen wanneer er nieuwe content beschikbaar is",
     "OptionDownloadMobileNetworkHeader": "Downloaden via het mobiele netwerk",
     "OptionDownloadMobileNetworkText": "Toestaan om bestanden te downloaden via 3G/4G. Dit kan effect hebben op je dataverbruik",
     "HeadlineGeneral": "Algemeen",
     "OptionLanguageAppHeader": "Taal van de app",
     "OptionLanguageAppText": "Taal van de app wijzigen",
-    "OptionLanguageContentHeader": "Taal van de inhoud",
-    "OptionLanguageContentText": "Taal van de inhoud wijzigen",
+    "OptionLanguageContentHeader": "Taal van de content ",
+    "OptionLanguageContentText": "Taal van de content wijzigen",
     "HeadlineAbout": "Over",
     "OptionCopyrightHeader": "Auteursrecht",
     "OptionCopyrightText": "Stichting Skjulte Skatters Forlag ©",
@@ -310,7 +310,7 @@
     "LogoutConfirm": "Weet je zeker dat je wilt uitloggen?",
     "Logout": "Uitloggen",
     "UserVoiceHeader": "Gebruikersstem",
-    "UserVoiceText": "Heb je ideeën om BMM beter te maken? Vertel ons.",
+    "UserVoiceText": "Heb je ideeën om BMM beter te maken? Vertel het ons.",
     "ThemeHeader": "Dark modus",
     "ThemeText": "Kies tussen licht en donker thema",
     "SiriShortcutsHeader": "Siri afkortingen",
@@ -343,7 +343,7 @@
     "RenameEmptyFailure": "Vul een naam in om deze afspeellijst te hernoemen",
     "SearchHint": "Zoeken",
     "EmptyTitle": "Deze afspeellijst is leeg",
-    "EmptySubline": "Druk op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
+    "EmptySubline": "Klik op de drie puntjes naast een nummer om deze toe te voegen aan de afspeellijst.",
     "NotEnoughtSpaceToDownload": "Niet genoeg ruimte om alle nummers te downloaden ",
     "AskToResumeDownloading": "Er zijn nieuwe items in deze afspeellijst. Wil je het downloaden hervatten?",
     "Private": "Privé",
@@ -353,28 +353,28 @@
     "RemovePlaylist": "Afspeellijst verwijderen"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Aanpassen Playlist",
+    "Title": "Aanpassen afspeellijst",
     "RenameLabel": "Afspeellijst hernoemen",
     "MenuSave": "Opslaan",
     "EmptyName": "De afspeellijst heeft geen naam",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "SaveFailure": "Kon wijzigingen niet doorvoeren. Check je internet verbinding en probeer opnieuw ",
+    "DiscardChangesTitle": "Wijzigingen ongedaan maken?",
+    "DiscardChangesMessage": "Je wijzigingen zullen niet opgeslagen worden ",
+    "DiscardChanges": "Weggooien",
+    "KeepEditing": "Doorgaan met aanpassen"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Deel afspeellijst",
+    "ShareNote": "Als je een afspeellijst deelt, hebben andere personen toegang en kunnen ze de nummers luisteren die je toevoegt, als ze de link hebben.",
+    "ShareLink": "Link delen",
+    "MakePrivate": "Maak privé",
+    "SharedWithFormat": "Gedeeld met {0} personen"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
+    "Title": "Gedeelde afspeellijst",
+    "Close": "Sluiten ",
     "AddToMyPlaylist": "Toevoegen aan mijn afspeellijst",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "FollowOwnTrackCollection": "Je kunt niet je eigen collectie volgen "
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Afspeellijst",
@@ -388,7 +388,7 @@
     "Title": "Voeg nummer toe aan...",
     "SearchHint": "Zoek",
     "FailedToAdd": "Toevoegen van het nummer aan de afspeellijst is mislukt. Probeer het later opnieuw.",
-    "AlbumFailedToAddAlreadyExists": "Dit album is al in je playlist.",
+    "AlbumFailedToAddAlreadyExists": "Dit album staat al in je playlist.",
     "TrackAlreadyExistInTrackCollection": "Nummer bestaat al in afspeellijst {0}",
     "FailedToAddAlbum": "Kan het album niet toevoegen aan de afspeellijst omdat het albums bevat.",
     "FailedToAddUnknownType": "Het toevoegen van een \"{0}\" aan een afspeellijst wordt momenteel niet ondersteund.",
@@ -459,9 +459,9 @@
     "Title": "Auteursrecht"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Onlangs afgespeeld ",
+    "NoHistoryYetTitle": "Je kunt nu zien wat je geluisterd hebt",
+    "NoHistoryYetSubtitle": "Begin met luisteren en je geschiedenis zal hier getoond worden"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Recente berichten"
@@ -473,16 +473,16 @@
     "DownloadingFinished": "Alle bestanden zijn gedownload!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Evenementen",
     "AudiobooksTitle": "Audioboeken",
     "MusicTitle": "Muziek",
     "PodcastsTitle": "Podcasts"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
+    "Title": "Dark mode instellingen",
     "Light": "Light",
     "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "System": "Neem systeem instellingen over (auto)"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Nummer taal ",
