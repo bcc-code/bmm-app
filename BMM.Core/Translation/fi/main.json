@@ -494,8 +494,8 @@
     "ShortcutAlreadyAdded": "Tämä linkki jo lisätty"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Vuosikatsauksesi",
+    "Share": "Jaa ystäviesi kanssa",
+    "ShareTitle": "Vuosikatsaus"
   }
 }
