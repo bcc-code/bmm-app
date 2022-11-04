@@ -1,42 +1,51 @@
 ﻿using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
+using System.Diagnostics;
 using BMM.Core.Extensions;
 using BMM.Core.Models.POs.YearInReview;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.TableViewCell.Base;
+using CoreGraphics;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.ViewModels;
 using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class YearInReviewViewCollapsedCell : BaseBMMTableViewCell, IEventsHoldingTableViewCell
+    public partial class YearInReviewTeaserExpandedCell : BaseBMMTableViewCell, IEventsHoldingTableViewCell
     {
-        public static readonly NSString Key = new(nameof(YearInReviewViewCollapsedCell));
+        public static readonly NSString Key = new(nameof(YearInReviewTeaserExpandedCell));
         private IMvxInteraction _expandOrCollapseInteraction;
 
-        public YearInReviewViewCollapsedCell(IntPtr handle)
+        public YearInReviewTeaserExpandedCell(IntPtr handle)
             : base(handle)
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<YearInReviewViewCollapsedCell, YearInReviewPreviewPO>();
+                var set = this.CreateBindingSet<YearInReviewTeaserExpandedCell, YearInReviewTeaserPO>();
 
                 set.Bind(TitleLabel)
-                    .To(po => po.YearInReviewPreview.Title);
+                    .To(po => po.YearInReviewTeaser.Title);
 
-                set.Bind(ContainerView)
-                    .For(v => v.BindTap())
-                    .To(po => po.ExpandOrCollapseCommand);
+                set.Bind(DescriptionLabel)
+                    .To(po => po.YearInReviewTeaser.Description);
                 
-                set.Bind(ExpandButton)
+                set.Bind(CollapseButton)
                     .For(v => v.BindTap())
                     .To(po => po.ExpandOrCollapseCommand);
                 
                 set.Bind(this)
                     .For(v => v.ExpandOrCollapseInteraction)
                     .To(po => po.ExpandOrCollapseInteraction);
+                
+                set.Bind(PlaylistButton)
+                    .For(v => v.BindTitle())
+                    .To(po => po.YearInReviewTeaser.PlaylistName);
+                
+                set.Bind(SeeReviewButton)
+                    .To(po => po.SeeReviewCommand);
                 
                 set.Apply();
             });
@@ -47,7 +56,12 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-            TitleLabel.ApplyTextTheme(AppTheme.Title1);
+            TitleLabel.ApplyTextTheme(AppTheme.Heading3);
+            DescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label1);
+            SeeReviewButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            CollapseButton.Transform = CGAffineTransform.MakeRotation(180f.ToRadians());
+            PlaylistButton.ApplyButtonStyle(AppTheme.YearInReviewButton);
+            PlaylistButton.IsTitleCentered = false;
         }
         
         public IMvxInteraction ExpandOrCollapseInteraction
@@ -69,12 +83,13 @@ namespace BMM.UI.iOS
         {
             if (Superview is UITableView tableView)
             {
+                Debug.WriteLine(tableView);
                 tableView.ReloadRows(
                     tableView.IndexPathForCell(this).EncloseInArray(),
                     UITableViewRowAnimation.Automatic);
             }
         }
-
+        
         public void AttachEvents()
         {
             if (ExpandOrCollapseInteraction == null)

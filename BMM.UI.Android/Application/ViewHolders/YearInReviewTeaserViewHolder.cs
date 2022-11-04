@@ -11,12 +11,12 @@ using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BMM.UI.Droid.Application.ViewHolders
 {
-    public class YearInReviewPreviewViewHolder : MvxRecyclerViewHolder
+    public class YearInReviewTeaserViewHolder : MvxRecyclerViewHolder
     {
         private readonly PodcastContextHeaderRecyclerAdapter _podcastContextHeaderRecyclerAdapter;
         private IBmmInteraction _expandOrCollapseInteraction;
 
-        public YearInReviewPreviewViewHolder(
+        public YearInReviewTeaserViewHolder(
             View itemView,
             IMvxAndroidBindingContext context,
             PodcastContextHeaderRecyclerAdapter podcastContextHeaderRecyclerAdapter) : base(itemView, context)
@@ -27,7 +27,7 @@ namespace BMM.UI.Droid.Application.ViewHolders
 
         private void Bind()
         {
-            var set = this.CreateBindingSet<YearInReviewPreviewViewHolder, YearInReviewPreviewPO>();
+            var set = this.CreateBindingSet<YearInReviewTeaserViewHolder, YearInReviewTeaserPO>();
 
             set.Bind(this)
                 .For(v => v.ExpandOrCollapseInteraction)

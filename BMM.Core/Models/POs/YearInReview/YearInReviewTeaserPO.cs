@@ -8,17 +8,17 @@ using MvvmCross.Commands;
 
 namespace BMM.Core.Models.POs.YearInReview
 {
-    public class YearInReviewPreviewPO 
+    public class YearInReviewTeaserPO 
         : DocumentPO,
-          IYearInReviewPreviewPO
+          IYearInReviewTeaserPO
     {
         private const string Origin = "Year in Review Preview";
         
-        public YearInReviewPreviewPO(
-            YearInReviewPreview yearInReviewPreview,
-            IInternalDeepLinkAction internalDeepLinkAction) : base(yearInReviewPreview)
+        public YearInReviewTeaserPO(
+            YearInReviewTeaser yearInReviewTeaser,
+            IInternalDeepLinkAction internalDeepLinkAction) : base(yearInReviewTeaser)
         {
-            YearInReviewPreview = yearInReviewPreview;
+            YearInReviewTeaser = yearInReviewTeaser;
             ExpandOrCollapseCommand = new MvxCommand(() =>
             {
                 IsExpanded = !IsExpanded;
@@ -26,12 +26,12 @@ namespace BMM.Core.Models.POs.YearInReview
             });
             SeeReviewCommand = new MvxCommand(() =>
             {
-                internalDeepLinkAction.ExecuteGuarded(new InternalDeepLinkActionParameter(yearInReviewPreview.ButtonLink, Origin));
+                internalDeepLinkAction.ExecuteGuarded(new InternalDeepLinkActionParameter(yearInReviewTeaser.ButtonLink, Origin));
             });
             ExpandOrCollapseInteraction = new BmmInteraction();
         }
         
-        public YearInReviewPreview YearInReviewPreview { get; }
+        public YearInReviewTeaser YearInReviewTeaser { get; }
         public bool IsExpanded { get; private set; }
         public IMvxCommand ExpandOrCollapseCommand { get; }
         public IMvxCommand SeeReviewCommand { get; }

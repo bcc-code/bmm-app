@@ -29,7 +29,7 @@ namespace BMM.Core.Implementations.Factories
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
         private readonly IDiscoverSectionHeaderPOFactory _discoverSectionHeaderPOFactory;
         private readonly IContinueListeningTilePOFactory _continueListeningTilePOFactory;
-        private readonly IYearInReviewPreviewPOFactory _yearInReviewPreviewPOFactory;
+        private readonly IYearInReviewTeaserPOFactory _yearInReviewTeaserPOFactory;
 
         public DocumentsPOFactory(
             ITrackPOFactory trackPOFactory,
@@ -37,14 +37,14 @@ namespace BMM.Core.Implementations.Factories
             IListeningStreakPOFactory listeningStreakPOFactory,
             IDiscoverSectionHeaderPOFactory discoverSectionHeaderPOFactory,
             IContinueListeningTilePOFactory continueListeningTilePOFactory,
-            IYearInReviewPreviewPOFactory yearInReviewPreviewPOFactory)
+            IYearInReviewTeaserPOFactory yearInReviewTeaserPOFactory)
         {
             _trackPOFactory = trackPOFactory;
             _trackCollectionPOFactory = trackCollectionPOFactory;
             _listeningStreakPOFactory = listeningStreakPOFactory;
             _discoverSectionHeaderPOFactory = discoverSectionHeaderPOFactory;
             _continueListeningTilePOFactory = continueListeningTilePOFactory;
-            _yearInReviewPreviewPOFactory = yearInReviewPreviewPOFactory;
+            _yearInReviewTeaserPOFactory = yearInReviewTeaserPOFactory;
         }
         
         public IEnumerable<IDocumentPO> Create(
@@ -101,8 +101,8 @@ namespace BMM.Core.Implementations.Factories
                     case InfoMessage infoMessage:
                         documentsPOList.Add(new InfoMessagePO(infoMessage));
                         break;
-                    case YearInReviewPreview yearInReviewPreview:
-                        documentsPOList.Add(_yearInReviewPreviewPOFactory.Create(yearInReviewPreview));
+                    case YearInReviewTeaser yearInReviewTeaser:
+                        documentsPOList.Add(_yearInReviewTeaserPOFactory.Create(yearInReviewTeaser));
                         break;
                 }
             }

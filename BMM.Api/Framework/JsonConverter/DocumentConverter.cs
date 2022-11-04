@@ -58,7 +58,7 @@ namespace BMM.Api.Framework.JsonConverter
                     return new ContinueListeningTile();
                 
                 case "year_in_review":
-                    return new YearInReviewPreview();
+                    return new YearInReviewTeaser();
             }
 
             return new UnsupportedDocument();

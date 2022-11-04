@@ -5,7 +5,7 @@ using MvvmCross.ViewModels;
 
 namespace BMM.Core.Models.POs.YearInReview.Interfaces
 {
-    public interface IYearInReviewPreviewPO : IDocumentPO
+    public interface IYearInReviewTeaserPO : IDocumentPO
     {
         bool IsExpanded { get; }
         IMvxCommand ExpandOrCollapseCommand { get; }

@@ -18,8 +18,8 @@
 
         <ImageButton
             android:id="@+id/CollapseButton"
-            android:layout_width="@dimen/year_in_review_preview_expand_button_size"
-            android:layout_height="@dimen/year_in_review_preview_expand_button_size"
+            android:layout_width="@dimen/year_in_review_teaser_expand_button_size"
+            android:layout_height="@dimen/year_in_review_teaser_expand_button_size"
             android:background="@android:color/transparent"
             android:src="@drawable/icon_arrow_down"
             android:layout_marginEnd="@dimen/margin_medium"
@@ -32,8 +32,8 @@
         <ImageView 
             android:id="@+id/YearInReviewCardView"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/year_in_review_preview_image_height_large"
-            android:src="@drawable/year_in_review_preview"
+            android:layout_height="@dimen/year_in_review_teaser_image_height_large"
+            android:src="@drawable/year_in_review_teaser"
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginBottom="@dimen/margin_large"
             android:layout_gravity="center_horizontal"
@@ -53,7 +53,7 @@
             local:layout_constraintTop_toBottomOf="@+id/YearInReviewCardView"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
-            local:MvxBind="Text YearInReviewPreview.Title"
+            local:MvxBind="Text YearInReviewTeaser.Title"
             style="@style/Heading3" />
 
         <TextView
@@ -66,7 +66,7 @@
             local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
-            local:MvxBind="Text YearInReviewPreview.Description"
+            local:MvxBind="Text YearInReviewTeaser.Description"
             style="@style/Subtitle1_Label1" />
 
         <Button
@@ -80,7 +80,7 @@
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
             local:MvxBind="
-                Text YearInReviewPreview.ButtonTitle;
+                Text YearInReviewTeaser.ButtonTitle;
                 Click SeeReviewCommand"
             style="@style/Button_Primary_Medium" />
 
@@ -99,7 +99,7 @@
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintBottom_toBottomOf="parent"
-            local:MvxBind="Text YearInReviewPreview.PlaylistName"
+            local:MvxBind="Text YearInReviewTeaser.PlaylistName"
             style="@style/Button_Primary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

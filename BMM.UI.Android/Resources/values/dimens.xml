@@ -83,11 +83,11 @@
     <dimen name="streak_separator_size">24dp</dimen>
     
     <dimen name="year_in_review_card_elevation">16dp</dimen>
-    <dimen name="year_in_review_preview_height">56dp</dimen>
-    <dimen name="year_in_review_preview_image_width_small">48dp</dimen>
-    <dimen name="year_in_review_preview_image_height_small">32dp</dimen>
-    <dimen name="year_in_review_preview_image_height_large">124dp</dimen>
-    <dimen name="year_in_review_preview_expand_button_size">32dp</dimen>
+    <dimen name="year_in_review_teaser_height">56dp</dimen>
+    <dimen name="year_in_review_teaser_image_width_small">48dp</dimen>
+    <dimen name="year_in_review_teaser_image_height_small">32dp</dimen>
+    <dimen name="year_in_review_teaser_image_height_large">124dp</dimen>
+    <dimen name="year_in_review_teaser_expand_button_size">32dp</dimen>
     
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>

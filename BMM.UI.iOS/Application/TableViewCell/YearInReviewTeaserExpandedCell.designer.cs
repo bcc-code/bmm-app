@@ -10,8 +10,8 @@ using System.CodeDom.Compiler;
 
 namespace BMM.UI.iOS
 {
-	[Register ("YearInReviewViewExpandedCell")]
-	partial class YearInReviewViewExpandedCell
+	[Register ("YearInReviewTeaserExpandedCell")]
+	partial class YearInReviewTeaserExpandedCell
 	{
 		[Outlet]
 		UIKit.UIButton CollapseButton { get; set; }

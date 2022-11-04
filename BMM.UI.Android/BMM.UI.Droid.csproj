@@ -235,7 +235,7 @@
     <Compile Include="Application\ViewHolders\ContinueListeningTileViewHolder.cs" />
     <Compile Include="Application\ViewHolders\InfoMessageViewHolder.cs" />
     <Compile Include="Application\ViewHolders\YearInReviewItemViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\YearInReviewPreviewViewHolder.cs" />
+    <Compile Include="Application\ViewHolders\YearInReviewTeaserViewHolder.cs" />
     <Compile Include="Utils\PendingIntentsUtils.cs" />
     <Compile Include="Utils\ThemeUtils.cs" />
     <Compile Include="Utils\ViewUtils.cs" />
@@ -370,7 +370,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-hdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-hdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\year_in_review_preview.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\year_in_review_teaser.png" />
     <AndroidResource Include="Resources\drawable-mdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-mdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist.png" />
@@ -388,7 +388,7 @@
     <AndroidResource Include="Resources\drawable-mdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\year_in_review_preview.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\year_in_review_teaser.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right_light.png" />
@@ -407,7 +407,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\year_in_review_preview.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\year_in_review_teaser.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right_light.png" />
@@ -426,7 +426,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\placeholder_cover.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\year_in_review_preview.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\year_in_review_teaser.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right_light.png" />
@@ -444,7 +444,7 @@
     </AndroidResource>
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\year_in_review_preview.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\year_in_review_teaser.png" />
     <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
     <AndroidResource Include="Resources\drawable\border_top.xml" />
     <AndroidResource Include="Resources\drawable\bottom_slide_popup_background.xml">
@@ -711,8 +711,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_year_in_review_preview_collapsed.xml" />
-    <AndroidResource Include="Resources\layout\listitem_year_in_review_preview_expanded.xml">
+    <AndroidResource Include="Resources\layout\listitem_year_in_review_teaser_collapsed.xml" />
+    <AndroidResource Include="Resources\layout\listitem_year_in_review_teaser_expanded.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>

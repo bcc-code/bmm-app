@@ -563,10 +563,10 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewViewCollapsedCell.xib">
+    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewViewExpandedCell.xib">
+    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewTeaserExpandedCell.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
@@ -797,13 +797,13 @@
     <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">
       <DependentUpon>StreakTableViewCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Application\TableViewCell\YearInReviewViewCollapsedCell.cs" />
-    <Compile Include="Application\TableViewCell\YearInReviewViewCollapsedCell.designer.cs">
-      <DependentUpon>YearInReviewViewCollapsedCell.cs</DependentUpon>
+    <Compile Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.cs" />
+    <Compile Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.designer.cs">
+      <DependentUpon>YearInReviewTeaserCollapsedCell.cs</DependentUpon>
     </Compile>
-    <Compile Include="Application\TableViewCell\YearInReviewViewExpandedCell.cs" />
-    <Compile Include="Application\TableViewCell\YearInReviewViewExpandedCell.designer.cs">
-      <DependentUpon>YearInReviewViewExpandedCell.cs</DependentUpon>
+    <Compile Include="Application\TableViewCell\YearInReviewTeaserExpandedCell.cs" />
+    <Compile Include="Application\TableViewCell\YearInReviewTeaserExpandedCell.designer.cs">
+      <DependentUpon>YearInReviewTeaserExpandedCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\TableViewSource\Base\BaseSimpleTableViewSource.cs" />
     <Compile Include="Application\TableViewSource\Base\BaseTableViewSource.cs" />

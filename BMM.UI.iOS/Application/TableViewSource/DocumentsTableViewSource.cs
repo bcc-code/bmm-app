@@ -35,8 +35,8 @@ namespace BMM.UI.iOS
                 InfoMessageTableViewCell.Key,
                 SimpleMarginTableViewCell.Key,
                 ContinueListeningCollectionTableViewCell.Key,
-                YearInReviewViewCollapsedCell.Key,
-                YearInReviewViewExpandedCell.Key
+                YearInReviewTeaserCollapsedCell.Key,
+                YearInReviewTeaserExpandedCell.Key
             };
             
             foreach (string nibName in nibNames)
@@ -101,11 +101,11 @@ namespace BMM.UI.iOS
                     nibName = ContinueListeningCollectionTableViewCell.Key;
                     break;
 
-                case YearInReviewPreviewPO yearInReviewPreviewPO:
+                case YearInReviewTeaserPO yearInReviewPreviewPO:
                 {
                     nibName = yearInReviewPreviewPO.IsExpanded
-                        ? YearInReviewViewExpandedCell.Key
-                        : YearInReviewViewCollapsedCell.Key;
+                        ? YearInReviewTeaserExpandedCell.Key
+                        : YearInReviewTeaserCollapsedCell.Key;
                     break;
                 }
             }

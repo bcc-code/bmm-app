@@ -5,18 +5,18 @@ using BMM.Core.Models.POs.YearInReview.Interfaces;
 
 namespace BMM.Core.Implementations.Factories.YearInReview
 {
-    public class YearInReviewPreviewPOFactory : IYearInReviewPreviewPOFactory
+    public class YearInReviewTeaserPOFactory : IYearInReviewTeaserPOFactory
     {
         private readonly IInternalDeepLinkAction _internalDeepLinkAction;
 
-        public YearInReviewPreviewPOFactory(IInternalDeepLinkAction internalDeepLinkAction)
+        public YearInReviewTeaserPOFactory(IInternalDeepLinkAction internalDeepLinkAction)
         {
             _internalDeepLinkAction = internalDeepLinkAction;
         }
         
-        public IYearInReviewPreviewPO Create(YearInReviewPreview yearInReviewPreview)
+        public IYearInReviewTeaserPO Create(YearInReviewTeaser yearInReviewTeaser)
         {
-            return new YearInReviewPreviewPO(yearInReviewPreview, _internalDeepLinkAction);
+            return new YearInReviewTeaserPO(yearInReviewTeaser, _internalDeepLinkAction);
         }
     }
 }

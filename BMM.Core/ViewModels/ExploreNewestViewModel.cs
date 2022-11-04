@@ -134,7 +134,7 @@ namespace BMM.Core.ViewModels
 
         protected override Task OptionsAction(Document item)
         {
-            if (item is not YearInReviewPreview)
+            if (item is not YearInReviewTeaser)
                 return base.OptionsAction(item);
 
             var yearInReviewItem = Documents.First(x => x.DocumentType == DocumentType.YearInReview);

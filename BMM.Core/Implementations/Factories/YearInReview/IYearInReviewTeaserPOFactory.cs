@@ -3,8 +3,8 @@ using BMM.Core.Models.POs.YearInReview.Interfaces;
 
 namespace BMM.Core.Implementations.Factories.YearInReview
 {
-    public interface IYearInReviewPreviewPOFactory
+    public interface IYearInReviewTeaserPOFactory
     {
-        IYearInReviewPreviewPO Create(YearInReviewPreview yearInReviewPreview);
+        IYearInReviewTeaserPO Create(YearInReviewTeaser yearInReviewTeaser);
     }
 }

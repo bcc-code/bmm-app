@@ -35,8 +35,8 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int InfoMessage = 19;
         public const int SimpleMargin = 20;
         public const int ContinueListeningCollection = 21;
-        public const int YearInReviewPreviewCollapsed = 22;
-        public const int YearInReviewPreviewExpanded = 23;
+        public const int YearInReviewTeaserCollapsed = 22;
+        public const int YearInReviewTeaserExpanded = 23;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
@@ -84,11 +84,11 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case ViewTypes.ContinueListeningCollection:
                     return Resource.Layout.listitem_continue_listening_collection;
                 
-                case ViewTypes.YearInReviewPreviewCollapsed:
-                    return Resource.Layout.listitem_year_in_review_preview_collapsed;
+                case ViewTypes.YearInReviewTeaserCollapsed:
+                    return Resource.Layout.listitem_year_in_review_teaser_collapsed;
                 
-                case ViewTypes.YearInReviewPreviewExpanded:
-                    return Resource.Layout.listitem_year_in_review_preview_expanded;
+                case ViewTypes.YearInReviewTeaserExpanded:
+                    return Resource.Layout.listitem_year_in_review_teaser_expanded;
                 
                 default:
                     return Resource.Layout.listitem_track;
@@ -140,12 +140,12 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case ContinueListeningCollectionPO:
                     return ViewTypes.ContinueListeningCollection;
 
-                case YearInReviewPreviewPO yearInReviewPreviewPO:
+                case YearInReviewTeaserPO yearInReviewTeaserPO:
                 {
-                    if (yearInReviewPreviewPO.IsExpanded)
-                        return ViewTypes.YearInReviewPreviewExpanded;
+                    if (yearInReviewTeaserPO.IsExpanded)
+                        return ViewTypes.YearInReviewTeaserExpanded;
 
-                    return ViewTypes.YearInReviewPreviewCollapsed;
+                    return ViewTypes.YearInReviewTeaserCollapsed;
                 }
 
                 default:

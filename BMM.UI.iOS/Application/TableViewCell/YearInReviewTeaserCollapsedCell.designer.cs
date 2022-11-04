@@ -10,8 +10,8 @@ using System.CodeDom.Compiler;
 
 namespace BMM.UI.iOS
 {
-	[Register ("YearInReviewViewCollapsedCell")]
-	partial class YearInReviewViewCollapsedCell
+	[Register ("YearInReviewTeaserCollapsedCell")]
+	partial class YearInReviewTeaserCollapsedCell
 	{
 		[Outlet]
 		UIKit.UIView ContainerView { get; set; }
