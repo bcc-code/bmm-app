@@ -277,6 +277,11 @@
         <item name="backgroundTint">@color/label_primary_reverted_color</item>
     </style>
 
+    <style name="Button_Primary_Medium" parent="Button_Primary">
+        <item name="backgroundTint">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_primary_reverted_color</item>
+    </style>
+    
     <style name="Button_Primary_Large" parent="Button_Primary">
         <item name="android:height">@dimen/large_button_height</item>
         <item name="backgroundTint">@color/label_primary_color</item>

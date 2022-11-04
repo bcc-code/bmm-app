@@ -34,6 +34,9 @@ namespace BMM.UI.Droid.Application.Adapters
                     return new ContinueListeningCarouselCollectionViewHolder(view, itemBindingContext);
                 case Resource.Layout.listitem_info_message:
                     return new InfoMessageViewHolder(view, itemBindingContext);
+                case Resource.Layout.listitem_year_in_review_preview_collapsed:
+                case Resource.Layout.listitem_year_in_review_preview_expanded:
+                    return new YearInReviewPreviewViewHolder(view, itemBindingContext, this);
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

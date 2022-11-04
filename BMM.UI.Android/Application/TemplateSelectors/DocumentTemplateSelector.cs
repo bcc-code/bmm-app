@@ -11,6 +11,7 @@ using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Models.POs.YearInReview;
 using BMM.Core.ViewModels;
 using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 
@@ -34,6 +35,8 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int InfoMessage = 19;
         public const int SimpleMargin = 20;
         public const int ContinueListeningCollection = 21;
+        public const int YearInReviewPreviewCollapsed = 22;
+        public const int YearInReviewPreviewExpanded = 23;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
@@ -81,6 +84,12 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case ViewTypes.ContinueListeningCollection:
                     return Resource.Layout.listitem_continue_listening_collection;
                 
+                case ViewTypes.YearInReviewPreviewCollapsed:
+                    return Resource.Layout.listitem_year_in_review_preview_collapsed;
+                
+                case ViewTypes.YearInReviewPreviewExpanded:
+                    return Resource.Layout.listitem_year_in_review_preview_expanded;
+                
                 default:
                     return Resource.Layout.listitem_track;
             }
@@ -90,7 +99,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         {
             if (forItemObject == null)
                 return ViewTypes.NullObject;
-            
+
             switch (forItemObject)
             {
                 case TrackPO:
@@ -127,12 +136,20 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
 
                 case SimpleMarginPO:
                     return ViewTypes.SimpleMargin;
-                
+
                 case ContinueListeningCollectionPO:
                     return ViewTypes.ContinueListeningCollection;
-                
+
+                case YearInReviewPreviewPO yearInReviewPreviewPO:
+                {
+                    if (yearInReviewPreviewPO.IsExpanded)
+                        return ViewTypes.YearInReviewPreviewExpanded;
+
+                    return ViewTypes.YearInReviewPreviewCollapsed;
+                }
+
                 default:
-                    return ViewTypes.Unknown;
+                        return ViewTypes.Unknown;
             }
         }
     }
