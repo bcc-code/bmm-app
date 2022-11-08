@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 namespace BMM.Api.Implementation.Models
 {
     [JsonObject]
-    public class YearInReview
+    public class YearInReviewItem
     {
         public string Url { get; set; }
         public string Subtitle { get; set; }

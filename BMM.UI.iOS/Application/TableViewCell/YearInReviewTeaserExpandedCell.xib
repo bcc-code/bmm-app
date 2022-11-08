@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" rowHeight="379" id="cxk-wN-pdQ" customClass="YearInReviewTeaserExpandedCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="377"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twU-W8-rQv">
+                        <rect key="frame" x="16" y="4" width="288" height="357"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YearInReview" translatesAutoresizingMaskIntoConstraints="NO" id="MBy-tz-jeg">
+                                <rect key="frame" x="44" y="36" width="200" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="R4T-4m-EJf"/>
+                                    <constraint firstAttribute="height" constant="124" id="Tdp-tx-Tbb"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXD-Lg-uoZ">
+                                <rect key="frame" x="20" y="164" width="248" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjg-NM-0zr">
+                                <rect key="frame" x="20" y="192.5" width="248" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gt6-st-l34">
+                                <rect key="frame" x="244" y="12" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="81I-fg-4Jd"/>
+                                    <constraint firstAttribute="width" constant="32" id="CZe-qO-Z5Y"/>
+                                </constraints>
+                                <color key="tintColor" name="LabelPrimaryColor"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="IconDownArrow"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoA-Qr-mAc">
+                                <rect key="frame" x="90.5" y="225" width="107" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="f2S-rf-ZUy"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="See review"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvn-F1-wxy" customClass="LeftImageButton">
+                                <rect key="frame" x="4" y="297" width="280" height="56"/>
+                                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                                <accessibility key="accessibilityConfiguration" identifier="ShareLinkButton"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="ZEp-Tz-kfR"/>
+                                </constraints>
+                                <color key="tintColor" name="LabelPrimaryColor"/>
+                                <state key="normal" title="Share Link" image="IconPlaylist">
+                                    <color key="titleColor" name="LabelPrimaryColor"/>
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAS-Nc-xaW">
+                                <rect key="frame" x="251" y="307" width="11" height="32.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <size key="shadowOffset" width="0.0" height="0.0"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="BackgroundSecondaryColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Wvn-F1-wxy" secondAttribute="trailing" constant="4" id="0sW-B3-udt"/>
+                            <constraint firstItem="LAS-Nc-xaW" firstAttribute="centerY" secondItem="Wvn-F1-wxy" secondAttribute="centerY" constant="-2" id="1Rt-88-Bdv"/>
+                            <constraint firstItem="MBy-tz-jeg" firstAttribute="top" secondItem="twU-W8-rQv" secondAttribute="top" constant="36" id="6IP-JN-3g7"/>
+                            <constraint firstAttribute="trailing" secondItem="qjg-NM-0zr" secondAttribute="trailing" constant="20" id="9Tu-Ry-qAS"/>
+                            <constraint firstItem="qjg-NM-0zr" firstAttribute="top" secondItem="tXD-Lg-uoZ" secondAttribute="bottom" constant="8" id="9gL-YJ-LDG"/>
+                            <constraint firstItem="XoA-Qr-mAc" firstAttribute="centerX" secondItem="twU-W8-rQv" secondAttribute="centerX" id="BBi-53-jGX"/>
+                            <constraint firstItem="Wvn-F1-wxy" firstAttribute="top" secondItem="XoA-Qr-mAc" secondAttribute="bottom" constant="32" id="CgM-xS-Xh8"/>
+                            <constraint firstAttribute="bottom" secondItem="Wvn-F1-wxy" secondAttribute="bottom" constant="4" id="Da4-ZC-XpU"/>
+                            <constraint firstItem="XoA-Qr-mAc" firstAttribute="top" secondItem="qjg-NM-0zr" secondAttribute="bottom" constant="12" id="FfI-pE-jUE"/>
+                            <constraint firstAttribute="trailing" secondItem="tXD-Lg-uoZ" secondAttribute="trailing" constant="20" id="U9i-NB-fBh"/>
+                            <constraint firstAttribute="trailing" secondItem="Gt6-st-l34" secondAttribute="trailing" constant="12" id="ZNa-bL-S6A"/>
+                            <constraint firstItem="Gt6-st-l34" firstAttribute="top" secondItem="twU-W8-rQv" secondAttribute="top" constant="12" id="hqM-Vr-PII"/>
+                            <constraint firstItem="qjg-NM-0zr" firstAttribute="leading" secondItem="twU-W8-rQv" secondAttribute="leading" constant="20" id="nCe-N4-WcQ"/>
+                            <constraint firstItem="LAS-Nc-xaW" firstAttribute="trailing" secondItem="Wvn-F1-wxy" secondAttribute="trailing" constant="-22" id="rTF-xJ-cdE"/>
+                            <constraint firstItem="MBy-tz-jeg" firstAttribute="centerX" secondItem="twU-W8-rQv" secondAttribute="centerX" id="tlX-mt-yTM"/>
+                            <constraint firstItem="tXD-Lg-uoZ" firstAttribute="top" secondItem="MBy-tz-jeg" secondAttribute="bottom" constant="4" id="vWy-oK-pUJ"/>
+                            <constraint firstItem="tXD-Lg-uoZ" firstAttribute="leading" secondItem="twU-W8-rQv" secondAttribute="leading" constant="20" id="xoW-fo-I0U"/>
+                            <constraint firstItem="Wvn-F1-wxy" firstAttribute="leading" secondItem="twU-W8-rQv" secondAttribute="leading" constant="4" id="yiX-1f-po0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="28"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                <constraints>
+                    <constraint firstItem="twU-W8-rQv" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="4" id="JzA-TN-JTw"/>
+                    <constraint firstAttribute="bottom" secondItem="twU-W8-rQv" secondAttribute="bottom" constant="16" id="TDU-Xx-880"/>
+                    <constraint firstItem="twU-W8-rQv" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="gg8-ya-abR"/>
+                    <constraint firstAttribute="trailing" secondItem="twU-W8-rQv" secondAttribute="trailing" constant="16" id="w24-AW-1uK"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <connections>
+                <outlet property="CollapseButton" destination="Gt6-st-l34" id="JUT-Ol-108"/>
+                <outlet property="DescriptionLabel" destination="qjg-NM-0zr" id="eDg-VY-3ae"/>
+                <outlet property="PlaylistButton" destination="Wvn-F1-wxy" id="UA6-Nb-lG0"/>
+                <outlet property="SeeReviewButton" destination="XoA-Qr-mAc" id="aYN-jc-ZHK"/>
+                <outlet property="TitleLabel" destination="tXD-Lg-uoZ" id="DNO-LH-alt"/>
+            </connections>
+            <point key="canvasLocation" x="304.34782608695656" y="435.60267857142856"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="IconDownArrow" width="24" height="24"/>
+        <image name="IconPlaylist" width="24" height="24"/>
+        <image name="YearInReview" width="200" height="124"/>
+        <namedColor name="BackgroundPrimaryColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BackgroundSecondaryColor">
+            <color red="0.92549020051956177" green="0.94117647409439087" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="LabelPrimaryColor">
+            <color red="0.050980392843484879" green="0.074509806931018829" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

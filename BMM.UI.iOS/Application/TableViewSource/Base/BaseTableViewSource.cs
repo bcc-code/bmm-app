@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using BMM.UI.iOS.TableViewCell.Base;
 using Foundation;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using UIKit;
@@ -45,6 +46,18 @@ namespace BMM.UI.iOS
         {
             tableView.DeselectRow(indexPath, true);
             base.RowSelected(tableView, indexPath);
+        }
+        
+        public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
+        {
+            if (cell is IEventsHoldingTableViewCell eventsHoldingViewCell)
+                eventsHoldingViewCell.AttachEvents();
+        }
+        
+        public override void CellDisplayingEnded(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
+        {
+            if (cell is IEventsHoldingTableViewCell eventsHoldingViewCell)
+                eventsHoldingViewCell.DetachEvents();
         }
     }
 }

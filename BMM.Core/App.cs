@@ -281,6 +281,7 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDiscoverSectionHeaderPOFactory, DiscoverSectionHeaderPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContinueListeningTilePOFactory, ContinueListeningTilePOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewPOFactory, YearInReviewPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewTeaserPOFactory, YearInReviewTeaserPOFactory>();
             
             _assemblies = AppDomain
                 .CurrentDomain

@@ -5,6 +5,7 @@ using BMM.Core.Implementations.Factories.DiscoverSection;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Implementations.Factories.YearInReview;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
@@ -16,6 +17,7 @@ using BMM.Core.Models.POs.InfoMessages;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.YearInReview;
 using MvvmCross.Commands;
 
 namespace BMM.Core.Implementations.Factories
@@ -27,19 +29,22 @@ namespace BMM.Core.Implementations.Factories
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
         private readonly IDiscoverSectionHeaderPOFactory _discoverSectionHeaderPOFactory;
         private readonly IContinueListeningTilePOFactory _continueListeningTilePOFactory;
+        private readonly IYearInReviewTeaserPOFactory _yearInReviewTeaserPOFactory;
 
         public DocumentsPOFactory(
             ITrackPOFactory trackPOFactory,
             ITrackCollectionPOFactory trackCollectionPOFactory,
             IListeningStreakPOFactory listeningStreakPOFactory,
             IDiscoverSectionHeaderPOFactory discoverSectionHeaderPOFactory,
-            IContinueListeningTilePOFactory continueListeningTilePOFactory)
+            IContinueListeningTilePOFactory continueListeningTilePOFactory,
+            IYearInReviewTeaserPOFactory yearInReviewTeaserPOFactory)
         {
             _trackPOFactory = trackPOFactory;
             _trackCollectionPOFactory = trackCollectionPOFactory;
             _listeningStreakPOFactory = listeningStreakPOFactory;
             _discoverSectionHeaderPOFactory = discoverSectionHeaderPOFactory;
             _continueListeningTilePOFactory = continueListeningTilePOFactory;
+            _yearInReviewTeaserPOFactory = yearInReviewTeaserPOFactory;
         }
         
         public IEnumerable<IDocumentPO> Create(
@@ -48,7 +53,7 @@ namespace BMM.Core.Implementations.Factories
             IMvxAsyncCommand<Document> optionsClickedCommand,
             ITrackInfoProvider trackInfoProvider)
         {
-            var documentsPOList = new List<DocumentPO>();
+            var documentsPOList = new List<IDocumentPO>();
 
             foreach (var document in documents)
             {
@@ -95,6 +100,9 @@ namespace BMM.Core.Implementations.Factories
                         break;
                     case InfoMessage infoMessage:
                         documentsPOList.Add(new InfoMessagePO(infoMessage));
+                        break;
+                    case YearInReviewTeaser yearInReviewTeaser:
+                        documentsPOList.Add(_yearInReviewTeaserPOFactory.Create(yearInReviewTeaser));
                         break;
                 }
             }

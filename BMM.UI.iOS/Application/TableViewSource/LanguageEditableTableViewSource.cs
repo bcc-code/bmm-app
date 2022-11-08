@@ -98,6 +98,7 @@ namespace BMM.UI.iOS
 
         public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
         {
+            base.WillDisplay(tableView, cell, indexPath);
             MvxObservableCollection<CultureInfo> data = ItemsSource as MvxObservableCollection<CultureInfo>;
 
             if (indexPath.Row == data.Count - 1)

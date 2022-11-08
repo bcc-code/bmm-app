@@ -48,6 +48,9 @@ namespace BMM.Api.Implementation.Models
 
         [EnumMember(Value = "InfoMessage")]
         InfoMessage,
+        
+        [EnumMember(Value = "year_in_review")]
+        YearInReview,
 
         [EnumMember(Value = "unsupported")]
         Unsupported

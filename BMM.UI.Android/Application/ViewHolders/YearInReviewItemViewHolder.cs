@@ -1,4 +1,5 @@
 using Android.Graphics;
+using Android.OS;
 using Android.Views;
 using AndroidX.CardView.Widget;
 using BMM.Core.Models.POs.YearInReview;
@@ -61,6 +62,10 @@ namespace BMM.UI.Droid.Application.ViewHolders
             set
             {
                 _shadowColor = value;
+
+                if (Build.VERSION.SdkInt < BuildVersionCodes.P)
+                    return;
+                
                 YearInReviewCardView.SetOutlineAmbientShadowColor(_shadowColor);
                 YearInReviewCardView.SetOutlineSpotShadowColor(_shadowColor);
             }
