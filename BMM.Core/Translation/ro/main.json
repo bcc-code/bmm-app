@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Scurtături pentru Siri",
     "ShortcutAlreadyAdded": "Această scurtătură a fost deja adăugată"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Your Year in Review",
+    "Share": "Share with your friends",
+    "ShareTitle": "Year in Review"
   }
 }

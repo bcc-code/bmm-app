@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Siri Shortcuts",
     "ShortcutAlreadyAdded": "This shortcut has already been added"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Your Year in Review",
+    "Share": "Share with your friends",
+    "ShareTitle": "Year in Review"
   }
 }

@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Siriin",
     "ShortcutAlreadyAdded": "Tämä linkki jo lisätty"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Vuosikatsauksesi",
+    "Share": "Jaa ystäviesi kanssa",
+    "ShareTitle": "Vuosikatsaus"
   }
 }

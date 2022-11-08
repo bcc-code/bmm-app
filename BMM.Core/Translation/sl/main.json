@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Bližnjice za Siri",
     "ShortcutAlreadyAdded": "Ta bližnjica je že bila dodana"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Tvoj pregled leta",
+    "Share": "Deli s prijatelji",
+    "ShareTitle": "Pregled leta"
   }
 }

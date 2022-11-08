@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Siri-Kurzbefehle",
     "ShortcutAlreadyAdded": "Der Kurzbefehl wurde bereits hinzugefügt"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Your Year in Review",
+    "Share": "Share with your friends",
+    "ShareTitle": "Year in Review"
   }
 }

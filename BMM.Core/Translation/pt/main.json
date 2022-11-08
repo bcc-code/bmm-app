@@ -492,5 +492,10 @@
   "SiriShortcutsViewModel": {
     "Title": "Atalhos da Siri",
     "ShortcutAlreadyAdded": "Este atalho já foi adicionado"
+  },
+  "YearInReviewViewModel": {
+    "Title": "Your Year in Review",
+    "Share": "Share with your friends",
+    "ShareTitle": "Year in Review"
   }
 }
