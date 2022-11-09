@@ -147,9 +147,6 @@ namespace BMM.Api.Implementation.Models
         [JsonIgnore]
         public bool IsLivePlayback => Subtype == TrackSubType.Live;
 
-        [JsonIgnore]
-        public bool IsListened { get; set; }
-
         public string PlaybackOrigin { get; set; }
 
         #endregion

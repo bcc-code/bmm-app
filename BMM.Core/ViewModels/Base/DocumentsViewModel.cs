@@ -8,6 +8,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Interfaces;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
@@ -49,6 +50,7 @@ namespace BMM.Core.ViewModels.Base
         private MvxSubscriptionToken _fileDownloadCanceledSubscriptionToken;
         private MvxSubscriptionToken _downloadQueueChangedSubscriptionToken;
         private MvxSubscriptionToken _downloadQueueFinishedSubscriptionToken;
+        private MvxSubscriptionToken _downloadedEpisodeRemovedSubscriptionToken;
 
         private readonly MvxSubscriptionToken _trackMarkedAsListenedToken;
         private readonly MvxSubscriptionToken _contentLanguageChangedToken;
@@ -152,6 +154,7 @@ namespace BMM.Core.ViewModels.Base
 
             _trackMarkedAsListenedToken = Messenger.Subscribe<TrackMarkedAsListenedMessage>(HandleTrackMarkedAsListenedMessage);
             _contentLanguageChangedToken = Messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
+            _downloadedEpisodeRemovedSubscriptionToken = Messenger.Subscribe<DownloadedEpisodeRemovedMessage>(HandleDownloadedEpisodeRemovedMessage);
         }
 
         private void RefreshTracksStatesInDocuments()
@@ -177,17 +180,19 @@ namespace BMM.Core.ViewModels.Base
 
         protected void HandleTrackMarkedAsListenedMessage(TrackMarkedAsListenedMessage message)
         {
-            foreach (var document in Documents.OfType<TrackPO>().Select(t => t.Track))
+            foreach (var trackPO in Documents.OfType<TrackPO>())
             {
-                if (document.Id == message.TrackId)
-                {
-                    document.IsListened = true;
-                    RaisePropertyChanged(() => Documents);
-                }
+                if (trackPO.Id == message.TrackId)
+                    trackPO.RefreshState();
             }
         }
 
         protected virtual void HandleDownloadQueueChangedMessage(DownloadQueueChangedMessage obj)
+        {
+            RefreshAllTracks();
+        }
+        
+        protected void HandleDownloadedEpisodeRemovedMessage(DownloadedEpisodeRemovedMessage obj)
         {
             RefreshAllTracks();
         }
@@ -249,21 +254,24 @@ namespace BMM.Core.ViewModels.Base
         protected override void DetachEvents()
         {
             base.DetachEvents();
-            Messenger.Unsubscribe<FileDownloadStartedMessage>(_fileDownloadStartedSubscriptionToken);
-            Messenger.Unsubscribe<FileDownloadCompletedMessage>(_fileDownloadCompletedSubscriptionToken);
-            Messenger.Unsubscribe<FileDownloadCanceledMessage>(_fileDownloadCanceledSubscriptionToken);
-            Messenger.Unsubscribe<DownloadQueueChangedMessage>(_downloadQueueChangedSubscriptionToken);
-            Messenger.Unsubscribe<QueueFinishedMessage>(_downloadQueueFinishedSubscriptionToken);
+            Messenger.UnsubscribeSafe<FileDownloadStartedMessage>(_fileDownloadStartedSubscriptionToken);
+            Messenger.UnsubscribeSafe<FileDownloadCompletedMessage>(_fileDownloadCompletedSubscriptionToken);
+            Messenger.UnsubscribeSafe<FileDownloadCanceledMessage>(_fileDownloadCanceledSubscriptionToken);
+            Messenger.UnsubscribeSafe<DownloadQueueChangedMessage>(_downloadQueueChangedSubscriptionToken);
+            Messenger.UnsubscribeSafe<QueueFinishedMessage>(_downloadQueueFinishedSubscriptionToken);
         }
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
             base.ViewDestroy(viewFinishing);
 
-            if (_cacheToken != null)
-            {
-                Messenger.Unsubscribe<CacheUpdatedMessage>(_cacheToken);
-            }
+            if (!viewFinishing)
+                return;
+            
+            Messenger.UnsubscribeSafe<CacheUpdatedMessage>(_cacheToken);
+            Messenger.UnsubscribeSafe<TrackMarkedAsListenedMessage>(_trackMarkedAsListenedToken);
+            Messenger.UnsubscribeSafe<ContentLanguagesChangedMessage>(_contentLanguageChangedToken);
+            Messenger.UnsubscribeSafe<DownloadedEpisodeRemovedMessage>(_downloadedEpisodeRemovedSubscriptionToken);
         }
 
         public sealed override async Task Initialize()

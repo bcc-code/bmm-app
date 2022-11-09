@@ -3,7 +3,7 @@ using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.ContinueListening.Interfaces
 {
-    public interface IResumeOrShufflePlayAction 
+    public interface IPlayOrResumePlayAction 
         : IGuardedAction,
           IDataContextGuardedAction<IAlbumViewModel>
     {

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.FileStorage;
@@ -43,7 +44,7 @@ namespace BMM.Core.ViewModels.MyContent
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
-            Messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
+            Messenger.UnsubscribeSafe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
             base.ViewDestroy(viewFinishing);
         }
 

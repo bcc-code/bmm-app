@@ -163,7 +163,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         
         private void DetachMessageListener()
         {
-            _mvxMessenger.Unsubscribe<PlaybackStatusChangedMessage>(_playbackStateSubscriptionToken);
+            _mvxMessenger.UnsubscribeSafe<PlaybackStatusChangedMessage>(_playbackStateSubscriptionToken);
         }
 
         private void CloseFileHandle()
