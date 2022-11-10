@@ -187,7 +187,7 @@ namespace BMM.Core.ViewModels
         public override void ViewDisappeared()
         {
             base.ViewDisappeared();
-            Messenger.Unsubscribe<TogglePlayerMessage>(_toggleToken);
+            Messenger.UnsubscribeSafe<TogglePlayerMessage>(_toggleToken);
         }
 
         protected override async Task OptionsAction(Document item)

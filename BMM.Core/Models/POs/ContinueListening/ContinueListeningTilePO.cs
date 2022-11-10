@@ -1,6 +1,8 @@
+using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
+using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross.Commands;
@@ -10,8 +12,10 @@ namespace BMM.Core.Models.POs.ContinueListening
     public class ContinueListeningTilePO : DocumentPO, ITrackHolderPO
     {
         private readonly IMediaPlayer _mediaPlayer;
+        private readonly IStorageManager _storageManager;
         private bool _isCurrentlySelected;
         private bool _isCurrentlyPlaying;
+        private bool _isDownloaded;
 
         public ContinueListeningTilePO(
             IMvxAsyncCommand<Document> optionsClickedCommand,
@@ -20,9 +24,11 @@ namespace BMM.Core.Models.POs.ContinueListening
             IShuffleButtonClickedAction shuffleButtonClickedAction,
             IShowTrackInfoAction showTrackInfoAction,
             IMediaPlayer mediaPlayer,
+            IStorageManager storageManager,
             ContinueListeningTile continueListeningTile) : base(continueListeningTile)
         {
             _mediaPlayer = mediaPlayer;
+            _storageManager = storageManager;
             TileClickedCommand = new MvxAsyncCommand(async () =>
             {
                 await tileClickedAction.ExecuteGuarded(ContinueListeningTile);
@@ -71,10 +77,18 @@ namespace BMM.Core.Models.POs.ContinueListening
             set => SetProperty(ref _isCurrentlyPlaying, value);
         }
         
-        public void RefreshState()
+        public bool IsDownloaded
+        {
+            get => _isDownloaded;
+            set => SetProperty(ref _isDownloaded, value);
+        }
+        
+        public Task RefreshState()
         {
             IsCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(ContinueListeningTile.Track.Id);
             IsCurrentlyPlaying = IsCurrentlySelected && _mediaPlayer.IsPlaying;
+            IsDownloaded = _storageManager.SelectedStorage.IsDownloaded(ContinueListeningTile.Track);
+            return Task.CompletedTask;
         }
     }
 }

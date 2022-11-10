@@ -17,7 +17,7 @@
                 <outlet property="ButtonStackViewHeight" destination="Wiz-wK-A6E" id="iEA-SS-8k7"/>
                 <outlet property="ButtonTopConstraint" destination="FKl-ng-oER" id="sKr-rW-lBt"/>
                 <outlet property="DescriptionLabel" destination="hc3-4g-aLX" id="3pe-a4-cHq"/>
-                <outlet property="ShuffleButton" destination="jTG-0X-idr" id="66u-YL-aHN"/>
+                <outlet property="PlayButton" destination="jTG-0X-idr" id="66u-YL-aHN"/>
                 <outlet property="StackViewToSeparatorConstraint" destination="8Fs-AI-XSs" id="aLp-IS-Wsb"/>
                 <outlet property="TitleLabel" destination="jns-dj-qfe" id="a6H-NO-6tq"/>
                 <outlet property="TrackCountLabel" destination="5mo-PN-ABW" id="UIB-ZM-kpg"/>

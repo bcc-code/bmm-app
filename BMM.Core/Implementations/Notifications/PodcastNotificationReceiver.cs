@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading;
@@ -118,7 +119,7 @@ namespace BMM.Core.Implementations.Notifications
             else
                 _tcs.TrySetResult(message.Succeeded);
 
-            _messenger.Unsubscribe<QueueFinishedMessage>(_completedToken);
+            _messenger.UnsubscribeSafe<QueueFinishedMessage>(_completedToken);
         }
 
         private void LogPodcastEvent(string eventName, PodcastNotification notification)

@@ -124,7 +124,7 @@ namespace BMM.Core.ViewModels
 
         protected override Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
-            if ((item is TrackPO))
+            if (item is not TrackPO)
                 return base.DocumentAction(item, list);
 
             var tracksInSameSection = GetAdjacentTracksInSameSection(item);

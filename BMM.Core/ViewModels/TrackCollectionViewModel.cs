@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
@@ -87,8 +88,8 @@ namespace BMM.Core.ViewModels
 
         public override void ViewDestroy(bool viewFinishing = true)
         {
-            Messenger.Unsubscribe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
-            Messenger.Unsubscribe<TrackCollectionOrderChangedMessage>(_trackCollectionOrderChangedToken);
+            Messenger.UnsubscribeSafe<PlaylistStateChangedMessage>(_playlistStateChangedMessageSubscriptionKey);
+            Messenger.UnsubscribeSafe<TrackCollectionOrderChangedMessage>(_trackCollectionOrderChangedToken);
             base.ViewDestroy(viewFinishing);
         }
 

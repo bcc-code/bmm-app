@@ -42,8 +42,6 @@ namespace BMM.Api.Abstraction
 
         IEnumerable<TrackRelation> Relations { get; set; }
 
-        bool IsListened { get; set; }
-
         string Language { get; set; }
         
         IEnumerable<string> AvailableLanguages { get; set; }

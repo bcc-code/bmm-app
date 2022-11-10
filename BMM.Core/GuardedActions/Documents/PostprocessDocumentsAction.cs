@@ -14,13 +14,6 @@ namespace BMM.Core.GuardedActions.Documents
 {
     public class PostprocessDocumentsAction : GuardedActionWithParameterAndResult<IEnumerable<IDocumentPO>, IEnumerable<IDocumentPO>>, IPostprocessDocumentsAction
     {
-        private readonly IListenedTracksStorage _listenedTracksStorage;
-
-        public PostprocessDocumentsAction(IListenedTracksStorage listenedTracksStorage)
-        {
-            _listenedTracksStorage = listenedTracksStorage;
-        }
-
         protected override async Task<IEnumerable<IDocumentPO>> Execute(IEnumerable<IDocumentPO> documents)
         {
             if (documents == null)
@@ -35,12 +28,6 @@ namespace BMM.Core.GuardedActions.Documents
             var filteredDocuments = docList
                 .Where(d => videoDocuments.All(v => v.Id != d.Id))
                 .ToList();
-
-            foreach (var doc in filteredDocuments)
-            {
-                if (doc is ITrackPO trackPO)
-                    trackPO.Track.IsListened = await _listenedTracksStorage.TrackIsListened(trackPO.Track);
-            }
 
             return filteredDocuments;
         }

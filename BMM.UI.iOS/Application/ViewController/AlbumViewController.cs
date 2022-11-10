@@ -34,9 +34,9 @@ namespace BMM.UI.iOS
             set.Bind(AlbumCoverImageView).For(v => v.ImagePath).To(vm => vm.Album.Cover);
             set.Bind(TitleLabel).To(vm => vm.Album.Title);
             set.Bind(DescriptionLabel).To(vm => vm.Album.Description);
-            set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.ShuffleOrResumeText);
-            set.Bind(ShuffleButton).For(v => v.BindVisible()).To(vm => vm.ShowShuffleOrResumeButton);
+            set.Bind(PlayButton).To(vm => vm.ShufflePlayCommand);
+            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.ShuffleOrResumeText);
+            set.Bind(PlayButton).For(v => v.BindVisible()).To(vm => vm.ShowShuffleOrResumeButton);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 
             set.Apply();
@@ -49,7 +49,7 @@ namespace BMM.UI.iOS
         {
             TitleLabel.ApplyTextTheme(AppTheme.Heading2);
             DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
-            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
         }
 

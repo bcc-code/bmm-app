@@ -103,7 +103,7 @@
                 android:layout_marginEnd="@dimen/element_margin_small"
                 android:tint="@color/on_color_one_color"
                 local:layout_goneMarginEnd="@dimen/margin_xxmedium"
-                local:MvxBind="Visibility Visibility(DownloadStatusDone(ContinueListeningTile.Track))"
+                local:MvxBind="Visibility Visibility(IsDownloaded)"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintEnd_toStartOf="@+id/ReferenceButton" />
 

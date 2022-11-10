@@ -76,11 +76,10 @@ namespace BMM.UI.iOS
 
                 set.Bind(ReferenceButton)
                     .To(po => po.ShowTrackInfoCommand);
-                
+
                 set.Bind(DownloadedIcon)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.ContinueListeningTile.Track)
-                    .WithConversion<DownloadStatusDoneValueConverter>();
+                    .To(vm => vm.IsDownloaded);
                 
                 set.Bind(OptionsButton)
                     .To(po => po.OptionButtonClickedCommand);

@@ -1,12 +1,15 @@
 using System.Globalization;
 using System.Linq;
+using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -24,6 +27,7 @@ namespace BMM.Core.Models.POs.Tracks
         private readonly IConnection _connection;
         private readonly IDownloadQueue _downloadQueue;
         private readonly ITrackInfoProvider _trackInfoProvider;
+        private readonly IListenedTracksStorage _listenedTracksStorage;
         private TrackState _trackState;
         private string _trackSubtitle;
         private string _trackTitle;
@@ -37,6 +41,7 @@ namespace BMM.Core.Models.POs.Tracks
             IShowTrackInfoAction showTrackInfoAction,
             IMvxAsyncCommand<Document> optionsClickedCommand,
             ITrackInfoProvider trackInfoProvider,
+            IListenedTracksStorage listenedTracksStorage,
             Track track) : base(track)
         {
             Track = track;
@@ -45,7 +50,8 @@ namespace BMM.Core.Models.POs.Tracks
             _connection = connection;
             _downloadQueue = downloadQueue;
             _trackInfoProvider = trackInfoProvider;
-            
+            _listenedTracksStorage = listenedTracksStorage;
+
             ShowTrackInfoCommand = new MvxAsyncCommand(async () =>
             {
                 await showTrackInfoAction.ExecuteGuarded(Track);
@@ -56,7 +62,7 @@ namespace BMM.Core.Models.POs.Tracks
                 await optionsClickedCommand.ExecuteAsync(Track);
             });
             
-            RefreshState();
+            RefreshState().FireAndForget();
             SetTrackInformation();
         }
 
@@ -71,7 +77,7 @@ namespace BMM.Core.Models.POs.Tracks
             TrackMeta = info.Meta;
         }
 
-        public void RefreshState()
+        public async Task RefreshState()
         {
             bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Id);
             bool isDownloaded = _storageManager.SelectedStorage.IsDownloaded(Track);
@@ -79,8 +85,9 @@ namespace BMM.Core.Models.POs.Tracks
             bool isTeaserPodcast = TrackIsTeaserPodcast();
             bool isDownloading = _downloadQueue.IsDownloading(Track);
             bool isQueued = _downloadQueue.IsQueued(Track);
+            bool isListened = await _listenedTracksStorage.TrackIsListened(Track);
             
-            TrackState = new TrackState(isCurrentlySelected, isAvailable, isDownloaded, isTeaserPodcast, Track.IsListened, isDownloading, isQueued);
+            TrackState = new TrackState(isCurrentlySelected, isAvailable, isDownloaded, isTeaserPodcast, isListened, isDownloading, isQueued);
         }
 
         public Track Track { get; }

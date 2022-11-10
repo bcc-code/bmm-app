@@ -28,7 +28,7 @@ namespace BMM.Core.Test.Unit.ViewModels
                 .Returns(Task.FromResult<Album>(null));
             var album = new AlbumViewModel(
                 new Mock<IShareLink>().Object,
-                new Mock<IResumeOrShufflePlayAction>().Object,
+                new Mock<IPlayOrResumePlayAction>().Object,
                 new Mock<IDocumentsPOFactory>().Object);
 
             // Act

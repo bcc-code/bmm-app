@@ -12,12 +12,12 @@ using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.ContinueListening
 {
-    public class ResumeOrShufflePlayAction : GuardedAction, IResumeOrShufflePlayAction
+    public class PlayOrResumePlayAction : GuardedAction, IPlayOrResumePlayAction
     {
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IAnalytics _analytics;
 
-        public ResumeOrShufflePlayAction(
+        public PlayOrResumePlayAction(
             IMediaPlayer mediaPlayer,
             IAnalytics analytics)
         {
@@ -35,9 +35,12 @@ namespace BMM.Core.GuardedActions.ContinueListening
                 .Select(t => (IMediaTrack)t.Track)
                 .ToList();
 
+            if (!tracks.Any())
+                return;
+            
             if (!AlbumViewModel.Album.LatestTrackId.HasValue)
             {
-                await _mediaPlayer.ShuffleList(tracks, AlbumViewModel.PlaybackOriginString);
+                await _mediaPlayer.Play(tracks, tracks.First(),  AlbumViewModel.PlaybackOriginString);
                 return;
             }
 

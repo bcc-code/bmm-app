@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.Helpers;
@@ -31,10 +32,10 @@ namespace BMM.Core.Models.POs.ContinueListening
         public IBmmObservableCollection<ContinueListeningTilePO> ContinueListeningTiles { get; } =
             new BmmObservableCollection<ContinueListeningTilePO>();
 
-        public void RefreshState()
+        public async Task RefreshState()
         {
             foreach (var continueListeningTile in ContinueListeningTiles)
-                continueListeningTile.RefreshState();
+                await continueListeningTile.RefreshState();
         }
     }
 }

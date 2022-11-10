@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -175,9 +176,9 @@ namespace BMM.Core.ViewModels
         
         private void DetachSubscriptions()
         {
-            Messenger.Unsubscribe<PlaybackStatusChangedMessage>(_updateStateToken);
-            Messenger.Unsubscribe<CurrentTrackChangedMessage>(_updateMetadataToken);
-            Messenger.Unsubscribe<PlaybackPositionChangedMessage>(_updatePositionToken);
+            Messenger.UnsubscribeSafe<PlaybackStatusChangedMessage>(_updateStateToken);
+            Messenger.UnsubscribeSafe<CurrentTrackChangedMessage>(_updateMetadataToken);
+            Messenger.UnsubscribeSafe<PlaybackPositionChangedMessage>(_updatePositionToken);
         }
         
         protected virtual Task OnCurrentTrackChanged() => Task.CompletedTask;

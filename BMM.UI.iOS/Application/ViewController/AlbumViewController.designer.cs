@@ -32,7 +32,7 @@ namespace BMM.UI.iOS
 		UIKit.UILabel DescriptionLabel { get; set; }
 
 		[Outlet]
-		UIKit.UIButton ShuffleButton { get; set; }
+		UIKit.UIButton PlayButton { get; set; }
 
 		[Outlet]
 		UIKit.NSLayoutConstraint StackViewToSeparatorConstraint { get; set; }
@@ -70,9 +70,9 @@ namespace BMM.UI.iOS
 				DescriptionLabel = null;
 			}
 
-			if (ShuffleButton != null) {
-				ShuffleButton.Dispose ();
-				ShuffleButton = null;
+			if (PlayButton != null) {
+				PlayButton.Dispose ();
+				PlayButton = null;
 			}
 
 			if (StackViewToSeparatorConstraint != null) {

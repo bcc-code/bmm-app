@@ -24,7 +24,7 @@ namespace BMM.Core.ViewModels
 {
     public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, IAlbumViewModel
     {
-        private readonly IResumeOrShufflePlayAction _resumeOrShufflePlayAction;
+        private readonly IPlayOrResumePlayAction _playOrResumePlayAction;
         private readonly IDocumentsPOFactory _documentsPOFactory;
         private int _id;
 
@@ -35,7 +35,7 @@ namespace BMM.Core.ViewModels
 
         public IMvxCommand ShareCommand { get; }
 
-        public override IMvxCommand ShufflePlayCommand => _resumeOrShufflePlayAction.Command;
+        public override IMvxCommand ShufflePlayCommand => _playOrResumePlayAction.Command;
 
         private Album _album;
 
@@ -60,12 +60,12 @@ namespace BMM.Core.ViewModels
 
         public AlbumViewModel(
             IShareLink shareLink,
-            IResumeOrShufflePlayAction resumeOrShufflePlayAction,
+            IPlayOrResumePlayAction playOrResumePlayAction,
             IDocumentsPOFactory documentsPOFactory)
         {
-            _resumeOrShufflePlayAction = resumeOrShufflePlayAction;
+            _playOrResumePlayAction = playOrResumePlayAction;
             _documentsPOFactory = documentsPOFactory;
-            _resumeOrShufflePlayAction.AttachDataContext(this);
+            _playOrResumePlayAction.AttachDataContext(this);
             
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddAlbumToTrackCollection(Album.Id));
             ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.For(_album));
@@ -169,14 +169,14 @@ namespace BMM.Core.ViewModels
         public bool ShowFollowButtons => false;
 
         public bool ShowShuffleOrResumeButton => Documents.OfType<TrackPO>().Any();
-        public string ShuffleOrResumeText => GetShowShuffleOrResumeText();
+        public string ShuffleOrResumeText => GetButtonText();
 
-        private string GetShowShuffleOrResumeText()
+        private string GetButtonText()
         {
             if (Album != null && Album.LatestTrackId.HasValue)
                 return TextSource[Translations.TrackCollectionViewModel_Resume];
             
-            return TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
+            return TextSource[Translations.DocumentsViewModel_Play];
         }
 
         public bool ShowPlayButton => false;

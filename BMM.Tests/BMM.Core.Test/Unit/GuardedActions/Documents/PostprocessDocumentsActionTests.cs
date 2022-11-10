@@ -19,17 +19,9 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
         IEnumerable<IDocumentPO>,
         IEnumerable<IDocumentPO>>
     {
-        private IListenedTracksStorage _listenedTracksStorageMock;
-
-        protected override void PrepareMocks()
-        {
-            base.PrepareMocks();
-            _listenedTracksStorageMock = Substitute.For<IListenedTracksStorage>();
-        }
-
         protected override PostprocessDocumentsAction CreateAction()
         {
-            return new(_listenedTracksStorageMock);
+            return new PostprocessDocumentsAction();
         }
 
         [Test]
@@ -58,68 +50,6 @@ namespace BMM.Core.Test.Unit.GuardedActions.Documents
             result
                 .Should()
                 .BeEmpty();
-        }
-
-        [Test]
-        public async Task IsListenedIsProperlyAssignedToTrack()
-        {
-            //Arrange
-            var notListenedTrack = new Track()
-            {
-                Id = 1
-            };
-
-            var listenedTrack = new Track()
-            {
-                Id = 2
-            };
-
-            var documents = new List<ITrackPO>
-            {
-                CreateTrackPO(notListenedTrack),
-                CreateTrackPO(listenedTrack)
-            };
-
-            _listenedTracksStorageMock
-                .TrackIsListened(notListenedTrack)
-                .Returns(false);
-
-            _listenedTracksStorageMock
-                .TrackIsListened(listenedTrack)
-                .Returns(true);
-
-            //Act
-            var result = await GuardedAction.ExecuteGuarded(documents);
-
-            //Assert
-            result
-                .Should()
-                .NotBeNullOrEmpty();
-
-            result
-                .Select(d => (ITrackPO)d)
-                .First(x => x.Track.Id == notListenedTrack.Id)
-                .Track
-                .IsListened
-                .Should()
-                .BeFalse();
-
-            result
-                .Select(d => (ITrackPO)d)
-                .First(x => x.Track.Id == listenedTrack.Id)
-                .Track
-                .IsListened
-                .Should()
-                .BeTrue();
-        }
-
-        private ITrackPO CreateTrackPO(Track track)
-        {
-            var trackPOSubstitute = Substitute.For<ITrackPO>();
-            trackPOSubstitute
-                .Track
-                .Returns(track);
-            return trackPOSubstitute;
         }
     }
 }

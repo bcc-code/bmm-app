@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Framework;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
@@ -135,7 +136,7 @@ namespace BMM.Core.ViewModels.Base
         protected override void DetachEvents()
         {
             base.DetachEvents();
-            Messenger.Unsubscribe<DownloadCanceledMessage>(_downloadCancelledMessageToken);
+            Messenger.UnsubscribeSafe<DownloadCanceledMessage>(_downloadCancelledMessageToken);
         }
 
         protected override void HandleFileDownloadStartedMessage(FileDownloadStartedMessage message)
