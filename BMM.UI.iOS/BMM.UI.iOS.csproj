@@ -385,6 +385,7 @@
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Reactive, Version=5.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263">
       <HintPath>..\packages\System.Reactive.5.0.0\lib\netstandard2.0\System.Reactive.dll</HintPath>
       <Private>True</Private>
@@ -414,9 +415,8 @@
     <Reference Include="WebP.Touch, Version=1.0.6628.22311, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WebP.Touch.1.0.8\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Essentials.1.5.3.2\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Essentials.1.7.3\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.IO.Compression" />
@@ -700,6 +700,7 @@
     <Compile Include="Application\Implementations\iOSUserDialogs.cs" />
     <Compile Include="Application\Implementations\Notifications\FirebaseMessagingDelegate.cs" />
     <Compile Include="Application\Implementations\Notifications\IosNotification.cs" />
+    <Compile Include="Application\Implementations\Notifications\iOSNotificationPermissionService.cs" />
     <Compile Include="Application\Implementations\Notifications\UserNotificationCenterDelegate.cs" />
     <Compile Include="Application\Implementations\Oidc\SafariAuthenticationSessionBrowser.cs" />
     <Compile Include="Application\Implementations\Oidc\BrowserSelector.cs" />

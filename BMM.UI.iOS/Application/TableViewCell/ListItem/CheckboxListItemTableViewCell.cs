@@ -3,6 +3,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using Foundation;
 using System;
+using BMM.Core.Models.POs.Other;
 using BMM.UI.iOS.Constants;
 
 namespace BMM.UI.iOS
@@ -16,7 +17,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<CheckboxListItemTableViewCell, CheckboxListItem>();
+                var set = this.CreateBindingSet<CheckboxListItemTableViewCell, CheckboxListItemPO>();
                 set.Bind(TitleLabel).To(listItem => listItem.Title);
                 set.Bind(TextLabel).To(listItem => listItem.Text);
                 set.Bind(Switch).To(listItem => listItem.IsChecked);

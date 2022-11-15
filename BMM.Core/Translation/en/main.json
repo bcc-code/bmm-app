@@ -314,7 +314,8 @@
     "ThemeHeader": "Dark mode",
     "ThemeText": "Choose between a light and a dark theme",
     "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled within your device settings. Please allow Push Notifications within your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Location for offline tracks",

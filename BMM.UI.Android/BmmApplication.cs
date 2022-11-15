@@ -1,9 +1,13 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Runtime;
 using AndroidX.AppCompat.App;
+using AndroidX.Lifecycle;
 using BMM.Core;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Activities;
@@ -21,7 +25,7 @@ namespace BMM.UI.Droid
 #else
     [Application(Debuggable = false)]
 #endif
-    public class BmmApplication : MvxAndroidApplication<AndroidSetup, App>
+    public class BmmApplication : MvxAndroidApplication<AndroidSetup, App>, ILifecycleObserver
     {
         public static bool RunsUiTest;
 
@@ -32,6 +36,7 @@ namespace BMM.UI.Droid
         {
             base.OnCreate();
             SetThemeIfNeeded();
+            ProcessLifecycleOwner.Get().Lifecycle.AddObserver(new DefaultLifecycleObserver());
         }
 
         private void SetThemeIfNeeded()
@@ -43,7 +48,7 @@ namespace BMM.UI.Droid
 
             AppCompatDelegate.DefaultNightMode = ThemeUtils.GetUIModeForTheme(theme);
         }
-
+        
         [Export("AudioIsPlaying")]
         public string AudioIsPlaying(string miniPlayer)
         {
@@ -89,6 +94,35 @@ namespace BMM.UI.Droid
         public void GoToLink(string link)
         {
             Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromInsideOfApp(new Uri(link));
+        }
+    }
+    
+    public class DefaultLifecycleObserver : Java.Lang.Object, IDefaultLifecycleObserver, ILifecycleObserver
+    {
+        public void OnCreate(ILifecycleOwner p0)
+        {
+        }
+
+        public void OnDestroy(ILifecycleOwner p0)
+        {
+        }
+
+        public void OnPause(ILifecycleOwner p0)
+        {
+        }
+
+        public void OnResume(ILifecycleOwner p0)
+        {
+        }
+
+        public void OnStart(ILifecycleOwner p0)
+        {
+            ApplicationStateWatcher.State = ApplicationState.Foreground;
+        }
+
+        public void OnStop(ILifecycleOwner p0)
+        {
+            ApplicationStateWatcher.State = ApplicationState.Background;
         }
     }
 }

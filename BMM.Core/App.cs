@@ -106,6 +106,7 @@ namespace BMM.Core
 #endif
 
             SetupLanguageBinder();
+            
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRememberedQueueInfoService, RememberedQueueInfoService>();
             Mvx.IoCProvider.RegisterType<IDeviceInfo, DeviceInfo>();
             Mvx.IoCProvider.RegisterTypeIfMissing<IUiDependentExecutor, NullDependentExecutor>();

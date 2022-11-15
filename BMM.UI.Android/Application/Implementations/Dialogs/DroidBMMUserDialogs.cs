@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Acr.UserDialogs;
 using BMM.Core.Implementations.Dialogs;
 
@@ -15,7 +16,7 @@ namespace BMM.UI.Droid.Application.Implementations.Dialogs
         
         public IDisposable ActionSheet(ActionSheetConfig config)
         {
-            foreach (var option in config.Options)
+            foreach (var option in config.Options.Where(o => !string.IsNullOrEmpty(o.ItemIcon)))
                 option.ItemIcon = option.ItemIcon.ToLower();
 
             return _userDialogs.ActionSheet(config);

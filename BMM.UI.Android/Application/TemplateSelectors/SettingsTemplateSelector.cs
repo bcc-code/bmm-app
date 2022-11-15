@@ -1,4 +1,5 @@
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Other;
 using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 
 namespace BMM.UI.Droid.Application.TemplateSelectors
@@ -22,7 +23,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
             return forItemObject switch
             {
                 ProfileListItem _ => SettingsViewTypes.ProfileListItem,
-                CheckboxListItem _ => SettingsViewTypes.CheckboxListItem,
+                CheckboxListItemPO _ => SettingsViewTypes.CheckboxListItem,
                 SectionHeader _ => SettingsViewTypes.HeaderListItem,
                 SelectableListItem _ => SettingsViewTypes.ListContentItem,
                 _ => -1

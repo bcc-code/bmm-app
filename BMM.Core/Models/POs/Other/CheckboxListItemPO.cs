@@ -1,12 +1,14 @@
 ﻿using System;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Other.Interfaces;
 using MvvmCross.Commands;
-using MvvmCross.ViewModels;
+using Newtonsoft.Json.Serialization;
 
-namespace BMM.Core.Models
+namespace BMM.Core.Models.POs.Other
 {
-    public class CheckboxListItem: MvxNotifyPropertyChanged, ICheckboxListItem
+    public class CheckboxListItemPO : BasePO, ICheckboxListItemPO
     {
-        public CheckboxListItem()
+        public CheckboxListItemPO()
         {
             OnSelected = new MvxCommand(() => IsChecked = !IsChecked);
         }
@@ -22,14 +24,16 @@ namespace BMM.Core.Models
             get => _isChecked;
             set
             {
-                _isChecked = value;
+                if (!SetProperty(ref _isChecked, value))
+                    return;
+                
                 RaisePropertyChanged();
-                OnChanged?.Invoke(value);
+                OnChanged?.Invoke(this);
             }
         }
 
         public IMvxCommand OnSelected { get; set; }
 
-        public Action<bool> OnChanged { get; set; }
+        public Action<CheckboxListItemPO> OnChanged { get; set; }
     }
 }
