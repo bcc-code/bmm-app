@@ -202,6 +202,7 @@
     <Compile Include="Application\ItemDecorators\Enums\ItemDecorationOrientation.cs" />
     <Compile Include="Application\ItemDecorators\SpacingItemDecorator.cs" />
     <Compile Include="Application\Listeners\AnimationUpdateListener.cs" />
+    <Compile Include="Application\Listeners\DefaultLifecycleObserver.cs" />
     <Compile Include="Application\Listeners\ImageServiceRecyclerViewScrollListener.cs" />
     <Compile Include="Application\Listeners\Interfaces\IRecyclerViewSnapHandler.cs" />
     <Compile Include="Application\Listeners\SnapOnScrollListener.cs" />

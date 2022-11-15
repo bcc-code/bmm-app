@@ -12,6 +12,7 @@ using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Activities;
 using BMM.UI.Droid.Application.Fragments;
+using BMM.UI.Droid.Application.Listeners;
 using BMM.UI.Droid.Utils;
 using Java.Interop;
 using MvvmCross;
@@ -94,35 +95,6 @@ namespace BMM.UI.Droid
         public void GoToLink(string link)
         {
             Mvx.IoCProvider.Resolve<IDeepLinkHandler>().OpenFromInsideOfApp(new Uri(link));
-        }
-    }
-    
-    public class DefaultLifecycleObserver : Java.Lang.Object, IDefaultLifecycleObserver, ILifecycleObserver
-    {
-        public void OnCreate(ILifecycleOwner p0)
-        {
-        }
-
-        public void OnDestroy(ILifecycleOwner p0)
-        {
-        }
-
-        public void OnPause(ILifecycleOwner p0)
-        {
-        }
-
-        public void OnResume(ILifecycleOwner p0)
-        {
-        }
-
-        public void OnStart(ILifecycleOwner p0)
-        {
-            ApplicationStateWatcher.State = ApplicationState.Foreground;
-        }
-
-        public void OnStop(ILifecycleOwner p0)
-        {
-            ApplicationStateWatcher.State = ApplicationState.Background;
         }
     }
 }
