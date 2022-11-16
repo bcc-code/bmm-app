@@ -1,13 +1,18 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Runtime;
 using AndroidX.AppCompat.App;
+using AndroidX.Lifecycle;
 using BMM.Core;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Activities;
 using BMM.UI.Droid.Application.Fragments;
+using BMM.UI.Droid.Application.Listeners;
 using BMM.UI.Droid.Utils;
 using Java.Interop;
 using MvvmCross;
@@ -21,7 +26,7 @@ namespace BMM.UI.Droid
 #else
     [Application(Debuggable = false)]
 #endif
-    public class BmmApplication : MvxAndroidApplication<AndroidSetup, App>
+    public class BmmApplication : MvxAndroidApplication<AndroidSetup, App>, ILifecycleObserver
     {
         public static bool RunsUiTest;
 
@@ -32,6 +37,7 @@ namespace BMM.UI.Droid
         {
             base.OnCreate();
             SetThemeIfNeeded();
+            ProcessLifecycleOwner.Get().Lifecycle.AddObserver(new DefaultLifecycleObserver());
         }
 
         private void SetThemeIfNeeded()
@@ -43,7 +49,7 @@ namespace BMM.UI.Droid
 
             AppCompatDelegate.DefaultNightMode = ThemeUtils.GetUIModeForTheme(theme);
         }
-
+        
         [Export("AudioIsPlaying")]
         public string AudioIsPlaying(string miniPlayer)
         {

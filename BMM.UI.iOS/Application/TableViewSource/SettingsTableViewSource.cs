@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Other;
 using Foundation;
 using UIKit;
 
@@ -32,7 +33,7 @@ namespace BMM.UI.iOS
             return new List<IHeightAwareTableCellType>
             {
                 new HeightAwareTableCellType(typeof(ProfileListItem), ProfileListItemTableViewCell.Key, (nfloat)156.5),
-                new HeightAwareTableCellType(typeof(CheckboxListItem), CheckboxListItemTableViewCell.Key, 88),
+                new HeightAwareTableCellType(typeof(CheckboxListItemPO), CheckboxListItemTableViewCell.Key, 88),
                 new HeightAwareTableCellType(typeof(SelectableListItem), TextListItemDetailTableViewCell.Key, 75),
                 new HeightAwareTableCellType(typeof(SectionHeader), SectionHeaderTableViewCell.Key, 56),
             };

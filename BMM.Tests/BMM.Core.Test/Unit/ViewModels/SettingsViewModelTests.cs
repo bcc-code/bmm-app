@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Caching;
@@ -18,6 +19,7 @@ using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Other;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
@@ -54,6 +56,8 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IDeviceInfo> _deviceInfo;
         private Mock<IFeatureSupportInfoService> _featureSupportInfoService;
         private Mock<IFeaturePreviewPermission> _featurePreviewPermission;
+        private Mock<INotificationPermissionService> _notificationPermissionService;
+        private Mock<IChangeNotificationSettingStateAction> _changeNotificationSettingStateAction;
 
         [SetUp]
         public void Init()
@@ -106,6 +110,8 @@ namespace BMM.Core.Test.Unit.ViewModels
             _remoteConfig = new Mock<IFirebaseRemoteConfig>();
             _featureSupportInfoService = new Mock<IFeatureSupportInfoService>();
             _featurePreviewPermission = new Mock<IFeaturePreviewPermission>();
+            _notificationPermissionService = new Mock<INotificationPermissionService>();
+            _changeNotificationSettingStateAction= new Mock<IChangeNotificationSettingStateAction>();
 
             _textSource.Setup(x => x.GetText(It.IsAny<string>())).Returns(String.Empty);
 
@@ -138,8 +144,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _userStorage.Object,
                 _remoteConfig.Object,
                 _featureSupportInfoService.Object,
-                _userDialogs.Object,
-                _featurePreviewPermission.Object);
+                _notificationPermissionService.Object,
+                _changeNotificationSettingStateAction.Object);
 
             settingsViewModel.TextSource = TextResource.Object;
             return settingsViewModel;
@@ -196,8 +202,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 .ListItems
                 .First(s => s.Title == Translations.SettingsViewModel_OptionDownloadMobileNetworkHeader);
 
-            ((CheckboxListItem)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
-            ((CheckboxListItem)item).IsChecked = true;
+            ((CheckboxListItemPO)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            ((CheckboxListItemPO)item).IsChecked = true;
 
             // Assert
             _settingsStorage.Verify(x => x.SetMobileNetworkDownloadAllowed(It.IsAny<bool>()), Times.Once);
@@ -216,8 +222,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 .ListItems
                 .First(s => s.Title == Translations.SettingsViewModel_OptionPushNotifications);
 
-            ((CheckboxListItem)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
-            ((CheckboxListItem)item).IsChecked = true;
+            ((CheckboxListItemPO)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
+            ((CheckboxListItemPO)item).IsChecked = true;
 
             // Assert
             _settingsStorage.Verify(x => x.SetPushNotificationsAllowed(It.IsAny<bool>()), Times.Once);

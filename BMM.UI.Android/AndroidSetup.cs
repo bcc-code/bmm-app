@@ -41,6 +41,7 @@ using BMM.UI.Droid.Application.Bindings;
 using BMM.UI.Droid.Application.DownloadManager;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.Implementations;
+using BMM.UI.Droid.Application.Implementations.App;
 using BMM.UI.Droid.Application.Implementations.Device;
 using BMM.UI.Droid.Application.Implementations.Dialogs;
 using BMM.UI.Droid.Application.Implementations.FileStorage;
@@ -180,6 +181,8 @@ namespace BMM.UI.Droid
 
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
             Mvx.IoCProvider.RegisterType<IFeatureSupportInfoService, DroidFeaturePreviewPermission>();
+            Mvx.IoCProvider.RegisterType<INotificationPermissionService, DroidNotificationPermissionService>();
+            Mvx.IoCProvider.RegisterType<ISystemSettingsService, SystemSettingsService>();
             
             InitializeMediaPlayer();
         }

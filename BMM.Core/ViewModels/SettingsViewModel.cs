@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.DebugInfo.Interfaces;
+using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -24,6 +25,7 @@ using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross;
@@ -53,12 +55,13 @@ namespace BMM.Core.ViewModels
         private readonly IUserStorage _userStorage;
         private readonly IFirebaseRemoteConfig _remoteConfig;
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
-        private readonly IUserDialogs _userDialogs;
-        private readonly IFeaturePreviewPermission _featurePreviewPermission;
+        private readonly INotificationPermissionService _notificationPermissionService;
+        private readonly IChangeNotificationSettingStateAction _changeNotificationSettingStateAction;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
         private string _profilePictureUrl;
+        private CheckboxListItemPO _pushNotificationCheckboxListItem;
 
         public List<IListItem> ListItems { get => _listItems; set => SetProperty(ref _listItems, value); }
 
@@ -85,8 +88,8 @@ namespace BMM.Core.ViewModels
             IUserStorage userStorage,
             IFirebaseRemoteConfig remoteConfig,
             IFeatureSupportInfoService featureSupportInfoService,
-            IUserDialogs userDialogs,
-            IFeaturePreviewPermission featurePreviewPermission)
+            INotificationPermissionService notificationPermissionService,
+            IChangeNotificationSettingStateAction changeNotificationSettingStateAction)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -107,8 +110,8 @@ namespace BMM.Core.ViewModels
             _userStorage = userStorage;
             _remoteConfig = remoteConfig;
             _featureSupportInfoService = featureSupportInfoService;
-            _userDialogs = userDialogs;
-            _featurePreviewPermission = featurePreviewPermission;
+            _notificationPermissionService = notificationPermissionService;
+            _changeNotificationSettingStateAction = changeNotificationSettingStateAction;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -116,6 +119,7 @@ namespace BMM.Core.ViewModels
         {
             base.ViewCreated();
             PropertyChanged += OnPropertyChanged;
+            ApplicationStateWatcher.ApplicationStateChanged += ApplicationStateChanged;
             _storageManager.Storages.CollectionChanged += OnStoragesCollectionChanged;
         }
 
@@ -123,9 +127,18 @@ namespace BMM.Core.ViewModels
         {
             base.ViewDestroy(viewFinishing);
             PropertyChanged -= OnPropertyChanged;
+            ApplicationStateWatcher.ApplicationStateChanged -= ApplicationStateChanged;
             _storageManager.Storages.CollectionChanged -= OnStoragesCollectionChanged;
         }
 
+        private async void ApplicationStateChanged(ApplicationState appState)
+        {
+            if (_pushNotificationCheckboxListItem == null)
+                return;
+            
+            _pushNotificationCheckboxListItem.IsChecked = await GetIsPushNotificationAllowed();
+        }
+        
         private async void OnStoragesCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             await BuildSections();
@@ -190,45 +203,48 @@ namespace BMM.Core.ViewModels
             var items = new List<IListItem>
             {
                 new SectionHeader {ShowDivider = false, Title = TextSource[Translations.SettingsViewModel_HeadlineSettings]},
-                new CheckboxListItem
+                new CheckboxListItemPO
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionAutoplayHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionAutoplayText],
                     IsChecked = await _settingsStorage.GetAutoplayEnabled(),
-                    OnChanged = isChecked => _settingsStorage.SetAutoplayEnabled(isChecked)
+                    OnChanged = sender => _settingsStorage.SetAutoplayEnabled(sender.IsChecked)
                 },
-                new CheckboxListItem
+                new CheckboxListItemPO
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionStreakHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionStreakText],
                     IsChecked = !await _settingsStorage.GetStreakHidden(),
-                    OnChanged = isChecked => _settingsStorage.SetStreakHidden(!isChecked)
+                    OnChanged = sender => _settingsStorage.SetStreakHidden(!sender.IsChecked)
                 },
-                new CheckboxListItem
+                new CheckboxListItemPO
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkText],
                     IsChecked = await _networkSettings.GetMobileNetworkDownloadAllowed(),
-                    OnChanged = mobileNetworkDownloadAllowed =>
+                    OnChanged = sender =>
                     {
-                        _settingsStorage.SetMobileNetworkDownloadAllowed(mobileNetworkDownloadAllowed);
+                        _settingsStorage.SetMobileNetworkDownloadAllowed(sender.IsChecked);
                         _mediaDownloader.SynchronizeOfflineTracks();
-                        Messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, mobileNetworkDownloadAllowed));
-                    }
-                },
-                new CheckboxListItem
-                {
-                    Title = TextSource[Translations.SettingsViewModel_OptionPushNotifications],
-                    Text = TextSource[Translations.SettingsViewModel_OptionPushNotificationsSubtitle],
-                    IsChecked = await _networkSettings.GetPushNotificationsAllowed(),
-                    OnChanged = notificationsEnabled =>
-                    {
-                        _settingsStorage.SetPushNotificationsAllowed(notificationsEnabled);
-                        Messenger.Publish(new PushNotificationsStatusChangedMessage(this, notificationsEnabled));
+                        Messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, sender.IsChecked));
                     }
                 }
             };
 
+            _pushNotificationCheckboxListItem = new CheckboxListItemPO
+            {
+                Title = TextSource[Translations.SettingsViewModel_OptionPushNotifications],
+                Text = TextSource[Translations.SettingsViewModel_OptionPushNotificationsSubtitle],
+                IsChecked = await GetIsPushNotificationAllowed(),
+                OnChanged = async sender =>
+                {
+                    await _changeNotificationSettingStateAction.ExecuteGuarded(sender.IsChecked);
+                    sender.IsChecked = await GetIsPushNotificationAllowed();
+                }
+            };
+            
+            items.Add(_pushNotificationCheckboxListItem);
+                
             if (_storageManager.HasMultipleStorageSupport)
             {
                 _externalStorage = new SelectableListItem
@@ -248,6 +264,11 @@ namespace BMM.Core.ViewModels
                 });
 
             return items;
+        }
+
+        private async Task<bool> GetIsPushNotificationAllowed()
+        {
+            return await _networkSettings.GetPushNotificationsAllowed() && await _notificationPermissionService.CheckIsNotificationPermissionGranted();
         }
 
         private string CurrentStorageInfo(IFileStorage storage)

@@ -102,6 +102,7 @@ namespace BMM.UI.iOS
             Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
             
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IFeatureSupportInfoService, iOSFeatureSupportInfoService>();
+            Mvx.IoCProvider.RegisterType<INotificationPermissionService, iOSNotificationPermissionService>();
             RegisterMediaPlayer();
         }
 

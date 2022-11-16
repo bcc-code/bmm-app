@@ -58,8 +58,7 @@ namespace BMM.Core.ViewModels
             IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
             IFirebaseRemoteConfig config,
-            IListeningStreakPOFactory listeningStreakPOFactory,
-            IStatisticsClient statisticsClient)
+            IListeningStreakPOFactory listeningStreakPOFactory)
         {
             _streakObserver = streakObserver;
             _settings = settings;

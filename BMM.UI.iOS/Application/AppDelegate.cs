@@ -103,6 +103,18 @@ namespace BMM.UI.iOS
         {
             Mvx.IoCProvider?.Resolve<IDownloadQueue>()?.AppWasKilled();
         }
+        
+        public override void DidEnterBackground(UIApplication application)
+        {
+            base.DidEnterBackground(application);
+            ApplicationStateWatcher.State = ApplicationState.Background;
+        }
+
+        public override void WillEnterForeground(UIApplication application)
+        {
+            base.WillEnterForeground(application);
+            ApplicationStateWatcher.State = ApplicationState.Foreground;
+        }
 
         public override async void HandleIntent(UIApplication application, INIntent intent, Action<INIntentResponse> completionHandler)
         {

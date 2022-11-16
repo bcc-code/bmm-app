@@ -9,6 +9,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.Notifications;
 using BMM.Core.Translation;
 using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.Platforms.Android;
@@ -21,6 +22,7 @@ namespace BMM.UI.Droid.Application.Actions
         private readonly IUserDialogs _userDialogs;
         private readonly ISdkVersionHelper _sdkVersionHelper;
         private readonly IAnalytics _analytics;
+        private readonly INotificationPermissionService _notificationPermissionService;
 
         private IBMMLanguageBinder LanguageBinder => BMMLanguageBinderLocator.TextSource;
 
@@ -28,19 +30,35 @@ namespace BMM.UI.Droid.Application.Actions
             IMvxAndroidCurrentTopActivity mvxAndroidCurrentTopActivity,
             IUserDialogs userDialogs,
             ISdkVersionHelper sdkVersionHelper,
-            IAnalytics analytics)
+            IAnalytics analytics,
+            INotificationPermissionService notificationPermissionService)
         {
             _mvxAndroidCurrentTopActivity = mvxAndroidCurrentTopActivity;
             _userDialogs = userDialogs;
             _sdkVersionHelper = sdkVersionHelper;
             _analytics = analytics;
+            _notificationPermissionService = notificationPermissionService;
         }
         
         protected override async Task Execute()
         {
+            await SetNotificationPermission();
+            ShowBackgroundActivityRestrictedMessage();
+        }
+
+        private async Task SetNotificationPermission()
+        {
+            if (await _notificationPermissionService.CheckIsNotificationPermissionGranted())
+                return;
+
+            await _notificationPermissionService.RequestNotificationPermission(false);
+        }
+
+        private void ShowBackgroundActivityRestrictedMessage()
+        {
             if (!_sdkVersionHelper.SupportsBackgroundActivityRestriction)
                 return;
-            
+
             var activityManager = (ActivityManager)_mvxAndroidCurrentTopActivity.Activity.GetSystemService(Context.ActivityService);
             bool backgroundRestricted = activityManager!.IsBackgroundRestricted;
 
