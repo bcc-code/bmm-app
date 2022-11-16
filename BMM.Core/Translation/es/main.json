@@ -314,7 +314,8 @@
     "ThemeHeader": "Modo oscuro",
     "ThemeText": "Elige entre un tema claro y uno oscuro",
     "SiriShortcutsHeader": "Accesos directos de Siri",
-    "SiriShortcutsText": "Añadir accesos directos de Siri para BMM a tu dispositivo"
+    "SiriShortcutsText": "Añadir accesos directos de Siri para BMM a tu dispositivo",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Ubicación de las pistas sin conexión",
