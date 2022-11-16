@@ -315,7 +315,7 @@
     "ThemeText": "Izberi med temno in svetlo temo",
     "SiriShortcutsHeader": "Bližnjice za Siri",
     "SiriShortcutsText": "Dodaj bližnjice za Siri za BMM na svojo napravo",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Ne moremo omogočiti potisnih sporočil, ker so onemogočena v nastavitvah. Za uporabo te funkcije\nomogoči potisna sporočila v nastavitvah naprave. "
   },
   "StorageManagementViewModel": {
     "Title": "Lokacija za skladbe brez povezave",
