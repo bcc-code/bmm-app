@@ -314,7 +314,8 @@
     "ThemeHeader": "Mode sombre",
     "ThemeText": "Choisir entre le mode clair et sombre",
     "SiriShortcutsHeader": "Raccourcis Siri",
-    "SiriShortcutsText": "Ajouter des raccourcis Siri pour BMM à votre appareil"
+    "SiriShortcutsText": "Ajouter des raccourcis Siri pour BMM à votre appareil",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Emplacement des titres hors-ligne",
