@@ -20,7 +20,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("my_recycler_view");
+                return c => c.Id("DocumentsRecyclerView");
             }
         }
     }

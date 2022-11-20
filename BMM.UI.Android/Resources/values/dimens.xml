@@ -60,6 +60,8 @@
     <dimen name="explore_contributor_cardview_dimen">150dp</dimen>
     <dimen name="contributor_image_dimen">44dp</dimen>
 
+    <dimen name="top_songs_circle_size">80dp</dimen>
+    <dimen name="top_songs_circle_corner_radius">40dp</dimen>
     <dimen name="playlist_icon_dimen">48dp</dimen>
     <dimen name="friends_icon_dimen">20dp</dimen>
     <dimen name="shared_playlist_icon">24dp</dimen>

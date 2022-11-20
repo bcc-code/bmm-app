@@ -4,6 +4,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.YearInReview.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Models.POs.YearInReview.Interfaces;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
@@ -13,17 +14,27 @@ namespace BMM.Core.ViewModels
 {
     public class YearInReviewViewModel : BaseViewModel, IYearInReviewViewModel
     {
+        public const int BottomImageMargin = 30;
+        public const float ImageWidthToHeightRatio = 0.7f;
+        public const float ImageHeightToViewHeightRatio = 0.6f;
+        public const int HeaderHeight = 56;
+        
         private readonly IInitializeYearInReviewViewModelAction _initializeYearInReviewViewModelAction;
         private int _currentPosition;
         private string _description;
 
         public YearInReviewViewModel(
             IInitializeYearInReviewViewModelAction initializeYearInReviewViewModelAction,
-            IShareYearInReviewAction shareYearInReviewAction)
+            IShareYearInReviewAction shareYearInReviewAction,
+            IAnalytics analytics)
         {
             _initializeYearInReviewViewModelAction = initializeYearInReviewViewModelAction;
             _initializeYearInReviewViewModelAction.AttachDataContext(this);
-            ShareCommand = new MvxAsyncCommand(() => shareYearInReviewAction.ExecuteGuarded(CurrentElement.Url));
+            ShareCommand = new MvxAsyncCommand(() =>
+            {
+                analytics.LogEvent(Event.YearInReviewShareClicked);
+                return shareYearInReviewAction.ExecuteGuarded(CurrentElement.Url);
+            });
         }
 
         public IMvxAsyncCommand ShareCommand { get; }

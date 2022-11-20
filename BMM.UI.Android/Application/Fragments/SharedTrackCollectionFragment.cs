@@ -18,7 +18,7 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.SharedTrackCollectionFragment")]
     public class SharedTrackCollectionFragment : BaseFragment<SharedTrackCollectionViewModel>
     {
-        protected override int FragmentId => Resource.Layout.fragment_tracklist;
+        protected override int FragmentId => Resource.Layout.fragment_shared_trackcollection;
 
         protected override bool IsTabBarVisible => false;
 

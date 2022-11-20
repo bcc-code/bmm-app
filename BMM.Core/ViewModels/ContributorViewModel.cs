@@ -8,7 +8,6 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.Contributors;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
@@ -19,7 +18,7 @@ namespace BMM.Core.ViewModels
 {
     public class ContributorViewModel : LoadMoreDocumentsViewModel, IMvxViewModel<int>, ITrackListViewModel
     {
-        private readonly MvxAsyncCommand _shufflePlayCommand;
+        private readonly MvxAsyncCommand _playCommand;
         private int _id;
 
         private Contributor _contributor;
@@ -57,20 +56,16 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleOrResumeButton => true;
-        public string ShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
-        public bool ShowPlayButton => false;
-
+        public bool ShowPlayButton => true;
+        public string PlayButtonText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
         public bool ShowTrackCount => true;
-
-        public bool ShowFollowSharedPlaylistButton => false;
 
         public ContributorViewModel(
             IShuffleContributorAction shuffleContributorAction,
             ITrackPOFactory trackPOFactory)
             : base(trackPOFactory)
         {
-            _shufflePlayCommand = new MvxAsyncCommand(async () =>
+            _playCommand = new MvxAsyncCommand(async () =>
             {
                 await shuffleContributorAction.ExecuteGuarded(new ShuffleActionParameter(_id, PlaybackOriginString));
             });
@@ -87,7 +82,7 @@ namespace BMM.Core.ViewModels
                 });
         }
 
-        public override IMvxCommand ShufflePlayCommand => _shufflePlayCommand;
+        public override IMvxCommand PlayCommand => _playCommand;
         
         public override IEnumerable<string> PlaybackOrigin()
         {

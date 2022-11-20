@@ -51,6 +51,9 @@ namespace BMM.Api.Implementation.Models
         
         [EnumMember(Value = "year_in_review")]
         YearInReview,
+        
+        [EnumMember(Value = "top_songs_collection")]
+        TopSongsCollection,
 
         [EnumMember(Value = "unsupported")]
         Unsupported

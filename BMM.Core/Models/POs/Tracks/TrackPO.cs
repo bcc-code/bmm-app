@@ -11,6 +11,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross.Commands;

@@ -572,6 +572,7 @@
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ListeningStreakDetailsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\TopSongsCollectionViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\YearInReviewViewController.xib" />
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <None Include="app.config" />
@@ -878,6 +879,10 @@
     <Compile Include="Application\ViewController\ThemeSettingsViewController.designer.cs">
       <DependentUpon>ThemeSettingsViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\ViewController\TopSongsCollectionViewController.cs" />
+    <Compile Include="Application\ViewController\TopSongsCollectionViewController.designer.cs">
+      <DependentUpon>TopSongsCollectionViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\ViewController\UserSetupViewController.cs" />
     <Compile Include="Application\ViewController\UserSetupViewController.designer.cs">
       <DependentUpon>UserSetupViewController.cs</DependentUpon>
@@ -1176,6 +1181,8 @@
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\icon_album.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconChevronRight.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconChevronRight.imageset\IconChevronRight.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\icon_arrow_down.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\Contents.json" />
@@ -1333,9 +1340,10 @@
     <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Union.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review@1x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_dark@1x.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@1x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@3x.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\BMM.Core\Translation\bg\main.json">

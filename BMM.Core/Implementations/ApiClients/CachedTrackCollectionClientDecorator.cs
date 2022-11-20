@@ -63,5 +63,15 @@ namespace BMM.Core.Implementations.ApiClients
         {
             return _client.Unfollow(id);
         }
+
+        public Task<TopSongsCollection> GetTopSongs()
+        {
+            return _client.GetTopSongs();
+        }
+
+        public Task AddTopSongsToFavourites()
+        {
+            return _client.AddTopSongsToFavourites();
+        }
     }
 }

@@ -108,7 +108,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
             CollapsingToolbar = view.FindViewById<CollapsingToolbarLayout>(Resource.Id.collapsing_toolbar);
 
-            RecyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
+            RecyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.DocumentsRecyclerView);
             InitRecyclerView(RecyclerView);
             SetStatusBarColor(ColorOfUppermostFragment());
             Bind();

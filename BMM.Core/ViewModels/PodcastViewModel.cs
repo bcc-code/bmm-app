@@ -58,13 +58,9 @@ namespace BMM.Core.ViewModels
         public bool UseCircularImage => true;
 
         public bool ShowFollowButtons => true;
-        public bool ShowShuffleOrResumeButton => true;
-        public string ShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
-        public bool ShowPlayButton => false;
-
+        public bool ShowPlayButton => true;
+        public string PlayButtonText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
         public bool ShowTrackCount => false;
-
-        public bool ShowFollowSharedPlaylistButton => false;
 
         private bool _isFollowing;
         public bool IsFollowing
@@ -182,7 +178,7 @@ namespace BMM.Core.ViewModels
             });
         }
 
-        public override IMvxCommand ShufflePlayCommand => _shufflePodcastCommand;
+        public override IMvxCommand PlayCommand => _shufflePodcastCommand;
 
         public override async Task Load()
         {

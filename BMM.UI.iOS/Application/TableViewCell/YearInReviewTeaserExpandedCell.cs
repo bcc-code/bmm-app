@@ -44,6 +44,9 @@ namespace BMM.UI.iOS
                     .For(v => v.BindTitle())
                     .To(po => po.YearInReviewTeaser.PlaylistName);
                 
+                set.Bind(PlaylistButton)
+                    .To(po => po.OpenTopSongsCommand);
+                
                 set.Bind(SeeReviewButton)
                     .To(po => po.SeeReviewCommand);
                 
@@ -83,7 +86,6 @@ namespace BMM.UI.iOS
         {
             if (Superview is UITableView tableView)
             {
-                Debug.WriteLine(tableView);
                 tableView.ReloadRows(
                     tableView.IndexPathForCell(this).EncloseInArray(),
                     UITableViewRowAnimation.Automatic);

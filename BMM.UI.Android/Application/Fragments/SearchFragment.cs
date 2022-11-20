@@ -110,7 +110,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
             // currently not possible to bind scrolling inside of the axml
             // see supported bindings: https://www.mvvmcross.com/documentation/platform/android/android-recyclerview
-            _recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.my_recycler_view);
+            _recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.DocumentsRecyclerView);
         }
 
         public override void OnStart()

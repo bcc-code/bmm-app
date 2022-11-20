@@ -54,7 +54,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             Assert.True(ViewModel.IsFullyLoaded);
             Assert.IsEmpty(ViewModel.Documents);
             Assert.That(ViewModel.SearchTerm, Is.Null.Or.Empty);
-            Assert.IsNotNull(ViewModel.ShufflePlayCommand);
+            Assert.IsNotNull(ViewModel.PlayCommand);
 
             Assert.IsEmpty(ViewModel.SearchSuggestions);
             Assert.IsEmpty(ViewModel.SearchHistory);
@@ -85,7 +85,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             Assert.IsNotNull(ViewModel.LoadMoreCommand);
             Assert.IsEmpty(ViewModel.Documents);
             Assert.That(ViewModel.SearchTerm, Is.Null.Or.Empty);
-            Assert.IsNotNull(ViewModel.ShufflePlayCommand);
+            Assert.IsNotNull(ViewModel.PlayCommand);
 
             Assert.IsEmpty(ViewModel.SearchSuggestions);
             Assert.IsEmpty(ViewModel.SearchHistory);
@@ -118,7 +118,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             Assert.IsNotNull(ViewModel.LoadMoreCommand);
             Assert.IsEmpty(ViewModel.Documents);
             Assert.That(ViewModel.SearchTerm, Is.Null.Or.Empty);
-            Assert.IsNotNull(ViewModel.ShufflePlayCommand);
+            Assert.IsNotNull(ViewModel.PlayCommand);
 
             Assert.IsEmpty(ViewModel.SearchSuggestions);
             Assert.AreEqual(3, ViewModel.SearchHistory.Count);

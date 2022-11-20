@@ -55,10 +55,23 @@ namespace BMM.UI.iOS
 
         protected override Task<bool> ShowTabViewController(UIViewController viewController, MvxTabPresentationAttribute attribute, MvxViewModelRequest request)
         {
+            var menuViewController = (MenuViewController)TabBarViewController;
+            var vcToShow = menuViewController
+                ?.ViewControllers
+                ?.OfType<ContainmentViewController>()
+                .FirstOrDefault(x => x.EnclosedViewController.GetType().Name == viewController.GetType().Name);
+
+            if (vcToShow != null)
+            {
+                menuViewController.SelectedViewController = vcToShow;
+                return Task.FromResult(true);
+            }
+            
             var containmentViewController = Activator.CreateInstance<ContainmentViewController>();
             var containmentNavigationController = Activator.CreateInstance<ContainmentNavigationViewController>();
             containmentViewController.RegisterViewController(containmentNavigationController);
-            containmentNavigationController.RegisterViewController(viewController as IBaseViewController);
+            containmentViewController.EnclosedViewController = (IBaseViewController)viewController;
+            containmentNavigationController.RegisterViewController((IBaseViewController)viewController);
             containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
             return base.ShowTabViewController(containmentViewController, attribute, request);
         }

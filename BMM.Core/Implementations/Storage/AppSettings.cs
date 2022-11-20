@@ -15,6 +15,12 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(SelectedTheme));
         }
 
+        public static bool YearInReviewShown
+        {
+            get => GetValueOrDefault(nameof(YearInReviewShown), false);
+            set => AddOrUpdateValue(value, nameof(YearInReviewShown));
+        }
+        
         private static void AddOrUpdateValue<TValue>(TValue value, string settingsKey)
         {
             if (value is string stringValue)

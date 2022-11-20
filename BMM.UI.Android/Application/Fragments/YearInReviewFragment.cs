@@ -22,10 +22,6 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.YearInReviewFragment")]
     public class YearInReviewFragment : BaseDialogFragment<YearInReviewViewModel>, IRecyclerViewSnapHandler
     {
-        private const int HeaderHeight = 56;
-        private const int BottomImageMargin = 32;
-        private const float ImageWidthToHeightRatio = 0.77f;
-        private const float ImageHeightToViewHeightRatio = 0.6f;
         protected override int FragmentId => Resource.Layout.fragment_year_in_review;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -38,22 +34,25 @@ namespace BMM.UI.Droid.Application.Fragments
             int screenHeight = metrics.HeightPixels;
             int screenWidth = metrics.WidthPixels;
             
-            int horizontalMargin = Resources.GetDimensionPixelSize(Resource.Dimension.margin_large) * 2;
-            float imageHeight = (screenHeight - HeaderHeight.DpToPixels()) * ImageHeightToViewHeightRatio;
-            float itemHeight = imageHeight + BottomImageMargin.DpToPixels();
-            int itemWidth = screenWidth - horizontalMargin;
-            double imageWidth = Math.Min(imageHeight * ImageWidthToHeightRatio, itemWidth);
+            int horizontalMargin = Resources.GetDimensionPixelSize(Resource.Dimension.margin_small) * 2;
+            float imageHeight = (screenHeight - YearInReviewViewModel.HeaderHeight.DpToPixels()) * YearInReviewViewModel.ImageHeightToViewHeightRatio;
+            float itemHeight = imageHeight + YearInReviewViewModel.BottomImageMargin.DpToPixels();
+            float itemWidth = imageHeight * YearInReviewViewModel.ImageWidthToHeightRatio;
+            double imageWidth = itemWidth - horizontalMargin;
+
+            int recyclerViewHorizontalPadding = (screenWidth - (int)itemWidth) / 2;
             
             var adapter = new YearInReviewRecyclerAdapter(
                 (IMvxAndroidBindingContext)BindingContext,
                 itemWidth,
                 itemHeight,
-                imageWidth - Resources.GetDimensionPixelSize(Resource.Dimension.margin_small) * 2,
+                imageWidth,
                 imageHeight);
             
             var yearInReviewRecyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.YearInReviewRecyclerView);
             yearInReviewRecyclerView!.Adapter = adapter;
             yearInReviewRecyclerView!.UpdateHeight((int)itemHeight);
+            yearInReviewRecyclerView!.SetPadding(recyclerViewHorizontalPadding, 0, recyclerViewHorizontalPadding, 0);
             
             var pagerSnapHelper = new PagerSnapHelper();
             pagerSnapHelper.AttachToRecyclerView(yearInReviewRecyclerView);

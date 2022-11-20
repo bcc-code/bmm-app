@@ -1,4 +1,3 @@
-using System.Collections;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
@@ -7,6 +6,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross.Commands;
 
@@ -37,9 +37,8 @@ namespace BMM.Core.Implementations.Factories.Tracks
             _listenedTracksStorage = listenedTracksStorage;
         }
         
-        public TrackPO Create(
+        public ITrackPO Create(
             ITrackInfoProvider trackInfoProvider,
-            
             IMvxAsyncCommand<Document> optionsClickedCommand,
             Track track)
         {

@@ -23,6 +23,13 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="keK-oa-jbs" customClass="Separator">
+                    <rect key="frame" x="0.0" y="59" width="393" height="1"/>
+                    <color key="backgroundColor" red="0.72549019609999998" green="0.76470588240000004" blue="0.80000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="kxi-kZ-943"/>
+                    </constraints>
+                </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gPt-pI-Xv2">
                     <rect key="frame" x="0.0" y="75" width="393" height="500"/>
                     <color key="backgroundColor" name="BackgroundPrimaryColor"/>
@@ -64,9 +71,12 @@
             <color key="backgroundColor" name="BackgroundPrimaryColor"/>
             <constraints>
                 <constraint firstItem="KPx-94-Czz" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="1Ps-jL-fl7"/>
+                <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="keK-oa-jbs" secondAttribute="trailing" id="AbN-IP-D5d"/>
                 <constraint firstItem="8Ub-np-5L7" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="Cao-hq-0Dm"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="gPt-pI-Xv2" secondAttribute="trailing" id="ChP-jd-tR1"/>
                 <constraint firstItem="gPt-pI-Xv2" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" id="Jgh-Kz-7Ck"/>
+                <constraint firstItem="keK-oa-jbs" firstAttribute="top" secondItem="VFw-uV-y3f" secondAttribute="top" id="Oiu-lC-ult"/>
+                <constraint firstItem="keK-oa-jbs" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" id="QGd-cj-N6t"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="8Ub-np-5L7" secondAttribute="trailing" constant="16" id="R95-1z-lxF"/>
                 <constraint firstItem="KPx-94-Czz" firstAttribute="top" secondItem="8Ub-np-5L7" secondAttribute="bottom" constant="16" id="Yhj-Kf-lqx"/>
                 <constraint firstAttribute="trailing" secondItem="KPx-94-Czz" secondAttribute="trailing" constant="16" id="fCQ-e5-Ocr"/>

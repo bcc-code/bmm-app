@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
-using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Helpers;
@@ -26,7 +24,6 @@ using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
-using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
 using MvvmCross;
 using MvvmCross.Base;
@@ -88,9 +85,7 @@ namespace BMM.Core.ViewModels.Base
             set => SetProperty(ref _isInitialized, value);
         }
 
-        public virtual IMvxCommand ShufflePlayCommand { get; private set; }
-
-        public IMvxCommand PlayCommand { get; private set; }
+        public virtual IMvxCommand PlayCommand { get; private set; }
 
         public IBmmObservableCollection<IDocumentPO> Documents
         {
@@ -131,17 +126,6 @@ namespace BMM.Core.ViewModels.Base
             });
 
             PlayCommand = new ExceptionHandlingCommand(async () =>
-            {
-                var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
-                var tracks = Documents.OfType<TrackPO>().Select(t => (IMediaTrack)t.Track).ToList();
-
-                if (tracks.Any())
-                {
-                    await mediaPlayer.Play(tracks, tracks.First(), PlaybackOriginString);
-                }
-            });
-
-            ShufflePlayCommand = new ExceptionHandlingCommand(async () =>
             {
                 var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
                 var tracks = Documents.OfType<TrackPO>().Select(t => (IMediaTrack)t.Track).ToList();

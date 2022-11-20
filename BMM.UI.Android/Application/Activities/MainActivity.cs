@@ -61,7 +61,8 @@ namespace BMM.UI.Droid.Application.Activities
             "/speeches",
             "/contributors",
             "/featured",
-            "/browse/.*"
+            "/browse/.*",
+            "/year-in-review"
         }
     )]
     public class MainActivity : BaseFragmentActivity<MainActivityViewModel>

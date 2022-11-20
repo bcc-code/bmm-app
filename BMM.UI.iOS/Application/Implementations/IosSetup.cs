@@ -122,8 +122,7 @@ namespace BMM.UI.iOS
                 {
                     DiskCacheDuration = ImageServiceConstants.DiskCacheDuration
                 }),
-                MaxMemoryCacheSize = ImageServiceConstants.ImageCacheMemorySize,
-                HttpHeadersTimeout = 25
+                MaxMemoryCacheSize = ImageServiceConstants.ImageCacheMemorySize
             });
         }
 

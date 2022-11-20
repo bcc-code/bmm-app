@@ -28,5 +28,9 @@
         public const string SiriFromKaarePlayed = "Siri From Kåre played";
         public const string SiriDifferentLanguage = "Different Siri language";
         public const string BottomBarButtonClicked = "Bottom Bar button clicked";
+        public const string YearInReviewShareClicked = "Year in review share clicked";
+        public const string YearInReviewOpened = "Year in review opened";
+        public const string YearInReviewPlaylistOpened = "Year in review playlist opened";
+        public const string YearInReviewPlaylistAddedToFavorites = "Year in review playlist added to favorites";
     }
 }
