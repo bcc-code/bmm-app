@@ -22,6 +22,8 @@ namespace BMM.UI.Droid.Application.Fragments.Base
         : MvxDialogFragment<TViewModel>, INotifyPropertyChanged
         where TViewModel : BaseViewModel
     {
+        private Toolbar _toolbar;
+
         protected BaseDialogFragment()
         {
             RetainInstance = true;
@@ -31,6 +33,7 @@ namespace BMM.UI.Droid.Application.Fragments.Base
 
         protected virtual int? WindowAnimationsStyle => Resource.Style.FadeInAlertDialogAnimation;
         public virtual bool ShouldShowKeyboardOnStart => false;
+        protected Toolbar Toolbar => _toolbar ??= FragmentView.FindViewById<Toolbar>(Resource.Id.toolbar);
 
         protected abstract int FragmentId { get; }
 
@@ -52,7 +55,7 @@ namespace BMM.UI.Droid.Application.Fragments.Base
             base.OnCreateView(inflater, container, savedInstanceState);
             FragmentView = this.BindingInflate(FragmentId, null);
             SetSize();
-            InitToolbar();
+            InitToolbar(Toolbar);
 
             if (ShouldShowKeyboardOnStart)
                 Dialog.Window.SetSoftInputMode(SoftInput.AdjustResize | SoftInput.StateAlwaysVisible);
@@ -72,11 +75,10 @@ namespace BMM.UI.Droid.Application.Fragments.Base
         
         protected virtual Color DialogBackgroundColor { get; private set; }
         
-        private void InitToolbar()
+        protected virtual void InitToolbar(Toolbar toolbar)
         {
             string title = ViewModel.TextSource[ViewModelUtils.GetVMTitleKey(ViewModel.GetType())];
             
-            var toolbar = FragmentView.FindViewById<Toolbar>(Resource.Id.toolbar);
             if (toolbar == null)
                 return;
             

@@ -9,24 +9,19 @@ namespace BMM.UI.iOS.CollectionViewSource
 {
     public class YearInReviewSource : MvxCollectionViewSource, IUICollectionViewDelegateFlowLayout
     {
-        private readonly int _collectionViewMargin;
         private readonly ICollectionViewSnapHandler _collectionViewSnapHandler;
-        private readonly int _itemSpacing;
         private int _currentPageIndex;
 
         public YearInReviewSource(UICollectionView collectionView,
             NSString defaultCellIdentifier,
-            int itemSpacing,
-            int collectionViewMargin,
             ICollectionViewSnapHandler collectionViewSnapHandler) : base(collectionView, defaultCellIdentifier)
         {
-            _itemSpacing = itemSpacing;
-            _collectionViewMargin = collectionViewMargin;
             _collectionViewSnapHandler = collectionViewSnapHandler;
         }
 
         public nfloat ItemWidth { get; set; }
         public nfloat ItemHeight { get; set; }
+        public nfloat CollectionViewMargin { get; set; }
 
         [Export("collectionView:layout:sizeForItemAtIndexPath:")]
         public CGSize GetSizeForItem(UICollectionView collectionView, UICollectionViewLayout layout, NSIndexPath indexPath)
@@ -38,26 +33,26 @@ namespace BMM.UI.iOS.CollectionViewSource
         public UIEdgeInsets GetInsetForSection(UICollectionView collectionView, UICollectionViewLayout layout, nint section)
         {
             return new UIEdgeInsets(0,
-                _collectionViewMargin,
+                CollectionViewMargin,
                 0,
-                _collectionViewMargin);
+                CollectionViewMargin);
         }
 
         [Export("collectionView:layout:minimumLineSpacingForSectionAtIndex:")]
         public nfloat GetMinimumLineSpacingForSection(UICollectionView collectionView, UICollectionViewLayout layout, nint section)
         {
-            return _itemSpacing;
+            return 0;
         }
 
         [Export("scrollViewWillEndDragging:withVelocity:targetContentOffset:")]
         public void WillEndDragging(UIScrollView scrollView, CGPoint velocity, ref CGPoint targetContentOffset)
         {
-            nfloat pageWidth = ItemWidth + _itemSpacing;
+            nfloat pageWidth = ItemWidth;
             int newPageIndex;
 
             if (velocity.X > 0)
             {
-                nfloat contentWidthWithoutCollectionMargins = scrollView.ContentSize.Width - 2 * _collectionViewMargin;
+                nfloat contentWidthWithoutCollectionMargins = scrollView.ContentSize.Width - 2 * CollectionViewMargin;
                 var maxPageIndex = (int)Math.Ceiling(contentWidthWithoutCollectionMargins / pageWidth) - 1;
                 newPageIndex = Math.Min(_currentPageIndex + 1, maxPageIndex);
             }

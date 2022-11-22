@@ -32,5 +32,11 @@ namespace BMM.Api.Implementation.Clients.Contracts
 
         /// <summary>Unfollows shared track collection</summary>
         Task<bool> Unfollow(int id);
+        
+        /// <summary>Returns top songs for authorized user</summary>
+        Task<TopSongsCollection> GetTopSongs();
+        
+        /// <summary>Add top songs playlist to favourites</summary>
+        Task AddTopSongsToFavourites();
     }
 }

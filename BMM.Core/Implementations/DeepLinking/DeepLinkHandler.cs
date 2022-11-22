@@ -121,6 +121,14 @@ namespace BMM.Core.Implementations.DeepLinking
         {
             if (!_viewPresenter.IsViewModelShown<T>())
                 await _navigationService.Navigate<T>();
+
+            SendEventIfNeeded(typeof(T));
+        }
+
+        private void SendEventIfNeeded(Type type)
+        {
+            if (type == typeof(YearInReviewViewModel))
+                _analytics.LogEvent(Event.YearInReviewOpened);
         }
 
         private async Task NavigateTo<TVm, TParam>(TParam param) where TVm : IMvxViewModel<TParam>

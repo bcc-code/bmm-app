@@ -50,7 +50,7 @@ namespace BMM.UI.iOS
             set.Bind(PlaylistEmptyHeadlineLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_EmptyTitle);
             set.Bind(PlaylistEmptyTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_EmptySubline);
 
-            set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
+            set.Bind(ShuffleButton).To(vm => vm.PlayCommand);
             set.Bind(ShuffleButton).For("Title").To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.MyTracksViewModel_ShufflePlay);
 
             // Fix the height of the table-header manually by watching the trigger

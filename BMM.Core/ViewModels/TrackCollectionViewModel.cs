@@ -13,7 +13,6 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Messages;
-using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ViewModels.MyContent;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;

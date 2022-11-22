@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/PlaylistIcon"
+            android:layout_width="@dimen/top_songs_circle_size"
+            android:layout_height="@dimen/top_songs_circle_size"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_large"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:cardBackgroundColor="@color/top_songs_icon_background"
+            local:cardElevation="0dp"
+            local:cardCornerRadius="@dimen/top_songs_circle_corner_radius">
+        <ImageView
+                android:layout_width="@dimen/playlist_icon_dimen"
+                android:layout_height="@dimen/playlist_icon_dimen"
+                android:src="@drawable/icon_playlist"
+                android:tint="@color/black"
+                android:layout_gravity="center" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+            android:id="@+id/PlaylistName"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:gravity="center_horizontal"
+            style="@style/Heading2"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/PlaylistIcon"
+            local:MvxBind="Text Name" />
+
+    <View
+            android:id="@+id/Divider"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginTop="@dimen/margin_large"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/PlaylistName"
+            android:background="@color/separator_color" />
+
+    <TextView
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xmedium"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginLeft="@dimen/track_padding"
+            android:gravity="start"
+            style="@style/Subtitle3"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/Divider"
+            local:MvxBind="Text TrackCountString; Visibility InvertedVisibility(And(IsLoading, EqualTo(Documents.Count, 0)))"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

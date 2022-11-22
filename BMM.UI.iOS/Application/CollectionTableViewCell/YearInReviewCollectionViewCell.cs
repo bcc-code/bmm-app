@@ -14,7 +14,7 @@ namespace BMM.UI.iOS
 {
     public partial class YearInReviewCollectionViewCell : MvxCollectionViewCell
     {
-        public static readonly NSString Key = new NSString(nameof(YearInReviewCollectionViewCell));
+        public static readonly NSString Key = new(nameof(YearInReviewCollectionViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(YearInReviewCollectionViewCell), NSBundle.MainBundle);
         private string _shadowColor;
         
@@ -50,6 +50,7 @@ namespace BMM.UI.iOS
                 _shadowColor = value;
                 var systemColor = ColorConverters.FromHex(value);
                 ImageContainerView.Layer.ShadowColor = systemColor.ToPlatformColor().CGColor;
+                YearInReviewImageView.BackgroundColor = systemColor.ToPlatformColor();
             }
         }
 

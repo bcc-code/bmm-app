@@ -34,9 +34,9 @@ namespace BMM.UI.iOS
             set.Bind(AlbumCoverImageView).For(v => v.ImagePath).To(vm => vm.Album.Cover);
             set.Bind(TitleLabel).To(vm => vm.Album.Title);
             set.Bind(DescriptionLabel).To(vm => vm.Album.Description);
-            set.Bind(PlayButton).To(vm => vm.ShufflePlayCommand);
-            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.ShuffleOrResumeText);
-            set.Bind(PlayButton).For(v => v.BindVisible()).To(vm => vm.ShowShuffleOrResumeButton);
+            set.Bind(PlayButton).To(vm => vm.PlayCommand);
+            set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.PlayButtonText);
+            set.Bind(PlayButton).For(v => v.BindVisible()).To(vm => vm.ShowPlayButton);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 
             set.Apply();
@@ -68,10 +68,10 @@ namespace BMM.UI.iOS
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             AlbumTable.ResizeHeaderView();
-            if (e.PropertyName == nameof(AlbumViewModel.ShowShuffleOrResumeButton))
+            if (e.PropertyName == nameof(AlbumViewModel.ShowPlayButton))
             {
-                StackViewToSeparatorConstraint.Constant = ViewModel.ShowShuffleOrResumeButton ? StackViewToSeparatorConstraint.Constant : 0;
-                ButtonStackViewHeight.Constant = ViewModel.ShowShuffleOrResumeButton ? ButtonStackViewHeight.Constant : 0;
+                StackViewToSeparatorConstraint.Constant = ViewModel.ShowPlayButton ? StackViewToSeparatorConstraint.Constant : 0;
+                ButtonStackViewHeight.Constant = ViewModel.ShowPlayButton ? ButtonStackViewHeight.Constant : 0;
             }
         }
 

@@ -82,6 +82,7 @@
             android:text="Get the vibe going when travelling to camp. These songs will definitely get you in the right camp mood!"
             android:layout_marginBottom="4dp"
             app:MvxBind="Text Description; Visibility VisibilityString(Description)"/>
+    
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="wrap_content"
@@ -152,7 +153,7 @@
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
            android:layout_marginBottom="23dp"
-           app:MvxBind="Visibility Visibility(ShowShuffleOrResumeButton)">
+           app:MvxBind="Visibility Visibility(ShowPlayButton)">
           <Button
                   android:id="@+id/shuffle_button"
                   android:text="Shuffle"
@@ -161,23 +162,9 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   app:MvxBind="
-                    Click ShufflePlayCommand;
+                    Click PlayCommand;
                     Visibility InvertedVisibility(IsEmpty);
-                    Text ShuffleOrResumeText" />
-        </RelativeLayout>
-        <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="23dp"
-                app:MvxBind="Visibility Visibility(ShowPlayButton)">
-            <Button
-                    android:text="Shuffle"
-                    style="@style/IconButton_Primary"
-                    android:drawableLeft="@drawable/icon_play_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:MvxLang="Text DocumentsViewModel_Play"
-                    app:MvxBind="Click PlayCommand; Visibility InvertedVisibility(IsEmpty)"/>
+                    Text PlayButtonText" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -186,6 +173,7 @@
             android:layout_marginTop="10dp"
             android:layout_height="1dp"
             android:background="@color/separator_color"/>
+    
     <RelativeLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"

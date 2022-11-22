@@ -18,13 +18,6 @@ namespace BMM.UI.iOS
     [MvxModalPresentation(WrapInNavigationController = true, ModalPresentationStyle = UIModalPresentationStyle.PageSheet)]
     public partial class YearInReviewViewController : BaseViewController<YearInReviewViewModel>, ICollectionViewSnapHandler
     {
-        private const int CollectionViewMargin = 40;
-        private const int ItemSpacing = 0;
-        private const int BottomImageMargin = 30;
-        private const float ImageHeightToViewHeightRatio = 0.6f;
-        private const float ImageWidthToHeightRatio = 0.77f;
-        private const int HeaderHeight = 56;
-        
         public YearInReviewViewController() : base(null)
         {
             Instance = this;
@@ -44,13 +37,17 @@ namespace BMM.UI.iOS
         public override void ViewDidLayoutSubviews()
         {
             base.ViewDidLayoutSubviews();
-            var imageHeight = (View!.Bounds.Height - HeaderHeight) * ImageHeightToViewHeightRatio;
-            var itemHeight = imageHeight + BottomImageMargin;
-            var itemWidth = View!.Bounds.Width - 2 * CollectionViewMargin;
-            double imageWidth = Math.Min(imageHeight * ImageWidthToHeightRatio, itemWidth);
 
+            var imageHeight = (View!.Bounds.Height - YearInReviewViewModel.HeaderHeight) * YearInReviewViewModel.ImageHeightToViewHeightRatio;
+            var itemHeight = imageHeight + YearInReviewViewModel.BottomImageMargin;
+            var itemWidth = imageHeight * YearInReviewViewModel.ImageWidthToHeightRatio;
+            double imageWidth = itemWidth;
+
+            var recyclerViewHorizontalPadding = (View!.Bounds.Width - (int)itemWidth) / 2;
+            
             _source.ItemHeight = itemHeight;
             _source.ItemWidth = itemWidth;
+            _source.CollectionViewMargin = recyclerViewHorizontalPadding;
             YearInReviewCollectionViewConstraint.Constant = itemHeight;
             YearInReviewCollectionViewCell.ImageHeight = imageHeight;
             YearInReviewCollectionViewCell.ImageWidth = (float)imageWidth;
@@ -63,8 +60,6 @@ namespace BMM.UI.iOS
             _source = new YearInReviewSource(
                 YearInReviewCollectionView,
                 YearInReviewCollectionViewCell.Key,
-                ItemSpacing,
-                CollectionViewMargin,
                 this);
             
             YearInReviewCollectionView.RegisterNibForCell(YearInReviewCollectionViewCell.Nib, YearInReviewCollectionViewCell.Key);

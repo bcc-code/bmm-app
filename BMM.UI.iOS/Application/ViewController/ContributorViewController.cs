@@ -33,7 +33,7 @@ namespace BMM.UI.iOS
             set.Bind(CircleCoverImage).For(v => v.ImagePath).To(vm => vm.Contributor.Cover);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
             set.Bind(NameLabel).To(vm => vm.Contributor.Name);
-            set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
+            set.Bind(ShuffleButton).To(vm => vm.PlayCommand);
             set.Bind(ShuffleButton)
                 .For(v => v.BindTitle())
                 .To(vm => vm.TextSource[Translations.DocumentsViewModel_Shuffle]);

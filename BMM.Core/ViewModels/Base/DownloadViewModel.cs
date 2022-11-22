@@ -60,8 +60,7 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual bool ShowPlaylistIcon => false;
 
-        public virtual bool ShowFollowSharedPlaylistButton => false;
-        public virtual string ShuffleOrResumeText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
+        public virtual string PlayButtonText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
 
         public abstract string Image { get; }
 
@@ -69,9 +68,7 @@ namespace BMM.Core.ViewModels.Base
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleOrResumeButton => true;
-        public bool ShowPlayButton => false;
-
+        public bool ShowPlayButton => true;
         public bool ShowTrackCount => true;
 
         public string DownloadingText => !IsDownloading

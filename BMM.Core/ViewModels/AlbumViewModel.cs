@@ -35,7 +35,7 @@ namespace BMM.Core.ViewModels
 
         public IMvxCommand ShareCommand { get; }
 
-        public override IMvxCommand ShufflePlayCommand => _playOrResumePlayAction.Command;
+        public override IMvxCommand PlayCommand => _playOrResumePlayAction.Command;
 
         private Album _album;
 
@@ -49,7 +49,7 @@ namespace BMM.Core.ViewModels
                 RaisePropertyChanged(() => Description);
                 RaisePropertyChanged(() => Image);
                 RaisePropertyChanged(() => ShowImage);
-                RaisePropertyChanged(() => ShuffleOrResumeText);
+                RaisePropertyChanged(() => PlayButtonText);
             }
         }
 
@@ -111,7 +111,7 @@ namespace BMM.Core.ViewModels
         public override async Task Load()
         {
             await base.Load();
-            await RaisePropertyChanged(() => ShowShuffleOrResumeButton);
+            await RaisePropertyChanged(() => ShowPlayButton);
         }
 
         public string ReadableDuration(long durationInMilliseconds)
@@ -148,7 +148,7 @@ namespace BMM.Core.ViewModels
 
         private void UpdateView(object sender, NotifyCollectionChangedEventArgs e)
         {
-            RaisePropertyChanged(() => ShowShuffleOrResumeButton);
+            RaisePropertyChanged(() => ShowPlayButton);
         }
 
         public bool ShowSharingInfo => false;
@@ -168,8 +168,8 @@ namespace BMM.Core.ViewModels
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowShuffleOrResumeButton => Documents.OfType<TrackPO>().Any();
-        public string ShuffleOrResumeText => GetButtonText();
+        public bool ShowPlayButton => Documents.OfType<TrackPO>().Any();
+        public string PlayButtonText => GetButtonText();
 
         private string GetButtonText()
         {
@@ -179,11 +179,7 @@ namespace BMM.Core.ViewModels
             return TextSource[Translations.DocumentsViewModel_Play];
         }
 
-        public bool ShowPlayButton => false;
-
         public bool ShowTrackCount => true;
-
-        public bool ShowFollowSharedPlaylistButton => false;
 
         public override string TrackCountString => Documents.OfType<AlbumPO>().Any() ? TextSource.GetText(Translations.AlbumViewModel_PluralAlbums, Documents.OfType<AlbumPO>().Count()) : base.TrackCountString;
     }

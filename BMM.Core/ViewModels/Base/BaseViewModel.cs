@@ -12,7 +12,6 @@ using BMM.Core.Constants;
 using BMM.Core.GuardedActions.TrackOptions.Interfaces;
 using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.Helpers;
-using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Dialogs;
 using BMM.Core.Implementations.Downloading;
@@ -20,10 +19,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Implementations.Tracks.Interfaces;
-using BMM.Core.Implementations.UI;
-using BMM.Core.Messages;
 using BMM.Core.Models.POs.Albums;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
@@ -40,7 +36,6 @@ using MvvmCross.IoC;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
-using Xamarin.Essentials;
 
 namespace BMM.Core.ViewModels.Base
 {

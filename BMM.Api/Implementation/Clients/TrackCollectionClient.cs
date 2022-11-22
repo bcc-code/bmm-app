@@ -101,5 +101,17 @@ namespace BMM.Api.Implementation.Clients
             uri.SetParameter("id", id);
             return await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
         }
+
+        public Task<TopSongsCollection> GetTopSongs()
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionTopSongs);
+            return Get<TopSongsCollection>(uri);
+        }
+
+        public async Task AddTopSongsToFavourites()
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionTopSongs);
+            await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
+        }
     }
 }

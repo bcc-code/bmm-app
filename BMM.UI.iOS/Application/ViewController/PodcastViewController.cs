@@ -59,7 +59,7 @@ namespace BMM.UI.iOS
             set.Bind(FollowButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.PodcastViewModel_Follow);
 
             set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_ShufflePlay);
-            set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
+            set.Bind(ShuffleButton).To(vm => vm.PlayCommand);
 
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);

@@ -70,18 +70,18 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="›" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LAS-Nc-xaW">
-                                <rect key="frame" x="251" y="307" width="11" height="32.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <size key="shadowOffset" width="0.0" height="0.0"/>
-                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconChevronRight" translatesAutoresizingMaskIntoConstraints="NO" id="Jib-c2-5EX">
+                                <rect key="frame" x="248" y="313" width="24" height="24"/>
+                                <color key="tintColor" name="LabelPrimaryColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="YGC-7t-9wr"/>
+                                    <constraint firstAttribute="width" constant="24" id="lce-kf-6eg"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundSecondaryColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Wvn-F1-wxy" secondAttribute="trailing" constant="4" id="0sW-B3-udt"/>
-                            <constraint firstItem="LAS-Nc-xaW" firstAttribute="centerY" secondItem="Wvn-F1-wxy" secondAttribute="centerY" constant="-2" id="1Rt-88-Bdv"/>
                             <constraint firstItem="MBy-tz-jeg" firstAttribute="top" secondItem="twU-W8-rQv" secondAttribute="top" constant="36" id="6IP-JN-3g7"/>
                             <constraint firstAttribute="trailing" secondItem="qjg-NM-0zr" secondAttribute="trailing" constant="20" id="9Tu-Ry-qAS"/>
                             <constraint firstItem="qjg-NM-0zr" firstAttribute="top" secondItem="tXD-Lg-uoZ" secondAttribute="bottom" constant="8" id="9gL-YJ-LDG"/>
@@ -89,11 +89,12 @@
                             <constraint firstItem="Wvn-F1-wxy" firstAttribute="top" secondItem="XoA-Qr-mAc" secondAttribute="bottom" constant="32" id="CgM-xS-Xh8"/>
                             <constraint firstAttribute="bottom" secondItem="Wvn-F1-wxy" secondAttribute="bottom" constant="4" id="Da4-ZC-XpU"/>
                             <constraint firstItem="XoA-Qr-mAc" firstAttribute="top" secondItem="qjg-NM-0zr" secondAttribute="bottom" constant="12" id="FfI-pE-jUE"/>
+                            <constraint firstItem="Jib-c2-5EX" firstAttribute="centerY" secondItem="Wvn-F1-wxy" secondAttribute="centerY" id="PSY-EH-eHk"/>
+                            <constraint firstAttribute="trailing" secondItem="Jib-c2-5EX" secondAttribute="trailing" constant="16" id="QzE-f9-Bdj"/>
                             <constraint firstAttribute="trailing" secondItem="tXD-Lg-uoZ" secondAttribute="trailing" constant="20" id="U9i-NB-fBh"/>
                             <constraint firstAttribute="trailing" secondItem="Gt6-st-l34" secondAttribute="trailing" constant="12" id="ZNa-bL-S6A"/>
                             <constraint firstItem="Gt6-st-l34" firstAttribute="top" secondItem="twU-W8-rQv" secondAttribute="top" constant="12" id="hqM-Vr-PII"/>
                             <constraint firstItem="qjg-NM-0zr" firstAttribute="leading" secondItem="twU-W8-rQv" secondAttribute="leading" constant="20" id="nCe-N4-WcQ"/>
-                            <constraint firstItem="LAS-Nc-xaW" firstAttribute="trailing" secondItem="Wvn-F1-wxy" secondAttribute="trailing" constant="-22" id="rTF-xJ-cdE"/>
                             <constraint firstItem="MBy-tz-jeg" firstAttribute="centerX" secondItem="twU-W8-rQv" secondAttribute="centerX" id="tlX-mt-yTM"/>
                             <constraint firstItem="tXD-Lg-uoZ" firstAttribute="top" secondItem="MBy-tz-jeg" secondAttribute="bottom" constant="4" id="vWy-oK-pUJ"/>
                             <constraint firstItem="tXD-Lg-uoZ" firstAttribute="leading" secondItem="twU-W8-rQv" secondAttribute="leading" constant="20" id="xoW-fo-I0U"/>
@@ -126,6 +127,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="IconChevronRight" width="24" height="24"/>
         <image name="IconDownArrow" width="24" height="24"/>
         <image name="IconPlaylist" width="24" height="24"/>
         <image name="YearInReview" width="200" height="124"/>

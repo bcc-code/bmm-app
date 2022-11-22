@@ -10,6 +10,7 @@ namespace BMM.Core.Models.POs.YearInReview.Interfaces
         bool IsExpanded { get; }
         IMvxCommand ExpandOrCollapseCommand { get; }
         IMvxCommand SeeReviewCommand { get; }
+        IMvxAsyncCommand OpenTopSongsCommand { get; }
         IBmmInteraction ExpandOrCollapseInteraction { get; }
     }
 }

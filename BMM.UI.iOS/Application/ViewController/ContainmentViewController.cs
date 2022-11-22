@@ -21,6 +21,8 @@ namespace BMM.UI.iOS
         public ContainmentViewController() : base(nameof(ContainmentViewController), null)
         { }
 
+        public IBaseViewController EnclosedViewController { get; set; }
+        
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

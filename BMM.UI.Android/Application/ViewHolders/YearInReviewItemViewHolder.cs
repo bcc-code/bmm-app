@@ -62,6 +62,8 @@ namespace BMM.UI.Droid.Application.ViewHolders
             set
             {
                 _shadowColor = value;
+                
+                YearInReviewImageView.SetBackgroundColor(_shadowColor);
 
                 if (Build.VERSION.SdkInt < BuildVersionCodes.P)
                     return;

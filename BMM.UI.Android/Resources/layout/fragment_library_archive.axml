@@ -9,7 +9,7 @@
     <include layout="@layout/collapsing_toolbar" />
 
     <mvvmcross.droidx.recyclerview.MvxRecyclerView
-        android:id="@+id/my_recycler_view"
+        android:id="@+id/DocumentsRecyclerView"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

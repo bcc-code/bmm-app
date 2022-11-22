@@ -172,6 +172,7 @@
     <Compile Include="Application\Fragments\MyContentFragment.cs" />
     <Compile Include="Application\Fragments\MyTracksFragment.cs" />
     <Compile Include="Application\Fragments\ThemeSettingsFragment.cs" />
+    <Compile Include="Application\Fragments\TopSongsCollectionFragment.cs" />
     <Compile Include="Application\Fragments\TrackOptionsFragment.cs" />
     <Compile Include="Application\Fragments\YearInReviewFragment.cs" />
     <Compile Include="Application\Helpers\AndroidSupportVersionChecker.cs" />
@@ -393,6 +394,11 @@
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_aslaksen_phone.png" />
     <AndroidResource Include="Resources\drawable-mdpi\podcast_background_fra_kaare.png" />
     <AndroidResource Include="Resources\drawable-mdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-hdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-mdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-xhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-xxhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-xxxhdpi\year_in_review_teaser.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\aslaksen.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\fra_kaare_til_buk_teaser_image.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right_light.png" />
@@ -633,11 +639,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_shared_trackcollection.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_share_trackcollection.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_theme_settings.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_top_songs.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
@@ -694,6 +708,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_top_songs_collection_header.xml" />
     <AndroidResource Include="Resources\layout\listitem_trackcollection.axml" />
     <AndroidResource Include="Resources\drawable\seekbar_miniplayer.xml">
       <SubType>Designer</SubType>
@@ -720,6 +735,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\tracklist_fragment_base.xml" />
     <AndroidResource Include="Resources\layout\track_download_status.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

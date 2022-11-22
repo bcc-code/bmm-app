@@ -50,7 +50,6 @@
         android:orientation="horizontal"
         android:clipToPadding="false"
         android:layout_marginTop="@dimen/margin_xmedium"
-        android:paddingHorizontal="@dimen/margin_large"
         local:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         local:layout_constraintTop_toBottomOf="@+id/Separator"
         local:MvxItemTemplate="@layout/listitem_year_in_review"

@@ -99,7 +99,9 @@
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintBottom_toBottomOf="parent"
-            local:MvxBind="Text YearInReviewTeaser.PlaylistName"
+            local:MvxBind="
+                Text YearInReviewTeaser.PlaylistName;
+                Click OpenTopSongsCommand"
             style="@style/Button_Primary" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

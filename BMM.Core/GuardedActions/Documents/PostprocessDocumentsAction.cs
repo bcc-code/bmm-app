@@ -4,10 +4,7 @@ using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Documents.Interfaces;
-using BMM.Core.Implementations.TrackListenedObservation;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
-using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Models.POs.Tracks.Interfaces;
 
 namespace BMM.Core.GuardedActions.Documents

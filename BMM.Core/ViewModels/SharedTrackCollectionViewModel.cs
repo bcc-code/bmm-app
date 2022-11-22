@@ -47,8 +47,6 @@ namespace BMM.Core.ViewModels
             _addToMyPlaylistAction.AttachDataContext(this);
         }
 
-        public override bool ShowFollowSharedPlaylistButton => true;
-
         public IMvxAsyncCommand AddToMyPlaylistCommand => _addToMyPlaylistAction.Command;
 
         public string SharingSecret { get; private set; }

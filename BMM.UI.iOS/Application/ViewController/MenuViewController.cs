@@ -44,12 +44,10 @@ namespace BMM.UI.iOS
             set
             {
                 base.SelectedViewController = value;
-                var actualViewController = (IBaseViewController)base.SelectedViewController
-                    .ChildViewControllers
-                    .First()
-                    .ChildViewControllers
-                    .First();
-                ViewModel.LogBottomBarButtonClicked(actualViewController.ViewModelName);
+                string viewModelName = ((ContainmentViewController)SelectedViewController)
+                    .EnclosedViewController
+                    .ViewModelName;
+                ViewModel.LogBottomBarButtonClicked(viewModelName);
             }
         }
         

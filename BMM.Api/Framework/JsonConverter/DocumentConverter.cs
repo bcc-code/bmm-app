@@ -59,6 +59,9 @@ namespace BMM.Api.Framework.JsonConverter
                 
                 case "year_in_review":
                     return new YearInReviewTeaser();
+                
+                case "top_songs_collection":
+                    return new TopSongsCollection();
             }
 
             return new UnsupportedDocument();

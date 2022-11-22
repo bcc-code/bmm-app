@@ -1,5 +1,4 @@
-﻿using BMM.Api.Implementation.Models;
-using BMM.Core.Models.POs.Albums;
+﻿using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Carousels;
 using BMM.Core.Models.POs.ContinueListening;
@@ -12,7 +11,6 @@ using BMM.Core.Models.POs.Podcasts;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Models.POs.YearInReview;
-using BMM.Core.ViewModels;
 using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 
 namespace BMM.UI.Droid.Application.TemplateSelectors
@@ -37,6 +35,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int ContinueListeningCollection = 21;
         public const int YearInReviewTeaserCollapsed = 22;
         public const int YearInReviewTeaserExpanded = 23;
+        public const int TopSongsCollectionHeader = 24;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>

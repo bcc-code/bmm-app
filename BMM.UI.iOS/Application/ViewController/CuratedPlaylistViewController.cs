@@ -42,7 +42,7 @@ namespace BMM.UI.iOS
             set.Bind(TitleLabel).To(vm => vm.CuratedPlaylist.Title);
             set.Bind(DescriptionLabel).To(vm => vm.CuratedPlaylist.Description);
 
-            set.Bind(ShuffleButton).To(vm => vm.ShufflePlayCommand);
+            set.Bind(ShuffleButton).To(vm => vm.PlayCommand);
             set.Bind(ShuffleButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_ShufflePlay);;
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 
