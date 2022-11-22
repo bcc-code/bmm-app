@@ -501,7 +501,7 @@
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
+    "PlaysPlural": "{0}  speelt",
     "PlaysSingular": "{0} play",
     "AddToMyPlaylist": "Add playlist to favorites",
     "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
