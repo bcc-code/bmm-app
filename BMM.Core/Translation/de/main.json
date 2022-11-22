@@ -314,7 +314,8 @@
     "ThemeHeader": "Nachtmodus",
     "ThemeText": "Wähle zwischen einem hellen und einem dunklen Design",
     "SiriShortcutsHeader": "Siri-Kurzbefehle",
-    "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM "
+    "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM ",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",

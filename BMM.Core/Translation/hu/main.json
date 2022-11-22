@@ -314,7 +314,8 @@
     "ThemeHeader": "Sötét üzemmód",
     "ThemeText": "Válasszon a világos és a sötét téma között",
     "SiriShortcutsHeader": "Siri-parancsok",
-    "SiriShortcutsText": "Siri-parancsok hozzáadása a BMM-re"
+    "SiriShortcutsText": "Siri-parancsok hozzáadása a BMM-re",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Offline zeneszámok tárhelye",

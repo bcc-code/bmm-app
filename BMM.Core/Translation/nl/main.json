@@ -314,7 +314,8 @@
     "ThemeHeader": "Dark modus",
     "ThemeText": "Kies tussen licht en donker thema",
     "SiriShortcutsHeader": "Siri afkortingen",
-    "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device "
+    "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device ",
+    "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren."
   },
   "StorageManagementViewModel": {
     "Title": "Locatie voor offline nummers",

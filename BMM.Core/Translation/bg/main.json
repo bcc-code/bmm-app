@@ -314,7 +314,8 @@
     "ThemeHeader": "Dark mode",
     "ThemeText": "Choose between a light and a dark theme",
     "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device"
+    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Място за песни/речи извън линия",

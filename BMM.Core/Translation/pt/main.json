@@ -314,7 +314,8 @@
     "ThemeHeader": "Modo escuro",
     "ThemeText": "Escolha entre um tema claro e um escuro",
     "SiriShortcutsHeader": "Atalhos da Siri",
-    "SiriShortcutsText": "Adicione atalhos da Siri para BMM ao seu dispositivo"
+    "SiriShortcutsText": "Adicione atalhos da Siri para BMM ao seu dispositivo",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Localização para faixas offline",

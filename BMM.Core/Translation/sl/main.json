@@ -314,7 +314,8 @@
     "ThemeHeader": "Temen način",
     "ThemeText": "Izberi med temno in svetlo temo",
     "SiriShortcutsHeader": "Bližnjice za Siri",
-    "SiriShortcutsText": "Dodaj bližnjice za Siri za BMM na svojo napravo"
+    "SiriShortcutsText": "Dodaj bližnjice za Siri za BMM na svojo napravo",
+    "PushNotificationsGoToSettings": "Ne moremo omogočiti potisnih sporočil, ker so onemogočena v nastavitvah. Za uporabo te funkcije\nomogoči potisna sporočila v nastavitvah naprave. "
   },
   "StorageManagementViewModel": {
     "Title": "Lokacija za skladbe brez povezave",

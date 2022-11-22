@@ -314,7 +314,8 @@
     "ThemeHeader": "Pimeä asetus",
     "ThemeText": "Valitse valoisan ja pimeän teeman väliltä",
     "SiriShortcutsHeader": "Siriin",
-    "SiriShortcutsText": "Lisää Sirilinkit laitteesi BMM:än"
+    "SiriShortcutsText": "Lisää Sirilinkit laitteesi BMM:än",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Offline kappaleiden tallennus sijainti",

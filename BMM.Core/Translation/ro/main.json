@@ -314,7 +314,8 @@
     "ThemeHeader": "Modul întunecat",
     "ThemeText": "Alege între o vizualizare luminoasă sau întunecată",
     "SiriShortcutsHeader": "Scurtături pentru Siri",
-    "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM"
+    "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM",
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
