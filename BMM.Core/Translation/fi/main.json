@@ -500,10 +500,10 @@
     "ShareTitle": "Vuosikatsaus"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "Title": "Suosituimmat laulut",
+    "PlaysPlural": "{0} soittokertaa",
+    "PlaysSingular": "{0} soittokerta",
+    "AddToMyPlaylist": "Lisää soittolista suosikkeihin",
+    "SuccessfullyAddedToPlaylists": "Lisätty suosikkeihin"
   }
 }
