@@ -500,9 +500,9 @@
     "ShareTitle": "Pregled leta"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
+    "Title": "Najljubše pesmi",
+    "PlaysPlural": "{0} predvajanih",
+    "PlaysSingular": "{0} predvajana",
     "AddToMyPlaylist": "Add playlist to favorites",
     "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
   }
