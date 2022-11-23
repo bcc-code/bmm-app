@@ -503,7 +503,7 @@
     "Title": "Najljubše pesmi",
     "PlaysPlural": "{0} predvajanih",
     "PlaysSingular": "{0} predvajana",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "AddToMyPlaylist": "Dodaj seznam predvajanja k najljubšim",
+    "SuccessfullyAddedToPlaylists": "Uspešno dodano k najljubšim"
   }
 }
