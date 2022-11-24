@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using BMM.Core.Implementations;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Interfaces;
-using BMM.UI.iOS.NewMediaPlayer;
 using MvvmCross.Platforms.Ios.Presenters;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
@@ -74,6 +73,12 @@ namespace BMM.UI.iOS
             containmentNavigationController.RegisterViewController((IBaseViewController)viewController);
             containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
             return base.ShowTabViewController(containmentViewController, attribute, request);
+        }
+
+        protected override async Task<bool> ShowModalViewController(UIViewController viewController, MvxModalPresentationAttribute attribute, MvxViewModelRequest request)
+        {
+            await CloseModalViewControllers();
+            return await base.ShowModalViewController(viewController, attribute, request);
         }
 
         protected override MvxNavigationController CreateNavigationController(UIViewController viewController)
