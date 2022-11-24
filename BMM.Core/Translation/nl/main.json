@@ -501,9 +501,9 @@
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top songs",
-    "PlaysPlural": "{0}  speelt",
+    "PlaysPlural": "{0}  plays",
     "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "AddToMyPlaylist": "Voeg playlist toe aan favorieten",
+    "SuccessfullyAddedToPlaylists": "Toegevoegd aan favorieten"
   }
 }
