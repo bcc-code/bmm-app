@@ -498,5 +498,12 @@
     "Title": "Tvoj pregled leta",
     "Share": "Deli s prijatelji",
     "ShareTitle": "Pregled leta"
+  },
+  "TopSongsCollectionViewModel": {
+    "Title": "Najljubše pesmi",
+    "PlaysPlural": "{0} predvajanih",
+    "PlaysSingular": "{0} predvajana",
+    "AddToMyPlaylist": "Dodaj seznam predvajanja k najljubšim",
+    "SuccessfullyAddedToPlaylists": "Uspešno dodano k najljubšim"
   }
 }

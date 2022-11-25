@@ -498,5 +498,12 @@
     "Title": "Your Year in Review",
     "Share": "Share with your friends",
     "ShareTitle": "Year in Review"
+  },
+  "TopSongsCollectionViewModel": {
+    "Title": "Top songs",
+    "PlaysPlural": "{0} plays",
+    "PlaysSingular": "{0} play",
+    "AddToMyPlaylist": "Add playlist to favorites",
+    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
   }
 }

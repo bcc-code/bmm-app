@@ -498,5 +498,12 @@
     "Title": "Vuosikatsauksesi",
     "Share": "Jaa ystäviesi kanssa",
     "ShareTitle": "Vuosikatsaus"
+  },
+  "TopSongsCollectionViewModel": {
+    "Title": "Suosituimmat laulut",
+    "PlaysPlural": "{0} soittokertaa",
+    "PlaysSingular": "{0} soittokerta",
+    "AddToMyPlaylist": "Lisää soittolista suosikkeihin",
+    "SuccessfullyAddedToPlaylists": "Lisätty suosikkeihin"
   }
 }
