@@ -501,9 +501,9 @@
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "PlaysPlural": "{0} x gespielt",
+    "PlaysSingular": "{0} x gespielt",
+    "AddToMyPlaylist": "Playliste zu Favoriten hinzufügen",
+    "SuccessfullyAddedToPlaylists": "Erfolgreich zu Favoriten hinzugefügt"
   }
 }
