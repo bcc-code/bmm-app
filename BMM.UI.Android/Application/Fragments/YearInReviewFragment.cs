@@ -33,9 +33,10 @@ namespace BMM.UI.Droid.Application.Fragments
             
             int screenHeight = metrics.HeightPixels;
             int screenWidth = metrics.WidthPixels;
-            
+
+            int bottomButtonHeight = Resources.GetDimensionPixelSize(Resource.Dimension.large_button_height);
             int horizontalMargin = Resources.GetDimensionPixelSize(Resource.Dimension.margin_small) * 2;
-            float imageHeight = (screenHeight - YearInReviewViewModel.HeaderHeight.DpToPixels()) * YearInReviewViewModel.ImageHeightToViewHeightRatio;
+            float imageHeight = (screenHeight - YearInReviewViewModel.HeaderHeight.DpToPixels() - bottomButtonHeight) * YearInReviewViewModel.ImageHeightToViewHeightRatio;
             float itemHeight = imageHeight + YearInReviewViewModel.BottomImageMargin.DpToPixels();
             float itemWidth = imageHeight * YearInReviewViewModel.ImageWidthToHeightRatio;
             double imageWidth = itemWidth - horizontalMargin;

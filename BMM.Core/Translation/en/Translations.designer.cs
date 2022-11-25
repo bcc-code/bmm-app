@@ -387,6 +387,9 @@ namespace BMM.Core.Translation
 		public const string YearInReviewViewModel_Title = nameof(YearInReviewViewModel_Title);
 		public const string YearInReviewViewModel_Share = nameof(YearInReviewViewModel_Share);
 		public const string YearInReviewViewModel_ShareTitle = nameof(YearInReviewViewModel_ShareTitle);
+		public const string YearInReviewViewModel_SaveToGallery = nameof(YearInReviewViewModel_SaveToGallery);
+		public const string YearInReviewViewModel_ShareExternally = nameof(YearInReviewViewModel_ShareExternally);
+		public const string YearInReviewViewModel_SavedToGallery = nameof(YearInReviewViewModel_SavedToGallery);
 		public const string TopSongsCollectionViewModel_Title = nameof(TopSongsCollectionViewModel_Title);
 		public const string TopSongsCollectionViewModel_PlaysPlural = nameof(TopSongsCollectionViewModel_PlaysPlural);
 		public const string TopSongsCollectionViewModel_PlaysSingular = nameof(TopSongsCollectionViewModel_PlaysSingular);

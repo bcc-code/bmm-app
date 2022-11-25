@@ -2,5 +2,4 @@
     <dimen name="player_standard_button_size">40dp</dimen>
     <dimen name="player_small_button_size">32dp</dimen>
     <dimen name="player_standard_margin">18dp</dimen>
-    <dimen name="large_button_height">40dp</dimen>
 </resources>

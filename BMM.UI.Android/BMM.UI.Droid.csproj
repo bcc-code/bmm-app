@@ -507,6 +507,7 @@
     <AndroidResource Include="Resources\drawable\icon_edit.xml" />
     <AndroidResource Include="Resources\drawable\icon_external_sound.xml" />
     <AndroidResource Include="Resources\drawable\icon_friends.xml" />
+    <AndroidResource Include="Resources\drawable\icon_gallery.xml" />
     <AndroidResource Include="Resources\drawable\icon_information.xml" />
     <AndroidResource Include="Resources\drawable\icon_link.xml" />
     <AndroidResource Include="Resources\drawable\icon_more.xml" />

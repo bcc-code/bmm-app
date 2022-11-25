@@ -497,7 +497,10 @@
   "YearInReviewViewModel": {
     "Title": "Your Year in Review",
     "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "ShareTitle": "Year in Review",
+    "SaveToGallery": "Save to Gallery",
+    "ShareExternally": "Instagram, Telegram etc.",
+    "SavedToGallery": "Successfully saved to gallery"
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top songs",
