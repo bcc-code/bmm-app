@@ -1,6 +1,5 @@
 pool:
-  name: Azure Pipelines
-  vmImage: 'windows-2022'
+  name: Xamarin Local Pool
   demands:
     - npm
     - msbuild
