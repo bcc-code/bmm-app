@@ -1,4 +1,5 @@
 using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.Base.Interfaces;
 using Foundation;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using MvvmCross.ViewModels;
@@ -8,7 +9,7 @@ namespace BMM.UI.iOS
 {
     public class EditingTableViewSource<TDocumentType, TCellType> : MvxTableViewSource
     where TCellType: MvxTableViewCell
-    where TDocumentType: Document
+    where TDocumentType: IDocumentPO
     {
         private readonly NSString _reuseIdentifier = new NSString(typeof(TCellType).Name);
         public EditingTableViewSource(UITableView tableView) : base(tableView)
