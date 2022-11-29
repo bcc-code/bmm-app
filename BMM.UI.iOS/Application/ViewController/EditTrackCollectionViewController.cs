@@ -2,6 +2,8 @@ using System;
 using System.ComponentModel;
 using BMM.Api.Implementation.Models;
 using BMM.Core;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
@@ -79,7 +81,7 @@ namespace BMM.UI.iOS
 
             tableView.SetEditing(true, false);
 
-            var source = new EditingTableViewSource<Document, OrderingTrackTableViewCell>(tableView);
+            var source = new EditingTableViewSource<DocumentPO, OrderingTrackTableViewCell>(tableView);
             var set = this.CreateBindingSet<EditTrackCollectionViewController, EditTrackCollectionViewModel>();
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(titleView.TitleTextField).To(vm => vm.TrackCollectionTitle);

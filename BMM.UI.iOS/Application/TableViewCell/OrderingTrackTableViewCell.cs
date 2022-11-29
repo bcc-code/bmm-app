@@ -2,6 +2,7 @@
 using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using UIKit;
@@ -22,10 +23,10 @@ namespace BMM.UI.iOS
             InitUi();
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<OrderingTrackTableViewCell, Track>();
-                set.Bind(_titleLabel).To(vm => vm).WithConversion<TitleConverter>();
-                set.Bind(_subtitleLabel).To(vm => vm).WithConversion<SubtitleConverter>();
-                set.Bind(_metaLabel).To(vm => vm).WithConversion<MetaTitleConverter>();
+                var set = this.CreateBindingSet<OrderingTrackTableViewCell, TrackPO>();
+                set.Bind(_titleLabel).To(vm => vm.TrackTitle);
+                set.Bind(_subtitleLabel).To(vm => vm.TrackSubtitle);
+                set.Bind(_metaLabel).To(vm => vm.TrackMeta);
                 set.Apply();
             });
         }
