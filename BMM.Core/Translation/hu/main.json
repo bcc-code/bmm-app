@@ -315,7 +315,7 @@
     "ThemeText": "Válasszon a világos és a sötét téma között",
     "SiriShortcutsHeader": "Siri-parancsok",
     "SiriShortcutsText": "Siri-parancsok hozzáadása a BMM-re",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Sajnos nem tudjuk engedélyezni a Push értesítéseket, mivel azok le vannak tiltva a készülék beállításaiban. Kérjük, engedélyezd a Push értesítések használatát a készülék beállításaiban, hogy engedélyezd ezt a funkciót."
   },
   "StorageManagementViewModel": {
     "Title": "Offline zeneszámok tárhelye",
@@ -495,15 +495,15 @@
     "ShortcutAlreadyAdded": "Ez a parancs már hozzá lett adva"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Az éved visszatekintése",
+    "Share": "Oszd meg barátaiddal",
+    "ShareTitle": "Az év visszatekintése"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "Title": "Top énekek",
+    "PlaysPlural": "{0} Lejátszás",
+    "PlaysSingular": "{0} Lejátszás",
+    "AddToMyPlaylist": "Lejátszási lista hozzáadása a kedvencekhez",
+    "SuccessfullyAddedToPlaylists": "Sikeresen hozzáadva a kedvencekhez"
   }
 }
