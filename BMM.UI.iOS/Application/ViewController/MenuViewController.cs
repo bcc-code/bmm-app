@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Device;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
@@ -91,7 +92,7 @@ namespace BMM.UI.iOS
             attribute.TabName = ViewModel.TextSource.GetText(attribute.TabName);
             base.SetTitleAndTabBarItem(viewController, attribute);
         }
-
+        
         public override async void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
@@ -106,16 +107,20 @@ namespace BMM.UI.iOS
             _tabInitialized = true;
 
             _notificationCenter.PostNotificationName(MenuLoadedNotification, null);
-            _notificationCenter.AddObserver(UIApplication.DidBecomeActiveNotification,
-                notification =>
-                {
-                    var containmentController = SelectedViewController as ContainmentViewController;
-                    if (containmentController?.NavigationRootViewModel is DocumentsViewModel documentsViewModel)
-                        documentsViewModel.RefreshInBackground();
-                });
-            
+            ApplicationStateWatcher.ApplicationStateChanged += ApplicationStateChanged;
+
             await Task.Delay(TimeForLoadingMenuViewControllersInMillis);
             Mvx.IoCProvider.Resolve<IDeepLinkHandler>().SetReadyToOpenDeepLinkAndHandlePending();
+        }
+
+        private void ApplicationStateChanged(ApplicationState applicationState)
+        {
+            if (applicationState == ApplicationState.Background)
+                return;
+            
+            var containmentController = SelectedViewController as ContainmentViewController;
+            if (containmentController?.NavigationRootViewModel is DocumentsViewModel documentsViewModel)
+                documentsViewModel.RefreshInBackground();
         }
 
         public override void ViewWillDisappear(bool animated)

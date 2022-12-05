@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Interfaces;
@@ -36,6 +37,14 @@ namespace BMM.UI.iOS
             }
 
             return base.Show(request);
+        }
+
+        public override async Task<bool> ChangePresentation(MvxPresentationHint hint)
+        {
+            if (hint is CloseTabBarHint && TabBarViewController is IMvxIosView vcToClose)
+                await Close(vcToClose.ViewModel);
+
+            return await base.ChangePresentation(hint);
         }
 
         protected override async Task<bool> ShowChildViewController(UIViewController viewController, MvxChildPresentationAttribute attribute, MvxViewModelRequest request)

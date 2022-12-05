@@ -60,6 +60,7 @@ namespace BMM.Core
         private readonly SupportVersionChecker _supportVersionChecker;
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly IOnStartAction _onStartAction;
+        private readonly IOidcCredentialsStorage _credentialsStorage;
         private Stopwatch _stopwatch;
 
         public AppNavigator(
@@ -77,7 +78,8 @@ namespace BMM.Core
             IRememberedQueueInfoService rememberedQueueInfoService,
             SupportVersionChecker supportVersionChecker,
             IAccessTokenProvider accessTokenProvider,
-            IOnStartAction onStartAction)
+            IOnStartAction onStartAction,
+            IOidcCredentialsStorage credentialsStorage)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -94,6 +96,7 @@ namespace BMM.Core
             _supportVersionChecker = supportVersionChecker;
             _accessTokenProvider = accessTokenProvider;
             _onStartAction = onStartAction;
+            _credentialsStorage = credentialsStorage;
         }
 
         /// <summary>
@@ -228,7 +231,9 @@ namespace BMM.Core
 
         public async Task NavigateToLogin(bool isInitialLogin)
         {
+            await _credentialsStorage.FlushStorage();
             await _navigationService.ChangePresentation(new ClearAllNavBackStackHint());
+            await _navigationService.ChangePresentation(new CloseTabBarHint());
             await _navigationService.Navigate<OidcLoginViewModel, OidcLoginParameters>(new OidcLoginParameters {IsInitialLogin = isInitialLogin});
         }
 
