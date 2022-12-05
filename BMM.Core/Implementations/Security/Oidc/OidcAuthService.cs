@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using IdentityModel.OidcClient;
 using IdentityModel.OidcClient.Browser;
@@ -19,19 +21,20 @@ namespace BMM.Core.Implementations.Security.Oidc
         private readonly IClaimUserInformationExtractor _claimUserInformationExtractor;
         private readonly ILogger _logger;
         private readonly OidcClient _client;
+        private readonly IAnalytics _analytics;
 
         public OidcAuthService(
             IOidcCredentialsStorage credentialsStorage,
             IUserStorage userStorage,
             IBrowser browser,
             IClaimUserInformationExtractor claimUserInformationExtractor,
-            ILogger logger
-        )
+            ILogger logger, IAnalytics analytics)
         {
             _credentialsStorage = credentialsStorage;
             _userStorage = userStorage;
             _claimUserInformationExtractor = claimUserInformationExtractor;
             _logger = logger;
+            _analytics = analytics;
             var options = new OidcClientOptions
             {
                 Authority = OidcConstants.AuthorizationServerUrl,
@@ -52,7 +55,10 @@ namespace BMM.Core.Implementations.Security.Oidc
             try
             {
                 await _credentialsStorage.FlushStorage();
+                _analytics.LogEvent("LoginFlow - started");
                 var result = await _client.LoginAsync(CreateLoginRequest());
+                _analytics.LogEvent("LoginFlow - completed",
+                    new Dictionary<string, object> {{"IsError", result.IsError}, {"Error", result.Error}});
                 if (result.IsError)
                 {
                     throw result.Error.Contains("UserCancel")
@@ -66,9 +72,14 @@ namespace BMM.Core.Implementations.Security.Oidc
                 var user = _claimUserInformationExtractor.ExtractUser(result.User.Claims);
                 return user;
             }
-            catch (Exception exception) when (exception.Message.Contains("Error loading discovery document"))
+            catch (Exception exception)
             {
-                throw new InternetProblemsException(exception);
+                _analytics.LogEvent("LoginFlow - Error", new Dictionary<string, object> {{"Message", exception.Message}});
+
+                if (exception.Message.Contains("Error loading discovery document"))
+                    throw new InternetProblemsException(exception);
+                
+                throw;
             }
         }
 
