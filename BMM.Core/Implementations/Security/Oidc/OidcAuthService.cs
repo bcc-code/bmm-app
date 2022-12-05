@@ -51,6 +51,7 @@ namespace BMM.Core.Implementations.Security.Oidc
         {
             try
             {
+                await _credentialsStorage.FlushStorage();
                 var result = await _client.LoginAsync(CreateLoginRequest());
                 if (result.IsError)
                 {

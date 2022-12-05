@@ -229,6 +229,7 @@ namespace BMM.Core
         public async Task NavigateToLogin(bool isInitialLogin)
         {
             await _navigationService.ChangePresentation(new ClearAllNavBackStackHint());
+            await _navigationService.ChangePresentation(new CloseTabBarHint());
             await _navigationService.Navigate<OidcLoginViewModel, OidcLoginParameters>(new OidcLoginParameters {IsInitialLogin = isInitialLogin});
         }
 
