@@ -1,5 +1,6 @@
 pool:
-  name: Xamarin Local Pool
+  name: Azure Pipelines
+  vmImage: 'windows-2022'
   demands:
     - npm
     - msbuild
@@ -131,6 +132,14 @@ steps:
     inputs:
       secureFile: 'e86cdf1c-08a3-4012-a9c6-216c01d3d81f'
 
+# Previously we use to add AndroidNdkDirectory as msbuildArguments to XamarinAndroid@1 tasks to have correct handling of AOT when building
+# Since Microsoft published Xamarin Android 13.1.0.1 AndroidNdkDirectory parameter cannot be used,
+# otherwise the build is generated with an error and it crashes on start.
+# If you want to build and archive .aab locally, you also need to remove Android NDK path from IDE settings:
+#   For JetBranis Rider: Preferences -> Build, Execution, Deployment -> Android -> Android NDK Location
+#   For Visual Studio for Mac: Preferences -> Build and Debug -> SDK Locations -> Android -> Locations -> Android NDK Location
+# If you want to read more, please read https://github.com/xamarin/xamarin-android/issues/7588
+
   - task: XamarinAndroid@1
     displayName: 'Build aab (Android App Bundle)'
     inputs:
@@ -139,7 +148,7 @@ steps:
       configuration: Release
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword) -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword)'
 
   - task: XamarinAndroid@1
     displayName: 'Build APK'
@@ -149,7 +158,7 @@ steps:
       configuration: Release
       msbuildVersionOption: latest
       msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidNdkDirectory=$(ANDROID_NDK_LATEST_HOME)'
+      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)"'
 
   - task: AndroidSigning@3
     displayName: 'Signing and aligning APK file(s) $(Build.BinariesDirectory)/bin/Release/*.apk'

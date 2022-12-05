@@ -9,6 +9,7 @@ namespace BMM.UITests
     [TestFixture(Platform.iOS, Category = Categories.iOS)]
     public class ExplorePageTests
     {
+        private const int TimeForLoadingExplorePageInMillis = 2000;
         IBmmApp _bmmApp;
         IApp _app;
         readonly Platform _platform;
@@ -30,6 +31,7 @@ namespace BMM.UITests
         {
             await _bmmApp.LoginToApp();
 
+            await Task.Delay(TimeForLoadingExplorePageInMillis);
             TestFraaKaarePresent();
         }
 
@@ -38,7 +40,7 @@ namespace BMM.UITests
             const int maxScrollTries = 20;
             int currentScrollTries = 0;
 
-            _app.WaitForElement(_bmmApp.ExplorePage.ContinueCollectionCarousel);
+            _app.ScrollDownTo(_bmmApp.ExplorePage.ContinueCollectionCarousel);
             
             while (!_app.Query(_bmmApp.ExplorePage.FraaKaareTeaser).Any() && currentScrollTries < maxScrollTries)
             {
