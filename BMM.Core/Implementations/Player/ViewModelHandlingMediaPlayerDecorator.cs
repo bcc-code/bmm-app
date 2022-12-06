@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.LiveRadio;
 using BMM.Core.Messages.MediaPlayer;
@@ -85,12 +87,14 @@ namespace BMM.Core.Implementations.Player
             _isViewmodelShown = false;
         }
 
-        public async Task Play(IList<IMediaTrack> mediaFiles, IMediaTrack currentTrack, long startTimeInMs = 0)
+        public async Task Play(IList<IMediaTrack> mediaFiles, IMediaTrack currentTrack, long startTimeInMs = 0, bool resetPlaybackSpeed = true)
         {
+            DisableShuffleIfNeeded(mediaFiles);
+
             await ExecuteWithUpdatingQueue(
                 mediaFiles,
                 currentTrack,
-                () => _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs));
+                () => _mediaPlayer.Play(mediaFiles, currentTrack, startTimeInMs, resetPlaybackSpeed));
         }
 
         public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
@@ -202,6 +206,22 @@ namespace BMM.Core.Implementations.Player
             var enrichedTrack = EnrichTrackWithPlaybackOrigin(track, playbackOrigin);
             return QueueAndShowPlayer(t => _mediaPlayer.QueueToPlayNext(t, playbackOrigin), enrichedTrack);
         }
+        
+        private void DisableShuffleIfNeeded(IList<IMediaTrack> mediaFiles)
+        {
+            bool onlySongs = mediaFiles.All(x => x.Subtype.IsOneOf(TrackSubType.Singsong, TrackSubType.Song));
+            
+            if (!onlySongs)
+            {
+                _mediaPlayer.SetShuffle(false);
+                return;
+            }
+
+            bool isTheSameQueue = _queue.IsSameQueue(mediaFiles);
+
+            if (!isTheSameQueue)
+                _mediaPlayer.SetShuffle(false);
+        }
 
         private async Task<bool> QueueAndShowPlayer(Func<IMediaTrack, Task<bool>> queueFunc, IMediaTrack track)
         {
@@ -274,7 +294,7 @@ namespace BMM.Core.Implementations.Player
             int indexOfCurrentTrack = mediaFiles.IndexOf(currentFile);
             mediaFiles[indexOfCurrentTrack] = newLanguageTrack;
             
-            await Play(mediaFiles, newLanguageTrack, currentPosition);
+            await Play(mediaFiles, newLanguageTrack, currentPosition, false);
         }
 
         public long CurrentPosition => _mediaPlayer.CurrentPosition;

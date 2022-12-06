@@ -137,7 +137,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             }
         }
 
-        public async Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
+        public async Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0, bool resetPlaybackSpeed = true)
         {
             if (_mediaController != null)
             {
@@ -160,7 +160,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                     }
                 }
                 
-                ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
+                if (resetPlaybackSpeed)
+                    ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
             }
         }
 

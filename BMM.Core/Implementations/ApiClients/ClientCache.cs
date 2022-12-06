@@ -19,6 +19,9 @@ namespace BMM.Core.Implementations.ApiClients
 
     public class ClientCache : IClientCache
     {
+        private const int MaxGlobalCacheDurationInMonths = 1;
+        private const string CachePrefix = "ClientCache";
+        
         private readonly ICache _cache;
         private readonly IUserStorage _userStorage;
         private readonly IMvxMessenger _messenger;
@@ -35,43 +38,41 @@ namespace BMM.Core.Implementations.ApiClients
             if (cachePolicy == CachePolicy.IgnoreCache)
                 return await actionIfNotCached.Invoke();
 
-            var cacheParts = new List<string>
-            {
-                "ClientCache",
-                _userStorage.GetUser().Username,
-                key.ToString()
-            };
-            // ToDo: maybe we should add the language here as well
-            cacheParts.AddRange(keyParameters);
-
-            var cacheId = string.Join("|", cacheParts);
-
-            CachedItem<T> item;
+            string cacheId = BuildCacheId(key, keyParameters);
 
             if (cachePolicy == CachePolicy.ForceGetAndUpdateCache)
-                item = await FetchAndUpdateCache(actionIfNotCached, cacheId);
-            else
-                item = await _cache.GetOrFetchObject(cacheId, actionIfNotCached);
+                return await FetchAndUpdateCache(actionIfNotCached, cacheId);
 
-            bool isCachedItemOutdated = item.DateCreated + maxAge < DateTime.UtcNow;
-            if (isCachedItemOutdated && cachePolicy == CachePolicy.UseCacheAndRefreshOutdated)
-            {
-                _messenger.Publish(new BackgroundTaskMessage(this,
-                    async () =>
-                    {
-                        await FetchAndUpdateCache(actionIfNotCached, cacheId);
-                        _messenger.Publish(new CacheUpdatedMessage(this, key));
+            var cacheItem = await _cache.GetOrFetchObject(cacheId, actionIfNotCached);
+            bool isCachedItemOutdated = cacheItem.DateCreated + maxAge < DateTime.UtcNow;
+            
+            if (!isCachedItemOutdated)
+                return cacheItem.Item;
+            
+            bool isMaximumCacheTimeExceeded = cacheItem.DateCreated < DateTime.UtcNow.AddMonths(-MaxGlobalCacheDurationInMonths);
 
-                        // ToDo: do something with keyParameters
-                    }));
-            }
+            if (cachePolicy == CachePolicy.UseCacheAndWaitForUpdates || isMaximumCacheTimeExceeded)
+                return await FetchAndUpdateCache(actionIfNotCached, cacheId);
 
-            if (isCachedItemOutdated && cachePolicy == CachePolicy.UseCacheAndWaitForUpdates)
-            {
-                item = await FetchAndUpdateCache(actionIfNotCached, cacheId);
-            }
+            if (cachePolicy == CachePolicy.UseCacheAndRefreshOutdated)
+                PublishBackgroundTaskMessage(actionIfNotCached, cacheId, key);
+            
+            return cacheItem.Item;
+        }
 
-            return item.Item;
+        private void PublishBackgroundTaskMessage<T>(
+            Func<Task<T>> actionIfNotCached,
+            string cacheId,
+            CacheKeys key)
+        {
+            _messenger.Publish(new BackgroundTaskMessage(this,
+                async () =>
+                {
+                    await FetchAndUpdateCache(actionIfNotCached, cacheId);
+                    _messenger.Publish(new CacheUpdatedMessage(this, key));
+
+                    // ToDo: do something with keyParameters
+                }));
         }
 
         public async Task<IList<T>> GetLoadMoreItems<T>(
@@ -86,12 +87,25 @@ namespace BMM.Core.Implementations.ApiClients
             return await Get(() => actionIfNotCached.Invoke(size, @from), cachePolicy, maxAge, key, keyParameters);
         }
 
-        private async Task<CachedItem<T>> FetchAndUpdateCache<T>(Func<Task<T>> actionIfNotCached, string cacheKey)
+        private async Task<T> FetchAndUpdateCache<T>(Func<Task<T>> actionIfNotCached, string cacheKey)
         {
             var value = await actionIfNotCached.Invoke();
-            var item = CachedItem<T>.New(value);
-            await _cache.UpdateItem(cacheKey, item);
-            return item;
+            var cacheItem = CachedItem<T>.New(value);
+            await _cache.UpdateItem(cacheKey, cacheItem);
+            return cacheItem.Item;
+        }
+
+        private string BuildCacheId(CacheKeys key, IEnumerable<string> keyParameters)
+        {
+            var cacheParts = new List<string>
+            {
+                CachePrefix,
+                _userStorage.GetUser().Username,
+                key.ToString()
+            };
+            
+            cacheParts.AddRange(keyParameters);
+            return string.Join("|", cacheParts);
         }
     }
 }
