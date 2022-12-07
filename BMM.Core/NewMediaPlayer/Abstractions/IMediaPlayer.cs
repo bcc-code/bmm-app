@@ -55,7 +55,7 @@ namespace BMM.Core.NewMediaPlayer.Abstractions
 
         ITrackModel CurrentTrack { get; }
 
-        Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0);
+        Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0, bool resetPlaybackSpeed = true);
 
         Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0);
 

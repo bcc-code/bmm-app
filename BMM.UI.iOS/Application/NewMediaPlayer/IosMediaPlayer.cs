@@ -113,7 +113,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             BufferedPosition = _audioPlayback.Buffered
         };
 
-        public async Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
+        public async Task Play(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0, bool resetPlaybackSpeed = true)
         {
             bool result = true;
 
@@ -126,7 +126,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 PlayTrack(currentTrack, index, result, startTimeInMs).FireAndForget();
             }
             
-            ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
+            if (resetPlaybackSpeed)
+                ChangePlaybackSpeed(PlayerConstants.NormalPlaybackSpeed);
         }
 
         public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
