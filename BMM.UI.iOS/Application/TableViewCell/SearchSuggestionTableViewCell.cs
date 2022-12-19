@@ -7,7 +7,7 @@ namespace BMM.UI.iOS
 {
     public partial class SearchSuggestionTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly NSString Key = new NSString("SearchSuggestionTableViewCell");
+        public static readonly NSString Key = new NSString(nameof(SearchSuggestionTableViewCell));
 
         public SearchSuggestionTableViewCell(IntPtr handle) : base(handle)
         {
@@ -22,7 +22,7 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
-            TextLabel.ApplyTextTheme(AppTheme.Subtitle2Label1);
+            TextLabel.ApplyTextTheme(AppTheme.Title2);
         }
     }
 }

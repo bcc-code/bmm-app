@@ -1,133 +1,154 @@
-﻿using Android.OS;
+﻿using System;
+using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Views.InputMethods;
 using Android.Widget;
-using AndroidX.Core.Content;
-using AndroidX.Core.Content.Resources;
-using BMM.Core.Translation;
+using AndroidX.ViewPager.Widget;
+using BMM.Core.Extensions;
+using BMM.Core.Interactions.Base;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Adapters;
+using BMM.UI.Droid.Application.CustomViews.TabLayout;
 using BMM.UI.Droid.Application.Extensions;
+using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
-using SearchView = AndroidX.AppCompat.Widget.SearchView;
 
 namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxFragmentPresentation(typeof(MainActivityViewModel), Resource.Id.content_frame, true)]
     [Register("bmm.ui.droid.application.fragments.SearchFragment")]
-    public class SearchFragment : BaseFragment<SearchViewModel>
+    public class SearchFragment : BaseFragment<SearchViewModel>, TextView.IOnEditorActionListener
     {
-        private SearchView _searchView;
-        private MvxRecyclerView _recyclerView;
-
+        private ViewPager _viewPager;
+        private FlexibleWidthTabLayout _tabLayout;
+        private TextView _searchTermEditText;
+        private IBmmInteraction _removeFocusOnSearchInteraction;
+        public BindableFragmentPagerAdapter<SearchResultsViewModel> ViewPagerAdapter { get; set; }
+        
         protected override int FragmentId => Resource.Layout.fragment_search;
-
-        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        
+        public IBmmInteraction RemoveFocusOnSearchInteraction
         {
-            base.OnCreateOptionsMenu(menu, inflater);
-            inflater.Inflate(Resource.Menu.search, menu);
+            get => _removeFocusOnSearchInteraction;
+            set
+            {
+                if (_removeFocusOnSearchInteraction != null)
+                    _removeFocusOnSearchInteraction.Requested -= OnRemoveFocusRequested;
 
-            var searchMenu = menu.FindItem(Resource.Id.action_search);
+                _removeFocusOnSearchInteraction = value;
+                _removeFocusOnSearchInteraction.Requested += OnRemoveFocusRequested;
+            }
+        }
 
-            Unsubscribe();
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            _searchView = searchMenu.ActionView as SearchView;
-            _searchView.QueryHint = ViewModel.TextSource[Translations.SearchViewModel_SearchHint];
+            _viewPager = view.FindViewById<ViewPager>(Resource.Id.ViewPager);
+            _tabLayout = view.FindViewById<FlexibleWidthTabLayout>(Resource.Id.TabLayout);
+            _searchTermEditText = view.FindViewById<TextView>(Resource.Id.SearchTermLabel);
+            _searchTermEditText.SetOnEditorActionListener(this);
 
-            //Workaround for tablets to show full screen
-            _searchView.MaxWidth = 100000;
-
-            var searchText = _searchView.FindViewById<EditText>(Resource.Id.search_src_text);
-
-            var set = this.CreateBindingSet<SearchFragment, SearchViewModel>();
-            set.Bind(searchText).For(sa => sa.Text).To(vm => vm.SearchTerm);
-            set.Apply();
-
-            searchText!.SetTextColor(Context.GetColorFromResource(Resource.Color.label_primary_color));
-            searchText!.SetHintTextColor(Context.GetColorFromResource(Resource.Color.label_secondary_color));
-
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.Q)
-                searchText!.SetTextCursorDrawable(Resource.Drawable.edit_text_cursor);
-
-            _searchView.OnActionViewExpanded();
-            _searchView.ClearFocus();
-            Subscribe();
+            HasOptionsMenu = true;
+            UpdateLayout();
+            BindSearch();
+            
+            return view;
         }
 
         protected override void AttachEvents()
         {
             base.AttachEvents();
-            Subscribe();
+            _viewPager.PageSelected += ViewPagerOnPageSelected;
+            DetachRemoveFocusInteraction();
+            RemoveFocusOnSearchInteraction.Requested += OnRemoveFocusRequested;
         }
 
         protected override void DetachEvents()
         {
             base.DetachEvents();
-            Unsubscribe();
+            _viewPager.PageSelected -= ViewPagerOnPageSelected;
+            DetachRemoveFocusInteraction();
         }
 
-        private void Subscribe()
+        private void DetachRemoveFocusInteraction()
         {
-            if (_searchView == null)
+            if (RemoveFocusOnSearchInteraction == null)
                 return;
 
-            _searchView.QueryTextSubmit -= SearchViewOnQueryTextSubmit;
-            _searchView.QueryTextSubmit += SearchViewOnQueryTextSubmit;
+            RemoveFocusOnSearchInteraction.Requested -= OnRemoveFocusRequested;
         }
 
-        private void Unsubscribe()
+        protected void BindSearch()
         {
-            if (_searchView == null)
-                return;
+            var set = this.CreateBindingSet<SearchFragment, SearchViewModel>();
+            
+            set.Bind(ViewPagerAdapter)
+                .For(vp => vp.ItemsSource)
+                .To(v => v.CollectionItems);
 
-            _searchView.QueryTextSubmit -= SearchViewOnQueryTextSubmit;
+            set.Bind(_tabLayout)
+                .For(v => v.ItemsSource)
+                .To(vm => vm.CollectionItems);
+
+            set.Bind(_tabLayout)
+                .For(v => v.SelectedItem)
+                .To(vm => vm.SelectedCollectionItem);
+
+            set.Bind(this)
+                .For(v => v.RemoveFocusOnSearchInteraction)
+                .To(vm => vm.RemoveFocusOnSearchInteraction);
+            
+            set.Apply();
+        }
+        
+        private void OnRemoveFocusRequested(object sender, EventArgs e)
+        {
+            ClearFocus();
         }
 
-        private void SearchViewOnQueryTextSubmit(object sender, SearchView.QueryTextSubmitEventArgs e)
+        private void ClearFocus()
         {
-            ViewModel.SearchCommand.Execute();
-            _searchView.ClearFocus();
-            e.Handled = true;
+            _searchTermEditText.ClearFocus();
+            var imm = (InputMethodManager)Activity.GetSystemService(Android.Content.Context.InputMethodService);
+            imm.HideSoftInputFromWindow(_searchTermEditText.WindowToken, 0);
         }
 
-        public override void OnPrepareOptionsMenu(IMenu menu)
+        private void UpdateLayout()
         {
-            base.OnPrepareOptionsMenu(menu);
-
-            if (ViewModel.SearchTerm == string.Empty)
-                ViewModel.SearchTerm = SearchViewModel.SearchedString;
-
-            if (!string.IsNullOrEmpty(ViewModel.SearchTerm))
-                _searchView.ClearFocus();
+            ViewPagerAdapter = new BindableFragmentPagerAdapter<SearchResultsViewModel>(ChildFragmentManager, CreateFragmentForViewModel);
+            _viewPager.Adapter = ViewPagerAdapter;
+            _tabLayout.ViewPager = _viewPager;
         }
 
-        public override void OnViewCreated(View view, Bundle savedInstanceState)
+        private void ViewPagerOnPageSelected(object sender, ViewPager.PageSelectedEventArgs e)
         {
-            base.OnViewCreated(view, savedInstanceState);
-
-            ViewModel.OnFocusLoose = () => _searchView?.ClearFocus();
-
-            // currently not possible to bind scrolling inside of the axml
-            // see supported bindings: https://www.mvvmcross.com/documentation/platform/android/android-recyclerview
-            _recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.DocumentsRecyclerView);
+            ViewModel.SelectedCollectionItem = ViewModel.CollectionItems[e.Position];
         }
 
-        public override void OnStart()
+        private BmmViewPagerFragmentInfo CreateFragmentForViewModel(SearchResultsViewModel viewModel)
         {
-            base.OnStart();
-            _recyclerView.ScrollChange += ClearSearchFocus;
+            var fragmentInfo = this.CreateFragmentForViewPager(
+                viewModel.Title,
+                viewModel.Title,
+                typeof(SearchResultsFragment),
+                viewModel);
+            return fragmentInfo;
         }
 
-        public override void OnPause()
+        public bool OnEditorAction(TextView v, ImeAction actionId, KeyEvent e)
         {
-            base.OnPause();
-            _recyclerView.ScrollChange -= ClearSearchFocus;
-        }
+            ClearFocus();
+            
+            if (actionId == ImeAction.Search) 
+            {
+                ViewModel.SearchCommand.ExecuteAsync().FireAndForget();
+                return true;
+            }
 
-        private void ClearSearchFocus(object sender, View.ScrollChangeEventArgs e)
-        {
-            _searchView?.ClearFocus();
+            return false;
         }
     }
 }

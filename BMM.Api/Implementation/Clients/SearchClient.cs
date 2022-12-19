@@ -5,6 +5,7 @@ using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using Tavis.UriTemplates;
 
 namespace BMM.Api.Implementation.Clients
@@ -15,10 +16,11 @@ namespace BMM.Api.Implementation.Clients
             : base(handler, baseUri, logger)
         { }
 
-        public async Task<SearchResults> GetAll(string term, int from = 0, int size = ApiConstants.LoadMoreSize)
+        public async Task<SearchResults> GetAll(string term, SearchFilter searchFilter = SearchFilter.All, int from = 0, int size = ApiConstants.LoadMoreSize)
         {
             var uri = new UriTemplate(ApiUris.Search);
             uri.SetParameter("term", term);
+            uri.SetParameter("filter", searchFilter);
             uri.SetParameter("size", size);
             uri.SetParameter("from", from);
 

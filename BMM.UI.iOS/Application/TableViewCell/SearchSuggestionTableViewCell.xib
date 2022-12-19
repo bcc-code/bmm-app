@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,8 +17,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSf-BQ-zaF">
-                        <rect key="frame" x="61" y="13" width="247.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSf-BQ-zaF">
+                        <rect key="frame" x="16" y="14" width="37.5" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.23656517267227173" green="0.26955139636993408" blue="0.3256283700466156" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -26,34 +26,39 @@
                             <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="search_history"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_category_suggestion.png" translatesAutoresizingMaskIntoConstraints="NO" id="tr2-92-rnG">
-                        <rect key="frame" x="15" y="4.5" width="35" height="35"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconChevronRight" translatesAutoresizingMaskIntoConstraints="NO" id="Hhi-vL-YFL">
+                        <rect key="frame" x="280" y="10" width="24" height="24"/>
+                        <color key="tintColor" name="PlaceholderColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="35" id="0dY-hI-WsA"/>
-                            <constraint firstAttribute="height" constant="35" id="F9a-xd-FQV"/>
+                            <constraint firstAttribute="height" constant="24" id="KcB-uQ-vY7"/>
+                            <constraint firstAttribute="width" constant="24" id="luC-dz-mDC"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="NSf-BQ-zaF" secondAttribute="trailing" constant="3" id="IBp-rn-8Gy"/>
-                    <constraint firstItem="NSf-BQ-zaF" firstAttribute="leading" secondItem="tr2-92-rnG" secondAttribute="trailing" constant="11" id="Qjh-GD-5MM"/>
-                    <constraint firstItem="tr2-92-rnG" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="15" id="QtV-rd-yLb"/>
-                    <constraint firstAttribute="centerY" secondItem="tr2-92-rnG" secondAttribute="centerY" id="TIS-p7-twT"/>
-                    <constraint firstAttribute="centerY" secondItem="NSf-BQ-zaF" secondAttribute="centerY" id="feN-NI-3cH"/>
+                    <constraint firstItem="NSf-BQ-zaF" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="6Fe-4J-HM0"/>
+                    <constraint firstAttribute="bottom" secondItem="NSf-BQ-zaF" secondAttribute="bottom" constant="14" id="7gP-aL-D11"/>
+                    <constraint firstItem="NSf-BQ-zaF" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="14" id="NgO-0n-kFF"/>
+                    <constraint firstAttribute="trailing" secondItem="Hhi-vL-YFL" secondAttribute="trailing" constant="16" id="UTr-2f-EH9"/>
+                    <constraint firstItem="Hhi-vL-YFL" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="lO0-f9-W2v"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="TextLabel" destination="NSf-BQ-zaF" id="idv-gr-ZTd"/>
             </connections>
-            <point key="canvasLocation" x="139" y="133"/>
+            <point key="canvasLocation" x="137.59999999999999" y="132.23388305847078"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_category_suggestion.png" width="36" height="36"/>
+        <image name="IconChevronRight" width="24" height="24"/>
         <namedColor name="BackgroundPrimaryColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="PlaceholderColor">
+            <color red="0.72549021244049072" green="0.76470589637756348" blue="0.80000001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

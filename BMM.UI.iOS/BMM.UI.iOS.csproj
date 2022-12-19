@@ -138,6 +138,12 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <NativeReference Include="$(HOME)\Library\Application Support\Reveal\RevealServer\RevealServer.xcframework">
+      <Kind>Framework</Kind>
+      <SmartLink>True</SmartLink>
+    </NativeReference>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Acr.Support.2.1.0\lib\Xamarin.iOS10\Acr.Support.iOS.dll</HintPath>
@@ -572,6 +578,8 @@
   <ItemGroup>
     <InterfaceDefinition Include="Application\CollectionTableViewCell\MessageTileViewCell.xib" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\VideoTileViewCell.xib" />
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\ControllerCollectionViewCell.xib" />
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\TopBarFlexibleWidthTitleCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.xib">
       <SubType>Designer</SubType>
@@ -581,6 +589,7 @@
     </InterfaceDefinition>
     <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\ListeningStreakDetailsViewController.xib" />
+    <InterfaceDefinition Include="Application\ViewController\SearchResultsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\TopSongsCollectionViewController.xib" />
     <InterfaceDefinition Include="Application\ViewController\YearInReviewViewController.xib" />
@@ -657,6 +666,8 @@
     <Compile Include="Application\CollectionTableViewCell\ContinueListeningTileViewCell.designer.cs">
       <DependentUpon>ContinueListeningTileViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\CollectionTableViewCell\ControllerCollectionViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\ControllerCollectionViewCell.designer.cs" />
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
@@ -669,13 +680,18 @@
     <Compile Include="Application\CollectionTableViewCell\VideoTileViewCell.designer.cs">
       <DependentUpon>VideoTileViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\CollectionTableViewCell\TopBarFlexibleWidthTitleCollectionViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\TopBarFlexibleWidthTitleCollectionViewCell.designer.cs" />
     <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.designer.cs">
       <DependentUpon>YearInReviewCollectionViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\CollectionViewSource\TilesCollectionViewSource.cs" />
+    <Compile Include="Application\CollectionViewSource\TopBarCollectionViewSource.cs" />
+    <Compile Include="Application\CollectionViewSource\ViewControllerCollectionViewSource.cs" />
     <Compile Include="Application\CollectionViewSource\YearInReviewSource.cs" />
     <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
+    <Compile Include="Application\CustomViews\BmmSeachTextField.cs" />
     <Compile Include="Application\CustomViews\BmmSliderView.cs" />
     <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
     <Compile Include="Application\CustomViews\DownloadButton.cs" />
@@ -686,14 +702,18 @@
     <Compile Include="Application\CustomViews\Separator.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
     <Compile Include="Application\CustomViews\VideoView.cs" />
+    <Compile Include="Application\Delegates\CreateOrRefreshViewControllerDelegate.cs" />
     <Compile Include="Application\Delegates\CustomUIAdaptivePresentationControllerDelegate.cs" />
     <Compile Include="Application\Delegates\IINUIAddVoiceShortcutViewControllerDelegate.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
     <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
+    <Compile Include="Application\Extensions\CGRectExtensions.cs" />
+    <Compile Include="Application\Extensions\CGSizeExtensions.cs" />
     <Compile Include="Application\Extensions\CollectionViewExtensions.cs" />
     <Compile Include="Application\Extensions\NSUrlExtensions.cs" />
     <Compile Include="Application\Extensions\NumericExtensions.cs" />
+    <Compile Include="Application\Extensions\UICollectionViewExtensions.cs" />
     <Compile Include="Application\Extensions\UIColorExtensions.cs" />
     <Compile Include="Application\Extensions\YUVColorExtensions.cs" />
     <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
@@ -731,6 +751,8 @@
     <Compile Include="Application\Implementations\Track\iOSTrackOptionsService.cs" />
     <Compile Include="Application\Implementations\UI\iOSUserDialogsFactory.cs" />
     <Compile Include="Application\Implementations\UI\iOSExceptionHandlingUserDialogs.cs" />
+    <Compile Include="Application\Layout\ControllersCollectionViewLayout.cs" />
+    <Compile Include="Application\Layout\TopBarFlexibleWidthCollectionViewLayout.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemRepository.cs" />
     <Compile Include="Application\NewMediaPlayer\AVPlayerItemFactory.cs" />
     <Compile Include="Application\NewMediaPlayer\CacheAVPlayerItemLoaderFactory.cs" />
@@ -849,6 +871,8 @@
     <Compile Include="Application\ValueConverter\TrackToStatusImageConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToSubtitleColorConverter.cs" />
     <Compile Include="Application\ValueConverter\TrackToTitleColorConverter.cs" />
+    <Compile Include="Application\ViewController\Base\FlexibleWidthPagerBaseController.cs" />
+    <Compile Include="Application\ViewController\Base\ViewPagerBaseController.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.cs" />
     <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.designer.cs">
       <DependentUpon>BrowseDetailsTilesViewController.cs</DependentUpon>
@@ -883,6 +907,10 @@
       <DependentUpon>PlaybackHistoryViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\ViewController\PlayerNavigationController.cs" />
+    <Compile Include="Application\ViewController\SearchResultsViewController.cs" />
+    <Compile Include="Application\ViewController\SearchResultsViewController.designer.cs">
+      <DependentUpon>SearchResultsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\ViewController\SharedTrackCollectionViewController.cs" />
     <Compile Include="Application\ViewController\SharedTrackCollectionViewController.designer.cs">
       <DependentUpon>SharedTrackCollectionViewController.cs</DependentUpon>
@@ -1249,6 +1277,8 @@
     <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\icon_repeat.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\icon_repeat_one.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSearch.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSearch.imageset\Search.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\icon_share.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">

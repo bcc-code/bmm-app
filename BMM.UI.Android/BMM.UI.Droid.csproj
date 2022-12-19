@@ -48,6 +48,7 @@
     <AotAssemblies>false</AotAssemblies>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidSupportedAbis>x86_64</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
@@ -111,6 +112,8 @@
     <Compile Include="Application\Activities\SupportEndedActivity.cs" />
     <Compile Include="Application\Activities\UserSetupActivity.cs" />
     <Compile Include="Application\Activities\OidcLoginActivity.cs" />
+    <Compile Include="Application\Adapters\BaseTabLayoutAdapter.cs" />
+    <Compile Include="Application\Adapters\BindableFragmentPagerAdapter.cs" />
     <Compile Include="Application\Adapters\BrowseRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\TilesCollectionRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\DocumentDragAndDropAdapter.cs" />
@@ -122,6 +125,7 @@
     <Compile Include="Application\Adapters\DragAndDrop\DragAndDropItemViewHolder.cs" />
     <Compile Include="Application\Adapters\DragAndDrop\UpAndDownDraggingTouchCallback.cs" />
     <Compile Include="Application\Adapters\CoversCarouselRecyclerAdapter.cs" />
+    <Compile Include="Application\Adapters\FlexibleWidthTabTabLayoutAdapter.cs" />
     <Compile Include="Application\Adapters\PodcastContextHeaderRecyclerAdapter.cs" />
     <Compile Include="Application\Adapters\YearInReviewRecyclerAdapter.cs" />
     <Compile Include="Application\Bindings\BackgroundResourceBinding.cs" />
@@ -139,6 +143,10 @@
     <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
     <Compile Include="Application\CustomViews\ProgressBarView.cs" />
     <Compile Include="Application\CustomViews\ShadowLayout.cs" />
+    <Compile Include="Application\CustomViews\TabLayout\Base\TabLayoutBase.cs" />
+    <Compile Include="Application\CustomViews\TabLayout\FixedLengthIndicator.cs" />
+    <Compile Include="Application\CustomViews\TabLayout\FlexibleWidthTabLayout.cs" />
+    <Compile Include="Application\Decorators\HorizontalSpacingItemDecoration.cs" />
     <Compile Include="Application\DownloadManager\AndroidDownloadManager.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
     <Compile Include="Application\DownloadManager\DownloadCompletedHandler.cs" />
@@ -146,6 +154,8 @@
     <Compile Include="Application\Extensions\BoolExtensions.cs" />
     <Compile Include="Application\Extensions\ColorExtensions.cs" />
     <Compile Include="Application\Extensions\ContextExtensions.cs" />
+    <Compile Include="Application\Extensions\FragmentExtensions.cs" />
+    <Compile Include="Application\Extensions\FragmentManagerExtensions.cs" />
     <Compile Include="Application\Extensions\TextViewExtensions.cs" />
     <Compile Include="Application\Extensions\ViewExtensions.cs" />
     <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
@@ -166,6 +176,7 @@
     <Compile Include="Application\Fragments\LibraryArchiveFragment.cs" />
     <Compile Include="Application\Fragments\DownloadedFollowedPodcastsFragment.cs" />
     <Compile Include="Application\Fragments\PodcastsFragment.cs" />
+    <Compile Include="Application\Fragments\SearchResultsFragment.cs" />
     <Compile Include="Application\Fragments\SharedTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\ShareTrackCollectionFragment.cs" />
     <Compile Include="Application\Fragments\StorageManagementFragment.cs" />
@@ -179,6 +190,8 @@
     <Compile Include="Application\Helpers\BitmapHelper.cs" />
     <Compile Include="Application\Helpers\BottomSheet\PreventBottomSheetChangesWhileSwipeHappens.cs" />
     <Compile Include="Application\Helpers\BottomSheet\BottomSheetManager.cs" />
+    <Compile Include="Application\Helpers\CenterSnapHelper.cs" />
+    <Compile Include="Application\Helpers\BmmViewPagerFragmentInfo.cs" />
     <Compile Include="Application\Helpers\HideKeyboardExtensions.cs" />
     <Compile Include="Application\Helpers\SetupHelper.cs" />
     <Compile Include="Application\Implementations\App\ISystemSettingsService.cs" />
@@ -240,6 +253,7 @@
     <Compile Include="Application\ValueConverters\ShuffleEnabledToIconValueConverter.cs" />
     <Compile Include="Application\ViewHolders\TilesCollectionViewHolder.cs" />
     <Compile Include="Application\ViewHolders\ContinueListeningTileViewHolder.cs" />
+    <Compile Include="Application\ViewHolders\FlexibleWidthTabTabLayoutViewHolder.cs" />
     <Compile Include="Application\ViewHolders\InfoMessageViewHolder.cs" />
     <Compile Include="Application\ViewHolders\VideoTileViewHolder.cs" />
     <Compile Include="Application\ViewHolders\YearInReviewItemViewHolder.cs" />
@@ -503,6 +517,7 @@
     <AndroidResource Include="Resources\drawable\edit_text_cursor.xml" />
     <AndroidResource Include="Resources\drawable\icon_album.xml" />
     <AndroidResource Include="Resources\drawable\icon_arrow_down.xml" />
+    <AndroidResource Include="Resources\drawable\icon_arrow_left.xml" />
     <AndroidResource Include="Resources\drawable\icon_chevron_primary_right.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -533,6 +548,7 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\icon_repeat_single.xml" />
+    <AndroidResource Include="Resources\drawable\icon_search.xml" />
     <AndroidResource Include="Resources\drawable\icon_select.xml" />
     <AndroidResource Include="Resources\drawable\icon_share.xml" />
     <AndroidResource Include="Resources\drawable\icon_shuffle.xml" />
@@ -643,6 +659,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\fragment_search_results.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\layout\fragment_shared_trackcollection.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -668,6 +688,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_search_history.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\listitem_tab_layout.xml" />
     <AndroidResource Include="Resources\layout\listitem_audio.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -752,6 +777,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\view_tab_layout.axml" />
     <AndroidResource Include="Resources\menu\bottom_navigation_menu.xml" />
     <AndroidResource Include="Resources\menu\edit_trackcollection.xml" />
     <AndroidResource Include="Resources\menu\playback_history.xml" />

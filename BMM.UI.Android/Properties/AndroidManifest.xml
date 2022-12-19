@@ -31,7 +31,7 @@
 	</application>
 	<uses-feature android:name="android.hardware.output" android:required="false" />
 	<permission android:name="org.brunstad.bmm.permission.C2D_MESSAGE" android:protectionLevel="signature" />
-	<uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 	<uses-permission android:name="org.brunstad.bmm.permission.C2D_MESSAGE" />
 	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 	<uses-permission android:name="android.permission.WAKE_LOCK" />

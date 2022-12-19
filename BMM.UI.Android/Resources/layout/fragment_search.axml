@@ -1,164 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <include
-        layout="@layout/toolbar_actionbar"
-        android:layout_alignParentTop="true" />
-    <RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/appbar"
-        local:MvxBind="Visibility InvertedVisibility(SearchExecuted)">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            local:MvxBind="Visibility Visibility(ShowHistory)"
-            android:orientation="vertical"
-            android:divider="?android:dividerHorizontal"
-            android:showDividers="middle">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/relativeLayout1">
-                <TextView
-                    android:id="@+id/text_view_searchhistory"
-                    local:MvxLang="Text SearchViewModel_SearchHistory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/element_margin_medium"
-                    android:layout_toLeftOf="@+id/imagebutton_deletehistory"
-                    android:layout_alignParentLeft="true"
-                    android:singleLine="true"
-                    style="@style/Title2" />
-                <ImageButton
-                    local:MvxBind="Click DeleteHistoryCommand"
-                    android:id="@+id/imagebutton_deletehistory"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:src="@drawable/icon_delete"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:paddingTop="@dimen/element_margin_medium"
-                    android:paddingBottom="@dimen/element_margin_medium"
-                    android:paddingRight="@dimen/element_margin_medium"
-                    android:paddingLeft="@dimen/element_margin_medium"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentEnd="true" />
-            </RelativeLayout>
-            <MvxListView
-                android:id="@+id/search_history"
-                local:MvxItemTemplate="@layout/listitem_search_suggestion"
-                local:MvxBind="ItemsSource SearchHistory; ItemClick SearchByTermCommand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nestedscrollview"
-            local:MvxBind="Visibility InvertedVisibility(ShowHistory)"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/gridLayout1"
-                android:layout_gravity="center"
-                android:layout_centerInParent="true">
-                <ImageView
-                    android:src="@drawable/icon_category_song"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/imageView1"
-                    android:layout_gravity="center"
-                    android:layout_weight="0"
-                    android:layout_marginBottom="@dimen/element_margin_small" />
-                <TextView
-                    local:MvxLang="Text SearchViewModel_WelcomeTitle"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/textView1"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="@dimen/element_margin_tiny"
-                    android:gravity="center_horizontal|center_vertical"
-                    style="@style/Title2" />
-                <TextView
-                    local:MvxLang="Text SearchViewModel_WelcomeSubTitle"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/textView2"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    style="@style/Subtitle3_Label2" />
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </RelativeLayout>
-    <RelativeLayout
+        android:background="@color/background_primary_color">
+
+    <Space
+        android:id="@id/SearchBarContainer"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/top_bar_height"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent" />
+    
+    <ImageButton
+        android:id="@+id/TopStartIcon"
+        android:layout_width="@dimen/large_button_height"
+        android:layout_height="@dimen/large_button_height"
+        android:src="@drawable/icon_search"
+        android:background="@android:color/transparent"
+        local:layout_constraintTop_toTopOf="@+id/SearchBarContainer"
+        local:layout_constraintBottom_toBottomOf="@+id/SearchBarContainer"
+        local:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/SearchTermLabel"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_marginEnd="@dimen/margin_xsmall"
+        android:background="@android:color/transparent"
+        android:textColorHint="@color/label_tertiary_color"
+        android:inputType="text"
+        android:maxLines="1"
+        android:imeOptions="actionSearch"
+        style="@style/Subtitle1"
+        local:layout_constraintTop_toTopOf="@+id/SearchBarContainer"
+        local:layout_constraintBottom_toBottomOf="@+id/SearchBarContainer"
+        local:layout_constraintStart_toEndOf="@+id/TopStartIcon"
+        local:layout_constraintEnd_toStartOf="@+id/RemoveIcon"
+        local:MvxBind="Text SearchTerm"
+        local:MvxLang="Hint SearchViewModel_SearchHint" />
+
+    <ImageButton
+        android:id="@+id/RemoveIcon"
+        android:layout_width="@dimen/large_button_height"
+        android:layout_height="@dimen/large_button_height"
+        android:src="@drawable/icon_remove"
+        android:background="@android:color/transparent"
+        local:layout_constraintTop_toTopOf="@+id/SearchBarContainer"
+        local:layout_constraintBottom_toBottomOf="@+id/SearchBarContainer"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="
+            Click ClearCommand;
+            Visibility Visibility(IsRemoveTermVisible)" />
+    
+    <FlexibleWidthTabLayout
+        android:id="@+id/TabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/appbar"
-        local:MvxBind="Visibility Visibility(SearchExecuted)">
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/appbar"
-            local:MvxBind="Visibility Visibility(ShowSuggestions)"
-            android:orientation="vertical"
-            android:divider="?android:dividerHorizontal"
-            android:showDividers="middle">
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_view_title"
-                android:singleLine="true"
-                android:textColor="@drawable/navigation_header_text"
-                android:textSize="@dimen/text_large"
-                local:MvxLang="Text SearchViewModel_SearchSuggestions"
-                android:paddingTop="@dimen/margin_medium"
-                android:paddingRight="@dimen/margin_medium"
-                android:paddingBottom="@dimen/margin_medium"
-                android:paddingLeft="@dimen/margin_medium"
-                android:layout_gravity="center_vertical" />
-            <MvxListView
-                android:id="@+id/search_suggestions"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:divider="@drawable/documents_divider"
-                local:MvxItemTemplate="@layout/listitem_search_suggestion"
-                local:MvxBind="ItemsSource SearchSuggestions; ItemClick SearchByTermCommand" />
-        </LinearLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            local:MvxBind="Visibility Visibility(NoResults)"
-            android:layout_centerInParent="true"
-            android:id="@+id/linearLayout2">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/text_view_title"
-                android:singleLine="true"
-                android:textColor="@drawable/navigation_header_text"
-                android:textSize="@dimen/text_large"
-                local:MvxLang="Text SearchViewModel_SearchNoResults"
-                android:layout_gravity="center"
-                android:layout_centerInParent="true"
-                android:gravity="center" />
-        </RelativeLayout>
-        <mvvmcross.droidx.recyclerview.MvxRecyclerView
-            android:id="@+id/DocumentsRecyclerView"
-            android:scrollbars="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            local:MvxTemplateSelector="@string/document_templateselector"
+        android:layout_height="wrap_content"
+        android:background="@color/background_primary_color"
+        android:outlineProvider="none"
+        android:translationZ="6dp"
+        local:layout_constraintTop_toBottomOf="@+id/SearchBarContainer"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/BottomTabLayoutShadowView"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="1dp"
+        android:background="@color/background_primary_color"
+        android:elevation="4dp"
+        local:layout_constraintBottom_toBottomOf="@+id/TabLayout"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent" />
+    
+    <ViewPager
+        android:id="@+id/ViewPager"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        local:layout_constraintTop_toBottomOf="@+id/BottomTabLayoutShadowView"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent" />
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:background="@color/background_primary_color"
+        android:outlineProvider="none"
+        android:translationZ="8dp"
+        local:MvxBind="Visibility Visibility(IsHistoryVisible)"
+        local:layout_constraintTop_toBottomOf="@+id/SearchBarContainer"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent">
+        
+        <View
+            android:id="@+id/SearchBarLayoutShadowView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="1dp"
+            android:background="@color/background_primary_color"
+            android:elevation="4dp"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent" />
+        
+        <TextView
+            android:id="@+id/RecentSearchesLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            style="@style/Subtitle3_Label3"
+            local:layout_constraintTop_toTopOf="@+id/ClearRecentSearchesButton"
+            local:layout_constraintBottom_toBottomOf="@+id/ClearRecentSearchesButton"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toStartOf="@+id/ClearRecentSearchesButton"
+            local:MvxBind="Visibility Visibility(HasAnyHistoryEntry)"
+            local:MvxLang="Text SearchViewModel_SearchHistory" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/ClearRecentSearchesButton"
+            android:layout_width="@dimen/clear_recent_searches_button_size"
+            android:layout_height="@dimen/clear_recent_searches_button_size"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_xsmall"
+            local:cardBackgroundColor="@color/background_secondary_color"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/SearchBarLayoutShadowView"
+            local:cardCornerRadius="@dimen/clear_recent_searches_button_radius"
+            local:cardElevation="@dimen/dimen_none"
             local:MvxBind="
-                ItemsSource Documents;
-                ItemClick DocumentSelectedCommand;
-                Visibility InvertedVisibility(ShowSuggestions)" />
-    </RelativeLayout>
-</RelativeLayout>
+                Click DeleteHistoryCommand;
+                Visibility Visibility(HasAnyHistoryEntry)" >
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_remove"
+                    android:layout_gravity="center" />
+            
+        </androidx.cardview.widget.CardView>
+
+        <mvvmcross.droidx.recyclerview.MvxRecyclerView
+                android:id="@+id/RecentSearchesRecyclerView"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="@dimen/match_constraint"
+                android:layout_marginTop="@dimen/margin_tiny"
+                local:layout_constraintTop_toBottomOf="@+id/ClearRecentSearchesButton"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxItemTemplate="@layout/listitem_search_history"
+                local:MvxBind="
+                    Visibility Visibility(HasAnyHistoryEntry);
+                    ItemsSource SearchHistory;
+                    ItemClick SearchByTermCommand;" />
+        
+        <TextView
+                android:id="@+id/WelcomeTitleLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:gravity="start"
+                style="@style/Heading3"
+                local:layout_constraintVertical_chainStyle="packed"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintTop_toBottomOf="@+id/ClearRecentSearchesButton"
+                local:layout_constraintBottom_toTopOf="@+id/WelcomeSubtitleLabel"
+                local:MvxBind="Visibility InvertedVisibility(HasAnyHistoryEntry)"
+                local:MvxLang="Text SearchViewModel_WelcomeTitle" />
+
+        <TextView
+                android:id="@+id/WelcomeSubtitleLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:gravity="start"
+                android:layout_marginTop="@dimen/margin_small"
+                style="@style/Paragraph1"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintTop_toBottomOf="@+id/WelcomeTitleLabel"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:MvxBind="Visibility InvertedVisibility(HasAnyHistoryEntry)"
+                local:MvxLang="Text SearchViewModel_WelcomeSubTitle" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
