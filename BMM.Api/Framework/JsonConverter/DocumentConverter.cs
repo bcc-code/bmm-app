@@ -62,6 +62,12 @@ namespace BMM.Api.Framework.JsonConverter
                 
                 case "top_songs_collection":
                     return new TopSongsCollection();
+                
+                case "tile_message":
+                    return new MessageTile();
+                
+                case "tile_video":
+                    return new VideoTile();
             }
 
             return new UnsupportedDocument();

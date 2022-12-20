@@ -34,27 +34,29 @@ namespace BMM.Core.GuardedActions.Documents
 
             while (true)
             {
-                var firstContinueListeningElement = adjustedList
-                    .FirstOrDefault(e => e is ContinueListeningTile);
+                var firstTileElement = adjustedList
+                    .FirstOrDefault(CheckIsTile);
                 
-                if (firstContinueListeningElement == null)
+                if (firstTileElement == null)
                     break;
 
                 int startIndex = adjustedList
-                    .IndexOf(firstContinueListeningElement);
+                    .IndexOf(firstTileElement);
 
-                var continueListeningTiles = new List<Document>();
+                var tiles = new List<Document>();
                 
                 for (int i = startIndex; i < adjustedList.Count; i++)
                 {
-                    if (adjustedList[i] is ContinueListeningTile itemToAdd)
-                        continueListeningTiles.Add(itemToAdd);
+                    var item = adjustedList[i];
+                    
+                    if (CheckIsTile(adjustedList[i]))
+                        tiles.Add(item);
                     else
                         break;
                 }
                 
-                adjustedList.RemoveRange(startIndex, continueListeningTiles.Count);
-                adjustedList.Insert(startIndex, new ContinueListeningCollection(new ObservableCollection<Document>(continueListeningTiles)));
+                adjustedList.RemoveRange(startIndex, tiles.Count);
+                adjustedList.Insert(startIndex, new TilesCollection(new ObservableCollection<Document>(tiles)));
             }
             
             return _documentsPOFactory.Create(
@@ -62,6 +64,13 @@ namespace BMM.Core.GuardedActions.Documents
                 DataContext.DocumentSelectedCommand,
                 DataContext.OptionCommand,
                 DataContext.TrackInfoProvider).ToList();
+        }
+
+        private static bool CheckIsTile(Document document)
+        {
+            return document
+                .DocumentType
+                .IsOneOf(DocumentType.Tile, DocumentType.TileMessage, DocumentType.TileVideo);
         }
     }
 }

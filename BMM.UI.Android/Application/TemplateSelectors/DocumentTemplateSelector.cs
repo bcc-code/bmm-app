@@ -1,13 +1,13 @@
 ﻿using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Carousels;
-using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.Models.POs.Contributors;
 using BMM.Core.Models.POs.InfoMessages;
 using BMM.Core.Models.POs.ListeningStreakPO;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Models.POs.YearInReview;
@@ -136,7 +136,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case SimpleMarginPO:
                     return ViewTypes.SimpleMargin;
 
-                case ContinueListeningCollectionPO:
+                case TileCollectionPO:
                     return ViewTypes.ContinueListeningCollection;
 
                 case YearInReviewTeaserPO yearInReviewTeaserPO:

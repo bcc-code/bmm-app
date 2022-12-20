@@ -29,6 +29,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private IMediaTrack _currentMediaTrack;
         private decimal? _desiredRate;
+        private NSObject _didPlayToEndTimeObserverToken;
 
         private AVPlayerItem CurrentItem => Player.CurrentItem;
 
@@ -129,23 +130,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _playerErrorHandler = playerErrorHandler;
             _playerAnalytics = playerAnalytics;
             _avPlayerItemRepository = avPlayerItemRepository;
-
-            NSNotificationCenter.DefaultCenter.AddObserver(
-                AVPlayerItem.DidPlayToEndTimeNotification,
-                notification =>
-                {
-                    var positionInSeconds = Position / 1000;
-                    // In case the track is only partially downloaded playback just stops without any way to detect that something is wrong. Therefore we have to detect it manually.
-                    if (CurrentItem.Duration.Seconds - positionInSeconds > IncompletePlaybackThresholdInSeconds)
-                    {
-                        Status = PlayStatus.Stopped;
-                        _playerErrorHandler.PlaybackError($"Track stopped too early. Duration: {CurrentItem.Duration.Seconds}, Position: {positionInSeconds}", _currentMediaTrack);
-                        return;
-                    }
-
-                    _status = PlayStatus.Ended; // We want to bypass the OnPositionOrStateChanged() because OnMediaFinished indirectly also triggers it
-                    OnMediaFinished?.Invoke();
-                });
         }
 
         public void SeekTo(long newPositionInMs, bool playAutomatically = true)
@@ -238,13 +222,32 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             CurrentItem.AddObserver(this, LoadedTimeRangesObserver, InitialAndNewObservingOptions, LoadedTimeRangesObservationContext.Handle);
             CurrentItem.AddObserver(this, StatusObserver, InitialAndNewObservingOptions, StatusObservationContext.Handle);
+            _didPlayToEndTimeObserverToken = AVPlayerItem.Notifications.ObserveDidPlayToEndTime(CurrentItem, OnDidPlayToEndTime);
         }
-
+        
         private void RemoveObservers()
         {
             CurrentItem?.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
             CurrentItem?.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
+            _didPlayToEndTimeObserverToken?.Dispose();
         }
+
+        private void OnDidPlayToEndTime(object sender, NSNotificationEventArgs e)
+        {
+            var positionInSeconds = Position / 1000;
+            // In case the track is only partially downloaded playback just stops without any way to detect that something is wrong. Therefore we have to detect it manually.
+            if (CurrentItem.Duration.Seconds - positionInSeconds > IncompletePlaybackThresholdInSeconds)
+            {
+                Status = PlayStatus.Stopped;
+                _playerErrorHandler.PlaybackError($"Track stopped too early. Duration: {CurrentItem.Duration.Seconds}, Position: {positionInSeconds}", _currentMediaTrack);
+                return;
+            }
+
+            _status = PlayStatus.Ended; // We want to bypass the OnPositionOrStateChanged() because OnMediaFinished indirectly also triggers it
+            OnMediaFinished?.Invoke();
+        }
+
+
 
         public async Task PlayPause()
         {

@@ -4,7 +4,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.ConstraintLayout.Widget;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Models.POs.ContinueListening;
+using BMM.Core.Models.POs.Tiles;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.CustomViews;
 using BMM.UI.Droid.Application.Extensions;

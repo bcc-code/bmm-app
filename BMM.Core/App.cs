@@ -280,7 +280,7 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackCollectionPOFactory, TrackCollectionPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IListeningStreakPOFactory, ListeningStreakPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDiscoverSectionHeaderPOFactory, DiscoverSectionHeaderPOFactory>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IContinueListeningTilePOFactory, ContinueListeningTilePOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITilePOFactory, TilePOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewPOFactory, YearInReviewPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewTeaserPOFactory, YearInReviewTeaserPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITopSongsPOFactory, TopSongsPOFactory>();

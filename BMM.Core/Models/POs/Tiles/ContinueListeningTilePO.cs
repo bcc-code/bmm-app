@@ -4,12 +4,13 @@ using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Tiles.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross.Commands;
 
-namespace BMM.Core.Models.POs.ContinueListening
+namespace BMM.Core.Models.POs.Tiles
 {
-    public class ContinueListeningTilePO : DocumentPO, ITrackHolderPO
+    public class ContinueListeningTilePO : DocumentPO, ITilePO<ContinueListeningTile>, ITrackHolderPO
     {
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
@@ -31,30 +32,30 @@ namespace BMM.Core.Models.POs.ContinueListening
             _storageManager = storageManager;
             TileClickedCommand = new MvxAsyncCommand(async () =>
             {
-                await tileClickedAction.ExecuteGuarded(ContinueListeningTile);
+                await tileClickedAction.ExecuteGuarded(Tile);
             });
             
             ContinueListeningCommand = new MvxAsyncCommand(async () =>
             {
-                await continuePlayingAction.ExecuteGuarded(ContinueListeningTile);
+                await continuePlayingAction.ExecuteGuarded(Tile);
             });
 
             ShuffleButtonClickedCommand = new MvxAsyncCommand(async () =>
             {
-                await shuffleButtonClickedAction.ExecuteGuarded(ContinueListeningTile);
+                await shuffleButtonClickedAction.ExecuteGuarded(Tile);
             });
             
             ShowTrackInfoCommand = new MvxAsyncCommand(async () =>
             {
-                await showTrackInfoAction.ExecuteGuarded(ContinueListeningTile!.Track);
+                await showTrackInfoAction.ExecuteGuarded(Tile!.Track);
             });
 
             OptionButtonClickedCommand = new MvxAsyncCommand(async () =>
             {
-                await optionsClickedCommand.ExecuteAsync(ContinueListeningTile);
+                await optionsClickedCommand.ExecuteAsync(Tile);
             });
             
-            ContinueListeningTile = continueListeningTile;
+            Tile = continueListeningTile;
             RefreshState();
         }
         
@@ -63,7 +64,7 @@ namespace BMM.Core.Models.POs.ContinueListening
         public IMvxAsyncCommand ShuffleButtonClickedCommand { get; }
         public IMvxAsyncCommand ShowTrackInfoCommand { get; }
         public IMvxAsyncCommand OptionButtonClickedCommand { get; }
-        public ContinueListeningTile ContinueListeningTile { get; }
+        public ContinueListeningTile Tile { get; }
 
         public bool IsCurrentlySelected
         {
@@ -85,9 +86,9 @@ namespace BMM.Core.Models.POs.ContinueListening
         
         public Task RefreshState()
         {
-            IsCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(ContinueListeningTile.Track.Id);
+            IsCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Tile.Track.Id);
             IsCurrentlyPlaying = IsCurrentlySelected && _mediaPlayer.IsPlaying;
-            IsDownloaded = _storageManager.SelectedStorage.IsDownloaded(ContinueListeningTile.Track);
+            IsDownloaded = _storageManager.SelectedStorage.IsDownloaded(Tile.Track);
             return Task.CompletedTask;
         }
     }

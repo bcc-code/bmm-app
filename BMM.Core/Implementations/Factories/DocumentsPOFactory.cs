@@ -11,12 +11,12 @@ using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Carousels;
-using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.Models.POs.Contributors;
 using BMM.Core.Models.POs.InfoMessages;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.YearInReview;
 using MvvmCross.Commands;
 
@@ -28,7 +28,7 @@ namespace BMM.Core.Implementations.Factories
         private readonly ITrackCollectionPOFactory _trackCollectionPOFactory;
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
         private readonly IDiscoverSectionHeaderPOFactory _discoverSectionHeaderPOFactory;
-        private readonly IContinueListeningTilePOFactory _continueListeningTilePOFactory;
+        private readonly ITilePOFactory _tilePOFactory;
         private readonly IYearInReviewTeaserPOFactory _yearInReviewTeaserPOFactory;
 
         public DocumentsPOFactory(
@@ -36,14 +36,14 @@ namespace BMM.Core.Implementations.Factories
             ITrackCollectionPOFactory trackCollectionPOFactory,
             IListeningStreakPOFactory listeningStreakPOFactory,
             IDiscoverSectionHeaderPOFactory discoverSectionHeaderPOFactory,
-            IContinueListeningTilePOFactory continueListeningTilePOFactory,
+            ITilePOFactory tilePOFactory,
             IYearInReviewTeaserPOFactory yearInReviewTeaserPOFactory)
         {
             _trackPOFactory = trackPOFactory;
             _trackCollectionPOFactory = trackCollectionPOFactory;
             _listeningStreakPOFactory = listeningStreakPOFactory;
             _discoverSectionHeaderPOFactory = discoverSectionHeaderPOFactory;
-            _continueListeningTilePOFactory = continueListeningTilePOFactory;
+            _tilePOFactory = tilePOFactory;
             _yearInReviewTeaserPOFactory = yearInReviewTeaserPOFactory;
         }
         
@@ -81,13 +81,13 @@ namespace BMM.Core.Implementations.Factories
                         documentsPOList.Add(new ChapterHeaderPO(chapterHeader));
                         break;
                     case ContinueListeningTile continueListeningTile:
-                        documentsPOList.Add(_continueListeningTilePOFactory.Create(optionsClickedCommand, continueListeningTile));
+                        documentsPOList.Add(_tilePOFactory.Create(optionsClickedCommand, continueListeningTile));
                         break;
                     case CoverCarouselCollection coverCarouselCollection:
                         documentsPOList.Add(new CoverCarouselCollectionPO(this, trackInfoProvider, documentSelectedCommand, optionsClickedCommand, coverCarouselCollection));
                         break;
-                    case ContinueListeningCollection continueListeningCollection:
-                        documentsPOList.Add(new ContinueListeningCollectionPO(_continueListeningTilePOFactory, documentSelectedCommand, optionsClickedCommand, continueListeningCollection));
+                    case TilesCollection continueListeningCollection:
+                        documentsPOList.Add(new TileCollectionPO(_tilePOFactory, documentSelectedCommand, optionsClickedCommand, continueListeningCollection));
                         break;
                     case DiscoverSectionHeader discoverSectionHeader:
                         documentsPOList.Add(_discoverSectionHeaderPOFactory.Create(discoverSectionHeader));

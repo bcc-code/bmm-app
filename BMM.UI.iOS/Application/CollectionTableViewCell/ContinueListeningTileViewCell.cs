@@ -1,7 +1,7 @@
 ﻿using System;
 using Airbnb.Lottie;
 using BMM.Core.Constants;
-using BMM.Core.Models.POs.ContinueListening;
+using BMM.Core.Models.POs.Tiles;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
@@ -14,23 +14,23 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public partial class ContinueListeningCollectionViewCell : MvxCollectionViewCell
+    public partial class ContinueListeningTileViewCell : MvxCollectionViewCell
     {
-        public static readonly NSString Key = new NSString(nameof(ContinueListeningCollectionViewCell));
-        public static readonly UINib Nib = UINib.FromName(nameof(ContinueListeningCollectionViewCell), NSBundle.MainBundle);
+        public static readonly NSString Key = new NSString(nameof(ContinueListeningTileViewCell));
+        public static readonly UINib Nib = UINib.FromName(nameof(ContinueListeningTileViewCell), NSBundle.MainBundle);
         private DateTime? _date;
         private string _subtitle;
         private bool _isCurrentlyPlaying;
 
-        public ContinueListeningCollectionViewCell(IntPtr handle): base(Key, handle)
+        public ContinueListeningTileViewCell(IntPtr handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<ContinueListeningCollectionViewCell, ContinueListeningTilePO>();
+                var set = this.CreateBindingSet<ContinueListeningTileViewCell, ContinueListeningTilePO>();
                 
                 set.Bind(BackgroundView)
                     .For(v => v.BackgroundColor)
-                    .To(po => po.ContinueListeningTile.BackgroundColor)
+                    .To(po => po.Tile.BackgroundColor)
                     .WithConversion<HexStringToUiColorConverter>(AppColors.TileDefaultColor);
 
                 set.Bind(BackgroundView)
@@ -40,38 +40,38 @@ namespace BMM.UI.iOS
                 CoverImageView.ErrorAndLoadingPlaceholderImagePathForCover();
                 set.Bind(CoverImageView)
                     .For(v => v.ImagePath)
-                    .To(vm => vm.ContinueListeningTile.CoverUrl)
+                    .To(vm => vm.Tile.CoverUrl)
                     .WithConversion<CoverUrlToFallbackImageValueConverter>(IosConstants.CoverPlaceholderImage);
 
                 set.Bind(TitleLabel)
-                    .To(vm => vm.ContinueListeningTile.Label);
+                    .To(vm => vm.Tile.Label);
                 
                 set.Bind(SubtitleLabel)
-                    .To(vm => vm.ContinueListeningTile.Title);
+                    .To(vm => vm.Tile.Title);
 
                 set.Bind(this)
                     .For(v => v.Date)
-                    .To(vm => vm.ContinueListeningTile.Date);
+                    .To(vm => vm.Tile.Date);
                 
                 set.Bind(DateLabel)
-                    .To(vm => vm.ContinueListeningTile.Date)
+                    .To(vm => vm.Tile.Date)
                     .WithConversion<DateTimeToPodcastPublishDateLabelValueConverter>();
                 
                 set.Bind(DayOfWeekLabel)
-                    .To(vm => vm.ContinueListeningTile.Date)
+                    .To(vm => vm.Tile.Date)
                     .WithConversion<DateTimeToPodcastPublishDayOfWeekLabelValueConverter>();
 
                 set.Bind(this)
                     .For(v => v.Subtitle)
-                    .To(vm => vm.ContinueListeningTile.Subtitle);
+                    .To(vm => vm.Tile.Subtitle);
                 
                 set.Bind(ProgressBarView)
                     .For(v => v.Percentage)
-                    .To(vm => vm.ContinueListeningTile.Percentage);
+                    .To(vm => vm.Tile.Percentage);
                 
                 set.Bind(ReferenceButton)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.ContinueListeningTile.Track)
+                    .To(vm => vm.Tile.Track)
                     .WithConversion<TrackHasExternalRelationsValueConverter>();
 
                 set.Bind(ReferenceButton)
@@ -89,7 +89,7 @@ namespace BMM.UI.iOS
                 
                 set.Bind(ShuffleButton)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.ContinueListeningTile.ShufflePodcastId)
+                    .To(vm => vm.Tile.ShufflePodcastId)
                     .WithConversion<HasValueToVisibleValueConverter>();
 
                 set.Bind(IsPlayingButton)

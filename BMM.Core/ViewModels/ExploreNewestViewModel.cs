@@ -23,8 +23,8 @@ using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
-using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.Models.POs.Other;
+using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.ViewModels.Base;
@@ -94,7 +94,7 @@ namespace BMM.Core.ViewModels
 
         private void RefreshContinueListeningItems()
         {
-            var itemsToRefresh = Documents.OfType<ContinueListeningCollectionPO>().ToList();
+            var itemsToRefresh = Documents.OfType<TileCollectionPO>().ToList();
             itemsToRefresh.ForEach(i => i.RefreshState());
         }
 

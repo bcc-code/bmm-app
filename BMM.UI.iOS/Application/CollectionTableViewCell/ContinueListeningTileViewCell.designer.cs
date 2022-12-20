@@ -10,8 +10,8 @@ using System.CodeDom.Compiler;
 
 namespace BMM.UI.iOS
 {
-	[Register ("ContinueListeningCollectionViewCell")]
-	partial class ContinueListeningCollectionViewCell
+	[Register ("ContinueListeningTileViewCell")]
+	partial class ContinueListeningTileViewCell
 	{
 		[Outlet]
 		UIKit.UIView BackgroundView { get; set; }
