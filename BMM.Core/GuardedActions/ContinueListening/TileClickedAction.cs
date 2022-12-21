@@ -4,7 +4,6 @@ using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Helpers;
-using BMM.Core.Models.POs.ContinueListening;
 
 namespace BMM.Core.GuardedActions.ContinueListening
 {

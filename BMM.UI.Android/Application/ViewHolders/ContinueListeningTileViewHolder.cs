@@ -4,7 +4,7 @@ using Android.Views;
 using Android.Widget;
 using AndroidX.ConstraintLayout.Widget;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Models.POs.ContinueListening;
+using BMM.Core.Models.POs.Tiles;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.CustomViews;
 using BMM.UI.Droid.Application.Extensions;
@@ -49,16 +49,16 @@ namespace BMM.UI.Droid.Application.ViewHolders
 
             set.Bind(backgroundView)
                 .For(v => v.BindBackgroundColor())
-                .To(po => po.ContinueListeningTile.BackgroundColor)
+                .To(po => po.Tile.BackgroundColor)
                 .WithConversion<HexToColorValueConverter>(ItemView.Context.GetColorFromResource(Resource.Color.tile_default_color));
 
             set.Bind(this)
                 .For(v => v.Date)
-                .To(po => po.ContinueListeningTile.Date);
+                .To(po => po.Tile.Date);
             
             set.Bind(this)
                 .For(v => v.SubtitleLabel)
-                .To(po => po.ContinueListeningTile.Subtitle);
+                .To(po => po.Tile.Subtitle);
             
             set.Apply();
         }

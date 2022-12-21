@@ -2,12 +2,12 @@
 <mvvmcross.droidx.recyclerview.MvxRecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:local="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ContinueListeningCarouselCollectionRecyclerView"
+        android:id="@+id/TilesCollectionRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="@dimen/horizontal_scrolling_continue_listening_collection_height"
         android:layout_marginTop="@dimen/margin_medium"
         android:layout_marginBottom="@dimen/margin_small"
-        local:MvxItemTemplate="@layout/listitem_continue_listening"
+        local:MvxTemplateSelector="@string/tiles_collection_templateselector"
         local:MvxBind="
-            ItemsSource ContinueListeningTiles;
+            ItemsSource Tiles;
             ItemClick DocumentSelectedCommand" />

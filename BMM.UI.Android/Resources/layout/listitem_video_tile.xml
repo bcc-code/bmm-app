@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="@dimen/horizontal_scrolling_continue_listening_item_width"
+        android:layout_height="@dimen/horizontal_scrolling_continue_listening_item_height"
+        android:gravity="center"
+        local:cardCornerRadius="@dimen/continue_listening_item_corner_radius"
+        android:background="@color/background_secondary_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/BackgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+        <VideoView
+            android:id="@+id/VideoView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:id="@+id/HeaderLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_xxmedium"
+            android:layout_marginTop="@dimen/margin_xxmedium"
+            android:textColor="@color/black"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxBind="Text Tile.Header"
+            style="@style/Subtitle2_Label1" />
+
+        <ImageView
+            android:id="@+id/BergprekenenLabels"
+            android:layout_width="wrap_content"
+            android:layout_height="166dp"
+            android:layout_marginTop="@dimen/margin_xxmedium"
+            android:layout_marginStart="@dimen/margin_xxmedium"
+            local:layout_constraintTop_toBottomOf="@+id/HeaderLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/bergprekenen_labels"/>
+        
+        <Button
+            android:id="@+id/BottomButton"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_xxmedium"
+            android:layout_marginBottom="@dimen/margin_xxmedium"
+            android:textColor="@color/white"
+            local:backgroundTint="@color/black"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:MvxBind="
+                Text Tile.ButtonText;
+                Click BottomButtonClickedCommand;"
+            style="@style/Button_Primary_Medium" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

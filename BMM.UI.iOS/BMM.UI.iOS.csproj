@@ -422,6 +422,13 @@
     <Reference Include="System.IO.Compression" />
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\BP_Video_02.mp4" />
+    <BundleResource Include="Resources\BP_Video_04.mp4" />
+    <BundleResource Include="Resources\BP_Video_07.mp4" />
+    <BundleResource Include="Resources\BP_Video_08.mp4" />
+    <BundleResource Include="Resources\BP_Video_09.mp4" />
+    <BundleResource Include="Resources\BP_Video_10.mp4" />
+    <BundleResource Include="Resources\BP_Video_03.mp4" />
     <BundleResource Include="Resources\icon_browse@3x.png" />
     <BundleResource Include="Resources\icon_browse@2x.png" />
     <BundleResource Include="Resources\icon_browse.png" />
@@ -562,6 +569,8 @@
     <BundleResource Include="Resources\icon_trackrelation_external%403x.png" />
   </ItemGroup>
   <ItemGroup>
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\MessageTileViewCell.xib" />
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\VideoTileViewCell.xib" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.xib">
       <SubType>Designer</SubType>
@@ -576,7 +585,7 @@
     <InterfaceDefinition Include="Application\ViewController\YearInReviewViewController.xib" />
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
     <None Include="app.config" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.xib" />
+    <InterfaceDefinition Include="Application\CollectionTableViewCell\ContinueListeningTileViewCell.xib" />
     <InterfaceDefinition Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.xib" />
     <InterfaceDefinition Include="Application\CustomViews\ProgressBarView.xib" />
     <InterfaceDefinition Include="Application\TableViewCell\ChapterHeaderTableViewCell.xib" />
@@ -643,18 +652,27 @@
     <Compile Include="Application\Actions\PlayMusicFromSiriAction.cs" />
     <Compile Include="Application\Actions\SearchForMusicFromSiriAction.cs" />
     <Compile Include="Application\Actions\ShareYearInReviewAction.cs" />
-    <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\ContinueListeningCollectionViewCell.designer.cs">
-      <DependentUpon>ContinueListeningCollectionViewCell.cs</DependentUpon>
+    <Compile Include="Application\CollectionTableViewCell\ContinueListeningTileViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\ContinueListeningTileViewCell.designer.cs">
+      <DependentUpon>ContinueListeningTileViewCell.cs</DependentUpon>
     </Compile>
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
       <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\CollectionTableViewCell\MessageTileViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\MessageTileViewCell.designer.cs">
+      <DependentUpon>MessageTileViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Application\CollectionTableViewCell\VideoTileViewCell.cs" />
+    <Compile Include="Application\CollectionTableViewCell\VideoTileViewCell.designer.cs">
+      <DependentUpon>VideoTileViewCell.cs</DependentUpon>
+    </Compile>
     <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.cs" />
     <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.designer.cs">
       <DependentUpon>YearInReviewCollectionViewCell.cs</DependentUpon>
     </Compile>
+    <Compile Include="Application\CollectionViewSource\TilesCollectionViewSource.cs" />
     <Compile Include="Application\CollectionViewSource\YearInReviewSource.cs" />
     <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
     <Compile Include="Application\CustomViews\BmmSliderView.cs" />
@@ -666,6 +684,7 @@
     <Compile Include="Application\CustomViews\ProgressBarView.designer.cs" />
     <Compile Include="Application\CustomViews\Separator.cs" />
     <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
+    <Compile Include="Application\CustomViews\VideoView.cs" />
     <Compile Include="Application\Delegates\CustomUIAdaptivePresentationControllerDelegate.cs" />
     <Compile Include="Application\Delegates\IINUIAddVoiceShortcutViewControllerDelegate.cs" />
     <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
@@ -1177,6 +1196,8 @@
     <ImageAsset Include="Resources\Colors.xcassets\SeparatorColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\TileDefaultColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-83_5@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Bergpreken.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />

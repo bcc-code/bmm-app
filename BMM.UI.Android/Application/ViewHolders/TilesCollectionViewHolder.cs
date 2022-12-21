@@ -12,29 +12,29 @@ using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BMM.UI.Droid.Application.ViewHolders
 {
-    public class ContinueListeningCarouselCollectionViewHolder : MvxRecyclerViewHolder
+    public class TilesCollectionViewHolder : MvxRecyclerViewHolder
     {
-        private MvxRecyclerView _continueListeningCarouselCollectionRecyclerView;
+        private MvxRecyclerView _tilesCollectionRecyclerView;
         private IParcelable _state;
         private LinearLayoutManager _layoutManager;
         private const int ItemSpacing = 12;
         private const int SideSpacing = 16;
 
-        public ContinueListeningCarouselCollectionViewHolder(View itemView, IMvxAndroidBindingContext context)
+        public TilesCollectionViewHolder(View itemView, IMvxAndroidBindingContext context)
             : base(itemView, context)
         {
             this.DelayBind(Bind);
         }
 
-        protected ContinueListeningCarouselCollectionViewHolder(IntPtr handle, JniHandleOwnership ownership)
+        protected TilesCollectionViewHolder(IntPtr handle, JniHandleOwnership ownership)
             : base(handle, ownership)
         {
         }
 
         private void Bind()
         {
-            _continueListeningCarouselCollectionRecyclerView = ItemView.FindViewById<MvxRecyclerView>(Resource.Id.ContinueListeningCarouselCollectionRecyclerView);
-            _continueListeningCarouselCollectionRecyclerView!.NestedScrollingEnabled = false;
+            _tilesCollectionRecyclerView = ItemView.FindViewById<MvxRecyclerView>(Resource.Id.TilesCollectionRecyclerView);
+            _tilesCollectionRecyclerView!.NestedScrollingEnabled = false;
 
             _layoutManager = new LinearLayoutManager(ItemView.Context, LinearLayoutManager.Horizontal, false)
             {
@@ -42,12 +42,12 @@ namespace BMM.UI.Droid.Application.ViewHolders
             };
 
             var spacingItemDecoration = new SpacingItemDecoration(ItemSpacing.DpToPixels(), sideSpacing: SideSpacing.DpToPixels());
-            var adapter = new ContinueAudiobookCarouselRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
+            var adapter = new TilesCollectionRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
             
-            _continueListeningCarouselCollectionRecyclerView!.AddItemDecoration(spacingItemDecoration);
-            _continueListeningCarouselCollectionRecyclerView.HasFixedSize = true;
-            _continueListeningCarouselCollectionRecyclerView.SetLayoutManager(_layoutManager);
-            _continueListeningCarouselCollectionRecyclerView.Adapter = adapter;
+            _tilesCollectionRecyclerView!.AddItemDecoration(spacingItemDecoration);
+            _tilesCollectionRecyclerView.HasFixedSize = true;
+            _tilesCollectionRecyclerView.SetLayoutManager(_layoutManager);
+            _tilesCollectionRecyclerView.Adapter = adapter;
         }
 
         public override void OnAttachedToWindow()

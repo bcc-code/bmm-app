@@ -1,4 +1,6 @@
 using System;
+using BMM.UI.iOS.Extensions;
+using BMM.UI.iOS.NewMediaPlayer;
 using UIKit;
 
 namespace BMM.UI.iOS.Constants
@@ -213,6 +215,17 @@ namespace BMM.UI.iOS.Constants
             ButtonColor = AppColors.BackgroundPrimaryColor,
             IconTint = AppColors.LabelPrimaryColor,
             ImageEdgeInsets = new UIEdgeInsets(0, 6, 0, 16)
+        };
+        
+        public static readonly ButtonTheme ButtonPrimaryBlack = new StandardButtonTheme
+        {
+            TextTheme = new TextTheme
+            {
+                Font = Typography.Title1.Value,
+                Color = AppColors.LabelPrimaryColorReverted.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
+            },
+            ButtonColor = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
+            IconTint = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light)
         };
         
         #endregion

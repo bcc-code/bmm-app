@@ -4,6 +4,7 @@ using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Security.Oidc.Interfaces;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Implementations.TrackCollections;
 
 namespace BMM.Core.Implementations.Security
@@ -40,6 +41,7 @@ namespace BMM.Core.Implementations.Security
             await _cache.Clear();
             await _trackCollectionStorage.Clear();
             await _podcastOfflineManager.Clear();
+            AppSettings.Clear();
         }
     }
 }

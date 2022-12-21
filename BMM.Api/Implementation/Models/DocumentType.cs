@@ -35,7 +35,7 @@ namespace BMM.Api.Implementation.Models
         SimpleMargin,
 
         [IgnoreDataMember]
-        ContinueListeningCollection,
+        TileCollection,
 
         [EnumMember(Value = "section_header")]
         DiscoverSectionHeader,
@@ -54,6 +54,12 @@ namespace BMM.Api.Implementation.Models
         
         [EnumMember(Value = "top_songs_collection")]
         TopSongsCollection,
+        
+        [EnumMember(Value = "tile_video")]
+        TileVideo,
+        
+        [EnumMember(Value = "tile_message")]
+        TileMessage,
 
         [EnumMember(Value = "unsupported")]
         Unsupported

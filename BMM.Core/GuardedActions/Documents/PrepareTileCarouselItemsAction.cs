@@ -7,6 +7,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
@@ -14,13 +15,13 @@ using BMM.Core.ViewModels;
 
 namespace BMM.Core.GuardedActions.Documents
 {
-    public class PrepareContinueListeningCarouselItemsAction
+    public class PrepareTileCarouselItemsAction
         : GuardedActionWithParameterAndResult<IList<Document>, IList<IDocumentPO>>,
-          IPrepareContinueListeningCarouselItemsAction
+          IPrepareTileCarouselItemsAction
     {
         private readonly IDocumentsPOFactory _documentsPOFactory;
 
-        public PrepareContinueListeningCarouselItemsAction(IDocumentsPOFactory documentsPOFactory)
+        public PrepareTileCarouselItemsAction(IDocumentsPOFactory documentsPOFactory)
         {
             _documentsPOFactory = documentsPOFactory;
         }
@@ -32,29 +33,41 @@ namespace BMM.Core.GuardedActions.Documents
             await Task.CompletedTask;
             var adjustedList = docs.ToList();
 
+            var dismissedTilesIds = AppSettings.DismissedMessageTilesIds;
+            
+            var elementsToRemove = adjustedList
+                .OfType<MessageTile>()
+                .Where(t => dismissedTilesIds.Contains(t.Id))
+                .ToList();
+            
+            foreach (var elementToRemove in elementsToRemove)
+                adjustedList.Remove(elementToRemove);
+                
             while (true)
             {
-                var firstContinueListeningElement = adjustedList
-                    .FirstOrDefault(e => e is ContinueListeningTile);
+                var firstTileElement = adjustedList
+                    .FirstOrDefault(CheckIsTile);
                 
-                if (firstContinueListeningElement == null)
+                if (firstTileElement == null)
                     break;
 
                 int startIndex = adjustedList
-                    .IndexOf(firstContinueListeningElement);
+                    .IndexOf(firstTileElement);
 
-                var continueListeningTiles = new List<Document>();
+                var tiles = new List<Document>();
                 
                 for (int i = startIndex; i < adjustedList.Count; i++)
                 {
-                    if (adjustedList[i] is ContinueListeningTile itemToAdd)
-                        continueListeningTiles.Add(itemToAdd);
+                    var item = adjustedList[i];
+                    
+                    if (CheckIsTile(adjustedList[i]))
+                        tiles.Add(item);
                     else
                         break;
                 }
                 
-                adjustedList.RemoveRange(startIndex, continueListeningTiles.Count);
-                adjustedList.Insert(startIndex, new ContinueListeningCollection(new ObservableCollection<Document>(continueListeningTiles)));
+                adjustedList.RemoveRange(startIndex, tiles.Count);
+                adjustedList.Insert(startIndex, new TilesCollection(new ObservableCollection<Document>(tiles)));
             }
             
             return _documentsPOFactory.Create(
@@ -62,6 +75,13 @@ namespace BMM.Core.GuardedActions.Documents
                 DataContext.DocumentSelectedCommand,
                 DataContext.OptionCommand,
                 DataContext.TrackInfoProvider).ToList();
+        }
+
+        private static bool CheckIsTile(Document document)
+        {
+            return document
+                .DocumentType
+                .IsOneOf(DocumentType.Tile, DocumentType.TileMessage, DocumentType.TileVideo);
         }
     }
 }

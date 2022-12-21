@@ -18,23 +18,10 @@ namespace BMM.UI.Droid.Application.Implementations.UI
 
         public void OpenUri(Uri uri)
         {
-            var intentBuilder = new CustomTabsIntent.Builder()
-                .SetToolbarColor(Color.Argb(255, 52, 152, 219))
-                .SetShowTitle(true);
-
-            var customTabsIntent = intentBuilder.Build();
-
-            var mgr = new CustomTabsActivityManager(_topActivity.Activity);
-
-            mgr.LaunchUrl(uri.AbsoluteUri, customTabsIntent);
-
-            if (!mgr.BindService())
-            {
-                var defaultIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(uri.ToString()));
-                var context = Android.App.Application.Context;
-                defaultIntent.SetFlags(ActivityFlags.NewTask);
-                context.StartActivity(defaultIntent);
-            }
+            var defaultIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(uri.ToString()));
+            var context = Android.App.Application.Context;
+            defaultIntent.SetFlags(ActivityFlags.NewTask);
+            context.StartActivity(defaultIntent);
         }
     }
 }

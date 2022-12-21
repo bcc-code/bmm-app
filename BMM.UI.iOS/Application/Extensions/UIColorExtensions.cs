@@ -1,4 +1,5 @@
 using System;
+using BMM.UI.iOS.NewMediaPlayer;
 using BMM.UI.iOS.Utils.ColorPalette;
 using UIKit;
 
@@ -44,6 +45,17 @@ namespace BMM.UI.iOS.Extensions
                 l1 * colorsOne.G + l2 * colorsTwo.G,
                 l1 * colorsOne.B + l2 * colorsTwo.B,
                 l1 * colorsOne.A + l2 * colorsTwo.A);
+        }
+        
+        /// <summary>
+        /// Save to use with iOS version below 13.0
+        /// </summary>
+        public static UIColor GetResolvedColorSafe(this UIColor color, UIUserInterfaceStyle userInterfaceStyle)
+        {
+            if (VersionHelper.SupportsDarkMode)
+                return color.GetResolvedColor(UITraitCollection.FromUserInterfaceStyle(userInterfaceStyle));
+
+            return color;
         }
     }
 }

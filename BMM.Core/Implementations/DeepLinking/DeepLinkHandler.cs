@@ -217,6 +217,11 @@ namespace BMM.Core.Implementations.DeepLinking
             if (WillDeepLinkStartPlayer(new Uri(deepLink))) 
                 _rememberedQueueInfoService.SetPlayerHasPendingOperation();
         }
+        
+        public bool IsBmmUrl(Uri uri)
+        {
+            return uri.AbsoluteUri.Contains(GlobalConstants.BmmUrl);
+        }
 
         private bool WillDeepLinkStartPlayer(Uri uri)
         {
@@ -273,11 +278,6 @@ namespace BMM.Core.Implementations.DeepLinking
                 parameters.Add("origin", origin);
 
             _analytics.LogEvent(analyticsEventName, parameters);
-        }
-
-        private bool IsBmmUrl(Uri uri)
-        {
-            return uri.AbsoluteUri.Contains(GlobalConstants.BmmUrl);
         }
 
         private Task ShowErrorMessage(Uri uri, string additionalGlobalTextSourceId = null)

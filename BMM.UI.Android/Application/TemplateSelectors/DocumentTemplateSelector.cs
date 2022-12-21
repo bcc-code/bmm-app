@@ -1,13 +1,13 @@
 ﻿using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Carousels;
-using BMM.Core.Models.POs.ContinueListening;
 using BMM.Core.Models.POs.Contributors;
 using BMM.Core.Models.POs.InfoMessages;
 using BMM.Core.Models.POs.ListeningStreakPO;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Models.POs.YearInReview;
@@ -32,7 +32,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int PlaylistsCollection = 18;
         public const int InfoMessage = 19;
         public const int SimpleMargin = 20;
-        public const int ContinueListeningCollection = 21;
+        public const int TilesCollection = 21;
         public const int YearInReviewTeaserCollapsed = 22;
         public const int YearInReviewTeaserExpanded = 23;
         public const int TopSongsCollectionHeader = 24;
@@ -80,8 +80,8 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case ViewTypes.SimpleMargin:
                     return Resource.Layout.listitem_simple_margin;
                 
-                case ViewTypes.ContinueListeningCollection:
-                    return Resource.Layout.listitem_continue_listening_collection;
+                case ViewTypes.TilesCollection:
+                    return Resource.Layout.listitem_tiles_collection;
                 
                 case ViewTypes.YearInReviewTeaserCollapsed:
                     return Resource.Layout.listitem_year_in_review_teaser_collapsed;
@@ -136,8 +136,8 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 case SimpleMarginPO:
                     return ViewTypes.SimpleMargin;
 
-                case ContinueListeningCollectionPO:
-                    return ViewTypes.ContinueListeningCollection;
+                case TileCollectionPO:
+                    return ViewTypes.TilesCollection;
 
                 case YearInReviewTeaserPO yearInReviewTeaserPO:
                 {
