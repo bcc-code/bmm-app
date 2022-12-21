@@ -81,7 +81,7 @@ namespace BMM.UI.iOS
 
             tableView.SetEditing(true, false);
 
-            var source = new EditingTableViewSource<DocumentPO, OrderingTrackTableViewCell>(tableView);
+            var source = new EditingTableViewSource<IDocumentPO, OrderingTrackTableViewCell>(tableView);
             var set = this.CreateBindingSet<EditTrackCollectionViewController, EditTrackCollectionViewModel>();
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(titleView.TitleTextField).To(vm => vm.TrackCollectionTitle);
