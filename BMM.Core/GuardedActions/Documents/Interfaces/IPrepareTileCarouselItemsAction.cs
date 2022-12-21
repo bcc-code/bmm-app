@@ -7,7 +7,7 @@ using BMM.Core.ViewModels;
 
 namespace BMM.Core.GuardedActions.Documents.Interfaces
 {
-    public interface IPrepareContinueListeningCarouselItemsAction
+    public interface IPrepareTileCarouselItemsAction
         : IGuardedActionWithParameterAndResult<IList<Document>, IList<IDocumentPO>>,
           IDataContextGuardedAction<ExploreNewestViewModel>
     {

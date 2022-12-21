@@ -5,6 +5,7 @@ using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views;
+using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -31,7 +32,10 @@ namespace BMM.UI.iOS
                 
                 set.Bind(BottomButton)
                     .For(v => v.BindTitle())
-                    .To(vm => vm.Tile.CloseButtonText);
+                    .To(vm => vm.Tile.ButtonText);
+                
+                set.Bind(BottomButton)
+                    .To(vm => vm.BottomButtonClickedCommand);
                 
                 set.Apply();
             });

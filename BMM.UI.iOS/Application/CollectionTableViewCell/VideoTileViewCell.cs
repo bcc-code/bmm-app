@@ -1,6 +1,7 @@
 ﻿using System;
 using BMM.Core.Models.POs.Tiles;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
@@ -26,11 +27,14 @@ namespace BMM.UI.iOS
                 
                 set.Bind(BottomButton)
                     .For(v => v.BindTitle())
-                    .To(vm => vm.Tile.LinkButtonText);
+                    .To(vm => vm.Tile.ButtonText);
                 
                 set.Bind(this)
                     .For(v => v.VideoUrl)
                     .To(vm => vm.Tile.VideoFileName);
+                
+                set.Bind(BottomButton)
+                    .To(vm => vm.BottomButtonClickedCommand);
                 
                 set.Apply();
             });
@@ -51,9 +55,8 @@ namespace BMM.UI.iOS
         {
             base.AwakeFromNib();
             HeaderLabel.ApplyTextTheme(AppTheme.Subtitle2Label1);
-            HeaderLabel.TextColor =
-                AppColors.LabelPrimaryColor.GetResolvedColor(UITraitCollection.FromUserInterfaceStyle(UIUserInterfaceStyle.Light));
-            BottomButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            HeaderLabel.TextColor = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light);
+            BottomButton.ApplyButtonStyle(AppTheme.ButtonPrimaryBlack);
         }
     }
 }

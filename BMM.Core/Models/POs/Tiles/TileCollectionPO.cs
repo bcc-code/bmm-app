@@ -20,11 +20,20 @@ namespace BMM.Core.Models.POs.Tiles
             TilesCollection tilesCollection) : base(tilesCollection)
         {
             DocumentSelectedCommand = documentSelectedCommand;
-            var continueListeningTilePOs = tilesCollection
+            var tilesPOs = tilesCollection
                 .TileElements
-                .Select(doc => tilePOFactory.Create(optionClickedCommand, doc));
+                .Select(doc => tilePOFactory.Create(optionClickedCommand, doc))
+                .ToList();
 
-            Tiles.AddRange(continueListeningTilePOs);
+            foreach (var tilePO in tilesPOs.OfType<MessageTilePO>())
+                tilePO.RemoveItemFromObservableCollection = RemoveItemFromObservableCollection;
+            
+            Tiles.AddRange(tilesPOs);
+        }
+
+        private void RemoveItemFromObservableCollection(MessageTilePO messageTilePO)
+        {
+            Tiles.Remove(messageTilePO);
         }
 
         public IMvxCommand<IDocumentPO> DocumentSelectedCommand { get; }

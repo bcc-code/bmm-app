@@ -2,7 +2,9 @@ using System;
 using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
+using BMM.Core.Helpers;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.Tiles.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -18,6 +20,8 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
         private readonly IShowTrackInfoAction _showTrackInfoAction;
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
+        private readonly IUriOpener _uriOpener;
+        private readonly IDeepLinkHandler _deepLinkHandler;
 
         public TilePOFactory(
             ITileClickedAction tileClickedAction,
@@ -25,7 +29,9 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
             IShuffleButtonClickedAction shuffleButtonClickedAction,
             IShowTrackInfoAction showTrackInfoAction,
             IMediaPlayer mediaPlayer,
-            IStorageManager storageManager)
+            IStorageManager storageManager,
+            IUriOpener uriOpener,
+            IDeepLinkHandler deepLinkHandler)
         {
             _tileClickedAction = tileClickedAction;
             _continuePlayingAction = continuePlayingAction;
@@ -33,6 +39,8 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
             _showTrackInfoAction = showTrackInfoAction;
             _mediaPlayer = mediaPlayer;
             _storageManager = storageManager;
+            _uriOpener = uriOpener;
+            _deepLinkHandler = deepLinkHandler;
         }
         
         public ITilePO Create(IMvxAsyncCommand<Document> optionsClickedCommand, Document tile)
@@ -53,11 +61,11 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
                 }
                 case MessageTile messageTile:
                 {
-                    return new MessageTilePO(messageTile);
+                    return new MessageTilePO(messageTile, _deepLinkHandler, _uriOpener);
                 }
                 case VideoTile videoTile:
                 {
-                    return new VideoTilePO(videoTile);
+                    return new VideoTilePO(videoTile, _deepLinkHandler, _uriOpener);
                 }
             }
 

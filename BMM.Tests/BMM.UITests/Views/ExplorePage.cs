@@ -23,7 +23,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Id("ContinueListeningCarouselCollectionRecyclerView");
+                return c => c.Id("TilesCollectionRecyclerView");
             }
         }
 

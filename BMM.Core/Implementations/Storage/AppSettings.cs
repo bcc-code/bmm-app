@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using BMM.Core.Models.Themes;
 using Newtonsoft.Json;
 using Plugin.Settings;
@@ -20,6 +22,14 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(YearInReviewShown), false);
             set => AddOrUpdateValue(value, nameof(YearInReviewShown));
         }
+        
+        public static IList<int> DismissedMessageTilesIds
+        {
+            get => GetValueOrDefault(nameof(DismissedMessageTilesIds), new List<int>());
+            set => AddOrUpdateValue(value, nameof(DismissedMessageTilesIds));
+        }
+
+        public static void Clear() => CrossSettings.Current.Clear();
         
         private static void AddOrUpdateValue<TValue>(TValue value, string settingsKey)
         {

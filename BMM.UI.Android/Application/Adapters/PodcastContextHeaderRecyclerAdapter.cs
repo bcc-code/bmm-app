@@ -30,8 +30,8 @@ namespace BMM.UI.Droid.Application.Adapters
                     };
                     return coversCarouselCollectionViewHolder;
                 }
-                case Resource.Layout.listitem_continue_listening_collection:
-                    return new ContinueListeningCarouselCollectionViewHolder(view, itemBindingContext);
+                case Resource.Layout.listitem_tiles_collection:
+                    return new TilesCollectionViewHolder(view, itemBindingContext);
                 case Resource.Layout.listitem_info_message:
                     return new InfoMessageViewHolder(view, itemBindingContext);
                 case Resource.Layout.listitem_year_in_review_teaser_collapsed:

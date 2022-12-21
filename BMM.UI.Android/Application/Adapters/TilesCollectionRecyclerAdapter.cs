@@ -6,9 +6,9 @@ using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BMM.UI.Droid.Application.Adapters
 {
-    public class ContinueAudiobookCarouselRecyclerAdapter : MvxRecyclerAdapter
+    public class TilesCollectionRecyclerAdapter : MvxRecyclerAdapter
     {
-        public ContinueAudiobookCarouselRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
+        public TilesCollectionRecyclerAdapter(IMvxAndroidBindingContext bindingContext) : base(bindingContext)
         {
         }
         
@@ -16,7 +16,13 @@ namespace BMM.UI.Droid.Application.Adapters
         {
             var itemBindingContext = new MvxAndroidBindingContext(parent.Context, BindingContext!.LayoutInflaterHolder);
             var view = itemBindingContext.BindingInflate(viewType, parent, false);
-            return new ContinueListeningTileViewHolder(view, itemBindingContext);
+
+            return viewType switch
+            {
+                Resource.Layout.listitem_continue_listening_tile => new ContinueListeningTileViewHolder(view, itemBindingContext),
+                Resource.Layout.listitem_video_tile => new VideoTileViewHolder(view, itemBindingContext),
+                _ => base.OnCreateViewHolder(parent, viewType)
+            };
         }
     }
 }

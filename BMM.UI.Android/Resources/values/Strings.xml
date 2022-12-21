@@ -10,4 +10,5 @@
     <string name="tracklist_templateselector">BMM.UI.Droid.Application.TemplateSelectors.TrackListTemplateSelector, BMM.UI.Android</string>
     <string name="settings_templateselector">BMM.UI.Droid.Application.TemplateSelectors.SettingsTemplateSelector, BMM.UI.Android</string>
     <string name="change_track_language_templateselector">BMM.UI.Droid.Application.TemplateSelectors.ChangeTrackLanguageTemplateSelector, BMM.UI.Android</string>
+    <string name="tiles_collection_templateselector">BMM.UI.Droid.Application.TemplateSelectors.TilesCollectionTemplateSelector, BMM.UI.Android</string>
 </resources>

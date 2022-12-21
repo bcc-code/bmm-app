@@ -39,7 +39,7 @@ namespace BMM.Core.ViewModels
         private readonly ISettingsStorage _settings;
         private readonly INavigateToViewModelAction _navigateToViewModelAction;
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
-        private readonly IPrepareContinueListeningCarouselItemsAction _prepareContinueListeningCarouselItemsAction;
+        private readonly IPrepareTileCarouselItemsAction _prepareTileCarouselItemsAction;
         private readonly ITranslateDocsAction _translateDocsAction;
         private readonly IAppLanguageProvider _appLanguageProvider;
         private readonly IUserStorage _user;
@@ -53,7 +53,7 @@ namespace BMM.Core.ViewModels
             ISettingsStorage settings,
             INavigateToViewModelAction navigateToViewModelAction,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
-            IPrepareContinueListeningCarouselItemsAction prepareContinueListeningCarouselItemsAction,
+            IPrepareTileCarouselItemsAction prepareTileCarouselItemsAction,
             ITranslateDocsAction translateDocsAction,
             IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
@@ -64,7 +64,7 @@ namespace BMM.Core.ViewModels
             _settings = settings;
             _navigateToViewModelAction = navigateToViewModelAction;
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
-            _prepareContinueListeningCarouselItemsAction = prepareContinueListeningCarouselItemsAction;
+            _prepareTileCarouselItemsAction = prepareTileCarouselItemsAction;
             _translateDocsAction = translateDocsAction;
             _appLanguageProvider = appLanguageProvider;
             _user = user;
@@ -72,7 +72,7 @@ namespace BMM.Core.ViewModels
             _listeningStreakPOFactory = listeningStreakPOFactory;
             _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
-            _prepareContinueListeningCarouselItemsAction.AttachDataContext(this);
+            _prepareTileCarouselItemsAction.AttachDataContext(this);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
         }
 
@@ -109,7 +109,7 @@ namespace BMM.Core.ViewModels
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
-            var presentationItems = await _prepareContinueListeningCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
+            var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
             return presentationItems;
         }

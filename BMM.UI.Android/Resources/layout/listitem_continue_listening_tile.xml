@@ -6,7 +6,7 @@
         android:layout_height="@dimen/horizontal_scrolling_continue_listening_item_height"
         android:gravity="center"
         local:cardCornerRadius="@dimen/continue_listening_item_corner_radius"
-        local:cardElevation="@dimen/dimen_none">
+        android:background="@color/background_secondary_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/BackgroundView"
@@ -30,7 +30,7 @@
                 local:MvxBind="
                     LoadingPlaceholderImagePath 'placeholder_cover';
                     ErrorPlaceholderImagePath 'placeholder_cover';
-                    ImageViewPath CoverUrlToFallbackImage(ContinueListeningTile.CoverUrl, 'placeholder_cover')" />
+                    ImageViewPath CoverUrlToFallbackImage(Tile.CoverUrl, 'placeholder_cover')" />
 
         <ImageButton
                 android:id="@+id/MoreButton"
@@ -91,7 +91,7 @@
                 local:layout_constraintStart_toEndOf="@+id/PlayButtonFrame"
                 local:MvxBind="
                     Click ShuffleButtonClickedCommand;
-                    Visibility Visibility(HasValueToVisible(ContinueListeningTile.ShufflePodcastId))" />
+                    Visibility Visibility(HasValueToVisible(Tile.ShufflePodcastId))" />
 
         <ImageButton
                 android:id="@+id/DownloadedButton"
@@ -118,7 +118,7 @@
                 android:tint="@color/on_color_one_color"
                 local:MvxBind="
                     Click ShowTrackInfoCommand;
-                    Visibility Visibility(TrackHasExternalRelations(ContinueListeningTile.Track))"
+                    Visibility Visibility(TrackHasExternalRelations(Tile.Track))"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintEnd_toEndOf="parent" />
         
@@ -146,7 +146,7 @@
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Paragraph1_OnColor2"
-                local:MvxBind="Text ContinueListeningTile.Title" />
+                local:MvxBind="Text Tile.Title" />
 
         <TextView
                 android:id="@+id/PlayingStatusIcon"
@@ -172,7 +172,7 @@
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Title1_OnColor1"
-                local:MvxBind="Text ContinueListeningTile.Label" />
+                local:MvxBind="Text Tile.Label" />
 
         <TextView
                 android:id="@+id/DayOfWeekLabel"
@@ -183,7 +183,7 @@
                 local:layout_constraintBottom_toTopOf="@+id/PlayButtonFrame"
                 local:layout_constraintStart_toStartOf="parent"
                 style="@style/Subtitle3_OnColor1"
-                local:MvxBind="Text DateTimeToPodcastPublishDayOfWeekLabel(ContinueListeningTile.Date)" />
+                local:MvxBind="Text DateTimeToPodcastPublishDayOfWeekLabel(Tile.Date)" />
 
         <TextView
                 android:id="@+id/DateLabel"
@@ -195,7 +195,7 @@
                 local:layout_constraintStart_toEndOf="@+id/DayOfWeekLabel"
                 local:layout_constraintBottom_toTopOf="@+id/PlayButtonFrame"
                 style="@style/Subtitle3_OnColor2"
-                local:MvxBind="Text DateTimeToPodcastPublishDateLabel(ContinueListeningTile.Date)" />
+                local:MvxBind="Text DateTimeToPodcastPublishDateLabel(Tile.Date)" />
         
         <bmm.ui.droid.application.customViews.ProgressBarView
                 android:id="@+id/ProgressBarView"
@@ -206,7 +206,7 @@
                 local:layout_constraintEnd_toEndOf="parent"
                 local:layout_constraintTop_toTopOf="@+id/RemainingLabel"
                 local:layout_constraintBottom_toBottomOf="@+id/RemainingLabel"
-                local:MvxBind="Percentage ContinueListeningTile.Percentage"/>
+                local:MvxBind="Percentage Tile.Percentage"/>
 
         <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/TopTextBarrier"
