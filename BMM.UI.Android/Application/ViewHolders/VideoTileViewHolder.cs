@@ -48,7 +48,7 @@ namespace BMM.UI.Droid.Application.ViewHolders
 
         private void SetVideoView()
         {
-            if (!string.IsNullOrEmpty(VideoUrl))
+            if (string.IsNullOrEmpty(VideoUrl))
                 return;
             
             var videoView = ItemView.FindViewById<VideoView>(Resource.Id.VideoView);
