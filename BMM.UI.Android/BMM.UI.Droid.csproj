@@ -761,7 +761,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\menu\trackcollection_shared.xml" />
     <AndroidResource Include="Resources\raw\bp_video_02.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_03.mp4" />
     <AndroidResource Include="Resources\raw\bp_video_04.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_06.mp4" />
     <AndroidResource Include="Resources\raw\bp_video_07.mp4" />
     <AndroidResource Include="Resources\raw\bp_video_08.mp4" />
     <AndroidResource Include="Resources\raw\bp_video_09.mp4" />
@@ -973,7 +975,6 @@
       <Link>Assets\Translation\hu\main.json</Link>
     </AndroidAsset>
     <AndroidAsset Include="Assets\play_animation_icon.json" />
-    <AndroidResource Include="Resources\raw\bp_video_03.mp4" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\loading_spinner.png" />

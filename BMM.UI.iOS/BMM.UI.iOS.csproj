@@ -423,12 +423,13 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\BP_Video_02.mp4" />
+    <BundleResource Include="Resources\BP_Video_03.mp4" />
     <BundleResource Include="Resources\BP_Video_04.mp4" />
+    <BundleResource Include="Resources\BP_Video_06.mp4" />
     <BundleResource Include="Resources\BP_Video_07.mp4" />
     <BundleResource Include="Resources\BP_Video_08.mp4" />
     <BundleResource Include="Resources\BP_Video_09.mp4" />
     <BundleResource Include="Resources\BP_Video_10.mp4" />
-    <BundleResource Include="Resources\BP_Video_03.mp4" />
     <BundleResource Include="Resources\icon_browse@3x.png" />
     <BundleResource Include="Resources\icon_browse@2x.png" />
     <BundleResource Include="Resources\icon_browse.png" />
