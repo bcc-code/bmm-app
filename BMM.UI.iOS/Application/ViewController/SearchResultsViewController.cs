@@ -47,7 +47,7 @@ namespace BMM.UI.iOS
                 .For(s => s.IsFullyLoaded)
                 .To(s => s.IsFullyLoaded);
 
-            set.Bind(ResultsTableView)
+            set.Bind(ResultsContainer)
                 .For(v => v.BindVisible())
                 .To(vm => vm.HasAnyItem);
 
@@ -55,6 +55,9 @@ namespace BMM.UI.iOS
                 .For(v => v.BindVisible())
                 .To(vm => vm.ShowNoItemsInfo);
 
+            set.Bind(ResultsLabel)
+                .To(vm => vm.TextSource[Translations.SearchViewModel_SearchResults]);
+            
             set.Bind(NoResultsTitle)
                 .To(vm => vm.TextSource[Translations.SearchViewModel_NoResults]);
             
@@ -88,6 +91,7 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
+            ResultsLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
             NoResultsTitle.ApplyTextTheme(AppTheme.Heading3);
             NoResultsMessage.ApplyTextTheme(AppTheme.Paragraph1Label2);
         }

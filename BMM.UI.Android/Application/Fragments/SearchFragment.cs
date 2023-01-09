@@ -4,6 +4,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
+using AndroidX.ConstraintLayout.Widget;
 using AndroidX.ViewPager.Widget;
 using BMM.Core.Extensions;
 using BMM.Core.Interactions.Base;
@@ -13,18 +14,21 @@ using BMM.UI.Droid.Application.CustomViews.TabLayout;
 using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxFragmentPresentation(typeof(MainActivityViewModel), Resource.Id.content_frame, true)]
     [Register("bmm.ui.droid.application.fragments.SearchFragment")]
-    public class SearchFragment : BaseFragment<SearchViewModel>, TextView.IOnEditorActionListener
+    public class SearchFragment : BaseFragment<SearchViewModel>, TextView.IOnEditorActionListener, View.IOnClickListener
     {
         private ViewPager _viewPager;
         private FlexibleWidthTabLayout _tabLayout;
         private TextView _searchTermEditText;
         private IBmmInteraction _removeFocusOnSearchInteraction;
+        private ConstraintLayout _welcomeAndHistoryLayer;
+        private MvxRecyclerView _recentSearchesRecyclerView;
         public BindableFragmentPagerAdapter<SearchResultsViewModel> ViewPagerAdapter { get; set; }
         
         protected override int FragmentId => Resource.Layout.fragment_search;
@@ -48,9 +52,11 @@ namespace BMM.UI.Droid.Application.Fragments
 
             _viewPager = view.FindViewById<ViewPager>(Resource.Id.ViewPager);
             _tabLayout = view.FindViewById<FlexibleWidthTabLayout>(Resource.Id.TabLayout);
+            _welcomeAndHistoryLayer = view.FindViewById<ConstraintLayout>(Resource.Id.WelcomeAndHistoryLayer);
             _searchTermEditText = view.FindViewById<TextView>(Resource.Id.SearchTermLabel);
             _searchTermEditText.SetOnEditorActionListener(this);
-
+            _welcomeAndHistoryLayer.SetOnClickListener(this);
+            
             HasOptionsMenu = true;
             UpdateLayout();
             BindSearch();
@@ -149,6 +155,11 @@ namespace BMM.UI.Droid.Application.Fragments
             }
 
             return false;
+        }
+
+        public void OnClick(View v)
+        {
+            ClearFocus();
         }
     }
 }

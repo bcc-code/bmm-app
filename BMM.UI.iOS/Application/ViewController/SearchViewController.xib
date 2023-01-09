@@ -34,11 +34,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zD-D0-J95">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zD-D0-J95" userLabel="ContainerLayer">
                     <rect key="frame" x="0.0" y="99.5" width="414" height="762.5"/>
                     <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6Q-YA-QbG">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O6Q-YA-QbG" userLabel="RecentSearchesLayer">
                     <rect key="frame" x="0.0" y="99.5" width="414" height="762.5"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="icw-Ld-Rqf">
@@ -90,7 +90,7 @@
                         <constraint firstAttribute="trailing" secondItem="Dia-o7-8FR" secondAttribute="trailing" id="wDe-V1-y4r"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0E-ee-IB3">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r0E-ee-IB3" userLabel="WelcomeLayer">
                     <rect key="frame" x="0.0" y="101" width="414" height="761"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUM-5p-L9d">
@@ -112,7 +112,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                     <constraints>
                         <constraint firstItem="cgo-LA-EYX" firstAttribute="leading" secondItem="r0E-ee-IB3" secondAttribute="leading" constant="16" id="1Uu-2Y-Qrn"/>
                         <constraint firstAttribute="trailing" secondItem="AK8-9X-drC" secondAttribute="trailing" constant="16" id="47P-cP-QsO"/>
@@ -125,7 +125,7 @@
                         <constraint firstItem="AK8-9X-drC" firstAttribute="leading" secondItem="r0E-ee-IB3" secondAttribute="leading" constant="16" id="y6h-ZC-duw"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Xq-i0-bdR">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Xq-i0-bdR" userLabel="SearchBarSeparator">
                     <rect key="frame" x="0.0" y="100" width="414" height="1"/>
                     <color key="backgroundColor" name="SeparatorColor"/>
                     <constraints>
@@ -144,6 +144,7 @@
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="fPZ-q6-Pos"/>
                                     </constraints>
+                                    <color key="textColor" name="BackgroundPrimaryColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <userDefinedRuntimeAttributes>
@@ -160,7 +161,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                             <constraints>
                                 <constraint firstItem="Uat-88-gI6" firstAttribute="leading" secondItem="nXs-IZ-9Qe" secondAttribute="leading" id="EMW-8q-oe1"/>
                                 <constraint firstItem="Uat-88-gI6" firstAttribute="top" secondItem="nXs-IZ-9Qe" secondAttribute="top" id="Id6-Kc-5i1"/>
@@ -177,6 +178,7 @@
                             <buttonConfiguration key="configuration" style="plain" title="Close"/>
                         </button>
                     </subviews>
+                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="nXs-IZ-9Qe" secondAttribute="bottom" id="57i-f5-E1Y"/>
                         <constraint firstItem="nXs-IZ-9Qe" firstAttribute="top" secondItem="ruS-3m-l7O" secondAttribute="top" id="VuN-Ai-luQ"/>
@@ -233,9 +235,6 @@
         </namedColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

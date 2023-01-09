@@ -26,10 +26,26 @@ namespace BMM.UI.iOS
 		UIKit.UILabel NoResultsTitle { get; set; }
 
 		[Outlet]
+		UIKit.UIView ResultsContainer { get; set; }
+
+		[Outlet]
+		UIKit.UILabel ResultsLabel { get; set; }
+
+		[Outlet]
 		UIKit.UITableView ResultsTableView { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (ActivityIndicator != null) {
+				ActivityIndicator.Dispose ();
+				ActivityIndicator = null;
+			}
+
+			if (NoItemsLayer != null) {
+				NoItemsLayer.Dispose ();
+				NoItemsLayer = null;
+			}
+
 			if (NoResultsMessage != null) {
 				NoResultsMessage.Dispose ();
 				NoResultsMessage = null;
@@ -45,14 +61,14 @@ namespace BMM.UI.iOS
 				ResultsTableView = null;
 			}
 
-			if (ActivityIndicator != null) {
-				ActivityIndicator.Dispose ();
-				ActivityIndicator = null;
+			if (ResultsLabel != null) {
+				ResultsLabel.Dispose ();
+				ResultsLabel = null;
 			}
 
-			if (NoItemsLayer != null) {
-				NoItemsLayer.Dispose ();
-				NoItemsLayer = null;
+			if (ResultsContainer != null) {
+				ResultsContainer.Dispose ();
+				ResultsContainer = null;
 			}
 
 		}

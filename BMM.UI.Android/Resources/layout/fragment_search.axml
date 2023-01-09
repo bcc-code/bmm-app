@@ -87,6 +87,7 @@
         local:layout_constraintEnd_toEndOf="parent" />
     
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/WelcomeAndHistoryLayer"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"
         android:background="@color/background_primary_color"
