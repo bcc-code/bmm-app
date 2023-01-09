@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Пошук",
     "SearchHint": "Черга",
-    "SearchResults": "Результати пошуку",
+    "SearchResults": "Results",
     "SearchHistory": "Нещодавній пошук",
     "SearchSuggestions": "Ви мали на увазі: ",
-    "SearchNoResults": "Ми не міг знайти що-небудь.",
     "WelcomeTitle": "Почніть пошук тут!",
     "WelcomeSubTitle": "Скористайтеся полем пошуку для пошуку вмісту на BMM",
-    "DeleteConfirm": "Ви впевнені, що бажаєте видалити історію пошуку?"
+    "DeleteConfirm": "Ви впевнені, що бажаєте видалити історію пошуку?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Музика",
+    "Albums": "Альбоми",
+    "Contributors": "People",
+    "Podcasts": "Підкаст",
+    "Playlists": "Списки відтворення",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profile",
