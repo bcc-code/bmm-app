@@ -86,7 +86,6 @@ namespace BMM.Core.ViewModels
         public IMvxAsyncCommand ClearCommand { get; set; }
 
         public SearchViewModel(
-            IDocumentsPOFactory documentsPOFactory,
             IMvxViewModelLoader mvxViewModelLoader,
             IBlobCache cache)
         {

@@ -1,3 +1,4 @@
+using System;
 using BMM.Api.Implementation.Models;
 using Foundation;
 using UIKit;
@@ -44,6 +45,8 @@ namespace BMM.UI.iOS
                 tableView.RegisterNibForCellReuse(UINib.FromName(nibName, NSBundle.MainBundle), nibName);
             }
         }
+
+        public event EventHandler ScrolledEvent;
 
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
@@ -111,6 +114,11 @@ namespace BMM.UI.iOS
             }
 
             return tableView.DequeueReusableCell(nibName);
+        }
+
+        public override void Scrolled(UIScrollView scrollView)
+        {
+            ScrolledEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }

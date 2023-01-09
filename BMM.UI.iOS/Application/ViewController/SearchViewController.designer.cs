@@ -38,6 +38,12 @@ namespace BMM.UI.iOS
 		BMM.UI.iOS.CustomViews.BmmSeachTextField SearchTextField { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint StackViewTrailingConstraint { get; set; }
+
+		[Outlet]
+		UIKit.UIStackView TopStackView { get; set; }
+
+		[Outlet]
 		UIKit.UIView WelcomeLayer { get; set; }
 
 		[Outlet]
@@ -78,6 +84,11 @@ namespace BMM.UI.iOS
 				RecentSearchesTableView = null;
 			}
 
+			if (SearchBarBottomSeparator != null) {
+				SearchBarBottomSeparator.Dispose ();
+				SearchBarBottomSeparator = null;
+			}
+
 			if (SearchTextField != null) {
 				SearchTextField.Dispose ();
 				SearchTextField = null;
@@ -98,9 +109,14 @@ namespace BMM.UI.iOS
 				WelcomeTitleLabel = null;
 			}
 
-			if (SearchBarBottomSeparator != null) {
-				SearchBarBottomSeparator.Dispose ();
-				SearchBarBottomSeparator = null;
+			if (TopStackView != null) {
+				TopStackView.Dispose ();
+				TopStackView = null;
+			}
+
+			if (StackViewTrailingConstraint != null) {
+				StackViewTrailingConstraint.Dispose ();
+				StackViewTrailingConstraint = null;
 			}
 
 		}

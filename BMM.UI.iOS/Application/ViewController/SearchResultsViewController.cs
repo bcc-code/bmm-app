@@ -3,14 +3,18 @@ using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
+using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
+using UIKit;
 using AppTheme = BMM.UI.iOS.Constants.AppTheme;
 
 namespace BMM.UI.iOS
 {
-    public partial class SearchResultsViewController : BaseViewController<SearchResultsViewModel>
+    public partial class SearchResultsViewController : BaseViewController<SearchResultsViewModel>, IUITableViewDelegate
     {
+        private DocumentsTableViewSource _documentsTableViewSource;
+
         public SearchResultsViewController()
             : base(nameof(SearchResultsViewController))
         {
@@ -22,22 +26,24 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
+            ResultsTableView.Delegate = this;
+
             var set = this.CreateBindingSet<SearchResultsViewController, SearchResultsViewModel>();
             
-            var documentsTableViewSource = new DocumentsTableViewSource(ResultsTableView);
+            _documentsTableViewSource = new DocumentsTableViewSource(ResultsTableView);
             
-            set.Bind(documentsTableViewSource)
+            set.Bind(_documentsTableViewSource)
                 .To(vm => vm.Documents);
             
-            set.Bind(documentsTableViewSource)
+            set.Bind(_documentsTableViewSource)
                 .For(s => s.SelectionChangedCommand)
                 .To(s => s.DocumentSelectedCommand);
             
-            set.Bind(documentsTableViewSource)
+            set.Bind(_documentsTableViewSource)
                 .For(s => s.LoadMoreCommand)
                 .To(s => s.LoadMoreCommand);
             
-            set.Bind(documentsTableViewSource)
+            set.Bind(_documentsTableViewSource)
                 .For(s => s.IsFullyLoaded)
                 .To(s => s.IsFullyLoaded);
 
@@ -62,7 +68,24 @@ namespace BMM.UI.iOS
             set.Apply();
             SetThemes();
         }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            _documentsTableViewSource.ScrolledEvent += ResultsTableViewOnScrolled;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            _documentsTableViewSource.ScrolledEvent -= ResultsTableViewOnScrolled;
+        }
         
+        private void ResultsTableViewOnScrolled(object sender, EventArgs e)
+        {
+            ViewModel?.ClearFocusAction?.Invoke();
+        }
+
         private void SetThemes()
         {
             NoResultsTitle.ApplyTextTheme(AppTheme.Heading3);
