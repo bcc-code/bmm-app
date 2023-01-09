@@ -4,6 +4,7 @@ using System;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
+using CoreAnimation;
 using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
 
@@ -12,6 +13,7 @@ namespace BMM.UI.iOS
     public partial class TrackTableViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new(nameof(TrackTableViewCell));
+        private TrackState _trackState;
 
         public TrackTableViewCell(IntPtr handle)
             : base(handle)
@@ -40,6 +42,9 @@ namespace BMM.UI.iOS
                     .For(v => v.Image)
                     .To(po => po.TrackState)
                     .WithConversion<TrackToStatusImageConverter>();
+                set.Bind(this)
+                    .For(v => v.TrackState)
+                    .To(po => po.TrackState);
                 set.Bind(ReferenceButton)
                     .For(v => v.BindVisible())
                     .To(po => po.Track)
@@ -50,6 +55,30 @@ namespace BMM.UI.iOS
 
                 SetThemes();
             });
+        }
+
+        public TrackState TrackState
+        {
+            get => _trackState;
+            set
+            {
+                _trackState = value;
+                if (_trackState.IsDownloading)
+                    AddRotateAnimationToStatusImageView();
+                else
+                    DownloadStatusImageView.Layer.RemoveAllAnimations();
+            }
+        }
+
+        private void AddRotateAnimationToStatusImageView()
+        {
+            var rotationAnimation = new CABasicAnimation();
+            rotationAnimation.KeyPath = UIViewConstants.RotateAnimationKeyPath;
+            rotationAnimation.To = new NSNumber(Math.PI * 2);
+            rotationAnimation.Duration = 1;
+            rotationAnimation.Cumulative = true;
+            rotationAnimation.RepeatCount = float.MaxValue;
+            DownloadStatusImageView.Layer.AddAnimation(rotationAnimation, "rotationAnimation");
         }
 
         private void SetThemes()

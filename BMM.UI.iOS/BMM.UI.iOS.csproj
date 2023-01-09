@@ -931,6 +931,7 @@
     <Compile Include="Constants\TextTheme.cs" />
     <Compile Include="Constants\ThemeExtensions.cs" />
     <Compile Include="Constants\Typography.cs" />
+    <Compile Include="Constants\UIViewConstants.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Application\AppDelegate.cs" />
     <Compile Include="Application\TableViewCell\TrackTableViewCell.cs" />
