@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Ara",
     "SearchHint": "Ara",
-    "SearchResults": "Arama Sonuçları",
+    "SearchResults": "Results",
     "SearchHistory": "Son Aramalar",
     "SearchSuggestions": "Şu sorguyu mu aramak istiyorsunuz: ",
-    "SearchNoResults": "Hiç bir sonuç bulunamadı.",
     "WelcomeTitle": "Burada ara!",
     "WelcomeSubTitle": "Ara sekmesinden BMM de tarama yapabilirsin",
-    "DeleteConfirm": "Arama Geçmişini silmek istediğine emin misin?"
+    "DeleteConfirm": "Arama Geçmişini silmek istediğine emin misin?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Müzik",
+    "Albums": "Albums",
+    "Contributors": "People",
+    "Podcasts": "Podcast",
+    "Playlists": "Çalma Listesi",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profile",

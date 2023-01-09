@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Søk",
     "SearchHint": "Søk",
-    "SearchResults": "Søkeresultater",
+    "SearchResults": "Results",
     "SearchHistory": "Nylige søk",
     "SearchSuggestions": "Mente du: ",
-    "SearchNoResults": "Vi fant ingenting.",
     "WelcomeTitle": "Begynn å søke her!",
     "WelcomeSubTitle": "Bruk søkefeltet til å søke i innholdet på BMM",
-    "DeleteConfirm": "Er du sikker på at du vil slette søkehistorikken?"
+    "DeleteConfirm": "Er du sikker på at du vil slette søkehistorikken?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Musikk",
+    "Albums": "Album",
+    "Contributors": "People",
+    "Podcasts": "Podcaster",
+    "Playlists": "Spillelister",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Min profil",

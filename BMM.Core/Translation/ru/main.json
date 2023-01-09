@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Поиск",
     "SearchHint": "Поиск",
-    "SearchResults": "Результаты поиска",
+    "SearchResults": "Results",
     "SearchHistory": "Недавние поисковые запросы",
     "SearchSuggestions": "Вы имели в виду: ",
-    "SearchNoResults": "Ничего не найдено.",
     "WelcomeTitle": "Начните поиск здесь!",
     "WelcomeSubTitle": "Используйте поле Поиск для поиска содержимого на BMM",
-    "DeleteConfirm": "Вы уверены, что хотите удалить историю поиска?"
+    "DeleteConfirm": "Вы уверены, что хотите удалить историю поиска?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Музыка",
+    "Albums": "Albums",
+    "Contributors": "People",
+    "Podcasts": "Podcasts",
+    "Playlists": "Списки воспроизведения",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profile",

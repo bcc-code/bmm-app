@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Търси",
     "SearchHint": "Търси",
-    "SearchResults": "Резултати от търсенето",
+    "SearchResults": "Results",
     "SearchHistory": "Скорошни търсения",
     "SearchSuggestions": "Имаше ли предвид: ",
-    "SearchNoResults": "Нищо не намерихме.",
     "WelcomeTitle": "Започни да търсиш тук!",
     "WelcomeSubTitle": "Използвайте полето за търсене да търсите съдържание на БММ",
-    "DeleteConfirm": "Сигурен ли си, че искаш да изтриеш историята на търсене?"
+    "DeleteConfirm": "Сигурен ли си, че искаш да изтриеш историята на търсене?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Музика",
+    "Albums": "Албуми",
+    "Contributors": "People",
+    "Podcasts": "Подкаст",
+    "Playlists": "Списъци",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profile",

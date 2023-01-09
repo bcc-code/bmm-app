@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Keresés",
     "SearchHint": "Keresés",
-    "SearchResults": "Keresési találatok",
+    "SearchResults": "Results",
     "SearchHistory": "Legutóbbi keresések",
     "SearchSuggestions": "Úgy értetted:",
-    "SearchNoResults": "Nincs találat.",
     "WelcomeTitle": "Itt indítsd a keresést!",
     "WelcomeSubTitle": "A Keresés mező segítségével kereshetsz tartalmat a BMM-en",
-    "DeleteConfirm": "Biztosan törölni kivánod a keresési előzményeket?"
+    "DeleteConfirm": "Biztosan törölni kivánod a keresési előzményeket?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Zene",
+    "Albums": "Album(ok)",
+    "Contributors": "People",
+    "Podcasts": "Podcastok",
+    "Playlists": "Lejátszási listák",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profil",
