@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Search",
     "SearchHint": "Search",
-    "SearchResults": "Search results",
+    "SearchResults": "Results",
     "SearchHistory": "Recent searches",
     "SearchSuggestions": "Did you mean: ",
-    "SearchNoResults": "We couldn't find anything.",
     "WelcomeTitle": "Start search here!",
     "WelcomeSubTitle": "Use the search field to search for content on BMM",
-    "DeleteConfirm": "Are you sure you want to delete the search history?"
+    "DeleteConfirm": "Are you sure you want to delete the search history?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "音乐",
+    "Albums": "Albums",
+    "Contributors": "People",
+    "Podcasts": "Podcasts",
+    "Playlists": "播放列表",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profile",
