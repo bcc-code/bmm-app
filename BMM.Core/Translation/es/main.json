@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Buscar",
     "SearchHint": "Buscar",
-    "SearchResults": "Resultados de búsqueda",
+    "SearchResults": "Results",
     "SearchHistory": "Búsquedas recientes",
     "SearchSuggestions": "¿Quisiste decir: ",
-    "SearchNoResults": "No encontramos nada.",
     "WelcomeTitle": "¡Iniciar búsqueda aquí!",
     "WelcomeSubTitle": "Utiliza el campo de búsqueda para buscar contenido en BMM",
-    "DeleteConfirm": "¿Está seguro que desea eliminar el historial de búsqueda?"
+    "DeleteConfirm": "¿Está seguro que desea eliminar el historial de búsqueda?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Música",
+    "Albums": "Álbumes",
+    "Contributors": "People",
+    "Podcasts": "Podcasts",
+    "Playlists": "Listas de reproducción",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Perfil",
