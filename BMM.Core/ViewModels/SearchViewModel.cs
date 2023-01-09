@@ -2,97 +2,112 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Akavache;
 using BMM.Api;
-using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
+using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Factories;
-using BMM.Core.Implementations.Factories.Tracks;
-using BMM.Core.Models.POs.Base;
-using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Interactions.Base;
 using BMM.Core.Translation;
+using BMM.Core.Utils;
 using BMM.Core.ViewModels.Base;
-using Microsoft.AppCenter.Crashes;
+using BMM.Core.ViewModels.Interfaces;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    /// <summary>
-    /// Search view model.
-    ///
-    /// The suggested concept for implementation is as following:
-    ///
-    /// Create a container, visible if SearchExecuted == FALSE, containing:
-    /// * SearchHistory            (visible if ShowHistory)
-    /// * "Let's start searching!" (visible if none above)
-    /// This container is visible if the property SearchExecuted is FALSE.
-    ///
-    /// Create a second container, visible if SearchExecuted == TRUE, containing:
-    /// * Suggestions  (visible if ShowSuggestions)
-    /// * EmptyResults (visible if NoResults)
-    /// * Results      (visible if none above)
-    ///
-    /// You can also (if you prefer) create a construct where a view overlays the others.
-    /// </summary>
-    public class SearchViewModel : LoadMoreDocumentsViewModel
+    public class SearchViewModel : BaseViewModel, ICollectionViewModel<SearchResultsViewModel>
     {
-        private readonly IDocumentsPOFactory _documentsPOFactory;
-        public Action OnFocusLoose;
-
-        public MvxObservableCollection<string> SearchSuggestions { get; }
-
-        public MvxObservableCollection<string> SearchHistory { get; }
-
-        public bool ShowSuggestions => !IsLoading && Documents.Count == 0 && SearchSuggestions.Count > 0;
-
-        public bool ShowHistory => SearchHistory.Count > 0;
-
-        public bool NoResults => !IsLoading && Documents.Count == 0 && SearchSuggestions.Count == 0;
-
+        private readonly IMvxViewModelLoader _mvxViewModelLoader;
+        private readonly IBlobCache _cache;
+        private bool _isRemoveTermVisible;
+        private bool _hasAnyHistoryEntry;
         private bool _searchExecuted;
+
+        public IBmmObservableCollection<string> SearchHistory { get; }
+        public IBmmInteraction RemoveFocusOnSearchInteraction { get; }
 
         public bool SearchExecuted
         {
-            get { return _searchExecuted; }
-            set { SetProperty(ref _searchExecuted, value); }
+            get => _searchExecuted;
+            set => SetProperty(ref _searchExecuted, value);
         }
 
         private string _searchTerm;
+        private SearchResultsViewModel _selectedCollectionItem;
+        private bool _isHistoryVisible;
 
         public string SearchTerm
         {
-            get { return _searchTerm; }
+            get => _searchTerm;
             set
             {
                 SetProperty(ref _searchTerm, value);
+                IsRemoveTermVisible = !string.IsNullOrEmpty(_searchTerm);
             }
         }
 
+        public bool IsHistoryVisible
+        {
+            get => _isHistoryVisible;
+            set => SetProperty(ref _isHistoryVisible, value);
+        }
+        
+        public bool IsRemoveTermVisible
+        {
+            get => _isRemoveTermVisible;
+            set => SetProperty(ref _isRemoveTermVisible, value);
+        }
+
+        public bool HasAnyHistoryEntry
+        {
+            get => _hasAnyHistoryEntry;
+            set => SetProperty(ref _hasAnyHistoryEntry, value);
+        }
+
         public static string SearchedString = "";
+        private readonly DebounceDispatcher _debounceDispatcher;
+        private readonly SemaphoreSlim _semaphoreSlim;
 
         public IMvxAsyncCommand SearchCommand { get; }
 
         public IMvxAsyncCommand<string> SearchByTermCommand { get; }
 
         public IMvxAsyncCommand DeleteHistoryCommand { get; }
+        
+        public IMvxAsyncCommand ClearCommand { get; set; }
 
         public SearchViewModel(
-            ITrackPOFactory trackPOFactory,
-            IDocumentsPOFactory documentsPOFactory) : base(trackPOFactory)
+            IMvxViewModelLoader mvxViewModelLoader,
+            IBlobCache cache)
         {
-            _documentsPOFactory = documentsPOFactory;
-            SearchSuggestions = new MvxObservableCollection<string>();
-            SearchHistory = new MvxObservableCollection<string>();
+            _mvxViewModelLoader = mvxViewModelLoader;
+            _cache = cache;
+            _debounceDispatcher = new DebounceDispatcher(300);
+            _semaphoreSlim = new SemaphoreSlim(1, 1);
+            
+            RemoveFocusOnSearchInteraction = new BmmInteraction();
+            SearchHistory = new BmmObservableCollection<string>();
 
             SearchCommand = new ExceptionHandlingCommand(
-                async () => { await Search(); },
-                () => !string.IsNullOrEmpty(SearchTerm)
+                async () =>
+                {
+                    if (string.IsNullOrEmpty(SearchTerm))
+                    {
+                        IsHistoryVisible = true;
+                        return;
+                    }
+                    
+                    await Search();
+                }
             );
 
             SearchByTermCommand = new ExceptionHandlingCommand<string>(
@@ -100,61 +115,70 @@ namespace BMM.Core.ViewModels
                 {
                     SearchTerm = term;
                     await Search();
-                    OnFocusLoose?.Invoke();
+                    RemoveFocusOnSearchInteraction?.Raise();
                 }
             );
+            
+            ClearCommand = new ExceptionHandlingCommand(
+                () =>
+                {
+                    ClearSearch();
+                    SelectedCollectionItem = CollectionItems.First();
+                    return Task.CompletedTask;
+                });
 
             DeleteHistoryCommand = new ExceptionHandlingCommand(async () => await DeleteHistory());
-
-            IsFullyLoaded = true;
-
-            Documents.CollectionChanged += (sender, e) =>
-            {
-                RaisePropertyChanged(() => ShowSuggestions);
-                RaisePropertyChanged(() => NoResults);
-            };
-
-            SearchSuggestions.CollectionChanged += (sender, e) =>
-            {
-                RaisePropertyChanged(() => ShowSuggestions);
-                RaisePropertyChanged(() => NoResults);
-            };
-
-            SearchHistory.CollectionChanged += (sender, e) =>
-            {
-                RaisePropertyChanged(() => ShowHistory);
-            };
-
-            PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsLoading")
-                {
-                    RaisePropertyChanged(() => ShowSuggestions);
-                    RaisePropertyChanged(() => NoResults);
-                }
-                else if (e.PropertyName == "SearchTerm")
-                {
-                    SearchCommand.RaiseCanExecuteChanged();
-                }
-            };
         }
-        
+
         public override IEnumerable<string> PlaybackOrigin()
         {
             return new[] {SearchedString};
         }
 
-        protected override async Task Initialization()
+        public override async Task Initialize()
         {
-            await base.Initialization();
-            await BlobCache.GetOrCreateObject(
+            await base.Initialize();
+            IsHistoryVisible = true;
+            
+            await _cache.GetOrCreateObject(
                 StorageKeys.History,
                 () => new List<string>()).Do(
-                    x =>
-                    {
-                        SearchHistory.ReplaceWith(x);
-                    }
-                ).HandleExceptions<Exception, IList<string>>();
+                x =>
+                {
+                    SearchHistory.ReplaceWith(x);
+                    HasAnyHistoryEntry = x.Any();
+                }
+            ).HandleExceptions<Exception, IList<string>>();
+            
+            var listOfVms = new List<SearchResultsViewModel>()
+            {
+                CreateSearchResultsViewModelFor(SearchFilter.All),
+                CreateSearchResultsViewModelFor(SearchFilter.Speeches),
+                CreateSearchResultsViewModelFor(SearchFilter.Music),
+                CreateSearchResultsViewModelFor(SearchFilter.Contributors),
+                CreateSearchResultsViewModelFor(SearchFilter.Playlists),
+                CreateSearchResultsViewModelFor(SearchFilter.Podcasts),
+                CreateSearchResultsViewModelFor(SearchFilter.Albums),
+            };
+            
+            CollectionItems.AddRange(listOfVms);
+            SelectedCollectionItem = CollectionItems.First();
+        }
+
+        private SearchResultsViewModel CreateSearchResultsViewModelFor(SearchFilter searchFilter)
+        {
+            var searchResultsViewModel = (SearchResultsViewModel)_mvxViewModelLoader.LoadViewModel(
+                new MvxViewModelRequest<SearchResultsViewModel>(),
+                searchFilter,
+                null);
+            
+            searchResultsViewModel.ClearFocusAction = ClearFocusAction;
+            return searchResultsViewModel;
+        }
+
+        private void ClearFocusAction()
+        {
+            RemoveFocusOnSearchInteraction?.Raise();
         }
 
         private async Task Search()
@@ -163,29 +187,13 @@ namespace BMM.Core.ViewModels
             {
                 SearchedString = SearchTerm;
 
+                IsHistoryVisible = false;
                 SearchExecuted = true;
-                Documents.Clear();
-                SearchSuggestions.Clear();
-
                 ResetCurrentLimit();
                 SearchTerm = SearchTerm.Trim();
 
-                await Load();
-
-                if (!Documents.Any())
-                    await LoadSuggestions();
-                else
-                {
-                    if (SearchHistory.Contains(SearchTerm))
-                        SearchHistory.RemoveAt(SearchHistory.IndexOf(SearchTerm));
-
-                    SearchHistory.Insert(0, SearchTerm);
-
-                    if (SearchHistory.Count > GlobalConstants.SearchHistoryCount)
-                        SearchHistory.RemoveAt(SearchHistory.Count - 1);
-
-                    await BlobCache.InsertObject(StorageKeys.History, SearchHistory.ToList());
-                }
+                await SelectedCollectionItem.Search(SearchTerm);
+                await HandleHistoryItems();
             }
             catch (Exception ex)
             {
@@ -193,22 +201,21 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        private async Task LoadSuggestions()
+        private async Task HandleHistoryItems()
         {
-            IsFullyLoaded = false;
-            IsLoading = true;
-
-            try
+            await _semaphoreSlim.Run(async () =>
             {
-                SearchSuggestions.AddRange(await Client.Search.GetSuggestions(SearchTerm));
-            }
-            catch (Exception ex)
-            {
-                ExceptionHandler.HandleException(ex);
-            }
+                if (SearchHistory.Contains(SearchTerm))
+                    SearchHistory.RemoveAt(SearchHistory.IndexOf(SearchTerm));
 
-            IsFullyLoaded = true;
-            IsLoading = false;
+                SearchHistory.Insert(0, SearchTerm);
+
+                if (SearchHistory.Count > GlobalConstants.SearchHistoryCount)
+                    SearchHistory.RemoveAt(SearchHistory.Count - 1);
+
+                HasAnyHistoryEntry = SearchHistory.Any();
+                await _cache.InsertObject(StorageKeys.History, SearchHistory.ToList());
+            });
         }
 
         private async Task DeleteHistory()
@@ -216,8 +223,9 @@ namespace BMM.Core.ViewModels
             var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource[Translations.SearchViewModel_DeleteConfirm]);
             if (result)
             {
-                await BlobCache.InvalidateObject<List<string>>(StorageKeys.History);
+                await _cache.InvalidateObject<List<string>>(StorageKeys.History);
                 SearchHistory.Clear();
+                HasAnyHistoryEntry = false;
             }
         }
 
@@ -225,37 +233,34 @@ namespace BMM.Core.ViewModels
         {
             SearchExecuted = false;
             SearchTerm = string.Empty;
-            Documents.Clear();
-            SearchSuggestions.Clear();
-        }
-
-        public override async Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy)
-        {
-            if (string.IsNullOrEmpty(SearchTerm))
-            {
-                return null;
-            }
-
-            var results = await Client.Search.GetAll(SearchTerm, startIndex, size);
-            if (results == null)
-                return Enumerable.Empty<IDocumentPO>();
-            
-            NextPageFromPosition = results.NextPageFromPosition;
-            IsFullyLoaded = results.IsFullyLoaded;
-            return _documentsPOFactory.Create(
-                results.Items,
-                DocumentSelectedCommand,
-                OptionCommand,
-                TrackInfoProvider);
+            RemoveFocusOnSearchInteraction?.Raise();
+            IsHistoryVisible = true;
         }
 
         private int NextPageFromPosition { get; set; }
 
-        public override int CurrentLimit => NextPageFromPosition;
-
         protected void ResetCurrentLimit()
         {
             NextPageFromPosition = ApiConstants.LoadMoreSize;
+        }
+
+        public IBmmObservableCollection<SearchResultsViewModel> CollectionItems { get; } =
+            new BmmObservableCollection<SearchResultsViewModel>();
+
+        public SearchResultsViewModel SelectedCollectionItem
+        {
+            get => _selectedCollectionItem;
+            set
+            {
+                SetProperty(ref _selectedCollectionItem, value);
+                foreach (var searchResultViewModel in CollectionItems)
+                    searchResultViewModel.Selected = false;
+
+                _selectedCollectionItem.Selected = true;
+
+                if (!string.IsNullOrEmpty(SearchTerm))
+                    _debounceDispatcher.Run(async () => await Search());
+            }
         }
     }
 }

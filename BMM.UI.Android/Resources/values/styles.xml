@@ -145,6 +145,10 @@
     <style name="Subtitle1_Label2" parent="Subtitle1">
         <item name="android:textColor">@color/label_secondary_color</item>
     </style>
+    
+    <style name="Subtitle1_Label3" parent="Subtitle1">
+        <item name="android:textColor">@color/label_tertiary_color</item>
+    </style>
 
     <style name="Subtitle1_TintColor" parent="Subtitle1">
         <item name="android:textColor">@color/tint_color</item>

@@ -93,16 +93,22 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.LabelTertiaryColor
         };
 
+        public static TextTheme Subtitle1Label1 = new TextTheme
+        {
+            Font = Typography.Subtitle1.Value,
+            Color = AppColors.LabelPrimaryColor
+        };
+        
         public static TextTheme Subtitle1Label2 = new TextTheme
         {
             Font = Typography.Subtitle1.Value,
             Color = AppColors.LabelSecondaryColor
         };
         
-        public static TextTheme Subtitle1Label1 = new TextTheme
+        public static TextTheme Subtitle1Label3 = new TextTheme
         {
             Font = Typography.Subtitle1.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelTertiaryColor
         };
 
         public static TextTheme Subtitle2Label1 = new TextTheme
@@ -216,7 +222,7 @@ namespace BMM.UI.iOS.Constants
             IconTint = AppColors.LabelPrimaryColor,
             ImageEdgeInsets = new UIEdgeInsets(0, 6, 0, 16)
         };
-        
+
         public static readonly ButtonTheme ButtonPrimaryBlack = new StandardButtonTheme
         {
             TextTheme = new TextTheme
@@ -226,6 +232,13 @@ namespace BMM.UI.iOS.Constants
             },
             ButtonColor = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
             IconTint = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light)
+        };
+        
+        public static readonly ButtonTheme CancelSearchButton = new StandardButtonTheme
+        {
+            TextTheme = Subtitle1Label1,
+            ButtonColor = UIColor.Clear,
+            HasBorder = false
         };
         
         #endregion

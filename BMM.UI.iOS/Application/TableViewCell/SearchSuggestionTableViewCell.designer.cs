@@ -1,28 +1,28 @@
 ﻿// WARNING
 //
-// This file has been generated automatically by Visual Studio from the outlets and
-// actions declared in your storyboard file.
-// Manual changes to this file will not be maintained.
+// This file has been generated automatically by Rider IDE
+//   to store outlets and actions made in Xcode.
+// If it is removed, they will be lost.
+// Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    [Register ("SearchSuggestionTableViewCell")]
-    partial class SearchSuggestionTableViewCell
-    {
-        [Outlet]
-        UIKit.UILabel TextLabel { get; set; }
+	[Register ("SearchSuggestionTableViewCell")]
+	partial class SearchSuggestionTableViewCell
+	{
+		[Outlet]
+		UIKit.UILabel TextLabel { get; set; }
 
-        void ReleaseDesignerOutlets ()
-        {
-            if (TextLabel != null) {
-                TextLabel.Dispose ();
-                TextLabel = null;
-            }
-        }
-    }
+		void ReleaseDesignerOutlets ()
+		{
+			if (TextLabel != null) {
+				TextLabel.Dispose ();
+				TextLabel = null;
+			}
+
+		}
+	}
 }

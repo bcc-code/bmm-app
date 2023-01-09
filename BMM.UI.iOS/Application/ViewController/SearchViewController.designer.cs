@@ -1,127 +1,124 @@
 ﻿// WARNING
 //
-// This file has been generated automatically by Visual Studio from the outlets and
-// actions declared in your storyboard file.
-// Manual changes to this file will not be maintained.
+// This file has been generated automatically by Rider IDE
+//   to store outlets and actions made in Xcode.
+// If it is removed, they will be lost.
+// Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    [Register ("SearchViewController")]
-    partial class SearchViewController
-    {
-        [Outlet]
-        UIKit.UIButton ClearHistoryButton { get; set; }
+	[Register ("SearchViewController")]
+	partial class SearchViewController
+	{
+		[Outlet]
+		UIKit.UIButton CancelButton { get; set; }
 
+		[Outlet]
+		UIKit.UIView ClearHistoryButton { get; set; }
 
-        [Outlet]
-        UIKit.UIView EmptyResultsView { get; set; }
+		[Outlet]
+		UIKit.UIView ContainerView { get; set; }
 
+		[Outlet]
+		UIKit.UILabel RecentSearchesLabel { get; set; }
 
-        [Outlet]
-        UIKit.UILabel HistoryHeaderLabel { get; set; }
+		[Outlet]
+		UIKit.UIView RecentSearchesLayer { get; set; }
 
+		[Outlet]
+		UIKit.UITableView RecentSearchesTableView { get; set; }
 
-        [Outlet]
-        UIKit.UILabel NoResultsLabel { get; set; }
+		[Outlet]
+		UIKit.UIView SearchBarBottomSeparator { get; set; }
 
+		[Outlet]
+		BMM.UI.iOS.CustomViews.BmmSeachTextField SearchTextField { get; set; }
 
-        [Outlet]
-        UIKit.UILabel ResultsHeaderLabel { get; set; }
+		[Outlet]
+		UIKit.NSLayoutConstraint StackViewTrailingConstraint { get; set; }
 
+		[Outlet]
+		UIKit.UIStackView TopStackView { get; set; }
 
-        [Outlet]
-        UIKit.UIView SearchExecutedView { get; set; }
+		[Outlet]
+		UIKit.UIView WelcomeLayer { get; set; }
 
+		[Outlet]
+		UIKit.UILabel WelcomeSubtitleLabel { get; set; }
 
-        [Outlet]
-        UIKit.UITableView SearchHistoryTable { get; set; }
+		[Outlet]
+		UIKit.UILabel WelcomeTitleLabel { get; set; }
 
+		void ReleaseDesignerOutlets ()
+		{
+			if (CancelButton != null) {
+				CancelButton.Dispose ();
+				CancelButton = null;
+			}
 
-        [Outlet]
-        UIKit.UITableView SearchResultsTable { get; set; }
+			if (ClearHistoryButton != null) {
+				ClearHistoryButton.Dispose ();
+				ClearHistoryButton = null;
+			}
 
+			if (ContainerView != null) {
+				ContainerView.Dispose ();
+				ContainerView = null;
+			}
 
-        [Outlet]
-        UIKit.UITableView SearchSuggestionTable { get; set; }
+			if (RecentSearchesLabel != null) {
+				RecentSearchesLabel.Dispose ();
+				RecentSearchesLabel = null;
+			}
 
+			if (RecentSearchesLayer != null) {
+				RecentSearchesLayer.Dispose ();
+				RecentSearchesLayer = null;
+			}
 
-        [Outlet]
-        UIKit.UILabel SuggestionsHeaderLabel { get; set; }
+			if (RecentSearchesTableView != null) {
+				RecentSearchesTableView.Dispose ();
+				RecentSearchesTableView = null;
+			}
 
+			if (SearchBarBottomSeparator != null) {
+				SearchBarBottomSeparator.Dispose ();
+				SearchBarBottomSeparator = null;
+			}
 
-        [Outlet]
-        UIKit.UILabel WelcomeSubTitleLabel { get; set; }
+			if (SearchTextField != null) {
+				SearchTextField.Dispose ();
+				SearchTextField = null;
+			}
 
+			if (WelcomeLayer != null) {
+				WelcomeLayer.Dispose ();
+				WelcomeLayer = null;
+			}
 
-        [Outlet]
-        UIKit.UILabel WelcomeTitleLabel { get; set; }
+			if (WelcomeSubtitleLabel != null) {
+				WelcomeSubtitleLabel.Dispose ();
+				WelcomeSubtitleLabel = null;
+			}
 
-        void ReleaseDesignerOutlets ()
-        {
-            if (ClearHistoryButton != null) {
-                ClearHistoryButton.Dispose ();
-                ClearHistoryButton = null;
-            }
+			if (WelcomeTitleLabel != null) {
+				WelcomeTitleLabel.Dispose ();
+				WelcomeTitleLabel = null;
+			}
 
-            if (EmptyResultsView != null) {
-                EmptyResultsView.Dispose ();
-                EmptyResultsView = null;
-            }
+			if (TopStackView != null) {
+				TopStackView.Dispose ();
+				TopStackView = null;
+			}
 
-            if (HistoryHeaderLabel != null) {
-                HistoryHeaderLabel.Dispose ();
-                HistoryHeaderLabel = null;
-            }
+			if (StackViewTrailingConstraint != null) {
+				StackViewTrailingConstraint.Dispose ();
+				StackViewTrailingConstraint = null;
+			}
 
-            if (NoResultsLabel != null) {
-                NoResultsLabel.Dispose ();
-                NoResultsLabel = null;
-            }
-
-            if (ResultsHeaderLabel != null) {
-                ResultsHeaderLabel.Dispose ();
-                ResultsHeaderLabel = null;
-            }
-
-            if (SearchExecutedView != null) {
-                SearchExecutedView.Dispose ();
-                SearchExecutedView = null;
-            }
-
-            if (SearchHistoryTable != null) {
-                SearchHistoryTable.Dispose ();
-                SearchHistoryTable = null;
-            }
-
-            if (SearchResultsTable != null) {
-                SearchResultsTable.Dispose ();
-                SearchResultsTable = null;
-            }
-
-            if (SearchSuggestionTable != null) {
-                SearchSuggestionTable.Dispose ();
-                SearchSuggestionTable = null;
-            }
-
-            if (SuggestionsHeaderLabel != null) {
-                SuggestionsHeaderLabel.Dispose ();
-                SuggestionsHeaderLabel = null;
-            }
-
-            if (WelcomeSubTitleLabel != null) {
-                WelcomeSubTitleLabel.Dispose ();
-                WelcomeSubTitleLabel = null;
-            }
-
-            if (WelcomeTitleLabel != null) {
-                WelcomeTitleLabel.Dispose ();
-                WelcomeTitleLabel = null;
-            }
-        }
-    }
+		}
+	}
 }

@@ -27,6 +27,8 @@
     <dimen name="circle_button_size">40dp</dimen>
     
     <dimen name="dimen_none">0dp</dimen>
+    
+    <dimen name="top_bar_height">56dp</dimen>
 
     <!-- Buttons -->
     <dimen name="large_button_height">56dp</dimen>
@@ -90,6 +92,9 @@
     <dimen name="year_in_review_teaser_image_height_small">32dp</dimen>
     <dimen name="year_in_review_teaser_image_height_large">124dp</dimen>
     <dimen name="year_in_review_teaser_expand_button_size">32dp</dimen>
+    
+    <dimen name="clear_recent_searches_button_size">32dp</dimen>
+    <dimen name="clear_recent_searches_button_radius">16dp</dimen>
     
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>

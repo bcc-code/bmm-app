@@ -1,215 +1,240 @@
 using System;
-using System.Drawing;
+using System.ComponentModel;
+using BMM.Core.Constants;
+using BMM.Core.Interactions.Base;
 using BMM.Core.Translation;
-using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
-using BMM.UI.iOS.NewMediaPlayer;
-using Foundation;
+using BMM.UI.iOS.Extensions;
+using BMM.UI.iOS.Utils;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Localization;
+using MvvmCross.Binding.Combiners;
+using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
+using MvvmCross.Platforms.Ios.Views;
 using UIKit;
+using AppTheme = BMM.UI.iOS.Constants.AppTheme;
 
 namespace BMM.UI.iOS
 {
     [MvxTabPresentation(TabName = Translations.MenuViewModel_Search, TabIconName = "icon_search", TabSelectedIconName = "icon_search_active", WrapInNavigationController = false)]
-    public partial class SearchViewController : BaseViewController<SearchViewModel>
+    public partial class SearchViewController : FlexibleWidthPagerBaseController<SearchViewModel, SearchResultsViewModel>
     {
-        private readonly System.nint SearchTermTextFieldTag;
-        private UIKit.UITextField SearchTermTextField;
+        private const int TopStackViewTrailingValue = 16;
+        private bool _isHistoryVisible;
+        private IBmmInteraction _removeFocusOnSearchInteraction;
 
         public SearchViewController()
             : base(nameof(SearchViewController))
         {
-            SearchTermTextFieldTag = new System.nint(100);
         }
 
         public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
+
+        protected override UIView HostViewForPager => ContainerView;
+
+        public IBmmInteraction RemoveFocusOnSearchInteraction
+        {
+            get => _removeFocusOnSearchInteraction;
+            set
+            {
+                if (_removeFocusOnSearchInteraction != null)
+                    _removeFocusOnSearchInteraction.Requested -= OnRemoveFocusRequested;
+
+                _removeFocusOnSearchInteraction = value;
+                _removeFocusOnSearchInteraction.Requested += OnRemoveFocusRequested;
+            }
+        }
+
+        private void OnRemoveFocusRequested(object sender, EventArgs e)
+        {
+            SearchTextField.ResignFirstResponder();
+        }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-            AddTextFieldToNavigationBar();
+            NavigationController!.NavigationBarHidden = true;
 
-            // Run search and hide keyboard after hitting "Search"
-            SearchTermTextField.ShouldReturn += ((textField) =>
-            {
-                textField.ResignFirstResponder();
-                ViewModel.SearchCommand.Execute();
-                return true;
-            });
-
-            var resultsTable = new DocumentsTableViewSource(SearchResultsTable);
-
-            var suggestionsTable = new MvxSimpleTableViewSource(SearchSuggestionTable, SearchSuggestionTableViewCell.Key);
-            SearchSuggestionTable.Source = suggestionsTable;
-
-            var historyTable = new MvxSimpleTableViewSource(SearchHistoryTable, SearchSuggestionTableViewCell.Key);
-            SearchHistoryTable.Source = historyTable;
-            SearchHistoryTable.AccessibilityIdentifier = "history";
-
-            var set = this.CreateBindingSet<SearchViewController, SearchViewModel>();
-            set.Bind(SearchTermTextField).To(vm => vm.SearchTerm);
-            set.Bind(SearchTermTextField).For(s => s.Placeholder).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchHint);
-
-            set.Bind(resultsTable).To(vm => vm.Documents);
-            set.Bind(ResultsHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchResults);
-            set.Bind(resultsTable).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
-            set.Bind(resultsTable).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
-            set.Bind(resultsTable).For(s => s.IsFullyLoaded).To(s => s.IsFullyLoaded);
-
-            set.Bind(suggestionsTable).To(vm => vm.SearchSuggestions);
-            set.Bind(suggestionsTable).For(s => s.SelectionChangedCommand).To(s => s.SearchByTermCommand);
-            set.Bind(SuggestionsHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchSuggestions);
-            set.Bind(SearchSuggestionTable).For(s => s.Hidden).To(vm => vm.ShowSuggestions).WithConversion<InvertedVisibilityConverter>();
-
-            set.Bind(historyTable).To(vm => vm.SearchHistory);
-            set.Bind(historyTable).For(s => s.SelectionChangedCommand).To(s => s.SearchByTermCommand);
-            set.Bind(HistoryHeaderLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchHistory);
-            set.Bind(SearchHistoryTable).For(s => s.Hidden).To(vm => vm.ShowHistory).WithConversion<InvertedVisibilityConverter>();
-            set.Bind(ClearHistoryButton).To(vm => vm.DeleteHistoryCommand);
-
-            set.Bind(NoResultsLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_SearchNoResults);
-            set.Bind(EmptyResultsView).For(s => s.Hidden).To(vm => vm.NoResults).WithConversion<InvertedVisibilityConverter>();
-
-            set.Bind(WelcomeTitleLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_WelcomeTitle);
-            set.Bind(WelcomeSubTitleLabel).For(s => s.Text).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SearchViewModel_WelcomeSubTitle);
-            set.Bind(SearchExecutedView).For(s => s.Hidden).To(vm => vm.SearchExecuted).WithConversion<InvertedVisibilityConverter>();
-
-            set.Apply();
-
-            View.AddGestureRecognizer(new UITapGestureRecognizer(() => SearchTermTextField.ResignFirstResponder())
+            View.AddGestureRecognizer(new UITapGestureRecognizer(() => SearchTextField.ResignFirstResponder())
             {
                 CancelsTouchesInView = false
             });
-            View.AddGestureRecognizer(new UISwipeGestureRecognizer(() => SearchTermTextField.ResignFirstResponder())
+            
+            View.AddGestureRecognizer(new UISwipeGestureRecognizer(() => SearchTextField.ResignFirstResponder())
             {
                 Direction = UISwipeGestureRecognizerDirection.Down | UISwipeGestureRecognizerDirection.Up,
                 CancelsTouchesInView = false
             });
-
+            
+            SetSearchBarSeparatorVisibility();
             SetThemes();
+        }
+
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            SearchTextField.ShouldReturn += ShouldReturn;
+            SearchTextField.EditingDidBegin += SearchTextFieldOnEditingDidBegin;
+            SearchTextField.EditingDidEnd += SearchTextFieldOnEditingDidEnd;
+            RemoveFocusOnSearchInteraction.Requested += OnRemoveFocusRequested;
+            ViewModel.PropertyChanged += ViewModelOnPropertyChanged;
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+            SearchTextField.ShouldReturn -= ShouldReturn;
+            SearchTextField.EditingDidBegin -= SearchTextFieldOnEditingDidBegin;
+            SearchTextField.EditingDidEnd -= SearchTextFieldOnEditingDidEnd;
+            RemoveFocusOnSearchInteraction.Requested -= OnRemoveFocusRequested;
+            ViewModel.PropertyChanged -= ViewModelOnPropertyChanged;
+        }
+        
+        private void SearchTextFieldOnEditingDidBegin(object sender, EventArgs e)
+        {
+            HideOrShowCancelButton();
+        }
+        
+        private void SearchTextFieldOnEditingDidEnd(object sender, EventArgs e)
+        {
+            HideOrShowCancelButton();
+        }
+        
+        private bool ShouldReturn(UITextField textfield)
+        {
+            textfield.ResignFirstResponder();
+            ViewModel.SearchCommand.Execute();
+            return true;
+        }
+        
+        private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(ViewModel.HasAnyHistoryEntry) || e.PropertyName == nameof(ViewModel.IsHistoryVisible))
+                SetSearchBarSeparatorVisibility();
+        }
+
+        private void SetSearchBarSeparatorVisibility()
+        {
+            SearchBarBottomSeparator.Hidden = !ViewModel.IsHistoryVisible;
+        }
+
+        protected override void Bind(MvxFluentBindingDescriptionSet<BaseViewController<SearchViewModel>, SearchViewModel> set)
+        {
+            base.Bind(set);
+            
+            set.Bind(CancelButton)
+                .For(v => v.BindTitle())
+                .To(vm => vm.TextSource[Translations.UserDialogs_Cancel]);
+
+            set.Bind(CancelButton)
+                .To(vm => vm.ClearCommand);
+            
+            set.Bind(ClearHistoryButton)
+                .For(v => v.BindTap())
+                .To(vm => vm.DeleteHistoryCommand);
+
+            set.Bind(SearchTextField)
+                .For(v => v.Text)
+                .To(vm => vm.SearchTerm);
+            
+            set.Bind(SearchTextField)
+                .For(v => v.Placeholder)
+                .To(vm => vm.TextSource[Translations.SearchViewModel_SearchHint]);
+            
+            set.Bind(RecentSearchesLabel)
+                .To(vm => vm.TextSource[Translations.SearchViewModel_SearchHistory]);
+            
+            set.Bind(WelcomeTitleLabel)
+                .To(vm => vm.TextSource[Translations.SearchViewModel_WelcomeTitle]);
+            
+            set.Bind(WelcomeSubtitleLabel)
+                .To(vm => vm.TextSource[Translations.SearchViewModel_WelcomeSubTitle]);
+            
+            var historyTable = new MvxSimpleTableViewSource(RecentSearchesTableView, SearchSuggestionTableViewCell.Key);
+
+            set.Bind(historyTable)
+                .For(v => v.ItemsSource)
+                .To(vm => vm.SearchHistory);
+            
+            set.Bind(historyTable)
+                .For(s => s.SelectionChangedCommand)
+                .To(s => s.SearchByTermCommand);
+            
+            set.Bind(RecentSearchesLayer)
+                .For(s => s.BindVisible())
+                .To(s => s.IsHistoryVisible);
+            
+            set.Bind(WelcomeLayer)
+                .For(s => s.Hidden)
+                .To(s => s.HasAnyHistoryEntry);
+
+            set.Bind(SearchBarBottomSeparator)
+                .For(s => s.BindVisible())
+                .To(s => s.HasAnyHistoryEntry);
+            
+            set.Bind(this)
+                .For(s => s.IsHistoryVisible)
+                .To(s => s.IsHistoryVisible);
+                        
+            set.Bind(this)
+                .For(s => s.RemoveFocusOnSearchInteraction)
+                .To(s => s.RemoveFocusOnSearchInteraction);
+            
+            RecentSearchesTableView.Source = historyTable;
+        }
+
+        public bool IsHistoryVisible
+        {
+            get => _isHistoryVisible;
+            set
+            {
+                _isHistoryVisible = value;
+                HideOrShowCancelButton();
+            }
+        }
+
+        private void HideOrShowCancelButton()
+        {
+            ViewUtils.RunAnimation(ViewConstants.DefaultAnimationDuration,
+                () =>
+                {
+                    bool isCancelVisible = SearchTextField.IsEditing || !_isHistoryVisible;
+                    CancelButton.SetHiddenIfNeeded(!isCancelVisible);
+
+                    StackViewTrailingConstraint.Constant = isCancelVisible
+                        ? NumericConstants.Zero
+                        : TopStackViewTrailingValue;
+
+                    TopStackView.LayoutIfNeeded();
+                });
         }
 
         private void SetThemes()
         {
-            ResultsHeaderLabel.ApplyTextTheme(AppTheme.Title1);
-            HistoryHeaderLabel.ApplyTextTheme(AppTheme.Title1);
-            SuggestionsHeaderLabel.ApplyTextTheme(AppTheme.Title1);
-            WelcomeTitleLabel.ApplyTextTheme(AppTheme.Title2);
-            NoResultsLabel.ApplyTextTheme(AppTheme.Title2);
-            WelcomeSubTitleLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
-            SearchTermTextField.TextColor = AppColors.LabelPrimaryColor;
+            CancelButton.ApplyButtonStyle(AppTheme.CancelSearchButton);
+            RecentSearchesLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
+            WelcomeTitleLabel.ApplyTextTheme(AppTheme.Heading3);
+            WelcomeSubtitleLabel.ApplyTextTheme(AppTheme.Paragraph1Label1);
+            SearchTextField.Font = Typography.Subtitle2.Value;
+            SearchTextField.TextColor = AppColors.LabelPrimaryColor;
         }
 
-        public override void ViewWillAppear(bool animated)
+        protected override MvxViewController CreateOrRefreshViewController(object item, MvxViewController existingController = null)
         {
-            base.ViewWillAppear(animated);
-
-            SearchTermTextField.Hidden = false;
-            SearchTermTextField.Frame = GetRectangleForSearchTermTextField();
-        }
-
-        public override void ViewWillDisappear(bool animated)
-        {
-            base.ViewWillDisappear(animated);
-
-            if (SearchTermTextField != null)
+            var vm = (SearchResultsViewModel)item;
+            if (existingController is SearchResultsViewController searchResultsViewController)
             {
-                SearchTermTextField.Hidden = true;
-            }
-        }
-
-        public override void DidRotate(UIInterfaceOrientation fromInterfaceOrientation)
-        {
-            base.DidRotate(fromInterfaceOrientation);
-
-            if (SearchTermTextField != null)
-            {
-                SearchTermTextField.Frame = GetRectangleForSearchTermTextField();
-            }
-        }
-
-        private void AddTextFieldToNavigationBar()
-        {
-            //Clear Title
-            NavigationItem.Title = "";
-
-            //Put TextField in NavigationBar
-            SearchTermTextField = (UITextField)NavigationController.View.ViewWithTag(SearchTermTextFieldTag);
-            if (SearchTermTextField == null)
-            {
-                SearchTermTextField = new UITextField(GetRectangleForSearchTermTextField());
-                SearchTermTextField.Tag = SearchTermTextFieldTag;
-                SearchTermTextField.AutoresizingMask = UIViewAutoresizing.FlexibleWidth;
-
-                NavigationController.View.AddSubview(SearchTermTextField);
-                SearchTermTextField.AccessibilityIdentifier = "search_text_field";
+                searchResultsViewController.ViewModel = vm;
+                return existingController;
             }
 
-            //Styling input field
-            SearchTermTextField.BorderStyle = UITextBorderStyle.None;
-            SearchTermTextField.Layer.CornerRadius = 3f;
-            SearchTermTextField.AttributedPlaceholder = new NSAttributedString (
-                string.Empty,
-                Typography.Subtitle2.Value,
-                AppColors.LabelTertiaryColor);
-
-            //Add Search Icon
-            var searchImageView = new UIImageView(UIImage.FromBundle("InputSearchIcon"));
-            searchImageView.TintColor = AppColors.LabelTertiaryColor;
-            searchImageView.Frame = new RectangleF(0, 0, 30, 14);
-            searchImageView.ContentMode = UIViewContentMode.Center;
-            SearchTermTextField.LeftView = searchImageView;
-            SearchTermTextField.LeftViewMode = UITextFieldViewMode.Always;
-
-            CustomClearButton();
-        }
-
-        private RectangleF GetRectangleForSearchTermTextField()
-        {
-            // Get the position of the Search field related to the safeGuide
-            var yPosition = GetPositionForSearchField();
-
-            return new RectangleF(16, yPosition, (float)NavigationController.View.Frame.Width - 20, 30);
-        }
-
-        private float GetPositionForSearchField()
-        {
-            UIView view = NavigationController.View;
-            UILayoutGuide safeGuide = view.SafeAreaLayoutGuide;
-            var topSafeAreaHeight = safeGuide.LayoutFrame.Y - view.Frame.Y;
-
-            return (float)topSafeAreaHeight + 7;
-        }
-
-        private void CustomClearButton()
-        {
-            //Custom Clear button
-            UIButton ClearButton = UIButton.FromType(UIButtonType.Custom);
-            ClearButton.AccessibilityIdentifier = "clear_button";
-            ClearButton.SetImage(UIImage.FromFile("icon_close_static.png"), UIControlState.Normal);
-            ClearButton.Frame = new RectangleF(0, 0, 30, 30);
-            ClearButton.ContentMode = UIViewContentMode.Center;
-            SearchTermTextField.RightView = ClearButton;
-            SearchTermTextField.RightViewMode = UITextFieldViewMode.Always;
-
-            // Hide clear button if TextField is empty or a search is executed
-            Action updateValue = () => ClearButton.Hidden = (!ViewModel.SearchExecuted && String.IsNullOrEmpty(ViewModel.SearchTerm));
-            ViewModel.PropertyChanged += (sender, e) =>
+            return new SearchResultsViewController
             {
-                if (e.PropertyName == "SearchTerm" || e.PropertyName == "SearchExecuted")
-                {
-                    updateValue();
-                }
+                ViewModel = vm
             };
-            updateValue();
-
-            // Clear textfield on TouchUpInside
-            ClearButton.TouchUpInside += (sender, e) => ViewModel.ClearSearch();
         }
     }
 }
