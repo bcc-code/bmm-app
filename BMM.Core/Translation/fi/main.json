@@ -265,21 +265,21 @@
   "SearchViewModel": {
     "Title": "Etsi",
     "SearchHint": "Etsi",
-    "SearchResults": "Results",
+    "SearchResults": "Tulokset",
     "SearchHistory": "Viimeisimmät haut",
     "SearchSuggestions": "Tarkoititko: ",
     "WelcomeTitle": "Aloita etsiminen täältä!",
     "WelcomeSubTitle": "Käytä hakukenttää etsiäksesi sisältöä BMM:stä",
     "DeleteConfirm": "Oletko varma, että haluat poistaa hakuhistorian?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Kaikki",
+    "Speeches": "Puheet",
     "Music": "Musiikki",
     "Albums": "Albumit",
-    "Contributors": "People",
+    "Contributors": "Ihmiset",
     "Podcasts": "Podcastit",
     "Playlists": "Soittolistat",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Ei tuloksia",
+    "NoResultsDescription": "Ei osumia haullesi \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profiili",
