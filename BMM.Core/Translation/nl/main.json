@@ -265,21 +265,21 @@
   "SearchViewModel": {
     "Title": "Zoeken",
     "SearchHint": "Zoek",
-    "SearchResults": "Results",
+    "SearchResults": "Resultaten",
     "SearchHistory": "Recente zoekopdrachten",
     "SearchSuggestions": "Bedoelde je: ",
     "WelcomeTitle": "Begin hier met zoeken!",
     "WelcomeSubTitle": "Gebruik het zoekveld om te zoeken naar content op BMM",
     "DeleteConfirm": "Weet je zeker dat je de zoekgeschiedenis wilt verwijderen?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Alle",
+    "Speeches": "Toespraken",
     "Music": "Muziek",
     "Albums": "Albums",
-    "Contributors": "People",
+    "Contributors": "Personen",
     "Podcasts": "Podcasts",
     "Playlists": "Afspeellijsten",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Geen resultaten",
+    "NoResultsDescription": "Er zijn geen resultaten gevonden op je zoekactie naar \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profiel",
