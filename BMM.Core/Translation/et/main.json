@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Otsi",
     "SearchHint": "Otsi",
-    "SearchResults": "Otsingu tulemused",
+    "SearchResults": "Results",
     "SearchHistory": "Hiljutised otsingud",
     "SearchSuggestions": "Kas sa mõtlesid: ",
-    "SearchNoResults": "Me ei suutnud midagi leida.",
     "WelcomeTitle": "Alusta otsingut siit!",
     "WelcomeSubTitle": "BMM sisu otsinguks kasuta otsinguvälja",
-    "DeleteConfirm": "Kas soovite kindlasti kustutada otsingute ajalugu?"
+    "DeleteConfirm": "Kas soovite kindlasti kustutada otsingute ajalugu?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Muusika",
+    "Albums": "Albums",
+    "Contributors": "People",
+    "Podcasts": "Saated",
+    "Playlists": "Esitusloendid",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profile",
