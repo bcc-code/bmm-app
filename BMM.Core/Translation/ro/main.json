@@ -265,13 +265,21 @@
   "SearchViewModel": {
     "Title": "Caută",
     "SearchHint": "Caută",
-    "SearchResults": "Rezultatele căutării",
+    "SearchResults": "Results",
     "SearchHistory": "Căutări recente",
     "SearchSuggestions": "Ați vrut să spuneți: ",
-    "SearchNoResults": "Nu am putut găsi nimic.",
     "WelcomeTitle": "Începe căutarea aici!",
     "WelcomeSubTitle": "Folosește câmpul de căutare pentru a căuta conținut pe BMM",
-    "DeleteConfirm": "Sunteţi sigur că doriţi să ştergeţi istoricul căutărilor?"
+    "DeleteConfirm": "Sunteţi sigur că doriţi să ştergeţi istoricul căutărilor?",
+    "All": "All",
+    "Speeches": "Speeches",
+    "Music": "Muzică",
+    "Albums": "Albume",
+    "Contributors": "People",
+    "Podcasts": "Podcast-uri",
+    "Playlists": "Play-list-uri",
+    "NoResults": "No results",
+    "NoResultsDescription": "There where no matches with your search for \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profil",
