@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using NUnit.Framework;
 using Xamarin.UITest;
+using Xamarin.UITest.Android;
 
 namespace BMM.UITests
 {
@@ -31,7 +32,12 @@ namespace BMM.UITests
             _bmmApp.Menu.OpenSearch(_app);
             _app.Tap(_bmmApp.NavigationBar.SearchBar);
             _app.EnterText("brunstadfest austria 2016");
-            _app.PressEnter();
+
+            if (_platform == Platform.Android)
+                ((AndroidApp)_app).PressUserAction();
+            else
+                _app.PressEnter();
+
             _app.Tap(_bmmApp.AlbumPage.ItemWithTitle("Brunstadfest Austria 2016"));
         }
 

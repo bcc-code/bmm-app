@@ -56,8 +56,6 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
-            NavigationController!.NavigationBarHidden = true;
-
             View.AddGestureRecognizer(new UITapGestureRecognizer(() => SearchTextField.ResignFirstResponder())
             {
                 CancelsTouchesInView = false
@@ -71,6 +69,18 @@ namespace BMM.UI.iOS
             
             SetSearchBarSeparatorVisibility();
             SetThemes();
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+            NavigationController!.SetNavigationBarHidden(true, true);
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+            NavigationController!.SetNavigationBarHidden(false, true);
         }
 
         protected override void AttachEvents()

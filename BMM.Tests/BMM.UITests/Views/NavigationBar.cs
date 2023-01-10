@@ -25,7 +25,7 @@ namespace BMM.UITests.Views
         {
             get
             {
-                return c => c.Marked("search_bar");
+                return c => c.Id("SearchTermEditText");
             }
         }
 

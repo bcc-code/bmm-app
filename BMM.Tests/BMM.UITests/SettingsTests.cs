@@ -11,6 +11,7 @@ namespace BMM.UITests
     [TestFixture(Platform.iOS, Category = Categories.iOS)]
     public class SettingsTests
     {
+        private const int DefaultWaitingTimeInMillis = 2000;
         private IBmmApp _bmmApp;
         private IApp _app;
         private readonly Platform _platform;
@@ -42,7 +43,7 @@ namespace BMM.UITests
             await _bmmApp.LoginToApp();
             _bmmApp.Menu.OpenProfilePage(_app);
 
-            ScrollToAndOpen(_bmmApp.SettingsPage.AppLanguage);
+            await ScrollToAndOpen(_bmmApp.SettingsPage.AppLanguage);
             _app.Tap("Deutsch (German)");
             _app.Back();
 
@@ -59,7 +60,7 @@ namespace BMM.UITests
 
             _bmmApp.Menu.OpenProfilePage(_app);
 
-            AddLanguageToMyContentLanguage(Deutsch);
+            await AddLanguageToMyContentLanguage(Deutsch);
 
             RemoveTwoTopContentLanguages(_platform);
 
@@ -68,7 +69,7 @@ namespace BMM.UITests
             _app.Back();
             _bmmApp.Menu.OpenProfilePage(_app);
 
-            AddLanguageToMyContentLanguage(English);
+            await AddLanguageToMyContentLanguage(English);
 
             RemoveContentLanguageOnTopOfList(_platform);
 
@@ -80,7 +81,7 @@ namespace BMM.UITests
             _app.Back();
             _bmmApp.Menu.OpenProfilePage(_app);
 
-            AddLanguageToMyContentLanguage(Deutsch);
+            await AddLanguageToMyContentLanguage(Deutsch);
 
             RemoveContentLanguageOnTopOfList(_platform);
 
@@ -89,9 +90,9 @@ namespace BMM.UITests
             Assert.AreEqual(songName1, songName1SecondCheck, ErrorSongsAreNotEqual);
         }
 
-        private void AddLanguageToMyContentLanguage(string language)
+        private async Task AddLanguageToMyContentLanguage(string language)
         {
-            ScrollToAndOpen(_bmmApp.SettingsPage.ContentLanguage);
+            await ScrollToAndOpen(_bmmApp.SettingsPage.ContentLanguage);
 
             if (_platform == Platform.iOS)
             {
@@ -102,8 +103,10 @@ namespace BMM.UITests
             _app.Tap(language);
         }
 
-        private void ScrollToAndOpen(Func<AppQuery, AppQuery> listItem)
+        private async Task ScrollToAndOpen(Func<AppQuery, AppQuery> listItem)
         {
+            await Task.Delay(DefaultWaitingTimeInMillis);
+
             if (_platform == Platform.Android)
                 _app.ScrollDown(q => q.Id("collapsing_toolbar"), ScrollStrategy.Gesture);
 

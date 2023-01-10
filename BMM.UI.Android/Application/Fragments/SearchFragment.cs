@@ -53,7 +53,7 @@ namespace BMM.UI.Droid.Application.Fragments
             _viewPager = view.FindViewById<ViewPager>(Resource.Id.ViewPager);
             _tabLayout = view.FindViewById<FlexibleWidthTabLayout>(Resource.Id.TabLayout);
             _welcomeAndHistoryLayer = view.FindViewById<ConstraintLayout>(Resource.Id.WelcomeAndHistoryLayer);
-            _searchTermEditText = view.FindViewById<TextView>(Resource.Id.SearchTermLabel);
+            _searchTermEditText = view.FindViewById<TextView>(Resource.Id.SearchTermEditText);
             _searchTermEditText.SetOnEditorActionListener(this);
             _welcomeAndHistoryLayer.SetOnClickListener(this);
             
