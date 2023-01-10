@@ -138,9 +138,10 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXs-IZ-9Qe">
                             <rect key="frame" x="0.0" y="0.0" width="331" height="36"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Uat-88-gI6" customClass="BmmSeachTextField">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Uat-88-gI6" customClass="BmmSeachTextField">
                                     <rect key="frame" x="0.0" y="0.0" width="331" height="36"/>
                                     <color key="backgroundColor" name="BackgroundSecondaryColor"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="search_text_field"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="fPZ-q6-Pos"/>
                                     </constraints>
