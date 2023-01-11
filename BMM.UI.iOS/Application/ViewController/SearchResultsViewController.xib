@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -18,7 +17,6 @@
                 <outlet property="ResultsContainer" destination="JEt-KC-T0F" id="qMG-0E-cOd"/>
                 <outlet property="ResultsLabel" destination="yB2-hj-T8u" id="Yy5-pZ-cWD"/>
                 <outlet property="ResultsTableView" destination="nfb-SW-zP8" id="VqA-VI-1Ju"/>
-                <outlet property="searchDisplayController" destination="mpn-ud-hEY" id="qJW-8y-TWM"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>
@@ -98,14 +96,6 @@
             </constraints>
             <point key="canvasLocation" x="497.10144927536237" y="283.25892857142856"/>
         </view>
-        <searchDisplayController id="mpn-ud-hEY">
-            <connections>
-                <outlet property="delegate" destination="-1" id="iXz-1S-TXT"/>
-                <outlet property="searchContentsController" destination="-1" id="Ukw-9W-6ov"/>
-                <outlet property="searchResultsDataSource" destination="-1" id="3VQ-4r-nXw"/>
-                <outlet property="searchResultsDelegate" destination="-1" id="W0F-z1-4OH"/>
-            </connections>
-        </searchDisplayController>
     </objects>
     <resources>
         <namedColor name="BackgroundPrimaryColor">
