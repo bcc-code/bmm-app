@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -25,7 +25,6 @@
                 <outlet property="WelcomeLayer" destination="r0E-ee-IB3" id="7Nd-Yg-cnB"/>
                 <outlet property="WelcomeSubtitleLabel" destination="AK8-9X-drC" id="c5b-Xm-pj3"/>
                 <outlet property="WelcomeTitleLabel" destination="cgo-LA-EYX" id="t1G-RX-Wl6"/>
-                <outlet property="searchDisplayController" destination="mpn-ud-hEY" id="qJW-8y-TWM"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>
@@ -210,14 +209,6 @@
             </constraints>
             <point key="canvasLocation" x="497.10144927536237" y="283.25892857142856"/>
         </view>
-        <searchDisplayController id="mpn-ud-hEY">
-            <connections>
-                <outlet property="delegate" destination="-1" id="iXz-1S-TXT"/>
-                <outlet property="searchContentsController" destination="-1" id="Ukw-9W-6ov"/>
-                <outlet property="searchResultsDataSource" destination="-1" id="3VQ-4r-nXw"/>
-                <outlet property="searchResultsDelegate" destination="-1" id="W0F-z1-4OH"/>
-            </connections>
-        </searchDisplayController>
     </objects>
     <resources>
         <image name="IconRemove" width="24" height="24"/>
