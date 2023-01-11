@@ -265,21 +265,21 @@
   "SearchViewModel": {
     "Title": "Išči",
     "SearchHint": "Išči",
-    "SearchResults": "Results",
+    "SearchResults": "Rezultati",
     "SearchHistory": "Nedavna iskanja",
     "SearchSuggestions": "Ali si mislil: ",
     "WelcomeTitle": "Začni iskati tukaj!",
     "WelcomeSubTitle": "Uporabi iskalno polje za iskanje vsebine na BMM",
     "DeleteConfirm": "Ali si prepričan, da želiš izbrisati zgodovino iskanja?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Vse",
+    "Speeches": "Govori",
     "Music": "Glasba",
     "Albums": "Albumi",
-    "Contributors": "People",
+    "Contributors": "Osebe",
     "Podcasts": "Podcasti",
     "Playlists": "Seznam predvajanja",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Ni rezultatov",
+    "NoResultsDescription": "Za iskanje \"{0}\" ni najdenih zadetkov."
   },
   "SettingsViewModel": {
     "Title": "Profil",
