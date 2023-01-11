@@ -63,7 +63,8 @@ namespace BMM.UI.iOS
             set
             {
                 _trackState = value;
-                if (_trackState.IsDownloading)
+                
+                if (_trackState.IsDownloading && !_trackState.IsDownloaded)
                     AddRotateAnimationToStatusImageView();
                 else
                     DownloadStatusImageView.Layer.RemoveAllAnimations();
@@ -72,6 +73,7 @@ namespace BMM.UI.iOS
 
         private void AddRotateAnimationToStatusImageView()
         {
+            DownloadStatusImageView.Layer.RemoveAllAnimations();
             var rotationAnimation = new CABasicAnimation();
             rotationAnimation.KeyPath = UIViewConstants.RotateAnimationKeyPath;
             rotationAnimation.To = new NSNumber(Math.PI * 2);

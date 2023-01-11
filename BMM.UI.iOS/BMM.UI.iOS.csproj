@@ -1093,7 +1093,6 @@
     <Compile Include="Application\Implementations\Notifications\NotificationDisplayer.cs" />
     <Compile Include="Application\ValueConverter\ToUppercaseConverter.cs" />
     <Compile Include="Application\TableViewSource\LoadMoreTableViewSource.cs" />
-    <Compile Include="Application\ValueConverter\BrightOfflineAvailableTrackStatusConverter.cs" />
     <Compile Include="Application\TableViewCell\ListItem\CheckboxListItemTableViewCell.cs" />
     <Compile Include="Application\TableViewCell\ListItem\CheckboxListItemTableViewCell.designer.cs">
       <DependentUpon>CheckboxListItemTableViewCell.cs</DependentUpon>
