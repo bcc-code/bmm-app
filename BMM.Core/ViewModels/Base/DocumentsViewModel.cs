@@ -22,6 +22,7 @@ using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
@@ -114,8 +115,9 @@ namespace BMM.Core.ViewModels.Base
             CurrentTrack = Mvx.IoCProvider.Resolve<IMediaPlayer>().CurrentTrack;
             _currentTrackChangedToken = Messenger.Subscribe<CurrentTrackChangedMessage>(message =>
             {
+                RefreshTrackWithId(CurrentTrack?.Id);
                 CurrentTrack = message.CurrentTrack;
-                RefreshTracksStatesInDocuments();
+                RefreshTrackWithId(CurrentTrack?.Id);
             });
 
             ConnectionStatus = Mvx.IoCProvider.Resolve<IConnection>().GetStatus();
@@ -139,6 +141,18 @@ namespace BMM.Core.ViewModels.Base
             _trackMarkedAsListenedToken = Messenger.Subscribe<TrackMarkedAsListenedMessage>(HandleTrackMarkedAsListenedMessage);
             _contentLanguageChangedToken = Messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
             _downloadedEpisodeRemovedSubscriptionToken = Messenger.Subscribe<DownloadedEpisodeRemovedMessage>(HandleDownloadedEpisodeRemovedMessage);
+        }
+
+        private void RefreshTrackWithId(int? currentTrackId)
+        {
+            if (!currentTrackId.HasValue)
+                return;
+            
+            var trackToRefresh = Documents
+                .OfType<ITrackPO>()
+                .FirstOrDefault(t => t.Id == currentTrackId);
+
+            trackToRefresh?.RefreshState();
         }
 
         private void RefreshTracksStatesInDocuments()
