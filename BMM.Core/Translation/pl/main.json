@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Nie można usunąć {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Przeglądaj"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archiwum"
@@ -179,15 +179,15 @@
     "Search": "Szukaj",
     "Explore": "Odkrywaj",
     "MyContent": "Moja zawartość",
-    "Browse": "Browse",
+    "Browse": "Przeglądaj",
     "Settings": "Ustawienia",
     "HelpAndFeedback": "Pomoc i opinie",
     "Home": "Home",
-    "Favorites": "Favorites",
+    "Favorites": "Ulubione",
     "Profile": "Profil"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Ulubione",
     "DownloadedContent": "Pobrane utwory",
     "FollowedPodcasts": "Obserwowane podcasty",
     "MyTracks": "Moje utwory",
