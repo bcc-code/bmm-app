@@ -35,8 +35,8 @@
     "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
     "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
     "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "DaysInARowSingular": "{0} dni pod rząd ",
+    "DaysInARowPlural": "{0} dni pod rząd ",
     "WeekdayMonday": "P",
     "WeekdayTuesday": "W",
     "WeekdayWednesday": "Ś",
@@ -179,7 +179,7 @@
     "Search": "Szukaj",
     "Explore": "Odkrywaj",
     "MyContent": "Moja zawartość",
-    "Browse": "Szukaj",
+    "Browse": "Przeglądaj",
     "Settings": "Ustawienia",
     "HelpAndFeedback": "Pomoc i opinie",
     "Home": "Home",
@@ -482,7 +482,7 @@
     "DownloadingFinished": "Wszystkie pliki zostały pobrane!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Wydarzenia",
     "AudiobooksTitle": "Audiobooki",
     "MusicTitle": "Muzyka",
     "PodcastsTitle": "Podcasty"
