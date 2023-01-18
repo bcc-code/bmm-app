@@ -12,13 +12,13 @@
     "Speech": "Przemowa",
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
-    "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
+    "Done": "Gotowe",
+    "Today": "Dzisiaj",
+    "Yesterday": "Wczoraj",
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
+    "NotNow": "Nie teraz",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
@@ -35,8 +35,8 @@
     "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
     "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
     "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "DaysInARowSingular": "{0} dni pod rząd ",
+    "DaysInARowPlural": "{0} dni pod rząd ",
     "WeekdayMonday": "P",
     "WeekdayTuesday": "W",
     "WeekdayWednesday": "Ś",
@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Nie można usunąć {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Przeglądaj"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archiwum"
@@ -179,15 +179,15 @@
     "Search": "Szukaj",
     "Explore": "Odkrywaj",
     "MyContent": "Moja zawartość",
-    "Browse": "Browse",
+    "Browse": "Przeglądaj",
     "Settings": "Ustawienia",
     "HelpAndFeedback": "Pomoc i opinie",
     "Home": "Home",
-    "Favorites": "Favorites",
+    "Favorites": "Ulubione",
     "Profile": "Profil"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Ulubione",
     "DownloadedContent": "Pobrane utwory",
     "FollowedPodcasts": "Obserwowane podcasty",
     "MyTracks": "Moje utwory",
@@ -382,7 +382,7 @@
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",
     "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
+    "AddToMyPlaylist": "Dodaj do moich playlist",
     "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
@@ -482,7 +482,7 @@
     "DownloadingFinished": "Wszystkie pliki zostały pobrane!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Wydarzenia",
     "AudiobooksTitle": "Audiobooki",
     "MusicTitle": "Muzyka",
     "PodcastsTitle": "Podcasty"

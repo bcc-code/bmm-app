@@ -1,11 +1,11 @@
 {
   "Global": {
-    "ContactError": "Het is niet gelukt om het BMM-team te contacteren, u kunt een e-mail sturen naar: {0}",
+    "ContactError": "Het is niet gelukt om het BMM-team te contacteren, je kunt een e-mail sturen naar: {0}",
     "External": "Extern",
     "Internal": "Intern",
     "BytesMB": "{0} MB vrij",
     "UnexpectedError": "Er is helaas een onbekende fout opgetreden.",
-    "InternetConnectionOffline": "De internetverbinding lijkt niet online te zijn.",
+    "InternetConnectionOffline": "De internetverbinding lijkt niet actief te zijn.",
     "ItemNotFound": "Het gevraagde item bestaat niet.",
     "OfflineBanner": "Geeft alleen de nummers op deze telefoon weer",
     "Song": "Lied",
@@ -16,7 +16,7 @@
     "Today": "Vandaag",
     "Yesterday": "Gisteren",
     "BackgroundActivityRestrictedTitle": "Achtergrond activiteit toestaan",
-    "BackgroundActivityRestrictedMessage": "Je device settings staan niet toe dat BMM op de achtergrond open blijft. Je kunt niet luisteren, als je telefoon gelocked is voor een paar minuten. Als je dit wilt wijzigen, selecteer bij instellingen 'sta achtergrond activiteit toe', onder het 'Batterij' kopje.",
+    "BackgroundActivityRestrictedMessage": "Je device settings staan niet toe dat BMM op de achtergrond open blijft. Je kunt niet luisteren, als je telefoon gelockt is voor een paar minuten. Als je dit wilt wijzigen, selecteer bij instellingen 'sta achtergrond activiteit toe', onder het 'Batterij' kopje.",
     "GoToSettings": "Ga naar instellingen",
     "NotNow": "Niet nu",
     "DownloadPlaylistOnceOnWifi": "De playlist zal opgeslagen worden als je weer verbinding makt met WiFi. Je kunt 'downloaden via mobiel netwerk' aanvinken in je profiel.",
@@ -51,9 +51,9 @@
     "RequestFailedMessage": "Er is een verbindingsfout opgetreden: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Helaas ondersteunt uw apparaat dit bestandsformaat niet.",
+    "ErrorMediaNotSupported": "Helaas ondersteunt je apparaat dit bestandsformaat niet.",
     "ErrorVideoNotSupported": "Video's worden momenteel niet ondersteund.",
-    "ErrorFileNotOffline": "Je kan in de offline-modus geen nummers afspelen die niet zijn gedownload.",
+    "ErrorFileNotOffline": "Je kunt in de offline-modus geen nummers afspelen die niet zijn gedownload.",
     "ErrorPlayerStopped": "De mediaspeler is gestopt.",
     "ErrorPlayerStoppedGeneric": "Een afspeelfout is opgetreden waardoor het huidige nummer is gestopt.",
     "ErrorPlayerLiveRadioStopped": "De live uitzending is afgelopen.",
@@ -69,7 +69,7 @@
     "AddAlbumToPlaylist": "Album toevoegen aan afspeellijst",
     "AddAlbumToMyTracks": "Album toevoegen aan Mijn nummers",
     "FailedToAdd": "Kon het nummer niet aan de afspeellijst toevoegen. Probeer het later opnieuw.",
-    "AlbumFailedToAddAlreadyExists": "Dit album is al in je afspeellijst.",
+    "AlbumFailedToAddAlreadyExists": "Dit album staat al in je afspeellijst.",
     "TrackAlreadyExistInTrackCollection": "Nummer bestaat al in afspeellijst {0}",
     "ShufflePlay": "Willekeurig afspelen",
     "PluralAlbums": "{0} albums"
@@ -265,21 +265,21 @@
   "SearchViewModel": {
     "Title": "Zoeken",
     "SearchHint": "Zoek",
-    "SearchResults": "Results",
+    "SearchResults": "Resultaten",
     "SearchHistory": "Recente zoekopdrachten",
     "SearchSuggestions": "Bedoelde je: ",
     "WelcomeTitle": "Begin hier met zoeken!",
     "WelcomeSubTitle": "Gebruik het zoekveld om te zoeken naar content op BMM",
     "DeleteConfirm": "Weet je zeker dat je de zoekgeschiedenis wilt verwijderen?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Alle",
+    "Speeches": "Toespraken",
     "Music": "Muziek",
     "Albums": "Albums",
-    "Contributors": "People",
+    "Contributors": "Personen",
     "Podcasts": "Podcasts",
     "Playlists": "Afspeellijsten",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Geen resultaten",
+    "NoResultsDescription": "Er zijn geen resultaten gevonden op je zoekactie naar \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profiel",
