@@ -1,20 +1,21 @@
 using System;
-using System.IO;
+using Android.Graphics;
+using Android.Media;
 using Android.Runtime;
 using Android.Views;
-using Android.Widget;
 using BMM.Core.Models.POs.Tiles;
-using BMM.UI.Droid.Application.Listeners;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
+using Path = System.IO.Path;
 
 namespace BMM.UI.Droid.Application.ViewHolders
 {
-    public class VideoTileViewHolder : MvxRecyclerViewHolder
+    public class VideoTileViewHolder : MvxRecyclerViewHolder, ISurfaceHolderCallback, MediaPlayer.IOnPreparedListener
     {
         private const string AndroidResourcePrefix = "android.resource://";
         private string _videoUrl;
+        private MediaPlayer _videoPlayer;
 
         public VideoTileViewHolder(View itemView, IMvxAndroidBindingContext context) : base(itemView, context)
         {
@@ -51,15 +52,37 @@ namespace BMM.UI.Droid.Application.ViewHolders
             if (string.IsNullOrEmpty(VideoUrl))
                 return;
             
-            var videoView = ItemView.FindViewById<VideoView>(Resource.Id.VideoView);
+            var videoSurfaceView = ItemView.FindViewById<SurfaceView>(Resource.Id.VideoSurfaceView);
+            videoSurfaceView.Holder.AddCallback(this);
+        }
+
+        public void SurfaceChanged(ISurfaceHolder holder, Format format, int width, int height)
+        {
+        }
+
+        public void SurfaceCreated(ISurfaceHolder holder)
+        {
             string videoName = Path.GetFileNameWithoutExtension(VideoUrl);
             object resourceFieldInfo = typeof(Resource.Raw).GetField(videoName.ToLower()).GetRawConstantValue();
-            videoView!.SetOnPreparedListener(new OnPreparedListeners(mp =>
+            _videoPlayer = MediaPlayer.Create(ItemView.Context, Android.Net.Uri.Parse($"{AndroidResourcePrefix}{ItemView.Context!.PackageName}/{resourceFieldInfo}"));
+            _videoPlayer.SetDisplay(holder);
+            _videoPlayer.Looping = true;
+            _videoPlayer.SetOnPreparedListener(this);
+        }
+
+        public void SurfaceDestroyed(ISurfaceHolder holder)
+        {
+            if (_videoPlayer != null)
             {
-                mp.Looping = true;
-            }));
-            videoView.SetVideoURI(Android.Net.Uri.Parse($"{AndroidResourcePrefix}{ItemView.Context!.PackageName}/{resourceFieldInfo}"));
-            videoView.Start();
+                _videoPlayer.Reset();
+                _videoPlayer.Release();
+                _videoPlayer = null;
+            }
+        }
+
+        public void OnPrepared(MediaPlayer mp)
+        {
+            _videoPlayer.Start();
         }
     }
 }
