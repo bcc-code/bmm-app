@@ -247,7 +247,7 @@ namespace BMM.Core.Implementations.PlayObserver
         {
             var user = _userStorage.GetUser();
             
-            var tpe = new TrackPlayedEvent
+            var ev = new TrackPlayedEvent
             {
                 Id = Guid.NewGuid(),
                 PersonId = user.PersonId,
@@ -271,8 +271,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed
             };
 
-            LogMissingAnalyticsIdIfNeeded(tpe, nameof(ComposeEvent), callerName);
-            return tpe;
+            LogMissingAnalyticsIdIfNeeded(ev, nameof(ComposeEvent), callerName);
+            return ev;
         }
 
         public async Task WriteEvent(TrackPlayedEvent ev, [CallerMemberName] string callerName = "")
