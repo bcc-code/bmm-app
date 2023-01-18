@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
@@ -37,9 +38,9 @@ namespace BMM.Core.Implementations.PlayObserver
 
         Action TriggerClear { get; set; }
 
-        TrackPlayedEvent ComposeEvent(PlayMeasurements measurements);
+        TrackPlayedEvent ComposeEvent(PlayMeasurements measurements, [CallerMemberName] string callerName = "");
 
-        Task WriteEvent(TrackPlayedEvent ev);
+        Task WriteEvent(TrackPlayedEvent ev, [CallerMemberName] string callerName = "");
 
         void Clear();
 

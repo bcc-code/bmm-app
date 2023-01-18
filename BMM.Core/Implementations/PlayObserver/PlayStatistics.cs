@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
@@ -241,11 +243,11 @@ namespace BMM.Core.Implementations.PlayObserver
             PortionsListened.Clear();
         }
 
-        public TrackPlayedEvent ComposeEvent(PlayMeasurements measurements)
+        public TrackPlayedEvent ComposeEvent(PlayMeasurements measurements, [CallerMemberName] string callerName = "")
         {
             var user = _userStorage.GetUser();
             
-            return new TrackPlayedEvent
+            var ev = new TrackPlayedEvent
             {
                 Id = Guid.NewGuid(),
                 PersonId = user.PersonId,
@@ -268,9 +270,12 @@ namespace BMM.Core.Implementations.PlayObserver
                 Track = (Track)CurrentTrack,
                 AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed
             };
+
+            LogMissingAnalyticsIdIfNeeded(ev, nameof(ComposeEvent), callerName);
+            return ev;
         }
 
-        public async Task WriteEvent(TrackPlayedEvent ev)
+        public async Task WriteEvent(TrackPlayedEvent ev, [CallerMemberName] string callerName = "")
         {
             var dict = new Dictionary<string, object>
             {
@@ -290,14 +295,27 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"sentAfterStartup", ev.SentAfterStartup},
                 {"playbackOrigin", ev.PlaybackOrigin},
                 {"lastPosition", ev.LastPosition},
-                {"adjustedPlaybackSpeed", ev.AdjustedPlaybackSpeed}
+                {"adjustedPlaybackSpeed", ev.AdjustedPlaybackSpeed},
+                {nameof(User.AnalyticsId), ev.AnalyticsId}
             };
 
-            dict.Add(nameof(User.AnalyticsId), ev.AnalyticsId);
-
+            LogMissingAnalyticsIdIfNeeded(ev, nameof(WriteEvent), callerName);
+            
             _analytics.LogEvent("Track played", dict);
-
             await _client.PostTrackPlayedEvent(new[] {ev});
+        }
+
+        private void LogMissingAnalyticsIdIfNeeded(TrackPlayedEvent ev, string method, string callerName)
+        {
+            if (string.IsNullOrEmpty(ev.AnalyticsId))
+            {
+                _analytics.LogEvent("Missing AnalyticsId",
+                    new Dictionary<string, object>()
+                    {
+                        { "Method", method },
+                        { "Caller", callerName }
+                    });
+            }
         }
 
         private void StartNextPortion(double startOfNextPortion = 0d)

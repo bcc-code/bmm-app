@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
@@ -77,14 +78,14 @@ namespace BMM.Core.Implementations.PlayObserver
             return _playStatistics.GetMeasurementForNewPosition(position);
         }
 
-        public TrackPlayedEvent ComposeEvent(PlayMeasurements measurements)
+        public TrackPlayedEvent ComposeEvent(PlayMeasurements measurements, [CallerMemberName] string callerName = "")
         {
-            return _playStatistics.ComposeEvent(measurements);
+            return _playStatistics.ComposeEvent(measurements, callerName);
         }
 
-        public Task WriteEvent(TrackPlayedEvent ev)
+        public Task WriteEvent(TrackPlayedEvent ev, [CallerMemberName] string callerName = "")
         {
-           return  _playStatistics.WriteEvent(ev);
+           return  _playStatistics.WriteEvent(ev, callerName);
         }
     }
 }
