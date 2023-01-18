@@ -14,8 +14,8 @@
             android:layout_height="match_parent"
             android:orientation="vertical" >
 
-        <VideoView
-            android:id="@+id/VideoView"
+        <SurfaceView
+            android:id="@+id/VideoSurfaceView"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="@dimen/match_constraint"
             local:layout_constraintTop_toTopOf="parent"
