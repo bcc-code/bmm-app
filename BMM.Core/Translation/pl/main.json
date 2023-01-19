@@ -17,14 +17,14 @@
     "Yesterday": "Wczoraj",
     "BackgroundActivityRestrictedTitle": "Allow background activity",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
+    "GoToSettings": "Przejdź do ustawień",
     "NotNow": "Nie teraz",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPlaylistOnceOnWifi": "Playlista zostanie pobrana, gdy połączysz się z Wi-Fi. Możesz włączyć opcję „Pobieranie przez sieć komórkową” w swoim profilu.\n",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
+    "SiriFromKaareInvocationPhrase": "Włącz Od Kårego na BMM",
+    "SiriPlayMusicInvocationPhrase": "Włącz muzykę na BMM",
+    "FromKaareSiriShortcutName": "Włącz Od Kårego",
+    "PlayMusicSiriShortcutName": "Włącz Muzykę",
     "DailyMessage": "Daily message"
   },
   "Streak": {
@@ -147,7 +147,7 @@
     "TbxUsername.Hint": "Adres e-mail",
     "TbxPassword.Hint": "Hasło",
     "BtnLogin.Text": "Zaloguj się",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Zaloguj się swoim loginem BCC"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Za niedługo zakończymy wsparcie dla telefonów z systemem Android {0} lub starszych. Jeśli to możliwe, powinno się zaktualizować oprogramowanie telefonu.",
