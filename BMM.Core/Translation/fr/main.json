@@ -102,7 +102,7 @@
   "ExploreNewestViewModel": {
     "Title": "Accueil",
     "SearchHint": "Rechercher",
-    "FraKaareHeader": "Venant de Kåre ",
+    "FraKaareHeader": "Fra Kåre ",
     "AslaksenTeaserHeader": "La parole de la foi",
     "ShowAll": "Tout afficher",
     "PlayRandom": "Lecture aléatoire",
@@ -265,21 +265,21 @@
   "SearchViewModel": {
     "Title": "Rechercher",
     "SearchHint": "Rechercher",
-    "SearchResults": "Results",
+    "SearchResults": "Résultats",
     "SearchHistory": "Recherches récentes",
     "SearchSuggestions": "Vouliez-vous dire : ",
     "WelcomeTitle": "Commencer la recherche",
     "WelcomeSubTitle": "Utiliser le champ de recherche, pour effectuer une recherche dans BMM",
     "DeleteConfirm": "Êtes-vous sûr de que vouloir supprimer l'historique de recherche ?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Tous",
+    "Speeches": "Discours",
     "Music": "Musique",
     "Albums": "Albums",
-    "Contributors": "People",
+    "Contributors": "Personnes",
     "Podcasts": "Podcasts",
     "Playlists": "Listes de lecture",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Aucun résultat",
+    "NoResultsDescription": "Il n'y a pas de correspondance avec ta recherche pour \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profil",
@@ -323,7 +323,7 @@
     "ThemeText": "Choisir entre le mode clair et sombre",
     "SiriShortcutsHeader": "Raccourcis Siri",
     "SiriShortcutsText": "Ajouter des raccourcis Siri pour BMM à votre appareil",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Nous ne pouvons malheureusement pas activer les notifications push car elles sont désactivées dans les paramètres de ton appareil. Autorise les notifications push dans les paramètres de ton appareil pour activer cette fonction."
   },
   "StorageManagementViewModel": {
     "Title": "Emplacement des titres hors-ligne",
@@ -503,15 +503,15 @@
     "ShortcutAlreadyAdded": "Ce raccourci a déjà été ajouté"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Ton bilan de l'année",
+    "Share": "Partager avec tes amis",
+    "ShareTitle": "Bilan de l'année"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
+    "Title": "Chants préférés",
     "PlaysPlural": "{0} plays",
     "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "AddToMyPlaylist": "Ajouter la liste de lecture aux favoris",
+    "SuccessfullyAddedToPlaylists": "Ajouté avec succès aux favoris"
   }
 }
