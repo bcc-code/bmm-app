@@ -15,16 +15,16 @@
     "Done": "Gotowe",
     "Today": "Dzisiaj",
     "Yesterday": "Wczoraj",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
-    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
+    "BackgroundActivityRestrictedTitle": "Zezwalaj na aktywność w tle",
+    "BackgroundActivityRestrictedMessage": "Ustawienia Twojego urządzenia uniemożliwiają BMM działanie w tle. Nie będziesz mógł słuchać, gdy telefon będzie zablokowany przez kilka minut. Aby to zmienić, przejdź do ustawień aplikacji i „Zezwalaj na aktywność w tle” w sekcji „Bateria”.",
+    "GoToSettings": "Przejdź do ustawień",
     "NotNow": "Nie teraz",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPlaylistOnceOnWifi": "Playlista zostanie pobrana, gdy połączysz się z Wi-Fi. Możesz włączyć opcję „Pobieranie przez sieć komórkową” w swoim profilu.\n",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
+    "SiriFromKaareInvocationPhrase": "Włącz Od Kårego na BMM",
+    "SiriPlayMusicInvocationPhrase": "Włącz muzykę na BMM",
+    "FromKaareSiriShortcutName": "Włącz Od Kårego",
+    "PlayMusicSiriShortcutName": "Odtwarzaj Muzykę",
     "DailyMessage": "Daily message"
   },
   "Streak": {
@@ -147,7 +147,7 @@
     "TbxUsername.Hint": "Adres e-mail",
     "TbxPassword.Hint": "Hasło",
     "BtnLogin.Text": "Zaloguj się",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Zaloguj się swoim loginem BCC"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Za niedługo zakończymy wsparcie dla telefonów z systemem Android {0} lub starszych. Jeśli to możliwe, powinno się zaktualizować oprogramowanie telefonu.",
@@ -232,7 +232,7 @@
     "GetNotifiedMessage": "kiedy nowe odcinki są dostępne",
     "UnfollowConfirm": "Czy naprawdę chcesz przestać obserwować ten podcast?",
     "ToggleFollowOfflineError": "Musisz być w trybie online, aby obserwować lub przestać obserwować podcast",
-    "Week": "Week {0}",
+    "Week": "Tydzień {0}",
     "ThisWeek": "W tym tygodniu",
     "LastWeek": "W zeszłym tygodniu",
     "AslaksenTheme1": "Wierz w Boga cudów",
@@ -251,13 +251,13 @@
     "PlayingCount": "{0} z {1}",
     "ViewLyrics": "View Lyrics",
     "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
+    "Minutes": "{0} minut",
+    "Hour": "{0} godzina",
+    "Hours": "{0} godzin",
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Wybrane"
   },
   "QueueViewModel": {
     "Title": "Kolejka"
@@ -265,27 +265,27 @@
   "SearchViewModel": {
     "Title": "Szukaj",
     "SearchHint": "Szukaj",
-    "SearchResults": "Results",
+    "SearchResults": "Wyniki",
     "SearchHistory": "Ostatnie wyszukiwania",
     "SearchSuggestions": "Czy chodziło o: ",
     "WelcomeTitle": "Rozpocznij wyszukiwanie tutaj!",
     "WelcomeSubTitle": "Użyj pola wyszukiwania do szukania zawartości w BMM",
     "DeleteConfirm": "Czy na pewno chcesz usunąć historię wyszukiwania?",
     "All": "All",
-    "Speeches": "Speeches",
+    "Speeches": "Przemowy",
     "Music": "Muzyka",
     "Albums": "Albumy",
-    "Contributors": "People",
+    "Contributors": "Osoby",
     "Podcasts": "Podcasty",
     "Playlists": "Listy odtwarzania",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Brak wyników",
+    "NoResultsDescription": "Brak dopasowań do Twojego wyszukiwania \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Ustawienia",
     "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
+    "OptionAutoplayText": "Odtwarzaj muzykę po przesłuchaniu dzisiejszego odcinka Od Kårego",
     "OptionStreakHeader": "Streak on Home",
     "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Włącz powiadomienia",
@@ -319,9 +319,9 @@
     "Logout": "Wyloguj",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
+    "ThemeHeader": "Ciemny tryb",
     "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
+    "SiriShortcutsHeader": "Skróty Siri",
     "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
     "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
   },
@@ -381,9 +381,9 @@
   },
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",
-    "Close": "Close",
+    "Close": "Zamknij",
     "AddToMyPlaylist": "Dodaj do moich playlist",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "FollowOwnTrackCollection": "Nie możesz śledzić własnej kolekcji utworów"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlista",
@@ -489,8 +489,8 @@
   },
   "ThemeSettingsViewModel": {
     "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
+    "Light": "Jasny",
+    "Dark": "Ciemny",
     "System": "Follow system settings (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
@@ -499,7 +499,7 @@
     "AllLanguages": "Wszystkie języki"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
+    "Title": "Skróty Siri",
     "ShortcutAlreadyAdded": "This shortcut has already been added"
   },
   "YearInReviewViewModel": {
