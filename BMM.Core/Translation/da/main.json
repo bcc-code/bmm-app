@@ -13,19 +13,19 @@
     "Audiobook": "Lydbog",
     "Exegesis": "Tydning",
     "Done": "Færdig",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
-    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "Today": "I dag",
+    "Yesterday": "I går",
+    "BackgroundActivityRestrictedTitle": "Tillad baggrundsaktivitet",
+    "BackgroundActivityRestrictedMessage": "Dine enhedsindstillinger begrænser BMM i at arbejde i baggrunden. Du vil ikke være i stand til at lytte, når din telefon er låst i et par minutter. For at ændre det skal du gå til applikationsindstillinger og klikke \"Tillad baggrundsaktivitet\" under afsnittet \"Batteri\".",
+    "GoToSettings": "Gå til indstillinger",
+    "NotNow": "Ikke nu",
+    "DownloadPlaylistOnceOnWifi": "Afspilningslisten vil blive downloadet, næste gang du er på Wifi. Du kan aktivere \"Download via mobilnetværk\" i din profil.",
+    "DownloadPodcastOnceOnWifi": "De seneste episoder til denne podcast vil blive downloadet, næste gang du er på Wifi. Du kan aktivere \"Download via mobilnetværk\" i din profil.",
+    "SiriFromKaareInvocationPhrase": "Afspil Fra Kåre på BMM",
+    "SiriPlayMusicInvocationPhrase": "Afspil musik på BMM",
+    "FromKaareSiriShortcutName": "Afspil Fra Kåre",
+    "PlayMusicSiriShortcutName": "Afspil musik",
+    "DailyMessage": "Daglig besked"
   },
   "Streak": {
     "Message": "Din streak denne uge",
@@ -33,10 +33,10 @@
     "PerfectWeekCountSingular": "{0} perfekt uge",
     "PerfectWeekCountPlural": "{0} perfekte uger",
     "PerfectWeekCountNone": "Ingen perfekte uger, endnu",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
+    "EligibleUntilHoursAndMinutesMessage": "{0} timer og {1} minutter tilbage i dag\n",
+    "EligibleUntilMinutesOnlyMessage": "{0} minutter tilbage i dag",
+    "DaysInARowSingular": "{0} dage i stræk\n",
+    "DaysInARowPlural": "{0} dage i stræk\n",
     "WeekdayMonday": "M",
     "WeekdayTuesday": "T",
     "WeekdayWednesday": "O",
@@ -169,7 +169,7 @@
     "DeleteLanguageTitle": "Kunne ikke fjerne {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Gennemse"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arkiv"
@@ -179,7 +179,7 @@
     "Search": "Søg",
     "Explore": "Udforsk",
     "MyContent": "Mit indhold",
-    "Browse": "Browse",
+    "Browse": "Gennemse",
     "Settings": "Indstillinger",
     "HelpAndFeedback": "Hjælp og tilbagemelding",
     "Home": "Hjem",
@@ -249,15 +249,15 @@
   "PlayerViewModel": {
     "Title": "Spiller nu",
     "PlayingCount": "{0} af {1}",
-    "ViewLyrics": "View Lyrics",
+    "ViewLyrics": "Se sangtekst",
     "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
+    "Minutes": "{0} minutter",
+    "Hour": "{0} time\n",
+    "Hours": "{0} timer\n",
+    "Disable": "Deaktivere",
+    "PlaybackSpeed": "Afspil hastighed",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Valgt"
   },
   "QueueViewModel": {
     "Title": "Spillekø"
@@ -265,29 +265,29 @@
   "SearchViewModel": {
     "Title": "Søg",
     "SearchHint": "Søg",
-    "SearchResults": "Results",
+    "SearchResults": "Resultater",
     "SearchHistory": "Seneste søgninger",
     "SearchSuggestions": "Mente du: ",
     "WelcomeTitle": "Begynd din søgning her",
     "WelcomeSubTitle": "Brug søgefeltet til at søge efter indhold på BMM",
     "DeleteConfirm": "Er du sikker på at du vil slette søgehistorikken?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Alle",
+    "Speeches": "Taler",
     "Music": "Musik",
-    "Albums": "Albums",
-    "Contributors": "People",
+    "Albums": "Albummer",
+    "Contributors": "Mennesker",
     "Podcasts": "Podcasts",
     "Playlists": "Spillelister",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Ingen resultater",
+    "NoResultsDescription": "Der var ikke noget der matcher din søgning efter \"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Indstillinger",
     "OptionAutoplayHeader": "Auto-afspil",
     "OptionAutoplayText": "Afspil musik efter dagens episode af Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakHeader": "Streak på Hjem",
+    "OptionStreakText": "Vis din lyttestatistik på startskærmen",
     "OptionEnablePushHeader": "Aktiver notifikationer",
     "OptionPushNotifications": "Notifikationer",
     "OptionPushNotificationsSubtitle": "Aktiver notifikationer på podcaster du følger",
@@ -319,11 +319,11 @@
     "Logout": "Log ud",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Idéer til forbedringer af BMM? Del dem med os.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "ThemeHeader": "Mørk tilstand",
+    "ThemeText": "Vælg mellem lyst og mørkt tema",
+    "SiriShortcutsHeader": "Siri genveje",
+    "SiriShortcutsText": "Tilføj Siri genveje for BMM til din enhed",
+    "PushNotificationsGoToSettings": "Desværre kan vi ikke aktivere push-meddelelser, da de er deaktiveret i dine enhedsindstillinger. Tillad venligst push-meddelelser i dine enhedsindstillinger for at aktivere denne funktion."
   },
   "StorageManagementViewModel": {
     "Title": "Lagringsplads til offline indhold",
@@ -339,7 +339,7 @@
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
     "ShufflePlay": "Afspil blandet",
-    "Resume": "Resume",
+    "Resume": "Genoptag",
     "AvailableOffline": "Tilgængelig offline",
     "AvailableOfflineDownload": "Download",
     "AvailableOfflineDownloading": "Downloader {0} af {1}",
@@ -468,9 +468,9 @@
     "Title": "Copyright"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Senest afspillet",
+    "NoHistoryYetTitle": "Du kan nu se hvad du har lyttet til",
+    "NoHistoryYetSubtitle": "Du kan starte at lytte, og din historie vil komme op her"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Nyeste taler"
@@ -482,36 +482,36 @@
     "DownloadingFinished": "Alle filer er downloadet"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Begivenheder",
     "AudiobooksTitle": "Lydbøger",
     "MusicTitle": "Musik",
     "PodcastsTitle": "Podcasts"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Mørk tilstand-indstillinger",
+    "Light": "Lys",
+    "Dark": "Mørk",
+    "System": "Følg systemindstillinger (Auto)"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Sporsprog",
+    "PreferredLanguages": "Dine foretrukne sprog",
     "AllLanguages": "Alle sprog"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri genveje",
+    "ShortcutAlreadyAdded": "Denne genvej er allerede blevet tilføjet"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Dit år i et tilbageblik",
+    "Share": "Del med dine venner",
+    "ShareTitle": "Året i et tilbageblik"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "Title": "Yndlingssange",
+    "PlaysPlural": "{0} afspilninger\n",
+    "PlaysSingular": "{0} afspilning\n",
+    "AddToMyPlaylist": "Tilføj playliste til favoritter",
+    "SuccessfullyAddedToPlaylists": "Føjet til favoritter"
   }
 }
