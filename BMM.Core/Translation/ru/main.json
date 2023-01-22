@@ -13,9 +13,9 @@
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
     "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
+    "Today": "Сегодня",
+    "Yesterday": "Вчера",
+    "BackgroundActivityRestrictedTitle": "Разрешить фоновую активность",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
     "GoToSettings": "Go to Settings",
     "NotNow": "Not now",
@@ -188,7 +188,7 @@
   },
   "MyContentViewModel": {
     "Title": "Favorites",
-    "DownloadedContent": "Downloaded Content",
+    "DownloadedContent": "Скачанный контент",
     "FollowedPodcasts": "Followed Podcasts",
     "MyTracks": "Треки",
     "MyPlaylists": "My playlists",
@@ -212,7 +212,7 @@
     "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Downloaded Content",
+    "Title": "Скачанный контент",
     "FollowedPodcasts": "Followed Podcasts",
     "MyTracks": "Треки",
     "EmptyTitle": "You have not downloaded any content",
@@ -276,7 +276,7 @@
     "Music": "Музыка",
     "Albums": "Albums",
     "Contributors": "People",
-    "Podcasts": "Podcasts",
+    "Podcasts": "Подкасты",
     "Playlists": "Списки воспроизведения",
     "NoResults": "No results",
     "NoResultsDescription": "There where no matches with your search for \"{0}\""
@@ -446,7 +446,7 @@
     "ItemsDownloaded": "Элемент {0} из {1}"
   },
   "PodcastsViewModel": {
-    "Title": "Podcasts"
+    "Title": "Подкасты"
   },
   "TrackInfoViewModel": {
     "ExternalReferences": "Внешние ссылки",
@@ -485,7 +485,7 @@
     "EventsTitle": "Events",
     "AudiobooksTitle": "Аудиокниги",
     "MusicTitle": "Музыка",
-    "PodcastsTitle": "Podcasts"
+    "PodcastsTitle": "Подкасты"
   },
   "ThemeSettingsViewModel": {
     "Title": "Dark mode settings",
