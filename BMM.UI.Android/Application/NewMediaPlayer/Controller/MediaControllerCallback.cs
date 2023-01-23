@@ -11,6 +11,9 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Service;
+using Com.Google.Android.Exoplayer2;
+using Java.IO;
+using MvvmCross;
 using MvvmCross.Plugin.Messenger;
 using MediaControllerCompat = Android.Support.V4.Media.Session.MediaControllerCompat;
 
@@ -18,6 +21,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 {
     public class MediaControllerCallback : MediaControllerCompat.Callback
     {
+        private readonly int FileNotFoundErrorCode = 2;
         private readonly IMvxMessenger _messenger;
         private readonly IMetadataMapper _metadataMapper;
         private readonly PlaybackStateCompatMapper _mapper;
@@ -84,6 +88,13 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 
             if (state.ErrorMessage != null)
             {
+                if (state.ErrorCode == FileNotFoundErrorCode && state.ErrorMessage.Contains(nameof(FileNotFoundException)))
+                {
+                    ((AndroidMediaPlayer)Mvx.IoCProvider.Resolve<IPlatformSpecificMediaPlayer>())!.ForceReloadQueueAndPlayCurrentTrack();
+                    _logger.Warn(Event.ProblemWithOfflineFileDetected, state.ErrorMessage);
+                    return;
+                }
+                
                 var technicalMessage = $"{state.ErrorCode} - {state.ErrorMessage}";
                 if (state.ErrorCode == CustomErrorMessageProvider.ErrorInternetProblems)
                 {

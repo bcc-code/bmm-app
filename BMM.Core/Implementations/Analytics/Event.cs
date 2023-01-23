@@ -32,5 +32,6 @@
         public const string YearInReviewOpened = "Year in review opened";
         public const string YearInReviewPlaylistOpened = "Year in review playlist opened";
         public const string YearInReviewPlaylistAddedToFavorites = "Year in review playlist added to favorites";
+        public const string ProblemWithOfflineFileDetected = "Problem with offline file detected";
     }
 }

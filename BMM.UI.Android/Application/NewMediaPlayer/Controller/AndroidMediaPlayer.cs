@@ -165,6 +165,13 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
             }
         }
 
+        public async Task ForceReloadQueueAndPlayCurrentTrack()
+        {
+            await _mediaQueue.Replace(_mediaQueue.Tracks, (IMediaTrack)CurrentTrack);
+            var controls = _mediaController.GetTransportControls();
+            controls!.PlayFromMediaId(CurrentTrack.Id.ToString(), null);
+        }
+
         public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
         {
             if (_mediaController == null)
