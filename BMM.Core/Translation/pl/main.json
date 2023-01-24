@@ -66,7 +66,7 @@
   "AlbumViewModel": {
     "Title": "Album",
     "SearchHint": "Szukaj",
-    "AddAlbumToPlaylist": "Dodaj album do listy odtwarzania",
+    "AddAlbumToPlaylist": "Dodaj album do playlisty",
     "AddAlbumToMyTracks": "Dodaj album do moich utworów",
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na liście odtwarzania.",
@@ -122,10 +122,10 @@
     "Title": "Pomoc & Opinie",
     "GuideIntroTitle": "Jak najlepiej wykorzystać aplikację BMM",
     "GuideIntroSubtitle": "Przesuń dalej",
-    "GuideOfflineTitle": "Playlisty dostępne offline",
+    "GuideOfflineTitle": "Playlisty offline",
     "GuideOfflineSubtitle": "Pobierz playlisty na urządzenie i słuchaj ich bez połączenia internetowego. Możesz to włączyć w widoku playlisty.",
-    "GuideAddToPlaylistTitle": "Dodaj do listy odtwarzania lub \"Moje utwory\"",
-    "GuideAddToPlaylistSubtitle": "Zapisz swoje ulubione utwory do własnej listy odtwarzania lub osobistej kolekcji BMM \"Moje utwory\" poprzez stuknięcie przycisku opcji z prawej strony utworu.",
+    "GuideAddToPlaylistTitle": "Dodaj do playlisty lub \"Moje utwory\"",
+    "GuideAddToPlaylistSubtitle": "Zapisz swoje ulubione utwory do własnej playlisty lub osobistej kolekcji BMM \"Moje utwory\" poprzez stuknięcie przycisku opcji z prawej strony utworu.",
     "GuideLanguagesTitle": "Wielojęzykowość",
     "GuideLanguagesSubtitle": "Ustaw priorytet języków, aby kontrolować język zawartości BMM. Można to zrobić w Ustawienia > Język zawartości.",
     "GuideLibraryTitle": "Biblioteka",
@@ -244,7 +244,7 @@
     "Title": "Playlista"
   },
   "CuratedPlaylistsViewModel": {
-    "Title": "Listy odtwarzania"
+    "Title": "Playlisty"
   },
   "PlayerViewModel": {
     "Title": "Odtwarzam",
@@ -277,7 +277,7 @@
     "Albums": "Albumy",
     "Contributors": "Osoby",
     "Podcasts": "Podcasty",
-    "Playlists": "Listy odtwarzania",
+    "Playlists": "Playlisty",
     "NoResults": "Brak wyników",
     "NoResultsDescription": "Brak dopasowań do Twojego wyszukiwania \"{0}\""
   },
@@ -399,8 +399,8 @@
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na liście odtwarzania.",
     "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na liście {0}",
-    "FailedToAddAlbum": "Nie można dodać albumu do listy odtwarzania, ponieważ zawiera albumy.",
-    "FailedToAddUnknownType": "Dodanie \"{0}\" do listy odtwarzania nie jest obecnie obsługiwane.",
+    "FailedToAddAlbum": "Nie można dodać albumu do playlisty, ponieważ zawiera albumy.",
+    "FailedToAddUnknownType": "Dodanie \"{0}\" do playlisty nie jest obecnie obsługiwane.",
     "CreatePlaylistPrompt": "Wpisz nazwę playlisty",
     "TrackAddedToTrackCollection": "Dodano do playlisty"
   },
@@ -425,16 +425,16 @@
     "Track.MoreInformation": "Więcej informacji",
     "Track.Share": "Udostępnij utwór",
     "Album.Play": "Odtwórz",
-    "Album.AddToPlaylist": "Dodaj album do listy odtwarzania",
+    "Album.AddToPlaylist": "Dodaj album do playlisty",
     "Album.AddToMyTracks": "Dodaj album do moich utworów",
     "Album.AddedToMyTracks": "Album dodany do moich utworów",
     "Album.AddToQueue": "Dodaj do kolejki",
     "Album.Share": "Udostępnij album",
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
-    "FailedToAddAlbum": "Nie można dodać album do listy odtwarzania, ponieważ zawiera albumy.",
+    "FailedToAddAlbum": "Nie można dodać album do playlisty, ponieważ zawiera albumy.",
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na liście odtwarzania.",
     "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na liście {0}",
-    "FailedToAddUnknownType": "Dodanie \"{0}\" do listy odtwarzania nie jest obecnie obsługiwane.",
+    "FailedToAddUnknownType": "Dodanie \"{0}\" do playlisty nie jest obecnie obsługiwane.",
     "MyTracks": "Moje utwory",
     "Contributor.Play": "Odtwórz",
     "Contributor.Share": "Udostępnij wykonawcę",
