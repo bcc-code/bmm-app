@@ -13,38 +13,38 @@
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
     "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
-    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "Today": "Сегодня",
+    "Yesterday": "Вчера",
+    "BackgroundActivityRestrictedTitle": "Разрешить фоновую активность",
+    "BackgroundActivityRestrictedMessage": "Настройки вашего устройства запрещают BMM работать в фоновом режиме. Вы не сможете слушать, если ваш телефон заблокируется. Чтобы изменить это, перейдите в настройки приложения и выберите «Разрешить фоновую активность» в разделе «Батарея».",
+    "GoToSettings": "Перейти к настройкам",
+    "NotNow": "Не сейчас",
+    "DownloadPlaylistOnceOnWifi": "Плейлист будет загружен, когда вы в следующий раз подключитесь к Wi-Fi. Вы можете выбрать «Скачивать через мобильную сеть» в своем Профиле.",
+    "DownloadPodcastOnceOnWifi": "Последний трек этго подкаста будет загружен, когда вы в следующий раз подключитесь к Wi-Fi. Вы можете выбрать «Скачивать через мобильную сеть» в своем Профиле.",
+    "SiriFromKaareInvocationPhrase": "Воспроизвести От Коре на BMM",
+    "SiriPlayMusicInvocationPhrase": "Воспроизвести музыку на BMM",
+    "FromKaareSiriShortcutName": "Воспроизвести От Коре",
+    "PlayMusicSiriShortcutName": "Воспроизвести музыку",
+    "DailyMessage": "Слово дня"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
-    "WeekdayMonday": "M",
-    "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "Message": "Твое достижение за неделю",
+    "MessagePerfect": "Идеальная неделя. Отличная работа!",
+    "PerfectWeekCountSingular": "{0} идеальная неделя",
+    "PerfectWeekCountPlural": "{0} идеальных недель",
+    "PerfectWeekCountNone": "Пока ни одной идеальной недели",
+    "EligibleUntilHoursAndMinutesMessage": "сегодня осталось {0} часов и {1} минут",
+    "EligibleUntilMinutesOnlyMessage": "сегодня осталос {0} минут",
+    "DaysInARowSingular": "{0} день подряд",
+    "DaysInARowPlural": "{0} дней подряд",
+    "WeekdayMonday": "П",
+    "WeekdayTuesday": "В",
+    "WeekdayWednesday": "С",
+    "WeekdayThursday": "Ч",
+    "WeekdayFriday": "П"
   },
   "DeepLinkHandler": {
-    "ErrorTitle": "Unable to open link",
+    "ErrorTitle": "Не удалось открыть ссылку",
     "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
   },
   "RequestExceptionHandler": {
@@ -188,7 +188,7 @@
   },
   "MyContentViewModel": {
     "Title": "Favorites",
-    "DownloadedContent": "Downloaded Content",
+    "DownloadedContent": "Скачанный контент",
     "FollowedPodcasts": "Followed Podcasts",
     "MyTracks": "Треки",
     "MyPlaylists": "My playlists",
@@ -212,7 +212,7 @@
     "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Downloaded Content",
+    "Title": "Скачанный контент",
     "FollowedPodcasts": "Followed Podcasts",
     "MyTracks": "Треки",
     "EmptyTitle": "You have not downloaded any content",
@@ -274,9 +274,9 @@
     "All": "All",
     "Speeches": "Speeches",
     "Music": "Музыка",
-    "Albums": "Albums",
+    "Albums": "Альбомы",
     "Contributors": "People",
-    "Podcasts": "Podcasts",
+    "Podcasts": "Подкасты",
     "Playlists": "Списки воспроизведения",
     "NoResults": "No results",
     "NoResultsDescription": "There where no matches with your search for \"{0}\""
@@ -362,7 +362,7 @@
     "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
+    "Title": "Редактировать Плейлист",
     "RenameLabel": "Rename playlist",
     "MenuSave": "Сохранить",
     "EmptyName": "The playlist has no name",
@@ -446,7 +446,7 @@
     "ItemsDownloaded": "Элемент {0} из {1}"
   },
   "PodcastsViewModel": {
-    "Title": "Podcasts"
+    "Title": "Подкасты"
   },
   "TrackInfoViewModel": {
     "ExternalReferences": "Внешние ссылки",
@@ -485,7 +485,7 @@
     "EventsTitle": "Events",
     "AudiobooksTitle": "Аудиокниги",
     "MusicTitle": "Музыка",
-    "PodcastsTitle": "Podcasts"
+    "PodcastsTitle": "Подкасты"
   },
   "ThemeSettingsViewModel": {
     "Title": "Dark mode settings",

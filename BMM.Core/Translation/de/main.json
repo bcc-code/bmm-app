@@ -19,8 +19,8 @@
     "BackgroundActivityRestrictedMessage": "Deine Geräteeinstellungen verhindern, dass BMM im Hintergrund läuft, das bedeutet, BMM wird nach einigen Minuten nicht weiter spielen können, wenn du dein Handy sperrst. Wenn du das ändern willst, öffne die App-Einstellungen und aktiviere \"Hintergrundaktivität erlauben\" im Bereich \"Batterie\".",
     "GoToSettings": "Zu den Einstellungen",
     "NotNow": "Später",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPlaylistOnceOnWifi": "Die Playliste wird das nächste Mal heruntergeladen, wenn du wieder WLAN hast. Du kannst \"Über Mobilfunknetzwerk herunterladen\" in deinem Profil aktivieren. ",
+    "DownloadPodcastOnceOnWifi": "Die neusten Titel für diesen Podcast werden das nächste Mal heruntergeladen, wenn du wieder WLAN hast. Du kannst \"Über Mobilfunknetzwerk herunterladen\" in deinem Profil aktivieren. ",
     "SiriFromKaareInvocationPhrase": "Spiel Von Kåre auf BMM",
     "SiriPlayMusicInvocationPhrase": "Spiel Musik auf BMM",
     "FromKaareSiriShortcutName": "Spiel Von Kåre",
@@ -265,21 +265,21 @@
   "SearchViewModel": {
     "Title": "Suchen",
     "SearchHint": "Suche",
-    "SearchResults": "Results",
+    "SearchResults": "Ergebnisse",
     "SearchHistory": "Letzte Suchanfragen",
     "SearchSuggestions": "Meintest du: ",
     "WelcomeTitle": "Fange hier an zu suchen!",
     "WelcomeSubTitle": "Benutze das Suchfeld oben um nach Inhalt auf BMM zu suchen",
     "DeleteConfirm": "Bist du sicher, dass du den Suchverlauf leeren möchtest?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Alle",
+    "Speeches": "Reden",
     "Music": "Musik",
     "Albums": "Alben",
-    "Contributors": "People",
+    "Contributors": "Personen",
     "Podcasts": "Podcasts",
     "Playlists": "Playlisten",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "Keine Ergebnisse",
+    "NoResultsDescription": "Es gab keine Übereinstimmung deiner Suche für "
   },
   "SettingsViewModel": {
     "Title": "Profil",
@@ -287,7 +287,7 @@
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Spiele Musik nach der heutigen Fra Kåre Sendung",
     "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakText": "Anzeige der Hörstatistik auf dem Homescreen",
     "OptionEnablePushHeader": "Push-Benachrichtigungen erlauben",
     "OptionPushNotifications": "Push-Benachrichtigungen",
     "OptionPushNotificationsSubtitle": "Aktiviere Push-Benachrichtigungen für Podcasts, die ich abonniert habe",
@@ -503,12 +503,12 @@
     "ShortcutAlreadyAdded": "Der Kurzbefehl wurde bereits hinzugefügt"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Dein Jahr im Rückblick",
+    "Share": "Mit deinen Freunden teilen",
+    "ShareTitle": "Das Jahr im Rückblick"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
+    "Title": "Topsongs",
     "PlaysPlural": "{0} x gespielt",
     "PlaysSingular": "{0} x gespielt",
     "AddToMyPlaylist": "Playliste zu Favoriten hinzufügen",
