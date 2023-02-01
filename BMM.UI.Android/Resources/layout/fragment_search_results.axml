@@ -71,7 +71,7 @@
         local:layout_constraintBottom_toBottomOf="parent"
         local:layout_constraintStart_toStartOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
-        local:MvxBind="Visibility Visibility(IsLoading)" />
+        local:MvxBind="Visibility Visibility(IsSearching)" />
     
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/HalfGuideline"

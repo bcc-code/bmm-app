@@ -26,6 +26,7 @@ namespace BMM.Core.ViewModels
         private bool _hasAnyItem;
         private bool _showNoItemsInfo;
         private string _searchTerm;
+        private bool _isSearching;
 
         public SearchResultsViewModel(
             ITrackPOFactory trackPOFactory,
@@ -43,8 +44,11 @@ namespace BMM.Core.ViewModels
         public async Task Search(string searchTerm)
         {
             if (_previouslyUsedSearchTerm == searchTerm)
+            {
+                IsSearching = IsLoading;
                 return;
-            
+            }
+
             Documents.Clear();
             _previouslyUsedSearchTerm = searchTerm;
             _searchTerm = searchTerm;
@@ -73,7 +77,8 @@ namespace BMM.Core.ViewModels
         {
             if (e.PropertyName != nameof(IsLoading))
                 return;
-            
+
+            IsSearching = IsLoading;
             HasAnyItem = Documents.Any();
             ShowNoItemsInfo = !HasAnyItem && !IsLoading;
             RaisePropertyChanged(nameof(NoResultsDescriptionLabel));
@@ -104,6 +109,12 @@ namespace BMM.Core.ViewModels
             get => _hasAnyItem;
             set => SetProperty(ref _hasAnyItem, value);
         }
+        
+        public bool IsSearching
+        {
+            get => _isSearching;
+            set => SetProperty(ref _isSearching, value);
+        }
 
         public string NoResultsDescriptionLabel => TextSource.GetText(Translations.SearchViewModel_NoResultsDescription, _searchTerm);
 
@@ -129,6 +140,23 @@ namespace BMM.Core.ViewModels
                 DocumentSelectedCommand,
                 OptionCommand,
                 TrackInfoProvider);
+        }
+
+        public void PrepareForSearch(string searchTerm)
+        {
+            if (searchTerm == _previouslyUsedSearchTerm)
+                return;
+
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                _previouslyUsedSearchTerm = searchTerm;
+                return;
+            }
+
+            IsSearching = true;
+            Documents.Clear();
+            HasAnyItem = false;
+            ShowNoItemsInfo = false;
         }
     }
 }

@@ -157,7 +157,7 @@ namespace BMM.UI.iOS.CollectionViewSource
             return CollectionView.GetLayoutAttributesForItem(indexPath);
         }
 
-        private void UpdateSelectedBar(NSIndexPath indexPath, bool animate)
+        public void UpdateSelectedBar(NSIndexPath indexPath, bool animate)
         {
             var cell = CollectionView.CellForItem(indexPath);
 
