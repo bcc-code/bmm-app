@@ -234,6 +234,18 @@ namespace BMM.UI.iOS.Constants
             IconTint = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light)
         };
         
+        public static readonly ButtonTheme ButtonPrimaryBlackAutoSize = new StandardButtonTheme
+        {
+            TextTheme = new TextTheme
+            {
+                Font = Typography.Title1.Value,
+                Color = AppColors.LabelPrimaryColorReverted.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
+                MinimumFontSize = 10
+            },
+            ButtonColor = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
+            IconTint = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light)
+        };
+        
         public static readonly ButtonTheme CancelSearchButton = new StandardButtonTheme
         {
             TextTheme = Subtitle1Label1,
