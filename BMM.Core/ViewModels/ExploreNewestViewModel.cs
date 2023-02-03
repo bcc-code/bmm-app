@@ -13,6 +13,7 @@ using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.DeepLinking;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
@@ -45,6 +46,7 @@ namespace BMM.Core.ViewModels
         private readonly IUserStorage _user;
         private readonly IFirebaseRemoteConfig _config;
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
+        private readonly IAddToQueueAdditionalMusic _addToQueueAdditionalMusic;
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
 
@@ -58,7 +60,8 @@ namespace BMM.Core.ViewModels
             IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
             IFirebaseRemoteConfig config,
-            IListeningStreakPOFactory listeningStreakPOFactory)
+            IListeningStreakPOFactory listeningStreakPOFactory,
+            IAddToQueueAdditionalMusic addToQueueAdditionalMusic)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -70,6 +73,7 @@ namespace BMM.Core.ViewModels
             _user = user;
             _config = config;
             _listeningStreakPOFactory = listeningStreakPOFactory;
+            _addToQueueAdditionalMusic = addToQueueAdditionalMusic;
             _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);
@@ -121,14 +125,19 @@ namespace BMM.Core.ViewModels
                 discoverSectionHeader.Origin = PlaybackOriginString;
         }
 
-        protected override Task DocumentAction(IDocumentPO item, IList<Track> list)
+        protected override async Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
             if (item is not TrackPO)
-                return base.DocumentAction(item, list);
+            {
+                await base.DocumentAction(item, list);
+                return;
+            }
 
-            var tracksInSameSection = GetAdjacentTracksInSameSection(item);
-
-            return base.DocumentAction(item, tracksInSameSection);
+            var result = GetAdjacentTracksInSameSection(item);
+            await base.DocumentAction(item, result.Tracks);
+            
+            if (result.ShouldLoadAdditionalMusic)
+                await _addToQueueAdditionalMusic.ExecuteGuarded((result.Tracks.Count, PlaybackOriginString));
         }
 
         protected override Task OptionsAction(Document item)
@@ -157,19 +166,36 @@ namespace BMM.Core.ViewModels
             return documents.Except(unwantedDocs).ToList();
         }
 
-        private List<Track> GetAdjacentTracksInSameSection(IDocumentPO item)
+        private (List<Track> Tracks, bool ShouldLoadAdditionalMusic) GetAdjacentTracksInSameSection(IDocumentPO item)
         {
             int index = Documents.IndexOf(item);
 
             if (index == -1 && item is TrackPO trackToPlayPO)
-                return trackToPlayPO.Track.EncloseInArray().ToList();
+                return (trackToPlayPO.Track.EncloseInArray().ToList(), false);
+
+            bool shouldLoadAdditionalMusic = false;
             
             var tracks = new List<Track>();
             int previousCounter = 1;
-            while (index - previousCounter > 0 && Documents[index - previousCounter] is TrackPO trackPO)
+            
+            while (index - previousCounter > 0)
             {
-                tracks.Add(trackPO.Track);
-                previousCounter++;
+                var previousItem = Documents[index - previousCounter];
+                
+                if (previousItem is TrackPO trackPO)
+                {
+                    tracks.Add(trackPO.Track);
+                    previousCounter++;
+                    continue;
+                }
+
+                if (previousItem is DiscoverSectionHeaderPO discoverSectionHeaderPO
+                    && discoverSectionHeaderPO.DiscoverSectionHeader.Link.EndsWith(DeepLinkHandler.Music))
+                {
+                    shouldLoadAdditionalMusic = true;
+                }
+                
+                break;
             }
 
             int nextCounter = 0;
@@ -179,7 +205,7 @@ namespace BMM.Core.ViewModels
                 nextCounter++;
             }
 
-            return tracks;
+            return (tracks, shouldLoadAdditionalMusic);
         }
     }
 }

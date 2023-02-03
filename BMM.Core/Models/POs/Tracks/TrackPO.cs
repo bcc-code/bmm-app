@@ -20,8 +20,7 @@ namespace BMM.Core.Models.POs.Tracks
 {
     public class TrackPO 
         : DocumentPO,
-          ITrackPO,
-          ITrackHolderPO
+          ITrackPO
     {
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
