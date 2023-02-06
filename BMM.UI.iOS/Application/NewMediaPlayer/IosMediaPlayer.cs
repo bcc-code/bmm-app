@@ -248,7 +248,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
         
-        public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
+        public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin, bool ignoreIfAlreadyAdded = false)
         {
             return _queue.Append(track);
         }

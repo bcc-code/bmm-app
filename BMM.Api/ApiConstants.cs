@@ -2,6 +2,6 @@
 {
     public class ApiConstants
     {
-        public const int LoadMoreSize = 20;
+        public const int LoadMoreSize = 40;
     }
 }

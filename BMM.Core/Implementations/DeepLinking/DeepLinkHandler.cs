@@ -32,6 +32,7 @@ namespace BMM.Core.Implementations.DeepLinking
 {
     public class DeepLinkHandler : IDeepLinkHandler
     {
+        public static readonly string Music = "music";
         private readonly string _baseBrowsePath = "browse/";
         private readonly string[] _tileCollectionPaths = new[]
         {
@@ -85,7 +86,7 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink("^/daily-fra-kaare$", PlayFraKaare),
                 new RegexDeepLink("^/playlist/latest$", NavigateTo<ExploreNewestViewModel>),
                 new RegexDeepLink("^/speeches$", NavigateTo<ExploreRecentSpeechesViewModel>),
-                new RegexDeepLink("^/music$", NavigateTo<ExploreRecentMusicViewModel>),
+                new RegexDeepLink($"^/{Music}$", NavigateTo<ExploreRecentMusicViewModel>),
                 new RegexDeepLink("^/contributors$", NavigateTo<ExploreContributorsViewModel>),
                 new RegexDeepLink("^/featured$", NavigateTo<CuratedPlaylistsViewModel>),
                 new RegexDeepLink("^/archive", NavigateTo<LibraryArchiveViewModel>),
