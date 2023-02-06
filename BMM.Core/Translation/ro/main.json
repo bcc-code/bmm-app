@@ -504,14 +504,14 @@
   },
   "YearInReviewViewModel": {
     "Title": "Anul tău în revizuire",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Share": "Împărtășește cu prietenii tăi",
+    "ShareTitle": "An în revizuire"
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "PlaysPlural": "cântat de {0} ori",
+    "PlaysSingular": "cântat de {0} ori",
+    "AddToMyPlaylist": "Adaugă lista de redare la favorite",
+    "SuccessfullyAddedToPlaylists": "Adăugat cu succes la favorite"
   }
 }
