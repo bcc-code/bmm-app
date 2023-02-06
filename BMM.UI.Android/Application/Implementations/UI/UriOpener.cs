@@ -1,22 +1,21 @@
 ﻿using System;
 using Android.Content;
-using Android.Graphics;
-using AndroidX.Browser.CustomTabs;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.UI;
 using MvvmCross.Platforms.Android;
 
 namespace BMM.UI.Droid.Application.Implementations.UI
 {
-    public class UriOpener: IUriOpener
+    public class UriOpener : BaseUriOpener
     {
         private readonly IMvxAndroidCurrentTopActivity _topActivity;
 
-        public UriOpener(IMvxAndroidCurrentTopActivity topActivity)
+        public UriOpener(IMvxAndroidCurrentTopActivity topActivity, IAnalytics analytics) : base(analytics)
         {
             _topActivity = topActivity;
         }
 
-        public void OpenUri(Uri uri)
+        protected override void PlatformOpenUri(Uri uri)
         {
             var defaultIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(uri.ToString()));
             var context = Android.App.Application.Context;
