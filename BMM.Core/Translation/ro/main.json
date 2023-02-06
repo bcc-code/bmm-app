@@ -323,7 +323,7 @@
     "ThemeText": "Alege între o vizualizare luminoasă sau întunecată",
     "SiriShortcutsHeader": "Scurtături pentru Siri",
     "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Din păcate, nu putem activa notificările push, deoarece acestea sunt dezactivate în setările dispozitivului tău. Te rugăm să permiți notificărilor push în setările dispozitivului tău pentru a activa această funcție."
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
@@ -503,7 +503,7 @@
     "ShortcutAlreadyAdded": "Această scurtătură a fost deja adăugată"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
+    "Title": "Anul tău în revizuire",
     "Share": "Share with your friends",
     "ShareTitle": "Year in Review"
   },
