@@ -137,7 +137,7 @@ namespace BMM.Core.ViewModels
             await base.DocumentAction(item, result.Tracks);
             
             if (result.ShouldLoadAdditionalMusic)
-                await _addToQueueAdditionalMusic.ExecuteGuarded((result.Tracks.Count, PlaybackOriginString));
+                await _addToQueueAdditionalMusic.ExecuteGuarded(PlaybackOriginString);
         }
 
         protected override Task OptionsAction(Document item)
@@ -189,6 +189,9 @@ namespace BMM.Core.ViewModels
                     continue;
                 }
 
+                // if the user plays the music from the explore page, we want to add more item to the queue
+                // therefore we need to determine, if the opened item comes from music section
+                // and we can do it by checking if the nearest header contains specific link
                 if (previousItem is DiscoverSectionHeaderPO discoverSectionHeaderPO
                     && discoverSectionHeaderPO.DiscoverSectionHeader.Link.EndsWith(DeepLinkHandler.Music))
                 {

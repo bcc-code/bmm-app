@@ -195,8 +195,11 @@ namespace BMM.Core.Implementations.Player
         
         public decimal CurrentPlaybackSpeed => _mediaPlayer.CurrentPlaybackSpeed;
 
-        public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
+        public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin, bool ignoreIfAlreadyAdded = false)
         {
+            if (ignoreIfAlreadyAdded && _queue.Tracks.Any(t => t.Equals(track)))
+                return Task.FromResult(false);
+                
             var enrichedTrack = EnrichTrackWithPlaybackOrigin(track, playbackOrigin);
             return QueueAndShowPlayer(t => _mediaPlayer.AddToEndOfQueue(t, playbackOrigin), enrichedTrack);
         }

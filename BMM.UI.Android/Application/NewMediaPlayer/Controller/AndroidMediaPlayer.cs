@@ -250,7 +250,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 
         public decimal CurrentPlaybackSpeed { get; private set; } = PlayerConstants.NormalPlaybackSpeed;
 
-        public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin)
+        public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin, bool ignoreIfAlreadyAdded = false)
         {
             return AddToQueueAtIndex(track);
         }
