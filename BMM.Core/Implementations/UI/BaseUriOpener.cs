@@ -16,7 +16,7 @@ namespace BMM.Core.Implementations.UI
         
         public void OpenUri(Uri uri)
         {
-            _analytics.LogEvent(Event.ExternalLinkOpened, new Dictionary<string, object>
+            _analytics.LogEvent(Event.NavigateToExternalLink, new Dictionary<string, object>
             {
                 {UrlParameterKey, uri.ToString()}
             });
