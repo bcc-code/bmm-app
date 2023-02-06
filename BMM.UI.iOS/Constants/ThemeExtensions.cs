@@ -43,6 +43,14 @@ namespace BMM.UI.iOS.Constants
                 button.Layer.BorderWidth = 1.0f;
                 button.Layer.BorderColor = theme.BorderColor.CGColor;
             }
+            
+            if (!theme.TextTheme.MinimumFontSize.HasValue)
+                return;
+            
+            button.TitleLabel.MinimumFontSize = theme.TextTheme.MinimumFontSize.Value;
+            button.TitleLabel.BaselineAdjustment = UIBaselineAdjustment.AlignCenters;
+            button.TitleLabel.AdjustsFontSizeToFitWidth = true;
+            button.TitleLabel.AdjustsFontForContentSizeCategory = true;
         }
     }
 }

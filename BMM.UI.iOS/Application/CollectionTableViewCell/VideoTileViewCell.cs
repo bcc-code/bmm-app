@@ -56,7 +56,7 @@ namespace BMM.UI.iOS
             base.AwakeFromNib();
             HeaderLabel.ApplyTextTheme(AppTheme.Subtitle2Label1);
             HeaderLabel.TextColor = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light);
-            BottomButton.ApplyButtonStyle(AppTheme.ButtonPrimaryBlack);
+            BottomButton.ApplyButtonStyle(AppTheme.ButtonPrimaryBlackAutoSize);
         }
     }
 }
