@@ -111,7 +111,7 @@
     "NextBroadcast": "Volgende uitzending",
     "BmmRadio": "BMM live",
     "CountdownHours": "in {0}h",
-    "Messages": "Recente berichten",
+    "Messages": "Recente toespraken",
     "Music": "Recente muziek"
   },
   "ExploreContributorsViewModel": {
@@ -473,7 +473,7 @@
     "NoHistoryYetSubtitle": "Begin met luisteren en je geschiedenis zal hier getoond worden"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recente berichten"
+    "Title": "Recente toespraken"
   },
   "ExploreRecentMusicViewModel": {
     "Title": "Recente muziek"
