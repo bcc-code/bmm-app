@@ -36,6 +36,7 @@ namespace BMM.UI.iOS
         protected UICollectionView TopBarCollectionView;
         protected UICollectionView ControllersCollectionView;
         protected TopBarCollectionViewSource TopBarCollectionViewSource;
+        private IBmmInteraction _resetInteraction;
 
         protected ViewPagerBaseController(string nibName) : base(nibName)
         {
@@ -44,6 +45,27 @@ namespace BMM.UI.iOS
         protected abstract UIView HostViewForPager { get; }
         protected abstract UICollectionViewFlowLayout TopBarCollectionViewLayout { get; }
         protected abstract NSString TopBarCollectionViewCellKey { get; }
+        
+        public IBmmInteraction ResetInteraction
+        {
+            get => _resetInteraction;
+            set
+            {
+                if (_resetInteraction != null)
+                    _resetInteraction.Requested -= ResetInteractionOnRequested;
+
+                _resetInteraction = value;
+                _resetInteraction.Requested += ResetInteractionOnRequested;
+            }
+        }
+
+        private void ResetInteractionOnRequested(object sender, EventArgs e)
+        {
+            ControllersCollectionView.ScrollToItem(NSIndexPath.FromRowSection(0, 0), UICollectionViewScrollPosition.None, false);
+            TopBarCollectionView.SelectItem(NSIndexPath.FromRowSection(0, 0), false, UICollectionViewScrollPosition.None);
+            TopBarCollectionView.ScrollToItem(NSIndexPath.FromRowSection(0, 0), UICollectionViewScrollPosition.None, false);
+            TopBarCollectionViewSource.UpdateSelectedBar(NSIndexPath.FromRowSection(0, 0), false);
+        }
 
         protected virtual void Bind(MvxFluentBindingDescriptionSet<BaseViewController<TViewModel>, TViewModel> set)
         {
@@ -54,7 +76,7 @@ namespace BMM.UI.iOS
             set.Bind(_controllersCollectionViewSource)
                 .For(p => p.ItemsSource)
                 .To(vm => vm.CollectionItems);
-            
+
             set.Bind(TopBarCollectionViewSource)
                 .For(p => p.SelectedItem)
                 .To(vm => vm.SelectedCollectionItem);
@@ -62,6 +84,10 @@ namespace BMM.UI.iOS
             set.Bind(_controllersCollectionViewSource)
                 .For(p => p.SelectedItem)
                 .To(vm => vm.SelectedCollectionItem);
+            
+            set.Bind(this)
+                .For(p => p.ResetInteraction)
+                .To(vm => vm.ResetInteraction);
         }
 
         private void AddConstraints()
@@ -179,7 +205,7 @@ namespace BMM.UI.iOS
                 NSKeyValueObservingOptions.New,
                 ControllersCollectionViewBoundsObserver);
         }
-
+        
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
@@ -187,16 +213,8 @@ namespace BMM.UI.iOS
             var visibleCells = ControllersCollectionView.VisibleCells;
             if (visibleCells?.Any() ?? false)
                 (visibleCells.First() as ControllerCollectionViewCell)?.NotifyControllerDidAppear();
-        }
-
-        private void ControllersCollectionViewBoundsObserver(NSObservedChange obj)
-        {
-            var visibleCells = ControllersCollectionView.VisibleCells;
-            if (visibleCells?.Any() ?? false)
-            {
-                (visibleCells.First() as ControllerCollectionViewCell)?.NotifySizeChanged(
-                    ControllersCollectionView.Frame);
-            }
+            
+            NotifySizeChanged();
         }
 
         public override void ViewWillLayoutSubviews()
@@ -221,16 +239,22 @@ namespace BMM.UI.iOS
             _controllersBoundsChangeObserver?.Dispose();
             _controllersFrameChangeObserver?.Dispose();
         }
+        
+        private void ControllersCollectionViewBoundsObserver(NSObservedChange obj)
+        {
+            NotifySizeChanged();
+        }
 
-        protected ControllerCollectionViewCell GetVisibleCell()
+        private void NotifySizeChanged()
         {
             var visibleCells = ControllersCollectionView.VisibleCells;
             if (visibleCells?.Any() ?? false)
-                return visibleCells.First() as ControllerCollectionViewCell;
-
-            return null;
+            {
+                (visibleCells.First() as ControllerCollectionViewCell)?.NotifySizeChanged(
+                    ControllersCollectionView.Frame);
+            }
         }
-
+        
         public object Selected => TopBarCollectionViewSource?.SelectedItem;
     }
 }

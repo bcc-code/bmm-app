@@ -18,11 +18,14 @@ namespace BMM.UI.iOS
         {
             var nibName = LoadingTableViewCell.Key;
             tableView.RegisterNibForCellReuse(UINib.FromName(nibName, NSBundle.MainBundle), nibName);
+            ShowCellLoadingSpinner = true;
         }
 
         public IMvxCommand LoadMoreCommand { get; set; }
 
         private bool isFullyLoaded = true;
+        
+        public bool ShowCellLoadingSpinner { get; set; }
 
         public bool IsFullyLoaded {
             get {
@@ -62,14 +65,14 @@ namespace BMM.UI.iOS
         {
             var data = (IBmmObservableCollection<IDocumentPO>)ItemsSource;
             
-            if (data != null && !IsFullyLoaded) {
+            if (data != null && !IsFullyLoaded && ShowCellLoadingSpinner) {
                 // Add one row here for the loading-indicator.
                 return base.RowsInSection (tableview, section) + 1;
             } else {
                 return base.RowsInSection (tableview, section);
             }
         }
-
+        
         public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
         {
             base.WillDisplay(tableView, cell, indexPath);

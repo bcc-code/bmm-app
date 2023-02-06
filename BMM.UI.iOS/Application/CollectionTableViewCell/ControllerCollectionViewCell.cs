@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using BMM.Core.Constants;
 using BMM.UI.iOS.CollectionViewSource;
 using BMM.UI.iOS.Delegates;
 using CoreGraphics;
@@ -47,14 +49,23 @@ namespace BMM.UI.iOS.CollectionTableViewCell
 
         private void UpdateView()
         {
-            if (_controller is null || ControllerContainer.Subviews.Contains(_controller.View))
+            if (Controller is null || ControllerContainer.Subviews.Contains(Controller.View))
                 return;
 
             foreach (var subview in ControllerContainer.Subviews)
                 subview.RemoveFromSuperview();
 
             ControllerContainer.Add(_controller.View);
-            _controller.View.Frame = new CGRect(0, 0, Frame.Width, Frame.Height);
+
+            Controller.View!.TranslatesAutoresizingMaskIntoConstraints = false;
+            NSLayoutConstraint.ActivateConstraints(
+                new[]
+                {
+                    Controller.View.LeadingAnchor.ConstraintEqualTo(ControllerContainer.LeadingAnchor),
+                    Controller.View.TrailingAnchor.ConstraintEqualTo(ControllerContainer.TrailingAnchor),
+                    Controller.View.TopAnchor.ConstraintEqualTo(ControllerContainer.TopAnchor, NumericConstants.Zero),
+                    Controller.View.BottomAnchor.ConstraintEqualTo(ControllerContainer.BottomAnchor, NumericConstants.Zero)
+                });
         }
 
         private object Item
@@ -150,7 +161,6 @@ namespace BMM.UI.iOS.CollectionTableViewCell
         private void ChangeRect()
         {
             Frame = new CGRect(Frame.X, 0, _lastRect.Width, _lastRect.Height);
-            Controller.View.Frame = new CGRect(0, 0, _lastRect.Width, _lastRect.Height);
             LayoutIfNeeded();
         }
 

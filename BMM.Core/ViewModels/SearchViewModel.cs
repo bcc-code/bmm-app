@@ -12,7 +12,6 @@ using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Implementations.Exceptions;
-using BMM.Core.Implementations.Factories;
 using BMM.Core.Interactions.Base;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
@@ -34,6 +33,7 @@ namespace BMM.Core.ViewModels
 
         public IBmmObservableCollection<string> SearchHistory { get; }
         public IBmmInteraction RemoveFocusOnSearchInteraction { get; }
+        public IBmmInteraction ResetInteraction { get; }
 
         public bool SearchExecuted
         {
@@ -95,6 +95,7 @@ namespace BMM.Core.ViewModels
             _semaphoreSlim = new SemaphoreSlim(1, 1);
             
             RemoveFocusOnSearchInteraction = new BmmInteraction();
+            ResetInteraction = new BmmInteraction();
             SearchHistory = new BmmObservableCollection<string>();
 
             SearchCommand = new ExceptionHandlingCommand(
@@ -124,6 +125,7 @@ namespace BMM.Core.ViewModels
                 {
                     ClearSearch();
                     SelectedCollectionItem = CollectionItems.First();
+                    ResetInteraction?.Raise();
                     return Task.CompletedTask;
                 });
 
@@ -257,6 +259,7 @@ namespace BMM.Core.ViewModels
                     searchResultViewModel.Selected = false;
 
                 _selectedCollectionItem.Selected = true;
+                _selectedCollectionItem.PrepareForSearch(SearchTerm);
 
                 if (!string.IsNullOrEmpty(SearchTerm))
                     _debounceDispatcher.Run(async () => await Search());

@@ -1,9 +1,7 @@
 using System;
 using BMM.Core.Translation;
-using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
-using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
@@ -31,6 +29,7 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<SearchResultsViewController, SearchResultsViewModel>();
             
             _documentsTableViewSource = new DocumentsTableViewSource(ResultsTableView);
+            _documentsTableViewSource.ShowCellLoadingSpinner = false;
             
             set.Bind(_documentsTableViewSource)
                 .To(vm => vm.Documents);
@@ -66,7 +65,7 @@ namespace BMM.UI.iOS
 
             set.Bind(ActivityIndicator)
                 .For(v => v.BindVisible())
-                .To(vm => vm.IsLoading);
+                .To(vm => vm.IsSearching);
 
             set.Apply();
             SetThemes();
