@@ -136,10 +136,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<ISecureStorageProxy, SecureStorageProxy>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IOidcCredentialsStorage, OidcCredentialsStorage>();
 
-            Mvx.IoCProvider.RegisterSingleton(new HttpClient
-            {
-                Timeout = new TimeSpan(GlobalConstants.NetworkRequestTimeout * TimeSpan.TicksPerSecond)
-            });
+            Mvx.IoCProvider.RegisterSingleton(GetHttpClient());
 
             // By default the UserAccount BlobCache is used. If LocalMachine is needed manual creation is needed
             Mvx.IoCProvider.RegisterSingleton<IBlobCache>(BlobCache.UserAccount);
@@ -293,6 +290,21 @@ namespace BMM.Core
             RegisterDynamic(typeof(IBaseGuardedAction));
             RegisterDynamic(typeof(IActionExceptionHandler));
             RegisterCustomAppStart<AppStart>();
+        }
+
+        private static HttpClient GetHttpClient()
+        {
+#if DEBUG
+            return new HttpClient(new DiagnosticsClientHandler())
+            {
+                Timeout = new TimeSpan(GlobalConstants.NetworkRequestTimeout * TimeSpan.TicksPerSecond)
+            };
+#else
+            return new HttpClient
+            {
+                Timeout = new TimeSpan(GlobalConstants.NetworkRequestTimeout * TimeSpan.TicksPerSecond)
+            };
+#endif
         }
 
         private static void SetupLanguageBinder()

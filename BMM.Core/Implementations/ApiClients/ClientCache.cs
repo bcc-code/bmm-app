@@ -19,7 +19,7 @@ namespace BMM.Core.Implementations.ApiClients
 
     public class ClientCache : IClientCache
     {
-        private const int MaxGlobalCacheDurationInMonths = 1;
+        private const int MaxGlobalCacheDurationInMonths = 3;
         private const string CachePrefix = "ClientCache";
         
         private readonly ICache _cache;
