@@ -45,7 +45,11 @@ namespace BMM.Core.Implementations.ApiClients
 
         public Task<GenericDocumentsHolder> GetDocuments(string lang, int? age, CachePolicy cachePolicy)
         {
-            return _client.GetDocuments(lang, age, cachePolicy);
+            return _clientCache.Get(() => 
+                _client.GetDocuments(lang, age, cachePolicy),
+                cachePolicy,
+                TimeSpan.FromHours(1),
+                CacheKeys.PlaylistGetDocument);
         }
 
         public Task<IList<Track>> GetTracks(int podcastId, CachePolicy cachePolicy)

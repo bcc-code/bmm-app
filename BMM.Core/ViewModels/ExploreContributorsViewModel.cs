@@ -69,23 +69,6 @@ namespace BMM.Core.ViewModels
 
         protected override Task Initialization()
         {
-            //IEnumerable<int> a = _singers;
-            //IEnumerable<int> b = _speekers;
-            //IEnumerable<int> c = a.Union(b);
-            //_randomContributors.AddRange(c);
-            //int total = _randomContributors.Count;
-
-            //Random rng = new Random();
-
-            //while (total > 1)
-            //{
-            //    total--;
-            //    int k = rng.Next(total + 1);
-            //    int value = _randomContributors[k];
-            //    _randomContributors[k] = _randomContributors[total];
-            //    _randomContributors[total] = value;
-            //}
-
             _randomContributors.InsertRange(0, _orderedListStart);
             _randomContributors.AddRange(_alphabetical);
 
@@ -97,7 +80,14 @@ namespace BMM.Core.ViewModels
             var contributors = new List<Contributor>();
             if (startIndex < _randomContributors.Count)
             {
-                int newSize = startIndex + size < _randomContributors.Count ? size : _randomContributors.Count - size;
+                int newSize = startIndex + size < _randomContributors.Count
+                    ? size
+                    : _randomContributors.Count - size;
+
+                // temporary solution, until explore contributors endpoint will be published
+                if (newSize < 0)
+                    newSize = _randomContributors.Count;
+                
                 contributors.AddRange(await LoadContributors(_randomContributors.GetRange(startIndex, newSize)));
             }
 

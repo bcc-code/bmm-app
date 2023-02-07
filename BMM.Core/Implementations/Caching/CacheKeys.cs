@@ -13,6 +13,7 @@
         PlaylistGetAll,
         PlaylistGetTracks,
         PlaylistGetById,
+        PlaylistGetDocument,
         BrowseGet
     }
 }
