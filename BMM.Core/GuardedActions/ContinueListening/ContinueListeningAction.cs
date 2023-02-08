@@ -21,23 +21,23 @@ namespace BMM.Core.GuardedActions.ContinueListening
           IContinuePlayingAction
     {
         private readonly IMediaPlayer _mediaPlayer;
-        private readonly IPlaylistClient _playlistClient;
         private readonly IAlbumClient _albumClient;
         private readonly ISettingsStorage _settingsStorage;
         private readonly IExceptionHandler _exceptionHandler;
+        private readonly IEnqueueMusicAction _enqueueMusicAction;
 
         public ContinueListeningAction(
             IMediaPlayer mediaPlayer,
-            IPlaylistClient playlistClient,
             IAlbumClient albumClient,
             ISettingsStorage settingsStorage,
-            IExceptionHandler exceptionHandler)
+            IExceptionHandler exceptionHandler,
+            IEnqueueMusicAction enqueueMusicAction)
         {
             _mediaPlayer = mediaPlayer;
-            _playlistClient = playlistClient;
             _albumClient = albumClient;
             _settingsStorage = settingsStorage;
             _exceptionHandler = exceptionHandler;
+            _enqueueMusicAction = enqueueMusicAction;
         }
         
         protected override async Task Execute(ContinueListeningTile parameter)
@@ -50,10 +50,11 @@ namespace BMM.Core.GuardedActions.ContinueListening
 
             bool autoplayEnabled = await _settingsStorage.GetAutoplayEnabled();
 
-            if (parameter.ShufflePodcastId.HasValue && autoplayEnabled)
-                _exceptionHandler.FireAndForgetWithoutUserMessages(EnqueueSongsOfFirstPlaylist);
-            else
+            if (parameter.ShufflePodcastId != FraKaareConstants.FraKårePodcastId)
                 _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));
+            
+            if (autoplayEnabled)
+                await _enqueueMusicAction.ExecuteGuarded();
         }
 
         private async Task EnqueueRestOfAlbumItems(ContinueListeningTile continueListeningTile)
@@ -76,28 +77,6 @@ namespace BMM.Core.GuardedActions.ContinueListening
             
             foreach (var track in itemsToAdd)
                 await _mediaPlayer.AddToEndOfQueue(track, PlaybackOrigins.Tile);
-        }
-
-        private async Task EnqueueSongsOfFirstPlaylist()
-        {
-            var tracksToBePlayed = await GetSongsOfFirstPlaylist();
-            ShuffleableQueue.ShuffleList(tracksToBePlayed, new Random());
-
-            foreach (var track in tracksToBePlayed)
-                await _mediaPlayer.AddToEndOfQueue(track, PlaybackOrigins.Tile);
-        }
-        
-        private async Task<IList<Track>> GetSongsOfFirstPlaylist()
-        {
-            var playlists = await _playlistClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
-
-            if (!playlists.Any())
-                return new List<Track>();
-
-            var firstPlaylist = playlists.First();
-            var tracks = await _playlistClient.GetTracks(firstPlaylist.Id, CachePolicy.UseCache);
-
-            return tracks;
         }
     }
 }

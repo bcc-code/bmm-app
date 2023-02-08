@@ -62,7 +62,7 @@ namespace BMM.Core.Implementations.ApiClients
 
         public Task<IList<Track>> GetShuffle(int podcastId, int size = ApiConstants.LoadMoreSize)
         {
-            return _client.GetShuffle(podcastId);
+            return _client.GetShuffle(podcastId, size);
         }
     }
 }
