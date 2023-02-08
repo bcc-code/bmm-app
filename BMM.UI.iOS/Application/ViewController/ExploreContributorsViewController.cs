@@ -21,8 +21,6 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<ExploreContributorsViewController, ExploreContributorsViewModel>();
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
-            set.Bind(source).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
-            set.Bind(source).For(s => s.IsFullyLoaded).To(s => s.IsFullyLoaded);
             set.Apply();
 
             TrackTableView.ReloadData();
