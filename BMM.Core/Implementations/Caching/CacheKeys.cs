@@ -13,7 +13,8 @@
         PlaylistGetAll,
         PlaylistGetTracks,
         PlaylistGetById,
+        BrowseGet,
         PlaylistGetDocument,
-        BrowseGet
+        ContributorsFeatured
     }
 }

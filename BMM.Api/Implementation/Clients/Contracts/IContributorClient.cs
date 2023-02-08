@@ -10,6 +10,8 @@ namespace BMM.Api.Implementation.Clients.Contracts
     {
         Task<int> Add(Contributor contributor);
 
+        Task<IList<Contributor>> GetFeaturedContributors(CachePolicy cachePolicy);
+        
         /// <summary>Gets all contributors matching the specified parameters.</summary>
         /// <param name="size">The number of items to get.</param>
         /// <param name="from">The number of items to skip.</param>

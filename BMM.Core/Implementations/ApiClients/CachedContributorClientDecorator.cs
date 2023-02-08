@@ -26,6 +26,15 @@ namespace BMM.Core.Implementations.ApiClients
             return _client.Add(contributor);
         }
 
+        public Task<IList<Contributor>> GetFeaturedContributors(CachePolicy cachePolicy)
+        {
+            return _clientCache.Get(
+                () => _client.GetFeaturedContributors(cachePolicy),
+                cachePolicy,
+                TimeSpan.FromHours(1),
+                CacheKeys.ContributorsFeatured);
+        }
+
         public Task<IList<Contributor>> GetAll(int size = ApiConstants.LoadMoreSize, int @from = 0, string orderBy = null)
         {
             return _client.GetAll(size, from, orderBy);

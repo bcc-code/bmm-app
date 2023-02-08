@@ -32,6 +32,12 @@ namespace BMM.Api.Implementation.Clients
             }
         }
 
+        public Task<IList<Contributor>> GetFeaturedContributors(CachePolicy cachePolicy)
+        {
+            var uri = new UriTemplate(ApiUris.Contributors);
+            return Get<IList<Contributor>>(uri);
+        }
+
         public Task<IList<Contributor>> GetAll(int size = ApiConstants.LoadMoreSize, int from = 0, string orderBy = null)
         {
             var uri = new UriTemplate(ApiUris.Contributors);
