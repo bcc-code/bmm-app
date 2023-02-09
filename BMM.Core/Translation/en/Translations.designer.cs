@@ -29,6 +29,7 @@ namespace BMM.Core.Translation
 		public const string Global_FromKaareSiriShortcutName = nameof(Global_FromKaareSiriShortcutName);
 		public const string Global_PlayMusicSiriShortcutName = nameof(Global_PlayMusicSiriShortcutName);
 		public const string Global_DailyMessage = nameof(Global_DailyMessage);
+		public const string Global_ValueCopiedToClipboard = nameof(Global_ValueCopiedToClipboard);
 		public const string Streak_Message = nameof(Streak_Message);
 		public const string Streak_MessagePerfect = nameof(Streak_MessagePerfect);
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);
