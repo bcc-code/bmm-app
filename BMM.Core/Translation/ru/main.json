@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Воспроизвести музыку на BMM",
     "FromKaareSiriShortcutName": "Воспроизвести От Коре",
     "PlayMusicSiriShortcutName": "Воспроизвести музыку",
-    "DailyMessage": "Слово дня"
+    "DailyMessage": "Слово дня",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Твое достижение за неделю",
