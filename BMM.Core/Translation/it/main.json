@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
     "FromKaareSiriShortcutName": "Play From Kåre",
     "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "DailyMessage": "Daily message",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -188,7 +189,7 @@
   },
   "MyContentViewModel": {
     "Title": "Favorites",
-    "DownloadedContent": "Downloaded Content",
+    "DownloadedContent": "Contenuto scaricato",
     "FollowedPodcasts": "Podcast seguiti",
     "MyTracks": "Mie tracce",
     "MyPlaylists": "My playlists",
@@ -212,7 +213,7 @@
     "AskToResumeDownloading": "Ci sono nuovi elementi nella playlist. Vuoi riprendere il download?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Downloaded Content",
+    "Title": "Contenuto scaricato",
     "FollowedPodcasts": "Podcast",
     "MyTracks": "Le mie tracce",
     "EmptyTitle": "You have not downloaded any content",
