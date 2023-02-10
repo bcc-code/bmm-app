@@ -36,6 +36,8 @@ namespace BMM.Core.ViewModels
 {
     public class SettingsViewModel : BaseViewModel
     {
+        private const string AnalyticsIdItemTitle = "Analytics ID";
+        private const string FirebaseTokenItemTitle = "Firebase Token";
         private readonly IDeviceInfo _deviceInfo;
         private readonly INetworkSettings _networkSettings;
         private readonly ISettingsStorage _settingsStorage;
@@ -350,9 +352,9 @@ namespace BMM.Core.ViewModels
             var analyticsId =  _userStorage.GetUser().AnalyticsId;
             items.Add(new SelectableListItem
             {
-                Title = "Analytics id",
+                Title = AnalyticsIdItemTitle,
                 Text = analyticsId,
-                OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(analyticsId))
+                OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(analyticsId, AnalyticsIdItemTitle))
             });
 
             if (_developerPermission.IsBmmDeveloper())
@@ -360,9 +362,9 @@ namespace BMM.Core.ViewModels
                 var firebaseToken = await _tokenProvider.GetToken();
                 items.Add(new SelectableListItem
                 {
-                    Title = "Firebase Token",
+                    Title = FirebaseTokenItemTitle,
                     Text = firebaseToken,
-                    OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(firebaseToken))
+                    OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(firebaseToken, FirebaseTokenItemTitle))
                 });
             }
 
