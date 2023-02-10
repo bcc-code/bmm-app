@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Soita musiikkia BMM:stä",
     "FromKaareSiriShortcutName": "Soita Terveisiä Kårelta",
     "PlayMusicSiriShortcutName": "Soita musiikkia",
-    "DailyMessage": "Päivän sanoma"
+    "DailyMessage": "Päivän sanoma",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Viikon suorituksesi",
