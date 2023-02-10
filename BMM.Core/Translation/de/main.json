@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Spiel Musik auf BMM",
     "FromKaareSiriShortcutName": "Spiel Von Kåre",
     "PlayMusicSiriShortcutName": "Spiel Musik",
-    "DailyMessage": "Rede des Tages"
+    "DailyMessage": "Rede des Tages",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
