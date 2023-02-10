@@ -39,7 +39,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
             _exceptionHandler = exceptionHandler;
             _enqueueMusicAction = enqueueMusicAction;
         }
-        
+
         protected override async Task Execute(ContinueListeningTile parameter)
         {
             await _mediaPlayer.Play(
@@ -50,9 +50,12 @@ namespace BMM.Core.GuardedActions.ContinueListening
 
             bool autoplayEnabled = await _settingsStorage.GetAutoplayEnabled();
 
-            if (parameter.ShufflePodcastId != FraKaareConstants.FraKårePodcastId)
+            if (parameter.ShufflePodcastId != PodcastsConstants.FraKårePodcastId
+                && parameter.ShufflePodcastId != PodcastsConstants.BergprekenPodcastId)
+            {
                 _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));
-            
+            }
+
             if (autoplayEnabled)
                 await _enqueueMusicAction.ExecuteGuarded();
         }
