@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
     "FromKaareSiriShortcutName": "Play From Kåre",
     "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "DailyMessage": "Daily message",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Your streak this week",
