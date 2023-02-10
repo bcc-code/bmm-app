@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Zene lejátszása a BMM-en",
     "FromKaareSiriShortcutName": "Fra Kåre lejátszása",
     "PlayMusicSiriShortcutName": "Zene lejátszása",
-    "DailyMessage": "Mindennapi üzenet"
+    "DailyMessage": "Mindennapi üzenet",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "E heti sorozatod",
