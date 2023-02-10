@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Predvajaj glasbo na BMM",
     "FromKaareSiriShortcutName": "Predvajaj Od Kåreja",
     "PlayMusicSiriShortcutName": "Predvajaj glasbo",
-    "DailyMessage": "Govor dneva"
+    "DailyMessage": "Govor dneva",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Tvoj  niz ta teden",
@@ -188,7 +189,7 @@
   },
   "MyContentViewModel": {
     "Title": "Najljubše",
-    "DownloadedContent": "Prenesi vsebino",
+    "DownloadedContent": "Prenesena vsebina",
     "FollowedPodcasts": "Posnetki",
     "MyTracks": "Moje skladbe",
     "MyPlaylists": "Moji seznami predvajanja",
