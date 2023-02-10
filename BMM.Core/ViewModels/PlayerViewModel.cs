@@ -17,6 +17,7 @@ using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Models.Enums;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 
@@ -43,6 +44,7 @@ namespace BMM.Core.ViewModels
         private bool _directlyShowPlayerForAndroid;
         private bool _hasExternalRelations;
         private PlayerTrackInfoProvider _playerTrackInfoProvider;
+        private PlayerLeftButtonType _leftButtonType;
 
         public IMvxInteraction<TogglePlayerInteraction> ClosePlayerInteraction => _closePlayerInteraction;
 
@@ -57,9 +59,8 @@ namespace BMM.Core.ViewModels
         public MvxCommand NextCommand { get; }
         public MvxCommand SkipForwardCommand { get; }
         public MvxCommand SkipBackwardCommand { get; }
-        public MvxCommand OpenLyricsCommand { get; }
-        
-        public string SongTreasureLink { get; set; }
+        public MvxCommand LeftButtonClickedCommand { get; }
+        public string LeftButtonLink { get; set; }
 
         public bool IsShuffleEnabled
         {
@@ -106,9 +107,15 @@ namespace BMM.Core.ViewModels
             set => SetProperty(ref _trackLanguage, value);
         }
 
+        public PlayerLeftButtonType LeftButtonType
+        {
+            get => _leftButtonType;
+            set => SetProperty(ref _leftButtonType, value);
+        }
+
         public bool CanNavigateToLanguageChange => NavigateToLanguageChangeCommand.CanExecute();
         
-        public bool HasLyrics => OpenLyricsCommand.CanExecute();
+        public bool HasLeftButton => LeftButtonClickedCommand.CanExecute();
 
         public string PlayingText => _queueLength > 0 ? TextSource.GetText(Translations.PlayerViewModel_PlayingCount, _currentIndex + 1, _queueLength) : string.Empty;
 
@@ -138,10 +145,10 @@ namespace BMM.Core.ViewModels
             PreviousOrSeekToStartCommand = new MvxCommand(MediaPlayer.PlayPreviousOrSeekToStart, () => IsSkipToPreviousEnabled);
             SkipForwardCommand = new MvxCommand(() => MediaPlayer.JumpForward());
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
-            OpenLyricsCommand = new MvxCommand(OpenLyricsLink, () => !string.IsNullOrEmpty(SongTreasureLink));
+            LeftButtonClickedCommand = new MvxCommand(OpenLeftButtonLinkLink, () => !string.IsNullOrEmpty(LeftButtonLink));
             SeekToPositionCommand = new MvxCommand<long>(position =>
             {
-                MediaPlayer.SeekTo(position);  
+                MediaPlayer.SeekTo(position);
             });
             ShowTrackInfoCommand = new MvxCommand(() => showTrackInfoAction.Command.ExecuteAsync((Track)CurrentTrack));
 
@@ -159,10 +166,12 @@ namespace BMM.Core.ViewModels
         public IMvxCommand<long> SeekToPositionCommand { get; set; }
         public IMvxCommand ShowTrackInfoCommand { get; set; }
 
-        private void OpenLyricsLink()
+        private void OpenLeftButtonLinkLink()
         {
-            _uriOpener.OpenUri(new Uri(SongTreasureLink));
-            _analytics.LogEvent(Event.LyricsOpened);
+            _uriOpener.OpenUri(new Uri(LeftButtonLink));
+            _analytics.LogEvent(LeftButtonType == PlayerLeftButtonType.Lyrics
+                ? Event.LyricsOpened
+                : Event.BCCMediaOpenedFromPlayer);
         }
 
         public void Prepare(bool showPlayer)

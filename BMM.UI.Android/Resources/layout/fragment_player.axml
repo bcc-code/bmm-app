@@ -296,24 +296,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 local:barrierDirection="top"
-                local:constraint_referenced_ids="ViewLyricsButton,ChangeLanguageButton" />
+                local:constraint_referenced_ids="LeftButton,ChangeLanguageButton" />
 
         <Button
-                android:id="@+id/ViewLyricsButton"
+                android:id="@+id/LeftButton"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/player_standard_margin"
+                local:autoSizeTextType="uniform"
+                local:autoSizeMinTextSize="8sp"
+                local:autoSizeMaxTextSize="19sp"
                 local:layout_goneMarginEnd="@dimen/margin_medium"
                 local:layout_constraintHorizontal_chainStyle="packed"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toStartOf="@+id/ChangeLanguageButton"
-                local:MvxLang="Text PlayerViewModel_ViewLyrics"
                 style="@style/Button_Tertiary"
                 local:MvxBind="
-                    Click OpenLyricsCommand;
-                    Visibility Visibility(HasLyrics)" />
+                    Click LeftButtonClickedCommand;
+                    Visibility Visibility(HasLeftButton);
+                    Text PlayerLeftButtonTypeToTitle(LeftButtonType)" />
 
         <Button
                 android:id="@+id/ChangeLanguageButton"
@@ -322,7 +325,7 @@
                 android:layout_marginStart="@dimen/margin_xmedium"
                 android:layout_marginEnd="@dimen/margin_medium"
                 android:layout_marginBottom="@dimen/player_standard_margin"
-                local:layout_constraintStart_toEndOf="@+id/ViewLyricsButton"
+                local:layout_constraintStart_toEndOf="@+id/LeftButton"
                 local:layout_constraintEnd_toEndOf="parent"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:MvxBind="

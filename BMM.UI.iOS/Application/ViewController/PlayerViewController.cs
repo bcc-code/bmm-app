@@ -36,7 +36,7 @@ namespace BMM.UI.iOS
         private readonly UIImage _playIcon;
         private readonly UIImage _pauseIcon;
         private bool _canNavigateToLanguageChange;
-        private bool _hasLyrics;
+        private bool _hasLeftButton;
         private bool _isShuffleEnabled;
         private RepeatType _repeatType;
         private int _bottomMargin = DefaultBottomMarginConstant;
@@ -113,16 +113,17 @@ namespace BMM.UI.iOS
             set.Bind(QueueButton)
                 .To(vm => vm.OpenQueueCommand);
 
-            set.Bind(ViewLyricsButton)
+            set.Bind(LeftButton)
                 .For(v => v.BindTitle())
-                .To(vm => vm.TextSource[Translations.PlayerViewModel_ViewLyrics]);
+                .To(vm => vm.LeftButtonType)
+                .WithConversion<PlayerLeftButtonTypeToTitleConverter>();
 
-            set.Bind(ViewLyricsButton)
-                .To(vm => vm.OpenLyricsCommand);
+            set.Bind(LeftButton)
+                .To(vm => vm.LeftButtonClickedCommand);
 
             set.Bind(this)
-                 .For(v => v.HasLyrics)
-                 .To(vm => vm.HasLyrics);
+                 .For(v => v.HasLeftButton)
+                 .To(vm => vm.HasLeftButton);
 
             set.Bind(MoreButton).To(vm => vm.OptionCommand);
             set.Bind(ChangeLanguageButton)
@@ -288,15 +289,15 @@ namespace BMM.UI.iOS
             }
         }
 
-        public bool HasLyrics
+        public bool HasLeftButton
         {
-            get => _hasLyrics;
+            get => _hasLeftButton;
             set
             {
-                _hasLyrics = value;
+                _hasLeftButton = value;
                 ViewUtils.RunAnimation(ViewConstants.DefaultAnimationDuration, () =>
                 {
-                    ViewLyricsButton.SetHiddenIfNeeded(!_hasLyrics);
+                    LeftButton.SetHiddenIfNeeded(!_hasLeftButton);
                     SetBottomMarginConstant();
                     BottomButtonsStackLayout.LayoutIfNeeded();
                 });
@@ -305,7 +306,7 @@ namespace BMM.UI.iOS
 
         private void SetBottomMarginConstant()
         {
-            if (!_canNavigateToLanguageChange && !_hasLyrics)
+            if (!_canNavigateToLanguageChange && !_hasLeftButton)
                 BottomMarginConstraint.Constant = 0;
             else
                 BottomMarginConstraint.Constant = _bottomMargin;
@@ -374,7 +375,7 @@ namespace BMM.UI.iOS
 
         private void SetThemes()
         {
-            ViewLyricsButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMedium);
+            LeftButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMediumAutoSize);
             ChangeLanguageButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMedium);
             TitleLabel.ApplyTextTheme(AppTheme.Heading3AutoSize);
             SubtitleLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);

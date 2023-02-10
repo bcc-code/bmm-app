@@ -223,15 +223,19 @@ namespace BMM.UI.iOS.Constants
             ImageEdgeInsets = new UIEdgeInsets(0, 6, 0, 16)
         };
 
-        public static readonly ButtonTheme ButtonPrimaryBlack = new StandardButtonTheme
+        public static readonly ButtonTheme ButtonTertiaryMediumAutoSize = new StandardButtonTheme
         {
             TextTheme = new TextTheme
             {
                 Font = Typography.Title1.Value,
-                Color = AppColors.LabelPrimaryColorReverted.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
+                Color = AppColors.LabelPrimaryColor,
+                MinimumFontSize = 8
             },
-            ButtonColor = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
-            IconTint = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light)
+            ButtonColor = UIColor.Clear,
+            HasBorder = true,
+            BorderColor = AppColors.PlaceholderColor,
+            ImageEdgeInsets = UIEdgeInsets.Zero,
+            ContentEdgeInsets = new UIEdgeInsets(0, 12, 0, 12)
         };
         
         public static readonly ButtonTheme ButtonPrimaryBlackAutoSize = new StandardButtonTheme
