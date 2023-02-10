@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Reproducir Música en BMM",
     "FromKaareSiriShortcutName": "Reproducir Fra Kåre",
     "PlayMusicSiriShortcutName": "Reproducir Música",
-    "DailyMessage": "Prédica del día"
+    "DailyMessage": "Prédica del día",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
