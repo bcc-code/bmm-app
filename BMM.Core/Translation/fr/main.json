@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Écouter \"Fra Kåre\"",
     "PlayMusicSiriShortcutName": "Écouter de la musique",
     "DailyMessage": "Message quotidien",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "{0} copié dans le presse-papiers"
   },
   "Streak": {
     "Message": "Enchaînement de la semaine",
