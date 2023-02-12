@@ -98,7 +98,7 @@ namespace BMM.UI.iOS
 		BmmCachedImageView TrackCoverImageView { get; set; }
 
 		[Outlet]
-		UIKit.UIButton ViewLyricsButton { get; set; }
+		UIKit.UIButton LeftButton { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -237,9 +237,9 @@ namespace BMM.UI.iOS
 				TrackCoverImageView = null;
 			}
 
-			if (ViewLyricsButton != null) {
-				ViewLyricsButton.Dispose ();
-				ViewLyricsButton = null;
+			if (LeftButton != null) {
+				LeftButton.Dispose ();
+				LeftButton = null;
 			}
 
 			if (ExternalRelationButton != null) {

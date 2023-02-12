@@ -1,4 +1,5 @@
 using BMM.Api.Abstraction;
+using BMM.Core.Models.Enums;
 using MvvmCross.Commands;
 
 namespace BMM.Core.ViewModels.Interfaces
@@ -7,10 +8,11 @@ namespace BMM.Core.ViewModels.Interfaces
     {
         IMvxAsyncCommand NavigateToLanguageChangeCommand { get; }
         ITrackModel CurrentTrack { get; }
-        bool HasLyrics { get; }
+        bool HasLeftButton { get; }
         bool HasExternalRelations { get; set; }
-        MvxCommand OpenLyricsCommand { get; }
-        string SongTreasureLink { get; set; }
+        MvxCommand LeftButtonClickedCommand { get; }
+        string LeftButtonLink { get; set; }
         string TrackLanguage { get; set; }
+        PlayerLeftButtonType LeftButtonType { get; set; }
     }
 }
