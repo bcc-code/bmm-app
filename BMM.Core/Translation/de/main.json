@@ -259,7 +259,7 @@
     "PlaybackSpeed": "Abspielgeschwindigkeit",
     "Normal": "Normal",
     "Selected": "Ausgewählt",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Öffne BCC Media"
   },
   "QueueViewModel": {
     "Title": "Warteschlange"
