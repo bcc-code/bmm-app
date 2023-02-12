@@ -258,7 +258,8 @@
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Selected",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Järjekord"
