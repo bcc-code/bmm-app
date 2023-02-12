@@ -258,7 +258,8 @@
     "Disable": "Desativar",
     "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
-    "Selected": "Selecionado"
+    "Selected": "Selecionado",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Fila"
