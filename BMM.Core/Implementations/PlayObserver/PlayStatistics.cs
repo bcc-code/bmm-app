@@ -219,7 +219,7 @@ namespace BMM.Core.Implementations.PlayObserver
                     return;
                 }
 
-                if (CurrentTrack.Tags?.Contains(FraKaareConstants.FromKaareTagName) == true)
+                if (CurrentTrack.Tags?.Contains(PodcastsConstants.FromKaareTagName) == true)
                     _messenger.Publish(new FraKaareTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
 
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);

@@ -212,7 +212,7 @@ namespace BMM.Core.ViewModels
             IEnumerable<Document> itemsWithChapters;
             switch (Podcast.Id)
             {
-                case FraKaareConstants.FraKårePodcastId:
+                case PodcastsConstants.FraKårePodcastId:
                     itemsWithChapters = _weekOfTheYearChapterStrategy.AddChapterHeaders(items, existingDocs);
                     break;
 

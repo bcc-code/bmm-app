@@ -139,20 +139,26 @@ namespace BMM.Core.ViewModels
             MediaPlayer = mediaPlayer;
 
             PlayPauseCommand = new MvxCommand(MediaPlayer.PlayPause);
-            CurrentTrack = MediaPlayer.CurrentTrack;
-            Duration = MediaPlayer.CurrentTrack?.Duration ?? 0;
+            AssignCurrentTrackAndDuration();
         }
 
         protected override void AttachEvents()
         {
             base.AttachEvents();
             SetupSubscriptions();
+            AssignCurrentTrackAndDuration();
         }
 
         protected override void DetachEvents()
         {
             base.DetachEvents();
             DetachSubscriptions();
+        }
+        
+        private void AssignCurrentTrackAndDuration()
+        {
+            CurrentTrack = MediaPlayer.CurrentTrack;
+            Duration = MediaPlayer.CurrentTrack?.Duration ?? 0;
         }
 
         private void SetupSubscriptions()

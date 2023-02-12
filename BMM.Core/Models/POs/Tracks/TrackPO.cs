@@ -118,7 +118,7 @@ namespace BMM.Core.Models.POs.Tracks
         
         private bool TrackIsTeaserPodcast()
         {
-            return Track.Tags.Contains(FraKaareConstants.FromKaareTagName) ||
+            return Track.Tags.Contains(PodcastsConstants.FromKaareTagName) ||
                    Track.Tags.Contains(AslaksenConstants.AsklaksenTagName) ||
                    Track.Tags.Contains(AslaksenConstants.HebrewTagName);
         }

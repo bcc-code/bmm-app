@@ -33,7 +33,7 @@ namespace BMM.Core.ViewModels
                 size: size,
                 @from: startIndex,
                 contentTypes: _trackSubTypes,
-                excludeTags: new List<string> { FraKaareConstants.FromKaareTagName, AslaksenConstants.AsklaksenTagName }))
+                excludeTags: new List<string> { PodcastsConstants.FromKaareTagName, AslaksenConstants.AsklaksenTagName }))
                 .Select(t => TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
     }

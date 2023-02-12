@@ -35,7 +35,7 @@ namespace BMM.UI.iOS.Actions
         {
             _analytics.LogEvent(Event.SiriFromKaarePlayed);
             
-            var fromKareList = await _podcastClient.GetTracks(FraKaareConstants.FraKårePodcastId, CachePolicy.IgnoreCache);
+            var fromKareList = await _podcastClient.GetTracks(PodcastsConstants.FraKårePodcastId, CachePolicy.IgnoreCache);
             
             if (fromKareList == null || !fromKareList.Any())
                 return false;
