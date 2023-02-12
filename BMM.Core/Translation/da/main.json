@@ -258,7 +258,8 @@
     "Disable": "Deaktivere",
     "PlaybackSpeed": "Afspil hastighed",
     "Normal": "Normal",
-    "Selected": "Valgt"
+    "Selected": "Valgt",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Spillekø"
