@@ -258,7 +258,8 @@
     "Disable": "Onemogoči",
     "PlaybackSpeed": "Hitrost predvajanja",
     "Normal": "Normalno",
-    "Selected": "Izbrano"
+    "Selected": "Izbrano",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Čakalna vrsta"
