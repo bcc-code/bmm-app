@@ -258,7 +258,8 @@
     "Disable": "Estä",
     "PlaybackSpeed": "Toistonopeus",
     "Normal": "Tavallinen",
-    "Selected": "Valittu"
+    "Selected": "Valittu",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Jono"
