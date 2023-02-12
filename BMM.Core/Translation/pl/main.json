@@ -258,7 +258,8 @@
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
-    "Selected": "Wybrane"
+    "Selected": "Wybrane",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Kolejka"
