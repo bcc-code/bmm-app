@@ -258,7 +258,8 @@
     "Disable": "Deaktíválás",
     "PlaybackSpeed": "Lejátszási sebesség ",
     "Normal": "Átlagos",
-    "Selected": "Kiválasztott"
+    "Selected": "Kiválasztott",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Várólista"
