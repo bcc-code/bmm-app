@@ -258,7 +258,8 @@
     "Disable": "Dezactivează",
     "PlaybackSpeed": "Viteză de redare",
     "Normal": "Normal",
-    "Selected": "Selectate"
+    "Selected": "Selectate",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Listă"
