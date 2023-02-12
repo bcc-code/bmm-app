@@ -258,7 +258,8 @@
     "Disable": "Desactivar",
     "PlaybackSpeed": "Velocidad de reproducción",
     "Normal": "Normal",
-    "Selected": "Seleccionada"
+    "Selected": "Seleccionada",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Cola"
