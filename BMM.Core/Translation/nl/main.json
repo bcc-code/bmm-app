@@ -258,7 +258,8 @@
     "Disable": "Uitzetten",
     "PlaybackSpeed": "Afspeelsnelheid",
     "Normal": "Normaal",
-    "Selected": "Geselecteerd"
+    "Selected": "Geselecteerd",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Wachtrij"
