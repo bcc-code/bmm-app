@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
     "FromKaareSiriShortcutName": "Play From Kåre",
     "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message"
+    "DailyMessage": "Daily message",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Your streak this week",
@@ -257,7 +258,8 @@
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Selected",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Snitlys tou"

@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Spill musikk på BMM",
     "FromKaareSiriShortcutName": "Spill Fra Kåre",
     "PlayMusicSiriShortcutName": "Spill musikk",
-    "DailyMessage": "Dagens tale"
+    "DailyMessage": "Dagens tale",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Din streak denne uken",
@@ -257,7 +258,8 @@
     "Disable": "deaktiver",
     "PlaybackSpeed": "Avspillingshastighet",
     "Normal": "Normal",
-    "Selected": "Valgt"
+    "Selected": "Valgt",
+    "WatchOnBCCMedia": "Se på BCC Media"
   },
   "QueueViewModel": {
     "Title": "Kø"

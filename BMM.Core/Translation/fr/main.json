@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Écouter de la musique sur BMM",
     "FromKaareSiriShortcutName": "Écouter \"Fra Kåre\"",
     "PlayMusicSiriShortcutName": "Écouter de la musique",
-    "DailyMessage": "Message quotidien"
+    "DailyMessage": "Message quotidien",
+    "ValueCopiedToClipboard": "{0} copié dans le presse-papiers"
   },
   "Streak": {
     "Message": "Enchaînement de la semaine",
@@ -257,7 +258,8 @@
     "Disable": "Désactiver",
     "PlaybackSpeed": "Vitesse de lecture",
     "Normal": "Normal",
-    "Selected": "Sélectionné"
+    "Selected": "Sélectionné",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "File d'attente"

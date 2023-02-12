@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Pornește muzică de pe BMM",
     "FromKaareSiriShortcutName": "Pornește De la Kåre",
     "PlayMusicSiriShortcutName": "Pornește muzica",
-    "DailyMessage": "Mesajul zilei"
+    "DailyMessage": "Mesajul zilei",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Progresul tău",
@@ -257,7 +258,8 @@
     "Disable": "Dezactivează",
     "PlaybackSpeed": "Viteză de redare",
     "Normal": "Normal",
-    "Selected": "Selectate"
+    "Selected": "Selectate",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Listă"

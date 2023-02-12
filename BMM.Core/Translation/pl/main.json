@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Włącz muzykę na BMM",
     "FromKaareSiriShortcutName": "Włącz Od Kårego",
     "PlayMusicSiriShortcutName": "Odtwarzaj Muzykę",
-    "DailyMessage": "Daily message"
+    "DailyMessage": "Daily message",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Twoja seria w tym tygodniu",
@@ -257,7 +258,8 @@
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
-    "Selected": "Wybrane"
+    "Selected": "Wybrane",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Kolejka"

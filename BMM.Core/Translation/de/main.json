@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Spiel Musik auf BMM",
     "FromKaareSiriShortcutName": "Spiel Von Kåre",
     "PlayMusicSiriShortcutName": "Spiel Musik",
-    "DailyMessage": "Rede des Tages"
+    "DailyMessage": "Rede des Tages",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -257,7 +258,8 @@
     "Disable": "Deaktivieren",
     "PlaybackSpeed": "Abspielgeschwindigkeit",
     "Normal": "Normal",
-    "Selected": "Ausgewählt"
+    "Selected": "Ausgewählt",
+    "WatchOnBCCMedia": "Öffne BCC Media"
   },
   "QueueViewModel": {
     "Title": "Warteschlange"

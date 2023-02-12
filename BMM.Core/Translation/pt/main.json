@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Reproduzir música no BMM",
     "FromKaareSiriShortcutName": "Reproduzir De Kåre",
     "PlayMusicSiriShortcutName": "Reproduzir Música",
-    "DailyMessage": "Mensagem diária"
+    "DailyMessage": "Mensagem diária",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -257,7 +258,8 @@
     "Disable": "Desativar",
     "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
-    "Selected": "Selecionado"
+    "Selected": "Selecionado",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Fila"

@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Воспроизвести музыку на BMM",
     "FromKaareSiriShortcutName": "Воспроизвести От Коре",
     "PlayMusicSiriShortcutName": "Воспроизвести музыку",
-    "DailyMessage": "Слово дня"
+    "DailyMessage": "Слово дня",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Твое достижение за неделю",
@@ -257,7 +258,8 @@
     "Disable": "Disable",
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
-    "Selected": "Selected"
+    "Selected": "Selected",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Очередь"

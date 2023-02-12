@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Zene lejátszása a BMM-en",
     "FromKaareSiriShortcutName": "Fra Kåre lejátszása",
     "PlayMusicSiriShortcutName": "Zene lejátszása",
-    "DailyMessage": "Mindennapi üzenet"
+    "DailyMessage": "Mindennapi üzenet",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "E heti sorozatod",
@@ -257,7 +258,8 @@
     "Disable": "Deaktíválás",
     "PlaybackSpeed": "Lejátszási sebesség ",
     "Normal": "Átlagos",
-    "Selected": "Kiválasztott"
+    "Selected": "Kiválasztott",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Várólista"

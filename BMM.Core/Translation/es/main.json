@@ -16,7 +16,7 @@
     "Today": "Hoy",
     "Yesterday": "Ayer",
     "BackgroundActivityRestrictedTitle": "Permitir actividad en segundo plano",
-    "BackgroundActivityRestrictedMessage": "Los ajustes de tu dispositivo restringen el funcionamiento de BMM en segundo plano. No podrás escuchar, cuando tu teléfono esté bloqueado durante unos minutos. Para cambiarlo, ve a los ajustes de la aplicación y \"Permitir actividad en segundo plano\" en la sección \"Batería\".",
+    "BackgroundActivityRestrictedMessage": "Los ajustes de tu dispositivo restringen el funcionamiento de BMM en segundo plano. No podrás escuchar cuando tu teléfono esté bloqueado durante unos minutos. Para cambiarlo, ve a los ajustes de la aplicación y activa \"Permitir actividad en segundo plano\" en la sección \"Batería\".",
     "GoToSettings": "Ir a la Configuración",
     "NotNow": "Ahora no",
     "DownloadPlaylistOnceOnWifi": "La lista de reproducción se descargará la próxima vez que te conectes con Wifi. Puedes activar la opción \"Descargar a través de la red móvil\" en tu Perfil.",
@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Reproducir Música en BMM",
     "FromKaareSiriShortcutName": "Reproducir Fra Kåre",
     "PlayMusicSiriShortcutName": "Reproducir Música",
-    "DailyMessage": "Prédica del día"
+    "DailyMessage": "Prédica del día",
+    "ValueCopiedToClipboard": "{0} copied to clipboard"
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
@@ -61,7 +62,7 @@
     "ErrorPlayerStart": "No se puede iniciar la reproducción."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "No hay suficiente espacio para almacenar archivos offline"
+    "OutOfSpaceMessage": "No hay suficiente espacio para almacenar archivos sin conexión"
   },
   "AlbumViewModel": {
     "Title": "Álbum",
@@ -127,7 +128,7 @@
     "GuideAddToPlaylistTitle": "Añadir a una lista de reproducción o a 'Mis Pistas'",
     "GuideAddToPlaylistSubtitle": "Guardar sus pistas favoritas a sus propias listas de reproducción o a su colección personal de BMM 'Mis pistas' pulsando el botón de opciones a la derecha de la pista.",
     "GuideLanguagesTitle": "Multiples idiomas",
-    "GuideLanguagesSubtitle": "Priorizar tu idioma para controlar el idioma del contenido de BMM. Esto se puede hacer en Opciones>Idioma del contenido.",
+    "GuideLanguagesSubtitle": "Priorizar los idiomas de tu contenido en BMM. Esto se puede hacer en Opciones>Idioma del contenido.",
     "GuideLibraryTitle": "Sección de la biblioteca",
     "GuideLibrarySubtitle": "Obtener acceso rápido al contenido que desee. La sección de la biblioteca consta de todos los podcasts disponibles y una sección de archivo para buscar contenido. ",
     "GuideSearchTitle": "Buscar",
@@ -257,7 +258,8 @@
     "Disable": "Desactivar",
     "PlaybackSpeed": "Velocidad de reproducción",
     "Normal": "Normal",
-    "Selected": "Seleccionada"
+    "Selected": "Seleccionada",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Cola"

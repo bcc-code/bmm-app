@@ -25,7 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Soita musiikkia BMM:stä",
     "FromKaareSiriShortcutName": "Soita Terveisiä Kårelta",
     "PlayMusicSiriShortcutName": "Soita musiikkia",
-    "DailyMessage": "Päivän sanoma"
+    "DailyMessage": "Päivän sanoma",
+    "ValueCopiedToClipboard": "{0} kopioitu leikepöydälle"
   },
   "Streak": {
     "Message": "Viikon suorituksesi",
@@ -257,7 +258,8 @@
     "Disable": "Estä",
     "PlaybackSpeed": "Toistonopeus",
     "Normal": "Tavallinen",
-    "Selected": "Valittu"
+    "Selected": "Valittu",
+    "WatchOnBCCMedia": "Watch on BCC Media"
   },
   "QueueViewModel": {
     "Title": "Jono"
