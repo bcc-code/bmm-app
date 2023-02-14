@@ -273,15 +273,15 @@
     "WelcomeTitle": "¡Iniciar búsqueda aquí!",
     "WelcomeSubTitle": "Utiliza el campo de búsqueda para buscar contenido en BMM",
     "DeleteConfirm": "¿Está seguro que desea eliminar el historial de búsqueda?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Todo",
+    "Speeches": "Mensajes",
     "Music": "Música",
     "Albums": "Álbumes",
-    "Contributors": "People",
+    "Contributors": "Gente",
     "Podcasts": "Podcasts",
     "Playlists": "Listas de reproducción",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResults": "No hay resultados",
+    "NoResultsDescription": "No hubo coincidencias con su búsqueda de\"{0}\""
   },
   "SettingsViewModel": {
     "Title": "Perfil",
@@ -325,7 +325,7 @@
     "ThemeText": "Elige entre un tema claro y uno oscuro",
     "SiriShortcutsHeader": "Accesos directos de Siri",
     "SiriShortcutsText": "Añadir accesos directos de Siri para BMM a tu dispositivo",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Lamentablemente, no podemos habilitar las notificaciones automáticas ya que están deshabilitadas en la configuración de su dispositivo.  Permita las notificaciones automáticas en la configuración de su dispositivo para habilitar esta función."
   },
   "StorageManagementViewModel": {
     "Title": "Ubicación de las pistas sin conexión",
@@ -505,15 +505,15 @@
     "ShortcutAlreadyAdded": "Este acceso directo ya ha sido añadido"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Tu reseña del año",
+    "Share": "Comparte con tus amigos",
+    "ShareTitle": "Resumen del año"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
+    "Title": "Mejores canciones",
+    "PlaysPlural": "{0} reproducciones",
+    "PlaysSingular": "{0} Reproducción",
+    "AddToMyPlaylist": "Agregar lista de reproducción a favoritos",
     "SuccessfullyAddedToPlaylists": "Añadido exitosamente a favoritos"
   }
 }
