@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Reproducir Fra Kåre",
     "PlayMusicSiriShortcutName": "Reproducir Música",
     "DailyMessage": "Prédica del día",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "{0} Copiado al portapapeles"
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
@@ -259,7 +259,7 @@
     "PlaybackSpeed": "Velocidad de reproducción",
     "Normal": "Normal",
     "Selected": "Seleccionada",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Ver en BCC Media"
   },
   "QueueViewModel": {
     "Title": "Cola"
@@ -267,7 +267,7 @@
   "SearchViewModel": {
     "Title": "Buscar",
     "SearchHint": "Buscar",
-    "SearchResults": "Results",
+    "SearchResults": "Resultados",
     "SearchHistory": "Búsquedas recientes",
     "SearchSuggestions": "¿Quisiste decir: ",
     "WelcomeTitle": "¡Iniciar búsqueda aquí!",
@@ -514,6 +514,6 @@
     "PlaysPlural": "{0} plays",
     "PlaysSingular": "{0} play",
     "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "SuccessfullyAddedToPlaylists": "Añadido exitosamente a favoritos"
   }
 }
