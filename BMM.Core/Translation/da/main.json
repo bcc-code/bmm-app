@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Afspil Fra Kåre",
     "PlayMusicSiriShortcutName": "Afspil musik",
     "DailyMessage": "Daglig besked",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "{0} kopieret til udklipsholder"
   },
   "Streak": {
     "Message": "Din streak denne uge",
@@ -259,7 +259,7 @@
     "PlaybackSpeed": "Afspil hastighed",
     "Normal": "Normal",
     "Selected": "Valgt",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Se på BCC Media\n"
   },
   "QueueViewModel": {
     "Title": "Spillekø"
