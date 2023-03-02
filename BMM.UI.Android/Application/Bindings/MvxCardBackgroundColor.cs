@@ -9,7 +9,7 @@ namespace BMM.UI.Droid.Application.Bindings
         public MvxCardBackgroundColor(object target) : base(target)
         { }
 
-        public override Type TargetType => typeof(Color);
+        public override Type TargetValueType => typeof(Color);
 
         protected override void SetValueImpl(object target, object value)
         {

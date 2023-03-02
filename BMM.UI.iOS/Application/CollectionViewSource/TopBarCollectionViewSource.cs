@@ -142,7 +142,7 @@ namespace BMM.UI.iOS.CollectionViewSource
             if (ItemsSource != null && ItemsSource.Count() > 0)
             {
                 _selectorView.Hidden = false;
-                UpdateSelectedBar(NSIndexPath.FromRowSection(0, 0), false);
+                UpdateSelectedBar(NSIndexPath.FromRowSection(new IntPtr(0), new IntPtr(0)), false);
             }
             else
             {
@@ -245,7 +245,7 @@ namespace BMM.UI.iOS.CollectionViewSource
 
         public void UpdateSelection(int currentIndex)
         {
-            var currentlyAnimatedIndex = NSIndexPath.FromItemSection(currentIndex, 0);
+            var currentlyAnimatedIndex = NSIndexPath.FromItemSection(new IntPtr(currentIndex), new IntPtr(0));
             ItemSelected(CollectionView, currentlyAnimatedIndex);
         }
 

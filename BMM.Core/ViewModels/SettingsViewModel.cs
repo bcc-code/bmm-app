@@ -168,7 +168,6 @@ namespace BMM.Core.ViewModels
         {
             var profile = await _profileLoader.LoadProfile();
             _profilePictureUrl = profile.Picture;
-            await BuildSections();
         }
 
         private async Task BuildSections()

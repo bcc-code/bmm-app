@@ -10,7 +10,7 @@ namespace BMM.UI.iOS.Utils
         public static UIView Load(string nibName, CGRect bounds, NSObject owner, NSDictionary options = null)
         {
             var nibsArray = NSBundle.MainBundle.LoadNib(nibName, owner, options);
-            var view = Runtime.GetNSObject<UIView>(nibsArray.ValueAt(0));
+            var view = Runtime.GetNSObject<UIView>(nibsArray.ValueAt(new UIntPtr(0)));
             view.Frame = bounds;
             return view;
         }

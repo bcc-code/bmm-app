@@ -41,7 +41,7 @@ namespace BMM.UI.iOS
 
             InitializeIfNeeded();
             _selectionView.Frame = Bounds;
-            ContentView.InsertSubview(_selectionView, 0);
+            ContentView.InsertSubview(_selectionView, new IntPtr(0));
         }
 
         public override void TouchesCancelled(NSSet touches, UIEvent? evt)

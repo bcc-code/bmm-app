@@ -1,20 +1,18 @@
-using Xamarin.Essentials;
-
 namespace BMM.Core.Implementations.Device
 {
     public class DeviceInfo : IDeviceInfo
     {
-        public string Manufacturer => Xamarin.Essentials.DeviceInfo.Manufacturer;
+        public string Manufacturer => Microsoft.Maui.Devices.DeviceInfo.Manufacturer;
 
-        public string Model => Xamarin.Essentials.DeviceInfo.Model;
+        public string Model => Microsoft.Maui.Devices.DeviceInfo.Model;
 
         public BmmDevicePlatform Platform
         {
             get
             {
-                if (Xamarin.Essentials.DeviceInfo.Platform == DevicePlatform.Android)
+                if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.Android)
                     return BmmDevicePlatform.Android;
-                if (Xamarin.Essentials.DeviceInfo.Platform == DevicePlatform.iOS)
+                if (Microsoft.Maui.Devices.DeviceInfo.Platform == Microsoft.Maui.Devices.DevicePlatform.iOS)
                     return BmmDevicePlatform.iOS;
 
                 return BmmDevicePlatform.Unsupported;
@@ -25,6 +23,6 @@ namespace BMM.Core.Implementations.Device
 
         public bool IsIos => Platform == BmmDevicePlatform.iOS;
 
-        public string VersionString => Xamarin.Essentials.DeviceInfo.VersionString;
+        public string VersionString => Microsoft.Maui.Devices.DeviceInfo.VersionString;
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Android.Support.V4.Media;
+﻿using Android.Support.V4.Media;
 using Android.Support.V4.Media.Session;
 using BMM.Core.Implementations.UI;
 using BMM.Api.Abstraction;
@@ -9,12 +8,11 @@ using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
-using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
-using BMM.UI.Droid.Application.NewMediaPlayer.Service;
-using Com.Google.Android.Exoplayer2;
+using BMM.UI.Droid.Application.Extensions;
 using Java.IO;
 using MvvmCross;
 using MvvmCross.Plugin.Messenger;
+using FileNotFoundException = Java.IO.FileNotFoundException;
 using MediaControllerCompat = Android.Support.V4.Media.Session.MediaControllerCompat;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller

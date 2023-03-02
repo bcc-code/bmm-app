@@ -13,6 +13,7 @@ using BMM.Core.Implementations.Notifications;
 using BMM.Core.Translation;
 using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.Platforms.Android;
+using Uri = Android.Net.Uri;
 
 namespace BMM.UI.Droid.Application.Actions
 {

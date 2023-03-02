@@ -12,7 +12,7 @@ namespace BMM.UI.iOS.Implementations.Download
     /// </summary>
     public class OngoingDownloadsLockDictionary
     {
-        private readonly Dictionary<System.nuint, OngoingDownload> _downloads = new Dictionary<System.nuint, OngoingDownload>();
+        private readonly Dictionary<UIntPtr, OngoingDownload> _downloads = new Dictionary<UIntPtr, OngoingDownload>();
         private readonly ReaderWriterLockSlim _downloadsLock = new ReaderWriterLockSlim();
 
         public void Add(OngoingDownload download)

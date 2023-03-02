@@ -1,943 +1,978 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <LangVersion>default</LangVersion>
-    <AndroidSupportedAbis>armeabi-v7a;x86;arm64-v8a;x86_64</AndroidSupportedAbis>
-    <TargetFrameworkVersion>v12.1</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9AB7A107-7947-4F98-8790-DC39AD51F4DE}</ProjectGuid>
-    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>net7.0-android</TargetFramework>
+    <TargetPlatformVersion>33</TargetPlatformVersion>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <OutputType>Exe</OutputType>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseMauiEssentials>true</UseMauiEssentials>
+    <ApplicationId>org.brunstad.bmm</ApplicationId>
     <RootNamespace>BMM.UI.Droid</RootNamespace>
     <AssemblyName>BMM.UI.Android</AssemblyName>
-    <FileAlignment>512</FileAlignment>
-    <AndroidApplication>True</AndroidApplication>
-    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
-    <AndroidResgenClass>Resource</AndroidResgenClass>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
-    <XamarinInsightsApiKey>d7e0ad6067b876bcfb5cbb1402b11231db02137f</XamarinInsightsApiKey>
-    <ProguardToolPath>./proguard/</ProguardToolPath>
+<!-- there is an issue with net 7 android sdk when compliling AOT-->
+<!-- should be fixed in dotnet sdk 7.0.300-->
+<!-- these entries can be removed, when this version will be published-->
+<!--    https://github.com/dotnet/linker/issues/3112-->
+    <RunAOTCompilation>False</RunAOTCompilation>
+    <PublishTrimmed>False</PublishTrimmed>
+<!-- ##-->
+
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>TRACE;DEBUG;ENV_INT</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidLinkMode>None</AndroidLinkMode>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
-    <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
-    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
-    <MandroidI18n />
-    <AotAssemblies>false</AotAssemblies>
-    <BundleAssemblies>false</BundleAssemblies>
-    <AndroidDexTool>d8</AndroidDexTool>
-    <AndroidSupportedAbis>x86_64;x86;armeabi-v7a;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <ConsolePause>false</ConsolePause>
-    <AndroidSigningKeyStore>
-    </AndroidSigningKeyStore>
-    <AndroidSigningStorePass>
-    </AndroidSigningStorePass>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <AndroidKeyStore>false</AndroidKeyStore>
-    <AndroidSigningKeyAlias>
-    </AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>
-    </AndroidSigningKeyPass>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
-    <AotAssemblies>true</AotAssemblies>
-    <Debugger>Xamarin</Debugger>
-    <DebugSymbols>false</DebugSymbols>
-    <AndroidHttpClientHandlerType>System.Net.Http.HttpClientHandler</AndroidHttpClientHandlerType>
-    <EnableProguard>true</EnableProguard>
-    <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
-    <BundleAssemblies>true</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>true</AndroidCreatePackagePerAbi>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <AndroidLinkTool>r8</AndroidLinkTool>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'INT|AnyCPU'">
-    <OutputPath>bin\INT\</OutputPath>
-    <Optimize>true</Optimize>
-    <DebugType>portable</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <DefineConstants>ENV_INT</DefineConstants>
+    <AndroidLinkSkip>MvvmCross;MvvmCross.Plugin.Messenger</AndroidLinkSkip>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mono.Android.Export" />
-    <Reference Include="System" />
-    <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Mono.Android" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="Xamarin.AndroidX.Media, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\.nuget\packages\xamarin.androidx.media\1.1.0.1\lib\monoandroid90\Xamarin.AndroidX.Media.dll</HintPath>
-    </Reference>
+    <PackageReference Include="akavache" Version="9.1.7" />
+    <PackageReference Include="MvvmCross" Version="9.0.9" />
+    <PackageReference Include="MvvmCross.DroidX.RecyclerView" Version="9.0.9" />
+    <PackageReference Include="MvvmCross.DroidX.SwipeRefreshLayout" Version="9.0.9" />
+    <PackageReference Include="MvvmCross.Plugin.Color" Version="9.0.9" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+    <PackageReference Include="Xam.Plugins.Android.ExoPlayer" Version="2.18.10" />
+    <PackageReference Include="Xam.Plugins.Android.ExoPlayer.MediaSession" Version="2.18.10" />
+    <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.16" />
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.2.1.9" />
+    <PackageReference Include="Xamarin.Firebase.Common" Version="120.2.0.1" />
+    <PackageReference Include="Xamarin.Firebase.Config" Version="121.2.0.1" />
+    <PackageReference Include="Xamarin.Firebase.Messaging" Version="123.1.1.1" />
+    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.7.0.2" />
+    <PackageReference Include="Xamarin.AndroidX.Navigation.Common" Version="2.5.3.1" />
+    <PackageReference Include="Xamarin.AndroidX.Navigation.Runtime" Version="2.5.3.1" />
+    <PackageReference Include="Xamarin.AndroidX.Navigation.UI" Version="2.5.3.1" />
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.5.1.2" />
+    <PackageReference Include="Xamarin.AndroidX.Navigation.Fragment" Version="2.5.3.1" />
+    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4" Version="1.0.0.16" />
+    <PackageReference Include="Xamarin.AndroidX.Browser" Version="1.4.0.4" />
+    <PackageReference Include="Xamarin.Google.Crypto.Tink.Android" Version="1.7.0.2" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
-    <Compile Include="Application\Actions\HandleDeepLinkAction.cs" />
-    <Compile Include="Application\Actions\HandleNotificationAction.cs" />
-    <Compile Include="Application\Actions\Interfaces\IHandleDeepLinkAction.cs" />
-    <Compile Include="Application\Actions\Interfaces\IHandleNotificationAction.cs" />
-    <Compile Include="Application\Actions\OnStartAction.cs" />
-    <Compile Include="Application\Actions\ShareYearInReviewAction.cs" />
-    <Compile Include="Application\Activities\SupportEndedActivity.cs" />
-    <Compile Include="Application\Activities\UserSetupActivity.cs" />
-    <Compile Include="Application\Activities\OidcLoginActivity.cs" />
-    <Compile Include="Application\Adapters\BaseTabLayoutAdapter.cs" />
-    <Compile Include="Application\Adapters\BindableFragmentPagerAdapter.cs" />
-    <Compile Include="Application\Adapters\BrowseRecyclerAdapter.cs" />
-    <Compile Include="Application\Adapters\TilesCollectionRecyclerAdapter.cs" />
-    <Compile Include="Application\Adapters\DocumentDragAndDropAdapter.cs" />
-    <Compile Include="Application\Adapters\DragAndDrop\ListDeleteClickListener.cs" />
-    <Compile Include="Application\Adapters\DragAndDrop\LanguageListAdapter.cs" />
-    <Compile Include="Application\Adapters\DragAndDrop\CustomTouchListener.cs" />
-    <Compile Include="Application\Adapters\DragAndDrop\IDragAndDropAdapter.cs" />
-    <Compile Include="Application\Adapters\DragAndDrop\IOnStartDragListener.cs" />
-    <Compile Include="Application\Adapters\DragAndDrop\DragAndDropItemViewHolder.cs" />
-    <Compile Include="Application\Adapters\DragAndDrop\UpAndDownDraggingTouchCallback.cs" />
-    <Compile Include="Application\Adapters\CoversCarouselRecyclerAdapter.cs" />
-    <Compile Include="Application\Adapters\FlexibleWidthTabTabLayoutAdapter.cs" />
-    <Compile Include="Application\Adapters\PodcastContextHeaderRecyclerAdapter.cs" />
-    <Compile Include="Application\Adapters\YearInReviewRecyclerAdapter.cs" />
-    <Compile Include="Application\Bindings\BackgroundResourceBinding.cs" />
-    <Compile Include="Application\Bindings\Base\BMMAndroidTargetBinding.cs" />
-    <Compile Include="Application\Bindings\ColorStateListHelper.cs" />
-    <Compile Include="Application\Bindings\ImageButtonIconResourceBinding.cs" />
-    <Compile Include="Application\Bindings\MvxCachedImageViewPathBinding.cs" />
-    <Compile Include="Application\Bindings\MvxCardBackgroundColor.cs" />
-    <Compile Include="Application\Bindings\MvxCardCircle.cs" />
-    <Compile Include="Application\Bindings\MvxCardVisibility.cs" />
-    <Compile Include="Application\Constants\AndroidScreenSizesHeight.cs" />
-    <Compile Include="Application\Constants\NotificationKeys.cs" />
-    <Compile Include="Application\Constants\Player\CoverConstants.cs" />
-    <Compile Include="Application\Constants\ValueConstants.cs" />
-    <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
-    <Compile Include="Application\CustomViews\ProgressBarView.cs" />
-    <Compile Include="Application\CustomViews\ShadowLayout.cs" />
-    <Compile Include="Application\CustomViews\TabLayout\Base\TabLayoutBase.cs" />
-    <Compile Include="Application\CustomViews\TabLayout\FixedLengthIndicator.cs" />
-    <Compile Include="Application\CustomViews\TabLayout\FlexibleWidthTabLayout.cs" />
-    <Compile Include="Application\Decorators\HorizontalSpacingItemDecoration.cs" />
-    <Compile Include="Application\DownloadManager\AndroidDownloadManager.cs" />
-    <Compile Include="Application\DownloadManager\DownloadCompletedBroadcastReceiver.cs" />
-    <Compile Include="Application\DownloadManager\DownloadCompletedHandler.cs" />
-    <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
-    <Compile Include="Application\Extensions\BoolExtensions.cs" />
-    <Compile Include="Application\Extensions\ColorExtensions.cs" />
-    <Compile Include="Application\Extensions\ContextExtensions.cs" />
-    <Compile Include="Application\Extensions\FragmentExtensions.cs" />
-    <Compile Include="Application\Extensions\FragmentManagerExtensions.cs" />
-    <Compile Include="Application\Extensions\TextViewExtensions.cs" />
-    <Compile Include="Application\Extensions\ViewExtensions.cs" />
-    <Compile Include="Application\Extensions\ViewStatesExtensions.cs" />
-    <Compile Include="Application\Fragments\AutomaticDownloadFragment.cs" />
-    <Compile Include="Application\Fragments\Base\BaseCoversTileCollectionFragment.cs" />
-    <Compile Include="Application\Fragments\Base\BaseDialogFragment.cs" />
-    <Compile Include="Application\Fragments\Base\BaseSlideInOutFragment.cs" />
-    <Compile Include="Application\Fragments\Base\SwipeToRefreshFragment.cs" />
-    <Compile Include="Application\Fragments\BrowseDetailsListFragment.cs" />
-    <Compile Include="Application\Fragments\BrowseDetailsTilesFragment.cs" />
-    <Compile Include="Application\Fragments\EditTrackCollectionFragment.cs" />
-    <Compile Include="Application\Fragments\BrowseFragment.cs" />
-    <Compile Include="Application\Fragments\FollowedPodcastsFragment.cs" />
-    <Compile Include="Application\Fragments\ChangeTrackLanguageFragment.cs" />
-    <Compile Include="Application\Fragments\ListeningStreakDetailsFragment.cs" />
-    <Compile Include="Application\Fragments\PlaybackHistoryFragment.cs" />
-    <Compile Include="Application\Fragments\PodcastFragment.cs" />
-    <Compile Include="Application\Fragments\LibraryArchiveFragment.cs" />
-    <Compile Include="Application\Fragments\DownloadedFollowedPodcastsFragment.cs" />
-    <Compile Include="Application\Fragments\PodcastsFragment.cs" />
-    <Compile Include="Application\Fragments\SearchResultsFragment.cs" />
-    <Compile Include="Application\Fragments\SharedTrackCollectionFragment.cs" />
-    <Compile Include="Application\Fragments\ShareTrackCollectionFragment.cs" />
-    <Compile Include="Application\Fragments\StorageManagementFragment.cs" />
-    <Compile Include="Application\Fragments\MyContentFragment.cs" />
-    <Compile Include="Application\Fragments\MyTracksFragment.cs" />
-    <Compile Include="Application\Fragments\ThemeSettingsFragment.cs" />
-    <Compile Include="Application\Fragments\TopSongsCollectionFragment.cs" />
-    <Compile Include="Application\Fragments\TrackOptionsFragment.cs" />
-    <Compile Include="Application\Fragments\YearInReviewFragment.cs" />
-    <Compile Include="Application\Helpers\AndroidSupportVersionChecker.cs" />
-    <Compile Include="Application\Helpers\BitmapHelper.cs" />
-    <Compile Include="Application\Helpers\BottomSheet\PreventBottomSheetChangesWhileSwipeHappens.cs" />
-    <Compile Include="Application\Helpers\BottomSheet\BottomSheetManager.cs" />
-    <Compile Include="Application\Helpers\CenterSnapHelper.cs" />
-    <Compile Include="Application\Helpers\BmmViewPagerFragmentInfo.cs" />
-    <Compile Include="Application\Helpers\HideKeyboardExtensions.cs" />
-    <Compile Include="Application\Helpers\SetupHelper.cs" />
-    <Compile Include="Application\Implementations\App\ISystemSettingsService.cs" />
-    <Compile Include="Application\Implementations\App\SystemSettingsService.cs" />
-    <Compile Include="Application\Implementations\Device\DroidFeaturePreviewPermission.cs" />
-    <Compile Include="Application\Implementations\Dialogs\DroidBMMUserDialogs.cs" />
-    <Compile Include="Application\Implementations\FirebaseRemoteConfig\AndroidFirebaseRemoteConfig.cs" />
-    <Compile Include="Application\Implementations\AndroidLogger.cs" />
-    <Compile Include="Application\Implementations\ClipboardService.cs" />
-    <Compile Include="Application\Implementations\DroidUserDialogs.cs" />
-    <Compile Include="Application\Implementations\Notifications\AndroidIntentNotification.cs" />
-    <Compile Include="Application\Implementations\Notifications\DroidNotificationPermissionService.cs" />
-    <Compile Include="Application\Implementations\Notifications\RemoteMessageNotification.cs" />
-    <Compile Include="Application\Implementations\Oidc\BrowserSelector.cs" />
-    <Compile Include="Application\Implementations\Oidc\ChromeCustomTabsBrowser.cs" />
-    <Compile Include="Application\Implementations\Oidc\WebkitWebViewBrowsercs.cs" />
-    <Compile Include="Application\Implementations\Track\DroidTrackOptionsService.cs" />
-    <Compile Include="Application\Implementations\UI\DroidExceptionHandlingUserDialogs.cs" />
-    <Compile Include="Application\Implementations\UI\DroidUserDialogsFactory.cs" />
-    <Compile Include="Application\Implementations\ViewModelAwareViewPresenter.cs" />
-    <Compile Include="Application\Implementations\FileStorage\AndroidFileStorage.cs" />
-    <Compile Include="Application\ItemDecorators\Enums\ItemDecorationOrientation.cs" />
-    <Compile Include="Application\ItemDecorators\SpacingItemDecorator.cs" />
-    <Compile Include="Application\Listeners\AnimationUpdateListener.cs" />
-    <Compile Include="Application\Listeners\DefaultLifecycleObserver.cs" />
-    <Compile Include="Application\Listeners\ImageServiceRecyclerViewScrollListener.cs" />
-    <Compile Include="Application\Listeners\Interfaces\IRecyclerViewSnapHandler.cs" />
-    <Compile Include="Application\Listeners\OnPreparedListeners.cs" />
-    <Compile Include="Application\Listeners\SnapOnScrollListener.cs" />
-    <Compile Include="Application\NewMediaPlayer\AudioFocus\AudioFocusExoPlayerDecorator.cs" />
-    <Compile Include="Application\NewMediaPlayer\Controller\MediaControllerCallback.cs" />
-    <Compile Include="Application\NewMediaPlayer\Controller\PlaybackStateCompatMapper.cs" />
-    <Compile Include="Application\NewMediaPlayer\Controller\PeriodicExecutor.cs" />
-    <Compile Include="Application\NewMediaPlayer\MetadataMapper.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\CustomAction.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\ExoPlayerAction.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\INotificationAction.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\NotificationChannelBuilder.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\NowPlayingNotificationBuilder.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\NotificationCompatHelper.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\CustomActionBroadcastReceiver.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\PlaybackStateCompatExtensions.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\IdleRecoveringQueueNavigator.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\ExoPlaybackPreparer.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\PlayerExtensions.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\QueueDataAdapter.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\SingleMediaSourceFactory.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\TagReadingQueueNavigator.cs" />
-    <Compile Include="Application\NewMediaPlayer\Service\CustomErrorMessageProvider.cs" />
-    <Compile Include="Application\NewMediaPlayer\Service\CustomShuffleOrder.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\IdleRecoveringControlDispatcher.cs" />
-    <Compile Include="Application\TemplateSelectors\TilesCollectionTemplateSelector.cs" />
-    <Compile Include="Application\ValueConverters\StreakTextSourceValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\HexToColorValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\IsNextTrackAvailableToBackgroundResourceValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\PlayingStateToPlayPauseIdNameValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\RepeatModeToBackgroundResourceValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\IsSelectedToBackgroundResourceValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\ShuffleEnabledToIconValueConverter.cs" />
-    <Compile Include="Application\ViewHolders\TilesCollectionViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\ContinueListeningTileViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\FlexibleWidthTabTabLayoutViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\InfoMessageViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\VideoTileViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\YearInReviewItemViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\YearInReviewTeaserViewHolder.cs" />
-    <Compile Include="Utils\PendingIntentsUtils.cs" />
-    <Compile Include="Utils\ThemeUtils.cs" />
-    <Compile Include="Utils\ViewUtils.cs" />
-    <Reference Include="System.IO.Compression" />
-    <Compile Include="Application\Helpers\Gesture\HorizontalSwipeDetector.cs" />
-    <Compile Include="Application\Helpers\Gesture\SwipeDirection.cs" />
-    <Compile Include="Application\Helpers\Gesture\SwipeEvent.cs" />
-    <Compile Include="Application\Helpers\Gesture\SwipeEventType.cs" />
-    <Compile Include="Application\Helpers\ISdkVersionHelper.cs" />
-    <Compile Include="Application\Helpers\SdkVersionHelper.cs" />
-    <Compile Include="Application\NewMediaPlayer\Notification\MusicServiceMediaCallback.cs" />
-    <Compile Include="Application\NewMediaPlayer\Playback\HttpSourceFactory.cs" />
-    <Compile Include="Application\NewMediaPlayer\Service\MediaIdHelper.cs" />
-    <Compile Include="Application\NewMediaPlayer\Controller\AndroidMediaPlayer.cs" />
-    <Compile Include="Application\NewMediaPlayer\Service\MediaSourceSetter.cs" />
-    <Compile Include="Application\NewMediaPlayer\Service\MusicService.cs" />
-    <Compile Include="Application\Media\MediaMountedHandler.cs" />
-    <Compile Include="Application\Media\MediaMountedBroadcastReceiver.cs" />
-    <Compile Include="Application\TemplateSelectors\SettingsTemplateSelector.cs" />
-    <Compile Include="Application\TemplateSelectors\TrackListTemplateSelector.cs" />
-    <Compile Include="Application\ValueConverters\CurrentDayColor.cs" />
-    <Compile Include="Application\Bindings\MvxBackgroundTintBinding.cs" />
-    <Compile Include="Application\ValueConverters\SectionedToFlatListValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\TrackAvailabilityToOpacityValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\TrackPlaybackStateToColorValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\TrackPlaybackStateToDrawableValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\VisibleOrHiddenValueConverter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Application\ValueConverters\OfflineBannerVisibilityValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\RepeatModeToIconValueConverter.cs" />
-    <Compile Include="Application\Adapters\HeaderRecyclerAdapter.cs" />
-    <Compile Include="Application\Fragments\ExploreRecentSpeechesFragment.cs" />
-    <Compile Include="Application\Fragments\ExploreRecentMusicFragment.cs" />
-    <Compile Include="Application\Fragments\CuratedPlaylistsFragment.cs" />
-    <Compile Include="Application\Fragments\CuratedPlaylistFragment.cs" />
-    <Compile Include="Application\TemplateSelectors\ChangeTrackLanguageTemplateSelector.cs" />
+    <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />
+    <ProjectReference Include="..\Lottie\Lottie.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Adapters\TrackInfoAdapter.cs" />
-    <Compile Include="AndroidMvxLog.cs" />
-    <Compile Include="Application\ViewHolders\CoverWithTitleViewHolder.cs" />
-    <Compile Include="Application\ViewHolders\CoversCarouselCollectionViewHolder.cs" />
-    <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="Application\Activities\MainActivity.cs" />
-    <Compile Include="Application\Fragments\AlbumFragment.cs" />
-    <Compile Include="Application\Fragments\AlbumsFragment.cs" />
-    <Compile Include="Application\Fragments\ContributorFragment.cs" />
-    <Compile Include="Application\Fragments\CopyrightFragment.cs" />
-    <Compile Include="Application\Fragments\ExploreContributorsFragment.cs" />
-    <Compile Include="Application\Fragments\ExploreNewestFragment.cs" />
-    <Compile Include="Application\Fragments\LanguageAppFragment.cs" />
-    <Compile Include="Application\Fragments\LanguageContentFragment.cs" />
-    <Compile Include="Application\Fragments\MenuFragment.cs" />
-    <Compile Include="Application\Fragments\MiniPlayerFragment.cs" />
-    <Compile Include="Application\Fragments\DownloadedContentFragment.cs" />
-    <Compile Include="Application\Fragments\PlayerFragment.cs" />
-    <Compile Include="Application\Fragments\QueueFragment.cs" />
-    <Compile Include="Application\Fragments\SearchFragment.cs" />
-    <Compile Include="Application\Fragments\SettingsFragment.cs" />
-    <Compile Include="Application\Fragments\TrackCollectionFragment.cs" />
-    <Compile Include="Application\Fragments\TrackCollectionsAddToFragment.cs" />
-    <Compile Include="Application\ValueConverters\FloatProgressToIntValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\IntToStringValueConverter.cs" />
-    <Compile Include="Application\ValueConverters\ToUpperValueConverter.cs" />
-    <Compile Include="Application\Implementations\FileStorage\StorageManager.cs" />
-    <Compile Include="SplashScreenActivity.cs" />
-    <Compile Include="AndroidSetup.cs" />
-    <Compile Include="Application\Fragments\BaseFragment.cs" />
-    <Compile Include="Application\Implementations\Media\TrackMediaHelper.cs" />
-    <Compile Include="Application\ValueConverters\DeleteCommandValueConverter.cs" />
-    <Compile Include="Application\Helpers\MvxRecyclerViewOnScrollListener.cs" />
-    <Compile Include="Application\Adapters\LoadMoreRecyclerAdapter.cs" />
-    <Compile Include="Application\Fragments\TrackInfoFragment.cs" />
-    <Compile Include="BmmApplication.cs" />
-    <Compile Include="Application\TemplateSelectors\DocumentTemplateSelector.cs" />
-    <Compile Include="AkavacheSqliteLinkerOverride.cs" />
-    <Compile Include="Application\Implementations\Notifications\BmmMessagingService.cs" />
-    <Compile Include="Application\Implementations\Notifications\NotificationDisplayer.cs" />
-    <Compile Include="Application\Implementations\Notifications\FirebaseTokenProvider.cs" />
-    <Compile Include="Application\Activities\BaseFragmentActivity.cs" />
-    <Compile Include="Application\Implementations\UI\UriOpener.cs" />
+    <Folder Include="Resources" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Resources\AboutResources.txt" />
-    <None Include="Properties\AndroidManifest.xml">
-      <SubType>Designer</SubType>
-    </None>
-    <AndroidResource Include="Resources\anim\fade_in.xml" />
-    <AndroidResource Include="Resources\anim\fade_out.xml" />
-    <AndroidResource Include="Resources\anim\slide_in_bottom.xml" />
-    <AndroidResource Include="Resources\anim\slide_out_bottom.xml" />
-    <AndroidResource Include="Resources\anim\spinner_small_progress_bar.xml" />
-    <AndroidResource Include="Resources\anim\spinner_small_root.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\anim\trim_end_interpolator.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\anim\trim_start_interpolator.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\color-night\textfield_background.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\color\navigation_color_selector.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\color\textfield_background.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-hdpi\aslaksen.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\fra_kaare_til_buk_teaser_image.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_suggestion.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_contributor_fallback.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_play_podcast.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_shuffle_podcast.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\new_placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\new_placeholder_cover_night.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-hdpi\placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\podcast_background_aslaksen_phone.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\aslaksen.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\fra_kaare_til_buk_teaser_image.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_song.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_suggestion.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_contributor_fallback.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_shuffle_podcast.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_play_podcast.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\new_placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\new_placeholder_cover_night.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-mdpi\placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\podcast_background_aslaksen_phone.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-night-hdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-night-mdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-night-xhdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-night-xxhdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-night-xxxhdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\aslaksen.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\fra_kaare_til_buk_teaser_image.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_song.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_suggestion.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_contributor_fallback.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_shuffle_podcast.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_play_podcast.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\new_placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\new_placeholder_cover_night.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xhdpi\placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_aslaksen_phone.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\aslaksen.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\fra_kaare_til_buk_teaser_image.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_suggestion.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_contributor_fallback.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_shuffle_podcast.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_podcast.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\new_placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\new_placeholder_cover_night.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xxhdpi\placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_aslaksen_phone.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\aslaksen.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\fra_kaare_til_buk_teaser_image.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right_light.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_playlist.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_song.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_suggestion.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_unknown.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_contributor_fallback.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_shuffle_podcast.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_podcast.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\new_placeholder_cover.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\new_placeholder_cover_night.png">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_aslaksen_phone.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\year_in_review_teaser.png" />
-    <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
-    <AndroidResource Include="Resources\drawable\bergprekenen_labels.xml" />
-    <AndroidResource Include="Resources\drawable\border_top.xml" />
-    <AndroidResource Include="Resources\drawable\bottom_slide_popup_background.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\button_background_rounded_black.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\button_background_rounded_black_ripple.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\button_background_rounded_oncolor_five_border.xml" />
-    <AndroidResource Include="Resources\drawable\button_background_rounded_oncolor_five_border_ripple.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\button_pause_mini.xml" />
-    <AndroidResource Include="Resources\drawable\button_play_mini.xml" />
-    <AndroidResource Include="Resources\drawable\button_ripple.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\button_rounded_background.xml" />
-    <AndroidResource Include="Resources\drawable\circle.xml" />
-    <AndroidResource Include="Resources\drawable\circle_background.xml" />
-    <AndroidResource Include="Resources\drawable\circular_progress_bar.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\circular_shape.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\cover_rounded_background.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\cover_with_title_background.xml" />
-    <AndroidResource Include="Resources\drawable\edit_text_cursor.xml" />
-    <AndroidResource Include="Resources\drawable\icon_album.xml" />
-    <AndroidResource Include="Resources\drawable\icon_arrow_down.xml" />
-    <AndroidResource Include="Resources\drawable\icon_arrow_left.xml" />
-    <AndroidResource Include="Resources\drawable\icon_chevron_primary_right.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_download_mini.xml" />
-    <AndroidResource Include="Resources\drawable\icon_edit.xml" />
-    <AndroidResource Include="Resources\drawable\icon_external_sound.xml" />
-    <AndroidResource Include="Resources\drawable\icon_friends.xml" />
-    <AndroidResource Include="Resources\drawable\icon_information.xml" />
-    <AndroidResource Include="Resources\drawable\icon_link.xml" />
-    <AndroidResource Include="Resources\drawable\icon_more.xml" />
-    <AndroidResource Include="Resources\drawable\icon_next.xml" />
-    <AndroidResource Include="Resources\drawable\icon_next_inactive.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_options.xml" />
-    <AndroidResource Include="Resources\drawable\icon_pause.xml" />
-    <AndroidResource Include="Resources\drawable\icon_person.xml" />
-    <AndroidResource Include="Resources\drawable\icon_playback_history.xml" />
-    <AndroidResource Include="Resources\drawable\icon_playback_speed.xml" />
-    <AndroidResource Include="Resources\drawable\icon_previous.xml" />
-    <AndroidResource Include="Resources\drawable\icon_queue.xml" />
-    <AndroidResource Include="Resources\drawable\icon_remove.xml" />
-    <AndroidResource Include="Resources\drawable\icon_repeat.xml" />
-    <AndroidResource Include="Resources\drawable\icon_repeat_selected.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_repeat_single.xml" />
-    <AndroidResource Include="Resources\drawable\icon_search.xml" />
-    <AndroidResource Include="Resources\drawable\icon_select.xml" />
-    <AndroidResource Include="Resources\drawable\icon_share.xml" />
-    <AndroidResource Include="Resources\drawable\icon_shuffle.xml" />
-    <AndroidResource Include="Resources\drawable\icon_shuffle_selected.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_skip_back.xml" />
-    <AndroidResource Include="Resources\drawable\icon_skip_forward.xml" />
-    <AndroidResource Include="Resources\drawable\icon_sleep_timer.xml" />
-    <AndroidResource Include="Resources\drawable\icon_union.xml" />
-    <AndroidResource Include="Resources\drawable\icon_info.xml" />
-    <AndroidResource Include="Resources\drawable\info_message_rounded_background.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_browse_active.xml" />
-    <AndroidResource Include="Resources\drawable\spinner_small.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\spinner_small_design.xml" />
-    <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_left.xml" />
-    <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_right.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_chevron_right.xml" />
-    <AndroidResource Include="Resources\drawable\icon_download.xml" />
-    <AndroidResource Include="Resources\drawable\icon_download_done.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_download_pending.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_download_progress.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_play_button.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_playlist.xml" />
-    <AndroidResource Include="Resources\drawable\icon_podcast.xml" />
-    <AndroidResource Include="Resources\drawable\icon_tick.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\navigation_favorites.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_favorites_active.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_favorites_selector.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_home.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_home_active.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_home_selector.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_browse_selector.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_profile.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_profile_active.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_profile_selector.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_search.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_search_active.xml" />
-    <AndroidResource Include="Resources\drawable\navigation_search_selector.xml" />
-    <AndroidResource Include="Resources\drawable\ripple_random_button_fra_kaare.xml" />
-    <AndroidResource Include="Resources\drawable\teaser_rounded_background.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\togglebutton_play_pause.xml" />
-    <AndroidResource Include="Resources\font\inter.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\font\inter_700.ttf" />
-    <AndroidResource Include="Resources\font\inter_600.ttf" />
-    <AndroidResource Include="Resources\font\inter_500.ttf" />
-    <AndroidResource Include="Resources\font\inter_800.ttf" />
-    <AndroidResource Include="Resources\layout\activity_user_setup.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\activity_oidc_login.axml" />
-    <AndroidResource Include="Resources\layout\collapsing_toolbar.xml" />
-    <AndroidResource Include="Resources\layout\fragment_browse_list_details.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_browse_details_tiles.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_change_track_language.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_edit_trackcollection.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_listening_streak_details.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_menu.xml" />
-    <AndroidResource Include="Resources\layout\fragment_playback_history.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_search_results.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_shared_trackcollection.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_share_trackcollection.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_theme_settings.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_top_songs.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_tracklist.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_track_options.xml" />
-    <AndroidResource Include="Resources\layout\fragment_year_in_review.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_search_history.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_tab_layout.xml" />
-    <AndroidResource Include="Resources\layout\listitem_audio.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_chapter_header.xml" />
-    <AndroidResource Include="Resources\layout\listitem_continue_listening_tile.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_message_tile.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_video_tile.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_tiles_collection.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_cover_with_title.xml" />
-    <AndroidResource Include="Resources\layout\listitem_cover_with_title_flexible.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_detail.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_info_message.axml" />
-    <AndroidResource Include="Resources\layout\listitem_ordering_track.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_covers_carousel_collection.xml" />
-    <AndroidResource Include="Resources\layout\listitem_discover_section_header.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_profile.xml" />
-    <AndroidResource Include="Resources\layout\listitem_shared_trackcollection_header.xml" />
-    <AndroidResource Include="Resources\layout\listitem_simple_margin.xml" />
-    <AndroidResource Include="Resources\layout\listitem_standard_icon_option.xml" />
-    <AndroidResource Include="Resources\layout\listitem_standard_selectable.xml" />
-    <AndroidResource Include="Resources\layout\listitem_streak.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_theme_selector.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_top_songs_collection_header.xml" />
-    <AndroidResource Include="Resources\layout\listitem_trackcollection.axml" />
-    <AndroidResource Include="Resources\drawable\seekbar_miniplayer.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\fragment_downloadedcontent.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\navigation_header_text.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\xam_mediaManager_notify_ic.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\xam_mediaManager_notify_ic.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\xam_mediaManager_notify_ic.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\xam_mediaManager_notify_ic.png" />
-    <AndroidResource Include="Resources\layout\listitem_search_suggestion.axml" />
-    <AndroidResource Include="Resources\layout\listitem_tracklist_header.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_year_in_review.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_year_in_review_teaser_collapsed.xml" />
-    <AndroidResource Include="Resources\layout\listitem_year_in_review_teaser_expanded.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\tracklist_fragment_base.xml" />
-    <AndroidResource Include="Resources\layout\track_download_status.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\view_tab_layout.axml" />
-    <AndroidResource Include="Resources\menu\bottom_navigation_menu.xml" />
-    <AndroidResource Include="Resources\menu\edit_trackcollection.xml" />
-    <AndroidResource Include="Resources\menu\playback_history.xml" />
-    <AndroidResource Include="Resources\menu\share_trackcollection.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\menu\trackcollection_shared.xml" />
-    <AndroidResource Include="Resources\raw\bp_video_02.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_03.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_04.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_06.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_07.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_08.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_09.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_10.mp4" />
-    <AndroidResource Include="Resources\values-hdpi\dimens.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\values-night\colors.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\values-night-v27\styles.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\values-night\dimens.xml" />
-    <AndroidResource Include="Resources\values-night\Strings.xml" />
+    <None Remove="Resources\values-xxxhdpi\dimens.xml" />
+    <AndroidResource Include="Resources\values-xxxhdpi\dimens.xml" />
+    <None Remove="Resources\values-xxhdpi\dimens.xml" />
+    <AndroidResource Include="Resources\values-xxhdpi\dimens.xml" />
+    <None Remove="Resources\values-xhdpi\dimens.xml" />
+    <AndroidResource Include="Resources\values-xhdpi\dimens.xml" />
+    <None Remove="Resources\values-v27\styles.xml" />
     <AndroidResource Include="Resources\values-v27\styles.xml" />
-    <AndroidResource Include="Resources\values-xhdpi\dimens.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\values-xxhdpi\dimens.xml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\values-xxxhdpi\dimens.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
+    <None Remove="Resources\values-v21\styles.xml" />
+    <AndroidResource Include="Resources\values-v21\styles.xml" />
+    <None Remove="Resources\values-night-v27\styles.xml" />
+    <AndroidResource Include="Resources\values-night-v27\styles.xml" />
+    <None Remove="Resources\values-night\colors.xml" />
+    <AndroidResource Include="Resources\values-night\colors.xml" />
+    <None Remove="Resources\values-night\dimens.xml" />
+    <AndroidResource Include="Resources\values-night\dimens.xml" />
+    <None Remove="Resources\values-night\Strings.xml" />
+    <AndroidResource Include="Resources\values-night\Strings.xml" />
+    <None Remove="Resources\values-large\dimens.xml" />
+    <AndroidResource Include="Resources\values-large\dimens.xml" />
+    <None Remove="Resources\values-hdpi\dimens.xml" />
+    <AndroidResource Include="Resources\values-hdpi\dimens.xml" />
+    <None Remove="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
-    <AndroidResource Include="Resources\xml\auto_backup_rules.xml" />
-    <AndroidResource Include="Resources\xml\file_paths.xml" />
-    <AndroidResource Include="Resources\xml\global_tracker.xml" />
-    <AndroidResource Include="Resources\drawable\progressbar_downloading.xml" />
-    <AndroidResource Include="Resources\drawable\button_pause.xml" />
-    <AndroidResource Include="Resources\drawable\documents_divider.xml" />
-    <AndroidResource Include="Resources\layout\listitem_isfullyloaded.axml" />
-    <AndroidResource Include="Resources\layout\listitem_isloading.axml" />
-    <AndroidResource Include="Resources\layout\fragment_trackcollections_addto.axml" />
-    <AndroidResource Include="Resources\layout\fragment_trackinfo.axml" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_rearrange.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_rearrange.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_rearrange.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_rearrange.png" />
-    <AndroidResource Include="Resources\layout\listitem_trackcollection_header.axml" />
-    <AndroidResource Include="Resources\layout\listitem_header.axml" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_trackrelation_external.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_trackrelation_external.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_trackrelation_external.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_trackrelation_external.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_trackrelation_external.png" />
-    <AndroidResource Include="Resources\layout\listitem_trackrelation_external.axml" />
-    <AndroidResource Include="Resources\layout\fragment_podcasts.axml" />
-    <AndroidResource Include="Resources\layout\fragment_library_archive.axml" />
-    <AndroidResource Include="Resources\layout\fragment_automatic_download.axml" />
-    <AndroidResource Include="Resources\layout\listitem_automatic_download.axml" />
+    <None Remove="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <None Remove="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <None Remove="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <None Remove="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <None Remove="Resources\raw\bp_video_07.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_07.mp4" />
+    <None Remove="Resources\raw\bp_video_04.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_04.mp4" />
+    <None Remove="Resources\raw\bp_video_06.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_06.mp4" />
+    <None Remove="Resources\raw\bp_video_02.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_02.mp4" />
+    <None Remove="Resources\raw\bp_video_03.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_03.mp4" />
+    <None Remove="Resources\raw\bp_video_09.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_09.mp4" />
+    <None Remove="Resources\raw\bp_video_10.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_10.mp4" />
+    <None Remove="Resources\raw\bp_video_08.mp4" />
+    <AndroidResource Include="Resources\raw\bp_video_08.mp4" />
+    <None Remove="Resources\layout\activity_main.axml" />
+    <AndroidResource Include="Resources\layout\activity_main.axml" />
+    <None Remove="Resources\layout\listitem_shared_trackcollection_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_shared_trackcollection_header.xml" />
+    <None Remove="Resources\layout\listitem_year_in_review_teaser_expanded.xml" />
+    <AndroidResource Include="Resources\layout\listitem_year_in_review_teaser_expanded.xml" />
+    <None Remove="Resources\layout\fragment_downloadedfollowedpodcasts.axml" />
     <AndroidResource Include="Resources\layout\fragment_downloadedfollowedpodcasts.axml" />
+    <None Remove="Resources\layout\listitem_top_songs_collection_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_top_songs_collection_header.xml" />
+    <None Remove="Resources\layout\listitem_cover_with_title_flexible.xml" />
+    <AndroidResource Include="Resources\layout\listitem_cover_with_title_flexible.xml" />
+    <None Remove="Resources\layout\listitem_covers_carousel_collection.xml" />
+    <AndroidResource Include="Resources\layout\listitem_covers_carousel_collection.xml" />
+    <None Remove="Resources\layout\listitem_trackrelation_external.axml" />
+    <AndroidResource Include="Resources\layout\listitem_trackrelation_external.axml" />
+    <None Remove="Resources\layout\fragment_listening_streak_details.xml" />
+    <AndroidResource Include="Resources\layout\fragment_listening_streak_details.xml" />
+    <None Remove="Resources\layout\listitem_discover_section_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_discover_section_header.xml" />
+    <None Remove="Resources\layout\listitem_trackcollection_header.axml" />
+    <AndroidResource Include="Resources\layout\listitem_trackcollection_header.axml" />
+    <None Remove="Resources\layout\fragment_trackcollections_addto.axml" />
+    <AndroidResource Include="Resources\layout\fragment_trackcollections_addto.axml" />
+    <None Remove="Resources\layout\listitem_continue_listening_tile.xml" />
+    <AndroidResource Include="Resources\layout\listitem_continue_listening_tile.xml" />
+    <None Remove="Resources\layout\fragment_share_trackcollection.axml" />
+    <AndroidResource Include="Resources\layout\fragment_share_trackcollection.axml" />
+    <None Remove="Resources\layout\fragment_shared_trackcollection.xml" />
+    <AndroidResource Include="Resources\layout\fragment_shared_trackcollection.xml" />
+    <None Remove="Resources\layout\fragment_edit_trackcollection.axml" />
+    <AndroidResource Include="Resources\layout\fragment_edit_trackcollection.axml" />
+    <None Remove="Resources\layout\fragment_change_track_language.axml" />
+    <AndroidResource Include="Resources\layout\fragment_change_track_language.axml" />
+    <None Remove="Resources\layout\listitem_standard_icon_option.xml" />
+    <AndroidResource Include="Resources\layout\listitem_standard_icon_option.xml" />
+    <None Remove="Resources\layout\fragment_browse_details_tiles.axml" />
+    <AndroidResource Include="Resources\layout\fragment_browse_details_tiles.axml" />
+    <None Remove="Resources\layout\listitem_standard_selectable.xml" />
+    <AndroidResource Include="Resources\layout\listitem_standard_selectable.xml" />
+    <None Remove="Resources\layout\fragment_browse_list_details.axml" />
+    <AndroidResource Include="Resources\layout\fragment_browse_list_details.axml" />
+    <None Remove="Resources\layout\fragment_storage_management.axml" />
+    <AndroidResource Include="Resources\layout\fragment_storage_management.axml" />
+    <None Remove="Resources\layout\listitem_automatic_download.axml" />
+    <AndroidResource Include="Resources\layout\listitem_automatic_download.axml" />
+    <None Remove="Resources\layout\listitem_search_suggestion.axml" />
+    <AndroidResource Include="Resources\layout\listitem_search_suggestion.axml" />
+    <None Remove="Resources\layout\fragment_automatic_download.axml" />
+    <AndroidResource Include="Resources\layout\fragment_automatic_download.axml" />
+    <None Remove="Resources\layout\listitem_featured_playlist.axml" />
+    <AndroidResource Include="Resources\layout\listitem_featured_playlist.axml" />
+    <None Remove="Resources\layout\listitem_navigation_header.axml" />
+    <AndroidResource Include="Resources\layout\listitem_navigation_header.axml" />
+    <None Remove="Resources\layout\listitem_language_content.axml" />
+    <AndroidResource Include="Resources\layout\listitem_language_content.axml" />
+    <None Remove="Resources\layout\fragment_downloadedcontent.axml" />
+    <AndroidResource Include="Resources\layout\fragment_downloadedcontent.axml" />
+    <None Remove="Resources\layout\fragment_language_content.axml" />
+    <AndroidResource Include="Resources\layout\fragment_language_content.axml" />
+    <None Remove="Resources\layout\fragment_playback_history.axml" />
+    <AndroidResource Include="Resources\layout\fragment_playback_history.axml" />
+    <None Remove="Resources\layout\listitem_tracklist_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_tracklist_header.xml" />
+    <None Remove="Resources\layout\fragment_followedpodcasts.axml" />
+    <AndroidResource Include="Resources\layout\fragment_followedpodcasts.axml" />
+    <None Remove="Resources\layout\listitem_tiles_collection.xml" />
+    <AndroidResource Include="Resources\layout\listitem_tiles_collection.xml" />
+    <None Remove="Resources\layout\listitem_trackcollection.axml" />
+    <AndroidResource Include="Resources\layout\listitem_trackcollection.axml" />
+    <None Remove="Resources\layout\listitem_cover_with_title.xml" />
+    <AndroidResource Include="Resources\layout\listitem_cover_with_title.xml" />
+    <None Remove="Resources\layout\listitem_storage_details.axml" />
+    <AndroidResource Include="Resources\layout\listitem_storage_details.axml" />
+    <None Remove="Resources\layout\fragment_library_archive.axml" />
+    <AndroidResource Include="Resources\layout\fragment_library_archive.axml" />
+    <None Remove="Resources\layout\listitem_aslaksen_teaser.axml" />
+    <AndroidResource Include="Resources\layout\listitem_aslaksen_teaser.axml" />
+    <None Remove="Resources\layout\listitem_standard_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_standard_header.xml" />
+    <None Remove="Resources\layout\listitem_theme_selector.axml" />
+    <AndroidResource Include="Resources\layout\listitem_theme_selector.axml" />
+    <None Remove="Resources\layout\fragment_year_in_review.axml" />
+    <AndroidResource Include="Resources\layout\fragment_year_in_review.axml" />
+    <None Remove="Resources\layout\listitem_ordering_track.axml" />
+    <AndroidResource Include="Resources\layout\listitem_ordering_track.axml" />
+    <None Remove="Resources\layout\fragment_search_results.axml" />
+    <AndroidResource Include="Resources\layout\fragment_search_results.axml" />
+    <None Remove="Resources\layout\fragment_theme_settings.axml" />
+    <AndroidResource Include="Resources\layout\fragment_theme_settings.axml" />
+    <None Remove="Resources\layout\listitem_year_in_review.xml" />
+    <AndroidResource Include="Resources\layout\listitem_year_in_review.xml" />
+    <None Remove="Resources\layout\tracklist_fragment_base.xml" />
+    <AndroidResource Include="Resources\layout\tracklist_fragment_base.xml" />
+    <None Remove="Resources\layout\listitem_isfullyloaded.axml" />
+    <AndroidResource Include="Resources\layout\listitem_isfullyloaded.axml" />
+    <None Remove="Resources\layout\listitem_search_history.xml" />
+    <AndroidResource Include="Resources\layout\listitem_search_history.xml" />
+    <None Remove="Resources\layout\activity_support_ended.axml" />
+    <AndroidResource Include="Resources\layout\activity_support_ended.axml" />
+    <None Remove="Resources\layout\listitem_chapter_header.xml" />
+    <AndroidResource Include="Resources\layout\listitem_chapter_header.xml" />
+    <None Remove="Resources\layout\listitem_language_app.axml" />
+    <AndroidResource Include="Resources\layout\listitem_language_app.axml" />
+    <None Remove="Resources\layout\listitem_simple_margin.xml" />
+    <AndroidResource Include="Resources\layout\listitem_simple_margin.xml" />
+    <None Remove="Resources\layout\fragment_track_options.xml" />
+    <AndroidResource Include="Resources\layout\fragment_track_options.xml" />
+    <None Remove="Resources\layout\listitem_info_message.axml" />
+    <AndroidResource Include="Resources\layout\listitem_info_message.axml" />
+    <None Remove="Resources\layout\track_download_status.xml" />
+    <AndroidResource Include="Resources\layout\track_download_status.xml" />
+    <None Remove="Resources\layout\fragment_language_app.axml" />
+    <AndroidResource Include="Resources\layout\fragment_language_app.axml" />
+    <None Remove="Resources\layout\listitem_message_tile.xml" />
+    <AndroidResource Include="Resources\layout\listitem_message_tile.xml" />
+    <None Remove="Resources\layout\listitem_pinned_item.axml" />
+    <AndroidResource Include="Resources\layout\listitem_pinned_item.axml" />
+    <None Remove="Resources\layout\listitem_live_radio.axml" />
+    <AndroidResource Include="Resources\layout\listitem_live_radio.axml" />
+    <None Remove="Resources\layout\listitem_contributor.axml" />
+    <AndroidResource Include="Resources\layout\listitem_contributor.axml" />
+    <None Remove="Resources\layout\activity_user_setup.axml" />
+    <AndroidResource Include="Resources\layout\activity_user_setup.axml" />
+    <None Remove="Resources\layout\fragment_miniplayer.axml" />
+    <AndroidResource Include="Resources\layout\fragment_miniplayer.axml" />
+    <None Remove="Resources\layout\listitem_video_tile.xml" />
+    <AndroidResource Include="Resources\layout\listitem_video_tile.xml" />
+    <None Remove="Resources\layout\activity_oidc_login.axml" />
+    <AndroidResource Include="Resources\layout\activity_oidc_login.axml" />
+    <None Remove="Resources\layout\listitem_isloading.axml" />
+    <AndroidResource Include="Resources\layout\listitem_isloading.axml" />
+    <None Remove="Resources\layout\listitem_tab_layout.xml" />
+    <AndroidResource Include="Resources\layout\listitem_tab_layout.xml" />
+    <None Remove="Resources\layout\fragment_mycontent.axml" />
+    <AndroidResource Include="Resources\layout\fragment_mycontent.axml" />
+    <None Remove="Resources\layout\fragment_trackinfo.axml" />
+    <AndroidResource Include="Resources\layout\fragment_trackinfo.axml" />
+    <None Remove="Resources\layout\toolbar_actionbar.axml" />
+    <AndroidResource Include="Resources\layout\toolbar_actionbar.axml" />
+    <None Remove="Resources\layout\fragment_copyright.axml" />
+    <AndroidResource Include="Resources\layout\fragment_copyright.axml" />
+    <None Remove="Resources\layout\fragment_tracklist.xml" />
+    <AndroidResource Include="Resources\layout\fragment_tracklist.xml" />
+    <None Remove="Resources\layout\listitem_checkbox.axml" />
+    <AndroidResource Include="Resources\layout\listitem_checkbox.axml" />
+    <None Remove="Resources\layout\fragment_settings.axml" />
+    <AndroidResource Include="Resources\layout\fragment_settings.axml" />
+    <None Remove="Resources\layout\fragment_top_songs.xml" />
+    <AndroidResource Include="Resources\layout\fragment_top_songs.xml" />
+    <None Remove="Resources\layout\fragment_mytracks.axml" />
+    <AndroidResource Include="Resources\layout\fragment_mytracks.axml" />
+    <None Remove="Resources\layout\fragment_podcasts.axml" />
+    <AndroidResource Include="Resources\layout\fragment_podcasts.axml" />
+    <None Remove="Resources\layout\listitem_archive.axml" />
+    <AndroidResource Include="Resources\layout\listitem_archive.axml" />
+    <None Remove="Resources\layout\collapsing_toolbar.xml" />
+    <AndroidResource Include="Resources\layout\collapsing_toolbar.xml" />
+    <None Remove="Resources\layout\view_tab_layout.axml" />
+    <AndroidResource Include="Resources\layout\view_tab_layout.axml" />
+    <None Remove="Resources\layout\fragment_explore.axml" />
     <AndroidResource Include="Resources\layout\fragment_explore.axml" />
-    <AndroidResource Include="Resources\drawable\button_background_rounded_transparent.xml">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\icon_play.xml">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
-    <AndroidResource Include="Resources\layout\listitem_standard_header.xml">
-      <SubType></SubType>
-      <Generator></Generator>
-    </AndroidResource>
+    <None Remove="Resources\layout\listitem_profile.xml" />
+    <AndroidResource Include="Resources\layout\listitem_profile.xml" />
+    <None Remove="Resources\layout\listitem_streak.axml" />
+    <AndroidResource Include="Resources\layout\listitem_streak.axml" />
+    <None Remove="Resources\layout\listitem_detail.axml" />
+    <AndroidResource Include="Resources\layout\listitem_detail.axml" />
+    <None Remove="Resources\layout\listitem_header.axml" />
+    <AndroidResource Include="Resources\layout\listitem_header.axml" />
+    <None Remove="Resources\layout\fragment_player.axml" />
+    <AndroidResource Include="Resources\layout\fragment_player.axml" />
+    <None Remove="Resources\layout\fragment_search.axml" />
+    <AndroidResource Include="Resources\layout\fragment_search.axml" />
+    <None Remove="Resources\layout\fragment_albums.axml" />
+    <AndroidResource Include="Resources\layout\fragment_albums.axml" />
+    <None Remove="Resources\layout\fragment_browse.axml" />
+    <AndroidResource Include="Resources\layout\fragment_browse.axml" />
+    <None Remove="Resources\layout\listitem_track.axml" />
+    <AndroidResource Include="Resources\layout\listitem_track.axml" />
+    <None Remove="Resources\layout\offline_banner.axml" />
+    <AndroidResource Include="Resources\layout\offline_banner.axml" />
+    <None Remove="Resources\layout\fragment_queue.axml" />
+    <AndroidResource Include="Resources\layout\fragment_queue.axml" />
+    <None Remove="Resources\layout\listitem_audio.axml" />
+    <AndroidResource Include="Resources\layout\listitem_audio.axml" />
+    <None Remove="Resources\layout\splash_screen.axml" />
+    <AndroidResource Include="Resources\layout\splash_screen.axml" />
+    <None Remove="Resources\layout\listitem.axml" />
+    <AndroidResource Include="Resources\layout\listitem.axml" />
+    <None Remove="Resources\layout\fragment_menu.xml" />
+    <AndroidResource Include="Resources\layout\fragment_menu.xml" />
+    <None Remove="Resources\layout\listitem_year_in_review_teaser_collapsed.xml" />
+    <AndroidResource Include="Resources\layout\listitem_year_in_review_teaser_collapsed.xml" />
+    <None Remove="Resources\menu\album.xml" />
+    <AndroidResource Include="Resources\menu\album.xml" />
+    <None Remove="Resources\menu\trackcollection_shared.xml" />
+    <AndroidResource Include="Resources\menu\trackcollection_shared.xml" />
+    <None Remove="Resources\menu\share_trackcollection.xml" />
+    <AndroidResource Include="Resources\menu\share_trackcollection.xml" />
+    <None Remove="Resources\menu\bottom_navigation_menu.xml" />
+    <AndroidResource Include="Resources\menu\bottom_navigation_menu.xml" />
+    <None Remove="Resources\menu\playback_history.xml" />
+    <AndroidResource Include="Resources\menu\playback_history.xml" />
+    <None Remove="Resources\menu\edit_trackcollection.xml" />
+    <AndroidResource Include="Resources\menu\edit_trackcollection.xml" />
+    <None Remove="Resources\menu\podcast.xml" />
+    <AndroidResource Include="Resources\menu\podcast.xml" />
+    <None Remove="Resources\menu\trackcollection.xml" />
+    <AndroidResource Include="Resources\menu\trackcollection.xml" />
+    <None Remove="Resources\menu\search.xml" />
+    <AndroidResource Include="Resources\menu\search.xml" />
+    <None Remove="Resources\font\Inter.xml" />
+    <AndroidResource Include="Resources\font\Inter.xml" />
+    <None Remove="Resources\font\inter_700.ttf" />
+    <AndroidResource Include="Resources\font\inter_700.ttf" />
+    <None Remove="Resources\font\inter_800.ttf" />
+    <AndroidResource Include="Resources\font\inter_800.ttf" />
+    <None Remove="Resources\font\inter_500.ttf" />
+    <AndroidResource Include="Resources\font\inter_500.ttf" />
+    <None Remove="Resources\font\inter_600.ttf" />
+    <AndroidResource Include="Resources\font\inter_600.ttf" />
+    <None Remove="Resources\drawable-xxxhdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\app_icon.png" />
+    <None Remove="Resources\drawable-xxxhdpi\podcast_background_aslaksen_phone.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_aslaksen_phone.png" />
+    <None Remove="Resources\drawable-xxxhdpi\fra_kaare_til_buk_teaser_image.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\fra_kaare_til_buk_teaser_image.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_skip_forward_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_skip_forward_notification.png" />
+    <None Remove="Resources\drawable-xxxhdpi\new_placeholder_cover_night.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\new_placeholder_cover_night.png" />
+    <None Remove="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\podcast_background_fra_kaare.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_skip_back_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_skip_back_notification.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_trackrelation_external.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_trackrelation_external.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_suggestion.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_contributor_fallback.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_contributor_fallback.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_prev_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_prev_notification.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_pause_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_pause_notification.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_next_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_next_notification.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_play_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_notification.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_arrow_right_light.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right_light.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_playlist.png" />
+    <None Remove="Resources\drawable-xxxhdpi\radio_background_live.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\radio_background_live.png" />
+    <None Remove="Resources\drawable-xxxhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_category_unknown.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_unknown.png" />
+    <None Remove="Resources\drawable-xxxhdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\new_placeholder_cover.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_options_static.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_options_static.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_shuffle_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_shuffle_podcast.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_category_song.png" />
+    <None Remove="Resources\drawable-xxxhdpi\notification_solid.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\notification_solid.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_podcast.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_radio_static.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_radio_static.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_play_static.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_static.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_close_static.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_close_static.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_arrow_right.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_now_playing.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_now_playing.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_add_static.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_add_static.png" />
+    <None Remove="Resources\drawable-xxxhdpi\loading_spinner.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\loading_spinner.png" />
+    <None Remove="Resources\drawable-xxxhdpi\aslaksen.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\aslaksen.png" />
+    <None Remove="Resources\drawable-xxxhdpi\icon_blue_dot.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_blue_dot.png" />
+    <None Remove="Resources\drawable-xxhdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\app_icon.png" />
+    <None Remove="Resources\drawable-xxhdpi\podcast_background_aslaksen_phone.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_aslaksen_phone.png" />
+    <None Remove="Resources\drawable-xxhdpi\fra_kaare_til_buk_teaser_image.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\fra_kaare_til_buk_teaser_image.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_skip_forward_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_skip_forward_notification.png" />
+    <None Remove="Resources\drawable-xxhdpi\new_placeholder_cover_night.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\new_placeholder_cover_night.png" />
+    <None Remove="Resources\drawable-xxhdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\podcast_background_fra_kaare.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_skip_back_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_skip_back_notification.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_trackrelation_external.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_trackrelation_external.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_contributor_fallback.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_contributor_fallback.png" />
+    <None Remove="Resources\drawable-xxhdpi\xam_mediaManager_notify_ic.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\xam_mediaManager_notify_ic.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_pause_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_pause_notification.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_suggestion.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_play_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_notification.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_prev_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_prev_notification.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_playlist.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_next_notification.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_next_notification.png" />
+    <None Remove="Resources\drawable-xxhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_arrow_right_light.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right_light.png" />
+    <None Remove="Resources\drawable-xxhdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\new_placeholder_cover.png" />
+    <None Remove="Resources\drawable-xxhdpi\radio_background_live.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\radio_background_live.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_shuffle_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_shuffle_podcast.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_category_unknown.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_unknown.png" />
+    <None Remove="Resources\drawable-xxhdpi\notification_solid.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\notification_solid.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_options_static.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_options_static.png" />
+    <None Remove="Resources\drawable-xxhdpi\btn_signout_static.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_signout_static.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_category_song.png" />
+    <None Remove="Resources\drawable-xxhdpi\placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\placeholder_cover.png" />
+    <None Remove="Resources\drawable-xxhdpi\btn_signout_active.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_signout_active.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_podcast.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_radio_static.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_radio_static.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_play_static.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_static.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_close_static.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_close_static.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_arrow_right.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_now_playing.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_now_playing.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_play_small.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_small.png" />
+    <None Remove="Resources\drawable-xxhdpi\loading_spinner.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\loading_spinner.png" />
+    <None Remove="Resources\drawable-xxhdpi\btn_play_static.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_play_static.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_add_static.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_add_static.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_rearrange.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_rearrange.png" />
+    <None Remove="Resources\drawable-xxhdpi\btn_play_active.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\btn_play_active.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_delete.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_delete.png" />
+    <None Remove="Resources\drawable-xxhdpi\icon_blue_dot.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_blue_dot.png" />
+    <None Remove="Resources\drawable-xxhdpi\aslaksen.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\aslaksen.png" />
+    <None Remove="Resources\drawable-xxhdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\login_logo.png" />
+    <None Remove="Resources\drawable-xhdpi\notification_solid.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\notification_solid.png" />
+    <None Remove="Resources\drawable-xhdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_fra_kaare.png" />
+    <None Remove="Resources\drawable-xhdpi\btn_signout_active.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_signout_active.png" />
+    <None Remove="Resources\drawable-xhdpi\fra_kaare_til_buk_teaser_image.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\fra_kaare_til_buk_teaser_image.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_skip_forward_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_skip_forward_notification.png" />
+    <None Remove="Resources\drawable-xhdpi\new_placeholder_cover_night.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\new_placeholder_cover_night.png" />
+    <None Remove="Resources\drawable-xhdpi\placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\placeholder_cover.png" />
+    <None Remove="Resources\drawable-xhdpi\btn_signout_static.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_signout_static.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_song.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_options_static.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_options_static.png" />
+    <None Remove="Resources\drawable-xhdpi\btn_options_static.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\btn_options_static.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_pause_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_pause_notification.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_contributor_fallback.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_contributor_fallback.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_play_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_play_notification.png" />
+    <None Remove="Resources\drawable-xhdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\new_placeholder_cover.png" />
+    <None Remove="Resources\drawable-xhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_playlist.png" />
+    <None Remove="Resources\drawable-xhdpi\xam_mediaManager_notify_ic.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\xam_mediaManager_notify_ic.png" />
+    <None Remove="Resources\drawable-xhdpi\podcast_background_aslaksen_phone.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\podcast_background_aslaksen_phone.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_radio_static.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_radio_static.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_suggestion.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_prev_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_prev_notification.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_trackrelation_external.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_trackrelation_external.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_skip_back_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_skip_back_notification.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_shuffle_podcast.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_shuffle_podcast.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_category_unknown.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_category_unknown.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_next_notification.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_next_notification.png" />
+    <None Remove="Resources\drawable-xhdpi\icon_arrow_right_light.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right_light.png" />
+    <None Remove="Resources\drawable-xhdpi\radio_background_live.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\radio_background_live.png" />
+    <None Remove="Resources\drawable-night-xxxhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-xxxhdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-night-hdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-hdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-night-mdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-mdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-night-xhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-xhdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-night-xxhdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-night-xxhdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-mdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\app_icon.png" />
+    <None Remove="Resources\drawable-mdpi\podcast_background_aslaksen_phone.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\podcast_background_aslaksen_phone.png" />
+    <None Remove="Resources\drawable-mdpi\fra_kaare_til_buk_teaser_image.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\fra_kaare_til_buk_teaser_image.png" />
+    <None Remove="Resources\drawable-mdpi\icon_skip_forward_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_skip_forward_notification.png" />
+    <None Remove="Resources\drawable-mdpi\new_placeholder_cover_night.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\new_placeholder_cover_night.png" />
+    <None Remove="Resources\drawable-mdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\podcast_background_fra_kaare.png" />
+    <None Remove="Resources\drawable-mdpi\icon_skip_back_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_skip_back_notification.png" />
+    <None Remove="Resources\drawable-mdpi\icon_trackrelation_external.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_trackrelation_external.png" />
+    <None Remove="Resources\drawable-mdpi\icon_contributor_fallback.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_contributor_fallback.png" />
+    <None Remove="Resources\drawable-mdpi\xam_mediaManager_notify_ic.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\xam_mediaManager_notify_ic.png" />
+    <None Remove="Resources\drawable-mdpi\icon_pause_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_pause_notification.png" />
+    <None Remove="Resources\drawable-mdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_suggestion.png" />
+    <None Remove="Resources\drawable-mdpi\icon_play_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_play_notification.png" />
+    <None Remove="Resources\drawable-mdpi\icon_prev_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_prev_notification.png" />
+    <None Remove="Resources\drawable-mdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_playlist.png" />
+    <None Remove="Resources\drawable-mdpi\icon_next_notification.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_next_notification.png" />
+    <None Remove="Resources\drawable-mdpi\radio_background_live.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\radio_background_live.png" />
+    <None Remove="Resources\drawable-mdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-mdpi\icon_category_unknown.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_unknown.png" />
+    <None Remove="Resources\drawable-mdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\new_placeholder_cover.png" />
+    <None Remove="Resources\drawable-mdpi\icon_options_static.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_options_static.png" />
+    <None Remove="Resources\drawable-mdpi\icon_shuffle_podcast.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_shuffle_podcast.png" />
+    <None Remove="Resources\drawable-mdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_category_song.png" />
+    <None Remove="Resources\drawable-mdpi\notification_solid.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\notification_solid.png" />
+    <None Remove="Resources\drawable-mdpi\btn_signout_active.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\btn_signout_active.png" />
+    <None Remove="Resources\drawable-mdpi\btn_signout_static.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\btn_signout_static.png" />
+    <None Remove="Resources\drawable-mdpi\placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\placeholder_cover.png" />
+    <None Remove="Resources\drawable-mdpi\btn_options_static.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\btn_options_static.png" />
+    <None Remove="Resources\drawable-mdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_play_podcast.png" />
+    <None Remove="Resources\drawable-mdpi\icon_radio_static.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_radio_static.png" />
+    <None Remove="Resources\drawable-mdpi\icon_play_static.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_play_static.png" />
+    <None Remove="Resources\drawable-mdpi\icon_close_static.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_close_static.png" />
+    <None Remove="Resources\drawable-mdpi\loading_spinner.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\loading_spinner.png" />
+    <None Remove="Resources\drawable-mdpi\icon_now_playing.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_now_playing.png" />
+    <None Remove="Resources\drawable-mdpi\icon_add_static.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_add_static.png" />
+    <None Remove="Resources\drawable-mdpi\icon_play_small.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_play_small.png" />
+    <None Remove="Resources\drawable-mdpi\icon_blue_dot.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_blue_dot.png" />
+    <None Remove="Resources\drawable-mdpi\icon_rearrange.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_rearrange.png" />
+    <None Remove="Resources\drawable-mdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\login_logo.png" />
+    <None Remove="Resources\drawable-mdpi\icon_delete.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_delete.png" />
+    <None Remove="Resources\drawable-mdpi\aslaksen.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\aslaksen.png" />
+    <None Remove="Resources\drawable-hdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\app_icon.png" />
+    <None Remove="Resources\drawable-hdpi\podcast_background_aslaksen_phone.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\podcast_background_aslaksen_phone.png" />
+    <None Remove="Resources\drawable-hdpi\fra_kaare_til_buk_teaser_image.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\fra_kaare_til_buk_teaser_image.png" />
+    <None Remove="Resources\drawable-hdpi\icon_skip_forward_notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_skip_forward_notification.png" />
+    <None Remove="Resources\drawable-hdpi\new_placeholder_cover_night.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\new_placeholder_cover_night.png" />
+    <None Remove="Resources\drawable-hdpi\podcast_background_fra_kaare.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\podcast_background_fra_kaare.png" />
+    <None Remove="Resources\drawable-hdpi\icon_skip_back_notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_skip_back_notification.png" />
+    <None Remove="Resources\drawable-hdpi\icon_trackrelation_external.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_trackrelation_external.png" />
+    <None Remove="Resources\drawable-hdpi\icon_contributor_fallback.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_contributor_fallback.png" />
+    <None Remove="Resources\drawable-hdpi\xam_mediaManager_notify_ic.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\xam_mediaManager_notify_ic.png" />
+    <None Remove="Resources\drawable-hdpi\icon_pause_notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_pause_notification.png" />
+    <None Remove="Resources\drawable-hdpi\icon_category_suggestion.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_suggestion.png" />
+    <None Remove="Resources\drawable-hdpi\icon_play_notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_play_notification.png" />
+    <None Remove="Resources\drawable-hdpi\icon_prev_notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_prev_notification.png" />
+    <None Remove="Resources\drawable-hdpi\icon_category_playlist.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_playlist.png" />
+    <None Remove="Resources\drawable-hdpi\icon_next_notification.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_next_notification.png" />
+    <None Remove="Resources\drawable-hdpi\year_in_review_teaser.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\year_in_review_teaser.png" />
+    <None Remove="Resources\drawable-hdpi\icon_arrow_right_light.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_right_light.png" />
+    <None Remove="Resources\drawable-hdpi\new_placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\new_placeholder_cover.png" />
+    <None Remove="Resources\drawable-hdpi\radio_background_live.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\radio_background_live.png" />
+    <None Remove="Resources\drawable-hdpi\icon_shuffle_podcast.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_shuffle_podcast.png" />
+    <None Remove="Resources\drawable-hdpi\icon_category_unknown.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_unknown.png" />
+    <None Remove="Resources\drawable-hdpi\notification_solid.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\notification_solid.png" />
+    <None Remove="Resources\drawable-hdpi\icon_options_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_options_static.png" />
+    <None Remove="Resources\drawable-hdpi\btn_signout_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_signout_static.png" />
+    <None Remove="Resources\drawable-hdpi\icon_category_song.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_category_song.png" />
+    <None Remove="Resources\drawable-hdpi\btn_options_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_options_static.png" />
+    <None Remove="Resources\drawable-hdpi\btn_signout_active.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_signout_active.png" />
+    <None Remove="Resources\drawable-hdpi\icon_radio_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_radio_static.png" />
+    <None Remove="Resources\drawable-hdpi\placeholder_cover.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\placeholder_cover.png" />
+    <None Remove="Resources\drawable-hdpi\icon_close_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_close_static.png" />
+    <None Remove="Resources\drawable-hdpi\icon_play_podcast.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_play_podcast.png" />
+    <None Remove="Resources\drawable-hdpi\icon_now_playing.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_now_playing.png" />
+    <None Remove="Resources\drawable-hdpi\icon_play_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_play_static.png" />
+    <None Remove="Resources\drawable-hdpi\btn_pause_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_pause_static.png" />
+    <None Remove="Resources\drawable-hdpi\icon_arrow_right.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_right.png" />
+    <None Remove="Resources\drawable-hdpi\loading_spinner.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\loading_spinner.png" />
+    <None Remove="Resources\drawable-hdpi\btn_pause_active.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\btn_pause_active.png" />
+    <None Remove="Resources\drawable-hdpi\icon_add_static.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_add_static.png" />
+    <None Remove="Resources\drawable-hdpi\icon_play_small.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_play_small.png" />
+    <None Remove="Resources\drawable-hdpi\icon_blue_dot.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_blue_dot.png" />
+    <None Remove="Resources\drawable-hdpi\icon_rearrange.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_rearrange.png" />
+    <None Remove="Resources\drawable-hdpi\login_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\login_logo.png" />
+    <None Remove="Resources\drawable-hdpi\icon_delete.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_delete.png" />
+    <None Remove="Resources\drawable-hdpi\aslaksen.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\aslaksen.png" />
+    <None Remove="Resources\drawable\background_share_track_collection.xml" />
+    <AndroidResource Include="Resources\drawable\background_share_track_collection.xml" />
+    <None Remove="Resources\drawable\icon_link.xml" />
+    <AndroidResource Include="Resources\drawable\icon_link.xml" />
+    <None Remove="Resources\drawable\circle.xml" />
+    <AndroidResource Include="Resources\drawable\circle.xml" />
+    <None Remove="Resources\drawable\icon_edit.xml" />
+    <AndroidResource Include="Resources\drawable\icon_edit.xml" />
+    <None Remove="Resources\drawable\button_background_rounded_oncolor_five_border.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded_oncolor_five_border.xml" />
+    <None Remove="Resources\drawable\button_background_rounded_oncolor_five_border_ripple.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded_oncolor_five_border_ripple.xml" />
+    <None Remove="Resources\drawable\button_background_rounded_black_ripple.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded_black_ripple.xml" />
+    <None Remove="Resources\drawable\continue_listening_tile_rounded_background.xml" />
+    <None Remove="Resources\drawable\button_background_rounded_transparent.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded_transparent.xml" />
+    <None Remove="Resources\drawable\button_background_rounded_black.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded_black.xml" />
+    <None Remove="Resources\drawable\info_message_rounded_background.xml" />
+    <AndroidResource Include="Resources\drawable\info_message_rounded_background.xml" />
+    <None Remove="Resources\drawable\gradient_aslaksen_teaser_right.xml" />
+    <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_right.xml" />
+    <None Remove="Resources\drawable\ripple_random_button_fra_kaare.xml" />
+    <AndroidResource Include="Resources\drawable\ripple_random_button_fra_kaare.xml" />
+    <None Remove="Resources\drawable\navigation_favorites_selector.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_favorites_selector.xml" />
+    <None Remove="Resources\drawable\radio_background_broadcasting.xml" />
+    <AndroidResource Include="Resources\drawable\radio_background_broadcasting.xml" />
+    <None Remove="Resources\drawable\bottom_slide_popup_background.xml" />
+    <AndroidResource Include="Resources\drawable\bottom_slide_popup_background.xml" />
+    <None Remove="Resources\drawable\gradient_aslaksen_teaser_left.xml" />
+    <AndroidResource Include="Resources\drawable\gradient_aslaksen_teaser_left.xml" />
+    <None Remove="Resources\drawable\navigation_profile_selector.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_profile_selector.xml" />
+    <None Remove="Resources\drawable\togglebutton_playpause_mini.xml" />
+    <AndroidResource Include="Resources\drawable\togglebutton_playpause_mini.xml" />
+    <None Remove="Resources\drawable\cover_with_title_background.xml" />
+    <AndroidResource Include="Resources\drawable\cover_with_title_background.xml" />
+    <None Remove="Resources\drawable\navigation_favorites_active.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_favorites_active.xml" />
+    <None Remove="Resources\drawable\navigation_browse_selector.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_browse_selector.xml" />
+    <None Remove="Resources\drawable\navigation_search_selector.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_search_selector.xml" />
+    <None Remove="Resources\drawable\teaser_rounded_background.xml" />
+    <AndroidResource Include="Resources\drawable\teaser_rounded_background.xml" />
+    <None Remove="Resources\drawable\icon_chevron_primary_right.xml" />
+    <AndroidResource Include="Resources\drawable\icon_chevron_primary_right.xml" />
+    <None Remove="Resources\drawable\navigation_profile_active.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_profile_active.xml" />
+    <None Remove="Resources\drawable\radio_background_upcoming.xml" />
+    <AndroidResource Include="Resources\drawable\radio_background_upcoming.xml" />
+    <None Remove="Resources\drawable\button_background_rounded.xml" />
+    <AndroidResource Include="Resources\drawable\button_background_rounded.xml" />
+    <None Remove="Resources\drawable\button_rounded_background.xml" />
+    <AndroidResource Include="Resources\drawable\button_rounded_background.xml" />
+    <None Remove="Resources\drawable\navigation_home_selector.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_home_selector.xml" />
+    <None Remove="Resources\drawable\navigation_search_active.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_search_active.xml" />
+    <None Remove="Resources\drawable\cover_rounded_background.xml" />
+    <AndroidResource Include="Resources\drawable\cover_rounded_background.xml" />
+    <None Remove="Resources\drawable\navigation_browse_active.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_browse_active.xml" />
+    <None Remove="Resources\drawable\progressbar_downloading.xml" />
+    <AndroidResource Include="Resources\drawable\progressbar_downloading.xml" />
+    <None Remove="Resources\drawable\togglebutton_play_pause.xml" />
+    <AndroidResource Include="Resources\drawable\togglebutton_play_pause.xml" />
+    <None Remove="Resources\drawable\navigation_header_text.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_header_text.xml" />
+    <None Remove="Resources\drawable\navigation_home_active.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_home_active.xml" />
+    <None Remove="Resources\drawable\icon_shuffle_selected.xml" />
+    <AndroidResource Include="Resources\drawable\icon_shuffle_selected.xml" />
+    <None Remove="Resources\drawable\icon_download_progress.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download_progress.xml" />
+    <None Remove="Resources\drawable\icon_download_pending.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download_pending.xml" />
+    <None Remove="Resources\drawable\icon_playback_history.xml" />
+    <AndroidResource Include="Resources\drawable\icon_playback_history.xml" />
+    <None Remove="Resources\drawable\button_radius_corners.xml" />
+    <AndroidResource Include="Resources\drawable\button_radius_corners.xml" />
+    <None Remove="Resources\drawable\circular_progress_bar.xml" />
+    <AndroidResource Include="Resources\drawable\circular_progress_bar.xml" />
+    <None Remove="Resources\drawable\navigation_favorites.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_favorites.xml" />
+    <None Remove="Resources\drawable\spinner_small_design.xml" />
+    <AndroidResource Include="Resources\drawable\spinner_small_design.xml" />
+    <None Remove="Resources\drawable\icon_playback_speed.xml" />
+    <AndroidResource Include="Resources\drawable\icon_playback_speed.xml" />
+    <None Remove="Resources\drawable\icon_repeat_selected.xml" />
+    <AndroidResource Include="Resources\drawable\icon_repeat_selected.xml" />
+    <None Remove="Resources\drawable\gradient_oidc_login.xml" />
+    <AndroidResource Include="Resources\drawable\gradient_oidc_login.xml" />
+    <None Remove="Resources\drawable\icon_external_sound.xml" />
+    <AndroidResource Include="Resources\drawable\icon_external_sound.xml" />
+    <None Remove="Resources\drawable\seekbar_miniplayer.xml" />
+    <AndroidResource Include="Resources\drawable\seekbar_miniplayer.xml" />
+    <None Remove="Resources\drawable\bergprekenen_labels.xml" />
+    <AndroidResource Include="Resources\drawable\bergprekenen_labels.xml" />
+    <None Remove="Resources\drawable\icon_repeat_single.xml" />
+    <AndroidResource Include="Resources\drawable\icon_repeat_single.xml" />
+    <None Remove="Resources\drawable\navigation_profile.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_profile.xml" />
+    <None Remove="Resources\drawable\icon_download_mini.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download_mini.xml" />
+    <None Remove="Resources\drawable\icon_next_inactive.xml" />
+    <AndroidResource Include="Resources\drawable\icon_next_inactive.xml" />
+    <None Remove="Resources\drawable\icon_chevron_right.xml" />
+    <AndroidResource Include="Resources\drawable\icon_chevron_right.xml" />
+    <None Remove="Resources\drawable\icon_download_done.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download_done.xml" />
+    <None Remove="Resources\drawable\navigation_browse.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_browse.xml" />
+    <None Remove="Resources\drawable\navigation_search.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_search.xml" />
+    <None Remove="Resources\drawable\icon_notification.xml" />
+    <AndroidResource Include="Resources\drawable\icon_notification.xml" />
+    <None Remove="Resources\drawable\icon_skip_forward.xml" />
+    <AndroidResource Include="Resources\drawable\icon_skip_forward.xml" />
+    <None Remove="Resources\drawable\circle_background.xml" />
+    <AndroidResource Include="Resources\drawable\circle_background.xml" />
+    <None Remove="Resources\drawable\documents_divider.xml" />
+    <AndroidResource Include="Resources\drawable\documents_divider.xml" />
+    <None Remove="Resources\drawable\seekbar_progress.xml" />
+    <AndroidResource Include="Resources\drawable\seekbar_progress.xml" />
+    <None Remove="Resources\drawable\button_pause_mini.xml" />
+    <AndroidResource Include="Resources\drawable\button_pause_mini.xml" />
+    <None Remove="Resources\drawable\icon_play_button.xml" />
+    <AndroidResource Include="Resources\drawable\icon_play_button.xml" />
+    <None Remove="Resources\drawable\icon_sleep_timer.xml" />
+    <AndroidResource Include="Resources\drawable\icon_sleep_timer.xml" />
+    <None Remove="Resources\drawable\edit_text_cursor.xml" />
+    <AndroidResource Include="Resources\drawable\edit_text_cursor.xml" />
+    <None Remove="Resources\drawable\icon_information.xml" />
+    <AndroidResource Include="Resources\drawable\icon_information.xml" />
+    <None Remove="Resources\drawable\navigation_home.xml" />
+    <AndroidResource Include="Resources\drawable\navigation_home.xml" />
+    <None Remove="Resources\drawable\button_play_mini.xml" />
+    <AndroidResource Include="Resources\drawable\button_play_mini.xml" />
+    <None Remove="Resources\drawable\icon_arrow_down.xml" />
+    <AndroidResource Include="Resources\drawable\icon_arrow_down.xml" />
+    <None Remove="Resources\drawable\icon_arrow_left.xml" />
+    <AndroidResource Include="Resources\drawable\icon_arrow_left.xml" />
+    <None Remove="Resources\drawable\icon_skip_back.xml" />
+    <AndroidResource Include="Resources\drawable\icon_skip_back.xml" />
+    <None Remove="Resources\drawable\rotate_spinner.xml" />
+    <AndroidResource Include="Resources\drawable\rotate_spinner.xml" />
+    <None Remove="Resources\drawable\circular_shape.xml" />
+    <AndroidResource Include="Resources\drawable\circular_shape.xml" />
+    <None Remove="Resources\drawable\gradient_login.xml" />
+    <AndroidResource Include="Resources\drawable\gradient_login.xml" />
+    <None Remove="Resources\drawable\seekbar_thumb.xml" />
+    <AndroidResource Include="Resources\drawable\seekbar_thumb.xml" />
+    <None Remove="Resources\drawable\spinner_small.xml" />
+    <AndroidResource Include="Resources\drawable\spinner_small.xml" />
+    <None Remove="Resources\drawable\icon_playlist.xml" />
+    <AndroidResource Include="Resources\drawable\icon_playlist.xml" />
+    <None Remove="Resources\drawable\icon_previous.xml" />
+    <AndroidResource Include="Resources\drawable\icon_previous.xml" />
+    <None Remove="Resources\drawable\button_ripple.xml" />
+    <AndroidResource Include="Resources\drawable\button_ripple.xml" />
+    <None Remove="Resources\drawable\icon_download.xml" />
+    <AndroidResource Include="Resources\drawable\icon_download.xml" />
+    <None Remove="Resources\drawable\splashscreen.xml" />
+    <AndroidResource Include="Resources\drawable\splashscreen.xml" />
+    <None Remove="Resources\drawable\button_logout.xml" />
+    <AndroidResource Include="Resources\drawable\button_logout.xml" />
+    <None Remove="Resources\drawable\icon_podcast.xml" />
+    <AndroidResource Include="Resources\drawable\icon_podcast.xml" />
+    <None Remove="Resources\drawable\icon_shuffle.xml" />
+    <AndroidResource Include="Resources\drawable\icon_shuffle.xml" />
+    <None Remove="Resources\drawable\icon_friends.xml" />
+    <AndroidResource Include="Resources\drawable\icon_friends.xml" />
+    <None Remove="Resources\drawable\icon_options.xml" />
+    <AndroidResource Include="Resources\drawable\icon_options.xml" />
+    <None Remove="Resources\drawable\icon_select.xml" />
+    <AndroidResource Include="Resources\drawable\icon_select.xml" />
+    <None Remove="Resources\drawable\button_pause.xml" />
+    <AndroidResource Include="Resources\drawable\button_pause.xml" />
+    <None Remove="Resources\drawable\icon_repeat.xml" />
+    <AndroidResource Include="Resources\drawable\icon_repeat.xml" />
+    <None Remove="Resources\drawable\icon_search.xml" />
+    <AndroidResource Include="Resources\drawable\icon_search.xml" />
+    <None Remove="Resources\drawable\icon_person.xml" />
+    <AndroidResource Include="Resources\drawable\icon_person.xml" />
+    <None Remove="Resources\drawable\icon_remove.xml" />
+    <AndroidResource Include="Resources\drawable\icon_remove.xml" />
+    <None Remove="Resources\drawable\icon_share.xml" />
+    <AndroidResource Include="Resources\drawable\icon_share.xml" />
+    <None Remove="Resources\drawable\icon_union.xml" />
+    <AndroidResource Include="Resources\drawable\icon_union.xml" />
+    <None Remove="Resources\drawable\icon_pause.xml" />
+    <AndroidResource Include="Resources\drawable\icon_pause.xml" />
+    <None Remove="Resources\drawable\icon_queue.xml" />
+    <AndroidResource Include="Resources\drawable\icon_queue.xml" />
+    <None Remove="Resources\drawable\border_top.xml" />
+    <AndroidResource Include="Resources\drawable\border_top.xml" />
+    <None Remove="Resources\drawable\icon_album.xml" />
+    <AndroidResource Include="Resources\drawable\icon_album.xml" />
+    <None Remove="Resources\drawable\icon_play.xml" />
+    <AndroidResource Include="Resources\drawable\icon_play.xml" />
+    <None Remove="Resources\drawable\icon_tick.xml" />
+    <AndroidResource Include="Resources\drawable\icon_tick.xml" />
+    <None Remove="Resources\drawable\icon_more.xml" />
+    <AndroidResource Include="Resources\drawable\icon_more.xml" />
+    <None Remove="Resources\drawable\icon_next.xml" />
+    <AndroidResource Include="Resources\drawable\icon_next.xml" />
+    <None Remove="Resources\drawable\icon_info.xml" />
+    <AndroidResource Include="Resources\drawable\icon_info.xml" />
+    <None Remove="Resources\anim\trim_start_interpolator.xml" />
+    <AndroidResource Include="Resources\anim\trim_start_interpolator.xml" />
+    <None Remove="Resources\anim\spinner_small_progress_bar.xml" />
+    <AndroidResource Include="Resources\anim\spinner_small_progress_bar.xml" />
+    <None Remove="Resources\anim\spinner_small_root.xml" />
+    <AndroidResource Include="Resources\anim\spinner_small_root.xml" />
+    <None Remove="Resources\anim\trim_end_interpolator.xml" />
+    <AndroidResource Include="Resources\anim\trim_end_interpolator.xml" />
+    <None Remove="Resources\anim\enter_from_right.xml" />
+    <AndroidResource Include="Resources\anim\enter_from_right.xml" />
+    <None Remove="Resources\anim\slide_out_bottom.xml" />
+    <AndroidResource Include="Resources\anim\slide_out_bottom.xml" />
+    <None Remove="Resources\anim\exit_to_left.xml" />
+    <AndroidResource Include="Resources\anim\exit_to_left.xml" />
+    <None Remove="Resources\anim\slide_in_bottom.xml" />
+    <AndroidResource Include="Resources\anim\slide_in_bottom.xml" />
+    <None Remove="Resources\anim\fade_in.xml" />
+    <AndroidResource Include="Resources\anim\fade_in.xml" />
+    <None Remove="Resources\anim\fade_out.xml" />
+    <AndroidResource Include="Resources\anim\fade_out.xml" />
+    <None Remove="Resources\color\navigation_color_selector.xml" />
+    <AndroidResource Include="Resources\color\navigation_color_selector.xml" />
+    <None Remove="Resources\color\textfield_background.xml" />
+    <AndroidResource Include="Resources\color\textfield_background.xml" />
+    <None Remove="Resources\color-night\textfield_background.xml" />
+    <AndroidResource Include="Resources\color-night\textfield_background.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\values-v21\styles.xml" />
-    <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\xml\account_preferences.xml" />
-    <AndroidResource Include="Resources\layout\listitem_track.axml" />
-    <AndroidResource Include="Resources\layout\fragment_search.axml" />
-    <AndroidResource Include="Resources\layout\fragment_settings.axml" />
-    <AndroidResource Include="Resources\layout\fragment_player.axml" />
-    <AndroidResource Include="Resources\layout\activity_main.axml" />
-    <AndroidResource Include="Resources\layout\toolbar_actionbar.axml" />
-    <AndroidResource Include="Resources\layout\fragment_queue.axml" />
-    <AndroidResource Include="Resources\layout\listitem.axml" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\app_icon.png" />
-    <AndroidResource Include="Resources\layout\listitem_checkbox.axml" />
-    <AndroidResource Include="Resources\layout\listitem_contributor.axml" />
-    <AndroidResource Include="Resources\values\dimens.xml" />
-    <AndroidResource Include="Resources\layout\splash_screen.axml" />
-    <AndroidResource Include="Resources\layout\fragment_language_content.axml" />
-    <AndroidResource Include="Resources\layout\fragment_language_app.axml" />
-    <AndroidResource Include="Resources\drawable\gradient_login.xml" />
-    <AndroidResource Include="Resources\drawable\button_logout.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\app_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_options_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_pause_active.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_pause_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_signout_active.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\btn_signout_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_play_small.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_play_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\login_logo.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\app_icon.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\btn_options_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\btn_signout_active.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\btn_signout_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_play_small.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_play_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\login_logo.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\app_icon.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\btn_options_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\btn_signout_active.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\btn_signout_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_play_small.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_prev_static.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\login_logo.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\app_icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_play_active.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_play_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_signout_active.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\btn_signout_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_close_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_options_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_small.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\login_logo.png" />
-    <AndroidResource Include="Resources\layout\listitem_navigation_header.axml" />
-    <AndroidResource Include="Resources\layout\fragment_copyright.axml" />
-    <AndroidResource Include="Resources\layout\fragment_albums.axml" />
-    <AndroidResource Include="Resources\layout\fragment_miniplayer.axml" />
-    <AndroidResource Include="Resources\xml\searchable.xml" />
-    <AndroidResource Include="Resources\drawable\togglebutton_playpause_mini.xml" />
-    <AndroidResource Include="Resources\layout\listitem_language_content.axml" />
-    <AndroidResource Include="Resources\layout\listitem_language_app.axml" />
-    <AndroidResource Include="Resources\menu\trackcollection.xml" />
-    <AndroidResource Include="Resources\menu\search.xml" />
+    <None Remove="google-services.json" />
+    <GoogleServicesJson Include="google-services.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Application\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="..\BMM.Core\Translation\af\main.json">
@@ -1003,476 +1038,14 @@
     <AndroidAsset Include="Assets\play_animation_icon.json" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\loading_spinner.png" />
+    <Reference Include="FFImageLoading">
+      <HintPath>..\lib\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Droid">
+      <HintPath>..\lib\FFImageLoading.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Shared">
+      <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
+    </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\loading_spinner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\loading_spinner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\loading_spinner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\rotate_spinner.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values-large\dimens.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\exit_to_left.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\anim\enter_from_right.xml" />
-    <AndroidResource Include="Resources\menu\album.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\menu\podcast.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <GoogleServicesJson Include="google-services.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProguardConfiguration Include="proguard.cfg" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splashscreen.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\fragment_storage_management.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_storage_details.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Acr.UserDialogs">
-      <Version>7.1.0.446</Version>
-    </PackageReference>
-    <PackageReference Include="akavache">
-      <Version>7.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="Com.Airbnb.Android.Lottie">
-      <Version>4.2.2</Version>
-    </PackageReference>
-    <PackageReference Include="IdentityModel.OidcClient">
-      <Version>3.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>4.5.1</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>4.5.1</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.DroidX.RecyclerView">
-      <Version>7.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.DroidX.SwipeRefreshLayout">
-      <Version>7.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.JsonLocalization">
-      <Version>7.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.Messenger">
-      <Version>7.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.Visibility">
-      <Version>7.1.2</Version>
-    </PackageReference>
-    <PackageReference Include="System.Buffers">
-      <Version>4.5.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Collections">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Collections.Concurrent">
-      <Version>4.3.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.Reactive">
-      <Version>5.0.0</Version>
-    </PackageReference>
-    <PackageReference Include="System.ServiceModel.Primitives">
-      <Version>4.5.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xam.Plugins.Android.ExoPlayer">
-      <Version>2.11.8</Version>
-    </PackageReference>
-    <PackageReference Include="Xam.Plugins.Android.ExoPlayer.MediaSession">
-      <Version>2.11.8</Version>
-    </PackageReference>
-    <PackageReference Include="Xam.Plugins.Settings">
-      <Version>3.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.ConstraintLayout">
-      <Version>2.1.4.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Browser">
-      <Version>1.4.0.2</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Core">
-      <Version>1.8.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.CustomView">
-      <Version>1.1.0.13</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.Extensions">
-      <Version>2.2.0.15</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Preference">
-      <Version>1.2.0.2</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.RecyclerView">
-      <Version>1.2.1.7</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Google.Android.Material" Version="1.6.1.1" />
-    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V13">
-      <Version>1.0.0.14</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4">
-      <Version>1.0.0.14</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.AppCompat">
-      <Version>1.4.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.CardView">
-      <Version>1.0.0.16</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.MediaRouter">
-      <Version>1.3.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.AndroidX.Palette">
-      <Version>1.0.0.14</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Firebase.Analytics">
-      <Version>120.0.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Firebase.Common">
-      <Version>120.0.0.6</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Firebase.Config">
-      <Version>121.0.1.6</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Firebase.Messaging">
-      <Version>122.0.0.6</Version>
-    </PackageReference>
-    <!-- Xamarin.Firebase.Messaging v120.1.7 is refering and old version the correct version has to be set here-->
-    <PackageReference Include="Xamarin.Google.Dagger">
-      <Version>2.25.2.1</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BMM.Api\BMM.Api.csproj">
-      <Project>{0c493c0d-e2a7-4d84-912f-303ad20234ae}</Project>
-      <Name>BMM.Api</Name>
-      <ReferenceSourceTarget></ReferenceSourceTarget>
-    </ProjectReference>
-    <ProjectReference Include="..\BMM.Core\BMM.Core.csproj">
-      <Project>{5b0f239b-7bb5-4c18-ab02-44dcbd597d61}</Project>
-      <Name>BMM.Core</Name>
-      <ReferenceSourceTarget></ReferenceSourceTarget>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\fragment_mycontent.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\fragment_mytracks.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_arrow_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_add_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_close_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_options_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\loading_spinner.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_arrow_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_arrow_right.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_archive.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\fragment_followedpodcasts.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\fragment_browse.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_pinned_item.axml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\offline_banner.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\radio_background_live.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\radio_background_live.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\radio_background_live.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\radio_background_live.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\radio_background_live.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_radio_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_radio_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_radio_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_radio_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_radio_static.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\radio_background_upcoming.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\radio_background_broadcasting.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_live_radio.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\xml\network_security_config.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\seekbar_thumb.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_next_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_pause_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_play_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_prev_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_skip_back_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_skip_forward_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_next_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_pause_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_play_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_prev_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_skip_back_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_skip_forward_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_next_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_play_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_prev_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_skip_back_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_skip_forward_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_next_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_pause_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_play_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_prev_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_skip_back_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_skip_forward_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_next_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_pause_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_play_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_prev_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_skip_back_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_skip_forward_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_pause_notification.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\seekbar_progress.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\gradient_oidc_login.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\button_radius_corners.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_support_ended.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_aslaksen_teaser.axml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_blue_dot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\icon_now_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_blue_dot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\icon_now_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_blue_dot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_now_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_blue_dot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_now_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_blue_dot.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_now_playing.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\notification_solid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-mdpi\notification_solid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\notification_solid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\notification_solid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxxhdpi\notification_solid.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\listitem_featured_playlist.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\button_background_rounded.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon_notification.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
 </Project>

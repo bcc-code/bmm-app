@@ -1,12 +1,10 @@
-﻿using System.Threading.Tasks;
-using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Startup;
 using BMM.Core.Translation;
-using MvvmCross.Localization;
-using Xamarin.Essentials;
+using Microsoft.Maui.Devices;
 
 namespace BMM.Core.Helpers
 {

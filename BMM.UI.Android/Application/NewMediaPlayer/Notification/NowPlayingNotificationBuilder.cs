@@ -8,6 +8,8 @@ using AndroidX.Core.App;
 using AndroidX.Media.Session;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.Droid.Application.Activities;
+using BMM.UI.Droid.Application.Extensions;
+using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Utils;
 using FFImageLoading;
 

@@ -18,7 +18,6 @@ namespace BMM.UI.iOS
         [Outlet]
         MvxCachedImageView CoverImageView { get; set; }
 
-
         [Outlet]
         UIKit.UIButton OptionsButton { get; set; }
 

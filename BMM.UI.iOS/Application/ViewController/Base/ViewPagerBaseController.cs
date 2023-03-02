@@ -61,10 +61,10 @@ namespace BMM.UI.iOS
 
         private void ResetInteractionOnRequested(object sender, EventArgs e)
         {
-            ControllersCollectionView.ScrollToItem(NSIndexPath.FromRowSection(0, 0), UICollectionViewScrollPosition.None, false);
-            TopBarCollectionView.SelectItem(NSIndexPath.FromRowSection(0, 0), false, UICollectionViewScrollPosition.None);
-            TopBarCollectionView.ScrollToItem(NSIndexPath.FromRowSection(0, 0), UICollectionViewScrollPosition.None, false);
-            TopBarCollectionViewSource.UpdateSelectedBar(NSIndexPath.FromRowSection(0, 0), false);
+            ControllersCollectionView.ScrollToItem(NSIndexPath.FromRowSection(new IntPtr(0), new IntPtr(0)), UICollectionViewScrollPosition.None, false);
+            TopBarCollectionView.SelectItem(NSIndexPath.FromRowSection(new IntPtr(0), new IntPtr(0)), false, UICollectionViewScrollPosition.None);
+            TopBarCollectionView.ScrollToItem(NSIndexPath.FromRowSection(new IntPtr(0), new IntPtr(0)), UICollectionViewScrollPosition.None, false);
+            TopBarCollectionViewSource.UpdateSelectedBar(NSIndexPath.FromRowSection(new IntPtr(0), new IntPtr(0)), false);
         }
 
         protected virtual void Bind(MvxFluentBindingDescriptionSet<BaseViewController<TViewModel>, TViewModel> set)

@@ -36,10 +36,11 @@ namespace BMM.UI.iOS
             set.Bind(ShowPlayerButton).To(vm => vm.OpenPlayerCommand);
 
             CoverView.ErrorAndLoadingPlaceholderImagePathForCover();
+            
             set.Bind(CoverView)
-                .For(v => v.ImagePath)
-                .To(vm => vm.CurrentTrack.ArtworkUri)
-                .WithConversion<CoverUrlToFallbackImageValueConverter>(IosConstants.CoverPlaceholderImage);
+                 .For(v => v.ImagePath)
+                 .To(vm => vm.CurrentTrack.ArtworkUri)
+                 .WithConversion<CoverUrlToFallbackImageValueConverter>(IosConstants.CoverPlaceholderImage);
 
             set.Apply();
             SetThemes();

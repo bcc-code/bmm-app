@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using BMM.Core.Models.Themes;
+using Microsoft.Maui.Storage;
 using Newtonsoft.Json;
-using Plugin.Settings;
-using Plugin.Settings.Abstractions;
 
 namespace BMM.Core.Implementations.Storage
 {
     public static class AppSettings
     {
-        private static ISettings Settings => CrossSettings.Current;
+        private static IPreferences Settings => Preferences.Default;
 
         public static Theme SelectedTheme
         {
@@ -29,26 +28,26 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(DismissedMessageTilesIds));
         }
 
-        public static void Clear() => CrossSettings.Current.Clear();
+        public static void Clear() => Settings.Clear();
         
         private static void AddOrUpdateValue<TValue>(TValue value, string settingsKey)
         {
             if (value is string stringValue)
             {
-                Settings.AddOrUpdateValue(settingsKey, stringValue);
+                Settings.Set(settingsKey, stringValue);
                 return;
             }
 
-            string serialized = value != null
+            string? serialized = value != null
                 ? JsonConvert.SerializeObject(value)
                 : null;
 
-            Settings.AddOrUpdateValue(settingsKey, serialized);
+            Settings.Set(settingsKey, serialized);
         }
 
         private static TValue GetValueOrDefault<TValue>(string settingsKey, TValue defaultValue = default)
         {
-            string value = Settings.GetValueOrDefault(settingsKey, null);
+            string value = Settings.Get<string>(settingsKey, null);
 
             switch (value)
             {

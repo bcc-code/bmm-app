@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Android.OS;
 using AndroidX.Core.App;
@@ -6,8 +5,8 @@ using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Translation;
 using BMM.UI.Droid.Application.Implementations.App;
+using Microsoft.Maui.ApplicationModel;
 using MvvmCross.Base;
-using Xamarin.Essentials;
 using AndroidApp = Android.App.Application;
 
 namespace BMM.UI.Droid.Application.Implementations.Notifications

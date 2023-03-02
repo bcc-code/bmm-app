@@ -38,9 +38,6 @@ namespace BMM.UI.Droid
         {
             AppCenterHelper.DroidRegister();
             base.OnCreate(savedInstanceState);
-
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-
             SetNotificationToHandle();
         }
         

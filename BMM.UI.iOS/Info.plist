@@ -1,75 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-    </array>
-    <key>CFBundleIdentifier</key>
-    <string>org.brunstad.bmm</string>
-    <key>UIRequiresFullScreen</key>
-    <true />
-    <key>UIDeviceFamily</key>
-    <array>
-      <integer>1</integer>
-      <integer>2</integer>
-    </array>
-    <key>MinimumOSVersion</key>
-    <string>11.0</string>
-    <key>CFBundleDisplayName</key>
-    <string>BMM</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>org.brunstad.bmm</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>org.brunstad.bmm</string>
-        </array>
-      </dict>
-    </array>
-    <key>UIBackgroundModes</key>
-    <array>
-      <string>audio</string>
-      <string>remote-notification</string>
-    </array>
-    <key>UIViewControllerBasedStatusBarAppearance</key>
-    <false />
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>CFBundleName</key>
-    <string>BMM</string>
-    <key>CFBundleShortVersionString</key>
-    <string>DEV</string>
-    <key>CFBundleVersion</key>
-    <string>DEV</string>
-    <key>XSAppIconAssets</key>
-    <string>Resources/Images.xcassets/AppIcons.appiconset</string>
-    <key>ITSAppUsesNonExemptEncryption</key>
-    <false />
-    <key>UILaunchStoryboardName</key>
-    <string>LaunchScreen</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>mailto</string>
-    </array>
+<dict>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string>org.brunstad.bmm</string>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>CFBundleDisplayName</key>
+	<string>BMM</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>org.brunstad.bmm</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>org.brunstad.bmm</string>
+			</array>
+		</dict>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>CFBundleName</key>
+	<string>BMM</string>
+	<key>CFBundleShortVersionString</key>
+	<string>DEV</string>
+	<key>CFBundleVersion</key>
+	<string>DEV</string>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>mailto</string>
+	</array>
 	<key>NSSiriUsageDescription</key>
 	<string>BMM wants to handle Siri commands</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>BMM wants to save images to Gallery</string>
-    <key>NSUserActivityTypes</key>
-    <array>
-      <string>INPlayMediaIntent</string>
-    </array>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>INPlayMediaIntent</string>
+	</array>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>af</string>
@@ -93,5 +92,5 @@
 		<string>tr</string>
 		<string>uk</string>
 	</array>
-  </dict>
+</dict>
 </plist>

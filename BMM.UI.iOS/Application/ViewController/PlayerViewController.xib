@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,6 +20,7 @@
                 <outlet property="CoverWidthConstraint" destination="D5E-nN-mSM" id="pht-Ut-U23"/>
                 <outlet property="EndTimeLabel" destination="CDf-br-Dvu" id="kE1-ol-foQ"/>
                 <outlet property="ExternalRelationButton" destination="qxa-Sd-IoW" id="nwm-oy-sfF"/>
+                <outlet property="LeftButton" destination="Tec-WE-o9Z" id="uk9-zF-Vwe"/>
                 <outlet property="MoreButton" destination="Js4-YA-veI" id="F1S-sc-sSY"/>
                 <outlet property="NextButtton" destination="5gZ-wz-gnY" id="QNe-Ka-ZrT"/>
                 <outlet property="PlayPauseButton" destination="rsk-JC-f0B" id="1YZ-8j-O3p"/>
@@ -39,7 +39,6 @@
                 <outlet property="SubtitleLabel" destination="SCY-QA-nwU" id="iYH-U9-yKj"/>
                 <outlet property="TitleLabel" destination="jsC-GB-jT3" id="ikg-M4-ew1"/>
                 <outlet property="TrackCoverImageView" destination="Ug9-Uj-hs6" id="uRS-ZH-teE"/>
-                <outlet property="LeftButton" destination="Tec-WE-o9Z" id="uk9-zF-Vwe"/>
                 <outlet property="view" destination="iN0-l3-epB" id="BPY-9K-wQ4"/>
             </connections>
         </placeholder>

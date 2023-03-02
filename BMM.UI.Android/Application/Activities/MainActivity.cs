@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Android.App;
-using Android.Content;
+﻿using Android.Content;
 using Android.Content.PM;
-using Android.OS;
+using Android.Media;
 using Android.Views;
-using Android.Widget;
 using AndroidX.AppCompat.App;
+using AndroidX.Media;
 using BMM.Core;
 using BMM.Core.Extensions;
 using BMM.Core.Helpers;
@@ -20,6 +16,7 @@ using BMM.UI.Droid.Application.Fragments;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using Google.Android.Material.BottomNavigation;
+using Kotlin.Contracts;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Presenters;
 using MvvmCross.Platforms.Android.Views.Fragments;
@@ -112,8 +109,6 @@ namespace BMM.UI.Droid.Application.Activities
             SetContentView(Resource.Layout.activity_main);
             base.OnCreate(bundle);
 
-            Xamarin.Essentials.Platform.Init(this, bundle);
-
             // as we not restoring fragments, we need to call initial navigation when the app was restored from deep background
             if (shouldCallInitialNavigation)
                 Mvx.IoCProvider.Resolve<IAppNavigator>().NavigateAtAppStart();
@@ -121,12 +116,10 @@ namespace BMM.UI.Droid.Application.Activities
             HandleDeepLink(deepLink).FireAndForget();
             InitializePresenter();
             SetCurrentTheme();
-        }
 
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-        {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            // var mp = new MediaPlayer();
+            // var builder = new AudioAttributesCompat.Builder();
+            // mp.SetDataSource();
         }
 
         private async Task<bool> ClearAllNavBackStackHintHandler(ClearAllNavBackStackHint hint)

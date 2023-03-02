@@ -54,7 +54,6 @@ namespace BMM.UI.iOS
 				YearInReviewImageView.Dispose ();
 				YearInReviewImageView = null;
 			}
-
 		}
 	}
 }

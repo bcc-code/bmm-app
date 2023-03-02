@@ -14,6 +14,7 @@ using BMM.UI.Droid.Application.Activities;
 using BMM.UI.Droid.Application.Fragments;
 using BMM.UI.Droid.Application.Listeners;
 using BMM.UI.Droid.Utils;
+using Com.Airbnb.Lottie;
 using Java.Interop;
 using MvvmCross;
 using MvvmCross.Platforms.Android;

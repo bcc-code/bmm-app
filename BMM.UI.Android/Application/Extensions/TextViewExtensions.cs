@@ -3,6 +3,7 @@ using Android.Text;
 using Android.Widget;
 using FFImageLoading.Extensions;
 using Java.Lang;
+using Math = Java.Lang.Math;
 
 namespace BMM.UI.Droid.Application.Extensions
 {

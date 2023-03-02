@@ -1,6 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
 using Android.Content;
 using AndroidX.Core.Content;
 using BMM.Api.Implementation.Models;
@@ -9,7 +7,7 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.FileStorage;
-using Java.Lang;
+using Exception = System.Exception;
 
 namespace BMM.UI.Droid.Application.Implementations.FileStorage
 {

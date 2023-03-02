@@ -8,8 +8,10 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages;
+using Microsoft.Extensions.Logging;
 using MvvmCross.Logging;
 using MvvmCross.Plugin.Messenger;
+using ILogger = BMM.Api.Framework.ILogger;
 
 namespace BMM.Core.Implementations.Notifications
 {
@@ -17,37 +19,35 @@ namespace BMM.Core.Implementations.Notifications
     {
         private readonly IPodcastOfflineManager _podcastDownloader;
         private readonly INotificationSubscriptionTokenProvider _tokenProvider;
-        private readonly IMvxLog _logger;
-        private readonly IExceptionHandler _exceptionHandler;
         private readonly IBMMClient _bmmClient;
         private readonly IUserAuthChecker _authChecker;
+        private readonly ILogger _logger;
 
         public SubscriptionManager(
             IMvxMessenger messenger,
             IPodcastOfflineManager podcastDownloader,
             INotificationSubscriptionTokenProvider tokenProvider,
-            IMvxLogProvider logProvider,
             IExceptionHandler exceptionHandler,
             IBMMClient bmmClient,
-            IUserAuthChecker authChecker)
+            IUserAuthChecker authChecker,
+            ILogger logger)
         {
             _podcastDownloader = podcastDownloader;
             _tokenProvider = tokenProvider;
-            _exceptionHandler = exceptionHandler;
             _bmmClient = bmmClient;
             _authChecker = authChecker;
-            _logger = logProvider.GetLogFor<SubscriptionManager>();
+            _logger = logger;
 
-            LoggedInOnlineToken = messenger.Subscribe<LoggedInOnlineMessage>(message => { _exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry); });
+            LoggedInOnlineToken = messenger.Subscribe<LoggedInOnlineMessage>(message => { exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry); });
 
             ContentLanguagesChangedToken = messenger.Subscribe<ContentLanguagesChangedMessage>(message =>
             {
-                _exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry);
+                exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry);
             });
 
             FollowedPodcastChangedToken = messenger.Subscribe<FollowedPodcastsChangedMessage>(message =>
             {
-                _exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry);
+                exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry);
             });
         }
 
@@ -97,7 +97,7 @@ namespace BMM.Core.Implementations.Notifications
 
             if (token != null)
             {
-                _logger.InfoFormat("FCM registration token: {0}", token);
+                _logger.Info("FCM registration token: {0}", token);
                 await UpdateSubscription(token);
             }
             else

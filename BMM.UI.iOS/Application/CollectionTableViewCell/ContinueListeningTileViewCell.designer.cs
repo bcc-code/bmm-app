@@ -18,7 +18,7 @@ namespace BMM.UI.iOS
 
 		[Outlet]
 		UIKit.UIView ContentWidthHelper { get; set; }
-
+		
 		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView CoverImageView { get; set; }
 
@@ -70,7 +70,7 @@ namespace BMM.UI.iOS
 				BackgroundView.Dispose ();
 				BackgroundView = null;
 			}
-
+			
 			if (CoverImageView != null) {
 				CoverImageView.Dispose ();
 				CoverImageView = null;

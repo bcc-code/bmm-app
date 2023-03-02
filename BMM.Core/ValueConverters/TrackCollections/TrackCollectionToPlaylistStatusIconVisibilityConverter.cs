@@ -1,9 +1,6 @@
-using System;
 using System.Globalization;
 using BMM.Api.Implementation.Models;
 using MvvmCross.Converters;
-using MvvmCross.Plugin.Visibility;
-using MvvmCross.UI;
 
 namespace BMM.Core.ValueConverters.TrackCollections
 {

@@ -46,8 +46,8 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsFullyLoaded);
             set.Bind(OfflineBannerLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.Global_OfflineBanner);
+            
             set.Bind(PodcastCoverImageView).For(v => v.ImagePath).To(vm => vm.Podcast.Cover);
-
             set.Bind(TitelLabel).To(vm => vm.Podcast.Title);
 
             set.Bind(FollowingButton).For(v => v.Hidden).To(vm => vm.IsFollowing).WithConversion<InvertedVisibilityConverter>();

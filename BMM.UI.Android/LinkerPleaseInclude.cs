@@ -4,6 +4,7 @@ using Android.Widget;
 using System;
 using System.Collections.Specialized;
 using System.Windows.Input;
+using AndroidX.AppCompat.App;
 using AndroidX.AppCompat.Widget;
 using AndroidX.RecyclerView.Widget;
 using Google.Android.Material.Snackbar;
@@ -22,6 +23,7 @@ namespace BMM.UI.Droid
 {
     // This class is never actually executed, but when Xamarin linking is enabled it does ensure types and properties
     // are preserved in the deployed app
+    [Android.Runtime.Preserve(AllMembers = true)]
     public class LinkerPleaseInclude
     {
         public void Include()
@@ -153,6 +155,11 @@ namespace BMM.UI.Droid
         public void Include(MvxPropertyInjector injector)
         {
             injector = new MvxPropertyInjector();
+        }
+        
+        public void Include(AppCompatDelegate appCompatDelegate)
+        {
+            appCompatDelegate.SetLocalNightMode(0);
         }
 
         public void Include(System.ComponentModel.INotifyPropertyChanged changed)

@@ -1,5 +1,14 @@
-﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+      <TargetFramework>net7.0-ios</TargetFramework>
+      <OutputType>Exe</OutputType>
+      <Nullable>disable</Nullable>
+      <ImplicitUsings>true</ImplicitUsings>
+      <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
+      <UseMauiEssentials>true</UseMauiEssentials>
+      <Configurations>Debug;Release;UITests</Configurations>
+      <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -9,7 +18,6 @@
     <RootNamespace>BMM.UI.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>BMM</AssemblyName>
-    <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <ProvisioningType>automatic</ProvisioningType>
@@ -34,10 +42,11 @@
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <MtouchExtraArgs></MtouchExtraArgs>
+    <MtouchExtraArgs />
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <RuntimeIdentifier>iphonesimulator-x64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,7 +68,8 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <MtouchExtraArgs></MtouchExtraArgs>
+    <MtouchExtraArgs />
+    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITests|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,7 +92,8 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <MtouchExtraArgs></MtouchExtraArgs>
+    <MtouchExtraArgs/>
+    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <Optimize>true</Optimize>
@@ -96,6 +107,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <RuntimeIdentifier>iphonesimulator-x64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -114,1462 +126,441 @@
     <IpaIncludeArtwork>false</IpaIncludeArtwork>
     <IpaMetadata>Info.plist</IpaMetadata>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
-    <AppExtensionDebugBundleId />
-    <ExtraLaunchArgs>
-    </ExtraLaunchArgs>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'INT|iPhoneSimulator'">
-    <OutputPath>bin\iPhoneSimulator\INT\</OutputPath>
-    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;</DefineConstants>
-    <Optimize>true</Optimize>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'INT|iPhone'">
-    <OutputPath>bin\iPhone\INT\</OutputPath>
-    <DefineConstants>__IOS__;__MOBILE__;__UNIFIED__;</DefineConstants>
-    <Optimize>true</Optimize>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
-    <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <NativeReference Include="$(HOME)\Library\Application Support\Reveal\RevealServer\RevealServer.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>True</SmartLink>
-    </NativeReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Acr.Support.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Acr.Support.2.1.0\lib\Xamarin.iOS10\Acr.Support.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Acr.UserDialogs, Version=7.1.0.446, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Acr.UserDialogs.7.1.0.446\lib\xamarinios10\Acr.UserDialogs.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Akavache, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\akavache.7.3.1\lib\xamarinios10\Akavache.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Akavache.Core, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\akavache.core.7.3.1\lib\xamarinios10\Akavache.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Akavache.Sqlite3, Version=7.3.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\akavache.sqlite3.7.3.1\lib\xamarinios10\Akavache.Sqlite3.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="BTProgressHUD, Version=1.3.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\BTProgressHUD.1.3.2\lib\xamarinios10\BTProgressHUD.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ByteSize, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ByteSize.2.1.1\lib\netstandard2.1\ByteSize.dll</HintPath>
-    </Reference>
-    <Reference Include="Calabash, Version=21.8.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.TestCloud.Agent.0.22.2\lib\Xamarin.iOS\Calabash.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FFImageLoading, Version=2.4.11.982, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\Xamarin.iOS10\FFImageLoading.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="FFImageLoading.Platform, Version=2.4.11.982, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.FFImageLoading.2.4.11.982\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Firebase.ABTesting, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.ABTesting.4.2.0\lib\xamarinios10\Firebase.ABTesting.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Firebase.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.Analytics.6.9.0\lib\xamarinios10\Firebase.Analytics.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Firebase.CloudMessaging, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.CloudMessaging.4.7.1\lib\xamarinios10\Firebase.CloudMessaging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Firebase.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.Core.6.10.4\lib\xamarinios10\Firebase.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Firebase.Installations, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.Installations.1.7.0\lib\xamarinios10\Firebase.Installations.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Firebase.InstanceID, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.InstanceID.4.8.0\lib\xamarinios10\Firebase.InstanceID.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Firebase.RemoteConfig, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Firebase.iOS.RemoteConfig.4.9.1\lib\xamarinios10\Firebase.RemoteConfig.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IdentityModel, Version=4.1.0.0, Culture=neutral, PublicKeyToken=e7877f4675df049f">
-      <HintPath>..\packages\IdentityModel.4.1.0\lib\netstandard2.0\IdentityModel.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="IdentityModel.OidcClient, Version=3.0.0.0, Culture=neutral, PublicKeyToken=5580d04c1b6c37c1">
-      <HintPath>..\packages\IdentityModel.OidcClient.3.1.2\lib\netstandard2.0\IdentityModel.OidcClient.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Lottie.iOS, Version=2.5.13.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Com.Airbnb.iOS.Lottie.2.5.13\lib\xamarinios10\Lottie.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="MarqueeLabel.iOS, Version=1.0.6612.25932, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MarqueeLabel.iOS.1.0.0\lib\xamarinios10\MarqueeLabel.iOS.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8a600e2fee7ba272, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AppCenter.4.5.1\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AppCenter.Analytics, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8a600e2fee7ba272, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AppCenter.Analytics.4.5.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8a600e2fee7ba272, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AppCenter.Analytics.4.5.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AppCenter.Crashes, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8a600e2fee7ba272, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AppCenter.Crashes.4.5.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8a600e2fee7ba272, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AppCenter.Crashes.4.5.1\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AppCenter.iOS.Bindings, Version=0.0.0.0, Culture=neutral, PublicKeyToken=8a600e2fee7ba272, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AppCenter.4.5.1\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Options, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Options.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Primitives, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\packages\Microsoft.Extensions.Primitives.2.1.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.IdentityModel.JsonWebTokens.5.6.0\lib\netstandard2.0\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.6.0\lib\netstandard2.0\Microsoft.IdentityModel.Logging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.6.0\lib\netstandard2.0\Microsoft.IdentityModel.Tokens.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MonoTouch.Dialog-1" />
-    <Reference Include="MvvmCross, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MvvmCross.7.1.2\lib\xamarinios10\MvvmCross.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Plugin.File, Version=7.0.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MvvmCross.Plugin.File.7.0.1\lib\xamarinios10\MvvmCross.Plugin.File.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Plugin.Json, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MvvmCross.Plugin.Json.7.1.2\lib\netstandard2.0\MvvmCross.Plugin.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Plugin.JsonLocalization, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MvvmCross.Plugin.JsonLocalization.7.1.2\lib\netstandard2.0\MvvmCross.Plugin.JsonLocalization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Plugin.Messenger, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MvvmCross.Plugin.Messenger.7.1.2\lib\netstandard2.0\MvvmCross.Plugin.Messenger.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Plugin.ResourceLoader, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MvvmCross.Plugin.ResourceLoader.7.1.2\lib\xamarinios10\MvvmCross.Plugin.ResourceLoader.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="MvvmCross.Plugin.Visibility, Version=7.1.2.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\MvvmCross.Plugin.Visibility.7.1.2\lib\xamarinios10\MvvmCross.Plugin.Visibility.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="netstandard" />
-    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.13.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json.Bson, Version=1.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.Bson.1.0.2\lib\netstandard2.0\Newtonsoft.Json.Bson.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK-1.0" />
-    <Reference Include="PInvoke.BCrypt, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\packages\PInvoke.BCrypt.0.5.184\lib\portable-net45+win8+wpa81\PInvoke.BCrypt.dll</HintPath>
-    </Reference>
-    <Reference Include="PInvoke.Kernel32, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\packages\PInvoke.Kernel32.0.5.184\lib\netstandard2.0\PInvoke.Kernel32.dll</HintPath>
-    </Reference>
-    <Reference Include="PInvoke.NCrypt, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\packages\PInvoke.NCrypt.0.5.184\lib\netstandard2.0\PInvoke.NCrypt.dll</HintPath>
-    </Reference>
-    <Reference Include="PInvoke.Windows.Core, Version=0.5.0.0, Culture=neutral, PublicKeyToken=9e300f9f87f04a7a, processorArchitecture=MSIL">
-      <HintPath>..\packages\PInvoke.Windows.Core.0.5.184\lib\netstandard2.0\PInvoke.Windows.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Plugin.Settings, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\Xamarin.iOS10\Plugin.Settings.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Plugin.Settings.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xam.Plugins.Settings.3.1.1\lib\Xamarin.iOS10\Plugin.Settings.Abstractions.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SidebarNavigation, Version=2.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\SidebarNavigation.2.1.0\lib\xamarinios10\SidebarNavigation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Splat, Version=11.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Splat.11.1.1\lib\netstandard2.0\Splat.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.batteries_v2, Version=2.0.4.976, Culture=neutral, PublicKeyToken=8226ea5df37bcae9">
-      <HintPath>..\packages\SQLitePCLRaw.bundle_e_sqlite3.2.0.4\lib\Xamarin.iOS10\SQLitePCLRaw.batteries_v2.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.core, Version=2.0.4.976, Culture=neutral, PublicKeyToken=1488e028ca7ab535">
-      <HintPath>..\packages\SQLitePCLRaw.core.2.0.4\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.lib.e_sqlite3, Version=1.1.13.388, Culture=neutral, PublicKeyToken=e4ad490600e2234c, processorArchitecture=MSIL">
-      <HintPath>..\packages\SQLitePCLRaw.lib.e_sqlite3.ios_unified.static.1.1.13\lib\Xamarin.iOS10\SQLitePCLRaw.lib.e_sqlite3.dll</HintPath>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.lib.e_sqlite3.ios, Version=2.0.4.976, Culture=neutral, PublicKeyToken=e4ad490600e2234c">
-      <HintPath>..\packages\SQLitePCLRaw.lib.e_sqlite3.ios.2.0.4\lib\xamarinios10\SQLitePCLRaw.lib.e_sqlite3.ios.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="SQLitePCLRaw.provider.internal, Version=2.0.4.976, Culture=neutral, PublicKeyToken=89ae75803b2c608d">
-      <HintPath>..\packages\SQLitePCLRaw.provider.internal.2.0.4\lib\netstandard2.0\SQLitePCLRaw.provider.internal.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-      <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Drawing.Common.dll" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
-      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.6.0\lib\netstandard2.0\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Reactive, Version=5.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263">
-      <HintPath>..\packages\System.Reactive.5.0.0\lib\netstandard2.0\System.Reactive.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Text.Encodings.Web, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-      <HintPath>..\packages\System.Text.Encodings.Web.4.5.1\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\taglib-sharp-netstandard2.0.2.1.0\lib\netstandard2.0\taglib-sharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Tavis.UriTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Tavis.UriTemplates.1.1.1\lib\netstandard1.0\Tavis.UriTemplates.dll</HintPath>
-    </Reference>
-    <Reference Include="Validation, Version=2.4.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Validation.2.4.18\lib\netstandard1.3\Validation.dll</HintPath>
-    </Reference>
-    <Reference Include="WebP.Touch, Version=1.0.6628.22311, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\WebP.Touch.1.0.8\lib\Xamarin.iOS10\WebP.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Essentials.1.7.3\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.iOS" />
-    <Reference Include="System.IO.Compression" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\BP_Video_02.mp4" />
-    <BundleResource Include="Resources\BP_Video_03.mp4" />
-    <BundleResource Include="Resources\BP_Video_04.mp4" />
-    <BundleResource Include="Resources\BP_Video_06.mp4" />
-    <BundleResource Include="Resources\BP_Video_07.mp4" />
-    <BundleResource Include="Resources\BP_Video_08.mp4" />
-    <BundleResource Include="Resources\BP_Video_09.mp4" />
-    <BundleResource Include="Resources\BP_Video_10.mp4" />
-    <BundleResource Include="Resources\icon_browse@3x.png" />
-    <BundleResource Include="Resources\icon_browse@2x.png" />
-    <BundleResource Include="Resources\icon_browse.png" />
-    <BundleResource Include="Resources\icon_browse_active@2x.png" />
-    <BundleResource Include="Resources\icon_browse_active@3x.png" />
-    <BundleResource Include="Resources\icon_browse_active.png" />
-    <BundleResource Include="Resources\aslaksen.png" />
-    <BundleResource Include="Resources\aslaksen@2x.png" />
-    <BundleResource Include="Resources\aslaksen@3x.png" />
-    <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image.png" />
-    <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
-    <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
-    <BundleResource Include="Resources\icon_notification.png" />
-    <BundleResource Include="Resources\icon_notification@2x.png" />
-    <BundleResource Include="Resources\icon_notification@3x.png" />
-    <BundleResource Include="Resources\icon_chevron_right.png" />
-    <BundleResource Include="Resources\icon_chevron_right@2x.png" />
-    <BundleResource Include="Resources\icon_chevron_right@3x.png" />
-    <BundleResource Include="Resources\icon_contributor_fallback.png" />
-    <BundleResource Include="Resources\icon_contributor_fallback@2x.png" />
-    <BundleResource Include="Resources\icon_contributor_fallback@3x.png" />
-    <BundleResource Include="Resources\icon_download.png" />
-    <BundleResource Include="Resources\icon_download@2x.png" />
-    <BundleResource Include="Resources\icon_download@3x.png" />
-    <BundleResource Include="Resources\icon_favorites.png" />
-    <BundleResource Include="Resources\icon_favorites@2x.png" />
-    <BundleResource Include="Resources\icon_favorites@3x.png" />
-    <BundleResource Include="Resources\icon_favorites_active.png" />
-    <BundleResource Include="Resources\icon_favorites_active@2x.png" />
-    <BundleResource Include="Resources\icon_favorites_active@3x.png" />
-    <BundleResource Include="Resources\icon_home.png" />
-    <BundleResource Include="Resources\icon_home@2x.png" />
-    <BundleResource Include="Resources\icon_home@3x.png" />
-    <BundleResource Include="Resources\icon_home_active.png" />
-    <BundleResource Include="Resources\icon_home_active@2x.png" />
-    <BundleResource Include="Resources\icon_home_active@3x.png" />
-    <BundleResource Include="Resources\icon_options.png" />
-    <BundleResource Include="Resources\icon_options@2x.png" />
-    <BundleResource Include="Resources\icon_options@3x.png" />
-    <BundleResource Include="Resources\icon_profile.png" />
-    <BundleResource Include="Resources\icon_profile@2x.png" />
-    <BundleResource Include="Resources\icon_profile@3x.png" />
-    <BundleResource Include="Resources\icon_profile_active.png" />
-    <BundleResource Include="Resources\icon_profile_active@2x.png" />
-    <BundleResource Include="Resources\icon_profile_active@3x.png" />
-    <BundleResource Include="Resources\icon_search.png" />
-    <BundleResource Include="Resources\icon_search@2x.png" />
-    <BundleResource Include="Resources\icon_search@3x.png" />
-    <BundleResource Include="Resources\icon_search_active.png" />
-    <BundleResource Include="Resources\icon_search_active@2x.png" />
-    <BundleResource Include="Resources\icon_search_active@3x.png" />
-    <BundleResource Include="Resources\icon_playback_history.png" />
-    <BundleResource Include="Resources\icon_playback_history@2x.png" />
-    <BundleResource Include="Resources\icon_playback_history@3x.png" />
-    <BundleResource Include="Resources\play_animation_icon.json" />
-    <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
-    <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
-    <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
-    <BundleResource Include="Resources\icon_arrow_right_light.png" />
-    <BundleResource Include="Resources\icon_arrow_right_light@2x.png" />
-    <BundleResource Include="Resources\icon_arrow_right_light@3x.png" />
-    <BundleResource Include="Resources\icon_now_playing.png" />
-    <BundleResource Include="Resources\icon_now_playing@2x.png" />
-    <BundleResource Include="Resources\icon_now_playing@3x.png" />
-    <BundleResource Include="Resources\icon_play_podcast.png" />
-    <BundleResource Include="Resources\icon_play_podcast@2x.png" />
-    <BundleResource Include="Resources\icon_play_podcast@3x.png" />
-    <BundleResource Include="Resources\icon_shuffle_podcast.png" />
-    <BundleResource Include="Resources\icon_shuffle_podcast@2x.png" />
-    <BundleResource Include="Resources\icon_shuffle_podcast@3x.png" />
-    <BundleResource Include="Resources\icon_category_unknown.png" />
-    <BundleResource Include="Resources\icon_category_unknown%402x.png" />
-    <BundleResource Include="Resources\icon_category_unknown%403x.png" />
-    <BundleResource Include="Resources\icon_category_song.png" />
-    <BundleResource Include="Resources\icon_category_song%402x.png" />
-    <BundleResource Include="Resources\icon_category_song%403x.png" />
-    <BundleResource Include="Resources\icon_close_static.png" />
-    <BundleResource Include="Resources\icon_close_static%402x.png" />
-    <BundleResource Include="Resources\icon_close_static%403x.png" />
-    <BundleResource Include="Resources\icon_nav_content_static.png" />
-    <BundleResource Include="Resources\icon_nav_content_static%402x.png" />
-    <BundleResource Include="Resources\icon_nav_content_static%403x.png" />
-    <BundleResource Include="Resources\btn_options_active.png" />
-    <BundleResource Include="Resources\btn_options_active%402x.png" />
-    <BundleResource Include="Resources\btn_options_active%403x.png" />
-    <BundleResource Include="Resources\btn_options_static.png" />
-    <BundleResource Include="Resources\btn_options_static%402x.png" />
-    <BundleResource Include="Resources\btn_options_static%403x.png" />
-    <BundleResource Include="Resources\notification.png" />
-    <BundleResource Include="Resources\notification@2x.png" />
-    <BundleResource Include="Resources\notification@3x.png" />
-    <BundleResource Include="Resources\notification_solid.png" />
-    <BundleResource Include="Resources\notification_solid@2x.png" />
-    <BundleResource Include="Resources\notification_solid@3x.png" />
-    <BundleResource Include="Resources\podcast_background_aslaksen_phone.png" />
-    <BundleResource Include="Resources\podcast_background_aslaksen_phone@2x.png" />
-    <BundleResource Include="Resources\podcast_background_aslaksen_phone@3x.png" />
-    <BundleResource Include="Resources\icon_category_playlist.png" />
-    <BundleResource Include="Resources\icon_category_playlist%402x.png" />
-    <BundleResource Include="Resources\icon_category_playlist%403x.png" />
-    <BundleResource Include="Resources\login_logo.png" />
-    <BundleResource Include="Resources\login_logo%402x.png" />
-    <BundleResource Include="Resources\login_logo%403x.png" />
-    <BundleResource Include="Resources\icon_add_static.png" />
-    <BundleResource Include="Resources\icon_add_static%402x.png" />
-    <BundleResource Include="Resources\icon_add_static%403x.png" />
-    <BundleResource Include="Resources\loading_spinner.png" />
-    <BundleResource Include="Resources\loading_spinner%402x.png" />
-    <BundleResource Include="Resources\loading_spinner%403x.png" />
-    <BundleResource Include="Resources\icon_category_suggestion.png" />
-    <BundleResource Include="Resources\icon_category_suggestion%402x.png" />
-    <BundleResource Include="Resources\icon_category_suggestion%403x.png" />
-    <BundleResource Include="Resources\placeholder_cover.png" />
-    <BundleResource Include="Resources\placeholder_artist.png" />
-    <BundleResource Include="Resources\placeholder_artist%402x.png" />
-    <BundleResource Include="Resources\placeholder_artist%403x.png" />
-    <BundleResource Include="Resources\placeholder_album.png" />
-    <BundleResource Include="Resources\placeholder_album%402x.png" />
-    <BundleResource Include="Resources\placeholder_album%403x.png" />
-    <BundleResource Include="Resources\icon_downloaded.png" />
-    <BundleResource Include="Resources\icon_downloaded%402x.png" />
-    <BundleResource Include="Resources\icon_downloaded%403x.png" />
-    <BundleResource Include="Resources\icon_loading.png" />
-    <BundleResource Include="Resources\icon_loading%402x.png" />
-    <BundleResource Include="Resources\icon_loading%403x.png" />
-    <BundleResource Include="Resources\icon_pending.png" />
-    <BundleResource Include="Resources\icon_pending%402x.png" />
-    <BundleResource Include="Resources\icon_pending%403x.png" />
-    <BundleResource Include="GoogleService-Info.plist" />
-    <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded.png" />
-    <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded%402x.png" />
-    <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded%403x.png" />
-    <BundleResource Include="..\BMM.Core\Translation\hu\main.json">
-      <Link>Translation\hu\main.json</Link>
-    </BundleResource>
-    <BundleResource Include="Resources\icon_trackrelation_external.png" />
-    <BundleResource Include="Resources\icon_trackrelation_external%402x.png" />
-    <BundleResource Include="Resources\icon_trackrelation_external%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\MessageTileViewCell.xib" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\VideoTileViewCell.xib" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\ControllerCollectionViewCell.xib" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\TopBarFlexibleWidthTitleCollectionViewCell.xib" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\TableViewCell\YearInReviewTeaserExpandedCell.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ListeningStreakDetailsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\SearchResultsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\SiriShortcutsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\TopSongsCollectionViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\YearInReviewViewController.xib" />
-    <InterfaceDefinition Include="LaunchScreen.storyboard" />
-    <None Include="app.config" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\ContinueListeningTileViewCell.xib" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.xib" />
-    <InterfaceDefinition Include="Application\CustomViews\ProgressBarView.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ChapterHeaderTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\InfoMessageTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ListItem\SectionHeaderTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\SelectThemeTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\SimpleMarginTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\StandardHeaderTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\StandardSelectableTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\StreakTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\BrowseDetailsTilesViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\BrowseDetailsListViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ChangeTrackLanguageViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\CuratedPlaylistViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\PlaybackHistoryViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\SharedTrackCollectionViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ShareTrackCollectionViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ThemeSettingsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\UserSetupViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\MyContentViewController.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\MyTracksViewController.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\BrowseViewController.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\DownloadedContentViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\FollowedPodcastsViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\PinnedItemTableViewCell.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\FollowedPodcastsViewController.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\SupportEndedViewController.xib" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Resources\iTunesArtwork.png" />
-    <None Include="Entitlements.plist" />
-    <None Include="Info.plist" />
-    <LinkDescription Include="Linker.xml" />
-    <InterfaceDefinition Include="Application\ViewController\ExploreRecentSpeechesViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ExploreRecentMusicViewController.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.xib" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Application\Actions\AddSiriShortcutAction.cs" />
-    <Compile Include="Application\Actions\ChangeThemeSettingsAction.cs" />
-    <Compile Include="Application\Actions\DebugInfo\ShowTracksCacheInfoAction.cs" />
-    <Compile Include="Application\Actions\HandleSiriMediaPlayRequestAction.cs" />
-    <Compile Include="Application\Actions\InitializeSiriShortcutsSettingsAction.cs" />
-    <Compile Include="Application\Actions\Interfaces\IHandleSiriMediaPlayRequestAction.cs" />
-    <Compile Include="Application\Actions\Interfaces\IPlayFromKareAction.cs" />
-    <Compile Include="Application\Actions\Interfaces\IPlayMusicFromSiriAction.cs" />
-    <Compile Include="Application\Actions\Interfaces\ISearchForMusicFromSiriAction.cs" />
-    <Compile Include="Application\Actions\OnStartAction.cs" />
-    <Compile Include="Application\Actions\PlayFromKareAction.cs" />
-    <Compile Include="Application\Actions\PlayMusicFromSiriAction.cs" />
-    <Compile Include="Application\Actions\SearchForMusicFromSiriAction.cs" />
-    <Compile Include="Application\Actions\ShareYearInReviewAction.cs" />
-    <Compile Include="Application\CollectionTableViewCell\ContinueListeningTileViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\ContinueListeningTileViewCell.designer.cs">
-      <DependentUpon>ContinueListeningTileViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\CollectionTableViewCell\ControllerCollectionViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\ControllerCollectionViewCell.designer.cs" />
-    <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\CoverWithTitleCollectionViewCell.designer.cs">
-      <DependentUpon>CoverWithTitleCollectionViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\CollectionTableViewCell\MessageTileViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\MessageTileViewCell.designer.cs">
-      <DependentUpon>MessageTileViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\CollectionTableViewCell\VideoTileViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\VideoTileViewCell.designer.cs">
-      <DependentUpon>VideoTileViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\CollectionTableViewCell\TopBarFlexibleWidthTitleCollectionViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\TopBarFlexibleWidthTitleCollectionViewCell.designer.cs" />
-    <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\YearInReviewCollectionViewCell.designer.cs">
-      <DependentUpon>YearInReviewCollectionViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\CollectionViewSource\TilesCollectionViewSource.cs" />
-    <Compile Include="Application\CollectionViewSource\TopBarCollectionViewSource.cs" />
-    <Compile Include="Application\CollectionViewSource\ViewControllerCollectionViewSource.cs" />
-    <Compile Include="Application\CollectionViewSource\YearInReviewSource.cs" />
-    <Compile Include="Application\CustomViews\BmmCachedImageView.cs" />
-    <Compile Include="Application\CustomViews\BmmSeachTextField.cs" />
-    <Compile Include="Application\CustomViews\BmmSliderView.cs" />
-    <Compile Include="Application\CustomViews\CustomProgressBar.cs" />
-    <Compile Include="Application\CustomViews\DownloadButton.cs" />
-    <Compile Include="Application\CustomViews\LeftImageButton.cs" />
-    <Compile Include="Application\CustomViews\LottieButton.cs" />
-    <Compile Include="Application\CustomViews\ProgressBarView.cs" />
-    <Compile Include="Application\CustomViews\ProgressBarView.designer.cs" />
-    <Compile Include="Application\CustomViews\Separator.cs" />
-    <Compile Include="Application\CustomViews\TextViewWithDescription.cs" />
-    <Compile Include="Application\CustomViews\VideoView.cs" />
-    <Compile Include="Application\Delegates\CreateOrRefreshViewControllerDelegate.cs" />
-    <Compile Include="Application\Delegates\CustomUIAdaptivePresentationControllerDelegate.cs" />
-    <Compile Include="Application\Delegates\IINUIAddVoiceShortcutViewControllerDelegate.cs" />
-    <Compile Include="Application\DownloadManager\DownloadFileImplementation.cs" />
-    <Compile Include="Application\DownloadManager\IosDownloadManager.cs" />
-    <Compile Include="Application\DownloadManager\UrlSessionDownloadDelegate.cs" />
-    <Compile Include="Application\Extensions\CGRectExtensions.cs" />
-    <Compile Include="Application\Extensions\CGSizeExtensions.cs" />
-    <Compile Include="Application\Extensions\CollectionViewExtensions.cs" />
-    <Compile Include="Application\Extensions\NSUrlExtensions.cs" />
-    <Compile Include="Application\Extensions\NumericExtensions.cs" />
-    <Compile Include="Application\Extensions\UICollectionViewExtensions.cs" />
-    <Compile Include="Application\Extensions\UIColorExtensions.cs" />
-    <Compile Include="Application\Extensions\YUVColorExtensions.cs" />
-    <Compile Include="Application\Extensions\MvxCachedImageViewExtensions.cs" />
-    <Compile Include="Application\Extensions\StringExtensions.cs" />
-    <Compile Include="Application\Extensions\UiTableExtensions.cs" />
-    <Compile Include="Application\Extensions\ViewExtensions.cs" />
-    <Compile Include="Application\Helpers\ICollectionViewSnapHandler.cs" />
-    <Compile Include="Application\Helpers\GradientView.cs" />
-    <Compile Include="Application\Helpers\IosConstants.cs" />
-    <Compile Include="Application\Helpers\IosSupportVersionChecker.cs" />
-    <Compile Include="Application\Helpers\VisibilityBindingsManager.cs" />
-    <Compile Include="Application\Helpers\UIViewVisibilityController.cs" />
-    <Compile Include="Application\Implementations\Device\iOSFeatureSupportInfoService.cs" />
-    <Compile Include="Application\Implementations\Dialogs\iOSBMMUserDialogs.cs" />
-    <Compile Include="Application\Implementations\Download\OngoingDownloadsLockDictionary.cs" />
-    <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadDoesNotExistException.cs" />
-    <Compile Include="Application\Implementations\Download\Exceptions\IosDownloadException.cs" />
-    <Compile Include="Application\Implementations\Download\Exceptions\UnexpectedIosDownloadException.cs" />
-    <Compile Include="Application\Implementations\Download\Exceptions\IosFailedDownloadRecoverException.cs" />
-    <Compile Include="Application\Implementations\Download\IosDownloadDelegate.cs" />
-    <Compile Include="Application\Implementations\Download\IosFileDownloader.cs" />
-    <Compile Include="Application\Implementations\Download\OngoingDownload.cs" />
-    <Compile Include="Application\Implementations\FirebaseRemoteConfig\IosFirebaseRemoteConfig.cs" />
-    <Compile Include="Application\Implementations\BottomNavigationLoadedDependentExecutor.cs" />
-    <Compile Include="Application\Implementations\iOSUserDialogs.cs" />
-    <Compile Include="Application\Implementations\Notifications\FirebaseMessagingDelegate.cs" />
-    <Compile Include="Application\Implementations\Notifications\IosNotification.cs" />
-    <Compile Include="Application\Implementations\Notifications\iOSNotificationPermissionService.cs" />
-    <Compile Include="Application\Implementations\Notifications\UserNotificationCenterDelegate.cs" />
-    <Compile Include="Application\Implementations\Oidc\SafariAuthenticationSessionBrowser.cs" />
-    <Compile Include="Application\Implementations\Oidc\BrowserSelector.cs" />
-    <Compile Include="Application\Implementations\Oidc\SafariViewControllerBrowser.cs" />
-    <Compile Include="Application\Implementations\Oidc\WebAuthenticationSessionBrowser.cs" />
-    <Compile Include="Application\Implementations\Oidc\WKWebViewBrowser.cs" />
-    <Compile Include="Application\Implementations\Track\iOSTrackOptionsService.cs" />
-    <Compile Include="Application\Implementations\UI\iOSUserDialogsFactory.cs" />
-    <Compile Include="Application\Implementations\UI\iOSExceptionHandlingUserDialogs.cs" />
-    <Compile Include="Application\Layout\ControllersCollectionViewLayout.cs" />
-    <Compile Include="Application\Layout\TopBarFlexibleWidthCollectionViewLayout.cs" />
-    <Compile Include="Application\NewMediaPlayer\AVPlayerItemRepository.cs" />
-    <Compile Include="Application\NewMediaPlayer\AVPlayerItemFactory.cs" />
-    <Compile Include="Application\NewMediaPlayer\CacheAVPlayerItemLoaderFactory.cs" />
-    <Compile Include="Application\NewMediaPlayer\CachePlayerItem\CacheAVPlayerItemURLSessionDelegate.cs" />
-    <Compile Include="Application\NewMediaPlayer\CachePlayerItem\CacheAVPlayerItemLoader.cs" />
-    <Compile Include="Application\NewMediaPlayer\CachePlayerItem\CacheMediaFileHandle.cs" />
-    <Compile Include="Application\NewMediaPlayer\CachePlayerItem\Interfaces\ICacheAVPlayerItemLoader.cs" />
-    <Compile Include="Application\NewMediaPlayer\IMediaRemoteControl.cs" />
-    <Compile Include="Application\Implementations\ClipboardService.cs" />
-    <Compile Include="Application\Implementations\HttpClient\NetworkAccessAwareHttpClient.cs" />
-    <Compile Include="Application\NewMediaPlayer\Interfaces\IAVPlayerItemRepository.cs" />
-    <Compile Include="Application\NewMediaPlayer\Interfaces\IAVPlayerItemFactory.cs" />
-    <Compile Include="Application\NewMediaPlayer\Interfaces\ICacheAVPlayerItemLoaderFactory.cs" />
-    <Compile Include="Application\NewMediaPlayer\MediaRemoteControl.cs" />
-    <Compile Include="Application\Implementations\UI\UriOpener.cs" />
-    <Compile Include="Application\NewMediaPlayer\AVAudioPlayback.cs" />
-    <Compile Include="Application\NewMediaPlayer\AvAudioPlaybackBase.cs" />
-    <Compile Include="Application\NewMediaPlayer\IAudioPlayback.cs" />
-    <Compile Include="Application\NewMediaPlayer\MediaFileUrlHelper.cs" />
-    <Compile Include="Application\NewMediaPlayer\IosMediaPlayer.cs" />
-    <Compile Include="Application\NewMediaPlayer\SeekableRemoteCommandCenter.cs" />
-    <Compile Include="Application\NewMediaPlayer\RemoteCommandCenter.cs" />
-    <Compile Include="Application\NewMediaPlayer\VersionHelper.cs" />
-    <Compile Include="Application\TableViewCell\Base\BaseBMMTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\Base\IEventsHoldingTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ChapterHeaderTableViewCell.designer.cs" />
-    <Compile Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ContinueListeningCollectionTableViewCell.designer.cs">
-      <DependentUpon>ContinueListeningCollectionTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\DiscoverSectionHeaderTableViewCell.designer.cs">
-      <DependentUpon>DiscoverSectionHeaderTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\DownloadedContentViewCell.cs" />
-    <Compile Include="Application\TableViewCell\DownloadedContentViewCell.designer.cs">
-      <DependentUpon>DownloadedContentViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\FollowedPodcastsViewCell.cs" />
-    <Compile Include="Application\TableViewCell\FollowedPodcastsViewCell.designer.cs">
-      <DependentUpon>FollowedPodcastsViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\InfoMessageTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\InfoMessageTableViewCell.designer.cs">
-      <DependentUpon>InfoMessageTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\ProfileListItemTableViewCell.designer.cs">
-      <DependentUpon>ProfileListItemTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\ListItem\SectionHeaderTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\SectionHeaderTableViewCell.designer.cs">
-      <DependentUpon>SectionHeaderTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\TextListItemDetailTableViewCell.designer.cs">
-      <DependentUpon>TextListItemDetailTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\OrderingTrackTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\PinnedItemTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\PinnedItemTableViewCell.designer.cs">
-      <DependentUpon>PinnedItemTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\PlaylistsCollectionTableViewCell.designer.cs">
-      <DependentUpon>PlaylistsCollectionTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\SelectThemeTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\SelectThemeTableViewCell.designer.cs">
-      <DependentUpon>SelectThemeTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\SimpleMarginTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\SimpleMarginTableViewCell.designer.cs">
-      <DependentUpon>SimpleMarginTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\StandardHeaderTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\StandardHeaderTableViewCell.designer.cs">
-      <DependentUpon>StandardHeaderTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\StandardSelectableTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\StandardSelectableTableViewCell.designer.cs">
-      <DependentUpon>StandardSelectableTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\StreakTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\StreakTableViewCell.designer.cs">
-      <DependentUpon>StreakTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.cs" />
-    <Compile Include="Application\TableViewCell\YearInReviewTeaserCollapsedCell.designer.cs">
-      <DependentUpon>YearInReviewTeaserCollapsedCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\YearInReviewTeaserExpandedCell.cs" />
-    <Compile Include="Application\TableViewCell\YearInReviewTeaserExpandedCell.designer.cs">
-      <DependentUpon>YearInReviewTeaserExpandedCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewSource\Base\BaseSimpleTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\Base\BaseTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\Base\HeightAwareTableCellType.cs" />
-    <Compile Include="Application\TableViewSource\Base\IHeightAwareTableCellType.cs" />
-    <Compile Include="Application\TableViewSource\Base\ITableCellType.cs" />
-    <Compile Include="Application\TableViewSource\Base\TableCellType.cs" />
-    <Compile Include="Application\TableViewSource\Base\VariableRowHeightTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\BrowseDetailsTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\ChangeTrackLanguageTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\EditingTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\NotSelectableDocumentsTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\TrackInfoTableViewSource.cs" />
-    <Compile Include="Application\ValueConverter\BorderVisibilityConverter.cs" />
-    <Compile Include="Application\ValueConverter\DayOfTheWeekToStreakBackgroundColorConverter.cs" />
-    <Compile Include="Application\ValueConverter\HexStringToUiColorConverter.cs" />
-    <Compile Include="Application\ValueConverter\BoolToNfloatConverter.cs" />
-    <Compile Include="Application\ValueConverter\OfflineBannerVisibilityValueConverter.cs" />
-    <Compile Include="Application\ValueConverter\PercentageValueConverter.cs" />
-    <Compile Include="Application\ValueConverter\PinnedItemIconToImageConverter.cs" />
-    <Compile Include="Application\ValueConverter\TrackToStatusImageConverter.cs" />
-    <Compile Include="Application\ValueConverter\TrackToSubtitleColorConverter.cs" />
-    <Compile Include="Application\ValueConverter\TrackToTitleColorConverter.cs" />
-    <Compile Include="Application\ViewController\Base\FlexibleWidthPagerBaseController.cs" />
-    <Compile Include="Application\ViewController\Base\ViewPagerBaseController.cs" />
-    <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.cs" />
-    <Compile Include="Application\ViewController\BrowseDetailsTilesViewController.designer.cs">
-      <DependentUpon>BrowseDetailsTilesViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\BrowseDetailsListViewController.cs" />
-    <Compile Include="Application\ViewController\BrowseDetailsListViewController.designer.cs">
-      <DependentUpon>BrowseDetailsListViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.cs" />
-    <Compile Include="Application\ViewController\ChangeTrackLanguageViewController.designer.cs">
-      <DependentUpon>ChangeTrackLanguageViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\CuratedPlaylistsViewController.cs" />
-    <Compile Include="Application\ViewController\CuratedPlaylistsViewController.designer.cs">
-      <DependentUpon>CuratedPlaylistsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\EditTrackCollectionViewController.cs" />
-    <Compile Include="Application\ViewController\FollowedPodcastsViewController.cs" />
-    <Compile Include="Application\ViewController\FollowedPodcastsViewController.designer.cs">
-      <DependentUpon>FollowedPodcastsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\IHaveLargeTitle.cs" />
-    <Compile Include="Application\ViewController\BrowseViewController.cs" />
-    <Compile Include="Application\ViewController\BrowseViewController.designer.cs">
-      <DependentUpon>BrowseViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\Interfaces\IPlayerNavigationViewController.cs" />
-    <Compile Include="Application\ViewController\ListeningStreakDetailsViewController.cs" />
-    <Compile Include="Application\ViewController\ListeningStreakDetailsViewController.designer.cs" />
-    <Compile Include="Application\ViewController\PlaybackHistoryViewController.cs" />
-    <Compile Include="Application\ViewController\PlaybackHistoryViewController.designer.cs">
-      <DependentUpon>PlaybackHistoryViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\PlayerNavigationController.cs" />
-    <Compile Include="Application\ViewController\SearchResultsViewController.cs" />
-    <Compile Include="Application\ViewController\SearchResultsViewController.designer.cs">
-      <DependentUpon>SearchResultsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\SharedTrackCollectionViewController.cs" />
-    <Compile Include="Application\ViewController\SharedTrackCollectionViewController.designer.cs">
-      <DependentUpon>SharedTrackCollectionViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ShareTrackCollectionViewController.designer.cs">
-      <DependentUpon>ShareTrackCollectionViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ShareTrackCollectionViewController.cs" />
-    <Compile Include="Application\ViewController\SiriShortcutsViewController.cs" />
-    <Compile Include="Application\ViewController\SiriShortcutsViewController.designer.cs">
-      <DependentUpon>SiriShortcutsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ThemeSettingsViewController.cs" />
-    <Compile Include="Application\ViewController\ThemeSettingsViewController.designer.cs">
-      <DependentUpon>ThemeSettingsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\TopSongsCollectionViewController.cs" />
-    <Compile Include="Application\ViewController\TopSongsCollectionViewController.designer.cs">
-      <DependentUpon>TopSongsCollectionViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\UserSetupViewController.cs" />
-    <Compile Include="Application\ViewController\UserSetupViewController.designer.cs">
-      <DependentUpon>UserSetupViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\MyContentViewController.cs" />
-    <Compile Include="Application\ViewController\MyContentViewController.designer.cs">
-      <DependentUpon>MyContentViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\MyTracksViewController.cs" />
-    <Compile Include="Application\ViewController\MyTracksViewController.designer.cs">
-      <DependentUpon>MyTracksViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\OidcLoginViewController.cs" />
-    <Compile Include="Application\ViewController\OidcLoginViewController.designer.cs">
-      <DependentUpon>OidcLoginViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\YearInReviewViewController.cs" />
-    <Compile Include="Application\ViewController\YearInReviewViewController.designer.cs">
-      <DependentUpon>YearInReviewViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Constants\AppColors.cs" />
-    <Compile Include="Constants\AppTheme.cs" />
-    <Compile Include="Constants\ButtonTheme.cs" />
-    <Compile Include="Constants\iOSScreenHeight.cs" />
-    <Compile Include="Constants\SiriConstants.cs" />
-    <Compile Include="Constants\TextTheme.cs" />
-    <Compile Include="Constants\ThemeExtensions.cs" />
-    <Compile Include="Constants\Typography.cs" />
-    <Compile Include="Constants\UIViewConstants.cs" />
-    <Compile Include="Main.cs" />
-    <Compile Include="Application\AppDelegate.cs" />
-    <Compile Include="Application\TableViewCell\TrackTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\TrackTableViewCell.designer.cs">
-      <DependentUpon>TrackTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewSource\DocumentsTableViewSource.cs" />
-    <Compile Include="Application\ViewController\MenuViewController.cs" />
-    <Compile Include="Application\ViewController\SearchViewController.cs" />
-    <Compile Include="Application\ViewController\SearchViewController.designer.cs">
-      <DependentUpon>SearchViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\TrackCollectionViewController.cs" />
-    <Compile Include="Application\ViewController\TrackCollectionViewController.designer.cs">
-      <DependentUpon>TrackCollectionViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\PlayerViewController.cs" />
-    <Compile Include="Application\ViewController\PlayerViewController.designer.cs">
-      <DependentUpon>PlayerViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\SettingsViewController.cs" />
-    <Compile Include="Application\ViewController\PodcastViewController.cs" />
-    <Compile Include="Application\ViewController\SettingsViewController.designer.cs">
-      <DependentUpon>SettingsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\LanguageContentViewController.cs" />
-    <Compile Include="Application\ViewController\LanguageContentViewController.designer.cs">
-      <DependentUpon>LanguageContentViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\LanguageAppViewController.cs" />
-    <Compile Include="Application\ViewController\LanguageAppViewController.designer.cs">
-      <DependentUpon>LanguageAppViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\AlbumViewController.cs" />
-    <Compile Include="Application\ViewController\AlbumViewController.designer.cs">
-      <DependentUpon>AlbumViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\CopyrightViewController.cs" />
-    <Compile Include="Application\ViewController\CopyrightViewController.designer.cs">
-      <DependentUpon>CopyrightViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\QueueViewController.cs" />
-    <Compile Include="Application\ViewController\QueueViewController.designer.cs">
-      <DependentUpon>QueueViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\AlbumsViewController.cs" />
-    <Compile Include="Application\ViewController\AlbumsViewController.designer.cs">
-      <DependentUpon>AlbumsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\TrackCollectionTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\TrackCollectionTableViewCell.designer.cs">
-      <DependentUpon>TrackCollectionTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ValueConverter\VisibilityConverter.cs" />
-    <Compile Include="Application\ValueConverter\InvertedVisibilityConverter.cs" />
-    <Compile Include="Application\ValueConverter\FormatConverter.cs" />
-    <Compile Include="Application\ValueConverter\AlbumTitleConverter.cs" />
-    <Compile Include="Application\TableViewCell\LanguageAppTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\LanguageAppTableViewCell.designer.cs">
-      <DependentUpon>LanguageAppTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\LanguageContentTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\LanguageContentTableViewCell.designer.cs">
-      <DependentUpon>LanguageContentTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ValueConverter\TrackCollectionNameConverter.cs" />
-    <Compile Include="Application\ViewController\MiniPlayerViewController.cs" />
-    <Compile Include="Application\ViewController\MiniPlayerViewController.designer.cs">
-      <DependentUpon>MiniPlayerViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\LoadingTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\LoadingTableViewCell.designer.cs">
-      <DependentUpon>LoadingTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="ConsoleLogger.cs" />
-    <Compile Include="Application\ViewController\ContainmentViewController.designer.cs">
-      <DependentUpon>ContainmentViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ContainmentViewController.cs" />
-    <Compile Include="Framework\Base\BaseViewController.cs" />
-    <Compile Include="Application\ViewController\ExploreNewestViewController.cs" />
-    <Compile Include="Application\ViewController\ExploreNewestViewController.designer.cs">
-      <DependentUpon>ExploreNewestViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\DownloadedContentViewController.designer.cs">
-      <DependentUpon>DownloadedContentViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\DownloadedContentViewController.cs" />
-    <Compile Include="Framework\Base\TTabbedViewController.cs" />
-    <Compile Include="Framework\Base\TTabbedViewControllerMethods.cs" />
-    <Compile Include="Framework\Base\IBaseViewController.cs" />
-    <Compile Include="Application\ViewController\ContainmentNavigationViewController.cs" />
-    <Compile Include="Application\TableViewCell\SearchSuggestionTableViewCell.cs" />
-    <Compile Include="Application\TableViewSource\SimpleLoadingTableViewSource.cs" />
-    <Compile Include="Application\TableViewCell\SearchSuggestionTableViewCell.designer.cs">
-      <DependentUpon>SearchSuggestionTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\TrackCollectionsAddToViewController.cs" />
-    <Compile Include="Application\ViewController\TrackCollectionsAddToViewController.designer.cs">
-      <DependentUpon>TrackCollectionsAddToViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Implementations\Presenter.cs" />
-    <Compile Include="Application\Implementations\IosSetup.cs" />
-    <Compile Include="Application\Implementations\BmmApplication.cs" />
-    <Compile Include="Application\Implementations\FileStorage\StorageManager.cs" />
-    <Compile Include="Application\Implementations\FileStorage\TouchFileStorage.cs" />
-    <Compile Include="Application\Implementations\Media\TrackMediaHelper.cs" />
-    <Compile Include="Application\ViewController\ExploreContributorsViewController.cs" />
-    <Compile Include="Application\ViewController\ExploreContributorsViewController.designer.cs">
-      <DependentUpon>ExploreContributorsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\ContributorTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ContributorTableViewCell.designer.cs">
-      <DependentUpon>ContributorTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ContributorViewController.cs" />
-    <Compile Include="Application\ViewController\ContributorViewController.designer.cs">
-      <DependentUpon>ContributorViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ValueConverter\ContributorNameConverter.cs" />
-    <Compile Include="Application\TableViewSource\LanguageEditableTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\AudioTableViewSource.cs" />
-    <Compile Include="Application\ValueConverter\OfflineAvailableTrackStatusConverter.cs" />
-    <Compile Include="Application\ViewController\TrackInfoViewController.cs" />
-    <Compile Include="Application\ViewController\TrackInfoViewController.designer.cs">
-      <DependentUpon>TrackInfoViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Implementations\Download\UrlSessionDownloadDelegate.cs" />
-    <Compile Include="Application\Implementations\Notifications\FirebaseTokenProvider.cs" />
-    <Compile Include="Application\Implementations\Notifications\NotificationDisplayer.cs" />
-    <Compile Include="Application\ValueConverter\ToUppercaseConverter.cs" />
-    <Compile Include="Application\TableViewSource\LoadMoreTableViewSource.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\CheckboxListItemTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\CheckboxListItemTableViewCell.designer.cs">
-      <DependentUpon>CheckboxListItemTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\ListItem\TextListItemTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\TextListItemTableViewCell.designer.cs">
-      <DependentUpon>TextListItemTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewSource\Base\SectionedTableViewSource.cs" />
-    <Compile Include="Application\TableViewSource\SettingsTableViewSource.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\ExternalRelationListItemTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\ListItem\ExternalRelationListItemTableViewCell.designer.cs">
-      <DependentUpon>ExternalRelationListItemTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewSource\ArchiveTableViewSource.cs" />
-    <Compile Include="Application\ViewController\LibraryArchiveViewController.cs" />
-    <Compile Include="Application\ViewController\LibraryArchiveViewController.designer.cs">
-      <DependentUpon>LibraryArchiveViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\PodcastsViewController.cs" />
-    <Compile Include="Application\ViewController\PodcastsViewController.designer.cs">
-      <DependentUpon>PodcastsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\CollectionTableViewCell\PodcastCollectionViewCell.cs" />
-    <Compile Include="Application\CollectionTableViewCell\PodcastCollectionViewCell.designer.cs">
-      <DependentUpon>PodcastCollectionViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\PodcastViewController.designer.cs">
-      <DependentUpon>PodcastViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\AutomaticDownloadViewController.cs" />
-    <Compile Include="Application\ViewController\AutomaticDownloadViewController.designer.cs">
-      <DependentUpon>AutomaticDownloadViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\AutomaticDownloadTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\AutomaticDownloadTableViewCell.designer.cs">
-      <DependentUpon>AutomaticDownloadTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\DownloadedFollowedPodcastsViewController.cs" />
-    <Compile Include="Application\ViewController\DownloadedFollowedPodcastsViewController.designer.cs">
-      <DependentUpon>DownloadedFollowedPodcastsViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\Layout\FillWidthLayout.cs" />
-    <Compile Include="Application\ViewController\SupportEndedViewController.cs" />
-    <Compile Include="Application\ViewController\SupportEndedViewController.designer.cs">
-      <DependentUpon>SupportEndedViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ExploreRecentSpeechesViewController.cs" />
-    <Compile Include="Application\ViewController\ExploreRecentSpeechesViewController.designer.cs">
-      <DependentUpon>ExploreRecentSpeechesViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\ExploreRecentMusicViewController.cs" />
-    <Compile Include="Application\ViewController\ExploreRecentMusicViewController.designer.cs">
-      <DependentUpon>ExploreRecentMusicViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.cs" />
-    <Compile Include="Application\TableViewCell\FeaturedPlaylistTableViewCell.designer.cs">
-      <DependentUpon>FeaturedPlaylistTableViewCell.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Application\ViewController\CuratedPlaylistViewController.cs" />
-    <Compile Include="Application\ViewController\CuratedPlaylistViewController.designer.cs">
-      <DependentUpon>CuratedPlaylistViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Utils\ColorPalette\PixelColor.cs" />
-    <Compile Include="Utils\ColorPalette\YUVColor.cs" />
-    <Compile Include="Utils\ImageUtils.cs" />
-    <Compile Include="Utils\NibLoader.cs" />
-    <Compile Include="Utils\SiriUtils.cs" />
-    <Compile Include="Utils\ThemeUtils.cs" />
-    <Compile Include="Utils\ColorPalette\ColorPaletteGenerator.cs" />
-    <Compile Include="Utils\ViewUtils.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterfaceDefinition Include="Application\TableViewCell\TrackTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\OidcLoginViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\SearchViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\TrackCollectionViewController.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\PlayerViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\SettingsViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\LanguageContentViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\LanguageAppViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\AlbumViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\CopyrightViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\QueueViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\AlbumsViewController.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\TrackCollectionTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\LanguageAppTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\LanguageContentTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\MiniPlayerViewController.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\LoadingTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ContainmentViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ExploreNewestViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\DownloadedContentViewController.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\TableViewCell\SearchSuggestionTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\TrackCollectionsAddToViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ExploreContributorsViewController.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ContributorTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\ContributorViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\TrackInfoViewController.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ListItem\CheckboxListItemTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ListItem\TextListItemTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\ListItem\ExternalRelationListItemTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\LibraryArchiveViewController.xib" />
-    <InterfaceDefinition Include="Application\ViewController\PodcastsViewController.xib" />
-    <InterfaceDefinition Include="Application\CollectionTableViewCell\PodcastCollectionViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\PodcastViewController.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Application\ViewController\AutomaticDownloadViewController.xib" />
-    <InterfaceDefinition Include="Application\TableViewCell\AutomaticDownloadTableViewCell.xib" />
-    <InterfaceDefinition Include="Application\ViewController\DownloadedFollowedPodcastsViewController.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-  </ItemGroup>
-  <ItemGroup>
-    <ITunesArtwork Include="Resources\iTunesArtwork.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ImageAsset Include="Resources\Colors.xcassets\HighlightColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColorReverted.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnColorFiveColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnColorFourColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnColorOneColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnColorThreeColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnColorTwoColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\SeparatorColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\TileDefaultColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-83_5@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Bergpreken.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\icon_album.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconChevronRight.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconChevronRight.imageset\IconChevronRight.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\icon_arrow_down.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@3x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends.png" />
-    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@3x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownloadMini.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconDownloadMini.imageset\icon_download.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\icon_edit.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\icon_favorites.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\icon_info.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\icon_link.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconOptions.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconOptions.imageset\Option.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\icon_pause.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\icon_person.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\play.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlaybackSpeed.imageset\8680259_speed_line_icon.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlaybackSpeed.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\icon_playlist.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini@3x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\icon_queue.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\icon_remove.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\icon_repeat.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\icon_repeat_one.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconSearch.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconSearch.imageset\Search.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\icon_share.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-60@3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-401.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-402.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@2x1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@3x1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@2x1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\iTunesArtwork@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Colors.xcassets\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\TintColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\LabelSecondaryColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\LabelTertiaryColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\PlaceholderColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\BackgroundPrimaryColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\BackgroundSecondaryColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnTintOneColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnTintTwoColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\NotificationColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Colors.xcassets\RadioColor.colorset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\9104280_break_time_sleep_rest_sleep-hour_icon.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\icon_more.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover-1.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover_dark.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\icon_next.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon.png" />
-    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_playlist@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@3x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\icon_previous.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected.png" />
-    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right.png" />
-    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%402x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%403x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification.png" />
-    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\icon_shuffle.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\icon_skip_back.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\icon_skip_forward.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick.png" />
-    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@3x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Union.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\Contents.json" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_dark@1x.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@1x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@2x.png" />
-    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@3x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\BMM.Core\Translation\bg\main.json">
-      <Link>Translation\bg\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\da\main.json">
-      <Link>Translation\da\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\de\main.json">
-      <Link>Translation\de\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\es\main.json">
-      <Link>Translation\es\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\et\main.json">
-      <Link>Translation\et\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\nb\main.json">
-      <Link>Translation\nb\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\sl\main.json">
-      <Link>Translation\sl\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\it\main.json">
-      <Link>Translation\it\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\en\main.json">
-      <Link>Translation\en\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\nl\main.json">
-      <Link>Translation\nl\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\ro\main.json">
-      <Link>Translation\ro\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\af\main.json">
-      <Link>Translation\af\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\fi\main.json">
-      <Link>Translation\fi\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\fr\main.json">
-      <Link>Translation\fr\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\pl\main.json">
-      <Link>Translation\pl\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\pt\main.json">
-      <Link>Translation\pt\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\ru\main.json">
-      <Link>Translation\ru\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\tr\main.json">
-      <Link>Translation\tr\main.json</Link>
-    </Content>
-    <Content Include="..\BMM.Core\Translation\uk\main.json">
-      <Link>Translation\uk\main.json</Link>
-    </Content>
-    <BundleResource Include="Resources\icon_arrow_right.png" />
-    <BundleResource Include="Resources\icon_arrow_right%402x.png" />
-    <BundleResource Include="Resources\icon_arrow_right%403x.png" />
-    <BundleResource Include="Resources\icon_category_favorites%402x.png" />
-    <BundleResource Include="Resources\icon_category_favorites%403x.png" />
-    <BundleResource Include="Resources\icon_category_favorites.png" />
-    <BundleResource Include="Resources\radio_background.png" />
-    <BundleResource Include="Resources\radio_background%402x.png" />
-    <BundleResource Include="Resources\radio_background%403x.png" />
-    <BundleResource Include="Resources\icon_radio_static.png" />
-    <BundleResource Include="Resources\icon_radio_static%402x.png" />
-    <BundleResource Include="Resources\icon_radio_static%403x.png" />
-    <Content Include="metadata\app_icon.jpg" />
-    <Content Include="metadata\copyright.txt" />
-    <Content Include="metadata\en-US\apple_tv_privacy_policy.txt" />
-    <Content Include="metadata\en-US\description.txt" />
-    <Content Include="metadata\en-US\keywords.txt" />
-    <Content Include="metadata\en-US\marketing_url.txt" />
-    <Content Include="metadata\en-US\name.txt" />
-    <Content Include="metadata\en-US\privacy_url.txt" />
-    <Content Include="metadata\en-US\promotional_text.txt" />
-    <Content Include="metadata\en-US\release_notes.txt" />
-    <Content Include="metadata\en-US\subtitle.txt" />
-    <Content Include="metadata\en-US\support_url.txt" />
-    <Content Include="metadata\primary_category.txt" />
-    <Content Include="metadata\primary_first_sub_category.txt" />
-    <Content Include="metadata\primary_second_sub_category.txt" />
-    <Content Include="metadata\review_information\demo_password.txt" />
-    <Content Include="metadata\review_information\demo_user.txt" />
-    <Content Include="metadata\review_information\email_address.txt" />
-    <Content Include="metadata\review_information\first_name.txt" />
-    <Content Include="metadata\review_information\last_name.txt" />
-    <Content Include="metadata\review_information\notes.txt" />
-    <Content Include="metadata\review_information\phone_number.txt" />
-    <Content Include="metadata\secondary_category.txt" />
-    <Content Include="metadata\secondary_first_sub_category.txt" />
-    <Content Include="metadata\secondary_second_sub_category.txt" />
-    <Content Include="metadata\trade_representative_contact_information\address_line1.txt" />
-    <Content Include="metadata\trade_representative_contact_information\address_line2.txt" />
-    <Content Include="metadata\trade_representative_contact_information\address_line3.txt" />
-    <Content Include="metadata\trade_representative_contact_information\city_name.txt" />
-    <Content Include="metadata\trade_representative_contact_information\country.txt" />
-    <Content Include="metadata\trade_representative_contact_information\email_address.txt" />
-    <Content Include="metadata\trade_representative_contact_information\first_name.txt" />
-    <Content Include="metadata\trade_representative_contact_information\is_displayed_on_app_store.txt" />
-    <Content Include="metadata\trade_representative_contact_information\last_name.txt" />
-    <Content Include="metadata\trade_representative_contact_information\phone_number.txt" />
-    <Content Include="metadata\trade_representative_contact_information\postal_code.txt" />
-    <Content Include="metadata\trade_representative_contact_information\state.txt" />
-    <Content Include="metadata\trade_representative_contact_information\trade_name.txt" />
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <Compile Include="Application\Implementations\IosLogger.cs">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BMM.Api\BMM.Api.csproj">
-      <Project>{0c493c0d-e2a7-4d84-912f-303ad20234ae}</Project>
-      <Name>BMM.Api</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BMM.Core\BMM.Core.csproj">
-      <Project>{5b0f239b-7bb5-4c18-ab02-44dcbd597d61}</Project>
-      <Name>BMM.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BMM.UI.iOS.SiriIntents\BMM.UI.iOS.SiriIntents.csproj">
-      <IsAppExtension>true</IsAppExtension>
-      <Project>{DDD61C48-3384-4D74-8FF7-1AB4BA7C3604}</Project>
-      <Name>BMM.UI.iOS.SiriIntents</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Colors.xcassets\TintColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\LabelPrimaryColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\LabelSecondaryColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\LabelTertiaryColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\PlaceholderColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\BackgroundPrimaryColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\BackgroundSecondaryColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\OnTintOneColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\OnTintTwoColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\NotificationColor.colorset\" />
-    <Folder Include="Resources\Colors.xcassets\RadioColor.colorset\" />
-    <Folder Include="Resources\Images.xcassets\PauseMiniIcon.imageset\" />
-    <Folder Include="Resources\Images.xcassets\InputSearchIcon.imageset\" />
-    <Folder Include="Resources\Images.xcassets\SelectedIcon.imageset\" />
-  </ItemGroup>
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties>
-        <Policies>
-          <VersionControlPolicy>
-            <CommitMessageStyle Header="" Indent="" FirstFilePrefix="* " FileSeparator=":&#xA;* " LastFilePostfix=": " LineAlign="2" InterMessageLines="1" IncludeDirectoryPaths="False" Wrap="True" />
-          </VersionControlPolicy>
-        </Policies>
-      </Properties>
-    </MonoDevelop>
-  </ProjectExtensions>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\SQLitePCL.raw_basic.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SQLitePCL.raw_basic.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets'))" />
-    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
-    <Error Condition="!Exists('..\packages\BTProgressHUD.1.3.2\build\xamarin.ios10\BTProgressHud.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\BTProgressHUD.1.3.2\build\xamarin.ios10\BTProgressHud.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Firebase.iOS.Core.6.10.4\build\Xamarin.Firebase.iOS.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Firebase.iOS.Core.6.10.4\build\Xamarin.Firebase.iOS.Core.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Firebase.iOS.Analytics.6.9.0\build\Xamarin.Firebase.iOS.Analytics.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Firebase.iOS.Analytics.6.9.0\build\Xamarin.Firebase.iOS.Analytics.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.props'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.targets'))" />
-  </Target>
-  <Import Project="..\packages\SQLitePCL.raw_basic.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets" Condition="Exists('..\packages\SQLitePCL.raw_basic.0.8.6\build\Xamarin.iOS10\SQLitePCL.raw_basic.targets')" />
-  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
-  <Import Project="..\packages\BTProgressHUD.1.3.2\build\xamarin.ios10\BTProgressHud.targets" Condition="Exists('..\packages\BTProgressHUD.1.3.2\build\xamarin.ios10\BTProgressHud.targets')" />
-  <Import Project="..\packages\Xamarin.Firebase.iOS.Core.6.10.4\build\Xamarin.Firebase.iOS.Core.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Core.6.10.4\build\Xamarin.Firebase.iOS.Core.targets')" />
-  <Import Project="..\packages\Xamarin.Firebase.iOS.Analytics.6.9.0\build\Xamarin.Firebase.iOS.Analytics.targets" Condition="Exists('..\packages\Xamarin.Firebase.iOS.Analytics.6.9.0\build\Xamarin.Firebase.iOS.Analytics.targets')" />
-  <Import Project="..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.11.2\build\Xamarin.Build.Download.targets')" />
+    <ItemGroup>
+      <None Remove="Resources\aslaksen.png" />
+      <BundleResource Include="Resources\aslaksen.png" />
+      <None Remove="Resources\aslaksen@2x.png" />
+      <BundleResource Include="Resources\aslaksen@2x.png" />
+      <None Remove="Resources\aslaksen@3x.png" />
+      <BundleResource Include="Resources\aslaksen@3x.png" />
+      <None Remove="Resources\BP_Video_02.mp4" />
+      <BundleResource Include="Resources\BP_Video_02.mp4" />
+      <None Remove="Resources\BP_Video_03.mp4" />
+      <BundleResource Include="Resources\BP_Video_03.mp4" />
+      <None Remove="Resources\BP_Video_04.mp4" />
+      <BundleResource Include="Resources\BP_Video_04.mp4" />
+      <None Remove="Resources\BP_Video_06.mp4" />
+      <BundleResource Include="Resources\BP_Video_06.mp4" />
+      <None Remove="Resources\BP_Video_07.mp4" />
+      <BundleResource Include="Resources\BP_Video_07.mp4" />
+      <None Remove="Resources\BP_Video_08.mp4" />
+      <BundleResource Include="Resources\BP_Video_08.mp4" />
+      <None Remove="Resources\BP_Video_09.mp4" />
+      <BundleResource Include="Resources\BP_Video_09.mp4" />
+      <None Remove="Resources\BP_Video_10.mp4" />
+      <BundleResource Include="Resources\BP_Video_10.mp4" />
+      <None Remove="Resources\btn_options_active.png" />
+      <BundleResource Include="Resources\btn_options_active.png" />
+      <None Remove="Resources\btn_options_active@2x.png" />
+      <BundleResource Include="Resources\btn_options_active@2x.png" />
+      <None Remove="Resources\btn_options_active@3x.png" />
+      <BundleResource Include="Resources\btn_options_active@3x.png" />
+      <None Remove="Resources\btn_options_static.png" />
+      <BundleResource Include="Resources\btn_options_static.png" />
+      <None Remove="Resources\btn_options_static@2x.png" />
+      <BundleResource Include="Resources\btn_options_static@2x.png" />
+      <None Remove="Resources\btn_options_static@3x.png" />
+      <BundleResource Include="Resources\btn_options_static@3x.png" />
+      <None Remove="Resources\fra_kaare_til_buk_teaser_image.png" />
+      <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image.png" />
+      <None Remove="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
+      <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
+      <None Remove="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
+      <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
+      <None Remove="Resources\icon_add_static.png" />
+      <BundleResource Include="Resources\icon_add_static.png" />
+      <None Remove="Resources\icon_add_static@2x.png" />
+      <BundleResource Include="Resources\icon_add_static@2x.png" />
+      <None Remove="Resources\icon_add_static@3x.png" />
+      <BundleResource Include="Resources\icon_add_static@3x.png" />
+      <None Remove="Resources\icon_arrow_right.png" />
+      <BundleResource Include="Resources\icon_arrow_right.png" />
+      <None Remove="Resources\icon_arrow_right@2x.png" />
+      <BundleResource Include="Resources\icon_arrow_right@2x.png" />
+      <None Remove="Resources\icon_arrow_right@3x.png" />
+      <BundleResource Include="Resources\icon_arrow_right@3x.png" />
+      <None Remove="Resources\icon_arrow_right_light.png" />
+      <BundleResource Include="Resources\icon_arrow_right_light.png" />
+      <None Remove="Resources\icon_arrow_right_light@2x.png" />
+      <BundleResource Include="Resources\icon_arrow_right_light@2x.png" />
+      <None Remove="Resources\icon_arrow_right_light@3x.png" />
+      <BundleResource Include="Resources\icon_arrow_right_light@3x.png" />
+      <None Remove="Resources\icon_browse.png" />
+      <BundleResource Include="Resources\icon_browse.png" />
+      <None Remove="Resources\icon_browse@2x.png" />
+      <BundleResource Include="Resources\icon_browse@2x.png" />
+      <None Remove="Resources\icon_browse@3x.png" />
+      <BundleResource Include="Resources\icon_browse@3x.png" />
+      <None Remove="Resources\icon_browse_active.png" />
+      <BundleResource Include="Resources\icon_browse_active.png" />
+      <None Remove="Resources\icon_browse_active@2x.png" />
+      <BundleResource Include="Resources\icon_browse_active@2x.png" />
+      <None Remove="Resources\icon_browse_active@3x.png" />
+      <BundleResource Include="Resources\icon_browse_active@3x.png" />
+      <None Remove="Resources\icon_category_favorites.png" />
+      <BundleResource Include="Resources\icon_category_favorites.png" />
+      <None Remove="Resources\icon_category_favorites@2x.png" />
+      <BundleResource Include="Resources\icon_category_favorites@2x.png" />
+      <None Remove="Resources\icon_category_favorites@3x.png" />
+      <BundleResource Include="Resources\icon_category_favorites@3x.png" />
+      <None Remove="Resources\icon_category_playlist.png" />
+      <BundleResource Include="Resources\icon_category_playlist.png" />
+      <None Remove="Resources\icon_category_playlist@2x.png" />
+      <BundleResource Include="Resources\icon_category_playlist@2x.png" />
+      <None Remove="Resources\icon_category_playlist@3x.png" />
+      <BundleResource Include="Resources\icon_category_playlist@3x.png" />
+      <None Remove="Resources\icon_category_song.png" />
+      <BundleResource Include="Resources\icon_category_song.png" />
+      <None Remove="Resources\icon_category_song@2x.png" />
+      <BundleResource Include="Resources\icon_category_song@2x.png" />
+      <None Remove="Resources\icon_category_song@3x.png" />
+      <BundleResource Include="Resources\icon_category_song@3x.png" />
+      <None Remove="Resources\icon_category_suggestion.png" />
+      <BundleResource Include="Resources\icon_category_suggestion.png" />
+      <None Remove="Resources\icon_category_suggestion@2x.png" />
+      <BundleResource Include="Resources\icon_category_suggestion@2x.png" />
+      <None Remove="Resources\icon_category_suggestion@3x.png" />
+      <BundleResource Include="Resources\icon_category_suggestion@3x.png" />
+      <None Remove="Resources\icon_category_unknown.png" />
+      <BundleResource Include="Resources\icon_category_unknown.png" />
+      <None Remove="Resources\icon_category_unknown@2x.png" />
+      <BundleResource Include="Resources\icon_category_unknown@2x.png" />
+      <None Remove="Resources\icon_category_unknown@3x.png" />
+      <BundleResource Include="Resources\icon_category_unknown@3x.png" />
+      <None Remove="Resources\icon_chevron_right.png" />
+      <BundleResource Include="Resources\icon_chevron_right.png" />
+      <None Remove="Resources\icon_chevron_right@2x.png" />
+      <BundleResource Include="Resources\icon_chevron_right@2x.png" />
+      <None Remove="Resources\icon_chevron_right@3x.png" />
+      <BundleResource Include="Resources\icon_chevron_right@3x.png" />
+      <None Remove="Resources\icon_close_static.png" />
+      <BundleResource Include="Resources\icon_close_static.png" />
+      <None Remove="Resources\icon_close_static@2x.png" />
+      <BundleResource Include="Resources\icon_close_static@2x.png" />
+      <None Remove="Resources\icon_close_static@3x.png" />
+      <BundleResource Include="Resources\icon_close_static@3x.png" />
+      <None Remove="Resources\icon_contributor_fallback.png" />
+      <BundleResource Include="Resources\icon_contributor_fallback.png" />
+      <None Remove="Resources\icon_contributor_fallback@2x.png" />
+      <BundleResource Include="Resources\icon_contributor_fallback@2x.png" />
+      <None Remove="Resources\icon_contributor_fallback@3x.png" />
+      <BundleResource Include="Resources\icon_contributor_fallback@3x.png" />
+      <None Remove="Resources\icon_download.png" />
+      <BundleResource Include="Resources\icon_download.png" />
+      <None Remove="Resources\icon_download@2x.png" />
+      <BundleResource Include="Resources\icon_download@2x.png" />
+      <None Remove="Resources\icon_download@3x.png" />
+      <BundleResource Include="Resources\icon_download@3x.png" />
+      <None Remove="Resources\icon_downloaded.png" />
+      <BundleResource Include="Resources\icon_downloaded.png" />
+      <None Remove="Resources\icon_downloaded@2x.png" />
+      <BundleResource Include="Resources\icon_downloaded@2x.png" />
+      <None Remove="Resources\icon_downloaded@3x.png" />
+      <BundleResource Include="Resources\icon_downloaded@3x.png" />
+      <None Remove="Resources\icon_dynamic_trackcollection_downloaded.png" />
+      <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded.png" />
+      <None Remove="Resources\icon_dynamic_trackcollection_downloaded@2x.png" />
+      <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded@2x.png" />
+      <None Remove="Resources\icon_dynamic_trackcollection_downloaded@3x.png" />
+      <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded@3x.png" />
+      <None Remove="Resources\icon_favorites.png" />
+      <BundleResource Include="Resources\icon_favorites.png" />
+      <None Remove="Resources\icon_favorites@2x.png" />
+      <BundleResource Include="Resources\icon_favorites@2x.png" />
+      <None Remove="Resources\icon_favorites@3x.png" />
+      <BundleResource Include="Resources\icon_favorites@3x.png" />
+      <None Remove="Resources\icon_favorites_active.png" />
+      <BundleResource Include="Resources\icon_favorites_active.png" />
+      <None Remove="Resources\icon_favorites_active@2x.png" />
+      <BundleResource Include="Resources\icon_favorites_active@2x.png" />
+      <None Remove="Resources\icon_favorites_active@3x.png" />
+      <BundleResource Include="Resources\icon_favorites_active@3x.png" />
+      <None Remove="Resources\icon_home.png" />
+      <BundleResource Include="Resources\icon_home.png" />
+      <None Remove="Resources\icon_home@2x.png" />
+      <BundleResource Include="Resources\icon_home@2x.png" />
+      <None Remove="Resources\icon_home@3x.png" />
+      <BundleResource Include="Resources\icon_home@3x.png" />
+      <None Remove="Resources\icon_home_active.png" />
+      <BundleResource Include="Resources\icon_home_active.png" />
+      <None Remove="Resources\icon_home_active@2x.png" />
+      <BundleResource Include="Resources\icon_home_active@2x.png" />
+      <None Remove="Resources\icon_home_active@3x.png" />
+      <BundleResource Include="Resources\icon_home_active@3x.png" />
+      <None Remove="Resources\icon_loading.png" />
+      <BundleResource Include="Resources\icon_loading.png" />
+      <None Remove="Resources\icon_loading@2x.png" />
+      <BundleResource Include="Resources\icon_loading@2x.png" />
+      <None Remove="Resources\icon_loading@3x.png" />
+      <BundleResource Include="Resources\icon_loading@3x.png" />
+      <None Remove="Resources\icon_nav_content_static.png" />
+      <BundleResource Include="Resources\icon_nav_content_static.png" />
+      <None Remove="Resources\icon_nav_content_static@2x.png" />
+      <BundleResource Include="Resources\icon_nav_content_static@2x.png" />
+      <None Remove="Resources\icon_nav_content_static@3x.png" />
+      <BundleResource Include="Resources\icon_nav_content_static@3x.png" />
+      <None Remove="Resources\icon_notification.png" />
+      <BundleResource Include="Resources\icon_notification.png" />
+      <None Remove="Resources\icon_notification@2x.png" />
+      <BundleResource Include="Resources\icon_notification@2x.png" />
+      <None Remove="Resources\icon_notification@3x.png" />
+      <BundleResource Include="Resources\icon_notification@3x.png" />
+      <None Remove="Resources\icon_now_playing.png" />
+      <BundleResource Include="Resources\icon_now_playing.png" />
+      <None Remove="Resources\icon_now_playing@2x.png" />
+      <BundleResource Include="Resources\icon_now_playing@2x.png" />
+      <None Remove="Resources\icon_now_playing@3x.png" />
+      <BundleResource Include="Resources\icon_now_playing@3x.png" />
+      <None Remove="Resources\icon_options.png" />
+      <BundleResource Include="Resources\icon_options.png" />
+      <None Remove="Resources\icon_options@2x.png" />
+      <BundleResource Include="Resources\icon_options@2x.png" />
+      <None Remove="Resources\icon_options@3x.png" />
+      <BundleResource Include="Resources\icon_options@3x.png" />
+      <None Remove="Resources\icon_pending.png" />
+      <BundleResource Include="Resources\icon_pending.png" />
+      <None Remove="Resources\icon_pending@2x.png" />
+      <BundleResource Include="Resources\icon_pending@2x.png" />
+      <None Remove="Resources\icon_pending@3x.png" />
+      <BundleResource Include="Resources\icon_pending@3x.png" />
+      <None Remove="Resources\icon_play_podcast.png" />
+      <BundleResource Include="Resources\icon_play_podcast.png" />
+      <None Remove="Resources\icon_play_podcast@2x.png" />
+      <BundleResource Include="Resources\icon_play_podcast@2x.png" />
+      <None Remove="Resources\icon_play_podcast@3x.png" />
+      <BundleResource Include="Resources\icon_play_podcast@3x.png" />
+      <None Remove="Resources\icon_playback_history.png" />
+      <BundleResource Include="Resources\icon_playback_history.png" />
+      <None Remove="Resources\icon_playback_history@2x.png" />
+      <BundleResource Include="Resources\icon_playback_history@2x.png" />
+      <None Remove="Resources\icon_playback_history@3x.png" />
+      <BundleResource Include="Resources\icon_playback_history@3x.png" />
+      <None Remove="Resources\icon_profile.png" />
+      <BundleResource Include="Resources\icon_profile.png" />
+      <None Remove="Resources\icon_profile@2x.png" />
+      <BundleResource Include="Resources\icon_profile@2x.png" />
+      <None Remove="Resources\icon_profile@3x.png" />
+      <BundleResource Include="Resources\icon_profile@3x.png" />
+      <None Remove="Resources\icon_profile_active.png" />
+      <BundleResource Include="Resources\icon_profile_active.png" />
+      <None Remove="Resources\icon_profile_active@2x.png" />
+      <BundleResource Include="Resources\icon_profile_active@2x.png" />
+      <None Remove="Resources\icon_profile_active@3x.png" />
+      <BundleResource Include="Resources\icon_profile_active@3x.png" />
+      <None Remove="Resources\icon_radio_static.png" />
+      <BundleResource Include="Resources\icon_radio_static.png" />
+      <None Remove="Resources\icon_radio_static@2x.png" />
+      <BundleResource Include="Resources\icon_radio_static@2x.png" />
+      <None Remove="Resources\icon_radio_static@3x.png" />
+      <BundleResource Include="Resources\icon_radio_static@3x.png" />
+      <None Remove="Resources\icon_search.png" />
+      <BundleResource Include="Resources\icon_search.png" />
+      <None Remove="Resources\icon_search@2x.png" />
+      <BundleResource Include="Resources\icon_search@2x.png" />
+      <None Remove="Resources\icon_search@3x.png" />
+      <BundleResource Include="Resources\icon_search@3x.png" />
+      <None Remove="Resources\icon_search_active.png" />
+      <BundleResource Include="Resources\icon_search_active.png" />
+      <None Remove="Resources\icon_search_active@2x.png" />
+      <BundleResource Include="Resources\icon_search_active@2x.png" />
+      <None Remove="Resources\icon_search_active@3x.png" />
+      <BundleResource Include="Resources\icon_search_active@3x.png" />
+      <None Remove="Resources\icon_shuffle_podcast.png" />
+      <BundleResource Include="Resources\icon_shuffle_podcast.png" />
+      <None Remove="Resources\icon_shuffle_podcast@2x.png" />
+      <BundleResource Include="Resources\icon_shuffle_podcast@2x.png" />
+      <None Remove="Resources\icon_shuffle_podcast@3x.png" />
+      <BundleResource Include="Resources\icon_shuffle_podcast@3x.png" />
+      <None Remove="Resources\icon_trackrelation_external.png" />
+      <BundleResource Include="Resources\icon_trackrelation_external.png" />
+      <None Remove="Resources\icon_trackrelation_external@2x.png" />
+      <BundleResource Include="Resources\icon_trackrelation_external@2x.png" />
+      <None Remove="Resources\icon_trackrelation_external@3x.png" />
+      <BundleResource Include="Resources\icon_trackrelation_external@3x.png" />
+      <None Remove="Resources\iTunesArtwork.png" />
+      <BundleResource Include="Resources\iTunesArtwork.png" />
+      <None Remove="Resources\loading_spinner.png" />
+      <BundleResource Include="Resources\loading_spinner.png" />
+      <None Remove="Resources\loading_spinner@2x.png" />
+      <BundleResource Include="Resources\loading_spinner@2x.png" />
+      <None Remove="Resources\loading_spinner@3x.png" />
+      <BundleResource Include="Resources\loading_spinner@3x.png" />
+      <None Remove="Resources\login_logo.png" />
+      <BundleResource Include="Resources\login_logo.png" />
+      <None Remove="Resources\login_logo@2x.png" />
+      <BundleResource Include="Resources\login_logo@2x.png" />
+      <None Remove="Resources\login_logo@3x.png" />
+      <BundleResource Include="Resources\login_logo@3x.png" />
+      <None Remove="Resources\notification.png" />
+      <BundleResource Include="Resources\notification.png" />
+      <None Remove="Resources\notification@2x.png" />
+      <BundleResource Include="Resources\notification@2x.png" />
+      <None Remove="Resources\notification@3x.png" />
+      <BundleResource Include="Resources\notification@3x.png" />
+      <None Remove="Resources\notification_solid.png" />
+      <BundleResource Include="Resources\notification_solid.png" />
+      <None Remove="Resources\notification_solid@2x.png" />
+      <BundleResource Include="Resources\notification_solid@2x.png" />
+      <None Remove="Resources\notification_solid@3x.png" />
+      <BundleResource Include="Resources\notification_solid@3x.png" />
+      <None Remove="Resources\placeholder_album.png" />
+      <BundleResource Include="Resources\placeholder_album.png" />
+      <None Remove="Resources\placeholder_album@2x.png" />
+      <BundleResource Include="Resources\placeholder_album@2x.png" />
+      <None Remove="Resources\placeholder_album@3x.png" />
+      <BundleResource Include="Resources\placeholder_album@3x.png" />
+      <None Remove="Resources\placeholder_artist.png" />
+      <BundleResource Include="Resources\placeholder_artist.png" />
+      <None Remove="Resources\placeholder_artist@2x.png" />
+      <BundleResource Include="Resources\placeholder_artist@2x.png" />
+      <None Remove="Resources\placeholder_artist@3x.png" />
+      <BundleResource Include="Resources\placeholder_artist@3x.png" />
+      <None Remove="Resources\placeholder_cover.png" />
+      <BundleResource Include="Resources\placeholder_cover.png" />
+      <None Remove="Resources\play_animation_icon.json" />
+      <BundleResource Include="Resources\play_animation_icon.json" />
+      <None Remove="Resources\podcast_background_aslaksen_phone.png" />
+      <BundleResource Include="Resources\podcast_background_aslaksen_phone.png" />
+      <None Remove="Resources\podcast_background_aslaksen_phone@2x.png" />
+      <BundleResource Include="Resources\podcast_background_aslaksen_phone@2x.png" />
+      <None Remove="Resources\podcast_background_aslaksen_phone@3x.png" />
+      <BundleResource Include="Resources\podcast_background_aslaksen_phone@3x.png" />
+      <None Remove="Resources\podcast_background_fra_kaare.png" />
+      <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
+      <None Remove="Resources\podcast_background_fra_kaare@2x.png" />
+      <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
+      <None Remove="Resources\podcast_background_fra_kaare@3x.png" />
+      <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
+      <None Remove="Resources\radio_background.png" />
+      <BundleResource Include="Resources\radio_background.png" />
+      <None Remove="Resources\radio_background@2x.png" />
+      <BundleResource Include="Resources\radio_background@2x.png" />
+      <None Remove="Resources\radio_background@3x.png" />
+      <BundleResource Include="Resources\radio_background@3x.png" />
+      <None Remove="GoogleService-Info.plist" />
+      <BundleResource Include="GoogleService-Info.plist" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="Linker.xml" />
+      <LinkDescription Include="Linker.xml" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />
+      <ProjectReference Include="..\BMM.UI.iOS.SiriIntents\BMM.UI.iOS.SiriIntents.csproj">
+        <IsAppExtension>true</IsAppExtension>
+        <IsWatchApp>false</IsWatchApp>
+      </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="ByteSize" Version="2.1.1" />
+      <PackageReference Include="Lottie.iOS" Version="1.0.0" />
+      <PackageReference Include="MvvmCross" Version="9.0.9" />
+      <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
+      <PackageReference Include="Serilog" Version="2.12.0" />
+      <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+      <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
+      <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
+      <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
+    </ItemGroup>
+    <ItemGroup>
+      <Content Include="..\BMM.Core\Translation\af\main.json">
+        <Link>Translation\af\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\bg\main.json">
+        <Link>Translation\bg\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\cs\main.json">
+        <Link>Translation\cs\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\da\main.json">
+        <Link>Translation\da\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\de\main.json">
+        <Link>Translation\de\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\el\main.json">
+        <Link>Translation\el\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\en\main.json">
+        <Link>Translation\en\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\es\main.json">
+        <Link>Translation\es\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\et\main.json">
+        <Link>Translation\et\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\fi\main.json">
+        <Link>Translation\fi\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\fr\main.json">
+        <Link>Translation\fr\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\he\main.json">
+        <Link>Translation\he\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\hr\main.json">
+        <Link>Translation\hr\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\hu\main.json">
+        <Link>Translation\hu\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\it\main.json">
+        <Link>Translation\it\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\nb\main.json">
+        <Link>Translation\nb\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\nl\main.json">
+        <Link>Translation\nl\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\pl\main.json">
+        <Link>Translation\pl\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\pt\main.json">
+        <Link>Translation\pt\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\ro\main.json">
+        <Link>Translation\ro\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\ru\main.json">
+        <Link>Translation\ru\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\sl\main.json">
+        <Link>Translation\sl\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\tr\main.json">
+        <Link>Translation\tr\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\uk\main.json">
+        <Link>Translation\uk\main.json</Link>
+      </Content>
+      <Content Include="..\BMM.Core\Translation\zh\main.json">
+        <Link>Translation\zh\main.json</Link>
+      </Content>
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Include="..\BMM.Core\Translation\en\Translations.designer.cs">
+        <Link>Translation\en\Translations.designer.cs</Link>
+      </Compile>
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="FFImageLoading">
+        <HintPath>..\lib\FFImageLoading.dll</HintPath>
+      </Reference>
+      <Reference Include="FFImageLoading.Shared">
+        <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
+      </Reference>
+      <Reference Include="FFImageLoading.Touch">
+        <HintPath>..\lib\FFImageLoading.Touch.dll</HintPath>
+      </Reference>
+      <Reference Include="MarqueeLabel">
+        <HintPath>..\lib\MarqueeLabel.dll</HintPath>
+      </Reference>
+    </ItemGroup>
 </Project>

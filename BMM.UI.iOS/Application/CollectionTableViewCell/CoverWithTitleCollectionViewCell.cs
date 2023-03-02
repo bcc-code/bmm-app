@@ -28,6 +28,7 @@ namespace BMM.UI.iOS
 
                 set.Bind(TitleLabel).To(po => po.Title);
                 ImageView.ErrorAndLoadingPlaceholderImagePathForCover();
+                
                 set.Bind(ImageView)
                     .For(v => v.ImagePath)
                     .To(po => po.Cover)

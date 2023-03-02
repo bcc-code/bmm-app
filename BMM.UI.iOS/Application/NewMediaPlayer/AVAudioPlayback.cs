@@ -305,7 +305,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 var error = CurrentItem.Error;
                 var technicalMessage = $"{error.Code} - {error.Domain} - {error.LocalizedDescription}";
 
-                if (error.Code == -11866 && _currentMediaTrack.IsLivePlayback)
+                if (error.Code.ToInt32() == -11866 && _currentMediaTrack.IsLivePlayback)
                     _playerErrorHandler.LiveRadioStopped();
                 else if (_internetProblemsErrorCodes.Contains(error.Code))
                     _playerErrorHandler.InternetProblems(technicalMessage, error.LocalizedDescription);

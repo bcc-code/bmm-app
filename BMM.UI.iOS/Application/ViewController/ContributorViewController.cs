@@ -30,6 +30,7 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
             set.Bind(source).For(s => s.LoadMoreCommand).To(s => s.LoadMoreCommand);
             set.Bind(source).For(s => s.IsFullyLoaded).To(s => s.IsFullyLoaded);
+            
             set.Bind(CircleCoverImage).For(v => v.ImagePath).To(vm => vm.Contributor.Cover);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
             set.Bind(NameLabel).To(vm => vm.Contributor.Name);

@@ -1,61 +1,53 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Configurations>Debug;INT;Release</Configurations>
-    <LangVersion>default</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;ENV_INT</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='INT|AnyCPU'">
-    <DefineConstants>TRACE;ENV_INT</DefineConstants>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Implementations\Notifications\Parsing\**" />
-    <Compile Remove="Implementations\TrackInformation\Helpers\**" />
-    <EmbeddedResource Remove="Implementations\Notifications\Parsing\**" />
-    <EmbeddedResource Remove="Implementations\TrackInformation\Helpers\**" />
-    <None Remove="Implementations\Notifications\Parsing\**" />
-    <None Remove="Implementations\TrackInformation\Helpers\**" />
-    <EmbeddedResource Include="Translation\en\main.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <Generator>BMMTranslationKeysGenerator</Generator>
-    </EmbeddedResource>
-    <Compile Update="Translation\en\Translations.designer.cs">
-      <DependentUpon>main.json</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.446" />
-    <PackageReference Include="akavache" Version="7.3.1" />
-    <PackageReference Include="IdentityModel.OidcClient" Version="3.1.2" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
-    <PackageReference Include="MvvmCross" Version="7.1.2" />
-    <PackageReference Include="MvvmCross.Plugin.Color" Version="7.1.2" />
-    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="7.1.2" />
-    <PackageReference Include="MvvmCross.Plugin.Messenger" Version="7.1.2" />
-    <PackageReference Include="MvvmCross.Plugin.Visibility" Version="7.1.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="System.Reactive" Version="5.0.0" />
-    <PackageReference Include="taglib-sharp-netstandard2.0" Version="2.1.0" />
-    <PackageReference Include="Tavis.UriTemplates" Version="1.1.1" />
-    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
-    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BMM.Api\BMM.Api.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="ViewModels\PodcastSection.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\POs\TrackCollections\Interfaces" />
-  </ItemGroup>
-  
-  <Target Name="TranslationKeysGenerator" BeforeTargets="PreBuildEvent">
-    <Exec Command="..\Tools\BMM.TranslationKeysGenerator\build_and_run_project.sh '..\Tools\BMM.TranslationKeysGenerator' '..\Tools\BMM.TranslationKeysGenerator\BMM.TranslationKeysGenerator.csproj' '..' 'BMM.Core\Translation\en\main.json'" ContinueOnError="WarnAndContinue" />
-  </Target>
+<Project Sdk="Microsoft.NET.Sdk">
 
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UseMauiEssentials>true</UseMauiEssentials>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DefineConstants>TRACE;ENV_INT</DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Acr.UserDialogs" Version="8.0.1" />
+      <PackageReference Include="akavache" Version="9.1.7" />
+      <PackageReference Include="IdentityModel" Version="6.0.0" />
+      <PackageReference Include="IdentityModel.OidcClient" Version="5.2.1" />
+      <PackageReference Include="Microsoft.AppCenter" Version="5.0.1" />
+      <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.1" />
+      <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.1" />
+      <PackageReference Include="MvvmCross" Version="9.0.9" />
+      <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
+      <PackageReference Include="MvvmCross.Plugin.Messenger" Version="9.0.9" />
+      <PackageReference Include="MvvmCross.Plugin.Visibility" Version="9.0.9" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+      <PackageReference Include="TagLibSharp" Version="2.3.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BMM.Api\BMM.Api.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="Translation\en\main.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <Generator>BMMTranslationKeysGenerator</Generator>
+      </EmbeddedResource>
+      <Compile Update="Translation\en\Translations.designer.cs">
+        <DependentUpon>main.json</DependentUpon>
+      </Compile>
+      <Reference Include="FFImageLoading">
+        <HintPath>..\lib\FFImageLoading.dll</HintPath>
+      </Reference>
+      <Reference Include="Microsoft.Maui.Essentials">
+        <HintPath>..\..\..\..\..\usr\local\share\dotnet\packs\Microsoft.Maui.Essentials.Ref.ios\7.0.59\ref\net7.0-ios13.6\Microsoft.Maui.Essentials.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <Target Name="TranslationKeysGenerator" BeforeTargets="PreBuildEvent">
+        <Exec Command="..\Tools\BMM.TranslationKeysGenerator\build_and_run_project.sh '..\Tools\BMM.TranslationKeysGenerator' '..\Tools\BMM.TranslationKeysGenerator\BMM.TranslationKeysGenerator.csproj' '..' 'BMM.Core\Translation\en\main.json'" ContinueOnError="WarnAndContinue" />
+    </Target>
 </Project>

@@ -1,8 +1,7 @@
-using System;
 using System.Globalization;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Graphics.Platform;
 using MvvmCross.Converters;
-using UIKit;
-using Xamarin.Essentials;
 
 namespace BMM.UI.iOS
 {
@@ -18,9 +17,8 @@ namespace BMM.UI.iOS
                 return UIColor.Clear;
             }
 
-            var systemColor = ColorConverters.FromHex(value);
-
-            return systemColor.ToPlatformColor();
+            var systemColor = Color.FromArgb(value);
+            return systemColor.AsUIColor();
         }
     }
 }

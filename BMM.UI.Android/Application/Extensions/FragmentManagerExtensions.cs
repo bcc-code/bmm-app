@@ -2,6 +2,8 @@ using AndroidX.Fragment.App;
 using BMM.UI.Droid.Application.Helpers;
 using Java.Lang;
 using MvvmCross.Platforms.Android.Views;
+using Fragment = AndroidX.Fragment.App.Fragment;
+using FragmentManager = AndroidX.Fragment.App.FragmentManager;
 
 namespace BMM.UI.Droid.Application.Extensions
 {

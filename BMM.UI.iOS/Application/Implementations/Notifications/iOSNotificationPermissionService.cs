@@ -1,12 +1,10 @@
-using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Translation;
+using Microsoft.Maui.ApplicationModel;
 using MvvmCross.Base;
 using UserNotifications;
-using VideoToolbox;
-using Xamarin.Essentials;
 
 namespace BMM.UI.iOS.Implementations.Notifications
 {

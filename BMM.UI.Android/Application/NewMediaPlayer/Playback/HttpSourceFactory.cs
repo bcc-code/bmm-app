@@ -7,14 +7,14 @@ using Object = Java.Lang.Object;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
 {
-    public class HttpSourceFactory : Object, IDataSourceFactory
+    public class HttpSourceFactory : Object, IDataSource.IFactory
     {
-        private readonly DefaultHttpDataSourceFactory _httpFactory;
+        private readonly DefaultHttpDataSource.Factory _httpFactory;
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly IMediaRequestHttpHeaders _mediaRequestHttpHeaders;
 
         public HttpSourceFactory(
-            DefaultHttpDataSourceFactory httpFactory,
+            DefaultHttpDataSource.Factory httpFactory,
             IMediaRequestHttpHeaders mediaRequestHttpHeaders,
             IAccessTokenProvider accessTokenProvider)
         {

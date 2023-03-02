@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using BMM.Api.Implementation.Models.Interfaces;
+﻿using BMM.Api.Implementation.Models.Interfaces;
 using Newtonsoft.Json;
 
 namespace BMM.Api.Implementation.Models

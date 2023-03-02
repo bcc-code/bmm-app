@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Xamarin.Essentials;
+using Microsoft.Maui.Networking;
 
 namespace BMM.Api.Framework
 {

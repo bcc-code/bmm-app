@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content;
 using Android.Media;
 using Android.OS;
+using Android.Provider;
 using Android.Runtime;
 using Android.Support.V4.Media;
 using Android.Support.V4.Media.Session;
@@ -18,8 +19,10 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.UI.Droid.Application.Constants.Player;
+using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Helpers;
-using BMM.UI.Droid.Application.NewMediaPlayer.AudioFocus;
+using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Playback;
@@ -36,7 +39,7 @@ using AudioAttributes = Com.Google.Android.Exoplayer2.Audio.AudioAttributes;
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 {
     [Service(Name = "brunstad.MusicService")]
-    public class MusicService : MediaBrowserServiceCompat
+    public class MusicService : MediaBrowserServiceCompat, TimelineQueueEditor.IMediaDescriptionConverter
     {
         private const int DefaultBufferTimeInMs = 15000;
         private const int MinBufferTimeInMs = 300000;
@@ -64,16 +67,24 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                 {
                     var audioManager = (AudioManager)GetSystemService(AudioService);
                     
-                    var playerInstance = new SimpleExoPlayer.Builder(ApplicationContext)
-                        .SetTrackSelector(new DefaultTrackSelector(ApplicationContext))
-                        .SetLoadControl(new LoadControl())
-                        .Build();
+                    var playerInstance = new IExoPlayer.Builder(ApplicationContext)
+                        !.SetTrackSelector(new DefaultTrackSelector(ApplicationContext))
+                        !.SetMediaSourceFactory(_mediaSourceFactory)
+                        !.SetLoadControl(new LoadControl())
+                        !.Build();
 
-                    playerInstance.SetHandleAudioBecomingNoisy(true);
+                    playerInstance!.SetHandleAudioBecomingNoisy(true);
 
                     // ToDo: we actually allow Music and Speeches within one playlist. Now it's always music.
-                    playerInstance.AudioAttributes = new AudioAttributes.Builder().SetContentType(C.ContentTypeMusic).SetUsage(C.UsageMedia).Build();
-                    _exoPlayer = new AudioFocusExoPlayerDecorator(playerInstance, audioManager, Mvx.IoCProvider.Resolve<ILogger>());
+                    var audioAttributes = new AudioAttributes.Builder()
+                        .SetContentType(C.ContentTypeMusic)
+                        .SetUsage(C.UsageMedia)
+                        .Build();
+                    
+                    playerInstance.SetAudioAttributes(audioAttributes, true);
+
+                    _exoPlayer = playerInstance;
+                    //_exoPlayer = new AudioFocusExoPlayerDecorator(playerInstance, audioManager, Mvx.IoCProvider.Resolve<ILogger>());
                     CurrentExoPlayerInstance = _exoPlayer;
                 }
 
@@ -87,6 +98,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         /// problems and is not my preferred solution. Look in the history for an alternative implementation.
         /// </summary>
         private bool _periodicallyUpdateProgress;
+
+        private SingleMediaSourceFactory _mediaSourceFactory;
+
         public bool PeriodicallyUpdateProgress
         {
             get => _periodicallyUpdateProgress;
@@ -132,7 +146,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             var sessionIntent = PackageManager.GetLaunchIntentForPackage(PackageName);
             var pendingIntent = PendingIntent.GetActivity(this, 0, sessionIntent, PendingIntentsUtils.GetImmutable());
 
-            _mediaSession = new MediaSessionCompat(this, "MusicService", null, pendingIntent);
+            _mediaSession = new MediaSessionCompat(this, nameof(MusicService), null, pendingIntent);
             _mediaSession.Active = true;
             SessionToken = _mediaSession.SessionToken;
             
@@ -147,28 +161,28 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                         PeriodicallyUpdateProgress = compat.IsPlaying();
                     }
                 });
+            
             var metadataMapper = Mvx.IoCProvider.Resolve<IMetadataMapper>();
             var queue = Mvx.IoCProvider.Resolve<IMediaQueue>();
             var analytics = Mvx.IoCProvider.Resolve<IAnalytics>();
-            
             _notificationBuilder = new NowPlayingNotificationBuilder(this, metadataMapper, queue, Mvx.IoCProvider.Resolve<NotificationChannelBuilder>());
             _notificationManager = NotificationManagerCompat.From(this);
             
-            var mediaSourceFactory = new SingleMediaSourceFactory(
+            _mediaSourceFactory = new SingleMediaSourceFactory(
                 this,
                 Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>(),
                 Mvx.IoCProvider.Resolve<IAccessTokenProvider>());
-            MediaSessionConnector mediaSessionConnector = null;
-            _mediaSourceSetter = new MediaSourceSetter(() => mediaSessionConnector,
-                source => new TimelineQueueEditor(_mediaController, source, new QueueDataAdapter(), mediaSourceFactory));
-            mediaSessionConnector = new MediaSessionConnector(_mediaSession);
             
-            var preparer = new ExoPlaybackPreparer(ExoPlayer, queue, metadataMapper, mediaSourceFactory, _mediaSourceSetter, analytics);
+            var mediaSessionConnector = new MediaSessionConnector(_mediaSession);
+            _mediaSourceSetter = new MediaSourceSetter(() => mediaSessionConnector,
+                _ => new TimelineQueueEditor(_mediaController, new QueueDataAdapter(), this));
+            
+            var preparer = new ExoPlaybackPreparer(ExoPlayer, queue, metadataMapper, _mediaSourceFactory, _mediaSourceSetter, analytics);
             
             mediaSessionConnector.SetPlayer(ExoPlayer);
             mediaSessionConnector.SetPlaybackPreparer(preparer);
-            mediaSessionConnector.SetControlDispatcher(new IdleRecoveringControlDispatcher(_mediaSourceSetter));
-            mediaSessionConnector.SetQueueNavigator(new IdleRecoveringQueueNavigator(_mediaSession, _mediaSourceSetter));
+            mediaSessionConnector.SetQueueNavigator(new MetadataReadingQueueNavigator(_mediaSession, metadataMapper));
+            //mediaSessionConnector.SetControlDispatcher(new IdleRecoveringControlDispatcher(_mediaSourceSetter));
             mediaSessionConnector.SetErrorMessageProvider(new CustomErrorMessageProvider(() => ExoPlayer,
                 Mvx.IoCProvider.Resolve<ISdkVersionHelper>(),
                 Mvx.IoCProvider.Resolve<ILogger>()));
@@ -187,7 +201,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             // the MediaSession, and (most importantly) call [MediaControllerCallback.onPlaybackStateChanged]. Because the
             // playback state will be reported as [PlaybackStateCompat.STATE_NONE], the service will first remove itself
             // as a foreground service, and will then call [stopSelf].
-            ExoPlayer.Stop(true);
+            ExoPlayer.Stop();
         }
 
         /// <summary>
@@ -202,7 +216,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             _mediaSession.Release();
             base.OnDestroy();
             _progressUpdater.Dispose();
-            _exoPlayer.Stop(true);
+            _exoPlayer.Stop();
             _exoPlayer = null;
         }
 
@@ -210,7 +224,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         {
             // If we don't want to allow any arbitrary app to browser our content we need to check the origin
 
-            return new BrowserRoot(MediaIdHelper.MediaIdRoot, null);
+            return new BrowserRoot(ExoPlayerConstants.MediaIdRoot, null);
         }
 
         public override void OnLoadChildren(string parentId, Result result)
@@ -223,7 +237,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
         private void UpdateNotification(PlaybackStateCompat state)
         {
-            if (_mediaController.Metadata?.Description.MediaId == null)
+            if (string.IsNullOrEmpty(_mediaController.Metadata?.Description?.MediaId))
                 return;
 
             Mvx.IoCProvider.Resolve<IExceptionHandler>()
@@ -284,14 +298,21 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                 DefaultBufferTimeInMs,
                 MinBufferTimeInMs,
                 NumericConstants.Undefined,
-                true)
+                true,
+                DefaultBackBufferDurationMs,
+                DefaultRetainBackBufferFromKeyframe)
             {
             }
             
             /// <summary>
             /// Duration in microseconds of media to retain in the buffer prior to the current playback position, for fast backward seeking.
             /// </summary>
-            public override long BackBufferDurationUs => C.MsToUs(Convert.ToInt64(TimeSpan.FromHours(1).TotalMilliseconds));
+            public override long BackBufferDurationUs => C.MsToUs(System.Convert.ToInt64(TimeSpan.FromHours(1).TotalMilliseconds));
+        }
+
+        public MediaItem Convert(MediaDescriptionCompat description)
+        {
+            return Mvx.IoCProvider.Resolve<IMetadataMapper>().ToMediaItem(description);
         }
     }
 }

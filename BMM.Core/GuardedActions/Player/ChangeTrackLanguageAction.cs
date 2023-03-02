@@ -37,14 +37,7 @@ namespace BMM.Core.GuardedActions.Player
         
         protected override async Task Execute()
         {
-            string selectedLang = await _mvxNavigationService.Navigate<ChangeTrackLanguageViewModel, ITrackModel, string>(PlayerViewModel.CurrentTrack);
-            
-            if (string.IsNullOrEmpty(selectedLang) || selectedLang == PlayerViewModel.CurrentTrack?.Language)
-                return;
-
-            var track = await _tracksClient.GetById(_mediaPlayer.CurrentTrack.Id, selectedLang);
-            await _mediaPlayer.ReplaceTrack(track);
-            _analytics.LogEvent(Event.TrackLanguageChanged);
+            await _mvxNavigationService.Navigate<ChangeTrackLanguageViewModel, ITrackModel>(PlayerViewModel.CurrentTrack);
         }
 
         protected override bool CanExecute()

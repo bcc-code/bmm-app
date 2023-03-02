@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
@@ -39,71 +36,89 @@ using FFImageLoading;
 using FFImageLoading.Cache;
 using FFImageLoading.Config;
 using IdentityModel.OidcClient.Browser;
+using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Storage;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.IoC;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Platforms.Ios.Presenters;
 using MvvmCross.ViewModels;
-using Xamarin.Essentials;
+using Serilog;
+using Serilog.Extensions.Logging;
+using ILogger = BMM.Api.Framework.ILogger;
 
 namespace BMM.UI.iOS
 {
     public class IosSetup : MvxIosSetup<App>
     {
-        protected override void InitializeFirstChance()
+        protected override void InitializeFirstChance(IMvxIoCProvider iocProvider)
         {
-            base.InitializeFirstChance();
+            base.InitializeFirstChance(iocProvider);
 
             // Since we need Firebase already in the dependency injection initialization we have to configure it here.
             // FinishedLaunching of the AppDelegate (as suggested in the Firebase docs) would be to late
             // because it's called after creating the DI containers in Mvx.
             Firebase.Core.App.Configure();
 
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, iOSUserDialogsFactory>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IStopwatchManager, StopwatchManager>();
-            var stopwatch = Mvx.IoCProvider.Resolve<IStopwatchManager>();
+            iocProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, iOSUserDialogsFactory>();
+            iocProvider.LazyConstructAndRegisterSingleton<IStopwatchManager, StopwatchManager>();
+            var stopwatch = iocProvider.Resolve<IStopwatchManager>();
             stopwatch.StartAndGetStopwatch(StopwatchType.AppStart);
 
-            Mvx.IoCProvider.RegisterType<INotificationSubscriptionTokenProvider, FirebaseTokenProvider>();
+            iocProvider.RegisterType<INotificationSubscriptionTokenProvider, FirebaseTokenProvider>();
 
 #if DEBUG && !UI_TESTS
-            Mvx.IoCProvider.RegisterType<ILogger>(
+            iocProvider.RegisterType<ILogger>(
                 () => new ErrorDialogDisplayingLogger(
-                    Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create(),
-                    new IosLogger(Mvx.IoCProvider.Resolve<IUserStorage>(), Mvx.IoCProvider.Resolve<IConnection>()),
-                    Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>())
+                    iocProvider.Resolve<IUserDialogsFactory>().Create(),
+                    new IosLogger(iocProvider.Resolve<IUserStorage>(), iocProvider.Resolve<IConnection>()),
+                    iocProvider.Resolve<IMvxMainThreadAsyncDispatcher>())
             );
 #else
-            Mvx.IoCProvider.RegisterType<ILogger, IosLogger>();
+            iocProvider.RegisterType<ILogger, IosLogger>();
 #endif
 
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserDialogs, iOSExceptionHandlingUserDialogs>();
-            Mvx.IoCProvider.ConstructAndRegisterSingleton<IUiDependentExecutor, BottomNavigationLoadedDependentExecutor>();
-            Mvx.IoCProvider.RegisterType<ISimpleHttpClient, NetworkAccessAwareHttpClient>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackMediaHelper, TrackMediaHelper>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IStorageManager, StorageManager>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<INotificationDisplayer, NotificationDisplayer>();
-            Mvx.IoCProvider.RegisterType<UserNotificationCenterDelegate>();
-            Mvx.IoCProvider.RegisterType<IClipboardService, ClipboardService>();
-            Mvx.IoCProvider.RegisterType<ITrackOptionsService, iOSTrackOptionsService>();
-            Mvx.IoCProvider.RegisterType<IBMMUserDialogs, iOSBMMUserDialogs>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificRemoteConfig, IosFirebaseRemoteConfig>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeviceSupportVersionChecker, IosSupportVersionChecker>();
+            iocProvider.LazyConstructAndRegisterSingleton<IUserDialogs, iOSExceptionHandlingUserDialogs>();
+            iocProvider.ConstructAndRegisterSingleton<IUiDependentExecutor, BottomNavigationLoadedDependentExecutor>();
+            iocProvider.RegisterType<ISimpleHttpClient, NetworkAccessAwareHttpClient>();
+            iocProvider.LazyConstructAndRegisterSingleton<ITrackMediaHelper, TrackMediaHelper>();
+            iocProvider.LazyConstructAndRegisterSingleton<IStorageManager, StorageManager>();
+            iocProvider.LazyConstructAndRegisterSingleton<INotificationDisplayer, NotificationDisplayer>();
+            iocProvider.RegisterType<UserNotificationCenterDelegate>();
+            iocProvider.RegisterType<IClipboardService, ClipboardService>();
+            iocProvider.RegisterType<ITrackOptionsService, iOSTrackOptionsService>();
+            iocProvider.RegisterType<IBMMUserDialogs, iOSBMMUserDialogs>();
+            iocProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificRemoteConfig, IosFirebaseRemoteConfig>();
+            iocProvider.LazyConstructAndRegisterSingleton<IDeviceSupportVersionChecker, IosSupportVersionChecker>();
 
-            Mvx.IoCProvider.RegisterType<UrlSessionDownloadDelegate, SpecificUrlSessionDownloadDelegate>();
+            iocProvider.RegisterType<UrlSessionDownloadDelegate, SpecificUrlSessionDownloadDelegate>();
 
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDownloadManager, IosDownloadManager>();
+            iocProvider.LazyConstructAndRegisterSingleton<IDownloadManager, IosDownloadManager>();
 
-            Mvx.IoCProvider.RegisterDecorator<IUriOpener, InternalLinksOpener, UriOpener>();
+            iocProvider.RegisterDecorator<IUriOpener, InternalLinksOpener, UriOpener>();
 
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IFileDownloader, IosFileDownloader>();
+            iocProvider.LazyConstructAndRegisterSingleton<IFileDownloader, IosFileDownloader>();
 
-            Mvx.IoCProvider.RegisterType<IBrowser, BrowserSelector>();
+            iocProvider.RegisterType<IBrowser, BrowserSelector>();
             
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IFeatureSupportInfoService, iOSFeatureSupportInfoService>();
-            Mvx.IoCProvider.RegisterType<INotificationPermissionService, iOSNotificationPermissionService>();
-            RegisterMediaPlayer();
+            iocProvider.LazyConstructAndRegisterSingleton<IFeatureSupportInfoService, iOSFeatureSupportInfoService>();
+            iocProvider.RegisterType<INotificationPermissionService, iOSNotificationPermissionService>();
+            RegisterMediaPlayer(iocProvider);
+        }
+
+        protected override ILoggerProvider CreateLogProvider()
+        {
+            return new SerilogLoggerProvider();
+        }
+
+        protected override ILoggerFactory CreateLogFactory()
+        {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .CreateLogger();
+
+            return new SerilogLoggerFactory();
         }
 
         public override void InitializeSecondary()
@@ -126,22 +141,22 @@ namespace BMM.UI.iOS
             });
         }
 
-        private void RegisterMediaPlayer()
+        private void RegisterMediaPlayer(IMvxIoCProvider iocProvider)
         {
-            Mvx.IoCProvider.RegisterType<IMediaPlayerInitializer>(Mvx.IoCProvider.Resolve<ICommandCenter>);
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificMediaPlayer, IosMediaPlayer>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IMediaRemoteControl, MediaRemoteControl>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAVPlayerItemRepository, AVPlayerItemRepository>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICacheAVPlayerItemLoaderFactory, CacheAVPlayerItemLoaderFactory>();
-            Mvx.IoCProvider.RegisterType<IAVPlayerItemFactory, AVPlayerItemFactory>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAudioPlayback, AVAudioPlayback>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICommandCenter, SeekableRemoteCommandCenter>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<MediaQueue, MediaQueue>();
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IShuffleableQueue>(() => new ShuffleableQueue(Mvx.IoCProvider.Resolve<MediaQueue>(), Mvx.IoCProvider.Resolve<ILogger>()));
-            Mvx.IoCProvider.RegisterType<IMediaQueue>(Mvx.IoCProvider.Resolve<IShuffleableQueue>);
+            iocProvider.RegisterType<IMediaPlayerInitializer>(iocProvider.Resolve<ICommandCenter>);
+            iocProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificMediaPlayer, IosMediaPlayer>();
+            iocProvider.LazyConstructAndRegisterSingleton<IMediaRemoteControl, MediaRemoteControl>();
+            iocProvider.LazyConstructAndRegisterSingleton<IAVPlayerItemRepository, AVPlayerItemRepository>();
+            iocProvider.LazyConstructAndRegisterSingleton<ICacheAVPlayerItemLoaderFactory, CacheAVPlayerItemLoaderFactory>();
+            iocProvider.RegisterType<IAVPlayerItemFactory, AVPlayerItemFactory>();
+            iocProvider.LazyConstructAndRegisterSingleton<IAudioPlayback, AVAudioPlayback>();
+            iocProvider.LazyConstructAndRegisterSingleton<ICommandCenter, SeekableRemoteCommandCenter>();
+            iocProvider.LazyConstructAndRegisterSingleton<MediaQueue, MediaQueue>();
+            iocProvider.LazyConstructAndRegisterSingleton<IShuffleableQueue>(() => new ShuffleableQueue(iocProvider.Resolve<MediaQueue>(), iocProvider.Resolve<ILogger>()));
+            iocProvider.RegisterType<IMediaQueue>(iocProvider.Resolve<IShuffleableQueue>);
         }
 
-        protected override IMvxApplication CreateApp()
+        protected override IMvxApplication CreateApp(IMvxIoCProvider iocProvider)
         {
             return new App();
         }

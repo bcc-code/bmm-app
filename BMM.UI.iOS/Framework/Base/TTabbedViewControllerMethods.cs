@@ -26,7 +26,7 @@ namespace BMM.UI.iOS
             };
 
             // Set the default tab
-            segmentedControl.SelectedSegment = defaultTab;
+            segmentedControl.SelectedSegment = new IntPtr(defaultTab);
             SetActiveView(contentView, viewControllers[defaultTab]);
 
             return viewControllers;
@@ -36,7 +36,7 @@ namespace BMM.UI.iOS
         {
             segmentedControll.InsertSegment(
                 vm.TextSource.GetText(ViewModelUtils.GetVMTitleKey(vm.GetType())),
-                index,
+                new IntPtr(index),
                 false
             );
 

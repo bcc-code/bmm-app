@@ -4,7 +4,6 @@ pool:
   demands:
     - xcode
     - msbuild
-    - Xamarin.iOS
 
 trigger:
   branches:
@@ -54,27 +53,20 @@ steps:
 
   - bash: |
       URL="https://bmm-api.brunstad.org/AppVersion/iOSVersionCode"
-      
       VERSIONCODE=$(curl -k --user $(bmmApiCredentials) $URL)
-      
       echo "Receive version: $((VERSIONCODE))"
-      
       echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
     displayName: 'Get  IOS VersionCode'
 
   - bash: |
       let VERSIONCODE=++VERSIONCODE
-      
       echo "New version set to: $((VERSIONCODE))"
-      
       echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
     displayName: 'Increment IOS VersionCode'
 
   - bash: |
       url="https://bmm-api.brunstad.org/AppVersion/iOSVersionInfo"
-      
       versionInfo=$(curl -k --user $(bmmApiCredentials) $url)
-      
       echo "Receive version info: $versionInfo"
       echo "##vso[task.setvariable variable=VersionInfo]$versionInfo"
     displayName: 'Get version info'
@@ -84,8 +76,8 @@ steps:
       filePath: 'version-info.sh'
     displayName: 'Construct new version number'
 
-## We don't update later because that would result in the same version number for parallel builds.
-## skipping versions in case of build errors is more acceptable than not being able to run builds in parallel.
+# We don't update later because that would result in the same version number for parallel builds.
+# skipping versions in case of build errors is more acceptable than not being able to run builds in parallel.
   - task: CdiscountAlm.rest-call-build-task.custom-build-task.restCallBuildTask@0
     displayName: 'Rest call PUT AppVersion/iOSVersionCode'
     inputs:
@@ -138,7 +130,7 @@ steps:
 
   - bash: |
       echo "username: $userName"
-      
+
       /bin/bash -c "echo \"$userName\" > 'BMM.UI.iOS/metadata/review_information/demo_user.txt'"
       /bin/bash -c "echo \"$password\" > 'BMM.UI.iOS/metadata/review_information/demo_password.txt'"
     displayName: 'Set demo user'
@@ -153,45 +145,25 @@ steps:
         **/bin
         **/obj
 
-  - task: NuGetToolInstaller@1
-    displayName: 'Use NuGet 5.6.0'
-    inputs:
-      versionSpec: 5.6.0
+  - bash: |
+      dotnet workload install ios
+    displayName: 'Install iOS workload'
 
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
+  - bash: |
+      dotnet workload install maui-ios
+    displayName: 'Install MAUI iOS workload'
+    
+  - task: DotNetCoreCLI@2
+    displayName: 'Build .NET for iOS solution BMM.UI.iOS/BMM.UI.iOS.csproj'
     inputs:
-      restoreSolution: '*.sln'
-      feedsToUse: config
-      nugetConfigPath: nuget.config
-      restoreDirectory: packages
+      command: 'build'
+      projects: 'BMM.UI.iOS/BMM.UI.iOS.csproj'
+      arguments: '-c Release /p:Platform="iPhone"'
 
-  - task: MSBuild@1
-    displayName: 'Build solution **/*UITests.csproj'
-    inputs:
-      solution: '**/*UITests.csproj'
-      platform: AnyCPU
-
-## Signing certificate and provisioning profile is set up in .csproj
-## because azure pipelines doesn't allow to have multiple certificates/provisioning profiles in one task
-## and we need one for main iOS project and the second for the Siri Intents extension
-  - task: XamariniOS@2
-    displayName: 'Build Xamarin.iOS solution BMM.UI.iOS/BMM.UI.iOS.csproj'
-    inputs:
-      solutionFile: BMM.UI.iOS/BMM.UI.iOS.csproj
-      clean: true
-
-  - task: XamariniOS@2
-    displayName: 'Build Xamarin.iOS solution for UI Test'
-    inputs:
-      solutionFile: BMM.UI.iOS/BMM.UI.iOS.csproj
-      configuration: UITests
-      clean: true
-      
   - task: ArchiveFiles@1
     displayName: 'Create dSYM archive with symbols '
     inputs:
-      rootFolder: 'BMM.UI.iOS/bin/iPhone/Release/BMM.app.dSYM'
+      rootFolder: 'BMM.UI.iOS/bin/iPhone/Release/net7.0-ios/ios-arm64/BMM.app.dSYM'
       archiveFile: '$(Build.ArtifactStagingDirectory)/BMM.app.dSYM.zip'
 
   - task: CopyFiles@2
@@ -217,14 +189,6 @@ steps:
       SourceFolder: BMM.UI.iOS/metadata
       Contents: '*/*'
       TargetFolder: '$(build.artifactstagingdirectory)/metadata'
-
-  - task: AppCenterTest@1
-    displayName: 'Prepare AppCenter Tests'
-    inputs:
-      appFile: '$(build.artifactstagingdirectory)/**/Debug/*.ipa'
-      frameworkOption: uitest
-      uiTestBuildDirectory: '$(Build.SourcesDirectory)/BMM.Tests/BMM.UITests/bin/Debug'
-      runTests: false
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: BMM.IOS'

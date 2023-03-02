@@ -31,7 +31,7 @@ using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
-using Xamarin.Essentials;
+using Microsoft.Maui.Devices;
 
 namespace BMM.Core.GuardedActions.TrackOptions
 {

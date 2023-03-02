@@ -8,6 +8,7 @@ using Foundation;
 using System;
 using System.CodeDom.Compiler;
 using FFImageLoading.Cross;
+// using FFImageLoading.Cross;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -28,7 +29,7 @@ namespace BMM.UI.iOS
                 TitleLabel.Dispose ();
                 TitleLabel = null;
             }
-
+            
             if (TypeImage != null) {
                 TypeImage.Dispose ();
                 TypeImage = null;
