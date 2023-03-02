@@ -46,7 +46,7 @@
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <RuntimeIdentifier>iphonesimulator-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,7 +92,7 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <MtouchExtraArgs/>
+    <MtouchExtraArgs />
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -107,7 +107,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
-    <RuntimeIdentifier>iphonesimulator-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -127,6 +127,7 @@
     <IpaMetadata>Info.plist</IpaMetadata>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+    <UseInterpreter>true</UseInterpreter>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <CodesignKey>iPhone Developer</CodesignKey>

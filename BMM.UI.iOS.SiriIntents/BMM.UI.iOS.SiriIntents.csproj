@@ -28,7 +28,7 @@
         <IOSDebuggerPort>38765</IOSDebuggerPort>
         <MtouchLink>None</MtouchLink>
         <MtouchArch>x86_64</MtouchArch>
-        <RuntimeIdentifier>iphonesimulator-x64</RuntimeIdentifier>
+        <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>pdbonly</DebugType>
@@ -53,7 +53,7 @@
         <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
         <MtouchLink>None</MtouchLink>
         <MtouchArch>x86_64</MtouchArch>
-        <RuntimeIdentifier>iphonesimulator-x64</RuntimeIdentifier>
+        <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugType>full</DebugType>
