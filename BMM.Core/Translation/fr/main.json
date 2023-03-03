@@ -259,7 +259,7 @@
     "PlaybackSpeed": "Vitesse de lecture",
     "Normal": "Normal",
     "Selected": "Sélectionné",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Regarder sur BCC Media"
   },
   "QueueViewModel": {
     "Title": "File d'attente"
@@ -335,12 +335,12 @@
     "PluralTracks": "{0} pistes",
     "PluralTracksLoaded": "{0} pistes chargées",
     "Download": "Télécharger",
-    "Shuffle": "Au hasard",
+    "Shuffle": "Aléatoire",
     "Play": "Lecture"
   },
   "TrackCollectionViewModel": {
     "Title": "Liste de lecture",
-    "ShufflePlay": "Au hasard",
+    "ShufflePlay": "Aléatoire",
     "Resume": "Continuer",
     "AvailableOffline": "Disponible en mode déconnecté",
     "AvailableOfflineDownload": "Télécharger",
