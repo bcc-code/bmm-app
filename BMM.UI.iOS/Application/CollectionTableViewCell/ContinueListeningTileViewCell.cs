@@ -38,6 +38,7 @@ namespace BMM.UI.iOS
                     .To(po => po.TileClickedCommand);
                 
                 CoverImageView.ErrorAndLoadingPlaceholderImagePathForCover();
+                
                 set.Bind(CoverImageView)
                     .For(v => v.ImagePath)
                     .To(vm => vm.Tile.CoverUrl)

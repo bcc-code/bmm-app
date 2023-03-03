@@ -20,7 +20,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                CoverImageView.ErrorAndLoadingPlaceholderImagePath(IosConstants.ArtistPlaceholderImage);
+               CoverImageView.ErrorAndLoadingPlaceholderImagePath(IosConstants.ArtistPlaceholderImage);
                 var set = this.CreateBindingSet<ContributorTableViewCell, ContributorPO>();
                 set.Bind(TitleLabel).To(vm => vm.Contributor.Name);
                 set.Bind(OptionsButton).To(po => po.OptionButtonClickedCommand);

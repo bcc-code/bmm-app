@@ -1,7 +1,4 @@
-﻿using System;
-using Android.App;
-using Android.OS;
-using Android.Runtime;
+﻿using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using AndroidX.RecyclerView.Widget;

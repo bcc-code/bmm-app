@@ -1,14 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Framework.Exceptions;
 using BMM.Core.ExceptionHandlers.Interfaces;
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Translation;
-using BMM.Core.ViewModels;
-using MvvmCross.Localization;
 
 namespace BMM.Core.ExceptionHandlers
 {

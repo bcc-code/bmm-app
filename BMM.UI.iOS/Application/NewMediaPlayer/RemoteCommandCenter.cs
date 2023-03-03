@@ -62,7 +62,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 var coverImage = currentTrack.ArtworkUri == null
                     ? await ImageService.Instance.LoadCompiledResource("placeholder_cover").AsUIImageAsync()
                     : await ImageService.Instance.LoadUrl(currentTrack.ArtworkUri).AsUIImageAsync();
-
+                
                 info.Artwork = new MPMediaItemArtwork(coverImage);
 
                 if (state.PlayStatus != PlayStatus.Playing)

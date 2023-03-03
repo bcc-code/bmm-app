@@ -75,7 +75,14 @@ namespace BMM.UI.iOS.Utils.ColorPalette
 			try
 			{
 				using var colorSpace = CGColorSpace.CreateDeviceRGB();
-				using var context = new CGBitmapContext(rawData, 1, 1, 8, 4, colorSpace, CGImageAlphaInfo.PremultipliedLast);
+				using var context = new CGBitmapContext(
+					rawData,
+					new IntPtr(1),
+					new IntPtr(1),
+					new IntPtr(8),
+					new IntPtr(4),
+					colorSpace,
+					CGImageAlphaInfo.PremultipliedLast);
 
 				context.DrawImage(new CGRect(-point.X, point.Y - image.Size.Height, image.Size.Width, image.Size.Height), image.CGImage);
 				float red   = rawData[0] / MaxColorValue;

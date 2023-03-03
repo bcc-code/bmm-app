@@ -8,7 +8,6 @@ using BMM.Core.Implementations.Analytics;
 using BMM.UI.Droid.Application.Activities;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Notifications.Data;
-using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Utils;
 using MvvmCross.Base;
 

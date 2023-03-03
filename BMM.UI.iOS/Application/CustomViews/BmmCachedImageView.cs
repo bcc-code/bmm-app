@@ -1,10 +1,7 @@
-using System;
 using System.ComponentModel;
-using CoreGraphics;
 using FFImageLoading.Args;
 using FFImageLoading.Cross;
-using Foundation;
-using UIKit;
+using ErrorEventArgs = FFImageLoading.Args.ErrorEventArgs;
 
 namespace BMM.UI.iOS
 {
@@ -52,7 +49,7 @@ namespace BMM.UI.iOS
             }
         }
 
-        private void HandleSuccess(object sender, SuccessEventArgs e) => IsError = false;
-        private void HandleError(object sender, ErrorEventArgs e) => IsError = true;
+        private void HandleSuccess(object? sender, SuccessEventArgs e) => IsError = false;
+        private void HandleError(object? sender, ErrorEventArgs e) => IsError = true;
     }
 }

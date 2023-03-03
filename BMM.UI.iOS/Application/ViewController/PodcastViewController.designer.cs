@@ -74,11 +74,11 @@ namespace BMM.UI.iOS
 				ShuffleButton.Dispose ();
 				ShuffleButton = null;
 			}
-
-			if (PodcastCoverImageView != null) {
-				PodcastCoverImageView.Dispose ();
-				PodcastCoverImageView = null;
-			}
+			//
+			// if (PodcastCoverImageView != null) {
+			// 	PodcastCoverImageView.Dispose ();
+			// 	PodcastCoverImageView = null;
+			// }
 
 			if (PodcastHeaderView != null) {
 				PodcastHeaderView.Dispose ();

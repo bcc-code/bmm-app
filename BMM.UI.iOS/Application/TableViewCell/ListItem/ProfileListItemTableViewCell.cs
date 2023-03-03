@@ -23,6 +23,7 @@ namespace BMM.UI.iOS
                 var set = this.CreateBindingSet<ProfileListItemTableViewCell, ProfileListItem>();
                 set.Bind(SignedInAsTitle).To(listItem => listItem.Title);
                 set.Bind(Username).To(listItem => listItem.Username);
+                
                 set.Bind(ProfileImage)
                     .For(v => v.ImagePath)
                     .To(listItem => listItem.UserProfileUrl)

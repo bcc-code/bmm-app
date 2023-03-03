@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using MvvmCross.Base;
 using MvvmCross.Plugin.JsonLocalization;
+using MvvmCross.Plugin.ResourceLoader;
 
 namespace BMM.Core.Implementations.Localization
 {

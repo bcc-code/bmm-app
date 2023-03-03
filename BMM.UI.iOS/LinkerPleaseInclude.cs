@@ -7,6 +7,7 @@ using MvvmCross.IoC;
 using MvvmCross.Navigation;
 using MvvmCross.Platforms.Ios.Views;
 using MvvmCross.ViewModels;
+using MvvmCross.Views;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -89,14 +90,6 @@ namespace BMM.UI.iOS
         {
             s.Value = s.Value + 1;
             s.ValueChanged += (sender, args) => { s.Value = 0; };
-        }
-
-        public void Include2(UIPageControl s)
-        {
-            s.Pages = s.Pages + 1;
-            s.ValueChanged += (sender, args) => { s.Pages = 0; };
-            s.EditingChanged += (sender, args) => { s.Pages = 2; };
-            s.AllEvents += (sender, args) => { s.Pages = 3; };
         }
 
         public void Include(UIScrollView s)
@@ -228,12 +221,6 @@ namespace BMM.UI.iOS
             s.ValueChanged += (sender, args) => { s.Value = 0; };
         }
 
-        public void Include(UIPageControl s)
-        {
-            s.Pages = s.Pages + 1;
-            s.ValueChanged += (sender, args) => { s.Pages = 0; };
-        }
-
         public void Include(INotifyCollectionChanged changed)
         {
             changed.CollectionChanged += (s, e) => { var test = $"{e.Action}{e.NewItems}{e.NewStartingIndex}{e.OldItems}{e.OldStartingIndex}"; };
@@ -254,9 +241,9 @@ namespace BMM.UI.iOS
             changed.PropertyChanged += (sender, e) => { var test = e.PropertyName; };
         }
 
-        public void Include(MvxNavigationService service, IMvxViewModelLoader loader)
+        public void Include(IMvxViewModelLoader loader, IMvxViewDispatcher mvxViewDispatcher, IMvxIoCProvider mvxIoCProvider)
         {
-            service = new MvxNavigationService(null, loader);
+            var service = new MvxNavigationService(loader, mvxViewDispatcher, mvxIoCProvider);
         }
 
         public void Include(ConsoleColor color)

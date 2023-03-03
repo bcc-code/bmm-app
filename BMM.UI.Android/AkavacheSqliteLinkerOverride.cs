@@ -1,4 +1,3 @@
-using System;
 using Akavache.Sqlite3;
 
 // Note: This class file is *required* for iOS to work correctly, and is

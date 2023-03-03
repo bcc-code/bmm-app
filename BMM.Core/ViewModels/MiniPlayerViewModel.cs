@@ -2,8 +2,8 @@
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Messages;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using Microsoft.Maui.Devices;
 using MvvmCross.Commands;
-using Xamarin.Essentials;
 
 namespace BMM.Core.ViewModels
 {

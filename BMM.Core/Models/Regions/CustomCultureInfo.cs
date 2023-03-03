@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Linq;
 using System.Reflection;
 
 namespace BMM.Core.Models.Regions
@@ -23,14 +22,14 @@ namespace BMM.Core.Models.Regions
         public override string NativeName { get; }
         public override string EnglishName { get; }
         
-        // 'm_name' field has to bo set in order to correctly comparing two CultureInfo
+        // 'm_name' field has to bo set in order to correctly comparing two CultureInfo’’’
         private void SetNameField(string isoCode)
         {
             var fields = typeof(CultureInfo).GetFields(
                 BindingFlags.NonPublic |
                 BindingFlags.Instance);
 
-            var nameField = fields.First(x => x.Name == "m_name");
+            var nameField = fields.First(x => x.Name == "_name");
             nameField.SetValue(this, isoCode);
         }
     }

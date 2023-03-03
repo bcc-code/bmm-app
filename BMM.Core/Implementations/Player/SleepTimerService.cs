@@ -3,6 +3,7 @@ using System.Timers;
 using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using Timer = System.Timers.Timer;
 
 namespace BMM.Core.Implementations.Player
 {

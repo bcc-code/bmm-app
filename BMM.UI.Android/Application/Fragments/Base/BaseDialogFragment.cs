@@ -15,6 +15,7 @@ using BMM.UI.Droid.Application.Helpers;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Views.Fragments;
+using Toolbar = AndroidX.AppCompat.Widget.Toolbar;
 
 namespace BMM.UI.Droid.Application.Fragments.Base
 {

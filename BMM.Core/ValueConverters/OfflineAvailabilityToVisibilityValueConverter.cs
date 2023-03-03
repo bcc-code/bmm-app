@@ -7,7 +7,7 @@ using MvvmCross.UI;
 
 namespace BMM.Core.ValueConverters
 {
-    public class OfflineAvailabilityToVisibilityValueConverter: MvxBaseVisibilityValueConverter<TrackCollection>
+    public class OfflineAvailabilityToVisibilityValueConverter : MvxBaseVisibilityValueConverter<TrackCollection>
     {
         protected override MvxVisibility Convert(TrackCollection value, object parameter, CultureInfo culture)
         {

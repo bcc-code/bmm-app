@@ -35,7 +35,7 @@ namespace BMM.UI.iOS.Helpers
                 layer.CornerRadius = view.Layer.CornerRadius;
             }
 
-            view.InsertSubview(gradientView, 0);
+            view.InsertSubview(gradientView, new IntPtr(0));
         }
     }
 }

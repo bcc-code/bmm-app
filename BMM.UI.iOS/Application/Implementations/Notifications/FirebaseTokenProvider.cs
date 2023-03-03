@@ -1,15 +1,10 @@
-﻿using System.Threading.Tasks;
-using BMM.Core.Implementations.Notifications;
-using Firebase.InstanceID;
+﻿using BMM.Core.Implementations.Notifications;
+using Firebase.CloudMessaging;
 
 namespace BMM.UI.iOS.Implementations.Notifications
 {
     public class FirebaseTokenProvider : INotificationSubscriptionTokenProvider
     {
-        public async Task<string> GetToken()
-        {
-            var instance = await InstanceId.SharedInstance.GetInstanceIdAsync();
-            return instance.Token;
-        }
+        public Task<string> GetToken() => Messaging.SharedInstance.FetchTokenAsync();
     }
 }

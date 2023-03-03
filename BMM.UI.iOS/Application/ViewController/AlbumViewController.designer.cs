@@ -45,10 +45,10 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (AlbumCoverImageView != null) {
-				AlbumCoverImageView.Dispose ();
-				AlbumCoverImageView = null;
-			}
+			// if (AlbumCoverImageView != null) {
+			// 	AlbumCoverImageView.Dispose ();
+			// 	AlbumCoverImageView = null;
+			// }
 
 			if (AlbumHeaderView != null) {
 				AlbumHeaderView.Dispose ();

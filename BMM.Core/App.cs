@@ -78,8 +78,10 @@ using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.IoC;
 using MvvmCross.Localization;
+using MvvmCross.Plugin;
 using MvvmCross.Plugin.JsonLocalization;
 using MvvmCross.Plugin.Messenger;
+using MvvmCross.Plugin.ResourceLoader;
 using MvvmCross.ViewModels;
 
 // ReSharper disable RedundantTypeArgumentsOfMethod
@@ -90,6 +92,12 @@ namespace BMM.Core
     {
         private IEnumerable<Assembly> _assemblies;
         private const string MainAssemblyName = "BMM";
+
+        public override void LoadPlugins(IMvxPluginManager pluginManager)
+        {
+            base.LoadPlugins(pluginManager);
+            pluginManager.EnsurePluginLoaded<Plugin>(true);
+        }
 
         /// <summary>
         /// Called once at startup to initialize classes and start the app

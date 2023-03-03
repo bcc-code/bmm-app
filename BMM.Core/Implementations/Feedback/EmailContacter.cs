@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Security;
-using Xamarin.Essentials;
+using Microsoft.Maui.ApplicationModel.Communication;
 
 namespace BMM.Core.Implementations.Feedback
 {

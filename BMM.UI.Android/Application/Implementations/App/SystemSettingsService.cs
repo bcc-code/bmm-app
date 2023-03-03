@@ -1,8 +1,7 @@
-using System.Threading.Tasks;
 using Android.Content;
+using Microsoft.Maui.ApplicationModel;
 using MvvmCross.Base;
 using MvvmCross.Platforms.Android;
-using Xamarin.Essentials;
 
 namespace BMM.UI.Droid.Application.Implementations.App
 {

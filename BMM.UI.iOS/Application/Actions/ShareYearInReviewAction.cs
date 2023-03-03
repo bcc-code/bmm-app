@@ -35,13 +35,13 @@ namespace BMM.UI.iOS.Actions
                 await ImageService.Instance.LoadUrl(parameter).IntoAsync(imageView);
                 
                 var shareViewController = new UIActivityViewController(new NSObject[] { new ShareActivityItemSource(imageView.Image,  _bmmLanguageBinder[Translations.YearInReviewViewModel_ShareTitle]) }, null);
-
+                
                 if (shareViewController.PopoverPresentationController != null)
                 {
                     var sourceView = YearInReviewViewController.Instance!.ButtonShare;
                     shareViewController.PopoverPresentationController.SourceView = sourceView;
                 }
-
+                
                 YearInReviewViewController.Instance!.PresentViewController(shareViewController, true, null);
             });
         }

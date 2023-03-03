@@ -17,7 +17,7 @@ namespace BMM.UI.iOS.Extensions
             float u = 0;
             float v = 0;
 
-            for (int i = 0; i < cgColor.NumberOfComponents - 1; i++)
+            for (int i = 0; i < cgColor.NumberOfComponents.ToInt32() - 1; i++)
                 rgb[i] = (float)cgColor.Components[i];
 
             y = 0.299f * rgb[0] + 0.587f * rgb[1] + 0.114f * rgb[2];

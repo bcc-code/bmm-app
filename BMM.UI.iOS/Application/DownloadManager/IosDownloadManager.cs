@@ -87,7 +87,7 @@ namespace BMM.UI.iOS.DownloadManager
         /// </summary>
         private void ReinitializeTasksStartedBeforeAppTermination()
         {
-            _backgroundSession.GetTasks2(async (dataTasks, uploadTasks, downloadTasks) =>
+            _backgroundSession.GetTasks(async (dataTasks, uploadTasks, downloadTasks) =>
             {
                 bool mobileNetworkAllowed = await _networkSettings.GetMobileNetworkDownloadAllowed();
                 foreach (var task in downloadTasks)
@@ -152,7 +152,7 @@ namespace BMM.UI.iOS.DownloadManager
 
         private NSUrlSession createSession(NSUrlSessionConfiguration configuration, UrlSessionDownloadDelegate sessionDownloadDelegate)
         {
-            configuration.HttpMaximumConnectionsPerHost = 1;
+            configuration.HttpMaximumConnectionsPerHost = new IntPtr(1);
 
             return NSUrlSession.FromConfiguration(configuration, sessionDownloadDelegate, null);
         }

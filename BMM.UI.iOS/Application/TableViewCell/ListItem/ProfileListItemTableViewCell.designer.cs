@@ -46,7 +46,6 @@ namespace BMM.UI.iOS
 				ProfileImage.Dispose ();
 				ProfileImage = null;
 			}
-
 		}
 	}
 }

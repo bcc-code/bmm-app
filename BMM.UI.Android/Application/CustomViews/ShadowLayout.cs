@@ -5,6 +5,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Java.Lang;
+using Math = System.Math;
 
 namespace BMM.UI.Droid.Application.CustomViews
 {
@@ -101,8 +102,8 @@ namespace BMM.UI.Droid.Application.CustomViews
 
         private void ResetShadow()
         {
-            _shadowDx = (float)(_shadowDistance * Math.Cos(_shadowAngle / (180 * Math.Pi)));
-            _shadowDy = (float)(_shadowDistance * Math.Sin(_shadowAngle / (180 * Math.Pi)));
+            _shadowDx = (float)(_shadowDistance * Math.Cos(_shadowAngle / (180 * Math.PI)));
+            _shadowDy = (float)(_shadowDistance * Math.Sin(_shadowAngle / (180 * Math.PI)));
             
             int padding = (int)(_shadowDistance + _shadowRadius);
             SetPadding(padding,

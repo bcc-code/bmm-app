@@ -1,6 +1,3 @@
-using System;
-using System.Threading.Tasks;
-using BMM.Api.Framework;
 using BMM.Core.Diagnostic.Interfaces;
 using BMM.Core.Implementations.Analytics;
 

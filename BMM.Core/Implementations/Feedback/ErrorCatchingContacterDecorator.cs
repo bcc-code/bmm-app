@@ -4,8 +4,8 @@ using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Translation;
+using Microsoft.Maui.ApplicationModel;
 using MvvmCross.Localization;
-using Xamarin.Essentials;
 
 namespace BMM.Core.Implementations.Feedback
 {

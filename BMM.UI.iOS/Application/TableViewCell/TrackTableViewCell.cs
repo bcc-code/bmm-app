@@ -30,6 +30,7 @@ namespace BMM.UI.iOS
                 set.Bind(accessoryView).To(po => po.TrackSubtitle);
                 set.Bind(accessoryView).For(i => i.TextColor).To(po => po.TrackState).WithConversion<TrackToSubtitleColorConverter>();
                 set.Bind(metaLabel).To(po => po.TrackMeta);
+                
                 set.Bind(DownloadStatusImageView)
                     .For(i => i.ImagePath)
                     .To(po => po.TrackState)

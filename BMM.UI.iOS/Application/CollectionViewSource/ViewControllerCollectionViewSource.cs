@@ -83,7 +83,7 @@ namespace BMM.UI.iOS.CollectionViewSource
         private NSIndexPath GetCurrentPath()
         {
             int columnIndex = GetCurrentIndexBasedOnScrollPosition();
-            return NSIndexPath.FromRowSection(columnIndex, 0);
+            return NSIndexPath.FromRowSection(new IntPtr(columnIndex), new IntPtr(0));
         }
 
         public override void WillDisplayCell(

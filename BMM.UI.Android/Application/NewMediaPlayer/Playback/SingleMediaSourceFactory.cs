@@ -1,19 +1,17 @@
-﻿using Acr.UserDialogs;
-using Android.Content;
-using Android.Net;
-using Android.Support.V4.Media;
+﻿using Android.Content;
 using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Security;
-using Com.Google.Android.Exoplayer2.Ext.Mediasession;
+using Com.Google.Android.Exoplayer2;
+using Com.Google.Android.Exoplayer2.Drm;
 using Com.Google.Android.Exoplayer2.Source;
-using Com.Google.Android.Exoplayer2.Source.Hls;
 using Com.Google.Android.Exoplayer2.Upstream;
 using Com.Google.Android.Exoplayer2.Util;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
 {
-    public class SingleMediaSourceFactory : Java.Lang.Object, TimelineQueueEditor.IMediaSourceFactory
+    public class SingleMediaSourceFactory
+        : Java.Lang.Object,
+          IMediaSource.IFactory
     {
         private readonly Context _applicationContext;
         private readonly IMediaRequestHttpHeaders _mediaRequestHeaders;
@@ -28,49 +26,47 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
             _applicationContext = applicationContext;
         }
 
-        public IMediaSource CreateMediaSource(MediaDescriptionCompat description)
+        public IMediaSource CreateMediaSource(MediaItem mediaItem)
         {
-            IDataSourceFactory sourceFactory;
-            Uri uri;
-
-            var localPath = description.Extras.GetString(MetadataMapper.MetadataKeyLocalPath);
+            IDataSource.IFactory sourceFactory;
+            
+            var localPath = mediaItem!.MediaMetadata!.Extras!.GetString(MetadataMapper.MetadataKeyLocalPath);
             if (localPath != null)
             {
-                uri = Uri.Parse(localPath);
                 sourceFactory = new FileDataSource.Factory();
             }
             else
             {
-                uri = description.MediaUri;
                 var userAgent = Util.GetUserAgent(_applicationContext, "BMM Android");
                 var bandwidthMeter = new DefaultBandwidthMeter.Builder(_applicationContext).Build();
-                var dataSourceFactory = new DefaultHttpDataSourceFactory(userAgent,
-                    bandwidthMeter,
-                    DefaultHttpDataSource.DefaultConnectTimeoutMillis,
-                    DefaultHttpDataSource.DefaultReadTimeoutMillis,
-                    true);
+                var dataSourceFactory = new DefaultHttpDataSource.Factory();
+
+                dataSourceFactory.SetUserAgent(userAgent);
+                dataSourceFactory.SetTransferListener(bandwidthMeter);
+                dataSourceFactory.SetConnectTimeoutMs(DefaultHttpDataSource.DefaultConnectTimeoutMillis);
+                dataSourceFactory.SetReadTimeoutMs(DefaultHttpDataSource.DefaultReadTimeoutMillis);
+                dataSourceFactory.SetAllowCrossProtocolRedirects(true);
 
                 sourceFactory = new HttpSourceFactory(
                     dataSourceFactory,
                     _mediaRequestHeaders,
                     _accessTokenProvider);
-
-                var subtype = description.Extras.GetString(MetadataMapper.MetadataKeySubtype);
-                if (subtype == TrackSubType.Live.ToString())
-                {
-                    TagReadingQueueNavigator.HackForDescriptionForStreamingTrack = description;
-                    return new HlsMediaSource.Factory(dataSourceFactory)
-                        .SetTag(description)
-                        .SetAllowChunklessPreparation(true)
-                        .CreateMediaSource(uri);
-                }
             }
 
             var extractorFactory = new ProgressiveMediaSource.Factory(sourceFactory);
-
-            // We need to set the tag so we can read it in <see cref="TagReadingQueueNavigator" />
-            extractorFactory.SetTag(description);
-            return extractorFactory.CreateMediaSource(uri);
+            return extractorFactory.CreateMediaSource(mediaItem);
         }
+
+        public int[] GetSupportedTypes()
+        {
+            return new[]
+            {
+                C.AudioContentTypeSpeech,
+                C.AudioContentTypeMusic
+            };
+        }
+
+        public IMediaSource.IFactory SetDrmSessionManagerProvider(IDrmSessionManagerProvider drmSessionManagerProvider) => this;
+        public IMediaSource.IFactory SetLoadErrorHandlingPolicy(ILoadErrorHandlingPolicy loadErrorHandlingPolicy) => this;
     }
 }

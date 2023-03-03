@@ -77,7 +77,7 @@ namespace BMM.UI.iOS.DownloadManager
 
             // On iOS 9 and later, this method is called even so the response-code is 400 or higher. See https://github.com/cocos2d/cocos2d-x/pull/14683
             var response = downloadTask.Response as NSHttpUrlResponse;
-            if (response != null && response.StatusCode >= 400)
+            if (response != null && response.StatusCode.ToInt32() >= 400)
             {
                 file.Status = DownloadFileStatus.FAILED;
                 file.StatusDetails = "Error.HttpCode: " + response.StatusCode;

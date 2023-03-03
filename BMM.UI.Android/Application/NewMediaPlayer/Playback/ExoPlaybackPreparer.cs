@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Android.OS;
+﻿using Android.OS;
 using Android.Support.V4.Media.Session;
 using BMM.Api.Abstraction;
 using BMM.Core.Helpers;
@@ -24,11 +22,11 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
 
         private readonly IMediaQueue _mediaQueue;
         private readonly IMetadataMapper _metadataMapper;
-        private readonly TimelineQueueEditor.IMediaSourceFactory _mediaSourceFactory;
+        private readonly IMediaSource.IFactory _mediaSourceFactory;
         private readonly MediaSourceSetter _mediaSource;
         private readonly IAnalytics _analytics;
 
-        public ExoPlaybackPreparer(IExoPlayer exoPlayer, IMediaQueue mediaQueue, IMetadataMapper metadataMapper, TimelineQueueEditor.IMediaSourceFactory mediaSourceFactory,
+        public ExoPlaybackPreparer(IExoPlayer exoPlayer, IMediaQueue mediaQueue, IMetadataMapper metadataMapper, IMediaSource.IFactory mediaSourceFactory,
             MediaSourceSetter mediaSource, IAnalytics analytics)
         {
             _exoPlayer = exoPlayer;
@@ -72,9 +70,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
 
             _mediaSource.CreateNew(startIndex.GetValueOrDefault(), mediaSources.ToArray());
             SendSeekedMessage();
-
-            // Prepares media to play (happens on background thread) and triggers OnPlayerStateChanged when the stream is ready to play
-            _exoPlayer.Prepare(_mediaSource.Get);
+            
+            _exoPlayer.SetMediaSource(_mediaSource.Get);
+            _exoPlayer.Prepare();
             _exoPlayer.SeekTo(startIndex.Value, startTimeInMs);
 
             SetPlayWhenReadyOnPlayer(playWhenReady);
@@ -96,8 +94,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
 
         private IMediaSource GetSingleMediaSource(IMediaTrack track)
         {
-            var description = _metadataMapper.BuildMediaDescription(track);
-            return _mediaSourceFactory.CreateMediaSource(description);
+            var description = _metadataMapper.FromTrack(track);
+            return _mediaSourceFactory.CreateMediaSource(_metadataMapper.ToMediaItem(description));
         }
 
         /// <summary>
@@ -130,15 +128,17 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
         {
         }
 
-        public bool OnCommand(IPlayer player, IControlDispatcher controlDispatcher, string command, Bundle bundle, ResultReceiver resultReceiver)
+        public bool OnCommand(IPlayer player, string command, Bundle extras, ResultReceiver cb)
         {
             return false;
         }
-
+        
         public void OnPrepare(bool playWhenReady)
         {
         }
 
         #endregion
+
+
     }
 }

@@ -28,7 +28,6 @@ namespace BMM.UI.Droid.Application.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             SetContentView(Resource.Layout.activity_oidc_login);
 
@@ -55,13 +54,5 @@ namespace BMM.UI.Droid.Application.Activities
             base.OnNewIntent(intent);
             OidcCallbackMediator.Instance.Send(intent.DataString);
         }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-        {
-            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
-            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
     }
-
 }

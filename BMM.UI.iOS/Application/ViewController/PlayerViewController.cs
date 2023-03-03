@@ -141,6 +141,7 @@ namespace BMM.UI.iOS
             set.Bind(this).For(v => v.IsPlaying).To(vm => vm.IsPlaying);
 
             set.Bind(TitleLabel).To(vm => vm.CurrentTrack).WithConversion<TrackToTitleValueConverter>(ViewModel);
+           
             set.Bind(SubtitleLabel).To(vm => vm.CurrentTrack).WithConversion<TrackToSubtitleValueConverter>(ViewModel);
             SubtitleLabel.FadeLength = 10;
             SubtitleLabel.ScrollDuration = 6;
@@ -206,7 +207,7 @@ namespace BMM.UI.iOS
             TrackCoverImageView.ImageChanged -= TrackCoverImageViewOnImageChanged;
         }
         
-        private async void TrackCoverImageViewOnImageChanged(object sender, EventArgs e)
+        private async void TrackCoverImageViewOnImageChanged(object? sender, EventArgs e)
         {
             string coverPlaceholderPath = ImageResourceNames.NewPlaceholderCover.ToStandardIosImageName();
             await Task.Delay(ViewConstants.QuickAnimationDurationInMilliseconds / 2);

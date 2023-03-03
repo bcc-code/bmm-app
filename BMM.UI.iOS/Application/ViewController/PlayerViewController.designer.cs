@@ -7,6 +7,7 @@
 //
 using Foundation;
 using System.CodeDom.Compiler;
+using MarqueeLabelSDK;
 
 namespace BMM.UI.iOS
 {
@@ -89,7 +90,7 @@ namespace BMM.UI.iOS
 		UIKit.UILabel SliderPositionTimeLabel { get; set; }
 
 		[Outlet]
-		MarqueeLabel.iOS.MarqueeLabel SubtitleLabel { get; set; }
+		MarqueeLabel SubtitleLabel { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
@@ -231,7 +232,7 @@ namespace BMM.UI.iOS
 				TitleLabel.Dispose ();
 				TitleLabel = null;
 			}
-
+			
 			if (TrackCoverImageView != null) {
 				TrackCoverImageView.Dispose ();
 				TrackCoverImageView = null;

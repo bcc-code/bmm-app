@@ -1,4 +1,5 @@
 using BMM.Core.Models.POs.Tiles;
+using CoreImage;
 using Foundation;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using UIKit;

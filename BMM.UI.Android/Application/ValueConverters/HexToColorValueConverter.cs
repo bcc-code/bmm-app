@@ -1,8 +1,7 @@
-using System;
 using System.Globalization;
-using Android.Graphics;
+using Microsoft.Maui.Graphics.Platform;
 using MvvmCross.Converters;
-using Xamarin.Essentials;
+using Color = Android.Graphics.Color;
 
 namespace BMM.UI.Droid.Application.ValueConverters
 {
@@ -18,8 +17,8 @@ namespace BMM.UI.Droid.Application.ValueConverters
                 return Color.Transparent;
             }
 
-            var systemColor = ColorConverters.FromHex(value);
-            return systemColor.ToPlatformColor();
+            var systemColor = Microsoft.Maui.Graphics.Color.FromArgb(value);
+            return systemColor.AsColor();
         }
     }
 }

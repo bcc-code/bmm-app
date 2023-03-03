@@ -39,6 +39,7 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
 
             set.Bind(CuratedPlaylistCoverImageView).For(v => v.ImagePath).To(vm => vm.CuratedPlaylist.Cover);
+            
             set.Bind(TitleLabel).To(vm => vm.CuratedPlaylist.Title);
             set.Bind(DescriptionLabel).To(vm => vm.CuratedPlaylist.Description);
 

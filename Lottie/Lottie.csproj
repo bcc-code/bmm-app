@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net7.0-android</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <IsBindingProject>true</IsBindingProject>
+        <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
+        <_EnableInterfaceMembers>true</_EnableInterfaceMembers>
+        <AndroidUseAapt2>true</AndroidUseAapt2>
+    </PropertyGroup>
+    <ItemGroup>
+        <LibraryProjectZip Include="Jars\lottie-4.2.2.aar" />
+        <TransformFile Include="Transforms\*.xml" />
+    </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="Square.OkIO" Version="2.10.0.6" />
+      <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.6.0.1" />
+    </ItemGroup>
+</Project>

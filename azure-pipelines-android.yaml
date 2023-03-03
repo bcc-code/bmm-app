@@ -5,7 +5,6 @@ pool:
     - npm
     - msbuild
     - MSBuild
-    - Xamarin.Android
     - JDK
 
 trigger:
@@ -20,6 +19,14 @@ variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
   
 steps:
+  - bash: |
+      dotnet workload install android
+    displayName: 'Install Android workload'
+
+  - bash: |
+      dotnet workload install maui-android
+    displayName: 'Install MAUI Android workload'
+      
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
     inputs:
@@ -95,7 +102,7 @@ steps:
   - task: vs-publisher-473885.motz-mobile-buildtasks.android-manifest-version.android-manifest-version@0
     displayName: 'Set Version Code in AndroidManifest.xml'
     inputs:
-      sourcePath: BMM.UI.Android/Properties/AndroidManifest.xml
+      sourcePath: BMM.UI.Android/AndroidManifest.xml
       versionCode: '$(VersionCode)'
       versionName: '$(VersionNumber)'
 
@@ -105,26 +112,6 @@ steps:
       Contents: |
         **/bin
         **/obj
-
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 5.8.0'
-    inputs:
-      versionSpec: 5.8.0
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-    inputs:
-      restoreSolution: '*.sln'
-      feedsToUse: config
-      nugetConfigPath: nuget.config
-      restoreDirectory: packages
-
-  - task: MSBuild@1
-    displayName: 'Build solution **/*UITests.csproj'
-    inputs:
-      solution: '**/*UITests.csproj'
-      platform: AnyCPU
-      configuration: Release
 
   - task: DownloadSecureFile@1
     name: keystore
@@ -139,27 +126,13 @@ steps:
 #   For JetBranis Rider: Preferences -> Build, Execution, Deployment -> Android -> Android NDK Location
 #   For Visual Studio for Mac: Preferences -> Build and Debug -> SDK Locations -> Android -> Locations -> Android NDK Location
 # If you want to read more, please read https://github.com/xamarin/xamarin-android/issues/7588
-
-  - task: XamarinAndroid@1
-    displayName: 'Build aab (Android App Bundle)'
+  - task: DotNetCoreCLI@2
+    displayName: 'Build .NET for Android solution'
     inputs:
-      projectFile: '*droid*/*Droid*.csproj'
-      outputDirectory: '$(Build.BinariesDirectory)/bin/Release'
-      configuration: Release
-      msbuildVersionOption: latest
-      msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword)'
-
-  - task: XamarinAndroid@1
-    displayName: 'Build APK'
-    inputs:
-      projectFile: '*droid*/*Droid*.csproj'
-      outputDirectory: '$(Build.BinariesDirectory)/bin/Release'
-      configuration: Release
-      msbuildVersionOption: latest
-      msbuildArchitectureOption: x64
-      msbuildArguments: '/p:SolutionDir="$(Build.SourcesDirectory)"'
-
+      command: 'build'
+      projects: 'BMM.UI.Android/BMM.UI.Droid.csproj'
+      arguments: '-c Release -o "$(Build.BinariesDirectory)/bin/Release/" /p:SolutionDir="$(Build.SourcesDirectory)" -p:AndroidPackageFormat=aab -t:SignAndroidPackage -p:AndroidKeyStore=True -p:AndroidSigningKeyStore=$(keystore.secureFilePath) -p:AndroidSigningStorePass=$(KeystorePassword) -p:AndroidSigningKeyAlias=$(KeystoreAlias) -p:AndroidSigningKeyPass=$(KeystorePassword)'
+      
   - task: AndroidSigning@3
     displayName: 'Signing and aligning APK file(s) $(Build.BinariesDirectory)/bin/Release/*.apk'
     inputs:
@@ -190,22 +163,7 @@ steps:
         generic.md
       TargetFolder: '$(build.artifactstagingdirectory)'
       flattenFolders: true
-
-  - task: NodeTool@0
-    displayName: 'Use Node 10.x to run appcenter cmd'
-    inputs:
-      versionSpec: 10.x
-
-  - task: AppCenterTest@1
-    displayName: 'Prepare AppCenter Tests'
-    inputs:
-      appFile: '$(Build.BinariesDirectory)/bin/Release/org.brunstad.bmm.apk'
-      frameworkOption: uitest
-      uiTestBuildDirectory: '$(Build.SourcesDirectory)/BMM.Tests/BMM.UITests/bin/Release'
-      runTests: false
-      showDebugOutput: true
-    continueOnError: true
-
+    
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
     inputs:

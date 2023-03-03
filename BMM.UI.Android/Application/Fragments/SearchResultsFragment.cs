@@ -1,20 +1,6 @@
-﻿using System;
-using Android.App;
-using Android.OS;
-using Android.Runtime;
-using Android.Util;
+﻿using Android.Runtime;
 using Android.Views;
-using AndroidX.RecyclerView.Widget;
 using BMM.Core.ViewModels;
-using BMM.UI.Droid.Application.Adapters;
-using BMM.UI.Droid.Application.Extensions;
-using BMM.UI.Droid.Application.Fragments.Base;
-using BMM.UI.Droid.Application.Listeners;
-using BMM.UI.Droid.Application.Listeners.Interfaces;
-using FFImageLoading.Extensions;
-using MvvmCross.DroidX.RecyclerView;
-using MvvmCross.Platforms.Android.Binding.BindingContext;
-using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
 {

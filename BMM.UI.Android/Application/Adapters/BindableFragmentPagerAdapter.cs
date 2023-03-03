@@ -10,6 +10,8 @@ using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.Binding;
 using MvvmCross.Views;
 using MvvmCross.WeakSubscription;
+using Fragment = AndroidX.Fragment.App.Fragment;
+using FragmentManager = AndroidX.Fragment.App.FragmentManager;
 using Object = Java.Lang.Object;
 
 namespace BMM.UI.Droid.Application.Adapters
@@ -43,15 +45,15 @@ namespace BMM.UI.Droid.Application.Adapters
         public override Fragment GetItem(int position)
         {
             var fragInfo = Fragments.ElementAt(position);
-
+            
             if (fragInfo.CachedFragment == null)
             {
                 fragInfo.CachedFragment = _fragmentManager.Instantiate(fragInfo);
                 var fragmentAsView = (IMvxView)fragInfo.CachedFragment;
-
+            
                 fragmentAsView.ViewModel = fragInfo.ViewModel;
             }
-
+            
             return fragInfo.CachedFragment;
         }
 

@@ -1,13 +1,10 @@
-﻿using System;
-using BMM.Core.Models.POs.YearInReview;
+﻿using BMM.Core.Models.POs.YearInReview;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Utils;
-using CoreGraphics;
-using Foundation;
+using Microsoft.Maui.Graphics;
+using Microsoft.Maui.Graphics.Platform;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding.Views;
-using UIKit;
-using Xamarin.Essentials;
 using AppTheme = BMM.UI.iOS.Constants.AppTheme;
 
 namespace BMM.UI.iOS
@@ -48,9 +45,9 @@ namespace BMM.UI.iOS
             set
             {
                 _shadowColor = value;
-                var systemColor = ColorConverters.FromHex(value);
-                ImageContainerView.Layer.ShadowColor = systemColor.ToPlatformColor().CGColor;
-                YearInReviewImageView.BackgroundColor = systemColor.ToPlatformColor();
+                var systemColor = Color.FromArgb(value);
+                ImageContainerView.Layer.ShadowColor = systemColor.AsUIColor().CGColor;
+                YearInReviewImageView.BackgroundColor = systemColor.AsUIColor();
             }
         }
 

@@ -33,8 +33,6 @@ namespace BMM.Core.Implementations.Security.Oidc
                 ClientId = OidcConstants.ClientId,
                 Scope = OidcConstants.Scopes,
                 RedirectUri = OidcConstants.LoginRedirectUrl,
-                Flow = OidcClientOptions.AuthenticationFlow.AuthorizationCode,
-                ResponseMode = OidcClientOptions.AuthorizeResponseMode.Redirect,
                 Policy = {RequireAccessTokenHash = false},
                 Browser = null,
             };

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
-using Xamarin.Essentials;
+using Microsoft.Maui.ApplicationModel.DataTransfer;
 
 namespace BMM.Core.Helpers
 {

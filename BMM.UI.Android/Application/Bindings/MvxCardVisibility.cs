@@ -9,7 +9,7 @@ namespace BMM.UI.Droid.Application.Bindings
         public MvxCardVisibility(object target) : base(target)
         { }
 
-        public override Type TargetType => typeof(CardView);
+        public override Type TargetValueType => typeof(CardView);
 
         protected override void SetValueImpl(object target, object value)
         {
