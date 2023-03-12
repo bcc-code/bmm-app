@@ -112,8 +112,8 @@
     "NextBroadcast": "Seuraava lähetys",
     "BmmRadio": "BMM Live",
     "CountdownHours": "alkaa {0} tunnin kuluttua",
-    "Messages": "Viime sanomat",
-    "Music": "Viime musiikki"
+    "Messages": "Uusimmat puheet",
+    "Music": "Uusimmat kappaleet"
   },
   "ExploreContributorsViewModel": {
     "Title": "Tekijät",
@@ -475,10 +475,10 @@
     "NoHistoryYetSubtitle": "Ala kuuntelu niin historiasi näkyy tässä"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Viime sanomat"
+    "Title": "Uusimmat puheet"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Viime musiikki"
+    "Title": "Uusimmat kappaleet"
   },
   "DownloadManager": {
     "DownloadingFinished": "Kaikki tiedostot on ladattu!"
