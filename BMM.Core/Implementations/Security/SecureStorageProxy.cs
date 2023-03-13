@@ -1,29 +1,34 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.Maui.Storage;
+using BMM.Core.Support;
 
 namespace BMM.Core.Implementations.Security
 {
     public class SecureStorageProxy : ISecureStorageProxy
     {
+        private readonly IOldSecureStorage _oldSecureStorage;
+
+        public SecureStorageProxy(IOldSecureStorage oldSecureStorage)
+        {
+            _oldSecureStorage = oldSecureStorage;
+        }
+        
         public Task SetAsync(string key, string value)
         {
-            return SecureStorage.SetAsync(key, value);
+            return _oldSecureStorage.SetAsync(key, value);
         }
 
         public Task<string> GetAsync(string key)
         {
-            return SecureStorage.GetAsync(key);
+            return _oldSecureStorage.GetAsync(key);
         }
 
         public void RemoveAll()
         {
-            SecureStorage.RemoveAll();
+            _oldSecureStorage.RemoveAll();
         }
 
         public async Task<DateTime?> GetDateAsync(string key)
         {
-            var timeString = await SecureStorage.GetAsync(key);
+            var timeString = await _oldSecureStorage.GetAsync(key);
             var success = long.TryParse(timeString, out var integerRepresentation);
             if (!success)
                 return null;
@@ -33,7 +38,7 @@ namespace BMM.Core.Implementations.Security
         public Task SetDateAsync(string key, DateTime date)
         {
             var timeString = date.ToBinary().ToString();
-            return SecureStorage.SetAsync(key, timeString);
+            return _oldSecureStorage.SetAsync(key, timeString);
         }
     }
 }

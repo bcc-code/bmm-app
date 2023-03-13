@@ -21,6 +21,7 @@ using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Support;
 using BMM.UI.iOS.DownloadManager;
 using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
@@ -28,6 +29,7 @@ using BMM.UI.iOS.Implementations.Device;
 using BMM.UI.iOS.Implementations.Dialogs;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
+using BMM.UI.iOS.Implementations.Support;
 using BMM.UI.iOS.Implementations.Track;
 using BMM.UI.iOS.NewMediaPlayer;
 using BMM.UI.iOS.NewMediaPlayer.Interfaces;
@@ -61,6 +63,7 @@ namespace BMM.UI.iOS
             // because it's called after creating the DI containers in Mvx.
             Firebase.Core.App.Configure();
 
+            iocProvider.LazyConstructAndRegisterSingleton<IOldSecureStorage, iOSOldSecureStorage>();
             iocProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, iOSUserDialogsFactory>();
             iocProvider.LazyConstructAndRegisterSingleton<IStopwatchManager, StopwatchManager>();
             var stopwatch = iocProvider.Resolve<IStopwatchManager>();
