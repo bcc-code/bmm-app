@@ -7,6 +7,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.App.Interfaces;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Models.PlaybackHistory;
@@ -17,10 +18,14 @@ namespace BMM.Core.GuardedActions.App
     public class MigrateAkavacheToAppStorageAction : GuardedActionWithResult<bool>, IMigrateAkavacheToAppStorageAction
     {
         private readonly IBlobCache _blobCache;
+        private readonly IAnalytics _analytics;
 
-        public MigrateAkavacheToAppStorageAction(IBlobCache blobCache)
+        public MigrateAkavacheToAppStorageAction(
+            IBlobCache blobCache,
+            IAnalytics analytics)
         {
             _blobCache = blobCache;
+            _analytics = analytics;
         }
 
         protected override async Task<bool> Execute()
@@ -56,6 +61,7 @@ namespace BMM.Core.GuardedActions.App
             await MigrateValue<CurrentTrackPositionStorage>(StorageKeys.CurrentTrackPosition, v => AppSettings.CurrentTrackPosition = v);
 
             AppSettings.AkavacheMigrationFinished = true;
+            _analytics.LogEvent(Event.AkavacheMigrationFinished);
             return true;
         }
         

@@ -14,7 +14,12 @@ namespace BMM.Core.Implementations.Storage
 {
     public static class AppSettings
     {
-        private static ISettings Settings => CrossSettings.Current;
+        private static ISettings _settings;
+
+        private static ISettings Settings => _settings ?? CrossSettings.Current;
+
+        public static void SetImplementation(ISettings settings) => _settings = settings;
+        public static void ClearImplementation() => _settings = null;
 
         public static Theme SelectedTheme
         {
