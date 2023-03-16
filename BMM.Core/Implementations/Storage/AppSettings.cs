@@ -44,12 +44,6 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(SearchHistory));
         }
         
-        public static User CurrentUser
-        {
-            get => GetValueOrDefault(nameof(CurrentUser), default(User));
-            set => AddOrUpdateValue(value, nameof(CurrentUser));
-        }
-        
         public static string LanguageApp
         {
             get => GetValueOrDefault(nameof(LanguageApp), default(string));

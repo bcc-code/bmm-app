@@ -61,7 +61,7 @@ namespace BMM.Core.Implementations.Security.Oidc
                 user.Birthdate = userInfo.Birthdate;
                 user.LastUpdated = DateTime.UtcNow;
 
-                _userStorage.StoreUser(user);
+                await _userStorage.StoreUser(user);
             }
         }
     }

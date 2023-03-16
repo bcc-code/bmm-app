@@ -81,7 +81,7 @@ namespace BMM.Core.Implementations.Security.Oidc
         public async Task PerformLogout()
         {
             await _credentialsStorage.FlushStorage();
-            _userStorage.RemoveUser();
+            await _userStorage.RemoveUser();
         }
 
         public async Task RefreshAccessTokenWithRetry()

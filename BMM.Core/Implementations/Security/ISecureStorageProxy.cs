@@ -7,7 +7,11 @@ namespace BMM.Core.Implementations.Security
     {
         Task SetAsync(string key, string value);
 
+        Task SetAsync<TValue>(string key, TValue value);
+
         Task<string> GetAsync(string key);
+
+        Task<TValue> GetAsync<TValue>(string key, TValue defaultValue = default);
 
         void RemoveAll();
 

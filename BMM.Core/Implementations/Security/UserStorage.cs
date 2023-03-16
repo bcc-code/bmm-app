@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Reactive.Linq;
-using System.Threading.Tasks;
-using Akavache;
+﻿using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
-using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Security
 {
@@ -13,22 +9,42 @@ namespace BMM.Core.Implementations.Security
     /// </summary>
     public class UserStorage : IUserStorage
     {
+        private readonly ISecureStorageProxy _secureStorageProxy;
         private User _currentUser;
+        private readonly object _getCurrentUserLocker;
 
-        private User CurrentUser => _currentUser ??= AppSettings.CurrentUser;
-
-        public void StoreUser(User user)
+        public UserStorage(ISecureStorageProxy secureStorageProxy)
         {
-            AppSettings.CurrentUser = user;
+            _secureStorageProxy = secureStorageProxy;
+            _getCurrentUserLocker = new object();
+        }
+        
+        private User CurrentUser
+        {
+            get
+            {
+                lock (_getCurrentUserLocker)
+                {
+                    if (_currentUser == null)
+                        _currentUser = _secureStorageProxy.GetAsync<User>(StorageKeys.CurrentUser).GetAwaiter().GetResult();
+
+                    return _currentUser;
+                }
+            }
+        }
+
+        public async Task StoreUser(User user)
+        {
+            await _secureStorageProxy.SetAsync(StorageKeys.CurrentUser, user);
             _currentUser = user;
         }
 
-        public bool HasUser() => AppSettings.CurrentUser != null;
+        public bool HasUser() => GetUser() != null;
         public User GetUser() => CurrentUser;
         
-        public void RemoveUser()
+        public async Task RemoveUser()
         {
-            AppSettings.CurrentUser = null;
+            await _secureStorageProxy.SetAsync<User>(StorageKeys.CurrentUser, null);
             _currentUser = null;
         }
     }
