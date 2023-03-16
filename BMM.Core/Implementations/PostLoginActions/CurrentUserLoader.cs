@@ -79,7 +79,7 @@ namespace BMM.Core.Implementations.PostLoginActions
         {
             user.Roles = userFromApi.Roles;
             user.Username = userFromApi.Username;
-            await _userStorage.StoreUser(user);
+            _userStorage.StoreUser(user);
         }
     }
 }

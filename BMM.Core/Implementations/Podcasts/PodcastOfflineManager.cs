@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Downloading;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using MvvmCross.Plugin.Messenger;
 
@@ -13,27 +15,22 @@ namespace BMM.Core.Implementations.Podcasts
 {
     public class PodcastOfflineManager: IPodcastOfflineManager
     {
-        private readonly IBlobCache _blobCache;
         private readonly IMvxMessenger _messenger;
         private readonly IGlobalMediaDownloader _mediaDownloader;
 
         private IDictionary<int, int> _automaticDownloadTracksByPodcast;
         private ICollection<int> _followedPodcasts;
 
-        public PodcastOfflineManager(IBlobCache blobCache, IMvxMessenger messenger, IGlobalMediaDownloader mediaDownloader)
+        public PodcastOfflineManager(IMvxMessenger messenger, IGlobalMediaDownloader mediaDownloader)
         {
-            _blobCache = blobCache;
             _messenger = messenger;
             _mediaDownloader = mediaDownloader;
         }
 
         public async Task InitAsync()
         {
-            _automaticDownloadTracksByPodcast = await _blobCache.GetOrCreateObject(
-                StorageKeys.AutomaticallyDownloadedTracks, () => new Dictionary<int, int>());
-
-            _followedPodcasts =
-                await _blobCache.GetOrCreateObject(StorageKeys.LocalPodcasts, () => new HashSet<int>());
+            _automaticDownloadTracksByPodcast = AppSettings.AutomaticallyDownloadedTracks;
+            _followedPodcasts = AppSettings.LocalPodcasts;
         }
 
         public bool IsFollowing(Podcast podcast)
@@ -111,8 +108,8 @@ namespace BMM.Core.Implementations.Podcasts
 
         private async Task Save()
         {
-            await _blobCache.InsertObject(StorageKeys.AutomaticallyDownloadedTracks, _automaticDownloadTracksByPodcast);
-            await _blobCache.InsertObject(StorageKeys.LocalPodcasts, _followedPodcasts);
+            AppSettings.AutomaticallyDownloadedTracks = _automaticDownloadTracksByPodcast;
+            AppSettings.LocalPodcasts = _followedPodcasts.ToHashSet();
         }
 
         public async Task Clear()

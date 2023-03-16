@@ -12,6 +12,7 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.PlayObserver.Model;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -33,16 +34,12 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         private readonly IMediaPlayer _mediaPlayer;
         private readonly PlayObserverOrchestrator _playObserver;
         private readonly IMvxMessenger _messenger;
-        private readonly IBlobCache _localStorage;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IAnalytics _analytics;
-        private readonly IUserStorage _userStorage;
         private ListeningStreak _latestStreak;
 
         private readonly MvxSubscriptionToken _trackCompletedToken;
         private readonly MvxSubscriptionToken _trackChangedToken;
-
-        private readonly string _storageKey = StorageKeys.LatestListeningStreak;
 
         /// <summary>
         /// timer to check every few seconds <see cref="RetryIntervalInSeconds"/> if enough has been listened to update the streak.
@@ -57,10 +54,8 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         {
             _mediaPlayer = mediaPlayer;
             _playObserver = playObserver;
-            _localStorage = localStorage;
             _exceptionHandler = exceptionHandler;
             _analytics = analytics;
-            _userStorage = userStorage;
             _messenger = messenger;
             _trackCompletedToken = messenger.Subscribe<FraKaareTrackCompletedMessage>(TrackCompleted);
             _trackChangedToken = messenger.Subscribe<CurrentTrackChangedMessage>(TrackChanged);
@@ -181,21 +176,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             }
         }
 
-        private async Task<ListeningStreak> GetStoredStreak()
-        {
-            try
-            {
-                return await _localStorage.GetObject<ListeningStreak>(_storageKey);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        private async Task Store(ListeningStreak streak)
-        {
-            await _localStorage.InsertObject(_storageKey, streak);
-        }
+        private async Task<ListeningStreak> GetStoredStreak() => AppSettings.LatestListeningStreak;
+        private async Task Store(ListeningStreak streak) => AppSettings.LatestListeningStreak = streak;
     }
 }

@@ -13,13 +13,13 @@ namespace BMM.Core.Implementations.Security
         /// </summary>
         /// <param name="user">The user to be stored</param>
         /// <exception cref="ArgumentNullException">Null is not allowed. Use RemoveUser to unset the stored User</exception>
-        Task StoreUser(User user);
+        void StoreUser(User user);
 
         /// <summary>
         /// Checks if a user is currently stored
         /// </summary>
         /// <returns>Whether or not the store contains a user right now</returns>
-        Task<bool> HasUser();
+        bool HasUser();
 
         /// <summary>
         /// Returns the stored user
@@ -31,6 +31,6 @@ namespace BMM.Core.Implementations.Security
         /// Remove the current user
         /// </summary>
         /// <exception cref="InvalidOperationException">Thrown if RemoveUser is called while no user is currently stored</exception>
-        Task RemoveUser();
+        void RemoveUser();
     }
 }

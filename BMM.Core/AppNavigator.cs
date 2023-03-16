@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
@@ -21,6 +22,7 @@ using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Security.Oidc.Interfaces;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using BMM.Core.Models;
 using BMM.Core.Models.Storage;
@@ -61,6 +63,7 @@ namespace BMM.Core
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly IOnStartAction _onStartAction;
         private readonly IOidcCredentialsStorage _credentialsStorage;
+        private readonly IMigrateAkavacheToAppStorageAction _migrateAkavacheToAppStorageAction;
         private Stopwatch _stopwatch;
 
         public AppNavigator(
@@ -79,7 +82,8 @@ namespace BMM.Core
             SupportVersionChecker supportVersionChecker,
             IAccessTokenProvider accessTokenProvider,
             IOnStartAction onStartAction,
-            IOidcCredentialsStorage credentialsStorage)
+            IOidcCredentialsStorage credentialsStorage,
+            IMigrateAkavacheToAppStorageAction migrateAkavacheToAppStorageAction)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -97,6 +101,7 @@ namespace BMM.Core
             _accessTokenProvider = accessTokenProvider;
             _onStartAction = onStartAction;
             _credentialsStorage = credentialsStorage;
+            _migrateAkavacheToAppStorageAction = migrateAkavacheToAppStorageAction;
         }
 
         /// <summary>
@@ -106,6 +111,8 @@ namespace BMM.Core
         /// </summary>
         public void NavigateAtAppStart()
         {
+            CallSynchronous(_migrateAkavacheToAppStorageAction.ExecuteGuarded);
+            
             if(!_supportVersionChecker.IsCurrentDeviceVersionSupported())
             {
                 NavigateToSupportEndedPageWithMessage(SupportEndedMessage.DeviceSupportEnded);
@@ -171,15 +178,10 @@ namespace BMM.Core
                 if (_rememberedQueueInfoService.PreventRecoveringQueue)
                     return;
 
-                bool queueSaved = await _cache.ContainsKeys(StorageKeys.RememberedQueue, StorageKeys.CurrentTrackPosition);
+                var rememberedQueue = AppSettings.RememberedQueue;
+                var currentTrackPosition = AppSettings.CurrentTrackPosition;
 
-                if (!queueSaved)
-                    return;
-
-                var rememberedQueue = await _cache.GetObject<IList<Track>>(StorageKeys.RememberedQueue);
-                var currentTrackPosition = await _cache.GetObject<CurrentTrackPositionStorage>(StorageKeys.CurrentTrackPosition);
-
-                bool canRestoreMediaQueue = rememberedQueue != null
+                bool canRestoreMediaQueue = rememberedQueue.Any()
                                             && currentTrackPosition != null;
 
                 if (!canRestoreMediaQueue)
@@ -201,8 +203,8 @@ namespace BMM.Core
             }
             catch (Exception e)
             {
-                await _cache.Invalidate(StorageKeys.RememberedQueue);
-                await _cache.Invalidate(StorageKeys.CurrentTrackPosition);
+                AppSettings.RememberedQueue = null;
+                AppSettings.CurrentTrackPosition = null;
                 Log($"Error during {nameof(RestoreMediaQueue)}. EX: {e.Message}. Remembered queue cleared");
             }
             finally

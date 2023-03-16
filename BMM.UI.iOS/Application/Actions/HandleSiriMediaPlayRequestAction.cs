@@ -33,7 +33,7 @@ namespace BMM.UI.iOS.Actions
         {
             bool result = false;
 
-            if (!await _userStorage.HasUser())
+            if (!_userStorage.HasUser())
                 return INPlayMediaIntentResponseCode.ContinueInApp;
 
             var mediaItem = playMediaIntent.MediaItems?.FirstOrDefault();

@@ -1,27 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.TrackCollections
 {
     public class OfflineTrackCollectionStorage : IOfflineTrackCollectionStorage
     {
-        private readonly IBlobCache _blobCache;
-
         private ICollection<int> _offlineTrackCollections;
-
-        public OfflineTrackCollectionStorage(IBlobCache blobCache)
-        {
-            _blobCache = blobCache;
-        }
 
         public async Task InitAsync()
         {
-            _offlineTrackCollections = await _blobCache.GetOrCreateObject(StorageKeys.LocalTrackCollections, () => new HashSet<int>(), null);
+            _offlineTrackCollections = AppSettings.LocalTrackCollections;
         }
 
         public bool IsOfflineAvailable(TrackCollection trackCollection)
@@ -43,10 +38,7 @@ namespace BMM.Core.Implementations.TrackCollections
             return _offlineTrackCollections;
         }
 
-        private async Task Save()
-        {
-            await _blobCache.InsertObject(StorageKeys.LocalTrackCollections, _offlineTrackCollections, null);
-        }
+        private async Task Save() => AppSettings.LocalTrackCollections = _offlineTrackCollections.ToHashSet();
 
         public async Task Add(int id)
         {

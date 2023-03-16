@@ -7,6 +7,7 @@ using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using MvvmCross.Plugin.Messenger;
 
@@ -72,14 +73,13 @@ namespace BMM.Core.Implementations.Languages
         {
             var langArr = languages.ToArray();
             SetContentLanguagesWithHiddenLanguages(langArr);
-            await _storage.InsertObject(StorageKeys.LanguageContent, langArr).ToTask();
-
+            AppSettings.LanguageContent = langArr;
             _messenger.Publish(new ContentLanguagesChangedMessage(this, langArr));
         }
 
         private async Task GetAndSetLanguagesFromLocalStorage()
         {
-            var languages = await _storage.GetOrCreateObject(StorageKeys.LanguageContent, () => DefaultLanguages);
+            string[] languages = AppSettings.LanguageContent ?? DefaultLanguages;
             SetContentLanguagesWithHiddenLanguages(languages);
         }
 
