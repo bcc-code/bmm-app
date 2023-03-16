@@ -4,20 +4,18 @@ using Akavache;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Startup;
+using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Podcasts
 {
     public class PodcastInitializer : IDelayedStartupTask
     {
-        private const string FirstLaunchWithPodcastsKey = "first_launch_with_podcasts";
         private readonly IUserAuthChecker _userAuthChecker;
-        private readonly IBlobCache _blobCache;
         private readonly IPodcastOfflineManager _podcastOfflineManager;
 
-        public PodcastInitializer(IUserAuthChecker userAuthChecker, IBlobCache blobCache, IPodcastOfflineManager podcastOfflineManager)
+        public PodcastInitializer(IUserAuthChecker userAuthChecker, IPodcastOfflineManager podcastOfflineManager)
         {
             _userAuthChecker = userAuthChecker;
-            _blobCache = blobCache;
             _podcastOfflineManager = podcastOfflineManager;
         }
 
@@ -33,14 +31,12 @@ namespace BMM.Core.Implementations.Podcasts
         {
             await _podcastOfflineManager.InitAsync();
 
-            var firstLaunchWithPodcasts = await _blobCache.GetOrCreateObject(FirstLaunchWithPodcastsKey, () => true);
-
-            if (firstLaunchWithPodcasts)
+            if (AppSettings.FirstLaunchWithPodcasts)
             {
                 var podcast = new Podcast { Id = 1 };
 
                 await _podcastOfflineManager.FollowPodcast(podcast);
-                await _blobCache.InsertObject(FirstLaunchWithPodcastsKey, false);
+                AppSettings.FirstLaunchWithPodcasts = false;
             }
         }
     }

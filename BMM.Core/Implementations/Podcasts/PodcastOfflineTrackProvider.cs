@@ -10,17 +10,16 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Podcasts
 {
     public class PodcastOfflineTrackProvider: IPodcastOfflineTrackProvider
     {
-        private readonly IBlobCache _blobCache;
         private readonly IBMMClient _client;
 
-        public PodcastOfflineTrackProvider(IBlobCache blobCache, IBMMClient client)
+        public PodcastOfflineTrackProvider(IBMMClient client)
         {
-            _blobCache = blobCache;
             _client = client;
         }
 
@@ -60,19 +59,8 @@ namespace BMM.Core.Implementations.Podcasts
             return GlobalConstants.DefaultNumberOfPodcastTracksToDownload;
         }
 
-        private async Task<IDictionary<int, int>> GetAutomaticallyDownloadedTracks()
-        {
-            return await _blobCache.GetOrCreateObject(StorageKeys.AutomaticallyDownloadedTracks, () => new Dictionary<int, int>(), null);
-        }
-
-        public async Task<ICollection<int>> GetFollowedPodcasts()
-        {
-            return await _blobCache.GetOrCreateObject(StorageKeys.LocalPodcasts, () => new List<int>(), null);
-        }
-
-        private async Task SaveFollowedPodcast(IEnumerable<int> podcastIds)
-        {
-            await _blobCache.InsertObject(StorageKeys.LocalPodcasts, podcastIds);
-        }
+        private async Task<IDictionary<int, int>> GetAutomaticallyDownloadedTracks() => AppSettings.AutomaticallyDownloadedTracks;
+        public async Task<ICollection<int>> GetFollowedPodcasts() => AppSettings.LocalPodcasts;
+        private async Task SaveFollowedPodcast(IEnumerable<int> podcastIds) => AppSettings.LocalPodcasts = podcastIds.ToHashSet();
     }
 }

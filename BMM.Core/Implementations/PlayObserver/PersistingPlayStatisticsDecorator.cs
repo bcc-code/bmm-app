@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.PlayObserver.Model;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.Models.Storage;
 
@@ -26,7 +28,6 @@ namespace BMM.Core.Implementations.PlayObserver
         public const int IntervalInSeconds = 10;
 
         private readonly ILogger _logger;
-        private readonly IBlobCache _localStorage;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IMeasurementCalculator _measurementCalculator;
         private readonly IFirebaseRemoteConfig _config;
@@ -40,14 +41,12 @@ namespace BMM.Core.Implementations.PlayObserver
         public PersistingPlayStatisticsDecorator(
             IPlayStatistics playStatistics,
             ILogger logger,
-            IBlobCache localStorage,
             IExceptionHandler exceptionHandler,
             IMeasurementCalculator measurementCalculator,
             IFirebaseRemoteConfig config,
             IAnalytics analytics) : base(playStatistics)
         {
             _logger = logger;
-            _localStorage = localStorage;
             _exceptionHandler = exceptionHandler;
             _measurementCalculator = measurementCalculator;
             _config = config;
@@ -101,20 +100,18 @@ namespace BMM.Core.Implementations.PlayObserver
 
                 _logger.Info(Tag, $"Persist state, Portions: ${portions.Count}, spentTime: {measurements.SpentTime}, seconds listened: {measurements.UniqueSecondsListened}");
 
-                await _localStorage.InsertObject(StorageKeys.UnfinishedTrackPlayedEvent, playedEvent);
+                AppSettings.UnfinishedTrackPlayedEvent = playedEvent;
                 await PersistCurrentQueue(playedEvent);
             });
         }
 
         private async Task PersistCurrentQueue(TrackPlayedEvent playedEvent)
         {
-            await _localStorage.InsertObject(
-                StorageKeys.CurrentTrackPosition,
-                new CurrentTrackPositionStorage(CurrentTrack.Id, playedEvent.LastPosition));
+            AppSettings.CurrentTrackPosition = new CurrentTrackPositionStorage(CurrentTrack.Id, playedEvent.LastPosition);
 
             if (!IsCurrentQueueSaved)
             {
-                await _localStorage.InsertObject(StorageKeys.RememberedQueue, CurrentQueue);
+                AppSettings.RememberedQueue = CurrentQueue.OfType<Track>().ToList();
                 IsCurrentQueueSaved = true;
             }
         }
@@ -125,7 +122,7 @@ namespace BMM.Core.Implementations.PlayObserver
 
             if (_config.UseExtendedStreakLogging)
                 _analytics.LogEvent("remove unfinished track played event from storage");
-            RunStorageEditingTask(async () => { await _localStorage.InsertObject<TrackPlayedEvent>(StorageKeys.UnfinishedTrackPlayedEvent, null); });
+            RunStorageEditingTask(async () => { AppSettings.UnfinishedTrackPlayedEvent = null; });
         }
 
         /// <summary>

@@ -250,7 +250,6 @@ namespace BMM.Core.Test.Unit.ViewModels
             _userDialogs.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).ReturnsAsync(true);
 
             var podcastViewModel = CreatePodcastViewModel();
-            podcastViewModel.BlobCache = _inMemoryCache;
             await podcastViewModel.Initialize();
 
             // Act

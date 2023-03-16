@@ -125,11 +125,10 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeepLinkHandler, DeepLinkHandler>();
             Mvx.IoCProvider.RegisterType<IShareLink, ShareLink>();
             Mvx.IoCProvider.RegisterType<IAppNavigator, AppNavigator>();
-            Mvx.IoCProvider.RegisterTypeIfMissing<ICredentialsStorage, AkavacheCredentialsStorage>();
 
             if (!Mvx.IoCProvider.CanResolve<IUserStorage>())
             {
-                Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserStorage, AkavacheUserStorage>();
+                Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserStorage, UserStorage>();
             }
 
             Mvx.IoCProvider.RegisterType<IProfileLoader, ProfileLoader>();
