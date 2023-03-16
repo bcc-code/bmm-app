@@ -1,33 +1,28 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Akavache;
-using BMM.Api;
+﻿using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Helpers;
-using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Podcasts;
+using BMM.Core.Implementations.Storage;
+using Microsoft.Maui.Storage;
 using Moq;
-using NUnit.Framework;
+using Newtonsoft.Json;
+using NSubstitute;
 
 namespace BMM.Core.Test.Unit.Implementations.Podcasts
 {
     [TestFixture]
     public class PodcastOfflineTrackProviderTests
     {
-
         private Mock<IBMMClient> _client;
-        private Mock<IAnalytics> _analytics;
-        private IBlobCache _inMemoryCache;
         private IList<Track> _trackList;
+        private IPreferences _preferencesMock;
 
         [SetUp]
         public void Init()
         {
+            _preferencesMock = Substitute.For<IPreferences>();
+            AppSettings.SetImplementation(_preferencesMock);
             _client = new Mock<IBMMClient>();
-            _analytics = new Mock<IAnalytics>();
-            _inMemoryCache = new InMemoryBlobCache();
-
             _trackList = GetTrackList();
         }
 
@@ -35,14 +30,18 @@ namespace BMM.Core.Test.Unit.Implementations.Podcasts
         public async Task GetOfflineTracks_ShouldReturnValidCollection()
         {
             //Arrange
-            _inMemoryCache.InsertObject(StorageKeys.LocalPodcasts, new List<int> { 1, 2}, null);
-            _inMemoryCache.InsertObject(StorageKeys.AutomaticallyDownloadedTracks, new Dictionary<int, int> { { 1, 3 }, {2, 3} }, null);
+            _preferencesMock
+                .Get<string>(nameof(AppSettings.LocalPodcasts), null)
+                .Returns(JsonConvert.SerializeObject(new List<int> { 1, 2 }));
+
+            _preferencesMock
+                .Get<string>(nameof(AppSettings.AutomaticallyDownloadedTracks), null)
+                .Returns(JsonConvert.SerializeObject(new Dictionary<int, int> { { 1, 3 }, {2, 3} }));
+            
             _client.Setup(x => x.Podcast.GetTracks(1, It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(_trackList));
             _client.Setup(x => x.Podcast.GetTracks(2, It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(GetTrackList(4)));
 
-            var podcastOfflineTrackProvider = new PodcastOfflineTrackProvider(
-                _inMemoryCache,
-                _client.Object);
+            var podcastOfflineTrackProvider = new PodcastOfflineTrackProvider(_client.Object);
 
             //Act
             var result = await podcastOfflineTrackProvider.GetPodcastTracksSupposedToBeDownloaded();
@@ -55,13 +54,18 @@ namespace BMM.Core.Test.Unit.Implementations.Podcasts
         public async Task GetOfflineTracks_ShouldReturnOneEmptyPodcastTrackList()
         {
             //Arrange
-            _inMemoryCache.InsertObject(StorageKeys.LocalPodcasts, new List<int> { 1, 2 }, null);
-            _inMemoryCache.InsertObject(StorageKeys.AutomaticallyDownloadedTracks, new Dictionary<int, int> { { 1, 3 }, { 2, 0 } }, null);
+            _preferencesMock
+                .Get<string>(nameof(AppSettings.LocalPodcasts), null)
+                .Returns(JsonConvert.SerializeObject(new List<int> { 1, 2 }));
+
+            _preferencesMock
+                .Get<string>(nameof(AppSettings.AutomaticallyDownloadedTracks), null)
+                .Returns(JsonConvert.SerializeObject(new Dictionary<int, int> { { 1, 3 }, {2, 0} }));
+            
             _client.Setup(x => x.Podcast.GetTracks(1, It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(_trackList));
             _client.Setup(x => x.Podcast.GetTracks(2, It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(GetTrackList(4)));
 
             var podcastOfflineTrackProvider = new PodcastOfflineTrackProvider(
-                _inMemoryCache,
                 _client.Object);
 
             //Act

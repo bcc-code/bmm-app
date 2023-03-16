@@ -1,36 +1,33 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Helpers;
-using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Player;
 using BMM.Core.Implementations.Player.Interfaces;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Models.PlaybackHistory;
 using BMM.Core.Test.Unit.Base;
-using FluentAssertions;
+using Microsoft.Maui.Storage;
+using Newtonsoft.Json;
 using NSubstitute;
-using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.Implementations.Player
 {
     [TestFixture]
     public class PlaybackHistoryServiceTests : BaseTests<IPlaybackHistoryService>
     {
+        private IPreferences _preferencesMock;
         private const int DefaultTrackId = 1;
         private const long DefaultLastPosition = 1000;
-        private ICache _cacheWrapper;
 
         protected override IPlaybackHistoryService CreateTestSubject()
         {
-            return new PlaybackHistoryService(_cacheWrapper);
+            return new PlaybackHistoryService();
         }
 
-        protected override Task PrepareMocks()
+        protected override async Task PrepareMocks()
         {
-            _cacheWrapper = Substitute.For<ICache>();
-            return base.PrepareMocks();
+            await base.PrepareMocks();
+            _preferencesMock = Substitute.For<IPreferences>();
+            AppSettings.SetImplementation(_preferencesMock);
         }
 
         [Test]
@@ -49,19 +46,25 @@ namespace BMM.Core.Test.Unit.Implementations.Player
                 new PlaybackHistoryEntry(mediaTrackMock, DefaultLastPosition, DateTime.UtcNow)
             };
 
-            _cacheWrapper
-                .GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory)
-                .Returns(listOfPlaybackHistoryEntries);
-
+            _preferencesMock
+                .Get<string>(nameof(AppSettings.PlaybackHistory), null)
+                .Returns(JsonConvert.SerializeObject(listOfPlaybackHistoryEntries));
+                
             //Act
             await Subject.AddPlayedTrack(mediaTrackMock, expectedLastPosition, DateTime.UtcNow);
 
             //Assert
-            await _cacheWrapper
+            _preferencesMock
                 .Received(1)
-                .InsertObject(
-                    StorageKeys.PlaybackHistory,
-                    Arg.Is<List<PlaybackHistoryEntry>>(p => p.First().LastPosition == expectedLastPosition));
+                .Set(
+                    Arg.Is<string>(a => a == nameof(AppSettings.PlaybackHistory)),
+                    Arg.Is<string>(v => CheckLastPositionItem(v, expectedLastPosition)));
+        }
+
+        private static bool CheckLastPositionItem(string v, long expectedLastPosition)
+        {
+            var deserialized = JsonConvert.DeserializeObject<List<PlaybackHistoryEntry>>(v);
+            return deserialized.First().LastPosition == expectedLastPosition;
         }
 
         [Test]
@@ -78,21 +81,26 @@ namespace BMM.Core.Test.Unit.Implementations.Player
             for (int i = 0; i < PlaybackHistoryService.MaxEntries; i++)
                 listOfPlaybackHistoryEntries.Add(new PlaybackHistoryEntry(Substitute.For<Track>(), DefaultLastPosition, DateTime.UtcNow));
 
-            _cacheWrapper
-                .GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory)
-                .Returns(listOfPlaybackHistoryEntries);
+            _preferencesMock
+                .Get<string>(nameof(AppSettings.PlaybackHistory), null)
+                .Returns(JsonConvert.SerializeObject(listOfPlaybackHistoryEntries));
 
             //Act
             await Subject.AddPlayedTrack(mediaTrackMock, DefaultLastPosition, DateTime.UtcNow);
 
             //Assert
-            await _cacheWrapper
+            _preferencesMock
                 .Received(1)
-                .InsertObject(
-                    StorageKeys.PlaybackHistory,
-                    Arg.Is<List<PlaybackHistoryEntry>>(list =>
-                        list.Count == PlaybackHistoryService.MaxEntries
-                        && list.Any(x => x.MediaTrack.Id == mediaTrackMock.Id)));
+                .Set(
+                    Arg.Is<string>(a => a == nameof(AppSettings.PlaybackHistory)),
+                    Arg.Is<string>(v => CheckLastPositionItem(v, mediaTrackMock)));
+        }
+        
+        private static bool CheckLastPositionItem(string v, IMediaTrack mediaTrack)
+        {
+            var deserialized = JsonConvert.DeserializeObject<List<PlaybackHistoryEntry>>(v);
+            return deserialized.Count == PlaybackHistoryService.MaxEntries
+                   && deserialized.Any(x => x.MediaTrack.Id == mediaTrack.Id);
         }
     }
 }

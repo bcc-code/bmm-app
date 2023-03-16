@@ -13,7 +13,12 @@ namespace BMM.Core.Implementations.Storage
 {
     public static class AppSettings
     {
-        private static IPreferences Settings => Preferences.Default;
+        private static IPreferences _settings;
+
+        private static IPreferences Settings => _settings ?? Preferences.Default;
+
+        public static void SetImplementation(IPreferences settings) => _settings = settings;
+        public static void ClearImplementation() => _settings = null;
 
         public static Theme SelectedTheme
         {

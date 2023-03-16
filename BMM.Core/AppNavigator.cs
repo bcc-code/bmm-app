@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Acr.UserDialogs;
-using Akavache;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
-using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.App.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
@@ -20,12 +17,10 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security;
-using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using BMM.Core.Models;
-using BMM.Core.Models.Storage;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 using MvvmCross;
@@ -63,7 +58,6 @@ namespace BMM.Core
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly IOnStartAction _onStartAction;
         private readonly IOidcCredentialsStorage _credentialsStorage;
-        private readonly IMigrateAkavacheToAppStorageAction _migrateAkavacheToAppStorageAction;
         private Stopwatch _stopwatch;
 
         public AppNavigator(
@@ -82,8 +76,7 @@ namespace BMM.Core
             SupportVersionChecker supportVersionChecker,
             IAccessTokenProvider accessTokenProvider,
             IOnStartAction onStartAction,
-            IOidcCredentialsStorage credentialsStorage,
-            IMigrateAkavacheToAppStorageAction migrateAkavacheToAppStorageAction)
+            IOidcCredentialsStorage credentialsStorage)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -101,7 +94,6 @@ namespace BMM.Core
             _accessTokenProvider = accessTokenProvider;
             _onStartAction = onStartAction;
             _credentialsStorage = credentialsStorage;
-            _migrateAkavacheToAppStorageAction = migrateAkavacheToAppStorageAction;
         }
 
         /// <summary>
@@ -111,8 +103,6 @@ namespace BMM.Core
         /// </summary>
         public void NavigateAtAppStart()
         {
-            CallSynchronous(_migrateAkavacheToAppStorageAction.ExecuteGuarded);
-            
             if(!_supportVersionChecker.IsCurrentDeviceVersionSupported())
             {
                 NavigateToSupportEndedPageWithMessage(SupportEndedMessage.DeviceSupportEnded);

@@ -15,7 +15,7 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver.Storage
         [Test]
         public async Task AddAndRemoveDoRemoveTheRightElements()
         {
-            var storage = new TrackPlayedStorage(BlobCache.InMemory);
+            var storage = new TrackPlayedStorage();
 
             var event1 = new TrackPlayedEvent {Id = Guid.NewGuid(), Track = new Track()};
             var event2 = new TrackPlayedEvent {Id = Guid.NewGuid(), Track = new Track()};
