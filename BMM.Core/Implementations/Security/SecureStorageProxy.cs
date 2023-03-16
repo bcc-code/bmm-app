@@ -1,5 +1,4 @@
 using BMM.Core.Support;
-using Microsoft.Maui.Storage;
 using Newtonsoft.Json;
 
 namespace BMM.Core.Implementations.Security
@@ -24,7 +23,7 @@ namespace BMM.Core.Implementations.Security
                 ? null
                 : JsonConvert.SerializeObject(value);
 
-            await SecureStorage.SetAsync(settingsKey, serialized);
+            await _oldSecureStorage.SetAsync(settingsKey, serialized);
         }
         
         public Task<string> GetAsync(string key)
@@ -34,7 +33,7 @@ namespace BMM.Core.Implementations.Security
 
         public async Task<TValue> GetAsync<TValue>(string key, TValue defaultValue = default)
         {
-            string value = await SecureStorage.GetAsync(key);
+            string value = await _oldSecureStorage.GetAsync(key);
             return value is null
                 ? defaultValue
                 : JsonConvert.DeserializeObject<TValue>(value);

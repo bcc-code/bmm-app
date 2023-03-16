@@ -5,7 +5,7 @@ namespace BMM.Core.Support;
 public abstract class OldSecureStorage : IOldSecureStorage
 {
     // Special Alias that is only used for Secure Storage. All others should use: Preferences.GetPrivatePreferencesSharedName
-    protected static readonly string Alias = $"{AppInfo.PackageName}.xamarinessentials";
+    public static readonly string Alias = $"{AppInfo.PackageName}.xamarinessentials";
 
     public Task<string> GetAsync(string key)
     {

@@ -28,6 +28,7 @@ using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Support;
 using BMM.UI.Droid.Application.Bindings;
 using BMM.UI.Droid.Application.DownloadManager;
 using BMM.UI.Droid.Application.Helpers;
@@ -39,6 +40,7 @@ using BMM.UI.Droid.Application.Implementations.FileStorage;
 using BMM.UI.Droid.Application.Implementations.FirebaseRemoteConfig;
 using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.Implementations.Oidc;
+using BMM.UI.Droid.Application.Implementations.Support;
 using BMM.UI.Droid.Application.Implementations.Track;
 using BMM.UI.Droid.Application.Implementations.UI;
 using BMM.UI.Droid.Application.Media;
@@ -137,6 +139,7 @@ namespace BMM.UI.Droid
         {
             base.InitializeFirstChance(iocProvider);
 
+            iocProvider.LazyConstructAndRegisterSingleton<IOldSecureStorage, DroidOldSecureStorage>();
             iocProvider.RegisterType<IMvxResourceLoader, MvxAndroidResourceLoader>();
             iocProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, DroidUserDialogsFactory>();
             iocProvider.CallbackWhenRegistered<IMvxTargetBindingFactoryRegistry>(RegisterAdditionalBindings);
