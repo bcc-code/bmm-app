@@ -9,6 +9,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading.FileDownloader;
+using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Models.PlaybackHistory;
 using BMM.Core.Models.Storage;
@@ -19,13 +20,16 @@ namespace BMM.Core.GuardedActions.App
     {
         private readonly IBlobCache _blobCache;
         private readonly IAnalytics _analytics;
+        private readonly ISecureStorageProxy _secureStorageProxy;
 
         public MigrateAkavacheToAppStorageAction(
             IBlobCache blobCache,
-            IAnalytics analytics)
+            IAnalytics analytics,
+            ISecureStorageProxy secureStorageProxy)
         {
             _blobCache = blobCache;
             _analytics = analytics;
+            _secureStorageProxy = secureStorageProxy;
         }
 
         protected override async Task<bool> Execute()
@@ -34,7 +38,7 @@ namespace BMM.Core.GuardedActions.App
                 return true;
             
             await MigrateValue<IList<string>>(StorageKeys.History, v => AppSettings.SearchHistory = v);
-            await MigrateSecureValue<User>(StorageKeys.CurrentUser, v => AppSettings.CurrentUser = v);
+            await MigrateSecureValue<User>(StorageKeys.CurrentUser, v => _secureStorageProxy.SetAsync(StorageKeys.CurrentUser, v));
             await MigrateValue<string>(StorageKeys.LanguageApp, v => AppSettings.LanguageApp = v);
             await MigrateValue<string[]>(StorageKeys.LanguageContent, v => AppSettings.LanguageContent = v);
             

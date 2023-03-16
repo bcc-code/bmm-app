@@ -12,10 +12,12 @@ namespace BMM.UI.iOS.Implementations.Download
 {
     public class SpecificUrlSessionDownloadDelegate : UrlSessionDownloadDelegate
     {
+        private readonly IUserStorage _userStorage;
         private readonly ILogger _logger;
 
-        public SpecificUrlSessionDownloadDelegate(ILogger logger)
+        public SpecificUrlSessionDownloadDelegate(IUserStorage userStorage, ILogger logger)
         {
+            _userStorage = userStorage;
             _logger = logger;
         }
 
@@ -29,7 +31,7 @@ namespace BMM.UI.iOS.Implementations.Download
                 {
                     try
                     {
-                        var user = AppSettings.CurrentUser;
+                        var user = _userStorage.GetUser();
                         var storage = Mvx.IoCProvider.Resolve<IOidcCredentialsStorage>();
                         tcs.SetResult(new Token(user.Username, await storage.GetAccessToken()));
                     }
