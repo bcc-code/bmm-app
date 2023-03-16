@@ -1,4 +1,6 @@
 ﻿using BMM.Api.Framework;
+using BMM.Core.GuardedActions.App.Interfaces;
+using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Notifications.Data;
 using MvvmCross;
 
@@ -15,27 +17,36 @@ namespace BMM.Core.Implementations.Notifications
     {
         private readonly NotificationParser _parser;
         private readonly ILogger _logger;
+        private readonly IMigrateAkavacheToAppStorageAction _migrateAkavacheToAppStorageAction;
+        private readonly IExceptionHandler _exceptionHandler;
 
-        public NotificationHandler(NotificationParser parser, ILogger logger)
+        public NotificationHandler(NotificationParser parser, ILogger logger, IMigrateAkavacheToAppStorageAction migrateAkavacheToAppStorageAction, IExceptionHandler exceptionHandler)
         {
             _parser = parser;
             _logger = logger;
+            _migrateAkavacheToAppStorageAction = migrateAkavacheToAppStorageAction;
+            _exceptionHandler = exceptionHandler;
         }
 
         private void HandleNotification(INotification notification, NotificationType type)
         {
-            if (notification is PodcastNotification podcastNotification)
+            _exceptionHandler.FireAndForgetWithoutUserMessages(async () =>
             {
-                HandleRemoteNotification(podcastNotification, type);
-            }
-            else if (notification is GeneralNotification generalNotification)
-            {
-                HandleRemoteNotification(generalNotification, type);
-            }
-            else
-            {
-                _logger.Error(nameof(NotificationHandler), "Encountered an unsupported notification");
-            }
+                await _migrateAkavacheToAppStorageAction.ExecuteGuarded();
+                
+                if (notification is PodcastNotification podcastNotification)
+                {
+                    HandleRemoteNotification(podcastNotification, type);
+                }
+                else if (notification is GeneralNotification generalNotification)
+                {
+                    HandleRemoteNotification(generalNotification, type);
+                }
+                else
+                {
+                    _logger.Error(nameof(NotificationHandler), "Encountered an unsupported notification");
+                }
+            });
         }
 
         /// <summary>
