@@ -36,7 +36,6 @@ namespace BMM.Core.ViewModels.Base
 {
     public abstract class DocumentsViewModel : BaseViewModel, IDocumentsViewModel
     {
-        private IBlobCache _blobCache;
         private bool _isRefreshing;
         private bool _isInitialized;
         private IBmmObservableCollection<IDocumentPO> _documents;
@@ -65,12 +64,6 @@ namespace BMM.Core.ViewModels.Base
         }
 
         public ConnectionStatus ConnectionStatus { get; private set; }
-
-        public IBlobCache BlobCache
-        {
-            get => _blobCache ?? Akavache.BlobCache.UserAccount;
-            set => _blobCache = value;
-        }
 
         public IMvxAsyncCommand ReloadCommand => new ExceptionHandlingCommand(async () => await Refresh());
 

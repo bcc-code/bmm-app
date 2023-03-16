@@ -1,72 +1,32 @@
-﻿using System.Reactive.Linq;
+﻿using System.Reactive;
+using System.Reactive.Linq;
 using System.Threading.Tasks;
 using Akavache;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Connection
 {
     public class AkavacheBlobSettingsStorage : ISettingsStorage
     {
-        private readonly IBlobCache _storage;
         private readonly IFirebaseRemoteConfig _config;
 
-        public AkavacheBlobSettingsStorage(IBlobCache storage, IFirebaseRemoteConfig config)
+        public AkavacheBlobSettingsStorage(IFirebaseRemoteConfig config)
         {
-            _storage = storage;
             _config = config;
         }
 
-        public async Task<bool> GetAutoplayEnabled()
-        {
-            var result = await _storage.GetOrCreateObject<bool?>(StorageKeys.AutoplayEnabled, () => null);
-            return result ?? _config.AutoplayEnabledDefaultSetting;
-        }
+        public async Task<bool> GetAutoplayEnabled() => AppSettings.AutoplayEnabled ?? _config.AutoplayEnabledDefaultSetting;
+        public async Task<bool> GetStreakHidden() => AppSettings.StreakHidden;
+        public async Task<bool> GetMobileNetworkDownloadAllowed() => AppSettings.MobileDownloadEnabled;
+        public async Task<bool> GetPushNotificationsAllowed() => AppSettings.PushNotificationsEnabled;
+        public async Task<bool> UseExternalStorage() => AppSettings.UseExternalStorage;
 
-        public async Task<bool> GetStreakHidden()
-        {
-            var result = await _storage.GetOrCreateObject<bool?>(StorageKeys.StreakHidden, () => null);
-            return result ?? false;
-        }
-
-        public async Task<bool> GetMobileNetworkDownloadAllowed()
-        {
-            return await _storage.GetOrCreateObject(StorageKeys.MobileDownloadEnabled, () => GlobalConstants.MobileDownloadEnabledDefault);
-        }
-
-        public async Task<bool> GetPushNotificationsAllowed()
-        {
-            return await _storage.GetOrCreateObject(StorageKeys.PushNotificationsEnabled, () => GlobalConstants.PushNotificationsEnabledDefault);
-        }
-
-        public async Task<bool> UseExternalStorage()
-        {
-            return await _storage.GetOrCreateObject(StorageKeys.UseExternalStorage, () => GlobalConstants.UseExternalStorageDefault);
-        }
-
-        public async Task SetStorageLocation(bool isExternalStorage)
-        {
-            await _storage.InsertObject(StorageKeys.UseExternalStorage, isExternalStorage);
-        }
-
-        public async Task SetMobileNetworkDownloadAllowed(bool mobileNetworkAllowed)
-        {
-            await _storage.InsertObject(StorageKeys.MobileDownloadEnabled, mobileNetworkAllowed);
-        }
-
-        public async Task SetPushNotificationsAllowed(bool pushNotificationsAllowed)
-        {
-            await _storage.InsertObject(StorageKeys.PushNotificationsEnabled, pushNotificationsAllowed);
-        }
-
-        public async Task SetAutoplayEnabled(bool autoplayEnabled)
-        {
-            await _storage.InsertObject(StorageKeys.AutoplayEnabled, autoplayEnabled);
-        }
-
-        public async Task SetStreakHidden(bool streakHidden)
-        {
-            await _storage.InsertObject(StorageKeys.StreakHidden, streakHidden);
-        }
+        public async Task SetStorageLocation(bool isExternalStorage) => AppSettings.UseExternalStorage = isExternalStorage;
+        public async Task SetMobileNetworkDownloadAllowed(bool mobileNetworkAllowed) => AppSettings.MobileDownloadEnabled = mobileNetworkAllowed;
+        public async Task SetPushNotificationsAllowed(bool pushNotificationsAllowed) => AppSettings.PushNotificationsEnabled = pushNotificationsAllowed;
+        public async Task SetAutoplayEnabled(bool autoplayEnabled) => AppSettings.AutoplayEnabled = autoplayEnabled;
+        public async Task SetStreakHidden(bool streakHidden) => AppSettings.StreakHidden = streakHidden;
     }
 }

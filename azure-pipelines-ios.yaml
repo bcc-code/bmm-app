@@ -156,9 +156,12 @@ steps:
   - task: DotNetCoreCLI@2
     displayName: 'Build .NET for iOS solution BMM.UI.iOS/BMM.UI.iOS.csproj'
     inputs:
-      command: 'build'
+      command: 'publish'
+      publishWebProjects: false
+      zipAfterPublish: false
+      modifyOutputPath: false
       projects: 'BMM.UI.iOS/BMM.UI.iOS.csproj'
-      arguments: '-c Release /p:Platform="iPhone"'
+      arguments: '-c Release /p:Platform="iPhone" /p:ArchiveOnBuild=true'
 
   - task: ArchiveFiles@1
     displayName: 'Create dSYM archive with symbols '

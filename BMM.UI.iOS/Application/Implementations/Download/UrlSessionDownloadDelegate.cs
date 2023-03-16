@@ -2,6 +2,8 @@
 using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.Security.Oidc.Interfaces;
+using BMM.Core.Implementations.Storage;
 using BMM.UI.iOS.DownloadManager;
 using Foundation;
 using MvvmCross;
@@ -10,10 +12,12 @@ namespace BMM.UI.iOS.Implementations.Download
 {
     public class SpecificUrlSessionDownloadDelegate : UrlSessionDownloadDelegate
     {
+        private readonly IUserStorage _userStorage;
         private readonly ILogger _logger;
 
-        public SpecificUrlSessionDownloadDelegate(ILogger logger)
+        public SpecificUrlSessionDownloadDelegate(IUserStorage userStorage, ILogger logger)
         {
+            _userStorage = userStorage;
             _logger = logger;
         }
 
@@ -27,8 +31,9 @@ namespace BMM.UI.iOS.Implementations.Download
                 {
                     try
                     {
-                        var storage = Mvx.IoCProvider.Resolve<ICredentialsStorage>();
-                        tcs.SetResult(await storage.GetToken());
+                        var user = _userStorage.GetUser();
+                        var storage = Mvx.IoCProvider.Resolve<IOidcCredentialsStorage>();
+                        tcs.SetResult(new Token(user.Username, await storage.GetAccessToken()));
                     }
                     catch (Exception ex)
                     {

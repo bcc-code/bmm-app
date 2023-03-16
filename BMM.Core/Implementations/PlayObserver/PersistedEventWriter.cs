@@ -9,6 +9,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Startup;
+using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.PlayObserver
 {
@@ -62,7 +63,7 @@ namespace BMM.Core.Implementations.PlayObserver
 
             await _playbackHistoryService.AddPlayedTrack(storedEvent.Track, storedEvent.LastPosition, storedEvent.TimestampStart);
             await _playStatistics.WriteEvent(storedEvent);
-            await _localStorage.InsertObject<TrackPlayedEvent>(StorageKeys.UnfinishedTrackPlayedEvent, null);
+            AppSettings.UnfinishedTrackPlayedEvent = null;
         }
     }
 }

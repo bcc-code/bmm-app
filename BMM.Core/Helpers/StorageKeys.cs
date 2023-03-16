@@ -29,5 +29,7 @@
         public static readonly string PlaybackHistory = "playback_history";
         public static readonly string RememberedQueue = "remembered_queue";
         public static readonly string CurrentTrackPosition = "current_track_position";
+        
+        public static readonly string FirstLaunchWithPodcasts = "first_launch_with_podcasts";
     }
 }

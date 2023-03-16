@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
-using Akavache;
 using BMM.Api;
 using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
-using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Interactions.Base;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
@@ -26,7 +24,6 @@ namespace BMM.Core.ViewModels
     public class SearchViewModel : BaseViewModel, ICollectionViewModel<SearchResultsViewModel>
     {
         private readonly IMvxViewModelLoader _mvxViewModelLoader;
-        private readonly IBlobCache _cache;
         private bool _isRemoveTermVisible;
         private bool _hasAnyHistoryEntry;
         private bool _searchExecuted;
@@ -85,12 +82,9 @@ namespace BMM.Core.ViewModels
         
         public IMvxAsyncCommand ClearCommand { get; set; }
 
-        public SearchViewModel(
-            IMvxViewModelLoader mvxViewModelLoader,
-            IBlobCache cache)
+        public SearchViewModel(IMvxViewModelLoader mvxViewModelLoader)
         {
             _mvxViewModelLoader = mvxViewModelLoader;
-            _cache = cache;
             _debounceDispatcher = new DebounceDispatcher(300);
             _semaphoreSlim = new SemaphoreSlim(1, 1);
             
@@ -141,17 +135,9 @@ namespace BMM.Core.ViewModels
         {
             await base.Initialize();
             IsHistoryVisible = true;
-            
-            await _cache.GetOrCreateObject(
-                StorageKeys.History,
-                () => new List<string>()).Do(
-                x =>
-                {
-                    SearchHistory.ReplaceWith(x);
-                    HasAnyHistoryEntry = x.Any();
-                }
-            ).HandleExceptions<Exception, IList<string>>();
-            
+
+            LoadSearchHistory();
+
             var listOfVms = new List<SearchResultsViewModel>()
             {
                 CreateSearchResultsViewModelFor(SearchFilter.All),
@@ -165,6 +151,13 @@ namespace BMM.Core.ViewModels
             
             CollectionItems.AddRange(listOfVms);
             SelectedCollectionItem = CollectionItems.First();
+        }
+
+        private void LoadSearchHistory()
+        {
+            var searchHistory = AppSettings.SearchHistory;
+            SearchHistory.ReplaceWith(searchHistory);
+            HasAnyHistoryEntry = searchHistory.Any();
         }
 
         private SearchResultsViewModel CreateSearchResultsViewModelFor(SearchFilter searchFilter)
@@ -216,7 +209,7 @@ namespace BMM.Core.ViewModels
                     SearchHistory.RemoveAt(SearchHistory.Count - 1);
 
                 HasAnyHistoryEntry = SearchHistory.Any();
-                await _cache.InsertObject(StorageKeys.History, SearchHistory.ToList());
+                AppSettings.SearchHistory = SearchHistory.ToList();
             });
         }
 
@@ -225,7 +218,7 @@ namespace BMM.Core.ViewModels
             var result = await Mvx.IoCProvider.Resolve<IUserDialogs>().ConfirmAsync(TextSource[Translations.SearchViewModel_DeleteConfirm]);
             if (result)
             {
-                await _cache.InvalidateObject<List<string>>(StorageKeys.History);
+                AppSettings.SearchHistory = null;
                 SearchHistory.Clear();
                 HasAnyHistoryEntry = false;
             }

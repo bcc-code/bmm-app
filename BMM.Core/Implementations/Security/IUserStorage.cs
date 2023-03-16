@@ -19,7 +19,7 @@ namespace BMM.Core.Implementations.Security
         /// Checks if a user is currently stored
         /// </summary>
         /// <returns>Whether or not the store contains a user right now</returns>
-        Task<bool> HasUser();
+        bool HasUser();
 
         /// <summary>
         /// Returns the stored user

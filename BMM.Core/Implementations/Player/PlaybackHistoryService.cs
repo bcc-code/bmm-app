@@ -12,6 +12,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Player.Interfaces;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Models.PlaybackHistory;
 using Newtonsoft.Json;
 
@@ -24,12 +25,6 @@ namespace BMM.Core.Implementations.Player
         private List<PlaybackHistoryEntry> _allEntries;
 
         private readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
-        private readonly ICache _cache;
-
-        public PlaybackHistoryService(ICache cache)
-        {
-            _cache = cache;
-        }
 
         public async Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAt)
         {
@@ -50,10 +45,7 @@ namespace BMM.Core.Implementations.Player
                 {
                     lastHistoryEntry.LastPosition = lastPosition;
                     lastHistoryEntry.MediaTrack = (Track)mediaTrack;
-                    await _cache.InsertObject(
-                        StorageKeys.PlaybackHistory,
-                        _allEntries);
-
+                    AppSettings.PlaybackHistory = _allEntries;
                     return;
                 }
 
@@ -61,10 +53,7 @@ namespace BMM.Core.Implementations.Player
                     _allEntries.RemoveAt(0);
 
                 _allEntries.Add(new PlaybackHistoryEntry((Track) mediaTrack, lastPosition, playedAt));
-
-                await _cache.InsertObject(
-                    StorageKeys.PlaybackHistory,
-                    _allEntries);
+                AppSettings.PlaybackHistory = _allEntries;
             }
             finally
             {
@@ -84,7 +73,7 @@ namespace BMM.Core.Implementations.Player
         {
             try
             {
-                _allEntries = await _cache.GetObject<List<PlaybackHistoryEntry>>(StorageKeys.PlaybackHistory);
+                _allEntries = AppSettings.PlaybackHistory.ToList();
             }
             catch (KeyNotFoundException)
             {
@@ -92,7 +81,7 @@ namespace BMM.Core.Implementations.Player
             }
             catch (Exception)
             {
-                await _cache.Invalidate(StorageKeys.PlaybackHistory);
+                AppSettings.PlaybackHistory = null;
             }
         }
     }

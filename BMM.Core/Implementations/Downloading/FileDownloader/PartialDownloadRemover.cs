@@ -5,6 +5,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Startup;
+using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Downloading.FileDownloader
 {
@@ -14,14 +15,12 @@ namespace BMM.Core.Implementations.Downloading.FileDownloader
     /// </summary>
     public class PartialDownloadRemover : IDelayedStartupTask
     {
-        private readonly IBlobCache _localStorage;
         private readonly IStorageManager _storageManager;
         private readonly IGlobalMediaDownloader _mediaDownloader;
         private readonly IUserAuthChecker _userAuthChecker;
 
-        public PartialDownloadRemover(IBlobCache localStorage, IStorageManager storageManager, IGlobalMediaDownloader mediaDownloader, IUserAuthChecker userAuthChecker)
+        public PartialDownloadRemover(IStorageManager storageManager, IGlobalMediaDownloader mediaDownloader, IUserAuthChecker userAuthChecker)
         {
-            _localStorage = localStorage;
             _storageManager = storageManager;
             _mediaDownloader = mediaDownloader;
             _userAuthChecker = userAuthChecker;
@@ -29,11 +28,11 @@ namespace BMM.Core.Implementations.Downloading.FileDownloader
 
         public async Task RunAfterStartup()
         {
-            var storedDownloadable = await _localStorage.GetOrCreateObject<PersistedDownloadable>(StorageKeys.CurrentDownload, () => null);
+            var storedDownloadable = AppSettings.CurrentDownload;
             if (storedDownloadable != null)
             {
                 _storageManager.SelectedStorage.DeleteFile(storedDownloadable);
-                await _localStorage.InsertObject<PersistedDownloadable>(StorageKeys.CurrentDownload, null);
+                AppSettings.CurrentDownload = null;
             }
 
             if (await _userAuthChecker.IsUserAuthenticated())

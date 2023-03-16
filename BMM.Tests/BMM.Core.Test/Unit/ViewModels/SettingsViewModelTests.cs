@@ -72,7 +72,6 @@ namespace BMM.Core.Test.Unit.ViewModels
             Ioc.RegisterSingleton(_userDialogs.Object);
 
             _userStorage = new Mock<IUserStorage>();
-            _userStorage.Setup(x => x.RemoveUser()).Returns(Task.FromResult(true));
             _userStorage.Setup(x => x.GetUser())
                 .Returns(new User
                 {
