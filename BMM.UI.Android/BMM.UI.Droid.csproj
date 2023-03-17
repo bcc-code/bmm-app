@@ -62,17 +62,14 @@
     </AndroidSigningStorePass>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidKeyStore>false</AndroidKeyStore>
-    <AndroidSigningKeyAlias>
-    </AndroidSigningKeyAlias>
-    <AndroidSigningKeyPass>
-    </AndroidSigningKeyPass>
+    <AndroidSigningKeyAlias />
+    <AndroidSigningKeyPass/>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
     <AotAssemblies>true</AotAssemblies>
     <Debugger>Xamarin</Debugger>
     <DebugSymbols>false</DebugSymbols>
-    <AndroidHttpClientHandlerType>System.Net.Http.HttpClientHandler</AndroidHttpClientHandlerType>
     <EnableProguard>true</EnableProguard>
     <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
     <BundleAssemblies>true</BundleAssemblies>
