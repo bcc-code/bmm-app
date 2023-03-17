@@ -54,7 +54,7 @@ elif [[ "$branch" == "hotfix/"* ]]
     hotfixbeta=$(($hotfixbeta + 1))
     printRevision="-beta$hotfixbeta"
 
-elif [ "$branch" == "main" ]
+elif [[ "$branch" == "main" ]] || [[ "$branch" == "main-temp" ]]
   then
     if [ "$hotfixbeta" -eq 0 ]
       then
