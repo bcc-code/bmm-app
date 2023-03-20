@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Abstraction;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Downloading;
@@ -52,13 +53,13 @@ namespace BMM.Core.ViewModels
             _firebaseRemoteConfig = firebaseRemoteConfig;
             _cultureInfoRepository = cultureInfoRepository;
 
-            Languages = new MvxObservableCollection<CultureInfo>();
-            _availableLanguages = new List<CultureInfo>();
+            Languages = new MvxObservableCollection<CultureInfoLanguage>();
+            _availableLanguages = new List<CultureInfoLanguage>();
         }
 
-        private readonly List<CultureInfo> _availableLanguages;
+        private readonly List<CultureInfoLanguage> _availableLanguages;
 
-        public MvxObservableCollection<CultureInfo> Languages { get; }
+        public MvxObservableCollection<CultureInfoLanguage> Languages { get; }
 
         public Action<int> LanguageAddedAdapterCallback;
         public Action<int> LanguageRemovedAdapterCallback;
@@ -84,7 +85,7 @@ namespace BMM.Core.ViewModels
         private void LanguagesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             _exceptionHandler.HandleException(_cache.Clear());
-            _exceptionHandler.HandleException(_contentLanguageManager.SetContentLanguages(Languages.Select(l => l.TwoLetterISOLanguageName)));
+            _exceptionHandler.HandleException(_contentLanguageManager.SetContentLanguages(Languages.Select(l => l.Name)));
             _exceptionHandler.HandleException(_mediaDownloader.InitializeCacheAndSynchronizeTracks());
         }
 
@@ -94,7 +95,7 @@ namespace BMM.Core.ViewModels
             {
                 // Init the languages, chosen by the user
                 var contentLanguages = await _contentLanguageManager.GetContentLanguages();
-                Languages.ReplaceWith(contentLanguages.Select(code => _cultureInfoRepository.Get(code)));
+                Languages.ReplaceWith(contentLanguages.Select(code => _cultureInfoRepository.GetCultureInfoLanguage(code)));
 
                 RefreshAvailableContentLanguages();
             }
@@ -114,7 +115,7 @@ namespace BMM.Core.ViewModels
                 if (languageIso == ContentLanguageManager.LanguageIndependentContent)
                     continue;
 
-                _availableLanguages.Add(_cultureInfoRepository.Get(languageIso));
+                _availableLanguages.Add(_cultureInfoRepository.GetCultureInfoLanguage(languageIso));
             }
 
             _availableLanguages.Sort((x, y) => string.CompareOrdinal(x.NativeName, y.NativeName));
@@ -156,18 +157,18 @@ namespace BMM.Core.ViewModels
             _userDialogs.ActionSheet(actionSheet);
         }
 
-        private MvxCommand<CultureInfo> _deleteCommand;
+        private MvxCommand<CultureInfoLanguage> _deleteCommand;
 
         public IMvxCommand DeleteCommand
         {
             get
             {
-                _deleteCommand = _deleteCommand ?? new MvxCommand<CultureInfo>(DeleteAction);
+                _deleteCommand = _deleteCommand ?? new MvxCommand<CultureInfoLanguage>(DeleteAction);
                 return _deleteCommand;
             }
         }
 
-        protected void DeleteAction(CultureInfo item)
+        protected void DeleteAction(CultureInfoLanguage item)
         {
             if (Languages.Count > 1)
                 LanguageRemovedAdapterCallback?.Invoke(Languages.IndexOf(item));

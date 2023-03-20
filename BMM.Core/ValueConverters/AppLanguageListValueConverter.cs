@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using BMM.Core.Constants;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ValueConverters
@@ -20,7 +21,7 @@ namespace BMM.Core.ValueConverters
         {
             IEnumerable items = value as IEnumerable;
 
-            IList<LanguageCellWrapperViewModel> cellWrapperLanguages = items.OfType<CultureInfo>().Select(x => new LanguageCellWrapperViewModel(x, (BaseViewModel)parameter)).ToList();
+            IList<LanguageCellWrapperViewModel> cellWrapperLanguages = items.OfType<CultureInfoLanguage>().Select(x => new LanguageCellWrapperViewModel(x, (BaseViewModel)parameter)).ToList();
 
             MvxObservableCollection<LanguageCellWrapperViewModel> languagesList = new MvxObservableCollection<LanguageCellWrapperViewModel>(cellWrapperLanguages);
             // Handling of collectionChanged event is not necessary, because list of languages is const and is never change.

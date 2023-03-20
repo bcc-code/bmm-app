@@ -4,6 +4,7 @@ using MvvmCross.ViewModels;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using BMM.Core.Constants;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Region.Interfaces;
 using MvvmCross.Commands;
@@ -22,16 +23,16 @@ namespace BMM.Core.ViewModels
         {
             _appLanguageProvider = appLanguageProvider;
             _cultureInfoRepository = cultureInfoRepository;
-            Languages = new MvxObservableCollection<CultureInfo>();
+            Languages = new MvxObservableCollection<CultureInfoLanguage>();
         }
 
-        public MvxObservableCollection<CultureInfo> Languages { get; }
+        public MvxObservableCollection<CultureInfoLanguage> Languages { get; }
 
         public IMvxCommand LanguageSelectedCommand
         {
             get
             {
-                _languageSelectedCommand = _languageSelectedCommand ?? new MvxCommand<CultureInfo>(LanguageChanged);
+                _languageSelectedCommand = _languageSelectedCommand ?? new MvxCommand<CultureInfoLanguage>(LanguageChanged);
                 return _languageSelectedCommand;
             }
         }
@@ -44,15 +45,15 @@ namespace BMM.Core.ViewModels
         {
             await base.Initialize();
 
-            var languages = GlobalConstants.AvailableAppLanguages.Select(languageIso => _cultureInfoRepository.Get(languageIso)).ToList();
+            var languages = GlobalConstants.AvailableAppLanguages.Select(languageIso => _cultureInfoRepository.GetCultureInfoLanguage(languageIso)).ToList();
             languages.Sort((x, y) => string.CompareOrdinal(x.NativeName, y.NativeName));
             Languages.ReplaceWith(languages);
         }
 
-        private void LanguageChanged(CultureInfo cultureInfo)
+        private void LanguageChanged(CultureInfoLanguage cultureInfo)
         {
             _appLanguageProvider.ChangeAppLanguage(cultureInfo);
-            _currentLanguage = cultureInfo.TwoLetterISOLanguageName;
+            _currentLanguage = cultureInfo.Name;
             RaisePropertyChanged(() => CurrentLanguage);
         }
     }

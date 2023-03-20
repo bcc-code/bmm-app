@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.FeatureToggles;
 
@@ -39,6 +40,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             
             public const string IsSleepTimerEnabled = "is_sleep_timer_enabled";
             public const string IsPlaybackSpeedEnabled = "is_playback_speed_enabled";
+            
+            public const string CultureInfoLanguages = "culture_info_languages";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -60,7 +63,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.ExperimentId, string.Empty},
             {Variables.SendAgeToDiscover, false.ToString()},
             {Variables.IsSleepTimerEnabled, false.ToString()},
-            {Variables.IsPlaybackSpeedEnabled, false.ToString()}
+            {Variables.IsPlaybackSpeedEnabled, false.ToString()},
+            {Variables.CultureInfoLanguages, CultureInfoLanguage.DefaultCultureInfoLanguagesJson}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -96,6 +100,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public bool IsSleepTimerEnabled => _platformSpecificRemoteConfig.GetBoolValue(Variables.IsSleepTimerEnabled);
         
         public bool IsPlaybackSpeedEnabled => _platformSpecificRemoteConfig.GetBoolValue(Variables.IsPlaybackSpeedEnabled);
+
+        public string CultureInfoLanguages => _platformSpecificRemoteConfig.GetStringValue(Variables.CultureInfoLanguages);
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
             _semanticVersionParser.ParseStringToSemanticVersionObject(

@@ -97,7 +97,7 @@ namespace BMM.Core.GuardedActions.Player
         
         private string GetDisplayableLanguageName(string lang)
         {
-            var cultureInfo = _cultureInfoRepository.Get(lang);
+            var cultureInfo = _cultureInfoRepository.GetCultureInfoLanguage(lang);
 
             return (string)LanguageNameValueConverter.Convert(cultureInfo,
                 typeof(string),

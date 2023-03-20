@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using BMM.Core.Implementations.FeatureToggles;
+﻿using BMM.Core.Implementations.FeatureToggles;
 
 namespace BMM.Core.Implementations.FirebaseRemoteConfig
 {
@@ -40,5 +39,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool IsSleepTimerEnabled { get; }
         
         bool IsPlaybackSpeedEnabled { get; }
+        
+        string CultureInfoLanguages { get; }
     }
 }

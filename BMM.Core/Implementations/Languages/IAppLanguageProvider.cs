@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using BMM.Core.Constants;
 
 namespace BMM.Core.Implementations.Languages
 {
@@ -8,6 +9,6 @@ namespace BMM.Core.Implementations.Languages
 
         void InitializeAtStartup(string language);
 
-        void ChangeAppLanguage(CultureInfo culture);
+        void ChangeAppLanguage(CultureInfoLanguage cultureInfoLanguage);
     }
 }

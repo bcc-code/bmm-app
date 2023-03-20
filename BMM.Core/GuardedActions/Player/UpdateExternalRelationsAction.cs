@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Utils;
+using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
@@ -18,6 +19,7 @@ using BMM.Core.Models.Enums;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
+using Newtonsoft.Json;
 
 namespace BMM.Core.GuardedActions.Player
 {
@@ -51,12 +53,11 @@ namespace BMM.Core.GuardedActions.Player
                 return Task.CompletedTask;
 
             if (currentTrack.Language != ContentLanguageManager.LanguageIndependentContent)
-                PlayerViewModel.TrackLanguage = _cultureInfoRepository.Get(currentTrack.Language).NativeName;
+                PlayerViewModel.TrackLanguage = _cultureInfoRepository.GetCultureInfoLanguage(currentTrack.Language).NativeName;
             
             PlayerViewModel.HasExternalRelations = currentTrack.Relations != null &&
                                                    currentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
 
-            
             string bccLink = GetBCCMediaLink(currentTrack);
 
             var leftButtonType = string.IsNullOrEmpty(bccLink)

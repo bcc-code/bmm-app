@@ -1,12 +1,12 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
+using BMM.Core.Constants;
 using MvvmCross.Converters;
 
 namespace BMM.Core.ValueConverters
 {
-    public class LanguageNameValueConverter : MvxValueConverter<CultureInfo, string>
+    public class LanguageNameValueConverter : MvxValueConverter<CultureInfoLanguage, string>
     {
-        protected override string Convert(CultureInfo value, Type targetType, object parameter, CultureInfo culture)
+        protected override string Convert(CultureInfoLanguage value, Type targetType, object parameter, CultureInfo culture)
         {
             return $"{FirstCharToUpper(value.NativeName)} ({FirstCharToUpper(value.EnglishName)})";
         }
