@@ -41,7 +41,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
 
             RequestHandler
                 .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null, null))
-                .Callback((IRequest request, CancellationToken? cancellationToken) =>
+                .Callback((IRequest request, IDictionary<string, string> customHeaders, CancellationToken? cancellationToken) =>
                 {
                     Assert.AreEqual("https://localhost/track/", request.Uri.ToString());
                     Assert.AreEqual(0, request.Headers.Count);
@@ -63,7 +63,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             RequestHandler
                 .Setup(x => x.GetResponse(It.IsAny<IRequest>(), null, null))
-                .Callback((IRequest request, CancellationToken? cancellationToken) =>
+                .Callback((IRequest request, IDictionary<string, string> customHeaders, CancellationToken? cancellationToken) =>
                 {
                     Assert.AreEqual("https://localhost/track/2000", request.Uri.ToString());
                     Assert.AreEqual(0, request.Headers.Count);

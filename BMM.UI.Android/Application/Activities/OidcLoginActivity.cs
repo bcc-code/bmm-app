@@ -4,7 +4,7 @@ using Android.Content.PM;
 using Android.OS;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.ViewModels;
-using IdentityModel.OidcClient.Browser;
+using Microsoft.Maui.ApplicationModel;
 
 namespace BMM.UI.Droid.Application.Activities
 {
@@ -28,16 +28,23 @@ namespace BMM.UI.Droid.Application.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            Platform.Init(this, savedInstanceState);
+            
             SetContentView(Resource.Layout.activity_oidc_login);
 
             if (ViewModel.IsInitialLogin)
                 ViewModel.LoginCommand.Execute();
         }
+        
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
 
         /// <summary>
         /// Method executed when the Activity resumes that will cancel any pending
-        /// <see cref="IBrowser"/> implementation by way of the <see cref="OidcCallbackMediator"/>.
+        /// <see cref="IdentityModel.OidcClient.Browser.IBrowser"/> implementation by way of the <see cref="OidcCallbackMediator"/>.
         /// </summary>
         protected override void OnResume()
         {
@@ -47,7 +54,7 @@ namespace BMM.UI.Droid.Application.Activities
 
         /// <summary>
         /// Method executed when the Activity receives a new intent that may continue a pending
-        /// <see cref="IBrowser"/> implementation by way of the <see cref="OidcCallbackMediator"/>.
+        /// <see cref="IdentityModel.OidcClient.Browser.IBrowser"/> implementation by way of the <see cref="OidcCallbackMediator"/>.
         /// </summary>
         protected override void OnNewIntent(Intent intent)
         {

@@ -26,6 +26,14 @@ steps:
   - bash: |
       dotnet workload install maui-android
     displayName: 'Install MAUI Android workload'
+    
+  - task: DotNetCoreCLI@2
+    displayName: 'Run Unit Tests'
+    inputs:
+      command: 'test'
+      projects: |
+        BMM.Tests/BMM.Api.Tests/BMM.Api.Tests.csproj
+        BMM.Tests/BMM.Core.Test/BMM.Core.Test.csproj
       
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'

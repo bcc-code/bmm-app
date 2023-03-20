@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Factories.Tracks;
@@ -17,7 +18,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         [SetUp]
         public void Init()
         {
-            base.Setup();
+            Setup();
             base.AdditionalSetup();
             _contributionClientMock = new Mock<IContributorClient>();
         }
@@ -26,8 +27,8 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task LoadItems_ShouldHandleNullValueAndDisplayEmptyDocument()
         {
             // Arrange
-            Client.Setup(x => x.Contributors.GetById(It.IsAny<int>()))
-                .Returns(Task.FromResult<Contributor>(null));
+            _contributionClientMock.Setup(x => x.GetFeaturedContributors(It.IsAny<CachePolicy>()))
+                .Returns(Task.FromResult<IList<Contributor>>(new List<Contributor>()));
             var exploreContributorViewModel = new ExploreContributorsViewModel(Analytics.Object, _contributionClientMock.Object);
 
             // Act

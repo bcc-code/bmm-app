@@ -202,7 +202,7 @@ namespace BMM.Core.Test.Unit.ViewModels
                 .First(s => s.Title == Translations.SettingsViewModel_OptionDownloadMobileNetworkHeader);
 
             ((CheckboxListItemPO)item).ShouldAlwaysRaiseInpcOnUserInterfaceThread(false);
-            ((CheckboxListItemPO)item).IsChecked = true;
+            ((CheckboxListItemPO)item).IsChecked = false;
 
             // Assert
             _settingsStorage.Verify(x => x.SetMobileNetworkDownloadAllowed(It.IsAny<bool>()), Times.Once);
@@ -225,7 +225,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             ((CheckboxListItemPO)item).IsChecked = true;
 
             // Assert
-            _settingsStorage.Verify(x => x.SetPushNotificationsAllowed(It.IsAny<bool>()), Times.Once);
+            _changeNotificationSettingStateAction.Verify(x => x.ExecuteGuarded(false), Times.Once);
         }
 
         [Test]

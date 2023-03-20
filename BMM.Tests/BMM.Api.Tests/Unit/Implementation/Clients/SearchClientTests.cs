@@ -30,7 +30,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
         {
             // Arrange
             var searchClient = new SearchClient(RequestHandler.Object, MockedUri, Logger.Object);
-            RequestHandler.Setup(x => x.GetResolvedResponse<IList<Document>>(It.IsAny<IRequest>(), null, null))
+            RequestHandler.Setup(x => x.GetResolvedResponse<SearchResults>(It.IsAny<IRequest>(), It.IsAny<IDictionary<string,string>>(), null))
                 .Returns(Task.FromResult(CreateASampleListOfDocuments()));
 
             // Act
@@ -38,7 +38,7 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
 
             // Assert
             Assert.NotNull(result);
-            Assert.AreEqual(result.Items.Count(), CreateASampleListOfDocuments().Count);
+            Assert.AreEqual(result.Items.Count(), CreateASampleListOfDocuments().Items.Count());
         }
 
         [Test]
@@ -57,9 +57,15 @@ namespace BMM.Api.Test.Unit.Implementation.Clients
             Assert.AreEqual(result.Count, CreateASampleListOfSugestions().Count);
         }
 
-        private IList<Document> CreateASampleListOfDocuments()
+        private SearchResults CreateASampleListOfDocuments()
         {
-            return new List<Document>() { Substitute.For<Document>() };
+            return new SearchResults()
+            {
+                Items = new List<Document>()
+                {
+                    Substitute.For<Document>()
+                }
+            };
         }
 
         private IList<string> CreateASampleListOfSugestions()
