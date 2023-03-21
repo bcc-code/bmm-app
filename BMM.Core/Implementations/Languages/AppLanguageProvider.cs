@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reactive.Linq;
 using Akavache;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Region.Interfaces;
@@ -26,18 +27,18 @@ namespace BMM.Core.Implementations.Languages
 
         public void InitializeAtStartup(string language)
         {
-            var culture = _cultureInfoRepository.Get(language);
-            CultureInfo.DefaultThreadCurrentUICulture = culture;
-            CultureInfo.CurrentUICulture = culture;
+            var culture = new CultureInfo(language);
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo(language);
+            CultureInfo.CurrentUICulture = new CultureInfo(language);;
         }
 
-        public void ChangeAppLanguage(CultureInfo culture)
+        public void ChangeAppLanguage(CultureInfoLanguage cultureIfInfoLanguage)
         {
             var builder = (TextProviderBuilder)Mvx.IoCProvider.GetSingleton<IMvxTextProviderBuilder>();
-            builder.LoadResources(culture.TwoLetterISOLanguageName);
+            builder.LoadResources(cultureIfInfoLanguage.Code);
 
-            AppSettings.LanguageApp = culture.TwoLetterISOLanguageName;
-
+            var culture = new CultureInfo(cultureIfInfoLanguage.Code);
+            AppSettings.LanguageApp = culture.Name;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
             CultureInfo.CurrentUICulture = culture;
             Mvx.IoCProvider.Resolve<INotificationCenter>().RaiseAppLanguageChanged();

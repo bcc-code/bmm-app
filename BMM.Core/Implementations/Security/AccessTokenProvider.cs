@@ -13,7 +13,7 @@ namespace BMM.Core.Implementations.Security
 {
     public class AccessTokenProvider : IAccessTokenProvider
     {
-        private const int TimeToRefreshTokenBeforeExpirationInHours = 3;
+        public const int TimeToRefreshTokenBeforeExpirationInHours = 3;
         private readonly SemaphoreSlim _lock = new SemaphoreSlim(1, 1);
         private readonly IOidcCredentialsStorage _credentialsStorage;
         private readonly IOidcAuthService _authService;

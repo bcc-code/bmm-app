@@ -21,11 +21,10 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidLinkSkip>MvvmCross;MvvmCross.Plugin.Messenger</AndroidLinkSkip>
   </PropertyGroup>

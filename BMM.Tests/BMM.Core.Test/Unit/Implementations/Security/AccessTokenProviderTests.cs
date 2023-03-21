@@ -47,9 +47,9 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         }
 
         [Test]
-        public async Task Should_Not_Refresh_WhenExpirationDate_IsNewerThanNow()
+        public async Task Should_Not_Refresh_WhenExpirationDate_IsNotAboutToExpire()
         {
-            var timeInFuture = DateTime.Now.AddHours(2);
+            var timeInFuture = DateTime.Now.AddHours(AccessTokenProvider.TimeToRefreshTokenBeforeExpirationInHours + 1);
             _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(timeInFuture);
 
             var _ = await _provider.GetAccessToken();

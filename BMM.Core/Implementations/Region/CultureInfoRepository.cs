@@ -1,53 +1,32 @@
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
+using BMM.Core.Constants;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Region.Interfaces;
-using BMM.Core.Models.Regions;
+using Newtonsoft.Json;
 
 namespace BMM.Core.Implementations.Region
 {
     public class CultureInfoRepository : ICultureInfoRepository
     {
         private const string UnknownCultureEnglishName = "Unknown language";
-        private IList<CultureInfo> _customCultureInfos;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
+        private IList<CultureInfoLanguage> _cultureInfoLanguages;
 
-        public CultureInfoRepository()
+        public CultureInfoRepository(IFirebaseRemoteConfig firebaseRemoteConfig)
         {
-            CreateCustomCultureInfos();
+            _firebaseRemoteConfig = firebaseRemoteConfig;
         }
 
-        public CultureInfo Get(string iso)
+        public CultureInfoLanguage GetCultureInfoLanguage(string code)
         {
-            try
-            {
-                return new CultureInfo(iso);
-            }
-            catch (CultureNotFoundException)
-            {
-                return GetCustomCultureInfoFor(iso);
-            }
+            _cultureInfoLanguages ??= JsonConvert.DeserializeObject<IList<CultureInfoLanguage>>(_firebaseRemoteConfig.CultureInfoLanguages);
+            var cultureInfoLanguage = _cultureInfoLanguages.FirstOrDefault(c => c.Code == code);
+            return cultureInfoLanguage ?? CreateUnknownCultureInfoLanguage(code);
         }
 
-        private CultureInfo GetCustomCultureInfoFor(string isoCode)
+        private CultureInfoLanguage CreateUnknownCultureInfoLanguage(string code)
         {
-            var customCulture = _customCultureInfos
-                .FirstOrDefault(c => c.TwoLetterISOLanguageName == isoCode);
-
-            if (customCulture != null)
-                return customCulture;
-
-            return new CustomCultureInfo(isoCode,
-                isoCode,
-                UnknownCultureEnglishName,
-                string.Empty);
-        }
-
-        private void CreateCustomCultureInfos()
-        {
-            _customCultureInfos = new List<CultureInfo>()
-            {
-                new CustomCultureInfo("yue", "廣東話", "Cantonese", "zh")
-            };
+            return new CultureInfoLanguage(code, UnknownCultureEnglishName, code);
         }
     }
 }

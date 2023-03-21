@@ -2,6 +2,7 @@ using Foundation;
 using MvvmCross.ViewModels;
 using System;
 using System.Globalization;
+using BMM.Core.Constants;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.Extensions;
 using MvvmCross.Commands;
@@ -51,7 +52,7 @@ namespace BMM.UI.iOS
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
-            MvxObservableCollection<CultureInfo> data = ItemsSource as MvxObservableCollection<CultureInfo>;
+            MvxObservableCollection<CultureInfoLanguage> data = ItemsSource as MvxObservableCollection<CultureInfoLanguage>;
 
             UITableViewCell cell;
             if (data != null && indexPath.Row == data.Count)
@@ -75,7 +76,7 @@ namespace BMM.UI.iOS
 
         public override nint RowsInSection(UITableView tableview, nint section)
         {
-            if (ItemsSource is MvxObservableCollection<CultureInfo> data && !IsFullyLoaded)
+            if (ItemsSource is MvxObservableCollection<CultureInfoLanguage> data && !IsFullyLoaded)
             {
                 // Add one row here for the loading-indicator.
                 return base.RowsInSection(tableview, section) + 1;
@@ -88,7 +89,7 @@ namespace BMM.UI.iOS
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            MvxObservableCollection<CultureInfo> data = ItemsSource as MvxObservableCollection<CultureInfo>;
+            MvxObservableCollection<CultureInfoLanguage> data = ItemsSource as MvxObservableCollection<CultureInfoLanguage>;
 
             if (data == null || indexPath.Row < data.Count)
             {
@@ -99,7 +100,7 @@ namespace BMM.UI.iOS
         public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)
         {
             base.WillDisplay(tableView, cell, indexPath);
-            MvxObservableCollection<CultureInfo> data = ItemsSource as MvxObservableCollection<CultureInfo>;
+            MvxObservableCollection<CultureInfoLanguage> data = ItemsSource as MvxObservableCollection<CultureInfoLanguage>;
 
             if (indexPath.Row == data.Count - 1)
             {
@@ -130,7 +131,7 @@ namespace BMM.UI.iOS
             if (sourceIndexPath.Row == destinationIndexPath.Row)
                 return;
 
-            MvxObservableCollection<CultureInfo> items = ItemsSource as MvxObservableCollection<CultureInfo>;
+            MvxObservableCollection<CultureInfoLanguage> items = ItemsSource as MvxObservableCollection<CultureInfoLanguage>;
             if (items == null)
             {
                 // Can not move rows in a collection that does not implement IMvxMultiListView
@@ -142,7 +143,7 @@ namespace BMM.UI.iOS
 
         public override void CommitEditingStyle(UITableView tableView, UITableViewCellEditingStyle editingStyle, NSIndexPath indexPath)
         {
-            MvxObservableCollection<CultureInfo> tableItems = ItemsSource as MvxObservableCollection<CultureInfo>;
+            MvxObservableCollection<CultureInfoLanguage> tableItems = ItemsSource as MvxObservableCollection<CultureInfoLanguage>;
 
             switch (editingStyle)
             {

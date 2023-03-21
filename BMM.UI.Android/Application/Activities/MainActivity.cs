@@ -17,6 +17,7 @@ using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using Google.Android.Material.BottomNavigation;
 using Kotlin.Contracts;
+using Microsoft.Maui.ApplicationModel;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Presenters;
 using MvvmCross.Platforms.Android.Views.Fragments;
@@ -109,6 +110,8 @@ namespace BMM.UI.Droid.Application.Activities
             SetContentView(Resource.Layout.activity_main);
             base.OnCreate(bundle);
 
+            Platform.Init(this, bundle);
+
             // as we not restoring fragments, we need to call initial navigation when the app was restored from deep background
             if (shouldCallInitialNavigation)
                 Mvx.IoCProvider.Resolve<IAppNavigator>().NavigateAtAppStart();
@@ -120,6 +123,13 @@ namespace BMM.UI.Droid.Application.Activities
             // var mp = new MediaPlayer();
             // var builder = new AudioAttributesCompat.Builder();
             // mp.SetDataSource();
+        }
+        
+        
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         private async Task<bool> ClearAllNavBackStackHintHandler(ClearAllNavBackStackHint hint)

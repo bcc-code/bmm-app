@@ -2,6 +2,7 @@ using MvvmCross.Binding.BindingContext;
 using Foundation;
 using System;
 using System.Globalization;
+using BMM.Core.Constants;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 
@@ -21,7 +22,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<LanguageContentTableViewCell, CultureInfo>();
+                var set = this.CreateBindingSet<LanguageContentTableViewCell, CultureInfoLanguage>();
                 set.Bind(TextLabel).WithConversion<LanguageNameValueConverter>();
                 set.Apply();
             });

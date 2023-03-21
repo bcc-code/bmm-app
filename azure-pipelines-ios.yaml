@@ -19,6 +19,22 @@ variables:
     - group: 'AppleCertificate'
 
 steps:
+  - bash: |
+      dotnet workload install ios
+    displayName: 'Install iOS workload'
+
+  - bash: |
+      dotnet workload install maui-ios
+    displayName: 'Install MAUI iOS workload'
+    
+  - task: DotNetCoreCLI@2
+    displayName: 'Run Unit Tests'
+    inputs:
+      command: 'test'
+      projects: |
+        BMM.Tests/BMM.Api.Tests/BMM.Api.Tests.csproj
+        BMM.Tests/BMM.Core.Test/BMM.Core.Test.csproj
+        
   - task: InstallAppleCertificate@2
     displayName: 'Install an Apple certificate'
     inputs:
@@ -144,14 +160,6 @@ steps:
       Contents: |
         **/bin
         **/obj
-
-  - bash: |
-      dotnet workload install ios
-    displayName: 'Install iOS workload'
-
-  - bash: |
-      dotnet workload install maui-ios
-    displayName: 'Install MAUI iOS workload'
     
   - task: DotNetCoreCLI@2
     displayName: 'Build .NET for iOS solution BMM.UI.iOS/BMM.UI.iOS.csproj'
