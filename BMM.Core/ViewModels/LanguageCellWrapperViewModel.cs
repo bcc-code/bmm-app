@@ -19,6 +19,6 @@ namespace BMM.Core.ViewModels
             };
         }
 
-        public override bool IsSelected => _viewModel.CurrentLanguage.Equals(Item.Name);
+        public override bool IsSelected => _viewModel.CurrentLanguage.Equals(Item.Code);
     }
 }

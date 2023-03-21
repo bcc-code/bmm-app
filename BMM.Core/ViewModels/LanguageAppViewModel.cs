@@ -53,7 +53,7 @@ namespace BMM.Core.ViewModels
         private void LanguageChanged(CultureInfoLanguage cultureInfo)
         {
             _appLanguageProvider.ChangeAppLanguage(cultureInfo);
-            _currentLanguage = cultureInfo.Name;
+            _currentLanguage = cultureInfo.Code;
             RaisePropertyChanged(() => CurrentLanguage);
         }
     }

@@ -35,9 +35,9 @@ namespace BMM.Core.Implementations.Languages
         public void ChangeAppLanguage(CultureInfoLanguage cultureIfInfoLanguage)
         {
             var builder = (TextProviderBuilder)Mvx.IoCProvider.GetSingleton<IMvxTextProviderBuilder>();
-            builder.LoadResources(cultureIfInfoLanguage.Name);
+            builder.LoadResources(cultureIfInfoLanguage.Code);
 
-            var culture = new CultureInfo(cultureIfInfoLanguage.Name);
+            var culture = new CultureInfo(cultureIfInfoLanguage.Code);
             AppSettings.LanguageApp = culture.Name;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
             CultureInfo.CurrentUICulture = culture;

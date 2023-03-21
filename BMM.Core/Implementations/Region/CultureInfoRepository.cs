@@ -8,6 +8,7 @@ namespace BMM.Core.Implementations.Region
 {
     public class CultureInfoRepository : ICultureInfoRepository
     {
+        private const string UnknownCultureEnglishName = "Unknown language";
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
         private IList<CultureInfoLanguage> _cultureInfoLanguages;
 
@@ -16,19 +17,16 @@ namespace BMM.Core.Implementations.Region
             _firebaseRemoteConfig = firebaseRemoteConfig;
         }
 
-        public CultureInfoLanguage GetCultureInfoLanguage(CultureInfo cultureInfo) 
-            => GetCultureInfoLanguage(cultureInfo.Name) ?? CreateDefaultCultureInfoLanguage(cultureInfo.Name);
-
-        public CultureInfoLanguage GetCultureInfoLanguage(string name)
+        public CultureInfoLanguage GetCultureInfoLanguage(string code)
         {
             _cultureInfoLanguages ??= JsonConvert.DeserializeObject<IList<CultureInfoLanguage>>(_firebaseRemoteConfig.CultureInfoLanguages);
-            var cultureInfoLanguage = _cultureInfoLanguages.FirstOrDefault(c => c.Name == name);
-            return cultureInfoLanguage ?? CreateDefaultCultureInfoLanguage(name);
+            var cultureInfoLanguage = _cultureInfoLanguages.FirstOrDefault(c => c.Code == code);
+            return cultureInfoLanguage ?? CreateUnknownCultureInfoLanguage(code);
         }
 
-        private CultureInfoLanguage CreateDefaultCultureInfoLanguage(string name)
+        private CultureInfoLanguage CreateUnknownCultureInfoLanguage(string code)
         {
-            return new CultureInfoLanguage(name, name, name);
+            return new CultureInfoLanguage(code, UnknownCultureEnglishName, code);
         }
     }
 }

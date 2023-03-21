@@ -85,7 +85,7 @@ namespace BMM.Core.ViewModels
         private void LanguagesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             _exceptionHandler.HandleException(_cache.Clear());
-            _exceptionHandler.HandleException(_contentLanguageManager.SetContentLanguages(Languages.Select(l => l.Name)));
+            _exceptionHandler.HandleException(_contentLanguageManager.SetContentLanguages(Languages.Select(l => l.Code)));
             _exceptionHandler.HandleException(_mediaDownloader.InitializeCacheAndSynchronizeTracks());
         }
 
