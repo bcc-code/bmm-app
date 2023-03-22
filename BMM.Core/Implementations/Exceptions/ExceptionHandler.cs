@@ -6,6 +6,7 @@ using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
@@ -23,17 +24,20 @@ namespace BMM.Core.Implementations.Exceptions
         private readonly ILogger _logger;
         private readonly IAnalytics _analytics;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
 
         public ExceptionHandler(
             IToastDisplayer toastDisplayer,
             ILogger logger,
             IAnalytics analytics,
-            IBMMLanguageBinder bmmLanguageBinder)
+            IBMMLanguageBinder bmmLanguageBinder,
+            IFirebaseRemoteConfig firebaseRemoteConfig)
         {
             _toastDisplayer = toastDisplayer;
             _logger = logger;
             _analytics = analytics;
             _bmmLanguageBinder = bmmLanguageBinder;
+            _firebaseRemoteConfig = firebaseRemoteConfig;
         }
 
         public void FireAndForget(Func<Task> action)
@@ -106,7 +110,11 @@ namespace BMM.Core.Implementations.Exceptions
         {
             if (ex is InternetProblemsException)
             {
-                _logger.Debug("Internet issues", ex.Message);
+                if (_firebaseRemoteConfig.ShouldLogInternetProblemsException)
+                    _logger.Error("Internet Problems Error", ex.Message, ex, toastDisplayer != null);
+                else
+                    _logger.Debug("Internet issues", ex.Message);
+                
                 toastDisplayer?.Error(_bmmLanguageBinder[Translations.Global_InternetConnectionOffline]);
             }
             else if (ex is WebException)
