@@ -42,6 +42,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string IsPlaybackSpeedEnabled = "is_playback_speed_enabled";
             
             public const string CultureInfoLanguages = "culture_info_languages";
+            
+            public const string ShouldLogInternetProblemsException = "should_log_internet_problems_exception";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -64,7 +66,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.SendAgeToDiscover, false.ToString()},
             {Variables.IsSleepTimerEnabled, false.ToString()},
             {Variables.IsPlaybackSpeedEnabled, false.ToString()},
-            {Variables.CultureInfoLanguages, CultureInfoLanguage.DefaultCultureInfoLanguagesJson}
+            {Variables.CultureInfoLanguages, CultureInfoLanguage.DefaultCultureInfoLanguagesJson},
+            {Variables.ShouldLogInternetProblemsException, false.ToString()}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -102,6 +105,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public bool IsPlaybackSpeedEnabled => _platformSpecificRemoteConfig.GetBoolValue(Variables.IsPlaybackSpeedEnabled);
 
         public string CultureInfoLanguages => _platformSpecificRemoteConfig.GetStringValue(Variables.CultureInfoLanguages);
+        
+        public bool ShouldLogInternetProblemsException => _platformSpecificRemoteConfig.GetBoolValue(Variables.ShouldLogInternetProblemsException);
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
             _semanticVersionParser.ParseStringToSemanticVersionObject(

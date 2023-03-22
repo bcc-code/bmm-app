@@ -41,5 +41,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool IsPlaybackSpeedEnabled { get; }
         
         string CultureInfoLanguages { get; }
+        
+        bool ShouldLogInternetProblemsException { get; }
     }
 }

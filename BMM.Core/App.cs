@@ -162,7 +162,8 @@ namespace BMM.Core
                     new ToastDisplayer(Mvx.IoCProvider.Resolve<IUserDialogsFactory>().Create()),
                     Mvx.IoCProvider.Resolve<ILogger>(),
                     Mvx.IoCProvider.Resolve<IAnalytics>(),
-                    Mvx.IoCProvider.Resolve<IBMMLanguageBinder>())
+                    Mvx.IoCProvider.Resolve<IBMMLanguageBinder>(),
+                    Mvx.IoCProvider.Resolve<IFirebaseRemoteConfig>())
             );
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<BackgroundTaskExecutor, BackgroundTaskExecutor>();
