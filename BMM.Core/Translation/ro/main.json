@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Pornește De la Kåre",
     "PlayMusicSiriShortcutName": "Pornește muzica",
     "DailyMessage": "Mesajul zilei",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "{0} copiate în clipboard"
   },
   "Streak": {
     "Message": "Progresul tău",
@@ -259,7 +259,7 @@
     "PlaybackSpeed": "Viteză de redare",
     "Normal": "Normal",
     "Selected": "Selectate",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Vezi pe BCC Media"
   },
   "QueueViewModel": {
     "Title": "Listă"
