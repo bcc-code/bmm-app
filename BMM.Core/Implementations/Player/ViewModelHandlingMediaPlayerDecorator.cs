@@ -199,7 +199,7 @@ namespace BMM.Core.Implementations.Player
         {
             if (ignoreIfAlreadyAdded && _queue.Tracks.Any(t => t.Equals(track)))
                 return Task.FromResult(false);
-                
+            
             var enrichedTrack = EnrichTrackWithPlaybackOrigin(track, playbackOrigin);
             return QueueAndShowPlayer(t => _mediaPlayer.AddToEndOfQueue(t, playbackOrigin), enrichedTrack);
         }
@@ -228,17 +228,24 @@ namespace BMM.Core.Implementations.Player
 
         private async Task<bool> QueueAndShowPlayer(Func<IMediaTrack, Task<bool>> queueFunc, IMediaTrack track)
         {
-            if (_queue.Tracks.Any())
+            try
             {
-                var result = await queueFunc(track);
+                if (_queue.Tracks.Any())
+                {
+                    var result = await queueFunc(track);
+                    ShowViewmodelIfNecessary();
+                    return result;
+                }
+
+                await Play(new List<IMediaTrack> {track}, track);
                 ShowViewmodelIfNecessary();
-                return result;
+
+                return true;
             }
-
-            await Play(new List<IMediaTrack> {track}, track);
-            ShowViewmodelIfNecessary();
-
-            return true;
+            finally
+            {
+                _mvxMessenger.Publish(new CurrentQueueChangedMessage(_queue.Tracks, this));
+            }
         }
 
         public void PlayPause()

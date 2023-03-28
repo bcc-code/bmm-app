@@ -1,12 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Akavache;
-using BMM.Api.Framework;
+﻿using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
@@ -107,6 +100,9 @@ namespace BMM.Core.Implementations.PlayObserver
 
         private async Task PersistCurrentQueue(TrackPlayedEvent playedEvent)
         {
+            if (CurrentQueue == null || CurrentTrack == null)
+                return;
+            
             AppSettings.CurrentTrackPosition = new CurrentTrackPositionStorage(CurrentTrack.Id, playedEvent.LastPosition);
 
             if (!IsCurrentQueueSaved)

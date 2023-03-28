@@ -18,8 +18,6 @@
     <RootNamespace>BMM.UI.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>BMM</AssemblyName>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
     <ProvisioningType>automatic</ProvisioningType>
     <LangVersion>default</LangVersion>
   </PropertyGroup>
@@ -33,17 +31,14 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
-    <MtouchArch>x86_64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <CodesignProvision>
     </CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <MtouchExtraArgs />
-    <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
     <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
@@ -58,11 +53,9 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer</CodesignKey>
     <OutputPath>bin\iPhone\Debug</OutputPath>
-    <MtouchArch>ARM64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <BuildIpa>true</BuildIpa>
     <CodesignProvision />
     <CodesignExtraArgs />
@@ -82,11 +75,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchDebug>true</MtouchDebug>
     <OutputPath>bin\iPhone\Debug</OutputPath>
-    <MtouchArch>ARM64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <BuildIpa>true</BuildIpa>
     <CodesignProvision />
     <CodesignExtraArgs />
@@ -100,13 +91,10 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseLlvm>true</MtouchUseLlvm>
-    <MtouchUseThumb>true</MtouchUseThumb>
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
-    <MtouchArch>x86_64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
@@ -114,10 +102,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
     <CodesignProvision>BMM Provisioning Profile</CodesignProvision>
-    <MtouchUseLlvm>true</MtouchUseLlvm>
-    <MtouchUseThumb>true</MtouchUseThumb>
     <OutputPath>bin\iPhone\Release</OutputPath>
-    <MtouchArch>ARM64</MtouchArch>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
@@ -125,7 +110,6 @@
     <BuildIpa>true</BuildIpa>
     <IpaIncludeArtwork>false</IpaIncludeArtwork>
     <IpaMetadata>Info.plist</IpaMetadata>
-    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
     <UseInterpreter>true</UseInterpreter>
   </PropertyGroup>
