@@ -23,6 +23,8 @@ using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Implementations.UI.StyledText;
+using BMM.Core.Implementations.UI.StyledText.Enums;
 using BMM.Core.Messages;
 using BMM.Core.Models;
 using BMM.Core.Models.POs.Other;
@@ -64,11 +66,18 @@ namespace BMM.Core.ViewModels
         private List<IListItem> _listItems = new List<IListItem>();
         private string _profilePictureUrl;
         private CheckboxListItemPO _pushNotificationCheckboxListItem;
+        private StyledTextContainer _styledTextContainer;
 
         public List<IListItem> ListItems { get => _listItems; set => SetProperty(ref _listItems, value); }
 
         public IMvxCommand ItemSelectedCommand =>
             new MvxCommand<IListItem>(item => (item as IListContentItem)?.OnSelected?.Execute());
+
+        public StyledTextContainer StyledTextContainer
+        {
+            get => _styledTextContainer;
+            set => SetProperty(ref _styledTextContainer, value);
+        }
 
         public SettingsViewModel(
             IDeviceInfo deviceInfo,

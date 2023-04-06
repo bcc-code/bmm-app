@@ -69,6 +69,11 @@
     <dimen name="shared_playlist_icon">24dp</dimen>
     <dimen name="from_kaare_image_size">40dp</dimen>
     <dimen name="info_message_icon_size">20dp</dimen>
+    <dimen name="highlighted_text_track_item_icon_size">20dp</dimen>
+    <dimen name="highlighted_text_arrow_right_icon_size">12dp</dimen>
+    <dimen name="highlighted_text_close_container_icon_size">36dp</dimen>
+    <dimen name="highlighted_text_default_icon_size">24dp</dimen>
+    <dimen name="highlighted_text_dialog_icon_size">32dp</dimen>
 
     <dimen name="horizontal_scrolling_cover_image_size">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_width">160dp</dimen>
@@ -80,6 +85,9 @@
     <dimen name="continue_listening_item_corner_radius">36dp</dimen>
     <dimen name="continue_listening_cover_size">112dp</dimen>
     <dimen name="continue_listening_play_big_icon_size">40dp</dimen>
+    <dimen name="highlighted_text_track_item_corner_radius">24dp</dimen>
+    <dimen name="highlighted_text_item_corner_radius">16dp</dimen>
+    <dimen name="highlighted_text_dialog_corner_radius">24dp</dimen>
 
     <dimen name="streak_card_size">28dp</dimen>
     <dimen name="streak_card_corner_radius">14dp</dimen>

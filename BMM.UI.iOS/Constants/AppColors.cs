@@ -19,12 +19,18 @@ namespace BMM.UI.iOS.Constants
         public static UIColor TintColor => UIColor.FromName(nameof(TintColor));
         public static UIColor HighlightColor => UIColor.FromName(nameof(HighlightColor));
         public static UIColor SeparatorColor => UIColor.FromName(nameof(SeparatorColor));
+        public static UIColor SeparatorLightColor => UIColor.FromName(nameof(SeparatorLightColor));
         public static UIColor OnColorOneColor => UIColor.FromName(nameof(OnColorOneColor));
         public static UIColor OnColorTwoColor => UIColor.FromName(nameof(OnColorTwoColor));
         public static UIColor OnColorThreeColor => UIColor.FromName(nameof(OnColorThreeColor));
         public static UIColor OnColorFourColor => UIColor.FromName(nameof(OnColorFourColor));
         public static UIColor OnColorFiveColor => UIColor.FromName(nameof(OnColorFiveColor));
         public static UIColor TileDefaultColor => UIColor.FromName(nameof(TileDefaultColor));
+        public static UIColor HighlightningsGradientColor => UIColor.FromName(nameof(HighlightningsGradientColor));
+        public static UIColor HighlightningsGradientWithAlphaColor => UIColor.FromName(nameof(HighlightningsGradientWithAlphaColor));
+        public static UIColor BackgroundLightSecondaryColor => UIColor.FromName(nameof(BackgroundLightSecondaryColor));
+        public static UIColor LabelLightTertiaryColor => UIColor.FromName(nameof(LabelLightTertiaryColor));
+        public static UIColor UtilityAutoColor => UIColor.FromName(nameof(UtilityAutoColor));
 
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
 

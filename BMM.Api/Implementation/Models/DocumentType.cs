@@ -37,6 +37,9 @@ namespace BMM.Api.Implementation.Models
         [IgnoreDataMember]
         TileCollection,
 
+        [IgnoreDataMember]
+        HighlightedTextTrack,
+        
         [EnumMember(Value = "section_header")]
         DiscoverSectionHeader,
 

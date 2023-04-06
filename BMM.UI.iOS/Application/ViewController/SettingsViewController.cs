@@ -25,6 +25,7 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<SettingsViewController, SettingsViewModel>();
             set.Bind(source).To(vm => vm.ListItems);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.ItemSelectedCommand);
+            set.Bind(FormattedText).For(s => s.StyledTextContainer).To(vm => vm.StyledTextContainer);
             set.Apply();
         }
     }

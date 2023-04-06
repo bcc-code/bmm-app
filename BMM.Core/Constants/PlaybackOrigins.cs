@@ -4,5 +4,6 @@ namespace BMM.Core.Constants
     {
         public static string Tile => nameof(Tile);
         public static string TopSongs => nameof(TopSongs);
+        public static string SearchHighlightedText => nameof(SearchHighlightedText);
     }
 }

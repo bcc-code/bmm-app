@@ -1,12 +1,9 @@
 ﻿using MvvmCross.Binding.BindingContext;
-using Foundation;
-using System;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using CoreAnimation;
 using MvvmCross.Platforms.Ios.Binding;
-using UIKit;
 
 namespace BMM.UI.iOS
 {

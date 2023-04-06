@@ -1,8 +1,5 @@
-﻿using System.Collections.Generic;
-using BMM.UI.iOS.TableViewCell.Base;
-using Foundation;
+﻿using BMM.UI.iOS.TableViewCell.Base;
 using MvvmCross.Platforms.Ios.Binding.Views;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
@@ -28,6 +25,8 @@ namespace BMM.UI.iOS
                 tableView.RegisterNibForCellReuse(UINib.FromName(cellUibName, NSBundle.MainBundle), cellUibName);
             }
         }
+        
+        public event EventHandler ScrolledEvent;
 
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
@@ -58,6 +57,11 @@ namespace BMM.UI.iOS
         {
             if (cell is IEventsHoldingTableViewCell eventsHoldingViewCell)
                 eventsHoldingViewCell.DetachEvents();
+        }
+        
+        public override void Scrolled(UIScrollView scrollView)
+        {
+            ScrolledEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }

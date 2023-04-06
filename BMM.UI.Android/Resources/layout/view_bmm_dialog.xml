@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="314dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/DialogPopupLayout"
+        android:layout_gravity="center"
+        android:background="@drawable/background_bmm_dialog"
+        local:MvxBind="Click ItemClickedCommand">
+
+    <ImageView
+            android:id="@+id/AIIcon"
+            android:layout_width="@dimen/highlighted_text_dialog_icon_size"
+            android:layout_height="@dimen/highlighted_text_dialog_icon_size"
+            android:layout_marginTop="@dimen/margin_large"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/icon_ai"/>
+
+    <TextView
+            android:id="@+id/HeaderLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:textColor="@color/utility_auto_color"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center"
+            local:layout_constraintTop_toBottomOf="@+id/AIIcon"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Title1" />
+
+    <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:gravity="center"
+            local:layout_constraintTop_toBottomOf="@+id/HeaderLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Title1" />
+
+    <TextView
+            android:id="@+id/Subtitle"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:gravity="center"
+            local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Subtitle1_Label2" />
+
+    <Button
+            android:id="@+id/CloseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:layout_constraintTop_toBottomOf="@+id/Subtitle"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/margin_xxmedium"
+            android:layout_marginBottom="@dimen/margin_xxmedium"
+            style="@style/IconButton_Secondary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

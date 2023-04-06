@@ -21,7 +21,6 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
@@ -965,6 +964,18 @@
     <AndroidResource Include="Resources\color\textfield_background.xml" />
     <None Remove="Resources\color-night\textfield_background.xml" />
     <AndroidResource Include="Resources\color-night\textfield_background.xml" />
+    <AndroidResource Update="Resources\layout\fragment_highlighted_text_track.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_highlighted_text.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_highlighted_text_header.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="google-services.json" />

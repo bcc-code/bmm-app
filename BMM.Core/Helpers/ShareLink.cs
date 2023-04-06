@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using Microsoft.Maui.ApplicationModel.DataTransfer;
@@ -7,36 +8,51 @@ namespace BMM.Core.Helpers
 {
     public class ShareLink : IShareLink
     {
-        public async Task For(Track track)
+        public Uri GetFor(Track track, long? startPositionInMs = null)
         {
-            await GenerateLink("track/" + track.Id);
+            var stringBuilder = new StringBuilder("track/" + track.Id);
+            
+            if (startPositionInMs.HasValue)
+                stringBuilder.Append($"?t={startPositionInMs}");
+            
+            return GenerateLink(stringBuilder.ToString());
         }
 
-        public async Task For(Album album)
+        public async Task Share(Track track)
         {
-            await GenerateLink("album/" + album.Id);
+            await GenerateLinkAndShare("track/" + track.Id);
+        }
+        
+        public async Task Share(Album album)
+        {
+            await GenerateLinkAndShare("album/" + album.Id);
         }
 
-        public async Task For(Contributor contributor)
+        public async Task Share(Contributor contributor)
         {
-            await GenerateLink($"playlist/contributor/{contributor.Id}/{contributor.Name}");
+            await GenerateLinkAndShare($"playlist/contributor/{contributor.Id}/{contributor.Name}");
         }
 
         public async Task PerformRequestFor(string link)
         {
-            await Share.RequestAsync(new ShareTextRequest
+            await Microsoft.Maui.ApplicationModel.DataTransfer.Share.RequestAsync(new ShareTextRequest
             {
                 Uri = link
             });
         }
 
+        private async Task GenerateLinkAndShare(string link)
+        {
+            var uri = GenerateLink(link);
+            await PerformRequestFor(uri.AbsoluteUri);
+        }
+
         /// <summary>
         /// See https://docs.microsoft.com/en-us/xamarin/essentials/share?context=xamarin%2Fxamarin-forms&tabs=ios for more information
         /// </summary>
-        public async Task GenerateLink(string link)
+        private Uri GenerateLink(string link)
         {
-            var url = new Uri("https://" + GlobalConstants.BmmUrl + "/" + link);
-            await PerformRequestFor(url.AbsoluteUri);
+            return new Uri("https://" + GlobalConstants.BmmUrl + "/" + link);
             // ToDo: provide Subject for Android
         }
     }

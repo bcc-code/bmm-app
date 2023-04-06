@@ -20,6 +20,8 @@ using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Implementations.UI.StyledText;
+using BMM.Core.Implementations.UI.StyledText.Enums;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.Models.POs.Base;
@@ -49,6 +51,7 @@ namespace BMM.Core.ViewModels
         private readonly IAddToQueueAdditionalMusic _addToQueueAdditionalMusic;
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
+        private StyledTextContainer _styledTextContainer;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
@@ -78,6 +81,12 @@ namespace BMM.Core.ViewModels
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
+        }
+
+        public StyledTextContainer StyledTextContainer
+        {
+            get => _styledTextContainer;
+            set => SetProperty(ref _styledTextContainer, value);
         }
 
         public IMvxAsyncCommand<Type> NavigateToViewModelCommand => _navigateToViewModelAction.Command;

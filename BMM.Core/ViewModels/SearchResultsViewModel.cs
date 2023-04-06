@@ -4,11 +4,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.ViewModels;
@@ -133,13 +135,37 @@ namespace BMM.Core.ViewModels
             
             if (results == null)
                 return Enumerable.Empty<IDocumentPO>();
+
+            var adjustedItemsList = CreateAdjustedItemsList(results);
             
             IsFullyLoaded = results.IsFullyLoaded;
             return _documentsPOFactory.Create(
-                results.Items,
+                adjustedItemsList,
                 DocumentSelectedCommand,
                 OptionCommand,
                 TrackInfoProvider);
+        }
+
+        private static IEnumerable<Document> CreateAdjustedItemsList(SearchResults searchResults)
+        {
+            var itemsList = new List<Document>();
+
+            foreach (var item in searchResults.Items)
+            {
+                itemsList.Add(item);
+                
+                var existingHighlightsElement = searchResults
+                    .Highlightings
+                    .Where(x => x.Id.Contains(item.Id.ToString()))
+                    .ToList();
+
+                if (item is not Track trackItem || !existingHighlightsElement.Any())
+                    continue;
+                
+                itemsList.Add(new HighlightedTextTrack(trackItem, existingHighlightsElement));
+            }
+
+            return itemsList;
         }
 
         public void PrepareForSearch(string searchTerm)

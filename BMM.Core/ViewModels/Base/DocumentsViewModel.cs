@@ -136,7 +136,7 @@ namespace BMM.Core.ViewModels.Base
             _downloadedEpisodeRemovedSubscriptionToken = Messenger.Subscribe<DownloadedEpisodeRemovedMessage>(HandleDownloadedEpisodeRemovedMessage);
         }
 
-        private void RefreshTrackWithId(int? currentTrackId)
+        protected virtual void RefreshTrackWithId(int? currentTrackId)
         {
             if (!currentTrackId.HasValue)
                 return;
@@ -148,7 +148,7 @@ namespace BMM.Core.ViewModels.Base
             trackToRefresh?.RefreshState();
         }
 
-        private void RefreshTracksStatesInDocuments()
+        protected virtual void RefreshTracksStatesInDocuments()
         {
             var tracksToRefresh = Documents
                 .OfType<ITrackHolderPO>()

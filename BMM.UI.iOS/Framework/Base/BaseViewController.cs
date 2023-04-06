@@ -19,6 +19,7 @@ namespace BMM.UI.iOS
         { }
         
         protected virtual string GetTitle() => ViewModel.TextSource[TitleKey];
+        protected float BottomSafeArea => (float)(View?.SafeAreaInsets.Bottom ?? 0);
 
         public override void ViewDidLoad()
         {
