@@ -69,6 +69,7 @@
     <dimen name="shared_playlist_icon">24dp</dimen>
     <dimen name="from_kaare_image_size">40dp</dimen>
     <dimen name="info_message_icon_size">20dp</dimen>
+    <dimen name="highlighted_text_play_icon_size">24dp</dimen>
     <dimen name="highlighted_text_track_item_icon_size">20dp</dimen>
     <dimen name="highlighted_text_arrow_right_icon_size">12dp</dimen>
     <dimen name="highlighted_text_close_container_icon_size">36dp</dimen>

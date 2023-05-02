@@ -312,9 +312,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             if (shouldPlay) // Even if the user is online we should not play a not-downloaded track from Downloaded Content
             {
                 await _audioPlayback.Play(_currentTrack);
-
-                if (startTimeInMs > 0)
-                    _audioPlayback.SeekTo(startTimeInMs);
+                _audioPlayback.SeekTo(startTimeInMs);
             }
 
             PlaybackStateChanged();

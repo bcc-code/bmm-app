@@ -82,10 +82,11 @@
                     android:id="@+id/AddToButton"
                     android:layout_width="@dimen/match_constraint"
                     android:layout_height="wrap_content"
-                    android:text="Add to..."
                     android:drawableLeft="@drawable/icon_playlist"
                     android:layout_marginTop="@dimen/margin_xmedium"
                     android:layout_marginBottom="@dimen/margin_xxmedium"
+                    android:singleLine="true"
+                    android:ellipsize="end"
                     local:layout_constraintTop_toBottomOf="@+id/TrackMeta"
                     local:layout_constraintBottom_toBottomOf="parent"
                     local:layout_constraintStart_toStartOf="parent"
@@ -102,6 +103,7 @@
                     android:text="Play"
                     android:drawableLeft="@drawable/icon_play_button"
                     android:layout_marginBottom="@dimen/margin_xxmedium"
+                    android:foreground="@null"
                     local:layout_constraintTop_toTopOf="@+id/AddToButton"
                     local:layout_constraintStart_toEndOf="@+id/AddToButton"
                     local:layout_constraintEnd_toEndOf="parent"
@@ -109,6 +111,19 @@
                         Click PlayPauseCommand;
                         Text PlayButtonTitle"
                     style="@style/IconButton_Primary" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/PlayAnimationView"
+                    android:layout_width="@dimen/highlighted_text_play_icon_size"
+                    android:layout_height="@dimen/highlighted_text_play_icon_size"
+                    android:background="@drawable/highlighted_text_play_button_background"
+                    android:layout_marginStart="@dimen/margin_xsmall"
+                    local:layout_constraintTop_toTopOf="@+id/PlayButton"
+                    local:layout_constraintStart_toStartOf="@+id/PlayButton"
+                    local:layout_constraintBottom_toBottomOf="@+id/PlayButton"
+                    local:lottie_rawRes="@raw/play_animation_icon"
+                    local:lottie_loop="true"
+                    local:lottie_autoPlay="true" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     

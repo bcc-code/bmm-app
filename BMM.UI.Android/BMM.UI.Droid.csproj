@@ -58,9 +58,6 @@
     <ProjectReference Include="..\Lottie\Lottie.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Resources\values-xxxhdpi\dimens.xml" />
     <AndroidResource Include="Resources\values-xxxhdpi\dimens.xml" />
     <None Remove="Resources\values-xxhdpi\dimens.xml" />
@@ -976,6 +973,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Update="Resources\drawable\highlighted_text_play_button_background.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <None Remove="Resources\raw-night\play_animation_icon.json" />
+    <AndroidResource Include="Resources\raw-night\play_animation_icon.json" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="google-services.json" />
@@ -1046,6 +1049,7 @@
       <Link>Assets\Translation\hu\main.json</Link>
     </AndroidAsset>
     <AndroidAsset Include="Assets\play_animation_icon.json" />
+    <AndroidResource Include="Resources\raw\play_animation_icon.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FFImageLoading">
@@ -1057,5 +1061,11 @@
     <Reference Include="FFImageLoading.Shared">
       <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\raw-night\play_animation_icon_dark.json">
+      <Link>Resources\play_animation_icon_dark.json</Link>
+      <IsDefaultItem>true</IsDefaultItem>
+    </BundleResource>
   </ItemGroup>
 </Project>

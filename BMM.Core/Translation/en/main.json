@@ -518,7 +518,7 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Auto-transcribed",
-    "AddTo": "Add to...",
+    "AddTo": "Add to playlist",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
     "AutoTranscribedPopupHeaderText": "Auto-transcribed",

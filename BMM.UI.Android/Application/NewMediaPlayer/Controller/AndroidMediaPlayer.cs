@@ -153,7 +153,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         {
             controls.SkipToQueueItem(mediaTracks.IndexOf(currentTrack));
             controls.Play();
-            if (startTimeInMs > 0) controls.SeekTo(startTimeInMs);
+            controls.SeekTo(startTimeInMs);
         }
         else
         {
