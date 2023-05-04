@@ -515,5 +515,14 @@
     "PlaysSingular": "{0} predvajana",
     "AddToMyPlaylist": "Dodaj seznam predvajanja k najljubšim",
     "SuccessfullyAddedToPlaylists": "Uspešno dodano k najljubšim"
+  },
+  "HighlightedTextTrackViewModel": {
+    "AutoTranscribed": "Auto-transcribed",
+    "AddTo": "Dodaj na seznam predvajanja",
+    "Pause": "Premor",
+    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
+    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
+    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
+    "AutoTranscribedPopupButtonText": "Got it"
   }
 }
