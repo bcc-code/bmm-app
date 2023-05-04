@@ -36,6 +36,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int YearInReviewTeaserCollapsed = 22;
         public const int YearInReviewTeaserExpanded = 23;
         public const int TopSongsCollectionHeader = 24;
+        public const int HighlightedTextTrack = 25;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
@@ -88,6 +89,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ViewTypes.YearInReviewTeaserExpanded:
                     return Resource.Layout.listitem_year_in_review_teaser_expanded;
+                
+                case ViewTypes.HighlightedTextTrack:
+                    return Resource.Layout.listitem_highlighted_text_track;
                 
                 default:
                     return Resource.Layout.listitem_track;
@@ -146,6 +150,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
 
                     return ViewTypes.YearInReviewTeaserCollapsed;
                 }
+                
+                case HighlightedTextTrackPO:
+                    return ViewTypes.HighlightedTextTrack;
 
                 default:
                         return ViewTypes.Unknown;

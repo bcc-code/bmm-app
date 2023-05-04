@@ -1,28 +1,36 @@
 ﻿// WARNING
 //
-// This file has been generated automatically by Visual Studio from the outlets and
-// actions declared in your storyboard file.
-// Manual changes to this file will not be maintained.
+// This file has been generated automatically by Rider IDE
+//   to store outlets and actions made in Xcode.
+// If it is removed, they will be lost.
+// Manual changes to this file may not be handled correctly.
 //
 using Foundation;
-using System;
 using System.CodeDom.Compiler;
-using UIKit;
 
 namespace BMM.UI.iOS
 {
-    [Register ("SettingsViewController")]
-    partial class SettingsViewController
-    {
-        [Outlet]
-        UIKit.UITableView SettingsTableView { get; set; }
+	[Register ("SettingsViewController")]
+	partial class SettingsViewController
+	{
+		[Outlet]
+		BMM.UI.iOS.CustomViews.BmmFormattedLabel FormattedText { get; set; }
 
-        void ReleaseDesignerOutlets ()
-        {
-            if (SettingsTableView != null) {
-                SettingsTableView.Dispose ();
-                SettingsTableView = null;
-            }
-        }
-    }
+		[Outlet]
+		UIKit.UITableView SettingsTableView { get; set; }
+
+		void ReleaseDesignerOutlets ()
+		{
+			if (SettingsTableView != null) {
+				SettingsTableView.Dispose ();
+				SettingsTableView = null;
+			}
+
+			if (FormattedText != null) {
+				FormattedText.Dispose ();
+				FormattedText = null;
+			}
+
+		}
+	}
 }

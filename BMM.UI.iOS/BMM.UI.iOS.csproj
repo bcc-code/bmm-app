@@ -116,436 +116,627 @@
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
-    <ItemGroup>
-      <None Remove="Resources\aslaksen.png" />
-      <BundleResource Include="Resources\aslaksen.png" />
-      <None Remove="Resources\aslaksen@2x.png" />
-      <BundleResource Include="Resources\aslaksen@2x.png" />
-      <None Remove="Resources\aslaksen@3x.png" />
-      <BundleResource Include="Resources\aslaksen@3x.png" />
-      <None Remove="Resources\BP_Video_02.mp4" />
-      <BundleResource Include="Resources\BP_Video_02.mp4" />
-      <None Remove="Resources\BP_Video_03.mp4" />
-      <BundleResource Include="Resources\BP_Video_03.mp4" />
-      <None Remove="Resources\BP_Video_04.mp4" />
-      <BundleResource Include="Resources\BP_Video_04.mp4" />
-      <None Remove="Resources\BP_Video_06.mp4" />
-      <BundleResource Include="Resources\BP_Video_06.mp4" />
-      <None Remove="Resources\BP_Video_07.mp4" />
-      <BundleResource Include="Resources\BP_Video_07.mp4" />
-      <None Remove="Resources\BP_Video_08.mp4" />
-      <BundleResource Include="Resources\BP_Video_08.mp4" />
-      <None Remove="Resources\BP_Video_09.mp4" />
-      <BundleResource Include="Resources\BP_Video_09.mp4" />
-      <None Remove="Resources\BP_Video_10.mp4" />
-      <BundleResource Include="Resources\BP_Video_10.mp4" />
-      <None Remove="Resources\btn_options_active.png" />
-      <BundleResource Include="Resources\btn_options_active.png" />
-      <None Remove="Resources\btn_options_active@2x.png" />
-      <BundleResource Include="Resources\btn_options_active@2x.png" />
-      <None Remove="Resources\btn_options_active@3x.png" />
-      <BundleResource Include="Resources\btn_options_active@3x.png" />
-      <None Remove="Resources\btn_options_static.png" />
-      <BundleResource Include="Resources\btn_options_static.png" />
-      <None Remove="Resources\btn_options_static@2x.png" />
-      <BundleResource Include="Resources\btn_options_static@2x.png" />
-      <None Remove="Resources\btn_options_static@3x.png" />
-      <BundleResource Include="Resources\btn_options_static@3x.png" />
-      <None Remove="Resources\fra_kaare_til_buk_teaser_image.png" />
-      <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image.png" />
-      <None Remove="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
-      <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
-      <None Remove="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
-      <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
-      <None Remove="Resources\icon_add_static.png" />
-      <BundleResource Include="Resources\icon_add_static.png" />
-      <None Remove="Resources\icon_add_static@2x.png" />
-      <BundleResource Include="Resources\icon_add_static@2x.png" />
-      <None Remove="Resources\icon_add_static@3x.png" />
-      <BundleResource Include="Resources\icon_add_static@3x.png" />
-      <None Remove="Resources\icon_arrow_right.png" />
-      <BundleResource Include="Resources\icon_arrow_right.png" />
-      <None Remove="Resources\icon_arrow_right@2x.png" />
-      <BundleResource Include="Resources\icon_arrow_right@2x.png" />
-      <None Remove="Resources\icon_arrow_right@3x.png" />
-      <BundleResource Include="Resources\icon_arrow_right@3x.png" />
-      <None Remove="Resources\icon_arrow_right_light.png" />
-      <BundleResource Include="Resources\icon_arrow_right_light.png" />
-      <None Remove="Resources\icon_arrow_right_light@2x.png" />
-      <BundleResource Include="Resources\icon_arrow_right_light@2x.png" />
-      <None Remove="Resources\icon_arrow_right_light@3x.png" />
-      <BundleResource Include="Resources\icon_arrow_right_light@3x.png" />
-      <None Remove="Resources\icon_browse.png" />
-      <BundleResource Include="Resources\icon_browse.png" />
-      <None Remove="Resources\icon_browse@2x.png" />
-      <BundleResource Include="Resources\icon_browse@2x.png" />
-      <None Remove="Resources\icon_browse@3x.png" />
-      <BundleResource Include="Resources\icon_browse@3x.png" />
-      <None Remove="Resources\icon_browse_active.png" />
-      <BundleResource Include="Resources\icon_browse_active.png" />
-      <None Remove="Resources\icon_browse_active@2x.png" />
-      <BundleResource Include="Resources\icon_browse_active@2x.png" />
-      <None Remove="Resources\icon_browse_active@3x.png" />
-      <BundleResource Include="Resources\icon_browse_active@3x.png" />
-      <None Remove="Resources\icon_category_favorites.png" />
-      <BundleResource Include="Resources\icon_category_favorites.png" />
-      <None Remove="Resources\icon_category_favorites@2x.png" />
-      <BundleResource Include="Resources\icon_category_favorites@2x.png" />
-      <None Remove="Resources\icon_category_favorites@3x.png" />
-      <BundleResource Include="Resources\icon_category_favorites@3x.png" />
-      <None Remove="Resources\icon_category_playlist.png" />
-      <BundleResource Include="Resources\icon_category_playlist.png" />
-      <None Remove="Resources\icon_category_playlist@2x.png" />
-      <BundleResource Include="Resources\icon_category_playlist@2x.png" />
-      <None Remove="Resources\icon_category_playlist@3x.png" />
-      <BundleResource Include="Resources\icon_category_playlist@3x.png" />
-      <None Remove="Resources\icon_category_song.png" />
-      <BundleResource Include="Resources\icon_category_song.png" />
-      <None Remove="Resources\icon_category_song@2x.png" />
-      <BundleResource Include="Resources\icon_category_song@2x.png" />
-      <None Remove="Resources\icon_category_song@3x.png" />
-      <BundleResource Include="Resources\icon_category_song@3x.png" />
-      <None Remove="Resources\icon_category_suggestion.png" />
-      <BundleResource Include="Resources\icon_category_suggestion.png" />
-      <None Remove="Resources\icon_category_suggestion@2x.png" />
-      <BundleResource Include="Resources\icon_category_suggestion@2x.png" />
-      <None Remove="Resources\icon_category_suggestion@3x.png" />
-      <BundleResource Include="Resources\icon_category_suggestion@3x.png" />
-      <None Remove="Resources\icon_category_unknown.png" />
-      <BundleResource Include="Resources\icon_category_unknown.png" />
-      <None Remove="Resources\icon_category_unknown@2x.png" />
-      <BundleResource Include="Resources\icon_category_unknown@2x.png" />
-      <None Remove="Resources\icon_category_unknown@3x.png" />
-      <BundleResource Include="Resources\icon_category_unknown@3x.png" />
-      <None Remove="Resources\icon_chevron_right.png" />
-      <BundleResource Include="Resources\icon_chevron_right.png" />
-      <None Remove="Resources\icon_chevron_right@2x.png" />
-      <BundleResource Include="Resources\icon_chevron_right@2x.png" />
-      <None Remove="Resources\icon_chevron_right@3x.png" />
-      <BundleResource Include="Resources\icon_chevron_right@3x.png" />
-      <None Remove="Resources\icon_close_static.png" />
-      <BundleResource Include="Resources\icon_close_static.png" />
-      <None Remove="Resources\icon_close_static@2x.png" />
-      <BundleResource Include="Resources\icon_close_static@2x.png" />
-      <None Remove="Resources\icon_close_static@3x.png" />
-      <BundleResource Include="Resources\icon_close_static@3x.png" />
-      <None Remove="Resources\icon_contributor_fallback.png" />
-      <BundleResource Include="Resources\icon_contributor_fallback.png" />
-      <None Remove="Resources\icon_contributor_fallback@2x.png" />
-      <BundleResource Include="Resources\icon_contributor_fallback@2x.png" />
-      <None Remove="Resources\icon_contributor_fallback@3x.png" />
-      <BundleResource Include="Resources\icon_contributor_fallback@3x.png" />
-      <None Remove="Resources\icon_download.png" />
-      <BundleResource Include="Resources\icon_download.png" />
-      <None Remove="Resources\icon_download@2x.png" />
-      <BundleResource Include="Resources\icon_download@2x.png" />
-      <None Remove="Resources\icon_download@3x.png" />
-      <BundleResource Include="Resources\icon_download@3x.png" />
-      <None Remove="Resources\icon_downloaded.png" />
-      <BundleResource Include="Resources\icon_downloaded.png" />
-      <None Remove="Resources\icon_downloaded@2x.png" />
-      <BundleResource Include="Resources\icon_downloaded@2x.png" />
-      <None Remove="Resources\icon_downloaded@3x.png" />
-      <BundleResource Include="Resources\icon_downloaded@3x.png" />
-      <None Remove="Resources\icon_dynamic_trackcollection_downloaded.png" />
-      <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded.png" />
-      <None Remove="Resources\icon_dynamic_trackcollection_downloaded@2x.png" />
-      <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded@2x.png" />
-      <None Remove="Resources\icon_dynamic_trackcollection_downloaded@3x.png" />
-      <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded@3x.png" />
-      <None Remove="Resources\icon_favorites.png" />
-      <BundleResource Include="Resources\icon_favorites.png" />
-      <None Remove="Resources\icon_favorites@2x.png" />
-      <BundleResource Include="Resources\icon_favorites@2x.png" />
-      <None Remove="Resources\icon_favorites@3x.png" />
-      <BundleResource Include="Resources\icon_favorites@3x.png" />
-      <None Remove="Resources\icon_favorites_active.png" />
-      <BundleResource Include="Resources\icon_favorites_active.png" />
-      <None Remove="Resources\icon_favorites_active@2x.png" />
-      <BundleResource Include="Resources\icon_favorites_active@2x.png" />
-      <None Remove="Resources\icon_favorites_active@3x.png" />
-      <BundleResource Include="Resources\icon_favorites_active@3x.png" />
-      <None Remove="Resources\icon_home.png" />
-      <BundleResource Include="Resources\icon_home.png" />
-      <None Remove="Resources\icon_home@2x.png" />
-      <BundleResource Include="Resources\icon_home@2x.png" />
-      <None Remove="Resources\icon_home@3x.png" />
-      <BundleResource Include="Resources\icon_home@3x.png" />
-      <None Remove="Resources\icon_home_active.png" />
-      <BundleResource Include="Resources\icon_home_active.png" />
-      <None Remove="Resources\icon_home_active@2x.png" />
-      <BundleResource Include="Resources\icon_home_active@2x.png" />
-      <None Remove="Resources\icon_home_active@3x.png" />
-      <BundleResource Include="Resources\icon_home_active@3x.png" />
-      <None Remove="Resources\icon_loading.png" />
-      <BundleResource Include="Resources\icon_loading.png" />
-      <None Remove="Resources\icon_loading@2x.png" />
-      <BundleResource Include="Resources\icon_loading@2x.png" />
-      <None Remove="Resources\icon_loading@3x.png" />
-      <BundleResource Include="Resources\icon_loading@3x.png" />
-      <None Remove="Resources\icon_nav_content_static.png" />
-      <BundleResource Include="Resources\icon_nav_content_static.png" />
-      <None Remove="Resources\icon_nav_content_static@2x.png" />
-      <BundleResource Include="Resources\icon_nav_content_static@2x.png" />
-      <None Remove="Resources\icon_nav_content_static@3x.png" />
-      <BundleResource Include="Resources\icon_nav_content_static@3x.png" />
-      <None Remove="Resources\icon_notification.png" />
-      <BundleResource Include="Resources\icon_notification.png" />
-      <None Remove="Resources\icon_notification@2x.png" />
-      <BundleResource Include="Resources\icon_notification@2x.png" />
-      <None Remove="Resources\icon_notification@3x.png" />
-      <BundleResource Include="Resources\icon_notification@3x.png" />
-      <None Remove="Resources\icon_now_playing.png" />
-      <BundleResource Include="Resources\icon_now_playing.png" />
-      <None Remove="Resources\icon_now_playing@2x.png" />
-      <BundleResource Include="Resources\icon_now_playing@2x.png" />
-      <None Remove="Resources\icon_now_playing@3x.png" />
-      <BundleResource Include="Resources\icon_now_playing@3x.png" />
-      <None Remove="Resources\icon_options.png" />
-      <BundleResource Include="Resources\icon_options.png" />
-      <None Remove="Resources\icon_options@2x.png" />
-      <BundleResource Include="Resources\icon_options@2x.png" />
-      <None Remove="Resources\icon_options@3x.png" />
-      <BundleResource Include="Resources\icon_options@3x.png" />
-      <None Remove="Resources\icon_pending.png" />
-      <BundleResource Include="Resources\icon_pending.png" />
-      <None Remove="Resources\icon_pending@2x.png" />
-      <BundleResource Include="Resources\icon_pending@2x.png" />
-      <None Remove="Resources\icon_pending@3x.png" />
-      <BundleResource Include="Resources\icon_pending@3x.png" />
-      <None Remove="Resources\icon_play_podcast.png" />
-      <BundleResource Include="Resources\icon_play_podcast.png" />
-      <None Remove="Resources\icon_play_podcast@2x.png" />
-      <BundleResource Include="Resources\icon_play_podcast@2x.png" />
-      <None Remove="Resources\icon_play_podcast@3x.png" />
-      <BundleResource Include="Resources\icon_play_podcast@3x.png" />
-      <None Remove="Resources\icon_playback_history.png" />
-      <BundleResource Include="Resources\icon_playback_history.png" />
-      <None Remove="Resources\icon_playback_history@2x.png" />
-      <BundleResource Include="Resources\icon_playback_history@2x.png" />
-      <None Remove="Resources\icon_playback_history@3x.png" />
-      <BundleResource Include="Resources\icon_playback_history@3x.png" />
-      <None Remove="Resources\icon_profile.png" />
-      <BundleResource Include="Resources\icon_profile.png" />
-      <None Remove="Resources\icon_profile@2x.png" />
-      <BundleResource Include="Resources\icon_profile@2x.png" />
-      <None Remove="Resources\icon_profile@3x.png" />
-      <BundleResource Include="Resources\icon_profile@3x.png" />
-      <None Remove="Resources\icon_profile_active.png" />
-      <BundleResource Include="Resources\icon_profile_active.png" />
-      <None Remove="Resources\icon_profile_active@2x.png" />
-      <BundleResource Include="Resources\icon_profile_active@2x.png" />
-      <None Remove="Resources\icon_profile_active@3x.png" />
-      <BundleResource Include="Resources\icon_profile_active@3x.png" />
-      <None Remove="Resources\icon_radio_static.png" />
-      <BundleResource Include="Resources\icon_radio_static.png" />
-      <None Remove="Resources\icon_radio_static@2x.png" />
-      <BundleResource Include="Resources\icon_radio_static@2x.png" />
-      <None Remove="Resources\icon_radio_static@3x.png" />
-      <BundleResource Include="Resources\icon_radio_static@3x.png" />
-      <None Remove="Resources\icon_search.png" />
-      <BundleResource Include="Resources\icon_search.png" />
-      <None Remove="Resources\icon_search@2x.png" />
-      <BundleResource Include="Resources\icon_search@2x.png" />
-      <None Remove="Resources\icon_search@3x.png" />
-      <BundleResource Include="Resources\icon_search@3x.png" />
-      <None Remove="Resources\icon_search_active.png" />
-      <BundleResource Include="Resources\icon_search_active.png" />
-      <None Remove="Resources\icon_search_active@2x.png" />
-      <BundleResource Include="Resources\icon_search_active@2x.png" />
-      <None Remove="Resources\icon_search_active@3x.png" />
-      <BundleResource Include="Resources\icon_search_active@3x.png" />
-      <None Remove="Resources\icon_shuffle_podcast.png" />
-      <BundleResource Include="Resources\icon_shuffle_podcast.png" />
-      <None Remove="Resources\icon_shuffle_podcast@2x.png" />
-      <BundleResource Include="Resources\icon_shuffle_podcast@2x.png" />
-      <None Remove="Resources\icon_shuffle_podcast@3x.png" />
-      <BundleResource Include="Resources\icon_shuffle_podcast@3x.png" />
-      <None Remove="Resources\icon_trackrelation_external.png" />
-      <BundleResource Include="Resources\icon_trackrelation_external.png" />
-      <None Remove="Resources\icon_trackrelation_external@2x.png" />
-      <BundleResource Include="Resources\icon_trackrelation_external@2x.png" />
-      <None Remove="Resources\icon_trackrelation_external@3x.png" />
-      <BundleResource Include="Resources\icon_trackrelation_external@3x.png" />
-      <None Remove="Resources\iTunesArtwork.png" />
-      <BundleResource Include="Resources\iTunesArtwork.png" />
-      <None Remove="Resources\loading_spinner.png" />
-      <BundleResource Include="Resources\loading_spinner.png" />
-      <None Remove="Resources\loading_spinner@2x.png" />
-      <BundleResource Include="Resources\loading_spinner@2x.png" />
-      <None Remove="Resources\loading_spinner@3x.png" />
-      <BundleResource Include="Resources\loading_spinner@3x.png" />
-      <None Remove="Resources\login_logo.png" />
-      <BundleResource Include="Resources\login_logo.png" />
-      <None Remove="Resources\login_logo@2x.png" />
-      <BundleResource Include="Resources\login_logo@2x.png" />
-      <None Remove="Resources\login_logo@3x.png" />
-      <BundleResource Include="Resources\login_logo@3x.png" />
-      <None Remove="Resources\notification.png" />
-      <BundleResource Include="Resources\notification.png" />
-      <None Remove="Resources\notification@2x.png" />
-      <BundleResource Include="Resources\notification@2x.png" />
-      <None Remove="Resources\notification@3x.png" />
-      <BundleResource Include="Resources\notification@3x.png" />
-      <None Remove="Resources\notification_solid.png" />
-      <BundleResource Include="Resources\notification_solid.png" />
-      <None Remove="Resources\notification_solid@2x.png" />
-      <BundleResource Include="Resources\notification_solid@2x.png" />
-      <None Remove="Resources\notification_solid@3x.png" />
-      <BundleResource Include="Resources\notification_solid@3x.png" />
-      <None Remove="Resources\placeholder_album.png" />
-      <BundleResource Include="Resources\placeholder_album.png" />
-      <None Remove="Resources\placeholder_album@2x.png" />
-      <BundleResource Include="Resources\placeholder_album@2x.png" />
-      <None Remove="Resources\placeholder_album@3x.png" />
-      <BundleResource Include="Resources\placeholder_album@3x.png" />
-      <None Remove="Resources\placeholder_artist.png" />
-      <BundleResource Include="Resources\placeholder_artist.png" />
-      <None Remove="Resources\placeholder_artist@2x.png" />
-      <BundleResource Include="Resources\placeholder_artist@2x.png" />
-      <None Remove="Resources\placeholder_artist@3x.png" />
-      <BundleResource Include="Resources\placeholder_artist@3x.png" />
-      <None Remove="Resources\placeholder_cover.png" />
-      <BundleResource Include="Resources\placeholder_cover.png" />
-      <None Remove="Resources\play_animation_icon.json" />
-      <BundleResource Include="Resources\play_animation_icon.json" />
-      <None Remove="Resources\podcast_background_aslaksen_phone.png" />
-      <BundleResource Include="Resources\podcast_background_aslaksen_phone.png" />
-      <None Remove="Resources\podcast_background_aslaksen_phone@2x.png" />
-      <BundleResource Include="Resources\podcast_background_aslaksen_phone@2x.png" />
-      <None Remove="Resources\podcast_background_aslaksen_phone@3x.png" />
-      <BundleResource Include="Resources\podcast_background_aslaksen_phone@3x.png" />
-      <None Remove="Resources\podcast_background_fra_kaare.png" />
-      <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
-      <None Remove="Resources\podcast_background_fra_kaare@2x.png" />
-      <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
-      <None Remove="Resources\podcast_background_fra_kaare@3x.png" />
-      <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
-      <None Remove="Resources\radio_background.png" />
-      <BundleResource Include="Resources\radio_background.png" />
-      <None Remove="Resources\radio_background@2x.png" />
-      <BundleResource Include="Resources\radio_background@2x.png" />
-      <None Remove="Resources\radio_background@3x.png" />
-      <BundleResource Include="Resources\radio_background@3x.png" />
-      <None Remove="GoogleService-Info.plist" />
-      <BundleResource Include="GoogleService-Info.plist" />
-    </ItemGroup>
-    <ItemGroup>
-      <None Remove="Linker.xml" />
-      <LinkDescription Include="Linker.xml" />
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />
-      <ProjectReference Include="..\BMM.UI.iOS.SiriIntents\BMM.UI.iOS.SiriIntents.csproj">
-        <IsAppExtension>true</IsAppExtension>
-        <IsWatchApp>false</IsWatchApp>
-      </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-      <PackageReference Include="ByteSize" Version="2.1.1" />
-      <PackageReference Include="Lottie.iOS" Version="1.0.0" />
-      <PackageReference Include="MvvmCross" Version="9.0.9" />
-      <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
-      <PackageReference Include="Serilog" Version="2.12.0" />
-      <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
-      <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
-      <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
-      <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="..\BMM.Core\Translation\af\main.json">
-        <Link>Translation\af\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\bg\main.json">
-        <Link>Translation\bg\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\cs\main.json">
-        <Link>Translation\cs\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\da\main.json">
-        <Link>Translation\da\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\de\main.json">
-        <Link>Translation\de\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\el\main.json">
-        <Link>Translation\el\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\en\main.json">
-        <Link>Translation\en\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\es\main.json">
-        <Link>Translation\es\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\et\main.json">
-        <Link>Translation\et\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\fi\main.json">
-        <Link>Translation\fi\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\fr\main.json">
-        <Link>Translation\fr\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\he\main.json">
-        <Link>Translation\he\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\hr\main.json">
-        <Link>Translation\hr\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\hu\main.json">
-        <Link>Translation\hu\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\it\main.json">
-        <Link>Translation\it\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\nb\main.json">
-        <Link>Translation\nb\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\nl\main.json">
-        <Link>Translation\nl\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\pl\main.json">
-        <Link>Translation\pl\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\pt\main.json">
-        <Link>Translation\pt\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\ro\main.json">
-        <Link>Translation\ro\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\ru\main.json">
-        <Link>Translation\ru\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\sl\main.json">
-        <Link>Translation\sl\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\tr\main.json">
-        <Link>Translation\tr\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\uk\main.json">
-        <Link>Translation\uk\main.json</Link>
-      </Content>
-      <Content Include="..\BMM.Core\Translation\zh\main.json">
-        <Link>Translation\zh\main.json</Link>
-      </Content>
-    </ItemGroup>
-    <ItemGroup>
-      <Compile Include="..\BMM.Core\Translation\en\Translations.designer.cs">
-        <Link>Translation\en\Translations.designer.cs</Link>
-      </Compile>
-    </ItemGroup>
-    <ItemGroup>
-      <Reference Include="FFImageLoading">
-        <HintPath>..\lib\FFImageLoading.dll</HintPath>
-      </Reference>
-      <Reference Include="FFImageLoading.Shared">
-        <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
-      </Reference>
-      <Reference Include="FFImageLoading.Touch">
-        <HintPath>..\lib\FFImageLoading.Touch.dll</HintPath>
-      </Reference>
-      <Reference Include="MarqueeLabel">
-        <HintPath>..\lib\MarqueeLabel.dll</HintPath>
-      </Reference>
-    </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-83_5@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Bergpreken.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\icon_cast.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconAlbum.imageset\icon_album.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconChevronRight.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconChevronRight.imageset\IconChevronRight.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownArrow.imageset\icon_arrow_down.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownload.imageset\icon_download@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\FriendsIcon.imageset\icon_friends@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownloadMini.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconDownloadMini.imageset\icon_download.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconEdit.imageset\icon_edit.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconFavorites.imageset\icon_favorites.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconInfo.imageset\icon_info.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconLink.imageset\icon_link.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconOptions.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconOptions.imageset\Option.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPause.imageset\icon_pause.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPerson.imageset\icon_person.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlay.imageset\play.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaybackSpeed.imageset\8680259_speed_line_icon.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaybackSpeed.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlaylist.imageset\icon_playlist.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\btn_play_mini@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPlayMini.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconQueue.imageset\icon_queue.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRemove.imageset\icon_remove.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeat.imageset\icon_repeat.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconRepeatOne.imageset\icon_repeat_one.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSearch.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSearch.imageset\Search.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\icon_share.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-60@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-401.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-402.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@2x1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@3x1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@2x1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\iTunesArtwork@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Colors.xcassets\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\TintColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\LabelPrimaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\LabelSecondaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\LabelTertiaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\PlaceholderColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\BackgroundPrimaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\BackgroundSecondaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnTintOneColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnTintTwoColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\OnTintThreeColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\NotificationColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\RadioColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\SeparatorColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\SeparatorLightColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\UtilityAutoColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\BackgroundTertiaryColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\9104280_break_time_sleep_rest_sleep-hour_icon.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\icon_more.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover-1.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NewPlaceholderCover.imageset\new_placeholder_cover_dark.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NextIcon.imageset\icon_next.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PauseMiniIcon.imageset\btn_pause_mini%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon.png" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\InputSearchIcon.imageset\input_search_icon%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_playlist@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\IconPodcast.imageset\icon_podcast@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\PreviousIcon.imageset\icon_previous.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected.png" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\SelectedIcon.imageset\icon_selected%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ArrowRightIcon.imageset\icon_arrow_right.png" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%402x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification%403x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\NotificationIcon.imageset\icon_notification.png" />
+    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\ShuffleIcon.imageset\icon_shuffle.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipBackIcon.imageset\icon_skip_back.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\SkipForwardIcon.imageset\icon_skip_forward.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick.png" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\TickIcon.imageset\icon_tick@3x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\UnionIcon.imageset\Union.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\IconAI.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\IconAI.imageset\icon_ai.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_dark@1x.pdf" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@1x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@2x.png" />
+    <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@3x.png" />
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+  <NativeReference Include="$(HOME)\Library\Application Support\Reveal\RevealServer\RevealServer.xcframework">
+    <Kind>Framework</Kind>
+    <SmartLink>True</SmartLink>
+  </NativeReference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Remove="Resources\aslaksen.png" />
+    <BundleResource Include="Resources\aslaksen.png" />
+    <None Remove="Resources\aslaksen@2x.png" />
+    <BundleResource Include="Resources\aslaksen@2x.png" />
+    <None Remove="Resources\aslaksen@3x.png" />
+    <BundleResource Include="Resources\aslaksen@3x.png" />
+    <None Remove="Resources\BP_Video_02.mp4" />
+    <BundleResource Include="Resources\BP_Video_02.mp4" />
+    <None Remove="Resources\BP_Video_03.mp4" />
+    <BundleResource Include="Resources\BP_Video_03.mp4" />
+    <None Remove="Resources\BP_Video_04.mp4" />
+    <BundleResource Include="Resources\BP_Video_04.mp4" />
+    <None Remove="Resources\BP_Video_06.mp4" />
+    <BundleResource Include="Resources\BP_Video_06.mp4" />
+    <None Remove="Resources\BP_Video_07.mp4" />
+    <BundleResource Include="Resources\BP_Video_07.mp4" />
+    <None Remove="Resources\BP_Video_08.mp4" />
+    <BundleResource Include="Resources\BP_Video_08.mp4" />
+    <None Remove="Resources\BP_Video_09.mp4" />
+    <BundleResource Include="Resources\BP_Video_09.mp4" />
+    <None Remove="Resources\BP_Video_10.mp4" />
+    <BundleResource Include="Resources\BP_Video_10.mp4" />
+    <None Remove="Resources\btn_options_active.png" />
+    <BundleResource Include="Resources\btn_options_active.png" />
+    <None Remove="Resources\btn_options_active@2x.png" />
+    <BundleResource Include="Resources\btn_options_active@2x.png" />
+    <None Remove="Resources\btn_options_active@3x.png" />
+    <BundleResource Include="Resources\btn_options_active@3x.png" />
+    <None Remove="Resources\btn_options_static.png" />
+    <BundleResource Include="Resources\btn_options_static.png" />
+    <None Remove="Resources\btn_options_static@2x.png" />
+    <BundleResource Include="Resources\btn_options_static@2x.png" />
+    <None Remove="Resources\btn_options_static@3x.png" />
+    <BundleResource Include="Resources\btn_options_static@3x.png" />
+    <None Remove="Resources\fra_kaare_til_buk_teaser_image.png" />
+    <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image.png" />
+    <None Remove="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
+    <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@2x.png" />
+    <None Remove="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
+    <BundleResource Include="Resources\fra_kaare_til_buk_teaser_image@3x.png" />
+    <None Remove="Resources\icon_add_static.png" />
+    <BundleResource Include="Resources\icon_add_static.png" />
+    <None Remove="Resources\icon_add_static@2x.png" />
+    <BundleResource Include="Resources\icon_add_static@2x.png" />
+    <None Remove="Resources\icon_add_static@3x.png" />
+    <BundleResource Include="Resources\icon_add_static@3x.png" />
+    <None Remove="Resources\icon_arrow_right.png" />
+    <BundleResource Include="Resources\icon_arrow_right.png" />
+    <None Remove="Resources\icon_arrow_right@2x.png" />
+    <BundleResource Include="Resources\icon_arrow_right@2x.png" />
+    <None Remove="Resources\icon_arrow_right@3x.png" />
+    <BundleResource Include="Resources\icon_arrow_right@3x.png" />
+    <None Remove="Resources\icon_arrow_right_light.png" />
+    <BundleResource Include="Resources\icon_arrow_right_light.png" />
+    <None Remove="Resources\icon_arrow_right_light@2x.png" />
+    <BundleResource Include="Resources\icon_arrow_right_light@2x.png" />
+    <None Remove="Resources\icon_arrow_right_light@3x.png" />
+    <BundleResource Include="Resources\icon_arrow_right_light@3x.png" />
+    <None Remove="Resources\icon_browse.png" />
+    <BundleResource Include="Resources\icon_browse.png" />
+    <None Remove="Resources\icon_browse@2x.png" />
+    <BundleResource Include="Resources\icon_browse@2x.png" />
+    <None Remove="Resources\icon_browse@3x.png" />
+    <BundleResource Include="Resources\icon_browse@3x.png" />
+    <None Remove="Resources\icon_browse_active.png" />
+    <BundleResource Include="Resources\icon_browse_active.png" />
+    <None Remove="Resources\icon_browse_active@2x.png" />
+    <BundleResource Include="Resources\icon_browse_active@2x.png" />
+    <None Remove="Resources\icon_browse_active@3x.png" />
+    <BundleResource Include="Resources\icon_browse_active@3x.png" />
+    <None Remove="Resources\icon_category_favorites.png" />
+    <BundleResource Include="Resources\icon_category_favorites.png" />
+    <None Remove="Resources\icon_category_favorites@2x.png" />
+    <BundleResource Include="Resources\icon_category_favorites@2x.png" />
+    <None Remove="Resources\icon_category_favorites@3x.png" />
+    <BundleResource Include="Resources\icon_category_favorites@3x.png" />
+    <None Remove="Resources\icon_category_playlist.png" />
+    <BundleResource Include="Resources\icon_category_playlist.png" />
+    <None Remove="Resources\icon_category_playlist@2x.png" />
+    <BundleResource Include="Resources\icon_category_playlist@2x.png" />
+    <None Remove="Resources\icon_category_playlist@3x.png" />
+    <BundleResource Include="Resources\icon_category_playlist@3x.png" />
+    <None Remove="Resources\icon_category_song.png" />
+    <BundleResource Include="Resources\icon_category_song.png" />
+    <None Remove="Resources\icon_category_song@2x.png" />
+    <BundleResource Include="Resources\icon_category_song@2x.png" />
+    <None Remove="Resources\icon_category_song@3x.png" />
+    <BundleResource Include="Resources\icon_category_song@3x.png" />
+    <None Remove="Resources\icon_category_suggestion.png" />
+    <BundleResource Include="Resources\icon_category_suggestion.png" />
+    <None Remove="Resources\icon_category_suggestion@2x.png" />
+    <BundleResource Include="Resources\icon_category_suggestion@2x.png" />
+    <None Remove="Resources\icon_category_suggestion@3x.png" />
+    <BundleResource Include="Resources\icon_category_suggestion@3x.png" />
+    <None Remove="Resources\icon_category_unknown.png" />
+    <BundleResource Include="Resources\icon_category_unknown.png" />
+    <None Remove="Resources\icon_category_unknown@2x.png" />
+    <BundleResource Include="Resources\icon_category_unknown@2x.png" />
+    <None Remove="Resources\icon_category_unknown@3x.png" />
+    <BundleResource Include="Resources\icon_category_unknown@3x.png" />
+    <None Remove="Resources\icon_chevron_right.png" />
+    <BundleResource Include="Resources\icon_chevron_right.png" />
+    <None Remove="Resources\icon_chevron_right@2x.png" />
+    <BundleResource Include="Resources\icon_chevron_right@2x.png" />
+    <None Remove="Resources\icon_chevron_right@3x.png" />
+    <BundleResource Include="Resources\icon_chevron_right@3x.png" />
+    <None Remove="Resources\icon_close_static.png" />
+    <BundleResource Include="Resources\icon_close_static.png" />
+    <None Remove="Resources\icon_close_static@2x.png" />
+    <BundleResource Include="Resources\icon_close_static@2x.png" />
+    <None Remove="Resources\icon_close_static@3x.png" />
+    <BundleResource Include="Resources\icon_close_static@3x.png" />
+    <None Remove="Resources\icon_contributor_fallback.png" />
+    <BundleResource Include="Resources\icon_contributor_fallback.png" />
+    <None Remove="Resources\icon_contributor_fallback@2x.png" />
+    <BundleResource Include="Resources\icon_contributor_fallback@2x.png" />
+    <None Remove="Resources\icon_contributor_fallback@3x.png" />
+    <BundleResource Include="Resources\icon_contributor_fallback@3x.png" />
+    <None Remove="Resources\icon_download.png" />
+    <BundleResource Include="Resources\icon_download.png" />
+    <None Remove="Resources\icon_download@2x.png" />
+    <BundleResource Include="Resources\icon_download@2x.png" />
+    <None Remove="Resources\icon_download@3x.png" />
+    <BundleResource Include="Resources\icon_download@3x.png" />
+    <None Remove="Resources\icon_downloaded.png" />
+    <BundleResource Include="Resources\icon_downloaded.png" />
+    <None Remove="Resources\icon_downloaded@2x.png" />
+    <BundleResource Include="Resources\icon_downloaded@2x.png" />
+    <None Remove="Resources\icon_downloaded@3x.png" />
+    <BundleResource Include="Resources\icon_downloaded@3x.png" />
+    <None Remove="Resources\icon_dynamic_trackcollection_downloaded.png" />
+    <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded.png" />
+    <None Remove="Resources\icon_dynamic_trackcollection_downloaded@2x.png" />
+    <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded@2x.png" />
+    <None Remove="Resources\icon_dynamic_trackcollection_downloaded@3x.png" />
+    <BundleResource Include="Resources\icon_dynamic_trackcollection_downloaded@3x.png" />
+    <None Remove="Resources\icon_favorites.png" />
+    <BundleResource Include="Resources\icon_favorites.png" />
+    <None Remove="Resources\icon_favorites@2x.png" />
+    <BundleResource Include="Resources\icon_favorites@2x.png" />
+    <None Remove="Resources\icon_favorites@3x.png" />
+    <BundleResource Include="Resources\icon_favorites@3x.png" />
+    <None Remove="Resources\icon_favorites_active.png" />
+    <BundleResource Include="Resources\icon_favorites_active.png" />
+    <None Remove="Resources\icon_favorites_active@2x.png" />
+    <BundleResource Include="Resources\icon_favorites_active@2x.png" />
+    <None Remove="Resources\icon_favorites_active@3x.png" />
+    <BundleResource Include="Resources\icon_favorites_active@3x.png" />
+    <None Remove="Resources\icon_home.png" />
+    <BundleResource Include="Resources\icon_home.png" />
+    <None Remove="Resources\icon_home@2x.png" />
+    <BundleResource Include="Resources\icon_home@2x.png" />
+    <None Remove="Resources\icon_home@3x.png" />
+    <BundleResource Include="Resources\icon_home@3x.png" />
+    <None Remove="Resources\icon_home_active.png" />
+    <BundleResource Include="Resources\icon_home_active.png" />
+    <None Remove="Resources\icon_home_active@2x.png" />
+    <BundleResource Include="Resources\icon_home_active@2x.png" />
+    <None Remove="Resources\icon_home_active@3x.png" />
+    <BundleResource Include="Resources\icon_home_active@3x.png" />
+    <None Remove="Resources\icon_loading.png" />
+    <BundleResource Include="Resources\icon_loading.png" />
+    <None Remove="Resources\icon_loading@2x.png" />
+    <BundleResource Include="Resources\icon_loading@2x.png" />
+    <None Remove="Resources\icon_loading@3x.png" />
+    <BundleResource Include="Resources\icon_loading@3x.png" />
+    <None Remove="Resources\icon_nav_content_static.png" />
+    <BundleResource Include="Resources\icon_nav_content_static.png" />
+    <None Remove="Resources\icon_nav_content_static@2x.png" />
+    <BundleResource Include="Resources\icon_nav_content_static@2x.png" />
+    <None Remove="Resources\icon_nav_content_static@3x.png" />
+    <BundleResource Include="Resources\icon_nav_content_static@3x.png" />
+    <None Remove="Resources\icon_notification.png" />
+    <BundleResource Include="Resources\icon_notification.png" />
+    <None Remove="Resources\icon_notification@2x.png" />
+    <BundleResource Include="Resources\icon_notification@2x.png" />
+    <None Remove="Resources\icon_notification@3x.png" />
+    <BundleResource Include="Resources\icon_notification@3x.png" />
+    <None Remove="Resources\icon_now_playing.png" />
+    <BundleResource Include="Resources\icon_now_playing.png" />
+    <None Remove="Resources\icon_now_playing@2x.png" />
+    <BundleResource Include="Resources\icon_now_playing@2x.png" />
+    <None Remove="Resources\icon_now_playing@3x.png" />
+    <BundleResource Include="Resources\icon_now_playing@3x.png" />
+    <None Remove="Resources\icon_options.png" />
+    <BundleResource Include="Resources\icon_options.png" />
+    <None Remove="Resources\icon_options@2x.png" />
+    <BundleResource Include="Resources\icon_options@2x.png" />
+    <None Remove="Resources\icon_options@3x.png" />
+    <BundleResource Include="Resources\icon_options@3x.png" />
+    <None Remove="Resources\icon_pending.png" />
+    <BundleResource Include="Resources\icon_pending.png" />
+    <None Remove="Resources\icon_pending@2x.png" />
+    <BundleResource Include="Resources\icon_pending@2x.png" />
+    <None Remove="Resources\icon_pending@3x.png" />
+    <BundleResource Include="Resources\icon_pending@3x.png" />
+    <None Remove="Resources\icon_play_podcast.png" />
+    <BundleResource Include="Resources\icon_play_podcast.png" />
+    <None Remove="Resources\icon_play_podcast@2x.png" />
+    <BundleResource Include="Resources\icon_play_podcast@2x.png" />
+    <None Remove="Resources\icon_play_podcast@3x.png" />
+    <BundleResource Include="Resources\icon_play_podcast@3x.png" />
+    <None Remove="Resources\icon_playback_history.png" />
+    <BundleResource Include="Resources\icon_playback_history.png" />
+    <None Remove="Resources\icon_playback_history@2x.png" />
+    <BundleResource Include="Resources\icon_playback_history@2x.png" />
+    <None Remove="Resources\icon_playback_history@3x.png" />
+    <BundleResource Include="Resources\icon_playback_history@3x.png" />
+    <None Remove="Resources\icon_profile.png" />
+    <BundleResource Include="Resources\icon_profile.png" />
+    <None Remove="Resources\icon_profile@2x.png" />
+    <BundleResource Include="Resources\icon_profile@2x.png" />
+    <None Remove="Resources\icon_profile@3x.png" />
+    <BundleResource Include="Resources\icon_profile@3x.png" />
+    <None Remove="Resources\icon_profile_active.png" />
+    <BundleResource Include="Resources\icon_profile_active.png" />
+    <None Remove="Resources\icon_profile_active@2x.png" />
+    <BundleResource Include="Resources\icon_profile_active@2x.png" />
+    <None Remove="Resources\icon_profile_active@3x.png" />
+    <BundleResource Include="Resources\icon_profile_active@3x.png" />
+    <None Remove="Resources\icon_radio_static.png" />
+    <BundleResource Include="Resources\icon_radio_static.png" />
+    <None Remove="Resources\icon_radio_static@2x.png" />
+    <BundleResource Include="Resources\icon_radio_static@2x.png" />
+    <None Remove="Resources\icon_radio_static@3x.png" />
+    <BundleResource Include="Resources\icon_radio_static@3x.png" />
+    <None Remove="Resources\icon_search.png" />
+    <BundleResource Include="Resources\icon_search.png" />
+    <None Remove="Resources\icon_search@2x.png" />
+    <BundleResource Include="Resources\icon_search@2x.png" />
+    <None Remove="Resources\icon_search@3x.png" />
+    <BundleResource Include="Resources\icon_search@3x.png" />
+    <None Remove="Resources\icon_search_active.png" />
+    <BundleResource Include="Resources\icon_search_active.png" />
+    <None Remove="Resources\icon_search_active@2x.png" />
+    <BundleResource Include="Resources\icon_search_active@2x.png" />
+    <None Remove="Resources\icon_search_active@3x.png" />
+    <BundleResource Include="Resources\icon_search_active@3x.png" />
+    <None Remove="Resources\icon_shuffle_podcast.png" />
+    <BundleResource Include="Resources\icon_shuffle_podcast.png" />
+    <None Remove="Resources\icon_shuffle_podcast@2x.png" />
+    <BundleResource Include="Resources\icon_shuffle_podcast@2x.png" />
+    <None Remove="Resources\icon_shuffle_podcast@3x.png" />
+    <BundleResource Include="Resources\icon_shuffle_podcast@3x.png" />
+    <None Remove="Resources\icon_trackrelation_external.png" />
+    <BundleResource Include="Resources\icon_trackrelation_external.png" />
+    <None Remove="Resources\icon_trackrelation_external@2x.png" />
+    <BundleResource Include="Resources\icon_trackrelation_external@2x.png" />
+    <None Remove="Resources\icon_trackrelation_external@3x.png" />
+    <BundleResource Include="Resources\icon_trackrelation_external@3x.png" />
+    <None Remove="Resources\iTunesArtwork.png" />
+    <BundleResource Include="Resources\iTunesArtwork.png" />
+    <None Remove="Resources\loading_spinner.png" />
+    <BundleResource Include="Resources\loading_spinner.png" />
+    <None Remove="Resources\loading_spinner@2x.png" />
+    <BundleResource Include="Resources\loading_spinner@2x.png" />
+    <None Remove="Resources\loading_spinner@3x.png" />
+    <BundleResource Include="Resources\loading_spinner@3x.png" />
+    <None Remove="Resources\login_logo.png" />
+    <BundleResource Include="Resources\login_logo.png" />
+    <None Remove="Resources\login_logo@2x.png" />
+    <BundleResource Include="Resources\login_logo@2x.png" />
+    <None Remove="Resources\login_logo@3x.png" />
+    <BundleResource Include="Resources\login_logo@3x.png" />
+    <None Remove="Resources\notification.png" />
+    <BundleResource Include="Resources\notification.png" />
+    <None Remove="Resources\notification@2x.png" />
+    <BundleResource Include="Resources\notification@2x.png" />
+    <None Remove="Resources\notification@3x.png" />
+    <BundleResource Include="Resources\notification@3x.png" />
+    <None Remove="Resources\notification_solid.png" />
+    <BundleResource Include="Resources\notification_solid.png" />
+    <None Remove="Resources\notification_solid@2x.png" />
+    <BundleResource Include="Resources\notification_solid@2x.png" />
+    <None Remove="Resources\notification_solid@3x.png" />
+    <BundleResource Include="Resources\notification_solid@3x.png" />
+    <None Remove="Resources\placeholder_album.png" />
+    <BundleResource Include="Resources\placeholder_album.png" />
+    <None Remove="Resources\placeholder_album@2x.png" />
+    <BundleResource Include="Resources\placeholder_album@2x.png" />
+    <None Remove="Resources\placeholder_album@3x.png" />
+    <BundleResource Include="Resources\placeholder_album@3x.png" />
+    <None Remove="Resources\placeholder_artist.png" />
+    <BundleResource Include="Resources\placeholder_artist.png" />
+    <None Remove="Resources\placeholder_artist@2x.png" />
+    <BundleResource Include="Resources\placeholder_artist@2x.png" />
+    <None Remove="Resources\placeholder_artist@3x.png" />
+    <BundleResource Include="Resources\placeholder_artist@3x.png" />
+    <None Remove="Resources\placeholder_cover.png" />
+    <BundleResource Include="Resources\placeholder_cover.png" />
+    <None Remove="Resources\play_animation_icon.json" />
+    <BundleResource Include="Resources\play_animation_icon.json" />
+    <None Remove="Resources\podcast_background_aslaksen_phone.png" />
+    <BundleResource Include="Resources\podcast_background_aslaksen_phone.png" />
+    <None Remove="Resources\podcast_background_aslaksen_phone@2x.png" />
+    <BundleResource Include="Resources\podcast_background_aslaksen_phone@2x.png" />
+    <None Remove="Resources\podcast_background_aslaksen_phone@3x.png" />
+    <BundleResource Include="Resources\podcast_background_aslaksen_phone@3x.png" />
+    <None Remove="Resources\podcast_background_fra_kaare.png" />
+    <BundleResource Include="Resources\podcast_background_fra_kaare.png" />
+    <None Remove="Resources\podcast_background_fra_kaare@2x.png" />
+    <BundleResource Include="Resources\podcast_background_fra_kaare@2x.png" />
+    <None Remove="Resources\podcast_background_fra_kaare@3x.png" />
+    <BundleResource Include="Resources\podcast_background_fra_kaare@3x.png" />
+    <None Remove="Resources\radio_background.png" />
+    <BundleResource Include="Resources\radio_background.png" />
+    <None Remove="Resources\radio_background@2x.png" />
+    <BundleResource Include="Resources\radio_background@2x.png" />
+    <None Remove="Resources\radio_background@3x.png" />
+    <BundleResource Include="Resources\radio_background@3x.png" />
+    <None Remove="GoogleService-Info.plist" />
+    <BundleResource Include="GoogleService-Info.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Linker.xml" />
+    <LinkDescription Include="Linker.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />
+    <ProjectReference Include="..\BMM.UI.iOS.SiriIntents\BMM.UI.iOS.SiriIntents.csproj">
+      <IsAppExtension>true</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="ByteSize" Version="2.1.1" />
+    <PackageReference Include="Lottie.iOS" Version="1.0.0" />
+    <PackageReference Include="MvvmCross" Version="9.0.9" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
+    <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
+    <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\BMM.Core\Translation\af\main.json">
+      <Link>Translation\af\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\bg\main.json">
+      <Link>Translation\bg\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\cs\main.json">
+      <Link>Translation\cs\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\da\main.json">
+      <Link>Translation\da\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\de\main.json">
+      <Link>Translation\de\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\el\main.json">
+      <Link>Translation\el\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\en\main.json">
+      <Link>Translation\en\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\es\main.json">
+      <Link>Translation\es\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\et\main.json">
+      <Link>Translation\et\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\fi\main.json">
+      <Link>Translation\fi\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\fr\main.json">
+      <Link>Translation\fr\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\he\main.json">
+      <Link>Translation\he\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\hr\main.json">
+      <Link>Translation\hr\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\hu\main.json">
+      <Link>Translation\hu\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\it\main.json">
+      <Link>Translation\it\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\nb\main.json">
+      <Link>Translation\nb\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\nl\main.json">
+      <Link>Translation\nl\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\pl\main.json">
+      <Link>Translation\pl\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\pt\main.json">
+      <Link>Translation\pt\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\ro\main.json">
+      <Link>Translation\ro\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\ru\main.json">
+      <Link>Translation\ru\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\sl\main.json">
+      <Link>Translation\sl\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\tr\main.json">
+      <Link>Translation\tr\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\uk\main.json">
+      <Link>Translation\uk\main.json</Link>
+    </Content>
+    <Content Include="..\BMM.Core\Translation\zh\main.json">
+      <Link>Translation\zh\main.json</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\BMM.Core\Translation\en\Translations.designer.cs">
+      <Link>Translation\en\Translations.designer.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FFImageLoading">
+      <HintPath>..\lib\FFImageLoading.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Shared">
+      <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="FFImageLoading.Touch">
+      <HintPath>..\lib\FFImageLoading.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="MarqueeLabel">
+      <HintPath>..\lib\MarqueeLabel.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\Implementations\Share\" />
+  </ItemGroup>
 </Project>

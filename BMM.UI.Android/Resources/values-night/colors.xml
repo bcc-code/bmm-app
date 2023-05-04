@@ -9,6 +9,7 @@
     <color name="placeholder_two_color">#5F6973</color>
     <color name="background_primary_color">#1B242B</color>
     <color name="background_secondary_color">#28333D</color>
+    <color name="background_tertiary_color">#30353B</color>
     <color name="on_tint_one_color">#FFFFFF</color>
     <color name="on_tint_two_color">#80FFFFFF</color>
     <color name="on_tint_three_color">#33FFFFFF</color>
@@ -16,4 +17,5 @@
     <color name="radio_color">#E12D59</color>
     <color name="highlight_color">#3B4C5F</color>
     <color name="separator_color">#38CCE5FC</color>
+    <color name="utility_auto_color">#FF9D84FF</color>
 </resources>

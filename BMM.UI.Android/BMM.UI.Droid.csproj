@@ -21,7 +21,6 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
-    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
@@ -57,9 +56,6 @@
   <ItemGroup>
     <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />
     <ProjectReference Include="..\Lottie\Lottie.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\values-xxxhdpi\dimens.xml" />
@@ -965,6 +961,24 @@
     <AndroidResource Include="Resources\color\textfield_background.xml" />
     <None Remove="Resources\color-night\textfield_background.xml" />
     <AndroidResource Include="Resources\color-night\textfield_background.xml" />
+    <AndroidResource Update="Resources\layout\fragment_highlighted_text_track.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_highlighted_text.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_highlighted_text_header.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable\highlighted_text_play_button_background.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <None Remove="Resources\raw-night\play_animation_icon.json" />
+    <AndroidResource Include="Resources\raw-night\play_animation_icon.json" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="google-services.json" />
@@ -1035,6 +1049,7 @@
       <Link>Assets\Translation\hu\main.json</Link>
     </AndroidAsset>
     <AndroidAsset Include="Assets\play_animation_icon.json" />
+    <AndroidResource Include="Resources\raw\play_animation_icon.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FFImageLoading">
@@ -1046,5 +1061,11 @@
     <Reference Include="FFImageLoading.Shared">
       <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\raw-night\play_animation_icon_dark.json">
+      <Link>Resources\play_animation_icon_dark.json</Link>
+      <IsDefaultItem>true</IsDefaultItem>
+    </BundleResource>
   </ItemGroup>
 </Project>

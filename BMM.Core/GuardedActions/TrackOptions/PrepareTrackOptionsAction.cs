@@ -189,7 +189,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     new StandardIconOptionPO(
                         _bmmLanguageBinder[Translations.UserDialogs_Track_Share],
                         ImageResourceNames.IconShare,
-                        new MvxAsyncCommand(async () => { await _shareLink.For(track); })));
+                        new MvxAsyncCommand(async () => { await _shareLink.Share(track); })));
             }
 
             // Only show this option if we are not inside an album (what apparently is the one you would be guided to here)

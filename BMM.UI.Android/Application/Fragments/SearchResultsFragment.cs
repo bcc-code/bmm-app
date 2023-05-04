@@ -1,6 +1,9 @@
 ﻿using Android.Runtime;
 using Android.Views;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Adapters;
+using MvvmCross.DroidX.RecyclerView;
+using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BMM.UI.Droid.Application.Fragments
 {
@@ -13,6 +16,11 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             return view;
+        }
+
+        protected override MvxRecyclerAdapter CreateAdapter()
+        {
+            return new SearchResultsRecyclerAdapter((IMvxAndroidBindingContext) BindingContext);
         }
 
         protected override void AttachEvents()

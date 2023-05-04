@@ -57,5 +57,16 @@ namespace BMM.UI.iOS.Extensions
 
             return color;
         }
+        
+        /// <summary>
+        /// Save to use with iOS version below 13.0
+        /// </summary>
+        public static UIColor GetResolvedColorSafe(this UIColor color)
+        {
+            if (VersionHelper.SupportsDarkMode)
+                return color.GetResolvedColor(AppDelegate.MainWindow.TraitCollection);
+
+            return color;
+        }
     }
 }

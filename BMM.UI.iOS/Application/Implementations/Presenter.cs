@@ -43,6 +43,9 @@ namespace BMM.UI.iOS
         {
             if (hint is CloseTabBarHint && TabBarViewController is IMvxIosView vcToClose)
                 await Close(vcToClose.ViewModel);
+            
+            if (hint is CloseFragmentsOverPlayerHint)
+                await CloseModalViewControllers();
 
             return await base.ChangePresentation(hint);
         }

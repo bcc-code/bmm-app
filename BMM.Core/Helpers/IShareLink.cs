@@ -5,9 +5,10 @@ namespace BMM.Core.Helpers
 {
     public interface IShareLink
     {
-        Task For(Track track);
-        Task For(Album album);
-        Task For(Contributor contributor);
+        Uri GetFor(Track track, long? startPositionInMs = null);
+        Task Share(Track track);
+        Task Share(Album album);
+        Task Share(Contributor contributor);
         Task PerformRequestFor(string link);
     }
 }

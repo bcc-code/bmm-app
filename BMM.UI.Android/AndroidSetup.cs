@@ -182,6 +182,7 @@ namespace BMM.UI.Droid
             iocProvider.RegisterType<IFeatureSupportInfoService, DroidFeaturePreviewPermission>();
             iocProvider.RegisterType<INotificationPermissionService, DroidNotificationPermissionService>();
             iocProvider.RegisterType<ISystemSettingsService, SystemSettingsService>();
+            iocProvider.LazyConstructAndRegisterSingleton<IDialogService, DroidDialogService>();
             
             InitializeMediaPlayer(iocProvider);
         }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Factories.ContinueListening;
 using BMM.Core.Implementations.Factories.DiscoverSection;
+using BMM.Core.Implementations.Factories.HighlightedTextTracks;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.Factories.Tracks;
@@ -17,6 +18,8 @@ using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
 using BMM.Core.Models.POs.Tiles;
+using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.Models.POs.YearInReview;
 using MvvmCross.Commands;
 
@@ -30,6 +33,7 @@ namespace BMM.Core.Implementations.Factories
         private readonly IDiscoverSectionHeaderPOFactory _discoverSectionHeaderPOFactory;
         private readonly ITilePOFactory _tilePOFactory;
         private readonly IYearInReviewTeaserPOFactory _yearInReviewTeaserPOFactory;
+        private readonly IHighlightedTextTrackPOFactory _highlightedTextTrackPOFactory;
 
         public DocumentsPOFactory(
             ITrackPOFactory trackPOFactory,
@@ -37,7 +41,8 @@ namespace BMM.Core.Implementations.Factories
             IListeningStreakPOFactory listeningStreakPOFactory,
             IDiscoverSectionHeaderPOFactory discoverSectionHeaderPOFactory,
             ITilePOFactory tilePOFactory,
-            IYearInReviewTeaserPOFactory yearInReviewTeaserPOFactory)
+            IYearInReviewTeaserPOFactory yearInReviewTeaserPOFactory,
+            IHighlightedTextTrackPOFactory highlightedTextTrackPOFactory)
         {
             _trackPOFactory = trackPOFactory;
             _trackCollectionPOFactory = trackCollectionPOFactory;
@@ -45,6 +50,7 @@ namespace BMM.Core.Implementations.Factories
             _discoverSectionHeaderPOFactory = discoverSectionHeaderPOFactory;
             _tilePOFactory = tilePOFactory;
             _yearInReviewTeaserPOFactory = yearInReviewTeaserPOFactory;
+            _highlightedTextTrackPOFactory = highlightedTextTrackPOFactory;
         }
         
         public IEnumerable<IDocumentPO> Create(
@@ -61,6 +67,9 @@ namespace BMM.Core.Implementations.Factories
                 {
                     case Track track:
                         documentsPOList.Add(_trackPOFactory.Create(trackInfoProvider, optionsClickedCommand, track));
+                        break;
+                    case HighlightedTextTrack highlightedTextTrack:
+                        documentsPOList.Add(_highlightedTextTrackPOFactory.Create(highlightedTextTrack, optionsClickedCommand, trackInfoProvider));
                         break;
                     case Album album:
                         documentsPOList.Add(new AlbumPO(album));

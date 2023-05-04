@@ -176,7 +176,7 @@ namespace BMM.Core.ViewModels.Base
                     bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                         .SetTitle(album.Title)
                         .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddAlbumToTrackCollection(album.Id), ImageResourceNames.IconFavorites)
-                        .AddHandled(TextSource[Translations.UserDialogs_Album_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(album), ImageResourceNames.IconShare)
+                        .AddHandled(TextSource[Translations.UserDialogs_Album_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().Share(album), ImageResourceNames.IconShare)
                         .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
                     break;
 
@@ -184,7 +184,7 @@ namespace BMM.Core.ViewModels.Base
                     var contributor = (Contributor)item;
                     bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                         .SetTitle(contributor.Name)
-                        .AddHandled(TextSource[Translations.UserDialogs_Contributor_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().For(contributor), ImageResourceNames.IconShare)
+                        .AddHandled(TextSource[Translations.UserDialogs_Contributor_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().Share(contributor), ImageResourceNames.IconShare)
                         .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
                     break;
 

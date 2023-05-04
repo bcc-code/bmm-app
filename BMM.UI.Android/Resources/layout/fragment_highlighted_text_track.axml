@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_primary_color">
+    
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView
+        android:id="@+id/HighlightedTextTrackRecyclerView"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintBottom_toTopOf="@+id/BottomContainer"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxTemplateSelector="@string/highlighted_text_template_selector"
+        local:MvxBind="ItemsSource Documents" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/BottomContainer"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:elevation="8dp"
+            android:background="@drawable/background_highlighted_text_bottom_container"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                    android:id="@+id/TrackTitle"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_xsmall"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:maxLines="1"
+                    local:layout_constraintStart_toStartOf="parent"
+                    local:layout_constraintEnd_toStartOf="@+id/OptionsButton"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:MvxBind="Text TrackPO.TrackTitle"
+                    style="@style/Title2" />
+
+            <TextView
+                    android:id="@+id/TrackSubtitle"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:maxLines="1"
+                    local:layout_constraintStart_toStartOf="@+id/TrackTitle"
+                    local:layout_constraintTop_toBottomOf="@+id/TrackTitle"
+                    local:MvxBind="Text TrackPO.TrackSubtitle"
+                    style="@style/Subtitle3_Label2" />
+
+            <TextView
+                    android:id="@+id/TrackMeta"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:layout_marginStart="@dimen/margin_tiny"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:maxLines="1"
+                    local:layout_constraintStart_toEndOf="@+id/TrackSubtitle"
+                    local:layout_constraintEnd_toStartOf="@+id/OptionsButton"
+                    local:layout_constraintTop_toBottomOf="@+id/TrackTitle"
+                    local:MvxBind="Text TrackPO.TrackMeta"
+                    style="@style/Subtitle3_Label3" />
+            
+            <ImageView
+                    android:id="@+id/OptionsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:src="@drawable/btn_options_static"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:tint="@color/label_primary_color"
+                    local:layout_constraintTop_toTopOf="@+id/TrackTitle"
+                    local:layout_constraintBottom_toBottomOf="@+id/TrackMeta"
+                    local:layout_constraintEnd_toEndOf="parent"
+                    local:MvxBind="Click TrackPO.OptionButtonClickedCommand" />
+            
+            <Button
+                    android:id="@+id/AddToButton"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_playlist"
+                    android:layout_marginTop="@dimen/margin_xmedium"
+                    android:layout_marginBottom="@dimen/margin_xxmedium"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    local:layout_constraintTop_toBottomOf="@+id/TrackMeta"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintStart_toStartOf="parent"
+                    local:layout_constraintEnd_toStartOf="@+id/PlayButton"
+                    local:layout_constraintHorizontal_chainStyle="spread"
+                    local:MvxLang="Text HighlightedTextTrackViewModel_AddTo"
+                    local:MvxBind="Click AddToCommand"
+                    style="@style/IconButton_Secondary" />
+            
+            <Button
+                    android:id="@+id/PlayButton"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:text="Play"
+                    android:drawableLeft="@drawable/icon_play_button"
+                    android:layout_marginBottom="@dimen/margin_xxmedium"
+                    android:foreground="@null"
+                    local:layout_constraintTop_toTopOf="@+id/AddToButton"
+                    local:layout_constraintStart_toEndOf="@+id/AddToButton"
+                    local:layout_constraintEnd_toEndOf="parent"
+                    local:MvxBind="
+                        Click PlayPauseCommand;
+                        Text PlayButtonTitle"
+                    style="@style/IconButton_Primary" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/PlayAnimationView"
+                    android:layout_width="@dimen/highlighted_text_play_icon_size"
+                    android:layout_height="@dimen/highlighted_text_play_icon_size"
+                    android:background="@drawable/highlighted_text_play_button_background"
+                    android:layout_marginStart="@dimen/margin_xsmall"
+                    local:layout_constraintTop_toTopOf="@+id/PlayButton"
+                    local:layout_constraintStart_toStartOf="@+id/PlayButton"
+                    local:layout_constraintBottom_toBottomOf="@+id/PlayButton"
+                    local:lottie_rawRes="@raw/play_animation_icon"
+                    local:lottie_loop="true"
+                    local:lottie_autoPlay="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CloseButtonIcon"
+        android:layout_width="@dimen/highlighted_text_close_container_icon_size"
+        android:layout_height="@dimen/highlighted_text_close_container_icon_size"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:elevation="2dp"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:cardBackgroundColor="@color/background_tertiary_color"
+        local:cardCornerRadius="28dp"
+        local:MvxBind="Click CloseCommand">
+
+        <ImageView
+                android:id="@+id/CloseIcon"
+                android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+                android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_remove"/>
+
+    </androidx.cardview.widget.CardView>
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -402,5 +402,12 @@ namespace BMM.Core.Translation
 		public const string TopSongsCollectionViewModel_PlaysSingular = nameof(TopSongsCollectionViewModel_PlaysSingular);
 		public const string TopSongsCollectionViewModel_AddToMyPlaylist = nameof(TopSongsCollectionViewModel_AddToMyPlaylist);
 		public const string TopSongsCollectionViewModel_SuccessfullyAddedToPlaylists = nameof(TopSongsCollectionViewModel_SuccessfullyAddedToPlaylists);
+		public const string HighlightedTextTrackViewModel_AutoTranscribed = nameof(HighlightedTextTrackViewModel_AutoTranscribed);
+		public const string HighlightedTextTrackViewModel_AddTo = nameof(HighlightedTextTrackViewModel_AddTo);
+		public const string HighlightedTextTrackViewModel_Pause = nameof(HighlightedTextTrackViewModel_Pause);
+		public const string HighlightedTextTrackViewModel_AutoTranscribedPopupTitleText = nameof(HighlightedTextTrackViewModel_AutoTranscribedPopupTitleText);
+		public const string HighlightedTextTrackViewModel_AutoTranscribedPopupHeaderText = nameof(HighlightedTextTrackViewModel_AutoTranscribedPopupHeaderText);
+		public const string HighlightedTextTrackViewModel_AutoTranscribedPopupSubtitleText = nameof(HighlightedTextTrackViewModel_AutoTranscribedPopupSubtitleText);
+		public const string HighlightedTextTrackViewModel_AutoTranscribedPopupButtonText = nameof(HighlightedTextTrackViewModel_AutoTranscribedPopupButtonText);
 	}
 }

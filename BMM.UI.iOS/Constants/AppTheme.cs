@@ -87,6 +87,12 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.LabelSecondaryColor
         };
         
+        public static TextTheme Paragraph3Label1 = new TextTheme
+        {
+            Font = Typography.Paragraph3.Value,
+            Color = AppColors.LabelPrimaryColor
+        };
+        
         public static TextTheme Paragraph3 = new TextTheme
         {
             Font = Typography.Paragraph3.Value,
@@ -158,6 +164,12 @@ namespace BMM.UI.iOS.Constants
         {
             Font = Typography.Subtitle3.Value,
             Color = AppColors.PlaceholderColor
+        };
+        
+        public static TextTheme Subtitle3Label3Light = new TextTheme
+        {
+            Font = Typography.Subtitle3.Value,
+            Color = AppColors.LabelLightTertiaryColor
         };
         
         public static TextTheme Subtitle3OnColor1 = new TextTheme

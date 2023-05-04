@@ -31,6 +31,7 @@ using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
 using BMM.UI.iOS.Implementations.Support;
 using BMM.UI.iOS.Implementations.Track;
+using BMM.UI.iOS.Implementations.UI;
 using BMM.UI.iOS.NewMediaPlayer;
 using BMM.UI.iOS.NewMediaPlayer.Interfaces;
 using BMM.UI.iOS.UI;
@@ -107,6 +108,8 @@ namespace BMM.UI.iOS
             
             iocProvider.LazyConstructAndRegisterSingleton<IFeatureSupportInfoService, iOSFeatureSupportInfoService>();
             iocProvider.RegisterType<INotificationPermissionService, iOSNotificationPermissionService>();
+            iocProvider.LazyConstructAndRegisterSingleton<IDialogService, iOSDialogService>();
+            
             RegisterMediaPlayer(iocProvider);
         }
 

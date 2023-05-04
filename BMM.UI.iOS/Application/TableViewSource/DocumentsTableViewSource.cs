@@ -37,7 +37,8 @@ namespace BMM.UI.iOS
                 SimpleMarginTableViewCell.Key,
                 ContinueListeningCollectionTableViewCell.Key,
                 YearInReviewTeaserCollapsedCell.Key,
-                YearInReviewTeaserExpandedCell.Key
+                YearInReviewTeaserExpandedCell.Key,
+                HighlightedTextTrackTableViewCell.Key
             };
             
             foreach (string nibName in nibNames)
@@ -45,8 +46,6 @@ namespace BMM.UI.iOS
                 tableView.RegisterNibForCellReuse(UINib.FromName(nibName, NSBundle.MainBundle), nibName);
             }
         }
-
-        public event EventHandler ScrolledEvent;
 
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
@@ -58,6 +57,10 @@ namespace BMM.UI.iOS
                     nibName = ContributorTableViewCell.Key;
                     break;
 
+                case HighlightedTextTrackPO:
+                    nibName = HighlightedTextTrackTableViewCell.Key;
+                    break;
+                
                 case TrackPO:
                     nibName = TrackTableViewCell.Key;
                     break;
@@ -114,11 +117,6 @@ namespace BMM.UI.iOS
             }
 
             return tableView.DequeueReusableCell(nibName);
-        }
-
-        public override void Scrolled(UIScrollView scrollView)
-        {
-            ScrolledEvent?.Invoke(this, EventArgs.Empty);
         }
     }
 }

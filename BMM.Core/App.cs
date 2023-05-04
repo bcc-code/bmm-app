@@ -33,6 +33,7 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.Factories.ContinueListening;
 using BMM.Core.Implementations.Factories.DiscoverSection;
+using BMM.Core.Implementations.Factories.HighlightedTextTracks;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.Factories.Tracks;
@@ -71,6 +72,7 @@ using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.Validators;
 using BMM.Core.Messages;
 using BMM.Core.Models.POs.TrackCollections;
+using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using Microsoft.AppCenter;
@@ -289,6 +291,7 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewPOFactory, YearInReviewPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewTeaserPOFactory, YearInReviewTeaserPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITopSongsPOFactory, TopSongsPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IHighlightedTextTrackPOFactory, HighlightedTextTrackPOFactory>();
             
             _assemblies = AppDomain
                 .CurrentDomain

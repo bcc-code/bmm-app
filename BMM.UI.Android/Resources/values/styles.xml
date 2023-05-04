@@ -255,6 +255,13 @@
         <item name="android:textColor">@color/label_secondary_color</item>
     </style>
 
+    <style name="Paragraph3_Label1">
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textColor">@color/label_primary_color</item>
+    </style>
+    
     <style name="Paragraph3">
         <item name="android:textSize">13sp</item>
         <item name="android:lineHeight">24sp</item>

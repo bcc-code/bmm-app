@@ -68,7 +68,7 @@ namespace BMM.Core.ViewModels
             _playOrResumePlayAction.AttachDataContext(this);
             
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddAlbumToTrackCollection(Album.Id));
-            ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.For(_album));
+            ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.Share(_album));
 
             var audiobookStyler = new AudiobookPodcastInfoProvider(TrackInfoProvider);
             TrackInfoProvider = new CustomTrackInfoProvider(TrackInfoProvider,
