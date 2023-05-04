@@ -517,12 +517,12 @@
     "SuccessfullyAddedToPlaylists": "Lisätty suosikkeihin"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Autolitteroitu",
     "AddTo": "Lisää soittolistaan",
     "Pause": "Tauko",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it"
+    "AutoTranscribedPopupTitleText": "Tekstit ovat autolitteroituja ja saattavat sisältää virheitä",
+    "AutoTranscribedPopupHeaderText": "Autolitteroitu",
+    "AutoTranscribedPopupSubtitleText": "Korjaukset ovat pian mahdollisia suoraan sovelluksessa",
+    "AutoTranscribedPopupButtonText": "Selvä"
   }
 }
