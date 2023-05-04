@@ -515,5 +515,14 @@
     "PlaysSingular": "{0} Lejátszás",
     "AddToMyPlaylist": "Lejátszási lista hozzáadása a kedvencekhez",
     "SuccessfullyAddedToPlaylists": "Sikeresen hozzáadva a kedvencekhez"
+  },
+  "HighlightedTextTrackViewModel": {
+    "AutoTranscribed": "Auto-transcribed",
+    "AddTo": "Hozzáadás lejátszási listához",
+    "Pause": "Szünet",
+    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
+    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
+    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
+    "AutoTranscribedPopupButtonText": "Got it"
   }
 }

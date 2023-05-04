@@ -11,7 +11,7 @@
     "Song": "Muzyka",
     "Speech": "Przemowa",
     "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis",
+    "Exegesis": "Egzegeza",
     "Done": "Gotowe",
     "Today": "Dzisiaj",
     "Yesterday": "Wczoraj",
@@ -20,7 +20,7 @@
     "GoToSettings": "Przejdź do ustawień",
     "NotNow": "Nie teraz",
     "DownloadPlaylistOnceOnWifi": "Playlista zostanie pobrana, gdy połączysz się z Wi-Fi. Możesz włączyć opcję „Pobieranie przez sieć komórkową” w swoim profilu.\n",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
+    "DownloadPodcastOnceOnWifi": "Playlista zostanie pobrana, gdy połączysz się z Wi-Fi. Możesz włączyć opcję „Pobieranie przez sieć komórkową” w swoim profilu.\n",
     "SiriFromKaareInvocationPhrase": "Włącz Od Kårego na BMM",
     "SiriPlayMusicInvocationPhrase": "Włącz muzykę na BMM",
     "FromKaareSiriShortcutName": "Włącz Od Kårego",
@@ -515,5 +515,14 @@
     "PlaysSingular": "{0} play",
     "AddToMyPlaylist": "Add playlist to favorites",
     "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+  },
+  "HighlightedTextTrackViewModel": {
+    "AutoTranscribed": "Auto-transcribed",
+    "AddTo": "Dodaj do playlisty",
+    "Pause": "Pauza",
+    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
+    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
+    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
+    "AutoTranscribedPopupButtonText": "Got it"
   }
 }

@@ -515,5 +515,14 @@
     "PlaysSingular": "{0} Reproducción",
     "AddToMyPlaylist": "Agregar lista de reproducción a favoritos",
     "SuccessfullyAddedToPlaylists": "Añadido exitosamente a favoritos"
+  },
+  "HighlightedTextTrackViewModel": {
+    "AutoTranscribed": "Auto-transcribed",
+    "AddTo": "Añadir a la lista de reproducción",
+    "Pause": "Pausa",
+    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
+    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
+    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
+    "AutoTranscribedPopupButtonText": "Got it"
   }
 }

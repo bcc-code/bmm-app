@@ -515,5 +515,14 @@
     "PlaysSingular": "{0} afspilning\n",
     "AddToMyPlaylist": "Tilføj playliste til favoritter",
     "SuccessfullyAddedToPlaylists": "Føjet til favoritter"
+  },
+  "HighlightedTextTrackViewModel": {
+    "AutoTranscribed": "Auto-transcribed",
+    "AddTo": "Tilføj til spilleliste",
+    "Pause": "Pause",
+    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
+    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
+    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
+    "AutoTranscribedPopupButtonText": "Got it"
   }
 }
