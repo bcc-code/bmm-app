@@ -515,5 +515,14 @@
     "PlaysSingular": "{0} soittokerta",
     "AddToMyPlaylist": "Lisää soittolista suosikkeihin",
     "SuccessfullyAddedToPlaylists": "Lisätty suosikkeihin"
+  },
+  "HighlightedTextTrackViewModel": {
+    "AutoTranscribed": "Auto-transcribed",
+    "AddTo": "Lisää soittolistaan",
+    "Pause": "Tauko",
+    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
+    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
+    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
+    "AutoTranscribedPopupButtonText": "Got it"
   }
 }
