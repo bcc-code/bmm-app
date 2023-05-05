@@ -6,4 +6,5 @@ namespace BMM.Core.Models.POs.Tracks.Interfaces;
 
 public interface IHighlightedTextHeaderPO : IBasePO
 {
+    IMvxAsyncCommand ItemClickedCommand { get; }
 }

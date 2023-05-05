@@ -8,12 +8,12 @@ namespace BMM.Core.Helpers
 {
     public class ShareLink : IShareLink
     {
-        public Uri GetFor(Track track, long? startPositionInMs = null)
+        public Uri GetFor(Track track, long? startPositionInSeconds = null)
         {
             var stringBuilder = new StringBuilder("track/" + track.Id);
             
-            if (startPositionInMs.HasValue)
-                stringBuilder.Append($"?t={startPositionInMs}");
+            if (startPositionInSeconds.HasValue)
+                stringBuilder.Append($"?t={startPositionInSeconds}");
             
             return GenerateLink(stringBuilder.ToString());
         }

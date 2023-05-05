@@ -7,7 +7,6 @@
 //
 using Foundation;
 using System.CodeDom.Compiler;
-using BMM.UI.iOS.CustomViews;
 
 namespace BMM.UI.iOS
 {
@@ -15,13 +14,16 @@ namespace BMM.UI.iOS
 	partial class HighlightedTextTableViewCell
 	{
 		[Outlet]
-		BmmFormattedLabel HighlightedTextLabel { get; set; }
+		BMM.UI.iOS.CustomViews.BmmFormattedLabel HighlightedTextLabel { get; set; }
 
 		[Outlet]
 		UIKit.UILabel PositionLabel { get; set; }
 
 		[Outlet]
 		UIKit.UIButton ShareButton { get; set; }
+
+		[Outlet]
+		UIKit.UIView ShareButtonArea { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -38,6 +40,11 @@ namespace BMM.UI.iOS
 			if (ShareButton != null) {
 				ShareButton.Dispose ();
 				ShareButton = null;
+			}
+
+			if (ShareButtonArea != null) {
+				ShareButtonArea.Dispose ();
+				ShareButtonArea = null;
 			}
 
 		}

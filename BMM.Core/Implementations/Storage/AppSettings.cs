@@ -158,16 +158,16 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(CurrentTrackPosition));
         }
         
-        public static bool AkavacheMigrationFinished
-        {
-            get => GetValueOrDefault(nameof(AkavacheMigrationFinished), false);
-            set => AddOrUpdateValue(value, nameof(AkavacheMigrationFinished));
-        }
-        
         public static bool FirstLaunchWithPodcasts
         {
             get => GetValueOrDefault(nameof(FirstLaunchWithPodcasts), true);
             set => AddOrUpdateValue(value, nameof(FirstLaunchWithPodcasts));
+        }
+        
+        public static bool HighlightedTextPopupAlreadyShown
+        {
+            get => GetValueOrDefault(nameof(HighlightedTextPopupAlreadyShown), default(bool));
+            set => AddOrUpdateValue(value, nameof(HighlightedTextPopupAlreadyShown));
         }
         
         public static void Clear() => Settings.Clear();

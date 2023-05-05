@@ -36,15 +36,14 @@ public class HighlightedTextPO : DocumentPO, IHighlightedTextPO
         
         ShareCommand = new ExceptionHandlingCommand(async () =>
         {
-            var link = shareLink.GetFor(TrackPO.Track, StartPositionInMs);
+            var link = shareLink.GetFor(TrackPO.Track, startPositionInSeconds);
             var textBuilder = new StringBuilder(StyledTextContainer.FullText);
             textBuilder.AppendLine();
             textBuilder.Append(link);
             
             await Share.RequestAsync(new ShareTextRequest
             {
-                Text = textBuilder.ToString(),
-                Uri = link.AbsoluteUri
+                Text = textBuilder.ToString()
             });
         });
     }
