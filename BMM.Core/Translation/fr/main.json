@@ -517,12 +517,12 @@
     "SuccessfullyAddedToPlaylists": "Ajouté avec succès aux favoris"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Transcription automatique",
     "AddTo": "Ajouter à la liste de lecture",
     "Pause": "Pause",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it"
+    "AutoTranscribedPopupTitleText": "Les transcriptions sont générées automatiquement et peuvent contenir des erreurs.",
+    "AutoTranscribedPopupHeaderText": "Transcription automatique",
+    "AutoTranscribedPopupSubtitleText": "Vous pourrez bientôt soumettre des corrections directement dans l'application.",
+    "AutoTranscribedPopupButtonText": "J'ai compris"
   }
 }
