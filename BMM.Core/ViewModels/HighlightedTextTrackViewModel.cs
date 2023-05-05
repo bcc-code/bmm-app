@@ -1,11 +1,9 @@
 using BMM.Api.Abstraction;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.HighlightedText.Interfaces;
 using BMM.Core.Helpers;
-using BMM.Core.Helpers.Interfaces;
-using BMM.Core.Helpers.PresentationHints;
-using BMM.Core.Implementations.UI;
-using BMM.Core.Messages;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks;
@@ -21,16 +19,18 @@ namespace BMM.Core.ViewModels;
 
 public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<HighlightedTextTrackPO>
 {
-    private readonly IDialogService _dialogService;
+    private readonly IShowHighlightedTextInfoDialogAction _showHighlightedTextInfoDialogAction;
     private readonly IMediaPlayer _mediaPlayer;
     private string _playButtonTitle;
     private HighlightedTextTrackPO _highlightedTextTrackPO;
     private MvxSubscriptionToken _updateStateToken;
     private bool _isCurrentlyPlaying;
 
-    public HighlightedTextTrackViewModel(IDialogService dialogService, IMediaPlayer mediaPlayer)
+    public HighlightedTextTrackViewModel(
+        IShowHighlightedTextInfoDialogAction showHighlightedTextInfoDialogAction,
+        IMediaPlayer mediaPlayer)
     {
-        _dialogService = dialogService;
+        _showHighlightedTextInfoDialogAction = showHighlightedTextInfoDialogAction;
         _mediaPlayer = mediaPlayer;
         PlayPauseCommand = new ExceptionHandlingCommand(() =>
         {
@@ -73,6 +73,16 @@ public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<H
     
     public IMvxAsyncCommand PlayPauseCommand { get; }
     public IMvxAsyncCommand AddToCommand { get; }
+
+    protected override async Task Initialization()
+    {
+        await base.Initialization();
+        if (!AppSettings.HighlightedTextPopupAlreadyShown)
+        {
+            await _showHighlightedTextInfoDialogAction.ExecuteGuarded();
+            AppSettings.HighlightedTextPopupAlreadyShown = true;
+        }
+    }
 
     public void Prepare(HighlightedTextTrackPO parameter)
     {
@@ -118,7 +128,7 @@ public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<H
         RefreshTrackWithId(null);
         var rangeOfItems = new List<IDocumentPO>
         {
-            new HighlightedTextHeaderPO(_dialogService)
+            new HighlightedTextHeaderPO(_showHighlightedTextInfoDialogAction)
         };
 
         rangeOfItems.AddRange(_highlightedTextTrackPO.HighlightedTexts);

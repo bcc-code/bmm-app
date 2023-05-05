@@ -3,6 +3,7 @@ using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Platforms.Ios.Binding;
+using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
 
 namespace BMM.UI.iOS
 {
@@ -25,6 +26,10 @@ namespace BMM.UI.iOS
                     .WithConversion<MillisecondsToTimeValueConverter>();
 
                 set.Bind(ShareButton)
+                    .To(po => po.ShareCommand);
+                
+                set.Bind(ShareButtonArea)
+                    .For(v => v.BindTap())
                     .To(po => po.ShareCommand);
                 
                 set.Bind(ContentView)

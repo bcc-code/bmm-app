@@ -127,26 +127,31 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     
-    <androidx.cardview.widget.CardView
-        android:id="@+id/CloseButtonIcon"
-        android:layout_width="@dimen/highlighted_text_close_container_icon_size"
-        android:layout_height="@dimen/highlighted_text_close_container_icon_size"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:elevation="2dp"
+    <FrameLayout
+        android:id="@+id/CloseButtonIconArea"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/match_constraint"
         local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintBottom_toBottomOf="parent"
         local:layout_constraintEnd_toEndOf="parent"
-        local:cardBackgroundColor="@color/background_tertiary_color"
-        local:cardCornerRadius="28dp"
         local:MvxBind="Click CloseCommand">
-
-        <ImageView
-                android:id="@+id/CloseIcon"
-                android:layout_width="@dimen/highlighted_text_track_item_icon_size"
-                android:layout_height="@dimen/highlighted_text_track_item_icon_size"
-                android:layout_gravity="center"
-                android:src="@drawable/icon_remove"/>
-
-    </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/highlighted_text_close_container_icon_size"
+            android:layout_height="@dimen/highlighted_text_close_container_icon_size"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:elevation="2dp"
+            local:cardBackgroundColor="@color/background_tertiary_color"
+            local:cardCornerRadius="28dp">
+    
+            <ImageView
+                    android:id="@+id/CloseIcon"
+                    android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_remove"/>
+    
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
     
 </androidx.constraintlayout.widget.ConstraintLayout>

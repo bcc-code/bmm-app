@@ -35,6 +35,5 @@
         public const string ProblemWithOfflineFileDetected = "Problem with offline file detected";
         public const string NavigateToExternalLink = "Navigate to external link";
         public const string BCCMediaOpenedFromPlayer = "BCC Media opened from player";
-        public const string AkavacheMigrationFinished = "Akavache migration finished";
     }
 }

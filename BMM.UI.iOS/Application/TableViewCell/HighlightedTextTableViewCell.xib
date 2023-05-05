@@ -95,6 +95,7 @@
                 <outlet property="HighlightedTextLabel" destination="iSd-14-YNl" id="pe2-Ae-xcc"/>
                 <outlet property="PositionLabel" destination="zeI-iI-Cqf" id="ZBY-fg-taz"/>
                 <outlet property="ShareButton" destination="iDu-im-GLy" id="1D7-wf-iA4"/>
+                <outlet property="ShareButtonArea" destination="Mx8-nn-RkD" id="1mV-3S-xem"/>
             </connections>
             <point key="canvasLocation" x="304.34782608695656" y="363.61607142857139"/>
         </tableViewCell>
