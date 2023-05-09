@@ -13,7 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:clipChildren="false">
         
         <TextView
                 android:id="@+id/PositionLabel"
@@ -56,6 +57,7 @@
                 android:layout_marginHorizontal="@dimen/margin_medium"
                 android:layout_marginVertical="@dimen/margin_medium"
                 android:textFontWeight="445"
+                local:roundedTextDrawable="@drawable/background_highlighted_text"
                 local:layout_constraintTop_toBottomOf="@+id/PositionLabel"
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"

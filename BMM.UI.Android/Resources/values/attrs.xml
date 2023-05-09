@@ -4,4 +4,10 @@
     <attr name="header" format="reference" />
     <attr name="footer" format="reference" />
   </declare-styleable>
+
+  <declare-styleable name="BmmTextView">
+    <attr name="roundedTextHorizontalPadding" format="dimension"/>
+    <attr name="roundedTextVerticalPadding" format="dimension"/>
+    <attr name="roundedTextDrawable" format="reference"/>
+  </declare-styleable>
 </resources>

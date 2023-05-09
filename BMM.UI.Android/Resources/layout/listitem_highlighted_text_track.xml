@@ -50,6 +50,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="1"
                     android:textFontWeight="500"
+                    local:roundedTextDrawable="@drawable/background_highlighted_text"
                     local:MvxBind="StyledTextContainer StyledTextContainer"
                     style="@style/Subtitle3_Label3" />
             </bmm.ui.droid.application.customViews.NonTouchableHorizontalScrollView>

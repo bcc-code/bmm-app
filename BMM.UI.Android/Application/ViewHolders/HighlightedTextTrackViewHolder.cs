@@ -30,6 +30,11 @@ public class HighlightedTextTrackViewHolder : MvxRecyclerViewHolder
             .To(po => po.RatioOfFirstHighlightLengthToFullText);
                 
         set.Apply();
+    }
+
+    public override void OnAttachedToWindow()
+    {
+        base.OnAttachedToWindow();
         ItemView.Post(SetContentOffset);
     }
 
