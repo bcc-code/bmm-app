@@ -11,10 +11,14 @@ using AndroidX.Core.Widget;
 using BMM.Core.Implementations.UI.StyledText;
 using BMM.Core.Implementations.UI.StyledText.Enums;
 using BMM.Core.Implementations.UI.StyledText.Interfaces;
+using BMM.UI.Droid.Application.CustomViews.BackgroundedText;
+using BMM.UI.Droid.Application.CustomViews.TextSpans;
 using BMM.UI.Droid.Application.Extensions;
 using FFImageLoading.Extensions;
 using Java.Lang;
 using Microsoft.IdentityModel.Tokens;
+using static Android.Graphics.Paint;
+using static Android.Icu.Text.ListFormatter;
 
 namespace BMM.UI.Droid.Application.CustomViews
 {
@@ -25,34 +29,35 @@ namespace BMM.UI.Droid.Application.CustomViews
         private StyledTextContainer _formattedText;
         private int _displayedTextLength;
         private bool _shouldAutoScaleFormattedText = true;
-
-        protected BmmTextView(IntPtr javaReference, JniHandleOwnership transfer)
-            : base(javaReference, transfer)
-        {
-            Initialize();
-        }
+        private TextRoundedBgHelper _textRoundedBgHelper;
 
         public BmmTextView(Context context)
             : base(context)
         {
-            Initialize();
+            Initialize(context, null);
         }
 
         public BmmTextView(Context context, IAttributeSet attrs)
             : base(context, attrs)
         {
-            Initialize();
+            Initialize(context, attrs);
         }
 
         public BmmTextView(Context context, IAttributeSet attrs, int defStyleAttr)
             : base(context, attrs, defStyleAttr)
         {
-            Initialize();
+            Initialize(context, attrs);
         }
 
-        private void Initialize()
+        private void Initialize(Context context, IAttributeSet attrs)
         {
             SetIncludeFontPadding(false);
+            var attributeReader = new TextBackgroundedAttributeReader(context, attrs);
+            _textRoundedBgHelper = new TextRoundedBgHelper(
+                attributeReader.HorizontalPadding,
+                attributeReader.VerticalPadding,
+                attributeReader.Drawable
+            );
         }
 
         public StyledTextContainer StyledTextContainer
@@ -105,7 +110,7 @@ namespace BMM.UI.Droid.Application.CustomViews
         private void SetColorsForFormattedText()
         {
             SetSpan((styledText) => new ForegroundColorSpan(GetForegroundColorForFormattedText(styledText)));
-            SetSpan((styledText) => new BackgroundColorSpan(GetBackgroundColorForFormattedText(styledText)));
+            SetSpan((styledText) => new CustomBackgroundColorSpan(GetBackgroundColorForFormattedText(styledText)));
         }
 
         private Color GetBackgroundColorForFormattedText(IStyledText styledText)
@@ -174,11 +179,20 @@ namespace BMM.UI.Droid.Application.CustomViews
                         span,
                         start,
                         end,
-                        SpanTypes.InclusiveInclusive);
+                        SpanTypes.ExclusiveExclusive);
                 }
 
                 offset += styledText.Content.Length;
             }
+        }
+
+        protected override void OnDraw(Canvas canvas)
+        {
+            if (Layout != null)
+            {
+                _textRoundedBgHelper.Draw(canvas, _spannableString, Layout);
+            }
+            base.OnDraw(canvas);
         }
 
         protected override void OnLayout(bool changed, int left, int top, int right, int bottom)

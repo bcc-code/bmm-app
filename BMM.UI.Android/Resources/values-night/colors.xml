@@ -18,4 +18,5 @@
     <color name="highlight_color">#3B4C5F</color>
     <color name="separator_color">#38CCE5FC</color>
     <color name="utility_auto_color">#FF9D84FF</color>
+    <color name="utility_auto_color_alpha">#4D9D84FF</color>
 </resources>
