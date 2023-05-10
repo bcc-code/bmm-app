@@ -33,6 +33,46 @@
             Text NoResultsDescriptionLabel;
             Visibility Visibility(ShowNoItemsInfo)" />
 
+    <LinearLayout
+        android:id="@+id/SearchFailedLayer"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintBottom_toBottomOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="Visibility Visibility(HasError)">
+        
+        <TextView
+                android:id="@+id/SearchFailedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xmedium"
+                android:layout_marginBottom="@dimen/margin_tiny"
+                style="@style/Heading3"
+                local:MvxLang="Text SearchViewModel_SearchFailedTitle" />
+        
+        <TextView
+                android:id="@+id/SearchFailedDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/margin_xmedium"
+                android:layout_marginTop="@dimen/margin_tiny"
+                style="@style/Paragraph1"
+                local:MvxLang="Text SearchViewModel_SearchFailedMessage" />
+        
+        <ImageView
+                android:id="@+id/ReloadButton"
+                android:layout_width="@dimen/search_reload_button_size"
+                android:layout_height="@dimen/search_reload_button_size"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:background="@android:color/transparent"
+                android:src="@drawable/icon_reload"
+                android:layout_gravity="center_horizontal"
+                local:MvxBind="Click ReloadCommand" />
+    </LinearLayout>
+
     <TextView
         android:id="@+id/ResultsLabel"
         android:layout_width="@dimen/match_constraint"
