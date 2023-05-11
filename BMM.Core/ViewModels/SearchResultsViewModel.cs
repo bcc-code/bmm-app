@@ -60,6 +60,8 @@ namespace BMM.Core.ViewModels
             Documents.Clear();
             _previouslyUsedSearchTerm = searchTerm;
             _searchTerm = searchTerm;
+            await RaisePropertyChanged(nameof(NoResultsDescriptionLabel));
+            await RaisePropertyChanged(nameof(SearchFailedDescriptionLabel));
             await Load();
         }
 
@@ -73,6 +75,7 @@ namespace BMM.Core.ViewModels
         {
             base.AttachEvents();
             PropertyChanged += OnPropertyChanged;
+            HandleSearchingPropertyChanged();
         }
         
         protected override void DetachEvents()
@@ -86,10 +89,7 @@ namespace BMM.Core.ViewModels
             if (e.PropertyName != nameof(IsLoading))
                 return;
 
-            IsSearching = IsLoading;
-            HasAnyItem = Documents.Any();
-            ShowNoItemsInfo = !HasAnyItem && !IsLoading && !HasError;
-            RaisePropertyChanged(nameof(NoResultsDescriptionLabel));
+            HandleSearchingPropertyChanged();
         }
 
         public SearchFilter SearchFilter { get; set; }
@@ -131,6 +131,7 @@ namespace BMM.Core.ViewModels
         }
 
         public string NoResultsDescriptionLabel => TextSource.GetText(Translations.SearchViewModel_NoResultsDescription, _searchTerm);
+        public string SearchFailedDescriptionLabel => TextSource.GetText(Translations.SearchViewModel_SearchFailedMessage, _searchTerm);
 
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
@@ -164,6 +165,14 @@ namespace BMM.Core.ViewModels
             {
                 HasError = !isSuccess && !Documents.Any();
             }
+        }
+
+        private void HandleSearchingPropertyChanged()
+        {
+            IsSearching = IsLoading;
+            HasAnyItem = Documents.Any();
+            ShowNoItemsInfo = !HasAnyItem && !IsLoading && !HasError;
+            RaisePropertyChanged(nameof(NoResultsDescriptionLabel));
         }
 
         private static IEnumerable<Document> CreateAdjustedItemsList(SearchResults searchResults)

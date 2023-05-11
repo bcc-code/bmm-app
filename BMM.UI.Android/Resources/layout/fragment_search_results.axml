@@ -60,7 +60,7 @@
                 android:layout_marginHorizontal="@dimen/margin_xmedium"
                 android:layout_marginTop="@dimen/margin_tiny"
                 style="@style/Paragraph1"
-                local:MvxLang="Text SearchViewModel_SearchFailedMessage" />
+                local:MvxBind="Text SearchFailedDescriptionLabel" />
         
         <ImageView
                 android:id="@+id/ReloadButton"

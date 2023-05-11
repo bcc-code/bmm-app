@@ -12,7 +12,6 @@ namespace BMM.UI.iOS
     public partial class SearchResultsViewController : BaseViewController<SearchResultsViewModel>, IUITableViewDelegate
     {
         private DocumentsTableViewSource _documentsTableViewSource;
-        private bool _hasError;
 
         public SearchResultsViewController()
             : base(nameof(SearchResultsViewController))
@@ -77,9 +76,9 @@ namespace BMM.UI.iOS
 
             set.Bind(SearchFailedTitle)
                 .To(vm => vm.TextSource[Translations.SearchViewModel_SearchFailedTitle]);
-            
+
             set.Bind(SearchFailedMessage)
-                .To(vm => vm.TextSource[Translations.SearchViewModel_SearchFailedMessage]);
+                .To(vm => vm.SearchFailedDescriptionLabel);
             
             set.Apply();
             SetThemes();
