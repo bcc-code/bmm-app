@@ -75,6 +75,7 @@
     <dimen name="highlighted_text_close_container_icon_size">36dp</dimen>
     <dimen name="highlighted_text_default_icon_size">24dp</dimen>
     <dimen name="highlighted_text_dialog_icon_size">32dp</dimen>
+    <dimen name="search_reload_button_size">40dp</dimen>
 
     <dimen name="horizontal_scrolling_cover_image_size">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_width">160dp</dimen>
