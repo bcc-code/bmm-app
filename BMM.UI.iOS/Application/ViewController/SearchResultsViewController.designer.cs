@@ -26,6 +26,9 @@ namespace BMM.UI.iOS
 		UIKit.UILabel NoResultsTitle { get; set; }
 
 		[Outlet]
+		UIKit.UIButton ReloadButton { get; set; }
+
+		[Outlet]
 		UIKit.UIView ResultsContainer { get; set; }
 
 		[Outlet]
@@ -33,6 +36,15 @@ namespace BMM.UI.iOS
 
 		[Outlet]
 		UIKit.UITableView ResultsTableView { get; set; }
+
+		[Outlet]
+		UIKit.UIView SearchFailedLayer { get; set; }
+
+		[Outlet]
+		UIKit.UILabel SearchFailedMessage { get; set; }
+
+		[Outlet]
+		UIKit.UILabel SearchFailedTitle { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -56,9 +68,9 @@ namespace BMM.UI.iOS
 				NoResultsTitle = null;
 			}
 
-			if (ResultsTableView != null) {
-				ResultsTableView.Dispose ();
-				ResultsTableView = null;
+			if (ResultsContainer != null) {
+				ResultsContainer.Dispose ();
+				ResultsContainer = null;
 			}
 
 			if (ResultsLabel != null) {
@@ -66,9 +78,29 @@ namespace BMM.UI.iOS
 				ResultsLabel = null;
 			}
 
-			if (ResultsContainer != null) {
-				ResultsContainer.Dispose ();
-				ResultsContainer = null;
+			if (ResultsTableView != null) {
+				ResultsTableView.Dispose ();
+				ResultsTableView = null;
+			}
+
+			if (SearchFailedTitle != null) {
+				SearchFailedTitle.Dispose ();
+				SearchFailedTitle = null;
+			}
+
+			if (SearchFailedMessage != null) {
+				SearchFailedMessage.Dispose ();
+				SearchFailedMessage = null;
+			}
+
+			if (SearchFailedLayer != null) {
+				SearchFailedLayer.Dispose ();
+				SearchFailedLayer = null;
+			}
+
+			if (ReloadButton != null) {
+				ReloadButton.Dispose ();
+				ReloadButton = null;
 			}
 
 		}
