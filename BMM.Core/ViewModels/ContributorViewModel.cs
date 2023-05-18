@@ -86,7 +86,7 @@ namespace BMM.Core.ViewModels
         
         public override IEnumerable<string> PlaybackOrigin()
         {
-            return new[] {Contributor.Id.ToString()};
+            return new[] {_id.ToString()};
         }
 
         public void Prepare(int contributorId)

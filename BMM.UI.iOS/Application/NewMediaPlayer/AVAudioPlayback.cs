@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using AVFoundation;
@@ -11,6 +12,7 @@ using BMM.Core.NewMediaPlayer.Constants;
 using BMM.UI.iOS.NewMediaPlayer.Interfaces;
 using CoreMedia;
 using Foundation;
+using Exception = System.Exception;
 
 namespace BMM.UI.iOS.NewMediaPlayer
 {
@@ -219,7 +221,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         }
 
         private void AttachObservers()
-        {
+        { 
             CurrentItem.AddObserver(this, LoadedTimeRangesObserver, InitialAndNewObservingOptions, LoadedTimeRangesObservationContext.Handle);
             CurrentItem.AddObserver(this, StatusObserver, InitialAndNewObservingOptions, StatusObservationContext.Handle);
             _didPlayToEndTimeObserverToken = AVPlayerItem.Notifications.ObserveDidPlayToEndTime(CurrentItem, OnDidPlayToEndTime);
@@ -227,9 +229,18 @@ namespace BMM.UI.iOS.NewMediaPlayer
         
         private void RemoveObservers()
         {
-            CurrentItem?.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
-            CurrentItem?.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
-            _didPlayToEndTimeObserverToken?.Dispose();
+            try
+            {
+                CurrentItem?.RemoveObserver(this, StatusObserver, StatusObservationContext.Handle);
+                CurrentItem?.RemoveObserver(this, LoadedTimeRangesObserver, LoadedTimeRangesObservationContext.Handle);
+                _didPlayToEndTimeObserverToken?.Dispose();
+            }
+            catch (Exception e)
+            {
+                // there is a rare situation where we get an error when removing observers and the app is crashing
+                // this 'catch' has been added to avoid crashing 
+                Console.WriteLine(e.ToString());
+            }
         }
 
         private void OnDidPlayToEndTime(object sender, NSNotificationEventArgs e)

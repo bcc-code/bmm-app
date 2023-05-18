@@ -99,9 +99,22 @@ namespace BMM.UI.iOS
         public override void ViewWillDisappear(bool animated)
         {
             base.ViewWillDisappear(animated);
-            DetachEvents();
+            SafeDetachEvents();
         }
 
+        private void SafeDetachEvents()
+        {
+            try
+            {
+                DetachEvents();
+            }
+            catch (Exception e)
+            {
+                //ignore
+                Console.WriteLine(e);
+            }
+        }
+        
         protected virtual void AttachEvents()
         {
         }

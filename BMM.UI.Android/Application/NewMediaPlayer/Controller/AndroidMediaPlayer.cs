@@ -13,9 +13,11 @@ using BMM.UI.Droid.Application.Constants.Player;
 using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.NewMediaPlayer.Service;
 using Com.Google.Android.Exoplayer2;
+using Java.Lang;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Plugin.Messenger;
+using Exception = System.Exception;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 
@@ -39,6 +41,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
     private IList<IMediaTrack> _lastQueue;
     private long _lastPosition;
     private decimal _lastPlaybackSpeed;
+    private SemaphoreSlim _connectSemaphoreSlim = new(1, 1);
 
     public AndroidMediaPlayer(
         IMediaQueue mediaQueue,
@@ -63,11 +66,13 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
 
     public Func<Task> AfterConnectedAction { get; set; }
 
-    public void Connect(Activity activity)
+    public async Task Connect(Activity activity)
     {
+        await _connectSemaphoreSlim.WaitAsync();
+        
         if (activity is null)
             throw new ArgumentException("Activity cant be null. First time please connect with activity.");
-        
+
         _activity = activity;
         if (_mediaBrowser == null)
         {
@@ -75,7 +80,9 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
             // which prevents us from stopping the music when BMM is killed (swiped out of recent apps).
             // The theory is that this is fixed by upgrading to ExoPlayer 0.9.0 once Xamarin supports D8/R8. Until then we accept that the music is stopped when leaving the app using the back button.
             _mediaBrowser = new MediaBrowserCompat(activity,
-                new ComponentName(activity, Java.Lang.Class.FromType(typeof(MusicService))), this, null);
+                new ComponentName(activity, Class.FromType(typeof(MusicService))),
+                this,
+                null);
         }
 
         if (_mediaBrowser.IsConnected)
@@ -323,6 +330,8 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
 
     public override async void OnConnected()
     {
+        _connectSemaphoreSlim.TryRelease();
+        
         IsConnected = true;
         if (_mediaController == null)
         {
@@ -371,11 +380,13 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
 
     public override void OnConnectionFailed()
     {
+        _connectSemaphoreSlim.TryRelease();
         Mvx.IoCProvider.Resolve<IPlayerAnalytics>().MediaBrowserConnectionFailed();
     }
 
     public override void OnConnectionSuspended()
     {
+        _connectSemaphoreSlim.TryRelease();
         Disconnect();
         Mvx.IoCProvider.Resolve<IPlayerAnalytics>().MediaBrowserConnectionSuspended();
     }

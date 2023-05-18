@@ -246,7 +246,7 @@ namespace BMM.UI.Droid.Application.Activities
             return _currentAppTheme != AppCompatDelegate.DefaultNightMode;
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             base.OnStart();
 
@@ -257,7 +257,7 @@ namespace BMM.UI.Droid.Application.Activities
                 _deepLinkHandler.SetReadyToOpenDeepLinkAndHandlePending();
             };
 
-            _androidPlayer.Connect(this);
+            await _androidPlayer.Connect(this);
         }
         
         private static async Task HandleNotification()

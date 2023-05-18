@@ -1,4 +1,8 @@
-﻿using BMM.UI.iOS.TableViewCell.Base;
+﻿using BMM.Api.Framework;
+using BMM.Core.Implementations.Analytics;
+using BMM.UI.iOS.TableViewCell.Base;
+using MvvmCross;
+using MvvmCross.Binding.Extensions;
 using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
@@ -43,8 +47,25 @@ namespace BMM.UI.iOS
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
         {
-            tableView.DeselectRow(indexPath, true);
-            base.RowSelected(tableView, indexPath);
+            try
+            {
+                tableView.DeselectRow(indexPath, true);
+                base.RowSelected(tableView, indexPath);
+            }
+            catch (Exception e)
+            {
+                Mvx
+                    .IoCProvider
+                    .Resolve<IAnalytics>()
+                    .LogEvent(
+                        $"{nameof(RowSelected)} error " +
+                        $"Type: {GetType()}",
+                        new Dictionary<string, object>()
+                        {
+                            {nameof(indexPath), indexPath.Row},
+                            {"item count", ItemsSource?.Count().ToString()}
+                        });
+            }
         }
         
         public override void WillDisplay(UITableView tableView, UITableViewCell cell, NSIndexPath indexPath)

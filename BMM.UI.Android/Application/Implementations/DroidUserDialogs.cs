@@ -15,6 +15,39 @@ namespace BMM.UI.Droid.Application.Implementations
         {
         }
 
+        protected override IDisposable Show(Activity activity, Func<Dialog> dialogBuilder)
+        {
+            if (activity == null)
+                return new DisposableAction(() => { });
+            
+            Dialog dialog = null;
+            activity.SafeRunOnUi(() =>
+            {
+                dialog = dialogBuilder();
+                dialog.Show();
+            });
+            return new DisposableAction(() =>
+                activity.SafeRunOnUi(dialog.Dismiss)
+            );
+        }
+        
+        protected override IDisposable ShowDialog<TFragment, TConfig>(AppCompatActivity activity, TConfig config)
+        {
+            if (activity == null)
+                return new DisposableAction(() => { });
+            
+            TFragment frag = null;
+            activity.SafeRunOnUi(() =>
+            {
+                frag = (TFragment)Activator.CreateInstance(typeof(TFragment));
+                frag.Config = config;
+                frag.Show(activity.SupportFragmentManager, FragmentTag);
+            });
+            return new DisposableAction(() =>
+                activity.SafeRunOnUi(frag.Dismiss)
+            );
+        }
+        
         protected override IDisposable ToastAppCompat(AppCompatActivity activity, ToastConfig cfg)
         {
             Snackbar snackBar = null;

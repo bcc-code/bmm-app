@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using AVFoundation;
 using CoreFoundation;
 using CoreMedia;
@@ -60,19 +61,25 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
 
             Player.AddObserver(this, RateObserver, InitialAndNewObservingOptions, RateObservationContext.Handle);
-
             _periodicTimeObserverObject = Player.AddPeriodicTimeObserver(new CMTime(1, 4), DispatchQueue.MainQueue, ObservePeriodicTimeEvent);
         }
 
         protected void DeinitializePlayer()
         {
-            if (_player is null)
-                return;
+            try
+            {
+                if (_player is null)
+                    return;
 
-            _player.RemoveTimeObserver(_periodicTimeObserverObject);
-            _player.RemoveObserver(this, RateObserver, RateObservationContext.Handle);
-
-            _player.Dispose();
+                _player.RemoveTimeObserver(_periodicTimeObserverObject);
+                _player.RemoveObserver(this, RateObserver, RateObservationContext.Handle);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            
+            _player?.Dispose();
             _player = null;
         }
 
