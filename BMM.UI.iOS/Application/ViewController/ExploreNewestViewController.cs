@@ -38,7 +38,7 @@ namespace BMM.UI.iOS
             var refreshControl = new MvxUIRefreshControl {TintColor = AppColors.RefreshControlTintColor};
             TrackTableView.RefreshControl = refreshControl;
 
-            var source = new NotSelectableDocumentsTableViewSource(TrackTableView);
+            var source = new PlaylistCollectionHoldingDocumentTableViewSource(TrackTableView);
 
             var set = this.CreateBindingSet<ExploreNewestViewController, ExploreNewestViewModel>();
 
