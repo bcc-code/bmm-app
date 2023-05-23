@@ -88,8 +88,11 @@ namespace BMM.UI.iOS.NewMediaPlayer
         {
             lock (_lock)
             {
+                if (!NSFileManager.DefaultManager.FileExists(FilePath))
+                    return;
+                
                 _writeHandle.SeekToEndOfFile();
-                _writeHandle.Write(data, out var error);
+                _writeHandle.Write(data, out _);
             }
         }
 

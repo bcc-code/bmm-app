@@ -48,7 +48,7 @@ namespace BMM.UI.iOS.Actions
                 .OfType<IMediaTrack>()
                 .ToList();
             
-            await _mediaPlayer.ShuffleList(mediaTracks, SiriUtils.CreatePlaybackOrigin(SiriSource.PlayMusic));
+            await _mediaPlayer.Play(mediaTracks, mediaTracks.First(), SiriUtils.CreatePlaybackOrigin(SiriSource.PlayMusic));
             return true;
         }
     }

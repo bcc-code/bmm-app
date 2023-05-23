@@ -8,9 +8,16 @@ namespace BMM.UI.Droid.Application.Implementations.UI
 {
     public class DroidUserDialogsFactory : IUserDialogsFactory
     {
+        private readonly IMvxAndroidCurrentTopActivity _mvxAndroidCurrentTopActivity;
+
+        public DroidUserDialogsFactory(IMvxAndroidCurrentTopActivity mvxAndroidCurrentTopActivity)
+        {
+            _mvxAndroidCurrentTopActivity = mvxAndroidCurrentTopActivity;
+        }
+        
         public IUserDialogs Create()
         {
-            var droidUserDialogs = new DroidUserDialogs(() => Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
+            var droidUserDialogs = new DroidUserDialogs(() => _mvxAndroidCurrentTopActivity.Activity);
             return droidUserDialogs;
         }
     }

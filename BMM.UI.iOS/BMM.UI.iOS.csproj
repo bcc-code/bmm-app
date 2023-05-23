@@ -299,13 +299,6 @@
     <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@3x.png" />
   </ItemGroup>
   
-  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
-  <NativeReference Include="$(HOME)\Library\Application Support\Reveal\RevealServer\RevealServer.xcframework">
-    <Kind>Framework</Kind>
-    <SmartLink>True</SmartLink>
-  </NativeReference>
-  </ItemGroup>
-  
   <ItemGroup>
     <None Remove="Resources\aslaksen.png" />
     <BundleResource Include="Resources\aslaksen.png" />

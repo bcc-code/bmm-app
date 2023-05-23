@@ -365,6 +365,9 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             View?.Post(() =>
             {
+                if (Context == null)
+                    return;
+                
                 int coverBottom = _coverContainer!.Bottom;
                 int titleLabelBottom = _titleLabel.Bottom;
                 int margin = Resources.GetDimensionPixelSize(Resource.Dimension.margin_xmedium);
