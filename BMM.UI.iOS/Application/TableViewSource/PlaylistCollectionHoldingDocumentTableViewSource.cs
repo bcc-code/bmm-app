@@ -5,12 +5,12 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public class BrowseDetailsTableViewSource : NotSelectableDocumentsTableViewSource
+    public class PlaylistCollectionHoldingDocumentTableViewSource : NotSelectableDocumentsTableViewSource
     {
         private readonly Dictionary<int, nfloat> _offsetDictionary = new();
         private bool _preventSavingOffsets;
 
-        public BrowseDetailsTableViewSource(UITableView tableView) : base(tableView)
+        public PlaylistCollectionHoldingDocumentTableViewSource(UITableView tableView) : base(tableView)
         {
         }
 

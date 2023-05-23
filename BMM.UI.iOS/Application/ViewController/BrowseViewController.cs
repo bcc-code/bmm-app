@@ -18,7 +18,7 @@ namespace BMM.UI.iOS
     public partial class BrowseViewController : BaseViewController<BrowseViewModel>, TTabbedViewController, IHaveLargeTitle
     {
         private bool _isRefreshing;
-        private BrowseDetailsTableViewSource _source;
+        private PlaylistCollectionHoldingDocumentTableViewSource _source;
         public double? InitialLargeTitleHeight { get; set; }
 
         public UIViewController[] TabViewControllers { get; private set; }
@@ -39,7 +39,7 @@ namespace BMM.UI.iOS
 
             BrowseTableView.RefreshControl = refreshControl;
 
-            _source = new BrowseDetailsTableViewSource(BrowseTableView);
+            _source = new PlaylistCollectionHoldingDocumentTableViewSource(BrowseTableView);
 
             var set = this.CreateBindingSet<BrowseViewController, BrowseViewModel>();
 
