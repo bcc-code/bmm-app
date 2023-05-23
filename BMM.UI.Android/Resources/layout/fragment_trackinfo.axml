@@ -7,12 +7,15 @@
     <include
         layout="@layout/toolbar_actionbar"
         android:layout_alignParentTop="true" />
-    <MvxListView
+    <MvvmCross.DroidX.RecyclerView.MvxRecyclerView
         android:id="@+id/trackinfo_list"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/appbar"
         android:listSelector="@android:color/transparent"
         android:divider="@null"
-        local:MvxBind="ItemsSource SectionedToFlatList(Sections); ItemClick ItemSelectedCommand" />
+        local:MvxTemplateSelector="@string/trackinfo_templateselector"
+        local:MvxBind="
+            ItemsSource SectionedToFlatList(Sections);
+            ItemClick ItemSelectedCommand" />
 </RelativeLayout>

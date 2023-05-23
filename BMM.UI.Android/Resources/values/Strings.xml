@@ -12,4 +12,5 @@
     <string name="change_track_language_templateselector">BMM.UI.Droid.Application.TemplateSelectors.ChangeTrackLanguageTemplateSelector, BMM.UI.Android</string>
     <string name="tiles_collection_templateselector">BMM.UI.Droid.Application.TemplateSelectors.TilesCollectionTemplateSelector, BMM.UI.Android</string>
     <string name="highlighted_text_template_selector">BMM.UI.Droid.Application.TemplateSelectors.HighlightedTextTemplateSelector, BMM.UI.Android</string>
+    <string name="trackinfo_templateselector">BMM.UI.Droid.Application.TemplateSelectors.TrackInfoTemplateSelector, BMM.UI.Android</string>
 </resources>

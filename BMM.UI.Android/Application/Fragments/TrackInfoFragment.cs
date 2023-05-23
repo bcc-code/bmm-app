@@ -17,12 +17,6 @@ namespace BMM.UI.Droid.Application.Fragments
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
-            var list = ParentActivity.FindViewById<MvxListView>(Resource.Id.trackinfo_list);
-            if (list != null)
-            {
-                list.Adapter = new TrackInfoAdapter(ParentActivity, (IMvxAndroidBindingContext)ParentActivity.BindingContext);
-            }
-
             Title = ViewModel.Track.Meta.Title;
             base.OnViewCreated(view, savedInstanceState);
         }
