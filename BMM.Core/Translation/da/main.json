@@ -517,12 +517,12 @@
     "SuccessfullyAddedToPlaylists": "Føjet til favoritter"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Automatisk transskriberet",
     "AddTo": "Tilføj til spilleliste",
     "Pause": "Pause",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it"
+    "AutoTranscribedPopupTitleText": "Transkriberinger genereres automatisk og kan indeholde fejl",
+    "AutoTranscribedPopupHeaderText": "Automatisk transskriberet",
+    "AutoTranscribedPopupSubtitleText": "Du vil snart kunne indsende rettelser direkte i appen.",
+    "AutoTranscribedPopupButtonText": "Forstået"
   }
 }
