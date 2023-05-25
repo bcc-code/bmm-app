@@ -65,7 +65,7 @@
                     <constraint firstItem="Hec-jk-J5o" firstAttribute="leading" secondItem="z3R-ii-7uy" secondAttribute="trailing" constant="8" id="jPI-vq-p5i"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="TextLabel" destination="hDX-eF-7oQ" id="HUC-Bm-mjr"/>
                 <outlet property="TitleLabel" destination="N0x-dX-XN5" id="snZ-Rl-j4c"/>
@@ -75,7 +75,7 @@
     </objects>
     <resources>
         <image name="icon_chevron_right.png" width="24" height="24"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

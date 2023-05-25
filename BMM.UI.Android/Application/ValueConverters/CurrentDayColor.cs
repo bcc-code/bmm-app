@@ -16,7 +16,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
             var dayToCheck = (DayOfWeek)dayAsInt;
             
             if (streak.DayOfTheWeek == dayToCheck && DateTime.UtcNow < streak.EligibleUntil.ToUniversalTime())
-                return mvxAndroidCurrentTopActivity.Activity.Resources!.GetString(Resource.Color.background_secondary_color);
+                return mvxAndroidCurrentTopActivity.Activity.Resources!.GetString(Resource.Color.background_two_color);
 
             return null;
         }

@@ -39,12 +39,12 @@
                                     <constraint firstAttribute="width" constant="32" id="4MP-Xp-eAa"/>
                                     <constraint firstAttribute="height" constant="32" id="eWB-e4-Lrd"/>
                                 </constraints>
-                                <color key="tintColor" name="LabelPrimaryColor"/>
+                                <color key="tintColor" name="LabelOneColor"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="IconDownArrow"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundSecondaryColor"/>
+                        <color key="backgroundColor" name="BackgroundTwoColor"/>
                         <constraints>
                             <constraint firstItem="MBy-tz-jeg" firstAttribute="centerY" secondItem="twU-W8-rQv" secondAttribute="centerY" id="KwM-oz-sCe"/>
                             <constraint firstItem="91b-M3-L9s" firstAttribute="centerY" secondItem="MBy-tz-jeg" secondAttribute="centerY" id="MeB-iq-uHG"/>
@@ -62,7 +62,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
-                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                <color key="backgroundColor" name="BackgroundOneColor"/>
                 <constraints>
                     <constraint firstItem="twU-W8-rQv" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="4" id="JzA-TN-JTw"/>
                     <constraint firstItem="twU-W8-rQv" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="gg8-ya-abR"/>
@@ -70,7 +70,7 @@
                     <constraint firstAttribute="trailing" secondItem="twU-W8-rQv" secondAttribute="trailing" constant="16" id="w24-AW-1uK"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="ContainerView" destination="twU-W8-rQv" id="PqG-QK-sDS"/>
                 <outlet property="ExpandButton" destination="91b-M3-L9s" id="dUx-U4-uB2"/>
@@ -82,13 +82,13 @@
     <resources>
         <image name="IconDownArrow" width="24" height="24"/>
         <image name="YearInReview" width="200" height="124"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="BackgroundSecondaryColor">
+        <namedColor name="BackgroundTwoColor">
             <color red="0.92549020051956177" green="0.94117647409439087" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="LabelPrimaryColor">
+        <namedColor name="LabelOneColor">
             <color red="0.050980392843484879" green="0.074509806931018829" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

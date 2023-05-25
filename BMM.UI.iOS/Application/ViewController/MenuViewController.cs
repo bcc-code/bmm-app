@@ -31,10 +31,10 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
             Delegate = new MenuVTabBarDelegate();
-            View.BackgroundColor = AppColors.BackgroundPrimaryColor;
-            TabBar.BarTintColor = AppColors.BackgroundPrimaryColor;
-            TabBar.TintColor = AppColors.LabelPrimaryColor;
-            TabBar.UnselectedItemTintColor = AppColors.LabelTertiaryColor;
+            View.BackgroundColor = AppColors.BackgroundOneColor;
+            TabBar.BarTintColor = AppColors.BackgroundOneColor;
+            TabBar.TintColor = AppColors.LabelOneColor;
+            TabBar.UnselectedItemTintColor = AppColors.LabelThreeColor;
             TabBar.AccessibilityIdentifier = "tab_bar";
             SetBottomBarAppearance();
         }
@@ -59,17 +59,17 @@ namespace BMM.UI.iOS
 
             var appearance = new UITabBarAppearance();
             appearance.ConfigureWithOpaqueBackground();
-            appearance.StackedLayoutAppearance.Selected.IconColor = AppColors.LabelPrimaryColor;
+            appearance.StackedLayoutAppearance.Selected.IconColor = AppColors.LabelOneColor;
             appearance.StackedLayoutAppearance.Selected.TitleTextAttributes = new UIStringAttributes
             {
-                ForegroundColor = AppColors.LabelPrimaryColor
+                ForegroundColor = AppColors.LabelOneColor
             };
-            appearance.StackedLayoutAppearance.Normal.IconColor = AppColors.LabelTertiaryColor;
+            appearance.StackedLayoutAppearance.Normal.IconColor = AppColors.LabelThreeColor;
             appearance.StackedLayoutAppearance.Normal.TitleTextAttributes = new UIStringAttributes
             {
-                ForegroundColor = AppColors.LabelTertiaryColor
+                ForegroundColor = AppColors.LabelThreeColor
             };
-            appearance.BackgroundColor = AppColors.BackgroundPrimaryColor;
+            appearance.BackgroundColor = AppColors.BackgroundOneColor;
             TabBar.StandardAppearance = appearance;
             
             if (!UIDevice.CurrentDevice.CheckSystemVersion(15, 0))

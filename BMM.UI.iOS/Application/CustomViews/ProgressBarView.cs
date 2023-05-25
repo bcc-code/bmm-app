@@ -57,7 +57,7 @@ namespace BMM.UI.iOS.CustomViews
             
             _backgroundView = new UIView(new CGRect(0, 0, Frame.Width, Frame.Height))
             {
-                BackgroundColor = AppColors.OnColorFiveColor
+                BackgroundColor = AppColors.SeparatorColor
             };
             
             Add(_backgroundView);
@@ -66,7 +66,7 @@ namespace BMM.UI.iOS.CustomViews
             
             _foregroundView = new UIView(new CGRect(0, 0, desiredWidth, Frame.Height))
             {
-                BackgroundColor = AppColors.OnColorOneColor
+                BackgroundColor = AppColors.GlobalBlackOneColor
             };
 
             Add(_foregroundView);

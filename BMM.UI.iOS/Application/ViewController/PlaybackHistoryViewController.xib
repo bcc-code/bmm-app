@@ -40,7 +40,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <constraints>
                         <constraint firstItem="T8B-3m-Y4n" firstAttribute="leading" secondItem="zt5-2t-Djq" secondAttribute="leading" id="PBH-qc-edE"/>
                         <constraint firstItem="T8B-3m-Y4n" firstAttribute="top" secondItem="sIL-i6-LRb" secondAttribute="bottom" constant="8" id="SKw-CQ-BVA"/>
@@ -53,14 +53,14 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wrC-aF-6zp">
                     <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.12705199420452118" green="0.15311096608638763" blue="0.18207567930221558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="sectionIndexBackgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="sectionIndexBackgroundColor" name="BackgroundOneColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="1Ot-pU-5Hd"/>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstItem="zt5-2t-Djq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="H3l-Tx-sNV"/>
                 <constraint firstAttribute="bottom" secondItem="wrC-aF-6zp" secondAttribute="bottom" id="OKY-zn-vvw"/>
@@ -74,7 +74,7 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

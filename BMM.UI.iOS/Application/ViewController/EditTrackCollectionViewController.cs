@@ -56,7 +56,7 @@ namespace BMM.UI.iOS
                 SeparatorStyle = UITableViewCellSeparatorStyle.None,
                 RowHeight = 64,
                 KeyboardDismissMode = UIScrollViewKeyboardDismissMode.OnDrag,
-                BackgroundColor = AppColors.BackgroundPrimaryColor
+                BackgroundColor = AppColors.BackgroundOneColor
             };
 
             var titleView = new TextViewWithDescription();

@@ -32,7 +32,7 @@
                 </view>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gPt-pI-Xv2">
                     <rect key="frame" x="0.0" y="75" width="393" height="500"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="500" id="RRv-LT-5wf"/>
                     </constraints>
@@ -68,7 +68,7 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VFw-uV-y3f"/>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstItem="KPx-94-Czz" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="1Ps-jL-fl7"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="keK-oa-jbs" secondAttribute="trailing" id="AbN-IP-D5d"/>
@@ -88,7 +88,7 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

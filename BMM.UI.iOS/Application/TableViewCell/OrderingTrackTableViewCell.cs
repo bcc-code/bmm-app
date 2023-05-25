@@ -75,7 +75,7 @@ namespace BMM.UI.iOS
                 ContentView.TrailingAnchor.ConstraintEqualTo(_metaLabel.TrailingAnchor, 16),
             });
 
-            BackgroundColor = AppColors.BackgroundPrimaryColor;
+            BackgroundColor = AppColors.BackgroundOneColor;
         }
     }
 }

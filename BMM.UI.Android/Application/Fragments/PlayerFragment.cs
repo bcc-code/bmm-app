@@ -145,7 +145,7 @@ namespace BMM.UI.Droid.Application.Fragments
             _coverContainer = view.FindViewById<FrameLayout>(Resource.Id.CoverContainer);
             _coverShadowLayout = view.FindViewById<ShadowLayout>(Resource.Id.CoverShadowLayout);
             _coverImage = view.FindViewById<BmmCachedImageView>(Resource.Id.CoverImageView);
-            _backgroundAccentColor = Context.GetColorFromResource(Resource.Color.background_secondary_color);
+            _backgroundAccentColor = Context.GetColorFromResource(Resource.Color.background_two_color);
             _titleLabel = view.FindViewById<TextView>(Resource.Id.TitleLabel);
             _coverContainer!.ClipToOutline = true;
             
@@ -314,10 +314,10 @@ namespace BMM.UI.Droid.Application.Fragments
             
             int accentColor = shouldTintBackground ?
                 ColorUtils.BlendARGB(
-                Context.GetColorFromResource(Resource.Color.background_secondary_color).ToArgb(),
+                Context.GetColorFromResource(Resource.Color.background_two_color).ToArgb(),
                 _coverMainColor.ToArgb(),
                 BackgroundAccentColorPercentageVolume)
-                : Context.GetColorFromResource(Resource.Color.background_secondary_color);
+                : Context.GetColorFromResource(Resource.Color.background_two_color);
 
             var newBackgroundAccentColor = new Color(accentColor);
             var animation = ValueAnimator.OfArgb(_backgroundAccentColor, newBackgroundAccentColor);

@@ -33,7 +33,7 @@
                         android:id="@+id/title_text_field"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/label_primary_color"
+                        android:textColor="@color/label_one_color"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:singleLine="true"

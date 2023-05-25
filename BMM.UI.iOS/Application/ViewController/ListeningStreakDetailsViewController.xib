@@ -57,7 +57,7 @@
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zkI-FN-2yw" userLabel="BottomBackgroundView">
                             <rect key="frame" x="0.0" y="572.33333333333337" width="375" height="195.66666666666663"/>
-                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                            <color key="backgroundColor" name="BackgroundOneColor"/>
                         </view>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o3y-oo-POo" userLabel="InnerContainer">
                             <rect key="frame" x="0.0" y="492.33333333333343" width="375" height="241.66666666666669"/>
@@ -277,7 +277,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4 hours and 23 minutes left today" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iG1-11-hMt">
                                                     <rect key="frame" x="0.0" y="28.333333333333258" width="343" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" name="LabelTertiaryColor"/>
+                                                    <color key="textColor" name="LabelThreeColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -296,17 +296,17 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 days in a row" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kxv-Vc-oCd">
                                                     <rect key="frame" x="0.0" y="0.0" width="171" height="19.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" name="LabelSecondaryColor"/>
+                                                    <color key="textColor" name="LabelTwoColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No perfect weeks, yet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="umD-XS-xlh">
                                                     <rect key="frame" x="188" y="0.0" width="171" height="19.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" name="LabelSecondaryColor"/>
+                                                    <color key="textColor" name="LabelTwoColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                                            <color key="backgroundColor" name="BackgroundOneColor"/>
                                             <constraints>
                                                 <constraint firstItem="bjs-fL-dfi" firstAttribute="centerX" secondItem="1ig-Wp-52N" secondAttribute="centerX" id="73l-cL-Efk"/>
                                                 <constraint firstItem="Kxv-Vc-oCd" firstAttribute="top" secondItem="1ig-Wp-52N" secondAttribute="top" id="KGD-O2-a72"/>
@@ -321,7 +321,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                                    <color key="backgroundColor" name="BackgroundOneColor"/>
                                     <constraints>
                                         <constraint firstItem="BmX-pS-FNQ" firstAttribute="leading" secondItem="tVY-SK-qWz" secondAttribute="leading" constant="16" id="5aD-NI-Esn"/>
                                         <constraint firstItem="BmX-pS-FNQ" firstAttribute="top" secondItem="tVY-SK-qWz" secondAttribute="top" constant="32" id="6pb-gR-bkn"/>
@@ -384,13 +384,13 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="LabelSecondaryColor">
+        <namedColor name="LabelTwoColor">
             <color red="0.36078432202339172" green="0.43921568989753723" blue="0.50980395078659058" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="LabelTertiaryColor">
+        <namedColor name="LabelThreeColor">
             <color red="0.56078433990478516" green="0.62745100259780884" blue="0.68627452850341797" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SeparatorColor">

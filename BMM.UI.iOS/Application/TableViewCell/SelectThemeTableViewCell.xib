@@ -44,7 +44,7 @@
                     <constraint firstAttribute="centerY" secondItem="YbA-4b-1C7" secondAttribute="centerY" id="x8n-w1-0u7"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="IsSelectedImage" destination="YbA-4b-1C7" id="ByY-w8-eCy"/>
                 <outlet property="TextLabel" destination="QTV-4p-tWY" id="urc-Nv-s35"/>
@@ -54,7 +54,7 @@
     </objects>
     <resources>
         <image name="SelectedIcon" width="24" height="24"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

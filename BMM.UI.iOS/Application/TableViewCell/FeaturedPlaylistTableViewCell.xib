@@ -56,7 +56,7 @@
                     <constraint firstItem="vuG-Ac-fcB" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="zPT-Ij-NHe"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="CoverImageView" destination="vuG-Ac-fcB" id="GDj-kc-uNs"/>
                 <outlet property="TitleLabel" destination="Emh-Me-E77" id="npd-cL-dUa"/>
@@ -67,7 +67,7 @@
     <resources>
         <image name="icon_chevron_right.png" width="24" height="24"/>
         <image name="placeholder_cover.png" width="840" height="840"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

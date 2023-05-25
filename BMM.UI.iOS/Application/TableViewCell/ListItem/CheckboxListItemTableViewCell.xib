@@ -50,7 +50,7 @@
                     <constraint firstAttribute="trailingMargin" secondItem="OcY-vN-BeE" secondAttribute="trailing" constant="67" id="ylW-T8-c44"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="Switch" destination="N9n-Ay-mVk" id="ayy-vy-acY"/>
                 <outlet property="TextLabel" destination="iOw-KR-vJW" id="BF2-BB-KMn"/>
@@ -60,7 +60,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

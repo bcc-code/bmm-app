@@ -42,7 +42,7 @@
                     <constraint firstItem="2Jc-r3-DmJ" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leadingMargin" constant="10" id="gqM-jB-adF"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="TitleLabel" destination="TBG-AM-Bdo" id="NRr-Rc-QtK"/>
             </connections>
@@ -51,7 +51,7 @@
     </objects>
     <resources>
         <image name="icon_trackrelation_external.png" width="36" height="36"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

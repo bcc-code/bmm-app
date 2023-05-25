@@ -31,7 +31,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="290" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="l4p-Fv-ZIK">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="dvX-pL-2wU">
@@ -110,7 +110,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                        <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstItem="t4g-Ns-abC" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="10u-2V-S4g"/>
                             <constraint firstItem="X8a-JW-eqF" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" id="6Su-md-ciW"/>
@@ -149,7 +149,7 @@
     <resources>
         <image name="ArrowRightIcon" width="24" height="24"/>
         <image name="placeholder_album.png" width="320" height="320"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemRedColor">

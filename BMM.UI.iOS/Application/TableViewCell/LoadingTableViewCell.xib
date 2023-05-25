@@ -26,7 +26,7 @@
                     <constraint firstAttribute="centerX" secondItem="ExD-QZ-uMz" secondAttribute="centerX" id="roR-1G-N8q"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="loadingSpinnerImageView" destination="ExD-QZ-uMz" id="K31-GK-9TP"/>
             </connections>
@@ -35,7 +35,7 @@
     </objects>
     <resources>
         <image name="loading_spinner.png" width="26" height="26"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

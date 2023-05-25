@@ -192,7 +192,7 @@
                         </subviews>
                     </stackView>
                 </subviews>
-                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                <color key="backgroundColor" name="BackgroundOneColor"/>
                 <constraints>
                     <constraint firstItem="UfQ-N0-TxI" firstAttribute="centerX" secondItem="CF2-jd-QQ1" secondAttribute="centerX" id="C48-Qd-6ML"/>
                     <constraint firstItem="kIx-ud-4Rb" firstAttribute="centerY" secondItem="CF2-jd-QQ1" secondAttribute="centerY" id="Cby-xC-MId"/>
@@ -228,7 +228,7 @@
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">

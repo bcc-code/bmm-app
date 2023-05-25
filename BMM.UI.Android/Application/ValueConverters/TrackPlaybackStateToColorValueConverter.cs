@@ -37,7 +37,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
             if (!trackState.IsAvailable)
                 return new Color(ContextCompat.GetColor(context,  Resource.Color.med_black));
 
-            return new Color(ContextCompat.GetColor(context,Resource.Color.label_primary_color));
+            return new Color(ContextCompat.GetColor(context,Resource.Color.label_one_color));
         }
     }
 }

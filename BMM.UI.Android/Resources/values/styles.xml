@@ -13,13 +13,13 @@
         <item name="fontFamily">@font/inter</item>
         <item name="android:textFontWeight">500</item>
         <item name="colorPrimary">@color/tint_color</item>
-        <item name="colorPrimaryDark">@color/background_primary_color</item>
+        <item name="colorPrimaryDark">@color/background_one_color</item>
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="windowActionModeOverlay">false</item>
-        <item name="android:navigationBarColor">@color/label_primary_reverted_color</item>
+        <item name="android:navigationBarColor">@color/label_one_reverted_color</item>
         <item name="android:windowBackground">@drawable/splashscreen</item>
 
         <item name="colorControlNormal">@color/gray</item>
@@ -41,19 +41,19 @@
         <item name="colorControlNormal">@color/tint_color</item>
         <item name="colorAccent">@color/black</item>
         <item name="android:textFontWeight">700</item>
-        <item name="android:textColorPrimary">@color/label_primary_color</item>
+        <item name="android:textColorPrimary">@color/label_one_color</item>
     </style>
 
     <style name="AppTheme.CollapseBarTextAppearance.Collapsed" parent="TextAppearance.AppCompat.Title">
         <item name="android:textStyle">bold</item>
         <item name="android:textFontWeight">700</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="AppTheme.CollapseBarTextAppearance.Expanded" parent="TextAppearance.Design.CollapsingToolbar.Expanded">
         <item name="android:textStyle">bold</item>
         <item name="android:textFontWeight">700</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="AppTheme.Tab">
@@ -87,7 +87,7 @@
     </style>
 
     <style name="AppTheme.BottomNavigationTheme" parent="AppTheme.Base">
-        <item name="colorPrimary">@color/label_primary_color</item>
+        <item name="colorPrimary">@color/label_one_color</item>
         <item name="itemTextColor">@color/navigation_color_selector</item>
         <item name="itemIconTint">@color/navigation_color_selector</item>
         <item name="android:textFontWeight">600</item>
@@ -124,7 +124,7 @@
     <style name="Heading2">
         <item name="android:textSize">28sp</item>
         <item name="android:lineHeight">32sp</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
         <item name="android:textFontWeight">800</item>
     </style>
 
@@ -139,15 +139,15 @@
     </style>
 
     <style name="Subtitle1_Label1" parent="Subtitle1">
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="Subtitle1_Label2" parent="Subtitle1">
-        <item name="android:textColor">@color/label_secondary_color</item>
+        <item name="android:textColor">@color/label_two_color</item>
     </style>
     
     <style name="Subtitle1_Label3" parent="Subtitle1">
-        <item name="android:textColor">@color/label_tertiary_color</item>
+        <item name="android:textColor">@color/label_three_color</item>
     </style>
 
     <style name="Subtitle1_TintColor" parent="Subtitle1">
@@ -161,15 +161,15 @@
     </style>
 
     <style name="Subtitle2_Label1" parent="Subtitle2">
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="Subtitle2_Label2" parent="Subtitle2">
-        <item name="android:textColor">@color/label_secondary_color</item>
+        <item name="android:textColor">@color/label_two_color</item>
     </style>
 
     <style name="Subtitle2_Label3" parent="Subtitle2">
-        <item name="android:textColor">@color/label_tertiary_color</item>
+        <item name="android:textColor">@color/label_three_color</item>
     </style>
 
     <style name="Subtitle3">
@@ -179,28 +179,28 @@
     </style>
 
     <style name="Subtitle3_Label1" parent="Subtitle3">
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="Subtitle3_Label2" parent="Subtitle3">
-        <item name="android:textColor">@color/label_secondary_color</item>
+        <item name="android:textColor">@color/label_two_color</item>
     </style>
 
     <style name="Subtitle3_Label3" parent="Subtitle3">
-        <item name="android:textColor">@color/label_tertiary_color</item>
+        <item name="android:textColor">@color/label_three_color</item>
     </style>
 
     <style name="Subtitle3_Label4" parent="Subtitle3">
         <item name="android:textColor">@color/placeholder_color</item>
     </style>
     
-    <style name="Subtitle3_OnColor1" parent="Subtitle3">
-        <item name="android:textColor">@color/on_color_one_color</item>
+    <style name="Subtitle3_GlobalBlack1" parent="Subtitle3">
+        <item name="android:textColor">@color/global_black_one</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
-    <style name="Subtitle3_OnColor2" parent="Subtitle3">
-        <item name="android:textColor">@color/on_color_two_color</item>
+    <style name="Subtitle3_GlobalBlack2" parent="Subtitle3">
+        <item name="android:textColor">@color/global_black_two</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
@@ -208,43 +208,43 @@
         <item name="android:textSize">18sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">700</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
     
-    <style name="Title1_OnColor1" parent="Title1">
-        <item name="android:textColor">@color/on_color_one_color</item>
+    <style name="Title1_GlobalBlack1" parent="Title1">
+        <item name="android:textColor">@color/global_black_one</item>
     </style>
 
     <style name="Title2">
         <item name="android:textSize">16sp</item>
         <item name="android:lineHeight">20sp</item>
         <item name="android:textFontWeight">700</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="Title3">
         <item name="android:textSize">14sp</item>
         <item name="android:lineHeight">20sp</item>
         <item name="android:textFontWeight">800</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="Title4">
         <item name="android:textSize">20sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">400</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
 
     <style name="Paragraph1">
         <item name="android:textSize">17sp</item>
         <item name="android:lineHeight">28sp</item>
         <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/label_secondary_color</item>
+        <item name="android:textColor">@color/label_two_color</item>
     </style>
 
-    <style name="Paragraph1_OnColor2" parent="Paragraph1">
-        <item name="android:textColor">@color/on_color_two_color</item>
+    <style name="Paragraph1_GlobalBlack2" parent="Paragraph1">
+        <item name="android:textColor">@color/global_black_two</item>
         <item name="android:includeFontPadding">false</item>
     </style>
 
@@ -252,25 +252,25 @@
         <item name="android:textSize">15sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/label_secondary_color</item>
+        <item name="android:textColor">@color/label_two_color</item>
     </style>
 
     <style name="Paragraph3_Label1">
         <item name="android:textSize">13sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
     </style>
     
     <style name="Paragraph3">
         <item name="android:textSize">13sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">500</item>
-        <item name="android:textColor">@color/label_tertiary_color</item>
+        <item name="android:textColor">@color/label_three_color</item>
     </style>
 
     <style name="Button_Primary" parent="android:Widget.Material.Button.Borderless">
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
         <item name="android:background">@drawable/button_background_rounded</item>
         <item name="android:foreground">@drawable/button_ripple</item>
         <item name="android:textFontWeight">700</item>
@@ -285,25 +285,25 @@
         <item name="android:minHeight">40dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
-        <item name="backgroundTint">@color/label_primary_reverted_color</item>
+        <item name="backgroundTint">@color/label_one_reverted_color</item>
     </style>
 
     <style name="Button_Primary_Medium" parent="Button_Primary">
-        <item name="backgroundTint">@color/label_primary_color</item>
-        <item name="android:textColor">@color/label_primary_reverted_color</item>
+        <item name="backgroundTint">@color/label_one_color</item>
+        <item name="android:textColor">@color/label_one_reverted_color</item>
     </style>
     
     <style name="Button_Primary_Large" parent="Button_Primary">
         <item name="android:height">@dimen/large_button_height</item>
-        <item name="backgroundTint">@color/label_primary_color</item>
-        <item name="android:textColor">@color/label_primary_reverted_color</item>
+        <item name="backgroundTint">@color/label_one_color</item>
+        <item name="android:textColor">@color/label_one_reverted_color</item>
     </style>
     
     <style name="IconButton_Primary" parent="Button_Primary">
         <item name="android:paddingLeft">10dp</item>
         <item name="android:drawablePadding">6dp</item>
-        <item name="backgroundTint">@color/label_primary_color</item>
-        <item name="android:textColor">@color/label_primary_reverted_color</item>
+        <item name="backgroundTint">@color/label_one_color</item>
+        <item name="android:textColor">@color/label_one_reverted_color</item>
     </style>
 
     <style name="IconButton_Primary_Large" parent="IconButton_Primary">
@@ -313,12 +313,12 @@
     </style>
 
     <style name="Button_Secondary" parent="Button_Primary">
-        <item name="android:textColor">@color/label_primary_color</item>
-        <item name="backgroundTint">@color/background_secondary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
+        <item name="backgroundTint">@color/background_two_color</item>
     </style>
 
     <style name="Button_Tertiary">
-        <item name="android:textColor">@color/label_primary_color</item>
+        <item name="android:textColor">@color/label_one_color</item>
         <item name="android:background">@drawable/button_background_rounded_transparent</item>
         <item name="android:foreground">@drawable/button_ripple</item>
         <item name="android:textFontWeight">700</item>

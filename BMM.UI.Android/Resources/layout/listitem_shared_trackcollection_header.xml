@@ -11,7 +11,7 @@
             android:layout_height="@dimen/playlist_icon_dimen"
             android:src="@drawable/icon_playlist"
             android:layout_marginTop="@dimen/margin_large"
-            android:tint="@color/label_primary_color"
+            android:tint="@color/label_one_color"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintTop_toTopOf="parent" />

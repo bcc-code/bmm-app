@@ -102,7 +102,7 @@
         android:layout_height="wrap_content"
         android:paddingStart="@dimen/padding_medium"
         android:src="@drawable/icon_link"
-        android:tint="@color/label_primary_color"
+        android:tint="@color/label_one_color"
         local:layout_constraintTop_toTopOf="parent"
         local:layout_constraintEnd_toStartOf="@+id/image_button_options"
         local:layout_constraintBottom_toBottomOf="parent"

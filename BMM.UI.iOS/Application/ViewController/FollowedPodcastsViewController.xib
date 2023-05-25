@@ -25,7 +25,7 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="OSv-HY-MpF" userLabel="Podcast Collection View">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="10" id="hki-Lj-cpW">
                         <size key="itemSize" width="140" height="180"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -59,7 +59,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                            <color key="backgroundColor" name="BackgroundOneColor"/>
                             <constraints>
                                 <constraint firstAttribute="centerX" secondItem="70k-uk-klf" secondAttribute="centerX" id="4ZM-CD-2eD"/>
                                 <constraint firstItem="pnf-ZT-ZVI" firstAttribute="leading" secondItem="k9N-gz-fTK" secondAttribute="leading" id="5TX-p9-hkH"/>
@@ -73,7 +73,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="k9N-gz-fTK" secondAttribute="trailing" constant="40" id="3ch-yK-LfJ"/>
                         <constraint firstAttribute="centerY" secondItem="k9N-gz-fTK" secondAttribute="centerY" constant="20" id="Sl4-QW-AE1"/>
@@ -81,7 +81,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstItem="hu2-Im-NHR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8nQ-JR-snC"/>
                 <constraint firstItem="hu2-Im-NHR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="QPN-9o-9m8"/>
@@ -93,7 +93,7 @@
     </objects>
     <resources>
         <image name="icon_category_playlist.png" width="36" height="36"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

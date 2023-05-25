@@ -10,154 +10,154 @@ namespace BMM.UI.iOS.Constants
         public static TextTheme Heading2 = new TextTheme
         {
             Font = Typography.Header2.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
 
         public static TextTheme Title1 = new TextTheme
         {
             Font = Typography.Title1.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
 
         public static TextTheme Title1Label1Reverted = new TextTheme
         {
             Font = Typography.Title1.Value,
-            Color = AppColors.LabelPrimaryColorReverted
+            Color = AppColors.LabelOneColorReverted
         };
         
-        public static TextTheme Title1OnColor1 = new TextTheme
+        public static TextTheme Title1GlobalBlack1 = new TextTheme
         {
             Font = Typography.Title1.Value,
-            Color = AppColors.OnColorOneColor
+            Color = AppColors.GlobalBlackOneColor
         };
 
         public static TextTheme Title2 = new TextTheme
         {
             Font = Typography.Title2.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
         
         public static TextTheme Title2AutoSize = new TextTheme
         {
             Font = Typography.Title2.Value,
-            Color = AppColors.LabelPrimaryColor,
+            Color = AppColors.LabelOneColor,
             MinimumFontSize = 10
         };
         
         public static TextTheme Title3 = new TextTheme
         {
             Font = Typography.Title3.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
 
         public static TextTheme Heading3 = new TextTheme
         {
             Font = Typography.Header3.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
         
         public static TextTheme Heading3AutoSize = new TextTheme
         {
             Font = Typography.Header3.Value,
-            Color = AppColors.LabelPrimaryColor,
+            Color = AppColors.LabelOneColor,
             MinimumFontSize = 10
         };
 
         public static TextTheme Paragraph1Label1 = new TextTheme
         {
             Font = Typography.Paragraph1.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
 
         public static TextTheme Paragraph1Label2 = new TextTheme
         {
             Font = Typography.Paragraph1.Value,
-            Color = AppColors.LabelSecondaryColor
+            Color = AppColors.LabelTwoColor
         };
         
-        public static TextTheme Paragraph1OnColor2 = new TextTheme
+        public static TextTheme Paragraph1GlobalBlack2 = new TextTheme
         {
             Font = Typography.Paragraph1.Value,
-            Color = AppColors.OnColorTwoColor
+            Color = AppColors.GlobalBlackTwoColor
         };
 
         public static TextTheme Paragraph2 = new TextTheme
         {
             Font = Typography.Paragraph2.Value,
-            Color = AppColors.LabelSecondaryColor
+            Color = AppColors.LabelTwoColor
         };
         
         public static TextTheme Paragraph3Label1 = new TextTheme
         {
             Font = Typography.Paragraph3.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
         
         public static TextTheme Paragraph3 = new TextTheme
         {
             Font = Typography.Paragraph3.Value,
-            Color = AppColors.LabelTertiaryColor
+            Color = AppColors.LabelThreeColor
         };
 
         public static TextTheme Subtitle1Label1 = new TextTheme
         {
             Font = Typography.Subtitle1.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
         
         public static TextTheme Subtitle1Label2 = new TextTheme
         {
             Font = Typography.Subtitle1.Value,
-            Color = AppColors.LabelSecondaryColor
+            Color = AppColors.LabelTwoColor
         };
         
         public static TextTheme Subtitle1Label3 = new TextTheme
         {
             Font = Typography.Subtitle1.Value,
-            Color = AppColors.LabelTertiaryColor
+            Color = AppColors.LabelThreeColor
         };
 
         public static TextTheme Subtitle2Label1 = new TextTheme
         {
             Font = Typography.Subtitle2.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
 
         public static TextTheme Subtitle2Label2 => new TextTheme
         {
             Font = Typography.Subtitle2.Value,
-            Color = AppColors.LabelSecondaryColor
+            Color = AppColors.LabelTwoColor
         };
 
         public static TextTheme Subtitle2Label3 = new TextTheme
         {
             Font = Typography.Subtitle2.Value,
-            Color = AppColors.LabelTertiaryColor
+            Color = AppColors.LabelThreeColor
         };
         
         public static TextTheme Subtitle2Label3AutoSize = new TextTheme
         {
             Font = Typography.Subtitle2.Value,
-            Color = AppColors.LabelTertiaryColor,
+            Color = AppColors.LabelThreeColor,
             MinimumFontSize = 10
         };
 
         public static TextTheme Subtitle3Label1 = new TextTheme
         {
             Font = Typography.Subtitle3.Value,
-            Color = AppColors.LabelPrimaryColor
+            Color = AppColors.LabelOneColor
         };
 
         public static TextTheme Subtitle3Label2 => new TextTheme
         {
             Font = Typography.Subtitle3.Value,
-            Color = AppColors.LabelSecondaryColor
+            Color = AppColors.LabelTwoColor
         };
 
         public static TextTheme Subtitle3Label3 = new TextTheme
         {
             Font = Typography.Subtitle3.Value,
-            Color = AppColors.LabelTertiaryColor
+            Color = AppColors.LabelThreeColor
         };
         
         public static TextTheme Subtitle3Label4 = new TextTheme
@@ -166,43 +166,37 @@ namespace BMM.UI.iOS.Constants
             Color = AppColors.PlaceholderColor
         };
         
-        public static TextTheme Subtitle3Label3Light = new TextTheme
+        public static TextTheme Subtitle3GlobalBlack1 = new TextTheme
         {
             Font = Typography.Subtitle3.Value,
-            Color = AppColors.LabelLightTertiaryColor
+            Color = AppColors.GlobalBlackOneColor
         };
         
-        public static TextTheme Subtitle3OnColor1 = new TextTheme
+        public static TextTheme Subtitle3GlobalBlack2 = new TextTheme
         {
             Font = Typography.Subtitle3.Value,
-            Color = AppColors.OnColorOneColor
-        };
-        
-        public static TextTheme Subtitle3OnColor2 = new TextTheme
-        {
-            Font = Typography.Subtitle3.Value,
-            Color = AppColors.OnColorTwoColor
+            Color = AppColors.GlobalBlackTwoColor
         };
 
         public static readonly ButtonTheme ButtonPrimary = new StandardButtonTheme
         {
             TextTheme = Title1Label1Reverted,
-            ButtonColor = AppColors.LabelPrimaryColor,
-            IconTint = AppColors.LabelPrimaryColorReverted
+            ButtonColor = AppColors.LabelOneColor,
+            IconTint = AppColors.LabelOneColorReverted
         };
 
         public static readonly ButtonTheme ButtonSecondaryMedium = new StandardButtonTheme
         {
             TextTheme = Title1,
-            ButtonColor = AppColors.BackgroundSecondaryColor,
-            IconTint = AppColors.LabelPrimaryColor
+            ButtonColor = AppColors.BackgroundTwoColor,
+            IconTint = AppColors.LabelOneColor
         };
 
         public static readonly ButtonTheme ButtonSecondarySmall = new StandardButtonTheme
         {
             TextTheme = Title2,
-            ButtonColor = AppColors.BackgroundSecondaryColor,
-            IconTint = AppColors.LabelPrimaryColor
+            ButtonColor = AppColors.BackgroundTwoColor,
+            IconTint = AppColors.LabelOneColor
         };
         
         public static readonly ButtonTheme ButtonTertiaryMedium = new StandardButtonTheme
@@ -215,12 +209,12 @@ namespace BMM.UI.iOS.Constants
             ContentEdgeInsets = UIEdgeInsets.Zero
         };
         
-        public static readonly ButtonTheme ButtonTertiaryMediumOnColorFive = new StandardButtonTheme
+        public static readonly ButtonTheme ButtonTertiaryMediumSeparatorColorFive = new StandardButtonTheme
         {
             TextTheme = Title1,
             ButtonColor = UIColor.Clear,
             HasBorder = true,
-            BorderColor = AppColors.OnColorFiveColor,
+            BorderColor = AppColors.SeparatorColor,
             ImageEdgeInsets = UIEdgeInsets.Zero,
             ContentEdgeInsets = UIEdgeInsets.Zero
         };
@@ -230,8 +224,8 @@ namespace BMM.UI.iOS.Constants
         public static readonly ButtonTheme YearInReviewButton = new StandardButtonTheme
         {
             TextTheme = Title1,
-            ButtonColor = AppColors.BackgroundPrimaryColor,
-            IconTint = AppColors.LabelPrimaryColor,
+            ButtonColor = AppColors.BackgroundOneColor,
+            IconTint = AppColors.LabelOneColor,
             ImageEdgeInsets = new UIEdgeInsets(0, 6, 0, 16)
         };
 
@@ -240,7 +234,7 @@ namespace BMM.UI.iOS.Constants
             TextTheme = new TextTheme
             {
                 Font = Typography.Title1.Value,
-                Color = AppColors.LabelPrimaryColor,
+                Color = AppColors.LabelOneColor,
                 MinimumFontSize = 8
             },
             ButtonColor = UIColor.Clear,
@@ -255,11 +249,11 @@ namespace BMM.UI.iOS.Constants
             TextTheme = new TextTheme
             {
                 Font = Typography.Title1.Value,
-                Color = AppColors.LabelPrimaryColorReverted.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
+                Color = AppColors.LabelOneColorReverted.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
                 MinimumFontSize = 10
             },
-            ButtonColor = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
-            IconTint = AppColors.LabelPrimaryColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light)
+            ButtonColor = AppColors.LabelOneColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light),
+            IconTint = AppColors.LabelOneColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light)
         };
         
         public static readonly ButtonTheme CancelSearchButton = new StandardButtonTheme

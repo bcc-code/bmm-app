@@ -144,7 +144,7 @@ namespace BMM.UI.iOS
 
             _selectorView = new UIView()
             {
-                BackgroundColor = AppColors.LabelPrimaryColor
+                BackgroundColor = AppColors.LabelOneColor
             };
 
             _separatorView = new UIView()

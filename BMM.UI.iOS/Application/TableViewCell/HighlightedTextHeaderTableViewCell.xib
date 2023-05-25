@@ -52,7 +52,7 @@
                     <constraint firstItem="YJQ-vH-ddd" firstAttribute="top" secondItem="8R7-wK-utq" secondAttribute="bottom" constant="24" id="zje-tq-ySl"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="HeaderLabel" destination="6WH-76-0K9" id="OJa-sH-FYE"/>
             </connections>
@@ -61,7 +61,7 @@
     </objects>
     <resources>
         <image name="IconAI" width="20" height="20"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SeparatorLightColor">

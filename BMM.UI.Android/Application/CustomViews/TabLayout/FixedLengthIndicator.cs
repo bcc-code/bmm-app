@@ -71,7 +71,7 @@ namespace BMM.UI.Droid.Application.CustomViews.TabLayout
             _indicatorPaint = new Paint(PaintFlags.AntiAlias);
             _underLinePaint = new Paint(PaintFlags.AntiAlias);
             _lastPosition = Resources.DisplayMetrics.WidthPixels / 2;
-            IndicatorColor = Context.GetColorFromResource(Resource.Color.label_primary_color);
+            IndicatorColor = Context.GetColorFromResource(Resource.Color.label_one_color);
             SetWillNotDraw(false);
         }
 

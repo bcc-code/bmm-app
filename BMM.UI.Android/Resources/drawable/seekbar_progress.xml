@@ -14,7 +14,7 @@
       <shape android:shape="rectangle">
           <size android:height="5dp" />
           <corners android:radius="20dp" />
-          <solid android:color="@color/label_secondary_color"/>
+          <solid android:color="@color/label_two_color"/>
       </shape>
     </clip>
   </item>
@@ -24,7 +24,7 @@
       <shape android:shape="rectangle">
         <size android:height="5dp" />
         <corners android:radius="20dp" />
-        <solid android:color="@color/label_primary_color"/>
+        <solid android:color="@color/label_one_color"/>
       </shape>
     </clip>
   </item>

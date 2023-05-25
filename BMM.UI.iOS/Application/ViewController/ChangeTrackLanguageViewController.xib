@@ -21,10 +21,10 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wrC-aF-6zp">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.12705199420452118" green="0.15311096608638763" blue="0.18207567930221558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="sectionIndexColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <color key="sectionIndexBackgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="sectionIndexBackgroundColor" name="BackgroundOneColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="0.047047488391399384" green="0.060586217790842056" blue="0.078763902187347412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -38,7 +38,7 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -37,9 +37,9 @@ namespace BMM.UI.Droid.Application.ViewHolders
             {
                 _isSelected = value;
                 if (_isSelected)
-                    _textView.SetTextColor(ItemView.Context.GetColorFromResource(Resource.Color.label_primary_color));
+                    _textView.SetTextColor(ItemView.Context.GetColorFromResource(Resource.Color.label_one_color));
                 else
-                    _textView.SetTextColor(ItemView.Context.GetColorFromResource(Resource.Color.label_tertiary_color));
+                    _textView.SetTextColor(ItemView.Context.GetColorFromResource(Resource.Color.label_three_color));
             }
         }
     }

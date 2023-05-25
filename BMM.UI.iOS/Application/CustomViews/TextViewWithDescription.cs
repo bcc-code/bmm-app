@@ -57,7 +57,7 @@ namespace BMM.UI.iOS
             };
 
             TitleTextField.Font = Typography.Header3.Value;
-            TitleTextField.TextColor = AppColors.LabelPrimaryColor;
+            TitleTextField.TextColor = AppColors.LabelOneColor;
 
             TitleTextField.Started += TitleTextFieldOnEditingChanged;
             TitleTextField.Ended += TitleTextFieldOnEditingChanged;
@@ -65,7 +65,7 @@ namespace BMM.UI.iOS
             Layer.CornerRadius = 16;
             Layer.BorderWidth = 2;
             Layer.BorderColor = UIColor.Clear.CGColor;
-            BackgroundColor = AppColors.BackgroundSecondaryColor;
+            BackgroundColor = AppColors.BackgroundTwoColor;
             AddSubview(TitleLabel);
             AddSubview(TitleTextField);
 
@@ -87,12 +87,12 @@ namespace BMM.UI.iOS
             var textField = (UITextField)sender;
             if (textField.IsEditing)
             {
-                BackgroundColor = AppColors.BackgroundPrimaryColor;
+                BackgroundColor = AppColors.BackgroundOneColor;
                 BorderColor = AppColors.TintColor;
             }
             else
             {
-                BackgroundColor = AppColors.BackgroundSecondaryColor;
+                BackgroundColor = AppColors.BackgroundTwoColor;
                 BorderColor = UIColor.Clear;
             }
         }

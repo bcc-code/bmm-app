@@ -27,7 +27,7 @@ namespace BMM.UI.iOS
         {
             base.AwakeFromNib();
             TextLabel.ApplyTextTheme(AppTheme.Title2);
-            IsSelectedImage.TintColor = AppColors.LabelPrimaryColor;
+            IsSelectedImage.TintColor = AppColors.LabelOneColor;
         }
     }
 }

@@ -12,7 +12,7 @@
             android:background="@drawable/icon_playlist"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:backgroundTint="@color/label_primary_color"
+            android:backgroundTint="@color/label_one_color"
             app:MvxBind="Visibility Visibility(ShowPlaylistIcon)"/>
 
     <androidx.cardview.widget.CardView

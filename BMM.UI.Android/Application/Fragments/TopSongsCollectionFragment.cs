@@ -28,7 +28,7 @@ namespace BMM.UI.Droid.Application.Fragments
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             var recyclerView = view.FindViewById<MvxRecyclerView>(Resource.Id.DocumentsRecyclerView);
             recyclerView!.Adapter = new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext, ViewTypes.TopSongsCollectionHeader);
-            view.SetBackgroundColor(Context.GetColorFromResource(Resource.Color.background_primary_color));
+            view.SetBackgroundColor(Context.GetColorFromResource(Resource.Color.background_one_color));
             Toolbar.NavigationIcon = null;
             return view;
         }
