@@ -111,7 +111,7 @@ namespace BMM.UI.iOS
                 set.Apply();
 
                 var animation = LOTAnimationView.AnimationNamed(LottieAnimationsNames.PlayAnimationIcon);
-                animation.BackgroundColor = AppColors.OnColorOneColor;
+                animation.BackgroundColor = AppColors.GlobalBlackOneColor;
                 animation.LoopAnimation = true;
 
                 PlayButton!.AddAnimation(animation);
@@ -183,12 +183,12 @@ namespace BMM.UI.iOS
         {
             base.AwakeFromNib();
             ProgressBarWidthConstraint.Constant = ContentWidthHelper.Frame.Width / 2;
-            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMediumOnColorFive);
-            SubtitleLabel.ApplyTextTheme(AppTheme.Paragraph1OnColor2);
-            TitleLabel.ApplyTextTheme(AppTheme.Title1OnColor1);
-            DayOfWeekLabel.ApplyTextTheme(AppTheme.Subtitle3OnColor1);
-            RemainingLabel.ApplyTextTheme(AppTheme.Subtitle3OnColor1);
-            DateLabel.ApplyTextTheme(AppTheme.Subtitle3OnColor2);
+            ShuffleButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMediumSeparatorColorFive);
+            SubtitleLabel.ApplyTextTheme(AppTheme.Paragraph1GlobalBlack2);
+            TitleLabel.ApplyTextTheme(AppTheme.Title1GlobalBlack1);
+            DayOfWeekLabel.ApplyTextTheme(AppTheme.Subtitle3GlobalBlack1);
+            RemainingLabel.ApplyTextTheme(AppTheme.Subtitle3GlobalBlack1);
+            DateLabel.ApplyTextTheme(AppTheme.Subtitle3GlobalBlack2);
         }
     }
 }

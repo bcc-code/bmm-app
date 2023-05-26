@@ -14,7 +14,7 @@
                 android:scrollbars="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/match_constraint"
-                android:background="@color/background_primary_color"
+                android:background="@color/background_one_color"
                 local:layout_constraintTop_toBottomOf="@+id/Toolbar"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:MvxTemplateSelector="@string/change_track_language_templateselector"

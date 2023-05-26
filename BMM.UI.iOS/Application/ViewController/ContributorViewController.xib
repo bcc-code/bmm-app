@@ -26,7 +26,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="300" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="j3y-Vn-SGF">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="Ako-r9-04a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="412"/>
@@ -80,7 +80,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                        <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstItem="M3f-Rj-KTR" firstAttribute="leading" secondItem="Ako-r9-04a" secondAttribute="leading" constant="16" id="2EE-6B-Fio"/>
                             <constraint firstItem="M3f-Rj-KTR" firstAttribute="top" secondItem="2n8-qE-zSh" secondAttribute="bottom" constant="20" id="2M6-gk-BSQ"/>
@@ -102,7 +102,7 @@
                     </view>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstItem="j3y-Vn-SGF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Su-1o-hpn"/>
                 <constraint firstAttribute="bottom" secondItem="j3y-Vn-SGF" secondAttribute="bottom" id="OFY-9X-Gv5"/>
@@ -115,7 +115,7 @@
     <resources>
         <image name="ArrowRightIcon" width="24" height="24"/>
         <image name="placeholder_artist.png" width="320" height="320"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemYellowColor">

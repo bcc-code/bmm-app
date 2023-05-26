@@ -188,7 +188,7 @@ namespace BMM.UI.iOS
             var featureSupportInfoService = Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>();
 
             return featureSupportInfoService.SupportsDarkMode
-                ? AppColors.LabelPrimaryColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection).CGColor
+                ? AppColors.LabelOneColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection).CGColor
                 : UIColor.Black.CGColor;
         }
 

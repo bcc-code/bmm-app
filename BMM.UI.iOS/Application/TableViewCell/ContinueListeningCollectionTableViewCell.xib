@@ -19,7 +19,7 @@
                 <subviews>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="FZu-HB-bVg">
                         <rect key="frame" x="0.0" y="0.0" width="437" height="332"/>
-                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                        <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="999" constant="332" id="oFQ-ME-SfV"/>
                         </constraints>
@@ -38,7 +38,7 @@
                     <constraint firstAttribute="bottom" secondItem="FZu-HB-bVg" secondAttribute="bottom" constant="16" id="mX4-vW-IB0"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="ContinueListeningCollection" destination="FZu-HB-bVg" id="NON-F9-bQy"/>
             </connections>
@@ -46,7 +46,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

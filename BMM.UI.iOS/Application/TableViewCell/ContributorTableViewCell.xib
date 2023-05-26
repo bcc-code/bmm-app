@@ -63,7 +63,7 @@
                     <constraint firstItem="Emh-Me-E77" firstAttribute="leading" secondItem="vuG-Ac-fcB" secondAttribute="trailing" constant="10" id="zVA-S7-Eqk"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="CoverImageView" destination="vuG-Ac-fcB" id="GDj-kc-uNs"/>
                 <outlet property="OptionsButton" destination="Ecr-3n-9QL" id="SCu-Vz-bPS"/>
@@ -76,7 +76,7 @@
         <image name="btn_options_active@3x.png" width="69" height="69"/>
         <image name="btn_options_static.png" width="24" height="24"/>
         <image name="icon_contributor_fallback.png" width="44" height="44"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

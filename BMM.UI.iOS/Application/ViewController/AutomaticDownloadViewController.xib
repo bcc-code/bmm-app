@@ -22,7 +22,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="n42-y9-F4K">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="8pH-Od-2Sh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
@@ -35,7 +35,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                        <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstItem="20H-gy-OYE" firstAttribute="centerX" secondItem="8pH-Od-2Sh" secondAttribute="centerX" id="2s8-iB-nXj"/>
                             <constraint firstAttribute="trailing" secondItem="20H-gy-OYE" secondAttribute="trailing" constant="20" id="6g9-WC-aB7"/>
@@ -45,7 +45,7 @@
                     </view>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="n42-y9-F4K" secondAttribute="bottom" id="3ce-iT-qCK"/>
                 <constraint firstItem="n42-y9-F4K" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="h3Q-nz-98f"/>
@@ -56,7 +56,7 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

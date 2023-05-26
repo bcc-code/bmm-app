@@ -7,14 +7,14 @@
       android:pathData="M6.5,12L2.5,16.0087L6.4826,20"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/label_primary_color"/>
+      android:strokeColor="@color/label_one_color"/>
   <path
       android:pathData="M12.5,12L8.5,16.0087L12.4826,20"
       android:strokeWidth="2"
       android:fillColor="#00000000"
-      android:strokeColor="@color/label_primary_color"/>
+      android:strokeColor="@color/label_one_color"/>
   <path
       android:pathData="M23.5,24C27.9183,24 31.5,20.4183 31.5,16C31.5,11.5817 27.9183,8 23.5,8C19.0817,8 15.5,11.5817 15.5,16C15.5,20.4183 19.0817,24 23.5,24ZM20.2714,12.4398H21.6589V19.4217H20.1827V13.841H20.1418L18.543,14.8433V13.5342L20.2714,12.4398ZM28.4762,17.0933C28.4796,18.5046 27.4228,19.5171 25.8683,19.5171C24.4228,19.5171 23.3694,18.6546 23.3421,17.4478H24.7739C24.808,17.9898 25.2819,18.358 25.8683,18.358C26.5603,18.358 27.0546,17.8569 27.0546,17.1308C27.0546,16.3978 26.5501,15.8898 25.8478,15.8864C25.4353,15.8864 25.0194,16.0671 24.8046,16.3569L23.4921,16.1217L23.8228,12.4398H28.091V13.6467H25.0398L24.8592,15.3955H24.9001C25.1455,15.0512 25.6739,14.7955 26.2876,14.7955C27.5455,14.7955 28.4796,15.7569 28.4762,17.0933Z"
-      android:fillColor="@color/label_primary_color"
+      android:fillColor="@color/label_one_color"
       android:fillType="evenOdd"/>
 </vector>

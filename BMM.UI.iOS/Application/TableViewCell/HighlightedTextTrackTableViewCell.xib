@@ -79,7 +79,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundSecondaryColor"/>
+                        <color key="backgroundColor" name="BackgroundTwoColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="vAn-6H-dg7" secondAttribute="trailing" constant="4" id="6aI-tS-Th0"/>
                             <constraint firstItem="vAn-6H-dg7" firstAttribute="leading" secondItem="mfB-UV-rj5" secondAttribute="trailing" constant="4" id="7TI-co-ovL"/>
@@ -107,7 +107,7 @@
                     <constraint firstAttribute="bottom" secondItem="rPl-gp-n0c" secondAttribute="bottom" constant="8" id="Q5q-se-uRi"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="BottomSpacingConstraint" destination="Q5q-se-uRi" id="dzq-eN-sZJ"/>
                 <outlet property="HighlightLabel" destination="2Ku-xG-4wb" id="qjI-gG-9ua"/>
@@ -121,10 +121,10 @@
     </objects>
     <resources>
         <image name="IconAI" width="20" height="20"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="BackgroundSecondaryColor">
+        <namedColor name="BackgroundTwoColor">
             <color red="0.92549020051956177" green="0.94117647409439087" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="UtilityAutoColor">

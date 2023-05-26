@@ -229,7 +229,7 @@ namespace BMM.UI.iOS
             WelcomeTitleLabel.ApplyTextTheme(AppTheme.Heading3);
             WelcomeSubtitleLabel.ApplyTextTheme(AppTheme.Paragraph1Label1);
             SearchTextField.Font = Typography.Subtitle2.Value;
-            SearchTextField.TextColor = AppColors.LabelPrimaryColor;
+            SearchTextField.TextColor = AppColors.LabelOneColor;
         }
 
         protected override MvxViewController CreateOrRefreshViewController(object item, MvxViewController existingController = null)

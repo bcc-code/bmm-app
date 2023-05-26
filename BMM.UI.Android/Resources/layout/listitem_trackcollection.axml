@@ -22,7 +22,7 @@
             android:id="@+id/image_view_row_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:cardBackgroundColor="@color/background_secondary_color"
+            local:cardBackgroundColor="@color/background_two_color"
             local:cardElevation="0dp"
             local:cardCornerRadius="6dp">
 

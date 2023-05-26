@@ -64,7 +64,7 @@ namespace BMM.UI.Droid.Application.Fragments.Base
                 Dialog.Window.SetSoftInputMode(SoftInput.AdjustResize);
 
             if (DialogBackgroundColor == default)
-                DialogBackgroundColor = Activity.GetColorFromResource(Resource.Color.background_primary_color);
+                DialogBackgroundColor = Activity.GetColorFromResource(Resource.Color.background_one_color);
                 
             Dialog.Window!.DecorView.SystemUiVisibility = DialogBackgroundColor.GetStatusBArVisibilityBasedOnColor(Dialog.Window);  
             

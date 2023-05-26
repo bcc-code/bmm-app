@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clickable="true"
-            android:background="@color/background_primary_color"
+            android:background="@color/background_one_color"
             local:layout_constrainedHeight="true"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"

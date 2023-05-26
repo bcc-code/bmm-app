@@ -47,7 +47,7 @@
                     <constraint firstItem="QTV-4p-tWY" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="yqE-v8-iUD"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="IndexLabel" destination="TCm-jd-kC3" id="DDb-ne-ZFb"/>
                 <outlet property="TextLabel" destination="QTV-4p-tWY" id="urc-Nv-s35"/>
@@ -56,7 +56,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

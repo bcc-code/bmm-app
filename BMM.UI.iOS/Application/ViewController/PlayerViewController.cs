@@ -182,7 +182,7 @@ namespace BMM.UI.iOS
             if (!DarkModeSupported)
                 return;
             
-            var backgroundColor = AppColors.BackgroundSecondaryColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection);
+            var backgroundColor = AppColors.BackgroundTwoColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection);
 
             var colorToSet = _lastMutedColor == null
                 ? backgroundColor
@@ -264,12 +264,12 @@ namespace BMM.UI.iOS
 
                 if (_isShuffleEnabled)
                 {
-                    ShuffleButton.BackgroundColor = AppColors.LabelPrimaryColor;
-                    ShuffleButton.TintColor = AppColors.LabelPrimaryColorReverted;
+                    ShuffleButton.BackgroundColor = AppColors.LabelOneColor;
+                    ShuffleButton.TintColor = AppColors.LabelOneColorReverted;
                 }
                 else
                 {
-                    ShuffleButton.TintColor = AppColors.LabelPrimaryColor;
+                    ShuffleButton.TintColor = AppColors.LabelOneColor;
                     ShuffleButton.BackgroundColor = UIColor.Clear;
                 }
             }
@@ -316,8 +316,8 @@ namespace BMM.UI.iOS
         private void SetCoverShadowLayer(bool shouldTintBackground)
         {
             var backgroundColor = UIDevice.CurrentDevice.CheckSystemVersion(13, 0)
-                ? AppColors.BackgroundSecondaryColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection)
-                : AppColors.BackgroundSecondaryColor;
+                ? AppColors.BackgroundTwoColor.GetResolvedColor(AppDelegate.MainWindow.TraitCollection)
+                : AppColors.BackgroundTwoColor;
 
             if (!shouldTintBackground)
             {
@@ -407,7 +407,7 @@ namespace BMM.UI.iOS
 
         private void SetProgressBarThumb()
         {
-            var circleImage = ImageUtils.MakePlayerThumbCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelPrimaryColor);
+            var circleImage = ImageUtils.MakePlayerThumbCircle(new CGSize(SliderThumbSize, SliderThumbSize), AppColors.LabelOneColor);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Normal);
             PlayingProgressSlider.SetThumbImage(circleImage, UIControlState.Highlighted);
             BufferedProgressSlider.SetThumbImage(new UIImage(), UIControlState.Normal);
@@ -441,13 +441,13 @@ namespace BMM.UI.iOS
 
             if (isSelected)
             {
-                RepeatButton.BackgroundColor = AppColors.LabelPrimaryColor;
-                RepeatButton.TintColor = AppColors.LabelPrimaryColorReverted;
+                RepeatButton.BackgroundColor = AppColors.LabelOneColor;
+                RepeatButton.TintColor = AppColors.LabelOneColorReverted;
             }
             else
             {
                 RepeatButton.BackgroundColor = UIColor.Clear;
-                RepeatButton.TintColor = AppColors.LabelPrimaryColor;
+                RepeatButton.TintColor = AppColors.LabelOneColor;
             }
         }
 

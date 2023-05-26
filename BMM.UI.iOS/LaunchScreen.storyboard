@@ -28,7 +28,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                        <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstItem="87i-Cz-xuH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="FcQ-KO-8Pr"/>
                             <constraint firstItem="87i-Cz-xuH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Wv0-JY-GaW"/>
@@ -42,7 +42,7 @@
     </scenes>
     <resources>
         <image name="login_logo.png" width="50" height="52.5"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

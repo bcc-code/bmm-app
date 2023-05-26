@@ -26,7 +26,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="170" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="aUS-eq-lT0">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.92183935640000003" green="0.93585610389999996" blue="0.95066833500000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="Z1b-yJ-osB" userLabel="TableHeaderView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="266"/>
@@ -84,7 +84,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                        <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstItem="qW3-Ie-1S4" firstAttribute="leading" secondItem="Z1b-yJ-osB" secondAttribute="leading" constant="16" id="0kO-I4-XDl"/>
                             <constraint firstItem="nsJ-If-22Q" firstAttribute="top" secondItem="S4d-NB-ch8" secondAttribute="bottom" constant="12" id="28J-jI-KyB"/>
@@ -120,7 +120,7 @@
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VFw-uV-y3f"/>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstItem="aUS-eq-lT0" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" id="3jo-e1-AU9"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="bottom" secondItem="mNy-Mg-FQp" secondAttribute="bottom" constant="16" id="Pbc-pN-nPW"/>
@@ -135,7 +135,7 @@
     </objects>
     <resources>
         <image name="IconPlaylist" width="24" height="24"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

@@ -75,7 +75,7 @@ namespace BMM.UI.iOS
 
             var view = new UIView
             {
-                BackgroundColor = AppColors.BackgroundPrimaryColor
+                BackgroundColor = AppColors.BackgroundOneColor
             };
 
             var label = new UILabel

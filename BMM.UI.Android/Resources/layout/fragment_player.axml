@@ -9,7 +9,7 @@
             android:id="@+id/playerFragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background_secondary_color"
+            android:background="@color/background_two_color"
             android:clickable="true"
             local:behavior_peekHeight="0dp"
             local:behavior_skipCollapsed="true"

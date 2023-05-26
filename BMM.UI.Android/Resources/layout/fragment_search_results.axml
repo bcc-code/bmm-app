@@ -4,7 +4,7 @@
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_primary_color">
+    android:background="@color/background_one_color">
 
     <TextView 
         android:id="@+id/NoResultsLabel"
@@ -90,7 +90,7 @@
         android:id="@+id/DocumentsRecyclerView"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"
-        android:background="@color/background_primary_color"
+        android:background="@color/background_one_color"
         android:layout_marginTop="@dimen/margin_mini"
         local:layout_constraintTop_toBottomOf="@+id/ResultsLabel"
         local:layout_constraintBottom_toBottomOf="parent"

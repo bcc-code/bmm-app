@@ -7,14 +7,14 @@
     android:layout_height="@dimen/year_in_review_teaser_height"
     android:layout_marginHorizontal="@dimen/margin_medium"
     android:layout_marginVertical="@dimen/margin_small"
-    android:background="@color/background_secondary_color"
+    android:background="@color/background_two_color"
     local:cardCornerRadius="28dp"
     local:MvxBind="Click ExpandOrCollapseCommand">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_secondary_color">
+        android:background="@color/background_two_color">
         
         <ImageView
             android:id="@+id/YearInReviewCardView"

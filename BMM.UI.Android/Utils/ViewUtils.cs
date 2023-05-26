@@ -18,7 +18,7 @@ namespace BMM.UI.Droid.Utils
             => SetNavigationBarColor(activity, color);
 
         public static void SetDefaultNavigationBarColor(Activity activity) 
-            => SetNavigationBarColor(activity, activity.GetColorFromResource(Resource.Color.label_primary_reverted_color));
+            => SetNavigationBarColor(activity, activity.GetColorFromResource(Resource.Color.label_one_reverted_color));
 
         private static void SetNavigationBarColor(Activity activity, Color color)
         {

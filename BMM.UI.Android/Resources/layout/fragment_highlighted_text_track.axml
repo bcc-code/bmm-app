@@ -4,7 +4,7 @@
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_primary_color">
+    android:background="@color/background_one_color">
     
     <mvvmcross.droidx.recyclerview.MvxRecyclerView
         android:id="@+id/HighlightedTextTrackRecyclerView"
@@ -72,7 +72,7 @@
                     android:layout_marginEnd="@dimen/margin_medium"
                     android:src="@drawable/btn_options_static"
                     android:background="?selectableItemBackgroundBorderless"
-                    android:tint="@color/label_primary_color"
+                    android:tint="@color/label_one_color"
                     local:layout_constraintTop_toTopOf="@+id/TrackTitle"
                     local:layout_constraintBottom_toBottomOf="@+id/TrackMeta"
                     local:layout_constraintEnd_toEndOf="parent"
@@ -140,7 +140,7 @@
             android:layout_marginHorizontal="@dimen/margin_medium"
             android:layout_marginVertical="@dimen/margin_medium"
             android:elevation="2dp"
-            local:cardBackgroundColor="@color/background_tertiary_color"
+            local:cardBackgroundColor="@color/background_three_color"
             local:cardCornerRadius="28dp">
     
             <ImageView

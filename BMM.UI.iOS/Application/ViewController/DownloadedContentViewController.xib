@@ -26,7 +26,7 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qUD-gz-tJL">
                     <rect key="frame" x="0.0" y="29" width="414" height="707"/>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JEQ-Pn-dAX" userLabel="Banner">
@@ -76,7 +76,7 @@
                                     </constraints>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                            <color key="backgroundColor" name="BackgroundOneColor"/>
                             <constraints>
                                 <constraint firstAttribute="centerX" secondItem="70k-uk-klf" secondAttribute="centerX" id="4ZM-CD-2eD"/>
                                 <constraint firstItem="pnf-ZT-ZVI" firstAttribute="leading" secondItem="k9N-gz-fTK" secondAttribute="leading" id="5TX-p9-hkH"/>
@@ -90,7 +90,7 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="k9N-gz-fTK" secondAttribute="trailing" constant="40" id="3ch-yK-LfJ"/>
                         <constraint firstAttribute="centerY" secondItem="k9N-gz-fTK" secondAttribute="centerY" constant="20" id="Sl4-QW-AE1"/>
@@ -98,7 +98,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstItem="hu2-Im-NHR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8nQ-JR-snC"/>
                 <constraint firstItem="JEQ-Pn-dAX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8nQ-JR-snX"/>
@@ -117,7 +117,7 @@
     </objects>
     <resources>
         <image name="icon_category_playlist.png" width="36" height="36"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

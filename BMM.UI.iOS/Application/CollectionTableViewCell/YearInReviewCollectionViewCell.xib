@@ -35,7 +35,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                                        <color key="backgroundColor" name="BackgroundOneColor"/>
                                         <constraints>
                                             <constraint firstItem="dfN-Ob-6q3" firstAttribute="leading" secondItem="opr-In-oX3" secondAttribute="leading" id="2kS-tX-B3U"/>
                                             <constraint firstAttribute="bottom" secondItem="dfN-Ob-6q3" secondAttribute="bottom" id="Sqj-LH-vTr"/>
@@ -49,7 +49,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                                <color key="backgroundColor" name="BackgroundOneColor"/>
                                 <constraints>
                                     <constraint firstItem="opr-In-oX3" firstAttribute="top" secondItem="6Jj-rt-E07" secondAttribute="top" id="73R-AN-cMC"/>
                                     <constraint firstAttribute="bottom" secondItem="opr-In-oX3" secondAttribute="bottom" id="8Sf-c8-5Lk"/>
@@ -83,7 +83,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                        <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="QQ4-EM-OgA" secondAttribute="bottom" id="3H8-Gr-wka"/>
                             <constraint firstItem="QQ4-EM-OgA" firstAttribute="top" secondItem="6Jj-rt-E07" secondAttribute="bottom" id="7Ud-Lw-Uys"/>
@@ -95,7 +95,7 @@
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ZFw-32-Mig" secondAttribute="trailing" id="R6m-lw-eHl"/>
                 <constraint firstItem="ZFw-32-Mig" firstAttribute="leading" secondItem="cZE-iV-UFb" secondAttribute="leading" id="pzH-3T-cIP"/>
@@ -114,7 +114,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

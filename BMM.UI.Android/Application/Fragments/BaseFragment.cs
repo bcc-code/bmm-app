@@ -57,7 +57,7 @@ namespace BMM.UI.Droid.Application.Fragments
                     return new Color();
                 }
 
-                return new Color(Activity.GetColorFromResource(Resource.Color.background_primary_color));
+                return new Color(Activity.GetColorFromResource(Resource.Color.background_one_color));
             }
             set => _fragmentBaseColor = value;
         }

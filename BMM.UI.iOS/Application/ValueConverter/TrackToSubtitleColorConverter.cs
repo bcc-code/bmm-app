@@ -20,7 +20,7 @@ namespace BMM.UI.iOS
             if (!trackState.IsAvailable)
                 return UIColor.Gray;
 
-            return AppColors.LabelSecondaryColor;
+            return AppColors.LabelTwoColor;
 
         }
     }

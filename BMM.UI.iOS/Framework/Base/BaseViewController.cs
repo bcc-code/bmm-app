@@ -39,10 +39,10 @@ namespace BMM.UI.iOS
 
             var appearance = new UINavigationBarAppearance();
             appearance.ConfigureWithOpaqueBackground();
-            appearance.BackgroundColor = AppColors.BackgroundPrimaryColor;
+            appearance.BackgroundColor = AppColors.BackgroundOneColor;
             appearance.TitleTextAttributes = new UIStringAttributes
             {
-                ForegroundColor = AppColors.LabelPrimaryColor
+                ForegroundColor = AppColors.LabelOneColor
             };
             
             appearance.ShadowColor = SupportsNavigationBarSeparator

@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             local:cardCornerRadius="@dimen/highlighted_text_track_item_corner_radius"
             local:cardElevation="0dp"
-            local:cardBackgroundColor="@color/background_secondary_color">
+            local:cardBackgroundColor="@color/background_two_color">
     
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/BackgroundView"

@@ -7,7 +7,7 @@
         android:layout_marginVertical="@dimen/margin_small"
         android:layout_marginHorizontal="@dimen/margin_medium"
         local:MvxBind="Click ItemClickedCommand"
-        local:cardBackgroundColor="@color/background_secondary_color"
+        local:cardBackgroundColor="@color/background_two_color"
         local:cardCornerRadius="@dimen/highlighted_text_item_corner_radius">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,7 +35,7 @@
                 local:layout_constraintTop_toTopOf="@+id/PositionLabel"
                 local:layout_constraintBottom_toBottomOf="@+id/PositionLabel"
                 local:layout_constraintStart_toEndOf="@+id/PositionLabel"
-                android:tint="@color/label_primary_color"
+                android:tint="@color/label_one_color"
                 android:src="@drawable/icon_arrow_right" />
 
         <ImageButton

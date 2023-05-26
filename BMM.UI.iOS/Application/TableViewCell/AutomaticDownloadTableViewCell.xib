@@ -30,7 +30,7 @@
                         <rect key="frame" x="273" y="15.5" width="24" height="24"/>
                     </imageView>
                 </subviews>
-                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                <color key="backgroundColor" name="BackgroundOneColor"/>
                 <constraints>
                     <constraint firstItem="QTV-4p-tWY" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="topMargin" id="8gm-SY-4nJ"/>
                     <constraint firstAttribute="bottomMargin" secondItem="QTV-4p-tWY" secondAttribute="bottom" id="J8b-O2-Vpt"/>
@@ -49,7 +49,7 @@
     </objects>
     <resources>
         <image name="SelectedIcon" width="24" height="24"/>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

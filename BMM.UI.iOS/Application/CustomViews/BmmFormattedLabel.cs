@@ -76,12 +76,12 @@ namespace BMM.UI.iOS.CustomViews
                     if (StyledTextContainer.ShouldColorBackground)
                     {
                         return styledTextBase.Style == TextStyle.Default
-                            ? AppColors.LabelSecondaryColor
-                            : AppColors.LabelPrimaryColor;
+                            ? AppColors.LabelTwoColor
+                            : AppColors.LabelOneColor;
                     }
                     
                     return styledTextBase.Style == TextStyle.Default
-                        ? AppColors.LabelTertiaryColor
+                        ? AppColors.LabelThreeColor
                         : AppColors.UtilityAutoColor;
                 });
             

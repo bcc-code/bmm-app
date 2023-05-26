@@ -6,7 +6,7 @@
         android:layout_height="@dimen/horizontal_scrolling_continue_listening_item_height"
         android:gravity="center"
         local:cardCornerRadius="@dimen/continue_listening_item_corner_radius"
-        android:background="@color/background_secondary_color">
+        android:background="@color/background_two_color">
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/BackgroundView"

@@ -31,7 +31,7 @@
                     <constraint firstAttribute="bottom" secondItem="GwN-l3-fu1" secondAttribute="bottom" constant="8" id="qZg-0J-cWz"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
                 <outlet property="TitleLabel" destination="GwN-l3-fu1" id="7hY-XG-Kpi"/>
             </connections>
@@ -39,7 +39,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

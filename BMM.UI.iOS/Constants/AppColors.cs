@@ -4,16 +4,13 @@ namespace BMM.UI.iOS.Constants
 {
     public static class AppColors
     {
-        public static UIColor BackgroundPrimaryColor => UIColor.FromName(nameof(BackgroundPrimaryColor));
-        public static UIColor BackgroundSecondaryColor => UIColor.FromName(nameof(BackgroundSecondaryColor));
-        public static UIColor LabelPrimaryColor => UIColor.FromName(nameof(LabelPrimaryColor));
-        public static UIColor LabelPrimaryColorReverted => UIColor.FromName(nameof(LabelPrimaryColorReverted));
-        public static UIColor LabelSecondaryColor => UIColor.FromName(nameof(LabelSecondaryColor));
-        public static UIColor LabelTertiaryColor => UIColor.FromName(nameof(LabelTertiaryColor));
+        public static UIColor BackgroundOneColor => UIColor.FromName(nameof(BackgroundOneColor));
+        public static UIColor BackgroundTwoColor => UIColor.FromName(nameof(BackgroundTwoColor));
+        public static UIColor LabelOneColor => UIColor.FromName(nameof(LabelOneColor));
+        public static UIColor LabelOneColorReverted => UIColor.FromName(nameof(LabelOneColorReverted));
+        public static UIColor LabelTwoColor => UIColor.FromName(nameof(LabelTwoColor));
+        public static UIColor LabelThreeColor => UIColor.FromName(nameof(LabelThreeColor));
         public static UIColor NotificationColor => UIColor.FromName(nameof(NotificationColor));
-        public static UIColor OnTintOneColor => UIColor.FromName(nameof(OnTintOneColor));
-        public static UIColor OnTintThreeColor => UIColor.FromName(nameof(OnTintThreeColor));
-        public static UIColor OnTintTwoColor => UIColor.FromName(nameof(OnTintTwoColor));
         public static UIColor PlaceholderColor => UIColor.FromName(nameof(PlaceholderColor));
         public static UIColor RadioColor => UIColor.FromName(nameof(RadioColor));
         public static UIColor TintColor => UIColor.FromName(nameof(TintColor));
@@ -22,19 +19,22 @@ namespace BMM.UI.iOS.Constants
         public static UIColor SeparatorLightColor => UIColor.FromName(nameof(SeparatorLightColor));
         public static UIColor OnColorOneColor => UIColor.FromName(nameof(OnColorOneColor));
         public static UIColor OnColorTwoColor => UIColor.FromName(nameof(OnColorTwoColor));
-        public static UIColor OnColorThreeColor => UIColor.FromName(nameof(OnColorThreeColor));
-        public static UIColor OnColorFourColor => UIColor.FromName(nameof(OnColorFourColor));
-        public static UIColor OnColorFiveColor => UIColor.FromName(nameof(OnColorFiveColor));
         public static UIColor TileDefaultColor => UIColor.FromName(nameof(TileDefaultColor));
         public static UIColor HighlightningsGradientColor => UIColor.FromName(nameof(HighlightningsGradientColor));
         public static UIColor HighlightningsGradientWithAlphaColor => UIColor.FromName(nameof(HighlightningsGradientWithAlphaColor));
-        public static UIColor BackgroundLightSecondaryColor => UIColor.FromName(nameof(BackgroundLightSecondaryColor));
         public static UIColor LabelLightTertiaryColor => UIColor.FromName(nameof(LabelLightTertiaryColor));
         public static UIColor UtilityAutoColor => UIColor.FromName(nameof(UtilityAutoColor));
+        public static UIColor GlobalBlackOneColor => UIColor.FromName(nameof(GlobalBlackOneColor));
+        public static UIColor GlobalBlackTwoColor => UIColor.FromName(nameof(GlobalBlackTwoColor));
+        public static UIColor GlobalBlackThreeColor => UIColor.FromName(nameof(GlobalBlackThreeColor));
+        public static UIColor GlobalBlackFourColor => UIColor.FromName(nameof(GlobalBlackFourColor));
+        public static UIColor GlobalBlackFiveColor => UIColor.FromName(nameof(GlobalBlackFiveColor));
+        public static UIColor GlobalWhiteOneColor => UIColor.FromName(nameof(GlobalWhiteOneColor));
+        public static UIColor GlobalWhiteTwoColor => UIColor.FromName(nameof(GlobalWhiteTwoColor));
+        public static UIColor GlobalWhiteThreeColor => UIColor.FromName(nameof(GlobalWhiteThreeColor));
+        public static UIColor GlobalWhiteFourColor => UIColor.FromName(nameof(GlobalWhiteFourColor));
+        public static UIColor GlobalWhiteFiveColor => UIColor.FromName(nameof(GlobalWhiteFiveColor));
 
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
-
-        // Track
-        public static readonly UIColor NewestTrackBackgroundColor = UIColor.White.ColorWithAlpha(0.2f);
     }
 }

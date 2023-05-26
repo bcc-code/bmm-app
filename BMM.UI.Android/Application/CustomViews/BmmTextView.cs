@@ -130,12 +130,12 @@ namespace BMM.UI.Droid.Application.CustomViews
             if (StyledTextContainer.ShouldColorBackground)
             {
                 return styledText.Style == TextStyle.Default
-                    ? Context.GetColorFromResource(Resource.Color.label_secondary_color)
-                    : Context.GetColorFromResource(Resource.Color.label_primary_color);
+                    ? Context.GetColorFromResource(Resource.Color.label_two_color)
+                    : Context.GetColorFromResource(Resource.Color.label_one_color);
             }
 
             return styledText.Style == TextStyle.Default
-                ? Context.GetColorFromResource(Resource.Color.label_tertiary_color)
+                ? Context.GetColorFromResource(Resource.Color.label_three_color)
                 : Context.GetColorFromResource(Resource.Color.utility_auto_color);
         }
 

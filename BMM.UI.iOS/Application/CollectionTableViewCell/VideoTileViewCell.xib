@@ -41,7 +41,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="BackgroundSecondaryColor"/>
+                        <color key="backgroundColor" name="BackgroundTwoColor"/>
                         <constraints>
                             <constraint firstItem="1mq-ou-3OU" firstAttribute="leading" secondItem="ZFw-32-Mig" secondAttribute="leading" constant="24" id="4yT-ve-JZF"/>
                             <constraint firstItem="q5j-gK-4XL" firstAttribute="top" secondItem="gSd-HM-lbg" secondAttribute="bottom" constant="30" id="7SL-Db-NmZ"/>
@@ -79,7 +79,7 @@
     </objects>
     <resources>
         <image name="BergprekenLabels" width="128" height="166"/>
-        <namedColor name="BackgroundSecondaryColor">
+        <namedColor name="BackgroundTwoColor">
             <color red="0.92549020051956177" green="0.94117647409439087" blue="0.9529411792755127" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

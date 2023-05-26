@@ -51,7 +51,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
-                <color key="backgroundColor" name="BackgroundPrimaryColor"/>
+                <color key="backgroundColor" name="BackgroundOneColor"/>
                 <constraints>
                     <constraint firstItem="eh1-ui-ycw" firstAttribute="top" secondItem="iJh-9S-hMr" secondAttribute="top" constant="7" id="DMC-Hz-0um"/>
                     <constraint firstItem="GwN-l3-fu1" firstAttribute="top" secondItem="iJh-9S-hMr" secondAttribute="top" constant="28" id="KmT-Qf-Z3E"/>
@@ -74,7 +74,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <namedColor name="BackgroundPrimaryColor">
+        <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

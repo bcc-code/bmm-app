@@ -52,8 +52,8 @@ namespace BMM.UI.Droid.Application.CustomViews
 
         public void SetColors()
         {
-            _backgroundPaint.Color = Context.GetColorFromResource(Resource.Color.on_color_five_color);
-            _foregroundPaint.Color = Context.GetColorFromResource(Resource.Color.on_color_one_color);
+            _backgroundPaint.Color = Context.GetColorFromResource(Resource.Color.global_black_separator);
+            _foregroundPaint.Color = Context.GetColorFromResource(Resource.Color.global_black_one);
             Invalidate();
         }
 
