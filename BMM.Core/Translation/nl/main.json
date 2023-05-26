@@ -517,12 +517,12 @@
     "SuccessfullyAddedToPlaylists": "Toegevoegd aan favorieten"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Geautomatiseerde transcriptie",
     "AddTo": "Toevoegen aan afspeellijst",
     "Pause": "Pauze",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it"
+    "AutoTranscribedPopupTitleText": "Transcripties zijn automatisch gegenereerd en kunnen daardoor fouten bevatten",
+    "AutoTranscribedPopupHeaderText": "Geautomatiseerde transcriptie",
+    "AutoTranscribedPopupSubtitleText": "Binnenkort kun je correcties voorstellen direct in de app.",
+    "AutoTranscribedPopupButtonText": "Begrepen"
   }
 }
