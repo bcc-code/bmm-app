@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Net;
+using System.Reflection;
 using Acr.UserDialogs;
 using Android.OS;
 using Android.Runtime;
@@ -38,6 +39,7 @@ using BMM.UI.Droid.Application.Implementations.Device;
 using BMM.UI.Droid.Application.Implementations.Dialogs;
 using BMM.UI.Droid.Application.Implementations.FileStorage;
 using BMM.UI.Droid.Application.Implementations.FirebaseRemoteConfig;
+using BMM.UI.Droid.Application.Implementations.Networking;
 using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.Implementations.Oidc;
 using BMM.UI.Droid.Application.Implementations.Support;
@@ -206,7 +208,12 @@ namespace BMM.UI.Droid
             ImageService.Instance.Initialize(new Configuration
             {
                 InvalidateLayout = false,
-                HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
+                HttpClient = new HttpClient(
+                    new DroidAuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())
+                    {
+                        ConnectTimeout = TimeSpan.FromMinutes(5),
+                        AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
+                    }),
                 DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
                 {
                     DiskCacheDuration = ImageServiceConstants.DiskCacheDuration

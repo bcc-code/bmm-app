@@ -111,7 +111,7 @@ namespace BMM.UI.iOS
                 set.Apply();
 
                 var animation = LOTAnimationView.AnimationNamed(LottieAnimationsNames.PlayAnimationIcon);
-                animation.BackgroundColor = AppColors.OnColorOneColor;
+                animation.BackgroundColor = AppColors.GlobalBlackOneColor;
                 animation.LoopAnimation = true;
 
                 PlayButton!.AddAnimation(animation);
