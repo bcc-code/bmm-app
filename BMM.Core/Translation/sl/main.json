@@ -281,7 +281,8 @@
     "Podcasts": "Podcasti",
     "Playlists": "Seznam predvajanja",
     "NoResults": "Ni rezultatov",
-    "NoResultsDescription": "Za iskanje \"{0}\" ni najdenih zadetkov."
+    "NoResultsDescription": "Za iskanje \"{0}\" ni najdenih zadetkov.",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profil",
