@@ -4,12 +4,14 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Test.Helpers;
 using Moq;
 using MvvmCross.Base;
 using MvvmCross.Navigation;
 using MvvmCross.Localization;
 using MvvmCross.Plugin.Messenger;
 using MvvmCross.Tests;
+using MvvmCross.Views;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -17,6 +19,12 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
 {
     public class BaseViewModelTests : MvxIoCSupportingTest
     {
+        [SetUp]
+        public virtual void SetUp()
+        {
+            Setup();
+        }
+        
         protected override void AdditionalSetup()
         {
             Client = new Mock<IBMMClient>();
@@ -30,7 +38,10 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
             TextResource
                 .Setup(x => x[It.IsAny<string>()])
                 .Returns<string>(x => x);
-
+            
+            MockDispatcher = new MockDispatcher();
+            Ioc.RegisterSingleton<IMvxMainThreadDispatcher>(MockDispatcher);
+            Ioc.RegisterSingleton<IMvxMainThreadAsyncDispatcher>(MockDispatcher);
             Ioc.RegisterSingleton(Client.Object);
             Ioc.RegisterSingleton(MediaQueue.Object);
             Ioc.RegisterSingleton(ExceptionHandler.Object);
@@ -56,5 +67,6 @@ namespace BMM.Core.Test.Unit.ViewModels.Base
         protected Mock<IMvxMessenger> MvxMessenger { get; private set; }
 
         protected Mock<IMvxNavigationService> NavigationService { get; private set; }
+        protected MockDispatcher MockDispatcher { get; private set; }
     }
 }

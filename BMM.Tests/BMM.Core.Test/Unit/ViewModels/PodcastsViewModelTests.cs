@@ -12,12 +12,9 @@ namespace BMM.Core.Test.Unit.ViewModels
     [TestFixture]
     public class PodcastsViewModelTests : BaseViewModelTests
     {
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            base.Setup();
-            base.AdditionalSetup();
-
+            base.SetUp();
             Client.Setup(x => x.Podcast.GetAll(CachePolicy.UseCacheAndRefreshOutdated))
                 .Returns(Task.FromResult<IList<Podcast>>(null));
         }

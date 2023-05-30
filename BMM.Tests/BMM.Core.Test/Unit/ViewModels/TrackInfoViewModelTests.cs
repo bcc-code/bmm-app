@@ -19,12 +19,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IUriOpener> _uriOpenerMock;
         private Mock<IDeepLinkHandler> _deepLinkHandlerMock;
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            Setup();
-            base.AdditionalSetup();
-
+            base.SetUp();
             TextResource.Setup(x => x.GetText(It.IsAny<string>())).Returns("Test");
         }
 

@@ -11,12 +11,9 @@ namespace BMM.Core.Test.Unit.ViewModels
     [TestFixture]
     public class AlbumsViewModelTests : BaseViewModelTests
     {
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            base.Setup();
-            base.AdditionalSetup();
-
+            base.SetUp();
             Client.Setup(x => x.Albums.GetPublishedByYear(It.IsAny<int>()))
                 .Returns(Task.FromResult<IList<Album>>(null));
         }

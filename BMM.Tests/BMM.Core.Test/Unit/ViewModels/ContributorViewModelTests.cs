@@ -21,11 +21,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         private IShuffleContributorAction _shuffleContributorActionMock;
         private ITrackPOFactory _trackPOFactoryMock;
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            base.Setup();
-            base.AdditionalSetup();
+            base.SetUp();
             Client.Setup(x => x.Contributors.GetById(It.IsAny<int>())).Returns(Task.FromResult(new Contributor() { Id = id, DocumentType = DocumentType.Contributor, Name = "Test" }));
             _shuffleContributorActionMock = Mock.Of<IShuffleContributorAction>();
             _trackPOFactoryMock = Mock.Of<ITrackPOFactory>();

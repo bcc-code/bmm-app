@@ -15,11 +15,9 @@ namespace BMM.Core.Test.Unit.ViewModels
     {
         private Mock<IContributorClient> _contributionClientMock;
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            Setup();
-            base.AdditionalSetup();
+            base.SetUp();
             _contributionClientMock = new Mock<IContributorClient>();
         }
         

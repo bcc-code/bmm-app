@@ -18,12 +18,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IMvxLanguageBinder> _mvxLanguageBinder = new Mock<IMvxLanguageBinder>();
         private Mock<IMediaPlayer> _mediaController = new Mock<IMediaPlayer>();
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            base.Setup();
-            base.AdditionalSetup();
-
+            base.SetUp();
             Client.Setup(x => x.Podcast.GetById(It.IsAny<int>(), It.IsAny<CachePolicy>()))
                 .Returns(Task.FromResult(new Podcast() {Cover = null, DocumentType = DocumentType.Podcast, Id = 1, Language = "en-US", Title = "Test"}));
             _mvxLanguageBinder.Setup(x => x.GetText(It.IsAny<string>())).Returns("test");

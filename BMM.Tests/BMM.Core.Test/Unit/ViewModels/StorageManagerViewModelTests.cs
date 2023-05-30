@@ -18,11 +18,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IStorageManager> _storageManager;
         private Mock<ISettingsStorage> _settingsStorage;
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            base.Setup();
-            base.AdditionalSetup();
+            base.SetUp();
             _storageManager = new Mock<IStorageManager>();
             _storageManager.Setup(x => x.Storages).Returns(new ObservableCollection<IFileStorage>(CreateFileStorages()));
 
