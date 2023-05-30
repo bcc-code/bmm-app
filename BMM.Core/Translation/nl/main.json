@@ -281,7 +281,8 @@
     "Podcasts": "Podcasts",
     "Playlists": "Afspeellijsten",
     "NoResults": "Geen resultaten",
-    "NoResultsDescription": "Er zijn geen resultaten gevonden op je zoekactie naar \"{0}\""
+    "NoResultsDescription": "Er zijn geen resultaten gevonden op je zoekactie naar \"{0}\"",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profiel",
