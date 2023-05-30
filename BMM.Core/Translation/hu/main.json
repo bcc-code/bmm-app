@@ -281,7 +281,9 @@
     "Podcasts": "Podcastok",
     "Playlists": "Lejátszási listák",
     "NoResults": "Nincs eredmény",
-    "NoResultsDescription": "Nem volt találat a \"{0}\" keresésedre"
+    "NoResultsDescription": "Nem volt találat a \"{0}\" keresésedre",
+    "SearchFailedTitle": "Search failed",
+    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
     "Title": "Profil",

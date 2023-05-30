@@ -281,7 +281,9 @@
     "Podcasts": "Podcaster",
     "Playlists": "Spillelister",
     "NoResults": "Ingen resultater",
-    "NoResultsDescription": "Det var ingen resultater med ditt søk etter \"{0}\""
+    "NoResultsDescription": "Det var ingen resultater med ditt søk etter \"{0}\"",
+    "SearchFailedTitle": "Search failed",
+    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
     "Title": "Min profil",

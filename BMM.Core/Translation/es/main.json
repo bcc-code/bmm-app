@@ -281,7 +281,9 @@
     "Podcasts": "Podcasts",
     "Playlists": "Listas de reproducción",
     "NoResults": "No hay resultados",
-    "NoResultsDescription": "No hubo coincidencias con su búsqueda de\"{0}\""
+    "NoResultsDescription": "No hubo coincidencias con su búsqueda de\"{0}\"",
+    "SearchFailedTitle": "Search failed",
+    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
     "Title": "Perfil",
@@ -517,12 +519,12 @@
     "SuccessfullyAddedToPlaylists": "Añadido exitosamente a favoritos"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Auto-transcrito",
     "AddTo": "Añadir a la lista de reproducción",
     "Pause": "Pausa",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it"
+    "AutoTranscribedPopupTitleText": "Las transcripciones se generan automáticamente y pueden contener errores",
+    "AutoTranscribedPopupHeaderText": "Auto-transcrito",
+    "AutoTranscribedPopupSubtitleText": "Pronto podrá enviar correcciones directamente en la aplicación.",
+    "AutoTranscribedPopupButtonText": "Entiendo"
   }
 }

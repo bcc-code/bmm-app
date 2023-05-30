@@ -281,7 +281,9 @@
     "Podcasts": "Podcasts",
     "Playlists": "Listes de lecture",
     "NoResults": "Aucun résultat",
-    "NoResultsDescription": "Il n'y a pas de correspondance avec ta recherche pour \"{0}\""
+    "NoResultsDescription": "Il n'y a pas de correspondance avec ta recherche pour \"{0}\"",
+    "SearchFailedTitle": "Search failed",
+    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
     "Title": "Profil",

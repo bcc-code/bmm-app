@@ -281,7 +281,9 @@
     "Podcasts": "Podcast-uri",
     "Playlists": "Play-list-uri",
     "NoResults": "Niciun rezultat",
-    "NoResultsDescription": "Nu s-a potrivit nimic cu căutarea pentru \"{0}\""
+    "NoResultsDescription": "Nu s-a potrivit nimic cu căutarea pentru \"{0}\"",
+    "SearchFailedTitle": "Search failed",
+    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
     "Title": "Profil",
