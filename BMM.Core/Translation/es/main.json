@@ -281,7 +281,8 @@
     "Podcasts": "Podcasts",
     "Playlists": "Listas de reproducción",
     "NoResults": "No hay resultados",
-    "NoResultsDescription": "No hubo coincidencias con su búsqueda de\"{0}\""
+    "NoResultsDescription": "No hubo coincidencias con su búsqueda de\"{0}\"",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Perfil",
