@@ -281,7 +281,8 @@
     "Podcasts": "Podcasts",
     "Playlists": "Listes de lecture",
     "NoResults": "Aucun résultat",
-    "NoResultsDescription": "Il n'y a pas de correspondance avec ta recherche pour \"{0}\""
+    "NoResultsDescription": "Il n'y a pas de correspondance avec ta recherche pour \"{0}\"",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profil",
