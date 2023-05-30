@@ -281,7 +281,8 @@
     "Podcasts": "Podcasty",
     "Playlists": "Playlisty",
     "NoResults": "Brak wyników",
-    "NoResultsDescription": "Brak dopasowań do Twojego wyszukiwania \"{0}\""
+    "NoResultsDescription": "Brak dopasowań do Twojego wyszukiwania \"{0}\"",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profil",
