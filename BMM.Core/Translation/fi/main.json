@@ -281,7 +281,8 @@
     "Podcasts": "Podcastit",
     "Playlists": "Soittolistat",
     "NoResults": "Ei tuloksia",
-    "NoResultsDescription": "Ei osumia haullesi \"{0}\""
+    "NoResultsDescription": "Ei osumia haullesi \"{0}\"",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profiili",
