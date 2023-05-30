@@ -80,6 +80,8 @@ namespace BMM.UI.Droid
 {
     public class AndroidSetup : MvxAndroidSetup<App>
     {
+        private const int ImageServiceTimeoutInSeconds = 300;
+        
         protected override IMvxApplication CreateApp(IMvxIoCProvider iocProvider)
         {
             AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
@@ -207,11 +209,13 @@ namespace BMM.UI.Droid
         {
             ImageService.Instance.Initialize(new Configuration
             {
+                HttpHeadersTimeout = ImageServiceTimeoutInSeconds,
+                HttpReadTimeout = ImageServiceTimeoutInSeconds,
                 InvalidateLayout = false,
                 HttpClient = new HttpClient(
                     new DroidAuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())
                     {
-                        ConnectTimeout = TimeSpan.FromMinutes(5),
+                        ConnectTimeout = TimeSpan.FromSeconds(ImageServiceTimeoutInSeconds),
                         AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                     }),
                 DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
