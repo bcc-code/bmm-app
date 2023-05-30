@@ -281,7 +281,8 @@
     "Podcasts": "Podcastok",
     "Playlists": "Lejátszási listák",
     "NoResults": "Nincs eredmény",
-    "NoResultsDescription": "Nem volt találat a \"{0}\" keresésedre"
+    "NoResultsDescription": "Nem volt találat a \"{0}\" keresésedre",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profil",
