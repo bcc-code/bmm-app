@@ -281,7 +281,8 @@
     "Podcasts": "Podcasts",
     "Playlists": "Spillelister",
     "NoResults": "Ingen resultater",
-    "NoResultsDescription": "Der var ikke noget der matcher din søgning efter \"{0}\""
+    "NoResultsDescription": "Der var ikke noget der matcher din søgning efter \"{0}\"",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profil",
