@@ -281,7 +281,8 @@
     "Podcasts": "Podcasts",
     "Playlists": "播放列表",
     "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\""
+    "NoResultsDescription": "There where no matches with your search for \"{0}\"",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profile",
