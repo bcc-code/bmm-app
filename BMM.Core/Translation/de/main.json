@@ -281,7 +281,8 @@
     "Podcasts": "Podcasts",
     "Playlists": "Playlisten",
     "NoResults": "Keine Ergebnisse",
-    "NoResultsDescription": "Es gab keine Übereinstimmung deiner Suche für "
+    "NoResultsDescription": "Es gab keine Übereinstimmung deiner Suche für ",
+    "SearchFailedTitle": "Search failed"
   },
   "SettingsViewModel": {
     "Title": "Profil",
