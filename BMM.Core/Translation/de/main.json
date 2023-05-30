@@ -282,7 +282,8 @@
     "Playlists": "Playlisten",
     "NoResults": "Keine Ergebnisse",
     "NoResultsDescription": "Es gab keine Übereinstimmung deiner Suche für ",
-    "SearchFailedTitle": "Search failed"
+    "SearchFailedTitle": "Search failed",
+    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
     "Title": "Profil",
