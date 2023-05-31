@@ -282,8 +282,8 @@
     "Playlists": "Listes de lecture",
     "NoResults": "Aucun résultat",
     "NoResultsDescription": "Il n'y a pas de correspondance avec ta recherche pour \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "La recherche n'a pas abouti",
+    "SearchFailedMessage": "Désolé, nous n'avons pas pu rechercher \"{0}\" en raison de problèmes de connexion. Appuyez sur le bouton ci-dessous pour réessayer."
   },
   "SettingsViewModel": {
     "Title": "Profil",
