@@ -59,12 +59,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<INotificationPermissionService> _notificationPermissionService;
         private Mock<IChangeNotificationSettingStateAction> _changeNotificationSettingStateAction;
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            base.Setup();
-            base.AdditionalSetup();
-
+            base.SetUp();
             _deviceInfo = new Mock<IDeviceInfo>();
 
             _userDialogs = new Mock<IUserDialogs>();

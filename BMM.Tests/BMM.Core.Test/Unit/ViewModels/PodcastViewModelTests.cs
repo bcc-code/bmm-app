@@ -19,6 +19,7 @@ using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.ViewModels;
 using Moq;
 using MvvmCross.Base;
@@ -31,7 +32,7 @@ using NUnit.Framework;
 namespace BMM.Core.Test.Unit.ViewModels
 {
     [TestFixture]
-    public class PodcastViewModelTests : MvxIoCSupportingTest
+    public class PodcastViewModelTests : BaseViewModelTests
     {
         private Mock<IBMMClient> _client;
         private Mock<IExceptionHandler> _exceptionHandler;
@@ -49,9 +50,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<ITrackPOFactory> _trackPOFactory;
         private Mock<IDocumentsPOFactory> _documentsPOFactory;
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
+            base.SetUp();
             _client = new Mock<IBMMClient>();
             _exceptionHandler = new Mock<IExceptionHandler>();
             _podcastDownloader = new Mock<IPodcastOfflineManager>();
@@ -67,11 +68,6 @@ namespace BMM.Core.Test.Unit.ViewModels
             _shufflePodcastAction = new Mock<IShufflePodcastAction>();
             _trackPOFactory = new Mock<ITrackPOFactory>();
             _documentsPOFactory = new Mock<IDocumentsPOFactory>();
-            var _mainThreadDispatcher = new Mock<IMvxMainThreadDispatcher>();
-            var _mainThreadAsyncDispatcher = new Mock<IMvxMainThreadAsyncDispatcher>();
-
-            _mainThreadDispatcher.Setup(x => x.RequestMainThreadAction(It.IsAny<Action>(), It.IsAny<bool>())).Returns(true);
-            _mainThreadAsyncDispatcher.Setup(x => x.ExecuteOnMainThreadAsync(It.IsAny<Action>(), It.IsAny<bool>()));
             _client.Setup(x => x.Podcast.GetById(It.IsAny<int>(), It.IsAny<CachePolicy>()))
                 .ReturnsAsync(new Podcast() {Cover = "CoverStream", DocumentType = DocumentType.Podcast, Id = 1, Language = "en-US", Title = "Test"});
             _podcastDownloader.Setup(x => x.FollowPodcast(It.IsAny<Podcast>()));
@@ -80,8 +76,6 @@ namespace BMM.Core.Test.Unit.ViewModels
             _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
             _languageBinder.Setup(x => x.GetText(It.IsAny<string>(), It.IsAny<object[]>())).Returns("test string");
 
-            Setup();
-            base.AdditionalSetup();
             var mockMvxMessenger = new Mock<IMvxMessenger>();
             Ioc.RegisterSingleton(_client.Object);
             Ioc.RegisterSingleton(_exceptionHandler.Object);
@@ -90,8 +84,6 @@ namespace BMM.Core.Test.Unit.ViewModels
             Ioc.RegisterSingleton(new Mock<INotificationCenter>(MockBehavior.Strict).Object);
             Ioc.RegisterSingleton(_inMemoryCache);
             Ioc.RegisterSingleton(_viewPresenter.Object);
-            Ioc.RegisterSingleton(_mainThreadDispatcher.Object);
-            Ioc.RegisterSingleton(_mainThreadAsyncDispatcher.Object);
             Ioc.RegisterSingleton(new Mock<IMediaQueue>().Object);
             Ioc.RegisterSingleton(new Mock<IMediaPlayer>().Object);
             Ioc.RegisterSingleton(new Mock<IMvxNavigationService>().Object);

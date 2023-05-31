@@ -13,13 +13,6 @@ namespace BMM.Core.Test.Unit.ViewModels
     [TestFixture]
     public class AlbumViewModelTests : BaseViewModelTests
     {
-        [SetUp]
-        public void Init()
-        {
-            base.Setup();
-            base.AdditionalSetup();
-        }
-
         [Test]
         public async Task LoadItems_ShouldHandleNullValueAndDisplayEmptyDocument()
         {

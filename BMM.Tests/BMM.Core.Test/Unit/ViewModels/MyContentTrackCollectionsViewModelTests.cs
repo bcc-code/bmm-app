@@ -18,12 +18,9 @@ namespace BMM.Core.Test.Unit.ViewModels
     {
         private readonly Mock<IConnection> _connectionMock = new Mock<IConnection>();
 
-        [SetUp]
-        public void Init()
+        public override void SetUp()
         {
-            Setup();
-            base.AdditionalSetup();
-
+            base.SetUp();
             _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
         }
 
