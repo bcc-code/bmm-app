@@ -282,8 +282,8 @@
     "Playlists": "Soittolistat",
     "NoResults": "Ei tuloksia",
     "NoResultsDescription": "Ei osumia haullesi \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Haku tulokseton",
+    "SearchFailedMessage": "Valitettavasti hakusi \"{0}\" epäonnistui yhteysongelman vuoksi. Yritää uudelleen painamalla nappia."
   },
   "SettingsViewModel": {
     "Title": "Profiili",
