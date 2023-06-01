@@ -282,8 +282,8 @@
     "Playlists": "Spillelister",
     "NoResults": "Ingen resultater",
     "NoResultsDescription": "Der var ikke noget der matcher din søgning efter \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Søgning mislykkedes",
+    "SearchFailedMessage": "Beklager, vi kunne ikke søge efter \"{0}\" på grund af forbindelsesproblemer. Tryk på knappen nedenfor for at prøve igen."
   },
   "SettingsViewModel": {
     "Title": "Profil",
