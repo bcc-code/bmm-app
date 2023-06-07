@@ -230,7 +230,7 @@
     "Following": "Volgend",
     "ManageDownloads": "Beheer downloads",
     "GetNotified": "Ontvang een melding",
-    "GetNotifiedMessage": "wanneer er nieuwe afleveringen uit zijn",
+    "GetNotifiedMessage": "wanneer er nieuwe afleveringen zijn",
     "UnfollowConfirm": "Wil je deze podcast ontvolgen?",
     "ToggleFollowOfflineError": "Je moet in de online-modus zijn om een podcast te volgen of te ontvolgen",
     "Week": "Week {0}",
@@ -282,8 +282,8 @@
     "Playlists": "Afspeellijsten",
     "NoResults": "Geen resultaten",
     "NoResultsDescription": "Er zijn geen resultaten gevonden op je zoekactie naar \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Zoekactie mislukt",
+    "SearchFailedMessage": "Sorry, we konden niet naar \"{0}\" zoeken vanwege connectie problemen. Klik op de knop hieronder om het opnieuw te proberen."
   },
   "SettingsViewModel": {
     "Title": "Profiel",
