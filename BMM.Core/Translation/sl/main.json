@@ -170,7 +170,7 @@
     "DeleteLanguageTitle": "Ni mogoče odstraniti {0}"
   },
   "BrowseViewModel": {
-    "Title": "Išči"
+    "Title": "Razišči"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhiv"
@@ -180,7 +180,7 @@
     "Search": "Išči",
     "Explore": "Razišči",
     "MyContent": "Moje vsebine",
-    "Browse": "Išči",
+    "Browse": "Razišči",
     "Settings": "Nastavitve",
     "HelpAndFeedback": "Pomoč in povratne informacije",
     "Home": "Domov",
