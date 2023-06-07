@@ -245,7 +245,7 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IMediaPlayer, ViewModelHandlingMediaPlayerDecorator>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ILiveTime, LiveTime>();
             Mvx.IoCProvider.RegisterType<IMeasurementCalculator, MeasurementCalculator>();
-            Mvx.IoCProvider.RegisterDecorator<IPlayStatistics, LivestreamPlayStatisticsDecorator, PersistingPlayStatisticsDecorator, PlayStatistics>();
+            Mvx.IoCProvider.RegisterDecorator<IPlayStatistics, PersistingPlayStatisticsDecorator, PlayStatistics>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton<PlayObserverOrchestrator, PlayObserverOrchestrator>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IListenedTracksStorage, ListenedTracksStorage>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton(typeof(TrackListenedObserver));

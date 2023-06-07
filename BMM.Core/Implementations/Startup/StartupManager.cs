@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using BMM.Api.Abstraction;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Utils;
 using MvvmCross;
 using MvvmCross.Plugin.Messenger;
 
@@ -22,11 +24,15 @@ namespace BMM.Core.Implementations.Startup
         private readonly IMvxMessenger _messenger;
 
         private IEnumerable<Type> _creatableTypes;
+        private readonly DebounceDispatcher _debouncer;
 
-        public StartupManager(IExceptionHandler exceptionHandler, IMvxMessenger messenger)
+        public StartupManager(
+            IExceptionHandler exceptionHandler,
+            IMvxMessenger messenger)
         {
             _exceptionHandler = exceptionHandler;
             _messenger = messenger;
+            _debouncer = new DebounceDispatcher(StartupDelayInSeconds.ToMilliseconds());
         }
 
         public void Initialize(IEnumerable<Type> creatableTypes)
@@ -44,13 +50,13 @@ namespace BMM.Core.Implementations.Startup
                 },
                 MvxReference.Strong);
 
-            new Timer(DetectAndRunStartupTasks, creatableTypes, StartupDelayInSeconds * 1000, 0);
+            _debouncer.Run(DetectAndRunStartupTasks);
         }
 
         /// <summary>
         /// fyi: on Android this methods runs for ~30ms
         /// </summary>
-        public void DetectAndRunStartupTasks(object state)
+        private void DetectAndRunStartupTasks()
         {
             var startupTaskInterfaceType = typeof(IDelayedStartupTask);
             var typesToRunAtStartup = _creatableTypes.Where(x => x.GetInterfaces().Contains(startupTaskInterfaceType)).ToList();

@@ -116,6 +116,12 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(FinishedTrackPlayedEvents));
         }
         
+        public static IList<StreakPointEvent> UnsentStreakPointEvent
+        {
+            get => GetValueOrDefault(nameof(UnsentStreakPointEvent), new List<StreakPointEvent>());
+            set => AddOrUpdateValue(value, nameof(UnsentStreakPointEvent));
+        }
+
         public static PersistedDownloadable CurrentDownload
         {
             get => GetValueOrDefault(nameof(CurrentDownload), default(PersistedDownloadable));

@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation;
@@ -13,7 +10,7 @@ namespace BMM.Core.Implementations.PlayObserver
 {
     public class OfflineStatisticsClient : StatisticsClient
     {
-        private const int UploadThresholdInMinutes = 5;
+        private const int UploadThresholdInMinutes = 1;
 
         private readonly ITrackPlayedStorage _trackPlayedStorage;
         private readonly IConnection _connection;
@@ -21,8 +18,12 @@ namespace BMM.Core.Implementations.PlayObserver
         private bool _requestIsRunning;
         private DateTimeOffset? _lastPushed;
 
-        public OfflineStatisticsClient(IRequestHandler handler, ApiBaseUri baseUri, ITrackPlayedStorage trackPlayedStorage, IConnection connection,
-            IExceptionHandler exceptionHandler, ILogger logger) : base(handler, baseUri, logger)
+        public OfflineStatisticsClient(IRequestHandler handler,
+            ApiBaseUri baseUri,
+            ITrackPlayedStorage trackPlayedStorage,
+            IConnection connection,
+            IExceptionHandler exceptionHandler,
+            ILogger logger) : base(handler, baseUri, logger)
         {
             _trackPlayedStorage = trackPlayedStorage;
             _connection = connection;
@@ -42,7 +43,7 @@ namespace BMM.Core.Implementations.PlayObserver
                 {
                     try
                     {
-                        var allEvents = await _trackPlayedStorage.GetExistingEvents();
+                        var allEvents = _trackPlayedStorage.GetUnsentTrackPlayedEvents();
                         await base.PostTrackPlayedEvent(allEvents);
                         await _trackPlayedStorage.DeleteEvents(allEvents);
                         _lastPushed = DateTimeOffset.Now;
@@ -52,6 +53,24 @@ namespace BMM.Core.Implementations.PlayObserver
                         _requestIsRunning = false;
                     }
                 });
+            }
+        }
+
+        public override async Task PostStreakPoints(IList<StreakPointEvent> streakPointEvents)
+        {
+            try
+            {
+                var allEvents = _trackPlayedStorage.GetUnsentStreakPointEvents();
+
+                foreach (var streakPointEvent in streakPointEvents)
+                    allEvents.Add(streakPointEvent);
+                
+                await base.PostStreakPoints(allEvents);
+                _trackPlayedStorage.ClearUnsentStreakPointsEvents();
+            }
+            catch
+            {
+                await _trackPlayedStorage.Add(streakPointEvents);
             }
         }
 

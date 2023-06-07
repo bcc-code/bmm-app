@@ -6,11 +6,11 @@ namespace BMM.Core.Utils
 {
     public class DebounceDispatcher : IDisposable
     {
-        private readonly int _delayDuration;
+        private readonly long _delayDuration;
         private Timer _timer;
         private Action _action;
 
-        public DebounceDispatcher(int delayDuration)
+        public DebounceDispatcher(long delayDuration)
         {
             _delayDuration = delayDuration;
         }

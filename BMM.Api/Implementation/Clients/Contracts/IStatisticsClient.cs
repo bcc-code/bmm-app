@@ -68,6 +68,8 @@ namespace BMM.Api.Implementation.Clients.Contracts
 
         Task PostTrackPlayedEvent(IEnumerable<TrackPlayedEvent> trackPlayedEvents);
         
+        Task PostStreakPoints(IList<StreakPointEvent> trackPlayedEvents);
+        
         Task<IList<YearInReviewItem>> GetYearInReview();
     }
 }
