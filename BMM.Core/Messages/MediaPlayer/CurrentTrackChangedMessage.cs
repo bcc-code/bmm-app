@@ -7,11 +7,14 @@ namespace BMM.Core.Messages.MediaPlayer
     {
         public CurrentTrackChangedMessage(
             ITrackModel currentTrack,
+            long startingPositionMs,
             object sender) : base(sender)
         {
             CurrentTrack = currentTrack;
+            StartingPositionMs = startingPositionMs;
         }
 
         public ITrackModel CurrentTrack { get; }
+        public long StartingPositionMs { get; }
     }
 }

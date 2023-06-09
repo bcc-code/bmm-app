@@ -143,7 +143,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 _audioPlayback.SeekTo(startTimeInMs, false);
 
             PlaybackStateChanged();
-            _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, this));
+            _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, startTimeInMs, this));
         }
 
         private void WaitAndPreloadNextTrack()
@@ -316,7 +316,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
 
             PlaybackStateChanged();
-            _messenger.Publish(new CurrentTrackChangedMessage(track, this));
+            _messenger.Publish(new CurrentTrackChangedMessage(track, startTimeInMs, this));
             WaitAndPreloadNextTrack();
         }
 
@@ -343,7 +343,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _currentTrack = null;
             _currentTrackIndex = 0;
             _audioPlayback.Stop();
-            _messenger.Publish(new CurrentTrackChangedMessage(null, this));
+            _messenger.Publish(new CurrentTrackChangedMessage(null, 0, this));
         }
 
         public void Dispose()

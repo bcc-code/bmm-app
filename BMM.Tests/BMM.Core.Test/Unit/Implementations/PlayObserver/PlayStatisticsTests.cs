@@ -63,8 +63,8 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
         public void SeekingAddsPortion()
         {
             // Arrange
-            var firstTrack = new CurrentTrackChangedMessage(CreateTrack(1), this);
-            var secondTrack = new CurrentTrackChangedMessage(CreateTrack(2), this);
+            var firstTrack = new CurrentTrackChangedMessage(CreateTrack(1), 0, this);
+            var secondTrack = new CurrentTrackChangedMessage(CreateTrack(2), 0, this);
 
             // Act
             _playStatistics.OnCurrentTrackChanged(firstTrack);
@@ -77,7 +77,7 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
         [Test]
         public void CorrectOrder_LogsTrackPlayed()
         {
-            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(CreateTrack(1), this));
+            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(CreateTrack(1), 0, this));
             _playStatistics.OnTrackCompleted(new TrackCompletedMessage(this) { });
             _analytics.Verify(x => x.LogEvent(It.Is<string>(s => s == "Track played"),
                 It.Is<IDictionary<string, object>>(d => (int)d["trackId"] == 1)));
@@ -86,7 +86,7 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
         [Test]
         public void TestSeekEvents_SimulateTrackWithStartTime()
         {
-            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(CreateTrack(1), this));
+            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(CreateTrack(1), 0, this));
             _playStatistics.OnSeeked(100, 0);
             _playStatistics.OnSeeked(0, 5);
 

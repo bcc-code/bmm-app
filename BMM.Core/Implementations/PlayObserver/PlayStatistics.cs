@@ -21,6 +21,8 @@ using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.ViewModels;
+using Microsoft.Maui.ApplicationModel;
+using Microsoft.Maui.Devices;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.Implementations.PlayObserver
@@ -139,7 +141,12 @@ namespace BMM.Core.Implementations.PlayObserver
                     }
 
                     await LogPlayedTrack();
-                    StartNextPortion(message.CurrentTrack.LastPosition);
+
+                    // TODO to be fixed as well for Android
+                    if (DeviceInfo.Current.Platform == DevicePlatform.iOS)
+                        StartNextPortion(message.StartingPositionMs);
+                    else
+                        StartNextPortion(message.CurrentTrack.LastPosition);
                 }
 
                 if (message.CurrentTrack != null)
