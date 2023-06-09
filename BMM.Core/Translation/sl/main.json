@@ -282,8 +282,8 @@
     "Playlists": "Seznam predvajanja",
     "NoResults": "Ni rezultatov",
     "NoResultsDescription": "Za iskanje \"{0}\" ni najdenih zadetkov.",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Neuspešno iskanje",
+    "SearchFailedMessage": "Zaradi tehničnih težav ni bilo možno iskanje \"{0}\". Za ponovni poskus klikni na spodnji gumb."
   },
   "SettingsViewModel": {
     "Title": "Profil",
@@ -519,12 +519,12 @@
     "SuccessfullyAddedToPlaylists": "Uspešno dodano k najljubšim"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Samodejni prepis",
     "AddTo": "Dodaj na seznam predvajanja",
     "Pause": "Premor",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it"
+    "AutoTranscribedPopupTitleText": "Prepisi so ustvarjeni samodejno in lahko vsebujejo napake.",
+    "AutoTranscribedPopupHeaderText": "Samodejni prepis",
+    "AutoTranscribedPopupSubtitleText": "Kmalu boš lahko neposredno v aplikaciji oddal popravke.",
+    "AutoTranscribedPopupButtonText": "Razumem"
   }
 }
