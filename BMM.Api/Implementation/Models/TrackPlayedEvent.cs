@@ -1,17 +1,14 @@
 using System;
 using System.Collections.Generic;
+using BMM.Api.Implementation.Models.Base;
 
 namespace BMM.Api.Implementation.Models
 {
-    public class TrackPlayedEvent
+    public class TrackPlayedEvent : BaseTrackPlayedEvent
     {
         public Guid Id { get; set; }
 
-        public int? PersonId { get; set; }
-
         public string AnalyticsId { get; set; }
-
-        public int? TrackId { get; set; }
 
         public double? UniqueSecondsListened { get; set; }
 
@@ -23,8 +20,6 @@ namespace BMM.Api.Implementation.Models
         /// Length of the Track in Seconds
         /// </summary>
         public double? TrackLength { get; set; }
-
-        public DateTime TimestampStart { get; set; }
 
         public DateTime TimestampEnd { get; set; }
 
@@ -39,18 +34,6 @@ namespace BMM.Api.Implementation.Models
         public IEnumerable<string> Tags { get; set; }
 
         public bool? SentAfterStartup { get; set; }
-
-        public string Language { get; set; }
-
-        public string PlaybackOrigin { get; set; }
-
-        public long LastPosition { get; set; }
-        
-        /// <summary>
-        /// Value of last used playback speed different than default.
-        /// E.g if user changes from 1x to 1.5x and then again to 1x, we set 1.5x.
-        /// </summary>
-        public decimal AdjustedPlaybackSpeed { get; set; }
 
         public Track Track { get; set; }
 

@@ -45,5 +45,9 @@ namespace BMM.Core.Implementations.PlayObserver
         void Clear();
 
         PlayMeasurements GetMeasurementForNewPosition(long position);
+
+        Task TrySendSavedStreakPointsEvents();
+        
+        Task PostStreakPoints(ITrackModel track, PlayMeasurements playMeasurements);
     }
 }

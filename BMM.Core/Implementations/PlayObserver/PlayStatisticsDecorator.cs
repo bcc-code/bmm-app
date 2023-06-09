@@ -78,6 +78,16 @@ namespace BMM.Core.Implementations.PlayObserver
             return _playStatistics.GetMeasurementForNewPosition(position);
         }
 
+        public Task TrySendSavedStreakPointsEvents()
+        {
+            return _playStatistics.TrySendSavedStreakPointsEvents();
+        }
+
+        public Task PostStreakPoints(ITrackModel track, PlayMeasurements playMeasurements)
+        {
+            return _playStatistics.PostStreakPoints(track, playMeasurements);
+        }
+
         public TrackPlayedEvent ComposeEvent(PlayMeasurements measurements, [CallerMemberName] string callerName = "")
         {
             return _playStatistics.ComposeEvent(measurements, callerName);

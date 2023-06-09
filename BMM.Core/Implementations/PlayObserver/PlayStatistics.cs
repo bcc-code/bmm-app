@@ -200,6 +200,30 @@ namespace BMM.Core.Implementations.PlayObserver
             return _measurementCalculator.Calculate(CurrentTrack.Duration, list);
         }
 
+        public async Task TrySendSavedStreakPointsEvents()
+        {
+            await _client.PostStreakPoints(Enumerable.Empty<StreakPointEvent>().ToList());
+        }
+
+        public async Task PostStreakPoints(ITrackModel track, PlayMeasurements measurements)
+        {
+            var user = _userStorage.GetUser();
+            
+            await _client.PostStreakPoints(new List<StreakPointEvent>()
+            {
+                new()
+                {
+                    PersonId = user.PersonId,
+                    TrackId = track.Id,
+                    TimestampStart = measurements.TimestampStart,
+                    Language = track.Language,
+                    PlaybackOrigin = track.PlaybackOrigin,
+                    LastPosition = measurements.LastPosition,
+                    AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed
+                }
+            });
+        }
+
         private async Task LogPlayedTrack()
         {
             await _semaphore.WaitAsync();

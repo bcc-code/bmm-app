@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reactive.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Akavache;
+﻿using System.Timers;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
-using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.PlayObserver.Model;
-using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
@@ -36,6 +29,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         private readonly IMvxMessenger _messenger;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IAnalytics _analytics;
+        private readonly IPlayStatistics _playStatistics;
         private ListeningStreak _latestStreak;
 
         private readonly MvxSubscriptionToken _trackCompletedToken;
@@ -45,17 +39,23 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         /// timer to check every few seconds <see cref="RetryIntervalInSeconds"/> if enough has been listened to update the streak.
         /// It runs the first time, when it's theoretically possible to have listened to <see cref="MinListeningPercentage"/> of today's episode.
         /// </summary>
-        private Timer _minListeningTimer;
+        private System.Timers.Timer _minListeningTimer;
 
         private const int MinListeningPercentage = 60;
         private const int RetryIntervalInSeconds = 10;
 
-        public StreakObserver(IMvxMessenger messenger, IMediaPlayer mediaPlayer, PlayObserverOrchestrator playObserver, IBlobCache localStorage, IExceptionHandler exceptionHandler, IAnalytics analytics, IUserStorage userStorage)
+        public StreakObserver(IMvxMessenger messenger,
+            IMediaPlayer mediaPlayer,
+            PlayObserverOrchestrator playObserver,
+            IExceptionHandler exceptionHandler,
+            IAnalytics analytics,
+            IPlayStatistics playStatistics)
         {
             _mediaPlayer = mediaPlayer;
             _playObserver = playObserver;
             _exceptionHandler = exceptionHandler;
             _analytics = analytics;
+            _playStatistics = playStatistics;
             _messenger = messenger;
             _trackCompletedToken = messenger.Subscribe<FraKaareTrackCompletedMessage>(TrackCompleted);
             _trackChangedToken = messenger.Subscribe<CurrentTrackChangedMessage>(TrackChanged);
@@ -63,20 +63,30 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
 
         private void TrackChanged(CurrentTrackChangedMessage message)
         {
-            if (_latestStreak == null || message.CurrentTrack == null ||
-                message.CurrentTrack.Id != _latestStreak.TodaysFraKaareTrackId || DateTime.UtcNow >= _latestStreak.EligibleUntil.ToUniversalTime() ||
-                _latestStreak.IsTodayAlreadyListened())
+            if (_latestStreak == null
+                || message.CurrentTrack == null
+                || message.CurrentTrack.Id != _latestStreak.TodaysFraKaareTrackId
+                || DateTime.UtcNow >= _latestStreak.EligibleUntil.ToUniversalTime()
+                || _latestStreak.IsTodayAlreadyListened())
             {
-                _minListeningTimer?.Dispose();
-                _minListeningTimer = null;
+                DisposeTimer();
                 return;
             }
 
+            _minListeningTimer ??= new System.Timers.Timer(RetryIntervalInSeconds.ToMilliseconds());
+            _minListeningTimer.Elapsed -= CheckIfListenedEnoughYet;
+            _minListeningTimer.Elapsed += CheckIfListenedEnoughYet;
+            _minListeningTimer.Start();
+        }
+
+        private void DisposeTimer()
+        {
             if (_minListeningTimer == null)
-            {
-                var soonestPossibleCompletedMs = message.CurrentTrack.Duration * MinListeningPercentage / 100;
-                _minListeningTimer = new Timer(CheckIfListenedEnoughYet, null, soonestPossibleCompletedMs, RetryIntervalInSeconds * 1000);
-            }
+                return;
+
+            _minListeningTimer.Elapsed -= CheckIfListenedEnoughYet;
+            _minListeningTimer.Dispose();
+            _minListeningTimer = null;
         }
 
         private void TrackCompleted(FraKaareTrackCompletedMessage msg)
@@ -87,8 +97,11 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             });
         }
 
-        private void CheckIfListenedEnoughYet(object state)
+        private void CheckIfListenedEnoughYet(object sender, ElapsedEventArgs e)
         {
+            if (!_mediaPlayer.IsPlaying)
+                return;
+            
             _exceptionHandler.FireAndForgetWithoutUserMessages(async () =>
             {
                 var updatedStreak = await UpdateStreakIfListened(_mediaPlayer.CurrentTrack,
@@ -97,18 +110,18 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                         var position = _mediaPlayer.PlaybackState.CurrentPosition;
                         return _playObserver.GetMeasurementForNewPosition(position);
                     });
+                
                 if (updatedStreak)
-                {
-                    _minListeningTimer?.Dispose();
-                    _minListeningTimer = null;
-                }
+                    DisposeTimer();
             });
         }
 
         private async Task<bool> UpdateStreakIfListened(ITrackModel track, Func<PlayMeasurements> measurementsFactory)
         {
-            if (_latestStreak != null && track?.Id == _latestStreak.TodaysFraKaareTrackId && !_latestStreak.IsTodayAlreadyListened() &&
-                DateTime.UtcNow < _latestStreak.EligibleUntil.ToUniversalTime())
+            if (_latestStreak != null
+                && track?.Id == _latestStreak.TodaysFraKaareTrackId
+                && !_latestStreak.IsTodayAlreadyListened()
+                && DateTime.UtcNow < _latestStreak.EligibleUntil.ToUniversalTime())
             {
                 var measurements = measurementsFactory.Invoke();
                 if (measurements == null)
@@ -118,6 +131,8 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                 }
                 if (measurements.Percentage > MinListeningPercentage)
                 {
+                    await _playStatistics.PostStreakPoints(track, measurements);
+                    
                     _latestStreak.MarkTodayAsListened();
                     _analytics.LogEvent("mark today as listened",
                         new Dictionary<string, object>
@@ -158,9 +173,11 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                 {
                     if (localStreak != null && localStreak.WeekOfTheYear == streakFromServer.WeekOfTheYear)
                     {
-                        if (localStreak.Monday == true && streakFromServer.Monday != true || localStreak.Tuesday == true && streakFromServer.Tuesday != true ||
-                            localStreak.Wednesday == true && streakFromServer.Wednesday != true || localStreak.Thursday == true && streakFromServer.Thursday != true ||
-                            localStreak.Friday == true && streakFromServer.Friday != true)
+                        if (localStreak.Monday == true && streakFromServer.Monday != true
+                            || localStreak.Tuesday == true && streakFromServer.Tuesday != true
+                            || localStreak.Wednesday == true && streakFromServer.Wednesday != true
+                            || localStreak.Thursday == true && streakFromServer.Thursday != true
+                            || localStreak.Friday == true && streakFromServer.Friday != true)
                         {
                             _analytics.LogEvent("streak point lost", new Dictionary<string, object>
                                 {

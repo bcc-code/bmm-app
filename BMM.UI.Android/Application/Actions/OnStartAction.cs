@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content;
 using Android.Net;
 using Android.Provider;
+using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.GuardedActions.App.Interfaces;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.Implementations.Analytics;

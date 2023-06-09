@@ -1,42 +1,47 @@
-using System.Collections.Generic;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Akavache;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Helpers;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.PlayObserver.Storage
 {
     public class TrackPlayedStorage : ITrackPlayedStorage
     {
-        private readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
+        private readonly SemaphoreSlim _writeSemaphore = new(1, 1);
 
         public async Task Add(IEnumerable<TrackPlayedEvent> trackPlayedEvents)
         {
-            try
+            await ThreadSafeCall(() =>
             {
-                await _writeSemaphore.WaitAsync();
-                var existingEvents = await GetExistingEvents();
+                var existingEvents = GetUnsentTrackPlayedEvents();
                 foreach (var playedEvent in trackPlayedEvents)
-                {
                     existingEvents.Add(playedEvent);
-                }
 
-                await SaveEvents(existingEvents);
-            }
-            finally
-            {
-                _writeSemaphore.Release();
-            }
+                SaveUnsentTrackPlayedEventsEvents(existingEvents);
+            });
         }
 
-        public async Task<IList<TrackPlayedEvent>> GetExistingEvents()
+        public async Task Add(IEnumerable<StreakPointEvent> streakPointEvents)
+        {
+            await ThreadSafeCall(() =>
+            {
+                var unsentStreakPointsEvents = GetUnsentStreakPointEvents();
+                foreach (var streakPointEvent in streakPointEvents)
+                    unsentStreakPointsEvents.Add(streakPointEvent);
+
+                SaveUnsentStreakPointsEvents(unsentStreakPointsEvents);
+            });
+        }
+
+        public IList<TrackPlayedEvent> GetUnsentTrackPlayedEvents()
         {
             var result = AppSettings.FinishedTrackPlayedEvents;
             return result ?? new List<TrackPlayedEvent>();
+        }
+
+        public IList<StreakPointEvent> GetUnsentStreakPointEvents()
+        {
+            var result = AppSettings.UnsentStreakPointEvent;
+            return result ?? new List<StreakPointEvent>();
         }
 
         public async Task DeleteEvents(IList<TrackPlayedEvent> trackPlayedEvents)
@@ -44,9 +49,9 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
             try
             {
                 await _writeSemaphore.WaitAsync();
-                var existingEvents = await GetExistingEvents();
-                var remainingEvents = existingEvents.Except(trackPlayedEvents, TrackPlayedEvent.IdComparer).ToList();
-                await SaveEvents(remainingEvents);
+                var existingEvents = GetUnsentTrackPlayedEvents();
+                var remainingEvents = existingEvents.Except(trackPlayedEvents, TrackPlayedEvent.IdComparer).ToList(); 
+                SaveUnsentTrackPlayedEventsEvents(remainingEvents);
             }
             finally
             {
@@ -54,10 +59,32 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
             }
         }
 
-        // this method should be called inside of a lock / semaphore
-        private async Task SaveEvents(IList<TrackPlayedEvent> playedEvents)
+        public void ClearUnsentStreakPointsEvents()
+        {
+            AppSettings.UnsentStreakPointEvent = null;
+        }
+
+        private async Task ThreadSafeCall(Action action)
+        {
+            try
+            {
+                await _writeSemaphore.WaitAsync();
+                action();
+            }
+            finally
+            {
+                _writeSemaphore.TryRelease();
+            }
+        }
+        
+        private void SaveUnsentTrackPlayedEventsEvents(IList<TrackPlayedEvent> playedEvents)
         {
             AppSettings.FinishedTrackPlayedEvents = playedEvents;
+        }
+        
+        private void SaveUnsentStreakPointsEvents(IList<StreakPointEvent> streakPointEvents)
+        {
+            AppSettings.UnsentStreakPointEvent = streakPointEvents;
         }
     }
 }
