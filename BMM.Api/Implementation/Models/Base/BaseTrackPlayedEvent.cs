@@ -2,7 +2,6 @@ namespace BMM.Api.Implementation.Models.Base;
 
 public abstract class BaseTrackPlayedEvent
 {
-    public Guid Id { get; set; }
     public int? PersonId { get; set; }
     public int? TrackId { get; set; }
     public DateTime TimestampStart { get; set; }

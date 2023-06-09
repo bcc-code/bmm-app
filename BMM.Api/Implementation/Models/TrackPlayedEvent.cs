@@ -6,6 +6,8 @@ namespace BMM.Api.Implementation.Models
 {
     public class TrackPlayedEvent : BaseTrackPlayedEvent
     {
+        public Guid Id { get; set; }
+
         public string AnalyticsId { get; set; }
 
         public double? UniqueSecondsListened { get; set; }

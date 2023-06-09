@@ -213,7 +213,6 @@ namespace BMM.Core.Implementations.PlayObserver
             {
                 new()
                 {
-                    Id = Guid.NewGuid(),
                     PersonId = user.PersonId,
                     TrackId = track.Id,
                     TimestampStart = measurements.TimestampStart,
