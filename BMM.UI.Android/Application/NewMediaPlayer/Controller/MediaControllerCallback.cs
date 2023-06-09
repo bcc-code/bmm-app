@@ -123,7 +123,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
                 return;
 
             var model = _metadataMapper.LookupTrackFromMetadata(metadata, _mediaQueue);
-            _messenger.Publish(new CurrentTrackChangedMessage(model, this));
+            _messenger.Publish(new CurrentTrackChangedMessage(model, 0, this));
             _latestTrackModel = model;
         }
     }

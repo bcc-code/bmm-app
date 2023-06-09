@@ -23,7 +23,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 
 public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatformSpecificMediaPlayer
 {
-    private const string StartTimeInMsKey = "startTimeInMs";
+    public const string StartTimeInMsKey = "startTimeInMs";
 
     private readonly IMediaQueue _mediaQueue;
     private readonly MediaControllerCallback _callback;
@@ -217,7 +217,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         _mediaController.GetTransportControls().Stop();
         _messenger.Publish(new PlaybackStatusChangedMessage(this,
             _mediaController.PlaybackState.ToPlaybackState(_mediaQueue, CurrentPlaybackSpeed)));
-        _messenger.Publish(new CurrentTrackChangedMessage(null, this));
+        _messenger.Publish(new CurrentTrackChangedMessage(null, 0, this));
         Disconnect();
     }
 
