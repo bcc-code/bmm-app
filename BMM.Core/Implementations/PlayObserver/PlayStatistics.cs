@@ -141,12 +141,7 @@ namespace BMM.Core.Implementations.PlayObserver
                     }
 
                     await LogPlayedTrack();
-
-                    // TODO to be fixed as well for Android
-                    if (DeviceInfo.Current.Platform == DevicePlatform.iOS)
-                        StartNextPortion(message.StartingPositionMs);
-                    else
-                        StartNextPortion(message.CurrentTrack.LastPosition);
+                    StartNextPortion(message.StartingPositionMs);
                 }
 
                 if (message.CurrentTrack != null)

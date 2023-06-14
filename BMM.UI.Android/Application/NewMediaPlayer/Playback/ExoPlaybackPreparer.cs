@@ -69,27 +69,12 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
             }
 
             _mediaSource.CreateNew(startIndex.GetValueOrDefault(), mediaSources.ToArray());
-            SendSeekedMessage();
-            
+
             _exoPlayer.SetMediaSource(_mediaSource.Get);
             _exoPlayer.Prepare();
             _exoPlayer.SeekTo(startIndex.Value, startTimeInMs);
 
             SetPlayWhenReadyOnPlayer(playWhenReady);
-        }
-
-        /// <summary>
-        /// When the seeked event is triggered in AudioFocusExoPlayerDecorator the Position is already 0. Therefore we trigger this here.
-        /// This causes the event to be triggered twice, but that is fine with all consumers of the event.
-        /// </summary>
-        private void SendSeekedMessage()
-        {
-            Mvx.IoCProvider.Resolve<IMvxMessenger>()
-                .Publish(new PlaybackSeekedMessage(this)
-                {
-                    CurrentPosition = _exoPlayer.CurrentPosition,
-                    SeekedPosition = 0
-                });
         }
 
         private IMediaSource GetSingleMediaSource(IMediaTrack track)
