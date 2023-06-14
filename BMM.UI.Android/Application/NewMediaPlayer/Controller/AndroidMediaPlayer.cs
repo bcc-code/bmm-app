@@ -159,8 +159,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         if (queueStaysTheSame && _mediaController.Queue != null)
         {
             controls.SkipToQueueItem(mediaTracks.IndexOf(currentTrack));
-            controls.Play();
-            controls.SeekTo(startTimeInMs);
+            SeekTo(startTimeInMs);
         }
         else
         {
@@ -168,6 +167,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
             {
                 var bundle = new Bundle();
                 bundle.PutLong(StartTimeInMsKey, startTimeInMs);
+                _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, startTimeInMs, this));
                 controls.PlayFromMediaId(currentTrack.Id.ToString(), bundle);
             }
         }
@@ -240,6 +240,12 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
             {
                 controls.SeekTo(newPosition);
                 controls.Play();
+                
+               _messenger.Publish(new PlaybackSeekedMessage(this)
+                    {
+                        CurrentPosition = CurrentPosition,
+                        SeekedPosition = newPosition
+                    });
             }
         }
     }
