@@ -43,7 +43,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public async Task RunAfterStartup()
         {
             await _playStatistics.TrySendSavedStreakPointsEvents();
-            var storedEvent = await _localStorage.GetOrCreateObject<TrackPlayedEvent>(StorageKeys.UnfinishedTrackPlayedEvent, () => null);
+            var storedEvent = AppSettings.UnfinishedTrackPlayedEvent;
 
             if (storedEvent == null)
                 return;

@@ -9,6 +9,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FileStorage.StreamToFileSystemWriter;
+using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Downloading.FileDownloader
 {
@@ -17,18 +18,18 @@ namespace BMM.Core.Implementations.Downloading.FileDownloader
         private readonly HttpClient _httpClient;
         private readonly IStreamToFileSystemWriter _streamToFileSystemWriter;
         private readonly IStorageManager _storageManager;
-        private readonly IBlobCache _localStorage;
         private readonly IMediaRequestHttpHeaders _headerProvider;
 
         private CancellationTokenSource _cancellationTokenSource;
         private IDownloadable _currentDownloadable;
 
-        public HttpClientFileDownloader(IStreamToFileSystemWriter streamToFileSystemWriter, IStorageManager storageManager, IBlobCache localStorage,
+        public HttpClientFileDownloader(
+            IStreamToFileSystemWriter streamToFileSystemWriter,
+            IStorageManager storageManager,
             IMediaRequestHttpHeaders headerProvider)
         {
             _streamToFileSystemWriter = streamToFileSystemWriter;
             _storageManager = storageManager;
-            _localStorage = localStorage;
             _headerProvider = headerProvider;
             _httpClient = new HttpClient();
         }
@@ -53,7 +54,12 @@ namespace BMM.Core.Implementations.Downloading.FileDownloader
             try
             {
                 // We store the currently downloading file to recover it in case the catch is never executed (e.g. kill the app)
-                await _localStorage.InsertObject(StorageKeys.CurrentDownload, new PersistedDownloadable {Url = downloadable.Url, Id = downloadable.Id, Tags = downloadable.Tags});
+                AppSettings.CurrentDownload = new PersistedDownloadable
+                {
+                    Url = downloadable.Url,
+                    Id = downloadable.Id,
+                    Tags = downloadable.Tags
+                };
                 using (var contentStream = await response.Content.ReadAsStreamAsync())
                 {
                     await _streamToFileSystemWriter.WriteStreamForTrackMediaFile(contentStream, cancellationToken, filePath);
@@ -66,7 +72,7 @@ namespace BMM.Core.Implementations.Downloading.FileDownloader
             }
             finally
             {
-                await _localStorage.InsertObject<PersistedDownloadable>(StorageKeys.CurrentDownload, null);
+                AppSettings.CurrentDownload = null;
                 _cancellationTokenSource = null;
                 _currentDownloadable = null;
             }
