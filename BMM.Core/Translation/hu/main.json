@@ -282,8 +282,8 @@
     "Playlists": "Lejátszási listák",
     "NoResults": "Nincs eredmény",
     "NoResultsDescription": "Nem volt találat a \"{0}\" keresésedre",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Keresés sikertelen",
+    "SearchFailedMessage": "Sajnáljuk, de nem tudtunk keresni a \"{0}\"-ra, mert kapcsolódási problémák adódtak. Nyomd meg az alábbi gombot az újbóli próbálkozáshoz."
   },
   "SettingsViewModel": {
     "Title": "Profil",
