@@ -26,8 +26,6 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override Type ParentViewControllerType => null;
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

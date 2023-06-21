@@ -13,6 +13,11 @@ namespace BMM.Core.Implementations
         {
             return new ExceptionHandlingCommand(async () => await navigationService.Navigate<TViewModel>());
         }
+        
+        public static IMvxCommand NavigateCommand<TViewModel, TParameter>(this IMvxNavigationService navigationService, TParameter parameter) where TViewModel : IMvxViewModel<TParameter>
+        {
+            return new ExceptionHandlingCommand(async () => await navigationService.Navigate<TViewModel, TParameter>(parameter));
+        }
 
         /// <summary>
         /// Navigate to ViewModel and set it as the new navigation root. This is supposed to be used in the menu.

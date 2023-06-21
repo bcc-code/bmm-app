@@ -53,7 +53,6 @@ namespace BMM.UI.iOS
         private bool SupportsNotFullscreenPageSheetPresentation => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
         private bool NeedsSetProgressBarThumbColorToBeForcedFromMainThread => !UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
         private bool DarkModeSupported => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
-        public override Type ParentViewControllerType => typeof(UINavigationController);
         protected override string GetTitle() => string.Empty;
         public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation() => UIInterfaceOrientation.Portrait;
         public override UIInterfaceOrientationMask GetSupportedInterfaceOrientations() => UIInterfaceOrientationMask.Portrait;

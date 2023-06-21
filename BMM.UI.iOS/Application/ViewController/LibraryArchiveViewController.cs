@@ -11,7 +11,6 @@ namespace BMM.UI.iOS
         }
 
         public double? InitialLargeTitleHeight { get; set; }
-        public override Type ParentViewControllerType => typeof(BrowseViewController);
 
         public override void ViewDidLoad()
         {

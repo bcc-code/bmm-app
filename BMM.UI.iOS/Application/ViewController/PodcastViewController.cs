@@ -22,8 +22,6 @@ namespace BMM.UI.iOS
             : base(nameof(PodcastViewController))
         { }
 
-        public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

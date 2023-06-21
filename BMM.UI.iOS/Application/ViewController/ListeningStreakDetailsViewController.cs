@@ -22,8 +22,6 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override Type ParentViewControllerType { get; }
-
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);

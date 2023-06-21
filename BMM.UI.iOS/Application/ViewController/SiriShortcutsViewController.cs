@@ -12,8 +12,6 @@ namespace BMM.UI.iOS
             CurrentInstance = this;
         }
 
-        public override System.Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-        
         public static SiriShortcutsViewController CurrentInstance { get; private set; }
 
         public override void ViewDidLoad()

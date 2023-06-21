@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
@@ -12,7 +13,6 @@ namespace BMM.UI.iOS
     public abstract class BaseViewController<TViewModel> : MvxViewController<TViewModel>, IBaseViewController where TViewModel : BaseViewModel
     {
         private bool SupportsNavigationBarSeparator => UIDevice.CurrentDevice.CheckSystemVersion(14, 0);
-        public abstract Type ParentViewControllerType { get; }
 
         public BaseViewController(string nib)
             : base(nib, null)
@@ -20,6 +20,7 @@ namespace BMM.UI.iOS
         
         protected virtual string GetTitle() => ViewModel.TextSource[TitleKey];
         protected float BottomSafeArea => (float)(View?.SafeAreaInsets.Bottom ?? 0);
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public override void ViewDidLoad()
         {
@@ -121,6 +122,11 @@ namespace BMM.UI.iOS
 
         protected virtual void DetachEvents()
         {
+        }
+        
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         public override void DidMoveToParentViewController(UIViewController parent)

@@ -86,8 +86,6 @@ using MvvmCross.Plugin.Messenger;
 using MvvmCross.Plugin.ResourceLoader;
 using MvvmCross.ViewModels;
 
-// ReSharper disable RedundantTypeArgumentsOfMethod
-
 namespace BMM.Core
 {
     public class App : MvxApplication

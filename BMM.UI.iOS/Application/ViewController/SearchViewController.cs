@@ -30,8 +30,6 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-
         protected override UIView HostViewForPager => ContainerView;
 
         public IBmmInteraction RemoveFocusOnSearchInteraction

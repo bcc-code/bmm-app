@@ -26,8 +26,6 @@ namespace BMM.UI.iOS
         public BrowseViewController() : base(nameof(BrowseViewController))
         { }
 
-        public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

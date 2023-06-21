@@ -27,8 +27,6 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override Type ParentViewControllerType => null;
-
         public string Name
         {
             get => _name;

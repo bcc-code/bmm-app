@@ -9,8 +9,6 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override System.Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

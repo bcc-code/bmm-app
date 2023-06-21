@@ -14,9 +14,6 @@ namespace BMM.UI.iOS
     [MvxRootPresentation(WrapInNavigationController = false)]
     public partial class OidcLoginViewController : BaseViewController<OidcLoginViewModel>
     {
-        // The login is done by replacing the RootViewController by the LoginViewController. It replaces all, that's available on the current screen.
-        public override Type ParentViewControllerType => null;
-
         public OidcLoginViewController()
             : base(nameof(OidcLoginViewController))
         { }

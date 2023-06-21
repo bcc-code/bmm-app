@@ -23,8 +23,6 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-
         public bool IsSharingStatusIconVisible
         {
             get => _isSharingStatusIconVisible;

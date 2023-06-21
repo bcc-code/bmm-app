@@ -411,5 +411,6 @@ namespace BMM.Core.Translation
 		public const string HighlightedTextTrackViewModel_AutoTranscribedPopupHeaderText = nameof(HighlightedTextTrackViewModel_AutoTranscribedPopupHeaderText);
 		public const string HighlightedTextTrackViewModel_AutoTranscribedPopupSubtitleText = nameof(HighlightedTextTrackViewModel_AutoTranscribedPopupSubtitleText);
 		public const string HighlightedTextTrackViewModel_AutoTranscribedPopupButtonText = nameof(HighlightedTextTrackViewModel_AutoTranscribedPopupButtonText);
+		public const string WebBrowserViewModel_Title = nameof(WebBrowserViewModel_Title);
 	}
 }

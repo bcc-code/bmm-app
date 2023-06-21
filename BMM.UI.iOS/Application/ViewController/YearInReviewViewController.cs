@@ -32,7 +32,6 @@ namespace BMM.UI.iOS
         private YearInReviewSource _source;
 
         public UIButton ButtonShare => ShareButton;
-        public override Type ParentViewControllerType => null;
 
         public override void ViewDidLayoutSubviews()
         {

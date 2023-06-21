@@ -27,8 +27,6 @@ namespace BMM.UI.iOS
         {
         }
 
-        public override Type ParentViewControllerType => null;
-
         public bool IsCurrentlyPlaying
         {
             get => _isCurrentlyPlaying;

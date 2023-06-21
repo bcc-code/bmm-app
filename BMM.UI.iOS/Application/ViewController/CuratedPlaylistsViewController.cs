@@ -21,8 +21,6 @@ namespace BMM.UI.iOS
         public CuratedPlaylistsViewController() : base(nameof(BrowseViewController))
         { }
 
-        public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();

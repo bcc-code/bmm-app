@@ -9,8 +9,6 @@ namespace BMM.UI.iOS
 {
     public partial class SupportEndedViewController : BaseViewController<SupportEndedViewModel>
     {
-        public override Type ParentViewControllerType => null;
-
         public SupportEndedViewController()
             : base(nameof(SupportEndedViewController))
         { }

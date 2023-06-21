@@ -18,8 +18,6 @@ namespace BMM.UI.iOS
 
         public double? InitialLargeTitleHeight { get; set; }
 
-        public override Type ParentViewControllerType => typeof(ContainmentNavigationViewController);
-
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
