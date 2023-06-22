@@ -1,5 +1,6 @@
 using BMM.Core.Extensions;
 using BMM.Core.Interactions.Base;
+using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.UI.iOS.Constants;
@@ -44,6 +45,8 @@ namespace BMM.UI.iOS.ViewController.Base
         {
             _userContentController = new WKUserContentController();
             var webViewConfiguration = new WKWebViewConfiguration();
+            
+            _userContentController.AddUserScript(new WKUserScript(new NSString(WebBrowserViewModel.Script), WKUserScriptInjectionTime.AtDocumentStart, false));
             webViewConfiguration.UserContentController = _userContentController;
 
             var webView = WebView ?? new BmmWebView(WebBrowserContainer.Frame, webViewConfiguration);
@@ -266,13 +269,10 @@ namespace BMM.UI.iOS.ViewController.Base
             //     .For(p => p.PageLoaded)
             //     .To(vm => vm.PageLoaded);
             //
-            // set.Bind(this)
-            //     .For(p => p.EvaluateJavaScriptInteraction)
-            //     .To(vm => vm.EvaluateJavaScriptInteraction);
-            //
-            // set.Bind(this)
-            //     .For(p => p.EvaluateJavaScriptInteraction)
-            //     .To(vm => vm.EvaluateJavaScriptInteraction);
+            set.Bind(this)
+                .For(p => p.EvaluateJavaScriptInteraction)
+                .To(vm => vm.EvaluateJavaScriptInteraction);
+            
             //
             // set.Bind(this)
             //     .For(p => p.JavaScriptEventHandlers)
@@ -369,7 +369,7 @@ namespace BMM.UI.iOS.ViewController.Base
         public void DidReceiveScriptMessage(WKUserContentController userContentController, WKScriptMessage message)
         {
             string formattedMessage = CreateMessageFromBody(message.Body);
-
+            
             if (_javaScriptEventHandlers.TryGetValue(message.Name, out var eventHandler))
                 eventHandler.Invoke(formattedMessage);
         }

@@ -94,7 +94,6 @@ namespace BMM.UI.iOS.CustomViews
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e.Message, e);
                     }
                     finally
                     {
