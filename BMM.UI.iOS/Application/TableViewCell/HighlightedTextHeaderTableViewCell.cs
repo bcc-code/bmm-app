@@ -20,9 +20,9 @@ namespace BMM.UI.iOS
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<HighlightedTextHeaderTableViewCell, HighlightedTextHeaderPO>();
-                
+
                 set.Bind(HeaderLabel)
-                    .To(vm => vm.TextSource[Translations.HighlightedTextTrackViewModel_AutoTranscribed]);
+                    .To(vm => vm.HeaderText);
 
                 set.Bind(ContentView)
                     .For(v => v.BindTap())

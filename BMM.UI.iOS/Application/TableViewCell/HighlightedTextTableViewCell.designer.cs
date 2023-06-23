@@ -17,6 +17,9 @@ namespace BMM.UI.iOS
 		BMM.UI.iOS.CustomViews.BmmFormattedLabel HighlightedTextLabel { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView PlayIcon { get; set; }
+
+		[Outlet]
 		UIKit.UILabel PositionLabel { get; set; }
 
 		[Outlet]
@@ -45,6 +48,11 @@ namespace BMM.UI.iOS
 			if (ShareButtonArea != null) {
 				ShareButtonArea.Dispose ();
 				ShareButtonArea = null;
+			}
+
+			if (PlayIcon != null) {
+				PlayIcon.Dispose ();
+				PlayIcon = null;
 			}
 
 		}

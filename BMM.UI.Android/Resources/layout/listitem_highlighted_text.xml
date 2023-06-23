@@ -24,7 +24,9 @@
                 android:layout_marginTop="@dimen/margin_medium"
                 local:layout_constraintTop_toTopOf="parent"
                 local:layout_constraintStart_toStartOf="parent"
-                local:MvxBind="Text MillisecondsToTime(StartPositionInMs)"
+                local:MvxBind="
+                    Text MillisecondsToTime(StartPositionInMs);
+                    Visibility VisibleOrHidden(!IsSong)"
                 style="@style/Paragraph3_Label1" />
 
         <ImageView
@@ -35,6 +37,7 @@
                 local:layout_constraintTop_toTopOf="@+id/PositionLabel"
                 local:layout_constraintBottom_toBottomOf="@+id/PositionLabel"
                 local:layout_constraintStart_toEndOf="@+id/PositionLabel"
+                local:MvxBind="Visibility VisibleOrHidden(!IsSong)"
                 android:tint="@color/label_one_color"
                 android:src="@drawable/icon_arrow_right" />
 
@@ -58,7 +61,7 @@
                 android:layout_marginVertical="@dimen/margin_medium"
                 android:textFontWeight="445"
                 local:roundedTextDrawable="@drawable/background_highlighted_text"
-                local:layout_constraintTop_toBottomOf="@+id/PositionLabel"
+                local:layout_constraintTop_toBottomOf="@+id/ShareButton"
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 local:layout_constraintBottom_toBottomOf="parent"
