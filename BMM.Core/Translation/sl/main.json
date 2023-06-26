@@ -520,11 +520,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Samodejni prepis",
+    "FromSongTreasures": "From Song Treasures",
     "AddTo": "Dodaj na seznam predvajanja",
     "Pause": "Premor",
     "AutoTranscribedPopupTitleText": "Prepisi so ustvarjeni samodejno in lahko vsebujejo napake.",
     "AutoTranscribedPopupHeaderText": "Samodejni prepis",
     "AutoTranscribedPopupSubtitleText": "Kmalu boš lahko neposredno v aplikaciji oddal popravke.",
-    "AutoTranscribedPopupButtonText": "Razumem"
+    "AutoTranscribedPopupButtonText": "Razumem",
+    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
   }
 }

@@ -520,11 +520,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Geautomatiseerde transcriptie",
+    "FromSongTreasures": "From Song Treasures",
     "AddTo": "Toevoegen aan afspeellijst",
     "Pause": "Pauze",
     "AutoTranscribedPopupTitleText": "Transcripties zijn automatisch gegenereerd en kunnen daardoor fouten bevatten",
     "AutoTranscribedPopupHeaderText": "Geautomatiseerde transcriptie",
     "AutoTranscribedPopupSubtitleText": "Binnenkort kun je correcties voorstellen direct in de app.",
-    "AutoTranscribedPopupButtonText": "Begrepen"
+    "AutoTranscribedPopupButtonText": "Begrepen",
+    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
   }
 }
