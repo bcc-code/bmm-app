@@ -520,11 +520,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Automatikusan átírva",
+    "FromSongTreasures": "From Song Treasures",
     "AddTo": "Hozzáadás lejátszási listához",
     "Pause": "Szünet",
     "AutoTranscribedPopupTitleText": "Az átiratok automatikusan generálódnak, és hibákat tartalmazhatnak.",
     "AutoTranscribedPopupHeaderText": "Automatikusan átírva",
     "AutoTranscribedPopupSubtitleText": "Hamarosan közvetlenül az alkalmazásban is elküldheted a javításokat.",
-    "AutoTranscribedPopupButtonText": "Megvan"
+    "AutoTranscribedPopupButtonText": "Megvan",
+    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
   }
 }
