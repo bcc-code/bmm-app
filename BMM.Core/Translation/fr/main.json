@@ -520,11 +520,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Transcription automatique",
+    "FromSongTreasures": "From Song Treasures",
     "AddTo": "Ajouter à la liste de lecture",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Les transcriptions sont générées automatiquement et peuvent contenir des erreurs.",
     "AutoTranscribedPopupHeaderText": "Transcription automatique",
     "AutoTranscribedPopupSubtitleText": "Vous pourrez bientôt soumettre des corrections directement dans l'application.",
-    "AutoTranscribedPopupButtonText": "J'ai compris"
+    "AutoTranscribedPopupButtonText": "J'ai compris",
+    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
   }
 }
