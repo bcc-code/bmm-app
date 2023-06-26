@@ -520,11 +520,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Automatisk transkribert",
+    "FromSongTreasures": "From Song Treasures",
     "AddTo": "Legg til i spilleliste",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Transkripsjoner er automatisk generert og kan inneholde feil",
     "AutoTranscribedPopupHeaderText": "Automatisk transkribert",
     "AutoTranscribedPopupSubtitleText": "Du vil snart kunne sende inn rettelser direkte i appen.",
-    "AutoTranscribedPopupButtonText": "Forstått"
+    "AutoTranscribedPopupButtonText": "Forstått",
+    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
   }
 }
