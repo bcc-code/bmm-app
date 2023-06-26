@@ -35,6 +35,16 @@ namespace BMM.UI.iOS
                 set.Bind(ContentView)
                     .For(v => v.BindTap())
                     .To(po => po.ItemClickedCommand);
+
+                set.Bind(PlayIcon)
+                    .For(v => v.BindVisible())
+                    .To(po => po.IsSong)
+                    .WithConversion<InvertedBoolConverter>();
+                
+                set.Bind(PositionLabel)
+                    .For(v => v.BindVisible())
+                    .To(po => po.IsSong)
+                    .WithConversion<InvertedBoolConverter>();
                 
                 set.Apply();
                 PositionLabel.ApplyTextTheme(AppTheme.Paragraph3Label1);

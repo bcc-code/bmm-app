@@ -1,4 +1,5 @@
 using System.Text;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.Helpers;
@@ -25,6 +26,11 @@ public class HighlightedTextPO : DocumentPO, IHighlightedTextPO
         StyledTextContainer = styledTextContainer;
         Text = text;
         StartPositionInMs = startPositionInSeconds.ToMilliseconds();
+        IsSong = trackPO
+            .Track
+            .Subtype
+            .IsOneOf(TrackSubType.Song, TrackSubType.Singsong);
+        
         ItemClickedCommand = new ExceptionHandlingCommand(() =>
         {
             return mediaPlayer.Play(
@@ -49,6 +55,7 @@ public class HighlightedTextPO : DocumentPO, IHighlightedTextPO
     }
 
     public ITrackPO TrackPO { get; }
+    public bool IsSong { get; }
     public StyledTextContainer StyledTextContainer { get; }
     public string Text { get; }
     public long StartPositionInMs { get; }

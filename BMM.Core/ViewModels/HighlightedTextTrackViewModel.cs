@@ -1,4 +1,5 @@
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.HighlightedText.Interfaces;
@@ -25,12 +26,14 @@ public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<H
     private HighlightedTextTrackPO _highlightedTextTrackPO;
     private MvxSubscriptionToken _updateStateToken;
     private bool _isCurrentlyPlaying;
-
+    
     public HighlightedTextTrackViewModel(
         IShowHighlightedTextInfoDialogAction showHighlightedTextInfoDialogAction,
         IMediaPlayer mediaPlayer)
     {
         _showHighlightedTextInfoDialogAction = showHighlightedTextInfoDialogAction;
+        _showHighlightedTextInfoDialogAction.AttachDataContext(this);
+        
         _mediaPlayer = mediaPlayer;
         PlayPauseCommand = new ExceptionHandlingCommand(() =>
         {
@@ -73,6 +76,7 @@ public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<H
     
     public IMvxAsyncCommand PlayPauseCommand { get; }
     public IMvxAsyncCommand AddToCommand { get; }
+    public bool IsSong { get; private set; }
 
     protected override async Task Initialization()
     {
@@ -87,6 +91,11 @@ public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<H
     public void Prepare(HighlightedTextTrackPO parameter)
     {
         _highlightedTextTrackPO = parameter;
+        IsSong = parameter
+            .TrackPO
+            .Track
+            .Subtype
+            .IsOneOf(TrackSubType.Song, TrackSubType.Singsong);
     }
 
     protected override void AttachEvents()
@@ -128,7 +137,7 @@ public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<H
         RefreshTrackWithId(null);
         var rangeOfItems = new List<IDocumentPO>
         {
-            new HighlightedTextHeaderPO(_showHighlightedTextInfoDialogAction)
+            new HighlightedTextHeaderPO(_showHighlightedTextInfoDialogAction, IsSong)
         };
 
         rangeOfItems.AddRange(_highlightedTextTrackPO.HighlightedTexts);

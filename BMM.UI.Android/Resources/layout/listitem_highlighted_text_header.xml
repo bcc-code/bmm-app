@@ -28,7 +28,7 @@
             local:layout_constraintBottom_toBottomOf="@+id/AIIcon"
             local:layout_constraintStart_toEndOf="@+id/AIIcon"
             local:layout_constraintEnd_toEndOf="parent"
-            local:MvxLang="Text HighlightedTextTrackViewModel_AutoTranscribed"
+            local:MvxBind="Text HeaderText"
             style="@style/Paragraph2" />
 
     <View
