@@ -35,7 +35,7 @@ namespace BMM.Api.Implementation.Models
         public DateTime? Birthdate { get; set; }
 
         /// <summary>
-        /// Return the age at the end of this year.
+        /// Return the age at the beginning of this year.
         /// We want to prevent that the real birthdate can be tracked by checking which day the age increases.
         /// </summary>
         public int? Age => Birthdate.HasValue ? DateTime.UtcNow.Year - Birthdate.Value.Year : (int?)null;
