@@ -1,10 +1,11 @@
 using BMM.Api.Implementation.Models;
 using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Contributors.Interfaces;
 using MvvmCross.Commands;
 
 namespace BMM.Core.Models.POs.Contributors
 {
-    public class ContributorPO : DocumentPO
+    public class ContributorPO : DocumentPO, IContributorPO
     {
         public ContributorPO(
             IMvxAsyncCommand<Document> optionsClickedCommand,

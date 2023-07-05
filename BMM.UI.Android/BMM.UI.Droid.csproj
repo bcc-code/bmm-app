@@ -85,7 +85,6 @@
     <None Remove="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <None Remove="Resources\values\dimens.xml" />
-    <AndroidResource Include="Resources\values\dimens.xml" />
     <None Remove="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\values\Strings.xml" />
     <None Remove="Resources\values\styles.xml" />
@@ -979,6 +978,18 @@
     </AndroidResource>
     <None Remove="Resources\raw-night\play_animation_icon.json" />
     <AndroidResource Include="Resources\raw-night\play_animation_icon.json" />
+    <AndroidResource Update="Resources\drawable\recommendation_rounded_background.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_recommendation_album.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_recommendation_contributor.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="google-services.json" />

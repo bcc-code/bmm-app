@@ -17,6 +17,7 @@ using BMM.Core.Models.POs.InfoMessages;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.Recommendations;
 using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Models.POs.Tracks.Interfaces;
@@ -112,6 +113,9 @@ namespace BMM.Core.Implementations.Factories
                         break;
                     case YearInReviewTeaser yearInReviewTeaser:
                         documentsPOList.Add(_yearInReviewTeaserPOFactory.Create(yearInReviewTeaser));
+                        break;
+                    case Recommendation recommendation:
+                        documentsPOList.Add(new RecommendationPO(recommendation, _trackPOFactory, trackInfoProvider, optionsClickedCommand));
                         break;
                 }
             }

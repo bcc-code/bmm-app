@@ -29,7 +29,7 @@
             android:id="@+id/PlaylistName"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_xsmall"
+            android:layout_marginTop="@dimen/margin_xxsmall"
             android:layout_marginHorizontal="@dimen/margin_medium"
             android:gravity="center_horizontal"
             style="@style/Heading2"

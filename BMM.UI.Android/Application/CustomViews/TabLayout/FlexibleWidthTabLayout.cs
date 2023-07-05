@@ -34,7 +34,7 @@ namespace BMM.UI.Droid.Application.CustomViews.TabLayout
 
         protected override int LayoutId => Resource.Layout.view_tab_layout;
 
-        protected override int ItemSpacing => Resources!.GetDimensionPixelSize(Resource.Dimension.margin_xsmall);
+        protected override int ItemSpacing => Resources!.GetDimensionPixelSize(Resource.Dimension.margin_xxsmall);
 
         protected override RecyclerView.ItemDecoration ItemDecorator
         {
@@ -43,8 +43,8 @@ namespace BMM.UI.Droid.Application.CustomViews.TabLayout
                 if (_horizontalSpacingItemDecorator != null)
                     return _horizontalSpacingItemDecorator;
 
-                int regularSpacing = Resources!.GetDimensionPixelSize(Resource.Dimension.margin_xsmall);
-                int additionalHorizontalMargin = Resources!.GetDimensionPixelSize(Resource.Dimension.margin_xsmall);
+                int regularSpacing = Resources!.GetDimensionPixelSize(Resource.Dimension.margin_xxsmall);
+                int additionalHorizontalMargin = Resources!.GetDimensionPixelSize(Resource.Dimension.margin_xxsmall);
 
                 _horizontalSpacingItemDecorator = new HorizontalSpacingItemDecoration(
                     regularSpacing,

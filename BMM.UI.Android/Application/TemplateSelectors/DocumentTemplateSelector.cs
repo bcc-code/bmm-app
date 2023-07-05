@@ -7,6 +7,7 @@ using BMM.Core.Models.POs.ListeningStreakPO;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.Recommendations;
 using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks;
@@ -37,6 +38,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int YearInReviewTeaserExpanded = 23;
         public const int TopSongsCollectionHeader = 24;
         public const int HighlightedTextTrack = 25;
+        public const int RecommendationTrack = 26;
+        public const int RecommendationAlbumPlaylist = 27;
+        public const int RecommendationContributor = 28;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
@@ -92,6 +96,15 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ViewTypes.HighlightedTextTrack:
                     return Resource.Layout.listitem_highlighted_text_track;
+                
+                case ViewTypes.RecommendationTrack:
+                    return Resource.Layout.listitem_recommendation_track;
+                
+                case ViewTypes.RecommendationAlbumPlaylist:
+                    return Resource.Layout.listitem_recommendation_album;
+                
+                case ViewTypes.RecommendationContributor:
+                    return Resource.Layout.listitem_recommendation_contributor;
                 
                 default:
                     return Resource.Layout.listitem_track;
@@ -153,7 +166,21 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case HighlightedTextTrackPO:
                     return ViewTypes.HighlightedTextTrack;
+                
+                case RecommendationPO recommendationPO:
+                {
+                    if (recommendationPO.TrackPO != null)
+                        return ViewTypes.RecommendationTrack;
 
+                    if (recommendationPO.PlaylistPO != null)
+                        return ViewTypes.RecommendationAlbumPlaylist;
+                    
+                    if (recommendationPO.ContributorPO != null)
+                        return ViewTypes.RecommendationContributor;
+                    
+                    return ViewTypes.YearInReviewTeaserCollapsed;
+                }
+                
                 default:
                         return ViewTypes.Unknown;
             }

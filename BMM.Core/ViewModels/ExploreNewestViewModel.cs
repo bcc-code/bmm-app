@@ -51,7 +51,6 @@ namespace BMM.Core.ViewModels
         private readonly IAddToQueueAdditionalMusic _addToQueueAdditionalMusic;
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
-        private StyledTextContainer _styledTextContainer;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
@@ -81,12 +80,6 @@ namespace BMM.Core.ViewModels
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
-        }
-
-        public StyledTextContainer StyledTextContainer
-        {
-            get => _styledTextContainer;
-            set => SetProperty(ref _styledTextContainer, value);
         }
 
         public IMvxAsyncCommand<Type> NavigateToViewModelCommand => _navigateToViewModelAction.Command;
@@ -122,6 +115,28 @@ namespace BMM.Core.ViewModels
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
+
+            var track = (Track)docsWithCoversCarousel.First(x => x is Track);
+            docsWithCoversCarousel.Insert(2,
+                new Recommendation
+                {
+                    Track = track
+                });
+            
+            var playlist = (Playlist)docs.First(x => x is Playlist);
+            docsWithCoversCarousel.Insert(3,
+                new Recommendation
+                {
+                    Playlist = playlist
+                });
+            
+            var con = (Contributor)docs.First(x => x is Contributor);
+            docsWithCoversCarousel.Insert(4,
+                new Recommendation
+                {
+                    Contributor = con
+                });
+            
             var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
             return presentationItems;
