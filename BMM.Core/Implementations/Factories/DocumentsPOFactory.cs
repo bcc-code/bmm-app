@@ -115,7 +115,7 @@ namespace BMM.Core.Implementations.Factories
                         documentsPOList.Add(_yearInReviewTeaserPOFactory.Create(yearInReviewTeaser));
                         break;
                     case Recommendation recommendation:
-                        documentsPOList.Add(new RecommendationPO(recommendation, _trackPOFactory, trackInfoProvider, optionsClickedCommand));
+                        documentsPOList.Add(new RecommendationPO(recommendation, _trackPOFactory, trackInfoProvider, optionsClickedCommand, documentSelectedCommand));
                         break;
                 }
             }

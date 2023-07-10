@@ -115,28 +115,6 @@ namespace BMM.Core.ViewModels
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
             var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
-
-            var track = (Track)docsWithCoversCarousel.First(x => x is Track);
-            docsWithCoversCarousel.Insert(2,
-                new Recommendation
-                {
-                    Track = track
-                });
-            
-            var playlist = (Playlist)docs.First(x => x is Playlist);
-            docsWithCoversCarousel.Insert(3,
-                new Recommendation
-                {
-                    Playlist = playlist
-                });
-            
-            var con = (Contributor)docs.First(x => x is Contributor);
-            docsWithCoversCarousel.Insert(4,
-                new Recommendation
-                {
-                    Contributor = con
-                });
-            
             var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
             return presentationItems;

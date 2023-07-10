@@ -7,7 +7,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/margin_medium"
         android:layout_marginVertical="@dimen/margin_small"
-        android:background="@drawable/recommendation_rounded_background">
+        android:background="@drawable/recommendation_rounded_background"
+        local:MvxBind="Click ClickedCommand">
 
     <ImageView
             android:id="@+id/FireIcon"
@@ -16,21 +17,58 @@
             android:src="@drawable/icon_fire"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
+            local:MvxBind="Visibility InvertedVisibility(IsDescriptionVisible)"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-            android:id="@+id/TitleLabel"
+            android:id="@+id/RecommendedLabel"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_tiny"
             android:layout_marginEnd="@dimen/margin_medium"
+            local:MvxBind="Visibility InvertedVisibility(IsDescriptionVisible)"
             local:MvxLang="Text ExploreNewestViewModel_Recommended"
             local:layout_constraintTop_toTopOf="@+id/FireIcon"
             local:layout_constraintBottom_toBottomOf="@+id/FireIcon"
             local:layout_constraintStart_toEndOf="@+id/FireIcon"
             local:layout_constraintEnd_toEndOf="parent"
             style="@style/Title2" />
+
+    <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            local:MvxBind="
+                Visibility Visibility(IsDescriptionVisible);
+                Text Recommendation.Title"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Title1" />
+
+    <TextView
+            android:id="@+id/SubtitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="
+                Visibility Visibility(IsDescriptionVisible);
+                Text Recommendation.Subtitle"
+            local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Subtitle3" />
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/TopBarrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:barrierDirection="bottom"
+            local:constraint_referenced_ids="FireIcon,SubtitleLabel" />
 
     <androidx.cardview.widget.CardView
             android:layout_width="@dimen/match_constraint"
@@ -41,7 +79,7 @@
             android:layout_marginHorizontal="@dimen/margin_tiny"
             local:strokeWidth="1dp"
             local:strokeColor="#0D000000"
-            local:layout_constraintTop_toBottomOf="@+id/FireIcon"
+            local:layout_constraintTop_toBottomOf="@+id/TopBarrier"
             local:layout_constraintBottom_toBottomOf="parent"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +112,7 @@
                         local:MvxBind="
                             LoadingPlaceholderImagePath 'res:placeholder_cover';
                             ErrorPlaceholderImagePath 'res:placeholder_cover';
-                            ImagePath CoverUrlToFallbackImage(PlaylistPO.Cover, 'res:placeholder_cover')"
+                            ImagePath CoverUrlToFallbackImage(TrackListHolder.Cover, 'res:placeholder_cover')"
                         android:adjustViewBounds="true" />
                 
             </androidx.cardview.widget.CardView>
@@ -90,7 +128,7 @@
                     local:layout_constraintEnd_toStartOf="@+id/ChevronIcon"
                     local:layout_constraintTop_toTopOf="@+id/CoverImageContainer"
                     local:layout_constraintBottom_toBottomOf="@+id/CoverImageContainer"
-                    local:MvxBind="Text PlaylistPO.Title"
+                    local:MvxBind="Text TrackListHolder.Title"
                     style="@style/Title2" />
 
             <ImageView

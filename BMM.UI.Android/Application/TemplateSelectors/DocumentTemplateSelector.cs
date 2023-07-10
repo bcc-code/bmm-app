@@ -172,7 +172,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                     if (recommendationPO.TrackPO != null)
                         return ViewTypes.RecommendationTrack;
 
-                    if (recommendationPO.PlaylistPO != null)
+                    if (recommendationPO.TrackListHolder != null)
                         return ViewTypes.RecommendationAlbumPlaylist;
                     
                     if (recommendationPO.ContributorPO != null)
