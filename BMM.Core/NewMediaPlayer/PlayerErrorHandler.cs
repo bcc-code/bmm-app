@@ -20,7 +20,9 @@ namespace BMM.Core.NewMediaPlayer
         private const string ErrorPlayerLiveRadioStopped = Translations.MediaPlayer_ErrorPlayerLiveRadioStopped;
         private const string ErrorPlayerLiveRadioTooEarly = Translations.MediaPlayer_ErrorPlayerLiveRadioTooEarly;
 
-        private const int MaximumParameterLength = 120;
+        // According to https://github.com/MicrosoftDocs/appcenter-docs/issues/969
+        private const int MaximumParameterLength = 125;
+        private const int MaximumParameterParts = 10;
 
         private readonly ILogger _logger;
         private readonly IToastDisplayer _toastDisplayer;
@@ -100,7 +102,7 @@ namespace BMM.Core.NewMediaPlayer
                 { "pathToFile", pathToFile },
             };
 
-            parameters.AddParameter("technicalMessage", technicalMessage, MaximumParameterLength);
+            parameters.AddParameter("technicalMessage", technicalMessage, MaximumParameterLength, MaximumParameterParts);
 
             _analytics.LogEvent("A playback error has occured.", parameters);
         }
