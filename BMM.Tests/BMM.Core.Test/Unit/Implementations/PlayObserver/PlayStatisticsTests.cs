@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BMM.Api.Framework;
+﻿using BMM.Api.Framework;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
@@ -8,9 +7,10 @@ using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.PlayObserver;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.NewMediaPlayer;
+using Microsoft.AppCenter.Utils.Synchronization;
 using Moq;
 using MvvmCross.Plugin.Messenger;
-using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.Implementations.PlayObserver
 {
@@ -57,6 +57,44 @@ namespace BMM.Core.Test.Unit.Implementations.PlayObserver
 
             // Assert
             Assert.AreEqual(currentPortions + 1, _playStatistics.PortionsListened.Count);
+        }
+        
+        [Test]
+        public void SimplyListenToSong()
+        {
+            var track1 = CreateTrack(1);
+            
+            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(track1, 0, this));
+            _playStatistics.OnPlaybackStateChanged(State(PlayStatus.Buffering, 0));
+            _playStatistics.OnPlaybackStateChanged(State(PlayStatus.Playing, 0));
+            _playStatistics.OnPlaybackStateChanged(State(PlayStatus.Ended, 100000));
+            //Playback started
+            _playStatistics.OnTrackCompleted(new TrackCompletedMessage(this));
+
+            _statisticsClient.Verify(x => x.PostTrackPlayedEvent(It.IsAny<IEnumerable<TrackPlayedEvent>>()), Times.Once);
+        }
+
+        [Test]
+        public void ListenToSongOnAndroid()
+        {
+            var track1 = CreateTrack(1);
+            
+            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(track1, 0, this));
+            _playStatistics.OnPlaybackStateChanged(State(PlayStatus.Buffering, 0));
+            _playStatistics.OnPlaybackStateChanged(State(PlayStatus.Playing, 0));
+            //Playback started
+            _playStatistics.OnPlaybackStateChanged(State(PlayStatus.Stopped, 62173));
+            _playStatistics.OnCurrentTrackChanged(new CurrentTrackChangedMessage(CreateTrack(2), 0, this));
+
+            _statisticsClient.Verify(x => x.PostTrackPlayedEvent(It.IsAny<IEnumerable<TrackPlayedEvent>>()), Times.Once);
+        }
+
+        private PlaybackState State(PlayStatus status, int position)
+        {
+            return new PlaybackState
+            {
+                PlayStatus = status, CurrentPosition = position
+            };
         }
 
         [Test]
