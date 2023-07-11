@@ -4,7 +4,7 @@ public class Recommendation : Document
 {
     public Recommendation()
     {
-        DocumentType = DocumentType.Contributor;
+        DocumentType = DocumentType.Recommendation;
     }
     
     public string? Title { get; set; }

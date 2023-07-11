@@ -175,10 +175,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                     if (recommendationPO.TrackListHolder != null)
                         return ViewTypes.RecommendationAlbumPlaylist;
                     
-                    if (recommendationPO.ContributorPO != null)
-                        return ViewTypes.RecommendationContributor;
-                    
-                    return ViewTypes.YearInReviewTeaserCollapsed;
+                    return ViewTypes.RecommendationContributor;
                 }
                 
                 default:
