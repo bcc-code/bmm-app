@@ -113,7 +113,8 @@
     "BmmRadio": "BMM v živo",
     "CountdownHours": "v {0} h",
     "Messages": "Najnovejši govori",
-    "Music": "Najnovejša glasba"
+    "Music": "Najnovejša glasba",
+    "Recommended": "Priporočeno"
   },
   "ExploreContributorsViewModel": {
     "Title": "Ustvarjalci",
