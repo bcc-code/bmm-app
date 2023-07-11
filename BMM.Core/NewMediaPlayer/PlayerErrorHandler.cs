@@ -7,6 +7,7 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Translation;
+using BMM.Core.Utils;
 using MvvmCross.Localization;
 
 namespace BMM.Core.NewMediaPlayer
@@ -18,6 +19,10 @@ namespace BMM.Core.NewMediaPlayer
         private const string ErrorPlayerStoppedGeneric = Translations.MediaPlayer_ErrorPlayerStoppedGeneric;
         private const string ErrorPlayerLiveRadioStopped = Translations.MediaPlayer_ErrorPlayerLiveRadioStopped;
         private const string ErrorPlayerLiveRadioTooEarly = Translations.MediaPlayer_ErrorPlayerLiveRadioTooEarly;
+
+        // According to https://github.com/MicrosoftDocs/appcenter-docs/issues/969
+        private const int MaximumParameterLength = 125;
+        private const int MaximumParameterParts = 10;
 
         private readonly ILogger _logger;
         private readonly IToastDisplayer _toastDisplayer;
@@ -89,15 +94,17 @@ namespace BMM.Core.NewMediaPlayer
             var localPath = currentlyPlayedTrack?.LocalPath ?? "null";
             var pathToFile = trackIsDownloaded == "False" ? url : localPath;
 
-            _analytics.LogEvent("A playback error has occured.",
-                new Dictionary<string, object>
-                {
-                    {"technicalMessage", technicalMessage},
-                    {"trackId", idString},
-                    {"trackIsDownloaded", trackIsDownloaded},
-                    {"isLiveTrack", isLivePlaybackString},
-                    {"pathToFile", pathToFile},
-                });
+            var parameters = new Dictionary<string, object>
+            {
+                { "trackId", idString },
+                { "trackIsDownloaded", trackIsDownloaded },
+                { "isLiveTrack", isLivePlaybackString },
+                { "pathToFile", pathToFile },
+            };
+
+            parameters.AddParameter("technicalMessage", technicalMessage, MaximumParameterLength, MaximumParameterParts);
+
+            _analytics.LogEvent("A playback error has occured.", parameters);
         }
     }
 }
