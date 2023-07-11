@@ -113,7 +113,8 @@
     "BmmRadio": "BMM Live",
     "CountdownHours": "om {0}t",
     "Messages": "Nye taler",
-    "Music": "Ny musikk"
+    "Music": "Ny musikk",
+    "Recommended": "Anbefalt"
   },
   "ExploreContributorsViewModel": {
     "Title": "Bidragsytere",
