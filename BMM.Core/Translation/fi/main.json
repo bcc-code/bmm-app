@@ -521,15 +521,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Autolitteroitu",
-    "FromSongTreasures": "Lauluaarteista",
+    "FromSongTreasures": "From Song Treasures",
     "AddTo": "Lisää soittolistaan",
     "Pause": "Tauko",
     "AutoTranscribedPopupTitleText": "Tekstit ovat autolitteroituja ja saattavat sisältää virheitä",
     "AutoTranscribedPopupHeaderText": "Autolitteroitu",
     "AutoTranscribedPopupSubtitleText": "Korjaukset ovat pian mahdollisia suoraan sovelluksessa",
     "AutoTranscribedPopupButtonText": "Selvä",
-    "FromSongTreasuresPopupTitleText": "Sanoituksia Lauluaarteista",
-    "FromSongTreasuresPopupHeaderText": "Lauluaarteista",
-    "FromSongTreasuresPopupSubtitleText": "Lataa Lauluaarteet -sovellus niin näet koko laulun."
+    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
   }
 }
