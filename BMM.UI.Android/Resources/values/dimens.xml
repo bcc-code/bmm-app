@@ -5,7 +5,8 @@
     <dimen name="margin_tiny">4dp</dimen>
     <dimen name="margin_mini">6dp</dimen>
     <dimen name="margin_small">8dp</dimen>
-    <dimen name="margin_xsmall">12dp</dimen>
+    <dimen name="margin_xsmall">10dp</dimen>
+    <dimen name="margin_xxsmall">12dp</dimen>
     <dimen name="margin_medium">16dp</dimen>
     <dimen name="margin_xmedium">20dp</dimen>
     <dimen name="margin_xxmedium">24dp</dimen>
@@ -13,8 +14,8 @@
     <dimen name="margin_xlarge">40dp</dimen>
     <dimen name="margin_huge">64dp</dimen>
 
-    <dimen name="margin_xsmall_negative">-12dp</dimen>
-    
+    <dimen name="margin_xxsmall_negative">-12dp</dimen>
+
     <dimen name="padding_tiny">4dp</dimen>
     <dimen name="padding_small">8dp</dimen>
     <dimen name="padding_medium">16dp</dimen>
@@ -25,9 +26,9 @@
 
     <dimen name="default_icon_size">24dp</dimen>
     <dimen name="circle_button_size">40dp</dimen>
-    
+
     <dimen name="dimen_none">0dp</dimen>
-    
+
     <dimen name="top_bar_height">56dp</dimen>
 
     <!-- Buttons -->
@@ -80,7 +81,7 @@
     <dimen name="horizontal_scrolling_cover_image_size">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_width">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_height">204dp</dimen>
-    
+
     <dimen name="horizontal_scrolling_continue_listening_collection_height">340dp</dimen>
     <dimen name="horizontal_scrolling_continue_listening_item_height">332dp</dimen>
     <dimen name="horizontal_scrolling_continue_listening_item_width">254dp</dimen>
@@ -95,17 +96,17 @@
     <dimen name="streak_card_corner_radius">14dp</dimen>
     <dimen name="streak_circle_size">12dp</dimen>
     <dimen name="streak_separator_size">24dp</dimen>
-    
+
     <dimen name="year_in_review_card_elevation">16dp</dimen>
     <dimen name="year_in_review_teaser_height">56dp</dimen>
     <dimen name="year_in_review_teaser_image_width_small">48dp</dimen>
     <dimen name="year_in_review_teaser_image_height_small">32dp</dimen>
     <dimen name="year_in_review_teaser_image_height_large">124dp</dimen>
     <dimen name="year_in_review_teaser_expand_button_size">32dp</dimen>
-    
+
     <dimen name="clear_recent_searches_button_size">32dp</dimen>
     <dimen name="clear_recent_searches_button_radius">16dp</dimen>
-    
+
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>
     <dimen name="row_contributor_height">60dp</dimen>
@@ -136,7 +137,7 @@
     <dimen name="text_very_huge">18sp</dimen>
     <dimen name="text_very_huge_title">20sp</dimen>
 
-     <!-- Constraint Layout -->
+    <!-- Constraint Layout -->
     <dimen name="match_constraint">0dp</dimen>
 
     <dimen name="roundedBorderRadius">6dp</dimen>

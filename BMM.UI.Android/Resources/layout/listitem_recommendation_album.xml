@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/InfoMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginVertical="@dimen/margin_small"
+        android:background="@drawable/recommendation_rounded_background"
+        local:MvxBind="Click ClickedCommand">
+
+    <ImageView
+            android:id="@+id/FireIcon"
+            android:layout_width="@dimen/info_message_icon_size"
+            android:layout_height="@dimen/info_message_icon_size"
+            android:src="@drawable/icon_fire"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            local:MvxBind="Visibility InvertedVisibility(IsDescriptionVisible)"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/RecommendedLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:layout_marginEnd="@dimen/margin_medium"
+            local:MvxBind="Visibility InvertedVisibility(IsDescriptionVisible)"
+            local:MvxLang="Text ExploreNewestViewModel_Recommended"
+            local:layout_constraintTop_toTopOf="@+id/FireIcon"
+            local:layout_constraintBottom_toBottomOf="@+id/FireIcon"
+            local:layout_constraintStart_toEndOf="@+id/FireIcon"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Title2" />
+
+    <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            local:MvxBind="
+                Visibility Visibility(IsDescriptionVisible);
+                Text Recommendation.Title"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Title1" />
+
+    <TextView
+            android:id="@+id/SubtitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="
+                Visibility Visibility(IsDescriptionVisible);
+                Text Recommendation.Subtitle"
+            local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Subtitle3" />
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/TopBarrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:barrierDirection="bottom"
+            local:constraint_referenced_ids="FireIcon,SubtitleLabel" />
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_tiny"
+            local:strokeWidth="1dp"
+            local:strokeColor="#0D000000"
+            local:layout_constraintTop_toBottomOf="@+id/TopBarrier"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:cardCornerRadius="@dimen/corner_radius_medium"
+            local:cardBackgroundColor="@color/background_one_color"
+            local:cardElevation="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/CoverImageContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_xsmall"
+                    android:layout_marginVertical="@dimen/margin_xsmall"
+                    local:layout_constraintStart_toStartOf="parent"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:cardCornerRadius="@dimen/margin_mini"
+                    local:cardElevation="0dp">
+                    
+                <ffimageloading.cross.MvxCachedImageView
+                        android:id="@+id/CoverImage"
+                        android:layout_width="@dimen/feature_item_image_width"
+                        android:layout_height="@dimen/feature_item_image_height"
+                        android:src="@drawable/placeholder_cover"
+
+                        local:MvxBind="
+                            LoadingPlaceholderImagePath 'res:placeholder_cover';
+                            ErrorPlaceholderImagePath 'res:placeholder_cover';
+                            ImagePath CoverUrlToFallbackImage(TrackListHolder.Cover, 'res:placeholder_cover')"
+                        android:adjustViewBounds="true" />
+                
+            </androidx.cardview.widget.CardView>
+            
+            <TextView
+                    android:id="@+id/Title"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_medium"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    local:layout_constraintStart_toEndOf="@+id/CoverImageContainer"
+                    local:layout_constraintEnd_toStartOf="@+id/ChevronIcon"
+                    local:layout_constraintTop_toTopOf="@+id/CoverImageContainer"
+                    local:layout_constraintBottom_toBottomOf="@+id/CoverImageContainer"
+                    local:MvxBind="Text TrackListHolder.Title"
+                    style="@style/Title2" />
+
+            <ImageView
+                    android:id="@+id/ChevronIcon"
+                    android:layout_width="@dimen/default_icon_size"
+                    android:layout_height="@dimen/default_icon_size"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:src="@drawable/icon_chevron_right"
+                    android:tint="@color/label_four_color"
+                    local:layout_constraintTop_toTopOf="@+id/CoverImageContainer"
+                    local:layout_constraintBottom_toBottomOf="@+id/CoverImageContainer"
+                    local:layout_constraintEnd_toEndOf="parent" />
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+            
+    </androidx.cardview.widget.CardView>
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

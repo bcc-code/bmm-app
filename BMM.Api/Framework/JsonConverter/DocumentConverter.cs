@@ -68,6 +68,9 @@ namespace BMM.Api.Framework.JsonConverter
                 
                 case "tile_video":
                     return new VideoTile();
+                
+                case "recommendation":
+                    return new Recommendation();
             }
 
             return new UnsupportedDocument();

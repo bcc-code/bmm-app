@@ -63,6 +63,9 @@ namespace BMM.Api.Implementation.Models
         
         [EnumMember(Value = "tile_message")]
         TileMessage,
+        
+        [EnumMember(Value = "recommendation")]
+        Recommendation,
 
         [EnumMember(Value = "unsupported")]
         Unsupported

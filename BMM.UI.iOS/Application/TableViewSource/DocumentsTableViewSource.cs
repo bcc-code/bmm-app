@@ -10,6 +10,7 @@ using BMM.Core.Models.POs.ListeningStreakPO;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
+using BMM.Core.Models.POs.Recommendations;
 using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks;
@@ -38,7 +39,10 @@ namespace BMM.UI.iOS
                 ContinueListeningCollectionTableViewCell.Key,
                 YearInReviewTeaserCollapsedCell.Key,
                 YearInReviewTeaserExpandedCell.Key,
-                HighlightedTextTrackTableViewCell.Key
+                HighlightedTextTrackTableViewCell.Key,
+                RecommendationTrackTableViewCell.Key,
+                RecommendationContributorTableViewCell.Key,
+                RecommendationAlbumTableViewCell.Key
             };
             
             foreach (string nibName in nibNames)
@@ -112,6 +116,18 @@ namespace BMM.UI.iOS
                     nibName = yearInReviewPreviewPO.IsExpanded
                         ? YearInReviewTeaserExpandedCell.Key
                         : YearInReviewTeaserCollapsedCell.Key;
+                    break;
+                }
+                
+                case RecommendationPO recommendationPO:
+                {
+                    if (recommendationPO.TrackPO != null)
+                        nibName = RecommendationTrackTableViewCell.Key;
+                    else if (recommendationPO.ContributorPO != null)
+                        nibName = RecommendationContributorTableViewCell.Key;
+                    else if (recommendationPO.TrackListHolder != null)
+                        nibName = RecommendationAlbumTableViewCell.Key;
+                    
                     break;
                 }
             }

@@ -21,7 +21,7 @@
             android:layout_width="@dimen/year_in_review_teaser_image_width_small"
             android:layout_height="@dimen/year_in_review_teaser_image_height_small"
             android:src="@drawable/year_in_review_teaser"
-            android:layout_marginStart="@dimen/margin_xsmall"
+            android:layout_marginStart="@dimen/margin_xxsmall"
             local:layout_constraintTop_toTopOf="parent"
             local:layout_constraintBottom_toBottomOf="parent"
             local:layout_constraintStart_toStartOf="parent" />
@@ -30,7 +30,7 @@
             android:id="@+id/TitleLabel"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_xsmall"
+            android:layout_marginStart="@dimen/margin_xxsmall"
             local:layout_constraintTop_toTopOf="parent"
             local:layout_constraintBottom_toBottomOf="parent"
             local:layout_constraintStart_toEndOf="@+id/YearInReviewCardView"

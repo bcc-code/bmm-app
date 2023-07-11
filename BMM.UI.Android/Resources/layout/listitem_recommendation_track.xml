@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/InfoMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginVertical="@dimen/margin_small"
+        android:background="@drawable/recommendation_rounded_background"
+        local:MvxBind="Click ClickedCommand">
+
+    <ImageView
+            android:id="@+id/FireIcon"
+            android:layout_width="@dimen/info_message_icon_size"
+            android:layout_height="@dimen/info_message_icon_size"
+            android:src="@drawable/icon_fire"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            local:MvxBind="Visibility InvertedVisibility(IsDescriptionVisible)"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+            android:id="@+id/RecommendedLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:layout_marginEnd="@dimen/margin_medium"
+            local:MvxBind="Visibility InvertedVisibility(IsDescriptionVisible)"
+            local:MvxLang="Text ExploreNewestViewModel_Recommended"
+            local:layout_constraintTop_toTopOf="@+id/FireIcon"
+            local:layout_constraintBottom_toBottomOf="@+id/FireIcon"
+            local:layout_constraintStart_toEndOf="@+id/FireIcon"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Title2" />
+
+    <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            local:MvxBind="
+                Visibility Visibility(IsDescriptionVisible);
+                Text Recommendation.Title"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Title1" />
+
+    <TextView
+            android:id="@+id/SubtitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="
+                Visibility Visibility(IsDescriptionVisible);
+                Text Recommendation.Subtitle"
+            local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Subtitle3" />
+
+    <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/TopBarrier"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            local:barrierDirection="bottom"
+            local:constraint_referenced_ids="FireIcon,SubtitleLabel" />
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_tiny"
+            local:strokeWidth="1dp"
+            local:strokeColor="#0D000000"
+            local:layout_constraintTop_toBottomOf="@+id/TopBarrier"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:cardCornerRadius="@dimen/corner_radius_medium"
+            local:cardBackgroundColor="@color/background_one_color"
+            local:cardElevation="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/TrackTitle"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_xxsmall"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    local:layout_constraintStart_toStartOf="parent"
+                    local:layout_constraintEnd_toStartOf="@+id/PlayIcon"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:MvxBind="Text TrackPO.TrackTitle"
+                    style="@style/Title2" />
+
+            <TextView
+                    android:id="@+id/TrackSubtitle"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:layout_marginBottom="@dimen/margin_xxsmall"
+                    android:maxLines="1"
+                    local:layout_constraintStart_toStartOf="@+id/TrackTitle"
+                    local:layout_constraintTop_toBottomOf="@+id/TrackTitle"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:MvxBind="Text TrackPO.TrackSubtitle"
+                    style="@style/Subtitle3_Label2" />
+
+            <TextView
+                    android:id="@+id/TrackMeta"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_tiny"
+                    android:layout_marginStart="@dimen/margin_tiny"
+                    android:layout_marginEnd="@dimen/margin_small"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    local:layout_constraintStart_toEndOf="@+id/TrackSubtitle"
+                    local:layout_constraintEnd_toStartOf="@+id/PlayIcon"
+                    local:layout_constraintTop_toBottomOf="@+id/TrackTitle"
+                    local:MvxBind="Text TrackPO.TrackMeta"
+                    style="@style/Subtitle3_Label3" />
+
+            <ImageView
+                    android:id="@+id/PlayIcon"
+                    android:layout_width="@dimen/default_icon_size"
+                    android:layout_height="@dimen/default_icon_size"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:src="@drawable/icon_play"
+                    android:tint="@color/label_one_color"
+                    local:layout_constraintTop_toTopOf="@+id/TrackTitle"
+                    local:layout_constraintBottom_toBottomOf="@+id/TrackMeta"
+                    local:layout_constraintEnd_toEndOf="parent" />
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+            
+    </androidx.cardview.widget.CardView>
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

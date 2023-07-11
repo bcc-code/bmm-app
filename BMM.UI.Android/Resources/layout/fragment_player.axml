@@ -72,8 +72,8 @@
                 <ImageButton
                     android:layout_width="@dimen/circle_button_size"
                     android:layout_height="@dimen/circle_button_size"
-                    android:layout_marginBottom="@dimen/margin_xsmall_negative"
-                    android:layout_marginEnd="@dimen/margin_xsmall_negative"
+                    android:layout_marginBottom="@dimen/margin_xxsmall_negative"
+                    android:layout_marginEnd="@dimen/margin_xxsmall_negative"
                     android:background="@drawable/button_rounded_background"
                     android:src="@drawable/icon_link"
                     android:layout_gravity="bottom|end"
