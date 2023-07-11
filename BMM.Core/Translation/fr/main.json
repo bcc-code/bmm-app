@@ -113,7 +113,8 @@
     "BmmRadio": "BMM Live",
     "CountdownHours": "dans {0}h",
     "Messages": "Derniers Messages",
-    "Music": "Musique récente"
+    "Music": "Musique récente",
+    "Recommended": "Recommandé"
   },
   "ExploreContributorsViewModel": {
     "Title": "Contributeurs",
