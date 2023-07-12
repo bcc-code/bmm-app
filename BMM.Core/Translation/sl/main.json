@@ -113,7 +113,8 @@
     "BmmRadio": "BMM v živo",
     "CountdownHours": "v {0} h",
     "Messages": "Najnovejši govori",
-    "Music": "Najnovejša glasba"
+    "Music": "Najnovejša glasba",
+    "Recommended": "Priporočeno"
   },
   "ExploreContributorsViewModel": {
     "Title": "Ustvarjalci",
@@ -520,15 +521,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Samodejni prepis",
-    "FromSongTreasures": "From Song Treasures",
+    "FromSongTreasures": "Iz Song Treasures",
     "AddTo": "Dodaj na seznam predvajanja",
     "Pause": "Premor",
     "AutoTranscribedPopupTitleText": "Prepisi so ustvarjeni samodejno in lahko vsebujejo napake.",
     "AutoTranscribedPopupHeaderText": "Samodejni prepis",
     "AutoTranscribedPopupSubtitleText": "Kmalu boš lahko neposredno v aplikaciji oddal popravke.",
     "AutoTranscribedPopupButtonText": "Razumem",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "FromSongTreasuresPopupTitleText": "Besedilo je vzeto iz Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "Iz Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Za celotno pesem prenesi aplikacijo Song Treasures."
   }
 }

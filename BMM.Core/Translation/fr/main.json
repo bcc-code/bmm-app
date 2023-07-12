@@ -113,7 +113,8 @@
     "BmmRadio": "BMM Live",
     "CountdownHours": "dans {0}h",
     "Messages": "Derniers Messages",
-    "Music": "Musique récente"
+    "Music": "Musique récente",
+    "Recommended": "Recommandé"
   },
   "ExploreContributorsViewModel": {
     "Title": "Contributeurs",
@@ -520,15 +521,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Transcription automatique",
-    "FromSongTreasures": "From Song Treasures",
+    "FromSongTreasures": "Extrait de Song Treasures",
     "AddTo": "Ajouter à la liste de lecture",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Les transcriptions sont générées automatiquement et peuvent contenir des erreurs.",
     "AutoTranscribedPopupHeaderText": "Transcription automatique",
     "AutoTranscribedPopupSubtitleText": "Vous pourrez bientôt soumettre des corrections directement dans l'application.",
     "AutoTranscribedPopupButtonText": "J'ai compris",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "FromSongTreasuresPopupTitleText": "Les paroles sont extraites de Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "Extrait de Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Télécharger l'application Song Treasures pour voir l'intégralité du chant."
   }
 }

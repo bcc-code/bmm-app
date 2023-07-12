@@ -113,7 +113,8 @@
     "BmmRadio": "Élő BMM",
     "CountdownHours": "{0} óra múlva",
     "Messages": "Legújabb üzenetek",
-    "Music": "Legújabb zene"
+    "Music": "Legújabb zene",
+    "Recommended": "Ajánlott"
   },
   "ExploreContributorsViewModel": {
     "Title": "Közreműködők",

@@ -113,7 +113,8 @@
     "BmmRadio": "BMM Live",
     "CountdownHours": "Om {0}t",
     "Messages": "Seneste taler",
-    "Music": "Nyeste musik"
+    "Music": "Nyeste musik",
+    "Recommended": "Anbefalede"
   },
   "ExploreContributorsViewModel": {
     "Title": "Bidragsydere",
@@ -520,15 +521,15 @@
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Automatisk transskriberet",
-    "FromSongTreasures": "From Song Treasures",
+    "FromSongTreasures": "Fra Song Treasures",
     "AddTo": "Tilføj til spilleliste",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Transkriberinger genereres automatisk og kan indeholde fejl",
     "AutoTranscribedPopupHeaderText": "Automatisk transskriberet",
     "AutoTranscribedPopupSubtitleText": "Du vil snart kunne indsende rettelser direkte i appen.",
     "AutoTranscribedPopupButtonText": "Forstået",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "FromSongTreasuresPopupTitleText": "Tekster hentes fra Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "Fra Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download appen Song Treasures for at se hele sangen."
   }
 }

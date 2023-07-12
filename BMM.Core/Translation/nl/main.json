@@ -113,7 +113,8 @@
     "BmmRadio": "BMM live",
     "CountdownHours": "in {0}h",
     "Messages": "Recente toespraken",
-    "Music": "Recente muziek"
+    "Music": "Recente muziek",
+    "Recommended": "Aanbevolen"
   },
   "ExploreContributorsViewModel": {
     "Title": "Bijdragers",

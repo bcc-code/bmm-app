@@ -113,7 +113,8 @@
     "BmmRadio": "BMM Live",
     "CountdownHours": "alkaa {0} tunnin kuluttua",
     "Messages": "Uusimmat puheet",
-    "Music": "Uusimmat kappaleet"
+    "Music": "Uusimmat kappaleet",
+    "Recommended": "Suositeltu"
   },
   "ExploreContributorsViewModel": {
     "Title": "Tekijät",

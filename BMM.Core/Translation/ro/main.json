@@ -113,7 +113,8 @@
     "BmmRadio": "BMM Live",
     "CountdownHours": "în {0}h",
     "Messages": "Ultimele vorbiri",
-    "Music": "Ultimele cântări"
+    "Music": "Ultimele cântări",
+    "Recommended": "Recomandate"
   },
   "ExploreContributorsViewModel": {
     "Title": "Contribuitori",
