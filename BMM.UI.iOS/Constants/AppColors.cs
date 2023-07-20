@@ -16,6 +16,7 @@ namespace BMM.UI.iOS.Constants
         public static UIColor TintColor => UIColor.FromName(nameof(TintColor));
         public static UIColor HighlightColor => UIColor.FromName(nameof(HighlightColor));
         public static UIColor SeparatorColor => UIColor.FromName(nameof(SeparatorColor));
+        public static UIColor GlobalBlackSeparatorColor => UIColor.FromName(nameof(GlobalBlackSeparatorColor));
         public static UIColor SeparatorLightColor => UIColor.FromName(nameof(SeparatorLightColor));
         public static UIColor OnColorOneColor => UIColor.FromName(nameof(OnColorOneColor));
         public static UIColor OnColorTwoColor => UIColor.FromName(nameof(OnColorTwoColor));

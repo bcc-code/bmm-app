@@ -1,9 +1,5 @@
-﻿using BMM.Api.Implementation.Models;
-using BMM.Core.ViewModels;
+﻿using BMM.Core.Models.POs.ListeningStreaks;
 using MvvmCross.Binding.BindingContext;
-using Foundation;
-using System;
-using BMM.Core.Models.POs.ListeningStreakPO;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Platforms.Ios.Binding;

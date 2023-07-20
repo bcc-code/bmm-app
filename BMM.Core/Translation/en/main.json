@@ -531,5 +531,16 @@
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "From Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+  },
+  "BibleStudyViewModel": {
+    "PlaySpeech": "Play the full speech",
+    "ListenAudiobook": "Listen to the audiobook",
+    "StreakTerms": "Terms for streaks",
+    "ProgressTitle": "Your progress",
+    "StreakThisWeek": "Streak this week",
+    "Days": "Days",
+    "Boost": "Boost",
+    "Points": "Points",
+    "Achievements": "Your achievements"
   }
 }

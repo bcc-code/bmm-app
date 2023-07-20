@@ -416,5 +416,14 @@ namespace BMM.Core.Translation
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupTitleText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupTitleText);
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupHeaderText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupHeaderText);
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupSubtitleText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupSubtitleText);
+		public const string BibleStudyViewModel_PlaySpeech = nameof(BibleStudyViewModel_PlaySpeech);
+		public const string BibleStudyViewModel_ListenAudiobook = nameof(BibleStudyViewModel_ListenAudiobook);
+		public const string BibleStudyViewModel_StreakTerms = nameof(BibleStudyViewModel_StreakTerms);
+		public const string BibleStudyViewModel_ProgressTitle = nameof(BibleStudyViewModel_ProgressTitle);
+		public const string BibleStudyViewModel_StreakThisWeek = nameof(BibleStudyViewModel_StreakThisWeek);
+		public const string BibleStudyViewModel_Days = nameof(BibleStudyViewModel_Days);
+		public const string BibleStudyViewModel_Boost = nameof(BibleStudyViewModel_Boost);
+		public const string BibleStudyViewModel_Points = nameof(BibleStudyViewModel_Points);
+		public const string BibleStudyViewModel_Achievements = nameof(BibleStudyViewModel_Achievements);
 	}
 }

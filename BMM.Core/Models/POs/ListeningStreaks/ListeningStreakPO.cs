@@ -3,7 +3,7 @@ using BMM.Core.GuardedActions.ExploreNewest.Interfaces;
 using BMM.Core.Models.POs.Base;
 using MvvmCross.Commands;
 
-namespace BMM.Core.Models.POs.ListeningStreakPO
+namespace BMM.Core.Models.POs.ListeningStreaks
 {
     public class ListeningStreakPO : DocumentPO
     {

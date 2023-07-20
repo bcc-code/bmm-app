@@ -1,7 +1,5 @@
-using BMM.Core.Models.POs.ListeningStreakPO;
+using BMM.Core.Models.POs.ListeningStreaks;
 using BMM.Core.Models.POs.Other;
-using Foundation;
-using UIKit;
 
 namespace BMM.UI.iOS
 {

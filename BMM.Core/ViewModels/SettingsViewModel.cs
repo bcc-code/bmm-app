@@ -401,6 +401,13 @@ namespace BMM.Core.ViewModels
                         OnSelected = new MvxAsyncCommand(ShowCachedTracks)
                     });
                 }
+                
+                items.Add(new SelectableListItem
+                {
+                    Title = "Bible Study",
+                    Text = "Bible Study 2023",
+                    OnSelected = NavigationService.NavigateCommand<BibleStudyViewModel>()
+                });
             }
 
             return items;

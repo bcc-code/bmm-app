@@ -1,5 +1,5 @@
 using BMM.Api.Implementation.Models;
-using BMM.Core.Models.POs.ListeningStreakPO;
+using BMM.Core.Models.POs.ListeningStreaks;
 
 namespace BMM.Core.Implementations.Factories.Streak
 {
