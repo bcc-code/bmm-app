@@ -1,4 +1,5 @@
-using BMM.Core.Models.POs.BibleStudy;
+using BMM.Core.Models.POs.BibleStudy.Interfaces;
+using BMM.Core.Models.POs.Other.Interfaces;
 
 namespace BMM.UI.iOS;
 
@@ -12,20 +13,11 @@ public class BibleStudyTableViewSource : BaseTableViewSource
     {
         return new[]
         {
-            new TableCellType(typeof(BibleStudyHeaderTableViewCell), BibleStudyHeaderTableViewCell.Key),
-            new TableCellType(typeof(BibleStudyProgressTableViewCell), BibleStudyProgressTableViewCell.Key)
+            new TableCellType(typeof(IBibleStudyHeaderPO), BibleStudyHeaderTableViewCell.Key),
+            new TableCellType(typeof(IBibleStudyProgressPO), BibleStudyProgressTableViewCell.Key),
+            new TableCellType(typeof(IExternalRelationListItemPO), ExternalRelationListItemTableViewCell.Key),
+            new TableCellType(typeof(ISelectableListContentItemPO), TextListItemTableViewCell.Key),
+            new TableCellType(typeof(ISectionHeaderPO), SectionHeaderTableViewCell.Key)
         };
-    }
-
-    protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
-    {
-        string nibName = item switch
-        {
-            BibleStudyHeaderPO => BibleStudyHeaderTableViewCell.Key,
-            BibleStudyProgressPO => BibleStudyProgressTableViewCell.Key,
-            _ => null
-        };
-
-        return tableView.DequeueReusableCell(nibName);
     }
 }

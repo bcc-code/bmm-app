@@ -1,7 +1,12 @@
 using System.Drawing;
+using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
+using BMM.Core.Helpers;
+using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.ListeningStreaks;
+using MvvmCross.Navigation;
 
 namespace BMM.Core.Models.POs.BibleStudy;
 
@@ -9,34 +14,44 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
 {
     private ListeningStreakPO _listeningStreak;
 
-    public BibleStudyProgressPO(ListeningStreakPO listeningStreakPO)
+    public BibleStudyProgressPO(
+        ListeningStreakPO streak,
+        ProjectProgress projectProgress,
+        IMvxNavigationService navigationService)
     {
-        ListeningStreakPO = listeningStreakPO;
-        BoostNumber = "2x";
-        DaysNumber = "43";
-        PointsNumber = "11";
+        ListeningStreakPO = streak;
+        DaysNumber = projectProgress.Days.ToString();
+        PointsNumber = projectProgress.Points.ToString();
+        BoostNumber = $"{projectProgress.CurrentBoost}x";
+        Achievements.AddRange(new []
+        {
+            new AchievementPO(ImageResourceNames.IconFullStreak, true, navigationService),
+            new AchievementPO(ImageResourceNames.IconTopListener, false, navigationService),
+            new AchievementPO(ImageResourceNames.IconAchievements, false, navigationService)
+        });
     }
-    
+
     public ListeningStreakPO ListeningStreakPO
     {
         get => _listeningStreak;
         set => SetProperty(ref _listeningStreak, value);
     }
 
-    private Color GetColor(bool? active)
+    private string GetColor(bool? active)
     {
         if (active == true)
-            return ColorTranslator.FromHtml("#AB90FF");
+            return "#AB90FF";
 
-        return Color.Transparent;
+        return null;
     }
     
-    public Color MondayColor => GetColor(_listeningStreak.ListeningStreak.Monday);
-    public Color TuesdayColor => GetColor(true);
-    public Color WednesdayColor => GetColor(_listeningStreak.ListeningStreak.Wednesday);
-    public Color ThursdayColor => GetColor(true);
-    public Color FridayColor => GetColor(_listeningStreak.ListeningStreak.Friday);
+    public string MondayColor => GetColor(_listeningStreak.ListeningStreak.Monday);
+    public string TuesdayColor => GetColor(_listeningStreak.ListeningStreak.Tuesday);
+    public string WednesdayColor => GetColor(_listeningStreak.ListeningStreak.Wednesday);
+    public string ThursdayColor => GetColor(_listeningStreak.ListeningStreak.Thursday);
+    public string FridayColor => GetColor(_listeningStreak.ListeningStreak.Friday);
     public string DaysNumber { get; }
     public string BoostNumber { get; }
     public string PointsNumber { get; }
+    public IBmmObservableCollection<IAchievementPO> Achievements { get; } = new BmmObservableCollection<IAchievementPO>();
 }

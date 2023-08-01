@@ -1,5 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using BMM.Core.Helpers;
+using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Other.Interfaces;
 using MvvmCross.Commands;
 
 namespace BMM.Core.ViewModels.Base
@@ -7,14 +12,8 @@ namespace BMM.Core.ViewModels.Base
     public class ItemListViewModel : BaseViewModel
     {
         public IMvxCommand ItemSelectedCommand =>
-            new MvxCommand<IListItem>(item => (item as IListContentItem)?.OnSelected?.Execute());
+            new MvxCommand<IBasePO>(item => (item as ISelectableListContentItemPO)?.OnSelected?.Execute());
 
-        private IEnumerable<ListSection<IListContentItem>> _sections = new List<ListSection<IListContentItem>>();
-
-        public IEnumerable<ListSection<IListContentItem>> Sections
-        {
-            get { return _sections; }
-            set { SetProperty(ref _sections, value); }
-        }
+        public IBmmObservableCollection<IBasePO> Items { get; } = new BmmObservableCollection<IBasePO>();
     }
 }

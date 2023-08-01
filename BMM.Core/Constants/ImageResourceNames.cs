@@ -20,5 +20,8 @@ namespace BMM.Core.Constants
         public const string IconPlaybackSpeed = "Icon_Playback_Speed";
         public const string IconPlayMini = "Icon_Play_Mini";
         public const string IconChevronRight = "Icon_Chevron_Right";
+        public const string IconTopListener = "Icon_Top_Listener";
+        public const string IconAchievements = "Icon_Achievements";
+        public const string IconFullStreak = "Icon_Full_Streak";
     }
 }

@@ -81,7 +81,7 @@ namespace BMM.Core.ViewModels
             _prepareTileCarouselItemsAction.AttachDataContext(this);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
         }
-
+        
         public IMvxAsyncCommand<Type> NavigateToViewModelCommand => _navigateToViewModelAction.Command;
 
         private void ListeningStreakChanged(ListeningStreakChangedMessage message)

@@ -71,6 +71,9 @@
         public static string StatisticsUserViewedRecently =
             "statistics/user/{username}/{type}/viewed/recently{?size,from}";
 
+        public static string ProjectProgress =
+            "statistics/project/progress";
+        
         public static string YearInReview =
             "statistics/year-in-review/overview";
         

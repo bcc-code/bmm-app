@@ -3,7 +3,7 @@ using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Carousels;
 using BMM.Core.Models.POs.Contributors;
 using BMM.Core.Models.POs.InfoMessages;
-using BMM.Core.Models.POs.ListeningStreakPO;
+using BMM.Core.Models.POs.ListeningStreaks;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;

@@ -12,6 +12,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.TrackOptions.Interfaces;
 using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.GuardedActions.TrackOptions.Parameters.Interfaces;
+using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
@@ -54,6 +55,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
         private readonly IAnalytics _analytics;
         private readonly IMediaPlayer _mediaPlayer;
+        private readonly IShowTrackInfoAction _showTrackInfoAction;
 
         private readonly List<decimal> _availablePlaybackSpeed = new()
         {
@@ -73,7 +75,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
             ISleepTimerService sleepTimerService,
             IFirebaseRemoteConfig firebaseRemoteConfig,
             IAnalytics analytics,
-            IMediaPlayer mediaPlayer)
+            IMediaPlayer mediaPlayer,
+            IShowTrackInfoAction showTrackInfoAction)
         {
             _connection = connection;
             _bmmLanguageBinder = bmmLanguageBinder;
@@ -86,6 +89,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _firebaseRemoteConfig = firebaseRemoteConfig;
             _analytics = analytics;
             _mediaPlayer = mediaPlayer;
+            _showTrackInfoAction = showTrackInfoAction;
         }
 
         private bool IsSleepTimerOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsSleepTimerEnabled;
@@ -315,8 +319,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     ImageResourceNames.IconInfo,
                     new MvxAsyncCommand(async () =>
                     {
-                        await ClosePlayer();
-                        await _mvxNavigationService.Navigate<TrackInfoViewModel, Track>(track);
+                        await _showTrackInfoAction.ExecuteGuarded(track);
                     })));
 
             return options;

@@ -14,6 +14,9 @@ namespace BMM.UI.iOS
 	partial class BibleStudyProgressTableViewCell
 	{
 		[Outlet]
+		UIKit.UICollectionView AchivementsCollectionView { get; set; }
+
+		[Outlet]
 		UIKit.UILabel AchiviementsLabel { get; set; }
 
 		[Outlet]
@@ -84,9 +87,29 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (AchiviementsLabel != null) {
+				AchiviementsLabel.Dispose ();
+				AchiviementsLabel = null;
+			}
+
+			if (BoostLabel != null) {
+				BoostLabel.Dispose ();
+				BoostLabel = null;
+			}
+
+			if (BoostNumberLabel != null) {
+				BoostNumberLabel.Dispose ();
+				BoostNumberLabel = null;
+			}
+
 			if (DaysInARow != null) {
 				DaysInARow.Dispose ();
 				DaysInARow = null;
+			}
+
+			if (DaysLabel != null) {
+				DaysLabel.Dispose ();
+				DaysLabel = null;
 			}
 
 			if (DaysNumberLabel != null) {
@@ -99,11 +122,6 @@ namespace BMM.UI.iOS
 				FridayColorView = null;
 			}
 
-			if (DaysLabel != null) {
-				DaysLabel.Dispose ();
-				DaysLabel = null;
-			}
-
 			if (FridayView != null) {
 				FridayView.Dispose ();
 				FridayView = null;
@@ -114,19 +132,9 @@ namespace BMM.UI.iOS
 				MondayColorView = null;
 			}
 
-			if (BoostNumberLabel != null) {
-				BoostNumberLabel.Dispose ();
-				BoostNumberLabel = null;
-			}
-
-			if (BoostLabel != null) {
-				BoostLabel.Dispose ();
-				BoostLabel = null;
-			}
-
-			if (PointsNumber != null) {
-				PointsNumber.Dispose ();
-				PointsNumber = null;
+			if (MondayView != null) {
+				MondayView.Dispose ();
+				MondayView = null;
 			}
 
 			if (PointsLabel != null) {
@@ -134,9 +142,9 @@ namespace BMM.UI.iOS
 				PointsLabel = null;
 			}
 
-			if (MondayView != null) {
-				MondayView.Dispose ();
-				MondayView = null;
+			if (PointsNumber != null) {
+				PointsNumber.Dispose ();
+				PointsNumber = null;
 			}
 
 			if (ProgressTitleLabel != null) {
@@ -194,9 +202,9 @@ namespace BMM.UI.iOS
 				WednesdayView = null;
 			}
 
-			if (AchiviementsLabel != null) {
-				AchiviementsLabel.Dispose ();
-				AchiviementsLabel = null;
+			if (AchivementsCollectionView != null) {
+				AchivementsCollectionView.Dispose ();
+				AchivementsCollectionView = null;
 			}
 
 		}

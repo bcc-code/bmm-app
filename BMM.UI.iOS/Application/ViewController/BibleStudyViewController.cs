@@ -1,5 +1,7 @@
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.CustomViews;
+using BMM.UI.iOS.CustomViews.Enums;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views.Gestures;

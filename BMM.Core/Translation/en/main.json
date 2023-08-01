@@ -114,7 +114,8 @@
     "CountdownHours": "in {0}h",
     "Messages": "Recent Messages",
     "Music": "Recent Music",
-    "Recommended": "Recommended"
+    "Recommended": "Recommended",
+    "More": "More"
   },
   "ExploreContributorsViewModel": {
     "Title": "Contributors",

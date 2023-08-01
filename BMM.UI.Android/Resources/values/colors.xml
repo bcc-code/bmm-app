@@ -67,4 +67,9 @@
     <color name="on_color_four_color">#14FFFFFF</color>
     <color name="utility_auto_color">#7C5CFE</color>
     <color name="utility_auto_color_alpha">#4D7C5CFE</color>
+    
+    <color name="bible_study_confetti_one_color">#AB90FF</color>
+    <color name="bible_study_confetti_two_color">#B4DDD9</color>
+    <color name="bible_study_confetti_three_color">#FCBE47</color>
+    
 </resources>

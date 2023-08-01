@@ -118,5 +118,11 @@ namespace BMM.Api.Implementation.Clients
             var uri = new UriTemplate(ApiUris.YearInReview);
             return Get<IList<YearInReviewItem>>(uri);
         }
+
+        public Task<ProjectProgress> GetProjectProgress()
+        {
+            var uri = new UriTemplate(ApiUris.ProjectProgress);
+            return Get<ProjectProgress>(uri);
+        }
     }
 }

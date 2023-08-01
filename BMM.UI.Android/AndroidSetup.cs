@@ -235,6 +235,7 @@ namespace BMM.UI.Droid
             MvxCachedImageViewPathBinding.Register(registry);
             BackgroundResourceBinding.Register(registry);
             ImageButtonIconResourceBinding.Register(registry);
+            AlphaTargetBinding.Register(registry);
         }
 
         private void InitializeMediaPlayer(IMvxIoCProvider iocProvider)

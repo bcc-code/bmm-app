@@ -78,6 +78,22 @@
                         Click ContinueListeningCommand" />
         </FrameLayout>
 
+        <Button
+                android:id="@+id/MoreButton"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/element_margin_small"
+                android:layout_marginBottom="@dimen/margin_xxmedium"
+                android:layout_marginEnd="@dimen/margin_xxmedium"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toEndOf="@+id/PlayButtonFrame"
+                local:layout_constraintEnd_toEndOf="parent"
+                style="@style/Button_Tertiary"
+                local:MvxBind="
+                    Visibility Visibility(IsBibleStudyProjectTile);
+                    Click ShowTrackInfoCommand;"
+                local:MvxLang="Text ExploreNewestViewModel_More" />
+        
         <ImageButton
                 android:id="@+id/ShuffleButton"
                 android:layout_width="@dimen/continue_listening_play_big_icon_size"
@@ -91,7 +107,7 @@
                 local:layout_constraintStart_toEndOf="@+id/PlayButtonFrame"
                 local:MvxBind="
                     Click ShuffleButtonClickedCommand;
-                    Visibility Visibility(HasValueToVisible(Tile.ShufflePodcastId))" />
+                    Visibility Visibility(ShuffleButtonVisible)" />
 
         <ImageButton
                 android:id="@+id/DownloadedButton"
@@ -103,7 +119,7 @@
                 android:layout_marginEnd="@dimen/element_margin_small"
                 android:tint="@color/global_black_one"
                 local:layout_goneMarginEnd="@dimen/margin_xxmedium"
-                local:MvxBind="Visibility Visibility(IsDownloaded)"
+                local:MvxBind="Visibility Visibility(DownloadedIconVisible)"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintEnd_toStartOf="@+id/ReferenceButton" />
 
@@ -118,7 +134,7 @@
                 android:tint="@color/global_black_one"
                 local:MvxBind="
                     Click ShowTrackInfoCommand;
-                    Visibility Visibility(TrackHasExternalRelations(Tile.Track))"
+                    Visibility Visibility(ReferenceButtonVisible)"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintEnd_toEndOf="parent" />
         

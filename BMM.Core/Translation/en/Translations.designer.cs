@@ -92,6 +92,7 @@ namespace BMM.Core.Translation
 		public const string ExploreNewestViewModel_Messages = nameof(ExploreNewestViewModel_Messages);
 		public const string ExploreNewestViewModel_Music = nameof(ExploreNewestViewModel_Music);
 		public const string ExploreNewestViewModel_Recommended = nameof(ExploreNewestViewModel_Recommended);
+		public const string ExploreNewestViewModel_More = nameof(ExploreNewestViewModel_More);
 		public const string ExploreContributorsViewModel_Title = nameof(ExploreContributorsViewModel_Title);
 		public const string ExploreContributorsViewModel_SearchHint = nameof(ExploreContributorsViewModel_SearchHint);
 		public const string HelpFeedbackViewModel_Title = nameof(HelpFeedbackViewModel_Title);

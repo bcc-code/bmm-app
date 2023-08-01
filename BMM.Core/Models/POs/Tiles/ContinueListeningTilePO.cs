@@ -1,5 +1,6 @@
-using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.FileStorage;
@@ -58,7 +59,8 @@ namespace BMM.Core.Models.POs.Tiles
             Tile = continueListeningTile;
             RefreshState();
         }
-        
+
+        public IMvxAsyncCommand MoreButtonClickedCommand { get; set; }
         public IMvxAsyncCommand TileClickedCommand { get; }
         public IMvxAsyncCommand ContinueListeningCommand { get; }
         public IMvxAsyncCommand ShuffleButtonClickedCommand { get; }
@@ -66,6 +68,11 @@ namespace BMM.Core.Models.POs.Tiles
         public IMvxAsyncCommand OptionButtonClickedCommand { get; }
         public ContinueListeningTile Tile { get; }
 
+        public bool IsBibleStudyProjectTile => Tile.Track.IsBibleStudyProjectTrack();
+        public bool ShuffleButtonVisible => !IsBibleStudyProjectTile && Tile.ShufflePodcastId.HasValue;
+        public bool DownloadedIconVisible => !IsBibleStudyProjectTile && IsDownloaded;
+        public bool ReferenceButtonVisible => !IsBibleStudyProjectTile && Tile.Track.HasExternalRelations();
+        
         public bool IsCurrentlySelected
         {
             get => _isCurrentlySelected;

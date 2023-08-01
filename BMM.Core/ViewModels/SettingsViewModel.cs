@@ -212,7 +212,7 @@ namespace BMM.Core.ViewModels
         {
             var items = new List<IListItem>
             {
-                new SectionHeader {ShowDivider = false, Title = TextSource[Translations.SettingsViewModel_HeadlineSettings]},
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineSettings], false),
                 new CheckboxListItemPO
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionAutoplayHeader],
@@ -294,7 +294,7 @@ namespace BMM.Core.ViewModels
         {
             var generalSectionItems = new List<IListItem>
             {
-                new SectionHeader {Title = TextSource[Translations.SettingsViewModel_HeadlineGeneral]},
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineGeneral]),
                 new SelectableListItem
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionLanguageAppHeader],
@@ -330,7 +330,7 @@ namespace BMM.Core.ViewModels
         {
             var items = new List<IListItem>
             {
-                new SectionHeader {Title = TextSource[Translations.SettingsViewModel_HeadlineAbout]},
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineAbout]),
                 new SelectableListItem
                 {
                     Title = TextSource[Translations.SettingsViewModel_UserVoiceHeader],
@@ -401,13 +401,6 @@ namespace BMM.Core.ViewModels
                         OnSelected = new MvxAsyncCommand(ShowCachedTracks)
                     });
                 }
-                
-                items.Add(new SelectableListItem
-                {
-                    Title = "Bible Study",
-                    Text = "Bible Study 2023",
-                    OnSelected = NavigationService.NavigateCommand<BibleStudyViewModel>()
-                });
             }
 
             return items;

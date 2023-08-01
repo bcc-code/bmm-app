@@ -35,6 +35,9 @@ namespace BMM.UI.iOS.Constants
         public static UIColor GlobalWhiteThreeColor => UIColor.FromName(nameof(GlobalWhiteThreeColor));
         public static UIColor GlobalWhiteFourColor => UIColor.FromName(nameof(GlobalWhiteFourColor));
         public static UIColor GlobalWhiteFiveColor => UIColor.FromName(nameof(GlobalWhiteFiveColor));
+        public static UIColor BibleStudyConfettiOneColor => UIColor.FromName(nameof(BibleStudyConfettiOneColor));
+        public static UIColor BibleStudyConfettiTwoColor => UIColor.FromName(nameof(BibleStudyConfettiTwoColor));
+        public static UIColor BibleStudyConfettiThreeColor => UIColor.FromName(nameof(BibleStudyConfettiThreeColor));
 
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
     }

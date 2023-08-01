@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />
+    <ProjectReference Include="..\ConfettiView.Android\ConfettiView.Android.csproj" />
     <ProjectReference Include="..\Lottie\Lottie.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -987,6 +988,22 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Update="Resources\layout\listitem_recommendation_contributor.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\fragment_bible_study.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_bible_study_header.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_bible_study_progress.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\fragment_achievement_fragment.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>

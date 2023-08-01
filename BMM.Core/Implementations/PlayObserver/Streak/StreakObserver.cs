@@ -158,7 +158,6 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             if (index >= 0)
             {
                 var streakFromServer = (ListeningStreak)documents[index];
-                AppSettings.LatestListeningStreak = streakFromServer;
                 var localStreak = await GetStoredStreak();
                 if (localStreak != null && localStreak.LastChanged.ToUniversalTime() > streakFromServer.LastChanged.ToUniversalTime() &&
                     localStreak.WeekOfTheYear == streakFromServer.WeekOfTheYear)
@@ -189,7 +188,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                     }
 
                     _latestStreak = streakFromServer;
-                    //await Store(null);
+                    await Store(null);
                 }
             }
         }

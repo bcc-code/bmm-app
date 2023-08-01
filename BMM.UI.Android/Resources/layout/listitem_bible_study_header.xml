@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/BibleStudyHeaderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Click ClickedCommand">
+
+    <TextView
+            android:id="@+id/ThemeNameLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="Text ThemeName"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Subtitle1_Label2" />
+
+    <TextView
+            android:id="@+id/EpisodeTitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="Text EpisodeTitle"
+            local:layout_constraintTop_toBottomOf="@+id/ThemeNameLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Heading2" />
+
+    <TextView
+            android:id="@+id/EpisodeDateLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="Text EpisodeDate"
+            local:layout_constraintTop_toBottomOf="@+id/EpisodeTitleLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Subtitle3_Label2" />
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/PlayButtonContainer"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_xmedium"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:layout_constraintTop_toBottomOf="@+id/EpisodeDateLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:cardCornerRadius="@dimen/corner_radius_large"
+            local:cardBackgroundColor="@color/background_two_color"
+            local:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/PlayIcon"
+                    android:layout_width="@dimen/default_icon_size"
+                    android:layout_height="@dimen/default_icon_size"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:src="@drawable/icon_play"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                    android:id="@+id/PlayLabel"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_xxsmall"
+                    android:layout_marginVertical="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintStart_toEndOf="@+id/PlayIcon"
+                    local:layout_constraintEnd_toEndOf="parent"
+                    local:MvxLang="Text BibleStudyViewModel_PlaySpeech"
+                    style="@style/Subtitle1_Label1" />
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+            android:id="@+id/AudiobookButtonContainer"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:layout_constraintTop_toBottomOf="@+id/PlayButtonContainer"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:cardCornerRadius="@dimen/corner_radius_large"
+            local:cardBackgroundColor="@color/background_two_color"
+            local:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <TextView
+                    android:id="@+id/AudiobookLabel"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:layout_marginVertical="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintStart_toStartOf="parent"
+                    local:layout_constraintEnd_toStartOf="@+id/ChevronIcon"
+                    local:MvxLang="Text BibleStudyViewModel_ListenAudiobook"
+                    style="@style/Subtitle1_Label1" />
+
+            <ImageView
+                    android:id="@+id/ChevronIcon"
+                    android:layout_width="@dimen/default_icon_size"
+                    android:layout_height="@dimen/default_icon_size"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:src="@drawable/icon_chevron_right"
+                    android:tint="@color/label_one_color"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+            android:id="@+id/Separator"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/divider_height"
+            android:background="@color/global_black_separator"
+            android:layout_marginTop="@dimen/margin_large"
+            local:layout_constraintTop_toBottomOf="@+id/AudiobookButtonContainer"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

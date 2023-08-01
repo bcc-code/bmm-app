@@ -1,17 +1,14 @@
 using BMM.Core.Models.POs.BibleStudy;
-using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
-using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding;
-using MvvmCross.Plugin.Color;
+using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
 {
     public partial class BibleStudyProgressTableViewCell : BaseBMMTableViewCell
     {
-        public static readonly NSString Key = new NSString(nameof(BibleStudyProgressTableViewCell));
+        public static readonly NSString Key = new(nameof(BibleStudyProgressTableViewCell));
 
         public BibleStudyProgressTableViewCell(IntPtr handle)
             : base(handle)
@@ -20,18 +17,20 @@ namespace BMM.UI.iOS
             {
                 var set = this.CreateBindingSet<BibleStudyProgressTableViewCell, BibleStudyProgressPO>();
 
+                var source = new MvxCollectionViewSource(AchivementsCollectionView, AchievementsCollectionViewCell.Key);
+                AchivementsCollectionView!.RegisterNibForCell(AchievementsCollectionViewCell.Nib, AchievementsCollectionViewCell.Key);
+
+                set
+                    .Bind(source)
+                    .For(s => s.ItemsSource)
+                    .To(po => po.Achievements);
+                
                 set.Bind(ProgressTitleLabel)
                     .To(po => po.TextSource[Translations.BibleStudyViewModel_ProgressTitle]);
                 
                 set.Bind(TermsLabel)
                     .To(po => po.TextSource[Translations.BibleStudyViewModel_StreakTerms]);
-                
-                set.Bind(TermsLabel)
-                    .To(po => po.TextSource[Translations.BibleStudyViewModel_StreakTerms]);
-                
-                set.Bind(TermsLabel)
-                    .To(po => po.TextSource[Translations.BibleStudyViewModel_StreakTerms]);
-                
+
                 set.Bind(DaysLabel)
                     .To(po => po.TextSource[Translations.BibleStudyViewModel_Days]);
                 
@@ -60,7 +59,7 @@ namespace BMM.UI.iOS
                 set.Bind(MondayColorView)
                     .For(v => v.BackgroundColor)
                     .To(po => po.MondayColor)
-                    .WithConversion<PlatformColorConverter>();
+                    .WithConversion<HexStringToUiColorConverter>();
                 set.Bind(MondayColorView.Layer)
                     .For(v => v.BorderWidth)
                     .To(v => v.ListeningStreakPO.ListeningStreak.Monday)
@@ -73,7 +72,7 @@ namespace BMM.UI.iOS
                 set.Bind(TuesdayColorView)
                     .For(v => v.BackgroundColor)
                     .To(v => v.TuesdayColor)
-                    .WithConversion<PlatformColorConverter>();
+                    .WithConversion<HexStringToUiColorConverter>();
                 set.Bind(TuesdayColorView.Layer)
                     .For(v => v.BorderWidth)
                     .To(v => v.ListeningStreakPO.ListeningStreak.Tuesday)
@@ -86,7 +85,7 @@ namespace BMM.UI.iOS
                 set.Bind(WednesdayColorView)
                     .For(v => v.BackgroundColor)
                     .To(v => v.WednesdayColor)
-                    .WithConversion<PlatformColorConverter>();
+                    .WithConversion<HexStringToUiColorConverter>();
                 set.Bind(WednesdayColorView.Layer)
                     .For(v => v.BorderWidth)
                     .To(v => v.ListeningStreakPO.ListeningStreak.Wednesday)
@@ -99,7 +98,7 @@ namespace BMM.UI.iOS
                 set.Bind(ThursdayColorView)
                     .For(v => v.BackgroundColor)
                     .To(v => v.ThursdayColor)
-                    .WithConversion<PlatformColorConverter>();
+                    .WithConversion<HexStringToUiColorConverter>();
                 set.Bind(ThursdayColorView.Layer)
                     .For(v => v.BorderWidth)
                     .To(v => v.ListeningStreakPO.ListeningStreak.Thursday)
@@ -112,12 +111,13 @@ namespace BMM.UI.iOS
                 set.Bind(FridayColorView)
                     .For(v => v.BackgroundColor)
                     .To(v => v.FridayColor)
-                    .WithConversion<PlatformColorConverter>();
+                    .WithConversion<HexStringToUiColorConverter>();
                 set.Bind(FridayColorView.Layer)
                     .For(v => v.BorderWidth)
                     .To(v => v.ListeningStreakPO.ListeningStreak.Friday)
                     .WithConversion<BorderVisibilityConverter>();
                 
+                AchivementsCollectionView.Source = source;
                 set.Apply();
             });
         }

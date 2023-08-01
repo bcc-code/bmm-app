@@ -71,5 +71,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task PostStreakPoints(IList<StreakPointEvent> trackPlayedEvents);
         
         Task<IList<YearInReviewItem>> GetYearInReview();
+
+        Task<ProjectProgress> GetProjectProgress();
     }
 }
