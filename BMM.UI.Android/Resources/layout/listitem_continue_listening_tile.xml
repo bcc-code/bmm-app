@@ -85,6 +85,7 @@
                 android:layout_marginStart="@dimen/element_margin_small"
                 android:layout_marginBottom="@dimen/margin_xxmedium"
                 android:layout_marginEnd="@dimen/margin_xxmedium"
+                android:textColor="@color/global_black_one"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toEndOf="@+id/PlayButtonFrame"
                 local:layout_constraintEnd_toEndOf="parent"

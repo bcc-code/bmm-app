@@ -1,38 +1,28 @@
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
-using BMM.Core.GuardedActions.Base;
+using BMM.Core.GuardedActions.TrackInfo.Base;
 using BMM.Core.GuardedActions.TrackInfo.Interfaces;
-using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Localization.Interfaces;
-using BMM.Core.Implementations.UI;
-using BMM.Core.Models;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Other.Interfaces;
 using BMM.Core.Translation;
-using BMM.Core.ValueConverters;
-using MvvmCross.Commands;
 
 namespace BMM.Core.GuardedActions.TrackInfo;
 
-public class BuildTrackInfoSectionsAction 
-    : GuardedActionWithParameterAndResult<Track, IEnumerable<IBasePO>>,
+public class BuildTrackInfoSectionsAction
+    : BaseTrackInfoAction,
       IBuildTrackInfoSectionsAction
 {
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
-    private readonly IUriOpener _uriOpener;
-    private readonly IExceptionHandler _exceptionHandler;
     private Track _track;
 
-    public BuildTrackInfoSectionsAction(
-        IBMMLanguageBinder bmmLanguageBinder,
-        IUriOpener uriOpener,
-        IExceptionHandler exceptionHandler)
+    public BuildTrackInfoSectionsAction(IBMMLanguageBinder bmmLanguageBinder)
     {
         _bmmLanguageBinder = bmmLanguageBinder;
-        _uriOpener = uriOpener;
-        _exceptionHandler = exceptionHandler;
     }
+
+    protected override Track Track => _track;
 
     protected override Task<IEnumerable<IBasePO>> Execute(Track track)
     {
@@ -42,45 +32,15 @@ public class BuildTrackInfoSectionsAction
     
     public IEnumerable<IBasePO> BuildSections()
     {
-        var externalRelations = BuildExternalRelations().ToList();
         var aboutTrackInfos = BuildAboutTrackInfos();
 
-        var items = new List<IBasePO>();
-
-        if (externalRelations.Any() && !_track.IsBibleStudyProjectTrack())
+        var items = new List<IBasePO>
         {
-            items.Add(new SectionHeaderPO(_bmmLanguageBinder[Translations.TrackInfoViewModel_ExternalReferences], false));
-            items.AddRange(externalRelations);
-        }
+            new SectionHeaderPO(_bmmLanguageBinder[Translations.TrackInfoViewModel_AboutTrack], false)
+        };
 
-        items.Add(new SectionHeaderPO(_bmmLanguageBinder[Translations.TrackInfoViewModel_AboutTrack], false));
         items.AddRange(aboutTrackInfos);
-
         return items;
-    }
-
-    private IEnumerable<ISelectableListContentItemPO> BuildExternalRelations()
-    {
-        return GetRelationsOfType<TrackRelationExternal>()
-            .Select(relation =>
-            {
-                return new ExternalRelationListItemPO(
-                    relation.Name,
-                    string.Empty,
-                    new MvxCommand(() => { TryOpenExternalRelation(relation); }));
-            });
-    }
-
-    private void TryOpenExternalRelation(TrackRelationExternal relation)
-    {
-        try
-        {
-            _uriOpener.OpenUri(new Uri(relation.Url));
-        }
-        catch (FormatException ex)
-        {
-            _exceptionHandler.HandleException(ex);
-        }
     }
 
     private IEnumerable<ISelectableListContentItemPO> BuildAboutTrackInfos()
@@ -187,12 +147,6 @@ public class BuildTrackInfoSectionsAction
             return GetRelationsOfType<TrackRelationArranger>()
                 .Select(arranger => arranger.Name);
         }
-    }
-
-    private IEnumerable<T> GetRelationsOfType<T>()
-        where T : TrackRelation
-    {
-        return _track.Relations?.OfType<T>();
     }
 
     private string SeparateByComma(IEnumerable<string> strings)

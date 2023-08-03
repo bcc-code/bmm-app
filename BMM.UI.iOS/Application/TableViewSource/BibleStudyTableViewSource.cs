@@ -7,6 +7,21 @@ public class BibleStudyTableViewSource : BaseTableViewSource
 {
     public BibleStudyTableViewSource(UITableView tableView) : base(tableView)
     {
+        tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsPlayTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsPlayTableViewCell.Key);
+        tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsOpenTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsOpenTableViewCell.Key);
+    }
+
+    protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
+    {
+        if (item is IBibleStudyExternalRelationPO bibleStudyExternalRelationPO)
+        {
+            if (bibleStudyExternalRelationPO.WillPlayTrack)
+                return tableView.DequeueReusableCell(ExternalRelationsPlayTableViewCell.Key);
+            
+            return tableView.DequeueReusableCell(ExternalRelationsOpenTableViewCell.Key);
+        }
+        
+        return base.GetOrCreateCellFor(tableView, indexPath, item);
     }
 
     protected override IEnumerable<ITableCellType> GetTableCellTypes()
@@ -17,7 +32,7 @@ public class BibleStudyTableViewSource : BaseTableViewSource
             new TableCellType(typeof(IBibleStudyProgressPO), BibleStudyProgressTableViewCell.Key),
             new TableCellType(typeof(IExternalRelationListItemPO), ExternalRelationListItemTableViewCell.Key),
             new TableCellType(typeof(ISelectableListContentItemPO), TextListItemTableViewCell.Key),
-            new TableCellType(typeof(ISectionHeaderPO), SectionHeaderTableViewCell.Key)
+            new TableCellType(typeof(ISectionHeaderPO), SectionHeaderTableViewCell.Key),
         };
     }
 }

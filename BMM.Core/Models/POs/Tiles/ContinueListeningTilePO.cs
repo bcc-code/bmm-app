@@ -60,7 +60,6 @@ namespace BMM.Core.Models.POs.Tiles
             RefreshState();
         }
 
-        public IMvxAsyncCommand MoreButtonClickedCommand { get; set; }
         public IMvxAsyncCommand TileClickedCommand { get; }
         public IMvxAsyncCommand ContinueListeningCommand { get; }
         public IMvxAsyncCommand ShuffleButtonClickedCommand { get; }

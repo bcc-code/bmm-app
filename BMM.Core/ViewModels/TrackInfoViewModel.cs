@@ -9,11 +9,14 @@ namespace BMM.Core.ViewModels
     public class TrackInfoViewModel : ItemListViewModel, IMvxViewModel<Track>
     {
         private readonly IBuildTrackInfoSectionsAction _buildTrackInfoSectionsAction;
+        private readonly IBuildExternalRelationsAction _buildExternalRelationsAction;
 
         public TrackInfoViewModel(
-            IBuildTrackInfoSectionsAction buildTrackInfoSectionsAction)
+            IBuildTrackInfoSectionsAction buildTrackInfoSectionsAction,
+            IBuildExternalRelationsAction buildExternalRelationsAction)
         {
             _buildTrackInfoSectionsAction = buildTrackInfoSectionsAction;
+            _buildExternalRelationsAction = buildExternalRelationsAction;
         }
 
         private Track _track;
@@ -32,7 +35,9 @@ namespace BMM.Core.ViewModels
         public override async Task Initialize()
         {
             await base.Initialize();
+            var externalRelations = await _buildExternalRelationsAction.ExecuteGuarded(Track);
             var items = await _buildTrackInfoSectionsAction.ExecuteGuarded(Track);
+            Items.AddRange(externalRelations);
             Items.AddRange(items);
         }
 

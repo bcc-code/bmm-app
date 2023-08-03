@@ -29,5 +29,7 @@ namespace BMM.Core.Helpers
         void SetDeepLinkWillStartPlayerIfNeeded(string deepLink);
 
         bool IsBmmUrl(Uri uri);
+
+        bool WillDeepLinkStartPlayer(Uri uri);
     }
 }

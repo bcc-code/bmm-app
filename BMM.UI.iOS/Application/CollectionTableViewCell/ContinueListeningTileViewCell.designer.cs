@@ -18,7 +18,7 @@ namespace BMM.UI.iOS
 
 		[Outlet]
 		UIKit.UIView ContentWidthHelper { get; set; }
-		
+
 		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView CoverImageView { get; set; }
 
@@ -35,10 +35,13 @@ namespace BMM.UI.iOS
 		UIKit.UILabel IsPlayingButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton MoreButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton OptionsButton { get; set; }
 
 		[Outlet]
-		LottieButton PlayButton { get; set; }
+		BMM.UI.iOS.LottieButton PlayButton { get; set; }
 
 		[Outlet]
 		BMM.UI.iOS.CustomViews.ProgressBarView ProgressBarView { get; set; }
@@ -70,7 +73,12 @@ namespace BMM.UI.iOS
 				BackgroundView.Dispose ();
 				BackgroundView = null;
 			}
-			
+
+			if (ContentWidthHelper != null) {
+				ContentWidthHelper.Dispose ();
+				ContentWidthHelper = null;
+			}
+
 			if (CoverImageView != null) {
 				CoverImageView.Dispose ();
 				CoverImageView = null;
@@ -111,6 +119,11 @@ namespace BMM.UI.iOS
 				ProgressBarView = null;
 			}
 
+			if (ProgressBarWidthConstraint != null) {
+				ProgressBarWidthConstraint.Dispose ();
+				ProgressBarWidthConstraint = null;
+			}
+
 			if (ReferenceButton != null) {
 				ReferenceButton.Dispose ();
 				ReferenceButton = null;
@@ -141,14 +154,9 @@ namespace BMM.UI.iOS
 				TitleLabel = null;
 			}
 
-			if (ContentWidthHelper != null) {
-				ContentWidthHelper.Dispose ();
-				ContentWidthHelper = null;
-			}
-
-			if (ProgressBarWidthConstraint != null) {
-				ProgressBarWidthConstraint.Dispose ();
-				ProgressBarWidthConstraint = null;
+			if (MoreButton != null) {
+				MoreButton.Dispose ();
+				MoreButton = null;
 			}
 
 		}

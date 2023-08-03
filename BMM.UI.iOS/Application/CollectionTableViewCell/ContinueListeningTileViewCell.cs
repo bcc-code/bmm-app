@@ -2,6 +2,7 @@
 using Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Models.POs.Tiles;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
@@ -69,29 +70,27 @@ namespace BMM.UI.iOS
                 set.Bind(ProgressBarView)
                     .For(v => v.Percentage)
                     .To(vm => vm.Tile.Percentage);
-                
+
                 set.Bind(ReferenceButton)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.Tile.Track)
-                    .WithConversion<TrackHasExternalRelationsValueConverter>();
+                    .To(vm => vm.ReferenceButtonVisible);
 
                 set.Bind(ReferenceButton)
                     .To(po => po.ShowTrackInfoCommand);
 
                 set.Bind(DownloadedIcon)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.IsDownloaded);
+                    .To(vm => vm.DownloadedIconVisible);
                 
                 set.Bind(OptionsButton)
                     .To(po => po.OptionButtonClickedCommand);
 
                 set.Bind(ShuffleButton)
                     .To(po => po.ShuffleButtonClickedCommand);
-                
+
                 set.Bind(ShuffleButton)
                     .For(v => v.BindVisible())
-                    .To(vm => vm.Tile.ShufflePodcastId)
-                    .WithConversion<HasValueToVisibleValueConverter>();
+                    .To(vm => vm.ShuffleButtonVisible);
 
                 set.Bind(IsPlayingButton)
                     .For(v => v.BindVisible())
@@ -107,6 +106,17 @@ namespace BMM.UI.iOS
                 set.Bind(this)
                     .For(v => v.IsCurrentlyPlaying)
                     .To(po => po.IsCurrentlyPlaying);
+                
+                set.Bind(MoreButton)
+                    .For(v => v.BindTitle())
+                    .To(po => po.TextSource[Translations.ExploreNewestViewModel_More]);
+                
+                set.Bind(MoreButton)
+                    .For(v => v.BindVisible())
+                    .To(po => po.IsBibleStudyProjectTile);
+                
+                set.Bind(MoreButton)
+                    .To(po => po.ShowTrackInfoCommand);
                 
                 set.Apply();
 
@@ -184,6 +194,8 @@ namespace BMM.UI.iOS
             base.AwakeFromNib();
             ProgressBarWidthConstraint.Constant = ContentWidthHelper.Frame.Width / 2;
             ShuffleButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMediumSeparatorColorFive);
+            MoreButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMediumSeparatorColorFive);
+            MoreButton.SetTitleColor(AppColors.GlobalBlackOneColor, UIControlState.Normal);
             SubtitleLabel.ApplyTextTheme(AppTheme.Paragraph1GlobalBlack2);
             TitleLabel.ApplyTextTheme(AppTheme.Title1GlobalBlack1);
             DayOfWeekLabel.ApplyTextTheme(AppTheme.Subtitle3GlobalBlack1);

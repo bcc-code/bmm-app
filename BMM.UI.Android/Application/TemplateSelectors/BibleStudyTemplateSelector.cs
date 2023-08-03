@@ -14,14 +14,27 @@ public class BibleStudyTemplateSelector : MvxTemplateSelector<IBasePO>
 
     protected override int SelectItemViewType(IBasePO forItemObject)
     {
-        return forItemObject switch
+        switch (forItemObject)
         {
-            IBibleStudyHeaderPO => Resource.Layout.listitem_bible_study_header,
-            IBibleStudyProgressPO => Resource.Layout.listitem_bible_study_progress,
-            ISectionHeaderPO => Resource.Layout.listitem_header,
-            IExternalRelationListItemPO =>  Resource.Layout.listitem_trackrelation_external,
-            ISelectableListContentItemPO => Resource.Layout.listitem,
-            _ => default
-        };
+            case IBibleStudyHeaderPO:
+                return Resource.Layout.listitem_bible_study_header;
+            case IBibleStudyProgressPO:
+                return Resource.Layout.listitem_bible_study_progress;
+            case ISectionHeaderPO:
+                return Resource.Layout.listitem_header;
+            case IExternalRelationListItemPO:
+                return Resource.Layout.listitem_trackrelation_external;
+            case ISelectableListContentItemPO:
+                return Resource.Layout.listitem;
+            case IBibleStudyExternalRelationPO bibleStudyExternalRelationPO:
+            {
+                if (bibleStudyExternalRelationPO.WillPlayTrack)
+                    return Resource.Layout.listitem_extrenal_relations_play_button;
+                
+                return Resource.Layout.listitem_extrenal_relations_open_button;
+            }
+            default:
+                return default;
+        }
     }
 }
