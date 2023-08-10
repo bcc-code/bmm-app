@@ -55,7 +55,12 @@ namespace BMM.UI.iOS.Implementations.Notifications
             bool result = await _userDialogs.ConfirmAsync(confirmationMessageConfig);
 
             if (result)
-                AppInfo.ShowSettingsUI();
+            {
+                await _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(async () =>
+                {
+                    AppInfo.ShowSettingsUI();
+                });
+            }
         }
         
         private async Task<UNAuthorizationStatus> GetNotificationPermissionStatus()

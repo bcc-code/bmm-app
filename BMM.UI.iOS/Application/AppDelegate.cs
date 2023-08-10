@@ -43,7 +43,7 @@ namespace BMM.UI.iOS
             // Code to start the Xamarin Test Cloud Agent
 #if ENABLE_TEST_CLOUD
             // https://github.com/microsoft/appcenter/issues/2416
-//            Xamarin.Calabash.Start();
+            //            Xamarin.Calabash.Start();
 #endif
 
 #if !ENABLE_TEST_CLOUD

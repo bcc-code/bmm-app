@@ -13,7 +13,7 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.AchievementDetailsFragment")]
     public class AchievementDetailsFragment : BaseDialogFragment<AchievementDetailsViewModel>
     {
-        protected override int FragmentId => Resource.Layout.fragment_achievement_fragment;
+        protected override int FragmentId => Resource.Layout.fragment_achievements_details;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -28,7 +28,7 @@ namespace BMM.UI.Droid.Application.Fragments
                         Context.GetColorFromResource(Resource.Color.bible_study_confetti_one_color),
                         Context.GetColorFromResource(Resource.Color.bible_study_confetti_two_color),
                         Context.GetColorFromResource(Resource.Color.bible_study_confetti_three_color),
-                    })!.Infinite()!.SetEmissionDuration(5000);
+                    })!.Infinite().SetVelocityY(350)!.SetEmissionDuration(5000);
             });
             
             return view;

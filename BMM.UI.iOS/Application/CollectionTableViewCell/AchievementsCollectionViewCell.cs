@@ -20,8 +20,7 @@ namespace BMM.UI.iOS
 
                 set.Bind(ImageView)
                     .For(v => v.ImagePath)
-                    .To(po => po.ImageName)
-                    .WithConversion<ImageToiOSResourceNameConverter>();
+                    .To(po => po.ImagePath);
                 
                 set.Bind(ImageView)
                     .For(v => v.Alpha)

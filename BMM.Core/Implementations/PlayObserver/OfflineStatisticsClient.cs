@@ -10,7 +10,7 @@ namespace BMM.Core.Implementations.PlayObserver
 {
     public class OfflineStatisticsClient : StatisticsClient
     {
-        private const int UploadThresholdInMinutes = 1;
+        private const int UploadThresholdInMinutes = 0;
 
         private readonly ITrackPlayedStorage _trackPlayedStorage;
         private readonly IConnection _connection;

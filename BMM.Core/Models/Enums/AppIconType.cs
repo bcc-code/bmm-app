@@ -1,0 +1,8 @@
+namespace BMM.Core.Models.Enums;
+
+public enum AppIconType
+{
+    Standard,
+    DarkGreen,
+    Violet
+}

@@ -24,17 +24,20 @@ namespace BMM.Core.Implementations.Notifications
 
         private void HandleNotification(INotification notification, NotificationType type)
         {
-            if (notification is PodcastNotification podcastNotification)
+            switch (notification)
             {
-                HandleRemoteNotification(podcastNotification, type);
-            }
-            else if (notification is GeneralNotification generalNotification)
-            {
-                HandleRemoteNotification(generalNotification, type);
-            }
-            else
-            {
-                _logger.Error(nameof(NotificationHandler), "Encountered an unsupported notification");
+                case PodcastNotification podcastNotification:
+                    HandleRemoteNotification(podcastNotification, type);
+                    break;
+                case GeneralNotification generalNotification:
+                    HandleRemoteNotification(generalNotification, type);
+                    break;
+                case AchievementNotification achievementNotification:
+                    HandleRemoteNotification(achievementNotification, type);
+                    break;
+                default:
+                    _logger.Error(nameof(NotificationHandler), "Encountered an unsupported notification");
+                    break;
             }
         }
 

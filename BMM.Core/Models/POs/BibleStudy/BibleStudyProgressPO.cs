@@ -6,6 +6,7 @@ using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.ListeningStreaks;
+using Microsoft.Maui.Devices.Sensors;
 using MvvmCross.Navigation;
 
 namespace BMM.Core.Models.POs.BibleStudy;
@@ -23,12 +24,9 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
         DaysNumber = projectProgress.Days.ToString();
         PointsNumber = projectProgress.Points.ToString();
         BoostNumber = $"{projectProgress.CurrentBoost}x";
-        Achievements.AddRange(new []
-        {
-            new AchievementPO(ImageResourceNames.IconFullStreak, true, navigationService),
-            new AchievementPO(ImageResourceNames.IconTopListener, false, navigationService),
-            new AchievementPO(ImageResourceNames.IconAchievements, false, navigationService)
-        });
+
+        foreach (var achievement in projectProgress.Achievements)
+            Achievements.Add(new AchievementPO(achievement, navigationService));
     }
 
     public ListeningStreakPO ListeningStreakPO

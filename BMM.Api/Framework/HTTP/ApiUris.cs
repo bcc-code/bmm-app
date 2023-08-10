@@ -38,6 +38,8 @@
         public static string StatisticsGlobalDownloadedMost = "statistics/global/{type}/downloaded/most{?size,from}";
         public const string StatisticsPostTrackPlayedEvent = "statistics/track/played/";
         public const string StatisticsPostStreakPoints = "statistics/streakpoint";
+        public const string StatisticsAchievement = "statistics/achievement";
+        public const string AchievementAcknowledge = "statistics/achievement/{name}/acknowledge";
 
         public const string Podcasts = "podcast/";
         public const string Podcast = "podcast/{id}";

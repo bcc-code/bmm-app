@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.DebugInfo.Interfaces;
 using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Helpers;
@@ -61,6 +62,7 @@ namespace BMM.Core.ViewModels
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
         private readonly INotificationPermissionService _notificationPermissionService;
         private readonly IChangeNotificationSettingStateAction _changeNotificationSettingStateAction;
+        private readonly IResetAchievementAction _resetAchievementAction;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -100,7 +102,8 @@ namespace BMM.Core.ViewModels
             IFirebaseRemoteConfig remoteConfig,
             IFeatureSupportInfoService featureSupportInfoService,
             INotificationPermissionService notificationPermissionService,
-            IChangeNotificationSettingStateAction changeNotificationSettingStateAction)
+            IChangeNotificationSettingStateAction changeNotificationSettingStateAction,
+            IResetAchievementAction resetAchievementAction)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -123,6 +126,7 @@ namespace BMM.Core.ViewModels
             _featureSupportInfoService = featureSupportInfoService;
             _notificationPermissionService = notificationPermissionService;
             _changeNotificationSettingStateAction = changeNotificationSettingStateAction;
+            _resetAchievementAction = resetAchievementAction;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -309,6 +313,13 @@ namespace BMM.Core.ViewModels
                 }
             };
             
+            generalSectionItems.Add(new SelectableListItem
+            {
+                Title = TextSource[Translations.AppIconViewModel_Title],
+                Text = TextSource[Translations.AppIconViewModel_Description],
+                OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
+            });
+            
             generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsDarkMode, new SelectableListItem
             {
                 Title = TextSource[Translations.SettingsViewModel_ThemeHeader],
@@ -401,6 +412,13 @@ namespace BMM.Core.ViewModels
                         OnSelected = new MvxAsyncCommand(ShowCachedTracks)
                     });
                 }
+                
+                items.Add(new SelectableListItem
+                {
+                    Title = "Reset achievements",
+                    Text = "Reset all achievements for Bible Study project",
+                    OnSelected = _resetAchievementAction.Command
+                });
             }
 
             return items;

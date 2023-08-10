@@ -426,5 +426,16 @@ namespace BMM.Core.Translation
 		public const string BibleStudyViewModel_Boost = nameof(BibleStudyViewModel_Boost);
 		public const string BibleStudyViewModel_Points = nameof(BibleStudyViewModel_Points);
 		public const string BibleStudyViewModel_Achievements = nameof(BibleStudyViewModel_Achievements);
+		public const string AppIconViewModel_Title = nameof(AppIconViewModel_Title);
+		public const string AppIconViewModel_Description = nameof(AppIconViewModel_Description);
+		public const string AppIconViewModel_Standard = nameof(AppIconViewModel_Standard);
+		public const string AppIconViewModel_DarkGreen = nameof(AppIconViewModel_DarkGreen);
+		public const string AppIconViewModel_Violet = nameof(AppIconViewModel_Violet);
+		public const string AchievementDetailsViewModel_Title = nameof(AchievementDetailsViewModel_Title);
+		public const string AchievementDetailsViewModel_Unlocked = nameof(AchievementDetailsViewModel_Unlocked);
+		public const string AchievementDetailsViewModel_ActivatePremiumIcon = nameof(AchievementDetailsViewModel_ActivatePremiumIcon);
+		public const string AchievementDetailsViewModel_GotIt = nameof(AchievementDetailsViewModel_GotIt);
+		public const string AchievementDetailsViewModel_ActivateTheme = nameof(AchievementDetailsViewModel_ActivateTheme);
+		public const string AchievementDetailsViewModel_Close = nameof(AchievementDetailsViewModel_Close);
 	}
 }

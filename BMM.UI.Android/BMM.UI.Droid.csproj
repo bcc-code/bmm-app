@@ -1003,15 +1003,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
-    <AndroidResource Update="Resources\layout\fragment_achievement_fragment.axml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
     <AndroidResource Update="Resources\layout\listitem_extrenal_relations_play_button.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Update="Resources\layout\listitem_extrenal_relations_open_button.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\fragment_achievements_details.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
@@ -1097,11 +1097,5 @@
     <Reference Include="FFImageLoading.Shared">
       <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\raw-night\play_animation_icon_dark.json">
-      <Link>Resources\play_animation_icon_dark.json</Link>
-      <IsDefaultItem>true</IsDefaultItem>
-    </BundleResource>
   </ItemGroup>
 </Project>

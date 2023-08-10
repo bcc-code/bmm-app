@@ -61,6 +61,7 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <UseInterpreter>true</UseInterpreter>
     <MtouchExtraArgs />
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>

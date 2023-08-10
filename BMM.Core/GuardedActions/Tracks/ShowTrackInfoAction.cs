@@ -29,10 +29,6 @@ namespace BMM.Core.GuardedActions.Tracks
         
         protected override async Task Execute(Track track)
         {
-            await _navigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
-            _mvxMessenger.Publish(new TogglePlayerMessage(this, false));
-            await Task.Delay(ViewConstants.DefaultAnimationDurationInMilliseconds);
-
             if (track.IsBibleStudyProjectTrack())
             {
                 await _navigationService.Navigate<BibleStudyViewModel, IBibleStudyParameters>(new BibleStudyParameters(track));

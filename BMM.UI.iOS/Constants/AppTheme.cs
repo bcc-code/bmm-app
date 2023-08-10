@@ -7,6 +7,12 @@ namespace BMM.UI.iOS.Constants
 {
     public static class AppTheme
     {
+        public static TextTheme Heading1 = new TextTheme
+        {
+            Font = Typography.Header1.Value,
+            Color = AppColors.LabelOneColor
+        };
+        
         public static TextTheme Heading2 = new TextTheme
         {
             Font = Typography.Header2.Value,

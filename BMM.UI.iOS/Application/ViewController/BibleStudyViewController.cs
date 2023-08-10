@@ -46,9 +46,24 @@ namespace BMM.UI.iOS
                 OnDidDismiss = HandleDismiss
             };
 
+            NavigationItem.Title = string.Empty;
+            NavigationController.Title = string.Empty;
+
             SetThemes();
         }
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+            NavigationController!.SetNavigationBarHidden(true, true);
+        }
+
+        public override void ViewWillDisappear(bool animated)
+        {
+            base.ViewWillDisappear(animated);
+            NavigationController!.SetNavigationBarHidden(false, true);
+        }
+        
         public override void TraitCollectionDidChange(UITraitCollection previousTraitCollection)
         {
             base.TraitCollectionDidChange(previousTraitCollection);

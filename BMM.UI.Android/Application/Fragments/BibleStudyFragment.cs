@@ -1,11 +1,8 @@
-﻿using Android.Graphics;
-using Android.Runtime;
+﻿using Android.Runtime;
 using Android.Views;
-using AndroidX.ConstraintLayout.Widget;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Fragments.Base;
-using Com.Github.Jinatonic.Confetti;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;

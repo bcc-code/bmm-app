@@ -51,7 +51,7 @@ namespace BMM.UI.iOS.CustomViews
         {
             Emitter = new CAEmitterLayer();
 
-            Emitter.Position = new CGPoint(Frame.Size.Width / 2.0, -50);
+            Emitter.Position = new CGPoint(Frame.Size.Width / 2.0, -100);
             Emitter.Shape = "kCAEmitterLayerLine";
             Emitter.Size = new CGSize(Frame.Size.Width, 1);
 
@@ -77,7 +77,7 @@ namespace BMM.UI.iOS.CustomViews
         {
             var confetti = new CAEmitterCell
             {
-                BirthRate = 6,
+                BirthRate = 10,
                 LifeTime = 14F * Intensity,
                 LifetimeRange = 0,
                 Color = color.CGColor,
