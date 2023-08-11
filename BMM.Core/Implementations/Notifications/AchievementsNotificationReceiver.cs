@@ -5,11 +5,11 @@ namespace BMM.Core.Implementations.Notifications
 {
     public class AchievementsNotificationReceiver : IReceive<AchievementNotification>
     {
-        private readonly IShowAchievementUnlockedScreenAction _showAchievementUnlockedScreenAction;
+        private readonly ICheckAndShowAchievementUnlockedScreenAction _checkAndShowAchievementUnlockedScreenAction;
 
-        public AchievementsNotificationReceiver(IShowAchievementUnlockedScreenAction showAchievementUnlockedScreenAction)
+        public AchievementsNotificationReceiver(ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction)
         {
-            _showAchievementUnlockedScreenAction = showAchievementUnlockedScreenAction;
+            _checkAndShowAchievementUnlockedScreenAction = checkAndShowAchievementUnlockedScreenAction;
         }
 
         public void UserClickedRemoteNotification(AchievementNotification notification)
@@ -18,7 +18,7 @@ namespace BMM.Core.Implementations.Notifications
 
         public async void OnNotificationReceived(AchievementNotification notification)
         {
-            await _showAchievementUnlockedScreenAction.ExecuteGuarded();
+            await _checkAndShowAchievementUnlockedScreenAction.ExecuteGuarded();
         }
     }
 }

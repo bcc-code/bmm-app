@@ -121,6 +121,13 @@
         <item name="android:padding">0dip</item>
     </style>
 
+    <style name="Heading1">
+        <item name="android:textSize">34sp</item>s
+        <item name="android:lineHeight">40sp</item>
+        <item name="android:textColor">@color/label_one_color</item>
+        <item name="android:textFontWeight">800</item>
+    </style>
+    
     <style name="Heading2">
         <item name="android:textSize">28sp</item>
         <item name="android:lineHeight">32sp</item>

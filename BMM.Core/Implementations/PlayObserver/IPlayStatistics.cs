@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
+﻿using System.Runtime.CompilerServices;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.PlayObserver.Model;
@@ -49,5 +46,7 @@ namespace BMM.Core.Implementations.PlayObserver
         Task TrySendSavedStreakPointsEvents();
         
         Task PostStreakPoints(ITrackModel track, PlayMeasurements playMeasurements);
+        
+        void OnCurrentTrackWillChange(double currentPosition, decimal playbackRate);
     }
 }

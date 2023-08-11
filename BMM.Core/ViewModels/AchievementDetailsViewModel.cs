@@ -6,6 +6,7 @@ using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Parameters.Interface;
+using MvvmCross;
 using MvvmCross.Commands;
 
 namespace BMM.Core.ViewModels;
@@ -18,8 +19,7 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
     private bool _shouldShowConfetti;
 
     public AchievementDetailsViewModel(
-        IAcknowledgeAchievementAction acknowledgeAchievementAction,
-        IAppIconSelectedAction appIconSelectedAction)
+        IAcknowledgeAchievementAction acknowledgeAchievementAction)
     {
         _acknowledgeAchievementAction = acknowledgeAchievementAction;
         
@@ -31,6 +31,7 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
                 return;
             }
 
+            var appIconSelectedAction = Mvx.IoCProvider.Resolve<IAppIconSelectedAction>();
             await appIconSelectedAction.ExecuteGuarded(AchievementsTools.GetIconTypeFor(AchievementPO.AchievementType)!.Value);
         });
     }

@@ -8,6 +8,8 @@ using BMM.Core.Utils;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
+using Microsoft.AppCenter.Ingestion.Models;
+using Microsoft.Maui.Devices;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
@@ -32,10 +34,10 @@ public class AchievementPO : BasePO, IAchievementPO
 
     public string ImagePath => _achievement.Url;
     public bool IsActive => _achievement.HasAchieved;
-    public AchievementType AchievementType => _achievement.Id;
+    public string AchievementType => _achievement.Id;
     public bool IsAcknowledged => _achievement.HasAcknowledged;
     public string Title => _achievement.Title;
     public string Description => _achievement.Description;
-    public bool HasIconReward => AchievementsTools.GetIconTypeFor(_achievement.Id) != null;
+    public bool HasIconReward => DeviceInfo.Current.Platform == DevicePlatform.iOS && AchievementsTools.GetIconTypeFor(_achievement.Id) != null;
     public IMvxAsyncCommand AchievementClickedCommand { get; }
 }

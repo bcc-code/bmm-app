@@ -10,6 +10,6 @@ public interface IAchievementPO : IBasePO
     bool IsActive { get; }
     string Title { get; }
     string Description { get; }
-    AchievementType AchievementType { get; }
+    string AchievementType { get; }
     IMvxAsyncCommand AchievementClickedCommand { get; }
 }

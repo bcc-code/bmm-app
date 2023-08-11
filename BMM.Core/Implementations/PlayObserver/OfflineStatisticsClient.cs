@@ -10,13 +10,10 @@ namespace BMM.Core.Implementations.PlayObserver
 {
     public class OfflineStatisticsClient : StatisticsClient
     {
-        private const int UploadThresholdInMinutes = 0;
-
         private readonly ITrackPlayedStorage _trackPlayedStorage;
         private readonly IConnection _connection;
         private readonly IExceptionHandler _exceptionHandler;
         private bool _requestIsRunning;
-        private DateTimeOffset? _lastPushed;
 
         public OfflineStatisticsClient(IRequestHandler handler,
             ApiBaseUri baseUri,
@@ -36,7 +33,7 @@ namespace BMM.Core.Implementations.PlayObserver
             if (_connection.GetStatus() == ConnectionStatus.Offline)
                 return;
 
-            if (!_lastPushed.HasValue || LastPushedExceedsThreshold() && !_requestIsRunning)
+            if (!_requestIsRunning)
             {
                 _requestIsRunning = true;
                 _exceptionHandler.FireAndForgetWithoutUserMessages(async () =>
@@ -46,7 +43,6 @@ namespace BMM.Core.Implementations.PlayObserver
                         var allEvents = _trackPlayedStorage.GetUnsentTrackPlayedEvents();
                         await base.PostTrackPlayedEvent(allEvents);
                         await _trackPlayedStorage.DeleteEvents(allEvents);
-                        _lastPushed = DateTimeOffset.Now;
                     }
                     finally
                     {
@@ -72,11 +68,6 @@ namespace BMM.Core.Implementations.PlayObserver
             {
                 await _trackPlayedStorage.Add(streakPointEvents);
             }
-        }
-
-        private bool LastPushedExceedsThreshold()
-        {
-            return _lastPushed.HasValue && _lastPushed.Value.AddMinutes(UploadThresholdInMinutes) < DateTimeOffset.Now;
         }
     }
 }

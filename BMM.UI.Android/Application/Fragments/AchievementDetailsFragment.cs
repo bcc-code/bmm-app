@@ -5,6 +5,7 @@ using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Fragments.Base;
 using Com.Github.Jinatonic.Confetti;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
@@ -13,15 +14,44 @@ namespace BMM.UI.Droid.Application.Fragments
     [Register("bmm.ui.droid.application.fragments.AchievementDetailsFragment")]
     public class AchievementDetailsFragment : BaseDialogFragment<AchievementDetailsViewModel>
     {
+        private bool _shouldShowConfetti;
+        private bool _confettiShown;
         protected override int FragmentId => Resource.Layout.fragment_achievements_details;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            view.Post(() =>
+            var set = this.CreateBindingSet<AchievementDetailsFragment, AchievementDetailsViewModel>();
+            
+            set.Bind(this)
+                .For(s => s.ShouldShowConfetti)
+                .To(vm => vm.ShouldShowConfetti);
+            
+            set.Apply();
+            return view;
+        }
+        
+        public bool ShouldShowConfetti
+        {
+            get => _shouldShowConfetti;
+            set
             {
-                var parent = view.FindViewById<ConstraintLayout>(Resource.Id.ParentView);
+                _shouldShowConfetti = value;
+
+                if (_shouldShowConfetti && !_confettiShown)
+                {
+                    _confettiShown = true;
+                    ShowConfetti();
+                }
+            }
+        }
+
+        private void ShowConfetti()
+        {
+            View!.Post(() =>
+            {
+                var parent = View!.FindViewById<ConstraintLayout>(Resource.Id.ParentView);
                 CommonConfetti.RainingConfetti(parent, 
                     new int[]
                     {
@@ -30,8 +60,6 @@ namespace BMM.UI.Droid.Application.Fragments
                         Context.GetColorFromResource(Resource.Color.bible_study_confetti_three_color),
                     })!.Infinite().SetVelocityY(350)!.SetEmissionDuration(5000);
             });
-            
-            return view;
         }
     }
 }

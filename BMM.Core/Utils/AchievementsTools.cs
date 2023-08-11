@@ -5,12 +5,12 @@ namespace BMM.Core.Utils;
 
 public static class AchievementsTools
 {
-    public static AppIconType? GetIconTypeFor(AchievementType achievementType)
+    public static AppIconType? GetIconTypeFor(string achievementType)
     {
         return achievementType switch
         {
-            AchievementType.FirstTest => AppIconType.DarkGreen,
-            AchievementType.ThemeOne => AppIconType.Violet,
+            "FirstTest" => AppIconType.DarkGreen,
+            "ThemeOne" => AppIconType.Violet,
             _ => null
         };
     }

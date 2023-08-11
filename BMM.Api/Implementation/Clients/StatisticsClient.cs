@@ -123,7 +123,7 @@ namespace BMM.Api.Implementation.Clients
             return Get<ProjectProgress>(uri);
         }
 
-        public Task AchievementAcknowledge(AchievementType achievementType)
+        public Task AchievementAcknowledge(string achievementType)
         {
             var uri = new UriTemplate(ApiUris.AchievementAcknowledge);
             uri.SetParameter("name", achievementType);

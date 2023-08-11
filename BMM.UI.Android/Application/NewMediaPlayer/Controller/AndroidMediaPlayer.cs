@@ -11,6 +11,7 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.UI.Droid.Application.Constants.Player;
 using BMM.UI.Droid.Application.Extensions;
+using BMM.UI.Droid.Application.NewMediaPlayer.Listeners;
 using BMM.UI.Droid.Application.NewMediaPlayer.Service;
 using Com.Google.Android.Exoplayer2;
 using Java.Lang;

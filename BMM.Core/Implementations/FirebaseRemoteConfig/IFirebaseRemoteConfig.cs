@@ -43,5 +43,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         string CultureInfoLanguages { get; }
         
         bool ShouldLogInternetProblemsException { get; }
+        
+        bool ShouldCheckAchievementsAtStart { get; }
     }
 }

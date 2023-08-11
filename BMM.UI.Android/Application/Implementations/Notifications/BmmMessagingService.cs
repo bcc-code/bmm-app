@@ -2,6 +2,7 @@
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Notifications;
+using BMM.Core.Implementations.Notifications.Data;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.Implementations.Notifications;
 using Firebase.Messaging;
@@ -20,15 +21,23 @@ namespace Bmm.UI.Droid.Application.Implementations.Notifications
         {
             SetupHelper.EnsureInitialized();
 
+            var handler = Mvx.IoCProvider.Resolve<INotificationHandler>();
+
             if (message.GetNotification() != null)
             {
+                if (message.Data.TryGetValue(LocalNotification.TypeKey, out var notificationType)
+                    && notificationType == AchievementNotification.Type)
+                {
+                    handler.OnNotificationReceivedInForeground(new RemoteMessageNotification(message));
+                    return;
+                }
+                
                 var analytics = Mvx.IoCProvider.Resolve<IAnalytics>();
                 analytics.LogEvent("Received and ignored notification while using the app");
             }
             else
             {
                 // it's a data message that's intended to be processed by the app
-                var handler = Mvx.IoCProvider.Resolve<INotificationHandler>();
                 handler.OnNotificationReceived(new RemoteMessageNotification(message));
             }
         }

@@ -16,7 +16,7 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.GuardedActions.BibleStudy;
 
-public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, IShowAchievementUnlockedScreenAction
+public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheckAndShowAchievementUnlockedScreenAction
 {
     private readonly IStatisticsClient _statisticsClient;
     private readonly IMvxNavigationService _mvxNavigationService;

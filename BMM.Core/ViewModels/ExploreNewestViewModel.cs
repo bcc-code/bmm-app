@@ -7,6 +7,8 @@ using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.BibleStudy;
+using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.GuardedActions.Navigation.Interfaces;
@@ -49,6 +51,7 @@ namespace BMM.Core.ViewModels
         private readonly IFirebaseRemoteConfig _config;
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
         private readonly IAddToQueueAdditionalMusic _addToQueueAdditionalMusic;
+        private readonly ICheckAndShowAchievementUnlockedScreenAction _checkAndShowAchievementUnlockedScreenAction;
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
 
@@ -63,7 +66,8 @@ namespace BMM.Core.ViewModels
             IUserStorage user,
             IFirebaseRemoteConfig config,
             IListeningStreakPOFactory listeningStreakPOFactory,
-            IAddToQueueAdditionalMusic addToQueueAdditionalMusic)
+            IAddToQueueAdditionalMusic addToQueueAdditionalMusic,
+            ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -76,6 +80,7 @@ namespace BMM.Core.ViewModels
             _config = config;
             _listeningStreakPOFactory = listeningStreakPOFactory;
             _addToQueueAdditionalMusic = addToQueueAdditionalMusic;
+            _checkAndShowAchievementUnlockedScreenAction = checkAndShowAchievementUnlockedScreenAction;
             _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);
@@ -125,6 +130,14 @@ namespace BMM.Core.ViewModels
             translatedDocs.Insert(0, new SimpleMarginPO());
             foreach (var discoverSectionHeader in translatedDocs.OfType<DiscoverSectionHeaderPO>())
                 discoverSectionHeader.Origin = PlaybackOriginString;
+        }
+
+        protected override async Task Initialization()
+        {
+            await base.Initialization();
+            
+            if (_config.ShouldCheckAchievementsAtStart)
+                await _checkAndShowAchievementUnlockedScreenAction.ExecuteGuarded();
         }
 
         protected override async Task DocumentAction(IDocumentPO item, IList<Track> list)

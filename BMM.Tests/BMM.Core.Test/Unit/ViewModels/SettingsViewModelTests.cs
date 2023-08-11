@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -58,6 +59,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IFeaturePreviewPermission> _featurePreviewPermission;
         private Mock<INotificationPermissionService> _notificationPermissionService;
         private Mock<IChangeNotificationSettingStateAction> _changeNotificationSettingStateAction;
+        private Mock<IResetAchievementAction> _resetAchievementAction;
 
         public override void SetUp()
         {
@@ -141,7 +143,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _remoteConfig.Object,
                 _featureSupportInfoService.Object,
                 _notificationPermissionService.Object,
-                _changeNotificationSettingStateAction.Object);
+                _changeNotificationSettingStateAction.Object,
+                _resetAchievementAction.Object);
 
             settingsViewModel.TextSource = TextResource.Object;
             return settingsViewModel;

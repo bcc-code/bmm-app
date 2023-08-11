@@ -28,7 +28,7 @@
                     android:layout_width="@dimen/highlighted_text_track_item_icon_size"
                     android:layout_height="@dimen/highlighted_text_track_item_icon_size"
                     android:layout_gravity="center"
-                    android:src="@drawable/icon_remove"/>
+                    android:src="@drawable/icon_remove" />
     
         </androidx.cardview.widget.CardView>
     </FrameLayout>
@@ -46,25 +46,28 @@
         
         <ffimageloading.cross.MvxCachedImageView
                 android:layout_width="200dp"
-                android:layout_height="220dp"
-                local:MvxBind="ImageViewPath ImagePath" />
+                android:layout_height="200dp"
+                local:MvxBind="ImageViewPath AchievementPO.ImagePath" />
 
         <TextView
                 android:id="@+id/StatusLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_xxmedium"
+                android:layout_marginTop="@dimen/margin_xlarge"
                 android:layout_marginHorizontal="@dimen/margin_medium"
-                android:text="Unlocked"
+                android:gravity="center"
+                local:MvxBind="Visibility Visibility(AchievementPO.IsActive)"
+                local:MvxLang="Text AchievementDetailsViewModel_Unlocked"
                 style="@style/Subtitle2_Label2" />
 
         <TextView
                 android:id="@+id/NameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_tiny"
+                android:layout_marginTop="@dimen/margin_mini"
                 android:layout_marginHorizontal="@dimen/margin_medium"
-                android:text="Full Streak"
+                android:gravity="center"
+                local:MvxBind="Text AchievementPO.Title"
                 style="@style/Heading1" />
 
         <TextView
@@ -73,7 +76,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_tiny"
                 android:layout_marginHorizontal="@dimen/margin_medium"
-                android:text="A custom app icon for you home screen"
+                android:gravity="center"
+                local:MvxBind="Text AchievementPO.Description"
                 style="@style/Subtitle1_Label2" />
         
     </LinearLayout>
@@ -84,8 +88,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginHorizontal="@dimen/margin_medium"
-            android:text="Activate Premium Icon"
-            style="@style/IconButton_Primary_Large"
+            local:MvxBind="
+                Text ButtonTitle;
+                Click ButtonClickedCommand"
+            style="@style/Button_Primary_Large"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintBottom_toBottomOf="parent" />
