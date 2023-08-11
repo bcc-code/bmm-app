@@ -33,6 +33,8 @@ namespace BMM.Api.Implementation.Models
         public bool? Thursday { get; set; }
 
         public bool? Friday { get; set; }
+        
+        public string PointColor { get; set; }
 
         public DateTime LastChanged { get; set; }
         public DateTime EligibleUntil { get; set; }

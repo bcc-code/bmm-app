@@ -8,6 +8,5 @@ public class ProjectProgress
     public int Days { get; set; }
     public int CurrentBoost { get; set; }
     public int Points { get; set; }
-    public string RulesHtmlUrl { get; set; }
     public IList<Achievement> Achievements { get; set; }
 }

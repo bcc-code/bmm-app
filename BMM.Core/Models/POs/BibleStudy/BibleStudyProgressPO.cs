@@ -13,6 +13,7 @@ namespace BMM.Core.Models.POs.BibleStudy;
 
 public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
 {
+    private readonly ProjectProgress _projectProgress;
     private ListeningStreakPO _listeningStreak;
 
     public BibleStudyProgressPO(
@@ -38,7 +39,7 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
     private string GetColor(bool? active)
     {
         if (active == true)
-            return "#AB90FF";
+            return ListeningStreakPO.ListeningStreak.PointColor;
 
         return null;
     }
