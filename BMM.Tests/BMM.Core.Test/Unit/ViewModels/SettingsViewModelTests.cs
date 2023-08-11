@@ -110,6 +110,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             _featurePreviewPermission = new Mock<IFeaturePreviewPermission>();
             _notificationPermissionService = new Mock<INotificationPermissionService>();
             _changeNotificationSettingStateAction= new Mock<IChangeNotificationSettingStateAction>();
+            _resetAchievementAction = new Mock<IResetAchievementAction>();
 
             _textSource.Setup(x => x.GetText(It.IsAny<string>())).Returns(String.Empty);
 
@@ -170,7 +171,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Assert
-            Assert.AreEqual(16, settingsViewModel.ListItems.Count);
+            Assert.AreEqual(17, settingsViewModel.ListItems.Count);
             _networkSettings.Verify(x => x.GetMobileNetworkDownloadAllowed(), Times.AtLeastOnce);
             _networkSettings.Verify(x => x.GetPushNotificationsAllowed(), Times.AtLeastOnce);
         }
