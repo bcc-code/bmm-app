@@ -241,8 +241,9 @@ namespace BMM.Core.Implementations.PlayObserver
                     return;
                 }
 
-                if (CurrentTrack.Tags?.Contains(PodcastsConstants.FromKaareTagName) == true)
-                    _messenger.Publish(new FraKaareTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
+                if (CurrentTrack.Tags?.Contains(PodcastsConstants.FromKaareTagName) == true ||
+                    CurrentTrack.Tags?.Contains(PodcastsConstants.BibleStudyTagName) == true)
+                    _messenger.Publish(new StreakTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
 
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);
 

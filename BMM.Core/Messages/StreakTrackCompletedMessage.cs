@@ -4,9 +4,9 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.Messages
 {
-    public class FraKaareTrackCompletedMessage : MvxMessage
+    public class StreakTrackCompletedMessage : MvxMessage
     {
-        public FraKaareTrackCompletedMessage(object sender) : base(sender)
+        public StreakTrackCompletedMessage(object sender) : base(sender)
         { }
 
         public ITrackModel Track { get; set; }

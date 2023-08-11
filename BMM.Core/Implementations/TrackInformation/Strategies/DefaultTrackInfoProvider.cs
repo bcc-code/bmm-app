@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;
 using BMM.Core.Implementations.Localization.Interfaces;
@@ -45,7 +46,7 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
                 translatedMeta = artist + (string.IsNullOrWhiteSpace(track.Album) ? "" : " · " + track.Album);
             }
 
-            if (track.Tags.Contains("fra-kaare"))
+            if (track.Tags.Contains(PodcastsConstants.FromKaareTagName))
             {
                 /* Fra Kaare podcast album contains year e.g. "Fra Kaare 2018". We want to remove that year to meet design requirements.
                  * Please see podcast track design at https://app.zeplin.io/project/57bc6a9190d305660fd8e1ed/screen/5dd0468403f0d844cc632794 */

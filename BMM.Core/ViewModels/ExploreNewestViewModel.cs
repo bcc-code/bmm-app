@@ -177,7 +177,8 @@ namespace BMM.Core.ViewModels
             var unwantedDocs = documents
                 .TakeWhile(d => d.DocumentType != DocumentType.DiscoverSectionHeader)
                 .Where(d => d.DocumentType == DocumentType.Podcast)
-                .Where(d => d.Id == PodcastsConstants.FraKårePodcastId || d.Id == AslaksenConstants.AslaksenPodcastId);
+                .Where(d => d.Id == PodcastsConstants.FraKårePodcastId || d.Id == AslaksenConstants.AslaksenPodcastId ||
+                            d.Id == PodcastsConstants.BibleStudyPodcastId);
             return documents.Except(unwantedDocs).ToList();
         }
 

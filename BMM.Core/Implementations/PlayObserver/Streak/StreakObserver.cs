@@ -57,7 +57,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             _analytics = analytics;
             _playStatistics = playStatistics;
             _messenger = messenger;
-            _trackCompletedToken = messenger.Subscribe<FraKaareTrackCompletedMessage>(TrackCompleted);
+            _trackCompletedToken = messenger.Subscribe<StreakTrackCompletedMessage>(TrackCompleted);
             _trackChangedToken = messenger.Subscribe<CurrentTrackChangedMessage>(TrackChanged);
         }
 
@@ -89,7 +89,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             _minListeningTimer = null;
         }
 
-        private void TrackCompleted(FraKaareTrackCompletedMessage msg)
+        private void TrackCompleted(StreakTrackCompletedMessage msg)
         {
             _exceptionHandler.FireAndForgetWithoutUserMessages(async () =>
             {
