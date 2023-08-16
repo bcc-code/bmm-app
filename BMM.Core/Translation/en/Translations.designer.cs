@@ -92,7 +92,6 @@ namespace BMM.Core.Translation
 		public const string ExploreNewestViewModel_Messages = nameof(ExploreNewestViewModel_Messages);
 		public const string ExploreNewestViewModel_Music = nameof(ExploreNewestViewModel_Music);
 		public const string ExploreNewestViewModel_Recommended = nameof(ExploreNewestViewModel_Recommended);
-		public const string ExploreNewestViewModel_More = nameof(ExploreNewestViewModel_More);
 		public const string ExploreContributorsViewModel_Title = nameof(ExploreContributorsViewModel_Title);
 		public const string ExploreContributorsViewModel_SearchHint = nameof(ExploreContributorsViewModel_SearchHint);
 		public const string HelpFeedbackViewModel_Title = nameof(HelpFeedbackViewModel_Title);
@@ -417,24 +416,5 @@ namespace BMM.Core.Translation
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupTitleText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupTitleText);
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupHeaderText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupHeaderText);
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupSubtitleText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupSubtitleText);
-		public const string BibleStudyViewModel_StreakTerms = nameof(BibleStudyViewModel_StreakTerms);
-		public const string BibleStudyViewModel_ProgressTitle = nameof(BibleStudyViewModel_ProgressTitle);
-		public const string BibleStudyViewModel_StreakThisWeek = nameof(BibleStudyViewModel_StreakThisWeek);
-		public const string BibleStudyViewModel_Days = nameof(BibleStudyViewModel_Days);
-		public const string BibleStudyViewModel_Boost = nameof(BibleStudyViewModel_Boost);
-		public const string BibleStudyViewModel_Points = nameof(BibleStudyViewModel_Points);
-		public const string BibleStudyViewModel_Achievements = nameof(BibleStudyViewModel_Achievements);
-		public const string AppIconViewModel_Title = nameof(AppIconViewModel_Title);
-		public const string AppIconViewModel_Description = nameof(AppIconViewModel_Description);
-		public const string AppIconViewModel_Standard = nameof(AppIconViewModel_Standard);
-		public const string AppIconViewModel_DarkGreen = nameof(AppIconViewModel_DarkGreen);
-		public const string AppIconViewModel_Orange = nameof(AppIconViewModel_Orange);
-		public const string AppIconViewModel_Golden = nameof(AppIconViewModel_Golden);
-		public const string AchievementDetailsViewModel_Title = nameof(AchievementDetailsViewModel_Title);
-		public const string AchievementDetailsViewModel_Unlocked = nameof(AchievementDetailsViewModel_Unlocked);
-		public const string AchievementDetailsViewModel_ActivatePremiumIcon = nameof(AchievementDetailsViewModel_ActivatePremiumIcon);
-		public const string AchievementDetailsViewModel_GotIt = nameof(AchievementDetailsViewModel_GotIt);
-		public const string AchievementDetailsViewModel_ActivateTheme = nameof(AchievementDetailsViewModel_ActivateTheme);
-		public const string AchievementDetailsViewModel_Close = nameof(AchievementDetailsViewModel_Close);
 	}
 }
