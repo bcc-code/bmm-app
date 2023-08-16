@@ -119,7 +119,12 @@ namespace BMM.Api.Implementation.Clients
 
         public Task<ProjectProgress> GetProjectProgress()
         {
+            var os = OperatingSystem.IsIOS()
+                ? "ios"
+                : "android";
+            
             var uri = new UriTemplate(ApiUris.ProjectProgress);
+            uri.SetParameter("os", os);
             return Get<ProjectProgress>(uri);
         }
 

@@ -74,7 +74,7 @@
             "statistics/user/{username}/{type}/viewed/recently{?size,from}";
 
         public static string ProjectProgress =
-            "statistics/project/progress";
+            "statistics/project/progress{?os}";
         
         public static string YearInReview =
             "statistics/year-in-review/overview";
