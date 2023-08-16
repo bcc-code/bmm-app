@@ -114,8 +114,7 @@
     "CountdownHours": "alkaa {0} tunnin kuluttua",
     "Messages": "Uusimmat puheet",
     "Music": "Uusimmat kappaleet",
-    "Recommended": "Suositeltu",
-    "More": "Lisää"
+    "Recommended": "Suositeltu"
   },
   "ExploreContributorsViewModel": {
     "Title": "Tekijät",
@@ -532,30 +531,5 @@
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "From Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
-  },
-  "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
-    "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
-  },
-  "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
-  },
-  "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate Premium Icon",
-    "GotIt": "Selvä",
-    "ActivateTheme": "Activate Theme",
-    "Close": "Sulje\n"
   }
 }
