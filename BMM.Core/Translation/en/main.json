@@ -534,9 +534,7 @@
     "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
   },
   "BibleStudyViewModel": {
-    "PlaySpeech": "Play the full speech",
-    "ListenAudiobook": "Listen to the audiobook",
-    "StreakTerms": "Terms for streaks",
+    "StreakTerms": "Rules for streaks",
     "ProgressTitle": "Your progress",
     "StreakThisWeek": "Streak this week",
     "Days": "Days",
