@@ -114,8 +114,7 @@
     "CountdownHours": "Om {0}t",
     "Messages": "Seneste taler",
     "Music": "Nyeste musik",
-    "Recommended": "Anbefalede",
-    "More": "Mere"
+    "Recommended": "Anbefalede"
   },
   "ExploreContributorsViewModel": {
     "Title": "Bidragsydere",
@@ -532,30 +531,5 @@
     "FromSongTreasuresPopupTitleText": "Tekster hentes fra Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Fra Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Download appen Song Treasures for at se hele sangen."
-  },
-  "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
-    "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
-  },
-  "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
-  },
-  "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate Premium Icon",
-    "GotIt": "Forstået",
-    "ActivateTheme": "Activate Theme",
-    "Close": "Luk"
   }
 }
