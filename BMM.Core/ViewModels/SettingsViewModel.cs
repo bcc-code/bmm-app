@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.DebugInfo.Interfaces;
 using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Helpers;
@@ -46,6 +47,7 @@ namespace BMM.Core.ViewModels
         private readonly INotificationSubscriptionTokenProvider _tokenProvider;
         private readonly IClipboardService _clipboard;
         private readonly IDeveloperPermission _developerPermission;
+        private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly IContacter _contacter;
         private readonly IAnalytics _analytics;
         private readonly IStorageManager _storageManager;
@@ -61,6 +63,7 @@ namespace BMM.Core.ViewModels
         private readonly IFeatureSupportInfoService _featureSupportInfoService;
         private readonly INotificationPermissionService _notificationPermissionService;
         private readonly IChangeNotificationSettingStateAction _changeNotificationSettingStateAction;
+        private readonly IResetAchievementAction _resetAchievementAction;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -100,7 +103,9 @@ namespace BMM.Core.ViewModels
             IFirebaseRemoteConfig remoteConfig,
             IFeatureSupportInfoService featureSupportInfoService,
             INotificationPermissionService notificationPermissionService,
-            IChangeNotificationSettingStateAction changeNotificationSettingStateAction)
+            IChangeNotificationSettingStateAction changeNotificationSettingStateAction,
+            IResetAchievementAction resetAchievementAction,
+            IFeaturePreviewPermission featurePreviewPermission)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -123,6 +128,8 @@ namespace BMM.Core.ViewModels
             _featureSupportInfoService = featureSupportInfoService;
             _notificationPermissionService = notificationPermissionService;
             _changeNotificationSettingStateAction = changeNotificationSettingStateAction;
+            _resetAchievementAction = resetAchievementAction;
+            _featurePreviewPermission = featurePreviewPermission;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -212,7 +219,7 @@ namespace BMM.Core.ViewModels
         {
             var items = new List<IListItem>
             {
-                new SectionHeader {ShowDivider = false, Title = TextSource[Translations.SettingsViewModel_HeadlineSettings]},
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineSettings], false),
                 new CheckboxListItemPO
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionAutoplayHeader],
@@ -294,7 +301,7 @@ namespace BMM.Core.ViewModels
         {
             var generalSectionItems = new List<IListItem>
             {
-                new SectionHeader {Title = TextSource[Translations.SettingsViewModel_HeadlineGeneral]},
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineGeneral]),
                 new SelectableListItem
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionLanguageAppHeader],
@@ -308,7 +315,17 @@ namespace BMM.Core.ViewModels
                     OnSelected = NavigationService.NavigateCommand<LanguageContentViewModel>()
                 }
             };
-            
+
+            if (_featurePreviewPermission.IsFeaturePreviewEnabled())
+            {
+                generalSectionItems.Add(new SelectableListItem
+                {
+                    Title = TextSource[Translations.AppIconViewModel_Title],
+                    Text = TextSource[Translations.AppIconViewModel_Description],
+                    OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
+                });
+            }
+
             generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsDarkMode, new SelectableListItem
             {
                 Title = TextSource[Translations.SettingsViewModel_ThemeHeader],
@@ -330,7 +347,7 @@ namespace BMM.Core.ViewModels
         {
             var items = new List<IListItem>
             {
-                new SectionHeader {Title = TextSource[Translations.SettingsViewModel_HeadlineAbout]},
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineAbout]),
                 new SelectableListItem
                 {
                     Title = TextSource[Translations.SettingsViewModel_UserVoiceHeader],
@@ -401,6 +418,13 @@ namespace BMM.Core.ViewModels
                         OnSelected = new MvxAsyncCommand(ShowCachedTracks)
                     });
                 }
+                
+                items.Add(new SelectableListItem
+                {
+                    Title = "Reset achievements",
+                    Text = "Reset all achievements for Bible Study project",
+                    OnSelected = _resetAchievementAction.Command
+                });
             }
 
             return items;

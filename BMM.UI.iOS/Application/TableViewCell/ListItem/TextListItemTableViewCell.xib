@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="87" id="rBz-cx-NF0" customClass="TextListItemTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="242" id="rBz-cx-NF0" customClass="TextListItemTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rBz-cx-NF0" id="Tbm-F2-44d">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="63.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z3R-ii-7uy">
-                        <rect key="frame" x="16" y="16.5" width="284" height="39.5"/>
+                        <rect key="frame" x="16" y="12" width="284" height="39.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0x-dX-XN5" userLabel="Title Label">
                                 <rect key="frame" x="0.0" y="0.0" width="284" height="19.5"/>
@@ -40,7 +39,7 @@
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hDX-eF-7oQ" secondAttribute="bottom" id="7us-37-MZm"/>
+                            <constraint firstAttribute="bottom" secondItem="hDX-eF-7oQ" secondAttribute="bottom" id="ALB-xN-PbT"/>
                             <constraint firstItem="N0x-dX-XN5" firstAttribute="top" secondItem="z3R-ii-7uy" secondAttribute="top" id="BvX-UE-6hG"/>
                             <constraint firstAttribute="trailing" secondItem="hDX-eF-7oQ" secondAttribute="trailing" id="Rue-Yy-5Tv"/>
                             <constraint firstAttribute="trailing" secondItem="N0x-dX-XN5" secondAttribute="trailing" id="ZXe-vR-QnS"/>
@@ -51,9 +50,10 @@
                     </view>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="z3R-ii-7uy" firstAttribute="top" secondItem="Tbm-F2-44d" secondAttribute="top" constant="12" id="1M8-f7-Bnq"/>
                     <constraint firstItem="z3R-ii-7uy" firstAttribute="leading" secondItem="Tbm-F2-44d" secondAttribute="leading" constant="16" id="5Cy-34-8LC"/>
                     <constraint firstAttribute="trailingMargin" secondItem="z3R-ii-7uy" secondAttribute="trailing" constant="4" id="ABz-FD-1nL"/>
-                    <constraint firstAttribute="centerY" secondItem="z3R-ii-7uy" secondAttribute="centerY" id="BjA-vB-cpH"/>
+                    <constraint firstAttribute="bottom" secondItem="z3R-ii-7uy" secondAttribute="bottom" constant="12" id="dOe-gc-K4J"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="BackgroundOneColor"/>
@@ -61,7 +61,7 @@
                 <outlet property="TextLabel" destination="hDX-eF-7oQ" id="HUC-Bm-mjr"/>
                 <outlet property="TitleLabel" destination="N0x-dX-XN5" id="snZ-Rl-j4c"/>
             </connections>
-            <point key="canvasLocation" x="149" y="95"/>
+            <point key="canvasLocation" x="148.80000000000001" y="164.16791604197903"/>
         </tableViewCell>
     </objects>
     <resources>

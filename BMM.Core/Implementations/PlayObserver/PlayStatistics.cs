@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
+﻿using System.Globalization;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Clients.Contracts;
@@ -20,9 +14,6 @@ using BMM.Core.Implementations.Security;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Constants;
-using BMM.Core.ViewModels;
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Devices;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.Implementations.PlayObserver
@@ -226,6 +217,11 @@ namespace BMM.Core.Implementations.PlayObserver
             });
         }
 
+        public void OnCurrentTrackWillChange(double currentPosition, decimal playbackRate)
+        {
+            AddPortionListened(currentPosition, playbackRate);
+        }
+
         private async Task LogPlayedTrack()
         {
             await _semaphore.WaitAsync();
@@ -245,8 +241,9 @@ namespace BMM.Core.Implementations.PlayObserver
                     return;
                 }
 
-                if (CurrentTrack.Tags?.Contains(PodcastsConstants.FromKaareTagName) == true)
-                    _messenger.Publish(new FraKaareTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
+                if (CurrentTrack.Tags?.Contains(PodcastsConstants.FromKaareTagName) == true ||
+                    CurrentTrack.Tags?.Contains(PodcastsConstants.BibleStudyTagName) == true)
+                    _messenger.Publish(new StreakTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
 
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);
 

@@ -24,7 +24,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
             {
                 ProfileListItem _ => SettingsViewTypes.ProfileListItem,
                 CheckboxListItemPO _ => SettingsViewTypes.CheckboxListItem,
-                SectionHeader _ => SettingsViewTypes.HeaderListItem,
+                SectionHeaderPO _ => SettingsViewTypes.HeaderListItem,
                 SelectableListItem _ => SettingsViewTypes.ListContentItem,
                 _ => -1
             };

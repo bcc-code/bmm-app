@@ -16,6 +16,7 @@ namespace BMM.UI.iOS.Constants
         public static UIColor TintColor => UIColor.FromName(nameof(TintColor));
         public static UIColor HighlightColor => UIColor.FromName(nameof(HighlightColor));
         public static UIColor SeparatorColor => UIColor.FromName(nameof(SeparatorColor));
+        public static UIColor GlobalBlackSeparatorColor => UIColor.FromName(nameof(GlobalBlackSeparatorColor));
         public static UIColor SeparatorLightColor => UIColor.FromName(nameof(SeparatorLightColor));
         public static UIColor OnColorOneColor => UIColor.FromName(nameof(OnColorOneColor));
         public static UIColor OnColorTwoColor => UIColor.FromName(nameof(OnColorTwoColor));
@@ -34,6 +35,9 @@ namespace BMM.UI.iOS.Constants
         public static UIColor GlobalWhiteThreeColor => UIColor.FromName(nameof(GlobalWhiteThreeColor));
         public static UIColor GlobalWhiteFourColor => UIColor.FromName(nameof(GlobalWhiteFourColor));
         public static UIColor GlobalWhiteFiveColor => UIColor.FromName(nameof(GlobalWhiteFiveColor));
+        public static UIColor BibleStudyConfettiOneColor => UIColor.FromName(nameof(BibleStudyConfettiOneColor));
+        public static UIColor BibleStudyConfettiTwoColor => UIColor.FromName(nameof(BibleStudyConfettiTwoColor));
+        public static UIColor BibleStudyConfettiThreeColor => UIColor.FromName(nameof(BibleStudyConfettiThreeColor));
 
         public static readonly UIColor RefreshControlTintColor = UIColor.FromRGB(194, 239, 102);
     }

@@ -5,6 +5,7 @@
               android:layout_width="match_parent"
               android:orientation="vertical"
               android:layout_centerVertical="true">
+    
     <View
         android:id="@+id/divider"
         android:layout_width="match_parent"
@@ -28,4 +29,5 @@
         android:paddingBottom="8dp"
         android:paddingLeft="@dimen/margin_medium"
         android:paddingRight="@dimen/margin_medium" />
+    
 </LinearLayout>

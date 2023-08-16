@@ -1,10 +1,11 @@
 ﻿using BMM.Core.Models;
 using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Other.Interfaces;
 using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 
 namespace BMM.UI.Droid.Application.TemplateSelectors
 {
-    public class TrackInfoTemplateSelector : MvxTemplateSelector<IListItem>
+    public class TrackInfoTemplateSelector : MvxTemplateSelector<object>
     {
         public override int GetItemLayoutId(int fromViewType)
         {
@@ -17,13 +18,13 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
             };
         }
 
-        protected override int SelectItemViewType(IListItem forItemObject)
+        protected override int SelectItemViewType(object forItemObject)
         {
             return forItemObject switch
             {
-                SectionHeader _ => TrackInfoViewTypes.SectionHeader,
-                ExternalRelationListItem _ => TrackInfoViewTypes.ExternalRelation,
-                SelectableListItem _ => TrackInfoViewTypes.SelectableItem,
+                ISectionHeaderPO _ => TrackInfoViewTypes.SectionHeader,
+                IExternalRelationListItemPO _ => TrackInfoViewTypes.ExternalRelation,
+                ISelectableListContentItemPO _ => TrackInfoViewTypes.SelectableItem,
                 _ => -1
             };
         }

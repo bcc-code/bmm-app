@@ -24,6 +24,7 @@ using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Helpers;
 using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
+using BMM.UI.Droid.Application.NewMediaPlayer.Listeners;
 using BMM.UI.Droid.Application.NewMediaPlayer.Notification;
 using BMM.UI.Droid.Application.NewMediaPlayer.Playback;
 using BMM.UI.Droid.Utils;
@@ -74,6 +75,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                         !.Build();
 
                     playerInstance!.SetHandleAudioBecomingNoisy(true);
+                    playerInstance.AddListener(new PlayerListener(playerInstance));
 
                     // ToDo: we actually allow Music and Speeches within one playlist. Now it's always music.
                     var audioAttributes = new AudioAttributes.Builder()

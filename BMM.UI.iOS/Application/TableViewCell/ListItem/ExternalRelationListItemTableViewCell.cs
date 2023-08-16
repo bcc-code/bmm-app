@@ -1,5 +1,6 @@
 ﻿using System;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Other.Interfaces;
 using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
@@ -19,7 +20,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<ExternalRelationListItemTableViewCell, ExternalRelationListItem>();
+                var set = this.CreateBindingSet<ExternalRelationListItemTableViewCell, IExternalRelationListItemPO>();
                 set.Bind(TitleLabel).To(listItem => listItem.Title);
                 set.Apply();
             });

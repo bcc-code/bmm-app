@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
-using BMM.Api.Framework;
+﻿using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using Tavis.UriTemplates;
 
 namespace BMM.Api.Implementation.Clients
@@ -117,6 +115,32 @@ namespace BMM.Api.Implementation.Clients
         {
             var uri = new UriTemplate(ApiUris.YearInReview);
             return Get<IList<YearInReviewItem>>(uri);
+        }
+
+        public Task<ProjectProgress> GetProjectProgress()
+        {
+            var os = OperatingSystem.IsIOS()
+                ? "ios"
+                : "android";
+            
+            var uri = new UriTemplate(ApiUris.ProjectProgress);
+            uri.SetParameter("os", os);
+            return Get<ProjectProgress>(uri);
+        }
+
+        public Task AchievementAcknowledge(string achievementType)
+        {
+            var uri = new UriTemplate(ApiUris.AchievementAcknowledge);
+            uri.SetParameter("name", achievementType);
+            var request = BuildRequest(uri, HttpMethod.Put);
+            return RequestIsSuccessful(request);
+        }
+
+        public Task DeleteAchievements()
+        {
+            var uri = new UriTemplate(ApiUris.StatisticsAchievement);
+            var request = BuildRequest(uri, HttpMethod.Delete);
+            return RequestIsSuccessful(request);
         }
     }
 }

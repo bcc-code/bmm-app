@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ParentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_one_color">
+
+    <FrameLayout
+        android:id="@+id/CloseButtonIconArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="Click CloseCommand">
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/highlighted_text_close_container_icon_size"
+            android:layout_height="@dimen/highlighted_text_close_container_icon_size"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginVertical="@dimen/margin_medium"
+            android:elevation="2dp"
+            local:cardBackgroundColor="@color/background_three_color"
+            local:cardCornerRadius="28dp">
+    
+            <ImageView
+                    android:id="@+id/CloseIcon"
+                    android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_remove" />
+    
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+    
+    <LinearLayout
+            android:id="@+id/CenterView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent">
+        
+        <ffimageloading.cross.MvxCachedImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                local:MvxBind="ImageViewPath AchievementPO.ImagePath" />
+
+        <TextView
+                android:id="@+id/StatusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xlarge"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:gravity="center"
+                local:MvxBind="Visibility Visibility(AchievementPO.IsActive)"
+                local:MvxLang="Text AchievementDetailsViewModel_Unlocked"
+                style="@style/Subtitle2_Label2" />
+
+        <TextView
+                android:id="@+id/NameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_mini"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:gravity="center"
+                local:MvxBind="Text AchievementPO.Title"
+                style="@style/Heading1" />
+
+        <TextView
+                android:id="@+id/DescriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:gravity="center"
+                local:MvxBind="Text AchievementPO.Description"
+                style="@style/Subtitle1_Label2" />
+        
+    </LinearLayout>
+
+    <Button
+            android:id="@+id/ActivateButton"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="
+                Text ButtonTitle;
+                Click ButtonClickedCommand"
+            style="@style/Button_Primary_Large"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

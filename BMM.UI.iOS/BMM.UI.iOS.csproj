@@ -61,6 +61,7 @@
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <UseInterpreter>true</UseInterpreter>
     <MtouchExtraArgs />
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>
@@ -117,7 +118,6 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-83_5@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Bergpreken.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\BergprekenLabels.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\CastIcon.imageset\Contents.json" />
@@ -176,54 +176,6 @@
     <ImageAsset Include="Resources\Images.xcassets\IconShare.imageset\icon_share.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconReload.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconReload.imageset\icon_reload.pdf" />
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-60@3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-76@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-401.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-402.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@2x1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small-40@3x1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@2x1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Icon-Small@3x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\iTunesArtwork@2x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Resources\Colors.xcassets\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\TintColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\LabelOneColor.colorset\Contents.json" />
@@ -254,6 +206,8 @@
     <ImageAsset Include="Resources\Colors.xcassets\GlobalWhiteThreeColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\GlobalWhiteFourColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Colors.xcassets\GlobalWhiteFiveColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\BibleStudyColor.colorset\Contents.json" />
+    <ImageAsset Include="Resources\Colors.xcassets\GlobalBlackSeparatorColor.colorset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\9104280_break_time_sleep_rest_sleep-hour_icon.pdf" />
     <ImageAsset Include="Resources\Images.xcassets\IconSleepTimer.imageset\Contents.json" />
     <ImageAsset Include="Resources\Images.xcassets\MoreIcon.imageset\Contents.json" />
@@ -625,6 +579,7 @@
     <BundleResource Include="Resources\radio_background@3x.png" />
     <None Remove="GoogleService-Info.plist" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <None Remove="Resources\Images.xcassets\AppIconStandard.imageset\app_icon_standard.png" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Linker.xml" />
@@ -641,6 +596,7 @@
     <PackageReference Include="ByteSize" Version="2.1.1" />
     <PackageReference Include="Lottie.iOS" Version="1.0.0" />
     <PackageReference Include="MvvmCross" Version="9.0.9" />
+    <PackageReference Include="MvvmCross.Plugin.Color" Version="9.0.9" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
     <PackageReference Include="Serilog" Version="2.12.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />

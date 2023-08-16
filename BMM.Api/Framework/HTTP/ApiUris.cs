@@ -38,6 +38,8 @@
         public static string StatisticsGlobalDownloadedMost = "statistics/global/{type}/downloaded/most{?size,from}";
         public const string StatisticsPostTrackPlayedEvent = "statistics/track/played/";
         public const string StatisticsPostStreakPoints = "statistics/streakpoint";
+        public const string StatisticsAchievement = "statistics/achievement";
+        public const string AchievementAcknowledge = "statistics/achievement/{name}/acknowledge";
 
         public const string Podcasts = "podcast/";
         public const string Podcast = "podcast/{id}";
@@ -71,6 +73,9 @@
         public static string StatisticsUserViewedRecently =
             "statistics/user/{username}/{type}/viewed/recently{?size,from}";
 
+        public static string ProjectProgress =
+            "statistics/project/progress{?os}";
+        
         public static string YearInReview =
             "statistics/year-in-review/overview";
         

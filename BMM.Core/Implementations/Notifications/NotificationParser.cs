@@ -30,6 +30,10 @@ namespace BMM.Core.Implementations.Notifications
                         var url = message.GetString(GeneralNotification.ActionUrlKey);
                         return new GeneralNotification {ActionUrl = url};
                     }
+                    case AchievementNotification.Type:
+                    {
+                        return new AchievementNotification();
+                    }
                     default:
                         _logger.Error(nameof(NotificationParser), $"Not able to parse notification unknown type: {type}");
                         return null;

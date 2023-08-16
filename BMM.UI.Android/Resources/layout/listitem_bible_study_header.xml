@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/BibleStudyHeaderLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:MvxBind="Click ClickedCommand">
+
+    <TextView
+            android:id="@+id/ThemeNameLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="Text ThemeName"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Subtitle1_Label2" />
+
+    <TextView
+            android:id="@+id/EpisodeTitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="Text EpisodeTitle"
+            local:layout_constraintTop_toBottomOf="@+id/ThemeNameLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            style="@style/Heading2" />
+
+    <TextView
+            android:id="@+id/EpisodeDateLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginBottom="@dimen/margin_xmedium"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="Text EpisodeDate"
+            local:layout_constraintTop_toBottomOf="@+id/EpisodeTitleLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            style="@style/Subtitle3_Label2" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

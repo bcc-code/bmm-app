@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Implementation.Models;
+using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -58,6 +59,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IFeaturePreviewPermission> _featurePreviewPermission;
         private Mock<INotificationPermissionService> _notificationPermissionService;
         private Mock<IChangeNotificationSettingStateAction> _changeNotificationSettingStateAction;
+        private Mock<IResetAchievementAction> _resetAchievementAction;
 
         public override void SetUp()
         {
@@ -108,6 +110,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             _featurePreviewPermission = new Mock<IFeaturePreviewPermission>();
             _notificationPermissionService = new Mock<INotificationPermissionService>();
             _changeNotificationSettingStateAction= new Mock<IChangeNotificationSettingStateAction>();
+            _resetAchievementAction = new Mock<IResetAchievementAction>();
 
             _textSource.Setup(x => x.GetText(It.IsAny<string>())).Returns(String.Empty);
 
@@ -141,7 +144,9 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _remoteConfig.Object,
                 _featureSupportInfoService.Object,
                 _notificationPermissionService.Object,
-                _changeNotificationSettingStateAction.Object);
+                _changeNotificationSettingStateAction.Object,
+                _resetAchievementAction.Object,
+                _featurePreviewPermission.Object);
 
             settingsViewModel.TextSource = TextResource.Object;
             return settingsViewModel;
@@ -167,7 +172,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Assert
-            Assert.AreEqual(16, settingsViewModel.ListItems.Count);
+            Assert.AreEqual(17, settingsViewModel.ListItems.Count);
             _networkSettings.Verify(x => x.GetMobileNetworkDownloadAllowed(), Times.AtLeastOnce);
             _networkSettings.Verify(x => x.GetPushNotificationsAllowed(), Times.AtLeastOnce);
         }

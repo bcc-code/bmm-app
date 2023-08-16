@@ -44,6 +44,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string CultureInfoLanguages = "culture_info_languages";
             
             public const string ShouldLogInternetProblemsException = "should_log_internet_problems_exception";
+            
+            public const string ShouldCheckAchievementsAtStart = "should_check_achievements_at_start";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -67,7 +69,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.IsSleepTimerEnabled, false.ToString()},
             {Variables.IsPlaybackSpeedEnabled, false.ToString()},
             {Variables.CultureInfoLanguages, CultureInfoLanguage.DefaultCultureInfoLanguagesJson},
-            {Variables.ShouldLogInternetProblemsException, false.ToString()}
+            {Variables.ShouldLogInternetProblemsException, false.ToString()},
+            {Variables.ShouldCheckAchievementsAtStart, true.ToString()}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -107,6 +110,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public string CultureInfoLanguages => _platformSpecificRemoteConfig.GetStringValue(Variables.CultureInfoLanguages);
         
         public bool ShouldLogInternetProblemsException => _platformSpecificRemoteConfig.GetBoolValue(Variables.ShouldLogInternetProblemsException);
+        
+        public bool ShouldCheckAchievementsAtStart => _platformSpecificRemoteConfig.GetBoolValue(Variables.ShouldCheckAchievementsAtStart);
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
             _semanticVersionParser.ParseStringToSemanticVersionObject(

@@ -1,5 +1,6 @@
 ﻿using System;
 using BMM.Core.Models;
+using BMM.Core.Models.POs.Other.Interfaces;
 using BMM.UI.iOS.Constants;
 using Foundation;
 using MvvmCross.Binding.BindingContext;
@@ -16,7 +17,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<TextListItemTableViewCell, SelectableListItem>();
+                var set = this.CreateBindingSet<TextListItemTableViewCell, ISelectableListContentItemPO>();
                 set.Bind(TitleLabel).To(listItem => listItem.Title);
                 set.Bind(TextLabel).To(listItem => listItem.Text);
                 set.Apply();

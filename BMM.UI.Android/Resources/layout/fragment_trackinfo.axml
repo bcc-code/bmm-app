@@ -16,6 +16,6 @@
         android:divider="@null"
         local:MvxTemplateSelector="@string/trackinfo_templateselector"
         local:MvxBind="
-            ItemsSource SectionedToFlatList(Sections);
+            ItemsSource Items;
             ItemClick ItemSelectedCommand" />
 </RelativeLayout>

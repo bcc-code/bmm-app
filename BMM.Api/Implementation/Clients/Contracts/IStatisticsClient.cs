@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 
 namespace BMM.Api.Implementation.Clients.Contracts
 {
@@ -71,5 +72,11 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task PostStreakPoints(IList<StreakPointEvent> trackPlayedEvents);
         
         Task<IList<YearInReviewItem>> GetYearInReview();
+
+        Task<ProjectProgress> GetProjectProgress();
+        
+        Task AchievementAcknowledge(string achievementType);
+        
+        Task DeleteAchievements();
     }
 }

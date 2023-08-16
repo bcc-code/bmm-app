@@ -1,9 +1,6 @@
-using BMM.Core.Models;
+using BMM.Core.Models.POs.Other.Interfaces;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
-using System;
 using BMM.UI.iOS.Constants;
-using Foundation;
 
 namespace BMM.UI.iOS
 {
@@ -16,7 +13,7 @@ namespace BMM.UI.iOS
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<SectionHeaderTableViewCell, SectionHeader>();
+                var set = this.CreateBindingSet<SectionHeaderTableViewCell, ISectionHeaderPO>();
                 set.Bind(TitleLabel).To(listItem => listItem.Title);
                 set.Bind(Separator).For(v => v.Alpha).To(listItem => listItem.ShowDivider).WithConversion<BoolToNfloatConverter>();
                 set.Apply();

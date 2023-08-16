@@ -8,6 +8,8 @@ using BMM.UI.iOS.Interfaces;
 using MvvmCross.Platforms.Ios.Presenters;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
+using MvvmCross.Presenters;
+using MvvmCross.Presenters.Attributes;
 using MvvmCross.ViewModels;
 using UIKit;
 
@@ -20,6 +22,10 @@ namespace BMM.UI.iOS
 
         public override Task<bool> Show(MvxViewModelRequest request)
         {
+            if (request.ViewModelType == typeof(AchievementDetailsViewModel))
+            {
+            }
+
             if (request.ViewModelType == typeof(MiniPlayerViewModel))
             {
                 var tabBarViewController = TabBarViewController as MenuViewController;

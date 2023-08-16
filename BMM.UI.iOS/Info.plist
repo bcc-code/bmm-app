@@ -92,5 +92,53 @@
 		<string>tr</string>
 		<string>uk</string>
 	</array>
+    <key>CFBundleIcons</key>
+    <dict>
+        <key>CFBundleAlternateIcons</key>
+        <dict>
+            <key>DarkGreen</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>dark_green_40</string>
+                    <string>dark_green_58</string>
+                    <string>dark_green_80</string>
+                    <string>dark_green_87</string>
+                    <string>dark_green_120</string>
+                    <string>dark_green_180</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Orange</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>orange_40</string>
+                    <string>orange_58</string>
+                    <string>orange_80</string>
+                    <string>orange_87</string>
+                    <string>orange_120</string>
+                    <string>orange_180</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Golden</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>golden_40</string>
+                    <string>golden_58</string>
+                    <string>golden_80</string>
+                    <string>golden_87</string>
+                    <string>golden_120</string>
+                    <string>golden_180</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+        </dict>
+    </dict>
 </dict>
 </plist>

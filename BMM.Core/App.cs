@@ -226,6 +226,7 @@ namespace BMM.Core
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IReceive<PodcastNotification>, PodcastNotificationReceiver>();
             Mvx.IoCProvider.RegisterType<IReceive<GeneralNotification>, GeneralNotificationReceiver>();
+            Mvx.IoCProvider.RegisterType<IReceive<AchievementNotification>, AchievementsNotificationReceiver>();
             Mvx.IoCProvider.RegisterType<INotificationHandler, NotificationHandler>();
             Mvx.IoCProvider.RegisterType<NotificationParser>();
 

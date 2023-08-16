@@ -51,6 +51,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
             bool autoplayEnabled = await _settingsStorage.GetAutoplayEnabled();
 
             if (parameter.ShufflePodcastId != PodcastsConstants.FraKårePodcastId
+                && parameter.ShufflePodcastId != PodcastsConstants.BibleStudyPodcastId
                 && parameter.ShufflePodcastId != PodcastsConstants.BergprekenPodcastId)
             {
                 _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));

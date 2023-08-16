@@ -224,7 +224,7 @@ namespace BMM.Core.Implementations.DeepLinking
             return uri.AbsoluteUri.Contains(GlobalConstants.BmmUrl);
         }
 
-        private bool WillDeepLinkStartPlayer(Uri uri)
+        public bool WillDeepLinkStartPlayer(Uri uri)
         {
             return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(uri, out _);
         }

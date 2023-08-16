@@ -35,7 +35,7 @@ namespace BMM.UI.iOS
                 new HeightAwareTableCellType(typeof(ProfileListItem), ProfileListItemTableViewCell.Key, (nfloat)156.5),
                 new HeightAwareTableCellType(typeof(CheckboxListItemPO), CheckboxListItemTableViewCell.Key, 88),
                 new HeightAwareTableCellType(typeof(SelectableListItem), TextListItemDetailTableViewCell.Key, 75),
-                new HeightAwareTableCellType(typeof(SectionHeader), SectionHeaderTableViewCell.Key, 56),
+                new HeightAwareTableCellType(typeof(SectionHeaderPO), SectionHeaderTableViewCell.Key, 56),
             };
         }
     }
