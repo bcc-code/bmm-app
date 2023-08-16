@@ -430,7 +430,8 @@ namespace BMM.Core.Translation
 		public const string AppIconViewModel_Description = nameof(AppIconViewModel_Description);
 		public const string AppIconViewModel_Standard = nameof(AppIconViewModel_Standard);
 		public const string AppIconViewModel_DarkGreen = nameof(AppIconViewModel_DarkGreen);
-		public const string AppIconViewModel_Violet = nameof(AppIconViewModel_Violet);
+		public const string AppIconViewModel_Orange = nameof(AppIconViewModel_Orange);
+		public const string AppIconViewModel_Golden = nameof(AppIconViewModel_Golden);
 		public const string AchievementDetailsViewModel_Title = nameof(AchievementDetailsViewModel_Title);
 		public const string AchievementDetailsViewModel_Unlocked = nameof(AchievementDetailsViewModel_Unlocked);
 		public const string AchievementDetailsViewModel_ActivatePremiumIcon = nameof(AchievementDetailsViewModel_ActivatePremiumIcon);

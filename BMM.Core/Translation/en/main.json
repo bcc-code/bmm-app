@@ -549,7 +549,8 @@
     "Description": "Change the app icon of the app",
     "Standard": "Standard",
     "DarkGreen": "Dark Green",
-    "Violet": "Violet"
+    "Orange": "Orange",
+    "Golden": "Golden"
   },
   "AchievementDetailsViewModel": {
     "Title": "Achievement",

@@ -110,16 +110,30 @@
                 <key>UIPrerenderedIcon</key>
                 <false/>
             </dict>
-            <key>Violet</key>
+            <key>Orange</key>
             <dict>
                 <key>CFBundleIconFiles</key>
                 <array>
-                    <string>violet_40</string>
-                    <string>violet_58</string>
-                    <string>violet_80</string>
-                    <string>violet_87</string>
-                    <string>violet_120</string>
-                    <string>violet_180</string>
+                    <string>orange_40</string>
+                    <string>orange_58</string>
+                    <string>orange_80</string>
+                    <string>orange_87</string>
+                    <string>orange_120</string>
+                    <string>orange_180</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>Golden</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>golden_40</string>
+                    <string>golden_58</string>
+                    <string>golden_80</string>
+                    <string>golden_87</string>
+                    <string>golden_120</string>
+                    <string>golden_180</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>

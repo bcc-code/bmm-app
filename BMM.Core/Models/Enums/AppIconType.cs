@@ -4,5 +4,6 @@ public enum AppIconType
 {
     Standard,
     DarkGreen,
-    Violet
+    Orange,
+    Golden
 }
