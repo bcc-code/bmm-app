@@ -145,7 +145,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _featureSupportInfoService.Object,
                 _notificationPermissionService.Object,
                 _changeNotificationSettingStateAction.Object,
-                _resetAchievementAction.Object);
+                _resetAchievementAction.Object,
+                _featurePreviewPermission.Object);
 
             settingsViewModel.TextSource = TextResource.Object;
             return settingsViewModel;

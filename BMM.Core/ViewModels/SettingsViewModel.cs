@@ -47,6 +47,7 @@ namespace BMM.Core.ViewModels
         private readonly INotificationSubscriptionTokenProvider _tokenProvider;
         private readonly IClipboardService _clipboard;
         private readonly IDeveloperPermission _developerPermission;
+        private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly IContacter _contacter;
         private readonly IAnalytics _analytics;
         private readonly IStorageManager _storageManager;
@@ -103,7 +104,8 @@ namespace BMM.Core.ViewModels
             IFeatureSupportInfoService featureSupportInfoService,
             INotificationPermissionService notificationPermissionService,
             IChangeNotificationSettingStateAction changeNotificationSettingStateAction,
-            IResetAchievementAction resetAchievementAction)
+            IResetAchievementAction resetAchievementAction,
+            IFeaturePreviewPermission featurePreviewPermission)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -127,6 +129,7 @@ namespace BMM.Core.ViewModels
             _notificationPermissionService = notificationPermissionService;
             _changeNotificationSettingStateAction = changeNotificationSettingStateAction;
             _resetAchievementAction = resetAchievementAction;
+            _featurePreviewPermission = featurePreviewPermission;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -312,14 +315,17 @@ namespace BMM.Core.ViewModels
                     OnSelected = NavigationService.NavigateCommand<LanguageContentViewModel>()
                 }
             };
-            
-            generalSectionItems.Add(new SelectableListItem
+
+            if (_featurePreviewPermission.IsFeaturePreviewEnabled())
             {
-                Title = TextSource[Translations.AppIconViewModel_Title],
-                Text = TextSource[Translations.AppIconViewModel_Description],
-                OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
-            });
-            
+                generalSectionItems.Add(new SelectableListItem
+                {
+                    Title = TextSource[Translations.AppIconViewModel_Title],
+                    Text = TextSource[Translations.AppIconViewModel_Description],
+                    OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
+                });
+            }
+
             generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsDarkMode, new SelectableListItem
             {
                 Title = TextSource[Translations.SettingsViewModel_ThemeHeader],
