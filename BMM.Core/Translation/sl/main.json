@@ -534,10 +534,10 @@
     "FromSongTreasuresPopupSubtitleText": "Za celotno pesem prenesi aplikacijo Song Treasures."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Pravila za pridobitev niza",
+    "ProgressTitle": "Tvoj napredek",
+    "StreakThisWeek": "Tvoj  niz ta teden",
+    "Days": "Dnevi",
     "Boost": "Boost",
     "Points": "Points",
     "Achievements": "Your achievements"
