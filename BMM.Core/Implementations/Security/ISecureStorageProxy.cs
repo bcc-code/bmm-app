@@ -14,6 +14,8 @@ namespace BMM.Core.Implementations.Security
         Task<TValue> GetAsync<TValue>(string key, TValue defaultValue = default);
 
         void RemoveAll();
+        
+        bool Remove(string key);
 
         Task<DateTime?> GetDateAsync(string key);
 

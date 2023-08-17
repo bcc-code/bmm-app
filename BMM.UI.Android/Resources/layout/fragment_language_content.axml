@@ -34,5 +34,6 @@
         local:MvxBind="Click OpenSelectLanguageDialogCommand"
         android:layout_margin="@dimen/margin_medium"
         android:layout_gravity="end|bottom"
-        app:backgroundTint="@color/tint_color" />
+        app:tint="?on_color_one_color"
+        app:backgroundTint="?tint_color" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

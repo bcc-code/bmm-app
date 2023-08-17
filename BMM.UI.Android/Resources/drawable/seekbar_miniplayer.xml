@@ -5,7 +5,7 @@
     <clip>
       <shape android:shape="rectangle" >
         <corners android:radius="20dp" />
-        <solid android:color="#83e76b"/>
+        <solid android:color="?attr/tint_color"/>
       </shape>
     </clip>
   </item>

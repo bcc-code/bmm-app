@@ -392,6 +392,10 @@ namespace BMM.Core.Translation
 		public const string ThemeSettingsViewModel_Title = nameof(ThemeSettingsViewModel_Title);
 		public const string ThemeSettingsViewModel_Light = nameof(ThemeSettingsViewModel_Light);
 		public const string ThemeSettingsViewModel_Dark = nameof(ThemeSettingsViewModel_Dark);
+		public const string ThemeSettingsViewModel_GoldenLight = nameof(ThemeSettingsViewModel_GoldenLight);
+		public const string ThemeSettingsViewModel_GoldenDark = nameof(ThemeSettingsViewModel_GoldenDark);
+		public const string ThemeSettingsViewModel_OrangeLight = nameof(ThemeSettingsViewModel_OrangeLight);
+		public const string ThemeSettingsViewModel_OrangeDark = nameof(ThemeSettingsViewModel_OrangeDark);
 		public const string ThemeSettingsViewModel_System = nameof(ThemeSettingsViewModel_System);
 		public const string ChangeTrackLanguageViewModel_Title = nameof(ChangeTrackLanguageViewModel_Title);
 		public const string ChangeTrackLanguageViewModel_PreferredLanguages = nameof(ChangeTrackLanguageViewModel_PreferredLanguages);

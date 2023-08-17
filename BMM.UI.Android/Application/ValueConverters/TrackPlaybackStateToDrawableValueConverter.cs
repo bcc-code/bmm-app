@@ -9,7 +9,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
         protected override int Convert(TrackState trackState, Type targetType, object currentTrack, System.Globalization.CultureInfo culture)
         {
             if (trackState.IsCurrentlySelected)
-                return Resource.Drawable.icon_now_playing;
+                return Resource.Drawable.icon_play_mini;
 
             if (TrackIsNotListenedAndIsTeaserPodcast(trackState))
                 return  Resource.Drawable.icon_blue_dot;

@@ -11,6 +11,7 @@
         <attr name="roundedTextDrawable" format="reference"/>
     </declare-styleable>
 
-    <attr name="titleColor" format="reference|color" />
-    <attr name="introColor" format="reference|color" />
+    <attr name="tint_color" format="reference|color" />
+    <attr name="background_four_color" format="reference|color" />
+    <attr name="on_color_one_color" format="reference|color" />
 </resources>

@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiR-kO-pBO">
-                        <rect key="frame" x="16" y="0.0" width="383" height="77"/>
+                        <rect key="frame" x="16" y="8" width="383" height="69"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlay" translatesAutoresizingMaskIntoConstraints="NO" id="S8s-ef-3HS">
-                                <rect key="frame" x="16" y="26.5" width="24" height="24"/>
+                                <rect key="frame" x="16" y="22.5" width="24" height="24"/>
                                 <color key="tintColor" name="LabelOneColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="3Mh-S0-R9o"/>
@@ -28,7 +28,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-Kn-Sb4">
-                                <rect key="frame" x="50" y="16" width="317" height="45"/>
+                                <rect key="frame" x="50" y="16" width="317" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -55,7 +55,7 @@
                     <constraint firstAttribute="trailing" secondItem="UiR-kO-pBO" secondAttribute="trailing" constant="16" id="4WW-0R-rZw"/>
                     <constraint firstAttribute="bottom" secondItem="UiR-kO-pBO" secondAttribute="bottom" id="BiQ-Yo-w9R"/>
                     <constraint firstItem="UiR-kO-pBO" firstAttribute="leading" secondItem="iJh-9S-hMr" secondAttribute="leading" constant="16" id="HXF-be-RNd"/>
-                    <constraint firstItem="UiR-kO-pBO" firstAttribute="top" secondItem="iJh-9S-hMr" secondAttribute="top" id="NiE-9M-GLB"/>
+                    <constraint firstItem="UiR-kO-pBO" firstAttribute="top" secondItem="iJh-9S-hMr" secondAttribute="top" constant="8" id="NiE-9M-GLB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

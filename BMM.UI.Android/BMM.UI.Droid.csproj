@@ -388,8 +388,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right.png" />
     <None Remove="Resources\drawable-xxxhdpi\icon_now_playing.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_now_playing.png" />
-    <None Remove="Resources\drawable-xxxhdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-xxxhdpi\loading_spinner.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-xxxhdpi\aslaksen.png" />
@@ -470,8 +468,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-xxhdpi\btn_play_static.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\btn_play_static.png" />
-    <None Remove="Resources\drawable-xxhdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-xxhdpi\icon_rearrange.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_rearrange.png" />
     <None Remove="Resources\drawable-xxhdpi\btn_play_active.png" />
@@ -620,8 +616,6 @@
     <AndroidResource Include="Resources\drawable-mdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-mdpi\icon_now_playing.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_now_playing.png" />
-    <None Remove="Resources\drawable-mdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-mdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_play_small.png" />
     <None Remove="Resources\drawable-mdpi\icon_blue_dot.png" />
@@ -710,8 +704,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-hdpi\btn_pause_active.png" />
     <AndroidResource Include="Resources\drawable-hdpi\btn_pause_active.png" />
-    <None Remove="Resources\drawable-hdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-hdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_play_small.png" />
     <None Remove="Resources\drawable-hdpi\icon_blue_dot.png" />
@@ -1012,6 +1004,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Update="Resources\layout\fragment_achievements_details.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable\icon_play_mini.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>

@@ -31,6 +31,6 @@ namespace BMM.Core.Implementations.Security
         /// Remove the current user
         /// </summary>
         /// <exception cref="InvalidOperationException">Thrown if RemoveUser is called while no user is currently stored</exception>
-        Task RemoveUser();
+        void RemoveUser();
     }
 }

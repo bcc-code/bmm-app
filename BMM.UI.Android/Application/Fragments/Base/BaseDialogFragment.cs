@@ -8,6 +8,7 @@ using Android.Views;
 using AndroidX.AppCompat.Widget;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.Droid.Application.Activities;
 using BMM.UI.Droid.Application.Extensions;
@@ -15,6 +16,7 @@ using BMM.UI.Droid.Application.Helpers;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Views.Fragments;
+using ThemeUtils = BMM.UI.Droid.Utils.ThemeUtils;
 using Toolbar = AndroidX.AppCompat.Widget.Toolbar;
 
 namespace BMM.UI.Droid.Application.Fragments.Base
@@ -41,7 +43,11 @@ namespace BMM.UI.Droid.Application.Fragments.Base
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetStyle(StyleNormal, Resource.Style.NotFullscreen);
+            
+            int? style = ThemeUtils.GetStyleForTheme(AppSettings.SelectedTheme, true);
+
+            if (style.HasValue)
+                SetStyle(StyleNormal, style.Value);
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

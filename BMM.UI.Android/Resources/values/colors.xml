@@ -44,7 +44,6 @@
     <color name="global_white_four">#14FFFFFF</color>
     <color name="global_white_separator">#0DFFFFFF</color>
 
-    <color name="tint_color">#A4E16A</color>
     <color name="label_one_color">#0D131A</color>
     <color name="label_one_reverted_color">#FFFFFF</color>
     <color name="label_two_color">#46494D</color>
@@ -55,13 +54,11 @@
     <color name="background_one_color">#FFFFFF</color>
     <color name="background_two_color">#F5F6F7</color>
     <color name="background_three_color">#FFFFFF</color>
-    <color name="background_four_color">#0D131A</color>
     <color name="notification_color">#1C8FF8</color>
     <color name="radio_color">#E12D59</color>
     <color name="highlight_color">#8DA0B5</color>
     <color name="separator_color">#1A81888F</color>
     <color name="tile_default_color">#E6EEF3</color>
-    <color name="on_color_one_color">#FFFFFF</color>
     <color name="on_color_two_color">#80FFFFFF</color>
     <color name="on_color_three_color">#33FFFFFF</color>
     <color name="on_color_four_color">#14FFFFFF</color>

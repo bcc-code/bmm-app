@@ -10,6 +10,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Extensions;
 using MvvmCross;
 using MvvmCross.Converters;
 using MvvmCross.Platforms.Android;
@@ -32,7 +33,7 @@ namespace BMM.UI.Droid.Application.ValueConverters
             var context = Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>().Activity;
 
             if (trackState.IsCurrentlySelected)
-                return new Color(ContextCompat.GetColor(context, Resource.Color.tint_color));
+                return context.GetColorFromTheme(Resource.Attribute.tint_color);
 
             if (!trackState.IsAvailable)
                 return new Color(ContextCompat.GetColor(context,  Resource.Color.med_black));
