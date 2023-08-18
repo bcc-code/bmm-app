@@ -556,6 +556,11 @@
     "ActivatePremiumIcon": "Activate Premium Icon",
     "GotIt": "Forstått",
     "ActivateTheme": "Activate Theme",
-    "Close": "Lukk"
+    "Close": "Lukk",
+    "Reward": "Premie",
+    "RewardAndroid": "Et eksklusivt fargetema for BMM-appen din \uD83E\uDD29",
+    "RewardIos": "Et eksklusivt appikon for BMM-appen din \uD83E\uDD29",
+    "RewardAndroidGolden": "Et eksklusivt fargetema for BMM-appen din. Du er også med i trekningen av et par spesialdesignede AirPods Pro. Godt jobbet!",
+    "RewardIosGolden": "Et eksklusivt appikon i gull for BMM-appen din. Du er også med i trekningen av et par spesialdesignede AirPods Pro. Godt jobbet!"
   }
 }

@@ -534,28 +534,28 @@
     "FromSongTreasuresPopupSubtitleText": "Télécharger l'application Song Treasures pour voir l'intégralité du chant."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Règles pour les séries",
+    "ProgressTitle": "Ta progression",
+    "StreakThisWeek": "Série de cette semaine",
+    "Days": "Jours",
     "Boost": "Boost",
     "Points": "Points",
-    "Achievements": "Your achievements"
+    "Achievements": "Tes résultats"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
+    "Title": "Icône de l'application",
+    "Description": "Changer l'icône de l'application ",
     "Standard": "Standard",
-    "DarkGreen": "Dark Green",
+    "DarkGreen": "Vert foncé",
     "Orange": "Orange",
-    "Golden": "Golden"
+    "Golden": "Doré"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate Premium Icon",
+    "Title": "Résultats",
+    "Unlocked": "Déverrouillé",
+    "ActivatePremiumIcon": "Activer l'icône Premium",
     "GotIt": "J'ai compris",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Activer le thème",
     "Close": "Fermer"
   }
 }

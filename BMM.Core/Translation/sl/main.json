@@ -534,28 +534,28 @@
     "FromSongTreasuresPopupSubtitleText": "Za celotno pesem prenesi aplikacijo Song Treasures."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Pravila za pridobitev niza",
+    "ProgressTitle": "Tvoj napredek",
+    "StreakThisWeek": "Tvoj  niz ta teden",
+    "Days": "Dnevi",
     "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "Points": "Točke",
+    "Achievements": "Tvoji dosežki"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
+    "Title": "Ikona aplikacije",
+    "Description": "Spremeni ikono aplikacije",
+    "Standard": "Standardna",
+    "DarkGreen": "Temno zelena",
+    "Orange": "Oranžna",
+    "Golden": "Zlata"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate Premium Icon",
+    "Title": "Dosežek",
+    "Unlocked": "Odklenjeno",
+    "ActivatePremiumIcon": "Aktiviraj ikono Premium",
     "GotIt": "Razumem",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Aktiviraj temo",
     "Close": "Zapri"
   }
 }
