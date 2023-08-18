@@ -436,5 +436,10 @@ namespace BMM.Core.Translation
 		public const string AchievementDetailsViewModel_GotIt = nameof(AchievementDetailsViewModel_GotIt);
 		public const string AchievementDetailsViewModel_ActivateTheme = nameof(AchievementDetailsViewModel_ActivateTheme);
 		public const string AchievementDetailsViewModel_Close = nameof(AchievementDetailsViewModel_Close);
+		public const string AchievementDetailsViewModel_Reward = nameof(AchievementDetailsViewModel_Reward);
+		public const string AchievementDetailsViewModel_RewardAndroid = nameof(AchievementDetailsViewModel_RewardAndroid);
+		public const string AchievementDetailsViewModel_RewardIos = nameof(AchievementDetailsViewModel_RewardIos);
+		public const string AchievementDetailsViewModel_RewardAndroidGolden = nameof(AchievementDetailsViewModel_RewardAndroidGolden);
+		public const string AchievementDetailsViewModel_RewardIosGolden = nameof(AchievementDetailsViewModel_RewardIosGolden);
 	}
 }
