@@ -553,9 +553,14 @@
   "AchievementDetailsViewModel": {
     "Title": "Achievement",
     "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate Premium Icon",
+    "ActivatePremiumIcon": "Activate App Icon",
     "GotIt": "Got it",
     "ActivateTheme": "Activate Theme",
-    "Close": "Zamknij"
+    "Close": "Zamknij",
+    "Reward": "Reward",
+    "RewardAndroid": "An exclusive color theme for you BMM app 🤩",
+    "RewardIos": "An exclusive app icon for you BMM app 🤩",
+    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!",
+    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!"
   }
 }
