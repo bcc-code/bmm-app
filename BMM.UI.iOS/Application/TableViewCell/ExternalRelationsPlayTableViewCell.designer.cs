@@ -14,21 +14,37 @@ namespace BMM.UI.iOS
 	partial class ExternalRelationsPlayTableViewCell
 	{
 		[Outlet]
+		UIKit.UIView AnimationView { get; set; }
+
+		[Outlet]
 		UIKit.UIView PlayButton { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView PlayIcon { get; set; }
 
 		[Outlet]
 		UIKit.UILabel PlayLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (PlayButton != null) {
+				PlayButton.Dispose ();
+				PlayButton = null;
+			}
+
 			if (PlayLabel != null) {
 				PlayLabel.Dispose ();
 				PlayLabel = null;
 			}
 
-			if (PlayButton != null) {
-				PlayButton.Dispose ();
-				PlayButton = null;
+			if (AnimationView != null) {
+				AnimationView.Dispose ();
+				AnimationView = null;
+			}
+
+			if (PlayIcon != null) {
+				PlayIcon.Dispose ();
+				PlayIcon = null;
 			}
 
 		}

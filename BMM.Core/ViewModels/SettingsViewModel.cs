@@ -31,9 +31,12 @@ using BMM.Core.Models;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
+using Microsoft.Maui.Devices;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
+using DeviceInfo = Microsoft.Maui.Devices.DeviceInfo;
+using IDeviceInfo = BMM.Core.Implementations.Device.IDeviceInfo;
 
 namespace BMM.Core.ViewModels
 {
@@ -316,7 +319,10 @@ namespace BMM.Core.ViewModels
                 }
             };
             
-            generalSectionItems.AddIf(() => _featurePreviewPermission.IsFeaturePreviewEnabled(), new SelectableListItem
+            generalSectionItems.AddIf(
+                () => _featurePreviewPermission.IsFeaturePreviewEnabled()
+                        && DeviceInfo.Platform != DevicePlatform.Android,
+                new SelectableListItem
             {
                 Title = TextSource[Translations.AppIconViewModel_Title],
                 Text = TextSource[Translations.AppIconViewModel_Description],

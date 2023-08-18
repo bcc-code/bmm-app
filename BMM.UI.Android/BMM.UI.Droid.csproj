@@ -10,14 +10,6 @@
     <ApplicationId>org.brunstad.bmm</ApplicationId>
     <RootNamespace>BMM.UI.Droid</RootNamespace>
     <AssemblyName>BMM.UI.Android</AssemblyName>
-<!-- there is an issue with net 7 android sdk when compliling AOT-->
-<!-- should be fixed in dotnet sdk 7.0.300-->
-<!-- these entries can be removed, when this version will be published-->
-<!--    https://github.com/dotnet/linker/issues/3112-->
-    <RunAOTCompilation>False</RunAOTCompilation>
-    <PublishTrimmed>False</PublishTrimmed>
-<!-- ##-->
-
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
@@ -60,6 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\values-xxxhdpi\dimens.xml" />
+    <AndroidResource Include="Resources\raw-night\play_animation_icon_reverted.json">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\values-xxxhdpi\dimens.xml" />
     <None Remove="Resources\values-xxhdpi\dimens.xml" />
     <AndroidResource Include="Resources\values-xxhdpi\dimens.xml" />
@@ -1008,6 +1004,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Update="Resources\drawable\icon_play_mini.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\raw\play_animation_icon_reverted.json">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>

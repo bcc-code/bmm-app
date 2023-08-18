@@ -9,6 +9,7 @@ namespace BMM.Core.Models.POs.BibleStudy;
 public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationPO
 {
     private readonly IDeepLinkHandler _deepLinkHandler;
+    private bool _showPlayAnimation;
 
     public BibleStudyExternalRelationPO(
         string title,
@@ -21,6 +22,7 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
         ClickedCommand = new ExceptionHandlingCommand(() =>
         {
             uriOpener.OpenUri(Link);
+            ShouldShowPlayAnimation = true;
             return Task.CompletedTask;
         });
         _deepLinkHandler = deepLinkHandler;
@@ -28,7 +30,13 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
     
     public string Title { get; }
     public Uri Link { get; }
-    
+
+    public bool ShouldShowPlayAnimation
+    {
+        get => _showPlayAnimation;
+        set => SetProperty(ref _showPlayAnimation, value);
+    }
+
     public bool WillPlayTrack => _deepLinkHandler.WillDeepLinkStartPlayer(Link);
     public IMvxAsyncCommand ClickedCommand { get; }
 }

@@ -8,5 +8,6 @@ public interface IBibleStudyExternalRelationPO : IBasePO
     string Title { get; }
     Uri Link { get; }
     bool WillPlayTrack { get; }
+    bool ShouldShowPlayAnimation { get; set; }
     IMvxAsyncCommand ClickedCommand { get; }
 }

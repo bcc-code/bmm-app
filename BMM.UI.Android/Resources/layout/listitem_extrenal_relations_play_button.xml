@@ -28,6 +28,19 @@
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toStartOf="parent" />
 
+        <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/PlayAnimationView"
+                android:layout_width="@dimen/highlighted_text_play_icon_size"
+                android:layout_height="@dimen/highlighted_text_play_icon_size"
+                android:layout_marginStart="@dimen/margin_xxsmall"
+                android:visibility="gone"
+                local:layout_constraintTop_toTopOf="parent"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:lottie_rawRes="@raw/play_animation_icon_reverted"
+                local:lottie_loop="true"
+                local:lottie_autoPlay="true" />
+
         <TextView
                 android:id="@+id/PlayLabel"
                 android:layout_width="@dimen/match_constraint"
