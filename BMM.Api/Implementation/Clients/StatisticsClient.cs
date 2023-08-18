@@ -117,13 +117,14 @@ namespace BMM.Api.Implementation.Clients
             return Get<IList<YearInReviewItem>>(uri);
         }
 
-        public Task<ProjectProgress> GetProjectProgress()
+        public Task<ProjectProgress> GetProjectProgress(string lang)
         {
             var os = OperatingSystem.IsIOS()
                 ? "ios"
                 : "android";
             
             var uri = new UriTemplate(ApiUris.ProjectProgress);
+            uri.SetParameter("lang", lang);
             uri.SetParameter("os", os);
             return Get<ProjectProgress>(uri);
         }

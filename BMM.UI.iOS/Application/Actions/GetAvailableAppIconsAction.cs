@@ -30,10 +30,10 @@ public class GetAvailableAppIconsAction : GuardedActionWithResult<IList<AppIconP
 
             foreach (AppIconType enumValue in typeof(AppIconType).GetEnumValues())
             {
-                var appIcon = new AppIconPO(enumValue, _bmmLanguageBinder[$"AppIconViewModel_{enumValue}"], $"AppIcon{enumValue}");
+                var appIcon = new AppIconPO(enumValue, _bmmLanguageBinder[$"AppIconViewModel_{enumValue}"], $"App{enumValue}");
                 listOfIcons.Add(appIcon);
 
-                if (enumValue == AppIconType.Standard && currentIconName == null)
+                if (enumValue == AppIconType.IconStandard && currentIconName == null)
                     appIcon.IsSelected = true;
                 else
                     appIcon.IsSelected = currentIconName == enumValue.ToString();

@@ -24,6 +24,11 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (IconImageView != null) {
+				IconImageView.Dispose ();
+				IconImageView = null;
+			}
+
 			if (IsSelectedImage != null) {
 				IsSelectedImage.Dispose ();
 				IsSelectedImage = null;
@@ -32,11 +37,6 @@ namespace BMM.UI.iOS
 			if (TextLabel != null) {
 				TextLabel.Dispose ();
 				TextLabel = null;
-			}
-
-			if (IconImageView != null) {
-				IconImageView.Dispose ();
-				IconImageView = null;
 			}
 
 		}

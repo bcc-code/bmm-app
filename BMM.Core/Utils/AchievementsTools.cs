@@ -9,8 +9,8 @@ public static class AchievementsTools
     {
         return achievementType switch
         {
-            "FirstTest" => AppIconType.DarkGreen,
-            "ThemeOne" => AppIconType.Orange,
+            "FirstTest" => AppIconType.IconDarkGreen,
+            "ThemeOne" => AppIconType.IconOrange,
             _ => null
         };
     }
