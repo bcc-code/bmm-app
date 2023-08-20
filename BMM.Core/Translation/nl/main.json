@@ -534,33 +534,33 @@
     "FromSongTreasuresPopupSubtitleText": "Download de Song Treasures app om het hele lied te zien."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Regels voor streaks",
+    "ProgressTitle": "Jouw voortgang",
+    "StreakThisWeek": "Streak deze week",
+    "Days": "Dagen",
     "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "Points": "Punten",
+    "Achievements": "Jouw prestaties"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
+    "Title": "App-pictogram",
+    "Description": "Verander het pictogram van de app",
+    "Standard": "Standaard",
+    "DarkGreen": "Donker groen",
+    "Orange": "Oranje",
+    "Golden": "Goud"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "Title": "Prestatie",
+    "Unlocked": "Ontgrendeld",
+    "ActivatePremiumIcon": "App-pictogram activeren",
     "GotIt": "Begrepen",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Activeer thema",
     "Close": "Sluiten ",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for you BMM app 🤩",
-    "RewardIos": "An exclusive app icon for you BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!"
+    "Reward": "Beloning",
+    "RewardAndroid": "Een speciaal kleurenthema voor je BMM app 🤩",
+    "RewardIos": "Een speciaal pictogram voor je BMM app 🤩",
+    "RewardAndroidGolden": "Een speciaal kleurenthema voor je BMM app. Je doet ook mee aan de loting voor een paar speciaal ontworpen AirPods Pro. Goed gedaan!",
+    "RewardIosGolden": "Een speciaal pictogram voor je BMM app in goud. Je doet ook mee aan de loting voor een paar speciaal ontworpen AirPods Pro. Goed gedaan!"
   }
 }
