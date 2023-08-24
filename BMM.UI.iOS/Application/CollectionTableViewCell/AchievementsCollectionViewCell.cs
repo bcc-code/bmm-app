@@ -22,11 +22,6 @@ namespace BMM.UI.iOS
                     .For(v => v.ImagePath)
                     .To(po => po.ImagePath);
                 
-                set.Bind(ImageView)
-                    .For(v => v.Alpha)
-                    .To(po => po.IsActive)
-                    .WithConversion<IsActiveToAlphaConverter>();
-
                 set.Bind(ContentView)
                     .For(v => v.BindTap())
                     .To(po => po.AchievementClickedCommand);

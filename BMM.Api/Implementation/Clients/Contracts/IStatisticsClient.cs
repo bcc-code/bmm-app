@@ -75,6 +75,8 @@ namespace BMM.Api.Implementation.Clients.Contracts
 
         Task<ProjectProgress> GetProjectProgress(string lang);
         
+        Task<ProjectRules> GetProjectRules(string lang);
+        
         Task AchievementAcknowledge(string achievementType);
         
         Task DeleteAchievements();

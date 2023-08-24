@@ -76,6 +76,9 @@
         public static string ProjectProgress =
             "statistics/project/progress{?os,lang}";
         
+        public static string ProjectRules =
+            "statistics/project/rules{?lang}";
+        
         public static string YearInReview =
             "statistics/year-in-review/overview";
         

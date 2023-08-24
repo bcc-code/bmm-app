@@ -2,7 +2,6 @@
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
-using BMM.Api.Implementation.Models.Enums;
 using Tavis.UriTemplates;
 
 namespace BMM.Api.Implementation.Clients
@@ -127,6 +126,13 @@ namespace BMM.Api.Implementation.Clients
             uri.SetParameter("lang", lang);
             uri.SetParameter("os", os);
             return Get<ProjectProgress>(uri);
+        }
+
+        public Task<ProjectRules> GetProjectRules(string lang)
+        {
+            var uri = new UriTemplate(ApiUris.ProjectRules);
+            uri.SetParameter("lang", lang);
+            return Get<ProjectRules>(uri);
         }
 
         public Task AchievementAcknowledge(string achievementType)

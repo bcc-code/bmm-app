@@ -44,11 +44,6 @@ namespace BMM.UI.iOS
                 .For(v => v.ImagePath)
                 .To(vm => vm.AchievementPO.ImagePath);
 
-            set.Bind(IconImage)
-                .For(v => v.Alpha)
-                .To(po => po.AchievementPO.IsActive)
-                .WithConversion<IsActiveToAlphaConverter>();
-
             set.Bind(StatusLabel)
                 .To(vm => vm.TextSource[nameof(Translations.AchievementDetailsViewModel_Unlocked)]);
             
