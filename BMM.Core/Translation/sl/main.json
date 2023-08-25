@@ -327,6 +327,8 @@
     "UserVoiceText": "Imaš ideje, kako izboljšati BMM? Povej nam.",
     "ThemeHeader": "Temen način",
     "ThemeText": "Izberi med temno in svetlo temo",
+    "ColorHeader": "Color Theme",
+    "ColorText": "Choose between custom color themes",
     "SiriShortcutsHeader": "Bližnjice za Siri",
     "SiriShortcutsText": "Dodaj bližnjice za Siri za BMM na svojo napravo",
     "PushNotificationsGoToSettings": "Ne moremo omogočiti potisnih sporočil, ker so onemogočena v nastavitvah. Za uporabo te funkcije\nomogoči potisna sporočila v nastavitvah naprave. "
@@ -499,6 +501,15 @@
     "Dark": "Temno",
     "System": "Sledi nastavitvam sistema (samodejno)"
   },
+  "ColorThemeViewModel": {
+    "Title": "Color Theme",
+    "Default": "Default",
+    "Violet": "Violet",
+    "Red": "Red",
+    "DarkGreen": "Dark Green",
+    "Golden": "Golden",
+    "Orange": "Orange"
+  },
   "ChangeTrackLanguageViewModel": {
     "Title": "Jezik skladbe",
     "PreferredLanguages": "Tvoj izbran jezik",
@@ -545,10 +556,12 @@
   "AppIconViewModel": {
     "Title": "Ikona aplikacije",
     "Description": "Spremeni ikono aplikacije",
-    "Standard": "Standardna",
-    "DarkGreen": "Temno zelena",
-    "Orange": "Oranžna",
-    "Golden": "Zlata"
+    "IconStandard": "Standard",
+    "IconDarkGreen": "Dark Green",
+    "IconOrange": "Orange",
+    "IconGolden": "Golden",
+    "IconViolet": "Violet",
+    "IconRed": "Red"
   },
   "AchievementDetailsViewModel": {
     "Title": "Dosežek",

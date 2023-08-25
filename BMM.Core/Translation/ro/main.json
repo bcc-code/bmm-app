@@ -327,6 +327,8 @@
     "UserVoiceText": "Ai idei de cum putem îmbunătăți BMM? Scrie-ne despre ele!",
     "ThemeHeader": "Modul întunecat",
     "ThemeText": "Alege între o vizualizare luminoasă sau întunecată",
+    "ColorHeader": "Color Theme",
+    "ColorText": "Choose between custom color themes",
     "SiriShortcutsHeader": "Scurtături pentru Siri",
     "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM",
     "PushNotificationsGoToSettings": "Din păcate, nu putem activa notificările push, deoarece acestea sunt dezactivate în setările dispozitivului tău. Te rugăm să permiți notificărilor push în setările dispozitivului tău pentru a activa această funcție."
@@ -499,6 +501,15 @@
     "Dark": "Întunecat",
     "System": "Preia setările sistemului (Automat)"
   },
+  "ColorThemeViewModel": {
+    "Title": "Color Theme",
+    "Default": "Default",
+    "Violet": "Violet",
+    "Red": "Red",
+    "DarkGreen": "Dark Green",
+    "Golden": "Golden",
+    "Orange": "Orange"
+  },
   "ChangeTrackLanguageViewModel": {
     "Title": "Limba piesei",
     "PreferredLanguages": "Limbile tale prioritare",
@@ -545,10 +556,12 @@
   "AppIconViewModel": {
     "Title": "App Icon",
     "Description": "Change the app icon of the app",
-    "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
+    "IconStandard": "Standard",
+    "IconDarkGreen": "Dark Green",
+    "IconOrange": "Orange",
+    "IconGolden": "Golden",
+    "IconViolet": "Violet",
+    "IconRed": "Red"
   },
   "AchievementDetailsViewModel": {
     "Title": "Achievement",
