@@ -327,6 +327,8 @@
     "UserVoiceText": "Heb je ideeën om BMM beter te maken? Vertel het ons.",
     "ThemeHeader": "Dark modus",
     "ThemeText": "Kies tussen licht en donker thema",
+    "ColorHeader": "Color Theme",
+    "ColorText": "Choose between custom color themes",
     "SiriShortcutsHeader": "Siri afkortingen",
     "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device ",
     "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren."
@@ -499,6 +501,15 @@
     "Dark": "Dark",
     "System": "Neem systeem instellingen over (auto)"
   },
+  "ColorThemeViewModel": {
+    "Title": "Color Theme",
+    "Default": "Default",
+    "Violet": "Violet",
+    "Red": "Red",
+    "DarkGreen": "Dark Green",
+    "Golden": "Golden",
+    "Orange": "Orange"
+  },
   "ChangeTrackLanguageViewModel": {
     "Title": "Nummer taal ",
     "PreferredLanguages": "Voorkeur talen",
@@ -545,10 +556,12 @@
   "AppIconViewModel": {
     "Title": "App-pictogram",
     "Description": "Verander het pictogram van de app",
-    "Standard": "Standaard",
-    "DarkGreen": "Donker groen",
-    "Orange": "Oranje",
-    "Golden": "Goud"
+    "IconStandard": "Standard",
+    "IconDarkGreen": "Dark Green",
+    "IconOrange": "Orange",
+    "IconGolden": "Golden",
+    "IconViolet": "Violet",
+    "IconRed": "Red"
   },
   "AchievementDetailsViewModel": {
     "Title": "Prestatie",
