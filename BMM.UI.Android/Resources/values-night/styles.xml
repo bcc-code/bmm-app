@@ -1,0 +1,10 @@
+﻿<resources xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- Application theme -->
+    
+    <style name="AppTheme" parent="AppTheme.Base">
+        <item name="tint_color">#C4EE9B</item>
+        <item name="background_four_color">#E8F0F7</item>
+        <item name="on_color_one_color">#0D131A</item>
+    </style>
+    
+</resources>

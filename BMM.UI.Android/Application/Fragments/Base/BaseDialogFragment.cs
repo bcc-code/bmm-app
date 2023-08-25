@@ -44,7 +44,7 @@ namespace BMM.UI.Droid.Application.Fragments.Base
         {
             base.OnCreate(savedInstanceState);
             
-            int? style = ThemeUtils.GetStyleForTheme(AppSettings.SelectedTheme, true);
+            int? style = ThemeUtils.GetStyleForTheme(AppSettings.SelectedColorTheme, true);
 
             if (style.HasValue)
                 SetStyle(StyleNormal, style.Value);

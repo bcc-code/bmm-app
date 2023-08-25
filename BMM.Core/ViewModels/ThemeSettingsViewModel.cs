@@ -18,13 +18,8 @@ namespace BMM.Core.ViewModels
 {
     public class ThemeSettingsViewModel : BaseViewModel, IThemeSettingsViewModel
     {
-        private readonly IFeaturePreviewPermission _featurePreviewPermission;
-
-        public ThemeSettingsViewModel(
-            IChangeThemeSettingsAction changeThemeSettingsAction,
-            IFeaturePreviewPermission featurePreviewPermission)
+        public ThemeSettingsViewModel(IChangeThemeSettingsAction changeThemeSettingsAction)
         {
-            _featurePreviewPermission = featurePreviewPermission;
             ThemeSelectedCommand = new MvxCommand<ThemeSettingPO>(async s =>
             {
                 AppSettings.SelectedTheme = s.Theme;
@@ -44,17 +39,6 @@ namespace BMM.Core.ViewModels
                 new(Theme.System, TextSource[GetType().GetTranslationKey(Theme.System.ToString())])
             };
 
-            if (DeviceInfo.Current.Platform == DevicePlatform.Android && _featurePreviewPermission.IsFeaturePreviewEnabled())
-            {
-                settingsList.AddRange(new List<ThemeSettingPO>
-                {
-                    new(Theme.GoldenLight, TextSource[GetType().GetTranslationKey(Theme.GoldenLight.ToString())]),
-                    new(Theme.GoldenDark, TextSource[GetType().GetTranslationKey(Theme.GoldenDark.ToString())]),
-                    new(Theme.OrangeLight, TextSource[GetType().GetTranslationKey(Theme.OrangeLight.ToString())]),
-                    new(Theme.OrangeDark, TextSource[GetType().GetTranslationKey(Theme.OrangeDark.ToString())]),
-                });
-            }
-            
             var appThemeSetting = AppSettings.SelectedTheme;
             ThemeSettings.AddRange(settingsList);
             SelectTheme(appThemeSetting);

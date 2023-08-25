@@ -1,23 +1,36 @@
 ﻿<resources xmlns:app="http://schemas.android.com/apk/res-auto">
     <!-- Application theme -->
     <style name="AppTheme" parent="AppTheme.Base" />
-
-    <style name="AppTheme.Dark" parent="AppTheme.Base">
-        <item name="tint_color">#C4EE9B</item>
-        <item name="background_four_color">#E8F0F7</item>
-        <item name="on_color_one_color">#0D131A</item>
-    </style>
+    <style name="AppTheme.Dark" parent="AppTheme.Base" />
     
-    <style name="AppTheme.CustomThemeGolden" parent="AppTheme.Base">
-        <item name="tint_color">#FFB47D</item>
-        <item name="background_four_color">#FFB47D</item>
-        <item name="on_color_one_color">#331600</item>
+    <style name="AppTheme.CustomThemeDarkGreen" parent="AppTheme.Base">
+        <item name="tint_color">#017265</item>
+        <item name="background_four_color">#017265</item>
+        <item name="on_color_one_color">#FFFFFF</item>
     </style>
 
     <style name="AppTheme.CustomThemeOrange" parent="AppTheme.Base">
-        <item name="tint_color">#EE5023</item>
-        <item name="background_four_color">#EE5023</item>
+        <item name="tint_color">#FFB47D</item>
+        <item name="background_four_color">#FFB47D</item>
+        <item name="on_color_one_color">#000000</item>
+    </style>
+    
+    <style name="AppTheme.CustomThemeViolet" parent="AppTheme.Base">
+        <item name="tint_color">#685FD2</item>
+        <item name="background_four_color">#685FD2</item>
         <item name="on_color_one_color">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeRed" parent="AppTheme.Base">
+        <item name="tint_color">#F15A29</item>
+        <item name="background_four_color">#F15A29</item>
+        <item name="on_color_one_color">#000000</item>
+    </style>
+    
+    <style name="AppTheme.CustomThemeGolden" parent="AppTheme.Base">
+        <item name="tint_color">#B49F6C</item>
+        <item name="background_four_color">#B49F6C</item>
+        <item name="on_color_one_color">#ffffff</item>
     </style>
     
     <style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight">
@@ -277,6 +290,13 @@
         <item name="android:textColor">@color/label_two_color</item>
     </style>
 
+    <style name="Paragraph2_Label3">
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textColor">@color/label_three_color</item>
+    </style>
+
     <style name="Paragraph3_Label1">
         <item name="android:textSize">13sp</item>
         <item name="android:lineHeight">24sp</item>
@@ -318,7 +338,7 @@
     <style name="Button_Primary_Large" parent="Button_Primary">
         <item name="android:height">@dimen/large_button_height</item>
         <item name="backgroundTint">?background_four_color</item>
-        <item name="android:textColor">@color/label_one_reverted_color</item>
+        <item name="android:textColor">?on_color_one_color</item>
     </style>
 
     <style name="IconButton_Primary" parent="Button_Primary">
@@ -378,11 +398,23 @@
         <item name="android:windowFullscreen">false</item>
     </style>
 
-    <style name="AppTheme.CustomThemeGolden.NotFullscreen" parent="AppTheme.CustomThemeGolden">
+    <style name="AppTheme.CustomThemeDarkGreen.NotFullscreen" parent="AppTheme.CustomThemeDarkGreen">
         <item name="android:windowFullscreen">false</item>
     </style>
 
     <style name="AppTheme.CustomThemeOrange.NotFullscreen" parent="AppTheme.CustomThemeOrange">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeViolet.NotFullscreen" parent="AppTheme.CustomThemeViolet">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+    
+    <style name="AppTheme.CustomThemeRed.NotFullscreen" parent="AppTheme.CustomThemeRed">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeGolden.NotFullscreen" parent="AppTheme.CustomThemeGolden">
         <item name="android:windowFullscreen">false</item>
     </style>
 </resources>

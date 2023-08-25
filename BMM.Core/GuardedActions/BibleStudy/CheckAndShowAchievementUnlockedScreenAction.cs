@@ -1,9 +1,9 @@
 using BMM.Api.Implementation.Clients.Contracts;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.Helpers.PresentationHints;
-using BMM.Core.Implementations;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Messages;
 using BMM.Core.Models.POs.BibleStudy;
@@ -11,7 +11,6 @@ using BMM.Core.Utils;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
-using MvvmCross.Base;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
 
@@ -43,6 +42,8 @@ public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheck
         if (!projectProgress.Achievements.Any())
             return;
 
+        AssignRewardPermissions(projectProgress);
+        
         var achievementToShow = projectProgress
             .Achievements
             .FirstOrDefault(a => a.HasAchieved && !a.HasAcknowledged);
@@ -60,5 +61,11 @@ public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheck
 
         await _mvxNavigationService.Navigate<AchievementDetailsViewModel, IAchievementDetailsParameter>(
             new AchievementDetailsParameter(achievementPO, true));
+    }
+
+    private void AssignRewardPermissions(ProjectProgress projectProgress)
+    {
+        foreach (var achievement in projectProgress.Achievements.Where(a => !a.HasAchieved))
+            AchievementsTools.SetAchievementUnlocked(achievement.Id);
     }
 }

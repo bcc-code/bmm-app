@@ -4,10 +4,6 @@ namespace BMM.Core.Models.Themes
     {
         Light,
         Dark,
-        System,
-        GoldenLight,
-        GoldenDark,
-        OrangeLight,
-        OrangeDark
+        System
     }
 }

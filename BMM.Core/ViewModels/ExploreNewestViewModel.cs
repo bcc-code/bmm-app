@@ -52,7 +52,6 @@ namespace BMM.Core.ViewModels
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
         private readonly IAddToQueueAdditionalMusic _addToQueueAdditionalMusic;
         private readonly ICheckAndShowAchievementUnlockedScreenAction _checkAndShowAchievementUnlockedScreenAction;
-        private readonly IStatisticsClient _statisticsClient;
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
 
@@ -68,8 +67,7 @@ namespace BMM.Core.ViewModels
             IFirebaseRemoteConfig config,
             IListeningStreakPOFactory listeningStreakPOFactory,
             IAddToQueueAdditionalMusic addToQueueAdditionalMusic,
-            ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction,
-            IStatisticsClient statisticsClient)
+            ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -83,7 +81,6 @@ namespace BMM.Core.ViewModels
             _listeningStreakPOFactory = listeningStreakPOFactory;
             _addToQueueAdditionalMusic = addToQueueAdditionalMusic;
             _checkAndShowAchievementUnlockedScreenAction = checkAndShowAchievementUnlockedScreenAction;
-            _statisticsClient = statisticsClient;
             _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
+        local:MvxBind="Click ClickedCommand"
+        local:layout_constraintTop_toBottomOf="@+id/EpisodeDateLabel"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:cardCornerRadius="@dimen/corner_radius_large"
+        local:cardBackgroundColor="@color/background_two_color"
+        local:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <ImageView
+                android:id="@+id/PlayIcon"
+                android:layout_width="@dimen/default_icon_size"
+                android:layout_height="@dimen/default_icon_size"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:src="@drawable/icon_play"
+                local:layout_constraintTop_toTopOf="parent"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent" />
+
+        <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/PlayAnimationView"
+                android:layout_width="@dimen/highlighted_text_play_icon_size"
+                android:layout_height="@dimen/highlighted_text_play_icon_size"
+                android:layout_marginStart="@dimen/margin_xxsmall"
+                android:visibility="gone"
+                local:layout_constraintTop_toTopOf="parent"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:lottie_rawRes="@raw/play_animation_icon_reverted"
+                local:lottie_loop="true"
+                local:lottie_autoPlay="true" />
+
+        <TextView
+                android:id="@+id/PlayLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xxsmall"
+                android:layout_marginTop="@dimen/margin_xxsmall"
+                android:layout_marginEnd="@dimen/margin_medium"
+                local:layout_constraintTop_toTopOf="parent"
+                local:layout_constraintStart_toEndOf="@+id/PlayIcon"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxBind="Text Title"
+                style="@style/Subtitle1_Label1" />
+
+        <TextView
+                android:id="@+id/SubtitleLabel"
+                android:layout_width="@dimen/match_constraint"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_xxsmall"
+                local:layout_constraintTop_toBottomOf="@+id/PlayLabel"
+                local:layout_constraintStart_toStartOf="@+id/PlayLabel"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:MvxBind="Text Subtitle"
+                style="@style/Paragraph2_Label3" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+</androidx.cardview.widget.CardView>

@@ -4,6 +4,8 @@ using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.CustomViews;
+using BMM.UI.iOS.Extensions;
+using Microsoft.IdentityModel.Tokens;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
@@ -19,6 +21,7 @@ namespace BMM.UI.iOS
         private bool _shouldShowConfetti;
         private bool _confettiShown;
         private bool _showAsModal;
+        private string _imagePath;
 
         public AchievementDetailsViewController() : base(null)
         {
@@ -40,12 +43,12 @@ namespace BMM.UI.iOS
                 .For(v => v.BindTap())
                 .To(vm => vm.CloseCommand);
 
-            set.Bind(IconImage)
+            set.Bind(this)
                 .For(v => v.ImagePath)
-                .To(vm => vm.AchievementPO.ImagePath);
-
+                .To(po => po.AchievementPO.ImagePath);
+            
             set.Bind(StatusLabel)
-                .To(vm => vm.TextSource[nameof(Translations.AchievementDetailsViewModel_Unlocked)]);
+                .To(vm => vm.TextSource[Translations.AchievementDetailsViewModel_Unlocked]);
             
             set.Bind(StatusLabel)
                 .For(v => v.BindVisible())
@@ -57,11 +60,38 @@ namespace BMM.UI.iOS
             set.Bind(DescriptionLabel)
                 .To(vm => vm.AchievementPO.Description);
             
+            set.Bind(RewardLabel)
+                .To(vm => vm.TextSource[Translations.AchievementDetailsViewModel_Reward]);
+            
+            set.Bind(SecondRewardLabel)
+                .To(vm => vm.TextSource[Translations.AchievementDetailsViewModel_Reward]);
+            
+            set.Bind(RewardDescriptionLabel)
+                .To(vm => vm.AchievementPO.RewardDescription);
+            
+            set.Bind(SecondRewandDescriptionLabel)
+                .To(vm => vm.AchievementPO.RewardDescription);
+
+            set.Bind(RewardDescriptionView)
+                .For(v => v.BindVisible())
+                .To(vm => vm.AchievementPO.ShouldShowRewardDescription);
+            
+            set.Bind(BottomRewardView)
+                .For(v => v.BindVisible())
+                .To(vm => vm.AchievementPO.ShouldShowSecondRewardDescription);
+            
             set.Bind(ActivateButton)
                 .For(po => po.BindTitle())
                 .To(vm => vm.ButtonTitle);
             
             set.Bind(ActivateButton)
+                .To(vm => vm.ButtonClickedCommand);
+            
+            set.Bind(SecondActivateButton)
+                .For(po => po.BindTitle())
+                .To(vm => vm.ButtonTitle);
+            
+            set.Bind(SecondActivateButton)
                 .To(vm => vm.ButtonClickedCommand);
             
             set.Bind(this)
@@ -71,7 +101,7 @@ namespace BMM.UI.iOS
             set.Bind(this)
                 .For(v => v.ShowAsModal)
                 .To(vm => vm.NavigationParameter.ShowAsModal);
-                
+            
             set.Apply();
 
             var viewModel = (AchievementDetailsViewModel)DataContext;
@@ -86,6 +116,23 @@ namespace BMM.UI.iOS
             }
 
             SetThemes();
+        }
+
+        public string ImagePath
+        {
+            get => _imagePath;
+            set
+            {
+                _imagePath = value;
+
+                if (_imagePath.IsNullOrEmpty())
+                {
+                    IconImage.ImagePath = ImageResourceNames.IconAchievementLocked.ToStandardIosImageName();
+                    return;
+                }
+
+                IconImage.ImagePath = _imagePath;
+            }
         }
 
         public bool ShowAsModal
@@ -142,8 +189,13 @@ namespace BMM.UI.iOS
             CloseIconView.Layer.ShadowOpacity = 0.1f;
             StatusLabel.ApplyTextTheme(AppTheme.Subtitle2Label2);
             NameLabel.ApplyTextTheme(AppTheme.Heading1);
+            RewardLabel.ApplyTextTheme(AppTheme.Subtitle2Label2);
+            SecondRewardLabel.ApplyTextTheme(AppTheme.Subtitle2Label2);
+            RewardDescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label1);
+            SecondRewandDescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label1);
             DescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);
             ActivateButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            SecondActivateButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
         }
 
         private void HandleDismiss(UIPresentationController presentationController)

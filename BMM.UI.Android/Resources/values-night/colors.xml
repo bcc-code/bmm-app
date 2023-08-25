@@ -14,9 +14,6 @@
     <color name="radio_color">#E3446B</color>
     <color name="highlight_color">#3B4C5F</color>
     <color name="separator_color">#1F81888E</color>
-    <color name="on_color_two_color">#444A50</color>
-    <color name="on_color_three_color">#666C73</color>
-    <color name="on_color_four_color">#C7CED4</color>
     <color name="utility_auto_color">#9D84FF</color>
     <color name="utility_auto_color_alpha">#4D9D84FF</color>
 </resources>

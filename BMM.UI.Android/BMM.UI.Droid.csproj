@@ -1023,6 +1023,40 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-xxxhdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-hdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-mdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-xhdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-xxhdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable\icon_achievement_locked_night.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\values-night\styles.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\fragment_color_theme.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_extrenal_relations_play_button_with_subtitle.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_extrenal_relations_open_button_with_subtitle.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <None Remove="google-services.json" />

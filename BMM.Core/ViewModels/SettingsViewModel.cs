@@ -30,6 +30,7 @@ using BMM.Core.Messages;
 using BMM.Core.Models;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
+using BMM.Core.Utils;
 using BMM.Core.ViewModels.Base;
 using Microsoft.Maui.Devices;
 using MvvmCross;
@@ -321,12 +322,22 @@ namespace BMM.Core.ViewModels
             
             generalSectionItems.AddIf(
                 () => _featurePreviewPermission.IsFeaturePreviewEnabled()
-                        && DeviceInfo.Platform != DevicePlatform.Android,
+                        && AchievementsTools.AnyAchievementUnlocked()
+                        && DeviceInfo.Platform == DevicePlatform.iOS,
                 new SelectableListItem
             {
                 Title = TextSource[Translations.AppIconViewModel_Title],
                 Text = TextSource[Translations.AppIconViewModel_Description],
                 OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
+            });
+            
+            generalSectionItems.AddIf(() => _featurePreviewPermission.IsFeaturePreviewEnabled()
+                                            && AchievementsTools.AnyAchievementUnlocked()
+                                            && DeviceInfo.Platform == DevicePlatform.Android, new SelectableListItem
+            {
+                Title = TextSource[Translations.SettingsViewModel_ColorHeader],
+                Text = TextSource[Translations.SettingsViewModel_ColorText],
+                OnSelected = NavigationService.NavigateCommand<ColorThemeViewModel>()
             });
             
             generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsDarkMode, new SelectableListItem

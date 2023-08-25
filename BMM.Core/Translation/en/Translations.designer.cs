@@ -260,6 +260,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_UserVoiceText = nameof(SettingsViewModel_UserVoiceText);
 		public const string SettingsViewModel_ThemeHeader = nameof(SettingsViewModel_ThemeHeader);
 		public const string SettingsViewModel_ThemeText = nameof(SettingsViewModel_ThemeText);
+		public const string SettingsViewModel_ColorHeader = nameof(SettingsViewModel_ColorHeader);
+		public const string SettingsViewModel_ColorText = nameof(SettingsViewModel_ColorText);
 		public const string SettingsViewModel_SiriShortcutsHeader = nameof(SettingsViewModel_SiriShortcutsHeader);
 		public const string SettingsViewModel_SiriShortcutsText = nameof(SettingsViewModel_SiriShortcutsText);
 		public const string SettingsViewModel_PushNotificationsGoToSettings = nameof(SettingsViewModel_PushNotificationsGoToSettings);
@@ -392,11 +394,14 @@ namespace BMM.Core.Translation
 		public const string ThemeSettingsViewModel_Title = nameof(ThemeSettingsViewModel_Title);
 		public const string ThemeSettingsViewModel_Light = nameof(ThemeSettingsViewModel_Light);
 		public const string ThemeSettingsViewModel_Dark = nameof(ThemeSettingsViewModel_Dark);
-		public const string ThemeSettingsViewModel_GoldenLight = nameof(ThemeSettingsViewModel_GoldenLight);
-		public const string ThemeSettingsViewModel_GoldenDark = nameof(ThemeSettingsViewModel_GoldenDark);
-		public const string ThemeSettingsViewModel_OrangeLight = nameof(ThemeSettingsViewModel_OrangeLight);
-		public const string ThemeSettingsViewModel_OrangeDark = nameof(ThemeSettingsViewModel_OrangeDark);
 		public const string ThemeSettingsViewModel_System = nameof(ThemeSettingsViewModel_System);
+		public const string ColorThemeViewModel_Title = nameof(ColorThemeViewModel_Title);
+		public const string ColorThemeViewModel_Default = nameof(ColorThemeViewModel_Default);
+		public const string ColorThemeViewModel_Violet = nameof(ColorThemeViewModel_Violet);
+		public const string ColorThemeViewModel_Red = nameof(ColorThemeViewModel_Red);
+		public const string ColorThemeViewModel_DarkGreen = nameof(ColorThemeViewModel_DarkGreen);
+		public const string ColorThemeViewModel_Golden = nameof(ColorThemeViewModel_Golden);
+		public const string ColorThemeViewModel_Orange = nameof(ColorThemeViewModel_Orange);
 		public const string ChangeTrackLanguageViewModel_Title = nameof(ChangeTrackLanguageViewModel_Title);
 		public const string ChangeTrackLanguageViewModel_PreferredLanguages = nameof(ChangeTrackLanguageViewModel_PreferredLanguages);
 		public const string ChangeTrackLanguageViewModel_AllLanguages = nameof(ChangeTrackLanguageViewModel_AllLanguages);
@@ -434,6 +439,8 @@ namespace BMM.Core.Translation
 		public const string AppIconViewModel_IconDarkGreen = nameof(AppIconViewModel_IconDarkGreen);
 		public const string AppIconViewModel_IconOrange = nameof(AppIconViewModel_IconOrange);
 		public const string AppIconViewModel_IconGolden = nameof(AppIconViewModel_IconGolden);
+		public const string AppIconViewModel_IconViolet = nameof(AppIconViewModel_IconViolet);
+		public const string AppIconViewModel_IconRed = nameof(AppIconViewModel_IconRed);
 		public const string AchievementDetailsViewModel_Title = nameof(AchievementDetailsViewModel_Title);
 		public const string AchievementDetailsViewModel_Unlocked = nameof(AchievementDetailsViewModel_Unlocked);
 		public const string AchievementDetailsViewModel_ActivatePremiumIcon = nameof(AchievementDetailsViewModel_ActivatePremiumIcon);

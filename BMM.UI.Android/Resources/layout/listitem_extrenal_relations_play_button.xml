@@ -6,6 +6,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_small"
         local:MvxBind="Click ClickedCommand"
         local:layout_constraintTop_toBottomOf="@+id/EpisodeDateLabel"
         local:layout_constraintStart_toStartOf="parent"

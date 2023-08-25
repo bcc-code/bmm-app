@@ -4,7 +4,10 @@ using AndroidX.ConstraintLayout.Widget;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Fragments.Base;
+using BMM.UI.Droid.Application.ViewHolders;
 using Com.Github.Jinatonic.Confetti;
+using FFImageLoading.Cross;
+using Microsoft.IdentityModel.Tokens;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
@@ -16,18 +19,24 @@ namespace BMM.UI.Droid.Application.Fragments
     {
         private bool _shouldShowConfetti;
         private bool _confettiShown;
+        private string _imagePath;
+        private MvxCachedImageView _imageView;
         protected override int FragmentId => Resource.Layout.fragment_achievements_details;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
-
+            _imageView = view.FindViewById<MvxCachedImageView>(Resource.Id.AchievementImage);
             var set = this.CreateBindingSet<AchievementDetailsFragment, AchievementDetailsViewModel>();
             
             set.Bind(this)
                 .For(s => s.ShouldShowConfetti)
                 .To(vm => vm.ShouldShowConfetti);
-            
+        
+            set.Bind(this)
+                .For(v => v.ImagePath)
+                .To(po => po.AchievementPO.ImagePath);
+
             set.Apply();
             return view;
         }
@@ -43,6 +52,22 @@ namespace BMM.UI.Droid.Application.Fragments
                 {
                     _confettiShown = true;
                     ShowConfetti();
+                }
+            }
+        }
+
+        public string ImagePath
+        {
+            get => _imagePath;
+            set
+            {
+                _imagePath = value;
+                
+                if (_imagePath.IsNullOrEmpty())
+                {
+                    _imageView.ImagePath  = Context.IsNightMode()
+                        ? AchievementViewHolder.NightModeIcon
+                        : AchievementViewHolder.StandardModeIcon;
                 }
             }
         }

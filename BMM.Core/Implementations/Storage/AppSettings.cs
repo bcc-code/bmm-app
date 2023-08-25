@@ -25,6 +25,12 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(SelectedTheme), Theme.System);
             set => AddOrUpdateValue(value, nameof(SelectedTheme));
         }
+        
+        public static ColorTheme SelectedColorTheme
+        {
+            get => GetValueOrDefault(nameof(SelectedColorTheme), ColorTheme.Default);
+            set => AddOrUpdateValue(value, nameof(SelectedColorTheme));
+        }
 
         public static bool YearInReviewShown
         {
@@ -174,6 +180,36 @@ namespace BMM.Core.Implementations.Storage
         {
             get => GetValueOrDefault(nameof(HighlightedTextPopupAlreadyShown), default(bool));
             set => AddOrUpdateValue(value, nameof(HighlightedTextPopupAlreadyShown));
+        }
+        
+        public static bool DarkGreenRewardUnlocked
+        {
+            get => GetValueOrDefault(nameof(DarkGreenRewardUnlocked), default(bool));
+            set => AddOrUpdateValue(value, nameof(DarkGreenRewardUnlocked));
+        }
+        
+        public static bool OrangeRewardUnlocked
+        {
+            get => GetValueOrDefault(nameof(OrangeRewardUnlocked), default(bool));
+            set => AddOrUpdateValue(value, nameof(OrangeRewardUnlocked));
+        }
+        
+        public static bool VioletRewardUnlocked
+        {
+            get => GetValueOrDefault(nameof(VioletRewardUnlocked), default(bool));
+            set => AddOrUpdateValue(value, nameof(VioletRewardUnlocked));
+        }
+        
+        public static bool RedRewardUnlocked
+        {
+            get => GetValueOrDefault(nameof(RedRewardUnlocked), default(bool));
+            set => AddOrUpdateValue(value, nameof(RedRewardUnlocked));
+        }
+        
+        public static bool GoldenRewardUnlocked
+        {
+            get => GetValueOrDefault(nameof(GoldenRewardUnlocked), default(bool));
+            set => AddOrUpdateValue(value, nameof(GoldenRewardUnlocked));
         }
         
         public static void Clear() => Settings.Clear();

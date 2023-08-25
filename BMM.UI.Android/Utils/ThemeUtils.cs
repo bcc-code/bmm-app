@@ -10,12 +10,8 @@ namespace BMM.UI.Droid.Utils
             switch (theme)
             {
                 case Theme.Dark:
-                case Theme.OrangeDark:
-                case Theme.GoldenDark:
                     return AppCompatDelegate.ModeNightYes;
                 case Theme.Light:
-                case Theme.OrangeLight:
-                case Theme.GoldenLight:
                     return AppCompatDelegate.ModeNightNo;
                 case Theme.System:
                     return AppCompatDelegate.ModeNightFollowSystem;
@@ -24,22 +20,34 @@ namespace BMM.UI.Droid.Utils
             }
         }
         
-        public static int? GetStyleForTheme(Theme theme, bool isDialog)
+        public static int? GetStyleForTheme(ColorTheme theme, bool isDialog)
         {
             switch (theme)
             {
-                case Theme.OrangeDark:
-                case Theme.OrangeLight:
+                case ColorTheme.DarkGreen:
+                    return isDialog
+                        ? Resource.Style.AppTheme_CustomThemeDarkGreen_NotFullscreen
+                        : Resource.Style.AppTheme_CustomThemeDarkGreen;
+                case ColorTheme.Orange:
                     return isDialog
                         ? Resource.Style.AppTheme_CustomThemeOrange_NotFullscreen
                         : Resource.Style.AppTheme_CustomThemeOrange;
-                case Theme.GoldenDark:
-                case Theme.GoldenLight:
+                case ColorTheme.Violet:
+                    return isDialog
+                        ? Resource.Style.AppTheme_CustomThemeViolet_NotFullscreen
+                        : Resource.Style.AppTheme_CustomThemeViolet;
+                case ColorTheme.Red:
+                    return isDialog
+                        ? Resource.Style.AppTheme_CustomThemeRed_NotFullscreen
+                        : Resource.Style.AppTheme_CustomThemeRed;
+                case ColorTheme.Golden:
                     return isDialog
                         ? Resource.Style.AppTheme_CustomThemeGolden_NotFullscreen
                         : Resource.Style.AppTheme_CustomThemeGolden;
                 default:
-                    return Resource.Style.AppTheme_NotFullscreen;;
+                    return isDialog
+                        ? Resource.Style.AppTheme_NotFullscreen
+                        : Resource.Style.AppTheme;
             }
         }
     }

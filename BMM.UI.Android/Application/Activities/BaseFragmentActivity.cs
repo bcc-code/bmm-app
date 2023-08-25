@@ -14,7 +14,7 @@ namespace BMM.UI.Droid.Application.Activities
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            int? style = ThemeUtils.GetStyleForTheme(AppSettings.SelectedTheme, false);
+            int? style = ThemeUtils.GetStyleForTheme(AppSettings.SelectedColorTheme, false);
             
             if (style.HasValue)
                 SetTheme(style.Value);

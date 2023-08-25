@@ -17,6 +17,9 @@ namespace BMM.UI.iOS
 		UIKit.UIButton ActivateButton { get; set; }
 
 		[Outlet]
+		UIKit.UIView BottomRewardView { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint CloseIconHeightConstraint { get; set; }
 
 		[Outlet]
@@ -32,6 +35,24 @@ namespace BMM.UI.iOS
 		UIKit.UILabel NameLabel { get; set; }
 
 		[Outlet]
+		UIKit.UILabel RewardDescriptionLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIView RewardDescriptionView { get; set; }
+
+		[Outlet]
+		UIKit.UILabel RewardLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIButton SecondActivateButton { get; set; }
+
+		[Outlet]
+		UIKit.UILabel SecondRewandDescriptionLabel { get; set; }
+
+		[Outlet]
+		UIKit.UILabel SecondRewardLabel { get; set; }
+
+		[Outlet]
 		UIKit.UILabel StatusLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -39,6 +60,16 @@ namespace BMM.UI.iOS
 			if (ActivateButton != null) {
 				ActivateButton.Dispose ();
 				ActivateButton = null;
+			}
+
+			if (SecondActivateButton != null) {
+				SecondActivateButton.Dispose ();
+				SecondActivateButton = null;
+			}
+
+			if (CloseIconHeightConstraint != null) {
+				CloseIconHeightConstraint.Dispose ();
+				CloseIconHeightConstraint = null;
 			}
 
 			if (CloseIconView != null) {
@@ -66,9 +97,34 @@ namespace BMM.UI.iOS
 				StatusLabel = null;
 			}
 
-			if (CloseIconHeightConstraint != null) {
-				CloseIconHeightConstraint.Dispose ();
-				CloseIconHeightConstraint = null;
+			if (RewardDescriptionView != null) {
+				RewardDescriptionView.Dispose ();
+				RewardDescriptionView = null;
+			}
+
+			if (RewardLabel != null) {
+				RewardLabel.Dispose ();
+				RewardLabel = null;
+			}
+
+			if (RewardDescriptionLabel != null) {
+				RewardDescriptionLabel.Dispose ();
+				RewardDescriptionLabel = null;
+			}
+
+			if (BottomRewardView != null) {
+				BottomRewardView.Dispose ();
+				BottomRewardView = null;
+			}
+
+			if (SecondRewardLabel != null) {
+				SecondRewardLabel.Dispose ();
+				SecondRewardLabel = null;
+			}
+
+			if (SecondRewandDescriptionLabel != null) {
+				SecondRewandDescriptionLabel.Dispose ();
+				SecondRewandDescriptionLabel = null;
 			}
 
 		}
