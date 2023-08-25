@@ -12,7 +12,7 @@ namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxDialogFragmentPresentation(ActivityHostViewModelType = typeof(MainActivityViewModel), Cancelable = true, AddToBackStack = true)]
     [Register("bmm.ui.droid.application.fragments.ListeningStreakDetailsFragment")]
-    public class ListeningStreakDetailsFragment : BaseSlideInOutFragment<ListeningStreakDetailsViewModel>, IDialogInterfaceOnKeyListener
+    public class ListeningStreakDetailsFragment : BaseSlideInOutFragment<ListeningStreakDetailsViewModel>
     {
         private IMvxInteraction _closeInteraction;
         private bool _isExecuting;
@@ -56,8 +56,6 @@ namespace BMM.UI.Droid.Application.Fragments
                 _closeInteraction.Requested -= OnCloseInteractionRequested;
                 _closeInteraction.Requested += OnCloseInteractionRequested;
             }
-            
-            Dialog?.SetOnKeyListener(this);
         }
 
         protected override void DetachEvents()
@@ -85,13 +83,9 @@ namespace BMM.UI.Droid.Application.Fragments
             }
         }
 
-        public bool OnKey(IDialogInterface? dialog, Keycode keyCode, KeyEvent? e)
+        protected override void HandleClose()
         {
-            if (keyCode != Keycode.Back)
-                return false;
-            
             ViewModel.CloseOptionsCommand.Execute();
-            return true;
         }
     }
 }

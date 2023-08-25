@@ -4,6 +4,7 @@ using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.NewMediaPlayer;
+using BMM.UI.iOS.Utils;
 using CoreAnimation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
@@ -149,13 +150,7 @@ namespace BMM.UI.iOS
 
         private void SetLottieAnimation()
         {
-            LOTAnimationView animation = null;
-
-            if (VersionHelper.SupportsDarkMode && AppDelegate.MainWindow.TraitCollection.UserInterfaceStyle == UIUserInterfaceStyle.Dark)
-                animation = LOTAnimationView.AnimationNamed(LottieAnimationsNames.PlayAnimationIconDark);
-            else
-                animation = LOTAnimationView.AnimationNamed(LottieAnimationsNames.PlayAnimationIcon);
-            
+            var animation = ThemeUtils.GetLottieAnimationFor(LottieAnimationsNames.PlayAnimationIcon, LottieAnimationsNames.PlayAnimationIconDark);
             animation.BackgroundColor = AppColors.LabelOneColor;
             animation.TintColor = UIColor.Red;
             animation.LoopAnimation = true;

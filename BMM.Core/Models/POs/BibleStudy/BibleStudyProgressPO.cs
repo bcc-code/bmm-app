@@ -6,14 +6,15 @@ using BMM.Core.Helpers.Interfaces;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.ListeningStreaks;
+using BMM.Core.ViewModels;
 using Microsoft.Maui.Devices.Sensors;
+using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
 namespace BMM.Core.Models.POs.BibleStudy;
 
 public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
 {
-    private readonly ProjectProgress _projectProgress;
     private ListeningStreakPO _listeningStreak;
 
     public BibleStudyProgressPO(
@@ -28,6 +29,11 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
 
         foreach (var achievement in projectProgress.Achievements)
             Achievements.Add(new AchievementPO(achievement, navigationService));
+
+        TermsButtonClickedCommand = new ExceptionHandlingCommand(async () =>
+        {
+            await navigationService.Navigate<BibleStudyRulesViewModel>();
+        });
     }
 
     public ListeningStreakPO ListeningStreakPO
@@ -53,4 +59,5 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
     public string BoostNumber { get; }
     public string PointsNumber { get; }
     public IBmmObservableCollection<IAchievementPO> Achievements { get; } = new BmmObservableCollection<IAchievementPO>();
+    public IMvxAsyncCommand TermsButtonClickedCommand { get; }
 }

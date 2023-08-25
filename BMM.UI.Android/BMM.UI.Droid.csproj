@@ -10,14 +10,6 @@
     <ApplicationId>org.brunstad.bmm</ApplicationId>
     <RootNamespace>BMM.UI.Droid</RootNamespace>
     <AssemblyName>BMM.UI.Android</AssemblyName>
-<!-- there is an issue with net 7 android sdk when compliling AOT-->
-<!-- should be fixed in dotnet sdk 7.0.300-->
-<!-- these entries can be removed, when this version will be published-->
-<!--    https://github.com/dotnet/linker/issues/3112-->
-    <RunAOTCompilation>False</RunAOTCompilation>
-    <PublishTrimmed>False</PublishTrimmed>
-<!-- ##-->
-
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <AndroidPackageFormat>apk</AndroidPackageFormat>
@@ -60,6 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Resources\values-xxxhdpi\dimens.xml" />
+    <AndroidResource Include="Resources\raw-night\play_animation_icon_reverted.json">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
     <AndroidResource Include="Resources\values-xxxhdpi\dimens.xml" />
     <None Remove="Resources\values-xxhdpi\dimens.xml" />
     <AndroidResource Include="Resources\values-xxhdpi\dimens.xml" />
@@ -388,8 +384,6 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_arrow_right.png" />
     <None Remove="Resources\drawable-xxxhdpi\icon_now_playing.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_now_playing.png" />
-    <None Remove="Resources\drawable-xxxhdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-xxxhdpi\loading_spinner.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-xxxhdpi\aslaksen.png" />
@@ -470,8 +464,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-xxhdpi\btn_play_static.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\btn_play_static.png" />
-    <None Remove="Resources\drawable-xxhdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-xxhdpi\icon_rearrange.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon_rearrange.png" />
     <None Remove="Resources\drawable-xxhdpi\btn_play_active.png" />
@@ -620,8 +612,6 @@
     <AndroidResource Include="Resources\drawable-mdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-mdpi\icon_now_playing.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_now_playing.png" />
-    <None Remove="Resources\drawable-mdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-mdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_play_small.png" />
     <None Remove="Resources\drawable-mdpi\icon_blue_dot.png" />
@@ -710,8 +700,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\loading_spinner.png" />
     <None Remove="Resources\drawable-hdpi\btn_pause_active.png" />
     <AndroidResource Include="Resources\drawable-hdpi\btn_pause_active.png" />
-    <None Remove="Resources\drawable-hdpi\icon_add_static.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon_add_static.png" />
     <None Remove="Resources\drawable-hdpi\icon_play_small.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_play_small.png" />
     <None Remove="Resources\drawable-hdpi\icon_blue_dot.png" />
@@ -1012,6 +1000,60 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Update="Resources\layout\fragment_achievements_details.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable\icon_play_mini.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\raw\play_animation_icon_reverted.json">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\fragment_bible_study_rules.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\asd.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_bible_study_rules_header.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-xxxhdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-hdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-mdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-xhdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable-night-xxhdpi\icon_achievement_locked.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\drawable\icon_achievement_locked_night.png">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Update="Resources\values-night\styles.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\fragment_color_theme.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_extrenal_relations_play_button_with_subtitle.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_extrenal_relations_open_button_with_subtitle.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>

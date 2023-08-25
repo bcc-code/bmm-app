@@ -2,9 +2,9 @@
 <ffimageloading.cross.MvxCachedImageView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ImageView"
     android:layout_width="68dp"
     android:layout_height="80dp"
     local:MvxBind="
         ImageViewPath ImagePath;
-        Click AchievementClickedCommand;
-        ViewAlpha IsActiveToAlpha(IsActive)" />
+        Click AchievementClickedCommand" />

@@ -1,3 +1,4 @@
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.App.Interfaces;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.Helpers;
@@ -8,6 +9,7 @@ using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross;
 using MvvmCross.Commands;
+using MvvmCross.Core;
 
 namespace BMM.Core.ViewModels;
 
@@ -19,21 +21,12 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
     private bool _shouldShowConfetti;
 
     public AchievementDetailsViewModel(
-        IAcknowledgeAchievementAction acknowledgeAchievementAction)
+        IAcknowledgeAchievementAction acknowledgeAchievementAction,
+        IActivateRewardAction activateRewardAction)
     {
         _acknowledgeAchievementAction = acknowledgeAchievementAction;
-        
-        ButtonClickedCommand = new ExceptionHandlingCommand(async () =>
-        {
-            if (!AchievementPO.IsActive || !AchievementPO.HasIconReward)
-            {
-                await CloseCommand.ExecuteAsync();
-                return;
-            }
-
-            var appIconSelectedAction = Mvx.IoCProvider.Resolve<IAppIconSelectedAction>();
-            await appIconSelectedAction.ExecuteGuarded(AchievementsTools.GetIconTypeFor(AchievementPO.AchievementType)!.Value);
-        });
+        activateRewardAction.AttachDataContext(this);
+        ButtonClickedCommand = activateRewardAction.Command;
     }
 
     public override void ViewDestroy(bool viewFinishing = true)
@@ -77,6 +70,9 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
         
         if (AchievementPO.HasIconReward)
             return TextSource[nameof(Translations.AchievementDetailsViewModel_ActivatePremiumIcon)];
+        
+        if (AchievementPO.HasThemeReward)
+            return TextSource[nameof(Translations.AchievementDetailsViewModel_ActivateTheme)];
         
         return TextSource[nameof(Translations.AchievementDetailsViewModel_Close)];
     }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
@@ -25,15 +21,18 @@ using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.UI.StyledText;
-using BMM.Core.Implementations.UI.StyledText.Enums;
 using BMM.Core.Messages;
 using BMM.Core.Models;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
+using BMM.Core.Utils;
 using BMM.Core.ViewModels.Base;
+using Microsoft.Maui.Devices;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
+using DeviceInfo = Microsoft.Maui.Devices.DeviceInfo;
+using IDeviceInfo = BMM.Core.Implementations.Device.IDeviceInfo;
 
 namespace BMM.Core.ViewModels
 {
@@ -47,7 +46,6 @@ namespace BMM.Core.ViewModels
         private readonly INotificationSubscriptionTokenProvider _tokenProvider;
         private readonly IClipboardService _clipboard;
         private readonly IDeveloperPermission _developerPermission;
-        private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly IContacter _contacter;
         private readonly IAnalytics _analytics;
         private readonly IStorageManager _storageManager;
@@ -64,6 +62,7 @@ namespace BMM.Core.ViewModels
         private readonly INotificationPermissionService _notificationPermissionService;
         private readonly IChangeNotificationSettingStateAction _changeNotificationSettingStateAction;
         private readonly IResetAchievementAction _resetAchievementAction;
+        private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -315,17 +314,27 @@ namespace BMM.Core.ViewModels
                     OnSelected = NavigationService.NavigateCommand<LanguageContentViewModel>()
                 }
             };
-
-            if (_featurePreviewPermission.IsFeaturePreviewEnabled())
+            
+            generalSectionItems.AddIf(
+                () => (_featurePreviewPermission.IsFeaturePreviewEnabled() || AchievementsTools.AnyAchievementUnlocked())
+                        && DeviceInfo.Platform == DevicePlatform.iOS,
+                new SelectableListItem
             {
-                generalSectionItems.Add(new SelectableListItem
-                {
-                    Title = TextSource[Translations.AppIconViewModel_Title],
-                    Text = TextSource[Translations.AppIconViewModel_Description],
-                    OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
-                });
-            }
+                Title = TextSource[Translations.AppIconViewModel_Title],
+                Text = TextSource[Translations.AppIconViewModel_Description],
+                OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
+            });
 
+            generalSectionItems.AddIf(() =>
+                    (_featurePreviewPermission.IsFeaturePreviewEnabled() || AchievementsTools.AnyAchievementUnlocked())
+                    && DeviceInfo.Platform == DevicePlatform.Android,
+                new SelectableListItem
+                {
+                    Title = TextSource[Translations.SettingsViewModel_ColorHeader],
+                    Text = TextSource[Translations.SettingsViewModel_ColorText],
+                    OnSelected = NavigationService.NavigateCommand<ColorThemeViewModel>()
+                });
+            
             generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsDarkMode, new SelectableListItem
             {
                 Title = TextSource[Translations.SettingsViewModel_ThemeHeader],

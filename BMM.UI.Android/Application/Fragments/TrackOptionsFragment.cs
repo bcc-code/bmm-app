@@ -12,7 +12,7 @@ namespace BMM.UI.Droid.Application.Fragments
 {
     [MvxDialogFragmentPresentation(ActivityHostViewModelType = typeof(MainActivityViewModel), Cancelable = true, AddToBackStack = true)]
     [Register("bmm.ui.droid.application.fragments.TrackOptionsFragment")]
-    public class TrackOptionsFragment : BaseSlideInOutFragment<OptionsListViewModel>, IDialogInterfaceOnKeyListener
+    public class TrackOptionsFragment : BaseSlideInOutFragment<OptionsListViewModel>
     {
         private IMvxInteraction _closeInteraction;
         private bool _isExecuting;
@@ -56,8 +56,6 @@ namespace BMM.UI.Droid.Application.Fragments
                 _closeInteraction.Requested -= OnCloseInteractionRequested;
                 _closeInteraction.Requested += OnCloseInteractionRequested;
             }
-            
-            Dialog.SetOnKeyListener(this);
         }
         
 
@@ -86,13 +84,9 @@ namespace BMM.UI.Droid.Application.Fragments
             }
         }
 
-        public bool OnKey(IDialogInterface? dialog, Keycode keyCode, KeyEvent? e)
+        protected override void HandleClose()
         {
-            if (keyCode != Keycode.Back)
-                return false;
-            
-            ViewModel.CloseOptionsCommand.Execute();
-            return true;
+            ViewModel?.CloseOptionsCommand?.Execute();
         }
     }
 }

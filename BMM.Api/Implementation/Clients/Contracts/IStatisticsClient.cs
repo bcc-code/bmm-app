@@ -73,7 +73,9 @@ namespace BMM.Api.Implementation.Clients.Contracts
         
         Task<IList<YearInReviewItem>> GetYearInReview();
 
-        Task<ProjectProgress> GetProjectProgress();
+        Task<ProjectProgress> GetProjectProgress(string lang);
+        
+        Task<ProjectRules> GetProjectRules(string lang);
         
         Task AchievementAcknowledge(string achievementType);
         

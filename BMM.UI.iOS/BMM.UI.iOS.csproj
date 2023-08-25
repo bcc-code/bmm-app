@@ -264,6 +264,13 @@
     <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@1x.png" />
     <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@2x.png" />
     <ImageAsset Include="Resources\Images.xcassets\YearInReview.imageset\year_in_review_light@3x.png" />
+    <ImageAsset Update="Resources\Images.xcassets\Contents.json">
+      <Visible>False</Visible>
+    </ImageAsset>
+    <ImageAsset Remove="Resources\Images.xcassets\AppIconDarkGreen.imageset\dark_green_120.png" />
+    <ImageAsset Remove="Resources\Images.xcassets\AppIconGolden.imageset\golden_120.png" />
+    <ImageAsset Remove="Resources\Images.xcassets\AppIconOrange.imageset\orange_87.png" />
+    <ImageAsset Remove="Resources\Images.xcassets\AppIconStandard.imageset\Icon-40@3x.png" />
   </ItemGroup>
   
   <ItemGroup>

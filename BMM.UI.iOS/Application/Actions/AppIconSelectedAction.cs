@@ -21,7 +21,7 @@ public class AppIconSelectedAction : GuardedActionWithParameter<AppIconType>, IA
     {
         string icon = null;
 
-        if (parameter != AppIconType.Standard)
+        if (parameter != AppIconType.IconStandard)
             icon = parameter.ToString();
 
         _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>

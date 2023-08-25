@@ -29,7 +29,7 @@
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SelectedIcon" translatesAutoresizingMaskIntoConstraints="NO" id="YbA-4b-1C7">
                         <rect key="frame" x="273" y="20" width="24" height="24"/>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L9b-aD-MKD" customClass="MvxCachedImageView">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="L9b-aD-MKD">
                         <rect key="frame" x="16" y="12" width="40" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="9Up-HU-jL7"/>

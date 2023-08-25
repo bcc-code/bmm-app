@@ -1,5 +1,6 @@
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.Other.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BMM.UI.iOS;
 
@@ -8,7 +9,9 @@ public class BibleStudyTableViewSource : BaseTableViewSource
     public BibleStudyTableViewSource(UITableView tableView) : base(tableView)
     {
         tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsPlayTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsPlayTableViewCell.Key);
+        tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsPlayWithSubtitleTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsPlayWithSubtitleTableViewCell.Key);
         tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsOpenTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsOpenTableViewCell.Key);
+        tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsOpenWithSubtitleTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsOpenWithSubtitleTableViewCell.Key);
     }
 
     protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
@@ -16,9 +19,15 @@ public class BibleStudyTableViewSource : BaseTableViewSource
         if (item is IBibleStudyExternalRelationPO bibleStudyExternalRelationPO)
         {
             if (bibleStudyExternalRelationPO.WillPlayTrack)
-                return tableView.DequeueReusableCell(ExternalRelationsPlayTableViewCell.Key);
-            
-            return tableView.DequeueReusableCell(ExternalRelationsOpenTableViewCell.Key);
+            {
+                return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty()
+                    ? tableView.DequeueReusableCell(ExternalRelationsPlayTableViewCell.Key)
+                    : tableView.DequeueReusableCell(ExternalRelationsPlayWithSubtitleTableViewCell.Key);
+            }
+
+            return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty() 
+                ? tableView.DequeueReusableCell(ExternalRelationsOpenTableViewCell.Key)
+                :  tableView.DequeueReusableCell(ExternalRelationsOpenWithSubtitleTableViewCell.Key);
         }
         
         return base.GetOrCreateCellFor(tableView, indexPath, item);

@@ -1,13 +1,16 @@
 using BMM.Api.Implementation.Clients.Contracts;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.TrackInfo.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Factories.Streak;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Other;
+using BMM.Core.Utils;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Interfaces;
 using MvvmCross.Navigation;
@@ -23,6 +26,7 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
     private readonly IMvxNavigationService _mvxNavigationService;
     private readonly IDeepLinkHandler _deepLinkHandler;
     private readonly IUriOpener _uriOpener;
+    private readonly IAppLanguageProvider _appLanguageProvider;
 
     private IBibleStudyViewModel DataContext => this.GetDataContext();
 
@@ -33,7 +37,8 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         IBuildExternalRelationsAction buildExternalRelationsAction,
         IMvxNavigationService mvxNavigationService,
         IDeepLinkHandler deepLinkHandler,
-        IUriOpener uriOpener)
+        IUriOpener uriOpener,
+        IAppLanguageProvider appLanguageProvider)
     {
         _statisticsClient = statisticsClient;
         _listeningStreakPOFactory = listeningStreakPOFactory;
@@ -42,11 +47,15 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         _mvxNavigationService = mvxNavigationService;
         _deepLinkHandler = deepLinkHandler;
         _uriOpener = uriOpener;
+        _appLanguageProvider = appLanguageProvider;
     }
     
     protected override async Task Execute()
     {
-        var projectProgress = await _statisticsClient.GetProjectProgress();
+        var projectProgress = await _statisticsClient.GetProjectProgress(_appLanguageProvider.GetAppLanguage());
+
+        UpdateUnlockedAchievements(projectProgress);
+
         var track = DataContext.NavigationParameter.Track;
 
         DataContext.Items.Add(new BibleStudyHeaderPO(track.Album, track.Title, track.GetPublishDate()));
@@ -70,5 +79,13 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         var streak = _listeningStreakPOFactory.Create(projectProgress.Streak);
         DataContext.Items.Add(new BibleStudyProgressPO(streak, projectProgress, _mvxNavigationService));
         DataContext.Items.AddRange(await _buildTrackInfoSectionsAction.ExecuteGuarded(track));
+    }
+
+    private void UpdateUnlockedAchievements(ProjectProgress projectProgress)
+    {
+        foreach (var achievement in projectProgress.Achievements.Where(a => a.HasAchieved))
+        {
+            AchievementsTools.SetAchievementUnlocked(achievement.Id);
+        }
     }
 }

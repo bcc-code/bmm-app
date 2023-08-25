@@ -1,6 +1,7 @@
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
+using Android.Util;
 using AndroidX.Core.Content;
 
 namespace BMM.UI.Droid.Application.Extensions
@@ -12,6 +13,13 @@ namespace BMM.UI.Droid.Application.Extensions
             return Build.VERSION.SdkInt >= BuildVersionCodes.M
                 ? new Color(ContextCompat.GetColor(context, id))
                 : context.Resources!.GetColor(id);
+        }
+        
+        public static Color GetColorFromTheme(this Context context, int attributeId)
+        {
+            var typedValue = new TypedValue();
+            context.Theme!.ResolveAttribute(attributeId, typedValue, true);
+            return new Color(typedValue.Data);
         }
         
         public static bool IsNightMode(this Context context)

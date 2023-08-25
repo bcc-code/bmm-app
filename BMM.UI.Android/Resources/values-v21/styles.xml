@@ -3,6 +3,7 @@
           Base application theme for API 21+. This theme completely replaces
           AppTheme from BOTH res/values/styles.xml on API 21+ devices.
       -->
+    
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
 
@@ -23,7 +24,7 @@
         <item name="android:layout_marginTop">@dimen/element_margin_medium</item>
         <item name="android:layout_marginBottom">@dimen/element_margin_medium</item>
         <item name="android:indeterminate">true</item>
-        <item name="android:indeterminateTint">@color/tint_color</item>
+        <item name="android:indeterminateTint">?tint_color</item>
         <item name="android:indeterminateTintMode">src_in</item>
     </style>
 

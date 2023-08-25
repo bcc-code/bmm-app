@@ -2,6 +2,7 @@ using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Translation;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
@@ -116,6 +117,10 @@ namespace BMM.UI.iOS
                     .For(v => v.BorderWidth)
                     .To(v => v.ListeningStreakPO.ListeningStreak.Friday)
                     .WithConversion<BorderVisibilityConverter>();
+                
+                set.Bind(TermsButtonView)
+                    .For(v => v.BindTap())
+                    .To(po => po.TermsButtonClickedCommand);
                 
                 AchivementsCollectionView.Source = source;
                 set.Apply();

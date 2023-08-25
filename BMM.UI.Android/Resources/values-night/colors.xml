@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <resources>
-    <color name="tint_color">#C4EE9B</color>
     <color name="label_one_color">#E9F0F7</color>
     <color name="label_one_reverted_color">#0D131A</color>
     <color name="label_two_color">#C7CED4</color>
@@ -11,15 +10,10 @@
     <color name="background_one_color">#171B1F</color>
     <color name="background_two_color">#22272B</color>
     <color name="background_three_color">#2C3135</color>
-    <color name="background_four_color">#E8F0F7</color>
     <color name="notification_color">#349AF8</color>
     <color name="radio_color">#E3446B</color>
     <color name="highlight_color">#3B4C5F</color>
     <color name="separator_color">#1F81888E</color>
-    <color name="on_color_one_color">#0D131A</color>
-    <color name="on_color_two_color">#444A50</color>
-    <color name="on_color_three_color">#666C73</color>
-    <color name="on_color_four_color">#C7CED4</color>
     <color name="utility_auto_color">#9D84FF</color>
     <color name="utility_auto_color_alpha">#4D9D84FF</color>
 </resources>

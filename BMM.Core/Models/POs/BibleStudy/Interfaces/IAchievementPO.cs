@@ -11,5 +11,7 @@ public interface IAchievementPO : IBasePO
     string Title { get; }
     string Description { get; }
     string AchievementType { get; }
+    string RewardDescription { get; }
+    bool ShouldShowRewardDescription { get; }
     IMvxAsyncCommand AchievementClickedCommand { get; }
 }

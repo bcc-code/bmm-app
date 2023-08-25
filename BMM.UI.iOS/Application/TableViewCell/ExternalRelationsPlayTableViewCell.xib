@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UiR-kO-pBO">
-                        <rect key="frame" x="16" y="0.0" width="383" height="77"/>
+                        <rect key="frame" x="16" y="8" width="383" height="69"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlay" translatesAutoresizingMaskIntoConstraints="NO" id="S8s-ef-3HS">
-                                <rect key="frame" x="16" y="26.5" width="24" height="24"/>
+                                <rect key="frame" x="16" y="22.5" width="24" height="24"/>
                                 <color key="tintColor" name="LabelOneColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="3Mh-S0-R9o"/>
@@ -28,16 +28,25 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Play" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2a-Kn-Sb4">
-                                <rect key="frame" x="50" y="16" width="317" height="45"/>
+                                <rect key="frame" x="50" y="16" width="317" height="37"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d9U-M6-BkM">
+                                <rect key="frame" x="13" y="19.5" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Hlm-NC-HdX"/>
+                                    <constraint firstAttribute="width" constant="30" id="Mhl-AA-z0q"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundTwoColor"/>
                         <constraints>
                             <constraint firstItem="S8s-ef-3HS" firstAttribute="leading" secondItem="UiR-kO-pBO" secondAttribute="leading" constant="16" id="8nC-tc-RIk"/>
                             <constraint firstAttribute="trailing" secondItem="t2a-Kn-Sb4" secondAttribute="trailing" constant="16" id="8oq-Qm-tHZ"/>
+                            <constraint firstItem="d9U-M6-BkM" firstAttribute="centerY" secondItem="S8s-ef-3HS" secondAttribute="centerY" id="9jJ-K2-20o"/>
+                            <constraint firstItem="d9U-M6-BkM" firstAttribute="centerX" secondItem="S8s-ef-3HS" secondAttribute="centerX" id="E3u-TT-lCh"/>
                             <constraint firstAttribute="bottom" secondItem="t2a-Kn-Sb4" secondAttribute="bottom" constant="16" id="Xds-zY-Hac"/>
                             <constraint firstItem="t2a-Kn-Sb4" firstAttribute="leading" secondItem="S8s-ef-3HS" secondAttribute="trailing" constant="10" id="dKy-R0-SCs"/>
                             <constraint firstItem="S8s-ef-3HS" firstAttribute="centerY" secondItem="UiR-kO-pBO" secondAttribute="centerY" id="eLV-6M-n5d"/>
@@ -55,11 +64,13 @@
                     <constraint firstAttribute="trailing" secondItem="UiR-kO-pBO" secondAttribute="trailing" constant="16" id="4WW-0R-rZw"/>
                     <constraint firstAttribute="bottom" secondItem="UiR-kO-pBO" secondAttribute="bottom" id="BiQ-Yo-w9R"/>
                     <constraint firstItem="UiR-kO-pBO" firstAttribute="leading" secondItem="iJh-9S-hMr" secondAttribute="leading" constant="16" id="HXF-be-RNd"/>
-                    <constraint firstItem="UiR-kO-pBO" firstAttribute="top" secondItem="iJh-9S-hMr" secondAttribute="top" id="NiE-9M-GLB"/>
+                    <constraint firstItem="UiR-kO-pBO" firstAttribute="top" secondItem="iJh-9S-hMr" secondAttribute="top" constant="8" id="NiE-9M-GLB"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="AnimationView" destination="d9U-M6-BkM" id="uTn-kn-RYR"/>
                 <outlet property="PlayButton" destination="UiR-kO-pBO" id="Jb3-4i-4wK"/>
+                <outlet property="PlayIcon" destination="S8s-ef-3HS" id="KMO-HM-Vlm"/>
                 <outlet property="PlayLabel" destination="t2a-Kn-Sb4" id="j5A-c1-wsw"/>
             </connections>
             <point key="canvasLocation" x="139.85507246376812" y="176.45089285714286"/>

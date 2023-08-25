@@ -42,9 +42,9 @@ namespace BMM.Core.Implementations.Security
         public bool HasUser() => GetUser() != null;
         public User GetUser() => CurrentUser;
         
-        public async Task RemoveUser()
+        public void RemoveUser()
         {
-            await _secureStorageProxy.SetAsync<User>(StorageKeys.CurrentUser, null);
+            _secureStorageProxy.Remove(StorageKeys.CurrentUser);
             _currentUser = null;
         }
     }

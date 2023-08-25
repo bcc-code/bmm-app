@@ -44,6 +44,11 @@ namespace BMM.Core.Implementations.Security
             _oldSecureStorage.RemoveAll();
         }
 
+        public bool Remove(string key)
+        {
+            return _oldSecureStorage.Remove(key);
+        }
+
         public async Task<DateTime?> GetDateAsync(string key)
         {
             var timeString = await _oldSecureStorage.GetAsync(key);

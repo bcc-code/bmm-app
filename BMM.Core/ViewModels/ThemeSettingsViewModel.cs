@@ -5,11 +5,13 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Theme.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Implementations;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Models.POs;
 using BMM.Core.Models.Themes;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
+using Microsoft.Maui.Devices;
 using MvvmCross.Commands;
 
 namespace BMM.Core.ViewModels
@@ -20,8 +22,8 @@ namespace BMM.Core.ViewModels
         {
             ThemeSelectedCommand = new MvxCommand<ThemeSettingPO>(async s =>
             {
-                await changeThemeSettingsAction.ExecuteGuarded(s.Theme);
                 AppSettings.SelectedTheme = s.Theme;
+                await changeThemeSettingsAction.ExecuteGuarded(s.Theme);
                 SelectTheme(s.Theme);
             });
         }

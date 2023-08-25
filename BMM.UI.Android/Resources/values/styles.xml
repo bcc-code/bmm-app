@@ -1,18 +1,46 @@
 ﻿<resources xmlns:app="http://schemas.android.com/apk/res-auto">
     <!-- Application theme -->
-    <style name="AppTheme" parent="AppTheme.Base">
+    <style name="AppTheme" parent="AppTheme.Base" />
+    <style name="AppTheme.Dark" parent="AppTheme.Base" />
+    
+    <style name="AppTheme.CustomThemeDarkGreen" parent="AppTheme.Base">
+        <item name="tint_color">#017265</item>
+        <item name="background_four_color">#017265</item>
+        <item name="on_color_one_color">#FFFFFF</item>
     </style>
 
-    <style name="AppTheme.Dark" parent="AppTheme">
+    <style name="AppTheme.CustomThemeOrange" parent="AppTheme.Base">
+        <item name="tint_color">#FFB47D</item>
+        <item name="background_four_color">#FFB47D</item>
+        <item name="on_color_one_color">#000000</item>
     </style>
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
+    
+    <style name="AppTheme.CustomThemeViolet" parent="AppTheme.Base">
+        <item name="tint_color">#685FD2</item>
+        <item name="background_four_color">#685FD2</item>
+        <item name="on_color_one_color">#FFFFFF</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeRed" parent="AppTheme.Base">
+        <item name="tint_color">#F15A29</item>
+        <item name="background_four_color">#F15A29</item>
+        <item name="on_color_one_color">#000000</item>
+    </style>
+    
+    <style name="AppTheme.CustomThemeGolden" parent="AppTheme.Base">
+        <item name="tint_color">#B49F6C</item>
+        <item name="background_four_color">#B49F6C</item>
+        <item name="on_color_one_color">#ffffff</item>
+    </style>
+    
     <style name="AppTheme.Base" parent="Theme.MaterialComponents.DayNight">
+        <item name="tint_color">#A4E16A</item>
+        <item name="background_four_color">#0D131A</item>
+        <item name="on_color_one_color">#FFFFFF</item>
+        
         <item name="fontFamily">@font/inter</item>
         <item name="android:textFontWeight">500</item>
-        <item name="colorPrimary">@color/tint_color</item>
+        <item name="colorPrimary">?attr/tint_color</item>
         <item name="colorPrimaryDark">@color/background_one_color</item>
         <item name="colorAccent">@color/colorAccent</item>
 
@@ -23,7 +51,7 @@
         <item name="android:windowBackground">@drawable/splashscreen</item>
 
         <item name="colorControlNormal">@color/gray</item>
-        <item name="colorControlActivated">@color/tint_color</item>
+        <item name="colorControlActivated">?attr/tint_color</item>
         <item name="colorControlHighlight">@color/highlight_color</item>
 
         <item name="android:textCursorDrawable">@null</item>
@@ -38,7 +66,7 @@
     </style>
 
     <style name="AppTheme.Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorControlNormal">@color/tint_color</item>
+        <item name="colorControlNormal">?attr/tint_color</item>
         <item name="colorAccent">@color/black</item>
         <item name="android:textFontWeight">700</item>
         <item name="android:textColorPrimary">@color/label_one_color</item>
@@ -80,10 +108,10 @@
 
     <style name="AppTheme.Login" parent="AppTheme.Dark">
         <item name="colorControlNormal">@color/gray</item>
-        <item name="colorControlActivated">@color/tint_color</item>
+        <item name="colorControlActivated">?attr/tint_color</item>
         <item name="colorControlHighlight">@color/highlight_color</item>
         <item name="android:navigationBarColor">@color/black</item>
-        <item name="colorPrimaryDark">@color/tint_color</item>
+        <item name="colorPrimaryDark">?attr/tint_color</item>
     </style>
 
     <style name="AppTheme.BottomNavigationTheme" parent="AppTheme.Base">
@@ -127,7 +155,7 @@
         <item name="android:textColor">@color/label_one_color</item>
         <item name="android:textFontWeight">800</item>
     </style>
-    
+
     <style name="Heading2">
         <item name="android:textSize">28sp</item>
         <item name="android:lineHeight">32sp</item>
@@ -152,13 +180,13 @@
     <style name="Subtitle1_Label2" parent="Subtitle1">
         <item name="android:textColor">@color/label_two_color</item>
     </style>
-    
+
     <style name="Subtitle1_Label3" parent="Subtitle1">
         <item name="android:textColor">@color/label_three_color</item>
     </style>
 
     <style name="Subtitle1_TintColor" parent="Subtitle1">
-        <item name="android:textColor">@color/tint_color</item>
+        <item name="android:textColor">?attr/tint_color</item>
     </style>
 
     <style name="Subtitle2">
@@ -200,7 +228,7 @@
     <style name="Subtitle3_Label4" parent="Subtitle3">
         <item name="android:textColor">@color/placeholder_color</item>
     </style>
-    
+
     <style name="Subtitle3_GlobalBlack1" parent="Subtitle3">
         <item name="android:textColor">@color/global_black_one</item>
         <item name="android:includeFontPadding">false</item>
@@ -217,7 +245,7 @@
         <item name="android:textFontWeight">700</item>
         <item name="android:textColor">@color/label_one_color</item>
     </style>
-    
+
     <style name="Title1_GlobalBlack1" parent="Title1">
         <item name="android:textColor">@color/global_black_one</item>
     </style>
@@ -262,13 +290,20 @@
         <item name="android:textColor">@color/label_two_color</item>
     </style>
 
+    <style name="Paragraph2_Label3">
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineHeight">24sp</item>
+        <item name="android:textFontWeight">500</item>
+        <item name="android:textColor">@color/label_three_color</item>
+    </style>
+
     <style name="Paragraph3_Label1">
         <item name="android:textSize">13sp</item>
         <item name="android:lineHeight">24sp</item>
         <item name="android:textFontWeight">500</item>
         <item name="android:textColor">@color/label_one_color</item>
     </style>
-    
+
     <style name="Paragraph3">
         <item name="android:textSize">13sp</item>
         <item name="android:lineHeight">24sp</item>
@@ -292,25 +327,25 @@
         <item name="android:minHeight">40dp</item>
         <item name="android:layout_marginLeft">8dp</item>
         <item name="android:layout_marginRight">8dp</item>
-        <item name="backgroundTint">@color/label_one_reverted_color</item>
+        <item name="backgroundTint">?background_four_color</item>
     </style>
 
     <style name="Button_Primary_Medium" parent="Button_Primary">
         <item name="backgroundTint">@color/label_one_color</item>
         <item name="android:textColor">@color/label_one_reverted_color</item>
     </style>
-    
+
     <style name="Button_Primary_Large" parent="Button_Primary">
         <item name="android:height">@dimen/large_button_height</item>
-        <item name="backgroundTint">@color/label_one_color</item>
-        <item name="android:textColor">@color/label_one_reverted_color</item>
+        <item name="backgroundTint">?background_four_color</item>
+        <item name="android:textColor">?on_color_one_color</item>
     </style>
-    
+
     <style name="IconButton_Primary" parent="Button_Primary">
         <item name="android:paddingLeft">10dp</item>
         <item name="android:drawablePadding">6dp</item>
-        <item name="backgroundTint">@color/label_one_color</item>
-        <item name="android:textColor">@color/label_one_reverted_color</item>
+        <item name="backgroundTint">?background_four_color</item>
+        <item name="android:textColor">?on_color_one_color</item>
     </style>
 
     <style name="IconButton_Primary_Large" parent="IconButton_Primary">
@@ -340,8 +375,8 @@
     </style>
 
     <style name="IconButton_Secondary" parent="Button_Secondary">
-      <item name="android:paddingLeft">10dp</item>
-      <item name="android:drawablePadding">6dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:drawablePadding">6dp</item>
     </style>
 
     <style name="IconButton_Secondary_Large" parent="IconButton_Secondary">
@@ -359,7 +394,27 @@
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 
-    <style name="NotFullscreen" parent="AppTheme">
+    <style name="AppTheme.NotFullscreen" parent="AppTheme">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeDarkGreen.NotFullscreen" parent="AppTheme.CustomThemeDarkGreen">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeOrange.NotFullscreen" parent="AppTheme.CustomThemeOrange">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeViolet.NotFullscreen" parent="AppTheme.CustomThemeViolet">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+    
+    <style name="AppTheme.CustomThemeRed.NotFullscreen" parent="AppTheme.CustomThemeRed">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="AppTheme.CustomThemeGolden.NotFullscreen" parent="AppTheme.CustomThemeGolden">
         <item name="android:windowFullscreen">false</item>
     </style>
 </resources>

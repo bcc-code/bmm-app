@@ -35,7 +35,7 @@ namespace BMM.UI.Droid.Application.Fragments
 
             var title = new SpannableString(ViewModel.TextSource[Translations.Global_Done]);
             title.SetSpan(
-                new ForegroundColorSpan(Context.GetColorFromResource(Resource.Color.tint_color)),
+                new ForegroundColorSpan(Context.GetColorFromTheme(Resource.Attribute.tint_color)),
                 0,
                 title.Length(),
                 0);

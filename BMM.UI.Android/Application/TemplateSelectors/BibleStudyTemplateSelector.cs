@@ -1,6 +1,7 @@
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.Other.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 using MvvmCross.DroidX.RecyclerView.ItemTemplates;
 
 namespace BMM.UI.Droid.Application.TemplateSelectors;
@@ -29,9 +30,15 @@ public class BibleStudyTemplateSelector : MvxTemplateSelector<IBasePO>
             case IBibleStudyExternalRelationPO bibleStudyExternalRelationPO:
             {
                 if (bibleStudyExternalRelationPO.WillPlayTrack)
-                    return Resource.Layout.listitem_extrenal_relations_play_button;
-                
-                return Resource.Layout.listitem_extrenal_relations_open_button;
+                {
+                    return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty()
+                        ? Resource.Layout.listitem_extrenal_relations_play_button
+                        : Resource.Layout.listitem_extrenal_relations_play_button_with_subtitle;
+                }
+
+                return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty()
+                    ? Resource.Layout.listitem_extrenal_relations_open_button
+                    : Resource.Layout.listitem_extrenal_relations_open_button_with_subtitle;
             }
             default:
                 return default;
