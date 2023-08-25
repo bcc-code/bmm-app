@@ -202,7 +202,26 @@ namespace BMM.Core.Implementations.PlayObserver
         {
             var user = _userStorage.GetUser();
             
-            await _client.PostStreakPoints(new List<StreakPointEvent>()
+            await _client.PostStreakPoints(new List<StreakPointEvent>
+            {
+                new()
+                {
+                    PersonId = user.PersonId,
+                    TrackId = track.Id,
+                    TimestampStart = measurements.TimestampStart,
+                    Language = track.Language,
+                    PlaybackOrigin = track.PlaybackOrigin,
+                    LastPosition = measurements.LastPosition,
+                    AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed
+                }
+            });
+        }
+        
+        public async Task PostListeningEvent(ITrackModel track, PlayMeasurements measurements)
+        {
+            var user = _userStorage.GetUser();
+
+            await _client.PostListeningEvents(new List<ListeningEvent>
             {
                 new()
                 {
