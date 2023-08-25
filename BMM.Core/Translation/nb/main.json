@@ -530,32 +530,32 @@
     "AutoTranscribedPopupSubtitleText": "Du vil snart kunne sende inn rettelser direkte i appen.",
     "AutoTranscribedPopupButtonText": "Forstått",
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "FromSongTreasuresPopupHeaderText": "Fra Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Last ned Song Treasures appen for å se hele sangen"
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Regler for streaks",
+    "ProgressTitle": "Din status",
+    "StreakThisWeek": "Streak denne uken",
+    "Days": "Dager",
     "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "Points": "Poeng",
+    "Achievements": "Dine prestasjoner"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
+    "Title": "App ikon",
+    "Description": "Bytt app ikon",
     "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
+    "DarkGreen": "Mørk Grønn",
+    "Orange": "Oransje",
+    "Golden": "Gull"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "Title": "Prestasjon",
+    "Unlocked": "Åpnet",
+    "ActivatePremiumIcon": "Aktiver app ikon",
     "GotIt": "Forstått",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Aktiver tema",
     "Close": "Lukk",
     "Reward": "Premie",
     "RewardAndroid": "Et eksklusivt fargetema for BMM-appen din 🤩",

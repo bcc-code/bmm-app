@@ -534,33 +534,33 @@
     "FromSongTreasuresPopupSubtitleText": "Töltsd le a Song Treasures alkalmazást a teljes ének megtekintéséhez."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
-    "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "StreakTerms": "A sorozatra vonatkozó szabályok",
+    "ProgressTitle": "A fejlődésed",
+    "StreakThisWeek": "E heti sorozat",
+    "Days": "Napok",
+    "Boost": "Lökés",
+    "Points": "Pontok",
+    "Achievements": "Az eredményeid"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
+    "Title": "Alkalmazás ikonja",
+    "Description": "Az alkalmazás ikonjának módosítása",
     "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
+    "DarkGreen": "Sötét zöld",
+    "Orange": "Narancssárga",
+    "Golden": "Aranyszínű"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "Title": "Eredmények",
+    "Unlocked": "Feloldott",
+    "ActivatePremiumIcon": "Alkalmazás aktiválása ikon",
     "GotIt": "Megvan",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Téma aktiválása",
     "Close": "Bezárás",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for you BMM app 🤩",
-    "RewardIos": "An exclusive app icon for you BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!"
+    "Reward": "Jutalom",
+    "RewardAndroid": "Exkluzív színtéma az BMM alkalmazásodhoz 🤩",
+    "RewardIos": "Exkluzív alkalmazás-ikon a BMM alkalmazásodhoz 🤩",
+    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
+    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
   }
 }

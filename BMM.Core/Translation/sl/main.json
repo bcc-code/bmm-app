@@ -553,14 +553,14 @@
   "AchievementDetailsViewModel": {
     "Title": "Dosežek",
     "Unlocked": "Odklenjeno",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "ActivatePremiumIcon": "Aktiviraj ikono aplikacije",
     "GotIt": "Razumem",
     "ActivateTheme": "Aktiviraj temo",
     "Close": "Zapri",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for you BMM app 🤩",
-    "RewardIos": "An exclusive app icon for you BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!"
+    "Reward": "Nagrada",
+    "RewardAndroid": "Posebna barvna tema za tvojo aplikacijo BMM 🤩",
+    "RewardIos": "Posebna ikona za tvojo aplikacijo BMM 🤩",
+    "RewardAndroidGolden": "Posebna barvna tema za tvojo aplikacijo BMM. Sodeluješ tudi v žrebu za slušalke AirPods Pro. Bravo!",
+    "RewardIosGolden": "Posebna zlata ikona za tvojo aplikacijo BMM. Sodeluješ tudi v žrebu za slušalke AirPods Pro. Bravo!"
   }
 }

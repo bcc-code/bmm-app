@@ -534,33 +534,33 @@
     "FromSongTreasuresPopupSubtitleText": "Descárga la aplicación Song Treasures para ver la canción completa."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
-    "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "StreakTerms": "Reglas para las rachas",
+    "ProgressTitle": "Tu progreso",
+    "StreakThisWeek": "Racha esta semana",
+    "Days": "Días",
+    "Boost": "Impulso",
+    "Points": "puntos",
+    "Achievements": "Tus logros"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "Standard": "Standard",
-    "DarkGreen": "Dark Green",
-    "Orange": "Orange",
-    "Golden": "Golden"
+    "Title": "Icono de la aplicación",
+    "Description": "Cambiar el icono de la aplicación",
+    "Standard": "Estándar",
+    "DarkGreen": "Verde oscuro",
+    "Orange": "Naranja",
+    "Golden": "Dorado"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "Title": "Logros",
+    "Unlocked": "Desbloqueado",
+    "ActivatePremiumIcon": "Activar el icono de la aplicación",
     "GotIt": "Entiendo",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Activar tema",
     "Close": "Cerrar",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for you BMM app 🤩",
-    "RewardIos": "An exclusive app icon for you BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of specially designed AirPods Pro. Good job!"
+    "Reward": "Recompensa",
+    "RewardAndroid": "Un tema de color exclusivo para su aplicación BMM 🤩",
+    "RewardIos": "Un icono exclusivo para tu aplicación BMM 🤩",
+    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
+    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
   }
 }
