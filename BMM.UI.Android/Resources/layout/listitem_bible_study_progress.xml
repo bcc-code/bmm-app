@@ -44,7 +44,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/background_one_color">
+                android:background="@color/background_three_color">
 
             <TextView
                     android:id="@+id/StreakThisWeekLabel"

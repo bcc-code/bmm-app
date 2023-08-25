@@ -1,19 +1,15 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
+using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.OS;
 using Android.Views;
-using AndroidX.AppCompat.Widget;
 using BMM.Core.Helpers;
-using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.Droid.Application.Activities;
 using BMM.UI.Droid.Application.Extensions;
-using BMM.UI.Droid.Application.Helpers;
-using MvvmCross;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Views.Fragments;
 using ThemeUtils = BMM.UI.Droid.Utils.ThemeUtils;
@@ -22,7 +18,9 @@ using Toolbar = AndroidX.AppCompat.Widget.Toolbar;
 namespace BMM.UI.Droid.Application.Fragments.Base
 {
     public abstract class BaseDialogFragment<TViewModel>
-        : MvxDialogFragment<TViewModel>, INotifyPropertyChanged
+        : MvxDialogFragment<TViewModel>,
+          INotifyPropertyChanged,
+          IDialogInterfaceOnKeyListener
         where TViewModel : BaseViewModel
     {
         private Toolbar _toolbar;
@@ -113,7 +111,10 @@ namespace BMM.UI.Droid.Application.Fragments.Base
             SetSize();
         }
 
-        protected virtual void AttachEvents() { }
+        protected virtual void AttachEvents()
+        {
+            Dialog?.SetOnKeyListener(this);
+        }
         
         protected virtual void DetachEvents() { }
 
@@ -121,12 +122,26 @@ namespace BMM.UI.Droid.Application.Fragments.Base
         {
             Dialog.Window?.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
         }
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public bool OnKey(IDialogInterface? dialog, Keycode keyCode, KeyEvent? e)
+        {
+            if (keyCode != Keycode.Back)
+                return false;
+
+            HandleClose();
+            return true;
+        }
+
+        protected virtual void HandleClose()
+        {
+            ViewModel?.CloseCommand?.Execute();
         }
 
         protected virtual void Bind() => Expression.Empty();
