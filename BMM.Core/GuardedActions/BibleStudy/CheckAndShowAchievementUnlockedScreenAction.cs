@@ -65,7 +65,7 @@ public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheck
 
     private void AssignRewardPermissions(ProjectProgress projectProgress)
     {
-        foreach (var achievement in projectProgress.Achievements.Where(a => !a.HasAchieved))
+        foreach (var achievement in projectProgress.Achievements.Where(a => a.HasAchieved))
             AchievementsTools.SetAchievementUnlocked(achievement.Id);
     }
 }

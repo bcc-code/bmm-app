@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
+﻿using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
@@ -25,7 +21,6 @@ using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.UI.StyledText;
-using BMM.Core.Implementations.UI.StyledText.Enums;
 using BMM.Core.Messages;
 using BMM.Core.Models;
 using BMM.Core.Models.POs.Other;
@@ -321,8 +316,7 @@ namespace BMM.Core.ViewModels
             };
             
             generalSectionItems.AddIf(
-                () => _featurePreviewPermission.IsFeaturePreviewEnabled()
-                        && AchievementsTools.AnyAchievementUnlocked()
+                () => (_featurePreviewPermission.IsFeaturePreviewEnabled() || AchievementsTools.AnyAchievementUnlocked())
                         && DeviceInfo.Platform == DevicePlatform.iOS,
                 new SelectableListItem
             {
@@ -330,15 +324,16 @@ namespace BMM.Core.ViewModels
                 Text = TextSource[Translations.AppIconViewModel_Description],
                 OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
             });
-            
-            generalSectionItems.AddIf(() => _featurePreviewPermission.IsFeaturePreviewEnabled()
-                                            && AchievementsTools.AnyAchievementUnlocked()
-                                            && DeviceInfo.Platform == DevicePlatform.Android, new SelectableListItem
-            {
-                Title = TextSource[Translations.SettingsViewModel_ColorHeader],
-                Text = TextSource[Translations.SettingsViewModel_ColorText],
-                OnSelected = NavigationService.NavigateCommand<ColorThemeViewModel>()
-            });
+
+            generalSectionItems.AddIf(() =>
+                    (_featurePreviewPermission.IsFeaturePreviewEnabled() || AchievementsTools.AnyAchievementUnlocked())
+                    && DeviceInfo.Platform == DevicePlatform.Android,
+                new SelectableListItem
+                {
+                    Title = TextSource[Translations.SettingsViewModel_ColorHeader],
+                    Text = TextSource[Translations.SettingsViewModel_ColorText],
+                    OnSelected = NavigationService.NavigateCommand<ColorThemeViewModel>()
+                });
             
             generalSectionItems.AddIf(() => _featureSupportInfoService.SupportsDarkMode, new SelectableListItem
             {
