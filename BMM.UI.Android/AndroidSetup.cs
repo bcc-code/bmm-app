@@ -24,6 +24,7 @@ using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Networking;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Player;
+using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
@@ -181,6 +182,8 @@ namespace BMM.UI.Droid
             iocProvider.RegisterType<IUriOpener, UriOpener>();
             iocProvider.RegisterType<DownloadCompletedHandler, DownloadCompletedHandler>();
             iocProvider.RegisterType<MediaMountedHandler, MediaMountedHandler>();
+
+            iocProvider.ConstructAndRegisterSingleton<IListeningObserver, ListeningObserver>();
 
             iocProvider.RegisterType<IBrowser, BrowserSelector>();
             iocProvider.RegisterType<IFeatureSupportInfoService, DroidFeaturePreviewPermission>();
