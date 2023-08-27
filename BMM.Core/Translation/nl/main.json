@@ -327,8 +327,8 @@
     "UserVoiceText": "Heb je ideeën om BMM beter te maken? Vertel het ons.",
     "ThemeHeader": "Dark modus",
     "ThemeText": "Kies tussen licht en donker thema",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
+    "ColorHeader": "Kleurenthema",
+    "ColorText": "Kies tussen aangepaste kleurenthema's",
     "SiriShortcutsHeader": "Siri afkortingen",
     "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device ",
     "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren."
@@ -502,13 +502,13 @@
     "System": "Neem systeem instellingen over (auto)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
-    "Default": "Default",
+    "Title": "Kleurenthema",
+    "Default": "Standaard",
     "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Red": "Rood",
+    "DarkGreen": "Donker groen",
+    "Golden": "Goud",
+    "Orange": "Oranje"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Nummer taal ",
@@ -556,12 +556,12 @@
   "AppIconViewModel": {
     "Title": "App-pictogram",
     "Description": "Verander het pictogram van de app",
-    "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
+    "IconStandard": "Standaard",
+    "IconDarkGreen": "Donker groen",
+    "IconOrange": "Oranje",
+    "IconGolden": "Goud",
     "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconRed": "Rood"
   },
   "AchievementDetailsViewModel": {
     "Title": "Prestatie",
@@ -573,7 +573,7 @@
     "Reward": "Beloning",
     "RewardAndroid": "Een speciaal kleurenthema voor je BMM app 🤩",
     "RewardIos": "Een speciaal pictogram voor je BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "RewardAndroidGolden": "Een speciaal kleurenthema voor je BMM app. Je doet ook mee aan de loting voor AirPods Pro. Goed gedaan!",
+    "RewardIosGolden": "Een speciaal pictogram voor je BMM app in goud. Je doet ook mee aan de loting voor AirPods Pro. Goed gedaan!"
   }
 }
