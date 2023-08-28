@@ -10,5 +10,8 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
         IList<StreakPointEvent> GetUnsentStreakPointEvents();
         Task DeleteEvents(IList<TrackPlayedEvent> trackPlayedEvents);
         void ClearUnsentStreakPointsEvents();
+        IList<ListeningEvent> GetUnsentListeningEvents();
+        void ClearUnsentListeningEvents();
+        Task AddListeningEvents(IEnumerable<ListeningEvent> listeningEvents);
     }
 }

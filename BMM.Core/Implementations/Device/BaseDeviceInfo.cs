@@ -1,6 +1,8 @@
+using BMM.Api.Implementation.Models.Enums;
+
 namespace BMM.Core.Implementations.Device
 {
-    public class DeviceInfo : IDeviceInfo
+    public abstract class BaseDeviceInfo : IDeviceInfo
     {
         public string Manufacturer => Microsoft.Maui.Devices.DeviceInfo.Manufacturer;
 
@@ -24,5 +26,6 @@ namespace BMM.Core.Implementations.Device
         public bool IsIos => Platform == BmmDevicePlatform.iOS;
 
         public string VersionString => Microsoft.Maui.Devices.DeviceInfo.VersionString;
+        public abstract Task<AppTheme> GetCurrentTheme();
     }
 }

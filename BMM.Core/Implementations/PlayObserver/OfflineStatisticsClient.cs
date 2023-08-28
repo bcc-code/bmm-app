@@ -51,6 +51,24 @@ namespace BMM.Core.Implementations.PlayObserver
                 });
             }
         }
+        
+        public override async Task PostListeningEvents(IList<ListeningEvent> listeningEvents)
+        {
+            try
+            {
+                var allEvents = _trackPlayedStorage.GetUnsentListeningEvents();
+
+                foreach (var listeningEvent in listeningEvents)
+                    allEvents.Add(listeningEvent);
+                
+                await base.PostListeningEvents(allEvents);
+                _trackPlayedStorage.ClearUnsentListeningEvents();
+            }
+            catch
+            {
+                await _trackPlayedStorage.AddListeningEvents(listeningEvents);
+            }
+        }
 
         public override async Task PostStreakPoints(IList<StreakPointEvent> streakPointEvents)
         {

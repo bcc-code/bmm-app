@@ -2,6 +2,7 @@
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using Tavis.UriTemplates;
 
 namespace BMM.Api.Implementation.Clients
@@ -109,6 +110,13 @@ namespace BMM.Api.Implementation.Clients
             var request = BuildRequest(uri, HttpMethod.Post, streakPointEvents);
             await RequestIsSuccessful(request);
         }
+        
+        public virtual async Task PostListeningEvents(IList<ListeningEvent> listeningEvents)
+        {
+            var uri = new UriTemplate(ApiUris.StatisticsListening);
+            var request = BuildRequest(uri, HttpMethod.Post, listeningEvents);
+            await RequestIsSuccessful(request);
+        }
 
         public Task<IList<YearInReviewItem>> GetYearInReview()
         {
@@ -116,15 +124,11 @@ namespace BMM.Api.Implementation.Clients
             return Get<IList<YearInReviewItem>>(uri);
         }
 
-        public Task<ProjectProgress> GetProjectProgress(string lang)
+        public Task<ProjectProgress> GetProjectProgress(string lang, AppTheme theme)
         {
-            var os = OperatingSystem.IsIOS()
-                ? "ios"
-                : "android";
-            
             var uri = new UriTemplate(ApiUris.ProjectProgress);
             uri.SetParameter("lang", lang);
-            uri.SetParameter("os", os);
+            uri.SetParameter("theme", theme);
             return Get<ProjectProgress>(uri);
         }
 

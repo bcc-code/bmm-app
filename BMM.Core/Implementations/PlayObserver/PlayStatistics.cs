@@ -201,8 +201,8 @@ namespace BMM.Core.Implementations.PlayObserver
         public async Task PostStreakPoints(ITrackModel track, PlayMeasurements measurements)
         {
             var user = _userStorage.GetUser();
-            
-            await _client.PostStreakPoints(new List<StreakPointEvent>()
+
+            await _client.PostStreakPoints(new List<StreakPointEvent>
             {
                 new()
                 {
@@ -212,7 +212,32 @@ namespace BMM.Core.Implementations.PlayObserver
                     Language = track.Language,
                     PlaybackOrigin = track.PlaybackOrigin,
                     LastPosition = measurements.LastPosition,
-                    AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed
+                    AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed,
+                    OS = OperatingSystem.IsIOS()
+                        ? "ios"
+                        : "android"
+                }
+            });
+        }
+        
+        public async Task PostListeningEvent(ITrackModel track, PlayMeasurements measurements)
+        {
+            var user = _userStorage.GetUser();
+
+            await _client.PostListeningEvents(new List<ListeningEvent>
+            {
+                new()
+                {
+                    PersonId = user.PersonId,
+                    TrackId = track.Id,
+                    TimestampStart = measurements.TimestampStart,
+                    Language = track.Language,
+                    PlaybackOrigin = track.PlaybackOrigin,
+                    LastPosition = measurements.LastPosition,
+                    AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed,
+                    OS = OperatingSystem.IsIOS()
+                        ? "ios"
+                        : "android"
                 }
             });
         }
@@ -269,7 +294,7 @@ namespace BMM.Core.Implementations.PlayObserver
         public TrackPlayedEvent ComposeEvent(PlayMeasurements measurements, [CallerMemberName] string callerName = "")
         {
             var user = _userStorage.GetUser();
-            
+
             var ev = new TrackPlayedEvent
             {
                 Id = Guid.NewGuid(),
@@ -290,8 +315,11 @@ namespace BMM.Core.Implementations.PlayObserver
                 Language = CurrentTrack.Language,
                 PlaybackOrigin = CurrentTrack.PlaybackOrigin,
                 LastPosition = measurements.LastPosition,
-                Track = (Track)CurrentTrack,
-                AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed
+                Track = (Track) CurrentTrack,
+                AdjustedPlaybackSpeed = measurements.AdjustedPlaybackSpeed,
+                OS = OperatingSystem.IsIOS()
+                    ? "ios"
+                    : "android"
             };
 
             LogMissingAnalyticsIdIfNeeded(ev, nameof(ComposeEvent), callerName);

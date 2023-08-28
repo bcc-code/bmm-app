@@ -179,9 +179,11 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                             || localStreak.Thursday == true && streakFromServer.Thursday != true
                             || localStreak.Friday == true && streakFromServer.Friday != true)
                         {
-                            _analytics.LogEvent("streak point lost", new Dictionary<string, object>
+                            _analytics.LogEvent("streak point lost",
+                                new Dictionary<string, object>
                                 {
-                                    {"Week", streakFromServer.WeekOfTheYear}, {"localStreak", localStreak.ToText()}, {"streakFromServer", streakFromServer.ToText()},
+                                    {"Week", streakFromServer.WeekOfTheYear}, {"localStreak", localStreak.ToText()},
+                                    {"streakFromServer", streakFromServer.ToText()},
                                     {"localLastChanged", localStreak.LastChanged}, {"serverLastChanged", streakFromServer.LastChanged}
                                 });
                         }

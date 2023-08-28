@@ -43,7 +43,7 @@ namespace BMM.UI.iOS
                 .For(v => v.BindTap())
                 .To(vm => vm.CloseCommand);
 
-            set.Bind(this)
+            set.Bind(IconImage)
                 .For(v => v.ImagePath)
                 .To(po => po.AchievementPO.ImagePath);
             
@@ -117,24 +117,7 @@ namespace BMM.UI.iOS
 
             SetThemes();
         }
-
-        public string ImagePath
-        {
-            get => _imagePath;
-            set
-            {
-                _imagePath = value;
-
-                if (_imagePath.IsNullOrEmpty())
-                {
-                    IconImage.ImagePath = ImageResourceNames.IconAchievementLocked.ToStandardIosImageName();
-                    return;
-                }
-
-                IconImage.ImagePath = _imagePath;
-            }
-        }
-
+        
         public bool ShowAsModal
         {
             get => _showAsModal;
