@@ -30,7 +30,7 @@ public class AchievementPO : BasePO, IAchievementPO
         });
     }
 
-    public string ImagePath => IsActive ? _achievement.Url : null;
+    public string ImagePath => _achievement.Url;
     public bool IsActive => _achievement.HasAchieved;
     public string AchievementType => _achievement.Id;
     public bool IsAcknowledged => _achievement.HasAcknowledged;

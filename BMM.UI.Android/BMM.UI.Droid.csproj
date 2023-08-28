@@ -1038,9 +1038,6 @@
     <AndroidResource Update="Resources\drawable-night-xxhdpi\icon_achievement_locked.png">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Update="Resources\drawable\icon_achievement_locked_night.png">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Update="Resources\values-night\styles.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>

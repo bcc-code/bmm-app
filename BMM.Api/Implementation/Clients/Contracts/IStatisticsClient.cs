@@ -73,7 +73,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
         
         Task<IList<YearInReviewItem>> GetYearInReview();
 
-        Task<ProjectProgress> GetProjectProgress(string lang);
+        Task<ProjectProgress> GetProjectProgress(string lang, AppTheme theme);
         
         Task<ProjectRules> GetProjectRules(string lang);
         

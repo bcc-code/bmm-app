@@ -109,6 +109,7 @@ namespace BMM.UI.iOS
             iocProvider.LazyConstructAndRegisterSingleton<IFeatureSupportInfoService, iOSFeatureSupportInfoService>();
             iocProvider.RegisterType<INotificationPermissionService, iOSNotificationPermissionService>();
             iocProvider.LazyConstructAndRegisterSingleton<IDialogService, iOSDialogService>();
+            iocProvider.LazyConstructAndRegisterSingleton<IDeviceInfo, iOSDeviceInfo>();
             
             RegisterMediaPlayer(iocProvider);
         }
