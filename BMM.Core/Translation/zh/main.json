@@ -118,24 +118,24 @@
     "More": "更多"
   },
   "ExploreContributorsViewModel": {
-    "Title": "派遣国",
+    "Title": "贡献者",
     "SearchHint": "搜索"
   },
   "HelpFeedbackViewModel": {
     "Title": "帮助与反馈",
-    "GuideIntroTitle": "如何获得最大的钢应用程序",
-    "GuideIntroSubtitle": "刷卡了解更多",
+    "GuideIntroTitle": "如何充分利用BMM应用程序",
+    "GuideIntroSubtitle": "轻扫了解更多",
     "GuideOfflineTitle": "离线播放列表",
-    "GuideOfflineSubtitle": "将您的播放列表下载到您的设备，听听他们没有互联网连接。您可以切换这播放列表中。",
+    "GuideOfflineSubtitle": "将您的播放列表下载到设备上，无需网络连接即可播放。您可以在播放列表中将其打开。",
     "GuideAddToPlaylistTitle": "Add to playlist or 'My Tracks'",
     "GuideAddToPlaylistSubtitle": "Save your favorite tracks to your own playlists or to your personal BMM collection 'My Tracks' by tapping the options button to the right of the track.",
-    "GuideLanguagesTitle": "多种语言",
-    "GuideLanguagesSubtitle": "优先考虑你钢内容的语言。这可以在设置 > 内容语言。\n",
+    "GuideLanguagesTitle": "多语言",
+    "GuideLanguagesSubtitle": "为您的BMM内容选择首选语言。您可以在“设置 > 内容语言”中进行设置。",
     "GuideLibraryTitle": "Library Section",
     "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
     "GuideSearchTitle": "搜索",
-    "GuideSearchSubtitle": "找到一个特定的轨道，或搜索要查找相关的内容的主题。自动保存您的搜索。",
-    "ButtonSendMail": "向法钢公司团队发送一封电子邮件"
+    "GuideSearchSubtitle": "查找特定曲目，或搜索主题以查找相关内容。您的搜索会自动保存。",
+    "ButtonSendMail": "向BMM团队发送电子邮件"
   },
   "UserSetupViewModel": {
     "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
@@ -143,8 +143,8 @@
   "LoginViewModel": {
     "Title": "登录",
     "LoginFailureTitle": "登录失败",
-    "LoginFailureMessage": "请尝试再次使用正确的凭据",
-    "LoginNoConnectionMessage": "目前没有连接可用。请稍后再试",
+    "LoginFailureMessage": "请使用正确的凭据重试",
+    "LoginNoConnectionMessage": "目前没有连接。请稍后再试",
     "WrongMailAddressTitle": "Invalid email",
     "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
     "TbxUsername.Hint": "电子邮件",
@@ -160,7 +160,7 @@
     "UpdateButton": "Update"
   },
   "LanguageAppViewModel": {
-    "Title": "应用程序语言"
+    "Title": "应用语言"
   },
   "LanguageContentViewModel": {
     "Title": "Content languages",
@@ -175,7 +175,7 @@
     "Title": "Browse"
   },
   "LibraryArchiveViewModel": {
-    "Title": "存档"
+    "Title": "档案"
   },
   "MenuViewModel": {
     "Title": "Menu",
@@ -205,8 +205,8 @@
   },
   "MyTracksViewModel": {
     "Title": "My Tracks",
-    "ShufflePlay": "洗牌玩",
-    "AvailableOffline": "脱机可用",
+    "ShufflePlay": "随机播放",
+    "AvailableOffline": "离线可用",
     "AvailableOfflineDownload": "下载播放列表",
     "AvailableOfflineDownloading": "下载 {1} {0}",
     "RemoveOfflineConfirm": "你真的想要删除所有已下载的项目？",
@@ -314,14 +314,14 @@
     "OptionContactHeader": "联系人",
     "OptionContactText": "问题或反馈？与这里的团队联系。",
     "OptionAppVersionHeader": "应用程序版本",
-    "AppInfoTitle": "应用程序信息",
-    "AppInfoAppVersion": "应用程序版本︰ ",
+    "AppInfoTitle": "应用信息",
+    "AppInfoAppVersion": "应用版本︰ ",
     "AppInfoManufacturer": "Manufacturer: ",
     "AppInfoDeviceModel": "设备型号︰ ",
     "AppInfoDevicePlatform": "设备平台︰ ",
     "AppInfoDeviceVersion": "设备版本︰ ",
     "LoggedInAs": "Signed in as",
-    "LogoutConfirm": "你确定你想要注销？",
+    "LogoutConfirm": "你确定要注销吗？",
     "Logout": "注销",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
@@ -348,9 +348,9 @@
     "Title": "播放列表",
     "ShufflePlay": "Shuffle",
     "Resume": "Resume",
-    "AvailableOffline": "脱机可用",
+    "AvailableOffline": "可离线使用",
     "AvailableOfflineDownload": "下载",
-    "AvailableOfflineDownloading": "下载 {1} {0}",
+    "AvailableOfflineDownloading": "剩余 {0} 个下载，共 {1} 个",
     "RemoveOfflineConfirm": "你真的想要删除所有已下载的项目？",
     "CreatePrompt": "输入播放列表的名称",
     "CreateFailure": "创建播放列表失败",
@@ -372,7 +372,7 @@
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",
     "RenameLabel": "Rename playlist",
-    "MenuSave": "储存",
+    "MenuSave": "保存",
     "EmptyName": "The playlist has no name",
     "SaveFailure": "Could not update changes. Check your internet connection and try again",
     "DiscardChangesTitle": "Discard Changes?",
