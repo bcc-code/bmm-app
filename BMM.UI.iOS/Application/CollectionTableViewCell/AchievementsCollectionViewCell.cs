@@ -24,29 +24,12 @@ namespace BMM.UI.iOS
                     .For(v => v.BindTap())
                     .To(po => po.AchievementClickedCommand);
                 
-                set.Bind(this)
+                set.Bind(ImageView)
                     .For(v => v.ImagePath)
                     .To(po => po.ImagePath);
 
                 set.Apply();
             });
-        }
-
-        public string ImagePath
-        {
-            get => _imagePath;
-            set
-            {
-                _imagePath = value;
-
-                if (_imagePath.IsNullOrEmpty())
-                {
-                    ImageView.ImagePath = ImageResourceNames.IconAchievementLocked.ToStandardIosImageName();
-                    return;
-                }
-
-                ImageView.ImagePath = _imagePath;
-            }
         }
     }
 }

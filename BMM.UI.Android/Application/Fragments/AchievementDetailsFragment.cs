@@ -32,10 +32,6 @@ namespace BMM.UI.Droid.Application.Fragments
             set.Bind(this)
                 .For(s => s.ShouldShowConfetti)
                 .To(vm => vm.ShouldShowConfetti);
-        
-            set.Bind(this)
-                .For(v => v.ImagePath)
-                .To(po => po.AchievementPO.ImagePath);
 
             set.Apply();
             return view;
@@ -52,22 +48,6 @@ namespace BMM.UI.Droid.Application.Fragments
                 {
                     _confettiShown = true;
                     ShowConfetti();
-                }
-            }
-        }
-
-        public string ImagePath
-        {
-            get => _imagePath;
-            set
-            {
-                _imagePath = value;
-                
-                if (_imagePath.IsNullOrEmpty())
-                {
-                    _imageView.ImagePath  = Context.IsNightMode()
-                        ? AchievementViewHolder.NightModeIcon
-                        : AchievementViewHolder.StandardModeIcon;
                 }
             }
         }

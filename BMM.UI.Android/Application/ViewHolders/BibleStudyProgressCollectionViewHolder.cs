@@ -42,11 +42,9 @@ namespace BMM.UI.Droid.Application.ViewHolders
             };
 
             var spacingItemDecoration = new SpacingItemDecoration(ItemSpacing.DpToPixels(), sideSpacing: SideSpacing.DpToPixels());
-            var adapter = new AchievementsCarouselRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
 
             _achievementCollectionRecyclerView!.AddItemDecoration(spacingItemDecoration);
             _achievementCollectionRecyclerView.SetLayoutManager(_layoutManager);
-            _achievementCollectionRecyclerView.Adapter = adapter;
         }
 
         public override void OnAttachedToWindow()

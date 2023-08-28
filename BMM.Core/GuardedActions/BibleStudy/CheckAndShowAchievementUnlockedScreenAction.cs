@@ -4,6 +4,7 @@ using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.Helpers.PresentationHints;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Messages;
 using BMM.Core.Models.POs.BibleStudy;
@@ -22,22 +23,25 @@ public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheck
     private readonly IMvxNavigationService _mvxNavigationService;
     private readonly IMvxMessenger _mvxMessenger;
     private readonly IAppLanguageProvider _appLanguageProvider;
+    private readonly IDeviceInfo _deviceInfo;
 
     public CheckAndShowAchievementUnlockedScreenAction(
         IStatisticsClient statisticsClient,
         IMvxNavigationService mvxNavigationService,
         IMvxMessenger mvxMessenger,
-        IAppLanguageProvider appLanguageProvider)
+        IAppLanguageProvider appLanguageProvider,
+        IDeviceInfo deviceInfo)
     {
         _statisticsClient = statisticsClient;
         _mvxNavigationService = mvxNavigationService;
         _mvxMessenger = mvxMessenger;
         _appLanguageProvider = appLanguageProvider;
+        _deviceInfo = deviceInfo;
     }
     
     protected override async Task Execute()
     {
-        var projectProgress = await _statisticsClient.GetProjectProgress(_appLanguageProvider.GetAppLanguage());
+        var projectProgress = await _statisticsClient.GetProjectProgress(_appLanguageProvider.GetAppLanguage(), await _deviceInfo.GetCurrentTheme());
         
         if (!projectProgress.Achievements.Any())
             return;

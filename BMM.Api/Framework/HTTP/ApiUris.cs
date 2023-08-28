@@ -75,7 +75,7 @@
             "statistics/user/{username}/{type}/viewed/recently{?size,from}";
 
         public static string ProjectProgress =
-            "statistics/project/progress{?os,lang}";
+            "statistics/project/progress{?theme,lang}";
         
         public static string ProjectRules =
             "statistics/project/rules{?lang}";

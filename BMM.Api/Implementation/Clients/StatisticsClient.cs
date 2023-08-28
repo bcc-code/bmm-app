@@ -2,6 +2,7 @@
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using Tavis.UriTemplates;
 
 namespace BMM.Api.Implementation.Clients
@@ -123,15 +124,11 @@ namespace BMM.Api.Implementation.Clients
             return Get<IList<YearInReviewItem>>(uri);
         }
 
-        public Task<ProjectProgress> GetProjectProgress(string lang)
+        public Task<ProjectProgress> GetProjectProgress(string lang, AppTheme theme)
         {
-            var os = OperatingSystem.IsIOS()
-                ? "ios"
-                : "android";
-            
             var uri = new UriTemplate(ApiUris.ProjectProgress);
             uri.SetParameter("lang", lang);
-            uri.SetParameter("os", os);
+            uri.SetParameter("theme", theme);
             return Get<ProjectProgress>(uri);
         }
 
