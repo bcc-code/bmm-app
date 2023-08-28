@@ -31,6 +31,18 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
                 SaveUnsentStreakPointsEvents(unsentStreakPointsEvents);
             });
         }
+        
+        public async Task AddListeningEvents(IEnumerable<ListeningEvent> listeningEvents)
+        {
+            await ThreadSafeCall(() =>
+            {
+                var unsentEvents = GetUnsentListeningEvents();
+                foreach (var listeningEvent in listeningEvents)
+                    unsentEvents.Add(listeningEvent);
+
+                AppSettings.UnsentListeningEvent = unsentEvents;
+            });
+        }
 
         public IList<TrackPlayedEvent> GetUnsentTrackPlayedEvents()
         {
@@ -42,6 +54,11 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
         {
             var result = AppSettings.UnsentStreakPointEvent;
             return result ?? new List<StreakPointEvent>();
+        }
+
+        public IList<ListeningEvent> GetUnsentListeningEvents()
+        {
+            return AppSettings.UnsentListeningEvent ?? new List<ListeningEvent>();
         }
 
         public async Task DeleteEvents(IList<TrackPlayedEvent> trackPlayedEvents)
@@ -62,6 +79,11 @@ namespace BMM.Core.Implementations.PlayObserver.Storage
         public void ClearUnsentStreakPointsEvents()
         {
             AppSettings.UnsentStreakPointEvent = null;
+        }
+
+        public void ClearUnsentListeningEvents()
+        {
+            AppSettings.UnsentListeningEvent = null;
         }
 
         private async Task ThreadSafeCall(Action action)

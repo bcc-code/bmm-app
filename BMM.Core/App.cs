@@ -251,6 +251,7 @@ namespace BMM.Core
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IListenedTracksStorage, ListenedTracksStorage>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton(typeof(TrackListenedObserver));
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IStreakObserver, StreakObserver>();
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IListeningObserver, ListeningObserver>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton<ISubscriptionManager, SubscriptionManager>();
 
             Mvx.IoCProvider.IoCConstruct<ConnectionStatusLogger>();

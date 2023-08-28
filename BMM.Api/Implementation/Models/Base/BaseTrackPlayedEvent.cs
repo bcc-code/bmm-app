@@ -14,4 +14,6 @@ public abstract class BaseTrackPlayedEvent
     /// E.g if user changes from 1x to 1.5x and then again to 1x, we set 1.5x.
     /// </summary>
     public decimal AdjustedPlaybackSpeed { get; set; }
+
+    public string OS { get; set; }
 }

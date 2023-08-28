@@ -80,5 +80,6 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task AchievementAcknowledge(string achievementType);
         
         Task DeleteAchievements();
+        Task PostListeningEvents(IList<ListeningEvent> listeningEvents);
     }
 }

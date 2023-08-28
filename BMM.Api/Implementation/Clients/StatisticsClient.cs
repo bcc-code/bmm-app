@@ -109,6 +109,13 @@ namespace BMM.Api.Implementation.Clients
             var request = BuildRequest(uri, HttpMethod.Post, streakPointEvents);
             await RequestIsSuccessful(request);
         }
+        
+        public virtual async Task PostListeningEvents(IList<ListeningEvent> listeningEvents)
+        {
+            var uri = new UriTemplate(ApiUris.StatisticsListening);
+            var request = BuildRequest(uri, HttpMethod.Post, listeningEvents);
+            await RequestIsSuccessful(request);
+        }
 
         public Task<IList<YearInReviewItem>> GetYearInReview()
         {

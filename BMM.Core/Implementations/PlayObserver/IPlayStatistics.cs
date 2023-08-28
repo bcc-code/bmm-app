@@ -48,5 +48,6 @@ namespace BMM.Core.Implementations.PlayObserver
         Task PostStreakPoints(ITrackModel track, PlayMeasurements playMeasurements);
         
         void OnCurrentTrackWillChange(double currentPosition, decimal playbackRate);
+        Task PostListeningEvent(ITrackModel track, PlayMeasurements measurements);
     }
 }
