@@ -1123,6 +1123,9 @@
     <AndroidAsset Include="..\BMM.Core\Translation\hu\main.json">
       <Link>Assets\Translation\hu\main.json</Link>
     </AndroidAsset>
+    <AndroidAsset Include="..\BMM.Core\Translation\zh\main.json">
+      <Link>Assets\Translation\zh\main.json</Link>
+    </AndroidAsset>
     <AndroidAsset Include="Assets\play_animation_icon.json" />
     <AndroidResource Include="Resources\raw\play_animation_icon.json" />
   </ItemGroup>
