@@ -327,8 +327,8 @@
     "UserVoiceText": "Lass uns wissen wie wir BMM verbessern können.",
     "ThemeHeader": "Nachtmodus",
     "ThemeText": "Wähle zwischen einem hellen und einem dunklen Design",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
+    "ColorHeader": "Farbthema",
+    "ColorText": "Wähle zwischen speziellen Farbthemen",
     "SiriShortcutsHeader": "Siri-Kurzbefehle",
     "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM ",
     "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
@@ -502,12 +502,12 @@
     "System": "Automatisch (folge Systemeinstellungen)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
-    "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
+    "Title": "Farbthema",
+    "Default": "Standard",
+    "Violet": "Violett",
+    "Red": "Rot",
+    "DarkGreen": "Dunkelgrün",
+    "Golden": "Gold",
     "Orange": "Orange"
   },
   "ChangeTrackLanguageViewModel": {
@@ -545,35 +545,35 @@
     "FromSongTreasuresPopupSubtitleText": "Lade die Song Treasures App runter um das ganze Lied zu sehen."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Wettbewerbsregeln",
+    "ProgressTitle": "Dein Status",
+    "StreakThisWeek": "Dein Status diese Woche",
+    "Days": "Tage",
     "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "Points": "Punkte",
+    "Achievements": "Deine Errungenschaften"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
+    "Title": "App-Symbol",
+    "Description": "App-Symbol ändern",
     "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
+    "IconDarkGreen": "Dunkelgrün",
     "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconGolden": "Gold",
+    "IconViolet": "Violett",
+    "IconRed": "Rot"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "Title": "Errungenschaft",
+    "Unlocked": "Freigeschaltet",
+    "ActivatePremiumIcon": "App-Symbol aktivieren",
     "GotIt": "Verstanden! ",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Farbthema aktivieren",
     "Close": "Schließen",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for you BMM app 🤩",
-    "RewardIos": "An exclusive app icon for you BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "Reward": "Belohnung",
+    "RewardAndroid": "Ein exklusives Farbthema für deine BMM-App 🤩",
+    "RewardIos": "Ein exklusives App-Symbold für deine BMM-App 🤩",
+    "RewardAndroidGolden": "Ein exklusives Farbthema für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!",
+    "RewardIosGolden": "Ein exklusives App-Symbol für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!"
   }
 }
