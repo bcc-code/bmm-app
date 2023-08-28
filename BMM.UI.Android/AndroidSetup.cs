@@ -183,8 +183,6 @@ namespace BMM.UI.Droid
             iocProvider.RegisterType<DownloadCompletedHandler, DownloadCompletedHandler>();
             iocProvider.RegisterType<MediaMountedHandler, MediaMountedHandler>();
 
-            iocProvider.ConstructAndRegisterSingleton<IListeningObserver, ListeningObserver>();
-
             iocProvider.RegisterType<IBrowser, BrowserSelector>();
             iocProvider.RegisterType<IFeatureSupportInfoService, DroidFeaturePreviewPermission>();
             iocProvider.RegisterType<INotificationPermissionService, DroidNotificationPermissionService>();
