@@ -327,8 +327,8 @@
     "UserVoiceText": "¿Tienes ideas para mejorar BMM? Cuéntanos.",
     "ThemeHeader": "Modo oscuro",
     "ThemeText": "Elige entre un tema claro y uno oscuro",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
+    "ColorHeader": "Color del tema",
+    "ColorText": "Elija entre colores de temas personalizados",
     "SiriShortcutsHeader": "Accesos directos de Siri",
     "SiriShortcutsText": "Añadir accesos directos de Siri para BMM a tu dispositivo",
     "PushNotificationsGoToSettings": "Lamentablemente, no podemos habilitar las notificaciones automáticas ya que están deshabilitadas en la configuración de su dispositivo.  Permita las notificaciones automáticas en la configuración de su dispositivo para habilitar esta función."
@@ -502,13 +502,13 @@
     "System": "Seguir la configuración del sistema (Auto)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
-    "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Title": "Color del tema",
+    "Default": "Por defecto",
+    "Violet": "Violeta",
+    "Red": "Rojo",
+    "DarkGreen": "Verde oscuro",
+    "Golden": "Dorado",
+    "Orange": "Naranja"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Idioma de la pista",
@@ -556,12 +556,12 @@
   "AppIconViewModel": {
     "Title": "Icono de la aplicación",
     "Description": "Cambiar el icono de la aplicación",
-    "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconStandard": "Estándar",
+    "IconDarkGreen": "Verde oscuro",
+    "IconOrange": "Naranja",
+    "IconGolden": "Dorado",
+    "IconViolet": "Violeta",
+    "IconRed": "Rojo"
   },
   "AchievementDetailsViewModel": {
     "Title": "Logros",
@@ -573,7 +573,7 @@
     "Reward": "Recompensa",
     "RewardAndroid": "Un tema de color exclusivo para su aplicación BMM 🤩",
     "RewardIos": "Un icono exclusivo para tu aplicación BMM 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for you BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for you BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "RewardAndroidGolden": "Un tema de color exclusivo para tu app BMM. También entrarás en el sorteo de un par de AirPods Pro. ¡Buen trabajo!",
+    "RewardIosGolden": "Un icono exclusivo para tu aplicación BMM en dorado. También entrarás en el sorteo de un par de AirPods Pro. ¡Buen trabajo!"
   }
 }

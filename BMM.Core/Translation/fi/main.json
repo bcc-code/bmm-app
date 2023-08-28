@@ -327,8 +327,8 @@
     "UserVoiceText": "Miten BMM olisi parempi? Kerro meille",
     "ThemeHeader": "Pimeä asetus",
     "ThemeText": "Valitse valoisan ja pimeän teeman väliltä",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
+    "ColorHeader": "Väriteema",
+    "ColorText": "Valitse erikoisväriteemoista",
     "SiriShortcutsHeader": "Siriin",
     "SiriShortcutsText": "Lisää Sirilinkit laitteesi BMM:än",
     "PushNotificationsGoToSettings": "Valitettavasti laiteasetuksissasi reaaliaikaiset ilmoitukset on poistettu käytöstä. Ole hyvä ja salli reaaliaikaiset ilmoitukset laiteasetuksissasi. "
@@ -502,13 +502,13 @@
     "System": "Käytä järjestelmäasetuksia (Auto)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
-    "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Title": "Väriteema",
+    "Default": "Oletusteema",
+    "Violet": "Sinipunainen",
+    "Red": "Punainen",
+    "DarkGreen": "Tumman vihreä",
+    "Golden": "Kulta",
+    "Orange": "Oranssi"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Tiedoston kieli",
@@ -556,12 +556,12 @@
   "AppIconViewModel": {
     "Title": "Sovelluskuvake",
     "Description": "Vaihda sovelluksen kuvake",
-    "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconStandard": "Vakio",
+    "IconDarkGreen": "Tumman vihreä",
+    "IconOrange": "Oranssi",
+    "IconGolden": "Kulta",
+    "IconViolet": "Sinipunainen",
+    "IconRed": "Punainen"
   },
   "AchievementDetailsViewModel": {
     "Title": "Saavutus",
