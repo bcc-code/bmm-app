@@ -1,5 +1,6 @@
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Translation;
+using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
@@ -43,6 +44,13 @@ namespace BMM.UI.iOS
                 
                 set.Bind(AchiviementsLabel)
                     .To(po => po.TextSource[Translations.BibleStudyViewModel_Achievements]);
+                
+                set.Bind(StreakThisWeek)
+                    .To(po => po.TextSource[Translations.BibleStudyViewModel_StreakThisWeek]);
+                
+                set.Bind(DaysInARow)
+                    .To(po => po.ListeningStreakPO.ListeningStreak)
+                    .WithConversion<DaysInARowMessageValueConverter>();
                 
                 set.Bind(DaysNumberLabel)
                     .To(po => po.DaysNumber);
