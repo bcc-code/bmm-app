@@ -284,8 +284,8 @@
     "Playlists": "Play-list-uri",
     "NoResults": "Niciun rezultat",
     "NoResultsDescription": "Nu s-a potrivit nimic cu căutarea pentru \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Căutare eșuată",
+    "SearchFailedMessage": "Ne pare rău, nu am putut căuta „{0}” din cauza problemelor de conexiune. Apăsați butonul de mai jos pentru a încerca din nou."
   },
   "SettingsViewModel": {
     "Title": "Profil",
@@ -327,8 +327,8 @@
     "UserVoiceText": "Ai idei de cum putem îmbunătăți BMM? Scrie-ne despre ele!",
     "ThemeHeader": "Modul întunecat",
     "ThemeText": "Alege între o vizualizare luminoasă sau întunecată",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
+    "ColorHeader": "Temă de culoare",
+    "ColorText": "Alegeți dintre temele de culoare personalizate",
     "SiriShortcutsHeader": "Scurtături pentru Siri",
     "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM",
     "PushNotificationsGoToSettings": "Din păcate, nu putem activa notificările push, deoarece acestea sunt dezactivate în setările dispozitivului tău. Te rugăm să permiți notificărilor push în setările dispozitivului tău pentru a activa această funcție."
@@ -502,13 +502,13 @@
     "System": "Preia setările sistemului (Automat)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
+    "Title": "Temă de culoare",
     "Default": "Default",
     "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Red": "Roșu",
+    "DarkGreen": "Verde închis",
+    "Golden": "Auriu",
+    "Orange": "Portocaliu"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Limba piesei",
@@ -532,48 +532,48 @@
     "SuccessfullyAddedToPlaylists": "Adăugat cu succes la favorite"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
-    "FromSongTreasures": "From Song Treasures",
+    "AutoTranscribed": "Auto-transcris",
+    "FromSongTreasures": "Din Song Treasures",
     "AddTo": "Adaugă în play-list",
     "Pause": "Pauză",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "AutoTranscribedPopupTitleText": "Transcrierile sunt generate automat și pot conține erori",
+    "AutoTranscribedPopupHeaderText": "Auto-transcris",
+    "AutoTranscribedPopupSubtitleText": "În curând, veți putea trimite corecții direct în aplicație.",
+    "AutoTranscribedPopupButtonText": "Am înțeles",
+    "FromSongTreasuresPopupTitleText": "Versurile sunt preluate din Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "Din Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Descărcați aplicația Song Treasures pentru a vedea cântarea completă."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Reguli pentru streaks",
+    "ProgressTitle": "Progresul tău",
+    "StreakThisWeek": "Streak săptămâna asta",
+    "Days": "Zile",
     "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "Points": "Puncte",
+    "Achievements": "Realizările tale"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
+    "Title": "Pictograma aplicației",
+    "Description": "Schimbați pictograma aplicației",
     "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
+    "IconDarkGreen": "Verde închis",
+    "IconOrange": "Portocaliu",
+    "IconGolden": "Auriu",
     "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconRed": "Roșu"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
-    "GotIt": "Got it",
-    "ActivateTheme": "Activate Theme",
+    "Title": "Realizări",
+    "Unlocked": "Deblocat",
+    "ActivatePremiumIcon": "Activați pictograma aplicației",
+    "GotIt": "Am înțeles",
+    "ActivateTheme": "Activează tema",
     "Close": "Închide",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
-    "RewardIos": "An exclusive app icon for your BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "Reward": "Recompensă",
+    "RewardAndroid": "O temă de culoare exclusivă pentru aplicația ta BMM 🤩",
+    "RewardIos": "O pictogramă exclusivă pentru aplicația ta BMM 🤩",
+    "RewardAndroidGolden": "O temă de culoare exclusivă pentru aplicația ta BMM. Ești înscris și la tragerea la sorți pentru o pereche de AirPods Pro. Bravo!",
+    "RewardIosGolden": "O pictogramă exclusivă pe auriu pentru aplicația ta BMM. Ești înscris și la tragerea la sorți pentru o pereche de AirPods Pro. Bravo!"
   }
 }
