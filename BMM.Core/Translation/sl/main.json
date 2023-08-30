@@ -508,7 +508,7 @@
     "Red": "Rdeča",
     "DarkGreen": "Temno zelena",
     "Golden": "Zlata",
-    "Orange": "Orange"
+    "Orange": "Oranžna"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Jezik skladbe",
@@ -556,9 +556,9 @@
   "AppIconViewModel": {
     "Title": "Ikona aplikacije",
     "Description": "Spremeni ikono aplikacije",
-    "IconStandard": "Standard",
+    "IconStandard": "Standardna",
     "IconDarkGreen": "Temno zelena",
-    "IconOrange": "Orange",
+    "IconOrange": "Oranžna",
     "IconGolden": "Zlata",
     "IconViolet": "Vijolična",
     "IconRed": "Rdeča"
