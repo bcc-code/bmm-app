@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
@@ -166,11 +167,12 @@ namespace BMM.Core.Implementations.Downloading
                 _downloadQueue.Enqueue(tracksToBeDownloaded);
                 _downloadQueue.StartDownloading();
             }
-
+            
             var urlsOfTracksSupposedToBeDownloaded = tracksSupposedToBeDownloaded
                 .SelectMany(t => t.Media)
                 .SelectMany(t => t.Files)
-                .Select(t => _storageManager.SelectedStorage.GetUrlByFile(t));
+                .Select(t => _storageManager.SelectedStorage.GetUrlByFile(t))
+                .ToList();
 
             RemoveUnnecessaryTracks(currentlyDownloadedFilePaths, urlsOfTracksSupposedToBeDownloaded);
         }
