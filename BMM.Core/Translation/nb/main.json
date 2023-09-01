@@ -503,7 +503,7 @@
   },
   "ColorThemeViewModel": {
     "Title": "Fargetema",
-    "Default": "Default",
+    "Default": "standard",
     "Violet": "fiolett",
     "Red": "rød",
     "DarkGreen": "Mørk Grønn",
