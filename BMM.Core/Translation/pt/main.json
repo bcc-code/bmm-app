@@ -508,7 +508,7 @@
     "Red": "Red",
     "DarkGreen": "Dark Green",
     "Golden": "Golden",
-    "Orange": "Orange"
+    "Orange": "Laranja"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Idioma da faixa",
@@ -558,7 +558,7 @@
     "Description": "Change the app icon of the app",
     "IconStandard": "Standard",
     "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
+    "IconOrange": "Laranja",
     "IconGolden": "Golden",
     "IconViolet": "Violet",
     "IconRed": "Red"
