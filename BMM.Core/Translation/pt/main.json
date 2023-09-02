@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Reproduzir De Kåre",
     "PlayMusicSiriShortcutName": "Reproduzir Música",
     "DailyMessage": "Mensagem diária",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "copiado para a área de transferência"
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -261,7 +261,7 @@
     "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
     "Selected": "Selecionado",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Veja no BCC mídia"
   },
   "QueueViewModel": {
     "Title": "Fila"
@@ -269,23 +269,23 @@
   "SearchViewModel": {
     "Title": "Busca",
     "SearchHint": "Busca",
-    "SearchResults": "Results",
+    "SearchResults": "Resultados",
     "SearchHistory": "Pesquisas recentes",
     "SearchSuggestions": "Você quis dizer: ",
     "WelcomeTitle": "Comece a Pesquisar aqui!",
     "WelcomeSubTitle": "Use o campo de busca para pesquisar conteúdo na BMM",
     "DeleteConfirm": "Tem certeza de que deseja excluir o histórico de pesquisa?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Todos",
+    "Speeches": "Falas",
     "Music": "Música",
     "Albums": "Álbuns",
-    "Contributors": "People",
+    "Contributors": "Pessoas",
     "Podcasts": "Podcasts",
     "Playlists": "Lista de reprodução",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "NoResults": "Sem resultados",
+    "NoResultsDescription": "Não houve correspondências com sua pesquisa por \"{0}\"",
+    "SearchFailedTitle": "Falha na pesquisa",
+    "SearchFailedMessage": "Desculpe, não foi possível pesquisar \"{0}\" devido a problemas de conexão. Pressione o botão abaixo para tentar novamente."
   },
   "SettingsViewModel": {
     "Title": "Perfil",
@@ -316,7 +316,7 @@
     "OptionAppVersionHeader": "Versão do App",
     "AppInfoTitle": "Informações app",
     "AppInfoAppVersion": "Versão do App: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Produtora:",
     "AppInfoDeviceModel": "Modelo do dispositivo: ",
     "AppInfoDevicePlatform": "Plataforma de dispositivo: ",
     "AppInfoDeviceVersion": "Versão do dispositivo: ",
@@ -327,11 +327,11 @@
     "UserVoiceText": "Tem ideias sobre como melhorar o BMM? Conte-nos sobre isso.",
     "ThemeHeader": "Modo escuro",
     "ThemeText": "Escolha entre um tema claro e um escuro",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
+    "ColorHeader": "Tema de cores",
+    "ColorText": "Escolha entre temas de cores personalizados",
     "SiriShortcutsHeader": "Atalhos da Siri",
     "SiriShortcutsText": "Adicione atalhos da Siri para BMM ao seu dispositivo",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Infelizmente, não podemos ativar as notificações push, pois elas estão desativadas nas configurações do seu dispositivo. Permita notificações push nas configurações do seu dispositivo para ativar esse recurso."
   },
   "StorageManagementViewModel": {
     "Title": "Localização para faixas offline",
@@ -502,7 +502,7 @@
     "System": "Siga as configurações do sistema (Automático)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
+    "Title": "Tema de cores",
     "Default": "Default",
     "Violet": "Violet",
     "Red": "Red",
