@@ -21,9 +21,6 @@ namespace BMM.UI.Droid.Application.Adapters
             {
                 case Resource.Layout.listitem_bible_study_progress:
                     return new BibleStudyProgressCollectionViewHolder(view, itemBindingContext);
-                case Resource.Layout.listitem_extrenal_relations_play_button:
-                case Resource.Layout.listitem_extrenal_relations_play_button_with_subtitle:
-                    return new BibleStudyExternalRelationsPlayButtonViewHolder(view, itemBindingContext);
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

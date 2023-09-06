@@ -30,6 +30,6 @@ namespace BMM.Core.Helpers
 
         bool IsBmmUrl(Uri uri);
 
-        bool WillDeepLinkStartPlayer(Uri uri);
+        int? GetTrackIdToPlayIfPossible(Uri uri);
     }
 }

@@ -28,6 +28,7 @@ namespace BMM.UI.iOS
             AddSubview(_animationView);
 
             _animationView.TranslatesAutoresizingMaskIntoConstraints = false;
+            _animationView.UserInteractionEnabled = false;
 
             NSLayoutConstraint.ActivateConstraints(
             new[]

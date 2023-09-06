@@ -2,6 +2,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross.Commands;
 
 namespace BMM.Core.Models.POs.BibleStudy;
@@ -9,15 +10,19 @@ namespace BMM.Core.Models.POs.BibleStudy;
 public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationPO
 {
     private const char Separator = '/'; 
-    private readonly IDeepLinkHandler _deepLinkHandler;
-    private bool _showPlayAnimation;
+    private readonly IMediaPlayer _mediaPlayer;
+    private readonly int? _trackId;
+    private bool _isCurrentlyPlaying;
 
     public BibleStudyExternalRelationPO(
         string title,
         Uri link,
         IDeepLinkHandler deepLinkHandler,
-        IUriOpener uriOpener)
+        IUriOpener uriOpener,
+        IMediaPlayer mediaPlayer)
     {
+        _mediaPlayer = mediaPlayer;
+
         string[] splitTitle = title.Split(Separator);
         
         if (splitTitle.Length > 1)
@@ -30,26 +35,42 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
             Title = title;
         }
         
-        Link = link;
         ClickedCommand = new ExceptionHandlingCommand(() =>
         {
-            uriOpener.OpenUri(Link);
-            ShouldShowPlayAnimation = true;
-            return Task.CompletedTask;
+            if (_mediaPlayer.CurrentTrack?.Id == _trackId)
+            {
+                _mediaPlayer.PlayPause();
+                return Task.CompletedTask;
+            }
+            
+            uriOpener.OpenUri(link);
+            return Task.CompletedTask;;
         });
-        _deepLinkHandler = deepLinkHandler;
+        
+        _trackId = deepLinkHandler.GetTrackIdToPlayIfPossible(link);
+        RefreshState();
     }
     
     public string Title { get; }
     public string Subtitle { get; }
-    public Uri Link { get; }
-
-    public bool ShouldShowPlayAnimation
+    
+    public bool IsCurrentlyPlaying
     {
-        get => _showPlayAnimation;
-        set => SetProperty(ref _showPlayAnimation, value);
+        get => _isCurrentlyPlaying;
+        set => SetProperty(ref _isCurrentlyPlaying, value);
     }
 
-    public bool WillPlayTrack => _deepLinkHandler.WillDeepLinkStartPlayer(Link);
+    public bool WillPlayTrack => _trackId != null;
     public IMvxAsyncCommand ClickedCommand { get; }
+    
+    public Task RefreshState()
+    {
+        if (_trackId == null)
+            return Task.CompletedTask;
+        
+        bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(_trackId);
+        IsCurrentlyPlaying = isCurrentlySelected && _mediaPlayer.IsPlaying;
+        
+        return Task.CompletedTask;
+    }
 }
