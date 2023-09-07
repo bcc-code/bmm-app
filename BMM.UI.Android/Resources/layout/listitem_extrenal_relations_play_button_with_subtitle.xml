@@ -25,6 +25,7 @@
                 android:layout_height="@dimen/default_icon_size"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:src="@drawable/icon_play"
+                local:MvxBind="Visibility VisibleOrHidden(!IsCurrentlyPlaying)"
                 local:layout_constraintTop_toTopOf="parent"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toStartOf="parent" />
@@ -34,7 +35,7 @@
                 android:layout_width="@dimen/highlighted_text_play_icon_size"
                 android:layout_height="@dimen/highlighted_text_play_icon_size"
                 android:layout_marginStart="@dimen/margin_xxsmall"
-                android:visibility="gone"
+                local:MvxBind="Visibility VisibleOrHidden(IsCurrentlyPlaying)"
                 local:layout_constraintTop_toTopOf="parent"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toStartOf="parent"

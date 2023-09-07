@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api;
@@ -41,6 +42,7 @@ namespace BMM.Core.Implementations.DeepLinking
         };
 
         private const string PlaybackOriginName = "DeepLink";
+        private const string PlayTrackRegex = "^/track/(?<id>[0-9]+)(/(?<language>.*))?$";
 
         private readonly IBMMClient _client;
         private readonly IMvxNavigationService _navigationService;
@@ -97,7 +99,7 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink<SharingSecretParameters>("^/playlist/shared/(?<sharingsecret>.*)$", OpenSharedTrackCollection ),
                 new RegexDeepLink<IdDeepLinkParameters>("^/playlist/contributor/(?<id>[0-9]+)(/(?<name>.*))?$", OpenContributor),
                 new RegexDeepLink<IdDeepLinkParameters>("^/album/(?<id>[0-9]+)$", OpenAlbum),
-                new TrackLinkParser("^/track/(?<id>[0-9]+)(/(?<language>.*))?$", PlayTrackById),
+                new TrackLinkParser(PlayTrackRegex, PlayTrackById),
                 new RegexDeepLink<GenericDocumentsViewParameters>("^/browse(/(?<path>.*))?$", OpenGenericDocumentsView),
                 new RegexDeepLink("^/$", DoNothing)
             };
@@ -224,9 +226,23 @@ namespace BMM.Core.Implementations.DeepLinking
             return uri.AbsoluteUri.Contains(GlobalConstants.BmmUrl);
         }
 
-        public bool WillDeepLinkStartPlayer(Uri uri)
+        private bool WillDeepLinkStartPlayer(Uri uri)
         {
             return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(uri, out _);
+        }
+
+        public int? GetTrackIdToPlayIfPossible(Uri uri)
+        {
+            var match = Regex.Match(uri.LocalPath, PlayTrackRegex);
+            
+            if (!match.Success)
+                return null;
+
+            string idGroupValue = match.Groups["id"].Value;
+            if (int.TryParse(idGroupValue, out int id))
+                return id;
+
+            return null;
         }
 
         private bool Open(Uri uri, string analyticsEventName, string origin = "")

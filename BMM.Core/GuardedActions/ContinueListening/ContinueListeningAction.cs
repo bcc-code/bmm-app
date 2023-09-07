@@ -42,6 +42,12 @@ namespace BMM.Core.GuardedActions.ContinueListening
 
         protected override async Task Execute(ContinueListeningTile parameter)
         {
+            if (_mediaPlayer.CurrentTrack?.Id == parameter.Track.Id)
+            {
+                _mediaPlayer.PlayPause();
+                return;
+            }
+            
             await _mediaPlayer.Play(
                 ((IMediaTrack)parameter.Track).EncloseInArray(),
                 parameter.Track,

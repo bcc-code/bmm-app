@@ -1,14 +1,14 @@
+using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using MvvmCross.Commands;
 
 namespace BMM.Core.Models.POs.BibleStudy.Interfaces;
 
-public interface IBibleStudyExternalRelationPO : IBasePO
+public interface IBibleStudyExternalRelationPO : IBasePO, ITrackHolderPO
 {
     string Title { get; }
     string Subtitle { get; }
-    Uri Link { get; }
     bool WillPlayTrack { get; }
-    bool ShouldShowPlayAnimation { get; set; }
     IMvxAsyncCommand ClickedCommand { get; }
+    bool IsCurrentlyPlaying { get; }
 }

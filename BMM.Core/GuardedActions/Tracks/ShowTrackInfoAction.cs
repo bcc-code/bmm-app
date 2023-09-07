@@ -29,6 +29,8 @@ namespace BMM.Core.GuardedActions.Tracks
         
         protected override async Task Execute(Track track)
         {
+            await ClosePlayer();
+            
             if (track.IsBibleStudyProjectTrack())
             {
                 await _navigationService.Navigate<BibleStudyViewModel, IBibleStudyParameters>(new BibleStudyParameters(track));
@@ -36,6 +38,13 @@ namespace BMM.Core.GuardedActions.Tracks
             }
 
             await _navigationService.Navigate<TrackInfoViewModel, Track>(track);
+        }
+        
+        private async Task ClosePlayer()
+        {
+            await _navigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
+            _mvxMessenger.Publish(new TogglePlayerMessage(this, false));
+            await Task.Delay(ViewConstants.DefaultAnimationDurationInMilliseconds);
         }
     }
 }

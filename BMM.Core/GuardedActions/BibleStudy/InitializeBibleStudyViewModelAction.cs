@@ -11,6 +11,7 @@ using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Other;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
 using MvvmCross.Navigation;
@@ -28,6 +29,7 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
     private readonly IUriOpener _uriOpener;
     private readonly IAppLanguageProvider _appLanguageProvider;
     private readonly IDeviceInfo _deviceInfo;
+    private readonly IMediaPlayer _mediaPlayer;
 
     private IBibleStudyViewModel DataContext => this.GetDataContext();
 
@@ -40,7 +42,8 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         IDeepLinkHandler deepLinkHandler,
         IUriOpener uriOpener,
         IAppLanguageProvider appLanguageProvider,
-        IDeviceInfo deviceInfo)
+        IDeviceInfo deviceInfo,
+        IMediaPlayer mediaPlayer)
     {
         _statisticsClient = statisticsClient;
         _listeningStreakPOFactory = listeningStreakPOFactory;
@@ -51,6 +54,7 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         _uriOpener = uriOpener;
         _appLanguageProvider = appLanguageProvider;
         _deviceInfo = deviceInfo;
+        _mediaPlayer = mediaPlayer;
     }
     
     protected override async Task Execute()
@@ -76,7 +80,8 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
                 externalRelationItem.TrackRelationExternal.Name,
                 new Uri(externalRelationItem.TrackRelationExternal.Url),
                 _deepLinkHandler,
-                _uriOpener));
+                _uriOpener,
+                _mediaPlayer));
         }
 
         var streak = _listeningStreakPOFactory.Create(projectProgress.Streak);
@@ -87,8 +92,6 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
     private void UpdateUnlockedAchievements(ProjectProgress projectProgress)
     {
         foreach (var achievement in projectProgress.Achievements.Where(a => a.HasAchieved))
-        {
             AchievementsTools.SetAchievementUnlocked(achievement.Id);
-        }
     }
 }
