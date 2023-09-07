@@ -39,7 +39,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
 
         public void OnPrepareFromMediaId(string mediaIdString, bool playWhenReady, Bundle extras)
         {
-            var trackList = _mediaQueue.Tracks;
+            var trackList = _mediaQueue.Tracks.ToList();
             int? startIndex;
             var startTimeInMs = extras.GetLong("startTimeInMs");
 

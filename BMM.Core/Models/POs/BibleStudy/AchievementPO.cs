@@ -39,7 +39,7 @@ public class AchievementPO : BasePO, IAchievementPO
     public bool HasIconReward => DeviceInfo.Current.Platform == DevicePlatform.iOS && AchievementsTools.GetIconTypeFor(_achievement.Id) != null;
     public bool HasThemeReward => DeviceInfo.Current.Platform == DevicePlatform.Android && AchievementsTools.GetColorThemeFor(_achievement.Id) != null;
     public bool HasAnyReward => HasIconReward || HasThemeReward;
-    public string RewardDescription => AchievementsTools.GetRewardDescriptionFor(_achievement.Id, IsActive);
+    public string RewardDescription => AchievementsTools.GetRewardDescriptionFor(_achievement.Id);
     public IMvxAsyncCommand AchievementClickedCommand { get; }
     public bool ShouldShowRewardDescription => !RewardDescription.IsNullOrEmpty() && !IsActive;
     public bool ShouldShowSecondRewardDescription => !RewardDescription.IsNullOrEmpty() && IsActive;

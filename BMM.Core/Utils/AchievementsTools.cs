@@ -63,11 +63,11 @@ public static class AchievementsTools
         }
     }
     
-    public static string GetRewardDescriptionFor(string achievementType, bool isActive)
+    public static string GetRewardDescriptionFor(string achievementType)
     {
         var languageBinder = BMMLanguageBinderLocator.TextSource;
 
-        if (isActive && achievementType == Points180)
+        if (achievementType == Points180)
         {
             return DeviceInfo.Current.Platform == DevicePlatform.Android
                 ? languageBinder.GetText(Translations.AchievementDetailsViewModel_RewardAndroidGolden)
