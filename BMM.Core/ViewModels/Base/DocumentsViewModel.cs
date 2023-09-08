@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Akavache;
@@ -108,9 +109,8 @@ namespace BMM.Core.ViewModels.Base
             CurrentTrack = Mvx.IoCProvider.Resolve<IMediaPlayer>().CurrentTrack;
             _currentTrackChangedToken = Messenger.Subscribe<CurrentTrackChangedMessage>(message =>
             {
-                RefreshTrackWithId(CurrentTrack?.Id);
                 CurrentTrack = message.CurrentTrack;
-                RefreshTrackWithId(CurrentTrack?.Id);
+                RefreshTrackState();
             });
 
             ConnectionStatus = Mvx.IoCProvider.Resolve<IConnection>().GetStatus();
@@ -134,6 +134,19 @@ namespace BMM.Core.ViewModels.Base
             _trackMarkedAsListenedToken = Messenger.Subscribe<TrackMarkedAsListenedMessage>(HandleTrackMarkedAsListenedMessage);
             _contentLanguageChangedToken = Messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
             _downloadedEpisodeRemovedSubscriptionToken = Messenger.Subscribe<DownloadedEpisodeRemovedMessage>(HandleDownloadedEpisodeRemovedMessage);
+        }
+
+        private void RefreshTrackState()
+        {
+            RefreshTrackWithId(CurrentTrack?.Id);
+            var tracksIdsToAdditionalRefresh = Documents
+                .OfType<ITrackPO>()
+                .Where(t => t.TrackState.IsCurrentlySelected && t.Id != CurrentTrack?.Id)
+                .Select(t => t.Id)
+                .ToList();
+
+            foreach (int trackIdToRefresh in tracksIdsToAdditionalRefresh)
+                RefreshTrackWithId(trackIdToRefresh);
         }
 
         protected virtual void RefreshTrackWithId(int? currentTrackId)

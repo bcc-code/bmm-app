@@ -34,7 +34,10 @@ namespace BMM.Core.ViewModels
 
         public async override Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
-            return _mediaQueue.Tracks.Select(t => _trackPOFactory.Create(TrackInfoProvider, OptionCommand, (Track)t));
+            return _mediaQueue
+                .Tracks
+                .ToList()
+                .Select(t => _trackPOFactory.Create(TrackInfoProvider, OptionCommand, (Track)t));
         }
     }
 }
