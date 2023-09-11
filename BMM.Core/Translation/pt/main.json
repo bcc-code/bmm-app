@@ -9,9 +9,9 @@
     "ItemNotFound": "O item solicitado não existe.",
     "OfflineBanner": "Mostrando apenas faixas neste telefone",
     "Song": "Música",
-    "Speech": "Fala de ",
+    "Speech": "Fala",
     "Audiobook": "Livro de áudio",
-    "Exegesis": "Exegesis",
+    "Exegesis": "Interpretação",
     "Done": "Feito",
     "Today": "Hoje",
     "Yesterday": "Ontem",
@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Reproduzir De Kåre",
     "PlayMusicSiriShortcutName": "Reproduzir Música",
     "DailyMessage": "Mensagem diária",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "copiado para a área de transferência"
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -261,7 +261,7 @@
     "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
     "Selected": "Selecionado",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Veja no BCC mídia"
   },
   "QueueViewModel": {
     "Title": "Fila"
@@ -269,30 +269,30 @@
   "SearchViewModel": {
     "Title": "Busca",
     "SearchHint": "Busca",
-    "SearchResults": "Results",
+    "SearchResults": "Resultados",
     "SearchHistory": "Pesquisas recentes",
     "SearchSuggestions": "Você quis dizer: ",
     "WelcomeTitle": "Comece a Pesquisar aqui!",
     "WelcomeSubTitle": "Use o campo de busca para pesquisar conteúdo na BMM",
     "DeleteConfirm": "Tem certeza de que deseja excluir o histórico de pesquisa?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Todos",
+    "Speeches": "Falas",
     "Music": "Música",
     "Albums": "Álbuns",
-    "Contributors": "People",
+    "Contributors": "Pessoas",
     "Podcasts": "Podcasts",
     "Playlists": "Lista de reprodução",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "NoResults": "Sem resultados",
+    "NoResultsDescription": "Não houve correspondências com sua pesquisa por \"{0}\"",
+    "SearchFailedTitle": "Falha na pesquisa",
+    "SearchFailedMessage": "Desculpe, não foi possível pesquisar \"{0}\" devido a problemas de conexão. Pressione o botão abaixo para tentar novamente."
   },
   "SettingsViewModel": {
     "Title": "Perfil",
     "HeadlineSettings": "Configurações",
     "OptionAutoplayHeader": "Reprodução automática",
     "OptionAutoplayText": "Reproduzir hino depois de ouvir o episódio de hoje de Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakHeader": "Progresso no Início",
     "OptionStreakText": "Mostre sua estatística de reprodução na tela inicial",
     "OptionEnablePushHeader": "Habilitar notificações push",
     "OptionPushNotifications": "Notificações push",
@@ -316,7 +316,7 @@
     "OptionAppVersionHeader": "Versão do App",
     "AppInfoTitle": "Informações app",
     "AppInfoAppVersion": "Versão do App: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Produtora:",
     "AppInfoDeviceModel": "Modelo do dispositivo: ",
     "AppInfoDevicePlatform": "Plataforma de dispositivo: ",
     "AppInfoDeviceVersion": "Versão do dispositivo: ",
@@ -327,19 +327,19 @@
     "UserVoiceText": "Tem ideias sobre como melhorar o BMM? Conte-nos sobre isso.",
     "ThemeHeader": "Modo escuro",
     "ThemeText": "Escolha entre um tema claro e um escuro",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
+    "ColorHeader": "Tema de cores",
+    "ColorText": "Escolha entre temas de cores personalizados",
     "SiriShortcutsHeader": "Atalhos da Siri",
     "SiriShortcutsText": "Adicione atalhos da Siri para BMM ao seu dispositivo",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Infelizmente, não podemos ativar as notificações push, pois elas estão desativadas nas configurações do seu dispositivo. Permita notificações push nas configurações do seu dispositivo para ativar esse recurso."
   },
   "StorageManagementViewModel": {
     "Title": "Localização para faixas offline",
     "RemoveAllFiles": "Deseja selecionar um novo local de armazenamento e remover todas as faixas offline?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} faixas",
+    "PluralTracksLoaded": "{0} faixas carregadas",
     "Download": "Baixar",
     "Shuffle": "Aleatório",
     "Play": "Reproduzir"
@@ -502,13 +502,13 @@
     "System": "Siga as configurações do sistema (Automático)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
-    "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Title": "Tema de cores",
+    "Default": "Padrão",
+    "Violet": "Violeta",
+    "Red": "Vermelho\n",
+    "DarkGreen": "Verde escuro",
+    "Golden": "Dourado",
+    "Orange": "Laranja"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Idioma da faixa",
@@ -520,60 +520,60 @@
     "ShortcutAlreadyAdded": "Este atalho já foi adicionado"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Seu ano em análise",
+    "Share": "Compartilhe com seus amigos",
+    "ShareTitle": "Ano em análise"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "Title": "Melhores músicas",
+    "PlaysPlural": "{0} reproduções",
+    "PlaysSingular": "{0} reprodução",
+    "AddToMyPlaylist": "Adicionar playlist aos favoritos",
+    "SuccessfullyAddedToPlaylists": "Adicionado com sucesso aos favoritos"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
-    "FromSongTreasures": "From Song Treasures",
+    "AutoTranscribed": "Transcrição automática",
+    "FromSongTreasures": "De Song Treasures",
     "AddTo": "Adicionar à lista de reprodução",
     "Pause": "Pausa",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
-    "AutoTranscribedPopupButtonText": "Got it",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "AutoTranscribedPopupTitleText": "As transcrições são geradas automaticamente e podem conter erros",
+    "AutoTranscribedPopupHeaderText": "Transcrição automática",
+    "AutoTranscribedPopupSubtitleText": "Em breve você poderá enviar correções diretamente no aplicativo.",
+    "AutoTranscribedPopupButtonText": "Entendi",
+    "FromSongTreasuresPopupTitleText": "As letras são obtidas através do Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "De Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Baixe o aplicativo Song Treasures para ver a música completa."
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
-    "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "StreakTerms": "Regras para sequências",
+    "ProgressTitle": "Seu progresso",
+    "StreakThisWeek": "Seu progresso semanal ",
+    "Days": "Dias",
+    "Boost": "Impulsos",
+    "Points": "Pontos\n",
+    "Achievements": "Seu progresso"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "Title": "Ícone do aplicativo",
+    "Description": "Alterar o ícone do aplicativo",
+    "IconStandard": "Padrão",
+    "IconDarkGreen": "Verde escuro",
+    "IconOrange": "Laranja",
+    "IconGolden": "Dourado",
+    "IconViolet": "Violeta",
+    "IconRed": "Vermelho\n"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
-    "GotIt": "Got it",
-    "ActivateTheme": "Activate Theme",
+    "Title": "Conquista",
+    "Unlocked": "Desbloqueado",
+    "ActivatePremiumIcon": "Ativar ícone do aplicativo",
+    "GotIt": "Entendi",
+    "ActivateTheme": "Ativar tema",
     "Close": "Fechar",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
-    "RewardIos": "An exclusive app icon for your BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "Reward": "Recompensa",
+    "RewardAndroid": "Um tema de cores exclusivo para seu aplicativo BMM 🤩",
+    "RewardIos": "Um ícone de aplicativo exclusivo para seu aplicativo BMM 🤩",
+    "RewardAndroidGolden": "Um tema de cores exclusivo para seu aplicativo BMM. Você também está participando do sorteio de um par de AirPods Pro. Bom trabalho!",
+    "RewardIosGolden": "Um ícone de aplicativo exclusivo para seu aplicativo BMM em ouro. Você também está participando do sorteio de um par de AirPods Pro. Bom trabalho!"
   }
 }
