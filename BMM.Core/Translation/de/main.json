@@ -292,7 +292,7 @@
     "HeadlineSettings": "Einstellungen",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Spiele Musik nach der heutigen Fra Kåre Sendung",
-    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakHeader": "Streak auf der Home-Seite",
     "OptionStreakText": "Anzeige der Hörstatistik auf dem Homescreen",
     "OptionEnablePushHeader": "Push-Benachrichtigungen erlauben",
     "OptionPushNotifications": "Push-Benachrichtigungen",
@@ -331,7 +331,7 @@
     "ColorText": "Wähle zwischen speziellen Farbthemen",
     "SiriShortcutsHeader": "Siri-Kurzbefehle",
     "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM ",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Leider können wir Push-Benachrichtigungen nicht aktivieren, da diese in den Einstellungen deines Geräts deaktiviert sind. Bitte erlaube Push-Benachrichtigungen in deinen Geräteeinstellungen, um diese Funktion zu aktivieren."
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
