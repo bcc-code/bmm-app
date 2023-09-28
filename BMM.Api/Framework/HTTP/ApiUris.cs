@@ -90,5 +90,8 @@
 
         public static string Browse = "browse";
         public static string BrowseEvents = "browse/events{?skip,take}";
+        
+        public static string TranscriptionGet = "transcription/{trackId}/{language}/{first}/{last}";
+        public static string TranscriptionPost = "transcription/{trackId}/{language}";
     }
 }

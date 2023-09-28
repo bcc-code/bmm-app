@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_one_color">
+
+    <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:maxLines="1"
+            android:gravity="start"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toTopOf="parent"
+            local:MvxLang="Text SuggestEditViewModel_Title"
+            style="@style/Title1" />
+    
+    <TextView
+            android:id="@+id/SubtitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:maxLines="1"
+            android:gravity="start"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+            local:MvxLang="Text SuggestEditViewModel_Subtitle"
+            style="@style/Subtitle2_Label3" />
+
+    <View
+            android:id="@+id/TopSeparator"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/divider_height"
+            android:background="@color/separator_color"
+            android:layout_marginTop="@dimen/margin_medium"
+            local:layout_constraintTop_toBottomOf="@+id/SubtitleLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent" />
+
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView
+        android:id="@+id/HighlightedTextTrackRecyclerView"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        local:layout_constraintTop_toBottomOf="@+id/TopSeparator"
+        local:layout_constraintBottom_toTopOf="@+id/BottomSeparator"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxItemTemplate="@layout/listitem_suggest_edit"
+        local:MvxBind="ItemsSource Transcriptions" />
+
+    <View
+            android:id="@+id/BottomSeparator"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/divider_height"
+            android:background="@color/global_black_separator"
+            android:layout_marginBottom="@dimen/margin_medium"
+            local:layout_constraintBottom_toTopOf="@+id/SubmitButton"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent" />
+    
+    <Button
+            android:id="@+id/CancelButton"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_xxmedium"
+            android:singleLine="true"
+            android:ellipsize="end"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toStartOf="@+id/SubmitButton"
+            local:layout_constraintHorizontal_chainStyle="spread"
+            local:MvxLang="Text SuggestEditViewModel_Cancel"
+            local:MvxBind="Click CloseCommand"
+            style="@style/Button_Secondary" />
+            
+    <Button
+            android:id="@+id/SubmitButton"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_xxmedium"
+            android:foreground="@null"
+            local:layout_constraintTop_toTopOf="@+id/CancelButton"
+            local:layout_constraintStart_toEndOf="@+id/CancelButton"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxLang="Text SuggestEditViewModel_Submit"
+            local:MvxBind="
+                Click SubmitCommand;
+                IsEnabled CanSubmit"
+            style="@style/Button_Primary" />
+    
+</androidx.constraintlayout.widget.ConstraintLayout>

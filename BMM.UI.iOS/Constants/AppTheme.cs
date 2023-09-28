@@ -221,6 +221,16 @@ namespace BMM.UI.iOS.Constants
             ContentEdgeInsets = UIEdgeInsets.Zero
         };
         
+        public static readonly ButtonTheme ButtonTertiarySmall = new StandardButtonTheme
+        {
+            TextTheme = Title3,
+            ButtonColor = UIColor.Clear,
+            HasBorder = true,
+            BorderColor = AppColors.SeparatorColor,
+            ImageEdgeInsets = UIEdgeInsets.Zero,
+            ContentEdgeInsets = new UIEdgeInsets(0, 12, 0, 12)
+        };
+        
         public static readonly ButtonTheme ButtonTertiaryMediumSeparatorColorFive = new StandardButtonTheme
         {
             TextTheme = Title1,

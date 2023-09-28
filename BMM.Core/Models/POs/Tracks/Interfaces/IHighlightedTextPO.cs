@@ -9,4 +9,5 @@ public interface IHighlightedTextPO : IDocumentPO
     string Text { get; }
     long StartPositionInMs { get; }
     IMvxAsyncCommand ItemClickedCommand { get; }
+    SearchHighlight SearchHighlight { get; }
 }

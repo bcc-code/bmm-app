@@ -43,6 +43,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/margin_tiny"
             android:layout_toLeftOf="@id/image_view_row_icon"
             android:layout_toRightOf="@id/mini_player_cover"
             android:layout_marginLeft="@dimen/element_margin_medium"
@@ -67,21 +68,28 @@
                 android:layout_gravity="center_vertical" />
         </LinearLayout>
 
-        <ToggleButton
-            android:textOn=""
-            android:textOff=""
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:layout_marginLeft="@dimen/element_margin_medium"
-            android:layout_marginRight="@dimen/element_margin_medium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/image_view_row_icon"
-            android:backgroundTint="@color/label_one_color"
-            local:MvxBind="Checked IsPlaying, Mode=TwoWay; Click PlayPauseCommand"
-            android:background="@drawable/togglebutton_playpause_mini"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
+        <FrameLayout
+                android:id="@+id/image_view_row_icon"
+                android:layout_width="42dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                local:MvxBind="Click PlayPauseCommand">
+            
+            <ToggleButton
+                android:textOn=""
+                android:textOff=""
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/label_one_color"
+                android:layout_gravity="center"
+                local:MvxBind="Checked IsPlaying, Mode=TwoWay"
+                android:background="@drawable/togglebutton_playpause_mini" />
+            
+        </FrameLayout>
     </RelativeLayout>
 
     <SeekBar

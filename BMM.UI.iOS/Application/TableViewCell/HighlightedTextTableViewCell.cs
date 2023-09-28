@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Binding.BindingContext;
 using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Platforms.Ios.Binding;
@@ -45,9 +46,25 @@ namespace BMM.UI.iOS
                     .For(v => v.BindVisible())
                     .To(po => po.IsSong)
                     .WithConversion<InvertedBoolConverter>();
+
+                set.Bind(SuggestEditButton)
+                    .For(v => v.BindTitle())
+                    .To(po => po.TextSource[Translations.HighlightedTextTrackViewModel_SuggestEdit]);
+
+                set.Bind(SuggestEditButton)
+                    .To(po => po.SuggestEditClickedCommand);
+
+                set.Bind(SuggestEditButton)
+                    .For(v => v.BindVisible())
+                    .To(vm => vm.IsSong)
+                    .WithConversion<InvertedBoolConverter>();
                 
                 set.Apply();
                 PositionLabel.ApplyTextTheme(AppTheme.Paragraph3Label1);
+                SuggestEditButton.ApplyButtonStyle(AppTheme.ButtonTertiarySmall);
+                ShareButtonArea!.Layer.BorderWidth = 1.0f;
+                ShareButtonArea.Layer.BorderColor = AppColors.SeparatorColor.CGColor;
+                ShareButtonArea.Layer.CornerRadius = ShareButtonArea.Frame.Height * 0.5f;
             });
         }
         

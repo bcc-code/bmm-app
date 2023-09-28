@@ -312,7 +312,7 @@
     </style>
 
     <style name="Button_Primary" parent="android:Widget.Material.Button.Borderless">
-        <item name="android:textColor">@color/label_one_color</item>
+        <item name="android:textColor">?on_color_one_color</item>
         <item name="android:background">@drawable/button_background_rounded</item>
         <item name="android:foreground">@drawable/button_ripple</item>
         <item name="android:textFontWeight">700</item>

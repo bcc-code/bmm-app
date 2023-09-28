@@ -30,7 +30,7 @@ public class HighlightedTextTrackPO : DocumentPO, IHighlightedTextTrackPO
         {
             return mvxNavigationService.Navigate<HighlightedTextTrackViewModel, HighlightedTextTrackPO>(this);
         });
-
+        
         foreach (var searchHighlight in highlightedTextTrack.SearchHighlights)
         {
             var styledTexts = ExtractParts(searchHighlight.Text);
@@ -43,10 +43,10 @@ public class HighlightedTextTrackPO : DocumentPO, IHighlightedTextTrackPO
             HighlightedTexts.Add(new HighlightedTextPO(
                 trackPO,
                 new StyledTextContainer(styledTexts, 16, true, 1.5f),
-                searchHighlight.Text,
-                searchHighlight.StartPositionInSeconds,
+                searchHighlight,
                 mediaPlayer,
-                shareLink));
+                shareLink,
+                mvxNavigationService));
         }
 
         var firstHighlight = StyledTextContainer
@@ -61,7 +61,7 @@ public class HighlightedTextTrackPO : DocumentPO, IHighlightedTextTrackPO
             ? 0
             : firstHighlight.Length / (float)StyledTextContainer.FullText.Length;
     }
-
+    
     public StyledTextContainer StyledTextContainer { get; }
     public float RatioOfFirstHighlightPositionToFullText { get; }
     public float RatioOfFirstHighlightLengthToFullText { get; set; }
