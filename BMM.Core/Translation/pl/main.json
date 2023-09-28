@@ -25,8 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Włącz muzykę na BMM",
     "FromKaareSiriShortcutName": "Włącz Od Kårego",
     "PlayMusicSiriShortcutName": "Odtwarzaj Muzykę",
-    "DailyMessage": "Daily message",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "DailyMessage": "Codzienna przemowa",
+    "ValueCopiedToClipboard": "{0} skopiowane do schowka"
   },
   "Streak": {
     "Message": "Twoja seria w tym tygodniu",
@@ -34,8 +34,8 @@
     "PerfectWeekCountSingular": "{0} perfekcyjny tydzień",
     "PerfectWeekCountPlural": "{0} perfekcyjnych tygodni",
     "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
+    "EligibleUntilHoursAndMinutesMessage": "Zostało {0} godzin i {1} minut",
+    "EligibleUntilMinutesOnlyMessage": "Zostało {0} minut",
     "DaysInARowSingular": "{0} dni pod rząd ",
     "DaysInARowPlural": "{0} dni pod rząd ",
     "WeekdayMonday": "P",
