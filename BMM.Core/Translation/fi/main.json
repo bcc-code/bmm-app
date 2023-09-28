@@ -542,7 +542,8 @@
     "AutoTranscribedPopupButtonText": "Selvä",
     "FromSongTreasuresPopupTitleText": "Song Treasures -laulujen sanoituksia",
     "FromSongTreasuresPopupHeaderText": "Song Tresures",
-    "FromSongTreasuresPopupSubtitleText": "Lataa Song Treasures -sovellus nähdäksei koko laulun."
+    "FromSongTreasuresPopupSubtitleText": "Lataa Song Treasures -sovellus nähdäksei koko laulun.",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Katkeamattomia sarjoja koskevat säännöt",
@@ -575,5 +576,12 @@
     "RewardIos": "Hieno BMM-sovelluskuvake ",
     "RewardAndroidGolden": "Hieno väriteema BMM-sovellukseesi. Olet nyt mukana AirPods Pro -arvonnassa. Hienoa!",
     "RewardIosGolden": "Hieno kultateema BMM-sovellukseesi. Olet nyt mukana AirPods Pro -arvonnassa. Hienoa!"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "Peruuta",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }
