@@ -542,7 +542,8 @@
     "AutoTranscribedPopupButtonText": "Megvan",
     "FromSongTreasuresPopupTitleText": "Az énekszövegek a Song Treasuresből kerülnek lekérdezésre.",
     "FromSongTreasuresPopupHeaderText": "A Song Treasuresből",
-    "FromSongTreasuresPopupSubtitleText": "Töltsd le a Song Treasures alkalmazást a teljes ének megtekintéséhez."
+    "FromSongTreasuresPopupSubtitleText": "Töltsd le a Song Treasures alkalmazást a teljes ének megtekintéséhez.",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "A sorozatra vonatkozó szabályok",
@@ -575,5 +576,12 @@
     "RewardIos": "Exkluzív alkalmazás-ikon a BMM alkalmazásodhoz 🤩",
     "RewardAndroidGolden": "Exkluzív színtéma a BMM alkalmazásodhoz. Emellett részt veszel a sorsoláson egy pár speciálisan kialakított AirPods Pro készülékért. Szép munka!",
     "RewardIosGolden": "Exkluzív alkalmazás-ikon a BMM alkalmazásodhoz arany színben. Emellett részt veszel a sorsoláson, amelyen egy pár speciálisan kialakított AirPods Pro-t sorsolunk ki. Szép munka!"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "Mégse",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }

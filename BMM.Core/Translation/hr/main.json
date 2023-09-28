@@ -542,7 +542,8 @@
     "AutoTranscribedPopupButtonText": "Got it",
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Rules for streaks",
@@ -575,5 +576,12 @@
     "RewardIos": "An exclusive app icon for your BMM app 🤩",
     "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
     "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "Cancel",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }

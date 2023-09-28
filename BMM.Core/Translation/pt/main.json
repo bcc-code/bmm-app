@@ -542,7 +542,8 @@
     "AutoTranscribedPopupButtonText": "Entendi",
     "FromSongTreasuresPopupTitleText": "As letras são obtidas através do Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "De Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Baixe o aplicativo Song Treasures para ver a música completa."
+    "FromSongTreasuresPopupSubtitleText": "Baixe o aplicativo Song Treasures para ver a música completa.",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Regras para sequências",
@@ -575,5 +576,12 @@
     "RewardIos": "Um ícone de aplicativo exclusivo para seu aplicativo BMM 🤩",
     "RewardAndroidGolden": "Um tema de cores exclusivo para seu aplicativo BMM. Você também está participando do sorteio de um par de AirPods Pro. Bom trabalho!",
     "RewardIosGolden": "Um ícone de aplicativo exclusivo para seu aplicativo BMM em ouro. Você também está participando do sorteio de um par de AirPods Pro. Bom trabalho!"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "Cancelar",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }

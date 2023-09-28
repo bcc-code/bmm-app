@@ -25,8 +25,8 @@
     "SiriPlayMusicInvocationPhrase": "Włącz muzykę na BMM",
     "FromKaareSiriShortcutName": "Włącz Od Kårego",
     "PlayMusicSiriShortcutName": "Odtwarzaj Muzykę",
-    "DailyMessage": "Daily message",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "DailyMessage": "Codzienna przemowa",
+    "ValueCopiedToClipboard": "{0} skopiowane do schowka"
   },
   "Streak": {
     "Message": "Twoja seria w tym tygodniu",
@@ -34,8 +34,8 @@
     "PerfectWeekCountSingular": "{0} perfekcyjny tydzień",
     "PerfectWeekCountPlural": "{0} perfekcyjnych tygodni",
     "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
+    "EligibleUntilHoursAndMinutesMessage": "Zostało {0} godzin i {1} minut",
+    "EligibleUntilMinutesOnlyMessage": "Zostało {0} minut",
     "DaysInARowSingular": "{0} dni pod rząd ",
     "DaysInARowPlural": "{0} dni pod rząd ",
     "WeekdayMonday": "P",
@@ -194,7 +194,7 @@
     "DownloadedContent": "Pobrane utwory",
     "FollowedPodcasts": "Obserwowane podcasty",
     "MyTracks": "Moje utwory",
-    "MyPlaylists": "My playlists",
+    "MyPlaylists": "Moje playlisty",
     "SharedWithMe": "Shared with me",
     "ByFormat": "by {0}"
   },
@@ -261,7 +261,7 @@
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
     "Selected": "Wybrane",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Obejrzyj na BCC Media"
   },
   "QueueViewModel": {
     "Title": "Kolejka"
@@ -324,10 +324,10 @@
     "LogoutConfirm": "Czy na pewno chcesz się wylogować?",
     "Logout": "Wyloguj",
     "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
+    "UserVoiceText": "Masz pomysły jak ulepszyć BMM? Daj nam znać.",
     "ThemeHeader": "Ciemny tryb",
-    "ThemeText": "Choose between a light and a dark theme",
-    "ColorHeader": "Color Theme",
+    "ThemeText": "Wybierz jasny lub ciemny motyw kolorystyczny ",
+    "ColorHeader": "Motyw Kolorystyczny",
     "ColorText": "Choose between custom color themes",
     "SiriShortcutsHeader": "Skróty Siri",
     "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
@@ -365,15 +365,15 @@
     "AskToResumeDownloading": "Dodano nowe utwory do playlisty. Czy chcesz wznowić pobieranie?",
     "Private": "Private",
     "DeletePlaylist": "Usuń playlistę",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Edytuj Playlistę",
+    "SharePlaylist": "Podziel się playlistą",
+    "RemovePlaylist": "Usuń playlistę"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edytuj playlistę",
-    "RenameLabel": "Rename playlist",
+    "RenameLabel": "Zmień nazwę playlisty",
     "MenuSave": "Zapisz",
-    "EmptyName": "The playlist has no name",
+    "EmptyName": "Ta playlista nie ma nazwy",
     "SaveFailure": "Could not update changes. Check your internet connection and try again",
     "DiscardChangesTitle": "Discard Changes?",
     "DiscardChangesMessage": "The changes you made won't be saved",
@@ -502,38 +502,38 @@
     "System": "Follow system settings (Auto)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
+    "Title": "Motyw Kolorystyczny",
     "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Violet": "Fioletowy",
+    "Red": "Czerwony",
+    "DarkGreen": "Ciemnozielony ",
+    "Golden": "Złoty",
+    "Orange": "Pomarańczowy"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Język Ścieżki",
+    "PreferredLanguages": "Twoje preferowane języki ",
     "AllLanguages": "Wszystkie języki"
   },
   "SiriShortcutsViewModel": {
     "Title": "Skróty Siri",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "ShortcutAlreadyAdded": "Ten skrót został już dodany"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
+    "Title": "Powtórka twojego roku",
+    "Share": "Podziel się z przyjaciółmi ",
     "ShareTitle": "Year in Review"
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top songs",
     "PlaysPlural": "{0} plays",
     "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
+    "AddToMyPlaylist": "Dodaj playlistę do ulubionych ",
     "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Auto-transcribed",
-    "FromSongTreasures": "From Song Treasures",
+    "FromSongTreasures": "Z Song Treasures",
     "AddTo": "Dodaj do playlisty",
     "Pause": "Pauza",
     "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
@@ -541,39 +541,47 @@
     "AutoTranscribedPopupSubtitleText": "You’ll soon be able to submit corrections directly in the app.",
     "AutoTranscribedPopupButtonText": "Got it",
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song."
+    "FromSongTreasuresPopupHeaderText": "Z Song Treasures",
+    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
+    "ProgressTitle": "Twój progres",
     "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "Days": "Dni",
     "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "Points": "Punkty",
+    "Achievements": "Twoje osiągnięcia"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "Title": "Ikona Aplikacji",
+    "Description": "Zmień ikonę aplikacji ",
+    "IconStandard": "Standardowa",
+    "IconDarkGreen": "Ciemnozielony ",
+    "IconOrange": "Pomarańczowy",
+    "IconGolden": "Złoty",
+    "IconViolet": "Fioletowy",
+    "IconRed": "Czerwony"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "Title": "Osiągniecie ",
+    "Unlocked": "Odblokowano",
+    "ActivatePremiumIcon": "Aktywuj Ikonę Aplikacji",
     "GotIt": "Got it",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Aktywuj Motyw",
     "Close": "Zamknij",
     "Reward": "Reward",
     "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
     "RewardIos": "An exclusive app icon for your BMM app 🤩",
     "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
     "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "Anuluj",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }

@@ -292,8 +292,8 @@
     "HeadlineSettings": "Einstellungen",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Spiele Musik nach der heutigen Fra Kåre Sendung",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Anzeige der Hörstatistik auf dem Homescreen",
+    "OptionStreakHeader": "Streak auf der Startseite",
+    "OptionStreakText": "Anzeige der Hörstatistik auf der Startseite",
     "OptionEnablePushHeader": "Push-Benachrichtigungen erlauben",
     "OptionPushNotifications": "Push-Benachrichtigungen",
     "OptionPushNotificationsSubtitle": "Aktiviere Push-Benachrichtigungen für Podcasts, die ich abonniert habe",
@@ -331,7 +331,7 @@
     "ColorText": "Wähle zwischen speziellen Farbthemen",
     "SiriShortcutsHeader": "Siri-Kurzbefehle",
     "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM ",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Leider können wir Push-Benachrichtigungen nicht aktivieren, da diese in den Einstellungen deines Geräts deaktiviert sind. Bitte erlaube Push-Benachrichtigungen in deinen Geräteeinstellungen, um diese Funktion zu aktivieren."
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
@@ -542,7 +542,8 @@
     "AutoTranscribedPopupButtonText": "Verstanden! ",
     "FromSongTreasuresPopupTitleText": "Liedtexte werden von Song Treasures geladen.",
     "FromSongTreasuresPopupHeaderText": "Von Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Lade die Song Treasures App runter um das ganze Lied zu sehen."
+    "FromSongTreasuresPopupSubtitleText": "Lade die Song Treasures App runter um das ganze Lied zu sehen.",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Wettbewerbsregeln",
@@ -575,5 +576,12 @@
     "RewardIos": "Ein exklusives App-Symbold für deine BMM-App 🤩",
     "RewardAndroidGolden": "Ein exklusives Farbthema für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!",
     "RewardIosGolden": "Ein exklusives App-Symbol für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "Abbrechen",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }

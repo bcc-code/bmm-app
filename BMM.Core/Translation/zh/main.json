@@ -542,7 +542,8 @@
     "AutoTranscribedPopupButtonText": "明白了",
     "FromSongTreasuresPopupTitleText": "歌词来自 Song Treasures",
     "FromSongTreasuresPopupHeaderText": "来自 Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "下载 Song Treasures 以查看完整歌曲"
+    "FromSongTreasuresPopupSubtitleText": "下载 Song Treasures 以查看完整歌曲",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "连续记录规则",
@@ -575,5 +576,12 @@
     "RewardIos": "您的 BMM 应用程序专属图标 🤩",
     "RewardAndroidGolden": "为您的 BMM 应用程序提供专属颜色主题。您还有机会获得一对 AirPods Pro。干得漂亮！",
     "RewardIosGolden": "金色的 BMM 应用程序专属图标。您还有机会获得一对 AirPods Pro。干得漂亮！"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "取消",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }
