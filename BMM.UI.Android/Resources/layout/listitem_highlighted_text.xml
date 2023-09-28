@@ -21,8 +21,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_medium"
-                local:layout_constraintTop_toTopOf="parent"
+                local:layout_constraintTop_toTopOf="@+id/ShareButton"
+                local:layout_constraintBottom_toBottomOf="@+id/ShareButton"
                 local:layout_constraintStart_toStartOf="parent"
                 local:MvxBind="
                     Text MillisecondsToTime(StartPositionInMs);
@@ -41,18 +41,41 @@
                 android:tint="@color/label_one_color"
                 android:src="@drawable/icon_arrow_right" />
 
-        <ImageButton
+        <Button
+                android:id="@+id/SuggestEditButton"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginEnd="@dimen/margin_xxsmall"
+                android:textSize="14dp"
+                local:layout_constraintEnd_toStartOf="@+id/ShareButton"
+                local:layout_constraintTop_toTopOf="parent"
+                style="@style/Button_Tertiary"
+                local:MvxLang="Text HighlightedTextTrackViewModel_SuggestEdit"
+                local:MvxBind="
+                    Click SuggestEditClickedCommand;
+                    Visibility InvertedVisibility(IsSong)"/>
+
+        <FrameLayout
                 android:id="@+id/ShareButton"
-                android:layout_width="@dimen/highlighted_text_track_item_icon_size"
-                android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginTop="@dimen/margin_medium"
                 android:layout_marginEnd="@dimen/margin_medium"
-                android:background="@android:color/transparent"
-                android:src="@drawable/icon_share"
+                android:layout_gravity="center"
+                android:background="@drawable/button_background_rounded_transparent"
                 local:layout_constraintTop_toTopOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
-                local:MvxBind="Click ShareCommand" />
-
+                local:MvxBind="Click ShareCommand">
+                
+            <ImageView
+                    android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_share" />
+            
+        </FrameLayout>
+        
         <bmm.ui.droid.application.customViews.BmmTextView
                 android:id="@+id/HighlightedTextLabel"
                 android:layout_width="@dimen/match_constraint"

@@ -34,10 +34,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mx8-nn-RkD">
-                                <rect key="frame" x="250" y="8" width="30" height="30"/>
+                                <rect key="frame" x="248" y="7" width="32" height="32"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iDu-im-GLy">
-                                        <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                        <rect key="frame" x="6" y="6" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="Q1r-La-JFD"/>
                                             <constraint firstAttribute="height" constant="20" id="sdm-o3-L4g"/>
@@ -50,20 +50,30 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="iDu-im-GLy" firstAttribute="centerX" secondItem="Mx8-nn-RkD" secondAttribute="centerX" id="EQP-E0-KiI"/>
-                                    <constraint firstAttribute="width" constant="30" id="FO4-M5-A4g"/>
+                                    <constraint firstAttribute="width" constant="32" id="FO4-M5-A4g"/>
                                     <constraint firstItem="iDu-im-GLy" firstAttribute="centerY" secondItem="Mx8-nn-RkD" secondAttribute="centerY" id="dWY-E8-rkW"/>
-                                    <constraint firstAttribute="height" constant="30" id="rzQ-by-can"/>
+                                    <constraint firstAttribute="height" constant="32" id="rzQ-by-can"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSd-14-YNl" customClass="BmmFormattedLabel">
-                                <rect key="frame" x="16" y="29.5" width="256" height="20.5"/>
+                                <rect key="frame" x="16" y="43" width="256" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eha-YS-Tpf">
+                                <rect key="frame" x="121.5" y="7" width="120.5" height="32"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Pdw-YR-Z9Q"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Suggest edit"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundTwoColor"/>
                         <constraints>
+                            <constraint firstItem="iDu-im-GLy" firstAttribute="leading" secondItem="eha-YS-Tpf" secondAttribute="trailing" constant="12" id="2Kt-Vy-Dtn"/>
                             <constraint firstItem="fzH-SQ-2b6" firstAttribute="leading" secondItem="zeI-iI-Cqf" secondAttribute="trailing" constant="4" id="5ni-tV-evF"/>
                             <constraint firstItem="fzH-SQ-2b6" firstAttribute="centerY" secondItem="zeI-iI-Cqf" secondAttribute="centerY" id="8Za-kb-siM"/>
                             <constraint firstItem="iSd-14-YNl" firstAttribute="leading" secondItem="rPl-gp-n0c" secondAttribute="leading" constant="16" id="8mM-FX-SwK"/>
@@ -71,9 +81,10 @@
                             <constraint firstAttribute="trailing" secondItem="iSd-14-YNl" secondAttribute="trailing" constant="16" id="Hfd-d6-Lmv"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="iSd-14-YNl" secondAttribute="bottom" constant="16" id="L3g-0t-tBT"/>
                             <constraint firstItem="zeI-iI-Cqf" firstAttribute="leading" secondItem="rPl-gp-n0c" secondAttribute="leading" constant="16" id="PSh-no-CeM"/>
+                            <constraint firstItem="eha-YS-Tpf" firstAttribute="centerY" secondItem="iDu-im-GLy" secondAttribute="centerY" id="Vfg-Th-rD4"/>
+                            <constraint firstItem="iSd-14-YNl" firstAttribute="top" secondItem="eha-YS-Tpf" secondAttribute="bottom" constant="4" id="Wxm-MH-ny4"/>
                             <constraint firstItem="zeI-iI-Cqf" firstAttribute="top" secondItem="rPl-gp-n0c" secondAttribute="top" constant="16" id="Xem-UD-4gd"/>
                             <constraint firstAttribute="trailing" secondItem="Mx8-nn-RkD" secondAttribute="trailing" constant="8" id="lor-8H-2ub"/>
-                            <constraint firstItem="iSd-14-YNl" firstAttribute="top" secondItem="zeI-iI-Cqf" secondAttribute="bottom" id="rRx-FD-Po8"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -97,6 +108,7 @@
                 <outlet property="PositionLabel" destination="zeI-iI-Cqf" id="ZBY-fg-taz"/>
                 <outlet property="ShareButton" destination="iDu-im-GLy" id="1D7-wf-iA4"/>
                 <outlet property="ShareButtonArea" destination="Mx8-nn-RkD" id="1mV-3S-xem"/>
+                <outlet property="SuggestEditButton" destination="eha-YS-Tpf" id="NP6-0R-ABU"/>
             </connections>
             <point key="canvasLocation" x="304.34782608695656" y="363.61607142857139"/>
         </tableViewCell>

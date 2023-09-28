@@ -6,6 +6,7 @@ using Android.Widget;
 using AndroidX.AppCompat.App;
 using BMM.UI.Droid.Application.Activities;
 using Google.Android.Material.Snackbar;
+using MvvmCross.Platforms.Android.Views.Fragments;
 
 namespace BMM.UI.Droid.Application.Implementations
 {
@@ -53,8 +54,17 @@ namespace BMM.UI.Droid.Application.Implementations
             Snackbar snackBar = null;
             activity.SafeRunOnUi(() =>
             {
-                var view = activity.Window.DecorView.RootView.FindViewById(Android.Resource.Id.Content);
-                var msg = this.GetSnackbarText(cfg);
+                View view = null;
+                
+                var dialog = activity.SupportFragmentManager.Fragments;
+                var lastFragment = dialog.Last();
+                
+                if (lastFragment is MvxDialogFragment dialogFragment)
+                    view = dialogFragment.View;
+                else
+                    view = activity.Window.DecorView.RootView.FindViewById(Android.Resource.Id.Content);
+                    
+                var msg = GetSnackbarText(cfg);
 
                 snackBar = Snackbar.Make(
                     view,

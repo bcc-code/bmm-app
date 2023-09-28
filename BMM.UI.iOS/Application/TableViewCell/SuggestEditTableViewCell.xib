@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" focusStyle="custom" rowHeight="160" id="cxk-wN-pdQ" customClass="SuggestEditTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z37-iM-eDb">
+                        <rect key="frame" x="16" y="16" width="288" height="108"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupkjkjidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                        <color key="textColor" systemColor="labelColor"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    </textView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ysD-Hq-9o8">
+                        <rect key="frame" x="16" y="139" width="288" height="1"/>
+                        <color key="backgroundColor" name="SeparatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="0us-5E-ZKE"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="Z37-iM-eDb" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="16" id="691-tp-ESD"/>
+                    <constraint firstAttribute="trailing" secondItem="Z37-iM-eDb" secondAttribute="trailing" constant="16" id="KbU-mQ-Q3M"/>
+                    <constraint firstItem="ysD-Hq-9o8" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="MHY-dm-Fi2"/>
+                    <constraint firstItem="Z37-iM-eDb" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="i4x-r3-qxt"/>
+                    <constraint firstAttribute="bottom" secondItem="Z37-iM-eDb" secondAttribute="bottom" constant="16" id="ngB-mx-lO5"/>
+                    <constraint firstAttribute="bottom" secondItem="ysD-Hq-9o8" secondAttribute="bottom" id="uHn-Ob-im0"/>
+                    <constraint firstAttribute="trailing" secondItem="ysD-Hq-9o8" secondAttribute="trailing" constant="16" id="uPd-hZ-Vx9"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
+            <connections>
+                <outlet property="TranscriptionTextView" destination="Z37-iM-eDb" id="ewD-7o-0S5"/>
+            </connections>
+            <point key="canvasLocation" x="304.34782608695656" y="363.61607142857139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="BackgroundOneColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SeparatorColor">
+            <color red="0.5058823823928833" green="0.53333336114883423" blue="0.56078433990478516" alpha="0.10196078568696976" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

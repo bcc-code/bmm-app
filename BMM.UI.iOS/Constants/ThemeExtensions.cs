@@ -19,7 +19,7 @@ namespace BMM.UI.iOS.Constants
             label.AdjustsFontSizeToFitWidth = true;
             label.AdjustsFontForContentSizeCategory = true;
         }
-
+        
         public static void ApplyButtonStyle(this UIButton button, ButtonTheme theme)
         {
             if (ButtonConfigurationSupported)

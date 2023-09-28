@@ -28,11 +28,19 @@ namespace BMM.UI.iOS
 		[Outlet]
 		UIKit.UIView ShareButtonArea { get; set; }
 
+		[Outlet]
+		UIKit.UIButton SuggestEditButton { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (HighlightedTextLabel != null) {
 				HighlightedTextLabel.Dispose ();
 				HighlightedTextLabel = null;
+			}
+
+			if (PlayIcon != null) {
+				PlayIcon.Dispose ();
+				PlayIcon = null;
 			}
 
 			if (PositionLabel != null) {
@@ -50,9 +58,9 @@ namespace BMM.UI.iOS
 				ShareButtonArea = null;
 			}
 
-			if (PlayIcon != null) {
-				PlayIcon.Dispose ();
-				PlayIcon = null;
+			if (SuggestEditButton != null) {
+				SuggestEditButton.Dispose ();
+				SuggestEditButton = null;
 			}
 
 		}

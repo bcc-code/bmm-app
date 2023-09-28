@@ -426,6 +426,7 @@ namespace BMM.Core.Translation
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupTitleText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupTitleText);
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupHeaderText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupHeaderText);
 		public const string HighlightedTextTrackViewModel_FromSongTreasuresPopupSubtitleText = nameof(HighlightedTextTrackViewModel_FromSongTreasuresPopupSubtitleText);
+		public const string HighlightedTextTrackViewModel_SuggestEdit = nameof(HighlightedTextTrackViewModel_SuggestEdit);
 		public const string BibleStudyViewModel_StreakTerms = nameof(BibleStudyViewModel_StreakTerms);
 		public const string BibleStudyViewModel_ProgressTitle = nameof(BibleStudyViewModel_ProgressTitle);
 		public const string BibleStudyViewModel_StreakThisWeek = nameof(BibleStudyViewModel_StreakThisWeek);
@@ -452,5 +453,10 @@ namespace BMM.Core.Translation
 		public const string AchievementDetailsViewModel_RewardIos = nameof(AchievementDetailsViewModel_RewardIos);
 		public const string AchievementDetailsViewModel_RewardAndroidGolden = nameof(AchievementDetailsViewModel_RewardAndroidGolden);
 		public const string AchievementDetailsViewModel_RewardIosGolden = nameof(AchievementDetailsViewModel_RewardIosGolden);
+		public const string SuggestEditViewModel_Title = nameof(SuggestEditViewModel_Title);
+		public const string SuggestEditViewModel_Subtitle = nameof(SuggestEditViewModel_Subtitle);
+		public const string SuggestEditViewModel_Cancel = nameof(SuggestEditViewModel_Cancel);
+		public const string SuggestEditViewModel_Submit = nameof(SuggestEditViewModel_Submit);
+		public const string SuggestEditViewModel_SubmitSuccess = nameof(SuggestEditViewModel_SubmitSuccess);
 	}
 }

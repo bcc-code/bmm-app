@@ -22,6 +22,7 @@ using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Support;
+using BMM.UI.iOS.Bindings;
 using BMM.UI.iOS.DownloadManager;
 using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
@@ -43,6 +44,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Storage;
 using MvvmCross;
 using MvvmCross.Base;
+using MvvmCross.Binding.Bindings.Target.Construction;
 using MvvmCross.IoC;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Platforms.Ios.Presenters;
@@ -147,6 +149,7 @@ namespace BMM.UI.iOS
                 MaxMemoryCacheSize = ImageServiceConstants.ImageCacheMemorySize
             });
         }
+        
 
         private void RegisterMediaPlayer(IMvxIoCProvider iocProvider)
         {
@@ -163,6 +166,12 @@ namespace BMM.UI.iOS
             iocProvider.RegisterType<IMediaQueue>(iocProvider.Resolve<IShuffleableQueue>);
         }
 
+        protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
+        {
+            base.FillTargetFactories(registry);
+            UIButtonEnabledBinding.Register(registry);
+        }
+        
         protected override IMvxApplication CreateApp(IMvxIoCProvider iocProvider)
         {
             return new App();
