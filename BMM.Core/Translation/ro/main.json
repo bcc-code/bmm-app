@@ -542,7 +542,8 @@
     "AutoTranscribedPopupButtonText": "Am înțeles",
     "FromSongTreasuresPopupTitleText": "Versurile sunt preluate din Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Din Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Descărcați aplicația Song Treasures pentru a vedea cântarea completă."
+    "FromSongTreasuresPopupSubtitleText": "Descărcați aplicația Song Treasures pentru a vedea cântarea completă.",
+    "SuggestEdit": "Suggest edit"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Reguli pentru streaks",
@@ -575,5 +576,12 @@
     "RewardIos": "O pictogramă exclusivă pentru aplicația ta BMM 🤩",
     "RewardAndroidGolden": "O temă de culoare exclusivă pentru aplicația ta BMM. Ești înscris și la tragerea la sorți pentru o pereche de AirPods Pro. Bravo!",
     "RewardIosGolden": "O pictogramă exclusivă pe auriu pentru aplicația ta BMM. Ești înscris și la tragerea la sorți pentru o pereche de AirPods Pro. Bravo!"
+  },
+  "SuggestEditViewModel": {
+    "Title": "Suggest an edit",
+    "Subtitle": "Edit the text below to correct an error",
+    "Cancel": "Anulare",
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   }
 }
