@@ -538,12 +538,12 @@
     "Pause": "Pauze",
     "AutoTranscribedPopupTitleText": "Transcripties zijn automatisch gegenereerd en kunnen daardoor fouten bevatten",
     "AutoTranscribedPopupHeaderText": "Geautomatiseerde transcriptie",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
+    "AutoTranscribedPopupSubtitleText": "Binnenkort kun je correcties voorstellen direct in de app.",
     "AutoTranscribedPopupButtonText": "Begrepen",
     "FromSongTreasuresPopupTitleText": "De lyrics komen van Song Treasures",
     "FromSongTreasuresPopupHeaderText": "Van Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Download de Song Treasures app om het hele lied te zien.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Wijziging voorstel"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Regels voor streaks",
@@ -578,10 +578,10 @@
     "RewardIosGolden": "Een speciaal pictogram voor je BMM app in goud. Je doet ook mee aan de loting voor AirPods Pro. Goed gedaan!"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Stel een wijziging voor",
+    "Subtitle": "Wijzig de tekst hieronder om een fout te corrigeren",
     "Cancel": "Annuleren",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Indienen",
+    "SubmitSuccess": "Wijzigingsvoorstel succesvol ingediend, dank je wel!"
   }
 }
