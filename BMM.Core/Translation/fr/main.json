@@ -538,7 +538,7 @@
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Les transcriptions sont générées automatiquement et peuvent contenir des erreurs.",
     "AutoTranscribedPopupHeaderText": "Transcription automatique",
-    "AutoTranscribedPopupSubtitleText": "Vous pourrez bientôt soumettre des corrections directement dans l'application.",
+    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
     "AutoTranscribedPopupButtonText": "J'ai compris",
     "FromSongTreasuresPopupTitleText": "Les paroles sont extraites de Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Extrait de Song Treasures",
