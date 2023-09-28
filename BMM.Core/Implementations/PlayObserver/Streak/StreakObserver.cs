@@ -41,7 +41,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         /// </summary>
         private System.Timers.Timer _minListeningTimer;
 
-        private const int MinListeningPercentage = 60;
+        private const int MinListeningPercentage = 50;
         private const int RetryIntervalInSeconds = 10;
 
         public StreakObserver(IMvxMessenger messenger,
