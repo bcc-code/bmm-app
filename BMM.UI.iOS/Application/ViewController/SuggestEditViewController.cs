@@ -4,6 +4,7 @@ using BMM.UI.iOS.Bindings;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
+using MvvmCross.Platforms.Ios.Views;
 
 namespace BMM.UI.iOS
 {
@@ -52,12 +53,14 @@ namespace BMM.UI.iOS
         {
             if (BottomView != null)
             {
-                var animationDuration = UIKeyboard.AnimationDurationFromNotification(notification);
+                double animationDuration = UIKeyboard.AnimationDurationFromNotification(notification);
 
                 UIView.Animate(animationDuration, () =>
                 {
                     BottomView.Frame = new CGRect(BottomView.Frame.X, _initialYBottomViewPosition, BottomView.Frame.Width, BottomView.Frame.Height);
                 });
+                
+                TranscriptionsTableView.ContentInset = UIEdgeInsets.Zero;
             }
         }
 
@@ -67,11 +70,25 @@ namespace BMM.UI.iOS
             {
                 var keyboardFrame = UIKeyboard.FrameEndFromNotification(notification);
                 double animationDuration = UIKeyboard.AnimationDurationFromNotification(notification);
-
+                
                 UIView.Animate(animationDuration, () =>
                 {
                     BottomView.Frame = new CGRect(BottomView.Frame.X, _initialYBottomViewPosition + BottomSafeArea - keyboardFrame.Height, BottomView.Frame.Width, BottomView.Frame.Height);
                 });
+                
+                var firstResponder = TranscriptionsTableView.FindFirstResponder();
+                if (firstResponder == null)
+                    return;
+
+                var positionInWindow = firstResponder.Superview.ConvertPointToView(firstResponder.Frame.Location, null);
+                var viewBottom = positionInWindow.Y + firstResponder.Frame.Height;
+                
+                if (viewBottom < keyboardFrame.GetMinY())
+                    return;
+                
+                var contentInset = TranscriptionsTableView.ContentInset;
+                contentInset.Bottom = keyboardFrame.Height;
+                TranscriptionsTableView.ContentInset = contentInset;
             }
         }
 
