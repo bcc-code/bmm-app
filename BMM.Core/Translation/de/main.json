@@ -19,7 +19,7 @@
     "BackgroundActivityRestrictedMessage": "Deine Geräteeinstellungen verhindern, dass BMM im Hintergrund läuft, das bedeutet, BMM wird nach einigen Minuten nicht weiter spielen können, wenn du dein Handy sperrst. Wenn du das ändern willst, öffne die App-Einstellungen und aktiviere \"Hintergrundaktivität erlauben\" im Bereich \"Batterie\".",
     "GoToSettings": "Zu den Einstellungen",
     "NotNow": "Später",
-    "DownloadPlaylistOnceOnWifi": "Die Playliste wird das nächste Mal heruntergeladen, wenn du wieder WLAN hast. Du kannst \"Über Mobilfunknetzwerk herunterladen\" in deinem Profil aktivieren. ",
+    "DownloadPlaylistOnceOnWifi": "Die Playlist wird das nächste Mal heruntergeladen, wenn du wieder WLAN hast. Du kannst \"Über Mobilfunknetzwerk herunterladen\" in deinem Profil aktivieren. ",
     "DownloadPodcastOnceOnWifi": "Die neusten Titel für diesen Podcast werden das nächste Mal heruntergeladen, wenn du wieder WLAN hast. Du kannst \"Über Mobilfunknetzwerk herunterladen\" in deinem Profil aktivieren. ",
     "SiriFromKaareInvocationPhrase": "Spiel Von Kåre auf BMM",
     "SiriPlayMusicInvocationPhrase": "Spiel Musik auf BMM",
@@ -71,7 +71,7 @@
     "AddAlbumToMyTracks": "Album zu meinen Titeln hinzufügen",
     "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
-    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playlist {0} vorhanden",
     "ShufflePlay": "Zufällige Wiedergabe",
     "PluralAlbums": "{0} Alben"
   },
@@ -128,7 +128,7 @@
     "GuideOfflineTitle": "Offline-Playlists",
     "GuideOfflineSubtitle": "Lade deine Playlists auf dein Gerät herunter und höre sie offline. Das kannst du in der Playlist aktivieren.",
     "GuideAddToPlaylistTitle": "Zu Playlist oder \"Meinen Titeln\" hinzufügen",
-    "GuideAddToPlaylistSubtitle": "Speichere deine Lieblingstitel in deinen eigenen Playlisten oder in deiner persönlichen BMM Sammlung \"Meine Titel\" indem du auf die drei Punkte rechts von dem Titel drückst.",
+    "GuideAddToPlaylistSubtitle": "Speichere deine Lieblingstitel in deinen eigenen Playlists oder in deiner persönlichen BMM Sammlung \"Meine Titel\" indem du auf die drei Punkte rechts von dem Titel drückst.",
     "GuideLanguagesTitle": "Mehrere Sprachen",
     "GuideLanguagesSubtitle": "Wähle deine bevorzugten Inhaltssprachen und deren Priorität unter Einstellungen > Inhaltssprachen.",
     "GuideLibraryTitle": "Bibliothek",
@@ -172,7 +172,7 @@
     "DeleteLanguageTitle": "{0} kann nicht entfernt werden"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Stöbern"
   },
   "LibraryArchiveViewModel": {
     "Title": "Archiv"
@@ -182,7 +182,7 @@
     "Search": "Suchen",
     "Explore": "Erkunden",
     "MyContent": "Meine Inhalte",
-    "Browse": "Browse",
+    "Browse": "Stöbern",
     "Settings": "Einstellungen",
     "HelpAndFeedback": "Hilfe und Feedback",
     "Home": "Start",
@@ -194,7 +194,7 @@
     "DownloadedContent": "Offline-Inhalte",
     "FollowedPodcasts": "Abonnierte Podcasts",
     "MyTracks": "Meine Titel",
-    "MyPlaylists": "Meine Playlisten",
+    "MyPlaylists": "Meine Playlists",
     "SharedWithMe": "Mit mir geteilt",
     "ByFormat": "von {0}"
   },
@@ -234,7 +234,7 @@
     "GetNotified": "Lass dich benachrichtigen",
     "GetNotifiedMessage": "sobald es neue Folgen gibt",
     "UnfollowConfirm": "Möchtest du das Abonnement für diesen Podcast beenden?",
-    "ToggleFollowOfflineError": "Du kannst einen Podcast nur abonnieren oder davon abmelden wenn du online bist",
+    "ToggleFollowOfflineError": "Du kannst einen Podcast nur abonnieren oder dich davon abmelden, wenn du online bist",
     "Week": "Woche {0}",
     "ThisWeek": "Diese Woche",
     "LastWeek": "Letzte Woche",
@@ -247,7 +247,7 @@
     "Title": "Playlist"
   },
   "CuratedPlaylistsViewModel": {
-    "Title": "Playlisten"
+    "Title": "Playlists"
   },
   "PlayerViewModel": {
     "Title": "Spielt jetzt",
@@ -281,7 +281,7 @@
     "Albums": "Alben",
     "Contributors": "Personen",
     "Podcasts": "Podcasts",
-    "Playlists": "Playlisten",
+    "Playlists": "Playlists",
     "NoResults": "Keine Ergebnisse",
     "NoResultsDescription": "Es gab keine Übereinstimmung deiner Suche für ",
     "SearchFailedTitle": "Suche fehlgeschlagen",
@@ -298,11 +298,11 @@
     "OptionPushNotifications": "Push-Benachrichtigungen",
     "OptionPushNotificationsSubtitle": "Aktiviere Push-Benachrichtigungen für Podcasts, die ich abonniert habe",
     "OptionExternalStorage": "Speicherort",
-    "OptionMBInternalText": "Internal {0} MB",
-    "OptionMBExternalText": "External {0} MB",
+    "OptionMBInternalText": "Interner Speicher {0} MB",
+    "OptionMBExternalText": "Externer Speicher {0} MB",
     "OptionEnablePushText": "Erhalte eine Push-Benachrichtigung, wenn neue Inhalte verfügbar sind",
     "OptionDownloadMobileNetworkHeader": "Downloaden über Mobilfunknetz",
-    "OptionDownloadMobileNetworkText": "Erlaube Inhalte über 3G/4G herunterzuladen. Dies kann sich auf dein Datenvolumen auswirken",
+    "OptionDownloadMobileNetworkText": "Erlaube Inhalte über 3G/4G/5G herunterzuladen. Dies kann sich auf dein Datenvolumen auswirken",
     "HeadlineGeneral": "Allgemein",
     "OptionLanguageAppHeader": "Appsprache",
     "OptionLanguageAppText": "Appsprache ändern",
@@ -341,12 +341,12 @@
     "PluralTracks": "{0} Titel",
     "PluralTracksLoaded": "{0} Titel geladen",
     "Download": "Herunterladen",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Zufällige Wiedergabe",
     "Play": "Abspielen"
   },
   "TrackCollectionViewModel": {
-    "Title": "Playlist",
-    "ShufflePlay": "Shuffle",
+    "Title": "Playliste",
+    "ShufflePlay": "Zufällige Wiedergabe",
     "Resume": "Weiterhören",
     "AvailableOffline": "Offline verfügbar",
     "AvailableOfflineDownload": "Herunterladen",
@@ -365,33 +365,33 @@
     "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?",
     "Private": "Privat",
     "DeletePlaylist": "Playlist löschen",
-    "EditPlaylist": "Playliste bearbeiten",
-    "SharePlaylist": "Playliste teilen",
-    "RemovePlaylist": "Playliste entfernen"
+    "EditPlaylist": "Playlist bearbeiten",
+    "SharePlaylist": "Playlist teilen",
+    "RemovePlaylist": "Playlist entfernen"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Playliste bearbeiten",
+    "Title": "Playlist bearbeiten",
     "RenameLabel": "Playlist umbenennen",
     "MenuSave": "Speichern",
-    "EmptyName": "Die Playliste hat keinen Namen",
+    "EmptyName": "Die Playlist hat keinen Namen",
     "SaveFailure": "Etwas lief schief. Bitte überprüfe deine Internetverbindung und versuche es noch einmal",
     "DiscardChangesTitle": "Änderungen verwerfen?",
-    "DiscardChangesMessage": "Die Än­de­rung die du gemacht hast werden nicht gespeichert",
+    "DiscardChangesMessage": "Die Än­de­rungen, die du gemacht hast, werden nicht gespeichert",
     "DiscardChanges": "Verwerfen",
     "KeepEditing": "Weiter Bearbeiten"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Playliste teilen",
-    "ShareNote": "Personen die den Link der geteilten Playliste haben, können auf die Liste zugreifen und die hinzugefügten Titel hören.",
+    "Title": "Playlist teilen",
+    "ShareNote": "Personen, die den Link der geteilten Playlist haben, können auf die Liste zugreifen und die hinzugefügten Titel hören.",
     "ShareLink": "Link teilen",
     "MakePrivate": "Privat machen",
     "SharedWithFormat": "Mit {0} Personen geteilt"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Geteilte Playliste",
+    "Title": "Geteilte Playlist",
     "Close": "Schließen",
-    "AddToMyPlaylist": "Zu meinen Playlisten hinzufügen",
-    "FollowOwnTrackCollection": "Du kannst nicht deiner eigenen Playliste folgen."
+    "AddToMyPlaylist": "Zu meinen Playlists hinzufügen",
+    "FollowOwnTrackCollection": "Du kannst nicht deiner eigenen Playlist folgen."
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Playlist",
@@ -407,7 +407,7 @@
     "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
-    "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen weil es Alben enthält.",
+    "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen, weil es Alben enthält.",
     "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
     "CreatePlaylistPrompt": "Gib einen Namen für deine Playlist ein",
     "TrackAddedToTrackCollection": "Zur Playlist hinzugefügt"
@@ -419,7 +419,7 @@
     "Track.RemoveFromMyTracks": "Aus meinen Titeln entfernen",
     "Track.AddedToMyTracks": "Zu meinen Titeln hinzugefügt",
     "Track.RemovedFromMyTracks": "Aus meinen Titeln entfernt",
-    "Track.FailedToRemoveFromMyTracks": "Fehler beim Entfernen des Titel aus meine Titel",
+    "Track.FailedToRemoveFromMyTracks": "Fehler beim Entfernen des Titels aus Meine Titel",
     "Track.AddToQueue": "Zur Warteschlange hinzufügen",
     "Track.QueueToPlayNext": "Als nächstes abspielen",
     "Track.AddedToQueue": "Zur Warteschlange hinzugefügt",
@@ -427,21 +427,21 @@
     "Track.GoToContributor": "Zur Person",
     "Track.GoToContributor.Composer": "Komponist: {0}",
     "Track.GoToContributor.Interpret": "Interpret: {0}",
-    "Track.GoToContributor.Lyricist": "Texter: {0}",
+    "Track.GoToContributor.Lyricist": "Verfasser: {0}",
     "Track.GoToContributor.Arranger": "Arrangeur: {0}",
     "Track.Download": "Titel herunterladen",
     "Track.MoreInformation": "Mehr Informationen",
     "Track.Share": "Titel teilen",
     "Album.Play": "Abspielen",
     "Album.AddToPlaylist": "Album zu Playlist hinzufügen",
-    "Album.AddToMyTracks": "Album zu meinen Titeln hinzufügen",
-    "Album.AddedToMyTracks": "Album wurde zu meinen Titeln hinzugefügt",
+    "Album.AddToMyTracks": "Album zu Meinen Titeln hinzufügen",
+    "Album.AddedToMyTracks": "Album wurde zu Meinen Titeln hinzugefügt",
     "Album.AddToQueue": "Zur Warteschlange hinzufügen",
     "Album.Share": "Album teilen",
     "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
-    "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen weil es Alben enthält.",
+    "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen, weil es Alben enthält.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
-    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
+    "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playlist {0} vorhanden",
     "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
     "MyTracks": "Meine Titel",
     "Contributor.Play": "Abspielen",
@@ -466,9 +466,9 @@
     "Artist": "Künstler",
     "Duration": "Dauer",
     "PublishDate": "Veröffentlichungsdatum",
-    "Lyricist": "Text",
+    "Lyricist": "Verfasser",
     "Arranger": "Arrangeur",
-    "Composer": "Melodie",
+    "Composer": "Komponist",
     "Publisher": "Herausgeber",
     "Copyright": "Copyright"
   },
@@ -525,16 +525,16 @@
     "ShareTitle": "Das Jahr im Rückblick"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Topsongs",
+    "Title": "Top Lieder",
     "PlaysPlural": "{0} x gespielt",
     "PlaysSingular": "{0} x gespielt",
-    "AddToMyPlaylist": "Playliste zu Favoriten hinzufügen",
+    "AddToMyPlaylist": "Playlist zu Favoriten hinzufügen",
     "SuccessfullyAddedToPlaylists": "Erfolgreich zu Favoriten hinzugefügt"
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Autotranskribiert",
     "FromSongTreasures": "Von Song Treasures",
-    "AddTo": "Zur Playliste hinzufügen",
+    "AddTo": "Zur Playlist hinzufügen",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Transkripte werden automatisch generiert und können Fehler enthalten",
     "AutoTranscribedPopupHeaderText": "Autotranskribiert",
@@ -542,8 +542,8 @@
     "AutoTranscribedPopupButtonText": "Verstanden! ",
     "FromSongTreasuresPopupTitleText": "Liedtexte werden von Song Treasures geladen.",
     "FromSongTreasuresPopupHeaderText": "Von Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Lade die Song Treasures App runter um das ganze Lied zu sehen.",
-    "SuggestEdit": "Suggest edit"
+    "FromSongTreasuresPopupSubtitleText": "Lade die Song Treasures App herunter um das ganze Lied zu sehen.",
+    "SuggestEdit": "Bearbeitung vorschlagen"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Wettbewerbsregeln",
@@ -573,15 +573,15 @@
     "Close": "Schließen",
     "Reward": "Belohnung",
     "RewardAndroid": "Ein exklusives Farbthema für deine BMM-App 🤩",
-    "RewardIos": "Ein exklusives App-Symbold für deine BMM-App 🤩",
+    "RewardIos": "Ein exklusives App-Symbol für deine BMM-App 🤩",
     "RewardAndroidGolden": "Ein exklusives Farbthema für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!",
     "RewardIosGolden": "Ein exklusives App-Symbol für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Eine Bearbeitung vorschlagen",
+    "Subtitle": "Bearbeite den folgenden Text, um einen Fehler zu korrigieren",
     "Cancel": "Abbrechen",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Einreichen",
+    "SubmitSuccess": "Änderungsvorschläge erfolgreich übermittelt, vielen Dank!"
   }
 }

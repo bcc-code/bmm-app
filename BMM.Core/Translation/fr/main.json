@@ -543,7 +543,7 @@
     "FromSongTreasuresPopupTitleText": "Les paroles sont extraites de Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Extrait de Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Télécharger l'application Song Treasures pour voir l'intégralité du chant.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Proposer modification"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Règles pour les séries",
@@ -578,10 +578,10 @@
     "RewardIosGolden": "Une icône exclusive en or pour ton application BMM. Tu participes également au tirage au sort d'une paire d'AirPods Pro. Bien joué !"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Proposer une modification",
+    "Subtitle": "Modifier le texte ci-dessous pour corriger une erreur",
     "Cancel": "Annuler",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Envoyer",
+    "SubmitSuccess": "Les suggestions de modification ont été soumises avec succès, merci !"
   }
 }
