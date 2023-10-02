@@ -33,8 +33,8 @@
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
-        <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
-        <CodesignProvision>BMM Siri Intents Provisioning Profile</CodesignProvision>
+        <CodesignKey>Apple Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+        <CodesignProvision>BMM App Siri Intents Provisioning Profile</CodesignProvision>
         <OutputPath>bin\iPhone\Release</OutputPath>
         <WarningLevel>4</WarningLevel>
         <MtouchUseLlvm>true</MtouchUseLlvm>
@@ -76,8 +76,8 @@
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITests|iPhone' ">
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
-        <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
-        <CodesignProvision>BMM Siri Intents Provisioning Profile</CodesignProvision>
+        <CodesignKey>Apple Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+        <CodesignProvision>BMM App Siri Intents Provisioning Profile</CodesignProvision>
         <OutputPath>bin\iPhone\Debug</OutputPath>
         <DefineConstants>DEBUG;</DefineConstants>
         <WarningLevel>4</WarningLevel>

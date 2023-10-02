@@ -68,8 +68,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITests|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
-    <CodesignProvision>BMM Provisioning Profile 2022</CodesignProvision>
+    <CodesignKey>Apple Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+    <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;UI_TESTS</DefineConstants>
     <MtouchLink>None</MtouchLink>
@@ -101,8 +101,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
-    <CodesignProvision>BMM Provisioning Profile</CodesignProvision>
+    <CodesignKey>Apple Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+    <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
