@@ -141,7 +141,7 @@ namespace BMM.Core.ViewModels.Base
             RefreshTrackWithId(CurrentTrack?.Id);
             var tracksIdsToAdditionalRefresh = Documents
                 .OfType<ITrackPO>()
-                .Where(t => t.TrackState.IsCurrentlySelected && t.Id != CurrentTrack?.Id)
+                .Where(t => t.TrackState != null && t.TrackState.IsCurrentlySelected && t.Id != CurrentTrack?.Id)
                 .Select(t => t.Id)
                 .ToList();
 
