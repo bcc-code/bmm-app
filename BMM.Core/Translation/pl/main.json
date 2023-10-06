@@ -118,7 +118,7 @@
     "More": "Więcej"
   },
   "ExploreContributorsViewModel": {
-    "Title": "Wykonawcy",
+    "Title": "Autorzy",
     "SearchHint": "Szukaj"
   },
   "HelpFeedbackViewModel": {
@@ -499,11 +499,11 @@
     "Title": "Ustawienia trybu ciemnego",
     "Light": "Jasny",
     "Dark": "Ciemny",
-    "System": "Follow system settings (Auto)"
+    "System": "Śledzenie ustawień systemu (Automatycznie)"
   },
   "ColorThemeViewModel": {
     "Title": "Motyw Kolorystyczny",
-    "Default": "Default",
+    "Default": "Domyślny",
     "Violet": "Fioletowy",
     "Red": "Czerwony",
     "DarkGreen": "Ciemnozielony ",
@@ -522,33 +522,33 @@
   "YearInReviewViewModel": {
     "Title": "Powtórka twojego roku",
     "Share": "Podziel się z przyjaciółmi ",
-    "ShareTitle": "Year in Review"
+    "ShareTitle": "Podsumowanie roku"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
+    "Title": "Top pieśni",
+    "PlaysPlural": "{0} odtworzeń",
+    "PlaysSingular": "{0} odtwórz",
     "AddToMyPlaylist": "Dodaj playlistę do ulubionych ",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "SuccessfullyAddedToPlaylists": "Dodano do ulubionych"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Automatycznie transkrybowane",
     "FromSongTreasures": "Z Song Treasures",
     "AddTo": "Dodaj do playlisty",
     "Pause": "Pauza",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
-    "AutoTranscribedPopupButtonText": "Got it",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "AutoTranscribedPopupTitleText": "Transkrypcje są generowane automatycznie i mogą zawierać błędy",
+    "AutoTranscribedPopupHeaderText": "Automatycznie transkrybowane",
+    "AutoTranscribedPopupSubtitleText": "Pomóż ulepszyć transkrypcję, sugerując poprawki za pomocą opcji \"Zaproponuj edycję\".",
+    "AutoTranscribedPopupButtonText": "Rozumiem",
+    "FromSongTreasuresPopupTitleText": "Teksty są pobierane z Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Z Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
-    "SuggestEdit": "Suggest edit"
+    "FromSongTreasuresPopupSubtitleText": "Pobierz aplikację Song Treasures, aby zobaczyć pełną wersję utworu.",
+    "SuggestEdit": "Zaproponuj edycję"
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
+    "StreakTerms": "Zasady dotyczące serii",
     "ProgressTitle": "Twój progres",
-    "StreakThisWeek": "Streak this week",
+    "StreakThisWeek": "Seria w tym tygodniu",
     "Days": "Dni",
     "Boost": "Boost",
     "Points": "Punkty",
@@ -568,20 +568,20 @@
     "Title": "Osiągniecie ",
     "Unlocked": "Odblokowano",
     "ActivatePremiumIcon": "Aktywuj Ikonę Aplikacji",
-    "GotIt": "Got it",
+    "GotIt": "Rozumiem",
     "ActivateTheme": "Aktywuj Motyw",
     "Close": "Zamknij",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
-    "RewardIos": "An exclusive app icon for your BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "Reward": "Nagroda",
+    "RewardAndroid": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM 🤩",
+    "RewardIos": "Ekskluzywna ikona aplikacji dla aplikacji BMM 🤩",
+    "RewardAndroidGolden": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!",
+    "RewardIosGolden": "Ekskluzywna ikona aplikacji BMM w kolorze złotym. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Zaproponuj edycję",
+    "Subtitle": "Edytuj poniższy tekst, aby poprawić błąd",
     "Cancel": "Anuluj",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Wyślij",
+    "SubmitSuccess": "Sugestia edycji została pomyślnie przesłana, dziękujemy!"
   }
 }
