@@ -292,8 +292,8 @@
     "HeadlineSettings": "Ustawienia",
     "OptionAutoplayHeader": "Autoodtwarzanie",
     "OptionAutoplayText": "Odtwarzaj muzykę po przesłuchaniu dzisiejszego odcinka Od Kårego",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakHeader": "Seria na Stronie Głównej",
+    "OptionStreakText": "Wyświetlanie statystyk słuchania na ekranie głównym",
     "OptionEnablePushHeader": "Włącz powiadomienia",
     "OptionPushNotifications": "Powiadomienia",
     "OptionPushNotificationsSubtitle": "Włącz powiadomienia dla podcastów które obserwujesz",
@@ -316,30 +316,30 @@
     "OptionAppVersionHeader": "Wersja aplikacji",
     "AppInfoTitle": "Informacje o aplikacji",
     "AppInfoAppVersion": "Wersja aplikacji: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Producent: ",
     "AppInfoDeviceModel": "Model urządzenia: ",
     "AppInfoDevicePlatform": "Platforma urządzenia: ",
     "AppInfoDeviceVersion": "Wersja urządzenia: ",
     "LoggedInAs": "Zalogowany jako",
     "LogoutConfirm": "Czy na pewno chcesz się wylogować?",
     "Logout": "Wyloguj",
-    "UserVoiceHeader": "User Voice",
+    "UserVoiceHeader": "Głos Użytkownika",
     "UserVoiceText": "Masz pomysły jak ulepszyć BMM? Daj nam znać.",
     "ThemeHeader": "Ciemny tryb",
     "ThemeText": "Wybierz jasny lub ciemny motyw kolorystyczny ",
     "ColorHeader": "Motyw Kolorystyczny",
-    "ColorText": "Choose between custom color themes",
+    "ColorText": "Wybór niestandardowych motywów kolorystycznych",
     "SiriShortcutsHeader": "Skróty Siri",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "SiriShortcutsText": "Dodaj skróty Siri dla BMM do swojego urządzenia",
+    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję."
   },
   "StorageManagementViewModel": {
     "Title": "Miejsce przechowywania treści w trybie offline",
     "RemoveAllFiles": "Czy chcesz wybrać inne miejsce do przechowywania utworów i usunąć wszystkie z obecnego źródła? "
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} utworów",
+    "PluralTracksLoaded": "{0} załadowanych utworów",
     "Download": "Pobierz",
     "Shuffle": "Shuffle",
     "Play": "Graj"
@@ -347,7 +347,7 @@
   "TrackCollectionViewModel": {
     "Title": "Playlista",
     "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "Resume": "Wznów",
     "AvailableOffline": "Dostępne offline",
     "AvailableOfflineDownload": "Pobierz",
     "AvailableOfflineDownloading": "Pobrane {0} z {1}",
@@ -363,7 +363,7 @@
     "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać utwory do tej playlisty.",
     "NotEnoughtSpaceToDownload": "Brak wolnego miejsca aby pobrać utwory z tej playlisty",
     "AskToResumeDownloading": "Dodano nowe utwory do playlisty. Czy chcesz wznowić pobieranie?",
-    "Private": "Private",
+    "Private": "Prywatne",
     "DeletePlaylist": "Usuń playlistę",
     "EditPlaylist": "Edytuj Playlistę",
     "SharePlaylist": "Podziel się playlistą",
@@ -374,21 +374,21 @@
     "RenameLabel": "Zmień nazwę playlisty",
     "MenuSave": "Zapisz",
     "EmptyName": "Ta playlista nie ma nazwy",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "SaveFailure": "Nie można zaktualizować zmian. Sprawdź połączenie internetowe i spróbuj ponownie",
+    "DiscardChangesTitle": "Cofnij zmiany?",
+    "DiscardChangesMessage": "Wprowadzone zmiany nie zostaną zapisane",
+    "DiscardChanges": "Odrzuć",
+    "KeepEditing": "Edytuj dalej"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Udostępnij playlistę",
+    "ShareNote": "Udostępniając playlistę, inni będą mogli uzyskać dostęp do dodanych utworów i słuchać ich, jeśli mają link.",
+    "ShareLink": "Udostępnij link",
+    "MakePrivate": "Uczyń prywatnym",
+    "SharedWithFormat": "Udostępniono {0} osobom"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
+    "Title": "Udostępniona playlista",
     "Close": "Zamknij",
     "AddToMyPlaylist": "Dodaj do moich playlist",
     "FollowOwnTrackCollection": "Nie możesz śledzić własnej kolekcji utworów"
@@ -476,9 +476,9 @@
     "Title": "Prawa autorskie"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Ostatnio odtwarzane",
+    "NoHistoryYetTitle": "Teraz możesz zobaczyć, czego ostatnio słuchałeś",
+    "NoHistoryYetSubtitle": "Po prostu zacznij słuchać, a Twoja historia pojawi się tutaj"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Przemowy"
@@ -496,7 +496,7 @@
     "PodcastsTitle": "Podcasty"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
+    "Title": "Ustawienia trybu ciemnego",
     "Light": "Jasny",
     "Dark": "Ciemny",
     "System": "Follow system settings (Auto)"
