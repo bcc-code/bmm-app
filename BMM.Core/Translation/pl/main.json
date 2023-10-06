@@ -73,7 +73,7 @@
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na liście odtwarzania.",
     "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na liście {0}",
     "ShufflePlay": "Odtwarzaj losowo",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albumów"
   },
   "AlbumsViewModel": {
     "Title": "Archiwum",
@@ -195,8 +195,8 @@
     "FollowedPodcasts": "Obserwowane podcasty",
     "MyTracks": "Moje utwory",
     "MyPlaylists": "Moje playlisty",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "SharedWithMe": "Udostępnione mi",
+    "ByFormat": "przez {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Obserwowane podcasty",
@@ -252,14 +252,14 @@
   "PlayerViewModel": {
     "Title": "Odtwarzam",
     "PlayingCount": "{0} z {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
+    "ViewLyrics": "Wyświetl Tekst",
+    "SleepTimer": "Wyłącznik czasowy",
     "Minutes": "{0} minut",
     "Hour": "{0} godzina",
     "Hours": "{0} godzin",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
+    "Disable": "Wyłącz",
+    "PlaybackSpeed": "Prędkość odtwarzania",
+    "Normal": "Normalna",
     "Selected": "Wybrane",
     "WatchOnBCCMedia": "Obejrzyj na BCC Media"
   },
@@ -275,7 +275,7 @@
     "WelcomeTitle": "Rozpocznij wyszukiwanie tutaj!",
     "WelcomeSubTitle": "Użyj pola wyszukiwania do szukania zawartości w BMM",
     "DeleteConfirm": "Czy na pewno chcesz usunąć historię wyszukiwania?",
-    "All": "All",
+    "All": "Wszystkie",
     "Speeches": "Przemowy",
     "Music": "Muzyka",
     "Albums": "Albumy",
@@ -284,13 +284,13 @@
     "Playlists": "Playlisty",
     "NoResults": "Brak wyników",
     "NoResultsDescription": "Brak dopasowań do Twojego wyszukiwania \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Wyszukiwanie nie powiodło się",
+    "SearchFailedMessage": "Przepraszamy, nie mogliśmy wyszukać \"{0}\" z powodu problemów z połączeniem. Naciśnij przycisk poniżej, aby spróbować ponownie."
   },
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Ustawienia",
-    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayHeader": "Autoodtwarzanie",
     "OptionAutoplayText": "Odtwarzaj muzykę po przesłuchaniu dzisiejszego odcinka Od Kårego",
     "OptionStreakHeader": "Streak on Home",
     "OptionStreakText": "Show your listening statistic on the home screen",
