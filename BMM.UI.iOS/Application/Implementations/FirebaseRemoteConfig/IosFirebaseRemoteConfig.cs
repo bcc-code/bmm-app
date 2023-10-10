@@ -27,6 +27,11 @@ namespace BMM.UI.iOS.Implementations
             await _firebaseRemote.FetchAndActivateAsync();
         }
 
+        public int GetIntValue(string id)
+        {
+            return _firebaseRemote.GetConfigValue(id).NumberValue.Int32Value;
+        }
+
         public string GetStringValue(string id)
         {
             return _firebaseRemote.GetConfigValue(id).StringValue;

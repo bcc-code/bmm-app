@@ -48,6 +48,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string ShouldCheckAchievementsAtStart = "should_check_achievements_at_start";
             public const string ShowBlueDotForMessages = "show_blue_dot_for_messages";
             public const string ShowBlueDotForSongs = "show_blue_dot_for_songs";
+            public const string CurrentPodcastId = "current_podcast_id";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -74,7 +75,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.ShouldLogInternetProblemsException, false.ToString()},
             {Variables.ShouldCheckAchievementsAtStart, true.ToString()},
             {Variables.ShowBlueDotForMessages, false.ToString()},
-            {Variables.ShowBlueDotForSongs, false.ToString()}
+            {Variables.ShowBlueDotForSongs, false.ToString()},
+            {Variables.CurrentPodcastId, PodcastsConstants.FraKårePodcastId.ToString()}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -119,6 +121,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
 
         public bool ShowBlueDotForMessages => _platformSpecificRemoteConfig.GetBoolValue(Variables.ShowBlueDotForMessages);
         public bool ShowBlueDotForSongs => _platformSpecificRemoteConfig.GetBoolValue(Variables.ShowBlueDotForSongs);
+        public int CurrentPodcastId => _platformSpecificRemoteConfig.GetIntValue(Variables.CurrentPodcastId);
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
             _semanticVersionParser.ParseStringToSemanticVersionObject(

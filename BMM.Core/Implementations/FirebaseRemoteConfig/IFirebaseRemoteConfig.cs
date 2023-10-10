@@ -47,5 +47,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool ShouldCheckAchievementsAtStart { get; }
         bool ShowBlueDotForMessages { get; }
         bool ShowBlueDotForSongs { get; }
+        int CurrentPodcastId { get; }
     }
 }
