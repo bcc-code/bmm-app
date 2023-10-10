@@ -543,7 +543,7 @@
     "FromSongTreasuresPopupTitleText": "Besedilo je vzeto iz Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Iz Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Za celotno pesem prenesi aplikacijo Song Treasures.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Predlagaj urejanje"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Pravila za pridobitev niza",
@@ -578,10 +578,10 @@
     "RewardIosGolden": "Posebna zlata ikona za tvojo aplikacijo BMM. Sodeluješ tudi v žrebu za slušalke AirPods Pro. Bravo!"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Predlagaj urejanje",
+    "Subtitle": "Uredi spodnji tekst in popravi napako",
     "Cancel": "Prekliči",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Oddaj",
+    "SubmitSuccess": "Urejeni predlogi so bili uspešno oddani, hvala!"
   }
 }

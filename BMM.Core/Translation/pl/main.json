@@ -73,7 +73,7 @@
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na liście odtwarzania.",
     "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na liście {0}",
     "ShufflePlay": "Odtwarzaj losowo",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albumów"
   },
   "AlbumsViewModel": {
     "Title": "Archiwum",
@@ -118,7 +118,7 @@
     "More": "Więcej"
   },
   "ExploreContributorsViewModel": {
-    "Title": "Wykonawcy",
+    "Title": "Autorzy",
     "SearchHint": "Szukaj"
   },
   "HelpFeedbackViewModel": {
@@ -195,8 +195,8 @@
     "FollowedPodcasts": "Obserwowane podcasty",
     "MyTracks": "Moje utwory",
     "MyPlaylists": "Moje playlisty",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "SharedWithMe": "Udostępnione mi",
+    "ByFormat": "przez {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Obserwowane podcasty",
@@ -252,14 +252,14 @@
   "PlayerViewModel": {
     "Title": "Odtwarzam",
     "PlayingCount": "{0} z {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
+    "ViewLyrics": "Wyświetl Tekst",
+    "SleepTimer": "Wyłącznik czasowy",
     "Minutes": "{0} minut",
     "Hour": "{0} godzina",
     "Hours": "{0} godzin",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
+    "Disable": "Wyłącz",
+    "PlaybackSpeed": "Prędkość odtwarzania",
+    "Normal": "Normalna",
     "Selected": "Wybrane",
     "WatchOnBCCMedia": "Obejrzyj na BCC Media"
   },
@@ -275,7 +275,7 @@
     "WelcomeTitle": "Rozpocznij wyszukiwanie tutaj!",
     "WelcomeSubTitle": "Użyj pola wyszukiwania do szukania zawartości w BMM",
     "DeleteConfirm": "Czy na pewno chcesz usunąć historię wyszukiwania?",
-    "All": "All",
+    "All": "Wszystkie",
     "Speeches": "Przemowy",
     "Music": "Muzyka",
     "Albums": "Albumy",
@@ -284,16 +284,16 @@
     "Playlists": "Playlisty",
     "NoResults": "Brak wyników",
     "NoResultsDescription": "Brak dopasowań do Twojego wyszukiwania \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Wyszukiwanie nie powiodło się",
+    "SearchFailedMessage": "Przepraszamy, nie mogliśmy wyszukać \"{0}\" z powodu problemów z połączeniem. Naciśnij przycisk poniżej, aby spróbować ponownie."
   },
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Ustawienia",
-    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayHeader": "Autoodtwarzanie",
     "OptionAutoplayText": "Odtwarzaj muzykę po przesłuchaniu dzisiejszego odcinka Od Kårego",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakHeader": "Seria na Stronie Głównej",
+    "OptionStreakText": "Wyświetlanie statystyk słuchania na ekranie głównym",
     "OptionEnablePushHeader": "Włącz powiadomienia",
     "OptionPushNotifications": "Powiadomienia",
     "OptionPushNotificationsSubtitle": "Włącz powiadomienia dla podcastów które obserwujesz",
@@ -316,30 +316,30 @@
     "OptionAppVersionHeader": "Wersja aplikacji",
     "AppInfoTitle": "Informacje o aplikacji",
     "AppInfoAppVersion": "Wersja aplikacji: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Producent: ",
     "AppInfoDeviceModel": "Model urządzenia: ",
     "AppInfoDevicePlatform": "Platforma urządzenia: ",
     "AppInfoDeviceVersion": "Wersja urządzenia: ",
     "LoggedInAs": "Zalogowany jako",
     "LogoutConfirm": "Czy na pewno chcesz się wylogować?",
     "Logout": "Wyloguj",
-    "UserVoiceHeader": "User Voice",
+    "UserVoiceHeader": "Głos Użytkownika",
     "UserVoiceText": "Masz pomysły jak ulepszyć BMM? Daj nam znać.",
     "ThemeHeader": "Ciemny tryb",
     "ThemeText": "Wybierz jasny lub ciemny motyw kolorystyczny ",
     "ColorHeader": "Motyw Kolorystyczny",
-    "ColorText": "Choose between custom color themes",
+    "ColorText": "Wybór niestandardowych motywów kolorystycznych",
     "SiriShortcutsHeader": "Skróty Siri",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "SiriShortcutsText": "Dodaj skróty Siri dla BMM do swojego urządzenia",
+    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję."
   },
   "StorageManagementViewModel": {
     "Title": "Miejsce przechowywania treści w trybie offline",
     "RemoveAllFiles": "Czy chcesz wybrać inne miejsce do przechowywania utworów i usunąć wszystkie z obecnego źródła? "
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} utworów",
+    "PluralTracksLoaded": "{0} załadowanych utworów",
     "Download": "Pobierz",
     "Shuffle": "Shuffle",
     "Play": "Graj"
@@ -347,7 +347,7 @@
   "TrackCollectionViewModel": {
     "Title": "Playlista",
     "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "Resume": "Wznów",
     "AvailableOffline": "Dostępne offline",
     "AvailableOfflineDownload": "Pobierz",
     "AvailableOfflineDownloading": "Pobrane {0} z {1}",
@@ -363,7 +363,7 @@
     "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać utwory do tej playlisty.",
     "NotEnoughtSpaceToDownload": "Brak wolnego miejsca aby pobrać utwory z tej playlisty",
     "AskToResumeDownloading": "Dodano nowe utwory do playlisty. Czy chcesz wznowić pobieranie?",
-    "Private": "Private",
+    "Private": "Prywatne",
     "DeletePlaylist": "Usuń playlistę",
     "EditPlaylist": "Edytuj Playlistę",
     "SharePlaylist": "Podziel się playlistą",
@@ -374,21 +374,21 @@
     "RenameLabel": "Zmień nazwę playlisty",
     "MenuSave": "Zapisz",
     "EmptyName": "Ta playlista nie ma nazwy",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "SaveFailure": "Nie można zaktualizować zmian. Sprawdź połączenie internetowe i spróbuj ponownie",
+    "DiscardChangesTitle": "Cofnij zmiany?",
+    "DiscardChangesMessage": "Wprowadzone zmiany nie zostaną zapisane",
+    "DiscardChanges": "Odrzuć",
+    "KeepEditing": "Edytuj dalej"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Udostępnij playlistę",
+    "ShareNote": "Udostępniając playlistę, inni będą mogli uzyskać dostęp do dodanych utworów i słuchać ich, jeśli mają link.",
+    "ShareLink": "Udostępnij link",
+    "MakePrivate": "Uczyń prywatnym",
+    "SharedWithFormat": "Udostępniono {0} osobom"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
+    "Title": "Udostępniona playlista",
     "Close": "Zamknij",
     "AddToMyPlaylist": "Dodaj do moich playlist",
     "FollowOwnTrackCollection": "Nie możesz śledzić własnej kolekcji utworów"
@@ -476,9 +476,9 @@
     "Title": "Prawa autorskie"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Ostatnio odtwarzane",
+    "NoHistoryYetTitle": "Teraz możesz zobaczyć, czego ostatnio słuchałeś",
+    "NoHistoryYetSubtitle": "Po prostu zacznij słuchać, a Twoja historia pojawi się tutaj"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Przemowy"
@@ -496,14 +496,14 @@
     "PodcastsTitle": "Podcasty"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
+    "Title": "Ustawienia trybu ciemnego",
     "Light": "Jasny",
     "Dark": "Ciemny",
-    "System": "Follow system settings (Auto)"
+    "System": "Śledzenie ustawień systemu (Automatycznie)"
   },
   "ColorThemeViewModel": {
     "Title": "Motyw Kolorystyczny",
-    "Default": "Default",
+    "Default": "Domyślny",
     "Violet": "Fioletowy",
     "Red": "Czerwony",
     "DarkGreen": "Ciemnozielony ",
@@ -522,33 +522,33 @@
   "YearInReviewViewModel": {
     "Title": "Powtórka twojego roku",
     "Share": "Podziel się z przyjaciółmi ",
-    "ShareTitle": "Year in Review"
+    "ShareTitle": "Podsumowanie roku"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
+    "Title": "Top pieśni",
+    "PlaysPlural": "{0} odtworzeń",
+    "PlaysSingular": "{0} odtwórz",
     "AddToMyPlaylist": "Dodaj playlistę do ulubionych ",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "SuccessfullyAddedToPlaylists": "Dodano do ulubionych"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
+    "AutoTranscribed": "Automatycznie transkrybowane",
     "FromSongTreasures": "Z Song Treasures",
     "AddTo": "Dodaj do playlisty",
     "Pause": "Pauza",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
-    "AutoTranscribedPopupButtonText": "Got it",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "AutoTranscribedPopupTitleText": "Transkrypcje są generowane automatycznie i mogą zawierać błędy",
+    "AutoTranscribedPopupHeaderText": "Automatycznie transkrybowane",
+    "AutoTranscribedPopupSubtitleText": "Pomóż ulepszyć transkrypcję, sugerując poprawki za pomocą opcji \"Zaproponuj edycję\".",
+    "AutoTranscribedPopupButtonText": "Rozumiem",
+    "FromSongTreasuresPopupTitleText": "Teksty są pobierane z Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Z Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
-    "SuggestEdit": "Suggest edit"
+    "FromSongTreasuresPopupSubtitleText": "Pobierz aplikację Song Treasures, aby zobaczyć pełną wersję utworu.",
+    "SuggestEdit": "Zaproponuj edycję"
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
+    "StreakTerms": "Zasady dotyczące serii",
     "ProgressTitle": "Twój progres",
-    "StreakThisWeek": "Streak this week",
+    "StreakThisWeek": "Seria w tym tygodniu",
     "Days": "Dni",
     "Boost": "Boost",
     "Points": "Punkty",
@@ -568,20 +568,20 @@
     "Title": "Osiągniecie ",
     "Unlocked": "Odblokowano",
     "ActivatePremiumIcon": "Aktywuj Ikonę Aplikacji",
-    "GotIt": "Got it",
+    "GotIt": "Rozumiem",
     "ActivateTheme": "Aktywuj Motyw",
     "Close": "Zamknij",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
-    "RewardIos": "An exclusive app icon for your BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "Reward": "Nagroda",
+    "RewardAndroid": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM 🤩",
+    "RewardIos": "Ekskluzywna ikona aplikacji dla aplikacji BMM 🤩",
+    "RewardAndroidGolden": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!",
+    "RewardIosGolden": "Ekskluzywna ikona aplikacji BMM w kolorze złotym. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Zaproponuj edycję",
+    "Subtitle": "Edytuj poniższy tekst, aby poprawić błąd",
     "Cancel": "Anuluj",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Wyślij",
+    "SubmitSuccess": "Sugestia edycji została pomyślnie przesłana, dziękujemy!"
   }
 }
