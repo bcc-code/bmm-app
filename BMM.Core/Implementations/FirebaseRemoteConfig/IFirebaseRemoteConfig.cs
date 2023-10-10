@@ -45,5 +45,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool ShouldLogInternetProblemsException { get; }
         
         bool ShouldCheckAchievementsAtStart { get; }
+        bool ShowBlueDotForMessages { get; }
+        bool ShowBlueDotForSongs { get; }
     }
 }

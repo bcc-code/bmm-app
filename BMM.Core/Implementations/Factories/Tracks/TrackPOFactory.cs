@@ -3,6 +3,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Models.POs.Tracks;
@@ -20,6 +21,7 @@ namespace BMM.Core.Implementations.Factories.Tracks
         private readonly IDownloadQueue _downloadQueue;
         private readonly IShowTrackInfoAction _showTrackInfoAction;
         private readonly IListenedTracksStorage _listenedTracksStorage;
+        private readonly IFirebaseRemoteConfig _config;
 
         public TrackPOFactory(
             IMediaPlayer mediaPlayer,
@@ -27,7 +29,8 @@ namespace BMM.Core.Implementations.Factories.Tracks
             IConnection connection,
             IDownloadQueue downloadQueue,
             IShowTrackInfoAction showTrackInfoAction,
-            IListenedTracksStorage listenedTracksStorage)
+            IListenedTracksStorage listenedTracksStorage,
+            IFirebaseRemoteConfig config)
         {
             _mediaPlayer = mediaPlayer;
             _storageManager = storageManager;
@@ -35,6 +38,7 @@ namespace BMM.Core.Implementations.Factories.Tracks
             _downloadQueue = downloadQueue;
             _showTrackInfoAction = showTrackInfoAction;
             _listenedTracksStorage = listenedTracksStorage;
+            _config = config;
         }
         
         public ITrackPO Create(
@@ -44,7 +48,7 @@ namespace BMM.Core.Implementations.Factories.Tracks
         {
             if (track == null)
                 return null;
-            
+
             return new TrackPO(
                 _mediaPlayer,
                 _storageManager,
@@ -54,7 +58,8 @@ namespace BMM.Core.Implementations.Factories.Tracks
                 optionsClickedCommand,
                 trackInfoProvider,
                 _listenedTracksStorage,
-                track);
+                track,
+                _config);
         }
     }
 }
