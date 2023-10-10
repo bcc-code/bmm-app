@@ -336,7 +336,6 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"timestampStart", ev.TimestampStart},
                 {"timestampEnd", ev.TimestampEnd},
                 {"uniqueSecondsListened", ev.UniqueSecondsListened},
-                {"statusListened", ev.Status},
                 {"trackLength", ev.TrackLength},
                 {"typeOfTrack", ev.TypeOfTrack},
                 {"availability", ev.Availability},
@@ -348,7 +347,7 @@ namespace BMM.Core.Implementations.PlayObserver
                 {"lastPosition", ev.LastPosition},
                 {"adjustedPlaybackSpeed", ev.AdjustedPlaybackSpeed},
                 {nameof(User.AnalyticsId), ev.AnalyticsId}
-            };
+            }; // Since an event can only have 20 properties, we can't add more than this.
 
             LogMissingAnalyticsIdIfNeeded(ev, nameof(WriteEvent), callerName);
             
