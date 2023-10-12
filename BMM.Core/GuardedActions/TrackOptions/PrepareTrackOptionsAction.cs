@@ -149,7 +149,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                         ImageResourceNames.IconPlayMini,
                         new MvxAsyncCommand(async () =>
                         {
-                            var success = await mediaPlayer.QueueToPlayNext(track, sourceVM.PlaybackOriginString);
+                            var success = await mediaPlayer.QueueToPlayNext(track, sourceVM.PlaybackOriginString());
                             if (success)
                             {
                                 await Mvx.IoCProvider.Resolve<IToastDisplayer>()
@@ -171,7 +171,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                         ImageResourceNames.IconQueue,
                         new MvxAsyncCommand(async () =>
                         {
-                            var success = await mediaPlayer.AddToEndOfQueue(track, sourceVM.PlaybackOriginString);
+                            var success = await mediaPlayer.AddToEndOfQueue(track, sourceVM.PlaybackOriginString());
                             if (success)
                             {
                                 await Mvx.IoCProvider.Resolve<IToastDisplayer>()

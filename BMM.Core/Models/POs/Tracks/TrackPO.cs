@@ -8,6 +8,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Implementations.TrackListenedObservation;
 using BMM.Core.Models.POs.Base;
@@ -28,6 +29,7 @@ namespace BMM.Core.Models.POs.Tracks
         private readonly IDownloadQueue _downloadQueue;
         private readonly ITrackInfoProvider _trackInfoProvider;
         private readonly IListenedTracksStorage _listenedTracksStorage;
+        private readonly IFirebaseRemoteConfig _config;
         private TrackState _trackState;
         private string _trackSubtitle;
         private string _trackTitle;
@@ -42,9 +44,11 @@ namespace BMM.Core.Models.POs.Tracks
             IMvxAsyncCommand<Document> optionsClickedCommand,
             ITrackInfoProvider trackInfoProvider,
             IListenedTracksStorage listenedTracksStorage,
-            Track track) : base(track)
+            Track track,
+            IFirebaseRemoteConfig config) : base(track)
         {
             Track = track;
+            _config = config;
             _mediaPlayer = mediaPlayer;
             _storageManager = storageManager;
             _connection = connection;
@@ -82,12 +86,15 @@ namespace BMM.Core.Models.POs.Tracks
             bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Id);
             bool isDownloaded = _storageManager.SelectedStorage.IsDownloaded(Track);
             bool isAvailable = _connection.GetStatus() == ConnectionStatus.Online || isDownloaded;
-            bool isTeaserPodcast = TrackIsTeaserPodcast();
             bool isDownloading = _downloadQueue.IsDownloading(Track);
             bool isQueued = _downloadQueue.IsQueued(Track);
             bool isListened = await _listenedTracksStorage.TrackIsListened(Track);
+            bool isSong = Track.Subtype == TrackSubType.Song || Track.Subtype == TrackSubType.Singsong;
+            bool showBlueDot = !isListened && (TrackIsTeaserPodcast() ||
+                                               (isSong && _config.ShowBlueDotForSongs) ||
+                                               (!isSong && _config.ShowBlueDotForMessages));
             
-            TrackState = new TrackState(isCurrentlySelected, isAvailable, isDownloaded, isTeaserPodcast, isListened, isDownloading, isQueued);
+            TrackState = new TrackState(isCurrentlySelected, isAvailable, isDownloaded, isDownloading, isQueued, showBlueDot);
         }
 
         public Track Track { get; }
@@ -131,26 +138,23 @@ namespace BMM.Core.Models.POs.Tracks
             bool isCurrentlySelected,
             bool isAvailable,
             bool isDownloaded,
-            bool isTeaserPodcast,
-            bool trackIsListened,
             bool isDownloading,
-            bool isQueued)
+            bool isQueued,
+            bool showBlueDot)
         {
             IsCurrentlySelected = isCurrentlySelected;
             IsAvailable = isAvailable;
             IsDownloaded = isDownloaded;
-            IsTeaserPodcast = isTeaserPodcast;
-            TrackIsListened = trackIsListened;
             IsDownloading = isDownloading;
             IsQueued = isQueued;
+            ShowBlueDot = showBlueDot;
         }
         
         public bool IsCurrentlySelected { get; } 
         public bool IsAvailable { get; }
         public bool IsDownloaded { get; }
-        public bool IsTeaserPodcast { get; }
-        public bool TrackIsListened { get; }
         public bool IsDownloading { get; }
         public bool IsQueued { get; }
+        public bool ShowBlueDot { get; }
     }
 }

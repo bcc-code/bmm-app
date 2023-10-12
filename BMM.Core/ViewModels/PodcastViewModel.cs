@@ -134,7 +134,7 @@ namespace BMM.Core.ViewModels
 
             _shufflePodcastCommand = new MvxAsyncCommand(async () =>
                 {
-                    await shufflePodcastAction.ExecuteGuarded(new ShuffleActionParameter(Podcast.Id, PlaybackOriginString));
+                    await shufflePodcastAction.ExecuteGuarded(new ShuffleActionParameter(Podcast.Id, PlaybackOriginString()));
                 });
             
             ToggleFollowingCommand = new ExceptionHandlingCommand(async () => await ToggleFollowing());

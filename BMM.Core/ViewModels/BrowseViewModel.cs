@@ -48,7 +48,7 @@ namespace BMM.Core.ViewModels
                 .IfNotNull(header => header.IsSeparatorVisible = false);
             
             foreach (var discoverSectionHeader in presentationItems.OfType<DiscoverSectionHeaderPO>())
-                discoverSectionHeader.Origin = PlaybackOriginString;
+                discoverSectionHeader.Origin = PlaybackOriginString();
                 
             presentationItems.Add(new SimpleMarginPO());
             return presentationItems;

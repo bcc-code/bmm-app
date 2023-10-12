@@ -22,6 +22,11 @@ namespace BMM.UI.Droid.Application.Implementations.FirebaseRemoteConfig
             return _firebaseRemote.GetBoolean(id);
         }
 
+        public int GetIntValue(string id)
+        {
+            return (int) _firebaseRemote.GetLong(id);
+        }
+
         public async Task UpdateValuesFromFirebaseRemoteConfig()
         {
             await _firebaseRemote.FetchAsync(FirebaseConfigConstants.MinimumFetchIntervalInSeconds);

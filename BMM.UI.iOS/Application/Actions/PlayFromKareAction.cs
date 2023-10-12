@@ -1,14 +1,10 @@
-using System.Linq;
-using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
-using BMM.Core.Constants;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using BMM.Core.ViewModels;
 using BMM.UI.iOS.Actions.Interfaces;
-using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Utils;
 
 namespace BMM.UI.iOS.Actions
@@ -20,22 +16,25 @@ namespace BMM.UI.iOS.Actions
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IPodcastClient _podcastClient;
         private readonly IAnalytics _analytics;
+        private readonly IFirebaseRemoteConfig _config;
 
         public PlayFromKareAction(
             IMediaPlayer mediaPlayer,
             IPodcastClient podcastClient,
-            IAnalytics analytics)
+            IAnalytics analytics,
+            IFirebaseRemoteConfig config)
         {
             _mediaPlayer = mediaPlayer;
             _podcastClient = podcastClient;
             _analytics = analytics;
+            _config = config;
         }
 
         protected override async Task<bool> Execute()
         {
             _analytics.LogEvent(Event.SiriFromKaarePlayed);
-            
-            var fromKareList = await _podcastClient.GetTracks(PodcastsConstants.FraKårePodcastId, CachePolicy.IgnoreCache);
+
+            var fromKareList = await _podcastClient.GetTracks(_config.CurrentPodcastId, CachePolicy.IgnoreCache);
             
             if (fromKareList == null || !fromKareList.Any())
                 return false;
