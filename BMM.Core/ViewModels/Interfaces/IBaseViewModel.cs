@@ -13,6 +13,6 @@ namespace BMM.Core.ViewModels.Interfaces
         IMvxCommand<IDocumentPO> DocumentSelectedCommand { get; }
         IMvxAsyncCommand<Document> OptionCommand { get; }
         bool IsLoading { get; set; }
-        string PlaybackOriginString { get; }
+        string PlaybackOriginString(int? index = null);
     }
 }

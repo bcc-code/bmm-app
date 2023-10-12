@@ -79,7 +79,12 @@ namespace BMM.Core.ViewModels.Base
             set => SetProperty(ref _isLoading, value);
         }
 
-        public virtual string PlaybackOriginString => string.Join("|", new List<string> { GetType().Name }.Concat(PlaybackOrigin()));
+        public virtual string PlaybackOriginString(int? index = null)
+        {
+            var list = new List<string> {GetType().Name}.Concat(PlaybackOrigin()).ToList();
+            list.Add(index.GetValueOrDefault(-1).ToString());
+            return string.Join("|", list);
+        }
 
         public virtual IEnumerable<string> PlaybackOrigin()
         {
@@ -288,8 +293,6 @@ namespace BMM.Core.ViewModels.Base
         /// <summary>
         /// Centralized action for what to do if you click on a document.
         /// </summary>
-        /// <param name="item">Item.</param>
-        /// <param name="list">List of tracks.</param>
         protected virtual async Task DocumentAction(IDocumentPO item, IList<Track> list)
         {
             switch (item.DocumentType)
@@ -308,7 +311,8 @@ namespace BMM.Core.ViewModels.Base
                         list.Add(track);
                     }
 
-                    await mediaPlayer.Play(list.OfType<IMediaTrack>().ToList(), track, PlaybackOriginString);
+                    var index = list.IndexOf(track);
+                    await mediaPlayer.Play(list.OfType<IMediaTrack>().ToList(), track, PlaybackOriginString(index));
                     break;
 
                 case DocumentType.Album:

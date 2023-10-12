@@ -40,7 +40,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
             
             if (!AlbumViewModel.Album.LatestTrackId.HasValue)
             {
-                await _mediaPlayer.Play(tracks, tracks.First(),  AlbumViewModel.PlaybackOriginString);
+                await _mediaPlayer.Play(tracks, tracks.First(), AlbumViewModel.PlaybackOriginString());
                 return;
             }
 

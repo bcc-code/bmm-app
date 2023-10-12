@@ -32,6 +32,11 @@ namespace BMM.Core.ViewModels
         private string _searchTerm;
         private bool _isSearching;
         private bool _hasError;
+        
+        public override IEnumerable<string> PlaybackOrigin()
+        {
+            return new[] {SearchFilter.ToString(), _searchTerm};
+        }
 
         public SearchResultsViewModel(
             ITrackPOFactory trackPOFactory,
@@ -151,7 +156,7 @@ namespace BMM.Core.ViewModels
                     startIndex,
                     size);
             
-                var adjustedItemsList = CreateAdjustedItemsList(results);
+                var adjustedItemsList = CreateAdjustedItemsList(results, startIndex);
             
                 IsFullyLoaded = results.IsFullyLoaded;
                 isSuccess = true;
@@ -175,10 +180,11 @@ namespace BMM.Core.ViewModels
             RaisePropertyChanged(nameof(NoResultsDescriptionLabel));
         }
 
-        private static IEnumerable<Document> CreateAdjustedItemsList(SearchResults searchResults)
+        private static IEnumerable<Document> CreateAdjustedItemsList(SearchResults searchResults, int startIndex)
         {
             var itemsList = new List<Document>();
 
+            int index = startIndex;
             foreach (var item in searchResults.Items)
             {
                 itemsList.Add(item);
@@ -191,7 +197,8 @@ namespace BMM.Core.ViewModels
                 if (item is not Track trackItem || !existingHighlightsElement.Any())
                     continue;
                 
-                itemsList.Add(new HighlightedTextTrack(trackItem, existingHighlightsElement));
+                itemsList.Add(new HighlightedTextTrack(trackItem, existingHighlightsElement, index));
+                index++;
             }
 
             return itemsList;

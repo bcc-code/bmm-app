@@ -49,7 +49,8 @@ namespace BMM.Core.ViewModels
                 return;
 
             var mediaTrack = (IMediaTrack)trackPO.Track;
-            await _mediaPlayer.Play(mediaTrack.EncloseInArray(), mediaTrack, PlaybackOriginString, mediaTrack.LastPosition);
+            var index = list.IndexOf(trackPO.Track);
+            await _mediaPlayer.Play(mediaTrack.EncloseInArray(), mediaTrack, PlaybackOriginString(index), mediaTrack.LastPosition);
         }
 
         public override async Task Load()

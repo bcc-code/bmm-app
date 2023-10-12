@@ -127,7 +127,7 @@ namespace BMM.Core.ViewModels.Base
 
                 if (tracks.Any())
                 {
-                    await mediaPlayer.ShuffleList(tracks, PlaybackOriginString);
+                    await mediaPlayer.ShuffleList(tracks, PlaybackOriginString());
                 }
             });
 

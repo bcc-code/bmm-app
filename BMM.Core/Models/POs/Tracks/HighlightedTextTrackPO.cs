@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.UI.StyledText;
 using BMM.Core.Implementations.UI.StyledText.Enums;
 using BMM.Core.Implementations.UI.StyledText.Interfaces;
@@ -17,17 +18,25 @@ public class HighlightedTextTrackPO : DocumentPO, IHighlightedTextTrackPO
 {
     private const string RegexToExtractHighlightedParts = @"\*\*\|(\w+)\*\*/";
     
-    public HighlightedTextTrackPO(
-        HighlightedTextTrack highlightedTextTrack,
+    public HighlightedTextTrackPO(HighlightedTextTrack highlightedTextTrack,
         ITrackPO trackPO,
         IMvxNavigationService mvxNavigationService,
         IMediaPlayer mediaPlayer,
-        IShareLink shareLink) : base(highlightedTextTrack)
+        IShareLink shareLink,
+        IAnalytics analytics) : base(highlightedTextTrack)
     {
         HighlightedTextTrack = highlightedTextTrack;
         TrackPO = trackPO;
         ItemClickedCommand = new ExceptionHandlingCommand(() =>
         {
+            analytics.LogEvent("Open HighlightedTextTrack",
+                new Dictionary<string, object>
+                {
+                    {"TrackId", highlightedTextTrack.Track.Id},
+                    {"TypeOfTrack", highlightedTextTrack.Track.Subtype},
+                    {"NumberOfHighlights", highlightedTextTrack.SearchHighlights.Count},
+                    {"ItemIndex", highlightedTextTrack.ItemIndex}
+                });
             return mvxNavigationService.Navigate<HighlightedTextTrackViewModel, HighlightedTextTrackPO>(this);
         });
         
