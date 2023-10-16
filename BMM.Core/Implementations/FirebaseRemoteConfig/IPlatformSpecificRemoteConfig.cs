@@ -9,5 +9,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool GetBoolValue(string id);
         
         Task UpdateValuesFromFirebaseRemoteConfig();
+        int GetIntValue(string id);
     }
 }

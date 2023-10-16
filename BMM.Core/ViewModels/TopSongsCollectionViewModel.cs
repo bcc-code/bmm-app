@@ -52,7 +52,7 @@ namespace BMM.Core.ViewModels
             _prepareTopSongsViewModelAction.AttachDataContext(this);
         }
 
-        public override string PlaybackOriginString => PlaybackOrigins.TopSongs;
+        public override string PlaybackOriginString(int? index = null) => PlaybackOrigins.TopSongs;
 
         public string Name
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using BMM.Core.Models.POs.Tracks;
+﻿using BMM.Core.Models.POs.Tracks;
 using MvvmCross.Converters;
 
 namespace BMM.UI.Droid.Application.ValueConverters
@@ -11,15 +10,10 @@ namespace BMM.UI.Droid.Application.ValueConverters
             if (trackState.IsCurrentlySelected)
                 return Resource.Drawable.icon_play_mini;
 
-            if (TrackIsNotListenedAndIsTeaserPodcast(trackState))
-                return  Resource.Drawable.icon_blue_dot;
+            if (trackState.ShowBlueDot)
+                return Resource.Drawable.icon_blue_dot;
 
             return 0;
-        }
-
-        private bool TrackIsNotListenedAndIsTeaserPodcast(TrackState trackState)
-        {
-            return !trackState.TrackIsListened && trackState.IsTeaserPodcast;
         }
     }
 }

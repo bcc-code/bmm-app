@@ -129,7 +129,7 @@ namespace BMM.Core.ViewModels
         {
             translatedDocs.Insert(0, new SimpleMarginPO());
             foreach (var discoverSectionHeader in translatedDocs.OfType<DiscoverSectionHeaderPO>())
-                discoverSectionHeader.Origin = PlaybackOriginString;
+                discoverSectionHeader.Origin = PlaybackOriginString();
         }
 
         protected override async Task Initialization()
@@ -152,7 +152,7 @@ namespace BMM.Core.ViewModels
             await base.DocumentAction(item, result.Tracks);
             
             if (result.ShouldLoadAdditionalMusic)
-                await _addToQueueAdditionalMusic.ExecuteGuarded(PlaybackOriginString);
+                await _addToQueueAdditionalMusic.ExecuteGuarded(PlaybackOriginString());
         }
 
         protected override Task OptionsAction(Document item)
