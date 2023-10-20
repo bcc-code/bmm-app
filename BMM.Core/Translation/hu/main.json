@@ -18,7 +18,7 @@
     "BackgroundActivityRestrictedTitle": "Háttér tevékenység engedélyezése",
     "BackgroundActivityRestrictedMessage": "A készülék beállításai korlátozzák a BMM háttérben történő működését. Nem fogsz tudni hallgatni, ha a telefonod néhány percre le van zárva. Ennek megváltoztatásához lépj az alkalmazás beállításaihoz, és az \"Akkumulátor\" szakasz alatt válaszd a \"Háttértevékenység engedélyezése\" lehetőséget.",
     "GoToSettings": "Beállításokhoz",
-    "NotNow": "Nem most",
+    "NotNow": "Most nem",
     "DownloadPlaylistOnceOnWifi": "A lejátszási lista a következő alkalommal letöltődik, amikor Wifi-n van. A \"Letöltés mobilhálózaton keresztül\" opciót engedélyezheted a profilodban.",
     "DownloadPodcastOnceOnWifi": "A podcast legfrissebb zeneszámai a következő Wifi-hozzáféréskor letöltődnek. A \"Letöltés mobilhálózaton keresztül\" opciót engedélyezheted a profilodban.",
     "SiriFromKaareInvocationPhrase": "Fra Kåre lejátszása a BMM-en",
@@ -41,7 +41,7 @@
     "WeekdayMonday": "H",
     "WeekdayTuesday": "K",
     "WeekdayWednesday": "Sz",
-    "WeekdayThursday": "K",
+    "WeekdayThursday": "Cs",
     "WeekdayFriday": "P"
   },
   "DeepLinkHandler": {
@@ -538,12 +538,12 @@
     "Pause": "Szünet",
     "AutoTranscribedPopupTitleText": "Az átiratok automatikusan generálódnak, és hibákat tartalmazhatnak.",
     "AutoTranscribedPopupHeaderText": "Automatikusan átírva",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
+    "AutoTranscribedPopupSubtitleText": "Segíts javítani az iratot a \"Szerkesztés javaslata\" segítségével.",
     "AutoTranscribedPopupButtonText": "Megvan",
     "FromSongTreasuresPopupTitleText": "Az énekszövegek a Song Treasuresből kerülnek lekérdezésre.",
     "FromSongTreasuresPopupHeaderText": "A Song Treasuresből",
     "FromSongTreasuresPopupSubtitleText": "Töltsd le a Song Treasures alkalmazást a teljes ének megtekintéséhez.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Szerkesztés javaslata"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "A sorozatra vonatkozó szabályok",
@@ -578,10 +578,10 @@
     "RewardIosGolden": "Exkluzív alkalmazás-ikon a BMM alkalmazásodhoz arany színben. Emellett részt veszel a sorsoláson, amelyen egy pár speciálisan kialakított AirPods Pro-t sorsolunk ki. Szép munka!"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Szerkesztés javaslata",
+    "Subtitle": "Szerkeszd az alábbi szöveget egy hiba javítása érdekében",
     "Cancel": "Mégse",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Megerősítés",
+    "SubmitSuccess": "Szerkesztési javaslatok sikeresen elküldve, köszönjük!"
   }
 }
