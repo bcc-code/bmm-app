@@ -70,8 +70,8 @@
 
         <FrameLayout
                 android:id="@+id/image_view_row_icon"
-                android:layout_width="42dp"
-                android:layout_height="40dp"
+                android:layout_width="52dp" android:paddingLeft="10dp"
+                android:layout_height="match_parent"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:gravity="center"
@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/label_one_color"
                 android:layout_gravity="center"
-                local:MvxBind="Checked IsPlaying, Mode=TwoWay"
+                local:MvxBind="Click PlayPauseCommand; Checked IsPlaying, Mode=TwoWay"
                 android:background="@drawable/togglebutton_playpause_mini" />
             
         </FrameLayout>
