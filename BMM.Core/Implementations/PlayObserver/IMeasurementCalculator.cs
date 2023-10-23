@@ -5,6 +5,6 @@ namespace BMM.Core.Implementations.PlayObserver
 {
     public interface IMeasurementCalculator
     {
-        PlayMeasurements Calculate(long trackDuration, IList<ListenedPortion> portions);
+        PlayMeasurements Calculate(long trackDuration, IList<ListenedPortion> portions, bool skippedTrack = false);
     }
 }

@@ -93,6 +93,11 @@ namespace BMM.Core.Implementations.PlayObserver
             return _playStatistics.PostListeningEvent(track, measurements);
         }
 
+        public void OnSkippedTrack(int trackId)
+        {
+            _playStatistics.OnSkippedTrack(trackId);
+        }
+
         public void OnCurrentTrackWillChange(double currentPosition, decimal playbackRate)
         {
             _playStatistics.OnCurrentTrackWillChange(currentPosition, playbackRate);

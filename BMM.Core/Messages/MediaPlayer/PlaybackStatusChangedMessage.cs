@@ -48,4 +48,12 @@ namespace BMM.Core.Messages.MediaPlayer
 
         public bool IsShuffleEnabled { get; set; }
     }
+
+    public class SkippedTrackMessage : MvxMessage
+    {
+        public SkippedTrackMessage(object sender) : base(sender)
+        {
+        }
+        public int TrackId { get; set; }
+    }
 }

@@ -261,6 +261,8 @@ namespace BMM.Core.Implementations.Player
 
         public void PlayNext()
         {
+            if (_mediaPlayer.CurrentTrack != null)
+                _mvxMessenger.Publish(new SkippedTrackMessage(this) {TrackId = _mediaPlayer.CurrentTrack.Id});
             _mediaPlayer.PlayNext();
             ShowViewmodelIfNecessary();
         }

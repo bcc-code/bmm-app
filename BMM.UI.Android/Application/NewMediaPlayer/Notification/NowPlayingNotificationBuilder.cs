@@ -49,6 +49,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
             _jumpForwardAction = new CustomAction(Resource.Drawable.icon_skip_forward_notification, "Jump forward", ActionSkipForward);
             _playAction = new ExoPlayerAction(Resource.Drawable.icon_play_notification, "Play", PlaybackStateCompat.ActionPlay);
             _pauseAction = new ExoPlayerAction(Resource.Drawable.icon_pause_notification, "Pause", PlaybackStateCompat.ActionPause);
+            //ToDo: when skipping a song it should be registered in PlayStatistics
             _skipToNextAction = new ExoPlayerAction(Resource.Drawable.icon_next_notification, "Next", PlaybackStateCompat.ActionSkipToNext);
             _stopPendingIntent = MediaButtonIntent(PlaybackStateCompat.ActionStop);
         }

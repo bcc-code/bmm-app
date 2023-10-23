@@ -14,7 +14,7 @@ namespace BMM.Core.Implementations.PlayObserver
         // That's why we have set a minPortionDurationInMs which takes care of those intervals.
         private const long MinPortionDurationInMs = 100;
 
-        public PlayMeasurements Calculate(long trackDuration, IList<ListenedPortion> portions)
+        public PlayMeasurements Calculate(long trackDuration, IList<ListenedPortion> portions, bool skippedTrack = false)
         {
             if (!portions.Any())
             {
@@ -32,7 +32,7 @@ namespace BMM.Core.Implementations.PlayObserver
             return new PlayMeasurements
             {
                 UniqueSecondsListened = uniqueSecondsListened,
-                Status = status,
+                Status = skippedTrack ? ListenedStatus.Skipped : status,
                 Percentage = uniqueSecondsListened * 100 / trackLength,
                 TrackLength = trackLength,
                 TimestampStart = portions.First().StartTime,

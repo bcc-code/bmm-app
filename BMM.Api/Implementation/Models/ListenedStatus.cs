@@ -5,6 +5,7 @@
         PartialFromBeginning,
         Jumped,
         SkippedBeginning,
-        Complete
+        Complete,
+        Skipped
     }
 }

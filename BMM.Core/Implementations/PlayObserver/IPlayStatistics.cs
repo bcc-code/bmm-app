@@ -49,5 +49,6 @@ namespace BMM.Core.Implementations.PlayObserver
         
         void OnCurrentTrackWillChange(double currentPosition, decimal playbackRate);
         Task PostListeningEvent(ITrackModel track, PlayMeasurements measurements);
+        void OnSkippedTrack(int messageTrackId);
     }
 }

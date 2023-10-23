@@ -19,6 +19,7 @@ namespace BMM.Core.Implementations.PlayObserver
         private MvxSubscriptionToken _playbackSeekedToken;
         private readonly MvxSubscriptionToken _queueChangedToken;
         private readonly MvxSubscriptionToken _currentTrackWillChangeToken;
+        private readonly MvxSubscriptionToken _skippedTrackToken;
 
         public PlayObserverOrchestrator(IMvxMessenger messenger, IPlayStatistics playStatistics, IAnalytics analytics, IFirebaseRemoteConfig config)
         {
@@ -48,6 +49,7 @@ namespace BMM.Core.Implementations.PlayObserver
             {
                 _playStatistics.OnCurrentTrackWillChange(message.CurrentPosition, message.PlaybackRate);
             });
+            _skippedTrackToken = messenger.Subscribe<SkippedTrackMessage>(message => _playStatistics.OnSkippedTrack(message.TrackId));
 
             _playStatistics.TriggerClear += () => { _playStatistics.Clear(); };
         }

@@ -44,6 +44,7 @@ namespace BMM.Core.Implementations.PlayObserver
         private const string Tag = "PlayStatistics";
 
         public ITrackModel CurrentTrack { get; private set; }
+        public int SkippedTrackId { get; private set; }
         public IList<IMediaTrack> CurrentQueue { get; private set; }
         public bool IsCurrentQueueSaved { get; set; }
         public bool IsPlaying { get; private set; }
@@ -126,7 +127,9 @@ namespace BMM.Core.Implementations.PlayObserver
                         _analytics.LogEvent("probably didn't finish a portion",
                             new Dictionary<string, object>
                             {
-                                {"TrackId", CurrentTrack.Id}, {"Portions", PortionsListened.Count}, {"StartOfNextPortion", StartOfNextPortion},
+                                {"TrackId", CurrentTrack.Id},
+                                {"Portions", PortionsListened.Count},
+                                {"StartOfNextPortion", StartOfNextPortion},
                                 {"ElapsedSeconds", elapsedTimeSinceLastPortion.Seconds}
                             });
                     }
@@ -242,6 +245,14 @@ namespace BMM.Core.Implementations.PlayObserver
             });
         }
 
+        public void OnSkippedTrack(int trackId)
+        {
+            SkippedTrackId = trackId;
+            if (CurrentTrack?.Id != trackId)
+                _analytics.LogEvent("skipped track but current track is different",
+                    new Dictionary<string, object> {{"Track", CurrentTrack?.Id}, {"SkippedTrack", trackId}});
+        }
+
         public void OnCurrentTrackWillChange(double currentPosition, decimal playbackRate)
         {
             AddPortionListened(currentPosition, playbackRate);
@@ -258,7 +269,8 @@ namespace BMM.Core.Implementations.PlayObserver
                     return;
                 }
 
-                var measurements = _measurementCalculator.Calculate(CurrentTrack.Duration, PortionsListened);
+                bool skippedTrack = SkippedTrackId == CurrentTrack.Id;
+                var measurements = _measurementCalculator.Calculate(CurrentTrack.Duration, PortionsListened, skippedTrack);
                 if (measurements == null)
                 {
                     _logger.Info(Tag, "Clear portions since measurements are null");

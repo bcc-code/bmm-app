@@ -325,7 +325,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
     {
         var controls = _mediaController.GetTransportControls();
         controls.SkipToPrevious();
-        controls.Play();
+        controls.Play(); 
     }
 
     public void PlayPreviousOrSeekToStart()
