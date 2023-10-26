@@ -538,12 +538,12 @@
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Transkripsjoner er automatisk generert og kan inneholde feil",
     "AutoTranscribedPopupHeaderText": "Automatisk transkribert",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
+    "AutoTranscribedPopupSubtitleText": "Bidra til å forbedre transkripsjonen ved å foreslå rettelser ved hjelp av \"Foreslå rettelse\".",
     "AutoTranscribedPopupButtonText": "Forstått",
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Fra Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Last ned Song Treasures appen for å se hele sangen",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Foreslå rettelse"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Regler for streaks",
@@ -578,10 +578,10 @@
     "RewardIosGolden": "Et eksklusivt appikon i gull for BMM-appen din. Du er også med i trekningen av et par AirPods Pro. Godt jobbet!"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Foreslå rettelse",
+    "Subtitle": "Rediger teksten nedenfor for å korrigere en feil",
     "Cancel": "Avbryt",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Send inn",
+    "SubmitSuccess": "Redigeringsforslag ble sendt inn, takk!"
   }
 }
