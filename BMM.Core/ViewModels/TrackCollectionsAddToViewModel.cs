@@ -37,8 +37,7 @@ namespace BMM.Core.ViewModels
             IToastDisplayer toastDisplayer,
             IStorageManager storageManager,
             ILogger logger,
-            ITrackCollectionPOFactory trackCollectionPOFactory,
-            string origin)
+            ITrackCollectionPOFactory trackCollectionPOFactory)
             : base(
                 storageManager,
                 trackCollectionPOFactory)
@@ -47,7 +46,6 @@ namespace BMM.Core.ViewModels
             _userDialogs = userDialogs;
             _toastDisplayer = toastDisplayer;
             _logger = logger;
-            _origin = origin;
         }
 
         public void Prepare(Parameter document)

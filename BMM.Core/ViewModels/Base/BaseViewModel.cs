@@ -165,7 +165,7 @@ namespace BMM.Core.ViewModels.Base
 
             var bmmUserDialogs = Mvx.IoCProvider.Resolve<IBMMUserDialogs>();
             var isInOnlineMode = Mvx.IoCProvider.Resolve<IConnection>().GetStatus() == ConnectionStatus.Online;
-
+            
             switch (item.DocumentType)
             {
                 case DocumentType.Track:
