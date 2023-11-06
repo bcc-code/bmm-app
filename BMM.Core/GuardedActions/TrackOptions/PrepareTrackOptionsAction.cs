@@ -133,7 +133,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                 new TrackCollectionsAddToViewModel.Parameter
                                 {
                                     DocumentId = track.Id,
-                                    DocumentType = track.DocumentType
+                                    DocumentType = track.DocumentType,
+                                    OriginViewModel = sourceVM.PlaybackOriginString()
                                 });
                         })));
             }

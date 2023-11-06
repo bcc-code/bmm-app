@@ -43,7 +43,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var track = new Track { Id = 1 };
             var bmmClient = GetBmmClientThatReturnsTrackAndTrackCollection(track, true);
             var trackCollectionManager = GetTrackCollectionManager(bmmClient);
-            await trackCollectionManager.AddToTrackCollection(_trackCollection, track.Id, DocumentType.Track);
+            await trackCollectionManager.AddToTrackCollection(_trackCollection, track.Id, DocumentType.Track, "");
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var track = new Track { Id = 0 };
             var bmmClient = GetBmmClientThatReturnsTrackAndTrackCollection(track, true);
             var trackCollectionManager = GetTrackCollectionManager(bmmClient);
-            trackCollectionManager.AddToTrackCollection(_trackCollection, track.Id, DocumentType.Track);
+            trackCollectionManager.AddToTrackCollection(_trackCollection, track.Id, DocumentType.Track, "");
             _logger.Verify(logger => logger.Error(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<NullTrackException>(), It.IsAny<bool>()), Times.AtLeastOnce);
         }
 
@@ -64,7 +64,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var trackCollectionManager = GetTrackCollectionManager(bmmClient);
 
             // Act & Assert
-            Assert.ThrowsAsync<UnsupportedDocumentTypeException>(async () => await trackCollectionManager.AddToTrackCollection(_trackCollection, 123, DocumentType.Contributor));
+            Assert.ThrowsAsync<UnsupportedDocumentTypeException>(async () => await trackCollectionManager.AddToTrackCollection(_trackCollection, 123, DocumentType.Contributor, ""));
         }
 
         private ITrackCollectionManager GetTrackCollectionManager(IBMMClient bmmClient)

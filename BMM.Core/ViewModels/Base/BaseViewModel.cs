@@ -165,7 +165,7 @@ namespace BMM.Core.ViewModels.Base
 
             var bmmUserDialogs = Mvx.IoCProvider.Resolve<IBMMUserDialogs>();
             var isInOnlineMode = Mvx.IoCProvider.Resolve<IConnection>().GetStatus() == ConnectionStatus.Online;
-
+            
             switch (item.DocumentType)
             {
                 case DocumentType.Track:
@@ -427,7 +427,8 @@ namespace BMM.Core.ViewModels.Base
             return NavigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
             {
                 DocumentId = albumId,
-                DocumentType = DocumentType.Album
+                DocumentType = DocumentType.Album,
+                OriginViewModel = PlaybackOriginString()
             });
         }
     }

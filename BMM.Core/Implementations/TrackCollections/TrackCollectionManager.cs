@@ -57,7 +57,7 @@ namespace BMM.Core.Implementations.TrackCollections
             return _trackCollectionStorage.IsOfflineAvailable(trackCollection);
         }
 
-        public async Task AddToTrackCollection(TrackCollection trackCollection, int id, DocumentType type)
+        public async Task AddToTrackCollection(TrackCollection trackCollection, int id, DocumentType type, string origin)
         {
             if (id == 0)
             {
@@ -68,10 +68,22 @@ namespace BMM.Core.Implementations.TrackCollections
             if (type == DocumentType.Album)
             {
                 await _bmmClient.TrackCollection.AddAlbumToTrackCollection(trackCollection.Id, id);
+                _analytics.LogEvent("added album to track_collection",
+                    new Dictionary<string, object>
+                    {
+                        {"AlbumId", id},
+                        {"Origin", origin}
+                    });
             }
             else if (type == DocumentType.Track)
             {
                 await _bmmClient.TrackCollection.AddTracksToTrackCollection(trackCollection.Id, new List<int> {id});
+                _analytics.LogEvent("added track to track_collection",
+                    new Dictionary<string, object>
+                    {
+                        {"TrackId", id},
+                        {"Origin", origin}
+                    });
             }
             else
             {
