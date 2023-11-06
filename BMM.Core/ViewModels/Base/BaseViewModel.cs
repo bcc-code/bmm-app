@@ -427,7 +427,8 @@ namespace BMM.Core.ViewModels.Base
             return NavigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
             {
                 DocumentId = albumId,
-                DocumentType = DocumentType.Album
+                DocumentType = DocumentType.Album,
+                OriginViewModel = PlaybackOriginString()
             });
         }
     }

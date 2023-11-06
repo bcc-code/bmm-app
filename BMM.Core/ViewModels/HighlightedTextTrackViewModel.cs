@@ -55,7 +55,8 @@ public class HighlightedTextTrackViewModel : DocumentsViewModel, IMvxViewModel<H
                 new TrackCollectionsAddToViewModel.Parameter
                 {
                     DocumentId = TrackPO.Id,
-                    DocumentType = TrackPO.DocumentType
+                    DocumentType = TrackPO.DocumentType,
+                    OriginViewModel = PlaybackOriginString()
                 });
         });
     }

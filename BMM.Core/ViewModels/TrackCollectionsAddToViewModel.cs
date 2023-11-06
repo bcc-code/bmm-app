@@ -28,6 +28,7 @@ namespace BMM.Core.ViewModels
         private readonly IToastDisplayer _toastDisplayer;
         private int _documentId;
         private DocumentType _documentType;
+        private string _origin;
         private readonly ILogger _logger;
 
         public TrackCollectionsAddToViewModel(
@@ -36,7 +37,8 @@ namespace BMM.Core.ViewModels
             IToastDisplayer toastDisplayer,
             IStorageManager storageManager,
             ILogger logger,
-            ITrackCollectionPOFactory trackCollectionPOFactory)
+            ITrackCollectionPOFactory trackCollectionPOFactory,
+            string origin)
             : base(
                 storageManager,
                 trackCollectionPOFactory)
@@ -45,12 +47,14 @@ namespace BMM.Core.ViewModels
             _userDialogs = userDialogs;
             _toastDisplayer = toastDisplayer;
             _logger = logger;
+            _origin = origin;
         }
 
         public void Prepare(Parameter document)
         {
             _documentId = document.DocumentId;
             _documentType = document.DocumentType;
+            _origin = document.OriginViewModel;
         }
 
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
@@ -66,7 +70,7 @@ namespace BMM.Core.ViewModels
             var targetTrackCollection = (TrackCollectionPO)item;
             try
             {
-                await _trackCollectionManager.AddToTrackCollection(targetTrackCollection.TrackCollection, _documentId, _documentType);
+                await _trackCollectionManager.AddToTrackCollection(targetTrackCollection.TrackCollection, _documentId, _documentType, _origin);
                 await _toastDisplayer.Success(TextSource[Translations.TrackCollectionsAddToViewModel_TrackAddedToTrackCollection]);
             }
             catch (UnsupportedDocumentTypeException)
@@ -106,6 +110,7 @@ namespace BMM.Core.ViewModels
             /// Should be either Track or Album
             /// </summary>
             public DocumentType DocumentType { get; set; }
+            public string OriginViewModel { get; set; }
         }
     }
 }
