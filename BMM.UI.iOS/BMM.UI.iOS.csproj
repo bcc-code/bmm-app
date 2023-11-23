@@ -692,6 +692,9 @@
     <Compile Include="..\BMM.Core\Translation\en\Translations.designer.cs">
       <Link>Translation\en\Translations.designer.cs</Link>
     </Compile>
+    <Compile Update="Application\ViewController\WebBrowserView.designer.cs">
+      <DependentUpon>WebBrowserViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FFImageLoading">
