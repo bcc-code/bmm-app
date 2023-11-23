@@ -23,6 +23,7 @@ using BMM.Core.Implementations.UI;
 using BMM.Core.Implementations.UI.StyledText;
 using BMM.Core.Messages;
 using BMM.Core.Models;
+using BMM.Core.Models.Parameters;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
@@ -357,6 +358,15 @@ namespace BMM.Core.ViewModels
             var items = new List<IListItem>
             {
                 new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineAbout]),
+                new SelectableListItem
+                {
+                    Title = "TEST",
+                    Text = "GOOGLE",
+                    OnSelected = NavigationService.NavigateCommand<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+                    {
+                        Url = "https://google.com"
+                    })
+                },
                 new SelectableListItem
                 {
                     Title = TextSource[Translations.SettingsViewModel_UserVoiceHeader],

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
@@ -20,6 +21,7 @@ namespace BMM.UI.iOS
         
         protected virtual string GetTitle() => ViewModel.TextSource[TitleKey];
         protected float BottomSafeArea => (float)(View?.SafeAreaInsets.Bottom ?? 0);
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public override void ViewDidLoad()
         {
@@ -122,6 +124,12 @@ namespace BMM.UI.iOS
         protected virtual void DetachEvents()
         {
         }
+        
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
 
         public override void DidMoveToParentViewController(UIViewController parent)
         {
