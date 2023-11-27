@@ -3,6 +3,8 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Implementations;
+using BMM.Core.Models.Parameters;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.ListeningStreaks;
@@ -34,6 +36,13 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
         {
             await navigationService.Navigate<BibleStudyRulesViewModel>();
         });
+        TermsWebButtonClickedCommand = new ExceptionHandlingCommand(async () =>
+        {
+            await navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+            {
+                Url = "https://google.com"
+            });
+        });
     }
 
     public ListeningStreakPO ListeningStreakPO
@@ -60,4 +69,5 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
     public string PointsNumber { get; }
     public IBmmObservableCollection<IAchievementPO> Achievements { get; } = new BmmObservableCollection<IAchievementPO>();
     public IMvxAsyncCommand TermsButtonClickedCommand { get; }
+    public IMvxAsyncCommand TermsWebButtonClickedCommand { get; }
 }

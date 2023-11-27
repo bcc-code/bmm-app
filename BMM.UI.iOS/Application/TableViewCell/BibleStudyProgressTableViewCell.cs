@@ -129,6 +129,9 @@ namespace BMM.UI.iOS
                 set.Bind(TermsButtonView)
                     .For(v => v.BindTap())
                     .To(po => po.TermsButtonClickedCommand);
+                set.Bind(TermsWebButtonView)
+                    .For(v => v.BindTap())
+                    .To(po => po.TermsWebButtonClickedCommand);
                 
                 AchivementsCollectionView.Source = source;
                 set.Apply();

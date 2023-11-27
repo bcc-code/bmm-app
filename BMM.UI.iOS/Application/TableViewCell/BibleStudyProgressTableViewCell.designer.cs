@@ -62,10 +62,16 @@ namespace BMM.UI.iOS
 		UIKit.UILabel StreakThisWeek { get; set; }
 
 		[Outlet]
+		UIKit.UIView TermsButton2View { get; set; }
+
+		[Outlet]
 		UIKit.UIView TermsButtonView { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TermsLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIView TermsWebButtonView { get; set; }
 
 		[Outlet]
 		UIKit.UIView ThursdayColorView { get; set; }
@@ -87,6 +93,16 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (AchivementsCollectionView != null) {
+				AchivementsCollectionView.Dispose ();
+				AchivementsCollectionView = null;
+			}
+
+			if (TermsButton2View != null) {
+				TermsButton2View.Dispose ();
+				TermsButton2View = null;
+			}
+
 			if (AchiviementsLabel != null) {
 				AchiviementsLabel.Dispose ();
 				AchiviementsLabel = null;
@@ -202,9 +218,9 @@ namespace BMM.UI.iOS
 				WednesdayView = null;
 			}
 
-			if (AchivementsCollectionView != null) {
-				AchivementsCollectionView.Dispose ();
-				AchivementsCollectionView = null;
+			if (TermsWebButtonView != null) {
+				TermsWebButtonView.Dispose ();
+				TermsWebButtonView = null;
 			}
 
 		}
