@@ -55,33 +55,30 @@ namespace BMM.UI.iOS
                 .For(v => v.ViewTitle)
                 .To(vm => vm.PageTitle);
 
-            set
-                .Bind(TrackCountLabel)
+            set.Bind(HeaderLabel)
+                .To(vm => vm.Name);
+            
+            set.Bind(TrackCountLabel)
                 .To(vm => vm.TrackCountString);
 
-            set
-                .Bind(source)
+            set.Bind(source)
                 .To(vm => vm.Documents);
 
-            set
-                .Bind(source)
+            set.Bind(source)
                 .For(s => s.SelectionChangedCommand)
                 .To(s => s.DocumentSelectedCommand);
 
-            set
-                .Bind(source)
+            set.Bind(source)
                 .For(s => s.IsFullyLoaded)
                 .To(vm => vm.IsLoading)
                 .WithConversion<InvertedVisibilityConverter>();
 
-            set
-                .Bind(AddToFavouritesButton)
+            set.Bind(AddToFavouritesButton)
                 .For(v => v.BindTitle())
                 .To(vm => vm.TextSource)
                 .WithConversion<MvxLanguageConverter>(Translations.TopSongsCollectionViewModel_AddToMyPlaylist);
 
-            set
-                .Bind(AddToFavouritesButton)
+            set.Bind(AddToFavouritesButton)
                 .To(vm => vm.AddToFavouritesCommand);
 
             set.Apply();
