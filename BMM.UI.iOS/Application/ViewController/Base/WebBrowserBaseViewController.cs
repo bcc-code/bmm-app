@@ -1,5 +1,6 @@
 using BMM.Core.Extensions;
 using BMM.Core.Interactions.Base;
+using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.UI.iOS.Constants;
@@ -39,6 +40,8 @@ namespace BMM.UI.iOS.ViewController.Base
         protected WebBrowserBaseViewController(string nibName) : base(nibName)
         {
         }
+
+        protected virtual string Script => null;
 
         protected BmmWebView InitializeWebView()
         {
@@ -160,6 +163,11 @@ namespace BMM.UI.iOS.ViewController.Base
             };
             
             NavigationItem.RightBarButtonItem = closeButton;
+            
+            if (Script != null)
+                _userContentController.AddUserScript(new WKUserScript(new NSString(Script),
+                    WKUserScriptInjectionTime.AtDocumentStart,
+                    false));
             
             Bind();
             LoadRequest();

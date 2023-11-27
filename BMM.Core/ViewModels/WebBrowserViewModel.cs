@@ -1,3 +1,4 @@
+using BMM.Core.Implementations.Security;
 using BMM.Core.Interactions.Base;
 using BMM.Core.Models.Parameters;
 using BMM.Core.ViewModels.Base;
@@ -9,6 +10,18 @@ namespace BMM.Core.ViewModels;
 public class WebBrowserViewModel : BaseViewModel<IWebBrowserPrepareParams>, IWebBrowserViewModel
 {
     // private IPrepareJsHandlersForWebViewAction _prepareJsHandlersForWebViewAction;
+
+    private readonly IAccessTokenProvider _accessTokenProvider;
+
+    public string Script =>
+        "(function() {window.xamarin_webview = {\r\n  callHandler(handlerName, ...args) {\r\n    return \"" +
+        _accessTokenProvider.AccessToken +
+        "\";\r\n  }\r\n}\r\nreturn 1;\r\n  })()";
+
+    public WebBrowserViewModel(IAccessTokenProvider accessTokenProvider)
+    {
+        _accessTokenProvider = accessTokenProvider;
+    }
 
     public string Url { get; set; }
     public bool PageLoaded { get; set; }

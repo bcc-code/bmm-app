@@ -40,7 +40,7 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
         {
             await navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
             {
-                Url = "https://google.com"
+                Url = "https://app.bcc.media/embed/episode/1831/lesson/f634ddcd-d101-4a6b-9222-2f26e8c4e120?bg=true"
             });
         });
     }
