@@ -34,6 +34,13 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
         {
             await navigationService.Navigate<BibleStudyRulesViewModel>();
         });
+        TermsWebButtonClickedCommand = new ExceptionHandlingCommand(async () =>
+        {
+            await navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+            {
+                Url = "https://app.bcc.media/embed/episode/1831/lesson/f634ddcd-d101-4a6b-9222-2f26e8c4e120?bg=true"
+            });
+        });
     }
 
     public ListeningStreakPO ListeningStreakPO

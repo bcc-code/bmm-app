@@ -19,5 +19,7 @@ namespace BMM.UI.iOS.ViewController
         }
         
         protected override UIView WebBrowserContainer => viewContainer;
+
+        protected override string Script => ViewModel?.Script;
     }
 }
