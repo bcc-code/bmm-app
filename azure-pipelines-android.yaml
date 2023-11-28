@@ -19,6 +19,11 @@ variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
   
 steps:
+  - name: Setup Java JDK
+    uses: actions/setup-java@v3.13.0
+    with:
+      distribution: 'microsoft'
+      java-version: '17'
   - bash: |
       dotnet workload install android
     displayName: 'Install Android workload'
