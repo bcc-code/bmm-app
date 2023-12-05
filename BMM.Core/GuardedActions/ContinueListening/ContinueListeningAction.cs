@@ -62,8 +62,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
             {
                 _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));
             }
-
-            if (autoplayEnabled)
+            else if (autoplayEnabled)
                 await _enqueueMusicAction.ExecuteGuarded();
         }
 
