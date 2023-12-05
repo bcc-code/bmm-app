@@ -71,6 +71,9 @@ namespace BMM.Api.Framework.JsonConverter
                 
                 case "recommendation":
                     return new Recommendation();
+                
+                case "project_box":
+                    return new ProjectBox();
             }
 
             return new UnsupportedDocument();

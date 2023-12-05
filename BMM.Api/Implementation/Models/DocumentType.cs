@@ -66,6 +66,9 @@ namespace BMM.Api.Implementation.Models
         
         [EnumMember(Value = "recommendation")]
         Recommendation,
+        
+        [EnumMember(Value = "project_box")]
+        ProjectBox,
 
         [EnumMember(Value = "unsupported")]
         Unsupported
