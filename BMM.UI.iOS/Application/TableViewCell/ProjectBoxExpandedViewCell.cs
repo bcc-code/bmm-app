@@ -4,6 +4,8 @@ using System;
 using System.Diagnostics;
 using BMM.Core.Extensions;
 using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.YearInReview;
@@ -81,36 +83,50 @@ namespace BMM.UI.iOS
 
         private void SetItems(IBmmObservableCollection<IAchievementPO> itemsSource)
         {
-            if (itemsSource == null)
+            if (itemsSource == null ||itemsSource.Count == 0)
                 return;
 
-            foreach (var subview in AchievementsContainer.Subviews)
-                subview.RemoveFromSuperview();
+            var rows = itemsSource.OfType<IBasePO>().Chunk(4).ToList();
+            var toFillInLastRow = 4 - rows.Last().Length;
+            var lastRow = rows.Last().ToList();
             
-            var rows = itemsSource.Chunk(4);
+            for (int i = 0; i < toFillInLastRow; i++)
+                lastRow.Add(new EmptyPO());
+
+            rows[^1] = lastRow.ToArray();
             
             foreach (var row in rows)
             {
-                var stackView = new UIStackView()
+                var stackView = new UIStackView
                 {
                     Axis = UILayoutConstraintAxis.Horizontal,
                     Spacing = 6,
                     Alignment = UIStackViewAlignment.Fill,
-                    Distribution = UIStackViewDistribution.FillEqually,
+                    Distribution = UIStackViewDistribution.FillProportionally,
                     TranslatesAutoresizingMaskIntoConstraints = false
                 };
                 
-                stackView.HeightAnchor.ConstraintEqualTo(40).Active = true;
-                
                 foreach (var item in row)
                 {
-                    var imageView = new MvxCachedImageView();
-                    imageView.ImagePath = item.ImagePath;
-                    imageView.AddGestureRecognizer(new UITapGestureRecognizer(() => item.AchievementClickedCommand.Execute()));
-                    imageView.TranslatesAutoresizingMaskIntoConstraints = false;
-                    imageView.HeightAnchor.ConstraintEqualTo(40).Active = true;
-                    imageView.WidthAnchor.ConstraintEqualTo(40).Active = true;
-                    stackView.AddArrangedSubview(imageView);
+                    if (item is IAchievementPO achievementPO)
+                    {
+                        var imageView = new MvxCachedImageView();
+                        imageView.ImagePath = achievementPO.ImagePath;
+                        imageView.UserInteractionEnabled = true;
+                        imageView.AddGestureRecognizer(new UITapGestureRecognizer(() => achievementPO.AchievementClickedCommand.Execute()));
+                        imageView.TranslatesAutoresizingMaskIntoConstraints = false;
+                        imageView.HeightAnchor.ConstraintEqualTo(40).Active = true;
+                        imageView.WidthAnchor.ConstraintEqualTo(40).Active = true;
+                        stackView.AddArrangedSubview(imageView);
+                    }
+                    else
+                    {
+                        var emptyView = new UIView();
+                        emptyView.TranslatesAutoresizingMaskIntoConstraints = false;
+                        emptyView.HeightAnchor.ConstraintEqualTo(40).Active = true;
+                        emptyView.WidthAnchor.ConstraintEqualTo(40).Active = true;
+                        stackView.AddArrangedSubview(emptyView);
+                    }
                 }
                 
                 AchievementStackView.AddArrangedSubview(stackView);
