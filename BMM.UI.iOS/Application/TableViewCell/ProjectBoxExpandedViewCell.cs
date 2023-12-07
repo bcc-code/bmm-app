@@ -86,6 +86,9 @@ namespace BMM.UI.iOS
             if (itemsSource == null ||itemsSource.Count == 0)
                 return;
 
+            foreach (var view in AchievementStackView.ArrangedSubviews)
+                view.RemoveFromSuperview();
+            
             var rows = itemsSource.OfType<IBasePO>().Chunk(4).ToList();
             var toFillInLastRow = 4 - rows.Last().Length;
             var lastRow = rows.Last().ToList();

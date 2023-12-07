@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ProjectBoxCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginVertical="@dimen/margin_small"
+    android:background="@color/background_two_color"
+    local:cardCornerRadius="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_two_color">
+
+        <ImageView
+            android:id="@+id/IconImageView"
+            android:layout_width="@dimen/default_icon_size"
+            android:layout_height="@dimen/default_icon_size"
+            android:src="@drawable/icon_ai"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_xxsmall"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xxsmall"
+            local:layout_constraintTop_toTopOf="@+id/IconImageView"
+            local:layout_constraintBottom_toBottomOf="@+id/IconImageView"
+            local:layout_constraintStart_toEndOf="@+id/IconImageView"
+            local:layout_constraintEnd_toStartOf="@+id/CollapseButton"
+            local:MvxBind="Text ProjectBox.Title"
+            style="@style/Title1"/>
+
+        <ImageButton
+            android:id="@+id/CollapseButton"
+            android:layout_width="@dimen/year_in_review_teaser_expand_button_size"
+            android:layout_height="@dimen/year_in_review_teaser_expand_button_size"
+            android:background="@android:color/transparent"
+            android:src="@drawable/icon_arrow_down"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:rotation="180"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxBind="Click ExpandOrCollapseCommand" />
+
+        <TextView
+            android:id="@+id/PointsNumber"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            local:layout_constraintVertical_chainStyle="packed"
+            local:layout_constraintTop_toTopOf="@+id/AchievementsLayout"
+            local:layout_constraintBottom_toTopOf="@+id/PointsLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toStartOf="@+id/MainGuideline"
+            local:MvxBind="Text ProjectBox.Points"
+            style="@style/Heading2"/>
+
+        <TextView
+            android:id="@+id/PointsLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            local:layout_constraintTop_toBottomOf="@+id/PointsNumber"
+            local:layout_constraintBottom_toBottomOf="@+id/AchievementsLayout"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toStartOf="@+id/MainGuideline"
+            local:MvxBind="Text ProjectBox.PointsDescription"
+            style="@style/Subtitle3_GlobalBlack3"/>
+
+        <LinearLayout
+            android:id="@+id/AchievementsLayout"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_mini"
+            android:layout_marginTop="@dimen/margin_small"
+            android:orientation="vertical"
+            local:layout_constraintTop_toBottomOf="@+id/CollapseButton"
+            local:layout_constraintStart_toEndOf="@+id/MainGuideline"
+            local:layout_constraintEnd_toEndOf="parent" />
+        
+        <androidx.cardview.widget.CardView
+            android:id="@+id/QuestionsButton"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginHorizontal="@dimen/margin_small"
+            local:strokeWidth="1dp"
+            local:strokeColor="#0D000000"
+            local:layout_constraintTop_toBottomOf="@+id/AchievementsLayout"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:cardCornerRadius="@dimen/corner_radius_large"
+            local:cardBackgroundColor="@color/background_one_color"
+            local:cardElevation="1dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:id="@+id/QuestionIcon"
+                        android:layout_width="@dimen/default_icon_size"
+                        android:layout_height="@dimen/default_icon_size"
+                        android:layout_margin="@dimen/margin_medium"
+                        android:src="@drawable/icon_question"
+                        android:tint="@color/label_one_color"
+                        local:layout_constraintTop_toTopOf="parent"
+                        local:layout_constraintBottom_toBottomOf="parent"
+                        local:layout_constraintStart_toStartOf="parent" />
+                
+                <TextView
+                        android:id="@+id/Title"
+                        android:layout_width="@dimen/match_constraint"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/margin_medium"
+                        android:maxLines="1"
+                        android:ellipsize="end"
+                        local:layout_constraintStart_toEndOf="@+id/QuestionIcon"
+                        local:layout_constraintEnd_toEndOf="parent"
+                        local:layout_constraintTop_toTopOf="@+id/QuestionIcon"
+                        local:layout_constraintBottom_toBottomOf="@+id/QuestionIcon"
+                        local:MvxBind="Text ProjectBox.ButtonTitle"
+                        style="@style/Subtitle1_Label1" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+        
+        <LinearLayout
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/large_button_height"
+            android:paddingVertical="@dimen/margin_xxsmall"
+            android:gravity="center"
+            local:layout_constraintTop_toBottomOf="@+id/QuestionsButton"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/RulesLinkTitleLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_xxsmall"
+                local:MvxBind="Text ProjectBox.RulesLinkTitle"
+                style="@style/Subtitle3_Label2"/>
+
+            <ImageView
+                android:id="@+id/ArrowImage"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_marginStart="@dimen/margin_tiny"
+                android:src="@drawable/icon_arrow_right_two"/>
+            
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/MainGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                local:layout_constraintGuide_percent="0.4" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

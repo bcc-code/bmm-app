@@ -239,6 +239,11 @@
         <item name="android:includeFontPadding">false</item>
     </style>
 
+    <style name="Subtitle3_GlobalBlack3" parent="Subtitle3">
+        <item name="android:textColor">@color/global_black_three</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
     <style name="Title1">
         <item name="android:textSize">18sp</item>
         <item name="android:lineHeight">24sp</item>
