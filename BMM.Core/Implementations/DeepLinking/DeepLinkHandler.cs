@@ -288,9 +288,9 @@ namespace BMM.Core.Implementations.DeepLinking
         {
             var parameters = new Dictionary<string, object>
             {
-                { "uri", uri.AbsolutePath }
+                { "uri", uri.PathAndQuery }
             };
-            
+
             if (!string.IsNullOrEmpty(origin))
                 parameters.Add("origin", origin);
 
