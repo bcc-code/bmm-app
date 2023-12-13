@@ -159,5 +159,9 @@ namespace BMM.Core.Models.POs.Tracks
         public bool IsQueued { get; }
         public bool ShowBlueDot { get; }
         public bool IsListened { get; }
+
+        public bool IsDownloadingVisible => IsDownloading && !IsListened;
+        public bool IsDownloadedVisible => IsDownloaded && !IsListened;
+        public bool IsQueuedVisible => IsQueued && !IsListened;
     }
 }

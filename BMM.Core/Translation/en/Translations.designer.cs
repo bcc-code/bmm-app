@@ -461,6 +461,7 @@ namespace BMM.Core.Translation
 		public const string SuggestEditViewModel_SubmitSuccess = nameof(SuggestEditViewModel_SubmitSuccess);
 		public const string AskQuestionViewModel_Title = nameof(AskQuestionViewModel_Title);
 		public const string AskQuestionViewModel_Submit = nameof(AskQuestionViewModel_Submit);
+		public const string AskQuestionViewModel_Hint = nameof(AskQuestionViewModel_Hint);
 		public const string AskQuestionConfirmationViewModel_ThankYou = nameof(AskQuestionConfirmationViewModel_ThankYou);
 		public const string AskQuestionConfirmationViewModel_Description = nameof(AskQuestionConfirmationViewModel_Description);
 		public const string AskQuestionConfirmationViewModel_GotIt = nameof(AskQuestionConfirmationViewModel_GotIt);

@@ -37,6 +37,7 @@ namespace BMM.UI.iOS.ViewController.Base
         private bool _showProgressBarBeforeNavigation;
         private UIBarButtonItem _closeButton;
         private IList<string> _scriptsToEvaluateAfterPageLoaded;
+        private string _pageTitle;
 
         protected WebBrowserBaseViewController(string nibName) : base(nibName)
         {
@@ -283,9 +284,23 @@ namespace BMM.UI.iOS.ViewController.Base
                 .For(p => p.ScriptsToEvaluateAfterPageLoaded)
                 .To(vm => vm.ScriptsToEvaluateAfterPageLoaded);
             
+            set.Bind(this)
+                .For(v => v.PageTitle)
+                .To(vm => vm.Title);
+            
             set.Apply();
         }
 
+        public string PageTitle
+        {
+            get => _pageTitle;
+            set
+            {
+                _pageTitle = value;
+                Title = _pageTitle;
+            }
+        }
+        
         public IList<string> ScriptsToEvaluateAfterPageLoaded
         {
             get => _scriptsToEvaluateAfterPageLoaded;

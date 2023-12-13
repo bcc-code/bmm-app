@@ -1,15 +1,13 @@
-using Acr.UserDialogs;
-using Android.Content;
 using Android.Graphics;
 using Android.Views;
 using Android.Webkit;
+using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.Interactions.Base;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.UI.Droid.Application.CustomViews;
-using Java.Interop;
-using MvvmCross;
+using BMM.UI.Droid.Application.JsInterfaces;
 using MvvmCross.Base;
 using MvvmCross.Binding.BindingContext;
 using Object = Java.Lang.Object;
@@ -86,6 +84,18 @@ namespace BMM.UI.Droid.Application.Fragments.Base
             }
         }
 
+        public IDictionary<string, Action<string>> JavaScriptEventHandlers
+        {
+            get => _javaScriptEventHandlers;
+            set
+            {
+                _javaScriptEventHandlers = value;
+
+                if (_javaScriptEventHandlers != null)
+                    AddJsInterfaces();
+            }
+        }
+
         private void EvaluateJavaScriptInteractionOnRequested(object sender, MvxValueEventArgs<string> e)
             => WebView.EnqueueScriptToExecute(e.Value);
 
@@ -148,6 +158,10 @@ namespace BMM.UI.Droid.Application.Fragments.Base
             set.Bind(this)
                 .For(p => p.ScriptsToEvaluateAfterPageLoaded)
                 .To(vm => vm.ScriptsToEvaluateAfterPageLoaded);
+            
+            set.Bind(this)
+                .For(p => p.JavaScriptEventHandlers)
+                .To(vm => vm.JavaScriptEventHandlers);
         }
 
         public IList<string> ScriptsToEvaluateAfterPageLoaded
@@ -190,9 +204,18 @@ namespace BMM.UI.Droid.Application.Fragments.Base
             webView.Settings.DomStorageEnabled = true;
             webView.SetBackgroundColor(Color.Black);
             webView.ShouldInterceptTouch = ShouldWebViewInterceptTouches;
-            webView.AddJavascriptInterface(new MyJSInterface(Context), "android");
 
             return webView;
+        }
+
+        private void AddJsInterfaces()
+        {
+            foreach (var handler in JavaScriptEventHandlers)
+            {
+                if (handler.Key == JSConstants.OpenQuestionSubmission)
+                    WebView.AddJavascriptInterface(new OpenQuestionSubmissionInterface(handler.Value), "android");
+            }
+            
         }
 
         private void ClientOnNavigationStarted(object sender, EventArgs e)
@@ -265,23 +288,6 @@ namespace BMM.UI.Droid.Application.Fragments.Base
 
             viewGroup.RemoveView(WebView);
             viewGroup.RemoveView(Progress);
-        }
-    }
-    
-    public class MyJSInterface : Java.Lang.Object
-    {
-        Context mContext;
-
-        public MyJSInterface(Context context)
-        {
-            mContext = context;
-        }
-
-        [JavascriptInterface]
-        [Export("openQuestionSubmission")]
-        public void OpenQuestionSubmission()
-        {
-            Mvx.IoCProvider.Resolve<IUserDialogs>().Toast("asdad");
         }
     }
 }

@@ -62,17 +62,6 @@ namespace BMM.UI.iOS
                 
                 set.Bind(QuestionsButton)
                     .To(po => po.OpenQuestionsCommand);
-                
-                //
-                // set.Bind(PlaylistButton)
-                //     .For(v => v.BindTitle())
-                //     .To(po => po.YearInReviewTeaser.PlaylistName);
-                //
-                // set.Bind(PlaylistButton)
-                //     .To(po => po.OpenTopSongsCommand);
-                //
-                // set.Bind(SeeReviewButton)
-                //     .To(po => po.SeeReviewCommand);
 
                 set.Apply();
             });
@@ -152,8 +141,6 @@ namespace BMM.UI.iOS
             RulesLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
             PointsLabel.ApplyTextTheme(AppTheme.Subtitle3GlobalBlack3);
             PointsNumber.ApplyTextTheme(AppTheme.Heading2);
-            // DescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label1);
-            // SeeReviewButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             CollapseButton.Transform = CGAffineTransform.MakeRotation(180f.ToRadians());
             QuestionsButton.ApplyButtonStyle(AppTheme.YearInReviewButton);
             QuestionsButton.IsTitleCentered = false;
@@ -162,9 +149,6 @@ namespace BMM.UI.iOS
             QuestionsButton.Layer.ShadowOffset = new CGSize(width: 0.0, height: 1.0);
             QuestionsButton.Layer.ShadowOpacity = 0.2f;
             QuestionsButton.Layer.ShadowRadius = 0.0f;
-            
-            //PlaylistButton.Layer.MasksToBounds = false;
-
         }
         
         public IMvxInteraction ExpandOrCollapseInteraction

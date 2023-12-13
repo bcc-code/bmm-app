@@ -5,6 +5,7 @@ using BMM.Core.GuardedActions.AskQuestion.Interfaces;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.ViewModels;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Maui.Devices;
 using MvvmCross.Navigation;
 
 namespace BMM.Core.GuardedActions.AskQuestion;
@@ -30,11 +31,16 @@ public class AskQuestionAction
     {
         bool isSuccess = await _questionsClient.PostQuestion(new PostQuestion()
         {
-            Question = DataContext.Question 
+            Question = DataContext.Question
         });
-        
+
         if (isSuccess)
+        {
+            if (DeviceInfo.Current.Platform == DevicePlatform.Android)
+                await DataContext.CloseCommand.ExecuteAsync();
+            
             await _mvxNavigationService.Navigate<AskQuestionConfirmationViewModel>();
+        }
     }
     
     protected override bool CanExecute()

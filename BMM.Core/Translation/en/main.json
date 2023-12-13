@@ -587,11 +587,12 @@
   },
   "AskQuestionViewModel": {
     "Title": "Ask a question", 
-    "Submit": "Submit question"
+    "Submit": "Submit question",
+    "Hint": "Your question"
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \u2028Most questions will be answered in the Q&A page. \u2028\u2028Check back in a week to see the reply!",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered in the Q&A page. \n \n Check back in a week to see the reply!",
     "GotIt": "Got it!"
   }
 }

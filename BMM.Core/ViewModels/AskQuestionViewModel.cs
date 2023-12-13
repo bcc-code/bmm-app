@@ -28,8 +28,4 @@ public class AskQuestionViewModel : BaseViewModel
             RaisePropertyChanged(() => CanSubmit);
         }
     }
-
-    public override async Task Initialize()
-    {
-    }
 }

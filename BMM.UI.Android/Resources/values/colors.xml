@@ -66,4 +66,7 @@
     <color name="bible_study_confetti_two_color">#B4DDD9</color>
     <color name="bible_study_confetti_three_color">#FCBE47</color>
     
+    <color name="ask_question_confirmation_background_color">#D5DCC9</color>
+    <color name="ask_question_confirmation_text_color">#28380B</color>
+    
 </resources>

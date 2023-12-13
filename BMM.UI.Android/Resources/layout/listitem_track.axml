@@ -81,19 +81,25 @@
             android:id="@+id/queuedIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Visibility Visibility(TrackState.IsQueued)" />
+            local:MvxBind="Visibility Visibility(TrackState.IsQueuedVisible)" />
         <ProgressBar
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:indeterminate="true"
             android:indeterminateDrawable="@drawable/spinner_small"
-            local:MvxBind="Visibility Visibility(TrackState.IsDownloading)" />
+            local:MvxBind="Visibility Visibility(TrackState.IsDownloadingVisible)" />
         <ImageView
             android:src="@drawable/icon_download_done"
             android:id="@+id/downloadedIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            local:MvxBind="Visibility Visibility(TrackState.IsDownloaded)" />
+            local:MvxBind="Visibility Visibility(TrackState.IsDownloadedVisible)" />
+        <ImageView
+            android:id="@+id/IsListenedIcon"
+            android:src="@drawable/icon_checkmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:MvxBind="Visibility Visibility(TrackState.IsListened)" />
     </LinearLayout>
 
     <ImageView
@@ -130,6 +136,7 @@
             local:barrierDirection="start"
             local:constraint_referenced_ids="
                         image_button_references,
-                        image_button_options"/>
+                        image_button_options,
+                        trackDownloadStatus"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

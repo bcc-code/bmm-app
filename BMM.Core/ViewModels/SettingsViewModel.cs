@@ -360,15 +360,6 @@ namespace BMM.Core.ViewModels
                 new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineAbout]),
                 new SelectableListItem
                 {
-                    Title = "TEST",
-                    Text = "GOOGLE",
-                    OnSelected = NavigationService.NavigateCommand<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
-                    {
-                        Url = "https://google.com"
-                    })
-                },
-                new SelectableListItem
-                {
                     Title = TextSource[Translations.SettingsViewModel_UserVoiceHeader],
                     Text = TextSource[Translations.SettingsViewModel_UserVoiceText],
                     OnSelected = new MvxCommand(() => _uriOpener.OpenUri(new Uri(_remoteConfig.UserVoiceLink)))

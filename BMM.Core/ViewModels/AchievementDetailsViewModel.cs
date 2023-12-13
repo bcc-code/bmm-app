@@ -1,30 +1,33 @@
+using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
-using BMM.Core.GuardedActions.App.Interfaces;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
+using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Base;
+using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.Parameters.Interface;
-using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Core;
+using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.ViewModels;
 
-public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsParameter>
+public class AchievementDetailsViewModel : DocumentsViewModel, IBaseViewModel<IAchievementDetailsParameter>
 {
     private readonly IAcknowledgeAchievementAction _acknowledgeAchievementAction;
     private readonly IMediaPlayer _mediaPlayer;
-    private readonly ITracksClient _tracksClient;
     private AchievementPO _achievementPO;
     private IMvxAsyncCommand _buttonClickedCommand;
     private bool _shouldShowConfetti;
     private bool _isCurrentlyPlaying;
     private bool _shouldShowPlayNextButton;
+    private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
 
     public AchievementDetailsViewModel(
         IAcknowledgeAchievementAction acknowledgeAchievementAction,
@@ -34,9 +37,9 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
     {
         _acknowledgeAchievementAction = acknowledgeAchievementAction;
         _mediaPlayer = mediaPlayer;
-        _tracksClient = tracksClient;
         activateRewardAction.AttachDataContext(this);
         ButtonClickedCommand = activateRewardAction.Command;
+        _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
         
         PlayNextClickedCommand = new ExceptionHandlingCommand(async () =>
         {
@@ -51,13 +54,13 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
             }
             else
             {
-                var track = await _tracksClient.GetById(trackId.Value);
+                var track = await tracksClient.GetById(trackId.Value);
                 await _mediaPlayer.Play(new[] { track }, track, nameof(AchievementDetailsViewModel));
             }
-
-            await RefreshState();
         });
     }
+    
+    public IAchievementDetailsParameter NavigationParameter { get; private set; }
 
     public bool ShouldShowPlayNextButton
     {
@@ -65,20 +68,31 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
         set => SetProperty(ref _shouldShowPlayNextButton, value);
     }
 
+    public void Prepare(IAchievementDetailsParameter parameter)
+    {
+        NavigationParameter = parameter;
+    }
+
     public override void ViewDestroy(bool viewFinishing = true)
     {
         base.ViewDestroy(viewFinishing);
         AchievementsTools.IsCurrentlyShowing = false;
     }
-
-    public override async Task Initialize()
+    
+    private void PlaybackStateChanged(PlaybackStatusChangedMessage playbackStatusChangedMessage)
     {
-        await base.Initialize();
+        if (playbackStatusChangedMessage.PlaybackState.PlayStatus.IsOneOf(PlayStatus.Playing, PlayStatus.Paused, PlayStatus.Stopped))
+            RefreshTrack();
+    }
+
+    public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
+    {
         AchievementPO = NavigationParameter.AchievementPO;
         ShouldShowPlayNextButton = NavigationParameter.AchievementPO.TrackId.HasValue;
         await _acknowledgeAchievementAction.ExecuteGuarded(NavigationParameter.AchievementPO);
         ShouldShowConfetti = AchievementPO.IsActive && !AchievementPO.IsAcknowledged;
-        await RefreshState();
+        RefreshTrack();
+        return Enumerable.Empty<IDocumentPO>();
     }
 
     public AchievementPO AchievementPO
@@ -108,20 +122,24 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
     public IMvxAsyncCommand PlayNextClickedCommand { get; }
 
     public string ButtonTitle => GetButtonTitle();
-    
-    public Task RefreshState()
+
+    protected override void RefreshTrackWithId(int? currentTrackId)
+    {
+        base.RefreshTrackWithId(currentTrackId);
+        RefreshTrack();
+    }
+
+    private void RefreshTrack()
     {
         int? trackId = NavigationParameter.AchievementPO.TrackId;
-        
+
         if (trackId == null)
-            return Task.CompletedTask;
+            return;
         
         bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(trackId);
         IsCurrentlyPlaying = isCurrentlySelected && _mediaPlayer.IsPlaying;
-        
-        return Task.CompletedTask;
     }
-    
+
     private string GetButtonTitle()
     {
         if (!AchievementPO.IsActive)

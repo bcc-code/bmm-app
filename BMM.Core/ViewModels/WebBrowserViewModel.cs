@@ -1,3 +1,4 @@
+using BMM.Core.Constants;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Interactions.Base;
 using BMM.Core.Models.Parameters;
@@ -9,17 +10,12 @@ namespace BMM.Core.ViewModels;
 
 public class WebBrowserViewModel : BaseViewModel<IWebBrowserPrepareParams>, IWebBrowserViewModel
 {
-    // private IPrepareJsHandlersForWebViewAction _prepareJsHandlersForWebViewAction;
-
     private readonly IAccessTokenProvider _accessTokenProvider;
     private string _url;
     private string _title;
 
-    public string Script =>
-        "(function() {window.xamarin_webview = {\r\n  callHandler(handlerName, ...args) {\r\n    return \"" +
-        _accessTokenProvider.AccessToken +
-        "\";\r\n  }\r\n}\r\nreturn 1;\r\n  })()";
-
+    public string Script => "window.xamarin_webview = {\n    accessToken:" + $"'{_accessTokenProvider.AccessToken}'" + ",\n};";
+    
     public WebBrowserViewModel(IAccessTokenProvider accessTokenProvider)
     {
         _accessTokenProvider = accessTokenProvider;
@@ -52,15 +48,15 @@ public class WebBrowserViewModel : BaseViewModel<IWebBrowserPrepareParams>, IWeb
         JavaScriptEventHandlers = new Dictionary<string, Action<string>>()
         {
             {
-                "openQuestionSubmission", async s =>
+                JSConstants.OpenQuestionSubmission, async s =>
                 {
                     await NavigationService.Navigate<AskQuestionViewModel>();
                 }
             }
         };
         
-        ScriptsToEvaluateAfterPageLoaded.Add("window.xamarin_webview = {\n    accessToken: 'dupa',\n};");
-            
+        ScriptsToEvaluateAfterPageLoaded.Add(Script);
+        
         if (!PageLoaded)
             RaisePropertyChanged(nameof(Url));
 
