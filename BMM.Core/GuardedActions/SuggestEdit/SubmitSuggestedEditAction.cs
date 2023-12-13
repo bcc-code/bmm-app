@@ -22,18 +22,15 @@ public class SubmitSuggestedEditAction :
     private readonly ITranscriptionClient _transcriptionClient;
     private readonly IUserDialogs _userDialogs;
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
-    private readonly IMvxNavigationService _mvxNavigationService;
 
     public SubmitSuggestedEditAction(
         ITranscriptionClient transcriptionClient,
         IUserDialogs userDialogs,
-        IBMMLanguageBinder bmmLanguageBinder,
-        IMvxNavigationService mvxNavigationService)
+        IBMMLanguageBinder bmmLanguageBinder)
     {
         _transcriptionClient = transcriptionClient;
         _userDialogs = userDialogs;
         _bmmLanguageBinder = bmmLanguageBinder;
-        _mvxNavigationService = mvxNavigationService;
     }
     
     private SuggestEditViewModel DataContext => this.GetDataContext();

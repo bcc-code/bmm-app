@@ -1,5 +1,7 @@
 ﻿using System;
+using BMM.Core.Constants;
 using BMM.Core.Models.POs.Tracks;
+using BMM.UI.iOS.Extensions;
 using MvvmCross.Converters;
 
 namespace BMM.UI.iOS
@@ -21,6 +23,9 @@ namespace BMM.UI.iOS
 
         protected override string Convert(TrackState trackState, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
+            if (trackState.IsListened)
+                return ImageResourceNames.IconCheckmark.ToIosImageName();
+            
             if (trackState.IsDownloaded)
                 return IconDownloaded;
             

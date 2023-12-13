@@ -13,7 +13,7 @@ public static class TrackExtensions
     
     public static bool IsBibleStudyProjectTrack(this Track track)
     {
-        return track.Tags.Any(c => c == PodcastsConstants.BibleStudyTagName);
+        return track.Tags.Any(c => c == PodcastsConstants.BibleStudyTagName || c == PodcastsConstants.RomanPodcastTagName);
     }
 
     public static string GetPublishDate(this Track track)

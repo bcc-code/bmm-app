@@ -1,8 +1,10 @@
+using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.App.Interfaces;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Models.POs.BibleStudy;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Base;
@@ -16,17 +18,51 @@ namespace BMM.Core.ViewModels;
 public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsParameter>
 {
     private readonly IAcknowledgeAchievementAction _acknowledgeAchievementAction;
+    private readonly IMediaPlayer _mediaPlayer;
+    private readonly ITracksClient _tracksClient;
     private AchievementPO _achievementPO;
     private IMvxAsyncCommand _buttonClickedCommand;
     private bool _shouldShowConfetti;
+    private bool _isCurrentlyPlaying;
+    private bool _shouldShowPlayNextButton;
 
     public AchievementDetailsViewModel(
         IAcknowledgeAchievementAction acknowledgeAchievementAction,
-        IActivateRewardAction activateRewardAction)
+        IActivateRewardAction activateRewardAction,
+        IMediaPlayer mediaPlayer,
+        ITracksClient tracksClient)
     {
         _acknowledgeAchievementAction = acknowledgeAchievementAction;
+        _mediaPlayer = mediaPlayer;
+        _tracksClient = tracksClient;
         activateRewardAction.AttachDataContext(this);
         ButtonClickedCommand = activateRewardAction.Command;
+        
+        PlayNextClickedCommand = new ExceptionHandlingCommand(async () =>
+        {
+            int? trackId = NavigationParameter.AchievementPO.TrackId;
+            
+            if (trackId == null)
+                return;
+
+            if (_mediaPlayer.CurrentTrack?.Id == trackId)
+            {
+                _mediaPlayer.PlayPause();
+            }
+            else
+            {
+                var track = await _tracksClient.GetById(trackId.Value);
+                await _mediaPlayer.Play(new[] { track }, track, nameof(AchievementDetailsViewModel));
+            }
+
+            await RefreshState();
+        });
+    }
+
+    public bool ShouldShowPlayNextButton
+    {
+        get => _shouldShowPlayNextButton;
+        set => SetProperty(ref _shouldShowPlayNextButton, value);
     }
 
     public override void ViewDestroy(bool viewFinishing = true)
@@ -39,8 +75,10 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
     {
         await base.Initialize();
         AchievementPO = NavigationParameter.AchievementPO;
+        ShouldShowPlayNextButton = NavigationParameter.AchievementPO.TrackId.HasValue;
         await _acknowledgeAchievementAction.ExecuteGuarded(NavigationParameter.AchievementPO);
         ShouldShowConfetti = AchievementPO.IsActive && !AchievementPO.IsAcknowledged;
+        await RefreshState();
     }
 
     public AchievementPO AchievementPO
@@ -60,8 +98,29 @@ public class AchievementDetailsViewModel : BaseViewModel<IAchievementDetailsPara
         get => _shouldShowConfetti;
         set => SetProperty(ref _shouldShowConfetti, value);
     }
+    
+    public bool IsCurrentlyPlaying
+    {
+        get => _isCurrentlyPlaying;
+        set => SetProperty(ref _isCurrentlyPlaying, value);
+    }
+    
+    public IMvxAsyncCommand PlayNextClickedCommand { get; }
 
     public string ButtonTitle => GetButtonTitle();
+    
+    public Task RefreshState()
+    {
+        int? trackId = NavigationParameter.AchievementPO.TrackId;
+        
+        if (trackId == null)
+            return Task.CompletedTask;
+        
+        bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(trackId);
+        IsCurrentlyPlaying = isCurrentlySelected && _mediaPlayer.IsPlaying;
+        
+        return Task.CompletedTask;
+    }
     
     private string GetButtonTitle()
     {

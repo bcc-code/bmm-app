@@ -78,6 +78,7 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         {
             DataContext.Items.Add(new BibleStudyExternalRelationPO(
                 externalRelationItem.TrackRelationExternal.Name,
+                externalRelationItem.TrackRelationExternal.HasListened,
                 new Uri(externalRelationItem.TrackRelationExternal.Url),
                 _deepLinkHandler,
                 _uriOpener,

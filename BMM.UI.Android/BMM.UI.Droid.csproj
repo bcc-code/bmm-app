@@ -1156,4 +1156,7 @@
       <HintPath>..\lib\FFImageLoading.Shared.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Application\JsInterfaces\" />
+  </ItemGroup>
 </Project>

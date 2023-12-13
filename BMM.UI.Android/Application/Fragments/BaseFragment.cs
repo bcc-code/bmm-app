@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
@@ -9,6 +10,7 @@ using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.ViewModels;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using AndroidX.AppCompat.Widget;
 using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;
@@ -66,6 +68,13 @@ namespace BMM.UI.Droid.Application.Fragments
 
         protected MvxRecyclerView RecyclerView { get; private set; }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        
         public string Title
         {
             get => _title;

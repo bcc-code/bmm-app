@@ -10,6 +10,7 @@ using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using MvvmCross.Presenters;
 using MvvmCross.Presenters.Attributes;
+using MvvmCross.Presenters.Hints;
 using MvvmCross.ViewModels;
 using UIKit;
 
@@ -50,7 +51,7 @@ namespace BMM.UI.iOS
             if (hint is CloseTabBarHint && TabBarViewController is IMvxIosView vcToClose)
                 await Close(vcToClose.ViewModel);
             
-            if (hint is CloseFragmentsOverPlayerHint)
+            if (hint is CloseFragmentsOverPlayerHint || hint is MvxPopToRootPresentationHint)
                 await CloseModalViewControllers();
 
             return await base.ChangePresentation(hint);

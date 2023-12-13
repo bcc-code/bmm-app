@@ -4,10 +4,14 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Models.Parameters;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Tiles.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.ViewModels;
+using MvvmCross;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 
 namespace BMM.Core.Models.POs.Tiles
 {
@@ -53,7 +57,11 @@ namespace BMM.Core.Models.POs.Tiles
 
             OptionButtonClickedCommand = new MvxAsyncCommand(async () =>
             {
-                await optionsClickedCommand.ExecuteAsync(Tile);
+                await Mvx.IoCProvider.Resolve<IMvxNavigationService>().Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+                {
+                    Url = "https://static.bcc.media/study-qa/Jpp8asQMZBsGnA7R8WsPDs4jro8xhjY9T/index.html?theme=light",
+                    Title = "Questions & Answers"
+                });
             });
             
             Tile = continueListeningTile;

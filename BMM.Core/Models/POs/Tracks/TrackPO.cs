@@ -94,7 +94,7 @@ namespace BMM.Core.Models.POs.Tracks
                                                (isSong && _config.ShowBlueDotForSongs) ||
                                                (!isSong && _config.ShowBlueDotForMessages));
             
-            TrackState = new TrackState(isCurrentlySelected, isAvailable, isDownloaded, isDownloading, isQueued, showBlueDot);
+            TrackState = new TrackState(isCurrentlySelected, isAvailable, isDownloaded, isDownloading, isQueued, showBlueDot, Track.HasListened);
         }
 
         public Track Track { get; }
@@ -140,7 +140,8 @@ namespace BMM.Core.Models.POs.Tracks
             bool isDownloaded,
             bool isDownloading,
             bool isQueued,
-            bool showBlueDot)
+            bool showBlueDot,
+            bool isListened)
         {
             IsCurrentlySelected = isCurrentlySelected;
             IsAvailable = isAvailable;
@@ -148,6 +149,7 @@ namespace BMM.Core.Models.POs.Tracks
             IsDownloading = isDownloading;
             IsQueued = isQueued;
             ShowBlueDot = showBlueDot;
+            IsListened = isListened;
         }
         
         public bool IsCurrentlySelected { get; } 
@@ -156,5 +158,6 @@ namespace BMM.Core.Models.POs.Tracks
         public bool IsDownloading { get; }
         public bool IsQueued { get; }
         public bool ShowBlueDot { get; }
+        public bool IsListened { get; }
     }
 }

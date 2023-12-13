@@ -36,6 +36,7 @@ namespace BMM.UI.iOS.ViewController.Base
         private bool _pageLoaded;
         private bool _showProgressBarBeforeNavigation;
         private UIBarButtonItem _closeButton;
+        private IList<string> _scriptsToEvaluateAfterPageLoaded;
 
         protected WebBrowserBaseViewController(string nibName) : base(nibName)
         {
@@ -270,27 +271,31 @@ namespace BMM.UI.iOS.ViewController.Base
                 .For(v => v.Url)
                 .To(vm => vm.Url);
             
-            // set.Bind(this)
-            //     .For(p => p.PageLoaded)
-            //     .To(vm => vm.PageLoaded);
-            //
-            // set.Bind(this)
-            //     .For(p => p.EvaluateJavaScriptInteraction)
-            //     .To(vm => vm.EvaluateJavaScriptInteraction);
-            //
-            // set.Bind(this)
-            //     .For(p => p.EvaluateJavaScriptInteraction)
-            //     .To(vm => vm.EvaluateJavaScriptInteraction);
-            //
-            // set.Bind(this)
-            //     .For(p => p.JavaScriptEventHandlers)
-            //     .To(vm => vm.JavaScriptEventHandlers);
-            //
-            // set.Bind(this)
-            //     .For(p => p.ShowProgressBarBeforeNavigation)
-            //     .To(vm => vm.ShowProgressBarBeforeNavigation);
+            set.Bind(this)
+                .For(p => p.EvaluateJavaScriptInteraction)
+                .To(vm => vm.EvaluateJavaScriptInteraction);
+            
+            set.Bind(this)
+                .For(p => p.JavaScriptEventHandlers)
+                .To(vm => vm.JavaScriptEventHandlers);
+            
+            set.Bind(this)
+                .For(p => p.ScriptsToEvaluateAfterPageLoaded)
+                .To(vm => vm.ScriptsToEvaluateAfterPageLoaded);
             
             set.Apply();
+        }
+
+        public IList<string> ScriptsToEvaluateAfterPageLoaded
+        {
+            get => _scriptsToEvaluateAfterPageLoaded;
+            set
+            {
+                _scriptsToEvaluateAfterPageLoaded = value;
+                
+                foreach (string script in _scriptsToEvaluateAfterPageLoaded)
+                    WebView.EnqueueScriptToExecute(script);
+            }
         }
 
         public bool ShowProgressBarBeforeNavigation

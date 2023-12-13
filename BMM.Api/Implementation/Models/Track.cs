@@ -58,6 +58,10 @@ namespace BMM.Api.Implementation.Models
         public long LastPosition { get; set; }
 
         public DateTime? LastPlayedAt { get; set; }
+        
+        public bool HasListened { get; set; }
+        
+        public bool HasTranscription { get; set; }
 
         public bool Equals(Track other)
         {

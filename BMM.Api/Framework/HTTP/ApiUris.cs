@@ -93,5 +93,7 @@
         
         public static string TranscriptionGet = "transcription/{trackId}/{language}/{first}/{last}";
         public static string TranscriptionPost = "transcription/{trackId}/{language}";
+        
+        public static string PostQuestion = "question";
     }
 }

@@ -453,10 +453,16 @@ namespace BMM.Core.Translation
 		public const string AchievementDetailsViewModel_RewardIos = nameof(AchievementDetailsViewModel_RewardIos);
 		public const string AchievementDetailsViewModel_RewardAndroidGolden = nameof(AchievementDetailsViewModel_RewardAndroidGolden);
 		public const string AchievementDetailsViewModel_RewardIosGolden = nameof(AchievementDetailsViewModel_RewardIosGolden);
+		public const string AchievementDetailsViewModel_PlayNext = nameof(AchievementDetailsViewModel_PlayNext);
 		public const string SuggestEditViewModel_Title = nameof(SuggestEditViewModel_Title);
 		public const string SuggestEditViewModel_Subtitle = nameof(SuggestEditViewModel_Subtitle);
 		public const string SuggestEditViewModel_Cancel = nameof(SuggestEditViewModel_Cancel);
 		public const string SuggestEditViewModel_Submit = nameof(SuggestEditViewModel_Submit);
 		public const string SuggestEditViewModel_SubmitSuccess = nameof(SuggestEditViewModel_SubmitSuccess);
+		public const string AskQuestionViewModel_Title = nameof(AskQuestionViewModel_Title);
+		public const string AskQuestionViewModel_Submit = nameof(AskQuestionViewModel_Submit);
+		public const string AskQuestionConfirmationViewModel_ThankYou = nameof(AskQuestionConfirmationViewModel_ThankYou);
+		public const string AskQuestionConfirmationViewModel_Description = nameof(AskQuestionConfirmationViewModel_Description);
+		public const string AskQuestionConfirmationViewModel_GotIt = nameof(AskQuestionConfirmationViewModel_GotIt);
 	}
 }

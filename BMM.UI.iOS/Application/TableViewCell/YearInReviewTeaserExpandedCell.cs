@@ -1,16 +1,11 @@
 ﻿using MvvmCross.Binding.BindingContext;
-using Foundation;
-using System;
-using System.Diagnostics;
 using BMM.Core.Extensions;
 using BMM.Core.Models.POs.YearInReview;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.TableViewCell.Base;
-using CoreGraphics;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.ViewModels;
-using UIKit;
 
 namespace BMM.UI.iOS
 {

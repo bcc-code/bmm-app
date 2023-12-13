@@ -16,11 +16,13 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
 
     public BibleStudyExternalRelationPO(
         string title,
+        bool hasListened,
         Uri link,
         IDeepLinkHandler deepLinkHandler,
         IUriOpener uriOpener,
         IMediaPlayer mediaPlayer)
     {
+        HasListened = hasListened;
         _mediaPlayer = mediaPlayer;
 
         string[] splitTitle = title.Split(Separator);
@@ -53,6 +55,7 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
     
     public string Title { get; }
     public string Subtitle { get; }
+    public bool HasListened { get; }
     
     public bool IsCurrentlyPlaying
     {

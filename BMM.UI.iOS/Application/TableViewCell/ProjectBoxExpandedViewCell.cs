@@ -55,6 +55,13 @@ namespace BMM.UI.iOS
                     .Bind(this)
                     .For(s => s.ItemsSource)
                     .To(po => po.Achievements);
+
+                set.Bind(QuestionsButton)
+                    .For(v => v.BindTitle())
+                    .To(po => po.ProjectBox.ButtonTitle);
+                
+                set.Bind(QuestionsButton)
+                    .To(po => po.OpenQuestionsCommand);
                 
                 //
                 // set.Bind(PlaylistButton)

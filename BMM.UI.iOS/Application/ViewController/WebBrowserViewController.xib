@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,18 +20,25 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lW-0G-Zba">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                    <color key="backgroundColor" name="BackgroundOneColor"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="vOQ-0k-Wda"/>
+            <color key="backgroundColor" name="BackgroundOneColor"/>
             <accessibility key="accessibilityConfiguration" identifier="WebView"/>
             <constraints>
-                <constraint firstItem="3lW-0G-Zba" firstAttribute="leading" secondItem="2" secondAttribute="leading" id="I1W-3V-lM4"/>
-                <constraint firstAttribute="bottom" secondItem="3lW-0G-Zba" secondAttribute="bottom" id="Wlz-Fc-DAu"/>
-                <constraint firstItem="3lW-0G-Zba" firstAttribute="top" secondItem="2" secondAttribute="top" id="aFr-CR-fYy"/>
-                <constraint firstAttribute="trailing" secondItem="3lW-0G-Zba" secondAttribute="trailing" id="rqw-EU-0Ei"/>
+                <constraint firstItem="vOQ-0k-Wda" firstAttribute="top" secondItem="3lW-0G-Zba" secondAttribute="top" id="885-oS-be8"/>
+                <constraint firstItem="3lW-0G-Zba" firstAttribute="trailing" secondItem="vOQ-0k-Wda" secondAttribute="trailing" id="GjJ-9y-6s8"/>
+                <constraint firstItem="3lW-0G-Zba" firstAttribute="bottom" secondItem="vOQ-0k-Wda" secondAttribute="bottom" id="YjN-Iv-jBR"/>
+                <constraint firstItem="3lW-0G-Zba" firstAttribute="leading" secondItem="vOQ-0k-Wda" secondAttribute="leading" id="sQr-sB-4R4"/>
             </constraints>
+            <point key="canvasLocation" x="139" y="14"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="BackgroundOneColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
