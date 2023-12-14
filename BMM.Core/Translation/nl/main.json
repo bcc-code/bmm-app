@@ -575,7 +575,8 @@
     "RewardAndroid": "Een speciaal kleurenthema voor je BMM app 🤩",
     "RewardIos": "Een speciaal pictogram voor je BMM app 🤩",
     "RewardAndroidGolden": "Een speciaal kleurenthema voor je BMM app. Je doet ook mee aan de loting voor AirPods Pro. Goed gedaan!",
-    "RewardIosGolden": "Een speciaal pictogram voor je BMM app in goud. Je doet ook mee aan de loting voor AirPods Pro. Goed gedaan!"
+    "RewardIosGolden": "Een speciaal pictogram voor je BMM app in goud. Je doet ook mee aan de loting voor AirPods Pro. Goed gedaan!",
+    "PlayNext": "Volgende afspelen"
   },
   "SuggestEditViewModel": {
     "Title": "Stel een wijziging voor",
@@ -583,5 +584,15 @@
     "Cancel": "Annuleren",
     "Submit": "Indienen",
     "SubmitSuccess": "Wijzigingsvoorstel succesvol ingediend, dank je wel!"
+  },
+  "AskQuestionViewModel": {
+    "Title": "Ask a question",
+    "Submit": "Submit question",
+    "Hint": "Your question"
+  },
+  "AskQuestionConfirmationViewModel": {
+    "ThankYou": "Thanks for asking!",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "GotIt": "Begrepen"
   }
 }
