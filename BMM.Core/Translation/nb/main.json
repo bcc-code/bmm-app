@@ -575,7 +575,8 @@
     "RewardAndroid": "Et eksklusivt fargetema for BMM-appen din 🤩",
     "RewardIos": "Et eksklusivt appikon for BMM-appen din 🤩",
     "RewardAndroidGolden": "Et eksklusivt fargetema for BMM-appen din. Du er også med i trekningen av et par AirPods Pro. Godt jobbet!",
-    "RewardIosGolden": "Et eksklusivt appikon i gull for BMM-appen din. Du er også med i trekningen av et par AirPods Pro. Godt jobbet!"
+    "RewardIosGolden": "Et eksklusivt appikon i gull for BMM-appen din. Du er også med i trekningen av et par AirPods Pro. Godt jobbet!",
+    "PlayNext": "Spill av som neste"
   },
   "SuggestEditViewModel": {
     "Title": "Foreslå rettelse",
@@ -583,5 +584,15 @@
     "Cancel": "Avbryt",
     "Submit": "Send inn",
     "SubmitSuccess": "Redigeringsforslag ble sendt inn, takk!"
+  },
+  "AskQuestionViewModel": {
+    "Title": "Still et spørsmål",
+    "Submit": "Send spørsmål",
+    "Hint": "Ditt spørsmål"
+  },
+  "AskQuestionConfirmationViewModel": {
+    "ThankYou": "Takk for spørsmålet!",
+    "Description": "Alle spørsmål blir gjennomgått og noen vil bli besvart senere i podcasten.\nFlere spørsmål vil også bli besvart ukentlig her på Q&A siden i appen.\n\nKom tilbake på mandag for å lese svarene.",
+    "GotIt": "Forstått"
   }
 }

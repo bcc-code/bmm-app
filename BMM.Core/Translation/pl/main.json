@@ -575,7 +575,8 @@
     "RewardAndroid": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM 🤩",
     "RewardIos": "Ekskluzywna ikona aplikacji dla aplikacji BMM 🤩",
     "RewardAndroidGolden": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!",
-    "RewardIosGolden": "Ekskluzywna ikona aplikacji BMM w kolorze złotym. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!"
+    "RewardIosGolden": "Ekskluzywna ikona aplikacji BMM w kolorze złotym. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!",
+    "PlayNext": "Odtwórz następnie"
   },
   "SuggestEditViewModel": {
     "Title": "Zaproponuj edycję",
@@ -583,5 +584,15 @@
     "Cancel": "Anuluj",
     "Submit": "Wyślij",
     "SubmitSuccess": "Sugestia edycji została pomyślnie przesłana, dziękujemy!"
+  },
+  "AskQuestionViewModel": {
+    "Title": "Ask a question",
+    "Submit": "Submit question",
+    "Hint": "Your question"
+  },
+  "AskQuestionConfirmationViewModel": {
+    "ThankYou": "Thanks for asking!",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "GotIt": "Rozumiem"
   }
 }
