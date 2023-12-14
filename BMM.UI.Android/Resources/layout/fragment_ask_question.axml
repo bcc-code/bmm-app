@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_one_color">
+
+    <FrameLayout
+            android:id="@+id/CloseButtonIconArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxBind="Click CloseCommand">
+        <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/highlighted_text_close_container_icon_size"
+                android:layout_height="@dimen/highlighted_text_close_container_icon_size"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:elevation="2dp"
+                local:cardBackgroundColor="@color/background_three_color"
+                local:cardCornerRadius="28dp">
+
+            <ImageView
+                    android:id="@+id/CloseIcon"
+                    android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_remove"/>
+
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:gravity="center"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toTopOf="@+id/CloseButtonIconArea"
+            local:layout_constraintBottom_toBottomOf="@+id/CloseButtonIconArea"
+            local:MvxLang="Text AskQuestionViewModel_Title"
+            style="@style/Subtitle1_Label1" />
+
+    <View
+            android:id="@+id/TopSeparator"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/divider_height"
+            android:background="@color/separator_color"
+            local:layout_constraintTop_toBottomOf="@+id/CloseButtonIconArea"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+            android:id="@+id/QuestionEditText"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginVertical="@dimen/margin_medium"
+            android:background="@null"
+            android:textSize="17sp"
+            android:lineHeight="24sp"
+            android:textFontWeight="500"
+            android:textColor="@color/label_one_color"
+            android:gravity="top"
+            local:layout_constraintTop_toBottomOf="@+id/TopSeparator"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toTopOf="@+id/SubmitButton"
+            local:MvxBind="Text Question"
+            local:MvxLang="Hint AskQuestionViewModel_Hint" />
+    
+    <Button
+            android:id="@+id/SubmitButton"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:foreground="@null"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxLang="Text AskQuestionViewModel_Submit"
+            local:MvxBind="
+                Click SubmitCommand;
+                IsEnabled CanSubmit"
+            style="@style/Button_Primary_Large" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

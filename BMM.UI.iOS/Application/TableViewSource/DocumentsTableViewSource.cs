@@ -1,4 +1,5 @@
 using BMM.Core.Models.POs.Albums;
+using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Carousels;
 using BMM.Core.Models.POs.Contributors;
 using BMM.Core.Models.POs.InfoMessages;
@@ -38,7 +39,9 @@ namespace BMM.UI.iOS
                 HighlightedTextTrackTableViewCell.Key,
                 RecommendationTrackTableViewCell.Key,
                 RecommendationContributorTableViewCell.Key,
-                RecommendationAlbumTableViewCell.Key
+                RecommendationAlbumTableViewCell.Key,
+                ProjectBoxCollapsedViewCell.Key,
+                ProjectBoxExpandedViewCell.Key
             };
             
             foreach (string nibName in nibNames)
@@ -124,6 +127,14 @@ namespace BMM.UI.iOS
                     else if (recommendationPO.TrackListHolder != null)
                         nibName = RecommendationAlbumTableViewCell.Key;
                     
+                    break;
+                }
+                
+                case ProjectBoxPO projectBoxPO:
+                {
+                    nibName = projectBoxPO.IsExpanded
+                        ? ProjectBoxExpandedViewCell.Key
+                        : ProjectBoxCollapsedViewCell.Key;
                     break;
                 }
             }

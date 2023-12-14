@@ -575,7 +575,8 @@
     "RewardAndroid": "An exclusive color theme for your BMM app \uD83E\uDD29",
     "RewardIos": "An exclusive app icon for your BMM app \uD83E\uDD29",
     "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!"
+    "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!",
+    "PlayNext": "Play next"
   },
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",
@@ -583,5 +584,15 @@
     "Cancel": "Cancel",
     "Submit": "Submit",
     "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+  },
+  "AskQuestionViewModel": {
+    "Title": "Ask a question", 
+    "Submit": "Submit question",
+    "Hint": "Your question"
+  },
+  "AskQuestionConfirmationViewModel": {
+    "ThankYou": "Thanks for asking!",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "GotIt": "Got it"
   }
 }

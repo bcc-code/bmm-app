@@ -1,3 +1,4 @@
+using Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
@@ -5,6 +6,7 @@ using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.CustomViews;
 using BMM.UI.iOS.Extensions;
+using BMM.UI.iOS.Utils;
 using Microsoft.IdentityModel.Tokens;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
@@ -22,6 +24,8 @@ namespace BMM.UI.iOS
         private bool _confettiShown;
         private bool _showAsModal;
         private string _imagePath;
+        private LOTAnimationView _animationView;
+        private bool _isCurrentlyPlaying;
 
         public AchievementDetailsViewController() : base(null)
         {
@@ -102,6 +106,22 @@ namespace BMM.UI.iOS
                 .For(v => v.ShowAsModal)
                 .To(vm => vm.NavigationParameter.ShowAsModal);
             
+            set.Bind(PlayNextButtonTitle)
+                .For(v => v.Text)
+                .To(po => po.TextSource[Translations.AchievementDetailsViewModel_PlayNext]);
+                
+            set.Bind(PlayNextButton)
+                .For(v => v.BindVisible())
+                .To(po => po.ShouldShowPlayNextButton);
+
+            set.Bind(PlayNextButton)
+                .For(v => v.BindTap())
+                .To(vm => vm.PlayNextClickedCommand);
+            
+            set.Bind(this)
+                .For(v => v.IsCurrentlyPlaying)
+                .To(v => v.IsCurrentlyPlaying);
+            
             set.Apply();
 
             var viewModel = (AchievementDetailsViewModel)DataContext;
@@ -116,6 +136,20 @@ namespace BMM.UI.iOS
             }
 
             SetThemes();
+        }
+        
+        public bool IsCurrentlyPlaying
+        {
+            get => _isCurrentlyPlaying;
+            set
+            {
+                _isCurrentlyPlaying = value;
+
+                if (_isCurrentlyPlaying)
+                    ShowPlayAnimation();
+                else
+                    HidePlayAnimation();
+            }
         }
         
         public bool ShowAsModal
@@ -179,6 +213,7 @@ namespace BMM.UI.iOS
             DescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);
             ActivateButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             SecondActivateButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            PlayNextButtonTitle.ApplyTextTheme(AppTheme.Subtitle1Label1);
         }
 
         private void HandleDismiss(UIPresentationController presentationController)
@@ -199,6 +234,35 @@ namespace BMM.UI.iOS
                 WrapInNavigationController = true,
                 ModalPresentationStyle = UIModalPresentationStyle.PageSheet
             };
+        }
+        
+        private void ShowPlayAnimation()
+        {
+            IconPlay.Hidden = true;
+            _animationView = ThemeUtils.GetLottieAnimationFor(LottieAnimationsNames.PlayAnimationIconDark, LottieAnimationsNames.PlayAnimationIcon);
+            _animationView.BackgroundColor = UIColor.Clear;
+            _animationView.LoopAnimation = true;
+            _animationView.TranslatesAutoresizingMaskIntoConstraints = false;
+        
+            AnimationView.AddSubview(_animationView);
+
+            NSLayoutConstraint.ActivateConstraints(
+                new[]
+                {
+                    _animationView.LeadingAnchor.ConstraintEqualTo(AnimationView.LeadingAnchor),
+                    _animationView.TrailingAnchor.ConstraintEqualTo(AnimationView.TrailingAnchor),
+                    _animationView.TopAnchor.ConstraintEqualTo(AnimationView.TopAnchor),
+                    _animationView.BottomAnchor.ConstraintEqualTo(AnimationView.BottomAnchor)
+                });
+            
+            _animationView.Play();
+        }
+
+        private void HidePlayAnimation()
+        {
+            IconPlay.Hidden = false;
+            _animationView.Stop();
+            _animationView.RemoveFromSuperview();;
         }
     }
 }

@@ -189,6 +189,12 @@ namespace BMM.UI.iOS.Constants
             Font = Typography.Subtitle3.Value,
             Color = AppColors.GlobalBlackTwoColor
         };
+        
+        public static TextTheme Subtitle3GlobalBlack3 = new TextTheme
+        {
+            Font = Typography.Subtitle3.Value,
+            Color = AppColors.GlobalBlackThreeColor
+        };
 
         public static readonly ButtonTheme ButtonPrimary = new StandardButtonTheme
         {

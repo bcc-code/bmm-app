@@ -36,6 +36,7 @@ public class AchievementPO : BasePO, IAchievementPO
     public bool IsAcknowledged => _achievement.HasAcknowledged;
     public string Title => _achievement.Title;
     public string Description => _achievement.Description;
+    public int? TrackId => _achievement.TrackId;
     public bool HasIconReward => DeviceInfo.Current.Platform == DevicePlatform.iOS && AchievementsTools.GetIconTypeFor(_achievement.Id) != null;
     public bool HasThemeReward => DeviceInfo.Current.Platform == DevicePlatform.Android && AchievementsTools.GetColorThemeFor(_achievement.Id) != null;
     public bool HasAnyReward => HasIconReward || HasThemeReward;

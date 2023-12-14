@@ -11,4 +11,5 @@ public interface IBibleStudyExternalRelationPO : IBasePO, ITrackHolderPO
     bool WillPlayTrack { get; }
     IMvxAsyncCommand ClickedCommand { get; }
     bool IsCurrentlyPlaying { get; }
+    bool HasListened { get; }
 }

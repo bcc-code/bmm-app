@@ -37,6 +37,10 @@ namespace BMM.UI.Droid.Application.Adapters
                 case Resource.Layout.listitem_year_in_review_teaser_collapsed:
                 case Resource.Layout.listitem_year_in_review_teaser_expanded:
                     return new YearInReviewTeaserViewHolder(view, itemBindingContext, this);
+                case Resource.Layout.listitem_project_box_collapsed:
+                    return new ProjectBoxViewHolder(view, itemBindingContext, this);
+                case Resource.Layout.listitem_project_box_expanded:
+                    return new ProjectBoxExpandedViewHolder(view, itemBindingContext, this);
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

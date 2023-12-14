@@ -1,7 +1,9 @@
-﻿using MvvmCross.Binding.BindingContext;
+﻿using BMM.Core.Constants;
+using MvvmCross.Binding.BindingContext;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using CoreAnimation;
 using MvvmCross.Platforms.Ios.Binding;
 
@@ -11,6 +13,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(TrackTableViewCell));
         private TrackState _trackState;
+        private string _offlineStateImage;
 
         public TrackTableViewCell(IntPtr handle)
             : base(handle)
@@ -28,8 +31,8 @@ namespace BMM.UI.iOS
                 set.Bind(accessoryView).For(i => i.TextColor).To(po => po.TrackState).WithConversion<TrackToSubtitleColorConverter>();
                 set.Bind(metaLabel).To(po => po.TrackMeta);
                 
-                set.Bind(DownloadStatusImageView)
-                    .For(i => i.ImagePath)
+                set.Bind(this)
+                    .For(i => i.OfflineStateImage)
                     .To(po => po.TrackState)
                     .WithConversion<OfflineAvailableTrackStatusConverter>();
                 set.Bind(DownloadStatusImageView)
@@ -53,6 +56,21 @@ namespace BMM.UI.iOS
 
                 SetThemes();
             });
+        }
+
+        public string OfflineStateImage
+        {
+            get => _offlineStateImage;
+            set
+            {
+                _offlineStateImage = value;
+                DownloadStatusImageView.ImagePath = _offlineStateImage;
+                
+                if (_offlineStateImage == ImageResourceNames.IconCheckmark.ToIosImageName())
+                    StatusImageWidthConstraint.Constant = 24;
+                else
+                    StatusImageWidthConstraint.Constant = 16;
+            }
         }
 
         public TrackState TrackState

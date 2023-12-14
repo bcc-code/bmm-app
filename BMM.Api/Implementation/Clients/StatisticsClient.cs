@@ -132,9 +132,10 @@ namespace BMM.Api.Implementation.Clients
             return Get<ProjectProgress>(uri);
         }
 
-        public Task<ProjectRules> GetProjectRules(string lang)
+        public Task<ProjectRules> GetProjectRules(string lang, int projectId)
         {
             var uri = new UriTemplate(ApiUris.ProjectRules);
+            uri.SetParameter("projectId", projectId);
             uri.SetParameter("lang", lang);
             return Get<ProjectRules>(uri);
         }

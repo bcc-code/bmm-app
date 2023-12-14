@@ -123,6 +123,70 @@
         
     </LinearLayout>
 
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            local:MvxBind="
+                Click PlayNextClickedCommand;
+                Visibility VisibleOrHidden(ShouldShowPlayNextButton)"
+            style="@style/Button_Primary_Large"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toTopOf="@+id/ActivateButton"
+            local:cardCornerRadius="28dp"
+            local:cardBackgroundColor="@color/background_two_color"
+            local:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <ImageView
+                    android:id="@+id/PlayIcon"
+                    android:layout_width="@dimen/default_icon_size"
+                    android:layout_height="@dimen/default_icon_size"
+                    android:layout_marginStart="@dimen/margin_medium"
+                    android:src="@drawable/icon_play"
+                    local:MvxBind="Visibility VisibleOrHidden(!IsCurrentlyPlaying)"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintStart_toStartOf="parent" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/PlayAnimationView"
+                    android:layout_width="@dimen/highlighted_text_play_icon_size"
+                    android:layout_height="@dimen/highlighted_text_play_icon_size"
+                    android:layout_marginStart="@dimen/margin_xxsmall"
+                    local:MvxBind="Visibility VisibleOrHidden(IsCurrentlyPlaying)"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintStart_toStartOf="parent"
+                    local:lottie_rawRes="@raw/play_animation_icon_reverted"
+                    local:lottie_loop="true"
+                    local:lottie_autoPlay="true" />
+
+            <TextView
+                    android:id="@+id/PlayLabel"
+                    android:layout_width="@dimen/match_constraint"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_xxsmall"
+                    android:layout_marginVertical="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:gravity="center"
+                    local:layout_constraintTop_toTopOf="parent"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    local:layout_constraintStart_toStartOf="@+id/PlayIcon"
+                    local:layout_constraintEnd_toEndOf="parent"
+                    local:MvxLang="Text AchievementDetailsViewModel_PlayNext"
+                    style="@style/Subtitle1_Label1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+    
     <Button
             android:id="@+id/ActivateButton"
             android:layout_width="@dimen/match_constraint"

@@ -78,14 +78,19 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         {
             DataContext.Items.Add(new BibleStudyExternalRelationPO(
                 externalRelationItem.TrackRelationExternal.Name,
+                externalRelationItem.TrackRelationExternal.HasListened,
                 new Uri(externalRelationItem.TrackRelationExternal.Url),
                 _deepLinkHandler,
                 _uriOpener,
                 _mediaPlayer));
         }
 
-        var streak = _listeningStreakPOFactory.Create(projectProgress.Streak);
-        DataContext.Items.Add(new BibleStudyProgressPO(streak, projectProgress, _mvxNavigationService));
+        if (track.IsForbildeProjectTrack())
+        {
+            var streak = _listeningStreakPOFactory.Create(projectProgress.Streak);
+            DataContext.Items.Add(new BibleStudyProgressPO(streak, projectProgress, _mvxNavigationService));
+        }
+        
         DataContext.Items.AddRange(await _buildTrackInfoSectionsAction.ExecuteGuarded(track));
     }
 

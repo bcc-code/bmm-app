@@ -35,6 +35,7 @@ using MvvmCross.Commands;
 using MvvmCross.IoC;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
+using MvvmCross.Presenters.Hints;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels.Base
@@ -109,6 +110,20 @@ namespace BMM.Core.ViewModels.Base
                 _closeCommand ??= new MvxAsyncCommand(Close);
                 return _closeCommand;
             }
+        }
+
+        public IMvxAsyncCommand CloseToRootCommand
+        {
+            get
+            {
+                _closeCommand ??= new MvxAsyncCommand(CloseToRoot);
+                return _closeCommand;
+            }
+        }
+
+        private async Task CloseToRoot()
+        {
+            await NavigationService.ChangePresentation(new MvxPopToRootPresentationHint());
         }
 
         public override void ViewAppeared()

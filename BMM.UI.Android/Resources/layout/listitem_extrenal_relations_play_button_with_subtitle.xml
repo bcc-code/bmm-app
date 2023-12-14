@@ -24,8 +24,9 @@
                 android:layout_width="@dimen/default_icon_size"
                 android:layout_height="@dimen/default_icon_size"
                 android:layout_marginStart="@dimen/margin_medium"
-                android:src="@drawable/icon_play"
-                local:MvxBind="Visibility VisibleOrHidden(!IsCurrentlyPlaying)"
+                local:MvxBind="
+                    DrawableId ExternalRelationIsListenedToIcon(HasListened);
+                    Visibility VisibleOrHidden(!IsCurrentlyPlaying)"
                 local:layout_constraintTop_toTopOf="parent"
                 local:layout_constraintBottom_toBottomOf="parent"
                 local:layout_constraintStart_toStartOf="parent" />

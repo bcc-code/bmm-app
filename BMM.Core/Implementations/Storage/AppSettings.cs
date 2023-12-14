@@ -37,6 +37,16 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(YearInReviewShown), false);
             set => AddOrUpdateValue(value, nameof(YearInReviewShown));
         }
+
+        public static bool IsProjectBoxExpanded(int projectId, bool defaultValue)
+        {
+            return GetValueOrDefault($"{nameof(IsProjectBoxExpanded)}_{projectId}", defaultValue);
+        }
+        
+        public static void SetIsProjectBoxExpanded(int projectId, bool value)
+        {
+            AddOrUpdateValue(value, $"{nameof(IsProjectBoxExpanded)}_{projectId}");
+        }
         
         public static IList<int> DismissedMessageTilesIds
         {

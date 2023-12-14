@@ -76,9 +76,9 @@
 
         public static string ProjectProgress =
             "statistics/project/progress{?theme,lang}";
-        
+
         public static string ProjectRules =
-            "statistics/project/rules{?lang}";
+            "statistics/project/{projectId}/rules{?lang}";
         
         public static string YearInReview =
             "statistics/year-in-review/overview";
@@ -93,5 +93,7 @@
         
         public static string TranscriptionGet = "transcription/{trackId}/{language}/{first}/{last}";
         public static string TranscriptionPost = "transcription/{trackId}/{language}";
+        
+        public static string PostQuestion = "question";
     }
 }

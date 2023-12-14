@@ -2,6 +2,7 @@ using Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Utils;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
@@ -12,6 +13,7 @@ public abstract class BaseExternalRelationsPlayTableViewCell : BaseBMMTableViewC
 {
     private bool _isCurrentlyPlaying;
     private LOTAnimationView _animationView;
+    private bool _hasListened;
 
     public BaseExternalRelationsPlayTableViewCell(IntPtr handle) : base(handle)
     {
@@ -35,6 +37,22 @@ public abstract class BaseExternalRelationsPlayTableViewCell : BaseBMMTableViewC
         set.Bind(this)
             .For(v => v.IsCurrentlyPlaying)
             .To(v => v.IsCurrentlyPlaying);
+        
+        set.Bind(this)
+            .For(v => v.HasListened)
+            .To(v => v.HasListened);
+    }
+
+    public bool HasListened
+    {
+        get => _hasListened;
+        set
+        {
+            _hasListened = value;
+            IconPlay.Image = UIImage.FromBundle(_hasListened
+                ? ImageResourceNames.IconCheckmark.ToStandardIosImageName()
+                : ImageResourceNames.IconPlay.ToStandardIosImageName());
+        }
     }
 
     protected override bool HasHighlightEffect => false;

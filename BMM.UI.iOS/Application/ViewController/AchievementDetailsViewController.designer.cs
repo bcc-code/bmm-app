@@ -17,6 +17,9 @@ namespace BMM.UI.iOS
 		UIKit.UIButton ActivateButton { get; set; }
 
 		[Outlet]
+		UIKit.UIView AnimationView { get; set; }
+
+		[Outlet]
 		UIKit.UIView BottomRewardView { get; set; }
 
 		[Outlet]
@@ -32,7 +35,16 @@ namespace BMM.UI.iOS
 		FFImageLoading.Cross.MvxCachedImageView IconImage { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView IconPlay { get; set; }
+
+		[Outlet]
 		UIKit.UILabel NameLabel { get; set; }
+
+		[Outlet]
+		UIKit.UIView PlayNextButton { get; set; }
+
+		[Outlet]
+		UIKit.UILabel PlayNextButtonTitle { get; set; }
 
 		[Outlet]
 		UIKit.UILabel RewardDescriptionLabel { get; set; }
@@ -62,9 +74,9 @@ namespace BMM.UI.iOS
 				ActivateButton = null;
 			}
 
-			if (SecondActivateButton != null) {
-				SecondActivateButton.Dispose ();
-				SecondActivateButton = null;
+			if (BottomRewardView != null) {
+				BottomRewardView.Dispose ();
+				BottomRewardView = null;
 			}
 
 			if (CloseIconHeightConstraint != null) {
@@ -92,9 +104,9 @@ namespace BMM.UI.iOS
 				NameLabel = null;
 			}
 
-			if (StatusLabel != null) {
-				StatusLabel.Dispose ();
-				StatusLabel = null;
+			if (RewardDescriptionLabel != null) {
+				RewardDescriptionLabel.Dispose ();
+				RewardDescriptionLabel = null;
 			}
 
 			if (RewardDescriptionView != null) {
@@ -107,14 +119,14 @@ namespace BMM.UI.iOS
 				RewardLabel = null;
 			}
 
-			if (RewardDescriptionLabel != null) {
-				RewardDescriptionLabel.Dispose ();
-				RewardDescriptionLabel = null;
+			if (SecondActivateButton != null) {
+				SecondActivateButton.Dispose ();
+				SecondActivateButton = null;
 			}
 
-			if (BottomRewardView != null) {
-				BottomRewardView.Dispose ();
-				BottomRewardView = null;
+			if (SecondRewandDescriptionLabel != null) {
+				SecondRewandDescriptionLabel.Dispose ();
+				SecondRewandDescriptionLabel = null;
 			}
 
 			if (SecondRewardLabel != null) {
@@ -122,9 +134,29 @@ namespace BMM.UI.iOS
 				SecondRewardLabel = null;
 			}
 
-			if (SecondRewandDescriptionLabel != null) {
-				SecondRewandDescriptionLabel.Dispose ();
-				SecondRewandDescriptionLabel = null;
+			if (StatusLabel != null) {
+				StatusLabel.Dispose ();
+				StatusLabel = null;
+			}
+
+			if (IconPlay != null) {
+				IconPlay.Dispose ();
+				IconPlay = null;
+			}
+
+			if (PlayNextButtonTitle != null) {
+				PlayNextButtonTitle.Dispose ();
+				PlayNextButtonTitle = null;
+			}
+
+			if (AnimationView != null) {
+				AnimationView.Dispose ();
+				AnimationView = null;
+			}
+
+			if (PlayNextButton != null) {
+				PlayNextButton.Dispose ();
+				PlayNextButton = null;
 			}
 
 		}

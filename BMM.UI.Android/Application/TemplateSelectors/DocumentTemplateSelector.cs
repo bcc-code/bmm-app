@@ -1,5 +1,6 @@
 ﻿using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
+using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Carousels;
 using BMM.Core.Models.POs.Contributors;
 using BMM.Core.Models.POs.InfoMessages;
@@ -41,6 +42,8 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int RecommendationTrack = 26;
         public const int RecommendationAlbumPlaylist = 27;
         public const int RecommendationContributor = 28;
+        public const int ProjectBoxCollapsed = 29;
+        public const int ProjectBoxExpanded = 30;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
@@ -105,6 +108,12 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ViewTypes.RecommendationContributor:
                     return Resource.Layout.listitem_recommendation_contributor;
+                
+                case ViewTypes.ProjectBoxCollapsed:
+                    return Resource.Layout.listitem_project_box_collapsed;
+                
+                case ViewTypes.ProjectBoxExpanded:
+                    return Resource.Layout.listitem_project_box_expanded;
                 
                 default:
                     return Resource.Layout.listitem_track;
@@ -176,6 +185,14 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                         return ViewTypes.RecommendationAlbumPlaylist;
                     
                     return ViewTypes.RecommendationContributor;
+                }
+                
+                case ProjectBoxPO projectBoxPO:
+                {
+                    if (projectBoxPO.IsExpanded)
+                        return ViewTypes.ProjectBoxExpanded;
+
+                    return ViewTypes.ProjectBoxCollapsed;
                 }
                 
                 default:

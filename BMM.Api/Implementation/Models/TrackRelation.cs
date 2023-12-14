@@ -9,5 +9,7 @@ namespace BMM.Api.Implementation.Models
     {
         [JsonConverter(typeof(StringEnumConverter))]
         public TrackRelationType Type { get; set; }
+
+        public bool HasListened { get; set; }
     }
 }

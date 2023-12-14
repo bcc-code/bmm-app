@@ -17,7 +17,7 @@ using MvvmCross.Navigation;
 
 namespace BMM.Core.GuardedActions.BibleStudy;
 
-public class InitializeBibleStudyRulesViewModelAction : GuardedAction, IInitializeBibleStudyRulesViewModelAction
+public class InitializeBibleStudyRulesViewModelAction : GuardedActionWithParameter<int>, IInitializeBibleStudyRulesViewModelAction
 {
     private readonly IStatisticsClient _statisticsClient;
     private readonly IAppLanguageProvider _appLanguageProvider;
@@ -32,9 +32,9 @@ public class InitializeBibleStudyRulesViewModelAction : GuardedAction, IInitiali
         _appLanguageProvider = appLanguageProvider;
     }
     
-    protected override async Task Execute()
+    protected override async Task Execute(int projectId)
     {
-        var projectRules = await _statisticsClient.GetProjectRules(_appLanguageProvider.GetAppLanguage());
+        var projectRules = await _statisticsClient.GetProjectRules(_appLanguageProvider.GetAppLanguage(), projectId);
         var items = new List<IBasePO>();
         
         DataContext.Title = projectRules.PageTitle;

@@ -33,6 +33,9 @@ namespace BMM.UI.iOS
 		UIKit.UIImageView StatusImage { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint StatusImageWidthConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -57,6 +60,11 @@ namespace BMM.UI.iOS
 				OptionsButton = null;
 			}
 
+			if (ReferenceButton != null) {
+				ReferenceButton.Dispose ();
+				ReferenceButton = null;
+			}
+
 			if (StatusImage != null) {
 				StatusImage.Dispose ();
 				StatusImage = null;
@@ -67,9 +75,9 @@ namespace BMM.UI.iOS
 				TitleLabel = null;
 			}
 
-			if (ReferenceButton != null) {
-				ReferenceButton.Dispose ();
-				ReferenceButton = null;
+			if (StatusImageWidthConstraint != null) {
+				StatusImageWidthConstraint.Dispose ();
+				StatusImageWidthConstraint = null;
 			}
 
 		}

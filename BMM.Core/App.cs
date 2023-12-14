@@ -372,6 +372,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<ISharedPlaylistClient, SharedPlaylistClient>();
             Mvx.IoCProvider.RegisterDecorator<IBrowseClient, CachedBrowseClientDecorator, BrowseClient>();
             Mvx.IoCProvider.RegisterType<ITranscriptionClient, TranscriptionClient>();
+            Mvx.IoCProvider.RegisterType<IQuestionsClient, QuestionsClient>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBMMClient, InjectedBmmClient>();
         }
