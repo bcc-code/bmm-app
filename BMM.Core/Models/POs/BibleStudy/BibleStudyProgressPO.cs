@@ -1,4 +1,3 @@
-using System.Drawing;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Helpers;
@@ -7,7 +6,6 @@ using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.ListeningStreaks;
 using BMM.Core.ViewModels;
-using Microsoft.Maui.Devices.Sensors;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
@@ -32,7 +30,7 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
 
         TermsButtonClickedCommand = new ExceptionHandlingCommand(async () =>
         {
-            await navigationService.Navigate<BibleStudyRulesViewModel>();
+            await navigationService.Navigate<BibleStudyRulesViewModel, int>(PodcastsConstants.BibleStudyPodcastId);
         });
     }
 

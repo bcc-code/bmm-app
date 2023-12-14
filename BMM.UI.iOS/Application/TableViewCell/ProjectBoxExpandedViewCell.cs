@@ -50,7 +50,7 @@ namespace BMM.UI.iOS
                 set.Bind(this)
                     .For(v => v.ExpandOrCollapseInteraction)
                     .To(po => po.ExpandOrCollapseInteraction);
-                
+
                 set
                     .Bind(this)
                     .For(s => s.ItemsSource)
@@ -62,6 +62,12 @@ namespace BMM.UI.iOS
                 
                 set.Bind(QuestionsButton)
                     .To(po => po.OpenQuestionsCommand);
+
+                set.Bind(RulesLabel)
+                    .To(po => po.ProjectBox.RulesLinkTitle);
+                set.Bind(RulesLabel)
+                    .For(v => v.BindTap())
+                    .To(po => po.OpenRulesCommand);
 
                 set.Apply();
             });

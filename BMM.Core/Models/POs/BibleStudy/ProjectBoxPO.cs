@@ -28,14 +28,16 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
         
         foreach (var achievement in projectBox.Achievements)
             Achievements.Add(new AchievementPO(achievement, navigationService));
-        
-        OpenQuestionsCommand = new ExceptionHandlingCommand(() =>
-        {
-            return _navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+
+        OpenQuestionsCommand = new ExceptionHandlingCommand(async () =>
+            await _navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
             {
                 Url = ProjectBox.ButtonWebsite,
                 Title = ProjectBox.ButtonTitle
-            });
+            }));
+        OpenRulesCommand = new ExceptionHandlingCommand(async () =>
+        {
+            await navigationService.Navigate<BibleStudyRulesViewModel, int>(ProjectBox.Id);
         });
     }
     
@@ -44,6 +46,7 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
     public IBmmInteraction ExpandOrCollapseInteraction { get; }
     public IMvxCommand ExpandOrCollapseCommand { get; }
     public IMvxAsyncCommand OpenQuestionsCommand { get; }
+    public IMvxAsyncCommand OpenRulesCommand { get; set; }
     
     public IBmmObservableCollection<IAchievementPO> Achievements { get; } = new BmmObservableCollection<IAchievementPO>();
 }
