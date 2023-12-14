@@ -586,13 +586,13 @@
     "SubmitSuccess": "Redigeringsforslag ble sendt inn, takk!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Still et spørsmål",
+    "Submit": "Send spørsmål",
+    "Hint": "Ditt spørsmål"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "ThankYou": "Takk for spørsmålet!",
+    "Description": "Alle spørsmål blir gjennomgått og noen vil bli besvart senere i podcasten.\nFlere spørsmål vil også bli besvart ukentlig her på Q&A siden i appen.\n\nKom tilbake på mandag for å lese svarene.",
     "GotIt": "Forstått"
   }
 }
