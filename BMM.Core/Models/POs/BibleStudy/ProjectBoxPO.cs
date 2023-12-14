@@ -1,6 +1,7 @@
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Interactions.Base;
 using BMM.Core.Models.Parameters;
 using BMM.Core.Models.POs.Base;
@@ -18,11 +19,13 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
     public ProjectBoxPO(ProjectBox projectBox, IMvxNavigationService navigationService) : base(projectBox)
     {
         _navigationService = navigationService;
-        ExpandOrCollapseInteraction = new BmmInteraction();
         ProjectBox = projectBox;
+        IsExpanded = AppSettings.IsProjectBoxExpanded(projectBox.Id, projectBox.OpenByDefault);
+        ExpandOrCollapseInteraction = new BmmInteraction();
         ExpandOrCollapseCommand = new MvxCommand(() =>
         {
             IsExpanded = !IsExpanded;
+            AppSettings.SetIsProjectBoxExpanded(projectBox.Id, IsExpanded);
             ExpandOrCollapseInteraction?.Raise();
         });
         
