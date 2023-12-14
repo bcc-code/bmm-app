@@ -14,12 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background_two_color">
-
+        
         <ImageView
             android:id="@+id/IconImageView"
             android:layout_width="@dimen/default_icon_size"
             android:layout_height="@dimen/default_icon_size"
-            android:src="@drawable/icon_ai"
+            android:src="@drawable/icon_union"
             android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginStart="@dimen/margin_xxsmall"
             local:layout_constraintTop_toTopOf="parent"
