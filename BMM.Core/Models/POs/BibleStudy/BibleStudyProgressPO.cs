@@ -30,7 +30,7 @@ public class BibleStudyProgressPO : BasePO, IBibleStudyProgressPO
 
         TermsButtonClickedCommand = new ExceptionHandlingCommand(async () =>
         {
-            await navigationService.Navigate<BibleStudyRulesViewModel, int>(PodcastsConstants.BibleStudyPodcastId);
+            await navigationService.Navigate<BibleStudyRulesViewModel, int>(PodcastsConstants.ForbildePodcastId);
         });
     }
 

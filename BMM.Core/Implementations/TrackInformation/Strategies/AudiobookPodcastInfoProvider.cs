@@ -28,7 +28,8 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
         public bool HasSpecificStyling(ITrackModel track)
         {
             return track.Tags.Contains(PodcastsConstants.FromKaareTagName)
-                   || track.Tags.Contains(PodcastsConstants.BibleStudyTagName)
+                   || track.Tags.Contains(PodcastsConstants.ForbildeTagName)
+                   || track.Tags.Contains(PodcastsConstants.RomanPodcastTagName)
                    || track.Tags.Contains(AslaksenConstants.HebrewTagName)
                    || track.Tags.Contains(AslaksenConstants.AsklaksenTagName);
         }

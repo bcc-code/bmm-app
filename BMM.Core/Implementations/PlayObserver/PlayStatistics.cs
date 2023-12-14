@@ -279,7 +279,8 @@ namespace BMM.Core.Implementations.PlayObserver
                 }
 
                 if (CurrentTrack.Tags?.Contains(PodcastsConstants.FromKaareTagName) == true ||
-                    CurrentTrack.Tags?.Contains(PodcastsConstants.BibleStudyTagName) == true)
+                    CurrentTrack.Tags?.Contains(PodcastsConstants.ForbildeTagName) == true ||
+                    CurrentTrack.Tags?.Contains(PodcastsConstants.RomanPodcastTagName) == true)
                     _messenger.Publish(new StreakTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
 
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);

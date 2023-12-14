@@ -4,9 +4,10 @@ namespace BMM.Core.Constants
     {
         public const int FraKårePodcastId = 1;
         public const int BergprekenPodcastId = 53;
-        public const int BibleStudyPodcastId = 54;
+        public const int ForbildePodcastId = 54;
+        public const int RomanPodcastId = 55;
         public const string FromKaareTagName = "fra-kaare";
-        public const string BibleStudyTagName = "forbilde-podcast";
+        public const string ForbildeTagName = "forbilde-podcast";
         public const string RomanPodcastTagName = "romans-podcast";
     }
 }
