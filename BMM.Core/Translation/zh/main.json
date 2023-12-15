@@ -314,6 +314,8 @@
     "OptionContactHeader": "联系方式",
     "OptionContactText": "有问题或反馈？点击此处联系团队。",
     "OptionAppVersionHeader": "应用版本",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "应用信息",
     "AppInfoAppVersion": "应用版本︰ ",
     "AppInfoManufacturer": "制造商：",

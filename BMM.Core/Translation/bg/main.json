@@ -314,6 +314,8 @@
     "OptionContactHeader": "Контакти",
     "OptionContactText": "Въпроси или коментари? Обърнете се към екипа тук.",
     "OptionAppVersionHeader": "Приложение версия",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "Информация за приложението ",
     "AppInfoAppVersion": "Приложение версия: ",
     "AppInfoManufacturer": "Manufacturer: ",

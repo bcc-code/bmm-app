@@ -314,6 +314,8 @@
     "OptionContactHeader": "Yhteydenotto",
     "OptionContactText": "Kysymyksiä tai palautetta? Ota yhteyttä tästä.",
     "OptionAppVersionHeader": "Sovelluksen versio",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "Sovelluksen tiedot",
     "AppInfoAppVersion": "Sovelluksen versio: ",
     "AppInfoManufacturer": "Valmistaja",
@@ -576,7 +578,7 @@
     "RewardIos": "Hieno BMM-sovelluskuvake ",
     "RewardAndroidGolden": "Hieno väriteema BMM-sovellukseesi. Olet nyt mukana AirPods Pro -arvonnassa. Hienoa!",
     "RewardIosGolden": "Hieno kultateema BMM-sovellukseesi. Olet nyt mukana AirPods Pro -arvonnassa. Hienoa!",
-    "PlayNext": "Seuraava kappale"
+    "PlayNext": "Seuraava kappale\n"
   },
   "SuggestEditViewModel": {
     "Title": "Ehdota muutosta",
@@ -586,13 +588,13 @@
     "SubmitSuccess": "Kiitos, muutosesityksesi on vastaanotettu!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Esitä kysymys",
+    "Submit": "Jätä kysymys",
+    "Hint": "Kysymyksesi"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "ThankYou": "Kiitos kysymyksestäsi!",
+    "Description": "Kaikki kysymykset katsotaan ja joihinkin vastataan podcastissa. Useimpiin vastataan \"kysymyksiä ja vastauksia\" -sivulla. \nMaanantaina voit lukea vastauksia.",
     "GotIt": "Selvä"
   }
 }

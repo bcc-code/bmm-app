@@ -314,6 +314,8 @@
     "OptionContactHeader": "Kontakt",
     "OptionContactText": "Spørsmål eller tilbakemeldinger? Kontakt BMM-teamet her.",
     "OptionAppVersionHeader": "App-versjon",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "App-informasjon",
     "AppInfoAppVersion": "App-versjon: ",
     "AppInfoManufacturer": "Produsent:",
