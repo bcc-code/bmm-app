@@ -392,6 +392,13 @@ namespace BMM.Core.ViewModels
                 OnSelected = new MvxCommand(() => _clipboard.CopyToClipboard(analyticsId, AnalyticsIdItemTitle))
             });
 
+            items.Add(new SelectableListItem
+            {
+                Title = TextSource[Translations.SettingsViewModel_OptionDeleteAccountHeader],
+                Text = TextSource[Translations.SettingsViewModel_OptionDeleteAccountText],
+                OnSelected = new MvxCommand(() => _uriOpener.OpenUri(new Uri(_remoteConfig.DeleteAccountLink)))
+            });
+
             if (_developerPermission.IsBmmDeveloper())
             {
                 var firebaseToken = await _tokenProvider.GetToken();

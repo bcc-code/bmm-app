@@ -247,6 +247,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_OptionContactHeader = nameof(SettingsViewModel_OptionContactHeader);
 		public const string SettingsViewModel_OptionContactText = nameof(SettingsViewModel_OptionContactText);
 		public const string SettingsViewModel_OptionAppVersionHeader = nameof(SettingsViewModel_OptionAppVersionHeader);
+		public const string SettingsViewModel_OptionDeleteAccountHeader = nameof(SettingsViewModel_OptionDeleteAccountHeader);
+		public const string SettingsViewModel_OptionDeleteAccountText = nameof(SettingsViewModel_OptionDeleteAccountText);
 		public const string SettingsViewModel_AppInfoTitle = nameof(SettingsViewModel_AppInfoTitle);
 		public const string SettingsViewModel_AppInfoAppVersion = nameof(SettingsViewModel_AppInfoAppVersion);
 		public const string SettingsViewModel_AppInfoManufacturer = nameof(SettingsViewModel_AppInfoManufacturer);

@@ -33,6 +33,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string UseAnalyticsId = "use_analytics_id";
 
             public const string UserVoiceLink = "user_voice_link";
+            public const string DeleteAccountLink = "delete_account_link";
 
             public const string SongTreasuresSongLink = "songtreasures_song_link";
             public const string ExperimentId = "experiment_id";
@@ -66,6 +67,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.AutoplayEnabledDefaultSetting, false.ToString()},
             {Variables.UseAnalyticsId, false.ToString()},
             {Variables.UserVoiceLink, "https://uservoice.bcc.no/?tags=bmm"},
+            {Variables.DeleteAccountLink, "https://bcc.media/en/delete-account/"},
             {Variables.SongTreasuresSongLink, "https://songtreasures.app/songs/{0}/{1}"},
             {Variables.ExperimentId, string.Empty},
             {Variables.SendAgeToDiscover, false.ToString()},
@@ -91,6 +93,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         }
 
         public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
+        public string DeleteAccountLink => _platformSpecificRemoteConfig.GetStringValue(Variables.DeleteAccountLink);
 
         public string SongTreasuresSongLink => _platformSpecificRemoteConfig.GetStringValue(Variables.SongTreasuresSongLink);
 

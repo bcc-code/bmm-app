@@ -314,6 +314,8 @@
     "OptionContactHeader": "Contact",
     "OptionContactText": "Questions or feedback? Contact the team here.",
     "OptionAppVersionHeader": "App version",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "App information",
     "AppInfoAppVersion": "App version: ",
     "AppInfoManufacturer": "Manufacturer: ",

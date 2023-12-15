@@ -48,5 +48,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool ShowBlueDotForMessages { get; }
         bool ShowBlueDotForSongs { get; }
         int CurrentPodcastId { get; }
+        string DeleteAccountLink { get; }
     }
 }
