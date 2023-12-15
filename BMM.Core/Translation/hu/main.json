@@ -314,6 +314,8 @@
     "OptionContactHeader": "Kapcsolat",
     "OptionContactText": "Kérdések és visszajelzések? Itt lépj kapcsolatba a csapattal.",
     "OptionAppVersionHeader": "Alkalmazás verziója",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "Alkalmazás információ",
     "AppInfoAppVersion": "Alkalmazás verziója:",
     "AppInfoManufacturer": "Szerkesztő:",
