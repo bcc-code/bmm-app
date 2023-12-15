@@ -73,7 +73,7 @@
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toStartOf="@+id/MainGuideline"
             local:MvxBind="Text ProjectBox.PointsDescription"
-            style="@style/Subtitle3_GlobalBlack3"/>
+            style="@style/Subtitle3_Label3"/>
 
         <LinearLayout
             android:id="@+id/AchievementsLayout"

@@ -52,7 +52,7 @@ namespace BMM.UI.iOS
         private void SetThemes()
         {
             View!.BackgroundColor = BackgroundColor;
-            TitleLabel.ApplyTextTheme(AppTheme.Subtitle1Label1);
+            TitleLabel.ApplyTextTheme(AppTheme.Subtitle1GlobalBlack1);
             ThankYouLabel.ApplyTextTheme(AppTheme.Heading3);
             ThankYouLabel.TextColor = TextColor;
             DescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label1);

@@ -74,14 +74,14 @@
         public static string StatisticsUserViewedRecently =
             "statistics/user/{username}/{type}/viewed/recently{?size,from}";
 
-        public static string ProjectProgress =
-            "statistics/project/progress{?theme,lang}";
+        public static string ProjectProgress = "statistics/project/progress{?theme,lang}";
 
-        public static string ProjectRules =
-            "statistics/project/{projectId}/rules{?lang}";
-        
-        public static string YearInReview =
-            "statistics/year-in-review/overview";
+        public static string ProjectRules = "statistics/project/{projectId}/rules{?lang}";
+
+        public static string Achievements = "statistics/achievements{?theme,lang}";
+        public static string AchievementsToAcknowledge = "statistics/achievements/to/acknowledge{?theme,lang}";
+
+        public static string YearInReview = "statistics/year-in-review/overview";
         
         public static string Discover = "discover{?lang,age}";
 
