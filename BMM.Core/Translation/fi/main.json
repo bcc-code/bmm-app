@@ -314,6 +314,8 @@
     "OptionContactHeader": "Yhteydenotto",
     "OptionContactText": "Kysymyksiä tai palautetta? Ota yhteyttä tästä.",
     "OptionAppVersionHeader": "Sovelluksen versio",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "Sovelluksen tiedot",
     "AppInfoAppVersion": "Sovelluksen versio: ",
     "AppInfoManufacturer": "Valmistaja",
