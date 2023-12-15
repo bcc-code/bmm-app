@@ -314,6 +314,8 @@
     "OptionContactHeader": "Контакт",
     "OptionContactText": "Питання або зворотний зв'язок? Зв'язатися з командою тут.",
     "OptionAppVersionHeader": "додаток версія",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "додаток інформації",
     "AppInfoAppVersion": "додаток версія: ",
     "AppInfoManufacturer": "Manufacturer: ",
