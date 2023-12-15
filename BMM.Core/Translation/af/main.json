@@ -314,6 +314,8 @@
     "OptionContactHeader": "Kontrak",
     "OptionContactText": "Vrae of terugvoering? Kontak die span hier.",
     "OptionAppVersionHeader": "App weergawe",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "App Informasie",
     "AppInfoAppVersion": "App weergawe: ",
     "AppInfoManufacturer": "Manufacturer: ",
