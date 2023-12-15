@@ -41,17 +41,14 @@ public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheck
     
     protected override async Task Execute()
     {
-        var projectProgress = await _statisticsClient.GetProjectProgress(_appLanguageProvider.GetAppLanguage(), await _deviceInfo.GetCurrentTheme());
-        
-        if (!projectProgress.Achievements.Any())
+        var achievements = await _statisticsClient.GetAchievementsToAcknowledge(_appLanguageProvider.GetAppLanguage(), await _deviceInfo.GetCurrentTheme());
+
+        if (!achievements.Any())
             return;
 
-        AssignRewardPermissions(projectProgress);
-        
-        var achievementToShow = projectProgress
-            .Achievements
-            .FirstOrDefault(a => a.HasAchieved && !a.HasAcknowledged);
+        AssignRewardPermissions(achievements);
 
+        var achievementToShow = achievements.FirstOrDefault(a => a.HasAchieved && !a.HasAcknowledged);
         if (achievementToShow == null || AchievementsTools.IsCurrentlyShowing)
             return;
 
@@ -67,9 +64,9 @@ public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheck
             new AchievementDetailsParameter(achievementPO, true));
     }
 
-    private void AssignRewardPermissions(ProjectProgress projectProgress)
+    private void AssignRewardPermissions(IList<Achievement> achievements)
     {
-        foreach (var achievement in projectProgress.Achievements.Where(a => a.HasAchieved))
+        foreach (var achievement in achievements.Where(a => a.HasAchieved))
             AchievementsTools.SetAchievementUnlocked(achievement.Id);
     }
 }
