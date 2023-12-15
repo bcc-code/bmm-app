@@ -143,9 +143,10 @@ namespace BMM.UI.iOS
         public override void AwakeFromNib()
         {
             base.AwakeFromNib();
+            //ToDo: Apply global.black.1 to Icon
             TitleLabel.ApplyTextTheme(AppTheme.Title1);
             RulesLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
-            PointsLabel.ApplyTextTheme(AppTheme.Subtitle3GlobalBlack3);
+            PointsLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
             PointsNumber.ApplyTextTheme(AppTheme.Heading2);
             CollapseButton.Transform = CGAffineTransform.MakeRotation(180f.ToRadians());
             QuestionsButton.ApplyButtonStyle(AppTheme.YearInReviewButton);

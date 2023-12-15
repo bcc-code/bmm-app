@@ -54,6 +54,7 @@ namespace BMM.UI.iOS
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
+            QuestionTextView.BecomeFirstResponder();
             _initialYBottomViewPosition = BottomView.Frame.Y;
         }
 
