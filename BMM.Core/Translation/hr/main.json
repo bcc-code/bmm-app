@@ -314,6 +314,8 @@
     "OptionContactHeader": "Kontakt",
     "OptionContactText": "Pitanja ili komentar? Kontaktirati ovdje.",
     "OptionAppVersionHeader": "Verzija aplikacije",
+    "OptionDeleteAccountHeader": "Delete Account",
+    "OptionDeleteAccountText": "Request that your account is deleted.",
     "AppInfoTitle": "Aplikacija informacije",
     "AppInfoAppVersion": "Verzija aplikacije: ",
     "AppInfoManufacturer": "Manufacturer: ",
