@@ -172,7 +172,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Assert
-            Assert.GreaterOrEqual(16, settingsViewModel.ListItems.Count);
+            Assert.GreaterOrEqual(settingsViewModel.ListItems.Count, 16);
             _networkSettings.Verify(x => x.GetMobileNetworkDownloadAllowed(), Times.AtLeastOnce);
             _networkSettings.Verify(x => x.GetPushNotificationsAllowed(), Times.AtLeastOnce);
         }
