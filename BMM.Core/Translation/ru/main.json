@@ -1,18 +1,18 @@
 {
   "Global": {
     "ContactError": "Не удалось связаться с командой BMM, вы можете отправить сообщение по электронной почте:",
-    "External": "External",
-    "Internal": "Internal",
+    "External": "Внешний",
+    "Internal": "Внутренний",
     "BytesMB": "{0} MB",
     "UnexpectedError": "К сожалению произошла неизвестная ошибка.",
     "InternetConnectionOffline": "Подключение к Интернету появляется в автономном режиме.",
-    "ItemNotFound": "The requested item does not exist.",
-    "OfflineBanner": "Showing only tracks on this phone",
+    "ItemNotFound": "Запрашиваемый элемент не существует.",
+    "OfflineBanner": "Показаны только аудиодорожки на этом телефоне",
     "Song": "Песня",
     "Speech": "Сообщение\n",
-    "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis",
-    "Done": "Done",
+    "Audiobook": "Аудиокнига",
+    "Exegesis": "Толкование",
+    "Done": "Готово",
     "Today": "Сегодня",
     "Yesterday": "Вчера",
     "BackgroundActivityRestrictedTitle": "Разрешить фоновую активность",
@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Воспроизвести От Коре",
     "PlayMusicSiriShortcutName": "Воспроизвести музыку",
     "DailyMessage": "Слово дня",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "{0} скопировано в буфер обмена"
   },
   "Streak": {
     "Message": "Твое достижение за неделю",
@@ -46,7 +46,7 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Не удалось открыть ссылку",
-    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+    "ErrorMessage": "К сожалению, не удалось открыть ссылку '{0}'."
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Произошла ошибка соединения: {0}"
@@ -55,35 +55,35 @@
     "ErrorMediaNotSupported": "К сожалению, ваше устройство не поддерживает этот формат.",
     "ErrorVideoNotSupported": "К сожалению, в настоящее время видео не поддерживаются.",
     "ErrorFileNotOffline": "Нескачанные треки не воспроизводятся в автономном режиме.",
-    "ErrorPlayerStopped": "The player has stopped.",
-    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
-    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
-    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorPlayerStopped": "Плеер остановился.",
+    "ErrorPlayerStoppedGeneric": "Произошла ошибка воспроизведения, из-за которой текущий трек был остановлен.",
+    "ErrorPlayerLiveRadioStopped": "Прямая трансляция закончилась.",
+    "ErrorPlayerLiveRadioTooEarly": "Прямая трансляция еще не началась, пожалуйста, повторите попытку позже.",
+    "ErrorPlayerStart": "Невозможно начать воспроизведение."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "There is not enough space to store offline files"
+    "OutOfSpaceMessage": "Недостаточно места для хранения офлайн-файлов"
   },
   "AlbumViewModel": {
     "Title": "Альбом",
     "SearchHint": "Поиск",
     "AddAlbumToPlaylist": "Добавить альбом в плейлист",
-    "AddAlbumToMyTracks": "Add album to My Tracks",
+    "AddAlbumToMyTracks": "Добавить альбом в Мои треки",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
+    "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "ShufflePlay": "Воспроизведение в случайном порядке",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} альбомов"
   },
   "AlbumsViewModel": {
     "Title": "Архив",
     "SearchHint": "Поиск"
   },
   "AutomaticDownloadViewModel": {
-    "Title": "Automatic Download",
+    "Title": "Автоматическая загрузка",
     "None": "Никакой",
     "PluralLatestTracks": "{0} последние треки",
-    "AutomaticDownloadSubtitle": "Set amount of tracks to be downloaded automatically when following this podcast."
+    "AutomaticDownloadSubtitle": "Установите количество треков, которые будут загружаться автоматически при прослушивании этого подкаста."
   },
   "ContributorViewModel": {
     "Title": "Исполнитель",
@@ -101,19 +101,19 @@
     "SearchHint": "Поиск"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Главная",
     "SearchHint": "Поиск",
     "FraKaareHeader": "От Коре",
     "AslaksenTeaserHeader": "Слово Веры",
     "ShowAll": "Показать все",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
+    "PlayRandom": "Воспроизведение в случайном порядке",
+    "PlayNewest": "Воспроизвести новейшие",
     "LatestTrack": "Последний трек",
-    "NextBroadcast": "Next broadcast",
+    "NextBroadcast": "Следующая трансляция",
     "BmmRadio": "BMM Live",
-    "CountdownHours": "in {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music",
+    "CountdownHours": "через {0}часов",
+    "Messages": "Последние проповеди",
+    "Music": "Недавние треки",
     "Recommended": "Рекомендуется",
     "More": "Показать больше"
   },
@@ -127,11 +127,11 @@
     "GuideIntroSubtitle": "Свайпните, чтобы узнать больше",
     "GuideOfflineTitle": "Списки воспроизведения в автономном режиме",
     "GuideOfflineSubtitle": "Загрузить списки воспроизведения на устройство и слушать их без подключения к Интернету. Вы можете включить эту функцию в списке воспроизведения.",
-    "GuideAddToPlaylistTitle": "Add to playlist or 'My Tracks'",
-    "GuideAddToPlaylistSubtitle": "Save your favorite tracks to your own playlists or to your personal BMM collection 'My Tracks' by tapping the options button to the right of the track.",
+    "GuideAddToPlaylistTitle": "Добавить в плейлист или в «Мои треки»",
+    "GuideAddToPlaylistSubtitle": "Сохраняйте любимые треки в плейлисты или в личную коллекцию BMM «Мои треки», нажав кнопку опций справа от трека.",
     "GuideLanguagesTitle": "Несколько языков",
     "GuideLanguagesSubtitle": "Выберите приоритетные языки содержания. Зайти в Настройки>Язык содержания",
-    "GuideLibraryTitle": "Library Section",
+    "GuideLibraryTitle": "Библиотека",
     "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
     "GuideSearchTitle": "Поиск",
     "GuideSearchSubtitle": "Поиск определенной дорожки, или для субъектов найти содержание, связанное с. Ваши поиски будут сохранены автоматически.",
@@ -185,7 +185,7 @@
     "Browse": "Browse",
     "Settings": "Параметры",
     "HelpAndFeedback": "Справка и обратная связь",
-    "Home": "Home",
+    "Home": "Главная",
     "Favorites": "Favorites",
     "Profile": "Profile"
   },
@@ -407,8 +407,8 @@
     "Title": "Добавить трек в...",
     "SearchHint": "Поиск",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
+    "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "FailedToAddAlbum": "Не удалось добавить альбом плейлист, так как он содержит альбомы.",
     "FailedToAddUnknownType": "Добавление плейлиста «{0}» в настоящее время не поддерживается.",
     "CreatePlaylistPrompt": "Ввести название списка воспроизведения",
@@ -436,14 +436,14 @@
     "Track.Share": "Share track",
     "Album.Play": "Играть",
     "Album.AddToPlaylist": "Добавить альбом в плейлист",
-    "Album.AddToMyTracks": "Add album to My Tracks",
+    "Album.AddToMyTracks": "Добавить альбом в Мои треки",
     "Album.AddedToMyTracks": "Album added to My Tracks",
     "Album.AddToQueue": "Добавить в очередь",
     "Album.Share": "Share album",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
     "FailedToAddAlbum": "Не удалось добавить альбом плейлист, так как он содержит альбомы.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
+    "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "FailedToAddUnknownType": "Добавление плейлиста «{0}» в настоящее время не поддерживается.",
     "MyTracks": "Треки",
     "Contributor.Play": "Играть",
@@ -483,10 +483,10 @@
     "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "Последние проповеди"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "Недавние треки"
   },
   "DownloadManager": {
     "DownloadingFinished": "Все файлы были загружены!"
