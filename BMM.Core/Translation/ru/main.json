@@ -8,7 +8,7 @@
     "InternetConnectionOffline": "Подключение к Интернету появляется в автономном режиме.",
     "ItemNotFound": "The requested item does not exist.",
     "OfflineBanner": "Showing only tracks on this phone",
-    "Song": "Song",
+    "Song": "Песня",
     "Speech": "Сообщение\n",
     "Audiobook": "Audiobook",
     "Exegesis": "Exegesis",
@@ -392,7 +392,7 @@
   "SharedTrackCollectionViewModel": {
     "Title": "Shared Playlist",
     "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
+    "AddToMyPlaylist": "Добавить в мои плейлисты",
     "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
@@ -463,7 +463,7 @@
     "AboutTrack": "О дорожке",
     "Title": "Информация о треке",
     "TrackTitle": "Название",
-    "SongNumber": "Song number",
+    "SongNumber": "Номер песни",
     "Album": "Альбом",
     "Artist": "Исполнитель",
     "Duration": "Продолжительность",
@@ -471,7 +471,7 @@
     "Lyricist": "Текст",
     "Arranger": "Аранжировщик",
     "Composer": "Композитор",
-    "Publisher": "Publisher",
+    "Publisher": "Опубликовано",
     "Copyright": "Авторское право"
   },
   "CopyrightViewModel": {
