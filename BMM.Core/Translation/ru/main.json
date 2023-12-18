@@ -145,19 +145,19 @@
     "LoginFailureTitle": "Ошибка входа",
     "LoginFailureMessage": "Пожалуйста, попробуйте еще раз, используя правильные учетные данные",
     "LoginNoConnectionMessage": "Подключение недоступно. Пожалуйста, повторите попытку позже",
-    "WrongMailAddressTitle": "Invalid email",
-    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "WrongMailAddressTitle": "Неверный адрес электронной почты",
+    "WrongMailAddress": "Пожалуйста, укажите действительный адрес электронной почты. Указание имени пользователя для входа в систему больше не поддерживается.",
     "TbxUsername.Hint": "Электронная почта",
     "TbxPassword.Hint": "Пароль",
     "BtnLogin.Text": "Войти",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Войдите в систему, используя свой логин BCC"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
-    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
-    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
-    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
-    "UpdateButton": "Update"
+    "DeviceSupportEnding": "В ближайшее время мы прекратим поддержку телефонов с операционной системой  {0} {1} и старше. Если есть возможность, обновите свой телефон.",
+    "DeviceSupportEnded": "К сожалению, мы больше не поддерживаем устройства старше {0} {1}. Пожалуйста, обновите свое устройство или перейдите на более новый телефон.",
+    "AppSupportEnding": "Вы используете старую версию приложения BMM. В ближайшее время мы прекратим поддержку этой версии. Пожалуйста, обновите BMM.",
+    "AppSupportEnded": "Вы используете старую версию приложения BMM, которая больше не поддерживается. Пожалуйста, обновите BMM.",
+    "UpdateButton": "Обновить"
   },
   "LanguageAppViewModel": {
     "Title": "Язык приложения"
@@ -172,7 +172,7 @@
     "DeleteLanguageTitle": "Не удается удалить {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Просмотреть"
   },
   "LibraryArchiveViewModel": {
     "Title": "Архив"
@@ -182,25 +182,25 @@
     "Search": "Поиск",
     "Explore": "Исследовать",
     "MyContent": "Мое содержание",
-    "Browse": "Browse",
+    "Browse": "Просмотреть",
     "Settings": "Параметры",
     "HelpAndFeedback": "Справка и обратная связь",
     "Home": "Главная",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "Favorites": "Избранное",
+    "Profile": "Профиль"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Избранное",
     "DownloadedContent": "Скачанный контент",
-    "FollowedPodcasts": "Followed Podcasts",
+    "FollowedPodcasts": "Подкасты, на которые вы подписаны",
     "MyTracks": "Треки",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Мои плейлисты",
+    "SharedWithMe": "Поделились со мной",
+    "ByFormat": "{0}"
   },
   "FollowedPodcastsViewModel": {
-    "Title": "Followed Podcasts",
-    "EmptyTitle": "You are currently not following any podcast",
+    "Title": "Подкасты, на которые вы подписаны",
+    "EmptyTitle": "В настоящее время вы не подписаны ни на один подкаст",
     "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
   },
   "MyTracksViewModel": {
@@ -216,14 +216,14 @@
   },
   "DownloadedContentViewModel": {
     "Title": "Скачанный контент",
-    "FollowedPodcasts": "Followed Podcasts",
+    "FollowedPodcasts": "Подкасты, на которые вы подписаны",
     "MyTracks": "Треки",
     "EmptyTitle": "You have not downloaded any content",
     "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
   },
   "DownloadedFollowedPodcastsViewModel": {
-    "Title": "Followed Podcasts",
-    "EmptyTitle": "You are currently not following any podcast",
+    "Title": "Подкасты, на которые вы подписаны",
+    "EmptyTitle": "В настоящее время вы не подписаны ни на один подкаст",
     "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
   },
   "PodcastViewModel": {
@@ -288,7 +288,7 @@
     "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "Профиль",
     "HeadlineSettings": "Параметры",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
