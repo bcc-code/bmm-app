@@ -132,13 +132,13 @@
     "GuideLanguagesTitle": "Несколько языков",
     "GuideLanguagesSubtitle": "Выберите приоритетные языки содержания. Зайти в Настройки>Язык содержания",
     "GuideLibraryTitle": "Библиотека",
-    "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
+    "GuideLibrarySubtitle": "Получите быстрый доступ к нужному вам контенту. В разделе Библиотека собраны все доступные подкасты, а в разделе \"Архив\" можно посмотреть существующий контент.",
     "GuideSearchTitle": "Поиск",
     "GuideSearchSubtitle": "Поиск определенной дорожки, или для субъектов найти содержание, связанное с. Ваши поиски будут сохранены автоматически.",
     "ButtonSendMail": "Отправить электронное письмо группе поддержки на BMM"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Мы настраиваем вашу учетную запись. Это может занять несколько минут."
   },
   "LoginViewModel": {
     "Title": "Войти",
