@@ -283,21 +283,21 @@
     "Podcasts": "Подкасты",
     "Playlists": "Списки воспроизведения",
     "NoResults": "Без результатов",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "NoResultsDescription": "По вашему запросу \"{0}\" нет совпадений.",
+    "SearchFailedTitle": "Поиск не дал результатов",
+    "SearchFailedMessage": "К сожалению, нам не удалось найти «{0}» из-за проблем с подключением. Нажмите кнопку ниже, чтобы повторить попытку."
   },
   "SettingsViewModel": {
     "Title": "Профиль",
     "HeadlineSettings": "Параметры",
-    "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionAutoplayHeader": "Автовоспроизведение",
+    "OptionAutoplayText": "Проигрывать музыку после прослушивания выпуска Fra Kåre.",
+    "OptionStreakHeader": "Страйк на Главной",
+    "OptionStreakText": "Показать статистику прослушивания на главном экране",
     "OptionEnablePushHeader": "Включить \"Push\" - уведомления",
-    "OptionPushNotifications": "Push Notifications",
-    "OptionPushNotificationsSubtitle": "Enable push notifications for podcasts you follow",
-    "OptionExternalStorage": "Storage location",
+    "OptionPushNotifications": "Push-уведомления",
+    "OptionPushNotificationsSubtitle": "Включить push-уведомления для подкастов, на которые вы подписаны",
+    "OptionExternalStorage": "Место хранения",
     "OptionMBInternalText": "Internal {0} MB",
     "OptionMBExternalText": "External {0} MB",
     "OptionEnablePushText": "Получать push-уведомления, когда появляется новое содержимое",
@@ -314,42 +314,42 @@
     "OptionContactHeader": "Контакт",
     "OptionContactText": "Вопросы или пожелания? Связаться с нами.",
     "OptionAppVersionHeader": "Версия приложения",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Удалить аккаунт",
+    "OptionDeleteAccountText": "Запросить удаление аккаунта.",
     "AppInfoTitle": "Информация о приложении",
     "AppInfoAppVersion": "Версия приложения: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Производитель: ",
     "AppInfoDeviceModel": "Модель устройства: ",
     "AppInfoDevicePlatform": "Платформа устройства: ",
     "AppInfoDeviceVersion": "Версия устройства: ",
-    "LoggedInAs": "Signed in as",
+    "LoggedInAs": "Вошли как",
     "LogoutConfirm": "Вы уверены, что вы хотите выйти?",
     "Logout": "Выход",
-    "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
+    "UserVoiceHeader": "Голос пользователя",
+    "UserVoiceText": "У вас есть идеи, как улучшить BMM? Расскажите нам.",
+    "ThemeHeader": "Темный режим",
+    "ThemeText": "Выберите темную или светлую тему",
     "ColorHeader": "Цветовая тема",
     "ColorText": "Выбор цветовых тем",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "SiriShortcutsHeader": "Ярлыки Сири",
+    "SiriShortcutsText": "Добавьте ярлыки Siri для BMM на свое устройство",
+    "PushNotificationsGoToSettings": "К сожалению, мы не можем присылать Push-уведомления, так как они отключены в настройках вашего устройства. Пожалуйста, разрешите Push-уведомления в настройках устройства, чтобы включить эту функцию."
   },
   "StorageManagementViewModel": {
-    "Title": "Location for offline tracks",
-    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+    "Title": "Расположение офлайн-дорожек",
+    "RemoveAllFiles": "Хотите выбрать новое место хранения и удалить все офлайн-дорожки?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} дорожек",
+    "PluralTracksLoaded": "{0} дорожек загружено",
     "Download": "Скачать",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Перемешать",
     "Play": "Играть"
   },
   "TrackCollectionViewModel": {
     "Title": "Плейлист",
-    "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "ShufflePlay": "Перемешать",
+    "Resume": "Продолжить",
     "AvailableOffline": "Доступно в оффлайн режиме",
     "AvailableOfflineDownload": "Скачать",
     "AvailableOfflineDownloading": "Загрузка {0} из {1}",
@@ -363,37 +363,37 @@
     "SearchHint": "Поиск",
     "EmptyTitle": "Этот плейлист пуст",
     "EmptySubline": "Нажимайте три точки на треках, чтобы добавлять их в этот плейлист.",
-    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "NotEnoughtSpaceToDownload": "Недостаточно места для скачивания всех дорожек",
     "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?",
-    "Private": "Private",
+    "Private": "Личный",
     "DeletePlaylist": "Удалить плейлист",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Редактировать плейлист",
+    "SharePlaylist": "Поделиться плейлистом",
+    "RemovePlaylist": "Удалить плейлист"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Редактировать Плейлист",
-    "RenameLabel": "Rename playlist",
+    "RenameLabel": "Переименовать плейлист",
     "MenuSave": "Сохранить",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "EmptyName": "У плейлиста нет названия",
+    "SaveFailure": "Не удалось внести изменения. Проверьте подключение к Интернету и повторите попытку",
+    "DiscardChangesTitle": "Отменить изменения?",
+    "DiscardChangesMessage": "Внесенные вами изменения не будут сохранены.",
+    "DiscardChanges": "Отменить",
+    "KeepEditing": "Продолжить редактирование"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Поделиться плейлистом",
+    "ShareNote": "Поделившись плейлистом, вы сможете открыть доступ для других пользователей к добавленным вами дорожкам и прослушивать их, если у них есть ссылка.",
+    "ShareLink": "Поделиться ссылкой",
+    "MakePrivate": "Сделать личным",
+    "SharedWithFormat": "Доступно {0} людям"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
+    "Title": "Плейлисты, с которыми поделились с вами",
+    "Close": "Закрыть",
     "AddToMyPlaylist": "Добавить в мои плейлисты",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "FollowOwnTrackCollection": "Вы не можете подписаться на собственную коллекцию дорожек"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Список воспроизведения",
@@ -417,29 +417,29 @@
   "UserDialogs": {
     "Track.AddToPlaylist": "Добавить в плейлист",
     "Track.DeleteFromPlaylist": "Удалить из списка воспроизведения",
-    "Track.AddToMyTracks": "Add to My Tracks",
-    "Track.RemoveFromMyTracks": "Remove from My Tracks",
-    "Track.AddedToMyTracks": "Added to My Tracks",
-    "Track.RemovedFromMyTracks": "Removed from My Tracks",
-    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.AddToMyTracks": "Добавить в Мои дорожки",
+    "Track.RemoveFromMyTracks": "Удалить из Мои дорожки",
+    "Track.AddedToMyTracks": "Добавить в Мои дорожки",
+    "Track.RemovedFromMyTracks": "Удалено из Мои дорожки",
+    "Track.FailedToRemoveFromMyTracks": "Не удалось удалить дорожку из «Мои дорожки».",
     "Track.AddToQueue": "Добавить в очередь",
-    "Track.QueueToPlayNext": "Play next",
+    "Track.QueueToPlayNext": "Проиграть следующую",
     "Track.AddedToQueue": "Добавлено в очередь",
     "Track.GoToAlbum": "Перейти в альбом",
     "Track.GoToContributor": "Перейти к исполнителям",
     "Track.GoToContributor.Composer": "Композитор: {0}",
     "Track.GoToContributor.Interpret": "Исполнитель: {0}",
     "Track.GoToContributor.Lyricist": "Текст: {0}",
-    "Track.GoToContributor.Arranger": "Arranger: {0}",
+    "Track.GoToContributor.Arranger": "Аранжировщик: {0}",
     "Track.Download": "Скачать трек",
     "Track.MoreInformation": "Дополнительная информация",
-    "Track.Share": "Share track",
+    "Track.Share": "Поделиться дорожкой",
     "Album.Play": "Играть",
     "Album.AddToPlaylist": "Добавить альбом в плейлист",
     "Album.AddToMyTracks": "Добавить альбом в Мои треки",
-    "Album.AddedToMyTracks": "Album added to My Tracks",
+    "Album.AddedToMyTracks": "Добавить в Мои дорожки",
     "Album.AddToQueue": "Добавить в очередь",
-    "Album.Share": "Share album",
+    "Album.Share": "Поделиться альбомом",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
     "FailedToAddAlbum": "Не удалось добавить альбом плейлист, так как он содержит альбомы.",
     "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
@@ -447,7 +447,7 @@
     "FailedToAddUnknownType": "Добавление плейлиста «{0}» в настоящее время не поддерживается.",
     "MyTracks": "Треки",
     "Contributor.Play": "Играть",
-    "Contributor.Share": "Share contributor",
+    "Contributor.Share": "Поделиться автором",
     "OfflineTrackCollection.DeletePlaylist": "Удалить список воспроизведения",
     "Cancel": "Отмена"
   },
@@ -478,9 +478,9 @@
     "Title": "Авторское право"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Недавно проигранные",
+    "NoHistoryYetTitle": "Теперь вы можете видеть, что вы слушали.",
+    "NoHistoryYetSubtitle": "Просто начните слушать, и ваша история появится здесь"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Последние проповеди"
@@ -518,7 +518,7 @@
     "AllLanguages": "Все языки"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
+    "Title": "Ярлыки Сири",
     "ShortcutAlreadyAdded": "This shortcut has already been added"
   },
   "YearInReviewViewModel": {
@@ -578,7 +578,7 @@
     "RewardIos": "Эксклюзивный значок для вашего приложения BMM 🤩",
     "RewardAndroidGolden": "Эксклюзивная цветовая тема для вашего приложения BMM. Кроме того, вы участвуете в розыгрыше AirPods Pro. Отличная работа!",
     "RewardIosGolden": "Эксклюзивный значок для приложения BMM золотого цвета. Кроме того, вы участвуете в розыгрыше AirPods Pro. Отличная работа!",
-    "PlayNext": "Play next"
+    "PlayNext": "Проиграть следующую"
   },
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",
