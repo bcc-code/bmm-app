@@ -201,7 +201,7 @@
   "FollowedPodcastsViewModel": {
     "Title": "Подкасты, на которые вы подписаны",
     "EmptyTitle": "В настоящее время вы не подписаны ни на один подкаст",
-    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+    "EmptySubline": "Подпишитесь на подкаст с помощью кнопки «подписаться»."
   },
   "MyTracksViewModel": {
     "Title": "Треки",
@@ -211,33 +211,33 @@
     "AvailableOfflineDownloading": "Загрузка {0} из {1}",
     "RemoveOfflineConfirm": "Вы действительно хотите удалить все загруженные элементы?",
     "EmptyTitle": "Этот плейлист пуст",
-    "EmptySubline": "Press the three dots on a track to add the track to this track list.",
+    "EmptySubline": "Нажмите три точки на дорожке, чтобы добавить ее в этот список.",
     "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?"
   },
   "DownloadedContentViewModel": {
     "Title": "Скачанный контент",
     "FollowedPodcasts": "Подкасты, на которые вы подписаны",
     "MyTracks": "Треки",
-    "EmptyTitle": "You have not downloaded any content",
-    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+    "EmptyTitle": "У вас нет загруженных дорожек",
+    "EmptySubline": "Скачайте плейлист или подпишитесь на подкаст, чтобы он был доступен без подключения к сети."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Подкасты, на которые вы подписаны",
     "EmptyTitle": "В настоящее время вы не подписаны ни на один подкаст",
-    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+    "EmptySubline": "Подпишитесь на подкаст с помощью кнопки «подписаться»."
   },
   "PodcastViewModel": {
     "Title": "Подкаст",
-    "Follow": "Follow",
-    "Following": "Following",
-    "ManageDownloads": "Manage downloads",
-    "GetNotified": "Get notified",
-    "GetNotifiedMessage": "when new episodes are out",
-    "UnfollowConfirm": "Do you really want to unfollow this podcast?",
-    "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
-    "Week": "Week {0}",
-    "ThisWeek": "This week",
-    "LastWeek": "Last week",
+    "Follow": "Подписаться",
+    "Following": "Подписки",
+    "ManageDownloads": "Управление скачиваниями",
+    "GetNotified": "Получать уведомления,",
+    "GetNotifiedMessage": "когда выходят новые эпизоды",
+    "UnfollowConfirm": "Вы действительно хотите отписаться от этого подкаста?",
+    "ToggleFollowOfflineError": "Чтобы подписаться на подкаст или отписаться от него, вам необходимо подключиться к сети.",
+    "Week": "Неделя {0}",
+    "ThisWeek": "На этой неделе",
+    "LastWeek": "На прошлой неделе",
     "AslaksenTheme1": "Верь в Бога чудес!",
     "AslaksenTheme2": "Я сораспят со Христом",
     "AslaksenTheme3": "Бояться и любить Бога",
@@ -250,18 +250,18 @@
     "Title": "Списки воспроизведения"
   },
   "PlayerViewModel": {
-    "Title": "Now playing",
+    "Title": "Сейчас проигрывается",
     "PlayingCount": "Воспроизведение {0} из {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
-    "Selected": "Selected",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "ViewLyrics": "Показать текст",
+    "SleepTimer": "Таймер сна",
+    "Minutes": "{0} минут",
+    "Hour": "{0} час",
+    "Hours": "{0} часов",
+    "Disable": "Отключить",
+    "PlaybackSpeed": "Скорость воспроизведения",
+    "Normal": "Нормально",
+    "Selected": "Выбрано",
+    "WatchOnBCCMedia": "Смотрите в BCC Media"
   },
   "QueueViewModel": {
     "Title": "Очередь"
@@ -269,20 +269,20 @@
   "SearchViewModel": {
     "Title": "Поиск",
     "SearchHint": "Поиск",
-    "SearchResults": "Results",
+    "SearchResults": "Результаты",
     "SearchHistory": "Недавние поисковые запросы",
     "SearchSuggestions": "Вы имели в виду: ",
     "WelcomeTitle": "Начните поиск здесь!",
     "WelcomeSubTitle": "Используйте поле Поиск для поиска содержимого на BMM",
     "DeleteConfirm": "Вы уверены, что хотите удалить историю поиска?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Все",
+    "Speeches": "Проповеди",
     "Music": "Музыка",
     "Albums": "Альбомы",
-    "Contributors": "People",
+    "Contributors": "Люди",
     "Podcasts": "Подкасты",
     "Playlists": "Списки воспроизведения",
-    "NoResults": "No results",
+    "NoResults": "Без результатов",
     "NoResultsDescription": "There where no matches with your search for \"{0}\"",
     "SearchFailedTitle": "Search failed",
     "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
