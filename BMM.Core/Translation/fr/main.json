@@ -594,7 +594,7 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Merci d'avoir posé la question !",
-    "Description": "Toutes les questions seront examinées et certaines seront traitées dans le podcast. \n La plupart des questions seront traitées sur la page Q&R. \n\n Revenez lundi pour lire les réponses.",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "J'ai compris"
   }
 }
