@@ -1,18 +1,18 @@
 {
   "Global": {
     "ContactError": "Не удалось связаться с командой BMM, вы можете отправить сообщение по электронной почте:",
-    "External": "External",
-    "Internal": "Internal",
+    "External": "Внешний",
+    "Internal": "Внутренний",
     "BytesMB": "{0} MB",
     "UnexpectedError": "К сожалению произошла неизвестная ошибка.",
     "InternetConnectionOffline": "Подключение к Интернету появляется в автономном режиме.",
-    "ItemNotFound": "The requested item does not exist.",
-    "OfflineBanner": "Showing only tracks on this phone",
-    "Song": "Song",
+    "ItemNotFound": "Запрашиваемый элемент не существует.",
+    "OfflineBanner": "Показаны только аудиодорожки на этом телефоне",
+    "Song": "Песня",
     "Speech": "Сообщение\n",
-    "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis",
-    "Done": "Done",
+    "Audiobook": "Аудиокнига",
+    "Exegesis": "Толкование",
+    "Done": "Готово",
     "Today": "Сегодня",
     "Yesterday": "Вчера",
     "BackgroundActivityRestrictedTitle": "Разрешить фоновую активность",
@@ -26,7 +26,7 @@
     "FromKaareSiriShortcutName": "Воспроизвести От Коре",
     "PlayMusicSiriShortcutName": "Воспроизвести музыку",
     "DailyMessage": "Слово дня",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "{0} скопировано в буфер обмена"
   },
   "Streak": {
     "Message": "Твое достижение за неделю",
@@ -46,7 +46,7 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Не удалось открыть ссылку",
-    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+    "ErrorMessage": "К сожалению, не удалось открыть ссылку '{0}'."
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Произошла ошибка соединения: {0}"
@@ -55,35 +55,35 @@
     "ErrorMediaNotSupported": "К сожалению, ваше устройство не поддерживает этот формат.",
     "ErrorVideoNotSupported": "К сожалению, в настоящее время видео не поддерживаются.",
     "ErrorFileNotOffline": "Нескачанные треки не воспроизводятся в автономном режиме.",
-    "ErrorPlayerStopped": "The player has stopped.",
-    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
-    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
-    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorPlayerStopped": "Плеер остановился.",
+    "ErrorPlayerStoppedGeneric": "Произошла ошибка воспроизведения, из-за которой текущий трек был остановлен.",
+    "ErrorPlayerLiveRadioStopped": "Прямая трансляция закончилась.",
+    "ErrorPlayerLiveRadioTooEarly": "Прямая трансляция еще не началась, пожалуйста, повторите попытку позже.",
+    "ErrorPlayerStart": "Невозможно начать воспроизведение."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "There is not enough space to store offline files"
+    "OutOfSpaceMessage": "Недостаточно места для хранения офлайн-файлов"
   },
   "AlbumViewModel": {
     "Title": "Альбом",
     "SearchHint": "Поиск",
     "AddAlbumToPlaylist": "Добавить альбом в плейлист",
-    "AddAlbumToMyTracks": "Add album to My Tracks",
+    "AddAlbumToMyTracks": "Добавить альбом в Мои треки",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
+    "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "ShufflePlay": "Воспроизведение в случайном порядке",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} альбомов"
   },
   "AlbumsViewModel": {
     "Title": "Архив",
     "SearchHint": "Поиск"
   },
   "AutomaticDownloadViewModel": {
-    "Title": "Automatic Download",
+    "Title": "Автоматическая загрузка",
     "None": "Никакой",
     "PluralLatestTracks": "{0} последние треки",
-    "AutomaticDownloadSubtitle": "Set amount of tracks to be downloaded automatically when following this podcast."
+    "AutomaticDownloadSubtitle": "Установите количество треков, которые будут загружаться автоматически при прослушивании этого подкаста."
   },
   "ContributorViewModel": {
     "Title": "Исполнитель",
@@ -101,19 +101,19 @@
     "SearchHint": "Поиск"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Главная",
     "SearchHint": "Поиск",
     "FraKaareHeader": "От Коре",
     "AslaksenTeaserHeader": "Слово Веры",
     "ShowAll": "Показать все",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
+    "PlayRandom": "Воспроизведение в случайном порядке",
+    "PlayNewest": "Воспроизвести новейшие",
     "LatestTrack": "Последний трек",
-    "NextBroadcast": "Next broadcast",
+    "NextBroadcast": "Следующая трансляция",
     "BmmRadio": "BMM Live",
-    "CountdownHours": "in {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music",
+    "CountdownHours": "через {0}часов",
+    "Messages": "Последние проповеди",
+    "Music": "Недавние треки",
     "Recommended": "Рекомендуется",
     "More": "Показать больше"
   },
@@ -127,37 +127,37 @@
     "GuideIntroSubtitle": "Свайпните, чтобы узнать больше",
     "GuideOfflineTitle": "Списки воспроизведения в автономном режиме",
     "GuideOfflineSubtitle": "Загрузить списки воспроизведения на устройство и слушать их без подключения к Интернету. Вы можете включить эту функцию в списке воспроизведения.",
-    "GuideAddToPlaylistTitle": "Add to playlist or 'My Tracks'",
-    "GuideAddToPlaylistSubtitle": "Save your favorite tracks to your own playlists or to your personal BMM collection 'My Tracks' by tapping the options button to the right of the track.",
+    "GuideAddToPlaylistTitle": "Добавить в плейлист или в «Мои треки»",
+    "GuideAddToPlaylistSubtitle": "Сохраняйте любимые треки в плейлисты или в личную коллекцию BMM «Мои треки», нажав кнопку опций справа от трека.",
     "GuideLanguagesTitle": "Несколько языков",
     "GuideLanguagesSubtitle": "Выберите приоритетные языки содержания. Зайти в Настройки>Язык содержания",
-    "GuideLibraryTitle": "Library Section",
-    "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
+    "GuideLibraryTitle": "Библиотека",
+    "GuideLibrarySubtitle": "Получите быстрый доступ к нужному вам контенту. В разделе Библиотека собраны все доступные подкасты, а в разделе \"Архив\" можно посмотреть существующий контент.",
     "GuideSearchTitle": "Поиск",
     "GuideSearchSubtitle": "Поиск определенной дорожки, или для субъектов найти содержание, связанное с. Ваши поиски будут сохранены автоматически.",
     "ButtonSendMail": "Отправить электронное письмо группе поддержки на BMM"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Мы настраиваем вашу учетную запись. Это может занять несколько минут."
   },
   "LoginViewModel": {
     "Title": "Войти",
     "LoginFailureTitle": "Ошибка входа",
     "LoginFailureMessage": "Пожалуйста, попробуйте еще раз, используя правильные учетные данные",
     "LoginNoConnectionMessage": "Подключение недоступно. Пожалуйста, повторите попытку позже",
-    "WrongMailAddressTitle": "Invalid email",
-    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "WrongMailAddressTitle": "Неверный адрес электронной почты",
+    "WrongMailAddress": "Пожалуйста, укажите действительный адрес электронной почты. Указание имени пользователя для входа в систему больше не поддерживается.",
     "TbxUsername.Hint": "Электронная почта",
     "TbxPassword.Hint": "Пароль",
     "BtnLogin.Text": "Войти",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Войдите в систему, используя свой логин BCC"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
-    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
-    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
-    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
-    "UpdateButton": "Update"
+    "DeviceSupportEnding": "В ближайшее время мы прекратим поддержку телефонов с операционной системой  {0} {1} и старше. Если есть возможность, обновите свой телефон.",
+    "DeviceSupportEnded": "К сожалению, мы больше не поддерживаем устройства старше {0} {1}. Пожалуйста, обновите свое устройство или перейдите на более новый телефон.",
+    "AppSupportEnding": "Вы используете старую версию приложения BMM. В ближайшее время мы прекратим поддержку этой версии. Пожалуйста, обновите BMM.",
+    "AppSupportEnded": "Вы используете старую версию приложения BMM, которая больше не поддерживается. Пожалуйста, обновите BMM.",
+    "UpdateButton": "Обновить"
   },
   "LanguageAppViewModel": {
     "Title": "Язык приложения"
@@ -172,7 +172,7 @@
     "DeleteLanguageTitle": "Не удается удалить {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Просмотреть"
   },
   "LibraryArchiveViewModel": {
     "Title": "Архив"
@@ -182,26 +182,26 @@
     "Search": "Поиск",
     "Explore": "Исследовать",
     "MyContent": "Мое содержание",
-    "Browse": "Browse",
+    "Browse": "Просмотреть",
     "Settings": "Параметры",
     "HelpAndFeedback": "Справка и обратная связь",
-    "Home": "Home",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "Home": "Главная",
+    "Favorites": "Избранное",
+    "Profile": "Профиль"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Избранное",
     "DownloadedContent": "Скачанный контент",
-    "FollowedPodcasts": "Followed Podcasts",
+    "FollowedPodcasts": "Подкасты, на которые вы подписаны",
     "MyTracks": "Треки",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Мои плейлисты",
+    "SharedWithMe": "Поделились со мной",
+    "ByFormat": "{0}"
   },
   "FollowedPodcastsViewModel": {
-    "Title": "Followed Podcasts",
-    "EmptyTitle": "You are currently not following any podcast",
-    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+    "Title": "Подкасты, на которые вы подписаны",
+    "EmptyTitle": "В настоящее время вы не подписаны ни на один подкаст",
+    "EmptySubline": "Подпишитесь на подкаст с помощью кнопки «подписаться»."
   },
   "MyTracksViewModel": {
     "Title": "Треки",
@@ -211,33 +211,33 @@
     "AvailableOfflineDownloading": "Загрузка {0} из {1}",
     "RemoveOfflineConfirm": "Вы действительно хотите удалить все загруженные элементы?",
     "EmptyTitle": "Этот плейлист пуст",
-    "EmptySubline": "Press the three dots on a track to add the track to this track list.",
+    "EmptySubline": "Нажмите три точки на дорожке, чтобы добавить ее в этот список.",
     "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?"
   },
   "DownloadedContentViewModel": {
     "Title": "Скачанный контент",
-    "FollowedPodcasts": "Followed Podcasts",
+    "FollowedPodcasts": "Подкасты, на которые вы подписаны",
     "MyTracks": "Треки",
-    "EmptyTitle": "You have not downloaded any content",
-    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+    "EmptyTitle": "У вас нет загруженных дорожек",
+    "EmptySubline": "Скачайте плейлист или подпишитесь на подкаст, чтобы он был доступен без подключения к сети."
   },
   "DownloadedFollowedPodcastsViewModel": {
-    "Title": "Followed Podcasts",
-    "EmptyTitle": "You are currently not following any podcast",
-    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+    "Title": "Подкасты, на которые вы подписаны",
+    "EmptyTitle": "В настоящее время вы не подписаны ни на один подкаст",
+    "EmptySubline": "Подпишитесь на подкаст с помощью кнопки «подписаться»."
   },
   "PodcastViewModel": {
     "Title": "Подкаст",
-    "Follow": "Follow",
-    "Following": "Following",
-    "ManageDownloads": "Manage downloads",
-    "GetNotified": "Get notified",
-    "GetNotifiedMessage": "when new episodes are out",
-    "UnfollowConfirm": "Do you really want to unfollow this podcast?",
-    "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
-    "Week": "Week {0}",
-    "ThisWeek": "This week",
-    "LastWeek": "Last week",
+    "Follow": "Подписаться",
+    "Following": "Подписки",
+    "ManageDownloads": "Управление скачиваниями",
+    "GetNotified": "Получать уведомления,",
+    "GetNotifiedMessage": "когда выходят новые эпизоды",
+    "UnfollowConfirm": "Вы действительно хотите отписаться от этого подкаста?",
+    "ToggleFollowOfflineError": "Чтобы подписаться на подкаст или отписаться от него, вам необходимо подключиться к сети.",
+    "Week": "Неделя {0}",
+    "ThisWeek": "На этой неделе",
+    "LastWeek": "На прошлой неделе",
     "AslaksenTheme1": "Верь в Бога чудес!",
     "AslaksenTheme2": "Я сораспят со Христом",
     "AslaksenTheme3": "Бояться и любить Бога",
@@ -250,18 +250,18 @@
     "Title": "Списки воспроизведения"
   },
   "PlayerViewModel": {
-    "Title": "Now playing",
+    "Title": "Сейчас проигрывается",
     "PlayingCount": "Воспроизведение {0} из {1}",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
-    "Selected": "Selected",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "ViewLyrics": "Показать текст",
+    "SleepTimer": "Таймер сна",
+    "Minutes": "{0} минут",
+    "Hour": "{0} час",
+    "Hours": "{0} часов",
+    "Disable": "Отключить",
+    "PlaybackSpeed": "Скорость воспроизведения",
+    "Normal": "Нормально",
+    "Selected": "Выбрано",
+    "WatchOnBCCMedia": "Смотрите в BCC Media"
   },
   "QueueViewModel": {
     "Title": "Очередь"
@@ -269,35 +269,35 @@
   "SearchViewModel": {
     "Title": "Поиск",
     "SearchHint": "Поиск",
-    "SearchResults": "Results",
+    "SearchResults": "Результаты",
     "SearchHistory": "Недавние поисковые запросы",
     "SearchSuggestions": "Вы имели в виду: ",
     "WelcomeTitle": "Начните поиск здесь!",
     "WelcomeSubTitle": "Используйте поле Поиск для поиска содержимого на BMM",
     "DeleteConfirm": "Вы уверены, что хотите удалить историю поиска?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Все",
+    "Speeches": "Проповеди",
     "Music": "Музыка",
     "Albums": "Альбомы",
-    "Contributors": "People",
+    "Contributors": "Люди",
     "Podcasts": "Подкасты",
     "Playlists": "Списки воспроизведения",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "NoResults": "Без результатов",
+    "NoResultsDescription": "По вашему запросу \"{0}\" нет совпадений.",
+    "SearchFailedTitle": "Поиск не дал результатов",
+    "SearchFailedMessage": "К сожалению, нам не удалось найти «{0}» из-за проблем с подключением. Нажмите кнопку ниже, чтобы повторить попытку."
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "Профиль",
     "HeadlineSettings": "Параметры",
-    "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionAutoplayHeader": "Автовоспроизведение",
+    "OptionAutoplayText": "Проигрывать музыку после прослушивания выпуска Fra Kåre.",
+    "OptionStreakHeader": "Страйк на Главной",
+    "OptionStreakText": "Показать статистику прослушивания на главном экране",
     "OptionEnablePushHeader": "Включить \"Push\" - уведомления",
-    "OptionPushNotifications": "Push Notifications",
-    "OptionPushNotificationsSubtitle": "Enable push notifications for podcasts you follow",
-    "OptionExternalStorage": "Storage location",
+    "OptionPushNotifications": "Push-уведомления",
+    "OptionPushNotificationsSubtitle": "Включить push-уведомления для подкастов, на которые вы подписаны",
+    "OptionExternalStorage": "Место хранения",
     "OptionMBInternalText": "Internal {0} MB",
     "OptionMBExternalText": "External {0} MB",
     "OptionEnablePushText": "Получать push-уведомления, когда появляется новое содержимое",
@@ -314,42 +314,42 @@
     "OptionContactHeader": "Контакт",
     "OptionContactText": "Вопросы или пожелания? Связаться с нами.",
     "OptionAppVersionHeader": "Версия приложения",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Удалить аккаунт",
+    "OptionDeleteAccountText": "Запросить удаление аккаунта.",
     "AppInfoTitle": "Информация о приложении",
     "AppInfoAppVersion": "Версия приложения: ",
-    "AppInfoManufacturer": "Manufacturer: ",
+    "AppInfoManufacturer": "Производитель: ",
     "AppInfoDeviceModel": "Модель устройства: ",
     "AppInfoDevicePlatform": "Платформа устройства: ",
     "AppInfoDeviceVersion": "Версия устройства: ",
-    "LoggedInAs": "Signed in as",
+    "LoggedInAs": "Вошли как",
     "LogoutConfirm": "Вы уверены, что вы хотите выйти?",
     "Logout": "Выход",
-    "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
+    "UserVoiceHeader": "Голос пользователя",
+    "UserVoiceText": "У вас есть идеи, как улучшить BMM? Расскажите нам.",
+    "ThemeHeader": "Темный режим",
+    "ThemeText": "Выберите темную или светлую тему",
     "ColorHeader": "Цветовая тема",
     "ColorText": "Выбор цветовых тем",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "SiriShortcutsHeader": "Ярлыки Сири",
+    "SiriShortcutsText": "Добавьте ярлыки Siri для BMM на свое устройство",
+    "PushNotificationsGoToSettings": "К сожалению, мы не можем присылать Push-уведомления, так как они отключены в настройках вашего устройства. Пожалуйста, разрешите Push-уведомления в настройках устройства, чтобы включить эту функцию."
   },
   "StorageManagementViewModel": {
-    "Title": "Location for offline tracks",
-    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+    "Title": "Расположение офлайн-дорожек",
+    "RemoveAllFiles": "Хотите выбрать новое место хранения и удалить все офлайн-дорожки?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "{0} дорожек",
+    "PluralTracksLoaded": "{0} дорожек загружено",
     "Download": "Скачать",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Перемешать",
     "Play": "Играть"
   },
   "TrackCollectionViewModel": {
     "Title": "Плейлист",
-    "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "ShufflePlay": "Перемешать",
+    "Resume": "Продолжить",
     "AvailableOffline": "Доступно в оффлайн режиме",
     "AvailableOfflineDownload": "Скачать",
     "AvailableOfflineDownloading": "Загрузка {0} из {1}",
@@ -363,37 +363,37 @@
     "SearchHint": "Поиск",
     "EmptyTitle": "Этот плейлист пуст",
     "EmptySubline": "Нажимайте три точки на треках, чтобы добавлять их в этот плейлист.",
-    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "NotEnoughtSpaceToDownload": "Недостаточно места для скачивания всех дорожек",
     "AskToResumeDownloading": "Есть новые элементы в этом списке воспроизведения. Вы хотите возобновить загрузку?",
-    "Private": "Private",
+    "Private": "Личный",
     "DeletePlaylist": "Удалить плейлист",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Редактировать плейлист",
+    "SharePlaylist": "Поделиться плейлистом",
+    "RemovePlaylist": "Удалить плейлист"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Редактировать Плейлист",
-    "RenameLabel": "Rename playlist",
+    "RenameLabel": "Переименовать плейлист",
     "MenuSave": "Сохранить",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "EmptyName": "У плейлиста нет названия",
+    "SaveFailure": "Не удалось внести изменения. Проверьте подключение к Интернету и повторите попытку",
+    "DiscardChangesTitle": "Отменить изменения?",
+    "DiscardChangesMessage": "Внесенные вами изменения не будут сохранены.",
+    "DiscardChanges": "Отменить",
+    "KeepEditing": "Продолжить редактирование"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Поделиться плейлистом",
+    "ShareNote": "Поделившись плейлистом, вы сможете открыть доступ для других пользователей к добавленным вами дорожкам и прослушивать их, если у них есть ссылка.",
+    "ShareLink": "Поделиться ссылкой",
+    "MakePrivate": "Сделать личным",
+    "SharedWithFormat": "Доступно {0} людям"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Плейлисты, с которыми поделились с вами",
+    "Close": "Закрыть",
+    "AddToMyPlaylist": "Добавить в мои плейлисты",
+    "FollowOwnTrackCollection": "Вы не можете подписаться на собственную коллекцию дорожек"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Список воспроизведения",
@@ -407,8 +407,8 @@
     "Title": "Добавить трек в...",
     "SearchHint": "Поиск",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
+    "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "FailedToAddAlbum": "Не удалось добавить альбом плейлист, так как он содержит альбомы.",
     "FailedToAddUnknownType": "Добавление плейлиста «{0}» в настоящее время не поддерживается.",
     "CreatePlaylistPrompt": "Ввести название списка воспроизведения",
@@ -417,37 +417,37 @@
   "UserDialogs": {
     "Track.AddToPlaylist": "Добавить в плейлист",
     "Track.DeleteFromPlaylist": "Удалить из списка воспроизведения",
-    "Track.AddToMyTracks": "Add to My Tracks",
-    "Track.RemoveFromMyTracks": "Remove from My Tracks",
-    "Track.AddedToMyTracks": "Added to My Tracks",
-    "Track.RemovedFromMyTracks": "Removed from My Tracks",
-    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.AddToMyTracks": "Добавить в Мои дорожки",
+    "Track.RemoveFromMyTracks": "Удалить из Мои дорожки",
+    "Track.AddedToMyTracks": "Добавить в Мои дорожки",
+    "Track.RemovedFromMyTracks": "Удалено из Мои дорожки",
+    "Track.FailedToRemoveFromMyTracks": "Не удалось удалить дорожку из «Мои дорожки».",
     "Track.AddToQueue": "Добавить в очередь",
-    "Track.QueueToPlayNext": "Play next",
+    "Track.QueueToPlayNext": "Проиграть следующую",
     "Track.AddedToQueue": "Добавлено в очередь",
     "Track.GoToAlbum": "Перейти в альбом",
     "Track.GoToContributor": "Перейти к исполнителям",
     "Track.GoToContributor.Composer": "Композитор: {0}",
     "Track.GoToContributor.Interpret": "Исполнитель: {0}",
     "Track.GoToContributor.Lyricist": "Текст: {0}",
-    "Track.GoToContributor.Arranger": "Arranger: {0}",
+    "Track.GoToContributor.Arranger": "Аранжировщик: {0}",
     "Track.Download": "Скачать трек",
     "Track.MoreInformation": "Дополнительная информация",
-    "Track.Share": "Share track",
+    "Track.Share": "Поделиться дорожкой",
     "Album.Play": "Играть",
     "Album.AddToPlaylist": "Добавить альбом в плейлист",
-    "Album.AddToMyTracks": "Add album to My Tracks",
-    "Album.AddedToMyTracks": "Album added to My Tracks",
+    "Album.AddToMyTracks": "Добавить альбом в Мои треки",
+    "Album.AddedToMyTracks": "Добавить в Мои дорожки",
     "Album.AddToQueue": "Добавить в очередь",
-    "Album.Share": "Share album",
+    "Album.Share": "Поделиться альбомом",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
     "FailedToAddAlbum": "Не удалось добавить альбом плейлист, так как он содержит альбомы.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
+    "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "FailedToAddUnknownType": "Добавление плейлиста «{0}» в настоящее время не поддерживается.",
     "MyTracks": "Треки",
     "Contributor.Play": "Играть",
-    "Contributor.Share": "Share contributor",
+    "Contributor.Share": "Поделиться автором",
     "OfflineTrackCollection.DeletePlaylist": "Удалить список воспроизведения",
     "Cancel": "Отмена"
   },
@@ -463,7 +463,7 @@
     "AboutTrack": "О дорожке",
     "Title": "Информация о треке",
     "TrackTitle": "Название",
-    "SongNumber": "Song number",
+    "SongNumber": "Номер песни",
     "Album": "Альбом",
     "Artist": "Исполнитель",
     "Duration": "Продолжительность",
@@ -471,22 +471,22 @@
     "Lyricist": "Текст",
     "Arranger": "Аранжировщик",
     "Composer": "Композитор",
-    "Publisher": "Publisher",
+    "Publisher": "Опубликовано",
     "Copyright": "Авторское право"
   },
   "CopyrightViewModel": {
     "Title": "Авторское право"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Недавно проигранные",
+    "NoHistoryYetTitle": "Теперь вы можете видеть, что вы слушали.",
+    "NoHistoryYetSubtitle": "Просто начните слушать, и ваша история появится здесь"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "Последние проповеди"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "Недавние треки"
   },
   "DownloadManager": {
     "DownloadingFinished": "Все файлы были загружены!"
@@ -518,7 +518,7 @@
     "AllLanguages": "Все языки"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
+    "Title": "Ярлыки Сири",
     "ShortcutAlreadyAdded": "This shortcut has already been added"
   },
   "YearInReviewViewModel": {
@@ -578,7 +578,7 @@
     "RewardIos": "Эксклюзивный значок для вашего приложения BMM 🤩",
     "RewardAndroidGolden": "Эксклюзивная цветовая тема для вашего приложения BMM. Кроме того, вы участвуете в розыгрыше AirPods Pro. Отличная работа!",
     "RewardIosGolden": "Эксклюзивный значок для приложения BMM золотого цвета. Кроме того, вы участвуете в розыгрыше AirPods Pro. Отличная работа!",
-    "PlayNext": "Play next"
+    "PlayNext": "Проиграть следующую"
   },
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",

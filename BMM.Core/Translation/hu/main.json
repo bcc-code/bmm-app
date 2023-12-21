@@ -314,8 +314,8 @@
     "OptionContactHeader": "Kapcsolat",
     "OptionContactText": "Kérdések és visszajelzések? Itt lépj kapcsolatba a csapattal.",
     "OptionAppVersionHeader": "Alkalmazás verziója",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Fiókom törlése",
+    "OptionDeleteAccountText": "Kérd fiókod törlését.",
     "AppInfoTitle": "Alkalmazás információ",
     "AppInfoAppVersion": "Alkalmazás verziója:",
     "AppInfoManufacturer": "Szerkesztő:",
@@ -588,13 +588,13 @@
     "SubmitSuccess": "Szerkesztési javaslatok sikeresen elküldve, köszönjük!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Tegyél fel kérdést",
+    "Submit": "Kérdés beküldése",
+    "Hint": "A kérdésed"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "ThankYou": "Köszönöm a kérdést!",
+    "Description": "Minden kérdést áttekintünk, és néhányat meg is válaszolunk a podcastban. \nA legtöbb kérdésre a Kérdések és válaszok oldalon kapunk választ. \n\nA válaszokat hétfőn olvashatod el.",
     "GotIt": "Megvan"
   }
 }
