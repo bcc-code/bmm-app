@@ -594,7 +594,7 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Köszönöm a kérdést!",
-    "Description": "Minden kérdést áttekintünk, és néhányat meg is válaszolunk a podcastban. \nA legtöbb kérdésre a Kérdések és válaszok oldalon kapunk választ. \n\nA válaszokat hétfőn olvashatod el.",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "Megvan"
   }
 }
