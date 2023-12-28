@@ -239,6 +239,7 @@ namespace BMM.UI.Droid
             ImageButtonIconResourceBinding.Register(registry);
             AlphaTargetBinding.Register(registry);
             IsEnabledBinding.Register(registry);
+            HexMvxCardBackgroundColor.Register(registry);
         }
 
         private void InitializeMediaPlayer(IMvxIoCProvider iocProvider)

@@ -65,11 +65,16 @@ namespace BMM.UI.iOS
             {
                 _offlineStateImage = value;
                 DownloadStatusImageView.ImagePath = _offlineStateImage;
-                
+
                 if (_offlineStateImage == ImageResourceNames.IconCheckmark.ToIosImageName())
+                {
                     StatusImageWidthConstraint.Constant = 24;
+                    DownloadStatusImageView.TintColor = AppColors.LabelOneColor;
+                }
                 else
+                {
                     StatusImageWidthConstraint.Constant = 16;
+                }
             }
         }
 

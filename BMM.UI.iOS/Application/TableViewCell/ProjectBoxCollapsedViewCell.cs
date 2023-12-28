@@ -49,6 +49,7 @@ namespace BMM.UI.iOS
         {
             base.AwakeFromNib();
             TitleLabel.ApplyTextTheme(AppTheme.Title1);
+            Icon.TintColor = AppColors.GlobalBlackOneColor;
         }
         
         public IMvxInteraction ExpandOrCollapseInteraction
