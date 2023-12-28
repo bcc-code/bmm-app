@@ -40,6 +40,7 @@
         public const string StatisticsPostStreakPoints = "statistics/streakpoint";
         public const string StatisticsListening = "statistics/listening";
         public const string StatisticsAchievement = "statistics/achievement";
+        public const string StatisticsAchievements = "statistics/achievements";
         public const string AchievementAcknowledge = "statistics/achievement/{name}/acknowledge";
 
         public const string Podcasts = "podcast/";

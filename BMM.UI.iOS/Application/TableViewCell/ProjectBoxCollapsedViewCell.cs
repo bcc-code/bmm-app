@@ -39,6 +39,11 @@ namespace BMM.UI.iOS
                     .For(v => v.ExpandOrCollapseInteraction)
                     .To(po => po.ExpandOrCollapseInteraction);
                 
+                set.Bind(IconBackgroundView)
+                    .For(v => v.BackgroundColor)
+                    .To(po => po.ProjectBox.IconColor)
+                    .WithConversion<HexStringToUiColorConverter>();
+                
                 set.Apply();
             });
         }

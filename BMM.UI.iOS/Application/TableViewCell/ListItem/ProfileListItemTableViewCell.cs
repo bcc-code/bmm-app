@@ -31,6 +31,12 @@ namespace BMM.UI.iOS
                 set.Bind(ProfileImage).For(v => v.BindTap()).To(listItem => listItem.EditProfileCommand);
                 set.Bind(SignOutButton).For(v => v.BindTitle()).To(listItem => listItem.Text);
                 set.Bind(SignOutButton).To(listItem => listItem.LogoutCommand);
+                set.Bind(AchievementsButton)
+                    .For(v => v.BindTitle())
+                    .To(l => l.AchievementsText);
+                
+                set.Bind(AchievementsButton)
+                    .To(l => l.AchievementsClickedCommand);
 
                 set.Apply();
             });

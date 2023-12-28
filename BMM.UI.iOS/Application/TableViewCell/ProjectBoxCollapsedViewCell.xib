@@ -47,7 +47,7 @@
                                         </constraints>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.72549019607843135" green="0.78431372549019607" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="MBy-tz-jeg" firstAttribute="centerX" secondItem="MGj-hy-NS8" secondAttribute="centerX" id="YBl-QW-g1s"/>
                                     <constraint firstItem="MBy-tz-jeg" firstAttribute="centerY" secondItem="MGj-hy-NS8" secondAttribute="centerY" id="cLp-T3-aoA"/>
@@ -92,6 +92,7 @@
                 <outlet property="ContainerView" destination="twU-W8-rQv" id="PqG-QK-sDS"/>
                 <outlet property="ExpandButton" destination="91b-M3-L9s" id="dUx-U4-uB2"/>
                 <outlet property="Icon" destination="MBy-tz-jeg" id="MDQ-Xn-9iy"/>
+                <outlet property="IconBackgroundView" destination="MGj-hy-NS8" id="bdC-IK-wae"/>
                 <outlet property="TitleLabel" destination="nMA-M8-ucT" id="kAq-Vy-YbF"/>
             </connections>
             <point key="canvasLocation" x="304.34782608695656" y="402.45535714285711"/>

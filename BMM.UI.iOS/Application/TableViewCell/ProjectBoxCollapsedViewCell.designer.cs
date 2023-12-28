@@ -23,6 +23,9 @@ namespace BMM.UI.iOS
 		UIKit.UIImageView Icon { get; set; }
 
 		[Outlet]
+		UIKit.UIView IconBackgroundView { get; set; }
+
+		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -37,14 +40,19 @@ namespace BMM.UI.iOS
 				ExpandButton = null;
 			}
 
+			if (Icon != null) {
+				Icon.Dispose ();
+				Icon = null;
+			}
+
 			if (TitleLabel != null) {
 				TitleLabel.Dispose ();
 				TitleLabel = null;
 			}
 
-			if (Icon != null) {
-				Icon.Dispose ();
-				Icon = null;
+			if (IconBackgroundView != null) {
+				IconBackgroundView.Dispose ();
+				IconBackgroundView = null;
 			}
 
 		}

@@ -157,6 +157,14 @@ namespace BMM.Api.Implementation.Clients
             return Get<ProjectRules>(uri);
         }
 
+        // public Task GetAchievements(string lang, AppTheme theme)
+        // {
+        //     var uri = new UriTemplate(ApiUris.StatisticsAchievements);
+        //     uri.SetParameter("lang", lang);
+        //     uri.SetParameter("theme", theme);
+        //     return Get(uri);
+        // }
+        //
         public Task AchievementAcknowledge(string achievementType)
         {
             var uri = new UriTemplate(ApiUris.AchievementAcknowledge);

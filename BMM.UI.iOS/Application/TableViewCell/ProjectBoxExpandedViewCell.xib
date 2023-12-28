@@ -211,6 +211,7 @@
                 <outlet property="AchievementStackView" destination="ceP-4Y-aAT" id="zkL-LR-QuM"/>
                 <outlet property="AchievementsContainer" destination="pAs-SC-27T" id="Md5-Pc-5Nb"/>
                 <outlet property="CollapseButton" destination="Gt6-st-l34" id="JUT-Ol-108"/>
+                <outlet property="IconBackground" destination="JdJ-rM-p42" id="aTw-xs-xBm"/>
                 <outlet property="PointsLabel" destination="7vT-FO-6dc" id="Jew-q4-mYC"/>
                 <outlet property="PointsNumber" destination="GC9-Zx-SYz" id="gOv-ed-BQz"/>
                 <outlet property="QuestionsButton" destination="Wvn-F1-wxy" id="UA6-Nb-lG0"/>
