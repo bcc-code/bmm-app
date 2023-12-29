@@ -513,22 +513,22 @@
     "Orange": "оранжав"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Език на заглавието",
+    "PreferredLanguages": "Вашите предпочитани езици",
     "AllLanguages": "Всички езици"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Преки задания за Siri",
+    "ShortcutAlreadyAdded": "Това пряко задание вече е добавено"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Вашият преглед на годината",
+    "Share": "Споделете с приятелите си",
+    "ShareTitle": "Вашият преглед на годината"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
+    "Title": "Топ песни",
+    "PlaysPlural": "{0} повторения",
     "PlaysSingular": "{0} play",
     "AddToMyPlaylist": "Add playlist to favorites",
     "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
