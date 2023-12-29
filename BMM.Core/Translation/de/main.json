@@ -201,7 +201,7 @@
   "FollowedPodcastsViewModel": {
     "Title": "Abonnierte Podcasts",
     "EmptyTitle": "Du hast zurzeit keine Podcasts abonniert",
-    "EmptySubline": "Folge einem Podcast indem du den Podcast öffnest und dann abonnieren klickst."
+    "EmptySubline": "Folge einem Podcast, indem du den Podcast öffnest und dann abonnieren klickst."
   },
   "MyTracksViewModel": {
     "Title": "Meine Titel",
