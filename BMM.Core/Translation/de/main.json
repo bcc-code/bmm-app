@@ -200,7 +200,7 @@
   },
   "FollowedPodcastsViewModel": {
     "Title": "Abonnierte Podcasts",
-    "EmptyTitle": "Du hast zurzeit keine Podcast abonniert",
+    "EmptyTitle": "Du hast zurzeit keine Podcasts abonniert",
     "EmptySubline": "Folge einem Podcast indem du den Podcast öffnest und dann abonnieren klickst."
   },
   "MyTracksViewModel": {
@@ -594,7 +594,7 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Danke für deine Frage!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "Description": "Alle Fragen werden besprochen und einige werden im Podcast beantwortet. \n Die meisten Fragen werden auf der Q&A-Seite beantwortet. \n\n Schaue am Mittwoch noch einmal vorbei, um die Antworten zu lesen.",
     "GotIt": "Verstanden! "
   }
 }
