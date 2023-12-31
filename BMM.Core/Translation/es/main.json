@@ -333,7 +333,8 @@
     "ColorText": "Elija entre colores de temas personalizados",
     "SiriShortcutsHeader": "Accesos directos de Siri",
     "SiriShortcutsText": "Añadir accesos directos de Siri para BMM a tu dispositivo",
-    "PushNotificationsGoToSettings": "Lamentablemente, no podemos habilitar las notificaciones automáticas ya que están deshabilitadas en la configuración de su dispositivo.  Permita las notificaciones automáticas en la configuración de su dispositivo para habilitar esta función."
+    "PushNotificationsGoToSettings": "Lamentablemente, no podemos habilitar las notificaciones automáticas ya que están deshabilitadas en la configuración de su dispositivo.  Permita las notificaciones automáticas en la configuración de su dispositivo para habilitar esta función.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Ubicación de las pistas sin conexión",
@@ -596,5 +597,8 @@
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "Entiendo"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
