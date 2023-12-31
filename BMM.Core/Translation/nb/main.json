@@ -333,7 +333,8 @@
     "ColorText": "Velg mellom spesialtilpassede fargetemaer",
     "SiriShortcutsHeader": "Siri Shortcuts",
     "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Plass for offline spor",
@@ -594,7 +595,10 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Takk for spørsmålet!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "Description": "Alle spørsmål blir gjennomgått og noen vil bli besvart senere i podcasten.\nFlere spørsmål vil også bli besvart ukentlig her på Q&A siden i appen.\n\nKom tilbake på onsdag for å lese svarene.",
     "GotIt": "Forstått"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
