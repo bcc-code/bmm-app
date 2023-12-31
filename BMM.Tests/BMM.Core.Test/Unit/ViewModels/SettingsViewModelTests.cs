@@ -27,6 +27,7 @@ using BMM.Core.ViewModels;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
 using Moq;
 using MvvmCross.Localization;
+using MvvmCross.Navigation;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -146,7 +147,9 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _notificationPermissionService.Object,
                 _changeNotificationSettingStateAction.Object,
                 _resetAchievementAction.Object,
-                _featurePreviewPermission.Object);
+                _featurePreviewPermission.Object,
+                new Mock<IMvxNavigationService>().Object
+            );
 
             settingsViewModel.TextSource = TextResource.Object;
             return settingsViewModel;

@@ -69,6 +69,11 @@ namespace BMM.UI.iOS
                     .For(v => v.BindTap())
                     .To(po => po.OpenRulesCommand);
 
+                set.Bind(IconBackground)
+                    .For(v => v.BackgroundColor)
+                    .To(po => po.ProjectBox.IconColor)
+                    .WithConversion<HexStringToUiColorConverter>();
+
                 set.Apply();
             });
         }

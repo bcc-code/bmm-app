@@ -16,15 +16,24 @@
             android:layout_height="match_parent"
             android:background="@color/background_two_color">
 
-        <ImageView
-                android:id="@+id/IconImageView"
-                android:layout_width="@dimen/default_icon_size"
-                android:layout_height="@dimen/default_icon_size"
-                android:src="@drawable/icon_union"
+        <androidx.cardview.widget.CardView
+                android:id="@+id/IconImageViewCardView"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginStart="@dimen/margin_xxsmall"
                 local:layout_constraintTop_toTopOf="parent"
                 local:layout_constraintBottom_toBottomOf="parent"
-                local:layout_constraintStart_toStartOf="parent" />
+                local:layout_constraintStart_toStartOf="parent"
+                local:cardCornerRadius="16dp"
+                local:MvxBind="HexMvxCardBackgroundColor ProjectBox.IconColor">
+            <ImageView
+                    android:id="@+id/IconImageView"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:tint="@color/global_black_one"
+                    android:src="@drawable/icon_union"/>
+        </androidx.cardview.widget.CardView>
 
         <TextView
                 android:id="@+id/TitleLabel"
@@ -33,7 +42,7 @@
                 android:layout_marginStart="@dimen/margin_xxsmall"
                 local:layout_constraintTop_toTopOf="parent"
                 local:layout_constraintBottom_toBottomOf="parent"
-                local:layout_constraintStart_toEndOf="@+id/IconImageView"
+                local:layout_constraintStart_toEndOf="@+id/IconImageViewCardView"
                 local:layout_constraintEnd_toStartOf="@+id/ExpandButton"
                 local:MvxBind="Text ProjectBox.Title"
                 style="@style/Title1"/>

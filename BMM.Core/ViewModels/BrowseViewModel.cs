@@ -1,12 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Models;
+﻿using BMM.Api.Abstraction;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Implementations.Factories;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.ViewModels.Base;

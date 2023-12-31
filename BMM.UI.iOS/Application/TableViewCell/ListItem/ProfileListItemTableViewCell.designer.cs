@@ -14,6 +14,9 @@ namespace BMM.UI.iOS
 	partial class ProfileListItemTableViewCell
 	{
 		[Outlet]
+		UIKit.UIButton AchievementsButton { get; set; }
+
+		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView ProfileImage { get; set; }
 
 		[Outlet]
@@ -27,6 +30,11 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (ProfileImage != null) {
+				ProfileImage.Dispose ();
+				ProfileImage = null;
+			}
+
 			if (SignedInAsTitle != null) {
 				SignedInAsTitle.Dispose ();
 				SignedInAsTitle = null;
@@ -37,15 +45,16 @@ namespace BMM.UI.iOS
 				SignOutButton = null;
 			}
 
+			if (AchievementsButton != null) {
+				AchievementsButton.Dispose ();
+				AchievementsButton = null;
+			}
+
 			if (Username != null) {
 				Username.Dispose ();
 				Username = null;
 			}
 
-			if (ProfileImage != null) {
-				ProfileImage.Dispose ();
-				ProfileImage = null;
-			}
 		}
 	}
 }

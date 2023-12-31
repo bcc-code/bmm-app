@@ -1,11 +1,7 @@
 ﻿using Android.Runtime;
-using Android.Views;
 using Android.Views.InputMethods;
-using AndroidX.ConstraintLayout.Widget;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Fragments.Base;
-using Com.Airbnb.Lottie;
-using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 
 namespace BMM.UI.Droid.Application.Fragments
@@ -15,5 +11,17 @@ namespace BMM.UI.Droid.Application.Fragments
     public class AskQuestionFragment : BaseDialogFragment<AskQuestionViewModel>
     {
         protected override int FragmentId => Resource.Layout.fragment_ask_question;
+
+        public override void OnResume()
+        {
+            base.OnResume();
+            View!.Post(() =>
+            {
+                var questionEditText = View.FindViewById<EditText>(Resource.Id.QuestionEditText);
+                questionEditText.RequestFocus();
+                var imm = (InputMethodManager)Context!.GetSystemService(Android.Content.Context.InputMethodService);
+                imm!.ToggleSoftInput(ShowFlags.Forced, HideSoftInputFlags.ImplicitOnly);
+            });
+        }
     }
 }
