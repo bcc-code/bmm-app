@@ -333,7 +333,8 @@
     "ColorText": "选择自定义颜色主题",
     "SiriShortcutsHeader": "Siri 快捷方式",
     "SiriShortcutsText": "为您的设备添加 BMM 的 Siri 快捷方式",
-    "PushNotificationsGoToSettings": "很遗憾，我们无法启用 \"推送通知\"，因为您的设备设置中禁用了该功能。请在设备设置中允许 \"推送通知\"，以启用此功能。"
+    "PushNotificationsGoToSettings": "很遗憾，我们无法启用 \"推送通知\"，因为您的设备设置中禁用了该功能。请在设备设置中允许 \"推送通知\"，以启用此功能。",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "离线内容的位置",
@@ -596,5 +597,8 @@
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "明白了"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
