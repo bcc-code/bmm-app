@@ -333,7 +333,8 @@
     "ColorText": "Выбор цветовых тем",
     "SiriShortcutsHeader": "Ярлыки Сири",
     "SiriShortcutsText": "Добавьте ярлыки Siri для BMM на свое устройство",
-    "PushNotificationsGoToSettings": "К сожалению, мы не можем присылать Push-уведомления, так как они отключены в настройках вашего устройства. Пожалуйста, разрешите Push-уведомления в настройках устройства, чтобы включить эту функцию."
+    "PushNotificationsGoToSettings": "К сожалению, мы не можем присылать Push-уведомления, так как они отключены в настройках вашего устройства. Пожалуйста, разрешите Push-уведомления в настройках устройства, чтобы включить эту функцию.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Расположение офлайн-дорожек",
@@ -594,7 +595,10 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "Got it"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

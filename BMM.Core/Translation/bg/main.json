@@ -11,7 +11,7 @@
     "Song": "Песен",
     "Speech": "Речи",
     "Audiobook": "Аудиокниги",
-    "Exegesis": "Exegesis",
+    "Exegesis": "тълкувание",
     "Done": "Свършен",
     "Today": "Днес",
     "Yesterday": "Вчера",
@@ -21,32 +21,32 @@
     "NotNow": "Не сега",
     "DownloadPlaylistOnceOnWifi": "",
     "DownloadPodcastOnceOnWifi": "",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "SiriFromKaareInvocationPhrase": "Пуснете  От Kåre на BMM",
+    "SiriPlayMusicInvocationPhrase": "Пуснете музика на BMM",
+    "FromKaareSiriShortcutName": "Следващо От Коре",
+    "PlayMusicSiriShortcutName": "Пусни музика",
+    "DailyMessage": "Ежедневно съобщение",
+    "ValueCopiedToClipboard": "{0} копиран в клипборда"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
-    "WeekdayMonday": "M",
+    "Message": "Вашата серия тази седмица",
+    "MessagePerfect": "Перфектна седмица. Много добре!",
+    "PerfectWeekCountSingular": "{0} перфектна седмица",
+    "PerfectWeekCountPlural": "{0} перфектни седмици",
+    "PerfectWeekCountNone": "Все още няма перфектни седмици",
+    "EligibleUntilHoursAndMinutesMessage": "Днес остават {0} часа и {1} минута",
+    "EligibleUntilMinutesOnlyMessage": "Остават {0} минути днес",
+    "DaysInARowSingular": "{0} пореден ден",
+    "DaysInARowPlural": "{0} дни подред",
+    "WeekdayMonday": "М",
     "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
+    "WeekdayWednesday": "У",
     "WeekdayThursday": "T",
     "WeekdayFriday": "F"
   },
   "DeepLinkHandler": {
-    "ErrorTitle": "Unable to open link",
-    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+    "ErrorTitle": "Линкът не може да се отвори",
+    "ErrorMessage": "За съжаление не беше възможно да отворите линка '{0}'."
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Възникна грешка при свързването: {0}"
@@ -56,10 +56,10 @@
     "ErrorVideoNotSupported": "Видео клиповете не се поддържат в момента. ",
     "ErrorFileNotOffline": "Не можеш да пуснеш песен/реч в режим извън линия, която не е изтеглена. ",
     "ErrorPlayerStopped": "Плейърът спря.",
-    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
-    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
-    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorPlayerStoppedGeneric": "Възникна грешка при възпроизвеждане, която спря текущата песен.",
+    "ErrorPlayerLiveRadioStopped": "Предаването на живо приключи.",
+    "ErrorPlayerLiveRadioTooEarly": "Предаването на живо все още не е започнало, моля, опитайте отново по-късно.",
+    "ErrorPlayerStart": "Възпроизвеждането не може да започне."
   },
   "GlobalMediaDownloader": {
     "OutOfSpaceMessage": "Няма достатъчно място за складиране на файлове извън линия"
@@ -73,7 +73,7 @@
     "AlbumFailedToAddAlreadyExists": "Този албум е вече във вашия списък за изпълнение.",
     "TrackAlreadyExistInTrackCollection": "Песента/речта вече съществува в списъка {0}",
     "ShufflePlay": "Разбъркано възпроизвеждане",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} албума"
   },
   "AlbumsViewModel": {
     "Title": "Архив",
@@ -101,19 +101,19 @@
     "SearchHint": "Търси"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Начало",
     "SearchHint": "Търси",
     "FraKaareHeader": "От Коре",
     "AslaksenTeaserHeader": "Думи на вярата",
     "ShowAll": "Покажи всички",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
+    "PlayRandom": "Възпроизвеждане на случаен принцип",
+    "PlayNewest": "Възпроизвеждане на най-новите",
     "LatestTrack": "Последни песни и речи",
-    "NextBroadcast": "Next broadcast",
-    "BmmRadio": "BMM Live",
-    "CountdownHours": "in {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music",
+    "NextBroadcast": "Следващо предаване",
+    "BmmRadio": "BMM на живо",
+    "CountdownHours": "след {0}ч",
+    "Messages": "Последни речи",
+    "Music": "Скорошна музика",
     "Recommended": "Препоръчано",
     "More": "Още"
   },
@@ -138,7 +138,7 @@
     "ButtonSendMail": "Изпрати писмо на БММ екипа"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Ние настройваме вашия акаунт. Това може да отнеме няколко минути."
   },
   "LoginViewModel": {
     "Title": "Вход",
@@ -146,18 +146,18 @@
     "LoginFailureMessage": "Моля, опитай отново с правилните идентификационни данни",
     "LoginNoConnectionMessage": "В момента няма връзка. Моля, опитай отново по-късно",
     "WrongMailAddressTitle": "Невалиден имейл",
-    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "WrongMailAddress": "Моля, посочете валиден имейл адрес. Използването на потребителското име за вход вече не се поддържа.",
     "TbxUsername.Hint": "Е-поща",
     "TbxPassword.Hint": "Парола",
     "BtnLogin.Text": "Вход",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Влезте с вашето потребителско име в BCC"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
-    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
-    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
-    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
-    "UpdateButton": "Update"
+    "DeviceSupportEnding": "Скоро ще спрем поддръжката на телефони, работещи с {0} {1} или по-стари. Ако е възможно, трябва да актуализирате телефона си.",
+    "DeviceSupportEnded": "За съжаление вече не поддържаме устройства, по-стари от {0} {1}. Моля, актуализирайте устройството си или преминете към по-нов телефон.",
+    "AppSupportEnding": "Използвате стара версия на приложението BMM. Скоро ще спрем поддръжката за тази версия. Моля, актуализирайте BMM.",
+    "AppSupportEnded": "Използвате стара версия на приложението BMM, която вече не се поддържа. Моля, актуализирайте BMM.",
+    "UpdateButton": "Актуализация"
   },
   "LanguageAppViewModel": {
     "Title": "Приложение език"
@@ -172,7 +172,7 @@
     "DeleteLanguageTitle": "Не може да се премахне "
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Прегледайте"
   },
   "LibraryArchiveViewModel": {
     "Title": "Архив"
@@ -182,15 +182,15 @@
     "Search": "Търси",
     "Explore": "Разгледай",
     "MyContent": "Мое съдържание",
-    "Browse": "Browse",
+    "Browse": "Прегледайте",
     "Settings": "Настройки",
     "HelpAndFeedback": "Помощ и обратна връзка",
-    "Home": "Home",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "Home": "Начало",
+    "Favorites": "Любими",
+    "Profile": "Профил"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "Любими",
     "DownloadedContent": "Downloaded Content",
     "FollowedPodcasts": "Подкаст",
     "MyTracks": "Моите песни",
@@ -288,7 +288,7 @@
     "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "Профил",
     "HeadlineSettings": "Настройки",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
@@ -333,7 +333,8 @@
     "ColorText": "Choose between custom color themes",
     "SiriShortcutsHeader": "Siri Shortcuts",
     "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Място за песни/речи извън линия",
@@ -343,13 +344,13 @@
     "PluralTracks": "{0} tracks",
     "PluralTracksLoaded": "{0} tracks loaded",
     "Download": "Изтегли",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Разбъркайте",
     "Play": "Пусни"
   },
   "TrackCollectionViewModel": {
     "Title": "Списък",
-    "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "ShufflePlay": "Разбъркайте",
+    "Resume": "Резюме",
     "AvailableOffline": "Достъпен в режим извън линия",
     "AvailableOfflineDownload": "Изтегли",
     "AvailableOfflineDownloading": "Изтегляне на {0} на {1}",
@@ -363,37 +364,37 @@
     "SearchHint": "Търси",
     "EmptyTitle": "Този списък е празен",
     "EmptySubline": "Натисни трите точки на една песен, за да добавиш песен към този списък.",
-    "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
+    "NotEnoughtSpaceToDownload": "Няма достатъчно място за изтегляне на всички песни",
     "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?",
-    "Private": "Private",
+    "Private": "Частно",
     "DeletePlaylist": "Изтрий списъка",
-    "EditPlaylist": "Edit playlist",
-    "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "EditPlaylist": "Прибави към списъка",
+    "SharePlaylist": "Разбъркване на списъка за изпълнение",
+    "RemovePlaylist": "Премахни от списъка"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
-    "RenameLabel": "Rename playlist",
+    "Title": "Прибави към списъка",
+    "RenameLabel": "Преименувай списък",
     "MenuSave": "Запази",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "EmptyName": "Плейлистът няма име",
+    "SaveFailure": "Промените не можаха да се актуализират. Проверете вашата интернет връзка и опитайте отново",
+    "DiscardChangesTitle": "Отхвърлите промените?",
+    "DiscardChangesMessage": "Направените от вас промени няма да бъдат запазени",
+    "DiscardChanges": "Изхвърлете",
+    "KeepEditing": "Продължете да редактирате"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Споделяне на плейлист",
+    "ShareNote": "При споделяне на списък за изпълнение хората ще имат достъп до добавените от вас песни и ще могат да ги слушат, ако имат връзката.",
+    "ShareLink": "Сподели линк",
+    "MakePrivate": "Направи лично",
+    "SharedWithFormat": "Споделено с {0} души"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "Споделяне на плейлист",
+    "Close": "Затвори",
+    "AddToMyPlaylist": "Прибави към списъка",
+    "FollowOwnTrackCollection": "Не можете да следвате собствената си колекция от песни"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Списък",
@@ -421,9 +422,9 @@
     "Track.RemoveFromMyTracks": "Премахни от моите песни",
     "Track.AddedToMyTracks": "Добави към моите песни",
     "Track.RemovedFromMyTracks": "Премахни от моите песни",
-    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
+    "Track.FailedToRemoveFromMyTracks": "Неуспешно премахване на песен от \"Моите песни",
     "Track.AddToQueue": "Добави към опашката",
-    "Track.QueueToPlayNext": "Play next",
+    "Track.QueueToPlayNext": "Пуснете следващите",
     "Track.AddedToQueue": "Добавено към опашката",
     "Track.GoToAlbum": "Отиди на албум",
     "Track.GoToContributor": "Отиди на сътрудници",
@@ -478,57 +479,57 @@
     "Title": "Авторско право"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "Наскоро слушано",
+    "NoHistoryYetTitle": "Вече можете да видите какво сте слушали",
+    "NoHistoryYetSubtitle": "Просто започнете да слушате и вашата история ще се покаже тук"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "Последни речи"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "Скорошна музика"
   },
   "DownloadManager": {
     "DownloadingFinished": "Всички файлове са изтеглени!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "събития",
     "AudiobooksTitle": "Аудиокниги",
     "MusicTitle": "Музика",
     "PodcastsTitle": "Подкаст"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Настройки на тъмен режим",
+    "Light": "Светлина",
+    "Dark": "Тъмно",
+    "System": "Следвайте системните настройки (автоматично)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
-    "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Title": "Тема на цвета",
+    "Default": "По подразбиране",
+    "Violet": "Виолетово",
+    "Red": "червен",
+    "DarkGreen": "Тъмнозелено",
+    "Golden": "Златен",
+    "Orange": "оранжав"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Език на заглавието",
+    "PreferredLanguages": "Вашите предпочитани езици",
     "AllLanguages": "Всички езици"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Преки задания за Siri",
+    "ShortcutAlreadyAdded": "Това пряко задание вече е добавено"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Вашият преглед на годината",
+    "Share": "Споделете с приятелите си",
+    "ShareTitle": "Вашият преглед на годината"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
+    "Title": "Топ песни",
+    "PlaysPlural": "{0} повторения",
     "PlaysSingular": "{0} play",
     "AddToMyPlaylist": "Add playlist to favorites",
     "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
@@ -560,11 +561,11 @@
     "Title": "App Icon",
     "Description": "Change the app icon of the app",
     "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconDarkGreen": "Тъмнозелено",
+    "IconOrange": "оранжав",
+    "IconGolden": "Златен",
+    "IconViolet": "Виолетово",
+    "IconRed": "червен"
   },
   "AchievementDetailsViewModel": {
     "Title": "Achievement",
@@ -572,13 +573,13 @@
     "ActivatePremiumIcon": "Activate App Icon",
     "GotIt": "Got it",
     "ActivateTheme": "Activate Theme",
-    "Close": "Close",
+    "Close": "Затвори",
     "Reward": "Reward",
     "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
     "RewardIos": "An exclusive app icon for your BMM app 🤩",
     "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
     "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "PlayNext": "Play next"
+    "PlayNext": "Пуснете следващите"
   },
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",
@@ -594,7 +595,10 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "Got it"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

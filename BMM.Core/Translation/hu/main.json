@@ -333,7 +333,8 @@
     "ColorText": "Válaszd ki az egyéni színtémák között",
     "SiriShortcutsHeader": "Siri-parancsok",
     "SiriShortcutsText": "Siri-parancsok hozzáadása a BMM-re",
-    "PushNotificationsGoToSettings": "Sajnos nem tudjuk engedélyezni a Push értesítéseket, mivel azok le vannak tiltva a készülék beállításaiban. Kérjük, engedélyezd a Push értesítések használatát a készülék beállításaiban, hogy engedélyezd ezt a funkciót."
+    "PushNotificationsGoToSettings": "Sajnos nem tudjuk engedélyezni a Push értesítéseket, mivel azok le vannak tiltva a készülék beállításaiban. Kérjük, engedélyezd a Push értesítések használatát a készülék beállításaiban, hogy engedélyezd ezt a funkciót.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Offline zeneszámok tárhelye",
@@ -596,5 +597,8 @@
     "ThankYou": "Köszönöm a kérdést!",
     "Description": "Minden kérdést áttekintünk, és néhányat meg is válaszolunk a podcastban. \nA legtöbb kérdésre a Kérdések és válaszok oldalon kapunk választ. \n\nA válaszokat hétfőn olvashatod el.",
     "GotIt": "Megvan"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

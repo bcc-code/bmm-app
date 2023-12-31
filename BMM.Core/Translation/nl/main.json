@@ -333,7 +333,8 @@
     "ColorText": "Kies tussen aangepaste kleurenthema's",
     "SiriShortcutsHeader": "Siri afkortingen",
     "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device ",
-    "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren."
+    "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Locatie voor offline nummers",
@@ -594,7 +595,10 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Bedankt voor het vragen!",
-    "Description": "Alle vragen worden bekeken en sommige worden beantwoord in de podcast. \n De meeste vragen worden beantwoord op de Q&A pagina. \n\n Kom maandag terug om de antwoorden te lezen.",
+    "Description": "Alle vragen worden bekeken en sommige worden beantwoord in de podcast. \n De meeste vragen worden beantwoord op de Q&A pagina. \n\nKom woensdag terug om de antwoorden te lezen.",
     "GotIt": "Begrepen"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

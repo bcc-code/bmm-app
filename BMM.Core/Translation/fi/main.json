@@ -333,7 +333,8 @@
     "ColorText": "Valitse erikoisväriteemoista",
     "SiriShortcutsHeader": "Siriin",
     "SiriShortcutsText": "Lisää Sirilinkit laitteesi BMM:än",
-    "PushNotificationsGoToSettings": "Valitettavasti laiteasetuksissasi reaaliaikaiset ilmoitukset on poistettu käytöstä. Ole hyvä ja salli reaaliaikaiset ilmoitukset laiteasetuksissasi. "
+    "PushNotificationsGoToSettings": "Valitettavasti laiteasetuksissasi reaaliaikaiset ilmoitukset on poistettu käytöstä. Ole hyvä ja salli reaaliaikaiset ilmoitukset laiteasetuksissasi. ",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Offline kappaleiden tallennus sijainti",
@@ -594,7 +595,10 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Kiitos kysymyksestäsi!",
-    "Description": "Kaikki kysymykset katsotaan ja joihinkin vastataan podcastissa. Useimpiin vastataan \"kysymyksiä ja vastauksia\" -sivulla. \nMaanantaina voit lukea vastauksia.",
+    "Description": "Kaikki kysymykset katsotaan ja joihinkin vastataan podcastissa. Useimpiin vastataan \"kysymyksiä ja vastauksia\" -sivulla. \nKeskiviikkona voit lukea vastauksia.",
     "GotIt": "Selvä"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
