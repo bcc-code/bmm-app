@@ -333,7 +333,8 @@
     "ColorText": "Escolha entre temas de cores personalizados",
     "SiriShortcutsHeader": "Atalhos da Siri",
     "SiriShortcutsText": "Adicione atalhos da Siri para BMM ao seu dispositivo",
-    "PushNotificationsGoToSettings": "Infelizmente, não podemos ativar as notificações push, pois elas estão desativadas nas configurações do seu dispositivo. Permita notificações push nas configurações do seu dispositivo para ativar esse recurso."
+    "PushNotificationsGoToSettings": "Infelizmente, não podemos ativar as notificações push, pois elas estão desativadas nas configurações do seu dispositivo. Permita notificações push nas configurações do seu dispositivo para ativar esse recurso.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Localização para faixas offline",
@@ -596,5 +597,8 @@
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "Entendi"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
