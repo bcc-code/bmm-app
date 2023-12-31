@@ -333,7 +333,8 @@
     "ColorText": "Vælg mellem brugerdefinerede farvetemaer",
     "SiriShortcutsHeader": "Siri genveje",
     "SiriShortcutsText": "Tilføj Siri genveje for BMM til din enhed",
-    "PushNotificationsGoToSettings": "Desværre kan vi ikke aktivere push-meddelelser, da de er deaktiveret i dine enhedsindstillinger. Tillad venligst push-meddelelser i dine enhedsindstillinger for at aktivere denne funktion."
+    "PushNotificationsGoToSettings": "Desværre kan vi ikke aktivere push-meddelelser, da de er deaktiveret i dine enhedsindstillinger. Tillad venligst push-meddelelser i dine enhedsindstillinger for at aktivere denne funktion.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Lagringsplads til offline indhold",
@@ -596,5 +597,8 @@
     "ThankYou": "Tak fordi du spurgte!",
     "Description": "Alle spørgsmål vil blive gennemgået, og nogle vil blive besvaret i podcasten. \n De fleste spørgsmål vil blive besvaret på Q&A-siden. \n\n Kom tilbage på onsdag for at læse svarene.",
     "GotIt": "Forstået"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
