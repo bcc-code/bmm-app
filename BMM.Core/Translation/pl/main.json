@@ -333,7 +333,8 @@
     "ColorText": "Wybór niestandardowych motywów kolorystycznych",
     "SiriShortcutsHeader": "Skróty Siri",
     "SiriShortcutsText": "Dodaj skróty Siri dla BMM do swojego urządzenia",
-    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję."
+    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Miejsce przechowywania treści w trybie offline",
@@ -596,5 +597,8 @@
     "ThankYou": "Dzięki za pytanie!",
     "Description": "Wszystkie pytania zostaną rozpatrzone, a odpowiedzi na niektóre z nich pojawią się w podcaście. \n Na większość pytań odpowiemy na stronie pytań i odpowiedzi. \n\n Sprawdź ponownie w środę, aby przeczytać odpowiedzi.",
     "GotIt": "Rozumiem"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
