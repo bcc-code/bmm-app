@@ -333,7 +333,8 @@
     "ColorText": "Choisir un thème personnalisé",
     "SiriShortcutsHeader": "Raccourcis Siri",
     "SiriShortcutsText": "Ajouter des raccourcis Siri pour BMM à votre appareil",
-    "PushNotificationsGoToSettings": "Nous ne pouvons malheureusement pas activer les notifications push car elles sont désactivées dans les paramètres de ton appareil. Autorise les notifications push dans les paramètres de ton appareil pour activer cette fonction."
+    "PushNotificationsGoToSettings": "Nous ne pouvons malheureusement pas activer les notifications push car elles sont désactivées dans les paramètres de ton appareil. Autorise les notifications push dans les paramètres de ton appareil pour activer cette fonction.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Emplacement des titres hors-ligne",
@@ -596,5 +597,8 @@
     "ThankYou": "Merci d'avoir posé la question !",
     "Description": "Toutes les questions seront examinées et certaines seront traitées dans le podcast. \n La plupart des questions seront traitées sur la page Q&R. \n\n Revenez mercredi pour lire les réponses.",
     "GotIt": "J'ai compris"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
