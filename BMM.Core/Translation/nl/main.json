@@ -595,7 +595,7 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Bedankt voor het vragen!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "Description": "Alle vragen worden bekeken en sommige worden beantwoord in de podcast. \n De meeste vragen worden beantwoord op de Q&A pagina. \n\nKom woensdag terug om de antwoorden te lezen.",
     "GotIt": "Begrepen"
   },
   "AchievementsViewModel": {
