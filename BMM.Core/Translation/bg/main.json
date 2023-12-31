@@ -333,7 +333,8 @@
     "ColorText": "Choose between custom color themes",
     "SiriShortcutsHeader": "Siri Shortcuts",
     "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature."
+    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Място за песни/речи извън линия",
@@ -596,5 +597,8 @@
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "Got it"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
