@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Siriin",
     "SiriShortcutsText": "Lisää Sirilinkit laitteesi BMM:än",
     "PushNotificationsGoToSettings": "Valitettavasti laiteasetuksissasi reaaliaikaiset ilmoitukset on poistettu käytöstä. Ole hyvä ja salli reaaliaikaiset ilmoitukset laiteasetuksissasi. ",
-    "Achievements": "Achievements"
+    "Achievements": "Saavutukset"
   },
   "StorageManagementViewModel": {
     "Title": "Offline kappaleiden tallennus sijainti",
@@ -599,6 +599,6 @@
     "GotIt": "Selvä"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Saavutukset"
   }
 }
