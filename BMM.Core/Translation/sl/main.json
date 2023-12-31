@@ -333,7 +333,8 @@
     "ColorText": "Izberi posebne barvne teme",
     "SiriShortcutsHeader": "Bližnjice za Siri",
     "SiriShortcutsText": "Dodaj bližnjice za Siri za BMM na svojo napravo",
-    "PushNotificationsGoToSettings": "Ne moremo omogočiti potisnih sporočil, ker so onemogočena v nastavitvah. Za uporabo te funkcije\nomogoči potisna sporočila v nastavitvah naprave. "
+    "PushNotificationsGoToSettings": "Ne moremo omogočiti potisnih sporočil, ker so onemogočena v nastavitvah. Za uporabo te funkcije\nomogoči potisna sporočila v nastavitvah naprave. ",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Lokacija za skladbe brez povezave",
@@ -596,5 +597,8 @@
     "ThankYou": "Hvala za vprašanje!",
     "Description": "Vsa vprašanja bodo pregledana, na nekatera pa bomo odgovorili v  podkastu. \n Na večino vprašanj boš dobil odgovor na strani Q&A.\n\n Preveri spet v sredo za odgovore.",
     "GotIt": "Razumem"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }
