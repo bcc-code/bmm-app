@@ -314,8 +314,8 @@
     "OptionContactHeader": "Kontakt",
     "OptionContactText": "Spørgsmål eller tilbagemeldinger? Kontakt BMM-teamet her.",
     "OptionAppVersionHeader": "App-version",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Slet min konto",
+    "OptionDeleteAccountText": "Anmod om at din konto bliver slettet.",
     "AppInfoTitle": "App-information",
     "AppInfoAppVersion": "App-version: ",
     "AppInfoManufacturer": "Producent: ",
@@ -333,7 +333,8 @@
     "ColorText": "Vælg mellem brugerdefinerede farvetemaer",
     "SiriShortcutsHeader": "Siri genveje",
     "SiriShortcutsText": "Tilføj Siri genveje for BMM til din enhed",
-    "PushNotificationsGoToSettings": "Desværre kan vi ikke aktivere push-meddelelser, da de er deaktiveret i dine enhedsindstillinger. Tillad venligst push-meddelelser i dine enhedsindstillinger for at aktivere denne funktion."
+    "PushNotificationsGoToSettings": "Desværre kan vi ikke aktivere push-meddelelser, da de er deaktiveret i dine enhedsindstillinger. Tillad venligst push-meddelelser i dine enhedsindstillinger for at aktivere denne funktion.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Lagringsplads til offline indhold",
@@ -588,13 +589,16 @@
     "SubmitSuccess": "Forslag sendt, mange tak!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Stil et spørgsmål",
+    "Submit": "Send spørgsmål",
+    "Hint": "Dit spørgsmål"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "ThankYou": "Tak fordi du spurgte!",
+    "Description": "Alle spørgsmål vil blive gennemgået, og nogle vil blive besvaret i podcasten. \n De fleste spørgsmål vil blive besvaret på Q&A-siden. \n\n Kom tilbage på onsdag for at læse svarene.",
     "GotIt": "Forstået"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

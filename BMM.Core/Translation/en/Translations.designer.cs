@@ -267,6 +267,7 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_SiriShortcutsHeader = nameof(SettingsViewModel_SiriShortcutsHeader);
 		public const string SettingsViewModel_SiriShortcutsText = nameof(SettingsViewModel_SiriShortcutsText);
 		public const string SettingsViewModel_PushNotificationsGoToSettings = nameof(SettingsViewModel_PushNotificationsGoToSettings);
+		public const string SettingsViewModel_Achievements = nameof(SettingsViewModel_Achievements);
 		public const string StorageManagementViewModel_Title = nameof(StorageManagementViewModel_Title);
 		public const string StorageManagementViewModel_RemoveAllFiles = nameof(StorageManagementViewModel_RemoveAllFiles);
 		public const string DocumentsViewModel_PluralTracks = nameof(DocumentsViewModel_PluralTracks);
@@ -467,5 +468,6 @@ namespace BMM.Core.Translation
 		public const string AskQuestionConfirmationViewModel_ThankYou = nameof(AskQuestionConfirmationViewModel_ThankYou);
 		public const string AskQuestionConfirmationViewModel_Description = nameof(AskQuestionConfirmationViewModel_Description);
 		public const string AskQuestionConfirmationViewModel_GotIt = nameof(AskQuestionConfirmationViewModel_GotIt);
+		public const string AchievementsViewModel_Title = nameof(AchievementsViewModel_Title);
 	}
 }

@@ -29,6 +29,9 @@ namespace BMM.UI.iOS
 		UIKit.UIButton CollapseButton { get; set; }
 
 		[Outlet]
+		UIKit.UIView IconBackground { get; set; }
+
+		[Outlet]
 		UIKit.UILabel PointsLabel { get; set; }
 
 		[Outlet]
@@ -51,6 +54,21 @@ namespace BMM.UI.iOS
 			if (AchievementsCollectionView != null) {
 				AchievementsCollectionView.Dispose ();
 				AchievementsCollectionView = null;
+			}
+
+			if (AchievementsContainer != null) {
+				AchievementsContainer.Dispose ();
+				AchievementsContainer = null;
+			}
+
+			if (AchievementsHeightConstraint != null) {
+				AchievementsHeightConstraint.Dispose ();
+				AchievementsHeightConstraint = null;
+			}
+
+			if (AchievementStackView != null) {
+				AchievementStackView.Dispose ();
+				AchievementStackView = null;
 			}
 
 			if (CollapseButton != null) {
@@ -88,19 +106,9 @@ namespace BMM.UI.iOS
 				TitleLabel = null;
 			}
 
-			if (AchievementsContainer != null) {
-				AchievementsContainer.Dispose ();
-				AchievementsContainer = null;
-			}
-
-			if (AchievementsHeightConstraint != null) {
-				AchievementsHeightConstraint.Dispose ();
-				AchievementsHeightConstraint = null;
-			}
-
-			if (AchievementStackView != null) {
-				AchievementStackView.Dispose ();
-				AchievementStackView = null;
+			if (IconBackground != null) {
+				IconBackground.Dispose ();
+				IconBackground = null;
 			}
 
 		}

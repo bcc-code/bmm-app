@@ -40,7 +40,7 @@ namespace BMM.UI.iOS
             
             NavigationController.PresentationController.Delegate = new CustomUIAdaptivePresentationControllerDelegate
             {
-                OnDidDismiss = HandleDismiss
+                OnShouldDismiss = controller => false
             };
             NavigationController.NavigationBarHidden = true;
         }

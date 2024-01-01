@@ -333,7 +333,8 @@
     "ColorText": "Alegeți dintre temele de culoare personalizate",
     "SiriShortcutsHeader": "Scurtături pentru Siri",
     "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM",
-    "PushNotificationsGoToSettings": "Din păcate, nu putem activa notificările push, deoarece acestea sunt dezactivate în setările dispozitivului tău. Te rugăm să permiți notificărilor push în setările dispozitivului tău pentru a activa această funcție."
+    "PushNotificationsGoToSettings": "Din păcate, nu putem activa notificările push, deoarece acestea sunt dezactivate în setările dispozitivului tău. Te rugăm să permiți notificărilor push în setările dispozitivului tău pentru a activa această funcție.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
@@ -594,7 +595,10 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
     "GotIt": "Am înțeles"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

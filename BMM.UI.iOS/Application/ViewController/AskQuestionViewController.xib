@@ -38,8 +38,8 @@
                     </constraints>
                 </view>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mqR-qG-EVr">
-                    <rect key="frame" x="16" y="133" width="414" height="641"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="16" y="133" width="382" height="641"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -127,7 +127,6 @@
             <constraints>
                 <constraint firstItem="b3n-rJ-Cwu" firstAttribute="top" secondItem="VFw-uV-y3f" secondAttribute="top" constant="16" id="03T-AQ-IMY"/>
                 <constraint firstItem="Pt3-Xf-IRQ" firstAttribute="top" secondItem="b3n-rJ-Cwu" secondAttribute="bottom" constant="16" id="1Gd-TM-qN5"/>
-                <constraint firstItem="mqR-qG-EVr" firstAttribute="trailing" secondItem="VFw-uV-y3f" secondAttribute="trailing" constant="16" id="1Nl-jF-09M"/>
                 <constraint firstItem="rr7-cT-5yE" firstAttribute="bottom" secondItem="VFw-uV-y3f" secondAttribute="bottom" id="2xL-u9-T6R"/>
                 <constraint firstItem="Pt3-Xf-IRQ" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" id="5Ap-Jf-5HZ"/>
                 <constraint firstItem="AIW-O3-EeB" firstAttribute="centerY" secondItem="b3n-rJ-Cwu" secondAttribute="centerY" id="74E-Aj-Sdf"/>
@@ -137,6 +136,7 @@
                 <constraint firstItem="mqR-qG-EVr" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="LGG-LY-eMd"/>
                 <constraint firstItem="AIW-O3-EeB" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="16" id="Ws7-gS-eYb"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="b3n-rJ-Cwu" secondAttribute="trailing" constant="16" id="hv0-Vp-CKk"/>
+                <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="mqR-qG-EVr" secondAttribute="trailing" constant="16" id="lGy-ra-qVi"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="Pt3-Xf-IRQ" secondAttribute="trailing" id="mTm-7c-GnK"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="rr7-cT-5yE" secondAttribute="trailing" id="q2M-AL-sUx"/>
                 <constraint firstItem="rr7-cT-5yE" firstAttribute="top" secondItem="mqR-qG-EVr" secondAttribute="bottom" id="ylA-9O-VRP"/>
@@ -157,9 +157,6 @@
         </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
     </resources>
 </document>

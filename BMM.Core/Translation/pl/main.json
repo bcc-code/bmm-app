@@ -314,8 +314,8 @@
     "OptionContactHeader": "Kontakt",
     "OptionContactText": "Pytania lub uwagi? Skontaktuj się z zespołem tutaj.",
     "OptionAppVersionHeader": "Wersja aplikacji",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Usuń konto",
+    "OptionDeleteAccountText": "Poproś o usunięcie Twojego konta.",
     "AppInfoTitle": "Informacje o aplikacji",
     "AppInfoAppVersion": "Wersja aplikacji: ",
     "AppInfoManufacturer": "Producent: ",
@@ -333,7 +333,8 @@
     "ColorText": "Wybór niestandardowych motywów kolorystycznych",
     "SiriShortcutsHeader": "Skróty Siri",
     "SiriShortcutsText": "Dodaj skróty Siri dla BMM do swojego urządzenia",
-    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję."
+    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Miejsce przechowywania treści w trybie offline",
@@ -588,13 +589,16 @@
     "SubmitSuccess": "Sugestia edycji została pomyślnie przesłana, dziękujemy!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Zadaj pytanie",
+    "Submit": "Prześlij pytanie",
+    "Hint": "Twoje pytanie"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "ThankYou": "Dzięki za pytanie!",
+    "Description": "Wszystkie pytania zostaną rozpatrzone, a odpowiedzi na niektóre z nich pojawią się w podcaście. \n Na większość pytań odpowiemy na stronie pytań i odpowiedzi. \n\n Sprawdź ponownie w środę, aby przeczytać odpowiedzi.",
     "GotIt": "Rozumiem"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

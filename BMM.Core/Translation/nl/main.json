@@ -314,8 +314,8 @@
     "OptionContactHeader": "Contact",
     "OptionContactText": "Vragen of opmerkingen? Neem hier contact op met het BMM-team.",
     "OptionAppVersionHeader": "Versie van de app",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Account verwijderen",
+    "OptionDeleteAccountText": "Verzoek om verwijdering van uw account.",
     "AppInfoTitle": "App-informatie",
     "AppInfoAppVersion": "Versie van de app: ",
     "AppInfoManufacturer": "Fabrikant",
@@ -333,7 +333,8 @@
     "ColorText": "Kies tussen aangepaste kleurenthema's",
     "SiriShortcutsHeader": "Siri afkortingen",
     "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device ",
-    "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren."
+    "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Locatie voor offline nummers",
@@ -588,13 +589,16 @@
     "SubmitSuccess": "Wijzigingsvoorstel succesvol ingediend, dank je wel!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Een vraag stellen",
+    "Submit": "Vraag insturen",
+    "Hint": "Je vraag"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Monday to read the replies.",
+    "ThankYou": "Bedankt voor het vragen!",
+    "Description": "Alle vragen worden bekeken en sommige worden beantwoord in de podcast. \n De meeste vragen worden beantwoord op de Q&A pagina. \n\nKom woensdag terug om de antwoorden te lezen.",
     "GotIt": "Begrepen"
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

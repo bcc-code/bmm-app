@@ -200,8 +200,8 @@
   },
   "FollowedPodcastsViewModel": {
     "Title": "Abonnierte Podcasts",
-    "EmptyTitle": "Du hast zurzeit keine Podcast abonniert",
-    "EmptySubline": "Folge einem Podcast indem du den Podcast öffnest und dann abonnieren klickst."
+    "EmptyTitle": "Du hast zurzeit keine Podcasts abonniert",
+    "EmptySubline": "Folge einem Podcast, indem du den Podcast öffnest und dann abonnieren klickst."
   },
   "MyTracksViewModel": {
     "Title": "Meine Titel",
@@ -333,7 +333,8 @@
     "ColorText": "Wähle zwischen speziellen Farbthemen",
     "SiriShortcutsHeader": "Siri-Kurzbefehle",
     "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM ",
-    "PushNotificationsGoToSettings": "Leider können wir Push-Benachrichtigungen nicht aktivieren, da diese in den Einstellungen deines Geräts deaktiviert sind. Bitte erlaube Push-Benachrichtigungen in deinen Geräteeinstellungen, um diese Funktion zu aktivieren."
+    "PushNotificationsGoToSettings": "Leider können wir Push-Benachrichtigungen nicht aktivieren, da diese in den Einstellungen deines Geräts deaktiviert sind. Bitte erlaube Push-Benachrichtigungen in deinen Geräteeinstellungen, um diese Funktion zu aktivieren.",
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
@@ -594,7 +595,10 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Danke für deine Frage!",
-    "Description": "Alle Fragen werden überprüft und manche werden im Podcast beantwortet. \n Die meisten Fragen werden auf der Q&A Seite beantwortet. \n \n Schaue am Montag nach, um die Antworten zu lesen.",
+    "Description": "Alle Fragen werden besprochen und einige werden im Podcast beantwortet. \n Die meisten Fragen werden auf der Q&A-Seite beantwortet. \n\n Schaue am Mittwoch noch einmal vorbei, um die Antworten zu lesen.",
     "GotIt": "Verstanden! "
+  },
+  "AchievementsViewModel": {
+    "Title": "Achievements"
   }
 }

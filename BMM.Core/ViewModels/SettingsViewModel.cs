@@ -5,6 +5,7 @@ using Acr.UserDialogs;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.DebugInfo.Interfaces;
+using BMM.Core.GuardedActions.Navigation;
 using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
@@ -31,6 +32,7 @@ using BMM.Core.ViewModels.Base;
 using Microsoft.Maui.Devices;
 using MvvmCross;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
 using DeviceInfo = Microsoft.Maui.Devices.DeviceInfo;
 using IDeviceInfo = BMM.Core.Implementations.Device.IDeviceInfo;
@@ -64,6 +66,7 @@ namespace BMM.Core.ViewModels
         private readonly IChangeNotificationSettingStateAction _changeNotificationSettingStateAction;
         private readonly IResetAchievementAction _resetAchievementAction;
         private readonly IFeaturePreviewPermission _featurePreviewPermission;
+        private readonly IMvxNavigationService _mvxNavigationService;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -105,7 +108,8 @@ namespace BMM.Core.ViewModels
             INotificationPermissionService notificationPermissionService,
             IChangeNotificationSettingStateAction changeNotificationSettingStateAction,
             IResetAchievementAction resetAchievementAction,
-            IFeaturePreviewPermission featurePreviewPermission)
+            IFeaturePreviewPermission featurePreviewPermission,
+            IMvxNavigationService mvxNavigationService)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -130,6 +134,7 @@ namespace BMM.Core.ViewModels
             _changeNotificationSettingStateAction = changeNotificationSettingStateAction;
             _resetAchievementAction = resetAchievementAction;
             _featurePreviewPermission = featurePreviewPermission;
+            _mvxNavigationService = mvxNavigationService;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -210,7 +215,9 @@ namespace BMM.Core.ViewModels
                     Title = TextSource[Translations.SettingsViewModel_LoggedInAs],
                     UserProfileUrl = _profilePictureUrl,
                     Username = _userStorage.GetUser().FullName,
-                    EditProfileCommand = new ExceptionHandlingCommand(async () => _uriOpener.OpenUri(new Uri(_remoteConfig.EditProfileUrl)))
+                    EditProfileCommand = new ExceptionHandlingCommand(async () => _uriOpener.OpenUri(new Uri(_remoteConfig.EditProfileUrl))),
+                    AchievementsText = TextSource[Translations.SettingsViewModel_Achievements],
+                    AchievementsClickedCommand = new ExceptionHandlingCommand(async () => await _mvxNavigationService.Navigate<AchievementsViewModel>())
                 }
             };
         }
