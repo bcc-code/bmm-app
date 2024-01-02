@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Bližnjice za Siri",
     "SiriShortcutsText": "Dodaj bližnjice za Siri za BMM na svojo napravo",
     "PushNotificationsGoToSettings": "Ne moremo omogočiti potisnih sporočil, ker so onemogočena v nastavitvah. Za uporabo te funkcije\nomogoči potisna sporočila v nastavitvah naprave. ",
-    "Achievements": "Achievements"
+    "Achievements": "Dosežki"
   },
   "StorageManagementViewModel": {
     "Title": "Lokacija za skladbe brez povezave",
@@ -599,6 +599,6 @@
     "GotIt": "Razumem"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Dosežki"
   }
 }
