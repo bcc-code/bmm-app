@@ -6,8 +6,10 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Exceptions;
@@ -62,7 +64,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             _appLanguageProvider = new Mock<IAppLanguageProvider>();
 
             var discoverClient = new Mock<IDiscoverClient>();
-            discoverClient.Setup(x => x.GetDocuments(It.IsAny<string>(), It.IsAny<int?>(), It.IsAny<CachePolicy>()))
+            discoverClient.Setup(x => x.GetDocuments(It.IsAny<string>(), It.IsAny<int?>(), It.IsAny<AppTheme>(), It.IsAny<CachePolicy>()))
                 .ReturnsAsync(new List<Document>());
             _client.Setup(x => x.Discover).Returns(discoverClient.Object);
             _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
@@ -78,6 +80,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             var userStorage = new Mock<IUserStorage>();
             var config = new Mock<IFirebaseRemoteConfig>();
             config.Setup(x => x.SendAgeToDiscover).Returns(false);
+            var deviceInfo = new Mock<IDeviceInfo>();
             return new GlobalMediaDownloader(_storageManager.Object,
                 _exceptionHandler.Object,
                 _analytics.Object,
@@ -90,7 +93,8 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
                 _globalTrackProvider.Object,
                 _appLanguageProvider.Object,
                 userStorage.Object,
-                config.Object
+                config.Object,
+                deviceInfo.Object
             );
         }
 

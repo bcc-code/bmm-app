@@ -16,6 +16,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DeepLinking;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
@@ -54,6 +55,7 @@ namespace BMM.Core.ViewModels
         private readonly ICheckAndShowAchievementUnlockedScreenAction _checkAndShowAchievementUnlockedScreenAction;
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
+        private readonly IDeviceInfo _deviceInfo;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
@@ -67,7 +69,8 @@ namespace BMM.Core.ViewModels
             IFirebaseRemoteConfig config,
             IListeningStreakPOFactory listeningStreakPOFactory,
             IAddToQueueAdditionalMusic addToQueueAdditionalMusic,
-            ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction)
+            ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction,
+            IDeviceInfo deviceInfo)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -81,6 +84,7 @@ namespace BMM.Core.ViewModels
             _listeningStreakPOFactory = listeningStreakPOFactory;
             _addToQueueAdditionalMusic = addToQueueAdditionalMusic;
             _checkAndShowAchievementUnlockedScreenAction = checkAndShowAchievementUnlockedScreenAction;
+            _deviceInfo = deviceInfo;
             _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);
@@ -114,7 +118,7 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
-            var docs = (await Client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), age, policy)).ToList();
+            var docs = (await Client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), age, await _deviceInfo.GetCurrentTheme() , policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
             bool hideStreak = await _settings.GetStreakHidden();
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));

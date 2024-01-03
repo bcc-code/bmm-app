@@ -84,7 +84,7 @@
 
         public static string YearInReview = "statistics/year-in-review/overview";
         
-        public static string Discover = "discover{?lang,age}";
+        public static string Discover = "discover{?lang,age,theme}";
 
         public static string SharedPlaylist = "/shared_playlist/{sharingSecret}";
         public static string SharedPlaylistFollow = "/shared_playlist/{sharingSecret}/follow";
