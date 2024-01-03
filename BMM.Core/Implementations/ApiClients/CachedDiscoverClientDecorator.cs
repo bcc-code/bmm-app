@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Implementations.Caching;
 
 namespace BMM.Core.Implementations.ApiClients
@@ -19,10 +20,10 @@ namespace BMM.Core.Implementations.ApiClients
             _clientCache = clientCache;
         }
 
-        public Task<IEnumerable<Document>> GetDocuments(string lang, int? age, CachePolicy cachePolicy)
+        public Task<IEnumerable<Document>> GetDocuments(string lang, int? age, AppTheme theme, CachePolicy cachePolicy)
         {
             return _clientCache.Get(
-                () => _client.GetDocuments(lang, age, cachePolicy),
+                () => _client.GetDocuments(lang, age, theme, cachePolicy),
                 cachePolicy,
                 TimeSpan.FromMinutes(30),
                 CacheKeys.DiscoverGetDocuments

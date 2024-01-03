@@ -202,7 +202,6 @@ namespace BMM.UI.Droid.Application.Fragments.Base
 
             webView.Settings.JavaScriptEnabled = true;
             webView.Settings.DomStorageEnabled = true;
-            webView.SetBackgroundColor(Color.Black);
             webView.ShouldInterceptTouch = ShouldWebViewInterceptTouches;
 
             return webView;

@@ -9,8 +9,10 @@ using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
@@ -39,6 +41,7 @@ namespace BMM.Core.Implementations.Downloading
         private readonly IStorageManager _storageManager;
         private readonly IUserStorage _user;
         private readonly IFirebaseRemoteConfig _config;
+        private readonly IDeviceInfo _deviceInfo;
 
         public GlobalMediaDownloader(IStorageManager storageManager,
             IExceptionHandler exceptionHandler,
@@ -52,7 +55,8 @@ namespace BMM.Core.Implementations.Downloading
             IGlobalTrackProvider globalTrackProvider,
             IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
-            IFirebaseRemoteConfig config)
+            IFirebaseRemoteConfig config,
+            IDeviceInfo deviceInfo)
         {
             _storageManager = storageManager;
             _exceptionHandler = exceptionHandler;
@@ -67,6 +71,7 @@ namespace BMM.Core.Implementations.Downloading
             _appLanguageProvider = appLanguageProvider;
             _user = user;
             _config = config;
+            _deviceInfo = deviceInfo;
         }
 
         public async Task InitializeCacheAndSynchronizeTracks()
@@ -135,10 +140,13 @@ namespace BMM.Core.Implementations.Downloading
         /// <summary>
         /// Update the home screen so that people wake up to an updated version of the home screen and <see cref="ListeningStreak"/>.
         /// </summary>
-        private Task UpdateHomescreen()
+        private async Task UpdateHomescreen()
         {
             var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
-            return _client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), age, CachePolicy.UseCacheAndWaitForUpdates);
+            await _client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(),
+                age,
+                await _deviceInfo.GetCurrentTheme(),
+                CachePolicy.UseCacheAndWaitForUpdates);
         }
 
         private async Task UpdateOfflineTracks()
