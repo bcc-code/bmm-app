@@ -53,10 +53,9 @@ namespace BMM.UI.iOS.ViewController.Base
 
             var webView = WebView ?? new BmmWebView(WebBrowserContainer.Frame, webViewConfiguration);
             webView.BackgroundColor = UIColor.Clear;
-            webView.ScrollView.BackgroundColor = UIColor.Black;
             _activityIndicator = new UIActivityIndicatorView
             {
-                Color = UIColor.White,
+                Color = UIColor.Gray,
             };
 
             NavigationDelegate = new WkWebViewNavigationDelegate();
@@ -133,7 +132,7 @@ namespace BMM.UI.iOS.ViewController.Base
             if (webBrowserSubviews.Contains(WebView))
                 return;
 
-            WebBrowserContainer.BackgroundColor = UIColor.Black;
+            WebBrowserContainer.BackgroundColor = UIColor.Clear;
             WebBrowserContainer.AddSubview(WebView);
             WebBrowserContainer.AddSubview(_activityIndicator);
             ConfigureConstraints(WebView);

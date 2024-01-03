@@ -22,6 +22,7 @@ namespace BMM.Api.Implementation.Clients
             uri.SetParameter("lang", lang);
             if (age.HasValue)
                 uri.SetParameter("age", age.Value);
+            uri.SetParameter("theme", theme);
             return FilterUnsupportedDocuments((await Get<IEnumerable<Document>>(uri)).ToList());
         }
     }
