@@ -191,12 +191,12 @@
   },
   "MyContentViewModel": {
     "Title": "Любими",
-    "DownloadedContent": "Downloaded Content",
+    "DownloadedContent": "Изтеглено съдържание",
     "FollowedPodcasts": "Подкаст",
     "MyTracks": "Моите песни",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "MyPlaylists": "Моите списъци за изпълнение",
+    "SharedWithMe": "Споделено с мен",
+    "ByFormat": "от {0}"
   },
   "FollowedPodcastsViewModel": {
     "Title": "Подкаст",
@@ -215,11 +215,11 @@
     "AskToResumeDownloading": "Има нови елементи в този списък. Искаш ли да се възобнови изтеглянето?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Downloaded Content",
+    "Title": "Изтеглено съдържание",
     "FollowedPodcasts": "Подкаст",
     "MyTracks": "Моите песни",
-    "EmptyTitle": "You have not downloaded any content",
-    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+    "EmptyTitle": "Не сте изтеглили съдържание",
+    "EmptySubline": "Изтеглете плейлист или следвайте подкаст, за да го имате офлайн."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Подкаст",
@@ -235,9 +235,9 @@
     "GetNotifiedMessage": "когато излязат нови епизоди",
     "UnfollowConfirm": "Наистина ли искате да unfollow този подкаст?",
     "ToggleFollowOfflineError": "Трябва да си в режим на линия, за да последваш или да се откажеш да следваш подкаст",
-    "Week": "Week {0}",
-    "ThisWeek": "This week",
-    "LastWeek": "Last week",
+    "Week": "Седмица {0}",
+    "ThisWeek": "Тази седмица",
+    "LastWeek": "Миналата седмица",
     "AslaksenTheme1": "Вярвай в Бога на чудесата",
     "AslaksenTheme2": "Съразпнах се с Христа",
     "AslaksenTheme3": "Да се боиш от Бога и да го обичаш",
@@ -250,18 +250,18 @@
     "Title": "Списъци"
   },
   "PlayerViewModel": {
-    "Title": "Now playing",
+    "Title": "Сега се изпълнява",
     "PlayingCount": "{0} от {1}",
-    "ViewLyrics": "View Lyrics",
+    "ViewLyrics": "Преглед на текстове",
     "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
-    "Selected": "Selected",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "Minutes": "{0} минути",
+    "Hour": "{0} часа",
+    "Hours": "{0} часа",
+    "Disable": "Деактивиране",
+    "PlaybackSpeed": "Скорост на възпроизвеждане",
+    "Normal": "нормално",
+    "Selected": "Избрано",
+    "WatchOnBCCMedia": "Гледайте по BCC Media"
   },
   "QueueViewModel": {
     "Title": "Опашка"
@@ -269,28 +269,28 @@
   "SearchViewModel": {
     "Title": "Търси",
     "SearchHint": "Търси",
-    "SearchResults": "Results",
+    "SearchResults": "Резултати",
     "SearchHistory": "Скорошни търсения",
     "SearchSuggestions": "Имаше ли предвид: ",
     "WelcomeTitle": "Започни да търсиш тук!",
     "WelcomeSubTitle": "Използвайте полето за търсене да търсите съдържание на БММ",
     "DeleteConfirm": "Сигурен ли си, че искаш да изтриеш историята на търсене?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "",
+    "Speeches": "Речи",
     "Music": "Музика",
     "Albums": "Албуми",
-    "Contributors": "People",
+    "Contributors": "хора",
     "Podcasts": "Подкаст",
     "Playlists": "Списъци",
-    "NoResults": "No results",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "NoResults": "Няма резултати",
+    "NoResultsDescription": "Няма съвпадения при търсенето ви на \"{0}\"",
+    "SearchFailedTitle": "Търсенето е неуспешно",
+    "SearchFailedMessage": "За съжаление не можахме да търсим „{0}“ поради проблеми с връзката. Натиснете бутона по-долу, за да опитате отново."
   },
   "SettingsViewModel": {
     "Title": "Профил",
     "HeadlineSettings": "Настройки",
-    "OptionAutoplayHeader": "Autoplay",
+    "OptionAutoplayHeader": "Автоматично изпълнение",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
     "OptionStreakHeader": "Streak on Home",
     "OptionStreakText": "Show your listening statistic on the home screen",
