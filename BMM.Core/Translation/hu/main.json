@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Siri-parancsok",
     "SiriShortcutsText": "Siri-parancsok hozzáadása a BMM-re",
     "PushNotificationsGoToSettings": "Sajnos nem tudjuk engedélyezni a Push értesítéseket, mivel azok le vannak tiltva a készülék beállításaiban. Kérjük, engedélyezd a Push értesítések használatát a készülék beállításaiban, hogy engedélyezd ezt a funkciót.",
-    "Achievements": "Achievements"
+    "Achievements": "Eredmények"
   },
   "StorageManagementViewModel": {
     "Title": "Offline zeneszámok tárhelye",
@@ -599,6 +599,6 @@
     "GotIt": "Megvan"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Eredmények"
   }
 }

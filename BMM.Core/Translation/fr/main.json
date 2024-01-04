@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Raccourcis Siri",
     "SiriShortcutsText": "Ajouter des raccourcis Siri pour BMM à votre appareil",
     "PushNotificationsGoToSettings": "Nous ne pouvons malheureusement pas activer les notifications push car elles sont désactivées dans les paramètres de ton appareil. Autorise les notifications push dans les paramètres de ton appareil pour activer cette fonction.",
-    "Achievements": "Achievements"
+    "Achievements": "Réalisations"
   },
   "StorageManagementViewModel": {
     "Title": "Emplacement des titres hors-ligne",
@@ -599,6 +599,6 @@
     "GotIt": "J'ai compris"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Réalisations"
   }
 }

@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Siri-Kurzbefehle",
     "SiriShortcutsText": "Aktiviere Siri-Kurzbefehle für BMM ",
     "PushNotificationsGoToSettings": "Leider können wir Push-Benachrichtigungen nicht aktivieren, da diese in den Einstellungen deines Geräts deaktiviert sind. Bitte erlaube Push-Benachrichtigungen in deinen Geräteeinstellungen, um diese Funktion zu aktivieren.",
-    "Achievements": "Achievements"
+    "Achievements": "Errungenschaften"
   },
   "StorageManagementViewModel": {
     "Title": "Speicherort für Offline-Dateien",
@@ -599,6 +599,6 @@
     "GotIt": "Verstanden! "
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Errungenschaften"
   }
 }

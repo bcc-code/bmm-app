@@ -314,8 +314,8 @@
     "OptionContactHeader": "Contact",
     "OptionContactText": "Întrebări sau feedback? Contactaţi aici echipa.",
     "OptionAppVersionHeader": "Versiunea aplicației",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Ștergeți contul",
+    "OptionDeleteAccountText": "Solicitați ștergerea contului dumneavoastră.",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
     "AppInfoManufacturer": "Producător: ",
@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Scurtături pentru Siri",
     "SiriShortcutsText": "Adaugă dispozitivului tău Scurtăturile Siri pentru BMM",
     "PushNotificationsGoToSettings": "Din păcate, nu putem activa notificările push, deoarece acestea sunt dezactivate în setările dispozitivului tău. Te rugăm să permiți notificărilor push în setările dispozitivului tău pentru a activa această funcție.",
-    "Achievements": "Achievements"
+    "Achievements": "Realizări"
   },
   "StorageManagementViewModel": {
     "Title": "Locație pentru piesele offline",
@@ -541,12 +541,12 @@
     "Pause": "Pauză",
     "AutoTranscribedPopupTitleText": "Transcrierile sunt generate automat și pot conține erori",
     "AutoTranscribedPopupHeaderText": "Auto-transcris",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
+    "AutoTranscribedPopupSubtitleText": "Ajutați la îmbunătățirea transcrierii sugerând corecturi folosind \"Sugerați o modificare\".",
     "AutoTranscribedPopupButtonText": "Am înțeles",
     "FromSongTreasuresPopupTitleText": "Versurile sunt preluate din Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Din Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Descărcați aplicația Song Treasures pentru a vedea cântarea completă.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Sugerați o modificare"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Reguli pentru streaks",
@@ -582,23 +582,23 @@
     "PlayNext": "Redă următoarea"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Sugerați o modificare",
+    "Subtitle": "Modificați textul de mai jos pentru a corecta o eroare",
     "Cancel": "Anulare",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Trimite",
+    "SubmitSuccess": "Sugestiile de modificare au fost trimise cu succes, vă mulțumim!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Pune o întrebare",
+    "Submit": "Trimite întrebarea",
+    "Hint": "Întrebarea ta"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "ThankYou": "Vă mulțumim pentru întrebare!",
+    "Description": "Toate întrebările vor fi analizate, iar la unele dintre ele se va răspunde în podcast. \n La majoritatea întrebărilor se va răspunde pe pagina de întrebări și răspunsuri. \n\n Reveniți miercuri pentru a citi răspunsurile.",
     "GotIt": "Am înțeles"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Realizări"
   }
 }

@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Siri afkortingen",
     "SiriShortcutsText": "Voeg Siri afkortingen voor BMM toe aan je device ",
     "PushNotificationsGoToSettings": "Helaas kunnen we Push berichten niet activeren omdat ze uitgeschakeld staan in je apparaat instellingen. Sta notificaties toe in je instellingen om deze functie te activeren.",
-    "Achievements": "Achievements"
+    "Achievements": "Prestaties"
   },
   "StorageManagementViewModel": {
     "Title": "Locatie voor offline nummers",
@@ -599,6 +599,6 @@
     "GotIt": "Begrepen"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Prestaties"
   }
 }

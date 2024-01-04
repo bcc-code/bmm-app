@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Skróty Siri",
     "SiriShortcutsText": "Dodaj skróty Siri dla BMM do swojego urządzenia",
     "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję.",
-    "Achievements": "Achievements"
+    "Achievements": "Osiągnięcia"
   },
   "StorageManagementViewModel": {
     "Title": "Miejsce przechowywania treści w trybie offline",
@@ -599,6 +599,6 @@
     "GotIt": "Rozumiem"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Osiągnięcia"
   }
 }

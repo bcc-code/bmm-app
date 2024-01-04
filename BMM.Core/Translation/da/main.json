@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Siri genveje",
     "SiriShortcutsText": "Tilføj Siri genveje for BMM til din enhed",
     "PushNotificationsGoToSettings": "Desværre kan vi ikke aktivere push-meddelelser, da de er deaktiveret i dine enhedsindstillinger. Tillad venligst push-meddelelser i dine enhedsindstillinger for at aktivere denne funktion.",
-    "Achievements": "Achievements"
+    "Achievements": "Præstationer"
   },
   "StorageManagementViewModel": {
     "Title": "Lagringsplads til offline indhold",
@@ -599,6 +599,6 @@
     "GotIt": "Forstået"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Præstationer"
   }
 }
