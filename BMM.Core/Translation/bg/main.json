@@ -568,28 +568,28 @@
     "IconRed": "червен"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
-    "GotIt": "Схванах го",
-    "ActivateTheme": "Activate Theme",
+    "Title": "постижение",
+    "Unlocked": "Отключен",
+    "ActivatePremiumIcon": "Активиране на символа на приложението",
+    "GotIt": "Имам го",
+    "ActivateTheme": "Активиране на темата",
     "Close": "Затвори",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
-    "RewardIos": "An exclusive app icon for your BMM app 🤩",
-    "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!",
+    "Reward": "Награда",
+    "RewardAndroid": "Ексклузивна цветова тема за вашето BMM приложение 🤩",
+    "RewardIos": "Ексклузивна икона на приложение за вашето BMM приложение 🤩",
+    "RewardAndroidGolden": "Изключителна цветна тема за вашето BMM приложение. Вие също участвате в томболата за чифт AirPods Pro. Добра работа!",
+    "RewardIosGolden": "Изключителна цветна тема за вашето BMM приложение. Вие също участвате в томболата за чифт AirPods Pro. Добра работа!",
     "PlayNext": "Пуснете следващите"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Предложете редакция",
+    "Subtitle": "Редактирайте текста по-долу, за да коригирате грешка",
     "Cancel": "Отказ",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Изпращане",
+    "SubmitSuccess": "Предложенията за редактиране са изпратени успешно, благодаря!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
+    "Title": "",
     "Submit": "Submit question",
     "Hint": "Your question"
   },
