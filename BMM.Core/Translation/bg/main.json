@@ -331,18 +331,18 @@
     "ThemeText": "Изберете между светъл и тъмен дизайн",
     "ColorHeader": "Цветен дизайн",
     "ColorText": "Изберете между персонализирани цветни дизайни",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature.",
-    "Achievements": "Achievements"
+    "SiriShortcutsHeader": "Преки задания за Siri",
+    "SiriShortcutsText": "Добавете Siri Shortcuts за BMM към вашето устройство",
+    "PushNotificationsGoToSettings": "За съжаление не можем да активираме Push Notifications, тъй като те са деактивирани в настройките на вашето устройство. Моля, разрешете Push Notifications в настройките на вашето устройство, за да активирате тази функция.",
+    "Achievements": "постижения"
   },
   "StorageManagementViewModel": {
     "Title": "Място за песни/речи извън линия",
-    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+    "RemoveAllFiles": "Искате ли да изберете ново място за съхранение и да премахнете всички офлайн записи?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
+    "PluralTracks": "Нови песни и речи",
+    "PluralTracksLoaded": "Заредени са {0} песни",
     "Download": "Изтегли",
     "Shuffle": "Разбъркайте",
     "Play": "Пусни"
@@ -530,37 +530,37 @@
   "TopSongsCollectionViewModel": {
     "Title": "Топ песни",
     "PlaysPlural": "{0} повторения",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "PlaysSingular": "{0} повторения",
+    "AddToMyPlaylist": "Добавете плейлист към любими",
+    "SuccessfullyAddedToPlaylists": "Успешно добавен към любими"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
-    "FromSongTreasures": "From Song Treasures",
+    "AutoTranscribed": "Автоматично прехвърляне на тон в текст",
+    "FromSongTreasures": "От съкровищата на песента",
     "AddTo": "Прибави към списъка",
     "Pause": "Пауза",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
-    "AutoTranscribedPopupButtonText": "Got it",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
-    "SuggestEdit": "Suggest edit"
+    "AutoTranscribedPopupTitleText": "Преписите се генерират автоматично и може да съдържат грешки",
+    "AutoTranscribedPopupHeaderText": "Автоматично прехвърляне на тон в текст",
+    "AutoTranscribedPopupSubtitleText": "",
+    "AutoTranscribedPopupButtonText": "Схванах го",
+    "FromSongTreasuresPopupTitleText": "Текстовете са извлечени от Song Treasures.",
+    "FromSongTreasuresPopupHeaderText": "От съкровищата на песента",
+    "FromSongTreasuresPopupSubtitleText": "Изтеглете приложението Song Treasures, за да видите цялата песен.",
+    "SuggestEdit": "Предложете редакция"
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
-    "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "StreakTerms": "Правила за състезание",
+    "ProgressTitle": "Вашият напредък",
+    "StreakThisWeek": "Вашата серия тази седмица",
+    "Days": "Дни",
+    "Boost": "Увеличете",
+    "Points": "Точки",
+    "Achievements": "Вашите постижения"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "IconStandard": "Standard",
+    "Title": "Символ на приложението",
+    "Description": "Променете символа на приложението",
+    "IconStandard": "Стандартен",
     "IconDarkGreen": "Тъмнозелено",
     "IconOrange": "оранжав",
     "IconGolden": "Златен",
@@ -571,7 +571,7 @@
     "Title": "Achievement",
     "Unlocked": "Unlocked",
     "ActivatePremiumIcon": "Activate App Icon",
-    "GotIt": "Got it",
+    "GotIt": "Схванах го",
     "ActivateTheme": "Activate Theme",
     "Close": "Затвори",
     "Reward": "Reward",
@@ -596,9 +596,9 @@
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
-    "GotIt": "Got it"
+    "GotIt": "Схванах го"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "постижения"
   }
 }
