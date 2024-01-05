@@ -543,10 +543,10 @@
     "AutoTranscribedPopupHeaderText": "Автоматическая расшифровка текста",
     "AutoTranscribedPopupSubtitleText": "Помогите улучшить расшифровку текста, предложив исправления с помощью функции «Предложить правку».",
     "AutoTranscribedPopupButtonText": "Понятно",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupTitleText": "Слова песни взяты из Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Из Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
-    "SuggestEdit": "Suggest edit"
+    "FromSongTreasuresPopupSubtitleText": "Загрузите приложение Song Treasures, чтобы увидеть песню целиком.",
+    "SuggestEdit": "Предложить правку"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Правила для страйков",
@@ -582,20 +582,20 @@
     "PlayNext": "Проиграть следующую"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Предложить правку",
+    "Subtitle": "Отредактируйте текст ниже, чтобы исправить ошибку",
     "Cancel": "Отмена",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Отправить",
+    "SubmitSuccess": "Предложения по правкам успешно отправлены, спасибо!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Задать вопрос",
+    "Submit": "Отправить вопрос",
+    "Hint": "Ваш вопрос"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "ThankYou": "Спасибо за ваш вопрос!",
+    "Description": "Все вопросы будут рассмотрены и на некоторые из них ответы будут даны в подкасте. \n На большинство вопросов вы найдете ответы на странице \"Вопросы и ответы\". \n\n Загляните  в среду, чтобы прочитать ответы.",
     "GotIt": "Понятно"
   },
   "AchievementsViewModel": {
