@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Ярлыки Сири",
     "SiriShortcutsText": "Добавьте ярлыки Siri для BMM на свое устройство",
     "PushNotificationsGoToSettings": "К сожалению, мы не можем присылать Push-уведомления, так как они отключены в настройках вашего устройства. Пожалуйста, разрешите Push-уведомления в настройках устройства, чтобы включить эту функцию.",
-    "Achievements": "Achievements"
+    "Achievements": "Достижения"
   },
   "StorageManagementViewModel": {
     "Title": "Расположение офлайн-дорожек",
@@ -493,16 +493,16 @@
     "DownloadingFinished": "Все файлы были загружены!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "События",
     "AudiobooksTitle": "Аудиокниги",
     "MusicTitle": "Музыка",
     "PodcastsTitle": "Подкасты"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Настройки темного режима",
+    "Light": "Светлый",
+    "Dark": "Темный",
+    "System": "Включить системные настройки (Авто)"
   },
   "ColorThemeViewModel": {
     "Title": "Цветовая тема",
@@ -514,37 +514,37 @@
     "Orange": "Оранжевая"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Язык дорожек",
+    "PreferredLanguages": "Предпочитаемые языки",
     "AllLanguages": "Все языки"
   },
   "SiriShortcutsViewModel": {
     "Title": "Ярлыки Сири",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "ShortcutAlreadyAdded": "Этот ярлык уже добавлен"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Ваши итоги года",
+    "Share": "Поделитесь с друзьями",
+    "ShareTitle": "Итоги года"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "Title": "Топ песен",
+    "PlaysPlural": "{0} проигрываний",
+    "PlaysSingular": "проигрывание",
+    "AddToMyPlaylist": "Добавить плейлист в избранное",
+    "SuccessfullyAddedToPlaylists": "Успешно добавлено в избранное"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
-    "FromSongTreasures": "From Song Treasures",
+    "AutoTranscribed": "Автоматическая расшифровка текста",
+    "FromSongTreasures": "Из Song Treasures",
     "AddTo": "Добавить в плейлист",
     "Pause": "Пауза",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
-    "AutoTranscribedPopupButtonText": "Got it",
+    "AutoTranscribedPopupTitleText": "Расшифровки генерируются автоматически и могут содержать ошибки.",
+    "AutoTranscribedPopupHeaderText": "Автоматическая расшифровка текста",
+    "AutoTranscribedPopupSubtitleText": "Помогите улучшить расшифровку текста, предложив исправления с помощью функции «Предложить правку».",
+    "AutoTranscribedPopupButtonText": "Понятно",
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupHeaderText": "Из Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
     "SuggestEdit": "Suggest edit"
   },
@@ -596,9 +596,9 @@
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
-    "GotIt": "Got it"
+    "GotIt": "Понятно"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Достижения"
   }
 }
