@@ -154,77 +154,77 @@
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "{0} {1} அல்லது அதற்குப் பிறகு இயங்கும் ஃபோன்களுக்கான ஆதரவை விரைவில் நிறுத்துவோம். முடிந்தால், உங்கள் மொபைலைப் புதுப்பிக்கவும்.",
-    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
-    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
-    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
-    "UpdateButton": "Update"
+    "DeviceSupportEnded": "துரதிர்ஷ்டவசமாக, {0} {1}ஐ விடப் பழைய சாதனங்களை நாங்கள் இனி ஆதரிக்கமாட்டோம். உங்கள் சாதனத்தைப் புதுப்பிக்கவும் அல்லது புதிய மொபைலுக்கு மேம்படுத்தவும்.",
+    "AppSupportEnding": "நீங்கள் BMM பயன்பாட்டின் பழைய பதிப்பைப் பயன்படுத்துகிறீர்கள். அந்த பதிப்பிற்கான ஆதரவை விரைவில் நிறுத்துவோம். BMMஐப் புதுப்பிக்கவும்.",
+    "AppSupportEnded": "நீங்கள் BMM பயன்பாட்டின் பழைய பதிப்பைப் பயன்படுத்துகிறீர்கள், இது இனி ஆதரிக்கப்படாது. BMMஐப் புதுப்பிக்கவும்.",
+    "UpdateButton": "புதுப்பிக்கவும்"
   },
   "LanguageAppViewModel": {
-    "Title": "App language"
+    "Title": "பயன்பாட்டு மொழி"
   },
   "LanguageContentViewModel": {
-    "Title": "Content languages",
-    "Dialog.Title": "Select a language",
-    "Dialog.Cancel": "Cancel",
-    "Toast.LanguagesStillLoading": "The list is still loading. Please try again in a few seconds.",
-    "Toast.NoLanguagesAvailable": "It appears that no connection is available to load the list of languages.",
-    "DeleteLanguageMessage": "You must select at least one content language",
-    "DeleteLanguageTitle": "Cannot remove {0}"
+    "Title": "உள்ளடக்க மொழிகள்",
+    "Dialog.Title": "ஒரு மொழியைத் தேர்ந்தெடுக்கவும்",
+    "Dialog.Cancel": "ரத்து செய்",
+    "Toast.LanguagesStillLoading": "பட்டியல் இன்னும் ஏற்றப்படுகிறது. சில நொடிகளில் மீண்டும் முயற்சிக்கவும்.",
+    "Toast.NoLanguagesAvailable": "மொழிகளின் பட்டியலை ஏற்றுவதற்கு இணைப்பு எதுவும் இல்லை என்று தோன்றுகிறது.",
+    "DeleteLanguageMessage": "குறைந்தபட்சம் ஒரு உள்ளடக்க மொழியையாவது தேர்ந்தெடுக்க வேண்டும்",
+    "DeleteLanguageTitle": "{0}அகற்ற முடியாது"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "உலாவு"
   },
   "LibraryArchiveViewModel": {
-    "Title": "Archive"
+    "Title": "காப்பகம்"
   },
   "MenuViewModel": {
-    "Title": "Menu",
+    "Title": "பட்டியல்",
     "Search": "தேடு",
-    "Explore": "Explore",
-    "MyContent": "My Content",
-    "Browse": "Browse",
+    "Explore": "சுத்திபார்",
+    "MyContent": "எனது உள்ளடக்கம்",
+    "Browse": "உலாவு",
     "Settings": "அமைப்புகள்",
-    "HelpAndFeedback": "Help and Feedback",
-    "Home": "Home",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "HelpAndFeedback": "உதவி மற்றும் கருத்து",
+    "Home": "முகப்பு ",
+    "Favorites": "பிடித்தவை",
+    "Profile": "சுயவிவரம்"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
+    "Title": "பிடித்தவை",
     "DownloadedContent": "பதிவிறக்கம் செய்யப்பட்டவை ",
-    "FollowedPodcasts": "Followed Podcasts",
-    "MyTracks": "My Tracks",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
-    "ByFormat": "by {0}"
+    "FollowedPodcasts": "பின்தொடரும் பாட்காஸ்ட்கள்",
+    "MyTracks": "என் பாடல்கள் ",
+    "MyPlaylists": "எனது பிளேலிஸ்ட்கள்",
+    "SharedWithMe": "என்னுடன் பகிர்ந்து கொண்டவை",
+    "ByFormat": "{0}மூலம்"
   },
   "FollowedPodcastsViewModel": {
-    "Title": "Followed Podcasts",
-    "EmptyTitle": "You are currently not following any podcast",
-    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+    "Title": "பின்தொடரும் பாட்காஸ்ட்கள்",
+    "EmptyTitle": "நீங்கள் தற்போது எந்த பாட்காஸ்டையும் பின்தொடரவில்லை",
+    "EmptySubline": "பாட்காஸ்டைத் திறந்து பின்தொடரும் பொத்தானைக் கிளிக் செய்வதன் மூலம் பாட்காஸ்ட்டைப் பின்தொடரவும்."
   },
   "MyTracksViewModel": {
-    "Title": "My Tracks",
-    "ShufflePlay": "Shuffle Play",
-    "AvailableOffline": "Available offline",
-    "AvailableOfflineDownload": "Download playlist",
-    "AvailableOfflineDownloading": "{0} of {1} downloads remaining",
-    "RemoveOfflineConfirm": "Do you really want to delete all downloaded items?",
-    "EmptyTitle": "This playlist is empty",
-    "EmptySubline": "Press the three dots on a track to add the track to this track list.",
-    "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?"
+    "Title": "என் பாடல்கள் ",
+    "ShufflePlay": "பாடல்களைக் கல  ",
+    "AvailableOffline": "ஆஃப்லைனில் கிடைக்கும்",
+    "AvailableOfflineDownload": "பிளேலிஸ்ட்டைப் பதிவிறக்கவும்",
+    "AvailableOfflineDownloading": "{1} இல் {0} பதிவிறக்கம் மீதமுள்ளது",
+    "RemoveOfflineConfirm": "பதிவிறக்கம் செய்யப்பட்ட அனைத்தையும் உண்மையில் நீக்க விரும்புகிறீர்களா?",
+    "EmptyTitle": "இந்த பிளேலிஸ்ட் காலியாக உள்ளது",
+    "EmptySubline": "இந்தப் பாடல் பட்டியலில் பாடலைச் சேர்க்க, ஒரு பாடலில் உள்ள மூன்று புள்ளிகளை அழுத்தவும்.",
+    "AskToResumeDownloading": "இந்தப் பிளேலிஸ்ட்டில் புதிய உருப்படிகள் உள்ளன. பதிவிறக்கத்தை மீண்டும் தொடங்க விரும்புகிறீர்களா?"
   },
   "DownloadedContentViewModel": {
     "Title": "பதிவிறக்கம் செய்யப்பட்டவை ",
-    "FollowedPodcasts": "Followed Podcasts",
-    "MyTracks": "My Tracks",
-    "EmptyTitle": "You have not downloaded any content",
-    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+    "FollowedPodcasts": "பின்தொடரும் பாட்காஸ்ட்கள்",
+    "MyTracks": "என் பாடல்கள் ",
+    "EmptyTitle": "நீங்கள் எந்த உள்ளடக்கத்தையும் பதிவிறக்கம் செய்யவில்லை",
+    "EmptySubline": "பிளேலிஸ்ட்டைப் பதிவிறக்கவும் அல்லது பாட்காஸ்டைப் பின்தொடரவும்."
   },
   "DownloadedFollowedPodcastsViewModel": {
-    "Title": "Followed Podcasts",
-    "EmptyTitle": "You are currently not following any podcast",
-    "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
+    "Title": "பின்தொடரும் பாட்காஸ்ட்கள்",
+    "EmptyTitle": "நீங்கள் தற்போது எந்த பாட்காஸ்டையும் பின்தொடரவில்லை",
+    "EmptySubline": "பாட்காஸ்டைத் திறந்து பின்தொடரும் பொத்தானைக் கிளிக் செய்வதன் மூலம் பாட்காஸ்ட்டைப் பின்தொடரவும்."
   },
   "PodcastViewModel": {
     "Title": "பாட்காஸ்ட்",
@@ -244,7 +244,7 @@
     "AslaksenTheme4": "Humility is everything"
   },
   "CuratedPlaylistViewModel": {
-    "Title": "Playlist"
+    "Title": "பிளேலிஸ்ட்"
   },
   "CuratedPlaylistsViewModel": {
     "Title": "பிளேலிஸ்ட்கள்"
@@ -288,7 +288,7 @@
     "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "சுயவிவரம்",
     "HeadlineSettings": "அமைப்புகள்",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
@@ -297,77 +297,77 @@
     "OptionEnablePushHeader": "Enable push notifications",
     "OptionPushNotifications": "Push Notifications",
     "OptionPushNotificationsSubtitle": "Enable push notifications for podcasts you follow",
-    "OptionExternalStorage": "Storage location",
-    "OptionMBInternalText": "Internal {0} MB free",
-    "OptionMBExternalText": "External {0} MB free",
-    "OptionEnablePushText": "Receive push notifications when there is new content available",
-    "OptionDownloadMobileNetworkHeader": "Download via mobile network",
-    "OptionDownloadMobileNetworkText": "Let the app download playlists using 3G/4G. This may affect your data plan",
-    "HeadlineGeneral": "General",
-    "OptionLanguageAppHeader": "App language",
-    "OptionLanguageAppText": "Change the language of the app",
-    "OptionLanguageContentHeader": "Content language",
-    "OptionLanguageContentText": "Choose and prioritize languages for all content you see",
-    "HeadlineAbout": "About",
+    "OptionExternalStorage": "சேமிப்பு இடம்",
+    "OptionMBInternalText": "உள் {0} MB மீதமுள்ளது",
+    "OptionMBExternalText": "வெளிப்புற {0} MB மீதமுள்ளது",
+    "OptionEnablePushText": "புதிய உள்ளடக்கம் கிடைக்கும்போது புஷ் அறிவிப்புகளைப் பெறவும்",
+    "OptionDownloadMobileNetworkHeader": "மொபைல் நெட்வொர்க் மூலம் பதிவிறக்கவும்",
+    "OptionDownloadMobileNetworkText": "3G/4Gஐப் பயன்படுத்தி பிளேலிஸ்ட்களைப் பதிவிறக்க செயலியை அனுமதிக்கவும். இது உங்கள் தரவுத் திட்டத்தைப் பாதிக்கலாம்",
+    "HeadlineGeneral": "பொது",
+    "OptionLanguageAppHeader": "பயன்பாட்டு மொழி",
+    "OptionLanguageAppText": "செயலியின் மொழியை மாற்றவும்",
+    "OptionLanguageContentHeader": "உள்ளடக்க மொழிகள்",
+    "OptionLanguageContentText": "நீங்கள் பார்க்கும் அனைத்து உள்ளடக்கத்திற்கும் மொழிகளைத் தேர்ந்தெடுத்து முன்னுரிமை கொடுங்கள்",
+    "HeadlineAbout": "பற்றி",
     "OptionCopyrightHeader": "காப்புரிமை",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
-    "OptionContactHeader": "Contact",
-    "OptionContactText": "Questions or feedback? Contact the team here.",
-    "OptionAppVersionHeader": "App version",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
-    "AppInfoTitle": "App information",
-    "AppInfoAppVersion": "App version: ",
-    "AppInfoManufacturer": "Manufacturer: ",
-    "AppInfoDeviceModel": "Device model: ",
-    "AppInfoDevicePlatform": "Device platform: ",
-    "AppInfoDeviceVersion": "Device version: ",
-    "LoggedInAs": "Signed in as",
-    "LogoutConfirm": "Are you sure you want to log out?",
-    "Logout": "Log out",
-    "UserVoiceHeader": "User Voice",
-    "UserVoiceText": "Got ideas on how to improve BMM? Tell us about it.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
-    "ColorHeader": "Color Theme",
-    "ColorText": "Choose between custom color themes",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature.",
-    "Achievements": "Achievements"
+    "OptionContactHeader": "தொடர்பு கொள்ளவும்",
+    "OptionContactText": "கேள்விகள் அல்லது கருத்து? குழுவை இங்கே தொடர்பு கொள்ளவும்.",
+    "OptionAppVersionHeader": "செயலியின் பதிப்பு",
+    "OptionDeleteAccountHeader": "கணக்கை நீக்குக",
+    "OptionDeleteAccountText": "உங்கள் கணக்கை நீக்குமாறு கோரவும்.",
+    "AppInfoTitle": "செயலியின் தகவல்",
+    "AppInfoAppVersion": "செயலியின் பதிப்பு",
+    "AppInfoManufacturer": "உற்பத்தியாளர்: ",
+    "AppInfoDeviceModel": "சாதன அமைப்பு: ",
+    "AppInfoDevicePlatform": "சாதன தளம்: ",
+    "AppInfoDeviceVersion": "சாதனத்தின் பதிப்பு: ",
+    "LoggedInAs": "என உள்நுழைந்துள்ளார்",
+    "LogoutConfirm": "நிச்சயமாக வெளியேற விரும்புகிறீர்களா?",
+    "Logout": "வெளியேறு",
+    "UserVoiceHeader": "பயனர் குரல்",
+    "UserVoiceText": "BMM ஐ எவ்வாறு மேம்படுத்துவது என்பது குறித்த யோசனைகள் உள்ளதா? அதைப் பற்றி எங்களிடம் கூறுங்கள்.",
+    "ThemeHeader": "டார்க் மோட்",
+    "ThemeText": "லைட் மற்றும் டார்க்  தீம் இடையே தேர்வு செய்யவும்",
+    "ColorHeader": "கலர் தீம்",
+    "ColorText": "தனிப்பயன் கலர் தீம்களுக்கு இடையே தேர்வு செய்யவும்",
+    "SiriShortcutsHeader": "Siri குறுக்குவழிகள்",
+    "SiriShortcutsText": "உங்கள் சாதனத்தில் BMMக்கான Siri குறுக்குவழிகளைச் சேர்க்கவும்",
+    "PushNotificationsGoToSettings": "துரதிர்ஷ்டவசமாக, உங்கள் சாதன அமைப்புகளில் புஷ் அறிவிப்புகள் முடக்கப்பட்டிருப்பதால் எங்களால் அவற்றை இயக்க முடியாது. இந்த அம்சத்தை இயக்க, உங்கள் சாதன அமைப்புகளில் புஷ் அறிவிப்புகளை அனுமதிக்கவும்.",
+    "Achievements": "சாதனைகள்"
   },
   "StorageManagementViewModel": {
-    "Title": "Location for offline tracks",
-    "RemoveAllFiles": "Do you want to select a new storage location and remove all offline tracks?"
+    "Title": "ஆஃப்லைன் பாடலுக்களுக்கான இடம்",
+    "RemoveAllFiles": "புதிய சேமிப்பக இருப்பிடத்தைத் தேர்ந்தெடுத்து ஆஃப்லைன் பாடல்கள் அனைத்தையும் அகற்ற விரும்புகிறீர்களா?"
   },
   "DocumentsViewModel": {
-    "PluralTracks": "{0} tracks",
-    "PluralTracksLoaded": "{0} tracks loaded",
-    "Download": "Download",
-    "Shuffle": "Shuffle",
-    "Play": "Play"
+    "PluralTracks": "{0} பாடல்கள் ",
+    "PluralTracksLoaded": "{0} பாடல்கள் ஏற்றப்பட்டன",
+    "Download": "பதிவிறக்கு ",
+    "Shuffle": "கலக்கு",
+    "Play": "பிளே"
   },
   "TrackCollectionViewModel": {
-    "Title": "Playlist",
-    "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
-    "AvailableOffline": "Available offline",
-    "AvailableOfflineDownload": "Download",
-    "AvailableOfflineDownloading": "{0} of {1} downloads remaining",
-    "RemoveOfflineConfirm": "Do you really want to delete all downloaded items?",
-    "CreatePrompt": "Enter a playlist name",
-    "CreateFailure": "Failed to create playlist",
-    "DeleteConfirm": "Are you sure you want to delete the playlist \"{0}\"?",
+    "Title": "பிளேலிஸ்ட்",
+    "ShufflePlay": "கலக்கு",
+    "Resume": "மறுபடி தொடங்கு",
+    "AvailableOffline": "ஆஃப்லைனில் கிடைக்கும்",
+    "AvailableOfflineDownload": "பதிவிறக்கு ",
+    "AvailableOfflineDownloading": "{1} இல் {0} பதிவிறக்கம் மீதமுள்ளது",
+    "RemoveOfflineConfirm": "பதிவிறக்கம் செய்யப்பட்ட அனைத்தையும் உண்மையில் நீக்க விரும்புகிறீர்களா?",
+    "CreatePrompt": "பிளேலிஸ்ட் பெயரை உள்ளிடவும்",
+    "CreateFailure": "பிளேலிஸ்ட்டை உருவாக்க முடியவில்லை",
+    "DeleteConfirm": "\"{0}\" பிளேலிஸ்ட்டை நிச்சயமாக நீக்க விரும்புகிறீர்களா?",
     "DeleteFailure": "Failed to delete the playlist \"{0}\"",
     "CreateEmptyFailure": "Enter a title to create a playlist",
     "RenameEmptyFailure": "Enter a title to rename playlist",
     "SearchHint": "தேடு",
-    "EmptyTitle": "This playlist is empty",
+    "EmptyTitle": "இந்த பிளேலிஸ்ட் காலியாக உள்ளது",
     "EmptySubline": "Press the three dots on a track to add the track to this playlist.",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
-    "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?",
+    "AskToResumeDownloading": "இந்தப் பிளேலிஸ்ட்டில் புதிய உருப்படிகள் உள்ளன. பதிவிறக்கத்தை மீண்டும் தொடங்க விரும்புகிறீர்களா?",
     "Private": "Private",
-    "DeletePlaylist": "Delete playlist",
+    "DeletePlaylist": "பிளேலிஸ்ட்டை நீக்கு",
     "EditPlaylist": "Edit playlist",
     "SharePlaylist": "Share playlist",
     "RemovePlaylist": "Remove playlist"
@@ -397,9 +397,9 @@
     "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
-    "Title": "Playlist",
+    "Title": "பிளேலிஸ்ட்",
     "MenuDelete": "Delete",
-    "DeleteConfirm": "Are you sure you want to delete the playlist \"{0}\"?",
+    "DeleteConfirm": "\"{0}\" பிளேலிஸ்ட்டை நிச்சயமாக நீக்க விரும்புகிறீர்களா?",
     "DeleteFailure": "Failed to delete the playlist \"{0}\"",
     "ShufflePlay": "Shuffle Play",
     "SearchHint": "தேடு"
@@ -412,7 +412,7 @@
     "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
     "FailedToAddAlbum": "Failed to add the album to the playlist because it contains albums.",
     "FailedToAddUnknownType": "Adding a \"{0}\" to a playlist is currently not supported.",
-    "CreatePlaylistPrompt": "Enter a playlist name",
+    "CreatePlaylistPrompt": "பிளேலிஸ்ட் பெயரை உள்ளிடவும்",
     "TrackAddedToTrackCollection": "Added to the playlist"
   },
   "UserDialogs": {
@@ -435,43 +435,43 @@
     "Track.Download": "Download track",
     "Track.MoreInformation": "More information",
     "Track.Share": "Share track",
-    "Album.Play": "Play",
-    "Album.AddToPlaylist": "Add album to playlist",
-    "Album.AddToMyTracks": "Add album to My Tracks",
-    "Album.AddedToMyTracks": "Album added to My Tracks",
-    "Album.AddToQueue": "Add to queue",
-    "Album.Share": "Share album",
+    "Album.Play": "பிளே",
+    "Album.AddToPlaylist": "பிளேலிஸ்ட்டில் ஆல்பத்தைச் சேர்க்கவும்",
+    "Album.AddToMyTracks": "எனது பாடல்களில் ஆல்பத்தைச் சேர்க்கவும்",
+    "Album.AddedToMyTracks": "எனது பாடல்களில் ஆல்பம் சேர்க்கப்பட்டது",
+    "Album.AddToQueue": "வரிசையில் சேர்",
+    "Album.Share": "ஆல்பத்தைப் பகிரவும்",
     "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
-    "FailedToAddAlbum": "Failed to add the album to the playlist because it contains albums.",
+    "FailedToAddAlbum": "ஆல்பத்தை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை, ஏனெனில் அதில் ஆல்பங்கள் உள்ளன.",
     "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
     "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
-    "FailedToAddUnknownType": "Adding a \"{0}\" to a playlist is currently not supported.",
-    "MyTracks": "My Tracks",
-    "Contributor.Play": "Play",
-    "Contributor.Share": "Share contributor",
-    "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
-    "Cancel": "Cancel"
+    "FailedToAddUnknownType": "பிளேலிஸ்ட்டில் \"{0}\"ஐ சேர்ப்பது தற்போது ஆதரிக்கப்படவில்லை.",
+    "MyTracks": "என் பாடல்கள் ",
+    "Contributor.Play": "பிளே",
+    "Contributor.Share": "பங்களிப்பாளரைப் பகிரவும் ",
+    "OfflineTrackCollection.DeletePlaylist": "பிளேலிஸ்ட்டை நீக்கு",
+    "Cancel": "ரத்து செய்"
   },
   "Notifications": {
-    "Downloading": "Downloading {0}",
-    "ItemsDownloaded": "Item {0} of {1}"
+    "Downloading": "பதிவிறக்குகிறது {0}",
+    "ItemsDownloaded": "{1}இல் உருப்படி {0}"
   },
   "PodcastsViewModel": {
-    "Title": "Podcasts"
+    "Title": "பாட்காஸ்ட்கள்"
   },
   "TrackInfoViewModel": {
     "ExternalReferences": "வெளிப்புற குறிப்புகள்",
-    "AboutTrack": "About the track",
-    "Title": "Track information",
-    "TrackTitle": "Title",
+    "AboutTrack": "பாடலைப் பற்றி",
+    "Title": "பாடலைப் பற்றிய தகவல் ",
+    "TrackTitle": "தலைப்பு",
     "SongNumber": "பாடல் எண்",
-    "Album": "Album",
-    "Artist": "Artist",
+    "Album": "ஆல்பம்",
+    "Artist": "கலைஞர்",
     "Duration": "கால அளவு",
-    "PublishDate": "Publish date",
-    "Lyricist": "Lyricist",
+    "PublishDate": "வெளியிடும் தேதி",
+    "Lyricist": "பாடலாசிரியர்",
     "Arranger": "ஏற்பாடு செய்பவர்",
-    "Composer": "Composer",
+    "Composer": "இசையமைப்பாளர்",
     "Publisher": "பதிப்பகத்தார்",
     "Copyright": "காப்புரிமை"
   },
@@ -479,56 +479,56 @@
     "Title": "காப்புரிமை"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "Title": "சமீபத்தில் பிளே செய்தது ",
+    "NoHistoryYetTitle": "நீங்கள் கேட்டதை இப்போது பார்க்கலாம்",
+    "NoHistoryYetSubtitle": "கேட்கத் தொடங்குங்கள், உங்கள் வரலாறு இங்கே காண்பிக்கப்படும்"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "சமீபத்திய செய்திகள்"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "சமீபத்திய இசை"
   },
   "DownloadManager": {
-    "DownloadingFinished": "All files have been downloaded!"
+    "DownloadingFinished": "எல்லா கோப்புகளும் பதிவிறக்கம் செய்யப்பட்டன!"
   },
   "Browse": {
-    "EventsTitle": "Events",
-    "AudiobooksTitle": "Audiobooks",
-    "MusicTitle": "Music",
-    "PodcastsTitle": "Podcasts"
+    "EventsTitle": "நிகழ்வுகள்",
+    "AudiobooksTitle": "ஆடியோ புத்தகங்கள்",
+    "MusicTitle": "இசை",
+    "PodcastsTitle": "பாட்காஸ்ட்கள்"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "டார்க் மோட் அமைப்புகள்",
+    "Light": "ஒளி (லைட்)",
+    "Dark": "இருள் (டார்க்)",
+    "System": "அமைப்புகளைப் பின்பற்றவும் (தானியங்கு)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
-    "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Title": "கலர் தீம்",
+    "Default": "இயல்புநிலை",
+    "Violet": "ஊதா",
+    "Red": "சிவப்பு",
+    "DarkGreen": "கரும் பச்சை",
+    "Golden": "தங்கம்",
+    "Orange": "ஆரஞ்சு"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "ட்ராக் மொழி ",
+    "PreferredLanguages": "உங்களுக்கு விருப்பமான மொழிகள்",
     "AllLanguages": "அனைத்து மொழிகளும்"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri குறுக்குவழிகள்",
+    "ShortcutAlreadyAdded": "இந்த குறுக்குவழி ஏற்கனவே சேர்க்கப்பட்டுள்ளது"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "உங்கள் ஆண்டு மதிப்பாய்வு",
+    "Share": "உங்கள் நண்பர்களுடன் பகிர்ந்து கொள்ளுங்கள்",
+    "ShareTitle": "ஆண்டு மதிப்பாய்வு"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
+    "Title": "சிறந்த பாடல்கள்",
     "PlaysPlural": "{0} plays",
     "PlaysSingular": "{0} play",
     "AddToMyPlaylist": "Add playlist to favorites",
@@ -561,11 +561,11 @@
     "Title": "App Icon",
     "Description": "Change the app icon of the app",
     "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconDarkGreen": "கரும் பச்சை",
+    "IconOrange": "ஆரஞ்சு",
+    "IconGolden": "தங்கம்",
+    "IconViolet": "ஊதா",
+    "IconRed": "சிவப்பு"
   },
   "AchievementDetailsViewModel": {
     "Title": "Achievement",
@@ -584,7 +584,7 @@
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",
     "Subtitle": "Edit the text below to correct an error",
-    "Cancel": "Cancel",
+    "Cancel": "ரத்து செய்",
     "Submit": "Submit",
     "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   },
@@ -599,6 +599,6 @@
     "GotIt": "Got it"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "சாதனைகள்"
   }
 }
