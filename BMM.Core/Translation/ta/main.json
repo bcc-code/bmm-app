@@ -1,83 +1,83 @@
 {
   "Global": {
-    "ContactError": "Failed to contact the BMM Team, you can send an email to: {0}",
-    "External": "External",
-    "Internal": "Internal",
-    "BytesMB": "{0} MB free",
-    "UnexpectedError": "Sorry, an unexpected error has occurred.",
-    "InternetConnectionOffline": "The Internet connection appears to be offline.",
-    "ItemNotFound": "The requested item does not exist.",
-    "OfflineBanner": "Showing only tracks on this phone",
-    "Song": "Song",
-    "Speech": "Message",
-    "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis",
-    "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
-    "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
-    "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ContactError": "BMM குழுவைத் தொடர்புகொள்வதில் தோல்வி, நீங்கள் மின்னஞ்சல் அனுப்பலாம்: {0}",
+    "External": "வெளி",
+    "Internal": "உள்",
+    "BytesMB": "{0} MB மீதமுள்ளது ",
+    "UnexpectedError": "மன்னிக்கவும், எதிர்பாராத பிழை ஏற்பட்டது.",
+    "InternetConnectionOffline": "இணைய இணைப்பு ஆஃப்லைனில் இருப்பது போல் தெரிகிறது.",
+    "ItemNotFound": "கோரப்பட்ட உருப்படி இல்லை.",
+    "OfflineBanner": "இந்த மொபைலில் உள்ள டிராக்குகளை மட்டும் காட்டுகிறது",
+    "Song": "பாடல்",
+    "Speech": "செய்தி",
+    "Audiobook": " ஆடியோ புத்தகம் ",
+    "Exegesis": "விளக்கவுரை",
+    "Done": "முடிந்தது",
+    "Today": "இன்று",
+    "Yesterday": "நேற்று",
+    "BackgroundActivityRestrictedTitle": "பின்னணி செயல்பாட்டை அனுமதிக்கவும்",
+    "BackgroundActivityRestrictedMessage": "உங்கள் சாதன அமைப்புகள் பிஎம்எம் பின்னணியில் வேலை செய்வதைத் தடுக்கின்றன. உங்கள் ஃபோன் சில நிமிடங்கள் பூட்டப்பட்டிருக்கும் போது, உங்களால் கேட்க முடியாது. அதை மாற்ற, பயன்பாட்டு அமைப்புகளுக்குச் சென்று, \"பேட்டரி\" பிரிவின் கீழ் \"பின்னணி செயல்பாட்டை அனுமதி\" என்பதற்குச் செல்லவும்.",
+    "GoToSettings": "அமைப்புகளுக்குச் செல்லவும்",
+    "NotNow": "இப்போது இல்லை",
+    "DownloadPlaylistOnceOnWifi": "அடுத்த முறை நீங்கள் வைஃபையில் இருக்கும்போது பிளேலிஸ்ட் பதிவிறக்கப்படும். உங்கள் சுயவிவரத்தில் \"மொபைல் நெட்வொர்க் வழியாகப் பதிவிறக்கு\" என்பதை இயக்கலாம்.",
+    "DownloadPodcastOnceOnWifi": "அடுத்த முறை நீங்கள் வைஃபையில் இருக்கும்போது, இந்தப் பாட்காஸ்டுக்கான சமீபத்திய டிராக்குகள் பதிவிறக்கப்படும். உங்கள் சுயவிவரத்தில் \"மொபைல் நெட்வொர்க் வழியாகப் பதிவிறக்கு\" என்பதை இயக்கலாம்.",
+    "SiriFromKaareInvocationPhrase": "BMM இல் Kåre விலிருந்து பிளே செய் ",
+    "SiriPlayMusicInvocationPhrase": "BMM இல் இசையைப் பிளே செய் ",
+    "FromKaareSiriShortcutName": "Kåre விலிருந்து பிளே செய் ",
+    "PlayMusicSiriShortcutName": "இசையை பிளே செய் ",
+    "DailyMessage": "தினசரி செய்தி",
+    "ValueCopiedToClipboard": "{0} கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
-    "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
-    "WeekdayMonday": "M",
-    "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "Message": "இந்த வாரம் உங்கள் ஸ்ட்ரீக்",
+    "MessagePerfect": "ஒரு நிறைவான வாரம்! அருமை! ",
+    "PerfectWeekCountSingular": "நிறைவான வாரம்",
+    "PerfectWeekCountPlural": "{0} நிறைவான வாரங்கள்",
+    "PerfectWeekCountNone": "இன்னும் நிறைவான வாரங்கள் இல்லை",
+    "EligibleUntilHoursAndMinutesMessage": "இன்று {0} மணிநேரம் {1} நிமிடம் மீதமுள்ளது",
+    "EligibleUntilMinutesOnlyMessage": "இன்று {0} நிமிடங்கள் உள்ளன",
+    "DaysInARowSingular": "தொடர்ந்து {0} நாள்",
+    "DaysInARowPlural": "தொடர்ந்து {0} நாட்கள்",
+    "WeekdayMonday": "தி",
+    "WeekdayTuesday": "செ",
+    "WeekdayWednesday": "பு",
+    "WeekdayThursday": "வி",
+    "WeekdayFriday": "வெ"
   },
   "DeepLinkHandler": {
-    "ErrorTitle": "Unable to open link",
-    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
+    "ErrorTitle": "இணைப்பைத் திறக்க முடியவில்லை",
+    "ErrorMessage": "துரதிர்ஷ்டவசமாக '{0}' இணைப்பை திறக்க முடியவில்லை."
   },
   "RequestExceptionHandler": {
-    "RequestFailedMessage": "A connection error occurred: {0}"
+    "RequestFailedMessage": "இணைப்பு பிழை ஏற்பட்டது: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Unfortunately, your device does not support this file format.",
-    "ErrorVideoNotSupported": "Unfortunately, videos are not currently supported.",
-    "ErrorFileNotOffline": "Tracks that aren't downloaded cannot be played in offline-mode.",
-    "ErrorPlayerStopped": "The player has stopped.",
-    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
-    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
-    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorMediaNotSupported": "எதிர்பாராதவிதமாக, உங்கள் சாதனம் இந்தக் கோப்பு வடிவமைப்பை ஆதரிக்கவில்லை.",
+    "ErrorVideoNotSupported": "துரதிர்ஷ்டவசமாக, வீடியோக்கள் தற்போது ஆதரிக்கப்படவில்லை.",
+    "ErrorFileNotOffline": "பதிவிறக்கம் செய்யப்படாத டிராக்குகளை ஆஃப்லைன் பயன்முறையில் இயக்க முடியாது.",
+    "ErrorPlayerStopped": "பிளேயர் நிறுத்தப்பட்டது.",
+    "ErrorPlayerStoppedGeneric": "பிளேபாக் பிழையால் தற்போதைய பாடல் நிறுத்தப்பட்டது.",
+    "ErrorPlayerLiveRadioStopped": "நேரடி ஒளிபரப்பு முடிந்தது.",
+    "ErrorPlayerLiveRadioTooEarly": "நேரடி ஒளிபரப்பு இன்னும் தொடங்கவில்லை, பிறகு முயற்சிக்கவும்.",
+    "ErrorPlayerStart": "பிளேபேக்கைத் தொடங்க முடியவில்லை."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "There is not enough space to store offline files"
+    "OutOfSpaceMessage": "ஆஃப்லைன் கோப்புகளை சேமிக்க போதுமான இடம் இல்லை"
   },
   "AlbumViewModel": {
     "Title": "Album",
-    "SearchHint": "Search",
+    "SearchHint": "தேடு",
     "AddAlbumToPlaylist": "Add album to playlist",
     "AddAlbumToMyTracks": "Add album to My Tracks",
-    "FailedToAdd": "Failed to add the track to the playlist. Please try again later.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
+    "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
+    "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
     "ShufflePlay": "Shuffle Play",
     "PluralAlbums": "{0} albums"
   },
   "AlbumsViewModel": {
     "Title": "Archive",
-    "SearchHint": "Search"
+    "SearchHint": "தேடு"
   },
   "AutomaticDownloadViewModel": {
     "Title": "Automatic Download",
@@ -87,7 +87,7 @@
   },
   "ContributorViewModel": {
     "Title": "Contributor",
-    "SearchHint": "Search",
+    "SearchHint": "தேடு",
     "HeaderText": "Appears on these tracks"
   },
   "HomeViewModel": {
@@ -98,12 +98,12 @@
   },
   "ExplorePopularViewModel": {
     "Title": "Popular",
-    "SearchHint": "Search"
+    "SearchHint": "தேடு"
   },
   "ExploreNewestViewModel": {
     "Title": "Home",
-    "SearchHint": "Search",
-    "FraKaareHeader": "From Kåre",
+    "SearchHint": "தேடு",
+    "FraKaareHeader": "Kåre- விடமிருந்து ",
     "AslaksenTeaserHeader": "Words of faith",
     "ShowAll": "Show all",
     "PlayRandom": "Play random",
@@ -118,8 +118,8 @@
     "More": "More"
   },
   "ExploreContributorsViewModel": {
-    "Title": "Contributors",
-    "SearchHint": "Search"
+    "Title": "பங்களிப்பாளர்கள்",
+    "SearchHint": "தேடு"
   },
   "HelpFeedbackViewModel": {
     "Title": "Help & Feedback",
@@ -133,7 +133,7 @@
     "GuideLanguagesSubtitle": "Prioritize the languages of your BMM content. This can be done in Settings > Content Language.\n",
     "GuideLibraryTitle": "Library Section",
     "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
-    "GuideSearchTitle": "Search",
+    "GuideSearchTitle": "தேடு",
     "GuideSearchSubtitle": "Find a particular track, or search for subjects to find related content. Your searches are saved automatically.",
     "ButtonSendMail": "Send an email to the BMM Team"
   },
@@ -147,13 +147,13 @@
     "LoginNoConnectionMessage": "There is currently no connection available. Please try again later",
     "WrongMailAddressTitle": "Invalid email",
     "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
-    "TbxUsername.Hint": "Email",
-    "TbxPassword.Hint": "Password",
-    "BtnLogin.Text": "Log in",
-    "LoginInfo": "Sign in with your BCC login"
+    "TbxUsername.Hint": "மின்னஞ்சல்",
+    "TbxPassword.Hint": "கடவுச்சொல்",
+    "BtnLogin.Text": "உள்நுழைய",
+    "LoginInfo": "உங்கள் BCC உள்நுழைவுடன் உள்நுழையவும்"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnding": "{0} {1} அல்லது அதற்குப் பிறகு இயங்கும் ஃபோன்களுக்கான ஆதரவை விரைவில் நிறுத்துவோம். முடிந்தால், உங்கள் மொபைலைப் புதுப்பிக்கவும்.",
     "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
     "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
     "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
@@ -179,11 +179,11 @@
   },
   "MenuViewModel": {
     "Title": "Menu",
-    "Search": "Search",
+    "Search": "தேடு",
     "Explore": "Explore",
     "MyContent": "My Content",
     "Browse": "Browse",
-    "Settings": "Settings",
+    "Settings": "அமைப்புகள்",
     "HelpAndFeedback": "Help and Feedback",
     "Home": "Home",
     "Favorites": "Favorites",
@@ -191,7 +191,7 @@
   },
   "MyContentViewModel": {
     "Title": "Favorites",
-    "DownloadedContent": "Downloaded Content",
+    "DownloadedContent": "பதிவிறக்கம் செய்யப்பட்டவை ",
     "FollowedPodcasts": "Followed Podcasts",
     "MyTracks": "My Tracks",
     "MyPlaylists": "My playlists",
@@ -215,7 +215,7 @@
     "AskToResumeDownloading": "There are new items in this playlist. Do you want to resume downloading?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Downloaded Content",
+    "Title": "பதிவிறக்கம் செய்யப்பட்டவை ",
     "FollowedPodcasts": "Followed Podcasts",
     "MyTracks": "My Tracks",
     "EmptyTitle": "You have not downloaded any content",
@@ -227,7 +227,7 @@
     "EmptySubline": "Follow a Podcast by opening a Podcast and clicking the follow button."
   },
   "PodcastViewModel": {
-    "Title": "Podcast",
+    "Title": "பாட்காஸ்ட்",
     "Follow": "Follow",
     "Following": "Following",
     "ManageDownloads": "Manage downloads",
@@ -247,7 +247,7 @@
     "Title": "Playlist"
   },
   "CuratedPlaylistsViewModel": {
-    "Title": "Playlists"
+    "Title": "பிளேலிஸ்ட்கள்"
   },
   "PlayerViewModel": {
     "Title": "Now playing",
@@ -267,8 +267,8 @@
     "Title": "Queue"
   },
   "SearchViewModel": {
-    "Title": "Search",
-    "SearchHint": "Search",
+    "Title": "தேடு",
+    "SearchHint": "தேடு",
     "SearchResults": "Results",
     "SearchHistory": "Recent searches",
     "SearchSuggestions": "Did you mean: ",
@@ -278,10 +278,10 @@
     "All": "All",
     "Speeches": "Speeches",
     "Music": "Music",
-    "Albums": "Albums",
+    "Albums": "ஆல்பங்கள்",
     "Contributors": "People",
     "Podcasts": "Podcasts",
-    "Playlists": "Playlists",
+    "Playlists": "பிளேலிஸ்ட்கள்",
     "NoResults": "No results",
     "NoResultsDescription": "There where no matches with your search for \"{0}\"",
     "SearchFailedTitle": "Search failed",
@@ -289,7 +289,7 @@
   },
   "SettingsViewModel": {
     "Title": "Profile",
-    "HeadlineSettings": "Settings",
+    "HeadlineSettings": "அமைப்புகள்",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre",
     "OptionStreakHeader": "Streak on Home",
@@ -309,7 +309,7 @@
     "OptionLanguageContentHeader": "Content language",
     "OptionLanguageContentText": "Choose and prioritize languages for all content you see",
     "HeadlineAbout": "About",
-    "OptionCopyrightHeader": "Copyright",
+    "OptionCopyrightHeader": "காப்புரிமை",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
     "OptionContactHeader": "Contact",
     "OptionContactText": "Questions or feedback? Contact the team here.",
@@ -361,7 +361,7 @@
     "DeleteFailure": "Failed to delete the playlist \"{0}\"",
     "CreateEmptyFailure": "Enter a title to create a playlist",
     "RenameEmptyFailure": "Enter a title to rename playlist",
-    "SearchHint": "Search",
+    "SearchHint": "தேடு",
     "EmptyTitle": "This playlist is empty",
     "EmptySubline": "Press the three dots on a track to add the track to this playlist.",
     "NotEnoughtSpaceToDownload": "Not enough space to download all tracks",
@@ -373,7 +373,7 @@
     "RemovePlaylist": "Remove playlist"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Edit Playlist",
+    "Title": "பிளேலிஸ்ட்டைத் திருத்து",
     "RenameLabel": "Rename playlist",
     "MenuSave": "Save",
     "EmptyName": "The playlist has no name",
@@ -402,21 +402,21 @@
     "DeleteConfirm": "Are you sure you want to delete the playlist \"{0}\"?",
     "DeleteFailure": "Failed to delete the playlist \"{0}\"",
     "ShufflePlay": "Shuffle Play",
-    "SearchHint": "Search"
+    "SearchHint": "தேடு"
   },
   "TrackCollectionsAddToViewModel": {
     "Title": "Add track to playlist",
-    "SearchHint": "Search",
-    "FailedToAdd": "Failed to add the track to the playlist. Please try again later.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "SearchHint": "தேடு",
+    "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
+    "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
+    "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
     "FailedToAddAlbum": "Failed to add the album to the playlist because it contains albums.",
     "FailedToAddUnknownType": "Adding a \"{0}\" to a playlist is currently not supported.",
     "CreatePlaylistPrompt": "Enter a playlist name",
     "TrackAddedToTrackCollection": "Added to the playlist"
   },
   "UserDialogs": {
-    "Track.AddToPlaylist": "Add to playlist",
+    "Track.AddToPlaylist": "பிளேலிஸ்ட்டில் சேர்",
     "Track.DeleteFromPlaylist": "Remove from playlist",
     "Track.AddToMyTracks": "Add to My Tracks",
     "Track.RemoveFromMyTracks": "Remove from My Tracks",
@@ -426,7 +426,7 @@
     "Track.AddToQueue": "Add to queue",
     "Track.QueueToPlayNext": "Play next",
     "Track.AddedToQueue": "Added to queue",
-    "Track.GoToAlbum": "Go to album",
+    "Track.GoToAlbum": "ஆல்பத்திற்குச் செல்லவும்",
     "Track.GoToContributor": "Go to contributors",
     "Track.GoToContributor.Composer": "Composer: {0}",
     "Track.GoToContributor.Interpret": "Performer: {0}",
@@ -441,10 +441,10 @@
     "Album.AddedToMyTracks": "Album added to My Tracks",
     "Album.AddToQueue": "Add to queue",
     "Album.Share": "Share album",
-    "FailedToAdd": "Failed to add the track to the playlist. Please try again later.",
+    "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
     "FailedToAddAlbum": "Failed to add the album to the playlist because it contains albums.",
-    "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
+    "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
     "FailedToAddUnknownType": "Adding a \"{0}\" to a playlist is currently not supported.",
     "MyTracks": "My Tracks",
     "Contributor.Play": "Play",
@@ -460,23 +460,23 @@
     "Title": "Podcasts"
   },
   "TrackInfoViewModel": {
-    "ExternalReferences": "External references",
+    "ExternalReferences": "வெளிப்புற குறிப்புகள்",
     "AboutTrack": "About the track",
     "Title": "Track information",
     "TrackTitle": "Title",
-    "SongNumber": "Song number",
+    "SongNumber": "பாடல் எண்",
     "Album": "Album",
     "Artist": "Artist",
-    "Duration": "Duration",
+    "Duration": "கால அளவு",
     "PublishDate": "Publish date",
     "Lyricist": "Lyricist",
-    "Arranger": "Arranger",
+    "Arranger": "ஏற்பாடு செய்பவர்",
     "Composer": "Composer",
-    "Publisher": "Publisher",
-    "Copyright": "Copyright"
+    "Publisher": "பதிப்பகத்தார்",
+    "Copyright": "காப்புரிமை"
   },
   "CopyrightViewModel": {
-    "Title": "Copyright"
+    "Title": "காப்புரிமை"
   },
   "PlaybackHistoryViewModel": {
     "Title": "Recently played",
@@ -516,7 +516,7 @@
   "ChangeTrackLanguageViewModel": {
     "Title": "Track Language",
     "PreferredLanguages": "Your preferred languages",
-    "AllLanguages": "All languages"
+    "AllLanguages": "அனைத்து மொழிகளும்"
   },
   "SiriShortcutsViewModel": {
     "Title": "Siri Shortcuts",
@@ -537,8 +537,8 @@
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Auto-transcribed",
     "FromSongTreasures": "From Song Treasures",
-    "AddTo": "Add to playlist",
-    "Pause": "Pause",
+    "AddTo": "பிளேலிஸ்ட்டில் சேர்",
+    "Pause": "இடைநிறுத்தம்",
     "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
     "AutoTranscribedPopupHeaderText": "Auto-transcribed",
     "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
