@@ -65,88 +65,88 @@
     "OutOfSpaceMessage": "ஆஃப்லைன் கோப்புகளை சேமிக்க போதுமான இடம் இல்லை"
   },
   "AlbumViewModel": {
-    "Title": "Album",
+    "Title": "ஆல்பம்",
     "SearchHint": "தேடு",
-    "AddAlbumToPlaylist": "Add album to playlist",
-    "AddAlbumToMyTracks": "Add album to My Tracks",
+    "AddAlbumToPlaylist": "பிளேலிஸ்ட்டில் ஆல்பத்தைச் சேர்க்கவும்",
+    "AddAlbumToMyTracks": "எனது ட்ராக்குகளில் ஆல்பத்தைச் சேர்க்கவும்",
     "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
     "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
     "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
-    "ShufflePlay": "Shuffle Play",
-    "PluralAlbums": "{0} albums"
+    "ShufflePlay": "பாடல்களைக் கல  ",
+    "PluralAlbums": "{0} ஆல்பங்கள்"
   },
   "AlbumsViewModel": {
-    "Title": "Archive",
+    "Title": "காப்பகம்",
     "SearchHint": "தேடு"
   },
   "AutomaticDownloadViewModel": {
-    "Title": "Automatic Download",
-    "None": "None",
-    "PluralLatestTracks": "{0} latest tracks",
-    "AutomaticDownloadSubtitle": "Set amount of tracks to be downloaded automatically when following this podcast."
+    "Title": "தானியங்கி பதிவிறக்கம்",
+    "None": "இல்லை",
+    "PluralLatestTracks": "{0} சமீபத்திய ட்ராக்குகள்",
+    "AutomaticDownloadSubtitle": "இந்தப் பாட்காஸ்டைப் பின்தொடரும்போது, தானாகப் பதிவிறக்க வேண்டிய டிராக்குகளின் அளவை அமைக்கவும்."
   },
   "ContributorViewModel": {
-    "Title": "Contributor",
+    "Title": "பங்களிப்பாளர்",
     "SearchHint": "தேடு",
-    "HeaderText": "Appears on these tracks"
+    "HeaderText": "இந்த ட்ராக்குகளில் தோன்றும்"
   },
   "HomeViewModel": {
-    "More": "More"
+    "More": "மேலும்"
   },
   "ExploreViewModel": {
-    "Title": "Explore"
+    "Title": "சுத்திபார்"
   },
   "ExplorePopularViewModel": {
-    "Title": "Popular",
+    "Title": "பிரபலமானது",
     "SearchHint": "தேடு"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "முகப்பு ",
     "SearchHint": "தேடு",
     "FraKaareHeader": "Kåre- விடமிருந்து ",
-    "AslaksenTeaserHeader": "Words of faith",
-    "ShowAll": "Show all",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
-    "LatestTrack": "Latest track",
-    "NextBroadcast": "Next broadcast",
-    "BmmRadio": "BMM Live",
-    "CountdownHours": "in {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music",
-    "Recommended": "Recommended",
-    "More": "More"
+    "AslaksenTeaserHeader": "விசுவாச வார்த்தைகள்",
+    "ShowAll": "அனைத்தையும் காட்டு",
+    "PlayRandom": "தொடர்பின்றி பிளே செய் ",
+    "PlayNewest": "புதியதை பிளே செய் ",
+    "LatestTrack": " சமீபத்திய ட்ராக்குகள்",
+    "NextBroadcast": "அடுத்த ஒளிபரப்பு",
+    "BmmRadio": "BMM நேரலை ",
+    "CountdownHours": "{0}மணிநேரத்தில்",
+    "Messages": "சமீபத்திய செய்திகள்",
+    "Music": "சமீபத்திய இசை",
+    "Recommended": "பரிந்துரைக்கப்படுகிறது",
+    "More": "மேலும்"
   },
   "ExploreContributorsViewModel": {
     "Title": "பங்களிப்பாளர்கள்",
     "SearchHint": "தேடு"
   },
   "HelpFeedbackViewModel": {
-    "Title": "Help & Feedback",
-    "GuideIntroTitle": "How to get the most out of the BMM app",
-    "GuideIntroSubtitle": "Swipe to learn more",
-    "GuideOfflineTitle": "Offline Playlists",
-    "GuideOfflineSubtitle": "Download your playlists to your device and listen to them without internet connection. You can switch this on in the playlist.",
-    "GuideAddToPlaylistTitle": "Add to playlist or 'My Tracks'",
-    "GuideAddToPlaylistSubtitle": "Save your favorite tracks to your own playlists or to your personal BMM collection 'My Tracks' by tapping the options button to the right of the track.",
-    "GuideLanguagesTitle": "Multiple languages",
-    "GuideLanguagesSubtitle": "Prioritize the languages of your BMM content. This can be done in Settings > Content Language.\n",
-    "GuideLibraryTitle": "Library Section",
-    "GuideLibrarySubtitle": "Get quick access to the content you want. The Library section consists of all the available podcasts and an archive section to browse content. ",
+    "Title": "உதவி & கருத்து",
+    "GuideIntroTitle": "BMM செயலியில் இருந்து அதிகப் பலனைப் பெறுவது எப்படி",
+    "GuideIntroSubtitle": "மேலும் அறிய ஸ்வைப் செய்யவும்",
+    "GuideOfflineTitle": "ஆஃப்லைன் பிளேலிஸ்ட்கள்",
+    "GuideOfflineSubtitle": "உங்கள் சாதனத்தில் உங்கள் பிளேலிஸ்ட்களைப் பதிவிறக்கி, இணைய இணைப்பு இல்லாமல் அவற்றைக் கேளுங்கள். பிளேலிஸ்ட்டில் இதை இயக்கலாம்.",
+    "GuideAddToPlaylistTitle": "பிளேலிஸ்ட்டில் சேர் அல்லது 'எனது ட்ராக்குகள்'",
+    "GuideAddToPlaylistSubtitle": "டிராக்கின் வலது புறத்தில் உள்ள விருப்பங்கள் பொத்தானைத் தட்டுவதன் மூலம் உங்களுக்குப் பிடித்த டிராக்குகளை உங்கள் சொந்த பிளேலிஸ்ட்கள் அல்லது உங்கள் தனிப்பட்ட BMM சேகரிப்பு 'எனது ட்ராக்குகள்'' இல் சேமிக்கவும்.",
+    "GuideLanguagesTitle": "பல மொழிகள்",
+    "GuideLanguagesSubtitle": "உங்கள் BMM உள்ளடக்கத்தின் மொழிகளுக்கு முன்னுரிமை கொடுங்கள். இதை அமைப்புகள் > உள்ளடக்க மொழியில் செய்யலாம்.\n",
+    "GuideLibraryTitle": "நூலகப் பிரிவு",
+    "GuideLibrarySubtitle": "நீங்கள் விரும்பும் உள்ளடக்கத்தை விரைவாக அணுகவும். நூலகப் பிரிவில் கிடைக்கக்கூடிய அனைத்து பாட்காஸ்ட்களும் உள்ளடக்கத்தை உலாவ ஒரு காப்பகப் பகுதியும் உள்ளன. ",
     "GuideSearchTitle": "தேடு",
-    "GuideSearchSubtitle": "Find a particular track, or search for subjects to find related content. Your searches are saved automatically.",
-    "ButtonSendMail": "Send an email to the BMM Team"
+    "GuideSearchSubtitle": "குறிப்பிட்ட டிராக்கைக் கண்டறியவும் அல்லது தொடர்புடைய உள்ளடக்கத்தைக் கண்டறிய பாடங்களைத் தேடவும். உங்கள் தேடல்கள் தானாகவே சேமிக்கப்படும்.",
+    "ButtonSendMail": "BMM குழுவிற்கு மின்னஞ்சல் அனுப்பவும்"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "நாங்கள் உங்கள் கணக்கை அமைக்கிறோம். இதற்கு சில நொடிகள் ஆகலாம்."
   },
   "LoginViewModel": {
-    "Title": "Login",
-    "LoginFailureTitle": "Login failed",
-    "LoginFailureMessage": "Please try again using correct credentials",
-    "LoginNoConnectionMessage": "There is currently no connection available. Please try again later",
-    "WrongMailAddressTitle": "Invalid email",
-    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "Title": "உள்நுழைய",
+    "LoginFailureTitle": "உள்நுழைவு தோல்வியடைந்தது",
+    "LoginFailureMessage": "சரியான சான்றுகளைப் பயன்படுத்தி மீண்டும் முயற்சிக்கவும்",
+    "LoginNoConnectionMessage": "தற்போது இணைப்பு எதுவும் இல்லை. பிறகு முயற்சிக்கவும்",
+    "WrongMailAddressTitle": "தவறான மின்னஞ்சல்",
+    "WrongMailAddress": "சரியான மின்னஞ்சல் முகவரியை வழங்கவும். உள்நுழைவுக்கான பயனர் பெயரைப் பயன்படுத்துவது இனி ஆதரிக்கப்படாது.",
     "TbxUsername.Hint": "மின்னஞ்சல்",
     "TbxPassword.Hint": "கடவுச்சொல்",
     "BtnLogin.Text": "உள்நுழைய",
@@ -193,7 +193,7 @@
     "Title": "பிடித்தவை",
     "DownloadedContent": "பதிவிறக்கம் செய்யப்பட்டவை ",
     "FollowedPodcasts": "பின்தொடரும் பாட்காஸ்ட்கள்",
-    "MyTracks": "என் பாடல்கள் ",
+    "MyTracks": "என் ட்ராக்குகள்",
     "MyPlaylists": "எனது பிளேலிஸ்ட்கள்",
     "SharedWithMe": "என்னுடன் பகிர்ந்து கொண்டவை",
     "ByFormat": "{0}மூலம்"
@@ -204,7 +204,7 @@
     "EmptySubline": "பாட்காஸ்டைத் திறந்து பின்தொடரும் பொத்தானைக் கிளிக் செய்வதன் மூலம் பாட்காஸ்ட்டைப் பின்தொடரவும்."
   },
   "MyTracksViewModel": {
-    "Title": "என் பாடல்கள் ",
+    "Title": "என் ட்ராக்குகள்",
     "ShufflePlay": "பாடல்களைக் கல  ",
     "AvailableOffline": "ஆஃப்லைனில் கிடைக்கும்",
     "AvailableOfflineDownload": "பிளேலிஸ்ட்டைப் பதிவிறக்கவும்",
@@ -217,7 +217,7 @@
   "DownloadedContentViewModel": {
     "Title": "பதிவிறக்கம் செய்யப்பட்டவை ",
     "FollowedPodcasts": "பின்தொடரும் பாட்காஸ்ட்கள்",
-    "MyTracks": "என் பாடல்கள் ",
+    "MyTracks": "என் ட்ராக்குகள்",
     "EmptyTitle": "நீங்கள் எந்த உள்ளடக்கத்தையும் பதிவிறக்கம் செய்யவில்லை",
     "EmptySubline": "பிளேலிஸ்ட்டைப் பதிவிறக்கவும் அல்லது பாட்காஸ்டைப் பின்தொடரவும்."
   },
@@ -228,14 +228,14 @@
   },
   "PodcastViewModel": {
     "Title": "பாட்காஸ்ட்",
-    "Follow": "Follow",
-    "Following": "Following",
-    "ManageDownloads": "Manage downloads",
-    "GetNotified": "Get notified",
-    "GetNotifiedMessage": "when new episodes are out",
-    "UnfollowConfirm": "Do you really want to unfollow this podcast?",
-    "ToggleFollowOfflineError": "You need to be in online mode to follow or unfollow a podcast",
-    "Week": "Week {0}",
+    "Follow": "பின்பற்றவும்",
+    "Following": "பின்தொடர்கிறீர்கள்  ",
+    "ManageDownloads": "பதிவிறக்கங்களை நிர்வகிக்கவும்",
+    "GetNotified": "அறிவிப்பைப் பெறவும்",
+    "GetNotifiedMessage": "புதிய எபிசோடுகள் வெளிவரும்போது",
+    "UnfollowConfirm": "இந்த பாட்காஸ்டைப் பின்தொடர்வதை உண்மையில் நிறுத்த விரும்புகிறீர்களா?",
+    "ToggleFollowOfflineError": "பாட்காஸ்டைப் பின்தொடர அல்லது பின்தொடராமல் இருக்க நீங்கள் ஆன்லைன் பயன்முறையில் இருக்க வேண்டும்",
+    "Week": "வாரம் {0}",
     "ThisWeek": "This week",
     "LastWeek": "Last week",
     "AslaksenTheme1": "Believe in the God of miracles",
@@ -277,10 +277,10 @@
     "DeleteConfirm": "Are you sure you want to delete the search history?",
     "All": "All",
     "Speeches": "Speeches",
-    "Music": "Music",
+    "Music": "இசை",
     "Albums": "ஆல்பங்கள்",
     "Contributors": "People",
-    "Podcasts": "Podcasts",
+    "Podcasts": "பாட்காஸ்ட்கள்",
     "Playlists": "பிளேலிஸ்ட்கள்",
     "NoResults": "No results",
     "NoResultsDescription": "There where no matches with your search for \"{0}\"",
@@ -375,66 +375,66 @@
   "EditTrackCollectionViewModel": {
     "Title": "பிளேலிஸ்ட்டைத் திருத்து",
     "RenameLabel": "Rename playlist",
-    "MenuSave": "Save",
-    "EmptyName": "The playlist has no name",
-    "SaveFailure": "Could not update changes. Check your internet connection and try again",
-    "DiscardChangesTitle": "Discard Changes?",
-    "DiscardChangesMessage": "The changes you made won't be saved",
-    "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "MenuSave": "சேமிக்கவும்",
+    "EmptyName": "பிளேலிஸ்ட்டிற்கு பெயர் இல்லை",
+    "SaveFailure": "மாற்றங்களை புதுப்பிக்க முடியவில்லை. உங்கள் இணைய இணைப்பைச் சரிபார்த்து மீண்டும் முயலவும்",
+    "DiscardChangesTitle": "மாற்றங்களைக் கைவிடலாம்?",
+    "DiscardChangesMessage": "நீங்கள் செய்த மாற்றங்கள் சேமிக்கப்படாது",
+    "DiscardChanges": "நிராகரிக்கவும்",
+    "KeepEditing": "தொடர்ந்து திருத்தவும்"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "பிளேலிஸ்ட்டைப் பகிரவும்",
+    "ShareNote": "பிளேலிஸ்ட்டைப் பகிர்வதன் மூலம், இணைப்பு இருந்தால், நீங்கள் சேர்க்கும் டிராக்குகளை மற்றவர்கள் அணுகவும் கேட்கவும் முடியும்.",
+    "ShareLink": "இணைப்பைப் பகிரவும்",
+    "MakePrivate": "தனிப்பட்டதாக்கு",
+    "SharedWithFormat": "{0} பேருடன் பகிரப்பட்டது"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "Title": "பகிரப்பட்ட பிளேலிஸ்ட்",
+    "Close": "மூடு ",
+    "AddToMyPlaylist": "எனது பிளேலிஸ்ட்களில் சேர்",
+    "FollowOwnTrackCollection": "உங்கள் சொந்த டிராக் சேகரிப்பை நீங்கள் பின்பற்ற முடியாது"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "பிளேலிஸ்ட்",
-    "MenuDelete": "Delete",
+    "MenuDelete": "அழி",
     "DeleteConfirm": "\"{0}\" பிளேலிஸ்ட்டை நிச்சயமாக நீக்க விரும்புகிறீர்களா?",
-    "DeleteFailure": "Failed to delete the playlist \"{0}\"",
-    "ShufflePlay": "Shuffle Play",
+    "DeleteFailure": "பிளேலிஸ்ட்டை \"{0}\" நீக்க முடியவில்லை",
+    "ShufflePlay": "பாடல்களைக் கல  ",
     "SearchHint": "தேடு"
   },
   "TrackCollectionsAddToViewModel": {
-    "Title": "Add track to playlist",
+    "Title": "பிளேலிஸ்ட்டில் டிராக்கைச் சேர்க்கவும்",
     "SearchHint": "தேடு",
     "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
     "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
     "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
-    "FailedToAddAlbum": "Failed to add the album to the playlist because it contains albums.",
-    "FailedToAddUnknownType": "Adding a \"{0}\" to a playlist is currently not supported.",
+    "FailedToAddAlbum": "ஆல்பத்தைப் பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை, ஏனெனில் அதில் ஆல்பங்கள் உள்ளன.",
+    "FailedToAddUnknownType": "பிளேலிஸ்ட்டில் \"{0}\"ஐ சேர்ப்பது தற்போது ஆதரிக்கப்படவில்லை.",
     "CreatePlaylistPrompt": "பிளேலிஸ்ட் பெயரை உள்ளிடவும்",
-    "TrackAddedToTrackCollection": "Added to the playlist"
+    "TrackAddedToTrackCollection": "பிளேலிஸ்ட்டில் சேர்க்கப்பட்டது"
   },
   "UserDialogs": {
     "Track.AddToPlaylist": "பிளேலிஸ்ட்டில் சேர்",
-    "Track.DeleteFromPlaylist": "Remove from playlist",
-    "Track.AddToMyTracks": "Add to My Tracks",
-    "Track.RemoveFromMyTracks": "Remove from My Tracks",
-    "Track.AddedToMyTracks": "Added to My Tracks",
-    "Track.RemovedFromMyTracks": "Removed from My Tracks",
-    "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
-    "Track.AddToQueue": "Add to queue",
-    "Track.QueueToPlayNext": "Play next",
-    "Track.AddedToQueue": "Added to queue",
+    "Track.DeleteFromPlaylist": "பிளேலிஸ்ட்டில் இருந்து அகற்று",
+    "Track.AddToMyTracks": "எனது ட்ராக்குகளில் சேர்",
+    "Track.RemoveFromMyTracks": "எனது ட்ராக்குகளிலிருந்து அகற்று",
+    "Track.AddedToMyTracks": "எனது ட்ராக்குகளில் சேர்க்கப்பட்டது",
+    "Track.RemovedFromMyTracks": "எனது ட்ராக்குகளிலிருந்து அகற்றப்பட்டது",
+    "Track.FailedToRemoveFromMyTracks": "எனது ட்ராக்குகளிலிருந்து ட்ராக்கை அகற்ற முடியவில்லை",
+    "Track.AddToQueue": "வரிசையில் சேர்",
+    "Track.QueueToPlayNext": "அடுத்தது பிளே செய் ",
+    "Track.AddedToQueue": "வரிசையில் சேர்க்கப்பட்டது",
     "Track.GoToAlbum": "ஆல்பத்திற்குச் செல்லவும்",
-    "Track.GoToContributor": "Go to contributors",
-    "Track.GoToContributor.Composer": "Composer: {0}",
-    "Track.GoToContributor.Interpret": "Performer: {0}",
-    "Track.GoToContributor.Lyricist": "Lyricist: {0}",
-    "Track.GoToContributor.Arranger": "Arranger: {0}",
-    "Track.Download": "Download track",
-    "Track.MoreInformation": "More information",
-    "Track.Share": "Share track",
+    "Track.GoToContributor": "பங்களிப்பாளர்களிடம் செல்லவும்",
+    "Track.GoToContributor.Composer": "இசையமைப்பாளர்: {0}",
+    "Track.GoToContributor.Interpret": "நிகழ்த்துபவர்: {0}",
+    "Track.GoToContributor.Lyricist": "பாடலாசிரியர்: {0}",
+    "Track.GoToContributor.Arranger": "ஏற்பாட்டாளர்: {0}",
+    "Track.Download": "டிராக்கைப் பதிவிறக்கவும்",
+    "Track.MoreInformation": "மேலும் தகவல்",
+    "Track.Share": "டிராக்கைப் பகிரவும்",
     "Album.Play": "பிளே",
     "Album.AddToPlaylist": "பிளேலிஸ்ட்டில் ஆல்பத்தைச் சேர்க்கவும்",
     "Album.AddToMyTracks": "எனது பாடல்களில் ஆல்பத்தைச் சேர்க்கவும்",
@@ -529,38 +529,38 @@
   },
   "TopSongsCollectionViewModel": {
     "Title": "சிறந்த பாடல்கள்",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "PlaysPlural": "{0} இயக்கங்கள் ",
+    "PlaysSingular": "{0} பிளே ",
+    "AddToMyPlaylist": "பிடித்தவைகளில் பிளேலிஸ்ட்டைச் சேர்க்கவும்",
+    "SuccessfullyAddedToPlaylists": "பிடித்தவைகளில் சேர்க்கப்பட்டது"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
-    "FromSongTreasures": "From Song Treasures",
+    "AutoTranscribed": "தானாக எழுதப்பட்டது",
+    "FromSongTreasures": "Song Treasures - இலிருந்து ",
     "AddTo": "பிளேலிஸ்ட்டில் சேர்",
     "Pause": "இடைநிறுத்தம்",
-    "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
-    "AutoTranscribedPopupButtonText": "Got it",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "AutoTranscribedPopupTitleText": "டிரான்ஸ்கிரிப்டுகள் தானாக உருவாக்கப்படும் மற்றும் பிழைகள் இருக்கலாம்",
+    "AutoTranscribedPopupHeaderText": "தானாக எழுதப்பட்டது",
+    "AutoTranscribedPopupSubtitleText": "திருத்தங்களைப் பரிந்துரைப்பதன் மூலம் டிரான்ஸ்கிரிப்டை மேம்படுத்த உதவுங்கள்.",
+    "AutoTranscribedPopupButtonText": "அறிந்துகொண்டேன்",
+    "FromSongTreasuresPopupTitleText": "பாடல் வரிகள் பாடல் Song Treasures - இலிருந்து பெறப்பட்டது.",
+    "FromSongTreasuresPopupHeaderText": "Song Treasures - இலிருந்து ",
     "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "திருத்த பரிந்துரைக்கவும்"
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
-    "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements"
+    "StreakTerms": "ஸ்ட்ரீக்களுக்கான விதிகள்",
+    "ProgressTitle": "உங்கள் முன்னேற்றம்",
+    "StreakThisWeek": "இந்த வாரம் ஸ்ட்ரீக்",
+    "Days": "நாட்கள்",
+    "Boost": "பூஸ்ட்",
+    "Points": "புள்ளிகள்",
+    "Achievements": "உங்கள் சாதனைகள்"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "IconStandard": "Standard",
+    "Title": "செயலி ஐகான்",
+    "Description": "செயலியின் செயலி ஐகானை மாற்றவும்",
+    "IconStandard": "தரநிலை",
     "IconDarkGreen": "கரும் பச்சை",
     "IconOrange": "ஆரஞ்சு",
     "IconGolden": "தங்கம்",
@@ -568,18 +568,18 @@
     "IconRed": "சிவப்பு"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
-    "GotIt": "Got it",
-    "ActivateTheme": "Activate Theme",
-    "Close": "Close",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
-    "RewardIos": "An exclusive app icon for your BMM app 🤩",
+    "Title": "சாதனை",
+    "Unlocked": "திறக்கப்பட்டது",
+    "ActivatePremiumIcon": "செயலியின்  ஐகானை செயல்படுத்தவும்",
+    "GotIt": "அறிந்துகொண்டேன்",
+    "ActivateTheme": "தீம் செயல்படுத்தவும்",
+    "Close": "மூடு ",
+    "Reward": "வெகுமதி",
+    "RewardAndroid": "உங்கள் BMM செயலிக்கான பிரத்யேக வண்ண தீம் 🤩",
+    "RewardIos": "உங்கள் BMM செயலிக்கான பிரத்யேக செயலி ஐகான் 🤩",
     "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
     "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "PlayNext": "Play next"
+    "PlayNext": "அடுத்தது பிளே செய் "
   },
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",
@@ -596,7 +596,7 @@
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
-    "GotIt": "Got it"
+    "GotIt": "அறிந்துகொண்டேன்"
   },
   "AchievementsViewModel": {
     "Title": "சாதனைகள்"
