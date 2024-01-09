@@ -179,7 +179,7 @@ namespace BMM.UI.Droid
             iocProvider.LazyConstructAndRegisterSingleton<IPlatformSpecificRemoteConfig, AndroidFirebaseRemoteConfig>();
             iocProvider.LazyConstructAndRegisterSingleton<IDeviceSupportVersionChecker, AndroidSupportVersionChecker>();
 
-            iocProvider.RegisterType<IUriOpener, UriOpener>();
+            iocProvider.RegisterDecorator<IUriOpener, InternalLinksOpener, UriOpener>();
             iocProvider.RegisterType<DownloadCompletedHandler, DownloadCompletedHandler>();
             iocProvider.RegisterType<MediaMountedHandler, MediaMountedHandler>();
 
