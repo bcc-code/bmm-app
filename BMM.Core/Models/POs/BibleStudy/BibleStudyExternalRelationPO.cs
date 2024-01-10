@@ -39,14 +39,14 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
         
         ClickedCommand = new ExceptionHandlingCommand(() =>
         {
-            if (_mediaPlayer.CurrentTrack?.Id == _trackId)
+            if (_trackId != null && _mediaPlayer.CurrentTrack?.Id == _trackId)
             {
                 _mediaPlayer.PlayPause();
                 return Task.CompletedTask;
             }
-            
+
             uriOpener.OpenUri(link);
-            return Task.CompletedTask;;
+            return Task.CompletedTask;
         });
         
         _trackId = deepLinkHandler.GetTrackIdToPlayIfPossible(link);

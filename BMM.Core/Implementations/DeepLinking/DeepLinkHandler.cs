@@ -13,6 +13,7 @@ using BMM.Api.Implementation.Constants;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Helpers;
+using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
 using BMM.Core.Implementations.DeepLinking.Parameters;
@@ -25,8 +26,10 @@ using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
+using IdentityModel.Client;
 using MvvmCross;
 using MvvmCross.Navigation;
+using MvvmCross.Presenters.Hints;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.Implementations.DeepLinking
@@ -123,7 +126,10 @@ namespace BMM.Core.Implementations.DeepLinking
         private async Task NavigateTo<T>() where T : IMvxViewModel
         {
             if (!_viewPresenter.IsViewModelShown<T>())
+            {
+                await _navigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
                 await _navigationService.Navigate<T>();
+            }
 
             SendEventIfNeeded(typeof(T));
         }
@@ -137,38 +143,40 @@ namespace BMM.Core.Implementations.DeepLinking
         private async Task NavigateTo<TVm, TParam>(TParam param) where TVm : IMvxViewModel<TParam>
         {
             if (!_viewPresenter.IsViewModelShown<TVm>())
+            {
+                await _navigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
                 await _navigationService.Navigate<TVm, TParam>(param);
+            }
         }
 
         private Task OpenSharedTrackCollection(SharingSecretParameters sharingSecretParameters)
         {
-            return _navigationService.Navigate<SharedTrackCollectionViewModel, ISharedTrackCollectionParameter>(
-                new SharedTrackCollectionParameter(sharingSecretParameters.SharingSecret));
+            return NavigateTo<SharedTrackCollectionViewModel, ISharedTrackCollectionParameter>(new SharedTrackCollectionParameter(sharingSecretParameters.SharingSecret));
         }
 
         private Task OpenAlbum(IdDeepLinkParameters idDeepLinksParameters)
         {
-            return _navigationService.Navigate<AlbumViewModel, int>(idDeepLinksParameters.Id);
+            return NavigateTo<AlbumViewModel, int>(idDeepLinksParameters.Id);
         }
 
         private Task OpenContributor(IdDeepLinkParameters idLinkParameters)
         {
-            return _navigationService.Navigate<ContributorViewModel, int>(idLinkParameters.Id);
+            return NavigateTo<ContributorViewModel, int>(idLinkParameters.Id);
         }
 
         private Task OpenPodcast(IdAndNameParameters deepLinkParameters)
         {
-            return _navigationService.Navigate<PodcastViewModel, Podcast>(new Podcast {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
+            return NavigateTo<PodcastViewModel, Podcast>(new Podcast {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
         }
 
         private Task OpenCuratedPlaylist(IdAndNameParameters deepLinkParameters)
         {
-            return _navigationService.Navigate<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
+            return NavigateTo<CuratedPlaylistViewModel, Playlist>(new Playlist {Id = deepLinkParameters.Id, Title = deepLinkParameters.Name});
         }
 
         private Task OpenTrackCollection(IdAndNameParameters deepLinkParameters)
         {
-            return _navigationService.Navigate<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(deepLinkParameters.Id, deepLinkParameters.Name));
+            return NavigateTo<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(deepLinkParameters.Id, deepLinkParameters.Name));
         }
 
         private Task DoNothing()
