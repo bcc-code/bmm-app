@@ -4,7 +4,7 @@
     "External": "Külső",
     "Internal": "Belső",
     "BytesMB": "{0} MB szabad",
-    "UnexpectedError": "Sajnos ismeretlen hiba lépet fel.",
+    "UnexpectedError": "Sajnáljuk, váratlan hiba történt.",
     "InternetConnectionOffline": "Az Internet-kapcsolat ném elérhető.",
     "ItemNotFound": "A kért elem nem létezik.",
     "OfflineBanner": "Csak a telefonon lévő zeneszámok megjelenítése",
@@ -424,7 +424,7 @@
     "Track.RemovedFromMyTracks": "Eltávolítva a zeneszámaimből",
     "Track.FailedToRemoveFromMyTracks": "Hiba történt a szám eltávolításakor a zeneszámaimből",
     "Track.AddToQueue": "Hozzáadás várólistához",
-    "Track.QueueToPlayNext": "Következő lejátszása",
+    "Track.QueueToPlayNext": "Lejátszás következőként",
     "Track.AddedToQueue": "Hozzáadva a várólistához",
     "Track.GoToAlbum": "Váltás erre az albumra",
     "Track.GoToContributor": "Váltás közreműködőkhöz",
@@ -542,7 +542,7 @@
     "AutoTranscribedPopupTitleText": "Az átiratok automatikusan generálódnak, és hibákat tartalmazhatnak.",
     "AutoTranscribedPopupHeaderText": "Automatikusan átírva",
     "AutoTranscribedPopupSubtitleText": "Segíts javítani az iratot a \"Szerkesztés javaslata\" segítségével.",
-    "AutoTranscribedPopupButtonText": "Megvan",
+    "AutoTranscribedPopupButtonText": "Értem",
     "FromSongTreasuresPopupTitleText": "Az énekszövegek a Song Treasuresből kerülnek lekérdezésre.",
     "FromSongTreasuresPopupHeaderText": "A Song Treasuresből",
     "FromSongTreasuresPopupSubtitleText": "Töltsd le a Song Treasures alkalmazást a teljes ének megtekintéséhez.",
@@ -571,7 +571,7 @@
     "Title": "Eredmények",
     "Unlocked": "Feloldott",
     "ActivatePremiumIcon": "Alkalmazás aktiválása ikon",
-    "GotIt": "Megvan",
+    "GotIt": "Értem",
     "ActivateTheme": "Téma aktiválása",
     "Close": "Bezárás",
     "Reward": "Jutalom",
@@ -596,7 +596,7 @@
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Köszönöm a kérdést!",
     "Description": "Minden kérdést áttekintünk, és néhányat meg is válaszolunk a podcastban. \nA legtöbb kérdésre a Kérdések és válaszok oldalon kapunk választ. \n\nA válaszokat hétfőn olvashatod el.",
-    "GotIt": "Megvan"
+    "GotIt": "Értem"
   },
   "AchievementsViewModel": {
     "Title": "Eredmények"

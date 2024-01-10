@@ -291,7 +291,7 @@
     "Title": "Profil",
     "HeadlineSettings": "Einstellungen",
     "OptionAutoplayHeader": "Autoplay",
-    "OptionAutoplayText": "Spiele Musik nach der heutigen Fra Kåre Sendung",
+    "OptionAutoplayText": "Spiele Musik nach der heutigen Folge von Fra Kåre",
     "OptionStreakHeader": "Streak auf der Startseite",
     "OptionStreakText": "Anzeige der Hörstatistik auf der Startseite",
     "OptionEnablePushHeader": "Push-Benachrichtigungen erlauben",
@@ -579,7 +579,7 @@
     "RewardIos": "Ein exklusives App-Symbol für deine BMM-App 🤩",
     "RewardAndroidGolden": "Ein exklusives Farbthema für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!",
     "RewardIosGolden": "Ein exklusives App-Symbol für deine BMM-App. Du nimmst außerdem an der Verlosung von AirPods Pro teil. Gute Arbeit!",
-    "PlayNext": "Als nächstes abspielen"
+    "PlayNext": "Nächste abspielen"
   },
   "SuggestEditViewModel": {
     "Title": "Eine Bearbeitung vorschlagen",

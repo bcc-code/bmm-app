@@ -29,7 +29,7 @@
 
         // Static list of languages, this app has been translated into. That are folders within RootFolderForResources, wherein there is a JSON file per view-model, having the same name as the ViewModel.
         public static readonly string[] AvailableAppLanguages =
-            {"af", "bg", "da", "de", "en", "es", "et", "fi", "fr", "hu", "it", "nb", "nl", "pl", "pt", "ro", "ru", "sl", "tr", "uk", "zh"};
+            {"af", "bg", "da", "de", "en", "es", "et", "fi", "fr", "hu", "it", "nb", "nl", "pl", "pt", "ro", "ru", "sl", "ta", "tr", "uk", "zh"};
 
         public const string ContactMailAddress = "bmm-support@bcc.no";
 
