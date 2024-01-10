@@ -424,7 +424,7 @@
     "Track.RemovedFromMyTracks": "Eltávolítva a zeneszámaimből",
     "Track.FailedToRemoveFromMyTracks": "Hiba történt a szám eltávolításakor a zeneszámaimből",
     "Track.AddToQueue": "Hozzáadás várólistához",
-    "Track.QueueToPlayNext": "Következő lejátszása",
+    "Track.QueueToPlayNext": "Lejátszási sorban a következő ",
     "Track.AddedToQueue": "Hozzáadva a várólistához",
     "Track.GoToAlbum": "Váltás erre az albumra",
     "Track.GoToContributor": "Váltás közreműködőkhöz",
@@ -542,7 +542,7 @@
     "AutoTranscribedPopupTitleText": "Az átiratok automatikusan generálódnak, és hibákat tartalmazhatnak.",
     "AutoTranscribedPopupHeaderText": "Automatikusan átírva",
     "AutoTranscribedPopupSubtitleText": "Segíts javítani az iratot a \"Szerkesztés javaslata\" segítségével.",
-    "AutoTranscribedPopupButtonText": "Megvan",
+    "AutoTranscribedPopupButtonText": "Értem",
     "FromSongTreasuresPopupTitleText": "Az énekszövegek a Song Treasuresből kerülnek lekérdezésre.",
     "FromSongTreasuresPopupHeaderText": "A Song Treasuresből",
     "FromSongTreasuresPopupSubtitleText": "Töltsd le a Song Treasures alkalmazást a teljes ének megtekintéséhez.",
@@ -571,7 +571,7 @@
     "Title": "Eredmények",
     "Unlocked": "Feloldott",
     "ActivatePremiumIcon": "Alkalmazás aktiválása ikon",
-    "GotIt": "Megvan",
+    "GotIt": "Értem",
     "ActivateTheme": "Téma aktiválása",
     "Close": "Bezárás",
     "Reward": "Jutalom",
@@ -579,7 +579,7 @@
     "RewardIos": "Exkluzív alkalmazás-ikon a BMM alkalmazásodhoz 🤩",
     "RewardAndroidGolden": "Exkluzív színtéma a BMM alkalmazásodhoz. Emellett részt veszel a sorsoláson egy pár speciálisan kialakított AirPods Pro készülékért. Szép munka!",
     "RewardIosGolden": "Exkluzív alkalmazás-ikon a BMM alkalmazásodhoz arany színben. Emellett részt veszel a sorsoláson, amelyen egy pár speciálisan kialakított AirPods Pro-t sorsolunk ki. Szép munka!",
-    "PlayNext": "Játssz tovább"
+    "PlayNext": "Következő lejátszása"
   },
   "SuggestEditViewModel": {
     "Title": "Szerkesztés javaslata",
@@ -596,7 +596,7 @@
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Köszönöm a kérdést!",
     "Description": "Minden kérdést áttekintünk, és néhányat meg is válaszolunk a podcastban. \nA legtöbb kérdésre a Kérdések és válaszok oldalon kapunk választ. \n\nA válaszokat hétfőn olvashatod el.",
-    "GotIt": "Megvan"
+    "GotIt": "Értem"
   },
   "AchievementsViewModel": {
     "Title": "Eredmények"
