@@ -678,6 +678,9 @@
     <Content Include="..\BMM.Core\Translation\sl\main.json">
       <Link>Translation\sl\main.json</Link>
     </Content>
+    <Content Include="..\BMM.Core\Translation\ta\main.json">
+      <Link>Translation\ta\main.json</Link>
+    </Content>
     <Content Include="..\BMM.Core\Translation\tr\main.json">
       <Link>Translation\tr\main.json</Link>
     </Content>
