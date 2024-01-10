@@ -241,7 +241,7 @@
     "AslaksenTheme1": "Crois au Dieu des miracles",
     "AslaksenTheme2": "Je suis crucifié avec Christ",
     "AslaksenTheme3": "Craindre et aimer Dieu",
-    "AslaksenTheme4": "L'humilité, c'est l'essentiel"
+    "AslaksenTheme4": "L'humilité, c'est tout"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Liste de lecture"
@@ -424,7 +424,7 @@
     "Track.RemovedFromMyTracks": "Retirer de Mes Titres",
     "Track.FailedToRemoveFromMyTracks": "Échec de la suppression d'un titre de Mes Titres",
     "Track.AddToQueue": "Ajouter à la file d'attente",
-    "Track.QueueToPlayNext": "Jouer morceau suivant",
+    "Track.QueueToPlayNext": "Lecture suivante",
     "Track.AddedToQueue": "Ajouté à la file d'attente",
     "Track.GoToAlbum": "Aller à l'album",
     "Track.GoToContributor": "Aller à l'artiste",
@@ -579,7 +579,7 @@
     "RewardIos": "Une icône exclusive pour ton application BMM 🤩",
     "RewardAndroidGolden": "Un thème exclusif pour ton application BMM. Tu participes également au tirage au sort d'une paire d'AirPods Pro. Bien joué !",
     "RewardIosGolden": "Une icône exclusive en or pour ton application BMM. Tu participes également au tirage au sort d'une paire d'AirPods Pro. Bien joué !",
-    "PlayNext": "Jouer ensuite"
+    "PlayNext": "Lecture suivante"
   },
   "SuggestEditViewModel": {
     "Title": "Proposer une modification",
