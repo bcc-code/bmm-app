@@ -1,7 +1,5 @@
-﻿using System.Reactive.Linq;
-using System.Threading.Tasks;
-using Akavache;
-using BMM.Api.Implementation.Models;
+﻿using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Startup;
 using BMM.Core.Implementations.Storage;
@@ -12,11 +10,13 @@ namespace BMM.Core.Implementations.Podcasts
     {
         private readonly IUserAuthChecker _userAuthChecker;
         private readonly IPodcastOfflineManager _podcastOfflineManager;
+        private readonly IFirebaseRemoteConfig _config;
 
-        public PodcastInitializer(IUserAuthChecker userAuthChecker, IPodcastOfflineManager podcastOfflineManager)
+        public PodcastInitializer(IUserAuthChecker userAuthChecker, IPodcastOfflineManager podcastOfflineManager, IFirebaseRemoteConfig config)
         {
             _userAuthChecker = userAuthChecker;
             _podcastOfflineManager = podcastOfflineManager;
+            _config = config;
         }
 
         public async Task RunAfterStartup()
@@ -31,12 +31,13 @@ namespace BMM.Core.Implementations.Podcasts
         {
             await _podcastOfflineManager.InitAsync();
 
-            if (AppSettings.FirstLaunchWithPodcasts)
+            foreach (int podcastId in _config.AutoSubscribePodcasts)
             {
-                var podcast = new Podcast { Id = 1 };
-
-                await _podcastOfflineManager.FollowPodcast(podcast);
-                AppSettings.FirstLaunchWithPodcasts = false;
+                if (!AppSettings.HasAutoSubscribed(podcastId))
+                {
+                    await _podcastOfflineManager.FollowPodcast(new Podcast {Id = podcastId});
+                    AppSettings.SetHasAutoSubscribed(podcastId);
+                }
             }
         }
     }

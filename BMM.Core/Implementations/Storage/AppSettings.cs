@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Models.PlaybackHistory;
@@ -46,6 +47,31 @@ namespace BMM.Core.Implementations.Storage
         public static void SetIsProjectBoxExpanded(int projectId, bool value)
         {
             AddOrUpdateValue(value, $"{nameof(IsProjectBoxExpanded)}_{projectId}");
+        }
+
+        public static bool HasAutoSubscribed(int podcastId)
+        {
+            if (podcastId == PodcastsConstants.FraKårePodcastId)
+                return !FirstLaunchWithPodcasts;
+            return GetValueOrDefault($"{nameof(HasAutoSubscribed)}_{podcastId}", false);
+        }
+
+        public static void SetHasAutoSubscribed(int podcastId)
+        {
+            if (podcastId == PodcastsConstants.FraKårePodcastId)
+                FirstLaunchWithPodcasts = false;
+            AddOrUpdateValue(true, $"{nameof(HasAutoSubscribed)}_{podcastId}");
+        }
+        
+        /// <summary>
+        /// Stores whether FraKåre has been auto subscribed yet or not.
+        /// Returns the inverse of HasAutoSubscribed(1);
+        /// </summary>
+        [Obsolete("We keep this to stay backwards compatible")]
+        public static bool FirstLaunchWithPodcasts
+        {
+            get => GetValueOrDefault(nameof(FirstLaunchWithPodcasts), true);
+            set => AddOrUpdateValue(value, nameof(FirstLaunchWithPodcasts));
         }
         
         public static IList<int> DismissedMessageTilesIds
@@ -184,12 +210,6 @@ namespace BMM.Core.Implementations.Storage
         {
             get => GetValueOrDefault(nameof(CurrentTrackPosition), default(CurrentTrackPositionStorage));
             set => AddOrUpdateValue(value, nameof(CurrentTrackPosition));
-        }
-        
-        public static bool FirstLaunchWithPodcasts
-        {
-            get => GetValueOrDefault(nameof(FirstLaunchWithPodcasts), true);
-            set => AddOrUpdateValue(value, nameof(FirstLaunchWithPodcasts));
         }
         
         public static bool HighlightedTextPopupAlreadyShown

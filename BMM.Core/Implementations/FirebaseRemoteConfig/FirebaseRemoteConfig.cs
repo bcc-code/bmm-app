@@ -50,6 +50,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string ShowBlueDotForMessages = "show_blue_dot_for_messages";
             public const string ShowBlueDotForSongs = "show_blue_dot_for_songs";
             public const string CurrentPodcastId = "current_podcast_id";
+            public const string AutoSubscribePodcasts = "auto_subscribe_podcasts";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -78,7 +79,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.ShouldCheckAchievementsAtStart, true.ToString()},
             {Variables.ShowBlueDotForMessages, false.ToString()},
             {Variables.ShowBlueDotForSongs, false.ToString()},
-            {Variables.CurrentPodcastId, PodcastsConstants.FraKårePodcastId.ToString()}
+            {Variables.CurrentPodcastId, PodcastsConstants.FraKårePodcastId.ToString()},
+            {Variables.AutoSubscribePodcasts, $"{PodcastsConstants.FraKårePodcastId},{PodcastsConstants.RomanPodcastId}"}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -91,6 +93,9 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         {
             await _platformSpecificRemoteConfig.UpdateValuesFromFirebaseRemoteConfig();
         }
+
+        public int[] AutoSubscribePodcasts =>
+            _platformSpecificRemoteConfig.GetStringValue(Variables.AutoSubscribePodcasts).Split(',').Select(int.Parse).ToArray();
 
         public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
         public string DeleteAccountLink => _platformSpecificRemoteConfig.GetStringValue(Variables.DeleteAccountLink);
