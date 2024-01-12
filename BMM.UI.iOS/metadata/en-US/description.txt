@@ -6,4 +6,4 @@ Create and manage your own personal playlists and download them to the phone - w
 
 Listen to your playlists, whenever you want to - even without an internet connection.
 
-You will need a Brunstad Portal Account to access the apps content.
+You will need a BCC Portal Account to access the apps content.
