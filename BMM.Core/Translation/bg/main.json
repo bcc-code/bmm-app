@@ -590,12 +590,12 @@
   },
   "AskQuestionViewModel": {
     "Title": "",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Submit": "Изпратете въпрос",
+    "Hint": "Твоят въпрос"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "ThankYou": "Благодаря че попита!",
+    "Description": "Всички въпроси ще бъдат прегледани и на някои ще бъде отговорено в подкаста. \n Повечето въпроси ще получат отговор на страницата с въпроси и отговори. \n\n Проверете отново в сряда, за да прочетете отговорите.",
     "GotIt": "Схванах го"
   },
   "AchievementsViewModel": {
