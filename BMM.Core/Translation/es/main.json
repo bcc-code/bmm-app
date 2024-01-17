@@ -314,8 +314,8 @@
     "OptionContactHeader": "Contacto",
     "OptionContactText": "¿Preguntas o comentarios? Póngase en contacto con el equipo aquí.",
     "OptionAppVersionHeader": "Versión de la aplicación",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Borrar cuenta",
+    "OptionDeleteAccountText": "Solicite que se elimine su cuenta.",
     "AppInfoTitle": "Información de la aplicación",
     "AppInfoAppVersion": "Versión de la aplicación: ",
     "AppInfoManufacturer": "Fabricante: ",
@@ -334,7 +334,7 @@
     "SiriShortcutsHeader": "Accesos directos de Siri",
     "SiriShortcutsText": "Añadir accesos directos de Siri para BMM a tu dispositivo",
     "PushNotificationsGoToSettings": "Lamentablemente, no podemos habilitar las notificaciones automáticas ya que están deshabilitadas en la configuración de su dispositivo.  Permita las notificaciones automáticas en la configuración de su dispositivo para habilitar esta función.",
-    "Achievements": "Achievements"
+    "Achievements": "Logros"
   },
   "StorageManagementViewModel": {
     "Title": "Ubicación de las pistas sin conexión",
@@ -541,12 +541,12 @@
     "Pause": "Pausa",
     "AutoTranscribedPopupTitleText": "Las transcripciones se generan automáticamente y pueden contener errores",
     "AutoTranscribedPopupHeaderText": "Auto-transcrito",
-    "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
+    "AutoTranscribedPopupSubtitleText": "Ayude a mejorar la transcripción sugiriendo correcciones usando \"Sugerir edición\".",
     "AutoTranscribedPopupButtonText": "Entiendo",
     "FromSongTreasuresPopupTitleText": "Las letras se obtienen de Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "De Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Descárga la aplicación Song Treasures para ver la canción completa.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Sugerir edición"
   },
   "BibleStudyViewModel": {
     "StreakTerms": "Reglas para las rachas",
@@ -582,23 +582,23 @@
     "PlayNext": "Reproducir lo siguiente"
   },
   "SuggestEditViewModel": {
-    "Title": "Suggest an edit",
-    "Subtitle": "Edit the text below to correct an error",
+    "Title": "Sugerir una edición",
+    "Subtitle": "Edite el texto a continuación para corregir un error.",
     "Cancel": "Cancelar",
-    "Submit": "Submit",
-    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
+    "Submit": "Entregar",
+    "SubmitSuccess": "Edite las sugerencias enviadas correctamente, ¡gracias!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Hacer una pregunta",
+    "Submit": "Enviar pregunta",
+    "Hint": "Tu pregunta"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "ThankYou": "¡Gracias por preguntar!",
+    "Description": "Todas las preguntas serán revisadas y algunas serán respondidas en el podcast. \n La mayoría de las preguntas se responderán en la página de preguntas y respuestas. \n\n Vuelve a consultar el miércoles para leer las respuestas.",
     "GotIt": "Entiendo"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Logros"
   }
 }
