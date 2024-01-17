@@ -15,10 +15,12 @@ using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Region.Interfaces;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Models.Enums;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
+using MvvmCross;
 using Newtonsoft.Json;
 
 namespace BMM.Core.GuardedActions.Player
@@ -60,14 +62,19 @@ namespace BMM.Core.GuardedActions.Player
 
             string bccLink = GetBCCMediaLink(currentTrack);
 
-            var leftButtonType = string.IsNullOrEmpty(bccLink)
-                ? PlayerLeftButtonType.Lyrics
-                : PlayerLeftButtonType.BCCMedia;
-            
+            PlayerLeftButtonType leftButtonType;
+
+            if (currentTrack.HasTranscription)
+                leftButtonType = PlayerLeftButtonType.Transcription;
+            else if (string.IsNullOrEmpty(bccLink))
+                leftButtonType = PlayerLeftButtonType.Lyrics;
+            else
+                leftButtonType = PlayerLeftButtonType.BCCMedia;
             PlayerViewModel.LeftButtonType = leftButtonType;
             PlayerViewModel.LeftButtonLink = leftButtonType == PlayerLeftButtonType.Lyrics
                 ? GetLyricsLink(currentTrack)
                 : bccLink;
+            PlayerViewModel.HasTranscription = currentTrack.HasTranscription;
             
             return Task.CompletedTask;
         }

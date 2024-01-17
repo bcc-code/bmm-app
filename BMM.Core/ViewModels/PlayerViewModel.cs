@@ -44,7 +44,8 @@ namespace BMM.Core.ViewModels
         private bool _directlyShowPlayerForAndroid;
         private bool _hasExternalRelations;
         private PlayerTrackInfoProvider _playerTrackInfoProvider;
-        private PlayerLeftButtonType _leftButtonType;
+        private PlayerLeftButtonType? _leftButtonType;
+        private bool _hasTranscription;
 
         public IMvxInteraction<TogglePlayerInteraction> ClosePlayerInteraction => _closePlayerInteraction;
 
@@ -107,10 +108,16 @@ namespace BMM.Core.ViewModels
             set => SetProperty(ref _trackLanguage, value);
         }
 
-        public PlayerLeftButtonType LeftButtonType
+        public PlayerLeftButtonType? LeftButtonType
         {
             get => _leftButtonType;
             set => SetProperty(ref _leftButtonType, value);
+        }
+
+        public bool HasTranscription
+        {
+            get => _hasTranscription;
+            set => SetProperty(ref _hasTranscription, value);
         }
 
         public bool CanNavigateToLanguageChange => NavigateToLanguageChangeCommand.CanExecute();
@@ -145,7 +152,8 @@ namespace BMM.Core.ViewModels
             PreviousOrSeekToStartCommand = new MvxCommand(MediaPlayer.PlayPreviousOrSeekToStart, () => IsSkipToPreviousEnabled);
             SkipForwardCommand = new MvxCommand(() => MediaPlayer.JumpForward());
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
-            LeftButtonClickedCommand = new MvxCommand(OpenLeftButtonLinkLink, () => !string.IsNullOrEmpty(LeftButtonLink));
+            LeftButtonClickedCommand = new MvxCommand(LeftButtonClicked, () => HasTranscription || !string.IsNullOrEmpty(LeftButtonLink));
+            
             SeekToPositionCommand = new MvxCommand<long>(position =>
             {
                 MediaPlayer.SeekTo(position);
@@ -166,8 +174,17 @@ namespace BMM.Core.ViewModels
         public IMvxCommand<long> SeekToPositionCommand { get; set; }
         public IMvxCommand ShowTrackInfoCommand { get; set; }
 
-        private void OpenLeftButtonLinkLink()
+        private async void LeftButtonClicked()
         {
+            if (HasTranscription)
+            {
+                if (CurrentTrack == null)
+                    return;
+                
+                await NavigationService.Navigate<ReadTranscriptionViewModel, int>(CurrentTrack.Id);
+                return;
+            }
+            
             _uriOpener.OpenUri(new Uri(LeftButtonLink));
             _analytics.LogEvent(LeftButtonType == PlayerLeftButtonType.Lyrics
                 ? Event.LyricsOpened

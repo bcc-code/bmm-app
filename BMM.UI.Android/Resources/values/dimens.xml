@@ -106,6 +106,8 @@
 
     <dimen name="clear_recent_searches_button_size">32dp</dimen>
     <dimen name="clear_recent_searches_button_radius">16dp</dimen>
+    
+    <dimen name="read_transcription_bottom_offset">80dp</dimen>
 
     <!-- contributor_image_radius must be a half of contributor_image_dimen to be a perfect circle -->
     <dimen name="contributor_image_radius">22dp</dimen>

@@ -42,6 +42,7 @@ namespace BMM.UI.iOS
         private int _bottomMargin = DefaultBottomMarginConstant;
         private UIStatusBarStyle _previousStatusBarStyle;
         private UIColor _lastMutedColor;
+        private bool _hasTranscription;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
@@ -124,6 +125,10 @@ namespace BMM.UI.iOS
             set.Bind(this)
                  .For(v => v.HasLeftButton)
                  .To(vm => vm.HasLeftButton);
+            
+            set.Bind(this)
+                .For(v => v.HasTranscription)
+                .To(vm => vm.HasTranscription);
 
             set.Bind(MoreButton).To(vm => vm.OptionCommand);
             set.Bind(ChangeLanguageButton)
@@ -290,6 +295,20 @@ namespace BMM.UI.iOS
             }
         }
 
+        public bool HasTranscription
+        {
+            get => _hasTranscription;
+            set
+            {
+                _hasTranscription = value;
+                var image = _hasTranscription
+                    ? UIImage.FromBundle("IconInformation")
+                    : null;
+                
+                LeftButton.SetImage(image, UIControlState.Normal);
+            }
+        }
+        
         public bool HasLeftButton
         {
             get => _hasLeftButton;

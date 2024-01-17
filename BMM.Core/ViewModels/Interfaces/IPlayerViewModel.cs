@@ -13,6 +13,7 @@ namespace BMM.Core.ViewModels.Interfaces
         MvxCommand LeftButtonClickedCommand { get; }
         string LeftButtonLink { get; set; }
         string TrackLanguage { get; set; }
-        PlayerLeftButtonType LeftButtonType { get; set; }
+        PlayerLeftButtonType? LeftButtonType { get; set; }
+        bool HasTranscription { get; set; }
     }
 }

@@ -8,16 +8,19 @@ using MvvmCross.Converters;
 
 namespace BMM.Core.ValueConverters
 {
-    public class PlayerLeftButtonTypeToTitleConverter : MvxValueConverter<PlayerLeftButtonType, string>
+    public class PlayerLeftButtonTypeToTitleConverter : MvxValueConverter<PlayerLeftButtonType?, string>
     {
         private IBMMLanguageBinder TextSource => BMMLanguageBinderLocator.TextSource;
 
-        protected override string Convert(PlayerLeftButtonType value, Type targetType, object parameter, CultureInfo culture)
+        protected override string Convert(PlayerLeftButtonType? value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == PlayerLeftButtonType.BCCMedia)
-                return TextSource[Translations.PlayerViewModel_WatchOnBCCMedia];
-
-            return TextSource[Translations.PlayerViewModel_ViewLyrics];
+            return value switch
+            {
+                PlayerLeftButtonType.BCCMedia => TextSource[Translations.PlayerViewModel_WatchOnBCCMedia],
+                PlayerLeftButtonType.Lyrics => TextSource[Translations.PlayerViewModel_ViewLyrics],
+                PlayerLeftButtonType.Transcription => TextSource[Translations.PlayerViewModel_Read],
+                null => string.Empty
+            };
         }
     }
 }

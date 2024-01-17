@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ReadTranscriptionLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_marginVertical="@dimen/margin_xsmall"
+        android:textFontWeight="445"
+        android:textColor="@color/label_two_color"
+        android:textSize="16sp"
+        android:lineHeight="32sp"
+        local:MvxBind="
+            Text Transcription.Text;
+            ViewAlpha IsHighlightedToAlpha(IsHighlighted)"
+        style="@style/Subtitle3_Label3" />

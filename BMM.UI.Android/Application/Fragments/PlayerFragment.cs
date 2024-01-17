@@ -8,10 +8,12 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.ConstraintLayout.Widget;
+using AndroidX.Core.Content;
 using AndroidX.Core.Graphics;
 using BMM.Core.Constants;
 using BMM.Core.Diagnostic.Interfaces;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Interactions;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Constants;
@@ -23,6 +25,7 @@ using BMM.UI.Droid.Application.Helpers.BottomSheet;
 using BMM.UI.Droid.Application.Helpers.Gesture;
 using BMM.UI.Droid.Application.Listeners;
 using FFImageLoading.Drawables;
+using FFImageLoading.Extensions;
 using Google.Android.Material.BottomSheet;
 using MvvmCross;
 using MvvmCross.Base;
@@ -67,6 +70,9 @@ namespace BMM.UI.Droid.Application.Fragments
         private FrameLayout _coverContainer;
         private float _coverTopPaddingMultiplier;
         private string _coverImagePath;
+        private Button _leftButton;
+        private int _leftButtonOriginalPadding;
+        private bool _hasTranscription;
 
         protected override bool ShouldClearMenuItemsAtStart => false;
         
@@ -147,7 +153,9 @@ namespace BMM.UI.Droid.Application.Fragments
             _coverImage = view.FindViewById<BmmCachedImageView>(Resource.Id.CoverImageView);
             _backgroundAccentColor = Context.GetColorFromResource(Resource.Color.background_two_color);
             _titleLabel = view.FindViewById<TextView>(Resource.Id.TitleLabel);
+            _leftButton = view.FindViewById<Button>(Resource.Id.LeftButton);
             _coverContainer!.ClipToOutline = true;
+            _leftButtonOriginalPadding = _leftButton.PaddingRight;
             
             var subtitleLabel = view.FindViewById<TextView>(Resource.Id.SubtitleLabel);
             subtitleLabel!.Selected = true;
@@ -175,8 +183,43 @@ namespace BMM.UI.Droid.Application.Fragments
             set.Bind(this)
                 .For(v => v.CoverImagePath)
                 .To(vm => vm.CurrentTrack.ArtworkUri);
+
+            set.Bind(this)
+                .For(v => v.HasTranscription)
+                .To(vm => vm.HasTranscription);
             
             set.Apply();
+        }
+
+        public bool HasTranscription
+        {
+            get => _hasTranscription;
+            set
+            {
+                _hasTranscription = value;
+
+                if (Context == null)
+                    return;
+                
+                int drawablePadding = Resources.GetDimensionPixelSize(Resource.Dimension.margin_xxmedium);
+                
+                int desiredPadding = !_hasTranscription
+                    ? _leftButtonOriginalPadding
+                    : _leftButtonOriginalPadding + drawablePadding;
+
+                var leftDrawable = _hasTranscription
+                    ? ContextCompat.GetDrawable(Context, Resource.Drawable.icon_information)
+                    : null;
+                
+                _leftButton.SetCompoundDrawablesWithIntrinsicBounds(leftDrawable, null, null, null);
+
+                _leftButton.SetPadding(
+                    _leftButton.PaddingLeft,
+                    _leftButton.PaddingTop,
+                    desiredPadding,
+                    _leftButton.PaddingBottom
+                );
+            }
         }
 
         public string CoverImagePath
