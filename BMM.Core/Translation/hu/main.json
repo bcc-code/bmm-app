@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Lejátszási sebesség ",
     "Normal": "Átlagos",
     "Selected": "Kiválasztott",
-    "WatchOnBCCMedia": "Nézd meg a BCC Medián"
+    "WatchOnBCCMedia": "Nézd meg a BCC Medián",
+    "Read": "Elolvasás"
   },
   "QueueViewModel": {
     "Title": "Várólista"
