@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Velocidad de reproducción",
     "Normal": "Normal",
     "Selected": "Seleccionada",
-    "WatchOnBCCMedia": "Ver en BCC Media"
+    "WatchOnBCCMedia": "Ver en BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Cola"
