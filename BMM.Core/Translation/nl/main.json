@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Afspeelsnelheid",
     "Normal": "Normaal",
     "Selected": "Geselecteerd",
-    "WatchOnBCCMedia": "Kijk op BCC Media"
+    "WatchOnBCCMedia": "Kijk op BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Wachtrij"
