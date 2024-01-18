@@ -50,5 +50,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         int CurrentPodcastId { get; }
         string DeleteAccountLink { get; }
         int[] AutoSubscribePodcasts { get; }
+        bool IsReadingTranscriptionsEnabled { get; }
     }
 }

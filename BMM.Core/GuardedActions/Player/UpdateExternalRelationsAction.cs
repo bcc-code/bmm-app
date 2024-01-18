@@ -12,6 +12,7 @@ using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
+using BMM.Core.Implementations;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Region.Interfaces;
@@ -36,13 +37,16 @@ namespace BMM.Core.GuardedActions.Player
         private const string SangtekstRelationName = "Sangtekst";
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
         private readonly ICultureInfoRepository _cultureInfoRepository;
+        private readonly IDeveloperPermission _developerPermission;
 
         public UpdateExternalRelationsAction(
             IFirebaseRemoteConfig firebaseRemoteConfig,
-            ICultureInfoRepository cultureInfoRepository)
+            ICultureInfoRepository cultureInfoRepository,
+            IDeveloperPermission developerPermission)
         {
             _firebaseRemoteConfig = firebaseRemoteConfig;
             _cultureInfoRepository = cultureInfoRepository;
+            _developerPermission = developerPermission;
         }
         
         private IPlayerViewModel PlayerViewModel => this.GetDataContext();
@@ -64,7 +68,9 @@ namespace BMM.Core.GuardedActions.Player
 
             PlayerLeftButtonType leftButtonType;
 
-            if (currentTrack.HasTranscription)
+            var isReadingTranscriptionsEnabled =
+                _firebaseRemoteConfig.IsReadingTranscriptionsEnabled || _developerPermission.IsBmmDeveloper();
+            if (currentTrack.HasTranscription && isReadingTranscriptionsEnabled)
                 leftButtonType = PlayerLeftButtonType.Transcription;
             else if (string.IsNullOrEmpty(bccLink))
                 leftButtonType = PlayerLeftButtonType.Lyrics;
@@ -74,7 +80,7 @@ namespace BMM.Core.GuardedActions.Player
             PlayerViewModel.LeftButtonLink = leftButtonType == PlayerLeftButtonType.Lyrics
                 ? GetLyricsLink(currentTrack)
                 : bccLink;
-            PlayerViewModel.HasTranscription = currentTrack.HasTranscription;
+            PlayerViewModel.HasTranscription = currentTrack.HasTranscription && isReadingTranscriptionsEnabled;
             
             return Task.CompletedTask;
         }

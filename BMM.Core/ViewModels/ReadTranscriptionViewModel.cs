@@ -1,9 +1,9 @@
 using System.ComponentModel;
-using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Transcriptions.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.Interfaces;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Transcriptions;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -16,26 +16,23 @@ public class ReadTranscriptionViewModel
     : PlayerBaseViewModel,
       IMvxViewModel<int>
 {
-    private const int CurrentTrackUpdateDebounceDelayInMillis = 100;
-    
-    private readonly ITracksClient _tracksClient;
     private readonly IMediaPlayer _mediaPlayer;
     private readonly IPrepareReadTranscriptionsAction _prepareReadTranscriptionsAction;
     private readonly IAdjustHighlightedTranscriptionsAction _adjustHighlightedTranscriptionsAction;
+    private readonly IAnalytics _analytics;
     private int _trackId;
     private MiniPlayerTrackInfoProvider _miniPlayerTrackInfoProvider;
     private bool _initialized;
 
-    public ReadTranscriptionViewModel(
-        ITracksClient tracksClient,
-        IMediaPlayer mediaPlayer,
+    public ReadTranscriptionViewModel(IMediaPlayer mediaPlayer,
         IPrepareReadTranscriptionsAction prepareReadTranscriptionsAction,
-        IAdjustHighlightedTranscriptionsAction adjustHighlightedTranscriptionsAction) : base(mediaPlayer)
+        IAdjustHighlightedTranscriptionsAction adjustHighlightedTranscriptionsAction,
+        IAnalytics analytics) : base(mediaPlayer)
     {
-        _tracksClient = tracksClient;
         _mediaPlayer = mediaPlayer;
         _prepareReadTranscriptionsAction = prepareReadTranscriptionsAction;
         _adjustHighlightedTranscriptionsAction = adjustHighlightedTranscriptionsAction;
+        _analytics = analytics;
         _prepareReadTranscriptionsAction.AttachDataContext(this);
         _adjustHighlightedTranscriptionsAction.AttachDataContext(this);
     }
@@ -47,6 +44,7 @@ public class ReadTranscriptionViewModel
     public void Prepare(int parameter)
     {
         _trackId = parameter;
+        _analytics.LogEvent("open ReadTranscriptionViewModel", new Dictionary<string, object> {{"trackId", parameter}});
     }
 
     public override async Task Initialize()
