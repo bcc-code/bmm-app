@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Скорость воспроизведения",
     "Normal": "Нормально",
     "Selected": "Выбрано",
-    "WatchOnBCCMedia": "Смотрите в BCC Media"
+    "WatchOnBCCMedia": "Смотрите в BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Очередь"
