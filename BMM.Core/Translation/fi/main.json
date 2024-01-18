@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Toistonopeus",
     "Normal": "Tavallinen",
     "Selected": "Valittu",
-    "WatchOnBCCMedia": "Katso BCC Mediassa"
+    "WatchOnBCCMedia": "Katso BCC Mediassa",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Jono"
