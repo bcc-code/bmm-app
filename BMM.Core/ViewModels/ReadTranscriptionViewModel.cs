@@ -22,7 +22,6 @@ public class ReadTranscriptionViewModel
     private readonly IMediaPlayer _mediaPlayer;
     private readonly IPrepareReadTranscriptionsAction _prepareReadTranscriptionsAction;
     private readonly IAdjustHighlightedTranscriptionsAction _adjustHighlightedTranscriptionsAction;
-    private readonly DebounceDispatcher _currentTrackDebounceDispatcher;
     private int _trackId;
     private MiniPlayerTrackInfoProvider _miniPlayerTrackInfoProvider;
     private bool _initialized;
@@ -33,7 +32,6 @@ public class ReadTranscriptionViewModel
         IPrepareReadTranscriptionsAction prepareReadTranscriptionsAction,
         IAdjustHighlightedTranscriptionsAction adjustHighlightedTranscriptionsAction) : base(mediaPlayer)
     {
-        _currentTrackDebounceDispatcher = new DebounceDispatcher(CurrentTrackUpdateDebounceDelayInMillis);
         _tracksClient = tracksClient;
         _mediaPlayer = mediaPlayer;
         _prepareReadTranscriptionsAction = prepareReadTranscriptionsAction;
@@ -59,11 +57,14 @@ public class ReadTranscriptionViewModel
         _initialized = true;
     }
 
-    protected override void AttachEvents()
+    protected override async void AttachEvents()
     {
         base.AttachEvents();
         PropertyChanged -= OnPropertyChanged;
         PropertyChanged += OnPropertyChanged;
+        
+        if (_initialized)
+            await _adjustHighlightedTranscriptionsAction.ExecuteGuarded(CurrentPosition);
     }
 
     protected override void DetachEvents()
