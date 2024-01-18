@@ -1,21 +1,26 @@
-using Accounts;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
+using MvvmCross.Base;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Binding.Combiners;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
+using MvvmCross.ViewModels;
 
 namespace BMM.UI.iOS
 {
     [MvxModalPresentation(WrapInNavigationController = true, ModalPresentationStyle = UIModalPresentationStyle.PageSheet)]
     public partial class ReadTranscriptionViewController : BaseViewController<ReadTranscriptionViewModel>
     {
+        private const int TableViewBottomOffset = 120; 
         private BaseSimpleTableViewSource _source;
+        private IMvxInteraction<int> _adjustScrollPositionInteraction;
+        private int _lastPosition;
+        private bool _initialized;
 
         public ReadTranscriptionViewController() : base(null)
         {
@@ -39,16 +44,7 @@ namespace BMM.UI.iOS
 
             SetThemes();
             Bind();
-        }
-
-        protected override void AttachEvents()
-        {
-            base.AttachEvents();
-        }
-
-        protected override void DetachEvents()
-        {
-            base.DetachEvents();
+            TranscriptionsTableView.ContentInset = new UIEdgeInsets(0, 0, TableViewBottomOffset, 0);
         }
 
         private void Bind()
@@ -80,13 +76,67 @@ namespace BMM.UI.iOS
            
            set.Bind(ProgressBar).For(s => s.Progress).To(vm => vm.SliderPosition)
                .WithConversion<PercentageValueConverter>(ViewModel);
+
            set.Bind(ProgressBar).For(s => s.Alpha)
                .ByCombining(new MvxInvertedValueCombiner(), vm => vm.IsSeekingDisabled)
                .WithConversion<BoolToNfloatConverter>();
            
+           set.Bind(this)
+               .For(f => f.AdjustScrollPositionInteraction)
+               .To(vm => vm.AdjustScrollPositionInteraction)
+               .OneWay();
+
             set.Apply();
         }
+        
+        public IMvxInteraction<int> AdjustScrollPositionInteraction
+        {
+            get => _adjustScrollPositionInteraction;
+            set
+            {
+                if (_adjustScrollPositionInteraction != null)
+                    _adjustScrollPositionInteraction.Requested -= OnAdjustScrollPositionInteractionRequested;
 
+                _adjustScrollPositionInteraction = value;
+                _adjustScrollPositionInteraction.Requested += OnAdjustScrollPositionInteractionRequested;
+            }
+        }
+        
+        protected override void AttachEvents()
+        {
+            base.AttachEvents();
+            if (_adjustScrollPositionInteraction != null)
+            {
+                _adjustScrollPositionInteraction.Requested -= OnAdjustScrollPositionInteractionRequested;
+                _adjustScrollPositionInteraction.Requested += OnAdjustScrollPositionInteractionRequested;
+            }
+        }
+
+        protected override void DetachEvents()
+        {
+            base.DetachEvents();
+
+            if (_adjustScrollPositionInteraction != null)
+                _adjustScrollPositionInteraction.Requested -= OnAdjustScrollPositionInteractionRequested;
+        }
+        
+        private void OnAdjustScrollPositionInteractionRequested(object sender, MvxValueEventArgs<int> e)
+        {
+            if (_lastPosition == e.Value)
+                return;
+            
+            _lastPosition = e.Value;
+            
+            BeginInvokeOnMainThread(() =>
+            {
+                TranscriptionsTableView.ScrollToRow(NSIndexPath.FromRowSection(new IntPtr(e.Value), 0), 
+                    UITableViewScrollPosition.Middle,
+                    _initialized);
+                
+                _initialized = true;
+            });
+        }
+        
         public override void TraitCollectionDidChange(UITraitCollection previousTraitCollection)
         {
             base.TraitCollectionDidChange(previousTraitCollection);
