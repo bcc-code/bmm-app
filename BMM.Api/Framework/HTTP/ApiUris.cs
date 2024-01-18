@@ -27,6 +27,7 @@
         public static string TracksRelated = "track/rel/{key}/{?content%2Dtype[]*,size,from}";
         public static string Track = "track/{id}{?raw}";
         public static string TrackRecommendation = "track/recommendation";
+        public static string TrackTranscriptions = "track/{id}/transcription";
         public static string TrackCover = "track/{id}/cover";
         public static string TrackCollections = "track_collection/";
         public static string TrackCollection = "track_collection/{id}";

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_one_color">
+
+    <ImageView
+            android:id="@+id/AIIcon"
+            android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+            android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+            android:layout_marginVertical="@dimen/margin_xxmedium"
+            android:layout_marginStart="@dimen/margin_xxmedium"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            android:src="@drawable/icon_ai"/>
+
+    <TextView
+            android:id="@+id/HighlightLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:textColor="@color/utility_auto_color"
+            local:layout_constraintTop_toTopOf="@+id/AIIcon"
+            local:layout_constraintBottom_toBottomOf="@+id/AIIcon"
+            local:layout_constraintStart_toEndOf="@+id/AIIcon"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxLang="Text HighlightedTextTrackViewModel_AutoTranscribed"
+            style="@style/Paragraph2" />
+
+    <View
+            android:id="@+id/Divider"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="0.5dp"
+            android:background="@color/separator_color"
+            android:layout_marginTop="@dimen/margin_xmedium"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintTop_toBottomOf="@+id/AIIcon" />
+    
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView
+            android:id="@+id/ReadTranscriptionsRecyclerView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            local:MvxItemTemplate="@layout/listitem_read_transcription"
+            local:layout_constraintTop_toBottomOf="@+id/Divider"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent" />
+    
+    <FrameLayout
+            android:id="@+id/CloseButtonIconArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxBind="Click CloseCommand">
+        <androidx.cardview.widget.CardView
+                android:layout_width="@dimen/highlighted_text_close_container_icon_size"
+                android:layout_height="@dimen/highlighted_text_close_container_icon_size"
+                android:layout_marginHorizontal="@dimen/margin_medium"
+                android:layout_marginVertical="@dimen/margin_medium"
+                android:elevation="2dp"
+                local:cardBackgroundColor="@color/background_three_color"
+                local:cardCornerRadius="28dp">
+
+            <ImageView
+                    android:id="@+id/CloseIcon"
+                    android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                    android:layout_gravity="center"
+                    android:src="@drawable/icon_remove"/>
+
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_small"
+            android:layout_marginBottom="@dimen/margin_xmedium"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:cardBackgroundColor="@color/background_one_color"
+            local:cardCornerRadius="12dp"
+            local:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+            
+                <androidx.cardview.widget.CardView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:id="@+id/CoverImage"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginVertical="14dp"
+                        local:layout_constraintStart_toStartOf="parent"
+                        local:layout_constraintBottom_toBottomOf="parent"
+                        local:layout_constraintTop_toTopOf="parent"
+                        local:cardCornerRadius="@dimen/corner_radius_tiny"
+                        local:cardElevation="0dp">
+
+                    <ffimageloading.cross.MvxCachedImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/placeholder_cover"
+                            local:MvxBind="LoadingPlaceholderImagePath 'res:placeholder_cover'; ErrorPlaceholderImagePath 'res:placeholder_cover'; ImagePath CoverUrlToFallbackImage(CurrentTrack.ArtworkUri, 'res:placeholder_cover')" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                        android:layout_width="@dimen/match_constraint"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_view_title"
+                        android:singleLine="true"
+                        android:layout_marginStart="@dimen/margin_xxsmall"
+                        local:layout_constraintVertical_chainStyle="packed"
+                        local:layout_constraintStart_toEndOf="@+id/CoverImage"
+                        local:layout_constraintEnd_toStartOf="@+id/image_view_row_icon"
+                        local:layout_constraintTop_toTopOf="parent"
+                        local:layout_constraintBottom_toTopOf="@+id/text_view_sub_title"
+                        local:MvxBind="Text TrackToTitle(CurrentTrack, .)"
+                        style="@style/Title2" />
+
+                <TextView
+                        android:layout_width="@dimen/match_constraint"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_view_sub_title"
+                        android:singleLine="true"
+                        android:layout_marginStart="@dimen/margin_xxsmall"
+                        local:layout_constraintStart_toEndOf="@+id/CoverImage"
+                        local:layout_constraintEnd_toStartOf="@+id/image_view_row_icon"
+                        local:layout_constraintTop_toBottomOf="@+id/text_view_title"
+                        local:layout_constraintBottom_toBottomOf="parent"
+                        local:MvxBind="Text TrackToSubtitle(CurrentTrack, .)"
+                        style="@style/Subtitle3_Label2" />
+
+                <FrameLayout
+                        android:id="@+id/image_view_row_icon"
+                        android:layout_width="52dp"
+                        android:layout_height="@dimen/match_constraint"
+                        android:paddingStart="10dp"
+                        android:layout_centerVertical="true"
+                        android:gravity="center"
+                        local:layout_constraintTop_toTopOf="parent"
+                        local:layout_constraintBottom_toBottomOf="parent"
+                        local:layout_constraintEnd_toEndOf="parent"
+                        local:MvxBind="Click PlayPauseCommand">
+
+                    <ToggleButton
+                            android:textOn=""
+                            android:textOff=""
+                            android:minWidth="0dp"
+                            android:minHeight="0dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/label_one_color"
+                            android:layout_gravity="center"
+                            local:MvxBind="Click PlayPauseCommand; Checked IsPlaying, Mode=TwoWay"
+                            android:background="@drawable/togglebutton_playpause_mini" />
+
+                </FrameLayout>
+
+            <SeekBar
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/seekBar1"
+                    local:MvxBind="Max Duration; Progress CurrentPosition; Visibility VisibleOrHidden(!IsSeekingDisabled)"
+                    local:layout_constraintBottom_toBottomOf="parent"
+                    android:clickable="false"
+                    style="@style/SeekBarMiniPlayer"/>
+            
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

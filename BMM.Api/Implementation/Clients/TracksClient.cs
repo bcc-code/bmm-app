@@ -81,6 +81,13 @@ namespace BMM.Api.Implementation.Clients
             return Get<IList<Track>>(uri);
         }
 
+        public Task<IList<Transcription>> GetTranscriptions(int trackId)
+        {
+            var uri = new UriTemplate(ApiUris.TrackTranscriptions);
+            uri.SetParameter("id", trackId);
+            return Get<IList<Transcription>>(uri);
+        }
+
         public Task<Stream> GetCover(int id)
         {
             return GetCoverBase(id, ApiUris.TrackCover);

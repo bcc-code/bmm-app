@@ -317,7 +317,7 @@
                     Click LeftButtonClickedCommand;
                     Visibility Visibility(HasLeftButton);
                     Text PlayerLeftButtonTypeToTitle(LeftButtonType)" />
-
+        
         <Button
                 android:id="@+id/ChangeLanguageButton"
                 android:layout_width="@dimen/match_constraint"

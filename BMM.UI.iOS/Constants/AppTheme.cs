@@ -228,7 +228,7 @@ namespace BMM.UI.iOS.Constants
             TextTheme = Title1,
             ButtonColor = UIColor.Clear,
             HasBorder = true,
-            BorderColor = AppColors.PlaceholderColor,
+            BorderColor = AppColors.SeparatorColor,
             ImageEdgeInsets = UIEdgeInsets.Zero,
             ContentEdgeInsets = UIEdgeInsets.Zero
         };
@@ -273,7 +273,7 @@ namespace BMM.UI.iOS.Constants
             },
             ButtonColor = UIColor.Clear,
             HasBorder = true,
-            BorderColor = AppColors.PlaceholderColor,
+            BorderColor = AppColors.SeparatorColor,
             ImageEdgeInsets = UIEdgeInsets.Zero,
             ContentEdgeInsets = new UIEdgeInsets(0, 12, 0, 12)
         };

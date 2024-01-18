@@ -12,13 +12,16 @@ using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
+using BMM.Core.Implementations;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Region.Interfaces;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Models.Enums;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
+using MvvmCross;
 using Newtonsoft.Json;
 
 namespace BMM.Core.GuardedActions.Player
@@ -34,13 +37,16 @@ namespace BMM.Core.GuardedActions.Player
         private const string SangtekstRelationName = "Sangtekst";
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
         private readonly ICultureInfoRepository _cultureInfoRepository;
+        private readonly IDeveloperPermission _developerPermission;
 
         public UpdateExternalRelationsAction(
             IFirebaseRemoteConfig firebaseRemoteConfig,
-            ICultureInfoRepository cultureInfoRepository)
+            ICultureInfoRepository cultureInfoRepository,
+            IDeveloperPermission developerPermission)
         {
             _firebaseRemoteConfig = firebaseRemoteConfig;
             _cultureInfoRepository = cultureInfoRepository;
+            _developerPermission = developerPermission;
         }
         
         private IPlayerViewModel PlayerViewModel => this.GetDataContext();
@@ -60,14 +66,21 @@ namespace BMM.Core.GuardedActions.Player
 
             string bccLink = GetBCCMediaLink(currentTrack);
 
-            var leftButtonType = string.IsNullOrEmpty(bccLink)
-                ? PlayerLeftButtonType.Lyrics
-                : PlayerLeftButtonType.BCCMedia;
-            
+            PlayerLeftButtonType leftButtonType;
+
+            var isReadingTranscriptionsEnabled =
+                _firebaseRemoteConfig.IsReadingTranscriptionsEnabled || _developerPermission.IsBmmDeveloper();
+            if (currentTrack.HasTranscription && isReadingTranscriptionsEnabled)
+                leftButtonType = PlayerLeftButtonType.Transcription;
+            else if (string.IsNullOrEmpty(bccLink))
+                leftButtonType = PlayerLeftButtonType.Lyrics;
+            else
+                leftButtonType = PlayerLeftButtonType.BCCMedia;
             PlayerViewModel.LeftButtonType = leftButtonType;
             PlayerViewModel.LeftButtonLink = leftButtonType == PlayerLeftButtonType.Lyrics
                 ? GetLyricsLink(currentTrack)
                 : bccLink;
+            PlayerViewModel.HasTranscription = currentTrack.HasTranscription && isReadingTranscriptionsEnabled;
             
             return Task.CompletedTask;
         }

@@ -1,13 +1,7 @@
 ﻿using MvvmCross.Binding.BindingContext;
 using BMM.Core.Models.POs.Tracks;
-using BMM.Core.Models.POs.Tracks.Interfaces;
-using BMM.Core.Translation;
-using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
-using BMM.UI.iOS.Extensions;
-using CoreAnimation;
 using MvvmCross.Platforms.Ios.Binding;
-using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
 
 namespace BMM.UI.iOS
 {

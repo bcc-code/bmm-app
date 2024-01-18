@@ -201,6 +201,7 @@ namespace BMM.Core.Translation
 		public const string PlayerViewModel_Normal = nameof(PlayerViewModel_Normal);
 		public const string PlayerViewModel_Selected = nameof(PlayerViewModel_Selected);
 		public const string PlayerViewModel_WatchOnBCCMedia = nameof(PlayerViewModel_WatchOnBCCMedia);
+		public const string PlayerViewModel_Read = nameof(PlayerViewModel_Read);
 		public const string QueueViewModel_Title = nameof(QueueViewModel_Title);
 		public const string SearchViewModel_Title = nameof(SearchViewModel_Title);
 		public const string SearchViewModel_SearchHint = nameof(SearchViewModel_SearchHint);

@@ -51,5 +51,7 @@ namespace BMM.Api.Abstraction
         long LastPosition { get; set; }
 
         TrackMetadata Meta { get; set; }
+        
+        bool HasTranscription { get; set; }
     }
 }

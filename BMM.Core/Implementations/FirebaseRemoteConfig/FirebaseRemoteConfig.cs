@@ -51,6 +51,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string ShowBlueDotForSongs = "show_blue_dot_for_songs";
             public const string CurrentPodcastId = "current_podcast_id";
             public const string AutoSubscribePodcasts = "auto_subscribe_podcasts";
+            public const string EnableReadingTranscriptions = "enable_reading_transcriptions";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -80,7 +81,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.ShowBlueDotForMessages, false.ToString()},
             {Variables.ShowBlueDotForSongs, false.ToString()},
             {Variables.CurrentPodcastId, PodcastsConstants.FraKårePodcastId.ToString()},
-            {Variables.AutoSubscribePodcasts, $"{PodcastsConstants.FraKårePodcastId},{PodcastsConstants.RomanPodcastId}"}
+            {Variables.AutoSubscribePodcasts, $"{PodcastsConstants.FraKårePodcastId},{PodcastsConstants.RomanPodcastId}"},
+            {Variables.EnableReadingTranscriptions, false.ToString()}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -93,6 +95,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         {
             await _platformSpecificRemoteConfig.UpdateValuesFromFirebaseRemoteConfig();
         }
+
+        public bool IsReadingTranscriptionsEnabled => _platformSpecificRemoteConfig.GetBoolValue(Variables.EnableReadingTranscriptions);
 
         public int[] AutoSubscribePodcasts =>
             _platformSpecificRemoteConfig.GetStringValue(Variables.AutoSubscribePodcasts).Split(',').Select(int.Parse).ToArray();
