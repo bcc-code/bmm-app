@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Vitesse de lecture",
     "Normal": "Normal",
     "Selected": "Sélectionné",
-    "WatchOnBCCMedia": "Regarder sur BCC Media"
+    "WatchOnBCCMedia": "Regarder sur BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "File d'attente"
