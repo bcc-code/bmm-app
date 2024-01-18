@@ -508,8 +508,8 @@
   "ColorThemeViewModel": {
     "Title": "Fargetema",
     "Default": "standard",
-    "Violet": "fiolett",
-    "Red": "rød",
+    "Violet": "Fiolett",
+    "Red": "Rød",
     "DarkGreen": "Mørk Grønn",
     "Golden": "Gull",
     "Orange": "Oransje"
@@ -565,8 +565,8 @@
     "IconDarkGreen": "Mørk Grønn",
     "IconOrange": "Oransje",
     "IconGolden": "Gull",
-    "IconViolet": "fiolett",
-    "IconRed": "rød"
+    "IconViolet": "Fiolett",
+    "IconRed": "Rød"
   },
   "AchievementDetailsViewModel": {
     "Title": "Prestasjon",
