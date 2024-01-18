@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Afspil hastighed",
     "Normal": "Normal",
     "Selected": "Valgt",
-    "WatchOnBCCMedia": "Se på BCC Media\n"
+    "WatchOnBCCMedia": "Se på BCC Media\n",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Spillekø"
