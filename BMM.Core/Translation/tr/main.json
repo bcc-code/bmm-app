@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Oynatma hızı",
     "Normal": "Normal",
     "Selected": "Seçildi",
-    "WatchOnBCCMedia": "BCC Media'da izleyin"
+    "WatchOnBCCMedia": "BCC Media'da izleyin",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Sıralı"

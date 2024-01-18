@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Скорост на възпроизвеждане",
     "Normal": "нормално",
     "Selected": "Избрано",
-    "WatchOnBCCMedia": "Гледайте по BCC Media"
+    "WatchOnBCCMedia": "Гледайте по BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Опашка"

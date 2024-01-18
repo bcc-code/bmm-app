@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
     "Selected": "Selecionado",
-    "WatchOnBCCMedia": "Veja no BCC mídia"
+    "WatchOnBCCMedia": "Veja no BCC mídia",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Fila"

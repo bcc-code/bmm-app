@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Playback speed",
     "Normal": "Normal",
     "Selected": "Selected",
-    "WatchOnBCCMedia": "Watch on BCC Media"
+    "WatchOnBCCMedia": "Watch on BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Snitlys tou"

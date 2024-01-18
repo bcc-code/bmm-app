@@ -261,7 +261,8 @@
     "PlaybackSpeed": "பிளேபேக் வேகம்",
     "Normal": "இயல்பானது",
     "Selected": "தேர்ந்தெடுக்கப்பட்டது",
-    "WatchOnBCCMedia": "BCC மீடியாவில் பார்க்கவும்"
+    "WatchOnBCCMedia": "BCC மீடியாவில் பார்க்கவும்",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "வரிசை"

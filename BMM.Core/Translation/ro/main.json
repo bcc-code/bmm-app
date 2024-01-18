@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Viteză de redare",
     "Normal": "Normal",
     "Selected": "Selectate",
-    "WatchOnBCCMedia": "Vezi pe BCC Media"
+    "WatchOnBCCMedia": "Vezi pe BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Listă"

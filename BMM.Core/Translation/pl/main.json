@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Prędkość odtwarzania",
     "Normal": "Normalna",
     "Selected": "Wybrane",
-    "WatchOnBCCMedia": "Obejrzyj na BCC Media"
+    "WatchOnBCCMedia": "Obejrzyj na BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Kolejka"

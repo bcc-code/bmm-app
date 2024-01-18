@@ -261,7 +261,8 @@
     "PlaybackSpeed": "Hitrost predvajanja",
     "Normal": "Normalno",
     "Selected": "Izbrano",
-    "WatchOnBCCMedia": "Glej na: BCC Media"
+    "WatchOnBCCMedia": "Glej na: BCC Media",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "Čakalna vrsta"

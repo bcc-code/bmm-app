@@ -261,7 +261,8 @@
     "PlaybackSpeed": "播放速度",
     "Normal": "正常",
     "Selected": "精选",
-    "WatchOnBCCMedia": "在 BCC Media 上观看"
+    "WatchOnBCCMedia": "在 BCC Media 上观看",
+    "Read": "Read"
   },
   "QueueViewModel": {
     "Title": "列队"
