@@ -200,14 +200,14 @@
   },
   "FollowedPodcastsViewModel": {
     "Title": "Подкаст",
-    "EmptyTitle": "В момента не сте след всяко подкасти",
-    "EmptySubline": "Следвайте Подкаст чрез отваряне на подкаст и щракнете върху бутона следват."
+    "EmptyTitle": "В момента не следвате нито един подкаст",
+    "EmptySubline": "Следвайте подкаст, като отворите подкаст и щракнете върху бутона за следване."
   },
   "MyTracksViewModel": {
     "Title": "Моите песни",
     "ShufflePlay": "Разбъркано възпроизвеждане",
-    "AvailableOffline": "Достъпен в режим извън линия",
-    "AvailableOfflineDownload": "Изтегли списъка",
+    "AvailableOffline": "Наличен офлайн",
+    "AvailableOfflineDownload": "Изтегляне на плейлист",
     "AvailableOfflineDownloading": "Изтегляне на {0} на {1}",
     "RemoveOfflineConfirm": "Наистина ли искаш да изтриеш всички изтеглени елементи?",
     "EmptyTitle": "Този списък е празен",
@@ -223,7 +223,7 @@
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Подкаст",
-    "EmptyTitle": "В момента не сте след всяко подкасти",
+    "EmptyTitle": "В момента не следвате нито един подкаст",
     "EmptySubline": "Следвайте Подкаст чрез отваряне на подкаст и щракнете върху бутона следват."
   },
   "PodcastViewModel": {
@@ -233,8 +233,8 @@
     "ManageDownloads": "Управление на изтеглянията",
     "GetNotified": "Получаване на известие",
     "GetNotifiedMessage": "когато излязат нови епизоди",
-    "UnfollowConfirm": "Наистина ли искате да unfollow този подкаст?",
-    "ToggleFollowOfflineError": "Трябва да си в режим на линия, за да последваш или да се откажеш да следваш подкаст",
+    "UnfollowConfirm": "Наистина ли искате да спрете да следвате този подкаст?",
+    "ToggleFollowOfflineError": "Трябва да сте в онлайн режим, за да следвате или спрете да следвате подкаст",
     "Week": "Седмица {0}",
     "ThisWeek": "Тази седмица",
     "LastWeek": "Миналата седмица",
@@ -253,7 +253,7 @@
     "Title": "Сега се изпълнява",
     "PlayingCount": "{0} от {1}",
     "ViewLyrics": "Преглед на текстове",
-    "SleepTimer": "Sleep timer",
+    "SleepTimer": "Таймер за заспиване",
     "Minutes": "{0} минути",
     "Hour": "{0} часа",
     "Hours": "{0} часа",
@@ -275,7 +275,7 @@
     "WelcomeTitle": "Започни да търсиш тук!",
     "WelcomeSubTitle": "Използвайте полето за търсене да търсите съдържание на БММ",
     "DeleteConfirm": "Сигурен ли си, че искаш да изтриеш историята на търсене?",
-    "All": "",
+    "All": "всичко",
     "Speeches": "Речи",
     "Music": "Музика",
     "Albums": "Албуми",
@@ -294,15 +294,15 @@
     "OptionAutoplayText": "Пуснете музика, след като изслушате днешния епизод на Fra Kåre",
     "OptionStreakHeader": "Поредица на Home",
     "OptionStreakText": "Показване на статистиката за слушане на началния екран",
-    "OptionEnablePushHeader": "Разреши натискане известия",
+    "OptionEnablePushHeader": "Активиране на насочени известия",
     "OptionPushNotifications": "Уведомления",
-    "OptionPushNotificationsSubtitle": "Давам възможност на тласък уведомления за подкасти следвате",
+    "OptionPushNotificationsSubtitle": "Активиране на известия за подкасти, които следвате",
     "OptionExternalStorage": "Място на съхранение",
     "OptionMBInternalText": "Internal {0} MB",
     "OptionMBExternalText": "External {0} MB",
     "OptionEnablePushText": "Получаване на известия за съобщения, когато има налично ново съдържание",
     "OptionDownloadMobileNetworkHeader": "Изтегли през мобилна мрежа",
-    "OptionDownloadMobileNetworkText": "Позволи на приложението да изтегля съдържание, ползвайки мобилен интернет. Това може да се отрази на месечния ти план за данни.",
+    "OptionDownloadMobileNetworkText": "Позволете на приложението да изтегля списъци за изпълнение чрез 3G/4G. Това може да се отрази на плана ви за пренос на данни",
     "HeadlineGeneral": "Общи",
     "OptionLanguageAppHeader": "Приложение език",
     "OptionLanguageAppText": "Промени езика на приложението",
@@ -337,7 +337,7 @@
     "Achievements": "постижения"
   },
   "StorageManagementViewModel": {
-    "Title": "Място за песни/речи извън линия",
+    "Title": "Местоположение за офлайн песни",
     "RemoveAllFiles": "Искате ли да изберете ново място за съхранение и да премахнете всички офлайн записи?"
   },
   "DocumentsViewModel": {
@@ -351,7 +351,7 @@
     "Title": "Списък",
     "ShufflePlay": "Разбъркайте",
     "Resume": "Резюме",
-    "AvailableOffline": "Достъпен в режим извън линия",
+    "AvailableOffline": "Наличен офлайн",
     "AvailableOfflineDownload": "Изтегли",
     "AvailableOfflineDownloading": "Изтегляне на {0} на {1}",
     "RemoveOfflineConfirm": "Наистина ли искаш да изтриеш всички изтеглени елементи?",
@@ -590,12 +590,12 @@
   },
   "AskQuestionViewModel": {
     "Title": "",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Submit": "Изпратете въпрос",
+    "Hint": "Твоят въпрос"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "ThankYou": "Благодаря че попита!",
+    "Description": "Всички въпроси ще бъдат прегледани и на някои ще бъде отговорено в подкаста. \n Повечето въпроси ще получат отговор на страницата с въпроси и отговори. \n\n Проверете отново в сряда, за да прочетете отговорите.",
     "GotIt": "Схванах го"
   },
   "AchievementsViewModel": {
