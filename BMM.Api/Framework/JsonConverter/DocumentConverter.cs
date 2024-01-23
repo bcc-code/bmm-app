@@ -74,6 +74,9 @@ namespace BMM.Api.Framework.JsonConverter
                 
                 case "project_box":
                     return new ProjectBox();
+                
+                case "achievement_collection":
+                    return new AchievementsCollection();
             }
 
             return new UnsupportedDocument();

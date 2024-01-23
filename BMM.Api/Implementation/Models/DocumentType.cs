@@ -69,6 +69,9 @@ namespace BMM.Api.Implementation.Models
         
         [EnumMember(Value = "project_box")]
         ProjectBox,
+        
+        [EnumMember(Value = "achievement_collection")]
+        AchievementCollection,
 
         [EnumMember(Value = "unsupported")]
         Unsupported

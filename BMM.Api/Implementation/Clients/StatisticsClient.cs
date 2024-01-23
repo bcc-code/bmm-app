@@ -124,13 +124,12 @@ namespace BMM.Api.Implementation.Clients
             return Get<IList<YearInReviewItem>>(uri);
         }
 
-        public async Task GetAchievements(string lang, AppTheme theme)
+        public async Task<AchievementsHolder> GetAchievements(string lang, AppTheme theme)
         {
             var uri = new UriTemplate(ApiUris.Achievements);
             uri.SetParameter("lang", lang);
             uri.SetParameter("theme", theme);
-            await Get<ProjectProgress>(uri);
-            //ToDo: return correct type
+            return await Get<AchievementsHolder>(uri);
         }
         
         public Task<IList<Achievement>> GetAchievementsToAcknowledge(string lang, AppTheme theme)
