@@ -14,13 +14,21 @@ namespace BMM.UI.iOS
 	partial class AchievementsViewController
 	{
 		[Outlet]
+		UIKit.UICollectionView AchievementsCollectionView { get; set; }
+
+		[Outlet]
 		UIKit.UITableView ThemeSettingsTableView { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
 			if (ThemeSettingsTableView != null) {
-                ThemeSettingsTableView.Dispose ();
-                ThemeSettingsTableView = null;
+				ThemeSettingsTableView.Dispose ();
+				ThemeSettingsTableView = null;
+			}
+
+			if (AchievementsCollectionView != null) {
+				AchievementsCollectionView.Dispose ();
+				AchievementsCollectionView = null;
 			}
 
 		}

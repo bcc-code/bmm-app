@@ -1,13 +1,10 @@
 using Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Translation;
-using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.CustomViews;
-using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Utils;
-using Microsoft.IdentityModel.Tokens;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
@@ -37,7 +34,7 @@ namespace BMM.UI.iOS
 
         public override Type ParentViewControllerType => null;
 
-        public override async void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
             
