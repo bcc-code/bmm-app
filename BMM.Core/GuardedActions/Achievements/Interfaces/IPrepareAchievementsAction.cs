@@ -7,5 +7,4 @@ public interface IPrepareAchievementsAction
     : IGuardedAction,
       IDataContextGuardedAction<AchievementsViewModel>
 {
-    
 }

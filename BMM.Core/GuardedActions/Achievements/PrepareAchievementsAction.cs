@@ -54,11 +54,7 @@ public class PrepareAchievementsAction
                 case AchievementsCollection achievementsCollection:
                 {
                     foreach (var achievement in achievementsCollection.List)
-                    {
                         elementsList.Add(new AchievementPO(achievement, _mvxNavigationService));
-                        elementsList.Add(new AchievementPO(achievement, _mvxNavigationService));
-                        elementsList.Add(new AchievementPO(achievement, _mvxNavigationService));
-                    }
 
                     break;
                 }
