@@ -584,14 +584,14 @@
   },
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",
-    "Subtitle": "App Icon",
+    "Subtitle": "Edit the text below to correct an error",
     "Cancel": "Kanselleer",
-    "Submit": "App Icon",
-    "SubmitSuccess": "App Icon"
+    "Submit": "Submit",
+    "SubmitSuccess": "Edit suggestions submitted successfully, thank you!"
   },
   "AskQuestionViewModel": {
-    "Title": "App Icon",
-    "Submit": "App Icon",
+    "Title": "Ask a question",
+    "Submit": "Submit question",
     "Hint": "Your question"
   },
   "AskQuestionConfirmationViewModel": {
