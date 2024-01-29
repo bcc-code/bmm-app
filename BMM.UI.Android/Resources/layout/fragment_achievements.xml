@@ -6,5 +6,12 @@
               android:layout_height="match_parent">
     <include
             layout="@layout/toolbar_actionbar" />
-
+    
+    <mvvmcross.droidx.recyclerview.MvxRecyclerView
+            android:id="@+id/AchievementsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            local:MvxTemplateSelector="@string/profile_achievements_template_selector"
+            local:MvxBind="ItemsSource Achievements" />
+    
 </LinearLayout>

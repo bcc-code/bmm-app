@@ -81,7 +81,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
         
         Task DeleteAchievements();
         Task PostListeningEvents(IList<ListeningEvent> listeningEvents);
-        Task GetAchievements(string lang, AppTheme theme);
+        Task<AchievementsHolder> GetAchievements(string lang, AppTheme theme);
         Task<IList<Achievement>> GetAchievementsToAcknowledge(string lang, AppTheme theme);
     }
 }

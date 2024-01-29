@@ -28,6 +28,7 @@
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.27.0" />
+    <PackageReference Include="XAB.FlexboxLayout" Version="3.0.0.2" />
     <PackageReference Include="Xam.Plugins.Android.ExoPlayer" Version="2.18.10" />
     <PackageReference Include="Xam.Plugins.Android.ExoPlayer.MediaSession" Version="2.18.10" />
     <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.16" />
@@ -1075,6 +1076,10 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Update="Resources\layout\fragment_ask_question_confirmation.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_profile_achievement.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
