@@ -172,7 +172,7 @@
     "DeleteLanguageTitle": "Kunne ikke fjerne {0}"
   },
   "BrowseViewModel": {
-    "Title": "Bla gjennom"
+    "Title": "Utforsk"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arkiv"
@@ -182,7 +182,7 @@
     "Search": "Søk",
     "Explore": "Utforsk",
     "MyContent": "Mitt innhold",
-    "Browse": "Bla gjennom",
+    "Browse": "Utforsk",
     "Settings": "Innstillinger",
     "HelpAndFeedback": "Hjelp og tilbakemelding",
     "Home": "Hjem",
