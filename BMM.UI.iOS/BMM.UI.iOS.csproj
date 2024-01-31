@@ -68,7 +68,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITests|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <CodesignKey>Apple Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+    <CodesignKey>iPhone Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
     <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;UI_TESTS</DefineConstants>
@@ -101,7 +101,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>Apple Distribution: Brunstad Christian Church (KJ6LCYQ3A8)</CodesignKey>
+    <CodesignKey>iPhone Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
     <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
