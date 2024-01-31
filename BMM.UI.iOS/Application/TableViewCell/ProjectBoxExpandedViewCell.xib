@@ -109,7 +109,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAs-SC-27T">
-                                <rect key="frame" x="132.5" y="56" width="155.5" height="110"/>
+                                <rect key="frame" x="156" y="56" width="132" height="110"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-4Y-aAT">
                                         <rect key="frame" x="20" y="0.0" width="144.5" height="110"/>
@@ -125,19 +125,19 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y9S-IE-hXT">
-                                <rect key="frame" x="16" y="56" width="108.5" height="110"/>
+                                <rect key="frame" x="16" y="56" width="132" height="110"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kbm-y7-d9z">
-                                        <rect key="frame" x="0.0" y="32.5" width="108.5" height="45"/>
+                                        <rect key="frame" x="0.0" y="32.5" width="132" height="45"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GC9-Zx-SYz">
-                                                <rect key="frame" x="0.0" y="0.0" width="108.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="132" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your points" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7vT-FO-6dc">
-                                                <rect key="frame" x="0.0" y="24.5" width="108.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="24.5" width="132" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -182,7 +182,7 @@
                             <constraint firstItem="5WQ-63-JkF" firstAttribute="centerY" secondItem="Gt6-st-l34" secondAttribute="centerY" id="csV-T0-RD5"/>
                             <constraint firstItem="Wvn-F1-wxy" firstAttribute="top" secondItem="pAs-SC-27T" secondAttribute="bottom" constant="12" id="dCi-q2-ILM"/>
                             <constraint firstItem="aAe-vW-t69" firstAttribute="leading" secondItem="twU-W8-rQv" secondAttribute="leading" id="dXE-Zw-Igx"/>
-                            <constraint firstItem="Kbm-y7-d9z" firstAttribute="width" secondItem="pAs-SC-27T" secondAttribute="width" multiplier="0.7" id="eMK-qU-pbb"/>
+                            <constraint firstItem="Kbm-y7-d9z" firstAttribute="width" secondItem="pAs-SC-27T" secondAttribute="width" id="eMK-qU-pbb"/>
                             <constraint firstItem="JdJ-rM-p42" firstAttribute="leading" secondItem="twU-W8-rQv" secondAttribute="leading" constant="12" id="ecF-Ng-OXz"/>
                             <constraint firstItem="Gt6-st-l34" firstAttribute="top" secondItem="twU-W8-rQv" secondAttribute="top" constant="12" id="hqM-Vr-PII"/>
                             <constraint firstAttribute="trailing" secondItem="pAs-SC-27T" secondAttribute="trailing" id="jIl-bT-b71"/>

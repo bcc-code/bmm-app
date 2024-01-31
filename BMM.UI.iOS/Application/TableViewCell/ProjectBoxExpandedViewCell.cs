@@ -9,6 +9,7 @@ using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.YearInReview;
+using BMM.Core.Utils;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.TableViewCell.Base;
@@ -88,22 +89,15 @@ namespace BMM.UI.iOS
             }
         }
 
-        private void SetItems(IBmmObservableCollection<IAchievementPO> itemsSource)
+        private void SetItems(IBmmObservableCollection<IAchievementPO> achievements)
         {
-            if (itemsSource == null ||itemsSource.Count == 0)
+            if (achievements == null ||achievements.Count == 0)
                 return;
 
             foreach (var view in AchievementStackView.ArrangedSubviews)
                 view.RemoveFromSuperview();
-            
-            var rows = itemsSource.OfType<IBasePO>().Chunk(4).ToList();
-            var toFillInLastRow = 4 - rows.Last().Length;
-            var lastRow = rows.Last().ToList();
-            
-            for (int i = 0; i < toFillInLastRow; i++)
-                lastRow.Add(new EmptyPO());
 
-            rows[^1] = lastRow.ToArray();
+            var rows = ProjectBoxUtils.AdjustAchievementsRows(achievements);
             
             foreach (var row in rows)
             {

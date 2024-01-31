@@ -8,6 +8,7 @@ using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
+using BMM.Core.Utils;
 using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Listeners;
 using FFImageLoading.Cross;
@@ -52,15 +53,8 @@ public class ProjectBoxExpandedViewHolder : ProjectBoxViewHolder
         if (achievements == null ||achievements.Count == 0)
             return;
         
-        var rows = achievements.OfType<IBasePO>().Chunk(4).ToList();
-        var toFillInLastRow = 4 - rows.Last().Length;
-        var lastRow = rows.Last().ToList();
+        var rows = ProjectBoxUtils.AdjustAchievementsRows(achievements);
         
-        for (int i = 0; i < toFillInLastRow; i++)
-            lastRow.Add(new EmptyPO());
-
-        rows[^1] = lastRow.ToArray();
-            
         var achievementsLayout = ItemView.FindViewById<LinearLayout>(Resource.Id.AchievementsLayout);
         achievementsLayout.RemoveAllViews();
         
