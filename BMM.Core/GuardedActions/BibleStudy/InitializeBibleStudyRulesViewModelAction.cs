@@ -5,7 +5,6 @@ using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.TrackInfo.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Factories.Streak;
-using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
@@ -20,21 +19,17 @@ namespace BMM.Core.GuardedActions.BibleStudy;
 public class InitializeBibleStudyRulesViewModelAction : GuardedActionWithParameter<int>, IInitializeBibleStudyRulesViewModelAction
 {
     private readonly IStatisticsClient _statisticsClient;
-    private readonly IAppLanguageProvider _appLanguageProvider;
 
     private IBibleStudyRulesViewModel DataContext => this.GetDataContext();
 
-    public InitializeBibleStudyRulesViewModelAction(
-        IStatisticsClient statisticsClient,
-        IAppLanguageProvider appLanguageProvider)
+    public InitializeBibleStudyRulesViewModelAction(IStatisticsClient statisticsClient)
     {
         _statisticsClient = statisticsClient;
-        _appLanguageProvider = appLanguageProvider;
     }
     
     protected override async Task Execute(int projectId)
     {
-        var projectRules = await _statisticsClient.GetProjectRules(_appLanguageProvider.GetAppLanguage(), projectId);
+        var projectRules = await _statisticsClient.GetProjectRules(projectId);
         var items = new List<IBasePO>();
         
         DataContext.Title = projectRules.PageTitle;

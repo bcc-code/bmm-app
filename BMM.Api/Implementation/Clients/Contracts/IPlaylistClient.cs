@@ -14,7 +14,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
 
         Task<Stream> GetCover(int podcastId);
         
-        Task<GenericDocumentsHolder> GetDocuments(string lang, int? age, CachePolicy cachePolicy);
+        Task<GenericDocumentsHolder> GetDocuments(int? age, CachePolicy cachePolicy);
 
         Task<IList<Track>> GetTracks(int podcastId, CachePolicy cachePolicy);
     }

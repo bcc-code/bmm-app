@@ -19,7 +19,6 @@ using BMM.Core.Implementations.DeepLinking;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
-using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackInformation.Strategies;
@@ -47,7 +46,6 @@ namespace BMM.Core.ViewModels
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
         private readonly IPrepareTileCarouselItemsAction _prepareTileCarouselItemsAction;
         private readonly ITranslateDocsAction _translateDocsAction;
-        private readonly IAppLanguageProvider _appLanguageProvider;
         private readonly IUserStorage _user;
         private readonly IFirebaseRemoteConfig _config;
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
@@ -64,7 +62,6 @@ namespace BMM.Core.ViewModels
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
             IPrepareTileCarouselItemsAction prepareTileCarouselItemsAction,
             ITranslateDocsAction translateDocsAction,
-            IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
             IFirebaseRemoteConfig config,
             IListeningStreakPOFactory listeningStreakPOFactory,
@@ -78,7 +75,6 @@ namespace BMM.Core.ViewModels
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
             _prepareTileCarouselItemsAction = prepareTileCarouselItemsAction;
             _translateDocsAction = translateDocsAction;
-            _appLanguageProvider = appLanguageProvider;
             _user = user;
             _config = config;
             _listeningStreakPOFactory = listeningStreakPOFactory;
@@ -118,7 +114,7 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
-            var docs = (await Client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), age, await _deviceInfo.GetCurrentTheme() , policy)).ToList();
+            var docs = (await Client.Discover.GetDocuments(age, await _deviceInfo.GetCurrentTheme() , policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
             bool hideStreak = await _settings.GetStreakHidden();
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));

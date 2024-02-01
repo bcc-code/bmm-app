@@ -1,7 +1,4 @@
 ﻿using System.Globalization;
-using System.Linq;
-using System.Reactive.Linq;
-using Akavache;
 using BMM.Core.Constants;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Localization;

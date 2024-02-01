@@ -7,7 +7,6 @@ using BMM.Core.GuardedActions.TrackInfo.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Factories.Streak;
-using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Other;
@@ -27,7 +26,6 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
     private readonly IMvxNavigationService _mvxNavigationService;
     private readonly IDeepLinkHandler _deepLinkHandler;
     private readonly IUriOpener _uriOpener;
-    private readonly IAppLanguageProvider _appLanguageProvider;
     private readonly IDeviceInfo _deviceInfo;
     private readonly IMediaPlayer _mediaPlayer;
 
@@ -41,7 +39,6 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         IMvxNavigationService mvxNavigationService,
         IDeepLinkHandler deepLinkHandler,
         IUriOpener uriOpener,
-        IAppLanguageProvider appLanguageProvider,
         IDeviceInfo deviceInfo,
         IMediaPlayer mediaPlayer)
     {
@@ -52,14 +49,13 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
         _mvxNavigationService = mvxNavigationService;
         _deepLinkHandler = deepLinkHandler;
         _uriOpener = uriOpener;
-        _appLanguageProvider = appLanguageProvider;
         _deviceInfo = deviceInfo;
         _mediaPlayer = mediaPlayer;
     }
     
     protected override async Task Execute()
     {
-        var projectProgress = await _statisticsClient.GetProjectProgress(_appLanguageProvider.GetAppLanguage(), await _deviceInfo.GetCurrentTheme());
+        var projectProgress = await _statisticsClient.GetProjectProgress(await _deviceInfo.GetCurrentTheme());
 
         UpdateUnlockedAchievements(projectProgress);
 

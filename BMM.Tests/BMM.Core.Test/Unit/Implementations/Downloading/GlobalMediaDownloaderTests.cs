@@ -38,7 +38,6 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
         private Mock<IAppContentLogger> _appContentLogger;
         private Mock<IGlobalTrackProvider> _globalTrackProvider;
         private readonly FakeTrackFactory _fakeTrackFactory = new FakeTrackFactory();
-        private Mock<IAppLanguageProvider> _appLanguageProvider;
 
         private List<Track> TrackOfflineTracks => new List<Track>
         {
@@ -61,10 +60,9 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             _downloadQueue = new Mock<IDownloadQueue>();
             _appContentLogger = new Mock<IAppContentLogger>();
             _globalTrackProvider = new Mock<IGlobalTrackProvider>();
-            _appLanguageProvider = new Mock<IAppLanguageProvider>();
 
             var discoverClient = new Mock<IDiscoverClient>();
-            discoverClient.Setup(x => x.GetDocuments(It.IsAny<string>(), It.IsAny<int?>(), It.IsAny<AppTheme>(), It.IsAny<CachePolicy>()))
+            discoverClient.Setup(x => x.GetDocuments(It.IsAny<int?>(), It.IsAny<AppTheme>(), It.IsAny<CachePolicy>()))
                 .ReturnsAsync(new List<Document>());
             _client.Setup(x => x.Discover).Returns(discoverClient.Object);
             _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
@@ -91,7 +89,6 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
                 _downloadQueue.Object,
                 _appContentLogger.Object,
                 _globalTrackProvider.Object,
-                _appLanguageProvider.Object,
                 userStorage.Object,
                 config.Object,
                 deviceInfo.Object
