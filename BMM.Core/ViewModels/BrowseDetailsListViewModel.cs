@@ -1,12 +1,7 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
-using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.Factories.Tracks;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.ViewModels.Base;
 using BMM.Core.ViewModels.Interfaces;
@@ -34,7 +29,7 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(int startIndex, int size, CachePolicy policy)
         {
             var response = await Client.Browse.GetDocuments(_path, startIndex, size);
-            Title = TextSource.GetTranslationsSafe(response.GetTranslationKey(), response.Title);
+            Title = response.Title;
             IsFullyLoaded = !response.SupportsPaging;
             return _documentsPOFactory.Create(
                 response.Items,

@@ -1,6 +1,3 @@
-using System;
-using BMM.Api.Implementation.Models;
-using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.Translation;
 using MvvmCross.Localization;
 
@@ -14,11 +11,6 @@ namespace BMM.Core.Extensions
                 return string.Empty;
 
             return string.Format(mvxLanguageBinder.GetText(Translations.MyContentViewModel_ByFormat), authorName);
-        }
-
-        public static string GetTranslationKey(this ITranslationDetailsHolder translationDetailsHolder)
-        {
-            return $"{translationDetailsHolder.TranslationParent}_{translationDetailsHolder.TranslationId}";
         }
 
         public static string GetTranslationKey(this Type basicType, string key)
