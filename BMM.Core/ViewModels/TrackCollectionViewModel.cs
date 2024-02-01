@@ -73,7 +73,10 @@ namespace BMM.Core.ViewModels
         
         public override IEnumerable<string> PlaybackOrigin()
         {
-            return new[] {MyCollection.Id.ToString(), MyCollection.Name};
+            var owner = MyCollection.CanEdit
+                ? "Owner"
+                : "Shared";
+            return new[] {MyCollection.Id.ToString(), MyCollection.Name, owner};
         }
 
         protected override Task Initialization()
