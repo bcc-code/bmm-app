@@ -1,14 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Utils;
-using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
@@ -16,13 +8,9 @@ using BMM.Core.Implementations;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Region.Interfaces;
-using BMM.Core.Implementations.UI;
 using BMM.Core.Models.Enums;
-using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
-using MvvmCross;
-using Newtonsoft.Json;
 
 namespace BMM.Core.GuardedActions.Player
 {

@@ -18,7 +18,6 @@ using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
-using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Messages;
 using MvvmCross.Plugin.Messenger;
@@ -33,7 +32,6 @@ namespace BMM.Core.Implementations.Downloading
         private readonly IDownloadQueue _downloadQueue;
         private readonly IAppContentLogger _appContentLogger;
         private readonly IGlobalTrackProvider _globalTrackProvider;
-        private readonly IAppLanguageProvider _appLanguageProvider;
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IMvxMessenger _messenger;
         private readonly INetworkSettings _networkSettings;
@@ -53,7 +51,6 @@ namespace BMM.Core.Implementations.Downloading
             IDownloadQueue downloadQueue,
             IAppContentLogger appContentLogger,
             IGlobalTrackProvider globalTrackProvider,
-            IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
             IFirebaseRemoteConfig config,
             IDeviceInfo deviceInfo)
@@ -68,7 +65,6 @@ namespace BMM.Core.Implementations.Downloading
             _downloadQueue = downloadQueue;
             _appContentLogger = appContentLogger;
             _globalTrackProvider = globalTrackProvider;
-            _appLanguageProvider = appLanguageProvider;
             _user = user;
             _config = config;
             _deviceInfo = deviceInfo;
@@ -143,8 +139,7 @@ namespace BMM.Core.Implementations.Downloading
         private async Task UpdateHomescreen()
         {
             var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
-            await _client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(),
-                age,
+            await _client.Discover.GetDocuments(age,
                 await _deviceInfo.GetCurrentTheme(),
                 CachePolicy.UseCacheAndWaitForUpdates);
         }

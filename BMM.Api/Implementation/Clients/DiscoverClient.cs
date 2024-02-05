@@ -16,10 +16,9 @@ namespace BMM.Api.Implementation.Clients
         public DiscoverClient(IRequestHandler handler, ApiBaseUri baseUri, ILogger logger) : base(handler, baseUri, logger)
         { }
 
-        public async Task<IEnumerable<Document>> GetDocuments(string lang, int? age, AppTheme theme, CachePolicy cachePolicy)
+        public async Task<IEnumerable<Document>> GetDocuments(int? age, AppTheme theme, CachePolicy cachePolicy)
         {
             var uri = new UriTemplate(ApiUris.Discover);
-            uri.SetParameter("lang", lang);
             if (age.HasValue)
                 uri.SetParameter("age", age.Value);
             uri.SetParameter("theme", theme);

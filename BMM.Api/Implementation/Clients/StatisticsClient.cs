@@ -124,46 +124,34 @@ namespace BMM.Api.Implementation.Clients
             return Get<IList<YearInReviewItem>>(uri);
         }
 
-        public async Task<AchievementsHolder> GetAchievements(string lang, AppTheme theme)
+        public async Task<AchievementsHolder> GetAchievements(AppTheme theme)
         {
             var uri = new UriTemplate(ApiUris.Achievements);
-            uri.SetParameter("lang", lang);
             uri.SetParameter("theme", theme);
             return await Get<AchievementsHolder>(uri);
         }
         
-        public Task<IList<Achievement>> GetAchievementsToAcknowledge(string lang, AppTheme theme)
+        public Task<IList<Achievement>> GetAchievementsToAcknowledge(AppTheme theme)
         {
             var uri = new UriTemplate(ApiUris.AchievementsToAcknowledge);
-            uri.SetParameter("lang", lang);
             uri.SetParameter("theme", theme);
             return Get<IList<Achievement>>(uri);
         }
 
-        public Task<ProjectProgress> GetProjectProgress(string lang, AppTheme theme)
+        public Task<ProjectProgress> GetProjectProgress(AppTheme theme)
         {
             var uri = new UriTemplate(ApiUris.ProjectProgress);
-            uri.SetParameter("lang", lang);
             uri.SetParameter("theme", theme);
             return Get<ProjectProgress>(uri);
         }
 
-        public Task<ProjectRules> GetProjectRules(string lang, int projectId)
+        public Task<ProjectRules> GetProjectRules(int projectId)
         {
             var uri = new UriTemplate(ApiUris.ProjectRules);
             uri.SetParameter("projectId", projectId);
-            uri.SetParameter("lang", lang);
             return Get<ProjectRules>(uri);
         }
 
-        // public Task GetAchievements(string lang, AppTheme theme)
-        // {
-        //     var uri = new UriTemplate(ApiUris.StatisticsAchievements);
-        //     uri.SetParameter("lang", lang);
-        //     uri.SetParameter("theme", theme);
-        //     return Get(uri);
-        // }
-        //
         public Task AchievementAcknowledge(string achievementType)
         {
             var uri = new UriTemplate(ApiUris.AchievementAcknowledge);

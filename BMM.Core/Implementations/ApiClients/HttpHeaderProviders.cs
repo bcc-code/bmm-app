@@ -23,7 +23,8 @@ namespace BMM.Core.Implementations.ApiClients
                     Mvx.IoCProvider.Resolve<ContentLanguageHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<JsonContentTypeHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<BmmVersionHeaderProvider>(),
-                    Mvx.IoCProvider.Resolve<ExperimentIdHeaderProvider>()
+                    Mvx.IoCProvider.Resolve<ExperimentIdHeaderProvider>(),
+                    Mvx.IoCProvider.Resolve<UiLanguageHeaderProvider>()
                 };
             }
         }
@@ -40,7 +41,8 @@ namespace BMM.Core.Implementations.ApiClients
                     Mvx.IoCProvider.Resolve<ExperimentIdHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<ConnectivityHeaderProvider>(),
                     Mvx.IoCProvider.Resolve<MobileDownloadAllowedHeaderProvider>(),
-                    Mvx.IoCProvider.Resolve<IAuthorizationHeaderProvider>()
+                    Mvx.IoCProvider.Resolve<IAuthorizationHeaderProvider>(),
+                    Mvx.IoCProvider.Resolve<UiLanguageHeaderProvider>()
                 };
             }
         }

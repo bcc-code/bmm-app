@@ -4,7 +4,6 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Achievements.Interfaces;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.Implementations.Device;
-using BMM.Core.Implementations.Languages;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Other;
@@ -18,18 +17,15 @@ public class PrepareAchievementsAction
       IPrepareAchievementsAction
 {
     private readonly IStatisticsClient _statisticsClient;
-    private readonly IAppLanguageProvider _appLanguageProvider;
     private readonly IDeviceInfo _deviceInfo;
     private readonly IMvxNavigationService _mvxNavigationService;
 
     public PrepareAchievementsAction(
         IStatisticsClient statisticsClient,
-        IAppLanguageProvider appLanguageProvider,
         IDeviceInfo deviceInfo,
         IMvxNavigationService mvxNavigationService)
     {
         _statisticsClient = statisticsClient;
-        _appLanguageProvider = appLanguageProvider;
         _deviceInfo = deviceInfo;
         _mvxNavigationService = mvxNavigationService;
     }
@@ -38,9 +34,7 @@ public class PrepareAchievementsAction
     
     protected override async Task Execute()
     {
-        var achievementHolder = await _statisticsClient.GetAchievements(
-            _appLanguageProvider.GetAppLanguage(),
-            await _deviceInfo.GetCurrentTheme());
+        var achievementHolder = await _statisticsClient.GetAchievements(await _deviceInfo.GetCurrentTheme());
 
         var elementsList = new List<BasePO>();
 

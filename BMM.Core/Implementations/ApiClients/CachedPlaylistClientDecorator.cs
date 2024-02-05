@@ -43,10 +43,10 @@ namespace BMM.Core.Implementations.ApiClients
             return _client.GetCover(podcastId);
         }
 
-        public Task<GenericDocumentsHolder> GetDocuments(string lang, int? age, CachePolicy cachePolicy)
+        public Task<GenericDocumentsHolder> GetDocuments(int? age, CachePolicy cachePolicy)
         {
             return _clientCache.Get(() => 
-                _client.GetDocuments(lang, age, cachePolicy),
+                _client.GetDocuments(age, cachePolicy),
                 cachePolicy,
                 TimeSpan.FromHours(1),
                 CacheKeys.PlaylistGetDocument);

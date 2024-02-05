@@ -73,15 +73,15 @@ namespace BMM.Api.Implementation.Clients.Contracts
         
         Task<IList<YearInReviewItem>> GetYearInReview();
 
-        Task<ProjectProgress> GetProjectProgress(string lang, AppTheme theme);
+        Task<ProjectProgress> GetProjectProgress(AppTheme theme);
 
-        Task<ProjectRules> GetProjectRules(string lang, int projectId);
+        Task<ProjectRules> GetProjectRules(int projectId);
         
         Task AchievementAcknowledge(string achievementType);
         
         Task DeleteAchievements();
         Task PostListeningEvents(IList<ListeningEvent> listeningEvents);
-        Task<AchievementsHolder> GetAchievements(string lang, AppTheme theme);
-        Task<IList<Achievement>> GetAchievementsToAcknowledge(string lang, AppTheme theme);
+        Task<AchievementsHolder> GetAchievements(AppTheme theme);
+        Task<IList<Achievement>> GetAchievementsToAcknowledge(AppTheme theme);
     }
 }

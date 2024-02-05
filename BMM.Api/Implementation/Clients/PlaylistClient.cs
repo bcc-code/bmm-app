@@ -36,10 +36,9 @@ namespace BMM.Api
             return await GetCoverBase(podcastId, ApiUris.PlaylistCover);
         }
 
-        public Task<GenericDocumentsHolder> GetDocuments(string lang, int? age, CachePolicy cachePolicy)
+        public Task<GenericDocumentsHolder> GetDocuments(int? age, CachePolicy cachePolicy)
         {
             var uri = new UriTemplate(ApiUris.PlaylistDocuments);
-            uri.SetParameter("lang", lang);
             uri.SetParameter("age", age);
             return Get<GenericDocumentsHolder>(uri);
         }

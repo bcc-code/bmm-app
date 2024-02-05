@@ -13,5 +13,6 @@ namespace BMM.Api.Implementation.Constants
         public const string Accept = "Accept";
         public const string MobileDownloadAllowed = "MobileDownloadAllowed";
         public const string Authorization = "Authorization";
+        public const string UiLanguage = "UiLanguage";
     }
 }

@@ -194,6 +194,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<ContentLanguageHeaderProvider>();
             Mvx.IoCProvider.RegisterType<JsonContentTypeHeaderProvider>();
             Mvx.IoCProvider.RegisterType<BmmVersionHeaderProvider>();
+            Mvx.IoCProvider.RegisterType<UiLanguageHeaderProvider>();
             Mvx.IoCProvider.RegisterType<ExperimentIdHeaderProvider>();
             Mvx.IoCProvider.RegisterType<ConnectivityHeaderProvider>();
             Mvx.IoCProvider.RegisterType<MobileDownloadAllowedHeaderProvider>();

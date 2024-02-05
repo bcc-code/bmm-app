@@ -1,13 +1,7 @@
-using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Linq;
 using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
-using BMM.Core.GuardedActions.BibleStudy;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Documents.Interfaces;
@@ -19,15 +13,11 @@ using BMM.Core.Implementations.DeepLinking;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
-using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.Implementations.UI.StyledText;
-using BMM.Core.Implementations.UI.StyledText.Enums;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.Tiles;
@@ -46,8 +36,6 @@ namespace BMM.Core.ViewModels
         private readonly INavigateToViewModelAction _navigateToViewModelAction;
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
         private readonly IPrepareTileCarouselItemsAction _prepareTileCarouselItemsAction;
-        private readonly ITranslateDocsAction _translateDocsAction;
-        private readonly IAppLanguageProvider _appLanguageProvider;
         private readonly IUserStorage _user;
         private readonly IFirebaseRemoteConfig _config;
         private readonly IListeningStreakPOFactory _listeningStreakPOFactory;
@@ -63,8 +51,6 @@ namespace BMM.Core.ViewModels
             INavigateToViewModelAction navigateToViewModelAction,
             IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
             IPrepareTileCarouselItemsAction prepareTileCarouselItemsAction,
-            ITranslateDocsAction translateDocsAction,
-            IAppLanguageProvider appLanguageProvider,
             IUserStorage user,
             IFirebaseRemoteConfig config,
             IListeningStreakPOFactory listeningStreakPOFactory,
@@ -77,8 +63,6 @@ namespace BMM.Core.ViewModels
             _navigateToViewModelAction = navigateToViewModelAction;
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
             _prepareTileCarouselItemsAction = prepareTileCarouselItemsAction;
-            _translateDocsAction = translateDocsAction;
-            _appLanguageProvider = appLanguageProvider;
             _user = user;
             _config = config;
             _listeningStreakPOFactory = listeningStreakPOFactory;
@@ -118,12 +102,11 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
-            var docs = (await Client.Discover.GetDocuments(_appLanguageProvider.GetAppLanguage(), age, await _deviceInfo.GetCurrentTheme() , policy)).ToList();
+            var docs = (await Client.Discover.GetDocuments(age, await _deviceInfo.GetCurrentTheme() , policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
             bool hideStreak = await _settings.GetStreakHidden();
             var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
-            var translatedDocs = await _translateDocsAction.ExecuteGuarded(filteredDocs);
-            var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedDocs);
+            var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(filteredDocs);
             var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
             return presentationItems;

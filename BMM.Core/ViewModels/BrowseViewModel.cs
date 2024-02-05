@@ -12,24 +12,20 @@ namespace BMM.Core.ViewModels
     {
         private readonly IDocumentsPOFactory _documentsPOFactory;
         private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
-        private readonly ITranslateDocsAction _translateDocsAction;
 
         public BrowseViewModel(
             IDocumentsPOFactory documentsPOFactory,
-            IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
-            ITranslateDocsAction translateDocsAction)
+            IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction)
         {
             _documentsPOFactory = documentsPOFactory;
             _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
-            _translateDocsAction = translateDocsAction;
         }
 
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var browseItems = await Client.Browse.Get(policy);
 
-            var translatedItems = await _translateDocsAction.ExecuteGuarded(browseItems.ToList());
-            var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(translatedItems);
+            var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(browseItems.ToList());
 
             var presentationItems = _documentsPOFactory.Create(
                 carouselAdjustedItems,
