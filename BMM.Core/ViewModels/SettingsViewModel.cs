@@ -373,15 +373,21 @@ namespace BMM.Core.ViewModels
                 },
                 new SelectableListItem
                 {
-                    Title = TextSource[Translations.SettingsViewModel_OptionCopyrightHeader],
-                    Text = TextSource[Translations.SettingsViewModel_OptionCopyrightText],
-                    OnSelected = NavigationService.NavigateCommand<CopyrightViewModel>()
-                },
-                new SelectableListItem
-                {
                     Title = TextSource[Translations.SettingsViewModel_OptionContactHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionContactText],
                     OnSelected = new MvxAsyncCommand(_contacter.Contact)
+                },
+                new SelectableListItem
+                {
+                    Title = TextSource[Translations.SettingsViewModel_OptionPrivacyPolicyHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionPrivacyPolicyText],
+                    OnSelected = new MvxCommand(() => _uriOpener.OpenUri(new Uri(_remoteConfig.PrivacyPolicyLink)))
+                },
+                new SelectableListItem
+                {
+                    Title = TextSource[Translations.SettingsViewModel_OptionCopyrightHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionCopyrightText],
+                    OnSelected = NavigationService.NavigateCommand<CopyrightViewModel>()
                 },
                 new SelectableListItem
                 {

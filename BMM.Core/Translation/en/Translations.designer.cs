@@ -243,6 +243,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_OptionLanguageContentHeader = nameof(SettingsViewModel_OptionLanguageContentHeader);
 		public const string SettingsViewModel_OptionLanguageContentText = nameof(SettingsViewModel_OptionLanguageContentText);
 		public const string SettingsViewModel_HeadlineAbout = nameof(SettingsViewModel_HeadlineAbout);
+		public const string SettingsViewModel_OptionPrivacyPolicyHeader = nameof(SettingsViewModel_OptionPrivacyPolicyHeader);
+		public const string SettingsViewModel_OptionPrivacyPolicyText = nameof(SettingsViewModel_OptionPrivacyPolicyText);
 		public const string SettingsViewModel_OptionCopyrightHeader = nameof(SettingsViewModel_OptionCopyrightHeader);
 		public const string SettingsViewModel_OptionCopyrightText = nameof(SettingsViewModel_OptionCopyrightText);
 		public const string SettingsViewModel_OptionContactHeader = nameof(SettingsViewModel_OptionContactHeader);
