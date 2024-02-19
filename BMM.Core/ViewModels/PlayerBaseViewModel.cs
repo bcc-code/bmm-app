@@ -5,6 +5,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Utils;
@@ -29,6 +30,8 @@ namespace BMM.Core.ViewModels
         
         public MvxCommand PlayPauseCommand { get; }
         
+        public bool IsLiked => CurrentTrack?.IsLiked ?? false;
+        
         /// <summary>
         /// When changing the song on Android, exo player sends few current track updates, where few of them is just null.
         ///
@@ -48,6 +51,7 @@ namespace BMM.Core.ViewModels
                     SetProperty(ref _currentTrack, value);
                     RaisePropertyChanged(() => Downloaded); // Since Downloaded depends on CurrentTrack we need to raise PropertyChanged
                     RaisePropertyChanged(() => IsSeekingDisabled);
+                    RaisePropertyChanged(() => IsLiked);
                     OnCurrentTrackChanged();
                 });
             }
@@ -120,6 +124,7 @@ namespace BMM.Core.ViewModels
         #region PlaybackState
 
         private bool _isPlaying;
+        private MvxSubscriptionToken _trackLikedChangedMessageToken;
 
         public bool IsPlaying
         {
@@ -177,6 +182,14 @@ namespace BMM.Core.ViewModels
             {
                 CurrentTrack = message.CurrentTrack;
                 Duration = message.CurrentTrack?.Duration ?? 0;
+            });
+            _trackLikedChangedMessageToken = Messenger.Subscribe<TrackLikedChangedMessage>(async message =>
+            {
+                if (CurrentTrack?.Id == message.TrackId)
+                {
+                    CurrentTrack.IsLiked = message.IsLiked;
+                    await RaisePropertyChanged(() => IsLiked);
+                }
             });
         }
         

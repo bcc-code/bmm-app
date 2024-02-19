@@ -22,5 +22,7 @@ namespace BMM.Core.Constants
         public const string IconChevronRight = "Icon_Chevron_Right";
         public const string IconAchievementLocked = "Icon_Achievement_Locked";
         public const string IconCheckmark = "Icon_Checkmark";
+        public const string IconUnliked = "Icon_Unliked";
+        public const string IconLiked = "Icon_Liked";
     }
 }

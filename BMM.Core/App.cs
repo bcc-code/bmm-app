@@ -117,7 +117,7 @@ namespace BMM.Core
 
             SetupLanguageBinder();
             
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRememberedQueueInfoService, RememberedQueueInfoService>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRememberedQueueService, RememberedQueueService>();
             Mvx.IoCProvider.RegisterTypeIfMissing<IUiDependentExecutor, NullDependentExecutor>();
             Mvx.IoCProvider.RegisterType<IFirebaseRemoteConfig, FirebaseRemoteConfig>();
             Mvx.IoCProvider.RegisterType<IFeaturePreviewPermission, PermissionProvider>();

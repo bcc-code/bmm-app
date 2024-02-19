@@ -2,6 +2,7 @@ using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using System;
 using System.ComponentModel;
+using BMM.Core.Constants;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ValueConverters.TrackCollections;
@@ -17,6 +18,7 @@ namespace BMM.UI.iOS
     public partial class TrackCollectionViewController : BaseViewController<TrackCollectionViewModel>
     {
         private bool _isSharingStatusIconVisible;
+        private bool _useLikeIcon;
 
         public TrackCollectionViewController()
             : base(nameof(TrackCollectionViewController))
@@ -47,7 +49,7 @@ namespace BMM.UI.iOS
 
             var refreshControl = new MvxUIRefreshControl {TintColor = AppColors.RefreshControlTintColor};
             CollectionTable.RefreshControl = refreshControl;
-
+            
             var source = new DocumentsTableViewSource(CollectionTable);
 
             var set = this.CreateBindingSet<TrackCollectionViewController, TrackCollectionViewModel>();
@@ -65,6 +67,11 @@ namespace BMM.UI.iOS
                 .To(vm => vm.MyCollection)
                 .WithConversion<TrackCollectionToPlaylistStatusIconIsVisibleConverter>();
 
+            set
+                .Bind(this)
+                .For(v => v.UseLikeIcon)
+                .To(vm => vm.UseLikeIcon);
+            
             DownloadButton.DownloadedImage = UIImage.FromBundle("TickIcon");
             DownloadButton.NormalStateImage = UIImage.FromBundle("IconDownload");
             set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
@@ -95,6 +102,18 @@ namespace BMM.UI.iOS
 
             SetThemes();
             DownloadButton.UpdateCurrentState(true);
+        }
+
+        public bool UseLikeIcon
+        {
+            get => _useLikeIcon;
+            set
+            {
+                _useLikeIcon = value;
+                IconImage.Image = _useLikeIcon
+                    ? UIImage.FromBundle(ImageResourceNames.IconUnliked.ToStandardIosImageName())
+                    : UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToStandardIosImageName());
+            }
         }
 
         protected override void AttachEvents()

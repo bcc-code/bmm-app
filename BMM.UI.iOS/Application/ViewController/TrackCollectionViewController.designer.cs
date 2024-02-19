@@ -20,6 +20,9 @@ namespace BMM.UI.iOS
 		BMM.UI.iOS.DownloadButton DownloadButton { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView IconImage { get; set; }
+
+		[Outlet]
 		UIKit.UILabel NameLabel { get; set; }
 
 		[Outlet]
@@ -49,6 +52,11 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (IconImage != null) {
+				IconImage.Dispose ();
+				IconImage = null;
+			}
+
 			if (CollectionTable != null) {
 				CollectionTable.Dispose ();
 				CollectionTable = null;
@@ -84,6 +92,16 @@ namespace BMM.UI.iOS
 				PlaylistHeaderView = null;
 			}
 
+			if (PlaylistIcon != null) {
+				PlaylistIcon.Dispose ();
+				PlaylistIcon = null;
+			}
+
+			if (PlaylistState != null) {
+				PlaylistState.Dispose ();
+				PlaylistState = null;
+			}
+
 			if (ShuffleButton != null) {
 				ShuffleButton.Dispose ();
 				ShuffleButton = null;
@@ -92,16 +110,6 @@ namespace BMM.UI.iOS
 			if (TrackCountLabel != null) {
 				TrackCountLabel.Dispose ();
 				TrackCountLabel = null;
-			}
-
-			if (PlaylistState != null) {
-				PlaylistState.Dispose ();
-				PlaylistState = null;
-			}
-
-			if (PlaylistIcon != null) {
-				PlaylistIcon.Dispose ();
-				PlaylistIcon = null;
 			}
 
 		}

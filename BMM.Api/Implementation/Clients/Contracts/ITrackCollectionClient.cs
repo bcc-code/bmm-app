@@ -38,5 +38,9 @@ namespace BMM.Api.Implementation.Clients.Contracts
         
         /// <summary>Add top songs playlist to favourites</summary>
         Task AddTopSongsToFavourites();
+        
+        Task<bool> Like(IList<int> trackIds);
+        
+        Task<bool> Unlike(IList<int> trackIds);
     }
 }

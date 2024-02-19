@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Core.Models.PlaybackHistory;
 
@@ -10,5 +7,6 @@ namespace BMM.Core.Implementations.Player.Interfaces
     {
         Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAt);
         Task<IReadOnlyList<PlaybackHistoryEntry>> GetAll();
+        Task SetTrackLikedOrUnliked(int trackId, bool isLiked);
     }
 }

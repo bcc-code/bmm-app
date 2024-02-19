@@ -7,7 +7,6 @@
 //
 using Foundation;
 using System.CodeDom.Compiler;
-using MarqueeLabelSDK;
 
 namespace BMM.UI.iOS
 {
@@ -45,13 +44,19 @@ namespace BMM.UI.iOS
 		UIKit.UIButton ExternalRelationButton { get; set; }
 
 		[Outlet]
+		UIKit.UIButton LeftButton { get; set; }
+
+		[Outlet]
+		UIKit.UIButton LikeButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton MoreButton { get; set; }
 
 		[Outlet]
 		UIKit.UIButton NextButtton { get; set; }
 
 		[Outlet]
-		BmmSliderView PlayingProgressSlider { get; set; }
+		BMM.UI.iOS.BmmSliderView PlayingProgressSlider { get; set; }
 
 		[Outlet]
 		UIKit.UIButton PlayPauseButton { get; set; }
@@ -90,16 +95,13 @@ namespace BMM.UI.iOS
 		UIKit.UILabel SliderPositionTimeLabel { get; set; }
 
 		[Outlet]
-		MarqueeLabel SubtitleLabel { get; set; }
+		MarqueeLabelSDK.MarqueeLabel SubtitleLabel { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 
 		[Outlet]
-		BmmCachedImageView TrackCoverImageView { get; set; }
-
-		[Outlet]
-		UIKit.UIButton LeftButton { get; set; }
+		BMM.UI.iOS.BmmCachedImageView TrackCoverImageView { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -146,6 +148,11 @@ namespace BMM.UI.iOS
 			if (EndTimeLabel != null) {
 				EndTimeLabel.Dispose ();
 				EndTimeLabel = null;
+			}
+
+			if (ExternalRelationButton != null) {
+				ExternalRelationButton.Dispose ();
+				ExternalRelationButton = null;
 			}
 
 			if (MoreButton != null) {
@@ -232,7 +239,7 @@ namespace BMM.UI.iOS
 				TitleLabel.Dispose ();
 				TitleLabel = null;
 			}
-			
+
 			if (TrackCoverImageView != null) {
 				TrackCoverImageView.Dispose ();
 				TrackCoverImageView = null;
@@ -243,9 +250,9 @@ namespace BMM.UI.iOS
 				LeftButton = null;
 			}
 
-			if (ExternalRelationButton != null) {
-				ExternalRelationButton.Dispose ();
-				ExternalRelationButton = null;
+			if (LikeButton != null) {
+				LikeButton.Dispose ();
+				LikeButton = null;
 			}
 
 		}

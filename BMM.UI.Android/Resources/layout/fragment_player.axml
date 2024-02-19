@@ -257,25 +257,26 @@
                 android:layout_marginBottom="@dimen/player_standard_margin"
                 local:layout_constraintBottom_toTopOf="@+id/BottomButtonsBarrier"
                 local:layout_constraintStart_toEndOf="@+id/ShuffleButton"
-                local:layout_constraintEnd_toStartOf="@+id/CastButton"
+                local:layout_constraintEnd_toStartOf="@+id/LikeButton"
                 local:MvxBind="
                     BackgroundResource RepeatModeToBackgroundResource(RepeatType), Mode=OneWay;
                     DrawableId RepeatModeToIcon(RepeatType), Mode=OneWay;
                     Click ToggleRepeatCommand"  />
 
         <ImageButton
-                android:id="@+id/CastButton"
+                android:id="@+id/LikeButton"
                 android:layout_width="@dimen/player_small_button_size"
                 android:layout_height="@dimen/player_small_button_size"
                 android:background="?selectableItemBackgroundBorderless"
-                android:src="@drawable/icon_external_sound"
                 android:layout_marginTop="@dimen/margin_xxmedium"
                 android:layout_marginStart="@dimen/margin_xxmedium"
                 android:layout_marginBottom="@dimen/player_standard_margin"
-                android:visibility="gone"
                 local:layout_constraintBottom_toTopOf="@+id/BottomButtonsBarrier"
                 local:layout_constraintStart_toEndOf="@+id/RepeatButton"
-                local:layout_constraintEnd_toStartOf="@+id/MoreButton" />
+                local:layout_constraintEnd_toStartOf="@+id/MoreButton"
+                local:MvxBind="
+                    DrawableId IsLikedToIcon(IsLiked);
+                    Click LikeUnlikeCommand" />
 
         <ImageButton
                 android:id="@+id/MoreButton"
@@ -287,7 +288,7 @@
                 android:layout_marginStart="@dimen/margin_xxmedium"
                 android:layout_marginBottom="@dimen/player_standard_margin"
                 local:layout_constraintBottom_toTopOf="@+id/BottomButtonsBarrier"
-                local:layout_constraintStart_toEndOf="@+id/CastButton"
+                local:layout_constraintStart_toEndOf="@+id/LikeButton"
                 local:layout_constraintEnd_toEndOf="parent"
                 local:MvxBind="Click OptionCommand" />
 

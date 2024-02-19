@@ -56,7 +56,7 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IUserAuthChecker _authChecker;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
-        private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
+        private readonly IRememberedQueueService _rememberedQueueService;
 
         private readonly IList<IDeepLinkParser> _links;
         private bool _readyToHandleDeepLink;
@@ -72,7 +72,7 @@ namespace BMM.Core.Implementations.DeepLinking
             IExceptionHandler exceptionHandler,
             IUserAuthChecker authChecker,
             IBMMLanguageBinder bmmLanguageBinder,
-            IRememberedQueueInfoService rememberedQueueInfoService)
+            IRememberedQueueService rememberedQueueService)
         {
             _client = client;
             _navigationService = navigationService;
@@ -83,7 +83,7 @@ namespace BMM.Core.Implementations.DeepLinking
             _exceptionHandler = exceptionHandler;
             _authChecker = authChecker;
             _bmmLanguageBinder = bmmLanguageBinder;
-            _rememberedQueueInfoService = rememberedQueueInfoService;
+            _rememberedQueueService = rememberedQueueService;
 
             _links = new List<IDeepLinkParser>
             {
@@ -226,7 +226,7 @@ namespace BMM.Core.Implementations.DeepLinking
         public void SetDeepLinkWillStartPlayerIfNeeded(string deepLink)
         {
             if (WillDeepLinkStartPlayer(new Uri(deepLink))) 
-                _rememberedQueueInfoService.SetPlayerHasPendingOperation();
+                _rememberedQueueService.SetPlayerHasPendingOperation();
         }
         
         public bool IsBmmUrl(Uri uri)

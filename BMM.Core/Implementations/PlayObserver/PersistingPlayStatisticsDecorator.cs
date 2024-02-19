@@ -3,6 +3,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.PlayObserver.Model;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages.MediaPlayer;
@@ -25,6 +26,7 @@ namespace BMM.Core.Implementations.PlayObserver
         private readonly IMeasurementCalculator _measurementCalculator;
         private readonly IFirebaseRemoteConfig _config;
         private readonly IAnalytics _analytics;
+        private readonly IRememberedQueueService _rememberedQueueService;
 
         private Timer _timer;
         private readonly TimeSpan _interval = new TimeSpan(0, 0, IntervalInSeconds);
@@ -37,13 +39,15 @@ namespace BMM.Core.Implementations.PlayObserver
             IExceptionHandler exceptionHandler,
             IMeasurementCalculator measurementCalculator,
             IFirebaseRemoteConfig config,
-            IAnalytics analytics) : base(playStatistics)
+            IAnalytics analytics,
+            IRememberedQueueService rememberedQueueService) : base(playStatistics)
         {
             _logger = logger;
             _exceptionHandler = exceptionHandler;
             _measurementCalculator = measurementCalculator;
             _config = config;
             _analytics = analytics;
+            _rememberedQueueService = rememberedQueueService;
         }
 
         public override void OnPlaybackStateChanged(IPlaybackState state)
@@ -107,7 +111,7 @@ namespace BMM.Core.Implementations.PlayObserver
 
             if (!IsCurrentQueueSaved)
             {
-                AppSettings.RememberedQueue = CurrentQueue.OfType<Track>().ToList();
+                await _rememberedQueueService.SaveQueue(CurrentQueue.OfType<Track>().ToList());
                 IsCurrentQueueSaved = true;
             }
         }

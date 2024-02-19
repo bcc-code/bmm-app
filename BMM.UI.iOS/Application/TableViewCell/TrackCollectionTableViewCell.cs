@@ -1,14 +1,9 @@
-using BMM.Api.Implementation.Models;
-using BMM.Core.ViewModels;
-using Foundation;
 using MvvmCross.Binding.BindingContext;
-using MvvmCross.Platforms.Ios.Binding.Views;
-using System;
+using BMM.Core.Constants;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.ValueConverters.TrackCollections;
-using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
-using UIKit;
+using BMM.UI.iOS.Extensions;
 
 namespace BMM.UI.iOS
 {
@@ -19,6 +14,7 @@ namespace BMM.UI.iOS
         private const int SharePlaylistIconWidth = 24;
         private nfloat _initialDownloadStatusImageWidth;
         private bool _isPlaylistSharedByMe;
+        private bool _useLikeIcon;
 
         public TrackCollectionTableViewCell(IntPtr handle)
             : base(handle)
@@ -36,6 +32,11 @@ namespace BMM.UI.iOS
                     .For(v => v.IsPlaylistSharedByMe)
                     .To(vm => vm.TrackCollection)
                     .WithConversion<TrackCollectionToIsSharedByMeConverter>();
+
+                set.Bind(this)
+                    .For(v => v.UseLikeIcon)
+                    .To(vm => vm.TrackCollection.UseLikeIcon);
+                
                 set.Apply();
             });
 
@@ -96,6 +97,18 @@ namespace BMM.UI.iOS
             {
                 _isPlaylistSharedByMe = value;
                 SharedPlaylistIconWidthConstraint.Constant = _isPlaylistSharedByMe ? SharePlaylistIconWidth : 0;
+            }
+        }
+        
+        public bool UseLikeIcon
+        {
+            get => _useLikeIcon;
+            set
+            {
+                _useLikeIcon = value;
+                IconImageView.Image = _useLikeIcon
+                    ? UIImage.FromBundle(ImageResourceNames.IconUnliked.ToStandardIosImageName())
+                    : UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToStandardIosImageName());
             }
         }
 

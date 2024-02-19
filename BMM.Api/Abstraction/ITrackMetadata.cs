@@ -53,5 +53,7 @@ namespace BMM.Api.Abstraction
         TrackMetadata Meta { get; set; }
         
         bool HasTranscription { get; set; }
+        
+        bool IsLiked { get; set; }
     }
 }

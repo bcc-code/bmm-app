@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Player.Interfaces;
+using BMM.Core.GuardedActions.Tracklist.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -18,6 +19,7 @@ using MvvmCross.Commands;
 using MvvmCross.Plugin.Messenger;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.Enums;
+using BMM.Core.Models.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 
@@ -46,6 +48,7 @@ namespace BMM.Core.ViewModels
         private PlayerTrackInfoProvider _playerTrackInfoProvider;
         private PlayerLeftButtonType? _leftButtonType;
         private bool _hasTranscription;
+        private bool _isLiked;
 
         public IMvxInteraction<TogglePlayerInteraction> ClosePlayerInteraction => _closePlayerInteraction;
 
@@ -132,7 +135,8 @@ namespace BMM.Core.ViewModels
             IAnalytics analytics,
             IChangeTrackLanguageAction changeTrackLanguageAction,
             IUpdateExternalRelationsAction updateExternalRelationsAction,
-            IShowTrackInfoAction showTrackInfoAction) : base(mediaPlayer)
+            IShowTrackInfoAction showTrackInfoAction,
+            ILikeUnlikeTrackAction likeUnlikeTrackAction) : base(mediaPlayer)
         {
             _uriOpener = uriOpener;
             _analytics = analytics;
@@ -159,7 +163,12 @@ namespace BMM.Core.ViewModels
                 MediaPlayer.SeekTo(position);
             });
             ShowTrackInfoCommand = new MvxCommand(() => showTrackInfoAction.Command.ExecuteAsync((Track)CurrentTrack));
-
+            LikeUnlikeCommand = new MvxAsyncCommand(async () =>
+            {
+                await likeUnlikeTrackAction.ExecuteGuarded(new LikeOrUnlikeTrackActionParameter(IsLiked, CurrentTrack.Id));
+                await RaisePropertyChanged(() => IsLiked);
+            });
+            
             _repeatToken = Messenger.Subscribe<RepeatModeChangedMessage>(m => RepeatType = m.RepeatType);
             _shuffleToken = Messenger.Subscribe<ShuffleModeChangedMessage>(m => IsShuffleEnabled = m.IsShuffleEnabled);
 
@@ -173,7 +182,8 @@ namespace BMM.Core.ViewModels
         public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
         public IMvxCommand<long> SeekToPositionCommand { get; set; }
         public IMvxCommand ShowTrackInfoCommand { get; set; }
-
+        public IMvxCommand LikeUnlikeCommand { get; set; }
+        
         private async void LeftButtonClicked()
         {
             if (HasTranscription)
