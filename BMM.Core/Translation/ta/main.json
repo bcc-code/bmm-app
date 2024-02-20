@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Kåre விலிருந்து பிளே செய் ",
     "PlayMusicSiriShortcutName": "இசையை பிளே செய் ",
     "DailyMessage": "தினசரி செய்தி",
-    "ValueCopiedToClipboard": "{0} கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது"
+    "ValueCopiedToClipboard": "{0} கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "இந்த வாரம் உங்கள் ஸ்ட்ரீக்",
