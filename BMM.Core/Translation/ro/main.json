@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Pornește De la Kåre",
     "PlayMusicSiriShortcutName": "Pornește muzica",
     "DailyMessage": "Mesajul zilei",
-    "ValueCopiedToClipboard": "{0} copiate în clipboard"
+    "ValueCopiedToClipboard": "{0} copiate în clipboard",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "Progresul tău",
