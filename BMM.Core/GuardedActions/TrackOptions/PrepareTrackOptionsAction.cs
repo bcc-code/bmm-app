@@ -9,6 +9,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
+using BMM.Core.GuardedActions.Tracklist.Interfaces;
 using BMM.Core.GuardedActions.TrackOptions.Interfaces;
 using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.GuardedActions.TrackOptions.Parameters.Interfaces;
@@ -24,6 +25,8 @@ using BMM.Core.Implementations.Tracks.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Models.POs;
+using BMM.Core.Models.TrackCollections;
+using BMM.Core.Models.TrackCollections.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.Translation;
@@ -56,6 +59,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
         private readonly IAnalytics _analytics;
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IShowTrackInfoAction _showTrackInfoAction;
+        private readonly ILikeUnlikeTrackAction _likeUnlikeTrackAction;
 
         private readonly List<decimal> _availablePlaybackSpeed = new()
         {
@@ -76,7 +80,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
             IFirebaseRemoteConfig firebaseRemoteConfig,
             IAnalytics analytics,
             IMediaPlayer mediaPlayer,
-            IShowTrackInfoAction showTrackInfoAction)
+            IShowTrackInfoAction showTrackInfoAction,
+            ILikeUnlikeTrackAction likeUnlikeTrackAction)
         {
             _connection = connection;
             _bmmLanguageBinder = bmmLanguageBinder;
@@ -90,6 +95,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _analytics = analytics;
             _mediaPlayer = mediaPlayer;
             _showTrackInfoAction = showTrackInfoAction;
+            _likeUnlikeTrackAction = likeUnlikeTrackAction;
         }
 
         private bool IsSleepTimerOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsSleepTimerEnabled;
@@ -108,6 +114,15 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
             bool isInOnlineMode = _connection.GetStatus() == ConnectionStatus.Online;
 
+            options.Add(new StandardIconOptionPO(
+                track.IsLiked
+                    ? _bmmLanguageBinder[Translations.Global_RemoveFromFavorites]
+                    : _bmmLanguageBinder[Translations.Global_AddToFavorites], 
+                track.IsLiked
+                    ? ImageResourceNames.IconLiked
+                    : ImageResourceNames.IconUnliked,
+                new MvxAsyncCommand(() => _likeUnlikeTrackAction.ExecuteGuarded(new LikeOrUnlikeTrackActionParameter(track.IsLiked, track.Id)))));
+            
             if (isInOnlineMode && !track.IsLivePlayback)
             {
                 if (sourceVM is TrackCollectionViewModel trackCollectionVm)

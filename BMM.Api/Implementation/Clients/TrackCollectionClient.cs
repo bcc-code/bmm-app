@@ -33,8 +33,7 @@ namespace BMM.Api.Implementation.Clients
             uri.SetParameter("id", id);
 
             var request = BuildRequest(uri, HttpMethod.Post);
-            request.Headers["X-HTTP-METHOD-OVERRIDE"] = "LINK";
-            request.Headers["Link"] = string.Join(",", trackIds.Select(trackId => "</track/" + trackId + ">").ToList());
+            SetLinkHeader(trackIds, request);
 
             return await RequestIsSuccessful(request);
         }
@@ -112,6 +111,32 @@ namespace BMM.Api.Implementation.Clients
         {
             var uri = new UriTemplate(ApiUris.TrackCollectionTopSongs);
             await RequestIsSuccessful(BuildRequest(uri, HttpMethod.Post));
+        }
+
+        public async Task<bool> Like(IList<int> trackIds)
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionLike);
+
+            var request = BuildRequest(uri, HttpMethod.Post);
+            SetLinkHeader(trackIds, request);
+
+            return await RequestIsSuccessful(request);
+        }
+
+        public async Task<bool> Unlike(IList<int> trackIds)
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionUnlike);
+
+            var request = BuildRequest(uri, HttpMethod.Post);
+            SetLinkHeader(trackIds, request);
+
+            return await RequestIsSuccessful(request);
+        }
+        
+        private static void SetLinkHeader(IList<int> trackIds, IRequest request)
+        {
+            request.Headers["X-HTTP-METHOD-OVERRIDE"] = "LINK";
+            request.Headers["Link"] = string.Join(",", trackIds.Select(trackId => "</track/" + trackId + ">").ToList());
         }
     }
 }

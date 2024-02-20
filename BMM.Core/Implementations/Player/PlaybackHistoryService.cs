@@ -1,29 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Akavache;
 using BMM.Api.Abstraction;
-using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
-using BMM.Core.Helpers;
-using BMM.Core.Implementations.Analytics;
-using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Models.PlaybackHistory;
-using Newtonsoft.Json;
 
 namespace BMM.Core.Implementations.Player
 {
     public class PlaybackHistoryService : IPlaybackHistoryService
     {
         public const int MaxEntries = 100;
-
+        
         private List<PlaybackHistoryEntry> _allEntries;
-
         private readonly SemaphoreSlim _writeSemaphore = new SemaphoreSlim(1, 1);
 
         public async Task AddPlayedTrack(IMediaTrack mediaTrack, long lastPosition, DateTime playedAt)
@@ -67,6 +55,25 @@ namespace BMM.Core.Implementations.Player
                 await LoadAll();
 
             return _allEntries.AsReadOnly();
+        }
+
+        public async Task SetTrackLikedOrUnliked(int trackId, bool isLiked)
+        {
+            try
+            {
+                await _writeSemaphore.WaitAsync();
+                await GetAll();
+
+                var trackToUpdate = _allEntries
+                    .FirstOrDefault(t => t.MediaTrack.Id == trackId);
+
+                trackToUpdate?.MediaTrack.IfNotNull(t => t.IsLiked = isLiked);
+                AppSettings.PlaybackHistory = _allEntries;
+            }
+            finally
+            {
+                _writeSemaphore.Release();
+            }
         }
 
         private async Task LoadAll()

@@ -17,6 +17,8 @@ namespace BMM.Api.Implementation.Models
         public string AuthorName { get; set; }
 
         public bool CanEdit { get; set; }
+        
+        public bool UseLikeIcon { get; set; }
 
         public List<Track> Tracks { get; set; }
     }

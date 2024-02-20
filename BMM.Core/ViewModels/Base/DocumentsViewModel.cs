@@ -49,12 +49,13 @@ namespace BMM.Core.ViewModels.Base
         private MvxSubscriptionToken _downloadQueueChangedSubscriptionToken;
         private MvxSubscriptionToken _downloadQueueFinishedSubscriptionToken;
         private MvxSubscriptionToken _downloadedEpisodeRemovedSubscriptionToken;
-
+        private MvxSubscriptionToken _trackLikedChangedMessageToken;
+        private MvxSubscriptionToken _cacheToken;
+        
         private readonly MvxSubscriptionToken _trackMarkedAsListenedToken;
         private readonly MvxSubscriptionToken _contentLanguageChangedToken;
         private readonly MvxSubscriptionToken _currentTrackChangedToken;
         private readonly MvxSubscriptionToken _connectionStatusChangedToken;
-        private MvxSubscriptionToken _cacheToken;
 
         public ITrackInfoProvider TrackInfoProvider { get; protected set; }= new DefaultTrackInfoProvider();
 
@@ -134,6 +135,7 @@ namespace BMM.Core.ViewModels.Base
             _trackMarkedAsListenedToken = Messenger.Subscribe<TrackMarkedAsListenedMessage>(HandleTrackMarkedAsListenedMessage);
             _contentLanguageChangedToken = Messenger.Subscribe<ContentLanguagesChangedMessage>(HandleContentLanguageChanged);
             _downloadedEpisodeRemovedSubscriptionToken = Messenger.Subscribe<DownloadedEpisodeRemovedMessage>(HandleDownloadedEpisodeRemovedMessage);
+            _downloadedEpisodeRemovedSubscriptionToken = Messenger.Subscribe<DownloadedEpisodeRemovedMessage>(HandleDownloadedEpisodeRemovedMessage);
         }
 
         private void RefreshTrackState()
@@ -196,9 +198,18 @@ namespace BMM.Core.ViewModels.Base
             RefreshAllTracks();
         }
         
-        protected void HandleDownloadedEpisodeRemovedMessage(DownloadedEpisodeRemovedMessage obj)
+        protected virtual void HandleDownloadedEpisodeRemovedMessage(DownloadedEpisodeRemovedMessage obj)
         {
             RefreshAllTracks();
+        }
+        
+        protected virtual void HandleTrackLikedChangedMessage(TrackLikedChangedMessage message)
+        {
+            var trackToUpdate = Documents
+                .OfType<TrackPO>()
+                .FirstOrDefault(t => t.Id == message.TrackId);
+
+            trackToUpdate?.Track.IfNotNull(t => t.IsLiked = message.IsLiked);
         }
 
         protected virtual void HandleFileDownloadStartedMessage(FileDownloadStartedMessage message)
@@ -253,6 +264,7 @@ namespace BMM.Core.ViewModels.Base
             _fileDownloadCanceledSubscriptionToken = Messenger.Subscribe<FileDownloadCanceledMessage>(HandleFileDownloadCanceledMessage);
             _downloadQueueChangedSubscriptionToken = Messenger.Subscribe<DownloadQueueChangedMessage>(HandleDownloadQueueChangedMessage);
             _downloadQueueFinishedSubscriptionToken = Messenger.Subscribe<QueueFinishedMessage>(HandleDownloadQueueFinishedMessage);
+            _trackLikedChangedMessageToken = Messenger.Subscribe<TrackLikedChangedMessage>(HandleTrackLikedChangedMessage);
         }
 
         protected override void DetachEvents()
@@ -263,6 +275,7 @@ namespace BMM.Core.ViewModels.Base
             Messenger.UnsubscribeSafe<FileDownloadCanceledMessage>(_fileDownloadCanceledSubscriptionToken);
             Messenger.UnsubscribeSafe<DownloadQueueChangedMessage>(_downloadQueueChangedSubscriptionToken);
             Messenger.UnsubscribeSafe<QueueFinishedMessage>(_downloadQueueFinishedSubscriptionToken);
+            Messenger.UnsubscribeSafe<TrackLikedChangedMessage>(_trackLikedChangedMessageToken);
         }
 
         public override void ViewDestroy(bool viewFinishing = true)

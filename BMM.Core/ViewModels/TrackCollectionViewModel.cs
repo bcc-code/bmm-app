@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BMM.Api.Framework;
+﻿using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Helpers;
@@ -25,6 +21,7 @@ namespace BMM.Core.ViewModels
     {
         private MvxSubscriptionToken _trackCollectionOrderChangedToken;
         private MvxSubscriptionToken _playlistStateChangedMessageSubscriptionKey;
+        private bool _useLikeIcon;
 
         public IMvxAsyncCommand DeleteCommand { get; }
 
@@ -59,7 +56,7 @@ namespace BMM.Core.ViewModels
                 trackPOFactory)
         {
             DeleteCommand = new ExceptionHandlingCommand(() => DeleteTrackCollection(MyCollection));
-
+            
             EditCommand = new ExceptionHandlingCommand(() =>
                  {
                      return NavigationService
@@ -69,6 +66,18 @@ namespace BMM.Core.ViewModels
 
             ShareCommand = new ExceptionHandlingCommand(() => ShareTrackCollection(MyCollection.Id));
             RemoveCommand = new ExceptionHandlingCommand(() => RemoveSharedPlaylist(MyCollection.Id));
+        }
+
+        public bool UseLikeIcon
+        {
+            get => _useLikeIcon;
+            set => SetProperty(ref _useLikeIcon, value);
+        }
+
+        public override void Prepare(ITrackCollectionParameter trackCollection)
+        {
+            base.Prepare(trackCollection);
+            UseLikeIcon = trackCollection.UseLikeIcon;
         }
         
         public override IEnumerable<string> PlaybackOrigin()
@@ -84,7 +93,7 @@ namespace BMM.Core.ViewModels
             _trackCollectionOrderChangedToken = Messenger.Subscribe<TrackCollectionOrderChangedMessage>(HandleTrackCollectionOrderChanged);
             _playlistStateChangedMessageSubscriptionKey =
                 Messenger.Subscribe<PlaylistStateChangedMessage>(m => ReloadCommand.ExecuteAsync());
-
+            
             return base.Initialization();
         }
 
@@ -112,7 +121,7 @@ namespace BMM.Core.ViewModels
 
             if (success)
             {
-                await NavigationService.Close(this);
+                await NavigationService.Close (this);
             }
 
             return success;
@@ -133,6 +142,12 @@ namespace BMM.Core.ViewModels
             {
                 ExceptionHandler.HandleException(ex);
             }
+        }
+
+        protected override async void HandleTrackLikedChangedMessage(TrackLikedChangedMessage message)
+        {
+            base.HandleTrackLikedChangedMessage(message);
+            await Load();
         }
     }
 }

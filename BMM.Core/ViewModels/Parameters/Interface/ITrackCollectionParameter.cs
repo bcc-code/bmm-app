@@ -4,5 +4,6 @@ namespace BMM.Core.ViewModels.Parameters.Interface
     {
         int TrackCollectionId { get; }
         string Name { get; }
+        bool UseLikeIcon { get; }
     }
 }

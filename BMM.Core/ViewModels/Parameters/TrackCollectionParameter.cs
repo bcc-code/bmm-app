@@ -6,13 +6,16 @@ namespace BMM.Core.ViewModels.Parameters
     {
         public TrackCollectionParameter(
             int trackCollectionId,
-            string name = "")
+            string name = "",
+            bool useLikeIcon = false)
         {
             TrackCollectionId = trackCollectionId;
             Name = name;
+            UseLikeIcon = useLikeIcon;
         }
 
         public int TrackCollectionId { get; }
         public string Name { get; }
+        public bool UseLikeIcon { get; }
     }
 }

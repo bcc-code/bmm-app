@@ -62,6 +62,8 @@ namespace BMM.Api.Implementation.Models
         public bool HasListened { get; set; }
         
         public bool HasTranscription { get; set; }
+        
+        public bool IsLiked { get; set; }
 
         public bool Equals(Track other)
         {

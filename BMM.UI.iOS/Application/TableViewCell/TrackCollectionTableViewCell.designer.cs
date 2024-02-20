@@ -17,6 +17,9 @@ namespace BMM.UI.iOS
 		UIKit.UIImageView DownloadStatusImageView { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView IconImageView { get; set; }
+
+		[Outlet]
 		UIKit.UIImageView SharedPlaylistIcon { get; set; }
 
 		[Outlet]
@@ -35,6 +38,16 @@ namespace BMM.UI.iOS
 				DownloadStatusImageView = null;
 			}
 
+			if (SharedPlaylistIcon != null) {
+				SharedPlaylistIcon.Dispose ();
+				SharedPlaylistIcon = null;
+			}
+
+			if (SharedPlaylistIconWidthConstraint != null) {
+				SharedPlaylistIconWidthConstraint.Dispose ();
+				SharedPlaylistIconWidthConstraint = null;
+			}
+
 			if (SubtitleLabel != null) {
 				SubtitleLabel.Dispose ();
 				SubtitleLabel = null;
@@ -45,14 +58,9 @@ namespace BMM.UI.iOS
 				TitleLabel = null;
 			}
 
-			if (SharedPlaylistIconWidthConstraint != null) {
-				SharedPlaylistIconWidthConstraint.Dispose ();
-				SharedPlaylistIconWidthConstraint = null;
-			}
-
-			if (SharedPlaylistIcon != null) {
-				SharedPlaylistIcon.Dispose ();
-				SharedPlaylistIcon = null;
+			if (IconImageView != null) {
+				IconImageView.Dispose ();
+				IconImageView = null;
 			}
 
 		}

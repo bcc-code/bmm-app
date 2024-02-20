@@ -78,5 +78,15 @@ namespace BMM.Core.Implementations.ApiClients
         {
             return _client.AddTopSongsToFavourites();
         }
+
+        public Task<bool> Like(IList<int> trackIds)
+        {
+            return _client.Like(trackIds);
+        }
+
+        public Task<bool> Unlike(IList<int> trackIds)
+        {
+            return _client.Unlike(trackIds);
+        }
     }
 }

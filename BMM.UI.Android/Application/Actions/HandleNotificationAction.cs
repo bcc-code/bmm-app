@@ -12,14 +12,14 @@ namespace BMM.UI.Droid.Application.Actions
           IHandleNotificationAction
     {
         private readonly INotificationHandler _notificationHandler;
-        private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
+        private readonly IRememberedQueueService _rememberedQueueService;
 
         public HandleNotificationAction(
             INotificationHandler notificationHandler,
-            IRememberedQueueInfoService rememberedQueueInfoService)
+            IRememberedQueueService rememberedQueueService)
         {
             _notificationHandler = notificationHandler;
-            _rememberedQueueInfoService = rememberedQueueInfoService;
+            _rememberedQueueService = rememberedQueueService;
         }
         
         protected override async Task Execute()
@@ -36,7 +36,7 @@ namespace BMM.UI.Droid.Application.Actions
             _notificationHandler.UserClickedNotification(notification);
 
             if (_notificationHandler.WillNotificationStartPlayer(notification))
-                _rememberedQueueInfoService.SetPlayerHasPendingOperation();
+                _rememberedQueueService.SetPlayerHasPendingOperation();
         }
     }
 }

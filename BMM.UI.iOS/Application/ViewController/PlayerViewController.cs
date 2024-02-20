@@ -43,6 +43,7 @@ namespace BMM.UI.iOS
         private UIStatusBarStyle _previousStatusBarStyle;
         private UIColor _lastMutedColor;
         private bool _hasTranscription;
+        private bool _isLiked;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
@@ -158,6 +159,13 @@ namespace BMM.UI.iOS
             set.Bind(ExternalRelationButton)
                 .To(vm => vm.ShowTrackInfoCommand);
 
+            set.Bind(this)
+                .For(v => v.IsLiked)
+                .To(vm => vm.IsLiked);
+
+            set.Bind(LikeButton)
+                .To(vm => vm.LikeUnlikeCommand);
+            
             set.Bind(TrackCoverImageView.Swipe(UISwipeGestureRecognizerDirection.Right)).For(v => v.Command).To(vm => vm.PreviousCommand);
             set.Bind(TrackCoverImageView.Swipe(UISwipeGestureRecognizerDirection.Left)).For(v => v.Command).To(vm => vm.NextCommand);
             set.Apply();
@@ -178,6 +186,19 @@ namespace BMM.UI.iOS
             };
 
             SetViewMargins();
+        }
+
+        public bool IsLiked
+        {
+            get => _isLiked;
+            set
+            {
+                _isLiked = value;
+                LikeButton.SetImage(_isLiked
+                        ? UIImage.FromBundle(ImageResourceNames.IconLiked.ToStandardIosImageName())
+                        : UIImage.FromBundle(ImageResourceNames.IconUnliked.ToStandardIosImageName()),
+                    UIControlState.Normal);
+            }
         }
 
         public override void TraitCollectionDidChange(UITraitCollection? previousTraitCollection)

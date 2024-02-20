@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
@@ -9,14 +5,10 @@ using BMM.Core.GuardedActions.PlaybackHistory.Interfaces;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
-using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.Models;
 using BMM.Core.Models.PlaybackHistory;
 using BMM.Core.Models.PlaybackHistory.Interfaces;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Translation;
-using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Interfaces;
 
 namespace BMM.Core.GuardedActions.PlaybackHistory

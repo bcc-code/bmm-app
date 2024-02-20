@@ -53,7 +53,7 @@ namespace BMM.Core
         private readonly ILanguagesLogger _languagesLogger;
         private readonly ICache _cache;
         private readonly IMediaPlayer _mediaPlayer;
-        private readonly IRememberedQueueInfoService _rememberedQueueInfoService;
+        private readonly IRememberedQueueService _rememberedQueueService;
         private readonly SupportVersionChecker _supportVersionChecker;
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly IOnStartAction _onStartAction;
@@ -72,7 +72,7 @@ namespace BMM.Core
             ILanguagesLogger languagesLogger,
             ICache cache,
             IMediaPlayer mediaPlayer,
-            IRememberedQueueInfoService rememberedQueueInfoService,
+            IRememberedQueueService rememberedQueueService,
             SupportVersionChecker supportVersionChecker,
             IAccessTokenProvider accessTokenProvider,
             IOnStartAction onStartAction,
@@ -89,7 +89,7 @@ namespace BMM.Core
             _languagesLogger = languagesLogger;
             _cache = cache;
             _mediaPlayer = mediaPlayer;
-            _rememberedQueueInfoService = rememberedQueueInfoService;
+            _rememberedQueueService = rememberedQueueService;
             _supportVersionChecker = supportVersionChecker;
             _accessTokenProvider = accessTokenProvider;
             _onStartAction = onStartAction;
@@ -165,7 +165,7 @@ namespace BMM.Core
                 if (_deviceInfo.IsIos)
                     await Task.Delay(TimeToDetectIfAppOpenedFromDeepLinkInMs);
                 
-                if (_rememberedQueueInfoService.PreventRecoveringQueue)
+                if (_rememberedQueueService.PreventRecoveringQueue)
                     return;
 
                 var rememberedQueue = AppSettings.RememberedQueue;
@@ -199,7 +199,7 @@ namespace BMM.Core
             }
             finally
             {
-                _rememberedQueueInfoService.NotifyAfterRecoveringQueue();
+                _rememberedQueueService.NotifyAfterRecoveringQueue();
             }
         }
 
