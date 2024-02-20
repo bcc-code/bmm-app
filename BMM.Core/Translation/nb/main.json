@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Spill Fra Kåre",
     "PlayMusicSiriShortcutName": "Spill musikk",
     "DailyMessage": "Dagens tale",
-    "ValueCopiedToClipboard": "{0} kopiert til utklippstavle"
+    "ValueCopiedToClipboard": "{0} kopiert til utklippstavle",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "Din streak denne uken",
