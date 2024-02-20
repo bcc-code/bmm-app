@@ -142,11 +142,10 @@ namespace BMM.Core.Implementations.DeepLinking
 
         private async Task NavigateTo<TVm, TParam>(TParam param) where TVm : IMvxViewModel<TParam>
         {
+            await _navigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
+
             if (!_viewPresenter.IsViewModelShown<TVm>())
-            {
-                await _navigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
                 await _navigationService.Navigate<TVm, TParam>(param);
-            }
         }
 
         private Task OpenSharedTrackCollection(SharingSecretParameters sharingSecretParameters)
