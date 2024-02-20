@@ -262,7 +262,7 @@
     "Normal": "Normal",
     "Selected": "Selecionado",
     "WatchOnBCCMedia": "Veja no BCC mídia",
-    "Read": "Read"
+    "Read": "Ler"
   },
   "QueueViewModel": {
     "Title": "Fila"
@@ -310,15 +310,15 @@
     "OptionLanguageContentHeader": "Línguagem do conteúdo",
     "OptionLanguageContentText": "Alterar o idioma do conteúdo em BMM",
     "HeadlineAbout": "Sobre",
-    "OptionPrivacyPolicyHeader": "Privacy Policy",
-    "OptionPrivacyPolicyText": "Read the privacy policy",
+    "OptionPrivacyPolicyHeader": "Política de privacidade",
+    "OptionPrivacyPolicyText": "Leia a política de privacidade",
     "OptionCopyrightHeader": "Direitos autorais",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
     "OptionContactHeader": "Contato",
     "OptionContactText": "Perguntas ou comentários? Entrar em contato com a equipe aqui.",
     "OptionAppVersionHeader": "Versão do App",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Deletar conta",
+    "OptionDeleteAccountText": "Solicite que sua conta seja excluída.",
     "AppInfoTitle": "Informações app",
     "AppInfoAppVersion": "Versão do App: ",
     "AppInfoManufacturer": "Produtora:",
@@ -337,7 +337,7 @@
     "SiriShortcutsHeader": "Atalhos da Siri",
     "SiriShortcutsText": "Adicione atalhos da Siri para BMM ao seu dispositivo",
     "PushNotificationsGoToSettings": "Infelizmente, não podemos ativar as notificações push, pois elas estão desativadas nas configurações do seu dispositivo. Permita notificações push nas configurações do seu dispositivo para ativar esse recurso.",
-    "Achievements": "Achievements"
+    "Achievements": "Conquistas"
   },
   "StorageManagementViewModel": {
     "Title": "Localização para faixas offline",
@@ -592,16 +592,16 @@
     "SubmitSuccess": "Sugestões de edição enviadas com sucesso, obrigado!"
   },
   "AskQuestionViewModel": {
-    "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Title": "Faça uma pergunta",
+    "Submit": "Enviar pergunta",
+    "Hint": "Sua pergunta"
   },
   "AskQuestionConfirmationViewModel": {
-    "ThankYou": "Thanks for asking!",
-    "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
+    "ThankYou": "Obrigado por perguntar!",
+    "Description": "Todas as perguntas serão analisadas e algumas serão respondidas no podcast. \n A maioria das perguntas serão respondidas na página de perguntas e respostas. \n\n Volte na quarta-feira para ler as respostas.",
     "GotIt": "Entendi"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Conquistas"
   }
 }
