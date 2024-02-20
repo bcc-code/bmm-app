@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Luister Fra Kåre ",
     "PlayMusicSiriShortcutName": "Speel muziek",
     "DailyMessage": "Dagelijks bericht",
-    "ValueCopiedToClipboard": "{0} gekopieerd naar het klembord"
+    "ValueCopiedToClipboard": "{0} gekopieerd naar het klembord",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "Jouw Streak deze week",
