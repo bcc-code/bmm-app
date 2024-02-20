@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Воспроизвести От Коре",
     "PlayMusicSiriShortcutName": "Воспроизвести музыку",
     "DailyMessage": "Слово дня",
-    "ValueCopiedToClipboard": "{0} скопировано в буфер обмена"
+    "ValueCopiedToClipboard": "{0} скопировано в буфер обмена",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "Твое достижение за неделю",
