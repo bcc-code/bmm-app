@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Spiel Von Kåre",
     "PlayMusicSiriShortcutName": "Spiel Musik",
     "DailyMessage": "Rede des Tages",
-    "ValueCopiedToClipboard": "{0} in die Zwischenablage kopiert"
+    "ValueCopiedToClipboard": "{0} in die Zwischenablage kopiert",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
