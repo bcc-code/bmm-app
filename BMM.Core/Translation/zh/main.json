@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "播放来自 Kåre",
     "PlayMusicSiriShortcutName": "播放音乐",
     "DailyMessage": "每日消息",
-    "ValueCopiedToClipboard": "已复制到剪贴板：{0}"
+    "ValueCopiedToClipboard": "已复制到剪贴板：{0}",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "您本周的连续记录",
