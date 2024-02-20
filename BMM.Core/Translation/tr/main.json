@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Fra Kåre yi Çal",
     "PlayMusicSiriShortcutName": "Müzik Çal",
     "DailyMessage": "Günlük mesaj",
-    "ValueCopiedToClipboard": "{0} panoya kopyalandı"
+    "ValueCopiedToClipboard": "{0} panoya kopyalandı",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "Bu haftaki Streakınız.",
