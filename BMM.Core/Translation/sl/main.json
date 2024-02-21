@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Predvajaj glasbo",
     "DailyMessage": "Govor dneva",
     "ValueCopiedToClipboard": "{0} kopiran... v odlagališče",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Dodaj med priljubljene",
+    "RemoveFromFavorites": "Odstrani iz priljubljenih"
   },
   "Streak": {
     "Message": "Tvoj  niz ta teden",
