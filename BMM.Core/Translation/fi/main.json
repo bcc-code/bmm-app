@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Soita musiikkia",
     "DailyMessage": "Päivän sanoma",
     "ValueCopiedToClipboard": "{0} kopioitu leikepöydälle",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Lisää suosikkeihin",
+    "RemoveFromFavorites": "Poista suosikeista"
   },
   "Streak": {
     "Message": "Viikon suorituksesi",
