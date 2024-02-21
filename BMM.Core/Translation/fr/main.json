@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Écouter de la musique",
     "DailyMessage": "Message quotidien",
     "ValueCopiedToClipboard": "{0} copié dans le presse-papiers",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Ajouter aux favoris",
+    "RemoveFromFavorites": "Supprimer des favoris"
   },
   "Streak": {
     "Message": "Enchaînement de la semaine",
