@@ -21,14 +21,14 @@
     "NotNow": "Später",
     "DownloadPlaylistOnceOnWifi": "Die Playlist wird das nächste Mal heruntergeladen, wenn du wieder WLAN hast. Du kannst \"Über Mobilfunknetzwerk herunterladen\" in deinem Profil aktivieren. ",
     "DownloadPodcastOnceOnWifi": "Die neusten Titel für diesen Podcast werden das nächste Mal heruntergeladen, wenn du wieder WLAN hast. Du kannst \"Über Mobilfunknetzwerk herunterladen\" in deinem Profil aktivieren. ",
-    "SiriFromKaareInvocationPhrase": "Spiel Von Kåre auf BMM",
+    "SiriFromKaareInvocationPhrase": "Spiele Fra Kåre auf BMM",
     "SiriPlayMusicInvocationPhrase": "Spiel Musik auf BMM",
-    "FromKaareSiriShortcutName": "Spiel Von Kåre",
+    "FromKaareSiriShortcutName": "Spiele Fra Kåre",
     "PlayMusicSiriShortcutName": "Spiel Musik",
     "DailyMessage": "Rede des Tages",
     "ValueCopiedToClipboard": "{0} in die Zwischenablage kopiert",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Zu Favoriten hinzufügen",
+    "RemoveFromFavorites": "Aus Favoriten entfernen"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -54,7 +54,7 @@
     "RequestFailedMessage": "Ein Verbindungsfehler ist aufgetreten: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Leider unterstützt Ihr Gerät dieses Dateiformat nicht.",
+    "ErrorMediaNotSupported": "Leider unterstützt dein Gerät dieses Dateiformat nicht.",
     "ErrorVideoNotSupported": "Videos werden derzeit leider nicht unterstützt.",
     "ErrorFileNotOffline": "Du kannst einen Titel, der nicht heruntergeladen wurde, nicht im Offline-Modus abspielen.",
     "ErrorPlayerStopped": "Die Wiedergabe wurde gestoppt.",
