@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "இசையை பிளே செய் ",
     "DailyMessage": "தினசரி செய்தி",
     "ValueCopiedToClipboard": "{0} கிளிப்போர்டுக்கு நகலெடுக்கப்பட்டது",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "பிடித்தவையில் சேர்",
+    "RemoveFromFavorites": "பிடித்தவற்றிலிருந்து அகற்று"
   },
   "Streak": {
     "Message": "இந்த வாரம் உங்கள் ஸ்ட்ரீக்",
