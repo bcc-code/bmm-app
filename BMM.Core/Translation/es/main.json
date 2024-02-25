@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Reproducir Música",
     "DailyMessage": "Prédica del día",
     "ValueCopiedToClipboard": "{0} Copiado al portapapeles",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Añadir a favoritos",
+    "RemoveFromFavorites": "Quitar de favoritos"
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
@@ -312,8 +312,8 @@
     "OptionLanguageContentHeader": "Idioma del contenido",
     "OptionLanguageContentText": "Cambiar el idioma del contenido de BMM",
     "HeadlineAbout": "Acerca de",
-    "OptionPrivacyPolicyHeader": "Privacy Policy",
-    "OptionPrivacyPolicyText": "Read the privacy policy",
+    "OptionPrivacyPolicyHeader": "política de privacidad",
+    "OptionPrivacyPolicyText": "Lea la política de privacidad",
     "OptionCopyrightHeader": "Derechos de autor",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
     "OptionContactHeader": "Contacto",
