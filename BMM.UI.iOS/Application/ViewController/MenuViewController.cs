@@ -185,7 +185,7 @@ namespace BMM.UI.iOS
         public override void ViewControllerSelected(UITabBarController tabBarController, UIViewController viewController)
         {
             var containmentController = viewController as ContainmentViewController;
-            if (containmentController?.NavigationRootViewModel is DocumentsViewModel documentsViewModel)
+            if (containmentController?.NavigationRootViewModel is DocumentsViewModel documentsViewModel and not ContentBaseViewModel)
                 documentsViewModel.RefreshInBackground();
         }
 

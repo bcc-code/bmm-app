@@ -32,6 +32,16 @@ namespace BMM.UI.iOS
         
         public event EventHandler ScrolledEvent;
 
+        public override void ReloadTableData()
+        {
+            UIView.PerformWithoutAnimation(() =>
+            {
+                TableView.ReloadData();
+                TableView.BeginUpdates();
+                TableView.EndUpdates();
+            });
+        }
+
         protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
         {
             foreach (var cellInfo in _tableCellTypes)
