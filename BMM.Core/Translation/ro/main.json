@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Pornește muzica",
     "DailyMessage": "Mesajul zilei",
     "ValueCopiedToClipboard": "{0} copiate în clipboard",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Adaugă la favorite",
+    "RemoveFromFavorites": "Elimină de la favorite"
   },
   "Streak": {
     "Message": "Progresul tău",
@@ -264,7 +264,7 @@
     "Normal": "Normal",
     "Selected": "Selectate",
     "WatchOnBCCMedia": "Vezi pe BCC Media",
-    "Read": "Read"
+    "Read": "Citește"
   },
   "QueueViewModel": {
     "Title": "Listă"
@@ -312,8 +312,8 @@
     "OptionLanguageContentHeader": "Limba conținutului",
     "OptionLanguageContentText": "Schimbă limba conţinutului din BMM",
     "HeadlineAbout": "Despre",
-    "OptionPrivacyPolicyHeader": "Privacy Policy",
-    "OptionPrivacyPolicyText": "Read the privacy policy",
+    "OptionPrivacyPolicyHeader": "Politica de confidențialitate",
+    "OptionPrivacyPolicyText": "Citește politica de confidențialitate",
     "OptionCopyrightHeader": "Drepturi de autor",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
     "OptionContactHeader": "Contact",
