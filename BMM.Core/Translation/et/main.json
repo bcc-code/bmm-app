@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Play From Kåre",
     "PlayMusicSiriShortcutName": "Play Music",
     "DailyMessage": "Daily message",
-    "ValueCopiedToClipboard": "{0} copied to clipboard"
+    "ValueCopiedToClipboard": "{0} copied to clipboard",
+    "AddToFavorites": "Add to favorites",
+    "RemoveFromFavorites": "Remove from favorites"
   },
   "Streak": {
     "Message": "Your streak this week",

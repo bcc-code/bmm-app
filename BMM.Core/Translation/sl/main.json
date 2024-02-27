@@ -26,7 +26,9 @@
     "FromKaareSiriShortcutName": "Predvajaj Od Kåreja",
     "PlayMusicSiriShortcutName": "Predvajaj glasbo",
     "DailyMessage": "Govor dneva",
-    "ValueCopiedToClipboard": "{0} kopiran... v odlagališče"
+    "ValueCopiedToClipboard": "{0} kopiran... v odlagališče",
+    "AddToFavorites": "Dodaj med priljubljene",
+    "RemoveFromFavorites": "Odstrani iz priljubljenih"
   },
   "Streak": {
     "Message": "Tvoj  niz ta teden",
