@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Afspil musik",
     "DailyMessage": "Daglig besked",
     "ValueCopiedToClipboard": "{0} kopieret til udklipsholder",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Tilføj til favoritter",
+    "RemoveFromFavorites": "Fjern fra favoritter"
   },
   "Streak": {
     "Message": "Din streak denne uge",
