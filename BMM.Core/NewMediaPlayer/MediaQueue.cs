@@ -22,6 +22,7 @@ namespace BMM.Core.NewMediaPlayer
     /// </summary>
     public class MediaQueue : IMediaQueue
     {
+        private object _lock = new();
         private readonly MediaFileUrlSetter _mediaFileUrlSetter;
         private readonly IToastDisplayer _toastDisplayer;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
@@ -42,7 +43,10 @@ namespace BMM.Core.NewMediaPlayer
         public void Replace(IMediaTrack track)
         {
             _mediaFileUrlSetter.SetLocalPathIfDownloaded(track);
-            Tracks = new List<IMediaTrack> { track };
+            lock (_lock)
+            {
+                Tracks = new List<IMediaTrack> { track };
+            }
         }
 
         public async Task<bool> Replace(IEnumerable<IMediaTrack> tracks, IMediaTrack currentTrack)
@@ -75,7 +79,11 @@ namespace BMM.Core.NewMediaPlayer
                 }
             }
 
-            Tracks = filteredList;
+            lock (_lock)
+            {
+                Tracks = filteredList;
+            }
+
             return true;
         }
 
@@ -84,21 +92,30 @@ namespace BMM.Core.NewMediaPlayer
             if (await FileNotDownloadedButInOfflineViewModel(track))
                 return false;
 
-            Tracks.Add(track);
-            return true;
+            lock (_lock)
+            {
+                Tracks.Add(track);
+                return true;
+            }
         }
 
         public async Task<bool> PlayNext(IMediaTrack track, IMediaTrack currentPlayedTrack)
         {
             var nextPlayedIndex = Tracks.IndexOf(currentPlayedTrack) + 1;
 
-            if (Tracks.Count < nextPlayedIndex)
-                return false;
+            lock (_lock)
+            {
+                if (Tracks.Count < nextPlayedIndex)
+                    return false;
+            }
 
             if (await FileNotDownloadedButInOfflineViewModel(track))
                 return false;
 
-            Tracks.Insert(nextPlayedIndex, track);
+            lock (_lock)
+            {
+                Tracks.Insert(nextPlayedIndex, track);
+            }
 
             return true;
         }
@@ -132,48 +149,62 @@ namespace BMM.Core.NewMediaPlayer
             if (newMediaTracks.Any(t => t.IsLivePlayback))
                 return false;
 
-            if (newMediaTracks.Count != Tracks.Count)
-                return false;
+            lock (_lock)
+            {
+                if (newMediaTracks.Count != Tracks.Count)
+                    return false;
+                var comparer = new MediaTrackComparer();
+                
+                if (newMediaTracks.Count != Tracks.Count)
+                    return false;
+                var onlyInNew = newMediaTracks.Except(Tracks, comparer);
+                var onlyInQueue = Tracks.Except(newMediaTracks, comparer);
+                
+                bool tracksChanged = onlyInNew.Any() || onlyInQueue.Any();
 
-            var comparer = new MediaTrackComparer();
-            var onlyInNew = newMediaTracks.Except(Tracks, comparer);
-            var onlyInQueue = Tracks.Except(newMediaTracks, comparer);
-            
-            bool tracksChanged = onlyInNew.Any() || onlyInQueue.Any();
+                if (tracksChanged)
+                    return false;
 
-            if (tracksChanged)
-                return false;
-
-            return CheckAllTracksOnTheSamePosition(newMediaTracks);
+                return CheckAllTracksOnTheSamePosition(newMediaTracks);
+            }
         }
 
         private bool CheckAllTracksOnTheSamePosition(IList<IMediaTrack> newMediaTracks)
         {
-            bool allTracksOnTheSamePosition = true;
-
-            for (int i = 0; i < Tracks.Count; i++)
+            lock (_lock)
             {
-                var queueTrack = Tracks[i];
-                var newTrack = newMediaTracks[i];
+                bool allTracksOnTheSamePosition = true;
 
-                if (queueTrack.Equals(newTrack))
-                    continue;
+                for (int i = 0; i < Tracks.Count; i++)
+                {
+                    var queueTrack = Tracks[i];
+                    var newTrack = newMediaTracks[i];
 
-                allTracksOnTheSamePosition = false;
-                break;
+                    if (queueTrack.Equals(newTrack))
+                        continue;
+
+                    allTracksOnTheSamePosition = false;
+                    break;
+                }
+
+                return allTracksOnTheSamePosition;
             }
-
-            return allTracksOnTheSamePosition;
         }
 
         public IMediaTrack GetTrackById(int id)
         {
-            return Tracks.FirstOrDefault(t => t.Id == id);
+            lock (_lock)
+            {
+                return Tracks.FirstOrDefault(t => t.Id == id);
+            }
         }
 
         public void Clear()
         {
-            Tracks = new List<IMediaTrack>();
+            lock (_lock)
+            {
+                Tracks = new List<IMediaTrack>();
+            }
         }
     }
 

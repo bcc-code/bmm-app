@@ -126,10 +126,10 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         private static int[] CreateShuffledListStartingWith(int startIndex, int length, Random random)
         {
             var list = IndexList(1, length);
-            if (startIndex != 0)
-            {
+            
+            if (startIndex > 0 && startIndex <= list.Count)
                 list[startIndex - 1] = 0;
-            }
+            
             ShuffleableQueue.ShuffleList(list, random);
             return list.Prepend(startIndex).ToArray();
         }
