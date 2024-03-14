@@ -247,7 +247,9 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(GoldenRewardUnlocked), default(bool));
             set => AddOrUpdateValue(value, nameof(GoldenRewardUnlocked));
         }
-        
+
+        public static Guid DeviceId => GetValueOrDefault(nameof(DeviceId), Guid.NewGuid());
+
         public static void Clear() => Settings.Clear();
         
         private static void AddOrUpdateValue<TValue>(TValue value, string settingsKey)

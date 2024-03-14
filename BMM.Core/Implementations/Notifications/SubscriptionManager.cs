@@ -7,6 +7,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
 using Microsoft.Extensions.Logging;
 using MvvmCross.Logging;
@@ -57,7 +58,6 @@ namespace BMM.Core.Implementations.Notifications
 
         protected MvxSubscriptionToken FollowedPodcastChangedToken;
 
-        // todo pass token to conform to the API
         public virtual async Task UpdateSubscriptionAndRetry()
         {
             if (!await _authChecker.IsUserAuthenticated())
@@ -114,7 +114,7 @@ namespace BMM.Core.Implementations.Notifications
             var subscription = new Subscription
             {
                 Token = token,
-                DeviceId = token.GetHashCode().ToString("x8"),
+                DeviceId = AppSettings.DeviceId.ToString(),
                 PodcastReferences = podcastReferences
             };
 
