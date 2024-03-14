@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Speel muziek",
     "DailyMessage": "Dagelijks bericht",
     "ValueCopiedToClipboard": "{0} gekopieerd naar het klembord",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Toevoegen aan favorieten",
+    "RemoveFromFavorites": "Verwijderen uit favorieten"
   },
   "Streak": {
     "Message": "Jouw Streak deze week",
