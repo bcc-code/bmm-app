@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Zene lejátszása",
     "DailyMessage": "Mindennapi üzenet",
     "ValueCopiedToClipboard": "{0} vágólapra másolva",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Kedvencekhez hozzáadása",
+    "RemoveFromFavorites": "Eltávolítás a kedvencekből"
   },
   "Streak": {
     "Message": "E heti sorozatod",
@@ -312,8 +312,8 @@
     "OptionLanguageContentHeader": "Tartalom nyelve",
     "OptionLanguageContentText": "Nyelvek kiválasztása minden látható tartalomra",
     "HeadlineAbout": "Az alkalmazásról",
-    "OptionPrivacyPolicyHeader": "Privacy Policy",
-    "OptionPrivacyPolicyText": "Read the privacy policy",
+    "OptionPrivacyPolicyHeader": "Adatvédelmi szabályzat",
+    "OptionPrivacyPolicyText": "Olvasd el az adatvédelmi szabályzatot",
     "OptionCopyrightHeader": "Szerzői jog",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
     "OptionContactHeader": "Kapcsolat",
