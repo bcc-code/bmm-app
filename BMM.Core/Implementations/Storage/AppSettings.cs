@@ -214,41 +214,41 @@ namespace BMM.Core.Implementations.Storage
         
         public static bool HighlightedTextPopupAlreadyShown
         {
-            get => GetValueOrDefault(nameof(HighlightedTextPopupAlreadyShown), default(bool));
+            get => GetValueOrDefault(nameof(HighlightedTextPopupAlreadyShown), false);
             set => AddOrUpdateValue(value, nameof(HighlightedTextPopupAlreadyShown));
         }
         
         public static bool DarkGreenRewardUnlocked
         {
-            get => GetValueOrDefault(nameof(DarkGreenRewardUnlocked), default(bool));
+            get => GetValueOrDefault(nameof(DarkGreenRewardUnlocked), false);
             set => AddOrUpdateValue(value, nameof(DarkGreenRewardUnlocked));
         }
         
         public static bool OrangeRewardUnlocked
         {
-            get => GetValueOrDefault(nameof(OrangeRewardUnlocked), default(bool));
+            get => GetValueOrDefault(nameof(OrangeRewardUnlocked), false);
             set => AddOrUpdateValue(value, nameof(OrangeRewardUnlocked));
         }
         
         public static bool VioletRewardUnlocked
         {
-            get => GetValueOrDefault(nameof(VioletRewardUnlocked), default(bool));
+            get => GetValueOrDefault(nameof(VioletRewardUnlocked), false);
             set => AddOrUpdateValue(value, nameof(VioletRewardUnlocked));
         }
         
         public static bool RedRewardUnlocked
         {
-            get => GetValueOrDefault(nameof(RedRewardUnlocked), default(bool));
+            get => GetValueOrDefault(nameof(RedRewardUnlocked), false);
             set => AddOrUpdateValue(value, nameof(RedRewardUnlocked));
         }
         
         public static bool GoldenRewardUnlocked
         {
-            get => GetValueOrDefault(nameof(GoldenRewardUnlocked), default(bool));
+            get => GetValueOrDefault(nameof(GoldenRewardUnlocked), false);
             set => AddOrUpdateValue(value, nameof(GoldenRewardUnlocked));
         }
 
-        public static Guid DeviceId => GetValueOrDefault(nameof(DeviceId), Guid.NewGuid());
+        public static Guid DeviceId => GetValueOrCreateDefault(nameof(DeviceId), Guid.NewGuid());
 
         public static void Clear() => Settings.Clear();
         
@@ -276,6 +276,32 @@ namespace BMM.Core.Implementations.Storage
                 case TValue stringValue:
                     return stringValue;
                 case null:
+                    return defaultValue;
+                default:
+                {
+                    try
+                    {
+                        return JsonConvert.DeserializeObject<TValue>(value);
+                    }
+                    catch
+                    {
+                        AddOrUpdateValue(defaultValue, settingsKey);
+                        return defaultValue;
+                    }
+                }
+            }
+        }
+
+        private static TValue GetValueOrCreateDefault<TValue>(string settingsKey, TValue defaultValue)
+        {
+            string value = Settings.Get<string>(settingsKey, null);
+
+            switch (value)
+            {
+                case TValue stringValue:
+                    return stringValue;
+                case null:
+                    AddOrUpdateValue(defaultValue, settingsKey);
                     return defaultValue;
                 default:
                 {
