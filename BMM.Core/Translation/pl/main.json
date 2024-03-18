@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Odtwarzaj Muzykę",
     "DailyMessage": "Codzienna przemowa",
     "ValueCopiedToClipboard": "{0} skopiowane do schowka",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Dodaj do ulubionych",
+    "RemoveFromFavorites": "Usuń z ulubionych"
   },
   "Streak": {
     "Message": "Twoja seria w tym tygodniu",
@@ -264,7 +264,7 @@
     "Normal": "Normalna",
     "Selected": "Wybrane",
     "WatchOnBCCMedia": "Obejrzyj na BCC Media",
-    "Read": "Read"
+    "Read": "Czytaj"
   },
   "QueueViewModel": {
     "Title": "Kolejka"
@@ -312,8 +312,8 @@
     "OptionLanguageContentHeader": "Język zawartości",
     "OptionLanguageContentText": "Zmień język zawartości w BMM",
     "HeadlineAbout": "O BMM",
-    "OptionPrivacyPolicyHeader": "Privacy Policy",
-    "OptionPrivacyPolicyText": "Read the privacy policy",
+    "OptionPrivacyPolicyHeader": "Polityka prywatności",
+    "OptionPrivacyPolicyText": "Przeczytaj politykę prywatności",
     "OptionCopyrightHeader": "Prawa autorskie",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
     "OptionContactHeader": "Kontakt",
