@@ -59,8 +59,8 @@
     "ErrorFileNotOffline": "Du kannst einen Titel, der nicht heruntergeladen wurde, nicht im Offline-Modus abspielen.",
     "ErrorPlayerStopped": "Die Wiedergabe wurde gestoppt.",
     "ErrorPlayerStoppedGeneric": "Ein Fehler ist aufgetreten und die Wiedergabe wurde gestoppt.",
-    "ErrorPlayerLiveRadioStopped": "Die Live-Übertragung hat geendet.",
-    "ErrorPlayerLiveRadioTooEarly": "Die Live-Übertragung hat noch nicht gestartet. Bitte versuche es später noch einmal.",
+    "ErrorPlayerLiveRadioStopped": "Die Live-Übertragung ist beendet.",
+    "ErrorPlayerLiveRadioTooEarly": "Die Live-Übertragung hat noch nicht begonnen. Bitte versuche es später noch einmal.",
     "ErrorPlayerStart": "Nicht in der Lage den Titel zu starten."
   },
   "GlobalMediaDownloader": {
