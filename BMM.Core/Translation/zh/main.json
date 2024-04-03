@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "无法打开链接",
-    "ErrorMessage": "很抱歉，无法打开链接 '{0}'"
+    "ErrorMessage": "很抱歉，无法打开链接 '{0}'",
+    "RomansQuestionsPageTitle": "Questions & answers"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "发生连接错误︰ {0}"

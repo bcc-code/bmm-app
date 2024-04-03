@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Kunne ikke åbne linket",
-    "ErrorMessage": "Det var desværre ikke muligt at åbne linket '{0}'"
+    "ErrorMessage": "Det var desværre ikke muligt at åbne linket '{0}'",
+    "RomansQuestionsPageTitle": "Spørgsmål & svar"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Det skete en fejl med forbindelses: {0}"

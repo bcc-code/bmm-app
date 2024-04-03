@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Kan ikke åpne lenken",
-    "ErrorMessage": "Dessverre var det ikke mulig å åpne lenken '{0}'."
+    "ErrorMessage": "Dessverre var det ikke mulig å åpne lenken '{0}'.",
+    "RomansQuestionsPageTitle": "Spørsmål & svar"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Det oppstod en tilkoblingsfeil: {0}"

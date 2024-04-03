@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Linkin avaus epäonnistui",
-    "ErrorMessage": "Valitettavasti linkin avaus ei onnistunut."
+    "ErrorMessage": "Valitettavasti linkin avaus ei onnistunut.",
+    "RomansQuestionsPageTitle": "Kysymyksiä ja vastauksia"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Yhteysvirhe: {0}"

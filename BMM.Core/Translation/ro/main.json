@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nu s-a putut deschide linkul",
-    "ErrorMessage": "Din păcate nu s-a putut deschide linkul '{0}'."
+    "ErrorMessage": "Din păcate nu s-a putut deschide linkul '{0}'.",
+    "RomansQuestionsPageTitle": "Întrebări și răspunsuri"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "A apărut o eroare de conexiune: {0}"
