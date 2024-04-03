@@ -48,6 +48,7 @@ namespace BMM.Core.Translation
 		public const string Streak_WeekdayFriday = nameof(Streak_WeekdayFriday);
 		public const string DeepLinkHandler_ErrorTitle = nameof(DeepLinkHandler_ErrorTitle);
 		public const string DeepLinkHandler_ErrorMessage = nameof(DeepLinkHandler_ErrorMessage);
+		public const string DeepLinkHandler_RomansQuestionsPageTitle = nameof(DeepLinkHandler_RomansQuestionsPageTitle);
 		public const string RequestExceptionHandler_RequestFailedMessage = nameof(RequestExceptionHandler_RequestFailedMessage);
 		public const string MediaPlayer_ErrorMediaNotSupported = nameof(MediaPlayer_ErrorMediaNotSupported);
 		public const string MediaPlayer_ErrorVideoNotSupported = nameof(MediaPlayer_ErrorVideoNotSupported);

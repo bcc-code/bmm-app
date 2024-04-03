@@ -35,6 +35,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string UserVoiceLink = "user_voice_link";
             public const string PrivacyPolicyLink = "privacy_policy_link";
             public const string DeleteAccountLink = "delete_account_link";
+            public const string RomansQuestionsUrl = "romans_questions_url";
 
             public const string SongTreasuresSongLink = "songtreasures_song_link";
             public const string ExperimentId = "experiment_id";
@@ -105,6 +106,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
 
         public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
         public string PrivacyPolicyLink => _platformSpecificRemoteConfig.GetStringValue(Variables.PrivacyPolicyLink);
+        public string RomansQuestionsUrl => _platformSpecificRemoteConfig.GetStringValue(Variables.RomansQuestionsUrl);
         public string DeleteAccountLink => _platformSpecificRemoteConfig.GetStringValue(Variables.DeleteAccountLink);
 
         public string SongTreasuresSongLink => _platformSpecificRemoteConfig.GetStringValue(Variables.SongTreasuresSongLink);

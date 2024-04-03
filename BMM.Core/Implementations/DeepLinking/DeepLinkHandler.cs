@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using Acr.UserDialogs;
 using BMM.Api;
 using BMM.Api.Abstraction;
@@ -18,18 +13,18 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
 using BMM.Core.Implementations.DeepLinking.Parameters;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Models.Parameters;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using BMM.Core.ViewModels.Parameters.Interface;
-using IdentityModel.Client;
 using MvvmCross;
 using MvvmCross.Navigation;
-using MvvmCross.Presenters.Hints;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.Implementations.DeepLinking
@@ -57,6 +52,7 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly IUserAuthChecker _authChecker;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
         private readonly IRememberedQueueService _rememberedQueueService;
+        private readonly IFirebaseRemoteConfig _remoteConfig;
 
         private readonly IList<IDeepLinkParser> _links;
         private bool _readyToHandleDeepLink;
@@ -72,7 +68,8 @@ namespace BMM.Core.Implementations.DeepLinking
             IExceptionHandler exceptionHandler,
             IUserAuthChecker authChecker,
             IBMMLanguageBinder bmmLanguageBinder,
-            IRememberedQueueService rememberedQueueService)
+            IRememberedQueueService rememberedQueueService,
+            IFirebaseRemoteConfig remoteConfig)
         {
             _client = client;
             _navigationService = navigationService;
@@ -84,6 +81,7 @@ namespace BMM.Core.Implementations.DeepLinking
             _authChecker = authChecker;
             _bmmLanguageBinder = bmmLanguageBinder;
             _rememberedQueueService = rememberedQueueService;
+            _remoteConfig = remoteConfig;
 
             _links = new List<IDeepLinkParser>
             {
@@ -104,6 +102,7 @@ namespace BMM.Core.Implementations.DeepLinking
                 new RegexDeepLink<IdDeepLinkParameters>("^/album/(?<id>[0-9]+)$", OpenAlbum),
                 new TrackLinkParser(PlayTrackRegex, PlayTrackById),
                 new RegexDeepLink<GenericDocumentsViewParameters>("^/browse(/(?<path>.*))?$", OpenGenericDocumentsView),
+                new RegexDeepLink("^/romans-questions$", OpenRomansQuestions),
                 new RegexDeepLink("^/$", DoNothing)
             };
         }
@@ -176,6 +175,15 @@ namespace BMM.Core.Implementations.DeepLinking
         private Task OpenTrackCollection(IdAndNameParameters deepLinkParameters)
         {
             return NavigateTo<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(deepLinkParameters.Id, deepLinkParameters.Name));
+        }
+
+        private Task OpenRomansQuestions()
+        {
+            return NavigateTo<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+            {
+                Url = _remoteConfig.RomansQuestionsUrl,
+                Title = _bmmLanguageBinder[Translations.DeepLinkHandler_RomansQuestionsPageTitle]
+            });
         }
 
         private Task DoNothing()

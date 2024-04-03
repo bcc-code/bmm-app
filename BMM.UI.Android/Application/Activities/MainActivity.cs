@@ -55,6 +55,7 @@ namespace BMM.UI.Droid.Application.Activities
             "/copyright",
             "/",
             "/daily-fra-kaare",
+            "/romans-questions",
             "/music",
             "/speeches",
             "/contributors",

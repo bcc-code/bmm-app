@@ -52,5 +52,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         int[] AutoSubscribePodcasts { get; }
         bool IsReadingTranscriptionsEnabled { get; }
         string PrivacyPolicyLink { get; }
+        string RomansQuestionsUrl { get; }
     }
 }
