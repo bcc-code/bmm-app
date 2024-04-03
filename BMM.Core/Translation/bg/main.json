@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Линкът не може да се отвори",
-    "ErrorMessage": "За съжаление не беше възможно да отворите линка '{0}'."
+    "ErrorMessage": "За съжаление не беше възможно да отворите линка '{0}'.",
+    "RomansQuestionsPageTitle": "Въпроси и отговори"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Възникна грешка при свързването: {0}"
