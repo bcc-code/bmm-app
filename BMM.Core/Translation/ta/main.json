@@ -48,8 +48,7 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "இணைப்பைத் திறக்க முடியவில்லை",
-    "ErrorMessage": "துரதிர்ஷ்டவசமாக '{0}' இணைப்பை திறக்க முடியவில்லை.",
-    "RomansQuestionsPageTitle": "கேள்விகள் மற்றும் பதில்கள்"
+    "ErrorMessage": "துரதிர்ஷ்டவசமாக '{0}' இணைப்பை திறக்க முடியவில்லை."
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "இணைப்பு பிழை ஏற்பட்டது: {0}"
