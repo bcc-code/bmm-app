@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Povezave ni bilo mogoče odpreti",
-    "ErrorMessage": "Ni bilo mogoče odpreti povezave {0}"
+    "ErrorMessage": "Ni bilo mogoče odpreti povezave {0}",
+    "RomansQuestionsPageTitle": "Vprašanja & odgovori"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Prišlo je do napake pri povezavi: {0}"
