@@ -48,8 +48,7 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Link konnte nicht geöffnet werden",
-    "ErrorMessage": "Leider war es nicht möglich den Link '{0}' zu öffnen.",
-    "RomansQuestionsPageTitle": "Fragen & Antworten"
+    "ErrorMessage": "Leider war es nicht möglich den Link '{0}' zu öffnen."
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Ein Verbindungsfehler ist aufgetreten: {0}"
