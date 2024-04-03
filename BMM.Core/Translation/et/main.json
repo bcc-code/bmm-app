@@ -48,8 +48,7 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Unable to open link",
-    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'.",
-    "RomansQuestionsPageTitle": "Questions & answers"
+    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'."
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Tekkis ühendusviga: {0}"
