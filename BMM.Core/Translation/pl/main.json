@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nie można otworzyć linku",
-    "ErrorMessage": "Niestety otworzenie linku '{0}' było niemożliwe."
+    "ErrorMessage": "Niestety otworzenie linku '{0}' było niemożliwe.",
+    "RomansQuestionsPageTitle": "Pytania i odpowiedzi"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Wystąpił błąd połączenia: {0}"
