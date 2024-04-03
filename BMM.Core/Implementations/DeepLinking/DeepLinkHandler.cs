@@ -190,7 +190,7 @@ namespace BMM.Core.Implementations.DeepLinking
             await NavigateTo<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
             {
                 Url =
-                    $"{_remoteConfig.RomansQuestionsUrl}?theme={await _deviceInfo.GetCurrentTheme()}&language={_appLanguageProvider.GetAppLanguage()}",
+                    $"{_remoteConfig.RomansQuestionsUrl}?theme={(await _deviceInfo.GetCurrentTheme()).ToString().ToLower()}&language={_appLanguageProvider.GetAppLanguage()}",
                 Title = _bmmLanguageBinder[Translations.DeepLinkHandler_RomansQuestionsPageTitle]
             });
         }
