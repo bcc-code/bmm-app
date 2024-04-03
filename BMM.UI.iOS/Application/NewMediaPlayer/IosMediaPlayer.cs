@@ -6,6 +6,7 @@ using AVFoundation;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Core.Extensions;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
@@ -28,6 +29,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private readonly ILogger _logger;
         private readonly ICommandCenter _commandCenter;
         private readonly NSObject _avAudioSessionInterruptionNotification;
+        private readonly IAnalytics _analytics;
 
         private IMediaTrack _currentTrack;
         private int _currentTrackIndex;
@@ -39,15 +41,16 @@ namespace BMM.UI.iOS.NewMediaPlayer
             IMvxMessenger messenger,
             ILogger logger,
             ICommandCenter commandCenter,
-            IExceptionHandler exceptionHandler
-            )
+            IExceptionHandler exceptionHandler,
+            IAnalytics analytics)
         {
             _audioPlayback = audioPlayback;
             _queue = queue;
             _messenger = messenger;
             _logger = logger;
             _commandCenter = commandCenter;
-            
+            _analytics = analytics;
+
             _debounceDispatcher = new DebounceDispatcher((int)_timeToWaitBeforePreloadingNextItem.TotalMilliseconds);
 
             _audioPlayback.OnMediaFinished = OnMediaFinished;
@@ -74,6 +77,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
             {
                 _messenger.Publish(trackCompletedMessage);
                 SeekTo(0);
+                if (_queue.RepeatMode == RepeatType.RepeatOne)
+                    _analytics.LogEvent("repeated single track");
             }
             else if (GetPlayNextIndex().HasValue)
             {
