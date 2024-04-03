@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Kan link niet openen",
-    "ErrorMessage": "Helaas was het niet mogelijk om de link '{0}' te openen."
+    "ErrorMessage": "Helaas was het niet mogelijk om de link '{0}' te openen.",
+    "RomansQuestionsPageTitle": "Vragen en antwoorden"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Er is een verbindingsfout opgetreden: {0}"
