@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Bağlantı açılamıyor",
-    "ErrorMessage": "Ne yazık ki '{0}' bağlantısını açmak mümkün olmadı."
+    "ErrorMessage": "Ne yazık ki '{0}' bağlantısını açmak mümkün olmadı.",
+    "RomansQuestionsPageTitle": "Sorular & Cevaplar"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Bağlantı Hatası Oluştu: {0}"
