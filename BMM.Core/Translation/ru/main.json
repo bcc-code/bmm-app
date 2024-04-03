@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Не удалось открыть ссылку",
-    "ErrorMessage": "К сожалению, не удалось открыть ссылку '{0}'."
+    "ErrorMessage": "К сожалению, не удалось открыть ссылку '{0}'.",
+    "RomansQuestionsPageTitle": "Вопросы & ответы"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Произошла ошибка соединения: {0}"
