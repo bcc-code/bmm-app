@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nem lehet a linket megnyitni",
-    "ErrorMessage": "Sajnos nem sikerült megnyitni a (z) '{0}' linket."
+    "ErrorMessage": "Sajnos nem sikerült megnyitni a (z) '{0}' linket.",
+    "RomansQuestionsPageTitle": "Kérdések és válaszok"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Kapcsolódási hiba: {0}"
