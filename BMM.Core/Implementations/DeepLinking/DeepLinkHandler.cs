@@ -12,8 +12,10 @@ using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.DeepLinking.Base.Interfaces;
 using BMM.Core.Implementations.DeepLinking.Parameters;
+using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security;
@@ -53,6 +55,8 @@ namespace BMM.Core.Implementations.DeepLinking
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
         private readonly IRememberedQueueService _rememberedQueueService;
         private readonly IFirebaseRemoteConfig _remoteConfig;
+        private readonly IDeviceInfo _deviceInfo;
+        private readonly IAppLanguageProvider _appLanguageProvider;
 
         private readonly IList<IDeepLinkParser> _links;
         private bool _readyToHandleDeepLink;
@@ -69,7 +73,9 @@ namespace BMM.Core.Implementations.DeepLinking
             IUserAuthChecker authChecker,
             IBMMLanguageBinder bmmLanguageBinder,
             IRememberedQueueService rememberedQueueService,
-            IFirebaseRemoteConfig remoteConfig)
+            IFirebaseRemoteConfig remoteConfig,
+            IDeviceInfo deviceInfo,
+            IAppLanguageProvider appLanguageProvider)
         {
             _client = client;
             _navigationService = navigationService;
@@ -82,6 +88,8 @@ namespace BMM.Core.Implementations.DeepLinking
             _bmmLanguageBinder = bmmLanguageBinder;
             _rememberedQueueService = rememberedQueueService;
             _remoteConfig = remoteConfig;
+            _deviceInfo = deviceInfo;
+            _appLanguageProvider = appLanguageProvider;
 
             _links = new List<IDeepLinkParser>
             {
@@ -177,11 +185,12 @@ namespace BMM.Core.Implementations.DeepLinking
             return NavigateTo<TrackCollectionViewModel, ITrackCollectionParameter>(new TrackCollectionParameter(deepLinkParameters.Id, deepLinkParameters.Name));
         }
 
-        private Task OpenRomansQuestions()
+        private async Task OpenRomansQuestions()
         {
-            return NavigateTo<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+            await NavigateTo<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
             {
-                Url = _remoteConfig.RomansQuestionsUrl,
+                Url =
+                    $"{_remoteConfig.RomansQuestionsUrl}?theme={await _deviceInfo.GetCurrentTheme()}&language={_appLanguageProvider.GetAppLanguage()}",
                 Title = _bmmLanguageBinder[Translations.DeepLinkHandler_RomansQuestionsPageTitle]
             });
         }
