@@ -48,7 +48,8 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Link indisponivel",
-    "ErrorMessage": "Infelizmente não foi possivel abrir o link '{0}'."
+    "ErrorMessage": "Infelizmente não foi possivel abrir o link '{0}'.",
+    "RomansQuestionsPageTitle": "Perguntas e Respostas"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Ocorreu um erro de conexão: {0}"
