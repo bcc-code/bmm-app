@@ -48,8 +48,7 @@
   },
   "DeepLinkHandler": {
     "ErrorTitle": "No puede abrirse el enlace",
-    "ErrorMessage": "Desafortunadamente no fue posible abrir el enlace ",
-    "RomansQuestionsPageTitle": "Preguntas y respuestas"
+    "ErrorMessage": "Desafortunadamente no fue posible abrir el enlace "
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Se ha producido un error en la conexión: {0}"
