@@ -38,12 +38,12 @@
     "PerfectWeekCountNone": "Pas de semaines complètes pour le moment",
     "EligibleUntilHoursAndMinutesMessage": "{0} heures et {1} minutes restantes aujourd'hui",
     "EligibleUntilMinutesOnlyMessage": "{0} minutes restantes aujourd'hui",
-    "DaysInARowSingular": "{0} jour à la suite",
+    "DaysInARowSingular": "{0} jours à la suite",
     "DaysInARowPlural": "{0} jours à la suite",
     "WeekdayMonday": "L",
     "WeekdayTuesday": "Ma",
     "WeekdayWednesday": "Me",
-    "WeekdayThursday": "J",
+    "WeekdayThursday": "Je",
     "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
