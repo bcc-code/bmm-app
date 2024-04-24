@@ -150,17 +150,17 @@
     "LoginNoConnectionMessage": "Il n'y a actuellement aucune connexion disponible. Veuillez réessayer ultérieurement",
     "WrongMailAddressTitle": "Email invalide",
     "WrongMailAddress": "Veuillez fournir une adresse email valide. L'utilisation du nom d'utilisateur pour se connecter n'est plus supportée.",
-    "TbxUsername.Hint": "Messagerie",
+    "TbxUsername.Hint": "E-mail",
     "TbxPassword.Hint": "Mot de passe",
-    "BtnLogin.Text": "Login",
-    "LoginInfo": "Se connecter à BCC Login"
+    "BtnLogin.Text": "Se connecter",
+    "LoginInfo": "Se connecter avec votre identifiant BCC"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "Nous arrêterons bientôt la prise en charge des téléphones exécutants la version {0} {1} ou une version antérieure. Si possible, merci de mettre à jour votre téléphone.",
     "DeviceSupportEnded": "Malheureusement, nous ne prenons plus en charge les appareils antérieurs à la version {0} {1}. Veuillez mettre à jour votre appareil ou passer à un téléphone plus récent.",
     "AppSupportEnding": "Vous utilisez une ancienne version de l'application BMM. Nous arrêterons bientôt le support de cette version. Veuillez mettre à jour BMM.",
     "AppSupportEnded": "Vous utilisez une ancienne version de l'application BMM, qui n'est plus prise en charge. Veuillez mettre à jour BMM.",
-    "UpdateButton": "Mettre à jour"
+    "UpdateButton": "Mise à jour"
   },
   "LanguageAppViewModel": {
     "Title": "Langue de l'application"
@@ -486,7 +486,7 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Écouté récemment",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
+    "NoHistoryYetTitle": "Vous pouvez maintenant voir ce que vous avez écouté",
     "NoHistoryYetSubtitle": "Commencez à écouter, et votre historique s'affichera ici"
   },
   "ExploreRecentSpeechesViewModel": {
@@ -508,7 +508,7 @@
     "Title": "Paramètres du mode sombre",
     "Light": "Clair",
     "Dark": "Sombre",
-    "System": "Suivre paramètres système (Automatique)"
+    "System": "Suivre les paramètres du système (Auto)"
   },
   "ColorThemeViewModel": {
     "Title": "Thème",
@@ -529,7 +529,7 @@
     "ShortcutAlreadyAdded": "Ce raccourci a déjà été ajouté"
   },
   "YearInReviewViewModel": {
-    "Title": "Ton bilan de l'année",
+    "Title": "Bilan de l'année",
     "Share": "Partager avec tes amis",
     "ShareTitle": "Bilan de l'année"
   },
