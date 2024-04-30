@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Müzik Çal",
     "DailyMessage": "Günlük mesaj",
     "ValueCopiedToClipboard": "{0} panoya kopyalandı",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Favorilere ekle",
+    "RemoveFromFavorites": "Favorilerden çıkar"
   },
   "Streak": {
     "Message": "Bu haftaki Streakınız.",
@@ -265,7 +265,7 @@
     "Normal": "Normal",
     "Selected": "Seçildi",
     "WatchOnBCCMedia": "BCC Media'da izleyin",
-    "Read": "Read"
+    "Read": "Okuyun"
   },
   "QueueViewModel": {
     "Title": "Sıralı"
@@ -313,8 +313,8 @@
     "OptionLanguageContentHeader": "Uygulama Dili",
     "OptionLanguageContentText": "Dil seçeneklerini tüm içeriğe göre sırala",
     "HeadlineAbout": "Hakkında",
-    "OptionPrivacyPolicyHeader": "Privacy Policy",
-    "OptionPrivacyPolicyText": "Read the privacy policy",
+    "OptionPrivacyPolicyHeader": "Gizlilik Politikası",
+    "OptionPrivacyPolicyText": "Gizlilik politikasını okuyun",
     "OptionCopyrightHeader": "Telif Hakkı",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
     "OptionContactHeader": "İletişim",
