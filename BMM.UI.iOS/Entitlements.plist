@@ -4,6 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
+		<string>applinks:bmm.bcc.media</string>
 		<string>applinks:bmm.brunstad.org</string>
 		<string>applinks:int-bmm.brunstad.org</string>
 	</array>

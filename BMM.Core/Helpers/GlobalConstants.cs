@@ -8,7 +8,7 @@
         public const string ApiUrlProd = "https://bmm-api.brunstad.org";
 
         public const string BmmUrlInt = "int-bmm.brunstad.org";
-        public const string BmmUrlProd = "bmm.brunstad.org";
+        public const string BmmUrlProd = "bmm.bcc.media";
 
 #if ENV_INT
         public const string ApiUrl = ApiUrlInt;
