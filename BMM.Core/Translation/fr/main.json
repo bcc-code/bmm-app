@@ -56,11 +56,11 @@
   },
   "MediaPlayer": {
     "ErrorMediaNotSupported": "Aucun fichier n'est lié à cette piste.",
-    "ErrorVideoNotSupported": "Les vidéos ne sont actuellement pas pris en charge.",
-    "ErrorFileNotOffline": "Impossible de lire une piste, qui n'est pas téléchargée, en mode hors connexion.",
+    "ErrorVideoNotSupported": "Malheureusement, les vidéos ne sont actuellement pas prises en charge.",
+    "ErrorFileNotOffline": "Les pistes qui ne sont pas téléchargées ne peuvent pas être lues en mode hors ligne.",
     "ErrorPlayerStopped": "Le lecteur s'est arrêté.",
     "ErrorPlayerStoppedGeneric": "Une erreur de lecture s'est produite, la piste en cours s'est arrêtée.",
-    "ErrorPlayerLiveRadioStopped": "La diffusion est terminée.",
+    "ErrorPlayerLiveRadioStopped": "La diffusion en direct est terminée.",
     "ErrorPlayerLiveRadioTooEarly": "La diffusion n'a pas commencé, merci de réessayer plus tard.",
     "ErrorPlayerStart": "Impossible de démarrer la lecture."
   },
@@ -70,9 +70,9 @@
   "AlbumViewModel": {
     "Title": "Album",
     "SearchHint": "Rechercher",
-    "AddAlbumToPlaylist": "Ajouter l’album de playlist",
-    "AddAlbumToMyTracks": "Ajouter l’album de Mes Titres",
-    "FailedToAdd": "Impossible d'ajouter la piste à la liste. Veuillez réessayer ultérieurement.",
+    "AddAlbumToPlaylist": "Ajouter l'album à la liste de lecture",
+    "AddAlbumToMyTracks": "Ajouter l'album à mes pistes",
+    "FailedToAdd": "Échec de l'ajout de la piste à la liste de lecture. Veuillez réessayer plus tard.",
     "AlbumFailedToAddAlreadyExists": "Cet album est déjà dans votre liste de lecture.",
     "TrackAlreadyExistInTrackCollection": "Le titre existe déjà dans la playlist {0}",
     "ShufflePlay": "Lecture aléatoire",
@@ -86,12 +86,12 @@
     "Title": "Téléchargement automatique",
     "None": "Aucun",
     "PluralLatestTracks": "derniers titres {0}",
-    "AutomaticDownloadSubtitle": "Fixer le montant des titres à télécharger automatiquement quand on suit ce podcast."
+    "AutomaticDownloadSubtitle": "Définir le nombre de pistes à télécharger automatiquement lorsque vous suivez ce podcast."
   },
   "ContributorViewModel": {
     "Title": "Contributeur",
     "SearchHint": "Rechercher",
-    "HeaderText": "Faire apparaître sur ces pistes"
+    "HeaderText": "Apparaît sur ces titres"
   },
   "HomeViewModel": {
     "More": "Plus"
@@ -111,7 +111,7 @@
     "ShowAll": "Tout afficher",
     "PlayRandom": "Lecture aléatoire",
     "PlayNewest": "Jouer le plus récent",
-    "LatestTrack": "Dernières pistes",
+    "LatestTrack": "Dernier titre",
     "NextBroadcast": "Prochaine diffusion",
     "BmmRadio": "BMM Live",
     "CountdownHours": "dans {0}h",
@@ -126,11 +126,11 @@
   },
   "HelpFeedbackViewModel": {
     "Title": "Aide & commentaires",
-    "GuideIntroTitle": "Comment tirer profit de l'application BMM",
+    "GuideIntroTitle": "Comment tirer le meilleur parti de l'application BMM",
     "GuideIntroSubtitle": "Balayez pour en savoir plus",
-    "GuideOfflineTitle": "Liste de lecture Hors Connexion",
-    "GuideOfflineSubtitle": "Télécharger les liste de lecture sur votre périphérique pour les écouter en mode Hors Connexion. Vous pouvez activer cela dans la liste de lecture.",
-    "GuideAddToPlaylistTitle": "Ajouter à la liste de lecture ou «Mes Titres»",
+    "GuideOfflineTitle": "Listes de lecture hors ligne",
+    "GuideOfflineSubtitle": "Téléchargez vos listes de lecture sur votre appareil et écoutez-les sans connexion internet. Vous pouvez activer cette fonction dans la liste de lecture.",
+    "GuideAddToPlaylistTitle": "Ajouter à la liste de lecture ou à « Mes Titres »",
     "GuideAddToPlaylistSubtitle": "Enregistrer vos morceaux préférés dans vos propres listes de lecture ou dans votre collection personnelle de BMM «Mes Titres» en appuyant sur le bouton options à droite de la piste.",
     "GuideLanguagesTitle": "Plusieurs langues",
     "GuideLanguagesSubtitle": "Hiérarchisez vos langues, pour contrôler les langues de votre contenu BMM. Cela peut être fait dans les paramètres > langue.",
