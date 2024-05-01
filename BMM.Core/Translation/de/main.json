@@ -62,18 +62,18 @@
     "ErrorPlayerStoppedGeneric": "Ein Fehler ist aufgetreten und die Wiedergabe wurde gestoppt.",
     "ErrorPlayerLiveRadioStopped": "Die Live-Übertragung ist beendet.",
     "ErrorPlayerLiveRadioTooEarly": "Die Live-Übertragung hat noch nicht begonnen. Bitte versuche es später noch einmal.",
-    "ErrorPlayerStart": "Nicht in der Lage den Titel zu starten."
+    "ErrorPlayerStart": "Die Wiedergabe kann nicht gestartet werden."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "Der Speicherplatz für die Offline-Dateien ist nicht ausreichend"
+    "OutOfSpaceMessage": "Es ist nicht genügend Speicherplatz zum Speichern von Offlinedateien vorhanden"
   },
   "AlbumViewModel": {
     "Title": "Album",
     "SearchHint": "Suchen",
-    "AddAlbumToPlaylist": "Album zu Playlist hinzufügen",
+    "AddAlbumToPlaylist": "Album zu Wiedergabeliste hinzufügen",
     "AddAlbumToMyTracks": "Album zu meinen Titeln hinzufügen",
-    "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
-    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
+    "FailedToAdd": "Der Titel konnte nicht zur Wiedergabeliste hinzugefügt werden. Bitte versuche es später noch einmal.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album befindet sich bereits in deiner Playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playlist {0} vorhanden",
     "ShufflePlay": "Zufällige Wiedergabe",
     "PluralAlbums": "{0} Alben"
