@@ -62,18 +62,18 @@
     "ErrorPlayerStoppedGeneric": "Ein Fehler ist aufgetreten und die Wiedergabe wurde gestoppt.",
     "ErrorPlayerLiveRadioStopped": "Die Live-Übertragung ist beendet.",
     "ErrorPlayerLiveRadioTooEarly": "Die Live-Übertragung hat noch nicht begonnen. Bitte versuche es später noch einmal.",
-    "ErrorPlayerStart": "Nicht in der Lage den Titel zu starten."
+    "ErrorPlayerStart": "Die Wiedergabe kann nicht gestartet werden."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "Der Speicherplatz für die Offline-Dateien ist nicht ausreichend"
+    "OutOfSpaceMessage": "Es ist nicht genügend Speicherplatz zum Speichern von Offlinedateien vorhanden"
   },
   "AlbumViewModel": {
     "Title": "Album",
     "SearchHint": "Suchen",
-    "AddAlbumToPlaylist": "Album zu Playlist hinzufügen",
+    "AddAlbumToPlaylist": "Album zu Wiedergabeliste hinzufügen",
     "AddAlbumToMyTracks": "Album zu meinen Titeln hinzufügen",
-    "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
-    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
+    "FailedToAdd": "Der Titel konnte nicht zur Wiedergabeliste hinzugefügt werden. Bitte versuche es später noch einmal.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album befindet sich bereits in deiner Playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playlist {0} vorhanden",
     "ShufflePlay": "Zufällige Wiedergabe",
     "PluralAlbums": "{0} Alben"
@@ -107,11 +107,11 @@
     "Title": "Start",
     "SearchHint": "Suchen",
     "FraKaareHeader": "Von Kåre",
-    "AslaksenTeaserHeader": "Glaubensworte",
+    "AslaksenTeaserHeader": "Worte des Glaubens",
     "ShowAll": "Alle anzeigen",
-    "PlayRandom": "Zufällig",
-    "PlayNewest": "Neueste",
-    "LatestTrack": "Neuester Titel",
+    "PlayRandom": "Zufällige Wiedergabe",
+    "PlayNewest": "Neueste abspielen",
+    "LatestTrack": "Neuster Titel",
     "NextBroadcast": "Nächste Sendung",
     "BmmRadio": "BMM Live",
     "CountdownHours": "in {0}h",
@@ -126,12 +126,12 @@
   },
   "HelpFeedbackViewModel": {
     "Title": "Hilfe und Feedback",
-    "GuideIntroTitle": "Wie du das beste aus der BMM App heraus holst",
+    "GuideIntroTitle": "Wie du die BMM-App optimal nutzen kannst",
     "GuideIntroSubtitle": "Wischen, um mehr zu erfahren",
     "GuideOfflineTitle": "Offline-Playlists",
-    "GuideOfflineSubtitle": "Lade deine Playlists auf dein Gerät herunter und höre sie offline. Das kannst du in der Playlist aktivieren.",
-    "GuideAddToPlaylistTitle": "Zu Playlist oder \"Meinen Titeln\" hinzufügen",
-    "GuideAddToPlaylistSubtitle": "Speichere deine Lieblingstitel in deinen eigenen Playlists oder in deiner persönlichen BMM Sammlung \"Meine Titel\" indem du auf die drei Punkte rechts von dem Titel drückst.",
+    "GuideOfflineSubtitle": "Lade deine Wiedergabelisten auf dein Gerät herunter und höre sie offline. Das kannst du in der Wiedergabeliste aktivieren.",
+    "GuideAddToPlaylistTitle": "Zur Wiedergabeliste oder \"Meinen Titeln\" hinzufügen",
+    "GuideAddToPlaylistSubtitle": "Speichere deine Lieblingstitel in deinen eigenen Wiedergabeliste oder in deiner persönlichen BMM Sammlung \"Meine Titel\" indem du auf die drei Punkte rechts von dem Titel drückst.",
     "GuideLanguagesTitle": "Mehrere Sprachen",
     "GuideLanguagesSubtitle": "Wähle deine bevorzugten Inhaltssprachen und deren Priorität unter Einstellungen > Inhaltssprachen.",
     "GuideLibraryTitle": "Bibliothek",
@@ -197,7 +197,7 @@
     "DownloadedContent": "Offline-Inhalte",
     "FollowedPodcasts": "Abonnierte Podcasts",
     "MyTracks": "Meine Titel",
-    "MyPlaylists": "Meine Playlists",
+    "MyPlaylists": "Meine Wiedergabelisten",
     "SharedWithMe": "Mit mir geteilt",
     "ByFormat": "von {0}"
   },
@@ -210,19 +210,19 @@
     "Title": "Meine Titel",
     "ShufflePlay": "Zufällige Wiedergabe",
     "AvailableOffline": "Offline verfügbar",
-    "AvailableOfflineDownload": "Playlist herunterladen",
+    "AvailableOfflineDownload": "Wiedergabeliste herunterladen",
     "AvailableOfflineDownloading": "noch {0} von {1} Downloads",
     "RemoveOfflineConfirm": "Willst Du wirklich alle Downloads löschen?",
-    "EmptyTitle": "Diese Playlist ist leer",
+    "EmptyTitle": "Diese Wiedergabeliste ist leer",
     "EmptySubline": "Drücke auf die drei Punkte neben einem Titel um ihn zu einer Playlist hinzuzufügen.",
-    "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?"
+    "AskToResumeDownloading": "Es gibt neue Elemente in dieser Wiedergabeliste. Möchtest du diese herunterladen?"
   },
   "DownloadedContentViewModel": {
     "Title": "Offline-Inhalte",
     "FollowedPodcasts": "Abonnierte Podcasts",
     "MyTracks": "Meine Titel",
     "EmptyTitle": "Du hast keine offline verfügbaren Inhalte",
-    "EmptySubline": "Downloade eine Playlist oder folge einem Podcast um sie offline verfügbar zu machen."
+    "EmptySubline": "Lade eine Wiedergabeliste herunter oder folge einem Podcast um ihn offline verfügbar zu machen."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Abonnierte Podcasts",
@@ -247,10 +247,10 @@
     "AslaksenTheme4": "Demut ist die eigentliche Sache"
   },
   "CuratedPlaylistViewModel": {
-    "Title": "Playlist"
+    "Title": "Wiedergabeliste"
   },
   "CuratedPlaylistsViewModel": {
-    "Title": "Playlists"
+    "Title": "Wiedergabelisten"
   },
   "PlayerViewModel": {
     "Title": "Spielt jetzt",
@@ -285,7 +285,7 @@
     "Albums": "Alben",
     "Contributors": "Personen",
     "Podcasts": "Podcasts",
-    "Playlists": "Playlists",
+    "Playlists": "Wiedergabelisten",
     "NoResults": "Keine Ergebnisse",
     "NoResultsDescription": "Es gab keine Übereinstimmung deiner Suche für ",
     "SearchFailedTitle": "Suche fehlgeschlagen",
@@ -354,35 +354,35 @@
     "Play": "Abspielen"
   },
   "TrackCollectionViewModel": {
-    "Title": "Playliste",
+    "Title": "Wiedergabeliste",
     "ShufflePlay": "Zufällige Wiedergabe",
     "Resume": "Weiterhören",
     "AvailableOffline": "Offline verfügbar",
     "AvailableOfflineDownload": "Herunterladen",
     "AvailableOfflineDownloading": "noch {0} von {1} Downloads",
     "RemoveOfflineConfirm": "Willst Du wirklich alle Downloads löschen?",
-    "CreatePrompt": "Gib einen Namen für die Playlist ein",
-    "CreateFailure": "Fehler beim Erstellen der Playlist",
-    "DeleteConfirm": "Bist du sicher, dass du die die Playlist \"{0}\" löschen möchtest?",
-    "DeleteFailure": "Fehler beim Löschen der Playlist \"{0}\"",
-    "CreateEmptyFailure": "Gib einen Namen ein, um eine Playlist zu erstellen",
-    "RenameEmptyFailure": "Gib einen Namen für diese Playlist ein",
+    "CreatePrompt": "Gib einen Namen für die Wiedergabeliste ein",
+    "CreateFailure": "Fehler beim Erstellen der Wiedergabeliste",
+    "DeleteConfirm": "Bist du sicher, dass du die die Wiedergabeliste \"{0}\" löschen möchtest?",
+    "DeleteFailure": "Fehler beim Löschen der Wiedergabeliste \"{0}\"",
+    "CreateEmptyFailure": "Gib einen Namen ein, um eine Wiedergabeliste zu erstellen",
+    "RenameEmptyFailure": "Gib einen Namen für diese Wiedergabeliste ein",
     "SearchHint": "Suchen",
-    "EmptyTitle": "Diese Playlist ist leer",
-    "EmptySubline": "Drücke auf die drei Punkte neben einem Titel um ihn zu einer Playlist hinzuzufügen.",
+    "EmptyTitle": "Diese Wiedergabeliste ist leer",
+    "EmptySubline": "Drücke auf die drei Punkte neben einem Titel um ihn zu einer Wiedergabeliste hinzuzufügen.",
     "NotEnoughtSpaceToDownload": "Nicht genügend Speicherplatz um alle Titel herunterzuladen",
-    "AskToResumeDownloading": "Es gibt neue Elemente in dieser Playlist. Möchtest du diese herunterladen?",
+    "AskToResumeDownloading": "Es gibt neue Elemente in dieser Wiedergabeliste. Möchtest du diese herunterladen?",
     "Private": "Privat",
-    "DeletePlaylist": "Playlist löschen",
-    "EditPlaylist": "Playlist bearbeiten",
-    "SharePlaylist": "Playlist teilen",
-    "RemovePlaylist": "Playlist entfernen"
+    "DeletePlaylist": "Wiedergabeliste löschen",
+    "EditPlaylist": "Wiedergabeliste bearbeiten",
+    "SharePlaylist": "Wiedergabeliste teilen",
+    "RemovePlaylist": "Wiedergabeliste entfernen"
   },
   "EditTrackCollectionViewModel": {
-    "Title": "Playlist bearbeiten",
-    "RenameLabel": "Playlist umbenennen",
+    "Title": "Wiedergabeliste bearbeiten",
+    "RenameLabel": "Wiedergabeliste umbenennen",
     "MenuSave": "Speichern",
-    "EmptyName": "Die Playlist hat keinen Namen",
+    "EmptyName": "Die Wiedergabeliste hat keinen Namen",
     "SaveFailure": "Etwas lief schief. Bitte überprüfe deine Internetverbindung und versuche es noch einmal",
     "DiscardChangesTitle": "Änderungen verwerfen?",
     "DiscardChangesMessage": "Die Än­de­rungen, die du gemacht hast, werden nicht gespeichert",
@@ -390,40 +390,40 @@
     "KeepEditing": "Weiter Bearbeiten"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Playlist teilen",
-    "ShareNote": "Personen, die den Link der geteilten Playlist haben, können auf die Liste zugreifen und die hinzugefügten Titel hören.",
+    "Title": "Wiedergabeliste teilen",
+    "ShareNote": "Personen, die den Link der geteilten Wiedergabeliste haben, können auf die Liste zugreifen und die hinzugefügten Titel hören.",
     "ShareLink": "Link teilen",
     "MakePrivate": "Privat machen",
     "SharedWithFormat": "Mit {0} Personen geteilt"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Geteilte Playlist",
+    "Title": "Geteilte Wiedergabeliste",
     "Close": "Schließen",
-    "AddToMyPlaylist": "Zu meinen Playlists hinzufügen",
+    "AddToMyPlaylist": "Zu meinen Wiedergabelisten hinzufügen",
     "FollowOwnTrackCollection": "Du kannst nicht deiner eigenen Playlist folgen."
   },
   "OfflineTrackCollectionViewModel": {
-    "Title": "Playlist",
+    "Title": "Wiedergabeliste",
     "MenuDelete": "Löschen",
-    "DeleteConfirm": "Bist du sicher, dass du die die Playlist \"{0}\" löschen möchtest?",
-    "DeleteFailure": "Fehler beim Löschen der Playlist \"{0}\"",
+    "DeleteConfirm": "Bist du sicher, dass du die die Wiedergabeliste \"{0}\" löschen möchtest?",
+    "DeleteFailure": "Fehler beim Löschen der Wiedergabeliste \"{0}\"",
     "ShufflePlay": "Zufällige Wiedergabe",
     "SearchHint": "Suchen"
   },
   "TrackCollectionsAddToViewModel": {
-    "Title": "Diesen Titel zur Playlist hinzufügen",
+    "Title": "Diesen Titel zur Wiedergabeliste hinzufügen",
     "SearchHint": "Suchen",
-    "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
-    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
+    "FailedToAdd": "Der Titel konnte leider nicht zur Wiedergabeliste hinzugefügt werden. Bitte versuche es später nochmal.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Wiedergabeliste.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
     "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen, weil es Alben enthält.",
     "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
-    "CreatePlaylistPrompt": "Gib einen Namen für deine Playlist ein",
+    "CreatePlaylistPrompt": "Gib einen Namen für deine Wiedergabeliste ein",
     "TrackAddedToTrackCollection": "Zur Playlist hinzugefügt"
   },
   "UserDialogs": {
-    "Track.AddToPlaylist": "Zur Playlist hinzufügen",
-    "Track.DeleteFromPlaylist": "Aus der Playlist entfernen",
+    "Track.AddToPlaylist": "Zur Wiedergabeliste hinzufügen",
+    "Track.DeleteFromPlaylist": "Aus der Wiedergabeliste entfernen",
     "Track.AddToMyTracks": "Zu meinen Titeln hinzugefügt",
     "Track.RemoveFromMyTracks": "Aus meinen Titeln entfernen",
     "Track.AddedToMyTracks": "Zu meinen Titeln hinzugefügt",
@@ -442,16 +442,16 @@
     "Track.MoreInformation": "Mehr Informationen",
     "Track.Share": "Titel teilen",
     "Album.Play": "Abspielen",
-    "Album.AddToPlaylist": "Album zu Playlist hinzufügen",
+    "Album.AddToPlaylist": "Album zur Wiedergabeliste hinzufügen",
     "Album.AddToMyTracks": "Album zu Meinen Titeln hinzufügen",
     "Album.AddedToMyTracks": "Album wurde zu Meinen Titeln hinzugefügt",
     "Album.AddToQueue": "Zur Warteschlange hinzufügen",
     "Album.Share": "Album teilen",
-    "FailedToAdd": "Der Titel konnte leider nicht zur Playlist hinzugefügt werden. Bitte versuche es später nochmal.",
-    "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen, weil es Alben enthält.",
-    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
+    "FailedToAdd": "Der Titel konnte leider nicht zur Wiedergabeliste hinzugefügt werden. Bitte versuche es später nochmal.",
+    "FailedToAddAlbum": "Das Album zur Wiedergabeliste hinzufügen ist fehlgeschlagen, weil es Alben enthält.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Wiedergabeliste.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playlist {0} vorhanden",
-    "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
+    "FailedToAddUnknownType": "Ein \"{0}\" zu einer Wiedergabeliste hinzufügen wird derzeit nicht unterstützt.",
     "MyTracks": "Meine Titel",
     "Contributor.Play": "Abspielen",
     "Contributor.Share": "Mitwirkenden teilen",
@@ -537,13 +537,13 @@
     "Title": "Top Lieder",
     "PlaysPlural": "{0} x gespielt",
     "PlaysSingular": "{0} x gespielt",
-    "AddToMyPlaylist": "Playlist zu Favoriten hinzufügen",
+    "AddToMyPlaylist": "Wiedergabeliste zu Favoriten hinzufügen",
     "SuccessfullyAddedToPlaylists": "Erfolgreich zu Favoriten hinzugefügt"
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Autotranskribiert",
     "FromSongTreasures": "Von Song Treasures",
-    "AddTo": "Zur Playlist hinzufügen",
+    "AddTo": "Zur Wiedergabeliste hinzufügen",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Transkripte werden automatisch generiert und können Fehler enthalten",
     "AutoTranscribedPopupHeaderText": "Autotranskribiert",
