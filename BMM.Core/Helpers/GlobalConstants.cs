@@ -9,6 +9,7 @@
 
         public const string BmmUrlInt = "int-bmm.brunstad.org";
         public const string BmmUrlProd = "bmm.bcc.media";
+        public const string OldBmmUrl = "bmm.brunstad.org";
 
 #if ENV_INT
         public const string ApiUrl = ApiUrlInt;

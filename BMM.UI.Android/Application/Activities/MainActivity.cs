@@ -39,7 +39,7 @@ namespace BMM.UI.Droid.Application.Activities
         Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable },
         AutoVerify = true,
         DataSchemes = new[] { "https", "http" },
-        DataHosts = new[] { GlobalConstants.BmmUrlProd, GlobalConstants.BmmUrlInt, "bmm.brunstad.org" },
+        DataHosts = new[] { GlobalConstants.BmmUrlProd, GlobalConstants.BmmUrlInt, GlobalConstants.OldBmmUrl },
         DataPathPatterns = new[]
         {
             "/archive",

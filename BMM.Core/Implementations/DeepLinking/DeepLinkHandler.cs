@@ -247,7 +247,7 @@ namespace BMM.Core.Implementations.DeepLinking
         
         public bool IsBmmUrl(Uri uri)
         {
-            return uri.AbsoluteUri.Contains(GlobalConstants.BmmUrl);
+            return uri.AbsoluteUri.Contains(GlobalConstants.BmmUrl) || uri.AbsoluteUri.Contains(GlobalConstants.OldBmmUrl);
         }
 
         private bool WillDeepLinkStartPlayer(Uri uri)
