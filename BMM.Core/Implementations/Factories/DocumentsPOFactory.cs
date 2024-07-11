@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Factories.ContinueListening;
 using BMM.Core.Implementations.Factories.DiscoverSection;
@@ -9,20 +8,15 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.Factories.YearInReview;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Albums;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Carousels;
 using BMM.Core.Models.POs.Contributors;
 using BMM.Core.Models.POs.InfoMessages;
 using BMM.Core.Models.POs.Other;
-using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.Podcasts;
 using BMM.Core.Models.POs.Recommendations;
 using BMM.Core.Models.POs.Tiles;
-using BMM.Core.Models.POs.Tracks;
-using BMM.Core.Models.POs.Tracks.Interfaces;
-using BMM.Core.Models.POs.YearInReview;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
@@ -37,6 +31,7 @@ namespace BMM.Core.Implementations.Factories
         private readonly ITilePOFactory _tilePOFactory;
         private readonly IYearInReviewTeaserPOFactory _yearInReviewTeaserPOFactory;
         private readonly IHighlightedTextTrackPOFactory _highlightedTextTrackPOFactory;
+        private readonly IPlaylistPOFactory _playlistPOFactory;
         private readonly IMvxNavigationService _mvxNavigationService;
 
         public DocumentsPOFactory(
@@ -47,7 +42,8 @@ namespace BMM.Core.Implementations.Factories
             ITilePOFactory tilePOFactory,
             IYearInReviewTeaserPOFactory yearInReviewTeaserPOFactory,
             IHighlightedTextTrackPOFactory highlightedTextTrackPOFactory,
-            IMvxNavigationService mvxNavigationService)
+            IMvxNavigationService mvxNavigationService,
+            IPlaylistPOFactory playlistPOFactory)
         {
             _trackPOFactory = trackPOFactory;
             _trackCollectionPOFactory = trackCollectionPOFactory;
@@ -57,6 +53,7 @@ namespace BMM.Core.Implementations.Factories
             _yearInReviewTeaserPOFactory = yearInReviewTeaserPOFactory;
             _highlightedTextTrackPOFactory = highlightedTextTrackPOFactory;
             _mvxNavigationService = mvxNavigationService;
+            _playlistPOFactory = playlistPOFactory;
         }
         
         public IEnumerable<IDocumentPO> Create(
@@ -108,7 +105,7 @@ namespace BMM.Core.Implementations.Factories
                         documentsPOList.Add(_discoverSectionHeaderPOFactory.Create(discoverSectionHeader));
                         break;
                     case Playlist playlist:
-                        documentsPOList.Add(new PlaylistPO(playlist));
+                        documentsPOList.Add(_playlistPOFactory.Create(playlist));
                         break;
                     case ListeningStreak listeningStreak:
                         documentsPOList.Add(_listeningStreakPOFactory.Create(listeningStreak));
