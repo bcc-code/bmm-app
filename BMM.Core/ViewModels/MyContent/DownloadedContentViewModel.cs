@@ -120,7 +120,7 @@ namespace BMM.Core.ViewModels.MyContent
             var documents = new List<DocumentPO>();
             IList<Playlist> playlists = await Client.Playlist.GetAll(CachePolicy.UseCache);
             var downloadedPlaylistIds = await _playlistOfflineStorage.GetPlaylistIds();
-            foreach (var playlist in playlists)
+            foreach (var playlist in playlists.OrderBy(x => x.Title))
             {
                 if (downloadedPlaylistIds.Contains(playlist.Id))
                 {
