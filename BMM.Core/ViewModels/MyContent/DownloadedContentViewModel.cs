@@ -8,6 +8,7 @@ using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Models.POs.Base;
@@ -24,18 +25,24 @@ namespace BMM.Core.ViewModels.MyContent
     public class DownloadedContentViewModel : ContentBaseViewModel
     {
         private readonly IConnection _connection;
+        private readonly IOfflinePlaylistStorage _playlistOfflineStorage;
+        private readonly IPlaylistPOFactory _playlistPOFactory;
 
         public bool IsEmpty { get; private set; }
 
         public DownloadedContentViewModel(
             IStorageManager storageManager,
             IConnection connection,
-            ITrackCollectionPOFactory trackCollectionPOFactory)
+            ITrackCollectionPOFactory trackCollectionPOFactory,
+            IOfflinePlaylistStorage playlistOfflineStorage,
+            IPlaylistPOFactory playlistPOFactory)
             : base(
                 storageManager,
                 trackCollectionPOFactory)
         {
             _connection = connection;
+            _playlistOfflineStorage = playlistOfflineStorage;
+            _playlistPOFactory = playlistPOFactory;
         }
 
         protected override void AttachEvents()
@@ -63,7 +70,7 @@ namespace BMM.Core.ViewModels.MyContent
             RaisePropertyChanged(() => IsEmpty);
         }
 
-        private async Task<IList<TrackCollectionPO>> TrackCollectionContainOfflineFiles(IEnumerable<TrackCollectionPO> allCollections, CachePolicy cachePolicy)
+        private async Task<IList<TrackCollectionPO>> TrackCollectionContainingOfflineFiles(IEnumerable<TrackCollectionPO> allCollections, CachePolicy cachePolicy)
         {
             var offlineCollection = allCollections?.Where(tc => tc.IsAvailableOffline).ToList();
             var isOnline = _connection.GetStatus() == ConnectionStatus.Online;
@@ -92,19 +99,36 @@ namespace BMM.Core.ViewModels.MyContent
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var allCollectionsExceptMyTracks = (await base.LoadItems(policy))?.OfType<TrackCollectionPO>();
+            var offlineTrackCollections = await TrackCollectionContainingOfflineFiles(allCollectionsExceptMyTracks, policy);
+            var offlinePlaylists = await BuildDownloadedCuratedPlaylists();
 
-            var offlineTrackCollections = await TrackCollectionContainOfflineFiles(allCollectionsExceptMyTracks, policy);
+            var items = new List<DocumentPO>();
 
-            var offlineTrackCollectionsPlusPinnedItems = new List<DocumentPO>();
-
-            offlineTrackCollectionsPlusPinnedItems.AddRange(await BuildPinnedItems());
+            items.AddRange(await BuildPinnedItems());
+            items.AddRange(offlinePlaylists);
             if (offlineTrackCollections != null)
-                offlineTrackCollectionsPlusPinnedItems.AddRange(offlineTrackCollections);
+                items.AddRange(offlineTrackCollections);
 
-            if (offlineTrackCollectionsPlusPinnedItems.Count == 0)
+            if (items.Count == 0)
                 IsEmpty = true;
 
-            return offlineTrackCollectionsPlusPinnedItems;
+            return items;
+        }
+
+        private async Task<IEnumerable<DocumentPO>> BuildDownloadedCuratedPlaylists()
+        {
+            var documents = new List<DocumentPO>();
+            IList<Playlist> playlists = await Client.Playlist.GetAll(CachePolicy.UseCache);
+            var downloadedPlaylistIds = await _playlistOfflineStorage.GetPlaylistIds();
+            foreach (var playlist in playlists.OrderBy(x => x.Title))
+            {
+                if (downloadedPlaylistIds.Contains(playlist.Id))
+                {
+                    documents.Add(_playlistPOFactory.Create(playlist));
+                }
+            }
+
+            return documents;
         }
 
         private async Task<IEnumerable<PinnedItemPO>> BuildPinnedItems()

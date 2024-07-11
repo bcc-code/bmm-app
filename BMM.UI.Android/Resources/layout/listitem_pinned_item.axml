@@ -2,25 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:minHeight="@dimen/row_document_height"
+    android:minHeight="@dimen/row_feature_item_height"
     android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/padding_medium"
+    android:paddingRight="@dimen/padding_medium"
     android:showDividers="end"
     android:orientation="vertical"
     >
     <RelativeLayout
         android:layout_width="match_parent"
-        android:minHeight="@dimen/row_document_height"
+        android:minHeight="@dimen/row_feature_item_height"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground">
 
         <androidx.cardview.widget.CardView
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/element_margin_medium"
-            android:layout_marginRight="@dimen/element_margin_medium"
             android:id="@+id/image_view_row_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="2dp"
             local:cardBackgroundColor="@color/background_two_color"
             local:cardElevation="0dp"
             local:cardCornerRadius="6dp">
@@ -37,7 +38,9 @@
             android:orientation="vertical"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/image_view_row_icon"
-            android:layout_toLeftOf="@+id/image_button_options">
+            android:layout_toLeftOf="@+id/image_button_options"
+            android:layout_marginLeft="@dimen/element_margin_small"
+            android:layout_marginStart="12dp">
             <TextView
                 android:text="My Content"
                 android:layout_width="fill_parent"
@@ -54,7 +57,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/element_margin_medium"
-            android:paddingRight="@dimen/element_margin_medium"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:src="@drawable/icon_chevron_right" />

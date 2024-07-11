@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0AU-qS-4Jp" userLabel="Corner Radius Wrapper">
-                        <rect key="frame" x="18" y="10" width="40" height="40"/>
+                        <rect key="frame" x="16" y="10" width="40" height="40"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlaylist" translatesAutoresizingMaskIntoConstraints="NO" id="1Wy-dl-sVU">
                                 <rect key="frame" x="8" y="8" width="24" height="24"/>
@@ -44,7 +44,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rij-nr-DxO">
-                        <rect key="frame" x="72" y="14" width="174" height="19.5"/>
+                        <rect key="frame" x="68" y="14" width="178" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                         <color key="textColor" red="0.050980392156862744" green="0.074509803921568626" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -53,7 +53,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjZ-hv-EFu">
-                        <rect key="frame" x="90" y="34.5" width="156" height="16"/>
+                        <rect key="frame" x="88" y="34.5" width="158" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.36078431372549019" green="0.4392156862745098" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -62,7 +62,7 @@
                         </userDefinedRuntimeAttributes>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_downloaded.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ptd-j0-kDZ">
-                        <rect key="frame" x="70" y="36.5" width="18" height="13"/>
+                        <rect key="frame" x="68" y="36.5" width="18" height="13"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="18" id="AzU-Sg-BDt"/>
                             <constraint firstAttribute="height" constant="13" id="CMx-2H-3mg"/>
@@ -85,11 +85,11 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="0AU-qS-4Jp" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="18" id="0YU-AL-5W2"/>
+                    <constraint firstItem="0AU-qS-4Jp" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="0YU-AL-5W2"/>
                     <constraint firstItem="JjZ-hv-EFu" firstAttribute="top" secondItem="rij-nr-DxO" secondAttribute="bottom" constant="1" id="6Vy-Ln-rDN"/>
                     <constraint firstItem="m7I-H7-dpf" firstAttribute="leading" secondItem="JjZ-hv-EFu" secondAttribute="trailing" constant="8" id="SHg-c1-3ED"/>
                     <constraint firstItem="7nd-2l-MkW" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="VXC-LM-d8f"/>
-                    <constraint firstItem="rij-nr-DxO" firstAttribute="leading" secondItem="0AU-qS-4Jp" secondAttribute="trailing" constant="14" id="aNH-Mn-aSS"/>
+                    <constraint firstItem="rij-nr-DxO" firstAttribute="leading" secondItem="0AU-qS-4Jp" secondAttribute="trailing" constant="12" id="aNH-Mn-aSS"/>
                     <constraint firstItem="JjZ-hv-EFu" firstAttribute="leading" secondItem="Ptd-j0-kDZ" secondAttribute="trailing" constant="2" id="bD9-qc-EUI"/>
                     <constraint firstItem="Ptd-j0-kDZ" firstAttribute="leading" secondItem="0AU-qS-4Jp" secondAttribute="trailing" constant="12" id="bia-xy-DKC"/>
                     <constraint firstItem="0AU-qS-4Jp" firstAttribute="centerY" secondItem="YTl-1W-gDM" secondAttribute="centerY" id="h1Q-LU-tVc"/>

@@ -1,6 +1,4 @@
 ﻿using BMM.Core.ViewModels.Base;
-using System;
-using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
@@ -31,7 +29,12 @@ namespace BMM.Core.ViewModels
         public MvxCommand PlayPauseCommand { get; }
         
         public bool IsLiked => CurrentTrack?.IsLiked ?? false;
-        
+
+        public override string PlaybackOriginString(int? index = null)
+        {
+            return _currentTrack.PlaybackOrigin;
+        }
+
         /// <summary>
         /// When changing the song on Android, exo player sends few current track updates, where few of them is just null.
         ///
