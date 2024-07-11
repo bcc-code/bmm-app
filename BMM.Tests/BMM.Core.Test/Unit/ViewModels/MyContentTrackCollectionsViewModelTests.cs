@@ -1,15 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using BMM.Api.Abstraction;
+﻿using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.FileStorage;
-using BMM.Core.Implementations.TrackCollections;
+using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.ViewModels.MyContent;
 using Moq;
-using NUnit.Framework;
 
 namespace BMM.Core.Test.Unit.ViewModels
 {
@@ -17,11 +14,16 @@ namespace BMM.Core.Test.Unit.ViewModels
     public class MyContentTrackCollectionsViewModelTests : BaseViewModelTests
     {
         private readonly Mock<IConnection> _connectionMock = new Mock<IConnection>();
+        private readonly Mock<IOfflinePlaylistStorage> _playlistOfflineStorageMock = new Mock<IOfflinePlaylistStorage>();
 
         public override void SetUp()
         {
             base.SetUp();
             _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
+            _playlistOfflineStorageMock.Setup(x => x.GetPlaylistIds()).ReturnsAsync(new HashSet<int>());
+
+            Client.Setup(x => x.Playlist.GetAll(It.IsAny<CachePolicy>()))
+                .Returns(Task.FromResult<IList<Playlist>>(new List<Playlist>()));
         }
 
         [Test]
@@ -40,7 +42,9 @@ namespace BMM.Core.Test.Unit.ViewModels
             var newestViewModel = new DownloadedContentViewModel(
                 new Mock<IStorageManager>().Object,
                 _connectionMock.Object,
-                new Mock<ITrackCollectionPOFactory>().Object);
+                new Mock<ITrackCollectionPOFactory>().Object,
+                _playlistOfflineStorageMock.Object,
+                new PlaylistPOFactory());
             newestViewModel.TextSource = TextResource.Object;
 
             // Act
@@ -73,7 +77,9 @@ namespace BMM.Core.Test.Unit.ViewModels
             var newestViewModel = new DownloadedContentViewModel(
                 mockStorage.Object,
                 _connectionMock.Object,
-                new Mock<ITrackCollectionPOFactory>().Object);
+                new Mock<ITrackCollectionPOFactory>().Object,
+                _playlistOfflineStorageMock.Object,
+                new PlaylistPOFactory());
 
             newestViewModel.TextSource = TextResource.Object;
             _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Offline);
