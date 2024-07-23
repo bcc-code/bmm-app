@@ -144,8 +144,8 @@
     "SettingUpAccountMessage": "Nous paramétrons votre compte. Cela peut prendre quelques minutes."
   },
   "LoginViewModel": {
-    "Title": "Ouverture de session",
-    "LoginFailureTitle": "La connexion a échoué",
+    "Title": "Se connecter",
+    "LoginFailureTitle": "Échec de la connexion",
     "LoginFailureMessage": "Merci de recommencer avec des identifiants valides",
     "LoginNoConnectionMessage": "Il n'y a actuellement aucune connexion disponible. Veuillez réessayer ultérieurement",
     "WrongMailAddressTitle": "Email invalide",
