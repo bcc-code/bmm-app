@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AVFoundation;
+﻿using AVFoundation;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Core.Extensions;
@@ -13,7 +9,6 @@ using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.Utils;
-using Foundation;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.UI.iOS.NewMediaPlayer
@@ -30,6 +25,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private readonly ICommandCenter _commandCenter;
         private readonly NSObject _avAudioSessionInterruptionNotification;
         private readonly IAnalytics _analytics;
+        private readonly IExceptionHandler _exceptionHandler;
 
         private IMediaTrack _currentTrack;
         private int _currentTrackIndex;
@@ -49,6 +45,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _messenger = messenger;
             _logger = logger;
             _commandCenter = commandCenter;
+            _exceptionHandler = exceptionHandler;
             _analytics = analytics;
 
             _debounceDispatcher = new DebounceDispatcher((int)_timeToWaitBeforePreloadingNextItem.TotalMilliseconds);
@@ -153,7 +150,10 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         private void WaitAndPreloadNextTrack()
         {
-            _debounceDispatcher.Run(async () => await PreloadNextTrackIfNeeded());
+            _debounceDispatcher.Run(() =>
+            {
+                _exceptionHandler.FireAndForgetWithoutUserMessages(async () => await PreloadNextTrackIfNeeded());
+            });
         }
 
         private async Task PreloadNextTrackIfNeeded()
