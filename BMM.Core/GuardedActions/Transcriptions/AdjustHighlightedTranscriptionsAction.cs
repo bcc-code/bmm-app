@@ -21,7 +21,7 @@ public class AdjustHighlightedTranscriptionsAction
 
         if (currentItem == null)
         {
-            if (DataContext.Transcriptions.Last().Transcription.End == 0)
+            if (DataContext.Transcriptions.Any() && DataContext.Transcriptions.Last().Transcription.End == 0)
                 DataContext.Transcriptions.All(x => x.IsHighlighted = true);
             return Task.CompletedTask;
         }
