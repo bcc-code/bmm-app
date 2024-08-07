@@ -20,7 +20,11 @@ public class AdjustHighlightedTranscriptionsAction
             .FirstOrDefault(t => t.Transcription.Start < positionInSeconds && t.Transcription.End > positionInSeconds);
 
         if (currentItem == null)
+        {
+            if (DataContext.Transcriptions.Last().Transcription.End == 0)
+                DataContext.Transcriptions.All(x => x.IsHighlighted = true);
             return Task.CompletedTask;
+        }
 
         int indexOfCurrentItem = DataContext
             .Transcriptions
