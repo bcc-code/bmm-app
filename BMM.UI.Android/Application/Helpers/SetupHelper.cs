@@ -11,7 +11,7 @@ namespace BMM.UI.Droid.Application.Helpers
         public static void EnsureInitialized()
         {
             AppCenterHelper.DroidRegister();
-            var setup = MvxAndroidSetupSingleton.EnsureSingletonAvailable(Android.App.Application.Context);
+            var setup = MvxAndroidSetupSingleton.EnsureSingletonAvailable(BmmApplication.Instance);
             setup.EnsureInitialized();
         }
     }

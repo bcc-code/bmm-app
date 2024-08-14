@@ -8,7 +8,7 @@ using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.Implementations.Connection
 {
-    public class ConnectionStatusLogger
+    public class ConnectionStatusMonitor
     {
         private readonly IAnalytics _analytics;
         private readonly IMvxMessenger _messenger;
@@ -16,7 +16,7 @@ namespace BMM.Core.Implementations.Connection
         private readonly IGlobalMediaDownloader _globalMediaDownloader;
         private DateTime _lastConnectionChange;
 
-        public ConnectionStatusLogger(
+        public ConnectionStatusMonitor(
             IAnalytics analytics,
             IMvxMessenger messenger,
             IConnection connection,
