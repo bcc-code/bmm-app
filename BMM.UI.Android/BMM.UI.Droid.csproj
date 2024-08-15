@@ -18,6 +18,10 @@
     <AndroidLinkTool>r8</AndroidLinkTool>
     <AndroidLinkSkip>MvvmCross;MvvmCross.Plugin.Messenger</AndroidLinkSkip>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
+    <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MvvmCross" Version="9.2.0" />
     <PackageReference Include="MvvmCross.DroidX.RecyclerView" Version="9.2.0" />
