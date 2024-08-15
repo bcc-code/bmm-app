@@ -22,6 +22,8 @@ namespace BMM.Core.Implementations.ApiClients
 
         public Task<IEnumerable<Document>> GetDocuments(int? age, AppTheme theme, CachePolicy cachePolicy)
         {
+            return _client.GetDocuments(age, theme, cachePolicy);
+            
             return _clientCache.Get(
                 () => _client.GetDocuments(age, theme, cachePolicy),
                 cachePolicy,

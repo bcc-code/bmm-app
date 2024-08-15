@@ -68,6 +68,7 @@ using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.IoC;
 using MvvmCross.Platforms.Android.Core;
 using MvvmCross.Platforms.Android.Presenters;
+using MvvmCross.Plugin.Color.Platforms.Android.BindingTargets;
 using MvvmCross.Plugin.ResourceLoader.Platforms.Android;
 using MvvmCross.ViewModels;
 using Serilog;
@@ -147,7 +148,8 @@ namespace BMM.UI.Droid
             iocProvider.LazyConstructAndRegisterSingleton<IOldSecureStorage, DroidOldSecureStorage>();
             iocProvider.RegisterType<IMvxResourceLoader, MvxAndroidResourceLoader>();
             iocProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, DroidUserDialogsFactory>();
-            iocProvider.CallbackWhenRegistered<IMvxTargetBindingFactoryRegistry>(RegisterAdditionalBindings);
+            //iocProvider.CallbackWhenRegistered<IMvxTargetBindingFactoryRegistry>(RegisterAdditionalBindings);
+            
 
             iocProvider.LazyConstructAndRegisterSingleton<IStopwatchManager, StopwatchManager>();
             var stopwatch = iocProvider.Resolve<IStopwatchManager>();
@@ -228,15 +230,18 @@ namespace BMM.UI.Droid
             });
         }
 
-        private void RegisterAdditionalBindings(IMvxTargetBindingFactoryRegistry registry)
+        protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
         {
+            base.FillTargetFactories(registry);
+            
             registry.RegisterFactory(new MvxCustomBindingFactory<View>("BackgroundTint", view => new MvxBackgroundTintBinding(view)));
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardVisibility", card => new MvxCardVisibility(card)));
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardCircle", card => new MvxCardCircle(card)));
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardBackgroundColor", card => new MvxCardBackgroundColor(card)));
+            MvxCustomTextColor.Register(registry);
             MvxCachedImageViewPathBinding.Register(registry);
             BackgroundResourceBinding.Register(registry);
-            ImageButtonIconResourceBinding.Register(registry);
+            ImageButtonIconResourceBinding.Register(registry); 
             AlphaTargetBinding.Register(registry);
             IsEnabledBinding.Register(registry);
             HexMvxCardBackgroundColor.Register(registry);
