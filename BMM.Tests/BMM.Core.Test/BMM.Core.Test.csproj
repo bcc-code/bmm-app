@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <UseMauiEssentials>true</UseMauiEssentials>
@@ -19,6 +19,7 @@
         <PackageReference Include="NUnit.Analyzers" Version="3.5.0" />
         <PackageReference Include="coverlet.collector" Version="3.1.2" />
         <PackageReference Update="Microsoft.Maui.Graphics" Version="8.0.80" />
+        <PackageReference Update="Microsoft.Maui.Essentials" Version="8.0.80" />
     </ItemGroup>
 
     <ItemGroup>
