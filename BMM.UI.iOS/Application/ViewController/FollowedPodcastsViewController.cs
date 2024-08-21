@@ -36,7 +36,7 @@ namespace BMM.UI.iOS
             set.Bind(source).For(s => s.ItemsSource).To(vm => vm.Documents);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(vm => vm.DocumentSelectedCommand);
 
-            set.Bind(EmptyStateView).For(s => s.Hidden).To(vm => vm.ShowEmptyFollowedPodcasts).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(EmptyStateView).For(s => s.Hidden).To(vm => vm.ShowEmptyFollowedPodcasts).WithConversion<InvertedBoolConverter>();
             set.Bind(PlaylistEmptyHeadlineLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.FollowedPodcastsViewModel_EmptyTitle);
             set.Bind(PlaylistEmptyTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.FollowedPodcastsViewModel_EmptySubline);
 

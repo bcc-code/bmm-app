@@ -77,10 +77,10 @@ namespace BMM.UI.iOS
             set.Bind(BufferedProgressSlider).For(b => b.Hidden).To(vm => vm.IsSeekingDisabled);
 
             set.Bind(SkipBackButton).To(vm => vm.SkipBackwardCommand);
-            set.Bind(SkipBackButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(SkipBackButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedBoolConverter>();
 
             set.Bind(SkipForwardButton).To(vm => vm.SkipForwardCommand);
-            set.Bind(SkipForwardButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(SkipForwardButton).For(v => v.Enabled).To(vm => vm.IsSeekingDisabled).WithConversion<InvertedBoolConverter>();
 
             set.Bind(NextButtton).To(vm => vm.NextCommand);
             set.Bind(NextButtton).For(v => v.Enabled).To(vm => vm.IsSkipToNextEnabled);

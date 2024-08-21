@@ -47,7 +47,7 @@ namespace BMM.UI.iOS
 
             set.Bind(_source)
                 .For(s => s.IsFullyLoaded)
-                .To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
+                .To(vm => vm.IsLoading).WithConversion<InvertedBoolConverter>();
 
             set.Bind(refreshControl)
                 .For(r => r.IsRefreshing)

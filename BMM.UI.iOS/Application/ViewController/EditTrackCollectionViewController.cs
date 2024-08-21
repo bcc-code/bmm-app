@@ -86,7 +86,7 @@ namespace BMM.UI.iOS
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(titleView.TitleTextField).To(vm => vm.TrackCollectionTitle);
             set.Bind(titleView.TitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.EditTrackCollectionViewModel_RenameLabel);
-            set.Bind(saveButton).For(v => v.Enabled).To(vm => vm.HasChanges).WithConversion<VisibilityConverter>();
+            set.Bind(saveButton).For(v => v.Enabled).To(vm => vm.HasChanges);
             set.Apply();
             tableView.ResizeHeaderView();
         }

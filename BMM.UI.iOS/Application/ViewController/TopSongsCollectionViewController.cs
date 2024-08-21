@@ -1,5 +1,6 @@
 using System;
 using BMM.Core.Translation;
+using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using CoreGraphics;
@@ -71,7 +72,7 @@ namespace BMM.UI.iOS
             set.Bind(source)
                 .For(s => s.IsFullyLoaded)
                 .To(vm => vm.IsLoading)
-                .WithConversion<InvertedVisibilityConverter>();
+                .WithConversion<InvertedBoolConverter>();
 
             set.Bind(AddToFavouritesButton)
                 .For(v => v.BindTitle())

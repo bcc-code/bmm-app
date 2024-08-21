@@ -1,5 +1,6 @@
 using System;
 using BMM.Core.Translation;
+using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Localization;
@@ -22,7 +23,7 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<SupportEndedViewController, SupportEndedViewModel>();
             set.Bind(SupportEndedMessage).To(vm => vm.SupportEndedInfo);
             set.Bind(UpdateBmmBtn).To(vm => vm.ShowAppUpdatePageCommand);
-            set.Bind(UpdateBmmBtn).For(v => v.Hidden).To(vm => vm.ShouldShowAppUpdateButton).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(UpdateBmmBtn).For(v => v.Hidden).To(vm => vm.ShouldShowAppUpdateButton).WithConversion<InvertedBoolConverter>();
             set.Bind(UpdateBmmBtn).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.SupportEndedViewModel_UpdateButton);
             set.Apply();
         }
