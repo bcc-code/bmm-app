@@ -174,7 +174,7 @@ steps:
   - task: ArchiveFiles@1
     displayName: 'Create dSYM archive with symbols '
     inputs:
-      rootFolder: 'BMM.UI.iOS/bin/iPhone/Release/net*-ios/ios-arm64/BMM.app.dSYM'
+      rootFolder: 'BMM.UI.iOS/bin/iPhone/Release/net8.0-ios/ios-arm64/BMM.app.dSYM'
       archiveFile: '$(Build.ArtifactStagingDirectory)/BMM.app.dSYM.zip'
 
   - task: CopyFiles@2
