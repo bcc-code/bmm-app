@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFramework>net7.0-ios</TargetFramework>
+        <TargetFramework>net8.0-ios</TargetFramework>
         <OutputType>Library</OutputType>
         <ApplicationId>BMM.UI.iOS.SiriIntents</ApplicationId>
         <Configurations>Debug;Release;UITests</Configurations>
@@ -21,14 +21,7 @@
         <WarningLevel>4</WarningLevel>
         <CodesignKey>iPhone Developer</CodesignKey>
         <DeviceSpecificBuild>false</DeviceSpecificBuild>
-        <MtouchDebug>true</MtouchDebug>
-        <_BundlerDebug>false</_BundlerDebug>
-        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-        <MtouchFastDev>true</MtouchFastDev>
         <IOSDebuggerPort>38765</IOSDebuggerPort>
-        <MtouchLink>None</MtouchLink>
-        <MtouchArch>x86_64</MtouchArch>
-        <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
         <DebugType>pdbonly</DebugType>
@@ -37,12 +30,6 @@
         <CodesignProvision>BMM App Siri Intents Provisioning Profile</CodesignProvision>
         <OutputPath>bin\iPhone\Release</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <MtouchUseLlvm>true</MtouchUseLlvm>
-        <MtouchFloat32>true</MtouchFloat32>
-        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-        <MtouchLink>SdkOnly</MtouchLink>
-        <MtouchArch>ARM64</MtouchArch>
-        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
         <DebugType>pdbonly</DebugType>
@@ -50,10 +37,6 @@
         <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
         <WarningLevel>4</WarningLevel>
         <CodesignKey>iPhone Developer</CodesignKey>
-        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-        <MtouchLink>None</MtouchLink>
-        <MtouchArch>x86_64</MtouchArch>
-        <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugType>full</DebugType>
@@ -62,16 +45,6 @@
         <DefineConstants>DEBUG;</DefineConstants>
         <WarningLevel>4</WarningLevel>
         <CodesignKey>iPhone Developer</CodesignKey>
-        <MtouchDebug>true</MtouchDebug>
-        <_BundlerDebug>false</_BundlerDebug>
-        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-        <MtouchFastDev>true</MtouchFastDev>
-        <MtouchFloat32>true</MtouchFloat32>
-        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-        <IOSDebuggerPort>47530</IOSDebuggerPort>
-        <MtouchLink>SdkOnly</MtouchLink>
-        <MtouchArch>ARM64</MtouchArch>
-        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITests|iPhone' ">
         <DebugType>full</DebugType>
@@ -81,15 +54,5 @@
         <OutputPath>bin\iPhone\Debug</OutputPath>
         <DefineConstants>DEBUG;</DefineConstants>
         <WarningLevel>4</WarningLevel>
-        <MtouchDebug>true</MtouchDebug>
-        <_BundlerDebug>false</_BundlerDebug>
-        <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
-        <MtouchFastDev>true</MtouchFastDev>
-        <MtouchFloat32>true</MtouchFloat32>
-        <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-        <IOSDebuggerPort>47530</IOSDebuggerPort>
-        <MtouchLink>SdkOnly</MtouchLink>
-        <MtouchArch>ARM64</MtouchArch>
-        <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
     </PropertyGroup>
 </Project>
