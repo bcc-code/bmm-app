@@ -11,7 +11,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(RecommendationContributorTableViewCell));
 
-        public RecommendationContributorTableViewCell(IntPtr handle)
+        public RecommendationContributorTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
         }

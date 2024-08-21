@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(ContinueListeningCollectionTableViewCell));
 
-        public ContinueListeningCollectionTableViewCell(IntPtr handle)
+        public ContinueListeningCollectionTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

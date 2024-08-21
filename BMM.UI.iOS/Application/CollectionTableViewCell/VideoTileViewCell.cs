@@ -16,7 +16,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName(nameof(VideoTileViewCell), NSBundle.MainBundle);
         private string _videoUrl;
 
-        public VideoTileViewCell(IntPtr handle): base(Key, handle)
+        public VideoTileViewCell(ObjCRuntime.NativeHandle handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {

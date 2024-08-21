@@ -16,7 +16,7 @@ namespace BMM.UI.iOS
         private bool _isPlaylistSharedByMe;
         private bool _useLikeIcon;
 
-        public TrackCollectionTableViewCell(IntPtr handle)
+        public TrackCollectionTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

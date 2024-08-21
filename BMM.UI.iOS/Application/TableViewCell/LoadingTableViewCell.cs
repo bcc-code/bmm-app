@@ -8,7 +8,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(LoadingTableViewCell));
 
-        public LoadingTableViewCell(IntPtr handle) : base(handle)
+        public LoadingTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(ContributorTableViewCell));
 
-        public ContributorTableViewCell(IntPtr handle)
+        public ContributorTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

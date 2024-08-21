@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new NSString(nameof(MessageTileViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(MessageTileViewCell), NSBundle.MainBundle);
 
-        public MessageTileViewCell(IntPtr handle): base(Key, handle)
+        public MessageTileViewCell(ObjCRuntime.NativeHandle handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {

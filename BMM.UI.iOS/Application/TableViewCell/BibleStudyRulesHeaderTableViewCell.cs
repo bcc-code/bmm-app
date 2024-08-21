@@ -13,7 +13,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(BibleStudyRulesHeaderTableViewCell));
 
-        public BibleStudyRulesHeaderTableViewCell(IntPtr handle)
+        public BibleStudyRulesHeaderTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

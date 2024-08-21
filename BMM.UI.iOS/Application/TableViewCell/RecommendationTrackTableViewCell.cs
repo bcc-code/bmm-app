@@ -10,7 +10,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(RecommendationTrackTableViewCell));
 
-        public RecommendationTrackTableViewCell(IntPtr handle)
+        public RecommendationTrackTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

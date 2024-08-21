@@ -16,7 +16,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(DiscoverSectionHeaderTableViewCell));
 
-        public DiscoverSectionHeaderTableViewCell(IntPtr handle)
+        public DiscoverSectionHeaderTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

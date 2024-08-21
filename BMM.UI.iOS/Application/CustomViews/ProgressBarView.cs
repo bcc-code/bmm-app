@@ -27,7 +27,7 @@ namespace BMM.UI.iOS.CustomViews
             Initialize();
         }
 
-        public ProgressBarView(IntPtr handle) : base(handle)
+        public ProgressBarView(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             Initialize();
         }

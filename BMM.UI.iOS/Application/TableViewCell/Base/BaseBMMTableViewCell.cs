@@ -11,7 +11,7 @@ namespace BMM.UI.iOS
     {
         private UIView _selectionView;
 
-        protected BaseBMMTableViewCell(IntPtr handle) : base(handle)
+        protected BaseBMMTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

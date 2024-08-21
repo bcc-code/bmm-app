@@ -13,7 +13,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName("DownloadedContentViewCell", NSBundle.MainBundle);
         public static readonly NSString Key = new NSString("DownloadedContentViewCell");
 
-        public DownloadedContentViewCell(IntPtr handle)
+        public DownloadedContentViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

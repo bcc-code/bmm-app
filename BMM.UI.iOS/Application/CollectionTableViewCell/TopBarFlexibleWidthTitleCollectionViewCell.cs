@@ -21,7 +21,7 @@ namespace BMM.UI.iOS.CollectionTableViewCell
             Nib = UINib.FromName(nameof(TopBarFlexibleWidthTitleCollectionViewCell), NSBundle.MainBundle);
         }
 
-        protected TopBarFlexibleWidthTitleCollectionViewCell(IntPtr handle) : base(handle)
+        protected TopBarFlexibleWidthTitleCollectionViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             if (BindingContext is MvxTaskBasedBindingContext mvxTaskBasedBindingContext)
                 mvxTaskBasedBindingContext.RunSynchronously = true;

@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(InfoMessageTableViewCell));
 
-        public InfoMessageTableViewCell(IntPtr handle)
+        public InfoMessageTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

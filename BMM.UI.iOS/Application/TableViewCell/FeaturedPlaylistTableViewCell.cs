@@ -18,7 +18,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName(nameof(FeaturedPlaylistTableViewCell), NSBundle.MainBundle);
         public static readonly NSString Key = new NSString(nameof(FeaturedPlaylistTableViewCell));
 
-        public FeaturedPlaylistTableViewCell(IntPtr handle)
+        public FeaturedPlaylistTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

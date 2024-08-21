@@ -14,7 +14,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(PlaylistsCollectionTableViewCell));
 
-        public PlaylistsCollectionTableViewCell(IntPtr handle)
+        public PlaylistsCollectionTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

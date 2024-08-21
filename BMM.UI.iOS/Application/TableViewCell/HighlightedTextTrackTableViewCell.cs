@@ -13,7 +13,7 @@ namespace BMM.UI.iOS
         private CAGradientLayer _leftGradientLayer;
         private CAGradientLayer _rightGradientLayer;
 
-        public HighlightedTextTrackTableViewCell(IntPtr handle) : base(handle)
+        public HighlightedTextTrackTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             this.DelayBind(() =>
             {

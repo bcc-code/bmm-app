@@ -14,7 +14,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName(nameof(AchievementsCollectionViewCell), NSBundle.MainBundle);
         private string _imagePath;
 
-        public AchievementsCollectionViewCell(IntPtr handle) : base(Key, handle)
+        public AchievementsCollectionViewCell(ObjCRuntime.NativeHandle handle) : base(Key, handle)
         {
             this.DelayBind(() =>
             {

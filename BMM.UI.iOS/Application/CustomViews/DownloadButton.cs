@@ -39,7 +39,7 @@ namespace BMM.UI.iOS
             InitUi();
         }
 
-        protected internal DownloadButton(IntPtr handle) : base(handle)
+        protected internal DownloadButton(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             InitUi();
         }

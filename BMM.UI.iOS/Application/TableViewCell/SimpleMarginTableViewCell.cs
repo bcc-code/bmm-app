@@ -7,7 +7,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(SimpleMarginTableViewCell));
 
-        public SimpleMarginTableViewCell(IntPtr handle)
+        public SimpleMarginTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
         }

@@ -11,7 +11,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(TextListItemDetailTableViewCell));
 
-        public TextListItemDetailTableViewCell(IntPtr handle)
+        public TextListItemDetailTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

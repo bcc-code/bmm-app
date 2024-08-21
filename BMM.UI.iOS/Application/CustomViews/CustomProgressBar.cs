@@ -38,7 +38,7 @@ namespace BMM.UI.iOS
             }
         }
 
-        public CustomProgressBar(IntPtr handle) : base(handle)
+        public CustomProgressBar(ObjCRuntime.NativeHandle handle) : base(handle)
         { }
 
         public override void Draw(CGRect rect)

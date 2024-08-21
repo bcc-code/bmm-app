@@ -25,7 +25,7 @@ namespace BMM.UI.iOS
             InitUi();
         }
 
-        protected internal Separator(IntPtr handle) : base(handle)
+        protected internal Separator(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             InitUi();
         }

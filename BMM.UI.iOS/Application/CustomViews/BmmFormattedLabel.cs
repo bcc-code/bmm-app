@@ -26,7 +26,7 @@ namespace BMM.UI.iOS.CustomViews
         {
         }
 
-        protected internal BmmFormattedLabel(IntPtr handle) : base(handle)
+        protected internal BmmFormattedLabel(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

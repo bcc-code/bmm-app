@@ -9,7 +9,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(ExternalRelationsPlayWithSubtitleTableViewCell));
 
-        public ExternalRelationsPlayWithSubtitleTableViewCell(IntPtr handle) : base(handle)
+        public ExternalRelationsPlayWithSubtitleTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

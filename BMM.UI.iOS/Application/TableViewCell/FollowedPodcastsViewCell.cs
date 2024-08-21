@@ -13,7 +13,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName("FollowedPodcastsViewCell", NSBundle.MainBundle);
         public static readonly NSString Key = new NSString("FollowedPodcastsViewCell");
 
-        public FollowedPodcastsViewCell(IntPtr handle)
+        public FollowedPodcastsViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

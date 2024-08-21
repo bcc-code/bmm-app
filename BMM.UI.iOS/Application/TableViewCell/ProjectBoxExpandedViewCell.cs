@@ -28,7 +28,7 @@ namespace BMM.UI.iOS
         private IMvxInteraction _expandOrCollapseInteraction;
         private IBmmObservableCollection<IAchievementPO> _itemsSource;
 
-        public ProjectBoxExpandedViewCell(IntPtr handle)
+        public ProjectBoxExpandedViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

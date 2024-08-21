@@ -18,7 +18,7 @@ namespace BMM.UI.iOS.CustomViews
         {
         }
 
-        protected internal BmmWebView(IntPtr handle) : base(handle)
+        protected internal BmmWebView(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

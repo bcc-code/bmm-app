@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
         private TrackState _trackState;
         private string _offlineStateImage;
 
-        public TrackTableViewCell(IntPtr handle)
+        public TrackTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

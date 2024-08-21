@@ -12,8 +12,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(CheckboxListItemTableViewCell));
 
-        public CheckboxListItemTableViewCell(IntPtr handle)
-            : base(handle)
+        public CheckboxListItemTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             this.DelayBind(() =>
             {

@@ -16,7 +16,7 @@ namespace BMM.UI.iOS
         {
         }
 
-        public LottieButton(IntPtr handle) : base(handle)
+        public LottieButton(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
         

@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
         public static readonly UINib Nib = UINib.FromName(nameof(YearInReviewCollectionViewCell), NSBundle.MainBundle);
         private string _shadowColor;
         
-        public YearInReviewCollectionViewCell(IntPtr handle): base(Key, handle)
+        public YearInReviewCollectionViewCell(ObjCRuntime.NativeHandle handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {

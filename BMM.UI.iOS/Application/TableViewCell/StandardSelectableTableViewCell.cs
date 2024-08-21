@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new NSString(nameof(StandardSelectableTableViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(StandardSelectableTableViewCell), NSBundle.MainBundle);
 
-        public StandardSelectableTableViewCell(IntPtr handle)
+        public StandardSelectableTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

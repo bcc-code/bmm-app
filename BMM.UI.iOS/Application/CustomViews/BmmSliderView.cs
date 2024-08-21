@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
         {
         }
 
-        public BmmSliderView(IntPtr handle) : base(handle)
+        public BmmSliderView(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

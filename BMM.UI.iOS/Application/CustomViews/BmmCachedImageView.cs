@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
         {
         }
 
-        public BmmCachedImageView(IntPtr handle) : base(handle)
+        public BmmCachedImageView(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

@@ -17,7 +17,7 @@ namespace BMM.UI.iOS
 
         public static readonly NSString Key = new NSString(nameof(LanguageContentTableViewCell));
 
-        public LanguageContentTableViewCell(IntPtr handle)
+        public LanguageContentTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>
