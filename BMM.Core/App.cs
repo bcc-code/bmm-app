@@ -208,7 +208,6 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDownloadQueue, DownloadQueue>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IOfflineTrackCollectionStorage, OfflineTrackCollectionStorage>();
-            //Mvx.IoCProvider.CallbackWhenRegistered<IOfflineTrackCollectionStorage>(storage => storage.InitAsync());
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackCollectionOfflineTrackProvider, TrackCollectionOfflineTrackProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPodcastOfflineTrackProvider, PodcastOfflineTrackProvider>();
 
@@ -222,7 +221,6 @@ namespace BMM.Core
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IGlobalMediaDownloader, GlobalMediaDownloader>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPodcastOfflineManager, PodcastOfflineManager>();
-            //Mvx.IoCProvider.CallbackWhenRegistered<IPodcastOfflineManager>(manager => manager.InitAsync());
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IReceive<PodcastNotification>, PodcastNotificationReceiver>();
             Mvx.IoCProvider.RegisterType<IReceive<GeneralNotification>, GeneralNotificationReceiver>();
@@ -279,7 +277,6 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<OidcUserStartupTask>();
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IStartupManager, StartupManager>();
-            //Mvx.IoCProvider.CallbackWhenRegistered<IStartupManager>(manager => manager.Initialize(CreatableTypes()));
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITimeDiagnosticTool, TimeDiagnosticTool>();
