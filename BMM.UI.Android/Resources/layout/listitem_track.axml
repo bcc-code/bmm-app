@@ -28,7 +28,7 @@
         local:layout_constraintVertical_chainStyle="packed"
         local:MvxBind="
             Text TrackTitle;
-            CustomTextColor TrackPlaybackStateToColor(TrackState)" />
+            TextColor TrackPlaybackStateToColor(TrackState)" />
 
     <TextView
         android:id="@+id/trackSubtitle"

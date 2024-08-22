@@ -97,4 +97,8 @@ https://proxyman.io - it's awesome
 [How to set DebugView for Analytics](https://firebase.google.com/docs/analytics/debugview)
 
 ## Updating Firebase packages
-When the app doesn't start after upgrading a firebase package or throws some weird message clean this folder: `~/Library/Caches/XamarinBuildDownload` 
+When the app doesn't start after upgrading a firebase package or throws some weird message clean this folder: `~/Library/Caches/XamarinBuildDownload`
+
+# Notes about simulator / emulator
+1. Android: Firebase can't be accessed leading to an error when opening Profile
+2. iOS: Audio can't be played in the simulator
