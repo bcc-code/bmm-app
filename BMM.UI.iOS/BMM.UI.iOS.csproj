@@ -611,7 +611,6 @@
     <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
     <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
     <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
-    <PackageReference Update="Microsoft.Maui.Graphics" Version="8.0.80" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\BMM.Core\Translation\af\main.json">

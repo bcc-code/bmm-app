@@ -151,8 +151,6 @@ namespace BMM.UI.Droid
             iocProvider.LazyConstructAndRegisterSingleton<IOldSecureStorage, DroidOldSecureStorage>();
             iocProvider.RegisterType<IMvxResourceLoader, MvxAndroidResourceLoader>();
             iocProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, DroidUserDialogsFactory>();
-            //iocProvider.CallbackWhenRegistered<IMvxTargetBindingFactoryRegistry>(RegisterAdditionalBindings);
-            
 
             iocProvider.LazyConstructAndRegisterSingleton<IStopwatchManager, StopwatchManager>();
             var stopwatch = iocProvider.Resolve<IStopwatchManager>();
@@ -243,7 +241,7 @@ namespace BMM.UI.Droid
             registry.RegisterFactory(new MvxCustomBindingFactory<CardView>("CardBackgroundColor", card => new MvxCardBackgroundColor(card)));
             MvxCachedImageViewPathBinding.Register(registry);
             BackgroundResourceBinding.Register(registry);
-            ImageButtonIconResourceBinding.Register(registry); 
+            ImageButtonIconResourceBinding.Register(registry);
             AlphaTargetBinding.Register(registry);
             IsEnabledBinding.Register(registry);
             HexMvxCardBackgroundColor.Register(registry);
