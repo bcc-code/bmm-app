@@ -12,6 +12,7 @@ using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.Helpers;
 using Foundation;
+using MvvmCross.Binding.Combiners;
 using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
@@ -50,7 +51,7 @@ namespace BMM.UI.iOS
             set.Bind(PodcastCoverImageView).For(v => v.ImagePath).To(vm => vm.Podcast.Cover);
             set.Bind(TitelLabel).To(vm => vm.Podcast.Title);
 
-            set.Bind(FollowingButton).For(v => v.Hidden).To(vm => vm.IsFollowing).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(FollowingButton).For(v => v.Hidden).To(vm => vm.IsFollowing).WithConversion<InvertedBoolConverter>();
             set.Bind(FollowingButton).To(vm => vm.ToggleFollowingCommand);
             set.Bind(FollowingButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.PodcastViewModel_Following);
 

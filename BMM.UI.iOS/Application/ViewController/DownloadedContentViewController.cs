@@ -30,10 +30,10 @@ namespace BMM.UI.iOS
             var set = this.CreateBindingSet<DownloadedContentViewController, DownloadedContentViewModel>();
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
-            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedBoolConverter>();
             set.Bind(OfflineBannerLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.Global_OfflineBanner);
 
-            set.Bind(NoOfflineTrackCollectionView).For(s => s.Hidden).To(vm => vm.IsEmpty).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(NoOfflineTrackCollectionView).For(s => s.Hidden).To(vm => vm.IsEmpty).WithConversion<InvertedBoolConverter>();
             set.Bind(NoOfflineTrackCollectionHeadlineLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.DownloadedContentViewModel_EmptyTitle);
             set.Bind(NoOfflineTrackCollectionTextLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.DownloadedContentViewModel_EmptySubline);
 

@@ -13,7 +13,7 @@ public abstract class BaseRecommendationTableViewCell : BaseBMMTableViewCell
 {
     private bool _isDescriptionVisible;
 
-    protected BaseRecommendationTableViewCell(IntPtr handle) : base(handle)
+    protected BaseRecommendationTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
     {
         this.DelayBind(() =>
         {

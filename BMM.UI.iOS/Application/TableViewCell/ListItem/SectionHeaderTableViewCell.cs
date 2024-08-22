@@ -8,7 +8,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(SectionHeaderTableViewCell));
 
-        public SectionHeaderTableViewCell(IntPtr handle)
+        public SectionHeaderTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

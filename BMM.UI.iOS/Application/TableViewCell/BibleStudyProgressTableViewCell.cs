@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(BibleStudyProgressTableViewCell));
 
-        public BibleStudyProgressTableViewCell(IntPtr handle)
+        public BibleStudyProgressTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

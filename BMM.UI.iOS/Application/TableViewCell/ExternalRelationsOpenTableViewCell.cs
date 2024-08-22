@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(ExternalRelationsOpenTableViewCell));
 
-        public ExternalRelationsOpenTableViewCell(IntPtr handle)
+        public ExternalRelationsOpenTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

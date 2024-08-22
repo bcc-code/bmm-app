@@ -35,7 +35,7 @@ namespace BMM.UI.iOS
             InitUi();
         }
 
-        internal TextViewWithDescription(IntPtr handle) : base(handle)
+        internal TextViewWithDescription(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             InitUi();
         }

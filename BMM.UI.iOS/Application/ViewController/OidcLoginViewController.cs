@@ -1,5 +1,6 @@
 using System;
 using BMM.Core.Translation;
+using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using CoreAnimation;
 using Foundation;
@@ -29,8 +30,8 @@ namespace BMM.UI.iOS
 
             var set = this.CreateBindingSet<OidcLoginViewController, OidcLoginViewModel>();
             set.Bind(SubtitleLabel).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.LoginViewModel_LoginInfo);
-            set.Bind(SubtitleLabel).For(v => v.Hidden).To(vm => vm.IsLoading).WithConversion<VisibilityConverter>();
-            set.Bind(LoadingSpinnerImageView).For(v => v.Hidden).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(SubtitleLabel).For(v => v.Hidden).To(vm => vm.IsLoading);
+            set.Bind(LoadingSpinnerImageView).For(v => v.Hidden).To(vm => vm.IsLoading).WithConversion<InvertedBoolConverter>();
             set.Bind(LoginButton).For(v => v.Hidden).To(vm => vm.IsLoading);
             set.Bind(LoginButton).To(vm => vm.LoginCommand);
             set.Bind(LoginButton).For(v => v.BindTitle()).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.LoginViewModel_BtnLogin_Text);

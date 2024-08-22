@@ -10,7 +10,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(StreakTableViewCell));
 
-        public StreakTableViewCell(IntPtr handle)
+        public StreakTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

@@ -16,7 +16,7 @@ namespace BMM.UI.iOS.CustomViews
         {
         }
 
-        public BmmSeachTextField(IntPtr handle) : base(handle)
+        public BmmSeachTextField(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

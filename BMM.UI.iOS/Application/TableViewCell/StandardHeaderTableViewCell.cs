@@ -14,7 +14,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new NSString(nameof(StandardHeaderTableViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(StandardHeaderTableViewCell), NSBundle.MainBundle);
 
-        public StandardHeaderTableViewCell(IntPtr handle)
+        public StandardHeaderTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

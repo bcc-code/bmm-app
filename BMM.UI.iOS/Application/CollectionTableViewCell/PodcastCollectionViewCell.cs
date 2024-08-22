@@ -18,7 +18,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new NSString("PodcastCollectionViewCell");
         public static readonly UINib Nib = UINib.FromName("PodcastCollectionViewCell", NSBundle.MainBundle);
 
-        public PodcastCollectionViewCell(IntPtr handle): base(Key, handle)
+        public PodcastCollectionViewCell(ObjCRuntime.NativeHandle handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {

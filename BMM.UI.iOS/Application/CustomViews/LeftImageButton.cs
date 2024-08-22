@@ -13,7 +13,7 @@ namespace BMM.UI.iOS
         {
         }
 
-        public LeftImageButton(IntPtr handle)
+        public LeftImageButton(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
         }

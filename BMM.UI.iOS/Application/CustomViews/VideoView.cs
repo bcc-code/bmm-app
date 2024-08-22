@@ -26,7 +26,7 @@ namespace BMM.UI.iOS.CustomViews
         {
         }
 
-        protected internal VideoView(IntPtr handle) : base(handle)
+        protected internal VideoView(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

@@ -27,7 +27,7 @@ namespace BMM.UI.iOS.CollectionTableViewCell
         private bool _shouldRefreshViewController;
         private bool _shouldSkipFirstViewWillAppear = true;
 
-        protected ControllerCollectionViewCell(IntPtr handle) : base(handle)
+        protected ControllerCollectionViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

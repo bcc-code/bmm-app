@@ -16,7 +16,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new(nameof(YearInReviewTeaserCollapsedCell));
         private IMvxInteraction _expandOrCollapseInteraction;
 
-        public YearInReviewTeaserCollapsedCell(IntPtr handle)
+        public YearInReviewTeaserCollapsedCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

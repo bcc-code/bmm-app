@@ -13,7 +13,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new NSString(nameof(AppIconTableViewCell));
         private string _imagePath;
 
-        public AppIconTableViewCell(IntPtr handle)
+        public AppIconTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

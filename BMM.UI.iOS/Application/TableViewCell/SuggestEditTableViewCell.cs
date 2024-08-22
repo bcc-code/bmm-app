@@ -9,7 +9,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(SuggestEditTableViewCell));
 
-        public SuggestEditTableViewCell(IntPtr handle) : base(handle)
+        public SuggestEditTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             this.DelayBind(() =>
             {

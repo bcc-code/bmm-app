@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(PinnedItemTableViewCell));
 
-        public PinnedItemTableViewCell(IntPtr handle)
+        public PinnedItemTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

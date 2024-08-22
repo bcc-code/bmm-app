@@ -23,7 +23,7 @@ namespace BMM.UI.iOS
         private string _subtitle;
         private bool _isCurrentlyPlaying;
 
-        public ContinueListeningTileViewCell(IntPtr handle): base(Key, handle)
+        public ContinueListeningTileViewCell(ObjCRuntime.NativeHandle handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {

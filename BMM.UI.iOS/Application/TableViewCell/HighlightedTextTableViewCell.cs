@@ -12,7 +12,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(HighlightedTextTableViewCell));
 
-        public HighlightedTextTableViewCell(IntPtr handle) : base(handle)
+        public HighlightedTextTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             this.DelayBind(() =>
             {

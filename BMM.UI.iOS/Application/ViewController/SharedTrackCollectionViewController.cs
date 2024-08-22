@@ -109,7 +109,7 @@ namespace BMM.UI.iOS
                 .Bind(source)
                 .For(s => s.IsFullyLoaded)
                 .To(vm => vm.IsLoading)
-                .WithConversion<InvertedVisibilityConverter>();
+                .WithConversion<InvertedBoolConverter>();
 
             set
                 .Bind(AddToMyPlaylistButton)

@@ -10,7 +10,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new(nameof(ReadTranscriptionTableViewCell));
         private string _transcriptionText;
 
-        public ReadTranscriptionTableViewCell(IntPtr handle) : base(handle)
+        public ReadTranscriptionTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             this.DelayBind(() =>
             {

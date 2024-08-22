@@ -6,7 +6,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new(nameof(ExternalRelationsPlayTableViewCell));
 
-        public ExternalRelationsPlayTableViewCell(IntPtr handle) : base(handle)
+        public ExternalRelationsPlayTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
         }
 

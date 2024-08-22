@@ -16,7 +16,7 @@ namespace BMM.UI.iOS
         {
         }
 
-        public ExternalRelationListItemTableViewCell(IntPtr handle) : base(handle)
+        public ExternalRelationListItemTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             this.DelayBind(() =>
             {

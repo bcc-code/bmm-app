@@ -10,7 +10,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(AutomaticDownloadTableViewCell));
 
-        protected AutomaticDownloadTableViewCell(IntPtr handle) : base(handle)
+        protected AutomaticDownloadTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             this.DelayBind(() =>
 			{

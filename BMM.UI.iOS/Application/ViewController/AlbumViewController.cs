@@ -30,7 +30,7 @@ namespace BMM.UI.iOS
             set.Bind(this).For(c => c.Title).To(vm => vm.Album).WithConversion<AlbumTitleConverter>();
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
-            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedBoolConverter>();
             set.Bind(AlbumCoverImageView).For(v => v.ImagePath).To(vm => vm.Album.Cover);
             set.Bind(TitleLabel).To(vm => vm.Album.Title);
             set.Bind(DescriptionLabel).To(vm => vm.Album.Description);

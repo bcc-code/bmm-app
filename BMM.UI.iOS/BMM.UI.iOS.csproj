@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFramework>net7.0-ios</TargetFramework>
+      <TargetFramework>net8.0-ios</TargetFramework>
       <OutputType>Exe</OutputType>
       <Nullable>disable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
@@ -602,11 +602,12 @@
   <ItemGroup>
     <PackageReference Include="ByteSize" Version="2.1.1" />
     <PackageReference Include="Lottie.iOS" Version="1.0.0" />
-    <PackageReference Include="MvvmCross" Version="9.0.9" />
-    <PackageReference Include="MvvmCross.Plugin.Color" Version="9.0.9" />
-    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.0.9" />
-    <PackageReference Include="Serilog" Version="2.12.0" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="MvvmCross" Version="9.2.0" />
+    <PackageReference Include="MvvmCross.Plugin.Color" Version="9.2.0" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
     <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
     <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />

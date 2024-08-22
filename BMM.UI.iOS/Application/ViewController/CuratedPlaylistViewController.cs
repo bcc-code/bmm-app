@@ -36,7 +36,7 @@ namespace BMM.UI.iOS
             set.Bind(this).For(c => c.Title).To(vm => vm.CuratedPlaylist.Title);
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
-            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedBoolConverter>();
 
             set.Bind(CuratedPlaylistCoverImageView).For(v => v.ImagePath).To(vm => vm.CuratedPlaylist.Cover);
             

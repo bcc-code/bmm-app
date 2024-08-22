@@ -15,7 +15,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(ProfileListItemTableViewCell));
 
-        public ProfileListItemTableViewCell(IntPtr handle)
+        public ProfileListItemTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

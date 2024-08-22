@@ -11,7 +11,7 @@ namespace BMM.UI.iOS
     {
         public static readonly NSString Key = new NSString(nameof(SelectThemeTableViewCell));
 
-        public SelectThemeTableViewCell(IntPtr handle)
+        public SelectThemeTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

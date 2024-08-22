@@ -15,7 +15,7 @@ public abstract class BaseExternalRelationsPlayTableViewCell : BaseBMMTableViewC
     private LOTAnimationView _animationView;
     private bool _hasListened;
 
-    public BaseExternalRelationsPlayTableViewCell(IntPtr handle) : base(handle)
+    public BaseExternalRelationsPlayTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
     {
         this.DelayBind(() =>
         {

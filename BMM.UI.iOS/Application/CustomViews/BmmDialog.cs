@@ -20,7 +20,7 @@ namespace BMM.UI.iOS.CustomViews
             Initialize();
         }
 
-        public BmmDialog(IntPtr handle) : base(handle)
+        public BmmDialog(ObjCRuntime.NativeHandle handle) : base(handle)
         {
             Initialize();
         }

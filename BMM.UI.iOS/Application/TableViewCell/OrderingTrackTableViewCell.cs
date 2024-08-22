@@ -17,7 +17,7 @@ namespace BMM.UI.iOS
         private UILabel _subtitleLabel;
         private UILabel _metaLabel;
 
-        public OrderingTrackTableViewCell(IntPtr handle)
+        public OrderingTrackTableViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             InitUi();

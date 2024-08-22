@@ -13,7 +13,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new(nameof(ProjectBoxAchievementsCollectionViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(ProjectBoxAchievementsCollectionViewCell), NSBundle.MainBundle);
 
-        public ProjectBoxAchievementsCollectionViewCell(IntPtr handle) : base(Key, handle)
+        public ProjectBoxAchievementsCollectionViewCell(ObjCRuntime.NativeHandle handle) : base(Key, handle)
         {
             this.DelayBind(() =>
             {

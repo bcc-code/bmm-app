@@ -1,3 +1,4 @@
+using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using UIKit;
@@ -21,7 +22,7 @@ namespace BMM.UI.iOS
 
             var set = this.CreateBindingSet<LanguageContentViewController, LanguageContentViewModel>();
             set.Bind(source).To(vm => vm.Languages);
-            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedVisibilityConverter>();
+            set.Bind(source).For(s => s.IsFullyLoaded).To(vm => vm.IsLoading).WithConversion<InvertedBoolConverter>();
             set.Apply();
 
             LanguagesTableView.ReloadData();

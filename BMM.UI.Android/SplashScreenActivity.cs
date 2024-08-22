@@ -26,7 +26,7 @@ namespace BMM.UI.Droid
         {
             Intent.CategoryDefault
         })]
-    public class SplashScreenActivity : MvxSplashScreenActivity
+    public class SplashScreenActivity : MvxStartActivity
     {
         public static Intent UnhandledNotification;
 

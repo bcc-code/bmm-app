@@ -17,7 +17,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new(nameof(ProjectBoxCollapsedViewCell));
         private IMvxInteraction _expandOrCollapseInteraction;
 
-        public ProjectBoxCollapsedViewCell(IntPtr handle)
+        public ProjectBoxCollapsedViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
         {
             this.DelayBind(() =>

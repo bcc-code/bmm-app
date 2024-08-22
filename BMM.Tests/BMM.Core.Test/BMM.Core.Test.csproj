@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net7.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <UseMauiEssentials>true</UseMauiEssentials>
@@ -12,7 +12,7 @@
         <PackageReference Include="FluentAssertions" Version="6.10.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
         <PackageReference Include="Moq" Version="4.18.4" />
-        <PackageReference Include="MvvmCross.Tests" Version="9.0.9" />
+        <PackageReference Include="MvvmCross.Tests" Version="9.2.0" />
         <PackageReference Include="NSubstitute" Version="5.0.0" />
         <PackageReference Include="NUnit" Version="3.13.3" />
         <PackageReference Include="NUnit3TestAdapter" Version="4.3.0" />

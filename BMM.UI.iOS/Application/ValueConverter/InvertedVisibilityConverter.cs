@@ -1,13 +1,14 @@
-using System;
 using System.Globalization;
+using MvvmCross.Converters;
 
 namespace BMM.UI.iOS
 {
-    public class InvertedVisibilityConverter : VisibilityConverter
+    public class InvertedVisibilityConverter : MvxValueConverter
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (bool)base.Convert(value, targetType, parameter, culture) == false;
+            bool? val = value as bool?;
+            return val != true;
         }
     }
 }

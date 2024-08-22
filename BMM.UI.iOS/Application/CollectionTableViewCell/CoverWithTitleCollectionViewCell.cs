@@ -20,7 +20,7 @@ namespace BMM.UI.iOS
         public static readonly NSString Key = new(nameof(CoverWithTitleCollectionViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(CoverWithTitleCollectionViewCell), NSBundle.MainBundle);
 
-        public CoverWithTitleCollectionViewCell(IntPtr handle): base(Key, handle)
+        public CoverWithTitleCollectionViewCell(ObjCRuntime.NativeHandle handle): base(Key, handle)
         {
             this.DelayBind(() =>
             {
