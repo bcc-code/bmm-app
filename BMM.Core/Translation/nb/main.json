@@ -506,9 +506,9 @@
   },
   "ThemeSettingsViewModel": {
     "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Light": "Lys",
+    "Dark": "Mørk",
+    "System": "Følg systeminstillinger (Auto)"
   },
   "ColorThemeViewModel": {
     "Title": "Fargetema",
