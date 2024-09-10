@@ -17,6 +17,7 @@ using MediaControllerCompat = Android.Support.V4.Media.Session.MediaControllerCo
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller
 {
+    //ToDo: maybe migrate to new components
     public class MediaControllerCallback : MediaControllerCompat.Callback
     {
         private readonly int FileNotFoundErrorCode = 2;

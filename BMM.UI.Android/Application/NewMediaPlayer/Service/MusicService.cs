@@ -10,6 +10,7 @@ using Android.Support.V4.Media;
 using Android.Support.V4.Media.Session;
 using AndroidX.Core.App;
 using AndroidX.Media;
+using AndroidX.Media3.Session;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Core.Constants;
@@ -36,11 +37,12 @@ using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Plugin.Messenger;
 using AudioAttributes = Com.Google.Android.Exoplayer2.Audio.AudioAttributes;
+using MediaSession = AndroidX.Media3.Session.MediaSession;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 {
     [Service(Name = "brunstad.MusicService")]
-    public class MusicService : MediaBrowserServiceCompat, TimelineQueueEditor.IMediaDescriptionConverter
+    public class MusicService : MediaLibraryService, TimelineQueueEditor.IMediaDescriptionConverter
     {
         private const int DefaultBufferTimeInMs = 15000;
         private const int MinBufferTimeInMs = 300000;
@@ -62,6 +64,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         
         private IExoPlayer ExoPlayer
         {
+            
             get
             {
                 if (_exoPlayer == null)
@@ -150,7 +153,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
             _mediaSession = new MediaSessionCompat(this, nameof(MusicService), null, pendingIntent);
             _mediaSession.Active = true;
-            SessionToken = _mediaSession.SessionToken;
+            //SessionToken = _mediaSession.SessionToken;
             
             _mediaController = new MediaControllerCompat(this, _mediaSession);
             _mediaController.RegisterCallback(
@@ -220,21 +223,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             _progressUpdater.Dispose();
             _exoPlayer.Stop();
             _exoPlayer = null;
-        }
-
-        public override BrowserRoot OnGetRoot(string clientPackageName, int clientUid, Bundle rootHints)
-        {
-            // If we don't want to allow any arbitrary app to browser our content we need to check the origin
-
-            return new BrowserRoot(ExoPlayerConstants.MediaIdRoot, null);
-        }
-
-        public override void OnLoadChildren(string parentId, Result result)
-        {
-            var list = new JavaList<MediaBrowserCompat.MediaItem>();
-            // For now we always return an empty list since we don't really support browsing our library.
-            // If we want to support Android Car or Android Wear we should return meaningful data.
-            result.SendResult(list);
         }
 
         private void UpdateNotification(PlaybackStateCompat state)
@@ -315,6 +303,11 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         public MediaItem Convert(MediaDescriptionCompat description)
         {
             return Mvx.IoCProvider.Resolve<IMetadataMapper>().ToMediaItem(description);
+        }
+
+        public override MediaSession OnGetSession(MediaSession.ControllerInfo p0)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -22,6 +22,7 @@ using Exception = System.Exception;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 
+//ToDo: migrate to MediaBrowser
 public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatformSpecificMediaPlayer
 {
     public const string StartTimeInMsKey = "startTimeInMs";

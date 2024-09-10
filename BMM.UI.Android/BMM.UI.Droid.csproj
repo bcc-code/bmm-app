@@ -34,8 +34,10 @@
     <PackageReference Include="Xam.Plugins.Android.ExoPlayer.MediaSession" Version="2.19.1" />
     <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.9.1" />
     <PackageReference Include="Xamarin.AndroidX.Browser" Version="1.8.0.4" />
-    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.2" />
+    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.3" />
     <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx" Version="2.8.4" />
+    <PackageReference Include="Xamarin.AndroidX.Media3.ExoPlayer" Version="1.2.1" />
+    <PackageReference Include="Xamarin.AndroidX.Media3.Session" Version="1.2.1" />
     <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.27" />
     <PackageReference Include="Xamarin.Firebase.Config" Version="122.0.0.1" />
     <PackageReference Include="Xamarin.Firebase.Messaging" Version="124.0.0.1" />
