@@ -2,6 +2,7 @@
 using Acr.UserDialogs;
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.Media;
 using Android.OS;
 using Android.Provider;
@@ -255,14 +256,23 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
                     if (updatedState == PlaybackStateCompat.StateBuffering || updatedState == PlaybackStateCompat.StatePlaying)
                     {
-                        StartForeground(NowPlayingNotificationBuilder.NowPlayingNotification, notification);
+                        if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
+                            StartForeground(NowPlayingNotificationBuilder.NowPlayingNotification,
+                                notification,
+                                ForegroundService.TypeMediaPlayback);
+                        else
+                            StartForeground(NowPlayingNotificationBuilder.NowPlayingNotification, notification);
                         _isForegroundService = true;
                     }
                     else
                     {
                         if (_isForegroundService)
                         {
-                            StopForeground(false);
+
+                            if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
+                                StopForeground(StopForegroundFlags.Detach);
+                            else
+                                StopForeground(false);
 
                             if (notification != null)
                                 _notificationManager.Notify(NowPlayingNotificationBuilder.NowPlayingNotification, notification);
