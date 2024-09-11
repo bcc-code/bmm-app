@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using BMM.Api.Implementation.Models;
+﻿using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.GuardedActions.Tracklist.Interfaces;
@@ -22,6 +19,7 @@ using BMM.Core.Models.Enums;
 using BMM.Core.Models.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
+using BMM.Core.ViewModels.Parameters;
 
 namespace BMM.Core.ViewModels
 {
@@ -190,8 +188,9 @@ namespace BMM.Core.ViewModels
             {
                 if (CurrentTrack == null)
                     return;
-                
-                await NavigationService.Navigate<ReadTranscriptionViewModel, int>(CurrentTrack.Id);
+
+                await NavigationService.Navigate<ReadTranscriptionViewModel, TranscriptionParameter>(
+                    new TranscriptionParameter(CurrentTrack.Id, CurrentTrack.Subtype));
                 return;
             }
             
