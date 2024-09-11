@@ -270,7 +270,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                         {
 
                             if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
-                                StopForeground(StopForegroundFlags.Detach);
+                                StopForeground(StopForegroundFlags.Remove);
                             else
                                 StopForeground(false);
 
