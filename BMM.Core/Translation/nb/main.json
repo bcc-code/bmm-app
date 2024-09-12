@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Spill musikk",
     "DailyMessage": "Dagens tale",
     "ValueCopiedToClipboard": "{0} kopiert til utklippstavle",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Legg til i favoritter",
+    "RemoveFromFavorites": "Fjern fra favoritter"
   },
   "Streak": {
     "Message": "Din streak denne uken",
@@ -256,7 +256,7 @@
     "Title": "Spilles nå",
     "PlayingCount": "{0} av {1}",
     "ViewLyrics": "Sangtekst",
-    "SleepTimer": "Sleep timer",
+    "SleepTimer": "Sove-tidtaker",
     "Minutes": "{0} minutter",
     "Hour": "{0} time",
     "Hours": "{0} timer",
@@ -288,16 +288,16 @@
     "Playlists": "Spillelister",
     "NoResults": "Ingen resultater",
     "NoResultsDescription": "Det var ingen resultater med ditt søk etter \"{0}\"",
-    "SearchFailedTitle": "Search failed",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedTitle": "Søk mislyktes",
+    "SearchFailedMessage": "Beklager, vi kunne ikke søke etter \"{0}\" på grunn av tilkoblingsproblemer. Trykk på knappen nedenfor for å prøve igjen."
   },
   "SettingsViewModel": {
     "Title": "Min profil",
     "HeadlineSettings": "Innstillinger",
     "OptionAutoplayHeader": "Automatisk avspilling",
     "OptionAutoplayText": "Spill musikk automatisk etter dagens episode av Fra Kåre",
-    "OptionStreakHeader": "Streak on Home",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakHeader": "Streak på hjem-skjermen",
+    "OptionStreakText": "Vis lyttestatistikken din på hjem-kjermen",
     "OptionEnablePushHeader": "Aktiver push-varsling",
     "OptionPushNotifications": "Push-varslinger",
     "OptionPushNotificationsSubtitle": "Aktiver push-varsler for podcaster du følger",
@@ -320,8 +320,8 @@
     "OptionContactHeader": "Kontakt",
     "OptionContactText": "Spørsmål eller tilbakemeldinger? Kontakt BMM-teamet her.",
     "OptionAppVersionHeader": "App-versjon",
-    "OptionDeleteAccountHeader": "Delete Account",
-    "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionDeleteAccountHeader": "Slett konto",
+    "OptionDeleteAccountText": "Be om at kontoen din blir slettet.",
     "AppInfoTitle": "App-informasjon",
     "AppInfoAppVersion": "App-versjon: ",
     "AppInfoManufacturer": "Produsent:",
@@ -333,14 +333,14 @@
     "Logout": "Logg av",
     "UserVoiceHeader": "User Voice",
     "UserVoiceText": "Har du ideer til hvordan vi kan forbedre BMM? Fortell oss om det.",
-    "ThemeHeader": "Dark mode",
-    "ThemeText": "Choose between a light and a dark theme",
+    "ThemeHeader": "Mørk modus",
+    "ThemeText": "Velg mellom et lyst og et mørkt tema",
     "ColorHeader": "Fargetema",
     "ColorText": "Velg mellom spesialtilpassede fargetemaer",
-    "SiriShortcutsHeader": "Siri Shortcuts",
-    "SiriShortcutsText": "Add Siri Shortcuts for BMM to your device",
-    "PushNotificationsGoToSettings": "Unfortunately we cannot enable Push Notifications as they are disabled in your device settings. Please allow Push Notifications in your device settings to enable this feature.",
-    "Achievements": "Achievements"
+    "SiriShortcutsHeader": "Siri-snarveier",
+    "SiriShortcutsText": "Legg til Siri-snarveier for BMM på enheten din",
+    "PushNotificationsGoToSettings": "Dessverre kan vi ikke aktivere push-varslinger da de er deaktivert i enhetsinnstillingene. Tillat Push-varsler i enhetsinnstillingene for å aktivere denne funksjonen.",
+    "Achievements": "Prestasjoner"
   },
   "StorageManagementViewModel": {
     "Title": "Plass for offline spor",
@@ -356,7 +356,7 @@
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
     "ShufflePlay": "Shuffle",
-    "Resume": "Resume",
+    "Resume": "Fortsett",
     "AvailableOffline": "Tilgjengelig offline",
     "AvailableOfflineDownload": "Last ned",
     "AvailableOfflineDownloading": "Laster ned {0} av {1}",
@@ -486,8 +486,8 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Nylig avspilt",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "NoHistoryYetTitle": "Du kan nå se hva du har hørt på",
+    "NoHistoryYetSubtitle": "Bare begynn å lytte, og historikken din vises her"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Nye taler"
@@ -505,10 +505,10 @@
     "PodcastsTitle": "Podcaster"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Innstillinger for mørk modus",
+    "Light": "Lys",
+    "Dark": "Mørk",
+    "System": "Følg systeminstillinger (Auto)"
   },
   "ColorThemeViewModel": {
     "Title": "Fargetema",
@@ -525,31 +525,31 @@
     "AllLanguages": "Alle språk"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri-snarveier",
+    "ShortcutAlreadyAdded": "Denne snarveien er allerede lagt til"
   },
   "YearInReviewViewModel": {
     "Title": "Your Year in Review",
-    "Share": "Share with your friends",
+    "Share": "Del med vennene dine",
     "ShareTitle": "Year in Review"
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top songs",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "PlaysPlural": "{0} avspillinger",
+    "PlaysSingular": "{0} avspilling",
+    "AddToMyPlaylist": "Legg til spilleliste i favoritter",
+    "SuccessfullyAddedToPlaylists": "Lagt til i favoritter"
   },
   "HighlightedTextTrackViewModel": {
     "AutoTranscribed": "Automatisk transkribert",
-    "FromSongTreasures": "From Song Treasures",
+    "FromSongTreasures": "Fra SongTreasures",
     "AddTo": "Legg til i spilleliste",
     "Pause": "Pause",
     "AutoTranscribedPopupTitleText": "Transkripsjoner er automatisk generert og kan inneholde feil",
     "AutoTranscribedPopupHeaderText": "Automatisk transkribert",
     "AutoTranscribedPopupSubtitleText": "Bidra til å forbedre transkripsjonen ved å foreslå rettelser ved hjelp av \"Foreslå rettelse\".",
     "AutoTranscribedPopupButtonText": "Forstått",
-    "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
+    "FromSongTreasuresPopupTitleText": "Teksten er hentet fra SongTreasures.",
     "FromSongTreasuresPopupHeaderText": "Fra Song Treasures",
     "FromSongTreasuresPopupSubtitleText": "Last ned Song Treasures appen for å se hele sangen",
     "SuggestEdit": "Foreslå rettelse"
@@ -605,6 +605,6 @@
     "GotIt": "Forstått"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Prestasjoner"
   }
 }
