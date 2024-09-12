@@ -7,14 +7,12 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Transcriptions;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using BMM.Core.Utils;
+using BMM.Core.ViewModels.Parameters;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels;
 
-public class ReadTranscriptionViewModel
-    : PlayerBaseViewModel,
-      IMvxViewModel<int>
+public class ReadTranscriptionViewModel : PlayerBaseViewModel, IMvxViewModel<TranscriptionParameter>
 {
     private readonly IMediaPlayer _mediaPlayer;
     private readonly IPrepareReadTranscriptionsAction _prepareReadTranscriptionsAction;
@@ -40,11 +38,12 @@ public class ReadTranscriptionViewModel
     public override ITrackInfoProvider TrackInfoProvider => _miniPlayerTrackInfoProvider ??= new MiniPlayerTrackInfoProvider();
     public MvxInteraction<int> AdjustScrollPositionInteraction { get; } = new();
     public IBmmObservableCollection<ReadTranscriptionsPO> Transcriptions { get; } = new BmmObservableCollection<ReadTranscriptionsPO>();
-    
-    public void Prepare(int parameter)
+
+    public void Prepare(TranscriptionParameter parameter)
     {
-        _trackId = parameter;
-        _analytics.LogEvent("open ReadTranscriptionViewModel", new Dictionary<string, object> {{"trackId", parameter}});
+        _trackId = parameter.TrackId;
+        _analytics.LogEvent("open ReadTranscriptionViewModel",
+            new Dictionary<string, object> {{"trackId", parameter.TrackId}, {"trackType", parameter.TrackType}});
     }
 
     public override async Task Initialize()

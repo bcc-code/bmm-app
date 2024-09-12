@@ -15,7 +15,7 @@
         <action android:name="android.intent.action.MEDIA_BUTTON" />
       </intent-filter>
     </receiver>
-    <service android:name="brunstad.MusicService" android:enabled="true" android:exported="true" android:stopWithTask="false">
+    <service android:name="brunstad.MusicService" android:enabled="true" android:exported="true" android:stopWithTask="false" android:foregroundServiceType="mediaPlayback">
       <intent-filter>
         <action android:name="android.media.browse.MediaBrowserService" />
       </intent-filter>
@@ -46,6 +46,7 @@
   <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
   <queries>
     <intent>
       <action android:name="android.intent.action.SENDTO" />
