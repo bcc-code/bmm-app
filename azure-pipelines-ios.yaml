@@ -103,7 +103,7 @@ steps:
       body: '$(VersionCode)'
       headers: |
         {
-          "Content-Length": "3",
+          "Content-Length": "4",
           "Authorization": "$(bmmApiBasicAuth)"
         }
 
