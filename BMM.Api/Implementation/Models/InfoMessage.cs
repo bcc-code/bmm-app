@@ -8,5 +8,6 @@ namespace BMM.Api.Implementation.Models
         public string TranslationParent { get; set; }
         public string TranslationId { get; set; }
         public string MessageText { get; set; }
+        public string Link { get; set; }
     }
 }
