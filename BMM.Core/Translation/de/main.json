@@ -73,7 +73,7 @@
     "AddAlbumToPlaylist": "Album zu Wiedergabeliste hinzufügen",
     "AddAlbumToMyTracks": "Album zu meinen Titeln hinzufügen",
     "FailedToAdd": "Der Titel konnte nicht zur Wiedergabeliste hinzugefügt werden. Bitte versuche es später noch einmal.",
-    "AlbumFailedToAddAlreadyExists": "Dieses Album befindet sich bereits in deiner Playlist.",
+    "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playlist {0} vorhanden",
     "ShufflePlay": "Zufällige Wiedergabe",
     "PluralAlbums": "{0} Alben"
