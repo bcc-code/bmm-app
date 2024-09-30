@@ -33,6 +33,11 @@ namespace BMM.Core.Helpers
             await GenerateLinkAndShare($"playlist/contributor/{contributor.Id}/{contributor.Name}");
         }
 
+        public async Task Share(Playlist playlist)
+        {
+            await GenerateLinkAndShare($"playlist/curated/{playlist.Id}/{playlist.Title}");
+        }
+
         public async Task PerformRequestFor(string link)
         {
             await Microsoft.Maui.ApplicationModel.DataTransfer.Share.RequestAsync(new ShareTextRequest

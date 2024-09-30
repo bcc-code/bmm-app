@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading.Tasks;
-using BMM.Api.Abstraction;
+﻿using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Api.Implementation.Clients.Contracts;
@@ -36,6 +32,16 @@ namespace BMM.Api.Implementation.Clients
             SetLinkHeader(trackIds, request);
 
             return await RequestIsSuccessful(request);
+        }
+        
+        public async Task AddPlaylistToTrackCollection(int id, int playlistId)
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionPlaylist);
+            uri.SetParameter("id", id);
+            uri.SetParameter("playlistId", playlistId);
+
+            var request = BuildRequest(uri, HttpMethod.Post);
+            await RequestIsSuccessful(request);
         }
 
         public async Task<bool> Delete(int id)

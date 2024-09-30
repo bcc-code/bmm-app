@@ -68,7 +68,7 @@ namespace BMM.Core.Implementations.TrackCollections
             if (type == DocumentType.Album)
             {
                 await _bmmClient.TrackCollection.AddAlbumToTrackCollection(trackCollection.Id, id);
-                _analytics.LogEvent("added album to track_collection",
+                _analytics.LogEvent(Event.AlbumAddedToTrackCollection,
                     new Dictionary<string, object>
                     {
                         {"AlbumId", id},
@@ -78,10 +78,20 @@ namespace BMM.Core.Implementations.TrackCollections
             else if (type == DocumentType.Track)
             {
                 await _bmmClient.TrackCollection.AddTracksToTrackCollection(trackCollection.Id, new List<int> {id});
-                _analytics.LogEvent("added track to track_collection",
+                _analytics.LogEvent(Event.TrackAddedToTrackCollection,
                     new Dictionary<string, object>
                     {
                         {"TrackId", id},
+                        {"Origin", origin}
+                    });
+            }
+            else if (type == DocumentType.Playlist)
+            {
+                await _bmmClient.TrackCollection.AddPlaylistToTrackCollection(trackCollection.Id, id);
+                _analytics.LogEvent(Event.PlaylistAddedToTrackCollection,
+                    new Dictionary<string, object>
+                    {
+                        {"PlaylistId", id},
                         {"Origin", origin}
                     });
             }

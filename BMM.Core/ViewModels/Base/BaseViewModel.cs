@@ -195,7 +195,7 @@ namespace BMM.Core.ViewModels.Base
                     var album = (Album)item;
                     bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                         .SetTitle(album.Title)
-                        .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddAlbumToTrackCollection(album.Id), ImageResourceNames.IconFavorites)
+                        .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddToTrackCollection(album.Id, DocumentType.Album), ImageResourceNames.IconFavorites)
                         .AddHandled(TextSource[Translations.UserDialogs_Album_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().Share(album), ImageResourceNames.IconShare)
                         .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
                     break;
@@ -230,6 +230,24 @@ namespace BMM.Core.ViewModels.Base
                 case DocumentType.Podcast:
                     var podcastId = item.Id;
                     await NavigationService.Navigate<AutomaticDownloadViewModel, int>(podcastId);
+                    break;
+                
+                case DocumentType.Playlist:
+                    var playlist = (Playlist)item;
+                    
+                    bmmUserDialogs.ActionSheet(new ActionSheetConfig()
+                        .SetTitle(playlist.Title)
+                        .AddHandled(TextSource[Translations.UserDialogs_AddAllToPlaylist], 
+                            async () => 
+                                await AddToTrackCollection(
+                                    playlist.Id,
+                                    DocumentType.Playlist),
+                            ImageResourceNames.IconFavorites)
+                        .AddHandled(TextSource[Translations.TrackCollectionViewModel_SharePlaylist],
+                            async () => await Mvx.IoCProvider.Resolve<IShareLink>().Share(playlist),
+                            ImageResourceNames.IconShare)
+                        .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
+                    
                     break;
 
                 default:
@@ -437,12 +455,12 @@ namespace BMM.Core.ViewModels.Base
             return false;
         }
 
-        protected Task AddAlbumToTrackCollection(int albumId)
+        protected Task AddToTrackCollection(int documentId, DocumentType documentType)
         {
             return NavigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
             {
-                DocumentId = albumId,
-                DocumentType = DocumentType.Album,
+                DocumentId = documentId,
+                DocumentType = documentType,
                 OriginViewModel = PlaybackOriginString()
             });
         }

@@ -32,6 +32,7 @@
         public static string TrackCollections = "track_collection/";
         public static string TrackCollection = "track_collection/{id}";
         public static string TrackCollectionAlbum = "track_collection/{id}/album/{albumId}";
+        public static string TrackCollectionPlaylist = "track_collection/{id}/playlist/{playlistId}";
         public static string TrackCollectionResetShare = "track_collection/{id}/reset-share";
         public static string TrackCollectionUnfollow = "track_collection/{id}/unfollow";
         public static string TrackCollectionTopSongs = "track_collection/top-songs";

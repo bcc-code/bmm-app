@@ -28,6 +28,11 @@ namespace BMM.Core.Implementations.ApiClients
             return _client.AddAlbumToTrackCollection(id, albumId);
         }
 
+        public Task AddPlaylistToTrackCollection(int id, int playlistId)
+        {
+            return _client.AddPlaylistToTrackCollection(id, playlistId);
+        }
+
         public Task<bool> Delete(int id)
         {
             return _client.Delete(id);

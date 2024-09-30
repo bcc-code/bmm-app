@@ -35,5 +35,8 @@
         public const string ProblemWithOfflineFileDetected = "Problem with offline file detected";
         public const string NavigateToExternalLink = "Navigate to external link";
         public const string BCCMediaOpenedFromPlayer = "BCC Media opened from player";
+        public const string AlbumAddedToTrackCollection = "added album to track_collection";
+        public const string TrackAddedToTrackCollection = "added track to track_collection";
+        public const string PlaylistAddedToTrackCollection = "added playlist to track_collection";
     }
 }

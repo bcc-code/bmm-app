@@ -75,6 +75,10 @@ namespace BMM.Core.ViewModels
             {
                 await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_FailedToAddUnknownType, _documentType.ToString()));
             }
+            catch (CollectionAlreadyInTrackCollectionException)
+            {
+                await _userDialogs.AlertAsync(TextSource[Translations.TrackCollectionsAddToViewModel_CollectionAlreadyInTrackCollection]);
+            }
             catch (AlbumAlreadyInTrackCollectionException)
             {
                 await _userDialogs.AlertAsync(TextSource.GetText(Translations.TrackCollectionsAddToViewModel_AlbumFailedToAddAlreadyExists, targetTrackCollection.TrackCollection.Name));

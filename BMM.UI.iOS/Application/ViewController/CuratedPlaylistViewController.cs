@@ -14,6 +14,8 @@ namespace BMM.UI.iOS
 {
     public partial class CuratedPlaylistViewController : BaseViewController<CuratedPlaylistViewModel>
     {
+        private UIBarButtonItem _sidebarButton;
+
         public CuratedPlaylistViewController()
             : base(nameof(CuratedPlaylistViewController))
         { }
@@ -24,6 +26,8 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
+            AddNavigationBarItemForOptions();
+            
             var refreshControl = new MvxUIRefreshControl {TintColor = AppColors.RefreshControlTintColor};
             CuratedPlaylistTable.RefreshControl = refreshControl;
 
@@ -33,6 +37,11 @@ namespace BMM.UI.iOS
             DownloadButton.NormalStateImage = UIImage.FromBundle("IconDownload");
 
             var set = this.CreateBindingSet<CuratedPlaylistViewController, CuratedPlaylistViewModel>();
+            
+            set.Bind(_sidebarButton)
+                .To(vm => vm.OptionCommand)
+                .CommandParameter(ViewModel!.CuratedPlaylist);
+            
             set.Bind(this).For(c => c.Title).To(vm => vm.CuratedPlaylist.Title);
             set.Bind(source).To(vm => vm.Documents);
             set.Bind(source).For(s => s.SelectionChangedCommand).To(s => s.DocumentSelectedCommand);
@@ -74,8 +83,17 @@ namespace BMM.UI.iOS
         public override void ViewDidLayoutSubviews()
         {
             base.ViewDidLayoutSubviews();
-
             CuratedPlaylistTable?.ResizeHeaderView();
+        }
+        
+        private void AddNavigationBarItemForOptions()
+        {
+            _sidebarButton = new UIBarButtonItem(
+                new UIImage("icon_options"),
+                UIBarButtonItemStyle.Plain,
+                default);
+
+            NavigationItem.SetRightBarButtonItem(_sidebarButton, true);
         }
     }
 }
