@@ -44,6 +44,16 @@ namespace BMM.Api.Implementation.Clients
             await RequestIsSuccessful(request);
         }
 
+        public async Task AddTrackCollectionToTrackCollection(int id, int trackCollectionId)
+        {
+            var uri = new UriTemplate(ApiUris.TrackCollectionTrackCollection);
+            uri.SetParameter("id", id);
+            uri.SetParameter("playlistId", trackCollectionId);
+
+            var request = BuildRequest(uri, HttpMethod.Post);
+            await RequestIsSuccessful(request);
+        }
+
         public async Task<bool> Delete(int id)
         {
             var uri = new UriTemplate(ApiUris.TrackCollection);

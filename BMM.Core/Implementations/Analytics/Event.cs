@@ -38,5 +38,6 @@
         public const string AlbumAddedToTrackCollection = "added album to track_collection";
         public const string TrackAddedToTrackCollection = "added track to track_collection";
         public const string PlaylistAddedToTrackCollection = "added playlist to track_collection";
+        public const string TrackCollectionAddedToTrackCollection = "added track collection to track_collection";
     }
 }

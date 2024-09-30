@@ -13,6 +13,8 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task AddAlbumToTrackCollection(int id, int albumId);
         
         Task AddPlaylistToTrackCollection(int id, int playlistId);
+        
+        Task AddTrackCollectionToTrackCollection(int id, int trackCollectionId);
 
         /// <summary>Deletes the track collection.</summary>
         Task<bool> Delete(int id);

@@ -9,6 +9,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.TrackOptions.Interfaces;
 using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.Helpers;
@@ -237,12 +238,9 @@ namespace BMM.Core.ViewModels.Base
                     
                     bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                         .SetTitle(playlist.Title)
-                        .AddHandled(TextSource[Translations.UserDialogs_AddAllToPlaylist], 
-                            async () => 
-                                await AddToTrackCollection(
-                                    playlist.Id,
-                                    DocumentType.Playlist),
-                            ImageResourceNames.IconFavorites)
+                        .AddOptionForAddToTrackCollection(async () => await AddToTrackCollection(
+                            playlist.Id,
+                            DocumentType.Playlist))
                         .AddHandled(TextSource[Translations.TrackCollectionViewModel_SharePlaylist],
                             async () => await Mvx.IoCProvider.Resolve<IShareLink>().Share(playlist),
                             ImageResourceNames.IconShare)
@@ -268,6 +266,9 @@ namespace BMM.Core.ViewModels.Base
         {
             userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
+                .AddOptionForAddToTrackCollection(async () => await AddToTrackCollection(
+                    trackCollection.Id,
+                    DocumentType.TrackCollection))
                 .AddHandled(
                     TextSource[Translations.TrackCollectionViewModel_RemovePlaylist],
                     async () => await RemoveSharedPlaylist(trackCollection.Id),
@@ -283,6 +284,9 @@ namespace BMM.Core.ViewModels.Base
         {
             userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
+                .AddOptionForAddToTrackCollection(async () => await AddToTrackCollection(
+                    trackCollection.Id,
+                    DocumentType.TrackCollection))
                 .AddHandled(TextSource[Translations.TrackCollectionViewModel_SharePlaylist],
                     async () =>
                     {

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using BMM.Api.Abstraction;
+﻿using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
@@ -31,6 +29,11 @@ namespace BMM.Core.Implementations.ApiClients
         public Task AddPlaylistToTrackCollection(int id, int playlistId)
         {
             return _client.AddPlaylistToTrackCollection(id, playlistId);
+        }
+
+        public Task AddTrackCollectionToTrackCollection(int id, int trackCollectionId)
+        {
+            return _client.AddTrackCollectionToTrackCollection(id, trackCollectionId);
         }
 
         public Task<bool> Delete(int id)

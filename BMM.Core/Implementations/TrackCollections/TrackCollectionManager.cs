@@ -95,6 +95,16 @@ namespace BMM.Core.Implementations.TrackCollections
                         {"Origin", origin}
                     });
             }
+            else if (type == DocumentType.TrackCollection)
+            {
+                await _bmmClient.TrackCollection.AddTrackCollectionToTrackCollection(trackCollection.Id, id);
+                _analytics.LogEvent(Event.TrackCollectionAddedToTrackCollection,
+                    new Dictionary<string, object>
+                    {
+                        {"TrackCollectionId", id},
+                        {"Origin", origin}
+                    });
+            }
             else
             {
                 throw new UnsupportedDocumentTypeException();
