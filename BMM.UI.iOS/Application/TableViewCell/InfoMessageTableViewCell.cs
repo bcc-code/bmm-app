@@ -5,6 +5,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Models.POs.InfoMessages;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
+using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
 {
@@ -21,6 +22,10 @@ namespace BMM.UI.iOS
 
                 set.Bind(InfoMessageLabel)
                     .To(d => d.InfoMessage.MessageText);
+                
+                set.Bind(ContentView)
+                    .For(v => v.BindTap())
+                    .To(d => d.TapCommand);
 
                 set.Apply();
             });

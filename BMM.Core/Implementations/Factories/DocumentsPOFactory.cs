@@ -7,6 +7,7 @@ using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.Factories.YearInReview;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
@@ -32,6 +33,7 @@ namespace BMM.Core.Implementations.Factories
         private readonly IYearInReviewTeaserPOFactory _yearInReviewTeaserPOFactory;
         private readonly IHighlightedTextTrackPOFactory _highlightedTextTrackPOFactory;
         private readonly IPlaylistPOFactory _playlistPOFactory;
+        private readonly IUriOpener _uriOpener;
         private readonly IMvxNavigationService _mvxNavigationService;
 
         public DocumentsPOFactory(
@@ -43,7 +45,8 @@ namespace BMM.Core.Implementations.Factories
             IYearInReviewTeaserPOFactory yearInReviewTeaserPOFactory,
             IHighlightedTextTrackPOFactory highlightedTextTrackPOFactory,
             IMvxNavigationService mvxNavigationService,
-            IPlaylistPOFactory playlistPOFactory)
+            IPlaylistPOFactory playlistPOFactory,
+            IUriOpener uriOpener)
         {
             _trackPOFactory = trackPOFactory;
             _trackCollectionPOFactory = trackCollectionPOFactory;
@@ -54,6 +57,7 @@ namespace BMM.Core.Implementations.Factories
             _highlightedTextTrackPOFactory = highlightedTextTrackPOFactory;
             _mvxNavigationService = mvxNavigationService;
             _playlistPOFactory = playlistPOFactory;
+            _uriOpener = uriOpener;
         }
         
         public IEnumerable<IDocumentPO> Create(
@@ -111,7 +115,7 @@ namespace BMM.Core.Implementations.Factories
                         documentsPOList.Add(_listeningStreakPOFactory.Create(listeningStreak));
                         break;
                     case InfoMessage infoMessage:
-                        documentsPOList.Add(new InfoMessagePO(infoMessage));
+                        documentsPOList.Add(new InfoMessagePO(infoMessage, _uriOpener));
                         break;
                     case YearInReviewTeaser yearInReviewTeaser:
                         documentsPOList.Add(_yearInReviewTeaserPOFactory.Create(yearInReviewTeaser));

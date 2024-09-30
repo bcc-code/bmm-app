@@ -8,7 +8,8 @@
         android:orientation="horizontal"
         android:layout_marginHorizontal="@dimen/margin_medium"
         android:layout_marginVertical="@dimen/margin_small"
-        android:background="@drawable/info_message_rounded_background">
+        android:background="@drawable/info_message_rounded_background"
+        local:MvxBind="Click TapCommand">
 
     <ImageView
             android:id="@+id/UnionIcon"
