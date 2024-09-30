@@ -1,6 +1,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:local="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_add_to_trackcollection"
+        local:showAsAction="never" />
+    <item
         android:id="@+id/menu_remove"
         local:showAsAction="never" />
 </menu>

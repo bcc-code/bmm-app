@@ -30,6 +30,8 @@ namespace BMM.Core.ViewModels
         public IMvxAsyncCommand ShareCommand { get; }
 
         public IMvxAsyncCommand RemoveCommand { get; }
+        
+        public IMvxAsyncCommand AddToTrackCollectionCommand { get; }
 
         public bool IsConnectionOnline => Connection.GetStatus() == ConnectionStatus.Online;
 
@@ -66,6 +68,7 @@ namespace BMM.Core.ViewModels
 
             ShareCommand = new ExceptionHandlingCommand(() => ShareTrackCollection(MyCollection.Id));
             RemoveCommand = new ExceptionHandlingCommand(() => RemoveSharedPlaylist(MyCollection.Id));
+            AddToTrackCollectionCommand = new ExceptionHandlingCommand(() => AddToTrackCollection(MyCollection.Id, DocumentType.TrackCollection));
         }
 
         public bool UseLikeIcon
