@@ -20,11 +20,11 @@ variables:
 
 steps:
   - bash: |
-      dotnet workload install ios
+      dotnet workload install ios --version 8.0.402
     displayName: 'Install iOS workload'
 
   - bash: |
-      dotnet workload install maui-ios
+      dotnet workload install maui-ios --version 8.0.402
     displayName: 'Install MAUI iOS workload'
     
   - task: DotNetCoreCLI@2
@@ -59,13 +59,6 @@ steps:
         **/TestSecrets.cs
       actionOnMissing: fail
       keepToken: true
-
-  - bash: |
-      /bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_12_7"
-      xcodeRoot=/Applications/Xcode_12.4.app
-      /bin/bash -c "echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'${xcodeRoot};sudo xcode-select --switch ${xcodeRoot}/Contents/Developer"
-    displayName: 'Force SDK and Xcode version'
-    enabled: false
 
   - bash: |
       URL="https://bmm-api.brunstad.org/AppVersion/iOSVersionCode"
