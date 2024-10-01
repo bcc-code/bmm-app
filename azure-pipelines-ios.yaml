@@ -75,6 +75,7 @@ steps:
         sudo xcode-select -s /Applications/Xcode_16.1.app
         xcrun xcode-select --print-path
         xcodebuild -version
+        sudo xcode-select -install
 
   - bash: |
       /bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh 6_12_7"
