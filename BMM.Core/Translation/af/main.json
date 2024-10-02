@@ -415,6 +415,7 @@
     "SearchHint": "Soek",
     "FailedToAdd": "Misluk om die spoor by die snitlys byte voeg. Probeer asseblief later weer.",
     "AlbumFailedToAddAlreadyExists": "Hierdie album is reeds in jou speellys.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
     "FailedToAddAlbum": "Kon nie die album by die speellys te voeg omdat dit bevat albums.",
     "FailedToAddUnknownType": "'N \"{0}\" by 'n speellys word tans ondersteun nie.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Speel",
     "Contributor.Share": "Share contributor",
     "OfflineTrackCollection.DeletePlaylist": "Verwyder snitlys",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Kanselleer"
   },
   "Notifications": {
