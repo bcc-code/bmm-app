@@ -415,6 +415,7 @@
     "SearchHint": "搜索",
     "FailedToAdd": "将曲目添加到播放列表失败。请稍后重试。",
     "AlbumFailedToAddAlreadyExists": "该专辑已在您的播放列表中。",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "播放列表 {0} 中已有该曲目",
     "FailedToAddAlbum": "未能将专辑添加到播放列表，因为其中包含多个专辑。",
     "FailedToAddUnknownType": "当前不支持在播放列表中添加\"{0}\"。",
@@ -456,6 +457,7 @@
     "Contributor.Play": "播放",
     "Contributor.Share": "分享贡献者",
     "OfflineTrackCollection.DeletePlaylist": "删除播放列表",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "取消"
   },
   "Notifications": {
