@@ -415,6 +415,7 @@
     "SearchHint": "Търси",
     "FailedToAdd": "Неуспешно добавяне на песен към списъка. Моля, опитай отново по-късно.",
     "AlbumFailedToAddAlreadyExists": "Този албум е вече във вашия списък за изпълнение.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Песента/речта вече съществува в списъка {0}",
     "FailedToAddAlbum": "Неуспешно добавяне на албума към списъка за изпълнение, защото съдържа албуми.",
     "FailedToAddUnknownType": "Добавяне на \"{0}\" към плейлист в момента не се поддържа.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Пусни",
     "Contributor.Share": "Сподели сътрудник",
     "OfflineTrackCollection.DeletePlaylist": "Изтрий списък",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Отказ"
   },
   "Notifications": {
