@@ -415,6 +415,7 @@
     "SearchHint": "Rechercher",
     "FailedToAdd": "Impossible d'ajouter la piste à la liste. Veuillez réessayer ultérieurement.",
     "AlbumFailedToAddAlreadyExists": "Cet album est déjà dans votre liste de lecture.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Le titre existe déjà dans la playlist {0}",
     "FailedToAddAlbum": "Impossible d’ajouter l’album la playlist car il contient des albums.",
     "FailedToAddUnknownType": "Ajout d’un « {0} » à une liste de lecture n’est actuellement pas possible.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Lecture",
     "Contributor.Share": "Partager le contributeur",
     "OfflineTrackCollection.DeletePlaylist": "Supprimer la liste de lecture",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Annuler"
   },
   "Notifications": {
