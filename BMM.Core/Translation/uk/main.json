@@ -415,6 +415,7 @@
     "SearchHint": "Пошук",
     "FailedToAdd": "Не вдалося додати трек до списку відтворення. Будь-ласка спробуйте пізніше.",
     "AlbumFailedToAddAlreadyExists": "Цей альбом – вже у ваш плейлист.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
     "FailedToAddAlbum": "Не вдалося додати альбом до списку відтворення, оскільки він містить альбоми.",
     "FailedToAddUnknownType": "Додавання до списку відтворення \"{0}\" в даний час не підтримується.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Грати",
     "Contributor.Share": "Share contributor",
     "OfflineTrackCollection.DeletePlaylist": "Видалити список відтворення",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Скасувати"
   },
   "Notifications": {
