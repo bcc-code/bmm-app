@@ -60,15 +60,17 @@ namespace BMM.UI.Droid.Application.Fragments
         private void CreateMenuIfPrivate(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.trackcollection, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_SharePlaylist]);
-            menu.GetItem(1).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_DeletePlaylist]);
-            menu.GetItem(2).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_EditPlaylist]);
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.UserDialogs_AddAllToPlaylist]);
+            menu.GetItem(1).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_SharePlaylist]);
+            menu.GetItem(2).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_DeletePlaylist]);
+            menu.GetItem(3).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_EditPlaylist]);
         }
 
         private void CreateMenuIfShared(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(Resource.Menu.trackcollection_shared, menu);
-            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_RemovePlaylist]);
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.UserDialogs_AddAllToPlaylist]);
+            menu.GetItem(1).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_RemovePlaylist]);
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item)
@@ -89,6 +91,10 @@ namespace BMM.UI.Droid.Application.Fragments
 
                 case Resource.Id.menu_remove:
                     ViewModel.RemoveCommand.Execute();
+                    return true;
+                
+                case Resource.Id.menu_add_to_trackcollection:
+                    ViewModel.AddToTrackCollectionCommand.Execute();
                     return true;
 
                 default:

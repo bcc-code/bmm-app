@@ -332,6 +332,7 @@ namespace BMM.Core.Translation
 		public const string TrackCollectionsAddToViewModel_SearchHint = nameof(TrackCollectionsAddToViewModel_SearchHint);
 		public const string TrackCollectionsAddToViewModel_FailedToAdd = nameof(TrackCollectionsAddToViewModel_FailedToAdd);
 		public const string TrackCollectionsAddToViewModel_AlbumFailedToAddAlreadyExists = nameof(TrackCollectionsAddToViewModel_AlbumFailedToAddAlreadyExists);
+		public const string TrackCollectionsAddToViewModel_CollectionAlreadyInTrackCollection = nameof(TrackCollectionsAddToViewModel_CollectionAlreadyInTrackCollection);
 		public const string TrackCollectionsAddToViewModel_TrackAlreadyExistInTrackCollection = nameof(TrackCollectionsAddToViewModel_TrackAlreadyExistInTrackCollection);
 		public const string TrackCollectionsAddToViewModel_FailedToAddAlbum = nameof(TrackCollectionsAddToViewModel_FailedToAddAlbum);
 		public const string TrackCollectionsAddToViewModel_FailedToAddUnknownType = nameof(TrackCollectionsAddToViewModel_FailedToAddUnknownType);
@@ -371,6 +372,7 @@ namespace BMM.Core.Translation
 		public const string UserDialogs_Contributor_Play = nameof(UserDialogs_Contributor_Play);
 		public const string UserDialogs_Contributor_Share = nameof(UserDialogs_Contributor_Share);
 		public const string UserDialogs_OfflineTrackCollection_DeletePlaylist = nameof(UserDialogs_OfflineTrackCollection_DeletePlaylist);
+		public const string UserDialogs_AddAllToPlaylist = nameof(UserDialogs_AddAllToPlaylist);
 		public const string UserDialogs_Cancel = nameof(UserDialogs_Cancel);
 		public const string Notifications_Downloading = nameof(Notifications_Downloading);
 		public const string Notifications_ItemsDownloaded = nameof(Notifications_ItemsDownloaded);

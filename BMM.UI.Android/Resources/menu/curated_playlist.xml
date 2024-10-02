@@ -6,10 +6,4 @@
     <item
         android:id="@+id/menu_share"
         local:showAsAction="never" />
-    <item
-        android:id="@+id/menu_delete"
-        local:showAsAction="never" />
-    <item
-        android:id="@+id/menu_edit"
-        local:showAsAction="never" />
 </menu>

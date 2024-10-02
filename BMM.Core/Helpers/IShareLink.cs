@@ -9,6 +9,7 @@ namespace BMM.Core.Helpers
         Task Share(Track track);
         Task Share(Album album);
         Task Share(Contributor contributor);
+        Task Share(Playlist playlist);
         Task PerformRequestFor(string link);
     }
 }

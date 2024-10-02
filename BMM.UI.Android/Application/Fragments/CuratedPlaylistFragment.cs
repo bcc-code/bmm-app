@@ -6,6 +6,7 @@ using Android.Views;
 using AndroidX.Core.Content;
 using AndroidX.RecyclerView.Widget;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Adapters;
 using BMM.UI.Droid.Application.Helpers;
@@ -28,6 +29,36 @@ namespace BMM.UI.Droid.Application.Fragments
         protected override MvxRecyclerAdapter CreateAdapter()
         {
             return new HeaderRecyclerAdapter((IMvxAndroidBindingContext)BindingContext);
+        }
+
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        {
+            base.OnCreateOptionsMenu(menu, inflater);
+            CreateMenu(menu, inflater);
+        }
+
+        private void CreateMenu(IMenu menu, MenuInflater inflater)
+        {
+            inflater.Inflate(Resource.Menu.curated_playlist, menu);
+            menu.GetItem(0).SetTitle(ViewModel.TextSource[Translations.UserDialogs_AddAllToPlaylist]);
+            menu.GetItem(1).SetTitle(ViewModel.TextSource[Translations.TrackCollectionViewModel_SharePlaylist]);
+        }
+        
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_add_to_trackcollection:
+                    ViewModel.AddToTrackCollectionCommand.Execute();
+                    return true;
+
+                case Resource.Id.menu_share:
+                    ViewModel.ShareCommand.Execute();
+                    return true;
+
+                default:
+                    return base.OnOptionsItemSelected(item);
+            }
         }
 
         public override void OnDestroy()

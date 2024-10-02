@@ -8,9 +8,13 @@ namespace BMM.Api.Implementation.Clients.Contracts
     public interface ITrackCollectionClient
     {
         /// <summary>Adds the tracks with the specified ids to the track collection.</summary>
-        Task<bool> AddTracksToTrackCollection(int id, IList<int> trackIds);
+        Task<bool> AddTracksToTrackCollection(int targetId, IList<int> trackIds);
 
-        Task AddAlbumToTrackCollection(int id, int albumId);
+        Task AddAlbumToTrackCollection(int targetId, int albumId);
+        
+        Task AddPlaylistToTrackCollection(int targetId, int playlistId);
+        
+        Task AddTrackCollectionToTrackCollection(int targetId, int trackCollectionId);
 
         /// <summary>Deletes the track collection.</summary>
         Task<bool> Delete(int id);

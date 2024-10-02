@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BMM.Api.Abstraction;
+﻿using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
@@ -12,14 +10,11 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks;
-using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
-using BMM.Core.ViewModels.Interfaces;
-using MvvmCross;
 using MvvmCross.Base;
+using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
@@ -28,6 +23,8 @@ namespace BMM.Core.ViewModels
     {
         private readonly IPlaylistManager _playlistManager;
         private readonly ITrackPOFactory _trackPOFactory;
+        private readonly IMvxMainThreadAsyncDispatcher _mainThreadAsyncDispatcher;
+        private readonly IOfflinePlaylistStorage _offlinePlaylistStorage;
         private Playlist _curatedPlaylist;
 
         public Playlist CuratedPlaylist
@@ -61,19 +58,32 @@ namespace BMM.Core.ViewModels
             IConnection connection,
             INetworkSettings networkSettings,
             IPlaylistManager playlistManager,
-            ITrackPOFactory trackPOFactory)
+            ITrackPOFactory trackPOFactory,
+            IShareLink shareLink,
+            IMvxMainThreadAsyncDispatcher mainThreadAsyncDispatcher,
+            IOfflinePlaylistStorage offlinePlaylistStorage)
             : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
         {
             _playlistManager = playlistManager;
             _trackPOFactory = trackPOFactory;
+            _mainThreadAsyncDispatcher = mainThreadAsyncDispatcher;
+            _offlinePlaylistStorage = offlinePlaylistStorage;
             TrackInfoProvider = new AudiobookPodcastInfoProvider(TrackInfoProvider);
+            ShareCommand = new ExceptionHandlingCommand(() => shareLink.Share(CuratedPlaylist));
+            AddToTrackCollectionCommand = new ExceptionHandlingCommand(() => AddToTrackCollection(CuratedPlaylist.Id, DocumentType.Playlist));
         }
+        
+        public IMvxAsyncCommand ShareCommand { get; }
+        
+        public IMvxAsyncCommand AddToTrackCollectionCommand { get; }
 
         public void Prepare(Playlist curatedPlaylist)
         {
             CuratedPlaylist = curatedPlaylist;
-            Mvx.IoCProvider.Resolve<IMvxMainThreadAsyncDispatcher>()
-                .ExecuteOnMainThreadAsync(async () => { IsOfflineAvailable = await Mvx.IoCProvider.Resolve<IOfflinePlaylistStorage>().IsOfflineAvailable(curatedPlaylist.Id); });
+            _mainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(async () =>
+            {
+                IsOfflineAvailable = await _offlinePlaylistStorage.IsOfflineAvailable(curatedPlaylist.Id);
+            });
         }
 
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)

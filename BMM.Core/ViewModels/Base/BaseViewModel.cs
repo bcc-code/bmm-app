@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Acr.UserDialogs;
+﻿using Acr.UserDialogs;
 using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
+using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.TrackOptions.Interfaces;
 using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.Helpers;
@@ -195,7 +191,7 @@ namespace BMM.Core.ViewModels.Base
                     var album = (Album)item;
                     bmmUserDialogs.ActionSheet(new ActionSheetConfig()
                         .SetTitle(album.Title)
-                        .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddAlbumToTrackCollection(album.Id), ImageResourceNames.IconFavorites)
+                        .AddHandled(TextSource[Translations.UserDialogs_Album_AddToPlaylist], async () => await AddToTrackCollection(album.Id, DocumentType.Album), ImageResourceNames.IconFavorites)
                         .AddHandled(TextSource[Translations.UserDialogs_Album_Share], async () => await Mvx.IoCProvider.Resolve<IShareLink>().Share(album), ImageResourceNames.IconShare)
                         .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
                     break;
@@ -231,6 +227,21 @@ namespace BMM.Core.ViewModels.Base
                     var podcastId = item.Id;
                     await NavigationService.Navigate<AutomaticDownloadViewModel, int>(podcastId);
                     break;
+                
+                case DocumentType.Playlist:
+                    var playlist = (Playlist)item;
+                    
+                    bmmUserDialogs.ActionSheet(new ActionSheetConfig()
+                        .SetTitle(playlist.Title)
+                        .AddOptionForAddToTrackCollection(async () => await AddToTrackCollection(
+                            playlist.Id,
+                            DocumentType.Playlist))
+                        .AddHandled(TextSource[Translations.TrackCollectionViewModel_SharePlaylist],
+                            async () => await Mvx.IoCProvider.Resolve<IShareLink>().Share(playlist),
+                            ImageResourceNames.IconShare)
+                        .SetCancel(TextSource[Translations.UserDialogs_Cancel]));
+                    
+                    break;
 
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -250,6 +261,9 @@ namespace BMM.Core.ViewModels.Base
         {
             userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
+                .AddOptionForAddToTrackCollection(async () => await AddToTrackCollection(
+                    trackCollection.Id,
+                    DocumentType.TrackCollection))
                 .AddHandled(
                     TextSource[Translations.TrackCollectionViewModel_RemovePlaylist],
                     async () => await RemoveSharedPlaylist(trackCollection.Id),
@@ -265,6 +279,9 @@ namespace BMM.Core.ViewModels.Base
         {
             userDialogs.ActionSheet(new ActionSheetConfig()
                 .SetTitle(trackCollection.Name)
+                .AddOptionForAddToTrackCollection(async () => await AddToTrackCollection(
+                    trackCollection.Id,
+                    DocumentType.TrackCollection))
                 .AddHandled(TextSource[Translations.TrackCollectionViewModel_SharePlaylist],
                     async () =>
                     {
@@ -437,12 +454,12 @@ namespace BMM.Core.ViewModels.Base
             return false;
         }
 
-        protected Task AddAlbumToTrackCollection(int albumId)
+        protected Task AddToTrackCollection(int documentId, DocumentType documentType)
         {
             return NavigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(new TrackCollectionsAddToViewModel.Parameter
             {
-                DocumentId = albumId,
-                DocumentType = DocumentType.Album,
+                DocumentId = documentId,
+                DocumentType = documentType,
                 OriginViewModel = PlaybackOriginString()
             });
         }
