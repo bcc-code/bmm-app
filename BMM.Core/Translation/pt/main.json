@@ -415,6 +415,7 @@
     "SearchHint": "Buscar",
     "FailedToAdd": "Falha ao adicionar a faixa à lista de reprodução. Por favor, tente novamente mais tarde.",
     "AlbumFailedToAddAlreadyExists": "Este álbum já existe em sua lista de reprodução.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "A faixa já existe na lista de reprodução {0}",
     "FailedToAddAlbum": "Falha ao adicionar o álbum à lista de reprodução, porque ele contém álbuns.",
     "FailedToAddUnknownType": "Adicionar um \"{0}\" para uma lista de reprodução não é suportado atualmente.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Reproduzir",
     "Contributor.Share": "Compartilhar colaborador",
     "OfflineTrackCollection.DeletePlaylist": "Excluir lista de reprodução",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Cancelar"
   },
   "Notifications": {
