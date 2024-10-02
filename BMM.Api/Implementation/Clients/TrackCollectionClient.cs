@@ -13,20 +13,20 @@ namespace BMM.Api.Implementation.Clients
             : base(handler, baseUri, logger)
         { }
 
-        public async Task AddAlbumToTrackCollection(int id, int albumId)
+        public async Task AddAlbumToTrackCollection(int targetId, int albumId)
         {
             var uri = new UriTemplate(ApiUris.TrackCollectionAlbum);
-            uri.SetParameter("id", id);
+            uri.SetParameter("targetId", targetId);
             uri.SetParameter("albumId", albumId);
 
             var request = BuildRequest(uri, HttpMethod.Post);
             await RequestIsSuccessful(request);
         }
 
-        public async Task<bool> AddTracksToTrackCollection(int id, IList<int> trackIds)
+        public async Task<bool> AddTracksToTrackCollection(int targetId, IList<int> trackIds)
         {
             var uri = new UriTemplate(ApiUris.TrackCollection);
-            uri.SetParameter("id", id);
+            uri.SetParameter("targetId", targetId);
 
             var request = BuildRequest(uri, HttpMethod.Post);
             SetLinkHeader(trackIds, request);
@@ -34,20 +34,20 @@ namespace BMM.Api.Implementation.Clients
             return await RequestIsSuccessful(request);
         }
         
-        public async Task AddPlaylistToTrackCollection(int id, int playlistId)
+        public async Task AddPlaylistToTrackCollection(int targetId, int playlistId)
         {
             var uri = new UriTemplate(ApiUris.TrackCollectionPlaylist);
-            uri.SetParameter("id", id);
+            uri.SetParameter("targetId", targetId);
             uri.SetParameter("playlistId", playlistId);
 
             var request = BuildRequest(uri, HttpMethod.Post);
             await RequestIsSuccessful(request);
         }
 
-        public async Task AddTrackCollectionToTrackCollection(int id, int trackCollectionId)
+        public async Task AddTrackCollectionToTrackCollection(int targetId, int trackCollectionId)
         {
             var uri = new UriTemplate(ApiUris.TrackCollectionTrackCollection);
-            uri.SetParameter("id", id);
+            uri.SetParameter("targetId", targetId);
             uri.SetParameter("playlistId", trackCollectionId);
 
             var request = BuildRequest(uri, HttpMethod.Post);

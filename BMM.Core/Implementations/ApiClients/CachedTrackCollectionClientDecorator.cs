@@ -19,24 +19,24 @@ namespace BMM.Core.Implementations.ApiClients
             _clientCache = clientCache;
         }
 
-        public Task<bool> AddTracksToTrackCollection(int id, IList<int> trackIds)
+        public Task<bool> AddTracksToTrackCollection(int targetId, IList<int> trackIds)
         {
-            return _client.AddTracksToTrackCollection(id, trackIds);
+            return _client.AddTracksToTrackCollection(targetId, trackIds);
         }
 
-        public Task AddAlbumToTrackCollection(int id, int albumId)
+        public Task AddAlbumToTrackCollection(int targetId, int albumId)
         {
-            return _client.AddAlbumToTrackCollection(id, albumId);
+            return _client.AddAlbumToTrackCollection(targetId, albumId);
         }
 
-        public Task AddPlaylistToTrackCollection(int id, int playlistId)
+        public Task AddPlaylistToTrackCollection(int targetId, int playlistId)
         {
-            return _client.AddPlaylistToTrackCollection(id, playlistId);
+            return _client.AddPlaylistToTrackCollection(targetId, playlistId);
         }
 
-        public Task AddTrackCollectionToTrackCollection(int id, int trackCollectionId)
+        public Task AddTrackCollectionToTrackCollection(int targetId, int trackCollectionId)
         {
-            return _client.AddTrackCollectionToTrackCollection(id, trackCollectionId);
+            return _client.AddTrackCollectionToTrackCollection(targetId, trackCollectionId);
         }
 
         public Task<bool> Delete(int id)
