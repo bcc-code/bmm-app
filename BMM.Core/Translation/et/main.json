@@ -415,6 +415,7 @@
     "SearchHint": "Otsi",
     "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
     "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
     "FailedToAddAlbum": "Ei suutnud album esitusloendisse lisada, kuna see sisaldab Albumeid.",
     "FailedToAddUnknownType": "\"{0}\" esitusloendisse praegu ei toetata.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Esita",
     "Contributor.Share": "Share contributor",
     "OfflineTrackCollection.DeletePlaylist": "Kustuta esitusloend",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Tühista"
   },
   "Notifications": {
