@@ -415,6 +415,7 @@
     "SearchHint": "Поиск",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
     "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "FailedToAddAlbum": "Не удалось добавить альбом плейлист, так как он содержит альбомы.",
     "FailedToAddUnknownType": "Добавление плейлиста «{0}» в настоящее время не поддерживается.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Играть",
     "Contributor.Share": "Поделиться автором",
     "OfflineTrackCollection.DeletePlaylist": "Удалить список воспроизведения",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Отмена"
   },
   "Notifications": {
