@@ -415,6 +415,7 @@
     "SearchHint": "Cerca",
     "FailedToAdd": "Non è stato possibile aggiungere il brano alla playlist. Riprova più tardi.",
     "AlbumFailedToAddAlreadyExists": "Questo album è già nella tua playlist.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
     "FailedToAddAlbum": "Impossibile aggiungere l'album alla playlist perché contiene degli album.",
     "FailedToAddUnknownType": "L'aggiunta di un \"{0}\" a una playlist non è attualmente supportato.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Riproduci",
     "Contributor.Share": "Share contributor",
     "OfflineTrackCollection.DeletePlaylist": "Elimina la playlist",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Annulla"
   },
   "Notifications": {
