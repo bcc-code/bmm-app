@@ -415,6 +415,7 @@
     "SearchHint": "தேடு",
     "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
     "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
     "FailedToAddAlbum": "ஆல்பத்தைப் பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை, ஏனெனில் அதில் ஆல்பங்கள் உள்ளன.",
     "FailedToAddUnknownType": "பிளேலிஸ்ட்டில் \"{0}\"ஐ சேர்ப்பது தற்போது ஆதரிக்கப்படவில்லை.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "பிளே",
     "Contributor.Share": "பங்களிப்பாளரைப் பகிரவும் ",
     "OfflineTrackCollection.DeletePlaylist": "பிளேலிஸ்ட்டை நீக்கு",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "ரத்து செய்"
   },
   "Notifications": {
