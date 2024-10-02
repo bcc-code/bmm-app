@@ -415,6 +415,7 @@
     "SearchHint": "Suchen",
     "FailedToAdd": "Der Titel konnte leider nicht zur Wiedergabeliste hinzugefügt werden. Bitte versuche es später nochmal.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Wiedergabeliste.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
     "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen, weil es Alben enthält.",
     "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Abspielen",
     "Contributor.Share": "Mitwirkenden teilen",
     "OfflineTrackCollection.DeletePlaylist": "Playlist löschen",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Abbrechen"
   },
   "Notifications": {
