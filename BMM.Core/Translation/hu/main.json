@@ -415,6 +415,7 @@
     "SearchHint": "Keresés",
     "FailedToAdd": "Nem sikerült hozzáadni a zeneszámot a lejátszási listához. Próbáld újra később.",
     "AlbumFailedToAddAlreadyExists": "Ez az album már szerepel a lejátszási listádon.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Zeneszám már létezik a {0} számú lejátszási listában",
     "FailedToAddAlbum": "Nem sikerült az album felvétele a lejátszási listához, mert albumot tartalmaz.",
     "FailedToAddUnknownType": "A \"{0}\" hozzáadása a lejátszási listához jelenleg nem támogatott.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Lejátszás",
     "Contributor.Share": "Közreműködő megosztása",
     "OfflineTrackCollection.DeletePlaylist": "Lejátszási lista törlése",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Mégse"
   },
   "Notifications": {
