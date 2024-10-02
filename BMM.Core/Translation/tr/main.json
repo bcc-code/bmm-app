@@ -415,6 +415,7 @@
     "SearchHint": "Ara",
     "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
     "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Parça zaten oynatma listesi {0}mevcut",
     "FailedToAddAlbum": "Albümleri içerdiğinden albüm çalma listesine eklenemedi.",
     "FailedToAddUnknownType": "\"{0}\" bir çalma listesine ekleme şu anda desteklenmiyor.",
@@ -456,6 +457,7 @@
     "Contributor.Play": "Oynat",
     "Contributor.Share": "Katkıda bulunanı paylaş",
     "OfflineTrackCollection.DeletePlaylist": "Çalma Listesini Sil",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "İptal"
   },
   "Notifications": {
