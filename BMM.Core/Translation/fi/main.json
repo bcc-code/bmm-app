@@ -415,7 +415,7 @@
     "SearchHint": "Etsi",
     "FailedToAdd": "Kappaleen lisääminen soittolistalle epäonnistui. Yritä myöhemmin uudelleen.",
     "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Kokoelma on jo soittolistallasi",
     "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
     "FailedToAddAlbum": "Albumin lisätä soittoluetteloon, koska se sisältää albumit epäonnistui.",
     "FailedToAddUnknownType": "Lisäämällä \"{0}\" soittolista ei tällä hetkellä tueta.",
@@ -457,7 +457,7 @@
     "Contributor.Play": "Toista",
     "Contributor.Share": "Jakamisen avustaja",
     "OfflineTrackCollection.DeletePlaylist": "Poista soittolista",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Lisää kaikki raidat soittolistaasi",
     "Cancel": "Peruuta"
   },
   "Notifications": {
