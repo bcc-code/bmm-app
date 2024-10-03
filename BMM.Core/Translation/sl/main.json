@@ -415,7 +415,7 @@
     "SearchHint": "Išči",
     "FailedToAdd": "Skladbe ni bilo mogoče dodati na seznam predvajanja. Prosim, poskusi znova kasneje.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Zbirka je že dodana tvojemu seznamu predvajanja.",
     "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
     "FailedToAddAlbum": "Dodajanje albuma na seznam predvajanja ni uspelo, ker vsebuje albume.",
     "FailedToAddUnknownType": "Dodajanje \"{0}\" na seznam predvajanja trenutno ni podprto.",
@@ -457,7 +457,7 @@
     "Contributor.Play": "Predvajaj",
     "Contributor.Share": "Deli ustvarjalca",
     "OfflineTrackCollection.DeletePlaylist": "Izbriši seznam predvajanja",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Dodaj vse sklade  na seznam predvajanja",
     "Cancel": "Prekliči"
   },
   "Notifications": {
