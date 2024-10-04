@@ -36,44 +36,48 @@ namespace BMM.Core.Test.Unit.ViewModels
     {
         private Mock<IBMMClient> _client;
         private Mock<IExceptionHandler> _exceptionHandler;
-        private Mock<IPodcastOfflineManager> _podcastDownloader;
-        private Mock<IConnection> _connection;
-        private Mock<IGlobalMediaDownloader> _mediaDownloader;
-        private Mock<IUserDialogs> _userDialogs;
-        private Mock<IToastDisplayer> _toastDisplayer;
-        private Mock<INetworkSettings> _networkSettings;
+        private Mock<IPodcastOfflineManager> _podcastDownloaderMock;
+        private Mock<IConnection> _connectionMock;
+        private Mock<IGlobalMediaDownloader> _mediaDownloaderMock;
+        private Mock<IUserDialogs> _userDialogsMock;
+        private Mock<IToastDisplayer> _toastDisplayerMock;
+        private Mock<INetworkSettings> _networkSettingsMock;
         private Mock<IBMMLanguageBinder> _languageBinder;
         private Mock<IViewModelAwareViewPresenter> _viewPresenter;
-        private Mock<IDownloadedTracksOnlyFilter> _downloadedOnlyFilter;
-        private Mock<IShufflePodcastAction> _shufflePodcastAction;
+        private Mock<IDownloadedTracksOnlyFilter> _downloadedOnlyFilterMock;
+        private Mock<IShufflePodcastAction> _shufflePodcastActionMock;
         private IBlobCache _inMemoryCache;
-        private Mock<ITrackPOFactory> _trackPOFactory;
-        private Mock<IDocumentsPOFactory> _documentsPOFactory;
+        private Mock<ITrackPOFactory> _trackPOFactoryMock;
+        private Mock<IDocumentsPOFactory> _documentsPOFactoryMock;
+        private Mock<ISettingsStorage> _settingsStorageMock;
+        private Mock<IMediaPlayer> _mediaPlayerMock;
 
         public override void SetUp()
         {
             base.SetUp();
             _client = new Mock<IBMMClient>();
             _exceptionHandler = new Mock<IExceptionHandler>();
-            _podcastDownloader = new Mock<IPodcastOfflineManager>();
-            _connection = new Mock<IConnection>();
-            _mediaDownloader = new Mock<IGlobalMediaDownloader>();
-            _userDialogs = new Mock<IUserDialogs>();
-            _toastDisplayer = new Mock<IToastDisplayer>();
-            _networkSettings = new Mock<INetworkSettings>();
+            _podcastDownloaderMock = new Mock<IPodcastOfflineManager>();
+            _connectionMock = new Mock<IConnection>();
+            _mediaDownloaderMock = new Mock<IGlobalMediaDownloader>();
+            _userDialogsMock = new Mock<IUserDialogs>();
+            _toastDisplayerMock = new Mock<IToastDisplayer>();
+            _networkSettingsMock = new Mock<INetworkSettings>();
             _languageBinder = new Mock<IBMMLanguageBinder>();
             _inMemoryCache = new InMemoryBlobCache();
             _viewPresenter = new Mock<IViewModelAwareViewPresenter>();
-            _downloadedOnlyFilter = new Mock<IDownloadedTracksOnlyFilter>();
-            _shufflePodcastAction = new Mock<IShufflePodcastAction>();
-            _trackPOFactory = new Mock<ITrackPOFactory>();
-            _documentsPOFactory = new Mock<IDocumentsPOFactory>();
+            _downloadedOnlyFilterMock = new Mock<IDownloadedTracksOnlyFilter>();
+            _shufflePodcastActionMock = new Mock<IShufflePodcastAction>();
+            _trackPOFactoryMock = new Mock<ITrackPOFactory>();
+            _documentsPOFactoryMock = new Mock<IDocumentsPOFactory>();
+            _settingsStorageMock = new Mock<ISettingsStorage>();
+            _mediaPlayerMock = new Mock<IMediaPlayer>();
             _client.Setup(x => x.Podcast.GetById(It.IsAny<int>(), It.IsAny<CachePolicy>()))
                 .ReturnsAsync(new Podcast() {Cover = "CoverStream", DocumentType = DocumentType.Podcast, Id = 1, Language = "en-US", Title = "Test"});
-            _podcastDownloader.Setup(x => x.FollowPodcast(It.IsAny<Podcast>()));
-            _podcastDownloader.Setup(x => x.UnfollowPodcast(It.IsAny<Podcast>()));
-            _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(false);
-            _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
+            _podcastDownloaderMock.Setup(x => x.FollowPodcast(It.IsAny<Podcast>()));
+            _podcastDownloaderMock.Setup(x => x.UnfollowPodcast(It.IsAny<Podcast>()));
+            _podcastDownloaderMock.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(false);
+            _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
             _languageBinder.Setup(x => x.GetText(It.IsAny<string>(), It.IsAny<object[]>())).Returns("test string");
 
             var mockMvxMessenger = new Mock<IMvxMessenger>();
@@ -87,22 +91,24 @@ namespace BMM.Core.Test.Unit.ViewModels
             Ioc.RegisterSingleton(new Mock<IMediaQueue>().Object);
             Ioc.RegisterSingleton(new Mock<IMediaPlayer>().Object);
             Ioc.RegisterSingleton(new Mock<IMvxNavigationService>().Object);
-            Ioc.RegisterSingleton(_connection.Object);
+            Ioc.RegisterSingleton(_connectionMock.Object);
         }
 
         public PodcastViewModel CreatePodcastViewModel()
         {
             var viewModel = new PodcastViewModel(
-                _podcastDownloader.Object,
-                _connection.Object,
-                _mediaDownloader.Object,
-                _userDialogs.Object,
-                _toastDisplayer.Object,
-                _downloadedOnlyFilter.Object,
-                _networkSettings.Object,
-                _shufflePodcastAction.Object,
-                _trackPOFactory.Object,
-                _documentsPOFactory.Object);
+                _podcastDownloaderMock.Object,
+                _connectionMock.Object,
+                _mediaDownloaderMock.Object,
+                _userDialogsMock.Object,
+                _toastDisplayerMock.Object,
+                _downloadedOnlyFilterMock.Object,
+                _networkSettingsMock.Object,
+                _shufflePodcastActionMock.Object,
+                _trackPOFactoryMock.Object,
+                _documentsPOFactoryMock.Object,
+                _settingsStorageMock.Object,
+                _mediaPlayerMock.Object);
 
             viewModel.TextSource = _languageBinder.Object;
             return viewModel;
@@ -113,7 +119,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             _client.Setup(x => x.Podcast.GetById(It.IsAny<int>(), It.IsAny<CachePolicy>())).ReturnsAsync(new Podcast() { Cover = null, DocumentType = DocumentType.Podcast, Id = 1, Language = "en-US", Title = "Test" });
-            _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(false);
+            _podcastDownloaderMock.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(false);
 
             // Act
             var podcastViewModel = CreatePodcastViewModel();
@@ -129,7 +135,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             var followButtonText = "text";
-            _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
+            _podcastDownloaderMock.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
             _languageBinder.Setup(x => x[It.IsAny<string>()]).Returns(followButtonText);
 
             var podcastViewModel = CreatePodcastViewModel();
@@ -145,7 +151,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task Init_ShouldCallAllRequiredMethods()
         {
             // Arrange
-            _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
+            _podcastDownloaderMock.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
 
             var podcastViewModel = CreatePodcastViewModel();
 
@@ -154,8 +160,8 @@ namespace BMM.Core.Test.Unit.ViewModels
 
             // Assert
             _client.Verify(x => x.Podcast.GetById(It.IsAny<int>(), It.IsAny<CachePolicy>()), Times.Once);
-            _podcastDownloader.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
-            _podcastDownloader.Verify(x => x.FollowPodcast(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.FollowPodcast(It.IsAny<Podcast>()), Times.Once);
             Assert.AreEqual(podcastViewModel.IsFollowing, true);
         }
 
@@ -172,8 +178,8 @@ namespace BMM.Core.Test.Unit.ViewModels
 
             // Assert
             _client.Verify(x => x.Podcast.GetById(It.IsAny<int>(), It.IsAny<CachePolicy>()), Times.Once);
-            _podcastDownloader.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
-            _podcastDownloader.Verify(x => x.FollowPodcast(It.IsAny<Podcast>()), Times.Never);
+            _podcastDownloaderMock.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.FollowPodcast(It.IsAny<Podcast>()), Times.Never);
             Assert.AreEqual(podcastViewModel.IsFollowing, false);
         }
 
@@ -182,7 +188,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         {
             // Arrange
             _client.Setup(x => x.Podcast.GetById(It.IsAny<int>(), It.IsAny<CachePolicy>())).ReturnsAsync(new Podcast() { Cover = null, DocumentType = DocumentType.Podcast, Id = 1, Language = "en-US", Title = "Test" });
-            _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Offline);
+            _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Offline);
 
             var podcastViewModel = CreatePodcastViewModel();
             await podcastViewModel.Initialize();
@@ -191,7 +197,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             await podcastViewModel.ToggleFollowingCommand.ExecuteAsync();
 
             // Assert
-            _userDialogs.Verify(x => x.AlertAsync(It.IsAny<string>(), null, null, null), Times.Once);
+            _userDialogsMock.Verify(x => x.AlertAsync(It.IsAny<string>(), null, null, null), Times.Once);
             Assert.AreEqual(podcastViewModel.IsFollowing, false);
         }
 
@@ -199,8 +205,8 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task ToggleFollowingChange_ShouldUnFollowPodcastWhenToggleRaised()
         {
             // Arrange
-            _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
-            _userDialogs.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).ReturnsAsync(true);
+            _podcastDownloaderMock.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
+            _userDialogsMock.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).ReturnsAsync(true);
 
             var podcastViewModel = CreatePodcastViewModel();
             await podcastViewModel.Initialize();
@@ -209,8 +215,8 @@ namespace BMM.Core.Test.Unit.ViewModels
             await podcastViewModel.ToggleFollowingCommand.ExecuteAsync();
 
             // Assert
-            _podcastDownloader.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
-            _podcastDownloader.Verify(x => x.UnfollowPodcast(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.UnfollowPodcast(It.IsAny<Podcast>()), Times.Once);
             Assert.AreEqual(podcastViewModel.IsFollowing, false);
         }
 
@@ -218,8 +224,8 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task ToggleFollowingChange_ShouldPreventFromUnFollowingWhenUserNotConfirm()
         {
             // Arrange
-            _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
-            _userDialogs.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).ReturnsAsync(false);
+            _podcastDownloaderMock.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(true);
+            _userDialogsMock.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).ReturnsAsync(false);
 
             var podcastViewModel = CreatePodcastViewModel();
             await podcastViewModel.Initialize();
@@ -228,8 +234,8 @@ namespace BMM.Core.Test.Unit.ViewModels
             await podcastViewModel.ToggleFollowingCommand.ExecuteAsync();
 
             // Assert
-            _podcastDownloader.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
-            _podcastDownloader.Verify(x => x.UnfollowPodcast(It.IsAny<Podcast>()), Times.Never);
+            _podcastDownloaderMock.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.UnfollowPodcast(It.IsAny<Podcast>()), Times.Never);
             Assert.AreEqual(podcastViewModel.IsFollowing, true);
         }
 
@@ -237,9 +243,9 @@ namespace BMM.Core.Test.Unit.ViewModels
         public async Task ToggleFollowingChange_ShouldFollowUnFollowedPodcastWhenToggleRaised()
         {
             // Arrange
-            _podcastDownloader.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(false);
-            _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
-            _userDialogs.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).ReturnsAsync(true);
+            _podcastDownloaderMock.Setup(x => x.IsFollowing(It.IsAny<Podcast>())).Returns(false);
+            _connectionMock.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Online);
+            _userDialogsMock.Setup(x => x.ConfirmAsync(It.IsAny<string>(), null, null, null, null)).ReturnsAsync(true);
 
             var podcastViewModel = CreatePodcastViewModel();
             await podcastViewModel.Initialize();
@@ -248,8 +254,8 @@ namespace BMM.Core.Test.Unit.ViewModels
             await podcastViewModel.ToggleFollowingCommand.ExecuteAsync();
 
             // Assert
-            _podcastDownloader.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
-            _podcastDownloader.Verify(x => x.FollowPodcast(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.IsFollowing(It.IsAny<Podcast>()), Times.Once);
+            _podcastDownloaderMock.Verify(x => x.FollowPodcast(It.IsAny<Podcast>()), Times.Once);
             Assert.AreEqual(podcastViewModel.IsFollowing, true);
         }
     }
