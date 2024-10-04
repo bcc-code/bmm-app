@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Einstellungen",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Spiele Musik ab, nachdem du die heutige Folge von Fra Kåre gehört hast. Gilt nur beim Abspielen über die Kachel auf dem Startbildschirm.",
     "OptionStreakHeader": "Streak auf der Startseite",
