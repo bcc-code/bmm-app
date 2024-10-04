@@ -110,6 +110,12 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(AutoplayEnabled));
         }
         
+        public static bool? PlayInChronologicalOrderEnabled
+        {
+            get => GetValueOrDefault(nameof(PlayInChronologicalOrderEnabled), default(bool?));
+            set => AddOrUpdateValue(value, nameof(PlayInChronologicalOrderEnabled));
+        }
+        
         public static bool StreakHidden
         {
             get => GetValueOrDefault(nameof(StreakHidden), default(bool));

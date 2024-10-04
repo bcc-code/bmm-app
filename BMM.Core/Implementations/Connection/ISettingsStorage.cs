@@ -12,8 +12,10 @@ namespace BMM.Core.Implementations.Connection
         Task SetPushNotificationsAllowed(bool pushNotificationsAllowed);
 
         Task<bool> GetAutoplayEnabled();
-
-        Task SetAutoplayEnabled(bool autoplayEnabled);
+        Task<bool> GetPlayInChronologicalOrderEnabled();
+        
+        Task SetAutoplayEnabled(bool enabled);
+        Task SetPlayInChronologicalOrderEnabled(bool enabled);
 
         Task<bool> GetStreakHidden();
 

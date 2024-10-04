@@ -17,7 +17,9 @@ namespace BMM.Core.Implementations.Connection
             _config = config;
         }
 
+        public async Task<bool> GetPlayInChronologicalOrderEnabled() => AppSettings.PlayInChronologicalOrderEnabled ?? _config.PlayInChronologicalOrderEnabledDefaultSetting;
         public async Task<bool> GetAutoplayEnabled() => AppSettings.AutoplayEnabled ?? _config.AutoplayEnabledDefaultSetting;
+
         public async Task<bool> GetStreakHidden() => AppSettings.StreakHidden;
         public async Task<bool> GetMobileNetworkDownloadAllowed() => AppSettings.MobileDownloadEnabled;
         public async Task<bool> GetPushNotificationsAllowed() => AppSettings.PushNotificationsEnabled;
@@ -26,7 +28,8 @@ namespace BMM.Core.Implementations.Connection
         public async Task SetStorageLocation(bool isExternalStorage) => AppSettings.UseExternalStorage = isExternalStorage;
         public async Task SetMobileNetworkDownloadAllowed(bool mobileNetworkAllowed) => AppSettings.MobileDownloadEnabled = mobileNetworkAllowed;
         public async Task SetPushNotificationsAllowed(bool pushNotificationsAllowed) => AppSettings.PushNotificationsEnabled = pushNotificationsAllowed;
-        public async Task SetAutoplayEnabled(bool autoplayEnabled) => AppSettings.AutoplayEnabled = autoplayEnabled;
+        public async Task SetAutoplayEnabled(bool enabled) => AppSettings.AutoplayEnabled = enabled;
+        public async Task SetPlayInChronologicalOrderEnabled(bool enabled) => AppSettings.PlayInChronologicalOrderEnabled = enabled;
         public async Task SetStreakHidden(bool streakHidden) => AppSettings.StreakHidden = streakHidden;
     }
 }

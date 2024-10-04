@@ -25,6 +25,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         string IdentityUserInfoEndpoint { get; }
 
         bool AutoplayEnabledDefaultSetting { get; }
+        
+        bool PlayInChronologicalOrderEnabledDefaultSetting { get; }
 
         bool UseExtendedStreakLogging { get; }
 

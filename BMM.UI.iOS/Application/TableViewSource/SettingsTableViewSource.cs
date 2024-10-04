@@ -7,11 +7,16 @@ using UIKit;
 
 namespace BMM.UI.iOS
 {
-    public class SettingsTableViewSource : VariableRowHeightTableViewSource
+    public class SettingsTableViewSource : BaseTableViewSource
     {
         public SettingsTableViewSource(UITableView tableView)
             : base(tableView)
-        { }
+        {
+            tableView.RegisterNibForCellReuse(UINib.FromName(ProfileListItemTableViewCell.Key, NSBundle.MainBundle), ProfileListItemTableViewCell.Key);
+            tableView.RegisterNibForCellReuse(UINib.FromName(CheckboxListItemTableViewCell.Key, NSBundle.MainBundle), CheckboxListItemTableViewCell.Key);
+            tableView.RegisterNibForCellReuse(UINib.FromName(TextListItemDetailTableViewCell.Key, NSBundle.MainBundle), TextListItemDetailTableViewCell.Key);
+            tableView.RegisterNibForCellReuse(UINib.FromName(SectionHeaderTableViewCell.Key, NSBundle.MainBundle), SectionHeaderTableViewCell.Key);
+        }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
@@ -27,15 +32,15 @@ namespace BMM.UI.iOS
 
             return cell;
         }
-
-        protected override IEnumerable<IHeightAwareTableCellType> GetHeightAwareTableCellTypes()
+        
+        protected override IEnumerable<ITableCellType> GetTableCellTypes()
         {
-            return new List<IHeightAwareTableCellType>
+            return new[]
             {
-                new HeightAwareTableCellType(typeof(ProfileListItem), ProfileListItemTableViewCell.Key, (nfloat)204.5),
-                new HeightAwareTableCellType(typeof(CheckboxListItemPO), CheckboxListItemTableViewCell.Key, 88),
-                new HeightAwareTableCellType(typeof(SelectableListItem), TextListItemDetailTableViewCell.Key, 75),
-                new HeightAwareTableCellType(typeof(SectionHeaderPO), SectionHeaderTableViewCell.Key, 56),
+                new TableCellType(typeof(ProfileListItem), ProfileListItemTableViewCell.Key),
+                new TableCellType(typeof(CheckboxListItemPO), CheckboxListItemTableViewCell.Key),
+                new TableCellType(typeof(SelectableListItem), TextListItemDetailTableViewCell.Key),
+                new TableCellType(typeof(SectionHeaderPO), SectionHeaderTableViewCell.Key),
             };
         }
     }

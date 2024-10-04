@@ -229,6 +229,13 @@ namespace BMM.Core.ViewModels
                 new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineSettings], false),
                 new CheckboxListItemPO
                 {
+                    Title = TextSource[Translations.SettingsViewModel_PlayInChronologicalOrderHeader],
+                    Text = TextSource[Translations.SettingsViewModel_PlayInChronologicalOrderText],
+                    IsChecked = await _settingsStorage.GetPlayInChronologicalOrderEnabled(),
+                    OnChanged = sender => _settingsStorage.SetPlayInChronologicalOrderEnabled(sender.IsChecked)
+                },
+                new CheckboxListItemPO
+                {
                     Title = TextSource[Translations.SettingsViewModel_OptionAutoplayHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionAutoplayText],
                     IsChecked = await _settingsStorage.GetAutoplayEnabled(),

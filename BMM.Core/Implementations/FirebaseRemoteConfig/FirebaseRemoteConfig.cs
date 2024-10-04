@@ -29,6 +29,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
 
             public const string UseExtendedStreakLogging = "extended_streak_logging";
             public const string AutoplayEnabledDefaultSetting = "autoplay_enabled_default_setting";
+            public const string PlayInChronologicalOrderEnabledDefaultSetting = "play_in_chronological_order_enabled_default_setting";
 
             public const string UseAnalyticsId = "use_analytics_id";
 
@@ -69,6 +70,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.IdentityUserInfoEndpoint, "https://login.bcc.no/userinfo"},
             {Variables.UseExtendedStreakLogging, true.ToString()},
             {Variables.AutoplayEnabledDefaultSetting, false.ToString()},
+            {Variables.PlayInChronologicalOrderEnabledDefaultSetting, false.ToString()},
             {Variables.UseAnalyticsId, false.ToString()},
             {Variables.UserVoiceLink, "https://uservoice.bcc.no/?tags=bmm"},
             {Variables.PrivacyPolicyLink, "https://bcc.media/en/privacy/"},
@@ -112,6 +114,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public string SongTreasuresSongLink => _platformSpecificRemoteConfig.GetStringValue(Variables.SongTreasuresSongLink);
 
         public bool AutoplayEnabledDefaultSetting => _platformSpecificRemoteConfig.GetBoolValue(Variables.AutoplayEnabledDefaultSetting);
+        public bool PlayInChronologicalOrderEnabledDefaultSetting  => _platformSpecificRemoteConfig.GetBoolValue(Variables.PlayInChronologicalOrderEnabledDefaultSetting);
 
         public bool UseExtendedStreakLogging => _platformSpecificRemoteConfig.GetBoolValue(Variables.UseExtendedStreakLogging);
 
