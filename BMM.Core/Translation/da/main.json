@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Indstillinger",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Auto-afspil",
     "OptionAutoplayText": "Afspil musik efter at have lyttet til dagens afsnit af Fra Kåre. Gælder kun, når du spiller gennem via appen på startskærmen.",
     "OptionStreakHeader": "Streak på Hjem",
