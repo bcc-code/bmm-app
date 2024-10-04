@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Nastavitve",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Samodejno predvajanje",
     "OptionAutoplayText": "Predvajaj glasbo po poslušanju današnje epizode Fra Kåre. Na voljo samo pri predvajanju na začetnem zaslonu.",
     "OptionStreakHeader": "Niz na Domov",
