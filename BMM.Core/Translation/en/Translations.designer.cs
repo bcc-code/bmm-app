@@ -227,6 +227,8 @@ namespace BMM.Core.Translation
 		public const string SearchViewModel_SearchFailedMessage = nameof(SearchViewModel_SearchFailedMessage);
 		public const string SettingsViewModel_Title = nameof(SettingsViewModel_Title);
 		public const string SettingsViewModel_HeadlineSettings = nameof(SettingsViewModel_HeadlineSettings);
+		public const string SettingsViewModel_PlayInChronologicalOrderHeader = nameof(SettingsViewModel_PlayInChronologicalOrderHeader);
+		public const string SettingsViewModel_PlayInChronologicalOrderText = nameof(SettingsViewModel_PlayInChronologicalOrderText);
 		public const string SettingsViewModel_OptionAutoplayHeader = nameof(SettingsViewModel_OptionAutoplayHeader);
 		public const string SettingsViewModel_OptionAutoplayText = nameof(SettingsViewModel_OptionAutoplayText);
 		public const string SettingsViewModel_OptionStreakHeader = nameof(SettingsViewModel_OptionStreakHeader);

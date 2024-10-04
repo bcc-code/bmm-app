@@ -19,11 +19,15 @@ using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.Podcasts;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
 using BMM.Core.Models.Contributors;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Models.POs.Tracks.Interfaces;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.MyContent;
@@ -44,6 +48,8 @@ namespace BMM.Core.ViewModels
         private readonly IUserDialogs _userDialogs;
         private readonly INetworkSettings _networkSettings;
         private readonly IDocumentsPOFactory _documentsPOFactory;
+        private readonly ISettingsStorage _settingsStorage;
+        private readonly IMediaPlayer _mediaPlayer;
         private readonly IToastDisplayer _toastDisplayer;
         private readonly WeekOfTheYearChapterStrategy _weekOfTheYearChapterStrategy = new WeekOfTheYearChapterStrategy();
         private readonly AslaksenTagChapterStrategy _aslaksenTagChapterStrategy = new AslaksenTagChapterStrategy();
@@ -121,7 +127,9 @@ namespace BMM.Core.ViewModels
             INetworkSettings networkSettings,
             IShufflePodcastAction shufflePodcastAction,
             ITrackPOFactory trackPOFactory,
-            IDocumentsPOFactory documentsPOFactory)
+            IDocumentsPOFactory documentsPOFactory,
+            ISettingsStorage settingsStorage,
+            IMediaPlayer mediaPlayer)
             : base(trackPOFactory, downloadedOnlyFilter)
         {
             _podcastDownloader = podcastDownloader;
@@ -131,6 +139,8 @@ namespace BMM.Core.ViewModels
             _toastDisplayer = toastDisplayer;
             _networkSettings = networkSettings;
             _documentsPOFactory = documentsPOFactory;
+            _settingsStorage = settingsStorage;
+            _mediaPlayer = mediaPlayer;
 
             _shufflePodcastCommand = new MvxAsyncCommand(async () =>
                 {
@@ -238,6 +248,33 @@ namespace BMM.Core.ViewModels
                 DocumentSelectedCommand,
                 OptionCommand,
                 TrackInfoProvider);
+        }
+
+        protected override async Task DocumentAction(IDocumentPO item, IList<Track> list)
+        {
+            if (item is not ITrackPO trackPO)
+                return;
+            
+            bool playChronological = await _settingsStorage.GetPlayInChronologicalOrderEnabled();
+            
+            if (playChronological)
+            {
+                var reversedTrackList = list
+                    .OfType<IMediaTrack>()
+                    .Reverse()
+                    .ToList();
+                
+                int index = reversedTrackList.IndexOf(trackPO.Track);
+                
+                await _mediaPlayer.Play(
+                    reversedTrackList,
+                    trackPO.Track,
+                    PlaybackOriginString(index));
+                
+                return;
+            }
+            
+            await base.DocumentAction(item, list);
         }
 
         public override CacheKeys? CacheKey => CacheKeys.PodcastGetTracks;

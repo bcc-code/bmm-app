@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,34 +19,37 @@
                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="N9n-Ay-mVk">
                         <rect key="frame" x="256" y="24.5" width="51" height="31"/>
                     </switch>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOw-KR-vJW">
-                        <rect key="frame" x="15" y="36.5" width="222" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.36078431372549019" green="0.4392156862745098" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="CheckBoxListText"/>
-                        </userDefinedRuntimeAttributes>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcY-vN-BeE">
-                        <rect key="frame" x="15" y="16" width="222" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                        <color key="textColor" red="0.050980392156862744" green="0.074509803921568626" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="CheckBoxListTitle"/>
-                        </userDefinedRuntimeAttributes>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ACB-bc-YpY">
+                        <rect key="frame" x="16" y="12" width="232" height="56"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OcY-vN-BeE">
+                                <rect key="frame" x="0.0" y="0.0" width="232" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                <color key="textColor" red="0.050980392156862744" green="0.074509803921568626" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="CheckBoxListTitle"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Text" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOw-KR-vJW">
+                                <rect key="frame" x="0.0" y="38" width="232" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.36078431372549019" green="0.4392156862745098" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="CheckBoxListText"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="ACB-bc-YpY" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="12" id="4M0-qW-UsU"/>
                     <constraint firstAttribute="centerY" secondItem="N9n-Ay-mVk" secondAttribute="centerY" id="Hcs-wi-bNo"/>
-                    <constraint firstItem="OcY-vN-BeE" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="topMargin" constant="5" id="HqB-nh-BnY"/>
-                    <constraint firstItem="iOw-KR-vJW" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="15" id="Lgc-Le-Jod"/>
-                    <constraint firstItem="iOw-KR-vJW" firstAttribute="top" secondItem="OcY-vN-BeE" secondAttribute="bottom" constant="1" id="hRT-Me-Okj"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="iOw-KR-vJW" secondAttribute="trailing" constant="67" id="mJT-AC-V9A"/>
-                    <constraint firstItem="OcY-vN-BeE" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="15" id="nN7-r7-11F"/>
+                    <constraint firstItem="N9n-Ay-mVk" firstAttribute="leading" secondItem="ACB-bc-YpY" secondAttribute="trailing" constant="8" id="LXf-Zp-unW"/>
+                    <constraint firstItem="ACB-bc-YpY" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="Xz5-OS-rsY"/>
+                    <constraint firstAttribute="bottom" secondItem="ACB-bc-YpY" secondAttribute="bottom" constant="12" id="cW0-IS-XGO"/>
                     <constraint firstAttribute="trailing" secondItem="N9n-Ay-mVk" secondAttribute="trailing" constant="15" id="yIW-2o-hgz"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="OcY-vN-BeE" secondAttribute="trailing" constant="67" id="ylW-T8-c44"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="BackgroundOneColor"/>
