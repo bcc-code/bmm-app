@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "个人",
     "HeadlineSettings": "设置",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "自动播放",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "主页上的连续记录",
