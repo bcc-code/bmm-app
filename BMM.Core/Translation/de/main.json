@@ -294,8 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Einstellungen",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "PlayInChronologicalOrderHeader": "In chronologischer Reihenfolge abspielen",
+    "PlayInChronologicalOrderText": "Podcast-Episoden in der Reihenfolge von der ältesten bis zur neuesten abspielen",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Spiele Musik ab, nachdem du die heutige Folge von Fra Kåre gehört hast. Gilt nur beim Abspielen über die Kachel auf dem Startbildschirm.",
     "OptionStreakHeader": "Streak auf der Startseite",
@@ -417,7 +417,7 @@
     "SearchHint": "Suchen",
     "FailedToAdd": "Der Titel konnte leider nicht zur Wiedergabeliste hinzugefügt werden. Bitte versuche es später nochmal.",
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Wiedergabeliste.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Die Sammlung wurde bereits zu deiner Wiedergabeliste hinzugefügt.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playliste {0} vorhanden",
     "FailedToAddAlbum": "Das Album zur Playlist hinzufügen ist fehlgeschlagen, weil es Alben enthält.",
     "FailedToAddUnknownType": "Ein \"{0}\" zu einer Playlist hinzufügen wird derzeit nicht unterstützt.",
@@ -459,7 +459,7 @@
     "Contributor.Play": "Abspielen",
     "Contributor.Share": "Mitwirkenden teilen",
     "OfflineTrackCollection.DeletePlaylist": "Playlist löschen",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Alle Titel zur Wiedergabeliste  hinzufügen",
     "Cancel": "Abbrechen"
   },
   "Notifications": {
