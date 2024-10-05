@@ -294,8 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profiel",
     "HeadlineSettings": "Instellingen",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "PlayInChronologicalOrderHeader": "Speel in chronologische volgorde",
+    "PlayInChronologicalOrderText": "Podcastafleveringen afspelen van oudste tot nieuwste",
     "OptionAutoplayHeader": "Automatisch afspelen",
     "OptionAutoplayText": "Speel muziek af na het luisteren naar de aflevering van vandaag van Fra Kåre. Geldt alleen bij het afspelen via de tegel op het startscherm.",
     "OptionStreakHeader": "Streak op de Home pagina ",
