@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Setări",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Redare automată",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Progres pe ecranul de pornire",
@@ -415,6 +417,7 @@
     "SearchHint": "Caută",
     "FailedToAdd": "Nu s-a putut adăuga piesa în play-list. Vă rugăm să încercați din nou mai târziu.",
     "AlbumFailedToAddAlreadyExists": "Acest album este deja în lista ta de redare.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Piesa este deja în lista de redare {0}",
     "FailedToAddAlbum": "Nu a reuşit să adăugaţi albumul lista de redare deoarece contine albume.",
     "FailedToAddUnknownType": "Adăugarea unui \"{0}\" pentru o listă de redare nu se acceptă în prezent.",
@@ -456,6 +459,7 @@
     "Contributor.Play": "Cântă",
     "Contributor.Share": "Distribuie contribuitor",
     "OfflineTrackCollection.DeletePlaylist": "Șterge play-list",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Anulare"
   },
   "Notifications": {

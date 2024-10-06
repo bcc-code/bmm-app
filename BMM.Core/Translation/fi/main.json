@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profiili",
     "HeadlineSettings": "Asetukset",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Koti jakso",
@@ -415,6 +417,7 @@
     "SearchHint": "Etsi",
     "FailedToAdd": "Kappaleen lisääminen soittolistalle epäonnistui. Yritä myöhemmin uudelleen.",
     "AlbumFailedToAddAlreadyExists": "Tämä albumi on jo soittolistalle.",
+    "CollectionAlreadyInTrackCollection": "Kokoelma on jo soittolistallasi",
     "TrackAlreadyExistInTrackCollection": "Kappale on jo soittolistalla.",
     "FailedToAddAlbum": "Albumin lisätä soittoluetteloon, koska se sisältää albumit epäonnistui.",
     "FailedToAddUnknownType": "Lisäämällä \"{0}\" soittolista ei tällä hetkellä tueta.",
@@ -456,6 +459,7 @@
     "Contributor.Play": "Toista",
     "Contributor.Share": "Jakamisen avustaja",
     "OfflineTrackCollection.DeletePlaylist": "Poista soittolista",
+    "AddAllToPlaylist": "Lisää kaikki raidat soittolistaasi",
     "Cancel": "Peruuta"
   },
   "Notifications": {

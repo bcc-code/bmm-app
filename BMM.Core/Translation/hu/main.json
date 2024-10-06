@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Beállítások",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Automatikus lejátszás",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Streak a kezdőképernyőn",
@@ -415,6 +417,7 @@
     "SearchHint": "Keresés",
     "FailedToAdd": "Nem sikerült hozzáadni a zeneszámot a lejátszási listához. Próbáld újra később.",
     "AlbumFailedToAddAlreadyExists": "Ez az album már szerepel a lejátszási listádon.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Zeneszám már létezik a {0} számú lejátszási listában",
     "FailedToAddAlbum": "Nem sikerült az album felvétele a lejátszási listához, mert albumot tartalmaz.",
     "FailedToAddUnknownType": "A \"{0}\" hozzáadása a lejátszási listához jelenleg nem támogatott.",
@@ -456,6 +459,7 @@
     "Contributor.Play": "Lejátszás",
     "Contributor.Share": "Közreműködő megosztása",
     "OfflineTrackCollection.DeletePlaylist": "Lejátszási lista törlése",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Mégse"
   },
   "Notifications": {

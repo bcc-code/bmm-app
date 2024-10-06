@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Perfil",
     "HeadlineSettings": "Configuración",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Reproducción automática",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Racha en Inicio",
@@ -415,6 +417,7 @@
     "SearchHint": "Buscar",
     "FailedToAdd": "No se pudo agregar la pista a la lista de reproducción. Inténtalo de nuevo más tarde.",
     "AlbumFailedToAddAlreadyExists": "Este álbum ya está en la lista de reproducción.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Esta pista ya existe en la lista de reproducción {0}",
     "FailedToAddAlbum": "No se pudo agregar el álbum a la lista porque contiene álbumes.",
     "FailedToAddUnknownType": "Adición de un \"{0}\" a una lista de reproducción en la actualidad no es compatible.",
@@ -456,6 +459,7 @@
     "Contributor.Play": "Reproducir",
     "Contributor.Share": "Compartir contribuyente",
     "OfflineTrackCollection.DeletePlaylist": "Borrar lista de reproducción",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Cancelar"
   },
   "Notifications": {

@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profile",
     "HeadlineSettings": "Postavke",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Autoplay",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Streak on Home",
@@ -415,6 +417,7 @@
     "SearchHint": "Pretraživanje",
     "FailedToAdd": "Dodavanje pjesme na popis za reproduciranje nije uspjelo. Pokušajte ponovo kasnije.",
     "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
     "FailedToAddAlbum": "Nije uspio dodati album na popis za reproduciranje jer sadrži albume.",
     "FailedToAddUnknownType": "Dodavanje \"{0}\" na popis trenutno nije podržano.",
@@ -456,6 +459,7 @@
     "Contributor.Play": "Play",
     "Contributor.Share": "Share contributor",
     "OfflineTrackCollection.DeletePlaylist": "Delete playlist",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Cancel"
   },
   "Notifications": {

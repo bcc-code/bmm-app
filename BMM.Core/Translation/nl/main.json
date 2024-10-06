@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profiel",
     "HeadlineSettings": "Instellingen",
+    "PlayInChronologicalOrderHeader": "Speel in chronologische volgorde",
+    "PlayInChronologicalOrderText": "Podcastafleveringen afspelen van oudste tot nieuwste",
     "OptionAutoplayHeader": "Automatisch afspelen",
     "OptionAutoplayText": "Speel muziek af na het luisteren naar de aflevering van vandaag van Fra Kåre. Geldt alleen bij het afspelen via de tegel op het startscherm.",
     "OptionStreakHeader": "Streak op de Home pagina ",
@@ -415,6 +417,7 @@
     "SearchHint": "Zoek",
     "FailedToAdd": "Toevoegen van het nummer aan de afspeellijst is mislukt. Probeer het later opnieuw.",
     "AlbumFailedToAddAlreadyExists": "Dit album staat al in je playlist.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Nummer bestaat al in afspeellijst {0}",
     "FailedToAddAlbum": "Kan het album niet toevoegen aan de afspeellijst omdat het albums bevat.",
     "FailedToAddUnknownType": "Het toevoegen van een \"{0}\" aan een afspeellijst wordt momenteel niet ondersteund.",
@@ -456,6 +459,7 @@
     "Contributor.Play": "Afspelen",
     "Contributor.Share": "Deel bijdrager",
     "OfflineTrackCollection.DeletePlaylist": "Afspeellijst verwijderen",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Annuleren"
   },
   "Notifications": {

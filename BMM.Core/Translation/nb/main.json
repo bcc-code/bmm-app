@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Min profil",
     "HeadlineSettings": "Innstillinger",
+    "PlayInChronologicalOrderHeader": "Play in chronological order",
+    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Automatisk avspilling",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Streak på hjem-skjermen",
@@ -415,6 +417,7 @@
     "SearchHint": "Søk",
     "FailedToAdd": "Kunne ikke legge til i spillelisten. Prøv igjen senere.",
     "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
+    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
     "TrackAlreadyExistInTrackCollection": "Spor allerede eksisterer i spilleliste {0}",
     "FailedToAddAlbum": "Kan ikke legge albumet til spillelisten fordi den inneholder album.",
     "FailedToAddUnknownType": "Legge til en \"{0}\" i en spilleliste støttes ikke.",
@@ -456,6 +459,7 @@
     "Contributor.Play": "Spill av",
     "Contributor.Share": "Del bidragsyter",
     "OfflineTrackCollection.DeletePlaylist": "Slett spillelisten",
+    "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Avbryt"
   },
   "Notifications": {
