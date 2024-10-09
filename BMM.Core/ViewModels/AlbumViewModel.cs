@@ -1,18 +1,18 @@
-﻿using System;
-using BMM.Api.Implementation.Models;
+﻿using BMM.Api.Implementation.Models;
 using BMM.Core.ViewModels.Base;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories;
+using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Albums;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Translation;
@@ -22,7 +22,7 @@ using MvvmCross.ViewModels;
 
 namespace BMM.Core.ViewModels
 {
-    public class AlbumViewModel : DocumentsViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, IAlbumViewModel
+    public class AlbumViewModel : DownloadViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, IAlbumViewModel
     {
         private readonly IPlayOrResumePlayAction _playOrResumePlayAction;
         private readonly IDocumentsPOFactory _documentsPOFactory;
@@ -61,7 +61,13 @@ namespace BMM.Core.ViewModels
         public AlbumViewModel(
             IShareLink shareLink,
             IPlayOrResumePlayAction playOrResumePlayAction,
-            IDocumentsPOFactory documentsPOFactory)
+            IDocumentsPOFactory documentsPOFactory,
+            IStorageManager storageManager,
+            IDocumentFilter documentFilter,
+            IDownloadQueue downloadQueue,
+            IConnection connection,
+            INetworkSettings networkSettings)
+            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
         {
             _playOrResumePlayAction = playOrResumePlayAction;
             _documentsPOFactory = documentsPOFactory;
@@ -108,10 +114,28 @@ namespace BMM.Core.ViewModels
             Documents.CollectionChanged -= UpdateView;
         }
 
+        protected override Task DownloadAction()
+        {
+            return Task.CompletedTask;
+        }
+
+        protected override Task DeleteAction()
+        {
+            return Task.CompletedTask;
+        }
+
+        protected override Task<long> CalculateApproximateDownloadSize()
+        {
+            long sum = Documents
+                .OfType<TrackPO>()
+                .Sum(x => x.Track.Media.Sum(t => t.Files.Sum(s => s.Size)));
+            return Task.FromResult(sum);
+        }
+
         public override async Task Load()
         {
             await base.Load();
-            await RaisePropertyChanged(() => ShowPlayButton);
+            RefreshButtons();
         }
 
         public string ReadableDuration(long durationInMilliseconds)
@@ -146,30 +170,21 @@ namespace BMM.Core.ViewModels
                 TrackInfoProvider);
         }
 
-        private void UpdateView(object sender, NotifyCollectionChangedEventArgs e)
+        private void UpdateView(object sender, NotifyCollectionChangedEventArgs e) => RefreshButtons();
+
+        private void RefreshButtons()
         {
             RaisePropertyChanged(() => ShowPlayButton);
+            RaisePropertyChanged(() => ShowDownloadButtons);
         }
 
-        public bool ShowSharingInfo => false;
-
-        public bool ShowDownloadButtons => false;
-
-        public bool IsDownloaded => false;
-
-        public string Title => Album?.Title;
-
-        public string Description => Album?.Description;
-
-        public bool ShowPlaylistIcon => false;
-        public bool ShowImage => Album?.Cover != null;
-        public string Image => Album?.Cover;
-        public bool UseCircularImage => false;
-
-        public bool ShowFollowButtons => false;
-
-        public bool ShowPlayButton => Documents.OfType<TrackPO>().Any();
-        public string PlayButtonText => GetButtonText();
+        public override string Title => Album?.Title;
+        public override string Description => Album?.Description;
+        public override bool ShowImage => Album?.Cover != null;
+        public override string Image => Album?.Cover;
+        public override bool ShowPlayButton => Documents.OfType<TrackPO>().Any();
+        public override bool ShowDownloadButtons => Documents.OfType<TrackPO>().Any();
+        public override string PlayButtonText => GetButtonText();
 
         private string GetButtonText()
         {
@@ -178,8 +193,6 @@ namespace BMM.Core.ViewModels
             
             return TextSource[Translations.DocumentsViewModel_Play];
         }
-
-        public bool ShowTrackCount => true;
 
         public override string TrackCountString => Documents.OfType<AlbumPO>().Any() ? TextSource.GetText(Translations.AlbumViewModel_PluralAlbums, Documents.OfType<AlbumPO>().Count()) : base.TrackCountString;
     }
