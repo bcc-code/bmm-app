@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations.Albums.Interfaces;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.Podcasts;
@@ -17,6 +18,7 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
         private Mock<IPodcastOfflineTrackProvider> _podcastTrackProvider;
         private Mock<ITrackCollectionOfflineTrackProvider> _trackCollectionProvider;
         private Mock<IPlaylistOfflineTrackProvider> _playlistProvider;
+        private Mock<IAlbumOfflineTrackProvider> _albumProvider;
         private readonly FakeTrackFactory _fakeTrackFactory = new FakeTrackFactory();
 
         [SetUp]
@@ -25,12 +27,13 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
             _podcastTrackProvider = new Mock<IPodcastOfflineTrackProvider>();
             _trackCollectionProvider = new Mock<ITrackCollectionOfflineTrackProvider>();
             _playlistProvider = new Mock<IPlaylistOfflineTrackProvider>();
+            _albumProvider = new Mock<IAlbumOfflineTrackProvider>();
         }
 
         [Test]
         public async Task TrackProvider_Should_Combine_Tracks_From_Providers()
         {
-            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object);
+            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object);
 
             var podcastTracks = new List<Track>
             {
@@ -50,20 +53,29 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
                 _fakeTrackFactory.CreateTrackWithId(6),
                 _fakeTrackFactory.CreateTrackWithId(7)
             };
+            var albumTracks = new List<Track>
+            {
+                _fakeTrackFactory.CreateTrackWithId(8),
+                _fakeTrackFactory.CreateTrackWithId(9),
+                _fakeTrackFactory.CreateTrackWithId(10),
+            };
 
             _podcastTrackProvider
-                .Setup(x => x.GetPodcastTracksSupposedToBeDownloaded())
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
                 .ReturnsAsync(podcastTracks);
             _trackCollectionProvider
-                .Setup(x => x.GetCollectionTracksSupposedToBeDownloaded())
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
                 .ReturnsAsync(trackCollectionTracks);
             _playlistProvider
-                .Setup(x => x.GetCollectionTracksSupposedToBeDownloaded())
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
                 .ReturnsAsync(playlistTracks);
+            _albumProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(albumTracks);
 
             var result = await globalTrackProvider.GetTracksSupposedToBeDownloaded();
 
-            Assert.AreEqual(7, result.Count());
+            Assert.That(result.Count(), Is.EqualTo(10));
         }
     }
 }
