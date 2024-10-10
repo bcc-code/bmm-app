@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Clients.Contracts;
@@ -27,7 +22,7 @@ namespace BMM.Core.Implementations.PlaylistPersistence
             _analytics = analytics;
         }
 
-        public async Task<IEnumerable<Track>> GetCollectionTracksSupposedToBeDownloaded()
+        public async Task<IList<Track>> GetTracksSupposedToBeDownloaded()
         {
             var playlistIds = await _playlistStorage.GetPlaylistIds();
 

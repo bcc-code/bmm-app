@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BMM.Api;
+﻿using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
-using BMM.Core.Implementations.Security;
 
 namespace BMM.Core.Implementations.TrackCollections
 {
@@ -15,19 +11,17 @@ namespace BMM.Core.Implementations.TrackCollections
         private readonly IBMMClient _client;
         private readonly IOfflineTrackCollectionStorage _trackCollectionStorage;
         private readonly IAnalytics _analytics;
-        private readonly IUserStorage _userStorage;
 
-        private User User => _userStorage.GetUser();
-
-        public TrackCollectionOfflineTrackProvider(IBMMClient client, IOfflineTrackCollectionStorage trackCollectionStorage, IAnalytics analytics, IUserStorage userStorage)
+        public TrackCollectionOfflineTrackProvider(IBMMClient client,
+            IOfflineTrackCollectionStorage trackCollectionStorage,
+            IAnalytics analytics)
         {
             _client = client;
             _trackCollectionStorage = trackCollectionStorage;
             _analytics = analytics;
-            _userStorage = userStorage;
         }
 
-        public async Task<IEnumerable<Track>> GetCollectionTracksSupposedToBeDownloaded()
+        public async Task<IList<Track>> GetTracksSupposedToBeDownloaded()
         {
             var allOfflineTracksInTrackCollections = new List<Track>();
             var offlineTrackCollectionIds = _trackCollectionStorage.GetOfflineTrackCollectionIds().ToList();

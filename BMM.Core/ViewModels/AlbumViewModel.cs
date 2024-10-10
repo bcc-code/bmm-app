@@ -6,6 +6,7 @@ using BMM.Api.Framework;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Albums.Interfaces;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
@@ -26,6 +27,7 @@ namespace BMM.Core.ViewModels
     {
         private readonly IPlayOrResumePlayAction _playOrResumePlayAction;
         private readonly IDocumentsPOFactory _documentsPOFactory;
+        private readonly IAlbumManager _albumManager;
         private int _id;
 
         /// <summary>
@@ -66,11 +68,13 @@ namespace BMM.Core.ViewModels
             IDocumentFilter documentFilter,
             IDownloadQueue downloadQueue,
             IConnection connection,
-            INetworkSettings networkSettings)
+            INetworkSettings networkSettings,
+            IAlbumManager albumManager)
             : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
         {
             _playOrResumePlayAction = playOrResumePlayAction;
             _documentsPOFactory = documentsPOFactory;
+            _albumManager = albumManager;
             _playOrResumePlayAction.AttachDataContext(this);
             
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddToTrackCollection(Album.Id, DocumentType.Album));
@@ -114,14 +118,14 @@ namespace BMM.Core.ViewModels
             Documents.CollectionChanged -= UpdateView;
         }
 
-        protected override Task DownloadAction()
+        protected override async Task DownloadAction()
         {
-            return Task.CompletedTask;
+            await _albumManager.DownloadAlbum(Album);
         }
 
-        protected override Task DeleteAction()
+        protected override async Task DeleteAction()
         {
-            return Task.CompletedTask;
+            await _albumManager.RemoveDownloadedAlbum(Album);
         }
 
         protected override Task<long> CalculateApproximateDownloadSize()

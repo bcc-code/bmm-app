@@ -1,6 +1,6 @@
 using BMM.Api.Implementation.Models;
 
-namespace BMM.Core.Implementations.Albums;
+namespace BMM.Core.Implementations.Albums.Interfaces;
 
 public interface IAlbumManager
 {
