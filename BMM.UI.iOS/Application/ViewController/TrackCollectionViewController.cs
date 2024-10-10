@@ -72,8 +72,8 @@ namespace BMM.UI.iOS
                 .For(v => v.UseLikeIcon)
                 .To(vm => vm.UseLikeIcon);
             
-            DownloadButton.DownloadedImage = UIImage.FromBundle("TickIcon");
-            DownloadButton.NormalStateImage = UIImage.FromBundle("IconDownload");
+            DownloadButton.DownloadedImage = UIImage.FromBundle(ImageResourceNames.IconTick.ToStandardIosImageName());
+            DownloadButton.NormalStateImage = UIImage.FromBundle(ImageResourceNames.IconDownload.ToStandardIosImageName());
             set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
             set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_AvailableOfflineDownload);
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);

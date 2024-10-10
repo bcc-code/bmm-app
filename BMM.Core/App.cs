@@ -19,6 +19,8 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Base.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
+using BMM.Core.Implementations.Albums;
+using BMM.Core.Implementations.Albums.Interfaces;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.ApiClients;
 using BMM.Core.Implementations.Caching;
@@ -210,7 +212,11 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IOfflineTrackCollectionStorage, OfflineTrackCollectionStorage>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackCollectionOfflineTrackProvider, TrackCollectionOfflineTrackProvider>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPodcastOfflineTrackProvider, PodcastOfflineTrackProvider>();
-
+            
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IOfflineAlbumStorage, OfflineAlbumStorage>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAlbumOfflineTrackProvider, AlbumOfflineTrackProvider>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IAlbumManager, AlbumManager>();
+            
             Mvx.IoCProvider.RegisterType<IOfflinePlaylistStorage, OfflinePlaylistStorage>();
             Mvx.IoCProvider.RegisterType<IPlaylistOfflineTrackProvider, PlaylistOfflineTrackProvider>();
             Mvx.IoCProvider.RegisterType<IPlaylistManager, PlaylistManager>();

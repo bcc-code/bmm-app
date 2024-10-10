@@ -20,7 +20,6 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
     {
         private Mock<IBMMClient> _client;
         private Mock<IAnalytics> _analytics;
-        private Mock<IUserStorage> _userStorage;
         private Mock<IOfflineTrackCollectionStorage> _trackCollectionOfflineManager;
         private TrackCollection _trackCollection1;
         private TrackCollection _trackCollection2;
@@ -35,7 +34,6 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             _client.Setup(x => x.TrackCollection.GetById(2, It.IsAny<CachePolicy>())).ReturnsAsync(_trackCollection2).Verifiable();
 
             _analytics = new Mock<IAnalytics>();
-            _userStorage = new Mock<IUserStorage>();
             _trackCollectionOfflineManager = new Mock<IOfflineTrackCollectionStorage>();
         }
 
@@ -44,8 +42,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             return new TrackCollectionOfflineTrackProvider(
                 _client.Object,
                 _trackCollectionOfflineManager.Object,
-                _analytics.Object,
-                _userStorage.Object);
+                _analytics.Object);
         }
 
         [Test]
@@ -56,7 +53,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var offlineTrackProvider = GetTrackCollectionOfflineTrackProvider();
 
             // Act
-            var results = await offlineTrackProvider.GetCollectionTracksSupposedToBeDownloaded();
+            var results = await offlineTrackProvider.GetTracksSupposedToBeDownloaded();
 
             // Assert
             Assert.AreEqual(4, results.Count());
@@ -72,7 +69,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var offlineTrackProvider = GetTrackCollectionOfflineTrackProvider();
 
             // Act
-            var results = await offlineTrackProvider.GetCollectionTracksSupposedToBeDownloaded();
+            var results = await offlineTrackProvider.GetTracksSupposedToBeDownloaded();
 
             // Assert
             Assert.AreEqual(4, results.Count());
@@ -92,7 +89,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var offlineTrackProvider = GetTrackCollectionOfflineTrackProvider();
 
             // Act
-            var results = (await offlineTrackProvider.GetCollectionTracksSupposedToBeDownloaded()).ToList();
+            var results = (await offlineTrackProvider.GetTracksSupposedToBeDownloaded()).ToList();
 
             // Assert
             Assert.AreEqual(2, results.Count);
@@ -106,12 +103,11 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
         {
             // Arrange
             _client.Setup(x => x.TrackCollection.GetById(3, It.IsAny<CachePolicy>())).Throws(new NotFoundException(new HttpRequestMessage(), new HttpResponseMessage()));
-            _userStorage.Setup(x => x.GetUser()).Returns(new User { Username = "ola.normann", PersonId = 42526 });
             _trackCollectionOfflineManager.Setup(x => x.GetOfflineTrackCollectionIds()).Returns(new Collection<int> {1, 2, 3});
-            var offlineTrackProvider = new TrackCollectionOfflineTrackProvider(_client.Object, _trackCollectionOfflineManager.Object, _analytics.Object, _userStorage.Object);
+            var offlineTrackProvider = new TrackCollectionOfflineTrackProvider(_client.Object, _trackCollectionOfflineManager.Object, _analytics.Object);
 
             // Act
-            var response = await offlineTrackProvider.GetCollectionTracksSupposedToBeDownloaded();
+            var response = await offlineTrackProvider.GetTracksSupposedToBeDownloaded();
 
             // Assert
             _trackCollectionOfflineManager.Verify(x => x.Remove(3));

@@ -1,11 +1,8 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations.Downloading;
 
 namespace BMM.Core.Implementations.PlaylistPersistence
 {
-    public interface IPlaylistOfflineTrackProvider
+    public interface IPlaylistOfflineTrackProvider : IOfflineTrackProvider
     {
-        Task<IEnumerable<Track>> GetCollectionTracksSupposedToBeDownloaded();
     }
 }
