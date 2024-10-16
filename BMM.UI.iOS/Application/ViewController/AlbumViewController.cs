@@ -1,10 +1,13 @@
 using System;
 using System.ComponentModel;
+using BMM.Core.Constants;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
+using MvvmCross.Localization;
 using MvvmCross.Platforms.Ios.Binding;
 using UIKit;
 
@@ -39,10 +42,20 @@ namespace BMM.UI.iOS
             set.Bind(PlayButton).For(v => v.BindVisible()).To(vm => vm.ShowPlayButton);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
 
+            DownloadButton.DownloadedImage = UIImage.FromBundle(ImageResourceNames.IconTick.ToStandardIosImageName());
+            DownloadButton.NormalStateImage = UIImage.FromBundle(ImageResourceNames.IconDownload.ToStandardIosImageName());
+            set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
+            set.Bind(DownloadButton).For(v => v.Label).To(vm => vm.TextSource).WithConversion<MvxLanguageConverter>(Translations.TrackCollectionViewModel_AvailableOfflineDownload);
+            set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);
+            set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
+            set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
+            set.Bind(DownloadButton).For(v => v.BindVisible()).To(vm => vm.ShowDownloadButtons);
+            
             set.Apply();
 
             SetThemes();
             AlbumTable.ResizeHeaderView();
+            DownloadButton.UpdateCurrentState(true);
         }
 
         private void SetThemes()
@@ -51,6 +64,7 @@ namespace BMM.UI.iOS
             DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
             PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
+            DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
         }
 
         protected override void AttachEvents()

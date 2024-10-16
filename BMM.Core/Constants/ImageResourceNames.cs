@@ -24,5 +24,7 @@ namespace BMM.Core.Constants
         public const string IconCheckmark = "Icon_Checkmark";
         public const string IconUnliked = "Icon_Unliked";
         public const string IconLiked = "Icon_Liked";
+        public const string IconTick = "Tick_Icon";
+        public const string IconDownload = "Icon_Download";
     }
 }

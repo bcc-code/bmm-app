@@ -50,7 +50,7 @@ namespace BMM.Core.ViewModels.Base
 
         public bool IsDownloading => IsOfflineAvailable && DownloadedFilesCount < ToBeDownloadedCount && ToBeDownloadedCount > 0;
 
-        public bool ShowDownloadButtons => true;
+        public virtual bool ShowDownloadButtons => true;
 
         public bool IsDownloaded => IsOfflineAvailable && !IsDownloading;
 
@@ -68,7 +68,7 @@ namespace BMM.Core.ViewModels.Base
 
         public bool ShowFollowButtons => false;
 
-        public bool ShowPlayButton => true;
+        public virtual bool ShowPlayButton => true;
         public bool ShowTrackCount => true;
 
         public string DownloadingText => !IsDownloading

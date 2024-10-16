@@ -1,4 +1,5 @@
 ﻿using System;
+using BMM.Core.Constants;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
@@ -33,8 +34,8 @@ namespace BMM.UI.iOS
 
             var source = new NotSelectableDocumentsTableViewSource(CuratedPlaylistTable);
 
-            DownloadButton.DownloadedImage = UIImage.FromBundle("TickIcon");
-            DownloadButton.NormalStateImage = UIImage.FromBundle("IconDownload");
+            DownloadButton.DownloadedImage = UIImage.FromBundle(ImageResourceNames.IconTick.ToStandardIosImageName());
+            DownloadButton.NormalStateImage = UIImage.FromBundle(ImageResourceNames.IconDownload.ToStandardIosImageName());
 
             var set = this.CreateBindingSet<CuratedPlaylistViewController, CuratedPlaylistViewModel>();
             

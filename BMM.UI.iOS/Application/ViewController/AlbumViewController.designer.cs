@@ -32,6 +32,9 @@ namespace BMM.UI.iOS
 		UIKit.UILabel DescriptionLabel { get; set; }
 
 		[Outlet]
+		BMM.UI.iOS.DownloadButton DownloadButton { get; set; }
+
+		[Outlet]
 		UIKit.UIButton PlayButton { get; set; }
 
 		[Outlet]
@@ -45,10 +48,10 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
-			// if (AlbumCoverImageView != null) {
-			// 	AlbumCoverImageView.Dispose ();
-			// 	AlbumCoverImageView = null;
-			// }
+			if (AlbumCoverImageView != null) {
+				AlbumCoverImageView.Dispose ();
+				AlbumCoverImageView = null;
+			}
 
 			if (AlbumHeaderView != null) {
 				AlbumHeaderView.Dispose ();
@@ -58,6 +61,11 @@ namespace BMM.UI.iOS
 			if (AlbumTable != null) {
 				AlbumTable.Dispose ();
 				AlbumTable = null;
+			}
+
+			if (ButtonStackViewHeight != null) {
+				ButtonStackViewHeight.Dispose ();
+				ButtonStackViewHeight = null;
 			}
 
 			if (ButtonTopConstraint != null) {
@@ -90,9 +98,9 @@ namespace BMM.UI.iOS
 				TrackCountLabel = null;
 			}
 
-			if (ButtonStackViewHeight != null) {
-				ButtonStackViewHeight.Dispose ();
-				ButtonStackViewHeight = null;
+			if (DownloadButton != null) {
+				DownloadButton.Dispose ();
+				DownloadButton = null;
 			}
 
 		}

@@ -14,7 +14,7 @@ using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Podcasts
 {
-    public class PodcastOfflineTrackProvider: IPodcastOfflineTrackProvider
+    public class PodcastOfflineTrackProvider : IPodcastOfflineTrackProvider
     {
         private readonly IBMMClient _client;
 
@@ -23,7 +23,7 @@ namespace BMM.Core.Implementations.Podcasts
             _client = client;
         }
 
-        public async Task<IList<Track>> GetPodcastTracksSupposedToBeDownloaded()
+        public async Task<IList<Track>> GetTracksSupposedToBeDownloaded()
         {
             var followedPodcasts = await GetFollowedPodcasts();
             var tracks = new List<Track>();

@@ -200,6 +200,12 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(LocalPlaylists));
         }
         
+        public static HashSet<int> LocalAlbums
+        {
+            get => GetValueOrDefault(nameof(LocalAlbums), new HashSet<int>());
+            set => AddOrUpdateValue(value, nameof(LocalAlbums));
+        }
+        
         public static IList<PlaybackHistoryEntry> PlaybackHistory
         {
             get => GetValueOrDefault(nameof(PlaybackHistory), new List<PlaybackHistoryEntry>());
