@@ -56,7 +56,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         private MediaSourceSetter _mediaSourceSetter;
         private MediaControllerCompat _mediaController;
         private bool _isForegroundService;
-        private IAnalytics _analytics;
 
         private PeriodicExecutor _progressUpdater = new PeriodicExecutor();
 
@@ -169,7 +168,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             var metadataMapper = Mvx.IoCProvider.Resolve<IMetadataMapper>();
             var queue = Mvx.IoCProvider.Resolve<IMediaQueue>();
             var analytics = Mvx.IoCProvider.Resolve<IAnalytics>();
-            _analytics = analytics;
             _notificationBuilder = new NowPlayingNotificationBuilder(this, metadataMapper, queue, Mvx.IoCProvider.Resolve<NotificationChannelBuilder>());
             _notificationManager = NotificationManagerCompat.From(this);
             
@@ -242,10 +240,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
         private void UpdateNotification(PlaybackStateCompat state)
         {
-            _analytics.LogEvent($"UpdateNotification: {state.State}");
-            if (string.IsNullOrEmpty(_mediaController.Metadata?.Description?.MediaId))
-                return;
-
             Mvx.IoCProvider.Resolve<IExceptionHandler>()
                 .FireAndForgetWithoutUserMessages(async () =>
                 {
@@ -269,8 +263,6 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                         }
                         else if (updatedState == PlaybackStateCompat.StateNone || updatedState == PlaybackStateCompat.StateStopped)
                         {
-                            _analytics.LogEvent(
-                                $"not playing anymore, build version: {Build.VERSION.SdkInt}, IsForegroundService: {_isForegroundService}, notification not null: {notification != null}");
                             if (_isForegroundService)
                             {
                                 StopForeground(StopForegroundFlags.Detach);
