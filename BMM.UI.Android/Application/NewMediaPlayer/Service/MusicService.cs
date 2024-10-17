@@ -242,7 +242,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
         {
             if (string.IsNullOrEmpty(_mediaController.Metadata?.Description?.MediaId))
                 return;
-
+            
             Mvx.IoCProvider.Resolve<IExceptionHandler>()
                 .FireAndForgetWithoutUserMessages(async () =>
                 {
@@ -254,25 +254,41 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                         notification = await _notificationBuilder.BuildNotification(_mediaSession.SessionToken, ApplicationContext, _mediaController);
                     }
 
-                    if (updatedState == PlaybackStateCompat.StateBuffering || updatedState == PlaybackStateCompat.StatePlaying)
+                    if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
                     {
-                        if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
-                            StartForeground(NowPlayingNotificationBuilder.NowPlayingNotification,
-                                notification,
-                                ForegroundService.TypeMediaPlayback);
-                        else
-                            StartForeground(NowPlayingNotificationBuilder.NowPlayingNotification, notification);
-                        _isForegroundService = true;
+                        if (updatedState == PlaybackStateCompat.StateBuffering || updatedState == PlaybackStateCompat.StatePlaying)
+                        {
+                            if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
+                                StartForeground(NowPlayingNotificationBuilder.NowPlayingNotification,
+                                    notification,
+                                    ForegroundService.TypeMediaPlayback);
+                            _isForegroundService = true;
+                        }
+                        else if (updatedState == PlaybackStateCompat.StateNone || updatedState == PlaybackStateCompat.StateStopped)
+                        {
+                            if (_isForegroundService)
+                            {
+                                StopForeground(StopForegroundFlags.Detach);
+
+                                if (notification != null)
+                                    _notificationManager.Notify(NowPlayingNotificationBuilder.NowPlayingNotification, notification);
+                                else
+                                    RemoveNowPlayingNotification();
+
+                                _isForegroundService = false;
+                            }
+                        }
                     }
                     else
                     {
-                        if (_isForegroundService)
+                        if (updatedState == PlaybackStateCompat.StateBuffering || updatedState == PlaybackStateCompat.StatePlaying)
                         {
-
-                            if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
-                                StopForeground(StopForegroundFlags.Remove);
-                            else
-                                StopForeground(false);
+                            StartForeground(NowPlayingNotificationBuilder.NowPlayingNotification, notification);
+                            _isForegroundService = true;
+                        }
+                        else if (_isForegroundService)
+                        {
+                            StopForeground(false);
 
                             if (notification != null)
                                 _notificationManager.Notify(NowPlayingNotificationBuilder.NowPlayingNotification, notification);
