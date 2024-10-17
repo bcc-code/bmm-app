@@ -1,4 +1,5 @@
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
