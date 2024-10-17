@@ -240,6 +240,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
         private void UpdateNotification(PlaybackStateCompat state)
         {
+            if (string.IsNullOrEmpty(_mediaController.Metadata?.Description?.MediaId))
+                return;
+            
             Mvx.IoCProvider.Resolve<IExceptionHandler>()
                 .FireAndForgetWithoutUserMessages(async () =>
                 {
