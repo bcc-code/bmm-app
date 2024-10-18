@@ -233,6 +233,10 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_OptionAutoplayText = nameof(SettingsViewModel_OptionAutoplayText);
 		public const string SettingsViewModel_OptionStreakHeader = nameof(SettingsViewModel_OptionStreakHeader);
 		public const string SettingsViewModel_OptionStreakText = nameof(SettingsViewModel_OptionStreakText);
+		public const string SettingsViewModel_OptionBibleStudyHeader = nameof(SettingsViewModel_OptionBibleStudyHeader);
+		public const string SettingsViewModel_OptionBibleStudyText = nameof(SettingsViewModel_OptionBibleStudyText);
+		public const string SettingsViewModel_OptionNotificationBadgeHeader = nameof(SettingsViewModel_OptionNotificationBadgeHeader);
+		public const string SettingsViewModel_OptionNotificationBadgeText = nameof(SettingsViewModel_OptionNotificationBadgeText);
 		public const string SettingsViewModel_OptionEnablePushHeader = nameof(SettingsViewModel_OptionEnablePushHeader);
 		public const string SettingsViewModel_OptionPushNotifications = nameof(SettingsViewModel_OptionPushNotifications);
 		public const string SettingsViewModel_OptionPushNotificationsSubtitle = nameof(SettingsViewModel_OptionPushNotificationsSubtitle);
@@ -479,5 +483,7 @@ namespace BMM.Core.Translation
 		public const string AskQuestionConfirmationViewModel_Description = nameof(AskQuestionConfirmationViewModel_Description);
 		public const string AskQuestionConfirmationViewModel_GotIt = nameof(AskQuestionConfirmationViewModel_GotIt);
 		public const string AchievementsViewModel_Title = nameof(AchievementsViewModel_Title);
+		public const string AchievementsViewModel_EmptyTitle = nameof(AchievementsViewModel_EmptyTitle);
+		public const string AchievementsViewModel_EmptySubtitle = nameof(AchievementsViewModel_EmptySubtitle);
 	}
 }
