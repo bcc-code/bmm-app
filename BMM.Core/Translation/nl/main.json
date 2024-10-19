@@ -417,7 +417,7 @@
     "SearchHint": "Zoek",
     "FailedToAdd": "Toevoegen van het nummer aan de afspeellijst is mislukt. Probeer het later opnieuw.",
     "AlbumFailedToAddAlreadyExists": "Dit album staat al in je playlist.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "De collectie is al toegevoegd aan je afspeellijst.",
     "TrackAlreadyExistInTrackCollection": "Nummer bestaat al in afspeellijst {0}",
     "FailedToAddAlbum": "Kan het album niet toevoegen aan de afspeellijst omdat het albums bevat.",
     "FailedToAddUnknownType": "Het toevoegen van een \"{0}\" aan een afspeellijst wordt momenteel niet ondersteund.",
@@ -459,7 +459,7 @@
     "Contributor.Play": "Afspelen",
     "Contributor.Share": "Deel bijdrager",
     "OfflineTrackCollection.DeletePlaylist": "Afspeellijst verwijderen",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Voeg alle nummers toe aan de afspeellijst",
     "Cancel": "Annuleren"
   },
   "Notifications": {
