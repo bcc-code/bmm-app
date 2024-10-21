@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Hitrost predvajanja",
     "Normal": "Normalno",
     "Selected": "Izbrano",
-    "WatchOnBCCMedia": "Glej na: BCC Media",
+    "WatchOnBCCMedia": "Watch in BCC Media",
     "Read": "Preberi"
   },
   "QueueViewModel": {
@@ -300,6 +300,10 @@
     "OptionAutoplayText": "Predvajaj glasbo po poslušanju današnje epizode Fra Kåre. Na voljo samo pri predvajanju na začetnem zaslonu.",
     "OptionStreakHeader": "Niz na Domov",
     "OptionStreakText": "Pokaži statistiko poslušanja na domačem zaslonu",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
     "OptionEnablePushHeader": "Omogoči potisna obvestila",
     "OptionPushNotifications": "Potisna obvestila",
     "OptionPushNotificationsSubtitle": "Omogoči potisna obvestila za podcaste, ki jim slediš",
@@ -609,6 +613,8 @@
     "GotIt": "Razumem"
   },
   "AchievementsViewModel": {
-    "Title": "Dosežki"
+    "Title": "Dosežki",
+    "EmptyTitle": "A place for your Bible Study achievements",
+    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
   }
 }

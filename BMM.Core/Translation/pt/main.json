@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
     "Selected": "Selecionado",
-    "WatchOnBCCMedia": "Veja no BCC mídia",
+    "WatchOnBCCMedia": "Watch in BCC Media",
     "Read": "Ler"
   },
   "QueueViewModel": {
@@ -300,6 +300,10 @@
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Progresso no Início",
     "OptionStreakText": "Mostre sua estatística de reprodução na tela inicial",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
     "OptionEnablePushHeader": "Habilitar notificações push",
     "OptionPushNotifications": "Notificações push",
     "OptionPushNotificationsSubtitle": "Habilitar notificações do impulso para podcasts que você siga",
@@ -609,6 +613,8 @@
     "GotIt": "Entendi"
   },
   "AchievementsViewModel": {
-    "Title": "Conquistas"
+    "Title": "Conquistas",
+    "EmptyTitle": "A place for your Bible Study achievements",
+    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
   }
 }

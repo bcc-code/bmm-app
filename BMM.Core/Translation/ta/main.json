@@ -264,7 +264,7 @@
     "PlaybackSpeed": "பிளேபேக் வேகம்",
     "Normal": "இயல்பானது",
     "Selected": "தேர்ந்தெடுக்கப்பட்டது",
-    "WatchOnBCCMedia": "BCC மீடியாவில் பார்க்கவும்",
+    "WatchOnBCCMedia": "Watch in BCC Media",
     "Read": "படி"
   },
   "QueueViewModel": {
@@ -300,6 +300,10 @@
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "முகப்பில் ஸ்ட்ரீக்",
     "OptionStreakText": "நீங்கள் கேட்கும் புள்ளிவிவரத்தை முகப்புத் திரையில் காட்டவும்",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
     "OptionEnablePushHeader": "புஷ் அறிவிப்புகளை இயக்கவும்",
     "OptionPushNotifications": "புஷ் அறிவிப்புகள்",
     "OptionPushNotificationsSubtitle": "நீங்கள் பின்தொடரும் பாட்காஸ்ட்களுக்கான புஷ் அறிவிப்புகளை இயக்கவும்",
@@ -609,6 +613,8 @@
     "GotIt": "அறிந்துகொண்டேன்"
   },
   "AchievementsViewModel": {
-    "Title": "சாதனைகள்"
+    "Title": "சாதனைகள்",
+    "EmptyTitle": "A place for your Bible Study achievements",
+    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
   }
 }
