@@ -264,7 +264,7 @@
     "PlaybackSpeed": "播放速度",
     "Normal": "正常",
     "Selected": "精选",
-    "WatchOnBCCMedia": "在 BCC Media 上观看",
+    "WatchOnBCCMedia": "Watch in BCC Media",
     "Read": "Read"
   },
   "QueueViewModel": {
@@ -300,6 +300,10 @@
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "主页上的连续记录",
     "OptionStreakText": "在主页上显示您的收听统计数据",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
     "OptionEnablePushHeader": "启用推送通知",
     "OptionPushNotifications": "推送通知",
     "OptionPushNotificationsSubtitle": "为您关注的播客启用推送通知",
@@ -609,6 +613,8 @@
     "GotIt": "明白了"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Achievements",
+    "EmptyTitle": "A place for your Bible Study achievements",
+    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
   }
 }
