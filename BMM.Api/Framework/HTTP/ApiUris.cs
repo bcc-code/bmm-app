@@ -30,10 +30,11 @@
         public static string TrackTranscriptions = "track/{id}/transcription";
         public static string TrackCover = "track/{id}/cover";
         public static string TrackCollections = "track_collection/";
-        public static string TrackCollection = "track_collection/{targetId}";
-        public static string TrackCollectionAlbum = "track_collection/{targetId}/album/{albumId}";
-        public static string TrackCollectionPlaylist = "track_collection/{targetId}/playlist/{playlistId}";
-        public static string TrackCollectionTrackCollection = "track_collection/{targetId}/track_collection/{playlistId}";
+        public static string TrackCollection = "track_collection/{id}";
+        public static string AddToTrackCollection = "track_collection/{targetId}";
+        public static string AddAlbumToTrackCollection = "track_collection/{targetId}/album/{albumId}";
+        public static string AddPlaylistToTrackCollection = "track_collection/{targetId}/playlist/{playlistId}";
+        public static string AddTrackCollectionToTrackCollection = "track_collection/{targetId}/track_collection/{playlistId}";
         public static string TrackCollectionResetShare = "track_collection/{id}/reset-share";
         public static string TrackCollectionUnfollow = "track_collection/{id}/unfollow";
         public static string TrackCollectionTopSongs = "track_collection/top-songs";

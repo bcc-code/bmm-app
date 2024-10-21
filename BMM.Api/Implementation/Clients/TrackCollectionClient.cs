@@ -15,7 +15,7 @@ namespace BMM.Api.Implementation.Clients
 
         public async Task AddAlbumToTrackCollection(int targetId, int albumId)
         {
-            var uri = new UriTemplate(ApiUris.TrackCollectionAlbum);
+            var uri = new UriTemplate(ApiUris.AddAlbumToTrackCollection);
             uri.SetParameter("targetId", targetId);
             uri.SetParameter("albumId", albumId);
 
@@ -25,7 +25,7 @@ namespace BMM.Api.Implementation.Clients
 
         public async Task<bool> AddTracksToTrackCollection(int targetId, IList<int> trackIds)
         {
-            var uri = new UriTemplate(ApiUris.TrackCollection);
+            var uri = new UriTemplate(ApiUris.AddToTrackCollection);
             uri.SetParameter("targetId", targetId);
 
             var request = BuildRequest(uri, HttpMethod.Post);
@@ -36,7 +36,7 @@ namespace BMM.Api.Implementation.Clients
         
         public async Task AddPlaylistToTrackCollection(int targetId, int playlistId)
         {
-            var uri = new UriTemplate(ApiUris.TrackCollectionPlaylist);
+            var uri = new UriTemplate(ApiUris.AddPlaylistToTrackCollection);
             uri.SetParameter("targetId", targetId);
             uri.SetParameter("playlistId", playlistId);
 
@@ -46,7 +46,7 @@ namespace BMM.Api.Implementation.Clients
 
         public async Task AddTrackCollectionToTrackCollection(int targetId, int trackCollectionId)
         {
-            var uri = new UriTemplate(ApiUris.TrackCollectionTrackCollection);
+            var uri = new UriTemplate(ApiUris.AddTrackCollectionToTrackCollection);
             uri.SetParameter("targetId", targetId);
             uri.SetParameter("playlistId", trackCollectionId);
 
