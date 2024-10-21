@@ -615,6 +615,6 @@
   "AchievementsViewModel": {
     "Title": "Achievements",
     "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
   }
 }
