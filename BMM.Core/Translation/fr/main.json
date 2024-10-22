@@ -133,23 +133,23 @@
     "GuideAddToPlaylistTitle": "Ajouter à la liste de lecture ou à « Mes Titres »",
     "GuideAddToPlaylistSubtitle": "Enregistrez vos pistes préférées dans vos propres listes de lecture ou dans votre collection personnelle BMM \"Mes pistes\" en appuyant sur le bouton d'options à droite de la piste.",
     "GuideLanguagesTitle": "Plusieurs langues",
-    "GuideLanguagesSubtitle": "Hiérarchisez vos langues, pour contrôler les langues de votre contenu BMM. Cela peut être fait dans les paramètres > langue.",
-    "GuideLibraryTitle": "Section bibliothèque",
-    "GuideLibrarySubtitle": "Obtenez un accès rapide au contenu souhaité. La section de la bibliothèque se compose de tous les podcasts disponibles et une section pour parcourir le contenu de l’archive. ",
+    "GuideLanguagesSubtitle": "Hiérarchisez les langues de votre contenu BMM. Cela peut être fait dans Paramètres > Langue du contenu.",
+    "GuideLibraryTitle": "Section Bibliothèque",
+    "GuideLibrarySubtitle": "Accédez rapidement au contenu que vous souhaitez. La section Bibliothèque comprend tous les podcasts disponibles et une section Archives pour parcourir le contenu. ",
     "GuideSearchTitle": "Recherche",
-    "GuideSearchSubtitle": "Effectuer une recherche précise, pour trouver des contenus en lien avec votre recherche. Ces recherches seront enregistrées automatiquement.",
+    "GuideSearchSubtitle": "Recherchez un titre particulier ou recherchez des sujets pour trouver du contenu associé. Vos recherches sont enregistrées automatiquement.",
     "ButtonSendMail": "Envoyer un email à l'équipe BMM"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "Nous paramétrons votre compte. Cela peut prendre quelques minutes."
+    "SettingUpAccountMessage": "Nous configurons votre compte. Cela peut prendre quelques instants."
   },
   "LoginViewModel": {
     "Title": "Se connecter",
     "LoginFailureTitle": "Échec de la connexion",
-    "LoginFailureMessage": "Merci de recommencer avec des identifiants valides",
+    "LoginFailureMessage": "Veuillez réessayer en utilisant les informations d'identification correctes",
     "LoginNoConnectionMessage": "Il n'y a actuellement aucune connexion disponible. Veuillez réessayer ultérieurement",
     "WrongMailAddressTitle": "Email invalide",
-    "WrongMailAddress": "Veuillez fournir une adresse email valide. L'utilisation du nom d'utilisateur pour se connecter n'est plus supportée.",
+    "WrongMailAddress": "Veuillez fournir une adresse email valide. L'utilisation du nom d'utilisateur pour se connecter n'est plus prise en charge.",
     "TbxUsername.Hint": "E-mail",
     "TbxPassword.Hint": "Mot de passe",
     "BtnLogin.Text": "Se connecter",
