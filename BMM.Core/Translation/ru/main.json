@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Скорость воспроизведения",
     "Normal": "Нормально",
     "Selected": "Выбрано",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "Смотреть в BCC Media",
     "Read": "Читать"
   },
   "QueueViewModel": {
@@ -294,8 +294,8 @@
   "SettingsViewModel": {
     "Title": "Профиль",
     "HeadlineSettings": "Параметры",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "PlayInChronologicalOrderHeader": "Воспроизвести в хронологическом порядке",
+    "PlayInChronologicalOrderText": "Воспроизвести эпизоды от старых к новым",
     "OptionAutoplayHeader": "Автовоспроизведение",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Достижение на Главной",
