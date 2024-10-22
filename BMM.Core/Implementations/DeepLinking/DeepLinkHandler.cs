@@ -33,7 +33,10 @@ namespace BMM.Core.Implementations.DeepLinking
 {
     public class DeepLinkHandler : IDeepLinkHandler
     {
+        public const string PlayTrackRegex = "^/track/(?<id>[0-9]+)(/(?<language>.*))?$";
+        public const string QuizRegex = "^/question/(?<id>[0-9]+)$";
         public static readonly string Music = "music";
+        
         private readonly string _baseBrowsePath = "browse/";
         private readonly string[] _tileCollectionPaths = new[]
         {
@@ -42,7 +45,6 @@ namespace BMM.Core.Implementations.DeepLinking
         };
 
         private const string PlaybackOriginName = "DeepLink";
-        private const string PlayTrackRegex = "^/track/(?<id>[0-9]+)(/(?<language>.*))?$";
 
         private readonly IBMMClient _client;
         private readonly IMvxNavigationService _navigationService;
@@ -255,9 +257,9 @@ namespace BMM.Core.Implementations.DeepLinking
             return _links.First(l => l is TrackLinkParser).PerformCanNavigateTo(uri, out _);
         }
 
-        public int? GetTrackIdToPlayIfPossible(Uri uri)
+        public int? GetIdFromUriIfPossible(Uri uri, string regex)
         {
-            var match = Regex.Match(uri.LocalPath, PlayTrackRegex);
+            var match = Regex.Match(uri.LocalPath, regex);
             
             if (!match.Success)
                 return null;

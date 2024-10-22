@@ -30,6 +30,6 @@ namespace BMM.Core.Helpers
 
         bool IsBmmUrl(Uri uri);
 
-        int? GetTrackIdToPlayIfPossible(Uri uri);
+        int? GetIdFromUriIfPossible(Uri uri, string regex);
     }
 }

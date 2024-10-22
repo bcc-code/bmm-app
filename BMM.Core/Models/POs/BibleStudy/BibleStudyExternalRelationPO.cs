@@ -1,9 +1,14 @@
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.DeepLinking;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.Core.ViewModels;
+using BMM.Core.ViewModels.Parameters;
+using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 
 namespace BMM.Core.Models.POs.BibleStudy;
 
@@ -11,7 +16,9 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
 {
     private const char Separator = '/'; 
     private readonly IMediaPlayer _mediaPlayer;
+    private readonly IMvxNavigationService _mvxNavigationService;
     private readonly int? _trackId;
+    private readonly int? _questionId;
     private bool _isCurrentlyPlaying;
 
     public BibleStudyExternalRelationPO(
@@ -20,10 +27,12 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
         Uri link,
         IDeepLinkHandler deepLinkHandler,
         IUriOpener uriOpener,
-        IMediaPlayer mediaPlayer)
+        IMediaPlayer mediaPlayer,
+        IMvxNavigationService mvxNavigationService)
     {
         HasListened = hasListened;
         _mediaPlayer = mediaPlayer;
+        _mvxNavigationService = mvxNavigationService;
 
         string[] splitTitle = title.Split(Separator);
         
@@ -37,19 +46,26 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
             Title = title;
         }
         
-        ClickedCommand = new ExceptionHandlingCommand(() =>
+        ClickedCommand = new ExceptionHandlingCommand(async () =>
         {
+            if (_questionId != null)
+            {
+                await _mvxNavigationService.Navigate<QuizQuestionViewModel, IQuizQuestionViewModelParameter>(
+                    new QuizQuestionViewModelParameter(_questionId.Value));
+                return;
+            }
+            
             if (_trackId != null && _mediaPlayer.CurrentTrack?.Id == _trackId)
             {
                 _mediaPlayer.PlayPause();
-                return Task.CompletedTask;
+                return;
             }
 
             uriOpener.OpenUri(link);
-            return Task.CompletedTask;
         });
         
-        _trackId = deepLinkHandler.GetTrackIdToPlayIfPossible(link);
+        _trackId = deepLinkHandler.GetIdFromUriIfPossible(link, DeepLinkHandler.PlayTrackRegex);
+        _questionId = deepLinkHandler.GetIdFromUriIfPossible(link, DeepLinkHandler.QuizRegex);
         RefreshState();
     }
     
@@ -64,6 +80,7 @@ public class BibleStudyExternalRelationPO : BasePO, IBibleStudyExternalRelationP
     }
 
     public bool WillPlayTrack => _trackId != null;
+    public bool HasQuestion => _questionId != null;
     public IMvxAsyncCommand ClickedCommand { get; }
     
     public Task RefreshState()

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="72" id="oSC-Gd-CVG" customClass="ExternalRelationsQuizTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="415" height="72"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oSC-Gd-CVG" id="iJh-9S-hMr">
+                <rect key="frame" x="0.0" y="0.0" width="415" height="72"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrq-0T-YfA">
+                        <rect key="frame" x="16" y="8" width="383" height="64"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageQuizBackground" translatesAutoresizingMaskIntoConstraints="NO" id="zUd-ar-iPJ">
+                                <rect key="frame" x="0.0" y="0.0" width="383" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="rGa-d4-7Wx"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oIc-NT-r3w">
+                                <rect key="frame" x="275" y="14" width="96" height="36"/>
+                                <color key="backgroundColor" red="0.050980392159999999" green="0.074509803920000006" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="1Cl-Cr-mya"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="16" minY="8" maxX="16" maxY="8"/>
+                                <inset key="imageEdgeInsets" minX="-6" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Answer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uT0-H2-bXx">
+                                <rect key="frame" x="12" y="12" width="58.5" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTg-Ao-urc">
+                                        <rect key="frame" x="0.0" y="0.0" width="58.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="22H-mn-jM7">
+                                        <rect key="frame" x="0.0" y="19.5" width="58.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" name="BackgroundTwoColor"/>
+                        <constraints>
+                            <constraint firstItem="uT0-H2-bXx" firstAttribute="leading" secondItem="rrq-0T-YfA" secondAttribute="leading" constant="12" id="7nz-0e-cTg"/>
+                            <constraint firstItem="zUd-ar-iPJ" firstAttribute="leading" secondItem="rrq-0T-YfA" secondAttribute="leading" id="9r1-LQ-3p3"/>
+                            <constraint firstItem="oIc-NT-r3w" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uT0-H2-bXx" secondAttribute="trailing" constant="8" id="JtQ-V0-yc2"/>
+                            <constraint firstItem="uT0-H2-bXx" firstAttribute="top" secondItem="rrq-0T-YfA" secondAttribute="top" constant="12" id="Rah-d3-ujo"/>
+                            <constraint firstAttribute="trailing" secondItem="zUd-ar-iPJ" secondAttribute="trailing" id="Sng-Hu-bhz"/>
+                            <constraint firstAttribute="bottom" secondItem="zUd-ar-iPJ" secondAttribute="bottom" id="WKD-4b-O2G"/>
+                            <constraint firstItem="oIc-NT-r3w" firstAttribute="centerY" secondItem="zUd-ar-iPJ" secondAttribute="centerY" id="bdR-kv-XWi"/>
+                            <constraint firstAttribute="bottom" secondItem="uT0-H2-bXx" secondAttribute="bottom" constant="12" id="hIS-QT-GdB"/>
+                            <constraint firstAttribute="trailing" secondItem="oIc-NT-r3w" secondAttribute="trailing" constant="12" id="tke-SJ-Hh8"/>
+                            <constraint firstItem="zUd-ar-iPJ" firstAttribute="top" secondItem="rrq-0T-YfA" secondAttribute="top" id="zck-9M-cJA"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="BackgroundOneColor"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="rrq-0T-YfA" secondAttribute="trailing" constant="16" id="7Fd-pg-UUP"/>
+                    <constraint firstItem="rrq-0T-YfA" firstAttribute="top" secondItem="iJh-9S-hMr" secondAttribute="top" constant="8" id="HCe-og-4fg"/>
+                    <constraint firstAttribute="bottom" secondItem="rrq-0T-YfA" secondAttribute="bottom" id="uxX-aR-bcL"/>
+                    <constraint firstItem="rrq-0T-YfA" firstAttribute="leading" secondItem="iJh-9S-hMr" secondAttribute="leading" constant="16" id="xNm-RI-uza"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ActionButton" destination="oIc-NT-r3w" id="g7Q-QC-JCw"/>
+                <outlet property="BackgroundImageView" destination="zUd-ar-iPJ" id="4v4-bj-G2U"/>
+                <outlet property="SubtitleLabel" destination="22H-mn-jM7" id="LNq-tx-Vrc"/>
+                <outlet property="TitleLabel" destination="kTg-Ao-urc" id="9NP-ED-Ecg"/>
+            </connections>
+            <point key="canvasLocation" x="139.85507246376812" y="174.77678571428569"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ImageQuizBackground" width="390" height="756"/>
+        <namedColor name="BackgroundOneColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BackgroundTwoColor">
+            <color red="0.96078431606292725" green="0.96470588445663452" blue="0.9686274528503418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

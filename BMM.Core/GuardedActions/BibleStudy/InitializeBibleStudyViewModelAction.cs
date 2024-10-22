@@ -8,6 +8,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -55,13 +56,14 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
     
     protected override async Task Execute()
     {
+        var items = new List<IBasePO>();
         var projectProgress = await _statisticsClient.GetProjectProgress(await _deviceInfo.GetCurrentTheme());
 
         UpdateUnlockedAchievements(projectProgress);
 
         var track = DataContext.NavigationParameter.Track;
 
-        DataContext.Items.Add(new BibleStudyHeaderPO(track.Album, track.Title, track.GetPublishDate()));
+        items.Add(new BibleStudyHeaderPO(track.Album, track.Title, track.GetPublishDate()));
         
         var externalRelations = await _buildExternalRelationsAction
             .ExecuteGuarded(track);
@@ -72,22 +74,24 @@ public class InitializeBibleStudyViewModelAction : GuardedAction, IInitializeBib
 
         foreach (var externalRelationItem in externalRelationsPOItems)
         {
-            DataContext.Items.Add(new BibleStudyExternalRelationPO(
+            items.Add(new BibleStudyExternalRelationPO(
                 externalRelationItem.TrackRelationExternal.Name,
                 externalRelationItem.TrackRelationExternal.HasListened,
                 new Uri(externalRelationItem.TrackRelationExternal.Url),
                 _deepLinkHandler,
                 _uriOpener,
-                _mediaPlayer));
+                _mediaPlayer,
+                _mvxNavigationService));
         }
 
         if (track.IsForbildeProjectTrack())
         {
             var streak = _listeningStreakPOFactory.Create(projectProgress.Streak);
-            DataContext.Items.Add(new BibleStudyProgressPO(streak, projectProgress, _mvxNavigationService));
+            items.Add(new BibleStudyProgressPO(streak, projectProgress, _mvxNavigationService));
         }
         
-        DataContext.Items.AddRange(await _buildTrackInfoSectionsAction.ExecuteGuarded(track));
+        items.AddRange(await _buildTrackInfoSectionsAction.ExecuteGuarded(track));
+        DataContext.Items.ReplaceWith(items);
     }
 
     private void UpdateUnlockedAchievements(ProjectProgress projectProgress)

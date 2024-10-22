@@ -55,6 +55,12 @@ namespace BMM.UI.iOS.Constants
             Font = Typography.Title3.Value,
             Color = AppColors.LabelOneColor
         };
+        
+        public static TextTheme Title3Reverted = new TextTheme
+        {
+            Font = Typography.Title3.Value,
+            Color = AppColors.LabelOneColorReverted
+        };
 
         public static TextTheme Heading3 = new TextTheme
         {
@@ -207,6 +213,13 @@ namespace BMM.UI.iOS.Constants
             TextTheme = Title1Label1Reverted,
             ButtonColor = AppColors.LabelOneColor,
             IconTint = AppColors.LabelOneColorReverted
+        }; 
+        
+        public static readonly ButtonTheme ButtonPrimarySmall = new StandardButtonTheme
+        {
+            TextTheme = Title3Reverted,
+            ButtonColor = AppColors.LabelOneColor,
+            IconTint = AppColors.LabelOneColorReverted
         };
 
         public static readonly ButtonTheme ButtonSecondaryMedium = new StandardButtonTheme
@@ -221,6 +234,14 @@ namespace BMM.UI.iOS.Constants
             TextTheme = Title2,
             ButtonColor = AppColors.BackgroundTwoColor,
             IconTint = AppColors.LabelOneColor
+        };
+        
+        public static readonly ButtonTheme ButtonTertiaryLarge = new StandardButtonTheme
+        {
+            TextTheme = Title1,
+            ButtonColor = UIColor.Clear,
+            ImageEdgeInsets = UIEdgeInsets.Zero,
+            ContentEdgeInsets = UIEdgeInsets.Zero
         };
         
         public static readonly ButtonTheme ButtonTertiaryMedium = new StandardButtonTheme
