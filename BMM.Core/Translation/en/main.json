@@ -565,7 +565,8 @@
     "Days": "Days",
     "Boost": "Boost",
     "Points": "Points",
-    "Achievements": "Your achievements"
+    "Achievements": "Your achievements",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "App Icon",

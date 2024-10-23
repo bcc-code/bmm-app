@@ -451,6 +451,7 @@ namespace BMM.Core.Translation
 		public const string BibleStudyViewModel_Boost = nameof(BibleStudyViewModel_Boost);
 		public const string BibleStudyViewModel_Points = nameof(BibleStudyViewModel_Points);
 		public const string BibleStudyViewModel_Achievements = nameof(BibleStudyViewModel_Achievements);
+		public const string BibleStudyViewModel_Answer = nameof(BibleStudyViewModel_Answer);
 		public const string AppIconViewModel_Title = nameof(AppIconViewModel_Title);
 		public const string AppIconViewModel_Description = nameof(AppIconViewModel_Description);
 		public const string AppIconViewModel_IconStandard = nameof(AppIconViewModel_IconStandard);
