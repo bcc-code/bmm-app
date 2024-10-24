@@ -21,7 +21,7 @@ public class InitializeQuizQuestionViewModelAction
     
     protected override async Task Execute()
     {
-        var question = await _questionsClient.GetQuestion(1);
+        var question = await _questionsClient.GetQuestion(DataContext.NavigationParameter.QuestionId);
         DataContext.QuestionPO = new QuestionPO(question);
     }
 }

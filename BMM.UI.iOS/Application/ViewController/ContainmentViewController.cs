@@ -47,8 +47,9 @@ namespace BMM.UI.iOS
                 _miniPlayerView = null;
             }
 
-            TabBarItem.Image = TabBarItem.Image.WithBadge();
-            TabBarItem.SelectedImage = TabBarItem.SelectedImage.WithBadge();
+            //TODO Show Badge on bottom bar
+            //TabBarItem.Image = TabBarItem.Image.WithBadge();
+            //TabBarItem.SelectedImage = TabBarItem.SelectedImage.WithBadge();
         }
 
         public void RegisterViewController(IBaseViewController viewController)

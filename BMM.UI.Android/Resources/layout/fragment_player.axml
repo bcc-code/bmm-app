@@ -93,7 +93,9 @@
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Button_Tertiary_Small"
-                local:MvxBind="Visibility Visibility(HasBccButton)"
+                local:MvxBind="
+                    Click WatchBccButtonClickedCommand;
+                    Visibility Visibility(HasBccButton)"
                 local:MvxLang="Text PlayerViewModel_WatchOnBCCMedia" />
         
         <TextView

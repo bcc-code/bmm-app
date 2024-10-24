@@ -2,6 +2,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base;
@@ -18,6 +19,7 @@ namespace BMM.Core.Models.POs.Tiles
         
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
+        private readonly IBadgeService _badgeService;
         private bool _isCurrentlyPlaying;
         private bool _isDownloaded;
         private TileStatusTextIcon _tileStatusTextIcon;
@@ -30,10 +32,12 @@ namespace BMM.Core.Models.POs.Tiles
             IShowTrackInfoAction showTrackInfoAction,
             IMediaPlayer mediaPlayer,
             IStorageManager storageManager,
+            IBadgeService badgeService,
             ContinueListeningTile continueListeningTile) : base(continueListeningTile)
         {
             _mediaPlayer = mediaPlayer;
             _storageManager = storageManager;
+            _badgeService = badgeService;
             TileClickedCommand = new MvxAsyncCommand(async () =>
             {
                 await tileClickedAction.ExecuteGuarded(Tile);
@@ -60,7 +64,7 @@ namespace BMM.Core.Models.POs.Tiles
             });
             
             Tile = continueListeningTile;
-            RefreshState();
+            RefreshState().FireAndForget();
         }
 
         public IMvxAsyncCommand TileClickedCommand { get; }
@@ -94,20 +98,19 @@ namespace BMM.Core.Models.POs.Tiles
             set => SetProperty(ref _isDownloaded, value);
         }
         
-        public Task RefreshState()
+        public async Task RefreshState()
         {
             bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Tile.Track.Id);
-            TileStatusTextIcon = GetTileStatusIcon(isCurrentlySelected);
+            TileStatusTextIcon = await GetTileStatusIcon(isCurrentlySelected);
             IsCurrentlyPlaying = isCurrentlySelected && _mediaPlayer.IsPlaying;
             IsDownloaded = _storageManager.SelectedStorage.IsDownloaded(Tile.Track);
-            return Task.CompletedTask;
         }
 
-        private TileStatusTextIcon GetTileStatusIcon(bool isCurrentlySelected)
+        private async Task<TileStatusTextIcon> GetTileStatusIcon(bool isCurrentlySelected)
         {
             if (isCurrentlySelected)
                 return TileStatusTextIcon.Play;
-            else if (!Tile.Track.HasListened)
+            else if (await _badgeService.ShouldShowBadgeFor(Tile.Track, Tile.ShufflePodcastId))
                 return TileStatusTextIcon.Dot;
 
             return TileStatusTextIcon.None;

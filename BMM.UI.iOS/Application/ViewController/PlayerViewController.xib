@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController">
             <connections>
+                <outlet property="BccButtonHeightConstraint" destination="yea-ud-CN2" id="rIL-37-1Si"/>
                 <outlet property="BottomButtonsStackLayout" destination="csf-As-ARZ" id="HlP-St-Icv"/>
                 <outlet property="BottomMarginConstraint" destination="noo-FI-UGT" id="cBM-34-2KC"/>
                 <outlet property="BufferedProgressSlider" destination="Ddx-07-4bA" id="IWw-Y5-LO5"/>
@@ -40,6 +41,7 @@
                 <outlet property="SubtitleLabel" destination="SCY-QA-nwU" id="iYH-U9-yKj"/>
                 <outlet property="TitleLabel" destination="jsC-GB-jT3" id="ikg-M4-ew1"/>
                 <outlet property="TrackCoverImageView" destination="Ug9-Uj-hs6" id="uRS-ZH-teE"/>
+                <outlet property="WatchBccButton" destination="rzm-aZ-4mR" id="00h-QB-EvV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="BPY-9K-wQ4"/>
             </connections>
         </placeholder>
@@ -123,7 +125,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiC-cD-5Cu">
+                        <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NiC-cD-5Cu">
                             <rect key="frame" x="228" y="0.0" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Cdb-Jx-zca"/>
@@ -311,6 +313,19 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </button>
+                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzm-aZ-4mR">
+                    <rect key="frame" x="147" y="288" width="120" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="Pzi-3I-OyZ"/>
+                        <constraint firstAttribute="height" constant="36" id="yea-ud-CN2"/>
+                    </constraints>
+                    <color key="tintColor" name="LabelOneColor"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" title="Watch on BCC" image="IconVideo"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="r0d-W3-y3K"/>
             <color key="backgroundColor" name="BackgroundTwoColor"/>
@@ -321,6 +336,7 @@
                 <constraint firstItem="rYN-px-sr1" firstAttribute="bottom" secondItem="Ug9-Uj-hs6" secondAttribute="bottom" id="2n8-ef-Ja0"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="SCY-QA-nwU" secondAttribute="trailing" constant="16" id="3y2-En-Cbl"/>
                 <constraint firstItem="ZtT-Tu-K41" firstAttribute="top" secondItem="y40-s0-dpz" secondAttribute="bottom" constant="24" id="4m7-NJ-QhM"/>
+                <constraint firstItem="rzm-aZ-4mR" firstAttribute="top" secondItem="Ug9-Uj-hs6" secondAttribute="bottom" constant="8" id="A3u-Ap-lQn"/>
                 <constraint firstItem="csf-As-ARZ" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="ASp-qd-yKU"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="iaf-9h-v6M" secondAttribute="trailing" constant="12" id="ATg-6E-Pbs"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="csf-As-ARZ" secondAttribute="trailing" constant="16" id="AnM-yB-GdX"/>
@@ -340,17 +356,23 @@
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="bna-ML-NDm" secondAttribute="trailing" constant="16" id="ZPf-rz-Bll"/>
                 <constraint firstItem="DS1-31-Cvu" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" id="aGL-zT-TA0"/>
                 <constraint firstItem="SCY-QA-nwU" firstAttribute="top" secondItem="jsC-GB-jT3" secondAttribute="bottom" constant="6" id="fur-AG-1S4"/>
-                <constraint firstItem="jsC-GB-jT3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Ug9-Uj-hs6" secondAttribute="bottom" constant="16" id="g6z-EN-paF"/>
+                <constraint firstItem="jsC-GB-jT3" firstAttribute="top" relation="greaterThanOrEqual" secondItem="rzm-aZ-4mR" secondAttribute="bottom" constant="16" id="kYT-uX-JeH"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="bottom" secondItem="csf-As-ARZ" secondAttribute="bottom" constant="16" id="lx5-6A-4fD"/>
                 <constraint firstItem="csf-As-ARZ" firstAttribute="top" secondItem="bna-ML-NDm" secondAttribute="bottom" constant="24" id="noo-FI-UGT"/>
                 <constraint firstItem="Ug9-Uj-hs6" firstAttribute="centerX" secondItem="r0d-W3-y3K" secondAttribute="centerX" id="pa1-sL-5jz"/>
                 <constraint firstItem="r0d-W3-y3K" firstAttribute="trailing" secondItem="y40-s0-dpz" secondAttribute="trailing" constant="16" id="pjQ-7w-3nf"/>
+                <constraint firstItem="rzm-aZ-4mR" firstAttribute="centerX" secondItem="r0d-W3-y3K" secondAttribute="centerX" id="uW0-au-u5c"/>
                 <constraint firstItem="rYN-px-sr1" firstAttribute="top" secondItem="Ug9-Uj-hs6" secondAttribute="top" id="ujm-qY-SEc"/>
                 <constraint firstItem="bna-ML-NDm" firstAttribute="top" secondItem="DS1-31-Cvu" secondAttribute="bottom" constant="24" id="xMt-Rp-FXd"/>
                 <constraint firstItem="SCY-QA-nwU" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="xpo-ev-KQz"/>
                 <constraint firstItem="y40-s0-dpz" firstAttribute="leading" secondItem="r0d-W3-y3K" secondAttribute="leading" constant="16" id="ynt-mi-HVq"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                    <integer key="value" value="18"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
             <point key="canvasLocation" x="323.1884057971015" y="374.33035714285711"/>
         </view>
     </objects>
@@ -361,6 +383,7 @@
         <image name="IconQueue" width="24" height="24"/>
         <image name="IconRepeat" width="24" height="24"/>
         <image name="IconUnliked" width="24" height="24"/>
+        <image name="IconVideo" width="20" height="20"/>
         <image name="MoreIcon" width="24" height="24"/>
         <image name="NextIcon" width="32" height="32"/>
         <image name="PreviousIcon" width="32" height="32"/>

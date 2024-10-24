@@ -105,8 +105,7 @@ namespace BMM.Core.ViewModels
             var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
             var docs = (await Client.Discover.GetDocuments(age, await _deviceInfo.GetCurrentTheme() , policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
-            bool hideStreak = await _settings.GetStreakHidden();
-            var filteredDocs = HideStreakInList(hideStreak, HideTeaserPodcastsInList(docs));
+            var filteredDocs = await HideElementsInList(HideTeaserPodcastsInList(docs));
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(filteredDocs);
             var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
@@ -153,11 +152,17 @@ namespace BMM.Core.ViewModels
             return Task.CompletedTask;
         }
 
-        private IList<Document> HideStreakInList(bool hideStreak, IList<Document> documents)
+        private async Task<IList<Document>> HideElementsInList(IList<Document> documents)
         {
-            if (hideStreak)
-                return documents.Where(d => d.DocumentType != DocumentType.ListeningStreak).ToList();
-            return documents;
+            bool hideStreak = await _settings.GetStreakHidden();
+            bool bibleStudyEnabled = await _settings.GetBibleStudyOnHomeEnabled();
+
+            return documents
+                .Where(d => !hideStreak || d.DocumentType != DocumentType.ListeningStreak)
+                .Where(d => bibleStudyEnabled || d.DocumentType.IsNoneOf(
+                    DocumentType.ProjectBox,
+                    DocumentType.GibraltarProjectBox))
+                .ToList();
         }
 
         private IList<Document> HideTeaserPodcastsInList(IList<Document> documents)

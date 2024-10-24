@@ -26,6 +26,7 @@ namespace BMM.Core.Constants
         public const string IconLiked = "Icon_Liked";
         public const string IconTick = "Tick_Icon";
         public const string IconDownload = "Icon_Download";
+        public const string IconVideo = "Icon_Video";
         public const string ImageQuizBackground = "Image_Quiz_Background";
         public const string ImageQuizBackgroundTwo = "Image_Quiz_Background_Two";
         public const string ImageQuizBackgroundThree = "Image_Quiz_Background_Three";
