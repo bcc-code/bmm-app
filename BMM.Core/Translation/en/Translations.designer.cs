@@ -227,16 +227,14 @@ namespace BMM.Core.Translation
 		public const string SearchViewModel_SearchFailedMessage = nameof(SearchViewModel_SearchFailedMessage);
 		public const string SettingsViewModel_Title = nameof(SettingsViewModel_Title);
 		public const string SettingsViewModel_HeadlineSettings = nameof(SettingsViewModel_HeadlineSettings);
+		public const string SettingsViewModel_HeadlineHomeScreen = nameof(SettingsViewModel_HeadlineHomeScreen);
+		public const string SettingsViewModel_HeadlinePlayback = nameof(SettingsViewModel_HeadlinePlayback);
 		public const string SettingsViewModel_PlayInChronologicalOrderHeader = nameof(SettingsViewModel_PlayInChronologicalOrderHeader);
 		public const string SettingsViewModel_PlayInChronologicalOrderText = nameof(SettingsViewModel_PlayInChronologicalOrderText);
 		public const string SettingsViewModel_OptionAutoplayHeader = nameof(SettingsViewModel_OptionAutoplayHeader);
 		public const string SettingsViewModel_OptionAutoplayText = nameof(SettingsViewModel_OptionAutoplayText);
 		public const string SettingsViewModel_OptionStreakHeader = nameof(SettingsViewModel_OptionStreakHeader);
 		public const string SettingsViewModel_OptionStreakText = nameof(SettingsViewModel_OptionStreakText);
-		public const string SettingsViewModel_OptionBibleStudyHeader = nameof(SettingsViewModel_OptionBibleStudyHeader);
-		public const string SettingsViewModel_OptionBibleStudyText = nameof(SettingsViewModel_OptionBibleStudyText);
-		public const string SettingsViewModel_OptionNotificationBadgeHeader = nameof(SettingsViewModel_OptionNotificationBadgeHeader);
-		public const string SettingsViewModel_OptionNotificationBadgeText = nameof(SettingsViewModel_OptionNotificationBadgeText);
 		public const string SettingsViewModel_OptionEnablePushHeader = nameof(SettingsViewModel_OptionEnablePushHeader);
 		public const string SettingsViewModel_OptionPushNotifications = nameof(SettingsViewModel_OptionPushNotifications);
 		public const string SettingsViewModel_OptionPushNotificationsSubtitle = nameof(SettingsViewModel_OptionPushNotificationsSubtitle);
@@ -261,6 +259,10 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_OptionAppVersionHeader = nameof(SettingsViewModel_OptionAppVersionHeader);
 		public const string SettingsViewModel_OptionDeleteAccountHeader = nameof(SettingsViewModel_OptionDeleteAccountHeader);
 		public const string SettingsViewModel_OptionDeleteAccountText = nameof(SettingsViewModel_OptionDeleteAccountText);
+		public const string SettingsViewModel_OptionBibleStudyBadgeHeader = nameof(SettingsViewModel_OptionBibleStudyBadgeHeader);
+		public const string SettingsViewModel_OptionBibleStudyBadgeText = nameof(SettingsViewModel_OptionBibleStudyBadgeText);
+		public const string SettingsViewModel_OptionBibleStudyOnHomeHeader = nameof(SettingsViewModel_OptionBibleStudyOnHomeHeader);
+		public const string SettingsViewModel_OptionBibleStudyOnHomeText = nameof(SettingsViewModel_OptionBibleStudyOnHomeText);
 		public const string SettingsViewModel_AppInfoTitle = nameof(SettingsViewModel_AppInfoTitle);
 		public const string SettingsViewModel_AppInfoAppVersion = nameof(SettingsViewModel_AppInfoAppVersion);
 		public const string SettingsViewModel_AppInfoManufacturer = nameof(SettingsViewModel_AppInfoManufacturer);
@@ -484,7 +486,7 @@ namespace BMM.Core.Translation
 		public const string AskQuestionConfirmationViewModel_Description = nameof(AskQuestionConfirmationViewModel_Description);
 		public const string AskQuestionConfirmationViewModel_GotIt = nameof(AskQuestionConfirmationViewModel_GotIt);
 		public const string AchievementsViewModel_Title = nameof(AchievementsViewModel_Title);
-		public const string AchievementsViewModel_EmptyTitle = nameof(AchievementsViewModel_EmptyTitle);
-		public const string AchievementsViewModel_EmptySubtitle = nameof(AchievementsViewModel_EmptySubtitle);
+		public const string AchievementsViewModel_NoAchievementsTitle = nameof(AchievementsViewModel_NoAchievementsTitle);
+		public const string AchievementsViewModel_NoAchievementsSubtitle = nameof(AchievementsViewModel_NoAchievementsSubtitle);
 	}
 }

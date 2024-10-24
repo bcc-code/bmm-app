@@ -1,9 +1,9 @@
 using BMM.Api.Implementation.Models;
-using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Tiles.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -13,11 +13,14 @@ namespace BMM.Core.Models.POs.Tiles
 {
     public class ContinueListeningTilePO : DocumentPO, ITilePO<ContinueListeningTile>, ITrackHolderPO
     {
+        public const string NotificationBadgeIcon = "⬤";
+        public const string PlayingIcon = "▶";
+        
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
-        private bool _isCurrentlySelected;
         private bool _isCurrentlyPlaying;
         private bool _isDownloaded;
+        private TileStatusTextIcon _tileStatusTextIcon;
 
         public ContinueListeningTilePO(
             IMvxAsyncCommand<Document> optionsClickedCommand,
@@ -71,13 +74,14 @@ namespace BMM.Core.Models.POs.Tiles
         public bool ShuffleButtonVisible => !IsBibleStudyProjectTile && Tile.ShufflePodcastId.HasValue;
         public bool DownloadedIconVisible => !IsBibleStudyProjectTile && IsDownloaded;
         public bool ReferenceButtonVisible => !IsBibleStudyProjectTile && Tile.Track.HasExternalRelations();
-        
-        public bool IsCurrentlySelected
+        public bool ShouldShowSubtitle => Tile.LastPositionInMs != default;
+
+        public TileStatusTextIcon TileStatusTextIcon
         {
-            get => _isCurrentlySelected;
-            set => SetProperty(ref _isCurrentlySelected, value);
+            get => _tileStatusTextIcon;
+            set => SetProperty(ref _tileStatusTextIcon, value);
         }
-        
+
         public bool IsCurrentlyPlaying
         {
             get => _isCurrentlyPlaying;
@@ -92,10 +96,21 @@ namespace BMM.Core.Models.POs.Tiles
         
         public Task RefreshState()
         {
-            IsCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Tile.Track.Id);
-            IsCurrentlyPlaying = IsCurrentlySelected && _mediaPlayer.IsPlaying;
+            bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Tile.Track.Id);
+            TileStatusTextIcon = GetTileStatusIcon(isCurrentlySelected);
+            IsCurrentlyPlaying = isCurrentlySelected && _mediaPlayer.IsPlaying;
             IsDownloaded = _storageManager.SelectedStorage.IsDownloaded(Tile.Track);
             return Task.CompletedTask;
+        }
+
+        private TileStatusTextIcon GetTileStatusIcon(bool isCurrentlySelected)
+        {
+            if (isCurrentlySelected)
+                return TileStatusTextIcon.Play;
+            else if (!Tile.Track.HasListened)
+                return TileStatusTextIcon.Dot;
+
+            return TileStatusTextIcon.None;
         }
     }
 }

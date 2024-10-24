@@ -16,7 +16,6 @@ namespace BMM.Core.ValueConverters
         {
             return value switch
             {
-                PlayerLeftButtonType.BCCMedia => TextSource[Translations.PlayerViewModel_WatchOnBCCMedia],
                 PlayerLeftButtonType.Lyrics => TextSource[Translations.PlayerViewModel_ViewLyrics],
                 PlayerLeftButtonType.Transcription => TextSource[Translations.PlayerViewModel_Read],
                 null => string.Empty

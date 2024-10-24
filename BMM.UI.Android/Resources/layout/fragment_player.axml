@@ -83,6 +83,18 @@
             </FrameLayout>
 
         </bmm.ui.droid.application.customViews.ShadowLayout>
+
+        <Button
+                android:id="@+id/WatchBccButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/icon_video"
+                android:drawablePadding="@dimen/margin_small"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                style="@style/Button_Tertiary_Small"
+                local:MvxBind="Visibility Visibility(HasBccButton)"
+                local:MvxLang="Text PlayerViewModel_WatchOnBCCMedia" />
         
         <TextView
                 android:id="@+id/TitleLabel"

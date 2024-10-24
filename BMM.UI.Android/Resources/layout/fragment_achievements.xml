@@ -1,17 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:local="http://schemas.android.com/apk/res-auto"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <include
+            android:id="@+id/Toolbar"
             layout="@layout/toolbar_actionbar" />
     
     <mvvmcross.droidx.recyclerview.MvxRecyclerView
             android:id="@+id/AchievementsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            local:layout_constraintTop_toBottomOf="@+id/Toolbar"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
             local:MvxTemplateSelector="@string/profile_achievements_template_selector"
-            local:MvxBind="ItemsSource Achievements" />
+            local:MvxBind="
+                ItemsSource Achievements;
+                Visibility Visibility(AreAchievementsVisible)" />
+
+    <TextView
+            android:id="@+id/NoAchievementsTitle"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_xmedium"
+            android:gravity="center_horizontal"
+            local:layout_constraintVertical_chainStyle="packed"
+            local:layout_constraintTop_toBottomOf="@+id/Toolbar"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toTopOf="@+id/NoAchievementsSubtitle"
+            local:MvxBind="Visibility InvertedVisibility(AreAchievementsVisible)"
+            local:MvxLang="Text AchievementsViewModel_NoAchievementsTitle"
+            style="@style/Heading3" />
+
+    <TextView
+            android:id="@+id/NoAchievementsSubtitle"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_xmedium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:gravity="center_horizontal"
+            local:layout_constraintTop_toBottomOf="@+id/NoAchievementsTitle"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:MvxBind="Visibility InvertedVisibility(AreAchievementsVisible)"
+            local:MvxLang="Text AchievementsViewModel_NoAchievementsSubtitle"
+            style="@style/Paragraph1" />
     
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
