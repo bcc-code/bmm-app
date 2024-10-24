@@ -3,6 +3,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Tiles;
@@ -22,6 +23,7 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
         private readonly IStorageManager _storageManager;
         private readonly IUriOpener _uriOpener;
         private readonly IDeepLinkHandler _deepLinkHandler;
+        private readonly IBadgeService _badgeService;
 
         public TilePOFactory(
             ITileClickedAction tileClickedAction,
@@ -31,7 +33,8 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
             IMediaPlayer mediaPlayer,
             IStorageManager storageManager,
             IUriOpener uriOpener,
-            IDeepLinkHandler deepLinkHandler)
+            IDeepLinkHandler deepLinkHandler,
+            IBadgeService badgeService)
         {
             _tileClickedAction = tileClickedAction;
             _continuePlayingAction = continuePlayingAction;
@@ -41,6 +44,7 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
             _storageManager = storageManager;
             _uriOpener = uriOpener;
             _deepLinkHandler = deepLinkHandler;
+            _badgeService = badgeService;
         }
         
         public ITilePO Create(IMvxAsyncCommand<Document> optionsClickedCommand, Document tile)
@@ -57,6 +61,7 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
                         _showTrackInfoAction,
                         _mediaPlayer,
                         _storageManager,
+                        _badgeService,
                         continueListeningTile);
                 }
                 case MessageTile messageTile:

@@ -92,7 +92,7 @@ namespace BMM.UI.iOS
             attribute.TabName = ViewModel.TextSource.GetText(attribute.TabName);
             base.SetTitleAndTabBarItem(viewController, attribute);
         }
-        
+
         public override async void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);

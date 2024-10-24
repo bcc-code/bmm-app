@@ -29,6 +29,12 @@ namespace BMM.UI.Droid.Application.Fragments
             _navigationView = view.FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
             _navigationView!.SetOnItemSelectedListener(this);
 
+            //TODO Show Badge on bottom bar
+            // var notificationItemView = _navigationView.FindViewById(Resource.Id.page_1);
+            // var badgeView = inflater.Inflate(Resource.Layout.badge, null);
+            // var iconContainer = (FrameLayout)notificationItemView;
+            // iconContainer.AddView(badgeView);
+            
             RebuildMenu();
 
             return view;

@@ -34,6 +34,7 @@
     <!-- Buttons -->
     <dimen name="large_button_height">56dp</dimen>
     <dimen name="medium_button_height">40dp</dimen>
+    <dimen name="small_button_height">36dp</dimen>
 
     <!-- Semantic definitions -->
 
@@ -82,9 +83,9 @@
     <dimen name="horizontal_scrolling_cover_item_width">160dp</dimen>
     <dimen name="horizontal_scrolling_cover_item_height">204dp</dimen>
 
-    <dimen name="horizontal_scrolling_continue_listening_collection_height">340dp</dimen>
-    <dimen name="horizontal_scrolling_continue_listening_item_height">332dp</dimen>
-    <dimen name="horizontal_scrolling_continue_listening_item_width">254dp</dimen>
+    <dimen name="horizontal_scrolling_continue_listening_collection_height">308dp</dimen>
+    <dimen name="horizontal_scrolling_continue_listening_item_height">300dp</dimen>
+    <dimen name="horizontal_scrolling_continue_listening_item_width">222dp</dimen>
     <dimen name="continue_listening_item_corner_radius">36dp</dimen>
     <dimen name="continue_listening_cover_size">112dp</dimen>
     <dimen name="continue_listening_play_big_icon_size">40dp</dimen>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:local="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        local:cardBackgroundColor="@android:color/transparent"
+        local:cardElevation="0dp"
+        local:cardCornerRadius="@dimen/highlighted_text_item_corner_radius">
+
+    <LinearLayout
+            android:id="@+id/BackgroundView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@color/global_white_one">
+
+        <androidx.cardview.widget.CardView
+                android:id="@+id/AnswerLetterContainer"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:gravity="center"
+                android:layout_gravity="center"
+                local:cardElevation="0dp"
+                local:cardCornerRadius="12dp"
+                local:cardBackgroundColor="@color/global_black_five">
+                
+                <TextView 
+                    android:id="@+id/AnswerLetterLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    local:MvxBind="Text Id"
+                    style="@style/Subtitle2_Label1" />
+        
+        </androidx.cardview.widget.CardView>
+        
+        <TextView 
+            android:id="@+id/AnswerLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginVertical="@dimen/margin_xxsmall"
+            local:MvxBind="Text Text"
+            style="@style/Subtitle2_Label1" />
+        
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

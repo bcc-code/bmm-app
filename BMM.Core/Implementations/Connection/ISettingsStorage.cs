@@ -18,7 +18,11 @@ namespace BMM.Core.Implementations.Connection
         Task SetPlayInChronologicalOrderEnabled(bool enabled);
 
         Task<bool> GetStreakHidden();
+        Task<bool> GetBibleStudyBadgeEnabled();
+        Task<bool> GetBibleStudyOnHomeEnabled();
 
         Task SetStreakHidden(bool streakHidden);
+        Task SetBibleStudyBadgeEnabled(bool isEnabled);
+        Task SetBibleStudyOnHomeEnabled(bool isEnabled);
     }
 }

@@ -2,6 +2,8 @@ using System;
 using System.Linq;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.CustomViews;
+using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.NewMediaPlayer;
 using CoreGraphics;
 using MvvmCross;
@@ -44,6 +46,10 @@ namespace BMM.UI.iOS
                 SetMiniPlayerView(_miniPlayerView);
                 _miniPlayerView = null;
             }
+
+            //TODO Show Badge on bottom bar
+            //TabBarItem.Image = TabBarItem.Image.WithBadge();
+            //TabBarItem.SelectedImage = TabBarItem.SelectedImage.WithBadge();
         }
 
         public void RegisterViewController(IBaseViewController viewController)

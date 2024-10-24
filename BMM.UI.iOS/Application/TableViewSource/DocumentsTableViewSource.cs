@@ -1,3 +1,4 @@
+using BMM.Api.Implementation.Models;
 using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Carousels;
@@ -41,7 +42,8 @@ namespace BMM.UI.iOS
                 RecommendationContributorTableViewCell.Key,
                 RecommendationAlbumTableViewCell.Key,
                 ProjectBoxCollapsedViewCell.Key,
-                ProjectBoxExpandedViewCell.Key
+                ProjectBoxExpandedViewCell.Key,
+                GibraltarProjectBoxViewCell.Key
             };
             
             foreach (string nibName in nibNames)
@@ -132,9 +134,12 @@ namespace BMM.UI.iOS
                 
                 case ProjectBoxPO projectBoxPO:
                 {
-                    nibName = projectBoxPO.IsExpanded
-                        ? ProjectBoxExpandedViewCell.Key
-                        : ProjectBoxCollapsedViewCell.Key;
+                    if (projectBoxPO.ProjectBox.DocumentType == DocumentType.GibraltarProjectBox)
+                        nibName = GibraltarProjectBoxViewCell.Key;
+                    else if (projectBoxPO.IsExpanded)
+                        nibName = ProjectBoxExpandedViewCell.Key;
+                    else
+                        nibName = ProjectBoxCollapsedViewCell.Key;
                     break;
                 }
             }

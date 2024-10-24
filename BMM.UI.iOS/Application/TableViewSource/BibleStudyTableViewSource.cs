@@ -12,25 +12,28 @@ public class BibleStudyTableViewSource : BaseTableViewSource
         tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsPlayWithSubtitleTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsPlayWithSubtitleTableViewCell.Key);
         tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsOpenTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsOpenTableViewCell.Key);
         tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsOpenWithSubtitleTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsOpenWithSubtitleTableViewCell.Key);
+        tableView.RegisterNibForCellReuse(UINib.FromName(ExternalRelationsQuizTableViewCell.Key, NSBundle.MainBundle), ExternalRelationsQuizTableViewCell.Key);
     }
 
     protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
     {
-        if (item is IBibleStudyExternalRelationPO bibleStudyExternalRelationPO)
-        {
-            if (bibleStudyExternalRelationPO.WillPlayTrack)
-            {
-                return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty()
-                    ? tableView.DequeueReusableCell(ExternalRelationsPlayTableViewCell.Key)
-                    : tableView.DequeueReusableCell(ExternalRelationsPlayWithSubtitleTableViewCell.Key);
-            }
-
-            return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty() 
-                ? tableView.DequeueReusableCell(ExternalRelationsOpenTableViewCell.Key)
-                :  tableView.DequeueReusableCell(ExternalRelationsOpenWithSubtitleTableViewCell.Key);
-        }
+        if (item is not IBibleStudyExternalRelationPO bibleStudyExternalRelationPO)
+            return base.GetOrCreateCellFor(tableView, indexPath, item);
         
-        return base.GetOrCreateCellFor(tableView, indexPath, item);
+        if (bibleStudyExternalRelationPO.WillPlayTrack)
+        {
+            return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty()
+                ? tableView.DequeueReusableCell(ExternalRelationsPlayTableViewCell.Key)
+                : tableView.DequeueReusableCell(ExternalRelationsPlayWithSubtitleTableViewCell.Key);
+        }
+
+        if (bibleStudyExternalRelationPO.HasQuestion)
+            return tableView.DequeueReusableCell(ExternalRelationsQuizTableViewCell.Key);
+
+        return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty()
+            ? tableView.DequeueReusableCell(ExternalRelationsOpenTableViewCell.Key)
+            : tableView.DequeueReusableCell(ExternalRelationsOpenWithSubtitleTableViewCell.Key);
+
     }
 
     protected override IEnumerable<ITableCellType> GetTableCellTypes()

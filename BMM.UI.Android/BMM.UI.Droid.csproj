@@ -83,21 +83,13 @@
     <None Remove="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <None Remove="Resources\raw\bp_video_07.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_07.mp4" />
     <None Remove="Resources\raw\bp_video_04.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_04.mp4" />
     <None Remove="Resources\raw\bp_video_06.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_06.mp4" />
     <None Remove="Resources\raw\bp_video_02.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_02.mp4" />
     <None Remove="Resources\raw\bp_video_03.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_03.mp4" />
     <None Remove="Resources\raw\bp_video_09.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_09.mp4" />
     <None Remove="Resources\raw\bp_video_10.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_10.mp4" />
     <None Remove="Resources\raw\bp_video_08.mp4" />
-    <AndroidResource Include="Resources\raw\bp_video_08.mp4" />
     <None Remove="Resources\layout\activity_main.axml" />
     <AndroidResource Include="Resources\layout\activity_main.axml" />
     <None Remove="Resources\layout\listitem_shared_trackcollection_header.xml" />
@@ -1079,6 +1071,22 @@
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
     <AndroidResource Update="Resources\menu\curated_playlist.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\fragment_quiz_question.axml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_extrenal_relations_quiz_button.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\view_answer.xml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    </AndroidResource>
+    <AndroidResource Update="Resources\layout\listitem_gibraltar_project_box.xml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>

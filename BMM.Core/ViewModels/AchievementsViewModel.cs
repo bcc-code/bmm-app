@@ -18,6 +18,7 @@ public class AchievementsViewModel : BaseViewModel
     }
 
     public IBmmObservableCollection<BasePO> Achievements { get; } = new BmmObservableCollection<BasePO>();
+    public bool AreAchievementsVisible => Achievements.Any();
     
     public override async Task Initialize()
     {

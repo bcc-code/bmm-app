@@ -121,6 +121,18 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(StreakHidden), default(bool));
             set => AddOrUpdateValue(value, nameof(StreakHidden));
         }
+        
+        public static bool BibleStudyBadgeEnabled
+        {
+            get => GetValueOrDefault(nameof(BibleStudyBadgeEnabled), true);
+            set => AddOrUpdateValue(value, nameof(BibleStudyBadgeEnabled));
+        }
+        
+        public static bool BibleStudyOnHomeEnabled
+        {
+            get => GetValueOrDefault(nameof(BibleStudyOnHomeEnabled), true);
+            set => AddOrUpdateValue(value, nameof(BibleStudyOnHomeEnabled));
+        }
                 
         public static bool PushNotificationsEnabled
         {
