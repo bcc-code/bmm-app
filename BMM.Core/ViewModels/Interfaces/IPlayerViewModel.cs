@@ -9,10 +9,10 @@ namespace BMM.Core.ViewModels.Interfaces
         IMvxAsyncCommand NavigateToLanguageChangeCommand { get; }
         ITrackModel CurrentTrack { get; }
         bool HasLeftButton { get; }
-        bool HasBccButton { get; }
+        bool HasWatchButton { get; }
         bool HasExternalRelations { get; set; }
         MvxCommand LeftButtonClickedCommand { get; }
-        MvxCommand WatchBccButtonClickedCommand { get; }
+        MvxCommand WatchButtonClickedCommand { get; }
         string LeftButtonLink { get; set; }
         string TrackLanguage { get; set; }
         PlayerLeftButtonType? LeftButtonType { get; set; }

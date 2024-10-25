@@ -47,7 +47,6 @@ namespace BMM.Core.ViewModels
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
         private readonly IDeviceInfo _deviceInfo;
-        private readonly IBadgeService _badgeService;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
@@ -60,8 +59,7 @@ namespace BMM.Core.ViewModels
             IListeningStreakPOFactory listeningStreakPOFactory,
             IAddToQueueAdditionalMusic addToQueueAdditionalMusic,
             ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction,
-            IDeviceInfo deviceInfo,
-            IBadgeService badgeService)
+            IDeviceInfo deviceInfo)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -74,16 +72,13 @@ namespace BMM.Core.ViewModels
             _addToQueueAdditionalMusic = addToQueueAdditionalMusic;
             _checkAndShowAchievementUnlockedScreenAction = checkAndShowAchievementUnlockedScreenAction;
             _deviceInfo = deviceInfo;
-            _badgeService = badgeService;
             _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
-            BadgeChangedInteraction = new BmmInteraction();
         }
         
         public IMvxAsyncCommand<Type> NavigateToViewModelCommand => _navigateToViewModelAction.Command;
-        public IBmmInteraction BadgeChangedInteraction { get; }
 
         private void ListeningStreakChanged(ListeningStreakChangedMessage message)
         {
@@ -116,7 +111,6 @@ namespace BMM.Core.ViewModels
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(filteredDocs);
             var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
-            BadgeChangedInteraction?.Raise();
             return presentationItems;
         }
 

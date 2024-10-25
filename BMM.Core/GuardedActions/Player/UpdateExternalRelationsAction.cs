@@ -119,7 +119,7 @@ namespace BMM.Core.GuardedActions.Player
         {
             await base.OnFinally();
             await PlayerViewModel.RaisePropertyChanged(nameof(PlayerViewModel.HasLeftButton));
-            await PlayerViewModel.RaisePropertyChanged(nameof(PlayerViewModel.HasBccButton));
+            await PlayerViewModel.RaisePropertyChanged(nameof(PlayerViewModel.HasWatchButton));
             PlayerViewModel.LeftButtonClickedCommand.RaiseCanExecuteChanged();
         }
     }

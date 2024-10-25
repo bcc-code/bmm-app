@@ -107,7 +107,7 @@ namespace BMM.UI.iOS
 		BMM.UI.iOS.BmmCachedImageView TrackCoverImageView { get; set; }
 
 		[Outlet]
-		UIKit.UIButton WatchBccButton { get; set; }
+		UIKit.UIButton WatchButton { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -261,9 +261,9 @@ namespace BMM.UI.iOS
 				TrackCoverImageView = null;
 			}
 
-			if (WatchBccButton != null) {
-				WatchBccButton.Dispose ();
-				WatchBccButton = null;
+			if (WatchButton != null) {
+				WatchButton.Dispose ();
+				WatchButton = null;
 			}
 
 			if (BccButtonHeightConstraint != null) {

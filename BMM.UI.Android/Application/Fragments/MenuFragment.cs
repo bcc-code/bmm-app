@@ -119,18 +119,23 @@ namespace BMM.UI.Droid.Application.Fragments
             {
                 if (!_badgeService.IsBadgeSet)
                 {
-                    if (_iconContainer != null && _iconContainer.HasChild(_badgeView))
-                        _iconContainer.RemoveView(_badgeView);
-
+                    RemoveBadge();
                     return;
                 }
 
+                RemoveBadge();
                 var notificationItemView = _navigationView.FindViewById(Resource.Id.page_1);
                 var inflater = (LayoutInflater)Context.GetSystemService(Android.Content.Context.LayoutInflaterService);
                 _badgeView = inflater.Inflate(Resource.Layout.badge, null);
                 _iconContainer = (FrameLayout)notificationItemView;
                 _iconContainer.AddView(_badgeView);
             });
+        }
+
+        private void RemoveBadge()
+        {
+            if (_iconContainer != null && _iconContainer.HasChild(_badgeView))
+                _iconContainer.RemoveView(_badgeView);
         }
     }
 }

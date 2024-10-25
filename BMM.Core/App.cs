@@ -245,6 +245,8 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<IDocumentFilter, NullFilter>();
             Mvx.IoCProvider.RegisterType<IDownloadedTracksOnlyFilter, DownloadedTracksOnlyFilter>();
 
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBadgeService, BadgeService>();
+
             Mvx.IoCProvider.RegisterType<IPlayerErrorHandler, PlayerErrorHandler>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlayerAnalytics, PlayerAnalytics>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlaybackHistoryService, PlaybackHistoryService>();
@@ -287,8 +289,6 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IGuardInvoker, GuardInvoker>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITimeDiagnosticTool, TimeDiagnosticTool>();
-            
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBadgeService, BadgeService>();
             
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDocumentsPOFactory, DocumentsPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITrackPOFactory, TrackPOFactory>();

@@ -41,10 +41,10 @@ namespace BMM.UI.iOS
                 .WithConversion<InvertedBoolConverter>();
 
             set.Bind(NoAchievementsTitle)
-                .To(vm => vm.TextSource[Translations.AchievementsViewModel_NoAchievementsTitle]);
+                .To(vm => vm.TextSource[Translations.AchievementsViewModel_EmptyTitle]);
             
             set.Bind(NoAchievementsSubtitle)
-                .To(vm => vm.TextSource[Translations.AchievementsViewModel_NoAchievementsSubtitle]);
+                .To(vm => vm.TextSource[Translations.AchievementsViewModel_EmptySubtitle]);
             
             set.Apply();
 

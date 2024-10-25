@@ -33,7 +33,7 @@
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintBottom_toTopOf="@+id/NoAchievementsSubtitle"
             local:MvxBind="Visibility InvertedVisibility(AreAchievementsVisible)"
-            local:MvxLang="Text AchievementsViewModel_NoAchievementsTitle"
+            local:MvxLang="Text AchievementsViewModel_EmptyTitle"
             style="@style/Heading3" />
 
     <TextView
@@ -48,7 +48,7 @@
             local:layout_constraintEnd_toEndOf="parent"
             local:layout_constraintBottom_toBottomOf="parent"
             local:MvxBind="Visibility InvertedVisibility(AreAchievementsVisible)"
-            local:MvxLang="Text AchievementsViewModel_NoAchievementsSubtitle"
+            local:MvxLang="Text AchievementsViewModel_EmptySubtitle"
             style="@style/Paragraph1" />
     
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -164,7 +164,7 @@ namespace BMM.UI.iOS
                 {
                     switch (_tileStatusTextIcon)
                     {
-                        case TileStatusTextIcon.Dot:
+                        case TileStatusTextIcon.Badge:
                             IsPlayingButton!.Text = ContinueListeningTilePO.NotificationBadgeIcon;
                             IsPlayingButton.TextColor = AppColors.RadioColor;
                             IsPlayingButton.Font = IsPlayingButton.Font.WithSize(DotFontSize);

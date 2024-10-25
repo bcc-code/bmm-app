@@ -4,5 +4,5 @@ public enum TileStatusTextIcon
 {
     None,
     Play,
-    Dot
+    Badge
 }

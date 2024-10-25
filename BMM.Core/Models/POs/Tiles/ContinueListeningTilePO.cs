@@ -125,7 +125,7 @@ namespace BMM.Core.Models.POs.Tiles
                 return TileStatusTextIcon.None;
             
             await _badgeService.Set();
-            return TileStatusTextIcon.Dot;
+            return TileStatusTextIcon.Badge;
         }
 
         private async Task<bool> CheckHasBadge()

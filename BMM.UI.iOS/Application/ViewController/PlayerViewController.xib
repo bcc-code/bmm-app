@@ -41,7 +41,7 @@
                 <outlet property="SubtitleLabel" destination="SCY-QA-nwU" id="iYH-U9-yKj"/>
                 <outlet property="TitleLabel" destination="jsC-GB-jT3" id="ikg-M4-ew1"/>
                 <outlet property="TrackCoverImageView" destination="Ug9-Uj-hs6" id="uRS-ZH-teE"/>
-                <outlet property="WatchBccButton" destination="rzm-aZ-4mR" id="00h-QB-EvV"/>
+                <outlet property="WatchButton" destination="rzm-aZ-4mR" id="00h-QB-EvV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="BPY-9K-wQ4"/>
             </connections>
         </placeholder>

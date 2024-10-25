@@ -4,7 +4,6 @@ public class Question
 {
     public Question(int id,
         string type,
-        string pageTitle,
         string questionImageLink,
         string questionText,
         string questionSubtext,
@@ -19,7 +18,6 @@ public class Question
     {
         Id = id;
         Type = type;
-        PageTitle = pageTitle;
         QuestionImageLink = questionImageLink;
         QuestionText = questionText;
         QuestionSubtext = questionSubtext;
@@ -35,7 +33,6 @@ public class Question
 
     public int Id { get; }
     public string Type { get; }
-    public string PageTitle { get; }
     public string QuestionImageLink { get; }
     public string QuestionText { get; }
     public string QuestionSubtext { get; }

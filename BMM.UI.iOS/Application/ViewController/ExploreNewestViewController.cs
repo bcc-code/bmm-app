@@ -24,7 +24,6 @@ namespace BMM.UI.iOS
     public partial class ExploreNewestViewController : BaseViewController<ExploreNewestViewModel>, IHaveLargeTitle
     {
         private UIBarButtonItem _playbackHistoryButton;
-        private IBmmInteraction _badgeChangedInteraction;
 
         public double? InitialLargeTitleHeight { get; set; }
 
@@ -59,10 +58,6 @@ namespace BMM.UI.iOS
                 .To(vm => vm.NavigateToViewModelCommand)
                 .CommandParameter(typeof(PlaybackHistoryViewModel));
             
-            set.Bind(this)
-                .For(p => p.BadgeChangedInteraction)
-                .To(vm => vm.BadgeChangedInteraction);
-
             set.Apply();
 
             TrackTableView.ReloadData();
@@ -71,24 +66,6 @@ namespace BMM.UI.iOS
                 return;
 
             SiriUtils.Initialize();
-        }
-        
-        public IBmmInteraction BadgeChangedInteraction
-        {
-            get => _badgeChangedInteraction;
-            set
-            {
-                if (_badgeChangedInteraction != null)
-                    _badgeChangedInteraction.Requested -= BadgeChangedInteractionRequested;
-
-                _badgeChangedInteraction = value;
-                _badgeChangedInteraction.Requested += BadgeChangedInteractionRequested;
-            }
-        }
-
-        private void BadgeChangedInteractionRequested(object sender, EventArgs e)
-        {
-            ContainmentVC.SetBadgeOnTabBarItem();
         }
 
         private void SetPlaybackHistoryButton()

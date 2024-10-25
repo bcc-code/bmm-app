@@ -85,7 +85,7 @@
         </bmm.ui.droid.application.customViews.ShadowLayout>
 
         <Button
-                android:id="@+id/WatchBccButton"
+                android:id="@+id/WatchButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/icon_video"
@@ -94,8 +94,8 @@
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Button_Tertiary_Small"
                 local:MvxBind="
-                    Click WatchBccButtonClickedCommand;
-                    Visibility Visibility(HasBccButton)"
+                    Click WatchButtonClickedCommand;
+                    Visibility Visibility(HasWatchButton)"
                 local:MvxLang="Text PlayerViewModel_WatchOnBCCMedia" />
         
         <TextView

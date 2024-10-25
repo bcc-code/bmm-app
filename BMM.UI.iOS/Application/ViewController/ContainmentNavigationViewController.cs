@@ -12,7 +12,6 @@ namespace BMM.UI.iOS
         private UIViewController _viewController;
 
         public Type ParentViewControllerType => typeof(ContainmentViewController);
-        public ContainmentViewController ContainmentVC { get; set; }
 
         public void RegisterViewController(IBaseViewController viewController)
         {

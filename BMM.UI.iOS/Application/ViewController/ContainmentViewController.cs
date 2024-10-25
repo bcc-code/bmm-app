@@ -21,13 +21,22 @@ namespace BMM.UI.iOS
         private const int StandardBadgeCount = 1;
         private UIView _contentView;
         private UIView _miniPlayerView;
+        private readonly IBadgeService _badgeService;
 
         public System.Type ParentViewControllerType => typeof(MenuViewController);
-        public ContainmentViewController ContainmentVC { get; set; }
 
         public ContainmentViewController() : base(nameof(ContainmentViewController), null)
-        { }
+        {
+            _badgeService = Mvx.IoCProvider!.Resolve<IBadgeService>();
+            _badgeService!.BadgeChanged += BadgeServiceOnBadgeChanged;
+        }
 
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            _badgeService!.BadgeChanged -= BadgeServiceOnBadgeChanged;
+        }
+        
         public IBaseViewController EnclosedViewController { get; set; }
         
         public override void ViewDidLoad()
@@ -193,8 +202,16 @@ namespace BMM.UI.iOS
             }
         }
         
-        public void SetBadgeOnTabBarItem()
+        private void BadgeServiceOnBadgeChanged(object sender, EventArgs e)
         {
+            SetBadgeOnTabBarItem();
+        }
+        
+        private void SetBadgeOnTabBarItem()
+        {
+            if (EnclosedViewController is not ExploreNewestViewController)
+                return;
+            
             BeginInvokeOnMainThread(() =>
             {
                 var badgeService = Mvx.IoCProvider!.Resolve<IBadgeService>();

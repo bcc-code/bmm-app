@@ -62,7 +62,7 @@ namespace BMM.Core.ViewModels
         public MvxCommand SkipForwardCommand { get; }
         public MvxCommand SkipBackwardCommand { get; }
         public MvxCommand LeftButtonClickedCommand { get; }
-        public MvxCommand WatchBccButtonClickedCommand { get; }
+        public MvxCommand WatchButtonClickedCommand { get; }
         public string LeftButtonLink { get; set; }
 
         public bool IsShuffleEnabled
@@ -131,7 +131,7 @@ namespace BMM.Core.ViewModels
         public bool CanNavigateToLanguageChange => NavigateToLanguageChangeCommand.CanExecute();
         
         public bool HasLeftButton => LeftButtonClickedCommand.CanExecute();
-        public bool HasBccButton => WatchBccButtonClickedCommand.CanExecute();
+        public bool HasWatchButton => WatchButtonClickedCommand.CanExecute();
 
         public string PlayingText => _queueLength > 0 ? TextSource.GetText(Translations.PlayerViewModel_PlayingCount, _currentIndex + 1, _queueLength) : string.Empty;
 
@@ -163,7 +163,7 @@ namespace BMM.Core.ViewModels
             SkipForwardCommand = new MvxCommand(() => MediaPlayer.JumpForward());
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
             LeftButtonClickedCommand = new MvxCommand(LeftButtonClicked, () => HasTranscription || !string.IsNullOrEmpty(LeftButtonLink));
-            WatchBccButtonClickedCommand = new MvxCommand(BccMediaClicked, () => !string.IsNullOrEmpty(WatchBccMediaLink));
+            WatchButtonClickedCommand = new MvxCommand(BccMediaClicked, () => !string.IsNullOrEmpty(WatchBccMediaLink));
             
             SeekToPositionCommand = new MvxCommand<long>(position =>
             {

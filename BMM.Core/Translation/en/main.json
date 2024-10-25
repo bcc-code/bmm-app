@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "App version",
     "OptionDeleteAccountHeader": "Delete Account",
     "OptionDeleteAccountText": "Request that your account is deleted.",
-    "OptionBibleStudyBadgeHeader": "Bible Study Notification badge",
-    "OptionBibleStudyBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyOnHomeHeader": "Bible Study on Home",
-    "OptionBibleStudyOnHomeText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Bible Study Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "App information",
     "AppInfoAppVersion": "App version: ",
     "AppInfoManufacturer": "Manufacturer: ",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Achievements",
-    "NoAchievementsTitle": "A place for your Bible Study Achievements",
-    "NoAchievementsSubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }

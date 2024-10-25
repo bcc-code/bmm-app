@@ -92,7 +92,6 @@ namespace BMM.UI.iOS
             containmentViewController.EnclosedViewController = desiredVc;
             containmentNavigationController.RegisterViewController(desiredVc);
             containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
-            desiredVc.ContainmentVC = containmentViewController;
             return base.ShowTabViewController(containmentViewController, attribute, request);
         }
 

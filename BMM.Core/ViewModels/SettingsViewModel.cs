@@ -241,15 +241,15 @@ namespace BMM.Core.ViewModels
                 },
                 new CheckboxListItemPO
                 {
-                    Title = TextSource[Translations.SettingsViewModel_OptionBibleStudyOnHomeHeader],
-                    Text = TextSource[Translations.SettingsViewModel_OptionBibleStudyOnHomeText],
+                    Title = TextSource[Translations.SettingsViewModel_OptionBibleStudyHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionBibleStudyText],
                     IsChecked = await _settingsStorage.GetBibleStudyOnHomeEnabled(),
                     OnChanged = sender => _settingsStorage.SetBibleStudyOnHomeEnabled(sender.IsChecked)
                 },
                 new CheckboxListItemPO
                 {
-                    Title = TextSource[Translations.SettingsViewModel_OptionBibleStudyBadgeHeader],
-                    Text = TextSource[Translations.SettingsViewModel_OptionBibleStudyBadgeText],
+                    Title = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeText],
                     IsChecked = await _settingsStorage.GetBibleStudyBadgeEnabled(),
                     OnChanged = sender =>
                     {

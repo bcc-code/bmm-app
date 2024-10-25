@@ -92,7 +92,7 @@ namespace BMM.UI.Droid.Application.ViewHolders
                 {
                     switch (_tileStatusTextIcon)
                     {
-                        case TileStatusTextIcon.Dot:
+                        case TileStatusTextIcon.Badge:
                             _playingStatusIcon!.Text = ContinueListeningTilePO.NotificationBadgeIcon;
                             _playingStatusIcon.SetTextColor(ItemView.Context.GetColorFromResource(Resource.Color.radio_color));
                             break;

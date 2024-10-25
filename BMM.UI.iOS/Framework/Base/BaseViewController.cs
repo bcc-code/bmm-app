@@ -20,7 +20,6 @@ namespace BMM.UI.iOS
         { }
         
         public abstract Type ParentViewControllerType { get; }
-        public ContainmentViewController ContainmentVC { get; set; }
         protected virtual string GetTitle() => ViewModel.TextSource[TitleKey];
         protected float BottomSafeArea => (float)(View?.SafeAreaInsets.Bottom ?? 0);
         public event PropertyChangedEventHandler PropertyChanged;
