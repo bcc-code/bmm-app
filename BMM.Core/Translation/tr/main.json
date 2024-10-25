@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Ayarlar",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Play in chronological order",
     "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Otomatik Oynatma",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "Uygulama Versiyonu",
     "OptionDeleteAccountHeader": "Hesabı sil",
     "OptionDeleteAccountText": "Hesabınızın silinmesini talep edin.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "Uygulama Bilgi",
     "AppInfoAppVersion": "Uygulama Versiyon: ",
     "AppInfoManufacturer": "Üretici firma: ",
@@ -565,7 +571,8 @@
     "Days": "Günler",
     "Boost": "Boost",
     "Points": "Puan",
-    "Achievements": "Başarılarınız"
+    "Achievements": "Başarılarınız",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "Uygulama Simgesi",
@@ -609,6 +616,8 @@
     "GotIt": "Anladım"
   },
   "AchievementsViewModel": {
-    "Title": "Başarılar"
+    "Title": "Başarılar",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
