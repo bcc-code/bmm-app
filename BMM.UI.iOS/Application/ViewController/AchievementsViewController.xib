@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -10,6 +10,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AchievementsViewController">
             <connections>
                 <outlet property="AchievementsCollectionView" destination="be9-by-3tA" id="hk5-98-6Sf"/>
+                <outlet property="NoAchievementsStackView" destination="l2k-YI-IhQ" id="uFd-Ba-Xbo"/>
+                <outlet property="NoAchievementsSubtitle" destination="nJn-kX-KK1" id="Gg4-wK-7ey"/>
+                <outlet property="NoAchievementsTitle" destination="mhj-G8-HtS" id="oUg-UH-cNp"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
             </connections>
         </placeholder>
@@ -28,12 +31,32 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l2k-YI-IhQ">
+                    <rect key="frame" x="20" y="423.5" width="374" height="49"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhj-G8-HtS">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJn-kX-KK1">
+                            <rect key="frame" x="0.0" y="28.5" width="374" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="be9-by-3tA" secondAttribute="trailing" id="3qB-2t-Izy"/>
+                <constraint firstAttribute="trailing" secondItem="l2k-YI-IhQ" secondAttribute="trailing" constant="20" id="P6W-Zm-rXM"/>
+                <constraint firstItem="l2k-YI-IhQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="W2M-rn-CYp"/>
                 <constraint firstItem="be9-by-3tA" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="idc-X9-hL0"/>
                 <constraint firstAttribute="bottom" secondItem="be9-by-3tA" secondAttribute="bottom" id="pju-l5-aDZ"/>
+                <constraint firstItem="l2k-YI-IhQ" firstAttribute="centerY" secondItem="be9-by-3tA" secondAttribute="centerY" id="r4H-xh-Cqu"/>
                 <constraint firstItem="be9-by-3tA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ysd-jv-rfR"/>
             </constraints>
             <point key="canvasLocation" x="84" y="154"/>

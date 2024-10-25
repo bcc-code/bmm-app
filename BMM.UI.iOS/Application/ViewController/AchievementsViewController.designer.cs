@@ -17,18 +17,34 @@ namespace BMM.UI.iOS
 		UIKit.UICollectionView AchievementsCollectionView { get; set; }
 
 		[Outlet]
-		UIKit.UITableView ThemeSettingsTableView { get; set; }
+		UIKit.UIStackView NoAchievementsStackView { get; set; }
+
+		[Outlet]
+		UIKit.UILabel NoAchievementsSubtitle { get; set; }
+
+		[Outlet]
+		UIKit.UILabel NoAchievementsTitle { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (ThemeSettingsTableView != null) {
-				ThemeSettingsTableView.Dispose ();
-				ThemeSettingsTableView = null;
-			}
-
 			if (AchievementsCollectionView != null) {
 				AchievementsCollectionView.Dispose ();
 				AchievementsCollectionView = null;
+			}
+
+			if (NoAchievementsTitle != null) {
+				NoAchievementsTitle.Dispose ();
+				NoAchievementsTitle = null;
+			}
+
+			if (NoAchievementsSubtitle != null) {
+				NoAchievementsSubtitle.Dispose ();
+				NoAchievementsSubtitle = null;
+			}
+
+			if (NoAchievementsStackView != null) {
+				NoAchievementsStackView.Dispose ();
+				NoAchievementsStackView = null;
 			}
 
 		}

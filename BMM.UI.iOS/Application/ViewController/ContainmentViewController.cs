@@ -1,26 +1,42 @@
 using System;
 using System.Linq;
+using BMM.Core.Constants;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
+using BMM.UI.iOS.CustomViews;
+using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.NewMediaPlayer;
 using CoreGraphics;
 using MvvmCross;
 using MvvmCross.Platforms.Ios.Views;
 using MvvmCross.ViewModels;
 using UIKit;
+using UserNotifications;
 
 namespace BMM.UI.iOS
 {
     public partial class ContainmentViewController : UIViewController, IMvxCanCreateIosView, IBaseViewController
     {
+        private const int StandardBadgeCount = 1;
         private UIView _contentView;
         private UIView _miniPlayerView;
+        private readonly IBadgeService _badgeService;
 
         public System.Type ParentViewControllerType => typeof(MenuViewController);
 
         public ContainmentViewController() : base(nameof(ContainmentViewController), null)
-        { }
+        {
+            _badgeService = Mvx.IoCProvider!.Resolve<IBadgeService>();
+            _badgeService!.BadgeChanged += BadgeServiceOnBadgeChanged;
+        }
 
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            _badgeService!.BadgeChanged -= BadgeServiceOnBadgeChanged;
+        }
+        
         public IBaseViewController EnclosedViewController { get; set; }
         
         public override void ViewDidLoad()
@@ -184,6 +200,41 @@ namespace BMM.UI.iOS
                     }
                 }
             }
+        }
+        
+        private void BadgeServiceOnBadgeChanged(object sender, EventArgs e)
+        {
+            SetBadgeOnTabBarItem();
+        }
+        
+        private void SetBadgeOnTabBarItem()
+        {
+            if (EnclosedViewController is not ExploreNewestViewController)
+                return;
+            
+            BeginInvokeOnMainThread(() =>
+            {
+                var badgeService = Mvx.IoCProvider!.Resolve<IBadgeService>();
+                int badgeCount = badgeService!.IsBadgeSet
+                    ? StandardBadgeCount
+                    : NumericConstants.Zero;
+                
+                if (UIDevice.CurrentDevice.CheckSystemVersion(16, 0))
+                    UNUserNotificationCenter.Current.SetBadgeCount(badgeCount, null);
+                else
+                    UIApplication.SharedApplication.ApplicationIconBadgeNumber = badgeCount;
+
+                if (badgeService.IsBadgeSet)
+                {
+                    TabBarItem.Image = TabBarItem.Image.WithBadge(MenuViewController.UnselectedItemTintColor);
+                    TabBarItem.SelectedImage = TabBarItem.SelectedImage.WithBadge(MenuViewController.SelectedItemTintColor);
+                }
+                else
+                {
+                    TabBarItem.Image = UIImage.FromBundle(ImageResourceNames.IconHome.ToNameWithExtension());
+                    TabBarItem.SelectedImage = UIImage.FromBundle(ImageResourceNames.IconHomeActive.ToNameWithExtension());
+                }
+            });
         }
     }
 }

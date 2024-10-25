@@ -159,11 +159,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_xxmedium"
                 android:layout_marginBottom="@dimen/margin_tiny"
+                android:ellipsize="end"
                 local:layout_constraintBottom_toTopOf="@+id/TitleLabel"
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"
                 style="@style/Paragraph1_GlobalBlack2"
-                local:MvxBind="Text Tile.Title" />
+                local:MvxBind="
+                    Text Tile.Title;
+                    Visibility Visibility(ShouldShowSubtitle)" />
 
         <TextView
                 android:id="@+id/PlayingStatusIcon"
@@ -175,8 +178,7 @@
                 style="@style/Subtitle3_GlobalBlack1"
                 local:layout_constraintBottom_toBottomOf="@+id/TitleLabel"
                 local:layout_constraintTop_toTopOf="@+id/TitleLabel"
-                local:layout_constraintStart_toStartOf="parent"
-                local:MvxBind="Visibility Visibility(IsCurrentlySelected)"/>
+                local:layout_constraintStart_toStartOf="parent" />
         
         <TextView
                 android:id="@+id/TitleLabel"
@@ -184,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/margin_xxmedium"
                 android:layout_marginBottom="@dimen/margin_tiny"
-                android:maxLines="2"
+                android:ellipsize="end"
                 local:layout_constraintBottom_toTopOf="@+id/TopTextBarrier"
                 local:layout_constraintStart_toStartOf="parent"
                 local:layout_constraintEnd_toEndOf="parent"

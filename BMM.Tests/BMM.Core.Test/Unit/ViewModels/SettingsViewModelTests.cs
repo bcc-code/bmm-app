@@ -8,6 +8,7 @@ using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.Device;
@@ -61,6 +62,8 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<INotificationPermissionService> _notificationPermissionService;
         private Mock<IChangeNotificationSettingStateAction> _changeNotificationSettingStateAction;
         private Mock<IResetAchievementAction> _resetAchievementAction;
+        private Mock<IMvxNavigationService> _mvxNavigationService;
+        private Mock<IBadgeService> _badgeService;
 
         public override void SetUp()
         {
@@ -112,6 +115,8 @@ namespace BMM.Core.Test.Unit.ViewModels
             _notificationPermissionService = new Mock<INotificationPermissionService>();
             _changeNotificationSettingStateAction= new Mock<IChangeNotificationSettingStateAction>();
             _resetAchievementAction = new Mock<IResetAchievementAction>();
+            _mvxNavigationService = new Mock<IMvxNavigationService>();
+            _badgeService = new Mock<IBadgeService>();
 
             _textSource.Setup(x => x.GetText(It.IsAny<string>())).Returns(String.Empty);
 
@@ -148,7 +153,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _changeNotificationSettingStateAction.Object,
                 _resetAchievementAction.Object,
                 _featurePreviewPermission.Object,
-                new Mock<IMvxNavigationService>().Object
+                _mvxNavigationService.Object,
+                _badgeService.Object
             );
 
             settingsViewModel.TextSource = TextResource.Object;

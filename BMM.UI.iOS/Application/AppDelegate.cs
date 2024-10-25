@@ -46,9 +46,9 @@ namespace BMM.UI.iOS
             //            Xamarin.Calabash.Start();
 #endif
 
-#if !ENABLE_TEST_CLOUD
+// #if !ENABLE_TEST_CLOUD
             RegisterForNotifications(app);
-#endif
+// #endif
 
             app.ApplicationIconBadgeNumber = new IntPtr(0);
 

@@ -7,6 +7,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using AndroidX.CardView.Widget;
 using AndroidX.ConstraintLayout.Widget;
 using AndroidX.Core.Content;
 using AndroidX.Core.Graphics;
@@ -73,6 +74,7 @@ namespace BMM.UI.Droid.Application.Fragments
         private Button _leftButton;
         private int _leftButtonOriginalPadding;
         private bool _hasTranscription;
+        private Button _watchButton;
 
         protected override bool ShouldClearMenuItemsAtStart => false;
         
@@ -154,6 +156,7 @@ namespace BMM.UI.Droid.Application.Fragments
             _backgroundAccentColor = Context.GetColorFromResource(Resource.Color.background_two_color);
             _titleLabel = view.FindViewById<TextView>(Resource.Id.TitleLabel);
             _leftButton = view.FindViewById<Button>(Resource.Id.LeftButton);
+            _watchButton = view.FindViewById<Button>(Resource.Id.WatchButton);
             _coverContainer!.ClipToOutline = true;
             _leftButtonOriginalPadding = _leftButton.PaddingRight;
             
@@ -410,14 +413,30 @@ namespace BMM.UI.Droid.Application.Fragments
             {
                 if (Context == null)
                     return;
-                
+
+                SetWatchButtonPosition();
+
                 int coverBottom = _coverContainer!.Bottom;
+                int WatchButtonSizeToSubtract = _watchButton.Visibility == ViewStates.Visible
+                    ? _watchButton.MeasuredHeight
+                    : default;
                 int titleLabelBottom = _titleLabel.Bottom;
                 int margin = Resources.GetDimensionPixelSize(Resource.Dimension.margin_xmedium);
 
-                int desiredTitleLabelHeight = titleLabelBottom - coverBottom - margin - _coverShadowLayout.PaddingTop;
+                int desiredTitleLabelHeight = titleLabelBottom
+                                              - coverBottom
+                                              - WatchButtonSizeToSubtract
+                                              - margin
+                                              - _coverShadowLayout.PaddingTop;
                 _titleLabel.UpdateHeight(desiredTitleLabelHeight);
             });
+        }
+
+        private void SetWatchButtonPosition()
+        {
+            int[] location = new int[2]; 
+            _coverContainer.GetLocationInWindow(location);
+            _watchButton.SetY(location[1] + _coverContainer.MeasuredHeight);
         }
 
         private void SetSizes()

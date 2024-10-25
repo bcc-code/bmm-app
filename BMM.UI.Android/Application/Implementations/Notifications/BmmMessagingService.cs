@@ -25,7 +25,7 @@ namespace Bmm.UI.Droid.Application.Implementations.Notifications
 
             if (message.GetNotification() != null)
             {
-                if (message.Data.TryGetValue(LocalNotification.TypeKey, out var notificationType)
+                if (message.Data.TryGetValue(INotification.TypeKey, out var notificationType)
                     && notificationType == AchievementNotification.Type)
                 {
                     handler.OnNotificationReceivedInForeground(new RemoteMessageNotification(message));

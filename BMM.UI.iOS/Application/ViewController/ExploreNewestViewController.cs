@@ -1,5 +1,7 @@
 using System;
 using BMM.Core.Implementations.Device;
+using BMM.Core.Interactions.Base;
+using BMM.Core.Messages;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
@@ -10,6 +12,7 @@ using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
+using MvvmCross.Plugin.Messenger;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -54,12 +57,12 @@ namespace BMM.UI.iOS
             set.Bind(_playbackHistoryButton)
                 .To(vm => vm.NavigateToViewModelCommand)
                 .CommandParameter(typeof(PlaybackHistoryViewModel));
-
+            
             set.Apply();
 
             TrackTableView.ReloadData();
 
-            if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsSiri)
+            if (!Mvx.IoCProvider!.Resolve<IFeatureSupportInfoService>()!.SupportsSiri)
                 return;
 
             SiriUtils.Initialize();

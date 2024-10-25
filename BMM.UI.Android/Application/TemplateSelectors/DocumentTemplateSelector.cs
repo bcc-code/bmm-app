@@ -1,4 +1,5 @@
-﻿using BMM.Core.Models.POs.Albums;
+﻿using BMM.Api.Implementation.Models;
+using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.Carousels;
@@ -44,6 +45,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int RecommendationContributor = 28;
         public const int ProjectBoxCollapsed = 29;
         public const int ProjectBoxExpanded = 30;
+        public const int GibraltarProjectBoxExpanded = 31;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
@@ -114,6 +116,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ViewTypes.ProjectBoxExpanded:
                     return Resource.Layout.listitem_project_box_expanded;
+                
+                case ViewTypes.GibraltarProjectBoxExpanded:
+                    return Resource.Layout.listitem_gibraltar_project_box;
                 
                 default:
                     return Resource.Layout.listitem_track;
@@ -189,10 +194,12 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ProjectBoxPO projectBoxPO:
                 {
-                    if (projectBoxPO.IsExpanded)
-                        return ViewTypes.ProjectBoxExpanded;
-
-                    return ViewTypes.ProjectBoxCollapsed;
+                    if (projectBoxPO.ProjectBox.DocumentType == DocumentType.GibraltarProjectBox)
+                        return ViewTypes.GibraltarProjectBoxExpanded;
+                    
+                    return projectBoxPO.IsExpanded
+                        ? ViewTypes.ProjectBoxExpanded
+                        : ViewTypes.ProjectBoxCollapsed;
                 }
                 
                 default:

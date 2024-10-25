@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using BMM.Core.Helpers;
 using BMM.Core.ViewModels.Base;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using Foundation;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
@@ -13,12 +14,12 @@ namespace BMM.UI.iOS
     public abstract class BaseViewController<TViewModel> : MvxViewController<TViewModel>, IBaseViewController where TViewModel : BaseViewModel
     {
         private bool SupportsNavigationBarSeparator => UIDevice.CurrentDevice.CheckSystemVersion(14, 0);
-        public abstract Type ParentViewControllerType { get; }
 
         public BaseViewController(string nib)
             : base(nib, null)
         { }
         
+        public abstract Type ParentViewControllerType { get; }
         protected virtual string GetTitle() => ViewModel.TextSource[TitleKey];
         protected float BottomSafeArea => (float)(View?.SafeAreaInsets.Bottom ?? 0);
         public event PropertyChangedEventHandler PropertyChanged;

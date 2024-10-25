@@ -10,6 +10,7 @@ using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.Device;
@@ -67,6 +68,7 @@ namespace BMM.Core.ViewModels
         private readonly IResetAchievementAction _resetAchievementAction;
         private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly IMvxNavigationService _mvxNavigationService;
+        private readonly IBadgeService _badgeService;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -109,7 +111,8 @@ namespace BMM.Core.ViewModels
             IChangeNotificationSettingStateAction changeNotificationSettingStateAction,
             IResetAchievementAction resetAchievementAction,
             IFeaturePreviewPermission featurePreviewPermission,
-            IMvxNavigationService mvxNavigationService)
+            IMvxNavigationService mvxNavigationService,
+            IBadgeService badgeService)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -135,6 +138,7 @@ namespace BMM.Core.ViewModels
             _resetAchievementAction = resetAchievementAction;
             _featurePreviewPermission = featurePreviewPermission;
             _mvxNavigationService = mvxNavigationService;
+            _badgeService = badgeService;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -196,14 +200,15 @@ namespace BMM.Core.ViewModels
             var items = new List<List<IListItem>>
             {
                 await BuildProfileSection(),
-                await BuildSettingsSection(),
+                await BuildHomeScreenSection(),
+                await BuildPlaybackSection(),
                 await BuildGeneralSection(),
                 await BuildAboutSection()
             };
 
             ListItems = items.SelectMany(x => x).ToList();
         }
-
+        
         private async Task<List<IListItem>> BuildProfileSection()
         {
             return new List<IListItem>
@@ -222,25 +227,11 @@ namespace BMM.Core.ViewModels
             };
         }
 
-        private async Task<List<IListItem>> BuildSettingsSection()
+        private async Task<List<IListItem>> BuildHomeScreenSection()
         {
             var items = new List<IListItem>
             {
-                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineSettings], false),
-                new CheckboxListItemPO
-                {
-                    Title = TextSource[Translations.SettingsViewModel_PlayInChronologicalOrderHeader],
-                    Text = TextSource[Translations.SettingsViewModel_PlayInChronologicalOrderText],
-                    IsChecked = await _settingsStorage.GetPlayInChronologicalOrderEnabled(),
-                    OnChanged = sender => _settingsStorage.SetPlayInChronologicalOrderEnabled(sender.IsChecked)
-                },
-                new CheckboxListItemPO
-                {
-                    Title = TextSource[Translations.SettingsViewModel_OptionAutoplayHeader],
-                    Text = TextSource[Translations.SettingsViewModel_OptionAutoplayText],
-                    IsChecked = await _settingsStorage.GetAutoplayEnabled(),
-                    OnChanged = sender => _settingsStorage.SetAutoplayEnabled(sender.IsChecked)
-                },
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlineHomeScreen], false),
                 new CheckboxListItemPO
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionStreakHeader],
@@ -250,51 +241,50 @@ namespace BMM.Core.ViewModels
                 },
                 new CheckboxListItemPO
                 {
-                    Title = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkHeader],
-                    Text = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkText],
-                    IsChecked = await _networkSettings.GetMobileNetworkDownloadAllowed(),
+                    Title = TextSource[Translations.SettingsViewModel_OptionBibleStudyHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionBibleStudyText],
+                    IsChecked = await _settingsStorage.GetBibleStudyOnHomeEnabled(),
+                    OnChanged = sender => _settingsStorage.SetBibleStudyOnHomeEnabled(sender.IsChecked)
+                },
+                new CheckboxListItemPO
+                {
+                    Title = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeText],
+                    IsChecked = await _settingsStorage.GetBibleStudyBadgeEnabled(),
                     OnChanged = sender =>
                     {
-                        _settingsStorage.SetMobileNetworkDownloadAllowed(sender.IsChecked);
-                        _mediaDownloader.SynchronizeOfflineTracks();
-                        Messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, sender.IsChecked));
+                        _settingsStorage.SetBibleStudyBadgeEnabled(sender.IsChecked);
+                        
+                        if (!sender.IsChecked)
+                            _badgeService.Remove();
                     }
                 }
             };
 
-            _pushNotificationCheckboxListItem = new CheckboxListItemPO
-            {
-                Title = TextSource[Translations.SettingsViewModel_OptionPushNotifications],
-                Text = TextSource[Translations.SettingsViewModel_OptionPushNotificationsSubtitle],
-                IsChecked = await GetIsPushNotificationAllowed(),
-                OnChanged = async sender =>
-                {
-                    await _changeNotificationSettingStateAction.ExecuteGuarded(sender.IsChecked);
-                    sender.IsChecked = await GetIsPushNotificationAllowed();
-                }
-            };
-            
-            items.Add(_pushNotificationCheckboxListItem);
-                
-            if (_storageManager.HasMultipleStorageSupport)
-            {
-                _externalStorage = new SelectableListItem
-                {
-                    Title = TextSource[Translations.SettingsViewModel_OptionExternalStorage],
-                    Text = CurrentStorageInfo(_storageManager.SelectedStorage),
-                    OnSelected = NavigationService.NavigateCommand<StorageManagementViewModel>()
-                };
-                items.Add(_externalStorage);
-            }
-
-            _analytics.LogEvent("Open Settings screen",
-                new Dictionary<string, object>
-                {
-                    {"DownloadOverMobileNetworkAllowed", await _networkSettings.GetMobileNetworkDownloadAllowed()},
-                    {"PushNotificationsAllowed", await _networkSettings.GetPushNotificationsAllowed()}
-                });
-
             return items;
+        }
+        
+        private async Task<List<IListItem>> BuildPlaybackSection()
+        {
+            return
+            [
+                new SectionHeaderPO(TextSource[Translations.SettingsViewModel_HeadlinePlayback], false),
+                new CheckboxListItemPO
+                {
+                    Title = TextSource[Translations.SettingsViewModel_PlayInChronologicalOrderHeader],
+                    Text = TextSource[Translations.SettingsViewModel_PlayInChronologicalOrderText],
+                    IsChecked = await _settingsStorage.GetPlayInChronologicalOrderEnabled(),
+                    OnChanged = sender => _settingsStorage.SetPlayInChronologicalOrderEnabled(sender.IsChecked)
+                },
+
+                new CheckboxListItemPO
+                {
+                    Title = TextSource[Translations.SettingsViewModel_OptionAutoplayHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionAutoplayText],
+                    IsChecked = await _settingsStorage.GetAutoplayEnabled(),
+                    OnChanged = sender => _settingsStorage.SetAutoplayEnabled(sender.IsChecked)
+                }
+            ];
         }
 
         private async Task<bool> GetIsPushNotificationAllowed()
@@ -327,8 +317,34 @@ namespace BMM.Core.ViewModels
                     Title = TextSource[Translations.SettingsViewModel_OptionLanguageContentHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionLanguageContentText],
                     OnSelected = NavigationService.NavigateCommand<LanguageContentViewModel>()
+                },
+                new CheckboxListItemPO
+                {
+                    Title = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionDownloadMobileNetworkText],
+                    IsChecked = await _networkSettings.GetMobileNetworkDownloadAllowed(),
+                    OnChanged = sender =>
+                    {
+                        _settingsStorage.SetMobileNetworkDownloadAllowed(sender.IsChecked);
+                        _mediaDownloader.SynchronizeOfflineTracks();
+                        Messenger.Publish(new MobileNetworkDownloadAllowedChangeMessage(this, sender.IsChecked));
+                    }
                 }
             };
+            
+            _pushNotificationCheckboxListItem = new CheckboxListItemPO
+            {
+                Title = TextSource[Translations.SettingsViewModel_OptionPushNotifications],
+                Text = TextSource[Translations.SettingsViewModel_OptionPushNotificationsSubtitle],
+                IsChecked = await GetIsPushNotificationAllowed(),
+                OnChanged = async sender =>
+                {
+                    await _changeNotificationSettingStateAction.ExecuteGuarded(sender.IsChecked);
+                    sender.IsChecked = await GetIsPushNotificationAllowed();
+                }
+            };
+            
+            generalSectionItems.Add(_pushNotificationCheckboxListItem);
             
             generalSectionItems.AddIf(
                 () => (_featurePreviewPermission.IsFeaturePreviewEnabled() || AchievementsTools.AnyAchievementUnlocked())
@@ -339,7 +355,7 @@ namespace BMM.Core.ViewModels
                 Text = TextSource[Translations.AppIconViewModel_Description],
                 OnSelected = NavigationService.NavigateCommand<AppIconViewModel>()
             });
-
+            
             generalSectionItems.AddIf(() =>
                     (_featurePreviewPermission.IsFeaturePreviewEnabled() || AchievementsTools.AnyAchievementUnlocked())
                     && DeviceInfo.Platform == DevicePlatform.Android,
@@ -363,6 +379,24 @@ namespace BMM.Core.ViewModels
                 Text = TextSource[Translations.SettingsViewModel_SiriShortcutsText],
                 OnSelected = NavigationService.NavigateCommand<SiriShortcutsViewModel>()
             });
+            
+            if (_storageManager.HasMultipleStorageSupport)
+            {
+                _externalStorage = new SelectableListItem
+                {
+                    Title = TextSource[Translations.SettingsViewModel_OptionExternalStorage],
+                    Text = CurrentStorageInfo(_storageManager.SelectedStorage),
+                    OnSelected = NavigationService.NavigateCommand<StorageManagementViewModel>()
+                };
+                generalSectionItems.Add(_externalStorage);
+            }
+
+            _analytics.LogEvent("Open Settings screen",
+                new Dictionary<string, object>
+                {
+                    {"DownloadOverMobileNetworkAllowed", await _networkSettings.GetMobileNetworkDownloadAllowed()},
+                    {"PushNotificationsAllowed", await _networkSettings.GetPushNotificationsAllowed()}
+                });
 
             return generalSectionItems;
         }

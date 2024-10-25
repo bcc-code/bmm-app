@@ -1,9 +1,12 @@
 using BMM.Api.Implementation.Models;
-using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
+using BMM.Core.Implementations.Badge;
+using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Tiles.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -13,11 +16,17 @@ namespace BMM.Core.Models.POs.Tiles
 {
     public class ContinueListeningTilePO : DocumentPO, ITilePO<ContinueListeningTile>, ITrackHolderPO
     {
+        public const string NotificationBadgeIcon = "⬤";
+        public const string PlayingIcon = "▶";
+        
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
-        private bool _isCurrentlySelected;
+        private readonly IBadgeService _badgeService;
+        private readonly ISettingsStorage _settingsStorage;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
         private bool _isCurrentlyPlaying;
         private bool _isDownloaded;
+        private TileStatusTextIcon _tileStatusTextIcon;
 
         public ContinueListeningTilePO(
             IMvxAsyncCommand<Document> optionsClickedCommand,
@@ -27,10 +36,16 @@ namespace BMM.Core.Models.POs.Tiles
             IShowTrackInfoAction showTrackInfoAction,
             IMediaPlayer mediaPlayer,
             IStorageManager storageManager,
+            IBadgeService badgeService,
+            ISettingsStorage settingsStorage,
+            IFirebaseRemoteConfig firebaseRemoteConfig,
             ContinueListeningTile continueListeningTile) : base(continueListeningTile)
         {
             _mediaPlayer = mediaPlayer;
             _storageManager = storageManager;
+            _badgeService = badgeService;
+            _settingsStorage = settingsStorage;
+            _firebaseRemoteConfig = firebaseRemoteConfig;
             TileClickedCommand = new MvxAsyncCommand(async () =>
             {
                 await tileClickedAction.ExecuteGuarded(Tile);
@@ -57,7 +72,7 @@ namespace BMM.Core.Models.POs.Tiles
             });
             
             Tile = continueListeningTile;
-            RefreshState();
+            RefreshState().FireAndForget();
         }
 
         public IMvxAsyncCommand TileClickedCommand { get; }
@@ -71,13 +86,14 @@ namespace BMM.Core.Models.POs.Tiles
         public bool ShuffleButtonVisible => !IsBibleStudyProjectTile && Tile.ShufflePodcastId.HasValue;
         public bool DownloadedIconVisible => !IsBibleStudyProjectTile && IsDownloaded;
         public bool ReferenceButtonVisible => !IsBibleStudyProjectTile && Tile.Track.HasExternalRelations();
-        
-        public bool IsCurrentlySelected
+        public bool ShouldShowSubtitle => Tile.LastPositionInMs != default;
+
+        public TileStatusTextIcon TileStatusTextIcon
         {
-            get => _isCurrentlySelected;
-            set => SetProperty(ref _isCurrentlySelected, value);
+            get => _tileStatusTextIcon;
+            set => SetProperty(ref _tileStatusTextIcon, value);
         }
-        
+
         public bool IsCurrentlyPlaying
         {
             get => _isCurrentlyPlaying;
@@ -90,12 +106,33 @@ namespace BMM.Core.Models.POs.Tiles
             set => SetProperty(ref _isDownloaded, value);
         }
         
-        public Task RefreshState()
+        public async Task RefreshState()
         {
-            IsCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Tile.Track.Id);
-            IsCurrentlyPlaying = IsCurrentlySelected && _mediaPlayer.IsPlaying;
+            bool isCurrentlySelected = _mediaPlayer.CurrentTrack != null && _mediaPlayer.CurrentTrack.Id.Equals(Tile.Track.Id);
+            TileStatusTextIcon = await GetTileStatusIcon(isCurrentlySelected);
+            IsCurrentlyPlaying = isCurrentlySelected && _mediaPlayer.IsPlaying;
             IsDownloaded = _storageManager.SelectedStorage.IsDownloaded(Tile.Track);
-            return Task.CompletedTask;
+        }
+
+        private async Task<TileStatusTextIcon> GetTileStatusIcon(bool isCurrentlySelected)
+        {
+            if (isCurrentlySelected)
+                return TileStatusTextIcon.Play;
+
+            bool hasBadge = await CheckHasBadge();
+
+            if (!hasBadge)
+                return TileStatusTextIcon.None;
+            
+            await _badgeService.Set();
+            return TileStatusTextIcon.Badge;
+        }
+
+        private async Task<bool> CheckHasBadge()
+        {
+            return !Tile.Track.HasListened
+                && await _settingsStorage.GetBibleStudyBadgeEnabled()
+                && _firebaseRemoteConfig.CurrentPodcastId == Tile.ShufflePodcastId;
         }
     }
 }

@@ -9,7 +9,8 @@ public class ProjectBoxUtils
 {
     private const int ItemsInRow = 3;
 
-    public static IList<IBasePO[]> AdjustAchievementsRows(IBmmObservableCollection<IAchievementPO> achievements)
+    public static IList<IBasePO[]> AdjustAchievementsRows(
+        IBmmObservableCollection<IAchievementPO> achievements)
     {
         var rows = achievements.OfType<IBasePO>().Chunk(ItemsInRow).ToList();
         var toFillInLastRow = ItemsInRow - rows.Last().Length;

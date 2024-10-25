@@ -1,6 +1,7 @@
 ﻿using System;
 using Airbnb.Lottie;
 using BMM.Core.Constants;
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
@@ -17,11 +18,15 @@ namespace BMM.UI.iOS
 {
     public partial class ContinueListeningTileViewCell : MvxCollectionViewCell
     {
+        public const int DotFontSize = 8;
+        public const int PlayFontSize = 12;
         public static readonly NSString Key = new NSString(nameof(ContinueListeningTileViewCell));
         public static readonly UINib Nib = UINib.FromName(nameof(ContinueListeningTileViewCell), NSBundle.MainBundle);
         private DateTime? _date;
         private string _subtitle;
         private bool _isCurrentlyPlaying;
+        private TileStatusTextIcon _tileStatusTextIcon;
+        private bool _shouldShowSubtitle;
 
         public ContinueListeningTileViewCell(ObjCRuntime.NativeHandle handle): base(Key, handle)
         {
@@ -67,6 +72,10 @@ namespace BMM.UI.iOS
                     .For(v => v.Subtitle)
                     .To(vm => vm.Tile.Subtitle);
                 
+                set.Bind(this)
+                    .For(v => v.ShouldShowSubtitle)
+                    .To(vm => vm.ShouldShowSubtitle);
+                
                 set.Bind(ProgressBarView)
                     .For(v => v.Percentage)
                     .To(vm => vm.Tile.Percentage);
@@ -92,9 +101,9 @@ namespace BMM.UI.iOS
                     .For(v => v.BindVisible())
                     .To(vm => vm.ShuffleButtonVisible);
 
-                set.Bind(IsPlayingButton)
-                    .For(v => v.BindVisible())
-                    .To(po => po.IsCurrentlySelected);
+                set.Bind(this)
+                    .For(v => v.TileStatusTextIcon)
+                    .To(po => po.TileStatusTextIcon);
 
                 set.Bind(TitleClickableArea)
                     .For(v => v.BindTap())
@@ -128,6 +137,50 @@ namespace BMM.UI.iOS
             });
         }
 
+        public bool ShouldShowSubtitle
+        {
+            get => _shouldShowSubtitle;
+            set
+            {
+                _shouldShowSubtitle = value;
+                TitleToSubtitleConstraint.Active = _shouldShowSubtitle;
+                SubtitleLabel.Hidden = !_shouldShowSubtitle;
+                TitleLabel.Lines = _shouldShowSubtitle
+                    ? 1
+                    : 2;
+            }
+        }
+
+        public TileStatusTextIcon TileStatusTextIcon
+        {
+            get => _tileStatusTextIcon;
+            set
+            {
+                _tileStatusTextIcon = value;
+
+                if (_tileStatusTextIcon == TileStatusTextIcon.None)
+                    IsPlayingButton.Hidden = true;
+                else
+                {
+                    switch (_tileStatusTextIcon)
+                    {
+                        case TileStatusTextIcon.Badge:
+                            IsPlayingButton!.Text = ContinueListeningTilePO.NotificationBadgeIcon;
+                            IsPlayingButton.TextColor = AppColors.RadioColor;
+                            IsPlayingButton.Font = IsPlayingButton.Font.WithSize(DotFontSize);
+                            break;
+                        case TileStatusTextIcon.Play:
+                            IsPlayingButton!.Text = ContinueListeningTilePO.PlayingIcon;
+                            IsPlayingButton.TextColor = AppColors.GlobalBlackOneColor;
+                            IsPlayingButton.Font = IsPlayingButton.Font.WithSize(PlayFontSize);
+                            break;
+                    }
+
+                    IsPlayingButton.Hidden = false;
+                }
+            }
+        }
+        
         public bool IsCurrentlyPlaying
         {
             get => _isCurrentlyPlaying;

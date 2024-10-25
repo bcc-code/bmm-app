@@ -52,23 +52,24 @@ namespace BMM.Core.GuardedActions.Player
             PlayerViewModel.HasExternalRelations = currentTrack.Relations != null &&
                                                    currentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
 
-            string bccLink = GetBCCMediaLink(currentTrack);
+            PlayerViewModel.WatchBccMediaLink = GetBCCMediaLink(currentTrack);
+            string lyricsLink = GetLyricsLink(currentTrack);
 
-            PlayerLeftButtonType leftButtonType;
+            PlayerLeftButtonType leftButtonType = default;
 
-            var isReadingTranscriptionsEnabled =
+            bool isReadingTranscriptionsEnabled =
                 _firebaseRemoteConfig.IsReadingTranscriptionsEnabled || _developerPermission.IsBmmDeveloper();
-            if (currentTrack.HasTranscription && isReadingTranscriptionsEnabled)
+            
+            bool hasTranscription = currentTrack.HasTranscription && isReadingTranscriptionsEnabled;
+            
+            if (hasTranscription)
                 leftButtonType = PlayerLeftButtonType.Transcription;
-            else if (string.IsNullOrEmpty(bccLink))
+            else if (!string.IsNullOrEmpty(lyricsLink))
                 leftButtonType = PlayerLeftButtonType.Lyrics;
-            else
-                leftButtonType = PlayerLeftButtonType.BCCMedia;
+            
             PlayerViewModel.LeftButtonType = leftButtonType;
-            PlayerViewModel.LeftButtonLink = leftButtonType == PlayerLeftButtonType.Lyrics
-                ? GetLyricsLink(currentTrack)
-                : bccLink;
-            PlayerViewModel.HasTranscription = currentTrack.HasTranscription && isReadingTranscriptionsEnabled;
+            PlayerViewModel.LeftButtonLink = GetLyricsLink(currentTrack);
+            PlayerViewModel.HasTranscription = hasTranscription;
             
             return Task.CompletedTask;
         }
@@ -118,6 +119,7 @@ namespace BMM.Core.GuardedActions.Player
         {
             await base.OnFinally();
             await PlayerViewModel.RaisePropertyChanged(nameof(PlayerViewModel.HasLeftButton));
+            await PlayerViewModel.RaisePropertyChanged(nameof(PlayerViewModel.HasWatchButton));
             PlayerViewModel.LeftButtonClickedCommand.RaiseCanExecuteChanged();
         }
     }

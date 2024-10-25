@@ -14,8 +14,15 @@ public class QuestionsClient : BaseClient, IQuestionsClient
     
     public Task<bool>  PostQuestion(PostQuestion postQuestion)
     {
-        var uri = new UriTemplate(ApiUris.PostQuestion);
+        var uri = new UriTemplate(ApiUris.Question);
         var request = BuildRequest(uri, HttpMethod.Post, postQuestion);
         return RequestIsSuccessful(request);
+    }
+    
+    public Task<Question> GetQuestion(int id)
+    {
+        var uri = new UriTemplate(ApiUris.Question);
+        uri.SetParameter("id", id);
+        return Get<Question>(uri);
     }
 }

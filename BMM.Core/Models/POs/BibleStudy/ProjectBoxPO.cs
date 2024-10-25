@@ -38,6 +38,7 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
                 Url = ProjectBox.ButtonWebsite,
                 Title = ProjectBox.ButtonTitle
             }));
+        
         OpenRulesCommand = new ExceptionHandlingCommand(async () =>
         {
             await navigationService.Navigate<BibleStudyRulesViewModel, int>(ProjectBox.Id);

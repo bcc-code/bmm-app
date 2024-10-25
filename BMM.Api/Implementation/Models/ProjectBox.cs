@@ -2,9 +2,9 @@ namespace BMM.Api.Implementation.Models;
 
 public class ProjectBox : Document
 {
-    public ProjectBox()
+    public ProjectBox(DocumentType documentType)
     {
-        DocumentType = DocumentType.ProjectBox;
+        DocumentType = documentType;
     }
     
     public string Title { get; set; }

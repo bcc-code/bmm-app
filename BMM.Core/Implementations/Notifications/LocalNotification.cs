@@ -2,6 +2,7 @@
 {
     public interface INotification
     {
+        public const string TypeKey = "type";
     }
 
     public abstract class RemoteNotification : INotification
@@ -11,7 +12,6 @@
     public abstract class LocalNotification : INotification
     {
         // ToDo: Once we move to C# 8 we should move to INotification
-        public const string TypeKey = "type";
 
         public string Message { get; set; }
         public string Title { get; set; }
