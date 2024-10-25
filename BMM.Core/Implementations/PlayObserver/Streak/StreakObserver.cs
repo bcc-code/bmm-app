@@ -3,6 +3,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.PlayObserver.Model;
 using BMM.Core.Implementations.Storage;
@@ -30,6 +31,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         private readonly IExceptionHandler _exceptionHandler;
         private readonly IAnalytics _analytics;
         private readonly IPlayStatistics _playStatistics;
+        private readonly IBadgeService _badgeService;
         private ListeningStreak _latestStreak;
 
         private readonly MvxSubscriptionToken _trackCompletedToken;
@@ -49,13 +51,15 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             PlayObserverOrchestrator playObserver,
             IExceptionHandler exceptionHandler,
             IAnalytics analytics,
-            IPlayStatistics playStatistics)
+            IPlayStatistics playStatistics,
+            IBadgeService badgeService)
         {
             _mediaPlayer = mediaPlayer;
             _playObserver = playObserver;
             _exceptionHandler = exceptionHandler;
             _analytics = analytics;
             _playStatistics = playStatistics;
+            _badgeService = badgeService;
             _messenger = messenger;
             _trackCompletedToken = messenger.Subscribe<StreakTrackCompletedMessage>(TrackCompleted);
             _trackChangedToken = messenger.Subscribe<CurrentTrackChangedMessage>(TrackChanged);
@@ -145,6 +149,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                         });
                     _messenger.Publish(new ListeningStreakChangedMessage(this) {ListeningStreak = _latestStreak});
                     await Store(_latestStreak);
+                    await _badgeService.Remove();
                     return true;
                 }
             }

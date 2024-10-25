@@ -23,6 +23,11 @@ namespace BMM.UI.iOS.Extensions
             return imagePath?.Replace(StringConstants.Underscore, string.Empty);
         }
         
+        public static string ToNameWithExtension(this string imagePath)
+        {
+            return $"{imagePath.ToLowerInvariant()}{ImageResourceNames.Png}";
+        }
+        
         public static long GetCachePlayerItemExpectedSize(this string filePath)
         {
             string sizeString = filePath

@@ -29,6 +29,9 @@ public class BibleStudyTemplateSelector : MvxTemplateSelector<IBasePO>
                 return Resource.Layout.listitem;
             case IBibleStudyExternalRelationPO bibleStudyExternalRelationPO:
             {
+                if (bibleStudyExternalRelationPO.HasQuestion)
+                    return Resource.Layout.listitem_extrenal_relations_quiz_button;
+
                 if (bibleStudyExternalRelationPO.WillPlayTrack)
                 {
                     return bibleStudyExternalRelationPO.Subtitle.IsNullOrEmpty()

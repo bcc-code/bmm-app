@@ -44,6 +44,19 @@ namespace BMM.UI.Droid.Application.Extensions
         public static bool IsPortrait(this View view)
         {
             return ViewUtils.IsPortrait(view.Width, view.Height);
+        }  
+        
+        public static bool HasChild(this ViewGroup view, View childToCheck)
+        {
+            for (int i = 0; i < view.ChildCount; i++)
+            {
+                var child = view.GetChildAt(i);
+                
+                if (child == childToCheck)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

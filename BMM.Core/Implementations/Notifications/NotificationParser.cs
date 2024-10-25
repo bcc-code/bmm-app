@@ -14,9 +14,9 @@ namespace BMM.Core.Implementations.Notifications
 
         public INotification ParseNotification(IPlatformNotification message)
         {
-            if (message.ContainsKey(LocalNotification.TypeKey))
+            if (message.ContainsKey(INotification.TypeKey))
             {
-                var type = message.GetString(LocalNotification.TypeKey);
+                var type = message.GetString(INotification.TypeKey);
 
                 switch (type)
                 {

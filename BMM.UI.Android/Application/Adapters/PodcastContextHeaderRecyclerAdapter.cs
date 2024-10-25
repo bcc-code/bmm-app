@@ -41,6 +41,8 @@ namespace BMM.UI.Droid.Application.Adapters
                     return new ProjectBoxViewHolder(view, itemBindingContext, this);
                 case Resource.Layout.listitem_project_box_expanded:
                     return new ProjectBoxExpandedViewHolder(view, itemBindingContext, this);
+                case Resource.Layout.listitem_gibraltar_project_box:
+                    return new GibraltarProjectBoxExpandedViewHolder(view, itemBindingContext);
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

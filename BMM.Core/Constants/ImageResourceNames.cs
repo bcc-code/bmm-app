@@ -2,6 +2,8 @@ namespace BMM.Core.Constants
 {
     public class ImageResourceNames
     {
+        public const string Png = ".png";
+        
         public const string IconRemove = "Icon_Remove";
         public const string IconPlaylist = "Icon_Playlist";
         public const string IconShare = "Icon_Share";
@@ -26,5 +28,11 @@ namespace BMM.Core.Constants
         public const string IconLiked = "Icon_Liked";
         public const string IconTick = "Tick_Icon";
         public const string IconDownload = "Icon_Download";
+        public const string IconVideo = "Icon_Video";
+        public const string IconHome = "Icon_Home";
+        public const string IconHomeActive = "Icon_Home_Active";
+        public const string ImageQuizBackground = "Image_Quiz_Background";
+        public const string ImageQuizBackgroundTwo = "Image_Quiz_Background_Two";
+        public const string ImageQuizBackgroundThree = "Image_Quiz_Background_Three";
     }
 }

@@ -21,6 +21,9 @@ namespace BMM.Core.Implementations.Connection
         public async Task<bool> GetAutoplayEnabled() => AppSettings.AutoplayEnabled ?? _config.AutoplayEnabledDefaultSetting;
 
         public async Task<bool> GetStreakHidden() => AppSettings.StreakHidden;
+        public async Task<bool> GetBibleStudyBadgeEnabled() => AppSettings.BibleStudyBadgeEnabled;
+        public async Task<bool> GetBibleStudyOnHomeEnabled() => AppSettings.BibleStudyOnHomeEnabled;
+
         public async Task<bool> GetMobileNetworkDownloadAllowed() => AppSettings.MobileDownloadEnabled;
         public async Task<bool> GetPushNotificationsAllowed() => AppSettings.PushNotificationsEnabled;
         public async Task<bool> UseExternalStorage() => AppSettings.UseExternalStorage;
@@ -31,5 +34,7 @@ namespace BMM.Core.Implementations.Connection
         public async Task SetAutoplayEnabled(bool enabled) => AppSettings.AutoplayEnabled = enabled;
         public async Task SetPlayInChronologicalOrderEnabled(bool enabled) => AppSettings.PlayInChronologicalOrderEnabled = enabled;
         public async Task SetStreakHidden(bool streakHidden) => AppSettings.StreakHidden = streakHidden;
+        public async Task SetBibleStudyBadgeEnabled(bool isEnabled) => AppSettings.BibleStudyBadgeEnabled = isEnabled;
+        public async Task SetBibleStudyOnHomeEnabled(bool isEnabled) => AppSettings.BibleStudyOnHomeEnabled = isEnabled;
     }
 }

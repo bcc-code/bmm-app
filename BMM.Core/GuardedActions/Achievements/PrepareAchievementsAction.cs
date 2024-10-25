@@ -56,5 +56,6 @@ public class PrepareAchievementsAction
         }
         
         DataContext.Achievements.AddRange(elementsList);
+        await DataContext.RaisePropertyChanged(nameof(DataContext.AreAchievementsVisible));
     }
 }

@@ -1,14 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using BMM.Core.Constants;
+﻿using BMM.Core.Constants;
 using BMM.UI.iOS.CollectionViewSource;
 using BMM.UI.iOS.Delegates;
-using CoreGraphics;
-using Foundation;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using MvvmCross.Platforms.Ios.Views;
-using UIKit;
 
 namespace BMM.UI.iOS.CollectionTableViewCell
 {

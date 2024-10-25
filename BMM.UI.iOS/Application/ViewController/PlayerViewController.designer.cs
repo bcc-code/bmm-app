@@ -14,6 +14,9 @@ namespace BMM.UI.iOS
 	partial class PlayerViewController
 	{
 		[Outlet]
+		UIKit.NSLayoutConstraint BccButtonHeightConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UIStackView BottomButtonsStackLayout { get; set; }
 
 		[Outlet]
@@ -103,6 +106,9 @@ namespace BMM.UI.iOS
 		[Outlet]
 		BMM.UI.iOS.BmmCachedImageView TrackCoverImageView { get; set; }
 
+		[Outlet]
+		UIKit.UIButton WatchButton { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (BottomButtonsStackLayout != null) {
@@ -153,6 +159,16 @@ namespace BMM.UI.iOS
 			if (ExternalRelationButton != null) {
 				ExternalRelationButton.Dispose ();
 				ExternalRelationButton = null;
+			}
+
+			if (LeftButton != null) {
+				LeftButton.Dispose ();
+				LeftButton = null;
+			}
+
+			if (LikeButton != null) {
+				LikeButton.Dispose ();
+				LikeButton = null;
 			}
 
 			if (MoreButton != null) {
@@ -245,14 +261,14 @@ namespace BMM.UI.iOS
 				TrackCoverImageView = null;
 			}
 
-			if (LeftButton != null) {
-				LeftButton.Dispose ();
-				LeftButton = null;
+			if (WatchButton != null) {
+				WatchButton.Dispose ();
+				WatchButton = null;
 			}
 
-			if (LikeButton != null) {
-				LikeButton.Dispose ();
-				LikeButton = null;
+			if (BccButtonHeightConstraint != null) {
+				BccButtonHeightConstraint.Dispose ();
+				BccButtonHeightConstraint = null;
 			}
 
 		}

@@ -22,6 +22,7 @@ namespace BMM.UI.iOS
     [MvxModalPresentation(ModalPresentationStyle = UIModalPresentationStyle.PageSheet, WrapInNavigationController = true)]
     public partial class PlayerViewController : BaseViewController<PlayerViewModel>
     {
+        private const int VideoButtonHeight = 36;
         private const int DefaultBottomMarginConstant = 24;
         private const float BackgroundShadowRadiusPercentageVolume = 0.2f;
         private const float BackgroundAccentAlpha = 0.5f;
@@ -44,6 +45,7 @@ namespace BMM.UI.iOS
         private UIColor _lastMutedColor;
         private bool _hasTranscription;
         private bool _isLiked;
+        private bool _hasWatchButton;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
@@ -130,6 +132,17 @@ namespace BMM.UI.iOS
             set.Bind(this)
                 .For(v => v.HasTranscription)
                 .To(vm => vm.HasTranscription);
+            
+            set.Bind(this)
+                .For(v => v.HasWatchButton)
+                .To(vm => vm.HasWatchButton);
+            
+            set.Bind(WatchButton)
+                .For(v => v.BindTitle())
+                .To(vm => vm.TextSource[Translations.PlayerViewModel_WatchOnBCCMedia]);
+            
+            set.Bind(WatchButton)
+                .To(vm => vm.WatchButtonClickedCommand);
 
             set.Bind(MoreButton).To(vm => vm.OptionCommand);
             set.Bind(ChangeLanguageButton)
@@ -330,6 +343,18 @@ namespace BMM.UI.iOS
             }
         }
         
+        public bool HasWatchButton
+        {
+            get => _hasWatchButton;
+            set
+            {
+                _hasWatchButton = value;
+                BccButtonHeightConstraint.Constant = _hasWatchButton
+                    ? VideoButtonHeight
+                    : NumericConstants.Zero;
+            }
+        }
+        
         public bool HasLeftButton
         {
             get => _hasLeftButton;
@@ -417,6 +442,7 @@ namespace BMM.UI.iOS
         private void SetThemes()
         {
             LeftButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMediumAutoSize);
+            WatchButton.ApplyButtonStyle(AppTheme.IconButtonTertiarySmall);
             ChangeLanguageButton.ApplyButtonStyle(AppTheme.ButtonTertiaryMedium);
             TitleLabel.ApplyTextTheme(AppTheme.Heading3AutoSize);
             SubtitleLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);

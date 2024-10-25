@@ -34,7 +34,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 new Mock<IDownloadQueue>().Object,
                 new Mock<IConnection>().Object,
                 new Mock<INetworkSettings>().Object,
-                new Mock<IAlbumManager>().Object);
+                new Mock<IAlbumManager>().Object,
+                new Mock<IOfflineAlbumStorage>().Object);
 
             // Act
             await album.LoadItems();

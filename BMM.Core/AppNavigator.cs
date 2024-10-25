@@ -11,6 +11,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Exceptions;
@@ -58,6 +59,7 @@ namespace BMM.Core
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly IOnStartAction _onStartAction;
         private readonly IOidcCredentialsStorage _credentialsStorage;
+        private readonly IBadgeService _badgeService;
         private Stopwatch _stopwatch;
 
         public AppNavigator(
@@ -76,7 +78,8 @@ namespace BMM.Core
             SupportVersionChecker supportVersionChecker,
             IAccessTokenProvider accessTokenProvider,
             IOnStartAction onStartAction,
-            IOidcCredentialsStorage credentialsStorage)
+            IOidcCredentialsStorage credentialsStorage,
+            IBadgeService badgeService)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -94,6 +97,7 @@ namespace BMM.Core
             _accessTokenProvider = accessTokenProvider;
             _onStartAction = onStartAction;
             _credentialsStorage = credentialsStorage;
+            _badgeService = badgeService;
         }
 
         /// <summary>
@@ -146,6 +150,7 @@ namespace BMM.Core
                 }
 
                 NavigateAfterLoggedIn()
+                    .ContinueWith(_ => _badgeService.VerifyBadge())
                     .ContinueWith(_ => RestoreMediaQueue())
                     .ContinueWith(_ => _onStartAction.ExecuteGuarded());
             }

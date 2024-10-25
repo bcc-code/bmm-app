@@ -67,6 +67,9 @@ namespace BMM.UI.iOS
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 
+		[Outlet]
+		UIKit.NSLayoutConstraint TitleToSubtitleConstraint { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (BackgroundView != null) {
@@ -102,6 +105,11 @@ namespace BMM.UI.iOS
 			if (IsPlayingButton != null) {
 				IsPlayingButton.Dispose ();
 				IsPlayingButton = null;
+			}
+
+			if (MoreButton != null) {
+				MoreButton.Dispose ();
+				MoreButton = null;
 			}
 
 			if (OptionsButton != null) {
@@ -154,9 +162,9 @@ namespace BMM.UI.iOS
 				TitleLabel = null;
 			}
 
-			if (MoreButton != null) {
-				MoreButton.Dispose ();
-				MoreButton = null;
+			if (TitleToSubtitleConstraint != null) {
+				TitleToSubtitleConstraint.Dispose ();
+				TitleToSubtitleConstraint = null;
 			}
 
 		}

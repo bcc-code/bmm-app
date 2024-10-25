@@ -28,6 +28,7 @@ namespace BMM.Core.ViewModels
         private readonly IPlayOrResumePlayAction _playOrResumePlayAction;
         private readonly IDocumentsPOFactory _documentsPOFactory;
         private readonly IAlbumManager _albumManager;
+        private readonly IOfflineAlbumStorage _offlineAlbumStorage;
         private int _id;
 
         /// <summary>
@@ -69,12 +70,14 @@ namespace BMM.Core.ViewModels
             IDownloadQueue downloadQueue,
             IConnection connection,
             INetworkSettings networkSettings,
-            IAlbumManager albumManager)
+            IAlbumManager albumManager,
+            IOfflineAlbumStorage offlineAlbumStorage)
             : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
         {
             _playOrResumePlayAction = playOrResumePlayAction;
             _documentsPOFactory = documentsPOFactory;
             _albumManager = albumManager;
+            _offlineAlbumStorage = offlineAlbumStorage;
             _playOrResumePlayAction.AttachDataContext(this);
             
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddToTrackCollection(Album.Id, DocumentType.Album));
@@ -157,11 +160,13 @@ namespace BMM.Core.ViewModels
         {
             _id = album.Id;
             Album = album;
+            IsOfflineAvailable = _offlineAlbumStorage.IsOfflineAvailable(_id);
         }
 
         public void Prepare(int id)
         {
             _id = id;
+            IsOfflineAvailable = _offlineAlbumStorage.IsOfflineAvailable(_id);
         }
 
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)

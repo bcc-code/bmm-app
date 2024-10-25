@@ -9,6 +9,7 @@ public interface IBibleStudyExternalRelationPO : IBasePO, ITrackHolderPO
     string Title { get; }
     string Subtitle { get; }
     bool WillPlayTrack { get; }
+    bool HasQuestion { get; }
     IMvxAsyncCommand ClickedCommand { get; }
     bool IsCurrentlyPlaying { get; }
     bool HasListened { get; }

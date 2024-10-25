@@ -121,6 +121,18 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(StreakHidden), default(bool));
             set => AddOrUpdateValue(value, nameof(StreakHidden));
         }
+        
+        public static bool BibleStudyBadgeEnabled
+        {
+            get => GetValueOrDefault(nameof(BibleStudyBadgeEnabled), true);
+            set => AddOrUpdateValue(value, nameof(BibleStudyBadgeEnabled));
+        }
+        
+        public static bool BibleStudyOnHomeEnabled
+        {
+            get => GetValueOrDefault(nameof(BibleStudyOnHomeEnabled), true);
+            set => AddOrUpdateValue(value, nameof(BibleStudyOnHomeEnabled));
+        }
                 
         public static bool PushNotificationsEnabled
         {
@@ -258,6 +270,18 @@ namespace BMM.Core.Implementations.Storage
         {
             get => GetValueOrDefault(nameof(GoldenRewardUnlocked), false);
             set => AddOrUpdateValue(value, nameof(GoldenRewardUnlocked));
+        }
+        
+        public static bool IsBadgeSet
+        {
+            get => GetValueOrDefault(nameof(IsBadgeSet), false);
+            set => AddOrUpdateValue(value, nameof(IsBadgeSet));
+        }
+            
+        public static DateTime BadgeSetAt
+        {
+            get => GetValueOrDefault(nameof(BadgeSetAt), DateTime.MinValue);
+            set => AddOrUpdateValue(value, nameof(BadgeSetAt));
         }
 
         public static Guid DeviceId => GetValueOrCreateDefault(nameof(DeviceId), Guid.NewGuid());

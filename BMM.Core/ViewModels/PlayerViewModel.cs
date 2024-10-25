@@ -46,7 +46,7 @@ namespace BMM.Core.ViewModels
         private PlayerTrackInfoProvider _playerTrackInfoProvider;
         private PlayerLeftButtonType? _leftButtonType;
         private bool _hasTranscription;
-        private bool _isLiked;
+        private string _watchBccMediaLink;
 
         public IMvxInteraction<TogglePlayerInteraction> ClosePlayerInteraction => _closePlayerInteraction;
 
@@ -62,6 +62,7 @@ namespace BMM.Core.ViewModels
         public MvxCommand SkipForwardCommand { get; }
         public MvxCommand SkipBackwardCommand { get; }
         public MvxCommand LeftButtonClickedCommand { get; }
+        public MvxCommand WatchButtonClickedCommand { get; }
         public string LeftButtonLink { get; set; }
 
         public bool IsShuffleEnabled
@@ -96,7 +97,7 @@ namespace BMM.Core.ViewModels
                 PreviousOrSeekToStartCommand.RaiseCanExecuteChanged();
             }
         }
-
+        
         public bool HasExternalRelations
         {
             get => _hasExternalRelations;
@@ -121,9 +122,16 @@ namespace BMM.Core.ViewModels
             set => SetProperty(ref _hasTranscription, value);
         }
 
+        public string WatchBccMediaLink
+        {
+            get => _watchBccMediaLink;
+            set => SetProperty(ref _watchBccMediaLink, value);
+        }
+
         public bool CanNavigateToLanguageChange => NavigateToLanguageChangeCommand.CanExecute();
         
         public bool HasLeftButton => LeftButtonClickedCommand.CanExecute();
+        public bool HasWatchButton => WatchButtonClickedCommand.CanExecute();
 
         public string PlayingText => _queueLength > 0 ? TextSource.GetText(Translations.PlayerViewModel_PlayingCount, _currentIndex + 1, _queueLength) : string.Empty;
 
@@ -155,6 +163,7 @@ namespace BMM.Core.ViewModels
             SkipForwardCommand = new MvxCommand(() => MediaPlayer.JumpForward());
             SkipBackwardCommand = new MvxCommand(() => MediaPlayer.JumpBackward());
             LeftButtonClickedCommand = new MvxCommand(LeftButtonClicked, () => HasTranscription || !string.IsNullOrEmpty(LeftButtonLink));
+            WatchButtonClickedCommand = new MvxCommand(BccMediaClicked, () => !string.IsNullOrEmpty(WatchBccMediaLink));
             
             SeekToPositionCommand = new MvxCommand<long>(position =>
             {
@@ -175,7 +184,6 @@ namespace BMM.Core.ViewModels
             IsShuffleEnabled = MediaPlayer.IsShuffleEnabled;
             UpdatePlaybackState(MediaPlayer.PlaybackState);
         }
-
 
         public override ITrackInfoProvider TrackInfoProvider => _playerTrackInfoProvider ??= new PlayerTrackInfoProvider();
         public IMvxCommand<long> SeekToPositionCommand { get; set; }
@@ -198,6 +206,12 @@ namespace BMM.Core.ViewModels
             _analytics.LogEvent(LeftButtonType == PlayerLeftButtonType.Lyrics
                 ? Event.LyricsOpened
                 : Event.BCCMediaOpenedFromPlayer);
+        }
+        
+        private void BccMediaClicked()
+        {
+            _uriOpener.OpenUri(new Uri(WatchBccMediaLink));
+            _analytics.LogEvent(Event.BCCMediaOpenedFromPlayer);
         }
 
         public void Prepare(bool showPlayer)

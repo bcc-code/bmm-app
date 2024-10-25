@@ -23,6 +23,7 @@ using BMM.Core.Implementations.Albums;
 using BMM.Core.Implementations.Albums.Interfaces;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.ApiClients;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DeepLinking;
@@ -243,6 +244,8 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IDocumentFilter, NullFilter>();
             Mvx.IoCProvider.RegisterType<IDownloadedTracksOnlyFilter, DownloadedTracksOnlyFilter>();
+
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBadgeService, BadgeService>();
 
             Mvx.IoCProvider.RegisterType<IPlayerErrorHandler, PlayerErrorHandler>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlayerAnalytics, PlayerAnalytics>();
