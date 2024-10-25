@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Viteză de redare",
     "Normal": "Normal",
     "Selected": "Selectate",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "Vizualizează pe BCC Media",
     "Read": "Citește"
   },
   "QueueViewModel": {
@@ -432,7 +432,7 @@
     "Track.AddedToMyTracks": "Adăugat la Piesele mele",
     "Track.RemovedFromMyTracks": "Eliminat de la Piesele mele",
     "Track.FailedToRemoveFromMyTracks": "Piesa nu s-a putut șterge din Piesele mele",
-    "Track.AddToQueue": "Add to end of queue",
+    "Track.AddToQueue": "Adaugă la sfârșitul cozii",
     "Track.QueueToPlayNext": "Redă următoarea",
     "Track.AddedToQueue": "Adăugat în coadă",
     "Track.GoToAlbum": "Mergi la album",
@@ -448,7 +448,7 @@
     "Album.AddToPlaylist": "Adăugaţi albumul lista de redare",
     "Album.AddToMyTracks": "Adaugă album la Piesele mele",
     "Album.AddedToMyTracks": "Album adăugat la Piesele mele",
-    "Album.AddToQueue": "Add to end of queue",
+    "Album.AddToQueue": "Adaugă la sfârșitul cozii",
     "Album.Share": "Distribuie album",
     "FailedToAdd": "Nu s-a putut adăuga piesa în play-list. Vă rugăm să încercați din nou mai târziu.",
     "FailedToAddAlbum": "Nu a reuşit să adăuge albumul la lista de redare deoarece contine albume.",
@@ -459,7 +459,7 @@
     "Contributor.Play": "Cântă",
     "Contributor.Share": "Distribuie contribuitor",
     "OfflineTrackCollection.DeletePlaylist": "Șterge play-list",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Adaugă toate piesele în lista de redare",
     "Cancel": "Anulare"
   },
   "Notifications": {

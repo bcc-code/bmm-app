@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Скорость воспроизведения",
     "Normal": "Нормально",
     "Selected": "Выбрано",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "Смотреть в BCC Media",
     "Read": "Читать"
   },
   "QueueViewModel": {
@@ -294,8 +294,8 @@
   "SettingsViewModel": {
     "Title": "Профиль",
     "HeadlineSettings": "Параметры",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "PlayInChronologicalOrderHeader": "Воспроизвести в хронологическом порядке",
+    "PlayInChronologicalOrderText": "Воспроизвести эпизоды от старых к новым",
     "OptionAutoplayHeader": "Автовоспроизведение",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
     "OptionStreakHeader": "Достижение на Главной",
@@ -417,7 +417,7 @@
     "SearchHint": "Поиск",
     "FailedToAdd": "Не удалось добавить трек в плейлист. Пожалуйста, повторите попытку позже.",
     "AlbumFailedToAddAlreadyExists": "Этот альбом уже в вашем плейлисте.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Коллекция уже добавлена в ваш плейлист.",
     "TrackAlreadyExistInTrackCollection": "Трек уже существует в плейлисте {0}",
     "FailedToAddAlbum": "Не удалось добавить альбом плейлист, так как он содержит альбомы.",
     "FailedToAddUnknownType": "Добавление плейлиста «{0}» в настоящее время не поддерживается.",
@@ -459,7 +459,7 @@
     "Contributor.Play": "Играть",
     "Contributor.Share": "Поделиться автором",
     "OfflineTrackCollection.DeletePlaylist": "Удалить список воспроизведения",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Добавить все дорожки в плейлист",
     "Cancel": "Отмена"
   },
   "Notifications": {
