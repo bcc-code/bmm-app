@@ -43,7 +43,7 @@
     "WeekdayMonday": "P",
     "WeekdayTuesday": "W",
     "WeekdayWednesday": "Ś",
-    "WeekdayThursday": "W",
+    "WeekdayThursday": "C",
     "WeekdayFriday": "P"
   },
   "DeepLinkHandler": {
