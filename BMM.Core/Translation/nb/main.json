@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Min profil",
     "HeadlineSettings": "Innstillinger",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Play in chronological order",
     "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Automatisk avspilling",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "App-versjon",
     "OptionDeleteAccountHeader": "Slett konto",
     "OptionDeleteAccountText": "Be om at kontoen din blir slettet.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "App-informasjon",
     "AppInfoAppVersion": "App-versjon: ",
     "AppInfoManufacturer": "Produsent:",
@@ -565,7 +571,8 @@
     "Days": "Dager",
     "Boost": "Boost",
     "Points": "Poeng",
-    "Achievements": "Dine prestasjoner"
+    "Achievements": "Dine prestasjoner",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "App ikon",
@@ -609,6 +616,8 @@
     "GotIt": "Forstått"
   },
   "AchievementsViewModel": {
-    "Title": "Prestasjoner"
+    "Title": "Prestasjoner",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
