@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Setări",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Redă în ordine cronologică",
     "PlayInChronologicalOrderText": "Redă episoade podcast de la cel mai vechi la cel mai nou",
     "OptionAutoplayHeader": "Redare automată",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "Versiunea aplicației",
     "OptionDeleteAccountHeader": "Ștergeți contul",
     "OptionDeleteAccountText": "Solicitați ștergerea contului dumneavoastră.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
     "AppInfoManufacturer": "Producător: ",
@@ -565,7 +571,8 @@
     "Days": "Zile",
     "Boost": "Boost",
     "Points": "Puncte",
-    "Achievements": "Realizările tale"
+    "Achievements": "Realizările tale",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "Pictograma aplicației",
@@ -609,6 +616,8 @@
     "GotIt": "Am înțeles"
   },
   "AchievementsViewModel": {
-    "Title": "Realizări"
+    "Title": "Realizări",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
