@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Nastavitve",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Predvajaj v kronološkem vrstnem redu",
     "PlayInChronologicalOrderText": "Predvajaj epizode podcasta od najstarejših do najnovejših",
     "OptionAutoplayHeader": "Samodejno predvajanje",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "Različica aplikacije",
     "OptionDeleteAccountHeader": "Izbriši račun",
     "OptionDeleteAccountText": "Zahtevaj izbris svojega računa.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "Informacije o aplikaciji",
     "AppInfoAppVersion": "Različica aplikacije: ",
     "AppInfoManufacturer": "Proizvajalec: ",
@@ -565,7 +571,8 @@
     "Days": "Dnevi",
     "Boost": "Boost",
     "Points": "Točke",
-    "Achievements": "Tvoji dosežki"
+    "Achievements": "Tvoji dosežki",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "Ikona aplikacije",
@@ -609,6 +616,8 @@
     "GotIt": "Razumem"
   },
   "AchievementsViewModel": {
-    "Title": "Dosežki"
+    "Title": "Dosežki",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
