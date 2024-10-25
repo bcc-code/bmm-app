@@ -10,6 +10,7 @@ using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.Device;
@@ -67,6 +68,7 @@ namespace BMM.Core.ViewModels
         private readonly IResetAchievementAction _resetAchievementAction;
         private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly IMvxNavigationService _mvxNavigationService;
+        private readonly IBadgeService _badgeService;
         private SelectableListItem _externalStorage;
 
         private List<IListItem> _listItems = new List<IListItem>();
@@ -109,7 +111,8 @@ namespace BMM.Core.ViewModels
             IChangeNotificationSettingStateAction changeNotificationSettingStateAction,
             IResetAchievementAction resetAchievementAction,
             IFeaturePreviewPermission featurePreviewPermission,
-            IMvxNavigationService mvxNavigationService)
+            IMvxNavigationService mvxNavigationService,
+            IBadgeService badgeService)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -135,6 +138,7 @@ namespace BMM.Core.ViewModels
             _resetAchievementAction = resetAchievementAction;
             _featurePreviewPermission = featurePreviewPermission;
             _mvxNavigationService = mvxNavigationService;
+            _badgeService = badgeService;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -247,7 +251,13 @@ namespace BMM.Core.ViewModels
                     Title = TextSource[Translations.SettingsViewModel_OptionBibleStudyBadgeHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionBibleStudyBadgeText],
                     IsChecked = await _settingsStorage.GetBibleStudyBadgeEnabled(),
-                    OnChanged = sender => _settingsStorage.SetBibleStudyBadgeEnabled(sender.IsChecked)
+                    OnChanged = sender =>
+                    {
+                        _settingsStorage.SetBibleStudyBadgeEnabled(sender.IsChecked);
+                        
+                        if (!sender.IsChecked)
+                            _badgeService.Remove();
+                    }
                 }
             };
 

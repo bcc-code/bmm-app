@@ -8,6 +8,7 @@ using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.GuardedActions.Navigation.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DeepLinking;
@@ -17,6 +18,7 @@ using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.TrackInformation.Strategies;
+using BMM.Core.Interactions.Base;
 using BMM.Core.Messages;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.Models.POs.Base.Interfaces;
@@ -45,6 +47,7 @@ namespace BMM.Core.ViewModels
         private readonly MvxSubscriptionToken _listeningStreakChangedMessageToken;
         private readonly MvxSubscriptionToken _playbackStatusChangedMessageToken;
         private readonly IDeviceInfo _deviceInfo;
+        private readonly IBadgeService _badgeService;
 
         public ExploreNewestViewModel(
             IStreakObserver streakObserver,
@@ -57,7 +60,8 @@ namespace BMM.Core.ViewModels
             IListeningStreakPOFactory listeningStreakPOFactory,
             IAddToQueueAdditionalMusic addToQueueAdditionalMusic,
             ICheckAndShowAchievementUnlockedScreenAction checkAndShowAchievementUnlockedScreenAction,
-            IDeviceInfo deviceInfo)
+            IDeviceInfo deviceInfo,
+            IBadgeService badgeService)
         {
             _streakObserver = streakObserver;
             _settings = settings;
@@ -70,13 +74,16 @@ namespace BMM.Core.ViewModels
             _addToQueueAdditionalMusic = addToQueueAdditionalMusic;
             _checkAndShowAchievementUnlockedScreenAction = checkAndShowAchievementUnlockedScreenAction;
             _deviceInfo = deviceInfo;
+            _badgeService = badgeService;
             _listeningStreakChangedMessageToken = Messenger.Subscribe<ListeningStreakChangedMessage>(ListeningStreakChanged);
             _playbackStatusChangedMessageToken = Messenger.Subscribe<PlaybackStatusChangedMessage>(PlaybackStateChanged);
             _prepareTileCarouselItemsAction.AttachDataContext(this);
             TrackInfoProvider = new TypeKnownTrackInfoProvider();
+            BadgeChangedInteraction = new BmmInteraction();
         }
         
         public IMvxAsyncCommand<Type> NavigateToViewModelCommand => _navigateToViewModelAction.Command;
+        public IBmmInteraction BadgeChangedInteraction { get; }
 
         private void ListeningStreakChanged(ListeningStreakChangedMessage message)
         {
@@ -109,6 +116,7 @@ namespace BMM.Core.ViewModels
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(filteredDocs);
             var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
+            BadgeChangedInteraction?.Raise();
             return presentationItems;
         }
 

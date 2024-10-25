@@ -20,6 +20,9 @@ namespace BMM.UI.iOS
     [MvxRootPresentation(WrapInNavigationController = false)]
     public class MenuViewController : MvxTabBarViewController<MenuViewModel>
     {
+        public static readonly UIColor SelectedItemTintColor = AppColors.LabelOneColor;
+        public static readonly UIColor UnselectedItemTintColor = AppColors.LabelThreeColor;
+        
         private const int TimeForLoadingMenuViewControllersInMillis = 500;
         
         public static readonly NSString MenuLoadedNotification = new NSString($"{nameof(MenuViewController)}.MenuLoaded");
@@ -33,8 +36,8 @@ namespace BMM.UI.iOS
             Delegate = new MenuVTabBarDelegate();
             View.BackgroundColor = AppColors.BackgroundOneColor;
             TabBar.BarTintColor = AppColors.BackgroundOneColor;
-            TabBar.TintColor = AppColors.LabelOneColor;
-            TabBar.UnselectedItemTintColor = AppColors.LabelThreeColor;
+            TabBar.TintColor = SelectedItemTintColor;
+            TabBar.UnselectedItemTintColor = UnselectedItemTintColor;
             TabBar.AccessibilityIdentifier = "tab_bar";
             SetBottomBarAppearance();
         }

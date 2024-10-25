@@ -4,5 +4,9 @@ namespace BMM.Core.Implementations.Badge;
 
 public interface IBadgeService
 {
-    Task<bool> ShouldShowBadgeFor(Track track, int? podcastId);
+    bool IsBadgeSet { get; }
+    Task Set();
+    Task Remove();
+    Task VerifyBadge();
+    event EventHandler BadgeChanged;
 }

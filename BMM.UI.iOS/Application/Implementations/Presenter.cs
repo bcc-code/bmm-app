@@ -85,12 +85,14 @@ namespace BMM.UI.iOS
                 return Task.FromResult(true);
             }
             
+            var desiredVc = (IBaseViewController)viewController;
             var containmentViewController = Activator.CreateInstance<ContainmentViewController>();
             var containmentNavigationController = Activator.CreateInstance<ContainmentNavigationViewController>();
             containmentViewController.RegisterViewController(containmentNavigationController);
-            containmentViewController.EnclosedViewController = (IBaseViewController)viewController;
-            containmentNavigationController.RegisterViewController((IBaseViewController)viewController);
+            containmentViewController.EnclosedViewController = desiredVc;
+            containmentNavigationController.RegisterViewController(desiredVc);
             containmentNavigationController.NavigationBar.PrefersLargeTitles = true;
+            desiredVc.ContainmentVC = containmentViewController;
             return base.ShowTabViewController(containmentViewController, attribute, request);
         }
 

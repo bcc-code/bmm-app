@@ -271,6 +271,18 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(GoldenRewardUnlocked), false);
             set => AddOrUpdateValue(value, nameof(GoldenRewardUnlocked));
         }
+        
+        public static bool IsBadgeSet
+        {
+            get => GetValueOrDefault(nameof(IsBadgeSet), false);
+            set => AddOrUpdateValue(value, nameof(IsBadgeSet));
+        }
+            
+        public static DateTime BadgeSetAt
+        {
+            get => GetValueOrDefault(nameof(BadgeSetAt), DateTime.MinValue);
+            set => AddOrUpdateValue(value, nameof(BadgeSetAt));
+        }
 
         public static Guid DeviceId => GetValueOrCreateDefault(nameof(DeviceId), Guid.NewGuid());
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.NewMediaPlayer;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
@@ -11,6 +12,7 @@ namespace BMM.UI.iOS
         private UIViewController _viewController;
 
         public Type ParentViewControllerType => typeof(ContainmentViewController);
+        public ContainmentViewController ContainmentVC { get; set; }
 
         public void RegisterViewController(IBaseViewController viewController)
         {

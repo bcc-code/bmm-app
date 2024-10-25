@@ -1,5 +1,7 @@
 using System;
 using BMM.Core.Implementations.Device;
+using BMM.Core.Interactions.Base;
+using BMM.Core.Messages;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
@@ -10,6 +12,7 @@ using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
+using MvvmCross.Plugin.Messenger;
 using UIKit;
 
 namespace BMM.UI.iOS
@@ -21,6 +24,7 @@ namespace BMM.UI.iOS
     public partial class ExploreNewestViewController : BaseViewController<ExploreNewestViewModel>, IHaveLargeTitle
     {
         private UIBarButtonItem _playbackHistoryButton;
+        private IBmmInteraction _badgeChangedInteraction;
 
         public double? InitialLargeTitleHeight { get; set; }
 
@@ -54,15 +58,37 @@ namespace BMM.UI.iOS
             set.Bind(_playbackHistoryButton)
                 .To(vm => vm.NavigateToViewModelCommand)
                 .CommandParameter(typeof(PlaybackHistoryViewModel));
+            
+            set.Bind(this)
+                .For(p => p.BadgeChangedInteraction)
+                .To(vm => vm.BadgeChangedInteraction);
 
             set.Apply();
 
             TrackTableView.ReloadData();
 
-            if (!Mvx.IoCProvider.Resolve<IFeatureSupportInfoService>().SupportsSiri)
+            if (!Mvx.IoCProvider!.Resolve<IFeatureSupportInfoService>()!.SupportsSiri)
                 return;
 
             SiriUtils.Initialize();
+        }
+        
+        public IBmmInteraction BadgeChangedInteraction
+        {
+            get => _badgeChangedInteraction;
+            set
+            {
+                if (_badgeChangedInteraction != null)
+                    _badgeChangedInteraction.Requested -= BadgeChangedInteractionRequested;
+
+                _badgeChangedInteraction = value;
+                _badgeChangedInteraction.Requested += BadgeChangedInteractionRequested;
+            }
+        }
+
+        private void BadgeChangedInteractionRequested(object sender, EventArgs e)
+        {
+            ContainmentVC.SetBadgeOnTabBarItem();
         }
 
         private void SetPlaybackHistoryButton()

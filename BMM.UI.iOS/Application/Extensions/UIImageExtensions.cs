@@ -1,31 +1,30 @@
+using BMM.UI.iOS.Constants;
+
 namespace BMM.UI.iOS.Extensions;
 
 public static class UIImageExtensions
 {
-    public static UIImage WithBadge(this UIImage image, UIColor badgeColor = null)
+    private const int BadgeSize = 8;
+    
+    public static UIImage WithBadge(this UIImage image, UIColor iconColor)
     {
-        badgeColor = badgeColor ?? UIColor.Red;
+        var size = image.Size;
+        var renderer = new UIGraphicsImageRenderer(size);
 
-        UIGraphics.BeginImageContextWithOptions(image.Size, false, image.CurrentScale);
-        try
+        return renderer.CreateImage(_ =>
         {
-            image.Draw(CGPoint.Empty);
-
-            var badgeSize = new CGSize(8, 8);
+            var tintedImage = image.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
+            iconColor.SetFill();
+            tintedImage.Draw(CGPoint.Empty);
+            
+            var badgeSize = new CGSize(BadgeSize, BadgeSize);
             var badgeOrigin = new CGPoint(0, 0);
             var badgeRect = new CGRect(badgeOrigin, badgeSize);
-
-            var context = UIGraphics.GetCurrentContext();
-            context.SetFillColor(badgeColor.CGColor);
-            context.FillEllipseInRect(badgeRect);
-
-            var resultImage = UIGraphics.GetImageFromCurrentImageContext();
-
-            return resultImage.ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-        }
-        finally
-        {
-            UIGraphics.EndImageContext();
-        }
+            
+            var badgePath = UIBezierPath.FromOval(badgeRect);
+            AppColors.RadioColor.SetFill();
+            badgePath.Fill();
+        })
+        .ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
     }
 }

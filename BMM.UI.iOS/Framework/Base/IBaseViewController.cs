@@ -6,6 +6,8 @@ namespace BMM.UI.iOS
     {
         Type ParentViewControllerType { get; }
 
+        ContainmentViewController ContainmentVC { get; set; }
+
         void RegisterViewController(IBaseViewController viewController);
 
         bool IsVisible();

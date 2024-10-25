@@ -3,7 +3,9 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.Badge;
+using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Tiles.Interfaces;
@@ -20,6 +22,8 @@ namespace BMM.Core.Models.POs.Tiles
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
         private readonly IBadgeService _badgeService;
+        private readonly ISettingsStorage _settingsStorage;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
         private bool _isCurrentlyPlaying;
         private bool _isDownloaded;
         private TileStatusTextIcon _tileStatusTextIcon;
@@ -33,11 +37,15 @@ namespace BMM.Core.Models.POs.Tiles
             IMediaPlayer mediaPlayer,
             IStorageManager storageManager,
             IBadgeService badgeService,
+            ISettingsStorage settingsStorage,
+            IFirebaseRemoteConfig firebaseRemoteConfig,
             ContinueListeningTile continueListeningTile) : base(continueListeningTile)
         {
             _mediaPlayer = mediaPlayer;
             _storageManager = storageManager;
             _badgeService = badgeService;
+            _settingsStorage = settingsStorage;
+            _firebaseRemoteConfig = firebaseRemoteConfig;
             TileClickedCommand = new MvxAsyncCommand(async () =>
             {
                 await tileClickedAction.ExecuteGuarded(Tile);
@@ -110,10 +118,21 @@ namespace BMM.Core.Models.POs.Tiles
         {
             if (isCurrentlySelected)
                 return TileStatusTextIcon.Play;
-            else if (await _badgeService.ShouldShowBadgeFor(Tile.Track, Tile.ShufflePodcastId))
-                return TileStatusTextIcon.Dot;
 
-            return TileStatusTextIcon.None;
+            bool hasBadge = await CheckHasBadge();
+
+            if (!hasBadge)
+                return TileStatusTextIcon.None;
+            
+            await _badgeService.Set();
+            return TileStatusTextIcon.Dot;
+        }
+
+        private async Task<bool> CheckHasBadge()
+        {
+            return !Tile.Track.HasListened
+                && await _settingsStorage.GetBibleStudyBadgeEnabled()
+                && _firebaseRemoteConfig.CurrentPodcastId == Tile.ShufflePodcastId;
         }
     }
 }
