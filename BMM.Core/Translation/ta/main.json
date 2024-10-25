@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "சுயவிவரம்",
     "HeadlineSettings": "அமைப்புகள்",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Play in chronological order",
     "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "தானியங்கி",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "செயலியின் பதிப்பு",
     "OptionDeleteAccountHeader": "கணக்கை நீக்குக",
     "OptionDeleteAccountText": "உங்கள் கணக்கை நீக்குமாறு கோரவும்.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "செயலியின் தகவல்",
     "AppInfoAppVersion": "செயலியின் பதிப்பு",
     "AppInfoManufacturer": "உற்பத்தியாளர்: ",
@@ -565,7 +571,8 @@
     "Days": "நாட்கள்",
     "Boost": "பூஸ்ட்",
     "Points": "புள்ளிகள்",
-    "Achievements": "உங்கள் சாதனைகள்"
+    "Achievements": "உங்கள் சாதனைகள்",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "செயலி ஐகான்",
@@ -609,6 +616,8 @@
     "GotIt": "அறிந்துகொண்டேன்"
   },
   "AchievementsViewModel": {
-    "Title": "சாதனைகள்"
+    "Title": "சாதனைகள்",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
