@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profiel",
     "HeadlineSettings": "Instellingen",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Speel in chronologische volgorde",
     "PlayInChronologicalOrderText": "Podcastafleveringen afspelen van oudste tot nieuwste",
     "OptionAutoplayHeader": "Automatisch afspelen",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "Versie van de app",
     "OptionDeleteAccountHeader": "Account verwijderen",
     "OptionDeleteAccountText": "Verzoek om verwijdering van uw account.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "App-informatie",
     "AppInfoAppVersion": "Versie van de app: ",
     "AppInfoManufacturer": "Fabrikant",
@@ -565,7 +571,8 @@
     "Days": "Dagen",
     "Boost": "Boost",
     "Points": "Punten",
-    "Achievements": "Jouw prestaties"
+    "Achievements": "Jouw prestaties",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "App-pictogram",
@@ -609,6 +616,8 @@
     "GotIt": "Begrepen"
   },
   "AchievementsViewModel": {
-    "Title": "Prestaties"
+    "Title": "Prestaties",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
