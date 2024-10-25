@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "Профил",
     "HeadlineSettings": "Настройки",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Play in chronological order",
     "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "Автоматично изпълнение",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "Приложение версия",
     "OptionDeleteAccountHeader": "Изтриване на акаунт",
     "OptionDeleteAccountText": "Поискайте акаунтът ви да бъде изтрит.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "Информация за приложението ",
     "AppInfoAppVersion": "Приложение версия: ",
     "AppInfoManufacturer": "производител: ",
@@ -565,7 +571,8 @@
     "Days": "Дни",
     "Boost": "Увеличете",
     "Points": "Точки",
-    "Achievements": "Вашите постижения"
+    "Achievements": "Вашите постижения",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "Символ на приложението",
@@ -609,6 +616,8 @@
     "GotIt": "Схванах го"
   },
   "AchievementsViewModel": {
-    "Title": "постижения"
+    "Title": "постижения",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
