@@ -294,6 +294,8 @@
   "SettingsViewModel": {
     "Title": "个人",
     "HeadlineSettings": "设置",
+    "HeadlineHomeScreen": "Home Screen",
+    "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Play in chronological order",
     "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
     "OptionAutoplayHeader": "自动播放",
@@ -324,6 +326,10 @@
     "OptionAppVersionHeader": "应用版本",
     "OptionDeleteAccountHeader": "Delete Account",
     "OptionDeleteAccountText": "Request that your account is deleted.",
+    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
+    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionBibleStudyHeader": "Bible Study on Home",
+    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "应用信息",
     "AppInfoAppVersion": "应用版本︰ ",
     "AppInfoManufacturer": "制造商：",
@@ -565,7 +571,8 @@
     "Days": "天",
     "Boost": "提升",
     "Points": "积分",
-    "Achievements": "您的成果"
+    "Achievements": "您的成果",
+    "Answer": "Answer"
   },
   "AppIconViewModel": {
     "Title": "应用图标",
@@ -609,6 +616,8 @@
     "GotIt": "明白了"
   },
   "AchievementsViewModel": {
-    "Title": "Achievements"
+    "Title": "Achievements",
+    "EmptyTitle": "A place for your Bible Study Achievements",
+    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
   }
 }
