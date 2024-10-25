@@ -217,18 +217,23 @@ namespace BMM.UI.iOS
                 var badgeService = Mvx.IoCProvider!.Resolve<IBadgeService>();
                 int badgeCount = badgeService!.IsBadgeSet
                     ? StandardBadgeCount
-                    : NumericConstants.Undefined;
+                    : NumericConstants.Zero;
                 
                 if (UIDevice.CurrentDevice.CheckSystemVersion(16, 0))
                     UNUserNotificationCenter.Current.SetBadgeCount(badgeCount, null);
                 else
                     UIApplication.SharedApplication.ApplicationIconBadgeNumber = badgeCount;
-                
-                if (!badgeService.IsBadgeSet)
-                    return;
-                
-                TabBarItem.Image = TabBarItem.Image.WithBadge(MenuViewController.UnselectedItemTintColor);
-                TabBarItem.SelectedImage = TabBarItem.SelectedImage.WithBadge(MenuViewController.SelectedItemTintColor);
+
+                if (badgeService.IsBadgeSet)
+                {
+                    TabBarItem.Image = TabBarItem.Image.WithBadge(MenuViewController.UnselectedItemTintColor);
+                    TabBarItem.SelectedImage = TabBarItem.SelectedImage.WithBadge(MenuViewController.SelectedItemTintColor);
+                }
+                else
+                {
+                    TabBarItem.Image = UIImage.FromBundle(ImageResourceNames.IconHome.ToNameWithExtension());
+                    TabBarItem.SelectedImage = UIImage.FromBundle(ImageResourceNames.IconHomeActive.ToNameWithExtension());
+                }
             });
         }
     }

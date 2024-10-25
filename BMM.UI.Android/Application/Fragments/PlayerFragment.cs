@@ -414,7 +414,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 if (Context == null)
                     return;
 
-                SetWatchButtonButtonPosition();
+                SetWatchButtonPosition();
 
                 int coverBottom = _coverContainer!.Bottom;
                 int WatchButtonSizeToSubtract = _watchButton.Visibility == ViewStates.Visible
@@ -432,7 +432,7 @@ namespace BMM.UI.Droid.Application.Fragments
             });
         }
 
-        private void SetWatchButtonButtonPosition()
+        private void SetWatchButtonPosition()
         {
             int[] location = new int[2]; 
             _coverContainer.GetLocationInWindow(location);
