@@ -294,7 +294,7 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Beállítások",
-    "HeadlineHomeScreen": "Home Screen",
+    "HeadlineHomeScreen": "Kezdőképernyő",
     "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Lejátszás időrendi sorrendben",
     "PlayInChronologicalOrderText": "Podcast-epizódok lejátszása a legrégebbitől a legújabbig",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "Alkalmazás verziója",
     "OptionDeleteAccountHeader": "Fiókom törlése",
     "OptionDeleteAccountText": "Kérd fiókod törlését.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre értesítési jelvény",
+    "OptionNotificationBadgeText": "Mutasson értesítést a kezdőképernyőn, hogy ne felejtsem el meghallgatni a napi epizódot.",
+    "OptionBibleStudyHeader": "Bibliatanulmány a kezdőképernyőn",
+    "OptionBibleStudyText": "Mutassa a bibliatanulmány státuszát a kezdőképernyőn",
     "AppInfoTitle": "Alkalmazás információ",
     "AppInfoAppVersion": "Alkalmazás verziója:",
     "AppInfoManufacturer": "Szerkesztő:",
@@ -572,7 +572,7 @@
     "Boost": "Lökés",
     "Points": "Pontok",
     "Achievements": "Az eredményeid",
-    "Answer": "Answer"
+    "Answer": "Válasz"
   },
   "AppIconViewModel": {
     "Title": "Alkalmazás ikonja",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Eredmények",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Egy hely a bibliatanulmányozási eredményeidnek",
+    "EmptySubtitle": "Itt kezdheted el gyűjteni a bibliatanulmányozásban elért eredményeket."
   }
 }
