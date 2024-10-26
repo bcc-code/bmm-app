@@ -328,8 +328,8 @@
     "OptionDeleteAccountText": "Solicitați ștergerea contului dumneavoastră.",
     "OptionNotificationBadgeHeader": "Panou de notificări Fra Kåre",
     "OptionNotificationBadgeText": "Arată o notificare pe ecranul de pornire pentru a-ți aminti să asculți episodul zilnic.",
-    "OptionBibleStudyHeader": "Studiul biblic pe ecranul principal",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionBibleStudyHeader": "Studiul Biblic pe ecranul de pornire",
+    "OptionBibleStudyText": "Afișează statusul Studiului Biblic pe ecranul de pornire",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
     "AppInfoManufacturer": "Producător: ",
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Puncte",
     "Achievements": "Realizările tale",
-    "Answer": "Answer"
+    "Answer": "Răspuns"
   },
   "AppIconViewModel": {
     "Title": "Pictograma aplicației",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Realizări",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Un loc pentru realizările tale din Studiul Biblic",
+    "EmptySubtitle": "Când obții realizări în Studiile Biblice începi să le colectezi aici."
   }
 }
