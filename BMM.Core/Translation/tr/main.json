@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Oynatma hızı",
     "Normal": "Normal",
     "Selected": "Seçildi",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "BCC Media'da izleyin",
     "Read": "Okuyun"
   },
   "QueueViewModel": {
@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Ayarlar",
-    "HeadlineHomeScreen": "Home Screen",
+    "HeadlineHomeScreen": "Ana Ekran",
     "HeadlinePlayback": "Playback",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "PlayInChronologicalOrderHeader": "Kronolojik sırayla oyna",
+    "PlayInChronologicalOrderText": "Podcast bölümlerini en eskiden en yeniye doğru oynat",
     "OptionAutoplayHeader": "Otomatik Oynatma",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
+    "OptionAutoplayText": "Fra Kåre'nin bugünkü bölümünü dinledikten sonra müzik çalın. Yalnızca ana ekrandaki kutucuk üzerinden oynatıldığında geçerlidir.",
     "OptionStreakHeader": "Ev Sahibi Streak",
     "OptionStreakText": "Dinleme istatistiklerinizi ana ekranda gösterin",
     "OptionEnablePushHeader": "Bildirimleri etkinleştir",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "Uygulama Versiyonu",
     "OptionDeleteAccountHeader": "Hesabı sil",
     "OptionDeleteAccountText": "Hesabınızın silinmesini talep edin.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre Bildirim rozeti",
+    "OptionNotificationBadgeText": "Günlük bölümü dinlemeyi hatırlamanıza yardımcı olması için ana sayfanızda bir bildirim gösterin.",
+    "OptionBibleStudyHeader": "Evde İncil Çalışması",
+    "OptionBibleStudyText": "İncil Çalışmanızın durumunu ana ekranda gösterin",
     "AppInfoTitle": "Uygulama Bilgi",
     "AppInfoAppVersion": "Uygulama Versiyon: ",
     "AppInfoManufacturer": "Üretici firma: ",
@@ -423,7 +423,7 @@
     "SearchHint": "Ara",
     "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
     "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Koleksiyon zaten çalma listenize eklendi.",
     "TrackAlreadyExistInTrackCollection": "Parça zaten oynatma listesi {0}mevcut",
     "FailedToAddAlbum": "Albümleri içerdiğinden albüm çalma listesine eklenemedi.",
     "FailedToAddUnknownType": "\"{0}\" bir çalma listesine ekleme şu anda desteklenmiyor.",
@@ -438,7 +438,7 @@
     "Track.AddedToMyTracks": "Benim parça için eklendi",
     "Track.RemovedFromMyTracks": "Benim parça kaldırma",
     "Track.FailedToRemoveFromMyTracks": "Parça My Tracks'ten kaldırılamadı",
-    "Track.AddToQueue": "Add to end of queue",
+    "Track.AddToQueue": "Kuyruğun sonuna ekle",
     "Track.QueueToPlayNext": "Sonrakini çal",
     "Track.AddedToQueue": "Sıraya Eklendi",
     "Track.GoToAlbum": "Albüm' e git",
@@ -454,7 +454,7 @@
     "Album.AddToPlaylist": "Albüm çalma listesine ekle",
     "Album.AddToMyTracks": "Benim parça için albüm ekle",
     "Album.AddedToMyTracks": "Albüm için My parça eklendi",
-    "Album.AddToQueue": "Add to end of queue",
+    "Album.AddToQueue": "Kuyruğun sonuna ekle",
     "Album.Share": "Albümü paylaş",
     "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
     "FailedToAddAlbum": "Albümleri içerdiğinden albüm çalma listesine eklenemedi.",
@@ -465,7 +465,7 @@
     "Contributor.Play": "Oynat",
     "Contributor.Share": "Katkıda bulunanı paylaş",
     "OfflineTrackCollection.DeletePlaylist": "Çalma Listesini Sil",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Tüm parçaları çalma listesine ekle",
     "Cancel": "İptal"
   },
   "Notifications": {
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Puan",
     "Achievements": "Başarılarınız",
-    "Answer": "Answer"
+    "Answer": "Cevap"
   },
   "AppIconViewModel": {
     "Title": "Uygulama Simgesi",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Başarılar",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "İncil Çalışması Başarılarınız için bir yer",
+    "EmptySubtitle": "İncil Çalışmalarında başarılar kazandığınızda bunları burada toplamaya başlayın."
   }
 }
