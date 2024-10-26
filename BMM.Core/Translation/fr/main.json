@@ -294,7 +294,7 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Paramètres",
-    "HeadlineHomeScreen": "Home Screen",
+    "HeadlineHomeScreen": "Écran d'accueil",
     "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Jouer dans l'ordre chronologique",
     "PlayInChronologicalOrderText": "Écoutez les épisodes du podcast du plus ancien au plus récent",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "Version de l'application",
     "OptionDeleteAccountHeader": "Supprimer le compte",
     "OptionDeleteAccountText": "Demander la suppression de votre compte.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Badge de notification Fra Kåre",
+    "OptionNotificationBadgeText": "Afficher une notification sur l'écran d'accueil pour se souvenir d'écouter l'épisode du jour.",
+    "OptionBibleStudyHeader": "Étude biblique à la maison",
+    "OptionBibleStudyText": "Affichez le statut de votre étude biblique sur l'écran d'accueil",
     "AppInfoTitle": "Information sur l'application",
     "AppInfoAppVersion": "Version de l'application : ",
     "AppInfoManufacturer": "Fabricant :",
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Points",
     "Achievements": "Tes résultats",
-    "Answer": "Answer"
+    "Answer": "Réponse"
   },
   "AppIconViewModel": {
     "Title": "Icône de l'application",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Réalisations",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Un endroit pour vos résultats d'études bibliques",
+    "EmptySubtitle": "Lorsque vous obtenez des résultats dans les études bibliques, commencez à les collecter ici."
   }
 }
