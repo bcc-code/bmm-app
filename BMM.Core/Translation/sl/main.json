@@ -294,14 +294,14 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Nastavitve",
-    "HeadlineHomeScreen": "Domači zaslon",
+    "HeadlineHomeScreen": "Začetni zaslon",
     "HeadlinePlayback": "Posnetki",
     "PlayInChronologicalOrderHeader": "Predvajaj v kronološkem vrstnem redu",
     "PlayInChronologicalOrderText": "Predvajaj epizode podcasta od najstarejših do najnovejših",
     "OptionAutoplayHeader": "Samodejno predvajanje",
     "OptionAutoplayText": "Predvajaj glasbo po poslušanju današnje epizode Fra Kåre. Na voljo samo pri predvajanju na začetnem zaslonu.",
     "OptionStreakHeader": "Niz na Domov",
-    "OptionStreakText": "Pokaži statistiko poslušanja na domačem zaslonu",
+    "OptionStreakText": "Pokaži statistiko poslušanja na začetnem zaslonu",
     "OptionEnablePushHeader": "Omogoči potisna obvestila",
     "OptionPushNotifications": "Potisna obvestila",
     "OptionPushNotificationsSubtitle": "Omogoči potisna obvestila za podcaste, ki jim slediš",
@@ -327,9 +327,9 @@
     "OptionDeleteAccountHeader": "Izbriši račun",
     "OptionDeleteAccountText": "Zahtevaj izbris svojega računa.",
     "OptionNotificationBadgeHeader": "Ikona za obvestila Fra Kåre",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeText": "Pokaži obvestilo na začetnem zaslonu, da se boš lažje spomnil poslušati dnevno epizodo.",
+    "OptionBibleStudyHeader": "Biblijsko preučevanje na Domov",
+    "OptionBibleStudyText": "Pokaži status svojega biblijskega preučevanja na začetnem zaslonu",
     "AppInfoTitle": "Informacije o aplikaciji",
     "AppInfoAppVersion": "Različica aplikacije: ",
     "AppInfoManufacturer": "Proizvajalec: ",
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Točke",
     "Achievements": "Tvoji dosežki",
-    "Answer": "Answer"
+    "Answer": "Odgovor"
   },
   "AppIconViewModel": {
     "Title": "Ikona aplikacije",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Dosežki",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Prostor za tvoje dosežke pri biblijskem preučevanju",
+    "EmptySubtitle": "Ko pridobiš dosežke pri preučevanju Svetega pisma, jih začneš zbirati tukaj."
   }
 }
