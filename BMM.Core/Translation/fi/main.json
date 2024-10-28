@@ -294,8 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profiili",
     "HeadlineSettings": "Asetukset",
-    "HeadlineHomeScreen": "Home Screen",
-    "HeadlinePlayback": "Playback",
+    "HeadlineHomeScreen": "Aloitusnäyttö",
+    "HeadlinePlayback": "Toisto",
     "PlayInChronologicalOrderHeader": "Soita aikajärjestyksessä",
     "PlayInChronologicalOrderText": "Soita podcastin jaksot vanhimmasta uusimpaan",
     "OptionAutoplayHeader": "Autoplay",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "Sovelluksen versio",
     "OptionDeleteAccountHeader": "Poista tilisi",
     "OptionDeleteAccountText": "Pyydä tilisi poistamista",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Terveisiä Kårelta tunnusmerkki",
+    "OptionNotificationBadgeText": "Näytä muistutus aloitusnäytöllä muistutukseksi päivän jakson kuuntelusta.",
+    "OptionBibleStudyHeader": "Raamattuopinnot Aloitussivulla",
+    "OptionBibleStudyText": "Näytä Raamattuopintotilanteesi aloitusnäytöllä",
     "AppInfoTitle": "Sovelluksen tiedot",
     "AppInfoAppVersion": "Sovelluksen versio: ",
     "AppInfoManufacturer": "Valmistaja",
@@ -572,7 +572,7 @@
     "Boost": "Kertoimesi",
     "Points": "Pisteesi",
     "Achievements": "Saavutuksesi\n",
-    "Answer": "Answer"
+    "Answer": "Vastaa"
   },
   "AppIconViewModel": {
     "Title": "Sovelluskuvake",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Saavutukset",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Raamattuopintosaavutuksesi",
+    "EmptySubtitle": "Tänne voit kerätä kaikki Raamattuopintosuoritteesi."
   }
 }
