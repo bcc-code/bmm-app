@@ -264,7 +264,7 @@
     "PlaybackSpeed": "பிளேபேக் வேகம்",
     "Normal": "இயல்பானது",
     "Selected": "தேர்ந்தெடுக்கப்பட்டது",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "BCC மீடியாவில் பார்க்கவும்",
     "Read": "படி"
   },
   "QueueViewModel": {
@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "சுயவிவரம்",
     "HeadlineSettings": "அமைப்புகள்",
-    "HeadlineHomeScreen": "Home Screen",
-    "HeadlinePlayback": "Playback",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "HeadlineHomeScreen": "முகப்புத் திரை",
+    "HeadlinePlayback": "பின்னணி இசை",
+    "PlayInChronologicalOrderHeader": "காலவரிசைப்படி இயக்கு",
+    "PlayInChronologicalOrderText": "பழமையானது முதல் புதியது வரை போட்காஸ்ட் எபிசோட்களை இயக்கவும்",
     "OptionAutoplayHeader": "தானியங்கி",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
+    "OptionAutoplayText": "Fra Kåre - வின் இன்றைய எபிசோடைக் கேட்டபிறகு இசையை இயக்கவும். முகப்புத் திரையில் க்ளிக் செய்து இயக்கும் போது மட்டுமே இது பொருந்தும்.",
     "OptionStreakHeader": "முகப்பில் ஸ்ட்ரீக்",
     "OptionStreakText": "நீங்கள் கேட்கும் புள்ளிவிவரத்தை முகப்புத் திரையில் காட்டவும்",
     "OptionEnablePushHeader": "புஷ் அறிவிப்புகளை இயக்கவும்",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "செயலியின் பதிப்பு",
     "OptionDeleteAccountHeader": "கணக்கை நீக்குக",
     "OptionDeleteAccountText": "உங்கள் கணக்கை நீக்குமாறு கோரவும்.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre அறிவிப்பு பேட்ஜ்",
+    "OptionNotificationBadgeText": "தினசரி எபிசோடைக் கேட்க உங்களுக்கு உதவ, முகப்பு பக்கத்தில் ஒரு அறிவிப்பைக் காட்டு.",
+    "OptionBibleStudyHeader": "முகப்பு பக்கத்தில் பைபிள் படிப்பு",
+    "OptionBibleStudyText": "உங்கள் பைபிள் படிப்பு நிலையை முகப்புத் திரையில் காட்டு",
     "AppInfoTitle": "செயலியின் தகவல்",
     "AppInfoAppVersion": "செயலியின் பதிப்பு",
     "AppInfoManufacturer": "உற்பத்தியாளர்: ",
@@ -423,7 +423,7 @@
     "SearchHint": "தேடு",
     "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
     "AlbumFailedToAddAlreadyExists": "இந்த ஆல்பம் ஏற்கனவே உங்கள் பிளேலிஸ்ட்டில் உள்ளது.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "உங்கள் பிளேலிஸ்ட்டில் சேகரிப்பு ஏற்கனவே சேர்க்கப்பட்டுள்ளது.",
     "TrackAlreadyExistInTrackCollection": "ட்ராக் ஏற்கனவே பிளேலிஸ்ட் {0}இல் உள்ளது",
     "FailedToAddAlbum": "ஆல்பத்தைப் பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை, ஏனெனில் அதில் ஆல்பங்கள் உள்ளன.",
     "FailedToAddUnknownType": "பிளேலிஸ்ட்டில் \"{0}\"ஐ சேர்ப்பது தற்போது ஆதரிக்கப்படவில்லை.",
@@ -438,7 +438,7 @@
     "Track.AddedToMyTracks": "எனது ட்ராக்குகளில் சேர்க்கப்பட்டது",
     "Track.RemovedFromMyTracks": "எனது ட்ராக்குகளிலிருந்து அகற்றப்பட்டது",
     "Track.FailedToRemoveFromMyTracks": "எனது ட்ராக்குகளிலிருந்து ட்ராக்கை அகற்ற முடியவில்லை",
-    "Track.AddToQueue": "Add to end of queue",
+    "Track.AddToQueue": "வரிசையின் முடிவில் சேர்க்கவும்",
     "Track.QueueToPlayNext": "அடுத்தது பிளே செய் ",
     "Track.AddedToQueue": "வரிசையில் சேர்க்கப்பட்டது",
     "Track.GoToAlbum": "ஆல்பத்திற்குச் செல்லவும்",
@@ -454,7 +454,7 @@
     "Album.AddToPlaylist": "பிளேலிஸ்ட்டில் ஆல்பத்தைச் சேர்க்கவும்",
     "Album.AddToMyTracks": "எனது பாடல்களில் ஆல்பத்தைச் சேர்க்கவும்",
     "Album.AddedToMyTracks": "எனது பாடல்களில் ஆல்பம் சேர்க்கப்பட்டது",
-    "Album.AddToQueue": "Add to end of queue",
+    "Album.AddToQueue": "வரிசையின் முடிவில் சேர்க்கவும்",
     "Album.Share": "ஆல்பத்தைப் பகிரவும்",
     "FailedToAdd": "ட்ராக்கை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை. பிறகு முயற்சிக்கவும்.",
     "FailedToAddAlbum": "ஆல்பத்தை பிளேலிஸ்ட்டில் சேர்க்க முடியவில்லை, ஏனெனில் அதில் ஆல்பங்கள் உள்ளன.",
@@ -465,7 +465,7 @@
     "Contributor.Play": "பிளே",
     "Contributor.Share": "பங்களிப்பாளரைப் பகிரவும் ",
     "OfflineTrackCollection.DeletePlaylist": "பிளேலிஸ்ட்டை நீக்கு",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "பிளேலிஸ்ட்டில் அனைத்து டிராக்குகளையும் சேர்க்கவும்",
     "Cancel": "ரத்து செய்"
   },
   "Notifications": {
@@ -572,7 +572,7 @@
     "Boost": "பூஸ்ட்",
     "Points": "புள்ளிகள்",
     "Achievements": "உங்கள் சாதனைகள்",
-    "Answer": "Answer"
+    "Answer": "பதில்"
   },
   "AppIconViewModel": {
     "Title": "செயலி ஐகான்",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "சாதனைகள்",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "உங்கள் பைபிள் படிப்பு சாதனைகளுக்கான இடம்",
+    "EmptySubtitle": "பைபிள் படிப்புகளில் நீங்கள் சாதனைகளைப் பெற்றால், அவற்றை இங்கே சேகரிக்கத் தொடங்குங்கள்."
   }
 }

@@ -294,8 +294,8 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Einstellungen",
-    "HeadlineHomeScreen": "Home Screen",
-    "HeadlinePlayback": "Playback",
+    "HeadlineHomeScreen": "Startbildschirm",
+    "HeadlinePlayback": "Wiedergabe",
     "PlayInChronologicalOrderHeader": "In chronologischer Reihenfolge abspielen",
     "PlayInChronologicalOrderText": "Podcast-Episoden in der Reihenfolge von der ältesten bis zur neuesten abspielen",
     "OptionAutoplayHeader": "Autoplay",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "App-Version",
     "OptionDeleteAccountHeader": "Account löschen",
     "OptionDeleteAccountText": "Fordere an, dass dein Account gelöscht wird.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre Benachrichtigungssymbol",
+    "OptionNotificationBadgeText": "Eine Benachrichtigung auf der Startseite anzeigen, damit du nicht vergisst, die tägliche Episode anzuhören.",
+    "OptionBibleStudyHeader": "Bibelstudium auf der Startseite",
+    "OptionBibleStudyText": "Anzeige des Bibelstudien-Status auf der Startseite",
     "AppInfoTitle": "App-Informationen",
     "AppInfoAppVersion": "App-Version: ",
     "AppInfoManufacturer": "Hersteller:",
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Punkte",
     "Achievements": "Deine Errungenschaften",
-    "Answer": "Answer"
+    "Answer": "Antwort"
   },
   "AppIconViewModel": {
     "Title": "App-Symbol",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Errungenschaften",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Ein Platz für deine Bibelstudien-Errungenschaften",
+    "EmptySubtitle": "Sobald du Errungenschaften in den Bibelstudien erzielst, kannst du sie hier sammeln."
   }
 }

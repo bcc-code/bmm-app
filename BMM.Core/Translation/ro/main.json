@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Setări",
-    "HeadlineHomeScreen": "Home Screen",
+    "HeadlineHomeScreen": "Ecran principal",
     "HeadlinePlayback": "Playback",
     "PlayInChronologicalOrderHeader": "Redă în ordine cronologică",
     "PlayInChronologicalOrderText": "Redă episoade podcast de la cel mai vechi la cel mai nou",
     "OptionAutoplayHeader": "Redare automată",
-    "OptionAutoplayText": "Redă muzică după ce asculți episodul zilnic din Fra Kåre. Se aplică numai când redă prin panoul de pe ecranul de start.",
+    "OptionAutoplayText": "Redă muzică după ce asculți episodul zilnic de la Kåre. Se aplică numai când redă prin panoul de pe ecranul de start.",
     "OptionStreakHeader": "Progres pe ecranul de pornire",
     "OptionStreakText": "Arată statisticile de redare în ecranul principal",
     "OptionEnablePushHeader": "Activează notificări",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "Versiunea aplicației",
     "OptionDeleteAccountHeader": "Ștergeți contul",
     "OptionDeleteAccountText": "Solicitați ștergerea contului dumneavoastră.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Panou cu notificările de la Kåre",
+    "OptionNotificationBadgeText": "Arată o notificare pe ecranul de pornire pentru a-ți aminti să asculți episodul zilnic.",
+    "OptionBibleStudyHeader": "Studiul Biblic pe ecranul de pornire",
+    "OptionBibleStudyText": "Afișează statusul Studiului Biblic pe ecranul de pornire",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
     "AppInfoManufacturer": "Producător: ",
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Puncte",
     "Achievements": "Realizările tale",
-    "Answer": "Answer"
+    "Answer": "Răspuns"
   },
   "AppIconViewModel": {
     "Title": "Pictograma aplicației",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Realizări",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Un loc pentru realizările tale din Studiul Biblic",
+    "EmptySubtitle": "Când obții realizări în Studiile Biblice începi să le colectezi aici."
   }
 }
