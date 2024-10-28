@@ -19,14 +19,11 @@ namespace BMM.UI.Droid.Application.Fragments
     {
         private bool _shouldShowConfetti;
         private bool _confettiShown;
-        private string _imagePath;
-        private MvxCachedImageView _imageView;
         protected override int FragmentId => Resource.Layout.fragment_achievements_details;
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = base.OnCreateView(inflater, container, savedInstanceState);
-            _imageView = view.FindViewById<MvxCachedImageView>(Resource.Id.AchievementImage);
             var set = this.CreateBindingSet<AchievementDetailsFragment, AchievementDetailsViewModel>();
             
             set.Bind(this)

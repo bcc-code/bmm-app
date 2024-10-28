@@ -14,13 +14,12 @@ using MvvmCross.ViewModels;
 
 namespace BMM.UI.iOS
 {
-    public partial class AchievementDetailsViewController : BaseViewController<AchievementDetailsViewModel>, IMvxOverridePresentationAttribute
+    [MvxModalPresentation(WrapInNavigationController = true, ModalPresentationStyle = UIModalPresentationStyle.PageSheet)]
+    public partial class AchievementDetailsViewController : BaseViewController<AchievementDetailsViewModel>
     {
         private const int CloseButtonHeight = 36;
         private bool _shouldShowConfetti;
         private bool _confettiShown;
-        private bool _showAsModal;
-        private string _imagePath;
         private LOTAnimationView _animationView;
         private bool _isCurrentlyPlaying;
 
@@ -99,10 +98,6 @@ namespace BMM.UI.iOS
                 .For(s => s.ShouldShowConfetti)
                 .To(vm => vm.ShouldShowConfetti);
 
-            set.Bind(this)
-                .For(v => v.ShowAsModal)
-                .To(vm => vm.NavigationParameter.ShowAsModal);
-            
             set.Bind(PlayNextButtonTitle)
                 .For(v => v.Text)
                 .To(po => po.TextSource[Translations.AchievementDetailsViewModel_PlayNext]);
@@ -121,16 +116,11 @@ namespace BMM.UI.iOS
             
             set.Apply();
 
-            var viewModel = (AchievementDetailsViewModel)DataContext;
-
-            if (viewModel.NavigationParameter.ShowAsModal)
+            NavigationController!.NavigationBarHidden = true;
+            NavigationController!.PresentationController!.Delegate = new CustomUIAdaptivePresentationControllerDelegate
             {
-                NavigationController!.NavigationBarHidden = true;
-                NavigationController!.PresentationController!.Delegate = new CustomUIAdaptivePresentationControllerDelegate
-                {
-                    OnDidDismiss = HandleDismiss
-                };
-            }
+                OnDidDismiss = HandleDismiss
+            };
 
             SetThemes();
         }
@@ -149,19 +139,6 @@ namespace BMM.UI.iOS
             }
         }
         
-        public bool ShowAsModal
-        {
-            get => _showAsModal;
-            set
-            {
-                _showAsModal = value;
-                CloseIconView.Hidden = !_showAsModal;
-                CloseIconHeightConstraint.Constant = _showAsModal
-                    ? CloseButtonHeight
-                    : NumericConstants.Zero;
-            }
-        }
-
         public bool ShouldShowConfetti
         {
             get => _shouldShowConfetti;
@@ -219,20 +196,6 @@ namespace BMM.UI.iOS
             ClearPresentationDelegate(presentationController);
         }
 
-        public MvxBasePresentationAttribute PresentationAttribute(MvxViewModelRequest request)
-        {
-            var viewModel = (AchievementDetailsViewModel)((MvxViewModelInstanceRequest)request).ViewModelInstance;
-
-            if (!viewModel!.NavigationParameter.ShowAsModal)
-                return new MvxChildPresentationAttribute();
-            
-            return new MvxModalPresentationAttribute
-            {
-                WrapInNavigationController = true,
-                ModalPresentationStyle = UIModalPresentationStyle.PageSheet
-            };
-        }
-        
         private void ShowPlayAnimation()
         {
             IconPlay.Hidden = true;

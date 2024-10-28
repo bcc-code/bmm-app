@@ -57,7 +57,7 @@ public class CheckAndShowAchievementUnlockedScreenAction : GuardedAction, ICheck
         var achievementPO = new AchievementPO(achievementToShow, _mvxNavigationService);
 
         await _mvxNavigationService.Navigate<AchievementDetailsViewModel, IAchievementDetailsParameter>(
-            new AchievementDetailsParameter(achievementPO, true));
+            new AchievementDetailsParameter(achievementPO));
     }
 
     private void AssignRewardPermissions(IList<Achievement> achievements)
