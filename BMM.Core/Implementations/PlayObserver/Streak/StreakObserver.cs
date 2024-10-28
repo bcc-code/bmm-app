@@ -17,6 +17,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
     public interface IStreakObserver
     {
         Task UpdateStreakIfLocalVersionIsNewer(List<Document> documents);
+        ListeningStreak LatestStreak { get; }
     }
 
     /// <summary>
@@ -32,7 +33,6 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         private readonly IAnalytics _analytics;
         private readonly IPlayStatistics _playStatistics;
         private readonly IBadgeService _badgeService;
-        private ListeningStreak _latestStreak;
 
         private readonly MvxSubscriptionToken _trackCompletedToken;
         private readonly MvxSubscriptionToken _trackChangedToken;
@@ -64,14 +64,16 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             _trackCompletedToken = messenger.Subscribe<StreakTrackCompletedMessage>(TrackCompleted);
             _trackChangedToken = messenger.Subscribe<CurrentTrackChangedMessage>(TrackChanged);
         }
+        
+        public ListeningStreak LatestStreak { get; private set; }
 
         private void TrackChanged(CurrentTrackChangedMessage message)
         {
-            if (_latestStreak == null
+            if (LatestStreak == null
                 || message.CurrentTrack == null
-                || message.CurrentTrack.Id != _latestStreak.TodaysFraKaareTrackId
-                || DateTime.UtcNow >= _latestStreak.EligibleUntil.ToUniversalTime()
-                || _latestStreak.IsTodayAlreadyListened())
+                || message.CurrentTrack.Id != LatestStreak.TodaysFraKaareTrackId
+                || DateTime.UtcNow >= LatestStreak.EligibleUntil.ToUniversalTime()
+                || LatestStreak.IsTodayAlreadyListened())
             {
                 DisposeTimer();
                 return;
@@ -122,10 +124,10 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
 
         private async Task<bool> UpdateStreakIfListened(ITrackModel track, Func<PlayMeasurements> measurementsFactory)
         {
-            if (_latestStreak != null
-                && track?.Id == _latestStreak.TodaysFraKaareTrackId
-                && !_latestStreak.IsTodayAlreadyListened()
-                && DateTime.UtcNow < _latestStreak.EligibleUntil.ToUniversalTime())
+            if (LatestStreak != null
+                && track?.Id == LatestStreak.TodaysFraKaareTrackId
+                && !LatestStreak.IsTodayAlreadyListened()
+                && DateTime.UtcNow < LatestStreak.EligibleUntil.ToUniversalTime())
             {
                 var measurements = measurementsFactory.Invoke();
                 if (measurements == null)
@@ -137,7 +139,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                 {
                     await _playStatistics.PostStreakPoints(track, measurements);
                     
-                    _latestStreak.MarkTodayAsListened();
+                    LatestStreak.MarkTodayAsListened();
                     _analytics.LogEvent("mark today as listened",
                         new Dictionary<string, object>
                         {
@@ -147,9 +149,9 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                             {"playbackStarted", measurements.TimestampStart},
                             {"playbackEnded", measurements.TimestampEnd}
                         });
-                    _messenger.Publish(new ListeningStreakChangedMessage(this) {ListeningStreak = _latestStreak});
-                    await Store(_latestStreak);
-                    await _badgeService.Remove();
+                    _messenger.Publish(new ListeningStreakChangedMessage(this) {ListeningStreak = LatestStreak});
+                    await Store(LatestStreak);
+                    _badgeService.Remove();
                     return true;
                 }
             }
@@ -194,7 +196,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                         }
                     }
 
-                    _latestStreak = streakFromServer;
+                    LatestStreak = streakFromServer;
                     await Store(null);
                 }
             }

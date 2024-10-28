@@ -55,6 +55,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string CurrentPodcastId = "current_podcast_id";
             public const string AutoSubscribePodcasts = "auto_subscribe_podcasts";
             public const string EnableReadingTranscriptions = "enable_reading_transcriptions";
+            
+            public const string IsBadgesFeatureEnabled = "is_badges_feature_enabled";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -87,7 +89,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.ShowBlueDotForSongs, false.ToString()},
             {Variables.CurrentPodcastId, PodcastsConstants.FraKårePodcastId.ToString()},
             {Variables.AutoSubscribePodcasts, $"{PodcastsConstants.FraKårePodcastId},{PodcastsConstants.RomanPodcastId}"},
-            {Variables.EnableReadingTranscriptions, false.ToString()}
+            {Variables.EnableReadingTranscriptions, false.ToString()},
+            {Variables.IsBadgesFeatureEnabled, true.ToString()},
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -109,6 +112,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public string UserVoiceLink => _platformSpecificRemoteConfig.GetStringValue(Variables.UserVoiceLink);
         public string PrivacyPolicyLink => _platformSpecificRemoteConfig.GetStringValue(Variables.PrivacyPolicyLink);
         public string RomansQuestionsUrl => _platformSpecificRemoteConfig.GetStringValue(Variables.RomansQuestionsUrl);
+        public bool IsBadgesFeatureEnabled => _platformSpecificRemoteConfig.GetBoolValue(Variables.IsBadgesFeatureEnabled);
         public string DeleteAccountLink => _platformSpecificRemoteConfig.GetStringValue(Variables.DeleteAccountLink);
 
         public string SongTreasuresSongLink => _platformSpecificRemoteConfig.GetStringValue(Variables.SongTreasuresSongLink);

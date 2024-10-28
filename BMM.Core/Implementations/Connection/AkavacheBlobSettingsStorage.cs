@@ -21,7 +21,8 @@ namespace BMM.Core.Implementations.Connection
         public async Task<bool> GetAutoplayEnabled() => AppSettings.AutoplayEnabled ?? _config.AutoplayEnabledDefaultSetting;
 
         public async Task<bool> GetStreakHidden() => AppSettings.StreakHidden;
-        public async Task<bool> GetBibleStudyBadgeEnabled() => AppSettings.BibleStudyBadgeEnabled;
+        public async Task<bool> GetBibleStudyBadgeEnabled() => _config.IsBadgesFeatureEnabled && AppSettings.BibleStudyBadgeEnabled;
+
         public async Task<bool> GetBibleStudyOnHomeEnabled() => AppSettings.BibleStudyOnHomeEnabled;
 
         public async Task<bool> GetMobileNetworkDownloadAllowed() => AppSettings.MobileDownloadEnabled;
