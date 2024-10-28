@@ -170,8 +170,8 @@
     "Dialog.Title": "Sélectionner une langue",
     "Dialog.Cancel": "Annuler",
     "Toast.LanguagesStillLoading": "La liste est encore en cours de chargement, Veuillez réessayer dans quelques secondes.",
-    "Toast.NoLanguagesAvailable": "Semble qu'aucune connexion n'est disponible pour charger la liste des langues.",
-    "DeleteLanguageMessage": "Vous devez avoir au moins une langue définie pour le contenu",
+    "Toast.NoLanguagesAvailable": "Il semble qu'aucune connexion ne soit disponible pour charger la liste des langues.",
+    "DeleteLanguageMessage": "Vous devez sélectionner au moins une langue de contenu",
     "DeleteLanguageTitle": "Impossible de supprimer {0}"
   },
   "BrowseViewModel": {
@@ -204,25 +204,25 @@
   "FollowedPodcastsViewModel": {
     "Title": "Podcasts suivis",
     "EmptyTitle": "Vous ne suivez actuellement aucun podcast",
-    "EmptySubline": "Suivez un Podcast en ouvrant un Podcast et en cliquant sur le bouton suivi."
+    "EmptySubline": "Suivez un podcast en ouvrant un podcast et en cliquant sur le bouton Suivre."
   },
   "MyTracksViewModel": {
     "Title": "Mes Titres",
     "ShufflePlay": "Lecture aléatoire",
     "AvailableOffline": "Disponible en mode déconnecté",
-    "AvailableOfflineDownload": "Télécharger la liste de lecture",
+    "AvailableOfflineDownload": "Télécharger la playlist",
     "AvailableOfflineDownloading": "{0} de {1} téléchargements restants",
-    "RemoveOfflineConfirm": "Voulez-vous vraiment supprimer tous les éléments téléchargés?",
-    "EmptyTitle": "Cette liste de lecture est vide",
+    "RemoveOfflineConfirm": "Voulez-vous vraiment supprimer tous les éléments téléchargés ?",
+    "EmptyTitle": "Cette playlist est vide",
     "EmptySubline": "Appuyer sur les trois points d'une piste pour ajouter les titres à cette liste de lecture.",
-    "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette liste de lecture. Vous voulez reprendre le téléchargement?"
+    "AskToResumeDownloading": "Il y a des éléments nouveaux dans cette playlist. Vous voulez reprendre le téléchargement ?"
   },
   "DownloadedContentViewModel": {
     "Title": "Contenu téléchargé",
     "FollowedPodcasts": "Podcasts suivis",
     "MyTracks": "Mes Titres",
     "EmptyTitle": "Vous n'avez téléchargé aucun contenu",
-    "EmptySubline": "Téléchargez une liste de lecture ou suivez un podcast pour la rendre disponible hors ligne."
+    "EmptySubline": "Téléchargez une playlist ou suivez un podcast pour le rendre disponible hors ligne."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Podcasts suivis",
