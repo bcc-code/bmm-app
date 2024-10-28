@@ -245,8 +245,12 @@ namespace BMM.Core.ViewModels
                     Text = TextSource[Translations.SettingsViewModel_OptionBibleStudyText],
                     IsChecked = await _settingsStorage.GetBibleStudyOnHomeEnabled(),
                     OnChanged = sender => _settingsStorage.SetBibleStudyOnHomeEnabled(sender.IsChecked)
-                },
-                new CheckboxListItemPO
+                }
+            };
+
+            if (_remoteConfig.IsBadgesFeatureEnabled)
+            {
+                items.Add(new CheckboxListItemPO
                 {
                     Title = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeText],
@@ -254,12 +258,12 @@ namespace BMM.Core.ViewModels
                     OnChanged = sender =>
                     {
                         _settingsStorage.SetBibleStudyBadgeEnabled(sender.IsChecked);
-                        
+
                         if (!sender.IsChecked)
                             _badgeService.Remove();
                     }
-                }
-            };
+                });
+            }
 
             return items;
         }
