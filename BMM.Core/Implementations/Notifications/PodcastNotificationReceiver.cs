@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Notifications.Data;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using MvvmCross.Localization;
@@ -27,6 +30,8 @@ namespace BMM.Core.Implementations.Notifications
         private readonly IMvxMessenger _messenger;
         private readonly IMvxNavigationService _navigationService;
         private readonly IUiDependentExecutor _executor;
+        private readonly IBadgeService _badgeService;
+        private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
 
         private MvxSubscriptionToken _completedToken;
 
@@ -40,7 +45,9 @@ namespace BMM.Core.Implementations.Notifications
             IExceptionHandler exceptionHandler,
             IDownloadQueue downloadQueue,
             IMvxNavigationService navigationService,
-            IUiDependentExecutor executor)
+            IUiDependentExecutor executor,
+            IBadgeService badgeService,
+            IFirebaseRemoteConfig firebaseRemoteConfig)
         {
             _mediaDownloader = mediaDownloader;
             _analytics = analytics;
@@ -48,6 +55,8 @@ namespace BMM.Core.Implementations.Notifications
             _downloadQueue = downloadQueue;
             _navigationService = navigationService;
             _executor = executor;
+            _badgeService = badgeService;
+            _firebaseRemoteConfig = firebaseRemoteConfig;
             _messenger = messenger;
 
             _tcs = new TaskCompletionSource<bool>();
@@ -82,7 +91,7 @@ namespace BMM.Core.Implementations.Notifications
 
                 LogPodcastEvent("Podcast notification received", podcastNotification);
                 _podcastNotificationOfDownloadFile = podcastNotification;
-
+                
                 _completedToken = _messenger.Subscribe<QueueFinishedMessage>(QueueFinished);
 
                 PodcastLoggingExtensions.PodcastTrackIdToDownload = podcastNotification.TrackIds.First();
@@ -90,8 +99,15 @@ namespace BMM.Core.Implementations.Notifications
                 await AllDownloadsCompleted(podcastNotification);
                 PodcastLoggingExtensions.PodcastTrackIdToDownload = null;
 
+                ShowBadgeIfNeeded(podcastNotification.PodcastId);
                 LogPodcastEvent("Podcast notification offline tracks synchronized", podcastNotification);
             });
+        }
+
+        private void ShowBadgeIfNeeded(int podcastId)
+        {
+            if (podcastId == _firebaseRemoteConfig.CurrentPodcastId)
+                _badgeService.SetIfPossible();
         }
 
         private async Task AllDownloadsCompleted(PodcastNotification podcastNotification)

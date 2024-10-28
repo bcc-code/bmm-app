@@ -7,6 +7,7 @@ using BMM.Core.Implementations.Badge;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
+using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models.POs.Tiles;
 using BMM.Core.Models.POs.Tiles.Interfaces;
@@ -26,11 +27,10 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
         private readonly IUriOpener _uriOpener;
         private readonly IDeepLinkHandler _deepLinkHandler;
         private readonly IBadgeService _badgeService;
+        private readonly IStreakObserver _streakObserver;
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
-        private readonly ISettingsStorage _settingsStorage;
 
-        public TilePOFactory(
-            ITileClickedAction tileClickedAction,
+        public TilePOFactory(ITileClickedAction tileClickedAction,
             IContinuePlayingAction continuePlayingAction,
             IShuffleButtonClickedAction shuffleButtonClickedAction,
             IShowTrackInfoAction showTrackInfoAction,
@@ -39,8 +39,8 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
             IUriOpener uriOpener,
             IDeepLinkHandler deepLinkHandler,
             IBadgeService badgeService,
-            IFirebaseRemoteConfig firebaseRemoteConfig,
-            ISettingsStorage settingsStorage)
+            IStreakObserver streakObserver,
+            IFirebaseRemoteConfig firebaseRemoteConfig)
         {
             _tileClickedAction = tileClickedAction;
             _continuePlayingAction = continuePlayingAction;
@@ -51,8 +51,8 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
             _uriOpener = uriOpener;
             _deepLinkHandler = deepLinkHandler;
             _badgeService = badgeService;
+            _streakObserver = streakObserver;
             _firebaseRemoteConfig = firebaseRemoteConfig;
-            _settingsStorage = settingsStorage;
         }
         
         public ITilePO Create(IMvxAsyncCommand<Document> optionsClickedCommand, Document tile)
@@ -70,7 +70,7 @@ namespace BMM.Core.Implementations.Factories.ContinueListening
                         _mediaPlayer,
                         _storageManager,
                         _badgeService,
-                        _settingsStorage,
+                        _streakObserver,
                         _firebaseRemoteConfig,
                         continueListeningTile);
                 }

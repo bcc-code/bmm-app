@@ -55,5 +55,6 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         bool IsReadingTranscriptionsEnabled { get; }
         string PrivacyPolicyLink { get; }
         string RomansQuestionsUrl { get; }
+        bool IsBadgesFeatureEnabled { get; }
     }
 }

@@ -227,6 +227,8 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<ILanguagesLogger, LanguagesLogger>();
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IGlobalMediaDownloader, GlobalMediaDownloader>();
 
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBadgeService, BadgeService>();
+
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPodcastOfflineManager, PodcastOfflineManager>();
 
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IReceive<PodcastNotification>, PodcastNotificationReceiver>();
@@ -244,9 +246,7 @@ namespace BMM.Core
 
             Mvx.IoCProvider.RegisterType<IDocumentFilter, NullFilter>();
             Mvx.IoCProvider.RegisterType<IDownloadedTracksOnlyFilter, DownloadedTracksOnlyFilter>();
-
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBadgeService, BadgeService>();
-
+            
             Mvx.IoCProvider.RegisterType<IPlayerErrorHandler, PlayerErrorHandler>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlayerAnalytics, PlayerAnalytics>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IPlaybackHistoryService, PlaybackHistoryService>();
