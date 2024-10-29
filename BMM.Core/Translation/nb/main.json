@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Avspillingshastighet",
     "Normal": "Normal",
     "Selected": "Valgt",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "Spill av i BCC Media-appen",
     "Read": "Les"
   },
   "QueueViewModel": {
@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "Min profil",
     "HeadlineSettings": "Innstillinger",
-    "HeadlineHomeScreen": "Home Screen",
-    "HeadlinePlayback": "Playback",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "HeadlineHomeScreen": "Hjem-skjerm",
+    "HeadlinePlayback": "Avspilling",
+    "PlayInChronologicalOrderHeader": "Spill av i kronologisk rekkefølge",
+    "PlayInChronologicalOrderText": "Spill av podcast-episoder fra eldst til nyest",
     "OptionAutoplayHeader": "Automatisk avspilling",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
+    "OptionAutoplayText": "Spill av musikk etter å ha hørt på dagens Fra Kåre episode. Gjelder kun når du spiller av episoden fra hjem-skjermen.",
     "OptionStreakHeader": "Streak på hjem-skjermen",
     "OptionStreakText": "Vis lyttestatistikken din på hjem-kjermen",
     "OptionEnablePushHeader": "Aktiver push-varsling",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "App-versjon",
     "OptionDeleteAccountHeader": "Slett konto",
     "OptionDeleteAccountText": "Be om at kontoen din blir slettet.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Fra Kåre varslingsmerke",
+    "OptionNotificationBadgeText": "Vis et varsel på hjem-skjermen for å minne deg på å lytte til den daglige episoden.",
+    "OptionBibleStudyHeader": "Bibelstudie på hjem-skjermen",
+    "OptionBibleStudyText": "Vis din biblestudiestatus på hjem-skjermen",
     "AppInfoTitle": "App-informasjon",
     "AppInfoAppVersion": "App-versjon: ",
     "AppInfoManufacturer": "Produsent:",
@@ -423,7 +423,7 @@
     "SearchHint": "Søk",
     "FailedToAdd": "Kunne ikke legge til i spillelisten. Prøv igjen senere.",
     "AlbumFailedToAddAlreadyExists": "Dette albumet er allerede i spillelisten.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Samlingen er allerede lagt til i spillelisten din.",
     "TrackAlreadyExistInTrackCollection": "Spor allerede eksisterer i spilleliste {0}",
     "FailedToAddAlbum": "Kan ikke legge albumet til spillelisten fordi den inneholder album.",
     "FailedToAddUnknownType": "Legge til en \"{0}\" i en spilleliste støttes ikke.",
@@ -438,7 +438,7 @@
     "Track.AddedToMyTracks": "Lagt til i Mine spor",
     "Track.RemovedFromMyTracks": "Fjernet fra Mine spor",
     "Track.FailedToRemoveFromMyTracks": "Kunne ikke fjerne sporet fra Mine spor",
-    "Track.AddToQueue": "Add to end of queue",
+    "Track.AddToQueue": "Legg til i slutten av køen",
     "Track.QueueToPlayNext": "Spill av som neste",
     "Track.AddedToQueue": "Lagt til i køen",
     "Track.GoToAlbum": "Gå til albumet",
@@ -454,7 +454,7 @@
     "Album.AddToPlaylist": "Legg til album i spilleliste",
     "Album.AddToMyTracks": "Legg til album i Mine spor",
     "Album.AddedToMyTracks": "Albumet er lagt til i Mine spor",
-    "Album.AddToQueue": "Add to end of queue",
+    "Album.AddToQueue": "Legg til i slutten av køen",
     "Album.Share": "Del album",
     "FailedToAdd": "Kunne ikke legge til sporet i spillelisten. Prøv igjen senere.",
     "FailedToAddAlbum": "Kan ikke legge albumet til spillelisten fordi den inneholder album.",
@@ -465,7 +465,7 @@
     "Contributor.Play": "Spill av",
     "Contributor.Share": "Del bidragsyter",
     "OfflineTrackCollection.DeletePlaylist": "Slett spillelisten",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Legg til alle spor i spilleliste",
     "Cancel": "Avbryt"
   },
   "Notifications": {
@@ -539,12 +539,12 @@
     "ShortcutAlreadyAdded": "Denne snarveien er allerede lagt til"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
+    "Title": "Ditt år oppsummert",
     "Share": "Del med vennene dine",
-    "ShareTitle": "Year in Review"
+    "ShareTitle": "Året oppsummert"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
+    "Title": "Mest spilte sanger",
     "PlaysPlural": "{0} avspillinger",
     "PlaysSingular": "{0} avspilling",
     "AddToMyPlaylist": "Legg til spilleliste i favoritter",
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Poeng",
     "Achievements": "Dine prestasjoner",
-    "Answer": "Answer"
+    "Answer": "Svar"
   },
   "AppIconViewModel": {
     "Title": "App ikon",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Prestasjoner",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "Et sted for dine bibelstudie-prestasjoner",
+    "EmptySubtitle": "Prestasjoner fått fra bibelstudier vil bli samlet her."
   }
 }

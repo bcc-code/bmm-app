@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "சாதனைகள்",
-    "EmptyTitle": "உங்கள் பைபிள் படிப்பு சாதனைகளுக்கான இடம்",
-    "EmptySubtitle": "பைபிள் படிப்புகளில் நீங்கள் சாதனைகளைப் பெற்றால், அவற்றை இங்கே சேகரிக்கத் தொடங்குங்கள்."
+    "EmptyTitle": "A place for your Bible Study achievements",
+    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
   }
 }

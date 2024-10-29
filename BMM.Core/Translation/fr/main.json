@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Réalisations",
-    "EmptyTitle": "Un endroit pour vos résultats d'études bibliques",
-    "EmptySubtitle": "Lorsque vous obtenez des résultats dans les études bibliques, commencez à les collecter ici."
+    "EmptyTitle": "Un espace pour vos résultats d'études bibliques",
+    "EmptySubtitle": "Les résultats obtenus dans les études bibliques seront rassemblés ici."
   }
 }
