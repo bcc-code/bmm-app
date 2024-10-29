@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Eredmények",
-    "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+    "EmptyTitle": "Egy hely a bibliatanulmányozási eredményeidnek",
+    "EmptySubtitle": "Itt kezdheted el gyűjteni a bibliatanulmányozásban elért eredményeket."
   }
 }
