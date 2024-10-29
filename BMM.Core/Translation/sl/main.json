@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Dosežki",
-    "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+    "EmptyTitle": "Prostor za tvoje dosežke pri biblijskem preučevanju",
+    "EmptySubtitle": "Ko pridobiš dosežke pri preučevanju Svetega pisma, jih začneš zbirati tukaj."
   }
 }
