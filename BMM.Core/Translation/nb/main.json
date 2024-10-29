@@ -539,12 +539,12 @@
     "ShortcutAlreadyAdded": "Denne snarveien er allerede lagt til"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
+    "Title": "Ditt år oppsummert",
     "Share": "Del med vennene dine",
-    "ShareTitle": "Year in Review"
+    "ShareTitle": "Året oppsummert"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
+    "Title": "Mest spilte sanger",
     "PlaysPlural": "{0} avspillinger",
     "PlaysSingular": "{0} avspilling",
     "AddToMyPlaylist": "Legg til spilleliste i favoritter",
