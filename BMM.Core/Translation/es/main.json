@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Logros",
-    "EmptyTitle": "A place for your Bible Study Achievements",
-    "EmptySubtitle": "When you earn achievements in Bible Studies to start collecting them here."
+    "EmptyTitle": "A place for your Bible Study achievements",
+    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
   }
 }
