@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Réalisations",
-    "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+    "EmptyTitle": "Un endroit pour vos résultats d'études bibliques",
+    "EmptySubtitle": "Lorsque vous obtenez des résultats dans les études bibliques, commencez à les collecter ici."
   }
 }
