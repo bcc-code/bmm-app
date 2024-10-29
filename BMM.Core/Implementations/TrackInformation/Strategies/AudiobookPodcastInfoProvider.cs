@@ -30,6 +30,7 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
             return track.Tags.Contains(PodcastsConstants.FromKaareTagName)
                    || track.Tags.Contains(PodcastsConstants.ForbildeTagName)
                    || track.Tags.Contains(PodcastsConstants.RomanPodcastTagName)
+                   || track.Tags.Contains(PodcastsConstants.GibraltarPodcastTagName)
                    || track.Tags.Contains(AslaksenConstants.HebrewTagName)
                    || track.Tags.Contains(AslaksenConstants.AsklaksenTagName);
         }

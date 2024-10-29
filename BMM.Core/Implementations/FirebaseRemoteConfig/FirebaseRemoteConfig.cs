@@ -88,7 +88,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.ShowBlueDotForMessages, false.ToString()},
             {Variables.ShowBlueDotForSongs, false.ToString()},
             {Variables.CurrentPodcastId, PodcastsConstants.FraKårePodcastId.ToString()},
-            {Variables.AutoSubscribePodcasts, $"{PodcastsConstants.FraKårePodcastId},{PodcastsConstants.RomanPodcastId}"},
+            {Variables.AutoSubscribePodcasts, $"{PodcastsConstants.FraKårePodcastId},{PodcastsConstants.GibraltarPodcastId}"},
             {Variables.EnableReadingTranscriptions, false.ToString()},
             {Variables.IsBadgesFeatureEnabled, true.ToString()},
         };
