@@ -5,12 +5,10 @@ namespace BMM.Core.ViewModels.Parameters;
 
 public class AchievementDetailsParameter : IAchievementDetailsParameter
 {
-    public AchievementDetailsParameter(AchievementPO achievementPO, bool showAsModal)
+    public AchievementDetailsParameter(AchievementPO achievementPO)
     {
         AchievementPO = achievementPO;
-        ShowAsModal = showAsModal;
     }
     
     public AchievementPO AchievementPO { get; }
-    public bool ShowAsModal { get; }
 }

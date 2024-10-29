@@ -117,6 +117,9 @@ namespace BMM.UI.Droid.Application.Fragments
         {
             _mvxMainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() =>
             {
+                if (Context == null)
+                    return;
+                
                 if (!_badgeService.IsBadgeSet)
                 {
                     RemoveBadge();

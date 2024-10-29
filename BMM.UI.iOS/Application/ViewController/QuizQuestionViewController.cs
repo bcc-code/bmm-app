@@ -38,10 +38,6 @@ namespace BMM.UI.iOS
             
             var set = this.CreateBindingSet<QuizQuestionViewController, QuizQuestionViewModel>();
 
-            // _source = new BibleStudyTableViewSource(ContentTableView);
-            // set.Bind(_source)
-            //     .To(vm => vm.Items);
-            //
             set.Bind(CloseIconView)
                 .For(v => v.BindTap())
                 .To(vm => vm.CloseCommand);

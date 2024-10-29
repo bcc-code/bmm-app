@@ -23,10 +23,6 @@ namespace BMM.UI.iOS
 
         public override Task<bool> Show(MvxViewModelRequest request)
         {
-            if (request.ViewModelType == typeof(AchievementDetailsViewModel))
-            {
-            }
-
             if (request.ViewModelType == typeof(MiniPlayerViewModel))
             {
                 var tabBarViewController = TabBarViewController as MenuViewController;

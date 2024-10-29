@@ -24,9 +24,7 @@ public class AchievementPO : BasePO, IAchievementPO
         _achievement = achievement;
         AchievementClickedCommand = new ExceptionHandlingCommand(async () =>
         {
-            await navigationService.Navigate<AchievementDetailsViewModel, IAchievementDetailsParameter>(new AchievementDetailsParameter(
-                this,
-                false));
+            await navigationService.Navigate<AchievementDetailsViewModel, IAchievementDetailsParameter>(new AchievementDetailsParameter(this));
         });
     }
 
