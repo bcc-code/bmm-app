@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Başarılar",
-    "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+    "EmptyTitle": "İncil Çalışması Başarılarınız için bir yer",
+    "EmptySubtitle": "İncil Çalışmalarında başarılar kazandığınızda bunları burada toplamaya başlayın."
   }
 }
