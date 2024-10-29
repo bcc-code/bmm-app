@@ -1,55 +1,55 @@
 {
   "Global": {
     "ContactError": "Tõrge kontakt BMM meeskond, saate saata e-posti: {0}",
-    "External": "External",
-    "Internal": "Internal",
+    "External": "Väline",
+    "Internal": "Sisene",
     "BytesMB": "{0} MB",
-    "UnexpectedError": "Sorry, an unexpected error has occurred.",
+    "UnexpectedError": "Kahjuks ilmnes ootamatu viga.",
     "InternetConnectionOffline": "Interneti-ühendus pole saadaval.",
-    "ItemNotFound": "The requested item does not exist.",
-    "OfflineBanner": "Showing only tracks on this phone",
-    "Song": "Song",
+    "ItemNotFound": "Soovitud üksust pole olemas.",
+    "OfflineBanner": "Kuvatakse ainult selle telefoni lugusid",
+    "Song": "Laul",
     "Speech": "Sõnum",
-    "Audiobook": "Audiobook",
-    "Exegesis": "Exegesis",
-    "Done": "Done",
-    "Today": "Today",
-    "Yesterday": "Yesterday",
-    "BackgroundActivityRestrictedTitle": "Allow background activity",
+    "Audiobook": "Audioraamat",
+    "Exegesis": "Seletus",
+    "Done": "Valmis",
+    "Today": "Täna",
+    "Yesterday": "Eile",
+    "BackgroundActivityRestrictedTitle": "Luba taustategevus",
     "BackgroundActivityRestrictedMessage": "Your device settings restrict BMM from working in the background. You will not be able to listen, when your phone is locked for a few minutes. To change it, go to application settings and \"Allow background activity\" under the \"Battery\" section.",
-    "GoToSettings": "Go to Settings",
-    "NotNow": "Not now",
+    "GoToSettings": "Ava seaded",
+    "NotNow": "Mitte praegu",
     "DownloadPlaylistOnceOnWifi": "The playlist will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
     "DownloadPodcastOnceOnWifi": "The latest tracks for this podcast will be downloaded the next time you're on Wifi. You can enable \"Download via mobile network\" in your Profile.",
-    "SiriFromKaareInvocationPhrase": "Play From Kåre on BMM",
-    "SiriPlayMusicInvocationPhrase": "Play Music on BMM",
-    "FromKaareSiriShortcutName": "Play From Kåre",
-    "PlayMusicSiriShortcutName": "Play Music",
-    "DailyMessage": "Daily message",
-    "ValueCopiedToClipboard": "{0} copied to clipboard",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "SiriFromKaareInvocationPhrase": "Mängi Kårelt BMMis",
+    "SiriPlayMusicInvocationPhrase": "Mängi muusikat BMMis",
+    "FromKaareSiriShortcutName": "Mängi Kårelt",
+    "PlayMusicSiriShortcutName": "Mängi muusikat",
+    "DailyMessage": "Päevane sõnum",
+    "ValueCopiedToClipboard": "{0} kopeeriti lõikelauale",
+    "AddToFavorites": "Lisa lemmikute hulka",
+    "RemoveFromFavorites": "Eemalda lemmikutest"
   },
   "Streak": {
-    "Message": "Your streak this week",
-    "MessagePerfect": "A perfect week. Well done!",
-    "PerfectWeekCountSingular": "{0} perfect week",
-    "PerfectWeekCountPlural": "{0} perfect weeks",
-    "PerfectWeekCountNone": "No perfect weeks, yet",
+    "Message": "Sinu selle nädala striik",
+    "MessagePerfect": "Täiuslik nädal. Hästi tehtud!",
+    "PerfectWeekCountSingular": "{0} täiuslik nädal",
+    "PerfectWeekCountPlural": "{0} täiuslikku nädalat",
+    "PerfectWeekCountNone": "Täiuslikke nädalaid veel pole",
     "EligibleUntilHoursAndMinutesMessage": "{0} hours and {1} minutes left today",
-    "EligibleUntilMinutesOnlyMessage": "{0} minutes left today",
-    "DaysInARowSingular": "{0} day in a row",
-    "DaysInARowPlural": "{0} days in a row",
-    "WeekdayMonday": "M",
+    "EligibleUntilMinutesOnlyMessage": "Tänasest on jäänud {0} minutit",
+    "DaysInARowSingular": "{0} päev järjest",
+    "DaysInARowPlural": "{0} päeva järjest",
+    "WeekdayMonday": "E",
     "WeekdayTuesday": "T",
-    "WeekdayWednesday": "W",
-    "WeekdayThursday": "T",
-    "WeekdayFriday": "F"
+    "WeekdayWednesday": "K",
+    "WeekdayThursday": "N",
+    "WeekdayFriday": "R"
   },
   "DeepLinkHandler": {
-    "ErrorTitle": "Unable to open link",
-    "ErrorMessage": "Unfortunately it was not possible to open the link '{0}'.",
-    "RomansQuestionsPageTitle": "Questions & answers"
+    "ErrorTitle": "Linki ei saa avada",
+    "ErrorMessage": "Kahjuks ei olnud võimalik linki '{0}' avada.",
+    "RomansQuestionsPageTitle": "Küsimused & vastused"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Tekkis ühendusviga: {0}"
@@ -58,14 +58,14 @@
     "ErrorMediaNotSupported": "Kahjuks teie seade ei toeta seda failivormingut.",
     "ErrorVideoNotSupported": "Kahjuks videoid praegu ei toetata.",
     "ErrorFileNotOffline": "Ühenduseta režiimis ei saa mängida palasid, mis ei ole alla laetud.",
-    "ErrorPlayerStopped": "The player has stopped.",
-    "ErrorPlayerStoppedGeneric": "A playback error has occurred that stopped the current track.",
-    "ErrorPlayerLiveRadioStopped": "The live broadcast has ended.",
-    "ErrorPlayerLiveRadioTooEarly": "The live broadcast has not started yet, please try again later.",
-    "ErrorPlayerStart": "Unable to start playback."
+    "ErrorPlayerStopped": "Mängija on peatunud.",
+    "ErrorPlayerStoppedGeneric": "Ilmnes taasesitusviga, mis peatas praeguse loo.",
+    "ErrorPlayerLiveRadioStopped": "Otsesaade on lõppenud.",
+    "ErrorPlayerLiveRadioTooEarly": "Otseülekanne pole veel alanud, proovige hiljem uuesti.",
+    "ErrorPlayerStart": "Taasesitust ei saa alustada."
   },
   "GlobalMediaDownloader": {
-    "OutOfSpaceMessage": "There is not enough space to store offline files"
+    "OutOfSpaceMessage": "Võrguühenduseta failide salvestamiseks pole piisavalt ruumi"
   },
   "AlbumViewModel": {
     "Title": "Album",
@@ -74,9 +74,9 @@
     "AddAlbumToMyTracks": "Videod Minu rajad",
     "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
     "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "ShufflePlay": "Juhuesitus",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albumit"
   },
   "AlbumsViewModel": {
     "Title": "Arhiiv",
@@ -104,19 +104,19 @@
     "SearchHint": "Otsi"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Pealeht",
     "SearchHint": "Otsi",
     "FraKaareHeader": "Kårelt",
-    "AslaksenTeaserHeader": "Words of faith",
+    "AslaksenTeaserHeader": "Usu sõnad",
     "ShowAll": "Näita kõiki",
-    "PlayRandom": "Play random",
-    "PlayNewest": "Play newest",
+    "PlayRandom": "Mängi juhuslikult",
+    "PlayNewest": "Mängi uusimat",
     "LatestTrack": "Viimane pala",
-    "NextBroadcast": "Next broadcast",
-    "BmmRadio": "BMM Live",
-    "CountdownHours": "in {0}h",
-    "Messages": "Recent Messages",
-    "Music": "Recent Music",
+    "NextBroadcast": "Järgmine saade",
+    "BmmRadio": "BMM otseülekanne",
+    "CountdownHours": "{0}h pärast",
+    "Messages": "Hiljutised sõnumid",
+    "Music": "Hiljutine muusika",
     "Recommended": "Soovitatud",
     "More": "Veel"
   },
@@ -141,26 +141,26 @@
     "ButtonSendMail": "Saatke ekiri BMM-i meeskonnale"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "We're setting up your account. This might take a few moments."
+    "SettingUpAccountMessage": "Seadistame teie kontot. See võib võtta mõne hetke."
   },
   "LoginViewModel": {
     "Title": "Sisselogimine",
     "LoginFailureTitle": "Sisselogimine ebaõnnestus",
     "LoginFailureMessage": "Palun kontrollige sisestatud andmeid ja proovige uuesti",
     "LoginNoConnectionMessage": "Ühendus pole hetkel võimalik. Palun proovige hiljem uuesti",
-    "WrongMailAddressTitle": "Invalid email",
-    "WrongMailAddress": "Please provide a valid email address. Using the username for login is no longer supported.",
+    "WrongMailAddressTitle": "Kehtetu e-posti aadress",
+    "WrongMailAddress": "Sisestage kehtiv e-posti aadress. Kasutajanime kasutamist sisselogimiseks enam ei toetata.",
     "TbxUsername.Hint": "E-posti",
     "TbxPassword.Hint": "Salasõna",
     "BtnLogin.Text": "Sisselogimine",
-    "LoginInfo": "Sign in with your BCC login"
+    "LoginInfo": "Logi sisse oma BCC kasutajaga"
   },
   "SupportEndedViewModel": {
     "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
-    "DeviceSupportEnded": "Unfortunately, we no longer support devices older than {0} {1}. Please update your device or upgrade to a newer phone.",
-    "AppSupportEnding": "You are using an old version of the BMM app. We will soon stop support for that version. Please update BMM.",
-    "AppSupportEnded": "You are using an old version of the BMM app, which is no longer supported. Please update BMM.",
-    "UpdateButton": "Update"
+    "DeviceSupportEnded": "Kahjuks ei toeta me enam seadmeid, mis on vanemad kui {0} {1}. Värskendage oma seadet või minge üle uuemale telefonile.",
+    "AppSupportEnding": "Kasutate BMM-i rakenduse vana versiooni. Peagi peatame selle versiooni toetamise. Uuendage BMM-i.",
+    "AppSupportEnded": "Kasutad BMM-i rakenduse vana versiooni, mida enam ei toetata. Uuenda BMM-i.",
+    "UpdateButton": "Uuenda"
   },
   "LanguageAppViewModel": {
     "Title": "Rakenduse keel"
@@ -175,7 +175,7 @@
     "DeleteLanguageTitle": "Ei saa eemaldada {0}"
   },
   "BrowseViewModel": {
-    "Title": "Browse"
+    "Title": "Sirvi"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arhiiv"
@@ -185,20 +185,20 @@
     "Search": "Otsi",
     "Explore": "Avasta",
     "MyContent": "Minu sisu",
-    "Browse": "Browse",
+    "Browse": "Sirvi",
     "Settings": "Seaded",
     "HelpAndFeedback": "Abi ja tagasiside",
-    "Home": "Home",
-    "Favorites": "Favorites",
-    "Profile": "Profile"
+    "Home": "Pealeht",
+    "Favorites": "Lemmikud",
+    "Profile": "Profiil"
   },
   "MyContentViewModel": {
-    "Title": "Favorites",
-    "DownloadedContent": "Downloaded Content",
+    "Title": "Lemmikud",
+    "DownloadedContent": "Allalaaditud sisu",
     "FollowedPodcasts": "Saated",
     "MyTracks": "Minu rajad",
-    "MyPlaylists": "My playlists",
-    "SharedWithMe": "Shared with me",
+    "MyPlaylists": "Minu esitusloendid",
+    "SharedWithMe": "Minuga jagatud",
     "ByFormat": "by {0}"
   },
   "FollowedPodcastsViewModel": {
@@ -218,10 +218,10 @@
     "AskToResumeDownloading": "Selles esitusloendis on uusi üksusi. Kas soovid jätkata allalaadimist?"
   },
   "DownloadedContentViewModel": {
-    "Title": "Downloaded Content",
+    "Title": "Allalaaditud sisu",
     "FollowedPodcasts": "Saated",
     "MyTracks": "Minu rajad",
-    "EmptyTitle": "You have not downloaded any content",
+    "EmptyTitle": "Sa pole veel sisu alla laadinud",
     "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
   },
   "DownloadedFollowedPodcastsViewModel": {
@@ -238,13 +238,13 @@
     "GetNotifiedMessage": "kuna uusi episoode on läbi",
     "UnfollowConfirm": "Kas soovite tõesti unfollow selles podcast?",
     "ToggleFollowOfflineError": "Sa pead olema järgida või unfollow podcast",
-    "Week": "Week {0}",
-    "ThisWeek": "This week",
-    "LastWeek": "Last week",
-    "AslaksenTheme1": "Believe in the God of miracles",
-    "AslaksenTheme2": "I have been crucified with Christ",
-    "AslaksenTheme3": "To fear and love God",
-    "AslaksenTheme4": "Humility is everything"
+    "Week": "Nädal {0}",
+    "ThisWeek": "Sel nädalal",
+    "LastWeek": "Eelmisel nädalal",
+    "AslaksenTheme1": "Uskuge imede Jumalasse",
+    "AslaksenTheme2": "Mind on koos Kristusega risti löödud",
+    "AslaksenTheme3": "Jumalat kartma ja armastama",
+    "AslaksenTheme4": "Alandlikkus on kõik"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Esitusloend"
@@ -253,19 +253,19 @@
     "Title": "Esitusloendid"
   },
   "PlayerViewModel": {
-    "Title": "Now playing",
+    "Title": "Nüüd mängib",
     "PlayingCount": "{0} {1}-st",
-    "ViewLyrics": "View Lyrics",
-    "SleepTimer": "Sleep timer",
-    "Minutes": "{0} minutes",
-    "Hour": "{0} hour",
-    "Hours": "{0} hours",
-    "Disable": "Disable",
-    "PlaybackSpeed": "Playback speed",
-    "Normal": "Normal",
-    "Selected": "Selected",
-    "WatchOnBCCMedia": "Watch on BCC Media",
-    "Read": "Read"
+    "ViewLyrics": "Vaata laulusõnu",
+    "SleepTimer": "Unetaimer",
+    "Minutes": "{0} minutit",
+    "Hour": "{0} tund",
+    "Hours": "{0} tundi",
+    "Disable": "Keela",
+    "PlaybackSpeed": "Taasesituse kiirus",
+    "Normal": "Tavaline",
+    "Selected": "Valitud",
+    "WatchOnBCCMedia": "Vaata BCC Meedias",
+    "Read": "Loe"
   },
   "QueueViewModel": {
     "Title": "Järjekord"
@@ -273,34 +273,34 @@
   "SearchViewModel": {
     "Title": "Otsi",
     "SearchHint": "Otsi",
-    "SearchResults": "Results",
+    "SearchResults": "Tulemused",
     "SearchHistory": "Hiljutised otsingud",
     "SearchSuggestions": "Kas sa mõtlesid: ",
     "WelcomeTitle": "Alusta otsingut siit!",
     "WelcomeSubTitle": "BMM sisu otsinguks kasuta otsinguvälja",
     "DeleteConfirm": "Kas soovite kindlasti kustutada otsingute ajalugu?",
-    "All": "All",
-    "Speeches": "Speeches",
+    "All": "Kõik",
+    "Speeches": "Kõned",
     "Music": "Muusika",
-    "Albums": "Albums",
-    "Contributors": "People",
+    "Albums": "Albumid",
+    "Contributors": "Inimesed",
     "Podcasts": "Saated",
     "Playlists": "Esitusloendid",
-    "NoResults": "No results",
+    "NoResults": "Tulemusi pole",
     "NoResultsDescription": "There where no matches with your search for \"{0}\"",
-    "SearchFailedTitle": "Search failed",
+    "SearchFailedTitle": "Otsing ebaõnnestus",
     "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
   },
   "SettingsViewModel": {
-    "Title": "Profile",
+    "Title": "Profiil",
     "HeadlineSettings": "Seaded",
-    "HeadlineHomeScreen": "Home Screen",
-    "HeadlinePlayback": "Playback",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
-    "OptionAutoplayHeader": "Autoplay",
+    "HeadlineHomeScreen": "Pealeht",
+    "HeadlinePlayback": "Taasesitus",
+    "PlayInChronologicalOrderHeader": "Mängi kronoloogilises järjekorras",
+    "PlayInChronologicalOrderText": "Mängi podcasti episoode vanemast uuemani",
+    "OptionAutoplayHeader": "Automaatne esitus",
     "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
-    "OptionStreakHeader": "Streak on Home",
+    "OptionStreakHeader": "Striik pealehel",
     "OptionStreakText": "Show your listening statistic on the home screen",
     "OptionEnablePushHeader": "Luba teated",
     "OptionPushNotifications": "Dünaamilise pisikuva teatised",
@@ -358,12 +358,12 @@
     "PluralTracks": "{0} tracks",
     "PluralTracksLoaded": "{0} tracks loaded",
     "Download": "Lae alla",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Sega",
     "Play": "Esita"
   },
   "TrackCollectionViewModel": {
     "Title": "Esitusloend",
-    "ShufflePlay": "Shuffle",
+    "ShufflePlay": "Sega",
     "Resume": "Resume",
     "AvailableOffline": "Kättesaadav ühenduseta",
     "AvailableOfflineDownload": "Lae alla",
@@ -398,16 +398,16 @@
     "KeepEditing": "Keep Editing"
   },
   "ShareTrackCollectionViewModel": {
-    "Title": "Share Playlist",
-    "ShareNote": "By sharing a playlist, people will be able to access and listen to the tracks you add, if they have the link.",
-    "ShareLink": "Share link",
-    "MakePrivate": "Make private",
-    "SharedWithFormat": "Shared with {0} people"
+    "Title": "Esitusloendi jagamine",
+    "ShareNote": "Esitusloendi jagamisel pääsevad inimesed teie lisatud lugudele juurde ja saavad neid kuulata, kui neil on link.",
+    "ShareLink": "Jaga linki",
+    "MakePrivate": "Muuda privaatseks",
+    "SharedWithFormat": "Jagatud {0} inimesega"
   },
   "SharedTrackCollectionViewModel": {
-    "Title": "Shared Playlist",
-    "Close": "Close",
-    "AddToMyPlaylist": "Add to my playlists",
+    "Title": "Jagatud esitusloend",
+    "Close": "Sule",
+    "AddToMyPlaylist": "Lisa esitlusloendisse",
     "FollowOwnTrackCollection": "You cannot follow your own track collection"
   },
   "OfflineTrackCollectionViewModel": {
@@ -424,7 +424,7 @@
     "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
     "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
     "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "FailedToAddAlbum": "Ei suutnud album esitusloendisse lisada, kuna see sisaldab Albumeid.",
     "FailedToAddUnknownType": "\"{0}\" esitusloendisse praegu ei toetata.",
     "CreatePlaylistPrompt": "Sisesta esitusloendi nimi",
@@ -438,8 +438,8 @@
     "Track.AddedToMyTracks": "Loendisse Minu rajad",
     "Track.RemovedFromMyTracks": "Eemalda Minu rajad",
     "Track.FailedToRemoveFromMyTracks": "Failed to remove track from My Tracks",
-    "Track.AddToQueue": "Add to end of queue",
-    "Track.QueueToPlayNext": "Play next",
+    "Track.AddToQueue": "Lisa järjekorra lõppu",
+    "Track.QueueToPlayNext": "Mängi järgmisena",
     "Track.AddedToQueue": "Järjekorda lisatud",
     "Track.GoToAlbum": "Mine albumisse",
     "Track.GoToContributor": "Mine kaastegijate ossa",
@@ -449,21 +449,21 @@
     "Track.GoToContributor.Arranger": "Korraldajalt: {0}",
     "Track.Download": "Lae pala alla",
     "Track.MoreInformation": "Rohkem infot",
-    "Track.Share": "Share track",
+    "Track.Share": "Jaga lugu",
     "Album.Play": "Esita",
     "Album.AddToPlaylist": "Esitusloendisse lisamine album",
     "Album.AddToMyTracks": "Videod Minu rajad",
     "Album.AddedToMyTracks": "Album on Minu rajad",
-    "Album.AddToQueue": "Add to end of queue",
-    "Album.Share": "Share album",
+    "Album.AddToQueue": "Lisa järjekorra lõppu",
+    "Album.Share": "Jaga albumit",
     "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
     "FailedToAddAlbum": "Ei suutnud album esitusloendisse lisada, kuna see sisaldab Albumeid.",
     "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
-    "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
+    "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "FailedToAddUnknownType": "\"{0}\" esitusloendisse praegu ei toetata.",
     "MyTracks": "Minu rajad",
     "Contributor.Play": "Esita",
-    "Contributor.Share": "Share contributor",
+    "Contributor.Share": "Jaga panustajat",
     "OfflineTrackCollection.DeletePlaylist": "Kustuta esitusloend",
     "AddAllToPlaylist": "Add all tracks to playlist",
     "Cancel": "Tühista"
@@ -480,7 +480,7 @@
     "AboutTrack": "Raja kohta",
     "Title": "Info pala kohta",
     "TrackTitle": "Pealkiri",
-    "SongNumber": "Song number",
+    "SongNumber": "Laulu number",
     "Album": "Album",
     "Artist": "Esitaja",
     "Duration": "Kestus",
@@ -488,79 +488,79 @@
     "Lyricist": "Sõnade autor",
     "Arranger": "Korraldajalt",
     "Composer": "Helilooja",
-    "Publisher": "Publisher",
+    "Publisher": "Väljaandja",
     "Copyright": "Autoriõigused"
   },
   "CopyrightViewModel": {
     "Title": "Autoriõigused"
   },
   "PlaybackHistoryViewModel": {
-    "Title": "Recently played",
+    "Title": "Hiljuti mängitud",
     "NoHistoryYetTitle": "You can now see what you’ve been listening to",
     "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Recent Messages"
+    "Title": "Hiljutised sõnumid"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Recent Music"
+    "Title": "Hiljutine muusika"
   },
   "DownloadManager": {
     "DownloadingFinished": "Kõik failid on alla laetud!"
   },
   "Browse": {
-    "EventsTitle": "Events",
+    "EventsTitle": "Sündmused",
     "AudiobooksTitle": "Audioraamatud",
     "MusicTitle": "Muusika",
     "PodcastsTitle": "Saated"
   },
   "ThemeSettingsViewModel": {
-    "Title": "Dark mode settings",
-    "Light": "Light",
-    "Dark": "Dark",
-    "System": "Follow system settings (Auto)"
+    "Title": "Tumeda režiimi sätted",
+    "Light": "Hele",
+    "Dark": "Tume",
+    "System": "Järgige süsteemi sätteid (automaatne)"
   },
   "ColorThemeViewModel": {
-    "Title": "Color Theme",
+    "Title": "Värvi teema",
     "Default": "Default",
-    "Violet": "Violet",
-    "Red": "Red",
-    "DarkGreen": "Dark Green",
-    "Golden": "Golden",
-    "Orange": "Orange"
+    "Violet": "Lilla",
+    "Red": "Punane",
+    "DarkGreen": "Tumeroheline",
+    "Golden": "Kuldne",
+    "Orange": "Oranž"
   },
   "ChangeTrackLanguageViewModel": {
-    "Title": "Track Language",
-    "PreferredLanguages": "Your preferred languages",
+    "Title": "Pala keel",
+    "PreferredLanguages": "Sinu eelistatud keeled",
     "AllLanguages": "Kõik keeled"
   },
   "SiriShortcutsViewModel": {
-    "Title": "Siri Shortcuts",
-    "ShortcutAlreadyAdded": "This shortcut has already been added"
+    "Title": "Siri otseteed",
+    "ShortcutAlreadyAdded": "See otsetee on juba lisatud"
   },
   "YearInReviewViewModel": {
-    "Title": "Your Year in Review",
-    "Share": "Share with your friends",
-    "ShareTitle": "Year in Review"
+    "Title": "Sinu aasta ülevaade",
+    "Share": "Jaga oma sõpradega",
+    "ShareTitle": "Aasta ülevaade"
   },
   "TopSongsCollectionViewModel": {
-    "Title": "Top songs",
+    "Title": "Tipplaulud",
     "PlaysPlural": "{0} plays",
     "PlaysSingular": "{0} play",
-    "AddToMyPlaylist": "Add playlist to favorites",
-    "SuccessfullyAddedToPlaylists": "Successfully added to favourites"
+    "AddToMyPlaylist": "Lisa esitusloend lemmikute hulka",
+    "SuccessfullyAddedToPlaylists": "Lemmikutesse lisamine õnnestus"
   },
   "HighlightedTextTrackViewModel": {
-    "AutoTranscribed": "Auto-transcribed",
-    "FromSongTreasures": "From Song Treasures",
+    "AutoTranscribed": "Automaatselt transkribeeritud",
+    "FromSongTreasures": "Lauluaaretest",
     "AddTo": "Lisa esitlusloendisse",
-    "Pause": "Pause",
+    "Pause": "Paus",
     "AutoTranscribedPopupTitleText": "Transcripts are auto-generated and might contain errors",
-    "AutoTranscribedPopupHeaderText": "Auto-transcribed",
+    "AutoTranscribedPopupHeaderText": "Automaatselt transkribeeritud",
     "AutoTranscribedPopupSubtitleText": "Help improve the transcript by suggesting corrections using 'Suggest edit'.",
-    "AutoTranscribedPopupButtonText": "Got it",
+    "AutoTranscribedPopupButtonText": "Sain aru",
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
-    "FromSongTreasuresPopupHeaderText": "From Song Treasures",
+    "FromSongTreasuresPopupHeaderText": "Lauluaaretest",
     "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
     "SuggestEdit": "Suggest edit"
   },
@@ -578,25 +578,25 @@
     "Title": "App Icon",
     "Description": "Change the app icon of the app",
     "IconStandard": "Standard",
-    "IconDarkGreen": "Dark Green",
-    "IconOrange": "Orange",
-    "IconGolden": "Golden",
-    "IconViolet": "Violet",
-    "IconRed": "Red"
+    "IconDarkGreen": "Tumeroheline",
+    "IconOrange": "Oranž",
+    "IconGolden": "Kuldne",
+    "IconViolet": "Lilla",
+    "IconRed": "Punane"
   },
   "AchievementDetailsViewModel": {
     "Title": "Achievement",
     "Unlocked": "Unlocked",
     "ActivatePremiumIcon": "Activate App Icon",
-    "GotIt": "Got it",
+    "GotIt": "Sain aru",
     "ActivateTheme": "Activate Theme",
-    "Close": "Close",
+    "Close": "Sule",
     "Reward": "Reward",
     "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
     "RewardIos": "An exclusive app icon for your BMM app 🤩",
     "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
     "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!",
-    "PlayNext": "Play next"
+    "PlayNext": "Mängi järgmisena"
   },
   "SuggestEditViewModel": {
     "Title": "Suggest an edit",
@@ -613,7 +613,7 @@
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
     "Description": "All questions will be reviewed and some will be answered in the podcast. \n Most questions will be answered on the Q&A page. \n\n Check back on Wednesday to read the replies.",
-    "GotIt": "Got it"
+    "GotIt": "Sain aru"
   },
   "AchievementsViewModel": {
     "Title": "Achievements",
