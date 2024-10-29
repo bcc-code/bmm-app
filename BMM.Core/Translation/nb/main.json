@@ -37,7 +37,7 @@
     "PerfectWeekCountPlural": "{0} perfekte uker",
     "PerfectWeekCountNone": "Ingen perfekt uke så langt",
     "EligibleUntilHoursAndMinutesMessage": "{0} timer og {1} minutter igjen i dag",
-    "EligibleUntilMinutesOnlyMessage": "{1} minutter igjen i dag",
+    "EligibleUntilMinutesOnlyMessage": "{0} minutter igjen i dag",
     "DaysInARowSingular": "{0} dag på rad",
     "DaysInARowPlural": "{0} dager på rad",
     "WeekdayMonday": "M",
@@ -431,7 +431,7 @@
     "TrackAddedToTrackCollection": "Lagt til i spillelisten"
   },
   "UserDialogs": {
-    "Track.AddToPlaylist": "Legg til i spilleliste...",
+    "Track.AddToPlaylist": "Legg til i spilleliste",
     "Track.DeleteFromPlaylist": "Slett fra spilleliste",
     "Track.AddToMyTracks": "Legg til i Mine spor",
     "Track.RemoveFromMyTracks": "Fjern fra Mine spor",
@@ -561,7 +561,7 @@
     "AutoTranscribedPopupButtonText": "Forstått",
     "FromSongTreasuresPopupTitleText": "Teksten er hentet fra SongTreasures.",
     "FromSongTreasuresPopupHeaderText": "Fra Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Last ned Song Treasures appen for å se hele sangen",
+    "FromSongTreasuresPopupSubtitleText": "Last ned Song Treasures appen for å se hele sangen.",
     "SuggestEdit": "Foreslå rettelse"
   },
   "BibleStudyViewModel": {
