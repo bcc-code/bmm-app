@@ -408,7 +408,7 @@
     "Title": "Jagatud esitusloend",
     "Close": "Sule",
     "AddToMyPlaylist": "Lisa esitlusloendisse",
-    "FollowOwnTrackCollection": "You cannot follow your own track collection"
+    "FollowOwnTrackCollection": "Sa ei saa järgida enda lugude kogu"
   },
   "OfflineTrackCollectionViewModel": {
     "Title": "Esitusloend",
@@ -423,7 +423,7 @@
     "SearchHint": "Otsi",
     "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
     "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Kogu on juba teie esitusloendisse lisatud.",
     "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "FailedToAddAlbum": "Ei suutnud album esitusloendisse lisada, kuna see sisaldab Albumeid.",
     "FailedToAddUnknownType": "\"{0}\" esitusloendisse praegu ei toetata.",
@@ -465,7 +465,7 @@
     "Contributor.Play": "Esita",
     "Contributor.Share": "Jaga panustajat",
     "OfflineTrackCollection.DeletePlaylist": "Kustuta esitusloend",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Lisa kõik lood esitusloendisse",
     "Cancel": "Tühista"
   },
   "Notifications": {
@@ -496,8 +496,8 @@
   },
   "PlaybackHistoryViewModel": {
     "Title": "Hiljuti mängitud",
-    "NoHistoryYetTitle": "You can now see what you’ve been listening to",
-    "NoHistoryYetSubtitle": "Just start listening, and your history will show up here"
+    "NoHistoryYetTitle": "Nüüd näed, mida oled kuulanud",
+    "NoHistoryYetSubtitle": "Lihtsalt alusta kuulamist ja su ajalugu kuvatakse siin"
   },
   "ExploreRecentSpeechesViewModel": {
     "Title": "Hiljutised sõnumid"
@@ -545,8 +545,8 @@
   },
   "TopSongsCollectionViewModel": {
     "Title": "Tipplaulud",
-    "PlaysPlural": "{0} plays",
-    "PlaysSingular": "{0} play",
+    "PlaysPlural": "{0} mängu",
+    "PlaysSingular": "{0} mäng",
     "AddToMyPlaylist": "Lisa esitusloend lemmikute hulka",
     "SuccessfullyAddedToPlaylists": "Lemmikutesse lisamine õnnestus"
   },
@@ -562,22 +562,22 @@
     "FromSongTreasuresPopupTitleText": "Lyrics are fetched from Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Lauluaaretest",
     "FromSongTreasuresPopupSubtitleText": "Download the Song Treasures app to see the full song.",
-    "SuggestEdit": "Suggest edit"
+    "SuggestEdit": "Soovita muudatust"
   },
   "BibleStudyViewModel": {
-    "StreakTerms": "Rules for streaks",
-    "ProgressTitle": "Your progress",
-    "StreakThisWeek": "Streak this week",
-    "Days": "Days",
+    "StreakTerms": "Striikide reeglid",
+    "ProgressTitle": "Sinu edusammud",
+    "StreakThisWeek": "Selle nädala striik",
+    "Days": "Päevad",
     "Boost": "Boost",
-    "Points": "Points",
-    "Achievements": "Your achievements",
-    "Answer": "Answer"
+    "Points": "Punktid",
+    "Achievements": "Sinu saavutused",
+    "Answer": "Vastus"
   },
   "AppIconViewModel": {
-    "Title": "App Icon",
-    "Description": "Change the app icon of the app",
-    "IconStandard": "Standard",
+    "Title": "Rakenduse ikoon",
+    "Description": "Rakenduse ikooni muutmine",
+    "IconStandard": "Standardne",
     "IconDarkGreen": "Tumeroheline",
     "IconOrange": "Oranž",
     "IconGolden": "Kuldne",
@@ -585,15 +585,15 @@
     "IconRed": "Punane"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Achievement",
-    "Unlocked": "Unlocked",
-    "ActivatePremiumIcon": "Activate App Icon",
+    "Title": "Saavutus",
+    "Unlocked": "Lukustamata",
+    "ActivatePremiumIcon": "Rakenduse ikooni aktiveerimine",
     "GotIt": "Sain aru",
-    "ActivateTheme": "Activate Theme",
+    "ActivateTheme": "Aktiveeri teema",
     "Close": "Sule",
-    "Reward": "Reward",
-    "RewardAndroid": "An exclusive color theme for your BMM app 🤩",
-    "RewardIos": "An exclusive app icon for your BMM app 🤩",
+    "Reward": "Preemia",
+    "RewardAndroid": "Eksklusiivne värviteema su BMM rakenduse jaoks 🤩",
+    "RewardIos": "Eksklusiivne ikoon su BMM rakenduse jaoks 🤩",
     "RewardAndroidGolden": "An exclusive color theme for your BMM app. You are also entered into the draw for a pair of AirPods Pro. Good job!",
     "RewardIosGolden": "An exclusive app icon for your BMM app in gold. You are also entered into the draw for a pair of AirPods Pro. Good job!",
     "PlayNext": "Mängi järgmisena"
@@ -607,8 +607,8 @@
   },
   "AskQuestionViewModel": {
     "Title": "Ask a question",
-    "Submit": "Submit question",
-    "Hint": "Your question"
+    "Submit": "Esita küsimus",
+    "Hint": "Sinu küsimus"
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Thanks for asking!",
