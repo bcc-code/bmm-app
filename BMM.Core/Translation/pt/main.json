@@ -1,6 +1,6 @@
 {
   "Global": {
-    "ContactError": "Falha ao entrar em contato com a equipe BMM, você pode enviar um e-mail para: {0}",
+    "ContactError": "Não foi possível entrar em contato com a equipe do BMM, você pode enviar um e-mail para: {0}",
     "External": "Externo",
     "Internal": "Interno ",
     "BytesMB": "{0} MB",
@@ -27,8 +27,8 @@
     "PlayMusicSiriShortcutName": "Reproduzir Música",
     "DailyMessage": "Mensagem diária",
     "ValueCopiedToClipboard": "copiado para a área de transferência",
-    "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "AddToFavorites": "Adicionar aos favoritos",
+    "RemoveFromFavorites": "Remover dos favoritos"
   },
   "Streak": {
     "Message": "Seu progresso semanal ",
@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Velocidade de reprodução",
     "Normal": "Normal",
     "Selected": "Selecionado",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "Assista no BCC Media",
     "Read": "Ler"
   },
   "QueueViewModel": {
@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "Perfil",
     "HeadlineSettings": "Configurações",
-    "HeadlineHomeScreen": "Home Screen",
-    "HeadlinePlayback": "Playback",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "HeadlineHomeScreen": "Tela inicial",
+    "HeadlinePlayback": "Reprodução",
+    "PlayInChronologicalOrderHeader": "Reproduzir em ordem cronológica",
+    "PlayInChronologicalOrderText": "Reproduzir episódios de podcast do mais antigo para o mais novo",
     "OptionAutoplayHeader": "Reprodução automática",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
+    "OptionAutoplayText": "Reproduza música após ouvir o episódio de hoje de Fra Kåre. Aplica-se somente ao reproduzir através do bloco na tela inicial.",
     "OptionStreakHeader": "Progresso no Início",
     "OptionStreakText": "Mostre sua estatística de reprodução na tela inicial",
     "OptionEnablePushHeader": "Habilitar notificações push",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "Versão do App",
     "OptionDeleteAccountHeader": "Deletar conta",
     "OptionDeleteAccountText": "Solicite que sua conta seja excluída.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Notificação de Fra Kåre",
+    "OptionNotificationBadgeText": "Exiba uma notificação na tela inicial para ajudar você a lembrar de ouvir o episódio diário.",
+    "OptionBibleStudyHeader": "Estudo Bíblico na tela inicial",
+    "OptionBibleStudyText": "Mostre o status do seu estudo bíblico na tela inicial",
     "AppInfoTitle": "Informações app",
     "AppInfoAppVersion": "Versão do App: ",
     "AppInfoManufacturer": "Produtora:",
@@ -423,7 +423,7 @@
     "SearchHint": "Buscar",
     "FailedToAdd": "Falha ao adicionar a faixa à lista de reprodução. Por favor, tente novamente mais tarde.",
     "AlbumFailedToAddAlreadyExists": "Este álbum já existe em sua lista de reprodução.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "A coleção já foi adicionada à sua playlist.",
     "TrackAlreadyExistInTrackCollection": "A faixa já existe na lista de reprodução {0}",
     "FailedToAddAlbum": "Falha ao adicionar o álbum à lista de reprodução, porque ele contém álbuns.",
     "FailedToAddUnknownType": "Adicionar um \"{0}\" para uma lista de reprodução não é suportado atualmente.",
@@ -438,7 +438,7 @@
     "Track.AddedToMyTracks": "Adicionado ao Meus rastros",
     "Track.RemovedFromMyTracks": "Remover de minhas faixas",
     "Track.FailedToRemoveFromMyTracks": "Falha ao remover a faixa de Minhas faixas",
-    "Track.AddToQueue": "Add to end of queue",
+    "Track.AddToQueue": "Adicionar ao fim da fila",
     "Track.QueueToPlayNext": "Reproduzir próxima",
     "Track.AddedToQueue": "Adicionado à fila",
     "Track.GoToAlbum": "Ir ao álbum",
@@ -454,7 +454,7 @@
     "Album.AddToPlaylist": "Adicionar álbum à playlist",
     "Album.AddToMyTracks": "Adicionar o álbum para Meus rastros",
     "Album.AddedToMyTracks": "Adicionado ao Meus rastros",
-    "Album.AddToQueue": "Add to end of queue",
+    "Album.AddToQueue": "Adicionar ao fim da fila",
     "Album.Share": "Compartilhar álbum",
     "FailedToAdd": "Falha ao adicionar a faixa à lista de reprodução. Por favor, tente novamente mais tarde.",
     "FailedToAddAlbum": "Falha ao adicionar o álbum à lista de reprodução, porque ela contém álbuns.",
@@ -465,7 +465,7 @@
     "Contributor.Play": "Reproduzir",
     "Contributor.Share": "Compartilhar colaborador",
     "OfflineTrackCollection.DeletePlaylist": "Excluir lista de reprodução",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Adicionar todas as faixas à lista de reprodução",
     "Cancel": "Cancelar"
   },
   "Notifications": {
@@ -572,7 +572,7 @@
     "Boost": "Impulsos",
     "Points": "Pontos\n",
     "Achievements": "Seu progresso",
-    "Answer": "Answer"
+    "Answer": "Responder"
   },
   "AppIconViewModel": {
     "Title": "Ícone do aplicativo",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Conquistas",
-    "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+    "EmptyTitle": "Um lugar para suas conquistas do estudo da bíblico",
+    "EmptySubtitle": "As conquistas obtidas nos estudos bíblicos serão coletadas aqui."
   }
 }
