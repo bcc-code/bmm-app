@@ -22,6 +22,9 @@ namespace BMM.UI.iOS.CustomViews
 		[Outlet]
 		UIKit.UIView ContainerView { get; set; }
 
+		[Outlet]
+		UIKit.UIView LetterContainerView { get; set; }
+
 		void ReleaseDesignerOutlets ()
 		{
 			if (AnswerLabel != null) {
@@ -37,6 +40,11 @@ namespace BMM.UI.iOS.CustomViews
 			if (ContainerView != null) {
 				ContainerView.Dispose ();
 				ContainerView = null;
+			}
+
+			if (LetterContainerView != null) {
+				LetterContainerView.Dispose ();
+				LetterContainerView = null;
 			}
 
 		}

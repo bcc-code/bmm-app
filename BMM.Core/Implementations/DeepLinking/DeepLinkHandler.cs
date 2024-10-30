@@ -113,6 +113,7 @@ namespace BMM.Core.Implementations.DeepLinking
                 new TrackLinkParser(PlayTrackRegex, PlayTrackById),
                 new RegexDeepLink<GenericDocumentsViewParameters>("^/browse(/(?<path>.*))?$", OpenGenericDocumentsView),
                 new RegexDeepLink("^/romans-questions$", OpenRomansQuestions),
+                new RegexDeepLink<IdDeepLinkParameters>(QuizRegex, OpenQuizQuestion),
                 new RegexDeepLink("^/$", DoNothing)
             };
         }
@@ -195,6 +196,11 @@ namespace BMM.Core.Implementations.DeepLinking
                     $"{_remoteConfig.RomansQuestionsUrl}?theme={(await _deviceInfo.GetCurrentTheme()).ToString().ToLower()}&language={_appLanguageProvider.GetAppLanguage()}",
                 Title = _bmmLanguageBinder[Translations.DeepLinkHandler_RomansQuestionsPageTitle]
             });
+        }
+        
+        private async Task OpenQuizQuestion(IdDeepLinkParameters deepLinkParameters)
+        {
+            await NavigateTo<QuizQuestionViewModel, IQuizQuestionViewModelParameter>(new QuizQuestionViewModelParameter(deepLinkParameters.Id));
         }
 
         private Task DoNothing()

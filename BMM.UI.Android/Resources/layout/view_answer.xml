@@ -31,6 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:textColor="@color/global_black_one"
                     local:MvxBind="Text Id"
                     style="@style/Subtitle2_Label1" />
         
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_medium"
             android:layout_marginVertical="@dimen/margin_xxsmall"
+            android:textColor="@color/global_black_one"
             local:MvxBind="Text Text"
             style="@style/Subtitle2_Label1" />
         

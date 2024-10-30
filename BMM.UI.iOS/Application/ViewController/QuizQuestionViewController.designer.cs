@@ -23,6 +23,9 @@ namespace BMM.UI.iOS
 		UIKit.UIView CloseIconView { get; set; }
 
 		[Outlet]
+		UIKit.UIImageView CloseIcon { get; set; }
+
+		[Outlet]
 		UIKit.UIStackView QuestionsStackView { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -30,6 +33,11 @@ namespace BMM.UI.iOS
 			if (AnswersStackView != null) {
 				AnswersStackView.Dispose ();
 				AnswersStackView = null;
+			}
+
+			if (BackgroundImage != null) {
+				BackgroundImage.Dispose ();
+				BackgroundImage = null;
 			}
 
 			if (CloseIconView != null) {
@@ -42,9 +50,9 @@ namespace BMM.UI.iOS
 				QuestionsStackView = null;
 			}
 
-			if (BackgroundImage != null) {
-				BackgroundImage.Dispose ();
-				BackgroundImage = null;
+			if (CloseIcon != null) {
+                CloseIcon.Dispose ();
+                CloseIcon = null;
 			}
 
 		}

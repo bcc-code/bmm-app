@@ -45,10 +45,10 @@
     <color name="global_white_four">#14FFFFFF</color>
     <color name="global_white_separator">#0DFFFFFF</color>
 
-    <color name="label_one_color">#0D131A</color>
+    <color name="label_one_color">@color/label_one_color_light</color>
     <color name="label_one_reverted_color">#FFFFFF</color>
     <color name="label_two_color">#46494D</color>
-    <color name="label_three_color">#757B80</color>
+    <color name="label_three_color">@color/label_three_color_light</color>
     <color name="label_four_color">#ABAFB2</color>
     <color name="placeholder_color">#B9C3CC</color>
     <color name="placeholder_two_color">#B9C3CC</color>
@@ -69,5 +69,8 @@
     
     <color name="ask_question_confirmation_background_color">#D5DCC9</color>
     <color name="ask_question_confirmation_text_color">#28380B</color>
+
+    <color name="label_three_color_light">#757B80</color>
+    <color name="label_one_color_light">#0D131A</color>
     
 </resources>

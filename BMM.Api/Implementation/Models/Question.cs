@@ -13,6 +13,7 @@ public class Question
         string solutionTextCorrect,
         string solutionTextWrong,
         string style,
+        string thankYouText,
         List<Answer> answers,
         List<ShortAnswer> shortAnswers)
     {
@@ -27,6 +28,7 @@ public class Question
         SolutionTextCorrect = solutionTextCorrect;
         SolutionTextWrong = solutionTextWrong;
         Style = style;
+        ThankYouText = thankYouText;
         Answers = answers;
         ShortAnswers = shortAnswers;
     }
@@ -42,6 +44,7 @@ public class Question
     public string SolutionTextCorrect { get; }
     public string SolutionTextWrong { get; }
     public string Style { get; }
+    public string ThankYouText { get; }
     public List<Answer> Answers { get; }
     public List<ShortAnswer> ShortAnswers { get; }
 }
