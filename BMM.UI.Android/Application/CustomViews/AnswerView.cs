@@ -5,6 +5,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Views.Animations;
+using BMM.Api.Implementation.Models;
 using BMM.UI.Droid.Application.Bindings;
 using BMM.UI.Droid.Application.Extensions;
 using MvvmCross.Binding.BindingContext;
@@ -16,7 +17,7 @@ namespace BMM.UI.Droid.Application.CustomViews
         : FrameLayout,
           IMvxBindingContextOwner
     {
-        private readonly Action _clickedAction;
+        private readonly Action<Answer> _clickedAction;
         private LinearLayout _backgroundView;
 
         protected AnswerView(IntPtr javaReference, JniHandleOwnership transfer)
@@ -24,7 +25,7 @@ namespace BMM.UI.Droid.Application.CustomViews
         {
         }
 
-        public AnswerView(Context context, Action clickedAction)
+        public AnswerView(Context context, Action<Answer> clickedAction)
             : base(context)
         {
             _clickedAction = clickedAction;
@@ -57,9 +58,7 @@ namespace BMM.UI.Droid.Application.CustomViews
 
         public override bool OnTouchEvent(MotionEvent e)
         {
-            //ApplyBounceAnimation(this);
-            ShakeAnimation(this);
-            _clickedAction?.Invoke();
+            _clickedAction?.Invoke(BindingContext.DataContext as Answer);
             return base.OnTouchEvent(e);
         }
 

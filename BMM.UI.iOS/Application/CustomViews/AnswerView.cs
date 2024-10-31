@@ -16,11 +16,15 @@ namespace BMM.UI.iOS.CustomViews
     [DesignTimeVisible(true)]
     public partial class AnswerView : MvxView
     {
-        private readonly Action<AnswerView> _action;
+        private const string Position = "position";
+        private const string BounceAnimationKey = "bounceAnimation";
+        private const string ShakeAnimationKey = "shakeAnimation";
+        
+        private readonly Action<Answer> _action;
         public static readonly UINib Nib = UINib.FromName(nameof(AnswerView), NSBundle.MainBundle);
         public static readonly NSString Key = new NSString(nameof(AnswerView));
 
-        public AnswerView(Action<AnswerView> action)
+        public AnswerView(Action<Answer> action)
         {
             _action = action;
             Initialize();
@@ -49,11 +53,13 @@ namespace BMM.UI.iOS.CustomViews
 
         private void SetThemes()
         {
-            AnswerLabel.ApplyTextTheme(AppTheme.Subtitle2Label1);
+            ContainerView.BackgroundColor = AppColors.BackgroundOneColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light);
+            LetterContainerView.BackgroundColor = AppColors.SeparatorColor.GetResolvedColorSafe(UIUserInterfaceStyle.Light);
+            AnswerLabel.ApplyTextTheme(AppTheme.Subtitle2Label1.LightThemeOnly());
+            AnswerLetterLabel.ApplyTextTheme(AppTheme.Subtitle2Label1.LightThemeOnly());
             ContainerView.AddGestureRecognizer(new UITapGestureRecognizer(() =>
             {
-                _action.Invoke(this);
-                ShakeAnimation(ContainerView);
+                _action.Invoke(DataContext as Answer);
             }));
         }
 
@@ -65,7 +71,7 @@ namespace BMM.UI.iOS.CustomViews
         
         private void BounceAnimation(UIView view)
         {
-            var animation = CAKeyFrameAnimation.FromKeyPath("position");
+            var animation = CAKeyFrameAnimation.FromKeyPath(Position);
 
             var originalPosition = view.Layer.Position;
             var bounceHeight = 10f;
@@ -83,14 +89,14 @@ namespace BMM.UI.iOS.CustomViews
             animation.TimingFunction = CAMediaTimingFunction.FromName(CAMediaTimingFunction.EaseInEaseOut);
     
             animation.RemovedOnCompletion = true;
-            view.Layer.AddAnimation(animation, "bounceAnimation");
+            view.Layer.AddAnimation(animation, BounceAnimationKey);
 
             view.Layer.Position = originalPosition;
         }
         
         private void ShakeAnimation(UIView view)
         {
-            var animation = CAKeyFrameAnimation.FromKeyPath("position");
+            var animation = CAKeyFrameAnimation.FromKeyPath(Position);
             
             var originalPosition = view.Layer.Position;
             var shakeDistance = 10f;
@@ -110,7 +116,7 @@ namespace BMM.UI.iOS.CustomViews
             animation.TimingFunction = CAMediaTimingFunction.FromName(CAMediaTimingFunction.EaseInEaseOut);
             animation.RemovedOnCompletion = true;
         
-            view.Layer.AddAnimation(animation, "shakeAnimation");
+            view.Layer.AddAnimation(animation, ShakeAnimationKey);
             view.Layer.Position = originalPosition;
         }
 

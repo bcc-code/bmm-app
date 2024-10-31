@@ -1,5 +1,6 @@
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.Extensions;
 using MvvmCross.Binding.BindingContext;
 
 namespace BMM.UI.iOS
@@ -31,8 +32,8 @@ namespace BMM.UI.iOS
         private void SetThemes()
         {
             ActionButton.ApplyButtonStyle(AppTheme.ButtonPrimarySmall);
-            TitleLabel.ApplyTextTheme(AppTheme.Subtitle2Label3);
-            SubtitleLabel.ApplyTextTheme(AppTheme.Title2);
+            TitleLabel.ApplyTextTheme(AppTheme.Subtitle2Label3.LightThemeOnly());
+            SubtitleLabel.ApplyTextTheme(AppTheme.Title2.LightThemeOnly());
         }
 
         protected override bool HasHighlightEffect => false;

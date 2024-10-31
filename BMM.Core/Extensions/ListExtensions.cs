@@ -30,5 +30,7 @@ namespace BMM.Core.Extensions
                 .Select(x => x.Select(v => v.Value).ToList())
                 .ToList();
         }
+        
+        public static bool IsNotNullAndAny<T>(this IList<T> list) => list != null && list.Any();
     }
 }

@@ -101,6 +101,7 @@
         public static string TranscriptionGet = "transcription/{trackId}/{language}/{first}/{last}";
         public static string TranscriptionPost = "transcription/{trackId}/{language}";
         
-        public static string Question = "question/{id}";
+        public static string PostQuestion = "question";
+        public static string QuizQuestion = "question/{id}";
     }
 }

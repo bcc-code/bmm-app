@@ -14,7 +14,7 @@ public static class UIImageExtensions
         return renderer.CreateImage(_ =>
         {
             var tintedImage = image.ImageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate);
-            iconColor.SetFill();
+            iconColor.GetResolvedColorSafe().SetFill();
             tintedImage.Draw(CGPoint.Empty);
             
             var badgeSize = new CGSize(BadgeSize, BadgeSize);

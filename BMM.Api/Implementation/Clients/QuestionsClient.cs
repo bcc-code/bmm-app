@@ -14,15 +14,23 @@ public class QuestionsClient : BaseClient, IQuestionsClient
     
     public Task<bool>  PostQuestion(PostQuestion postQuestion)
     {
-        var uri = new UriTemplate(ApiUris.Question);
+        var uri = new UriTemplate(ApiUris.PostQuestion);
         var request = BuildRequest(uri, HttpMethod.Post, postQuestion);
         return RequestIsSuccessful(request);
     }
     
     public Task<Question> GetQuestion(int id)
     {
-        var uri = new UriTemplate(ApiUris.Question);
+        var uri = new UriTemplate(ApiUris.QuizQuestion);
         uri.SetParameter("id", id);
         return Get<Question>(uri);
+    }
+    
+    public Task<bool> PostAnswer(PostAnswer answer)
+    {
+        var uri = new UriTemplate(ApiUris.QuizQuestion);
+        uri.SetParameter("id", answer.QuestionId);
+        var request = BuildRequest(uri, HttpMethod.Post, answer);
+        return RequestIsSuccessful(request);
     }
 }

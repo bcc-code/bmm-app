@@ -77,6 +77,8 @@ namespace BMM.UI.Droid.Application.Fragments
                     ResourceConstant.Style.Button_Tertiary_Small),
                 null,
                 default);
+            
+            myButton.SetTextColor(Context.GetColorFromResource(Resource.Color.global_black_one));
             myButton.Text = _questionPO.Question.LinkText;
             
             var lp = new LinearLayout.LayoutParams(
@@ -103,6 +105,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 default);
             
             label.Text = _questionPO.Question.QuestionSubtext;
+            label.SetTextColor(Context.GetColorFromResource(Resource.Color.global_black_one));
             label.Gravity = GravityFlags.CenterHorizontal;
             
             linearLayout!.AddView(label);
@@ -123,6 +126,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 default);
             
             label.Text = _questionPO.Question.QuestionText;
+            label.SetTextColor(Context.GetColorFromResource(Resource.Color.global_black_one));
             label.Gravity = GravityFlags.CenterHorizontal;
             
             linearLayout!.AddView(label);
@@ -180,6 +184,7 @@ namespace BMM.UI.Droid.Application.Fragments
                 default);
 
             label.Gravity = GravityFlags.CenterHorizontal;
+            label.SetTextColor(Context.GetColorFromResource(Resource.Color.label_three_color_light));
             label.Text = _questionPO.Question.SolutionTextPlaceholder;
             
             linearLayout!.AddView(label);
@@ -201,10 +206,25 @@ namespace BMM.UI.Droid.Application.Fragments
                     theme),
                     null,
                     default);
+
+                if (shortAnswer.HasPrimaryStyle)
+                {
+                    myButton.SetBackgroundResource(Resource.Drawable.button_background_rounded);
+                    myButton.SetTextColor(Context.GetColorFromResource(Resource.Color.global_white_one));
+                }
+                else
+                {
+                    myButton.SetTextColor(Context.GetColorFromResource(Resource.Color.global_black_one));
+                }
+                
                 myButton.Text = shortAnswer.Text;
+                myButton.Click += (_, _) =>
+                {
+                    ((QuizQuestionViewModel)DataContext)!.ShortAnswerSelectedCommand.Execute(shortAnswer);
+                };
 
                 linearLayout!.AddView(myButton);
-                linearLayout.AddView(CreateMargin(16));
+                linearLayout.AddView(CreateMargin(8));
             }
         }
 
@@ -216,7 +236,12 @@ namespace BMM.UI.Droid.Application.Fragments
             return emptyView;
         }
         
-        private void ClickedAction()
+        private void ClickedAction(Answer answer)
+        {
+            ((QuizQuestionViewModel)DataContext)!.AnswerSelectedCommand.Execute(answer);
+        }
+
+        private void AnimateBackgroundChange(Answer answer)
         {
             var currentDrawable = _backgroundImage.Drawable;
             var newDrawable = Resources.GetDrawable(Resource.Drawable.image_quiz_background_two, null);

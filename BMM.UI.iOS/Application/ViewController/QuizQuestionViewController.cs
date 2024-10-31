@@ -19,7 +19,7 @@ namespace BMM.UI.iOS
     [MvxModalPresentation(WrapInNavigationController = true, ModalPresentationStyle = UIModalPresentationStyle.PageSheet)]
     public partial class QuizQuestionViewController : BaseViewController<QuizQuestionViewModel>
     {
-        private BibleStudyTableViewSource _source;
+        private const string Fade = "fade";
         private IQuestionPO _questionPO;
 
         public QuizQuestionViewController() : base(null)
@@ -79,41 +79,37 @@ namespace BMM.UI.iOS
         private void SetSolutionLabel()
         {
             var label = new UILabel();
-            var emptyView = new UIView();
-            emptyView.TranslatesAutoresizingMaskIntoConstraints = false;
-            emptyView.HeightAnchor.ConstraintEqualTo(8).Active = true;
-            
-            label.ApplyTextTheme(AppTheme.Subtitle2Label3);
+
+            label.ApplyTextTheme(AppTheme.Subtitle2Label3.LightThemeOnly());
             label.Text = _questionPO.Question.SolutionTextPlaceholder;
             label.TextAlignment = UITextAlignment.Center;
             
             AnswersStackView.AddArrangedSubview(label);
-            AnswersStackView.AddArrangedSubview(emptyView);
+            AnswersStackView.AddArrangedSubview(CreateMargin(8));
         }
 
         private void SetStandardAnswers(List<Answer> questionAnswers)
         {
             foreach (var answer in questionAnswers)
             {
-                var answerView = new AnswerView((s) =>
-                {
-                    var transition = new CATransition
-                    {
-                        Duration = 0.5f,
-                        Type = new NSString("fade"), // Use "fade" for a cross-dissolve effect
-                        TimingFunction = CAMediaTimingFunction.FromName(CAMediaTimingFunction.EaseInEaseOut)
-                    };
-    
-                    // Add the transition to the imageView's layer
-                    BackgroundImage.Layer.AddAnimation(transition, null);
-    
-                    // Change the image
-                    BackgroundImage.Image = UIImage.FromBundle(ImageResourceNames.ImageQuizBackgroundTwo.ToStandardIosImageName());
-                    s.SetAlphaToBackground();
-                });
+                var answerView = new AnswerView(answer => ViewModel!.AnswerSelectedCommand.Execute(answer));
                 answerView.DataContext = answer;
                 AnswersStackView.AddArrangedSubview(answerView);
             }
+        }
+
+        private void AnimateBackgroundChange(AnswerView s)
+        {
+            var transition = new CATransition
+            {
+                Duration = 0.5f,
+                Type = new NSString(Fade),
+                TimingFunction = CAMediaTimingFunction.FromName(CAMediaTimingFunction.EaseInEaseOut)
+            };
+    
+            BackgroundImage.Layer.AddAnimation(transition, null);
+            BackgroundImage.Image = UIImage.FromBundle(ImageResourceNames.ImageQuizBackgroundTwo.ToStandardIosImageName());
+            s.SetAlphaToBackground();
         }
 
         private void SetQuestionSubtext()
@@ -122,7 +118,7 @@ namespace BMM.UI.iOS
                 return;
             
             var label = new UILabel();
-            label.ApplyTextTheme(AppTheme.Subtitle1Label1);
+            label.ApplyTextTheme(AppTheme.Subtitle1Label1.LightThemeOnly());
             label.Text = _questionPO.Question.QuestionSubtext;
             label.TextAlignment = UITextAlignment.Center;
             label.Lines = 0;
@@ -132,7 +128,7 @@ namespace BMM.UI.iOS
         private void SetQuestionText()
         {
             var label = new UILabel();
-            label.ApplyTextTheme(AppTheme.Heading2);
+            label.ApplyTextTheme(AppTheme.Heading2.LightThemeOnly());
             label.Text = _questionPO.Question.QuestionText;
             label.TextAlignment = UITextAlignment.Center;
             label.Lines = 0;
@@ -172,13 +168,18 @@ namespace BMM.UI.iOS
                 var myButton = new UIButton();
 
                 myButton.ApplyButtonStyle(shortAnswer.HasPrimaryStyle
-                    ? AppTheme.ButtonPrimary
-                    : AppTheme.ButtonTertiaryLarge);
+                    ? AppTheme.ButtonPrimary.LightThemeOnly()
+                    : AppTheme.ButtonTertiaryLarge.LightThemeOnly());
 
                 myButton.SetTitle(shortAnswer.Text, UIControlState.Normal);
                 myButton.HeightAnchor.ConstraintEqualTo(56).Active = true;
                 myButton.Layer.CornerRadius = 28;
+                myButton.AddGestureRecognizer(new UITapGestureRecognizer(() =>
+                {
+                    ViewModel.ShortAnswerSelectedCommand.Execute(shortAnswer);
+                }));
                 AnswersStackView.AddArrangedSubview(myButton);
+                AnswersStackView.AddArrangedSubview(CreateMargin(8));
             }
         }
 
@@ -197,7 +198,7 @@ namespace BMM.UI.iOS
         public override void TraitCollectionDidChange(UITraitCollection previousTraitCollection)
         {
             base.TraitCollectionDidChange(previousTraitCollection);
-            CloseIconView.Layer.BorderColor = AppColors.SeparatorColor.CGColor;
+            CloseIconView.Layer.BorderColor = AppColors.SeparatorColor.LightOnly().CGColor;
         }
         
         private void SetThemes()
@@ -206,12 +207,22 @@ namespace BMM.UI.iOS
             CloseIconView.Layer.ShadowRadius = 8;
             CloseIconView.Layer.ShadowOffset = CGSize.Empty;
             CloseIconView.Layer.ShadowOpacity = 0.1f;
+            CloseIconView.BackgroundColor = AppColors.BackgroundOneColor.LightOnly();
+            CloseIcon.TintColor = AppColors.LabelOneColor.LightOnly();
         }
 
         private void HandleDismiss(UIPresentationController presentationController)
         {
             ViewModel.CloseCommand.Execute();
             ClearPresentationDelegate(presentationController);
+        }
+        
+        private static UIView CreateMargin(int margin)
+        {
+            var emptyView = new UIView();
+            emptyView.TranslatesAutoresizingMaskIntoConstraints = false;
+            emptyView.HeightAnchor.ConstraintEqualTo(margin).Active = true;
+            return emptyView;
         }
     }
 }

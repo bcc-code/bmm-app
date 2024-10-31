@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="AnswersStackView" destination="Dle-cp-jed" id="HF6-c4-bx0"/>
                 <outlet property="BackgroundImage" destination="Nyf-Y0-fEk" id="SwQ-5q-exw"/>
+                <outlet property="CloseIcon" destination="aPb-ag-SSw" id="zZb-HE-2BZ"/>
                 <outlet property="CloseIconView" destination="3nJ-Xr-zEA" id="dfD-fR-eFe"/>
                 <outlet property="QuestionsStackView" destination="HZs-GM-SOK" id="Vz4-z8-xxt"/>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>

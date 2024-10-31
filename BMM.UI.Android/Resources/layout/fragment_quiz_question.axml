@@ -31,7 +31,7 @@
             android:layout_marginHorizontal="@dimen/margin_medium"
             android:layout_marginVertical="@dimen/margin_medium"
             android:elevation="2dp"
-            local:cardBackgroundColor="@color/background_three_color"
+            local:cardBackgroundColor="@color/global_white_one"
             local:cardCornerRadius="28dp">
     
             <ImageView
@@ -39,6 +39,7 @@
                     android:layout_width="@dimen/highlighted_text_track_item_icon_size"
                     android:layout_height="@dimen/highlighted_text_track_item_icon_size"
                     android:layout_gravity="center"
+                    android:tint="@color/global_black_one"
                     android:src="@drawable/icon_remove"/>
     
         </androidx.cardview.widget.CardView>

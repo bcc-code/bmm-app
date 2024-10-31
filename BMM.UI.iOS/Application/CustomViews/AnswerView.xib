@@ -12,6 +12,7 @@
                 <outlet property="AnswerLabel" destination="SJY-bV-nFx" id="PWg-Hs-c9H"/>
                 <outlet property="AnswerLetterLabel" destination="X8i-U2-Yj9" id="mTe-U1-d7K"/>
                 <outlet property="ContainerView" destination="EFN-xk-Dkx" id="7Q7-o2-Zky"/>
+                <outlet property="LetterContainerView" destination="ZHu-yN-x8D" id="vQH-Jj-EWA"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
