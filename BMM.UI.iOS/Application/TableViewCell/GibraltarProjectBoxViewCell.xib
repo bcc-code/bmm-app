@@ -65,7 +65,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAs-SC-27T">
                                 <rect key="frame" x="16" y="67" width="256" height="140"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-4Y-aAT">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="ceP-4Y-aAT">
                                         <rect key="frame" x="0.0" y="0.0" width="256" height="140"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </stackView>
@@ -73,9 +73,12 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="ceP-4Y-aAT" secondAttribute="trailing" id="4IB-yV-Brj"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ceP-4Y-aAT" secondAttribute="trailing" priority="999" id="6aH-6X-nlL"/>
                                     <constraint firstItem="ceP-4Y-aAT" firstAttribute="leading" secondItem="pAs-SC-27T" secondAttribute="leading" id="VE3-Ix-9El"/>
+                                    <constraint firstItem="ceP-4Y-aAT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="pAs-SC-27T" secondAttribute="leading" priority="999" id="fVn-MK-a8s"/>
                                     <constraint firstItem="ceP-4Y-aAT" firstAttribute="top" secondItem="pAs-SC-27T" secondAttribute="top" id="iOW-r4-i1F"/>
                                     <constraint firstAttribute="bottom" secondItem="ceP-4Y-aAT" secondAttribute="bottom" id="uim-iA-8Xe"/>
+                                    <constraint firstItem="ceP-4Y-aAT" firstAttribute="centerX" secondItem="pAs-SC-27T" secondAttribute="centerX" id="xQA-Fl-7xB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -115,6 +118,8 @@
                 <outlet property="PointsLabel" destination="4kH-c6-KxZ" id="RJP-T0-8Cy"/>
                 <outlet property="RulesContainer" destination="aAe-vW-t69" id="uot-s0-euC"/>
                 <outlet property="RulesLabel" destination="bOd-qf-UlG" id="X8Q-9Z-do6"/>
+                <outlet property="StackViewLeadingConstraint" destination="VE3-Ix-9El" id="5RJ-HQ-MUT"/>
+                <outlet property="StackViewTrailingConstraint" destination="4IB-yV-Brj" id="w6e-gc-AIt"/>
                 <outlet property="TitleLabel" destination="5WQ-63-JkF" id="5M5-3z-PSK"/>
             </connections>
             <point key="canvasLocation" x="305.79710144927537" y="420.20089285714283"/>
