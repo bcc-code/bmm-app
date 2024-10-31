@@ -58,8 +58,6 @@ namespace BMM.UI.Droid.Application.CustomViews
 
         public override bool OnTouchEvent(MotionEvent e)
         {
-            //ApplyBounceAnimation(this);
-            //ShakeAnimation(this);
             _clickedAction?.Invoke(BindingContext.DataContext as Answer);
             return base.OnTouchEvent(e);
         }
