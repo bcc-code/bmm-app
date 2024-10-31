@@ -32,6 +32,12 @@ namespace BMM.UI.iOS
 		UIKit.UILabel RulesLabel { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint StackViewLeadingConstraint { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint StackViewTrailingConstraint { get; set; }
+
+		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
@@ -69,6 +75,16 @@ namespace BMM.UI.iOS
 			if (TitleLabel != null) {
 				TitleLabel.Dispose ();
 				TitleLabel = null;
+			}
+
+			if (StackViewLeadingConstraint != null) {
+				StackViewLeadingConstraint.Dispose ();
+				StackViewLeadingConstraint = null;
+			}
+
+			if (StackViewTrailingConstraint != null) {
+				StackViewTrailingConstraint.Dispose ();
+				StackViewTrailingConstraint = null;
 			}
 
 		}

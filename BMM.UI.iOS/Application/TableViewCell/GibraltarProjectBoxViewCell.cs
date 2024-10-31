@@ -13,8 +13,10 @@ using BMM.Core.Utils;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.TableViewCell.Base;
+using BMM.UI.iOS.Utils;
 using CoreGraphics;
 using FFImageLoading.Cross;
+using Microsoft.Maui.Devices;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using MvvmCross.ViewModels;
@@ -31,7 +33,7 @@ namespace BMM.UI.iOS
 
         public GibraltarProjectBoxViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
-        {
+        {            
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<GibraltarProjectBoxViewCell, ProjectBoxPO>();
@@ -55,7 +57,17 @@ namespace BMM.UI.iOS
                     .To(po => po.OpenRulesCommand);
 
                 set.Apply();
+                AdjustConstraints();
             });
+        }
+
+        private void AdjustConstraints()
+        {
+            if (DeviceInfo.Idiom != DeviceIdiom.Tablet)
+                return;
+            
+            StackViewTrailingConstraint.Active = false;
+            StackViewLeadingConstraint.Active = false;
         }
 
         public IBmmObservableCollection<IAchievementPO> ItemsSource

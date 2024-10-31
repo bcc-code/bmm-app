@@ -5,6 +5,7 @@ using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.UI.Droid.Application.Listeners;
 using FFImageLoading.Cross;
 using FFImageLoading.Extensions;
+using Microsoft.Maui.Devices;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
@@ -14,6 +15,8 @@ namespace BMM.UI.Droid.Application.ViewHolders;
 
 public class GibraltarProjectBoxExpandedViewHolder : MvxRecyclerViewHolder
 {
+    private const int ImageSize = 64;
+    private const int Spacing = 16;
     private IBmmObservableCollection<IAchievementPO> _achievements;
 
     public GibraltarProjectBoxExpandedViewHolder(View itemView, IMvxAndroidBindingContext context) : base(itemView, context)
@@ -52,17 +55,26 @@ public class GibraltarProjectBoxExpandedViewHolder : MvxRecyclerViewHolder
 
         ItemView.Post(() =>
         {
-            int imageSize = 64.DpToPixels();
+            int imageSize = ImageSize.DpToPixels();
             int imageCount = achievements.Take(4).Count();
             int layoutWidth = achievementsLayout.Width;
 
-            int totalImageWidth = imageSize * imageCount;
-            int remainingSpace = layoutWidth - totalImageWidth;
-            int spacing = remainingSpace > 0
-                ? remainingSpace / (imageCount - 1)
-                : 0;
+            int spacing;
+            if (DeviceInfo.Idiom == DeviceIdiom.Tablet)
+            {
+                spacing = Spacing.DpToPixels();
+                int totalImageWidth = imageSize * imageCount + spacing * (imageCount - 1);
+                int offset = (layoutWidth - totalImageWidth) / 2;
 
-            spacing = Math.Min(spacing, imageSize / 2);
+                achievementsLayout.SetPadding(offset, 0, offset, 0);
+            }
+            else
+            {
+                int totalImageWidth = imageSize * imageCount;
+                int remainingSpace = layoutWidth - totalImageWidth;
+                spacing = remainingSpace > 0 ? remainingSpace / (imageCount - 1) : 0;
+                achievementsLayout.SetPadding(0, 0, 0, 0);
+            }
 
             for (int i = 0; i < imageCount; i++)
             {
