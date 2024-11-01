@@ -156,7 +156,7 @@
     "LoginInfo": "Logi sisse oma BCC kasutajaga"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "We will soon stop support for phones running {0} {1} or older. If possible, you should update your phone.",
+    "DeviceSupportEnding": "Peagi peatame toe telefonidele, mis käitavad {0} {1} või vanemad. Võimalusel peaksite oma telefoni uuendama.",
     "DeviceSupportEnded": "Kahjuks ei toeta me enam seadmeid, mis on vanemad kui {0} {1}. Värskendage oma seadet või minge üle uuemale telefonile.",
     "AppSupportEnding": "Kasutate BMM-i rakenduse vana versiooni. Peagi peatame selle versiooni toetamise. Uuendage BMM-i.",
     "AppSupportEnded": "Kasutad BMM-i rakenduse vana versiooni, mida enam ei toetata. Uuenda BMM-i.",
@@ -222,7 +222,7 @@
     "FollowedPodcasts": "Saated",
     "MyTracks": "Minu rajad",
     "EmptyTitle": "Sa pole veel sisu alla laadinud",
-    "EmptySubline": "Download a playlist or follow a podcast to have it available offline."
+    "EmptySubline": "Lae alla esitusloend või jälgi podcasti, et see oleks võrguühenduseta saadaval."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Saated",
@@ -287,9 +287,9 @@
     "Podcasts": "Saated",
     "Playlists": "Esitusloendid",
     "NoResults": "Tulemusi pole",
-    "NoResultsDescription": "There where no matches with your search for \"{0}\"",
+    "NoResultsDescription": "Seal ei leitud ühtegi vastet teie otsingule \"{0}\"",
     "SearchFailedTitle": "Otsing ebaõnnestus",
-    "SearchFailedMessage": "Sorry, we could not search for \"{0}\" because of connection issues. Press the button below to try again."
+    "SearchFailedMessage": "Vabandust, me ei saanud ühendusprobleemide tõttu otsida \"{0}\". Uuesti proovimiseks vajutage allolevat nuppu."
   },
   "SettingsViewModel": {
     "Title": "Profiil",
@@ -299,9 +299,9 @@
     "PlayInChronologicalOrderHeader": "Mängi kronoloogilises järjekorras",
     "PlayInChronologicalOrderText": "Mängi podcasti episoode vanemast uuemani",
     "OptionAutoplayHeader": "Automaatne esitus",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
+    "OptionAutoplayText": "Mängi muusikat pärast tänase osa Kårelt kuulamist. Kehtib ainult avakuval paani läbi mängimisel.",
     "OptionStreakHeader": "Striik pealehel",
-    "OptionStreakText": "Show your listening statistic on the home screen",
+    "OptionStreakText": "Kuva pealehel oma kuulamisstatistikat",
     "OptionEnablePushHeader": "Luba teated",
     "OptionPushNotifications": "Dünaamilise pisikuva teatised",
     "OptionPushNotificationsSubtitle": "Push teatised veebiaadressi määramiseks järgige lubama",
@@ -327,7 +327,7 @@
     "OptionDeleteAccountHeader": "Kustuta konto",
     "OptionDeleteAccountText": "Küsi oma konto kustutamist.",
     "OptionNotificationBadgeHeader": "Kårelt teavitusmärk",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionNotificationBadgeText": "Luba pealehel märguannet kuvada, mis aitab sul meeles pidada igapäevase osa kuulamist.",
     "OptionBibleStudyHeader": "Piibliõpe pealehel",
     "OptionBibleStudyText": "Näita pealehel oma piibliõppe olekut",
     "AppInfoTitle": "Rakenduse teave",
