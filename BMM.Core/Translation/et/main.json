@@ -395,7 +395,7 @@
     "DiscardChangesTitle": "Discard Changes?",
     "DiscardChangesMessage": "The changes you made won't be saved",
     "DiscardChanges": "Discard",
-    "KeepEditing": "Keep Editing"
+    "KeepEditing": "Jätka redigeerimist"
   },
   "ShareTrackCollectionViewModel": {
     "Title": "Esitusloendi jagamine",
