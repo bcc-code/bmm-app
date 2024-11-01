@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Prędkość odtwarzania",
     "Normal": "Normalna",
     "Selected": "Wybrane",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "Obejrzyj na BCC Media",
     "Read": "Czytaj"
   },
   "QueueViewModel": {
@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Ustawienia",
-    "HeadlineHomeScreen": "Home Screen",
+    "HeadlineHomeScreen": "Ekran główny",
     "HeadlinePlayback": "Playback",
-    "PlayInChronologicalOrderHeader": "Play in chronological order",
-    "PlayInChronologicalOrderText": "Play podcast episodes from oldest to newest",
+    "PlayInChronologicalOrderHeader": "Odtwarzaj w kolejności chronologicznej",
+    "PlayInChronologicalOrderText": "Odtwarzaj odcinki podcastów od najstarszego do najnowszego",
     "OptionAutoplayHeader": "Autoodtwarzanie",
-    "OptionAutoplayText": "Play music after listening to today's episode of Fra Kåre. Only applies when playing through the tile on the home screen.",
+    "OptionAutoplayText": "Odtwórz muzykę po wysłuchaniu dzisiejszego odcinka Fra Kåre. Dotyczy tylko odtwarzania przez kafelek na ekranie głównym.",
     "OptionStreakHeader": "Seria na Stronie Głównej",
     "OptionStreakText": "Wyświetlanie statystyk słuchania na ekranie głównym",
     "OptionEnablePushHeader": "Włącz powiadomienia",
@@ -326,8 +326,8 @@
     "OptionAppVersionHeader": "Wersja aplikacji",
     "OptionDeleteAccountHeader": "Usuń konto",
     "OptionDeleteAccountText": "Poproś o usunięcie Twojego konta.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
+    "OptionNotificationBadgeHeader": "Odznaka powiadomienia Fra Kåre",
+    "OptionNotificationBadgeText": "Wyświetl powiadomienie na ekranie głównym, które przypomni Ci o konieczności wysłuchania codziennego odcinka.",
     "OptionBibleStudyHeader": "Bible Study on Home",
     "OptionBibleStudyText": "Show your Bible Study status on the home screen",
     "AppInfoTitle": "Informacje o aplikacji",
@@ -423,7 +423,7 @@
     "SearchHint": "Szukaj",
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na playliście.",
-    "CollectionAlreadyInTrackCollection": "Collection is already added to your playlist.",
+    "CollectionAlreadyInTrackCollection": "Kolekcja została już dodana do Twojej listy odtwarzania.",
     "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na playliście {0}",
     "FailedToAddAlbum": "Nie można dodać albumu do playlisty, ponieważ zawiera albumy.",
     "FailedToAddUnknownType": "Dodanie \"{0}\" do playlisty nie jest obecnie obsługiwane.",
@@ -438,7 +438,7 @@
     "Track.AddedToMyTracks": "Dodane do moich utworów",
     "Track.RemovedFromMyTracks": "Usunięte z moich utworów",
     "Track.FailedToRemoveFromMyTracks": "Nie udało się usunąć utworu z Moje Utwory",
-    "Track.AddToQueue": "Add to end of queue",
+    "Track.AddToQueue": "Dodaj na koniec kolejki",
     "Track.QueueToPlayNext": "Odtwórz następnie",
     "Track.AddedToQueue": "Dodano do kolejki",
     "Track.GoToAlbum": "Idź do albumu",
@@ -454,7 +454,7 @@
     "Album.AddToPlaylist": "Dodaj album do playlisty",
     "Album.AddToMyTracks": "Dodaj album do moich utworów",
     "Album.AddedToMyTracks": "Album dodany do moich utworów",
-    "Album.AddToQueue": "Add to end of queue",
+    "Album.AddToQueue": "Dodaj na koniec kolejki",
     "Album.Share": "Udostępnij album",
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
     "FailedToAddAlbum": "Nie można dodać album do playlisty, ponieważ zawiera albumy.",
@@ -465,7 +465,7 @@
     "Contributor.Play": "Odtwórz",
     "Contributor.Share": "Udostępnij wykonawcę",
     "OfflineTrackCollection.DeletePlaylist": "Usuń playlistę",
-    "AddAllToPlaylist": "Add all tracks to playlist",
+    "AddAllToPlaylist": "Dodaj wszystkie ścieżki do playlisty",
     "Cancel": "Anuluj"
   },
   "Notifications": {
@@ -572,7 +572,7 @@
     "Boost": "Boost",
     "Points": "Punkty",
     "Achievements": "Twoje osiągnięcia",
-    "Answer": "Answer"
+    "Answer": "Odpowiedź"
   },
   "AppIconViewModel": {
     "Title": "Ikona Aplikacji",
