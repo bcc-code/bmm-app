@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Setări",
-    "HeadlineHomeScreen": "Ecran principal",
-    "HeadlinePlayback": "Playback",
+    "HeadlineHomeScreen": "Ecranul de pornire",
+    "HeadlinePlayback": "Redare",
     "PlayInChronologicalOrderHeader": "Redă în ordine cronologică",
     "PlayInChronologicalOrderText": "Redă episoade podcast de la cel mai vechi la cel mai nou",
     "OptionAutoplayHeader": "Redare automată",
-    "OptionAutoplayText": "Redă muzică după ce asculți episodul zilnic Fra Kåre. Se aplică numai la redarea prin panoul de pe ecranul de start.",
+    "OptionAutoplayText": "Redă muzică după ce asculți episodul zilnic Fra Kåre. Se aplică numai la redarea prin panoul de pe ecranul de pornire.",
     "OptionStreakHeader": "Progres pe ecranul de pornire",
     "OptionStreakText": "Arată statisticile de redare în ecranul principal",
     "OptionEnablePushHeader": "Activează notificări",
@@ -328,7 +328,7 @@
     "OptionDeleteAccountText": "Solicitați ștergerea contului dumneavoastră.",
     "OptionNotificationBadgeHeader": "Panou cu Notificările Fra Kåre",
     "OptionNotificationBadgeText": "Arată o notificare pe ecranul de pornire pentru a-ți aminti să asculți episodul zilnic.",
-    "OptionBibleStudyHeader": "Studiul Biblic pe ecranul de pornire",
+    "OptionBibleStudyHeader": "Studiul Biblic la meniul Acasă",
     "OptionBibleStudyText": "Afișează statusul Studiului Biblic pe ecranul de pornire",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
@@ -465,7 +465,7 @@
     "Contributor.Play": "Cântă",
     "Contributor.Share": "Distribuie contribuitor",
     "OfflineTrackCollection.DeletePlaylist": "Șterge play-list",
-    "AddAllToPlaylist": "Adaugă toate piesele în lista de redare",
+    "AddAllToPlaylist": "Adaugă toate piesele la lista de redare",
     "Cancel": "Anulare"
   },
   "Notifications": {
