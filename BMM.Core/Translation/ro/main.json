@@ -43,7 +43,7 @@
     "WeekdayMonday": "L",
     "WeekdayTuesday": "Ma",
     "WeekdayWednesday": "Mi",
-    "WeekdayThursday": "Ma",
+    "WeekdayThursday": "J",
     "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
@@ -55,9 +55,9 @@
     "RequestFailedMessage": "A apărut o eroare de conexiune: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Această piesă nu are asociat nici un fișier suportat.",
-    "ErrorVideoNotSupported": "Videoclipurile nu sunt suportate momentan.",
-    "ErrorFileNotOffline": "În modul off-line nu poți reda o piesă care nu e descărcată.",
+    "ErrorMediaNotSupported": "Din nefericire, dispozitivul dvs. nu acceptă formatul acestui fișier.",
+    "ErrorVideoNotSupported": "Din nefericire, videoclipurile nu sunt suportate momentan.",
+    "ErrorFileNotOffline": "Fără conexiune la internet pot fi rulate doar piesele deja descărcate.",
     "ErrorPlayerStopped": "Playerul s-a oprit.",
     "ErrorPlayerStoppedGeneric": "A intervenit o eroare de redare care a oprit piesa curentă.",
     "ErrorPlayerLiveRadioStopped": "Transmisia live s-a terminat.",
