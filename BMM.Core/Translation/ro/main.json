@@ -43,7 +43,7 @@
     "WeekdayMonday": "L",
     "WeekdayTuesday": "Ma",
     "WeekdayWednesday": "Mi",
-    "WeekdayThursday": "Ma",
+    "WeekdayThursday": "J",
     "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
@@ -55,9 +55,9 @@
     "RequestFailedMessage": "A apărut o eroare de conexiune: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Această piesă nu are asociat nici un fișier suportat.",
-    "ErrorVideoNotSupported": "Videoclipurile nu sunt suportate momentan.",
-    "ErrorFileNotOffline": "În modul off-line nu poți reda o piesă care nu e descărcată.",
+    "ErrorMediaNotSupported": "Din nefericire, dispozitivul dvs. nu acceptă formatul acestui fișier.",
+    "ErrorVideoNotSupported": "Din nefericire, videoclipurile nu sunt suportate momentan.",
+    "ErrorFileNotOffline": "Fără conexiune la internet pot fi rulate doar piesele deja descărcate.",
     "ErrorPlayerStopped": "Playerul s-a oprit.",
     "ErrorPlayerStoppedGeneric": "A intervenit o eroare de redare care a oprit piesa curentă.",
     "ErrorPlayerLiveRadioStopped": "Transmisia live s-a terminat.",
@@ -294,12 +294,12 @@
   "SettingsViewModel": {
     "Title": "Profil",
     "HeadlineSettings": "Setări",
-    "HeadlineHomeScreen": "Ecran principal",
-    "HeadlinePlayback": "Playback",
+    "HeadlineHomeScreen": "Ecranul de pornire",
+    "HeadlinePlayback": "Redare",
     "PlayInChronologicalOrderHeader": "Redă în ordine cronologică",
     "PlayInChronologicalOrderText": "Redă episoade podcast de la cel mai vechi la cel mai nou",
     "OptionAutoplayHeader": "Redare automată",
-    "OptionAutoplayText": "Redă muzică după ce asculți episodul zilnic de la Kåre. Se aplică numai când redă prin panoul de pe ecranul de start.",
+    "OptionAutoplayText": "Redă muzică după ce asculți episodul zilnic Fra Kåre. Se aplică numai la redarea prin panoul de pe ecranul de pornire.",
     "OptionStreakHeader": "Progres pe ecranul de pornire",
     "OptionStreakText": "Arată statisticile de redare în ecranul principal",
     "OptionEnablePushHeader": "Activează notificări",
@@ -326,9 +326,9 @@
     "OptionAppVersionHeader": "Versiunea aplicației",
     "OptionDeleteAccountHeader": "Ștergeți contul",
     "OptionDeleteAccountText": "Solicitați ștergerea contului dumneavoastră.",
-    "OptionNotificationBadgeHeader": "Panou cu notificările de la Kåre",
+    "OptionNotificationBadgeHeader": "Panou cu Notificările Fra Kåre",
     "OptionNotificationBadgeText": "Arată o notificare pe ecranul de pornire pentru a-ți aminti să asculți episodul zilnic.",
-    "OptionBibleStudyHeader": "Studiul Biblic pe ecranul de pornire",
+    "OptionBibleStudyHeader": "Studiul Biblic la meniul Acasă",
     "OptionBibleStudyText": "Afișează statusul Studiului Biblic pe ecranul de pornire",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
@@ -465,7 +465,7 @@
     "Contributor.Play": "Cântă",
     "Contributor.Share": "Distribuie contribuitor",
     "OfflineTrackCollection.DeletePlaylist": "Șterge play-list",
-    "AddAllToPlaylist": "Adaugă toate piesele în lista de redare",
+    "AddAllToPlaylist": "Adaugă toate piesele la lista de redare",
     "Cancel": "Anulare"
   },
   "Notifications": {
@@ -618,6 +618,6 @@
   "AchievementsViewModel": {
     "Title": "Realizări",
     "EmptyTitle": "Un loc pentru realizările tale din Studiul Biblic",
-    "EmptySubtitle": "Când obții realizări în Studiile Biblice începi să le colectezi aici."
+    "EmptySubtitle": "Realizările obținute în Studiile Biblice vor fi colectate aici."
   }
 }
