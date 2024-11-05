@@ -127,7 +127,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
             if (LatestStreak != null
                 && track?.Id == LatestStreak.TodaysFraKaareTrackId
                 && !LatestStreak.IsTodayAlreadyListened()
-                && DateTime.UtcNow < LatestStreak.EligibleUntil.ToUniversalTime())
+                && LatestStreak.IsEligible())
             {
                 var measurements = measurementsFactory.Invoke();
                 if (measurements == null)
