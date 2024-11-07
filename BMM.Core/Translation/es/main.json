@@ -264,7 +264,7 @@
     "PlaybackSpeed": "Velocidad de reproducción",
     "Normal": "Normal",
     "Selected": "Seleccionada",
-    "WatchOnBCCMedia": "Watch on BCC Media",
+    "WatchOnBCCMedia": "Ver en BCC Media",
     "Read": "Leer"
   },
   "QueueViewModel": {
@@ -294,8 +294,8 @@
   "SettingsViewModel": {
     "Title": "Perfil",
     "HeadlineSettings": "Configuración",
-    "HeadlineHomeScreen": "Home Screen",
-    "HeadlinePlayback": "Playback",
+    "HeadlineHomeScreen": "Pantalla de inicio",
+    "HeadlinePlayback": "Reproducción",
     "PlayInChronologicalOrderHeader": "Reproducir en orden cronológico",
     "PlayInChronologicalOrderText": "Reproducir los episodios del podcast de más antiguo a más reciente",
     "OptionAutoplayHeader": "Reproducción automática",
@@ -326,10 +326,10 @@
     "OptionAppVersionHeader": "Versión de la aplicación",
     "OptionDeleteAccountHeader": "Borrar cuenta",
     "OptionDeleteAccountText": "Solicite que se elimine su cuenta.",
-    "OptionNotificationBadgeHeader": "Fra Kåre Notification badge",
-    "OptionNotificationBadgeText": "Show a notification in home to help you remember to listen to the daily episode.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
+    "OptionNotificationBadgeHeader": "Insignia de notificación de Fra Kåre",
+    "OptionNotificationBadgeText": "Muestra una notificación en la página de inicio para ayudarte a recordar escuchar el episodio diario.",
+    "OptionBibleStudyHeader": "Estudio bíblico en casa",
+    "OptionBibleStudyText": "Mostrar el estado de tu estudio bíblico en la pantalla de inicio",
     "AppInfoTitle": "Información de la aplicación",
     "AppInfoAppVersion": "Versión de la aplicación: ",
     "AppInfoManufacturer": "Fabricante: ",
@@ -572,7 +572,7 @@
     "Boost": "Impulso",
     "Points": "puntos",
     "Achievements": "Tus logros",
-    "Answer": "Answer"
+    "Answer": "Respuesta"
   },
   "AppIconViewModel": {
     "Title": "Icono de la aplicación",
@@ -617,7 +617,7 @@
   },
   "AchievementsViewModel": {
     "Title": "Logros",
-    "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+    "EmptyTitle": "Un lugar para tus logros en el estudio bíblico",
+    "EmptySubtitle": "Los logros obtenidos en estudios bíblicos se recopilarán aquí."
   }
 }
