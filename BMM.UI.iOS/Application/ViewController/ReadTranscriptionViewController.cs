@@ -1,3 +1,5 @@
+using BMM.Core.Constants;
+using BMM.Core.Models.Player.Lyrics;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
@@ -17,10 +19,12 @@ namespace BMM.UI.iOS
     public partial class ReadTranscriptionViewController : BaseViewController<ReadTranscriptionViewModel>
     {
         private const int TableViewBottomOffset = 120; 
-        private BaseSimpleTableViewSource _source;
+        private TranscriptionsTableViewSource _source;
         private IMvxInteraction<int> _adjustScrollPositionInteraction;
         private int _lastPosition;
         private bool _initialized;
+        private bool _isAutoTranscribed;
+        private LyricsLink _lyricsLink;
 
         public ReadTranscriptionViewController() : base(null)
         {
@@ -51,16 +55,27 @@ namespace BMM.UI.iOS
         {
             var set = this.CreateBindingSet<ReadTranscriptionViewController, ReadTranscriptionViewModel>();
            
-            _source = new BaseSimpleTableViewSource(TranscriptionsTableView, ReadTranscriptionTableViewCell.Key);
+            _source = new TranscriptionsTableViewSource(TranscriptionsTableView);
             set.Bind(_source).To(vm => vm.Transcriptions);
             
            set.Bind(CloseButtonContainer)
                .For(v => v.BindTap())
                .To(vm => vm.CloseCommand);
-           
+
            set.Bind(Header)
-               .For(v => v.Text)
-               .To(vm => vm.TextSource[Translations.HighlightedTextTrackViewModel_AutoTranscribed]);
+               .To(vm => vm.HeaderText);
+
+           set.Bind(this)
+               .For(v => v.IsAutoTranscribed)
+               .To(vm => vm.IsAutoTranscribed);
+           
+           set.Bind(this)
+               .For(v => v.LyricsLink)
+               .To(vm => vm.LyricsLink);
+           
+           set.Bind(HeaderContainerView)
+               .For(v => v.BindTap())
+               .To(vm => vm.HeaderClickedCommand);
            
            set.Bind(PlayerStatusButton).To(vm => vm.PlayPauseCommand);
            set.Bind(PlayerStatusButton).For(v => v.Selected).To(vm => vm.IsPlaying);
@@ -88,7 +103,44 @@ namespace BMM.UI.iOS
 
             set.Apply();
         }
-        
+
+        public LyricsLink LyricsLink
+        {
+            get => _lyricsLink;
+            set
+            {
+                _lyricsLink = value;
+                SetIcon();
+            }
+        }
+
+        public bool IsAutoTranscribed
+        {
+            get => _isAutoTranscribed;
+            set
+            {
+                _isAutoTranscribed = value;
+                SetHeaderColor();
+                SetIcon();
+            }
+        }
+
+        private void SetIcon()
+        {
+            if (_isAutoTranscribed)
+            {
+                ImageIcon.Image = UIImage.FromBundle(ImageResourceNames.IconAI.ToStandardIosImageName());
+                ImageIcon.TintColor = AppColors.UtilityAutoColor;
+            }
+            else
+            {
+                ImageIcon.TintColor = AppColors.LabelOneColor;
+                ImageIcon.Image = UIImage.FromBundle(LyricsLink?.LyricsLinkType == LyricsLinkType.Generic
+                    ? ImageResourceNames.IconInfo.ToStandardIosImageName()
+                    : ImageResourceNames.ImageSongTreasures.ToStandardIosImageName());
+            }
+        }
+
         public IMvxInteraction<int> AdjustScrollPositionInteraction
         {
             get => _adjustScrollPositionInteraction;
@@ -148,7 +200,7 @@ namespace BMM.UI.iOS
         {
             ProgressBar.ProgressColor = AppColors.TintColor;
             Header.ApplyTextTheme(AppTheme.Paragraph2);
-            Header.TextColor = AppColors.UtilityAutoColor;
+            SetHeaderColor();
             CloseButtonContainer.Layer.BorderWidth = 0.5f;
             CloseButtonContainer.Layer.ShadowRadius = 8;
             CloseButtonContainer.Layer.ShadowOffset = CGSize.Empty;
@@ -161,6 +213,13 @@ namespace BMM.UI.iOS
             TrackTitleLAbel.ApplyTextTheme(AppTheme.Title2);
             TrackSubtitleLabel.ApplyTextTheme(AppTheme.Subtitle3Label2);
             View!.BringSubviewToFront(PlayerView);
+        }
+        
+        private void SetHeaderColor()
+        {
+            Header.TextColor = _isAutoTranscribed
+                ? AppColors.UtilityAutoColor
+                : AppColors.LabelOneColor;
         }
 
         private void HandleDismiss(UIPresentationController presentationController)

@@ -2,6 +2,7 @@
 using BMM.Core.Models.POs.Transcriptions;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
+using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
 {
@@ -24,6 +25,10 @@ namespace BMM.UI.iOS
                     .For(v => v.Alpha)
                     .To(po => po.IsHighlighted)
                     .WithConversion<IsHighlightedToAlphaValueConverter>();
+
+                set.Bind(this)
+                    .For(v => v.BindTap())
+                    .To(po => po.ItemClickedCommand);
                 
                 set.Apply();
             });
@@ -41,7 +46,7 @@ namespace BMM.UI.iOS
 
                 var attrString = new NSMutableAttributedString(_transcriptionText);
                 attrString.AddAttribute(UIStringAttributeKey.ParagraphStyle, paragraphStyle, new NSRange(0, _transcriptionText.Length));
-                attrString.AddAttribute(UIStringAttributeKey.ForegroundColor, AppColors.LabelTwoColor, new NSRange(0, _transcriptionText.Length));
+                attrString.AddAttribute(UIStringAttributeKey.ForegroundColor, AppColors.LabelOneColor, new NSRange(0, _transcriptionText.Length));
                 attrString.AddAttribute(UIStringAttributeKey.Font, UIFont.SystemFontOfSize(16, UIFontWeight.Regular), new NSRange(0, _transcriptionText.Length));
                 TranscriptionsTextLabel.AttributedText = attrString;
             }

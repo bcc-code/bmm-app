@@ -13,4 +13,3 @@ namespace BMM.Core.ValueConverters
         }
     }
 }
-

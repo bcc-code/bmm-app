@@ -619,5 +619,9 @@
     "Title": "Achievements",
     "EmptyTitle": "A place for your Bible Study achievements",
     "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Lyrics"
   }
 }
