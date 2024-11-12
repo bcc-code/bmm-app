@@ -125,7 +125,11 @@ namespace BMM.Core.ViewModels
         public string WatchBccMediaLink
         {
             get => _watchBccMediaLink;
-            set => SetProperty(ref _watchBccMediaLink, value);
+            set
+            {
+                SetProperty(ref _watchBccMediaLink, value);
+                WatchButtonClickedCommand.RaiseCanExecuteChanged();
+            }
         }
 
         public bool CanNavigateToLanguageChange => NavigateToLanguageChangeCommand.CanExecute();
