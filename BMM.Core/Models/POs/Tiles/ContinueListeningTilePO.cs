@@ -130,14 +130,14 @@ namespace BMM.Core.Models.POs.Tiles
         private async Task<bool> CheckHasBadgeAndSetIfNeeded()
         {
             bool shouldUpdateBadge = _firebaseRemoteConfig.CurrentPodcastId == Tile.ShufflePodcastId;
-
+            
             if (!shouldUpdateBadge)
                 return false;
             
             var latestStreak = _streakObserver
                 .LatestStreak;
 
-            if (latestStreak == null || latestStreak.TodaysFraKaareTrackId != Tile.Track.Id)
+            if (ShouldRemoveBadge(latestStreak))
             {
                 _badgeService.Remove();
                 return false;
@@ -148,6 +148,13 @@ namespace BMM.Core.Models.POs.Tiles
 
             _badgeService.Remove();
             return false;
+        }
+
+        private bool ShouldRemoveBadge(ListeningStreak latestStreak)
+        {
+            return latestStreak == null
+                   || latestStreak.TodaysFraKaareTrackId != Tile.Track.Id 
+                   || !latestStreak.IsEligible();
         }
     }
 }

@@ -52,5 +52,10 @@ namespace BMM.Core.Extensions
                     break;
             }
         }
+        
+        public static bool IsEligible(this ListeningStreak streak)
+        {
+            return DateTime.UtcNow < streak.EligibleUntil.ToUniversalTime();
+        }
     }
 }
