@@ -16,6 +16,7 @@ using BMM.Core.Diagnostic.Interfaces;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Interactions;
+using BMM.Core.Models.Enums;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Constants;
 using BMM.UI.Droid.Application.Constants.Player;
@@ -73,8 +74,8 @@ namespace BMM.UI.Droid.Application.Fragments
         private string _coverImagePath;
         private Button _leftButton;
         private int _leftButtonOriginalPadding;
-        private bool _hasTranscription;
         private Button _watchButton;
+        private PlayerLeftButtonType? _leftButtonType;
 
         protected override bool ShouldClearMenuItemsAtStart => false;
         
@@ -188,34 +189,35 @@ namespace BMM.UI.Droid.Application.Fragments
                 .To(vm => vm.CurrentTrack.ArtworkUri);
 
             set.Bind(this)
-                .For(v => v.HasTranscription)
-                .To(vm => vm.HasTranscription);
+                .For(v => v.LeftButtonType)
+                .To(vm => vm.LeftButtonType);
             
             set.Apply();
         }
 
-        public bool HasTranscription
+        public PlayerLeftButtonType? LeftButtonType
         {
-            get => _hasTranscription;
+            get => _leftButtonType;
             set
             {
-                _hasTranscription = value;
-
+                _leftButtonType = value;
+                
                 if (Context == null)
                     return;
-                
+
+                bool hasLeftImage = _leftButtonType == PlayerLeftButtonType.Transcription;
                 int drawablePadding = Resources.GetDimensionPixelSize(Resource.Dimension.margin_xxmedium);
                 
-                int desiredPadding = !_hasTranscription
+                int desiredPadding = !hasLeftImage
                     ? _leftButtonOriginalPadding
                     : _leftButtonOriginalPadding + drawablePadding;
-
-                var leftDrawable = _hasTranscription
+                
+                var leftDrawable = hasLeftImage
                     ? ContextCompat.GetDrawable(Context, Resource.Drawable.icon_information)
                     : null;
                 
                 _leftButton.SetCompoundDrawablesWithIntrinsicBounds(leftDrawable, null, null, null);
-
+                
                 _leftButton.SetPadding(
                     _leftButton.PaddingLeft,
                     _leftButton.PaddingTop,

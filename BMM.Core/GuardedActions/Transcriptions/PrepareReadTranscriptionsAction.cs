@@ -82,6 +82,9 @@ public class PrepareReadTranscriptionsAction
 
     private async Task TranscriptionClickedAction(Transcription transcription)
     {
+        if (!DataContext.HasTimeframes)
+            return;
+
         long startTime = (long)TimeSpan.FromSeconds(transcription.Start).TotalMilliseconds;
         var track = (Track)DataContext.Track;
         
@@ -91,8 +94,7 @@ public class PrepareReadTranscriptionsAction
             return;
         }
 
-        if (DataContext.HasTimeframes)
-            _mediaPlayer.SeekTo(startTime);
+        _mediaPlayer.SeekTo(startTime);
     }
 
     private string PrepareSubtitle(ITrackModel trackModel)

@@ -6,30 +6,37 @@
         android:layout_height="match_parent"
         android:background="@color/background_one_color">
 
-    <ImageView
-            android:id="@+id/AIIcon"
-            android:layout_width="@dimen/highlighted_text_track_item_icon_size"
-            android:layout_height="@dimen/highlighted_text_track_item_icon_size"
-            android:layout_marginVertical="@dimen/margin_xxmedium"
-            android:layout_marginStart="@dimen/margin_xxmedium"
-            local:layout_constraintTop_toTopOf="parent"
-            local:layout_constraintStart_toStartOf="parent"
-            android:src="@drawable/icon_ai"/>
+    <LinearLayout
+        android:id="@+id/HeaderContainer"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        local:layout_constraintTop_toTopOf="parent"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toStartOf="@+id/CloseButtonIconArea"
+        android:layout_marginVertical="@dimen/margin_xxmedium"
+        android:layout_marginStart="@dimen/margin_xxmedium"
+        local:MvxBind="Click HeaderClickedCommand">
+        
+        <ImageView
+                android:id="@+id/AIIcon"
+                android:layout_width="@dimen/highlighted_text_track_item_icon_size"
+                android:layout_height="@dimen/highlighted_text_track_item_icon_size"
+                android:layout_gravity="center_vertical" />
+    
+        <TextView
+                android:id="@+id/HeaderLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_mini"
+                android:textColor="@color/utility_auto_color"
+                android:layout_gravity="center_vertical"
+                local:MvxBind="Text HeaderText"
+                style="@style/Paragraph2" />
 
-    <TextView
-            android:id="@+id/HighlightLabel"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_tiny"
-            android:textColor="@color/utility_auto_color"
-            local:layout_constraintTop_toTopOf="@+id/AIIcon"
-            local:layout_constraintBottom_toBottomOf="@+id/AIIcon"
-            local:layout_constraintStart_toEndOf="@+id/AIIcon"
-            local:layout_constraintEnd_toEndOf="parent"
-            local:MvxLang="Text HighlightedTextTrackViewModel_AutoTranscribed"
-            style="@style/Paragraph2" />
-
+    </LinearLayout>
+    
     <View
             android:id="@+id/Divider"
             android:layout_width="@dimen/match_constraint"
@@ -38,13 +45,13 @@
             android:layout_marginTop="@dimen/margin_xmedium"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
-            local:layout_constraintTop_toBottomOf="@+id/AIIcon" />
+            local:layout_constraintTop_toBottomOf="@+id/HeaderContainer" />
     
     <mvvmcross.droidx.recyclerview.MvxRecyclerView
             android:id="@+id/ReadTranscriptionsRecyclerView"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="@dimen/match_constraint"
-            local:MvxItemTemplate="@layout/listitem_read_transcription"
+            local:MvxTemplateSelector="@string/read_transcription_template_selector"
             local:layout_constraintTop_toBottomOf="@+id/Divider"
             local:layout_constraintBottom_toBottomOf="parent"
             local:layout_constraintStart_toStartOf="parent"

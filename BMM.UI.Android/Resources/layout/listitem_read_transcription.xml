@@ -8,10 +8,11 @@
         android:layout_marginHorizontal="@dimen/margin_medium"
         android:layout_marginVertical="@dimen/margin_xsmall"
         android:textFontWeight="445"
-        android:textColor="@color/label_two_color"
+        android:textColor="@color/label_one_color"
         android:textSize="16sp"
         android:lineHeight="32sp"
         local:MvxBind="
             Text Transcription.Text;
-            ViewAlpha IsHighlightedToAlpha(IsHighlighted)"
+            ViewAlpha IsHighlightedToAlpha(IsHighlighted);
+            Click ItemClickedCommand"
         style="@style/Subtitle3_Label3" />
