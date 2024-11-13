@@ -66,7 +66,12 @@ namespace BMM.Core.GuardedActions.Player
             bool hasTranscription = currentTrack.HasTranscription && isReadingTranscriptionsEnabled;
             
             if (hasTranscription)
-                leftButtonType = PlayerLeftButtonType.Transcription;
+            {
+                if (currentTrack.IsSong())
+                    leftButtonType = PlayerLeftButtonType.Lyrics;
+                else
+                    leftButtonType = PlayerLeftButtonType.Transcription;
+            }
             else if (lyricsLink.LyricsLinkType != LyricsLinkType.None)
                 leftButtonType = PlayerLeftButtonType.Lyrics;
             

@@ -2,6 +2,7 @@
 using BMM.Core.Models.POs.Transcriptions;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
+using MvvmCross.Platforms.Ios.Binding;
 
 namespace BMM.UI.iOS
 {
@@ -20,6 +21,10 @@ namespace BMM.UI.iOS
                 
                 set.Bind(SubtitleLabel)
                     .To(po => po.Subtitle);
+
+                set.Bind(ContentView)
+                    .For(v => v.BindTap())
+                    .To(po => po.HeaderClickedCommand);
                 
                 set.Apply();
             });

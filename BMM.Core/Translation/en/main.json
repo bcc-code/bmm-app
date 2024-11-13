@@ -622,6 +622,7 @@
   },
   "ReadTranscriptionViewModel": {
     "SongTreasures": "Song Treasures",
-    "Lyrics": "Lyrics"
+    "Lyrics": "Lyrics",
+    "Transcription": "Transcription"
   }
 }

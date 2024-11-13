@@ -490,5 +490,6 @@ namespace BMM.Core.Translation
 		public const string AchievementsViewModel_EmptySubtitle = nameof(AchievementsViewModel_EmptySubtitle);
 		public const string ReadTranscriptionViewModel_SongTreasures = nameof(ReadTranscriptionViewModel_SongTreasures);
 		public const string ReadTranscriptionViewModel_Lyrics = nameof(ReadTranscriptionViewModel_Lyrics);
+		public const string ReadTranscriptionViewModel_Transcription = nameof(ReadTranscriptionViewModel_Transcription);
 	}
 }

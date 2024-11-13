@@ -54,10 +54,10 @@ public class PrepareReadTranscriptionsAction
             DataContext,
             CultureInfo.CurrentUICulture);
 
-        var items = new List<IBasePO>
-        {
-            new TranscriptionHeaderPO(trackTitle, PrepareSubtitle(track))
-        };
+        var items = new List<IBasePO>();
+        
+        if (track.IsSong())
+            items.Add(new TranscriptionHeaderPO(trackTitle, PrepareSubtitle(track), DataContext.HeaderClickedCommand));
 
         DataContext.LyricsLink = await _getLyricsLinkAction.ExecuteGuarded(track);
         DataContext.HasTimeframes = response.Last().End != 0;
@@ -80,10 +80,19 @@ public class PrepareReadTranscriptionsAction
         };
     }
 
-    private void TranscriptionClickedAction(Transcription transcription)
+    private async Task TranscriptionClickedAction(Transcription transcription)
     {
+        long startTime = (long)TimeSpan.FromSeconds(transcription.Start).TotalMilliseconds;
+        var track = (Track)DataContext.Track;
+        
+        if (_mediaPlayer.CurrentTrack?.Id != DataContext.Track.Id)
+        {
+            await _mediaPlayer.Play(track.EncloseInArray(), track, startTime);
+            return;
+        }
+
         if (DataContext.HasTimeframes)
-            _mediaPlayer.SeekTo((long)TimeSpan.FromSeconds(transcription.Start).TotalMilliseconds);
+            _mediaPlayer.SeekTo(startTime);
     }
 
     private string PrepareSubtitle(ITrackModel trackModel)

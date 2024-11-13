@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using BMM.Core.Constants;
+using BMM.Core.Models.Enums;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
@@ -43,9 +44,9 @@ namespace BMM.UI.iOS
         private int _bottomMargin = DefaultBottomMarginConstant;
         private UIStatusBarStyle _previousStatusBarStyle;
         private UIColor _lastMutedColor;
-        private bool _hasTranscription;
         private bool _isLiked;
         private bool _hasWatchButton;
+        private PlayerLeftButtonType? _leftButtonType;
 
         public PlayerViewController()
             : base(nameof(PlayerViewController))
@@ -122,16 +123,16 @@ namespace BMM.UI.iOS
                 .To(vm => vm.LeftButtonType)
                 .WithConversion<PlayerLeftButtonTypeToTitleConverter>();
 
+            set.Bind(this)
+                .For(v => v.LeftButtonType)
+                .To(vm => vm.LeftButtonType);
+            
             set.Bind(LeftButton)
                 .To(vm => vm.LeftButtonClickedCommand);
 
             set.Bind(this)
                  .For(v => v.HasLeftButton)
                  .To(vm => vm.HasLeftButton);
-            
-            set.Bind(this)
-                .For(v => v.HasTranscription)
-                .To(vm => vm.HasTranscription);
             
             set.Bind(this)
                 .For(v => v.HasWatchButton)
@@ -199,6 +200,20 @@ namespace BMM.UI.iOS
             };
 
             SetViewMargins();
+        }
+
+        public PlayerLeftButtonType? LeftButtonType
+        {
+            get => _leftButtonType;
+            set
+            {
+                _leftButtonType = value;
+                var image = _leftButtonType == PlayerLeftButtonType.Transcription
+                    ? UIImage.FromBundle(ImageResourceNames.IconInfo.ToStandardIosImageName())
+                    : null;
+                
+                LeftButton.SetImage(image, UIControlState.Normal);
+            }
         }
 
         public bool IsLiked
@@ -326,20 +341,6 @@ namespace BMM.UI.iOS
                     SetBottomMarginConstant();
                     BottomButtonsStackLayout.LayoutIfNeeded();
                 });
-            }
-        }
-
-        public bool HasTranscription
-        {
-            get => _hasTranscription;
-            set
-            {
-                _hasTranscription = value;
-                var image = _hasTranscription
-                    ? UIImage.FromBundle("IconInformation")
-                    : null;
-                
-                LeftButton.SetImage(image, UIControlState.Normal);
             }
         }
         

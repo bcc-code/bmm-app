@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using BMM.Api.Abstraction;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Transcriptions.Interfaces;
 using BMM.Core.Helpers;
@@ -25,9 +26,9 @@ public class ReadTranscriptionViewModel : PlayerBaseViewModel, IMvxViewModel<Tra
     private readonly IAnalytics _analytics;
     private MiniPlayerTrackInfoProvider _miniPlayerTrackInfoProvider;
     private bool _initialized;
-    private ITrackModel _track;
     private LyricsLink _lyricsLink;
     private string _headerText;
+    private bool _isAutoTranscribed;
 
     public ReadTranscriptionViewModel(IMediaPlayer mediaPlayer,
         IPrepareReadTranscriptionsAction prepareReadTranscriptionsAction,
@@ -55,7 +56,13 @@ public class ReadTranscriptionViewModel : PlayerBaseViewModel, IMvxViewModel<Tra
     public MvxInteraction<int> AdjustScrollPositionInteraction { get; } = new();
     public IBmmObservableCollection<IBasePO> Transcriptions { get; } = new BmmObservableCollection<IBasePO>();
     public bool HasTimeframes { get; set; }
-    public bool IsAutoTranscribed { get; set; }
+    public ITrackModel Track { get; private set; }
+
+    public bool IsAutoTranscribed
+    {
+        get => _isAutoTranscribed;
+        set => SetProperty(ref _isAutoTranscribed, value);
+    }
 
     public string HeaderText
     {
@@ -73,7 +80,7 @@ public class ReadTranscriptionViewModel : PlayerBaseViewModel, IMvxViewModel<Tra
 
     public void Prepare(TranscriptionParameter parameter)
     {
-        _track = parameter.Track;
+        Track = parameter.Track;
         _analytics.LogEvent("open ReadTranscriptionViewModel",
             new Dictionary<string, object> {{"trackId", parameter.Track.Id}, {"trackType", parameter.Track.Subtype}});
     }
@@ -81,7 +88,7 @@ public class ReadTranscriptionViewModel : PlayerBaseViewModel, IMvxViewModel<Tra
     public override async Task Initialize()
     {
         await base.Initialize();
-        await _prepareReadTranscriptionsAction.ExecuteGuarded(_track);
+        await _prepareReadTranscriptionsAction.ExecuteGuarded(Track);
         await _adjustHighlightedTranscriptionsAction.ExecuteGuarded(CurrentPosition);
         _initialized = true;
     }
@@ -105,7 +112,7 @@ public class ReadTranscriptionViewModel : PlayerBaseViewModel, IMvxViewModel<Tra
     private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
     {
         if (e.PropertyName == nameof(CurrentPosition)
-            && _mediaPlayer.CurrentTrack?.Id == _track.Id
+            && _mediaPlayer.CurrentTrack?.Id == Track.Id
             && _initialized)
         {
             _adjustHighlightedTranscriptionsAction.ExecuteGuarded(CurrentPosition);

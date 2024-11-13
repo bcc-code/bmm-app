@@ -31,6 +31,7 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
+using BMM.Core.ViewModels.Parameters;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
@@ -329,6 +330,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     ImageResourceNames.IconSleepTimer,
                     new MvxAsyncCommand(async () => await SleepTimerClickedAction())));
 
+            options.AddIfNotNull(GetTranscriptionOption(track));
+            
             options.Add(
                 new StandardIconOptionPO(
                     _bmmLanguageBinder[Translations.UserDialogs_Track_MoreInformation],
@@ -339,6 +342,24 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     })));
 
             return options;
+        }
+
+        private StandardIconOptionPO GetTranscriptionOption(Track track)
+        {
+            if (!track.HasTranscription)
+                return default;
+
+            string optionName = track.IsSong()
+                ? _bmmLanguageBinder[Translations.ReadTranscriptionViewModel_Lyrics]
+                : _bmmLanguageBinder[Translations.ReadTranscriptionViewModel_Transcription];
+
+            return new StandardIconOptionPO(optionName,
+                ImageResourceNames.IconInfo,
+                new MvxAsyncCommand(() =>
+                {
+                    return _mvxNavigationService.Navigate<ReadTranscriptionViewModel, TranscriptionParameter>(
+                        new TranscriptionParameter(track));
+                }));
         }
 
         private async Task PlaybackSpeedClickedAction()

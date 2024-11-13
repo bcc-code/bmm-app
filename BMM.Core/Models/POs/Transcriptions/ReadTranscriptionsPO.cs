@@ -10,7 +10,7 @@ public class ReadTranscriptionsPO : BasePO
 
     public ReadTranscriptionsPO(
         Transcription transcription,
-        Action<Transcription> itemClickedAction)
+        Func<Transcription, Task> itemClickedAction)
     {
         Transcription = transcription;
         ItemClickedCommand = new MvxCommand(() => itemClickedAction?.Invoke(transcription));
