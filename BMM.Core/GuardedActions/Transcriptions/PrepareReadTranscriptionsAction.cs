@@ -8,6 +8,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Player.Interfaces;
 using BMM.Core.GuardedActions.Transcriptions.Interfaces;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Factories.Transcriptions;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Models.Player.Lyrics;
 using BMM.Core.Models.POs.Base.Interfaces;
@@ -16,6 +17,7 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
+using Microsoft.IdentityModel.Tokens;
 
 namespace BMM.Core.GuardedActions.Transcriptions;
 
@@ -24,22 +26,24 @@ public class PrepareReadTranscriptionsAction
       IPrepareReadTranscriptionsAction
 {
     private const string Dot = "•";
-    private const string PublishedAtFormat = "dd MMMM yyyy";
     private readonly ITracksClient _tracksClient;
     private readonly IBMMLanguageBinder _languageBinder;
     private readonly IMediaPlayer _mediaPlayer;
     private readonly IGetLyricsLinkAction _getLyricsLinkAction;
+    private readonly ITranscriptionPOFactory _transcriptionPOFactory;
 
     public PrepareReadTranscriptionsAction(
         ITracksClient tracksClient,
         IBMMLanguageBinder languageBinder,
         IMediaPlayer mediaPlayer,
-        IGetLyricsLinkAction getLyricsLinkAction)
+        IGetLyricsLinkAction getLyricsLinkAction,
+        ITranscriptionPOFactory transcriptionPOFactory)
     {
         _tracksClient = tracksClient;
         _languageBinder = languageBinder;
         _mediaPlayer = mediaPlayer;
         _getLyricsLinkAction = getLyricsLinkAction;
+        _transcriptionPOFactory = transcriptionPOFactory;
     }
     
     private ReadTranscriptionViewModel DataContext => this.GetDataContext();
@@ -63,7 +67,7 @@ public class PrepareReadTranscriptionsAction
         DataContext.HasTimeframes = response.Last().End != 0;
         DataContext.IsAutoTranscribed = track.Subtype.IsNoneOf(TrackSubType.Singsong, TrackSubType.Song);
         DataContext.HeaderText = GetHeaderText();
-        items.AddRange(response.Select(t => new ReadTranscriptionsPO(t, TranscriptionClickedAction)).ToList());
+        items.AddRange(_transcriptionPOFactory.Create(response, (Track)DataContext.Track, DataContext.HasTimeframes));
         DataContext.Transcriptions.ReplaceWith(items);
     }
 
@@ -72,12 +76,16 @@ public class PrepareReadTranscriptionsAction
         if (DataContext.IsAutoTranscribed)
             return _languageBinder[Translations.HighlightedTextTrackViewModel_AutoTranscribed];
 
-        return DataContext.LyricsLink.LyricsLinkType switch
+        switch (DataContext.LyricsLink.LyricsLinkType)
         {
-            LyricsLinkType.SongTreasures => _languageBinder[Translations.ReadTranscriptionViewModel_SongTreasures],
-            LyricsLinkType.Generic => _languageBinder[Translations.ReadTranscriptionViewModel_Lyrics],
-            _ => default
-        };
+            case LyricsLinkType.SongTreasures:
+                return _languageBinder[Translations.ReadTranscriptionViewModel_SongTreasures];
+            case LyricsLinkType.None:
+            case LyricsLinkType.Generic:
+                return _languageBinder[Translations.ReadTranscriptionViewModel_Lyrics];
+            default:
+                return default;
+        }
     }
 
     private async Task TranscriptionClickedAction(Transcription transcription)
@@ -101,12 +109,17 @@ public class PrepareReadTranscriptionsAction
     {
         var subtitleStringBuilder = new StringBuilder();
 
-        subtitleStringBuilder.Append($"{_languageBinder[Translations.TrackInfoViewModel_Lyricist]}: {trackModel.Meta.Lyricist}");
-        subtitleStringBuilder.Append($" {Dot} ");
-        subtitleStringBuilder.Append($"{_languageBinder[Translations.TrackInfoViewModel_Composer]}: {trackModel.Meta.Composer}");
-        subtitleStringBuilder.Append($" {Dot} ");
-        subtitleStringBuilder.Append($"{trackModel.PublishedAt.ToNorwegianTime().ToString(PublishedAtFormat)}");
-        
+        if (!trackModel.Meta.Lyricist.IsNullOrEmpty())
+        {
+            subtitleStringBuilder.Append($"{_languageBinder[Translations.ReadTranscriptionViewModel_Text]}: {trackModel.Meta.Lyricist}");
+        }
+
+        if (!trackModel.Meta.Composer.IsNullOrEmpty())
+        {
+            subtitleStringBuilder.Append($" {Dot} ");
+            subtitleStringBuilder.Append($"{_languageBinder[Translations.ReadTranscriptionViewModel_Melody]}: {trackModel.Meta.Composer}");
+        }
+
         return subtitleStringBuilder.ToString();
     }
 }

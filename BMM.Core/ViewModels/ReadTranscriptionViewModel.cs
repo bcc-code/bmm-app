@@ -13,6 +13,7 @@ using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Transcriptions;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels.Parameters;
+using Microsoft.IdentityModel.Tokens;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 
@@ -44,7 +45,7 @@ public class ReadTranscriptionViewModel : PlayerBaseViewModel, IMvxViewModel<Tra
         _adjustHighlightedTranscriptionsAction.AttachDataContext(this);
         HeaderClickedCommand = new ExceptionHandlingCommand(() =>
         {
-            if (IsAutoTranscribed)
+            if (IsAutoTranscribed || LyricsLink.LyricsLinkType == LyricsLinkType.None)
                 return Task.CompletedTask;
             
             uriOpener.OpenUri(new Uri(LyricsLink.Link));

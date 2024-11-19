@@ -134,9 +134,9 @@ namespace BMM.UI.Droid.Application.Fragments
             }
             else
             {
-                int drawableId = LyricsLink?.LyricsLinkType == LyricsLinkType.Generic
-                    ? Resource.Drawable.icon_info
-                    : Resource.Drawable.image_song_treasures;
+                int drawableId = LyricsLink?.LyricsLinkType == LyricsLinkType.SongTreasures
+                    ? Resource.Drawable.image_song_treasures
+                    : Resource.Drawable.icon_info;
                 
                 _aiImage.SetImageDrawable(Resources.GetDrawable(drawableId));
             }

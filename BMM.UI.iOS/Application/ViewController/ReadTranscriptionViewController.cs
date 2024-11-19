@@ -135,9 +135,9 @@ namespace BMM.UI.iOS
             else
             {
                 ImageIcon.TintColor = AppColors.LabelOneColor;
-                ImageIcon.Image = UIImage.FromBundle(LyricsLink?.LyricsLinkType == LyricsLinkType.Generic
-                    ? ImageResourceNames.IconInfo.ToStandardIosImageName()
-                    : ImageResourceNames.ImageSongTreasures.ToStandardIosImageName());
+                ImageIcon.Image = UIImage.FromBundle(LyricsLink?.LyricsLinkType == LyricsLinkType.SongTreasures
+                    ? ImageResourceNames.ImageSongTreasures.ToStandardIosImageName()
+                    : ImageResourceNames.IconInfo.ToStandardIosImageName());
             }
         }
 

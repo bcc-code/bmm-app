@@ -10,14 +10,21 @@ public class ReadTranscriptionsPO : BasePO
 
     public ReadTranscriptionsPO(
         Transcription transcription,
-        Func<Transcription, Task> itemClickedAction)
+        Func<Transcription, Task> itemClickedAction,
+        string text,
+        string header)
     {
         Transcription = transcription;
+        Text = text;
+        Header = header;
         ItemClickedCommand = new MvxCommand(() => itemClickedAction?.Invoke(transcription));
     }
     
     public Transcription Transcription { get; }
 
+    public string Text { get; }
+    public string Header { get; }
+    
     public bool IsHighlighted
     {
         get => _isHighlighted;

@@ -3,6 +3,7 @@ using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Transcriptions.Interfaces;
 using BMM.Core.Models.POs.SuggestEdit.Interfaces;
 using BMM.Core.Models.POs.Transcriptions;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 
 namespace BMM.Core.GuardedActions.Transcriptions;
@@ -11,6 +12,13 @@ public class AdjustHighlightedTranscriptionsAction
     : GuardedActionWithParameter<long>,
       IAdjustHighlightedTranscriptionsAction
 {
+    private readonly IMediaPlayer _mediaPlayer;
+
+    public AdjustHighlightedTranscriptionsAction(IMediaPlayer mediaPlayer)
+    {
+        _mediaPlayer = mediaPlayer;
+    }
+    
     private ReadTranscriptionViewModel DataContext => this.GetDataContext();
     
     protected override Task Execute(long currentPosition)
@@ -24,14 +32,14 @@ public class AdjustHighlightedTranscriptionsAction
         var currentItem = transcriptionItems
             .FirstOrDefault(t => t.Transcription.Start < positionInSeconds && t.Transcription.End > positionInSeconds);
 
-        if (currentItem == null)
+        if (currentItem == null || _mediaPlayer.CurrentTrack?.Id != DataContext.Track?.Id)
         {
             if (!DataContext.HasTimeframes)
                 transcriptionItems.ForEach(x => x.IsHighlighted = true);
             
             return Task.CompletedTask;
         }
-
+        
         int indexOfCurrentItem = transcriptionItems
             .IndexOf(currentItem);
 
