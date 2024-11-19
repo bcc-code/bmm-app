@@ -69,9 +69,9 @@
   },
   "AlbumViewModel": {
     "Title": "Álbum",
-    "SearchHint": "Busca",
+    "SearchHint": "Buscar",
     "AddAlbumToPlaylist": "Adicionar álbum à playlist",
-    "AddAlbumToMyTracks": "Adicionar o álbum para Meus rastros",
+    "AddAlbumToMyTracks": "Adicionar álbum às Minhas Faixas",
     "FailedToAdd": "Falha ao adicionar a faixa à lista de reprodução. Por favor, tente novamente mais tarde.",
     "AlbumFailedToAddAlreadyExists": "Este álbum já está em sua lista de reprodução.",
     "TrackAlreadyExistInTrackCollection": "A faixa já existe na lista de reprodução {0}",
@@ -90,7 +90,7 @@
   },
   "ContributorViewModel": {
     "Title": "Contribuinte",
-    "SearchHint": "Busca",
+    "SearchHint": "Buscar",
     "HeaderText": "Aparece nestas faixas"
   },
   "HomeViewModel": {
@@ -105,16 +105,16 @@
   },
   "ExploreNewestViewModel": {
     "Title": "Início",
-    "SearchHint": "Busca",
-    "FraKaareHeader": "De Kåre",
+    "SearchHint": "Buscar",
+    "FraKaareHeader": "Fra Kåre",
     "AslaksenTeaserHeader": "Palavra da fé",
     "ShowAll": "Mostrar todos",
     "PlayRandom": "Reprodução aleatória ",
     "PlayNewest": "Reproduzir mais novo",
-    "LatestTrack": "Últimas faixas",
+    "LatestTrack": "Última faixa",
     "NextBroadcast": "Próxima transmissão",
     "BmmRadio": "BMM ao vivo ",
-    "CountdownHours": "em",
+    "CountdownHours": "em {0}h",
     "Messages": "Mensagens recentes",
     "Music": "Musica recente",
     "Recommended": "Recomendado",
@@ -122,14 +122,14 @@
   },
   "ExploreContributorsViewModel": {
     "Title": "Contribuintes",
-    "SearchHint": "Busca"
+    "SearchHint": "Buscar"
   },
   "HelpFeedbackViewModel": {
     "Title": "Ajuda e Feedback",
     "GuideIntroTitle": "Como conseguir mais do app BMM",
     "GuideIntroSubtitle": "Para aprender mais",
     "GuideOfflineTitle": "Listas de reprodução off-line",
-    "GuideOfflineSubtitle": "Baixar suas listas de reprodução para o seu dispositivo e ouvi-las sem conexão de internet. Pode ligar esta na lista de reprodução.",
+    "GuideOfflineSubtitle": "Baixe suas playlists para seu dispositivo e ouça-as sem conexão com a internet. Você pode ativar isso na playlist.",
     "GuideAddToPlaylistTitle": "Adicionar à lista de reprodução ou 'My faixas'",
     "GuideAddToPlaylistSubtitle": "Salve suas faixas favoritas em suas próprias listas de reprodução ou em sua coleção pessoal do BMM 'Minhas faixas' tocando no botão de opções à direita da faixa.",
     "GuideLanguagesTitle": "Vários idiomas",
@@ -207,22 +207,22 @@
     "EmptySubline": "Siga um Podcast abrindo um Podcast e clicando o botão seguir."
   },
   "MyTracksViewModel": {
-    "Title": "Meus rastros",
+    "Title": "Minhas trilhas",
     "ShufflePlay": "Reprodução Aleatória",
     "AvailableOffline": "Disponível off-line",
-    "AvailableOfflineDownload": "Baixar playlist",
+    "AvailableOfflineDownload": "Baixar lista de reprodução",
     "AvailableOfflineDownloading": "Baixar {0} de {1}",
     "RemoveOfflineConfirm": "Você quer mesmo excluir todos os itens baixados?",
-    "EmptyTitle": "Esta lista está vazia",
+    "EmptyTitle": "Esta lista de reprodução está vazia",
     "EmptySubline": "Pressione os três pontos em uma faixa para adicionar a faixa nesta lista.",
     "AskToResumeDownloading": "Existem novos itens nesta lista de reprodução. Deseja retomar o download?"
   },
   "DownloadedContentViewModel": {
     "Title": "Conteúdo baixado ",
     "FollowedPodcasts": "Podcasts seguidos",
-    "MyTracks": "Meus rastros",
+    "MyTracks": "Minhas trilhas",
     "EmptyTitle": "Você não baixou nenhum conteúdo",
-    "EmptySubline": "Descarregue uma lista de reprodução ou siga um podcast para disponibilizá-la offline."
+    "EmptySubline": "Baixe uma playlist ou siga um podcast para tê-lo disponível offline."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Podcasts seguidos ",
@@ -232,7 +232,7 @@
   "PodcastViewModel": {
     "Title": "Podcast",
     "Follow": "Siga",
-    "Following": "A seguir",
+    "Following": "Seguindo",
     "ManageDownloads": "Gerenciar downloads",
     "GetNotified": "Seja notificado ",
     "GetNotifiedMessage": "quando novos episódios saírem",
@@ -250,7 +250,7 @@
     "Title": "Lista de reprodução"
   },
   "CuratedPlaylistsViewModel": {
-    "Title": "Lista de reprodução"
+    "Title": "Listas de reprodução"
   },
   "PlayerViewModel": {
     "Title": "Reproduzindo agora ",
@@ -374,7 +374,7 @@
     "DeleteConfirm": "Tem certeza de que deseja apagar a lista de reprodução \"{0}\"?",
     "DeleteFailure": "Falha ao excluir a lista de reprodução \"{0}\"",
     "CreateEmptyFailure": "Digite um título para criar uma lista de reprodução",
-    "RenameEmptyFailure": "Digite um título para renomear playlist",
+    "RenameEmptyFailure": "Insira um título para renomear a lista de reprodução",
     "SearchHint": "Busca",
     "EmptyTitle": "Esta lista de reprodução está vazia",
     "EmptySubline": "Pressione os três pontos em uma faixa para adicionar a faixa nesta lista.",
@@ -547,7 +547,7 @@
     "Title": "Melhores músicas",
     "PlaysPlural": "{0} reproduções",
     "PlaysSingular": "{0} reprodução",
-    "AddToMyPlaylist": "Adicionar playlist aos favoritos",
+    "AddToMyPlaylist": "Adicionar lista de reprodução aos favoritos",
     "SuccessfullyAddedToPlaylists": "Adicionado com sucesso aos favoritos"
   },
   "HighlightedTextTrackViewModel": {
