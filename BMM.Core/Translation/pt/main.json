@@ -330,11 +330,11 @@
     "OptionNotificationBadgeText": "Exiba uma notificação na tela inicial para ajudar você a lembrar de ouvir o episódio diário.",
     "OptionBibleStudyHeader": "Estudo Bíblico na tela inicial",
     "OptionBibleStudyText": "Mostre o status do seu estudo bíblico na tela inicial",
-    "AppInfoTitle": "Informações app",
+    "AppInfoTitle": "Informações do app",
     "AppInfoAppVersion": "Versão do App: ",
     "AppInfoManufacturer": "Produtora:",
     "AppInfoDeviceModel": "Modelo do dispositivo: ",
-    "AppInfoDevicePlatform": "Plataforma de dispositivo: ",
+    "AppInfoDevicePlatform": "Plataforma do dispositivo: ",
     "AppInfoDeviceVersion": "Versão do dispositivo: ",
     "LoggedInAs": "Logar como ",
     "LogoutConfirm": "Tem certeza que deseja sair?",
@@ -367,7 +367,7 @@
     "Resume": "Retomar",
     "AvailableOffline": "Disponível off-line",
     "AvailableOfflineDownload": "Baixar",
-    "AvailableOfflineDownloading": "Baixar {0} de {1}",
+    "AvailableOfflineDownloading": "Restam {0} de {1} downloads",
     "RemoveOfflineConfirm": "Você quer mesmo excluir todos os itens baixados?",
     "CreatePrompt": "Digite um nome de lista de reprodução",
     "CreateFailure": "Falha ao criar playlist",
@@ -452,16 +452,16 @@
     "Track.Share": "Compartilhar faixa",
     "Album.Play": "Reproduzir",
     "Album.AddToPlaylist": "Adicionar álbum à playlist",
-    "Album.AddToMyTracks": "Adicionar o álbum para Meus rastros",
-    "Album.AddedToMyTracks": "Adicionado ao Meus rastros",
+    "Album.AddToMyTracks": "Adicionar álbum às Minhas Faixas",
+    "Album.AddedToMyTracks": "Álbum adicionado em Minhas Faixas",
     "Album.AddToQueue": "Adicionar ao fim da fila",
     "Album.Share": "Compartilhar álbum",
     "FailedToAdd": "Falha ao adicionar a faixa à lista de reprodução. Por favor, tente novamente mais tarde.",
     "FailedToAddAlbum": "Falha ao adicionar o álbum à lista de reprodução, porque ela contém álbuns.",
     "AlbumFailedToAddAlreadyExists": "Este álbum já existe em sua lista de reprodução.",
     "TrackAlreadyExistInTrackCollection": "A faixa já existe na lista de reprodução",
-    "FailedToAddUnknownType": "Adicionar um \"{0}\" para uma lista de reprodução não é suportado atualmente.",
-    "MyTracks": "Meus rastros",
+    "FailedToAddUnknownType": "Adicionar \"{0}\" a uma lista de reprodução não é suportado no momento.",
+    "MyTracks": "Minhas trilhas",
     "Contributor.Play": "Reproduzir",
     "Contributor.Share": "Compartilhar colaborador",
     "OfflineTrackCollection.DeletePlaylist": "Excluir lista de reprodução",
@@ -470,7 +470,7 @@
   },
   "Notifications": {
     "Downloading": "Baixando {0}",
-    "ItemsDownloaded": "Artigo de {0} de {1}"
+    "ItemsDownloaded": "Item {0} de {1}"
   },
   "PodcastsViewModel": {
     "Title": "Podcasts"
@@ -596,7 +596,7 @@
     "RewardIos": "Um ícone de aplicativo exclusivo para seu aplicativo BMM 🤩",
     "RewardAndroidGolden": "Um tema de cores exclusivo para seu aplicativo BMM. Você também está participando do sorteio de um par de AirPods Pro. Bom trabalho!",
     "RewardIosGolden": "Um ícone de aplicativo exclusivo para seu aplicativo BMM em ouro. Você também está participando do sorteio de um par de AirPods Pro. Bom trabalho!",
-    "PlayNext": "Jogue a seguir"
+    "PlayNext": "Tocar a seguir"
   },
   "SuggestEditViewModel": {
     "Title": "Sugira uma edição",
