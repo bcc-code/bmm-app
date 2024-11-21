@@ -619,5 +619,12 @@
     "Title": "Conquistas",
     "EmptyTitle": "Um lugar para suas conquistas do estudo da bíblico",
     "EmptySubtitle": "As conquistas obtidas nos estudos bíblicos serão coletadas aqui."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Lyrics",
+    "Transcription": "Transcription",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
