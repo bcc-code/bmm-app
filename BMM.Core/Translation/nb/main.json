@@ -622,9 +622,9 @@
   },
   "ReadTranscriptionViewModel": {
     "SongTreasures": "Song Treasures",
-    "Lyrics": "Lyrics",
-    "Transcription": "Transcription",
-    "Melody": "Melody",
-    "Text": "Text"
+    "Lyrics": "Sangtekst",
+    "Transcription": "Transkripsjon",
+    "Melody": "Melodi",
+    "Text": "Tekst"
   }
 }
