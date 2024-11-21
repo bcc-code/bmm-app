@@ -619,5 +619,12 @@
     "Title": "Errungenschaften",
     "EmptyTitle": "Ein Platz für deine Bibelstudien-Errungenschaften",
     "EmptySubtitle": "Hier werden die in Bibelstudien erzielten Errungenschaften gesammelt."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Liedtext",
+    "Transcription": "Transkription",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }

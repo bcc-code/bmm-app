@@ -619,5 +619,12 @@
     "Title": "Præstationer",
     "EmptyTitle": "Dine bibelstudie-præstationer",
     "EmptySubtitle": "Præstationer opnået i bibelstudier vil blive samlet her."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Tekster",
+    "Transcription": "Transkribering",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }

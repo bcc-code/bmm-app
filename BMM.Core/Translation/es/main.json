@@ -619,5 +619,12 @@
     "Title": "Logros",
     "EmptyTitle": "Un lugar para tus logros en el estudio bíblico",
     "EmptySubtitle": "Los logros obtenidos en estudios bíblicos se recopilarán aquí."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Letras",
+    "Transcription": "Transcripción",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }

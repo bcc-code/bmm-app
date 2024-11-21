@@ -619,5 +619,12 @@
     "Title": "Prestaties",
     "EmptyTitle": "Een plek voor uw Bijbelstudie-prestaties",
     "EmptySubtitle": "Prestaties behaald tijdens Bijbelstudies worden hier verzameld."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Lyrics",
+    "Transcription": "Transcriptie",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }

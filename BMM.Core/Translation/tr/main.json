@@ -619,5 +619,12 @@
     "Title": "Başarılar",
     "EmptyTitle": "İncil Çalışması Başarılarınız için bir yer",
     "EmptySubtitle": "İncil Çalışmalarında başarılar kazandığınızda bunları burada toplamaya başlayın."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Lyrics",
+    "Transcription": "Transcription",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
