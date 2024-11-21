@@ -619,5 +619,12 @@
     "Title": "Réalisations",
     "EmptyTitle": "Un espace pour vos résultats d'études bibliques",
     "EmptySubtitle": "Les résultats obtenus dans les études bibliques seront rassemblés ici."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Paroles",
+    "Transcription": "Transcription",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
