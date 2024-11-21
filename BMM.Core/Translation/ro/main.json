@@ -619,5 +619,12 @@
     "Title": "Realizări",
     "EmptyTitle": "Un loc pentru realizările tale din Studiul Biblic",
     "EmptySubtitle": "Realizările obținute în Studiile Biblice vor fi colectate aici."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Versuri",
+    "Transcription": "Transcriere",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
