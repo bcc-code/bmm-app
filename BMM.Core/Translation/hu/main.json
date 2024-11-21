@@ -619,5 +619,12 @@
     "Title": "Eredmények",
     "EmptyTitle": "Egy hely a bibliatanulmányozási eredményeidnek",
     "EmptySubtitle": "Itt kezdheted el gyűjteni a bibliatanulmányozásban elért eredményeket."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Szövegek",
+    "Transcription": "Átírás",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
