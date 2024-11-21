@@ -619,5 +619,12 @@
     "Title": "Dosežki",
     "EmptyTitle": "Prostor za tvoje dosežke pri biblijskem preučevanju",
     "EmptySubtitle": "Ko pridobiš dosežke pri preučevanju Svetega pisma, jih začneš zbirati tukaj."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Besedilo",
+    "Transcription": "Opis",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
