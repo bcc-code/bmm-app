@@ -23,6 +23,12 @@ namespace BMM.UI.iOS
 		UIKit.UILabel Header { get; set; }
 
 		[Outlet]
+		UIKit.UIView HeaderContainerView { get; set; }
+
+		[Outlet]
+		UIKit.UIImageView ImageIcon { get; set; }
+
+		[Outlet]
 		UIKit.UIButton PlayerStatusButton { get; set; }
 
 		[Outlet]
@@ -50,29 +56,19 @@ namespace BMM.UI.iOS
 				CloseButtonContainer = null;
 			}
 
-			if (Header != null) {
-				Header.Dispose ();
-				Header = null;
-			}
-
-			if (TranscriptionsTableView != null) {
-				TranscriptionsTableView.Dispose ();
-				TranscriptionsTableView = null;
-			}
-
 			if (CoverView != null) {
 				CoverView.Dispose ();
 				CoverView = null;
 			}
 
-			if (TrackTitleLAbel != null) {
-				TrackTitleLAbel.Dispose ();
-				TrackTitleLAbel = null;
+			if (Header != null) {
+				Header.Dispose ();
+				Header = null;
 			}
 
-			if (TrackSubtitleLabel != null) {
-				TrackSubtitleLabel.Dispose ();
-				TrackSubtitleLabel = null;
+			if (ImageIcon != null) {
+				ImageIcon.Dispose ();
+				ImageIcon = null;
 			}
 
 			if (PlayerStatusButton != null) {
@@ -85,14 +81,34 @@ namespace BMM.UI.iOS
 				PlayerView = null;
 			}
 
+			if (PlayerViewShadowContainer != null) {
+				PlayerViewShadowContainer.Dispose ();
+				PlayerViewShadowContainer = null;
+			}
+
 			if (ProgressBar != null) {
 				ProgressBar.Dispose ();
 				ProgressBar = null;
 			}
 
-			if (PlayerViewShadowContainer != null) {
-				PlayerViewShadowContainer.Dispose ();
-				PlayerViewShadowContainer = null;
+			if (TrackSubtitleLabel != null) {
+				TrackSubtitleLabel.Dispose ();
+				TrackSubtitleLabel = null;
+			}
+
+			if (TrackTitleLAbel != null) {
+				TrackTitleLAbel.Dispose ();
+				TrackTitleLAbel = null;
+			}
+
+			if (TranscriptionsTableView != null) {
+				TranscriptionsTableView.Dispose ();
+				TranscriptionsTableView = null;
+			}
+
+			if (HeaderContainerView != null) {
+				HeaderContainerView.Dispose ();
+				HeaderContainerView = null;
 			}
 
 		}

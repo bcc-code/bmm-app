@@ -1,6 +1,12 @@
+using _Microsoft.Android.Resource.Designer;
+using Android.Content.Res;
 using Android.Runtime;
+using Android.Views;
 using AndroidX.RecyclerView.Widget;
+using BMM.Core.Constants;
+using BMM.Core.Models.Player.Lyrics;
 using BMM.Core.ViewModels;
+using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Fragments.Base;
 using BMM.UI.Droid.Application.ItemDecorators;
 using BMM.UI.Droid.Application.LayoutManagers;
@@ -21,7 +27,22 @@ namespace BMM.UI.Droid.Application.Fragments
         private LinearLayoutManager _centerLayoutManager;
         private int _lastPosition;
         private bool _initialized;
+        private LyricsLink _lyricsLink;
+        private bool _isAutoTranscribed;
+        private ImageView _aiImage;
+        private TextView _headerLabel;
+
         protected override int FragmentId => Resource.Layout.fragment_read_transcriptions;
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
+
+            _aiImage = view.FindViewById<ImageView>(ResourceConstant.Id.AIIcon);
+            _headerLabel = view.FindViewById<TextView>(ResourceConstant.Id.HeaderLabel);
+            
+            return view;
+        }
 
         protected override void Bind()
         {
@@ -42,8 +63,36 @@ namespace BMM.UI.Droid.Application.Fragments
                 .For(f => f.AdjustScrollPositionInteraction)
                 .To(vm => vm.AdjustScrollPositionInteraction)
                 .OneWay();
+            
+            set.Bind(this)
+                .For(v => v.IsAutoTranscribed)
+                .To(vm => vm.IsAutoTranscribed);
+           
+            set.Bind(this)
+                .For(v => v.LyricsLink)
+                .To(vm => vm.LyricsLink);
 
             set.Apply();
+        }
+        
+        public LyricsLink LyricsLink
+        {
+            get => _lyricsLink;
+            set
+            {
+                _lyricsLink = value;
+                SetIconAndHeader();
+            }
+        }
+
+        public bool IsAutoTranscribed
+        {
+            get => _isAutoTranscribed;
+            set
+            {
+                _isAutoTranscribed = value;
+                SetIconAndHeader();
+            }
         }
 
         public IMvxInteraction<int> AdjustScrollPositionInteraction
@@ -77,6 +126,33 @@ namespace BMM.UI.Droid.Application.Fragments
                 _adjustScrollPositionInteraction.Requested -= OnAdjustScrollPositionInteractionRequested;
         }
 
+        private void SetIconAndHeader()
+        {
+            if (_isAutoTranscribed)
+            {
+                _aiImage.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.icon_ai));
+            }
+            else
+            {
+                int drawableId = LyricsLink?.LyricsLinkType == LyricsLinkType.SongTreasures
+                    ? Resource.Drawable.image_song_treasures
+                    : Resource.Drawable.icon_info;
+                
+                _aiImage.SetImageDrawable(Resources.GetDrawable(drawableId));
+            }
+
+            SetHeaderColor();
+        }
+        
+        private void SetHeaderColor()
+        {
+            var colorId = _isAutoTranscribed
+                ? ResourceConstant.Color.utility_auto_color
+                : ResourceConstant.Color.label_one_color;
+
+            _headerLabel.SetTextColor(Context.GetColorFromResource(colorId));
+        }
+        
         private void OnAdjustScrollPositionInteractionRequested(object sender, MvxValueEventArgs<int> e)
         {
             if (_lastPosition == e.Value)

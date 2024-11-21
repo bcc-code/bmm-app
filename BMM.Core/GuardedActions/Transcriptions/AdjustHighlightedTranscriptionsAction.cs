@@ -1,6 +1,9 @@
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Transcriptions.Interfaces;
+using BMM.Core.Models.POs.SuggestEdit.Interfaces;
+using BMM.Core.Models.POs.Transcriptions;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.ViewModels;
 
 namespace BMM.Core.GuardedActions.Transcriptions;
@@ -9,29 +12,39 @@ public class AdjustHighlightedTranscriptionsAction
     : GuardedActionWithParameter<long>,
       IAdjustHighlightedTranscriptionsAction
 {
+    private readonly IMediaPlayer _mediaPlayer;
+
+    public AdjustHighlightedTranscriptionsAction(IMediaPlayer mediaPlayer)
+    {
+        _mediaPlayer = mediaPlayer;
+    }
+    
     private ReadTranscriptionViewModel DataContext => this.GetDataContext();
     
     protected override Task Execute(long currentPosition)
     {
         long positionInSeconds = (long)TimeSpan.FromMilliseconds(currentPosition).TotalSeconds;
-        
-        var currentItem = DataContext
+        var transcriptionItems = DataContext
             .Transcriptions
+            .OfType<ReadTranscriptionsPO>()
+            .ToList();
+        
+        var currentItem = transcriptionItems
             .FirstOrDefault(t => t.Transcription.Start < positionInSeconds && t.Transcription.End > positionInSeconds);
 
-        if (currentItem == null)
+        if (currentItem == null || _mediaPlayer.CurrentTrack?.Id != DataContext.Track?.Id)
         {
-            if (DataContext.Transcriptions.Any() && DataContext.Transcriptions.Last().Transcription.End == 0)
-                DataContext.Transcriptions.All(x => x.IsHighlighted = true);
+            if (!DataContext.HasTimeframes)
+                transcriptionItems.ForEach(x => x.IsHighlighted = true);
+            
             return Task.CompletedTask;
         }
-
-        int indexOfCurrentItem = DataContext
-            .Transcriptions
+        
+        int indexOfCurrentItem = transcriptionItems
             .IndexOf(currentItem);
 
-        for (int i = 0; i < DataContext.Transcriptions.Count; i++)
-            DataContext.Transcriptions[i].IsHighlighted = i <= indexOfCurrentItem;
+        for (int i = 0; i < transcriptionItems.Count; i++)
+            transcriptionItems[i].IsHighlighted = i <= indexOfCurrentItem;
         
         DataContext.AdjustScrollPositionInteraction.Raise(indexOfCurrentItem);
         return Task.CompletedTask;

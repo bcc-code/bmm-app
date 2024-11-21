@@ -14,13 +14,21 @@ namespace BMM.UI.iOS
 	partial class ReadTranscriptionTableViewCell
 	{
 		[Outlet]
+		UIKit.UILabel HeaderTextLabel { get; set; }
+
+		[Outlet]
 		UIKit.UILabel TranscriptionsTextLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
 			if (TranscriptionsTextLabel != null) {
-                TranscriptionsTextLabel.Dispose ();
-                TranscriptionsTextLabel = null;
+				TranscriptionsTextLabel.Dispose ();
+				TranscriptionsTextLabel = null;
+			}
+
+			if (HeaderTextLabel != null) {
+				HeaderTextLabel.Dispose ();
+				HeaderTextLabel = null;
 			}
 
 		}

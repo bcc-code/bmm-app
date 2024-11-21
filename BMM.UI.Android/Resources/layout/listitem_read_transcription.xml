@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:local="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/ReadTranscriptionLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/margin_medium"
-        android:layout_marginVertical="@dimen/margin_xsmall"
-        android:textFontWeight="445"
-        android:textColor="@color/label_two_color"
-        android:textSize="16sp"
-        android:lineHeight="32sp"
-        local:MvxBind="
-            Text Transcription.Text;
-            ViewAlpha IsHighlightedToAlpha(IsHighlighted)"
-        style="@style/Subtitle3_Label3" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+            android:id="@+id/HeaderLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:textFontWeight="445"
+            android:textColor="@color/label_four_color"
+            android:textSize="16sp"
+            android:lineHeight="28sp"
+            local:MvxBind="
+                Text Header;
+                Visibility InvertedVisibility(NullOrEmpty(Header))" />
+    
+    <TextView
+            android:id="@+id/ReadTranscriptionLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_xsmall"
+            android:textFontWeight="445"
+            android:textColor="@color/label_one_color"
+            android:textSize="16sp"
+            android:lineHeight="28sp"
+            local:MvxBind="
+                Text Text;
+                Visibility InvertedVisibility(NullOrEmpty(Text));
+                ViewAlpha IsHighlightedToAlpha(IsHighlighted);
+                Click ItemClickedCommand" />
+    
+</LinearLayout>

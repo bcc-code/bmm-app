@@ -202,7 +202,7 @@ namespace BMM.Core.ViewModels
                     return;
 
                 await NavigationService.Navigate<ReadTranscriptionViewModel, TranscriptionParameter>(
-                    new TranscriptionParameter(CurrentTrack.Id, CurrentTrack.Subtype));
+                    new TranscriptionParameter(CurrentTrack));
                 return;
             }
             

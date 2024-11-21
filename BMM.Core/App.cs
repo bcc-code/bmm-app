@@ -40,6 +40,7 @@ using BMM.Core.Implementations.Factories.HighlightedTextTracks;
 using BMM.Core.Implementations.Factories.Streak;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Implementations.Factories.Transcriptions;
 using BMM.Core.Implementations.Factories.YearInReview;
 using BMM.Core.Implementations.FeatureToggles;
 using BMM.Core.Implementations.Feedback;
@@ -301,6 +302,7 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IYearInReviewTeaserPOFactory, YearInReviewTeaserPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITopSongsPOFactory, TopSongsPOFactory>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IHighlightedTextTrackPOFactory, HighlightedTextTrackPOFactory>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ITranscriptionPOFactory, TranscriptionPOFactory>();
             
             _assemblies = AppDomain
                 .CurrentDomain

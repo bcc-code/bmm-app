@@ -1,15 +1,13 @@
-using BMM.Api.Implementation.Models;
+using BMM.Api.Abstraction;
 
 namespace BMM.Core.ViewModels.Parameters;
 
 public class TranscriptionParameter
 {
-    public TranscriptionParameter(int trackId, TrackSubType type)
+    public TranscriptionParameter(ITrackModel track)
     {
-        TrackId = trackId;
-        TrackType = type;
+        Track = track;
     }
 
-    public int TrackId { get; }
-    public TrackSubType TrackType { get; set; }
+    public ITrackModel Track { get; }
 }
