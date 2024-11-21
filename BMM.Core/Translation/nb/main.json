@@ -619,5 +619,12 @@
     "Title": "Prestasjoner",
     "EmptyTitle": "Et sted for dine bibelstudie-prestasjoner",
     "EmptySubtitle": "Prestasjoner fått fra bibelstudier vil bli samlet her."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Lyrics",
+    "Transcription": "Transcription",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
