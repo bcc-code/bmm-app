@@ -621,10 +621,10 @@
     "EmptySubtitle": "Les résultats obtenus dans les études bibliques seront rassemblés ici."
   },
   "ReadTranscriptionViewModel": {
-    "SongTreasures": "Song Treasures",
+    "SongTreasures": "Extrait de Song Treasures",
     "Lyrics": "Paroles",
     "Transcription": "Transcription",
-    "Melody": "Melody",
-    "Text": "Text"
+    "Melody": "Mélodie",
+    "Text": "Texte"
   }
 }
