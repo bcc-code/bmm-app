@@ -1,3 +1,4 @@
+using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.ValueConverters;
@@ -31,5 +32,10 @@ public static class TrackExtensions
                 null,
                 System.Globalization.CultureInfo.CurrentCulture)
             .ToString();
+    }
+    
+    public static bool IsSong(this ITrackModel track)
+    {
+        return track.Subtype.IsOneOf(TrackSubType.Song, TrackSubType.Singsong);
     }
 }

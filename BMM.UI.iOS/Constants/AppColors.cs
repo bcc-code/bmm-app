@@ -10,6 +10,7 @@ namespace BMM.UI.iOS.Constants
         public static UIColor LabelOneColorReverted => UIColor.FromName(nameof(LabelOneColorReverted));
         public static UIColor LabelTwoColor => UIColor.FromName(nameof(LabelTwoColor));
         public static UIColor LabelThreeColor => UIColor.FromName(nameof(LabelThreeColor));
+        public static UIColor LabelFourColor => UIColor.FromName(nameof(LabelFourColor));
         public static UIColor NotificationColor => UIColor.FromName(nameof(NotificationColor));
         public static UIColor PlaceholderColor => UIColor.FromName(nameof(PlaceholderColor));
         public static UIColor RadioColor => UIColor.FromName(nameof(RadioColor));

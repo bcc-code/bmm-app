@@ -9,6 +9,7 @@ using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Region.Interfaces;
 using BMM.Core.Models.Enums;
+using BMM.Core.Models.Player.Lyrics;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Interfaces;
 
@@ -22,29 +23,31 @@ namespace BMM.Core.GuardedActions.Player
             "brunstad.tv"
         };
         
-        private const string SangtekstRelationName = "Sangtekst";
         private readonly IFirebaseRemoteConfig _firebaseRemoteConfig;
         private readonly ICultureInfoRepository _cultureInfoRepository;
         private readonly IDeveloperPermission _developerPermission;
+        private readonly IGetLyricsLinkAction _getLyricsLinkAction;
 
         public UpdateExternalRelationsAction(
             IFirebaseRemoteConfig firebaseRemoteConfig,
             ICultureInfoRepository cultureInfoRepository,
-            IDeveloperPermission developerPermission)
+            IDeveloperPermission developerPermission,
+            IGetLyricsLinkAction getLyricsLinkAction)
         {
             _firebaseRemoteConfig = firebaseRemoteConfig;
             _cultureInfoRepository = cultureInfoRepository;
             _developerPermission = developerPermission;
+            _getLyricsLinkAction = getLyricsLinkAction;
         }
         
         private IPlayerViewModel PlayerViewModel => this.GetDataContext();
 
-        protected override Task Execute()
+        protected override async Task Execute()
         {
             var currentTrack = PlayerViewModel.CurrentTrack;
-            
+
             if (currentTrack == null)
-                return Task.CompletedTask;
+                return;
 
             if (currentTrack.Language != ContentLanguageManager.LanguageIndependentContent)
                 PlayerViewModel.TrackLanguage = _cultureInfoRepository.GetCultureInfoLanguage(currentTrack.Language).NativeName;
@@ -53,7 +56,7 @@ namespace BMM.Core.GuardedActions.Player
                                                    currentTrack.Relations.Any(relation => relation.Type == TrackRelationType.External);
 
             PlayerViewModel.WatchBccMediaLink = GetBCCMediaLink(currentTrack);
-            string lyricsLink = GetLyricsLink(currentTrack);
+            var lyricsLink = await _getLyricsLinkAction.ExecuteGuarded(currentTrack);
 
             PlayerLeftButtonType leftButtonType = default;
 
@@ -63,15 +66,18 @@ namespace BMM.Core.GuardedActions.Player
             bool hasTranscription = currentTrack.HasTranscription && isReadingTranscriptionsEnabled;
             
             if (hasTranscription)
-                leftButtonType = PlayerLeftButtonType.Transcription;
-            else if (!string.IsNullOrEmpty(lyricsLink))
+            {
+                if (currentTrack.IsSong())
+                    leftButtonType = PlayerLeftButtonType.Lyrics;
+                else
+                    leftButtonType = PlayerLeftButtonType.Transcription;
+            }
+            else if (lyricsLink.LyricsLinkType != LyricsLinkType.None)
                 leftButtonType = PlayerLeftButtonType.Lyrics;
             
             PlayerViewModel.LeftButtonType = leftButtonType;
-            PlayerViewModel.LeftButtonLink = GetLyricsLink(currentTrack);
+            PlayerViewModel.LeftButtonLink = lyricsLink.Link;
             PlayerViewModel.HasTranscription = hasTranscription;
-            
-            return Task.CompletedTask;
         }
 
         private string GetBCCMediaLink(ITrackModel currentTrack)
@@ -88,31 +94,6 @@ namespace BMM.Core.GuardedActions.Player
                 return externalRelation.Url;
 
             return null;
-        }
-
-        private string GetLyricsLink(ITrackModel currentTrack)
-        {
-            var existingSongbook = currentTrack
-                ?.Relations
-                ?.OfType<TrackRelationSongbook>()
-                .FirstOrDefault();
-
-            if (existingSongbook != null)
-            {
-                return string.Format(_firebaseRemoteConfig.SongTreasuresSongLink,
-                    SongbookUtils.GetShortName(existingSongbook.Name),
-                    existingSongbook.Id);
-            }
-
-            var sangtekstElement = currentTrack
-                ?.Relations
-                ?.OfType<TrackRelationExternal>()
-                .FirstOrDefault(x => string.Equals(x.Name, SangtekstRelationName, StringComparison.OrdinalIgnoreCase));
-
-            if (sangtekstElement == null)
-                return string.Empty;
-
-            return sangtekstElement.Url;
         }
 
         protected override async Task OnFinally()

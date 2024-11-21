@@ -55,5 +55,7 @@ namespace BMM.Api.Abstraction
         bool HasTranscription { get; set; }
         
         bool IsLiked { get; set; }
+        
+        DateTime PublishedAt { get; set; }
     }
 }

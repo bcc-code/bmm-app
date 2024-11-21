@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +13,8 @@
                 <outlet property="CloseButtonContainer" destination="3nJ-Xr-zEA" id="IBF-ad-I1s"/>
                 <outlet property="CoverView" destination="7K2-rO-Qiw" id="Djq-1g-aCq"/>
                 <outlet property="Header" destination="Wl7-UM-iIK" id="LF7-LN-LLX"/>
+                <outlet property="HeaderContainerView" destination="yaI-PP-Xna" id="Z1R-86-0ke"/>
+                <outlet property="ImageIcon" destination="Pl0-Kb-NT9" id="3hQ-Vh-96R"/>
                 <outlet property="PlayerStatusButton" destination="DqH-OD-tUh" id="7Pf-xm-qzI"/>
                 <outlet property="PlayerView" destination="bCK-I6-AIm" id="j8S-0k-eJl"/>
                 <outlet property="PlayerViewShadowContainer" destination="Tpu-ut-ss5" id="KGI-TK-Brn"/>
@@ -33,14 +35,6 @@
                     <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="sectionIndexBackgroundColor" name="BackgroundOneColor"/>
                 </tableView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconAI" translatesAutoresizingMaskIntoConstraints="NO" id="Pl0-Kb-NT9">
-                    <rect key="frame" x="24" y="72" width="20" height="20"/>
-                    <color key="tintColor" name="UtilityAutoColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="20" id="iYY-pq-v8p"/>
-                        <constraint firstAttribute="height" constant="20" id="nPR-QS-6lB"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3nJ-Xr-zEA">
                     <rect key="frame" x="362" y="64" width="36" height="36"/>
                     <subviews>
@@ -66,12 +60,33 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wl7-UM-iIK">
-                    <rect key="frame" x="46" y="71.5" width="300" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-PP-Xna">
+                    <rect key="frame" x="24" y="48" width="322" height="68"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_song_treasure.png" translatesAutoresizingMaskIntoConstraints="NO" id="Pl0-Kb-NT9">
+                            <rect key="frame" x="0.0" y="24" width="20" height="20"/>
+                            <color key="tintColor" name="UtilityAutoColor"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="iYY-pq-v8p"/>
+                                <constraint firstAttribute="height" constant="20" id="nPR-QS-6lB"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wl7-UM-iIK">
+                            <rect key="frame" x="26" y="24" width="41.5" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Pl0-Kb-NT9" firstAttribute="top" secondItem="yaI-PP-Xna" secondAttribute="top" constant="24" id="1vy-gQ-y5f"/>
+                        <constraint firstItem="Pl0-Kb-NT9" firstAttribute="leading" secondItem="yaI-PP-Xna" secondAttribute="leading" id="2Rr-bS-0z0"/>
+                        <constraint firstItem="Wl7-UM-iIK" firstAttribute="leading" secondItem="Pl0-Kb-NT9" secondAttribute="trailing" constant="6" id="cP6-Vr-zv8"/>
+                        <constraint firstItem="Wl7-UM-iIK" firstAttribute="centerY" secondItem="yaI-PP-Xna" secondAttribute="centerY" id="lrx-bX-HEd"/>
+                        <constraint firstAttribute="bottom" secondItem="Pl0-Kb-NT9" secondAttribute="bottom" constant="24" id="tDo-16-yT4"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bCK-I6-AIm">
                     <rect key="frame" x="10" y="782" width="394" height="60"/>
                     <subviews>
@@ -79,6 +94,7 @@
                             <rect key="frame" x="14" y="14" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="0CD-S3-7G9"/>
+                                <constraint firstAttribute="width" secondItem="7K2-rO-Qiw" secondAttribute="height" multiplier="1:1" id="CTM-AQ-bOO"/>
                                 <constraint firstAttribute="width" secondItem="7K2-rO-Qiw" secondAttribute="height" multiplier="1:1" id="OG5-Y3-Rqk"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
@@ -131,7 +147,6 @@
                         <constraint firstItem="7K2-rO-Qiw" firstAttribute="centerY" secondItem="bCK-I6-AIm" secondAttribute="centerY" id="1wL-nk-acx"/>
                         <constraint firstAttribute="trailing" secondItem="DqH-OD-tUh" secondAttribute="trailing" id="2ru-gj-4eO"/>
                         <constraint firstItem="7K2-rO-Qiw" firstAttribute="leading" secondItem="bCK-I6-AIm" secondAttribute="leading" constant="14" id="CQj-ES-WRI"/>
-                        <constraint firstItem="7K2-rO-Qiw" firstAttribute="width" secondItem="7K2-rO-Qiw" secondAttribute="height" multiplier="1:1" id="CTM-AQ-bOO"/>
                         <constraint firstAttribute="trailing" secondItem="v5w-18-JsJ" secondAttribute="trailing" id="FEk-cT-muR"/>
                         <constraint firstAttribute="bottom" secondItem="v5w-18-JsJ" secondAttribute="bottom" id="NZ4-G2-meP"/>
                         <constraint firstItem="DqH-OD-tUh" firstAttribute="top" secondItem="bCK-I6-AIm" secondAttribute="top" id="RBa-Sb-rLy"/>
@@ -164,34 +179,32 @@
             <viewLayoutGuide key="safeArea" id="VFw-uV-y3f"/>
             <color key="backgroundColor" name="BackgroundOneColor"/>
             <constraints>
-                <constraint firstItem="PjM-IE-URp" firstAttribute="top" secondItem="Pl0-Kb-NT9" secondAttribute="bottom" constant="22" id="5HD-s8-b19"/>
                 <constraint firstItem="Tpu-ut-ss5" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="10" id="7HE-4V-3sD"/>
-                <constraint firstItem="Wl7-UM-iIK" firstAttribute="centerY" secondItem="Pl0-Kb-NT9" secondAttribute="centerY" id="DFt-TF-B2B"/>
+                <constraint firstItem="yaI-PP-Xna" firstAttribute="top" secondItem="VFw-uV-y3f" secondAttribute="top" id="AIm-x7-3jF"/>
                 <constraint firstItem="PjM-IE-URp" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" id="EU4-Xt-TxE"/>
                 <constraint firstItem="Tpu-ut-ss5" firstAttribute="bottom" secondItem="bCK-I6-AIm" secondAttribute="bottom" id="F2f-L9-Eyn"/>
-                <constraint firstItem="3nJ-Xr-zEA" firstAttribute="leading" secondItem="Wl7-UM-iIK" secondAttribute="trailing" constant="16" id="Mnl-ZE-x8v"/>
-                <constraint firstItem="Pl0-Kb-NT9" firstAttribute="top" secondItem="VFw-uV-y3f" secondAttribute="top" constant="24" id="VLg-9a-IdB"/>
+                <constraint firstItem="PjM-IE-URp" firstAttribute="top" secondItem="yaI-PP-Xna" secondAttribute="bottom" constant="-2" id="WxG-Gw-bCz"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="bCK-I6-AIm" secondAttribute="trailing" constant="10" id="Yle-gY-kPv"/>
                 <constraint firstItem="bCK-I6-AIm" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="10" id="b1W-jo-wmq"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="bottom" secondItem="bCK-I6-AIm" secondAttribute="bottom" constant="20" id="fCo-72-CLK"/>
+                <constraint firstItem="yaI-PP-Xna" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="24" id="fTa-is-EQi"/>
                 <constraint firstItem="Tpu-ut-ss5" firstAttribute="top" secondItem="bCK-I6-AIm" secondAttribute="top" id="fXB-Gh-Tqb"/>
-                <constraint firstItem="Pl0-Kb-NT9" firstAttribute="leading" secondItem="VFw-uV-y3f" secondAttribute="leading" constant="24" id="g3r-Ua-b1w"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="bottom" secondItem="Tpu-ut-ss5" secondAttribute="bottom" constant="20" id="hVu-d5-AWv"/>
                 <constraint firstItem="3nJ-Xr-zEA" firstAttribute="top" secondItem="VFw-uV-y3f" secondAttribute="top" constant="16" id="i0k-BK-DBa"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="bottom" secondItem="PjM-IE-URp" secondAttribute="bottom" id="nva-hN-g73"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="3nJ-Xr-zEA" secondAttribute="trailing" constant="16" id="orT-Lf-qjS"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="PjM-IE-URp" secondAttribute="trailing" id="qPn-qV-hiM"/>
                 <constraint firstItem="VFw-uV-y3f" firstAttribute="trailing" secondItem="Tpu-ut-ss5" secondAttribute="trailing" constant="10" id="qdZ-vZ-t29"/>
-                <constraint firstItem="Wl7-UM-iIK" firstAttribute="leading" secondItem="Pl0-Kb-NT9" secondAttribute="trailing" constant="2" id="xWx-Xh-SbF"/>
+                <constraint firstItem="3nJ-Xr-zEA" firstAttribute="leading" secondItem="yaI-PP-Xna" secondAttribute="trailing" constant="16" id="zkA-eL-8aR"/>
             </constraints>
             <point key="canvasLocation" x="57.971014492753625" y="53.571428571428569"/>
         </view>
     </objects>
     <resources>
-        <image name="IconAI" width="20" height="20"/>
         <image name="IconPlayMini" width="24" height="24"/>
         <image name="IconRemove" width="24" height="24"/>
         <image name="PauseMiniIcon" width="24" height="24"/>
+        <image name="image_song_treasure.png" width="20" height="20"/>
         <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

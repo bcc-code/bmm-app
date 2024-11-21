@@ -22,6 +22,12 @@ namespace BMM.Core.Extensions
             list.Add(obj);
         }
         
+        public static void AddIfNotNull<T>(this IList<T> list, T item)
+        {
+            if (item != null)
+                list.Add(item);
+        }
+        
         public static List<List<T>> ChunkBy<T>(this List<T> source, int chunkSize)
         {
             return source

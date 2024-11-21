@@ -34,5 +34,7 @@ namespace BMM.Core.Constants
         public const string ImageQuizBackground = "Image_Quiz_Background";
         public const string ImageQuizBackgroundTwo = "Image_Quiz_Background_Two";
         public const string ImageQuizBackgroundThree = "Image_Quiz_Background_Three";
+        public const string IconAI = "Icon_AI";
+        public const string ImageSongTreasures = "Image_Song_Treasures";
     }
 }

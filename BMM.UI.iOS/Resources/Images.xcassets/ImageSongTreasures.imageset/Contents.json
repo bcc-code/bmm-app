@@ -1,18 +1,20 @@
 {
   "images": [
     {
-      "filename": "icon.information.pdf",
       "idiom": "universal"
     },
     {
+      "filename": "image_song_treasure.png",
       "idiom": "universal",
       "scale": "1x"
     },
     {
+      "filename": "image_song_treasure@2x.png",
       "idiom": "universal",
       "scale": "2x"
     },
     {
+      "filename": "image_song_treasure@3x.png",
       "idiom": "universal",
       "scale": "3x"
     },
@@ -527,7 +529,6 @@
   },
   "properties": {
     "preserves-vector-representation": false,
-    "template-rendering-intent": "template",
     "on-demand-resources-tags": []
   }
 }

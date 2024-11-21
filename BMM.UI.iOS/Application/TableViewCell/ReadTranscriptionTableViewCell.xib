@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,28 +16,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDE-dL-kHu">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="kNb-sO-o0a">
                         <rect key="frame" x="16" y="12" width="288" height="116"/>
-                        <attributedString key="attributedText">
-                            <fragment content="Label">
-                                <attributes>
-                                    <font key="NSFont" metaFont="system" size="17"/>
-                                </attributes>
-                            </fragment>
-                        </attributedString>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" placeholderIntrinsicWidth="288" placeholderIntrinsicHeight="83.5" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMV-ob-QbB">
+                                <rect key="frame" x="0.0" y="0.0" width="288" height="85.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QDE-dL-kHu">
+                                <rect key="frame" x="0.0" y="95.5" width="288" height="20.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="17"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="QDE-dL-kHu" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="5K3-U3-13v"/>
-                    <constraint firstItem="QDE-dL-kHu" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="12" id="hyk-cD-vDH"/>
-                    <constraint firstAttribute="bottom" secondItem="QDE-dL-kHu" secondAttribute="bottom" constant="12" id="qHM-kL-b1J"/>
-                    <constraint firstAttribute="trailing" secondItem="QDE-dL-kHu" secondAttribute="trailing" constant="16" id="zSp-M5-h2b"/>
+                    <constraint firstAttribute="bottom" secondItem="kNb-sO-o0a" secondAttribute="bottom" constant="12" id="Ad0-dP-UxF"/>
+                    <constraint firstItem="kNb-sO-o0a" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" constant="16" id="cYl-aW-Tuv"/>
+                    <constraint firstAttribute="trailing" secondItem="kNb-sO-o0a" secondAttribute="trailing" constant="16" id="fAy-NF-iVm"/>
+                    <constraint firstItem="kNb-sO-o0a" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" constant="12" id="z9v-xX-FfW"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" name="BackgroundOneColor"/>
             <connections>
+                <outlet property="HeaderTextLabel" destination="BMV-ob-QbB" id="oyR-kM-u0j"/>
                 <outlet property="TranscriptionsTextLabel" destination="QDE-dL-kHu" id="Hg3-ib-g0B"/>
             </connections>
             <point key="canvasLocation" x="304.34782608695656" y="363.61607142857139"/>
