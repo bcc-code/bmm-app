@@ -619,5 +619,12 @@
     "Title": "Достижения",
     "EmptyTitle": "Место для ваших достижений в изучении Библии",
     "EmptySubtitle": "Здесь будут храниться достижения, заработанные в процессе изучения."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Текст",
+    "Transcription": "Расшифровка текста",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
