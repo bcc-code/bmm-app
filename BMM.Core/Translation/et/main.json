@@ -619,5 +619,12 @@
     "Title": "Saavutused",
     "EmptyTitle": "Koht oma piibliõppe saavutuste jaoks",
     "EmptySubtitle": "Siia kogutakse piibliõppes saavutatud saavutused."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "Lyrics",
+    "Transcription": "Transcription",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
