@@ -619,5 +619,12 @@
     "Title": "சாதனைகள்",
     "EmptyTitle": "உங்கள் பைபிள் படிப்பு சாதனைகளுக்கான இடம்",
     "EmptySubtitle": "பைபிள் படிப்புகளில் பெற்ற சாதனைகள் இங்கே சேகரிக்கப்படும்."
+  },
+  "ReadTranscriptionViewModel": {
+    "SongTreasures": "Song Treasures",
+    "Lyrics": "பாடல் வரிகள்",
+    "Transcription": "படியெடுத்தல்",
+    "Melody": "Melody",
+    "Text": "Text"
   }
 }
