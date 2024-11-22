@@ -6,5 +6,6 @@ namespace BMM.Core.Models.POs.Other.Interfaces
     {
         string Key { get; set; }
         bool IsChecked { get; set; }
+        bool IsEnabled { get; set; }
     }
 }

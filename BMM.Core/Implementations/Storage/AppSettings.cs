@@ -290,10 +290,10 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(BadgeSetAt));
         }
 
-        public static int BadgeSetForTrackId
+        public static int LastPlayedCurrentPodcastTrackId
         {
-            get => GetValueOrDefault(nameof(BadgeSetForTrackId), default(int));
-            set => AddOrUpdateValue(value, nameof(BadgeSetForTrackId));
+            get => GetValueOrDefault(nameof(LastPlayedCurrentPodcastTrackId), default(int));
+            set => AddOrUpdateValue(value, nameof(LastPlayedCurrentPodcastTrackId));
         }
         
         public static Guid DeviceId => GetValueOrCreateDefault(nameof(DeviceId), Guid.NewGuid());

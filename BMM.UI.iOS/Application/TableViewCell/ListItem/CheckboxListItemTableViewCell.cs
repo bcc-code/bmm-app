@@ -20,6 +20,19 @@ namespace BMM.UI.iOS
                 set.Bind(TitleLabel).To(listItem => listItem.Title);
                 set.Bind(TextLabel).To(listItem => listItem.Text);
                 set.Bind(Switch).To(listItem => listItem.IsChecked);
+                
+                set.Bind(Switch)
+                    .For(v => v.Enabled)
+                    .To(po => po.IsEnabled);
+                
+                set.Bind(TitleLabel)
+                    .For(v => v.Enabled)
+                    .To(po => po.IsEnabled);
+                
+                set.Bind(TextLabel)
+                    .For(v => v.Enabled)
+                    .To(po => po.IsEnabled);
+                
                 set.Apply();
             });
         }

@@ -28,9 +28,11 @@ public class BadgeService : IBadgeService
 
     public async Task<bool> SetIfPossible(int trackId)
     {
-        if (!await _settingsStorage.GetBibleStudyBadgeEnabled()
-            || !await _settingsStorage.GetRemoveBadgeOnStreakPointOnlyEnabled() 
-            && AppSettings.BadgeSetForTrackId == trackId)
+        if (!await _settingsStorage.GetBibleStudyBadgeEnabled())
+            return false;
+
+        if (!await _settingsStorage.GetRemoveBadgeOnStreakPointOnlyEnabled()
+            && AppSettings.LastPlayedCurrentPodcastTrackId == trackId)
         {
             Remove();
             return false;
@@ -38,7 +40,6 @@ public class BadgeService : IBadgeService
         
         AppSettings.IsBadgeSet = IsBadgeSet = true;
         AppSettings.BadgeSetAt = DateTime.UtcNow;
-        AppSettings.BadgeSetForTrackId = trackId;
         return true;
     }
     

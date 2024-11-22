@@ -1,8 +1,6 @@
-﻿using System;
-using BMM.Core.Models.POs.Base;
+﻿using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Other.Interfaces;
 using MvvmCross.Commands;
-using Newtonsoft.Json.Serialization;
 
 namespace BMM.Core.Models.POs.Other
 {
@@ -10,7 +8,12 @@ namespace BMM.Core.Models.POs.Other
     {
         public CheckboxListItemPO()
         {
-            OnSelected = new MvxCommand(() => IsChecked = !IsChecked);
+            OnSelected = new MvxCommand(() =>
+            {
+                if (IsEnabled)
+                    IsChecked = !IsChecked;
+            });
+            IsEnabled = true;
         }
 
         public string Key { get; set; }
@@ -20,6 +23,7 @@ namespace BMM.Core.Models.POs.Other
         public string Text { get; set; }
 
         private bool _isChecked;
+        private bool _isEnabled;
 
         public bool IsChecked
         {
@@ -32,6 +36,12 @@ namespace BMM.Core.Models.POs.Other
                 RaisePropertyChanged();
                 OnChanged?.Invoke(this);
             }
+        }
+
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set => SetProperty(ref _isEnabled, value);
         }
 
         public IMvxCommand OnSelected { get; set; }

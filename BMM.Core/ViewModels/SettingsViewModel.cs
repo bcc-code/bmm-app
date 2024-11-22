@@ -254,7 +254,7 @@ namespace BMM.Core.ViewModels
             if (_remoteConfig.IsBadgesFeatureEnabled)
             {
                 bool isBibleStudyBadgeEnabled = await _settingsStorage.GetBibleStudyBadgeEnabled();
-                    
+                
                 items.Add(new CheckboxListItemPO
                 {
                     Key = NotificationBadgeKey,
@@ -264,52 +264,32 @@ namespace BMM.Core.ViewModels
                     OnChanged = async sender => await OnNotificationBadgeSettingChange(sender)
                 });
 
-                if (isBibleStudyBadgeEnabled)
-                    items.Add(await GetRemoveBadgeOnStreakPointOnlyOption());
+                items.Add(new CheckboxListItemPO
+                {
+                    Key = RemoveBadgeOnStreakPointKey,
+                    Title = TextSource[Translations.SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyHeader],
+                    Text = TextSource[Translations.SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyText],
+                    IsChecked = await _settingsStorage.GetRemoveBadgeOnStreakPointOnlyEnabled(),
+                    OnChanged = sender => _settingsStorage.SetRemoveBadgeOnStreakPointOnlyEnabled(sender.IsChecked),
+                    IsEnabled = isBibleStudyBadgeEnabled
+                });
             }
 
             return items;
         }
 
-        private async Task<IListItem> GetRemoveBadgeOnStreakPointOnlyOption()
-        {
-            return new CheckboxListItemPO
-            {
-                Key = RemoveBadgeOnStreakPointKey,
-                Title = TextSource[Translations.SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyHeader],
-                Text = TextSource[Translations.SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyText],
-                IsChecked = await _settingsStorage.GetRemoveBadgeOnStreakPointOnlyEnabled(),
-                OnChanged = sender => _settingsStorage.SetRemoveBadgeOnStreakPointOnlyEnabled(sender.IsChecked)
-            };
-        }
-
         private async Task OnNotificationBadgeSettingChange(CheckboxListItemPO sender)
         {
+            var badgeOnStreakItem = GetItemForKey(RemoveBadgeOnStreakPointKey);
             await _settingsStorage.SetBibleStudyBadgeEnabled(sender.IsChecked);
-            var badgeItem = GetItemForKey(RemoveBadgeOnStreakPointKey);
-
-            if (sender.IsChecked)
-            {
-                if (badgeItem == null)
-                {
-                    var notificationBadgeItem = GetItemForKey(NotificationBadgeKey);
-                    int indexToInsert = ListItems.IndexOf(notificationBadgeItem) + 1;
-                    ListItems.Insert(indexToInsert, await GetRemoveBadgeOnStreakPointOnlyOption());
-                }
-                
-                _badgeService.Remove();
-            }
-            else
-            {
-                ListItems.Remove(badgeItem);
-            }
+            badgeOnStreakItem.IsEnabled = sender.IsChecked;
         }
 
-        private IListItem GetItemForKey(string key)
+        private ICheckboxListItemPO GetItemForKey(string key)
         {
             return ListItems
-                .FirstOrDefault(i => i is ICheckboxListItemPO checkboxListItemPO
-                                     && checkboxListItemPO.Key == key);
+                .OfType<ICheckboxListItemPO>()
+                .FirstOrDefault(i => i.Key == key);
         }
 
         private async Task<List<IListItem>> BuildPlaybackSection()
