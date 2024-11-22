@@ -144,7 +144,7 @@ namespace BMM.Core.Models.POs.Tiles
             }
             
             if (!latestStreak.IsTodayAlreadyListened())
-                return await _badgeService.SetIfPossible();
+                return await _badgeService.SetIfPossible(Tile.Track.Id);
 
             _badgeService.Remove();
             return false;

@@ -128,6 +128,12 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(BibleStudyBadgeEnabled));
         }
         
+        public static bool RemoveBadgeOnStreakPointOnlyEnabled
+        {
+            get => GetValueOrDefault(nameof(RemoveBadgeOnStreakPointOnlyEnabled), false);
+            set => AddOrUpdateValue(value, nameof(RemoveBadgeOnStreakPointOnlyEnabled));
+        }
+        
         public static bool BibleStudyOnHomeEnabled
         {
             get => GetValueOrDefault(nameof(BibleStudyOnHomeEnabled), true);
@@ -284,6 +290,12 @@ namespace BMM.Core.Implementations.Storage
             set => AddOrUpdateValue(value, nameof(BadgeSetAt));
         }
 
+        public static int BadgeSetForTrackId
+        {
+            get => GetValueOrDefault(nameof(BadgeSetForTrackId), default(int));
+            set => AddOrUpdateValue(value, nameof(BadgeSetForTrackId));
+        }
+        
         public static Guid DeviceId => GetValueOrCreateDefault(nameof(DeviceId), Guid.NewGuid());
 
         public static void Clear() => Settings.Clear();

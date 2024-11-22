@@ -70,8 +70,7 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
         private void TrackChanged(CurrentTrackChangedMessage message)
         {
             if (LatestStreak == null
-                || message.CurrentTrack == null
-                || message.CurrentTrack.Id != LatestStreak.TodaysFraKaareTrackId
+                || message.CurrentTrack?.Id != LatestStreak.TodaysFraKaareTrackId
                 || DateTime.UtcNow >= LatestStreak.EligibleUntil.ToUniversalTime()
                 || LatestStreak.IsTodayAlreadyListened())
             {
@@ -79,6 +78,9 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                 return;
             }
 
+            if (!AppSettings.RemoveBadgeOnStreakPointOnlyEnabled)
+                _badgeService.Remove();
+            
             _minListeningTimer ??= new System.Timers.Timer(RetryIntervalInSeconds.ToMilliseconds());
             _minListeningTimer.Elapsed -= CheckIfListenedEnoughYet;
             _minListeningTimer.Elapsed += CheckIfListenedEnoughYet;

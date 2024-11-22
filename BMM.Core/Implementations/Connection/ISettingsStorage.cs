@@ -19,10 +19,12 @@ namespace BMM.Core.Implementations.Connection
 
         Task<bool> GetStreakHidden();
         Task<bool> GetBibleStudyBadgeEnabled();
+        Task<bool> GetRemoveBadgeOnStreakPointOnlyEnabled();
         Task<bool> GetBibleStudyOnHomeEnabled();
 
         Task SetStreakHidden(bool streakHidden);
         Task SetBibleStudyBadgeEnabled(bool isEnabled);
         Task SetBibleStudyOnHomeEnabled(bool isEnabled);
+        Task SetRemoveBadgeOnStreakPointOnlyEnabled(bool isEnabled);
     }
 }

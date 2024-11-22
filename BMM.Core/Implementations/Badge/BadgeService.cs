@@ -1,5 +1,7 @@
 using BMM.Core.Implementations.Connection;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Storage;
+using BMM.Core.NewMediaPlayer.Abstractions;
 
 namespace BMM.Core.Implementations.Badge;
 
@@ -8,7 +10,8 @@ public class BadgeService : IBadgeService
     private readonly ISettingsStorage _settingsStorage;
     private bool _isBadgeSet;
 
-    public BadgeService(ISettingsStorage settingsStorage)
+    public BadgeService(
+        ISettingsStorage settingsStorage)
     {
         _settingsStorage = settingsStorage;
     }
@@ -23,16 +26,22 @@ public class BadgeService : IBadgeService
         }
     }
 
-    public async Task<bool> SetIfPossible()
+    public async Task<bool> SetIfPossible(int trackId)
     {
-        if (!await _settingsStorage.GetBibleStudyBadgeEnabled())
+        if (!await _settingsStorage.GetBibleStudyBadgeEnabled()
+            || !await _settingsStorage.GetRemoveBadgeOnStreakPointOnlyEnabled() 
+            && AppSettings.BadgeSetForTrackId == trackId)
+        {
+            Remove();
             return false;
+        }
         
         AppSettings.IsBadgeSet = IsBadgeSet = true;
         AppSettings.BadgeSetAt = DateTime.UtcNow;
+        AppSettings.BadgeSetForTrackId = trackId;
         return true;
     }
-
+    
     public void Remove()
     {
         AppSettings.IsBadgeSet = IsBadgeSet = false;

@@ -13,6 +13,8 @@ namespace BMM.Core.Models.POs.Other
             OnSelected = new MvxCommand(() => IsChecked = !IsChecked);
         }
 
+        public string Key { get; set; }
+        
         public string Title { get; set; }
 
         public string Text { get; set; }
