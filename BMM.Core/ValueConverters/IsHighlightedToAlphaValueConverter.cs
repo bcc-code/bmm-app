@@ -9,6 +9,6 @@ public class IsHighlightedToAlphaValueConverter : MvxValueConverter<bool, float>
     {
         return value
             ? 1f
-            : 0.3f;
+            : 0.6f;
     }
 }
