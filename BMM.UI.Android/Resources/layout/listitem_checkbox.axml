@@ -22,14 +22,18 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                local:MvxBind="Text Title"
+                local:MvxBind="
+                    Text Title;
+                    Alpha EnabledToAlpha(IsEnabled)"
                 android:layout_gravity="center_vertical"
                 android:layout_marginTop="12dp"
                 style="@style/Title2" />
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                local:MvxBind="Text Text"
+                local:MvxBind="
+                    Text Text;
+                    Alpha EnabledToAlpha(IsEnabled)"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/text_medium"
                 android:layout_marginBottom="12dp"
@@ -46,6 +50,9 @@
             android:layout_marginRight="@dimen/element_margin_medium"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            local:MvxBind="Checked IsChecked" />
+            local:MvxBind="
+                Checked IsChecked;
+                Enabled IsEnabled;
+                Alpha EnabledToAlpha(IsEnabled)" />
     </RelativeLayout>
 </LinearLayout>

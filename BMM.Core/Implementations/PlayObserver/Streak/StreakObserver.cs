@@ -79,6 +79,12 @@ namespace BMM.Core.Implementations.PlayObserver.Streak
                 return;
             }
 
+            if (!AppSettings.RemoveBadgeOnStreakPointOnlyEnabled)
+            {
+                _badgeService.Remove();
+                AppSettings.LastPlayedCurrentPodcastTrackId = message.CurrentTrack.Id;
+            }
+
             _minListeningTimer ??= new System.Timers.Timer(RetryIntervalInSeconds.ToMilliseconds());
             _minListeningTimer.Elapsed -= CheckIfListenedEnoughYet;
             _minListeningTimer.Elapsed += CheckIfListenedEnoughYet;

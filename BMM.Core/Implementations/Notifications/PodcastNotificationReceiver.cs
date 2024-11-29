@@ -94,20 +94,21 @@ namespace BMM.Core.Implementations.Notifications
                 
                 _completedToken = _messenger.Subscribe<QueueFinishedMessage>(QueueFinished);
 
-                PodcastLoggingExtensions.PodcastTrackIdToDownload = podcastNotification.TrackIds.First();
+                int trackId =  podcastNotification.TrackIds.First();
+                PodcastLoggingExtensions.PodcastTrackIdToDownload = trackId;
                 await _mediaDownloader.SynchronizeOfflineTracks();
                 await AllDownloadsCompleted(podcastNotification);
                 PodcastLoggingExtensions.PodcastTrackIdToDownload = null;
 
-                ShowBadgeIfNeeded(podcastNotification.PodcastId);
+                ShowBadgeIfNeeded(podcastNotification.PodcastId, trackId);
                 LogPodcastEvent("Podcast notification offline tracks synchronized", podcastNotification);
             });
         }
 
-        private void ShowBadgeIfNeeded(int podcastId)
+        private void ShowBadgeIfNeeded(int podcastId, int trackId)
         {
             if (podcastId == _firebaseRemoteConfig.CurrentPodcastId)
-                _badgeService.SetIfPossible();
+                _badgeService.SetIfPossible(trackId);
         }
 
         private async Task AllDownloadsCompleted(PodcastNotification podcastNotification)

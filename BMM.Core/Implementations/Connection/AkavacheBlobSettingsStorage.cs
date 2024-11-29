@@ -22,6 +22,7 @@ namespace BMM.Core.Implementations.Connection
 
         public async Task<bool> GetStreakHidden() => AppSettings.StreakHidden;
         public async Task<bool> GetBibleStudyBadgeEnabled() => _config.IsBadgesFeatureEnabled && AppSettings.BibleStudyBadgeEnabled;
+        public async Task<bool> GetRemoveBadgeOnStreakPointOnlyEnabled() => AppSettings.RemoveBadgeOnStreakPointOnlyEnabled;
 
         public async Task<bool> GetBibleStudyOnHomeEnabled() => AppSettings.BibleStudyOnHomeEnabled;
 
@@ -37,5 +38,6 @@ namespace BMM.Core.Implementations.Connection
         public async Task SetStreakHidden(bool streakHidden) => AppSettings.StreakHidden = streakHidden;
         public async Task SetBibleStudyBadgeEnabled(bool isEnabled) => AppSettings.BibleStudyBadgeEnabled = isEnabled;
         public async Task SetBibleStudyOnHomeEnabled(bool isEnabled) => AppSettings.BibleStudyOnHomeEnabled = isEnabled;
+        public async Task SetRemoveBadgeOnStreakPointOnlyEnabled(bool isEnabled) => AppSettings.RemoveBadgeOnStreakPointOnlyEnabled = isEnabled;
     }
 }

@@ -263,6 +263,8 @@ namespace BMM.Core.Translation
 		public const string SettingsViewModel_OptionNotificationBadgeText = nameof(SettingsViewModel_OptionNotificationBadgeText);
 		public const string SettingsViewModel_OptionBibleStudyHeader = nameof(SettingsViewModel_OptionBibleStudyHeader);
 		public const string SettingsViewModel_OptionBibleStudyText = nameof(SettingsViewModel_OptionBibleStudyText);
+		public const string SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyHeader = nameof(SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyHeader);
+		public const string SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyText = nameof(SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyText);
 		public const string SettingsViewModel_AppInfoTitle = nameof(SettingsViewModel_AppInfoTitle);
 		public const string SettingsViewModel_AppInfoAppVersion = nameof(SettingsViewModel_AppInfoAppVersion);
 		public const string SettingsViewModel_AppInfoManufacturer = nameof(SettingsViewModel_AppInfoManufacturer);
