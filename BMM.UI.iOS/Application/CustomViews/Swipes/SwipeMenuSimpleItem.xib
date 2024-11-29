@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwipeMenuSimpleItem">
+            <connections>
+                <outlet property="BackgroundView" destination="EFN-xk-Dkx" id="EOg-CE-9Xl"/>
+                <outlet property="SeparatorHeightConstraint" destination="JLA-v3-LEl" id="0Y4-iv-c30"/>
+                <outlet property="SeparatorLeadingConstraint" destination="aZy-LC-29h" id="TEC-8V-QkR"/>
+                <outlet property="SeparatorView" destination="LQP-p7-FhE" id="Re4-BI-3Yo"/>
+                <outlet property="SwipeLabel" destination="mr0-gX-QIp" id="ndT-ce-rVN"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="1">
+            <rect key="frame" x="0.0" y="0.0" width="121" height="92"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFN-xk-Dkx" userLabel="Container">
+                    <rect key="frame" x="0.0" y="0.0" width="121" height="92"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr0-gX-QIp">
+                            <rect key="frame" x="23" y="37" width="75.5" height="18"/>
+                            <accessibility key="accessibilityConfiguration" identifier="SwipeTitle"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LQP-p7-FhE">
+                            <rect key="frame" x="0.0" y="21" width="1" height="50"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <accessibility key="accessibilityConfiguration" identifier="SeparatorView"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="JLA-v3-LEl"/>
+                                <constraint firstAttribute="width" constant="1" id="a7U-7Q-o1Q"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <accessibility key="accessibilityConfiguration" identifier="Container"/>
+                    <constraints>
+                        <constraint firstItem="mr0-gX-QIp" firstAttribute="centerX" secondItem="EFN-xk-Dkx" secondAttribute="centerX" id="IVX-wV-J9d"/>
+                        <constraint firstItem="LQP-p7-FhE" firstAttribute="centerY" secondItem="EFN-xk-Dkx" secondAttribute="centerY" id="RzG-hl-mlz"/>
+                        <constraint firstItem="mr0-gX-QIp" firstAttribute="centerY" secondItem="EFN-xk-Dkx" secondAttribute="centerY" id="Ysg-SI-6T8"/>
+                        <constraint firstItem="LQP-p7-FhE" firstAttribute="leading" secondItem="EFN-xk-Dkx" secondAttribute="leading" priority="999" id="aZy-LC-29h"/>
+                        <constraint firstAttribute="trailing" secondItem="LQP-p7-FhE" secondAttribute="trailing" priority="998" id="ajg-JU-u67"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.12156862745098039" green="0.15686274509803921" blue="0.1764705882352941" alpha="0.0" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="EFN-xk-Dkx" secondAttribute="trailing" id="4q2-qb-u9Q"/>
+                <constraint firstAttribute="bottom" secondItem="EFN-xk-Dkx" secondAttribute="bottom" id="EX6-cC-dVl"/>
+                <constraint firstItem="EFN-xk-Dkx" firstAttribute="top" secondItem="1" secondAttribute="top" id="bt1-ja-Nyn"/>
+                <constraint firstItem="EFN-xk-Dkx" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="yhP-fY-Htx"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-186.40000000000001" y="66.566716641679164"/>
+        </view>
+    </objects>
+</document>
