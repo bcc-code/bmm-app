@@ -1,5 +1,7 @@
 using BMM.Core.Extensions;
+using BMM.Core.Models.Enums;
 using BMM.UI.iOS.Enums;
+using BMM.UI.iOS.GestureRecognizers;
 using BMM.UI.iOS.TableViewSource.Base;
 using MvvmCross.Commands;
 using static BMM.Core.Constants.ViewConstants;

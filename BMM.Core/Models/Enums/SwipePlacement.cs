@@ -1,4 +1,4 @@
-namespace BMM.UI.iOS.Enums;
+namespace BMM.Core.Models.Enums;
 
 public enum SwipePlacement
 {

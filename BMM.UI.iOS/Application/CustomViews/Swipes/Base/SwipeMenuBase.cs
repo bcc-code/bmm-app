@@ -1,6 +1,8 @@
 using System.Drawing;
 using BMM.Core.Extensions;
+using BMM.Core.Models.Enums;
 using BMM.UI.iOS.Enums;
+using BMM.UI.iOS.TableViewCell.Base;
 using CoreAnimation;
 using MvvmCross.Commands;
 using MvvmCross.Platforms.Ios.Binding.Views;

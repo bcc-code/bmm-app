@@ -1,3 +1,4 @@
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.CustomViews.Swipes.Base;
