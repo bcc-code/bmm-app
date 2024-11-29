@@ -330,6 +330,8 @@
     "OptionNotificationBadgeText": "Vis et varsel på hjem-skjermen for å minne deg på å lytte til den daglige episoden.",
     "OptionBibleStudyHeader": "Bibelstudie på hjem-skjermen",
     "OptionBibleStudyText": "Vis din biblestudiestatus på hjem-skjermen",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
     "AppInfoTitle": "App-informasjon",
     "AppInfoAppVersion": "App-versjon: ",
     "AppInfoManufacturer": "Produsent:",

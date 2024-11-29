@@ -330,6 +330,8 @@
     "OptionNotificationBadgeText": "Показывать уведомление на главной, чтобы напомнить прослушать сегодняшний эпизод.",
     "OptionBibleStudyHeader": "Изучение Библии на Главной",
     "OptionBibleStudyText": "Показать статус прослушивания на главном экране",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
     "AppInfoTitle": "Информация о приложении",
     "AppInfoAppVersion": "Версия приложения: ",
     "AppInfoManufacturer": "Производитель: ",

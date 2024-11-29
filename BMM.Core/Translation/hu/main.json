@@ -330,6 +330,8 @@
     "OptionNotificationBadgeText": "Mutasson értesítést a kezdőképernyőn, hogy ne felejtsem el meghallgatni a napi epizódot.",
     "OptionBibleStudyHeader": "Bibliatanulmány a kezdőképernyőn",
     "OptionBibleStudyText": "Mutassa a bibliatanulmány státuszát a kezdőképernyőn",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
     "AppInfoTitle": "Alkalmazás információ",
     "AppInfoAppVersion": "Alkalmazás verziója:",
     "AppInfoManufacturer": "Szerkesztő:",
