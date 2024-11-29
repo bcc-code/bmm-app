@@ -330,6 +330,8 @@
     "OptionNotificationBadgeText": "Pokaži obvestilo na začetnem zaslonu, da se boš lažje spomnil poslušati dnevno epizodo.",
     "OptionBibleStudyHeader": "Biblijsko preučevanje na Domov",
     "OptionBibleStudyText": "Pokaži status svojega biblijskega preučevanja na začetnem zaslonu",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
     "AppInfoTitle": "Informacije o aplikaciji",
     "AppInfoAppVersion": "Različica aplikacije: ",
     "AppInfoManufacturer": "Proizvajalec: ",
