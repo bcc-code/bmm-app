@@ -9,6 +9,9 @@ namespace BMM.Api.Implementation.Models
         public IList<PodcastReference> PodcastReferences { get; set; }
 
         public string Token { get; set; }
+        
+        public bool ShowNotificationBadge { get; set; }
+        public string OS { get; set; }
 
         public virtual bool ShouldSerializeDeviceId()
         {

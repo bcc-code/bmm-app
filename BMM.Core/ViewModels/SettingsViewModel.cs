@@ -73,6 +73,7 @@ namespace BMM.Core.ViewModels
         private readonly IFeaturePreviewPermission _featurePreviewPermission;
         private readonly IMvxNavigationService _mvxNavigationService;
         private readonly IBadgeService _badgeService;
+        private readonly IMvxMessenger _messenger;
         private SelectableListItem _externalStorage;
 
         private string _profilePictureUrl;
@@ -115,7 +116,8 @@ namespace BMM.Core.ViewModels
             IResetAchievementAction resetAchievementAction,
             IFeaturePreviewPermission featurePreviewPermission,
             IMvxNavigationService mvxNavigationService,
-            IBadgeService badgeService)
+            IBadgeService badgeService,
+            IMvxMessenger messenger)
         {
             _deviceInfo = deviceInfo;
             _networkSettings = networkSettings;
@@ -142,6 +144,7 @@ namespace BMM.Core.ViewModels
             _featurePreviewPermission = featurePreviewPermission;
             _mvxNavigationService = mvxNavigationService;
             _badgeService = badgeService;
+            _messenger = messenger;
             Messenger.Subscribe<SelectedStorageChangedMessage>(message => { ChangeStorageText(message.FileStorage); }, MvxReference.Strong);
         }
 
@@ -253,14 +256,14 @@ namespace BMM.Core.ViewModels
 
             if (_remoteConfig.IsBadgesFeatureEnabled)
             {
-                bool isBibleStudyBadgeEnabled = await _settingsStorage.GetBibleStudyBadgeEnabled();
+                bool notificationBadgeEnabled = await _settingsStorage.GetNotificationBadgeEnabled();
                 
                 items.Add(new CheckboxListItemPO
                 {
                     Key = NotificationBadgeKey,
                     Title = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeHeader],
                     Text = TextSource[Translations.SettingsViewModel_OptionNotificationBadgeText],
-                    IsChecked = isBibleStudyBadgeEnabled,
+                    IsChecked = notificationBadgeEnabled,
                     OnChanged = async sender => await OnNotificationBadgeSettingChange(sender)
                 });
 
@@ -271,7 +274,7 @@ namespace BMM.Core.ViewModels
                     Text = TextSource[Translations.SettingsViewModel_OptionRemoveBadgeOnStreakPointOnlyText],
                     IsChecked = await _settingsStorage.GetRemoveBadgeOnStreakPointOnlyEnabled(),
                     OnChanged = sender => _settingsStorage.SetRemoveBadgeOnStreakPointOnlyEnabled(sender.IsChecked),
-                    IsEnabled = isBibleStudyBadgeEnabled
+                    IsEnabled = notificationBadgeEnabled
                 });
             }
 
@@ -281,8 +284,9 @@ namespace BMM.Core.ViewModels
         private async Task OnNotificationBadgeSettingChange(CheckboxListItemPO sender)
         {
             var badgeOnStreakItem = GetItemForKey(RemoveBadgeOnStreakPointKey);
-            await _settingsStorage.SetBibleStudyBadgeEnabled(sender.IsChecked);
+            await _settingsStorage.SetNotificationBadgeEnabled(sender.IsChecked);
             badgeOnStreakItem.IsEnabled = sender.IsChecked;
+            _messenger.Publish(new NotificationBadgeSettingChangedMessage(this));
         }
 
         private ICheckboxListItemPO GetItemForKey(string key)

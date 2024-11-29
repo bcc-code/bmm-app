@@ -1,16 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 using BMM.Api;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
-using Microsoft.Extensions.Logging;
-using MvvmCross.Logging;
 using MvvmCross.Plugin.Messenger;
 using ILogger = BMM.Api.Framework.ILogger;
 
@@ -23,6 +19,7 @@ namespace BMM.Core.Implementations.Notifications
         private readonly IBMMClient _bmmClient;
         private readonly IUserAuthChecker _authChecker;
         private readonly ILogger _logger;
+        private readonly ISettingsStorage _settingsStorage;
 
         public SubscriptionManager(
             IMvxMessenger messenger,
@@ -31,13 +28,15 @@ namespace BMM.Core.Implementations.Notifications
             IExceptionHandler exceptionHandler,
             IBMMClient bmmClient,
             IUserAuthChecker authChecker,
-            ILogger logger)
+            ILogger logger,
+            ISettingsStorage settingsStorage)
         {
             _podcastDownloader = podcastDownloader;
             _tokenProvider = tokenProvider;
             _bmmClient = bmmClient;
             _authChecker = authChecker;
             _logger = logger;
+            _settingsStorage = settingsStorage;
 
             LoggedInOnlineToken = messenger.Subscribe<LoggedInOnlineMessage>(message => { exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry); });
 
@@ -50,7 +49,14 @@ namespace BMM.Core.Implementations.Notifications
             {
                 exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry);
             });
+
+            BadgeChangedToken = messenger.Subscribe<NotificationBadgeSettingChangedMessage>(message =>
+            {
+                exceptionHandler.FireAndForgetWithoutUserMessages(UpdateSubscriptionAndRetry);
+            });
         }
+
+        protected MvxSubscriptionToken BadgeChangedToken;
 
         protected MvxSubscriptionToken LoggedInOnlineToken;
 
@@ -115,7 +121,11 @@ namespace BMM.Core.Implementations.Notifications
             {
                 Token = token,
                 DeviceId = AppSettings.DeviceId.ToString(),
-                PodcastReferences = podcastReferences
+                PodcastReferences = podcastReferences,
+                ShowNotificationBadge = await _settingsStorage.GetNotificationBadgeEnabled(),
+                OS = OperatingSystem.IsIOS()
+                    ? "ios"
+                    : "android"
             };
 
             await _bmmClient.Subscription.Save(subscription);

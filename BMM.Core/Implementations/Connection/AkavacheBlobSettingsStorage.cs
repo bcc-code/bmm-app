@@ -21,7 +21,7 @@ namespace BMM.Core.Implementations.Connection
         public async Task<bool> GetAutoplayEnabled() => AppSettings.AutoplayEnabled ?? _config.AutoplayEnabledDefaultSetting;
 
         public async Task<bool> GetStreakHidden() => AppSettings.StreakHidden;
-        public async Task<bool> GetBibleStudyBadgeEnabled() => _config.IsBadgesFeatureEnabled && AppSettings.BibleStudyBadgeEnabled;
+        public async Task<bool> GetNotificationBadgeEnabled() => _config.IsBadgesFeatureEnabled && AppSettings.BibleStudyBadgeEnabled;
         public async Task<bool> GetRemoveBadgeOnStreakPointOnlyEnabled() => AppSettings.RemoveBadgeOnStreakPointOnlyEnabled;
 
         public async Task<bool> GetBibleStudyOnHomeEnabled() => AppSettings.BibleStudyOnHomeEnabled;
@@ -36,7 +36,7 @@ namespace BMM.Core.Implementations.Connection
         public async Task SetAutoplayEnabled(bool enabled) => AppSettings.AutoplayEnabled = enabled;
         public async Task SetPlayInChronologicalOrderEnabled(bool enabled) => AppSettings.PlayInChronologicalOrderEnabled = enabled;
         public async Task SetStreakHidden(bool streakHidden) => AppSettings.StreakHidden = streakHidden;
-        public async Task SetBibleStudyBadgeEnabled(bool isEnabled) => AppSettings.BibleStudyBadgeEnabled = isEnabled;
+        public async Task SetNotificationBadgeEnabled(bool isEnabled) => AppSettings.BibleStudyBadgeEnabled = isEnabled;
         public async Task SetBibleStudyOnHomeEnabled(bool isEnabled) => AppSettings.BibleStudyOnHomeEnabled = isEnabled;
         public async Task SetRemoveBadgeOnStreakPointOnlyEnabled(bool isEnabled) => AppSettings.RemoveBadgeOnStreakPointOnlyEnabled = isEnabled;
     }
