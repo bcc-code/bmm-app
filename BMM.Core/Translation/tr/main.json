@@ -330,6 +330,8 @@
     "OptionNotificationBadgeText": "Günlük bölümü dinlemeyi hatırlamanıza yardımcı olması için ana sayfanızda bir bildirim gösterin.",
     "OptionBibleStudyHeader": "Evde İncil Çalışması",
     "OptionBibleStudyText": "İncil Çalışmanızın durumunu ana ekranda gösterin",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
     "AppInfoTitle": "Uygulama Bilgi",
     "AppInfoAppVersion": "Uygulama Versiyon: ",
     "AppInfoManufacturer": "Üretici firma: ",
