@@ -330,6 +330,8 @@
     "OptionNotificationBadgeText": "Luba pealehel märguannet kuvada, mis aitab sul meeles pidada igapäevase osa kuulamist.",
     "OptionBibleStudyHeader": "Piibliõpe pealehel",
     "OptionBibleStudyText": "Näita pealehel oma piibliõppe olekut",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
     "AppInfoTitle": "Rakenduse teave",
     "AppInfoAppVersion": "Rakenduse versioon: ",
     "AppInfoManufacturer": "Tootja: ",
