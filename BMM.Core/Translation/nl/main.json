@@ -330,6 +330,8 @@
     "OptionNotificationBadgeText": "Geef een notificatie in uw startscherm weer, voor een herinnering om naar de dagelijkse aflevering te luisteren.",
     "OptionBibleStudyHeader": "Bijbelstudie op startpagina",
     "OptionBibleStudyText": "Toon uw Bijbelstudiestatus op het startscherm",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
     "AppInfoTitle": "App-informatie",
     "AppInfoAppVersion": "Versie van de app: ",
     "AppInfoManufacturer": "Fabrikant",
