@@ -330,8 +330,8 @@
     "OptionNotificationBadgeText": "Luba pealehel märguannet kuvada, mis aitab sul meeles pidada igapäevase osa kuulamist.",
     "OptionBibleStudyHeader": "Piibliõpe pealehel",
     "OptionBibleStudyText": "Näita pealehel oma piibliõppe olekut",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Ranged märginõuded",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Eemalda Fra Kåre teavitusmärk ainult siis, kui oled saavutanud järjestikuse punkti.",
     "AppInfoTitle": "Rakenduse teave",
     "AppInfoAppVersion": "Rakenduse versioon: ",
     "AppInfoManufacturer": "Tootja: ",
@@ -623,10 +623,10 @@
     "EmptySubtitle": "Siia kogutakse piibliõppes saavutatud saavutused."
   },
   "ReadTranscriptionViewModel": {
-    "SongTreasures": "Song Treasures",
-    "Lyrics": "Lyrics",
-    "Transcription": "Transcription",
-    "Melody": "Melody",
-    "Text": "Text"
+    "SongTreasures": "Laulu Aarded",
+    "Lyrics": "Laulusõnad",
+    "Transcription": "Transkriptsioon",
+    "Melody": "Meloodia",
+    "Text": "Tekst"
   }
 }
