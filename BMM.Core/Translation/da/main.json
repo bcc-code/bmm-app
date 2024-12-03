@@ -330,8 +330,8 @@
     "OptionNotificationBadgeText": "Vis en notifikation på startskærmen som hjælp til at huske at lytte til den daglige episode",
     "OptionBibleStudyHeader": "Bibelstudie på startskærmen",
     "OptionBibleStudyText": "Vis din bibelstudiestatus på startskærmen",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strenge krav til mærker",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Fjern først Fra Kåre notifikationsmærket, når du har optjent streakpointet.",
     "AppInfoTitle": "App-information",
     "AppInfoAppVersion": "App-version: ",
     "AppInfoManufacturer": "Producent: ",
@@ -626,7 +626,7 @@
     "SongTreasures": "Song Treasures",
     "Lyrics": "Tekster",
     "Transcription": "Transkribering",
-    "Melody": "Melody",
-    "Text": "Text"
+    "Melody": "Melodi",
+    "Text": "Tekst"
   }
 }
