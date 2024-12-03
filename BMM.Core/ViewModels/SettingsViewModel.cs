@@ -427,7 +427,8 @@ namespace BMM.Core.ViewModels
                 new Dictionary<string, object>
                 {
                     {"DownloadOverMobileNetworkAllowed", await _networkSettings.GetMobileNetworkDownloadAllowed()},
-                    {"PushNotificationsAllowed", await _networkSettings.GetPushNotificationsAllowed()}
+                    {"PushNotificationsAllowed", await _networkSettings.GetPushNotificationsAllowed()},
+                    {"NotificationBadgeEnabled", await _settingsStorage.GetNotificationBadgeEnabled()}
                 });
 
             return generalSectionItems;
