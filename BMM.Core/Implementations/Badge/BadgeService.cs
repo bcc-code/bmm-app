@@ -28,7 +28,7 @@ public class BadgeService : IBadgeService
 
     public async Task<bool> SetIfPossible(int trackId)
     {
-        if (!await _settingsStorage.GetBibleStudyBadgeEnabled())
+        if (!await _settingsStorage.GetNotificationBadgeEnabled())
             return false;
 
         if (!await _settingsStorage.GetRemoveBadgeOnStreakPointOnlyEnabled()

@@ -29,6 +29,7 @@ using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
 using Moq;
 using MvvmCross.Localization;
 using MvvmCross.Navigation;
+using MvvmCross.Plugin.Messenger;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -64,6 +65,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IResetAchievementAction> _resetAchievementAction;
         private Mock<IMvxNavigationService> _mvxNavigationService;
         private Mock<IBadgeService> _badgeService;
+        private Mock<IMvxMessenger> _messageService;
 
         public override void SetUp()
         {
@@ -117,6 +119,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             _resetAchievementAction = new Mock<IResetAchievementAction>();
             _mvxNavigationService = new Mock<IMvxNavigationService>();
             _badgeService = new Mock<IBadgeService>();
+            _messageService = new Mock<IMvxMessenger>();
 
             _textSource.Setup(x => x.GetText(It.IsAny<string>())).Returns(String.Empty);
 
@@ -154,7 +157,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _resetAchievementAction.Object,
                 _featurePreviewPermission.Object,
                 _mvxNavigationService.Object,
-                _badgeService.Object
+                _badgeService.Object,
+                _messageService.Object
             );
 
             settingsViewModel.TextSource = TextResource.Object;
