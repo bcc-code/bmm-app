@@ -306,8 +306,10 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
 
     public decimal CurrentPlaybackSpeed { get; private set; } = PlayerConstants.NormalPlaybackSpeed;
 
-    public void DeleteFromQueue(IMediaTrack track)
+    public async Task DeleteFromQueue(IMediaTrack track)
     {
+        await Task.CompletedTask;
+        
         if (_mediaController == null)
             return;
 

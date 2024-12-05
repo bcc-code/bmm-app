@@ -271,7 +271,8 @@
     "Title": "Queue",
     "Delete": "Delete",
     "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue"
+    "TrackRemovedFromQueue": "Track has been removed from the queue",
+    "RemoveFromQueueOption": "Remove from queue"
   },
   "SearchViewModel": {
     "Title": "Search",

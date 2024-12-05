@@ -1,11 +1,7 @@
-using System.Diagnostics;
-using System.Timers;
-using BMM.Core.Implementations.UI;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
-using BMM.UI.Droid.Utils;
 using Com.Google.Android.Exoplayer2;
 using Com.Google.Android.Exoplayer2.Audio;
 using Com.Google.Android.Exoplayer2.Metadata;

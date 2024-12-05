@@ -253,8 +253,9 @@ namespace BMM.UI.iOS.NewMediaPlayer
             }
         }
 
-        public void DeleteFromQueue(IMediaTrack track)
+        public async Task DeleteFromQueue(IMediaTrack track)
         {
+            await Task.CompletedTask;
             _queue.Delete(track);
             SetCurrentTrackIndex();
         }

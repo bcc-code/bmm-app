@@ -204,16 +204,16 @@ namespace BMM.Core.Implementations.Player
         
         public decimal CurrentPlaybackSpeed => _mediaPlayer.CurrentPlaybackSpeed;
 
-        public void DeleteFromQueue(IMediaTrack track)
+        public async Task DeleteFromQueue(IMediaTrack track)
         {
             if (track.Id == CurrentTrack?.Id)
             {
-                _toastDisplayer.WarnAsync(_bmmLanguageBinder[Translations.QueueViewModel_CannotRemoveFromQueue]);
+                await _toastDisplayer.WarnAsync(_bmmLanguageBinder[Translations.QueueViewModel_CannotRemoveFromQueue]);
                 return;
             }
             
-            _mediaPlayer.DeleteFromQueue(track);
-            _toastDisplayer.Success(_bmmLanguageBinder[Translations.QueueViewModel_TrackRemovedFromQueue]);
+            await _mediaPlayer.DeleteFromQueue(track);
+            await _toastDisplayer.Success(_bmmLanguageBinder[Translations.QueueViewModel_TrackRemovedFromQueue]);
         }
 
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin, bool ignoreIfAlreadyAdded = false)

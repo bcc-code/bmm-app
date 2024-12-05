@@ -67,10 +67,9 @@ namespace BMM.Core.Models.POs.Tracks
                 await optionsClickedCommand.ExecuteAsync(Track);
             });
 
-            DeleteFromQueueCommand = new ExceptionHandlingCommand(() =>
+            DeleteFromQueueCommand = new ExceptionHandlingCommand(async () =>
             {
-                mediaPlayer.DeleteFromQueue(track);
-                return Task.CompletedTask;
+                await mediaPlayer.DeleteFromQueue(track);
             });
             
             RefreshState().FireAndForget();
