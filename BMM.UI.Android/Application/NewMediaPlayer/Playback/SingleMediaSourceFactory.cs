@@ -1,11 +1,13 @@
 ﻿using Android.Content;
 using BMM.Api.Abstraction;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.UI;
 using Com.Google.Android.Exoplayer2;
 using Com.Google.Android.Exoplayer2.Drm;
 using Com.Google.Android.Exoplayer2.Source;
 using Com.Google.Android.Exoplayer2.Upstream;
 using Com.Google.Android.Exoplayer2.Util;
+using MvvmCross;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Playback
 {

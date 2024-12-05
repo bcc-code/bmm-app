@@ -107,12 +107,15 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
         public IShuffleOrder CloneAndRemove(int indexFrom, int indexToExclusive)
         {
-            int[] newShuffled = new int[indexToExclusive - indexFrom];
-            var startIndex = indexFrom;
-            while (startIndex < indexToExclusive)
+            int[] newShuffled = new int[_shuffled.Length - (indexToExclusive - indexFrom)];
+            int j = 0;
+            
+            for (int i = 0; i < _shuffled.Length; i++)
             {
-                newShuffled[startIndex] = _shuffled[startIndex];
-                startIndex++;
+                if (i >= indexFrom && i < indexToExclusive)
+                    continue;
+                
+                newShuffled[j++] = _shuffled[i];
             }
 
             return new CustomShuffleOrder(_temporaryStartIndex, _useTemporaryStartIndex, newShuffled, new Random(_random.Next(int.MaxValue)));

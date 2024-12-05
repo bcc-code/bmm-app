@@ -17,7 +17,7 @@
             android:background="@color/background_one_color"
             local:layout_constraintTop_toBottomOf="@+id/Toolbar"
             local:layout_constraintBottom_toBottomOf="parent"
-            local:MvxTemplateSelector="@string/document_templateselector"
+            local:MvxItemTemplate="@layout/listitem_track"
             local:MvxBind="
                 ItemsSource Documents;
                 ItemClick DocumentSelectedCommand" />

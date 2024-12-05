@@ -1,15 +1,19 @@
 ﻿using BMM.Core.Constants;
+using BMM.Core.Helpers;
 using MvvmCross.Binding.BindingContext;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.CustomViews.Swipes;
 using BMM.UI.iOS.Extensions;
+using BMM.UI.iOS.TableViewCell.Base;
 using CoreAnimation;
 using MvvmCross.Platforms.Ios.Binding;
+using BMM.Core.Translation;
 
 namespace BMM.UI.iOS
 {
-    public partial class TrackTableViewCell : BaseBMMTableViewCell
+    public partial class TrackTableViewCell : SwipeableViewCell
     {
         public static readonly NSString Key = new(nameof(TrackTableViewCell));
         private TrackState _trackState;
@@ -107,6 +111,38 @@ namespace BMM.UI.iOS
         private void SetThemes()
         {
             metaLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
+        }
+
+        public override void SetupAndBindMenus()
+        {
+            var set = this.CreateBindingSet<TrackTableViewCell, TrackPO>();
+            
+            RightMenu.AddItem(CreateItem(set));
+            LeftMenu.AddItem(CreateItem(set));
+            
+            set.Apply();
+        }
+
+        private static SwipeMenuSimpleItem CreateItem(
+            MvxFluentBindingDescriptionSet<TrackTableViewCell, TrackPO> set)
+        {
+            var item = new SwipeMenuSimpleItem
+            {
+                TreatAsSingleAction = true
+            };
+
+            set.Bind(item.LabelTitle)
+                .To(po => po.TextSource[Translations.QueueViewModel_Delete]);
+
+            set.Bind(item)
+                .For(i => i.ClickCommand)
+                .To(po => po.DeleteFromQueueCommand);
+            
+            set.Bind(item)
+                .For(i => i.FullSwipeCommand)
+                .To(po => po.DeleteFromQueueCommand);
+            
+            return item;
         }
     }
 }
