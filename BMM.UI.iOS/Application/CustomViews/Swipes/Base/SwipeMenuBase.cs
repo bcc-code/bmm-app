@@ -35,14 +35,8 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
         }
 
         public abstract UILabel LabelTitle { get; }
-        public abstract NSLayoutConstraint ConstraintSeparatorLeading { get; }
-        public abstract NSLayoutConstraint ConstraintSeparatorHeight { get; }
-        public abstract UIView ContainerView { get; }
-        public abstract int SeparatorVerticalMargin { get; }
         public bool Available { get; set; } = true;
         public bool TreatAsSingleAction { set; get; }
-        public bool ShouldAddShadow { set; get; }
-        public bool ShouldAddSeparator { get; set; }
         public bool CanExecute => _clickCommand?.CanExecute(DataContext) ?? false;
 
         public bool CanExecuteFullSwipe => _fullSwipeCommand?.CanExecute(DataContext)
@@ -56,12 +50,7 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
             {
                 _canExecuteClickCommandSubscription?.Dispose();
                 _canExecuteClickCommandSubscription = null;
-
-                if (value != null)
-                {
-                    //_canExecuteClickCommandSubscription = value.WeakSubscribe((obj, args) => SetColors());
-                    _clickCommand = value;
-                }
+                _clickCommand = value;
             }
         }
 
@@ -72,12 +61,7 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
             {
                 _canExecuteFullSwipeCommandSubscription?.Dispose();
                 _canExecuteFullSwipeCommandSubscription = null;
-
-                if (value != null)
-                {
-                    //_canExecuteFullSwipeCommandSubscription = value.WeakSubscribe((obj, args) => SetColors());
-                    _fullSwipeCommand = value;
-                }
+                _fullSwipeCommand = value;
             }
         }
 
