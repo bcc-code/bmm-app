@@ -80,8 +80,6 @@ namespace BMM.UI.Droid.Application.ViewHolders.Base
         protected abstract void SetupMenuAndBind();
         public bool IsMenuShown => _mainItemView.TranslationX != 0;
 
-        public virtual void OnSpotlightStatusChanged(bool isSpotlightFinished) { }
-
         public void Reset()
         {
             if (!_menuInitialized
@@ -155,19 +153,6 @@ namespace BMM.UI.Droid.Application.ViewHolders.Base
             base.OnAttachedToWindow();
         }
 
-        public async Task PresentSwipe()
-        {
-            TouchStarted(0);
-            TouchMoved(-RightMenu.EdgeSnappingPoint);
-            await TouchEnded(-RightMenu.EdgeSnappingPoint);
-            await Task.Delay(TimeSpan.FromSeconds(ViewConstants.LongAnimationDuration));
-            await HideMenusIfNeeded();
-            await Task.Delay(TimeSpan.FromSeconds(ViewConstants.LongAnimationDuration));
-            TouchStarted(0);
-            TouchMoved(LeftMenu.EdgeSnappingPoint);
-            await TouchEnded(LeftMenu.EdgeSnappingPoint);
-        }
-
         public bool OnTouch(View v, MotionEvent e)
         {
             if (!IsSwipingEnabled)
@@ -233,12 +218,6 @@ namespace BMM.UI.Droid.Application.ViewHolders.Base
             _touchInitialOffsetX = _mainItemView.TranslationX;
             _touchMoved = false;
             SwipeMenuAdapter.SetActiveMenu(this);
-
-            if (_mainItemView.TranslationX == 0)
-            {
-                LeftMenu.RefreshCanExecuteForAllChildren();
-                RightMenu.RefreshCanExecuteForAllChildren();
-            }
         }
 
         private Task SnapToNearestView(float offset)

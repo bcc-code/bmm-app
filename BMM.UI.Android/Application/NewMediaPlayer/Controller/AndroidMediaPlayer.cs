@@ -5,6 +5,7 @@ using Android.Support.V4.Media.Session;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Core.Extensions;
+using BMM.Core.Helpers;
 using BMM.Core.Implementations.Analytics;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -43,6 +44,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
     private long _lastPosition;
     private decimal _lastPlaybackSpeed;
     private SemaphoreSlim _connectSemaphoreSlim = new(1, 1);
+    private int _lastMediaId;
 
     public AndroidMediaPlayer(
         IMediaQueue mediaQueue,
@@ -183,6 +185,44 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         var controls = _mediaController.GetTransportControls();
         controls!.PlayFromMediaId(CurrentTrack.Id.ToString(), null);
     }
+    
+    public void ReloadQueueIfNeeded(MediaItem desiredMediaItem)
+    {
+        if (!_mediaQueue.HasPendingChanges || desiredMediaItem == null || CurrentTrack == null)
+            return;
+
+        int positionOfCurrentMediaItem = GetMediaItemIndex(CurrentTrack.Id.ToString());
+        int positionOfDesiredMediaItem =  GetMediaItemIndex(desiredMediaItem.MediaId);
+        
+        var trackToPlay = _mediaQueue
+            .Tracks
+            .FirstOrDefault(t => t.Id.ToString() == desiredMediaItem.MediaId);
+        
+        if (trackToPlay == null)
+        {
+            var currentTrack = _mediaQueue
+                .Tracks
+                .FirstOrDefault(c => c.Id == CurrentTrack.Id);
+            
+            bool shouldForward = positionOfDesiredMediaItem > positionOfCurrentMediaItem;
+
+            trackToPlay = shouldForward
+                ? _mediaQueue.Tracks.FindNextAfter(currentTrack)
+                : _mediaQueue.Tracks.FindPreviousBefore(currentTrack);
+        }
+        
+        var controls = _mediaController.GetTransportControls();
+        controls!.PlayFromMediaId(trackToPlay.Id.ToString(), null);
+        
+        _mediaQueue.HasPendingChanges = false;
+    }
+
+    private int GetMediaItemIndex(string id)
+    {
+        return _mediaController
+            .Queue
+            .FindIndex(i => i.Description.MediaId == id);
+    }
 
     public async Task RecoverQueue(IList<IMediaTrack> mediaTracks, IMediaTrack currentTrack, long startTimeInMs = 0)
     {
@@ -265,6 +305,15 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
     }
 
     public decimal CurrentPlaybackSpeed { get; private set; } = PlayerConstants.NormalPlaybackSpeed;
+
+    public void DeleteFromQueue(IMediaTrack track)
+    {
+        if (_mediaController == null)
+            return;
+
+        _mediaQueue.Delete(track);
+        _lastMediaId = CurrentTrack.Id;
+    }
 
     public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin, bool ignoreIfAlreadyAdded = false)
     {

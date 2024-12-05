@@ -68,8 +68,6 @@ namespace BMM.UI.Droid.Application.CustomViews.Swipes
                 item.SetMinimumWidth(ItemWidthInPx);
             }
 
-            item.AddShadowIfNeeded(Placement, ItemWidthInPx);
-            item.AddSeparatorIfNeeded();
             item.LayoutParameters = layoutParams;
             AddView(item);
         }
@@ -82,12 +80,6 @@ namespace BMM.UI.Droid.Application.CustomViews.Swipes
             var command = firstItem.FullSwipeCommand ?? firstItem.ClickCommand;
             if (command?.CanExecute(dataContext) ?? false)
                 command.Execute(dataContext);
-        }
-
-        public void RefreshCanExecuteForAllChildren()
-        {
-            foreach (var item in _items)
-                item.RefreshEnabledState();
         }
 
         public int ResizeWidth(int width, bool animate = false)

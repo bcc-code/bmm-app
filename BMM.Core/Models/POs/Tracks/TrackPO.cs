@@ -6,6 +6,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
+using BMM.Core.Helpers;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
@@ -65,6 +66,12 @@ namespace BMM.Core.Models.POs.Tracks
             {
                 await optionsClickedCommand.ExecuteAsync(Track);
             });
+
+            DeleteFromQueueCommand = new ExceptionHandlingCommand(() =>
+            {
+                mediaPlayer.DeleteFromQueue(track);
+                return Task.CompletedTask;
+            });
             
             RefreshState().FireAndForget();
             SetTrackInformation();
@@ -72,6 +79,7 @@ namespace BMM.Core.Models.POs.Tracks
 
         public IMvxAsyncCommand ShowTrackInfoCommand { get; }
         public IMvxAsyncCommand OptionButtonClickedCommand { get; }
+        public IMvxAsyncCommand DeleteFromQueueCommand { get; }
 
         private void SetTrackInformation()
         {

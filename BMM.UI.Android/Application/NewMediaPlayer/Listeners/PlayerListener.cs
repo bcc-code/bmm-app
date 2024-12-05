@@ -1,7 +1,10 @@
 using System.Diagnostics;
 using System.Timers;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
+using BMM.UI.Droid.Application.NewMediaPlayer.Controller;
 using BMM.UI.Droid.Utils;
 using Com.Google.Android.Exoplayer2;
 using Com.Google.Android.Exoplayer2.Audio;
@@ -20,11 +23,13 @@ public class PlayerListener : Java.Lang.Object, IPlayer.IListener
     private double _lastPosition;
     private readonly IMvxMessenger _mvxMessenger;
     private readonly MvxSubscriptionToken _token;
+    private readonly AndroidMediaPlayer _mediaPlayer;
 
     public PlayerListener(IExoPlayer playerInstance)
     {
         _playerInstance = playerInstance;
         _mvxMessenger = Mvx.IoCProvider.Resolve<IMvxMessenger>();
+        _mediaPlayer = (AndroidMediaPlayer)Mvx.IoCProvider.Resolve<IPlatformSpecificMediaPlayer>();
         _token = _mvxMessenger.Subscribe<PlaybackPositionChangedMessage>((message => _lastPosition = message.CurrentPosition));
     }
 
@@ -74,6 +79,7 @@ public class PlayerListener : Java.Lang.Object, IPlayer.IListener
 
     public void OnMediaItemTransition(MediaItem mediaItem, int reason)
     {
+        _mediaPlayer.ReloadQueueIfNeeded(mediaItem);
         _mvxMessenger.Publish(new CurrentTrackWillChangeMessage(
             this,
             _lastPosition,

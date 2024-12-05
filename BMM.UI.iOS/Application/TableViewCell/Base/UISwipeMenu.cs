@@ -203,7 +203,6 @@ namespace BMM.UI.iOS.TableViewCell.Base
             Add(subview);
 
             CreateVerticalConstraints(subview);
-            subview.AddSeparatorIfNeeded(Placement);
 
             if (subview.TreatAsSingleAction)
             {

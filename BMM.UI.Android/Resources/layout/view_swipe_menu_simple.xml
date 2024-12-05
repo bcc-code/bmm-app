@@ -8,5 +8,7 @@
         android:id="@+id/TitleLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:textColor="@color/global_white_one"
+        style="@style/Subtitle2"/>
 </RelativeLayout>

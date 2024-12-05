@@ -131,10 +131,9 @@ namespace BMM.UI.iOS.TableViewCell.Base
             }
 
             IsBeingTouched = false;
+            
             if (_swipeableSource != null)
-            {
                 _swipeableSource.CellWithSwipeInProgress = null;
-            }
         }
 
         private void HandleTouchBegan()

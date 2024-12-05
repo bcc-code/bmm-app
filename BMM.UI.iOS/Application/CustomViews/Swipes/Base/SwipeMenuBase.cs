@@ -1,9 +1,7 @@
 using System.Drawing;
 using BMM.Core.Extensions;
-using BMM.Core.Models.Enums;
-using BMM.UI.iOS.Enums;
+using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.TableViewCell.Base;
-using CoreAnimation;
 using MvvmCross.Commands;
 using MvvmCross.Platforms.Ios.Binding.Views;
 using MvvmCross.WeakSubscription;
@@ -17,13 +15,8 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
         private IMvxCommand _clickCommand;
         private IMvxCommand _fullSwipeCommand;
         private bool _initialized;
-        private bool _isShadowAdded;
         private UITapGestureRecognizer _tapGestureRecognizer;
         private UILongPressGestureRecognizer _longPressGestureRecognizer;
-        private NSLayoutConstraint _shadowHeightConstraint;
-        private CAGradientLayer _gradientLayer;
-
-        private bool _isTouched;
 
         protected SwipeMenuBase(RectangleF bounds) : base(bounds)
         {
@@ -42,7 +35,6 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
         }
 
         public abstract UILabel LabelTitle { get; }
-        public abstract UIView ViewSeparator { get; }
         public abstract NSLayoutConstraint ConstraintSeparatorLeading { get; }
         public abstract NSLayoutConstraint ConstraintSeparatorHeight { get; }
         public abstract UIView ContainerView { get; }
@@ -104,21 +96,14 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
            _tapGestureRecognizer.AddTarget(ClickAction);
            AddGestureRecognizer(_tapGestureRecognizer);
 
-           _longPressGestureRecognizer = new UILongPressGestureRecognizer(HandleTouch)
-           {
-               MinimumPressDuration = 0
-           };
-           AddGestureRecognizer(_longPressGestureRecognizer);
-
            _initialized = true;
+           SetThemes();
         }
 
-        private void HandleTouch(UILongPressGestureRecognizer gesture)
+        private void SetThemes()
         {
-            if (gesture.State == UIGestureRecognizerState.Began)
-                _isTouched = true;
-            else if (gesture.State.IsOneOf(UIGestureRecognizerState.Ended, UIGestureRecognizerState.Cancelled))
-                _isTouched = false;
+            LabelTitle.ApplyTextTheme(AppTheme.Subtitle2Label1);
+            LabelTitle.TextColor = AppColors.GlobalWhiteOneColor;
         }
 
         protected override void Dispose(bool isDisposing)
@@ -136,38 +121,6 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
             }
 
             base.Dispose(isDisposing);
-        }
-
-        public void AddSeparatorIfNeeded(SwipePlacement placement)
-        {
-            if(!ShouldAddSeparator || !ViewSeparator.Hidden)
-                return;
-
-            ViewSeparator.Hidden = false;
-
-            if (placement == SwipePlacement.Left)
-                ConstraintSeparatorLeading.Active = false;
-
-           // ViewSeparator.BackgroundColor = GetColor(ColorScheme[ControlState].SeparatorColor);
-        }
-
-        public override void LayoutSubviews()
-        {
-            if (_shadowHeightConstraint != null && Frame.Height != _shadowHeightConstraint.Constant)
-                _shadowHeightConstraint.Constant = Frame.Height;
-
-            ConstraintSeparatorHeight.Constant = ContainerView.Frame.Height - SeparatorVerticalMargin * 2;
-
-            if (_gradientLayer != null)
-            {
-                _gradientLayer.Frame = new CGRect(
-                    _gradientLayer.Frame.X,
-                    _gradientLayer.Frame.Y,
-                    _gradientLayer.Frame.Width,
-                    Frame.Height);
-            }
-
-            base.LayoutSubviews();
         }
 
         private void ClickAction()

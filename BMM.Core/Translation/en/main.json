@@ -268,7 +268,10 @@
     "Read": "Read"
   },
   "QueueViewModel": {
-    "Title": "Queue"
+    "Title": "Queue",
+    "Delete": "Delete",
+    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
+    "TrackRemovedFromQueue": "Track has been removed from the queue"
   },
   "SearchViewModel": {
     "Title": "Search",

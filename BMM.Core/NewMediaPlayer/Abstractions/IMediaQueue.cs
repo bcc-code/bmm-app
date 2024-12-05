@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using BMM.Api.Abstraction;
+﻿using BMM.Api.Abstraction;
 
 namespace BMM.Core.NewMediaPlayer.Abstractions
 {
@@ -13,8 +11,11 @@ namespace BMM.Core.NewMediaPlayer.Abstractions
         Task<bool> PlayNext(IMediaTrack track, IMediaTrack currentPlayedTrack);
 
         Task<bool> Append(IMediaTrack track);
+        
+        void Delete(IMediaTrack track);
 
         IList<IMediaTrack> Tracks { get; }
+        bool HasPendingChanges { get; set; }
 
         bool IsSameQueue(IList<IMediaTrack> newMediaTracks);
 

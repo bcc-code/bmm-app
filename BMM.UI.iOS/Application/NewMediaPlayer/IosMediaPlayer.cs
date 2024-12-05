@@ -252,7 +252,13 @@ namespace BMM.UI.iOS.NewMediaPlayer
                 SeekTo(0);
             }
         }
-        
+
+        public void DeleteFromQueue(IMediaTrack track)
+        {
+            _queue.Delete(track);
+            SetCurrentTrackIndex();
+        }
+
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin, bool ignoreIfAlreadyAdded = false)
         {
             return _queue.Append(track);
@@ -272,10 +278,15 @@ namespace BMM.UI.iOS.NewMediaPlayer
         public void SetShuffle(bool isShuffleEnabled)
         {
             _queue.SetShuffle(isShuffleEnabled, _currentTrack);
-            _currentTrackIndex = _queue.Tracks.IndexOf(_currentTrack);
+            SetCurrentTrackIndex();
 
             _messenger.Publish(new ShuffleModeChangedMessage(this) {IsShuffleEnabled = isShuffleEnabled});
             PlaybackStateChanged();
+        }
+
+        private void SetCurrentTrackIndex()
+        {
+            _currentTrackIndex = _queue.Tracks.IndexOf(_currentTrack);
         }
 
         public void SeekTo(long newPosition)
