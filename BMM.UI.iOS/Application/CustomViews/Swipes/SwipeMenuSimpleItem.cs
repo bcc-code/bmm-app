@@ -17,9 +17,5 @@ namespace BMM.UI.iOS.CustomViews.Swipes
         }
 
         public override UILabel LabelTitle => SwipeLabel;
-        public override NSLayoutConstraint ConstraintSeparatorLeading => SeparatorLeadingConstraint;
-        public override NSLayoutConstraint ConstraintSeparatorHeight => SeparatorHeightConstraint;
-        public override UIView ContainerView => this;
-        public override int SeparatorVerticalMargin => 8;
     }
 }
