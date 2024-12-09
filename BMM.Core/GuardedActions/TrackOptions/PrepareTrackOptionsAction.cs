@@ -340,6 +340,12 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     {
                         await _showTrackInfoAction.ExecuteGuarded(track);
                     })));
+            
+            options.AddIf(() => sourceVM is QueueViewModel,
+                new StandardIconOptionPO(
+                    _bmmLanguageBinder[Translations.QueueViewModel_RemoveFromQueueOption],
+                    ImageResourceNames.IconRemove,
+                    new MvxAsyncCommand(() => _mediaPlayer.DeleteFromQueue(track))));
 
             return options;
         }

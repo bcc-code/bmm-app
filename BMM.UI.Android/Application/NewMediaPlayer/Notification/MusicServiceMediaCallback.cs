@@ -1,4 +1,5 @@
 ﻿using System;
+using Android.OS.Storage;
 using Android.Support.V4.Media;
 using Android.Support.V4.Media.Session;
 
@@ -21,6 +22,11 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
             OnPlaybackStateChangedImpl?.Invoke(state);
         }
 
+        public override void OnQueueChanged(IList<MediaSessionCompat.QueueItem> queue)
+        {
+            base.OnQueueChanged(queue);
+        }
+        
         public override void OnMetadataChanged(MediaMetadataCompat meta)
         {
             OnMetadataChangedImpl?.Invoke(meta);

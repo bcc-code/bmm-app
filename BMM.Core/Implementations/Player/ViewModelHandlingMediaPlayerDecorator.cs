@@ -7,10 +7,13 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.LiveRadio;
+using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.UI;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using MvvmCross.Navigation;
 using MvvmCross.Plugin.Messenger;
@@ -31,6 +34,8 @@ namespace BMM.Core.Implementations.Player
 
         private readonly ILiveTime _liveTime;
         private readonly IMvxMessenger _mvxMessenger;
+        private readonly IToastDisplayer _toastDisplayer;
+        private readonly IBMMLanguageBinder _bmmLanguageBinder;
 
         private bool _isViewmodelShown;
 
@@ -42,7 +47,9 @@ namespace BMM.Core.Implementations.Player
             IMediaPlayerInitializer mediaPlayerInitializer,
             IPlayerErrorHandler playerErrorHandler,
             ILiveTime liveTime,
-            IMvxMessenger mvxMessenger)
+            IMvxMessenger mvxMessenger,
+            IToastDisplayer toastDisplayer,
+            IBMMLanguageBinder bmmLanguageBinder)
         {
             _deviceInfo = deviceInfo;
             _navigationService = navigationService;
@@ -52,6 +59,8 @@ namespace BMM.Core.Implementations.Player
             _playerErrorHandler = playerErrorHandler;
             _liveTime = liveTime;
             _mvxMessenger = mvxMessenger;
+            _toastDisplayer = toastDisplayer;
+            _bmmLanguageBinder = bmmLanguageBinder;
 
             _mediaPlayer.ContinuingPreviousSession = () => { ShowViewmodelIfNecessary(); };
         }
@@ -194,6 +203,18 @@ namespace BMM.Core.Implementations.Player
         public void ChangePlaybackSpeed(decimal playbackSpeed) => _mediaPlayer.ChangePlaybackSpeed(playbackSpeed);
         
         public decimal CurrentPlaybackSpeed => _mediaPlayer.CurrentPlaybackSpeed;
+
+        public async Task DeleteFromQueue(IMediaTrack track)
+        {
+            if (track.Id == CurrentTrack?.Id)
+            {
+                await _toastDisplayer.WarnAsync(_bmmLanguageBinder[Translations.QueueViewModel_CannotRemoveFromQueue]);
+                return;
+            }
+            
+            await _mediaPlayer.DeleteFromQueue(track);
+            await _toastDisplayer.Success(_bmmLanguageBinder[Translations.QueueViewModel_TrackRemovedFromQueue]);
+        }
 
         public Task<bool> AddToEndOfQueue(IMediaTrack track, string playbackOrigin, bool ignoreIfAlreadyAdded = false)
         {

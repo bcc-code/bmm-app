@@ -12,12 +12,15 @@ namespace BMM.Core.ViewModels
 {
     public class OptionsListViewModel : BaseViewModel<IOptionsListParameter>, ITrackOptionsViewModel
     {
+        private const int TimeForDialogCloseInMillis = 250;
+        
         public OptionsListViewModel()
         {
             CloseOptionsCommand = new MvxCommand(() => CloseInteraction.Raise());
             OptionSelectedCommand = new MvxAsyncCommand<StandardIconOptionPO>(async option =>
             {
                 await CloseCommand.ExecuteAsync();
+                await Task.Delay(TimeForDialogCloseInMillis);
                 option.ClickCommand.Execute();
             });
         }
