@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Jono",
     "Delete": "Poista",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "En saa poistettua tämänhetkistä raitaa jonosta",
+    "TrackRemovedFromQueue": "Raita poistettu jonosta",
+    "RemoveFromQueueOption": "Poista jonosta"
   },
   "SearchViewModel": {
     "Title": "Etsi",
