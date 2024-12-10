@@ -8,12 +8,14 @@ using BMM.Core.Implementations;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Media;
 using BMM.Core.Implementations.UI;
+using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels.MyContent;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Localization;
+using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.NewMediaPlayer
 {
@@ -26,19 +28,23 @@ namespace BMM.Core.NewMediaPlayer
         private readonly MediaFileUrlSetter _mediaFileUrlSetter;
         private readonly IToastDisplayer _toastDisplayer;
         private readonly IBMMLanguageBinder _bmmLanguageBinder;
-
-        public IList<IMediaTrack> Tracks { get; private set; }
+        private readonly IMvxMessenger _mvxMessenger;
 
         public MediaQueue(
             MediaFileUrlSetter mediaFileUrlSetter,
             IToastDisplayer toastDisplayer,
-            IBMMLanguageBinder bmmLanguageBinder)
+            IBMMLanguageBinder bmmLanguageBinder,
+            IMvxMessenger mvxMessenger)
         {
             _mediaFileUrlSetter = mediaFileUrlSetter;
             _toastDisplayer = toastDisplayer;
             _bmmLanguageBinder = bmmLanguageBinder;
+            _mvxMessenger = mvxMessenger;
             Tracks = new List<IMediaTrack>();
         }
+        
+        public IList<IMediaTrack> Tracks { get; private set; }
+        public bool HasPendingChanges { get; set; }
 
         public void Replace(IMediaTrack track)
         {
@@ -118,6 +124,16 @@ namespace BMM.Core.NewMediaPlayer
             }
 
             return true;
+        }
+        
+        public void Delete(IMediaTrack track)
+        {
+            lock (_lock)
+            {
+                Tracks.Remove(track);
+                _mvxMessenger.Publish(new QueueChangedMessage(this));
+                HasPendingChanges = true;
+            }
         }
 
         // todo this should be handled without checking the UI!

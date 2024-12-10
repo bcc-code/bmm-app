@@ -206,6 +206,10 @@ namespace BMM.Core.Translation
 		public const string PlayerViewModel_WatchOnBCCMedia = nameof(PlayerViewModel_WatchOnBCCMedia);
 		public const string PlayerViewModel_Read = nameof(PlayerViewModel_Read);
 		public const string QueueViewModel_Title = nameof(QueueViewModel_Title);
+		public const string QueueViewModel_Delete = nameof(QueueViewModel_Delete);
+		public const string QueueViewModel_CannotRemoveFromQueue = nameof(QueueViewModel_CannotRemoveFromQueue);
+		public const string QueueViewModel_TrackRemovedFromQueue = nameof(QueueViewModel_TrackRemovedFromQueue);
+		public const string QueueViewModel_RemoveFromQueueOption = nameof(QueueViewModel_RemoveFromQueueOption);
 		public const string SearchViewModel_Title = nameof(SearchViewModel_Title);
 		public const string SearchViewModel_SearchHint = nameof(SearchViewModel_SearchHint);
 		public const string SearchViewModel_SearchResults = nameof(SearchViewModel_SearchResults);

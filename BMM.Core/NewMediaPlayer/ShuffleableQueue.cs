@@ -48,6 +48,14 @@ namespace BMM.Core.NewMediaPlayer
             return _queue.Append(track);
         }
 
+        public void Delete(IMediaTrack track)
+        {
+            if (IsShuffleEnabled)
+                _shuffledTracks.Remove(track);
+            
+            _queue.Delete(track);
+        }
+
         public Task<bool> PlayNext(IMediaTrack track, IMediaTrack currentPlayedTrack)
         {
             if (IsShuffleEnabled)
@@ -60,6 +68,12 @@ namespace BMM.Core.NewMediaPlayer
         }
 
         public IList<IMediaTrack> Tracks => IsShuffleEnabled ? _shuffledTracks : _queue.Tracks;
+
+        public bool HasPendingChanges
+        {
+            get => _queue.HasPendingChanges;
+            set => _queue.HasPendingChanges = value;
+        }
 
         public bool IsSameQueue(IList<IMediaTrack> newMediaTracks)
         {
