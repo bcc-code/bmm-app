@@ -268,7 +268,11 @@
     "Read": "Lue"
   },
   "QueueViewModel": {
-    "Title": "Jono"
+    "Title": "Jono",
+    "Delete": "Poista",
+    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
+    "TrackRemovedFromQueue": "Track has been removed from the queue",
+    "RemoveFromQueueOption": "Remove from queue"
   },
   "SearchViewModel": {
     "Title": "Etsi",
