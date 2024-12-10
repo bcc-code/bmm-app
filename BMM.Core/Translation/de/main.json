@@ -268,7 +268,11 @@
     "Read": "Lies"
   },
   "QueueViewModel": {
-    "Title": "Warteschlange"
+    "Title": "Warteschlange",
+    "Delete": "Löschen",
+    "CannotRemoveFromQueue": "Derzeit gespielter Titel kann nicht aus der Warteschlange entfernt werden",
+    "TrackRemovedFromQueue": "Titel wurde aus der Warteschlange entfernt",
+    "RemoveFromQueueOption": "Aus der Warteschlange entfernen"
   },
   "SearchViewModel": {
     "Title": "Suchen",

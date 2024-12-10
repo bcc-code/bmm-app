@@ -268,7 +268,11 @@
     "Read": "Read"
   },
   "QueueViewModel": {
-    "Title": "Snitlys tou"
+    "Title": "Snitlys tou",
+    "Delete": "Verwyder",
+    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
+    "TrackRemovedFromQueue": "Track has been removed from the queue",
+    "RemoveFromQueueOption": "Remove from queue"
   },
   "SearchViewModel": {
     "Title": "Soek",

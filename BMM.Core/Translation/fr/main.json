@@ -268,7 +268,11 @@
     "Read": "Lire"
   },
   "QueueViewModel": {
-    "Title": "File d'attente"
+    "Title": "File d'attente",
+    "Delete": "Supprimer",
+    "CannotRemoveFromQueue": "Impossible de supprimer la piste en cours de lecture de la file d'attente",
+    "TrackRemovedFromQueue": "La piste a été retirée de la file d'attente",
+    "RemoveFromQueueOption": "Retirer de la file d'attente"
   },
   "SearchViewModel": {
     "Title": "Rechercher",

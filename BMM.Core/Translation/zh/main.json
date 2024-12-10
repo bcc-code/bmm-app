@@ -268,7 +268,11 @@
     "Read": "Read"
   },
   "QueueViewModel": {
-    "Title": "列队"
+    "Title": "列队",
+    "Delete": "删除",
+    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
+    "TrackRemovedFromQueue": "Track has been removed from the queue",
+    "RemoveFromQueueOption": "Remove from queue"
   },
   "SearchViewModel": {
     "Title": "搜索",

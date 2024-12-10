@@ -268,7 +268,11 @@
     "Read": "Lue"
   },
   "QueueViewModel": {
-    "Title": "Jono"
+    "Title": "Jono",
+    "Delete": "Poista",
+    "CannotRemoveFromQueue": "En saa poistettua tämänhetkistä raitaa jonosta",
+    "TrackRemovedFromQueue": "Raita poistettu jonosta",
+    "RemoveFromQueueOption": "Poista jonosta"
   },
   "SearchViewModel": {
     "Title": "Etsi",

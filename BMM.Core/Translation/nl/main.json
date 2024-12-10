@@ -268,7 +268,11 @@
     "Read": "Lees"
   },
   "QueueViewModel": {
-    "Title": "Wachtrij"
+    "Title": "Wachtrij",
+    "Delete": "Verwijderen",
+    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
+    "TrackRemovedFromQueue": "Track has been removed from the queue",
+    "RemoveFromQueueOption": "Remove from queue"
   },
   "SearchViewModel": {
     "Title": "Zoeken",

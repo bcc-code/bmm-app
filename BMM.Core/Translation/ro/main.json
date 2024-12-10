@@ -268,7 +268,11 @@
     "Read": "Citește"
   },
   "QueueViewModel": {
-    "Title": "Listă"
+    "Title": "Listă",
+    "Delete": "Șterge",
+    "CannotRemoveFromQueue": "Nu se poate elimina piesa redată în prezent din listă",
+    "TrackRemovedFromQueue": "Piesa a fost eliminată din coadă",
+    "RemoveFromQueueOption": "Elimină din coadă"
   },
   "SearchViewModel": {
     "Title": "Caută",
