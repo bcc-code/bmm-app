@@ -268,7 +268,11 @@
     "Read": "Loe"
   },
   "QueueViewModel": {
-    "Title": "Järjekord"
+    "Title": "Järjekord",
+    "Delete": "Kustuta",
+    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
+    "TrackRemovedFromQueue": "Track has been removed from the queue",
+    "RemoveFromQueueOption": "Remove from queue"
   },
   "SearchViewModel": {
     "Title": "Otsi",
