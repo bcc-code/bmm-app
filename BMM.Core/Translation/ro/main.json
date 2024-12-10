@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Listă",
     "Delete": "Șterge",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Nu se poate elimina piesa redată în prezent din listă",
+    "TrackRemovedFromQueue": "Piesa a fost eliminată din coadă",
+    "RemoveFromQueueOption": "Elimină din coadă"
   },
   "SearchViewModel": {
     "Title": "Caută",
