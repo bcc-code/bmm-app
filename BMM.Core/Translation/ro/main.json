@@ -330,8 +330,8 @@
     "OptionNotificationBadgeText": "Arată o notificare pe ecranul de pornire pentru a-ți aminti să asculți episodul zilnic.",
     "OptionBibleStudyHeader": "Studiul Biblic la meniul Acasă",
     "OptionBibleStudyText": "Afișează statusul Studiului Biblic pe ecranul de pornire",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Cerințe stricte pentru insignă",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Elimină insigna de notificare Fra Kåre doar atunci când ai câștigat bulina.",
     "AppInfoTitle": "Informațiile aplicației",
     "AppInfoAppVersion": "Versiunea aplicației: ",
     "AppInfoManufacturer": "Producător: ",
@@ -623,7 +623,7 @@
     "EmptySubtitle": "Realizările obținute în Studiile Biblice vor fi colectate aici."
   },
   "ReadTranscriptionViewModel": {
-    "SongTreasures": "Song Treasures",
+    "SongTreasures": "Comoara de cântări",
     "Lyrics": "Versuri",
     "Transcription": "Transcriere",
     "Melody": "Melodie",
