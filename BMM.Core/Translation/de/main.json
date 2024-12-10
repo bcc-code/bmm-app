@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Warteschlange",
     "Delete": "Löschen",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Derzeit gespielter Titel kann nicht aus der Warteschlange entfernt werden",
+    "TrackRemovedFromQueue": "Titel wurde aus der Warteschlange entfernt",
+    "RemoveFromQueueOption": "Aus der Warteschlange entfernen"
   },
   "SearchViewModel": {
     "Title": "Suchen",
