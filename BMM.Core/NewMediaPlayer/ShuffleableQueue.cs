@@ -48,7 +48,13 @@ namespace BMM.Core.NewMediaPlayer
             return _queue.Append(track);
         }
 
-        public void Delete(IMediaTrack track) => _queue.Delete(track);
+        public void Delete(IMediaTrack track)
+        {
+            if (IsShuffleEnabled)
+                _shuffledTracks.Remove(track);
+            
+            _queue.Delete(track);
+        }
 
         public Task<bool> PlayNext(IMediaTrack track, IMediaTrack currentPlayedTrack)
         {
