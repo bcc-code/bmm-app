@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "வரிசை",
     "Delete": "அழி",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "தற்போது இயங்கும் டிராக்கை வரிசையில் இருந்து அகற்ற முடியாது",
+    "TrackRemovedFromQueue": "வரிசையிலிருந்து ட்ராக் அகற்றப்பட்டது",
+    "RemoveFromQueueOption": "வரிசையில் இருந்து அகற்று"
   },
   "SearchViewModel": {
     "Title": "தேடு",
@@ -334,8 +334,8 @@
     "OptionNotificationBadgeText": "தினசரி எபிசோடைக் கேட்க உங்களுக்கு உதவ, முகப்பு பக்கத்தில் ஒரு அறிவிப்பைக் காட்டு.",
     "OptionBibleStudyHeader": "முகப்பு பக்கத்தில் பைபிள் படிப்பு",
     "OptionBibleStudyText": "உங்கள் பைபிள் படிப்பு நிலையை முகப்புத் திரையில் காட்டு",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "கடுமையான பேட்ஜ் தேவைகள்",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "நீங்கள் ஸ்ட்ரீக் பாயிண்ட்டைப் பெற்றவுடன் Fra Kåre அறிவிப்பு பேட்ஜை மட்டும் அகற்றவும்.",
     "AppInfoTitle": "செயலியின் தகவல்",
     "AppInfoAppVersion": "செயலியின் பதிப்பு",
     "AppInfoManufacturer": "உற்பத்தியாளர்: ",

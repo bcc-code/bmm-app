@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Čakalna vrsta",
     "Delete": "Izbriši",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Trenutno predvajane skladbe ni mogoče odstraniti iz čakalne vrste",
+    "TrackRemovedFromQueue": "Skladba je bila odstranjena iz vrste",
+    "RemoveFromQueueOption": "Odstrani iz vrste"
   },
   "SearchViewModel": {
     "Title": "Išči",
