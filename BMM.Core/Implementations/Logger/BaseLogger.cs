@@ -4,7 +4,6 @@ using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Utils;
 using Microsoft.AppCenter;
-using Microsoft.AppCenter.Crashes;
 
 namespace BMM.Core.Implementations.Logger
 {
@@ -47,7 +46,11 @@ namespace BMM.Core.Implementations.Logger
         public virtual void Error(string tag, string message)
         {
             var parameters = InitializeDictionaryWithBasicParameters(tag, message);
-            Crashes.TrackError(new ErrorWithoutException(tag + " - " + message), parameters);
+
+            SentrySdk.CaptureMessage(tag + " - " + message,
+                GetSentryScope(parameters),
+                SentryLevel.Error);
+            
             AppCenterLog.Error(tag, message);
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error without exception", parameters);
         }
@@ -56,7 +59,7 @@ namespace BMM.Core.Implementations.Logger
         {
             var parameters = InitializeDictionaryWithBasicParameters(tag, message, presentedToUser);
             
-            Crashes.TrackError(exception, parameters);
+            SentrySdk.CaptureException(exception, GetSentryScope(parameters));
             AppCenterLog.Error(tag, message, exception);
                        
             parameters.Add(StackTrackParameterName, exception.StackTrace);
@@ -65,6 +68,14 @@ namespace BMM.Core.Implementations.Logger
             Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error with exception", parameters);
         }
 
+        private static Action<Scope> GetSentryScope(IDictionary<string, string> parameters)
+        {
+            return scope =>
+            {
+                scope.SetExtras(parameters.Select(s => new KeyValuePair<string, object>(s.Key, s.Value)));
+            };
+        }
+        
         private void AddConnectionType(IDictionary<string, string> parameters)
         {
             parameters.Add(AnalyticsConstants.ConnectionParameterName, AnalyticsUtils.GetConnectionType(_connection));

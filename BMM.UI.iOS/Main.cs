@@ -7,7 +7,7 @@ namespace BMM.UI.iOS
         // This is the main entry point of the application.
         private static void Main(string[] args)
         {
-            AppCenterHelper.IOSRegister();
+            AnalyticsInitializer.IOSRegister();
             BmmApplication.Main(args, "BmmApplication", "AppDelegate");
         }
     }

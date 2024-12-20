@@ -57,7 +57,8 @@
         public const int DefaultNumberOfPodcastTracksToDownload = 3;
         public const string DroidAppSecret = "#{Android_APP_SECRET_PLACEHOLDER}#";
         public const string iOSAppSecret = "#{iOS_APP_SECRET_PLACEHOLDER}#";
-
+        public const string SentryDsn = "#{SENTRY_DSN_PLACEHOLDER}#";
+        
         public const string AndroidUpdateLink = "https://play.google.com/store/apps/details?id=org.brunstad.bmm";
         public const string IosUpdateLink = "itms-apps://apps.apple.com/no/app/bmm-brunstad/id777577855";
     }

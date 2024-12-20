@@ -36,7 +36,7 @@ namespace BMM.UI.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            AppCenterHelper.DroidRegister();
+            AnalyticsInitializer.DroidRegister();
             base.OnCreate(savedInstanceState);
             SetNotificationToHandle();
         }
