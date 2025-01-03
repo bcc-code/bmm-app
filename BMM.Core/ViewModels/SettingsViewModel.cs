@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Text;
 using Acr.UserDialogs;
+using BMM.Core.Exceptions;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.DebugInfo.Interfaces;
@@ -32,6 +33,7 @@ using BMM.Core.Models.POs.Other.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels.Base;
+using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Devices;
 using MvvmCross;
 using MvvmCross.Commands;
@@ -541,7 +543,7 @@ namespace BMM.Core.ViewModels
 
         private void CrashTheApp()
         {
-            throw new Exception("Forcefully crash the app!");
+            throw new ForcedException("Forcefully crash the app!");
         }
 
         private async Task Logout()

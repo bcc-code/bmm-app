@@ -1,4 +1,5 @@
 ﻿using BMM.Api.Framework;
+using BMM.Core.Exceptions;
 using BMM.Core.Implementations.Analytics;
 using BMM.UI.iOS.TableViewCell.Base;
 using MvvmCross;
@@ -62,7 +63,7 @@ namespace BMM.UI.iOS
                 tableView.DeselectRow(indexPath, true);
                 base.RowSelected(tableView, indexPath);
             }
-            catch (Exception e)
+            catch (Exception e) when (e is not ForcedException)
             {
                 Mvx
                     .IoCProvider
