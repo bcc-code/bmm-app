@@ -18,11 +18,11 @@
       <PackageReference Include="IdentityModel.OidcClient" Version="6.0.0" />
       <PackageReference Include="Microsoft.AppCenter" Version="5.0.1" />
       <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.1" />
-      <PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.1" />
       <PackageReference Include="MvvmCross" Version="9.2.0" />
       <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
       <PackageReference Include="MvvmCross.Plugin.Messenger" Version="9.2.0" />
       <PackageReference Include="MvvmCross.Plugin.Visibility" Version="9.2.0" />
+      <PackageReference Include="Sentry" Version="5.0.0" />
       <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.34.0" />
       <PackageReference Include="TagLibSharp" Version="2.3.0" />
       <PackageReference Update="Microsoft.Maui.Graphics" Version="8.0.80" />

@@ -28,6 +28,7 @@
     <PackageReference Include="MvvmCross.DroidX.SwipeRefreshLayout" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.Color" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
+    <PackageReference Include="Sentry" Version="5.0.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="XAB.FlexboxLayout" Version="3.0.0.2" />
     <PackageReference Include="Xam.Plugins.Android.ExoPlayer" Version="2.19.1" />

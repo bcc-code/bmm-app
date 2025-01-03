@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Exceptions;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.Settings.Interfaces;
 using BMM.Core.Implementations;
@@ -19,12 +20,14 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Notifications;
 using BMM.Core.Implementations.Security;
+using BMM.Core.Implementations.Storage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Models;
 using BMM.Core.Models.POs.Other;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
+using Microsoft.Maui.Storage;
 using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities.Resources;
 using Moq;
 using MvvmCross.Localization;
@@ -66,6 +69,7 @@ namespace BMM.Core.Test.Unit.ViewModels
         private Mock<IMvxNavigationService> _mvxNavigationService;
         private Mock<IBadgeService> _badgeService;
         private Mock<IMvxMessenger> _messageService;
+        private IPreferences _preferencesMock;
 
         public override void SetUp()
         {
@@ -128,6 +132,9 @@ namespace BMM.Core.Test.Unit.ViewModels
             _storageManager.Setup(x => x.Storages).Returns(new ObservableCollection<IFileStorage>() {defaultStorage.Object});
             _storageManager.Setup(x => x.SelectedStorage).Returns(defaultStorage.Object);
             _storageManager.Setup(x => x.HasMultipleStorageSupport).Returns(true);
+            
+            _preferencesMock = Substitute.For<IPreferences>();
+            AppSettings.SetImplementation(_preferencesMock);
         }
 
         public SettingsViewModel CreateSettingsViewModel()
@@ -200,7 +207,7 @@ namespace BMM.Core.Test.Unit.ViewModels
             await settingsViewModel.Initialize();
 
             // Act & Assert
-            Assert.Throws<Exception>(() => settingsViewModel.ListItems.OfType<SelectableListItem>().FirstOrDefault(x => x.Title == "Crash the app")?.OnSelected.Execute());
+            Assert.Throws<ForcedException>(() => settingsViewModel.ListItems.OfType<SelectableListItem>().FirstOrDefault(x => x.Title == "Crash the app")?.OnSelected.Execute());
         }
 
         [Test]
