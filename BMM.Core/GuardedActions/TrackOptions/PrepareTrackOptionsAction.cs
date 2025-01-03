@@ -159,28 +159,25 @@ namespace BMM.Core.GuardedActions.TrackOptions
             {
                 var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
 
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    options.Add(new StandardIconOptionPO(
-                        _bmmLanguageBinder[Translations.UserDialogs_Track_QueueToPlayNext],
-                        ImageResourceNames.IconPlayMini,
-                        new MvxAsyncCommand(async () =>
+                options.Add(new StandardIconOptionPO(
+                    _bmmLanguageBinder[Translations.UserDialogs_Track_QueueToPlayNext],
+                    ImageResourceNames.IconPlayMini,
+                    new MvxAsyncCommand(async () =>
+                    {
+                        var success = await mediaPlayer.QueueToPlayNext(track, sourceVM.PlaybackOriginString());
+                        if (success)
                         {
-                            var success = await mediaPlayer.QueueToPlayNext(track, sourceVM.PlaybackOriginString());
-                            if (success)
-                            {
-                                await Mvx.IoCProvider.Resolve<IToastDisplayer>()
-                                    .Success(_bmmLanguageBinder.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
+                            await Mvx.IoCProvider.Resolve<IToastDisplayer>()
+                                .Success(_bmmLanguageBinder.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
 
-                                Mvx.IoCProvider.Resolve<IAnalytics>()
-                                    .LogEvent(Event.TrackHasBeenAddedToBePlayedNext,
-                                        new Dictionary<string, object>
-                                        {
-                                            { "track", track.Id }
-                                        });
-                            }
-                        })));
-                }
+                            _analytics
+                                .LogEvent(Event.TrackHasBeenAddedToBePlayedNext,
+                                    new Dictionary<string, object>
+                                    {
+                                        { "track", track.Id }
+                                    });
+                        }
+                    })));
 
                 options.Add(
                     new StandardIconOptionPO(
@@ -194,7 +191,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                 await Mvx.IoCProvider.Resolve<IToastDisplayer>()
                                     .Success(_bmmLanguageBinder.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
 
-                                Mvx.IoCProvider.Resolve<IAnalytics>()
+                                _analytics
                                     .LogEvent(Event.TrackHasBeenAddedToEndOfQueue,
                                         new Dictionary<string, object>
                                         {

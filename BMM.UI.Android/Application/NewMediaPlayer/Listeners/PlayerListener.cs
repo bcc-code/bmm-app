@@ -1,3 +1,4 @@
+using BMM.Core.Implementations.UI;
 using BMM.Core.Messages.MediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
@@ -15,6 +16,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Listeners;
 
 public class PlayerListener : Java.Lang.Object, IPlayer.IListener
 {
+    private const int TransitionReasonSeek = 2;
+    private const int TransitionReasonAuto = 1;
+    
     private readonly IExoPlayer _playerInstance;
     private double _lastPosition;
     private readonly IMvxMessenger _mvxMessenger;

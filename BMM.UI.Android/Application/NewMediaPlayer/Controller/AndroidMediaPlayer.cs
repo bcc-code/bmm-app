@@ -156,7 +156,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         if (_mediaController == null)
             return;
 
-        bool queueStaysTheSame = _mediaQueue.IsSameQueue(mediaTracks);
+        bool queueStaysTheSame = _mediaQueue.IsSameQueue(mediaTracks) && !_mediaQueue.HasPendingChanges;
 
         var controls = _mediaController.GetTransportControls();
         if (queueStaysTheSame && _mediaController.Queue != null)
@@ -168,6 +168,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         {
             if (await _mediaQueue.Replace(mediaTracks, currentTrack))
             {
+                _mediaQueue.HasPendingChanges = false;
                 var bundle = new Bundle();
                 bundle.PutLong(StartTimeInMsKey, startTimeInMs);
                 _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, startTimeInMs, this));
@@ -210,6 +211,9 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
                 ? _mediaQueue.Tracks.FindNextAfter(currentTrack)
                 : _mediaQueue.Tracks.FindPreviousBefore(currentTrack);
         }
+        
+        if (trackToPlay == null)
+            return;
         
         var controls = _mediaController.GetTransportControls();
         controls!.PlayFromMediaId(trackToPlay.Id.ToString(), null);

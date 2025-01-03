@@ -121,6 +121,7 @@ namespace BMM.Core.NewMediaPlayer
             lock (_lock)
             {
                 Tracks.Insert(nextPlayedIndex, track);
+                HasPendingChanges = true;
             }
 
             return true;
