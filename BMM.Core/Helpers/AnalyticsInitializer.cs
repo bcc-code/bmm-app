@@ -35,7 +35,7 @@ namespace BMM.Core.Helpers
                 options.Environment = GetSentryEnvironment();
                 options.Debug = false;
                 options.TracesSampleRate = 1.0;
-                options.ProfilesSampleRate = 1.0;
+                options.ProfilesSampleRate = 0;
             });
         }
 
