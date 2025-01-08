@@ -1,11 +1,8 @@
 pool:
   name: Azure Pipelines
-  vmImage: 'windows-2022'
+  vmImage: 'macOS-13'
   demands:
-    - npm
     - msbuild
-    - MSBuild
-    - JDK
 
 trigger:
   branches:
@@ -19,18 +16,12 @@ variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
   
 steps:
-  - task: JavaToolInstaller@0
-    displayName: 'Use Java 21'
-    inputs:
-      versionSpec: 21
-      jdkArchitectureOption: x64
-      jdkSourceOption: PreInstalled
   - bash: |
-      dotnet workload install android
+      dotnet workload install android --version 8.0.402
     displayName: 'Install Android workload'
 
   - bash: |
-      dotnet workload install maui-android
+      dotnet workload install maui-android --version 8.0.402
     displayName: 'Install MAUI Android workload'
     
   - task: DotNetCoreCLI@2
