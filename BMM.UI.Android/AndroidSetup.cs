@@ -58,6 +58,7 @@ using Com.Google.Android.Exoplayer2.Ext.Mediasession;
 using FFImageLoading;
 using FFImageLoading.Cache;
 using FFImageLoading.Config;
+using Firebase;
 using Google.Android.Material.FloatingActionButton;
 using Google.Android.Material.Navigation;
 using IdentityModel.OidcClient.Browser;
@@ -156,7 +157,7 @@ namespace BMM.UI.Droid
             var stopwatch = iocProvider.Resolve<IStopwatchManager>();
             stopwatch.StartAndGetStopwatch(StopwatchType.AppStart);
 
-            Firebase.FirebaseApp.InitializeApp(ApplicationContext);
+            FirebaseApp.InitializeApp(ApplicationContext);
 
             iocProvider.RegisterType<INotificationSubscriptionTokenProvider, FirebaseTokenProvider>();
 #if DEBUG

@@ -1,11 +1,8 @@
 pool:
   name: Azure Pipelines
-  vmImage: 'windows-2022'
+  vmImage: 'macOS-13'
   demands:
-    - npm
     - msbuild
-    - MSBuild
-    - JDK
 
 trigger:
   branches:
@@ -19,12 +16,6 @@ variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
   
 steps:
-  - task: JavaToolInstaller@0
-    displayName: 'Use Java 21'
-    inputs:
-      versionSpec: 21
-      jdkArchitectureOption: x64
-      jdkSourceOption: PreInstalled
   - bash: |
       dotnet workload install android
     displayName: 'Install Android workload'

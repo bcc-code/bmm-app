@@ -598,7 +598,7 @@
     <PackageReference Include="MvvmCross" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.Color" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
-    <PackageReference Include="Sentry" Version="5.0.0" />
+    <PackageReference Include="Sentry" Version="5.0.1" />
     <PackageReference Include="Serilog" Version="4.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
