@@ -17,11 +17,11 @@ variables:
   
 steps:
   - bash: |
-      dotnet workload install android --version 8.0.402
+      dotnet workload install android
     displayName: 'Install Android workload'
 
   - bash: |
-      dotnet workload install maui-android --version 8.0.402
+      dotnet workload install maui-android
     displayName: 'Install MAUI Android workload'
     
   - task: DotNetCoreCLI@2
