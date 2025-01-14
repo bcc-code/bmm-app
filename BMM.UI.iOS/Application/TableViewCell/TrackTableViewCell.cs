@@ -181,16 +181,6 @@ namespace BMM.UI.iOS
             return item;
         }
 
-        private static void SetDefaultSwipeItemStyle(SwipeMenuSimpleItem item)
-        {
-            var textTheme = AppTheme.Subtitle2Label1;
-            textTheme.MinimumFontSize = 10;
-            
-            item.LabelTitle.ApplyTextTheme(textTheme);
-            item.LabelTitle.TextColor = AppColors.GlobalBlackTwoColor;
-            item.ViewBackground.BackgroundColor = AppColors.TintColor;
-        }
-
         private static SwipeMenuSimpleItem CreateDeleteFromQueueItem(
             MvxFluentBindingDescriptionSet<TrackTableViewCell, TrackPO> set)
         {
@@ -199,7 +189,8 @@ namespace BMM.UI.iOS
                 TreatAsSingleAction = true
             };
             
-            item.LabelTitle.ApplyTextTheme(AppTheme.Subtitle2Label1);
+            SetLabelStyle(item);
+            item.LabelTitle.Lines = 1;
             item.LabelTitle.TextColor = AppColors.GlobalWhiteOneColor;
             item.ViewBackground.BackgroundColor = AppColors.RadioColor;
 
@@ -215,6 +206,21 @@ namespace BMM.UI.iOS
                 .To(po => po.DeleteFromQueueCommand);
             
             return item;
+        }
+        
+        private static void SetDefaultSwipeItemStyle(SwipeMenuSimpleItem item)
+        {
+            SetLabelStyle(item);
+            item.LabelTitle.TextColor = AppColors.GlobalBlackTwoColor;
+            item.ViewBackground.BackgroundColor = AppColors.TintColor;
+        }
+        
+        private static void SetLabelStyle(SwipeMenuSimpleItem item)
+        {
+            var textTheme = AppTheme.Subtitle2Label1;
+            textTheme.MinimumFontSize = 10;
+            
+            item.LabelTitle.ApplyTextTheme(textTheme);
         }
     }
 }

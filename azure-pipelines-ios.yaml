@@ -1,6 +1,6 @@
 pool:
   name: Azure Pipelines
-  vmImage: 'macOS-13'
+  vmImage: 'macOS-14'
   demands:
     - xcode
     - msbuild
@@ -14,18 +14,26 @@ trigger:
       - hotfix/*
 
 variables:
+    - name: xcode_version
+      value: '16.1'
     - name: branchName
       value: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
     - group: 'AppleCertificate'
 
 steps:
   - bash: |
-      dotnet workload install ios --version 8.0.402
+      dotnet workload install ios
     displayName: 'Install iOS workload'
 
   - bash: |
-      dotnet workload install maui-ios --version 8.0.402
+      dotnet workload install maui-ios
     displayName: 'Install MAUI iOS workload'
+
+  - script: |
+      echo "Setting up Xcode $XCODE_VERSION"
+      sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
+      xcodebuild -version
+    displayName: 'Select and verify Xcode version'
     
   - task: DotNetCoreCLI@2
     displayName: 'Run Unit Tests'
