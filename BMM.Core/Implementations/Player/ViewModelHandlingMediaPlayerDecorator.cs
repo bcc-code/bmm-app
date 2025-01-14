@@ -225,10 +225,16 @@ namespace BMM.Core.Implementations.Player
             return QueueAndShowPlayer(t => _mediaPlayer.AddToEndOfQueue(t, playbackOrigin), enrichedTrack);
         }
 
-        public Task<bool> QueueToPlayNext(IMediaTrack track, string playbackOrigin)
+        public async Task<bool> QueueToPlayNext(IMediaTrack track, string playbackOrigin)
         {
+            if (track.Id == CurrentTrack?.Id)
+            {
+                await _toastDisplayer.WarnAsync(_bmmLanguageBinder[Translations.QueueViewModel_CannotRemoveFromQueue]);
+                return false;
+            }
+            
             var enrichedTrack = EnrichTrackWithPlaybackOrigin(track, playbackOrigin);
-            return QueueAndShowPlayer(t => _mediaPlayer.QueueToPlayNext(t, playbackOrigin), enrichedTrack);
+            return await QueueAndShowPlayer(t => _mediaPlayer.QueueToPlayNext(t, playbackOrigin), enrichedTrack);
         }
         
         private void DisableShuffleIfNeeded(IList<IMediaTrack> mediaFiles)

@@ -6,39 +6,22 @@ namespace BMM.Core.Helpers
 {
     public abstract class AnalyticsInitializer
     {
-        private static string iOSPrefix = "ios_";
-        private static string AndroidPrefix = "android_";
-        private static string Dev = "dev";
-        private static string Prod = "prod";
+        private const string iOSPrefix = "ios_";
+        private const string AndroidPrefix = "android_";
+        private const string Dev = "dev";
+        private const string Prod = "prod";
+
+        public static bool ShouldInitSentry => !GlobalConstants.SentryDsn.Contains(GlobalConstants.Placeholder); 
         
-        public static void DroidRegister()
-        {
-            if (!AppCenter.Configured)
-                AppCenter.Start(GlobalConstants.DroidAppSecret, typeof(Analytics));
-
-            InitSentry();
-        }
-
         public static void IOSRegister()
         {
             if (!AppCenter.Configured)
                 AppCenter.Start(GlobalConstants.iOSAppSecret, typeof(Analytics));
                     
-            InitSentry();
+            if (ShouldInitSentry)
+                SentrySdk.Init(SetupSentry);
         }
         
-        private static void InitSentry()
-        {
-            SentrySdk.Init(options =>
-            {
-                options.Dsn = GlobalConstants.SentryDsn;
-                options.Environment = GetSentryEnvironment();
-                options.Debug = false;
-                options.TracesSampleRate = 1.0;
-                options.ProfilesSampleRate = 1.0;
-            });
-        }
-
         private static string GetSentryEnvironment()
         {
             string env;
@@ -52,6 +35,15 @@ namespace BMM.Core.Helpers
             return DeviceInfo.Current.Platform == DevicePlatform.Android
                 ? $"{AndroidPrefix}{env}"
                 : $"{iOSPrefix}{env}";
+        }
+
+        public static void SetupSentry(SentryOptions options)
+        {
+            options.Dsn = GlobalConstants.SentryDsn;
+            options.Environment = GetSentryEnvironment();
+            options.Debug = false;
+            options.TracesSampleRate = 1.0;
+            options.ProfilesSampleRate = 1.0;
         }
     }
 }

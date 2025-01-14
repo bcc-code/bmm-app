@@ -6,12 +6,14 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
+using BMM.Core.GuardedActions.Tracks.Parameters;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Implementations.TrackListenedObservation;
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks.Interfaces;
@@ -24,6 +26,7 @@ namespace BMM.Core.Models.POs.Tracks
         : DocumentPO,
           ITrackPO
     {
+        private const string SwipePlaybackOrigin = "Swipe";
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IStorageManager _storageManager;
         private readonly IConnection _connection;
@@ -36,7 +39,7 @@ namespace BMM.Core.Models.POs.Tracks
         private string _trackTitle;
         private string _trackMeta;
 
-        public TrackPO(
+        public TrackPO(TrackSwipeType trackSwipeType,
             IMediaPlayer mediaPlayer,
             IStorageManager storageManager,
             IConnection connection,
@@ -46,8 +49,11 @@ namespace BMM.Core.Models.POs.Tracks
             ITrackInfoProvider trackInfoProvider,
             IListenedTracksStorage listenedTracksStorage,
             Track track,
-            IFirebaseRemoteConfig config) : base(track)
+            IFirebaseRemoteConfig config,
+            IPlayNextAction playNextAction,
+            IAddToPlaylistAction addToPlaylistAction) : base(track)
         {
+            TrackSwipeType = trackSwipeType;
             Track = track;
             _config = config;
             _mediaPlayer = mediaPlayer;
@@ -72,6 +78,16 @@ namespace BMM.Core.Models.POs.Tracks
                 await mediaPlayer.DeleteFromQueue(track);
             });
             
+            PlayNextCommand = new ExceptionHandlingCommand(async () =>
+            {
+                await playNextAction.ExecuteGuarded(new TrackActionsParameter(track, SwipePlaybackOrigin));
+            });
+            
+            AddToPlaylistCommand = new ExceptionHandlingCommand(async () =>
+            {
+                await addToPlaylistAction.ExecuteGuarded(new TrackActionsParameter(track, SwipePlaybackOrigin));
+            });
+            
             RefreshState().FireAndForget();
             SetTrackInformation();
         }
@@ -79,6 +95,8 @@ namespace BMM.Core.Models.POs.Tracks
         public IMvxAsyncCommand ShowTrackInfoCommand { get; }
         public IMvxAsyncCommand OptionButtonClickedCommand { get; }
         public IMvxAsyncCommand DeleteFromQueueCommand { get; }
+        public IMvxAsyncCommand PlayNextCommand { get; }
+        public IMvxAsyncCommand AddToPlaylistCommand { get; }
 
         private void SetTrackInformation()
         {
@@ -104,6 +122,7 @@ namespace BMM.Core.Models.POs.Tracks
             TrackState = new TrackState(isCurrentlySelected, isAvailable, isDownloaded, isDownloading, isQueued, showBlueDot, Track.HasListened);
         }
 
+        public TrackSwipeType TrackSwipeType { get; }
         public Track Track { get; }
 
         public string TrackTitle

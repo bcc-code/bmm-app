@@ -6,6 +6,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Implementations.TrackListenedObservation;
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
@@ -22,6 +23,8 @@ namespace BMM.Core.Implementations.Factories.Tracks
         private readonly IShowTrackInfoAction _showTrackInfoAction;
         private readonly IListenedTracksStorage _listenedTracksStorage;
         private readonly IFirebaseRemoteConfig _config;
+        private readonly IPlayNextAction _playNextAction;
+        private readonly IAddToPlaylistAction _addToPlaylistAction;
 
         public TrackPOFactory(
             IMediaPlayer mediaPlayer,
@@ -30,7 +33,9 @@ namespace BMM.Core.Implementations.Factories.Tracks
             IDownloadQueue downloadQueue,
             IShowTrackInfoAction showTrackInfoAction,
             IListenedTracksStorage listenedTracksStorage,
-            IFirebaseRemoteConfig config)
+            IFirebaseRemoteConfig config,
+            IPlayNextAction playNextAction,
+            IAddToPlaylistAction addToPlaylistAction)
         {
             _mediaPlayer = mediaPlayer;
             _storageManager = storageManager;
@@ -39,17 +44,21 @@ namespace BMM.Core.Implementations.Factories.Tracks
             _showTrackInfoAction = showTrackInfoAction;
             _listenedTracksStorage = listenedTracksStorage;
             _config = config;
+            _playNextAction = playNextAction;
+            _addToPlaylistAction = addToPlaylistAction;
         }
         
         public ITrackPO Create(
             ITrackInfoProvider trackInfoProvider,
             IMvxAsyncCommand<Document> optionsClickedCommand,
-            Track track)
+            Track track,
+            TrackSwipeType trackSwipeType = TrackSwipeType.PlayNextAndAddToPlaylist)
         {
             if (track == null)
                 return null;
 
             return new TrackPO(
+                trackSwipeType,
                 _mediaPlayer,
                 _storageManager,
                 _connection,
@@ -59,7 +68,9 @@ namespace BMM.Core.Implementations.Factories.Tracks
                 trackInfoProvider,
                 _listenedTracksStorage,
                 track,
-                _config);
+                _config,
+                _playNextAction,
+                _addToPlaylistAction);
         }
     }
 }

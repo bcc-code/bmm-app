@@ -10,5 +10,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@color/global_white_one"
+        android:gravity="center"
         style="@style/Subtitle2"/>
 </RelativeLayout>

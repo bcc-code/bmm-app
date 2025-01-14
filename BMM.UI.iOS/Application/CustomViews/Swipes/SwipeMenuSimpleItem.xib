@@ -21,8 +21,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFN-xk-Dkx" userLabel="Container">
                     <rect key="frame" x="0.0" y="0.0" width="121" height="92"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr0-gX-QIp">
-                            <rect key="frame" x="23" y="37" width="75.5" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr0-gX-QIp">
+                            <rect key="frame" x="12" y="12" width="97" height="68"/>
                             <accessibility key="accessibilityConfiguration" identifier="SwipeTitle"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,8 +32,12 @@
                     <color key="backgroundColor" name="RadioColor"/>
                     <accessibility key="accessibilityConfiguration" identifier="Container"/>
                     <constraints>
+                        <constraint firstItem="mr0-gX-QIp" firstAttribute="leading" secondItem="EFN-xk-Dkx" secondAttribute="leading" constant="12" id="2vz-6f-wme"/>
                         <constraint firstItem="mr0-gX-QIp" firstAttribute="centerX" secondItem="EFN-xk-Dkx" secondAttribute="centerX" id="IVX-wV-J9d"/>
+                        <constraint firstAttribute="trailing" secondItem="mr0-gX-QIp" secondAttribute="trailing" constant="12" id="UNL-FC-WX6"/>
                         <constraint firstItem="mr0-gX-QIp" firstAttribute="centerY" secondItem="EFN-xk-Dkx" secondAttribute="centerY" id="Ysg-SI-6T8"/>
+                        <constraint firstItem="mr0-gX-QIp" firstAttribute="top" secondItem="EFN-xk-Dkx" secondAttribute="top" constant="12" id="b59-va-V5f"/>
+                        <constraint firstAttribute="bottom" secondItem="mr0-gX-QIp" secondAttribute="bottom" constant="12" id="yM7-V5-FWV"/>
                     </constraints>
                 </view>
             </subviews>

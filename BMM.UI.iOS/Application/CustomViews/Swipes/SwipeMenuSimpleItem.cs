@@ -17,5 +17,6 @@ namespace BMM.UI.iOS.CustomViews.Swipes
         }
 
         public override UILabel LabelTitle => SwipeLabel;
+        public UIView ViewBackground => BackgroundView;
     }
 }

@@ -7,6 +7,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages.MediaPlayer;
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks;
@@ -64,7 +65,7 @@ namespace BMM.Core.ViewModels
             return _mediaQueue
                 .Tracks
                 .ToList()
-                .Select(t => _trackPOFactory.Create(TrackInfoProvider, OptionCommand, (Track)t));
+                .Select(t => _trackPOFactory.Create(TrackInfoProvider, OptionCommand, (Track)t, TrackSwipeType.RemoveFromQueue));
         }
     }
 }

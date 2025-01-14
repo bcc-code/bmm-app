@@ -194,23 +194,15 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
 
         int positionOfCurrentMediaItem = GetMediaItemIndex(CurrentTrack.Id.ToString());
         int positionOfDesiredMediaItem =  GetMediaItemIndex(desiredMediaItem.MediaId);
-        
-        var trackToPlay = _mediaQueue
-            .Tracks
-            .FirstOrDefault(t => t.Id.ToString() == desiredMediaItem.MediaId);
-        
-        if (trackToPlay == null)
-        {
-            var currentTrack = _mediaQueue
-                .Tracks
-                .FirstOrDefault(c => c.Id == CurrentTrack.Id);
-            
-            bool shouldForward = positionOfDesiredMediaItem > positionOfCurrentMediaItem;
+        bool shouldForward = positionOfDesiredMediaItem > positionOfCurrentMediaItem;
 
-            trackToPlay = shouldForward
-                ? _mediaQueue.Tracks.FindNextAfter(currentTrack)
-                : _mediaQueue.Tracks.FindPreviousBefore(currentTrack);
-        }
+        var currentTrack = _mediaQueue
+            .Tracks
+            .FirstOrDefault(c => c.Id == CurrentTrack.Id);
+        
+        var trackToPlay = shouldForward
+            ? _mediaQueue.Tracks.FindNextAfter(currentTrack)
+            : _mediaQueue.Tracks.FindPreviousBefore(currentTrack);
         
         if (trackToPlay == null)
             return;
