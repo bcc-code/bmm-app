@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Add to end of queue",
     "Track.QueueToPlayNext": "Play next",
     "Track.AddedToQueue": "Added to queue",
+    "Track.CannotAddToQueue": "Added to queue",
     "Track.GoToAlbum": "Idi na album",
     "Track.GoToContributor": "Go to contributors",
     "Track.GoToContributor.Composer": "Composer: {0}",
