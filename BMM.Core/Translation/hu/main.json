@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Hozzáadás a lejátszási sor végéhez",
     "Track.QueueToPlayNext": "Lejátszás következőként",
     "Track.AddedToQueue": "Hozzáadva a várólistához",
+    "Track.CannotAddToQueue": "Hozzáadva a várólistához",
     "Track.GoToAlbum": "Váltás erre az albumra",
     "Track.GoToContributor": "Váltás közreműködőkhöz",
     "Track.GoToContributor.Composer": "Zeneszerző: {0}",
