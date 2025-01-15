@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Kø",
     "Delete": "Slett",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Kan ikke fjerne spor som spilles for øyeblikket fra køen",
+    "TrackRemovedFromQueue": "Sporet er fjernet fra køen",
+    "RemoveFromQueueOption": "Fjern fra køen"
   },
   "SearchViewModel": {
     "Title": "Søk",
@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Legg til i slutten av køen",
     "Track.QueueToPlayNext": "Spill av som neste",
     "Track.AddedToQueue": "Lagt til i køen",
+    "Track.CannotAddToQueue": "Lagt til i køen",
     "Track.GoToAlbum": "Gå til albumet",
     "Track.GoToContributor": "Vis bidragsytere",
     "Track.GoToContributor.Composer": "Komponist: {0}",
