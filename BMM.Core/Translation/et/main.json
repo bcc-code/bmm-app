@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Lisa järjekorra lõppu",
     "Track.QueueToPlayNext": "Mängi järgmisena",
     "Track.AddedToQueue": "Järjekorda lisatud",
+    "Track.CannotAddToQueue": "Järjekorda lisatud",
     "Track.GoToAlbum": "Mine albumisse",
     "Track.GoToContributor": "Mine kaastegijate ossa",
     "Track.GoToContributor.Composer": "Helilooja: {0}",
