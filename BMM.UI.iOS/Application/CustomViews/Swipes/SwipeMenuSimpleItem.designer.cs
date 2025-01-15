@@ -5,6 +5,9 @@
 // If it is removed, they will be lost.
 // Manual changes to this file may not be handled correctly.
 //
+using Foundation;
+using System.CodeDom.Compiler;
+
 namespace BMM.UI.iOS.CustomViews.Swipes
 {
 	[Register ("SwipeMenuSimpleItem")]
@@ -14,19 +17,7 @@ namespace BMM.UI.iOS.CustomViews.Swipes
 		UIKit.UIView BackgroundView { get; set; }
 
 		[Outlet]
-		UIKit.NSLayoutConstraint SeparatorHeightConstraint { get; set; }
-
-		[Outlet]
-		UIKit.NSLayoutConstraint SeparatorLeadingConstraint { get; set; }
-
-		[Outlet]
-		UIKit.UIView SeparatorView { get; set; }
-
-		[Outlet]
-		UIKit.UIImageView SwipeIcon { get; set; }
-
-		[Outlet]
-		UILabel SwipeLabel { get; set; }
+		UIKit.UILabel SwipeLabel { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
@@ -35,29 +26,9 @@ namespace BMM.UI.iOS.CustomViews.Swipes
 				BackgroundView = null;
 			}
 
-			if (SeparatorLeadingConstraint != null) {
-				SeparatorLeadingConstraint.Dispose ();
-				SeparatorLeadingConstraint = null;
-			}
-
-			if (SeparatorView != null) {
-				SeparatorView.Dispose ();
-				SeparatorView = null;
-			}
-
-			if (SwipeIcon != null) {
-				SwipeIcon.Dispose ();
-				SwipeIcon = null;
-			}
-
 			if (SwipeLabel != null) {
 				SwipeLabel.Dispose ();
 				SwipeLabel = null;
-			}
-
-			if (SeparatorHeightConstraint != null) {
-				SeparatorHeightConstraint.Dispose ();
-				SeparatorHeightConstraint = null;
 			}
 
 		}

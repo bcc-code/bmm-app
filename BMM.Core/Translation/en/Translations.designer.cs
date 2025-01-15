@@ -362,6 +362,7 @@ namespace BMM.Core.Translation
 		public const string UserDialogs_Track_AddToQueue = nameof(UserDialogs_Track_AddToQueue);
 		public const string UserDialogs_Track_QueueToPlayNext = nameof(UserDialogs_Track_QueueToPlayNext);
 		public const string UserDialogs_Track_AddedToQueue = nameof(UserDialogs_Track_AddedToQueue);
+		public const string UserDialogs_Track_CannotAddToQueue = nameof(UserDialogs_Track_CannotAddToQueue);
 		public const string UserDialogs_Track_GoToAlbum = nameof(UserDialogs_Track_GoToAlbum);
 		public const string UserDialogs_Track_GoToContributor = nameof(UserDialogs_Track_GoToContributor);
 		public const string UserDialogs_Track_GoToContributor_Composer = nameof(UserDialogs_Track_GoToContributor_Composer);

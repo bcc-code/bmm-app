@@ -10,7 +10,7 @@ namespace BMM.UI.Droid.Application.Helpers
         /// </summary>
         public static void EnsureInitialized()
         {
-            AnalyticsInitializer.DroidRegister();
+            DroidAnalyticsInitializer.Init();
             var setup = MvxAndroidSetupSingleton.EnsureSingletonAvailable(BmmApplication.Instance);
             setup.EnsureInitialized();
         }

@@ -5,6 +5,7 @@ using Android.OS;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Notifications.Data;
 using BMM.UI.Droid.Application.Constants;
+using BMM.UI.Droid.Application.Helpers;
 using MvvmCross.Exceptions;
 using MvvmCross.Platforms.Android.Views;
 
@@ -36,7 +37,7 @@ namespace BMM.UI.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            AnalyticsInitializer.DroidRegister();
+            DroidAnalyticsInitializer.Init();
             base.OnCreate(savedInstanceState);
             SetNotificationToHandle();
         }

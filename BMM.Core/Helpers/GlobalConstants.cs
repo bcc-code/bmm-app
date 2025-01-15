@@ -2,6 +2,7 @@
 {
     public class GlobalConstants
     {
+        public const string Placeholder = "PLACEHOLDER";
         public const string PackageName = "org.brunstad.bmm";
 
         public const string ApiUrlInt = "https://int-bmm-api.brunstad.org";

@@ -156,7 +156,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         if (_mediaController == null)
             return;
 
-        bool queueStaysTheSame = _mediaQueue.IsSameQueue(mediaTracks);
+        bool queueStaysTheSame = _mediaQueue.IsSameQueue(mediaTracks) && !_mediaQueue.HasPendingChanges;
 
         var controls = _mediaController.GetTransportControls();
         if (queueStaysTheSame && _mediaController.Queue != null)
@@ -168,6 +168,7 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
         {
             if (await _mediaQueue.Replace(mediaTracks, currentTrack))
             {
+                _mediaQueue.HasPendingChanges = false;
                 var bundle = new Bundle();
                 bundle.PutLong(StartTimeInMsKey, startTimeInMs);
                 _messenger.Publish(new CurrentTrackChangedMessage(currentTrack, startTimeInMs, this));
@@ -193,23 +194,18 @@ public class AndroidMediaPlayer : MediaBrowserCompat.ConnectionCallback, IPlatfo
 
         int positionOfCurrentMediaItem = GetMediaItemIndex(CurrentTrack.Id.ToString());
         int positionOfDesiredMediaItem =  GetMediaItemIndex(desiredMediaItem.MediaId);
-        
-        var trackToPlay = _mediaQueue
+        bool shouldForward = positionOfDesiredMediaItem > positionOfCurrentMediaItem;
+
+        var currentTrack = _mediaQueue
             .Tracks
-            .FirstOrDefault(t => t.Id.ToString() == desiredMediaItem.MediaId);
+            .FirstOrDefault(c => c.Id == CurrentTrack.Id);
+        
+        var trackToPlay = shouldForward
+            ? _mediaQueue.Tracks.FindNextAfter(currentTrack)
+            : _mediaQueue.Tracks.FindPreviousBefore(currentTrack);
         
         if (trackToPlay == null)
-        {
-            var currentTrack = _mediaQueue
-                .Tracks
-                .FirstOrDefault(c => c.Id == CurrentTrack.Id);
-            
-            bool shouldForward = positionOfDesiredMediaItem > positionOfCurrentMediaItem;
-
-            trackToPlay = shouldForward
-                ? _mediaQueue.Tracks.FindNextAfter(currentTrack)
-                : _mediaQueue.Tracks.FindPreviousBefore(currentTrack);
-        }
+            return;
         
         var controls = _mediaController.GetTransportControls();
         controls!.PlayFromMediaId(trackToPlay.Id.ToString(), null);

@@ -1,5 +1,6 @@
 ﻿using BMM.Core.Constants;
 using BMM.Core.Helpers;
+using BMM.Core.Models.Enums;
 using MvvmCross.Binding.BindingContext;
 using BMM.Core.Models.POs.Tracks;
 using BMM.Core.ValueConverters;
@@ -10,6 +11,7 @@ using BMM.UI.iOS.TableViewCell.Base;
 using CoreAnimation;
 using MvvmCross.Platforms.Ios.Binding;
 using BMM.Core.Translation;
+using BMM.UI.iOS.CustomViews.Swipes.Base;
 
 namespace BMM.UI.iOS
 {
@@ -116,20 +118,81 @@ namespace BMM.UI.iOS
         public override void SetupAndBindMenus()
         {
             var set = this.CreateBindingSet<TrackTableViewCell, TrackPO>();
+
+            var swipeType = ((TrackPO)DataContext)!.TrackSwipeType;
             
-            RightMenu.AddItem(CreateItem(set));
-            LeftMenu.AddItem(CreateItem(set));
+            if (swipeType == TrackSwipeType.RemoveFromQueue)
+            {
+                RightMenu.AddItem(CreateDeleteFromQueueItem(set));
+                LeftMenu.AddItem(CreateDeleteFromQueueItem(set));
+            }
+            else
+            {
+                LeftMenu.AddItem(CreatePlayNextItem(set));
+                RightMenu.AddItem(CreateAddToPlaylistItem(set));
+            }    
             
             set.Apply();
         }
 
-        private static SwipeMenuSimpleItem CreateItem(
+        private SwipeMenuBase CreateAddToPlaylistItem(MvxFluentBindingDescriptionSet<TrackTableViewCell, TrackPO> set)
+        {
+            var item = new SwipeMenuSimpleItem
+            {
+                TreatAsSingleAction = true
+            };
+
+            SetDefaultSwipeItemStyle(item);
+            
+            set.Bind(item.LabelTitle)
+                .To(po => po.TextSource[Translations.UserDialogs_Track_AddToPlaylist]);
+
+            set.Bind(item)
+                .For(i => i.ClickCommand)
+                .To(po => po.AddToPlaylistCommand);
+            
+            set.Bind(item)
+                .For(i => i.FullSwipeCommand)
+                .To(po => po.AddToPlaylistCommand);
+            
+            return item;
+        }
+
+        private SwipeMenuBase CreatePlayNextItem(MvxFluentBindingDescriptionSet<TrackTableViewCell, TrackPO> set)
+        {
+            var item = new SwipeMenuSimpleItem
+            {
+                TreatAsSingleAction = true
+            };
+
+            SetDefaultSwipeItemStyle(item);
+
+            set.Bind(item.LabelTitle)
+                .To(po => po.TextSource[Translations.UserDialogs_Track_QueueToPlayNext]);
+
+            set.Bind(item)
+                .For(i => i.ClickCommand)
+                .To(po => po.PlayNextCommand);
+            
+            set.Bind(item)
+                .For(i => i.FullSwipeCommand)
+                .To(po => po.PlayNextCommand);
+            
+            return item;
+        }
+
+        private static SwipeMenuSimpleItem CreateDeleteFromQueueItem(
             MvxFluentBindingDescriptionSet<TrackTableViewCell, TrackPO> set)
         {
             var item = new SwipeMenuSimpleItem
             {
                 TreatAsSingleAction = true
             };
+            
+            SetLabelStyle(item);
+            item.LabelTitle.Lines = 1;
+            item.LabelTitle.TextColor = AppColors.GlobalWhiteOneColor;
+            item.ViewBackground.BackgroundColor = AppColors.RadioColor;
 
             set.Bind(item.LabelTitle)
                 .To(po => po.TextSource[Translations.QueueViewModel_Delete]);
@@ -143,6 +206,21 @@ namespace BMM.UI.iOS
                 .To(po => po.DeleteFromQueueCommand);
             
             return item;
+        }
+        
+        private static void SetDefaultSwipeItemStyle(SwipeMenuSimpleItem item)
+        {
+            SetLabelStyle(item);
+            item.LabelTitle.TextColor = AppColors.GlobalBlackTwoColor;
+            item.ViewBackground.BackgroundColor = AppColors.TintColor;
+        }
+        
+        private static void SetLabelStyle(SwipeMenuSimpleItem item)
+        {
+            var textTheme = AppTheme.Subtitle2Label1;
+            textTheme.MinimumFontSize = 10;
+            
+            item.LabelTitle.ApplyTextTheme(textTheme);
         }
     }
 }

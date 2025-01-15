@@ -81,13 +81,6 @@ namespace BMM.UI.iOS.CustomViews.Swipes.Base
            AddGestureRecognizer(_tapGestureRecognizer);
 
            _initialized = true;
-           SetThemes();
-        }
-
-        private void SetThemes()
-        {
-            LabelTitle.ApplyTextTheme(AppTheme.Subtitle2Label1);
-            LabelTitle.TextColor = AppColors.GlobalWhiteOneColor;
         }
 
         protected override void Dispose(bool isDisposing)

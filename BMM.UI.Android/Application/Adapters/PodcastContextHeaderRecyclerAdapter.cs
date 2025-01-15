@@ -1,12 +1,15 @@
-﻿using Android.Views;
+﻿using _Microsoft.Android.Resource.Designer;
+using Android.Views;
 using AndroidX.RecyclerView.Widget;
+using BMM.UI.Droid.Application.Adapters.Swipes;
+using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.ViewHolders;
 using MvvmCross.DroidX.RecyclerView;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 
 namespace BMM.UI.Droid.Application.Adapters
 {
-    public class PodcastContextHeaderRecyclerAdapter : MvxRecyclerAdapter
+    public class PodcastContextHeaderRecyclerAdapter : BaseSwipeMenuAdapter
     {
         private readonly RecyclerView.RecycledViewPool _commonRecyclerViewPool;
 
@@ -43,6 +46,11 @@ namespace BMM.UI.Droid.Application.Adapters
                     return new ProjectBoxExpandedViewHolder(view, itemBindingContext, this);
                 case Resource.Layout.listitem_gibraltar_project_box:
                     return new GibraltarProjectBoxExpandedViewHolder(view, itemBindingContext);
+                case Resource.Layout.listitem_track:
+                {
+                    view.SetBackgroundColor(parent.Context.GetColorFromResource(ResourceConstant.Color.background_one_color));
+                    return new TrackSwipeItemViewHolder(view, itemBindingContext, this);
+                }
                 default:
                     return new MvxRecyclerViewHolder(view, itemBindingContext);
             }

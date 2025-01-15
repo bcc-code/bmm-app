@@ -14,6 +14,7 @@ using BMM.Core.GuardedActions.TrackOptions.Interfaces;
 using BMM.Core.GuardedActions.TrackOptions.Parameters;
 using BMM.Core.GuardedActions.TrackOptions.Parameters.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
+using BMM.Core.GuardedActions.Tracks.Parameters;
 using BMM.Core.Helpers;
 using BMM.Core.Helpers.PresentationHints;
 using BMM.Core.Implementations;
@@ -61,6 +62,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
         private readonly IMediaPlayer _mediaPlayer;
         private readonly IShowTrackInfoAction _showTrackInfoAction;
         private readonly ILikeUnlikeTrackAction _likeUnlikeTrackAction;
+        private readonly IPlayNextAction _playNextAction;
+        private readonly IAddToPlaylistAction _addToPlaylistAction;
 
         private readonly List<decimal> _availablePlaybackSpeed = new()
         {
@@ -82,7 +85,9 @@ namespace BMM.Core.GuardedActions.TrackOptions
             IAnalytics analytics,
             IMediaPlayer mediaPlayer,
             IShowTrackInfoAction showTrackInfoAction,
-            ILikeUnlikeTrackAction likeUnlikeTrackAction)
+            ILikeUnlikeTrackAction likeUnlikeTrackAction,
+            IPlayNextAction playNextAction,
+            IAddToPlaylistAction addToPlaylistAction)
         {
             _connection = connection;
             _bmmLanguageBinder = bmmLanguageBinder;
@@ -97,6 +102,8 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _mediaPlayer = mediaPlayer;
             _showTrackInfoAction = showTrackInfoAction;
             _likeUnlikeTrackAction = likeUnlikeTrackAction;
+            _playNextAction = playNextAction;
+            _addToPlaylistAction = addToPlaylistAction;
         }
 
         private bool IsSleepTimerOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsSleepTimerEnabled;
@@ -139,48 +146,18 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     new StandardIconOptionPO(
                         _bmmLanguageBinder[Translations.UserDialogs_Track_AddToPlaylist],
                         ImageResourceNames.IconPlaylist,
-                        new MvxAsyncCommand(async () =>
-                        {
-                            await _mvxNavigationService.ChangePresentation(new CloseFragmentsOverPlayerHint());
-                            _mvxMessenger.Publish(new TogglePlayerMessage(this, false));
-                            await Task.Delay(ViewConstants.DefaultAnimationDurationInMilliseconds);
-
-                            await _mvxNavigationService.Navigate<TrackCollectionsAddToViewModel, TrackCollectionsAddToViewModel.Parameter>(
-                                new TrackCollectionsAddToViewModel.Parameter
-                                {
-                                    DocumentId = track.Id,
-                                    DocumentType = track.DocumentType,
-                                    OriginViewModel = sourceVM.PlaybackOriginString()
-                                });
-                        })));
+                        new MvxAsyncCommand(() => _addToPlaylistAction.ExecuteGuarded(new TrackActionsParameter(track, sourceVM.PlaybackOriginString())))));
             }
 
             if (sourceVM is not QueueViewModel && sourceVM is not PlayerViewModel)
             {
                 var mediaPlayer = Mvx.IoCProvider.Resolve<IMediaPlayer>();
 
-                if (DeviceInfo.Platform == DevicePlatform.iOS)
-                {
-                    options.Add(new StandardIconOptionPO(
-                        _bmmLanguageBinder[Translations.UserDialogs_Track_QueueToPlayNext],
-                        ImageResourceNames.IconPlayMini,
-                        new MvxAsyncCommand(async () =>
-                        {
-                            var success = await mediaPlayer.QueueToPlayNext(track, sourceVM.PlaybackOriginString());
-                            if (success)
-                            {
-                                await Mvx.IoCProvider.Resolve<IToastDisplayer>()
-                                    .Success(_bmmLanguageBinder.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
-
-                                Mvx.IoCProvider.Resolve<IAnalytics>()
-                                    .LogEvent(Event.TrackHasBeenAddedToBePlayedNext,
-                                        new Dictionary<string, object>
-                                        {
-                                            { "track", track.Id }
-                                        });
-                            }
-                        })));
-                }
+                options.Add(new StandardIconOptionPO(
+                    _bmmLanguageBinder[Translations.UserDialogs_Track_QueueToPlayNext],
+                    ImageResourceNames.IconPlayMini,
+                    new MvxAsyncCommand(() => _playNextAction.ExecuteGuarded(
+                        new TrackActionsParameter(track, sourceVM.PlaybackOriginString())))));
 
                 options.Add(
                     new StandardIconOptionPO(
@@ -194,7 +171,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
                                 await Mvx.IoCProvider.Resolve<IToastDisplayer>()
                                     .Success(_bmmLanguageBinder.GetText(Translations.UserDialogs_Track_AddedToQueue, track.Title));
 
-                                Mvx.IoCProvider.Resolve<IAnalytics>()
+                                _analytics
                                     .LogEvent(Event.TrackHasBeenAddedToEndOfQueue,
                                         new Dictionary<string, object>
                                         {
