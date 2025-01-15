@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Dodaj na konec čakalne vrste",
     "Track.QueueToPlayNext": "Predvajaj naslednje",
     "Track.AddedToQueue": "Dodano v čakalno vrsto",
+    "Track.CannotAddToQueue": "Dodano v čakalno vrsto",
     "Track.GoToAlbum": "Pojdi na album",
     "Track.GoToContributor": "Pojdi na ustvarjalce",
     "Track.GoToContributor.Composer": "Skladatelj: {0}",
