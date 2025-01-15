@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Kuyruğun sonuna ekle",
     "Track.QueueToPlayNext": "Sonrakini çal",
     "Track.AddedToQueue": "Sıraya Eklendi",
+    "Track.CannotAddToQueue": "Sıraya Eklendi",
     "Track.GoToAlbum": "Albüm' e git",
     "Track.GoToContributor": "Kullanıcılara Git",
     "Track.GoToContributor.Composer": "Besteci {0}",
