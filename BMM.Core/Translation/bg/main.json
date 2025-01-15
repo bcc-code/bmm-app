@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Add to end of queue",
     "Track.QueueToPlayNext": "Пуснете следващите",
     "Track.AddedToQueue": "Добавено към опашката",
+    "Track.CannotAddToQueue": "Добавено към опашката",
     "Track.GoToAlbum": "Отиди на албум",
     "Track.GoToContributor": "Отиди на сътрудници",
     "Track.GoToContributor.Composer": "Композитор: ",
