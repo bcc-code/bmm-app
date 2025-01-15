@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Add to end of queue",
     "Track.QueueToPlayNext": "Play next",
     "Track.AddedToQueue": "By Snitlys tou bygevoeg",
+    "Track.CannotAddToQueue": "By Snitlys tou bygevoeg",
     "Track.GoToAlbum": "Gaan na album",
     "Track.GoToContributor": "Gaan na bydraers",
     "Track.GoToContributor.Composer": "Komponis: {0}",
