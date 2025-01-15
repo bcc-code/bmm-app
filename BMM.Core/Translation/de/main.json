@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Ans Ende der Wiedergabeliste hinzufügen",
     "Track.QueueToPlayNext": "Als nächstes abspielen",
     "Track.AddedToQueue": "Zur Warteschlange hinzugefügt",
+    "Track.CannotAddToQueue": "Zur Warteschlange hinzugefügt",
     "Track.GoToAlbum": "Zum Album",
     "Track.GoToContributor": "Zur Person",
     "Track.GoToContributor.Composer": "Komponist: {0}",
