@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Toevoegen aan einde afspeelrij",
     "Track.QueueToPlayNext": "Volgende afspelen",
     "Track.AddedToQueue": "Toegevoegd aan de wachtrij",
+    "Track.CannotAddToQueue": "Toegevoegd aan de wachtrij",
     "Track.GoToAlbum": "Ga naar album",
     "Track.GoToContributor": "Ga naar bijdragers",
     "Track.GoToContributor.Composer": "Componist: {0}",
