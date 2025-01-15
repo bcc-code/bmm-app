@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Adaugă la sfârșitul cozii",
     "Track.QueueToPlayNext": "Redă următoarea",
     "Track.AddedToQueue": "Adăugat în coadă",
+    "Track.CannotAddToQueue": "Adăugat în coadă",
     "Track.GoToAlbum": "Mergi la album",
     "Track.GoToContributor": "Vezi contribuitori",
     "Track.GoToContributor.Composer": "Compozitor: {0}",
