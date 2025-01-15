@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Tilføj til slutningen af køen",
     "Track.QueueToPlayNext": "Afspil som næste",
     "Track.AddedToQueue": "Lagt i kø",
+    "Track.CannotAddToQueue": "Lagt i kø",
     "Track.GoToAlbum": "Gå til album",
     "Track.GoToContributor": "Vis bidragsydere",
     "Track.GoToContributor.Composer": "Komponist: {0}",
