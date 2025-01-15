@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Kø",
     "Delete": "Slett",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Kan ikke fjerne spor som spilles for øyeblikket fra køen",
+    "TrackRemovedFromQueue": "Sporet er fjernet fra køen",
+    "RemoveFromQueueOption": "Fjern fra køen"
   },
   "SearchViewModel": {
     "Title": "Søk",
