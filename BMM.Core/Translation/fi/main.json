@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Lisää jonon loppuun.",
     "Track.QueueToPlayNext": "Seuraava kappale",
     "Track.AddedToQueue": "Lisätty jonoon",
+    "Track.CannotAddToQueue": "Lisätty jonoon",
     "Track.GoToAlbum": "Siirry albumiin",
     "Track.GoToContributor": "Lauluntekijät",
     "Track.GoToContributor.Composer": "Säveltäjä: {0}",
