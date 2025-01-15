@@ -447,6 +447,7 @@
     "Track.AddToQueue": "வரிசையின் முடிவில் சேர்க்கவும்",
     "Track.QueueToPlayNext": "அடுத்தது பிளே செய்",
     "Track.AddedToQueue": "வரிசையில் சேர்க்கப்பட்டது",
+    "Track.CannotAddToQueue": "வரிசையில் சேர்க்கப்பட்டது",
     "Track.GoToAlbum": "ஆல்பத்திற்குச் செல்லவும்",
     "Track.GoToContributor": "பங்களிப்பாளர்களிடம் செல்லவும்",
     "Track.GoToContributor.Composer": "இசையமைப்பாளர்: {0}",
