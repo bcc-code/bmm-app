@@ -447,6 +447,7 @@
     "Track.AddToQueue": "Add to end of queue",
     "Track.QueueToPlayNext": "播放下一个",
     "Track.AddedToQueue": "已添加到队列",
+    "Track.CannotAddToQueue": "已添加到队列",
     "Track.GoToAlbum": "转到专辑",
     "Track.GoToContributor": "转到贡献者",
     "Track.GoToContributor.Composer": "作曲： {0}",
