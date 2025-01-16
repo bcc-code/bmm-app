@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Fila",
     "Delete": "Excluir",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Não é possível remover a faixa que está sendo reproduzida da fila",
+    "TrackRemovedFromQueue": "A faixa foi removida da fila",
+    "RemoveFromQueueOption": "Remover da fila"
   },
   "SearchViewModel": {
     "Title": "Procurar",
@@ -334,8 +334,8 @@
     "OptionNotificationBadgeText": "Exiba uma notificação na tela inicial para ajudar você a lembrar de ouvir o episódio diário.",
     "OptionBibleStudyHeader": "Estudo Bíblico na tela inicial",
     "OptionBibleStudyText": "Mostre o status do seu estudo bíblico na tela inicial",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Requisitos rigorosos para crachás",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Remova o bane de notificação Fra Kåre somente quando tiver conquistado a pontuação.",
     "AppInfoTitle": "Informações do app",
     "AppInfoAppVersion": "Versão do App: ",
     "AppInfoManufacturer": "Produtora:",
