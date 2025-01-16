@@ -13,7 +13,7 @@ namespace BMM.UI.iOS.UI
         
         protected override void PlatformOpenUri(Uri uri)
         {
-            UIApplication.SharedApplication.OpenUrl(uri);
+            UIApplication.SharedApplication.OpenUrl(uri, new NSDictionary(), null);
         }
     }
 }
