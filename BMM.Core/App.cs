@@ -394,12 +394,15 @@ namespace BMM.Core
         private static void InitializeTranslation()
         {
             var provider = Mvx.IoCProvider.Resolve<IAppLanguageProvider>();
-            var language = provider.GetAppLanguage();
+            string language = provider.GetAppLanguage();
             provider.InitializeAtStartup(language);
             TextProviderBuilder.SetDefaultLanguage(language);
 
-            var builder = new TextProviderBuilder(new BmmJsonDictionaryTextProvider());
+            var builder = new TextProviderBuilder(new BmmJsonDictionaryTextProvider(
+                Mvx.IoCProvider.Resolve<IMvxResourceLoader>(),
+                Mvx.IoCProvider.Resolve<IMvxJsonConverter>()));
             Mvx.IoCProvider.RegisterSingleton<IMvxTextProviderBuilder>(builder);
+            
             Mvx.IoCProvider.RegisterSingleton<IMvxTextProvider>(builder.TextProvider);
         }
     }
