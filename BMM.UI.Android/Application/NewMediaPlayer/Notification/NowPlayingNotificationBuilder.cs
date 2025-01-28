@@ -19,6 +19,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
     {
         public const string ActionSkipBackward = "org.brunstad.bmm.android.skipbackward";
         public const string ActionSkipForward = "org.brunstad.bmm.android.skipforward";
+        public const string JumpForwardTitle = "Jump forward";
+        public const string JumpBackwardTitle = "Jump back";
 
         private readonly Context _context;
         private readonly IMetadataMapper _metadataMapper;
@@ -45,8 +47,8 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
             _notificationManager = (NotificationManager)context.GetSystemService(Context.NotificationService);
 
             _skipToPreviousAction = new ExoPlayerAction(Resource.Drawable.icon_prev_notification, "Previous", PlaybackStateCompat.ActionSkipToPrevious);
-            _jumpBackwardAction = new CustomAction(Resource.Drawable.icon_skip_back_notification, "Jump back", ActionSkipBackward);
-            _jumpForwardAction = new CustomAction(Resource.Drawable.icon_skip_forward_notification, "Jump forward", ActionSkipForward);
+            _jumpBackwardAction = new CustomAction(Resource.Drawable.icon_skip_back_notification, JumpBackwardTitle, ActionSkipBackward);
+            _jumpForwardAction = new CustomAction(Resource.Drawable.icon_skip_forward_notification, JumpForwardTitle, ActionSkipForward);
             _playAction = new ExoPlayerAction(Resource.Drawable.icon_play_notification, "Play", PlaybackStateCompat.ActionPlay);
             _pauseAction = new ExoPlayerAction(Resource.Drawable.icon_pause_notification, "Pause", PlaybackStateCompat.ActionPause);
             //ToDo: when skipping a song it should be registered in PlayStatistics
