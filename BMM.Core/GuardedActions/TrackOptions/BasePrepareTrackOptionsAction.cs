@@ -41,7 +41,7 @@ using Microsoft.Maui.Devices;
 
 namespace BMM.Core.GuardedActions.TrackOptions
 {
-    public class PrepareTrackOptionsAction :
+    public abstract class BasePrepareTrackOptionsAction :
         GuardedActionWithParameterAndResult<IPrepareTrackOptionsParameters, IList<StandardIconOptionPO>>,
         IPrepareTrackOptionsAction
     {
@@ -73,7 +73,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
             1.5m
         };
 
-        public PrepareTrackOptionsAction(IConnection connection,
+        public BasePrepareTrackOptionsAction(IConnection connection,
             IBMMLanguageBinder bmmLanguageBinder,
             IMvxMessenger mvxMessenger,
             IMvxNavigationService mvxNavigationService,
@@ -106,6 +106,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
             _addToPlaylistAction = addToPlaylistAction;
         }
 
+        protected abstract string PlayNextIcon { get; }
         private bool IsSleepTimerOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsSleepTimerEnabled;
         private bool IsPlaybackSpeedOptionAvailable => _featurePreviewPermission.IsFeaturePreviewEnabled() || _firebaseRemoteConfig.IsPlaybackSpeedEnabled;
 
@@ -155,7 +156,7 @@ namespace BMM.Core.GuardedActions.TrackOptions
 
                 options.Add(new StandardIconOptionPO(
                     _bmmLanguageBinder[Translations.UserDialogs_Track_QueueToPlayNext],
-                    ImageResourceNames.IconPlayMini,
+                    PlayNextIcon,
                     new MvxAsyncCommand(() => _playNextAction.ExecuteGuarded(
                         new TrackActionsParameter(track, sourceVM.PlaybackOriginString())))));
 

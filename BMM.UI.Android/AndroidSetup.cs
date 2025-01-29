@@ -15,6 +15,7 @@ using BMM.Api.Framework;
 using BMM.Api.Framework.HTTP;
 using BMM.Core;
 using BMM.Core.Constants;
+using BMM.Core.GuardedActions.TrackOptions.Interfaces;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
 using BMM.Core.Implementations.Analytics;
@@ -34,6 +35,7 @@ using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Support;
+using BMM.UI.Droid.Application.Actions;
 using BMM.UI.Droid.Application.Bindings;
 using BMM.UI.Droid.Application.DownloadManager;
 using BMM.UI.Droid.Application.Helpers;
@@ -193,6 +195,8 @@ namespace BMM.UI.Droid
             iocProvider.RegisterType<ISystemSettingsService, SystemSettingsService>();
             iocProvider.LazyConstructAndRegisterSingleton<IDialogService, DroidDialogService>();
             iocProvider.LazyConstructAndRegisterSingleton<IDeviceInfo, DroidDeviceInfo>();
+
+            iocProvider.RegisterType<IPrepareTrackOptionsAction, DroidTrackOptionsAction>();
             
             InitializeMediaPlayer(iocProvider);
         }

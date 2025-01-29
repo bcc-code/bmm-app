@@ -21,6 +21,7 @@ namespace BMM.Core.Constants
         public const string IconSleepTimer = "Icon_Sleep_Timer";
         public const string IconPlaybackSpeed = "Icon_Playback_Speed";
         public const string IconPlayMini = "Icon_Play_Mini";
+        public const string IconPlayNext = "Icon_Play_Next";
         public const string IconChevronRight = "Icon_Chevron_Right";
         public const string IconAchievementLocked = "Icon_Achievement_Locked";
         public const string IconCheckmark = "Icon_Checkmark";

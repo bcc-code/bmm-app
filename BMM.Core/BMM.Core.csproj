@@ -48,6 +48,10 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Attributes\" />
+    </ItemGroup>
+
 
 
     <Target Name="TranslationKeysGenerator" BeforeTargets="PreBuildEvent">

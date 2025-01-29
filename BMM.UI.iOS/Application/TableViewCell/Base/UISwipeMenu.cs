@@ -19,7 +19,7 @@ namespace BMM.UI.iOS.TableViewCell.Base
 
         private readonly IList<SwipeMenuBase> _items = new List<SwipeMenuBase>();
 
-        public UISwipeMenu(SwipePlacement placement, SwipeableViewCell swipeableViewCell, float itemWidth = 72)
+        public UISwipeMenu(SwipePlacement placement, SwipeableViewCell swipeableViewCell, float itemWidth = 80)
         {
             _swipeableViewCell = swipeableViewCell;
             ItemWidth = itemWidth;
