@@ -24,7 +24,7 @@ namespace BMM.UI.Droid.Application.Extensions
         
         public static bool IsNightMode(this Context context)
         {
-            return context.Resources!.GetString(Resource.String.is_night_mode) == true.ToString().ToLower();
+            return context?.Resources?.GetString(Resource.String.is_night_mode) == true.ToString().ToLower();
         }
     }
 }
