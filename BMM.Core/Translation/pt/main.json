@@ -39,7 +39,7 @@
     "EligibleUntilHoursAndMinutesMessage": "{0} horas {1} minutos restantes hoje",
     "EligibleUntilMinutesOnlyMessage": "minutos restantes hoje",
     "DaysInARowSingular": "dia seguido",
-    "DaysInARowPlural": "dias seguidos",
+    "DaysInARowPlural": "{0} dias seguidos",
     "WeekdayMonday": "S",
     "WeekdayTuesday": "T",
     "WeekdayWednesday": "Q",
