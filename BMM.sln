@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		crowdin.yml = crowdin.yml
 		README.md = README.md
 		version-info.sh = version-info.sh
+		doc-renew-apple-certificates.yaml = doc-renew-apple-certificates.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BMM.Tests", "BMM.Tests", "{16799F11-AD57-4042-AD57-22758A986746}"
