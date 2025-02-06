@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +22,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="121" height="92"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr0-gX-QIp">
-                            <rect key="frame" x="12" y="12" width="97" height="68"/>
+                            <rect key="frame" x="25.5" y="12" width="70" height="68"/>
                             <accessibility key="accessibilityConfiguration" identifier="SwipeTitle"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="3aI-Mf-uXx"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -32,9 +35,7 @@
                     <color key="backgroundColor" name="RadioColor"/>
                     <accessibility key="accessibilityConfiguration" identifier="Container"/>
                     <constraints>
-                        <constraint firstItem="mr0-gX-QIp" firstAttribute="leading" secondItem="EFN-xk-Dkx" secondAttribute="leading" constant="12" id="2vz-6f-wme"/>
                         <constraint firstItem="mr0-gX-QIp" firstAttribute="centerX" secondItem="EFN-xk-Dkx" secondAttribute="centerX" id="IVX-wV-J9d"/>
-                        <constraint firstAttribute="trailing" secondItem="mr0-gX-QIp" secondAttribute="trailing" constant="12" id="UNL-FC-WX6"/>
                         <constraint firstItem="mr0-gX-QIp" firstAttribute="centerY" secondItem="EFN-xk-Dkx" secondAttribute="centerY" id="Ysg-SI-6T8"/>
                         <constraint firstItem="mr0-gX-QIp" firstAttribute="top" secondItem="EFN-xk-Dkx" secondAttribute="top" constant="12" id="b59-va-V5f"/>
                         <constraint firstAttribute="bottom" secondItem="mr0-gX-QIp" secondAttribute="bottom" constant="12" id="yM7-V5-FWV"/>

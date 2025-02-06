@@ -4,12 +4,14 @@
     android:id="@+id/SwipeContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    
     <TextView
         android:id="@+id/TitleLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/swipe_menu_width"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@color/global_white_one"
         android:gravity="center"
         style="@style/Subtitle2"/>
+    
 </RelativeLayout>

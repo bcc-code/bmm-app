@@ -15,7 +15,7 @@ namespace BMM.UI.Droid.Application.ViewHolders.Base
 {
     public abstract class SwipeMenuViewHolder : MvxRecyclerViewHolder, View.IOnTouchListener
     {
-        private const int ItemWidth = 60;
+        private const int ItemWidth = 80;
 
         protected readonly ISwipeMenuAdapter SwipeMenuAdapter;
         public const int MinSwipeThreshold = 10;
