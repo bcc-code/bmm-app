@@ -87,6 +87,7 @@
 
         public static string Achievements = "statistics/achievements{?theme,lang}";
         public static string AchievementsToAcknowledge = "statistics/achievements/to/acknowledge{?theme,lang}";
+        public static string Achievement = "statistics/achievement/{id}/{?theme,lang}";
 
         public static string YearInReview = "statistics/year-in-review/overview";
         

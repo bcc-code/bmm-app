@@ -4,5 +4,6 @@ namespace BMM.Core.ViewModels.Parameters.Interface;
 
 public interface IAchievementDetailsParameter
 {
+    string Id { get; }
     AchievementPO AchievementPO { get; }
 }
