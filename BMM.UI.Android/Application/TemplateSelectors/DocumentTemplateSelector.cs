@@ -46,6 +46,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
         public const int ProjectBoxCollapsed = 29;
         public const int ProjectBoxExpanded = 30;
         public const int GibraltarProjectBoxExpanded = 31;
+        public const int HvheProjectBox = 32;
     }
 
     public class DocumentTemplateSelector : MvxTemplateSelector<DocumentPO>
@@ -119,6 +120,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ViewTypes.GibraltarProjectBoxExpanded:
                     return Resource.Layout.listitem_gibraltar_project_box;
+                
+                case ViewTypes.HvheProjectBox:
+                    return Resource.Layout.listitem_hvhe_project_box;
                 
                 default:
                     return Resource.Layout.listitem_track;
@@ -194,6 +198,9 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ProjectBoxPO projectBoxPO:
                 {
+                    if (projectBoxPO.ProjectBox.DocumentType == DocumentType.HvheProjectBox)
+                        return ViewTypes.HvheProjectBox;
+                    
                     if (projectBoxPO.ProjectBox.DocumentType == DocumentType.GibraltarProjectBox)
                         return ViewTypes.GibraltarProjectBoxExpanded;
                     

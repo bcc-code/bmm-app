@@ -14,7 +14,7 @@ namespace BMM.UI.iOS
 	partial class HvheProjectBoxViewCell
 	{
 		[Outlet]
-		UIKit.UIStackView AchievementsStackView { get; set; }
+		UIKit.UICollectionView AchievementsCollectionView { get; set; }
 
 		[Outlet]
 		UIKit.UIView BoysPointsContainer { get; set; }
@@ -36,12 +36,6 @@ namespace BMM.UI.iOS
 
 		[Outlet]
 		UIKit.UILabel RulesLabel { get; set; }
-
-		[Outlet]
-		UIKit.NSLayoutConstraint StackViewLeadingConstraint { get; set; }
-
-		[Outlet]
-		UIKit.NSLayoutConstraint StackViewTrailingConstraint { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
@@ -83,34 +77,14 @@ namespace BMM.UI.iOS
 				RulesLabel = null;
 			}
 
-			if (StackViewLeadingConstraint != null) {
-				StackViewLeadingConstraint.Dispose ();
-				StackViewLeadingConstraint = null;
-			}
-
-			if (StackViewTrailingConstraint != null) {
-				StackViewTrailingConstraint.Dispose ();
-				StackViewTrailingConstraint = null;
+			if (AchievementsCollectionView != null) {
+				AchievementsCollectionView.Dispose ();
+				AchievementsCollectionView = null;
 			}
 
 			if (TitleLabel != null) {
 				TitleLabel.Dispose ();
 				TitleLabel = null;
-			}
-
-			if (RulesContainer != null) {
-				RulesContainer.Dispose ();
-				RulesContainer = null;
-			}
-
-			if (RulesLabel != null) {
-				RulesLabel.Dispose ();
-				RulesLabel = null;
-			}
-
-			if (AchievementsStackView != null) {
-				AchievementsStackView.Dispose ();
-				AchievementsStackView = null;
 			}
 
 		}

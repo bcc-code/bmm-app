@@ -10,6 +10,7 @@ using BMM.Core.Models.POs.BibleStudy;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.Core.Models.POs.YearInReview;
 using BMM.Core.Utils;
+using BMM.UI.iOS.CollectionViewSource;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
 using BMM.UI.iOS.TableViewCell.Base;
@@ -26,8 +27,6 @@ namespace BMM.UI.iOS
 {
     public partial class HvheProjectBoxViewCell : BaseBMMTableViewCell
     {
-        private const int ItemSize = 64;
-        
         public static readonly NSString Key = new(nameof(HvheProjectBoxViewCell));
         private IBmmObservableCollection<IAchievementPO> _itemsSource;
 
@@ -37,8 +36,11 @@ namespace BMM.UI.iOS
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<HvheProjectBoxViewCell, ProjectBoxPO>();
+
+                var achievementsSource = new ProjectBoxAchievementsCollectionViewSource(AchievementsCollectionView);
                 
-                var achievementsSource = new MvxCollectionViewSource()
+                set.Bind(achievementsSource)
+                    .To(v => v.Achievements);
                 
                 set.Bind(TitleLabel)
                     .To(po => po.ProjectBox.Title);
@@ -65,7 +67,8 @@ namespace BMM.UI.iOS
                     .To(po => po.ProjectBox.BoysPoints);
                 
                 set.Apply();
-                AdjustConstraints();
+
+                AchievementsCollectionView.Source = achievementsSource;
                 SetThemes();
             });
         }
@@ -82,15 +85,6 @@ namespace BMM.UI.iOS
             float radius = (float)BoysPointsContainer.Frame.Height / 2;
             BoysPointsContainer.RoundLeftCorners(radius);
             GirlsPointsContainer.RoundRightCorners(radius);
-        }
-
-        private void AdjustConstraints()
-        {
-            if (DeviceInfo.Idiom != DeviceIdiom.Tablet)
-                return;
-            
-            StackViewTrailingConstraint.Active = false;
-            StackViewLeadingConstraint.Active = false;
         }
 
         public IBmmObservableCollection<IAchievementPO> ItemsSource

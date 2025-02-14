@@ -73,4 +73,7 @@
     <color name="label_three_color_light">#757B80</color>
     <color name="label_one_color_light">#0D131A</color>
     
+    <color name="girls_color">#EF4923</color>
+    <color name="boys_color">#6791CB</color>
+    
 </resources>

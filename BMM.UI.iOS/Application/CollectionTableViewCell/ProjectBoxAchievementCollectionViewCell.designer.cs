@@ -10,8 +10,8 @@ using System.CodeDom.Compiler;
 
 namespace BMM.UI.iOS
 {
-	[Register ("ProfileBoxAchievementCollectionViewCell")]
-	partial class ProfileBoxAchievementCollectionViewCell
+	[Register ("ProjectBoxAchievementCollectionViewCell")]
+	partial class ProjectBoxAchievementCollectionViewCell
 	{
 		[Outlet]
 		FFImageLoading.Cross.MvxCachedImageView ImageView { get; set; }

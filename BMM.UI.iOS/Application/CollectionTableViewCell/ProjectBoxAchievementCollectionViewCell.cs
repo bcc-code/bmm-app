@@ -5,16 +5,16 @@ using MvvmCross.Platforms.Ios.Binding.Views;
 
 namespace BMM.UI.iOS
 {
-    public partial class ProfileBoxAchievementCollectionViewCell : MvxCollectionViewCell
+    public partial class ProjectBoxAchievementCollectionViewCell : MvxCollectionViewCell
     {
-        public static readonly NSString Key = new(nameof(ProfileBoxAchievementCollectionViewCell));
-        public static readonly UINib Nib = UINib.FromName(nameof(ProfileBoxAchievementCollectionViewCell), NSBundle.MainBundle);
+        public static readonly NSString Key = new(nameof(ProjectBoxAchievementCollectionViewCell));
+        public static readonly UINib Nib = UINib.FromName(nameof(ProjectBoxAchievementCollectionViewCell), NSBundle.MainBundle);
 
-        public ProfileBoxAchievementCollectionViewCell(ObjCRuntime.NativeHandle handle) : base(Key, handle)
+        public ProjectBoxAchievementCollectionViewCell(ObjCRuntime.NativeHandle handle) : base(Key, handle)
         {
             this.DelayBind(() =>
             {
-                var set = this.CreateBindingSet<ProfileBoxAchievementCollectionViewCell, IAchievementPO>();
+                var set = this.CreateBindingSet<ProjectBoxAchievementCollectionViewCell, IAchievementPO>();
                 
                 set.Bind(ContentView)
                     .For(v => v.BindTap())
