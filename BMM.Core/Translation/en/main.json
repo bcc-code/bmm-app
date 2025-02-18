@@ -632,5 +632,8 @@
     "Transcription": "Transcription",
     "Melody": "Melody",
     "Text": "Text"
+  },
+  "HvheDetailsViewModel": {
+    "Title": "Global Score"
   }
 }

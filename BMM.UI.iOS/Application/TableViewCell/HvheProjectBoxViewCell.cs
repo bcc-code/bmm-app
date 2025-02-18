@@ -31,7 +31,7 @@ namespace BMM.UI.iOS
 
         public HvheProjectBoxViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
-        {            
+        {
             this.DelayBind(() =>
             {
                 var set = this.CreateBindingSet<HvheProjectBoxViewCell, ProjectBoxPO>();
@@ -46,7 +46,7 @@ namespace BMM.UI.iOS
 
                 set.Bind(PointsLabel)
                     .To(po => po.ProjectBox.PointsDescription);
-                
+
                 set.Bind(RulesLabel)
                     .To(po => po.ProjectBox.RulesLinkTitle);
                 
@@ -60,9 +60,17 @@ namespace BMM.UI.iOS
                 set.Bind(BoysPointsLabel)
                     .To(po => po.ProjectBox.BoysPoints);
                 
+                set.Bind(BoysPointsContainer)
+                    .For(v => v.BindTap())
+                    .To(po => po.OpenDetailsCommand);
+                
+                set.Bind(GirlsPointsContainer)
+                    .For(v => v.BindTap())
+                    .To(po => po.OpenDetailsCommand);
+                
                 set.Apply();
 
-                AchievementsCollectionView.Source = achievementsSource;
+                AchievementsCollectionView!.Source = achievementsSource;
                 SetThemes();
             });
         }
