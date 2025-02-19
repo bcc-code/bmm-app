@@ -15,13 +15,27 @@ public class HvheDetailsTableViewSource : BaseTableViewSource
     {
     }
 
+    protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
+    {
+        if (item is HvheChurchPO hvheChurchPO)
+        {
+            return tableView.DequeueReusableCell(hvheChurchPO.Church.IsHighlighted
+                ? HighlightedChurchTableViewCell.Key
+                : StandardChurchTableViewCell.Key);
+        }
+        
+        return base.GetOrCreateCellFor(tableView, indexPath, item);
+    }
+
     protected override IEnumerable<ITableCellType> GetTableCellTypes()
     {
         return
         [
             new TableCellType(typeof(HvheBoysVsGirlsPO), HvheBoysVsGirlsTableViewCell.Key),
             new TableCellType(typeof(HvheChurchesSelectorPO), HvheChurchesSelectorTableViewCell.Key),
-            new TableCellType(typeof(HvheHeaderPO), HvheHeaderTableViewCell.Key)
+            new TableCellType(typeof(HvheHeaderPO), HvheHeaderTableViewCell.Key),
+            new TableCellType(typeof(HvheChurchPO), HighlightedChurchTableViewCell.Key),
+            new TableCellType(typeof(HvheChurchPO), StandardChurchTableViewCell.Key)
         ];
     }
 }

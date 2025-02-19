@@ -3,6 +3,7 @@ using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
+using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 
 namespace BMM.UI.iOS
@@ -26,7 +27,7 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
             
-            var set = this.CreateBindingSet<HvheDetailsViewController, BibleStudyViewModel>();
+            var set = this.CreateBindingSet<HvheDetailsViewController, HvheDetailsViewModel>();
 
             _source = new HvheDetailsTableViewSource(ContentTableView);
             set.Bind(_source)
@@ -38,6 +39,14 @@ namespace BMM.UI.iOS
             set.Bind(CloseIconView)
                 .For(v => v.BindTap())
                 .To(vm => vm.CloseCommand);
+            
+            set.Bind(ContentTableView.Swipe(UISwipeGestureRecognizerDirection.Right))
+                .For(v => v.Command)
+                .To(vm => vm.SelectLeftItemCommand);
+            
+            set.Bind(ContentTableView.Swipe(UISwipeGestureRecognizerDirection.Left))
+                .For(v => v.Command)
+                .To(vm => vm.SelectRightItemCommand);
             
             set.Apply();
             NavigationController!.NavigationBarHidden = true;

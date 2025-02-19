@@ -12,13 +12,13 @@
         public const string BmmUrlProd = "bmm.bcc.media";
         public const string OldBmmUrl = "bmm.brunstad.org";
 
-#if ENV_INT
-        public const string ApiUrl = ApiUrlInt;
-        public const string BmmUrl = BmmUrlInt;
-#else
+// #if ENV_INT
+//         public const string ApiUrl = ApiUrlInt;
+//         public const string BmmUrl = BmmUrlInt;
+// #else
         public const string ApiUrl = ApiUrlProd;
         public const string BmmUrl = BmmUrlProd;
-#endif
+// #endif
 
         // Used for translation files.
         public const string GeneralNamespace = "BMM";

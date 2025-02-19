@@ -20,7 +20,7 @@ namespace BMM.UI.Droid.Application.ViewHolders;
 public class HvheProjectBoxViewHolder : MvxRecyclerViewHolder
 {
     private const int ItemSpacing = 12;
-    private const int SideSpacing = 116;
+    private const int SideSpacing = 16;
     private MvxRecyclerView _achievementsRecyclerView;
     private LinearLayoutManager _layoutManager;
     private IParcelable _state;

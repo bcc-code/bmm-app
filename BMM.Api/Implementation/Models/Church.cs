@@ -1,8 +1,10 @@
+using BMM.Api.Implementation.Models.Enums;
+
 namespace BMM.Api.Implementation.Models;
 
 public class Church
 {
-    public Church(string name, bool isHighlighted, int boysPoints, int girlsPoints, IList<string> gameNights)
+    public Church(string name, bool isHighlighted, int boysPoints, int girlsPoints, IList<GameNights> gameNights)
     {
         Name = name;
         IsHighlighted = isHighlighted;
@@ -11,9 +13,9 @@ public class Church
         GameNights = gameNights;
     }
 
-    public string Name { get; }
-    public bool IsHighlighted { get; }
-    public int BoysPoints { get; }
-    public int GirlsPoints { get; }
-    public IList<string> GameNights { get; }
+    public string Name { get; set; }
+    public bool IsHighlighted { get; set; }
+    public int BoysPoints { get; set; }
+    public int GirlsPoints { get; set; }
+    public IList<GameNights> GameNights { get; set; }
 }

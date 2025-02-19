@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ProjectBoxCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_small"
+    android:layout_marginBottom="@dimen/margin_small"
+    local:cardBackgroundColor="@color/background_two_color"
+    local:cardElevation="0dp"
+    local:cardCornerRadius="16dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HalfGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            local:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/ChurchNameLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="18dp"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toStartOf="@+id/LeftPointsContainer"
+            local:layout_constraintTop_toTopOf="parent"
+            local:MvxBind="Text Church.Name"
+            style="@style/Title2"/>
+        
+        <View
+            android:id="@+id/LeftPointsContainer"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/margin_xxsmall"
+            android:background="@color/background_one_color"
+            local:layout_constraintTop_toTopOf="@+id/RightPointsContainer"
+            local:layout_constraintEnd_toStartOf="@+id/MiddlePointsContainer"/>
+
+        <TextView
+            android:id="@+id/LeftPointsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            local:layout_constraintStart_toStartOf="@+id/LeftPointsContainer"
+            local:layout_constraintEnd_toEndOf="@+id/LeftPointsContainer"
+            local:layout_constraintTop_toTopOf="@+id/LeftPointsContainer"
+            local:layout_constraintBottom_toBottomOf="@+id/LeftPointsContainer" />
+        
+        <View
+            android:id="@+id/MiddlePointsContainer"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/margin_xxsmall"
+            android:background="@color/background_one_color"
+            local:layout_constraintTop_toTopOf="@+id/RightPointsContainer"
+            local:layout_constraintEnd_toStartOf="@+id/RightPointsContainer" />
+
+        <TextView
+            android:id="@+id/MiddlePointsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2"
+            local:layout_constraintStart_toStartOf="@+id/MiddlePointsContainer"
+            local:layout_constraintEnd_toEndOf="@+id/MiddlePointsContainer"
+            local:layout_constraintTop_toTopOf="@+id/MiddlePointsContainer"
+            local:layout_constraintBottom_toBottomOf="@+id/MiddlePointsContainer" />
+
+        <View
+            android:id="@+id/RightPointsContainer"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:background="@color/background_one_color"
+            local:layout_constraintTop_toTopOf="@+id/ChurchNameLabel"
+            local:layout_constraintBottom_toBottomOf="@+id/ChurchNameLabel" 
+            local:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/RightPointsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            local:layout_constraintStart_toStartOf="@+id/RightPointsContainer"
+            local:layout_constraintEnd_toEndOf="@+id/RightPointsContainer"
+            local:layout_constraintTop_toTopOf="@+id/RightPointsContainer"
+            local:layout_constraintBottom_toBottomOf="@+id/RightPointsContainer" />
+
+        <View
+            android:id="@+id/BoysPointsContainer"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="44dp"
+            android:layout_marginStart="@dimen/margin_tiny"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="@dimen/margin_tiny"
+            android:background="@color/background_one_color"
+            android:layout_marginTop="18dp"
+            local:layout_constraintTop_toBottomOf="@+id/ChurchNameLabel"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toStartOf="@+id/HalfGuideline" />
+
+        <TextView
+            android:id="@+id/BoysLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xxsmall"
+            android:textColor="@color/boys_color"
+            local:layout_constraintStart_toStartOf="@+id/BoysPointsContainer"
+            local:layout_constraintTop_toTopOf="@+id/BoysPointsContainer"
+            local:layout_constraintBottom_toBottomOf="@+id/BoysPointsContainer"
+            local:MvxLang="Text HvheDetailsViewModel_Boys"
+            style="@style/Title2" />
+
+        <TextView
+            android:id="@+id/BoysPointsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_xxsmall"
+            local:layout_constraintEnd_toEndOf="@+id/BoysPointsContainer"
+            local:layout_constraintTop_toTopOf="@+id/BoysPointsContainer"
+            local:layout_constraintBottom_toBottomOf="@+id/BoysPointsContainer"
+            local:MvxBind="Text Church.BoysPoints"
+            style="@style/Title2" />
+
+        <View
+            android:id="@+id/GirlsPointsContainer"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="44dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginEnd="@dimen/margin_tiny"
+            android:layout_marginBottom="@dimen/margin_tiny"
+            android:background="@color/background_one_color"
+            local:layout_constraintTop_toTopOf="@+id/BoysPointsContainer"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toEndOf="@+id/HalfGuideline"
+            local:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/GirlsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_xxsmall"
+            android:textColor="@color/girls_color"
+            local:layout_constraintEnd_toEndOf="@+id/GirlsPointsContainer"
+            local:layout_constraintTop_toTopOf="@+id/GirlsPointsContainer"
+            local:layout_constraintBottom_toBottomOf="@+id/GirlsPointsContainer"
+            local:MvxLang="Text HvheDetailsViewModel_Girls"
+            style="@style/Title2" />
+
+        <TextView
+            android:id="@+id/GirlsPointsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xxsmall"
+            local:layout_constraintStart_toStartOf="@+id/GirlsPointsContainer"
+            local:layout_constraintTop_toTopOf="@+id/GirlsPointsContainer"
+            local:layout_constraintBottom_toBottomOf="@+id/GirlsPointsContainer"
+            local:MvxBind="Text Church.GirlsPoints"
+            style="@style/Title2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

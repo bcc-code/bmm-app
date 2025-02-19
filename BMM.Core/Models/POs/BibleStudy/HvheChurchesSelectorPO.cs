@@ -12,20 +12,21 @@ public class HvheChurchesSelectorPO : BasePO
     public HvheChurchesSelectorPO(
         string leftItemTitle,
         string rightItemTitle,
-        IList<IBasePO> churches)
+        Action selectionChangedAction)
     {
         LeftItemTitle = leftItemTitle;
         RightItemTitle = rightItemTitle;
-        Churches = churches;
 
         LeftItemSelectedCommand = new MvxCommand(() =>
         {
             IsLeftItemSelected = true;
+            selectionChangedAction?.Invoke();
         });
         
         RightItemSelectedCommand = new MvxCommand(() =>
         {
             IsRightItemSelected = true;
+            selectionChangedAction?.Invoke();
         });
 
         IsLeftItemSelected = true;
@@ -53,7 +54,6 @@ public class HvheChurchesSelectorPO : BasePO
 
     public string LeftItemTitle { get; }
     public string RightItemTitle { get; }
-    public IList<IBasePO> Churches { get; }
     public IMvxCommand LeftItemSelectedCommand { get; }
     public IMvxCommand RightItemSelectedCommand { get; }
 }
