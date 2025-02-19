@@ -28,7 +28,6 @@ namespace BMM.UI.iOS
     public partial class HvheProjectBoxViewCell : BaseBMMTableViewCell
     {
         public static readonly NSString Key = new(nameof(HvheProjectBoxViewCell));
-        private IBmmObservableCollection<IAchievementPO> _itemsSource;
 
         public HvheProjectBoxViewCell(ObjCRuntime.NativeHandle handle)
             : base(handle)
@@ -48,11 +47,6 @@ namespace BMM.UI.iOS
                 set.Bind(PointsLabel)
                     .To(po => po.ProjectBox.PointsDescription);
                 
-                set
-                    .Bind(this)
-                    .For(s => s.ItemsSource)
-                    .To(po => po.Achievements);
-
                 set.Bind(RulesLabel)
                     .To(po => po.ProjectBox.RulesLinkTitle);
                 
@@ -85,37 +79,6 @@ namespace BMM.UI.iOS
             float radius = (float)BoysPointsContainer.Frame.Height / 2;
             BoysPointsContainer.RoundLeftCorners(radius);
             GirlsPointsContainer.RoundRightCorners(radius);
-        }
-
-        public IBmmObservableCollection<IAchievementPO> ItemsSource
-        {
-            get => _itemsSource;
-            set
-            {
-                _itemsSource = value;
-                SetItems(_itemsSource);
-            }
-        }
-
-        private void SetItems(IBmmObservableCollection<IAchievementPO> achievements)
-        {
-            // if (achievements == null ||achievements.Count == 0)
-            //     return;
-            //
-            // foreach (var view in AchievementStackView.ArrangedSubviews)
-            //     view.RemoveFromSuperview();
-            //
-            // foreach (var item in achievements.Take(4))
-            // {
-            //     var imageView = new MvxCachedImageView();
-            //     imageView.ImagePath = item.ImagePath;
-            //     imageView.UserInteractionEnabled = true;
-            //     imageView.AddGestureRecognizer(new UITapGestureRecognizer(() => item.AchievementClickedCommand.Execute()));
-            //     imageView.TranslatesAutoresizingMaskIntoConstraints = false;
-            //     imageView.WidthAnchor.ConstraintEqualTo(ItemSize).Active = true;
-            //     imageView.HeightAnchor.ConstraintEqualTo(ItemSize).Active = true;
-            //     AchievementStackView.AddArrangedSubview(imageView);
-            // }
         }
 
         protected override bool HasHighlightEffect => false;
