@@ -102,16 +102,26 @@
                                     <constraint firstAttribute="width" constant="1" id="Lht-aq-af2"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zhv-iR-lSM">
+                                <rect key="frame" x="0.0" y="66" width="407" height="1"/>
+                                <color key="backgroundColor" name="SeparatorColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="YzS-Rg-wJu"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstItem="UPW-K7-oJZ" firstAttribute="leading" secondItem="o93-nY-3dV" secondAttribute="leading" id="0Ap-Ed-fEU"/>
                             <constraint firstItem="mt9-bj-l6C" firstAttribute="leading" secondItem="UPW-K7-oJZ" secondAttribute="trailing" constant="16" id="9ma-HW-lCL"/>
                             <constraint firstItem="6oX-SZ-768" firstAttribute="leading" secondItem="mt9-bj-l6C" secondAttribute="trailing" constant="12" id="F8m-fk-wl4"/>
+                            <constraint firstAttribute="trailing" secondItem="zhv-iR-lSM" secondAttribute="trailing" id="KD9-o6-cIt"/>
                             <constraint firstAttribute="bottom" secondItem="UPW-K7-oJZ" secondAttribute="bottom" constant="18" id="Lfa-NI-wQv"/>
                             <constraint firstItem="6oX-SZ-768" firstAttribute="centerY" secondItem="o93-nY-3dV" secondAttribute="centerY" id="Mb6-7N-hJZ"/>
+                            <constraint firstItem="zhv-iR-lSM" firstAttribute="leading" secondItem="o93-nY-3dV" secondAttribute="leading" id="NeK-Rf-ubn"/>
                             <constraint firstItem="YPA-oL-khN" firstAttribute="centerY" secondItem="o93-nY-3dV" secondAttribute="centerY" id="Rfa-Bg-4Lo"/>
                             <constraint firstAttribute="trailing" secondItem="YPA-oL-khN" secondAttribute="trailing" id="UHJ-Vj-Hcm"/>
+                            <constraint firstAttribute="bottom" secondItem="zhv-iR-lSM" secondAttribute="bottom" id="a5M-hz-dO4"/>
                             <constraint firstAttribute="bottom" secondItem="Mam-IM-VDV" secondAttribute="bottom" id="hz5-zH-jdr"/>
                             <constraint firstItem="mt9-bj-l6C" firstAttribute="centerY" secondItem="o93-nY-3dV" secondAttribute="centerY" id="iKh-ip-Huf"/>
                             <constraint firstItem="YPA-oL-khN" firstAttribute="leading" secondItem="6oX-SZ-768" secondAttribute="trailing" constant="12" id="jE1-7t-KCx"/>
@@ -148,6 +158,9 @@
         </namedColor>
         <namedColor name="BackgroundTwoColor">
             <color red="0.96078431606292725" green="0.96470588445663452" blue="0.9686274528503418" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SeparatorColor">
+            <color red="0.5058823823928833" green="0.53333336114883423" blue="0.56078433990478516" alpha="0.10196078568696976" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
