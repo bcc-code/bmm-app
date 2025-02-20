@@ -22,13 +22,19 @@ public class HvheDetailsViewModel : BaseViewModel<IHvheDetailsParameters>, IHvhe
     public HvheDetailsViewModel(IStatisticsClient statisticsClient)
     {
         _statisticsClient = statisticsClient;
-        SelectLeftItemCommand = new MvxCommand(() => _hvheChurchesSelectorPO!.LeftItemSelectedCommand.Execute());
-        SelectRightItemCommand = new MvxCommand(() => _hvheChurchesSelectorPO!.RightItemSelectedCommand.Execute());
+        SelectLeftItemCommand = new MvxCommand(() => HvheChurchesSelectorPO!.LeftItemSelectedCommand.Execute());
+        SelectRightItemCommand = new MvxCommand(() => HvheChurchesSelectorPO!.RightItemSelectedCommand.Execute());
     }
 
     public IBmmObservableCollection<IBasePO> Items { get; } = new BmmObservableCollection<IBasePO>();
     public IMvxCommand SelectLeftItemCommand { get; }
     public IMvxCommand SelectRightItemCommand { get; }
+
+    public HvheChurchesSelectorPO HvheChurchesSelectorPO
+    {
+        get => _hvheChurchesSelectorPO;
+        set => SetProperty(ref _hvheChurchesSelectorPO, value);
+    }
 
     public override async Task Initialize()
     {
@@ -38,7 +44,7 @@ public class HvheDetailsViewModel : BaseViewModel<IHvheDetailsParameters>, IHvhe
 
         _standings.LargeChurches.First().IsHighlighted = true;
         
-        _hvheChurchesSelectorPO = new HvheChurchesSelectorPO(
+        HvheChurchesSelectorPO = new HvheChurchesSelectorPO(
             _standings.LargeChurchesTitle,
             _standings.SmallChurchesTitle,
             SelectionChangedAction);
@@ -49,7 +55,7 @@ public class HvheDetailsViewModel : BaseViewModel<IHvheDetailsParameters>, IHvhe
             _standings.GirlsTitle,
             _standings.GirlsPoints));
         
-        Items.Add(_hvheChurchesSelectorPO);
+        Items.Add(HvheChurchesSelectorPO);
         
         Items.Add(new HvheHeaderPO(
             _standings.ChurchTitle,
@@ -62,7 +68,7 @@ public class HvheDetailsViewModel : BaseViewModel<IHvheDetailsParameters>, IHvhe
     {
         RemoveChurchItems();
         
-        if (_hvheChurchesSelectorPO.IsLeftItemSelected)
+        if (HvheChurchesSelectorPO.IsLeftItemSelected)
             AddLargeChurches();
         else
             AddSmallChurches();

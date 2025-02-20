@@ -1,6 +1,7 @@
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
+using BMM.UI.iOS.CustomViews;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Binding.Views.Gestures;
@@ -26,6 +27,8 @@ namespace BMM.UI.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+
+            var view = new HvheChurchesSelectorView();
             
             var set = this.CreateBindingSet<HvheDetailsViewController, HvheDetailsViewModel>();
 
@@ -48,6 +51,10 @@ namespace BMM.UI.iOS
                 .For(v => v.Command)
                 .To(vm => vm.SelectRightItemCommand);
             
+            set.Bind(view)
+                .For(v => v.DataContext)
+                .To(vm => vm.HvheChurchesSelectorPO);
+            
             set.Apply();
             NavigationController!.NavigationBarHidden = true;
             NavigationController!.PresentationController!.Delegate = new CustomUIAdaptivePresentationControllerDelegate
@@ -58,9 +65,19 @@ namespace BMM.UI.iOS
             NavigationItem.Title = string.Empty;
             NavigationController.Title = string.Empty;
 
+            view.TranslatesAutoresizingMaskIntoConstraints = false;
+            View!.AddSubview(view);
+            
+            NSLayoutConstraint.ActivateConstraints(
+            [
+                view.LeadingAnchor.ConstraintEqualTo(View!.LeadingAnchor),
+                view.TrailingAnchor.ConstraintEqualTo(View.TrailingAnchor),
+                view.TopAnchor.ConstraintEqualTo(View.TopAnchor)
+            ]);
+            
             SetThemes();
         }
-
+        
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);

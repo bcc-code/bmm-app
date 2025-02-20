@@ -14,53 +14,13 @@ namespace BMM.UI.iOS.CustomViews
 	partial class HvheChurchesSelectorTableViewCell
 	{
 		[Outlet]
-		UIKit.UIView LeftIndicatorView { get; set; }
-
-		[Outlet]
-		UIKit.UIView LeftItemContainer { get; set; }
-
-		[Outlet]
-		UIKit.UILabel LeftItemLabel { get; set; }
-
-		[Outlet]
-		UIKit.UIView RightIndicatorView { get; set; }
-
-		[Outlet]
-		UIKit.UIView RightItemContainer { get; set; }
-
-		[Outlet]
-		UIKit.UILabel RightItemLabel { get; set; }
+		BMM.UI.iOS.CustomViews.HvheChurchesSelectorView ChurchesSelectorView { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (LeftItemLabel != null) {
-				LeftItemLabel.Dispose ();
-				LeftItemLabel = null;
-			}
-
-			if (RightItemLabel != null) {
-				RightItemLabel.Dispose ();
-				RightItemLabel = null;
-			}
-
-			if (LeftItemContainer != null) {
-				LeftItemContainer.Dispose ();
-				LeftItemContainer = null;
-			}
-
-			if (RightItemContainer != null) {
-				RightItemContainer.Dispose ();
-				RightItemContainer = null;
-			}
-
-			if (LeftIndicatorView != null) {
-				LeftIndicatorView.Dispose ();
-				LeftIndicatorView = null;
-			}
-
-			if (RightIndicatorView != null) {
-				RightIndicatorView.Dispose ();
-				RightIndicatorView = null;
+			if (ChurchesSelectorView != null) {
+				ChurchesSelectorView.Dispose ();
+				ChurchesSelectorView = null;
 			}
 
 		}

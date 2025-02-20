@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_one_color">
-
+    
     <FrameLayout
         android:id="@+id/CloseButtonIconArea"
         android:layout_width="wrap_content"
@@ -54,5 +54,15 @@
         local:layout_constraintEnd_toEndOf="parent"
         local:MvxTemplateSelector="@string/hvhe_details_template_selector"
         local:MvxBind="ItemsSource Items" />
+
+    <bmm.ui.droid.application.customViews.HvheChurchesSelectorView
+        android:id="@+id/HvheChurchesSelectorView"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        local:layout_constraintTop_toTopOf="@+id/HvheDetailsRecyclerView"
+        local:layout_constraintStart_toStartOf="parent"
+        local:layout_constraintEnd_toEndOf="parent"
+        local:MvxBind="HvheChurchesSelector HvheChurchesSelectorPO" />
     
 </androidx.constraintlayout.widget.ConstraintLayout>
