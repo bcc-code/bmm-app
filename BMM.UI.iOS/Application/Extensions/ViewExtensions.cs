@@ -1,4 +1,5 @@
 using BMM.UI.iOS.Utils;
+using CoreAnimation;
 using Foundation;
 using UIKit;
 
@@ -36,6 +37,34 @@ namespace BMM.UI.iOS.Extensions
             owner.AddConstraint(NSLayoutConstraint.Create(view, NSLayoutAttribute.Height, NSLayoutRelation.Equal, owner, NSLayoutAttribute.Height, 1, 0));
             owner.AddConstraint(NSLayoutConstraint.Create(view, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, owner, NSLayoutAttribute.CenterX, 1, 0));
             owner.AddConstraint(NSLayoutConstraint.Create(view, NSLayoutAttribute.CenterY, NSLayoutRelation.Equal, owner, NSLayoutAttribute.CenterY, 1, 0));
+        }
+
+        public static void RoundLeftCorners(this UIView view, float radius)
+        {
+            var path = UIBezierPath.FromRoundedRect(view.Bounds,
+                UIRectCorner.TopLeft | UIRectCorner.BottomLeft,
+                new CGSize(radius, radius));
+
+            var mask = new CAShapeLayer
+            {
+                Path = path.CGPath
+            };
+
+            view.Layer.Mask = mask;
+        }
+        
+        public static void RoundRightCorners(this UIView view, float radius)
+        {
+            var path = UIBezierPath.FromRoundedRect(view.Bounds,
+                UIRectCorner.TopRight | UIRectCorner.BottomRight,
+                new CGSize(radius, radius));
+
+            var mask = new CAShapeLayer
+            {
+                Path = path.CGPath
+            };
+
+            view.Layer.Mask = mask;
         }
     }
 }

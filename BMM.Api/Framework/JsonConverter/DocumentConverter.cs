@@ -78,6 +78,9 @@ namespace BMM.Api.Framework.JsonConverter
                 case "gibraltar_project_box":
                     return new ProjectBox(DocumentType.GibraltarProjectBox);
                 
+                case "hvhe_project_box":
+                    return new ProjectBox(DocumentType.HvheProjectBox);
+                
                 case "achievement_collection":
                     return new AchievementsCollection();
             }

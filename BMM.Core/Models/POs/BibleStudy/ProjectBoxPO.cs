@@ -14,11 +14,8 @@ namespace BMM.Core.Models.POs.BibleStudy;
 
 public class ProjectBoxPO : DocumentPO, IProjectBoxPO
 {
-    private readonly IMvxNavigationService _navigationService;
-
     public ProjectBoxPO(ProjectBox projectBox, IMvxNavigationService navigationService) : base(projectBox)
     {
-        _navigationService = navigationService;
         ProjectBox = projectBox;
         IsExpanded = AppSettings.IsProjectBoxExpanded(projectBox.Id, projectBox.OpenByDefault);
         ExpandOrCollapseInteraction = new BmmInteraction();
@@ -28,12 +25,15 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
             AppSettings.SetIsProjectBoxExpanded(projectBox.Id, IsExpanded);
             ExpandOrCollapseInteraction?.Raise();
         });
-        
+
         foreach (var achievement in projectBox.Achievements)
+        {
             Achievements.Add(new AchievementPO(achievement, navigationService));
+            Achievements.Add(new AchievementPO(achievement, navigationService));
+        }
 
         OpenQuestionsCommand = new ExceptionHandlingCommand(async () =>
-            await _navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
+            await navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
             {
                 Url = ProjectBox.ButtonWebsite,
                 Title = ProjectBox.ButtonTitle
