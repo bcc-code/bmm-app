@@ -13,6 +13,7 @@ namespace BMM.UI.iOS
     public partial class HvheDetailsViewController : BaseViewController<HvheDetailsViewModel>
     {
         private HvheDetailsTableViewSource _source;
+        private HvheChurchesSelectorView _hvheChurchesSelectorView;
 
         public HvheDetailsViewController() : base(null)
         {
@@ -28,11 +29,14 @@ namespace BMM.UI.iOS
         {
             base.ViewDidLoad();
 
-            var view = new HvheChurchesSelectorView();
+            _hvheChurchesSelectorView = new HvheChurchesSelectorView()
+            {
+                Hidden = true
+            };
             
             var set = this.CreateBindingSet<HvheDetailsViewController, HvheDetailsViewModel>();
 
-            _source = new HvheDetailsTableViewSource(ContentTableView);
+            _source = new HvheDetailsTableViewSource(ContentTableView, Action);
             set.Bind(_source)
                 .To(vm => vm.Items);
             
@@ -51,7 +55,7 @@ namespace BMM.UI.iOS
                 .For(v => v.Command)
                 .To(vm => vm.SelectRightItemCommand);
             
-            set.Bind(view)
+            set.Bind(_hvheChurchesSelectorView)
                 .For(v => v.DataContext)
                 .To(vm => vm.HvheChurchesSelectorPO);
             
@@ -65,19 +69,24 @@ namespace BMM.UI.iOS
             NavigationItem.Title = string.Empty;
             NavigationController.Title = string.Empty;
 
-            view.TranslatesAutoresizingMaskIntoConstraints = false;
-            View!.AddSubview(view);
+            _hvheChurchesSelectorView.TranslatesAutoresizingMaskIntoConstraints = false;
+            View!.AddSubview(_hvheChurchesSelectorView);
             
             NSLayoutConstraint.ActivateConstraints(
             [
-                view.LeadingAnchor.ConstraintEqualTo(View!.LeadingAnchor),
-                view.TrailingAnchor.ConstraintEqualTo(View.TrailingAnchor),
-                view.TopAnchor.ConstraintEqualTo(View.TopAnchor)
+                _hvheChurchesSelectorView.LeadingAnchor.ConstraintEqualTo(ContentTableView!.LeadingAnchor),
+                _hvheChurchesSelectorView.TrailingAnchor.ConstraintEqualTo(ContentTableView.TrailingAnchor),
+                _hvheChurchesSelectorView.TopAnchor.ConstraintEqualTo(ContentTableView.TopAnchor)
             ]);
             
             SetThemes();
         }
-        
+
+        private void Action(bool isVisible)
+        {
+            _hvheChurchesSelectorView.Hidden = !isVisible;
+        }
+
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);

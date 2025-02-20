@@ -1,18 +1,17 @@
-using System.Diagnostics;
-using BMM.Core.Helpers.Interfaces;
-using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.BibleStudy;
-using BMM.Core.Models.POs.BibleStudy.Interfaces;
-using BMM.Core.Models.POs.Other.Interfaces;
 using BMM.UI.iOS.CustomViews;
-using MvvmCross.Binding.Extensions;
 
 namespace BMM.UI.iOS;
 
 public class HvheDetailsTableViewSource : BaseTableViewSource
 {
-    public HvheDetailsTableViewSource(UITableView tableView) : base(tableView)
+    private readonly Action<bool> _scrolledToChurchesSelectorAction;
+
+    public HvheDetailsTableViewSource(
+        UITableView tableView,
+        Action<bool> scrolledToChurchesSelectorAction) : base(tableView)
     {
+        _scrolledToChurchesSelectorAction = scrolledToChurchesSelectorAction;
     }
 
     protected override UITableViewCell GetOrCreateCellFor(UITableView tableView, NSIndexPath indexPath, object item)
@@ -26,7 +25,7 @@ public class HvheDetailsTableViewSource : BaseTableViewSource
         
         return base.GetOrCreateCellFor(tableView, indexPath, item);
     }
-
+    
     protected override IEnumerable<ITableCellType> GetTableCellTypes()
     {
         return
@@ -37,5 +36,27 @@ public class HvheDetailsTableViewSource : BaseTableViewSource
             new TableCellType(typeof(HvheChurchPO), HighlightedChurchTableViewCell.Key),
             new TableCellType(typeof(HvheChurchPO), StandardChurchTableViewCell.Key)
         ];
+    }
+
+    public override void Scrolled(UIScrollView scrollView)
+    {
+        var visibleCells = TableView.VisibleCells;
+        if (visibleCells.Length == 0)
+            return;
+
+        var cell = TableView.VisibleCells.FirstOrDefault(v => v is HvheChurchesSelectorTableViewCell);
+
+        if (cell == null)
+            return;
+       
+        var indexPath = TableView.IndexPathForCell(cell);
+        if (indexPath == null)
+            return;
+        
+        var cellFrame = TableView.RectForRowAtIndexPath(indexPath);
+        var cellTop = TableView.ConvertRectToView(cellFrame, TableView.Superview).Y;
+        var tableViewTop = TableView.Frame.Y;
+
+        _scrolledToChurchesSelectorAction.Invoke(cellTop <= tableViewTop);
     }
 }

@@ -5,13 +5,13 @@ namespace BMM.UI.Droid.Application.Listeners;
 
 public class HvheDetailsScrollListener : RecyclerView.OnScrollListener
 {
-    private readonly Action<bool> _action;
+    private readonly Action<bool> _scrolledToChurchesSelectorAction;
     private int? _churchesSelectorItemPosition;
 
     public HvheDetailsScrollListener(
-        Action<bool> action)
+        Action<bool> scrolledToChurchesSelectorAction)
     {
-        _action = action;
+        _scrolledToChurchesSelectorAction = scrolledToChurchesSelectorAction;
     }
 
     public override void OnScrolled(RecyclerView recyclerView, int dx, int dy)
@@ -50,6 +50,6 @@ public class HvheDetailsScrollListener : RecyclerView.OnScrollListener
         int itemTop = itemLocation[1]; 
         int recyclerViewTop = recyclerViewLocation[1];
             
-        _action.Invoke(itemTop <= recyclerViewTop);
+        _scrolledToChurchesSelectorAction.Invoke(itemTop <= recyclerViewTop);
     }
 }
