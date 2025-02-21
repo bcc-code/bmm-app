@@ -17,5 +17,7 @@ public class ProjectBox : Document
     public bool ButtonShowIcon { get; set; }
     public IList<Achievement> Achievements { get; set; }
     public string RulesLinkTitle { get; set; }
+    public int BoysPoints { get; set; }
+    public int GirlsPoints { get; set; }
     public string IconColor { get; set; }
 }

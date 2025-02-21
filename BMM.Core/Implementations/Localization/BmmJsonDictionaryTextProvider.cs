@@ -8,46 +8,79 @@ using MvvmCross.Plugin.ResourceLoader;
 
 namespace BMM.Core.Implementations.Localization
 {
-    public class BmmJsonDictionaryTextProvider : MvxDictionaryTextProvider, IMvxJsonDictionaryTextLoader
+    public class BmmJsonDictionaryTextProvider
+        : MvxDictionaryTextProvider,
+          IMvxJsonDictionaryTextLoader
     {
-        protected IMvxResourceLoader ResourceLoader
-        {
-            get
-            {
-                return Mvx.IoCProvider.Resolve<IMvxResourceLoader>();
-            }
-        }
+        private const string DefaultTranslationResourcePath = "Translation/en/main.json";
+        private readonly IMvxResourceLoader _mvxResourceLoader;
+        private readonly IMvxJsonConverter _mvxJsonConverter;
 
-        public BmmJsonDictionaryTextProvider(bool maskErrors = true)
+        public BmmJsonDictionaryTextProvider(
+            IMvxResourceLoader mvxResourceLoader,
+            IMvxJsonConverter mvxJsonConverter,
+            bool maskErrors = true)
             : base(maskErrors)
         {
+            _mvxResourceLoader = mvxResourceLoader;
+            _mvxJsonConverter = mvxJsonConverter;
         }
 
         public void LoadJsonFromResource(string namespaceKey, string typeKey, string resourcePath)
         {
-            IMvxResourceLoader resourceLoader = this.ResourceLoader;
-            string textResource = resourceLoader.GetTextResource(resourcePath);
-            if (string.IsNullOrEmpty(textResource))
-            {
-                throw new FileNotFoundException("Unable to find resource file " + resourcePath);
-            }
+            string textResource = _mvxResourceLoader.GetTextResource(resourcePath);
+            ThrowExceptionWhenResourceNotFound(resourcePath, textResource);
             LoadJsonFromText(namespaceKey, typeKey, textResource);
         }
 
-        public void LoadJsonFromText(string namespaceKey, string typeKey, string rawJson)
+        public void LoadJsonFromText(
+            string namespaceKey,
+            string typeKey,
+            string textResourceJson)
         {
-            var jsonConverter = Mvx.IoCProvider.Resolve<IMvxJsonConverter>();
+            string defaultTextResourceJson = _mvxResourceLoader.GetTextResource(DefaultTranslationResourcePath);
+            ThrowExceptionWhenResourceNotFound(DefaultTranslationResourcePath, defaultTextResourceJson);
+            
+            var textResourceDictionary = DeserializeTextResource(textResourceJson);
+            var defaultResourceDictionary = DeserializeTextResource(defaultTextResourceJson);
 
-            var dictionaries = jsonConverter.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(rawJson);
-
-            foreach (var currentDictionary in dictionaries)
+            foreach (var defaultDictionary in defaultResourceDictionary)
             {
-                foreach (var current in currentDictionary.Value)
+                foreach (var defaultDictionaryValues in defaultDictionary.Value)
                 {
-                    string translationKey = $"{currentDictionary.Key}_{current.Key.Replace(".", "_")}";
-                    AddOrReplace(string.Empty, string.Empty, translationKey, current.Value);
+                    string actualResourceValue = GetResourceValue(textResourceDictionary, defaultDictionary.Key, defaultDictionaryValues.Key);
+                    string valueToUse = string.IsNullOrWhiteSpace(actualResourceValue)
+                        ? defaultDictionaryValues.Value
+                        : actualResourceValue;
+                    
+                    string translationKey = $"{defaultDictionary.Key}_{defaultDictionaryValues.Key.Replace(".", "_")}";
+                    AddOrReplace(string.Empty, string.Empty, translationKey, valueToUse);
                 }
             }
+        }
+        
+        private string GetResourceValue(
+            Dictionary<string, Dictionary<string, string>> defaultResourceDictionary,
+            string dictionaryKey,
+            string key)
+        {
+            if (defaultResourceDictionary.TryGetValue(dictionaryKey, out var defaultValues)
+                && defaultValues.TryGetValue(key, out string defaultValue))
+                return defaultValue;
+
+            return string.Empty;
+        }
+
+        private static void ThrowExceptionWhenResourceNotFound(string resourcePath, string textResource)
+        {
+            if (string.IsNullOrEmpty(textResource))
+                throw new FileNotFoundException("Unable to find resource file " + resourcePath);
+        }
+        
+        private Dictionary<string, Dictionary<string, string>> DeserializeTextResource(string textResourceJson)
+        {
+            return _mvxJsonConverter
+                .DeserializeObject<Dictionary<string, Dictionary<string, string>>>(textResourceJson);
         }
     }
 }

@@ -83,5 +83,7 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task PostListeningEvents(IList<ListeningEvent> listeningEvents);
         Task<AchievementsHolder> GetAchievements(AppTheme theme);
         Task<IList<Achievement>> GetAchievementsToAcknowledge(AppTheme theme);
+        Task<Achievement> GetAchievement(string id, AppTheme theme);
+        Task<ProjectStandings> GetStandings();
     }
 }

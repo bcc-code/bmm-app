@@ -163,7 +163,8 @@ namespace BMM.Core.ViewModels
                 .Where(d => !hideStreak || d.DocumentType != DocumentType.ListeningStreak)
                 .Where(d => bibleStudyEnabled || d.DocumentType.IsNoneOf(
                     DocumentType.ProjectBox,
-                    DocumentType.GibraltarProjectBox))
+                    DocumentType.GibraltarProjectBox,
+                    DocumentType.HvheProjectBox))
                 .ToList();
         }
 

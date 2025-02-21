@@ -33,5 +33,13 @@ namespace BMM.Core.Extensions
                 .OrderBy(x => Guid.NewGuid())
                 .First();
         }
+        
+        public static T SafeGetAt<T>(this IEnumerable<T> enumerable, int index, T defaultValue)
+        {
+            if (enumerable.Count() <= index)
+                return defaultValue;
+            
+            return enumerable.ElementAt(index);
+        }
     }
 }

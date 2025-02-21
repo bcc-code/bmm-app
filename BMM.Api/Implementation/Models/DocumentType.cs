@@ -73,6 +73,9 @@ namespace BMM.Api.Implementation.Models
         [EnumMember(Value = "gibraltar_project_box")]
         GibraltarProjectBox,
         
+        [EnumMember(Value = "hvhe_project_box")]
+        HvheProjectBox,
+        
         [EnumMember(Value = "achievement_collection")]
         AchievementCollection,
 

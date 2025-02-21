@@ -35,6 +35,7 @@ namespace BMM.Core.Implementations.DeepLinking
     {
         public const string PlayTrackRegex = "^/track/(?<id>[0-9]+)(/(?<language>.*))?$";
         public const string QuizRegex = "^/question/(?<id>[0-9]+)$";
+        public const string AchievementRegex = "^/achievement/(?<id>[A-Za-z0-9]+)$";
         public static readonly string Music = "music";
         
         private readonly string _baseBrowsePath = "browse/";
@@ -113,7 +114,9 @@ namespace BMM.Core.Implementations.DeepLinking
                 new TrackLinkParser(PlayTrackRegex, PlayTrackById),
                 new RegexDeepLink<GenericDocumentsViewParameters>("^/browse(/(?<path>.*))?$", OpenGenericDocumentsView),
                 new RegexDeepLink("^/romans-questions$", OpenRomansQuestions),
+                new RegexDeepLink("^/hvhe-standings$", NavigateTo<HvheDetailsViewModel>),
                 new RegexDeepLink<IdDeepLinkParameters>(QuizRegex, OpenQuizQuestion),
+                new RegexDeepLink<StringIdParameters>(AchievementRegex, OpenAchievement),
                 new RegexDeepLink("^/$", DoNothing)
             };
         }
@@ -201,6 +204,11 @@ namespace BMM.Core.Implementations.DeepLinking
         private async Task OpenQuizQuestion(IdDeepLinkParameters deepLinkParameters)
         {
             await NavigateTo<QuizQuestionViewModel, IQuizQuestionViewModelParameter>(new QuizQuestionViewModelParameter(deepLinkParameters.Id));
+        }
+        
+        private async Task OpenAchievement(StringIdParameters parameters)
+        {
+            await NavigateTo<AchievementDetailsViewModel, IAchievementDetailsParameter>(new AchievementDetailsParameter(parameters.Id));
         }
 
         private Task DoNothing()

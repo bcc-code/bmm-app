@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ProjectBoxCardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_medium"
+    android:layout_marginVertical="@dimen/margin_small"
+    android:background="@color/background_two_color"
+    local:cardCornerRadius="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_two_color">
+
+        <TextView
+            android:id="@+id/TitleLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="@+id/BoysPointsContainer"
+            local:MvxBind="Text ProjectBox.Title"
+            style="@style/Title2" />
+
+        <TextView
+            android:id="@+id/PointsLabel"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+            local:layout_constraintStart_toStartOf="@+id/TitleLabel"
+            local:layout_constraintEnd_toEndOf="@+id/BoysPointsContainer"
+            local:MvxBind="Text ProjectBox.PointsDescription"
+            style="@style/Subtitle2_Label2"/>
+        
+        <FrameLayout
+            android:id="@+id/BoysPointsContainer"
+            android:layout_width="56dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="@dimen/margin_xxsmall"
+            android:gravity="center"
+            local:layout_constraintEnd_toStartOf="@+id/GirlsPointsContainer"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxBind="Click OpenDetailsCommand"
+            android:background="@drawable/boys_points_background">
+
+            <TextView
+                    android:id="@+id/BoysPointsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/global_white_one"
+                    android:layout_gravity="center"
+                    local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+                    local:layout_constraintStart_toStartOf="@+id/TitleLabel"
+                    local:MvxBind="Text ProjectBox.BoysPoints"
+                    style="@style/Title3"/>
+            
+        </FrameLayout>
+
+        <FrameLayout
+                android:id="@+id/GirlsPointsContainer"
+                android:layout_width="56dp"
+                android:layout_height="36dp"
+                android:layout_marginEnd="@dimen/margin_medium"
+                android:gravity="center"
+                local:layout_constraintTop_toTopOf="@+id/BoysPointsContainer"
+                local:layout_constraintEnd_toEndOf="parent"
+                local:MvxBind="Click OpenDetailsCommand"
+                android:background="@drawable/girls_points_background">
+
+            <TextView
+                    android:id="@+id/GirlsPointsLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/global_white_one"
+                    android:layout_gravity="center"
+                    local:layout_constraintTop_toBottomOf="@+id/TitleLabel"
+                    local:layout_constraintStart_toStartOf="@+id/TitleLabel"
+                    local:MvxBind="Text ProjectBox.GirlsPoints"
+                    style="@style/Title3"/>
+
+        </FrameLayout>
+        
+        <mvvmcross.droidx.recyclerview.MvxRecyclerView
+            android:id="@+id/AchievementsRecyclerView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginBottom="@dimen/margin_xxsmall"
+            android:orientation="horizontal"
+            local:layout_constraintTop_toBottomOf="@+id/PointsLabel"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent"
+            local:MvxBind="ItemsSource Achievements"
+            local:MvxItemTemplate="@layout/listitem_project_box_achievement" />
+
+        <LinearLayout
+                android:id="@+id/RulesContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/margin_xxsmall"
+                android:paddingHorizontal="@dimen/margin_medium"
+                android:gravity="center"
+                local:MvxBind="Click OpenRulesCommand"
+                local:layout_constraintTop_toBottomOf="@+id/AchievementsRecyclerView"
+                local:layout_constraintBottom_toBottomOf="parent"
+                local:layout_constraintStart_toStartOf="parent"
+                local:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/RulesLinkTitleLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_xxsmall"
+                    local:MvxBind="Text ProjectBox.RulesLinkTitle"
+                    style="@style/Subtitle2_Label3"/>
+
+            <ImageView
+                    android:id="@+id/ArrowImage"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="@dimen/margin_tiny"
+                    android:tint="@color/label_three_color"
+                    android:src="@drawable/icon_arrow_right_two"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

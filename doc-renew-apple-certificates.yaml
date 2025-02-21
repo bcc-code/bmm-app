@@ -1,0 +1,38 @@
+- This needs to be done once a year
+- Create new distribution certificate
+  - Note: Wherever it says 2025 insert the current year
+  - go to https://developer.apple.com/account/resources/certificates/list
+  - create a new certificate (iOS Distribution)
+  - follow guide to create a certificate signing request https://developer.apple.com/help/account/create-certificates/create-a-certificate-signing-request
+  - use something like this for the Common Name "BMM Distribution 2025"
+  - upload the *.certSigningRequest
+  - create a new password "BMM Apple Certificate 2025" in 1Password under bcc-media-dp-bmm
+  - generate a new super secure password (like 40 letters, ...) (you should only every copy & paste it)
+  - download the newly created certificate and double-click it to install in your Keychain
+  - identify the new certificate in Keychain Access (something like: "Apple Distribution: BCC Media")
+  - right click the certificate and export it as "BMM_Distribution_Certificate_2025.p12" (no spaces)
+  - set the newly created password from 1Password
+  - also export the private key and call it like "BMM Distribution Certificate 2025 private key.p12" and protect it with the same password. (make sure to call it private key, so that it's not accidentally uploaded where it doesn't belong)
+  - it's recommended to delete the old certificate to prevent confusion and other problems.
+- create new provisioning profiles
+  - Create a new provisioning profile (Distribution - App Store Connect)
+  - select "VS org brunstad bmm" as App id
+  - select the newly created certificate
+  - enter "BMM App Provisioning Profile" as name
+  - (we don't want the year in the name because the file is referenced in the .csproj. If the filename changed, we'd need to update parts in our git repository. Now we only need to upload it to Azure DevOps.)
+  - Create new provisioning profile for Siri Intents (Distribution - App Store Connect)
+  - select "Siri Intents for BMM" as App id
+  - select the newly created certificate
+  - enter "BMM App Siri Intents Provisioning Profile" as name
+  - upload the following files to the 1Password entry
+    - "ios_distribution.cer"
+    - the p12 file and the p12 private key
+    - the two .mobileprovision files
+- Update the build pipeline
+  - go to [Library -> Secure files](https://dev.azure.com/bcc-its/BMM/_library?itemType=SecureFiles) and upload
+  - "BMM_Distribution_Certificate_2025.p12" (NOT the private key)
+  - rename "BMM_App_Provisioning_Profile.mobileprovision" & "BMM_App_Siri_Intents_Provisioning_Profile.mobileprovision" to make room to upload the new version 
+  - upload "BMM_App_Provisioning_Profile.mobileprovision" & "BMM_App_Siri_Intents_Provisioning_Profile.mobileprovision"
+  - go to [Library -> Variable groups -> Apple Certificate](https://dev.azure.com/bcc-its/BMM/_library?itemType=VariableGroups&view=VariableGroupView&variableGroupId=140&path=AppleCertificate) and update the filenames and password
+    - you might need to delete the password and recreate it (not sure if it's necessary. Please try and update these instructions)
+  - the next time the build runs, it will wait for you to give it permission to access the newly uploaded files. Therefore it might make sense to start a new build and do it right away.

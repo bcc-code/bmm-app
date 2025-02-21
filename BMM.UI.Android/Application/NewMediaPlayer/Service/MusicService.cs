@@ -185,11 +185,22 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
             mediaSessionConnector.SetPlayer(ExoPlayer);
             mediaSessionConnector.SetPlaybackPreparer(preparer);
             mediaSessionConnector.SetQueueNavigator(new MetadataReadingQueueNavigator(_mediaSession, metadataMapper));
+            SetCustomActionsIfNeeded(mediaSessionConnector);
             //mediaSessionConnector.SetControlDispatcher(new IdleRecoveringControlDispatcher(_mediaSourceSetter));
             mediaSessionConnector.SetErrorMessageProvider(new CustomErrorMessageProvider(() => ExoPlayer,
                 Mvx.IoCProvider.Resolve<ISdkVersionHelper>(),
                 Mvx.IoCProvider.Resolve<ILogger>()));
             _mediaSourceSetter.CreateNew();
+        }
+
+        private static void SetCustomActionsIfNeeded(MediaSessionConnector mediaSessionConnector)
+        {
+            if (Build.VERSION.SdkInt < BuildVersionCodes.Tiramisu)
+                return;
+            
+            mediaSessionConnector.SetCustomActionProviders(
+                new SkipBackwardActionProvider(),
+                new SkipForwardActionProvider());
         }
 
         /// <summary>

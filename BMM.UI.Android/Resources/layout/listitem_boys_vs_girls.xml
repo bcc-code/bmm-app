@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ProjectBoxCardView"
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:layout_marginHorizontal="@dimen/margin_small"
+    android:layout_marginBottom="@dimen/margin_small"
+    android:background="@color/background_one_color"
+    local:cardElevation="0dp"
+    local:cardCornerRadius="20dp">
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/HalfGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            local:layout_constraintGuide_percent="0.5" />
+        
+        <View 
+            android:id="@+id/BoysBackgroundView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            android:background="@color/boys_color"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toStartOf="@+id/HalfGuideline" />
+
+        <TextView
+            android:id="@+id/BoysLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/global_white_one"
+            android:textSize="20dp"
+            android:layout_marginTop="@dimen/margin_xxmedium"
+            local:layout_constraintStart_toStartOf="@+id/BoysBackgroundView"
+            local:layout_constraintEnd_toEndOf="@+id/BoysBackgroundView"
+            local:layout_constraintTop_toTopOf="parent"
+            local:MvxBind="Text BoysTitle" />
+        
+        <TextView
+            android:id="@+id/BoysPointsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:textColor="@color/global_white_one"
+            android:textSize="72dp"
+            local:layout_constraintStart_toStartOf="@+id/BoysBackgroundView"
+            local:layout_constraintEnd_toEndOf="@+id/BoysBackgroundView"
+            local:layout_constraintTop_toTopOf="@+id/BoysBackgroundView"
+            local:layout_constraintBottom_toBottomOf="@+id/BoysBackgroundView"
+            local:MvxBind="Text BoysPoints" />
+
+        <ImageView
+            android:id="@+id/BoysBackgroundImage"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="30dp"
+            android:src="@drawable/boys_background"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="@dimen/margin_small"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="@+id/BoysBackgroundView"
+            local:layout_constraintEnd_toEndOf="@+id/BoysBackgroundView" />
+
+        <View
+            android:id="@+id/GirlsBackgroundView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="@dimen/match_constraint"
+            android:background="@color/girls_color"
+            local:layout_constraintTop_toTopOf="parent"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toEndOf="@+id/HalfGuideline"
+            local:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/GirlsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/global_white_one"
+            android:textSize="20dp"
+            android:layout_marginTop="@dimen/margin_xxmedium"
+            local:layout_constraintStart_toStartOf="@+id/GirlsBackgroundView"
+            local:layout_constraintEnd_toEndOf="@+id/GirlsBackgroundView"
+            local:layout_constraintTop_toTopOf="parent"
+            local:MvxBind="Text GirlsTitle" />
+    
+        <TextView
+            android:id="@+id/GirlsPointsLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_medium"
+            android:textColor="@color/global_white_one"
+            android:textSize="72dp"
+            local:layout_constraintStart_toStartOf="@+id/GirlsBackgroundView"
+            local:layout_constraintEnd_toEndOf="@+id/GirlsBackgroundView"
+            local:layout_constraintTop_toTopOf="@+id/GirlsBackgroundView"
+            local:layout_constraintBottom_toBottomOf="@+id/GirlsBackgroundView"
+            local:MvxBind="Text GirlsPoints" />
+
+        <ImageView
+            android:id="@+id/GirlsBackgroundImage"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="30dp"
+            android:src="@drawable/girls_background"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="@dimen/margin_small"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="@+id/GirlsBackgroundView"
+            local:layout_constraintEnd_toEndOf="@+id/GirlsBackgroundView" />
+        
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
