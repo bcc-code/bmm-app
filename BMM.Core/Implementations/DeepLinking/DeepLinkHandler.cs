@@ -114,6 +114,7 @@ namespace BMM.Core.Implementations.DeepLinking
                 new TrackLinkParser(PlayTrackRegex, PlayTrackById),
                 new RegexDeepLink<GenericDocumentsViewParameters>("^/browse(/(?<path>.*))?$", OpenGenericDocumentsView),
                 new RegexDeepLink("^/romans-questions$", OpenRomansQuestions),
+                new RegexDeepLink("^/hvhe-standings$", NavigateTo<HvheDetailsViewModel>),
                 new RegexDeepLink<IdDeepLinkParameters>(QuizRegex, OpenQuizQuestion),
                 new RegexDeepLink<StringIdParameters>(AchievementRegex, OpenAchievement),
                 new RegexDeepLink("^/$", DoNothing)
