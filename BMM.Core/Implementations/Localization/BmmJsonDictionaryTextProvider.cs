@@ -44,21 +44,22 @@ namespace BMM.Core.Implementations.Localization
             var textResourceDictionary = DeserializeTextResource(textResourceJson);
             var defaultResourceDictionary = DeserializeTextResource(defaultTextResourceJson);
 
-            foreach (var currentDictionary in textResourceDictionary)
+            foreach (var defaultDictionary in defaultResourceDictionary)
             {
-                foreach (var current in currentDictionary.Value)
+                foreach (var defaultDictionaryValues in defaultDictionary.Value)
                 {
-                    string valueToUse = string.IsNullOrWhiteSpace(current.Value) 
-                        ? GetDefaultResourceValue(defaultResourceDictionary, currentDictionary.Key, current.Key)
-                        : current.Value;
+                    string actualResourceValue = GetResourceValue(textResourceDictionary, defaultDictionary.Key, defaultDictionaryValues.Key);
+                    string valueToUse = string.IsNullOrWhiteSpace(actualResourceValue)
+                        ? defaultDictionaryValues.Value
+                        : actualResourceValue;
                     
-                    string translationKey = $"{currentDictionary.Key}_{current.Key.Replace(".", "_")}";
+                    string translationKey = $"{defaultDictionary.Key}_{defaultDictionaryValues.Key.Replace(".", "_")}";
                     AddOrReplace(string.Empty, string.Empty, translationKey, valueToUse);
                 }
             }
         }
         
-        private string GetDefaultResourceValue(
+        private string GetResourceValue(
             Dictionary<string, Dictionary<string, string>> defaultResourceDictionary,
             string dictionaryKey,
             string key)
