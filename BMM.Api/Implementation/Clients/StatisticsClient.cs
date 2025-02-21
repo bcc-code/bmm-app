@@ -146,6 +146,12 @@ namespace BMM.Api.Implementation.Clients
             return Get<Achievement>(uri);
         }
 
+        public Task<ProjectStandings> GetStandings()
+        {
+            var uri = new UriTemplate(ApiUris.ProjectStandings);
+            return Get<ProjectStandings>(uri);
+        }
+
         public Task<ProjectProgress> GetProjectProgress(AppTheme theme)
         {
             var uri = new UriTemplate(ApiUris.ProjectProgress);

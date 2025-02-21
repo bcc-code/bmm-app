@@ -31,6 +31,10 @@
 			</array>
 		</dict>
 	</array>
+    <key>UIAppFonts</key>
+    <array>
+        <string>Fonts/IBM_Plex_Mono/IBMPlexMono-Bold.ttf</string>
+    </array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>

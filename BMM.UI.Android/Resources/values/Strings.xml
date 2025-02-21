@@ -17,4 +17,5 @@
     <string name="bible_study_rules_template_selector">BMM.UI.Droid.Application.TemplateSelectors.BibleStudyRulesTemplateSelector, BMM.UI.Android</string>
     <string name="profile_achievements_template_selector">BMM.UI.Droid.Application.TemplateSelectors.ProfileAchievementsTemplateSelector, BMM.UI.Android</string>
     <string name="read_transcription_template_selector">BMM.UI.Droid.Application.TemplateSelectors.ReadTranscriptionTemplateSelector, BMM.UI.Android</string>
+    <string name="hvhe_details_template_selector">BMM.UI.Droid.Application.TemplateSelectors.HvheDetailsTemplateSelector, BMM.UI.Android</string>
 </resources>

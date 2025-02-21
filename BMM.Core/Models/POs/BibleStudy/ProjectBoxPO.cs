@@ -27,10 +27,7 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
         });
 
         foreach (var achievement in projectBox.Achievements)
-        {
             Achievements.Add(new AchievementPO(achievement, navigationService));
-            Achievements.Add(new AchievementPO(achievement, navigationService));
-        }
 
         OpenQuestionsCommand = new ExceptionHandlingCommand(async () =>
             await navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams
@@ -43,6 +40,11 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
         {
             await navigationService.Navigate<BibleStudyRulesViewModel, int>(ProjectBox.Id);
         });
+
+        OpenDetailsCommand = new ExceptionHandlingCommand(async () =>
+        {
+            await navigationService.Navigate<HvheDetailsViewModel>();
+        });
     }
     
     public ProjectBox ProjectBox { get; }
@@ -51,6 +53,7 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
     public IMvxCommand ExpandOrCollapseCommand { get; }
     public IMvxAsyncCommand OpenQuestionsCommand { get; }
     public IMvxAsyncCommand OpenRulesCommand { get; set; }
+    public IMvxAsyncCommand OpenDetailsCommand { get; set; }
     
     public IBmmObservableCollection<IAchievementPO> Achievements { get; } = new BmmObservableCollection<IAchievementPO>();
 }
