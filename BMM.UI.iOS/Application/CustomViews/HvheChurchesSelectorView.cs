@@ -105,6 +105,7 @@ namespace BMM.UI.iOS.CustomViews
         {
             LeftItemLabel.ApplyTextTheme(AppTheme.Title2);
             RightItemLabel.ApplyTextTheme(AppTheme.Title2);
+            UpdateTextColor();
         }
 
         private void UpdateTextColor()

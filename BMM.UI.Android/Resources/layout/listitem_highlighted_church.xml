@@ -115,7 +115,7 @@
             local:layout_constraintStart_toStartOf="@+id/BoysPointsContainer"
             local:layout_constraintTop_toTopOf="@+id/BoysPointsContainer"
             local:layout_constraintBottom_toBottomOf="@+id/BoysPointsContainer"
-            local:MvxLang="Text HvheDetailsViewModel_Boys"
+            local:MvxBind="Text BoysTitle"
             style="@style/Title2" />
 
         <TextView
@@ -151,7 +151,7 @@
             local:layout_constraintEnd_toEndOf="@+id/GirlsPointsContainer"
             local:layout_constraintTop_toTopOf="@+id/GirlsPointsContainer"
             local:layout_constraintBottom_toBottomOf="@+id/GirlsPointsContainer"
-            local:MvxLang="Text HvheDetailsViewModel_Girls"
+            local:MvxBind="Text GirlsTitle"
             style="@style/Title2" />
 
         <TextView

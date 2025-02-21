@@ -27,10 +27,7 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
         });
 
         foreach (var achievement in projectBox.Achievements)
-        {
             Achievements.Add(new AchievementPO(achievement, navigationService));
-            Achievements.Add(new AchievementPO(achievement, navigationService));
-        }
 
         OpenQuestionsCommand = new ExceptionHandlingCommand(async () =>
             await navigationService.Navigate<WebBrowserViewModel, IWebBrowserPrepareParams>(new WebBrowserPrepareParams

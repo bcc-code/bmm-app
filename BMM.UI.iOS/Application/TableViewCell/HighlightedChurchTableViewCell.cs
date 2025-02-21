@@ -49,10 +49,10 @@ namespace BMM.UI.iOS.CustomViews
                 .To(po => po.Church.GirlsPoints);
             
             set.Bind(BoysLabel)
-                .To(po => po.TextSource[Translations.HvheDetailsViewModel_Boys]);
+                .To(po => po.BoysTitle);
             
             set.Bind(GirlsLabel)
-                .To(po => po.TextSource[Translations.HvheDetailsViewModel_Girls]);
+                .To(po => po.GirlsTitle);
             
             set.Bind(ChurchName)
                 .To(po => po.Church.Name);

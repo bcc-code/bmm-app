@@ -634,8 +634,6 @@
     "Text": "Text"
   },
   "HvheDetailsViewModel": {
-    "Title": "Global Score",
-    "Boys": "Boys",
-    "Girls": "Girls"
+    "Title": "Global Score"
   }
 }

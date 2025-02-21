@@ -78,8 +78,9 @@ public class HvheDetailsViewModel : BaseViewModel<IHvheDetailsParameters>, IHvhe
     {
         var itemsToAdd = _standings
             .LargeChurches
-            .Select(church => new HvheChurchPO(church))
+            .Select(church => new HvheChurchPO(church, _standings.BoysTitle, _standings.GirlsTitle))
             .ToList();
+        
         Items.AddRange(itemsToAdd);
     }
     
@@ -87,7 +88,7 @@ public class HvheDetailsViewModel : BaseViewModel<IHvheDetailsParameters>, IHvhe
     {
         var itemsToAdd = _standings
             .SmallChurches
-            .Select(church => new HvheChurchPO(church))
+            .Select(church => new HvheChurchPO(church, _standings.BoysTitle, _standings.GirlsTitle))
             .ToList();
         Items.AddRange(itemsToAdd);
     }
