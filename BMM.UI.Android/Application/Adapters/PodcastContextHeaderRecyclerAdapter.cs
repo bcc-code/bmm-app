@@ -46,6 +46,8 @@ namespace BMM.UI.Droid.Application.Adapters
                     return new ProjectBoxExpandedViewHolder(view, itemBindingContext, this);
                 case Resource.Layout.listitem_gibraltar_project_box:
                     return new GibraltarProjectBoxExpandedViewHolder(view, itemBindingContext);
+                case Resource.Layout.listitem_hvhe_project_box:
+                    return new HvheProjectBoxViewHolder(view, itemBindingContext);
                 case Resource.Layout.listitem_track:
                 {
                     view.SetBackgroundColor(parent.Context.GetColorFromResource(ResourceConstant.Color.background_one_color));

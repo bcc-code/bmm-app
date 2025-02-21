@@ -15,10 +15,6 @@ namespace BMM.UI.iOS.CollectionViewSource
             collectionView.RegisterNibForCell(HeaderCollectionViewCell.Nib, HeaderCollectionViewCell.Key);
         }
 
-        public ProfileAchievementsCollectionViewSource(UICollectionView collectionView, NSString defaultCellIdentifier) : base(collectionView, defaultCellIdentifier)
-        {
-        }
-        
         protected override UICollectionViewCell GetOrCreateCellFor(UICollectionView collectionView, NSIndexPath indexPath, object item)
         {
             string key = item switch

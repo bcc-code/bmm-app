@@ -1,3 +1,5 @@
+using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Views;
 using BMM.Core.Constants;
 using BMM.UI.Droid.Application.Constants.Player;
@@ -57,6 +59,34 @@ namespace BMM.UI.Droid.Application.Extensions
             }
 
             return false;
+        }
+        
+        public static void ApplyRoundedCorners(
+            this View view, 
+            float topLeftRadius,
+            float bottomLeftRadius,
+            float topRightRadius, 
+            float bottomRightRadius)
+        {
+            var backgroundColor = Color.Transparent;
+            
+            if (view.Background is ColorDrawable colorDrawable)
+                backgroundColor = colorDrawable.Color;
+            
+            float[] radii =
+            [
+                topLeftRadius, topLeftRadius,
+                topRightRadius, topRightRadius,
+                bottomRightRadius, bottomRightRadius,
+                bottomLeftRadius, bottomLeftRadius
+            ];
+
+            var drawable = new GradientDrawable();
+            drawable.SetShape(ShapeType.Rectangle);
+            drawable.SetCornerRadii(radii);
+            drawable.SetColor(backgroundColor); 
+            
+            view.Background = drawable;
         }
     }
 }
