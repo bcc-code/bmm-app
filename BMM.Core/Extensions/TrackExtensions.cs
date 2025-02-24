@@ -16,7 +16,7 @@ public static class TrackExtensions
     {
         return track.Tags.Any(c =>
             c == PodcastsConstants.ForbildeTagName || c == PodcastsConstants.RomanPodcastTagName ||
-            c == PodcastsConstants.GibraltarPodcastTagName);
+            c == PodcastsConstants.GibraltarPodcastTagName || c == PodcastsConstants.HvheTagName);
     }
 
     public static bool IsForbildeProjectTrack(this Track track)

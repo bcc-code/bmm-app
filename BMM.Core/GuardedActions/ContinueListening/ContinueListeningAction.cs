@@ -60,7 +60,8 @@ namespace BMM.Core.GuardedActions.ContinueListening
                 && parameter.ShufflePodcastId != PodcastsConstants.ForbildePodcastId
                 && parameter.ShufflePodcastId != PodcastsConstants.BergprekenPodcastId
                 && parameter.ShufflePodcastId != PodcastsConstants.RomanPodcastId
-                && parameter.ShufflePodcastId != PodcastsConstants.GibraltarPodcastId)
+                && parameter.ShufflePodcastId != PodcastsConstants.GibraltarPodcastId
+                && parameter.ShufflePodcastId != PodcastsConstants.HvhePodcastId)
             {
                 _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));
             }

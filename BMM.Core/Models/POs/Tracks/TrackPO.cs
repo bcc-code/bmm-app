@@ -155,6 +155,7 @@ namespace BMM.Core.Models.POs.Tracks
                    Track.Tags.Contains(PodcastsConstants.ForbildeTagName) ||
                    Track.Tags.Contains(PodcastsConstants.RomanPodcastTagName) ||
                    Track.Tags.Contains(PodcastsConstants.GibraltarPodcastTagName) ||
+                   Track.Tags.Contains(PodcastsConstants.HvheTagName) ||
                    Track.Tags.Contains(AslaksenConstants.AsklaksenTagName) ||
                    Track.Tags.Contains(AslaksenConstants.HebrewTagName);
         }

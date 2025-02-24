@@ -175,7 +175,7 @@ namespace BMM.Core.ViewModels
                 .Where(d => d.DocumentType == DocumentType.Podcast)
                 .Where(d => d.Id == PodcastsConstants.FraKårePodcastId || d.Id == AslaksenConstants.AslaksenPodcastId ||
                             d.Id == PodcastsConstants.ForbildePodcastId || d.Id == PodcastsConstants.RomanPodcastId ||
-                            d.Id == PodcastsConstants.GibraltarPodcastId);
+                            d.Id == PodcastsConstants.GibraltarPodcastId || d.Id == PodcastsConstants.HvhePodcastId);
             return documents.Except(unwantedDocs).ToList();
         }
 
