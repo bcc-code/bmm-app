@@ -13,9 +13,9 @@ public class Church
         GameNights = gameNights;
     }
 
-    public string Name { get; set; }
-    public bool IsHighlighted { get; set; }
-    public int BoysPoints { get; set; }
-    public int GirlsPoints { get; set; }
-    public IList<GameNights> GameNights { get; set; }
+    public string Name { get; }
+    public bool IsHighlighted { get; }
+    public int BoysPoints { get; }
+    public int GirlsPoints { get; }
+    public IList<GameNights> GameNights { get; }
 }

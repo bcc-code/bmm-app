@@ -41,8 +41,6 @@ public class HvheDetailsViewModel : BaseViewModel<IHvheDetailsParameters>, IHvhe
         await base.Initialize();
         
         _standings = await _statisticsClient.GetStandings();
-
-        _standings.LargeChurches.First().IsHighlighted = true;
         
         HvheChurchesSelectorPO = new HvheChurchesSelectorPO(
             _standings.LargeChurchesTitle,

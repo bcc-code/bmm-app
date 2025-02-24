@@ -25,14 +25,14 @@ public class ProjectStandings
         SmallChurches = smallChurches;
     }
 
-    public string BoysTitle { get; set; }
-    public string GirlsTitle { get; set; }
-    public int BoysPoints { get; set; }
-    public int GirlsPoints { get; set; }
-    public string LargeChurchesTitle { get; set; }
-    public string SmallChurchesTitle { get; set; }
-    public string ChurchTitle { get; set; }
-    public string GameNightsTitle { get; set; }
-    public IList<Church> LargeChurches { get; set; }
-    public IList<Church> SmallChurches { get; set; }
+    public string BoysTitle { get; }
+    public string GirlsTitle { get; }
+    public int BoysPoints { get; }
+    public int GirlsPoints { get; }
+    public string LargeChurchesTitle { get; }
+    public string SmallChurchesTitle { get; }
+    public string ChurchTitle { get; }
+    public string GameNightsTitle { get; }
+    public IList<Church> LargeChurches { get; }
+    public IList<Church> SmallChurches { get; }
 }
