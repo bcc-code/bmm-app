@@ -1,6 +1,6 @@
 {
   "Global": {
-    "ContactError": "Povezava z BMM ekipo ni uspela. E-poštno sporočilo lahko pošljete na: {0}",
+    "ContactError": "Povezava z BMM ekipo ni uspela. E-poštno sporočilo lahko pošlješ na: {0}",
     "External": "Eksterno",
     "Internal": "Interno",
     "BytesMB": "{0} MB na voljo",
@@ -16,32 +16,32 @@
     "Today": "Danes",
     "Yesterday": "Včeraj",
     "BackgroundActivityRestrictedTitle": "Dovoli delovanje v ozadju",
-    "BackgroundActivityRestrictedMessage": "Tvoje nastavitve naprave ne dovoljujejo, da BMM deluje v ozadju. Ne boš mogel predvajati glasbe, ko bo telefon za nekaj minut zaklenjen. Za spremembo pojdi v nastavitve aplikacije in pod razdelkom \"Baterija\" izberi \"Dovoli delovanje v ozadju\". ",
+    "BackgroundActivityRestrictedMessage": "Nastavitve naprave omejujejo delovanje aplikacije BMM v ozadju. Če je telefon za nekaj minut zaklenjen, bo poslušanje onemogočeno. Če želiš spremeniti nastavitev, pojdi v nastavitve aplikacije in v razdelku \"Baterija\" nastavi \"Dovoli dejavnost v ozadju\".",
     "GoToSettings": "Pojdi na nastavitve",
-    "NotNow": "Kasneje",
-    "DownloadPlaylistOnceOnWifi": "Seznam predvajanja se bo prenesel, ko boš naslednjič uporabljal Wi-Fi. V svojem profilu lahko omogočiš \"Prenesi preko mobilnega omrežja\".",
-    "DownloadPodcastOnceOnWifi": "Zadnje skladbe tega podcasta se bodo prenesle, ko boš naslednjič uporabljal Wi-Fi. V svojem profilu lahko omogočiš \"Prenesi preko mobilnega omrežja\".",
+    "NotNow": "Ne zdaj",
+    "DownloadPlaylistOnceOnWifi": "Seznam predvajanja bo prenesen, ko boš naslednjič imel Wifi omrežje. V svojem profilu lahko omogočiš \"Prenos prek mobilnega omrežja\".",
+    "DownloadPodcastOnceOnWifi": "Najnovejše skladbe za ta podkast bodo prenesene, ko boste naslednjič v Wifi omrežju. V svojem profilu lahko omogočiš \"Prenos prek mobilnega omrežja\".",
     "SiriFromKaareInvocationPhrase": "Predvajaj Od Kåreja na BMM",
     "SiriPlayMusicInvocationPhrase": "Predvajaj glasbo na BMM",
     "FromKaareSiriShortcutName": "Predvajaj Od Kåreja",
     "PlayMusicSiriShortcutName": "Predvajaj glasbo",
     "DailyMessage": "Govor dneva",
-    "ValueCopiedToClipboard": "{0} kopiran... v odlagališče",
+    "ValueCopiedToClipboard": "{0} kopiran v odlagališče",
     "AddToFavorites": "Dodaj med priljubljene",
     "RemoveFromFavorites": "Odstrani iz priljubljenih"
   },
   "Streak": {
     "Message": "Tvoj  niz ta teden",
-    "MessagePerfect": "Popoln teden. Bravo!",
+    "MessagePerfect": "Popoln teden. Odlično opravljeno!",
     "PerfectWeekCountSingular": "{0} popoln teden",
     "PerfectWeekCountPlural": "{0} popolnih tednov",
     "PerfectWeekCountNone": "Ni še popolnih tednov",
-    "EligibleUntilHoursAndMinutesMessage": "Danes je ostalo {0} ur in {1} minut ",
+    "EligibleUntilHoursAndMinutesMessage": "Danes je ostalo {0} ur in {1} minut",
     "EligibleUntilMinutesOnlyMessage": "Danes je ostalo {0} minut",
     "DaysInARowSingular": "{0} zaporeden dan",
     "DaysInARowPlural": "{0} zaporednih dni",
     "WeekdayMonday": "P",
-    "WeekdayTuesday": "T",
+    "WeekdayTuesday": "Č",
     "WeekdayWednesday": "S",
     "WeekdayThursday": "Č",
     "WeekdayFriday": "P"
@@ -49,7 +49,7 @@
   "DeepLinkHandler": {
     "ErrorTitle": "Povezave ni bilo mogoče odpreti",
     "ErrorMessage": "Ni bilo mogoče odpreti povezave {0}",
-    "RomansQuestionsPageTitle": "Vprašanja & odgovori"
+    "RomansQuestionsPageTitle": "Vprašanja &amp; odgovori"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Prišlo je do napake pri povezavi: {0}"
@@ -58,7 +58,7 @@
     "ErrorMediaNotSupported": "Na žalost vaša naprava ne podpira te oblike zapisa datoteke.",
     "ErrorVideoNotSupported": "Na žalost video posnetki trenutno niso podprti.",
     "ErrorFileNotOffline": "Skladb, ki niso prenesene, ni mogoče predvajati brez internetne povezave.",
-    "ErrorPlayerStopped": "Predvajalnik se je ustavil. ",
+    "ErrorPlayerStopped": "Predvajalnik se je ustavil.",
     "ErrorPlayerStoppedGeneric": "Zaradi napake predvajanja se je trenutna skladba ustavila.",
     "ErrorPlayerLiveRadioStopped": "Prenos v živo se je končal.",
     "ErrorPlayerLiveRadioTooEarly": "Prenos v živo se še ni začel, prosim poskusi znova kasneje.",
@@ -72,8 +72,8 @@
     "SearchHint": "Išči",
     "AddAlbumToPlaylist": "Dodaj album na seznam predvajanja",
     "AddAlbumToMyTracks": "Dodaj album na \"Moje skladbe\"",
-    "FailedToAdd": "Skladbe ni bilo mogoče dodati na seznam predvajanja. Prosim, ponovno poskusi kasneje.",
-    "AlbumFailedToAddAlreadyExists": "Ta album je že dodan na tvoj seznam predvajanja.",
+    "FailedToAdd": "Dodajanje skladbe na seznam predvajanja ni uspelo.  Prosim poskusi znova kasneje.",
+    "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
     "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
     "ShufflePlay": "Naključno predvajanje",
     "PluralAlbums": "{0} albumov"
@@ -86,7 +86,7 @@
     "Title": "Samodejni prenos",
     "None": "Noben",
     "PluralLatestTracks": "{0} najnovejših pesmi",
-    "AutomaticDownloadSubtitle": "Če slediš temu podcastu, se bo določeno število skladb samodejno preneslo."
+    "AutomaticDownloadSubtitle": "Če slediš temu podkastu, se bo določeno število skladb samodejno preneslo."
   },
   "ContributorViewModel": {
     "Title": "Ustvarjalec",
@@ -125,41 +125,41 @@
     "SearchHint": "Išči"
   },
   "HelpFeedbackViewModel": {
-    "Title": "Pomoč & povratne informacije",
+    "Title": "Pomoč &amp; povratne informacije",
     "GuideIntroTitle": "Kako čimbolj izkoristiti aplikacijo BMM",
     "GuideIntroSubtitle": "Podrsaj za več informacij",
     "GuideOfflineTitle": "Seznami predvajanja brez povezave",
-    "GuideOfflineSubtitle": "Prenesi svoje sezname predvajanja na svojo napravo in jih poslušaj brez internetne povezave. To lahko vključiš na seznamu predvajanja.",
+    "GuideOfflineSubtitle": "Prenesi svoje sezname predvajanja v napravo in jih poslušaj brez internetne povezave. To lahko vklopiš na seznamu predvajanja.",
     "GuideAddToPlaylistTitle": "Dodaj na seznam predvajanja ali na \"Moje skladbe\"",
-    "GuideAddToPlaylistSubtitle": "Shrani svoje najljubše skladbe na svoj seznam predvajanja ali na osebno BMM zbirko \"Moje skladbe\" z izbiro gumba za možnosti na desni strani skladbe.",
+    "GuideAddToPlaylistSubtitle": "Shrani svoje najljubše skladbe na svoj seznam predvajanja ali na osebno BMM zbirko \"Moje skladbe\". To storiš tako, da izbereš gumb za možnosti na desni strani skladbe.",
     "GuideLanguagesTitle": "Več jezikov",
-    "GuideLanguagesSubtitle": "Razvrsti jezike vsebine BMM. To lahko storiš v Nastavitve > Jezik vsebine.\n",
-    "GuideLibraryTitle": "Oddelek knjižnice",
-    "GuideLibrarySubtitle": "Pridobi hiter dostop do želene vsebine. Knjižnični oddelek vsebuje vse dostopne podcaste in arhivsko enoto za iskanje vsebine. ",
+    "GuideLanguagesSubtitle": "Prednostno določi jezike vsebine BMM. To lahko storiš v možnosti Nastavitve > Jezik vsebine.\n",
+    "GuideLibraryTitle": "Razdelek knjižnice",
+    "GuideLibrarySubtitle": "Hitro dostopaj do želene vsebine. Razdelek knjižnica vsebuje vse razpoložljive podkaste in arhiv, v katerem lahko brskaš po vsebini. ",
     "GuideSearchTitle": "Išči",
-    "GuideSearchSubtitle": "Poišči določeno skladbo ali poišči temo, da najdeš s tem povezano vsebino. Tvoja iskanja se avtomatično shranijo.",
-    "ButtonSendMail": "Pošlji email BMM ekipi"
+    "GuideSearchSubtitle": "Poišči določeno skladbo ali poišči temo, da najdeš s tem povezano vsebino. Tvoja iskanja se samodejno shranijo.",
+    "ButtonSendMail": "Pošlji e-poštno sporočilo ekipi BMM"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "Tvoj račun je v pripravi. To lahko vzame nekaj časa."
+    "SettingUpAccountMessage": "Nastavljamo tvoj račun. To lahko traja nekaj trenutkov."
   },
   "LoginViewModel": {
     "Title": "Prijava",
     "LoginFailureTitle": "Prijava ni uspela",
     "LoginFailureMessage": "Poskusi znova z uporabo pravilnih referenc",
-    "LoginNoConnectionMessage": "Trenutno nobena povezava ni na voljo. Prosim, poskusi ponovno kasneje",
+    "LoginNoConnectionMessage": "Trenutno ni na voljo nobene povezave. Prosim poskusi znova kasneje.",
     "WrongMailAddressTitle": "Neveljaven mail",
-    "WrongMailAddress": "Prosim, navedi veljaven elektronski naslov. Uporaba tega uporabniškega imena za prijavo ni več podprta. ",
+    "WrongMailAddress": "Navedi veljaven e-poštni naslov. Uporaba uporabniškega imena za prijavo ni več podprta.",
     "TbxUsername.Hint": "E-pošta",
     "TbxPassword.Hint": "Geslo",
     "BtnLogin.Text": "Prijava",
     "LoginInfo": "Vpiši se s svojim BCC računom"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "Kmalu ne bo več mogoča podpora za telefone, ki so starejši od {0}{1}. Priporočljiva je nadgradnja telefona. ",
-    "DeviceSupportEnded": "Na žalost ne podpiramo več naprav, ki so starejše od {0}{1}. Prosim posodobi svojo napravo ali jo nagradi na novejšo. ",
-    "AppSupportEnding": "Uporabljaš staro verzijo BMM aplikacije. Kmalu bomo nehali podpirati to verzijo. Prosim posodobi BMM. ",
-    "AppSupportEnded": "Uporabljaš staro verzijo BMM aplikacije, ki ni več podprta. Prosim posodobi BMM. ",
+    "DeviceSupportEnding": "Kmalu bomo prenehali podpirati telefone z operacijskim sistemom {0} {1} ali starejšim. Če je mogoče, posodobi telefon.",
+    "DeviceSupportEnded": "Žal ne podpiramo več naprav, starejših od {0} {1}. Posodobi napravo ali si priskrbi novejši telefon.",
+    "AppSupportEnding": "Uporabljaš staro različico aplikacije BMM. Kmalu bomo prenehali podpirati to različico. Prosim posodobi BMM.",
+    "AppSupportEnded": "Uporabljaš staro verzijo BMM aplikacije, ki ni več podprta. Prosim posodobi BMM. Prosim posodobi BMM.",
     "UpdateButton": "Posodobitev"
   },
   "LanguageAppViewModel": {
@@ -169,7 +169,7 @@
     "Title": "Jezik vsebine",
     "Dialog.Title": "Izberi jezik",
     "Dialog.Cancel": "Prekliči",
-    "Toast.LanguagesStillLoading": "Seznam se še vedno nalaga. Prosim, poskusi znova čez nekaj sekund.",
+    "Toast.LanguagesStillLoading": "Seznam se še vedno nalaga. Poskusite znova čez nekaj sekund.",
     "Toast.NoLanguagesAvailable": "Izgleda, da na voljo ni nobene internetne povezave za nalaganje seznama jezikov.",
     "DeleteLanguageMessage": "Izberi vsaj en jezik vsebine",
     "DeleteLanguageTitle": "Ni mogoče odstraniti {0}"
@@ -195,16 +195,16 @@
   "MyContentViewModel": {
     "Title": "Najljubše",
     "DownloadedContent": "Prenesena vsebina",
-    "FollowedPodcasts": "Posnetki",
+    "FollowedPodcasts": "Podkasti, ki jim slediš",
     "MyTracks": "Moje skladbe",
     "MyPlaylists": "Moji seznami predvajanja",
     "SharedWithMe": "Deljeno z mano",
     "ByFormat": "od {0}"
   },
   "FollowedPodcastsViewModel": {
-    "Title": "Podcasti, ki jim slediš",
-    "EmptyTitle": "Trenutno ne slediš nobenim podcastom",
-    "EmptySubline": "Sledi podcastu tako, da odpreš podcast in klikneš gumb sledi."
+    "Title": "Podkasti, ki jim slediš",
+    "EmptyTitle": "Trenutno ne slediš nobenim podkastom",
+    "EmptySubline": "Sledi podkastu tako, da odpreš podkaste in klikneš gumb sledi."
   },
   "MyTracksViewModel": {
     "Title": "Moje skladbe",
@@ -215,29 +215,29 @@
     "RemoveOfflineConfirm": "Ali res želiš izbrisati vse prenesene elemente?",
     "EmptyTitle": "Ta seznam predvajanja je prazen",
     "EmptySubline": "Pritisni na tri pike pri skladbi, da jo dodaš na ta seznam skladb.",
-    "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želiš nadaljevati prenos?"
+    "AskToResumeDownloading": "Na tem seznamu predvajanja so novi elementi. Želiš nadaljevati s prenosom?"
   },
   "DownloadedContentViewModel": {
     "Title": "Prenesena vsebina",
-    "FollowedPodcasts": "Podcasti, ki jim slediš",
+    "FollowedPodcasts": "Podkasti, ki jim slediš",
     "MyTracks": "Moje skladbe",
     "EmptyTitle": "Nisi prenesel nobene vsebine",
-    "EmptySubline": "Prenesi seznam predvajanja ali sledi podcastu, da ti bo na voljo brez povezave. "
+    "EmptySubline": "Prenesi seznam predvajanja ali sledi podkastu, da ti bo na voljo brez povezave."
   },
   "DownloadedFollowedPodcastsViewModel": {
-    "Title": "Podcasti, ki jim slediš",
-    "EmptyTitle": "Trenutno ne slediš nobenim podcastom",
-    "EmptySubline": "Sledi podcastu tako, da odpreš podcast in klikneš gumb sledi."
+    "Title": "Podkasti, ki jim slediš",
+    "EmptyTitle": "Trenutno ne slediš nobenim podkastom",
+    "EmptySubline": "Sledi podkastu tako, da odpreš podkaste in klikneš gumb sledi."
   },
   "PodcastViewModel": {
-    "Title": "Podcast",
+    "Title": "Podkast",
     "Follow": "Sledi",
     "Following": "Sledim",
     "ManageDownloads": "Upravljaj s prenosi",
     "GetNotified": "Prejmi obvestilo",
     "GetNotifiedMessage": "ko so na voljo nove epizode",
-    "UnfollowConfirm": "Ali se res želiš odjaviti od tega podcasta?",
-    "ToggleFollowOfflineError": "Imeti moraš internetno povezavo, če želiš slediti ali se odjaviti od podcasta",
+    "UnfollowConfirm": "Ali se res želiš odjaviti od tega podkasta?",
+    "ToggleFollowOfflineError": "Potrebuješ internetno povezavo, če želiš slediti ali se odjaviti od podkasta",
     "Week": "Teden {0}",
     "ThisWeek": "Ta teden",
     "LastWeek": "Prejšnji teden",
@@ -283,17 +283,17 @@
     "WelcomeTitle": "Začni iskati tukaj!",
     "WelcomeSubTitle": "Uporabi iskalno polje za iskanje vsebine na BMM",
     "DeleteConfirm": "Ali si prepričan, da želiš izbrisati zgodovino iskanja?",
-    "All": "Vse",
+    "All": "Vsi",
     "Speeches": "Govori",
     "Music": "Glasba",
     "Albums": "Albumi",
     "Contributors": "Osebe",
-    "Podcasts": "Podcasti",
-    "Playlists": "Seznam predvajanja",
+    "Podcasts": "Posnetki",
+    "Playlists": "Seznami predvajanja",
     "NoResults": "Ni rezultatov",
     "NoResultsDescription": "Za iskanje \"{0}\" ni najdenih zadetkov.",
     "SearchFailedTitle": "Neuspešno iskanje",
-    "SearchFailedMessage": "Zaradi tehničnih težav ni bilo možno iskanje \"{0}\". Za ponovni poskus klikni na spodnji gumb."
+    "SearchFailedMessage": "Žal nam zaradi težav s povezavo ni uspelo poiskati \"{0}\". Pritisnite spodnji gumb in poskusi znova."
   },
   "SettingsViewModel": {
     "Title": "Profil",
@@ -301,32 +301,32 @@
     "HeadlineHomeScreen": "Začetni zaslon",
     "HeadlinePlayback": "Posnetki",
     "PlayInChronologicalOrderHeader": "Predvajaj v kronološkem vrstnem redu",
-    "PlayInChronologicalOrderText": "Predvajaj epizode podcasta od najstarejših do najnovejših",
+    "PlayInChronologicalOrderText": "Predvajaj epizode podkasta od najstarejših do najnovejših",
     "OptionAutoplayHeader": "Samodejno predvajanje",
-    "OptionAutoplayText": "Predvajaj glasbo po poslušanju današnje epizode Fra Kåre. Na voljo samo pri predvajanju na začetnem zaslonu.",
+    "OptionAutoplayText": "Predvajaj glasbo po predvajanju današnje epizode Od Kåreja Velja samo takrat, ko se posnetek predvaja na začetnem zaslonu.",
     "OptionStreakHeader": "Niz na Domov",
     "OptionStreakText": "Pokaži statistiko poslušanja na začetnem zaslonu",
     "OptionEnablePushHeader": "Omogoči potisna obvestila",
     "OptionPushNotifications": "Potisna obvestila",
-    "OptionPushNotificationsSubtitle": "Omogoči potisna obvestila za podcaste, ki jim slediš",
+    "OptionPushNotificationsSubtitle": "Omogoči potisna obvestila za podkaste, ki jim slediš",
     "OptionExternalStorage": "Lokacija za shranjevanje",
-    "OptionMBInternalText": "Interno na voljo {0} MB",
-    "OptionMBExternalText": "Eksterno {0} MB",
-    "OptionEnablePushText": "Prejmi prikazna obvestila, ko je dostopna nova vsebina",
-    "OptionDownloadMobileNetworkHeader": "Prenesi seznam predvajanja preko mobilnega omrežja",
-    "OptionDownloadMobileNetworkText": "Dovoli, da aplikacija prenese sezname predvajanja preko 3G/4G. To lahko vpliva na tvoje podatke",
+    "OptionMBInternalText": "Notranji pomnilnik ima na voljo {0} MB",
+    "OptionMBExternalText": "Zunanji pomnilnik ima na voljo {0} MB",
+    "OptionEnablePushText": "Prejmi potisna obvestila, ko je dostopna nova vsebina",
+    "OptionDownloadMobileNetworkHeader": "Prenesi preko mobilnega omrežja",
+    "OptionDownloadMobileNetworkText": "Dovoli, da aplikacija prenese sezname predvajanja prek 3G/4G. To lahko vpliva na tvoj podatkovni načrt",
     "HeadlineGeneral": "Splošno",
     "OptionLanguageAppHeader": "Jezik aplikacije",
     "OptionLanguageAppText": "Spremeni jezik aplikacije",
     "OptionLanguageContentHeader": "Jezik vsebine",
-    "OptionLanguageContentText": "Izberi in razvrsti jezike za vso vsebino, ki jo uporabljaš",
+    "OptionLanguageContentText": "Izberi in razvrsti jezike za vso vsebino",
     "HeadlineAbout": "O aplikaciji",
     "OptionPrivacyPolicyHeader": "Pravilnik o zasebnosti",
     "OptionPrivacyPolicyText": "Preberi pravilnik o zasebnosti",
     "OptionCopyrightHeader": "Avtorske pravice",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
     "OptionContactHeader": "Kontakt",
-    "OptionContactText": "Vprašanja ali povratne informacije? Ekipo kontaktiraj tukaj.",
+    "OptionContactText": "Vprašanja ali povratne informacije? Ekipo lahko kontaktiraš tukaj.",
     "OptionAppVersionHeader": "Različica aplikacije",
     "OptionDeleteAccountHeader": "Izbriši račun",
     "OptionDeleteAccountText": "Zahtevaj izbris svojega računa.",
@@ -334,8 +334,8 @@
     "OptionNotificationBadgeText": "Pokaži obvestilo na začetnem zaslonu, da se boš lažje spomnil poslušati dnevno epizodo.",
     "OptionBibleStudyHeader": "Biblijsko preučevanje na Domov",
     "OptionBibleStudyText": "Pokaži status svojega biblijskega preučevanja na začetnem zaslonu",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Stroge zahteve za značko",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Znak z obvestilom Od Kåreja odstranite šele, ko pridobiš točko za niz.",
     "AppInfoTitle": "Informacije o aplikaciji",
     "AppInfoAppVersion": "Različica aplikacije: ",
     "AppInfoManufacturer": "Proizvajalec: ",
@@ -345,15 +345,15 @@
     "LoggedInAs": "Prijavljen kot",
     "LogoutConfirm": "Ali si prepričan, da se želiš odjaviti?",
     "Logout": "Odjava",
-    "UserVoiceHeader": "User voice",
+    "UserVoiceHeader": "Glas uporabnika",
     "UserVoiceText": "Imaš ideje, kako izboljšati BMM? Povej nam.",
-    "ThemeHeader": "Temen način",
+    "ThemeHeader": "Temni način",
     "ThemeText": "Izberi med temno in svetlo temo",
     "ColorHeader": "Barvna tema",
     "ColorText": "Izberi posebne barvne teme",
     "SiriShortcutsHeader": "Bližnjice za Siri",
-    "SiriShortcutsText": "Dodaj bližnjice za Siri za BMM na svojo napravo",
-    "PushNotificationsGoToSettings": "Ne moremo omogočiti potisnih sporočil, ker so onemogočena v nastavitvah. Za uporabo te funkcije\nomogoči potisna sporočila v nastavitvah naprave. ",
+    "SiriShortcutsText": "Na sojo napravo dodaj bližnjice za BMM za Siri",
+    "PushNotificationsGoToSettings": "Žal ne moremo omogočiti potisnih obvestil, ker so onemogočena v nastavitvah naprave. Če želiš omogočiti to funkcijo, v nastavitvah naprave omogoči možnost potisnih obvestil.",
     "Achievements": "Dosežki"
   },
   "StorageManagementViewModel": {
@@ -385,7 +385,7 @@
     "EmptyTitle": "Ta seznam predvajanja je prazen",
     "EmptySubline": "Pritisni na tri pike pri skladbi, da jo dodaš na ta seznam predvajanja.",
     "NotEnoughtSpaceToDownload": "Ni dovolj prostora za prenos vseh skladb",
-    "AskToResumeDownloading": "Na tem seznamu predvajanja so novi predmeti. Ali želiš nadaljevati prenos?",
+    "AskToResumeDownloading": "Na tem seznamu predvajanja so novi elementi. Želiš nadaljevati s prenosom?",
     "Private": "Zasebno",
     "DeletePlaylist": "Izbriši seznam predvajanja",
     "EditPlaylist": "Uredi seznam predvajanja",
@@ -397,7 +397,7 @@
     "RenameLabel": "Preimenuj seznam predvajanja",
     "MenuSave": "Shrani",
     "EmptyName": "Seznam predvajanja je brez naslova",
-    "SaveFailure": "Ni mogoče posodobiti sprememb. Preveri svojo internetno povezavo in poskusi znova",
+    "SaveFailure": "Sprememb ni bilo mogoče posodobiti. Preveri internetno povezavo in poskusi znova",
     "DiscardChangesTitle": "Prekliči spremembe?",
     "DiscardChangesMessage": "Spremembe ne bodo shranjene",
     "DiscardChanges": "Prekliči",
@@ -405,7 +405,7 @@
   },
   "ShareTrackCollectionViewModel": {
     "Title": "Deli seznam predvajanja",
-    "ShareNote": "Pri deljenju seznama predvajanja lahko osebe s povezavo dostopajo in poslušajo skladbe,  ki jih dodaš na seznam.",
+    "ShareNote": "Pri deljenju seznama lahko osebe s povezavo dostopajo in poslušajo skladbe,  ki jih dodaš na seznam.",
     "ShareLink": "Deli povezavo",
     "MakePrivate": "Naredi zasebno",
     "SharedWithFormat": "Deljeno z {0} osebami"
@@ -427,9 +427,9 @@
   "TrackCollectionsAddToViewModel": {
     "Title": "Dodaj skladbo na seznam predvajanja",
     "SearchHint": "Išči",
-    "FailedToAdd": "Skladbe ni bilo mogoče dodati na seznam predvajanja. Prosim, poskusi znova kasneje.",
+    "FailedToAdd": "Dodajanje skladbe na seznam predvajanja ni uspelo.  Prosim poskusi znova kasneje.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
-    "CollectionAlreadyInTrackCollection": "Zbirka je že dodana tvojemu seznamu predvajanja.",
+    "CollectionAlreadyInTrackCollection": "Zbirka je že dodana na tvoj seznam predvajanja.",
     "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
     "FailedToAddAlbum": "Dodajanje albuma na seznam predvajanja ni uspelo, ker vsebuje albume.",
     "FailedToAddUnknownType": "Dodajanje \"{0}\" na seznam predvajanja trenutno ni podprto.",
@@ -439,13 +439,13 @@
   "UserDialogs": {
     "Track.AddToPlaylist": "Dodaj na seznam predvajanja",
     "Track.DeleteFromPlaylist": "Odstrani s seznama predvajanja",
-    "Track.AddToMyTracks": "Dodaj na \"Moje skladbe\"",
-    "Track.RemoveFromMyTracks": "Odstrani iz \"Moje skladbe\"",
-    "Track.AddedToMyTracks": "Dodano na \"Moje skladbe\"",
-    "Track.RemovedFromMyTracks": "Odstranjeno iz \"Moje skladbe\"",
-    "Track.FailedToRemoveFromMyTracks": "Skladbe ni bilo mogoče odstraniti iz \"Moje skladbe\". ",
+    "Track.AddToMyTracks": "Dodaj na Moje skladbe",
+    "Track.RemoveFromMyTracks": "Odstrani iz Moje skladbe",
+    "Track.AddedToMyTracks": "Dodano na Moje skladbe",
+    "Track.RemovedFromMyTracks": "Odstranjeno iz Moje skladbe",
+    "Track.FailedToRemoveFromMyTracks": "Skladbe ni bilo mogoče odstraniti iz Moje skladbe.",
     "Track.AddToQueue": "Dodaj na konec čakalne vrste",
-    "Track.QueueToPlayNext": "Predvajaj naslednje",
+    "Track.QueueToPlayNext": "Igraj naslednje",
     "Track.AddedToQueue": "Dodano v čakalno vrsto",
     "Track.GoToAlbum": "Pojdi na album",
     "Track.GoToContributor": "Pojdi na ustvarjalce",
@@ -458,11 +458,11 @@
     "Track.Share": "Deli skladbo",
     "Album.Play": "Predvajaj",
     "Album.AddToPlaylist": "Dodaj album na seznam predvajanja",
-    "Album.AddToMyTracks": "Dodaj album na \"Moje skladbe\"",
-    "Album.AddedToMyTracks": "Album dodan na \"Moje skladbe\"",
+    "Album.AddToMyTracks": "Dodaj album na Moje skladbe",
+    "Album.AddedToMyTracks": "Album dodan na Moje skladbe",
     "Album.AddToQueue": "Dodaj na konec čakalne vrste",
     "Album.Share": "Deli album",
-    "FailedToAdd": "Dodajanje skladbe na seznam predvajanja ni uspelo. Prosim, poskusi znova kasneje.",
+    "FailedToAdd": "Dodajanje skladbe na seznam predvajanja ni uspelo.  Prosim poskusi znova kasneje.",
     "FailedToAddAlbum": "Dodajanje albuma na seznam predvajanja ni uspelo, ker vsebuje albume.",
     "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
     "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
@@ -479,7 +479,7 @@
     "ItemsDownloaded": "Predmet {0} od {1}"
   },
   "PodcastsViewModel": {
-    "Title": "Podcasti"
+    "Title": "Posnetki"
   },
   "TrackInfoViewModel": {
     "ExternalReferences": "Zunanji sklici",
@@ -518,7 +518,7 @@
     "EventsTitle": "Dogodki",
     "AudiobooksTitle": "Zvočne knjige",
     "MusicTitle": "Glasba",
-    "PodcastsTitle": "Podcasti"
+    "PodcastsTitle": "Posnetki"
   },
   "ThemeSettingsViewModel": {
     "Title": "Nastavitve za temen način",
@@ -600,9 +600,9 @@
     "Reward": "Nagrada",
     "RewardAndroid": "Posebna barvna tema za tvojo aplikacijo BMM 🤩",
     "RewardIos": "Posebna ikona za tvojo aplikacijo BMM 🤩",
-    "RewardAndroidGolden": "Posebna barvna tema za tvojo aplikacijo BMM. Sodeluješ tudi v žrebu za slušalke AirPods Pro. Bravo!",
-    "RewardIosGolden": "Posebna zlata ikona za tvojo aplikacijo BMM. Sodeluješ tudi v žrebu za slušalke AirPods Pro. Bravo!",
-    "PlayNext": "Igraj naslednji"
+    "RewardAndroidGolden": "Posebna barvna tema za tvojo aplikacijo BMM 🤩 Sodeluješ tudi v žrebanju za par slušalk AirPods Pro. Bravo!",
+    "RewardIosGolden": "Posebna ikona za tvojo aplikacijo BMM 🤩 Sodeluješ tudi v žrebanju za par slušalk AirPods Pro. Bravo!",
+    "PlayNext": "Igraj naslednje"
   },
   "SuggestEditViewModel": {
     "Title": "Predlagaj urejanje",
@@ -618,7 +618,7 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Hvala za vprašanje!",
-    "Description": "Vsa vprašanja bodo pregledana, na nekatera pa bomo odgovorili v  podkastu. \n Na večino vprašanj boš dobil odgovor na strani Q&A.\n\n Preveri spet v sredo za odgovore.",
+    "Description": "Vsa vprašanja bodo pregledana, na nekatera pa boste dobili odgovore v podkastu. Na večino vprašanj boste našli odgovore na strani z vprašanji in odgovori. V sredo si preberite odgovore.",
     "GotIt": "Razumem"
   },
   "AchievementsViewModel": {
@@ -629,8 +629,11 @@
   "ReadTranscriptionViewModel": {
     "SongTreasures": "Song Treasures",
     "Lyrics": "Besedilo",
-    "Transcription": "Opis",
+    "Transcription": "Prepis",
     "Melody": "Melodija",
     "Text": "Besedilo"
+  },
+  "HvheDetailsViewModel": {
+    "Title": "Celotni rezultat"
   }
 }
