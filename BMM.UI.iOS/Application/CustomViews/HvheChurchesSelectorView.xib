@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,7 +35,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="BackgroundOneColor"/>
                             <constraints>
                                 <constraint firstItem="iYd-Yi-wej" firstAttribute="leading" secondItem="wgJ-jI-Wei" secondAttribute="leading" constant="8" id="5CU-0e-u9X"/>
                                 <constraint firstItem="iYd-Yi-wej" firstAttribute="top" secondItem="wgJ-jI-Wei" secondAttribute="top" constant="14" id="9mL-kC-leI"/>
@@ -68,7 +67,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <color key="backgroundColor" name="BackgroundOneColor"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="XEH-Ap-bbT" secondAttribute="bottom" constant="14" id="Nim-5E-4ev"/>
                                 <constraint firstItem="XEH-Ap-bbT" firstAttribute="leading" secondItem="6vk-j4-VJQ" secondAttribute="leading" constant="8" id="SIh-Jp-JWe"/>
@@ -125,8 +124,5 @@
         <namedColor name="LabelOneColor">
             <color red="0.050980392843484879" green="0.074509806931018829" blue="0.10196078568696976" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
