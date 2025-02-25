@@ -6,21 +6,21 @@
     "BytesMB": "{0} MB wolne",
     "UnexpectedError": "Niestety pojawił się nieznany błąd.",
     "InternetConnectionOffline": "Połączenie internetowe w trybie offline.",
-    "ItemNotFound": "Żądany element nie istnieje.",
-    "OfflineBanner": "Utwory dostępne tylko na tym telefonie",
+    "ItemNotFound": "Wybrany element nie istnieje.",
+    "OfflineBanner": "Tylko utwory dostępne na tym telefonie",
     "Song": "Muzyka",
-    "Speech": "Przemowa",
-    "Audiobook": "Audiobook",
+    "Speech": "Przemowy",
+    "Audiobook": "Audiobooki",
     "Exegesis": "Egzegeza",
     "Done": "Gotowe",
     "Today": "Dzisiaj",
     "Yesterday": "Wczoraj",
     "BackgroundActivityRestrictedTitle": "Zezwalaj na aktywność w tle",
-    "BackgroundActivityRestrictedMessage": "Ustawienia Twojego urządzenia uniemożliwiają BMM działanie w tle. Nie będziesz mógł słuchać, gdy telefon będzie zablokowany przez kilka minut. Aby to zmienić, przejdź do ustawień aplikacji i „Zezwalaj na aktywność w tle” w sekcji „Bateria”.",
+    "BackgroundActivityRestrictedMessage": "Ustawienia Twojego urządzenia uniemożliwiają BMM pracę w tle. Odtwarzanie zatrzyma się, gdy telefon będzie zablokowany przez kilka minut. Aby to zmienić, przejdź do ustawień aplikacji i wybierz opcję \"Zezwalaj na aktywność w tle\" w sekcji \"Bateria\".",
     "GoToSettings": "Przejdź do ustawień",
     "NotNow": "Nie teraz",
-    "DownloadPlaylistOnceOnWifi": "Playlista zostanie pobrana, gdy połączysz się z Wi-Fi. Możesz włączyć opcję „Pobieranie przez sieć komórkową” w swoim profilu.\n",
-    "DownloadPodcastOnceOnWifi": "Playlista zostanie pobrana, gdy połączysz się z Wi-Fi. Możesz włączyć opcję „Pobieranie przez sieć komórkową” w swoim profilu.\n",
+    "DownloadPlaylistOnceOnWifi": "Playlista zostanie pobrana po połączeniu urządzenia z Wi-Fi. Możesz włączyć opcję \"Pobierz przez sieć komórkową\" w swoim profilu.",
+    "DownloadPodcastOnceOnWifi": "Najnowsze odcinki tego podcastu zostaną pobrane, gdy urządzenie będzie połączone z Wi-Fi. Możesz włączyć opcję \"Pobierz przez sieć komórkową\" w swoim profilu.",
     "SiriFromKaareInvocationPhrase": "Włącz Od Kårego na BMM",
     "SiriPlayMusicInvocationPhrase": "Włącz muzykę na BMM",
     "FromKaareSiriShortcutName": "Włącz Od Kårego",
@@ -35,16 +35,16 @@
     "MessagePerfect": "Perfekcyjny tydzień. Dobra robota!",
     "PerfectWeekCountSingular": "{0} perfekcyjny tydzień",
     "PerfectWeekCountPlural": "{0} perfekcyjnych tygodni",
-    "PerfectWeekCountNone": "Brak perfekcyjnych tygodni póki co",
-    "EligibleUntilHoursAndMinutesMessage": "Zostało {0} godzin i {1} minut",
-    "EligibleUntilMinutesOnlyMessage": "Zostało {0} minut",
-    "DaysInARowSingular": "{0} dni pod rząd ",
-    "DaysInARowPlural": "{0} dni pod rząd ",
-    "WeekdayMonday": "P",
-    "WeekdayTuesday": "W",
-    "WeekdayWednesday": "Ś",
-    "WeekdayThursday": "C",
-    "WeekdayFriday": "P"
+    "PerfectWeekCountNone": "Nie masz jeszcze perfekcyjnych tygodni",
+    "EligibleUntilHoursAndMinutesMessage": "Zostało dzisiaj {0} godzin i {1} minut",
+    "EligibleUntilMinutesOnlyMessage": "Zostało dzisiaj {0} minut",
+    "DaysInARowSingular": "{0} dzień pod rząd",
+    "DaysInARowPlural": "{0} dni pod rząd",
+    "WeekdayMonday": "Pn",
+    "WeekdayTuesday": "Wt",
+    "WeekdayWednesday": "Śr",
+    "WeekdayThursday": "Cz",
+    "WeekdayFriday": "Pt"
   },
   "DeepLinkHandler": {
     "ErrorTitle": "Nie można otworzyć linku",
@@ -55,8 +55,8 @@
     "RequestFailedMessage": "Wystąpił błąd połączenia: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Brak obsługiwanego pliku połączonego z tym utworem.",
-    "ErrorVideoNotSupported": "Filmy nie są obecnie obsługiwane.",
+    "ErrorMediaNotSupported": "Niestety, Twoje urządzenie nie obsługuje tego formatu plików.",
+    "ErrorVideoNotSupported": "Niestety, filmy nie są obecnie obsługiwane.",
     "ErrorFileNotOffline": "Utwór musi zostać pobrany, aby odtwarzać go w trybie offline.",
     "ErrorPlayerStopped": "Odtwarzacz zatrzymany.",
     "ErrorPlayerStoppedGeneric": "Wystąpił błąd odtwarzania, który zatrzymał bieżący utwór.",
@@ -71,10 +71,10 @@
     "Title": "Album",
     "SearchHint": "Szukaj",
     "AddAlbumToPlaylist": "Dodaj album do playlisty",
-    "AddAlbumToMyTracks": "Dodaj album do moich utworów",
+    "AddAlbumToMyTracks": "Dodaj album do Moich utworów",
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na playliście.",
-    "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na playliście {0}",
+    "TrackAlreadyExistInTrackCollection": "Utwór znajduje się już na playliście {0}",
     "ShufflePlay": "Odtwarzaj losowo",
     "PluralAlbums": "{0} albumów"
   },
@@ -85,11 +85,11 @@
   "AutomaticDownloadViewModel": {
     "Title": "Automatyczne pobieranie",
     "None": "Żaden/Brak",
-    "PluralLatestTracks": "Najnowsze utwory {0}",
+    "PluralLatestTracks": "{0} najnowszych utworów",
     "AutomaticDownloadSubtitle": "Ustaw ilość utworów, które zostaną automatycznie pobrane, gdy obserwujesz podcast."
   },
   "ContributorViewModel": {
-    "Title": "Wykonawca",
+    "Title": "Autor",
     "SearchHint": "Szukaj",
     "HeaderText": "Pojawia się w tych utworach"
   },
@@ -104,19 +104,19 @@
     "SearchHint": "Szukaj"
   },
   "ExploreNewestViewModel": {
-    "Title": "Home",
+    "Title": "Strona główna",
     "SearchHint": "Szukaj",
     "FraKaareHeader": "Od Kårego",
     "AslaksenTeaserHeader": "Słowa wiary",
     "ShowAll": "Pokaż wszystkie",
-    "PlayRandom": "Losowy",
-    "PlayNewest": "Najnowszy",
+    "PlayRandom": "Odtwarzaj losowo",
+    "PlayNewest": "Odtwarzaj najnowszy",
     "LatestTrack": "Najnowsza ścieżka",
-    "NextBroadcast": "Następnie",
-    "BmmRadio": "BMM na żywo",
+    "NextBroadcast": "Następna transmisja",
+    "BmmRadio": "BMM Live",
     "CountdownHours": "za {0}godz.",
-    "Messages": "Przemowy",
-    "Music": "Muzyka",
+    "Messages": "Najnowsze przemowy",
+    "Music": "Najnowsza muzyka",
     "Recommended": "Polecane",
     "More": "Więcej"
   },
@@ -125,42 +125,42 @@
     "SearchHint": "Szukaj"
   },
   "HelpFeedbackViewModel": {
-    "Title": "Pomoc & Opinie",
+    "Title": "Pomoc &amp; Opinie",
     "GuideIntroTitle": "Jak najlepiej wykorzystać aplikację BMM",
-    "GuideIntroSubtitle": "Przesuń dalej",
+    "GuideIntroSubtitle": "Przesuń, aby dowiedzieć się więcej",
     "GuideOfflineTitle": "Playlisty offline",
     "GuideOfflineSubtitle": "Pobierz playlisty na urządzenie i słuchaj ich bez połączenia internetowego. Możesz to włączyć w widoku playlisty.",
-    "GuideAddToPlaylistTitle": "Dodaj do playlisty lub \"Moje utwory\"",
+    "GuideAddToPlaylistTitle": "Dodaj do playlisty lub \"Moich utworów\"",
     "GuideAddToPlaylistSubtitle": "Zapisz swoje ulubione utwory do własnej playlisty lub osobistej kolekcji BMM \"Moje utwory\" poprzez stuknięcie przycisku opcji z prawej strony utworu.",
-    "GuideLanguagesTitle": "Wielojęzykowość",
-    "GuideLanguagesSubtitle": "Ustaw priorytet języków, aby kontrolować język zawartości BMM. Można to zrobić w Ustawienia > Język zawartości.",
+    "GuideLanguagesTitle": "Wiele języków",
+    "GuideLanguagesSubtitle": "Nadaj priorytet językom treści BMM. Możesz to zrobić w menu Ustawienia > Język treści.\n",
     "GuideLibraryTitle": "Biblioteka",
-    "GuideLibrarySubtitle": "Uzyskaj szybki dostęp do zawartości, której potrzebujesz. Biblioteka składa się z wszystkich dostępnych podcastów i archiwum.",
+    "GuideLibrarySubtitle": "Uzyskaj szybki dostęp do pożądanych treści. Sekcja Biblioteki zawiera wszystkie dostępne podcasty oraz sekcję archiwum do przeglądania treści. ",
     "GuideSearchTitle": "Szukaj",
     "GuideSearchSubtitle": "Znajdź konkretny utwór lub wyszukaj według tematów, aby znaleźć powiązane treści. Wyszukiwania są automatycznie zapisywane.",
-    "ButtonSendMail": "Wyślij e-mail do BMM Team"
+    "ButtonSendMail": "Wyślij e-mail do Zespołu BMM"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "Konfigurujemy Twoje konto. To może chwilę potrwać."
+    "SettingUpAccountMessage": "Właśnie konfigurujemy Twoje konto. Może to zająć kilka chwil."
   },
   "LoginViewModel": {
     "Title": "Zaloguj się",
     "LoginFailureTitle": "Logowanie nie powiodło się",
-    "LoginFailureMessage": "Prosimy spróbować ponownie za pomocą poprawnych danych uwierzytelniających",
-    "LoginNoConnectionMessage": "Nie ma obecnie połączenia internetowego. Prosimy spróbować ponownie później",
+    "LoginFailureMessage": "Spróbuj ponownie, używając poprawnych danych uwierzytelniających",
+    "LoginNoConnectionMessage": "Nie ma obecnie połączenia internetowego. Spróbuj ponownie później.",
     "WrongMailAddressTitle": "Nieprawidłowy e-mail",
-    "WrongMailAddress": "Proszę podaj prawidłowy e-mail adres. Logowanie za pomocą nazwy użytkownika nie jest już możliwe.",
+    "WrongMailAddress": "Podaj prawidłowy adres e-mail. Używanie nazwy użytkownika do logowania nie jest już obsługiwane.",
     "TbxUsername.Hint": "Adres e-mail",
     "TbxPassword.Hint": "Hasło",
     "BtnLogin.Text": "Zaloguj się",
     "LoginInfo": "Zaloguj się swoim loginem BCC"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "Za niedługo zakończymy wsparcie dla telefonów z systemem Android {0} lub starszych. Jeśli to możliwe, powinno się zaktualizować oprogramowanie telefonu.",
-    "DeviceSupportEnded": "Niestety nie wspieramy urządzeń z systemem starszym niż {0} {1}. Proszę zaktualizuj oprogramowanie telefonu lub zakup nowszy sprzęt.",
-    "AppSupportEnding": "Używasz starej wersji aplikacji, która niedługo przestanie być wspierana. Proszę zaktualizuj BMM.",
-    "AppSupportEnded": "Używasz starej wersji aplikacji, która nie jest wspierana. Proszę zaktualizuj BMM.",
-    "UpdateButton": "Uaktualnij"
+    "DeviceSupportEnding": "Wkrótce zakończymy wsparcie dla telefonów z systemem {0} {1} lub starszym. Jeśli to możliwe, zaktualizuj swój telefon.",
+    "DeviceSupportEnded": "Niestety nie obsługujemy już urządzeń starszych niż {0} {1}. Zaktualizuj swoje urządzenie lub zmień telefon na nowszy.",
+    "AppSupportEnding": "Używasz starej wersji aplikacji BMM. Wkrótce zakończymy wsparcie dla tej wersji. Zaktualizuj BMM.",
+    "AppSupportEnded": "Używasz starej wersji aplikacji BMM, która nie jest już wspierana. Zaktualizuj BMM.",
+    "UpdateButton": "Zaktualizuj"
   },
   "LanguageAppViewModel": {
     "Title": "Język aplikacji"
@@ -169,9 +169,9 @@
     "Title": "Języki zawartości",
     "Dialog.Title": "Wybierz język",
     "Dialog.Cancel": "Anuluj",
-    "Toast.LanguagesStillLoading": "Lista w trakcie ładowania, spróbuj ponownie za kilka sekund.",
+    "Toast.LanguagesStillLoading": "Lista wciąż się ładuje. Spróbuj ponownie za kilka sekund.",
     "Toast.NoLanguagesAvailable": "Prawdopodobnie brak połączenia uniemożliwia załadowanie listy języków.",
-    "DeleteLanguageMessage": "Musisz mieć dostępny co najmniej jeden język treści",
+    "DeleteLanguageMessage": "Musisz wybrać co najmniej jeden język treści",
     "DeleteLanguageTitle": "Nie można usunąć {0}"
   },
   "BrowseViewModel": {
@@ -188,7 +188,7 @@
     "Browse": "Przeglądaj",
     "Settings": "Ustawienia",
     "HelpAndFeedback": "Pomoc i opinie",
-    "Home": "Home",
+    "Home": "Strona główna",
     "Favorites": "Ulubione",
     "Profile": "Profil"
   },
@@ -204,30 +204,30 @@
   "FollowedPodcastsViewModel": {
     "Title": "Obserwowane podcasty",
     "EmptyTitle": "Obecnie nie obserwujesz żadnych podcastów",
-    "EmptySubline": "Obserwuj podcast poprzez jego otwarcie i kliknięcie przycisku \"Obserwuj\"."
+    "EmptySubline": "Obserwuj Podcast, otwierając Podcast i klikając przycisk Obserwuj."
   },
   "MyTracksViewModel": {
     "Title": "Moje utwory",
     "ShufflePlay": "Odtwarzaj losowo",
     "AvailableOffline": "Dostępne offline",
     "AvailableOfflineDownload": "Pobierz playlistę",
-    "AvailableOfflineDownloading": "Pobrane {0} z {1}",
+    "AvailableOfflineDownloading": "Pobieranie {0} z {1}",
     "RemoveOfflineConfirm": "Czy na pewno chcesz usunąć wszystkie pobrane pliki?",
     "EmptyTitle": "Playlista jest pusta",
-    "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać go do tej playlisty.",
-    "AskToResumeDownloading": "Dodano nowe utwory do playlisty. Czy chcesz wznowić pobieranie?"
+    "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać utwory do tej playlisty.",
+    "AskToResumeDownloading": "Na tej playliście pojawiły się nowe elementy. Czy chcesz wznowić pobieranie?"
   },
   "DownloadedContentViewModel": {
     "Title": "Pobrane utwory",
     "FollowedPodcasts": "Obserwowane podcasty",
     "MyTracks": "Moje utwory",
-    "EmptyTitle": "Nie znaleziono pobranej treści",
+    "EmptyTitle": "Nie pobrałeś żadnych treści",
     "EmptySubline": "Pobierz playlistę lub obserwuj podcast by były dostępne offline."
   },
   "DownloadedFollowedPodcastsViewModel": {
     "Title": "Obserwowane podcasty",
     "EmptyTitle": "Obecnie nie obserwujesz żadnych podcastów",
-    "EmptySubline": "Obserwuj podcast poprzez jego otwarcie i kliknięcie przycisku \"Obserwuj\"."
+    "EmptySubline": "Obserwuj Podcast, otwierając Podcast i klikając przycisk Obserwuj."
   },
   "PodcastViewModel": {
     "Title": "Podcast",
@@ -236,7 +236,7 @@
     "ManageDownloads": "Zarządzaj pobranymi",
     "GetNotified": "Otrzymuj powiadomienia",
     "GetNotifiedMessage": "kiedy nowe odcinki są dostępne",
-    "UnfollowConfirm": "Czy naprawdę chcesz przestać obserwować ten podcast?",
+    "UnfollowConfirm": "Czy na pewno chcesz przestać obserwować ten podcast?",
     "ToggleFollowOfflineError": "Musisz być w trybie online, aby obserwować lub przestać obserwować podcast",
     "Week": "Tydzień {0}",
     "ThisWeek": "W tym tygodniu",
@@ -253,7 +253,7 @@
     "Title": "Playlisty"
   },
   "PlayerViewModel": {
-    "Title": "Odtwarzam",
+    "Title": "Odtwarzanie",
     "PlayingCount": "{0} z {1}",
     "ViewLyrics": "Wyświetl Tekst",
     "SleepTimer": "Wyłącznik czasowy",
@@ -270,20 +270,20 @@
   "QueueViewModel": {
     "Title": "Kolejka",
     "Delete": "Usuń",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Nie można usunąć aktualnie odtwarzanego utworu z kolejki.",
+    "TrackRemovedFromQueue": "Utwór został usunięty z kolejki",
+    "RemoveFromQueueOption": "Usuń z kolejki"
   },
   "SearchViewModel": {
     "Title": "Szukaj",
     "SearchHint": "Szukaj",
     "SearchResults": "Wyniki",
     "SearchHistory": "Ostatnie wyszukiwania",
-    "SearchSuggestions": "Czy chodziło o: ",
+    "SearchSuggestions": "Czy chodziło ci o: ",
     "WelcomeTitle": "Rozpocznij wyszukiwanie tutaj!",
     "WelcomeSubTitle": "Użyj pola wyszukiwania do szukania zawartości w BMM",
     "DeleteConfirm": "Czy na pewno chcesz usunąć historię wyszukiwania?",
-    "All": "Wszystkie",
+    "All": "Wszystko",
     "Speeches": "Przemowy",
     "Music": "Muzyka",
     "Albums": "Albumy",
@@ -303,18 +303,18 @@
     "PlayInChronologicalOrderHeader": "Odtwarzaj w kolejności chronologicznej",
     "PlayInChronologicalOrderText": "Odtwarzaj odcinki podcastów od najstarszego do najnowszego",
     "OptionAutoplayHeader": "Autoodtwarzanie",
-    "OptionAutoplayText": "Odtwórz muzykę po wysłuchaniu dzisiejszego odcinka Fra Kåre. Dotyczy tylko odtwarzania przez kafelek na ekranie głównym.",
-    "OptionStreakHeader": "Seria na Stronie Głównej",
+    "OptionAutoplayText": "Odtwarzaj muzykę po przesłuchaniu dzisiejszego odcinka Od Kårego Możliwe tylko po odtworzeniu przez kafelek na ekranie głównym.",
+    "OptionStreakHeader": "Seria na Ekranie głównym",
     "OptionStreakText": "Wyświetlanie statystyk słuchania na ekranie głównym",
     "OptionEnablePushHeader": "Włącz powiadomienia",
     "OptionPushNotifications": "Powiadomienia",
     "OptionPushNotificationsSubtitle": "Włącz powiadomienia dla podcastów które obserwujesz",
     "OptionExternalStorage": "Miejsce przechowywania",
-    "OptionMBInternalText": "Wewnętrzna {0} MB wolnego",
-    "OptionMBExternalText": "Zewnętrzna {0} MB wolnego",
+    "OptionMBInternalText": "Wewnętrzna - wolne {0} MB",
+    "OptionMBExternalText": "Zewnętrzna - wolne {0} MB",
     "OptionEnablePushText": "Otrzymuj powiadomienia, gdy nowe treści są dostępne",
     "OptionDownloadMobileNetworkHeader": "Pobierz przez sieć komórkową",
-    "OptionDownloadMobileNetworkText": "Pozwól aplikacji na pobieranie zawartości przy połączeniu 3G/4G. To może wpłynąć na twoje zużycie danych",
+    "OptionDownloadMobileNetworkText": "Pozwól aplikacji pobierać playlisty przy użyciu 3G/4G. Może to wpłynąć na twój plan transmisji danych mobilnych",
     "HeadlineGeneral": "Ogólne",
     "OptionLanguageAppHeader": "Język aplikacji",
     "OptionLanguageAppText": "Zmień język aplikacji",
@@ -326,16 +326,16 @@
     "OptionCopyrightHeader": "Prawa autorskie",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatter Forlag ©",
     "OptionContactHeader": "Kontakt",
-    "OptionContactText": "Pytania lub uwagi? Skontaktuj się z zespołem tutaj.",
+    "OptionContactText": "Masz pytania lub uwagi? Skontaktuj się z zespołem tutaj.",
     "OptionAppVersionHeader": "Wersja aplikacji",
     "OptionDeleteAccountHeader": "Usuń konto",
     "OptionDeleteAccountText": "Poproś o usunięcie Twojego konta.",
-    "OptionNotificationBadgeHeader": "Odznaka powiadomienia Fra Kåre",
-    "OptionNotificationBadgeText": "Wyświetl powiadomienie na ekranie głównym, które przypomni Ci o konieczności wysłuchania codziennego odcinka.",
-    "OptionBibleStudyHeader": "Bible Study on Home",
-    "OptionBibleStudyText": "Show your Bible Study status on the home screen",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionNotificationBadgeHeader": "Plakietka powiadomień Od Kårego",
+    "OptionNotificationBadgeText": "Wyświetl powiadomienie na ekranie głównym, które przypomni Ci o tym, żeby wysłuchać codziennego odcinka.",
+    "OptionBibleStudyHeader": "Projekty Biblijne na Stronie Głównej",
+    "OptionBibleStudyText": "Pokaż twój status w projekcie Biblijnym na ekranie głównym",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Wymagania dotyczące plakietek",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Usuń plakietkę powiadomienia Od Kårego dopiero po zdobyciu punktu serii słuchania.",
     "AppInfoTitle": "Informacje o aplikacji",
     "AppInfoAppVersion": "Wersja aplikacji: ",
     "AppInfoManufacturer": "Producent: ",
@@ -346,46 +346,46 @@
     "LogoutConfirm": "Czy na pewno chcesz się wylogować?",
     "Logout": "Wyloguj",
     "UserVoiceHeader": "Głos Użytkownika",
-    "UserVoiceText": "Masz pomysły jak ulepszyć BMM? Daj nam znać.",
+    "UserVoiceText": "Masz pomysły, jak ulepszyć BMM? Daj nam znać.",
     "ThemeHeader": "Ciemny tryb",
-    "ThemeText": "Wybierz jasny lub ciemny motyw kolorystyczny ",
+    "ThemeText": "Wybierz jasny lub ciemny motyw kolorystyczny",
     "ColorHeader": "Motyw Kolorystyczny",
     "ColorText": "Wybór niestandardowych motywów kolorystycznych",
     "SiriShortcutsHeader": "Skróty Siri",
     "SiriShortcutsText": "Dodaj skróty Siri dla BMM do swojego urządzenia",
-    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień push, ponieważ są one wyłączone w ustawieniach urządzenia. Zezwól na powiadomienia Push w ustawieniach urządzenia, aby włączyć tę funkcję.",
+    "PushNotificationsGoToSettings": "Niestety nie możemy włączyć powiadomień, ponieważ są one wyłączone w ustawieniach Twojego urządzenia. Aby włączyć tę funkcję, zezwól na powiadomienia push w ustawieniach urządzenia.",
     "Achievements": "Osiągnięcia"
   },
   "StorageManagementViewModel": {
     "Title": "Miejsce przechowywania treści w trybie offline",
-    "RemoveAllFiles": "Czy chcesz wybrać inne miejsce do przechowywania utworów i usunąć wszystkie z obecnego źródła? "
+    "RemoveAllFiles": "Czy chcesz wybrać inne miejsce do przechowywania utworów i usunąć wszystkie obecnie dostępne offline?"
   },
   "DocumentsViewModel": {
     "PluralTracks": "{0} utworów",
     "PluralTracksLoaded": "{0} załadowanych utworów",
     "Download": "Pobierz",
-    "Shuffle": "Shuffle",
+    "Shuffle": "Losowo",
     "Play": "Graj"
   },
   "TrackCollectionViewModel": {
     "Title": "Playlista",
-    "ShufflePlay": "Shuffle",
+    "ShufflePlay": "Losowo",
     "Resume": "Wznów",
     "AvailableOffline": "Dostępne offline",
     "AvailableOfflineDownload": "Pobierz",
-    "AvailableOfflineDownloading": "Pobrane {0} z {1}",
+    "AvailableOfflineDownloading": "Pobieranie {0} z {1}",
     "RemoveOfflineConfirm": "Czy na pewno chcesz usunąć wszystkie pobrane pliki?",
     "CreatePrompt": "Wpisz nazwę playlisty",
     "CreateFailure": "Nie można utworzyć playlisty",
     "DeleteConfirm": "Czy na pewno chcesz usunąć playlistę \"{0}\"?",
-    "DeleteFailure": "Nie można usunąć playlisty \"{0}\"",
+    "DeleteFailure": "Nie udało się usunąć playlisty \"{0}\"",
     "CreateEmptyFailure": "Wpisz tytuł, aby utworzyć playlistę",
     "RenameEmptyFailure": "Wpisz tytuł, aby zmienić nazwę playlisty",
     "SearchHint": "Szukaj",
     "EmptyTitle": "Playlista jest pusta",
-    "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać utwory do tej playlisty.",
-    "NotEnoughtSpaceToDownload": "Brak wolnego miejsca aby pobrać utwory z tej playlisty",
-    "AskToResumeDownloading": "Dodano nowe utwory do playlisty. Czy chcesz wznowić pobieranie?",
+    "EmptySubline": "Naciśnij trzy kropki na utworze, aby dodać go do playlisty.",
+    "NotEnoughtSpaceToDownload": "Za mało miejsca na pobranie wszystkich utworów",
+    "AskToResumeDownloading": "Na tej playliście pojawiły się nowe elementy. Czy chcesz wznowić pobieranie?",
     "Private": "Prywatne",
     "DeletePlaylist": "Usuń playlistę",
     "EditPlaylist": "Edytuj Playlistę",
@@ -398,7 +398,7 @@
     "MenuSave": "Zapisz",
     "EmptyName": "Ta playlista nie ma nazwy",
     "SaveFailure": "Nie można zaktualizować zmian. Sprawdź połączenie internetowe i spróbuj ponownie",
-    "DiscardChangesTitle": "Cofnij zmiany?",
+    "DiscardChangesTitle": "Odrzucić zmiany?",
     "DiscardChangesMessage": "Wprowadzone zmiany nie zostaną zapisane",
     "DiscardChanges": "Odrzuć",
     "KeepEditing": "Edytuj dalej"
@@ -407,7 +407,7 @@
     "Title": "Udostępnij playlistę",
     "ShareNote": "Udostępniając playlistę, inni będą mogli uzyskać dostęp do dodanych utworów i słuchać ich, jeśli mają link.",
     "ShareLink": "Udostępnij link",
-    "MakePrivate": "Uczyń prywatnym",
+    "MakePrivate": "Ustaw na prywatne",
     "SharedWithFormat": "Udostępniono {0} osobom"
   },
   "SharedTrackCollectionViewModel": {
@@ -420,7 +420,7 @@
     "Title": "Playlista",
     "MenuDelete": "Usuń",
     "DeleteConfirm": "Czy na pewno chcesz usunąć playlistę \"{0}\"?",
-    "DeleteFailure": "Nie można usunąć playlisty \"{0}\"",
+    "DeleteFailure": "Nie udało się usunąć playlisty \"{0}\"",
     "ShufflePlay": "Odtwarzaj losowo",
     "SearchHint": "Szukaj"
   },
@@ -429,8 +429,8 @@
     "SearchHint": "Szukaj",
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na playliście.",
-    "CollectionAlreadyInTrackCollection": "Kolekcja została już dodana do Twojej listy odtwarzania.",
-    "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na playliście {0}",
+    "CollectionAlreadyInTrackCollection": "Kolekcja została już dodana do Twojej playlisty.",
+    "TrackAlreadyExistInTrackCollection": "Utwór znajduje się już na playliście {0}",
     "FailedToAddAlbum": "Nie można dodać albumu do playlisty, ponieważ zawiera albumy.",
     "FailedToAddUnknownType": "Dodanie \"{0}\" do playlisty nie jest obecnie obsługiwane.",
     "CreatePlaylistPrompt": "Wpisz nazwę playlisty",
@@ -439,13 +439,13 @@
   "UserDialogs": {
     "Track.AddToPlaylist": "Dodaj do playlisty",
     "Track.DeleteFromPlaylist": "Usuń z playlisty",
-    "Track.AddToMyTracks": "Dodaj do moich utworów",
-    "Track.RemoveFromMyTracks": "Usuń z moich utworów",
-    "Track.AddedToMyTracks": "Dodane do moich utworów",
-    "Track.RemovedFromMyTracks": "Usunięte z moich utworów",
-    "Track.FailedToRemoveFromMyTracks": "Nie udało się usunąć utworu z Moje Utwory",
+    "Track.AddToMyTracks": "Dodaj do Moich utworów",
+    "Track.RemoveFromMyTracks": "Usuń z Moich utworów",
+    "Track.AddedToMyTracks": "Dodane do Moich utworów",
+    "Track.RemovedFromMyTracks": "Usunięte z Moich utworów",
+    "Track.FailedToRemoveFromMyTracks": "Nie udało się usunąć utworu z Moich utworów",
     "Track.AddToQueue": "Dodaj na koniec kolejki",
-    "Track.QueueToPlayNext": "Odtwórz następnie",
+    "Track.QueueToPlayNext": "Odtwórz jako kolejne",
     "Track.AddedToQueue": "Dodano do kolejki",
     "Track.GoToAlbum": "Idź do albumu",
     "Track.GoToContributor": "Przejdź do wykonawców",
@@ -456,19 +456,19 @@
     "Track.Download": "Pobierz utwór",
     "Track.MoreInformation": "Więcej informacji",
     "Track.Share": "Udostępnij utwór",
-    "Album.Play": "Odtwórz",
+    "Album.Play": "Graj",
     "Album.AddToPlaylist": "Dodaj album do playlisty",
-    "Album.AddToMyTracks": "Dodaj album do moich utworów",
-    "Album.AddedToMyTracks": "Album dodany do moich utworów",
+    "Album.AddToMyTracks": "Dodaj album do Moich utworów",
+    "Album.AddedToMyTracks": "Album dodany do Moich utworów",
     "Album.AddToQueue": "Dodaj na koniec kolejki",
     "Album.Share": "Udostępnij album",
     "FailedToAdd": "Nie udało się dodać utworu do playlisty. Spróbuj ponownie później.",
-    "FailedToAddAlbum": "Nie można dodać album do playlisty, ponieważ zawiera albumy.",
+    "FailedToAddAlbum": "Nie można dodać albumu do playlisty, ponieważ zawiera albumy.",
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na playliście.",
-    "TrackAlreadyExistInTrackCollection": "Utwór znajduje się na playliście {0}",
+    "TrackAlreadyExistInTrackCollection": "Utwór znajduje się już na playliście {0}",
     "FailedToAddUnknownType": "Dodanie \"{0}\" do playlisty nie jest obecnie obsługiwane.",
     "MyTracks": "Moje utwory",
-    "Contributor.Play": "Odtwórz",
+    "Contributor.Play": "Graj",
     "Contributor.Share": "Udostępnij wykonawcę",
     "OfflineTrackCollection.DeletePlaylist": "Usuń playlistę",
     "AddAllToPlaylist": "Dodaj wszystkie ścieżki do playlisty",
@@ -482,7 +482,7 @@
     "Title": "Podcasty"
   },
   "TrackInfoViewModel": {
-    "ExternalReferences": "Odniesienia zewnętrzne",
+    "ExternalReferences": "Odnośniki zewnętrzne",
     "AboutTrack": "O utworze",
     "Title": "Informacje o utworze",
     "TrackTitle": "Tytuł",
@@ -506,10 +506,10 @@
     "NoHistoryYetSubtitle": "Po prostu zacznij słuchać, a Twoja historia pojawi się tutaj"
   },
   "ExploreRecentSpeechesViewModel": {
-    "Title": "Przemowy"
+    "Title": "Najnowsze przemowy"
   },
   "ExploreRecentMusicViewModel": {
-    "Title": "Muzyka"
+    "Title": "Najnowsza muzyka"
   },
   "DownloadManager": {
     "DownloadingFinished": "Wszystkie pliki zostały pobrane!"
@@ -524,20 +524,20 @@
     "Title": "Ustawienia trybu ciemnego",
     "Light": "Jasny",
     "Dark": "Ciemny",
-    "System": "Śledzenie ustawień systemu (Automatycznie)"
+    "System": "Postępuj zgodnie z ustawieniami systemu (Auto)"
   },
   "ColorThemeViewModel": {
     "Title": "Motyw Kolorystyczny",
     "Default": "Domyślny",
     "Violet": "Fioletowy",
     "Red": "Czerwony",
-    "DarkGreen": "Ciemnozielony ",
+    "DarkGreen": "Ciemnozielony",
     "Golden": "Złoty",
     "Orange": "Pomarańczowy"
   },
   "ChangeTrackLanguageViewModel": {
     "Title": "Język Ścieżki",
-    "PreferredLanguages": "Twoje preferowane języki ",
+    "PreferredLanguages": "Twoje preferowane języki",
     "AllLanguages": "Wszystkie języki"
   },
   "SiriShortcutsViewModel": {
@@ -545,15 +545,15 @@
     "ShortcutAlreadyAdded": "Ten skrót został już dodany"
   },
   "YearInReviewViewModel": {
-    "Title": "Powtórka twojego roku",
-    "Share": "Podziel się z przyjaciółmi ",
+    "Title": "Twój rok w podsumowaniu",
+    "Share": "Podziel się z przyjaciółmi",
     "ShareTitle": "Podsumowanie roku"
   },
   "TopSongsCollectionViewModel": {
     "Title": "Top pieśni",
     "PlaysPlural": "{0} odtworzeń",
-    "PlaysSingular": "{0} odtwórz",
-    "AddToMyPlaylist": "Dodaj playlistę do ulubionych ",
+    "PlaysSingular": "{0} odtworzenie",
+    "AddToMyPlaylist": "Dodaj playlistę do ulubionych",
     "SuccessfullyAddedToPlaylists": "Dodano do ulubionych"
   },
   "HighlightedTextTrackViewModel": {
@@ -567,7 +567,7 @@
     "AutoTranscribedPopupButtonText": "Rozumiem",
     "FromSongTreasuresPopupTitleText": "Teksty są pobierane z Song Treasures.",
     "FromSongTreasuresPopupHeaderText": "Z Song Treasures",
-    "FromSongTreasuresPopupSubtitleText": "Pobierz aplikację Song Treasures, aby zobaczyć pełną wersję utworu.",
+    "FromSongTreasuresPopupSubtitleText": "Pobierz aplikację Song Treasures, aby zobaczyć całą pieśń.",
     "SuggestEdit": "Zaproponuj edycję"
   },
   "BibleStudyViewModel": {
@@ -582,27 +582,27 @@
   },
   "AppIconViewModel": {
     "Title": "Ikona Aplikacji",
-    "Description": "Zmień ikonę aplikacji ",
+    "Description": "Zmień ikonę aplikacji",
     "IconStandard": "Standardowa",
-    "IconDarkGreen": "Ciemnozielony ",
-    "IconOrange": "Pomarańczowy",
-    "IconGolden": "Złoty",
-    "IconViolet": "Fioletowy",
-    "IconRed": "Czerwony"
+    "IconDarkGreen": "Ciemnozielona",
+    "IconOrange": "Pomarańczowa",
+    "IconGolden": "Złota",
+    "IconViolet": "Fioletowa",
+    "IconRed": "Czerwona"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Osiągniecie ",
+    "Title": "Osiągniecie",
     "Unlocked": "Odblokowano",
     "ActivatePremiumIcon": "Aktywuj Ikonę Aplikacji",
     "GotIt": "Rozumiem",
     "ActivateTheme": "Aktywuj Motyw",
     "Close": "Zamknij",
     "Reward": "Nagroda",
-    "RewardAndroid": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM 🤩",
-    "RewardIos": "Ekskluzywna ikona aplikacji dla aplikacji BMM 🤩",
-    "RewardAndroidGolden": "Ekskluzywny motyw kolorystyczny dla aplikacji BMM. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!",
-    "RewardIosGolden": "Ekskluzywna ikona aplikacji BMM w kolorze złotym. Weźmiesz również udział w losowaniu pary słuchawek AirPods Pro. Dobra robota!",
-    "PlayNext": "Zagraj dalej"
+    "RewardAndroid": "Ekskluzywny motyw kolorystyczny aplikacji BMM 🤩",
+    "RewardIos": "Ekskluzywna ikona aplikacji BMM 🤩",
+    "RewardAndroidGolden": "Ekskluzywny motyw kolorystyczny aplikacji BMM. Bierzesz również udział w losowaniu słuchawek AirPods Pro. Dobra robota!",
+    "RewardIosGolden": "Ekskluzywna ikona aplikacji BMM w kolorze złotym. Bierzesz również udział w losowaniu słuchawek AirPods Pro. Dobra robota!",
+    "PlayNext": "Odtwórz jako kolejne"
   },
   "SuggestEditViewModel": {
     "Title": "Zaproponuj edycję",
@@ -618,19 +618,22 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Dzięki za pytanie!",
-    "Description": "Wszystkie pytania zostaną rozpatrzone, a odpowiedzi na niektóre z nich pojawią się w podcaście. \n Na większość pytań odpowiemy na stronie pytań i odpowiedzi. \n\n Sprawdź ponownie w środę, aby przeczytać odpowiedzi.",
+    "Description": "Wszystkie pytania zostaną przeanalizowane, a na niektóre z nich odpowiemy w podcaście. Odpowiedzi na większość pytań znajdziesz na stronie pytań i odpowiedzi. Sprawdź ponownie w środę, aby przeczytać odpowiedzi.",
     "GotIt": "Rozumiem"
   },
   "AchievementsViewModel": {
     "Title": "Osiągnięcia",
-    "EmptyTitle": "A place for your Bible Study achievements",
-    "EmptySubtitle": "Achievements earned in Bible studies will be collected here."
+    "EmptyTitle": "Miejsce na twoje osiągnięcia w Projekcie biblijnym",
+    "EmptySubtitle": "Tutaj gromadzone będą osiągnięcia zdobyte w projektach biblijnych."
   },
   "ReadTranscriptionViewModel": {
     "SongTreasures": "Song Treasures",
     "Lyrics": "Tekst",
-    "Transcription": "Transkrypcja ",
-    "Melody": "Melody",
-    "Text": "Text"
+    "Transcription": "Transkrypcja",
+    "Melody": "Melodia",
+    "Text": "Tekst"
+  },
+  "HvheDetailsViewModel": {
+    "Title": "Wynik globalny"
   }
 }
