@@ -1,5 +1,6 @@
 using Airbnb.Lottie;
 using BMM.Core.Constants;
+using BMM.Core.Models.Enums;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
 using BMM.UI.iOS.Constants;
@@ -8,9 +9,6 @@ using BMM.UI.iOS.Utils;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Binding;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
-using MvvmCross.Presenters;
-using MvvmCross.Presenters.Attributes;
-using MvvmCross.ViewModels;
 
 namespace BMM.UI.iOS
 {
@@ -98,17 +96,17 @@ namespace BMM.UI.iOS
                 .For(s => s.ShouldShowConfetti)
                 .To(vm => vm.ShouldShowConfetti);
 
-            set.Bind(PlayNextButtonTitle)
+            set.Bind(ActionButtonTitle)
                 .For(v => v.Text)
-                .To(po => po.TextSource[Translations.AchievementDetailsViewModel_PlayNext]);
+                .To(po => po.AchievementPO.ActionButtonTitle);
                 
-            set.Bind(PlayNextButton)
+            set.Bind(ActionButton)
                 .For(v => v.BindVisible())
-                .To(po => po.ShouldShowPlayNextButton);
+                .To(po => po.ShouldShowActionButton);
 
-            set.Bind(PlayNextButton)
+            set.Bind(ActionButton)
                 .For(v => v.BindTap())
-                .To(vm => vm.PlayNextClickedCommand);
+                .To(vm => vm.ActionButtonClickedCommand);
             
             set.Bind(this)
                 .For(v => v.IsCurrentlyPlaying)
@@ -187,7 +185,7 @@ namespace BMM.UI.iOS
             DescriptionLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);
             ActivateButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             SecondActivateButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
-            PlayNextButtonTitle.ApplyTextTheme(AppTheme.Subtitle1Label1);
+            ActionButtonTitle.ApplyTextTheme(AppTheme.Subtitle1Label1);
         }
 
         private void HandleDismiss(UIPresentationController presentationController)
@@ -220,9 +218,9 @@ namespace BMM.UI.iOS
 
         private void HidePlayAnimation()
         {
-            IconPlay.Hidden = false;
+            IconPlay.Hidden = ViewModel?.AchievementPO?.ActionButtonType != AchievementActionButtonType.PlayNext;
             _animationView.Stop();
-            _animationView.RemoveFromSuperview();;
+            _animationView.RemoveFromSuperview();
         }
     }
 }

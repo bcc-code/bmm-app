@@ -14,6 +14,12 @@ namespace BMM.UI.iOS
 	partial class AchievementDetailsViewController
 	{
 		[Outlet]
+		UIKit.UIView ActionButton { get; set; }
+
+		[Outlet]
+		UIKit.UILabel ActionButtonTitle { get; set; }
+
+		[Outlet]
 		UIKit.UIButton ActivateButton { get; set; }
 
 		[Outlet]
@@ -39,12 +45,6 @@ namespace BMM.UI.iOS
 
 		[Outlet]
 		UIKit.UILabel NameLabel { get; set; }
-
-		[Outlet]
-		UIKit.UIView PlayNextButton { get; set; }
-
-		[Outlet]
-		UIKit.UILabel PlayNextButtonTitle { get; set; }
 
 		[Outlet]
 		UIKit.UILabel RewardDescriptionLabel { get; set; }
@@ -74,6 +74,11 @@ namespace BMM.UI.iOS
 				ActivateButton = null;
 			}
 
+			if (AnimationView != null) {
+				AnimationView.Dispose ();
+				AnimationView = null;
+			}
+
 			if (BottomRewardView != null) {
 				BottomRewardView.Dispose ();
 				BottomRewardView = null;
@@ -99,9 +104,24 @@ namespace BMM.UI.iOS
 				IconImage = null;
 			}
 
+			if (IconPlay != null) {
+				IconPlay.Dispose ();
+				IconPlay = null;
+			}
+
 			if (NameLabel != null) {
 				NameLabel.Dispose ();
 				NameLabel = null;
+			}
+
+			if (ActionButton != null) {
+				ActionButton.Dispose ();
+				ActionButton = null;
+			}
+
+			if (ActionButtonTitle != null) {
+				ActionButtonTitle.Dispose ();
+				ActionButtonTitle = null;
 			}
 
 			if (RewardDescriptionLabel != null) {
@@ -137,26 +157,6 @@ namespace BMM.UI.iOS
 			if (StatusLabel != null) {
 				StatusLabel.Dispose ();
 				StatusLabel = null;
-			}
-
-			if (IconPlay != null) {
-				IconPlay.Dispose ();
-				IconPlay = null;
-			}
-
-			if (PlayNextButtonTitle != null) {
-				PlayNextButtonTitle.Dispose ();
-				PlayNextButtonTitle = null;
-			}
-
-			if (AnimationView != null) {
-				AnimationView.Dispose ();
-				AnimationView = null;
-			}
-
-			if (PlayNextButton != null) {
-				PlayNextButton.Dispose ();
-				PlayNextButton = null;
 			}
 
 		}

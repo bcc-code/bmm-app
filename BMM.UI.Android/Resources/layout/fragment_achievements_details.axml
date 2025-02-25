@@ -130,8 +130,8 @@
             android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginHorizontal="@dimen/margin_medium"
             local:MvxBind="
-                Click PlayNextClickedCommand;
-                Visibility VisibleOrHidden(ShouldShowPlayNextButton)"
+                Click ActionButtonClickedCommand;
+                Visibility VisibleOrHidden(ShouldShowActionButton)"
             style="@style/Button_Primary_Large"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +150,7 @@
                     android:layout_height="@dimen/default_icon_size"
                     android:layout_marginStart="@dimen/margin_medium"
                     android:src="@drawable/icon_play"
-                    local:MvxBind="Visibility VisibleOrHidden(!IsCurrentlyPlaying)"
+                    local:MvxBind="Visibility VisibleOrHidden(And(!IsCurrentlyPlaying, ActionButtonTypeToPlayIconVisibility(AchievementPO.ActionButtonType)))"
                     local:layout_constraintTop_toTopOf="parent"
                     local:layout_constraintBottom_toBottomOf="parent"
                     local:layout_constraintStart_toStartOf="parent" />
@@ -180,7 +180,7 @@
                     local:layout_constraintBottom_toBottomOf="parent"
                     local:layout_constraintStart_toStartOf="@+id/PlayIcon"
                     local:layout_constraintEnd_toEndOf="parent"
-                    local:MvxLang="Text AchievementDetailsViewModel_PlayNext"
+                    local:MvxBind="Text AchievementPO.ActionButtonTitle"
                     style="@style/Subtitle1_Label1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
