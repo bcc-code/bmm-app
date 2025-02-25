@@ -226,6 +226,7 @@ namespace BMM.Core.ViewModels
                 case PodcastsConstants.ForbildePodcastId:
                 case PodcastsConstants.RomanPodcastId:
                 case PodcastsConstants.GibraltarPodcastId:
+                case PodcastsConstants.HvhePodcastId:
                     itemsWithChapters = _weekOfTheYearChapterStrategy.AddChapterHeaders(items, existingDocs);
                     break;
 

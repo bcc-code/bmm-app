@@ -32,7 +32,8 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
                    || track.Tags.Contains(PodcastsConstants.RomanPodcastTagName)
                    || track.Tags.Contains(PodcastsConstants.GibraltarPodcastTagName)
                    || track.Tags.Contains(AslaksenConstants.HebrewTagName)
-                   || track.Tags.Contains(AslaksenConstants.AsklaksenTagName);
+                   || track.Tags.Contains(AslaksenConstants.AsklaksenTagName)
+                   || track.Tags.Contains(PodcastsConstants.HvheTagName);
         }
 
         public TrackInformation GetTrackInformation(ITrackModel track, CultureInfo culture, TrackInformation defaultTrack)
