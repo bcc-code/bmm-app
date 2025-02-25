@@ -632,5 +632,8 @@
     "Transcription": "Transcrição",
     "Melody": "Melodia",
     "Text": "Texto"
+  },
+  "HvheDetailsViewModel": {
+    "Title": "Pontuação global"
   }
 }
