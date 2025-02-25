@@ -1,7 +1,9 @@
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Models.Enums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
+using BMM.Core.Translation;
 using BMM.Core.Utils;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
@@ -38,8 +40,30 @@ public class AchievementPO : BasePO, IAchievementPO
     public bool HasIconReward => DeviceInfo.Current.Platform == DevicePlatform.iOS && AchievementsTools.GetIconTypeFor(_achievement.Id) != null;
     public bool HasThemeReward => DeviceInfo.Current.Platform == DevicePlatform.Android && AchievementsTools.GetColorThemeFor(_achievement.Id) != null;
     public bool HasAnyReward => HasIconReward || HasThemeReward;
+    public bool HasActionButton => ActionButtonType != AchievementActionButtonType.None;
+    public string ActionButtonTitle => GetActionButtonTitle();
+    public string ActionButtonUrl => _achievement.ActionUrl;
+    public AchievementActionButtonType ActionButtonType => GetActionButtonType();
     public string RewardDescription => AchievementsTools.GetRewardDescriptionFor(_achievement.Id);
     public IMvxAsyncCommand AchievementClickedCommand { get; }
     public bool ShouldShowRewardDescription => !RewardDescription.IsNullOrEmpty() && !IsActive;
     public bool ShouldShowSecondRewardDescription => !RewardDescription.IsNullOrEmpty() && IsActive;
+    
+    private string GetActionButtonTitle()
+    {
+        return ActionButtonType == AchievementActionButtonType.PlayNext
+            ? TextSource[Translations.AchievementDetailsViewModel_PlayNext]
+            : _achievement.ActionText;
+    }
+    
+    private AchievementActionButtonType GetActionButtonType()
+    {
+        if (_achievement.TrackId.HasValue)
+            return AchievementActionButtonType.PlayNext;
+        
+        if (!_achievement.ActionUrl.IsNullOrEmpty())
+            return AchievementActionButtonType.ActionUrl;
+        
+        return AchievementActionButtonType.None;
+    }
 }

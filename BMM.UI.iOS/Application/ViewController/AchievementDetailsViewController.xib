@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AchievementDetailsViewController">
             <connections>
+                <outlet property="ActionButton" destination="Rsf-qd-N8c" id="bN9-fR-aJ2"/>
+                <outlet property="ActionButtonTitle" destination="uJC-Aq-dXg" id="iQM-vc-c7J"/>
                 <outlet property="ActivateButton" destination="e7d-aK-Kff" id="RTA-Z8-56s"/>
                 <outlet property="AnimationView" destination="AFl-Yc-m0X" id="29d-TT-K9z"/>
                 <outlet property="BottomRewardView" destination="AwN-SI-2Xo" id="R40-CH-dEX"/>
@@ -19,8 +21,6 @@
                 <outlet property="IconImage" destination="tPt-Dv-N2O" id="YT5-aZ-gxa"/>
                 <outlet property="IconPlay" destination="JXg-pT-jJg" id="0jm-cb-MqL"/>
                 <outlet property="NameLabel" destination="5Mj-wj-c28" id="ABl-Zh-Gql"/>
-                <outlet property="PlayNextButton" destination="Rsf-qd-N8c" id="bN9-fR-aJ2"/>
-                <outlet property="PlayNextButtonTitle" destination="uJC-Aq-dXg" id="iQM-vc-c7J"/>
                 <outlet property="RewardDescriptionLabel" destination="2Id-kh-v2I" id="htq-Ny-7mV"/>
                 <outlet property="RewardDescriptionView" destination="JTf-nt-mLG" id="bPd-mO-wXx"/>
                 <outlet property="RewardLabel" destination="Vhp-jC-cBb" id="4qY-be-6o4"/>
