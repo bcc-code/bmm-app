@@ -8,7 +8,7 @@
     "InternetConnectionOffline": "İnternet bağlantısı çevrimdışı görünüyor.",
     "ItemNotFound": "İstenilen öğe mevcut değil.",
     "OfflineBanner": "Sadece bu telefondaki parçalar gösteriliyor",
-    "Song": "Müzik",
+    "Song": "Şarkı",
     "Speech": "Mesaj",
     "Audiobook": "Sesli kitap",
     "Exegesis": "Tefsir",
@@ -16,11 +16,11 @@
     "Today": "Bugün",
     "Yesterday": "Dün",
     "BackgroundActivityRestrictedTitle": "Arka plan etkinliğine izin ver",
-    "BackgroundActivityRestrictedMessage": "Cihaz ayarlarınız BMM'nin arka planda çalışmasını kısıtlıyor. Telefonunuz birkaç dakika kilitli kaldığında dinleyemeyeceksiniz. Bunu değiştirmek için uygulama ayarlarına gidin ve \"Pil\" bölümünün altındaki \"Arka plan etkinliğine izin ver\" seçeneğine gidin.",
+    "BackgroundActivityRestrictedMessage": "Cihaz ayarlarınız BMM'nin arka planda çalışmasını kısıtlar. Telefonunuz birkaç dakikalığına kilitlendiğinde dinleyemezsiniz. Bunu değiştirmek için uygulama ayarlarına gidin ve \"Pil\" bölümünün altındaki \"Arka plan etkinliğine izin ver\" seçeneğini seçin.",
     "GoToSettings": "Ayarlara git",
     "NotNow": "Şimdi değil",
     "DownloadPlaylistOnceOnWifi": "Çalma listesi bir sonraki Wifi erişiminizde indirilecektir. Profilinizde \"Mobil ağ üzerinden indir\" seçeneğini etkinleştirebilirsiniz.",
-    "DownloadPodcastOnceOnWifi": "Bu podcast'in en yeni parçaları, bir dahaki sefere Wifi'ye bağlandığınızda indirilecek. Profilinizde \"Mobil ağ üzerinden indir\" seçeneğini etkinleştirebilirsiniz.",
+    "DownloadPodcastOnceOnWifi": "Bu podcast için en son parçalar bir dahaki sefere Wifi'de olduğunuzda indirilecektir. Profilinizde \"Mobil ağ üzerinden indir\" seçeneğini etkinleştirebilirsiniz.",
     "SiriFromKaareInvocationPhrase": "BMM'de Fra Kåre'yi Çal",
     "SiriPlayMusicInvocationPhrase": "BMM'de Müzik Çalın",
     "FromKaareSiriShortcutName": "Fra Kåre yi Çal",
@@ -32,7 +32,7 @@
   },
   "Streak": {
     "Message": "Bu haftaki Streakınız.",
-    "MessagePerfect": "Mükemmel bir hafta. Tebrikler!",
+    "MessagePerfect": "{0} mükemmel hafta Aferin sana!",
     "PerfectWeekCountSingular": "{0} mükemmel hafta",
     "PerfectWeekCountPlural": "{0} mükemmel haftalar",
     "PerfectWeekCountNone": "Henüz mükemmel haftalar yok",
@@ -41,7 +41,7 @@
     "DaysInARowSingular": "{0} üst üste gün",
     "DaysInARowPlural": "{0} gün üst üste",
     "WeekdayMonday": "P",
-    "WeekdayTuesday": "S",
+    "WeekdayTuesday": "P",
     "WeekdayWednesday": "Ç",
     "WeekdayThursday": "P",
     "WeekdayFriday": "C"
@@ -49,7 +49,7 @@
   "DeepLinkHandler": {
     "ErrorTitle": "Bağlantı açılamıyor",
     "ErrorMessage": "Ne yazık ki '{0}' bağlantısını açmak mümkün olmadı.",
-    "RomansQuestionsPageTitle": "Sorular & Cevaplar"
+    "RomansQuestionsPageTitle": "Sorular &amp; Cevaplar"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Bağlantı Hatası Oluştu: {0}"
@@ -72,7 +72,7 @@
     "SearchHint": "Ara",
     "AddAlbumToPlaylist": "Albüm çalma listesine ekle",
     "AddAlbumToMyTracks": "Benim parça için albüm ekle",
-    "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
+    "FailedToAdd": "Parça çalma listesine eklenemedi. Lütfen daha sonra tekrar deneyin.",
     "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
     "TrackAlreadyExistInTrackCollection": "Parça zaten oynatma listesi {0}mevcut",
     "ShufflePlay": "Karışık Çal",
@@ -89,7 +89,7 @@
     "AutomaticDownloadSubtitle": "Bu podcast takip zaman otomatik olarak yüklenmek üzere parça miktarını ayarlayın."
   },
   "ContributorViewModel": {
-    "Title": "Katılımcı",
+    "Title": "Katkıda Bulunan",
     "SearchHint": "Ara",
     "HeaderText": "Bu parçalarda görünüyor"
   },
@@ -121,45 +121,45 @@
     "More": "Daha"
   },
   "ExploreContributorsViewModel": {
-    "Title": "Konuşmacılar",
+    "Title": "Katılımcılar",
     "SearchHint": "Ara"
   },
   "HelpFeedbackViewModel": {
-    "Title": "Yardım & Destek",
+    "Title": "Yardım &amp; Destek",
     "GuideIntroTitle": "BMM uygulamasını en iyi şekilde nasıl kullanabilirim",
     "GuideIntroSubtitle": "Daha Fazla bilgi edinmek için devam",
     "GuideOfflineTitle": "Çevrimdışı Çalma Listesi",
-    "GuideOfflineSubtitle": "Çalma Listesini cihazına indir ve internet bağlantısı olmadan dinle. Çalma Listesinde geçiş yapabilirsin.",
+    "GuideOfflineSubtitle": "Çalma listelerinizi cihazınıza indirin ve internet bağlantısı olmadan dinleyin. Bunu çalma listesinde açabilirsiniz.",
     "GuideAddToPlaylistTitle": "Çalma listesi veya 'My parçalar' ekleme",
     "GuideAddToPlaylistSubtitle": "En sevdiğiniz şarkıları kendi çalma listelerinizi veya kişisel BMM koleksiyon 'My parçalar' parça seçenekleri düğmesini dokunarak kaydedin.",
     "GuideLanguagesTitle": "Birden fazla dil",
-    "GuideLanguagesSubtitle": "Dil seçeneklerini sırala. Dil ayarlarına Ayarlar > Dil Seçenekleri.\n",
+    "GuideLanguagesSubtitle": "BMM içeriğinizin dillerine öncelik verin. Bu işlem Ayarlar > İçerik Dili bölümünden yapılabilir.\n",
     "GuideLibraryTitle": "Kütüphane bölümü",
-    "GuideLibrarySubtitle": "İstediğiniz içeriği hızlı erişim sağlayabilirsiniz. Kitaplık bölümünde kullanılabilir podcast içeriğine gözatmak için bir arşiv bölümden oluşur. ",
+    "GuideLibrarySubtitle": "İstediğiniz içeriğe hızlı erişim sağlayın. Kütüphane bölümü, mevcut tüm podcast'lerden ve içeriğe göz atmak için bir arşiv bölümünden oluşur. ",
     "GuideSearchTitle": "Ara",
-    "GuideSearchSubtitle": "Belirli bir konuyu ya da içeriği bulmak için Parça Bul. Aramaların otomatik kaydedilmektedir.",
+    "GuideSearchSubtitle": "Belirli bir parçayı bulun veya ilgili içeriği bulmak için konuları arayın. Aramalarınız otomatik olarak kaydedilir.",
     "ButtonSendMail": "BMM takımına email gönder"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "Hesabınızı oluşturuyoruz. Bu işlem birkaç saniye sürebilir."
+    "SettingUpAccountMessage": "Hesabınızı oluşturuyoruz. Bu birkaç dakika sürebilir."
   },
   "LoginViewModel": {
     "Title": "Giriş",
     "LoginFailureTitle": "Giriş Hatası",
     "LoginFailureMessage": "Doğru hesap bilgilerini kullanarak tekrar deneyin",
-    "LoginNoConnectionMessage": "Şu an bağlantı yok. Lütfen daha sonra tekrar deneyim",
+    "LoginNoConnectionMessage": "Şu anda mevcut bir bağlantı bulunmamaktadır. Lütfen daha sonra tekrar deneyin.",
     "WrongMailAddressTitle": "Geçersiz e-posta",
-    "WrongMailAddress": "Lütfen geçerli bir e-posta adresi girin. Oturum açmak için kullanıcı adının kullanılması artık desteklenmiyor.",
+    "WrongMailAddress": "Lütfen geçerli bir e-posta adresi girin. Oturum açmak için kullanıcı adının kullanılması artık desteklenmemektedir.",
     "TbxUsername.Hint": "E-posta",
     "TbxPassword.Hint": "Şifre",
     "BtnLogin.Text": "Giriş",
     "LoginInfo": "BCC giriş bilginizle oturum açın"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "Yakında {0} {1} veya daha eski sürümleri çalıştıran telefonlara yönelik desteği sonlandıracağız. Mümkünse telefonunuzu güncellemelisiniz.",
-    "DeviceSupportEnded": "Ne yazık ki artık {0} {1}eski cihazları desteklemiyoruz. Lütfen cihazınızı güncelleyin veya daha yeni bir telefona yükseltin.",
-    "AppSupportEnding": "BMM uygulamasının eski bir sürümünü kullanıyorsunuz. Yakında bu sürüme yönelik desteği sonlandıracağız. Lütfen BMM'yi güncelleyin.",
-    "AppSupportEnded": "BMM uygulamasının artık desteklenmeyen eski bir sürümünü kullanıyorsunuz. Lütfen BMM'yi güncelleyin.",
+    "DeviceSupportEnding": "Yakında {0} {1} veya daha eski sürümleri çalıştıran telefonlar için desteği durduracağız. Mümkünse telefonunuzu güncellemelisiniz.",
+    "DeviceSupportEnded": "Ne yazık ki artık {0} {1}'den eski cihazları desteklemiyoruz. Lütfen cihazınızı güncelleyin veya daha yeni bir telefona yükseltin.",
+    "AppSupportEnding": "BMM uygulamasının eski bir sürümünü kullanıyorsunuz. Yakında bu sürüm için desteği durduracağız. Lütfen BMM'yi güncelleyin.",
+    "AppSupportEnded": "BMM uygulamasının artık desteklenmeyen eski bir sürümünü kullanıyorsunuz. Lütfen BMM'yi güncelleyin. Lütfen BMM'yi güncelleyin.",
     "UpdateButton": "Güncelleme"
   },
   "LanguageAppViewModel": {
@@ -169,13 +169,13 @@
     "Title": "Dil Seçenekleri",
     "Dialog.Title": "Dil Seç",
     "Dialog.Cancel": "İptal",
-    "Toast.LanguagesStillLoading": "Liste Hala Doluyor. Lütfen az süre sonra tekrar deneyin.",
+    "Toast.LanguagesStillLoading": "Liste hala yükleniyor. Lütfen birkaç saniye sonra tekrar deneyin.",
     "Toast.NoLanguagesAvailable": "Dil Listesini yüklemek için internet ağı kullanılamamaktadır.",
     "DeleteLanguageMessage": "En az bir dil seçmek zorundasın",
     "DeleteLanguageTitle": "Değiştirilemez {0}"
   },
   "BrowseViewModel": {
-    "Title": "Gözat"
+    "Title": "Araştır"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arşiv"
@@ -215,7 +215,7 @@
     "RemoveOfflineConfirm": "Tüm yüklenen öğeleri silmek istiyor musunuz?",
     "EmptyTitle": "Bu Çalma Listesi Boş",
     "EmptySubline": "Parçadaki 3 noktaya tıkla ve Çalma listesine ekle.",
-    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?"
+    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musunuz?"
   },
   "DownloadedContentViewModel": {
     "Title": "İndirilen İçerik",
@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Sıralı",
     "Delete": "Sil",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Çalmakta olan parça kuyruktan kaldırılamıyor",
+    "TrackRemovedFromQueue": "Parça kuyruktan çıkarıldı",
+    "RemoveFromQueueOption": "Kuyruktan çıkar"
   },
   "SearchViewModel": {
     "Title": "Ara",
@@ -293,7 +293,7 @@
     "NoResults": "Sonuç yok",
     "NoResultsDescription": "\"{0}\" için yaptığınız arama ile eşleşen bir arama bulunamadı.",
     "SearchFailedTitle": "Arama başarısız oldu",
-    "SearchFailedMessage": "Üzgünüz, bağlantı sorunları nedeniyle \"{0}\"ı arayamadık. Tekrar denemek için aşağıdaki düğmeye basın."
+    "SearchFailedMessage": "Üzgünüz, bağlantı sorunları nedeniyle \"{0}\" için arama yapamadık. Tekrar denemek için aşağıdaki düğmeye basın."
   },
   "SettingsViewModel": {
     "Title": "Profil",
@@ -303,7 +303,7 @@
     "PlayInChronologicalOrderHeader": "Kronolojik sırayla oyna",
     "PlayInChronologicalOrderText": "Podcast bölümlerini en eskiden en yeniye doğru oynat",
     "OptionAutoplayHeader": "Otomatik Oynatma",
-    "OptionAutoplayText": "Fra Kåre'nin bugünkü bölümünü dinledikten sonra müzik çalın. Yalnızca ana ekrandaki kutucuk üzerinden oynatıldığında geçerlidir.",
+    "OptionAutoplayText": "Fra Kåre'nin bugünkü bölümünü dinledikten sonra müzik çalın Yalnızca ana ekrandaki kutucuk üzerinden oynarken geçerlidir.",
     "OptionStreakHeader": "Ev Sahibi Streak",
     "OptionStreakText": "Dinleme istatistiklerinizi ana ekranda gösterin",
     "OptionEnablePushHeader": "Bildirimleri etkinleştir",
@@ -314,11 +314,11 @@
     "OptionMBExternalText": "External {0} MB",
     "OptionEnablePushText": "Yeni parçalar için bildirim aç",
     "OptionDownloadMobileNetworkHeader": "Çalma listesini mobil ağ üzerinden indir",
-    "OptionDownloadMobileNetworkText": "3G / 4G ile Çalma Listesi indir. Bu veri planını etkileyebilir",
+    "OptionDownloadMobileNetworkText": "Uygulamanın 3G/4G kullanarak çalma listelerini indirmesine izin verin. Bu, veri planınızı etkileyebilir",
     "HeadlineGeneral": "Genel",
-    "OptionLanguageAppHeader": "Uygulama Dili",
+    "OptionLanguageAppHeader": "Aplikasyon Dili",
     "OptionLanguageAppText": "Uygulama Dilini değiştir",
-    "OptionLanguageContentHeader": "Uygulama Dili",
+    "OptionLanguageContentHeader": "İçerik Dili",
     "OptionLanguageContentText": "Dil seçeneklerini tüm içeriğe göre sırala",
     "HeadlineAbout": "Hakkında",
     "OptionPrivacyPolicyHeader": "Gizlilik Politikası",
@@ -326,7 +326,7 @@
     "OptionCopyrightHeader": "Telif Hakkı",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
     "OptionContactHeader": "İletişim",
-    "OptionContactText": "Soru ya da Yardım? Bize buradan ulaş.",
+    "OptionContactText": "Sorularınız veya geri bildiriminiz var mı? Ekiple buradan iletişime geçin.",
     "OptionAppVersionHeader": "Uygulama Versiyonu",
     "OptionDeleteAccountHeader": "Hesabı sil",
     "OptionDeleteAccountText": "Hesabınızın silinmesini talep edin.",
@@ -334,8 +334,8 @@
     "OptionNotificationBadgeText": "Günlük bölümü dinlemeyi hatırlamanıza yardımcı olması için ana sayfanızda bir bildirim gösterin.",
     "OptionBibleStudyHeader": "Evde İncil Çalışması",
     "OptionBibleStudyText": "İncil Çalışmanızın durumunu ana ekranda gösterin",
-    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Strict badge requirements",
-    "OptionRemoveBadgeOnStreakPointOnlyText": "Only remove the Fra Kåre notification badge when you have earned the streakpoint.",
+    "OptionRemoveBadgeOnStreakPointOnlyHeader": "Sıkı rozet gereksinimleri",
+    "OptionRemoveBadgeOnStreakPointOnlyText": "Fra Kåre bildirim rozetini yalnızca seri puanı kazandığınızda kaldırın.",
     "AppInfoTitle": "Uygulama Bilgi",
     "AppInfoAppVersion": "Uygulama Versiyon: ",
     "AppInfoManufacturer": "Üretici firma: ",
@@ -346,14 +346,14 @@
     "LogoutConfirm": "Çıkış yapmak istediğine emin misin?",
     "Logout": "Çıkış",
     "UserVoiceHeader": "Kullanıcı Sesi",
-    "UserVoiceText": "BMM'nin nasıl geliştirileceğine dair fikirleriniz mi var? Bize bundan bahsedin.",
+    "UserVoiceText": "BMM'nin nasıl geliştirilebileceğine dair fikirleriniz var mı? Bize bundan bahset.",
     "ThemeHeader": "Karanlık mod",
     "ThemeText": "Açık ve koyu tema arasında seçim yapın",
     "ColorHeader": "Renk teması",
     "ColorText": "Özel renk temaları arasından seçim yapın",
     "SiriShortcutsHeader": "Siri Kısayolları",
     "SiriShortcutsText": "BMM için Siri Kısayollarını cihazınıza ekleyin",
-    "PushNotificationsGoToSettings": "Ne yazık ki, cihaz ayarlarınızda devre dışı bırakıldığı için Anlık Bildirimleri etkinleştiremiyoruz. Bu özelliği etkinleştirmek için lütfen cihaz ayarlarınızda Anlık Bildirimlere izin verin.",
+    "PushNotificationsGoToSettings": "Cihaz ayarlarınızda devre dışı bırakıldıkları için ne yazık ki Anında Bildirimleri etkinleştiremiyoruz. Bu özelliği etkinleştirmek için lütfen cihaz ayarlarınızda Anlık Bildirimlere izin verin.",
     "Achievements": "Başarılar"
   },
   "StorageManagementViewModel": {
@@ -375,29 +375,29 @@
     "AvailableOfflineDownload": "İndir",
     "AvailableOfflineDownloading": "{0}{1} arası İndirilen",
     "RemoveOfflineConfirm": "Tüm yüklenen öğeleri silmek istiyor musunuz?",
-    "CreatePrompt": "Çalma Listesi Adı Gir",
+    "CreatePrompt": "Çalma Listesi Adını Gir",
     "CreateFailure": "Çalma Listesi oluşturulamadı",
-    "DeleteConfirm": "{0} çalma Listesini silmek istediğine emin misin?",
-    "DeleteFailure": "{0} Çalma Listesi silinemedi",
+    "DeleteConfirm": "Bu çalma Listesini silmek istediğine emin misin \"{0}\"?",
+    "DeleteFailure": "Çalma Listesi silinemedi \"{0}\"",
     "CreateEmptyFailure": "Çalma Listesi oluşturmak için başlık gir",
     "RenameEmptyFailure": "Çalma Listesini Yeniden adlandırmak için başlık gir",
     "SearchHint": "Ara",
     "EmptyTitle": "Bu Çalma Listesi Boş",
     "EmptySubline": "Parçadaki 3 noktaya tıkla ve Çalma listesine ekle.",
     "NotEnoughtSpaceToDownload": "Tüm parçaları indirmek için yeterli alan yok",
-    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musun?",
+    "AskToResumeDownloading": "Bu çalma listesinde yeni öğeler var. İndirmeye devam etmek istiyor musunuz?",
     "Private": "Özel",
-    "DeletePlaylist": "Çalma listesini Sil",
+    "DeletePlaylist": "Çalma Listesini Sil",
     "EditPlaylist": "Çalma listesini düzenle",
     "SharePlaylist": "Çalma listesini paylaş",
     "RemovePlaylist": "Oynatma listesini kaldır"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Oynatma Listesini Düzenle",
-    "RenameLabel": "Çalma listesini yeniden adlandır",
+    "RenameLabel": "Çalma Listesini yeniden adlandır",
     "MenuSave": "Kaydet",
     "EmptyName": "Çalma listesinin adı yok",
-    "SaveFailure": "Değişiklikler güncellenemedi. İnternet bağlantınızı kontrol edip tekrar deneyin",
+    "SaveFailure": "Değişiklikler güncellenemedi. İnternet bağlantınızı kontrol edin ve tekrar deneyin",
     "DiscardChangesTitle": "Değişiklikleri gözardı et?",
     "DiscardChangesMessage": "Yaptığınız değişiklikler kaydedilmeyecek",
     "DiscardChanges": "At",
@@ -427,7 +427,7 @@
   "TrackCollectionsAddToViewModel": {
     "Title": "Çalma Listesine yeni parça ekle",
     "SearchHint": "Ara",
-    "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
+    "FailedToAdd": "Parça çalma listesine eklenemedi. Lütfen daha sonra tekrar deneyin.",
     "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
     "CollectionAlreadyInTrackCollection": "Koleksiyon zaten çalma listenize eklendi.",
     "TrackAlreadyExistInTrackCollection": "Parça zaten oynatma listesi {0}mevcut",
@@ -447,7 +447,7 @@
     "Track.AddToQueue": "Kuyruğun sonuna ekle",
     "Track.QueueToPlayNext": "Sonrakini çal",
     "Track.AddedToQueue": "Sıraya Eklendi",
-    "Track.GoToAlbum": "Albüm' e git",
+    "Track.GoToAlbum": "Albüm' e Git",
     "Track.GoToContributor": "Kullanıcılara Git",
     "Track.GoToContributor.Composer": "Besteci {0}",
     "Track.GoToContributor.Interpret": "Sanatçı: {0}",
@@ -462,7 +462,7 @@
     "Album.AddedToMyTracks": "Albüm için My parça eklendi",
     "Album.AddToQueue": "Kuyruğun sonuna ekle",
     "Album.Share": "Albümü paylaş",
-    "FailedToAdd": "Çalma Listesine yeni parça eklenemedi. Lütfen daha sonra tekrar deneyin.",
+    "FailedToAdd": "Parça çalma listesine eklenemedi. Lütfen daha sonra tekrar deneyin.",
     "FailedToAddAlbum": "Albümleri içerdiğinden albüm çalma listesine eklenemedi.",
     "AlbumFailedToAddAlreadyExists": "Bu albüm çalma listenizdeki zaten.",
     "TrackAlreadyExistInTrackCollection": "Parça zaten oynatma listesi {0}mevcut",
@@ -491,7 +491,7 @@
     "Artist": "Sanatçı",
     "Duration": "Süre",
     "PublishDate": "Yayın Tarihi",
-    "Lyricist": "Söz yazarı",
+    "Lyricist": "Söz Yazarı",
     "Arranger": "Aranjör",
     "Composer": "Besteci",
     "Publisher": "Yayımcı",
@@ -566,7 +566,7 @@
     "AutoTranscribedPopupSubtitleText": "'Düzenleme öner' seçeneğini kullanarak düzeltmeler önererek transkriptin iyileştirilmesine yardımcı olun.",
     "AutoTranscribedPopupButtonText": "Anladım",
     "FromSongTreasuresPopupTitleText": "Şarkı sözleri Song Treasures'dan alınmıştır.",
-    "FromSongTreasuresPopupHeaderText": "Şarkı Hazinelerinden",
+    "FromSongTreasuresPopupHeaderText": "Şarkı Hazineleri'nden",
     "FromSongTreasuresPopupSubtitleText": "Şarkının tamamını görmek için Song Treasures uygulamasını indirin.",
     "SuggestEdit": "Düzenleme öner"
   },
@@ -600,8 +600,8 @@
     "Reward": "Ödül",
     "RewardAndroid": "BMM uygulamanız için özel bir renk teması 🤩",
     "RewardIos": "BMM uygulamanız için özel bir uygulama simgesi 🤩",
-    "RewardAndroidGolden": "BMM uygulamanız için özel bir renk teması. Ayrıca bir çift AirPods Pro çekilişine de katıldınız. Aferin!",
-    "RewardIosGolden": "BMM uygulamanız için altın renginde özel bir uygulama simgesi. Ayrıca bir çift AirPods Pro çekilişine de katıldınız. Aferin!",
+    "RewardAndroidGolden": "BMM uygulamanız için özel bir renk teması 🤩 Ayrıca bir çift AirPods Pro için çekilişe katılacaksınız. İyi işti!",
+    "RewardIosGolden": "BMM uygulamanız için özel bir uygulama simgesi 🤩 Ayrıca bir çift AirPods Pro için çekilişe katılacaksınız. İyi işti!",
     "PlayNext": "Sonrakini çal"
   },
   "SuggestEditViewModel": {
@@ -618,7 +618,7 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Sorduğunuz için teşekkürler!",
-    "Description": "Tüm sorular incelenecek ve bazıları podcast'te yanıtlanacaktır. \n Soruların çoğu Soru&Cevap sayfasında yanıtlanacaktır. \n\n Yanıtları okumak için Çarşamba günü tekrar kontrol edin.",
+    "Description": "Tüm sorular gözden geçirilecek ve bazıları podcast'te yanıtlanacaktır. Soruların çoğu Soru&amp;Cevap sayfasında yanıtlanacaktır. Yanıtları okumak için Çarşamba günü tekrar kontrol edin.",
     "GotIt": "Anladım"
   },
   "AchievementsViewModel": {
@@ -628,9 +628,12 @@
   },
   "ReadTranscriptionViewModel": {
     "SongTreasures": "Song Treasures",
-    "Lyrics": "Lyrics",
-    "Transcription": "Transcription",
-    "Melody": "Melody",
-    "Text": "Text"
+    "Lyrics": "Şarkı sözleri",
+    "Transcription": "Transkripsiyon",
+    "Melody": "Melodi",
+    "Text": "Metin"
+  },
+  "HvheDetailsViewModel": {
+    "Title": "Global Puan"
   }
 }
