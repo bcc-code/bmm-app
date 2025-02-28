@@ -145,6 +145,8 @@ namespace BMM.UI.iOS
             ImageService.Instance.Initialize(new Configuration
             {
                 InvalidateLayout = false,
+                HttpHeadersTimeout = 30,
+                HttpReadTimeout = 60,
                 HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
                 DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
                 {
