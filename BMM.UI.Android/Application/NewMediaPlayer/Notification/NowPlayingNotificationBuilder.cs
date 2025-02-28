@@ -133,7 +133,23 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
                 .SetVisibility(NotificationCompat.VisibilityPublic);
 
             if (track?.ArtworkUri != null)
-                builder.SetLargeIcon((await ImageService.Instance.LoadUrl(track.ArtworkUri).AsBitmapDrawableAsync()).Bitmap);
+            {
+                try
+                {
+                    var image = await ImageService
+                        .Instance
+                        .LoadUrl(track.ArtworkUri)
+                        .AsBitmapDrawableAsync();
+                    
+                    image.SetIsDisplayed(true);
+                    builder.SetLargeIcon(image.Bitmap);
+                }
+                catch (Exception ex)
+                {
+                    //ignore
+                    Console.WriteLine(ex);
+                }
+            }
 
             return builder.Build();
         }
