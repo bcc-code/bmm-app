@@ -59,6 +59,8 @@ namespace BMM.UI.iOS
 {
     public class IosSetup : MvxIosSetup<App>
     {
+        private const int ImageServiceTimeoutInSeconds = 300;
+        
         protected override void InitializeFirstChance(IMvxIoCProvider iocProvider)
         {
             base.InitializeFirstChance(iocProvider);
@@ -145,9 +147,12 @@ namespace BMM.UI.iOS
             ImageService.Instance.Initialize(new Configuration
             {
                 InvalidateLayout = false,
-                HttpHeadersTimeout = 30,
-                HttpReadTimeout = 60,
-                HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>())),
+                HttpHeadersTimeout = ImageServiceTimeoutInSeconds,
+                HttpReadTimeout = ImageServiceTimeoutInSeconds,
+                HttpClient = new HttpClient(new AuthenticatedHttpImageClientHandler(Mvx.IoCProvider.Resolve<IMediaRequestHttpHeaders>()))
+                {
+                    Timeout = TimeSpan.FromSeconds(ImageServiceTimeoutInSeconds),
+                },
                 DiskCache = new SimpleDiskCache(Path.Combine(FileSystem.AppDataDirectory, ImageServiceConstants.ImageCacheFolder), new Configuration
                 {
                     DiskCacheDuration = ImageServiceConstants.DiskCacheDuration
