@@ -59,23 +59,33 @@ namespace BMM.Api.Implementation.Models
         public bool ShowFriday => Friday != null;
 
         [JsonIgnore]
-        public string MondayColor => Monday == true ? "#DBE459" : null;
+        public string MondayColor => GetPointColor(Monday, "#DBE459");
 
         [JsonIgnore]
-        public string TuesdayColor => Tuesday == true ? "#B9CC68" : null;
+        public string TuesdayColor => GetPointColor(Tuesday, "#B9CC68");
 
         [JsonIgnore]
-        public string WednesdayColor => Wednesday == true ? "#83A174" : null;
+        public string WednesdayColor => GetPointColor(Wednesday, "#83A174");
 
         [JsonIgnore]
-        public string ThursdayColor => Thursday == true ? "#4E7780" : null;
+        public string ThursdayColor => GetPointColor(Thursday, "#4E7780");
 
         [JsonIgnore]
-        public string FridayColor => Friday == true ? "#265789" : null;
+        public string FridayColor => GetPointColor(Friday, "#265789");
 
         public string ToText()
         {
             return $"{Monday},{Tuesday},{Wednesday},{Thursday},{Friday}";
+        }
+        
+        private string GetPointColor(bool? day, string fallbackColor)
+        {
+            if (day != true)
+                return null;
+            
+            return string.IsNullOrEmpty(PointColor)
+                ? fallbackColor
+                : PointColor;
         }
     }
 }
