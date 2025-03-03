@@ -18,7 +18,7 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="2dp"
             android:background="@color/label_one_color"
-            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintBottom_toTopOf="@+id/DropShadowView"
             local:layout_constraintStart_toStartOf="parent"
             local:layout_constraintEnd_toStartOf="@+id/HalfGuideline"
             local:MvxBind="Visibility Visibility(IsLeftItemSelected)" />
@@ -44,7 +44,7 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="2dp"
             android:background="@color/label_one_color"
-            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintBottom_toTopOf="@+id/DropShadowView"
             local:layout_constraintStart_toEndOf="@+id/HalfGuideline"
             local:layout_constraintEnd_toEndOf="parent"
             local:MvxBind="Visibility Visibility(IsRightItemSelected)"/>
@@ -64,5 +64,14 @@
                 Text RightItemTitle;
                 Click RightItemSelectedCommand"
             style="@style/Title2" />
+
+    <View
+            android:id="@+id/DropShadowView"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="1dp"
+            android:background="@color/dark_gray"
+            local:layout_constraintBottom_toBottomOf="parent"
+            local:layout_constraintStart_toStartOf="parent"
+            local:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

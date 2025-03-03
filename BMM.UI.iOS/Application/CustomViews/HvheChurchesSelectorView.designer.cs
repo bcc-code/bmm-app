@@ -14,6 +14,9 @@ namespace BMM.UI.iOS.CustomViews
 	partial class HvheChurchesSelectorView
 	{
 		[Outlet]
+		UIKit.UIView DropShadowView { get; set; }
+
+		[Outlet]
 		UIKit.UIView LeftIndicatorView { get; set; }
 
 		[Outlet]
@@ -61,6 +64,11 @@ namespace BMM.UI.iOS.CustomViews
 			if (RightItemLabel != null) {
 				RightItemLabel.Dispose ();
 				RightItemLabel = null;
+			}
+
+			if (DropShadowView != null) {
+				DropShadowView.Dispose ();
+				DropShadowView = null;
 			}
 
 		}
