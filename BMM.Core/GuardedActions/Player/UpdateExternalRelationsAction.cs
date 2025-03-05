@@ -85,15 +85,16 @@ namespace BMM.Core.GuardedActions.Player
             var externalRelation = currentTrack
                 ?.Relations
                 ?.OfType<TrackRelationExternal>()
+                .Where(r =>
+                {
+                    if (string.IsNullOrEmpty(r.Url) || !UriUtils.TryCreate(r.Url, out var uri))
+                        return false;
+
+                    return _bccMediaDomains.Contains(uri.Host);
+                })
                 .FirstOrDefault();
 
-            if (string.IsNullOrEmpty(externalRelation?.Url) || !UriUtils.TryCreate(externalRelation.Url, out var uri))
-                return null;
-
-            if (_bccMediaDomains.Contains(uri.Host))
-                return externalRelation.Url;
-
-            return null;
+            return externalRelation?.Url;
         }
 
         protected override async Task OnFinally()
