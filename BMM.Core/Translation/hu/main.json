@@ -232,7 +232,7 @@
   "PodcastViewModel": {
     "Title": "Podcast",
     "Follow": "Kövesse",
-    "Following": "A következő",
+    "Following": "Bekövetve",
     "ManageDownloads": "Letöltések kezelése",
     "GetNotified": "Értesítést kapni",
     "GetNotifiedMessage": "ha új epízódok megjelenek",
