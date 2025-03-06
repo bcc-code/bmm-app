@@ -175,7 +175,7 @@
     "DeleteLanguageTitle": "Kunne ikke fjerne {0}"
   },
   "BrowseViewModel": {
-    "Title": "Bla gjennom"
+    "Title": "Utforsk"
   },
   "LibraryArchiveViewModel": {
     "Title": "Arkiv"
@@ -185,7 +185,7 @@
     "Search": "Søk",
     "Explore": "Utforsk",
     "MyContent": "Mitt innhold",
-    "Browse": "Bla gjennom",
+    "Browse": "Utforsk",
     "Settings": "Innstillinger",
     "HelpAndFeedback": "Hjelp og tilbakemelding",
     "Home": "Hjem",
@@ -354,7 +354,7 @@
     "SiriShortcutsHeader": "Siri-snarveier",
     "SiriShortcutsText": "Legg til Siri-snarveier for BMM på enheten din",
     "PushNotificationsGoToSettings": "Vi kan dessverre ikke aktivere push-varsler, siden de er deaktivert i enhetens innstillinger. Tillat push-varsler i enhetsinnstillingene for å aktivere denne funksjonen.",
-    "Achievements": "Prestasjoner"
+    "Achievements": "Achievements"
   },
   "StorageManagementViewModel": {
     "Title": "Plass for offline spor",
@@ -364,12 +364,12 @@
     "PluralTracks": "{0} spor",
     "PluralTracksLoaded": "{0} spor lastet",
     "Download": "Last ned",
-    "Shuffle": "Stokk",
+    "Shuffle": "Tilfeldig",
     "Play": "Spill av"
   },
   "TrackCollectionViewModel": {
     "Title": "Spilleliste",
-    "ShufflePlay": "Stokk",
+    "ShufflePlay": "Tilfeldig",
     "Resume": "Fortsett",
     "AvailableOffline": "Tilgjengelig offline",
     "AvailableOfflineDownload": "Last ned",
@@ -577,7 +577,7 @@
     "Days": "Dager",
     "Boost": "Boost",
     "Points": "Poeng",
-    "Achievements": "Dine prestasjoner",
+    "Achievements": "Dine achievements",
     "Answer": "Svar"
   },
   "AppIconViewModel": {
@@ -591,7 +591,7 @@
     "IconRed": "Rød"
   },
   "AchievementDetailsViewModel": {
-    "Title": "Prestasjon",
+    "Title": "Achievement",
     "Unlocked": "Åpnet",
     "ActivatePremiumIcon": "Aktiver app-ikon",
     "GotIt": "Forstått",
@@ -622,9 +622,9 @@
     "GotIt": "Forstått"
   },
   "AchievementsViewModel": {
-    "Title": "Prestasjoner",
-    "EmptyTitle": "Et sted for dine bibelstudie-prestasjoner",
-    "EmptySubtitle": "Prestasjoner fått fra bibelstudier vil bli samlet her."
+    "Title": "Achievements",
+    "EmptyTitle": "Et sted for dine bibelstudie-achievements",
+    "EmptySubtitle": "Achievements fått fra bibelstudier vil bli samlet her."
   },
   "ReadTranscriptionViewModel": {
     "SongTreasures": "Song Treasures",
