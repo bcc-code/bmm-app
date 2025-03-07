@@ -592,7 +592,7 @@
   },
   "AchievementDetailsViewModel": {
     "Title": "Achievement",
-    "Unlocked": "Åpnet",
+    "Unlocked": "Oppnådd",
     "ActivatePremiumIcon": "Aktiver app-ikon",
     "GotIt": "Forstått",
     "ActivateTheme": "Aktiver tema",
