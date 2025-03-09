@@ -3,36 +3,36 @@
     "ContactError": "Tõrge kontakt BMM meeskond, saate saata e-posti: {0}",
     "External": "Väline",
     "Internal": "Sisene",
-    "BytesMB": "{0} MB",
+    "BytesMB": "{0} MB vaba",
     "UnexpectedError": "Kahjuks ilmnes ootamatu viga.",
     "InternetConnectionOffline": "Interneti-ühendus pole saadaval.",
     "ItemNotFound": "Soovitud üksust pole olemas.",
     "OfflineBanner": "Kuvatakse ainult selle telefoni lugusid",
     "Song": "Laul",
-    "Speech": "Sõnum",
+    "Speech": "Jutlus",
     "Audiobook": "Audioraamat",
     "Exegesis": "Seletus",
     "Done": "Valmis",
     "Today": "Täna",
     "Yesterday": "Eile",
     "BackgroundActivityRestrictedTitle": "Luba taustategevus",
-    "BackgroundActivityRestrictedMessage": "Teie seadme seaded piiravad BMM-i taustal töötamist. Te ei saa kuulata, kui telefon on mõneks minutiks lukus. Selle muutmiseks avage aku rakenduse seaded ja \"Luba taustategevus\".",
+    "BackgroundActivityRestrictedMessage": "Su seadme seaded piiravad BMMi tööd taustal. Sa ei saa kuulata, kui telefon on paariks minutiks lukustatud. Selle muutmiseks minge rakenduse seadistustesse ja valige jaotise \"Aku\" alt \"Taustategevuse lubamine\".",
     "GoToSettings": "Ava seaded",
     "NotNow": "Mitte praegu",
-    "DownloadPlaylistOnceOnWifi": "Esitusloend laaditakse alla järgmisel korral, kui kasutate WiFi-ühendust. Saate oma profiilis lubada valiku \"Allalaadimine mobiilivõrgu kaudu\".",
-    "DownloadPodcastOnceOnWifi": "Selle podcasti uusimad lood laetakse alla järgmisel korral, kui kasutad WiFi-ühendust. Saad oma profiilis lubada valiku „Laadi alla mobiilivõrgu kaudu”.",
-    "SiriFromKaareInvocationPhrase": "Mängi Kårelt BMMis",
+    "DownloadPlaylistOnceOnWifi": "Esitusloend laetakse alla järgmisel korral, kui oled Wifi-ühenduses. Saad oma profiilis lubada \"Laadimine mobiilivõrgu kaudu\".",
+    "DownloadPodcastOnceOnWifi": "Selle podcasti uuemad lood laetakse alla, kui oled järgmisel korral Wifi-ühenduses. Saad oma profiilis lubada \"Laadimine mobiilivõrgu kaudu\".",
+    "SiriFromKaareInvocationPhrase": "Mängi „Kårelt“ BMMis",
     "SiriPlayMusicInvocationPhrase": "Mängi muusikat BMMis",
-    "FromKaareSiriShortcutName": "Mängi Kårelt",
+    "FromKaareSiriShortcutName": "Mängi “Kårelt“",
     "PlayMusicSiriShortcutName": "Mängi muusikat",
-    "DailyMessage": "Päevane sõnum",
-    "ValueCopiedToClipboard": "{0} kopeeriti lõikelauale",
+    "DailyMessage": "Päevane jutlus",
+    "ValueCopiedToClipboard": "{0} kopeeritud lõikelauale",
     "AddToFavorites": "Lisa lemmikute hulka",
     "RemoveFromFavorites": "Eemalda lemmikutest"
   },
   "Streak": {
     "Message": "Sinu selle nädala striik",
-    "MessagePerfect": "Täiuslik nädal. Hästi tehtud!",
+    "MessagePerfect": "Täiuslik nädal Hästi tehtud!",
     "PerfectWeekCountSingular": "{0} täiuslik nädal",
     "PerfectWeekCountPlural": "{0} täiuslikku nädalat",
     "PerfectWeekCountNone": "Täiuslikke nädalaid veel pole",
@@ -41,7 +41,7 @@
     "DaysInARowSingular": "{0} päev järjest",
     "DaysInARowPlural": "{0} päeva järjest",
     "WeekdayMonday": "E",
-    "WeekdayTuesday": "T",
+    "WeekdayTuesday": "N",
     "WeekdayWednesday": "K",
     "WeekdayThursday": "N",
     "WeekdayFriday": "R"
@@ -49,19 +49,19 @@
   "DeepLinkHandler": {
     "ErrorTitle": "Linki ei saa avada",
     "ErrorMessage": "Kahjuks ei olnud võimalik linki '{0}' avada.",
-    "RomansQuestionsPageTitle": "Küsimused & vastused"
+    "RomansQuestionsPageTitle": "Küsimused &amp; vastused"
   },
   "RequestExceptionHandler": {
     "RequestFailedMessage": "Tekkis ühendusviga: {0}"
   },
   "MediaPlayer": {
-    "ErrorMediaNotSupported": "Kahjuks teie seade ei toeta seda failivormingut.",
+    "ErrorMediaNotSupported": "Kahjuks su seade ei toeta seda failivormingut.",
     "ErrorVideoNotSupported": "Kahjuks videoid praegu ei toetata.",
     "ErrorFileNotOffline": "Ühenduseta režiimis ei saa mängida palasid, mis ei ole alla laetud.",
     "ErrorPlayerStopped": "Mängija on peatunud.",
     "ErrorPlayerStoppedGeneric": "Ilmnes taasesitusviga, mis peatas praeguse loo.",
     "ErrorPlayerLiveRadioStopped": "Otsesaade on lõppenud.",
-    "ErrorPlayerLiveRadioTooEarly": "Otseülekanne pole veel alanud, proovige hiljem uuesti.",
+    "ErrorPlayerLiveRadioTooEarly": "Otseülekanne pole veel alanud, proovi hiljem uuesti.",
     "ErrorPlayerStart": "Taasesitust ei saa alustada."
   },
   "GlobalMediaDownloader": {
@@ -70,10 +70,10 @@
   "AlbumViewModel": {
     "Title": "Album",
     "SearchHint": "Otsi",
-    "AddAlbumToPlaylist": "Esitusloendisse lisamine album",
-    "AddAlbumToMyTracks": "Videod Minu rajad",
-    "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
-    "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
+    "AddAlbumToPlaylist": "Lisa album esitusloendisse",
+    "AddAlbumToMyTracks": "Lisa album Minu Lugudesse",
+    "FailedToAdd": "Loo lisamine esitusloendisse ebaõnnestus. Palun proovi hiljem uuesti.",
+    "AlbumFailedToAddAlreadyExists": "See album on juba esitusloendis.",
     "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "ShufflePlay": "Juhuesitus",
     "PluralAlbums": "{0} albumit"
@@ -85,8 +85,8 @@
   "AutomaticDownloadViewModel": {
     "Title": "Automaatne allalaadimine",
     "None": "Ükski",
-    "PluralLatestTracks": "{0} hiljemalt lood",
-    "AutomaticDownloadSubtitle": "Hulk lugusid alla laadida automaatselt, järgides käesoleva podcast."
+    "PluralLatestTracks": "{0} hilisemat lugu",
+    "AutomaticDownloadSubtitle": "Hulk lugusid alla laadida automaatselt, järgides käesolevat podcasti."
   },
   "ContributorViewModel": {
     "Title": "Kaastegija",
@@ -125,41 +125,41 @@
     "SearchHint": "Otsi"
   },
   "HelpFeedbackViewModel": {
-    "Title": "Abi & tagasiside",
+    "Title": "Abi &amp; tagasiside",
     "GuideIntroTitle": "Kuidas BMM-i rakendust maksimaalselt ära kasutada",
     "GuideIntroSubtitle": "Viipa, et rohkem teada saada",
     "GuideOfflineTitle": "Ühenduseta esitusloend",
-    "GuideOfflineSubtitle": "Lae esitusloendid oma seadmele ja kuula neid netiühenduseta. Vastava seadistuse saad teha esitusloendis.",
+    "GuideOfflineSubtitle": "Lae oma esitusloendid seadmesse ja kuula neid ilma internetiühenduseta. Selle saad sisse lülitada esitusloendis.",
     "GuideAddToPlaylistTitle": "Lisamine esitusloendisse või Minu rajad",
     "GuideAddToPlaylistSubtitle": "Salvestada oma lemmik lugusid oma loendeid või BMM kollektsiooni \"Minu rajad\" koputades raja paremal nuppu Suvandid.",
     "GuideLanguagesTitle": "Rohkem keeli",
-    "GuideLanguagesSubtitle": "Seadistamaks oma BMM-i sisu keeli, tee oma keele-eelistused menüüvaliku \"Seadistused\" > \"Sisu keel\" all.\n",
+    "GuideLanguagesSubtitle": "Sea prioriteediks oma BMM-sisu keeled. Seda saab teha: Seaded > Sisu keel.\n",
     "GuideLibraryTitle": "Raamatukogu jagu",
-    "GuideLibrarySubtitle": "Pääsete kiiresti juurde sisu. Raamatukogu jagu koosneb saadaval Podcaste ja Arhiiv lõik sisu sirvida. ",
+    "GuideLibrarySubtitle": "Saa kiiret juurdepääsu soovitud sisule. Raamatukogu osa koosneb kõigist kättesaadavatest podcastidest ja arhiivist, kus saab sisu sirvida. ",
     "GuideSearchTitle": "Otsi",
     "GuideSearchSubtitle": "Leia konkreetne pala või otsi märksõnade abil nendega seotud sisu. Sinu otsingud salvestatakse automaatselt.",
-    "ButtonSendMail": "Saatke ekiri BMM-i meeskonnale"
+    "ButtonSendMail": "Saada email BMM-i meeskonnale"
   },
   "UserSetupViewModel": {
-    "SettingUpAccountMessage": "Seadistame teie kontot. See võib võtta mõne hetke."
+    "SettingUpAccountMessage": "Me seadistame su kontot. See võib võtta mõne hetke."
   },
   "LoginViewModel": {
     "Title": "Sisselogimine",
     "LoginFailureTitle": "Sisselogimine ebaõnnestus",
     "LoginFailureMessage": "Palun kontrollige sisestatud andmeid ja proovige uuesti",
-    "LoginNoConnectionMessage": "Ühendus pole hetkel võimalik. Palun proovige hiljem uuesti",
+    "LoginNoConnectionMessage": "Praegu ei ole ühendus saadaval. Palun proovi hiljem uuesti.",
     "WrongMailAddressTitle": "Kehtetu e-posti aadress",
-    "WrongMailAddress": "Sisestage kehtiv e-posti aadress. Kasutajanime kasutamist sisselogimiseks enam ei toetata.",
+    "WrongMailAddress": "Palun esita kehtiv e-posti aadress. Kasutajanime kasutamine sisselogimiseks ei ole enam toetatud.",
     "TbxUsername.Hint": "E-posti",
     "TbxPassword.Hint": "Salasõna",
     "BtnLogin.Text": "Sisselogimine",
     "LoginInfo": "Logi sisse oma BCC kasutajaga"
   },
   "SupportEndedViewModel": {
-    "DeviceSupportEnding": "Peagi peatame toe telefonidele, mis käitavad {0} {1} või vanemad. Võimalusel peaksite oma telefoni uuendama.",
-    "DeviceSupportEnded": "Kahjuks ei toeta me enam seadmeid, mis on vanemad kui {0} {1}. Värskendage oma seadet või minge üle uuemale telefonile.",
-    "AppSupportEnding": "Kasutate BMM-i rakenduse vana versiooni. Peagi peatame selle versiooni toetamise. Uuendage BMM-i.",
-    "AppSupportEnded": "Kasutad BMM-i rakenduse vana versiooni, mida enam ei toetata. Uuenda BMM-i.",
+    "DeviceSupportEnding": "Peagi lõpetame toetuse telefonidele, mis töötavad {0} \\ või vanemate telefonidega. Võimaluse korral peaksite oma telefoni uuendama.",
+    "DeviceSupportEnded": "Kahjuks ei toeta me enam seadmeid, mis on vanemad kui {0} \\. Palun värskendage oma seadet või vahetage uuem telefon.",
+    "AppSupportEnding": "Te kasutate BMM rakenduse vana versiooni. Peagi lõpetame selle versiooni toetamise. Palun ajakohastage BMM.",
+    "AppSupportEnded": "Kasutad BMM-i rakenduse vana versiooni, mida enam ei toetata. Uuenda BMM-i. Palun ajakohastage BMM.",
     "UpdateButton": "Uuenda"
   },
   "LanguageAppViewModel": {
@@ -169,7 +169,7 @@
     "Title": "Sisu keeled",
     "Dialog.Title": "Vali keel",
     "Dialog.Cancel": "Tühista",
-    "Toast.LanguagesStillLoading": "Esitusloendit laetakse. Palun proovi mõne sekundi pärast uuesti.",
+    "Toast.LanguagesStillLoading": "Nimekiri on veel laadimisel. Palun proovige mõne sekundi pärast uuesti.",
     "Toast.NoLanguagesAvailable": "Keelte nimekirja pole võimalik laadida, kuna puudub ühendus.",
     "DeleteLanguageMessage": "Vali vähemalt üks sisu keel",
     "DeleteLanguageTitle": "Ei saa eemaldada {0}"
@@ -215,7 +215,7 @@
     "RemoveOfflineConfirm": "Kas sa tõesti soovid kõik allalaetud failid kustutada?",
     "EmptyTitle": "See esitusloend on tühi",
     "EmptySubline": "Vajuta pala peal olevale kolmele punktikesele, et sellesse esitusloendisse veel lugusid lisada.",
-    "AskToResumeDownloading": "Selles esitusloendis on uusi üksusi. Kas soovid jätkata allalaadimist?"
+    "AskToResumeDownloading": "Selles esitusloendis on uued elemendid. Kas soovid jätkata allalaadimist?"
   },
   "DownloadedContentViewModel": {
     "Title": "Allalaaditud sisu",
@@ -270,9 +270,9 @@
   "QueueViewModel": {
     "Title": "Järjekord",
     "Delete": "Kustuta",
-    "CannotRemoveFromQueue": "Cannot remove currently playing track from the queue",
-    "TrackRemovedFromQueue": "Track has been removed from the queue",
-    "RemoveFromQueueOption": "Remove from queue"
+    "CannotRemoveFromQueue": "Ei saa praegu mängitavat lugu järjekorrast eemaldada",
+    "TrackRemovedFromQueue": "Rada on järjekorrast eemaldatud",
+    "RemoveFromQueueOption": "Eemalda järjekorrast"
   },
   "SearchViewModel": {
     "Title": "Otsi",
@@ -293,7 +293,7 @@
     "NoResults": "Tulemusi pole",
     "NoResultsDescription": "Seal ei leitud ühtegi vastet teie otsingule \"{0}\"",
     "SearchFailedTitle": "Otsing ebaõnnestus",
-    "SearchFailedMessage": "Vabandust, me ei saanud ühendusprobleemide tõttu otsida \"{0}\". Uuesti proovimiseks vajutage allolevat nuppu."
+    "SearchFailedMessage": "Vabandame, et me ei saanud otsida \"{0}\" ühendusprobleemide tõttu. Vajutage allolevat nuppu, et proovida uuesti."
   },
   "SettingsViewModel": {
     "Title": "Profiil",
@@ -303,7 +303,7 @@
     "PlayInChronologicalOrderHeader": "Mängi kronoloogilises järjekorras",
     "PlayInChronologicalOrderText": "Mängi podcasti episoode vanemast uuemani",
     "OptionAutoplayHeader": "Automaatne esitus",
-    "OptionAutoplayText": "Mängi muusikat pärast tänase osa Kårelt kuulamist. Kehtib ainult avakuval paani läbi mängimisel.",
+    "OptionAutoplayText": "Mängi muusikat pärast tänase Fra Kåre'i episoodi kuulamist. Kehtib ainult siis, kui mängitakse läbi plaadi avakuval.",
     "OptionStreakHeader": "Striik pealehel",
     "OptionStreakText": "Kuva pealehel oma kuulamisstatistikat",
     "OptionEnablePushHeader": "Luba teated",
@@ -314,7 +314,7 @@
     "OptionMBExternalText": "External {0} MB",
     "OptionEnablePushText": "Saa teatiste kaudu teada uuest sisust",
     "OptionDownloadMobileNetworkHeader": "Lae esitusloendid alla mobiilsidevõrgu kaudu",
-    "OptionDownloadMobileNetworkText": "Luba rakendusel kasutada 3G/4G-d esitusloendite allalaadimiseks. See võib mõjutada sinu andmeside kasutust",
+    "OptionDownloadMobileNetworkText": "Laske rakendusel laadida esitusloendeid alla 3G/4G abil. See võib mõjutada teie andmesideplaani",
     "HeadlineGeneral": "Üldine",
     "OptionLanguageAppHeader": "Rakenduse keel",
     "OptionLanguageAppText": "Rakenduse keele muutmine",
@@ -326,7 +326,7 @@
     "OptionCopyrightHeader": "Autoriõigused",
     "OptionCopyrightText": "Stiftelsen Skjulte Skatters Forlag ©",
     "OptionContactHeader": "Kontakt",
-    "OptionContactText": "Küsimus või tagasiside? Võta ühendust BMM-i meeskonnaga siin.",
+    "OptionContactText": "Küsimused või tagasiside? Võtke meeskonnaga ühendust siin.",
     "OptionAppVersionHeader": "Rakenduse versioon",
     "OptionDeleteAccountHeader": "Kustuta konto",
     "OptionDeleteAccountText": "Küsi oma konto kustutamist.",
@@ -346,14 +346,14 @@
     "LogoutConfirm": "Oled kindel, et soovid välja logida?",
     "Logout": "Logi välja",
     "UserVoiceHeader": "Kasutaja hääl",
-    "UserVoiceText": "Kas teil on ideid BMM-i täiustamiseks? Räägi meile sellest.",
+    "UserVoiceText": "Kas teil on ideid, kuidas BMMi parandada? Räägi meile sellest.",
     "ThemeHeader": "Tume režiim",
     "ThemeText": "Vali heleda ja tumeda teema vahel",
     "ColorHeader": "Värvi teema",
     "ColorText": "Valige kohandatud värviteemade vahel",
     "SiriShortcutsHeader": "Siri otseteed",
     "SiriShortcutsText": "Lisa oma seadmesse Siri otseteed BMM-i jaoks",
-    "PushNotificationsGoToSettings": "Kahjuks ei saa me tõukemärguandeid lubada, kuna need on teie seadme seadetes keelatud. Selle funktsiooni lubamiseks lubage oma seadme seadetes Push Notifications.",
+    "PushNotificationsGoToSettings": "Kahjuks ei saa me Push-teavitusi lubada, kuna need on teie seadme seadetes keelatud. Selle funktsiooni lubamiseks lubage oma seadme seadetes Push-teated.",
     "Achievements": "Saavutused"
   },
   "StorageManagementViewModel": {
@@ -377,7 +377,7 @@
     "RemoveOfflineConfirm": "Kas sa tõesti soovid kõik allalaetud failid kustutada?",
     "CreatePrompt": "Sisesta esitusloendi nimi",
     "CreateFailure": "Esitusloendi loomine ebaõnnestus",
-    "DeleteConfirm": "Kas oled kindel, et soovid \"{0}\" esitlusloendit kustutada?",
+    "DeleteConfirm": "Kas oled kindel, et soovid kustutada esitusloendit \"{0}\"?",
     "DeleteFailure": "Esitusloendi \"{0}\" kustutamine ebaõnnetus",
     "CreateEmptyFailure": "Esitusloendi loomiseks kirjutage pealkiri",
     "RenameEmptyFailure": "Esitusloendi ümbernimetamiseks kirjutage pealkiri",
@@ -385,7 +385,7 @@
     "EmptyTitle": "See esitusloend on tühi",
     "EmptySubline": "Vajuta pala peal olevale kolmele punktikesele, et sellesse esitusloendisse veel lugusid lisada.",
     "NotEnoughtSpaceToDownload": "Kõikide lugude allalaadimiseks pole piisavalt ruumi",
-    "AskToResumeDownloading": "Selles esitusloendis on uusi üksusi. Kas soovid jätkata allalaadimist?",
+    "AskToResumeDownloading": "Selles esitusloendis on uued elemendid. Kas soovid jätkata allalaadimist?",
     "Private": "Privaatne",
     "DeletePlaylist": "Kustuta esitusloend",
     "EditPlaylist": "Redigeeri esitusloendit",
@@ -394,11 +394,11 @@
   },
   "EditTrackCollectionViewModel": {
     "Title": "Redigeeri esitusloendit",
-    "RenameLabel": "Esitusloendi ümbernimetamine",
+    "RenameLabel": "Nimeta esitusloend ümber",
     "MenuSave": "Salvesta",
     "EmptyName": "Esitusloendil pole nime",
-    "SaveFailure": "Muudatusi ei saanud värskendada. Kontrolli oma Interneti-ühendust ja proovi uuesti",
-    "DiscardChangesTitle": "Kas loobuda muudatustest?",
+    "SaveFailure": "Ei saanud muudatusi uuendada. Kontrolli oma internetiühendust ja proovi uuesti",
+    "DiscardChangesTitle": "Loobu muudatustest?",
     "DiscardChangesMessage": "Sinu tehtud muudatusi ei salvestata",
     "DiscardChanges": "Viska ära",
     "KeepEditing": "Jätka redigeerimist"
@@ -413,7 +413,7 @@
   "SharedTrackCollectionViewModel": {
     "Title": "Jagatud esitusloend",
     "Close": "Sule",
-    "AddToMyPlaylist": "Lisa esitlusloendisse",
+    "AddToMyPlaylist": "Lisa mu esitlusloendisse",
     "FollowOwnTrackCollection": "Sa ei saa järgida enda lugude kogu"
   },
   "OfflineTrackCollectionViewModel": {
@@ -427,8 +427,8 @@
   "TrackCollectionsAddToViewModel": {
     "Title": "Lisa pala esitusloendisse",
     "SearchHint": "Otsi",
-    "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
-    "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
+    "FailedToAdd": "Loo lisamine esitusloendisse ebaõnnestus. Palun proovi hiljem uuesti.",
+    "AlbumFailedToAddAlreadyExists": "See album on juba esitusloendis.",
     "CollectionAlreadyInTrackCollection": "Kogu on juba teie esitusloendisse lisatud.",
     "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "FailedToAddAlbum": "Ei suutnud album esitusloendisse lisada, kuna see sisaldab Albumeid.",
@@ -437,7 +437,7 @@
     "TrackAddedToTrackCollection": "Esitusloendisse lisatud"
   },
   "UserDialogs": {
-    "Track.AddToPlaylist": "Lisa esitusloendisse",
+    "Track.AddToPlaylist": "Lisa esitlusloendisse",
     "Track.DeleteFromPlaylist": "Kustuta esitusloendist",
     "Track.AddToMyTracks": "Lisa Minu rajad",
     "Track.RemoveFromMyTracks": "Eemalda Minu rajad",
@@ -457,14 +457,14 @@
     "Track.MoreInformation": "Rohkem infot",
     "Track.Share": "Jaga lugu",
     "Album.Play": "Esita",
-    "Album.AddToPlaylist": "Esitusloendisse lisamine album",
-    "Album.AddToMyTracks": "Videod Minu rajad",
+    "Album.AddToPlaylist": "Lisa album esitusloendisse",
+    "Album.AddToMyTracks": "Lisa album Minu Lugudesse",
     "Album.AddedToMyTracks": "Album on Minu rajad",
     "Album.AddToQueue": "Lisa järjekorra lõppu",
     "Album.Share": "Jaga albumit",
-    "FailedToAdd": "Pala lisamine esitusloendisse ebaõnnestus. Proovi hiljem uuesti.",
+    "FailedToAdd": "Loo lisamine esitusloendisse ebaõnnestus. Palun proovi hiljem uuesti.",
     "FailedToAddAlbum": "Ei suutnud album esitusloendisse lisada, kuna see sisaldab Albumeid.",
-    "AlbumFailedToAddAlreadyExists": "See album on juba Playlist.",
+    "AlbumFailedToAddAlreadyExists": "See album on juba esitusloendis.",
     "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "FailedToAddUnknownType": "\"{0}\" esitusloendisse praegu ei toetata.",
     "MyTracks": "Minu rajad",
@@ -600,8 +600,8 @@
     "Reward": "Preemia",
     "RewardAndroid": "Eksklusiivne värviteema su BMM rakenduse jaoks 🤩",
     "RewardIos": "Eksklusiivne ikoon su BMM rakenduse jaoks 🤩",
-    "RewardAndroidGolden": "Eksklusiivne värviteema sinu BMM-rakenduse jaoks. Osaled ka AirPods Pro klappide loosimises. Tubli töö!",
-    "RewardIosGolden": "Eksklusiivne kullavärvi rakenduseikoon sinu BMM-rakenduse jaoks. Osaled ka AirPods Pro klappide loosimises. Hea töö!",
+    "RewardAndroidGolden": "Eksklusiivne värviteema su BMM rakenduse jaoks 🤩 Samuti osaled AirPods Pro paari loosimises. Hea töö!",
+    "RewardIosGolden": "Eksklusiivne ikoon su BMM rakenduse jaoks 🤩 Samuti osaled AirPods Pro paari loosimises. Hea töö!",
     "PlayNext": "Mängi järgmisena"
   },
   "SuggestEditViewModel": {
@@ -618,7 +618,7 @@
   },
   "AskQuestionConfirmationViewModel": {
     "ThankYou": "Täname küsimast!",
-    "Description": "Kõik küsimused vaadatakse üle ja osadele vastatakse podcastis. \n Enamus küsimustele vastatakse küsimuste ja vastuste lehel. \n\n Tulge vastuste lugemiseks tagasi kolmapäeval. ",
+    "Description": "Kõik küsimused vaadatakse läbi ja mõnedele küsimustele vastatakse podcastis. Enamik küsimusi vastatakse küsimuste ja vastuste lehel. Vaadake tagasi kolmapäeval, et lugeda vastuseid.",
     "GotIt": "Sain aru"
   },
   "AchievementsViewModel": {
@@ -632,5 +632,8 @@
     "Transcription": "Transkriptsioon",
     "Melody": "Meloodia",
     "Text": "Tekst"
+  },
+  "HvheDetailsViewModel": {
+    "Title": "Üldine skoor"
   }
 }
