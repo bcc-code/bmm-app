@@ -59,6 +59,8 @@
         public const string DroidAppSecret = "#{Android_APP_SECRET_PLACEHOLDER}#";
         public const string iOSAppSecret = "#{iOS_APP_SECRET_PLACEHOLDER}#";
         public const string SentryDsn = "#{SENTRY_DSN_PLACEHOLDER}#";
+        public const string NewRelicDroidToken = "eu01xxf520de1de52022c1de1d043d7198728509a4-NRMA";
+        public const string NewRelic_iOSToken = "eu01xxb1f5bd6a43f766242047c04720dc0eb2b12e-NRMA";
         
         public const string AndroidUpdateLink = "https://play.google.com/store/apps/details?id=org.brunstad.bmm";
         public const string IosUpdateLink = "itms-apps://apps.apple.com/no/app/bmm-brunstad/id777577855";

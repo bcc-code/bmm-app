@@ -44,5 +44,10 @@ namespace BMM.Core.Implementations.Exceptions
             _logger.Error(tag, message, exception, presentedToUser);
             _mainThreadAsyncDispatcher.ExecuteOnMainThreadAsync(() => _userDialogs.AlertAsync(exception.Message));
         }
+
+        public void TrackEvent(string message, IDictionary<string, string> properties)
+        {
+            _logger.TrackEvent(message, properties);
+        }
     }
 }

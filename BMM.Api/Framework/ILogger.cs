@@ -9,5 +9,6 @@ namespace BMM.Api.Framework
         void Warn(string tag, string message);
         void Error(string tag, string message);
         void Error(string tag, string message, Exception exception, bool presentedToUser = false);
+        void TrackEvent(string message, IDictionary<string, string> properties);
     }
 }

@@ -1,9 +1,7 @@
 using BMM.Api.Framework;
 using BMM.Core.Constants;
-using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Utils;
-using Microsoft.AppCenter;
 
 namespace BMM.Core.Implementations.Logger
 {
@@ -25,22 +23,24 @@ namespace BMM.Core.Implementations.Logger
             _connection = connection;
             _userStorage = userStorage;
         }
-        
+
         public void Debug(string tag, string message)
         {
-            AppCenterLog.Debug(tag, message);
+            Console.WriteLine($"DEBUG - {tag} - {message}");
         }
 
         public void Info(string tag, string message)
         {
-            AppCenterLog.Info(tag, message);
+            Console.WriteLine($"INFO - {tag} - {message}");
         }
+
+        public abstract void TrackEvent(string message, IDictionary<string, string> properties);
 
         public void Warn(string tag, string message)
         {
             var parameters = InitializeDictionaryWithBasicParameters(tag, message);
-            AppCenterLog.Warn(tag, message);
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Warning", parameters);
+            Console.WriteLine($"WARN - {tag} - {message}");
+            TrackEvent("Warning", parameters);
         }
 
         public virtual void Error(string tag, string message)
@@ -51,8 +51,7 @@ namespace BMM.Core.Implementations.Logger
                 GetSentryScope(parameters),
                 SentryLevel.Error);
             
-            AppCenterLog.Error(tag, message);
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error without exception", parameters);
+            TrackEvent("Error without exception", parameters);
         }
 
         public virtual void Error(string tag, string message, Exception exception, bool presentedToUser = false)
@@ -60,12 +59,12 @@ namespace BMM.Core.Implementations.Logger
             var parameters = InitializeDictionaryWithBasicParameters(tag, message, presentedToUser);
             
             SentrySdk.CaptureException(exception, GetSentryScope(parameters));
-            AppCenterLog.Error(tag, message, exception);
-                       
+            Console.WriteLine($"ERROR - {tag} - {message} \n \n {exception}");
+         
             parameters.Add(StackTrackParameterName, exception.StackTrace);
             parameters.Add(ExceptionParameterName, exception.ToString());
             
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("Error with exception", parameters);
+           TrackEvent("Error with exception", parameters);
         }
 
         private static Action<Scope> GetSentryScope(IDictionary<string, string> parameters)

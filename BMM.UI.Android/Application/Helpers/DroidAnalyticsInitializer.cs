@@ -1,6 +1,4 @@
 using BMM.Core.Helpers;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
 
 namespace BMM.UI.Droid.Application.Helpers;
 
@@ -8,9 +6,11 @@ public class DroidAnalyticsInitializer
 {
     public static void Init()
     {
-        if (!AppCenter.Configured)
-            AppCenter.Start(GlobalConstants.DroidAppSecret, typeof(Analytics));
-
+        // CrossNewRelic.Current.Start(GlobalConstants.NewRelicDroidToken, new AgentStartConfiguration(
+        //     crashReportingEnabled: false,
+        //     loggingEnabled: false,
+        //     networkRequestEnabled: false));
+        
         InitSentry();
     }
     

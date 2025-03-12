@@ -16,8 +16,6 @@
       <PackageReference Include="akavache" Version="9.1.7" />
       <PackageReference Include="IdentityModel" Version="7.0.0" />
       <PackageReference Include="IdentityModel.OidcClient" Version="6.0.0" />
-      <PackageReference Include="Microsoft.AppCenter" Version="5.0.1" />
-      <PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.1" />
       <PackageReference Include="MvvmCross" Version="9.2.0" />
       <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
       <PackageReference Include="MvvmCross.Plugin.Messenger" Version="9.2.0" />
