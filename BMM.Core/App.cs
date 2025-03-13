@@ -272,8 +272,6 @@ namespace BMM.Core
                     },
                     MvxReference.Strong);
 
-            Mvx.IoCProvider.ConstructAndRegisterSingleton<BackgroundLogger, BackgroundLogger>();
-
             Mvx.IoCProvider.RegisterType<PersistedEventWriter>();
             Mvx.IoCProvider.RegisterType<FirebaseConfigUpdater>();
             Mvx.IoCProvider.RegisterType<AfterStartupSupportEndsPopupDisplayer>();
