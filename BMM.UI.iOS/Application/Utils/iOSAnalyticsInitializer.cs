@@ -13,6 +13,9 @@ public class iOSAnalyticsInitializer
 
     private static void InitNewRelic()
     {
+        if (GlobalConstants.NewRelic_iOSToken.Contains(GlobalConstants.Placeholder))
+            return;
+        
         NewRelic.SetPlatform(NRMAApplicationPlatform.Native);
         NewRelic.EnableCrashReporting(false);
         NewRelic.DisableFeatures(
