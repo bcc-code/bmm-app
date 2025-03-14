@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using _Microsoft.Android.Resource.Designer;
 using Android.App;
 using Android.Content;
 using Android.Support.V4.Media.Session;
@@ -12,6 +13,9 @@ using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Implementations.Notifications;
 using BMM.UI.Droid.Utils;
 using FFImageLoading;
+using Java.Lang;
+using Microsoft.IdentityModel.Tokens;
+using Exception = System.Exception;
 
 namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
 {
@@ -58,100 +62,106 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Notification
 
         public async Task<Android.App.Notification> BuildNotification(MediaSessionCompat.Token sessionToken, Context applicationContext, MediaControllerCompat controller)
         {
-            _channelBuilder.EnsureChannel(_notificationManager,
-                NowPlayingChannel,
-                () => new NotificationChannel(NowPlayingChannel, "Now playing", NotificationImportance.Low)
+            try
+            {
+                _channelBuilder.EnsureChannel(_notificationManager,
+                    NowPlayingChannel,
+                    () => new NotificationChannel(NowPlayingChannel, "Now playing", NotificationImportance.Low)
+                    {
+                        Description = "Shows what music is currently playing in BMM"
+                    });
+
+                var description = controller.Metadata.Description;
+                var playbackState = controller.PlaybackState;
+
+                var builder = new NotificationCompat.Builder(_context, NowPlayingChannel);
+                var lastActionIndex = 0;
+
+                var actionsInCompactView = new List<int>();
+
+                var track = _metadataMapper.LookupTrackFromMetadata(controller.Metadata, _queue);
+                var displayJumpActions =
+                    (playbackState.IsPlaying() || playbackState.IsPlayEnabled() || playbackState.IsSkipToNextEnabled()) &&
+                    track?.IsLivePlayback == false;
+
+                if (playbackState.IsSkipToPreviousEnabled())
                 {
-                    Description = "Shows what music is currently playing in BMM"
-                });
+                    builder.AddAction(_skipToPreviousAction, _context);
+                    lastActionIndex++;
+                }
 
-            var description = controller.Metadata.Description;
-            var playbackState = controller.PlaybackState;
+                if (displayJumpActions)
+                {
+                    builder.AddAction(_jumpBackwardAction, _context);
+                    actionsInCompactView.Add(lastActionIndex++);
+                }
 
-            var builder = new NotificationCompat.Builder(_context, NowPlayingChannel);
-            var lastActionIndex = 0;
+                if (playbackState.IsPlaying())
+                {
+                    builder.AddAction(_pauseAction, _context);
+                    actionsInCompactView.Add(lastActionIndex++);
+                    long startTime = JavaSystem.CurrentTimeMillis() - controller.PlaybackState.Position;
+                    builder.SetWhen(startTime);
+                    builder.SetUsesChronometer(true);
+                }
+                else if (playbackState.IsPlayEnabled())
+                {
+                    builder.AddAction(_playAction, _context);
+                    actionsInCompactView.Add(lastActionIndex++);
+                }
 
-            var actionsInCompactView = new List<int>();
+                if (displayJumpActions)
+                {
+                    builder.AddAction(_jumpForwardAction, _context);
+                    lastActionIndex++;
+                }
 
-            var track = _metadataMapper.LookupTrackFromMetadata(controller.Metadata, _queue);
-            var displayJumpActions = (playbackState.IsPlaying() || playbackState.IsPlayEnabled() || playbackState.IsSkipToNextEnabled()) && track?.IsLivePlayback == false;
+                if (playbackState.IsSkipToNextEnabled())
+                {
+                    builder.AddAction(_skipToNextAction, _context);
+                    actionsInCompactView.Add(lastActionIndex);
+                }
 
-            if (playbackState.IsSkipToPreviousEnabled())
-            {
-                builder.AddAction(_skipToPreviousAction, _context);
-                lastActionIndex++;
-            }
+                var mediaStyle = new AndroidX.Media.App.NotificationCompat.MediaStyle()
+                    .SetCancelButtonIntent(_stopPendingIntent)
+                    .SetMediaSession(sessionToken)
+                    .SetShowActionsInCompactView(actionsInCompactView.ToArray())
+                    .SetShowCancelButton(true);
 
-            if (displayJumpActions)
-            {
-                builder.AddAction(_jumpBackwardAction, _context);
-                actionsInCompactView.Add(lastActionIndex++);
-            }
+                var notificationIntent = new Intent(applicationContext, typeof(MainActivity));
+                var contentIntent = PendingIntent.GetActivity(applicationContext,
+                    0,
+                    notificationIntent,
+                    PendingIntentsUtils.GetImmutable());
 
-            if (playbackState.IsPlaying())
-            {
-                builder.AddAction(_pauseAction, _context);
-                actionsInCompactView.Add(lastActionIndex++);
-                long startTime = Java.Lang.JavaSystem.CurrentTimeMillis() - controller.PlaybackState.Position;
-                builder.SetWhen(startTime);
-                builder.SetUsesChronometer(true);
-            }
-            else if (playbackState.IsPlayEnabled())
-            {
-                builder.AddAction(_playAction, _context);
-                actionsInCompactView.Add(lastActionIndex++);
-            }
+                builder = builder.SetContentIntent(contentIntent)
+                    .SetContentText(description.Subtitle)
+                    .SetContentTitle(description.Title)
+                    .SetDeleteIntent(_stopPendingIntent)
+                    .SetOnlyAlertOnce(true)
+                    .SetSmallIcon(ResourceConstant.Drawable.xam_mediaManager_notify_ic)
+                    .SetStyle(mediaStyle)
+                    .SetVisibility(NotificationCompat.VisibilityPublic);
 
-            if (displayJumpActions)
-            {
-                builder.AddAction(_jumpForwardAction, _context);
-                lastActionIndex++;
-            }
-
-            if (playbackState.IsSkipToNextEnabled())
-            {
-                builder.AddAction(_skipToNextAction, _context);
-                actionsInCompactView.Add(lastActionIndex);
-            }
-
-            var mediaStyle = new AndroidX.Media.App.NotificationCompat.MediaStyle()
-                .SetCancelButtonIntent(_stopPendingIntent)
-                .SetMediaSession(sessionToken)
-                .SetShowActionsInCompactView(actionsInCompactView.ToArray())
-                .SetShowCancelButton(true);
-
-            var notificationIntent = new Intent(applicationContext, typeof(MainActivity));
-            var contentIntent = PendingIntent.GetActivity(applicationContext, 0, notificationIntent, PendingIntentsUtils.GetImmutable());
-
-            builder = builder.SetContentIntent(contentIntent)
-                .SetContentText(description.Subtitle)
-                .SetContentTitle(description.Title)
-                .SetDeleteIntent(_stopPendingIntent)
-                .SetOnlyAlertOnce(true)
-                .SetSmallIcon(Resource.Drawable.xam_mediaManager_notify_ic)
-                .SetStyle(mediaStyle)
-                .SetVisibility(NotificationCompat.VisibilityPublic);
-
-            if (track?.ArtworkUri != null)
-            {
-                try
+                if (track?.ArtworkUri.IsNullOrEmpty() == false)
                 {
                     var image = await ImageService
                         .Instance
                         .LoadUrl(track.ArtworkUri)
                         .AsBitmapDrawableAsync();
-                    
+
                     image.SetIsDisplayed(true);
                     builder.SetLargeIcon(image.Bitmap);
                 }
-                catch (Exception ex)
-                {
-                    //ignore
-                    Console.WriteLine(ex);
-                }
-            }
 
-            return builder.Build();
+                return builder.Build();
+            }
+            catch (Exception e)
+            {
+                //ignore
+                Console.WriteLine(e);
+                return null;
+            }
         }
 
         private PendingIntent MediaButtonIntent(long action)

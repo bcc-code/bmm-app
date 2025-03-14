@@ -263,6 +263,9 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
                     if (updatedState != PlaybackStateCompat.StateNone)
                     {
                         notification = await _notificationBuilder.BuildNotification(_mediaSession.SessionToken, ApplicationContext, _mediaController);
+                        
+                        if (notification == null)
+                            return;
                     }
 
                     if (Build.VERSION.SdkInt >= BuildVersionCodes.UpsideDownCake)
