@@ -79,7 +79,6 @@ using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Models.POs.Tracks.Interfaces;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
-using Microsoft.AppCenter;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.IoC;
@@ -115,10 +114,6 @@ namespace BMM.Core
             Registrations.Start(GlobalConstants.ApplicationName);
             BlobCache.ApplicationName = GlobalConstants.PackageName;
 
-#if DEBUG
-            AppCenter.LogLevel = LogLevel.Info;
-#endif
-
             SetupLanguageBinder();
             
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRememberedQueueService, RememberedQueueService>();
@@ -134,7 +129,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<IResponseDeserializer, ResponseDeserializer>();
             Mvx.IoCProvider.RegisterType<IBmmVersionProvider, BmmVersionProvider>();
 
-            Mvx.IoCProvider.RegisterType<IAnalytics, AppCenterAnalytics>();
+            Mvx.IoCProvider.RegisterType<IAnalytics, NewRelicAnalytics>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeepLinkHandler, DeepLinkHandler>();
             Mvx.IoCProvider.RegisterType<IShareLink, ShareLink>();
             Mvx.IoCProvider.RegisterType<IAppNavigator, AppNavigator>();
@@ -276,8 +271,6 @@ namespace BMM.Core
                         BlobCache.InMemory.InvalidateAll();
                     },
                     MvxReference.Strong);
-
-            Mvx.IoCProvider.ConstructAndRegisterSingleton<BackgroundLogger, BackgroundLogger>();
 
             Mvx.IoCProvider.RegisterType<PersistedEventWriter>();
             Mvx.IoCProvider.RegisterType<FirebaseConfigUpdater>();

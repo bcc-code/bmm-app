@@ -1,6 +1,4 @@
-﻿using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
-using Microsoft.Maui.Devices;
+﻿using Microsoft.Maui.Devices;
 
 namespace BMM.Core.Helpers
 {
@@ -15,9 +13,6 @@ namespace BMM.Core.Helpers
         
         public static void IOSRegister()
         {
-            if (!AppCenter.Configured)
-                AppCenter.Start(GlobalConstants.iOSAppSecret, typeof(Analytics));
-                    
             if (ShouldInitSentry)
                 SentrySdk.Init(SetupSentry);
         }

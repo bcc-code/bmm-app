@@ -1,6 +1,6 @@
 using BMM.Core.Helpers;
-using Microsoft.AppCenter;
-using Microsoft.AppCenter.Analytics;
+using Com.Newrelic.Agent.Android;
+using DroidNewRelic = Com.Newrelic.Agent.Android.NewRelic;
 
 namespace BMM.UI.Droid.Application.Helpers;
 
@@ -8,12 +8,29 @@ public class DroidAnalyticsInitializer
 {
     public static void Init()
     {
-        if (!AppCenter.Configured)
-            AppCenter.Start(GlobalConstants.DroidAppSecret, typeof(Analytics));
-
+        InitNewRelic();
         InitSentry();
     }
-    
+
+    private static void InitNewRelic()
+    {
+        if (GlobalConstants.NewRelicAndroidToken.Contains(GlobalConstants.Placeholder))
+            return;
+        
+        DroidNewRelic.DisableFeature(FeatureFlag.CrashReporting);
+        DroidNewRelic.DisableFeature(FeatureFlag.NetworkRequests);
+        DroidNewRelic.DisableFeature(FeatureFlag.NetworkErrorRequests);
+        DroidNewRelic.DisableFeature(FeatureFlag.InteractionTracing);
+        DroidNewRelic.DisableFeature(FeatureFlag.DistributedTracing);
+        DroidNewRelic.EnableFeature(FeatureFlag.OfflineStorage);
+        
+        var newRelic = DroidNewRelic.WithApplicationToken(GlobalConstants.NewRelicAndroidToken)
+            !.WithLoggingEnabled(false)
+            !.WithCrashReportingEnabled(false);
+        
+        newRelic!.Start(Android.App.Application.Context);
+    }
+
     private static void InitSentry()
     {
         if (!AnalyticsInitializer.ShouldInitSentry) 

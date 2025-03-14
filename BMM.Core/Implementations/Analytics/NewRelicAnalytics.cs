@@ -8,14 +8,14 @@ using BMM.Core.Utils;
 
 namespace BMM.Core.Implementations.Analytics
 {
-    public class AppCenterAnalytics : IAnalytics
+    public class NewRelicAnalytics : IAnalytics
     {
         private readonly ILogger _logger;
         private readonly IUserStorage _userStorage;
         private readonly IFirebaseRemoteConfig _remoteConfig;
         private readonly IConnection _connection;
 
-        public AppCenterAnalytics(
+        public NewRelicAnalytics(
             ILogger logger,
             IUserStorage userStorage,
             IFirebaseRemoteConfig remoteConfig,
@@ -48,9 +48,9 @@ namespace BMM.Core.Implementations.Analytics
             
             parameters.Add(AnalyticsConstants.ConnectionParameterName, AnalyticsUtils.GetConnectionType(_connection));
 
-            Dictionary<string, string> dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
+            var dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
             _logger.Info("Analytics", eventName + " {" + string.Join(",", dString.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent(eventName, dString);
+            _logger.TrackEvent(eventName, dString);
         }
     }
 }

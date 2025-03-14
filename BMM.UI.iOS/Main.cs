@@ -1,4 +1,5 @@
 using BMM.Core.Helpers;
+using BMM.UI.iOS.Utils;
 
 namespace BMM.UI.iOS
 {
@@ -7,7 +8,7 @@ namespace BMM.UI.iOS
         // This is the main entry point of the application.
         private static void Main(string[] args)
         {
-            AnalyticsInitializer.IOSRegister();
+            iOSAnalyticsInitializer.Init();
             BmmApplication.Main(args, "BmmApplication", "AppDelegate");
         }
     }
