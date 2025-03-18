@@ -31,7 +31,6 @@ public class DroidAnalyticsInitializer
         DroidNewRelic.DisableFeature(FeatureFlag.DistributedTracing);
         DroidNewRelic.DisableFeature(FeatureFlag.CrashReporting);
         DroidNewRelic.DisableFeature(FeatureFlag.LogReporting);
-        DroidNewRelic.DisableFeature(FeatureFlag.OfflineStorage);
         DroidNewRelic.DisableFeature(FeatureFlag.BackgroundReporting);
         DroidNewRelic.EnableFeature(FeatureFlag.OfflineStorage);
         
