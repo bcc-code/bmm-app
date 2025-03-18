@@ -17,11 +17,21 @@ public class DroidAnalyticsInitializer
         if (GlobalConstants.NewRelicAndroidToken.Contains(GlobalConstants.Placeholder))
             return;
         
-        DroidNewRelic.DisableFeature(FeatureFlag.CrashReporting);
         DroidNewRelic.DisableFeature(FeatureFlag.NetworkRequests);
         DroidNewRelic.DisableFeature(FeatureFlag.NetworkErrorRequests);
+        DroidNewRelic.DisableFeature(FeatureFlag.HandledExceptions);
+        DroidNewRelic.DisableFeature(FeatureFlag.DefaultInteractions);
+        DroidNewRelic.DisableFeature(FeatureFlag.HttpResponseBodyCapture);
+        DroidNewRelic.DisableFeature(FeatureFlag.AppStartMetrics);
         DroidNewRelic.DisableFeature(FeatureFlag.InteractionTracing);
+        DroidNewRelic.DisableFeature(FeatureFlag.FedRampEnabled);
+        DroidNewRelic.DisableFeature(FeatureFlag.NativeReporting);
+        DroidNewRelic.DisableFeature(FeatureFlag.ApplicationExitReporting);
+        DroidNewRelic.DisableFeature(FeatureFlag.Jetpack);
         DroidNewRelic.DisableFeature(FeatureFlag.DistributedTracing);
+        DroidNewRelic.DisableFeature(FeatureFlag.CrashReporting);
+        DroidNewRelic.DisableFeature(FeatureFlag.LogReporting);
+        DroidNewRelic.DisableFeature(FeatureFlag.BackgroundReporting);
         DroidNewRelic.EnableFeature(FeatureFlag.OfflineStorage);
         
         var newRelic = DroidNewRelic.WithApplicationToken(GlobalConstants.NewRelicAndroidToken)
