@@ -20,8 +20,21 @@ public class iOSAnalyticsInitializer
         NewRelic.EnableCrashReporting(false);
         NewRelic.DisableFeatures(
             NRMAFeatureFlags.RequestErrorEvents
+            | NRMAFeatureFlags.ExperimentalNetworkingInstrumentation
+            | NRMAFeatureFlags.DefaultInteractions
+            | NRMAFeatureFlags.SwiftAsyncURLSessionSupport
+            | NRMAFeatureFlags.HttpResponseBodyCapture
+            | NRMAFeatureFlags.AppStartMetrics
             | NRMAFeatureFlags.NetworkRequestEvents
-            | NRMAFeatureFlags.InteractionTracing);
+            | NRMAFeatureFlags.InteractionTracing
+            | NRMAFeatureFlags.FedRampEnabled
+            | NRMAFeatureFlags.HandledExceptionEvents
+            | NRMAFeatureFlags.NewEventSystem
+            | NRMAFeatureFlags.WebViewInstrumentation
+            | NRMAFeatureFlags.GestureInstrumentation
+            | NRMAFeatureFlags.DistributedTracing
+            | NRMAFeatureFlags.NSURLSessionInstrumentation
+            | NRMAFeatureFlags.SwiftInteractionTracing);
         NewRelic.EnableFeatures(
             NRMAFeatureFlags.OfflineStorage);
         NRLogger.SetLogLevels((uint)NRLogLevels.Info);
