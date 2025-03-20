@@ -1,19 +1,20 @@
 ﻿using System.Globalization;
-using System.Linq;
 using BMM.Api.Abstraction;
 using BMM.Core.Constants;
 using BMM.Core.Helpers;
-using BMM.Core.ViewModels;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 
 namespace BMM.Core.Implementations.TrackInformation.Strategies
 {
     public class AudiobookPodcastInfoProvider : ITrackInfoProvider, ISpecificTrackInfoProvider
     {
         private readonly ITrackInfoProvider _defaultInfoProvider;
+        private readonly IFirebaseRemoteConfig _remoteConfig;
 
-        public AudiobookPodcastInfoProvider(ITrackInfoProvider defaultInfoProvider)
+        public AudiobookPodcastInfoProvider(ITrackInfoProvider defaultInfoProvider, IFirebaseRemoteConfig remoteConfig)
         {
             _defaultInfoProvider = defaultInfoProvider;
+            _remoteConfig = remoteConfig;
         }
 
         public TrackInformation GetTrackInformation(ITrackModel track, CultureInfo culture)
@@ -27,13 +28,7 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
 
         public bool HasSpecificStyling(ITrackModel track)
         {
-            return track.Tags.Contains(PodcastsConstants.FromKaareTagName)
-                   || track.Tags.Contains(PodcastsConstants.ForbildeTagName)
-                   || track.Tags.Contains(PodcastsConstants.RomanPodcastTagName)
-                   || track.Tags.Contains(PodcastsConstants.GibraltarPodcastTagName)
-                   || track.Tags.Contains(AslaksenConstants.HebrewTagName)
-                   || track.Tags.Contains(AslaksenConstants.AsklaksenTagName)
-                   || track.Tags.Contains(PodcastsConstants.HvheTagName);
+            return _remoteConfig.ContainsDailyPodcastTag(track.Tags);
         }
 
         public TrackInformation GetTrackInformation(ITrackModel track, CultureInfo culture, TrackInformation defaultTrack)
@@ -41,7 +36,7 @@ namespace BMM.Core.Implementations.TrackInformation.Strategies
             // We want to split the weekday from the rest of the pattern. Technically it would be better to set the order dynamically in case there is a language that commonly puts the weekday after the date.
             var patternWithoutWeekday = culture.DateTimeFormat.LongDatePattern.Replace("dddd", "").Trim().Trim(',').Trim();
 
-            if (track.Tags.Contains(AslaksenConstants.AsklaksenTagName))
+            if (track.Tags.Contains(PodcastsConstants.AsklaksenTagName))
             {
                 return new TrackInformation
                 {

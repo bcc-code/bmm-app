@@ -11,13 +11,6 @@ public static class TrackExtensions
     {
         return (bool)track.Relations?.Any(relation => relation.Type == TrackRelationType.External);
     }
-    
-    public static bool IsBibleStudyProjectTrack(this Track track)
-    {
-        return track.Tags.Any(c =>
-            c == PodcastsConstants.ForbildeTagName || c == PodcastsConstants.RomanPodcastTagName ||
-            c == PodcastsConstants.GibraltarPodcastTagName || c == PodcastsConstants.HvheTagName);
-    }
 
     public static bool IsForbildeProjectTrack(this Track track)
     {

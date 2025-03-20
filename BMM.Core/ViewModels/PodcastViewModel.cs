@@ -18,6 +18,7 @@ using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.DownloadManager;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Implementations.UI;
@@ -100,7 +101,10 @@ namespace BMM.Core.ViewModels
             }
         }
 
-        public override int CurrentLimit => Podcast?.Id == AslaksenConstants.FraBegynnelsenPodcastId ? 60 : base.CurrentLimit;
+        public override int CurrentLimit =>
+            Podcast?.ShowInChronologicalOrder == true
+                ? 100
+                : base.CurrentLimit;
 
         public bool ShowSharingInfo => false;
 
@@ -129,8 +133,9 @@ namespace BMM.Core.ViewModels
             ITrackPOFactory trackPOFactory,
             IDocumentsPOFactory documentsPOFactory,
             ISettingsStorage settingsStorage,
-            IMediaPlayer mediaPlayer)
-            : base(trackPOFactory, downloadedOnlyFilter)
+            IMediaPlayer mediaPlayer,
+            IFirebaseRemoteConfig remoteConfig)
+            : base(trackPOFactory, remoteConfig, downloadedOnlyFilter)
         {
             _podcastDownloader = podcastDownloader;
             _connection = connection;
@@ -220,29 +225,21 @@ namespace BMM.Core.ViewModels
             var existingDocs = startIndex == 0 ? new List<IDocumentPO>() as IEnumerable<IDocumentPO> : Documents;
 
             IEnumerable<Document> itemsWithChapters;
-            switch (Podcast.Id)
+            if (Podcast.ShowInChronologicalOrder)
             {
-                case PodcastsConstants.FraKårePodcastId:
-                case PodcastsConstants.ForbildePodcastId:
-                case PodcastsConstants.RomanPodcastId:
-                case PodcastsConstants.GibraltarPodcastId:
-                case PodcastsConstants.HvhePodcastId:
-                    itemsWithChapters = _weekOfTheYearChapterStrategy.AddChapterHeaders(items, existingDocs);
-                    break;
-
-                case AslaksenConstants.AslaksenPodcastId:
-                    itemsWithChapters = _aslaksenTagChapterStrategy.AddChapterHeaders(items, existingDocs);
-                    break;
-
-                // BTV asked to change the order of tracks for the Hebrew podcast
-                case AslaksenConstants.HebrewPodcastId:
-                case AslaksenConstants.FraBegynnelsenPodcastId:
-                    itemsWithChapters = items.OrderBy(x => x.Order).ToList();
-                    break;
-
-                default:
-                    itemsWithChapters = items;
-                    break;
+                itemsWithChapters = items.OrderBy(x => x.Order).ToList();
+            }
+            else if (Podcast.UseWeekGrouping)
+            {
+                itemsWithChapters = _weekOfTheYearChapterStrategy.AddChapterHeaders(items, existingDocs);
+            }
+            else if (Podcast.Id == PodcastsConstants.AslaksenPodcastId)
+            {
+                itemsWithChapters = _aslaksenTagChapterStrategy.AddChapterHeaders(items, existingDocs);
+            }
+            else
+            {
+                itemsWithChapters = items;
             }
 
             return _documentsPOFactory.Create(

@@ -5,6 +5,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Helpers.PresentationHints;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Messages;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
@@ -20,18 +21,20 @@ namespace BMM.Core.GuardedActions.Tracks
     {
         private readonly IMvxNavigationService _navigationService;
         private readonly IMvxMessenger _mvxMessenger;
+        private readonly IFirebaseRemoteConfig _remoteConfig;
 
-        public ShowTrackInfoAction(IMvxNavigationService navigationService, IMvxMessenger mvxMessenger)
+        public ShowTrackInfoAction(IMvxNavigationService navigationService, IMvxMessenger mvxMessenger, IFirebaseRemoteConfig remoteConfig)
         {
             _navigationService = navigationService;
             _mvxMessenger = mvxMessenger;
+            _remoteConfig = remoteConfig;
         }
         
         protected override async Task Execute(Track track)
         {
             await ClosePlayer();
             
-            if (track.IsBibleStudyProjectTrack())
+            if (_remoteConfig.ContainsDailyPodcastTag(track.Tags))
             {
                 await _navigationService.Navigate<BibleStudyViewModel, IBibleStudyParameters>(new BibleStudyParameters(track));
                 return;
