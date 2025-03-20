@@ -278,11 +278,7 @@ namespace BMM.Core.Implementations.PlayObserver
                     return;
                 }
 
-                if (CurrentTrack.Tags?.Contains(PodcastsConstants.FromKaareTagName) == true ||
-                    CurrentTrack.Tags?.Contains(PodcastsConstants.ForbildeTagName) == true ||
-                    CurrentTrack.Tags?.Contains(PodcastsConstants.RomanPodcastTagName) == true ||
-                    CurrentTrack.Tags?.Contains(PodcastsConstants.GibraltarPodcastTagName) == true ||
-                    CurrentTrack.Tags?.Contains(PodcastsConstants.HvheTagName) == true)
+                if (CurrentTrack.Tags != null && _config.ContainsDailyPodcastTag(CurrentTrack.Tags))
                     _messenger.Publish(new StreakTrackCompletedMessage(this) {Track = CurrentTrack, Measurements = measurements});
 
                 LogListenedPortionsIfUniqueSecondsListenedAreGreaterThanSpentTime(measurements.UniqueSecondsListened, measurements.SpentTime);

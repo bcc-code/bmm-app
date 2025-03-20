@@ -1,6 +1,5 @@
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
-using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.BibleStudy.Interfaces;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
@@ -104,7 +103,7 @@ namespace BMM.Core.ViewModels
             var age = _config.SendAgeToDiscover ? _user.GetUser().Age : null;
             var docs = (await Client.Discover.GetDocuments(age, await _deviceInfo.GetCurrentTheme() , policy)).ToList();
             await _streakObserver.UpdateStreakIfLocalVersionIsNewer(docs);
-            var filteredDocs = await HideElementsInList(HideTeaserPodcastsInList(docs));
+            var filteredDocs = await HideElementsInList(docs);
             var docsWithCoversCarousel = await _prepareCoversCarouselItemsAction.ExecuteGuarded(filteredDocs);
             var presentationItems = await _prepareTileCarouselItemsAction.ExecuteGuarded(docsWithCoversCarousel);
             SetAdditionalElements(presentationItems);
@@ -163,17 +162,6 @@ namespace BMM.Core.ViewModels
                     DocumentType.GibraltarProjectBox,
                     DocumentType.HvheProjectBox))
                 .ToList();
-        }
-
-        private IList<Document> HideTeaserPodcastsInList(IList<Document> documents)
-        {
-            var unwantedDocs = documents
-                .TakeWhile(d => d.DocumentType != DocumentType.DiscoverSectionHeader)
-                .Where(d => d.DocumentType == DocumentType.Podcast)
-                .Where(d => d.Id == PodcastsConstants.FraKårePodcastId || d.Id == AslaksenConstants.AslaksenPodcastId ||
-                            d.Id == PodcastsConstants.ForbildePodcastId || d.Id == PodcastsConstants.RomanPodcastId ||
-                            d.Id == PodcastsConstants.GibraltarPodcastId || d.Id == PodcastsConstants.HvhePodcastId);
-            return documents.Except(unwantedDocs).ToList();
         }
 
         private (List<Track> Tracks, bool ShouldLoadAdditionalMusic) GetAdjacentTracksInSameSection(IDocumentPO item)

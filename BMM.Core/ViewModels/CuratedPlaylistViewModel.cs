@@ -8,6 +8,7 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Base.Interfaces;
@@ -61,14 +62,15 @@ namespace BMM.Core.ViewModels
             ITrackPOFactory trackPOFactory,
             IShareLink shareLink,
             IMvxMainThreadAsyncDispatcher mainThreadAsyncDispatcher,
-            IOfflinePlaylistStorage offlinePlaylistStorage)
+            IOfflinePlaylistStorage offlinePlaylistStorage,
+            IFirebaseRemoteConfig firebaseRemoteConfig)
             : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
         {
             _playlistManager = playlistManager;
             _trackPOFactory = trackPOFactory;
             _mainThreadAsyncDispatcher = mainThreadAsyncDispatcher;
             _offlinePlaylistStorage = offlinePlaylistStorage;
-            TrackInfoProvider = new AudiobookPodcastInfoProvider(TrackInfoProvider);
+            TrackInfoProvider = new AudiobookPodcastInfoProvider(TrackInfoProvider, firebaseRemoteConfig);
             ShareCommand = new ExceptionHandlingCommand(() => shareLink.Share(CuratedPlaylist));
             AddToTrackCollectionCommand = new ExceptionHandlingCommand(() => AddToTrackCollection(CuratedPlaylist.Id, DocumentType.Playlist));
         }

@@ -219,7 +219,7 @@ namespace BMM.Core.Implementations.DeepLinking
 
         private async Task PlayFraKaare()
         {
-            var items = await _client.Podcast.GetTracks(PodcastsConstants.FraKårePodcastId, CachePolicy.UseCacheAndWaitForUpdates);
+            var items = await _client.Podcast.GetTracks(_remoteConfig.CurrentPodcastId, CachePolicy.UseCacheAndWaitForUpdates);
             var trackToPlay = items.Take(1).ToList();
             await PlayTracks(trackToPlay, PlaybackOriginName);
         }

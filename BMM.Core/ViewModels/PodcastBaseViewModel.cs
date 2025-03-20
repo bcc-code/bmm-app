@@ -1,6 +1,7 @@
 ﻿using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.ViewModels.Base;
 
@@ -12,6 +13,7 @@ namespace BMM.Core.ViewModels
 
         public PodcastBaseViewModel(
             ITrackPOFactory trackPOFactory,
+            IFirebaseRemoteConfig remoteConfig,
             IDocumentFilter documentFilter = null)
             : base(trackPOFactory, documentFilter)
         {
@@ -20,7 +22,7 @@ namespace BMM.Core.ViewModels
                 Title = ""
             };
 
-            TrackInfoProvider = new AudiobookPodcastInfoProvider(TrackInfoProvider);
+            TrackInfoProvider = new AudiobookPodcastInfoProvider(TrackInfoProvider, remoteConfig);
         }
 
         public Podcast Podcast

@@ -9,6 +9,7 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Test.Unit.ViewModels.Base;
 using BMM.Core.ViewModels;
 using Moq;
@@ -35,7 +36,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 new Mock<IConnection>().Object,
                 new Mock<INetworkSettings>().Object,
                 new Mock<IAlbumManager>().Object,
-                new Mock<IOfflineAlbumStorage>().Object);
+                new Mock<IOfflineAlbumStorage>().Object,
+                new Mock<IFirebaseRemoteConfig>().Object);
 
             // Act
             await album.LoadItems();

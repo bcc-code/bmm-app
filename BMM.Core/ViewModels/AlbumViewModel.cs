@@ -12,6 +12,7 @@ using BMM.Core.Implementations.DocumentFilters;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.FileStorage;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base.Interfaces;
@@ -71,7 +72,8 @@ namespace BMM.Core.ViewModels
             IConnection connection,
             INetworkSettings networkSettings,
             IAlbumManager albumManager,
-            IOfflineAlbumStorage offlineAlbumStorage)
+            IOfflineAlbumStorage offlineAlbumStorage,
+            IFirebaseRemoteConfig firebaseRemoteConfig)
             : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
         {
             _playOrResumePlayAction = playOrResumePlayAction;
@@ -83,7 +85,7 @@ namespace BMM.Core.ViewModels
             AddToPlaylistCommand = new ExceptionHandlingCommand(async () => await AddToTrackCollection(Album.Id, DocumentType.Album));
             ShareCommand = new ExceptionHandlingCommand(async () => await shareLink.Share(_album));
 
-            var audiobookStyler = new AudiobookPodcastInfoProvider(TrackInfoProvider);
+            var audiobookStyler = new AudiobookPodcastInfoProvider(TrackInfoProvider, firebaseRemoteConfig);
             TrackInfoProvider = new CustomTrackInfoProvider(TrackInfoProvider,
                 (track, culture, defaultTrack) =>
                 {

@@ -14,5 +14,7 @@ namespace BMM.Api.Implementation.Models
         public string Language { get; set; }
 
         public string Title { get; set; }
+        public bool UseWeekGrouping { get; set; }
+        public bool ShowInChronologicalOrder { get; set; }
     }
 }
