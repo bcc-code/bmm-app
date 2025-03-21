@@ -1,15 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Acr.UserDialogs;
 using BMM.Core.Helpers;
-using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Device;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
-using BMM.Core.Implementations.Languages;
 using BMM.Core.Implementations.Notifications;
-using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Storage;
 using BMM.Core.Messages;
@@ -17,47 +9,40 @@ using BMM.Core.Models.Themes;
 using BMM.UI.iOS.Actions.Interfaces;
 using BMM.UI.iOS.Implementations.Download;
 using BMM.UI.iOS.Implementations.Notifications;
-using BMM.UI.iOS.Utils;
 using Firebase.CloudMessaging;
-using Foundation;
 using Intents;
 using MvvmCross;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Plugin.Messenger;
-using UIKit;
 using UserNotifications;
 
 namespace BMM.UI.iOS
 {
     [Register(nameof(AppDelegate))]
-    public class AppDelegate : MvxApplicationDelegate<IosSetup, Core.App>
+    public class AppDelegate : BmmApplicationDelegate<IosSetup, Core.App>
     {
         private FirebaseMessagingDelegate _messagingDelegate;
+        private UIApplication _app;
         private bool DarkModeSupported => UIDevice.CurrentDevice.CheckSystemVersion(13, 0);
         public static UIWindow MainWindow;
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            var result = base.FinishedLaunching(app, options);
-
+            bool result = base.FinishedLaunching(app, options);
+            _app = app;
+            
             // Code to start the Xamarin Test Cloud Agent
 #if ENABLE_TEST_CLOUD
             // https://github.com/microsoft/appcenter/issues/2416
             //            Xamarin.Calabash.Start();
 #endif
 
-// #if !ENABLE_TEST_CLOUD
-            RegisterForNotifications(app);
-// #endif
+            _app!.ApplicationIconBadgeNumber = new IntPtr(0);
 
-            app.ApplicationIconBadgeNumber = new IntPtr(0);
-
-            SetThemeForApp();
-            MainWindow = Window;
             return result;
         }
-
-        private void SetThemeForApp()
+        
+        public void SetThemeForApp()
         {
             var theme = AppSettings.SelectedTheme;
 
@@ -137,7 +122,7 @@ namespace BMM.UI.iOS
             IosFileDownloader.BackgroundSessionCompletionHandler = completionHandler;
         }
 
-        private void RegisterForNotifications(UIApplication app)
+        public void RegisterForNotifications()
         {
             _messagingDelegate = new FirebaseMessagingDelegate();
             Messaging.SharedInstance.Delegate = _messagingDelegate;
@@ -147,7 +132,7 @@ namespace BMM.UI.iOS
 
             UNUserNotificationCenter.Current.Delegate = Mvx.IoCProvider.Create<UserNotificationCenterDelegate>();
 
-            app.RegisterForRemoteNotifications();
+            _app.RegisterForRemoteNotifications();
         }
 
         /// <summary>
