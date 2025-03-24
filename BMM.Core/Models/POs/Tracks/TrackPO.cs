@@ -151,13 +151,7 @@ namespace BMM.Core.Models.POs.Tracks
         
         private bool TrackIsTeaserPodcast()
         {
-            return Track.Tags.Contains(PodcastsConstants.FromKaareTagName) ||
-                   Track.Tags.Contains(PodcastsConstants.ForbildeTagName) ||
-                   Track.Tags.Contains(PodcastsConstants.RomanPodcastTagName) ||
-                   Track.Tags.Contains(PodcastsConstants.GibraltarPodcastTagName) ||
-                   Track.Tags.Contains(PodcastsConstants.HvheTagName) ||
-                   Track.Tags.Contains(AslaksenConstants.AsklaksenTagName) ||
-                   Track.Tags.Contains(AslaksenConstants.HebrewTagName);
+            return _config.ContainsDailyPodcastTag(Track.Tags);
         }
     }
 

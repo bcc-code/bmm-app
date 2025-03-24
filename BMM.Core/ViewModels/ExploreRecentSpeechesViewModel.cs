@@ -1,13 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using BMM.Api.Abstraction;
+﻿using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.ViewModels.Base;
 
@@ -33,7 +29,7 @@ namespace BMM.Core.ViewModels
                 size: size,
                 @from: startIndex,
                 contentTypes: _trackSubTypes,
-                excludeTags: new List<string> { PodcastsConstants.FromKaareTagName, AslaksenConstants.AsklaksenTagName }))
+                excludeTags: new List<string> { PodcastsConstants.FromKaareTagName }))
                 .Select(t => TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
     }

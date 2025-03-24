@@ -56,12 +56,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
 
             bool autoplayEnabled = await _settingsStorage.GetAutoplayEnabled();
 
-            if (parameter.ShufflePodcastId != PodcastsConstants.FraKårePodcastId
-                && parameter.ShufflePodcastId != PodcastsConstants.ForbildePodcastId
-                && parameter.ShufflePodcastId != PodcastsConstants.BergprekenPodcastId
-                && parameter.ShufflePodcastId != PodcastsConstants.RomanPodcastId
-                && parameter.ShufflePodcastId != PodcastsConstants.GibraltarPodcastId
-                && parameter.ShufflePodcastId != PodcastsConstants.HvhePodcastId)
+            if (parameter.ShufflePodcastId.HasValue)
             {
                 _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));
             }

@@ -14,6 +14,7 @@ using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.TrackListenedObservation;
@@ -108,7 +109,8 @@ namespace BMM.Core.Test.Unit.ViewModels
                 _trackPOFactoryMock.Object,
                 _documentsPOFactoryMock.Object,
                 _settingsStorageMock.Object,
-                _mediaPlayerMock.Object);
+                _mediaPlayerMock.Object,
+                new Mock<IFirebaseRemoteConfig>().Object);
 
             viewModel.TextSource = _languageBinder.Object;
             return viewModel;

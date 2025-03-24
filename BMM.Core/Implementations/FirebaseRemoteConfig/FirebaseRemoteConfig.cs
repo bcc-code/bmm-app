@@ -57,6 +57,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             public const string EnableReadingTranscriptions = "enable_reading_transcriptions";
             
             public const string IsBadgesFeatureEnabled = "is_badges_feature_enabled";
+            public static string DailyPodcastTags = "daily_podcast_tags";
         }
 
         public static readonly Dictionary<string, string> Defaults = new()
@@ -91,6 +92,7 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
             {Variables.AutoSubscribePodcasts, $"{PodcastsConstants.FraKårePodcastId}"},
             {Variables.EnableReadingTranscriptions, false.ToString()},
             {Variables.IsBadgesFeatureEnabled, true.ToString()},
+            {Variables.DailyPodcastTags, "fra-kaare,hebreerbrevet,aslaksen - troens ord,forbilde-podcast,romans-podcast,gibraltar-podcast,hvhe-podcast"}
         };
 
         public FirebaseRemoteConfig(IPlatformSpecificRemoteConfig platformSpecificRemoteConfig, SemanticVersionParser semanticVersionParser)
@@ -146,6 +148,8 @@ namespace BMM.Core.Implementations.FirebaseRemoteConfig
         public bool ShowBlueDotForMessages => _platformSpecificRemoteConfig.GetBoolValue(Variables.ShowBlueDotForMessages);
         public bool ShowBlueDotForSongs => _platformSpecificRemoteConfig.GetBoolValue(Variables.ShowBlueDotForSongs);
         public int CurrentPodcastId => _platformSpecificRemoteConfig.GetIntValue(Variables.CurrentPodcastId);
+        public string[] DailyPodcastTags => _platformSpecificRemoteConfig.GetStringValue(Variables.DailyPodcastTags).Split(',');
+        public bool ContainsDailyPodcastTag(IEnumerable<string> tags) => tags.Any(t => DailyPodcastTags.Contains(t));
 
         public SemanticVersion AndroidVersionPlannedToBeUnsupported =>
             _semanticVersionParser.ParseStringToSemanticVersionObject(
