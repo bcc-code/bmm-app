@@ -14,5 +14,7 @@
 	</array>
 	<key>com.apple.developer.siri</key>
 	<true/>
+    <key>com.apple.developer.carplay-audio</key>
+    <true/>
 </dict>
 </plist>
