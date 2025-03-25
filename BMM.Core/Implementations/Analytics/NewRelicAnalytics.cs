@@ -1,4 +1,5 @@
-﻿using BMM.Api.Framework;
+﻿using System.Globalization;
+using BMM.Api.Framework;
 using BMM.Api.Implementation.Constants;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
@@ -47,8 +48,18 @@ namespace BMM.Core.Implementations.Analytics
                 parameters.AddIfNew(HeaderNames.ExperimentId, _remoteConfig.ExperimentId);
             
             parameters.Add(AnalyticsConstants.ConnectionParameterName, AnalyticsUtils.GetConnectionType(_connection));
-
-            var dString = parameters.ToDictionary(k => k.Key, k => k.Value == null ? "null" : k.Value.ToString());
+            
+            var dString = parameters.ToDictionary(
+                k => k.Key,
+                k =>
+                {
+                    return k.Value switch
+                    {
+                        null => "null",
+                        IFormattable formattable => formattable.ToString(null, CultureInfo.InvariantCulture),
+                        _ => k.Value.ToString()
+                    };
+                });
             _logger.Info("Analytics", eventName + " {" + string.Join(",", dString.Select(kv => $"{kv.Key}={kv.Value}")) + "}");
             _logger.TrackEvent(eventName, dString);
         }
