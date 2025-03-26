@@ -68,7 +68,8 @@ namespace BMM.UI.iOS
             // Since we need Firebase already in the dependency injection initialization we have to configure it here.
             // FinishedLaunching of the AppDelegate (as suggested in the Firebase docs) would be to late
             // because it's called after creating the DI containers in Mvx.
-            Firebase.Core.App.Configure();
+            if (Firebase.Core.App.DefaultInstance == null)
+                Firebase.Core.App.Configure();
 
             iocProvider.LazyConstructAndRegisterSingleton<IOldSecureStorage, iOSOldSecureStorage>();
             iocProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, iOSUserDialogsFactory>();
@@ -135,7 +136,7 @@ namespace BMM.UI.iOS
 
             return new SerilogLoggerFactory();
         }
-
+        
         public override void InitializeSecondary()
         {
             base.InitializeSecondary();

@@ -1,7 +1,11 @@
+using System.Reflection;
 using BMM.Core.Implementations;
 using CoreFoundation;
 using MvvmCross;
+using MvvmCross.Base;
+using MvvmCross.Binding;
 using MvvmCross.Core;
+using MvvmCross.IoC;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Platforms.Ios.Presenters;
 using MvvmCross.ViewModels;
@@ -21,6 +25,11 @@ public class BmmWindowSceneDelegate : UIResponder, IUIWindowSceneDelegate
             return;
         
         Window = new UIWindow(windowScene);
+        
+        MvxSingleton.ClearAllSingletons();
+        typeof(MvxIoCProvider)
+            .GetProperty("Instance", BindingFlags.Static | BindingFlags.Public)
+            ?.SetValue(null, null);
         
         MvxIosSetupSingleton.EnsureSingletonAvailable(AppDelegateInstance, Window).EnsureInitialized();
         RunAppStart();
