@@ -24,7 +24,7 @@ namespace BMM.Core.Implementations.ApiClients
 
         public Task<IList<Podcast>> GetAll(CachePolicy cachePolicy)
         {
-            return _clientCache.Get(() => _client.GetAll(cachePolicy), cachePolicy, TimeSpan.FromHours(24), CacheKeys.PodcastGetAll);
+            return _clientCache.Get(() => _client.GetAll(cachePolicy), cachePolicy, TimeSpan.FromHours(24), CacheKeys.PodcastGetAll2);
         }
 
         public async Task<Podcast> GetById(int id, CachePolicy cachePolicy)

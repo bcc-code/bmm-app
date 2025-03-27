@@ -3,7 +3,7 @@
     public enum CacheKeys
     {
         TracksGetAll,
-        PodcastGetAll,
+        PodcastGetAll2,
         PodcastGetTracks,
         TrackCollectionGetAll,
         TrackCollectionGetById,
