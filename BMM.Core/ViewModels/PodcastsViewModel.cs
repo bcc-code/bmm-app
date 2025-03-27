@@ -14,7 +14,7 @@ namespace BMM.Core.ViewModels
 {
     public class PodcastsViewModel : DocumentsViewModel
     {
-        public override CacheKeys? CacheKey => CacheKeys.PodcastGetAll;
+        public override CacheKeys? CacheKey => CacheKeys.PodcastGetAll2;
 
         public PodcastsViewModel(IDocumentFilter filter = null) : base(filter)
         { }

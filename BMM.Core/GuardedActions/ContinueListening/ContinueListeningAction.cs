@@ -56,10 +56,8 @@ namespace BMM.Core.GuardedActions.ContinueListening
 
             bool autoplayEnabled = await _settingsStorage.GetAutoplayEnabled();
 
-            if (parameter.ShufflePodcastId.HasValue)
-            {
+            if (!parameter.ShufflePodcastId.HasValue)
                 _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));
-            }
             else if (autoplayEnabled)
                 await _enqueueMusicAction.ExecuteGuarded();
         }
