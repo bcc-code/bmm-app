@@ -39,8 +39,14 @@
 	<array>
 		<string>audio</string>
 		<string>remote-notification</string>
+		<string>processing</string>
+		<string>fetch</string>
 	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
+    <key>BGTaskSchedulerPermittedIdentifiers</key>
+    <array>
+        <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+    </array>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
