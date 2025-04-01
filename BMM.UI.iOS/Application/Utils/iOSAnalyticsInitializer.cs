@@ -36,7 +36,8 @@ public class iOSAnalyticsInitializer
             | NRMAFeatureFlags.NSURLSessionInstrumentation
             | NRMAFeatureFlags.SwiftInteractionTracing);
         NewRelic.EnableFeatures(
-            NRMAFeatureFlags.OfflineStorage);
+            NRMAFeatureFlags.OfflineStorage
+            | NRMAFeatureFlags.BackgroundReporting);
         NRLogger.SetLogLevels((uint)NRLogLevels.Info);
         NewRelic.StartWithApplicationToken(GlobalConstants.NewRelic_iOSToken);
     }
