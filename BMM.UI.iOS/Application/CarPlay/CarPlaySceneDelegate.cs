@@ -24,12 +24,7 @@ namespace BMM.UI.iOS.CarPlay
         {
             _interfaceController = interfaceController;
             
-            if (Mvx.IoCProvider == null || !Mvx.IoCProvider.CanResolve<IMvxAppStart>())
-            {
-                var setup = new IosSetup();
-                setup.InitializePrimary();
-                setup.InitializeSecondary();
-            }
+            InitIoCIfNeeded();
 
             var tabBarTemplate = new CPTabBarTemplate(
             [
@@ -44,6 +39,16 @@ namespace BMM.UI.iOS.CarPlay
         public override void DidDisconnect(CPTemplateApplicationScene templateApplicationScene, CPInterfaceController interfaceController)
         {
             _interfaceController = null;
+        }
+        
+        private static void InitIoCIfNeeded()
+        {
+            if (Mvx.IoCProvider != null && Mvx.IoCProvider.CanResolve<IMvxAppStart>())
+                return;
+            
+            var setup = new IosSetup();
+            setup.InitializePrimary();
+            setup.InitializeSecondary();
         }
     }
 }
