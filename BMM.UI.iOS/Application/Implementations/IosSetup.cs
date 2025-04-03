@@ -25,6 +25,8 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Support;
 using BMM.UI.iOS.Actions;
 using BMM.UI.iOS.Bindings;
+using BMM.UI.iOS.CarPlay.Creators;
+using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.DownloadManager;
 using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
@@ -121,6 +123,7 @@ namespace BMM.UI.iOS
             iocProvider.RegisterType<IPrepareTrackOptionsAction, iOSTrackOptionsAction>();
             
             RegisterMediaPlayer(iocProvider);
+            RegisterCarPlay(iocProvider);
         }
 
         protected override ILoggerProvider CreateLogProvider()
@@ -176,6 +179,13 @@ namespace BMM.UI.iOS
             iocProvider.LazyConstructAndRegisterSingleton<MediaQueue, MediaQueue>();
             iocProvider.LazyConstructAndRegisterSingleton<IShuffleableQueue>(() => new ShuffleableQueue(iocProvider.Resolve<MediaQueue>(), iocProvider.Resolve<ILogger>()));
             iocProvider.RegisterType<IMediaQueue>(iocProvider.Resolve<IShuffleableQueue>);
+        }
+        
+        private void RegisterCarPlay(IMvxIoCProvider iocProvider)
+        {
+            iocProvider.RegisterType<IHomeLayoutCreator, HomeLayoutCreator>();
+            iocProvider.RegisterType<IBrowseLayoutCreator, BrowseLayoutCreator>();
+            iocProvider.RegisterType<IFavouritesLayoutCreator, FavouritesLayoutCreator>();
         }
 
         protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
