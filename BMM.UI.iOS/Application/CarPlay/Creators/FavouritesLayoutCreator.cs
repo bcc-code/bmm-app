@@ -55,34 +55,36 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
 
         var tracklistItems = myContentItems
             .Where(m => m is not ChapterHeaderPO)
-            .Select(async x =>
-        {
-            CPListItem trackListItem = null;
+            .Select(x =>
+            {
+                CPListItem trackListItem = null;
 
-            if (x is PinnedItemPO pinnedItemPO)
-            {
-                trackListItem = new CPListItem(pinnedItemPO.PinnedItem.Title, null);
-            }
-            else if (x is TrackCollectionPO trackCollectionPO)
-            {
-                trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, (string)converter.Convert(
-                    trackCollectionPO.TrackCollection,
-                    typeof(string),
-                    null,
-                    CultureInfo.CurrentUICulture));
-            }
-            
-            trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                if (x is PinnedItemPO pinnedItemPO)
+                {
+                    trackListItem = new CPListItem(pinnedItemPO.PinnedItem.Title, null);
+                }
+                else if (x is TrackCollectionPO trackCollectionPO)
+                {
+                    trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, (string)converter.Convert(
+                        trackCollectionPO.TrackCollection,
+                        typeof(string),
+                        null,
+                        CultureInfo.CurrentUICulture));
+                }
+                
+                trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 
-            trackListItem.Handler = async (item, block) =>
-            {
-                // await _mediaPlayer.Play(tracks.OfType<IMediaTrack>().ToList(), x.Track);
-                // var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                // await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
-                block();
-            };
-            return trackListItem;
-        });
+                trackListItem.Handler = async (item, block) =>
+                {
+                    // await _mediaPlayer.Play(tracks.OfType<IMediaTrack>().ToList(), x.Track);
+                    // var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
+                    // await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                    block();
+                };
+                
+                return trackListItem;
+            })
+            .ToList();
         
         var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
         var favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Favorites], section.EncloseInArray());
