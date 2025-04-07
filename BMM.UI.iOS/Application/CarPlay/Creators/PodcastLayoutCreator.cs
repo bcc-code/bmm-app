@@ -14,37 +14,37 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class PlaylistLayoutCreator : IPlaylistLayoutCreator
+public class PodcastLayoutCreator : IPodcastLayoutCreator
 {
-    private readonly IPlaylistClient _playlistClient;
     private readonly ITrackPOFactory _trackPOFactory;
     private readonly IMediaPlayer _mediaPlayer;
+    private readonly IPodcastClient _podcastClient;
 
-    public PlaylistLayoutCreator(
-        IPlaylistClient playlistClient,
+    public PodcastLayoutCreator(
+        IPodcastClient podcastClient,
         ITrackPOFactory trackPOFactory,
         IMediaPlayer mediaPlayer)
     {
-        _playlistClient = playlistClient;
+        _podcastClient = podcastClient;
         _trackPOFactory = trackPOFactory;
         _mediaPlayer = mediaPlayer;
     }
     
     public async Task<CPListTemplate> Create(
         CPInterfaceController cpInterfaceController,
-        int playlistId,
+        int podcastId,
         string name)
     {
-        var playlistTracks = await _playlistClient.GetTracks(playlistId, CachePolicy.UseCacheAndRefreshOutdated);
-        var audiobookPodcastInfoProvider = new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider());
+        var podcastTracks = await _podcastClient.GetTracks(podcastId, CachePolicy.UseCacheAndRefreshOutdated);
+        var trackInfoProvider = new DefaultTrackInfoProvider();
 
-        var tracksCpListItemTemplates = await Task.WhenAll(playlistTracks
+        var tracksCpListItemTemplates = await Task.WhenAll(podcastTracks
             .Select(async track =>
             {
-                var trackPO = _trackPOFactory.Create(audiobookPodcastInfoProvider, null, track);
+                var trackPO = _trackPOFactory.Create(trackInfoProvider, null, track);
                 
                 UIImage coverImage = null;
-                    
+                
                 if (!track.ArtworkUri.IsNullOrEmpty())
                 {
                     coverImage = await ImageService
@@ -58,7 +58,7 @@ public class PlaylistLayoutCreator : IPlaylistLayoutCreator
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    await _mediaPlayer.Play(playlistTracks.OfType<IMediaTrack>().ToList(), track);
+                    await _mediaPlayer.Play(podcastTracks.OfType<IMediaTrack>().ToList(), track);
                     var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
                     await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
                     block();
