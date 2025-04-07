@@ -82,7 +82,7 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                         {
                             if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.DownloadedFollowedPodcasts)
                             {
-                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create();
+                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create(cpInterfaceController);
                                 await cpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
                             }
 

@@ -82,33 +82,6 @@ public class HomeLayoutCreator : IHomeLayoutCreator
 
         exploreImageRowItem.ListImageRowHandler = async (item, index, block) =>
         {
-            // var loadingItem = new CPListItem(text: "Loading...", detailText: null);
-            // var section = new CPListSection(loadingItem.EncloseInArray().OfType<ICPListTemplateItem>().ToArray());
-            // var template = new CPListTemplate(title: podcasts.First().Title, sections: [section]);
-            //
-            // await cpInterfaceController.PushTemplateAsync(template, true);
-            // var tracks = await _podcastClient.GetTracks(podcasts.First().Id, CachePolicy.UseCacheAndRefreshOutdated);
-            // var tracksPO = tracks.Select(x => _trackFactory.Create(
-            //     new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider()),
-            //     null,
-            //     x));
-            //
-            // var tracksListItem = tracksPO.Select(x =>
-            // {
-            //     var trackListitem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}");
-            //     trackListitem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
-            //     trackListitem.Handler = async (item, block) =>
-            //     {
-            //         await _mediaPlayer.Play(tracks.OfType<IMediaTrack>().ToList(), x.Track);
-            //         var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-            //         await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
-            //         block();
-            //     };
-            //     return trackListitem;
-            // });
-            // var updatedSection = new CPListSection(tracksListItem.OfType<ICPListTemplateItem>().ToArray());
-            //
-            // template.UpdateSections(updatedSection.EncloseInArray());
             block();
         };
         
@@ -131,19 +104,6 @@ public class HomeLayoutCreator : IHomeLayoutCreator
         {
             block();
         };
-
-        // var homeContributors = new List<ICPListTemplateItem>();
-        //
-        // foreach (var tile in contributors)
-        //     homeContributors.Add(new CPListItem(tile.Name, null, await ImageService.Instance.LoadUrl(tile.Cover).AsUIImageAsync()));
-        //
-        // var contributorsImageRowItem = new CPListItem(_bmmLanguageBinder[Translations.ContributorViewModel_Title], contributorsImages.ToArray(), homeContributors.Select(x => x.Name).ToArray());
-        // contributorsImageRowItem.Handler = async (item, block) =>
-        // {
-        //     Console.WriteLine("Item 3 tapped");
-        //     await Task.Delay(2000);
-        //     block();
-        // };
 
         var homeSection = new CPListSection(((ICPListTemplateItem)exploreImageRowItem).EncloseInArray());
         var contributorsSection = new CPListSection(((ICPListTemplateItem)contributorsImageRowItem).EncloseInArray());

@@ -22,20 +22,23 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
     private readonly IPodcastOfflineManager _podcastOfflineManager;
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
     private readonly IStorageManager _storageManager;
+    private readonly IPodcastLayoutCreator _podcastLayoutCreator;
 
     public FollowedPodcastsContentLayoutCreator(
         IPodcastClient podcastClient,
         IPodcastOfflineManager podcastOfflineManager,
         IBMMLanguageBinder bmmLanguageBinder,
-        IStorageManager storageManager)
+        IStorageManager storageManager,
+        IPodcastLayoutCreator podcastLayoutCreator)
     {
         _podcastClient = podcastClient;
         _podcastOfflineManager = podcastOfflineManager;
         _bmmLanguageBinder = bmmLanguageBinder;
         _storageManager = storageManager;
+        _podcastLayoutCreator = podcastLayoutCreator;
     }
 
-    public async Task<CPListTemplate> Create()
+    public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
         var podcasts = await _podcastClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
         var followedPodcasts = podcasts?
@@ -44,18 +47,20 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
             .ToList();
         
         var tracklistItems = await Task.WhenAll(followedPodcasts
-            .Select(async x =>
+            .Select(async p =>
             {
                 var coverImage = await ImageService
                     .Instance
-                    .LoadUrl(x.Cover)
+                    .LoadUrl(p.Cover)
                     .AsUIImageAsync();
                 
-                var trackListItem = new CPListItem(x.Title, null, coverImage);
+                var trackListItem = new CPListItem(p.Title, null, coverImage);
                 trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
                 
                 trackListItem.Handler = async (item, block) =>
                 {
+                    var playlistLayout = await _podcastLayoutCreator.Create(cpInterfaceController, p.Id, p.Title);
+                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                     block();
                 };
                 

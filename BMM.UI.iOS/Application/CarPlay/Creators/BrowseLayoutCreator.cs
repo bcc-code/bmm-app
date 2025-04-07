@@ -18,13 +18,22 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
 {
     private readonly IBrowseClient _browseClient;
     private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
+    private readonly IPodcastLayoutCreator _podcastLayoutCreator;
+    private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
+    private readonly IAlbumLayoutCreator _albumLayoutCreator;
 
     public BrowseLayoutCreator(
         IBrowseClient browseClient,
-        IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction)
+        IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
+        IPodcastLayoutCreator podcastLayoutCreator,
+        IPlaylistLayoutCreator playlistLayoutCreator,
+        IAlbumLayoutCreator albumLayoutCreator)
     {
         _browseClient = browseClient;
         _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
+        _podcastLayoutCreator = podcastLayoutCreator;
+        _playlistLayoutCreator = playlistLayoutCreator;
+        _albumLayoutCreator = albumLayoutCreator;
     }
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
@@ -53,7 +62,7 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
                             .LoadUrl(displayable.Cover)
                             .AsUIImageAsync();
 
-                        currentItems.Add(new ImageRowItem(image, displayable.Title));
+                        currentItems.Add(new ImageRowItem(image, displayable.Title, cover));
                     }
                     break;
             }
@@ -70,15 +79,50 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
         {
             if (currentHeader == null || !currentItems.Any())
                 return;
-            
-            imageRowItemsList.Add(new CPListImageRowItem(
+
+            var item = new CPListImageRowItem(
                 currentHeader.Title,
                 currentItems.Select(i => i.Image).ToArray(),
-                currentItems.Select(i => i.Title).ToArray()));
+                currentItems.Select(i => i.Title).ToArray());
 
+            item.UserInfo = new CoverItemInfo(currentItems.ToList());
+            item.ListImageRowHandler = async (rowItem, index, block) =>
+            {
+                var imageRowItem = ((CoverItemInfo)rowItem.UserInfo)!.ImageRowItems[(int)index];
+                if (imageRowItem.Document is Podcast podcast)
+                {
+                    var playlistLayout = await _podcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
+                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                }
+                else if (imageRowItem.Document is Playlist playlist)
+                {
+                    var playlistLayout = await _playlistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
+                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                }
+                else if (imageRowItem.Document is Album album)
+                {
+                    var playlistLayout = await _albumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
+                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                }
+            };
+            
+            imageRowItemsList.Add(item);
             currentItems.Clear();
         }
     }
     
-    public record ImageRowItem(UIImage Image, string Title);
+    public record ImageRowItem(
+        UIImage Image,
+        string Title,
+        Document Document);
+
+    public class CoverItemInfo : NSObject
+    {
+        public CoverItemInfo(IList<ImageRowItem> imageRowItems)
+        {
+            ImageRowItems = imageRowItems;
+        }
+        
+        public IList<ImageRowItem> ImageRowItems { get; }
+    }
 }

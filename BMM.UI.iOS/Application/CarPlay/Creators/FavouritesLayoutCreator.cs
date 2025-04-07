@@ -85,7 +85,7 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
                             }
                             else if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.FollowedPodcasts)
                             {
-                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create();
+                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create(cpInterfaceController);
                                 await cpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
                             }
                             

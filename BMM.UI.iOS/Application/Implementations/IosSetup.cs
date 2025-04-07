@@ -190,6 +190,8 @@ namespace BMM.UI.iOS
             iocProvider.RegisterType<IFollowedPodcastsContentLayoutCreator, FollowedPodcastsContentLayoutCreator>();
             iocProvider.RegisterType<ITrackCollectionContentLayoutCreator, TrackCollectionContentLayoutCreator>();
             iocProvider.RegisterType<IPlaylistLayoutCreator, PlaylistLayoutCreator>();
+            iocProvider.RegisterType<IPodcastLayoutCreator, PodcastLayoutCreator>();
+            iocProvider.RegisterType<IAlbumLayoutCreator, AlbumLayoutCreator>();
         }
 
         protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
