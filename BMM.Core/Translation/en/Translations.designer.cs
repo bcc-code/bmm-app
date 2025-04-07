@@ -32,6 +32,7 @@ namespace BMM.Core.Translation
 		public const string Global_ValueCopiedToClipboard = nameof(Global_ValueCopiedToClipboard);
 		public const string Global_AddToFavorites = nameof(Global_AddToFavorites);
 		public const string Global_RemoveFromFavorites = nameof(Global_RemoveFromFavorites);
+		public const string Global_NowPlaying = nameof(Global_NowPlaying);
 		public const string Streak_Message = nameof(Streak_Message);
 		public const string Streak_MessagePerfect = nameof(Streak_MessagePerfect);
 		public const string Streak_PerfectWeekCountSingular = nameof(Streak_PerfectWeekCountSingular);

@@ -186,6 +186,10 @@ namespace BMM.UI.iOS
             iocProvider.RegisterType<IHomeLayoutCreator, HomeLayoutCreator>();
             iocProvider.RegisterType<IBrowseLayoutCreator, BrowseLayoutCreator>();
             iocProvider.RegisterType<IFavouritesLayoutCreator, FavouritesLayoutCreator>();
+            iocProvider.RegisterType<IDownloadedContentLayoutCreator, DownloadedContentLayoutCreator>();
+            iocProvider.RegisterType<IFollowedPodcastsContentLayoutCreator, FollowedPodcastsContentLayoutCreator>();
+            iocProvider.RegisterType<ITrackCollectionContentLayoutCreator, TrackCollectionContentLayoutCreator>();
+            iocProvider.RegisterType<IPlaylistLayoutCreator, PlaylistLayoutCreator>();
         }
 
         protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)

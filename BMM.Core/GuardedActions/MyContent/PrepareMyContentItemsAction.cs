@@ -1,4 +1,5 @@
 using BMM.Api.Implementation.Models;
+using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.MyContent.Interfaces;
 using BMM.Core.Implementations.Localization.Interfaces;
@@ -78,13 +79,15 @@ public class PrepareMyContentItemsAction
             {
                 Title = _bmmLanguageBinder[Translations.MyContentViewModel_DownloadedContent],
                 Action = new MvxAsyncCommand<PinnedItem>(async execute => await _mvxNavigationService.Navigate<DownloadedContentViewModel>()),
-                Icon = "icon_download"
+                Icon = "icon_download",
+                ActionType = PinnedItemActionType.DownloadedContent
             },
             new()
             {
                 Title = _bmmLanguageBinder[Translations.MyContentViewModel_FollowedPodcasts],
                 Action = new MvxAsyncCommand<PinnedItem>(async execute => await _mvxNavigationService.Navigate<FollowedPodcastsViewModel>()),
-                Icon = "icon_podcast"
+                Icon = "icon_podcast",
+                ActionType = PinnedItemActionType.FollowedPodcasts
             }
         }.Select(pi => new PinnedItemPO(pi));
     }
