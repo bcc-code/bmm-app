@@ -30,7 +30,7 @@ namespace BMM.UI.iOS.CarPlay
             [
                 await HomeLayoutCreator.Create(_interfaceController),
                 await BrowseLayoutCreator.Create(_interfaceController),
-                await FavouritesLayoutCreator.Create(_interfaceController)
+                await FavouritesLayoutCreator.Create(_interfaceController),
             ]);
             
             _interfaceController.SetRootTemplate(tabBarTemplate, true);

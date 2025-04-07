@@ -28,7 +28,8 @@
     "DailyMessage": "Daily message",
     "ValueCopiedToClipboard": "{0} copied to clipboard",
     "AddToFavorites": "Add to favorites",
-    "RemoveFromFavorites": "Remove from favorites"
+    "RemoveFromFavorites": "Remove from favorites",
+    "NowPlaying": "Now playing"
   },
   "Streak": {
     "Message": "Your streak this week",

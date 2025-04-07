@@ -1,4 +1,6 @@
-﻿namespace BMM.Api.Implementation.Models
+﻿using BMM.Api.Implementation.Models.Enums;
+
+namespace BMM.Api.Implementation.Models
 {
     public class PinnedItem : Document
     {
@@ -8,6 +10,8 @@
 
         public object Action { get; set; }
 
+        public PinnedItemActionType ActionType { get; set; }
+        
         public PinnedItem()
         {
             DocumentType = DocumentType.PinnedItem;
