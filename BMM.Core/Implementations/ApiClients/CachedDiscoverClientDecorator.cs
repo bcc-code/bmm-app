@@ -29,5 +29,10 @@ namespace BMM.Core.Implementations.ApiClients
                 CacheKeys.DiscoverGetDocuments
             );
         }
+
+        public Task<IEnumerable<Document>> GetDocumentsCarPlay(AppTheme theme, CachePolicy cachePolicy)
+        {
+            return _client.GetDocumentsCarPlay(theme, cachePolicy);
+        }
     }
 }

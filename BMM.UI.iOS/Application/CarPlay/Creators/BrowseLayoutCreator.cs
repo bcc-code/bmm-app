@@ -1,10 +1,12 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Text.RegularExpressions;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
+using BMM.Core.Implementations.DeepLinking;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
@@ -16,24 +18,28 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class BrowseLayoutCreator : IBrowseLayoutCreator
 {
+    private const string BrowsePathRegex = @"https?:\/\/[^\/]+\/(.*)";
     private readonly IBrowseClient _browseClient;
     private readonly IPrepareCoversCarouselItemsAction _prepareCoversCarouselItemsAction;
     private readonly IPodcastLayoutCreator _podcastLayoutCreator;
     private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
     private readonly IAlbumLayoutCreator _albumLayoutCreator;
+    private readonly IBrowseDetailsLayoutCreator _browseDetailsLayoutCreator;
 
     public BrowseLayoutCreator(
         IBrowseClient browseClient,
         IPrepareCoversCarouselItemsAction prepareCoversCarouselItemsAction,
         IPodcastLayoutCreator podcastLayoutCreator,
         IPlaylistLayoutCreator playlistLayoutCreator,
-        IAlbumLayoutCreator albumLayoutCreator)
+        IAlbumLayoutCreator albumLayoutCreator,
+        IBrowseDetailsLayoutCreator browseDetailsLayoutCreator)
     {
         _browseClient = browseClient;
         _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
         _podcastLayoutCreator = podcastLayoutCreator;
         _playlistLayoutCreator = playlistLayoutCreator;
         _albumLayoutCreator = albumLayoutCreator;
+        _browseDetailsLayoutCreator = browseDetailsLayoutCreator;
     }
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
@@ -58,10 +64,7 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
                     foreach (var cover in collection.CoverDocuments)
                     {
                         var displayable = (ITrackListDisplayable)cover;
-                        var image = await ImageService.Instance
-                            .LoadUrl(displayable.Cover)
-                            .AsUIImageAsync();
-
+                        var image = await displayable.Cover.ToUIImage();
                         currentItems.Add(new ImageRowItem(image, displayable.Title, cover));
                     }
                     break;
@@ -85,14 +88,23 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
                 currentItems.Select(i => i.Image).ToArray(),
                 currentItems.Select(i => i.Title).ToArray());
 
-            item.UserInfo = new CoverItemInfo(currentItems.ToList());
+            item.UserInfo = new CoverItemInfo(currentItems.ToList(), currentHeader.Link);
+            item.Handler = async (listItem, block) =>
+            {
+                var coverItemInfo = (CoverItemInfo)listItem.UserInfo;
+                string browsePath = GetBrowsePath(coverItemInfo.Link);
+                var browseDetailsLayout = await _browseDetailsLayoutCreator.Create(cpInterfaceController, browsePath);
+                await cpInterfaceController.PushTemplateAsync(browseDetailsLayout, true);
+                block();
+            };
+            
             item.ListImageRowHandler = async (rowItem, index, block) =>
             {
                 var imageRowItem = ((CoverItemInfo)rowItem.UserInfo)!.ImageRowItems[(int)index];
                 if (imageRowItem.Document is Podcast podcast)
                 {
-                    var playlistLayout = await _podcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
-                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                    var podcastLayout = await _podcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
+                    await cpInterfaceController.PushTemplateAsync(podcastLayout, true);
                 }
                 else if (imageRowItem.Document is Playlist playlist)
                 {
@@ -110,7 +122,15 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
             currentItems.Clear();
         }
     }
-    
+
+    private string GetBrowsePath(string link)
+    {
+        var match = Regex.Match(link, BrowsePathRegex);
+        return match.Success
+            ? match.Groups[1].Value
+            : default;
+    }
+
     public record ImageRowItem(
         UIImage Image,
         string Title,
@@ -118,11 +138,13 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
 
     public class CoverItemInfo : NSObject
     {
-        public CoverItemInfo(IList<ImageRowItem> imageRowItems)
+        public CoverItemInfo(IList<ImageRowItem> imageRowItems, string link)
         {
             ImageRowItems = imageRowItems;
+            Link = link;
         }
         
         public IList<ImageRowItem> ImageRowItems { get; }
+        public string Link { get; }
     }
 }

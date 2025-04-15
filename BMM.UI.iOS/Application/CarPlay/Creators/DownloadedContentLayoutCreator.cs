@@ -76,7 +76,7 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                 {
                     case PinnedItemPO pinnedItemPO:
                     {
-                        var image = UIImage.FromBundle(pinnedItemPO.PinnedItem.Icon.ToIosImageName());
+                        var image = UIImage.FromBundle(pinnedItemPO.PinnedItem.Icon.ToIosImageName()).WithPadding(8);
                         trackListItem = new CPListItem(pinnedItemPO.PinnedItem.Title, null, image);
                         trackListItem.Handler = async (item, block) =>
                         {
