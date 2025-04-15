@@ -7,6 +7,7 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
 using Microsoft.IdentityModel.Tokens;
@@ -47,16 +48,7 @@ public class AlbumLayoutCreator : IAlbumLayoutCreator
                 {
                     var trackPO = _trackPOFactory.Create(trackInfoProvider, null, track);
                 
-                    UIImage coverImage = null;
-                
-                    if (!track.ArtworkUri.IsNullOrEmpty())
-                    {
-                        coverImage = await ImageService
-                            .Instance
-                            .LoadUrl(track.ArtworkUri)
-                            .AsUIImageAsync();
-                    }
-
+                    var coverImage = await track.ArtworkUri.ToUIImage();
                     var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", coverImage);
                     trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 

@@ -15,6 +15,7 @@ namespace BMM.UI.iOS.CarPlay
         private IHomeLayoutCreator HomeLayoutCreator => Mvx.IoCProvider!.Resolve<IHomeLayoutCreator>();
         private IBrowseLayoutCreator BrowseLayoutCreator => Mvx.IoCProvider!.Resolve<IBrowseLayoutCreator>();
         private IFavouritesLayoutCreator FavouritesLayoutCreator => Mvx.IoCProvider!.Resolve<IFavouritesLayoutCreator>();
+        private IPlaylistsLayoutCreator PlaylistsLayoutCreator => Mvx.IoCProvider!.Resolve<IPlaylistsLayoutCreator>();
         
         public AppDelegate AppDelegateInstance => (AppDelegate)UIApplication.SharedApplication.Delegate;
         
@@ -29,6 +30,7 @@ namespace BMM.UI.iOS.CarPlay
             var tabBarTemplate = new CPTabBarTemplate(
             [
                 await HomeLayoutCreator.Create(_interfaceController),
+                await PlaylistsLayoutCreator.Create(_interfaceController),
                 await BrowseLayoutCreator.Create(_interfaceController),
                 await FavouritesLayoutCreator.Create(_interfaceController),
             ]);

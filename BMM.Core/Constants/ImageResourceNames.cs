@@ -13,6 +13,7 @@ namespace BMM.Core.Constants
         public const string IconAlbum = "Icon_Album";
         public const string IconPerson = "Icon_Person";
         public const string IconInfo = "Icon_Info";
+        public const string PlaceholderCover = "Placeholder_Cover";
         public const string NewPlaceholderCover = "New_Placeholder_Cover";
         public const string IconRepeatOne = "Icon_Repeat_One";
         public const string IconRepeat = "Icon_Repeat";

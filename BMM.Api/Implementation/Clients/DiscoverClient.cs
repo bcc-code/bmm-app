@@ -24,5 +24,12 @@ namespace BMM.Api.Implementation.Clients
             uri.SetParameter("theme", theme);
             return FilterUnsupportedDocuments((await Get<IEnumerable<Document>>(uri)).ToList());
         }
+
+        public async Task<IEnumerable<Document>> GetDocumentsCarPlay(AppTheme theme, CachePolicy cachePolicy)
+        {
+            var uri = new UriTemplate(ApiUris.DiscoverCarPlay);
+            uri.SetParameter("theme", theme);
+            return FilterUnsupportedDocuments((await Get<IEnumerable<Document>>(uri)).ToList());
+        }
     }
 }
