@@ -8,6 +8,7 @@ using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
 
@@ -44,11 +45,7 @@ public class TrackCollectionContentLayoutCreator : ITrackCollectionContentLayout
         var tracksCpListItemTemplates = await Task.WhenAll(tracks
             .Select(async x =>
             {
-                var coverImage = await ImageService
-                    .Instance
-                    .LoadUrl(x.Track.ArtworkUri)
-                    .AsUIImageAsync();
-
+                var coverImage = await x.Track.ArtworkUri.ToUIImage();
                 var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", coverImage);
 
                 trackListItem.Handler = async (item, block) =>

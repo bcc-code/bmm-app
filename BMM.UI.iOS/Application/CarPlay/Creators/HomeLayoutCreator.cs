@@ -145,11 +145,7 @@ public class HomeLayoutCreator : IHomeLayoutCreator
                     }
                     case Podcast podcast:
                     {
-                        var coverImage = await ImageService
-                            .Instance
-                            .LoadUrl(podcast.Cover)
-                            .AsUIImageAsync();
-
+                        var coverImage = await podcast.Cover.ToUIImage();
                         trackListItem = new CPListItem(podcast.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
