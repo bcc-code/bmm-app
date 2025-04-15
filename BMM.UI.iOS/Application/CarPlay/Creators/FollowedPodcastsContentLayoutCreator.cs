@@ -49,11 +49,7 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
         var tracklistItems = await Task.WhenAll(followedPodcasts
             .Select(async p =>
             {
-                var coverImage = await ImageService
-                    .Instance
-                    .LoadUrl(p.Cover)
-                    .AsUIImageAsync();
-                
+                var coverImage = await p.Cover.ToUIImage();
                 var trackListItem = new CPListItem(p.Title, null, coverImage);
                 trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
                 

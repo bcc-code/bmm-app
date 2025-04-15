@@ -65,16 +65,7 @@ public class AlbumLayoutCreator : IAlbumLayoutCreator
                 }
                 else if (document is Album album)
                 {
-                    UIImage coverImage = null;
-                
-                    if (!album.Cover.IsNullOrEmpty())
-                    {
-                        coverImage = await ImageService
-                            .Instance
-                            .LoadUrl(album.Cover)
-                            .AsUIImageAsync();
-                    }
-                    
+                    var coverImage = await album.Cover.ToUIImage();
                     var albumListItem = new CPListItem(album.Title, null, coverImage);
                     albumListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 
