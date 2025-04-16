@@ -38,5 +38,8 @@ namespace BMM.Core.Constants
         public const string ImageQuizBackgroundThree = "Image_Quiz_Background_Three";
         public const string IconAI = "Icon_AI";
         public const string ImageSongTreasures = "Image_Song_Treasures";
+        public const string IconFollowedPodcastsCarplay = "Icon_Followed_Podcasts_Carplay";
+        public const string IconPlaylistCarplay = "Icon_Playlist_Carplay";
+        public const string IconDownloadedCarplay = "Icon_Downloaded_Carplay";
     }
 }

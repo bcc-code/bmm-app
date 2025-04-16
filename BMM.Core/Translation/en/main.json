@@ -636,5 +636,9 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Global Score"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Something went wrong...",
+    "TryAgainButton": "Try again"
   }
 }

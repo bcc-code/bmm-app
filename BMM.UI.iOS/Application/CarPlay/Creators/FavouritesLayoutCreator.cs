@@ -74,7 +74,15 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
                 {
                     case PinnedItemPO pinnedItemPO:
                     {
-                        var image = UIImage.FromBundle(pinnedItemPO.PinnedItem.Icon.ToIosImageName()).WithPadding(8);
+                        var image = pinnedItemPO.PinnedItem.ActionType switch
+                        {
+                            PinnedItemActionType.DownloadedContent => UIImage.FromBundle(ImageResourceNames.IconDownloadedCarplay
+                                .ToIosImageName()),
+                            PinnedItemActionType.FollowedPodcasts => UIImage.FromBundle(ImageResourceNames.IconFollowedPodcastsCarplay
+                                .ToIosImageName()),
+                            _ => null
+                        };
+
                         trackListItem = new CPListItem(pinnedItemPO.PinnedItem.Title, null, image);
                         trackListItem.Handler = async (item, block) =>
                         {
@@ -102,7 +110,7 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
                             null,
                             CultureInfo.CurrentUICulture);
                     
-                        trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, detailsText);
+                        trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, detailsText, UIImage.FromBundle(ImageResourceNames.IconPlaylistCarplay.ToIosImageName()));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(cpInterfaceController, trackCollectionPO.Id);
