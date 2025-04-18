@@ -6,6 +6,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Translation;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 
@@ -31,6 +32,17 @@ public class PlaylistsLayoutCreator : IPlaylistsLayoutCreator
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
+        var playlistsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title], LoadingSection.Create());
+        playlistsListTemplate.TabTitle = _bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title];
+        playlistsListTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToIosImageName());
+        Load(cpInterfaceController, playlistsListTemplate).FireAndForget();
+        return playlistsListTemplate;
+    }
+
+    private async Task Load(
+        CPInterfaceController cpInterfaceController,
+        CPListTemplate playlistsListTemplate)
+    {
         var playlists = await _playlistClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
         
         var playlistListItemTemplates = await Task.WhenAll(playlists
@@ -51,9 +63,6 @@ public class PlaylistsLayoutCreator : IPlaylistsLayoutCreator
             }));
         
         var section = new CPListSection(playlistListItemTemplates.ToArray());
-        var playlistsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title], section.EncloseInArray());
-        playlistsListTemplate.TabTitle = _bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title];
-        playlistsListTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToIosImageName());
-        return playlistsListTemplate;
+        playlistsListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

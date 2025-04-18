@@ -88,12 +88,12 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
                 currentItems.Select(i => i.Image).ToArray(),
                 currentItems.Select(i => i.Title).ToArray());
 
-            item.UserInfo = new CoverItemInfo(currentItems.ToList(), currentHeader.Link);
+            item.UserInfo = new CoverItemInfo(currentItems.ToList(), currentHeader.Title, currentHeader.Link);
             item.Handler = async (listItem, block) =>
             {
                 var coverItemInfo = (CoverItemInfo)listItem.UserInfo;
                 string browsePath = GetBrowsePath(coverItemInfo.Link);
-                var browseDetailsLayout = await _browseDetailsLayoutCreator.Create(cpInterfaceController, browsePath);
+                var browseDetailsLayout = await _browseDetailsLayoutCreator.Create(cpInterfaceController, browsePath, coverItemInfo.Title);
                 await cpInterfaceController.PushTemplateAsync(browseDetailsLayout, true);
                 block();
             };
@@ -138,13 +138,15 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
 
     public class CoverItemInfo : NSObject
     {
-        public CoverItemInfo(IList<ImageRowItem> imageRowItems, string link)
+        public CoverItemInfo(IList<ImageRowItem> imageRowItems, string title, string link)
         {
             ImageRowItems = imageRowItems;
+            Title = title;
             Link = link;
         }
         
         public IList<ImageRowItem> ImageRowItems { get; }
+        public string Title { get; }
         public string Link { get; }
     }
 }

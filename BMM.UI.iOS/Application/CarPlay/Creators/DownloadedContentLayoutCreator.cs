@@ -16,6 +16,7 @@ using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters.TrackCollections;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -56,6 +57,13 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
     }
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
+    {
+        var downloadedListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_Title], LoadingSection.Create());
+        Load(cpInterfaceController, downloadedListTemplate).FireAndForget();
+        return downloadedListTemplate;
+    }
+
+    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate downloadedListTemplate)
     {
         var allCollections = await _trackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
 
@@ -102,7 +110,10 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                         trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, detailsText);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(cpInterfaceController, trackCollectionPO.Id);
+                            var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(
+                                cpInterfaceController,
+                                trackCollectionPO.TrackCollection.Name,
+                                trackCollectionPO.Id);
                             await cpInterfaceController.PushTemplateAsync(trackCollectionContentLayout, true);
                             block();
                         };
@@ -148,7 +159,6 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
             }));
         
         var section = new CPListSection(tracklistItems);
-        var favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_Title], section.EncloseInArray());
-        return favouritesListTemplate;
+        downloadedListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

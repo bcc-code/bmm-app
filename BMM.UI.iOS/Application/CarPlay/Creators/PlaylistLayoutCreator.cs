@@ -6,6 +6,7 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -36,6 +37,16 @@ public class PlaylistLayoutCreator : IPlaylistLayoutCreator
         int playlistId,
         string name)
     {
+        var playlistListTemplate = new CPListTemplate(name, LoadingSection.Create());
+        Load(cpInterfaceController, playlistListTemplate, playlistId).FireAndForget();
+        return playlistListTemplate;
+    }
+
+    private async Task Load(
+        CPInterfaceController cpInterfaceController,
+        CPListTemplate playlistListTemplate,
+        int playlistId)
+    {
         var playlistTracks = await _playlistClient.GetTracks(playlistId, CachePolicy.UseCacheAndRefreshOutdated);
         var audiobookPodcastInfoProvider = new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider());
 
@@ -61,7 +72,6 @@ public class PlaylistLayoutCreator : IPlaylistLayoutCreator
             }));
 
         var section = new CPListSection(tracksCpListItemTemplates);
-        var favouritesListTemplate = new CPListTemplate(name, section.EncloseInArray());
-        return favouritesListTemplate;
+        playlistListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

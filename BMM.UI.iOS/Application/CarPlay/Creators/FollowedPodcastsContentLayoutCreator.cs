@@ -8,6 +8,7 @@ using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Models.POs.Podcasts;
 using BMM.Core.Translation;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -40,6 +41,13 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
 
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
+        var followedPodcastsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_FollowedPodcasts], LoadingSection.Create());
+        Load(cpInterfaceController, followedPodcastsListTemplate).FireAndForget();
+        return followedPodcastsListTemplate;
+    }
+
+    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate followedPodcastsListTemplate)
+    {
         var podcasts = await _podcastClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
         var followedPodcasts = podcasts?
             .Where(_podcastOfflineManager.IsFollowing)
@@ -65,7 +73,6 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
             }));
 
         var section = new CPListSection(tracklistItems);
-        var favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_FollowedPodcasts], section.EncloseInArray());
-        return favouritesListTemplate;
+        followedPodcastsListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

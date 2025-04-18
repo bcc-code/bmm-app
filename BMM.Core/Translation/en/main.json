@@ -639,6 +639,7 @@
   },
   "CarPlay": {
     "ErrorTitle": "Something went wrong...",
-    "TryAgainButton": "Try again"
+    "TryAgainButton": "Try again",
+    "LoadingText": "Loading..."
   }
 }

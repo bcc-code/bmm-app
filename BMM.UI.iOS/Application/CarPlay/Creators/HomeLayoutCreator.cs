@@ -17,6 +17,7 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -64,10 +65,22 @@ public class HomeLayoutCreator : IHomeLayoutCreator
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
-        var discoverItems = (await _discoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated)).ToList();
+        var homeTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Home], LoadingSection.Create());
+        homeTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Home];
+        homeTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconHome.ToNameWithExtension());
         
+        Load(cpInterfaceController, homeTemplate).FireAndForget();
+        
+        return homeTemplate;
+    }
+
+    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate homeTemplate)
+    {
+        var discoverItems = (await _discoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated))
+            .ToList();
+
         var grouped = new List<GroupedDocuments>();
-        GroupedDocuments? currentGroup = null;
+        GroupedDocuments currentGroup = null;
 
         foreach (var document in discoverItems)
         {
@@ -87,20 +100,17 @@ public class HomeLayoutCreator : IHomeLayoutCreator
                 currentGroup.Documents.Add(document);
             }
         }
-        
+
         IList<CPListSection> sections = new List<CPListSection>();
-        
+
         foreach (var group in grouped)
         {
             var trackListItems = new List<ICPListTemplateItem>();
             trackListItems.AddRange(await GetTrackListItems(cpInterfaceController, group.Documents));
             sections.Add(new CPListSection(trackListItems.ToArray(), group.Title, null));
         }
-        
-        var homeTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Home], sections.ToArray());
-        homeTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Home];
-        homeTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconHome.ToNameWithExtension());
-        return homeTemplate;
+            
+        homeTemplate.UpdateSections(sections.ToArray());
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController, IEnumerable<Document> documents)

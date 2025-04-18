@@ -6,6 +6,7 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -36,6 +37,16 @@ public class PodcastLayoutCreator : IPodcastLayoutCreator
         int podcastId,
         string name)
     {
+        var podcastListTemplate = new CPListTemplate(name, LoadingSection.Create());
+        Load(cpInterfaceController, podcastListTemplate, podcastId).FireAndForget();
+        return podcastListTemplate;
+    }
+
+    private async Task Load(
+        CPInterfaceController cpInterfaceController,
+        CPListTemplate podcastListTemplate,
+        int podcastId)
+    {
         var podcastTracks = await _podcastClient.GetTracks(podcastId, CachePolicy.UseCacheAndRefreshOutdated);
         var trackInfoProvider = new DefaultTrackInfoProvider();
 
@@ -61,7 +72,6 @@ public class PodcastLayoutCreator : IPodcastLayoutCreator
             }));
 
         var section = new CPListSection(tracksCpListItemTemplates);
-        var favouritesListTemplate = new CPListTemplate(name, section.EncloseInArray());
-        return favouritesListTemplate;
+        podcastListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

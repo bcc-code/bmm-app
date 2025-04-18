@@ -6,6 +6,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Models.POs.Albums;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -41,9 +42,19 @@ public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
         _userStorage = userStorage;
     }
     
-    public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController, string browsePath)
+    public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController, string browsePath, string title)
     {
-        GenericDocumentsHolder documentsHolder = null;
+        var browseDetailsListTemplates = new CPListTemplate(title, LoadingSection.Create());
+        Load(cpInterfaceController, browseDetailsListTemplates, browsePath).FireAndForget();
+        return browseDetailsListTemplates;
+    }
+
+    private async Task Load(
+        CPInterfaceController cpInterfaceController,
+        CPListTemplate browseDetailsListTemplate,
+        string browsePath)
+    {
+        GenericDocumentsHolder documentsHolder;
         
         if (browsePath.Contains("featured"))
         {
@@ -56,7 +67,7 @@ public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
         }
         
         var grouped = new List<GroupedDocuments>();
-        GroupedDocuments? currentGroup = null;
+        GroupedDocuments currentGroup = null;
 
         foreach (var entry in documentsHolder.Items)
         {
@@ -100,9 +111,8 @@ public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
                 })
                 .ToArray());
         }
-
-        var browseDetailsListTemplates = new CPListTemplate(documentsHolder.Title, sections);
-        return browseDetailsListTemplates;
+        
+        browseDetailsListTemplate.UpdateSections(sections);
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController, IEnumerable<Document> documents)

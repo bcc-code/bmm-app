@@ -13,6 +13,7 @@ using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters.TrackCollections;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -51,8 +52,17 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
-        await Task.CompletedTask;
-        
+        var favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Favorites], LoadingSection.Create());
+        favouritesListTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Favorites];
+        favouritesListTemplate.TabImage = UIImage.FromBundle("icon_favorites".ToNameWithExtension());
+        Load(cpInterfaceController, favouritesListTemplate).FireAndForget();
+        return favouritesListTemplate;
+    }
+
+    private async Task Load(
+        CPInterfaceController cpInterfaceController,
+        CPListTemplate favouritesListTemplate)
+    {
         var allCollections = await _trackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
 
         var items =  allCollections
@@ -113,7 +123,10 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
                         trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, detailsText, UIImage.FromBundle(ImageResourceNames.IconPlaylistCarplay.ToIosImageName()));
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(cpInterfaceController, trackCollectionPO.Id);
+                            var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(
+                                cpInterfaceController,
+                                trackCollectionPO.TrackCollection.Name,
+                                trackCollectionPO.Id);
                             await cpInterfaceController.PushTemplateAsync(trackCollectionContentLayout, true);
                             block();
                         };
@@ -128,9 +141,6 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
             .ToList();
         
         var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
-        var favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Favorites], section.EncloseInArray());
-        favouritesListTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Favorites];
-        favouritesListTemplate.TabImage = UIImage.FromBundle("icon_favorites".ToNameWithExtension());
-        return favouritesListTemplate;
+        favouritesListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

@@ -7,6 +7,7 @@ using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -22,8 +23,7 @@ public class AlbumLayoutCreator : IAlbumLayoutCreator
     private readonly ITrackPOFactory _trackPOFactory;
     private readonly IMediaPlayer _mediaPlayer;
 
-    public AlbumLayoutCreator(
-        IAlbumClient albumClient,
+    public AlbumLayoutCreator(IAlbumClient albumClient,
         ITrackPOFactory trackPOFactory,
         IMediaPlayer mediaPlayer)
     {
@@ -31,15 +31,21 @@ public class AlbumLayoutCreator : IAlbumLayoutCreator
         _trackPOFactory = trackPOFactory;
         _mediaPlayer = mediaPlayer;
     }
-    
-    public async Task<CPListTemplate> Create(
-        CPInterfaceController cpInterfaceController,
+
+    public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController,
         int albumId,
         string name)
     {
+        var favouritesListTemplate = new CPListTemplate(name, LoadingSection.Create());
+        Load(cpInterfaceController, albumId, favouritesListTemplate).FireAndForget();
+        return favouritesListTemplate;
+    }
+
+    private async Task Load(CPInterfaceController cpInterfaceController, int albumId, CPListTemplate favouritesListTemplate)
+    {
         var album = await _albumClient.GetById(albumId);
         var trackInfoProvider = new DefaultTrackInfoProvider();
-        
+
         var tracksCpListItemTemplates = await Task.WhenAll(album
             .Children
             .Select(async document =>
@@ -47,9 +53,11 @@ public class AlbumLayoutCreator : IAlbumLayoutCreator
                 if (document is Track track)
                 {
                     var trackPO = _trackPOFactory.Create(trackInfoProvider, null, track);
-                
+
                     var coverImage = await track.ArtworkUri.ToUIImage();
-                    var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", coverImage);
+                    var trackListItem = new CPListItem(trackPO.TrackTitle,
+                        $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}",
+                        coverImage);
                     trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 
                     trackListItem.Handler = async (item, block) =>
@@ -79,12 +87,11 @@ public class AlbumLayoutCreator : IAlbumLayoutCreator
                     albumListItem.AccessoryType = CPListItemAccessoryType.None;
                     return (ICPListTemplateItem)albumListItem;
                 }
-                
+
                 return default;
             }));
 
         var section = new CPListSection(tracksCpListItemTemplates);
-        var favouritesListTemplate = new CPListTemplate(name, section.EncloseInArray());
-        return favouritesListTemplate;
+        favouritesListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

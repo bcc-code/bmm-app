@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.TrackCollections;
 using BMM.Core.Implementations.Factories.Tracks;
@@ -8,6 +9,7 @@ using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -32,7 +34,14 @@ public class TrackCollectionContentLayoutCreator : ITrackCollectionContentLayout
         _mediaPlayer = mediaPlayer;
     }
 
-    public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController, int trackCollectionId)
+    public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController, string title, int trackCollectionId)
+    {
+        var trackCollectionListTemplate = new CPListTemplate(title, LoadingSection.Create());
+        Load(cpInterfaceController, trackCollectionListTemplate, trackCollectionId).FireAndForget();
+        return trackCollectionListTemplate;
+    }
+
+    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate trackCollectionListTemplate, int trackCollectionId)
     {
         var trackInfoProvider = new DefaultTrackInfoProvider();
         var trackCollection = await _trackCollectionClient.GetById(trackCollectionId, CachePolicy.UseCacheAndRefreshOutdated);
@@ -61,7 +70,6 @@ public class TrackCollectionContentLayoutCreator : ITrackCollectionContentLayout
             }));
 
         var section = new CPListSection(tracksCpListItemTemplates);
-        var favouritesListTemplate = new CPListTemplate(trackCollection.Name, section.EncloseInArray());
-        return favouritesListTemplate;
+        trackCollectionListTemplate.UpdateSections(section.EncloseInArray());
     }
 }
