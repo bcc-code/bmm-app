@@ -11,6 +11,7 @@ using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -18,22 +19,12 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCreator
 {
-    private readonly IContributorClient _contributorClient;
-    private readonly ITrackPOFactory _trackPOFactory;
-    private readonly IMediaPlayer _mediaPlayer;
     private CPInterfaceController _cpInterfaceController;
     private int _contributorId;
     private CPListTemplate _favouritesListTemplate;
-
-    public ContributorLayoutCreator(
-        IContributorClient contributorClient,
-        ITrackPOFactory trackPOFactory,
-        IMediaPlayer mediaPlayer)
-    {
-        _contributorClient = contributorClient;
-        _trackPOFactory = trackPOFactory;
-        _mediaPlayer = mediaPlayer;
-    }
+    private IContributorClient ContributorClient => Mvx.IoCProvider!.Resolve<IContributorClient>();
+    private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
+    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
     
@@ -48,11 +39,11 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
 
     public override async Task Load()
     {
-        var tracks = await _contributorClient.GetTracks(_contributorId, CachePolicy.UseCacheAndRefreshOutdated);
+        var tracks = await ContributorClient.GetTracks(_contributorId, CachePolicy.UseCacheAndRefreshOutdated);
         var trackInfoProvider = new DefaultTrackInfoProvider();
         
         var tracksPOs = tracks
-            .Select(t => _trackPOFactory.Create(trackInfoProvider, null, t))
+            .Select(t => TrackPOFactory.Create(trackInfoProvider, null, t))
             .ToList();
         
         var tracksCpListItemTemplates = await Task.WhenAll(tracksPOs
@@ -63,7 +54,10 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
                
                 trackListItem.Handler = async (item, block) =>
                 {
-                    await _mediaPlayer.Play(tracks.OfType<IMediaTrack>().ToList(), x.Track);
+                    await MediaPlayer.Play(
+                        tracks.OfType<IMediaTrack>().ToList(),
+                        x.Track,
+                        this.CreatePlaybackOrigin());
                     var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
                     await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
                     block();

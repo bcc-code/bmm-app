@@ -13,6 +13,7 @@ using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
 using Microsoft.IdentityModel.Tokens;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -20,21 +21,12 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
 {
-    private readonly IAlbumClient _albumClient;
-    private readonly ITrackPOFactory _trackPOFactory;
-    private readonly IMediaPlayer _mediaPlayer;
+    private IAlbumClient AlbumClient => Mvx.IoCProvider!.Resolve<IAlbumClient>();
+    private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
+    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private CPInterfaceController _cpInterfaceController;
     private int _albumId;
     private CPListTemplate _favouritesListTemplate;
-
-    public AlbumLayoutCreator(IAlbumClient albumClient,
-        ITrackPOFactory trackPOFactory,
-        IMediaPlayer mediaPlayer)
-    {
-        _albumClient = albumClient;
-        _trackPOFactory = trackPOFactory;
-        _mediaPlayer = mediaPlayer;
-    }
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
 
@@ -51,7 +43,7 @@ public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
 
     public override async Task Load()
     {
-        var album = await _albumClient.GetById(_albumId);
+        var album = await AlbumClient.GetById(_albumId);
         var trackInfoProvider = new DefaultTrackInfoProvider();
 
         var tracksCpListItemTemplates = await Task.WhenAll(album
@@ -60,7 +52,7 @@ public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
             {
                 if (document is Track track)
                 {
-                    var trackPO = _trackPOFactory.Create(trackInfoProvider, null, track);
+                    var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
 
                     var coverImage = await track.ArtworkUri.ToUIImage();
                     var trackListItem = new CPListItem(trackPO.TrackTitle,
@@ -70,14 +62,17 @@ public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
 
                     trackListItem.Handler = async (item, block) =>
                     {
-                        await _mediaPlayer.Play(album.Children.OfType<IMediaTrack>().ToList(), track);
+                        await MediaPlayer.Play(
+                            album.Children.OfType<IMediaTrack>().ToList(),
+                            track,
+                            this.CreatePlaybackOrigin());
                         var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
                         await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
                         block();
                     };
 
                     trackListItem.AccessoryType = CPListItemAccessoryType.None;
-                    return (ICPListTemplateItem)trackListItem;
+                    return trackListItem;
                 }
                 else if (document is Album album)
                 {

@@ -21,6 +21,7 @@ using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -28,35 +29,15 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedContentLayoutCreator
 {
-    private readonly ITrackCollectionClient _trackCollectionClient;
-    private readonly ITrackCollectionPOFactory _trackCollectionPOFactory;
-    private readonly IPrepareDownloadedContentItemsAction _prepareDownloadedContentItemsAction;
-    private readonly IStorageManager _storageManager;
-    private readonly IFollowedPodcastsContentLayoutCreator _followedPodcastsContentLayoutCreator;
-    private readonly IBMMLanguageBinder _bmmLanguageBinder;
-    private readonly ITrackCollectionContentLayoutCreator _trackCollectionContentLayoutCreator;
-    private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _downloadedListTemplate;
-
-    public DownloadedContentLayoutCreator(ITrackCollectionClient trackCollectionClient,
-        ITrackCollectionPOFactory trackCollectionPOFactory,
-        IPrepareDownloadedContentItemsAction prepareDownloadedContentItemsAction,
-        IStorageManager storageManager,
-        IFollowedPodcastsContentLayoutCreator followedPodcastsContentLayoutCreator,
-        IBMMLanguageBinder bmmLanguageBinder,
-        ITrackCollectionContentLayoutCreator trackCollectionContentLayoutCreator,
-        IPlaylistLayoutCreator playlistLayoutCreator)
-    {
-        _trackCollectionClient = trackCollectionClient;
-        _trackCollectionPOFactory = trackCollectionPOFactory;
-        _prepareDownloadedContentItemsAction = prepareDownloadedContentItemsAction;
-        _storageManager = storageManager;
-        _followedPodcastsContentLayoutCreator = followedPodcastsContentLayoutCreator;
-        _bmmLanguageBinder = bmmLanguageBinder;
-        _trackCollectionContentLayoutCreator = trackCollectionContentLayoutCreator;
-        _playlistLayoutCreator = playlistLayoutCreator;
-    }
+    private ITrackCollectionClient TrackCollectionClient => Mvx.IoCProvider!.Resolve<ITrackCollectionClient>();
+    private ITrackCollectionPOFactory TrackCollectionPOFactory => Mvx.IoCProvider!.Resolve<ITrackCollectionPOFactory>();
+    private IPrepareDownloadedContentItemsAction PrepareDownloadedContentItemsAction => Mvx.IoCProvider!.Resolve<IPrepareDownloadedContentItemsAction>();
+    private IFollowedPodcastsContentLayoutCreator FollowedPodcastsContentLayoutCreator => Mvx.IoCProvider!.Resolve<IFollowedPodcastsContentLayoutCreator>();
+    private IBMMLanguageBinder BMMLanguageBinder => Mvx.IoCProvider!.Resolve<IBMMLanguageBinder>();
+    private ITrackCollectionContentLayoutCreator TrackCollectionContentLayoutCreator => Mvx.IoCProvider!.Resolve<ITrackCollectionContentLayoutCreator>();
+    private IPlaylistLayoutCreator PlaylistLayoutCreator => Mvx.IoCProvider!.Resolve<IPlaylistLayoutCreator>();
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
 
@@ -64,21 +45,21 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
     {
         _cpInterfaceController = cpInterfaceController;
         _downloadedListTemplate =
-            new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_Title], LoadingSection.Create());
+            new CPListTemplate(BMMLanguageBinder[Translations.DownloadedContentViewModel_Title], LoadingSection.Create());
         SafeLoad().FireAndForget();
         return _downloadedListTemplate;
     }
 
     public override async Task Load()
     {
-        var allCollections = await _trackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
+        var allCollections = await TrackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
 
         var items = allCollections
             .OrderByDescending(c => c.Id)
-            .Select(tc => _trackCollectionPOFactory.Create(tc))
+            .Select(tc => TrackCollectionPOFactory.Create(tc))
             .ToList();
 
-        var downloadedContentItems = await _prepareDownloadedContentItemsAction.ExecuteGuarded(items);
+        var downloadedContentItems = await PrepareDownloadedContentItemsAction.ExecuteGuarded(items);
         var converter = new TrackCollectionToListViewItemSubtitleLabelConverter();
 
         var tracklistItems = await Task.WhenAll(downloadedContentItems
@@ -97,7 +78,7 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
                             if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.DownloadedFollowedPodcasts)
                             {
                                 var followedPodcastsContentLayout =
-                                    await _followedPodcastsContentLayoutCreator.Create(CpInterfaceController);
+                                    await FollowedPodcastsContentLayoutCreator.Create(CpInterfaceController);
                                 await CpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
                             }
 
@@ -117,7 +98,7 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
                         trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, detailsText);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(
+                            var trackCollectionContentLayout = await TrackCollectionContentLayoutCreator.Create(
                                 CpInterfaceController,
                                 trackCollectionPO.TrackCollection.Name,
                                 trackCollectionPO.Id);
@@ -138,7 +119,7 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
                         trackListItem.Handler = async (item, block) =>
                         {
                             var playlistLayout =
-                                await _playlistLayoutCreator.Create(CpInterfaceController, playlistPO.Id, playlistPO.Title);
+                                await PlaylistLayoutCreator.Create(CpInterfaceController, playlistPO.Id, playlistPO.Title);
                             await CpInterfaceController.PushTemplateAsync(playlistLayout, true);
                             block();
                         };

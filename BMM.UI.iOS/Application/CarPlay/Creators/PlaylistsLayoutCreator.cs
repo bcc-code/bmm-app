@@ -10,6 +10,7 @@ using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -17,29 +18,20 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class PlaylistsLayoutCreator : BaseLayoutCreator, IPlaylistsLayoutCreator
 {
-    private readonly IPlaylistClient _playlistClient;
-    private readonly IBMMLanguageBinder _bmmLanguageBinder;
-    private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
+    private IPlaylistClient PlaylistClient => Mvx.IoCProvider!.Resolve<IPlaylistClient>();
+    private IBMMLanguageBinder BMMLanguageBinder => Mvx.IoCProvider!.Resolve<IBMMLanguageBinder>();
+    private IPlaylistLayoutCreator PlaylistLayoutCreator => Mvx.IoCProvider!.Resolve<IPlaylistLayoutCreator>();
+
     private CPListTemplate _playlistsListTemplate;
     private CPInterfaceController _cpInterfaceController;
-
-    public PlaylistsLayoutCreator(
-        IPlaylistClient playlistClient,
-        IBMMLanguageBinder bmmLanguageBinder,
-        IPlaylistLayoutCreator playlistLayoutCreator)
-    {
-        _playlistClient = playlistClient;
-        _bmmLanguageBinder = bmmLanguageBinder;
-        _playlistLayoutCreator = playlistLayoutCreator;
-    }
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
 
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
         _cpInterfaceController = cpInterfaceController;
-        _playlistsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title], LoadingSection.Create());
-        _playlistsListTemplate.TabTitle = _bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title];
+        _playlistsListTemplate = new CPListTemplate(BMMLanguageBinder[Translations.CuratedPlaylistsViewModel_Title], LoadingSection.Create());
+        _playlistsListTemplate.TabTitle = BMMLanguageBinder[Translations.CuratedPlaylistsViewModel_Title];
         _playlistsListTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToIosImageName());
         Load().FireAndForget();
         return _playlistsListTemplate;
@@ -47,7 +39,7 @@ public class PlaylistsLayoutCreator : BaseLayoutCreator, IPlaylistsLayoutCreator
 
     public override async Task Load()
     {
-        var playlists = await _playlistClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
+        var playlists = await PlaylistClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
         
         var playlistListItemTemplates = await Task.WhenAll(playlists
             .Select(async playlist =>
@@ -57,7 +49,7 @@ public class PlaylistsLayoutCreator : BaseLayoutCreator, IPlaylistsLayoutCreator
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    var playlistLayout = await _playlistLayoutCreator.Create(CpInterfaceController, playlist.Id, playlist.Title);
+                    var playlistLayout = await PlaylistLayoutCreator.Create(CpInterfaceController, playlist.Id, playlist.Title);
                     await CpInterfaceController.PushTemplateAsync(playlistLayout, true);
                     block();
                 };

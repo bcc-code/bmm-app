@@ -18,6 +18,7 @@ using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -25,56 +26,39 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreator
 {
-    private readonly IBMMLanguageBinder _bmmLanguageBinder;
-    private readonly ITrackCollectionClient _trackCollectionClient;
-    private readonly ITrackCollectionPOFactory _trackCollectionPOFactory;
-    private readonly IPrepareMyContentItemsAction _prepareMyContentItemsAction;
-    private readonly IDownloadedContentLayoutCreator _downloadedContentLayoutCreator;
-    private readonly IFollowedPodcastsContentLayoutCreator _followedPodcastsContentLayoutCreator;
-    private readonly ITrackCollectionContentLayoutCreator _trackCollectionContentLayoutCreator;
+    private IBMMLanguageBinder BMMLanguageBinder => Mvx.IoCProvider!.Resolve<IBMMLanguageBinder>();
+    private ITrackCollectionClient TrackCollectionClient => Mvx.IoCProvider!.Resolve<ITrackCollectionClient>();
+    private ITrackCollectionPOFactory TrackCollectionPOFactory => Mvx.IoCProvider!.Resolve<ITrackCollectionPOFactory>();
+    private IPrepareMyContentItemsAction PrepareMyContentItemsAction => Mvx.IoCProvider!.Resolve<IPrepareMyContentItemsAction>();
+    private IDownloadedContentLayoutCreator DownloadedContentLayoutCreator => Mvx.IoCProvider!.Resolve<IDownloadedContentLayoutCreator>();
+    private IFollowedPodcastsContentLayoutCreator FollowedPodcastsContentLayoutCreator => Mvx.IoCProvider!.Resolve<IFollowedPodcastsContentLayoutCreator>();
+    private ITrackCollectionContentLayoutCreator TrackCollectionContentLayoutCreator => Mvx.IoCProvider!.Resolve<ITrackCollectionContentLayoutCreator>();
+
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _favouritesListTemplate;
-
-    public FavouritesLayoutCreator(
-        IBMMLanguageBinder bmmLanguageBinder,
-        ITrackCollectionClient trackCollectionClient,
-        ITrackCollectionPOFactory trackCollectionPOFactory,
-        IPrepareMyContentItemsAction prepareMyContentItemsAction,
-        IDownloadedContentLayoutCreator downloadedContentLayoutCreator,
-        IFollowedPodcastsContentLayoutCreator followedPodcastsContentLayoutCreator,
-        ITrackCollectionContentLayoutCreator trackCollectionContentLayoutCreator)
-    {
-        _bmmLanguageBinder = bmmLanguageBinder;
-        _trackCollectionClient = trackCollectionClient;
-        _trackCollectionPOFactory = trackCollectionPOFactory;
-        _prepareMyContentItemsAction = prepareMyContentItemsAction;
-        _downloadedContentLayoutCreator = downloadedContentLayoutCreator;
-        _followedPodcastsContentLayoutCreator = followedPodcastsContentLayoutCreator;
-        _trackCollectionContentLayoutCreator = trackCollectionContentLayoutCreator;
-    }
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
         _cpInterfaceController = cpInterfaceController;
-        _favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Favorites], LoadingSection.Create());
-        _favouritesListTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Favorites];
-        _favouritesListTemplate.TabImage = UIImage.FromBundle("icon_favorites".ToNameWithExtension());
+        _favouritesListTemplate = new CPListTemplate(BMMLanguageBinder[Translations.MenuViewModel_Favorites], LoadingSection.Create());
+        _favouritesListTemplate.TabTitle = BMMLanguageBinder[Translations.MenuViewModel_Favorites];
+        _favouritesListTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconFavorites.ToNameWithExtension());
         SafeLoad().FireAndForget();
         return _favouritesListTemplate;
     }
 
     public override async Task Load()
     {
-        var allCollections = await _trackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
+        var allCollections = await TrackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
 
         var items =  allCollections
             .OrderByDescending(c => c.Id)
-            .Select(tc => _trackCollectionPOFactory.Create(tc))
+            .Select(tc => TrackCollectionPOFactory.Create(tc))
             .ToList();
 
-        var myContentItems = await _prepareMyContentItemsAction.ExecuteGuarded(items);
+        var myContentItems = await PrepareMyContentItemsAction.ExecuteGuarded(items);
         
         var converter = new TrackCollectionToListViewItemSubtitleLabelConverter();
 
@@ -102,12 +86,12 @@ public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreat
                         {
                             if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.DownloadedContent)
                             {
-                                var downloadedContentTemplate = await _downloadedContentLayoutCreator.Create(_cpInterfaceController);
+                                var downloadedContentTemplate = await DownloadedContentLayoutCreator.Create(_cpInterfaceController);
                                 await _cpInterfaceController.PushTemplateAsync(downloadedContentTemplate, true);
                             }
                             else if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.FollowedPodcasts)
                             {
-                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create(_cpInterfaceController);
+                                var followedPodcastsContentLayout = await FollowedPodcastsContentLayoutCreator.Create(_cpInterfaceController);
                                 await _cpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
                             }
                             
@@ -127,7 +111,7 @@ public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreat
                         trackListItem = new CPListItem(trackCollectionPO.TrackCollection.Name, detailsText, UIImage.FromBundle(ImageResourceNames.IconPlaylistCarplay.ToIosImageName()));
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(
+                            var trackCollectionContentLayout = await TrackCollectionContentLayoutCreator.Create(
                                 _cpInterfaceController,
                                 trackCollectionPO.TrackCollection.Name,
                                 trackCollectionPO.Id);

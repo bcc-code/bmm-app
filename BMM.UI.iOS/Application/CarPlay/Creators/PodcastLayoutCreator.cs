@@ -12,6 +12,7 @@ using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
 using Microsoft.IdentityModel.Tokens;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -19,22 +20,12 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
 {
-    private readonly ITrackPOFactory _trackPOFactory;
-    private readonly IMediaPlayer _mediaPlayer;
-    private readonly IPodcastClient _podcastClient;
+    private IPodcastClient PodcastClient => Mvx.IoCProvider!.Resolve<IPodcastClient>();
+    private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
+    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private int _podcastId;
     private CPListTemplate _podcastListTemplate;
     private CPInterfaceController _cpInterfaceController;
-
-    public PodcastLayoutCreator(
-        IPodcastClient podcastClient,
-        ITrackPOFactory trackPOFactory,
-        IMediaPlayer mediaPlayer)
-    {
-        _podcastClient = podcastClient;
-        _trackPOFactory = trackPOFactory;
-        _mediaPlayer = mediaPlayer;
-    }
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
 
@@ -52,13 +43,13 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
 
     public override async Task Load()
     {
-        var podcastTracks = await _podcastClient.GetTracks(_podcastId, CachePolicy.UseCacheAndRefreshOutdated);
+        var podcastTracks = await PodcastClient.GetTracks(_podcastId, CachePolicy.UseCacheAndRefreshOutdated);
         var trackInfoProvider = new DefaultTrackInfoProvider();
 
         var tracksCpListItemTemplates = await Task.WhenAll(podcastTracks
             .Select(async track =>
             {
-                var trackPO = _trackPOFactory.Create(trackInfoProvider, null, track);
+                var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
                 
                 var coverImage = await track.ArtworkUri.ToUIImage();
                 var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", coverImage);
@@ -66,7 +57,7 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    await _mediaPlayer.Play(podcastTracks.OfType<IMediaTrack>().ToList(), track);
+                    await MediaPlayer.Play(podcastTracks.OfType<IMediaTrack>().ToList(), track, this.CreatePlaybackOrigin());
                     var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
                     await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
                     block();

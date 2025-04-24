@@ -1,6 +1,8 @@
 using CarPlay;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq.Expressions;
 using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.PlayObserver.Streak;
 using BMM.Core.Implementations.Security.Oidc.Interfaces;
 using BMM.Core.Translation;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
@@ -57,7 +59,10 @@ namespace BMM.UI.iOS.CarPlay
                 await FavouritesLayoutCreator.Create(_interfaceController),
             ]);
 
-            _interfaceController.SetRootTemplate(tabBarTemplate, true);
+            // resolving streak observer, so it can start listening for streak points
+            Mvx.IoCProvider!.Resolve<IStreakObserver>();
+            
+            _interfaceController.SetRootTemplate(tabBarTemplate, true, (_, _) => Expression.Empty());
         }
 
         private async void OnRefreshButtonClicked(CPAlertAction alertAction)

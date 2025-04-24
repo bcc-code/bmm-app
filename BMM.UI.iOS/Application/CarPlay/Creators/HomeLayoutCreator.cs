@@ -22,6 +22,7 @@ using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -29,41 +30,24 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
 {
-    private readonly IDiscoverClient _discoverClient;
-    private readonly IMediaPlayer _mediaPlayer;
-    private readonly IBMMLanguageBinder _bmmLanguageBinder;
-    private readonly IPodcastLayoutCreator _podcastLayoutCreator;
-    private readonly IContributorLayoutCreator _contributorLayoutCreator;
-    private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
-    private readonly IAlbumLayoutCreator _albumLayoutCreator;
+    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
+    private IDiscoverClient DiscoverClient => Mvx.IoCProvider!.Resolve<IDiscoverClient>();
+    private IBMMLanguageBinder BMMLanguageBinder => Mvx.IoCProvider!.Resolve<IBMMLanguageBinder>();
+    private IPodcastLayoutCreator PodcastLayoutCreator => Mvx.IoCProvider!.Resolve<IPodcastLayoutCreator>();
+    private IContributorLayoutCreator ContributorLayoutCreator => Mvx.IoCProvider!.Resolve<IContributorLayoutCreator>();
+    private IPlaylistLayoutCreator PlaylistLayoutCreator => Mvx.IoCProvider!.Resolve<IPlaylistLayoutCreator>();
+    private IAlbumLayoutCreator AlbumLayoutCreator => Mvx.IoCProvider!.Resolve<IAlbumLayoutCreator>();
+    
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _homeTemplate;
-
-    public HomeLayoutCreator(
-        IDiscoverClient discoverClient,
-        IMediaPlayer mediaPlayer,
-        IBMMLanguageBinder bmmLanguageBinder,
-        IPodcastLayoutCreator podcastLayoutCreator,
-        IContributorLayoutCreator contributorLayoutCreator,
-        IPlaylistLayoutCreator playlistLayoutCreator,
-        IAlbumLayoutCreator albumLayoutCreator)
-    {
-        _discoverClient = discoverClient;
-        _mediaPlayer = mediaPlayer;
-        _bmmLanguageBinder = bmmLanguageBinder;
-        _podcastLayoutCreator = podcastLayoutCreator;
-        _contributorLayoutCreator = contributorLayoutCreator;
-        _playlistLayoutCreator = playlistLayoutCreator;
-        _albumLayoutCreator = albumLayoutCreator;
-    }
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
         _cpInterfaceController = cpInterfaceController;
-        _homeTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Home], LoadingSection.Create());
-        _homeTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Home];
+        _homeTemplate = new CPListTemplate(BMMLanguageBinder[Translations.MenuViewModel_Home], LoadingSection.Create());
+        _homeTemplate.TabTitle = BMMLanguageBinder[Translations.MenuViewModel_Home];
         _homeTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconHome.ToNameWithExtension());
         SafeLoad().FireAndForget();
         return _homeTemplate;
@@ -71,7 +55,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     
     public override async Task Load()
     {
-        var discoverItems = (await _discoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated))
+        var discoverItems = (await DiscoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated))
             .ToList();
 
         var grouped = new List<GroupedDocuments>();
@@ -128,7 +112,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                         trackListItem = new CPListItem(playlist.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var playlistLayout = await _playlistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
+                            var playlistLayout = await PlaylistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
                             await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                             block();
                         };
@@ -141,7 +125,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                         trackListItem = new CPListItem(album.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var playlistLayout = await _albumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
+                            var playlistLayout = await AlbumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
                             await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                             block();
                         };
@@ -154,7 +138,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                         trackListItem = new CPListItem(podcast.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var podcastLayout = await _podcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
+                            var podcastLayout = await PodcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
                             await cpInterfaceController.PushTemplateAsync(podcastLayout, true);
                             block();
                         };
@@ -167,7 +151,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                         trackListItem = new CPListItem(contributor.Name, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var contributorLayout = await _contributorLayoutCreator.Create(cpInterfaceController, contributor.Id, contributor.Name);
+                            var contributorLayout = await ContributorLayoutCreator.Create(cpInterfaceController, contributor.Id, contributor.Name);
                             await cpInterfaceController.PushTemplateAsync(contributorLayout, true);
                             block();
                         };
@@ -207,7 +191,10 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         var item = new CPListItem(continueListeningTile.Label, subtitle.ToString(), image);
         item.Handler = async (listItem, block) =>
         {
-            await _mediaPlayer.Play(continueListeningTile.Track.EncloseInArray(), continueListeningTile.Track);
+            await MediaPlayer.Play(
+                continueListeningTile.Track.EncloseInArray(),
+                continueListeningTile.Track,
+                this.CreatePlaybackOrigin());
             var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
             await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
             block();

@@ -11,6 +11,7 @@ using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
@@ -20,30 +21,18 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
 {
     private const int Skip = 0;
     private const int Take = 40;
-    private readonly IBrowseClient _browseClient;
-    private readonly IPlaylistClient _playlistClient;
-    private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
-    private readonly IAlbumLayoutCreator _albumLayoutCreator;
-    private readonly IPodcastLayoutCreator _podcastLayoutCreator;
-    private readonly IUserStorage _userStorage;
+    private const string FeaturedBrowsePath = "featured";
+    
+    private IBrowseClient BrowseClient => Mvx.IoCProvider!.Resolve<IBrowseClient>();
+    private IPlaylistClient PlaylistClient => Mvx.IoCProvider!.Resolve<IPlaylistClient>();
+    private IPlaylistLayoutCreator PlaylistLayoutCreator => Mvx.IoCProvider!.Resolve<IPlaylistLayoutCreator>();
+    private IAlbumLayoutCreator AlbumLayoutCreator => Mvx.IoCProvider!.Resolve<IAlbumLayoutCreator>();
+    private IPodcastLayoutCreator PodcastLayoutCreator => Mvx.IoCProvider!.Resolve<IPodcastLayoutCreator>();
+    private IUserStorage UserStorage => Mvx.IoCProvider!.Resolve<IUserStorage>();
+    
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _browseDetailsListTemplates;
     private string _browsePath;
-
-    public BrowseDetailsLayoutCreator(IBrowseClient browseClient,
-        IPlaylistClient playlistClient,
-        IPlaylistLayoutCreator playlistLayoutCreator,
-        IAlbumLayoutCreator albumLayoutCreator,
-        IPodcastLayoutCreator podcastLayoutCreator,
-        IUserStorage userStorage)
-    {
-        _browseClient = browseClient;
-        _playlistClient = playlistClient;
-        _playlistLayoutCreator = playlistLayoutCreator;
-        _albumLayoutCreator = albumLayoutCreator;
-        _podcastLayoutCreator = podcastLayoutCreator;
-        _userStorage = userStorage;
-    }
 
     protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
 
@@ -60,14 +49,14 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
     {
         GenericDocumentsHolder documentsHolder;
 
-        if (_browsePath.Contains("featured"))
+        if (_browsePath.Contains(FeaturedBrowsePath))
         {
-            documentsHolder = await _playlistClient
-                .GetDocuments(_userStorage.GetUser().Age, CachePolicy.UseCacheAndRefreshOutdated);
+            documentsHolder = await PlaylistClient
+                .GetDocuments(UserStorage.GetUser().Age, CachePolicy.UseCacheAndRefreshOutdated);
         }
         else
         {
-            documentsHolder = await _browseClient.GetDocuments(_browsePath, Skip, Take);
+            documentsHolder = await BrowseClient.GetDocuments(_browsePath, Skip, Take);
         }
 
         var grouped = new List<GroupedDocuments>();
@@ -135,7 +124,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                         trackListItem = new CPListItem(playlist.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var playlistLayout = await _playlistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
+                            var playlistLayout = await PlaylistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
                             await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                             block();
                         };
@@ -148,7 +137,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                         trackListItem = new CPListItem(album.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var playlistLayout = await _albumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
+                            var playlistLayout = await AlbumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
                             await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                             block();
                         };
@@ -161,7 +150,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                         trackListItem = new CPListItem(podcast.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var podcastLayout = await _podcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
+                            var podcastLayout = await PodcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
                             await cpInterfaceController.PushTemplateAsync(podcastLayout, true);
                             block();
                         };
