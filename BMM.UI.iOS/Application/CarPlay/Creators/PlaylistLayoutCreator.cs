@@ -3,6 +3,7 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Base;
@@ -23,6 +24,8 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
     private IPlaylistClient PlaylistClient => Mvx.IoCProvider!.Resolve<IPlaylistClient>();
     private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
     private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
+    private IFirebaseRemoteConfig FirebaseRemoteConfig => Mvx.IoCProvider!.Resolve<IFirebaseRemoteConfig>();
+    
     private CPListTemplate _playlistListTemplate;
     private int _playlistId;
     private CPInterfaceController _cpInterfaceController;
@@ -44,7 +47,7 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
     public override async Task Load()
     {
         var playlistTracks = await PlaylistClient.GetTracks(_playlistId, CachePolicy.UseCacheAndRefreshOutdated);
-        var audiobookPodcastInfoProvider = new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider());
+        var audiobookPodcastInfoProvider = new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider(), FirebaseRemoteConfig);
 
         var tracksCpListItemTemplates = await Task.WhenAll(playlistTracks
             .Select(async track =>
