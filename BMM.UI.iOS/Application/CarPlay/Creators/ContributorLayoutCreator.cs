@@ -5,6 +5,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
@@ -15,11 +16,14 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class ContributorLayoutCreator : IContributorLayoutCreator
+public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCreator
 {
     private readonly IContributorClient _contributorClient;
     private readonly ITrackPOFactory _trackPOFactory;
     private readonly IMediaPlayer _mediaPlayer;
+    private CPInterfaceController _cpInterfaceController;
+    private int _contributorId;
+    private CPListTemplate _favouritesListTemplate;
 
     public ContributorLayoutCreator(
         IContributorClient contributorClient,
@@ -30,17 +34,21 @@ public class ContributorLayoutCreator : IContributorLayoutCreator
         _trackPOFactory = trackPOFactory;
         _mediaPlayer = mediaPlayer;
     }
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController, int contributorId, string name)
     {
-        var favouritesListTemplate = new CPListTemplate(name, LoadingSection.Create());
-        Load(cpInterfaceController, favouritesListTemplate, contributorId).FireAndForget();
-        return favouritesListTemplate;
+        _cpInterfaceController = cpInterfaceController;
+        _contributorId = contributorId;
+        _favouritesListTemplate = new CPListTemplate(name, LoadingSection.Create());
+        SafeLoad().FireAndForget();
+        return _favouritesListTemplate;
     }
 
-    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate favouritesListTemplate, int contributorId)
+    public override async Task Load()
     {
-        var tracks = await _contributorClient.GetTracks(contributorId, CachePolicy.UseCacheAndRefreshOutdated);
+        var tracks = await _contributorClient.GetTracks(_contributorId, CachePolicy.UseCacheAndRefreshOutdated);
         var trackInfoProvider = new DefaultTrackInfoProvider();
         
         var tracksPOs = tracks
@@ -57,7 +65,7 @@ public class ContributorLayoutCreator : IContributorLayoutCreator
                 {
                     await _mediaPlayer.Play(tracks.OfType<IMediaTrack>().ToList(), x.Track);
                     var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                    await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                    await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
                     block();
                 };
 
@@ -66,6 +74,6 @@ public class ContributorLayoutCreator : IContributorLayoutCreator
             }));
         
         var section = new CPListSection(tracksCpListItemTemplates);
-        favouritesListTemplate.UpdateSections(section.EncloseInArray());
+        _favouritesListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

@@ -640,6 +640,8 @@
   "CarPlay": {
     "ErrorTitle": "Something went wrong...",
     "TryAgainButton": "Try again",
-    "LoadingText": "Loading..."
+    "LoadingText": "Loading...",
+    "SignIntoBMM": "Sign into BMM on your phone",
+    "Refresh": "Refresh"
   }
 }

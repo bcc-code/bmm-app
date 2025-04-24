@@ -7,23 +7,25 @@ using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Models.POs.Podcasts;
 using BMM.Core.Translation;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
-using FFImageLoading;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayoutCreator
+public class FollowedPodcastsContentLayoutCreator : BaseLayoutCreator, IFollowedPodcastsContentLayoutCreator
 {
     private readonly IPodcastClient _podcastClient;
     private readonly IPodcastOfflineManager _podcastOfflineManager;
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
     private readonly IStorageManager _storageManager;
     private readonly IPodcastLayoutCreator _podcastLayoutCreator;
+    private CPInterfaceController _cpInterfaceController;
+    private CPListTemplate _followedPodcastsListTemplate;
 
     public FollowedPodcastsContentLayoutCreator(
         IPodcastClient podcastClient,
@@ -39,14 +41,17 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
         _podcastLayoutCreator = podcastLayoutCreator;
     }
 
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
+
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
-        var followedPodcastsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_FollowedPodcasts], LoadingSection.Create());
-        Load(cpInterfaceController, followedPodcastsListTemplate).FireAndForget();
-        return followedPodcastsListTemplate;
+        _cpInterfaceController = cpInterfaceController; 
+        _followedPodcastsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_FollowedPodcasts], LoadingSection.Create());
+        SafeLoad().FireAndForget();
+        return _followedPodcastsListTemplate;
     }
 
-    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate followedPodcastsListTemplate)
+    public override async Task Load()
     {
         var podcasts = await _podcastClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
         var followedPodcasts = podcasts?
@@ -63,8 +68,8 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
                 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    var playlistLayout = await _podcastLayoutCreator.Create(cpInterfaceController, p.Id, p.Title);
-                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                    var playlistLayout = await _podcastLayoutCreator.Create(CpInterfaceController, p.Id, p.Title);
+                    await CpInterfaceController.PushTemplateAsync(playlistLayout, true);
                     block();
                 };
                 
@@ -73,6 +78,6 @@ public class FollowedPodcastsContentLayoutCreator : IFollowedPodcastsContentLayo
             }));
 
         var section = new CPListSection(tracklistItems);
-        followedPodcastsListTemplate.UpdateSections(section.EncloseInArray());
+        _followedPodcastsListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

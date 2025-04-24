@@ -5,6 +5,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
@@ -16,11 +17,14 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class PlaylistLayoutCreator : IPlaylistLayoutCreator
+public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
 {
     private readonly IPlaylistClient _playlistClient;
     private readonly ITrackPOFactory _trackPOFactory;
     private readonly IMediaPlayer _mediaPlayer;
+    private CPListTemplate _playlistListTemplate;
+    private int _playlistId;
+    private CPInterfaceController _cpInterfaceController;
 
     public PlaylistLayoutCreator(
         IPlaylistClient playlistClient,
@@ -31,23 +35,24 @@ public class PlaylistLayoutCreator : IPlaylistLayoutCreator
         _trackPOFactory = trackPOFactory;
         _mediaPlayer = mediaPlayer;
     }
-    
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
+
     public async Task<CPListTemplate> Create(
         CPInterfaceController cpInterfaceController,
         int playlistId,
         string name)
     {
-        var playlistListTemplate = new CPListTemplate(name, LoadingSection.Create());
-        Load(cpInterfaceController, playlistListTemplate, playlistId).FireAndForget();
-        return playlistListTemplate;
+        _cpInterfaceController = cpInterfaceController;
+        _playlistId = playlistId;
+        _playlistListTemplate = new CPListTemplate(name, LoadingSection.Create());
+        SafeLoad().FireAndForget();
+        return _playlistListTemplate;
     }
 
-    private async Task Load(
-        CPInterfaceController cpInterfaceController,
-        CPListTemplate playlistListTemplate,
-        int playlistId)
+    public override async Task Load()
     {
-        var playlistTracks = await _playlistClient.GetTracks(playlistId, CachePolicy.UseCacheAndRefreshOutdated);
+        var playlistTracks = await _playlistClient.GetTracks(_playlistId, CachePolicy.UseCacheAndRefreshOutdated);
         var audiobookPodcastInfoProvider = new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider());
 
         var tracksCpListItemTemplates = await Task.WhenAll(playlistTracks
@@ -63,7 +68,7 @@ public class PlaylistLayoutCreator : IPlaylistLayoutCreator
                 {
                     await _mediaPlayer.Play(playlistTracks.OfType<IMediaTrack>().ToList(), track);
                     var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                    await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                    await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
                     block();
                 };
 
@@ -72,6 +77,6 @@ public class PlaylistLayoutCreator : IPlaylistLayoutCreator
             }));
 
         var section = new CPListSection(tracksCpListItemTemplates);
-        playlistListTemplate.UpdateSections(section.EncloseInArray());
+        _playlistListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

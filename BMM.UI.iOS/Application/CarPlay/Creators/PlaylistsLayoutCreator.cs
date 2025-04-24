@@ -5,6 +5,7 @@ using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Translation;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
@@ -14,11 +15,13 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class PlaylistsLayoutCreator : IPlaylistsLayoutCreator
+public class PlaylistsLayoutCreator : BaseLayoutCreator, IPlaylistsLayoutCreator
 {
     private readonly IPlaylistClient _playlistClient;
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
     private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
+    private CPListTemplate _playlistsListTemplate;
+    private CPInterfaceController _cpInterfaceController;
 
     public PlaylistsLayoutCreator(
         IPlaylistClient playlistClient,
@@ -29,19 +32,20 @@ public class PlaylistsLayoutCreator : IPlaylistsLayoutCreator
         _bmmLanguageBinder = bmmLanguageBinder;
         _playlistLayoutCreator = playlistLayoutCreator;
     }
-    
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
+
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
-        var playlistsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title], LoadingSection.Create());
-        playlistsListTemplate.TabTitle = _bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title];
-        playlistsListTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToIosImageName());
-        Load(cpInterfaceController, playlistsListTemplate).FireAndForget();
-        return playlistsListTemplate;
+        _cpInterfaceController = cpInterfaceController;
+        _playlistsListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title], LoadingSection.Create());
+        _playlistsListTemplate.TabTitle = _bmmLanguageBinder[Translations.CuratedPlaylistsViewModel_Title];
+        _playlistsListTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToIosImageName());
+        Load().FireAndForget();
+        return _playlistsListTemplate;
     }
 
-    private async Task Load(
-        CPInterfaceController cpInterfaceController,
-        CPListTemplate playlistsListTemplate)
+    public override async Task Load()
     {
         var playlists = await _playlistClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
         
@@ -53,8 +57,8 @@ public class PlaylistsLayoutCreator : IPlaylistsLayoutCreator
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    var playlistLayout = await _playlistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
-                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                    var playlistLayout = await _playlistLayoutCreator.Create(CpInterfaceController, playlist.Id, playlist.Title);
+                    await CpInterfaceController.PushTemplateAsync(playlistLayout, true);
                     block();
                 };
 
@@ -63,6 +67,6 @@ public class PlaylistsLayoutCreator : IPlaylistsLayoutCreator
             }));
         
         var section = new CPListSection(playlistListItemTemplates.ToArray());
-        playlistsListTemplate.UpdateSections(section.EncloseInArray());
+        _playlistsListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

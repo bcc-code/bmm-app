@@ -12,6 +12,7 @@ using BMM.Core.Models.POs.Other;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters.TrackCollections;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
@@ -22,7 +23,7 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class FavouritesLayoutCreator : IFavouritesLayoutCreator
+public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreator
 {
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
     private readonly ITrackCollectionClient _trackCollectionClient;
@@ -31,6 +32,8 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
     private readonly IDownloadedContentLayoutCreator _downloadedContentLayoutCreator;
     private readonly IFollowedPodcastsContentLayoutCreator _followedPodcastsContentLayoutCreator;
     private readonly ITrackCollectionContentLayoutCreator _trackCollectionContentLayoutCreator;
+    private CPInterfaceController _cpInterfaceController;
+    private CPListTemplate _favouritesListTemplate;
 
     public FavouritesLayoutCreator(
         IBMMLanguageBinder bmmLanguageBinder,
@@ -49,19 +52,20 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
         _followedPodcastsContentLayoutCreator = followedPodcastsContentLayoutCreator;
         _trackCollectionContentLayoutCreator = trackCollectionContentLayoutCreator;
     }
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
-        var favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Favorites], LoadingSection.Create());
-        favouritesListTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Favorites];
-        favouritesListTemplate.TabImage = UIImage.FromBundle("icon_favorites".ToNameWithExtension());
-        Load(cpInterfaceController, favouritesListTemplate).FireAndForget();
-        return favouritesListTemplate;
+        _cpInterfaceController = cpInterfaceController;
+        _favouritesListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Favorites], LoadingSection.Create());
+        _favouritesListTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Favorites];
+        _favouritesListTemplate.TabImage = UIImage.FromBundle("icon_favorites".ToNameWithExtension());
+        SafeLoad().FireAndForget();
+        return _favouritesListTemplate;
     }
 
-    private async Task Load(
-        CPInterfaceController cpInterfaceController,
-        CPListTemplate favouritesListTemplate)
+    public override async Task Load()
     {
         var allCollections = await _trackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
 
@@ -98,13 +102,13 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
                         {
                             if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.DownloadedContent)
                             {
-                                var downloadedContentTemplate = await _downloadedContentLayoutCreator.Create(cpInterfaceController);
-                                await cpInterfaceController.PushTemplateAsync(downloadedContentTemplate, true);
+                                var downloadedContentTemplate = await _downloadedContentLayoutCreator.Create(_cpInterfaceController);
+                                await _cpInterfaceController.PushTemplateAsync(downloadedContentTemplate, true);
                             }
                             else if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.FollowedPodcasts)
                             {
-                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create(cpInterfaceController);
-                                await cpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
+                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create(_cpInterfaceController);
+                                await _cpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
                             }
                             
                             block();
@@ -124,10 +128,10 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
                         trackListItem.Handler = async (item, block) =>
                         {
                             var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(
-                                cpInterfaceController,
+                                _cpInterfaceController,
                                 trackCollectionPO.TrackCollection.Name,
                                 trackCollectionPO.Id);
-                            await cpInterfaceController.PushTemplateAsync(trackCollectionContentLayout, true);
+                            await _cpInterfaceController.PushTemplateAsync(trackCollectionContentLayout, true);
                             block();
                         };
                         
@@ -141,6 +145,6 @@ public class FavouritesLayoutCreator : IFavouritesLayoutCreator
             .ToList();
         
         var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
-        favouritesListTemplate.UpdateSections(section.EncloseInArray());
+        _favouritesListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

@@ -7,7 +7,11 @@ using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Documents.Interfaces;
 using BMM.Core.Implementations.DeepLinking;
+using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Translation;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
+using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
 using FFImageLoading;
@@ -16,7 +20,7 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class BrowseLayoutCreator : IBrowseLayoutCreator
+public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
 {
     private const string BrowsePathRegex = @"https?:\/\/[^\/]+\/(.*)";
     private readonly IBrowseClient _browseClient;
@@ -25,6 +29,9 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
     private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
     private readonly IAlbumLayoutCreator _albumLayoutCreator;
     private readonly IBrowseDetailsLayoutCreator _browseDetailsLayoutCreator;
+    private readonly IBMMLanguageBinder _bmmLanguageBinder;
+    private CPListTemplate _browseListTemplate;
+    private CPInterfaceController _cpInterfaceController;
 
     public BrowseLayoutCreator(
         IBrowseClient browseClient,
@@ -32,7 +39,8 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
         IPodcastLayoutCreator podcastLayoutCreator,
         IPlaylistLayoutCreator playlistLayoutCreator,
         IAlbumLayoutCreator albumLayoutCreator,
-        IBrowseDetailsLayoutCreator browseDetailsLayoutCreator)
+        IBrowseDetailsLayoutCreator browseDetailsLayoutCreator,
+        IBMMLanguageBinder bmmLanguageBinder)
     {
         _browseClient = browseClient;
         _prepareCoversCarouselItemsAction = prepareCoversCarouselItemsAction;
@@ -40,15 +48,36 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
         _playlistLayoutCreator = playlistLayoutCreator;
         _albumLayoutCreator = albumLayoutCreator;
         _browseDetailsLayoutCreator = browseDetailsLayoutCreator;
+        _bmmLanguageBinder = bmmLanguageBinder;
     }
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
+    {
+        _cpInterfaceController = cpInterfaceController;
+        _browseListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Browse], LoadingSection.Create());
+        _browseListTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Browse];
+        _browseListTemplate.TabImage = UIImage.FromBundle("icon_browse".ToNameWithExtension());
+        SafeLoad().FireAndForget();
+        return _browseListTemplate;
+    }
+
+    private string GetBrowsePath(string link)
+    {
+        var match = Regex.Match(link, BrowsePathRegex);
+        return match.Success
+            ? match.Groups[1].Value
+            : default;
+    }
+    
+    public override async Task Load()
     {
         var browseItems = await _browseClient.Get(CachePolicy.UseCacheAndRefreshOutdated);
         var carouselAdjustedItems = await _prepareCoversCarouselItemsAction.ExecuteGuarded(browseItems.ToList());
 
         var imageRowItemsList = new List<CPListImageRowItem>();
-        DiscoverSectionHeader? currentHeader = null;
+        DiscoverSectionHeader currentHeader = null;
         var currentItems = new List<ImageRowItem>();
 
         foreach (var entry in carouselAdjustedItems)
@@ -72,11 +101,7 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
         }
 
         AddGroupIfNeeded();
-
-        var browseListTemplate = new CPListTemplate("Browse", new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
-        browseListTemplate.TabTitle = "Browse";
-        browseListTemplate.TabImage = UIImage.FromBundle("icon_browse".ToNameWithExtension());
-        return browseListTemplate;
+        _browseListTemplate.UpdateSections(new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
         
         void AddGroupIfNeeded()
         {
@@ -93,8 +118,8 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
             {
                 var coverItemInfo = (CoverItemInfo)listItem.UserInfo;
                 string browsePath = GetBrowsePath(coverItemInfo.Link);
-                var browseDetailsLayout = await _browseDetailsLayoutCreator.Create(cpInterfaceController, browsePath, coverItemInfo.Title);
-                await cpInterfaceController.PushTemplateAsync(browseDetailsLayout, true);
+                var browseDetailsLayout = await _browseDetailsLayoutCreator.Create(_cpInterfaceController, browsePath, coverItemInfo.Title);
+                await _cpInterfaceController.PushTemplateAsync(browseDetailsLayout, true);
                 block();
             };
             
@@ -103,32 +128,24 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
                 var imageRowItem = ((CoverItemInfo)rowItem.UserInfo)!.ImageRowItems[(int)index];
                 if (imageRowItem.Document is Podcast podcast)
                 {
-                    var podcastLayout = await _podcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
-                    await cpInterfaceController.PushTemplateAsync(podcastLayout, true);
+                    var podcastLayout = await _podcastLayoutCreator.Create(_cpInterfaceController, podcast.Id, podcast.Title);
+                    await _cpInterfaceController.PushTemplateAsync(podcastLayout, true);
                 }
                 else if (imageRowItem.Document is Playlist playlist)
                 {
-                    var playlistLayout = await _playlistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
-                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                    var playlistLayout = await _playlistLayoutCreator.Create(_cpInterfaceController, playlist.Id, playlist.Title);
+                    await _cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                 }
                 else if (imageRowItem.Document is Album album)
                 {
-                    var playlistLayout = await _albumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
-                    await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                    var playlistLayout = await _albumLayoutCreator.Create(_cpInterfaceController, album.Id, album.Title);
+                    await _cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                 }
             };
             
             imageRowItemsList.Add(item);
             currentItems.Clear();
         }
-    }
-
-    private string GetBrowsePath(string link)
-    {
-        var match = Regex.Match(link, BrowsePathRegex);
-        return match.Success
-            ? match.Groups[1].Value
-            : default;
     }
 
     public record ImageRowItem(
@@ -149,4 +166,5 @@ public class BrowseLayoutCreator : IBrowseLayoutCreator
         public string Title { get; }
         public string Link { get; }
     }
+
 }

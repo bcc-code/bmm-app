@@ -15,6 +15,7 @@ using BMM.Core.Models.POs.Playlists;
 using BMM.Core.Models.POs.TrackCollections;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters.TrackCollections;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
@@ -25,7 +26,7 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
+public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedContentLayoutCreator
 {
     private readonly ITrackCollectionClient _trackCollectionClient;
     private readonly ITrackCollectionPOFactory _trackCollectionPOFactory;
@@ -35,9 +36,10 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
     private readonly ITrackCollectionContentLayoutCreator _trackCollectionContentLayoutCreator;
     private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
+    private CPInterfaceController _cpInterfaceController;
+    private CPListTemplate _downloadedListTemplate;
 
-    public DownloadedContentLayoutCreator(
-        ITrackCollectionClient trackCollectionClient,
+    public DownloadedContentLayoutCreator(ITrackCollectionClient trackCollectionClient,
         ITrackCollectionPOFactory trackCollectionPOFactory,
         IPrepareDownloadedContentItemsAction prepareDownloadedContentItemsAction,
         IStorageManager storageManager,
@@ -55,23 +57,27 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
         _trackCollectionContentLayoutCreator = trackCollectionContentLayoutCreator;
         _playlistLayoutCreator = playlistLayoutCreator;
     }
-    
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
+
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
-        var downloadedListTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_Title], LoadingSection.Create());
-        Load(cpInterfaceController, downloadedListTemplate).FireAndForget();
-        return downloadedListTemplate;
+        _cpInterfaceController = cpInterfaceController;
+        _downloadedListTemplate =
+            new CPListTemplate(_bmmLanguageBinder[Translations.DownloadedContentViewModel_Title], LoadingSection.Create());
+        SafeLoad().FireAndForget();
+        return _downloadedListTemplate;
     }
 
-    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate downloadedListTemplate)
+    public override async Task Load()
     {
         var allCollections = await _trackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
 
-        var items =  allCollections
+        var items = allCollections
             .OrderByDescending(c => c.Id)
             .Select(tc => _trackCollectionPOFactory.Create(tc))
             .ToList();
-        
+
         var downloadedContentItems = await _prepareDownloadedContentItemsAction.ExecuteGuarded(items);
         var converter = new TrackCollectionToListViewItemSubtitleLabelConverter();
 
@@ -90,8 +96,9 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                         {
                             if (pinnedItemPO.PinnedItem.ActionType == PinnedItemActionType.DownloadedFollowedPodcasts)
                             {
-                                var followedPodcastsContentLayout = await _followedPodcastsContentLayoutCreator.Create(cpInterfaceController);
-                                await cpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
+                                var followedPodcastsContentLayout =
+                                    await _followedPodcastsContentLayoutCreator.Create(CpInterfaceController);
+                                await CpInterfaceController.PushTemplateAsync(followedPodcastsContentLayout, true);
                             }
 
                             block();
@@ -111,10 +118,10 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                         trackListItem.Handler = async (item, block) =>
                         {
                             var trackCollectionContentLayout = await _trackCollectionContentLayoutCreator.Create(
-                                cpInterfaceController,
+                                CpInterfaceController,
                                 trackCollectionPO.TrackCollection.Name,
                                 trackCollectionPO.Id);
-                            await cpInterfaceController.PushTemplateAsync(trackCollectionContentLayout, true);
+                            await CpInterfaceController.PushTemplateAsync(trackCollectionContentLayout, true);
                             block();
                         };
 
@@ -130,8 +137,9 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                         trackListItem = new CPListItem(playlistPO.Title, null, coverImage);
                         trackListItem.Handler = async (item, block) =>
                         {
-                            var playlistLayout = await _playlistLayoutCreator.Create(cpInterfaceController, playlistPO.Id, playlistPO.Title);
-                            await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
+                            var playlistLayout =
+                                await _playlistLayoutCreator.Create(CpInterfaceController, playlistPO.Id, playlistPO.Title);
+                            await CpInterfaceController.PushTemplateAsync(playlistLayout, true);
                             block();
                         };
 
@@ -145,10 +153,7 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                             .AsUIImageAsync();
 
                         trackListItem = new CPListItem(albumPO.Title, null, coverImage);
-                        trackListItem.Handler = async (item, block) =>
-                        {
-                            block();
-                        };
+                        trackListItem.Handler = async (item, block) => { block(); };
 
                         break;
                     }
@@ -157,8 +162,8 @@ public class DownloadedContentLayoutCreator : IDownloadedContentLayoutCreator
                 trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
                 return (ICPListTemplateItem)trackListItem;
             }));
-        
+
         var section = new CPListSection(tracklistItems);
-        downloadedListTemplate.UpdateSections(section.EncloseInArray());
+        _downloadedListTemplate.UpdateSections(section.EncloseInArray());
     }
 }

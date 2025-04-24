@@ -5,6 +5,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Models.POs.Albums;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
@@ -15,7 +16,7 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
+public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayoutCreator
 {
     private const int Skip = 0;
     private const int Take = 40;
@@ -25,9 +26,11 @@ public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
     private readonly IAlbumLayoutCreator _albumLayoutCreator;
     private readonly IPodcastLayoutCreator _podcastLayoutCreator;
     private readonly IUserStorage _userStorage;
+    private CPInterfaceController _cpInterfaceController;
+    private CPListTemplate _browseDetailsListTemplates;
+    private string _browsePath;
 
-    public BrowseDetailsLayoutCreator(
-        IBrowseClient browseClient,
+    public BrowseDetailsLayoutCreator(IBrowseClient browseClient,
         IPlaylistClient playlistClient,
         IPlaylistLayoutCreator playlistLayoutCreator,
         IAlbumLayoutCreator albumLayoutCreator,
@@ -41,31 +44,32 @@ public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
         _podcastLayoutCreator = podcastLayoutCreator;
         _userStorage = userStorage;
     }
-    
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
+
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController, string browsePath, string title)
     {
-        var browseDetailsListTemplates = new CPListTemplate(title, LoadingSection.Create());
-        Load(cpInterfaceController, browseDetailsListTemplates, browsePath).FireAndForget();
-        return browseDetailsListTemplates;
+        _cpInterfaceController = cpInterfaceController;
+        _browsePath = browsePath;
+        _browseDetailsListTemplates = new CPListTemplate(title, LoadingSection.Create());
+        SafeLoad().FireAndForget();
+        return _browseDetailsListTemplates;
     }
 
-    private async Task Load(
-        CPInterfaceController cpInterfaceController,
-        CPListTemplate browseDetailsListTemplate,
-        string browsePath)
+    public override async Task Load()
     {
         GenericDocumentsHolder documentsHolder;
-        
-        if (browsePath.Contains("featured"))
+
+        if (_browsePath.Contains("featured"))
         {
             documentsHolder = await _playlistClient
                 .GetDocuments(_userStorage.GetUser().Age, CachePolicy.UseCacheAndRefreshOutdated);
         }
         else
         {
-            documentsHolder = await _browseClient.GetDocuments(browsePath, Skip, Take);
+            documentsHolder = await _browseClient.GetDocuments(_browsePath, Skip, Take);
         }
-        
+
         var grouped = new List<GroupedDocuments>();
         GroupedDocuments currentGroup = null;
 
@@ -88,14 +92,14 @@ public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
         }
 
         CPListSection[] sections;
-        
+
         if (grouped.Any())
         {
             sections = await Task.WhenAll(grouped
                 .Select(async grouped =>
                 {
                     var trackListItems = new List<ICPListTemplateItem>();
-                    trackListItems.AddRange(await GetTrackListItems(cpInterfaceController, grouped.Documents));
+                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, grouped.Documents));
                     return new CPListSection(trackListItems.ToArray(), grouped.Title, null);
                 })
                 .ToArray());
@@ -106,16 +110,17 @@ public class BrowseDetailsLayoutCreator : IBrowseDetailsLayoutCreator
                 .Select(async document =>
                 {
                     var trackListItems = new List<ICPListTemplateItem>();
-                    trackListItems.AddRange(await GetTrackListItems(cpInterfaceController, documentsHolder.Items));
+                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, documentsHolder.Items));
                     return new CPListSection(trackListItems.ToArray());
                 })
                 .ToArray());
         }
-        
-        browseDetailsListTemplate.UpdateSections(sections);
+
+        _browseDetailsListTemplates.UpdateSections(sections);
     }
 
-    private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController, IEnumerable<Document> documents)
+    private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController,
+        IEnumerable<Document> documents)
     {
         return await Task.WhenAll(documents
             .Select(async d =>

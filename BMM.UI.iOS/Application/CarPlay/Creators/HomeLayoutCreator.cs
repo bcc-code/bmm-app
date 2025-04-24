@@ -16,6 +16,7 @@ using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
+using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
@@ -26,26 +27,22 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 
 [SuppressMessage("Interoperability", "CA1416:Validate platform compatibility")]
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
-public class HomeLayoutCreator : IHomeLayoutCreator
+public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
 {
     private readonly IDiscoverClient _discoverClient;
     private readonly IMediaPlayer _mediaPlayer;
-    private readonly ITrackPOFactory _trackFactory;
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
-    private readonly IUserStorage _user;
-    private readonly IPrepareCoversCarouselItemsAction _prepareCarouselItemsAction;
     private readonly IPodcastLayoutCreator _podcastLayoutCreator;
     private readonly IContributorLayoutCreator _contributorLayoutCreator;
     private readonly IPlaylistLayoutCreator _playlistLayoutCreator;
     private readonly IAlbumLayoutCreator _albumLayoutCreator;
+    private CPInterfaceController _cpInterfaceController;
+    private CPListTemplate _homeTemplate;
 
     public HomeLayoutCreator(
         IDiscoverClient discoverClient,
         IMediaPlayer mediaPlayer,
-        ITrackPOFactory trackFactory,
         IBMMLanguageBinder bmmLanguageBinder,
-        IUserStorage user,
-        IPrepareCoversCarouselItemsAction prepareCarouselItemsAction,
         IPodcastLayoutCreator podcastLayoutCreator,
         IContributorLayoutCreator contributorLayoutCreator,
         IPlaylistLayoutCreator playlistLayoutCreator,
@@ -53,28 +50,26 @@ public class HomeLayoutCreator : IHomeLayoutCreator
     {
         _discoverClient = discoverClient;
         _mediaPlayer = mediaPlayer;
-        _trackFactory = trackFactory;
         _bmmLanguageBinder = bmmLanguageBinder;
-        _user = user;
-        _prepareCarouselItemsAction = prepareCarouselItemsAction;
         _podcastLayoutCreator = podcastLayoutCreator;
         _contributorLayoutCreator = contributorLayoutCreator;
         _playlistLayoutCreator = playlistLayoutCreator;
         _albumLayoutCreator = albumLayoutCreator;
     }
+
+    protected override CPInterfaceController CpInterfaceController => _cpInterfaceController;
     
     public async Task<CPListTemplate> Create(CPInterfaceController cpInterfaceController)
     {
-        var homeTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Home], LoadingSection.Create());
-        homeTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Home];
-        homeTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconHome.ToNameWithExtension());
-        
-        Load(cpInterfaceController, homeTemplate).FireAndForget();
-        
-        return homeTemplate;
+        _cpInterfaceController = cpInterfaceController;
+        _homeTemplate = new CPListTemplate(_bmmLanguageBinder[Translations.MenuViewModel_Home], LoadingSection.Create());
+        _homeTemplate.TabTitle = _bmmLanguageBinder[Translations.MenuViewModel_Home];
+        _homeTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconHome.ToNameWithExtension());
+        SafeLoad().FireAndForget();
+        return _homeTemplate;
     }
-
-    private async Task Load(CPInterfaceController cpInterfaceController, CPListTemplate homeTemplate)
+    
+    public override async Task Load()
     {
         var discoverItems = (await _discoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated))
             .ToList();
@@ -106,11 +101,11 @@ public class HomeLayoutCreator : IHomeLayoutCreator
         foreach (var group in grouped)
         {
             var trackListItems = new List<ICPListTemplateItem>();
-            trackListItems.AddRange(await GetTrackListItems(cpInterfaceController, group.Documents));
+            trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, group.Documents));
             sections.Add(new CPListSection(trackListItems.ToArray(), group.Title, null));
         }
             
-        homeTemplate.UpdateSections(sections.ToArray());
+        _homeTemplate.UpdateSections(sections.ToArray());
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController, IEnumerable<Document> documents)

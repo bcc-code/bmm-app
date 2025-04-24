@@ -504,5 +504,7 @@ namespace BMM.Core.Translation
 		public const string CarPlay_ErrorTitle = nameof(CarPlay_ErrorTitle);
 		public const string CarPlay_TryAgainButton = nameof(CarPlay_TryAgainButton);
 		public const string CarPlay_LoadingText = nameof(CarPlay_LoadingText);
+		public const string CarPlay_SignIntoBMM = nameof(CarPlay_SignIntoBMM);
+		public const string CarPlay_Refresh = nameof(CarPlay_Refresh);
 	}
 }
