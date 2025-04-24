@@ -32,12 +32,12 @@ public class BmmWindowSceneDelegate : UIResponder, IUIWindowSceneDelegate
             ?.SetValue(null, null);
         
         MvxIosSetupSingleton.EnsureSingletonAvailable(AppDelegateInstance, Window).EnsureInitialized();
-        RunAppStart();
-        
         AppDelegate.MainWindow = Window;
         AppDelegateInstance.Window = Window;
         AppDelegateInstance.RegisterForNotifications();
         AppDelegateInstance.SetThemeForApp();
+        
+        RunAppStart();
     }
 
     public void WillEnterForeground(UIScene scene)
