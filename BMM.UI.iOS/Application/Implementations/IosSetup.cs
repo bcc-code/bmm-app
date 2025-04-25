@@ -25,6 +25,8 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Support;
 using BMM.UI.iOS.Actions;
 using BMM.UI.iOS.Bindings;
+using BMM.UI.iOS.CarPlay.Creators;
+using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.DownloadManager;
 using BMM.UI.iOS.Helpers;
 using BMM.UI.iOS.Implementations;
@@ -68,7 +70,8 @@ namespace BMM.UI.iOS
             // Since we need Firebase already in the dependency injection initialization we have to configure it here.
             // FinishedLaunching of the AppDelegate (as suggested in the Firebase docs) would be to late
             // because it's called after creating the DI containers in Mvx.
-            Firebase.Core.App.Configure();
+            if (Firebase.Core.App.DefaultInstance == null)
+                Firebase.Core.App.Configure();
 
             iocProvider.LazyConstructAndRegisterSingleton<IOldSecureStorage, iOSOldSecureStorage>();
             iocProvider.LazyConstructAndRegisterSingleton<IUserDialogsFactory, iOSUserDialogsFactory>();
@@ -120,6 +123,7 @@ namespace BMM.UI.iOS
             iocProvider.RegisterType<IPrepareTrackOptionsAction, iOSTrackOptionsAction>();
             
             RegisterMediaPlayer(iocProvider);
+            RegisterCarPlay(iocProvider);
         }
 
         protected override ILoggerProvider CreateLogProvider()
@@ -135,7 +139,7 @@ namespace BMM.UI.iOS
 
             return new SerilogLoggerFactory();
         }
-
+        
         public override void InitializeSecondary()
         {
             base.InitializeSecondary();
@@ -175,6 +179,22 @@ namespace BMM.UI.iOS
             iocProvider.LazyConstructAndRegisterSingleton<MediaQueue, MediaQueue>();
             iocProvider.LazyConstructAndRegisterSingleton<IShuffleableQueue>(() => new ShuffleableQueue(iocProvider.Resolve<MediaQueue>(), iocProvider.Resolve<ILogger>()));
             iocProvider.RegisterType<IMediaQueue>(iocProvider.Resolve<IShuffleableQueue>);
+        }
+        
+        private void RegisterCarPlay(IMvxIoCProvider iocProvider)
+        {
+            iocProvider.RegisterType<IHomeLayoutCreator, HomeLayoutCreator>();
+            iocProvider.RegisterType<IBrowseLayoutCreator, BrowseLayoutCreator>();
+            iocProvider.RegisterType<IFavouritesLayoutCreator, FavouritesLayoutCreator>();
+            iocProvider.RegisterType<IDownloadedContentLayoutCreator, DownloadedContentLayoutCreator>();
+            iocProvider.RegisterType<IFollowedPodcastsContentLayoutCreator, FollowedPodcastsContentLayoutCreator>();
+            iocProvider.RegisterType<ITrackCollectionContentLayoutCreator, TrackCollectionContentLayoutCreator>();
+            iocProvider.RegisterType<IPlaylistLayoutCreator, PlaylistLayoutCreator>();
+            iocProvider.RegisterType<IPodcastLayoutCreator, PodcastLayoutCreator>();
+            iocProvider.RegisterType<IAlbumLayoutCreator, AlbumLayoutCreator>();
+            iocProvider.RegisterType<IContributorLayoutCreator, ContributorLayoutCreator>();
+            iocProvider.RegisterType<IBrowseDetailsLayoutCreator, BrowseDetailsLayoutCreator>();
+            iocProvider.RegisterType<IPlaylistsLayoutCreator, PlaylistsLayoutCreator>();
         }
 
         protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)

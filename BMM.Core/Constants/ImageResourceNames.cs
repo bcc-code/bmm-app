@@ -13,6 +13,7 @@ namespace BMM.Core.Constants
         public const string IconAlbum = "Icon_Album";
         public const string IconPerson = "Icon_Person";
         public const string IconInfo = "Icon_Info";
+        public const string PlaceholderCover = "Placeholder_Cover";
         public const string NewPlaceholderCover = "New_Placeholder_Cover";
         public const string IconRepeatOne = "Icon_Repeat_One";
         public const string IconRepeat = "Icon_Repeat";
@@ -37,5 +38,9 @@ namespace BMM.Core.Constants
         public const string ImageQuizBackgroundThree = "Image_Quiz_Background_Three";
         public const string IconAI = "Icon_AI";
         public const string ImageSongTreasures = "Image_Song_Treasures";
+        public const string IconFollowedPodcastsCarplay = "Icon_Followed_Podcasts_Carplay";
+        public const string IconPlaylistCarplay = "Icon_Playlist_Carplay";
+        public const string IconDownloadedCarplay = "Icon_Downloaded_Carplay";
+        public const string IconBrowse = "Icon_Browse";
     }
 }

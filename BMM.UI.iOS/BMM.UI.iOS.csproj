@@ -4,7 +4,7 @@
       <OutputType>Exe</OutputType>
       <Nullable>disable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
-      <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
       <UseMauiEssentials>true</UseMauiEssentials>
       <Configurations>Debug;Release;UITests</Configurations>
       <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
