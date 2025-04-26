@@ -28,7 +28,8 @@
     "DailyMessage": "Rede des Tages",
     "ValueCopiedToClipboard": "{0} in die Zwischenablage kopiert",
     "AddToFavorites": "Zu Favoriten hinzufügen",
-    "RemoveFromFavorites": "Aus Favoriten entfernen"
+    "RemoveFromFavorites": "Aus Favoriten entfernen",
+    "NowPlaying": "Spielt jetzt"
   },
   "Streak": {
     "Message": "Dein Status diese Woche",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Gesamtpunktzahl"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Ein Fehler ist aufgetreten...",
+    "TryAgainButton": "Erneut versuchen",
+    "LoadingText": "Wird geladen...",
+    "SignIntoBMM": "Melde dich auf deinem Handy bei BMM an",
+    "Refresh": "Auffrischen"
   }
 }
