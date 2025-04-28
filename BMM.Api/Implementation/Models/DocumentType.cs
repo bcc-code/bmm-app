@@ -76,6 +76,9 @@ namespace BMM.Api.Implementation.Models
         [EnumMember(Value = "hvhe_project_box")]
         HvheProjectBox,
         
+        [EnumMember(Value = "project_box_v2")]
+        ProjectBoxV2,
+        
         [EnumMember(Value = "achievement_collection")]
         AchievementCollection,
 

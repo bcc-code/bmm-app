@@ -46,7 +46,9 @@
             local:layout_constraintEnd_toStartOf="@+id/GirlsPointsContainer"
             local:layout_constraintTop_toTopOf="parent"
             local:layout_constraintEnd_toEndOf="parent"
-            local:MvxBind="Click OpenDetailsCommand"
+            local:MvxBind="
+                Click OpenDetailsCommand;
+                Visibility Visibility(IsBoysVsGirlsVisible)"
             android:background="@drawable/boys_points_background">
 
             <TextView
@@ -70,7 +72,9 @@
                 android:gravity="center"
                 local:layout_constraintTop_toTopOf="@+id/BoysPointsContainer"
                 local:layout_constraintEnd_toEndOf="parent"
-                local:MvxBind="Click OpenDetailsCommand"
+                local:MvxBind="
+                    Click OpenDetailsCommand;
+                    Visibility Visibility(IsBoysVsGirlsVisible)"
                 android:background="@drawable/girls_points_background">
 
             <TextView

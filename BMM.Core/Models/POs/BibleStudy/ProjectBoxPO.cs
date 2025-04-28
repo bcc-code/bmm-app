@@ -17,6 +17,7 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
     public ProjectBoxPO(ProjectBox projectBox, IMvxNavigationService navigationService) : base(projectBox)
     {
         ProjectBox = projectBox;
+        IsBoysVsGirlsVisible = ProjectBox.DocumentType == DocumentType.HvheProjectBox;
         IsExpanded = AppSettings.IsProjectBoxExpanded(projectBox.Id, projectBox.OpenByDefault);
         ExpandOrCollapseInteraction = new BmmInteraction();
         ExpandOrCollapseCommand = new MvxCommand(() =>
@@ -49,6 +50,7 @@ public class ProjectBoxPO : DocumentPO, IProjectBoxPO
     
     public ProjectBox ProjectBox { get; }
     public bool IsExpanded { get; private set; }
+    public bool IsBoysVsGirlsVisible { get; private set; }
     public IBmmInteraction ExpandOrCollapseInteraction { get; }
     public IMvxCommand ExpandOrCollapseCommand { get; }
     public IMvxAsyncCommand OpenQuestionsCommand { get; }

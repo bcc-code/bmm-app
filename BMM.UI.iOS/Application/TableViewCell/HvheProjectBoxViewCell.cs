@@ -67,6 +67,14 @@ namespace BMM.UI.iOS
                 set.Bind(GirlsPointsContainer)
                     .For(v => v.BindTap())
                     .To(po => po.OpenDetailsCommand);
+
+                set.Bind(BoysPointsContainer)
+                    .For(v => v.BindVisible())
+                    .To(po => po.IsBoysVsGirlsVisible);
+                
+                set.Bind(GirlsPointsContainer)
+                    .For(v => v.BindVisible())
+                    .To(po => po.IsBoysVsGirlsVisible);
                 
                 set.Apply();
 
