@@ -1,4 +1,5 @@
 ﻿using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Models.POs.Albums;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.BibleStudy;
@@ -198,7 +199,7 @@ namespace BMM.UI.Droid.Application.TemplateSelectors
                 
                 case ProjectBoxPO projectBoxPO:
                 {
-                    if (projectBoxPO.ProjectBox.DocumentType == DocumentType.HvheProjectBox)
+                    if (projectBoxPO.ProjectBox.DocumentType.IsOneOf(DocumentType.HvheProjectBox, DocumentType.ProjectBoxV2))
                         return ViewTypes.HvheProjectBox;
                     
                     if (projectBoxPO.ProjectBox.DocumentType == DocumentType.GibraltarProjectBox)

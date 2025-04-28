@@ -81,6 +81,9 @@ namespace BMM.Api.Framework.JsonConverter
                 case "hvhe_project_box":
                     return new ProjectBox(DocumentType.HvheProjectBox);
                 
+                case "project_box_v2":
+                    return new ProjectBox(DocumentType.ProjectBoxV2);
+                
                 case "achievement_collection":
                     return new AchievementsCollection();
             }

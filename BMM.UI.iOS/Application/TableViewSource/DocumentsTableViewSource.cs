@@ -138,7 +138,7 @@ namespace BMM.UI.iOS
                 {
                     nibName = projectBoxPO.ProjectBox.DocumentType switch
                     {
-                        DocumentType.HvheProjectBox => HvheProjectBoxViewCell.Key,
+                        DocumentType.HvheProjectBox or DocumentType.ProjectBoxV2 => HvheProjectBoxViewCell.Key,
                         DocumentType.GibraltarProjectBox => GibraltarProjectBoxViewCell.Key,
                         _ => projectBoxPO.IsExpanded
                             ? ProjectBoxExpandedViewCell.Key
