@@ -105,7 +105,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                 .ToArray());
         }
 
-        _browseDetailsListTemplates.UpdateSections(sections);
+        _browseDetailsListTemplates.SafeUpdateSections(sections);
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController,

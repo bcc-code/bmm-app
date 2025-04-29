@@ -68,6 +68,6 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
             }));
 
         var section = new CPListSection(tracksCpListItemTemplates);
-        _trackCollectionListTemplate.UpdateSections(section.EncloseInArray());
+        _trackCollectionListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

@@ -85,7 +85,7 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
         }
 
         AddGroupIfNeeded();
-        _browseListTemplate.UpdateSections(new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
+        _browseListTemplate.SafeUpdateSections(new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
         
         void AddGroupIfNeeded()
         {
