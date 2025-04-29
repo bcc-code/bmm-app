@@ -68,6 +68,6 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
             }));
         
         var section = new CPListSection(tracksCpListItemTemplates);
-        _favouritesListTemplate.UpdateSections(section.EncloseInArray());
+        _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

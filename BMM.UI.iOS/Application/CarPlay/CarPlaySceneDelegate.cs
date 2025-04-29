@@ -61,8 +61,9 @@ namespace BMM.UI.iOS.CarPlay
 
             // resolving streak observer, so it can start listening for streak points
             Mvx.IoCProvider!.Resolve<IStreakObserver>();
-            
-            _interfaceController.SetRootTemplate(tabBarTemplate, true, (_, _) => Expression.Empty());
+            _interfaceController.BeginInvokeOnMainThread(() => 
+                _interfaceController
+                .SetRootTemplate(tabBarTemplate, true, (_, _) => Expression.Empty()));
         }
 
         private async void OnRefreshButtonClicked(CPAlertAction alertAction)

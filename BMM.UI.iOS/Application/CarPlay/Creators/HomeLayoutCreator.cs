@@ -88,8 +88,8 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
             trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, group.Documents));
             sections.Add(new CPListSection(trackListItems.ToArray(), group.Title, null));
         }
-            
-        _homeTemplate.UpdateSections(sections.ToArray());
+        
+        _homeTemplate.SafeUpdateSections(sections.ToArray());
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController, IEnumerable<Document> documents)
