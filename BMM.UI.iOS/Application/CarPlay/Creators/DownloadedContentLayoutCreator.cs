@@ -145,6 +145,6 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
             }));
 
         var section = new CPListSection(tracklistItems);
-        _downloadedListTemplate.UpdateSections(section.EncloseInArray());
+        _downloadedListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

@@ -129,6 +129,6 @@ public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreat
             .ToList();
         
         var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
-        _favouritesListTemplate.UpdateSections(section.EncloseInArray());
+        _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

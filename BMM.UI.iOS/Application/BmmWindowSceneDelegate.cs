@@ -1,5 +1,6 @@
 using System.Reflection;
 using BMM.Core.Implementations;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using CoreFoundation;
 using MvvmCross;
 using MvvmCross.Base;
@@ -25,6 +26,8 @@ public class BmmWindowSceneDelegate : UIResponder, IUIWindowSceneDelegate
             return;
         
         Window = new UIWindow(windowScene);
+
+        HandlePlayerStopIfAlreadyPlaying();
         
         MvxSingleton.ClearAllSingletons();
         typeof(MvxIoCProvider)
@@ -38,6 +41,22 @@ public class BmmWindowSceneDelegate : UIResponder, IUIWindowSceneDelegate
         AppDelegateInstance.SetThemeForApp();
         
         RunAppStart();
+    }
+
+    /// <summary>
+    ///     We need to stop playing when starting the app to avoid two or more playbacks at the same time.
+    ///     It only occurs when the app is opened as CarPlay first and then opened on phone.
+    ///     Detailed investigation is needed to handle it without playing interrupting.
+    /// </summary>
+    private void HandlePlayerStopIfAlreadyPlaying()
+    {
+        if (Mvx.IoCProvider == null || !Mvx.IoCProvider.TryResolve<IMediaPlayer>(out var mediaPlayer))
+            return;
+
+        if (!mediaPlayer!.IsPlaying)
+            return;
+        
+        mediaPlayer.Stop();
     }
 
     public void WillEnterForeground(UIScene scene)
