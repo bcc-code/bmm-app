@@ -28,7 +28,8 @@
     "DailyMessage": "Mesajul zilei",
     "ValueCopiedToClipboard": "{0} copiate în clipboard",
     "AddToFavorites": "Adaugă la favorite",
-    "RemoveFromFavorites": "Elimină de la favorite"
+    "RemoveFromFavorites": "Elimină de la favorite",
+    "NowPlaying": "Redare acum"
   },
   "Streak": {
     "Message": "Progresul tău din această săptămână",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Punctaj global"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Ceva nu a mers bine...",
+    "TryAgainButton": "Încearcă din nou",
+    "LoadingText": "Se încarcă...",
+    "SignIntoBMM": "Conectează-te la BMM pe telefonul tău",
+    "Refresh": "Reîmprospătare"
   }
 }
