@@ -28,7 +28,8 @@
     "DailyMessage": "Dagens tale",
     "ValueCopiedToClipboard": "{0} kopiert til utklippstavle",
     "AddToFavorites": "Legg til i favoritter",
-    "RemoveFromFavorites": "Fjern fra favoritter"
+    "RemoveFromFavorites": "Fjern fra favoritter",
+    "NowPlaying": "Spilles nå"
   },
   "Streak": {
     "Message": "Din streak denne uken",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Global poengsum"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Noe gikk galt ...",
+    "TryAgainButton": "Prøv igjen",
+    "LoadingText": "Laster ...",
+    "SignIntoBMM": "Logg på BMM på telefonen din",
+    "Refresh": "Oppdater"
   }
 }
