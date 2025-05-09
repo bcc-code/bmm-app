@@ -67,19 +67,6 @@ namespace BMM.UI.iOS
                 UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.DarkContent, true);
         }
 
-        [Export("application:continueUserActivity:restorationHandler:")]
-        public override bool ContinueUserActivity(UIApplication application, NSUserActivity userActivity, UIApplicationRestorationHandler completionHandler)
-        {
-            string url = userActivity?.WebPageUrl?.AbsoluteString;
-            
-            if (string.IsNullOrEmpty(url))
-                return false; 
-            
-            var deepLinkHandler = Mvx.IoCProvider.Resolve<IDeepLinkHandler>();
-            deepLinkHandler.SetDeepLinkWillStartPlayerIfNeeded(url);
-            return deepLinkHandler.OpenFromOutsideOfApp(new Uri(url));
-        }
-
         public override void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
         {
             Console.Error.WriteLine("Failed to register for remote notifications");
