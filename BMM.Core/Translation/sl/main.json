@@ -28,7 +28,8 @@
     "DailyMessage": "Govor dneva",
     "ValueCopiedToClipboard": "{0} kopiran v odlagališče",
     "AddToFavorites": "Dodaj med priljubljene",
-    "RemoveFromFavorites": "Odstrani iz priljubljenih"
+    "RemoveFromFavorites": "Odstrani iz priljubljenih",
+    "NowPlaying": "Zdaj se predvaja"
   },
   "Streak": {
     "Message": "Tvoj  niz ta teden",
@@ -253,7 +254,7 @@
     "Title": "Seznami predvajanja"
   },
   "PlayerViewModel": {
-    "Title": "Zdaj predvajano",
+    "Title": "Zdaj se predvaja",
     "PlayingCount": "{0} od {1}",
     "ViewLyrics": "Poglej besedilo",
     "SleepTimer": "Časovnik izklopa",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Celotni rezultat"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Nekaj je šlo narobe ...",
+    "TryAgainButton": "Poskusi znova",
+    "LoadingText": "Nalaganje ...",
+    "SignIntoBMM": "Prijavi se v BMM na svojem telefonu",
+    "Refresh": "Osveži"
   }
 }
