@@ -28,7 +28,8 @@
     "DailyMessage": "Codzienna przemowa",
     "ValueCopiedToClipboard": "{0} skopiowane do schowka",
     "AddToFavorites": "Dodaj do ulubionych",
-    "RemoveFromFavorites": "Usuń z ulubionych"
+    "RemoveFromFavorites": "Usuń z ulubionych",
+    "NowPlaying": "Teraz odtwarzane"
   },
   "Streak": {
     "Message": "Twoja seria w tym tygodniu",
@@ -253,7 +254,7 @@
     "Title": "Playlisty"
   },
   "PlayerViewModel": {
-    "Title": "Odtwarzanie",
+    "Title": "Teraz odtwarzane",
     "PlayingCount": "{0} z {1}",
     "ViewLyrics": "Wyświetl Tekst",
     "SleepTimer": "Wyłącznik czasowy",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Wynik globalny"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Coś poszło nie tak...",
+    "TryAgainButton": "Spróbuj ponownie",
+    "LoadingText": "Ładowanie...",
+    "SignIntoBMM": "Zaloguj się do BMM na swoim telefonie",
+    "Refresh": "Odśwież"
   }
 }
