@@ -28,7 +28,8 @@
     "DailyMessage": "Päevane jutlus",
     "ValueCopiedToClipboard": "{0} kopeeritud lõikelauale",
     "AddToFavorites": "Lisa lemmikute hulka",
-    "RemoveFromFavorites": "Eemalda lemmikutest"
+    "RemoveFromFavorites": "Eemalda lemmikutest",
+    "NowPlaying": "Praegu mängib"
   },
   "Streak": {
     "Message": "Sinu selle nädala striik",
@@ -253,7 +254,7 @@
     "Title": "Esitusloendid"
   },
   "PlayerViewModel": {
-    "Title": "Nüüd mängib",
+    "Title": "Praegu mängib",
     "PlayingCount": "{0} {1}-st",
     "ViewLyrics": "Vaata laulusõnu",
     "SleepTimer": "Unetaimer",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Üldine skoor"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Midagi läks valesti...",
+    "TryAgainButton": "Proovi uuesti",
+    "LoadingText": "Laeb...",
+    "SignIntoBMM": "Logi oma telefonis BMM-i sisse",
+    "Refresh": "Värskenda"
   }
 }
