@@ -28,7 +28,8 @@
     "DailyMessage": "Dagelijkse toespraak",
     "ValueCopiedToClipboard": "{0} gekopieerd naar het klembord",
     "AddToFavorites": "Toevoegen aan favorieten",
-    "RemoveFromFavorites": "Verwijderen uit favorieten"
+    "RemoveFromFavorites": "Verwijderen uit favorieten",
+    "NowPlaying": "Aan het afspelen"
   },
   "Streak": {
     "Message": "Jouw Streak deze week",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Globale score"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Er ging iets fout",
+    "TryAgainButton": "Probeer opnieuw",
+    "LoadingText": "Laden...",
+    "SignIntoBMM": "Meld je aan bij BMM op je telefoon",
+    "Refresh": "Vernieuw"
   }
 }
