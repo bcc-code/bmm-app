@@ -41,6 +41,8 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
     {
         var tracks = await ContributorClient.GetTracks(_contributorId, CachePolicy.UseCacheAndRefreshOutdated);
         var trackInfoProvider = new DefaultTrackInfoProvider();
+
+        var covers = await tracks.DownloadCovers();
         
         var tracksPOs = tracks
             .Select(t => TrackPOFactory.Create(trackInfoProvider, null, t))
@@ -49,8 +51,7 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
         var tracksCpListItemTemplates = await Task.WhenAll(tracksPOs
             .Select(async x =>
             {
-                var coverImage = await x.Track.ArtworkUri.ToUIImage();
-                var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", coverImage);
+                var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", covers.GetCover(x.Track.ArtworkUri));
                
                 trackListItem.Handler = async (item, block) =>
                 {

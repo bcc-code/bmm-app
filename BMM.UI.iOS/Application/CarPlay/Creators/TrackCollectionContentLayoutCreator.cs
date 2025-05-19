@@ -46,11 +46,12 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
             .Select(t => TrackPOFactory.Create(trackInfoProvider, null, t))
             .ToList();
 
+        var covers = await tracks.DownloadCovers();
+
         var tracksCpListItemTemplates = await Task.WhenAll(tracks
             .Select(async x =>
             {
-                var coverImage = await x.Track.ArtworkUri.ToUIImage();
-                var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", coverImage);
+                var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", covers.GetCover(x.Track.ArtworkUri));
 
                 trackListItem.Handler = async (item, block) =>
                 {

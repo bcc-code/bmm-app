@@ -80,6 +80,10 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
             }
         }
 
+        var covers = await documentsHolder
+            .Items
+            .DownloadCovers();
+        
         CPListSection[] sections;
 
         if (grouped.Any())
@@ -88,7 +92,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                 .Select(async grouped =>
                 {
                     var trackListItems = new List<ICPListTemplateItem>();
-                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, grouped.Documents));
+                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, grouped.Documents, covers));
                     return new CPListSection(trackListItems.ToArray(), grouped.Title, null);
                 })
                 .ToArray());
@@ -99,7 +103,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                 .Select(async document =>
                 {
                     var trackListItems = new List<ICPListTemplateItem>();
-                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, documentsHolder.Items));
+                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, documentsHolder.Items, covers));
                     return new CPListSection(trackListItems.ToArray());
                 })
                 .ToArray());
@@ -109,7 +113,8 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController,
-        IEnumerable<Document> documents)
+        IEnumerable<Document> documents,
+        IDictionary<string, UIImage> covers)
     {
         return await Task.WhenAll(documents
             .Select(async d =>
@@ -120,8 +125,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                 {
                     case Playlist playlist:
                     {
-                        var coverImage = await playlist.Cover.ToUIImage();
-                        trackListItem = new CPListItem(playlist.Title, null, coverImage);
+                        trackListItem = new CPListItem(playlist.Title, null, covers.GetCover(playlist.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var playlistLayout = await PlaylistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
@@ -133,8 +137,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                     }
                     case Album album:
                     {
-                        var coverImage = await album.Cover.ToUIImage();
-                        trackListItem = new CPListItem(album.Title, null, coverImage);
+                        trackListItem = new CPListItem(album.Title, null, covers.GetCover(album.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var playlistLayout = await AlbumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
@@ -146,8 +149,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                     }
                     case Podcast podcast:
                     {
-                        var coverImage = await podcast.Cover.ToUIImage();
-                        trackListItem = new CPListItem(podcast.Title, null, coverImage);
+                        trackListItem = new CPListItem(podcast.Title, null, covers.GetCover(podcast.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var podcastLayout = await PodcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);

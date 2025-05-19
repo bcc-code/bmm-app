@@ -57,9 +57,11 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
     
     public override async Task Load()
     {
-        var browseItems = await BrowseClient.Get(CachePolicy.UseCacheAndRefreshOutdated);
-        var carouselAdjustedItems = await PrepareCoversCarouselItemsAction.ExecuteGuarded(browseItems.ToList());
+        var browseItems = (await BrowseClient.Get(CachePolicy.UseCacheAndRefreshOutdated)).ToList();
+        var carouselAdjustedItems = await PrepareCoversCarouselItemsAction.ExecuteGuarded(browseItems);
 
+        var covers = await browseItems.DownloadCovers();
+        
         var imageRowItemsList = new List<CPListImageRowItem>();
         DiscoverSectionHeader currentHeader = null;
         var currentItems = new List<ImageRowItem>();
@@ -77,8 +79,7 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
                     foreach (var cover in collection.CoverDocuments)
                     {
                         var displayable = (ITrackListDisplayable)cover;
-                        var image = await displayable.Cover.ToUIImage();
-                        currentItems.Add(new ImageRowItem(image, displayable.Title, cover));
+                        currentItems.Add(new ImageRowItem(covers.GetCover(displayable.Cover), displayable.Title, cover));
                     }
                     break;
             }

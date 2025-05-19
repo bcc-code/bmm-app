@@ -45,14 +45,14 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
     {
         var podcastTracks = await PodcastClient.GetTracks(_podcastId, CachePolicy.UseCacheAndRefreshOutdated);
         var trackInfoProvider = new DefaultTrackInfoProvider();
-
+        var covers = await podcastTracks.DownloadCovers();
+        
         var tracksCpListItemTemplates = await Task.WhenAll(podcastTracks
             .Select(async track =>
             {
                 var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
                 
-                var coverImage = await track.ArtworkUri.ToUIImage();
-                var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", coverImage);
+                var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", covers.GetCover(track.ArtworkUri));
                 trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 
                 trackListItem.Handler = async (item, block) =>

@@ -58,6 +58,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         var discoverItems = (await DiscoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated))
             .ToList();
 
+        var covers = await discoverItems.DownloadCovers();
         var grouped = new List<GroupedDocuments>();
         GroupedDocuments currentGroup = null;
 
@@ -85,14 +86,17 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         foreach (var group in grouped)
         {
             var trackListItems = new List<ICPListTemplateItem>();
-            trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, group.Documents));
+            trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, group.Documents, covers));
             sections.Add(new CPListSection(trackListItems.ToArray(), group.Title, null));
         }
         
         _homeTemplate.SafeUpdateSections(sections.ToArray());
     }
 
-    private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController, IEnumerable<Document> documents)
+    private async Task<IList<ICPListTemplateItem>> GetTrackListItems(
+        CPInterfaceController cpInterfaceController,
+        IEnumerable<Document> documents,
+        IDictionary<string, UIImage> covers)
     {
         return await Task.WhenAll(documents
             .Select(async d =>
@@ -103,13 +107,12 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 {
                     case ContinueListeningTile continueListeningTile:
                     {
-                        trackListItem = await CreateItemForTile(cpInterfaceController, continueListeningTile);
+                        trackListItem = await CreateItemForTile(cpInterfaceController, continueListeningTile, covers);
                         break;
                     }
                     case Playlist playlist:
                     {
-                        var coverImage = await playlist.Cover.ToUIImage();
-                        trackListItem = new CPListItem(playlist.Title, null, coverImage);
+                        trackListItem = new CPListItem(playlist.Title, null, covers.GetCover(playlist.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var playlistLayout = await PlaylistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
@@ -121,8 +124,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                     }
                     case Album album:
                     {
-                        var coverImage = await album.Cover.ToUIImage();
-                        trackListItem = new CPListItem(album.Title, null, coverImage);
+                        trackListItem = new CPListItem(album.Title, null, covers.GetCover(album.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var playlistLayout = await AlbumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
@@ -134,8 +136,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                     }
                     case Podcast podcast:
                     {
-                        var coverImage = await podcast.Cover.ToUIImage();
-                        trackListItem = new CPListItem(podcast.Title, null, coverImage);
+                        trackListItem = new CPListItem(podcast.Title, null, covers.GetCover(podcast.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var podcastLayout = await PodcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
@@ -147,8 +148,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                     }
                     case Contributor contributor:
                     {
-                        var coverImage = await contributor.Cover.ToUIImage();
-                        trackListItem = new CPListItem(contributor.Name, null, coverImage);
+                        trackListItem = new CPListItem(contributor.Name, null, covers.GetCover(contributor.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var contributorLayout = await ContributorLayoutCreator.Create(cpInterfaceController, contributor.Id, contributor.Name);
@@ -165,14 +165,12 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
             }));
     }
         
-    private async Task<CPListItem> CreateItemForTile(
-        CPInterfaceController cpInterfaceController,
-        ContinueListeningTile continueListeningTile)
+    private async Task<CPListItem> CreateItemForTile(CPInterfaceController cpInterfaceController,
+        ContinueListeningTile continueListeningTile,
+        IDictionary<string, UIImage> covers)
     {
         var dateTimeToPodcastPublishDateLabelValueConverter = new DateTimeToPodcastPublishDateLabelValueConverter();
         var dateTimeToPodcastPublishDayOfWeekLabelValueConverter = new DateTimeToPodcastPublishDayOfWeekLabelValueConverter();
-        
-        var image = await continueListeningTile.CoverUrl.ToUIImage();
         var subtitle = new StringBuilder(continueListeningTile.Title);
         
         string dateOfWeek = (string)dateTimeToPodcastPublishDayOfWeekLabelValueConverter
@@ -188,8 +186,8 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
 
         subtitle.Append($" - {dateOfWeek}, {dateLabel}");
 
-        var item = new CPListItem(continueListeningTile.Label, subtitle.ToString(), image);
-        item.Handler = async (listItem, block) =>
+        var item = new CPListItem(continueListeningTile.Label, subtitle.ToString(), covers.GetCover(continueListeningTile.CoverUrl));
+        item.Handler = async (_, block) =>
         {
             await MediaPlayer.Play(
                 continueListeningTile.Track.EncloseInArray(),

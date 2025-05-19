@@ -40,12 +40,13 @@ public class PlaylistsLayoutCreator : BaseLayoutCreator, IPlaylistsLayoutCreator
     public override async Task Load()
     {
         var playlists = await PlaylistClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
-        
+
+        var covers = await playlists.DownloadCovers();
+
         var playlistListItemTemplates = await Task.WhenAll(playlists
             .Select(async playlist =>
             {
-                var coverImage = await playlist.Cover.ToUIImage();
-                var trackListItem = new CPListItem(playlist.Title, null, coverImage);
+                var trackListItem = new CPListItem(playlist.Title, null, covers.GetCover(playlist.Cover));
 
                 trackListItem.Handler = async (item, block) =>
                 {

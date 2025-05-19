@@ -49,13 +49,13 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
         var playlistTracks = await PlaylistClient.GetTracks(_playlistId, CachePolicy.UseCacheAndRefreshOutdated);
         var audiobookPodcastInfoProvider = new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider(), FirebaseRemoteConfig);
 
+        var covers = await playlistTracks.DownloadCovers();
+        
         var tracksCpListItemTemplates = await Task.WhenAll(playlistTracks
             .Select(async track =>
             {
                 var trackPO = TrackPOFactory.Create(audiobookPodcastInfoProvider, null, track);
-                
-                var coverImage = await track.ArtworkUri.ToUIImage();
-                var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", coverImage);
+                var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", covers.GetCover(track.ArtworkUri));
                 trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 
                 trackListItem.Handler = async (item, block) =>
