@@ -7,11 +7,13 @@ using AVFoundation;
 using BMM.Api.Abstraction;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.UI.iOS.NewMediaPlayer.Interfaces;
 using CoreMedia;
 using Foundation;
+using MvvmCross;
 using Exception = System.Exception;
 
 namespace BMM.UI.iOS.NewMediaPlayer
@@ -27,10 +29,10 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private readonly IPlayerAnalytics _playerAnalytics;
         private readonly IAVPlayerItemRepository _avPlayerItemRepository;
 
-        private PlayStatus _status;
+        private static PlayStatus _status;
 
-        private IMediaTrack _currentMediaTrack;
-        private decimal? _desiredRate;
+        private static IMediaTrack _currentMediaTrack;
+        private static decimal? _desiredRate;
         private NSObject _didPlayToEndTimeObserverToken;
 
         private AVPlayerItem CurrentItem => Player.CurrentItem;
@@ -257,8 +259,6 @@ namespace BMM.UI.iOS.NewMediaPlayer
             _status = PlayStatus.Ended; // We want to bypass the OnPositionOrStateChanged() because OnMediaFinished indirectly also triggers it
             OnMediaFinished?.Invoke();
         }
-
-
 
         public async Task PlayPause()
         {

@@ -9,7 +9,7 @@ namespace BMM.UI.iOS.NewMediaPlayer
 {
     public abstract class AvAudioPlaybackBase : NSObject
     {
-        private AVPlayer _player;
+        private static AVPlayer _player;
 
         private NSObject _periodicTimeObserverObject;
 
@@ -23,6 +23,31 @@ namespace BMM.UI.iOS.NewMediaPlayer
 
         public static readonly NSString LoadedTimeRangesObservationContext = new NSString("TimeRanges");
         public const string LoadedTimeRangesObserver = "loadedTimeRanges";
+
+        protected AvAudioPlaybackBase()
+        {
+            if (_player != null)
+                ReinitializeObservers();
+        }
+
+        private void ReinitializeObservers()
+        {
+            try
+            {
+                if (_player is null)
+                    return;
+
+                _player.RemoveTimeObserver(_periodicTimeObserverObject);
+                _player.RemoveObserver(this, RateObserver, RateObservationContext.Handle);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+            }
+            
+            Player.AddObserver(this, RateObserver, InitialAndNewObservingOptions, RateObservationContext.Handle);
+            _periodicTimeObserverObject = Player.AddPeriodicTimeObserver(new CMTime(1, 4), DispatchQueue.MainQueue, ObservePeriodicTimeEvent);
+        }
 
         protected AVPlayer Player
         {

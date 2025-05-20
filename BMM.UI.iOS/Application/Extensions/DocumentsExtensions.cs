@@ -10,6 +10,7 @@ public static class DocumentsExtensions
     {
         return documents
             .Select(x => x.GetCoverUrl())
+            .Where(x => !string.IsNullOrEmpty(x))
             .Distinct()
             .DownloadAsImages();
     }
@@ -18,6 +19,7 @@ public static class DocumentsExtensions
     {
         return documents
             .Select(x => x.GetCoverUrl())
+            .Where(x => !string.IsNullOrEmpty(x))
             .Distinct()
             .DownloadAsImages();
     }

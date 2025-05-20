@@ -2,6 +2,7 @@ using System.Reflection;
 using Acr.UserDialogs;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations;
+using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Implementations.UI;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using CoreFoundation;
@@ -19,6 +20,7 @@ namespace BMM.UI.iOS;
 [Register(nameof(BmmWindowSceneDelegate))]
 public class BmmWindowSceneDelegate : UIWindowSceneDelegate
 {
+    private bool _shouldPreventQueueRecovery;
     public AppDelegate AppDelegateInstance => (AppDelegate)UIApplication.SharedApplication.Delegate;
     public UIWindow Window { get; set; }
 
@@ -28,8 +30,7 @@ public class BmmWindowSceneDelegate : UIWindowSceneDelegate
             return;
         
         Window = new UIWindow(windowScene);
-
-        HandlePlayerStopIfAlreadyPlaying();
+        CheckShouldPreventQueueRecovery();
         
         MvxSingleton.ClearAllSingletons();
         typeof(MvxIoCProvider)
@@ -42,6 +43,7 @@ public class BmmWindowSceneDelegate : UIWindowSceneDelegate
         AppDelegateInstance.RegisterForNotifications();
         AppDelegateInstance.SetThemeForApp();
         
+        PreventQueueRecoveringIfNeeded();
         RunAppStart();
 
         if (connectionOptions.UserActivities == null)
@@ -50,7 +52,7 @@ public class BmmWindowSceneDelegate : UIWindowSceneDelegate
         foreach (var urlContext in connectionOptions.UserActivities)
             HandleDeepLink(urlContext.WebPageUrl?.AbsoluteString);
     }
-
+    
     public override void ContinueUserActivity(UIScene scene, NSUserActivity userActivity)
     {
         HandleDeepLink(userActivity?.WebPageUrl?.AbsoluteString);
@@ -66,33 +68,38 @@ public class BmmWindowSceneDelegate : UIWindowSceneDelegate
         deepLinkHandler.OpenFromOutsideOfApp(new Uri(url));
     }
     
-    /// <summary>
-    ///     We need to stop playing when starting the app to avoid two or more playbacks at the same time.
-    ///     It only occurs when the app is opened as CarPlay first and then opened on phone.
-    ///     Detailed investigation is needed to handle it without playing interrupting.
-    /// </summary>
-    private void HandlePlayerStopIfAlreadyPlaying()
+    private void CheckShouldPreventQueueRecovery()
     {
         if (Mvx.IoCProvider == null || !Mvx.IoCProvider.TryResolve<IMediaPlayer>(out var mediaPlayer))
             return;
 
-        if (!mediaPlayer!.IsPlaying)
-            return;
-        
-        mediaPlayer.Stop();
+        _shouldPreventQueueRecovery = mediaPlayer!.IsPlaying;
     }
 
-    public void WillEnterForeground(UIScene scene)
+    /// <summary>
+    ///     We need to prevent queue recovery when the app is playing track from CarPlay
+    ///     and then opened on mobile phone. It is necessary to smooth share player state from CarPlay to Mobile.
+    /// </summary>
+    private void PreventQueueRecoveringIfNeeded()
+    {
+        if (!_shouldPreventQueueRecovery)
+            return;
+        
+        var rememberedQueueService = Mvx.IoCProvider!.Resolve<IRememberedQueueService>();
+        rememberedQueueService!.SetPlayerHasPendingOperation();
+    }
+
+    public override void WillEnterForeground(UIScene scene)
     {
         AppDelegateInstance.FireLifetimeChanged(MvxLifetimeEvent.ActivatedFromMemory);
     }
 
-    public void DidEnterBackground(UIScene scene)
+    public override void DidEnterBackground(UIScene scene)
     {
         AppDelegateInstance.FireLifetimeChanged(MvxLifetimeEvent.Deactivated);
     }
 
-    public void DidDisconnect(UIScene scene)
+    public override void DidDisconnect(UIScene scene)
     {
         AppDelegateInstance.FireLifetimeChanged(MvxLifetimeEvent.Closing);
     }

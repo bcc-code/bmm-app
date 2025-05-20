@@ -24,6 +24,7 @@ namespace BMM.Core.NewMediaPlayer
     /// </summary>
     public class MediaQueue : IMediaQueue
     {
+        private static IList<IMediaTrack> _tracks;
         private object _lock = new();
         private readonly MediaFileUrlSetter _mediaFileUrlSetter;
         private readonly IToastDisplayer _toastDisplayer;
@@ -40,10 +41,10 @@ namespace BMM.Core.NewMediaPlayer
             _toastDisplayer = toastDisplayer;
             _bmmLanguageBinder = bmmLanguageBinder;
             _mvxMessenger = mvxMessenger;
-            Tracks = new List<IMediaTrack>();
+            _tracks ??= new List<IMediaTrack>();
         }
-        
-        public IList<IMediaTrack> Tracks { get; private set; }
+
+        public IList<IMediaTrack> Tracks => _tracks;
         public bool HasPendingChanges { get; set; }
 
         public void Replace(IMediaTrack track)
@@ -51,7 +52,7 @@ namespace BMM.Core.NewMediaPlayer
             _mediaFileUrlSetter.SetLocalPathIfDownloaded(track);
             lock (_lock)
             {
-                Tracks = new List<IMediaTrack> { track };
+                _tracks = new List<IMediaTrack> { track };
             }
         }
 
@@ -87,7 +88,7 @@ namespace BMM.Core.NewMediaPlayer
 
             lock (_lock)
             {
-                Tracks = filteredList;
+                _tracks = filteredList;
             }
 
             return true;
@@ -220,7 +221,7 @@ namespace BMM.Core.NewMediaPlayer
         {
             lock (_lock)
             {
-                Tracks = new List<IMediaTrack>();
+                _tracks = new List<IMediaTrack>();
             }
         }
     }

@@ -27,8 +27,8 @@ namespace BMM.UI.iOS.NewMediaPlayer
         private readonly IAnalytics _analytics;
         private readonly IExceptionHandler _exceptionHandler;
 
-        private IMediaTrack _currentTrack;
-        private int _currentTrackIndex;
+        private static IMediaTrack _currentTrack;
+        private static int _currentTrackIndex;
         private readonly DebounceDispatcher _debounceDispatcher;
 
         public IosMediaPlayer(
