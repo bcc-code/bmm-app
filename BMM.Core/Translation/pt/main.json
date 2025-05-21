@@ -28,7 +28,8 @@
     "DailyMessage": "Mensagem diária",
     "ValueCopiedToClipboard": "{0} copiado para a área de transferência",
     "AddToFavorites": "Adicionar aos favoritos",
-    "RemoveFromFavorites": "Remover dos favoritos"
+    "RemoveFromFavorites": "Remover dos favoritos",
+    "NowPlaying": "Reproduzindo agora"
   },
   "Streak": {
     "Message": "Seu progresso semanal",
@@ -635,5 +636,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Pontuação global"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Alguma coisa correu mal...",
+    "TryAgainButton": "Tente novamente",
+    "LoadingText": "Carregando...",
+    "SignIntoBMM": "Inicia sessão no BMM no seu telemóvel",
+    "Refresh": "Refresque-se"
   }
 }
