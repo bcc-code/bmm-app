@@ -7,13 +7,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
-using BMM.Core.GuardedActions.Documents.Interfaces;
-using BMM.Core.Implementations.Factories.Tracks;
-using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
-using BMM.Core.Implementations.Security;
-using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.CarPlay.Creators.Base;
@@ -21,7 +15,6 @@ using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
-using FFImageLoading;
 using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators;
@@ -30,7 +23,6 @@ namespace BMM.UI.iOS.CarPlay.Creators;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
 {
-    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private IDiscoverClient DiscoverClient => Mvx.IoCProvider!.Resolve<IDiscoverClient>();
     private IBMMLanguageBinder BMMLanguageBinder => Mvx.IoCProvider!.Resolve<IBMMLanguageBinder>();
     private IPodcastLayoutCreator PodcastLayoutCreator => Mvx.IoCProvider!.Resolve<IPodcastLayoutCreator>();
@@ -189,12 +181,11 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         var item = new CPListItem(continueListeningTile.Label, subtitle.ToString(), covers.GetCover(continueListeningTile.CoverUrl));
         item.Handler = async (_, block) =>
         {
-            await MediaPlayer.Play(
-                continueListeningTile.Track.EncloseInArray(),
+            await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                continueListeningTile.Track.ToTracksList(),
                 continueListeningTile.Track,
-                this.CreatePlaybackOrigin());
-            var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-            await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                this.CreatePlaybackOrigin(),
+                cpInterfaceController);
             block();
         };
         return item;

@@ -4,7 +4,6 @@ using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
@@ -22,7 +21,6 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
 {
     private IPodcastClient PodcastClient => Mvx.IoCProvider!.Resolve<IPodcastClient>();
     private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
-    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private int _podcastId;
     private CPListTemplate _podcastListTemplate;
     private CPInterfaceController _cpInterfaceController;
@@ -57,9 +55,11 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    await MediaPlayer.Play(podcastTracks.OfType<IMediaTrack>().ToList(), track, this.CreatePlaybackOrigin());
-                    var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                    await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                        podcastTracks.OfType<IMediaTrack>().ToList(),
+                        track,
+                        this.CreatePlaybackOrigin(),
+                        CpInterfaceController);
                     block();
                 };
 

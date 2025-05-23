@@ -42,5 +42,8 @@ namespace BMM.Core.Constants
         public const string IconPlaylistCarplay = "Icon_Playlist_Carplay";
         public const string IconDownloadedCarplay = "Icon_Downloaded_Carplay";
         public const string IconBrowse = "Icon_Browse";
+        public const string SkipForwardIcon = "Skip_Forward_Icon";
+        public const string SkipBackIcon = "Skip_Back_Icon";
+        public const string ShuffleIcon = "Shuffle_Icon";
     }
 }

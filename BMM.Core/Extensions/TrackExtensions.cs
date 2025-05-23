@@ -31,4 +31,12 @@ public static class TrackExtensions
     {
         return track.Subtype.IsOneOf(TrackSubType.Song, TrackSubType.Singsong);
     }
+    
+    public static IList<IMediaTrack> ToTracksList(this Track track)
+    {
+        return new List<IMediaTrack>
+        {
+            track
+        };
+    }
 }

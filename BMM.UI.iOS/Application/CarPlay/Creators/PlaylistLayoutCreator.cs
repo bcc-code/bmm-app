@@ -5,7 +5,6 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
@@ -23,7 +22,6 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
 {
     private IPlaylistClient PlaylistClient => Mvx.IoCProvider!.Resolve<IPlaylistClient>();
     private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
-    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private IFirebaseRemoteConfig FirebaseRemoteConfig => Mvx.IoCProvider!.Resolve<IFirebaseRemoteConfig>();
     
     private CPListTemplate _playlistListTemplate;
@@ -60,9 +58,11 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    await MediaPlayer.Play(playlistTracks.OfType<IMediaTrack>().ToList(), track, this.CreatePlaybackOrigin());
-                    var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                    await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                        playlistTracks.OfType<IMediaTrack>().ToList(),
+                        track,
+                        this.CreatePlaybackOrigin(),
+                        CpInterfaceController);
                     block();
                 };
 

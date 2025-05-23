@@ -4,7 +4,6 @@ using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
@@ -20,7 +19,6 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
 {
     private ITrackCollectionClient TrackCollectionClient => Mvx.IoCProvider!.Resolve<ITrackCollectionClient>();
     private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
-    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _trackCollectionListTemplate;
     private int _trackCollectionId;
@@ -55,12 +53,11 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    await MediaPlayer.Play(
+                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
                         trackCollection.Tracks.OfType<IMediaTrack>().ToList(),
                         x.Track,
-                        this.CreatePlaybackOrigin());
-                    var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                    await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                        this.CreatePlaybackOrigin(),
+                        CpInterfaceController);
                     block();
                 };
 

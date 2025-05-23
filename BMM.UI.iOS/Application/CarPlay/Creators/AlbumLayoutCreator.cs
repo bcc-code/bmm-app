@@ -5,7 +5,6 @@ using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
@@ -23,7 +22,6 @@ public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
 {
     private IAlbumClient AlbumClient => Mvx.IoCProvider!.Resolve<IAlbumClient>();
     private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
-    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private CPInterfaceController _cpInterfaceController;
     private int _albumId;
     private CPListTemplate _favouritesListTemplate;
@@ -65,12 +63,11 @@ public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
 
                     trackListItem.Handler = async (item, block) =>
                     {
-                        await MediaPlayer.Play(
+                        await CarPlayPlayerPresenter.PlayAndShowPlayer(
                             albumDetails.Children.OfType<IMediaTrack>().ToList(),
                             track,
-                            this.CreatePlaybackOrigin());
-                        var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                        await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                            this.CreatePlaybackOrigin(),
+                            CpInterfaceController);
                         block();
                     };
 
