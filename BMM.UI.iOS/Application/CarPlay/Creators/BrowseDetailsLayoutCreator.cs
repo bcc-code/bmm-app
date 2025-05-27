@@ -99,14 +99,9 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
         }
         else
         {
-            sections = await Task.WhenAll(documentsHolder.Items
-                .Select(async document =>
-                {
-                    var trackListItems = new List<ICPListTemplateItem>();
-                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, documentsHolder.Items, covers));
-                    return new CPListSection(trackListItems.ToArray());
-                })
-                .ToArray());
+            var trackListItems = new List<ICPListTemplateItem>();
+            trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, documentsHolder.Items, covers));
+            sections = [new CPListSection(trackListItems.ToArray())];
         }
 
         _browseDetailsListTemplates.SafeUpdateSections(sections);
