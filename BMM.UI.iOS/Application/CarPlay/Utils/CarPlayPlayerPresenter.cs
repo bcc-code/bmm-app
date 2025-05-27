@@ -1,9 +1,6 @@
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq.Expressions;
 using BMM.Api.Abstraction;
 using BMM.Core.Constants;
-using BMM.Core.Extensions;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.Extensions;
 using CarPlay;
@@ -28,12 +25,17 @@ public static class CarPlayPlayerPresenter
             trackToPlay,
             playbackOrigin);
         
+        var nowPlayingTemplate = CreateButtons();
+        await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+    }
+
+    private static CPNowPlayingTemplate CreateButtons()
+    {
         var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-        nowPlayingTemplate.UpdateNowPlayingButtons(new[]
-        {
+        nowPlayingTemplate.UpdateNowPlayingButtons([
             new CPNowPlayingImageButton(
                 UIImage.FromBundle(ImageResourceNames.SkipBackIcon.ToStandardIosImageName()),
-                button =>
+                _ =>
                 {
                     MediaPlayer.JumpBackward();
                 })
@@ -42,26 +44,27 @@ public static class CarPlayPlayerPresenter
             },
             new CPNowPlayingImageButton(
                 UIImage.FromBundle(ImageResourceNames.ShuffleIcon.ToStandardIosImageName()),
-                button =>
-                {
-                    MediaPlayer.ToggleShuffle();
-                    button.BeginInvokeOnMainThread(() => { button.Selected = !MediaPlayer.IsShuffleEnabled; });
-                })
+                ShuffleButtonHandler)
             {
                 Enabled = true,
                 Selected = MediaPlayer.IsShuffleEnabled
             },
             new CPNowPlayingImageButton(
                 UIImage.FromBundle(ImageResourceNames.SkipForwardIcon.ToStandardIosImageName()),
-                button =>
+                _ =>
                 {
                     MediaPlayer.JumpForward();
                 })
             {
                 Enabled = true,
             }
-        });
-        
-        await cpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+        ]);
+        return nowPlayingTemplate;
+    }
+
+    private static void ShuffleButtonHandler(CPNowPlayingButton button)
+    {
+        MediaPlayer.ToggleShuffle();
+        CreateButtons();
     }
 }

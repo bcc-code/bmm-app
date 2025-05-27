@@ -7,6 +7,7 @@ using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
+using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
@@ -29,6 +30,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     private IContributorLayoutCreator ContributorLayoutCreator => Mvx.IoCProvider!.Resolve<IContributorLayoutCreator>();
     private IPlaylistLayoutCreator PlaylistLayoutCreator => Mvx.IoCProvider!.Resolve<IPlaylistLayoutCreator>();
     private IAlbumLayoutCreator AlbumLayoutCreator => Mvx.IoCProvider!.Resolve<IAlbumLayoutCreator>();
+    private IHandleAutoplayAction HandleAutoplayAction => Mvx.IoCProvider!.Resolve<IHandleAutoplayAction>();
     
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _homeTemplate;
@@ -186,6 +188,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 continueListeningTile.Track,
                 this.CreatePlaybackOrigin(),
                 cpInterfaceController);
+            await HandleAutoplayAction.ExecuteGuarded(continueListeningTile);
             block();
         };
         return item;

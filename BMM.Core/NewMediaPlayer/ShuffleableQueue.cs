@@ -12,7 +12,7 @@ namespace BMM.Core.NewMediaPlayer
     {
         private readonly IMediaQueue _queue;
         private readonly ILogger _logger;
-        private IList<IMediaTrack> _shuffledTracks;
+        private static IList<IMediaTrack> _shuffledTracks;
 
         public bool IsShuffleEnabled { get; private set; }
 
