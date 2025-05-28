@@ -58,10 +58,12 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
             .OrderByDescending(c => c.Id)
             .Select(tc => TrackCollectionPOFactory.Create(tc))
             .ToList();
-
+        
         var downloadedContentItems = await PrepareDownloadedContentItemsAction.ExecuteGuarded(items);
         var converter = new TrackCollectionToListViewItemSubtitleLabelConverter();
 
+        var covers = await downloadedContentItems.DownloadCovers();
+        
         var tracklistItems = await Task.WhenAll(downloadedContentItems
             .Select(async x =>
             {
@@ -110,12 +112,7 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
                     }
                     case PlaylistPO playlistPO:
                     {
-                        var coverImage = await ImageService
-                            .Instance
-                            .LoadUrl(playlistPO.Cover)
-                            .AsUIImageAsync();
-
-                        trackListItem = new CPListItem(playlistPO.Title, null, coverImage);
+                        trackListItem = new CPListItem(playlistPO.Title, null, covers.GetCover(playlistPO.Cover));
                         trackListItem.Handler = async (item, block) =>
                         {
                             var playlistLayout =
@@ -128,12 +125,7 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
                     }
                     case AlbumPO albumPO:
                     {
-                        var coverImage = await ImageService
-                            .Instance
-                            .LoadUrl(albumPO.Cover)
-                            .AsUIImageAsync();
-
-                        trackListItem = new CPListItem(albumPO.Title, null, coverImage);
+                        trackListItem = new CPListItem(albumPO.Title, null, covers.GetCover(albumPO.Cover));
                         trackListItem.Handler = async (item, block) => { block(); };
 
                         break;

@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Globalization;
 using System.Linq;
 using BMM.Core.Constants;
@@ -52,25 +53,6 @@ namespace BMM.UI.iOS.Extensions
                 return result;
 
             return NumericConstants.Zero;
-        }
-        
-        public static async Task<UIImage> ToUIImage(this string url)
-        {
-            try
-            {
-                if (url.IsNullOrEmpty())
-                    return UIImage.FromBundle(ImageResourceNames.PlaceholderCover.ToLower());
-                
-                return await ImageService
-                    .Instance
-                    .LoadUrl(url)
-                    .AsUIImageAsync();
-            }
-            catch
-            {
-                // ignore
-                return UIImage.FromBundle(ImageResourceNames.PlaceholderCover.ToLower());
-            }
         }
     }
 }

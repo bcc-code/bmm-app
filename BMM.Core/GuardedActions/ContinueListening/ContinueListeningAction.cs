@@ -1,17 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BMM.Api.Abstraction;
-using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
-using BMM.Core.Implementations.Connection;
-using BMM.Core.Implementations.Exceptions;
-using BMM.Core.NewMediaPlayer;
 using BMM.Core.NewMediaPlayer.Abstractions;
 
 namespace BMM.Core.GuardedActions.ContinueListening
@@ -21,67 +13,31 @@ namespace BMM.Core.GuardedActions.ContinueListening
           IContinuePlayingAction
     {
         private readonly IMediaPlayer _mediaPlayer;
-        private readonly IAlbumClient _albumClient;
-        private readonly ISettingsStorage _settingsStorage;
-        private readonly IExceptionHandler _exceptionHandler;
-        private readonly IEnqueueMusicAction _enqueueMusicAction;
+        private readonly IHandleAutoplayAction _handleAutoplayAction;
 
         public ContinueListeningAction(
             IMediaPlayer mediaPlayer,
-            IAlbumClient albumClient,
-            ISettingsStorage settingsStorage,
-            IExceptionHandler exceptionHandler,
-            IEnqueueMusicAction enqueueMusicAction)
+            IHandleAutoplayAction handleAutoplayAction)
         {
             _mediaPlayer = mediaPlayer;
-            _albumClient = albumClient;
-            _settingsStorage = settingsStorage;
-            _exceptionHandler = exceptionHandler;
-            _enqueueMusicAction = enqueueMusicAction;
+            _handleAutoplayAction = handleAutoplayAction;
         }
 
-        protected override async Task Execute(ContinueListeningTile parameter)
+        protected override async Task Execute(ContinueListeningTile continueListeningTile)
         {
-            if (_mediaPlayer.CurrentTrack?.Id == parameter.Track.Id)
+            if (_mediaPlayer.CurrentTrack?.Id == continueListeningTile.Track.Id)
             {
                 _mediaPlayer.PlayPause();
                 return;
             }
             
             await _mediaPlayer.Play(
-                ((IMediaTrack)parameter.Track).EncloseInArray(),
-                parameter.Track,
+                ((IMediaTrack)continueListeningTile.Track).EncloseInArray(),
+                continueListeningTile.Track,
                 PlaybackOrigins.Tile,
-                parameter.LastPositionInMs);
-
-            bool autoplayEnabled = await _settingsStorage.GetAutoplayEnabled();
-
-            if (!parameter.ShufflePodcastId.HasValue)
-                _exceptionHandler.FireAndForgetWithoutUserMessages(() => EnqueueRestOfAlbumItems(parameter));
-            else if (autoplayEnabled)
-                await _enqueueMusicAction.ExecuteGuarded();
-        }
-
-        private async Task EnqueueRestOfAlbumItems(ContinueListeningTile continueListeningTile)
-        {
-            var album = await _albumClient.GetById(continueListeningTile.Track.ParentId);
-            var currentItem = album.Children.FirstOrDefault(x => x.Id == continueListeningTile.Track.Id);
+                continueListeningTile.LastPositionInMs);
             
-            if  (currentItem == null)
-                return;
-
-            int indexOfCurrentItem = album.Children.IndexOf(currentItem);
-
-            var itemsToAdd = album
-                .Children
-                .Select((document, i) => new { Index = i, Document = document })
-                .Where(x => x.Index > indexOfCurrentItem)
-                .Select(x => x.Document)
-                .OfType<IMediaTrack>()
-                .ToList();
-            
-            foreach (var track in itemsToAdd)
-                await _mediaPlayer.AddToEndOfQueue(track, PlaybackOrigins.Tile);
+            await _handleAutoplayAction.ExecuteGuarded(continueListeningTile);
         }
     }
 }

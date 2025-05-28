@@ -45,12 +45,13 @@ public class FollowedPodcastsContentLayoutCreator : BaseLayoutCreator, IFollowed
             .Where(PodcastOfflineManager.IsFollowing)
             .Select(p => new PodcastPO(p))
             .ToList();
+
+        var covers = await followedPodcasts.DownloadCovers();
         
         var tracklistItems = await Task.WhenAll(followedPodcasts
             .Select(async p =>
             {
-                var coverImage = await p.Cover.ToUIImage();
-                var trackListItem = new CPListItem(p.Title, null, coverImage);
+                var trackListItem = new CPListItem(p.Title, null, covers.GetCover(p.Cover));
                 trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
                 
                 trackListItem.Handler = async (item, block) =>

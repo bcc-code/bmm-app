@@ -14,7 +14,7 @@ using MvvmCross.Navigation;
 namespace BMM.Core.GuardedActions.MyContent;
 
 public class PrepareMyContentItemsAction
-    : GuardedActionWithParameterAndResult<IEnumerable<IDocumentPO>, IEnumerable<IDocumentPO>>,
+    : GuardedActionWithParameterAndResult<IEnumerable<IDocumentPO>, IList<IDocumentPO>>,
       IPrepareMyContentItemsAction
 {
     private readonly IBMMLanguageBinder _bmmLanguageBinder;
@@ -28,7 +28,7 @@ public class PrepareMyContentItemsAction
         _mvxNavigationService = mvxNavigationService;
     }
     
-    protected override async Task<IEnumerable<IDocumentPO>> Execute(IEnumerable<IDocumentPO> documentsCollections)
+    protected override async Task<IList<IDocumentPO>> Execute(IEnumerable<IDocumentPO> documentsCollections)
     {
         await Task.CompletedTask;
         var listOfDocuments = new List<IDocumentPO>();

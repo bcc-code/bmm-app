@@ -16,6 +16,11 @@ namespace BMM.Core.Extensions
             return new[] { source };
         }
         
+        public static IList<T> EncloseInList<T>(this T source)
+        {
+            return new List<T> { source };
+        }
+        
         public static int LastIndexOfElementType<T>(this IList<T> source, Type elementType, int increaseByIfFound = 0)
         {
             var lastIndex = source

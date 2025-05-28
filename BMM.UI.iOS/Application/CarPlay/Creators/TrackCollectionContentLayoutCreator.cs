@@ -4,7 +4,6 @@ using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
-using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.UI.iOS.CarPlay.Creators.Base;
 using BMM.UI.iOS.CarPlay.Creators.Interfaces;
 using BMM.UI.iOS.CarPlay.Utils;
@@ -20,7 +19,6 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
 {
     private ITrackCollectionClient TrackCollectionClient => Mvx.IoCProvider!.Resolve<ITrackCollectionClient>();
     private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
-    private IMediaPlayer MediaPlayer => Mvx.IoCProvider!.Resolve<IMediaPlayer>();
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _trackCollectionListTemplate;
     private int _trackCollectionId;
@@ -46,20 +44,20 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
             .Select(t => TrackPOFactory.Create(trackInfoProvider, null, t))
             .ToList();
 
+        var covers = await tracks.DownloadCovers();
+
         var tracksCpListItemTemplates = await Task.WhenAll(tracks
             .Select(async x =>
             {
-                var coverImage = await x.Track.ArtworkUri.ToUIImage();
-                var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", coverImage);
+                var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", covers.GetCover(x.Track.ArtworkUri));
 
                 trackListItem.Handler = async (item, block) =>
                 {
-                    await MediaPlayer.Play(
+                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
                         trackCollection.Tracks.OfType<IMediaTrack>().ToList(),
                         x.Track,
-                        this.CreatePlaybackOrigin());
-                    var nowPlayingTemplate = CPNowPlayingTemplate.SharedTemplate;
-                    await CpInterfaceController.PushTemplateAsync(nowPlayingTemplate, true);
+                        this.CreatePlaybackOrigin(),
+                        CpInterfaceController);
                     block();
                 };
 
