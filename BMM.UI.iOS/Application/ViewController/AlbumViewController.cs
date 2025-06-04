@@ -15,6 +15,9 @@ namespace BMM.UI.iOS
 {
     public partial class AlbumViewController : BaseViewController<AlbumViewModel>
     {
+        private bool _isDurationProgressBarVisible;
+        private bool _isDurationHidden;
+
         public AlbumViewController()
             : base(nameof(AlbumViewController))
         {
@@ -41,7 +44,15 @@ namespace BMM.UI.iOS
             set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.PlayButtonText);
             set.Bind(PlayButton).For(v => v.BindVisible()).To(vm => vm.ShowPlayButton);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
-
+            set.Bind(DurationLabel).To(vm => vm.DurationLabel);
+            set.Bind(DurationProgressBar)
+                .For(v => v.Percentage)
+                .To(vm => vm.CompletedPercentage);
+            
+            set.Bind(this)
+                .For(v => v.IsDurationProgressBarVisible)
+                .To(vm => vm.IsCompletedPercentageVisible);
+            
             DownloadButton.DownloadedImage = UIImage.FromBundle(ImageResourceNames.IconTick.ToStandardIosImageName());
             DownloadButton.NormalStateImage = UIImage.FromBundle(ImageResourceNames.IconDownload.ToStandardIosImageName());
             set.Bind(DownloadButton).To(vm => vm.ToggleOfflineCommand);
@@ -50,6 +61,7 @@ namespace BMM.UI.iOS
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
             set.Bind(DownloadButton).For(v => v.BindVisible()).To(vm => vm.ShowDownloadButtons);
+            set.Bind(DurationLabel).For(v => v.BindVisible()).To(vm => vm.ShowDownloadButtons);
             
             set.Apply();
 
@@ -58,13 +70,26 @@ namespace BMM.UI.iOS
             DownloadButton.UpdateCurrentState(true);
         }
 
+        public bool IsDurationProgressBarVisible
+        {
+            get => _isDurationProgressBarVisible;
+            set
+            {
+                _isDurationProgressBarVisible = value;
+                DurationProgressBar.SetHiddenIfNeeded(!_isDurationProgressBarVisible);
+                AlbumTable.ResizeHeaderView();
+            }
+        }
+
         private void SetThemes()
         {
             TitleLabel.ApplyTextTheme(AppTheme.Heading2);
             DescriptionLabel.ApplyTextTheme(AppTheme.Paragraph2);
+            DurationLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
             PlayButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
             DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
+            DurationProgressBar.BarForegroundColor = AppColors.LabelOneColor;
         }
 
         protected override void AttachEvents()
@@ -84,7 +109,8 @@ namespace BMM.UI.iOS
             AlbumTable.ResizeHeaderView();
             if (e.PropertyName == nameof(AlbumViewModel.ShowPlayButton))
             {
-                StackViewToSeparatorConstraint.Constant = ViewModel.ShowPlayButton ? StackViewToSeparatorConstraint.Constant : 0;
+                ButtonsToDurationConstraint.Constant = ViewModel.ShowPlayButton ? ButtonsToDurationConstraint.Constant : 0;
+                DurationToSeparatorConstraint.Constant = ViewModel.ShowPlayButton ? DurationToSeparatorConstraint.Constant : 0;
                 ButtonStackViewHeight.Constant = ViewModel.ShowPlayButton ? ButtonStackViewHeight.Constant : 0;
             }
         }

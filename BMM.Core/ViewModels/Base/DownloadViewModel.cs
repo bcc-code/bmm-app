@@ -62,6 +62,7 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual string PlayButtonText => TextSource[Translations.TrackCollectionViewModel_ShufflePlay];
 
+
         public abstract string Image { get; }
 
         public bool UseCircularImage => false;
@@ -70,6 +71,18 @@ namespace BMM.Core.ViewModels.Base
 
         public virtual bool ShowPlayButton => true;
         public bool ShowTrackCount => true;
+
+        public string DurationLabel
+        {
+            get => _durationLabel;
+            set => SetProperty(ref _durationLabel, value);
+        }
+
+        public bool IsCompletedPercentageVisible
+        {
+            get => _isCompletedPercentageVisible;
+            set => SetProperty(ref _isCompletedPercentageVisible, value);
+        }
 
         public string DownloadingText => !IsDownloading
             ? ""
@@ -95,6 +108,8 @@ namespace BMM.Core.ViewModels.Base
         protected readonly IConnection Connection;
         private readonly INetworkSettings _networkSettings;
         private MvxSubscriptionToken _downloadCancelledMessageToken;
+        private string _durationLabel;
+        private bool _isCompletedPercentageVisible;
 
         public virtual bool ShowSharingInfo => false;
         public virtual bool ShowImage => true;
@@ -181,6 +196,24 @@ namespace BMM.Core.ViewModels.Base
 
         // todo find out what the hack this is mb/gb?????
         protected abstract Task<long> CalculateApproximateDownloadSize();
+
+        protected virtual string PrepareDurationLabel(TimeSpan duration)
+        {
+            string minText = TextSource[Translations.AlbumViewModel_Minute];
+            string secText = TextSource[Translations.AlbumViewModel_Second];
+            
+            if (duration.Hours == 0)
+                return $"{duration.Minutes} {minText} {duration.Seconds} {secText}";
+            
+            return $"{duration.Hours} {GetHoursText(duration)}, {duration.Minutes} {minText}";
+        }
+        
+        private string GetHoursText(TimeSpan time)
+        {
+            return time.Hours == 1
+                ? TextSource.GetText(Translations.AlbumViewModel_Hour) 
+                : TextSource.GetText(Translations.AlbumViewModel_Hours);
+        }
 
         protected async Task ToggleOffline()
         {

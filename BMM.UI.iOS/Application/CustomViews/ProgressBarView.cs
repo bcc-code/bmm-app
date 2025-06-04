@@ -21,6 +21,8 @@ namespace BMM.UI.iOS.CustomViews
         private int _percentage;
         private UIView _foregroundView;
         private UIView _backgroundView;
+        private UIColor _barBackgroundColor;
+        private UIColor _barForegroundColor;
 
         public ProgressBarView(RectangleF bounds) : base(bounds)
         {
@@ -41,9 +43,32 @@ namespace BMM.UI.iOS.CustomViews
                 SetNeedsLayout();
             }
         }
+        
+        public UIColor BarBackgroundColor
+        {
+            get => _barBackgroundColor;
+            set
+            {
+                _barBackgroundColor = value;
+                SetNeedsLayout();
+            }
+        }
+        
+        public UIColor BarForegroundColor
+        {
+            get => _barForegroundColor;
+            set
+            {
+                _barForegroundColor = value;
+                SetNeedsLayout();
+            }
+        }
 
         private void Initialize()
         {
+            BarBackgroundColor = AppColors.SeparatorColor;
+            BarForegroundColor = AppColors.GlobalBlackOneColor;
+            
             this.LoadXib(true);
             this.CreateBindingContext();
         }
@@ -57,7 +82,7 @@ namespace BMM.UI.iOS.CustomViews
             
             _backgroundView = new UIView(new CGRect(0, 0, Frame.Width, Frame.Height))
             {
-                BackgroundColor = AppColors.SeparatorColor
+                BackgroundColor = BarBackgroundColor
             };
             
             Add(_backgroundView);
@@ -66,7 +91,7 @@ namespace BMM.UI.iOS.CustomViews
             
             _foregroundView = new UIView(new CGRect(0, 0, desiredWidth, Frame.Height))
             {
-                BackgroundColor = AppColors.GlobalBlackOneColor
+                BackgroundColor = BarForegroundColor
             };
 
             Add(_foregroundView);

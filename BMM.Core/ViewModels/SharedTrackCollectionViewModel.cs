@@ -15,6 +15,7 @@ using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.TrackCollections;
 using BMM.Core.Models.POs.Base;
 using BMM.Core.Models.POs.Base.Interfaces;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Interfaces;
 using BMM.Core.ViewModels.Parameters.Interface;
 using MvvmCross.Commands;
@@ -55,9 +56,10 @@ namespace BMM.Core.ViewModels
         {
             var trackCollection = await Client.SharedPlaylist.Get(SharingSecret);
             MyCollection = trackCollection;
+            DurationLabel = PrepareDurationLabel(MyCollection.Tracks.SumTrackDuration());
             return MyCollection.Tracks.Select(t=> TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
-
+        
         public void Prepare(ISharedTrackCollectionParameter parameter)
         {
             SharingSecret = parameter.SharingSecret;

@@ -69,6 +69,12 @@ namespace BMM.Core.Translation
 		public const string AlbumViewModel_TrackAlreadyExistInTrackCollection = nameof(AlbumViewModel_TrackAlreadyExistInTrackCollection);
 		public const string AlbumViewModel_ShufflePlay = nameof(AlbumViewModel_ShufflePlay);
 		public const string AlbumViewModel_PluralAlbums = nameof(AlbumViewModel_PluralAlbums);
+		public const string AlbumViewModel_Hour = nameof(AlbumViewModel_Hour);
+		public const string AlbumViewModel_Hours = nameof(AlbumViewModel_Hours);
+		public const string AlbumViewModel_Minute = nameof(AlbumViewModel_Minute);
+		public const string AlbumViewModel_Second = nameof(AlbumViewModel_Second);
+		public const string AlbumViewModel_RemainingFormatSingular = nameof(AlbumViewModel_RemainingFormatSingular);
+		public const string AlbumViewModel_RemainingFormatPlural = nameof(AlbumViewModel_RemainingFormatPlural);
 		public const string AlbumsViewModel_Title = nameof(AlbumsViewModel_Title);
 		public const string AlbumsViewModel_SearchHint = nameof(AlbumsViewModel_SearchHint);
 		public const string AutomaticDownloadViewModel_Title = nameof(AutomaticDownloadViewModel_Title);

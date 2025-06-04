@@ -28,10 +28,10 @@ public static class DocumentExtensions
     {
         return documentPO switch
         {
-            TrackPO track => track.GetCoverUrl(),
+            TrackPO track => track.Track.GetCoverUrl(),
             ITrackListHolderPO trackListHolderPO => trackListHolderPO.Cover,
-            ContinueListeningTilePO continueListeningTilePO => continueListeningTilePO.GetCoverUrl(),
-            ContributorPO contributorPO => contributorPO.GetCoverUrl(),
+            ContinueListeningTilePO continueListeningTilePO => continueListeningTilePO.Tile.GetCoverUrl(),
+            ContributorPO contributorPO => contributorPO.Contributor.GetCoverUrl(),
             _ => null
         };
     }

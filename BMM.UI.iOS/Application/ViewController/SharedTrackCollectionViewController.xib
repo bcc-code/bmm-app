@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,6 +14,7 @@
                 <outlet property="AuthorNameLabel" destination="i8M-vJ-Nc6" id="0C8-vj-wvX"/>
                 <outlet property="ButtonBottomConstraint" destination="Pbc-pN-nPW" id="Sow-i5-xSc"/>
                 <outlet property="CollectionTableView" destination="aUS-eq-lT0" id="Mhq-WF-L1J"/>
+                <outlet property="DurationLabel" destination="6KT-nD-zfH" id="EA7-b9-pNg"/>
                 <outlet property="PlaylistName" destination="fKx-Z2-Ojq" id="lJT-Ow-Z14"/>
                 <outlet property="TrackCountLabel" destination="qW3-Ie-1S4" id="S0E-vV-yfh"/>
                 <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
@@ -42,7 +42,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKx-Z2-Ojq">
-                                <rect key="frame" x="16" y="88" width="382" height="96"/>
+                                <rect key="frame" x="16" y="88" width="382" height="71"/>
                                 <accessibility key="accessibilityConfiguration" identifier="PlaylistName"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
                                 <color key="textColor" red="0.050980392159999999" green="0.074509803920000006" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,8 +69,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8M-vJ-Nc6">
-                                <rect key="frame" x="16" y="190" width="382" height="21"/>
+                                <rect key="frame" x="16" y="165" width="382" height="21"/>
                                 <accessibility key="accessibilityConfiguration" identifier="AuthorNameLabel"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6KT-nD-zfH">
+                                <rect key="frame" x="20" y="202" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -80,19 +86,22 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="YHk-PT-qp6" secondAttribute="trailing" id="07N-ZI-2eA"/>
                             <constraint firstItem="qW3-Ie-1S4" firstAttribute="leading" secondItem="Z1b-yJ-osB" secondAttribute="leading" constant="16" id="0kO-I4-XDl"/>
-                            <constraint firstItem="YHk-PT-qp6" firstAttribute="top" secondItem="i8M-vJ-Nc6" secondAttribute="bottom" constant="32" id="282-S9-il6"/>
                             <constraint firstAttribute="trailing" secondItem="fKx-Z2-Ojq" secondAttribute="trailing" constant="16" id="2L3-xY-sE8"/>
                             <constraint firstItem="i8M-vJ-Nc6" firstAttribute="leading" secondItem="Z1b-yJ-osB" secondAttribute="leading" constant="16" id="5oA-3F-xwc"/>
                             <constraint firstItem="i8M-vJ-Nc6" firstAttribute="top" secondItem="fKx-Z2-Ojq" secondAttribute="bottom" constant="6" id="CJ9-Om-821"/>
+                            <constraint firstAttribute="trailing" secondItem="6KT-nD-zfH" secondAttribute="trailing" constant="20" id="HC3-bk-Ve6"/>
                             <constraint firstItem="fKx-Z2-Ojq" firstAttribute="leading" secondItem="Z1b-yJ-osB" secondAttribute="leading" constant="16" id="LT9-jE-9yy"/>
                             <constraint firstItem="qW3-Ie-1S4" firstAttribute="top" secondItem="YHk-PT-qp6" secondAttribute="bottom" constant="21" id="Pbr-vR-9uc"/>
+                            <constraint firstItem="6KT-nD-zfH" firstAttribute="top" secondItem="i8M-vJ-Nc6" secondAttribute="bottom" constant="16" id="QDv-7l-RMj"/>
                             <constraint firstItem="fKx-Z2-Ojq" firstAttribute="top" secondItem="MGR-8R-ABe" secondAttribute="bottom" constant="8" id="SnF-cD-5ze"/>
                             <constraint firstAttribute="trailing" secondItem="i8M-vJ-Nc6" secondAttribute="trailing" constant="16" id="Szw-aU-iP1"/>
                             <constraint firstItem="MGR-8R-ABe" firstAttribute="top" secondItem="Z1b-yJ-osB" secondAttribute="top" constant="32" id="bC7-cY-7vg"/>
                             <constraint firstAttribute="trailing" secondItem="qW3-Ie-1S4" secondAttribute="trailing" constant="16" id="bnH-m3-loN"/>
                             <constraint firstAttribute="bottom" secondItem="qW3-Ie-1S4" secondAttribute="bottom" constant="7" id="dIf-Pg-Yhl"/>
                             <constraint firstItem="YHk-PT-qp6" firstAttribute="leading" secondItem="Z1b-yJ-osB" secondAttribute="leading" id="vnP-ix-G4o"/>
+                            <constraint firstItem="YHk-PT-qp6" firstAttribute="top" secondItem="6KT-nD-zfH" secondAttribute="bottom" constant="20" id="wEs-Ho-cAT"/>
                             <constraint firstItem="MGR-8R-ABe" firstAttribute="centerX" secondItem="Z1b-yJ-osB" secondAttribute="centerX" id="xog-HJ-zE4"/>
+                            <constraint firstItem="6KT-nD-zfH" firstAttribute="leading" secondItem="Z1b-yJ-osB" secondAttribute="leading" constant="20" id="zJt-8t-noY"/>
                         </constraints>
                     </view>
                 </tableView>
@@ -129,7 +138,7 @@
         </view>
     </objects>
     <resources>
-        <image name="IconPlaylist" width="48" height="48"/>
+        <image name="IconPlaylist" width="24" height="24"/>
         <namedColor name="BackgroundOneColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

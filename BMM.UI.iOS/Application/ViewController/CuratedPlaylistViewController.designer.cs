@@ -29,6 +29,9 @@ namespace BMM.UI.iOS
 		BMM.UI.iOS.DownloadButton DownloadButton { get; set; }
 
 		[Outlet]
+		UIKit.UILabel DurationLabel { get; set; }
+
+		[Outlet]
 		UIKit.UIButton ShuffleButton { get; set; }
 
 		[Outlet]
@@ -59,6 +62,11 @@ namespace BMM.UI.iOS
 				DescriptionLabel = null;
 			}
 
+			if (DownloadButton != null) {
+				DownloadButton.Dispose ();
+				DownloadButton = null;
+			}
+
 			if (ShuffleButton != null) {
 				ShuffleButton.Dispose ();
 				ShuffleButton = null;
@@ -74,9 +82,9 @@ namespace BMM.UI.iOS
 				TrackCountLabel = null;
 			}
 
-			if (DownloadButton != null) {
-				DownloadButton.Dispose ();
-				DownloadButton = null;
+			if (DurationLabel != null) {
+				DurationLabel.Dispose ();
+				DurationLabel = null;
 			}
 
 		}

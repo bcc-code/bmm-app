@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
@@ -169,6 +170,7 @@ namespace BMM.Core.ViewModels.MyContent
                 MyCollection = searchCollection;
             }
 
+            DurationLabel = PrepareDurationLabel(MyCollection.Tracks.SumTrackDuration());
             return MyCollection.Tracks.Select(t => TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
     }
