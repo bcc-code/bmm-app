@@ -32,7 +32,7 @@ namespace BMM.Core.GuardedActions.ContinueListening
         
         private async Task EnqueueMusic()
         {
-            var tracksToBePlayed = await _tracksClient.GetRecommendations();
+            var tracksToBePlayed = await _tracksClient.GetRecommendationsAfterFraKaare();
 
             foreach (var track in tracksToBePlayed)
                 await _mediaPlayer.AddToEndOfQueue(track, PlaybackOrigins.Tile);
