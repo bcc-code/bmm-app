@@ -183,6 +183,16 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             Album = await Client.Albums.GetById(_id);
+
+            var items = _documentsPOFactory.Create(
+                Album?.Children,
+                DocumentSelectedCommand,
+                OptionCommand,
+                TrackInfoProvider);
+
+            if (Album == null)
+                return items;
+            
             DurationLabel = PrepareDurationLabel();
             IsCompletedPercentageVisible = Album.SecondsLeft.HasValue;
             
@@ -190,12 +200,8 @@ namespace BMM.Core.ViewModels
                 // ReSharper disable once PossibleLossOfFraction
                 ? (Album.TotalSeconds - Album.SecondsLeft.Value) * PercentageMaxValue / Album.TotalSeconds 
                 : PercentageMaxValue;
-
-            return _documentsPOFactory.Create(
-                Album?.Children,
-                DocumentSelectedCommand,
-                OptionCommand,
-                TrackInfoProvider);
+            
+            return items;
         }
         
         private string PrepareDurationLabel()
