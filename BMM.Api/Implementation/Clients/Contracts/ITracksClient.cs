@@ -59,5 +59,6 @@ namespace BMM.Api.Implementation.Clients.Contracts
         Task<IList<Track>> GetRecommendations();
         
         Task<IList<Transcription>> GetTranscriptions(int trackId);
+        Task<IList<Track>> GetRecommendationsAfterFraKaare();
     }
 }
