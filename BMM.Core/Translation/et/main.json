@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "See album on juba esitusloendis.",
     "TrackAlreadyExistInTrackCollection": "Lugu on esitusloendis {0} juba olemas",
     "ShufflePlay": "Juhuesitus",
-    "PluralAlbums": "{0} albumit"
+    "PluralAlbums": "{0} albumit",
+    "Hour": "tund",
+    "Hours": "tundi",
+    "Minute": "min",
+    "Second": "s",
+    "RemainingFormatSingular": "{0} tund, {1} min jäänud",
+    "RemainingFormatPlural": "{0} tundi, {1} min jäänud"
   },
   "AlbumsViewModel": {
     "Title": "Arhiiv",
