@@ -167,17 +167,43 @@
         </RelativeLayout>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/DurationSection"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:MvxBind="
+                Text DurationLabel;
+                Visibility Visibility(And(ShowPlayButton, NotNullOrEmpty(DurationLabel)))"
+            style="@style/Subtitle3_Label1"/>
+    
+        <bmm.ui.droid.application.customViews.ProgressBarView
+            android:id="@+id/ProgressBarView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_xsmall"
+            android:layout_marginBottom="@dimen/margin_mini"
+            android:layout_marginHorizontal="80dp"
+            app:MvxBind="
+                Visibility Visibility(And(ShowPlayButton, IsCompletedPercentageVisible));
+                Percentage CompletedPercentage"/>
+    </LinearLayout>
+    
     <View
-            android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_height="1dp"
-            android:background="@color/separator_color"/>
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_height="1dp"
+        android:background="@color/separator_color"/>
     
     <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_gravity="left"
-      app:MvxBind="Visibility Visibility(ShowTrackCount)">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        app:MvxBind="Visibility Visibility(ShowTrackCount)">
       <TextView
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"

@@ -26,6 +26,9 @@ namespace BMM.UI.iOS
 		UIKit.NSLayoutConstraint ButtonStackViewHeight { get; set; }
 
 		[Outlet]
+		UIKit.NSLayoutConstraint ButtonsToDurationConstraint { get; set; }
+
+		[Outlet]
 		UIKit.NSLayoutConstraint ButtonTopConstraint { get; set; }
 
 		[Outlet]
@@ -35,10 +38,16 @@ namespace BMM.UI.iOS
 		BMM.UI.iOS.DownloadButton DownloadButton { get; set; }
 
 		[Outlet]
-		UIKit.UIButton PlayButton { get; set; }
+		UIKit.UILabel DurationLabel { get; set; }
 
 		[Outlet]
-		UIKit.NSLayoutConstraint StackViewToSeparatorConstraint { get; set; }
+		BMM.UI.iOS.CustomViews.ProgressBarView DurationProgressBar { get; set; }
+
+		[Outlet]
+		UIKit.NSLayoutConstraint DurationToSeparatorConstraint { get; set; }
+
+		[Outlet]
+		UIKit.UIButton PlayButton { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }
@@ -68,6 +77,11 @@ namespace BMM.UI.iOS
 				ButtonStackViewHeight = null;
 			}
 
+			if (ButtonsToDurationConstraint != null) {
+				ButtonsToDurationConstraint.Dispose ();
+				ButtonsToDurationConstraint = null;
+			}
+
 			if (ButtonTopConstraint != null) {
 				ButtonTopConstraint.Dispose ();
 				ButtonTopConstraint = null;
@@ -78,14 +92,29 @@ namespace BMM.UI.iOS
 				DescriptionLabel = null;
 			}
 
+			if (DownloadButton != null) {
+				DownloadButton.Dispose ();
+				DownloadButton = null;
+			}
+
+			if (DurationLabel != null) {
+				DurationLabel.Dispose ();
+				DurationLabel = null;
+			}
+
+			if (DurationProgressBar != null) {
+				DurationProgressBar.Dispose ();
+				DurationProgressBar = null;
+			}
+
+			if (DurationToSeparatorConstraint != null) {
+				DurationToSeparatorConstraint.Dispose ();
+				DurationToSeparatorConstraint = null;
+			}
+
 			if (PlayButton != null) {
 				PlayButton.Dispose ();
 				PlayButton = null;
-			}
-
-			if (StackViewToSeparatorConstraint != null) {
-				StackViewToSeparatorConstraint.Dispose ();
-				StackViewToSeparatorConstraint = null;
 			}
 
 			if (TitleLabel != null) {
@@ -96,11 +125,6 @@ namespace BMM.UI.iOS
 			if (TrackCountLabel != null) {
 				TrackCountLabel.Dispose ();
 				TrackCountLabel = null;
-			}
-
-			if (DownloadButton != null) {
-				DownloadButton.Dispose ();
-				DownloadButton = null;
 			}
 
 		}

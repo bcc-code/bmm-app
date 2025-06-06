@@ -70,7 +70,12 @@ namespace BMM.UI.Droid.Application.CustomViews
         }
 
         private float CalculateRightForForegroundPaint(Canvas canvas)
-            => canvas.Width * (Percentage.Value / PercentageFactor);
+        {
+            if (!Percentage.HasValue)
+                return default;
+            
+            return canvas.Width * (Percentage.Value / PercentageFactor);
+        }
 
         protected override void OnMeasure(int widthMeasureSpec, int heightMeasureSpec)
         {

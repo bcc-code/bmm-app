@@ -62,6 +62,8 @@ namespace BMM.UI.iOS
             set.Bind(DownloadButton).For(v => v.IsDownloading).To(vm => vm.IsDownloading);
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
+            
+            set.Bind(DurationLabel).To(vm => vm.DurationLabel);
 
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
@@ -79,6 +81,7 @@ namespace BMM.UI.iOS
             ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
             TrackCountLabel.ApplyTextTheme(AppTheme.Subtitle3Label3);
+            DurationLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
         }
 
         public override void ViewDidLayoutSubviews()

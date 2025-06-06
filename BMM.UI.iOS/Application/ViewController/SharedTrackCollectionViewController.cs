@@ -18,6 +18,7 @@ namespace BMM.UI.iOS
     public partial class SharedTrackCollectionViewController : BaseViewController<SharedTrackCollectionViewModel>
     {
         private string _name;
+        private string _duration;
 
         public SharedTrackCollectionViewController() : base(null)
         {
@@ -50,7 +51,18 @@ namespace BMM.UI.iOS
                 CollectionTableView.ResizeHeaderView();
             }
         }
-
+        
+        public string Duration
+        {
+            get => _duration;
+            set
+            {
+                _duration = value;
+                DurationLabel.Text = _duration;
+                CollectionTableView.ResizeHeaderView();
+            }
+        }
+        
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
@@ -89,6 +101,11 @@ namespace BMM.UI.iOS
                 .WithConversion<PlaylistAuthorToLabelConverter>();
 
             set
+                .Bind(this)
+                .For(v => v.Duration)
+                .To(vm => vm.DurationLabel);
+
+            set
                 .Bind(PlaylistName)
                 .To(vm => vm.MyCollection.Name);
 
@@ -120,7 +137,7 @@ namespace BMM.UI.iOS
             set
                 .Bind(AddToMyPlaylistButton)
                 .To(vm => vm.AddToMyPlaylistCommand);
-
+            
             set.Apply();
         }
 
@@ -129,6 +146,7 @@ namespace BMM.UI.iOS
             PlaylistName.ApplyTextTheme(AppTheme.Heading2);
             AuthorNameLabel.ApplyTextTheme(AppTheme.Subtitle1Label2);
             AddToMyPlaylistButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
+            DurationLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
         }
 
         private void PrepareHeader()

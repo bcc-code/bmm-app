@@ -26,6 +26,9 @@ namespace BMM.UI.iOS
 		UIKit.UITableView CollectionTableView { get; set; }
 
 		[Outlet]
+		UIKit.UILabel DurationLabel { get; set; }
+
+		[Outlet]
 		UIKit.UILabel PlaylistName { get; set; }
 
 		[Outlet]
@@ -33,9 +36,19 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
+			if (AddToMyPlaylistButton != null) {
+				AddToMyPlaylistButton.Dispose ();
+				AddToMyPlaylistButton = null;
+			}
+
 			if (AuthorNameLabel != null) {
 				AuthorNameLabel.Dispose ();
 				AuthorNameLabel = null;
+			}
+
+			if (ButtonBottomConstraint != null) {
+				ButtonBottomConstraint.Dispose ();
+				ButtonBottomConstraint = null;
 			}
 
 			if (CollectionTableView != null) {
@@ -53,14 +66,9 @@ namespace BMM.UI.iOS
 				TrackCountLabel = null;
 			}
 
-			if (AddToMyPlaylistButton != null) {
-				AddToMyPlaylistButton.Dispose ();
-				AddToMyPlaylistButton = null;
-			}
-
-			if (ButtonBottomConstraint != null) {
-				ButtonBottomConstraint.Dispose ();
-				ButtonBottomConstraint = null;
+			if (DurationLabel != null) {
+				DurationLabel.Dispose ();
+				DurationLabel = null;
 			}
 
 		}

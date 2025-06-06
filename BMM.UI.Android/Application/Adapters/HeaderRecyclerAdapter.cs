@@ -45,11 +45,15 @@ namespace BMM.UI.Droid.Application.Adapters
 
         public override RecyclerView.ViewHolder OnCreateViewHolder(ViewGroup parent, int viewType)
         {
-            if (viewType != ResourceConstant.Layout.listitem_track)
+            if (viewType != ResourceConstant.Layout.listitem_track && viewType != ResourceConstant.Layout.listitem_tracklist_header)
                 return base.OnCreateViewHolder(parent, viewType);
-
+            
             var itemBindingContext = new MvxAndroidBindingContext(parent.Context, BindingContext.LayoutInflaterHolder);
             var view = itemBindingContext.BindingInflate(viewType, parent, false);
+
+            if (viewType == ResourceConstant.Layout.listitem_tracklist_header)
+                return new TracklistHeaderViewHolder(view, itemBindingContext);
+
             view.SetBackgroundColor(parent.Context.GetColorFromResource(ResourceConstant.Color.background_one_color));
             return new TrackSwipeItemViewHolder(view, itemBindingContext, this);
         }

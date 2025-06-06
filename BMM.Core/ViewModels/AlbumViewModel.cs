@@ -3,6 +3,7 @@ using BMM.Core.ViewModels.Base;
 using System.Collections.Specialized;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
+using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
 using BMM.Core.Helpers;
@@ -26,6 +27,7 @@ namespace BMM.Core.ViewModels
 {
     public class AlbumViewModel : DownloadViewModel, IMvxViewModel<int>, IMvxViewModel<Album>, IAlbumViewModel
     {
+        private const float PercentageMaxValue = 100f;
         private readonly IPlayOrResumePlayAction _playOrResumePlayAction;
         private readonly IDocumentsPOFactory _documentsPOFactory;
         private readonly IAlbumManager _albumManager;
@@ -42,6 +44,7 @@ namespace BMM.Core.ViewModels
         public override IMvxCommand PlayCommand => _playOrResumePlayAction.Command;
 
         private Album _album;
+        private double _completedPercentage;
 
         public Album Album
         {
@@ -111,6 +114,12 @@ namespace BMM.Core.ViewModels
                 });
         }
 
+        public double CompletedPercentage
+        {
+            get => _completedPercentage;
+            set => SetProperty(ref _completedPercentage, value);
+        }
+        
         protected override void AttachEvents()
         {
             base.AttachEvents();
@@ -174,11 +183,39 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             Album = await Client.Albums.GetById(_id);
-            return _documentsPOFactory.Create(
+
+            var items = _documentsPOFactory.Create(
                 Album?.Children,
                 DocumentSelectedCommand,
                 OptionCommand,
                 TrackInfoProvider);
+
+            if (Album == null)
+                return items;
+            
+            DurationLabel = PrepareDurationLabel();
+            IsCompletedPercentageVisible = Album.SecondsLeft.HasValue;
+            
+            CompletedPercentage = Album.SecondsLeft.HasValue
+                // ReSharper disable once PossibleLossOfFraction
+                ? (Album.TotalSeconds - Album.SecondsLeft.Value) * PercentageMaxValue / Album.TotalSeconds 
+                : PercentageMaxValue;
+            
+            return items;
+        }
+        
+        private string PrepareDurationLabel()
+        {
+            if (!Album.SecondsLeft.HasValue)
+            {
+                var durationTime = TimeSpan.FromSeconds(Album.TotalSeconds);
+                return PrepareDurationLabel(durationTime);
+            }
+            
+            var remainingTime = TimeSpan.FromSeconds(Album.SecondsLeft.Value);
+            return remainingTime.Hours == 1
+                ?  TextSource.GetText(Translations.AlbumViewModel_RemainingFormatSingular, remainingTime.Hours, remainingTime.Minutes) 
+                : TextSource.GetText(Translations.AlbumViewModel_RemainingFormatPlural, remainingTime.Hours, remainingTime.Minutes);
         }
 
         private void UpdateView(object sender, NotifyCollectionChangedEventArgs e) => RefreshButtons();

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,10 +15,13 @@
                 <outlet property="AlbumTable" destination="l4p-Fv-ZIK" id="ws9-Aw-miv"/>
                 <outlet property="ButtonStackViewHeight" destination="Wiz-wK-A6E" id="iEA-SS-8k7"/>
                 <outlet property="ButtonTopConstraint" destination="FKl-ng-oER" id="sKr-rW-lBt"/>
+                <outlet property="ButtonsToDurationConstraint" destination="NTN-IZ-Mbf" id="ooH-tT-Rg2"/>
                 <outlet property="DescriptionLabel" destination="hc3-4g-aLX" id="3pe-a4-cHq"/>
                 <outlet property="DownloadButton" destination="iTE-Vp-w62" id="BRu-3o-yp6"/>
+                <outlet property="DurationLabel" destination="x0L-Me-Omp" id="Eox-Mv-rYN"/>
+                <outlet property="DurationProgressBar" destination="nL7-s6-3WB" id="Mxp-IX-bxK"/>
+                <outlet property="DurationToSeparatorConstraint" destination="xbp-Kp-PBb" id="ZTY-g6-3Nk"/>
                 <outlet property="PlayButton" destination="jTG-0X-idr" id="66u-YL-aHN"/>
-                <outlet property="StackViewToSeparatorConstraint" destination="8Fs-AI-XSs" id="aLp-IS-Wsb"/>
                 <outlet property="TitleLabel" destination="jns-dj-qfe" id="a6H-NO-6tq"/>
                 <outlet property="TrackCountLabel" destination="5mo-PN-ABW" id="UIB-ZM-kpg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="kCW-yf-GMq"/>
@@ -53,7 +56,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jns-dj-qfe">
-                                <rect key="frame" x="16" y="212" width="343" height="99"/>
+                                <rect key="frame" x="16" y="212" width="343" height="55.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="album_header"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Alv-Qv-BdK"/>
@@ -63,7 +66,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="c1l-rF-vrA">
-                                <rect key="frame" x="49.5" y="355.5" width="276" height="40"/>
+                                <rect key="frame" x="49.5" y="312" width="276" height="40"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iTE-Vp-w62" customClass="DownloadButton">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
@@ -104,16 +107,10 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc3-4g-aLX">
-                                <rect key="frame" x="16" y="315" width="343" height="20.5"/>
+                                <rect key="frame" x="16" y="271.5" width="343" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="qYs-Kl-7Bm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mo-PN-ABW">
-                                <rect key="frame" x="16" y="441.5" width="343" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,17 +122,51 @@
                                     <constraint firstAttribute="height" constant="1" id="El3-mq-ZkJ"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mo-PN-ABW">
+                                <rect key="frame" x="16" y="441.5" width="343" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yjl-R7-hdS">
+                                <rect key="frame" x="16" y="372" width="343" height="32.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x0L-Me-Omp">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nL7-s6-3WB" customClass="ProgressBarView">
+                                        <rect key="frame" x="0.0" y="30.5" width="343" height="2"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="jCr-Ne-XHc"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nL7-s6-3WB" secondAttribute="trailing" constant="64" id="BSH-GT-K3h"/>
+                                    <constraint firstItem="x0L-Me-Omp" firstAttribute="leading" secondItem="yjl-R7-hdS" secondAttribute="leading" id="FkW-ak-cJA"/>
+                                    <constraint firstAttribute="trailing" secondItem="x0L-Me-Omp" secondAttribute="trailing" id="Jng-DY-RIP"/>
+                                    <constraint firstItem="nL7-s6-3WB" firstAttribute="leading" secondItem="yjl-R7-hdS" secondAttribute="leading" constant="64" id="UbX-1O-MNk"/>
+                                    <constraint firstAttribute="bottom" secondItem="nL7-s6-3WB" secondAttribute="bottom" id="ipS-6k-92Q"/>
+                                    <constraint firstItem="nL7-s6-3WB" firstAttribute="top" secondItem="x0L-Me-Omp" secondAttribute="bottom" constant="10" id="kMR-jk-UJl"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
                             <constraint firstItem="t4g-Ns-abC" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="10u-2V-S4g"/>
                             <constraint firstItem="X8a-JW-eqF" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" id="6Su-md-ciW"/>
-                            <constraint firstItem="X8a-JW-eqF" firstAttribute="top" secondItem="c1l-rF-vrA" secondAttribute="bottom" constant="25" id="8Fs-AI-XSs"/>
                             <constraint firstAttribute="trailing" secondItem="X8a-JW-eqF" secondAttribute="trailing" id="8U2-N7-WSr"/>
                             <constraint firstItem="5mo-PN-ABW" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="93S-qb-dmL"/>
                             <constraint firstAttribute="trailing" secondItem="jns-dj-qfe" secondAttribute="trailing" constant="16" id="AIH-RJ-dOd"/>
                             <constraint firstItem="c1l-rF-vrA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="Big-1m-iDV"/>
                             <constraint firstItem="c1l-rF-vrA" firstAttribute="top" secondItem="hc3-4g-aLX" secondAttribute="bottom" constant="20" id="FKl-ng-oER"/>
+                            <constraint firstAttribute="trailing" secondItem="yjl-R7-hdS" secondAttribute="trailing" constant="16" id="GfN-pg-rpR"/>
+                            <constraint firstItem="yjl-R7-hdS" firstAttribute="top" secondItem="c1l-rF-vrA" secondAttribute="bottom" constant="20" id="NTN-IZ-Mbf"/>
+                            <constraint firstItem="yjl-R7-hdS" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="SR9-5a-gFb"/>
                             <constraint firstItem="t4g-Ns-abC" firstAttribute="top" secondItem="dvX-pL-2wU" secondAttribute="top" constant="32" id="Unz-Qa-ngT"/>
                             <constraint firstItem="jns-dj-qfe" firstAttribute="top" secondItem="t4g-Ns-abC" secondAttribute="bottom" constant="20" id="XH0-db-GFn"/>
                             <constraint firstAttribute="bottom" secondItem="5mo-PN-ABW" secondAttribute="bottom" constant="8" id="du9-tH-oif"/>
@@ -143,10 +174,12 @@
                             <constraint firstItem="jns-dj-qfe" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="oMS-PS-9Ab"/>
                             <constraint firstAttribute="trailing" secondItem="hc3-4g-aLX" secondAttribute="trailing" constant="16" id="q6u-eP-ncV"/>
                             <constraint firstItem="5mo-PN-ABW" firstAttribute="top" secondItem="X8a-JW-eqF" secondAttribute="bottom" constant="20" id="rao-nM-Oy2"/>
+                            <constraint firstItem="yjl-R7-hdS" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="uqZ-Dl-Whf"/>
                             <constraint firstItem="hc3-4g-aLX" firstAttribute="top" secondItem="jns-dj-qfe" secondAttribute="bottom" constant="4" id="v3I-UE-4Rv"/>
                             <constraint firstAttribute="trailing" secondItem="5mo-PN-ABW" secondAttribute="trailing" constant="16" id="vvP-vF-g21"/>
                             <constraint firstItem="hc3-4g-aLX" firstAttribute="leading" secondItem="dvX-pL-2wU" secondAttribute="leading" constant="16" id="w56-LY-fIc"/>
                             <constraint firstItem="c1l-rF-vrA" firstAttribute="centerX" secondItem="dvX-pL-2wU" secondAttribute="centerX" id="xWv-HA-QO6"/>
+                            <constraint firstItem="X8a-JW-eqF" firstAttribute="top" secondItem="yjl-R7-hdS" secondAttribute="bottom" constant="16" id="xbp-Kp-PBb"/>
                         </constraints>
                     </view>
                 </tableView>
@@ -170,7 +203,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

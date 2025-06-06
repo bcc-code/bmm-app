@@ -35,5 +35,7 @@ namespace BMM.Api.Implementation.Models
         
         public int? LatestTrackId { get; set; }
         public int LatestTrackPosition { get; set; }
+        public int? SecondsLeft { get; set; }
+        public int TotalSeconds { get; set; }
     }
 }

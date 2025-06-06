@@ -1,6 +1,7 @@
 ﻿using BMM.Api.Abstraction;
 using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
@@ -13,6 +14,7 @@ using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Models.POs.Base.Interfaces;
 using BMM.Core.Models.POs.Tracks;
+using BMM.Core.Translation;
 using BMM.Core.ViewModels.Base;
 using MvvmCross.Base;
 using MvvmCross.Commands;
@@ -91,9 +93,10 @@ namespace BMM.Core.ViewModels
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy policy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var tracks = await Client.Playlist.GetTracks(CuratedPlaylist.Id, policy);
+            DurationLabel = PrepareDurationLabel(tracks.SumTrackDuration());
             return tracks.Select(t => _trackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
-
+        
         protected override async Task Initialization()
         {
             CuratedPlaylist = await Client.Playlist.GetById(CuratedPlaylist.Id, CachePolicy.UseCacheAndRefreshOutdated);

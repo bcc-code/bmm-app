@@ -39,4 +39,10 @@ public static class TrackExtensions
             track
         };
     }
+    
+    public static TimeSpan SumTrackDuration(this IEnumerable<Track> tracks)
+    {
+        long totalSeconds = tracks.Sum(t => t.Duration / 1000);
+        return TimeSpan.FromSeconds(totalSeconds);
+    }
 }

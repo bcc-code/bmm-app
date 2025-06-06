@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "This album is already in your playlist.",
     "TrackAlreadyExistInTrackCollection": "Track already exists in playlist {0}",
     "ShufflePlay": "Shuffle Play",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albums",
+    "Hour": "hour",
+    "Hours": "hours",
+    "Minute": "min",
+    "Second": "sec",
+    "RemainingFormatSingular": "{0} hour, {1} min left",
+    "RemainingFormatPlural": "{0} hours, {1} min left"
   },
   "AlbumsViewModel": {
     "Title": "Archive",
