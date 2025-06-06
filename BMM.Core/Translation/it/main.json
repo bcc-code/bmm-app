@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Questo album è già nella tua playlist.",
     "TrackAlreadyExistInTrackCollection": "Il brano esiste già nella playlist {0}",
     "ShufflePlay": "Riproduzione casuale",
-    "PluralAlbums": "{0} album"
+    "PluralAlbums": "{0} album",
+    "Hour": "ora",
+    "Hours": "ore",
+    "Minute": "min",
+    "Second": "sec",
+    "RemainingFormatSingular": "{0}h {1} min rimasti",
+    "RemainingFormatPlural": "{0}h {1} min rimasti"
   },
   "AlbumsViewModel": {
     "Title": "Archivio",
