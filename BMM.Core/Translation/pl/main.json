@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Ten album jest już na playliście.",
     "TrackAlreadyExistInTrackCollection": "Utwór znajduje się już na playliście {0}",
     "ShufflePlay": "Odtwarzaj losowo",
-    "PluralAlbums": "{0} albumów"
+    "PluralAlbums": "{0} albumów",
+    "Hour": "godzina",
+    "Hours": "godziny",
+    "Minute": "min",
+    "Second": "sek",
+    "RemainingFormatSingular": "Zostało {0}h {1} min",
+    "RemainingFormatPlural": "{0} godzin, {1} min do końca"
   },
   "AlbumsViewModel": {
     "Title": "Archiwum",
