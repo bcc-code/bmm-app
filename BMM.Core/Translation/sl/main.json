@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Ta album je že na tvojem seznamu predvajanja.",
     "TrackAlreadyExistInTrackCollection": "Skladba že obstaja na seznamu predvajanja {0}",
     "ShufflePlay": "Naključno predvajanje",
-    "PluralAlbums": "{0} albumov"
+    "PluralAlbums": "{0} albumov",
+    "Hour": "ura",
+    "Hours": "ur",
+    "Minute": "min",
+    "Second": "sek",
+    "RemainingFormatSingular": "{0} h {1} min ostalo",
+    "RemainingFormatPlural": "{0} h, {1} min ostalo"
   },
   "AlbumsViewModel": {
     "Title": "Arhiv",
