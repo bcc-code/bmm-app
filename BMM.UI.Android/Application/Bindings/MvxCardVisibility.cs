@@ -15,7 +15,7 @@ namespace BMM.UI.Droid.Application.Bindings
         {
             var card = (CardView)target;
             bool? boolean = value is bool ? (bool)value : false;
-            card.Visibility = boolean == false ? ViewStates.Invisible : ViewStates.Visible;
+            card.Visibility = boolean == false ? ViewStates.Gone : ViewStates.Visible;
         }
     }
 }

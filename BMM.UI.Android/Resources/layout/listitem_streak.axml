@@ -46,7 +46,7 @@
         local:layout_constraintHorizontal_chainStyle="spread"
         local:cardCornerRadius="@dimen/streak_card_corner_radius"
         local:cardElevation="@dimen/dimen_none"
-        local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 1)">
+        local:MvxBind="CardVisibility ListeningStreak.ShowMonday; CardBackgroundColor CurrentDayColor(ListeningStreak, 1)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
@@ -65,7 +65,7 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 2)">
+            local:MvxBind="CardVisibility ListeningStreak.ShowTuesday; CardBackgroundColor CurrentDayColor(ListeningStreak, 2)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
@@ -84,7 +84,7 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 3)">
+            local:MvxBind="CardVisibility ListeningStreak.ShowWednesday; CardBackgroundColor CurrentDayColor(ListeningStreak, 3)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
@@ -103,7 +103,7 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 4)">
+            local:MvxBind="CardVisibility ListeningStreak.ShowThursday; CardBackgroundColor CurrentDayColor(ListeningStreak, 4)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
@@ -122,7 +122,7 @@
             local:layout_constraintBottom_toBottomOf="parent"
             local:cardCornerRadius="@dimen/streak_card_corner_radius"
             local:cardElevation="@dimen/dimen_none"
-            local:MvxBind="CardBackgroundColor CurrentDayColor(ListeningStreak, 5)">
+            local:MvxBind="CardVisibility ListeningStreak.ShowFriday; CardBackgroundColor CurrentDayColor(ListeningStreak, 5)">
         <View
             android:layout_width="@dimen/streak_circle_size"
             android:layout_height="@dimen/streak_circle_size"
