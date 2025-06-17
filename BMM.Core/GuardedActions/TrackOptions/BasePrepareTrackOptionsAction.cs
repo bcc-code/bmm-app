@@ -31,6 +31,7 @@ using BMM.Core.Models.TrackCollections.Interfaces;
 using BMM.Core.NewMediaPlayer.Abstractions;
 using BMM.Core.NewMediaPlayer.Constants;
 using BMM.Core.Translation;
+using BMM.Core.ValueConverters;
 using BMM.Core.ViewModels;
 using BMM.Core.ViewModels.Parameters;
 using MvvmCross;
@@ -182,15 +183,6 @@ namespace BMM.Core.GuardedActions.TrackOptions
                         })));
             }
 
-            if (!track.IsLivePlayback)
-            {
-                options.Add(
-                    new StandardIconOptionPO(
-                        _bmmLanguageBinder[Translations.UserDialogs_Track_Share],
-                        ImageResourceNames.IconShare,
-                        new MvxAsyncCommand(async () => { await _shareLink.Share(track); })));
-            }
-
             // Only show this option if we are not inside an album (what apparently is the one you would be guided to here)
             if (sourceVM is not AlbumViewModel && isInOnlineMode && track.ParentId != 0)
             {
@@ -325,7 +317,27 @@ namespace BMM.Core.GuardedActions.TrackOptions
                     ImageResourceNames.IconRemove,
                     new MvxAsyncCommand(() => _mediaPlayer.DeleteFromQueue(track))));
 
+            if (sourceVM is PlayerBaseViewModel)
+            {
+                long currentPosition = _mediaPlayer.CurrentPosition;
+                options.Add(new StandardIconOptionPO(
+                        _bmmLanguageBinder.GetText(Translations.UserDialogs_Track_ShareFrom, GetFormattedCurrentPosition(currentPosition)),
+                        ImageResourceNames.IconShare,
+                        new MvxAsyncCommand(async () => { await _shareLink.Share(track, currentPosition); })));
+            }
+
+            options.Add(new StandardIconOptionPO(
+                    _bmmLanguageBinder[Translations.UserDialogs_Track_Share],
+                    ImageResourceNames.IconShare,
+                    new MvxAsyncCommand(async () => { await _shareLink.Share(track); })));
+
             return options;
+        }
+
+        private string GetFormattedCurrentPosition(long currentPosition)
+        {
+            var converter = new MillisecondsToTimeValueConverter();
+            return (string)converter.Convert(currentPosition, typeof(string), null, CultureInfo.CurrentCulture);
         }
 
         private StandardIconOptionPO GetTranscriptionOption(Track track)

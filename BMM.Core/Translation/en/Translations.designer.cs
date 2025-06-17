@@ -378,6 +378,7 @@ namespace BMM.Core.Translation
 		public const string UserDialogs_Track_Download = nameof(UserDialogs_Track_Download);
 		public const string UserDialogs_Track_MoreInformation = nameof(UserDialogs_Track_MoreInformation);
 		public const string UserDialogs_Track_Share = nameof(UserDialogs_Track_Share);
+		public const string UserDialogs_Track_ShareFrom = nameof(UserDialogs_Track_ShareFrom);
 		public const string UserDialogs_Album_Play = nameof(UserDialogs_Album_Play);
 		public const string UserDialogs_Album_AddToPlaylist = nameof(UserDialogs_Album_AddToPlaylist);
 		public const string UserDialogs_Album_AddToMyTracks = nameof(UserDialogs_Album_AddToMyTracks);
