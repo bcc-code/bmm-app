@@ -6,7 +6,7 @@ namespace BMM.Core.Helpers
     public interface IShareLink
     {
         Uri GetFor(Track track, long? startPositionInSeconds = null);
-        Task Share(Track track);
+        Task Share(Track track, long? startPositionInSeconds = null);
         Task Share(Album album);
         Task Share(Contributor contributor);
         Task Share(Playlist playlist);

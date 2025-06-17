@@ -463,6 +463,7 @@
     "Track.Download": "Download track",
     "Track.MoreInformation": "More information",
     "Track.Share": "Share track",
+    "Track.ShareFrom": "Share from {0}",
     "Album.Play": "Play",
     "Album.AddToPlaylist": "Add album to playlist",
     "Album.AddToMyTracks": "Add album to My Tracks",

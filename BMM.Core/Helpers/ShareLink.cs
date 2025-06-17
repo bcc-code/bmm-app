@@ -18,9 +18,10 @@ namespace BMM.Core.Helpers
             return GenerateLink(stringBuilder.ToString());
         }
 
-        public async Task Share(Track track)
+        public async Task Share(Track track,  long? startPositionInSeconds = null)
         {
-            await GenerateLinkAndShare("track/" + track.Id);
+            var uri = GetFor(track, startPositionInSeconds);
+            await PerformRequestFor(uri.AbsoluteUri);
         }
         
         public async Task Share(Album album)
