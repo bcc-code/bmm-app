@@ -463,6 +463,7 @@
     "Track.Download": "Scarica la traccia",
     "Track.MoreInformation": "Ulteriori informazioni",
     "Track.Share": "Condividi la traccia",
+    "Track.ShareFrom": "Condividi da {0}",
     "Album.Play": "Riproduci",
     "Album.AddToPlaylist": "Aggiungi album alla playlist",
     "Album.AddToMyTracks": "Aggiungi album alle mie tracce",
