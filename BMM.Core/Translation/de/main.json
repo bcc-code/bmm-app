@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Dieses Album ist bereits in deiner Playlist.",
     "TrackAlreadyExistInTrackCollection": "Titel ist bereits in Playlist {0} vorhanden",
     "ShufflePlay": "Zufällige Wiedergabe",
-    "PluralAlbums": "{0} Alben"
+    "PluralAlbums": "{0} Alben",
+    "Hour": "Stunde",
+    "Hours": "Stunden",
+    "Minute": "Min.",
+    "Second": "Sek.",
+    "RemainingFormatSingular": "Noch {0} Stunde und {1} Minuten",
+    "RemainingFormatPlural": "Noch {0} Stunden und {1} Minuten"
   },
   "AlbumsViewModel": {
     "Title": "Archiv",
@@ -457,6 +463,7 @@
     "Track.Download": "Titel herunterladen",
     "Track.MoreInformation": "Mehr Informationen",
     "Track.Share": "Titel teilen",
+    "Track.ShareFrom": "Teilen von {0}",
     "Album.Play": "Abspielen",
     "Album.AddToPlaylist": "Album zur Wiedergabeliste hinzufügen",
     "Album.AddToMyTracks": "Album zu Meinen Titeln hinzufügen",
