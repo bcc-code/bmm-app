@@ -13,10 +13,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          ref: main
+          ref: develop
           fetch-depth: 0
 
-      - name: Reset main branch
+      - name: Reset develop branch
         run: |
           git fetch origin phrase-translations:phrase-translations
           git reset --hard phrase-translations
