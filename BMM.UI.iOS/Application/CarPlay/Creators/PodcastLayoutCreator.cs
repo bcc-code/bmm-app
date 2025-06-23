@@ -45,29 +45,31 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
         var trackInfoProvider = new DefaultTrackInfoProvider();
         var covers = await podcastTracks.DownloadCovers();
         
-        var tracksCpListItemTemplates = await Task.WhenAll(podcastTracks
-            .Select(async track =>
-            {
-                var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
+        var tracksCpListItemTemplates = new List<ICPListTemplateItem>();
+        tracksCpListItemTemplates.AddIfNotNull(ShuffleButtonCreator.CreateForPodcast(_podcastId, this.CreatePlaybackOrigin(), _cpInterfaceController));;
+
+        foreach (var track in podcastTracks)
+        {
+            var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
                 
-                var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", covers.GetCover(track.ArtworkUri));
-                trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+            var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", covers.GetCover(track.ArtworkUri));
+            trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 
-                trackListItem.Handler = async (item, block) =>
-                {
-                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
-                        podcastTracks.OfType<IMediaTrack>().ToList(),
-                        track,
-                        this.CreatePlaybackOrigin(),
-                        CpInterfaceController);
-                    block();
-                };
+            trackListItem.Handler = async (item, block) =>
+            {
+                await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                    podcastTracks.OfType<IMediaTrack>().ToList(),
+                    track,
+                    this.CreatePlaybackOrigin(),
+                    CpInterfaceController);
+                block();
+            };
 
-                trackListItem.AccessoryType = CPListItemAccessoryType.None;
-                return (ICPListTemplateItem)trackListItem;
-            }));
-
-        var section = new CPListSection(tracksCpListItemTemplates);
+            trackListItem.AccessoryType = CPListItemAccessoryType.None;
+            tracksCpListItemTemplates.Add(trackListItem);
+        }
+        
+        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
         _podcastListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

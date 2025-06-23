@@ -10,7 +10,7 @@ using BMM.Core.NewMediaPlayer.Abstractions;
 namespace BMM.Core.GuardedActions.Contributors
 {
     public class ShufflePodcastAction
-        : GuardedActionWithParameter<IShuffleActionParameter>,
+        : GuardedActionWithParameterAndResult<IShuffleActionParameter, IMediaTrack>,
           IShufflePodcastAction
     {
         private readonly IPodcastClient _podcastClient;
@@ -24,13 +24,15 @@ namespace BMM.Core.GuardedActions.Contributors
             _podcastClient = podcastClient;
         }
         
-        protected override async Task Execute(IShuffleActionParameter parameter)
+        protected override async Task<IMediaTrack> Execute(IShuffleActionParameter parameter)
         {
             var podcastTracks = await _podcastClient.GetShuffle(parameter.Id);
             var tracksToPlay = podcastTracks
                 .OfType<IMediaTrack>()
                 .ToList();
-            await _mediaPlayer.Play(tracksToPlay, tracksToPlay.First(), parameter.PlaybackOrigin);
+            var trackToPlay = tracksToPlay.First();
+            await _mediaPlayer.Play(tracksToPlay, trackToPlay, parameter.PlaybackOrigin);
+            return trackToPlay;
         }
     }
 }

@@ -45,5 +45,6 @@ namespace BMM.Core.Constants
         public const string SkipForwardIcon = "Skip_Forward_Icon";
         public const string SkipBackIcon = "Skip_Back_Icon";
         public const string ShuffleIcon = "Shuffle_Icon";
+        public const string IconShuffleCarplay = "Icon_Shuffle_Carplay";
     }
 }

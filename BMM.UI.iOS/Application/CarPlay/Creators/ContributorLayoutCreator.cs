@@ -46,8 +46,10 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
             .Select(t => TrackPOFactory.Create(trackInfoProvider, null, t))
             .ToList();
         
-        var tracksCpListItemTemplates = await Task.WhenAll(tracksPOs
-            .Select(async x =>
+        var tracksCpListItemTemplates = new List<ICPListTemplateItem>();
+        tracksCpListItemTemplates.AddIfNotNull(ShuffleButtonCreator.CreateForContributor(_contributorId, this.CreatePlaybackOrigin(), _cpInterfaceController));
+
+        tracksPOs.ForEach(x =>
             {
                 var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", covers.GetCover(x.Track.ArtworkUri));
                
@@ -62,10 +64,10 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
                 };
 
                 trackListItem.AccessoryType = CPListItemAccessoryType.None;
-                return (ICPListTemplateItem)trackListItem;
-            }));
+                tracksCpListItemTemplates.Add(trackListItem);
+            });
         
-        var section = new CPListSection(tracksCpListItemTemplates);
+        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
         _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

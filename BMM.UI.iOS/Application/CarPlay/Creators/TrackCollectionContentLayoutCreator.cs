@@ -46,26 +46,28 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
 
         var covers = await tracks.DownloadCovers();
 
-        var tracksCpListItemTemplates = await Task.WhenAll(tracks
-            .Select(async x =>
+        var tracksCpListItemTemplates = new List<ICPListTemplateItem>();
+        tracksCpListItemTemplates.AddIfNotNull(ShuffleButtonCreator.Create(trackCollection.Tracks, this.CreatePlaybackOrigin(), _cpInterfaceController));;
+
+        tracks.ForEach(x =>
+        {
+            var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", covers.GetCover(x.Track.ArtworkUri));
+
+            trackListItem.Handler = async (item, block) =>
             {
-                var trackListItem = new CPListItem(x.TrackTitle, $"{x.TrackSubtitle} {x.TrackMeta}", covers.GetCover(x.Track.ArtworkUri));
+                await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                    trackCollection.Tracks.OfType<IMediaTrack>().ToList(),
+                    x.Track,
+                    this.CreatePlaybackOrigin(),
+                    CpInterfaceController);
+                block();
+            };
 
-                trackListItem.Handler = async (item, block) =>
-                {
-                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
-                        trackCollection.Tracks.OfType<IMediaTrack>().ToList(),
-                        x.Track,
-                        this.CreatePlaybackOrigin(),
-                        CpInterfaceController);
-                    block();
-                };
+            trackListItem.AccessoryType = CPListItemAccessoryType.None;
+            tracksCpListItemTemplates.Add(trackListItem);
+        });
 
-                trackListItem.AccessoryType = CPListItemAccessoryType.None;
-                return (ICPListTemplateItem)trackListItem;
-            }));
-
-        var section = new CPListSection(tracksCpListItemTemplates);
+        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
         _trackCollectionListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

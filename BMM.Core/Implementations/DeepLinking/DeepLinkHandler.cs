@@ -63,7 +63,7 @@ namespace BMM.Core.Implementations.DeepLinking
 
         private readonly IList<IDeepLinkParser> _links;
         private bool _readyToHandleDeepLink;
-        private Uri _pendingDeepLink;
+        private PendingDeepLink _pendingDeepLink;
 
         public DeepLinkHandler(
             IBMMClient client,
@@ -230,17 +230,28 @@ namespace BMM.Core.Implementations.DeepLinking
             await PlayTracks(new[] { requestedTrack }, PlaybackOriginName, trackLinkParameters.StartTimeInMs);
         }
 
-        public bool OpenFromInsideOfApp(Uri uri, string origin) => Open(uri, "internal link opened", origin);
+        public bool OpenFromInsideOfApp(Uri uri, string origin)
+        {
+            if (_readyToHandleDeepLink)
+                return Open(uri, "internal link opened", origin);
+
+            return CheckIfCanOpenDeepLinkAndSetPendingIfNeeded(new PendingDeepLink(uri, DeepLinkSource.InsideApp));
+        }
 
         public bool OpenFromOutsideOfApp(Uri uri)
         {
             if (_readyToHandleDeepLink)
                 return Open(uri, "deep link opened");
 
-            if (!_links.Any(l => l.PerformCanNavigateTo(uri, out _)))
+            return CheckIfCanOpenDeepLinkAndSetPendingIfNeeded(new PendingDeepLink(uri, DeepLinkSource.OutsideOfApp));
+        }
+        
+        private bool CheckIfCanOpenDeepLinkAndSetPendingIfNeeded(PendingDeepLink pendingDeepLink)
+        {
+            if (!_links.Any(l => l.PerformCanNavigateTo(pendingDeepLink.Uri, out _)))
                 return false;
             
-            _pendingDeepLink = uri;
+            _pendingDeepLink = pendingDeepLink;
             return true;
         }
 
@@ -251,7 +262,11 @@ namespace BMM.Core.Implementations.DeepLinking
             if (_pendingDeepLink == null)
                 return;
 
-            OpenFromOutsideOfApp(_pendingDeepLink);
+            if (_pendingDeepLink.Source == DeepLinkSource.OutsideOfApp)
+                OpenFromOutsideOfApp(_pendingDeepLink.Uri);
+            else
+                OpenFromInsideOfApp(_pendingDeepLink.Uri, string.Empty);
+            
             _pendingDeepLink = null;
         }
 

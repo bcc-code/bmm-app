@@ -6,6 +6,7 @@ using BMM.Core.GuardedActions.Tracklist.Interfaces;
 using BMM.Core.Implementations.Player.Interfaces;
 using BMM.Core.Messages;
 using BMM.Core.Models.TrackCollections.Interfaces;
+using BMM.Core.NewMediaPlayer.Abstractions;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.GuardedActions.Tracklist;
@@ -18,17 +19,20 @@ public class LikeOrUnlikeTrackAction
     private readonly IPlaybackHistoryService _playbackHistoryService;
     private readonly IRememberedQueueService _rememberedQueueService;
     private readonly IMvxMessenger _messenger;
+    private readonly IMediaPlayer _mediaPlayer;
 
     public LikeOrUnlikeTrackAction(
         ITrackCollectionClient trackCollectionClient,
         IPlaybackHistoryService playbackHistoryService,
         IRememberedQueueService rememberedQueueService,
-        IMvxMessenger messenger)
+        IMvxMessenger messenger,
+        IMediaPlayer mediaPlayer)
     {
         _trackCollectionClient = trackCollectionClient;
         _playbackHistoryService = playbackHistoryService;
         _rememberedQueueService = rememberedQueueService;
         _messenger = messenger;
+        _mediaPlayer = mediaPlayer;
     }
 
     protected override async Task<bool> Execute(ILikeOrUnlikeTrackActionParameter parameter)
@@ -46,6 +50,10 @@ public class LikeOrUnlikeTrackAction
         await _playbackHistoryService.SetTrackLikedOrUnliked(parameter.TrackId, !parameter.IsLiked);
         await _rememberedQueueService.SetTrackLikedOrUnliked(parameter.TrackId, !parameter.IsLiked);
         _messenger.Publish(new TrackLikedChangedMessage(this, !parameter.IsLiked, parameter.TrackId));
+        
+        if (_mediaPlayer.CurrentTrack?.Id == parameter.TrackId)
+            _mediaPlayer.CurrentTrack.IsLiked = !parameter.IsLiked;
+        
         return true;
     }
 
