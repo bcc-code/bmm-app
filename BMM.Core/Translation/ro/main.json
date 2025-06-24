@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Acest album este deja în lista ta de redare.",
     "TrackAlreadyExistInTrackCollection": "Piesa este deja în lista de redare {0}",
     "ShufflePlay": "Redă aleatoriu",
-    "PluralAlbums": "{0} albume"
+    "PluralAlbums": "{0} albume",
+    "Hour": "oră",
+    "Hours": "ore",
+    "Minute": "min",
+    "Second": "sec",
+    "RemainingFormatSingular": "{0} oră, {1} min rămase",
+    "RemainingFormatPlural": "{0} ore, {1} min rămase"
   },
   "AlbumsViewModel": {
     "Title": "Arhivă",
@@ -457,6 +463,7 @@
     "Track.Download": "Descarcă piesa",
     "Track.MoreInformation": "Mai multe informații",
     "Track.Share": "Distribuie piesa",
+    "Track.ShareFrom": "Distribuie din {0}",
     "Album.Play": "Redă",
     "Album.AddToPlaylist": "Adaugă albumul la lista de redare",
     "Album.AddToMyTracks": "Adaugă albumul la Piesele mele",
