@@ -8,6 +8,7 @@ using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
+using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
@@ -31,6 +32,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     private IPlaylistLayoutCreator PlaylistLayoutCreator => Mvx.IoCProvider!.Resolve<IPlaylistLayoutCreator>();
     private IAlbumLayoutCreator AlbumLayoutCreator => Mvx.IoCProvider!.Resolve<IAlbumLayoutCreator>();
     private IHandleAutoplayAction HandleAutoplayAction => Mvx.IoCProvider!.Resolve<IHandleAutoplayAction>();
+    private IFirebaseRemoteConfig FirebaseRemoteConfig => Mvx.IoCProvider!.Resolve<IFirebaseRemoteConfig>();
     
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _homeTemplate;
@@ -49,6 +51,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     
     public override async Task Load()
     {
+        int currentPodcastId = FirebaseRemoteConfig.CurrentPodcastId;
         var discoverItems = (await DiscoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated))
             .ToList();
 
@@ -80,85 +83,99 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         foreach (var group in grouped)
         {
             var trackListItems = new List<ICPListTemplateItem>();
-            trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, group.Documents, covers));
+            trackListItems.AddRange(await GetListItems(CpInterfaceController, group.Documents, covers, currentPodcastId));
             sections.Add(new CPListSection(trackListItems.ToArray(), group.Title, null));
         }
         
         _homeTemplate.SafeUpdateSections(sections.ToArray());
     }
 
-    private async Task<IList<ICPListTemplateItem>> GetTrackListItems(
-        CPInterfaceController cpInterfaceController,
+    private async Task<IList<ICPListTemplateItem>> GetListItems(CPInterfaceController cpInterfaceController,
         IEnumerable<Document> documents,
-        IDictionary<string, UIImage> covers)
+        IDictionary<string, UIImage> covers,
+        int currentPodcastId)
     {
-        return await Task.WhenAll(documents
-            .Select(async d =>
+        var listOfTemplateItems = new List<ICPListTemplateItem>();
+
+        foreach (var document in documents)
+        {
+            switch (document)
             {
-                CPListItem trackListItem = null;
-
-                switch (d)
+                case ContinueListeningTile continueListeningTile:
                 {
-                    case ContinueListeningTile continueListeningTile:
-                    {
-                        trackListItem = await CreateItemForTile(cpInterfaceController, continueListeningTile, covers);
-                        break;
-                    }
-                    case Playlist playlist:
-                    {
-                        trackListItem = new CPListItem(playlist.Title, null, covers.GetCover(playlist.Cover));
-                        trackListItem.Handler = async (item, block) =>
-                        {
-                            var playlistLayout = await PlaylistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title);
-                            await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
-                            block();
-                        };
-
-                        break;
-                    }
-                    case Album album:
-                    {
-                        trackListItem = new CPListItem(album.Title, null, covers.GetCover(album.Cover));
-                        trackListItem.Handler = async (item, block) =>
-                        {
-                            var playlistLayout = await AlbumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title);
-                            await cpInterfaceController.PushTemplateAsync(playlistLayout, true);
-                            block();
-                        };
-
-                        break;
-                    }
-                    case Podcast podcast:
-                    {
-                        trackListItem = new CPListItem(podcast.Title, null, covers.GetCover(podcast.Cover));
-                        trackListItem.Handler = async (item, block) =>
-                        {
-                            var podcastLayout = await PodcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title);
-                            await cpInterfaceController.PushTemplateAsync(podcastLayout, true);
-                            block();
-                        };
-
-                        break;
-                    }
-                    case Contributor contributor:
-                    {
-                        trackListItem = new CPListItem(contributor.Name, null, covers.GetCover(contributor.Cover));
-                        trackListItem.Handler = async (item, block) =>
-                        {
-                            var contributorLayout = await ContributorLayoutCreator.Create(cpInterfaceController, contributor.Id, contributor.Name);
-                            await cpInterfaceController.PushTemplateAsync(contributorLayout, true);
-                            block();
-                        };
-
-                        break;
-                    }
+                    listOfTemplateItems.Add(await CreateItemForTile(cpInterfaceController, continueListeningTile, covers));
+                    listOfTemplateItems.AddIf(
+                        () => currentPodcastId == continueListeningTile.ShufflePodcastId,
+                        CreateListItem(
+                            BMMLanguageBinder[Translations.PodcastViewModel_AllEpisodes],
+                            covers.GetCover(continueListeningTile.CoverUrl),
+                            () => PodcastLayoutCreator.Create(cpInterfaceController, continueListeningTile.ShufflePodcastId!.Value, continueListeningTile.Title),
+                            CpInterfaceController));
+                    break;
                 }
+                case Playlist playlist:
+                {
+                    listOfTemplateItems.Add(CreateListItem(
+                        playlist.Title,
+                        covers.GetCover(playlist.Cover),
+                        () => PlaylistLayoutCreator.Create(cpInterfaceController, playlist.Id, playlist.Title),
+                        cpInterfaceController
+                    ));
+                    break;
+                }
+                case Album album:
+                {
+                    listOfTemplateItems.Add(CreateListItem(
+                        album.Title,
+                        covers.GetCover(album.Cover),
+                        () => AlbumLayoutCreator.Create(cpInterfaceController, album.Id, album.Title),
+                        cpInterfaceController
+                    ));
+                    break;
+                }
+                case Podcast podcast:
+                {
+                    listOfTemplateItems.Add(CreateListItem(
+                        podcast.Title,
+                        covers.GetCover(podcast.Cover),
+                        () => PodcastLayoutCreator.Create(cpInterfaceController, podcast.Id, podcast.Title),
+                        cpInterfaceController
+                    ));
+                    break;
+                }
+                case Contributor contributor:
+                {
+                    listOfTemplateItems.Add(CreateListItem(
+                        contributor.Name,
+                        covers.GetCover(contributor.Cover),
+                        () => ContributorLayoutCreator.Create(cpInterfaceController, contributor.Id, contributor.Name),
+                        cpInterfaceController
+                    ));
+                    break;
+                }
+            }
+        }
 
-                trackListItem!.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
-                return trackListItem;
-            }));
+        return listOfTemplateItems;
     }
-        
+    
+    private CPListItem CreateListItem(
+        string title,
+        UIImage? image,
+        Func<Task<CPListTemplate>> createLayoutFunc,
+        CPInterfaceController cpInterfaceController)
+    {
+        var listItem = new CPListItem(title, null, image);
+        listItem.Handler = async (item, block) =>
+        {
+            var layout = await createLayoutFunc();
+            await cpInterfaceController.PushTemplateAsync(layout, true);
+            block();
+        };
+        listItem!.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+        return listItem;
+    }
+    
     private async Task<CPListItem> CreateItemForTile(CPInterfaceController cpInterfaceController,
         ContinueListeningTile continueListeningTile,
         IDictionary<string, UIImage> covers)
@@ -191,6 +208,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
             await HandleAutoplayAction.ExecuteGuarded(continueListeningTile);
             block();
         };
+        item!.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
         return item;
     }
 }

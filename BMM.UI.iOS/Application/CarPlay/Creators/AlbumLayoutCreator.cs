@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
+using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.TrackInformation.Strategies;
@@ -47,53 +48,52 @@ public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
         var covers = await albumDetails
             .Children
             .DownloadCovers();
+
+        var tracksCpListItemTemplates = new List<ICPListTemplateItem>();
+        tracksCpListItemTemplates.AddIfNotNull(ShuffleButtonCreator.Create(albumDetails.Children, this.CreatePlaybackOrigin(), _cpInterfaceController));
         
-        var tracksCpListItemTemplates = await Task.WhenAll(albumDetails
-            .Children
-            .Select(async document =>
+        foreach (var document in albumDetails.Children)
+        {
+            if (document is Track track)
             {
-                if (document is Track track)
+                var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
+
+                var trackListItem = new CPListItem(trackPO.TrackTitle,
+                    $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}",
+                    covers.GetCover(track.ArtworkUri));
+                trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+
+                trackListItem.Handler = async (item, block) =>
                 {
-                    var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
+                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                        albumDetails.Children.OfType<IMediaTrack>().ToList(),
+                        track,
+                        this.CreatePlaybackOrigin(),
+                        CpInterfaceController);
+                    block();
+                };
 
-                    var trackListItem = new CPListItem(trackPO.TrackTitle,
-                        $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}",
-                        covers.GetCover(track.ArtworkUri));
-                    trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                trackListItem.AccessoryType = CPListItemAccessoryType.None;
+                tracksCpListItemTemplates.Add(trackListItem);
+            }
+            else if (document is Album album)
+            {
+                var albumListItem = new CPListItem(album.Title, null, covers.GetCover(album.Cover));
+                albumListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
 
-                    trackListItem.Handler = async (item, block) =>
-                    {
-                        await CarPlayPlayerPresenter.PlayAndShowPlayer(
-                            albumDetails.Children.OfType<IMediaTrack>().ToList(),
-                            track,
-                            this.CreatePlaybackOrigin(),
-                            CpInterfaceController);
-                        block();
-                    };
-
-                    trackListItem.AccessoryType = CPListItemAccessoryType.None;
-                    return trackListItem;
-                }
-                else if (document is Album album)
+                albumListItem.Handler = async (item, block) =>
                 {
-                    var albumListItem = new CPListItem(album.Title, null, covers.GetCover(album.Cover));
-                    albumListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                    var albumLayout = await Create(CpInterfaceController, album.Id, album.Title);
+                    await CpInterfaceController.PushTemplateAsync(albumLayout, true);
+                    block();
+                };
 
-                    albumListItem.Handler = async (item, block) =>
-                    {
-                        var albumLayout = await Create(CpInterfaceController, album.Id, album.Title);
-                        await CpInterfaceController.PushTemplateAsync(albumLayout, true);
-                        block();
-                    };
-
-                    albumListItem.AccessoryType = CPListItemAccessoryType.None;
-                    return (ICPListTemplateItem)albumListItem;
-                }
-
-                return default;
-            }));
-
-        var section = new CPListSection(tracksCpListItemTemplates);
+                albumListItem.AccessoryType = CPListItemAccessoryType.None;
+                tracksCpListItemTemplates.Add(albumListItem);
+            }
+        }
+                
+        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
         _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

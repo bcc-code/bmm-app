@@ -197,6 +197,7 @@ namespace BMM.Core.Translation
 		public const string PodcastViewModel_AslaksenTheme2 = nameof(PodcastViewModel_AslaksenTheme2);
 		public const string PodcastViewModel_AslaksenTheme3 = nameof(PodcastViewModel_AslaksenTheme3);
 		public const string PodcastViewModel_AslaksenTheme4 = nameof(PodcastViewModel_AslaksenTheme4);
+		public const string PodcastViewModel_AllEpisodes = nameof(PodcastViewModel_AllEpisodes);
 		public const string CuratedPlaylistViewModel_Title = nameof(CuratedPlaylistViewModel_Title);
 		public const string CuratedPlaylistsViewModel_Title = nameof(CuratedPlaylistsViewModel_Title);
 		public const string PlayerViewModel_Title = nameof(PlayerViewModel_Title);

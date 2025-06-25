@@ -49,28 +49,32 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
 
         var covers = await playlistTracks.DownloadCovers();
         
-        var tracksCpListItemTemplates = await Task.WhenAll(playlistTracks
-            .Select(async track =>
+        var tracksCpListItemTemplates = new List<ICPListTemplateItem>();
+        tracksCpListItemTemplates.AddIfNotNull(ShuffleButtonCreator.Create(playlistTracks, this.CreatePlaybackOrigin(), _cpInterfaceController));
+
+        foreach (var track in playlistTracks)
+        {
+            var trackPO = TrackPOFactory.Create(audiobookPodcastInfoProvider, null, track);
+            var trackListItem = new CPListItem(trackPO.TrackTitle,
+                $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}",
+                covers.GetCover(track.ArtworkUri));
+            trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+
+            trackListItem.Handler = async (item, block) =>
             {
-                var trackPO = TrackPOFactory.Create(audiobookPodcastInfoProvider, null, track);
-                var trackListItem = new CPListItem(trackPO.TrackTitle, $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}", covers.GetCover(track.ArtworkUri));
-                trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                    playlistTracks.OfType<IMediaTrack>().ToList(),
+                    track,
+                    this.CreatePlaybackOrigin(),
+                    CpInterfaceController);
+                block();
+            };
 
-                trackListItem.Handler = async (item, block) =>
-                {
-                    await CarPlayPlayerPresenter.PlayAndShowPlayer(
-                        playlistTracks.OfType<IMediaTrack>().ToList(),
-                        track,
-                        this.CreatePlaybackOrigin(),
-                        CpInterfaceController);
-                    block();
-                };
+            trackListItem.AccessoryType = CPListItemAccessoryType.None;
+            tracksCpListItemTemplates.Add(trackListItem);
+        }
 
-                trackListItem.AccessoryType = CPListItemAccessoryType.None;
-                return (ICPListTemplateItem)trackListItem;
-            }));
-
-        var section = new CPListSection(tracksCpListItemTemplates);
+        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
         _playlistListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }
