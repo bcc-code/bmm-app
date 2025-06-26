@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Dette albumet ligger allerede i spillelisten din.",
     "TrackAlreadyExistInTrackCollection": "Sporet finnes allerede i spillelisten {0}",
     "ShufflePlay": "Spill blandet",
-    "PluralAlbums": "{0} album"
+    "PluralAlbums": "{0} album",
+    "Hour": "time",
+    "Hours": "timer",
+    "Minute": "min",
+    "Second": "sek",
+    "RemainingFormatSingular": "{0} time, {1} min igjen",
+    "RemainingFormatPlural": "{0} timer, {1} min igjen"
   },
   "AlbumsViewModel": {
     "Title": "Arkiv",
@@ -245,7 +251,8 @@
     "AslaksenTheme1": "Tro på underets Gud",
     "AslaksenTheme2": "Jeg er korsfestet med Kristus",
     "AslaksenTheme3": "Frykte og elske Gud",
-    "AslaksenTheme4": "Ydmykhet er selve saken"
+    "AslaksenTheme4": "Ydmykhet er selve saken",
+    "AllEpisodes": "Alle episoder"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Spilleliste"
@@ -457,6 +464,7 @@
     "Track.Download": "Last ned spor",
     "Track.MoreInformation": "Mer informasjon",
     "Track.Share": "Del spor",
+    "Track.ShareFrom": "Del fra {0}",
     "Album.Play": "Spill av",
     "Album.AddToPlaylist": "Legg til album i spilleliste",
     "Album.AddToMyTracks": "Legg til album i mine spor",
