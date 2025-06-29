@@ -42,7 +42,7 @@
     "DaysInARowSingular": "{0} päev järjest",
     "DaysInARowPlural": "{0} päeva järjest",
     "WeekdayMonday": "E",
-    "WeekdayTuesday": "N",
+    "WeekdayTuesday": "T",
     "WeekdayWednesday": "K",
     "WeekdayThursday": "N",
     "WeekdayFriday": "R"
@@ -157,7 +157,7 @@
     "LoginNoConnectionMessage": "Praegu ei ole ühendus saadaval. Palun proovi hiljem uuesti.",
     "WrongMailAddressTitle": "Kehtetu e-posti aadress",
     "WrongMailAddress": "Palun esita kehtiv e-posti aadress. Kasutajanime kasutamine sisselogimiseks ei ole enam toetatud.",
-    "TbxUsername.Hint": "E-posti",
+    "TbxUsername.Hint": "E-post",
     "TbxPassword.Hint": "Salasõna",
     "BtnLogin.Text": "Sisselogimine",
     "LoginInfo": "Logi sisse oma BCC kasutajaga"
@@ -251,7 +251,8 @@
     "AslaksenTheme1": "Uskuge imede Jumalasse",
     "AslaksenTheme2": "Mind on koos Kristusega risti löödud",
     "AslaksenTheme3": "Jumalat kartma ja armastama",
-    "AslaksenTheme4": "Alandlikkus on kõik"
+    "AslaksenTheme4": "Alandlikkus on kõik",
+    "AllEpisodes": "Kõik episoodid"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Esitusloend"
@@ -606,10 +607,10 @@
     "ActivateTheme": "Aktiveeri teema",
     "Close": "Sule",
     "Reward": "Preemia",
-    "RewardAndroid": "Eksklusiivne värviteema su BMM rakenduse jaoks 🤩",
-    "RewardIos": "Eksklusiivne ikoon su BMM rakenduse jaoks 🤩",
-    "RewardAndroidGolden": "Eksklusiivne värviteema su BMM rakenduse jaoks 🤩 Samuti osaled AirPods Pro paari loosimises. Hea töö!",
-    "RewardIosGolden": "Eksklusiivne ikoon su BMM rakenduse jaoks 🤩 Samuti osaled AirPods Pro paari loosimises. Hea töö!",
+    "RewardAndroid": "Eksklusiivne värviteema su BMM-i rakenduse jaoks 🤩",
+    "RewardIos": "Eksklusiivne ikoon su BMM-i rakenduse jaoks 🤩",
+    "RewardAndroidGolden": "Eksklusiivne värviteema su BMM-i rakenduse jaoks. Samuti osaled AirPods Pro paari loosimises. Hea töö!",
+    "RewardIosGolden": "Eksklusiivne kuldne ikoon su BMM-i rakenduse jaoks. Samuti osaled AirPods Pro paari loosimises. Hea töö!",
     "PlayNext": "Mängi järgmisena"
   },
   "SuggestEditViewModel": {
