@@ -44,7 +44,7 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
 
     public override async Task Load()
     {
-        var playlistTracks = await PlaylistClient.GetTracks(_playlistId, CachePolicy.UseCacheAndRefreshOutdated);
+        var playlistTracks = await PlaylistClient.GetTracks(_playlistId, CachePolicy.UseCacheAndWaitForUpdates);
         var audiobookPodcastInfoProvider = new AudiobookPodcastInfoProvider(new DefaultTrackInfoProvider(), FirebaseRemoteConfig);
 
         var covers = await playlistTracks.DownloadCovers();

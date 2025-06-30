@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="CollectionTable" destination="ffd-uh-wy9" id="Swd-dB-lu4"/>
                 <outlet property="DownloadButton" destination="gtd-Gf-W9x" id="GIa-Mm-Fv4"/>
+                <outlet property="DurationLabel" destination="Z8F-Cj-lpF" id="it1-r2-YXc"/>
                 <outlet property="IconImage" destination="Boq-CE-h65" id="fdO-1O-534"/>
                 <outlet property="NameLabel" destination="VLY-P3-Ge3" id="g3S-WU-BL0"/>
                 <outlet property="OfflineBannerLabel" destination="tCL-pz-wbX" id="name-outlet-tCL-pz-wbX"/>
@@ -55,7 +56,7 @@
                     <color key="backgroundColor" name="BackgroundOneColor"/>
                     <color key="separatorColor" red="0.92183935642242432" green="0.93585610389709473" blue="0.9506683349609375" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <view key="tableHeaderView" contentMode="scaleToFill" id="Bpp-Gt-LEf" userLabel="TableHeaderView">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="340"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IconPlaylist" translatesAutoresizingMaskIntoConstraints="NO" id="Boq-CE-h65">
@@ -67,13 +68,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLY-P3-Ge3">
-                                <rect key="frame" x="16" y="88" width="382" height="59"/>
+                                <rect key="frame" x="16" y="88" width="382" height="54.666666666666657"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="32"/>
                                 <color key="textColor" red="0.050980392159999999" green="0.074509803920000006" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Z8C-8f-DbM">
-                                <rect key="frame" x="70.666666666666686" y="199" width="273" height="40"/>
+                                <rect key="frame" x="70.666666666666686" y="194.66666666666666" width="273" height="40"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtd-Gf-W9x" customClass="DownloadButton">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
@@ -113,14 +114,14 @@
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvc-K0-jVM" userLabel="Divider" customClass="Separator">
-                                <rect key="frame" x="0.0" y="271" width="414" height="1"/>
+                                <rect key="frame" x="0.0" y="291" width="414" height="1"/>
                                 <color key="backgroundColor" red="0.72549019607843135" green="0.76470588235294112" blue="0.80000000000000004" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="6un-wK-mc8"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-tP-cBA">
-                                <rect key="frame" x="16" y="293" width="382" height="20"/>
+                                <rect key="frame" x="16" y="313" width="382" height="20"/>
                                 <attributedString key="attributedText">
                                     <fragment content="23 tracks">
                                         <attributes>
@@ -133,7 +134,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="xHt-Q5-Nhy">
-                                <rect key="frame" x="172.33333333333334" y="151" width="69.333333333333343" height="24"/>
+                                <rect key="frame" x="172.33333333333334" y="146.66666666666666" width="69.333333333333343" height="24"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FriendsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Fir-nT-lLO">
                                         <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
@@ -153,6 +154,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8F-Cj-lpF">
+                                <rect key="frame" x="16" y="254.66666666666666" width="382" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="BackgroundOneColor"/>
                         <constraints>
@@ -160,16 +167,19 @@
                             <constraint firstAttribute="trailing" secondItem="yvc-K0-jVM" secondAttribute="trailing" id="6cc-gO-3nH"/>
                             <constraint firstItem="xHt-Q5-Nhy" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="8Ir-Br-l1x"/>
                             <constraint firstAttribute="trailing" secondItem="vsX-tP-cBA" secondAttribute="trailing" constant="16" id="9bA-Xd-S4a"/>
+                            <constraint firstItem="Z8F-Cj-lpF" firstAttribute="leading" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="AVr-KH-rxy"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z8C-8f-DbM" secondAttribute="trailing" constant="16" id="F8p-LT-sKC"/>
+                            <constraint firstAttribute="trailing" secondItem="Z8F-Cj-lpF" secondAttribute="trailing" constant="16" id="Jfy-SB-ux2"/>
                             <constraint firstItem="Boq-CE-h65" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="MLH-TW-DwK"/>
-                            <constraint firstItem="yvc-K0-jVM" firstAttribute="top" secondItem="Z8C-8f-DbM" secondAttribute="bottom" constant="32" id="NXx-3g-vCD"/>
                             <constraint firstAttribute="trailing" secondItem="VLY-P3-Ge3" secondAttribute="trailing" constant="16" id="Of4-qd-Z6u"/>
                             <constraint firstItem="yvc-K0-jVM" firstAttribute="leading" secondItem="Bpp-Gt-LEf" secondAttribute="leading" id="PFm-8x-acd"/>
+                            <constraint firstItem="yvc-K0-jVM" firstAttribute="top" secondItem="Z8F-Cj-lpF" secondAttribute="bottom" constant="16" id="Pk0-lG-bI9"/>
                             <constraint firstItem="Z8C-8f-DbM" firstAttribute="centerX" secondItem="Bpp-Gt-LEf" secondAttribute="centerX" id="UYv-3q-99Q"/>
                             <constraint firstItem="vsX-tP-cBA" firstAttribute="top" secondItem="yvc-K0-jVM" secondAttribute="bottom" constant="21" id="ZqU-ai-0PY"/>
                             <constraint firstItem="VLY-P3-Ge3" firstAttribute="leading" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="cyb-Bw-hLV"/>
                             <constraint firstItem="VLY-P3-Ge3" firstAttribute="top" secondItem="Boq-CE-h65" secondAttribute="bottom" constant="8" id="hAX-dJ-JEg"/>
                             <constraint firstItem="Z8C-8f-DbM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Bpp-Gt-LEf" secondAttribute="leading" constant="16" id="pT4-s7-5Li"/>
+                            <constraint firstItem="Z8F-Cj-lpF" firstAttribute="top" secondItem="Z8C-8f-DbM" secondAttribute="bottom" constant="20" id="tK6-BT-zeU"/>
                             <constraint firstItem="gtd-Gf-W9x" firstAttribute="top" secondItem="xHt-Q5-Nhy" secondAttribute="bottom" constant="24" id="vOq-af-yHF"/>
                             <constraint firstItem="xHt-Q5-Nhy" firstAttribute="top" secondItem="VLY-P3-Ge3" secondAttribute="bottom" constant="4" id="wrO-Oq-k6L"/>
                             <constraint firstAttribute="bottom" secondItem="vsX-tP-cBA" secondAttribute="bottom" constant="7" id="ynD-qr-jBS"/>

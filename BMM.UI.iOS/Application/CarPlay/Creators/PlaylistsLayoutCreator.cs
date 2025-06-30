@@ -39,7 +39,7 @@ public class PlaylistsLayoutCreator : BaseLayoutCreator, IPlaylistsLayoutCreator
 
     public override async Task Load()
     {
-        var playlists = await PlaylistClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
+        var playlists = await PlaylistClient.GetAll(CachePolicy.UseCacheAndWaitForUpdates);
 
         var covers = await playlists.DownloadCovers();
 

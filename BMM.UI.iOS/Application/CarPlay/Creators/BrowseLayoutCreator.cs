@@ -57,7 +57,7 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
     
     public override async Task Load()
     {
-        var browseItems = (await BrowseClient.Get(CachePolicy.UseCacheAndRefreshOutdated)).ToList();
+        var browseItems = (await BrowseClient.Get(CachePolicy.UseCacheAndWaitForUpdates)).ToList();
         var carouselAdjustedItems = await PrepareCoversCarouselItemsAction.ExecuteGuarded(browseItems);
 
         var covers = await browseItems.DownloadCovers();

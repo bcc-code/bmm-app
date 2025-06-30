@@ -162,6 +162,7 @@ namespace BMM.Core.ViewModels.MyContent
         public override async Task<IEnumerable<IDocumentPO>> LoadItems(CachePolicy cachePolicy = CachePolicy.UseCacheAndRefreshOutdated)
         {
             var searchCollection = await Client.TrackCollection.GetById(MyCollection.Id, cachePolicy);
+            DurationLabel = PrepareDurationLabel(searchCollection.Tracks.SumTrackDuration());
 
             //Unable to load the data. Therefore we don't change anything and swallow the request.
             //ToDo: find a better user experience than just swallowing requests
@@ -170,7 +171,6 @@ namespace BMM.Core.ViewModels.MyContent
                 MyCollection = searchCollection;
             }
 
-            DurationLabel = PrepareDurationLabel(MyCollection.Tracks.SumTrackDuration());
             return MyCollection.Tracks.Select(t => TrackPOFactory.Create(TrackInfoProvider, OptionCommand, t));
         }
     }

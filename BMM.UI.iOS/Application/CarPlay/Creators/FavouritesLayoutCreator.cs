@@ -51,7 +51,7 @@ public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreat
 
     public override async Task Load()
     {
-        var allCollections = await TrackCollectionClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
+        var allCollections = await TrackCollectionClient.GetAll(CachePolicy.UseCacheAndWaitForUpdates);
 
         var items =  allCollections
             .OrderByDescending(c => c.Id)

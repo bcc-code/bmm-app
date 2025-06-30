@@ -37,7 +37,7 @@ public class TrackCollectionContentLayoutCreator : BaseLayoutCreator, ITrackColl
     public override async Task Load()
     {
         var trackInfoProvider = new DefaultTrackInfoProvider();
-        var trackCollection = await TrackCollectionClient.GetById(_trackCollectionId, CachePolicy.UseCacheAndRefreshOutdated);
+        var trackCollection = await TrackCollectionClient.GetById(_trackCollectionId, CachePolicy.UseCacheAndWaitForUpdates);
 
         var tracks = trackCollection
             .Tracks

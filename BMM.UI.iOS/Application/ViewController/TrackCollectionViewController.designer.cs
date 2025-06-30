@@ -20,6 +20,9 @@ namespace BMM.UI.iOS
 		BMM.UI.iOS.DownloadButton DownloadButton { get; set; }
 
 		[Outlet]
+		UIKit.UILabel DurationLabel { get; set; }
+
+		[Outlet]
 		UIKit.UIImageView IconImage { get; set; }
 
 		[Outlet]
@@ -52,11 +55,6 @@ namespace BMM.UI.iOS
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (IconImage != null) {
-				IconImage.Dispose ();
-				IconImage = null;
-			}
-
 			if (CollectionTable != null) {
 				CollectionTable.Dispose ();
 				CollectionTable = null;
@@ -65,6 +63,11 @@ namespace BMM.UI.iOS
 			if (DownloadButton != null) {
 				DownloadButton.Dispose ();
 				DownloadButton = null;
+			}
+
+			if (IconImage != null) {
+				IconImage.Dispose ();
+				IconImage = null;
 			}
 
 			if (NameLabel != null) {
@@ -110,6 +113,11 @@ namespace BMM.UI.iOS
 			if (TrackCountLabel != null) {
 				TrackCountLabel.Dispose ();
 				TrackCountLabel = null;
+			}
+
+			if (DurationLabel != null) {
+				DurationLabel.Dispose ();
+				DurationLabel = null;
 			}
 
 		}

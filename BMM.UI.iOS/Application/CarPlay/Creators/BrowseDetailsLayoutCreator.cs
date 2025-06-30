@@ -52,7 +52,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
         if (_browsePath.Contains(FeaturedBrowsePath))
         {
             documentsHolder = await PlaylistClient
-                .GetDocuments(UserStorage.GetUser().Age, CachePolicy.UseCacheAndRefreshOutdated);
+                .GetDocuments(UserStorage.GetUser().Age, CachePolicy.UseCacheAndWaitForUpdates);
         }
         else
         {
