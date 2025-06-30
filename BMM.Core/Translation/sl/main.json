@@ -251,7 +251,8 @@
     "AslaksenTheme1": "Verjemi v Boga čudežev",
     "AslaksenTheme2": "Jaz sem križan s Kristusom",
     "AslaksenTheme3": "Bati se in ljubiti Boga",
-    "AslaksenTheme4": "Ponižnost je vsa stvar"
+    "AslaksenTheme4": "Ponižnost je vsa stvar",
+    "AllEpisodes": "Vse epizode"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Seznam predvajanja"
@@ -463,6 +464,7 @@
     "Track.Download": "Prenesi skladbo",
     "Track.MoreInformation": "Več informacij",
     "Track.Share": "Deli skladbo",
+    "Track.ShareFrom": "Deli iz {0}",
     "Album.Play": "Predvajaj",
     "Album.AddToPlaylist": "Dodaj album na seznam predvajanja",
     "Album.AddToMyTracks": "Dodaj album na \"Moje skladbe\"",
