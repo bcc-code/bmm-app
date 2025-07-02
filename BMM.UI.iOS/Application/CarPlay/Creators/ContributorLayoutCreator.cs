@@ -37,7 +37,7 @@ public class ContributorLayoutCreator : BaseLayoutCreator, IContributorLayoutCre
 
     public override async Task Load()
     {
-        var tracks = await ContributorClient.GetTracks(_contributorId, CachePolicy.UseCacheAndRefreshOutdated);
+        var tracks = await ContributorClient.GetTracks(_contributorId, CachePolicy.UseCacheAndWaitForUpdates);
         var trackInfoProvider = new DefaultTrackInfoProvider();
 
         var covers = await tracks.DownloadCovers();

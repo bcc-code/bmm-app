@@ -96,6 +96,8 @@ namespace BMM.UI.iOS
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
 
+            set.Bind(DurationLabel).To(vm => vm.DurationLabel);
+            
             CollectionTable.ReloadData();
 
             set.Apply();
@@ -134,6 +136,7 @@ namespace BMM.UI.iOS
             PlaylistState.ApplyTextTheme(AppTheme.Subtitle1Label2);
             ShuffleButton.ApplyButtonStyle(AppTheme.ButtonPrimary);
             DownloadButton.ApplyButtonStyle(AppTheme.ButtonSecondaryMedium);
+            DurationLabel.ApplyTextTheme(AppTheme.Subtitle3Label1);
         }
 
         private void ViewModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)

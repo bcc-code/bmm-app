@@ -40,7 +40,7 @@ public class FollowedPodcastsContentLayoutCreator : BaseLayoutCreator, IFollowed
 
     public override async Task Load()
     {
-        var podcasts = await PodcastClient.GetAll(CachePolicy.UseCacheAndRefreshOutdated);
+        var podcasts = await PodcastClient.GetAll(CachePolicy.UseCacheAndWaitForUpdates);
         var followedPodcasts = podcasts?
             .Where(PodcastOfflineManager.IsFollowing)
             .Select(p => new PodcastPO(p))

@@ -52,7 +52,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     public override async Task Load()
     {
         int currentPodcastId = FirebaseRemoteConfig.CurrentPodcastId;
-        var discoverItems = (await DiscoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndRefreshOutdated))
+        var discoverItems = (await DiscoverClient.GetDocumentsCarPlay(AppTheme.Light, CachePolicy.UseCacheAndWaitForUpdates))
             .ToList();
 
         var covers = await discoverItems.DownloadCovers();

@@ -41,7 +41,7 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
 
     public override async Task Load()
     {
-        var podcastTracks = await PodcastClient.GetTracks(_podcastId, CachePolicy.UseCacheAndRefreshOutdated);
+        var podcastTracks = await PodcastClient.GetTracks(_podcastId, CachePolicy.UseCacheAndWaitForUpdates);
         var trackInfoProvider = new DefaultTrackInfoProvider();
         var covers = await podcastTracks.DownloadCovers();
         
