@@ -321,9 +321,9 @@ namespace BMM.Core.GuardedActions.TrackOptions
             {
                 long currentPosition = _mediaPlayer.CurrentPosition;
                 options.Add(new StandardIconOptionPO(
-                        _bmmLanguageBinder.GetText(Translations.UserDialogs_Track_ShareFrom, GetFormattedCurrentPosition(currentPosition)),
-                        ImageResourceNames.IconShare,
-                        new MvxAsyncCommand(async () => { await _shareLink.Share(track, currentPosition); })));
+                    _bmmLanguageBinder.GetText(Translations.UserDialogs_Track_ShareFrom, GetFormattedCurrentPosition(currentPosition)),
+                    ImageResourceNames.IconShare,
+                    new MvxAsyncCommand(async () => { await _shareLink.Share(track, currentPosition / 1000); })));
             }
 
             options.Add(new StandardIconOptionPO(
