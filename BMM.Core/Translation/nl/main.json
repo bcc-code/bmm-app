@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Dit album staat al in je afspeellijst.",
     "TrackAlreadyExistInTrackCollection": "Nummer bestaat al in afspeellijst {0}",
     "ShufflePlay": "Willekeurig afspelen",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albums",
+    "Hour": "uur",
+    "Hours": "uren",
+    "Minute": "min",
+    "Second": "sec",
+    "RemainingFormatSingular": "nog {0} uur, {1} min",
+    "RemainingFormatPlural": "nog {0} uur, {1} min"
   },
   "AlbumsViewModel": {
     "Title": "Archief",
@@ -245,7 +251,8 @@
     "AslaksenTheme1": "Geloof in de God van wonderen",
     "AslaksenTheme2": "Ik ben met Christus gekruisigd",
     "AslaksenTheme3": "God vrezen en liefhebben",
-    "AslaksenTheme4": "Ootmoed is alles"
+    "AslaksenTheme4": "Ootmoed is alles",
+    "AllEpisodes": "Alle afleveringen"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Afspeellijst"
@@ -457,6 +464,7 @@
     "Track.Download": "Nummer downloaden",
     "Track.MoreInformation": "Meer informatie",
     "Track.Share": "Deel nummer",
+    "Track.ShareFrom": "Delen vanaf {0}",
     "Album.Play": "Afspelen",
     "Album.AddToPlaylist": "Album toevoegen aan afspeellijst",
     "Album.AddToMyTracks": "Album toevoegen aan Mijn nummers",
