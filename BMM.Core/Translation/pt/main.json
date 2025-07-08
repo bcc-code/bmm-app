@@ -77,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Este álbum já está em sua lista de reprodução.",
     "TrackAlreadyExistInTrackCollection": "A faixa já existe na lista de reprodução {0}",
     "ShufflePlay": "Reprodução Aleatória",
-    "PluralAlbums": "{0} álbuns"
+    "PluralAlbums": "{0} álbuns",
+    "Hour": "hora",
+    "Hours": "horas",
+    "Minute": "min",
+    "Second": "seg",
+    "RemainingFormatSingular": "{0} hora, {1} minuto restante",
+    "RemainingFormatPlural": "{0} horas, {1} min restantes"
   },
   "AlbumsViewModel": {
     "Title": "Arquivo",
@@ -245,7 +251,8 @@
     "AslaksenTheme1": "Creia no Deus dos milagres",
     "AslaksenTheme2": "Eu estou crucificado com Cristo",
     "AslaksenTheme3": "Temer e amar a Deus",
-    "AslaksenTheme4": "Humildade é tudo"
+    "AslaksenTheme4": "Humildade é tudo",
+    "AllEpisodes": "Todos os episódios"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Lista de reprodução"
@@ -457,6 +464,7 @@
     "Track.Download": "Baixar faixa",
     "Track.MoreInformation": "Mais informações",
     "Track.Share": "Compartilhar faixa",
+    "Track.ShareFrom": "Compartilhamento de {0}",
     "Album.Play": "Reproduzir",
     "Album.AddToPlaylist": "Adicionar álbum à playlist",
     "Album.AddToMyTracks": "Adicionar álbum às Minhas Faixas",
