@@ -602,9 +602,9 @@
     <PackageReference Include="Sentry" Version="5.0.1" />
     <PackageReference Include="Serilog" Version="4.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
-    <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
-    <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
-    <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
+    <PackageReference Include="AdamE.Firebase.iOS.CloudMessaging" Version="11.10.0" />
+    <PackageReference Include="AdamE.Firebase.iOS.Core" Version="11.10.0" />
+    <PackageReference Include="AdamE.Firebase.iOS.RemoteConfig" Version="11.10.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\BMM.Core\Translation\af\main.json">
