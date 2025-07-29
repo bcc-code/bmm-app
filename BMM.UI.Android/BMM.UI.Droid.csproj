@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-android</TargetFramework>
+    <TargetFramework>net9.0-android</TargetFramework>
     <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
     <OutputType>Exe</OutputType>
     <Nullable>disable</Nullable>
@@ -8,7 +8,7 @@
     <ApplicationId>org.brunstad.bmm</ApplicationId>
     <ApplicationVersion>1</ApplicationVersion>
     <ApplicationDisplayVersion>1.102.0</ApplicationDisplayVersion>
-    <TargetPlatformVersion>34</TargetPlatformVersion>
+    <TargetPlatformVersion>35</TargetPlatformVersion>
     <UseMauiEssentials>true</UseMauiEssentials>
     <RootNamespace>BMM.UI.Droid</RootNamespace>
     <AssemblyName>BMM.UI.Android</AssemblyName>
@@ -23,25 +23,25 @@
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MvvmCross" Version="9.2.0" />
-    <PackageReference Include="MvvmCross.DroidX.RecyclerView" Version="9.2.0" />
-    <PackageReference Include="MvvmCross.DroidX.SwipeRefreshLayout" Version="9.2.0" />
-    <PackageReference Include="MvvmCross.Plugin.Color" Version="9.2.0" />
-    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
-    <PackageReference Include="NewRelic.MAUI.Android.Binding" Version="7.5.0" />
-    <PackageReference Include="Sentry" Version="5.0.1" />
-    <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="MvvmCross" Version="9.4.0" />
+    <PackageReference Include="MvvmCross.DroidX.RecyclerView" Version="9.4.0" />
+    <PackageReference Include="MvvmCross.DroidX.SwipeRefreshLayout" Version="9.4.0" />
+    <PackageReference Include="MvvmCross.Plugin.Color" Version="9.4.0" />
+    <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.4.0" />
+    <PackageReference Include="NewRelic.MAUI.Android.Binding" Version="7.6.6" />
+    <PackageReference Include="Sentry" Version="5.13.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.2" />
     <PackageReference Include="XAB.FlexboxLayout" Version="3.0.0.2" />
     <PackageReference Include="Xam.Plugins.Android.ExoPlayer" Version="2.19.1" />
     <PackageReference Include="Xam.Plugins.Android.ExoPlayer.MediaSession" Version="2.19.1" />
-    <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.9.1" />
-    <PackageReference Include="Xamarin.AndroidX.Browser" Version="1.8.0.4" />
-    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.2" />
-    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx" Version="2.8.4" />
-    <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.27" />
-    <PackageReference Include="Xamarin.Firebase.Config" Version="122.0.0.1" />
-    <PackageReference Include="Xamarin.Firebase.Messaging" Version="124.0.0.1" />
-    <PackageReference Update="Microsoft.Maui.Essentials" Version="8.0.80" />
+    <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.10.1.2" />
+    <PackageReference Include="Xamarin.AndroidX.Browser" Version="1.8.0.10" />
+    <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.5.0.2" />
+    <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx" Version="2.9.1" />
+    <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.33" />
+    <PackageReference Include="Xamarin.Firebase.Config" Version="122.1.2" />
+    <PackageReference Include="Xamarin.Firebase.Messaging" Version="124.1.2" />
+    <PackageReference Update="Microsoft.Maui.Essentials" Version="9.0.90" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />
