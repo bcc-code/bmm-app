@@ -146,10 +146,7 @@ namespace BMM.UI.Droid.Application.NewMediaPlayer.Service
 
             base.OnCreate();
 
-            var sessionIntent = PackageManager.GetLaunchIntentForPackage(PackageName);
-            var pendingIntent = PendingIntent.GetActivity(this, 0, sessionIntent, PendingIntentsUtils.GetImmutable());
-
-            _mediaSession = new MediaSessionCompat(this, nameof(MusicService), null, pendingIntent);
+            _mediaSession = new MediaSessionCompat(this, nameof(MusicService), null, null);
             _mediaSession.Active = true;
             SessionToken = _mediaSession.SessionToken;
             
