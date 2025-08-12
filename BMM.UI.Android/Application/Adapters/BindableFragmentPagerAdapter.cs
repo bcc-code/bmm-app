@@ -7,7 +7,10 @@ using AndroidX.Fragment.App;
 using BMM.Core.ViewModels;
 using BMM.UI.Droid.Application.Extensions;
 using BMM.UI.Droid.Application.Helpers;
+using Microsoft.Extensions.Logging;
+using MvvmCross;
 using MvvmCross.Binding;
+using MvvmCross.Logging;
 using MvvmCross.Views;
 using MvvmCross.WeakSubscription;
 using Fragment = AndroidX.Fragment.App.Fragment;
@@ -71,7 +74,7 @@ namespace BMM.UI.Droid.Application.Adapters
 
             if (_itemsSource != null && !(_itemsSource is IList))
             {
-                MvxBindingLog.Warning("Binding to IEnumerable rather than IList - this can be inefficient, especially for large lists");
+                MvxBindingLog.Instance?.LogWarning("Binding to IEnumerable rather than IList - this can be inefficient, especially for large lists");
             }
 
             var newObservable = _itemsSource as INotifyCollectionChanged;
