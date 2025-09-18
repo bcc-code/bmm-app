@@ -4,7 +4,7 @@
       <OutputType>Exe</OutputType>
       <Nullable>disable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
-      <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
       <UseMauiEssentials>true</UseMauiEssentials>
       <Configurations>Debug;Release;UITests</Configurations>
       <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
@@ -42,7 +42,7 @@
     <MtouchExtraArgs />
     <OptimizePNGs>false</OptimizePNGs>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -97,7 +97,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
