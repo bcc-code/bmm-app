@@ -8,6 +8,7 @@
       <UseMauiEssentials>true</UseMauiEssentials>
       <Configurations>Debug;Release;UITests</Configurations>
       <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
+      <SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -595,6 +596,7 @@
     <PackageReference Include="ByteSize" Version="2.1.1" />
     <PackageReference Include="Lottie.iOS" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.100" />
     <PackageReference Include="MvvmCross" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.Color" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
