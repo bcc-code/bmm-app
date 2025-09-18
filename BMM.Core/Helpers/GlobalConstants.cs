@@ -57,8 +57,13 @@
         public const int NetworkRequestTimeout = 10;
         public const int DefaultNumberOfPodcastTracksToDownload = 3;
         public const string SentryDsn = "#{SENTRY_DSN_PLACEHOLDER}#";
-        public const string NewRelicAndroidToken = "#{NEW_RELIC_ANDROID_PLACEHOLDER}#";
-        public const string NewRelic_iOSToken = "#{NEW_RELIC_IOS_PLACEHOLDER}#";
+#if ENV_INT
+        public const string RudderStackWriteKey = "32pDUqtHHmqJPwc714c3rA2WKLm";
+        public const string RudderStackDataPlaneUrl = "https://rs.bcc.media/";
+#else
+        public const string RudderStackWriteKey = "#{RUDDERSTACK_WRITE_KEY_PLACEHOLDER}#";
+        public const string RudderStackDataPlaneUrl = "#{RUDDERSTACK_DATA_PLANE_URL_PLACEHOLDER}#";
+#endif
         
         public const string AndroidUpdateLink = "https://play.google.com/store/apps/details?id=org.brunstad.bmm";
         public const string IosUpdateLink = "itms-apps://apps.apple.com/no/app/bmm-brunstad/id777577855";

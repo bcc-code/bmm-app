@@ -1,9 +1,7 @@
 ﻿using BMM.Api.Framework;
-using BMM.Core.Constants;
 using BMM.Core.Implementations.Logger;
 using BMM.Core.Implementations.Security;
-using BMM.UI.iOS.Extensions;
-using iOS.NewRelic;
+using RudderStack;
 
 namespace BMM.UI.iOS.Implementations
 {
@@ -19,7 +17,12 @@ namespace BMM.UI.iOS.Implementations
         public override void TrackEvent(string message, IDictionary<string, string> properties)
         {
             Console.WriteLine($"EVENT - {message}");
-            NewRelic.RecordCustomEvent(AnalyticsConstants.NewRelicEventType, $"{message}", properties.ToNSDictionary());
+
+            var user = UserStorage.GetUser();
+            var userId = user?.AnalyticsId?.ToString() ?? "anonymous";
+            var eventProperties = properties.ToDictionary(k => k.Key, v => (object)v.Value);
+
+            RudderAnalytics.Client?.Track(userId, message, eventProperties);
         }
     }
 }

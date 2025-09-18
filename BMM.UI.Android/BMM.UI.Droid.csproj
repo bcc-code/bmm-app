@@ -28,7 +28,6 @@
     <PackageReference Include="MvvmCross.DroidX.SwipeRefreshLayout" Version="9.4.0" />
     <PackageReference Include="MvvmCross.Plugin.Color" Version="9.4.0" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.4.0" />
-    <PackageReference Include="NewRelic.MAUI.Android.Binding" Version="7.6.6" />
     <PackageReference Include="Sentry" Version="5.13.0" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="9.0.2" />
     <PackageReference Include="XAB.FlexboxLayout" Version="3.0.0.2" />
@@ -41,7 +40,7 @@
     <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.33" />
     <PackageReference Include="Xamarin.Firebase.Config" Version="122.1.2" />
     <PackageReference Include="Xamarin.Firebase.Messaging" Version="124.1.2" />
-    <PackageReference Update="Microsoft.Maui.Essentials" Version="9.0.90" />
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="9.0.90" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BMM.Core\BMM.Core.csproj" />

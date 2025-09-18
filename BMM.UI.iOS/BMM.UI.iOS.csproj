@@ -598,7 +598,6 @@
     <PackageReference Include="MvvmCross" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.Color" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
-    <PackageReference Include="NewRelic.MAUI.iOS.Binding" Version="7.5.0" />
     <PackageReference Include="Sentry" Version="5.0.1" />
     <PackageReference Include="Serilog" Version="4.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
