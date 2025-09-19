@@ -14,4 +14,12 @@
     <attr name="tint_color" format="reference|color" />
     <attr name="background_four_color" format="reference|color" />
     <attr name="on_color_one_color" format="reference|color" />
+
+    <!-- Lottie attributes -->
+    <declare-styleable name="LottieAnimationView">
+        <attr name="lottie_autoPlay" format="boolean" />
+        <attr name="lottie_loop" format="boolean" />
+        <attr name="lottie_rawRes" format="reference" />
+        <attr name="lottie_fileName" format="string" />
+    </declare-styleable>
 </resources>

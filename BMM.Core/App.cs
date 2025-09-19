@@ -129,7 +129,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<IResponseDeserializer, ResponseDeserializer>();
             Mvx.IoCProvider.RegisterType<IBmmVersionProvider, BmmVersionProvider>();
 
-            Mvx.IoCProvider.RegisterType<IAnalytics, NewRelicAnalytics>();
+            Mvx.IoCProvider.RegisterType<IAnalytics, RudderStackAnalytics>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeepLinkHandler, DeepLinkHandler>();
             Mvx.IoCProvider.RegisterType<IShareLink, ShareLink>();
             Mvx.IoCProvider.RegisterType<IAppNavigator, AppNavigator>();

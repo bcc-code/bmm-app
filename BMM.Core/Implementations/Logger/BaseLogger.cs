@@ -16,6 +16,8 @@ namespace BMM.Core.Implementations.Logger
         private readonly IConnection _connection;
         private readonly IUserStorage _userStorage;
 
+        protected IUserStorage UserStorage => _userStorage;
+
         protected BaseLogger(
             IConnection connection,
             IUserStorage userStorage)
