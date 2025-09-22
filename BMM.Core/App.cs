@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using Akavache;
+using SQLitePCL;
 using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
@@ -110,6 +111,9 @@ namespace BMM.Core
         public override void Initialize()
         {
             var serverUri = new ApiBaseUri(GlobalConstants.ApiUrl);
+
+            // Initialize SQLite before Akavache to prevent hanging
+            Batteries_V2.Init();
 
             Registrations.Start(GlobalConstants.ApplicationName);
             BlobCache.ApplicationName = GlobalConstants.PackageName;
