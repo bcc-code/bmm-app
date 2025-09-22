@@ -42,7 +42,7 @@ namespace BMM.Core.Implementations.Analytics
 
             try
             {
-                var config = new RudderConfig(dataPlaneUrl: GlobalConstants.RudderStackDataPlaneUrl, async: false);
+                var config = new RudderConfig(dataPlaneUrl: GlobalConstants.RudderStackDataPlaneUrl, async: true);
                 RudderAnalytics.Initialize(GlobalConstants.RudderStackWriteKey, config);
                 _isInitialized = true;
                 _logger.Info("RudderStack", "RudderStack Analytics initialized successfully");
