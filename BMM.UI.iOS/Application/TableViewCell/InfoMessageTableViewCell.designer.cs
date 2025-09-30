@@ -15,12 +15,19 @@ namespace BMM.UI.iOS
 	{
 		[Outlet]
 		UIKit.UILabel InfoMessageLabel { get; set; }
+		[Outlet]
+		UIKit.UIButton InfoMessageButton { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
 			if (InfoMessageLabel != null) {
 				InfoMessageLabel.Dispose ();
 				InfoMessageLabel = null;
+			}
+
+			if (InfoMessageButton != null) {
+				InfoMessageButton.Dispose();
+				InfoMessageButton = null;
 			}
 		}
 	}

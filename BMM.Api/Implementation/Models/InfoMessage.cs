@@ -9,5 +9,6 @@ namespace BMM.Api.Implementation.Models
         public string TranslationId { get; set; }
         public string MessageText { get; set; }
         public string Link { get; set; }
+        public string TranslatedButtonText { get; set; }
     }
 }

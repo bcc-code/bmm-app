@@ -27,6 +27,7 @@ namespace BMM.Core.Models.POs.InfoMessages
         }
         
         public InfoMessage InfoMessage { get; }
+        public bool HasNoButton => !string.IsNullOrEmpty(InfoMessage.TranslatedButtonText);
         public IMvxAsyncCommand TapCommand { get; }
     }
 }

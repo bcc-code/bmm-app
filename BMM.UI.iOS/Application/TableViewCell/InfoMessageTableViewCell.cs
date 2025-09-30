@@ -22,6 +22,14 @@ namespace BMM.UI.iOS
 
                 set.Bind(InfoMessageLabel)
                     .To(d => d.InfoMessage.MessageText);
+
+                set.Bind(InfoMessageButton)
+                    .For(d => d.BindTitle())
+                    .To(d => d.InfoMessage.TranslatedButtonText);
+                
+                set.Bind(InfoMessageButton)
+                    .For(d => d.BindHidden())
+                    .To(d => d.HasNoButton);
                 
                 set.Bind(ContentView)
                     .For(v => v.BindTap())
@@ -35,6 +43,7 @@ namespace BMM.UI.iOS
         {
             base.AwakeFromNib();
             InfoMessageLabel.ApplyTextTheme(AppTheme.Subtitle1Label1);
+            InfoMessageButton.ApplyButtonStyle(AppTheme.ButtonSecondarySmallDarker);
         }
     }
 }

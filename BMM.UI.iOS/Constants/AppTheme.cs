@@ -236,6 +236,13 @@ namespace BMM.UI.iOS.Constants
             IconTint = AppColors.LabelOneColor
         };
         
+        public static readonly ButtonTheme ButtonSecondarySmallDarker = new StandardButtonTheme
+        {
+            TextTheme = Title2,
+            ButtonColor = AppColors.SeparatorColor,
+            IconTint = AppColors.LabelOneColor
+        };
+        
         public static readonly ButtonTheme ButtonTertiaryLarge = new StandardButtonTheme
         {
             TextTheme = Title1,
