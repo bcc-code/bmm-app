@@ -28,7 +28,8 @@
     "DailyMessage": "Message quotidien",
     "ValueCopiedToClipboard": "{0} copié dans le presse-papiers",
     "AddToFavorites": "Ajouter aux favoris",
-    "RemoveFromFavorites": "Supprimer des favoris"
+    "RemoveFromFavorites": "Supprimer des favoris",
+    "NowPlaying": "En lecture"
   },
   "Streak": {
     "Message": "Enchaînement de la semaine",
@@ -43,7 +44,7 @@
     "WeekdayMonday": "L",
     "WeekdayTuesday": "M",
     "WeekdayWednesday": "Me",
-    "WeekdayThursday": "J",
+    "WeekdayThursday": "M",
     "WeekdayFriday": "V"
   },
   "DeepLinkHandler": {
@@ -76,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Cet album est déjà dans votre playlist.",
     "TrackAlreadyExistInTrackCollection": "Le titre existe déjà dans la playlist {0}",
     "ShufflePlay": "Lecture aléatoire",
-    "PluralAlbums": "{0} albums"
+    "PluralAlbums": "{0} albums",
+    "Hour": "heure",
+    "Hours": "heures",
+    "Minute": "min",
+    "Second": "sec",
+    "RemainingFormatSingular": "{0} heure, {1} minute restante",
+    "RemainingFormatPlural": "{0} heures, {1} minutes restantes"
   },
   "AlbumsViewModel": {
     "Title": "Archive",
@@ -244,7 +251,8 @@
     "AslaksenTheme1": "Crois au Dieu des miracles",
     "AslaksenTheme2": "J'ai été crucifié avec Christ",
     "AslaksenTheme3": "Craindre et aimer Dieu",
-    "AslaksenTheme4": "L'humilité, c'est tout"
+    "AslaksenTheme4": "L'humilité, c'est tout",
+    "AllEpisodes": "Tous les épisodes"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Playlist"
@@ -456,6 +464,7 @@
     "Track.Download": "Télécharger piste",
     "Track.MoreInformation": "Plus d'informations",
     "Track.Share": "Partager le titre",
+    "Track.ShareFrom": "Partager depuis {0}",
     "Album.Play": "Lire",
     "Album.AddToPlaylist": "Ajouter l'album à la playlist",
     "Album.AddToMyTracks": "Ajouter l'album à mes pistes",
@@ -635,5 +644,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Score global"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Une erreur s'est produite...",
+    "TryAgainButton": "Réessayer",
+    "LoadingText": "Chargement...",
+    "SignIntoBMM": "Connectez-vous à BMM sur votre téléphone",
+    "Refresh": "Actualiser"
   }
 }
