@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using Akavache;
+using SQLitePCL;
 using BMM.Api;
 using BMM.Api.Abstraction;
 using BMM.Api.Framework;
@@ -111,6 +112,9 @@ namespace BMM.Core
         {
             var serverUri = new ApiBaseUri(GlobalConstants.ApiUrl);
 
+            // Initialize SQLite before Akavache to prevent hanging
+            Batteries_V2.Init();
+
             Registrations.Start(GlobalConstants.ApplicationName);
             BlobCache.ApplicationName = GlobalConstants.PackageName;
 
@@ -129,7 +133,7 @@ namespace BMM.Core
             Mvx.IoCProvider.RegisterType<IResponseDeserializer, ResponseDeserializer>();
             Mvx.IoCProvider.RegisterType<IBmmVersionProvider, BmmVersionProvider>();
 
-            Mvx.IoCProvider.RegisterType<IAnalytics, NewRelicAnalytics>();
+            Mvx.IoCProvider.RegisterType<IAnalytics, RudderStackAnalytics>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDeepLinkHandler, DeepLinkHandler>();
             Mvx.IoCProvider.RegisterType<IShareLink, ShareLink>();
             Mvx.IoCProvider.RegisterType<IAppNavigator, AppNavigator>();

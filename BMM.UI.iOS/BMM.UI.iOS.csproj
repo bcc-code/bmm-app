@@ -4,10 +4,11 @@
       <OutputType>Exe</OutputType>
       <Nullable>disable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
-      <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+      <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
       <UseMauiEssentials>true</UseMauiEssentials>
       <Configurations>Debug;Release;UITests</Configurations>
       <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
+      <SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -41,7 +42,7 @@
     <MtouchExtraArgs />
     <OptimizePNGs>false</OptimizePNGs>
     <DeviceSpecificBuild>false</DeviceSpecificBuild>
-    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -96,7 +97,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+    <RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -595,16 +596,16 @@
     <PackageReference Include="ByteSize" Version="2.1.1" />
     <PackageReference Include="Lottie.iOS" Version="1.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.100" />
     <PackageReference Include="MvvmCross" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.Color" Version="9.2.0" />
     <PackageReference Include="MvvmCross.Plugin.JsonLocalization" Version="9.2.0" />
-    <PackageReference Include="NewRelic.MAUI.iOS.Binding" Version="7.5.0" />
     <PackageReference Include="Sentry" Version="5.0.1" />
     <PackageReference Include="Serilog" Version="4.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
-    <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
-    <PackageReference Include="Xamarin.Firebase.iOS.Core" Version="8.10.0.3" />
-    <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
+    <PackageReference Include="AdamE.Firebase.iOS.CloudMessaging" Version="11.10.0" />
+    <PackageReference Include="AdamE.Firebase.iOS.Core" Version="11.10.0" />
+    <PackageReference Include="AdamE.Firebase.iOS.RemoteConfig" Version="11.10.0" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\BMM.Core\Translation\af\main.json">

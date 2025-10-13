@@ -15,7 +15,7 @@ trigger:
 
 variables:
     - name: xcode_version
-      value: '16.2'
+      value: '16.4'
     - name: branchName
       value: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
     - group: 'AppleCertificate'

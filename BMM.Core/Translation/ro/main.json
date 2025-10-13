@@ -191,7 +191,7 @@
     "Title": "Meniu",
     "Search": "Căutare",
     "Explore": "Explorează",
-    "MyContent": "Conţinutul meu",
+    "MyContent": "Conținutul meu",
     "Browse": "Răsfoiește",
     "Settings": "Setări",
     "HelpAndFeedback": "Ajutor şi Feedback",
@@ -251,7 +251,8 @@
     "AslaksenTheme1": "Crede în Dumnezeul minunilor",
     "AslaksenTheme2": "Am fost răstignit împreună cu Hristos",
     "AslaksenTheme3": "A se teme și a-L iubi pe Dumnezeu",
-    "AslaksenTheme4": "Smerenia este totul"
+    "AslaksenTheme4": "Smerenia este totul",
+    "AllEpisodes": "Toate episoadele"
   },
   "CuratedPlaylistViewModel": {
     "Title": "Listă de redare"
