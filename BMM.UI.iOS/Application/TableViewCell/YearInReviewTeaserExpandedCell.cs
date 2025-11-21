@@ -44,6 +44,9 @@ namespace BMM.UI.iOS
                 
                 set.Bind(SeeReviewButton)
                     .To(po => po.SeeReviewCommand);
+                set.Bind(SeeReviewButton)
+                    .For(v => v.BindTitle())
+                    .To(po => po.YearInReviewTeaser.ButtonTitle);
                 
                 set.Apply();
             });
