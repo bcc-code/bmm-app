@@ -107,6 +107,9 @@ namespace BMM.UI.Droid.Application.Implementations.FileStorage
 
         private string PathByUrl(string url)
         {
+            if (string.IsNullOrEmpty(url))
+                return null;
+
             string fileName = Android.Net.Uri.Parse(url).Path.Split('/').Last();
 
             return System.IO.Path.Combine(Path, fileName);

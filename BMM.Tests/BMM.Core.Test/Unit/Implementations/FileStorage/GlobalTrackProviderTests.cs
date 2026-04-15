@@ -77,5 +77,37 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
 
             Assert.That(result.Count(), Is.EqualTo(10));
         }
+
+        [Test]
+        public async Task TrackProvider_Should_Filter_Out_Tracks_With_Null_Url()
+        {
+            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object);
+
+            var tracks = new List<Track>
+            {
+                _fakeTrackFactory.CreateTrackWithId(1),
+                new Track { Id = 2, Language = "en", Media = null },
+                _fakeTrackFactory.CreateTrackWithId(3),
+                new Track { Id = 4, Language = "en", Media = new List<TrackMedia>() },
+            };
+
+            _podcastTrackProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(tracks);
+            _trackCollectionProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(new List<Track>());
+            _playlistProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(new List<Track>());
+            _albumProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(new List<Track>());
+
+            var result = await globalTrackProvider.GetTracksSupposedToBeDownloaded();
+
+            Assert.That(result.Count(), Is.EqualTo(2));
+            Assert.That(result.All(t => !string.IsNullOrEmpty(t.Url)), Is.True);
+        }
     }
 }

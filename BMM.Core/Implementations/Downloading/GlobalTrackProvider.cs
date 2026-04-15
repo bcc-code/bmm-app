@@ -37,7 +37,8 @@ namespace BMM.Core.Implementations.Downloading
             return podcastTracksSupposedToBeDownloaded
                 .Union(collectionTracksSupposedToBeDownloaded, _trackEqualityComparer)
                 .Union(playlistsSupposedToBeDownloaded, _trackEqualityComparer)
-                .Union(albumsSupposedToBeDownloaded, _trackEqualityComparer);
+                .Union(albumsSupposedToBeDownloaded, _trackEqualityComparer)
+                .Where(track => !string.IsNullOrEmpty(track.Url));
         }
     }
 }
