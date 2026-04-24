@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Devices;
+﻿using System.Net.Sockets;
+using Microsoft.Maui.Devices;
 
 namespace BMM.Core.Helpers
 {
@@ -39,6 +40,19 @@ namespace BMM.Core.Helpers
             options.Debug = false;
             options.TracesSampleRate = 1.0;
             options.ProfilesSampleRate = 1.0;
+            options.SetBeforeSend((sentryEvent, hint) =>
+            {
+                var ex = sentryEvent.Exception;
+                if (ex is SocketException
+                    || ex is System.Net.WebException
+                    || ex?.Message?.Contains("Connection closed") == true
+                    || ex?.GetType().Name == "JavaProxyThrowable")
+                {
+                    return null;
+                }
+
+                return sentryEvent;
+            });
         }
     }
 }
