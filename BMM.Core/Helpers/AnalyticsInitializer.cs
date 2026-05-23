@@ -38,8 +38,9 @@ namespace BMM.Core.Helpers
             options.Dsn = GlobalConstants.SentryDsn;
             options.Environment = GetSentryEnvironment();
             options.Debug = false;
-            options.TracesSampleRate = 1.0;
-            options.ProfilesSampleRate = 1.0;
+            options.SampleRate = 0.25f;
+            options.TracesSampleRate = 0.25;
+            options.ProfilesSampleRate = 0.25;
             options.SetBeforeSend((sentryEvent, hint) =>
             {
                 var ex = sentryEvent.Exception;
