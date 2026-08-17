@@ -108,7 +108,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
 
             _globalTrackProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(trackOfflineTracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(trackOfflineTracks));
 
             GlobalMediaDownloader globalMediaDownloader = CreateGlobalMediaDownloader();
 
@@ -127,7 +127,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             //Arrange
             _globalTrackProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(TrackOfflineTracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(TrackOfflineTracks));
             _connection.Setup(x => x.GetStatus()).Returns(ConnectionStatus.Offline);
 
             GlobalMediaDownloader globalMediaDownloader = CreateGlobalMediaDownloader();
@@ -148,7 +148,7 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             //Arrange
             _globalTrackProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(TrackOfflineTracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(TrackOfflineTracks));
             _connection.Setup(x => x.IsUsingNetworkWithoutExtraCosts()).Returns(false);
 
             GlobalMediaDownloader globalMediaDownloader = CreateGlobalMediaDownloader();
@@ -161,6 +161,40 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             _downloadQueue.Verify(x => x.DequeueAllExcept(It.IsAny<IEnumerable<IDownloadable>>()), Times.Once);
             _downloadQueue.Verify(x => x.Enqueue(It.Is<IEnumerable<IDownloadable>>(y => y.Count() == 3)));
             _downloadQueue.Verify(x => x.StartDownloading(), Times.Once);
+        }
+
+        [Test]
+        public async Task SynchronizeOfflineTracks_ShouldNotDeleteAnyFiles_WhenTheListOfTracksIsIncomplete()
+        {
+            //Arrange
+            _globalTrackProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(OfflineTracksResult.Incomplete(new List<Track>()));
+
+            GlobalMediaDownloader globalMediaDownloader = CreateGlobalMediaDownloader();
+
+            //Act
+            await globalMediaDownloader.SynchronizeOfflineTracks();
+
+            //Assert
+            _storageManager.Verify(x => x.SelectedStorage.DeleteFileByUrl(It.IsAny<string>()), Times.Never);
+        }
+
+        [Test]
+        public async Task SynchronizeOfflineTracks_ShouldDeleteFilesThatAreNoLongerNeeded_WhenTheListOfTracksIsComplete()
+        {
+            //Arrange
+            _globalTrackProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(OfflineTracksResult.Complete(new List<Track>()));
+
+            GlobalMediaDownloader globalMediaDownloader = CreateGlobalMediaDownloader();
+
+            //Act
+            await globalMediaDownloader.SynchronizeOfflineTracks();
+
+            //Assert
+            _storageManager.Verify(x => x.SelectedStorage.DeleteFileByUrl(It.IsAny<string>()), Times.Exactly(3));
         }
     }
 }

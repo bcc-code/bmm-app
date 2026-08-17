@@ -44,7 +44,7 @@ namespace BMM.Core.Test.Unit.Implementations.Podcasts
             var podcastOfflineTrackProvider = new PodcastOfflineTrackProvider(_client.Object);
 
             //Act
-            var result = await podcastOfflineTrackProvider.GetTracksSupposedToBeDownloaded();
+            var result = (await podcastOfflineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;
 
             //Assert
             Assert.AreEqual(6, result.Count);
@@ -69,7 +69,7 @@ namespace BMM.Core.Test.Unit.Implementations.Podcasts
                 _client.Object);
 
             //Act
-            var result = await podcastOfflineTrackProvider.GetTracksSupposedToBeDownloaded();
+            var result = (await podcastOfflineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;
 
             //Assert
             Assert.AreEqual(3, result.Count);

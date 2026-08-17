@@ -4,6 +4,7 @@ using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Albums.Interfaces;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Downloading;
 
 namespace BMM.Core.Implementations.Albums;
 
@@ -26,9 +27,10 @@ public class AlbumOfflineTrackProvider : IAlbumOfflineTrackProvider
         _logger = logger;
     }
     
-    public async Task<IList<Track>> GetTracksSupposedToBeDownloaded()
+    public async Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded()
     {
         var toBeDownloaded = new List<Track>();
+        bool isComplete = true;
 
         var offlineAlbumsIds = _offlineAlbumStorage
             .GetAlbumIds();
@@ -44,13 +46,23 @@ public class AlbumOfflineTrackProvider : IAlbumOfflineTrackProvider
             {
                 RemoveAlbumAndLogAnalytics(albumId, Event.AlbumNotFound);
             }
+            catch (UnauthorizedException)
+            {
+                // Has to bubble up so the user is sent to the login screen.
+                throw;
+            }
             catch (Exception e)
             {
+                // The album might still be there, we just couldn't read it. Saying so keeps its
+                // already downloaded files from being deleted as "no longer needed".
+                isComplete = false;
                 _logger.Error($"Exception while retrieving Album {albumId} to be downloaded", e.ToString());
             }
         }
 
-        return toBeDownloaded;
+        return isComplete
+            ? OfflineTracksResult.Complete(toBeDownloaded)
+            : OfflineTracksResult.Incomplete(toBeDownloaded);
     }
     
     private void RemoveAlbumAndLogAnalytics(int albumId, string logEventName)

@@ -53,7 +53,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var offlineTrackProvider = GetTrackCollectionOfflineTrackProvider();
 
             // Act
-            var results = await offlineTrackProvider.GetTracksSupposedToBeDownloaded();
+            var results = (await offlineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;
 
             // Assert
             Assert.AreEqual(4, results.Count());
@@ -69,7 +69,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var offlineTrackProvider = GetTrackCollectionOfflineTrackProvider();
 
             // Act
-            var results = await offlineTrackProvider.GetTracksSupposedToBeDownloaded();
+            var results = (await offlineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;
 
             // Assert
             Assert.AreEqual(4, results.Count());
@@ -89,7 +89,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var offlineTrackProvider = GetTrackCollectionOfflineTrackProvider();
 
             // Act
-            var results = (await offlineTrackProvider.GetTracksSupposedToBeDownloaded()).ToList();
+            var results = (await offlineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks.ToList();
 
             // Assert
             Assert.AreEqual(2, results.Count);
@@ -107,7 +107,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             var offlineTrackProvider = new TrackCollectionOfflineTrackProvider(_client.Object, _trackCollectionOfflineManager.Object, _analytics.Object);
 
             // Act
-            var response = await offlineTrackProvider.GetTracksSupposedToBeDownloaded();
+            var response = (await offlineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;
 
             // Assert
             _trackCollectionOfflineManager.Verify(x => x.Remove(3));

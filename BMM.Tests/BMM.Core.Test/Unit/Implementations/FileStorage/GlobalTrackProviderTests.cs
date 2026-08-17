@@ -62,20 +62,21 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
 
             _podcastTrackProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(podcastTracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(podcastTracks));
             _trackCollectionProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(trackCollectionTracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(trackCollectionTracks));
             _playlistProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(playlistTracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(playlistTracks));
             _albumProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(albumTracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(albumTracks));
 
             var result = await globalTrackProvider.GetTracksSupposedToBeDownloaded();
 
-            Assert.That(result.Count(), Is.EqualTo(10));
+            Assert.That(result.Tracks.Count, Is.EqualTo(10));
+            Assert.That(result.IsComplete, Is.True);
         }
 
         [Test]
@@ -93,21 +94,47 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
 
             _podcastTrackProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(tracks);
+                .ReturnsAsync(OfflineTracksResult.Complete(tracks));
             _trackCollectionProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(new List<Track>());
+                .ReturnsAsync(OfflineTracksResult.Complete(new List<Track>()));
             _playlistProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(new List<Track>());
+                .ReturnsAsync(OfflineTracksResult.Complete(new List<Track>()));
             _albumProvider
                 .Setup(x => x.GetTracksSupposedToBeDownloaded())
-                .ReturnsAsync(new List<Track>());
+                .ReturnsAsync(OfflineTracksResult.Complete(new List<Track>()));
 
             var result = await globalTrackProvider.GetTracksSupposedToBeDownloaded();
 
-            Assert.That(result.Count(), Is.EqualTo(2));
-            Assert.That(result.All(t => !string.IsNullOrEmpty(t.Url)), Is.True);
+            Assert.That(result.Tracks.Count, Is.EqualTo(2));
+            Assert.That(result.Tracks.All(t => !string.IsNullOrEmpty(t.Url)), Is.True);
+        }
+
+        [Test]
+        public async Task TrackProvider_Should_Report_Incomplete_When_Any_Provider_Is_Incomplete()
+        {
+            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object);
+
+            var podcastTracks = new List<Track> { _fakeTrackFactory.CreateTrackWithId(1) };
+
+            _podcastTrackProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(OfflineTracksResult.Complete(podcastTracks));
+            _trackCollectionProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(OfflineTracksResult.Complete(new List<Track>()));
+            _playlistProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(OfflineTracksResult.Complete(new List<Track>()));
+            _albumProvider
+                .Setup(x => x.GetTracksSupposedToBeDownloaded())
+                .ReturnsAsync(OfflineTracksResult.Incomplete(new List<Track>()));
+
+            var result = await globalTrackProvider.GetTracksSupposedToBeDownloaded();
+
+            Assert.That(result.IsComplete, Is.False);
+            Assert.That(result.Tracks.Count, Is.EqualTo(1), "the tracks that could be read are still returned");
         }
     }
 }
