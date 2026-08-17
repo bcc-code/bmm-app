@@ -6,6 +6,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Security;
 using BMM.Core.Implementations.Security.Oidc;
 using BMM.Core.Implementations.Security.Oidc.Interfaces;
+using BMM.Core.Models.App;
 using Moq;
 using MvvmCross.Plugin.Messenger;
 using NSubstitute;
@@ -16,6 +17,8 @@ namespace BMM.Core.Test.Unit.Implementations.Security
     [TestFixture]
     public class AccessTokenProviderTests
     {
+        private const string SomeAccessToken = "some.access.token";
+
         private AccessTokenProvider _provider;
         private Mock<IOidcCredentialsStorage> _mockStorage;
         private Mock<IOidcAuthService> _mockAuthService;
@@ -40,6 +43,9 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         {
             var timeInPast = DateTime.Now.AddHours(-2);
             _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(timeInPast);
+            // A token has to exist for its expiration date to be what decides whether we refresh.
+            // Without one the provider treats the state as expired regardless of the reader.
+            _mockStorage.Setup(x => x.GetAccessToken()).ReturnsAsync(SomeAccessToken);
 
             var _ = await _provider.GetAccessToken();
             const string failMessage = "The refresh should be called when the access token is expired";
@@ -51,6 +57,7 @@ namespace BMM.Core.Test.Unit.Implementations.Security
         {
             var timeInFuture = DateTime.UtcNow.AddHours(AccessTokenProvider.TimeToRefreshTokenBeforeExpirationInHours + 1);
             _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(timeInFuture);
+            _mockStorage.Setup(x => x.GetAccessToken()).ReturnsAsync(SomeAccessToken);
 
             var _ = await _provider.GetAccessToken();
             const string failMessage = "The refresh should not be called when the access token is not expired";
@@ -83,6 +90,37 @@ namespace BMM.Core.Test.Unit.Implementations.Security
             Assert.ThrowsAsync<InternetProblemsException>(async () => await _provider.GetAccessToken());
         }
         
+        [Test]
+        public async Task DoesNotAskTheReader_WhenThereIsNoToken()
+        {
+            _mockStorage.Setup(x => x.GetAccessToken()).ReturnsAsync((string)null);
+
+            await _provider.Initialize();
+
+            // Reading a null token throws in the real reader, which used to surface as a failed media
+            // or image request instead of as a refresh.
+            _mockJwtTokenReader.Verify(x => x.GetExpirationTime(It.IsAny<string>()), Times.Never);
+            Assert.AreEqual(DateTime.MinValue, _provider.GetTokenExpirationDate());
+            Assert.AreEqual(AccessTokenState.Expired, _provider.CheckAccessTokenState());
+        }
+
+        [Test]
+        public async Task ReadsTheExpirationDateOncePerToken_NotOncePerCall()
+        {
+            var timeInFuture = DateTime.UtcNow.AddHours(AccessTokenProvider.TimeToRefreshTokenBeforeExpirationInHours + 1);
+            _mockJwtTokenReader.Setup(x => x.GetExpirationTime(It.IsAny<string>())).Returns(timeInFuture);
+            _mockStorage.Setup(x => x.GetAccessToken()).ReturnsAsync(SomeAccessToken);
+
+            await _provider.Initialize();
+            await _provider.GetAccessToken();
+            await _provider.GetAccessToken();
+            await _provider.GetAccessToken();
+
+            // Parsing the JWT on every request is too expensive now that media and image requests
+            // also go through the token provider.
+            _mockJwtTokenReader.Verify(x => x.GetExpirationTime(It.IsAny<string>()), Times.Once);
+        }
+
         [Test]
         public async Task Returns_WhitespaceOrNull_When_Storage_HasNullValue()
         {

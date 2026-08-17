@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using BMM.Api;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
@@ -42,7 +43,8 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             return new TrackCollectionOfflineTrackProvider(
                 _client.Object,
                 _trackCollectionOfflineManager.Object,
-                _analytics.Object);
+                _analytics.Object,
+                Mock.Of<ILogger>());
         }
 
         [Test]
@@ -104,7 +106,7 @@ namespace BMM.Core.Test.Unit.Implementations.TrackCollections
             // Arrange
             _client.Setup(x => x.TrackCollection.GetById(3, It.IsAny<CachePolicy>())).Throws(new NotFoundException(new HttpRequestMessage(), new HttpResponseMessage()));
             _trackCollectionOfflineManager.Setup(x => x.GetOfflineTrackCollectionIds()).Returns(new Collection<int> {1, 2, 3});
-            var offlineTrackProvider = new TrackCollectionOfflineTrackProvider(_client.Object, _trackCollectionOfflineManager.Object, _analytics.Object);
+            var offlineTrackProvider = new TrackCollectionOfflineTrackProvider(_client.Object, _trackCollectionOfflineManager.Object, _analytics.Object, Mock.Of<ILogger>());
 
             // Act
             var response = (await offlineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;

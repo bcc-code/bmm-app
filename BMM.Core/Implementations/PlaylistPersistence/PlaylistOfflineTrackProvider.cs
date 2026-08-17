@@ -1,4 +1,5 @@
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
@@ -12,15 +13,18 @@ namespace BMM.Core.Implementations.PlaylistPersistence
         private readonly IOfflinePlaylistStorage _playlistStorage;
         private readonly IPlaylistClient _playlistClient;
         private readonly IAnalytics _analytics;
+        private readonly ILogger _logger;
 
         public PlaylistOfflineTrackProvider(
             IOfflinePlaylistStorage playlistStorage,
             IPlaylistClient playlistClient,
-            IAnalytics analytics)
+            IAnalytics analytics,
+            ILogger logger)
         {
             _playlistStorage = playlistStorage;
             _playlistClient = playlistClient;
             _analytics = analytics;
+            _logger = logger;
         }
 
         public async Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded()
@@ -63,10 +67,11 @@ namespace BMM.Core.Implementations.PlaylistPersistence
                 // Has to bubble up so the user is sent to the login screen.
                 throw;
             }
-            catch (Exception)
+            catch (Exception exception)
             {
                 // The playlist might still be there, we just couldn't read it. Saying so keeps its
                 // already downloaded tracks from being deleted as "no longer needed".
+                _logger.Error(GetType().Name, $"Could not read playlist {playlistId} while looking for tracks to download", exception);
                 return (Enumerable.Empty<Track>(), false);
             }
         }

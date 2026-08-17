@@ -1,5 +1,6 @@
 ﻿using BMM.Api;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Podcasts;
 using BMM.Core.Implementations.Storage;
@@ -41,7 +42,7 @@ namespace BMM.Core.Test.Unit.Implementations.Podcasts
             _client.Setup(x => x.Podcast.GetTracks(1, It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(_trackList));
             _client.Setup(x => x.Podcast.GetTracks(2, It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(GetTrackList(4)));
 
-            var podcastOfflineTrackProvider = new PodcastOfflineTrackProvider(_client.Object);
+            var podcastOfflineTrackProvider = new PodcastOfflineTrackProvider(_client.Object, Mock.Of<ILogger>());
 
             //Act
             var result = (await podcastOfflineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;
@@ -66,7 +67,8 @@ namespace BMM.Core.Test.Unit.Implementations.Podcasts
             _client.Setup(x => x.Podcast.GetTracks(2, It.IsAny<CachePolicy>(), It.IsAny<int>(), It.IsAny<int>())).Returns(Task.FromResult(GetTrackList(4)));
 
             var podcastOfflineTrackProvider = new PodcastOfflineTrackProvider(
-                _client.Object);
+                _client.Object,
+                Mock.Of<ILogger>());
 
             //Act
             var result = (await podcastOfflineTrackProvider.GetTracksSupposedToBeDownloaded()).Tracks;

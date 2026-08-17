@@ -189,13 +189,23 @@ namespace BMM.Core.Implementations.Downloading
                 return;
             }
 
-            var urlsOfTracksSupposedToBeDownloaded = tracksSupposedToBeDownloaded
+            var pathsOfMediaFiles = tracksSupposedToBeDownloaded
                 .Where(t => t.Media != null)
                 .SelectMany(t => t.Media)
                 .Where(m => m?.Files != null)
                 .SelectMany(m => m.Files)
-                .Select(f => _storageManager.SelectedStorage.GetUrlByFile(f))
+                .Select(f => _storageManager.SelectedStorage.GetUrlByFile(f));
+
+            // A track can carry a Url without exposing the Media it came from. Including the path the
+            // downloader itself would use makes sure such a track keeps its file instead of having it
+            // deleted below for not appearing in the list of files we still want.
+            var pathsOfTracks = tracksSupposedToBeDownloaded
+                .Select(t => _storageManager.SelectedStorage.GetUrlByFile((IDownloadable)t));
+
+            var urlsOfTracksSupposedToBeDownloaded = pathsOfMediaFiles
+                .Concat(pathsOfTracks)
                 .Where(path => path != null)
+                .Distinct()
                 .ToList();
 
             RemoveUnnecessaryTracks(currentlyDownloadedFilePaths, urlsOfTracksSupposedToBeDownloaded);

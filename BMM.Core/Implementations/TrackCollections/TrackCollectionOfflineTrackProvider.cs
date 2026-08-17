@@ -1,5 +1,6 @@
 ﻿using BMM.Api;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
@@ -12,14 +13,17 @@ namespace BMM.Core.Implementations.TrackCollections
         private readonly IBMMClient _client;
         private readonly IOfflineTrackCollectionStorage _trackCollectionStorage;
         private readonly IAnalytics _analytics;
+        private readonly ILogger _logger;
 
         public TrackCollectionOfflineTrackProvider(IBMMClient client,
             IOfflineTrackCollectionStorage trackCollectionStorage,
-            IAnalytics analytics)
+            IAnalytics analytics,
+            ILogger logger)
         {
             _client = client;
             _trackCollectionStorage = trackCollectionStorage;
             _analytics = analytics;
+            _logger = logger;
         }
 
         public async Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded()
@@ -49,11 +53,12 @@ namespace BMM.Core.Implementations.TrackCollections
                     // Has to bubble up so the user is sent to the login screen.
                     throw;
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
                     // The collection is still marked as offline, we just couldn't read it. Saying so keeps
                     // its already downloaded tracks from being deleted as "no longer needed".
                     isComplete = false;
+                    _logger.Error(GetType().Name, $"Could not read track collection {id} while looking for tracks to download", exception);
                 }
 
                 if (offlineTrackCollection != null)

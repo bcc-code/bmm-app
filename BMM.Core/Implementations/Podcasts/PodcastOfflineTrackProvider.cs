@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Akavache;
 using BMM.Api;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
@@ -18,10 +19,12 @@ namespace BMM.Core.Implementations.Podcasts
     public class PodcastOfflineTrackProvider : IPodcastOfflineTrackProvider
     {
         private readonly IBMMClient _client;
+        private readonly ILogger _logger;
 
-        public PodcastOfflineTrackProvider(IBMMClient client)
+        public PodcastOfflineTrackProvider(IBMMClient client, ILogger logger)
         {
             _client = client;
+            _logger = logger;
         }
 
         public async Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded()
@@ -50,11 +53,12 @@ namespace BMM.Core.Implementations.Podcasts
                     // Has to bubble up so the user is sent to the login screen.
                     throw;
                 }
-                catch (Exception)
+                catch (Exception exception)
                 {
                     // The podcast is still followed, we just couldn't read it. Saying so keeps its
                     // already downloaded episodes from being deleted as "no longer needed".
                     isComplete = false;
+                    _logger.Error(GetType().Name, $"Could not read podcast {podcastId} while looking for tracks to download", exception);
                 }
             }
 
