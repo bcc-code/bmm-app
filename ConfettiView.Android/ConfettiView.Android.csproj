@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net10.0-android</TargetFramework>
-        <TargetPlatformVersion>35</TargetPlatformVersion>
+        <TargetPlatformVersion>36</TargetPlatformVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <IsBindingProject>true</IsBindingProject>
