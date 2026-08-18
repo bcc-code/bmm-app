@@ -15,7 +15,7 @@ trigger:
 
 variables:
     - name: xcode_version
-      value: '26.0'
+      value: '26.6'
     - name: branchName
       value: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
     - group: 'AppleCertificate'
@@ -36,8 +36,16 @@ steps:
     displayName: 'Install MAUI iOS workload'
 
   - script: |
+      set -e
+      echo "Xcode versions available on this agent:"
+      ls -d /Applications/Xcode*.app
+      XCODE_PATH="/Applications/Xcode_${XCODE_VERSION}.app"
+      if [ ! -d "$XCODE_PATH" ]; then
+        echo "##vso[task.logissue type=error]Xcode $XCODE_VERSION not found. .NET for iOS pins a required Xcode version; pick one of the versions listed above and update the xcode_version variable."
+        exit 1
+      fi
       echo "Setting up Xcode $XCODE_VERSION"
-      sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
+      sudo xcode-select --switch "$XCODE_PATH/Contents/Developer"
       xcodebuild -version
     displayName: 'Select and verify Xcode version'
     
