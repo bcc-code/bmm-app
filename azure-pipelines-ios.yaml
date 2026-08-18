@@ -15,7 +15,7 @@ trigger:
 
 variables:
     - name: xcode_version
-      value: '26.6'
+      value: '26.3'
     - name: branchName
       value: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
     - group: 'AppleCertificate'
@@ -25,7 +25,7 @@ steps:
     displayName: 'Use .NET SDK 10'
     inputs:
       packageType: sdk
-      version: '10.x'
+      version: '10.0.303'
 
   - bash: |
       dotnet workload install ios
