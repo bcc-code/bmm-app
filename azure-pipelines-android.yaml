@@ -16,6 +16,12 @@ variables:
   branchName: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
   
 steps:
+  - task: UseDotNet@2
+    displayName: 'Use .NET SDK 10'
+    inputs:
+      packageType: sdk
+      version: '10.0.303'
+
   - bash: |
       dotnet workload install android
     displayName: 'Install Android workload'

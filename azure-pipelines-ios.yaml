@@ -15,12 +15,18 @@ trigger:
 
 variables:
     - name: xcode_version
-      value: '16.4'
+      value: '26.3'
     - name: branchName
       value: $[ replace(variables['Build.SourceBranch'], 'refs/heads/', '') ]
     - group: 'AppleCertificate'
 
 steps:
+  - task: UseDotNet@2
+    displayName: 'Use .NET SDK 10'
+    inputs:
+      packageType: sdk
+      version: '10.0.303'
+
   - bash: |
       dotnet workload install ios
     displayName: 'Install iOS workload'
@@ -30,8 +36,16 @@ steps:
     displayName: 'Install MAUI iOS workload'
 
   - script: |
+      set -e
+      echo "Xcode versions available on this agent:"
+      ls -d /Applications/Xcode*.app
+      XCODE_PATH="/Applications/Xcode_${XCODE_VERSION}.app"
+      if [ ! -d "$XCODE_PATH" ]; then
+        echo "##vso[task.logissue type=error]Xcode $XCODE_VERSION not found. .NET for iOS pins a required Xcode version; pick one of the versions listed above and update the xcode_version variable."
+        exit 1
+      fi
       echo "Setting up Xcode $XCODE_VERSION"
-      sudo xcode-select --switch /Applications/Xcode_${XCODE_VERSION}.app/Contents/Developer
+      sudo xcode-select --switch "$XCODE_PATH/Contents/Developer"
       xcodebuild -version
     displayName: 'Select and verify Xcode version'
     
@@ -52,13 +66,46 @@ steps:
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install an Apple provisioning profile for Distribution'
     inputs:
-      provProfileSecureFile: 'BMM_App_Provisioning_Profile.mobileprovision'
+      provProfileSecureFile: '$(ProvisioningProfileApp)'
 
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install an Apple provisioning profile for Distribution - Siri Intents Extension'
     inputs:
-      provProfileSecureFile: 'BMM_App_Siri_Intents_Provisioning_Profile.mobileprovision'
+      provProfileSecureFile: '$(ProvisioningProfileSiri)'
       
+  - bash: |
+      echo "=== Code signing identities in the keychain ==="
+      security find-identity -v -p codesigning || true
+
+      echo
+      echo "=== Certificates embedded in each installed provisioning profile ==="
+      python3 - <<'EOF'
+      import glob, hashlib, plistlib, subprocess, os
+
+      def fp(der):
+          h = hashlib.sha1(der).hexdigest().upper()
+          return ":".join(h[i:i+2] for i in range(0, len(h), 2))
+
+      profiles = glob.glob(os.path.expanduser(
+          "~/Library/MobileDevice/Provisioning Profiles/*.mobileprovision"))
+      if not profiles:
+          print("no provisioning profiles installed")
+      for path in profiles:
+          xml = subprocess.run(["security", "cms", "-D", "-i", path],
+                               capture_output=True).stdout
+          pl = plistlib.loads(xml)
+          print(f"\nProfile : {pl.get('Name')}")
+          print(f"  UUID    : {pl.get('UUID')}")
+          print(f"  Expires : {pl.get('ExpirationDate')}")
+          for cert in pl.get("DeveloperCertificates", []):
+              print(f"  Cert    : {fp(bytes(cert))}")
+      EOF
+
+      echo
+      echo "A profile is usable only if one of its Cert fingerprints matches an identity above."
+    displayName: 'Report signing identities and profile certificates'
+    continueOnError: true
+
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
     inputs:
@@ -175,7 +222,7 @@ steps:
   - task: ArchiveFiles@1
     displayName: 'Create dSYM archive with symbols '
     inputs:
-      rootFolder: 'BMM.UI.iOS/bin/iPhone/Release/net8.0-ios/ios-arm64/BMM.app.dSYM'
+      rootFolder: 'BMM.UI.iOS/bin/iPhone/Release/net10.0-ios/ios-arm64/BMM.app.dSYM'
       archiveFile: '$(Build.ArtifactStagingDirectory)/BMM.app.dSYM.zip'
 
   - task: CopyFiles@2
