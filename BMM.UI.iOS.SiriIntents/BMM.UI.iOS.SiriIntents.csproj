@@ -4,7 +4,7 @@
         <OutputType>Library</OutputType>
         <ApplicationId>BMM.UI.iOS.SiriIntents</ApplicationId>
         <Configurations>Debug;Release;UITests</Configurations>
-        <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
+        <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
         <Platforms>AnyCPU;iPhone;iPhoneSimulator</Platforms>
     </PropertyGroup>
     
