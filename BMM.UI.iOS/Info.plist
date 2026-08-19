@@ -111,6 +111,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>dark_green</string>
+                    <string>dark_green76x76</string>
+                    <string>dark_green83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -120,6 +122,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_violet</string>
+                    <string>icon_violet76x76</string>
+                    <string>icon_violet83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -129,6 +133,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_orange</string>
+                    <string>icon_orange76x76</string>
+                    <string>icon_orange83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -138,6 +144,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_red</string>
+                    <string>icon_red76x76</string>
+                    <string>icon_red83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -147,6 +155,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_golden</string>
+                    <string>icon_golden76x76</string>
+                    <string>icon_golden83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
