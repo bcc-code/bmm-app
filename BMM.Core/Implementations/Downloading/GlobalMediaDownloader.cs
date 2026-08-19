@@ -97,6 +97,10 @@ namespace BMM.Core.Implementations.Downloading
         private bool CheckIfDownloadableUrlIsInsideListOfPaths(IDownloadable downloadable, IEnumerable<string> listOfPaths)
         {
             var pathForDownloadable = _storageManager.SelectedStorage.GetUrlByFile(downloadable);
+
+            if (pathForDownloadable == null)
+                return false;
+
             return listOfPaths.Contains(pathForDownloadable);
         }
 
@@ -147,8 +151,8 @@ namespace BMM.Core.Implementations.Downloading
         private async Task UpdateOfflineTracks()
         {
             await UpdateHomescreen();
-            var tracksSupposedToBeDownloaded = (await _globalTrackProvider.GetTracksSupposedToBeDownloaded())
-                .ToList();
+            var offlineTracksResult = await _globalTrackProvider.GetTracksSupposedToBeDownloaded();
+            var tracksSupposedToBeDownloaded = offlineTracksResult.Tracks;
 
             var currentlyDownloadedFilePaths = _storageManager.SelectedStorage.PathsOfDownloadedFiles();
 
@@ -170,11 +174,38 @@ namespace BMM.Core.Implementations.Downloading
                 _downloadQueue.Enqueue(tracksToBeDownloaded);
                 _downloadQueue.StartDownloading();
             }
-            
-            var urlsOfTracksSupposedToBeDownloaded = tracksSupposedToBeDownloaded
+
+            // An incomplete list is indistinguishable from the user having unsubscribed from everything
+            // that is missing, so deleting on the basis of it would wipe downloads the user still wants.
+            if (!offlineTracksResult.IsComplete)
+            {
+                _analytics.LogEvent(
+                    "Skipped removing unnecessary tracks",
+                    new Dictionary<string, object>
+                    {
+                        {"reason", "At least one offline source could not be read"},
+                        {"NumberOfTracksInPodcastsAndPlaylistsFromLocalStorage", tracksSupposedToBeDownloaded.Count}
+                    });
+                return;
+            }
+
+            var pathsOfMediaFiles = tracksSupposedToBeDownloaded
+                .Where(t => t.Media != null)
                 .SelectMany(t => t.Media)
-                .SelectMany(t => t.Files)
-                .Select(t => _storageManager.SelectedStorage.GetUrlByFile(t))
+                .Where(m => m?.Files != null)
+                .SelectMany(m => m.Files)
+                .Select(f => _storageManager.SelectedStorage.GetUrlByFile(f));
+
+            // A track can carry a Url without exposing the Media it came from. Including the path the
+            // downloader itself would use makes sure such a track keeps its file instead of having it
+            // deleted below for not appearing in the list of files we still want.
+            var pathsOfTracks = tracksSupposedToBeDownloaded
+                .Select(t => _storageManager.SelectedStorage.GetUrlByFile((IDownloadable)t));
+
+            var urlsOfTracksSupposedToBeDownloaded = pathsOfMediaFiles
+                .Concat(pathsOfTracks)
+                .Where(path => path != null)
+                .Distinct()
                 .ToList();
 
             RemoveUnnecessaryTracks(currentlyDownloadedFilePaths, urlsOfTracksSupposedToBeDownloaded);

@@ -106,13 +106,24 @@ namespace BMM.UI.iOS
         public void DeleteFileByUrl(string url)
         {
             var path = PathByUrl(url);
+
+            if (path == null)
+                return;
+
             File.Delete(path);
             _analytics.LogEvent("deleted file", new Dictionary<string, object> {{"url", url}, {"path", path}});
         }
 
         private string PathByUrl(string url)
         {
+            if (string.IsNullOrEmpty(url))
+                return null;
+
             var lastPathComponent = new NSUrl(url).LastPathComponent;
+
+            if (string.IsNullOrEmpty(lastPathComponent))
+                return null;
+
             return System.IO.Path.Combine(Path, lastPathComponent);
         }
     }

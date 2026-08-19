@@ -1,8 +1,10 @@
 ﻿using BMM.Api;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Analytics;
+using BMM.Core.Implementations.Downloading;
 
 namespace BMM.Core.Implementations.TrackCollections
 {
@@ -11,20 +13,25 @@ namespace BMM.Core.Implementations.TrackCollections
         private readonly IBMMClient _client;
         private readonly IOfflineTrackCollectionStorage _trackCollectionStorage;
         private readonly IAnalytics _analytics;
+        private readonly ILogger _logger;
 
         public TrackCollectionOfflineTrackProvider(IBMMClient client,
             IOfflineTrackCollectionStorage trackCollectionStorage,
-            IAnalytics analytics)
+            IAnalytics analytics,
+            ILogger logger)
         {
             _client = client;
             _trackCollectionStorage = trackCollectionStorage;
             _analytics = analytics;
+            _logger = logger;
         }
 
-        public async Task<IList<Track>> GetTracksSupposedToBeDownloaded()
+        public async Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded()
         {
             var allOfflineTracksInTrackCollections = new List<Track>();
             var offlineTrackCollectionIds = _trackCollectionStorage.GetOfflineTrackCollectionIds().ToList();
+            bool isComplete = true;
+
             foreach (var id in offlineTrackCollectionIds)
             {
                 TrackCollection offlineTrackCollection = null;
@@ -41,6 +48,18 @@ namespace BMM.Core.Implementations.TrackCollections
                 {
                     await RemoveTrackCollectionAndLogAnalytics(id, "Unauthorized to access playlist");
                 }
+                catch (UnauthorizedException)
+                {
+                    // Has to bubble up so the user is sent to the login screen.
+                    throw;
+                }
+                catch (Exception exception)
+                {
+                    // The collection is still marked as offline, we just couldn't read it. Saying so keeps
+                    // its already downloaded tracks from being deleted as "no longer needed".
+                    isComplete = false;
+                    _logger.Error(GetType().Name, $"Could not read track collection {id} while looking for tracks to download", exception);
+                }
 
                 if (offlineTrackCollection != null)
                 {
@@ -49,7 +68,9 @@ namespace BMM.Core.Implementations.TrackCollections
                 }
             }
 
-            return allOfflineTracksInTrackCollections;
+            return isComplete
+                ? OfflineTracksResult.Complete(allOfflineTracksInTrackCollections)
+                : OfflineTracksResult.Incomplete(allOfflineTracksInTrackCollections);
         }
 
         private async Task<TrackCollection> GetTrackCollection(int trackCollectionId)

@@ -6,6 +6,6 @@ namespace BMM.Core.Implementations.Downloading
 {
     public interface IGlobalTrackProvider
     {
-        Task<IEnumerable<Track>> GetTracksSupposedToBeDownloaded();
+        Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded();
     }
 }
