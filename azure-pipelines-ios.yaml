@@ -73,6 +73,39 @@ steps:
     inputs:
       provProfileSecureFile: 'BMM_App_Siri_Intents_Provisioning_Profile.mobileprovision'
       
+  - bash: |
+      echo "=== Code signing identities in the keychain ==="
+      security find-identity -v -p codesigning || true
+
+      echo
+      echo "=== Certificates embedded in each installed provisioning profile ==="
+      python3 - <<'EOF'
+      import glob, hashlib, plistlib, subprocess, os
+
+      def fp(der):
+          h = hashlib.sha1(der).hexdigest().upper()
+          return ":".join(h[i:i+2] for i in range(0, len(h), 2))
+
+      profiles = glob.glob(os.path.expanduser(
+          "~/Library/MobileDevice/Provisioning Profiles/*.mobileprovision"))
+      if not profiles:
+          print("no provisioning profiles installed")
+      for path in profiles:
+          xml = subprocess.run(["security", "cms", "-D", "-i", path],
+                               capture_output=True).stdout
+          pl = plistlib.loads(xml)
+          print(f"\nProfile : {pl.get('Name')}")
+          print(f"  UUID    : {pl.get('UUID')}")
+          print(f"  Expires : {pl.get('ExpirationDate')}")
+          for cert in pl.get("DeveloperCertificates", []):
+              print(f"  Cert    : {fp(bytes(cert))}")
+      EOF
+
+      echo
+      echo "A profile is usable only if one of its Cert fingerprints matches an identity above."
+    displayName: 'Report signing identities and profile certificates'
+    continueOnError: true
+
   - task: qetza.replacetokens.replacetokens-task.replacetokens@3
     displayName: 'Replace tokens in **/GlobalConstants.cs **/TestSecrets.cs'
     inputs:
