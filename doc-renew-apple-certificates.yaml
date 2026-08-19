@@ -28,6 +28,10 @@
     - "ios_distribution.cer"
     - the p12 file and the p12 private key
     - the two .mobileprovision files
+- Update the certificate name in the repository
+  - the certificate's common name is hardcoded as <CodesignKey> in BMM.UI.iOS/BMM.UI.iOS.csproj and BMM.UI.iOS.SiriIntents/BMM.UI.iOS.SiriIntents.csproj (Release|iPhone and UITests|iPhone)
+  - check the exact name in Keychain Access, or run "security find-identity -v -p codesigning"
+  - it must match character for character. Certificates created as "Apple Distribution" are named "Apple Distribution: ...", while the older "iOS Distribution" type is named "iPhone Distribution: ...". Picking the other type in the portal changes this string and the build fails with "code signing key ... not found in keychain".
 - Update the build pipeline
   - go to [Library -> Secure files](https://dev.azure.com/bcc-its/BMM/_library?itemType=SecureFiles) and upload
   - "BMM_Distribution_Certificate_2025.p12" (NOT the private key)
