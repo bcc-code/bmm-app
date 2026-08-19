@@ -18,7 +18,7 @@
   - Create a new provisioning profile (Distribution - App Store Connect)
   - select "VS org brunstad bmm" as App id
   - select the newly created certificate
-  - enter "BMM App Provisioning Profile" as name
+  - enter "org.brunstad.bmm AppStore" as name
   - (keep this name exactly, without the year. It is the profile name, not the filename, and it is referenced as <CodesignProvision> in the .csproj. The filename you upload to Secure Files is free to carry the year, see below.)
   - Create new provisioning profile for Siri Intents (Distribution - App Store Connect)
   - select "Siri Intents for BMM" as App id

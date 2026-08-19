@@ -70,7 +70,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <CodesignKey>Apple Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
-    <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
+    <CodesignProvision>org.brunstad.bmm AppStore</CodesignProvision>
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;UI_TESTS</DefineConstants>
     <MtouchLink>None</MtouchLink>
@@ -103,7 +103,7 @@
     <Optimize>true</Optimize>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>Apple Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
-    <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
+    <CodesignProvision>org.brunstad.bmm AppStore</CodesignProvision>
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
