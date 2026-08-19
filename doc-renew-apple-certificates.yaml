@@ -19,7 +19,7 @@
   - select "VS org brunstad bmm" as App id
   - select the newly created certificate
   - enter "BMM App Provisioning Profile" as name
-  - (we don't want the year in the name because the file is referenced in the .csproj. If the filename changed, we'd need to update parts in our git repository. Now we only need to upload it to Azure DevOps.)
+  - (keep this name exactly, without the year. It is the profile name, not the filename, and it is referenced as <CodesignProvision> in the .csproj. The filename you upload to Secure Files is free to carry the year, see below.)
   - Create new provisioning profile for Siri Intents (Distribution - App Store Connect)
   - select "Siri Intents for BMM" as App id
   - select the newly created certificate
@@ -35,8 +35,9 @@
 - Update the build pipeline
   - go to [Library -> Secure files](https://dev.azure.com/bcc-its/BMM/_library?itemType=SecureFiles) and upload
   - "BMM_Distribution_Certificate_2025.p12" (NOT the private key)
-  - rename "BMM_App_Provisioning_Profile.mobileprovision" & "BMM_App_Siri_Intents_Provisioning_Profile.mobileprovision" to make room to upload the new version 
-  - upload "BMM_App_Provisioning_Profile.mobileprovision" & "BMM_App_Siri_Intents_Provisioning_Profile.mobileprovision"
+  - upload the two .mobileprovision files. Give them names that include the year, e.g. "BMM_App_Provisioning_Profile_2025.mobileprovision" & "BMM_App_Siri_Intents_Provisioning_Profile_2025.mobileprovision", so the old entries can stay untouched and you can roll back by pointing the variables at them again.
   - go to [Library -> Variable groups -> Apple Certificate](https://dev.azure.com/bcc-its/BMM/_library?itemType=VariableGroups&view=VariableGroupView&variableGroupId=140&path=AppleCertificate) and update the filenames and password
+    - P12File, ProvisioningProfileApp and ProvisioningProfileSiri hold the Secure Files names. The pipeline reads all three from here, so renewing files never requires a repository change.
+    - the profiles must be regenerated whenever the certificate is replaced. A profile embeds the certificate it was created against, and the build fails with "No iOS signing identities match the specified provisioning profile" if the two do not agree. Replacing the p12 alone is not enough.
     - you might need to delete the password and recreate it (not sure if it's necessary. Please try and update these instructions)
   - the next time the build runs, it will wait for you to give it permission to access the newly uploaded files. Therefore it might make sense to start a new build and do it right away.

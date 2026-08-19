@@ -66,12 +66,12 @@ steps:
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install an Apple provisioning profile for Distribution'
     inputs:
-      provProfileSecureFile: 'BMM_App_Provisioning_Profile.mobileprovision'
+      provProfileSecureFile: '$(ProvisioningProfileApp)'
 
   - task: InstallAppleProvisioningProfile@1
     displayName: 'Install an Apple provisioning profile for Distribution - Siri Intents Extension'
     inputs:
-      provProfileSecureFile: 'BMM_App_Siri_Intents_Provisioning_Profile.mobileprovision'
+      provProfileSecureFile: '$(ProvisioningProfileSiri)'
       
   - bash: |
       echo "=== Code signing identities in the keychain ==="
