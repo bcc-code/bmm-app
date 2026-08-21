@@ -13,8 +13,6 @@ namespace BMM.UI.iOS
 {
     public abstract class BaseViewController<TViewModel> : MvxViewController<TViewModel>, IBaseViewController where TViewModel : BaseViewModel
     {
-        private bool SupportsNavigationBarSeparator => UIDevice.CurrentDevice.CheckSystemVersion(14, 0);
-
         public BaseViewController(string nib)
             : base(nib, null)
         { }
@@ -37,25 +35,7 @@ namespace BMM.UI.iOS
 
         protected virtual void SetNavigationBarAppearance()
         {
-            if (NavigationController?.NavigationBar == null || !UIDevice.CurrentDevice.CheckSystemVersion(13, 0))
-                return;
-
-            var appearance = new UINavigationBarAppearance();
-            appearance.ConfigureWithOpaqueBackground();
-            appearance.BackgroundColor = AppColors.BackgroundOneColor;
-            appearance.TitleTextAttributes = new UIStringAttributes
-            {
-                ForegroundColor = AppColors.LabelOneColor
-            };
-            
-            appearance.ShadowColor = SupportsNavigationBarSeparator
-                ? AppColors.SeparatorColor
-                : UIColor.Clear;
-            
-            NavigationController.NavigationBar.StandardAppearance = appearance;
-            
-            appearance.ShadowColor = UIColor.Clear;
-            NavigationController.NavigationBar.ScrollEdgeAppearance = appearance;
+            NavigationController?.NavigationBar?.ApplyBmmAppearance();
         }
 
         private void SetupLargeTitle()
@@ -64,7 +44,6 @@ namespace BMM.UI.iOS
             {
                 NavigationItem.LargeTitleDisplayMode = UINavigationItemLargeTitleDisplayMode.Always;
                 NavigationController.NavigationBar.PrefersLargeTitles = true;
-                NavigationController.NavigationBar.SizeToFit();
             }
             else
             {
