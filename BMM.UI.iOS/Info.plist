@@ -9,6 +9,13 @@
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>org.brunstad.bmm</string>
+	<!-- Opts out of the iOS 26 Liquid Glass design. Under Liquid Glass, UIKit tears the large title
+	     label out of the navigation bar on the first scroll-driven collapse and never rebuilds it, so
+	     every PrefersLargeTitles screen ends up with an empty heading area. Reproducible in a plain
+	     UIKit app, so it is not caused by our view hierarchy. Apple intends to remove this key in a
+	     future SDK; at that point the large titles need to become in-content headings instead. -->
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UIDeviceFamily</key>
