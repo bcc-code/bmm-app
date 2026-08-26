@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using Akavache;
 using BMM.Api;
 using BMM.Api.Abstraction;
+using BMM.Api.Framework;
 using BMM.Api.Framework.Exceptions;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Helpers;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Storage;
 
 namespace BMM.Core.Implementations.Podcasts
@@ -17,16 +19,20 @@ namespace BMM.Core.Implementations.Podcasts
     public class PodcastOfflineTrackProvider : IPodcastOfflineTrackProvider
     {
         private readonly IBMMClient _client;
+        private readonly ILogger _logger;
 
-        public PodcastOfflineTrackProvider(IBMMClient client)
+        public PodcastOfflineTrackProvider(IBMMClient client, ILogger logger)
         {
             _client = client;
+            _logger = logger;
         }
 
-        public async Task<IList<Track>> GetTracksSupposedToBeDownloaded()
+        public async Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded()
         {
             var followedPodcasts = await GetFollowedPodcasts();
             var tracks = new List<Track>();
+            bool isComplete = true;
+
             foreach (var podcastId in followedPodcasts)
             {
                 var automaticallyDownloadedTracks = await GetNumberOfTracksToAutomaticallyDownload(podcastId);
@@ -42,9 +48,23 @@ namespace BMM.Core.Implementations.Podcasts
                 {
                     await SaveFollowedPodcast(followedPodcasts.Except(new []{podcastId}));
                 }
+                catch (UnauthorizedException)
+                {
+                    // Has to bubble up so the user is sent to the login screen.
+                    throw;
+                }
+                catch (Exception exception)
+                {
+                    // The podcast is still followed, we just couldn't read it. Saying so keeps its
+                    // already downloaded episodes from being deleted as "no longer needed".
+                    isComplete = false;
+                    _logger.Error(GetType().Name, $"Could not read podcast {podcastId} while looking for tracks to download", exception);
+                }
             }
 
-            return tracks;
+            return isComplete
+                ? OfflineTracksResult.Complete(tracks)
+                : OfflineTracksResult.Incomplete(tracks);
         }
 
         private async Task<int> GetNumberOfTracksToAutomaticallyDownload(int podcastId)

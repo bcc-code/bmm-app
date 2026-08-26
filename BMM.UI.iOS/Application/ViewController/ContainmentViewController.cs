@@ -104,10 +104,15 @@ namespace BMM.UI.iOS
 
         private void SetContent(UIView view)
         {
-            // Set the bounds and frame to what we have in the ContentView. This sets the UIView to the same size-settings, the content-view has.
-            view.Frame = ContentView.Frame;
-
+            // The view has to be pinned with constraints instead of a one-time frame copy. Otherwise its geometry
+            // never tracks the ContentView, which breaks the large title of the enclosed navigation controller on iOS 26.
+            view.TranslatesAutoresizingMaskIntoConstraints = false;
             ContentView.AddSubview(view);
+
+            view.TopAnchor.ConstraintEqualTo(ContentView.TopAnchor).Active = true;
+            view.LeadingAnchor.ConstraintEqualTo(ContentView.LeadingAnchor).Active = true;
+            view.TrailingAnchor.ConstraintEqualTo(ContentView.TrailingAnchor).Active = true;
+            view.BottomAnchor.ConstraintEqualTo(ContentView.BottomAnchor).Active = true;
         }
 
         private void SetMiniPlayerView(UIView view)

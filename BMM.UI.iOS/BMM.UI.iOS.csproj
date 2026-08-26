@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-      <TargetFramework>net8.0-ios</TargetFramework>
+      <TargetFramework>net10.0-ios</TargetFramework>
       <OutputType>Exe</OutputType>
       <Nullable>disable</Nullable>
       <ImplicitUsings>true</ImplicitUsings>
@@ -69,8 +69,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'UITests|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <CodesignKey>iPhone Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
-    <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
+    <CodesignKey>Apple Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
+    <CodesignProvision>org.brunstad.bmm AppStore</CodesignProvision>
     <Optimize>false</Optimize>
     <DefineConstants>DEBUG;ENABLE_TEST_CLOUD;UI_TESTS</DefineConstants>
     <MtouchLink>None</MtouchLink>
@@ -102,8 +102,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
-    <CodesignProvision>BMM App Provisioning Profile</CodesignProvision>
+    <CodesignKey>Apple Distribution: BCC Media STI (6734NUF6AV)</CodesignKey>
+    <CodesignProvision>org.brunstad.bmm AppStore</CodesignProvision>
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

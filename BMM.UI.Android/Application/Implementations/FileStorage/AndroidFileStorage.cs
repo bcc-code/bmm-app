@@ -68,6 +68,10 @@ namespace BMM.UI.Droid.Application.Implementations.FileStorage
         public bool IsDownloaded(IDownloadable downloadable)
         {
             var path = PathByUrl(downloadable.Url);
+
+            if (path == null)
+                return false;
+
             var isDownloading = Mvx.IoCProvider.Resolve<IDownloadQueue>().IsDownloading(downloadable);
 
             return File.Exists(path) && !isDownloading;
@@ -101,13 +105,23 @@ namespace BMM.UI.Droid.Application.Implementations.FileStorage
         public void DeleteFileByUrl(string url)
         {
             var path = PathByUrl(url);
+
+            if (path == null)
+                return;
+
             File.Delete(path);
             _analytics.LogEvent("deleted file", new Dictionary<string, object> {{"url", url}, {"path", path}});
         }
 
         private string PathByUrl(string url)
         {
-            string fileName = Android.Net.Uri.Parse(url).Path.Split('/').Last();
+            if (string.IsNullOrEmpty(url))
+                return null;
+
+            string fileName = Android.Net.Uri.Parse(url)?.Path?.Split('/').Last();
+
+            if (string.IsNullOrEmpty(fileName))
+                return null;
 
             return System.IO.Path.Combine(Path, fileName);
         }

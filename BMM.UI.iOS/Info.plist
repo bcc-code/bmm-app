@@ -9,6 +9,13 @@
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>org.brunstad.bmm</string>
+	<!-- Opts out of the iOS 26 Liquid Glass design. Under Liquid Glass, UIKit tears the large title
+	     label out of the navigation bar on the first scroll-driven collapse and never rebuilds it, so
+	     every PrefersLargeTitles screen ends up with an empty heading area. Reproducible in a plain
+	     UIKit app, so it is not caused by our view hierarchy. Apple intends to remove this key in a
+	     future SDK; at that point the large titles need to become in-content headings instead. -->
+	<key>UIDesignRequiresCompatibility</key>
+	<true/>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UIDeviceFamily</key>
@@ -111,6 +118,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>dark_green</string>
+                    <string>dark_green76x76</string>
+                    <string>dark_green83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -120,6 +129,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_violet</string>
+                    <string>icon_violet76x76</string>
+                    <string>icon_violet83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -129,6 +140,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_orange</string>
+                    <string>icon_orange76x76</string>
+                    <string>icon_orange83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -138,6 +151,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_red</string>
+                    <string>icon_red76x76</string>
+                    <string>icon_red83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>
@@ -147,6 +162,8 @@
                 <key>CFBundleIconFiles</key>
                 <array>
                     <string>icon_golden</string>
+                    <string>icon_golden76x76</string>
+                    <string>icon_golden83.5x83.5</string>
                 </array>
                 <key>UIPrerenderedIcon</key>
                 <false/>

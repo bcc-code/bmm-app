@@ -40,7 +40,23 @@ namespace BMM.Core.Implementations.Security
             });
         }
 
-        public string AccessToken { get; private set; }
+        private string _accessToken;
+        private DateTime _accessTokenExpiration = DateTime.MinValue;
+
+        /// <summary>
+        /// Reading the expiration date means parsing the JWT, which is far too expensive to do on every
+        /// request now that media and image requests ask for the token as well. The token only changes
+        /// when it is set, so the expiration date is worked out here and cached alongside it.
+        /// </summary>
+        public string AccessToken
+        {
+            get => _accessToken;
+            private set
+            {
+                _accessToken = value;
+                _accessTokenExpiration = ReadExpirationDate(value);
+            }
+        }
 
         public AccessTokenState CheckAccessTokenState()
         {
@@ -85,7 +101,28 @@ namespace BMM.Core.Implementations.Security
             }
         }
 
-        public DateTime GetTokenExpirationDate() => _jwtTokenReader.GetExpirationTime(AccessToken);
+        public DateTime GetTokenExpirationDate() => _accessTokenExpiration;
+
+        /// <summary>
+        /// A missing or unreadable token counts as expired, so callers go and fetch a real one. Without
+        /// this the JWT reader throws on a null token, which would surface as a failed media or image
+        /// request rather than as a token refresh.
+        /// </summary>
+        private DateTime ReadExpirationDate(string accessToken)
+        {
+            if (string.IsNullOrEmpty(accessToken))
+                return DateTime.MinValue;
+
+            try
+            {
+                return _jwtTokenReader.GetExpirationTime(accessToken);
+            }
+            catch (Exception ex)
+            {
+                _logger.Warn(GetType().Name, $"Could not read the expiration date of the access token, treating it as expired. {ex.Message}");
+                return DateTime.MinValue;
+            }
+        }
 
         private async Task RefreshAccessToken()
         {

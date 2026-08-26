@@ -1,7 +1,6 @@
 ﻿using System;
 using BMM.UI.iOS.Constants;
 using BMM.UI.iOS.Extensions;
-using BMM.UI.iOS.NewMediaPlayer;
 using MvvmCross.Platforms.Ios.Views;
 using UIKit;
 
@@ -27,27 +26,8 @@ namespace BMM.UI.iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            if (VersionHelper.SupportsBarAppearanceProxy)
-            {
-                var standardAppearance = new UINavigationBarAppearance
-                {
-                    BackgroundColor = UIColor.White.ColorWithAlpha(0.7f),
-                    BackgroundEffect = UIBlurEffect.FromStyle(UIBlurEffectStyle.Light),
-                };
-
-                var scrollEdgeAppearance = standardAppearance.Copy() as UINavigationBarAppearance;
-                scrollEdgeAppearance.ShadowColor = UIColor.Clear;
-                NavigationBar.StandardAppearance = standardAppearance;
-                NavigationBar.ScrollEdgeAppearance = scrollEdgeAppearance;
-            }
-            else
-            {
-                NavigationBar.BarTintColor = UIColor.White.ColorWithAlpha(0.1f);
-                NavigationBar.ShadowImage = new UIImage();
-            }
-
+            NavigationBar.ApplyBmmAppearance();
             NavigationBar.TintColor = AppColors.TintColor;
-            NavigationBar.Translucent = true;
         }
 
         public override UIInterfaceOrientation PreferredInterfaceOrientationForPresentation()

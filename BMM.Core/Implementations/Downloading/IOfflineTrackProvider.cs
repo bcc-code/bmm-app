@@ -4,5 +4,5 @@ namespace BMM.Core.Implementations.Downloading;
 
 public interface IOfflineTrackProvider
 {
-    Task<IList<Track>> GetTracksSupposedToBeDownloaded();
+    Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded();
 }

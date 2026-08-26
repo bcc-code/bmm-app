@@ -27,17 +27,28 @@ namespace BMM.Core.Implementations.Downloading
             _albumOfflineTrackProvider = albumOfflineTrackProvider;
         }
         
-        public async Task<IEnumerable<Track>> GetTracksSupposedToBeDownloaded()
+        public async Task<OfflineTracksResult> GetTracksSupposedToBeDownloaded()
         {
             var podcastTracksSupposedToBeDownloaded = await _podcastOfflineTrackProvider.GetTracksSupposedToBeDownloaded();
             var collectionTracksSupposedToBeDownloaded = await _trackCollectionOfflineTrackProvider.GetTracksSupposedToBeDownloaded();
             var playlistsSupposedToBeDownloaded = await _playlistOfflineTrackProvider.GetTracksSupposedToBeDownloaded();
             var albumsSupposedToBeDownloaded = await _albumOfflineTrackProvider.GetTracksSupposedToBeDownloaded();
 
-            return podcastTracksSupposedToBeDownloaded
-                .Union(collectionTracksSupposedToBeDownloaded, _trackEqualityComparer)
-                .Union(playlistsSupposedToBeDownloaded, _trackEqualityComparer)
-                .Union(albumsSupposedToBeDownloaded, _trackEqualityComparer);
+            var tracks = podcastTracksSupposedToBeDownloaded.Tracks
+                .Union(collectionTracksSupposedToBeDownloaded.Tracks, _trackEqualityComparer)
+                .Union(playlistsSupposedToBeDownloaded.Tracks, _trackEqualityComparer)
+                .Union(albumsSupposedToBeDownloaded.Tracks, _trackEqualityComparer)
+                .Where(track => !string.IsNullOrEmpty(track.Url))
+                .ToList();
+
+            bool isComplete = podcastTracksSupposedToBeDownloaded.IsComplete
+                              && collectionTracksSupposedToBeDownloaded.IsComplete
+                              && playlistsSupposedToBeDownloaded.IsComplete
+                              && albumsSupposedToBeDownloaded.IsComplete;
+
+            return isComplete
+                ? OfflineTracksResult.Complete(tracks)
+                : OfflineTracksResult.Incomplete(tracks);
         }
     }
 }
