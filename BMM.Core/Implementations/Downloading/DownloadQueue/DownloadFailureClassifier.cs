@@ -41,6 +41,12 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
 
                 DownloadHttpStatusException statusException => ClassifyStatusCode(statusException.StatusCode),
 
+                // Platform downloaders do not fail with framework exception types. iOS reports an NSError
+                // instead, so it has to tell us itself whether the network was at fault.
+                IConnectionAwareDownloadException platformException => platformException.WasConnectionFailure
+                    ? DownloadOutcome.ConnectionFailure
+                    : DownloadOutcome.PermanentFailure,
+
                 _ => IsConnectionFailure(exception.InnerException, cancellationWasRequested)
                     ? DownloadOutcome.ConnectionFailure
                     : DownloadOutcome.PermanentFailure
