@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableTint="@color/label_one_color"
-                app:MvxBind="Click ToggleOfflineCommand; Visibility InvertedVisibility(IsOfflineAvailable)"/>
+                app:MvxBind="Click ToggleOfflineCommand; Visibility Visibility(ShowDownloadButton)"/>
         <ProgressBar
                 android:layout_width="40dp"
                 android:layout_height="40dp"

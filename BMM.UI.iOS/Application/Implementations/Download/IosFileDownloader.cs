@@ -129,13 +129,21 @@ namespace BMM.UI.iOS.Implementations.Download
         // Todo #20112 remove logging after resolving the issue
         private void RecoverFromCorruptFile(NSUrl localPath, IDownloadable originalDownloadable, out NSError error)
         {
-            _fileManager.Remove(localPath, out error);
+            _fileManager.Remove(localPath, out _);
             _analytics.LogEvent("Downloaded file is corrupted",
                 new Dictionary<string, object>
                 {
                     {"trackId", originalDownloadable.Id}
                 });
-            error = null;
+
+            // Report the corruption rather than handing back a null error. The caller treats this as a
+            // failed download either way, and a null error left the reason unreportable.
+            error = new NSError(
+                new NSString("BmmDownloadErrorDomain"),
+                1,
+                NSDictionary.FromObjectAndKey(
+                    new NSString($"The downloaded file for track {originalDownloadable.Id} was corrupt and has been removed"),
+                    NSError.LocalizedDescriptionKey));
         }
     }
 }

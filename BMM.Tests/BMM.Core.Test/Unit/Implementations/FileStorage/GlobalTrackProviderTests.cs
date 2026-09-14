@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using BMM.Api.Implementation.Models;
 using BMM.Core.Implementations.Albums.Interfaces;
+using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.Podcasts;
@@ -19,6 +20,7 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
         private Mock<ITrackCollectionOfflineTrackProvider> _trackCollectionProvider;
         private Mock<IPlaylistOfflineTrackProvider> _playlistProvider;
         private Mock<IAlbumOfflineTrackProvider> _albumProvider;
+        private Mock<IAnalytics> _analytics;
         private readonly FakeTrackFactory _fakeTrackFactory = new FakeTrackFactory();
 
         [SetUp]
@@ -28,12 +30,13 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
             _trackCollectionProvider = new Mock<ITrackCollectionOfflineTrackProvider>();
             _playlistProvider = new Mock<IPlaylistOfflineTrackProvider>();
             _albumProvider = new Mock<IAlbumOfflineTrackProvider>();
+            _analytics = new Mock<IAnalytics>();
         }
 
         [Test]
         public async Task TrackProvider_Should_Combine_Tracks_From_Providers()
         {
-            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object);
+            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object, _analytics.Object);
 
             var podcastTracks = new List<Track>
             {
@@ -82,7 +85,7 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
         [Test]
         public async Task TrackProvider_Should_Filter_Out_Tracks_With_Null_Url()
         {
-            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object);
+            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object, _analytics.Object);
 
             var tracks = new List<Track>
             {
@@ -114,7 +117,7 @@ namespace BMM.Core.Test.Unit.Implementations.FileStorage
         [Test]
         public async Task TrackProvider_Should_Report_Incomplete_When_Any_Provider_Is_Incomplete()
         {
-            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object);
+            var globalTrackProvider = new GlobalTrackProvider(_podcastTrackProvider.Object, _trackCollectionProvider.Object, _playlistProvider.Object, _albumProvider.Object, _analytics.Object);
 
             var podcastTracks = new List<Track> { _fakeTrackFactory.CreateTrackWithId(1) };
 

@@ -146,9 +146,13 @@ namespace BMM.Core.ViewModels
         {
             long sum = Documents
                 .OfType<TrackPO>()
-                .Sum(x => x.Track.Media.Sum(t => t.Files.Sum(s => s.Size)));
+                .Select(x => x.Track)
+                .SumApproximateDownloadSize();
             return Task.FromResult(sum);
         }
+
+        protected override IEnumerable<IDownloadable> DownloadableTracks
+            => Documents.OfType<TrackPO>().Select(x => x.Track).WhereDownloadable();
 
         public override async Task Load()
         {

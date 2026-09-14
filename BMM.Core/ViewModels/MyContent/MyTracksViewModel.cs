@@ -148,8 +148,11 @@ namespace BMM.Core.ViewModels.MyContent
 
         protected override Task<long> CalculateApproximateDownloadSize()
         {
-            return Task.FromResult(MyCollection.Tracks.Sum(x => x.Media.Sum(t => t.Files.Sum(s => s.Size))));
+            return Task.FromResult(MyCollection?.Tracks.SumApproximateDownloadSize() ?? 0);
         }
+
+        protected override IEnumerable<IDownloadable> DownloadableTracks
+            => MyCollection?.Tracks.WhereDownloadable() ?? Enumerable.Empty<Track>();
 
         public override CacheKeys? CacheKey => CacheKeys.TrackCollectionGetById;
 
