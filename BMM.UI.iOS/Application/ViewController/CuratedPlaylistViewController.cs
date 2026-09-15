@@ -63,7 +63,8 @@ namespace BMM.UI.iOS
             set.Bind(DownloadButton).For(v => v.IsDownloaded).To(vm => vm.IsDownloaded);
             set.Bind(DownloadButton).For(v => v.DownloadProgress).To(vm => vm.DownloadStatus);
             
-            set.Bind(DurationLabel).To(vm => vm.DurationLabel);
+            // Carries the duration plus, when there is one, the reason a download did not finish.
+            set.Bind(DurationLabel).To(vm => vm.HeaderSubtitle);
 
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);

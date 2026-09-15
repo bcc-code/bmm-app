@@ -9,6 +9,7 @@ using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.Tracklist.Interfaces;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
@@ -34,7 +35,9 @@ namespace BMM.Core.ViewModels
             IDownloadQueue downloadQueue,
             INetworkSettings networkSettings,
             IAddToMyPlaylistAction addToMyPlaylistAction,
-            ITrackPOFactory trackPOFactory)
+            ITrackPOFactory trackPOFactory,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger)
             : base(
                 storageManager,
                 documentFilter,
@@ -42,7 +45,9 @@ namespace BMM.Core.ViewModels
                 connection,
                 downloadQueue,
                 networkSettings,
-                trackPOFactory)
+                trackPOFactory,
+                unavailableTracks,
+                logger)
         {
             _addToMyPlaylistAction = addToMyPlaylistAction;
             _addToMyPlaylistAction.AttachDataContext(this);

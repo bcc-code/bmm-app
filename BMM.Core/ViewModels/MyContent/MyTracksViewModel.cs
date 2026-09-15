@@ -9,6 +9,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
@@ -35,8 +36,10 @@ namespace BMM.Core.ViewModels.MyContent
             IDownloadQueue downloadQueue,
             IConnection connection,
             INetworkSettings networkSettings,
-            ITrackPOFactory trackPOFactory)
-            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
+            ITrackPOFactory trackPOFactory,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger)
+            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings, unavailableTracks, logger)
         {
             _trackCollectionManager = trackCollectionManager;
             TrackPOFactory = trackPOFactory;
@@ -148,8 +151,11 @@ namespace BMM.Core.ViewModels.MyContent
 
         protected override Task<long> CalculateApproximateDownloadSize()
         {
-            return Task.FromResult(MyCollection.Tracks.Sum(x => x.Media.Sum(t => t.Files.Sum(s => s.Size))));
+            return Task.FromResult(MyCollection?.Tracks.SumApproximateDownloadSize() ?? 0);
         }
+
+        protected override IEnumerable<IDownloadable> DownloadableTracks
+            => MyCollection?.Tracks.WhereDownloadable() ?? Enumerable.Empty<Track>();
 
         public override CacheKeys? CacheKey => CacheKeys.TrackCollectionGetById;
 

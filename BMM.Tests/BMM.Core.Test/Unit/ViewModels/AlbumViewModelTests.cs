@@ -6,6 +6,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Albums.Interfaces;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.FileStorage;
@@ -37,7 +38,9 @@ namespace BMM.Core.Test.Unit.ViewModels
                 new Mock<INetworkSettings>().Object,
                 new Mock<IAlbumManager>().Object,
                 new Mock<IOfflineAlbumStorage>().Object,
-                new Mock<IFirebaseRemoteConfig>().Object);
+                new Mock<IFirebaseRemoteConfig>().Object,
+                new Mock<IUnavailableTrackRegistry>().Object,
+                new Mock<ILogger>().Object);
 
             // Act
             await album.LoadItems();
