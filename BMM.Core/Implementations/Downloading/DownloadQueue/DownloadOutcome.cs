@@ -23,6 +23,12 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
         /// <summary>
         /// The download was cancelled deliberately (user interaction, app shutdown).
         /// </summary>
-        Cancelled
+        Cancelled,
+
+        /// <summary>
+        /// The device has run out of storage. Like a connection failure the remaining items are kept, but
+        /// retrying is pointless until the user frees something up, so the queue must not spin on it.
+        /// </summary>
+        OutOfSpace
     }
 }

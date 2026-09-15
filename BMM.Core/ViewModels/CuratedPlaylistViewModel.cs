@@ -6,6 +6,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Caching;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
@@ -65,8 +66,10 @@ namespace BMM.Core.ViewModels
             IShareLink shareLink,
             IMvxMainThreadAsyncDispatcher mainThreadAsyncDispatcher,
             IOfflinePlaylistStorage offlinePlaylistStorage,
-            IFirebaseRemoteConfig firebaseRemoteConfig)
-            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
+            IFirebaseRemoteConfig firebaseRemoteConfig,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger)
+            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings, unavailableTracks, logger)
         {
             _playlistManager = playlistManager;
             _trackPOFactory = trackPOFactory;

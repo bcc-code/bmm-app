@@ -8,6 +8,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.DownloadManager;
@@ -67,13 +68,35 @@ namespace BMM.Core.ViewModels.Base
         /// </summary>
         protected void RefreshDownloadedFilesState()
         {
-            var tracks = DownloadableTracks?.ToList();
+            try
+            {
+                var tracks = DownloadableTracks?.ToList();
 
-            // An item we know nothing about yet must not be reported as incomplete, or opening a
-            // collection would briefly claim its downloads are missing.
-            AreAllTracksDownloaded = tracks == null
-                                     || tracks.Count == 0
-                                     || tracks.All(track => _storageManager.SelectedStorage.IsDownloaded(track));
+                // An item we know nothing about yet must not be reported as incomplete, or opening a
+                // collection would briefly claim its downloads are missing.
+                if (tracks == null || tracks.Count == 0)
+                {
+                    AreAllTracksDownloaded = true;
+                    return;
+                }
+
+                var storage = _storageManager.SelectedStorage;
+
+                bool everythingObtainableIsHere = tracks.All(track =>
+                    storage.IsDownloaded(track) || _unavailableTracks.IsUnavailable(track.Id));
+
+                // People want to listen to what they downloaded, so one track the server will not give us
+                // must not hold the whole collection hostage. Requiring at least one real file keeps this
+                // from turning into a checkmark over nothing when everything failed.
+                AreAllTracksDownloaded = everythingObtainableIsHere && tracks.Any(storage.IsDownloaded);
+            }
+            catch (Exception exception)
+            {
+                // Reached from the download queue's own messages. Storage that cannot be read (a removed
+                // SD card, a storage manager that is not initialised yet) would otherwise throw back into
+                // the publisher and take the rest of the queue down with it.
+                _logger.Error(GetType().Name, "Could not determine which files of this item are downloaded", exception);
+            }
         }
 
         private int ToBeDownloadedCount => DownloadQueue.InitialDownloadCount;
@@ -162,6 +185,8 @@ namespace BMM.Core.ViewModels.Base
         public IMvxAsyncCommand ToggleOfflineCommand { get; private set; }
 
         private readonly IStorageManager _storageManager;
+        private readonly IUnavailableTrackRegistry _unavailableTracks;
+        private readonly ILogger _logger;
 
         protected readonly IDownloadQueue DownloadQueue;
         protected readonly IConnection Connection;
@@ -179,10 +204,14 @@ namespace BMM.Core.ViewModels.Base
             IDocumentFilter documentFilter,
             IDownloadQueue downloadQueue,
             IConnection connection,
-            INetworkSettings networkSettings)
+            INetworkSettings networkSettings,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger)
             : base(documentFilter)
         {
             _storageManager = storageManager;
+            _unavailableTracks = unavailableTracks;
+            _logger = logger;
             DownloadQueue = downloadQueue;
             Connection = connection;
             _networkSettings = networkSettings;

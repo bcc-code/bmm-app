@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BMM.Api.Framework;
@@ -9,12 +10,19 @@ using BMM.Core.Implementations.Analytics;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.Exceptions;
+using BMM.Core.Implementations.FileStorage;
 using MvvmCross.Plugin.Messenger;
 
 namespace BMM.Core.Implementations.Downloading.DownloadQueue
 {
     public class DownloadQueue : IDownloadQueue
     {
+        /// <summary>
+        /// Headroom below which we call the storage full. It has to exceed the size of a single track so
+        /// that reclaiming one partial download does not make a full disk look usable again.
+        /// </summary>
+        private const long MinimumUsableFreeSpaceBytes = 25 * 1024 * 1024;
+
         /// <summary>
         /// A connection can be down for a moment without being down. Retrying a couple of times with a
         /// growing pause absorbs that without hammering a network that is genuinely gone.
@@ -32,6 +40,8 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
         private readonly IAnalytics _analytics;
         private readonly IConnection _connection;
         private readonly INetworkSettings _networkSettings;
+        private readonly IStorageManager _storageManager;
+        private readonly IUnavailableTrackRegistry _unavailableTracks;
         private readonly ILogger _logger;
         private readonly ConcurrentBag<IDownloadable> _queuedDownloads = new ConcurrentBag<IDownloadable>();
         private IDownloadable _currentDownloadingDownloadable;
@@ -46,6 +56,8 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
             IAnalytics analytics,
             IConnection connection,
             INetworkSettings networkSettings,
+            IStorageManager storageManager,
+            IUnavailableTrackRegistry unavailableTracks,
             ILogger logger)
         {
             _fileDownloader = fileDownloader;
@@ -54,6 +66,8 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
             _analytics = analytics;
             _connection = connection;
             _networkSettings = networkSettings;
+            _storageManager = storageManager;
+            _unavailableTracks = unavailableTracks;
             _logger = logger;
         }
 
@@ -163,6 +177,8 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                         case DownloadOutcome.Success:
                             succeeded++;
                             _finishedDownloadCount++;
+                            // A track that downloads is available again, whatever we concluded before.
+                            _unavailableTracks.MarkAvailable(item.Id);
                             _messenger.Publish(new FileDownloadCompletedMessage(this, item.Id));
                             _analytics.LogEvent(Event.TrackHasBeenDownloaded, PrepareAdditionalEventArguments(item));
                             break;
@@ -173,6 +189,10 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                             // row, which would otherwise keep showing a download in progress.
                             skipped++;
                             _finishedDownloadCount++;
+                            // Remembered so the rest of the collection can still count as downloaded. The
+                            // synchronization keeps offering this track, so it un-marks itself if it ever
+                            // comes back.
+                            _unavailableTracks.MarkUnavailable(item.Id);
                             _messenger.Publish(new FileDownloadCanceledMessage(this, exception));
                             break;
 
@@ -184,6 +204,15 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                             stopReason = QueueStopReason.NoConnection;
                             break;
 
+                        case DownloadOutcome.OutOfSpace:
+                            // Keep the item, but stop without retrying: no amount of waiting frees disk.
+                            _queuedDownloads.Add(item);
+                            _messenger.Publish(new FileDownloadCanceledMessage(
+                                this,
+                                new StorageOutOfSpaceException(_storageManager.SelectedStorage)));
+                            stopReason = QueueStopReason.OutOfSpace;
+                            break;
+
                         case DownloadOutcome.Cancelled:
                             _queuedDownloads.Add(item);
                             stopReason = QueueStopReason.Cancelled;
@@ -193,6 +222,14 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                     if (stopReason != QueueStopReason.Completed)
                         break;
                 }
+            }
+            catch (Exception exception)
+            {
+                // Anything unexpected here abandons the rest of the queue, so it has to be recorded as a
+                // queue outcome. Letting it escape would leave the run indistinguishable from a normal one
+                // in the queue's own telemetry.
+                stopReason = QueueStopReason.Aborted;
+                _logger.Error(nameof(DownloadQueue), "The download queue stopped with an unexpected error", exception);
             }
             finally
             {
@@ -268,6 +305,49 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                    || await _networkSettings.GetMobileNetworkDownloadAllowed();
         }
 
+        /// <summary>
+        /// Separates "the disk is full" from "the stream died", which .NET reports as the same
+        /// <see cref="IOException"/>. Without asking the file system the two are indistinguishable, and a
+        /// full disk treated as a connection problem would have the queue retrying forever.
+        /// </summary>
+        private DownloadOutcome RefineWithStorageState(DownloadOutcome outcome, Exception exception)
+        {
+            if (outcome != DownloadOutcome.ConnectionFailure || !IsOrWraps<IOException>(exception))
+                return outcome;
+
+            return HasUsableFreeSpace()
+                ? outcome
+                : DownloadOutcome.OutOfSpace;
+        }
+
+        private bool HasUsableFreeSpace()
+        {
+            try
+            {
+                // The downloader deletes its partial file before the exception reaches us, so a little
+                // space has just been reclaimed. The threshold has to sit above a single track's size for
+                // a genuinely full disk to still read as full.
+                return _storageManager.SelectedStorage.FreeSpace > MinimumUsableFreeSpaceBytes;
+            }
+            catch (Exception exception)
+            {
+                // Storage that cannot even be queried is not evidence of a full disk.
+                _logger.Error(nameof(DownloadQueue), "Could not read the free space of the selected storage", exception);
+                return true;
+            }
+        }
+
+        private static bool IsOrWraps<TException>(Exception exception) where TException : Exception
+        {
+            for (var current = exception; current != null; current = current.InnerException)
+            {
+                if (current is TException)
+                    return true;
+            }
+
+            return false;
+        }
+
         private static string DescribeException(Exception exception)
         {
             try
@@ -299,7 +379,7 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
             }
             catch (Exception e)
             {
-                var outcome = DownloadFailureClassifier.Classify(e, _cancellationWasRequested);
+                var outcome = RefineWithStorageState(DownloadFailureClassifier.Classify(e, _cancellationWasRequested), e);
 
                 if (outcome == DownloadOutcome.Cancelled)
                     return (outcome, e);
@@ -332,14 +412,21 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
         /// </summary>
         private void LogQueueOutcome(QueueStopReason stopReason, int succeeded, int skipped)
         {
-            if (stopReason == QueueStopReason.Completed && !StoppedWithPendingDownloads)
-                return;
-
             if (stopReason == QueueStopReason.Cancelled)
                 return;
 
-            string message = $"Download queue stopped early ({stopReason}). " +
-                             $"Succeeded: {succeeded}, skipped: {skipped}, still queued: {_queuedDownloads.Count}.";
+            bool ranToCompletion = stopReason == QueueStopReason.Completed && !StoppedWithPendingDownloads;
+
+            // A run that finished but gave up on some files is not a success. Those tracks will never
+            // arrive, so the collection can never show as fully downloaded, and without this the only
+            // record would be the individual failures with nothing tying them together.
+            if (ranToCompletion && skipped == 0)
+                return;
+
+            string message = ranToCompletion
+                ? $"Download queue finished but abandoned {skipped} file(s). Succeeded: {succeeded}."
+                : $"Download queue stopped early ({stopReason}). " +
+                  $"Succeeded: {succeeded}, skipped: {skipped}, still queued: {_queuedDownloads.Count}.";
 
             _logger.Error(nameof(DownloadQueue), message);
 
@@ -358,7 +445,9 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
         {
             Completed,
             NoConnection,
-            Cancelled
+            OutOfSpace,
+            Cancelled,
+            Aborted
         }
     }
 }
