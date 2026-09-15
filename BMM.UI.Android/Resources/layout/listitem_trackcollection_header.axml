@@ -92,6 +92,16 @@
             android:text="23 tracks"
             app:MvxBind="Text TrackCountString; Visibility InvertedVisibility(And(IsLoading, EqualTo(Documents.Count, 0)))"/>
 
+    <TextView
+            android:layout_gravity="left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="@dimen/track_padding"
+            android:layout_marginRight="@dimen/track_padding"
+            android:textColor="@color/bright_gray"
+            app:MvxBind="Text DownloadProblemText; Visibility Visibility(HasDownloadProblem)"/>
+
     <LinearLayout
             app:MvxBind="Visibility Visibility(And(IsLoading, EqualTo(Documents.Count, 0)))"
             android:orientation="vertical"

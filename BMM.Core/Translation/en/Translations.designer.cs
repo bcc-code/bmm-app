@@ -326,6 +326,8 @@ namespace BMM.Core.Translation
 		public const string TrackCollectionViewModel_EditPlaylist = nameof(TrackCollectionViewModel_EditPlaylist);
 		public const string TrackCollectionViewModel_SharePlaylist = nameof(TrackCollectionViewModel_SharePlaylist);
 		public const string TrackCollectionViewModel_RemovePlaylist = nameof(TrackCollectionViewModel_RemovePlaylist);
+		public const string TrackCollectionViewModel_DownloadPausedNoConnection = nameof(TrackCollectionViewModel_DownloadPausedNoConnection);
+		public const string TrackCollectionViewModel_SomeTracksUnavailable = nameof(TrackCollectionViewModel_SomeTracksUnavailable);
 		public const string EditTrackCollectionViewModel_Title = nameof(EditTrackCollectionViewModel_Title);
 		public const string EditTrackCollectionViewModel_RenameLabel = nameof(EditTrackCollectionViewModel_RenameLabel);
 		public const string EditTrackCollectionViewModel_MenuSave = nameof(EditTrackCollectionViewModel_MenuSave);

@@ -177,8 +177,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:MvxBind="
-                Text DurationLabel;
-                Visibility Visibility(And(ShowPlayButton, NotNullOrEmpty(DurationLabel)))"
+                Text HeaderSubtitle;
+                Visibility Visibility(And(ShowPlayButton, NotNullOrEmpty(HeaderSubtitle)))"
             style="@style/Subtitle3_Label1"/>
     
         <bmm.ui.droid.application.customViews.ProgressBarView

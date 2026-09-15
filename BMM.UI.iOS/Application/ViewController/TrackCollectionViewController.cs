@@ -96,7 +96,8 @@ namespace BMM.UI.iOS
             set.Bind(refreshControl).For(r => r.IsRefreshing).To(vm => vm.IsRefreshing);
             set.Bind(refreshControl).For(r => r.RefreshCommand).To(vm => vm.ReloadCommand);
 
-            set.Bind(DurationLabel).To(vm => vm.DurationLabel);
+            // Carries the duration plus, when there is one, the reason a download did not finish.
+            set.Bind(DurationLabel).To(vm => vm.HeaderSubtitle);
             
             CollectionTable.ReloadData();
 

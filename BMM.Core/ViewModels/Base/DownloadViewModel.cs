@@ -12,6 +12,7 @@ using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.DownloadManager;
+using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
@@ -157,8 +158,43 @@ namespace BMM.Core.ViewModels.Base
         public string DurationLabel
         {
             get => _durationLabel;
-            set => SetProperty(ref _durationLabel, value);
+            set
+            {
+                SetProperty(ref _durationLabel, value);
+                RaisePropertyChanged(() => HeaderSubtitle);
+            }
         }
+
+        /// <summary>
+        /// Why the download did not finish, or null when there is nothing to report. Only ever set for an
+        /// item the user actually asked for offline, since the queue's messages are global and would
+        /// otherwise put a stranger's failure on this screen.
+        /// </summary>
+        public string DownloadProblemText
+        {
+            get => _downloadProblemText;
+            private set
+            {
+                if (_downloadProblemText == value)
+                    return;
+
+                _downloadProblemText = value;
+                RaisePropertyChanged(() => DownloadProblemText);
+                RaisePropertyChanged(() => HasDownloadProblem);
+                RaisePropertyChanged(() => HeaderSubtitle);
+            }
+        }
+
+        public bool HasDownloadProblem => !string.IsNullOrEmpty(DownloadProblemText);
+
+        /// <summary>
+        /// The line under the title: the duration, or the reason a download did not finish when there is
+        /// one. It replaces the duration rather than joining it, because the iOS labels this binds to are
+        /// single line with tail truncation, so a combined string would simply be cut off.
+        /// </summary>
+        public string HeaderSubtitle => HasDownloadProblem
+            ? DownloadProblemText
+            : DurationLabel;
 
         public bool IsCompletedPercentageVisible
         {
@@ -195,6 +231,7 @@ namespace BMM.Core.ViewModels.Base
         private string _durationLabel;
         private bool _isCompletedPercentageVisible;
         private bool _areAllTracksDownloaded = true;
+        private string _downloadProblemText;
 
         public virtual bool ShowSharingInfo => false;
         public virtual bool ShowImage => true;
@@ -243,6 +280,9 @@ namespace BMM.Core.ViewModels.Base
         protected override void HandleFileDownloadStartedMessage(FileDownloadStartedMessage message)
         {
             base.HandleFileDownloadStartedMessage(message);
+
+            // A new attempt is under way, so whatever went wrong last time is no longer the current story.
+            DownloadProblemText = null;
             RaiseDownloadProgressChanged();
         }
 
@@ -255,6 +295,12 @@ namespace BMM.Core.ViewModels.Base
         protected override void HandleFileDownloadCanceledMessage(FileDownloadCanceledMessage message)
         {
             base.HandleFileDownloadCanceledMessage(message);
+
+            // Recorded as it happens, because the reason is only carried on this message. The queue
+            // reports the run's outcome afterwards, and that must not overwrite a concrete cause.
+            if (IsOfflineAvailable && message.Exception is StorageOutOfSpaceException)
+                DownloadProblemText = TextSource[Translations.TrackCollectionViewModel_NotEnoughtSpaceToDownload];
+
             RaiseDownloadProgressChanged();
         }
 
@@ -268,6 +314,49 @@ namespace BMM.Core.ViewModels.Base
         {
             base.HandleDownloadQueueFinishedMessage(message);
             RaiseDownloadProgressChanged();
+            UpdateDownloadProblem(message.Succeeded);
+        }
+
+        /// <summary>
+        /// Turns the outcome of a queue run into something the user can act on. Running out of space is
+        /// already recorded by the time we get here and keeps precedence, because "paused" would say
+        /// nothing about what to do next.
+        /// </summary>
+        private void UpdateDownloadProblem(bool queueSucceeded)
+        {
+            if (!IsOfflineAvailable)
+            {
+                DownloadProblemText = null;
+                return;
+            }
+
+            if (HasDownloadProblem && DownloadProblemText == TextSource[Translations.TrackCollectionViewModel_NotEnoughtSpaceToDownload])
+                return;
+
+            if (!queueSucceeded && DownloadQueue.StoppedWithPendingDownloads)
+            {
+                DownloadProblemText = TextSource[Translations.TrackCollectionViewModel_DownloadPausedNoConnection];
+                return;
+            }
+
+            int unavailableCount = CountUnavailableTracks();
+
+            DownloadProblemText = unavailableCount > 0
+                ? TextSource.GetText(Translations.TrackCollectionViewModel_SomeTracksUnavailable, unavailableCount.ToString())
+                : null;
+        }
+
+        private int CountUnavailableTracks()
+        {
+            try
+            {
+                return DownloadableTracks?.Count(track => _unavailableTracks.IsUnavailable(track.Id)) ?? 0;
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(GetType().Name, "Could not count the unavailable tracks of this item", exception);
+                return 0;
+            }
         }
 
         public override async Task Load()
@@ -353,6 +442,8 @@ namespace BMM.Core.ViewModels.Base
 
                 await DeleteAction();
 
+                // Nothing is expected offline any more, so there is no problem left to report.
+                DownloadProblemText = null;
                 RefreshAllTracks();
                 RefreshDownloadedFilesState();
                 await RaisePropertyChanged(() => IsDownloaded);
