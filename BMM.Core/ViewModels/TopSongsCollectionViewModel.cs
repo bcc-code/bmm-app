@@ -8,6 +8,7 @@ using BMM.Core.GuardedActions.Tracklist.Interfaces;
 using BMM.Core.GuardedActions.Tracks.Interfaces;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
@@ -36,7 +37,9 @@ namespace BMM.Core.ViewModels
             INetworkSettings networkSettings,
             ITrackPOFactory trackPOFactory,
             IPrepareTopSongsViewModelAction prepareTopSongsViewModelAction,
-            IAddTopSongsPlaylistToFavouritesAction addTopSongsPlaylistToFavouritesAction)
+            IAddTopSongsPlaylistToFavouritesAction addTopSongsPlaylistToFavouritesAction,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger)
             : base(
             storageManager,
             documentFilter,
@@ -44,7 +47,9 @@ namespace BMM.Core.ViewModels
             connection,
             downloadQueue,
             networkSettings,
-            trackPOFactory)
+            trackPOFactory,
+            unavailableTracks,
+            logger)
         {
             _prepareTopSongsViewModelAction = prepareTopSongsViewModelAction;
             _addTopSongsPlaylistToFavouritesAction = addTopSongsPlaylistToFavouritesAction;

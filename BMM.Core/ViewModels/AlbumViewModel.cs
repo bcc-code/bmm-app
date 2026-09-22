@@ -10,6 +10,7 @@ using BMM.Core.Helpers;
 using BMM.Core.Implementations.Albums.Interfaces;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories;
 using BMM.Core.Implementations.FileStorage;
@@ -76,8 +77,10 @@ namespace BMM.Core.ViewModels
             INetworkSettings networkSettings,
             IAlbumManager albumManager,
             IOfflineAlbumStorage offlineAlbumStorage,
-            IFirebaseRemoteConfig firebaseRemoteConfig)
-            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings)
+            IFirebaseRemoteConfig firebaseRemoteConfig,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger)
+            : base(storageManager, documentFilter, downloadQueue, connection, networkSettings, unavailableTracks, logger)
         {
             _playOrResumePlayAction = playOrResumePlayAction;
             _documentsPOFactory = documentsPOFactory;
@@ -146,9 +149,13 @@ namespace BMM.Core.ViewModels
         {
             long sum = Documents
                 .OfType<TrackPO>()
-                .Sum(x => x.Track.Media.Sum(t => t.Files.Sum(s => s.Size)));
+                .Select(x => x.Track)
+                .SumApproximateDownloadSize();
             return Task.FromResult(sum);
         }
+
+        protected override IEnumerable<IDownloadable> DownloadableTracks
+            => Documents.OfType<TrackPO>().Select(x => x.Track).WhereDownloadable();
 
         public override async Task Load()
         {

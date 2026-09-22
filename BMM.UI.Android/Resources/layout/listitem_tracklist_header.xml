@@ -124,7 +124,7 @@
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   app:MvxLang="Text DocumentsViewModel_Download"
-                  app:MvxBind="Click ToggleOfflineCommand; Visibility InvertedVisibility(IsOfflineAvailable)"/>
+                  app:MvxBind="Click ToggleOfflineCommand; Visibility Visibility(ShowDownloadButton)"/>
           <ProgressBar
                   android:layout_width="40dp"
                   android:layout_height="40dp"
@@ -177,8 +177,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             app:MvxBind="
-                Text DurationLabel;
-                Visibility Visibility(And(ShowPlayButton, NotNullOrEmpty(DurationLabel)))"
+                Text HeaderSubtitle;
+                Visibility Visibility(And(ShowPlayButton, NotNullOrEmpty(HeaderSubtitle)))"
             style="@style/Subtitle3_Label1"/>
     
         <bmm.ui.droid.application.customViews.ProgressBarView

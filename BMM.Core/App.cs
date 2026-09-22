@@ -208,6 +208,7 @@ namespace BMM.Core
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ICurrentUserLoader, CurrentUserLoader>();
             Mvx.IoCProvider.RegisterType<IStreamToFileSystemWriter, StreamToFileSystemWriter>();
             Mvx.IoCProvider.ConstructAndRegisterSingletonIfNotRegistered<IFileDownloader, HttpClientFileDownloader>();
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUnavailableTrackRegistry, UnavailableTrackRegistry>();
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IDownloadQueue, DownloadQueue>();
 
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IOfflineTrackCollectionStorage, OfflineTrackCollectionStorage>();
