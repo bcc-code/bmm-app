@@ -74,7 +74,10 @@ public class PlaylistLayoutCreator : BaseLayoutCreator, IPlaylistLayoutCreator
             tracksCpListItemTemplates.Add(trackListItem);
         }
 
-        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
-        _playlistListTemplate.SafeUpdateSections(section.EncloseInArray());
+        if (tracksCpListItemTemplates.Any())
+        {
+            var section = new CPListSection(tracksCpListItemTemplates.ToArray());
+            _playlistListTemplate.SafeUpdateSections(section.EncloseInArray());
+        }
     }
 }

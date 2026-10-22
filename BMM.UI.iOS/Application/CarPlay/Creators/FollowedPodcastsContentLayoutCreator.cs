@@ -65,7 +65,10 @@ public class FollowedPodcastsContentLayoutCreator : BaseLayoutCreator, IFollowed
                 return (ICPListTemplateItem)trackListItem;
             }));
 
-        var section = new CPListSection(tracklistItems);
-        _followedPodcastsListTemplate.SafeUpdateSections(section.EncloseInArray());
+        if (tracklistItems.Any())
+        {
+            var section = new CPListSection(tracklistItems);
+            _followedPodcastsListTemplate.SafeUpdateSections(section.EncloseInArray());
+        }
     }
 }

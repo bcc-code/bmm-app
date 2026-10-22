@@ -123,12 +123,19 @@ public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreat
                     }
                 }
                 
-                trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                if (trackListItem != null)
+                {
+                    trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                }
                 return trackListItem;
             })
+            .Where(x => x != null)
             .ToList();
         
-        var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
-        _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
+        if (tracklistItems.Any())
+        {
+            var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
+            _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
+        }
     }
 }
