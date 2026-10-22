@@ -28,7 +28,8 @@
     "DailyMessage": "Prédica del día",
     "ValueCopiedToClipboard": "{0} Copiado al portapapeles",
     "AddToFavorites": "Añadir a favoritos",
-    "RemoveFromFavorites": "Quitar de favoritos"
+    "RemoveFromFavorites": "Quitar de favoritos",
+    "NowPlaying": "En reproducción"
   },
   "Streak": {
     "Message": "Tu racha de esta semana",
@@ -76,7 +77,13 @@
     "AlbumFailedToAddAlreadyExists": "Este álbum ya está en la lista de reproducción.",
     "TrackAlreadyExistInTrackCollection": "Esta pista ya existe en la lista de reproducción {0}",
     "ShufflePlay": "Reproducción Aleatoria",
-    "PluralAlbums": "{0} álbumes"
+    "PluralAlbums": "{0} álbumes",
+    "Hour": "",
+    "Hours": "",
+    "Minute": "",
+    "Second": "",
+    "RemainingFormatSingular": "",
+    "RemainingFormatPlural": ""
   },
   "AlbumsViewModel": {
     "Title": "Archivo",
@@ -244,7 +251,8 @@
     "AslaksenTheme1": "Cree en el Dios de los milagros",
     "AslaksenTheme2": "Con Cristo estoy juntamente crucificado",
     "AslaksenTheme3": "Temer y amar a Dios",
-    "AslaksenTheme4": "Humildad lo es todo"
+    "AslaksenTheme4": "Humildad lo es todo",
+    "AllEpisodes": ""
   },
   "CuratedPlaylistViewModel": {
     "Title": "Lista de reproducción"
@@ -456,6 +464,7 @@
     "Track.Download": "Descargar pista",
     "Track.MoreInformation": "Más información",
     "Track.Share": "Compartir pista",
+    "Track.ShareFrom": "",
     "Album.Play": "Reproducir",
     "Album.AddToPlaylist": "Añadir álbum a lista de reproducción",
     "Album.AddToMyTracks": "Añadir álbum a mis Pistas",
@@ -635,5 +644,12 @@
   },
   "HvheDetailsViewModel": {
     "Title": "Puntuación global"
+  },
+  "CarPlay": {
+    "ErrorTitle": "Algo salió mal...",
+    "TryAgainButton": "Intentar otra vez",
+    "LoadingText": "Cargando...",
+    "SignIntoBMM": "Inicia sesión en BMM en tu teléfono",
+    "Refresh": "Actualiza"
   }
 }
