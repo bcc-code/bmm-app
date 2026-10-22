@@ -169,6 +169,17 @@ namespace BMM.Core.Implementations.Storage
             get => GetValueOrDefault(nameof(LocalTrackCollections), new HashSet<int>());
             set => AddOrUpdateValue(value, nameof(LocalTrackCollections));
         }
+
+        /// <summary>
+        /// Tracks the server will not give us, so that a playlist containing one is not stuck reporting
+        /// itself as unfinished forever. Persisted because the state has to survive a restart, and cleared
+        /// per track as soon as one does download.
+        /// </summary>
+        public static HashSet<int> UnavailableTracks
+        {
+            get => GetValueOrDefault(nameof(UnavailableTracks), new HashSet<int>());
+            set => AddOrUpdateValue(value, nameof(UnavailableTracks));
+        }
         
         public static TrackPlayedEvent UnfinishedTrackPlayedEvent
         {

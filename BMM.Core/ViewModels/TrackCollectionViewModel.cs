@@ -4,6 +4,7 @@ using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FileStorage;
@@ -46,7 +47,9 @@ namespace BMM.Core.ViewModels
             IConnection connection,
             IDownloadQueue downloadQueue,
             INetworkSettings networkSettings,
-            ITrackPOFactory trackPOFactory
+            ITrackPOFactory trackPOFactory,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger
         )
             : base(
                 storageManager,
@@ -55,7 +58,9 @@ namespace BMM.Core.ViewModels
                 downloadQueue,
                 connection,
                 networkSettings,
-                trackPOFactory)
+                trackPOFactory,
+                unavailableTracks,
+                logger)
         {
             DeleteCommand = new ExceptionHandlingCommand(() => DeleteTrackCollection(MyCollection));
             

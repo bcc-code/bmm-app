@@ -49,7 +49,7 @@ namespace BMM.Core.Implementations.Downloading.FileDownloader
             var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
 
             if (!response.IsSuccessStatusCode)
-                throw new Exception($"The request returned with error HTTP status code {response.StatusCode}");
+                throw new DownloadHttpStatusException(response.StatusCode);
 
             try
             {

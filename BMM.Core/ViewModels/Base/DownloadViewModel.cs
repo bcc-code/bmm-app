@@ -3,13 +3,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using BMM.Api.Framework;
+using BMM.Api.Implementation.Models;
 using BMM.Core.Extensions;
 using BMM.Core.Helpers;
 using BMM.Core.Implementations.Connection;
 using BMM.Core.Implementations.DocumentFilters;
+using BMM.Core.Implementations.Downloading;
 using BMM.Core.Implementations.Downloading.DownloadQueue;
 using BMM.Core.Implementations.Downloading.FileDownloader;
 using BMM.Core.Implementations.DownloadManager;
+using BMM.Core.Implementations.Exceptions;
 using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.UI;
 using BMM.Core.Messages;
@@ -33,6 +36,67 @@ namespace BMM.Core.ViewModels.Base
                 SetProperty(ref _isOfflineAvailable, value);
                 RaisePropertyChanged(() => IsDownloaded);
                 RaisePropertyChanged(() => IsDownloading);
+                RaisePropertyChanged(() => ShowDownloadButton);
+            }
+        }
+
+        /// <summary>
+        /// Whether every track we expect offline is actually present on disk.
+        /// </summary>
+        private bool AreAllTracksDownloaded
+        {
+            get => _areAllTracksDownloaded;
+            set
+            {
+                if (_areAllTracksDownloaded == value)
+                    return;
+
+                _areAllTracksDownloaded = value;
+                RaisePropertyChanged(() => IsDownloaded);
+                RaisePropertyChanged(() => ShowDownloadButton);
+            }
+        }
+
+        /// <summary>
+        /// The tracks whose files are expected on disk once this item is downloaded. Empty by default, so
+        /// view models that have not opted in keep behaving as before.
+        /// </summary>
+        protected virtual IEnumerable<IDownloadable> DownloadableTracks => Enumerable.Empty<IDownloadable>();
+
+        /// <summary>
+        /// Re-reads which files are on disk. Cached rather than computed per property read, because the
+        /// download messages raise these properties dozens of times during a single queue run.
+        /// </summary>
+        protected void RefreshDownloadedFilesState()
+        {
+            try
+            {
+                var tracks = DownloadableTracks?.ToList();
+
+                // An item we know nothing about yet must not be reported as incomplete, or opening a
+                // collection would briefly claim its downloads are missing.
+                if (tracks == null || tracks.Count == 0)
+                {
+                    AreAllTracksDownloaded = true;
+                    return;
+                }
+
+                var storage = _storageManager.SelectedStorage;
+
+                bool everythingObtainableIsHere = tracks.All(track =>
+                    storage.IsDownloaded(track) || _unavailableTracks.IsUnavailable(track.Id));
+
+                // People want to listen to what they downloaded, so one track the server will not give us
+                // must not hold the whole collection hostage. Requiring at least one real file keeps this
+                // from turning into a checkmark over nothing when everything failed.
+                AreAllTracksDownloaded = everythingObtainableIsHere && tracks.Any(storage.IsDownloaded);
+            }
+            catch (Exception exception)
+            {
+                // Reached from the download queue's own messages. Storage that cannot be read (a removed
+                // SD card, a storage manager that is not initialised yet) would otherwise throw back into
+                // the publisher and take the rest of the queue down with it.
+                _logger.Error(GetType().Name, "Could not determine which files of this item are downloaded", exception);
             }
         }
 
@@ -48,11 +112,30 @@ namespace BMM.Core.ViewModels.Base
             private set => SetProperty(ref _downloadingFiles, value);
         }
 
-        public bool IsDownloading => IsOfflineAvailable && DownloadedFilesCount < ToBeDownloadedCount && ToBeDownloadedCount > 0;
+        /// <summary>
+        /// Requires the queue to actually be running. Items left behind by a queue that stopped early
+        /// would otherwise keep the progress indicator on screen forever, with nothing downloading.
+        /// </summary>
+        public bool IsDownloading => IsOfflineAvailable
+                                     && DownloadQueue.IsRunning
+                                     && DownloadedFilesCount < ToBeDownloadedCount
+                                     && ToBeDownloadedCount > 0;
 
         public virtual bool ShowDownloadButtons => true;
 
-        public bool IsDownloaded => IsOfflineAvailable && !IsDownloading;
+        /// <summary>
+        /// "The user asked for this offline" and "the files are here" are different claims. This used to
+        /// be <c>IsOfflineAvailable &amp;&amp; !IsDownloading</c>, which meant an empty download queue was
+        /// indistinguishable from a finished one: a playlist whose downloads all failed rendered with a
+        /// checkmark and no files on disk.
+        /// </summary>
+        public bool IsDownloaded => IsOfflineAvailable && !IsDownloading && AreAllTracksDownloaded;
+
+        /// <summary>
+        /// Offer the download action whenever the files are not all there, so an incomplete download can
+        /// be retried instead of hiding behind a checkmark.
+        /// </summary>
+        public bool ShowDownloadButton => ShowDownloadButtons && !IsDownloading && !IsDownloaded;
 
         public abstract string Title { get; }
 
@@ -75,8 +158,43 @@ namespace BMM.Core.ViewModels.Base
         public string DurationLabel
         {
             get => _durationLabel;
-            set => SetProperty(ref _durationLabel, value);
+            set
+            {
+                SetProperty(ref _durationLabel, value);
+                RaisePropertyChanged(() => HeaderSubtitle);
+            }
         }
+
+        /// <summary>
+        /// Why the download did not finish, or null when there is nothing to report. Only ever set for an
+        /// item the user actually asked for offline, since the queue's messages are global and would
+        /// otherwise put a stranger's failure on this screen.
+        /// </summary>
+        public string DownloadProblemText
+        {
+            get => _downloadProblemText;
+            private set
+            {
+                if (_downloadProblemText == value)
+                    return;
+
+                _downloadProblemText = value;
+                RaisePropertyChanged(() => DownloadProblemText);
+                RaisePropertyChanged(() => HasDownloadProblem);
+                RaisePropertyChanged(() => HeaderSubtitle);
+            }
+        }
+
+        public bool HasDownloadProblem => !string.IsNullOrEmpty(DownloadProblemText);
+
+        /// <summary>
+        /// The line under the title: the duration, or the reason a download did not finish when there is
+        /// one. It replaces the duration rather than joining it, because the iOS labels this binds to are
+        /// single line with tail truncation, so a combined string would simply be cut off.
+        /// </summary>
+        public string HeaderSubtitle => HasDownloadProblem
+            ? DownloadProblemText
+            : DurationLabel;
 
         public bool IsCompletedPercentageVisible
         {
@@ -103,6 +221,8 @@ namespace BMM.Core.ViewModels.Base
         public IMvxAsyncCommand ToggleOfflineCommand { get; private set; }
 
         private readonly IStorageManager _storageManager;
+        private readonly IUnavailableTrackRegistry _unavailableTracks;
+        private readonly ILogger _logger;
 
         protected readonly IDownloadQueue DownloadQueue;
         protected readonly IConnection Connection;
@@ -110,6 +230,8 @@ namespace BMM.Core.ViewModels.Base
         private MvxSubscriptionToken _downloadCancelledMessageToken;
         private string _durationLabel;
         private bool _isCompletedPercentageVisible;
+        private bool _areAllTracksDownloaded = true;
+        private string _downloadProblemText;
 
         public virtual bool ShowSharingInfo => false;
         public virtual bool ShowImage => true;
@@ -119,10 +241,14 @@ namespace BMM.Core.ViewModels.Base
             IDocumentFilter documentFilter,
             IDownloadQueue downloadQueue,
             IConnection connection,
-            INetworkSettings networkSettings)
+            INetworkSettings networkSettings,
+            IUnavailableTrackRegistry unavailableTracks,
+            ILogger logger)
             : base(documentFilter)
         {
             _storageManager = storageManager;
+            _unavailableTracks = unavailableTracks;
+            _logger = logger;
             DownloadQueue = downloadQueue;
             Connection = connection;
             _networkSettings = networkSettings;
@@ -154,6 +280,9 @@ namespace BMM.Core.ViewModels.Base
         protected override void HandleFileDownloadStartedMessage(FileDownloadStartedMessage message)
         {
             base.HandleFileDownloadStartedMessage(message);
+
+            // A new attempt is under way, so whatever went wrong last time is no longer the current story.
+            DownloadProblemText = null;
             RaiseDownloadProgressChanged();
         }
 
@@ -166,6 +295,12 @@ namespace BMM.Core.ViewModels.Base
         protected override void HandleFileDownloadCanceledMessage(FileDownloadCanceledMessage message)
         {
             base.HandleFileDownloadCanceledMessage(message);
+
+            // Recorded as it happens, because the reason is only carried on this message. The queue
+            // reports the run's outcome afterwards, and that must not overwrite a concrete cause.
+            if (IsOfflineAvailable && message.Exception is StorageOutOfSpaceException)
+                DownloadProblemText = TextSource[Translations.TrackCollectionViewModel_NotEnoughtSpaceToDownload];
+
             RaiseDownloadProgressChanged();
         }
 
@@ -179,11 +314,61 @@ namespace BMM.Core.ViewModels.Base
         {
             base.HandleDownloadQueueFinishedMessage(message);
             RaiseDownloadProgressChanged();
+            UpdateDownloadProblem(message.Succeeded);
+        }
+
+        /// <summary>
+        /// Turns the outcome of a queue run into something the user can act on. Running out of space is
+        /// already recorded by the time we get here and keeps precedence, because "paused" would say
+        /// nothing about what to do next.
+        /// </summary>
+        private void UpdateDownloadProblem(bool queueSucceeded)
+        {
+            if (!IsOfflineAvailable)
+            {
+                DownloadProblemText = null;
+                return;
+            }
+
+            if (HasDownloadProblem && DownloadProblemText == TextSource[Translations.TrackCollectionViewModel_NotEnoughtSpaceToDownload])
+                return;
+
+            if (!queueSucceeded && DownloadQueue.StoppedWithPendingDownloads)
+            {
+                DownloadProblemText = TextSource[Translations.TrackCollectionViewModel_DownloadPausedNoConnection];
+                return;
+            }
+
+            int unavailableCount = CountUnavailableTracks();
+
+            DownloadProblemText = unavailableCount > 0
+                ? TextSource.GetText(Translations.TrackCollectionViewModel_SomeTracksUnavailable, unavailableCount.ToString())
+                : null;
+        }
+
+        private int CountUnavailableTracks()
+        {
+            try
+            {
+                return DownloadableTracks?.Count(track => _unavailableTracks.IsUnavailable(track.Id)) ?? 0;
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(GetType().Name, "Could not count the unavailable tracks of this item", exception);
+                return 0;
+            }
+        }
+
+        public override async Task Load()
+        {
+            await base.Load();
+            RefreshDownloadedFilesState();
         }
 
         public override async Task RefreshInBackgroundAfterCacheUpdate()
         {
             await base.RefreshInBackgroundAfterCacheUpdate();
+            RefreshDownloadedFilesState();
 
             // Since the max age for a TrackCollection is 0 this will always be executed when opening a TrackCollection
             if (IsOfflineAvailable)
@@ -238,9 +423,11 @@ namespace BMM.Core.ViewModels.Base
                     await Mvx.IoCProvider.Resolve<IToastDisplayer>().WarnAsync(TextSource[Translations.Global_DownloadPlaylistOnceOnWifi]);
                 
                 IsOfflineAvailable = newIsOfflineAvailable;
-                
+
                 await DownloadAction();
+                RefreshDownloadedFilesState();
                 await RaisePropertyChanged(() => IsDownloaded);
+                await RaisePropertyChanged(() => ShowDownloadButton);
             }
             else
             {
@@ -255,8 +442,12 @@ namespace BMM.Core.ViewModels.Base
 
                 await DeleteAction();
 
+                // Nothing is expected offline any more, so there is no problem left to report.
+                DownloadProblemText = null;
                 RefreshAllTracks();
+                RefreshDownloadedFilesState();
                 await RaisePropertyChanged(() => IsDownloaded);
+                await RaisePropertyChanged(() => ShowDownloadButton);
             }
         }
 
@@ -268,8 +459,14 @@ namespace BMM.Core.ViewModels.Base
 
         private void RaiseDownloadProgressChanged()
         {
+            // Skipped while downloading: the checkmark is not on screen then, and re-checking every file
+            // on each of the many progress messages would be wasted work.
+            if (!IsDownloading)
+                RefreshDownloadedFilesState();
+
             RaisePropertyChanged(() => IsDownloading);
             RaisePropertyChanged(() => IsDownloaded);
+            RaisePropertyChanged(() => ShowDownloadButton);
             RaisePropertyChanged(() => DownloadingText);
             RaisePropertyChanged(() => DownloadStatus);
         }

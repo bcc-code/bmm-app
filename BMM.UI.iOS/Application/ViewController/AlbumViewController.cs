@@ -44,7 +44,8 @@ namespace BMM.UI.iOS
             set.Bind(PlayButton).For(v => v.BindTitle()).To(vm => vm.PlayButtonText);
             set.Bind(PlayButton).For(v => v.BindVisible()).To(vm => vm.ShowPlayButton);
             set.Bind(TrackCountLabel).To(vm => vm.TrackCountString);
-            set.Bind(DurationLabel).To(vm => vm.DurationLabel);
+            // Carries the duration plus, when there is one, the reason a download did not finish.
+            set.Bind(DurationLabel).To(vm => vm.HeaderSubtitle);
             set.Bind(DurationProgressBar)
                 .For(v => v.Percentage)
                 .To(vm => vm.CompletedPercentage);

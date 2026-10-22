@@ -398,7 +398,9 @@
     "DeletePlaylist": "Delete playlist",
     "EditPlaylist": "Edit playlist",
     "SharePlaylist": "Share playlist",
-    "RemovePlaylist": "Remove playlist"
+    "RemovePlaylist": "Remove playlist",
+    "DownloadPausedNoConnection": "Paused – waiting for connection",
+    "SomeTracksUnavailable": "{0} track(s) unavailable"
   },
   "EditTrackCollectionViewModel": {
     "Title": "Edit Playlist",

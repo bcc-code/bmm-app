@@ -21,6 +21,10 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\BMM.Core\BMM.Core.csproj" />
+      <!-- Named explicitly rather than relied on through BMM.Core: the tests use BMM.Api types such as
+           Track and ILogger directly, and subclassing a BMM.Core view model makes the compiler load
+           base member signatures that mention them. -->
+      <ProjectReference Include="..\..\BMM.Api\BMM.Api.csproj" />
     </ItemGroup>
 
 </Project>

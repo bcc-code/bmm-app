@@ -45,4 +45,40 @@ public static class TrackExtensions
         long totalSeconds = tracks.Sum(t => t.Duration / 1000);
         return TimeSpan.FromSeconds(totalSeconds);
     }
+
+    /// <summary>
+    /// Total size of the files belonging to these tracks.
+    /// </summary>
+    /// <remarks>
+    /// Both <c>media</c> and <c>files</c> are optional in the API, so a single track without them used to
+    /// throw a <see cref="NullReferenceException"/> out of the download button's size check, which the user
+    /// saw as "An unknown error occurred" with nothing downloaded.
+    /// </remarks>
+    public static long SumApproximateDownloadSize(this IEnumerable<Track> tracks)
+    {
+        if (tracks == null)
+            return 0;
+
+        return tracks
+            .Where(track => track?.Media != null)
+            .SelectMany(track => track.Media)
+            .Where(medium => medium?.Files != null)
+            .SelectMany(medium => medium.Files)
+            .Sum(file => file.Size);
+    }
+
+    /// <summary>
+    /// The tracks of a collection that the downloader will actually try to fetch. Mirrors the filters in
+    /// the offline track providers, so that "is everything downloaded" cannot wait for a file that is
+    /// never going to be requested.
+    /// </summary>
+    public static IEnumerable<Track> WhereDownloadable(this IEnumerable<Track> tracks)
+    {
+        if (tracks == null)
+            return Enumerable.Empty<Track>();
+
+        return tracks.Where(track => track != null
+                                     && track.Subtype != TrackSubType.Video
+                                     && !string.IsNullOrEmpty(track.Url));
+    }
 }
