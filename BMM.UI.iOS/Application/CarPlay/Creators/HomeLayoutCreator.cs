@@ -5,11 +5,14 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Enums;
+using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
+using BMM.Core.Implementations.Factories.Tracks;
 using BMM.Core.Implementations.FirebaseRemoteConfig;
 using BMM.Core.Implementations.Localization.Interfaces;
+using BMM.Core.Implementations.TrackInformation.Strategies;
 using BMM.Core.Translation;
 using BMM.Core.ValueConverters;
 using BMM.UI.iOS.CarPlay.Creators.Base;
@@ -33,6 +36,8 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     private IAlbumLayoutCreator AlbumLayoutCreator => Mvx.IoCProvider!.Resolve<IAlbumLayoutCreator>();
     private IHandleAutoplayAction HandleAutoplayAction => Mvx.IoCProvider!.Resolve<IHandleAutoplayAction>();
     private IFirebaseRemoteConfig FirebaseRemoteConfig => Mvx.IoCProvider!.Resolve<IFirebaseRemoteConfig>();
+    private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
+    private ITrackInfoProvider TrackInfoProvider => Mvx.IoCProvider!.Resolve<ITrackInfoProvider>();
     
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _homeTemplate;
@@ -84,10 +89,16 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         {
             var trackListItems = new List<ICPListTemplateItem>();
             trackListItems.AddRange(await GetListItems(CpInterfaceController, group.Documents, covers, currentPodcastId));
-            sections.Add(new CPListSection(trackListItems.ToArray(), group.Title, null));
+            if (trackListItems.Any())
+            {
+                sections.Add(new CPListSection(trackListItems.ToArray(), group.Title, null));
+            }
         }
         
-        _homeTemplate.SafeUpdateSections(sections.ToArray());
+        if (sections.Any())
+        {
+            _homeTemplate.SafeUpdateSections(sections.ToArray());
+        }
     }
 
     private async Task<IList<ICPListTemplateItem>> GetListItems(CPInterfaceController cpInterfaceController,
@@ -113,8 +124,33 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                             CpInterfaceController));
                     break;
                 }
+                case Track track:
+                {
+                    var trackPO = TrackPOFactory.Create(TrackInfoProvider, null, track);
+                    string trackTitle = !string.IsNullOrWhiteSpace(trackPO.TrackTitle)
+                        ? trackPO.TrackTitle
+                        : (!string.IsNullOrWhiteSpace(track.Title) ? track.Title : "—");
+                    string subtitle = $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}".Trim();
+
+                    var trackListItem = new CPListItem(trackTitle, string.IsNullOrWhiteSpace(subtitle) ? null : subtitle, covers.GetCover(track.ArtworkUri));
+                    trackListItem.AccessoryType = CPListItemAccessoryType.None;
+                    trackListItem.Handler = async (item, block) =>
+                    {
+                        await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                            track.ToTracksList(),
+                            track,
+                            this.CreatePlaybackOrigin(),
+                            cpInterfaceController);
+                        block();
+                    };
+                    listOfTemplateItems.Add(trackListItem);
+                    break;
+                }
                 case Playlist playlist:
                 {
+                    if (string.IsNullOrWhiteSpace(playlist.Title))
+                        break;
+
                     listOfTemplateItems.Add(CreateListItem(
                         playlist.Title,
                         covers.GetCover(playlist.Cover),
@@ -125,6 +161,9 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Album album:
                 {
+                    if (string.IsNullOrWhiteSpace(album.Title))
+                        break;
+
                     listOfTemplateItems.Add(CreateListItem(
                         album.Title,
                         covers.GetCover(album.Cover),
@@ -135,6 +174,9 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Podcast podcast:
                 {
+                    if (string.IsNullOrWhiteSpace(podcast.Title))
+                        break;
+
                     listOfTemplateItems.Add(CreateListItem(
                         podcast.Title,
                         covers.GetCover(podcast.Cover),
@@ -145,6 +187,9 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Contributor contributor:
                 {
+                    if (string.IsNullOrWhiteSpace(contributor.Name))
+                        break;
+
                     listOfTemplateItems.Add(CreateListItem(
                         contributor.Name,
                         covers.GetCover(contributor.Cover),
@@ -165,7 +210,8 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         Func<Task<CPListTemplate>> createLayoutFunc,
         CPInterfaceController cpInterfaceController)
     {
-        var listItem = new CPListItem(title, null, image);
+        string safeTitle = !string.IsNullOrWhiteSpace(title) ? title : "—";
+        var listItem = new CPListItem(safeTitle, null, image);
         listItem.Handler = async (item, block) =>
         {
             var layout = await createLayoutFunc();
@@ -182,30 +228,40 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     {
         var dateTimeToPodcastPublishDateLabelValueConverter = new DateTimeToPodcastPublishDateLabelValueConverter();
         var dateTimeToPodcastPublishDayOfWeekLabelValueConverter = new DateTimeToPodcastPublishDayOfWeekLabelValueConverter();
-        var subtitle = new StringBuilder(continueListeningTile.Title);
+        var subtitle = new StringBuilder(continueListeningTile.Title ?? string.Empty);
         
-        string dateOfWeek = (string)dateTimeToPodcastPublishDayOfWeekLabelValueConverter
-            .Convert(continueListeningTile.Date.Value,
-                typeof(string),
-                null,
-                CultureInfo.CurrentUICulture);
-        string dateLabel = (string)dateTimeToPodcastPublishDateLabelValueConverter
-            .Convert(continueListeningTile.Date.Value,
-                typeof(string),
-                null,
-                CultureInfo.CurrentUICulture);
+        if (continueListeningTile.Date.HasValue)
+        {
+            string dateOfWeek = (string)dateTimeToPodcastPublishDayOfWeekLabelValueConverter
+                .Convert(continueListeningTile.Date.Value,
+                    typeof(string),
+                    null,
+                    CultureInfo.CurrentUICulture);
+            string dateLabel = (string)dateTimeToPodcastPublishDateLabelValueConverter
+                .Convert(continueListeningTile.Date.Value,
+                    typeof(string),
+                    null,
+                    CultureInfo.CurrentUICulture);
 
-        subtitle.Append($" - {dateOfWeek}, {dateLabel}");
+            subtitle.Append($" - {dateOfWeek}, {dateLabel}");
+        }
 
-        var item = new CPListItem(continueListeningTile.Label, subtitle.ToString(), covers.GetCover(continueListeningTile.CoverUrl));
+        string safeTitle = !string.IsNullOrWhiteSpace(continueListeningTile.Label)
+            ? continueListeningTile.Label
+            : (!string.IsNullOrWhiteSpace(continueListeningTile.Title) ? continueListeningTile.Title : "—");
+
+        var item = new CPListItem(safeTitle, subtitle.ToString(), covers.GetCover(continueListeningTile.CoverUrl));
         item.Handler = async (_, block) =>
         {
-            await CarPlayPlayerPresenter.PlayAndShowPlayer(
-                continueListeningTile.Track.ToTracksList(),
-                continueListeningTile.Track,
-                this.CreatePlaybackOrigin(),
-                cpInterfaceController);
-            await HandleAutoplayAction.ExecuteGuarded(continueListeningTile);
+            if (continueListeningTile.Track != null)
+            {
+                await CarPlayPlayerPresenter.PlayAndShowPlayer(
+                    continueListeningTile.Track.ToTracksList(),
+                    continueListeningTile.Track,
+                    this.CreatePlaybackOrigin(),
+                    cpInterfaceController);
+                await HandleAutoplayAction.ExecuteGuarded(continueListeningTile);
+            }
             block();
         };
         item!.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;

@@ -88,23 +88,31 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
 
         if (grouped.Any())
         {
-            sections = await Task.WhenAll(grouped
-                .Select(async grouped =>
+            var sectionList = new List<CPListSection>();
+            foreach (var g in grouped)
+            {
+                var trackListItems = new List<ICPListTemplateItem>();
+                trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, g.Documents, covers));
+                if (trackListItems.Any())
                 {
-                    var trackListItems = new List<ICPListTemplateItem>();
-                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, grouped.Documents, covers));
-                    return new CPListSection(trackListItems.ToArray(), grouped.Title, null);
-                })
-                .ToArray());
+                    sectionList.Add(new CPListSection(trackListItems.ToArray(), g.Title, null));
+                }
+            }
+            if (sectionList.Any())
+            {
+                _browseDetailsListTemplates.SafeUpdateSections(sectionList.ToArray());
+            }
         }
         else
         {
             var trackListItems = new List<ICPListTemplateItem>();
             trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, documentsHolder.Items, covers));
-            sections = [new CPListSection(trackListItems.ToArray())];
+            if (trackListItems.Any())
+            {
+                sections = [new CPListSection(trackListItems.ToArray())];
+                _browseDetailsListTemplates.SafeUpdateSections(sections);
+            }
         }
-
-        _browseDetailsListTemplates.SafeUpdateSections(sections);
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController,

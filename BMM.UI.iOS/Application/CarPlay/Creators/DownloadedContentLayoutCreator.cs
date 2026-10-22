@@ -132,11 +132,19 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
                     }
                 }
 
-                trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
-                return (ICPListTemplateItem)trackListItem;
+                if (trackListItem != null)
+                {
+                    trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                    return (ICPListTemplateItem)trackListItem;
+                }
+                return null;
             }));
 
-        var section = new CPListSection(tracklistItems);
-        _downloadedListTemplate.SafeUpdateSections(section.EncloseInArray());
+        var validItems = tracklistItems.Where(i => i != null).ToArray();
+        if (validItems.Any())
+        {
+            var section = new CPListSection(validItems);
+            _downloadedListTemplate.SafeUpdateSections(section.EncloseInArray());
+        }
     }
 }

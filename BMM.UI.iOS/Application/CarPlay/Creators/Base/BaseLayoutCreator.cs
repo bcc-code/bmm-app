@@ -1,7 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
+using BMM.Api.Framework;
 using BMM.Core.Extensions;
 using BMM.UI.iOS.CarPlay.Utils;
 using CarPlay;
+using MvvmCross;
 
 namespace BMM.UI.iOS.CarPlay.Creators.Base;
 
@@ -17,8 +19,20 @@ public abstract class BaseLayoutCreator
         {
             await Load();
         }
-        catch
+        catch (Exception ex)
         {
+            try
+            {
+                var logger = Mvx.IoCProvider?.Resolve<ILogger>();
+                logger?.Error(GetType().Name, $"CarPlay layout loading failed: {ex.Message}", ex);
+            }
+            catch
+            {
+                // ignore logger resolution errors
+            }
+
+            Console.WriteLine($"[CarPlay] SafeLoad failed in {GetType().Name}: {ex}");
+
             bool shouldReload = await ErrorPresenter.ShowError(CpInterfaceController);
             if (shouldReload)
                 SafeLoad().FireAndForget();

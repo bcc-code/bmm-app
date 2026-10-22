@@ -86,17 +86,22 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
         }
 
         AddGroupIfNeeded();
-        _browseListTemplate.SafeUpdateSections(new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
+        if (imageRowItemsList.Any())
+        {
+            _browseListTemplate.SafeUpdateSections(new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
+        }
         
         void AddGroupIfNeeded()
         {
             if (currentHeader == null || !currentItems.Any())
                 return;
 
+            string headerTitle = !string.IsNullOrWhiteSpace(currentHeader.Title) ? currentHeader.Title : " ";
+
             var item = new CPListImageRowItem(
-                currentHeader.Title,
-                currentItems.Select(i => i.Image).ToArray(),
-                currentItems.Select(i => i.Title).ToArray());
+                headerTitle,
+                currentItems.Select(i => i.Image ?? UIImage.FromBundle(ImageResourceNames.PlaceholderCover.ToLower())).ToArray(),
+                currentItems.Select(i => i.Title ?? string.Empty).ToArray());
 
             item.UserInfo = new CoverItemInfo(currentItems.ToList(), currentHeader.Title, currentHeader.Link);
             item.Handler = async (listItem, block) =>
