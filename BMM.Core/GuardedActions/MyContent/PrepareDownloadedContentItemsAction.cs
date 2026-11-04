@@ -1,12 +1,10 @@
 using BMM.Api.Abstraction;
-using BMM.Api.Framework;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Enums;
 using BMM.Core.GuardedActions.Base;
 using BMM.Core.GuardedActions.MyContent.Interfaces;
 using BMM.Core.Implementations.Factories.TrackCollections;
-using BMM.Core.Implementations.FileStorage;
 using BMM.Core.Implementations.Localization.Interfaces;
 using BMM.Core.Implementations.PlaylistPersistence;
 using BMM.Core.Implementations.Podcasts;
@@ -32,9 +30,6 @@ public class PrepareDownloadedContentItemsAction
     private readonly IOfflinePlaylistStorage _offlinePlaylistStorage;
     private readonly IPlaylistPOFactory _playlistPOFactory;
     private readonly IPodcastClient _podcastClient;
-    private readonly ITrackCollectionClient _trackCollectionClient;
-    private readonly IConnection _connection;
-    private readonly IStorageManager _storageManager;
 
     public PrepareDownloadedContentItemsAction(
         IBMMLanguageBinder bmmLanguageBinder,
@@ -42,10 +37,7 @@ public class PrepareDownloadedContentItemsAction
         IPlaylistClient playlistClient,
         IOfflinePlaylistStorage offlinePlaylistStorage,
         IPlaylistPOFactory playlistPOFactory,
-        IPodcastClient podcastClient,
-        ITrackCollectionClient trackCollectionClient,
-        IConnection connection,
-        IStorageManager storageManager)
+        IPodcastClient podcastClient)
     {
         _bmmLanguageBinder = bmmLanguageBinder;
         _mvxNavigationService = mvxNavigationService;
@@ -53,14 +45,17 @@ public class PrepareDownloadedContentItemsAction
         _offlinePlaylistStorage = offlinePlaylistStorage;
         _playlistPOFactory = playlistPOFactory;
         _podcastClient = podcastClient;
-        _trackCollectionClient = trackCollectionClient;
-        _connection = connection;
-        _storageManager = storageManager;
     }
     
     protected override async Task<IList<DocumentPO>> Execute(IEnumerable<TrackCollectionPO> documentsCollections)
     {
-        var offlineTrackCollections = await TrackCollectionContainingOfflineFiles(documentsCollections, CachePolicy.UseCacheAndRefreshOutdated);
+        // Whether the user asked for a collection offline is the only thing that decides if it belongs
+        // here, and that answer cannot depend on being online. This used to additionally require, when
+        // offline only, that at least one track pass IsDownloaded - which reports false for any track
+        // whose Url is null, something that happens often enough to have its own analytics event. A
+        // fully downloaded playlist would therefore be listed while connected and disappear the moment
+        // the device went offline, which is precisely when people go looking for it.
+        var offlineTrackCollections = documentsCollections?.Where(tc => tc.IsAvailableOffline).ToList();
         var offlinePlaylists = await BuildDownloadedCuratedPlaylists();
         
         var items = new List<DocumentPO>();
@@ -71,26 +66,6 @@ public class PrepareDownloadedContentItemsAction
             items.AddRange(offlineTrackCollections);
 
         return items.ToList();
-    }
-    
-    private async Task<IList<TrackCollectionPO>> TrackCollectionContainingOfflineFiles(IEnumerable<TrackCollectionPO> allCollections, CachePolicy cachePolicy)
-    {
-        var offlineCollection = allCollections?.Where(tc => tc.IsAvailableOffline).ToList();
-        var isOnline = _connection.GetStatus() == ConnectionStatus.Online;
-
-        if (isOnline || offlineCollection == null)
-            return offlineCollection;
-
-        var returnList = new List<TrackCollectionPO>();
-        foreach (var trackCollection in offlineCollection)
-        {
-            var collectionTracks = await _trackCollectionClient.GetById(trackCollection.Id, cachePolicy);
-                
-            if (collectionTracks.Tracks.Any(track => _storageManager.SelectedStorage.IsDownloaded(track)))
-                returnList.Add(trackCollection);
-        }
-
-        return returnList;
     }
     
     private async Task<IEnumerable<DocumentPO>> BuildDownloadedCuratedPlaylists()
