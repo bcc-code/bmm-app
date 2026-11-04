@@ -290,6 +290,58 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
         protected virtual Task WaitBeforeRetry(TimeSpan delay) => Task.Delay(delay);
 
         /// <summary>
+        /// How long a single file may take before the queue stops waiting for it. The platform downloaders
+        /// hand back a task that something else has to complete - on iOS an <c>NSUrlSession</c> delegate
+        /// callback - and a callback that never arrived used to park the queue forever: it stayed flagged
+        /// as running, so every later <see cref="StartDownloading"/> returned immediately and the app
+        /// downloaded nothing at all until it was restarted.
+        /// </summary>
+        /// <remarks>
+        /// Generous on purpose. A download can legitimately be slow, and on iOS it keeps going while the
+        /// app is suspended, where a frozen timer catches up all at once on resume. Being wrong costs one
+        /// redundant retry of one track; being too eager costs a download that never finishes.
+        /// </remarks>
+        protected virtual TimeSpan DownloadTimeout => TimeSpan.FromMinutes(30);
+
+        /// <summary>
+        /// Waits for a download, but not indefinitely. A timed out download is abandoned rather than
+        /// awaited: its eventual outcome is observed so a later failure cannot resurface as an unobserved
+        /// task exception, and the downloader is asked to stop so that a retry does not race a request
+        /// that is somehow still running.
+        /// </summary>
+        private async Task DownloadWithTimeout(IDownloadable item)
+        {
+            var download = _fileDownloader.DownloadFile(item);
+
+            try
+            {
+                await download.WaitAsync(DownloadTimeout);
+            }
+            catch (TimeoutException)
+            {
+                download.ContinueWith(task => _ = task.Exception, TaskContinuationOptions.OnlyOnFaulted);
+                CancelStalledDownload(item);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Cancelling is best effort. The download has already failed as far as the queue is concerned, so
+        /// a downloader that cannot clean up must not turn that into a second failure.
+        /// </summary>
+        private void CancelStalledDownload(IDownloadable item)
+        {
+            try
+            {
+                _fileDownloader.CancelDownload();
+            }
+            catch (Exception exception)
+            {
+                _logger.Error(nameof(DownloadQueue), $"Could not cancel the stalled download of track {item.Id}", exception);
+            }
+        }
+
+        /// <summary>
         /// Mirrors the check the synchronization does before enqueueing, so that leaving Wi-Fi mid-queue
         /// stops the run instead of quietly continuing over a metered connection.
         /// </summary>
@@ -374,7 +426,7 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
         {
             try
             {
-                await _fileDownloader.DownloadFile(item);
+                await DownloadWithTimeout(item);
                 return (DownloadOutcome.Success, null);
             }
             catch (Exception e)

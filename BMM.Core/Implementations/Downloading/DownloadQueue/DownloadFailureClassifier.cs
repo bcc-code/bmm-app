@@ -28,6 +28,10 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
                 OperationCanceledException when cancellationWasRequested => DownloadOutcome.Cancelled,
                 OperationCanceledException => DownloadOutcome.ConnectionFailure,
 
+                // A download that stalled until the queue gave up waiting. Nothing says the file is at
+                // fault, so it keeps its place in the queue rather than being written off.
+                TimeoutException => DownloadOutcome.ConnectionFailure,
+
                 InternetProblemsException => DownloadOutcome.ConnectionFailure,
                 SocketException => DownloadOutcome.ConnectionFailure,
                 WebException => DownloadOutcome.ConnectionFailure,
