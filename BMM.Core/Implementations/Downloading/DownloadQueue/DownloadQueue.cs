@@ -297,11 +297,15 @@ namespace BMM.Core.Implementations.Downloading.DownloadQueue
         /// downloaded nothing at all until it was restarted.
         /// </summary>
         /// <remarks>
-        /// Generous on purpose. A download can legitimately be slow, and on iOS it keeps going while the
-        /// app is suspended, where a frozen timer catches up all at once on resume. Being wrong costs one
-        /// redundant retry of one track; being too eager costs a download that never finishes.
+        /// A balance between two costs. Too short cancels a download that was merely slow - a large track
+        /// on a poor connection, or one that iOS kept going while the app was suspended, where a frozen
+        /// timer catches up all at once on resume - and costs a redundant re-fetch. Too long leaves the
+        /// collection looking stuck: a timeout counts as a connection failure, so it is retried over
+        /// <see cref="RetryDelays"/> before the queue gives up, and only then does the UI stop showing a
+        /// download in progress. Ten minutes still clears a large track on a bad connection while keeping
+        /// the worst case to roughly half an hour.
         /// </remarks>
-        protected virtual TimeSpan DownloadTimeout => TimeSpan.FromMinutes(30);
+        protected virtual TimeSpan DownloadTimeout => TimeSpan.FromMinutes(10);
 
         /// <summary>
         /// Waits for a download, but not indefinitely. A timed out download is abandoned rather than
