@@ -40,8 +40,9 @@ public static class ErrorPresenter
                         }
                         finally
                         {
-                            _taskCompletionSource?.TrySetResult(true);
+                            var tcs = _taskCompletionSource;
                             _taskCompletionSource = null;
+                            tcs?.TrySetResult(true);
                         }
                     })
             ]);
@@ -50,11 +51,11 @@ public static class ErrorPresenter
         {
             await cpInterfaceController.PresentTemplateAsync(errorAlert, true);
         }
-        catch (Exception ex)
+        catch
         {
-            Console.WriteLine($"[CarPlay] Failed to present error alert: {ex.Message}");
-            _taskCompletionSource?.TrySetResult(false);
+            var tcs = _taskCompletionSource;
             _taskCompletionSource = null;
+            tcs?.TrySetResult(false);
             return false;
         }
 

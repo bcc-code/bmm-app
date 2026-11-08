@@ -88,38 +88,31 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
 
         if (grouped.Any())
         {
-            var sectionList = new List<CPListSection>();
-            foreach (var g in grouped)
-            {
-                var trackListItems = new List<ICPListTemplateItem>();
-                trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, g.Documents, covers));
-                if (trackListItems.Any())
+            sections = (await Task.WhenAll(grouped
+                .Select(async grouped =>
                 {
-                    sectionList.Add(new CPListSection(trackListItems.ToArray(), g.Title, null));
-                }
-            }
-            if (sectionList.Any())
-            {
-                _browseDetailsListTemplates.SafeUpdateSections(sectionList.ToArray());
-            }
+                    var trackListItems = new List<ICPListTemplateItem>();
+                    trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, grouped.Documents, covers));
+                    return new CPListSection(trackListItems.ToArray(), grouped.Title, null);
+                })))
+                .Where(s => s.Items.Any())
+                .ToArray();
         }
         else
         {
             var trackListItems = new List<ICPListTemplateItem>();
             trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, documentsHolder.Items, covers));
-            if (trackListItems.Any())
-            {
-                sections = [new CPListSection(trackListItems.ToArray())];
-                _browseDetailsListTemplates.SafeUpdateSections(sections);
-            }
+            sections = [new CPListSection(trackListItems.ToArray())];
         }
+
+        _browseDetailsListTemplates.SafeUpdateSections(sections);
     }
 
     private async Task<IList<ICPListTemplateItem>> GetTrackListItems(CPInterfaceController cpInterfaceController,
         IEnumerable<Document> documents,
         IDictionary<string, UIImage> covers)
     {
-        return await Task.WhenAll(documents
+        var items = await Task.WhenAll(documents
             .Select(async d =>
             {
                 CPListItem trackListItem = null;
@@ -164,9 +157,15 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                     }
                 }
 
-                trackListItem!.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
-                return trackListItem;
+                if (trackListItem != null)
+                {
+                    trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                }
+
+                return (ICPListTemplateItem)trackListItem;
             }));
+
+        return items.Where(x => x != null).ToList();
     }
 }
 

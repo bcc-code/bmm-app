@@ -5,7 +5,6 @@ using BMM.Api.Abstraction;
 using BMM.Api.Implementation.Clients.Contracts;
 using BMM.Api.Implementation.Models;
 using BMM.Api.Implementation.Models.Enums;
-using BMM.Api.Implementation.Models.Interfaces;
 using BMM.Core.Constants;
 using BMM.Core.Extensions;
 using BMM.Core.GuardedActions.ContinueListening.Interfaces;
@@ -37,7 +36,6 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     private IHandleAutoplayAction HandleAutoplayAction => Mvx.IoCProvider!.Resolve<IHandleAutoplayAction>();
     private IFirebaseRemoteConfig FirebaseRemoteConfig => Mvx.IoCProvider!.Resolve<IFirebaseRemoteConfig>();
     private ITrackPOFactory TrackPOFactory => Mvx.IoCProvider!.Resolve<ITrackPOFactory>();
-    private ITrackInfoProvider TrackInfoProvider => Mvx.IoCProvider!.Resolve<ITrackInfoProvider>();
     
     private CPInterfaceController _cpInterfaceController;
     private CPListTemplate _homeTemplate;
@@ -95,10 +93,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
             }
         }
         
-        if (sections.Any())
-        {
-            _homeTemplate.SafeUpdateSections(sections.ToArray());
-        }
+        _homeTemplate.SafeUpdateSections(sections.ToArray());
     }
 
     private async Task<IList<ICPListTemplateItem>> GetListItems(CPInterfaceController cpInterfaceController,
@@ -107,6 +102,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         int currentPodcastId)
     {
         var listOfTemplateItems = new List<ICPListTemplateItem>();
+        var trackInfoProvider = new DefaultTrackInfoProvider();
 
         foreach (var document in documents)
         {
@@ -126,18 +122,16 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Track track:
                 {
-                    var trackPO = TrackPOFactory.Create(TrackInfoProvider, null, track);
-                    string trackTitle = !string.IsNullOrWhiteSpace(trackPO.TrackTitle)
-                        ? trackPO.TrackTitle
-                        : (!string.IsNullOrWhiteSpace(track.Title) ? track.Title : "—");
-                    string subtitle = $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}".Trim();
+                    var trackPO = TrackPOFactory.Create(trackInfoProvider, null, track);
 
-                    var trackListItem = new CPListItem(trackTitle, string.IsNullOrWhiteSpace(subtitle) ? null : subtitle, covers.GetCover(track.ArtworkUri));
+                    var trackListItem = new CPListItem(trackPO.TrackTitle,
+                        $"{trackPO.TrackSubtitle} {trackPO.TrackMeta}",
+                        covers.GetCover(track.ArtworkUri));
                     trackListItem.AccessoryType = CPListItemAccessoryType.None;
                     trackListItem.Handler = async (item, block) =>
                     {
                         await CarPlayPlayerPresenter.PlayAndShowPlayer(
-                            track.ToTracksList(),
+                            documents.OfType<IMediaTrack>().ToList(),
                             track,
                             this.CreatePlaybackOrigin(),
                             cpInterfaceController);
@@ -148,9 +142,6 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Playlist playlist:
                 {
-                    if (string.IsNullOrWhiteSpace(playlist.Title))
-                        break;
-
                     listOfTemplateItems.Add(CreateListItem(
                         playlist.Title,
                         covers.GetCover(playlist.Cover),
@@ -161,9 +152,6 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Album album:
                 {
-                    if (string.IsNullOrWhiteSpace(album.Title))
-                        break;
-
                     listOfTemplateItems.Add(CreateListItem(
                         album.Title,
                         covers.GetCover(album.Cover),
@@ -174,9 +162,6 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Podcast podcast:
                 {
-                    if (string.IsNullOrWhiteSpace(podcast.Title))
-                        break;
-
                     listOfTemplateItems.Add(CreateListItem(
                         podcast.Title,
                         covers.GetCover(podcast.Cover),
@@ -187,9 +172,6 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
                 }
                 case Contributor contributor:
                 {
-                    if (string.IsNullOrWhiteSpace(contributor.Name))
-                        break;
-
                     listOfTemplateItems.Add(CreateListItem(
                         contributor.Name,
                         covers.GetCover(contributor.Cover),
@@ -210,8 +192,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
         Func<Task<CPListTemplate>> createLayoutFunc,
         CPInterfaceController cpInterfaceController)
     {
-        string safeTitle = !string.IsNullOrWhiteSpace(title) ? title : "—";
-        var listItem = new CPListItem(safeTitle, null, image);
+        var listItem = new CPListItem(title, null, image);
         listItem.Handler = async (item, block) =>
         {
             var layout = await createLayoutFunc();
@@ -228,7 +209,7 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
     {
         var dateTimeToPodcastPublishDateLabelValueConverter = new DateTimeToPodcastPublishDateLabelValueConverter();
         var dateTimeToPodcastPublishDayOfWeekLabelValueConverter = new DateTimeToPodcastPublishDayOfWeekLabelValueConverter();
-        var subtitle = new StringBuilder(continueListeningTile.Title ?? string.Empty);
+        var subtitle = new StringBuilder(continueListeningTile.Title);
         
         if (continueListeningTile.Date.HasValue)
         {
@@ -245,12 +226,12 @@ public class HomeLayoutCreator : BaseLayoutCreator, IHomeLayoutCreator
 
             subtitle.Append($" - {dateOfWeek}, {dateLabel}");
         }
+        else if (!string.IsNullOrWhiteSpace(continueListeningTile.Subtitle))
+        {
+            subtitle.Append($" - {continueListeningTile.Subtitle}");
+        }
 
-        string safeTitle = !string.IsNullOrWhiteSpace(continueListeningTile.Label)
-            ? continueListeningTile.Label
-            : (!string.IsNullOrWhiteSpace(continueListeningTile.Title) ? continueListeningTile.Title : "—");
-
-        var item = new CPListItem(safeTitle, subtitle.ToString(), covers.GetCover(continueListeningTile.CoverUrl));
+        var item = new CPListItem(continueListeningTile.Label, subtitle.ToString(), covers.GetCover(continueListeningTile.CoverUrl));
         item.Handler = async (_, block) =>
         {
             if (continueListeningTile.Track != null)

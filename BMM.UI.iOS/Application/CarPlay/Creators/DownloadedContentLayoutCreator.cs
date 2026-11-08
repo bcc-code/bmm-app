@@ -140,11 +140,7 @@ public class DownloadedContentLayoutCreator : BaseLayoutCreator, IDownloadedCont
                 return null;
             }));
 
-        var validItems = tracklistItems.Where(i => i != null).ToArray();
-        if (validItems.Any())
-        {
-            var section = new CPListSection(validItems);
-            _downloadedListTemplate.SafeUpdateSections(section.EncloseInArray());
-        }
+        var section = new CPListSection(tracklistItems.Where(i => i != null).ToArray());
+        _downloadedListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

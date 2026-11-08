@@ -93,10 +93,7 @@ public class AlbumLayoutCreator : BaseLayoutCreator, IAlbumLayoutCreator
             }
         }
                 
-        if (tracksCpListItemTemplates.Any())
-        {
-            var section = new CPListSection(tracksCpListItemTemplates.ToArray());
-            _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
-        }
+        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
+        _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

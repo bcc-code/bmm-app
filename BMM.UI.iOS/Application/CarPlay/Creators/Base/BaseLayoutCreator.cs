@@ -11,6 +11,8 @@ namespace BMM.UI.iOS.CarPlay.Creators.Base;
 [SuppressMessage("Interoperability", "CA1422:Validate platform compatibility")]
 public abstract class BaseLayoutCreator
 {
+    private ILogger Logger => Mvx.IoCProvider!.Resolve<ILogger>();
+
     protected abstract CPInterfaceController CpInterfaceController { get; }
     
     protected async Task SafeLoad()
@@ -21,18 +23,7 @@ public abstract class BaseLayoutCreator
         }
         catch (Exception ex)
         {
-            try
-            {
-                var logger = Mvx.IoCProvider?.Resolve<ILogger>();
-                logger?.Error(GetType().Name, $"CarPlay layout loading failed: {ex.Message}", ex);
-            }
-            catch
-            {
-                // ignore logger resolution errors
-            }
-
-            Console.WriteLine($"[CarPlay] SafeLoad failed in {GetType().Name}: {ex}");
-
+            Logger.Error(GetType().Name, "CarPlay layout loading failed", ex);
             bool shouldReload = await ErrorPresenter.ShowError(CpInterfaceController);
             if (shouldReload)
                 SafeLoad().FireAndForget();

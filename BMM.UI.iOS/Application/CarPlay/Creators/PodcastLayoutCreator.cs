@@ -69,10 +69,7 @@ public class PodcastLayoutCreator : BaseLayoutCreator, IPodcastLayoutCreator
             tracksCpListItemTemplates.Add(trackListItem);
         }
         
-        if (tracksCpListItemTemplates.Any())
-        {
-            var section = new CPListSection(tracksCpListItemTemplates.ToArray());
-            _podcastListTemplate.SafeUpdateSections(section.EncloseInArray());
-        }
+        var section = new CPListSection(tracksCpListItemTemplates.ToArray());
+        _podcastListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

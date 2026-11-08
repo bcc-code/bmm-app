@@ -132,10 +132,7 @@ public class FavouritesLayoutCreator : BaseLayoutCreator, IFavouritesLayoutCreat
             .Where(x => x != null)
             .ToList();
         
-        if (tracklistItems.Any())
-        {
-            var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
-            _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
-        }
+        var section = new CPListSection(tracklistItems.OfType<ICPListTemplateItem>().ToArray());
+        _favouritesListTemplate.SafeUpdateSections(section.EncloseInArray());
     }
 }

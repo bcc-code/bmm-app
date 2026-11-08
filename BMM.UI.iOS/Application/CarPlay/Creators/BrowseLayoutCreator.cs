@@ -78,29 +78,26 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
                 case CoverCarouselCollection collection:
                     foreach (var cover in collection.CoverDocuments)
                     {
-                        var displayable = (ITrackListDisplayable)cover;
-                        currentItems.Add(new ImageRowItem(covers.GetCover(displayable.Cover), displayable.Title, cover));
+                        if (cover is ITrackListDisplayable displayable)
+                        {
+                            currentItems.Add(new ImageRowItem(covers.GetCover(displayable.Cover), displayable.Title, cover));
+                        }
                     }
                     break;
             }
         }
 
         AddGroupIfNeeded();
-        if (imageRowItemsList.Any())
-        {
-            _browseListTemplate.SafeUpdateSections(new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
-        }
+        _browseListTemplate.SafeUpdateSections(new CPListSection(imageRowItemsList.OfType<ICPListTemplateItem>().ToArray()).EncloseInArray());
         
         void AddGroupIfNeeded()
         {
             if (currentHeader == null || !currentItems.Any())
                 return;
 
-            string headerTitle = !string.IsNullOrWhiteSpace(currentHeader.Title) ? currentHeader.Title : " ";
-
             var item = new CPListImageRowItem(
-                headerTitle,
-                currentItems.Select(i => i.Image ?? UIImage.FromBundle(ImageResourceNames.PlaceholderCover.ToLower())).ToArray(),
+                currentHeader.Title ?? string.Empty,
+                currentItems.Select(i => i.Image).ToArray(),
                 currentItems.Select(i => i.Title ?? string.Empty).ToArray());
 
             item.UserInfo = new CoverItemInfo(currentItems.ToList(), currentHeader.Title, currentHeader.Link);
@@ -131,6 +128,8 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
                     var playlistLayout = await AlbumLayoutCreator.Create(_cpInterfaceController, album.Id, album.Title);
                     await _cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                 }
+
+                block();
             };
             
             imageRowItemsList.Add(item);
