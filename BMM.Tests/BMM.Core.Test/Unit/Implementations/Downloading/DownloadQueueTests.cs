@@ -399,6 +399,40 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             Assert.IsFalse(downloadQueue.StoppedWithPendingDownloads);
         }
 
+        [Test]
+        [Timeout(10000)]
+        public async Task A_Download_That_Never_Completes_Does_Not_Wedge_The_Queue()
+        {
+            // A platform downloader that never calls back used to park RunQueue forever: the queue stayed
+            // flagged as running, so every later StartDownloading() returned immediately and the app
+            // downloaded nothing at all until it was restarted.
+            _fileDownloader
+                .Setup(x => x.DownloadFile(It.IsAny<IDownloadable>()))
+                .Returns(() => new TaskCompletionSource().Task);
+
+            var downloadQueue = await RunQueueWith(_fakeTrackFactory.CreateTrackWithId(1));
+
+            Assert.IsFalse(downloadQueue.IsRunning);
+            Assert.AreEqual(1, downloadQueue.RemainingDownloadsCount);
+            Assert.IsTrue(downloadQueue.StoppedWithPendingDownloads);
+            _mvxMessenger.Verify(x => x.Publish(It.Is<QueueFinishedMessage>(m => !m.Succeeded)), Times.Once);
+        }
+
+        [Test]
+        [Timeout(10000)]
+        public async Task A_Stalled_Download_Does_Not_Mark_The_Track_Unavailable()
+        {
+            // A download that hangs says nothing about the file. Writing it off as permanently failed
+            // would tell the user the track is unavailable and stop the queue ever retrying it.
+            _fileDownloader
+                .Setup(x => x.DownloadFile(It.IsAny<IDownloadable>()))
+                .Returns(() => new TaskCompletionSource().Task);
+
+            await RunQueueWith(_fakeTrackFactory.CreateTrackWithId(1));
+
+            _unavailableTracks.Verify(x => x.MarkUnavailable(It.IsAny<int>()), Times.Never);
+        }
+
         private class TestableDownloadQueue : DownloadQueue
         {
             public TestableDownloadQueue(
@@ -416,6 +450,8 @@ namespace BMM.Core.Test.Unit.Implementations.Downloading
             }
 
             protected override Task WaitBeforeRetry(TimeSpan delay) => Task.CompletedTask;
+
+            protected override TimeSpan DownloadTimeout => TimeSpan.FromMilliseconds(50);
         }
     }
 }
