@@ -48,9 +48,21 @@ steps:
 
   - bash: |
       URL="https://bmm-api.brunstad.org/AppVersion/AndroidVersionCode"
-      VERSIONCODE=$(curl -k --user $(bmmApiCredentials) $URL)
-      echo "Receive version: $((VERSIONCODE))"
-      echo "##vso[task.setvariable variable=VersionCode]$((VERSIONCODE))"
+      echo "Using credentials for user '${BMM_API_CREDENTIALS%%:*}' (value length: ${#BMM_API_CREDENTIALS})"
+      RESPONSE=$(curl -sS -k -w '\n%{http_code}' --user "$BMM_API_CREDENTIALS" "$URL")
+      echo "curl exit code: $?"
+      STATUS=$(echo "$RESPONSE" | tail -n1)
+      VERSIONCODE=$(echo "$RESPONSE" | sed '$d')
+      echo "GET $URL -> HTTP $STATUS"
+      echo "Response body: '$VERSIONCODE'"
+      if [ "$STATUS" != "200" ] || ! [[ "$VERSIONCODE" =~ ^[0-9]+$ ]]; then
+        echo "##vso[task.logissue type=error]Unexpected response from $URL (HTTP $STATUS). Check the bmmApiCredentials variable."
+        exit 1
+      fi
+      echo "Receive version: $VERSIONCODE"
+      echo "##vso[task.setvariable variable=VersionCode]$VERSIONCODE"
+    env:
+      BMM_API_CREDENTIALS: $(bmmApiCredentials)
     displayName: 'Get VersionCode'
 
   - bash: |
@@ -61,11 +73,19 @@ steps:
 
   - bash: |
       url="https://bmm-api.brunstad.org/AppVersion/AndroidVersionInfo"
-  
-      versionInfo=$(curl -k --user $(bmmApiCredentials) $url)
-  
+      response=$(curl -sS -k -w '\n%{http_code}' --user "$BMM_API_CREDENTIALS" "$url")
+      echo "curl exit code: $?"
+      status=$(echo "$response" | tail -n1)
+      versionInfo=$(echo "$response" | sed '$d')
+      echo "GET $url -> HTTP $status"
       echo "Receive version info: $versionInfo"
+      if [ "$status" != "200" ] || ! [[ "$versionInfo" =~ ^\"[0-9]+(\.[0-9]+){5}\"$ ]]; then
+        echo "##vso[task.logissue type=error]Unexpected response from $url (HTTP $status). Check the bmmApiCredentials variable."
+        exit 1
+      fi
       echo "##vso[task.setvariable variable=VersionInfo]$versionInfo"
+    env:
+      BMM_API_CREDENTIALS: $(bmmApiCredentials)
     displayName: 'Get version info'
 
   - task: Bash@3
