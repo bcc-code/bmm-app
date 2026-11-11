@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
-using Airbnb.Lottie;
+using Com.Airbnb.Lottie;
+using BMM.UI.iOS.Utils;
 using CoreGraphics;
 using Foundation;
 using UIKit;
@@ -10,7 +11,7 @@ namespace BMM.UI.iOS
     [Register(nameof(LottieButton)), DesignTimeVisible(true)]
     public class LottieButton : UIButton
     {
-        private LOTAnimationView _animationView;
+        private CompatibleAnimationView _animationView;
 
         public LottieButton()
         {
@@ -20,7 +21,7 @@ namespace BMM.UI.iOS
         {
         }
         
-        public void AddAnimation(LOTAnimationView animationView)
+        public void AddAnimation(CompatibleAnimationView animationView)
         {
             _animationView?.RemoveFromSuperview();
             _animationView = animationView;
@@ -48,7 +49,7 @@ namespace BMM.UI.iOS
                 return;
 
             _animationView.Hidden = false;
-            _animationView.LoopAnimation = true;
+            _animationView.SetLooping(true);
             _animationView.Play();
             _animationView.BringSubviewToFront(this);
         }
