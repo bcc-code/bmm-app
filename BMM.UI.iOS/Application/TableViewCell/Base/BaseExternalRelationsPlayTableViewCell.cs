@@ -1,4 +1,4 @@
-using Airbnb.Lottie;
+using Com.Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Models.POs.BibleStudy.Interfaces;
 using BMM.UI.iOS.Constants;
@@ -12,7 +12,7 @@ namespace BMM.UI.iOS.TableViewCell.Base;
 public abstract class BaseExternalRelationsPlayTableViewCell : BaseBMMTableViewCell
 {
     private bool _isCurrentlyPlaying;
-    private LOTAnimationView _animationView;
+    private CompatibleAnimationView _animationView;
     private bool _hasListened;
 
     public BaseExternalRelationsPlayTableViewCell(ObjCRuntime.NativeHandle handle) : base(handle)
@@ -91,7 +91,7 @@ public abstract class BaseExternalRelationsPlayTableViewCell : BaseBMMTableViewC
         IconPlay.Hidden = true;
         _animationView = ThemeUtils.GetLottieAnimationFor(LottieAnimationsNames.PlayAnimationIconDark, LottieAnimationsNames.PlayAnimationIcon);
         _animationView.BackgroundColor = UIColor.Clear;
-        _animationView.LoopAnimation = true;
+        _animationView.SetLooping(true);
         _animationView.TranslatesAutoresizingMaskIntoConstraints = false;
         
         ViewAnimation.AddSubview(_animationView);

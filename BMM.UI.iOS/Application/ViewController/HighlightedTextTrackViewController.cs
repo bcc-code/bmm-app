@@ -1,4 +1,4 @@
-using Airbnb.Lottie;
+using Com.Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Translation;
 using BMM.Core.ViewModels;
@@ -153,7 +153,7 @@ namespace BMM.UI.iOS
             var animation = ThemeUtils.GetLottieAnimationFor(LottieAnimationsNames.PlayAnimationIcon, LottieAnimationsNames.PlayAnimationIconDark);
             animation.BackgroundColor = AppColors.LabelOneColor;
             animation.TintColor = UIColor.Red;
-            animation.LoopAnimation = true;
+            animation.SetLooping(true);
             PlayButton!.AddAnimation(animation);
             SetAnimationState();
         }

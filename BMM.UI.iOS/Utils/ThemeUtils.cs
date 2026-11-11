@@ -1,4 +1,4 @@
-using Airbnb.Lottie;
+using Com.Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Models.Themes;
 using BMM.UI.iOS.NewMediaPlayer;
@@ -20,12 +20,12 @@ namespace BMM.UI.iOS.Utils
         
         public static bool IsUsingDarkMode => AppDelegate.MainWindow.TraitCollection.UserInterfaceStyle == UIUserInterfaceStyle.Dark;
         
-        public static LOTAnimationView GetLottieAnimationFor(string lightThemeAnim, string darkThemeAnim)
+        public static CompatibleAnimationView GetLottieAnimationFor(string lightThemeAnim, string darkThemeAnim)
         {
             if (VersionHelper.SupportsDarkMode && IsUsingDarkMode)
-                return LOTAnimationView.AnimationNamed(darkThemeAnim);
+                return LottieUtils.AnimationNamed(darkThemeAnim);
             
-            return LOTAnimationView.AnimationNamed(lightThemeAnim);
+            return LottieUtils.AnimationNamed(lightThemeAnim);
         }
     }
 }

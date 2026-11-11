@@ -25,7 +25,7 @@ public class ShuffleButtonCreator
         string playbackOrigin,
         CPInterfaceController cpInterfaceController)
     {
-        if (!items.All(c => c is Track))
+        if (!items.Any() || !items.All(c => c is Track))
             return null;
         
         var listItem = new CPListItem(TextSource[Translations.DocumentsViewModel_Shuffle],

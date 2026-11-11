@@ -88,14 +88,15 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
 
         if (grouped.Any())
         {
-            sections = await Task.WhenAll(grouped
+            sections = (await Task.WhenAll(grouped
                 .Select(async grouped =>
                 {
                     var trackListItems = new List<ICPListTemplateItem>();
                     trackListItems.AddRange(await GetTrackListItems(CpInterfaceController, grouped.Documents, covers));
                     return new CPListSection(trackListItems.ToArray(), grouped.Title, null);
-                })
-                .ToArray());
+                })))
+                .Where(s => s.Items.Any())
+                .ToArray();
         }
         else
         {
@@ -111,7 +112,7 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
         IEnumerable<Document> documents,
         IDictionary<string, UIImage> covers)
     {
-        return await Task.WhenAll(documents
+        var items = await Task.WhenAll(documents
             .Select(async d =>
             {
                 CPListItem trackListItem = null;
@@ -156,9 +157,15 @@ public class BrowseDetailsLayoutCreator : BaseLayoutCreator, IBrowseDetailsLayou
                     }
                 }
 
-                trackListItem!.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
-                return trackListItem;
+                if (trackListItem != null)
+                {
+                    trackListItem.AccessoryType = CPListItemAccessoryType.DisclosureIndicator;
+                }
+
+                return (ICPListTemplateItem)trackListItem;
             }));
+
+        return items.Where(x => x != null).ToList();
     }
 }
 

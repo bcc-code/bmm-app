@@ -98,7 +98,7 @@ namespace BMM.UI.iOS
 		UIKit.UILabel SliderPositionTimeLabel { get; set; }
 
 		[Outlet]
-		MarqueeLabelSDK.MarqueeLabel SubtitleLabel { get; set; }
+		BMM.UI.iOS.MarqueeLabel SubtitleLabel { get; set; }
 
 		[Outlet]
 		UIKit.UILabel TitleLabel { get; set; }

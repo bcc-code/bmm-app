@@ -1,4 +1,4 @@
-using Airbnb.Lottie;
+using Com.Airbnb.Lottie;
 using BMM.Core.Constants;
 using BMM.Core.Models.Enums;
 using BMM.Core.Translation;
@@ -18,7 +18,7 @@ namespace BMM.UI.iOS
         private const int CloseButtonHeight = 36;
         private bool _shouldShowConfetti;
         private bool _confettiShown;
-        private LOTAnimationView _animationView;
+        private CompatibleAnimationView _animationView;
         private bool _isCurrentlyPlaying;
 
         public AchievementDetailsViewController() : base(null)
@@ -199,7 +199,7 @@ namespace BMM.UI.iOS
             IconPlay.Hidden = true;
             _animationView = ThemeUtils.GetLottieAnimationFor(LottieAnimationsNames.PlayAnimationIconDark, LottieAnimationsNames.PlayAnimationIcon);
             _animationView.BackgroundColor = UIColor.Clear;
-            _animationView.LoopAnimation = true;
+            _animationView.SetLooping(true);
             _animationView.TranslatesAutoresizingMaskIntoConstraints = false;
         
             AnimationView.AddSubview(_animationView);

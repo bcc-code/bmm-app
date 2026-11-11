@@ -33,7 +33,7 @@ public class PlaylistsLayoutCreator : BaseLayoutCreator, IPlaylistsLayoutCreator
         _playlistsListTemplate = new CPListTemplate(BMMLanguageBinder[Translations.CuratedPlaylistsViewModel_Title], LoadingSection.Create());
         _playlistsListTemplate.TabTitle = BMMLanguageBinder[Translations.CuratedPlaylistsViewModel_Title];
         _playlistsListTemplate.TabImage = UIImage.FromBundle(ImageResourceNames.IconPlaylist.ToIosImageName());
-        Load().FireAndForget();
+        SafeLoad().FireAndForget();
         return _playlistsListTemplate;
     }
 

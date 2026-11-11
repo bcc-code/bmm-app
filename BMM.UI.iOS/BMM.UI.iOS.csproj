@@ -594,7 +594,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="ByteSize" Version="2.1.1" />
-    <PackageReference Include="Lottie.iOS" Version="1.0.0" />
+    <PackageReference Include="MPowerKit.Lottie.MaciOS" Version="4.5.2" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Microsoft.Maui.Essentials" Version="8.0.100" />
     <PackageReference Include="MvvmCross" Version="9.2.0" />
@@ -704,9 +704,6 @@
     </Reference>
     <Reference Include="FFImageLoading.Touch">
       <HintPath>..\lib\FFImageLoading.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="MarqueeLabel">
-      <HintPath>..\lib\MarqueeLabel.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
