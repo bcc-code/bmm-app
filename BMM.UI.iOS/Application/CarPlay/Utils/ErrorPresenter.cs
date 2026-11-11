@@ -14,6 +14,9 @@ public static class ErrorPresenter
     
     public static async Task<bool> ShowError(CPInterfaceController cpInterfaceController)
     {
+        if (cpInterfaceController == null)
+            return false;
+
         if (_taskCompletionSource != null)
             return await _taskCompletionSource.Task;
         
@@ -27,13 +30,35 @@ public static class ErrorPresenter
                     CPAlertActionStyle.Default,
                     async _ =>
                     {
-                        await cpInterfaceController.DismissTemplateAsync(true);
-                        _taskCompletionSource?.TrySetResult(true);
-                        _taskCompletionSource = null;
+                        try
+                        {
+                            await cpInterfaceController.DismissTemplateAsync(true);
+                        }
+                        catch
+                        {
+                            // ignore dismiss error if already dismissed
+                        }
+                        finally
+                        {
+                            var tcs = _taskCompletionSource;
+                            _taskCompletionSource = null;
+                            tcs?.TrySetResult(true);
+                        }
                     })
             ]);
 
-        await cpInterfaceController.PresentTemplateAsync(errorAlert, true);
+        try
+        {
+            await cpInterfaceController.PresentTemplateAsync(errorAlert, true);
+        }
+        catch
+        {
+            var tcs = _taskCompletionSource;
+            _taskCompletionSource = null;
+            tcs?.TrySetResult(false);
+            return false;
+        }
+
         return await _taskCompletionSource.Task;
     }
 }

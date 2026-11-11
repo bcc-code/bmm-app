@@ -42,7 +42,7 @@ public static class UIImageExtensions
             return await ImageService
                 .Instance
                 .LoadUrl(url)
-                .AsUIImageAsync();
+                .AsUIImageAsync() ?? UIImage.FromBundle(ImageResourceNames.PlaceholderCover.ToLower());
         }
         catch
         {
@@ -74,7 +74,7 @@ public static class UIImageExtensions
     {
         try
         {
-            if (coverUrl.IsNullOrEmpty() || !coversDictionary.TryGetValue(coverUrl, out UIImage cover))
+            if (coverUrl.IsNullOrEmpty() || !coversDictionary.TryGetValue(coverUrl, out UIImage cover) || cover == null)
                 return UIImage.FromBundle(ImageResourceNames.PlaceholderCover.ToLower());
 
             return cover;

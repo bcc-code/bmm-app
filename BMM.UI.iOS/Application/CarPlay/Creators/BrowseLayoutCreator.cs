@@ -78,8 +78,10 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
                 case CoverCarouselCollection collection:
                     foreach (var cover in collection.CoverDocuments)
                     {
-                        var displayable = (ITrackListDisplayable)cover;
-                        currentItems.Add(new ImageRowItem(covers.GetCover(displayable.Cover), displayable.Title, cover));
+                        if (cover is ITrackListDisplayable displayable)
+                        {
+                            currentItems.Add(new ImageRowItem(covers.GetCover(displayable.Cover), displayable.Title, cover));
+                        }
                     }
                     break;
             }
@@ -94,9 +96,9 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
                 return;
 
             var item = new CPListImageRowItem(
-                currentHeader.Title,
+                currentHeader.Title ?? string.Empty,
                 currentItems.Select(i => i.Image).ToArray(),
-                currentItems.Select(i => i.Title).ToArray());
+                currentItems.Select(i => i.Title ?? string.Empty).ToArray());
 
             item.UserInfo = new CoverItemInfo(currentItems.ToList(), currentHeader.Title, currentHeader.Link);
             item.Handler = async (listItem, block) =>
@@ -126,6 +128,8 @@ public class BrowseLayoutCreator : BaseLayoutCreator, IBrowseLayoutCreator
                     var playlistLayout = await AlbumLayoutCreator.Create(_cpInterfaceController, album.Id, album.Title);
                     await _cpInterfaceController.PushTemplateAsync(playlistLayout, true);
                 }
+
+                block();
             };
             
             imageRowItemsList.Add(item);
